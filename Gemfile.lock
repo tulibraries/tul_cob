@@ -1,3 +1,16 @@
+GIT
+  remote: git@github.com:tulibraries/blacklight-marc.git
+  revision: bd069af748ba1b851bea1714c69475a6f0360e0f
+  branch: fix-extract_marc-format-008
+  specs:
+    blacklight-marc (6.1.0)
+      blacklight (~> 6.1)
+      library_stdnums
+      marc (>= 0.4.3, < 1.1)
+      marc-fastxmlwriter
+      rails
+      traject (~> 2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -50,13 +63,6 @@ GEM
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
-    blacklight-marc (6.1.1)
-      blacklight (> 6.1, < 8.a)
-      library_stdnums
-      marc (>= 0.4.3, < 1.1)
-      marc-fastxmlwriter
-      rails
-      traject (~> 2.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -220,7 +226,7 @@ PLATFORMS
 
 DEPENDENCIES
   blacklight
-  blacklight-marc
+  blacklight-marc!
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)

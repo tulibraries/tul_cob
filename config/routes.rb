@@ -1,5 +1,20 @@
 Rails.application.routes.draw do
   
+  
+  concern :exportable, Blacklight::Routes::Exportable.new
+
+  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+    concerns :exportable
+  end
+
+  resources :bookmarks do
+    concerns :exportable
+
+    collection do
+      delete 'clear'
+    end
+  end
+
   Blacklight::Marc.add_routes(self)
   mount Blacklight::Engine => '/'
   root to: "catalog#index"
