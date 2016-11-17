@@ -13,7 +13,13 @@ class MarcIndexer < Blacklight::Marc::Indexer
       provide 'solr_writer.max_skipped', -1
     end
 
-    to_field "id", trim(extract_marc("001"), :first => true)
+    to_field("id") do |rec, acc|
+      if trim(extract_marc("001"), :first => true)
+        acc << trim(extract_marc("001"), :first => true)
+      else
+        acc << trim(extract_marc("907"), :first => true)
+      end
+    end
     to_field 'marc_display', get_xml
     to_field "text", extract_all_marc_values do |r, acc|
       acc.replace [acc.join(' ')] # turn it into a single string
