@@ -13,11 +13,12 @@ class MarcIndexer < Blacklight::Marc::Indexer
       provide 'solr_writer.max_skipped', -1
     end
 
+    #to_field 'id', trim(extract_marc("001"), :first => true)
     to_field("id") do |rec, acc|
-      if trim(extract_marc("001"), :first => true)
-        acc << trim(extract_marc("001"), :first => true)
+      if (rec['001'])
+        acc << rec['001']
       else
-        acc << trim(extract_marc("907"), :first => true)
+        acc << rec['907']
       end
     end
     to_field 'marc_display', get_xml
