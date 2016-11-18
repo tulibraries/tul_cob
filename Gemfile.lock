@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:tulibraries/blacklight-marc.git
+  remote: git://github.com/tulibraries/blacklight-marc.git
   revision: bd069af748ba1b851bea1714c69475a6f0360e0f
   branch: fix-extract_marc-format-008
   specs:
