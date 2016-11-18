@@ -22,3 +22,6 @@
 
 Vagrantfile
 ansible
+config/secrets.yml
+public/assets/
+vendor/bundle/
