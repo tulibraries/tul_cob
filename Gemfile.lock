@@ -1,10 +1,10 @@
 GIT
-  remote: git://github.com/tulibraries/blacklight-marc.git
-  revision: bd069af748ba1b851bea1714c69475a6f0360e0f
+  remote: https://github.com/tulibraries/blacklight-marc
+  revision: 0e9d4a39f12eee507b025502ac96c017d12926fd
   branch: fix-extract_marc-format-008
   specs:
-    blacklight-marc (6.1.0)
-      blacklight (~> 6.1)
+    blacklight-marc (6.1.1)
+      blacklight (> 6.1, < 8.a)
       library_stdnums
       marc (>= 0.4.3, < 1.1)
       marc-fastxmlwriter

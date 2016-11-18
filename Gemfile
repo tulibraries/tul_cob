@@ -48,7 +48,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'blacklight'
-gem 'blacklight-marc',  :github => "tulibraries/blacklight-marc", :branch => "fix-extract_marc-format-008"
+gem 'blacklight-marc',  :git => "https://github.com/tulibraries/blacklight-marc", :branch => "fix-extract_marc-format-008"
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
