@@ -16,10 +16,11 @@ class MarcIndexer < Blacklight::Marc::Indexer
     #to_field 'id', trim(extract_marc("001"), :first => true)
     to_field("id") do |rec, acc|
       if (rec['001'])
-        acc << rec['001']
+        id = rec['001'].value
       else
-        acc << rec['907']
+        id = rec['907']['a'][1..-1]
       end
+      acc << id
     end
     to_field 'marc_display', get_xml
     to_field "text", extract_all_marc_values do |r, acc|
