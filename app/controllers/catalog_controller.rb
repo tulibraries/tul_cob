@@ -122,7 +122,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_callnum_display', label: 'Call number'
     config.add_show_field 'isbn_t', label: 'ISBN'
     config.add_show_field 'control_number_display', label: 'Control Number'
-    onfig.add_show_field 'location_display', label: 'Location', helper_method: :render_location
+    config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
