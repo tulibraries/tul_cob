@@ -171,10 +171,6 @@ class MarcIndexer < Blacklight::Marc::Indexer
     end
 
     #Control number - set flag to identify no control numbers
-    to_field 'control_number_facet', extract_marc('907a', :first=>true) do |_, acc|
-      acc << 'NO CONTROL NUMBER' if acc.empty?
-      puts "NO CONTROL NUMBER" if acc.empty?
-    end
     to_field 'control_number_display', extract_marc('907a', :first=>true) do |_, acc|
       acc << 'NO CONTROL NUMBER' if acc.empty?
     end

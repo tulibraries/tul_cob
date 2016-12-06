@@ -67,6 +67,7 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
+    config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
     config.add_facet_field 'format', label: 'Format'
     config.add_facet_field 'pub_date', label: 'Publication Year', single: true
     config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
@@ -83,8 +84,7 @@ class CatalogController < ApplicationController
        :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     }
 
-    config.add_facet_field 'control_number_facet', label: 'Control Number'
-    config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
+
 
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -122,6 +122,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'lc_callnum_display', label: 'Call number'
     config.add_show_field 'isbn_t', label: 'ISBN'
     config.add_show_field 'control_number_display', label: 'Control Number'
+    onfig.add_show_field 'location_display', label: 'Location', helper_method: :render_location
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
