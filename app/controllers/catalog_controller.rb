@@ -83,6 +83,9 @@ class CatalogController < ApplicationController
        :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     }
 
+    config.add_facet_field 'control_number_facet', label: 'Control Number'
+    config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
+
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -100,6 +103,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_display', label: 'Published'
     config.add_index_field 'published_vern_display', label: 'Published'
     config.add_index_field 'lc_callnum_display', label: 'Call number'
+    config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -117,6 +121,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'published_vern_display', label: 'Published'
     config.add_show_field 'lc_callnum_display', label: 'Call number'
     config.add_show_field 'isbn_t', label: 'ISBN'
+    config.add_show_field 'control_number_display', label: 'Control Number'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

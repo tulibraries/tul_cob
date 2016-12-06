@@ -43,13 +43,17 @@ class MarcIndexer < Blacklight::Marc::Indexer
     #    primary title 
      
     to_field 'title_t', extract_marc('245a')
-    to_field 'title_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'title_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>false) do |r, acc|
+      acc.replace [acc.join(' ')] # turn it into a single string
+    end
     to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>:only)
      
     #    subtitle
      
     to_field 'subtitle_t', extract_marc('245b')
-    to_field 'subtitle_display', extract_marc('245b', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'subtitle_display', extract_marc('245b', :trim_punctuation => true, :alternate_script=>false)do |r, acc|
+      acc.replace [acc.join(' ')] # turn it into a single string
+    end
     to_field 'subtitle_vern_display', extract_marc('245b', :trim_punctuation => true, :alternate_script=>:only)
      
     #    additional title fields
@@ -164,6 +168,30 @@ class MarcIndexer < Blacklight::Marc::Indexer
           end
         end
       end
+    end
+
+    #Control number - set flag to identify no control numbers
+    to_field 'control_number_facet', extract_marc('907a', :first=>true) do |_, acc|
+      acc << 'NO CONTROL NUMBER' if acc.empty?
+      puts "NO CONTROL NUMBER" if acc.empty?
+    end
+    to_field 'control_number_display', extract_marc('907a', :first=>true) do |_, acc|
+      acc << 'NO CONTROL NUMBER' if acc.empty?
+    end
+
+    to_field 'location_facet' do |rec, acc|
+      rec.fields('945').each do |field|
+        #Strip the values, as many come in with space padding
+        acc << field['l'].strip unless field['l'].nil?
+      end
+    end
+
+    # This should probably not be a display
+    to_field 'location_display' do |rec, acc|
+      rec.fields('945').each do |field|
+        acc << field['l'].strip unless field['l'].nil?
+      end
+      acc.replace [acc.join(",")]
     end
   end
 end
