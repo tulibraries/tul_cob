@@ -1,24 +1,33 @@
-# README
+# Catalog on Blacklight
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
 
-Things you may want to cover:
 
-* Ruby version
+## Getting started
 
-* System dependencies
+### Install the Application
+This only needs to happen the first time.
 
-* Configuration
+```bash
+git clone git@github.com:tulibraries/tul_cob
+cd tul_cob
+bundle install
+bundle exec rails db:migrate
+```
 
-* Database creation
+### Start the Application
 
-* Database initialization
+We need to run two commands in separate terminal windows in order to start the application.
+* In the first terminal window, start solr with run
+```bash
+bundle exec solr_wrapper
+```
+* In the second terminal window, start Puma, the rails application server
+```bash
+bundle exec rails server
+```
 
-* How to run the test suite
+## Importing Data
 
-* Services (job queues, cache servers, search engines, etc.)
+Get TUL specific sample data from [insert link here]()
 
-* Deployment instructions
-
-* ...
