@@ -29,5 +29,5 @@ bundle exec rails server
 
 ## Importing Data
 
-Get TUL specific sample data from [insert link here]()
+Get TUL specific sample data from [TUL Wiki](https://tulibdev.atlassian.net/wiki/download/attachments/14647301/smaller_tul.dat.gz?api=v2)(Login Required)
 
