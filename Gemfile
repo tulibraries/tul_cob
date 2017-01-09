@@ -56,5 +56,5 @@ group :development, :test do
 end
 
 gem 'rsolr', '~> 1.0'
-group :development, :test do
-end
+gem 'devise'
+gem 'devise-guests', '~> 0.5'
