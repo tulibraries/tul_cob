@@ -1,3 +1,5 @@
+require 'alma_utils'
+
 class User < ApplicationRecord
 
   if Blacklight::Utils.needs_attr_accessible?
@@ -15,5 +17,9 @@ class User < ApplicationRecord
   # the account.
   def to_s
     email
+  end
+
+  def loans
+    item_loans = Alma.get_loans(alma_id)
   end
 end

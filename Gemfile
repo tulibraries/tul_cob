@@ -54,6 +54,7 @@ gem 'blacklight-marc',  :git => "https://github.com/tulibraries/blacklight-marc"
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 gem 'rsolr', '~> 1.0'
