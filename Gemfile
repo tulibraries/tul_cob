@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'pry'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -53,6 +53,7 @@ gem 'blacklight-marc',  :git => "https://github.com/tulibraries/blacklight-marc"
 
 group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
+  gem 'rspec-rails'
 end
 
 gem 'rsolr', '~> 1.0'
