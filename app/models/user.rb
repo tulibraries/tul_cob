@@ -22,4 +22,8 @@ class User < ApplicationRecord
   def loans
     item_loans = Alma.get_loans(alma_id)
   end
+
+  def holds
+    item_holds = Alma.get_holds(alma_id)
+  end
 end

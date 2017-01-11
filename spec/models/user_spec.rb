@@ -23,6 +23,12 @@ RSpec.describe User, type: :model do
         item_barcode: "000237055710000121"
       }]
     }
+    let(:holds) {
+      [{
+        title: "History",
+        due_date: "2014-06-23T14:00:00.000Z",
+      }]
+    }
 
     it "has an Alma ID" do
       expect(patron_account).to have_attribute(:alma_id)
@@ -34,7 +40,12 @@ RSpec.describe User, type: :model do
       expect(items.sort).to match(loans.sort)
     end
 
-    it "shows items requested"
+    it "shows items requested" do
+      allow(Alma).to receive(:get_holds).and_return(holds)
+      items = patron_account.holds
+      expect(items.sort).to match(holds.sort)
+    end
+
     it "shows fines owed"
   end
 end

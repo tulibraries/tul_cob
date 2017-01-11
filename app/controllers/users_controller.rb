@@ -8,4 +8,13 @@ class UsersController < ApplicationController
       }
     ]
   end
+
+  def holds
+    @items = [
+      {
+        title: "History",
+        due_date: "2014-06-23T14:00:00.000Z",
+      }
+    ]
+  end
 end
