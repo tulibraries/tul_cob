@@ -29,6 +29,14 @@ RSpec.describe User, type: :model do
         due_date: "2014-06-23T14:00:00.000Z",
       }]
     }
+    let(:fines) {
+      [{
+        title: "History",
+        amount: 2.25,
+        due_date: "2014-06-23T14:00:00.000Z",
+        payment_url: "http://example.com/pay_fines"
+      }]
+    }
 
     it "has an Alma ID" do
       expect(patron_account).to have_attribute(:alma_id)
@@ -46,6 +54,11 @@ RSpec.describe User, type: :model do
       expect(items.sort).to match(holds.sort)
     end
 
-    it "shows fines owed"
+    it "shows fines owed" do
+      allow(Alma).to receive(:get_fines).and_return(fines)
+      items = patron_account.fines
+      expect(items.sort).to match(fines.sort)
+    end
+
   end
 end

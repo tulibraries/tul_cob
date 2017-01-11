@@ -16,4 +16,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #fines" do
+    it "returns http success" do
+      get :fines
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end

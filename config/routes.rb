@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   
+  get 'users/fines'
+
   get 'users/holds'
 
   get 'users/loans'

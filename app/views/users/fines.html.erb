@@ -1,0 +1,11 @@
+<h1>User's fines</h1>
+<ul>
+  <% @items.each do |fine| %>
+    <li>
+      Title: <%= fine[:title] %>,
+      Fine: <%= fine[:fine] %>
+      Due: <%= fine[:amount] %>,
+      Payment Link: <%= link_to fine[:payment_url] %>
+    </li>
+  <% end %>
+</ul>

@@ -26,4 +26,8 @@ class User < ApplicationRecord
   def holds
     item_holds = Alma.get_holds(alma_id)
   end
+
+  def fines
+    item_fines = Alma.get_fines(alma_id)
+  end
 end
