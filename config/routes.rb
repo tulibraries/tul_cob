@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'users/account'
   
   get 'users/fines'
 
