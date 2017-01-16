@@ -1,0 +1,10 @@
+<h1>User's items on loan</h1>
+<ul>
+  <% @items.each do |loan| %>
+    <li>
+      Title: <%= loan[:title] %>,
+      Due: <%= loan[:due_date] %>,
+      Bar Code: <%= loan[:bar_code] %>
+    </li>
+  <% end %>
+</ul>

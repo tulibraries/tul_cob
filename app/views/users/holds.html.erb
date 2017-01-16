@@ -1,0 +1,9 @@
+<h1>User's holds</h1>
+<ul>
+  <% @items.each do |hold| %>
+    <li>
+      Title: <%= hold[:title] %>,
+      Due until: <%= hold[:due_date] %>,
+    </li>
+  <% end %>
+</ul>
