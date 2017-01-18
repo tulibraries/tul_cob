@@ -19,15 +19,15 @@ class User < ApplicationRecord
     email
   end
 
-  def loans
-    item_loans = Alma.get_loans(alma_id)
+  def get_loans_list
+    item_loans = Alma::User.get_loans({user_id: alma_id}).list
   end
 
-  def holds
-    item_holds = Alma.get_holds(alma_id)
+  def get_holds_list
+    item_holds = Alma::User.get_holds({user_id: alma_id}).list
   end
 
-  def fines
-    item_fines = Alma.get_fines(alma_id)
+  def get_fines_list
+    item_fines = Alma::User.get_fines({user_id: alma_id}).list
   end
 end

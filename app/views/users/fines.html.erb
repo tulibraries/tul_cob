@@ -2,10 +2,9 @@
 <ul>
   <% @items.each do |fine| %>
     <li>
-      Title: <%= fine[:title] %>,
-      Fine: <%= fine[:fine] %>
-      Due: <%= fine[:amount] %>,
-      Payment Link: <%= link_to fine[:payment_url] %>
+      Title: <%= fine.title %>,
+      Balance: <%= fine.balance %>
+      Link: <%= link_to fine.link %>
     </li>
   <% end %>
 </ul>
