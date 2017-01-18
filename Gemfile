@@ -60,3 +60,4 @@ end
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
+gem 'alma', :git => "https://github.com/tulibraries/alma_rb.git"

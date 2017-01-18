@@ -2,9 +2,9 @@
 <ul>
   <% @items.each do |loan| %>
     <li>
-      Title: <%= loan[:title] %>,
-      Due: <%= loan[:due_date] %>,
-      Bar Code: <%= loan[:bar_code] %>
+      Title: <%= loan.title %>,
+      Due Date: <%= loan.due_date %>,
+      Bar Code: <%= loan.item_barcode %>
     </li>
   <% end %>
 </ul>

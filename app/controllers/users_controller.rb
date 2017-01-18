@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
+
   def loans
-    @items = [
-      {
-        title: "History",
-        due_date: "2014-06-23T14:00:00.000Z",
-        item_barcode: "000237055710000121"
-      }
-    ]
+    @items = current_user.get_loans_list
   end
 
   def holds
+    # [TODO] Uncomment out below and remove static @items array assignment when Alma::User#get_holds implemented
+    #@items = current_user.get_holds_list
     @items = [
       {
         title: "History",
@@ -19,13 +16,6 @@ class UsersController < ApplicationController
   end
 
   def fines
-    @items = [
-      {
-        title: "History",
-        amount: 2.25,
-        due_date: "2014-06-23T14:00:00.000Z",
-        payment_url: "http://example.com/pay_fines"
-      }
-    ]
+    @items = current_user.get_fines_list
   end
 end
