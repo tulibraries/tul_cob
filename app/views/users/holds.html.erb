@@ -1,10 +1,9 @@
 <h1>User's holds</h1>
-<h2>[TODO] - Remove this line when Alma::User#get_holds implemented</h2>
 <ul>
   <% @items.each do |hold| %>
     <li>
-      Title: <%= hold[:title] %>,
-      Due until: <%= hold[:due_date] %>,
+      <%= hold.title %><br/>
+      Held until: <%= Time.parse(hold.expiry_date).to_formatted_s(:long) %>.  Status: <%= hold.request_status %>
     </li>
   <% end %>
 </ul>

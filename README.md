@@ -13,7 +13,17 @@ git clone git@github.com:tulibraries/tul_cob
 cd tul_cob
 bundle install
 bundle exec rails db:migrate
+cp config/secrets.yml.exmaple config/secrets.yml
 ```
+
+We also need to configure the application with our Alma apikey. Start by copying the example alma config file.
+
+```bash
+cp config.alma.yml.example config/alma.yml
+```
+
+Then edit it adding in the apikey for our application specified in our Ex Libris Developer Network.
+ 
 
 ### Start the Application
 
@@ -31,19 +41,8 @@ bundle exec rails server
 
 Get TUL specific sample data from [TUL Wiki](https://tulibdev.atlassian.net/wiki/download/attachments/14647301/smaller_tul.dat.gz?api=v2)(Login Required)
 
-## Early Alma API Access
 
-_This will change after implementation of Alma authentication_
+## Accessing User Accounts
 
-The Alma API requires an Alma ID. Set this attribute in the User object by hand
+LOgin with just the username of the user you want to see details for.
 
-```bash
-$ rails console
-[1] pry(main)> User.first.update_attribute(:alma_id, "exampleID")
-  User Load (1.8ms)  SELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?  [["LIMIT", 1]]
-   (0.1ms)  begin transaction
-  SQL (5.7ms)  UPDATE "users" SET "alma_id" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["alma_id", "exampleID"], ["updated_at", 2017-01-18 15:19:23 UTC], ["id", 2]]
-   (10.8ms)  commit transaction
-=> true
-[2] pry(main)> exit
-```
