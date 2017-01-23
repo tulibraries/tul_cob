@@ -44,5 +44,5 @@ Get TUL specific sample data from [TUL Wiki](https://tulibdev.atlassian.net/wiki
 
 ## Accessing User Accounts
 
-LOgin with just the username of the user you want to see details for.
+Login with just the username of the user you want to see details for.
 
