@@ -5,14 +5,8 @@ class UsersController < ApplicationController
   end
 
   def holds
-    # [TODO] Uncomment out below and remove static @items array assignment when Alma::User#get_holds implemented
-    #@items = current_user.get_holds_list
-    @items = [
-      {
-        title: "History",
-        due_date: "2014-06-23T14:00:00.000Z",
-      }
-    ]
+    @items = current_user.get_holds_list
+
   end
 
   def fines

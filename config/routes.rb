@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  
+
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  devise_scope :user do
+    delete 'users/sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
   get 'users/account'
   
   get 'users/fines'
@@ -31,7 +38,7 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
-  devise_for :users
+
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
