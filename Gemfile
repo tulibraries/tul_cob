@@ -60,7 +60,7 @@ end
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
-gem 'alma', git: 'https://github.com/tulibraries/alma_rb.git', branch: 'loan-renew'
+gem 'alma', '~> 0'
 gem 'omniauth'
 gem 'omniauth-alma', git: 'https://github.com/tulibraries/omniauth-alma.git'
 
