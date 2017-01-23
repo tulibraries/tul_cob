@@ -1,5 +1,3 @@
-require 'alma_utils'
-
 class User < ApplicationRecord
 
   if Blacklight::Utils.needs_attr_accessible?

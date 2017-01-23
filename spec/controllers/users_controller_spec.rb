@@ -23,4 +23,11 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #renew" do
+    it "returns http success" do
+      get :renew
+      expect(response).to have_http_status(:success)
+    end
+  end
+
 end

@@ -5,6 +5,7 @@
       Title: <%= loan.title %>,
       Due Date: <%= loan.due_date %>,
       Bar Code: <%= loan.item_barcode %>
+      <%= button_to 'Renew', users_renew_path(user_id: current_user.id, loan_id: loan.loan_id), remote: true %>
     </li>
   <% end %>
 </ul>
