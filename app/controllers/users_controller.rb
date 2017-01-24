@@ -15,8 +15,8 @@ class UsersController < ApplicationController
 
   def renew
     respond_to do |format|
-      lib_user = Alma::User.find({user_id: current_user.alma_id})
-      result = lib_user.renew_loan({loan_id: params[:loan_id]})
+      lib_user = Alma::User.find({user_id: current_user.uid})
+      result = lib_user.renew_loan(params[:loan_id])
       format.js
     end
   end

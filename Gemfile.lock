@@ -17,6 +17,11 @@ GIT
   specs:
     omniauth-alma (0.1.0)
       alma (> 0)
+PATH
+  remote: lib/alma_rb
+  specs:
+    alma (0.1.0)
+      ezwadl
 
 GEM
   remote: https://rubygems.org/
