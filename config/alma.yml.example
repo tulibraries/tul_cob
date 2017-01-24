@@ -1,0 +1,12 @@
+default: &default
+  apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default
+
