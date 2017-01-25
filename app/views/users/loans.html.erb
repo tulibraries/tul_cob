@@ -1,11 +1,20 @@
 <h1>User's items on loan</h1>
-<ul>
+<div class="loan-list">
+  <div class="lone-item-header">
+    <div class="item_title">Title</div>
+    <div class="item_due_date">Due</div>
+    <div class="item_bar_code">Barcode</div>
+    <div class="item_renew_button">Action</div>
+  </div>
   <% @items.each do |loan| %>
-    <li>
-      Title: <%= loan.title %>,
-      Due Date: <%= loan.due_date %>,
-      Bar Code: <%= loan.item_barcode %>
-      <%= button_to 'Renew', users_renew_path(user_id: current_user.id, loan_id: loan.loan_id), remote: true %>
-    </li>
+    <div class="lone-item" id="<%= loan.loan_id %>">
+      <div class="item_title"><%= loan.title %></div>
+      <div class="item_due_date"><%= loan.due_date %></div>
+      <div class="item_bar_code"><%= loan.item_barcode %></div>
+      <div class="item_renew_button">
+        <%= button_to 'Renew', users_renew_path(user_id: current_user.id, loan_id: loan.loan_id), form: {display: 'inline'}, remote: true %>
+      </div>
+      <div class="item_renew_status"></div>
+    </div>
   <% end %>
-</ul>
+</div>
