@@ -16,6 +16,11 @@ Rails.application.routes.draw do
 
   get 'users/loans'
 
+  scope module: 'blacklight_alma' do
+    get 'alma/availability' => 'alma#availability'
+  end
+
+
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
