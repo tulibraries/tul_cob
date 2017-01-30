@@ -57,4 +57,12 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe "Authentication services" do
+    it "creates a valid omniauth user"
+    it "authenticates an authorized user"
+    it "fails to authenticates an unauthorized user"
+    it "creates a session"
+  end
+
 end

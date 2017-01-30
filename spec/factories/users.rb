@@ -4,7 +4,8 @@ FactoryGirl.define do
   factory :user do
     email "patron@example.edu"
     encrypted_password "asdfjkl;"
-    uid "123456"
+    uid "patron12345"
+    provider "libprovidr"
     guest false
   end
 end
