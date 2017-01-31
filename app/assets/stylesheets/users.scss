@@ -1,3 +1,32 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Users controller relate styles
+//
+.loan-list {
+  width: 100%;
+  div {
+    .item_title {
+      width: 400px;
+    }
+    .item_due_date {
+      width: 180px;
+    }
+    .item_bar_code {
+      width: 100px;
+    }
+    .item_action {
+      width: 100px;
+    }
+    .item_renew_status {
+      padding-left: 4px;
+      width: 400px;
+    }
+  }
+  .lone-item-header, .lone-item {
+    div {
+      display: inline-block;
+    }
+  }
+  .lone-item-header {
+    padding-bottom: 8px;
+  }
+}
+

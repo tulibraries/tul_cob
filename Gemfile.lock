@@ -58,7 +58,7 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
-    alma (0.1.0)
+    alma (0.2.1)
       ezwadl
     arel (7.1.4)
     autoprefixer-rails (6.6.1)
@@ -321,4 +321,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.13.6
+   1.14.2
