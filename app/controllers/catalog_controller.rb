@@ -92,6 +92,14 @@ class CatalogController < ApplicationController
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
 
+    # to add - testing - 1/24/17
+    # Display Name	MARC field/subfields	Search results?	Record page?
+    # Title Statement	245abc	Y	Y
+    # Imprint	260abc	Y	Y
+    # Summary	520ab	N	Y
+    # Contents 	505agrt	N	Y
+    # ISSN	022a	N	Y
+
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field 'title_display', label: 'Title'
@@ -104,6 +112,9 @@ class CatalogController < ApplicationController
     config.add_index_field 'published_vern_display', label: 'Published'
     config.add_index_field 'lc_callnum_display', label: 'Call number'
     config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
+    #new
+    config.add_index_field 'title_statement', label: 'Title Statement'
+    config.add_index_field 'imprint', label: 'Imprint'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -123,6 +134,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'isbn_t', label: 'ISBN'
     config.add_show_field 'control_number_display', label: 'Control Number'
     config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
+    #new
+    config.add_show_field 'title_statement', label: 'Title Statement'
+    config.add_show_field 'imprint', label: 'Imprint'
+    config.add_show_field 'summary', label: 'Summary'
+    config.add_show_field 'contents', label: 'Contents'
+    config.add_show_field 'issn', label: 'ISSN'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
