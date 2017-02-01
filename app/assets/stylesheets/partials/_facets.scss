@@ -1,0 +1,31 @@
+a, a:hover, a:active, a:visited {
+	color: #A50030;
+}
+a.facet_select, a.facet_select:active, a.facet_select:visited {
+	color: #000;
+}
+.facet-label span.selected, .facet-values li .selected.facet-count {
+	color: #A50030;
+}
+.panel-default .panel-heading {
+	background-color: #f1efe7;
+}
+.facet_limit-active .panel-heading {
+	background-color: #A50030;
+	color: #fff;
+}
+.glyphicon.glyphicon-remove a {
+	color: #000;
+}
+#appliedParams {
+	background-color: #f1efe7;
+}
+.navbar-default {
+	background-color: #f1efe7;
+}
+a.catalog_startOverLink {
+	color: #A50030;
+}
+#sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
+	color: #A50030;
+}
