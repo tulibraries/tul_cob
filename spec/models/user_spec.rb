@@ -72,9 +72,6 @@ RSpec.describe User, type: :model do
     it "shows the user string as the email address" do
       expect(authorized_user.to_s).to match(authorized_user.email)
     end
-
-    it "finds an authorized user"
-    it "creates a session"
   end
 
 end
