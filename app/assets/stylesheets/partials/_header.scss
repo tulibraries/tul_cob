@@ -1,17 +1,30 @@
-.btn-primary {
-	background-color: #A50030;
+.navbar-default {
+	background-color: #f1efe7;
 }
 
 .navbar-inverse {
 	background-color: #fff;
 	border-color: #ccc;
-}
-
-.navbar-inverse .navbar-nav li {
-	a, a:visited, a:hover, a:active {
-		color: #A50030;
+	.navbar-nav {
+		li {
+			a, a:visited, a:hover, a:active {
+				color: #A50030;
+				font-size: 110%;
+			}
+		}
 	}
 }
+
+.navbar-right {
+	a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
+		color: #444;
+		display: inline-block;
+		font-size: 165%;
+		float: right;
+		clear: left;
+	}
+}
+
 .form-control:focus {
 	border-color: #A50030;
 	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
