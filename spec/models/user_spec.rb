@@ -59,9 +59,21 @@ RSpec.describe User, type: :model do
   end
 
   describe "Authentication services" do
-    it "creates a valid omniauth user"
-    it "authenticates an authorized user"
-    it "fails to authenticates an unauthorized user"
+    let(:new_user) { FactoryGirl.build(:user) }
+    let(:authorized_user) { User.from_omniauth(new_user) }
+
+    it "creates a valid omniauth user" do
+      expect(authorized_user.email).to match("#{new_user.uid}@temple.edu")
+      expect(authorized_user.uid).to match(new_user.uid)
+      expect(authorized_user.provider).to match(new_user.provider)
+      expect(authorized_user.id).to be
+    end
+
+    it "shows the user string as the email address" do
+      expect(authorized_user.to_s).to match(authorized_user.email)
+    end
+
+    it "finds an authorized user"
     it "creates a session"
   end
 
