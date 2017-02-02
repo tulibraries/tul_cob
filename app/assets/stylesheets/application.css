@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+@import "partials/_colors.scss";
+@import "partials/_facets.scss";
+@import "partials/_header.scss";
+@import "partials/_main.scss";
+@import "partials/_pagination.scss";

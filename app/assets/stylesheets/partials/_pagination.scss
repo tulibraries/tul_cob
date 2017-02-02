@@ -1,0 +1,12 @@
+.pagination  {
+	li {
+		a, a:active, a:hover, a:visited {
+			color: #A50030;
+		}
+	}
+	.active span {
+		background-color: #A50030;
+		border-color: #A50030;
+	}
+}
+

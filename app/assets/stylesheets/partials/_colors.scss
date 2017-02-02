@@ -1,0 +1,30 @@
+// Colors
+$red: #A50030;
+$tan: #f1efe7;
+
+body {
+	background-color: #fff;
+}
+a, a:hover, a:active, a:visited {
+	color: #A50030;
+}
+.index_title.document-title-heading {
+	a, a:visited, a:hover, a:active {
+		color: #A50030;
+	}
+}
+.btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:active:hover, .btn-primary:active:focus {
+	background-color: #A50030;
+	border-color: #951936;
+}
+
+.btn-danger, .btn-danger:hover {
+	background-color: #A50030;
+	border-color: #A50030;
+}
+
+.alert-info {
+	background-color: #f7d1d1;
+	border-color: #666;
+	color: #333;
+}
