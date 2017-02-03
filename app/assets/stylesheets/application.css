@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+@import "partials/_vars.scss";
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
 @import "partials/_header.scss";

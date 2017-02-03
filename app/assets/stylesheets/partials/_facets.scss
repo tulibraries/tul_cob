@@ -1,26 +1,27 @@
+@import "_vars.scss";
 
 a.facet_select, a.facet_select:active, a.facet_select:visited {
-	color: #000;
+	color: $black;
 }
 .facet-label span.selected, .facet-values li .selected.facet-count {
-	color: #A50030;
+	color: $red;
 }
 .panel-default .panel-heading {
-	background-color: #f1efe7;
+	background-color: $tan;
 }
 .facet_limit-active .panel-heading {
-	background-color: #A50030;
-	color: #fff;
+	background-color: $red;
+	color: $white;
 }
 .glyphicon.glyphicon-remove a {
-	color: #000;
+	color: $black;
 }
 #appliedParams {
-	background-color: #f1efe7;
+	background-color: $tan;
 }
 a.catalog_startOverLink {
-	color: #A50030;
+	color: $red;
 }
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
-	color: #A50030;
+	color: $red;
 }

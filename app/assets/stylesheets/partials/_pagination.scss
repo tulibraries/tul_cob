@@ -1,12 +1,14 @@
+@import "_vars.scss";
+
 .pagination  {
 	li {
 		a, a:active, a:hover, a:visited {
-			color: #A50030;
+			color: $red;
 		}
 	}
 	.active span {
-		background-color: #A50030;
-		border-color: #A50030;
+		background-color: $red;
+		border-color: $red;
 	}
 }
 

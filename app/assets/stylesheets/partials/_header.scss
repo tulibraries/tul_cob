@@ -1,14 +1,16 @@
+@import "_vars.scss";
+
 .navbar-default {
-	background-color: #f1efe7;
+	background-color: $tan;
 }
 
 .navbar-inverse {
-	background-color: #fff;
-	border-color: #ccc;
+	background-color: $white;
+	border-color: $grey;
 	.navbar-nav {
 		li {
 			a, a:visited, a:hover, a:active {
-				color: #A50030;
+				color: $red;
 				font-size: 110%;
 			}
 		}
@@ -17,7 +19,7 @@
 
 .navbar-right {
 	a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
-		color: #444;
+		color: $med-grey;
 		display: inline-block;
 		font-size: 165%;
 		float: right;
@@ -26,6 +28,6 @@
 }
 
 .form-control:focus {
-	border-color: #A50030;
+	border-color: $red;
 	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
 }
