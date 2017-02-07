@@ -16,4 +16,6 @@
 // Required by Blacklight
 //= require blacklight/blacklight
 
+//= require blacklight_alma/blacklight_alma
+
 //= require_tree .
