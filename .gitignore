@@ -25,6 +25,6 @@ ansible
 config/secrets.yml
 public/assets/
 vendor/bundle/
-
+coverage
 
 config/alma.yml

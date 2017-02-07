@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def holds
     @items = current_user.get_holds_list
-
   end
 
   def fines

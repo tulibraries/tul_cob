@@ -55,6 +55,9 @@ group :development, :test do
   gem 'solr_wrapper', '>= 0.3'
   gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'simplecov', require: false
+  gem 'guard-rspec', require: false
 end
 
 gem 'rsolr', '~> 1.0'

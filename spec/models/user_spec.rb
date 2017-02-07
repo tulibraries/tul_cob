@@ -11,11 +11,7 @@ RSpec.describe User, type: :model do
       DatabaseCleaner.clean
     end
 
-    let(:patron_account_hash) { {email: "patron@example.edu",
-                            password: "asdfjkl;",
-                            password_confirmation: "asdfjkl;",
-                            alma_id: "123456" } }
-    let(:patron_account) { User.create!(patron_account_hash) }
+    let(:patron_account) { FactoryGirl.build(:user) }
     let(:loans) {
       [{
         title: "History",
@@ -38,27 +34,44 @@ RSpec.describe User, type: :model do
       }]
     }
 
-    it "has an Alma ID" do
-      expect(patron_account).to have_attribute(:alma_id)
+    it "has an UID" do
+      expect(patron_account).to have_attribute(:uid)
     end
 
     it "shows items borrowed" do
-      allow(Alma).to receive(:get_loans).and_return(loans)
-      items = patron_account.loans
+      allow(Alma::User).to receive(:get_loans).and_return(double(:list => loans))
+      items = patron_account.get_loans_list
       expect(items.sort).to match(loans.sort)
     end
 
     it "shows items requested" do
-      allow(Alma).to receive(:get_holds).and_return(holds)
-      items = patron_account.holds
+      allow(Alma::User).to receive(:get_requests).and_return(double(:list => holds))
+      items = patron_account.get_holds_list
       expect(items.sort).to match(holds.sort)
     end
 
     it "shows fines owed" do
-      allow(Alma).to receive(:get_fines).and_return(fines)
-      items = patron_account.fines
+      allow(Alma::User).to receive(:get_fines).and_return(double(:list => fines))
+      items = patron_account.get_fines_list
       expect(items.sort).to match(fines.sort)
     end
 
   end
+
+  describe "Authentication services" do
+    let(:new_user) { FactoryGirl.build(:user) }
+    let(:authorized_user) { User.from_omniauth(new_user) }
+
+    it "creates a valid omniauth user" do
+      expect(authorized_user.email).to match("#{new_user.uid}@temple.edu")
+      expect(authorized_user.uid).to match(new_user.uid)
+      expect(authorized_user.provider).to match(new_user.provider)
+      expect(authorized_user.id).to be
+    end
+
+    it "shows the user string as the email address" do
+      expect(authorized_user.to_s).to match(authorized_user.email)
+    end
+  end
+
 end
