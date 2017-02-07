@@ -10,12 +10,11 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 @import "partials/_vars.scss";
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
 @import "partials/_header.scss";
-@import "partials/_main.scss";
 @import "partials/_pagination.scss";
