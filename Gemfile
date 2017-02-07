@@ -63,6 +63,7 @@ end
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.5'
+gem 'alma'
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem 'hashie', '~>3.4.6'
 gem 'omniauth'

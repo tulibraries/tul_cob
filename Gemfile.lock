@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/tulibraries/alma_rb.git
-  revision: 4decb281ac5a75e0fe36d6232432596fff8b30c6
-  branch: add-bibs
-  specs:
-    alma (0.2.1)
-      ezwadl
-
-GIT
   remote: https://github.com/tulibraries/blacklight-marc
   revision: 0e9d4a39f12eee507b025502ac96c017d12926fd
   branch: fix-extract_marc-format-008
@@ -22,7 +14,6 @@ GIT
 GIT
   remote: https://github.com/tulibraries/blacklight_alma
   revision: 5a38a3719cc0405ed8f0965e67e94de54a94a047
-  branch: with-alma-gem
   specs:
     blacklight_alma (0.0.1)
       alma
@@ -76,6 +67,8 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    alma (0.2.3)
+      ezwadl
     arel (7.1.4)
     autoprefixer-rails (6.7.2)
       execjs
@@ -345,7 +338,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alma (~> 0)!
+  alma
   blacklight
   blacklight-marc!
   blacklight_alma!
