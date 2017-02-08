@@ -22,9 +22,9 @@ settings do
   # type may be 'binary', 'xml', or 'json'
   provide "marc_source.type", "binary"
   # set this to be non-negative if threshold should be enforced
-  provide 'solr_writer.max_skipped', -1
+  provide 'solr_writer.max_skipped', 10000
   # extend commit timeout
-  provide 'solr_writer.commit_timeout', 30
+  provide 'solr_writer.commit_timeout', 300
   provide 'solr.update_url', 'http://localhost:8983/solr/blacklight-core/update'
   provide "solr_writer.commit_on_close", "true"
 end
