@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/blacklight_alma
-  revision: 5a38a3719cc0405ed8f0965e67e94de54a94a047
+  revision: 38f2638f191e129f5930e1712e8ca406a57bbef4
   specs:
     blacklight_alma (0.0.1)
       alma
@@ -196,7 +196,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    omniauth (1.3.2)
+    omniauth (1.4.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
     orm_adapter (0.5.0)
@@ -263,7 +263,7 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     ruby-progressbar (1.8.1)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -279,7 +279,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    solr_wrapper (0.20.0)
+    solr_wrapper (0.21.0)
       faraday
       ruby-progressbar
       rubyzip
@@ -372,4 +372,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.14.2
+   1.13.6

@@ -470,7 +470,7 @@
    <field name="title_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_display" type="string" indexed="false" stored="true" multiValued="false"/>
    <field name="subtitle_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
-   <field name="author_display" type="string" indexed="false" stored="true" multiValued="false"/>
+   <field name="author_display" type="string" indexed="false" stored="true" multiValued="true"/>       <!-- fix ingest error on multivalue author -->
    <field name="author_vern_display" type="string" indexed="false" stored="true" multiValued="false"/>
    
    <!-- these fields are also used for display, so they must be stored -->
@@ -488,6 +488,12 @@
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
    <field name="format" type="string" indexed="true" stored="true" multiValued="true"/>
 
+   <!--  new fields for testing  -->
+   <field name="title_statement" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="imprint" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="summary" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="contents" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="issn" type="string" indexed="true" stored="true" multiValued="true"/>   <!-- issn can contain a dash -->
    
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields

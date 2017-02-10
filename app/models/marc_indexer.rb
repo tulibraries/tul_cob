@@ -189,5 +189,20 @@ class MarcIndexer < Blacklight::Marc::Indexer
       end
       acc.replace [acc.join(",")]
     end
+
+    # to add - testing - 1/24/17
+    # Display Name	MARC field/subfields	Search results?	Record page?
+    # Title Statement	245abc	Y	Y
+    # Imprint	260abc	Y	Y
+    # Summary	520ab	N	Y
+    # Contents 	505agrt	N	Y
+    # ISSN	022a	N	Y
+    #new
+    to_field 'title_statement', extract_marc('245abc')
+    to_field 'imprint', extract_marc('260abc')
+    to_field 'summary', extract_marc('520ab')
+    to_field 'contents', extract_marc('505agrt')
+    to_field 'issn', extract_marc('022a')
+
   end
 end
