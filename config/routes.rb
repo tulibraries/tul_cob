@@ -5,16 +5,19 @@ Rails.application.routes.draw do
   devise_scope :user do
     delete 'users/sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
-  
-  post 'users/renew'
 
-  get 'users/account'
-  
-  get 'users/fines'
+  authenticate do
+    post 'users/renew'
 
-  get 'users/holds'
+    get 'users/account'
 
-  get 'users/loans'
+    get 'users/fines'
+
+    get 'users/holds'
+
+    get 'users/loans'
+  end
+
 
   scope module: 'blacklight_alma' do
     get 'alma/availability' => 'alma#availability'

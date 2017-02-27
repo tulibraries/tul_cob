@@ -40,20 +40,20 @@ RSpec.describe User, type: :model do
 
     it "shows items borrowed" do
       allow(Alma::User).to receive(:get_loans).and_return(double(:list => loans))
-      items = patron_account.get_loans_list
-      expect(items.sort).to match(loans.sort)
+      items = patron_account.get_loans
+      expect(items.list.sort).to match(loans.sort)
     end
 
     it "shows items requested" do
       allow(Alma::User).to receive(:get_requests).and_return(double(:list => holds))
-      items = patron_account.get_holds_list
-      expect(items.sort).to match(holds.sort)
+      items = patron_account.get_holds
+      expect(items.list.sort).to match(holds.sort)
     end
 
     it "shows fines owed" do
       allow(Alma::User).to receive(:get_fines).and_return(double(:list => fines))
-      items = patron_account.get_fines_list
-      expect(items.sort).to match(fines.sort)
+      items = patron_account.get_fines
+      expect(items.list.sort).to match(fines.sort)
     end
 
   end
