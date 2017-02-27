@@ -16,16 +16,16 @@ class User < ApplicationRecord
     email
   end
 
-  def get_loans_list
-    item_loans = Alma::User.get_loans({user_id: uid}).list
+  def get_loans
+    item_loans = Alma::User.get_loans({user_id: uid})
   end
 
-  def get_holds_list
-    item_holds = Alma::User.get_requests({user_id: uid}).list
+  def get_holds
+    item_holds = Alma::User.get_requests({user_id: uid})
   end
 
-  def get_fines_list
-    item_fines = Alma::User.get_fines({user_id: uid}).list
+  def get_fines
+    item_fines = Alma::User.get_fines({user_id: uid})
   end
 
   def self.from_omniauth(auth)
