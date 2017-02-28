@@ -1,6 +1,104 @@
-<h1>User's Library Account</h1>
-<ul>
-  <li><%= link_to "Loans", '/users/loans'%></li>
-  <li><%= link_to "Holds", '/users/holds'%></li>
-  <li><%= link_to "Fines", '/users/fines'%></li>
-</ul>
+<h1>My Library Account</h1>
+
+<div class="container user-account">
+	<div class="user-info">
+		<ul style="list-style-type: none;">
+			<li><span style="font-weight: 600;">Name:</span> John Smith</li>
+			<li><span style="font-weight: 600;">Status:</span> </li>
+			<li><span style="font-weight: 600;">Items currently on loan:</span> </li>
+			<li><span style="font-weight: 600;">Items currently on hold:</span> </li>
+			<li><span style="font-weight: 600;">Current balance:</span> </li>
+		</ul>
+	</div>
+	<div class="container user-loans">
+		<h2 class="user_section_title">My Loans</h2>
+		<table class="table table-hover table-responsive" border="0">
+			<caption>Table of Current Loans for this user</caption>
+			<thead>
+				<tr>
+					<th width="2%">#</th>
+					<th width="40%">Title</th>
+					<th width="15%">Due</th>
+					<th width="5%">Barcode</th>
+					<th width="10%">Renew Selected</th>
+				</tr>
+			</thead>
+			<tbody>
+			  <% @loans.list.each_with_index do |loan, counter| %>
+			    <tr>
+			      <td><%= counter + 1 %></td>
+			      <td><%= loan.title %></td>
+			      <td><%= loan.due_date %></td>
+			      <td><%= loan.item_barcode %></td>
+			      <td><%= button_to 'Renew', users_renew_path(user_id: current_user.id, loan_id: loan.loan_id), form: {display: 'inline'}, remote: true %></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container user-holds">
+		<h2 class="user_section_title">My Requests</h2>
+		<table class="table table-hover table-responsive" border="0">
+			<caption>Table of Current Fines for this user</caption>
+			<thead>
+				<tr>
+					<th width="2%">#</th>
+					<th width="40%">Title</th>
+					<th width="15%">Held Until</th>
+					<th width="5%">Barcode</th>
+					<th width="10%">Status</th>
+				</tr>
+			</thead>
+			<tbody>
+			  <% @holds.list.each_with_index do |hold, counter| %>
+			    <tr>
+			      <td><%= counter + 1 %></td>
+			      <td><%= hold.title %></td>
+			      <td><%= Time.parse(hold.expiry_date).to_formatted_s(:long) %></td>
+			      <td>12345678999<%#= hold.barcode %></td>
+			      <td><%= hold.request_status %></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+
+	<div class="container user-fines">
+		<h2 class="user_section_title">My Fines</h2>
+		<table class="table table-hover table-responsive" border="0">
+			<caption>Table of Current Fines for this user</caption>
+			<thead>
+				<tr>
+					<th width="2%">#</th>
+					<th width="40%">Title</th>
+					<th width="15%">Fee Type</th>
+					<th width="5%">Barcode</th>
+					<th width="10%">Fine</th>
+				</tr>
+			</thead>
+			<tbody>
+			  <% @fines.list.each_with_index do |fine, counter| %>
+			    <tr>
+			      <td><%= counter + 1 %></td>
+			      <td><%= fine.title %></td>
+			      <td><%= fine.type['desc'] %></td>
+			      <td>12345678999<%#= fine.item_barcode %></td>
+			      <td><%= number_to_currency(fine.balance.to_f) %></td>
+			    </tr>
+			  <% end %>
+			  <tr class="total-fines">
+			  	<td colspan="4" style="text-align: left;font-weight: 600;color: #A50030;">
+			  		Total
+			  	</td>
+			  	<td style="color: #A50030;">
+			  	<%= number_to_currency(@fines.sum) %>
+			  </td>
+			  </tr>
+			</tbody>
+		</table>
+		<div style="text-align: center;padding: 14px;">
+			<a href="http://library.temple.edu/services/privileges">Learn more about late fines and replacement charges</a>.
+		</div>
+	</div>
+</div>

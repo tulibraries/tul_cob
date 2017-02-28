@@ -1,0 +1,95 @@
+@import "_vars.scss";
+
+.blacklight-users-account {
+
+	.panel-footer {
+		background-color: transparent;
+		border-top: 0;
+		.btn {
+			color: $red;
+		}
+	}
+
+	.container.user {
+		margin-top: 21px;
+		.panel.panel-default {
+			padding: 0;
+			margin-right: 14px;
+		}
+	}
+}
+
+// Users controller relate styles
+//
+.loan-list {
+  width: 100%;
+  div {
+    .item_title {
+      width: 400px;
+    }
+    .item_due_date {
+      width: 180px;
+    }
+    .item_bar_code {
+      width: 100px;
+    }
+    .item_action {
+      width: 100px;
+    }
+    .item_renew_status {
+      padding-left: 4px;
+      width: 400px;
+    }
+  }
+  .lone-item-header, .lone-item {
+    div {
+      display: inline-block;
+    }
+  }
+  .lone-item-header {
+    padding-bottom: 8px;
+  }
+}
+
+.container.user-account {
+  background-color: $tan;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  padding: 21px 0;
+  .container.user-loans, .container.user-fines, .container.user-holds {
+    width: 100%;
+    margin-bottom: 28px;
+  padding: 0;
+    .user_section_title {
+      margin-top: 0;
+      background-color: $red;
+      padding:7px 14px;
+      color: #fff;
+    }
+    ul {
+      li {
+        margin-bottom:14px;
+      }
+    }
+    table {
+      caption {
+        display: none;
+      }
+      tr.total-fines {
+        background-color: #f5f5f5;
+      }
+      th {
+        text-align: left;
+        font-weight: 600;
+      }
+      td {
+        text-align: left;
+        padding: 10px;
+      }
+    }
+    .table-hover > tbody > tr:hover {
+      color: $red;
+    }
+  }
+}
+
