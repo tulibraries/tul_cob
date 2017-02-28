@@ -1,4 +1,4 @@
-<h1>My Library Account</h1>
+<h1 class="page-title">My Library Account</h1>
 
 <div class="container user-account">
 	<div class="user-info">
@@ -7,7 +7,8 @@
 			<li><span style="font-weight: 600;">Status:</span> Active </li>
 			<li><span style="font-weight: 600;">Items currently on loan:</span> <%= total_loans(@loans) %></li>
 			<li><span style="font-weight: 600;">Items currently on hold:</span> <%= total_holds(@holds) %></li>
-			<li><span style="font-weight: 600;">Current balance:</span> <%= number_to_currency(@fines.sum) %> </li>
+			<li><span style="font-weight: 600;">Current balance:</span> 
+				<span class="total-fines"><%= number_to_currency(@fines.sum) %></span> </li>
 		</ul>
 	</div>
 	<div class="container user-loans">
@@ -34,7 +35,7 @@
 			      <td><%= loan.item_barcode %></td>
 			      <td><%= loan.call_number %></td>
 			      <td><%= button_to 'Renew', users_renew_path(user_id: current_user.id, loan_id: loan.loan_id), form: {display: 'inline'}, remote: true %></td>
-			      <td><%= is_overdue(loan.loan_status) %></td>
+			      <td class="overdue"><%= is_overdue(loan.loan_status) %></td>
 			    </tr>
 			  <% end %>
 			</tbody>
@@ -55,7 +56,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			  <% @holds.list.each_with_index do |hold, counter| %>
+			  	<% @holds.list.each_with_index do |hold, counter| %>
 			    <tr>
 			      <td><%= counter + 1 %></td>
 			      <td><%= hold.title %></td>
@@ -92,17 +93,17 @@
 			    </tr>
 			  <% end %>
 			  <tr class="total-fines">
-			  	<td colspan="4" style="text-align: left;font-weight: 600;color: #A50030;">
+			  	<td colspan="4" class="fine-label">
 			  		Total
 			  	</td>
-			  	<td style="color: #A50030;">
+			  	<td>
 			  	<%= number_to_currency(@fines.sum) %>
 			  </td>
 			  </tr>
 			</tbody>
 		</table>
-		<div style="text-align: center;padding: 14px;">
-			<a href="http://library.temple.edu/services/privileges">Learn more about late fines and replacement charges</a>.
+		<div class="fines-link">
+			<%= link_to "Learn more about late fines and replacement charges.", "http://library.temple.edu/services/privileges" %>
 		</div>
 	</div>
 </div>
