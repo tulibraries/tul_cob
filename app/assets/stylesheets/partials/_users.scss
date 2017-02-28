@@ -61,7 +61,31 @@ h1.page-title {
       font-weight: 600;
     }
   }
-
+  .hide-me {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+  }
+  td.renewal-check .form-check {
+    text-align: center;
+  }
+  .renew-selected {
+    float: right;
+    font-size: 58%;
+    vertical-align: middle;
+    padding-right: 4%;
+    padding-top: 10px;
+    span {
+      border-bottom: dashed #fff 1px;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      cursor: hand;
+    }
+  }
   .fines-link {
     text-align: center;
     padding: 14px;
