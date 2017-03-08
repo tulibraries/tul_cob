@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def account
     @loans = current_user.get_loans
     @holds = current_user.get_holds
@@ -32,6 +31,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def renew_multi
+    @items = params[:selected_loan_ids]
+    lib_user = Alma::User.find({user_id: current_user.uid})
+
+    result = lib_user.renew_multiple_loans(@items)
+    @message = result.renewed? ? "ALL ITEMS RENEWED" : result.error_message
+    pp "Renew Selected"
+
+    respond_to do |format|
+      format.js
+    end
+  end
+  
+  def renew_all
+    lib_user = Alma::User.find({user_id: current_user.uid})
+
+    result = lib_user.renew_all_loans
+    @message = result.renewed? ? "ALL ITEMS RENEWED" : result.error_message
+    pp "Renew All"
+
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def results_message(result)
         #message = result.error_message unless result.renewed?
   end

@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     get 'users/holds'
 
     get 'users/loans'
+    
+    post 'users/renew_multi'
+    
+    post 'users/renew_all'
+
   end
 
 
