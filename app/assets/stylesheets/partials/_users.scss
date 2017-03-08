@@ -10,6 +10,14 @@ h1.page-title {
   margin-bottom: 28px;
   padding: 21px 0;
 
+  #selectall {
+    padding: 4px 14px;
+  }
+  #deselectall {
+    display: none;
+    padding: 4px 6px;
+  }
+
   div.user-info {
     font-size: 115%;
     margin-bottom: 28px;
@@ -41,6 +49,7 @@ h1.page-title {
       th {
         text-align: left;
         font-weight: 600;
+        height: 21px;
       }
       td {
         text-align: left;
