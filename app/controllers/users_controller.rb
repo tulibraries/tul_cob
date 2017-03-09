@@ -32,12 +32,12 @@ class UsersController < ApplicationController
   end
 
   def renew_multi
+    logger.debug "Renew Selected"
+
     @items = params[:selected_loan_ids]
     lib_user = Alma::User.find({user_id: current_user.uid})
 
-    result = lib_user.renew_multiple_loans(@items)
-    @message = result.renewed? ? "ALL ITEMS RENEWED" : result.error_message
-    pp "Renew Selected"
+    @renew_selected_results = lib_user.renew_multiple_loans(@items)
 
     respond_to do |format|
       format.js
@@ -45,11 +45,11 @@ class UsersController < ApplicationController
   end
   
   def renew_all
+    logger.debug "Renew All"
+
     lib_user = Alma::User.find({user_id: current_user.uid})
 
-    result = lib_user.renew_all_loans
-    @message = result.renewed? ? "ALL ITEMS RENEWED" : result.error_message
-    pp "Renew All"
+    @renew_all_results = lib_user.renew_all_loans
 
     respond_to do |format|
       format.js
@@ -58,5 +58,12 @@ class UsersController < ApplicationController
   
   def results_message(result)
         #message = result.error_message unless result.renewed?
+  end
+
+  def multi_results_messages(results)
+    results.map { |r|
+      logger.debug "Multi Renewed: #{r.has_error? ? r.error_message : r.message}"
+      [r.has_error? ? r.error_message : r.message]
+    }
   end
 end
