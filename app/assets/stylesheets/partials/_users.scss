@@ -10,13 +10,6 @@ h1.page-title {
   margin-bottom: 28px;
   padding: 21px 0;
 
-  #selectall {
-    padding: 4px 14px;
-  }
-  #deselectall {
-    display: none;
-    padding: 4px 6px;
-  }
   .btn-white {
     background-color: $white;
     color: $red;
@@ -25,8 +18,18 @@ h1.page-title {
   div.user-info {
     font-size: 115%;
     margin-bottom: 28px;
-    li {
-      line-height: 1.85;
+    ul {
+      list-style-type: none;
+      li {
+        line-height: 1.85;
+        span {
+          font-weight: 600;
+        }
+        .balance {
+          font-weight: normal;
+          color: $red;
+        }
+      }
     }
   }
   .container.user-loans, .container.user-fines, .container.user-holds {
@@ -54,6 +57,9 @@ h1.page-title {
         text-align: left;
         font-weight: 600;
         height: 21px;
+      }
+      th.renew {
+        text-align: center;
       }
       td {
         text-align: left;
