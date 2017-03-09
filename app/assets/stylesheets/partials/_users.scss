@@ -10,11 +10,26 @@ h1.page-title {
   margin-bottom: 28px;
   padding: 21px 0;
 
+  .btn-white {
+    background-color: $white;
+    color: $red;
+    border: solid #ccc 1px;
+  }
   div.user-info {
     font-size: 115%;
     margin-bottom: 28px;
-    li {
-      line-height: 1.85;
+    ul {
+      list-style-type: none;
+      li {
+        line-height: 1.85;
+        span {
+          font-weight: 600;
+        }
+        .balance {
+          font-weight: normal;
+          color: $red;
+        }
+      }
     }
   }
   .container.user-loans, .container.user-fines, .container.user-holds {
@@ -41,6 +56,10 @@ h1.page-title {
       th {
         text-align: left;
         font-weight: 600;
+        height: 21px;
+      }
+      th.renew {
+        text-align: center;
       }
       td {
         text-align: left;
@@ -48,6 +67,11 @@ h1.page-title {
       }
       td.overdue {
         color: $red;
+      }
+      td.submit {
+        text-align:right;
+        padding-top: 14px;
+        padding-right: 7%;
       }
     }
     .table-hover > tbody > tr:hover {
@@ -76,7 +100,7 @@ h1.page-title {
     float: right;
     font-size: 58%;
     vertical-align: middle;
-    padding-right: 4%;
+    padding-right: 7%;
     padding-top: 10px;
     span {
       border-bottom: dashed #fff 1px;

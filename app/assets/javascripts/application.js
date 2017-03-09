@@ -19,3 +19,24 @@
 //= require blacklight_alma/blacklight_alma
 
 //= require_tree .
+
+function selectallchecks() {
+	var x = document.getElementsByName("renewselected");
+	var y = document.getElementById("checkall");
+	console.log(y.checked);
+	var i;
+	if (y.checked == true) {
+		for (i = 0; i < x.length; i++) {
+		    if (x[i].type == "checkbox") {
+		        x[i].checked = true;
+		    }
+		}
+	}
+	else {
+		for (i = 0; i < x.length; i++) {
+		    if (x[i].type == "checkbox") {
+		        x[i].checked = false;
+		    }
+		}
+	}
+}
