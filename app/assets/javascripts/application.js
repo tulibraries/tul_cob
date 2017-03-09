@@ -41,3 +41,23 @@ function deselectall() {
 	document.getElementById("selectall").style.display = "block";
 	document.getElementById("deselectall").style.display = "none";
 }
+function selectallchecks() {
+	var x = document.getElementsByName("renewselected");
+	var y = document.getElementById("checkall");
+	console.log(y.checked);
+	var i;
+	if (y.checked == true) {
+		for (i = 0; i < x.length; i++) {
+		    if (x[i].type == "checkbox") {
+		        x[i].checked = true;
+		    }
+		}
+	}
+	else {
+		for (i = 0; i < x.length; i++) {
+		    if (x[i].type == "checkbox") {
+		        x[i].checked = false;
+		    }
+		}
+	}
+}
