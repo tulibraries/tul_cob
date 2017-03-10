@@ -1,0 +1,10 @@
+<div class="row user-info">
+  <ul>
+    <li><span>Name:</span> Laura Pierson </li>
+    <li><span>Status:</span> Active </li>
+    <li><span>Items currently on loan:</span> <%= total_loans(@loans) %></li>
+    <li><span>Items currently on hold:</span> <%= total_holds(@holds) %></li>
+    <li><span>Current balance:</span> 
+      <span class="balance"><%= number_to_currency(@fines.sum) %></span> </li>
+  </ul>
+</div>

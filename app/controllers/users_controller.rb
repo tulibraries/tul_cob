@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def renew
     lib_user = Alma::User.find({user_id: current_user.uid})
+    binding.pry
 
     # Pass loan_id and loan status to view
     @loan_id =  params[:loan_id]
@@ -31,13 +32,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def renew_multi
-    logger.debug "Renew Selected"
+  def renew_selected
+    logger.debug "Renew Selected Loans"
 
+    binding.pry
     @items = params[:selected_loan_ids]
     lib_user = Alma::User.find({user_id: current_user.uid})
 
-    @renew_selected_results = lib_user.renew_multiple_loans(@items)
+    #@renew_selected_results = lib_user.renew_multiple_loans(@items)
 
     respond_to do |format|
       format.js
@@ -45,6 +47,7 @@ class UsersController < ApplicationController
   end
   
   def renew_all
+    binding.pry
     logger.debug "Renew All"
 
     lib_user = Alma::User.find({user_id: current_user.uid})

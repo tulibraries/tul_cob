@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
     get 'users/loans'
     
-    post 'users/renew_multi'
+    post 'users/renew_selected'
     
     post 'users/renew_all'
 
