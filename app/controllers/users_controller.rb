@@ -35,13 +35,12 @@ class UsersController < ApplicationController
   def renew_selected
     logger.debug "Renew Selected Loans"
 
-    binding.pry
-    @items = params[:selected_loan_ids]
+    @items = params[:loan_ids]
     lib_user = Alma::User.find({user_id: current_user.uid})
 
-    #@renew_selected_results = lib_user.renew_multiple_loans(@items)
-
-    respond_to do |format|
+    @renew_selected_results = lib_user.renew_multiple_loans(@items)
+    flash[:notice] "Renewed selected"
+      format.html
       format.js
     end
   end
