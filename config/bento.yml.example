@@ -1,0 +1,21 @@
+
+
+default: &default
+  summon:
+    secret_key: "A SECRET KEY"
+    access_id: "AN ACCESS ID"
+    nice_name: "Articles"
+  gbs:
+    api_key: "AN API KEY"
+    nice_name: "Google Books"
+
+
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

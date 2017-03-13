@@ -28,3 +28,4 @@ vendor/bundle/
 coverage
 
 config/alma.yml
+config/bento.yml

@@ -26,6 +26,20 @@ Rails.application.routes.draw do
 
   end
 
+  mount BentoSearch::Engine => '/bento'
+  get 'bento' => 'search#index'
+  get 'bento' => 'search#index', :as => "multi_search"
+
+
+  #
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+
+  # we want helper methods for multi_search_path and multi_search_url
+  # too, without removing root_url and root_path helpers. oddly, repeating
+  # root seems to work.
+
+
 
   scope module: 'blacklight_alma' do
     get 'alma/availability' => 'alma#availability'
