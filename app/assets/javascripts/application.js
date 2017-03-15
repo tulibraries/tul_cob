@@ -21,7 +21,7 @@
 //= require_tree .
 
 function selectallchecks() {
-	var x = document.getElementsByName("renewselected");
+	var x = document.getElementsByName("loan_ids[]");
 	var y = document.getElementById("checkall");
 	console.log(y.checked);
 	var i;
