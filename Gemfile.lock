@@ -72,6 +72,7 @@ GEM
     arel (7.1.4)
     autoprefixer-rails (6.7.6)
       execjs
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     blacklight (6.8.0)
       bootstrap-sass (~> 3.2)
@@ -339,6 +340,7 @@ PLATFORMS
 
 DEPENDENCIES
   alma (~> 0.2.4)
+  awesome_print
   blacklight
   blacklight-marc!
   blacklight_alma!

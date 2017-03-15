@@ -1,3 +1,4 @@
+require "awesome_print"
 class UsersController < ApplicationController
   def account
     @loans = current_user.get_loans
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
 
   def renew
     lib_user = Alma::User.find({user_id: current_user.uid})
-    binding.pry
 
     # Pass loan_id and loan status to view
     @loan_id =  params[:loan_id]
@@ -33,39 +33,43 @@ class UsersController < ApplicationController
   end
 
   def renew_selected
-    logger.debug "Renew Selected Loans"
-
-    @items = params[:loan_ids]
     lib_user = Alma::User.find({user_id: current_user.uid})
 
-    @renew_selected_results = lib_user.renew_multiple_loans(@items)
-    flash[:notice] "Renewed selected"
-      format.html
-      format.js
-    end
+    renew_results = lib_user.renew_multiple_loans(params[:loan_ids])
+    @renew_responses = multiple_renew_responses(renew_results)
+    logger.info "RENEWAL STATUS:"
+    logger.info ap(@renew_responses)
+
+#    respond_to do |format|
+#      format.js
+#    end
   end
   
   def renew_all
-    binding.pry
     logger.debug "Renew All"
 
     lib_user = Alma::User.find({user_id: current_user.uid})
 
     @renew_all_results = lib_user.renew_all_loans
 
-    respond_to do |format|
-      format.js
-    end
+#    respond_to do |format|
+#      format.js
+#    end
   end
   
-  def results_message(result)
-        #message = result.error_message unless result.renewed?
+  def renew_response(result)
+    {
+      renewed:  result.renewed?,
+      title:    result.item_title,
+      due_date: result.due_date,
+      message:  result.has_error? ? result.error_message : result.message
+    }
   end
 
-  def multi_results_messages(results)
-    results.map { |r|
+  def multiple_renew_responses(renew_results)
+    renew_results.map { |r|
       logger.debug "Multi Renewed: #{r.has_error? ? r.error_message : r.message}"
-      [r.has_error? ? r.error_message : r.message]
+      renew_response(r)
     }
   end
 end
