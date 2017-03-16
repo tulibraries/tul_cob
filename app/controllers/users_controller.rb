@@ -1,4 +1,3 @@
-require "awesome_print"
 class UsersController < ApplicationController
   def account
     @loans = current_user.get_loans
@@ -36,7 +35,7 @@ class UsersController < ApplicationController
     lib_user = Alma::User.find({user_id: current_user.uid})
 
     renew_results = lib_user.renew_multiple_loans(params[:loan_ids])
-    @renew_responses = multiple_renew_responses(renew_results)
+    @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
     logger.info "RENEWAL STATUS:"
     logger.info ap(@renew_responses)
 
@@ -57,8 +56,9 @@ class UsersController < ApplicationController
 #    end
   end
   
-  def renew_response(result)
+  def renew_response(result, loan_id)
     {
+      loan_id:  loan_id,
       renewed:  result.renewed?,
       title:    result.item_title,
       due_date: result.due_date,
@@ -66,10 +66,10 @@ class UsersController < ApplicationController
     }
   end
 
-  def multiple_renew_responses(renew_results)
-    renew_results.map { |r|
+  def multiple_renew_responses(renew_results, loan_id_list)
+    renew_results.map.with_index { |r, i|
       logger.debug "Multi Renewed: #{r.has_error? ? r.error_message : r.message}"
-      renew_response(r)
+      renew_response(r, loan_id_list[i])
     }
   end
 end

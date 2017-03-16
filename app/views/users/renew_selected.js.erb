@@ -1,0 +1,3 @@
+<% 	@renew_responses.each do |response| %>
+	$('#notice').html("<%= response[:message] %>");
+<% end %>

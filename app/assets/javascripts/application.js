@@ -19,7 +19,6 @@
 //= require blacklight_alma/blacklight_alma
 
 //= require_tree .
-
 function selectallchecks() {
 	var x = document.getElementsByName("loan_ids[]");
 	var y = document.getElementById("checkall");
