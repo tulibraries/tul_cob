@@ -13,4 +13,19 @@ module UsersHelper
 	def is_overdue status
 		status == 'Overdue' ? status : ''
 	end
+
+	def is_not_renewable?(loan)
+		#Alma API returns string true or false.
+		# If renewable attribute exists and has value of 'false', return true,
+		# If renewable attribute doesn't exist or has value 'true' return false
+		loan&.renewable.eql? 'false'
+	end
+
+	def loan_options(loan)
+		options = {class: 'form-check-input'}
+		if is_not_renewable?(loan)
+			options[:disabled] = true
+		end
+		options
+	end
 end

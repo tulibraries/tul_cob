@@ -11,5 +11,31 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe UsersHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#is_renewable" do
+    it 'returns true when loan.renewable value is true' do
+      loan = MockLoan.new({renewable: 'true'})
+      expect(is_not_renewable?(loan)).to be false
+    end
+
+    it 'returns false when loan.renewable  is "false" ' do
+      loan = MockLoan.new({renewable: 'false'})
+      expect(is_not_renewable?(loan)).to be true
+    end
+
+    it 'returns true loan does not have a renewable field' do
+      loan = MockLoan.new({not_renewable: 'true'})
+      expect(is_not_renewable?(loan)).to be false
+    end
+
+  end
+end
+
+class MockLoan
+  attr_reader :renewable
+  def initialize(loan)
+    if loan.fetch(:renewable, nil)
+      @renewable = loan[:renewable]
+    end
+  end
+
 end
