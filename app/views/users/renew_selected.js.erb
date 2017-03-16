@@ -1,3 +1,13 @@
-<% 	@renew_responses.each do |response| %>
-	$('#notice').html("<%= response[:message] %>");
+<% @renew_responses.each do |response| %>
+	<% message = response[:renewed] ? "Renewed" : "Not Renewed" %>
+	<% if message === "Renewed" %>
+		$('.<%= response[:loan_id] %>').html("<%= make_date(response[:due_date]) %>");
+		$('.<%= response[:loan_id] %>').css("color", "#00b700");
+		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
+		$('#<%= response[:loan_id] %>').css("color", "#00b700");
+	<% else %>
+		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
+	<% end %>
 <% end %>
+
+deselectallchecks();

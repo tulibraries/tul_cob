@@ -10,10 +10,10 @@
         <th width="10%">Due</th>
         <th width="10%">Barcode</th>
         <th width="15%">Call Number</th>
-        <th width="10%" class="renew">
+        <th width="9%" class="renew">
           <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
         </th>
-        <th width="8%"></a>
+        <th width="9%"></a>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
           <tr>
             <td><%= counter + 1 %></td>
             <td><%= loan.title %></td>
-            <td><%= make_date(loan.due_date) %></td>
+            <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
             <td><%= loan.item_barcode %></td>
             <td><%= loan.call_number %></td>
             <td class="renewal-check">
