@@ -35,7 +35,7 @@ RSpec.describe UsersController, type: :controller do
         xit "returns http success" do
           get :holds
           expect(response).to have_http_status(:success)
-        end
+end
       end
 
       describe "GET #fines" do
@@ -62,6 +62,20 @@ RSpec.describe UsersController, type: :controller do
   describe "GET #renew" do
     xit "returns http success" do
       get :renew
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #renew_multi" do
+    xit "returns http success" do
+      get :renew_multi
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "GET #renew_all_loans" do
+    xit "returns http success" do
+      get :renew_all_loans
       expect(response).to have_http_status(:success)
     end
   end

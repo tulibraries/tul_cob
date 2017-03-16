@@ -1,0 +1,45 @@
+<div class="container user-loans">
+  <h2 class="user_section_title">My Loans</h2>
+  <div id="notice"></div>
+  <table class="table table-hover table-responsive" border="0">
+    <caption>Table of Current Loans for this user</caption>
+    <thead>
+      <tr>
+        <th width="2%">#</th>
+        <th width="40%">Title</th>
+        <th width="10%">Due</th>
+        <th width="10%">Barcode</th>
+        <th width="15%">Call Number</th>
+        <th width="9%" class="renew">
+          <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
+        </th>
+        <th width="9%"></a>
+      </tr>
+    </thead>
+    <tbody>
+      <%= form_tag('/users/renew_selected', method: :post, format: 'ajax', remote: true) do %>
+        <% @loans.list.each_with_index do |loan, counter| %>
+          <tr>
+            <td><%= counter + 1 %></td>
+            <td><%= loan.title %></td>
+            <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
+            <td><%= loan.item_barcode %></td>
+            <td><%= loan.call_number %></td>
+            <td class="renewal-check">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <%= check_box_tag "loan_ids[]", loan.loan_id, false, class: 'form-check-input' %>
+                  <span class="hide-me">Renew this loan</span>
+                </label>
+              </div>
+            </td>
+            <td id="<%= loan.loan_id %>" class="overdue"><%= is_overdue(loan.loan_status) %></td>
+          </tr>
+        <% end %>
+          <tr>
+          <td class="submit" colspan="7"><input type="submit" class="btn btn-white" value="Renew Selected"></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

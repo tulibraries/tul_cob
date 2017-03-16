@@ -4,6 +4,12 @@ h1.page-title {
   margin-top: 7px;
   margin-bottom: 21px;
 }
+.renewed {
+  color: green;
+}
+.not-renewed {
+  color: $red;
+}
 .container.user-account {
   background-color: $tan;
   border-radius: 14px;
@@ -71,7 +77,7 @@ h1.page-title {
       td.submit {
         text-align:right;
         padding-top: 14px;
-        padding-right: 7%;
+        padding-right: 8%;
       }
     }
     .table-hover > tbody > tr:hover {

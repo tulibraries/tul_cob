@@ -19,11 +19,9 @@
 //= require blacklight_alma/blacklight_alma
 
 //= require_tree .
-
 function selectallchecks() {
-	var x = document.getElementsByName("renewselected");
+	var x = document.getElementsByName("loan_ids[]");
 	var y = document.getElementById("checkall");
-	console.log(y.checked);
 	var i;
 	if (y.checked == true) {
 		for (i = 0; i < x.length; i++) {
@@ -38,5 +36,17 @@ function selectallchecks() {
 		        x[i].checked = false;
 		    }
 		}
+	}
+}
+
+function deselectallchecks() {
+	var x = document.getElementsByName("loan_ids[]");
+	var y = document.getElementById("checkall");
+	y.checked = false;
+	var i;
+	for (i = 0; i < x.length; i++) {
+	    if (x[i].type == "checkbox") {
+	        x[i].checked = false;
+	    }
 	}
 }

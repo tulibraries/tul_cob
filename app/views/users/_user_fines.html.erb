@@ -1,0 +1,37 @@
+<div class="container user-fines">
+  <h2 class="user_section_title">My Fines</h2>
+  <table class="table table-hover table-responsive" border="0">
+    <caption>Table of Current Fines for this user</caption>
+    <thead>
+      <tr>
+        <th width="2%">#</th>
+        <th width="40%">Title</th>
+        <th width="15%">Fee Type</th>
+        <th width="10%">Barcode</th>
+        <th width="10%">Fine</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @fines.list.each_with_index do |fine, counter| %>
+        <tr>
+          <td><%= counter + 1 %></td>
+          <td><%= fine.title %></td>
+          <td><%= fine.type['desc'] %></td>
+          <td>12345678999<%#= fine.item_barcode %></td>
+          <td><%= number_to_currency(fine.balance.to_f) %></td>
+        </tr>
+      <% end %>
+      <tr class="total-fines">
+        <td colspan="4" class="fine-label">
+          Total
+        </td>
+        <td>
+        <%= number_to_currency(@fines.sum) %>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="fines-link">
+    <%= link_to "Learn more about late fines and replacement charges.", "http://library.temple.edu/services/privileges" %>
+  </div>
+</div>

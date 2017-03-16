@@ -16,5 +16,12 @@
       </div>
       <div class="item_renew_status"></div>
     </div>
+    <div class="renew_selected">
+      <%= button_to 'Renew Selected', users_renew_multi_path(user_id: current_user.id), form: {display: 'inline'}, remote: true %>
+    </div>
   <% end %>
+  
+  <div class="renew_multi">
+      <%= button_to 'Renew All', users_renew_all_path(user_id: current_user.id), form: {display: 'inline'}, remote: true %>
+  </div>
 </div>
