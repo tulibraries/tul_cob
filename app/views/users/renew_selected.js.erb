@@ -5,9 +5,8 @@
 		$('.<%= response[:loan_id] %>').css("color", "#00b700");
 		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
 		$('#<%= response[:loan_id] %>').css("color", "#00b700");
-	<% else %>
-		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
-	<% end %>
+		$('#renewal-warning').html("Your renewal request is successful. If you have any questions, please visit the Circulation Desk or call 215-204-0744.");
+		$('#renewal-warning').css("display", "block");
 <% end %>
 
 deselectallchecks();
