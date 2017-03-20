@@ -1,14 +1,33 @@
 @import "_vars.scss";
 
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+.glyphicon.glyphicon-exclamation-sign {
+  color: $red;
+}
 h1.page-title {
   margin-top: 7px;
   margin-bottom: 21px;
 }
-.renewed {
-  color: green;
+#renewal-warning {
+  display: none;
+  width: 100%;
+  text-align: center;
+  background-color: $green;
+  border: solid $red 1px;
+  border-radius: 7px;
+  padding: 14px;
+  color: black;
 }
-.not-renewed {
-  color: $red;
+.renewal-disclaimer {
+  color: $med-grey;
+  margin-right: 10%;
+  position:absolute;
+  bottom: 0;
 }
 .container.user-account {
   background-color: $tan;
@@ -22,8 +41,11 @@ h1.page-title {
     border: solid #ccc 1px;
   }
   div.user-info {
-    font-size: 115%;
-    margin-bottom: 28px;
+    .col-md-5 {
+      font-size: 115%;
+    }
+    margin-bottom: 14px;
+    padding-left: 1%;
     ul {
       list-style-type: none;
       li {
@@ -108,17 +130,14 @@ h1.page-title {
     vertical-align: middle;
     padding-right: 7%;
     padding-top: 10px;
-    span {
-      border-bottom: dashed #fff 1px;
-      color: #fff;
-      text-decoration: none;
-      cursor: pointer;
-      cursor: hand;
-    }
   }
   .fines-link {
     text-align: center;
     padding: 14px;
   }
 }
-
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+  

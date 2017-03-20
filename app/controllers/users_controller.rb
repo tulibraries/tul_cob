@@ -32,16 +32,20 @@ class UsersController < ApplicationController
   end
 
   def renew_selected
-    lib_user = Alma::User.find({user_id: current_user.uid})
+    if params[:loan_ids].nil?  
+      redirect_to '/users/account/' and return
+    else
+      lib_user = Alma::User.find({user_id: current_user.uid})
 
-    renew_results = lib_user.renew_multiple_loans(params[:loan_ids])
-    @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
-    logger.info "RENEWAL STATUS:"
-    logger.info ap(@renew_responses)
+      renew_results = lib_user.renew_multiple_loans(params[:loan_ids])
+      @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
+      logger.info "RENEWAL STATUS:"
+      logger.info ap(@renew_responses)
 
-#    respond_to do |format|
-#      format.js
-#    end
+  #    respond_to do |format|
+  #      format.js
+  #    end
+    end
   end
   
   def renew_all

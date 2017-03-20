@@ -1,6 +1,6 @@
 <div class="container user-loans">
   <h2 class="user_section_title">My Loans</h2>
-  <div id="notice"></div>
+  <div id="renewal-warning" aria-live="assertive"></div>
   <table class="table table-hover table-responsive" border="0">
     <caption>Table of Current Loans for this user</caption>
     <thead>
@@ -13,11 +13,11 @@
         <th width="9%" class="renew">
           <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
         </th>
-        <th width="9%"></a>
+        <th width="9%"></th>
       </tr>
     </thead>
     <tbody>
-      <%= form_tag('/users/renew_selected', method: :post, format: 'ajax', remote: true) do %>
+      <%= form_tag('/users/renew_selected', method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
         <% @loans.list.each_with_index do |loan, counter| %>
           <tr>
             <td><%= counter + 1 %></td>
@@ -28,8 +28,12 @@
             <td class="renewal-check">
               <div class="form-check">
                 <label class="form-check-label">
-                  <%= check_box_tag "loan_ids[]", loan.loan_id, false, class: 'form-check-input' %>
+                <% if is_not_renewable?(loan) %>
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" title="unable to renew"></span>
+                <% else %>
+                  <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
                   <span class="hide-me">Renew this loan</span>
+                <% end %>
                 </label>
               </div>
             </td>
@@ -37,8 +41,8 @@
           </tr>
         <% end %>
           <tr>
-          <td class="submit" colspan="7"><input type="submit" class="btn btn-white" value="Renew Selected"></td>
-        </tr>
+            <td class="submit" colspan="7"><%= submit_tag "Renew Selected", class: "btn btn-white", id: "renew_selected" %></td>
+          </tr>
       <% end %>
     </tbody>
   </table>

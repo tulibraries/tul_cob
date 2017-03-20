@@ -17,7 +17,7 @@ class User < ApplicationRecord
   end
 
   def get_loans
-    item_loans = Alma::User.get_loans({user_id: uid})
+    item_loans = Alma::User.get_loans({user_id: uid, expand: 'renewable'})
   end
 
   def get_holds

@@ -19,6 +19,27 @@
 //= require blacklight_alma/blacklight_alma
 
 //= require_tree .
+
+$(document).ready(function(){
+	$(this).find(':input[id=renew_selected]').prop('disabled', true);
+	$('input[type=checkbox]').click(function(){
+		var x = document.getElementsByName("loan_ids[]");
+		var y = document.getElementById("checkall");
+		var checked = false;
+		var i;
+		$(x).each(function() {
+			if( $(this).prop('checked')){
+		      checked = true;
+		    }
+		});
+		if (checked == true) {
+	    	$(document).find(':input[id=renew_selected]').prop('disabled', false);
+	    }
+	    else $(document).find(':input[id=renew_selected]').prop('disabled', true);
+	});
+});
+
+
 function selectallchecks() {
 	var x = document.getElementsByName("loan_ids[]");
 	var y = document.getElementById("checkall");
