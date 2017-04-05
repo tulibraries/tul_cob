@@ -1,5 +1,5 @@
 <div class="container user-loans">
-  <h2 class="user_section_title">My Loans</h2>
+  <h2 class="user_section_title">My Items</h2>
   <div id="renewal-warning" aria-live="assertive"></div>
   <table class="table table-hover table-responsive" border="0">
     <caption>Table of Current Loans for this user</caption>
@@ -41,8 +41,11 @@
           </tr>
         <% end %>
           <tr>
-            <td class="submit" colspan="7"><%= submit_tag "Renew Selected", class: "btn btn-white", id: "renew_selected" %></td>
-          </tr>
+            <td class="submit" colspan="7" style="vertical-align:text-bottom;">
+            <div class="col col-md-10 text-left">Items marked with the unable to renew <span class="glyphicon glyphicon-exclamation-sign"></span> icon are not eligible for renewal at this time and are disabled.  Please visit your library's Circulation Desk for more information or ask a librarian.</div>
+            <div class="col col-md-2"><%= submit_tag "Renew Selected", class: "btn btn-white", id: "renew_selected" %></div></td>
+            </tr>
+            
       <% end %>
     </tbody>
   </table>

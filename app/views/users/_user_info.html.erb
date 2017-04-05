@@ -3,13 +3,11 @@
 	  <ul>
 	    <li><span>Name:</span> Laura Pierson </li>
 	    <li><span>Status:</span> Active </li>
-	    <li><span>Items currently on loan:</span> <%= total_loans(@loans) %></li>
-	    <li><span>Items currently on hold:</span> <%= total_holds(@holds) %></li>
+	    <li><span>Items checked out:</span> <%= total_loans(@loans) %></li>
+	    <li><span>Items requested:</span> <%= total_holds(@holds) %></li>
 	    <li><span>Current balance:</span> 
 	      <span class="balance"><%= number_to_currency(@fines.sum) %></span> </li>
+	     <li><%= link_to "Update name via TUPortal", "https://tuportal.temple.edu" %></li>
 	  </ul>
-	</div>
-	<div class="col col-md-7">
-		<p class="renewal-disclaimer">Loans marked with an <span class="glyphicon glyphicon-exclamation-sign"></span> are not eligible for renewal at this time and are disabled.  Please visit the Circulation Desk for more information or call 215-204-0744.</p>
 	</div>
 </div>
