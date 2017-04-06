@@ -488,13 +488,60 @@
    <!-- format is used for facet, display, and choosing which partial to use for the show view, so it must be stored and indexed -->
    <field name="format" type="string" indexed="true" stored="true" multiValued="true"/>
 
+
+
+
+
+
+
+
+
+
+
    <!--  new fields for testing  -->
    <field name="title_statement" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="title" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subtitle" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="title_uniform" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="title_addl" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="creator" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="imprint" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="summary" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="contents" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="issn" type="string" indexed="true" stored="true" multiValued="true"/>   <!-- issn can contain a dash -->
-   
+   <field name="edition" type="string" indexed="true" stored="true" multiValued="true"/>
+   <!--<field name="pub_date" type="string" indexed="true" stored="true" multiValued="true"/>-->
+   <field name="pub_location" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="publisher" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="phys_desc" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="title_series" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="volume" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_with" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_biblio" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_toc" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_restrictions" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_references" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_summary" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_cite" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_terms" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_bio" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_finding_aid" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_custodial" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_binding" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_related" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_accruals" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="note_local" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subject" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subject_topic" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subject_era" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="subject_region" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="genre" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="call_number" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="library" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="url" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="isbn" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="issn" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="govdoc" type="string" indexed="true" stored="true" multiValued="true"/>
+   <field name="language" type="string" indexed="true" stored="true" multiValued="true"/>
+
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
@@ -573,11 +620,11 @@
    <copyField source="subject_addl_t" dest="subject_addl_unstem_search"/>
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
    
-   <!-- sort fields -->
-   <copyField source="pub_date" dest="pub_date_sort"/>
-   
-        
-   <!-- spellcheck fields -->
+   <!-- sort fields  NOTE: no longer feasible with multiple dates -->
+  <!--  <copyField source="pub_date" dest="pub_date_sort"/>  -->
+
+
+ <!-- spellcheck fields -->
    <!-- default spell check;  should match fields for default request handler -->
    <!-- it won't work with a copy of a copy field -->
    <copyField source="*_t" dest="spell"/>
