@@ -54,6 +54,13 @@
   <admin>
     <defaultQuery>*:*</defaultQuery>
   </admin>
+ 
+  <autoCommit>
+    <maxDocs>50000</maxDocs>
+    <maxTime>100000</maxTime>
+    <openSearcher>false</openSearcher>
+  </autoCommit>
+
 
   <!-- SearchHandler
 
