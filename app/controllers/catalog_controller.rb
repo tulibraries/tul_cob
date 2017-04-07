@@ -36,11 +36,11 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_display'
+    config.index.title_field = 'title_statement'
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
-    #config.show.title_field = 'title_display'
+    config.show.title_field = 'title_statement'
     #config.show.display_type_field = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
@@ -67,79 +67,115 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
-    config.add_facet_field 'format', label: 'Format'
-    config.add_facet_field 'pub_date', label: 'Publication Year', single: true
-    config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
+    # config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
+    # config.add_facet_field 'format', label: 'Format'
+    # config.add_facet_field 'pub_date', label: 'Publication Year', single: true
+    # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'language_facet', label: 'Language', limit: true
-    config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
-    config.add_facet_field 'subject_geo_facet', label: 'Region'
-    config.add_facet_field 'subject_era_facet', label: 'Era'
+    # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
+    # config.add_facet_field 'subject_geo_facet', label: 'Region'
+    # config.add_facet_field 'subject_era_facet', label: 'Era'
+    #
+    # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['format', 'language_facet']
+    #
+    # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
+    #    :years_5 => { label: 'within 5 Years', fq: "pub_date:[#{Time.zone.now.year - 5 } TO *]" },
+    #    :years_10 => { label: 'within 10 Years', fq: "pub_date:[#{Time.zone.now.year - 10 } TO *]" },
+    #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
+    # }
 
-    config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['format', 'language_facet']
-
-    config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
-       :years_5 => { label: 'within 5 Years', fq: "pub_date:[#{Time.zone.now.year - 5 } TO *]" },
-       :years_10 => { label: 'within 10 Years', fq: "pub_date:[#{Time.zone.now.year - 10 } TO *]" },
-       :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
-    }
-
-
-
+    config.add_facet_field 'library', label: 'Library', helper_method: :render_location
+    #config.add_facet_field 'resource_type', label: 'Resource Type'
+    config.add_facet_field 'pub_date', label: 'Date', limit: true
+    config.add_facet_field 'creator', label: 'Author/creator'
+    config.add_facet_field 'subject', label: 'Subject'
+    config.add_facet_field 'subject_era', label: 'Era'
+    config.add_facet_field 'subject_region', label: 'Region'
+    config.add_facet_field 'genre', label: 'Genre'
+    config.add_facet_field 'language', label: 'Language'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
     config.add_facet_fields_to_solr_request!
 
-    # to add - testing - 1/24/17
-    # Display Name	MARC field/subfields	Search results?	Record page?
-    # Title Statement	245abc	Y	Y
-    # Imprint	260abc	Y	Y
-    # Summary	520ab	N	Y
-    # Contents 	505agrt	N	Y
-    # ISSN	022a	N	Y
-
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'title_display', label: 'Title'
-    config.add_index_field 'title_vern_display', label: 'Title'
-    config.add_index_field 'author_display', label: 'Author'
-    config.add_index_field 'author_vern_display', label: 'Author'
-    config.add_index_field 'format', label: 'Format'
-    config.add_index_field 'language_facet', label: 'Language'
-    config.add_index_field 'published_display', label: 'Published'
-    config.add_index_field 'published_vern_display', label: 'Published'
-    config.add_index_field 'lc_callnum_display', label: 'Call number'
-    config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
+    # config.add_index_field 'title_display', label: 'Title'
+    # config.add_index_field 'title_vern_display', label: 'Title'
+    # config.add_index_field 'author_display', label: 'Author'
+    # config.add_index_field 'author_vern_display', label: 'Author'
+    # config.add_index_field 'format', label: 'Format'
+    # config.add_index_field 'language_facet', label: 'Language'
+    # config.add_index_field 'published_display', label: 'Published'
+    # config.add_index_field 'published_vern_display', label: 'Published'
+    # config.add_index_field 'lc_callnum_display', label: 'Call number'
+    # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
-    config.add_index_field 'title_statement', label: 'Title Statement'
+    #config.add_index_field 'title_statement', label: 'Title Statement'
     config.add_index_field 'imprint', label: 'Imprint'
+    config.add_index_field 'creator', label: 'Author/creator'
+    # config.add_index_field 'resource_type', label: 'Resource Type'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    config.add_show_field 'title_display', label: 'Title'
-    config.add_show_field 'title_vern_display', label: 'Title'
-    config.add_show_field 'subtitle_display', label: 'Subtitle'
-    config.add_show_field 'subtitle_vern_display', label: 'Subtitle'
-    config.add_show_field 'author_display', label: 'Author'
-    config.add_show_field 'author_vern_display', label: 'Author'
-    config.add_show_field 'format', label: 'Format'
-    config.add_show_field 'url_fulltext_display', label: 'URL'
-    config.add_show_field 'url_suppl_display', label: 'More Information'
-    config.add_show_field 'language_facet', label: 'Language'
-    config.add_show_field 'published_display', label: 'Published'
-    config.add_show_field 'published_vern_display', label: 'Published'
-    config.add_show_field 'lc_callnum_display', label: 'Call number'
-    config.add_show_field 'isbn_t', label: 'ISBN'
-    config.add_show_field 'control_number_display', label: 'Control Number'
-    config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
+    # config.add_show_field 'title_display', label: 'Title'
+    # config.add_show_field 'title_vern_display', label: 'Title'
+    # config.add_show_field 'subtitle_display', label: 'Subtitle'
+    # config.add_show_field 'subtitle_vern_display', label: 'Subtitle'
+    # config.add_show_field 'author_display', label: 'Author'
+    # config.add_show_field 'author_vern_display', label: 'Author'
+    # config.add_show_field 'format', label: 'Format'
+    # config.add_show_field 'url_fulltext_display', label: 'URL'
+    # config.add_show_field 'url_suppl_display', label: 'More Information'
+    # config.add_show_field 'language_facet', label: 'Language'
+    # config.add_show_field 'published_display', label: 'Published'
+    # config.add_show_field 'published_vern_display', label: 'Published'
+    # config.add_show_field 'lc_callnum_display', label: 'Call number'
+    # config.add_show_field 'isbn_t', label: 'ISBN'
+    # config.add_show_field 'control_number_display', label: 'Control Number'
+    # config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
     #new
-    config.add_show_field 'title_statement', label: 'Title Statement'
-    config.add_show_field 'imprint', label: 'Imprint'
-    config.add_show_field 'summary', label: 'Summary'
-    config.add_show_field 'contents', label: 'Contents'
+    #config.add_show_field 'title_statement', label: ' '
+    config.add_show_field 'title', label: 'Title'
+    config.add_show_field 'subtitle', label: 'Subtitle'
+    config.add_show_field 'title_uniform', label: 'Uniform title'
+    config.add_show_field 'title_addl', label: 'Other title(s)'
+    config.add_show_field 'creator', label: 'Author/creator'
+    config.add_show_field 'imprint', label: 'Published'
+    config.add_show_field 'edition', label: 'Edition'
+    config.add_show_field 'pub_date', label: 'Date'
+    config.add_show_field 'pub_location', label: 'Publication place'
+    config.add_show_field 'publisher', label: 'Publisher'
+    config.add_show_field 'phys_desc', label: 'Physical Description'
+    config.add_show_field 'title_series', label: 'Series Title'
+    config.add_show_field 'volume', label: 'Volume'
+    config.add_show_field 'note', label: 'Note'
+    config.add_show_field 'note_with', label: 'With'
+    config.add_show_field 'note_biblio', label: 'Bibliography'
+    config.add_show_field 'note_toc', label: 'Contents'
+    config.add_show_field 'note_restrictions', label: 'Access and Restrictions'
+    config.add_show_field 'note_references', label: 'Cited in'
+    config.add_show_field 'note_summary', label: 'Summary'
+    config.add_show_field 'note_cite', label: 'Cite as'
+    config.add_show_field 'note_terms', label: 'Terms of Use'
+    config.add_show_field 'note_bio', label: 'Biographical or Historical Note'
+    config.add_show_field 'note_finding_aid', label: 'Finding Aids'
+    config.add_show_field 'note_custodial', label: 'Custodial History'
+    config.add_show_field 'note_binding', label: 'Binding Note'
+    config.add_show_field 'note_related', label: 'Related Materials'
+    config.add_show_field 'note_accruals', label: 'Additions to Collection'
+    config.add_show_field 'note_local', label: 'Local Note'
+    config.add_show_field 'subject', label: 'Subject'
+    config.add_show_field 'call_number', label: 'Call Number'
+    config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
+    config.add_show_field 'isbn', label: 'ISBN'
     config.add_show_field 'issn', label: 'ISSN'
+    config.add_show_field 'govdoc', label: 'Government Document Classification'
+    config.add_show_field 'language', label: 'Language'
+    # config.add_show_field 'resource_type', label: 'Resource Type'
+
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
