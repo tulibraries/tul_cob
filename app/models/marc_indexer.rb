@@ -198,20 +198,25 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
 
 
-
-
     #new solr fields from emitone
     to_field 'title_statement', extract_marc('245abcfgknps')
-    to_field 'title', extract_marc('245a')
-    to_field 'subtitle', extract_marc('245b')
+    to_field 'title', extract_marc('245a', :trim_punctuation => true)
+    to_field 'subtitle', extract_marc('245b', :trim_punctuation => true)
     to_field 'title_uniform', extract_marc('130adfklmnoprs:240adfklmnoprs')
     to_field 'title_addl', extract_marc('210ab:246abfgnp:740anp')
-    to_field 'creator', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej')
+    to_field 'creator', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true)
     to_field 'imprint', extract_marc('260abcefg3:264abc3')
     to_field 'edition', extract_marc('250a')
-    to_field 'pub_date', extract_marc('260c:264c')
-    to_field 'pub_location', extract_marc('260a:264a')
-    to_field 'publisher', extract_marc('260b:264b')
+
+    to_field 'pub_date' do |rec, acc|   #, extract_marc('260c:264c')
+      # fairly aggressive prune to get pub dates down to a 4 digit year
+      rec.fields(['260','264']).each do |field|
+        acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  unless field['c'].nil?
+      end
+    end
+
+    to_field 'pub_location', extract_marc('260a:264a', :trim_punctuation => true)
+    to_field 'publisher', extract_marc('260b:264b', :trim_punctuation => true)
     to_field 'phys_desc', extract_marc('300abcefg3')
     to_field 'title_series', extract_marc('830av:490av:440anpv')
     to_field 'volume', extract_marc('830v:490v:440v')
@@ -231,13 +236,20 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'note_related', extract_marc('580a')
     to_field 'note_accruals', extract_marc('584a')
     to_field 'note_local', extract_marc('590a')
-    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:690abcdegvxyz')
+    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:690abcdegvxyz', :trim_punctuation => true)
     to_field 'subject_topic', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
-    to_field 'subject_era', extract_marc('648a:650y:651y:654y:655y:690y')
-    to_field 'subject_region', extract_marc('651a:650z:654z:655z')
-    to_field 'genre', extract_marc('600v:610v:611v:630v:648v:650v:651v:655av')
+    to_field 'subject_era', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
+    to_field 'subject_region', extract_marc('651a:650z:654z:655z', :trim_punctuation => true)
+    to_field 'genre', extract_marc('600v:610v:611v:630v:648v:650v:651v:655av', :trim_punctuation => true)
     to_field 'call_number', extract_marc('852hi')
-    to_field 'library', extract_marc('852b')
+
+    to_field 'library' do |rec, acc|   #extract_marc('852b')
+      rec.fields('852').each do |field|
+        # Strip the values and downcase for indexing into locations.yml
+        acc << field['b'].strip.downcase unless field['b'].nil?
+      end
+    end
+
     to_field 'url', extract_marc(%W(856#{ATOZ}))  #Chad and Emily are working on this
     to_field 'isbn', extract_marc('020a')
     to_field 'issn', extract_marc('022a')
