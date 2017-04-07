@@ -15,6 +15,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
       # set this to be non-negative if threshold should be enforced
       provide 'solr_writer.max_skipped', -1
       #provide 'solr.update_url', 'http://localhost:8983/solr/blacklight-core/update'
+      provide "solr_writer.commit_on_close", "false"
     end
 
     #to_field 'id', trim(extract_marc("001"), :first => true)
