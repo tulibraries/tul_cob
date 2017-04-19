@@ -12,7 +12,10 @@
  *
  *= require_self
  *= require_tree .
- */
+ 
+ *= require 'blacklight_advanced_search'
+
+*/
 @import "partials/_vars.scss";
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
