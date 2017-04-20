@@ -96,7 +96,15 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     #config.add_facet_field 'resource_type', label: 'Resource Type'
-    config.add_facet_field 'pub_date', label: 'Date', range: true
+    config.add_facet_field 'pub_date', label: 'Date',
+                           range: {
+                             num_segments: 6,
+                             assumed_boundaries: [1100, Time.now.year + 2],
+                             segments: true,
+                             slider_js: true,
+                             chart_js: true,
+                             maxlength: 4
+                           }
     config.add_facet_field 'creator', label: 'Author/creator'
     config.add_facet_field 'subject', label: 'Subject'
     config.add_facet_field 'subject_era', label: 'Era'
