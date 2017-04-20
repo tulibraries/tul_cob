@@ -2,6 +2,8 @@
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
+  include BlacklightRangeLimit::ControllerOverride
+
   include Blacklight::Catalog
 
   configure_blacklight do |config|
@@ -94,7 +96,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     #config.add_facet_field 'resource_type', label: 'Resource Type'
-    config.add_facet_field 'pub_date', label: 'Date', limit: true
+    config.add_facet_field 'pub_date', label: 'Date', range: true
     config.add_facet_field 'creator', label: 'Author/creator'
     config.add_facet_field 'subject', label: 'Subject'
     config.add_facet_field 'subject_era', label: 'Era'
