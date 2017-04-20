@@ -6,7 +6,7 @@
 		$('.<%= response[:loan_id] %>').css("color", "#00b700");
 		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
 		$('#<%= response[:loan_id] %>').css("color", "#00b700");
-		$('#renewal-warning').html("Your renewal request is successful. If you have any questions, please visit the Circulation Desk or call 215-204-0744.");
+		$('#renewal-warning').html("Your renewal request is successful. If you have any questions, please visit your library's Circulation Desk or <a href='http://library.temple.edu/asktulibraries'>Ask a Librarian</a>.");
 		$('#renewal-warning').css("background-color", "#ffffff");
 		$('#renewal-warning').css("display", "block");
 	<% else %>
@@ -15,7 +15,7 @@
 		<% badloans.push(response[:loan_id]); %>
 	<% end %>
 	<% unless badloans.empty? %>
-		$('#renewal-warning').html(<%= badloans.empty? %> + "One of more of your loans could not be renewed. If you have any questions, please visit the Circulation Desk or call 215-204-0744.");
+		$('#renewal-warning').html(<%= badloans.empty? %> + "One of more of your loans could not be renewed. If you have any questions, please visit your library's Circulation Desk or <a href='http://library.temple.edu/asktulibraries'>Ask a Librarian</a>.");
 		$('#renewal-warning').css("background-color", "#f7d1d1");
 		$('#renewal-warning').css("display", "block");
 	<% end %>

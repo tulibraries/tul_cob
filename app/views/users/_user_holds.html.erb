@@ -20,6 +20,14 @@
           <td>12345678999<%#= hold.barcode %></td>
           <td><%= hold.request_status %></td>
         </tr>
+        <tr>
+          <td colspan="7">
+          <div class="col col-md-12 text-left">
+            For requests from the Special Collections Research Center, see 
+            <%= link_to "SCRC Research Account", "https://temple.aeon.atlas-sys.com/logon" %>.
+            </div>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
