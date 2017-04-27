@@ -71,7 +71,7 @@ class CatalogController < ApplicationController
     # config.add_facet_field 'format', label: 'Format'
     # config.add_facet_field 'pub_date', label: 'Publication Year', single: true
     # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
-    config.add_facet_field 'language_facet', label: 'Language', limit: true
+    # config.add_facet_field 'language_facet', label: 'Language', limit: true
     # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
     # config.add_facet_field 'subject_geo_facet', label: 'Region'
     # config.add_facet_field 'subject_era_facet', label: 'Era'
@@ -85,14 +85,14 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
-    #config.add_facet_field 'resource_type', label: 'Resource Type'
-    config.add_facet_field 'pub_date', label: 'Date', limit: true
+    config.add_facet_field 'format', label: 'Resource Type'
+    #config.add_facet_field 'pub_date', label: 'Date', limit: true
     config.add_facet_field 'creator', label: 'Author/creator'
-    config.add_facet_field 'subject', label: 'Subject'
-    config.add_facet_field 'subject_era', label: 'Era'
-    config.add_facet_field 'subject_region', label: 'Region'
-    config.add_facet_field 'genre', label: 'Genre'
-    config.add_facet_field 'language', label: 'Language'
+    config.add_facet_field 'subject_topic_facet', label: 'Topic'
+    config.add_facet_field 'subject_era_facet', label: 'Era'
+    config.add_facet_field 'subject_region_facet', label: 'Region'
+    config.add_facet_field 'genre_facet', label: 'Genre'
+    config.add_facet_field 'language_facet', label: 'Language'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -115,7 +115,7 @@ class CatalogController < ApplicationController
     #config.add_index_field 'title_statement', label: 'Title Statement'
     config.add_index_field 'imprint', label: 'Imprint'
     config.add_index_field 'creator', label: 'Author/creator'
-    # config.add_index_field 'resource_type', label: 'Resource Type'
+    config.add_index_field 'format', label: 'Resource Type'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -135,45 +135,58 @@ class CatalogController < ApplicationController
     # config.add_show_field 'isbn_t', label: 'ISBN'
     # config.add_show_field 'control_number_display', label: 'Control Number'
     # config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
+
     #new
     #config.add_show_field 'title_statement', label: ' '
-    config.add_show_field 'title', label: 'Title'
-    config.add_show_field 'subtitle', label: 'Subtitle'
-    config.add_show_field 'title_uniform', label: 'Uniform title'
-    config.add_show_field 'title_addl', label: 'Other title(s)'
-    config.add_show_field 'creator', label: 'Author/creator'
-    config.add_show_field 'imprint', label: 'Published'
-    config.add_show_field 'edition', label: 'Edition'
+    #config.add_show_field 'title', label: 'Title'
+    #config.add_show_field 'subtitle', label: 'Subtitle'
+    config.add_show_field 'title_statement_vern_display', label: ' '
+    config.add_show_field 'title_uniform_display', label: 'Uniform title'
+    config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
+    config.add_show_field 'title_addl_display', label: 'Other title(s)'
+    config.add_show_field 'title_addl_vern_display', label: 'Other title(s)'
+    config.add_show_field 'creator_display', label: 'Author/creator'
+    config.add_show_field 'creator_vern_display', label: 'Author/creator'
+    config.add_show_field 'format', label: 'Resource Type'
+    config.add_show_field 'imprint_display', label: 'Imprint'
+    config.add_show_field 'edition_display', label: 'Edition'
     config.add_show_field 'pub_date', label: 'Date'
-    config.add_show_field 'pub_location', label: 'Publication place'
-    config.add_show_field 'publisher', label: 'Publisher'
-    config.add_show_field 'phys_desc', label: 'Physical Description'
-    config.add_show_field 'title_series', label: 'Series Title'
-    config.add_show_field 'volume', label: 'Volume'
-    config.add_show_field 'note', label: 'Note'
-    config.add_show_field 'note_with', label: 'With'
-    config.add_show_field 'note_biblio', label: 'Bibliography'
-    config.add_show_field 'note_toc', label: 'Contents'
-    config.add_show_field 'note_restrictions', label: 'Access and Restrictions'
-    config.add_show_field 'note_references', label: 'Cited in'
-    config.add_show_field 'note_summary', label: 'Summary'
-    config.add_show_field 'note_cite', label: 'Cite as'
-    config.add_show_field 'note_terms', label: 'Terms of Use'
-    config.add_show_field 'note_bio', label: 'Biographical or Historical Note'
-    config.add_show_field 'note_finding_aid', label: 'Finding Aids'
-    config.add_show_field 'note_custodial', label: 'Custodial History'
-    config.add_show_field 'note_binding', label: 'Binding Note'
-    config.add_show_field 'note_related', label: 'Related Materials'
-    config.add_show_field 'note_accruals', label: 'Additions to Collection'
-    config.add_show_field 'note_local', label: 'Local Note'
-    config.add_show_field 'subject', label: 'Subject'
-    config.add_show_field 'call_number', label: 'Call Number'
-    config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
+    config.add_show_field 'phys_desc_display', label: 'Physical Description'
+    config.add_show_field 'title_series_display', label: 'Series Title'
+    config.add_show_field 'title_series_vern_display', label: 'Series Title'
+    config.add_show_field 'volume_series_display', label: 'Volume'
+    config.add_show_field 'duration_display', label: 'Duration'
+    config.add_show_field 'frequency_display', label: 'Frequency'
+    config.add_show_field 'sound_display', label: ''
+    config.add_show_field 'digital_file_display', label: ''
+    config.add_show_field 'form_work_display', label: ''
+    config.add_show_field 'performance_display', label: ''
+    config.add_show_field 'music_no_display', label: ''
+    config.add_show_field 'note_display', label: 'Note'
+    config.add_show_field 'note_with_display', label: 'With'
+    config.add_show_field 'note_diss_display', label: 'Dissertation Note'
+    config.add_show_field 'note_biblio_display', label: 'Bibliography'
+    config.add_show_field 'note_toc_display', label: 'Contents'
+    config.add_show_field 'note_restrictions_display', label: 'Access and Restrictions'
+    config.add_show_field 'note_references_display', label: 'Cited in'
+    config.add_show_field 'note_summary_display', label: 'Summary'
+    config.add_show_field 'note_cite_display', label: 'Cite as'
+    config.add_show_field 'note_terms_display', label: 'Terms of Use'
+    config.add_show_field 'note_bio_display', label: 'Biographical or Historical Note'
+    config.add_show_field 'note_finding_aid_display', label: 'Finding Aids'
+    config.add_show_field 'note_custodial_display', label: 'Custodial History'
+    config.add_show_field 'note_binding_display', label: 'Binding Note'
+    config.add_show_field 'note_related_display', label: 'Related Materials'
+    config.add_show_field 'note_accruals_display', label: 'Additions to Collection'
+    config.add_show_field 'note_local_display', label: 'Local Note'
+    config.add_show_field 'subject_display', label: 'Subject'
+    #config.add_show_field 'call_number', label: 'Call Number'
     config.add_show_field 'isbn', label: 'ISBN'
     config.add_show_field 'issn', label: 'ISSN'
     config.add_show_field 'govdoc', label: 'Government Document Classification'
     config.add_show_field 'language', label: 'Language'
-    # config.add_show_field 'resource_type', label: 'Resource Type'
+    config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
+
 
 
 
