@@ -42,7 +42,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
          acc.uniq!
     end
 
-    to_field 'material_type_display', extract_marc('300a', :trim_punctuation => true)
+    # to_field 'material_type_display', extract_marc('300a', :trim_punctuation => true)
 
     # Title fields
     #    primary title
@@ -74,7 +74,7 @@ class MarcIndexer < Blacklight::Marc::Indexer
       }.join(':'))
 
     to_field 'title_added_entry_t', extract_marc(%W{
-      700gklmnoprst 
+      700gklmnoprst
       710fgklmnopqrst
       711fgklnpst
       730abcdefgklmnopqrst
@@ -105,13 +105,13 @@ class MarcIndexer < Blacklight::Marc::Indexer
       653a:654abcde:655abc
     ).join(':'))
     to_field 'subject_addl_t', extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:650vwxyz:651vwxyz:654vwxyz:655vwxyz")
-    to_field 'subject_topic_facet', extract_marc("600abcdq:610ab:611ab:630aa:650aa:653aa:654ab:655ab", :trim_punctuation => true)
-    to_field 'subject_era_facet',  extract_marc("650y:651y:654y:655y", :trim_punctuation => true)
-    to_field 'subject_geo_facet',  extract_marc("651a:650z",:trim_punctuation => true )
+    # to_field 'subject_topic_facet', extract_marc("600abcdq:610ab:611ab:630aa:650aa:653aa:654ab:655ab", :trim_punctuation => true)
+    # to_field 'subject_era_facet',  extract_marc("650y:651y:654y:655y", :trim_punctuation => true)
+    # to_field 'subject_geo_facet',  extract_marc("651a:650z",:trim_punctuation => true )
 
     # Publication fields
-    to_field 'published_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>false)
-    to_field 'published_vern_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>:only)
+    # to_field 'published_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>false)
+    # to_field 'published_vern_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>:only)
 
     #does marc_publication_date guarantee single value?
     to_field 'pub_date_sort', marc_publication_date
@@ -196,18 +196,30 @@ class MarcIndexer < Blacklight::Marc::Indexer
 
 
 
+    #new solr fields for TUL search
 
+    #Title fields
 
+    to_field 'title_statement_display', extract_marc('245abcfgknps', :alternate_script=>false)
+    to_field 'title_statement_vern_display', extract_marc('245abcfgknps', :alternate_script=>:only)
+    to_field 'title_uniform_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>false)
+    to_field 'title_uniform_vern_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>:only)
+    to_field 'title_addl_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>false)
+    to_field 'title_addl_vern_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>:only)
 
-    #new solr fields from emitone
-    to_field 'title_statement', extract_marc('245abcfgknps')
-    to_field 'title', extract_marc('245a', :trim_punctuation => true)
-    to_field 'subtitle', extract_marc('245b', :trim_punctuation => true)
-    to_field 'title_uniform', extract_marc('130adfklmnoprs:240adfklmnoprs')
-    to_field 'title_addl', extract_marc('210ab:246abfgnp:740anp')
-    to_field 'creator', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true)
-    to_field 'imprint', extract_marc('260abcefg3:264abc3')
-    to_field 'edition', extract_marc('250a')
+    #Creator/contributor fields
+
+    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'creator_vern_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
+    #creator_facet?
+
+    #publication fields
+
+    to_field 'imprint_display', extract_marc('260abcefg3:264abc3', :alternate_script=>false)
+    to_field 'imprint_vern_display', extract_marc('260abcefg3:264abc3', :alternate_script=>:only)
+    to_field 'edition_display', extract_marc('250a:254a', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
+    to_field 'publisher_t', extract_marc('260b:264b', :trim_punctuation => true)
 
     to_field 'pub_date' do |rec, acc|   #, extract_marc('260c:264c')
       # fairly aggressive prune to get pub dates down to a 4 digit year
@@ -216,35 +228,60 @@ class MarcIndexer < Blacklight::Marc::Indexer
       end
     end
 
-    to_field 'pub_location', extract_marc('260a:264a', :trim_punctuation => true)
-    to_field 'publisher', extract_marc('260b:264b', :trim_punctuation => true)
-    to_field 'phys_desc', extract_marc('300abcefg3')
-    to_field 'title_series', extract_marc('830av:490av:440anpv')
-    to_field 'volume', extract_marc('830v:490v:440v')
-    to_field 'note', extract_marc('500a:502abcdgo:508a:511a:518a:530abcd:533abcdefmn:534pabcefklmnt:538aiu')
-    to_field 'note_with', extract_marc('501a')
-    to_field 'note_biblio', extract_marc('504a')
-    to_field 'note_toc', extract_marc('505agrt')
-    to_field 'note_restrictions', extract_marc('506abcde')
-    to_field 'note_references', extract_marc('510abc')
-    to_field 'note_summary', extract_marc('520ab')
-    to_field 'note_cite', extract_marc('524a')
-    to_field 'note_terms', extract_marc('540a')
-    to_field 'note_bio', extract_marc('545abu')
-    to_field 'note_finding_aid', extract_marc('555abcdu3')
-    to_field 'note_custodial', extract_marc('561a')
-    to_field 'note_binding', extract_marc('563a')
-    to_field 'note_related', extract_marc('580a')
-    to_field 'note_accruals', extract_marc('584a')
-    to_field 'note_local', extract_marc('590a')
-    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:690abcdegvxyz', :trim_punctuation => true)
-    to_field 'subject_topic', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
-    to_field 'subject_era', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
-    to_field 'subject_region', extract_marc('651a:650z:654z:655z', :trim_punctuation => true)
-    to_field 'genre', extract_marc('600v:610v:611v:630v:648v:650v:651v:655av', :trim_punctuation => true)
-    to_field 'call_number', extract_marc('852hi')
+    # to_field 'carto_data_display', extract_marc('', :trim_punctuation => true)
 
-    to_field 'library' do |rec, acc|   #extract_marc('852b')
+    #physical characteristics fields -3xx
+
+    to_field 'phys_desc_display', extract_marc('300abcefg3:340abcdefhijkmno')
+    to_field 'duration_display', extract_marc('306a')
+    to_field 'frequency_display', extract_marc('310ab:321ab')
+    to_field 'sound_display', extract_marc('344abcdefgh')
+    to_field 'digital_file_display', extract_marc('347abcdef')
+    to_field 'form_work_display', extract_marc('380a')
+    to_field 'performance_display', extract_marc('382abdenprst')
+    to_field 'music_no_display', extract_marc('383abcde')
+
+    #series fields
+
+    to_field 'title_series_display', extract_marc('830a:490a:440anp', :alternate_script=>false)
+    to_field 'title_series_vern_display', extract_marc('830a:490a:440anp', :alternate_script=>:only)
+    # to_field 'date_series', extract_marc('362a')
+    to_field 'volume_series_display', extract_marc('830v:490v:440v')
+
+
+    #note fields
+
+    to_field 'note_display', extract_marc('500a:508a:511a:515a:518a:521ab:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a')
+    to_field 'note_with_display', extract_marc('501a')
+    to_field 'note_diss_display', extract_marc('502abcdgo')
+    to_field 'note_biblio_display', extract_marc('504a')
+    to_field 'note_toc_display', extract_marc('505agrt')
+    to_field 'note_restrictions_display', extract_marc('506abcde')
+    to_field 'note_references_display', extract_marc('510abc')
+    to_field 'note_summary_display', extract_marc('520ab')
+    to_field 'note_cite_display', extract_marc('524a')
+    to_field 'note_terms_display', extract_marc('540a')
+    to_field 'note_bio_display', extract_marc('545abu')
+    to_field 'note_finding_aid_display', extract_marc('555abcdu3')
+    to_field 'note_custodial_display', extract_marc('561a')
+    to_field 'note_binding_display', extract_marc('563a')
+    to_field 'note_related_display', extract_marc('580a')
+    to_field 'note_accruals_display', extract_marc('584a')
+    to_field 'note_local_display', extract_marc('590a')
+
+    #subject fields
+    #Note need to improve the subjects
+    to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:690abcdegvxyz', :trim_punctuation => true)
+    to_field 'subject_topic_facet', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
+    to_field 'subject_era_facet', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
+    to_field 'subject_region_facet', extract_marc('651a:650z:654z:655z', :trim_punctuation => true)
+    to_field 'genre_facet', extract_marc('600v:610v:611v:630v:648v:650v:651v:655av', :trim_punctuation => true)
+
+    #location fields
+
+    to_field 'call_number_display', extract_marc('852hi')
+
+    to_field 'library_display' do |rec, acc|   #extract_marc('852b')
       rec.fields('852').each do |field|
         # Strip the values and downcase for indexing into locations.yml
         acc << field['b'].strip.downcase unless field['b'].nil?
@@ -252,9 +289,12 @@ class MarcIndexer < Blacklight::Marc::Indexer
     end
 
     to_field 'url', extract_marc(%W(856#{ATOZ}))  #Chad and Emily are working on this
-    to_field 'isbn', extract_marc('020a')
+
+    #Identifier fields
+
+    to_field 'isbn', extract_marc('020aq')
     to_field 'issn', extract_marc('022a')
+    to_field 'pub_no', extract_marc('086az')
     to_field 'govdoc', extract_marc('086az')
   end
 end
-
