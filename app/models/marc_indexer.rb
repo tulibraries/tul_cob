@@ -175,9 +175,9 @@ class MarcIndexer < Blacklight::Marc::Indexer
     end
 
     #Control number - set flag to identify no control numbers
-    to_field 'control_number_display', extract_marc('907a', :first=>true) do |_, acc|
-      acc << 'NO CONTROL NUMBER' if acc.empty?
-    end
+    #to_field 'control_number_display', extract_marc('907a', :first=>true) do |_, acc|
+    #  acc << 'NO CONTROL NUMBER' if acc.empty?
+    #end
 
     to_field 'location_facet' do |rec, acc|
       rec.fields('945').each do |field|
@@ -296,5 +296,6 @@ class MarcIndexer < Blacklight::Marc::Indexer
     to_field 'issn', extract_marc('022a')
     to_field 'pub_no', extract_marc('086az')
     to_field 'govdoc', extract_marc('086az')
+    to_field 'diamond_id', extract_marc('907a')
   end
 end
