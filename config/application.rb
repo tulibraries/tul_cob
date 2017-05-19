@@ -14,6 +14,12 @@ module Tulcob
     # -- all .rb files in that directory are automatically loaded.
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
+    begin
+			# Tell rails the applicaiton will be served from a subdirectory.
+			config.relative_url_root = config_for(:deploy_to)['path']
+    rescue Errno::ENOENT
+			# Do nothing and expect the application to be server in root path.
+	  end
 
     config.generators do |g|
       g.test_framework :rspec, :spec => true
