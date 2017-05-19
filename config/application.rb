@@ -17,7 +17,7 @@ module Tulcob
     begin
 			# Tell rails the applicaiton will be served from a subdirectory.
 			config.relative_url_root = config_for(:deploy_to)['path']
-    rescue Errno::ENOENT
+    rescue 
 			# Do nothing and expect the application to be server in root path.
 	  end
 
