@@ -23,7 +23,7 @@ cp config.alma.yml.example config/alma.yml
 ```
 
 Then edit it adding in the apikey for our application specified in our Ex Libris Developer Network.
- 
+
 
 ### Start the Application
 
@@ -39,10 +39,12 @@ bundle exec rails server
 
 ## Importing Data
 
-Get TUL specific sample data from [TUL Wiki](https://tulibdev.atlassian.net/wiki/download/attachments/14647301/smaller_tul.dat.gz?api=v2)(Login Required)
+Download the [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
 
+Untar the sample data.
+
+Import the MARC records with `bundle exec traject -c app/models/traject_indexer.rb PATH/TO/MARC.xml`
 
 ## Accessing User Accounts
 
 Login with just the username of the user you want to see details for.
-
