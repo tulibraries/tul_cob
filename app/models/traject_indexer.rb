@@ -228,7 +228,7 @@ end
 
     to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>:only)
-    t#creator_facet?
+    #creator_facet?
 
     #publication fields
 
@@ -311,6 +311,6 @@ end
 
     #to_field 'isbn_display', extract_marc('020aq')
     to_field 'issn_display', extract_marc('022a')
-to_field 'pub_no_display', extract_marc('086az')
+    to_field 'pub_no_display', extract_marc('086az')
     to_field 'govdoc_display', extract_marc('086az')
-to_field 'diamond_id_display', extract_marc('907a')
+    to_field 'diamond_id_display', extract_marc('907a')
