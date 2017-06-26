@@ -23,8 +23,37 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-      rows: 10
-    }
+  fl: %w[
+    id
+    score
+    author_display
+    author_vern_display
+    format
+    isbn_t
+    language_facet
+    lc_callnum_display
+    material_type_display
+    published_display
+    published_vern_display
+    pub_date
+    title_display
+    title_vern_display
+    subject_topic_facet
+    subject_geo_facet
+    subject_era_facet
+    subtitle_display
+    subtitle_vern_display
+    url_fulltext_display
+    url_suppl_display
+    title_statement
+    imprint
+    summary
+    contents
+    issn
+  ].join(" "),
+  wt: "json",
+  rows: 10,
+}
 
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
@@ -44,11 +73,11 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_statement'
+    config.index.title_field = 'title_display'
     config.index.display_type_field = 'format'
 
     # solr field configuration for document/show views
-    config.show.title_field = 'title_statement'
+    config.show.title_field = 'title_display'
     #config.show.display_type_field = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
