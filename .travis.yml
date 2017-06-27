@@ -1,0 +1,26 @@
+language: ruby
+sudo: false
+rvm:
+  - 2.3.1
+
+env:
+- TZ=America/New_York
+
+jdk:
+  - oraclejdk8
+
+before_script:
+  - cp config/secrets.yml.example config/secrets.yml
+  - cp config/alma.yml.example config/alma.yml
+  - RAILS_ENV=test bundle exec rake db:migrate
+  - RAILS_ENV=test bundle exec rake db:seed
+
+notifications:
+  email:
+    recipients:
+      - "chad.nelson@temple.edu"
+      - "steven.ng@temple.edu"
+    on_success: "change"
+    on_failure: "always"
+    template:
+- "%{repository}//%{branch}@%{commit} by %{author}: %{message} - %{build_url}"
