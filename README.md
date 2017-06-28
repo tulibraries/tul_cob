@@ -39,12 +39,14 @@ bundle exec rails server
 
 ## Importing Data
 
-Download the [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
+Download the 10000 [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
 
 Untar the sample data.
 
 Import the MARC records with `bundle exec traject -c app/models/traject_indexer.rb PATH/TO/MARC.xml`
 
-## Accessing User Accounts
+## Running the Tests
 
-Login with just the username of the user you want to see details for.
+`bundle exec rake ci`
+
+This will spin up a test solr instance, import a few hundred records, and run the test suite. 
