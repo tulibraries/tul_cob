@@ -1,7 +1,7 @@
 default: &default
   apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
   institution_code: INST_CODE
-    delivery_domain: alma.delivery.exlibrisgroup.com
+  delivery_domain: alma.delivery.exlibrisgroup.com
 
 development:
     <<: *default
