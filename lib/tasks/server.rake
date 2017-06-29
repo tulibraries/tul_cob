@@ -12,6 +12,19 @@ task :ci do
   end
 end
 
+desc 'Run selected specs (Use with Guard)'
+task :rspec, [:spec_args] do |t, args|
+  if Rails.env.test?
+    run_solr('test', { port: '8985' }) do
+      Rake::Task['fortytu:solr:load_fixtures'].invoke
+      rspec_cmd = "rspec #{args[:spec_args]}"
+      system(rspec_cmd)
+    end
+  else
+    system("rake rspec[#{args[:spec_args]}] RAILS_ENV=test")
+  end
+end
+
 desc 'Run solr and blacklight for interactive development'
 task :server, [:rails_server_args] do |t, args|
   run_solr('development', { port: '8983' }) do
@@ -19,7 +32,6 @@ task :server, [:rails_server_args] do |t, args|
     system "bundle exec rails s #{args[:rails_server_args]}"
   end
 end
-
 
 def run_solr(environment, solr_params)
   solr_dir = File.join(File.expand_path('.', File.dirname(__FILE__)), '../../', 'solr')
