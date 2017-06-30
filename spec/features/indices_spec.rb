@@ -65,7 +65,7 @@ RSpec.feature "Indices", type: :feature do
       end
     end
 
-    scenario "User visits a document directoy" do
+    scenario "User visits a document directly" do
       visit "catalog/#{item['doc_id']}"
       expect(current_url).to eq item_url
       expect(page).to have_text(item['title'])
