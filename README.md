@@ -12,8 +12,9 @@ This only needs to happen the first time.
 git clone git@github.com:tulibraries/tul_cob
 cd tul_cob
 bundle install
+cp config/secrets.yml.example config/secrets.yml
 bundle exec rails db:migrate
-cp config/secrets.yml.exmaple config/secrets.yml
+
 ```
 
 We also need to configure the application with our Alma apikey. Start by copying the example alma config file.
@@ -42,6 +43,9 @@ bundle exec rails server
 Download the 10000 [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
 
 Untar the sample data.
+```bash
+tar xvf
+```
 
 Import the MARC records with `bundle exec traject -c app/models/traject_indexer.rb PATH/TO/MARC.xml`
 
@@ -49,4 +53,4 @@ Import the MARC records with `bundle exec traject -c app/models/traject_indexer.
 
 `bundle exec rake ci`
 
-This will spin up a test solr instance, import a few hundred records, and run the test suite. 
+This will spin up a test solr instance, import a few hundred records, and run the test suite.
