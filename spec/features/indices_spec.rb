@@ -71,7 +71,7 @@ RSpec.feature "Indices", type: :feature do
     end
   end
 
-  feature "MARC Fields" do
+  feature "MARC Title Statement Fields" do
     let (:item) {
       fixtures.fetch("title_statement")
     }
@@ -81,5 +81,16 @@ RSpec.feature "Indices", type: :feature do
       expect(page).to have_text(item['title'])
     end
 
+  end
+
+  feature "MARC Title Vernacular Fields" do
+    let (:item) {
+      fixtures.fetch("title_vern")
+    }
+
+    scenario "User visits a document with title vernacular" do
+      visit "catalog/#{item['doc_id']}"
+      expect(page).to have_text(item['title_vern'])
+    end
   end
 end
