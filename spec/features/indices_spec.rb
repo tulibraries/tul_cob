@@ -3,8 +3,11 @@ require 'traject'
 require 'traject/command_line'
 require 'yaml'
 
-require 'pry' # FIXME
 RSpec.feature "Indices", type: :feature do
+  let (:fixtures) {
+    YAML.load_file("#{fixture_path}/features.yml")
+  }
+
   feature "Home Page" do
     context "publicly available pages" do
       scenario "User visits home page" do
@@ -38,10 +41,6 @@ RSpec.feature "Indices", type: :feature do
   end
 
   feature "Document" do
-    let (:fixtures) {
-      YAML.load_file("#{fixture_path}/features.yml")
-    }
-
     let (:item) {
       fixtures.fetch("simple_search")
     }
@@ -70,5 +69,17 @@ RSpec.feature "Indices", type: :feature do
       expect(current_url).to eq item_url
       expect(page).to have_text(item['title'])
     end
+  end
+
+  feature "MARC Fields" do
+    let (:item) {
+      fixtures.fetch("title_statement")
+    }
+
+    scenario "User visits a document with full title statement" do
+      visit "catalog/#{item['doc_id']}"
+      expect(page).to have_text(item['title'])
+    end
+
   end
 end

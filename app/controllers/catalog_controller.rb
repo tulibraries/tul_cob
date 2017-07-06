@@ -47,7 +47,7 @@ class CatalogController < ApplicationController
     subtitle_vern_display
     url_fulltext_display
     url_suppl_display
-    title_statement
+    title_statement_display
     imprint
     summary
     contents
@@ -158,7 +158,7 @@ class CatalogController < ApplicationController
     # config.add_index_field 'lc_callnum_display', label: 'Call number'
     # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
-    #config.add_index_field 'title_statement', label: 'Title Statement'
+    config.add_index_field 'title_statement_display', label: 'Title Statement'
     config.add_index_field 'imprint', label: 'Imprint'
     config.add_index_field 'creator', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
@@ -183,7 +183,7 @@ class CatalogController < ApplicationController
     # config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
 
     #new
-    #config.add_show_field 'title_statement', label: ' '
+    config.add_show_field 'title_statement_display', label: 'Title Statement'
     #config.add_show_field 'title', label: 'Title'
     #config.add_show_field 'subtitle', label: 'Subtitle'
     config.add_show_field 'title_statement_vern_display', label: ' '
