@@ -1,0 +1,13 @@
+default: &default
+  apikey: "l7xxb45c21271ab94ddfb7fcb7221e5b2ef6"
+  institution_code: INST_CODE
+  delivery_domain: alma.delivery.exlibrisgroup.com
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default
