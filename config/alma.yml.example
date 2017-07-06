@@ -1,5 +1,5 @@
 default: &default
-  apikey: "l7xxb45c21271ab94ddfb7fcb7221e5b2ef6"
+  apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
   institution_code: INST_CODE
   delivery_domain: alma.delivery.exlibrisgroup.com
 
