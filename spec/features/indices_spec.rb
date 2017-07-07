@@ -71,28 +71,5 @@ RSpec.feature "Indices", type: :feature do
     end
   end
 
-  feature "MARC Title Statement Fields" do
-    let (:item) {
-      fixtures.fetch("title_statement")
-    }
-
-    scenario "User visits a document with full title statement" do
-      visit "catalog/#{item['doc_id']}"
-      expect(page).to have_text(item['title'])
-    end
-
-  end
-
-  feature "MARC Title Vernacular Fields" do
-    let (:item) {
-      fixtures.fetch("title_vern")
-    }
-
-    scenario "User visits a document with title vernacular" do
-      visit "catalog/#{item['doc_id']}"
-      within "dd.blacklight-title_statement_vern_display" do
-        expect(page).to have_text(item['title_vern'])
-      end
-    end
-  end
+  
 end
