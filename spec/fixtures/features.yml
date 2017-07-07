@@ -8,10 +8,10 @@ simple_search:
   physical_description: "vi, 217 pages ; 23 cm."
   series_title: "Palgrave critical university studies"
   status_location: "Paley Stacks"
-  url: "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" 
+  url: "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity"
 title_statement:
   doc_id: "991012321589760609"
   title: "Spiegel Catalog. Part B. Part C. Part F. Part G. Part K. Part N. Part P. Part S."
 title_vern:
   doc_id: "991012321589760609"
-  title_vern: "Vern Title. Vern B. Vern C."
+  title_vern: "Vern Title. Vern B. Vern C. Vern F. Vern G. Vern K. Vern N. Vern P. Vern S."

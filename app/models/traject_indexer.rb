@@ -69,7 +69,7 @@ to_field 'title_display', extract_marc('245a', :trim_punctuation => true, :alter
   acc.replace [acc.join(' ')] # turn it into a single string
 end
 
-to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>:only)
+to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>false)
 
 #    subtitle
 
@@ -218,7 +218,7 @@ end
     #Title fields
 
     to_field 'title_statement_display', extract_marc('245abcfgknps', :alternate_script=>false)
-    to_field 'title_statement_vern_display', extract_marc('245abcfgknps', :alternate_script=>:only)
+    to_field 'title_statement_vern_display', extract_marc('880abcfgknps', :alternate_script=>:only)
     to_field 'title_uniform_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>false)
     to_field 'title_uniform_vern_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>:only)
     to_field 'title_addl_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>false)
