@@ -14,10 +14,11 @@ module Tulcob
     # -- all .rb files in that directory are automatically loaded.
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
+    config.exceptions_app = self.routes
     begin
 			# Tell rails the applicaiton will be served from a subdirectory.
 			config.relative_url_root = config_for(:deploy_to)['path']
-    rescue 
+    rescue
 			# Do nothing and expect the application to be server in root path.
 	  end
 
