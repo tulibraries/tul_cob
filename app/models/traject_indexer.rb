@@ -69,7 +69,7 @@ to_field 'title_display', extract_marc('245a', :trim_punctuation => true, :alter
   acc.replace [acc.join(' ')] # turn it into a single string
 end
 
-to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>false)
+to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>:only)
 
 #    subtitle
 

@@ -1,6 +1,4 @@
 require 'rails_helper'
-require 'traject'
-require 'traject/command_line'
 require 'yaml'
 
 RSpec.feature "RecordPageFields", type: :feature do
