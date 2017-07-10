@@ -30,7 +30,7 @@ RSpec.feature "Indices", type: :feature do
       click_button 'Search'
       expect(current_url).to eq results_url
       within(".document-position-0 h3") do
-        expect(page).to have_text title 
+        expect(page).to have_text title
       end
       within(".document-metadata") do
         expect(page).to have_text "Resource Type:"
@@ -71,15 +71,5 @@ RSpec.feature "Indices", type: :feature do
     end
   end
 
-  feature "MARC Fields" do
-    let (:item) {
-      fixtures.fetch("title_statement")
-    }
-
-    scenario "User visits a document with full title statement" do
-      visit "catalog/#{item['doc_id']}"
-      expect(page).to have_text(item['title'])
-    end
-
-  end
+  
 end
