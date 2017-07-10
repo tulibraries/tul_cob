@@ -28,7 +28,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_130) { fixtures.fetch("title_uniform_130") }
     scenario "User visits a document with field 130 only" do
       visit "catalog/#{item_130['doc_id']}"
-      #save_and_open_page
       within "dd.blacklight-title_uniform_display" do
         expect(page).to have_text(item_130['title_uniform'])
       end
@@ -37,7 +36,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_240) { fixtures.fetch("title_uniform_240") }
     scenario "User visits a document with field 240 only" do
       visit "catalog/#{item_240['doc_id']}"
-      #save_and_open_page
       within "dd.blacklight-title_uniform_display" do
         expect(page).to have_text(item_240['title_uniform'])
       end
@@ -46,7 +44,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_730) { fixtures.fetch("title_uniform_730") }
     scenario "User visits a document with field 730 only" do
       visit "catalog/#{item_730['doc_id']}"
-      #save_and_open_page
       within "dd.blacklight-title_uniform_display" do
         expect(page).to have_text(item_730['title_uniform'])
       end
@@ -57,8 +54,13 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Title Additional Fields" do
-    let (:item) { fixtures.fetch("title_addl") }
-    scenario "User visits a document with title additional"
+    let (:item_210) { fixtures.fetch("title_addl_210") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_210['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_210['title_addl'])
+      end
+    end
     scenario "User visits a document with additional title vernacular"
   end
 
