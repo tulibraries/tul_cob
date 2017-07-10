@@ -43,6 +43,16 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_730) { fixtures.fetch("title_uniform_730") }
+    scenario "User visits a document with field 730 only" do
+      visit "catalog/#{item_730['doc_id']}"
+      #save_and_open_page
+      within "dd.blacklight-title_uniform_display" do
+        expect(page).to have_text(item_730['title_uniform'])
+      end
+    end
+
+    #[TODO] Which marc field?
     scenario "User visits a document with uniform title vernacular"
   end
 

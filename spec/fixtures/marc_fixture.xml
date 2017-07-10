@@ -22132,4 +22132,147 @@
       <subfield code='l'>PATG</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760612</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1=' ' ind2=' ' tag='010'>
+      <subfield code='a'>82042731</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='020'>
+      <subfield code='a'>0684173212 :</subfield>
+      <subfield code='c'>$60.00</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b1251858x-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>ocn471187614</subfield>
+      <subfield code='9'>ExL</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>PATG83-B31397</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='043'>
+      <subfield code='a'>n-us---</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='079'>
+      <subfield code='a'>ocm09111110</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>E174.D522 1983</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='730'>
+      <subfield code='a'>Dictionary of American history: 730.</subfield>
+      <subfield code='i'>Subfield I.</subfield>
+      <subfield code='l'>Subfield L.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='260'>
+      <subfield code='a'>New York :</subfield>
+      <subfield code='b'>Scribner,</subfield>
+      <subfield code='c'>c1983.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>1140 p. ;</subfield>
+      <subfield code='c'>29 cm.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>&quot;An abridgement of the eight-volume Dictionary of American history, published in 1976&quot;--Foreword.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='651'>
+      <subfield code='a'>United States</subfield>
+      <subfield code='x'>History</subfield>
+      <subfield code='x'>Dictionaries.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>22225796680003811</subfield>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>remote</subfield>
+      <subfield code='h'> E174.D522 1983 </subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>2288646000003811</subfield>
+      <subfield code='b'>AMBLER</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>E174.D522 1983</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>2288646040003811</subfield>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>E174.D522 1983</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>140328</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b1251858x</subfield>
+      <subfield code='b'>multi</subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='935'>
+      <subfield code='a'>00268932</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>astk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>AMB</subfield>
+      <subfield code='i'>03/29/85 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>PREF</subfield>
+      <subfield code='h'>03/27/84 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>P</subfield>
+      <subfield code='h'>10/03/83 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='955'>
+      <subfield code='l'>AMB</subfield>
+      <subfield code='i'>03/29/85 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='955'>
+      <subfield code='l'>PREF</subfield>
+      <subfield code='h'>03/27/84 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='955'>
+      <subfield code='l'>P</subfield>
+      <subfield code='h'>10/03/83 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>3</subfield>
+      <subfield code='c'>990101</subfield>
+      <subfield code='d'>m</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='a'>03/29/85</subfield>
+      <subfield code='t'>c</subfield>
+      <subfield code='s'>9110</subfield>
+      <subfield code='n'>PPT</subfield>
+      <subfield code='w'>DCLC8242731B</subfield>
+      <subfield code='d'>10/03/83</subfield>
+      <subfield code='c'>RF</subfield>
+      <subfield code='b'>DH</subfield>
+      <subfield code='i'>850329</subfield>
+      <subfield code='h'>840327</subfield>
+      <subfield code='h'>831003</subfield>
+      <subfield code='l'>PATG</subfield>
+    </datafield>
+  </record>
 </collection>
