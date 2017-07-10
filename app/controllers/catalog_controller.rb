@@ -48,6 +48,7 @@ class CatalogController < ApplicationController
     url_fulltext_display
     url_suppl_display
     title_statement_display
+    title_uniform_display
     imprint
     summary
     contents
