@@ -61,6 +61,31 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_210['title_addl'])
       end
     end
+
+    let (:item_246) { fixtures.fetch("title_addl_246") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_246['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_246['title_addl'])
+      end
+    end
+
+    let (:item_247) { fixtures.fetch("title_addl_247") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_247['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_247['title_addl'])
+      end
+    end
+
+    let (:item_740) { fixtures.fetch("title_addl_740") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_740['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_740['title_addl'])
+      end
+    end
+
     scenario "User visits a document with additional title vernacular"
   end
 
