@@ -22335,4 +22335,98 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760617</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='100'>
+      <subfield code='a'>Dictionary of American history: 100.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='q'>Subfield Q.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760618</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='110'>
+      <subfield code='a'>Dictionary of American history: 110.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760619</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='111'>
+      <subfield code='a'>Dictionary of American history: 111.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='j'>Subfield J.</subfield>
+      <subfield code='n'>Subfield N.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760620</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='700'>
+      <subfield code='a'>Dictionary of American history: 700.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='q'>Subfield Q.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760621</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='710'>
+      <subfield code='a'>Dictionary of American history: 710.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760622</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='711'>
+      <subfield code='a'>Dictionary of American history: 711.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='j'>Subfield J.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+
 </collection>
