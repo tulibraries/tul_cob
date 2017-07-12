@@ -73,12 +73,16 @@ phys_desc_340:
 
 # Work split between developers (Prevent Git Merge overwrite hack)
 
+govdoc:
+  doc_id: "991012132499760696"
+  govdoc: "GA 1.5/2:GAO-05-1031 T"
 language:
   doc_id: "991012132499760699"
   language: "English"
 language_jpn:
-  doc_id: "991012132499760697"
+  doc_id: "991012132499760698"
   language: "Japanese"
 language_041:
-  doc_id: "991012132499760697"
+# Use same Doc_id. [TODO] Determine where language in field 041 is rendered
+  doc_id: "991012132499760698"
   language: "English"

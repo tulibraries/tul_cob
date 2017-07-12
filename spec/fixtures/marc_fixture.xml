@@ -22524,6 +22524,22 @@
 
 <!-- Work split between developer -->
 
+  <record>
+    <leader>02139nam a2200433Ia 4500</leader>
+    <controlfield tag='001'>991012132499760696</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='086'>
+      <subfield code='a'>GA 1.5/2:GAO-05-1031 T</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='086'>
+      <subfield code='a'>GA 1.5/2:GAO-05-1031 T</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Managerial cost accounting practices</subfield>
+      <subfield code='h'>[electronic resource] :</subfield>
+      <subfield code='b'>Department of Labor and Veterans Affairs : testimony before the Subcommittee on Government Management, Finance, and Accountability, Committee on Government Reform, House of Representatives /</subfield>
+      <subfield code='c'>statement of Robert E. Martin.</subfield>
+    </datafield>
+  </record>
 
   <record>
     <controlfield tag='001'>991012132499760699</controlfield>

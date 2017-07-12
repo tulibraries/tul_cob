@@ -231,8 +231,8 @@ class CatalogController < ApplicationController
     #config.add_show_field 'call_number', label: 'Call Number'
     config.add_show_field 'isbn', label: 'ISBN'
     config.add_show_field 'issn', label: 'ISSN'
-    config.add_show_field 'govdoc', label: 'Government Document Classification'
-    config.add_show_field 'language', label: 'Language'
+    config.add_show_field 'govdoc_display', label: 'Government Document Classification'
+    config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
 
 
