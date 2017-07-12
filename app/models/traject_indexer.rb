@@ -227,7 +227,7 @@ end
 
     #Creator/contributor fields
 
-    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdejn:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>:only)
     #creator_facet?
 

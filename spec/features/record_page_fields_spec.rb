@@ -61,13 +61,86 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_210['title_addl'])
       end
     end
+
+    let (:item_246) { fixtures.fetch("title_addl_246") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_246['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_246['title_addl'])
+      end
+    end
+
+    let (:item_247) { fixtures.fetch("title_addl_247") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_247['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_247['title_addl'])
+      end
+    end
+
+    let (:item_740) { fixtures.fetch("title_addl_740") }
+    scenario "User visits a document with additional title " do
+      visit "catalog/#{item_740['doc_id']}"
+      within "dd.blacklight-title_addl_display" do
+        expect(page).to have_text(item_740['title_addl'])
+      end
+    end
+
     scenario "User visits a document with additional title vernacular"
+
   end
 
   feature "MARC Creator Fields" do
-    let (:item) { fixtures.fetch("creator") }
-    scenario "User visits a document with creator"
+    let (:item_100) { fixtures.fetch("creator_100") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_100['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_100['creator'])
+      end
+    end
+
+    let (:item_110) { fixtures.fetch("creator_110") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_110['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_110['creator'])
+      end
+    end
+
+    let (:item_111) { fixtures.fetch("creator_111") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_111['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_111['creator'])
+      end
+    end
+
+    let (:item_700) { fixtures.fetch("creator_700") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_700['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_700['creator'])
+      end
+    end
+
+    let (:item_710) { fixtures.fetch("creator_710") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_710['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_710['creator'])
+      end
+    end
+
+    let (:item_711) { fixtures.fetch("creator_711") }
+    scenario "User visits a document with creator" do
+      visit "catalog/#{item_711['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_711['creator'])
+      end
+    end
+
     scenario "User visits a document with creator vernacular"
+
   end
 
   feature "MARC Format Fields" do
@@ -76,8 +149,21 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Imprint Fields" do
-    let (:item) { fixtures.fetch("imprint") }
-    scenario "User visits a document with imprint"
+    let (:item_260) { fixtures.fetch("imprint_260") }
+    scenario "User visits a document with imprint" do
+      visit "catalog/#{item_260['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_260['imprint'])
+      end
+    end
+
+    let (:item_264) { fixtures.fetch("imprint_264") }
+    scenario "User visits a document with imprint" do
+      visit "catalog/#{item_264['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_264['imprint'])
+      end
+    end
   end
 
   feature "MARC Edition Fields" do
