@@ -239,11 +239,18 @@ RSpec.feature "RecordPageFields", type: :feature do
   feature "MARC Volume Fields" do
     let (:item) { fixtures.fetch("volume") }
     scenario "User visits a document with volume"
+    # [TODO] This is the same marc field number and subfield that was in imprint
+    # [TODO] This is called volume_series_display in the traject indexer file
   end
 
   feature "MARC Duration Fields" do
-    let (:item) { fixtures.fetch("duration") }
-    scenario "User visits a document with duration"
+    let (:item_306) { fixtures.fetch("duration_306") }
+    scenario "User visits a document with duration" do
+      visit "catalog/#{item_306['doc_id']}"
+      within "dd.blacklight-duration_display" do
+        expect(page).to have_text(item_306['duration'])
+      end
+    end
   end
 
   feature "MARC Frequency Fields" do

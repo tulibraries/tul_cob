@@ -79,6 +79,9 @@ title_series_490:
 title_series_440:
   doc_id: "991012132499760631"
   title_series: "Dictionary of American history: 440. Subfield N. Subfield P. Subfield V."
+duration_306:
+  doc_id: "991012132499760632"
+  duration: "Dictionary of American history: 306."
 
 # Work split between developers (Prevent Git Merge overwrite hack)
 
