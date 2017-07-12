@@ -1,0 +1,26 @@
+
+  <record>
+    <controlfield tag='001'>991012132499760699</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02661cgm a2200637 a 4500</leader>
+    <controlfield tag='001'>991012132499760698</controlfield>
+    <controlfield tag='005'>20051220140036.0</controlfield>
+    <controlfield tag='007'>vd cvaizm</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='a'>jpn</subfield>
+      <subfield code='b'>eng</subfield>
+      <subfield code='h'>jpn</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Yaju no seishun</subfield>
+      <subfield code='h'>[videorecording] =</subfield>
+      <subfield code='b'>Youth of the beast /</subfield>
+      <subfield code='c'>a Janus Films release ; produced by Keinosuke Kubo ; screenplay by Ichoro Ikeda Tadaaki Yamazaki ; directed by Seijun Suzuki.</subfield>
+    </datafield>
+  </record>

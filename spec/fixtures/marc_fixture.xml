@@ -22460,6 +22460,33 @@
     </datafield>
   </record>
   <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760625</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='250'>
+      <subfield code='a'>Dictionary of American history: 250.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760626</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='254'>
+      <subfield code='a'>Dictionary of American history: 254.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+
+  
+<!-- Work split between developer -->
+
+
+  <record>
     <controlfield tag='001'>991012132499760699</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2='0' tag='245'>
@@ -22468,7 +22495,7 @@
   </record>
   <record>
     <leader>02661cgm a2200637 a 4500</leader>
-    <controlfield tag='001'>991012132499760697</controlfield>
+    <controlfield tag='001'>991012132499760698</controlfield>
     <controlfield tag='005'>20051220140036.0</controlfield>
     <controlfield tag='007'>vd cvaizm</controlfield>
     <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
