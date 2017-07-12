@@ -362,5 +362,8 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_jpn['language'])
       end
     end
+    let (:item_041) { fixtures.fetch("language_041") }
+    scenario "User visits a document with entry languages code specified in field 041"
+    # [TODO] The language in field 041 does not appear to be ingested
   end
 end
