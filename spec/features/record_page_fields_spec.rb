@@ -291,9 +291,15 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "MARC Fom Work Fields" do
-    let (:item) { fixtures.fetch("fom_work") }
-    scenario "User visits a document with fom work"
+  feature "MARC Form Work Fields" do
+    let (:item_380) { fixtures.fetch("form_work_380") }
+    scenario "User visits a document with form work" do
+      # [TODO] Check whether this should be called fom_work as used in the data tables in confluence or form_work as used in the traject indexer file.  For now, it is using form_work
+      visit "catalog/#{item_380['doc_id']}"
+      within "dd.blacklight-form_work_display" do
+        expect(page).to have_text(item_380['form_work'])
+      end
+    end
   end
 
   feature "MARC Performance Fields" do
