@@ -48,6 +48,7 @@ to_field "text", extract_all_marc_values do |r, acc|
 end
 
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
+to_field "language", marc_languages("008[35-37]:041a:041d:")
 
 to_field "format", marc_formats
 

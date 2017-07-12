@@ -64,3 +64,12 @@ edition_250:
 edition_254:
   doc_id: "991012132499760626"
   edition: "Dictionary of American history: 254"
+language:
+  doc_id: "991012132499760699"
+  language: "English"
+language_jpn:
+  doc_id: "991012132499760697"
+  language: "Japanese"
+language_041:
+  doc_id: "991012132499760697"
+  language: "English"

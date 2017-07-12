@@ -60,6 +60,9 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simplecov', require: false
   gem 'guard-rspec', require: false
+  gem 'guard-shell'
+  gem 'launchy'
+  gem 'foreman'
 end
 
 gem 'rsolr', '~> 1.0'
