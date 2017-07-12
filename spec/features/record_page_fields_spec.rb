@@ -282,8 +282,13 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Digital File Fields" do
-    let (:item) { fixtures.fetch("digital_file") }
-    scenario "User visits a document with digital file"
+    let (:item_347) { fixtures.fetch("digital_file_347") }
+    scenario "User visits a document with digital file" do
+      visit "catalog/#{item_347['doc_id']}"
+      within "dd.blacklight-digital_file_display" do
+        expect(page).to have_text(item_347['digital_file'])
+      end
+    end
   end
 
   feature "MARC Fom Work Fields" do
