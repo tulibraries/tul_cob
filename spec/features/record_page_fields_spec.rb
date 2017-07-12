@@ -167,8 +167,21 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Edition Fields" do
-    let (:item) { fixtures.fetch("edition") }
-    scenario "User visits a document with edition"
+    let (:item_250) { fixtures.fetch("edition_250") }
+    scenario "User visits a document with edition" do
+      visit "catalog/#{item_250['doc_id']}"
+      within "dd.blacklight-edition_display" do
+        expect(page).to have_text(item_250['edition'])
+      end
+    end
+
+    let (:item_254) { fixtures.fetch("edition_254") }
+    scenario "User visits a document with edition" do
+      visit "catalog/#{item_254['doc_id']}"
+      within "dd.blacklight-edition_display" do
+        expect(page).to have_text(item_254['edition'])
+      end
+    end
   end
 
   feature "MARC Publication Date Fields" do
