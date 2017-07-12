@@ -22520,6 +22520,44 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760629</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='830'>
+      <subfield code='a'>Dictionary of American history: 830.</subfield>
+      <subfield code='v'>Subfield V.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760630</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='490'>
+      <subfield code='a'>Dictionary of American history: 490.</subfield>
+      <subfield code='v'>Subfield V.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760631</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='440'>
+      <subfield code='a'>Dictionary of American history: 440.</subfield>
+      <subfield code='n'>Subfield N.</subfield>
+      <subfield code='p'>Subfield P.</subfield>
+      <subfield code='v'>Subfield V.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
 
 
 <!-- Work split between developer -->

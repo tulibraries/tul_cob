@@ -209,8 +209,30 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Series Title Fields" do
-    let (:item) { fixtures.fetch("title_series") }
-    scenario "User visits a document with series title"
+    let (:item_830) { fixtures.fetch("title_series_830") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_830['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_830['title_series'])
+      end
+    end
+
+    let (:item_490) { fixtures.fetch("title_series_490") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_490['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_490['title_series'])
+      end
+    end
+
+    let (:item_440) { fixtures.fetch("title_series_440") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_440['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_440['title_series'])
+      end
+    end
+
     scenario "User visits a document with series title vernacular"
   end
 

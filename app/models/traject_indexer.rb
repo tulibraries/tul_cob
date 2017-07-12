@@ -261,7 +261,7 @@ end
 
     #series fields
 
-    to_field 'title_series_display', extract_marc('830a:490a:440anp', :alternate_script=>false)
+    to_field 'title_series_display', extract_marc('830av:490av:440anpv', :alternate_script=>false)
     to_field 'title_series_vern_display', extract_marc('830a:490a:440anp', :alternate_script=>:only)
     # to_field 'date_series', extract_marc('362a')
     to_field 'volume_series_display', extract_marc('830v:490v:440v')

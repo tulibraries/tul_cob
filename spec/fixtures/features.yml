@@ -66,10 +66,19 @@ edition_254:
   edition: "Dictionary of American history: 254"
 phys_desc_300:
   doc_id: "991012132499760627"
-  edition: "Dictionary of American history: 300. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G."
+  phys_desc: "Dictionary of American history: 300. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G."
 phys_desc_340:
   doc_id: "991012132499760628"
-  edition: "Dictionary of American history: 340. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield H. Subfield I. Subfield J. Subfield K. Subfield M. Subfield N. Subfield O."
+  phys_desc: "Dictionary of American history: 340. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield H. Subfield I. Subfield J. Subfield K. Subfield M. Subfield N. Subfield O."
+title_series_830:
+  doc_id: "991012132499760629"
+  title_series: "Dictionary of American history: 830. Subfield V."
+title_series_490:
+  doc_id: "991012132499760630"
+  title_series: "Dictionary of American history: 490. Subfield V."
+title_series_440:
+  doc_id: "991012132499760631"
+  title_series: "Dictionary of American history: 440. Subfield N. Subfield P. Subfield V."
 
 # Work split between developers (Prevent Git Merge overwrite hack)
 
