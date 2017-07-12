@@ -263,6 +263,18 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   feature "MARC Language Fields" do
     let (:item) { fixtures.fetch("language") }
-    scenario "User visits a document with entry language"
+    scenario "User visits a document with entry language" do
+      visit "catalog/#{item['doc_id']}"
+      within "dd.blacklight-language" do
+        expect(page).to have_text(item['language'])
+      end
+    end
+    let (:item_jpn) { fixtures.fetch("language_jpn") }
+    scenario "User visits a document with entry language other than English" do
+      visit "catalog/#{item_jpn['doc_id']}"
+      within "dd.blacklight-language" do
+        expect(page).to have_text(item_jpn['language'])
+      end
+    end
   end
 end
