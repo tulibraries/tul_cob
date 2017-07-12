@@ -313,8 +313,13 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Music No Fields" do
-    let (:item) { fixtures.fetch("music_no") }
-    scenario "User visits a document with music no"
+    let (:item_383) { fixtures.fetch("music_no_383") }
+    scenario "User visits a document with music no" do
+      visit "catalog/#{item_383['doc_id']}"
+      within "dd.blacklight-music_no_display" do
+        expect(page).to have_text(item_383['music_no'])
+      end
+    end
   end
 
   feature "MARC Note Fields" do
