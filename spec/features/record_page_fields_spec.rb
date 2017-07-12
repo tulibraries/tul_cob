@@ -366,4 +366,9 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041"
     # [TODO] The language in field 041 does not appear to be ingested
   end
+
+  feature "MARC Format Field" do
+    scenario "User visits a document with format field"
+    # [TODO] https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Displays#DataDisplays-FieldstoincludeinRecordPages
+  end
 end
