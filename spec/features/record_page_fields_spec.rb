@@ -254,8 +254,21 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Frequency Fields" do
-    let (:item) { fixtures.fetch("frequency") }
-    scenario "User visits a document with frequency"
+    let (:item_310) { fixtures.fetch("frequency_310") }
+    scenario "User visits a document with frequency" do
+      visit "catalog/#{item_310['doc_id']}"
+      within "dd.blacklight-frequency_display" do
+        expect(page).to have_text(item_310['frequency'])
+      end
+    end
+
+    let (:item_321) { fixtures.fetch("frequency_321") }
+    scenario "User visits a document with frequency" do
+      visit "catalog/#{item_321['doc_id']}"
+      within "dd.blacklight-frequency_display" do
+        expect(page).to have_text(item_321['frequency'])
+      end
+    end
   end
 
   feature "MARC Sound Fields" do

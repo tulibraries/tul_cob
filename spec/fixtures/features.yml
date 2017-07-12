@@ -82,6 +82,12 @@ title_series_440:
 duration_306:
   doc_id: "991012132499760632"
   duration: "Dictionary of American history: 306."
+frequency_310:
+  doc_id: "991012132499760633"
+  frequency: "Dictionary of American history: 310. Subfield B."
+frequency_321:
+  doc_id: "991012132499760634"
+  frequency: "Dictionary of American history: 321. Subfield B."
 
 # Work split between developers (Prevent Git Merge overwrite hack)
 
