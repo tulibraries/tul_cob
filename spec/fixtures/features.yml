@@ -88,6 +88,9 @@ frequency_310:
 frequency_321:
   doc_id: "991012132499760634"
   frequency: "Dictionary of American history: 321. Subfield B."
+sound_344:
+  doc_id: "991012132499760635"
+  frequency: "Dictionary of American history: 344. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H."
 
 # Work split between developers (Prevent Git Merge overwrite hack)
 

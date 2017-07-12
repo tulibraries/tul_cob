@@ -272,8 +272,13 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Sound Fields" do
-    let (:item) { fixtures.fetch("sound") }
-    scenario "User visits a document with sound"
+    let (:item_344) { fixtures.fetch("sound_344") }
+    scenario "User visits a document with sound" do
+      visit "catalog/#{item_344['doc_id']}"
+      within "dd.blacklight-sound_display" do
+        expect(page).to have_text(item_344['sound'])
+      end
+    end
   end
 
   feature "MARC Digital File Fields" do
