@@ -149,8 +149,21 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Imprint Fields" do
-    let (:item) { fixtures.fetch("imprint") }
-    scenario "User visits a document with imprint"
+    let (:item_260) { fixtures.fetch("imprint_260") }
+    scenario "User visits a document with imprint" do
+      visit "catalog/#{item_260['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_260['imprint'])
+      end
+    end
+
+    let (:item_264) { fixtures.fetch("imprint_264") }
+    scenario "User visits a document with imprint" do
+      visit "catalog/#{item_264['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_264['imprint'])
+      end
+    end
   end
 
   feature "MARC Edition Fields" do
