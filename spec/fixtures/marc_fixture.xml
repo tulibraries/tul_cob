@@ -22481,8 +22481,47 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760627</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='300'>
+      <subfield code='a'>Dictionary of American history: 300.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='f'>Subfield F.</subfield>
+      <subfield code='g'>Subfield G.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760628</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='340'>
+      <subfield code='a'>Dictionary of American history: 340.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+      <subfield code='f'>Subfield F.</subfield>
+      <subfield code='h'>Subfield H.</subfield>
+      <subfield code='i'>Subfield I.</subfield>
+      <subfield code='j'>Subfield J.</subfield>
+      <subfield code='k'>Subfield K.</subfield>
+      <subfield code='m'>Subfield M.</subfield>
+      <subfield code='n'>Subfield N.</subfield>
+      <subfield code='o'>Subfield O.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
 
-  
+
 <!-- Work split between developer -->
 
 

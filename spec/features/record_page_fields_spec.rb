@@ -187,11 +187,25 @@ RSpec.feature "RecordPageFields", type: :feature do
   feature "MARC Publication Date Fields" do
     let (:item) { fixtures.fetch("pub_date") }
     scenario "User visits a document with publication date"
+      # [TODO] This is the same marc field number and subfield that was in imprint
   end
 
   feature "MARC Physical Description Fields" do
-    let (:item) { fixtures.fetch("phys_desc") }
-    scenario "User visits a document with physical description"
+    let (:item_300) { fixtures.fetch("phys_desc_300") }
+    scenario "User visits a document with physical description" do
+      visit "catalog/#{item_300['doc_id']}"
+      within "dd.blacklight-phys_desc_display" do
+        expect(page).to have_text(item_300['phys_desc'])
+      end
+    end
+
+    let (:item_340) { fixtures.fetch("phys_desc_340") }
+    scenario "User visits a document with physical description" do
+      visit "catalog/#{item_340['doc_id']}"
+      within "dd.blacklight-phys_desc_display" do
+        expect(page).to have_text(item_340['phys_desc'])
+      end
+    end
   end
 
   feature "MARC Series Title Fields" do

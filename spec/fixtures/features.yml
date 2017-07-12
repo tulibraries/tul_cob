@@ -64,7 +64,13 @@ edition_250:
 edition_254:
   doc_id: "991012132499760626"
   edition: "Dictionary of American history: 254"
-  
+phys_desc_300:
+  doc_id: "991012132499760627"
+  edition: "Dictionary of American history: 300. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G."
+phys_desc_340:
+  doc_id: "991012132499760628"
+  edition: "Dictionary of American history: 340. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield H. Subfield I. Subfield J. Subfield K. Subfield M. Subfield N. Subfield O."
+
 # Work split between developers (Prevent Git Merge overwrite hack)
 
 language:
