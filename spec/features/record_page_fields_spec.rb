@@ -303,8 +303,13 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Performance Fields" do
-    let (:item) { fixtures.fetch("performance") }
-    scenario "User visits a document with performance"
+    let (:item_382) { fixtures.fetch("performance_382") }
+    scenario "User visits a document with performance" do
+      visit "catalog/#{item_382['doc_id']}"
+      within "dd.blacklight-performance_display" do
+        expect(page).to have_text(item_382['performance'])
+      end
+    end
   end
 
   feature "MARC Music No Fields" do
