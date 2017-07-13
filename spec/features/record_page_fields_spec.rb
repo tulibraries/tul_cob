@@ -557,23 +557,43 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Note Binding Fields" do
-    let (:item) { fixtures.fetch("note_binding") }
-    scenario "User visits a document with note binding"
+    let (:item_563) { fixtures.fetch("note_binding_563") }
+    scenario "User visits a document with note binding" do
+      visit "catalog/#{item_563['doc_id']}"
+      within "dd.blacklight-note_binding_display" do
+        expect(page).to have_text(item_563['note_binding'])
+      end
+    end
   end
 
   feature "MARC Note Related Fields" do
-    let (:item) { fixtures.fetch("note_related") }
-    scenario "User visits a document with note related"
+    let (:item_580) { fixtures.fetch("note_related_580") }
+    scenario "User visits a document with note related" do
+      visit "catalog/#{item_580['doc_id']}"
+      within "dd.blacklight-note_related_display" do
+        expect(page).to have_text(item_580['note_related'])
+      end
+    end
   end
 
   feature "MARC Note Accruals Fields" do
-    let (:item) { fixtures.fetch("note_accruals") }
-    scenario "User visits a document with note accruals"
+    let (:item_584) { fixtures.fetch("note_accruals_584") }
+    scenario "User visits a document with note accruals" do
+      visit "catalog/#{item_584['doc_id']}"
+      within "dd.blacklight-note_accruals_display" do
+        expect(page).to have_text(item_584['note_accruals'])
+      end
+    end
   end
 
   feature "MARC Note Local Fields" do
-    let (:item) { fixtures.fetch("note_local") }
-    scenario "User visits a document with note local"
+    let (:item_590) { fixtures.fetch("note_local_590") }
+    scenario "User visits a document with note local" do
+      visit "catalog/#{item_590['doc_id']}"
+      within "dd.blacklight-note_local_display" do
+        expect(page).to have_text(item_590['note_local'])
+      end
+    end
   end
 
   feature "MARC Subject Fields" do

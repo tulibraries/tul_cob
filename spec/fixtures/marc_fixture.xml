@@ -23004,6 +23004,50 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760666</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='563'>
+      <subfield code='a'>Dictionary of American history: 563.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760667</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='580'>
+      <subfield code='a'>Dictionary of American history: 580.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760668</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='584'>
+      <subfield code='a'>Dictionary of American history: 584.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760669</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='590'>
+      <subfield code='a'>Dictionary of American history: 590.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
 
 
 
