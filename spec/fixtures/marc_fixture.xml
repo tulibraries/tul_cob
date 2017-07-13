@@ -22888,6 +22888,48 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760657</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='505'>
+      <subfield code='a'>Dictionary of American history: 505.</subfield>
+      <subfield code='g'>Subfield G.</subfield>
+      <subfield code='r'>Subfield R.</subfield>
+      <subfield code='t'>Subfield T.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760658</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='506'>
+      <subfield code='a'>Dictionary of American history: 506.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='d'>Subfield D.</subfield>
+      <subfield code='e'>Subfield E.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760659</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='510'>
+      <subfield code='a'>Dictionary of American history: 510.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+  </record>
 
 
 

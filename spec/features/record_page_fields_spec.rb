@@ -466,19 +466,34 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "MARC Note Toc Fields" do
-    let (:item) { fixtures.fetch("note_toc") }
-    scenario "User visits a document with note toc"
+  feature "MARC Note Table of Contents Fields" do
+    let (:item_505) { fixtures.fetch("note_toc_505") }
+    scenario "User visits a document with note table of contents" do
+      visit "catalog/#{item_505['doc_id']}"
+      within "dd.blacklight-note_toc_display" do
+        expect(page).to have_text(item_505['note_toc'])
+      end
+    end
   end
 
   feature "MARC Note Restrictions Fields" do
-    let (:item) { fixtures.fetch("note_restrictions") }
-    scenario "User visits a document with note restrictions"
+    let (:item_506) { fixtures.fetch("note_restrictions_506") }
+    scenario "User visits a document with note restrictions" do
+      visit "catalog/#{item_506['doc_id']}"
+      within "dd.blacklight-note_restrictions_display" do
+        expect(page).to have_text(item_506['note_restrictions'])
+      end
+    end
   end
 
   feature "MARC Note References Fields" do
-    let (:item) { fixtures.fetch("note_references") }
-    scenario "User visits a document with note references"
+    let (:item_510) { fixtures.fetch("note_references_510") }
+    scenario "User visits a document with note references" do
+      visit "catalog/#{item_510['doc_id']}"
+      within "dd.blacklight-note_references_display" do
+        expect(page).to have_text(item_510['note_references'])
+      end
+    end
   end
 
   feature "MARC Note Summary Fields" do
