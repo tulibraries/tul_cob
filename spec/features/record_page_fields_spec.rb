@@ -497,18 +497,33 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Note Summary Fields" do
-    let (:item) { fixtures.fetch("note_summary") }
-    scenario "User visits a document with note summary"
+    let (:item_520) { fixtures.fetch("note_summary_520") }
+    scenario "User visits a document with note summary" do
+      visit "catalog/#{item_520['doc_id']}"
+      within "dd.blacklight-note_summary_display" do
+        expect(page).to have_text(item_520['note_summary'])
+      end
+    end
   end
 
   feature "MARC Note Cite Fields" do
-    let (:item) { fixtures.fetch("note_cite") }
-    scenario "User visits a document with note cite"
+    let (:item_524) { fixtures.fetch("note_cite_524") }
+    scenario "User visits a document with note cite" do
+      visit "catalog/#{item_524['doc_id']}"
+      within "dd.blacklight-note_cite_display" do
+        expect(page).to have_text(item_524['note_cite'])
+      end
+    end
   end
 
   feature "MARC Note Terms Fields" do
-    let (:item) { fixtures.fetch("note_terms") }
-    scenario "User visits a document with note terms"
+    let (:item_540) { fixtures.fetch("note_terms_540") }
+    scenario "User visits a document with note terms" do
+      visit "catalog/#{item_540['doc_id']}"
+      within "dd.blacklight-note_terms_display" do
+        expect(page).to have_text(item_540['note_terms'])
+      end
+    end
   end
 
   feature "MARC Note Bio Fields" do
