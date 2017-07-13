@@ -311,7 +311,8 @@ end
     #Identifier fields
 
     #to_field 'isbn_display', extract_marc('020aq')
+    to_field 'isbn_display', extract_marc('020a')
     to_field 'issn_display', extract_marc('022a')
-    to_field 'pub_no_display', extract_marc('086az')
+    to_field 'pub_no_display', extract_marc('028ab')
     to_field 'govdoc_display', extract_marc('086az')
     to_field 'diamond_id_display', extract_marc('907a')

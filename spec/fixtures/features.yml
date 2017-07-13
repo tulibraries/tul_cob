@@ -220,6 +220,19 @@ subject_653:
 subject_690:
   doc_id: "991012132499760678"
   subject: "Dictionary of American history: 690. Subfield B. Subfield C. Subfield D. Subfield E. Subfield G. Subfield V. Subfield X. Subfield Y. Subfield Z."
+entry_preced_780:
+  doc_id: "991012132499760678"
+  entry_preced: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G.
+  Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+isbn_020:
+  doc_id: "991012132499760679"
+  isbn: "Dictionary of American history: 020."
+issn_022:
+  doc_id: "991012132499760680"
+  issn: "Dictionary of American history: 022."
+pub_no_028:
+  doc_id: "991012132499760681"
+  pub_no: "Dictionary of American history: 028. Subfield B."
 
 
 

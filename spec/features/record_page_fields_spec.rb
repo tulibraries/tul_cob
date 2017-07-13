@@ -668,38 +668,52 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_690['subject'])
       end
     end
-
-
-
-
-
-
-
   end
 
   feature "MARC Entry Preced Fields" do
-    let (:item) { fixtures.fetch("entry_preced") }
+    let (:item_780) { fixtures.fetch("entry_preced_780") }
     scenario "User visits a document with entry preced"
+      # [TODO] There is a note on this one about being mapped to ind2.  Is this something we need to test for? This is not found in the catalog controller or the traject indexer.  I wasn't sure where to add it in.
+      #visit "catalog/#{item_780['doc_id']}"
+      #within "dd.blacklight-entry_preced_display" do
+        #expect(page).to have_text(item_780['entry_preced'])
+      #end
   end
 
   feature "MARC Entry Succeed Fields" do
     let (:item) { fixtures.fetch("entry_succeed") }
     scenario "User visits a document with entry succeed"
+    # [TODO] See the above issues for entry_preced.  Same issues apply to this one as well.
   end
 
   feature "MARC Isbn Fields" do
-    let (:item) { fixtures.fetch("isbn") }
-    scenario "User visits a document with entry isbn"
+    let (:item_020) { fixtures.fetch("isbn_020") }
+    scenario "User visits a document with entry isbn" do
+      visit "catalog/#{item_020['doc_id']}"
+      within "dd.blacklight-isbn_display" do
+        expect(page).to have_text(item_020['isbn'])
+      end
+    end
   end
 
   feature "MARC Issn Fields" do
-    let (:item) { fixtures.fetch("issn") }
-    scenario "User visits a document with entry issn"
+    let (:item_022) { fixtures.fetch("issn_022") }
+    scenario "User visits a document with entry issn" do
+      visit "catalog/#{item_022['doc_id']}"
+      within "dd.blacklight-issn_display" do
+        expect(page).to have_text(item_022['issn'])
+      end
+    end
   end
 
   feature "MARC Pub No Fields" do
-    let (:item) { fixtures.fetch("pub_no") }
-    scenario "User visits a document with entry pub no"
+    let (:item_028) { fixtures.fetch("pub_no_028") }
+    scenario "User visits a document with entry pub no" do
+      visit "catalog/#{item_028['doc_id']}"
+      within "dd.blacklight-pub_no_display" do
+        expect(page).to have_text(item_028['pub_no'])
+      end
+    end
   end
 
   feature "MARC Govdoc Fields" do

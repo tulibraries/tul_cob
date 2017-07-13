@@ -229,8 +229,9 @@ class CatalogController < ApplicationController
     config.add_show_field 'note_local_display', label: 'Local Note'
     config.add_show_field 'subject_display', label: 'Subject'
     #config.add_show_field 'call_number', label: 'Call Number'
-    config.add_show_field 'isbn', label: 'ISBN'
-    config.add_show_field 'issn', label: 'ISSN'
+    config.add_show_field 'isbn_display', label: 'ISBN'
+    config.add_show_field 'issn_display', label: 'ISSN'
+    config.add_show_field 'pub_no_display', label: 'Publication Number Classification'
     config.add_show_field 'govdoc_display', label: 'Government Document Classification'
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
