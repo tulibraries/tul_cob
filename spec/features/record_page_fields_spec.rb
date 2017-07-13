@@ -7,9 +7,7 @@ RSpec.feature "RecordPageFields", type: :feature do
   }
 
   feature "MARC Title Statement Fields" do
-    let (:item) {
-      fixtures.fetch("title_statement")
-    }
+    let (:item) { fixtures.fetch("title_statement") }
 
     scenario "User visits a document with full title statement" do
       visit "catalog/#{item['doc_id']}"
@@ -143,11 +141,6 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   end
 
-  feature "MARC Format Fields" do
-    let (:item) { fixtures.fetch("format") }
-    scenario "User visits a document with format"
-  end
-
   feature "MARC Imprint Fields" do
     let (:item_260) { fixtures.fetch("imprint_260") }
     scenario "User visits a document with imprint" do
@@ -185,9 +178,22 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Publication Date Fields" do
-    let (:item) { fixtures.fetch("pub_date") }
-    scenario "User visits a document with publication date"
-      # [TODO] This is the same marc field number and subfield that was in imprint
+    let (:item_260) { fixtures.fetch("pub_date_260") }
+    scenario "User visits a document with publication date" do
+      visit "catalog/#{item_260['doc_id']}"
+      within "dd.blacklight-pub_date_display" do
+        expect(page).to have_text(item_260['pub_date'])
+      end
+    end
+
+    let (:item_264) { fixtures.fetch("pub_date_264") }
+    scenario "User visits a document with publication date" do
+      visit "catalog/#{item_264['doc_id']}"
+      within "dd.blacklight-pub_date_display" do
+        expect(page).to have_text(item_264['pub_date'])
+      end
+    end
+
   end
 
   feature "MARC Physical Description Fields" do
@@ -233,14 +239,42 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
-    scenario "User visits a document with series title vernacular"
+    let (:item_440_v) { fixtures.fetch("title_series_440_v") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_440_v['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_440_v['title_series_vern'])
+      end
+    end
   end
 
   feature "MARC Volume Fields" do
-    let (:item) { fixtures.fetch("volume") }
-    scenario "User visits a document with volume"
-    # [TODO] This is the same marc field number and subfield that was in imprint
-    # [TODO] This is called volume_series_display in the traject indexer file
+    let (:item_830_vol) { fixtures.fetch("volume_830_vol") }
+    scenario "User visits a document with volume series" do
+      visit "catalog/#{item_830_vol['doc_id']}"
+      within "dd.blacklight-volume_series_display" do
+        expect(page).to have_text(item_830_vol['volume_series'])
+      end
+    end
+
+    let (:item_490_vol) { fixtures.fetch("volume_490_vol") }
+    scenario "User visits a document with volume series" do
+      visit "catalog/#{item_490_vol['doc_id']}"
+      within "dd.blacklight-volume_series_display" do
+        expect(page).to have_text(item_490_vol['volume_series'])
+      end
+    end
+
+    let (:item_440_vol) { fixtures.fetch("volume_440_vol") }
+    scenario "User visits a document with volume series" do
+      visit "catalog/#{item_440_vol['doc_id']}"
+      within "dd.blacklight-volume_series_display" do
+        expect(page).to have_text(item_440_vol['volume_series'])
+      end
+    end
+
+
+
   end
 
   feature "MARC Duration Fields" do

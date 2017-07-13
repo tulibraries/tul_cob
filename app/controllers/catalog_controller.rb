@@ -198,7 +198,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Imprint'
     config.add_show_field 'edition_display', label: 'Edition'
-    config.add_show_field 'pub_date', label: 'Date'
+    config.add_show_field 'pub_date_display', label: 'Date'
     config.add_show_field 'phys_desc_display', label: 'Physical Description'
     config.add_show_field 'title_series_display', label: 'Series Title'
     config.add_show_field 'title_series_vern_display', label: 'Series Title'

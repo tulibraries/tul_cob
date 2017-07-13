@@ -233,6 +233,24 @@ issn_022:
 pub_no_028:
   doc_id: "991012132499760681"
   pub_no: "Dictionary of American history: 028. Subfield B."
+pub_date_260:
+  doc_id: "991012132499760682"
+  pub_date: "2017"
+title_series_440_v:
+  doc_id: "991012132499760683"
+  title_series: "Vern Title. Subfield N. Subfield P."
+volume_830_vol:
+  doc_id: "991012132499760684"
+  volume_series: "Subfield V."
+volume_490_vol:
+  doc_id: "991012132499760685"
+  volume_series: "Subfield V."
+volume_440_vol:
+  doc_id: "991012132499760686"
+  volume_series: "Subfield V."
+pub_date_264:
+  doc_id: "991012132499760687"
+  pub_date: "2017"
 
 
 
