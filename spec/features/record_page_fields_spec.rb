@@ -597,8 +597,84 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Subject Fields" do
-    let (:item) { fixtures.fetch("subject") }
-    scenario "User visits a document with subject"
+    let (:item_600) { fixtures.fetch("subject_600") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_600['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_600['subject'])
+      end
+    end
+
+    let (:item_610) { fixtures.fetch("subject_610") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_610['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_610['subject'])
+      end
+    end
+
+    let (:item_611) { fixtures.fetch("subject_611") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_611['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_611['subject'])
+      end
+    end
+
+    let (:item_630) { fixtures.fetch("subject_630") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_630['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_630['subject'])
+      end
+    end
+
+    let (:item_648) { fixtures.fetch("subject_648") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_648['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_648['subject'])
+      end
+    end
+
+    let (:item_650) { fixtures.fetch("subject_650") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_650['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_650['subject'])
+      end
+    end
+
+    let (:item_651) { fixtures.fetch("subject_651") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_651['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_651['subject'])
+      end
+    end
+
+    let (:item_653) { fixtures.fetch("subject_653") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_653['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_653['subject'])
+      end
+    end
+
+    let (:item_690) { fixtures.fetch("subject_690") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_690['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_690['subject'])
+      end
+    end
+
+
+
+
+
+
+
   end
 
   feature "MARC Entry Preced Fields" do
