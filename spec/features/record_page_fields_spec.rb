@@ -363,6 +363,81 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_521) { fixtures.fetch("note_521") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_521['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_521['note'])
+      end
+    end
+
+    let (:item_530) { fixtures.fetch("note_530") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_530['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_530['note'])
+      end
+    end
+
+    let (:item_533) { fixtures.fetch("note_533") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_533['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_533['note'])
+      end
+    end
+
+    let (:item_534) { fixtures.fetch("note_534") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_534['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_534['note'])
+      end
+    end
+
+    let (:item_538) { fixtures.fetch("note_538") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_538['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_538['note'])
+      end
+    end
+
+    let (:item_546) { fixtures.fetch("note_546") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_546['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_546['note'])
+      end
+    end
+
+    let (:item_550) { fixtures.fetch("note_550") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_550['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_550['note'])
+      end
+    end
+
+    let (:item_586) { fixtures.fetch("note_586") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_586['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_586['note'])
+      end
+    end
+
+    let (:item_588) { fixtures.fetch("note_588") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_588['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_588['note'])
+      end
+    end
+
+
+
+
   end
 
   feature "MARC Note With Fields" do
