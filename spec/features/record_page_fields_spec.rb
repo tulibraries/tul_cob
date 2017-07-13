@@ -527,18 +527,33 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Note Bio Fields" do
-    let (:item) { fixtures.fetch("note_bio") }
-    scenario "User visits a document with note bio"
+    let (:item_545) { fixtures.fetch("note_bio_545") }
+    scenario "User visits a document with note bio" do
+      visit "catalog/#{item_545['doc_id']}"
+      within "dd.blacklight-note_bio_display" do
+        expect(page).to have_text(item_545['note_bio'])
+      end
+    end
   end
 
   feature "MARC Note Finding Aid Fields" do
-    let (:item) { fixtures.fetch("note_finding_aid") }
-    scenario "User visits a document with note finding aid"
+    let (:item_555) { fixtures.fetch("note_finding_aid_555") }
+    scenario "User visits a document with note finding aid" do
+      visit "catalog/#{item_555['doc_id']}"
+      within "dd.blacklight-note_finding_aid_display" do
+        expect(page).to have_text(item_555['note_finding_aid'])
+      end
+    end
   end
 
   feature "MARC Note Custodial Fields" do
-    let (:item) { fixtures.fetch("note_custodial") }
-    scenario "User visits a document with note custodial"
+    let (:item_561) { fixtures.fetch("note_custodial_561") }
+    scenario "User visits a document with note custodial" do
+      visit "catalog/#{item_561['doc_id']}"
+      within "dd.blacklight-note_custodial_display" do
+        expect(page).to have_text(item_561['note_custodial'])
+      end
+    end
   end
 
   feature "MARC Note Binding Fields" do
