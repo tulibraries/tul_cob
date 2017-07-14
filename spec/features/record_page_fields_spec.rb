@@ -182,7 +182,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_260) { fixtures.fetch("pub_date_260") }
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_260['doc_id']}"
-      within "dd.blacklight-pub_date_display" do
+      within "dd.blacklight-pub_date" do
         expect(page).to have_text(item_260['pub_date'])
       end
     end
@@ -190,7 +190,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_264) { fixtures.fetch("pub_date_264") }
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_264['doc_id']}"
-      within "dd.blacklight-pub_date_display" do
+      within "dd.blacklight-pub_date" do
         expect(page).to have_text(item_264['pub_date'])
       end
     end
@@ -241,6 +241,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
 
     let (:item_440_v) { fixtures.fetch("title_series_440_v") }
+    # [TODO] This only passes if you change alternate_script to false in the traject indexer
     scenario "User visits a document with series title vernacular" do
       visit "catalog/#{item_440_v['doc_id']}"
       within "dd.blacklight-title_series_vern_display" do
