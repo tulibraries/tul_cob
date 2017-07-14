@@ -316,3 +316,5 @@ end
     to_field 'pub_no_display', extract_marc('028ab')
     to_field 'govdoc_display', extract_marc('086az')
     to_field 'diamond_id_display', extract_marc('907a')
+    to_field 'entry_preced_display', extract_marc('780iabdghkmnopqrstuxyz3')
+    to_field 'entry_succeed_display', extract_marc('785iabdghkmnopqrstuxyz3')

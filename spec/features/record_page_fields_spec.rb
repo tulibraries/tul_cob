@@ -178,6 +178,7 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Publication Date Fields" do
+    # [TODO] This is causing a new test failure in the Indices Home Page
     let (:item_260) { fixtures.fetch("pub_date_260") }
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_260['doc_id']}"
@@ -706,18 +707,22 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   feature "MARC Entry Preced Fields" do
     let (:item_780) { fixtures.fetch("entry_preced_780") }
-    scenario "User visits a document with entry preced"
-      # [TODO] There is a note on this one about being mapped to ind2.  Is this something we need to test for? This is not found in the catalog controller or the traject indexer.  I wasn't sure where to add it in.
-      #visit "catalog/#{item_780['doc_id']}"
-      #within "dd.blacklight-entry_preced_display" do
-        #expect(page).to have_text(item_780['entry_preced'])
-      #end
+    scenario "User visits a document with entry preced" do
+      visit "catalog/#{item_780['doc_id']}"
+      within "dd.blacklight-entry_preced_display" do
+        expect(page).to have_text(item_780['entry_preced'])
+      end
+    end
   end
 
   feature "MARC Entry Succeed Fields" do
-    let (:item) { fixtures.fetch("entry_succeed") }
-    scenario "User visits a document with entry succeed"
-    # [TODO] See the above issues for entry_preced.  Same issues apply to this one as well.
+    let (:item_785) { fixtures.fetch("entry_succeed_785") }
+    scenario "User visits a document with entry succeed" do
+      visit "catalog/#{item_785['doc_id']}"
+      within "dd.blacklight-entry_succeed_display" do
+        expect(page).to have_text(item_785['entry_succeed'])
+      end
+    end
   end
 
   feature "MARC Isbn Fields" do

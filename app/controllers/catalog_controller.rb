@@ -38,6 +38,7 @@ class CatalogController < ApplicationController
     published_display
     published_vern_display
     pub_date
+    title_series_vern_display
     title_display
     title_vern_display
     subject_topic_facet
@@ -235,6 +236,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'govdoc_display', label: 'Government Document Classification'
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
+    config.add_show_field 'entry_preced_display', label: ''
+    config.add_show_field 'entry_succeed_display', label: ''
 
 
 
