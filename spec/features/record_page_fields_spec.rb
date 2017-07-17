@@ -100,8 +100,8 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_100) { fixtures.fetch("creator_100") }
     scenario "User visits a document with creator vernacular" do
       visit "catalog/#{item_100['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_100['creator'])
+      within "dd.blacklight-creator_vern_display" do
+        expect(page).to have_text(item_100['creator_vern'])
       end
     end
 
