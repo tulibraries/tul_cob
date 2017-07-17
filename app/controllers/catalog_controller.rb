@@ -150,13 +150,13 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     # config.add_index_field 'title_display', label: 'Title'
-    # config.add_index_field 'title_vern_display', label: 'Title'
+    config.add_index_field 'title_vern_display', label: 'Title Vern'
     # config.add_index_field 'author_display', label: 'Author'
-    # config.add_index_field 'author_vern_display', label: 'Author'
+    config.add_index_field 'author_vern_display', label: 'Author Vern'
     # config.add_index_field 'format', label: 'Format'
     # config.add_index_field 'language_facet', label: 'Language'
-    # config.add_index_field 'published_display', label: 'Published'
-    # config.add_index_field 'published_vern_display', label: 'Published'
+    #config.add_index_field 'published_display', label: 'Published'
+    config.add_index_field 'published_vern_display', label: 'Published Vern'
     # config.add_index_field 'lc_callnum_display', label: 'Call number'
     # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
@@ -189,7 +189,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_statement_display', label: 'Title Statement'
     #config.add_show_field 'title', label: 'Title'
     #config.add_show_field 'subtitle', label: 'Subtitle'
-    config.add_show_field 'title_statement_vern_display', label: ' '
+    config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
     config.add_show_field 'title_uniform_display', label: 'Uniform title'
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Other title(s)'
