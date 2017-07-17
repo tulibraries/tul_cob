@@ -23487,14 +23487,6 @@
       <subfield code='c'>statement of Robert E. Martin.</subfield>
     </datafield>
   </record>
-
-  <record>
-    <controlfield tag='001'>991012132499760699</controlfield>
-    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
-    <datafield ind1='0' ind2='0' tag='245'>
-      <subfield code='a'>Dictionary of American history: 008.</subfield>
-    </datafield>
-  </record>
   <record>
     <leader>02661cgm a2200637 a 4500</leader>
     <controlfield tag='001'>991012132499760698</controlfield>
@@ -23510,7 +23502,6 @@
     <datafield ind1='1' ind2=' ' tag='041'>
       <subfield code='g'>1#$ajpn$geng</subfield>
     </datafield>
-    </datafield>
     <datafield ind1='1' ind2=' ' tag='041'>
       <subfield code='j'>1#$ajpn$jeng</subfield>
     </datafield>
@@ -23519,6 +23510,13 @@
       <subfield code='h'>[videorecording] =</subfield>
       <subfield code='b'>Youth of the beast /</subfield>
       <subfield code='c'>a Janus Films release ; produced by Keinosuke Kubo ; screenplay by Ichoro Ikeda Tadaaki Yamazaki ; directed by Seijun Suzuki.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991012132499760699</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
     </datafield>
   </record>
 </collection>

@@ -97,6 +97,14 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_100) { fixtures.fetch("creator_100") }
+    scenario "User visits a document with creator vernacular" do
+      visit "catalog/#{item_100['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_text(item_100['creator'])
+      end
+    end
+
     let (:item_110) { fixtures.fetch("creator_110") }
     scenario "User visits a document with creator" do
       visit "catalog/#{item_110['doc_id']}"
@@ -136,9 +144,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_711['creator'])
       end
     end
-
-    scenario "User visits a document with creator vernacular"
-
   end
 
   feature "MARC Imprint Fields" do
