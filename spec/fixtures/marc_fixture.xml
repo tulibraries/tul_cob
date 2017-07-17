@@ -23421,7 +23421,56 @@
 
 
 <!-- Work split between developers -->
-
+  <record>
+    <controlfield tag='001'>991012132499760691</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='j'>1#$jjpn$heng</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991012132499760692</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='g'>1#$gjpn$heng</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991012132499760693</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='e'>1#$ejpn$heng</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991012132499760694</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='d'>1#$djpn$heng</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991012132499760695</controlfield>
+    <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='a'>1#$ajpn$heng</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+  </record>
   <record>
     <leader>02139nam a2200433Ia 4500</leader>
     <controlfield tag='001'>991012132499760696</controlfield>
@@ -23453,22 +23502,18 @@
     <controlfield tag='007'>vd cvaizm</controlfield>
     <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
     <datafield ind1='1' ind2=' ' tag='041'>
-      <subfield code='a'>0#$ajpn$aeng</subfield>
+      <subfield code='d'>1#$djpn$deng</subfield>
     </datafield>
     <datafield ind1='1' ind2=' ' tag='041'>
-      <subfield code='d'>0#$djpn$deng</subfield>
+      <subfield code='e'>1#$ajpn$eeng</subfield>
     </datafield>
     <datafield ind1='1' ind2=' ' tag='041'>
-      <subfield code='e'>0#$ajpn$arus</subfield>
+      <subfield code='g'>1#$ajpn$geng</subfield>
+    </datafield>
     </datafield>
     <datafield ind1='1' ind2=' ' tag='041'>
-      <subfield code='g'>##$ajpn$geng</subfield>
+      <subfield code='j'>1#$ajpn$jeng</subfield>
     </datafield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='041'>
-    <subfield code='j'>1#$ajpn$jeng</subfield>
-  </datafield>
-
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Yaju no seishun</subfield>
       <subfield code='h'>[videorecording] =</subfield>
