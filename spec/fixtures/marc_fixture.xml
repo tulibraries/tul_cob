@@ -21721,7 +21721,7 @@
       <subfield code='a'>TK7868.P7</subfield>
       <subfield code='b'>P76 2016</subfield>
     </datafield>
-    <datafield ind1='1' ind2=' ' tag='880'>
+    <datafield ind1='1' ind2=' ' tag='245'>
       <subfield code='a'>Vern Title.</subfield>
       <subfield code='b'>Vern B.</subfield>
       <subfield code='c'>Vern C.</subfield>
