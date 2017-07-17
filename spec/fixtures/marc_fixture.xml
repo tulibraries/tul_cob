@@ -23453,10 +23453,22 @@
     <controlfield tag='007'>vd cvaizm</controlfield>
     <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
     <datafield ind1='1' ind2=' ' tag='041'>
-      <subfield code='a'>jpn</subfield>
-      <subfield code='b'>eng</subfield>
-      <subfield code='h'>jpn</subfield>
+      <subfield code='a'>0#$ajpn$aeng</subfield>
     </datafield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='d'>0#$djpn$deng</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='e'>0#$ajpn$arus</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='g'>##$ajpn$geng</subfield>
+    </datafield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='041'>
+    <subfield code='j'>1#$ajpn$jeng</subfield>
+  </datafield>
+
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Yaju no seishun</subfield>
       <subfield code='h'>[videorecording] =</subfield>

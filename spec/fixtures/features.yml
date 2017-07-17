@@ -269,7 +269,18 @@ language:
 language_jpn:
   doc_id: "991012132499760698"
   language: "Japanese"
-language_041:
-# Use same Doc_id. [TODO] Determine where language in field 041 is rendered
+language_041_a:
   doc_id: "991012132499760698"
-  language: "English"
+  language: "Japanese, English, and Russian"
+language_041_d:
+  doc_id: "991012132499760698"
+  language: "Japanese, English, and Russian"
+language_041_e:
+  doc_id: "991012132499760698"
+  language: "Japanese, English, and Russian"
+language_041_g:
+  doc_id: "991012132499760698"
+  language: "Japanese and English"
+language_041_j:
+  doc_id: "991012132499760698"
+  language: "Japanese and English"
