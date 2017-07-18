@@ -21873,6 +21873,10 @@
       <subfield code='r'>Subfield R.</subfield>
       <subfield code='s'>Subfield S.</subfield>
     </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>130-01</subfield>
+      <subfield code='a'>Title Uniform Vern.</subfield>
+    </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>

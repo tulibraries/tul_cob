@@ -46,10 +46,15 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_730['title_uniform'])
       end
     end
-
-    #[TODO] Which marc field?
-    scenario "User visits a document with uniform title vernacular"
-  end
+  
+    let (:item_130) { fixtures.fetch("title_uniform_130") }
+    scenario "User visits a document with uniform title vernacular" do
+      visit "catalog/#{item_130['doc_id']}"
+      within "dd.blacklight-title_uniform_vern_display" do
+          expect(page).to have_text(item_130['title_uniform_vern'])
+        end
+      end
+    end
 
   feature "MARC Title Additional Fields" do
     let (:item_210) { fixtures.fetch("title_addl_210") }
@@ -249,7 +254,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     # [TODO] This only passes if you change alternate_script to false in the traject indexer
     scenario "User visits a document with series title vernacular" do
       visit "catalog/#{item_830['doc_id']}"
-      save_and_open_page
       within "dd.blacklight-title_series_vern_display" do
         expect(page).to have_text(item_830['title_series_vern'])
       end
