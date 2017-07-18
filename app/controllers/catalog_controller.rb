@@ -150,13 +150,16 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     # config.add_index_field 'title_display', label: 'Title'
-    config.add_index_field 'title_vern_display', label: 'Title Vern'
+    # config.add_index_field 'title_vern_display', label: 'Title Vern'
+    config.add_index_field 'title_uniform_vern_display', label: 'Title Uniform Vern'
+    config.add_index_field 'title_series_vern_display', label: 'Title Series Vern'
+    config.add_index_field 'title_addl_vern_display', label: 'Additional Title Vern'
     # config.add_index_field 'author_display', label: 'Author'
     config.add_index_field 'author_vern_display', label: 'Author Vern'
     # config.add_index_field 'format', label: 'Format'
     # config.add_index_field 'language_facet', label: 'Language'
-    #config.add_index_field 'published_display', label: 'Published'
-    config.add_index_field 'published_vern_display', label: 'Published Vern'
+    # config.add_index_field 'published_display', label: 'Published'
+    # config.add_index_field 'published_vern_display', label: 'Published Vern'
     # config.add_index_field 'lc_callnum_display', label: 'Call number'
     # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
@@ -202,7 +205,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'pub_date', label: 'Date'
     config.add_show_field 'phys_desc_display', label: 'Physical Description'
     config.add_show_field 'title_series_display', label: 'Series Title'
-    config.add_show_field 'title_series_vern_display', label: 'Series Title'
+    config.add_show_field 'title_series_vern_display', label: 'Series Title Vern'
     config.add_show_field 'volume_series_display', label: 'Volume'
     config.add_show_field 'duration_display', label: 'Duration'
     config.add_show_field 'frequency_display', label: 'Frequency'

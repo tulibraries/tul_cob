@@ -245,12 +245,13 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
-    let (:item_440_v) { fixtures.fetch("title_series_440_v") }
+    let (:item_830) { fixtures.fetch("title_series_830") }
     # [TODO] This only passes if you change alternate_script to false in the traject indexer
     scenario "User visits a document with series title vernacular" do
-      visit "catalog/#{item_440_v['doc_id']}"
+      visit "catalog/#{item_830['doc_id']}"
+      save_and_open_page
       within "dd.blacklight-title_series_vern_display" do
-        expect(page).to have_text(item_440_v['title_series_vern'])
+        expect(page).to have_text(item_830['title_series_vern'])
       end
     end
   end

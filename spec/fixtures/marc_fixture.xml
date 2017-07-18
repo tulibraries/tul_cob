@@ -22528,6 +22528,10 @@
       <subfield code='a'>Dictionary of American history: 830.</subfield>
       <subfield code='v'>Subfield V.</subfield>
     </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>830-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+    </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
