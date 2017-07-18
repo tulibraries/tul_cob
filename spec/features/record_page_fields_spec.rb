@@ -841,7 +841,14 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Format Field" do
-    scenario "User visits a document with format field"
+    let (:item) { fixtures.fetch("simple_search") }
+    scenario "User visits a document with format field" do
+      visit "catalog/#{item['doc_id']}"
+      save_and_open_page
+      within "dd.blacklight-format" do
+        expect(page).to have_text(item['format'])
+      end
+    end
     # [TODO] https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Displays#DataDisplays-FieldstoincludeinRecordPages
   end
 end
