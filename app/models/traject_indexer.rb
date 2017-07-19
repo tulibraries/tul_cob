@@ -240,6 +240,12 @@ end
     to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
     to_field 'publisher_t', extract_marc('260b:264b', :trim_punctuation => true)
 
+    to_field 'date_copyright_display' do |rec, acc|
+      rec.fields(['264']).each do |field|
+        acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  if field.indicator2 == '4'
+      end
+    end
+
     to_field 'pub_date' do |rec, acc|   #, extract_marc('260c:264c')
       # fairly aggressive prune to get pub dates down to a 4 digit year
       rec.fields(['260']).each do |field|
