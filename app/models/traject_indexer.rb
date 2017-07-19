@@ -231,17 +231,22 @@ end
     #creator_facet?
 
     #publication fields
-
-    to_field 'imprint_display', extract_marc('260abcefg3:264abc3', :alternate_script=>false)
-    to_field 'imprint_vern_display', extract_marc('260abcefg3:264abc3', :alternate_script=>:only)
+    # For the imprint, make sure to take RDA-style 264, second
+    # indicator = 1
+    to_field 'imprint_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>false)
+    to_field 'imprint_vern_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>:only)
     to_field 'edition_display', extract_marc('250a:254a', :trim_punctuation => true, :alternate_script=>false)
     to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
     to_field 'publisher_t', extract_marc('260b:264b', :trim_punctuation => true)
 
     to_field 'pub_date' do |rec, acc|   #, extract_marc('260c:264c')
       # fairly aggressive prune to get pub dates down to a 4 digit year
-      rec.fields(['260','264']).each do |field|
+      rec.fields(['260']).each do |field|
         acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  unless field['c'].nil?
+      end
+
+      rec.fields(['264']).each do |field|
+        acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  unless field.indicator2 == '4'
       end
     end
 
