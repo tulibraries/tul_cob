@@ -186,7 +186,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_statement_display', label: 'Title Statement'
     #config.add_show_field 'title', label: 'Title'
     #config.add_show_field 'subtitle', label: 'Subtitle'
-    config.add_show_field 'title_statement_vern_display', label: ' '
+    config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
     config.add_show_field 'title_uniform_display', label: 'Uniform title'
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Other title(s)'

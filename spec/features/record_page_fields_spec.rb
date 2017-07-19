@@ -208,7 +208,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_264['pub_date'])
       end
     end
-
   end
 
   feature "MARC Physical Description Fields" do
