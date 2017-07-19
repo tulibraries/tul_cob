@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Takes single argument og
+# Takes single argument - path to the xml files you want to transform
 
 PATH_TO_MARCXMLS=$1
 NUM_PROCESSES=`grep -c ^processor /proc/cpuinfo`
