@@ -2,7 +2,7 @@ simple_search:
   doc_id: "991012177509703811"
   title: "Academic freedom in an age of conformity"
   creator: "Williams, Joanna, author"
-  resource_type: "Book and Print"
+  format: "Book and Print"
   imprint: "Basingstoke, Hampshire : Palgrave Macmillan, 2016"
   date: "2016"
   physical_description: "vi, 217 pages ; 23 cm."
@@ -10,6 +10,281 @@ simple_search:
   status_location: "Paley Stacks"
   url: "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity"
 title_statement:
-  doc_id: "991012321589760609"
-  title_statement: "Spiegel Catalog. Part B. Part C. Part F. Part G. Part K. Part N. Part P. Part S."
-  title_statement_vern: "Vern Title. Vern B. Vern C. Vern F. Vern G. Vern K. Vern N. Vern P. Vern S."
+  doc_id: "991012172649703811"
+  title_statement: "Der emes̀ ṿegen Henri Ford / fun D.L. Meḳler ; ilusṭrirṭ fun Miṭshel Loueb."
+  title_statement_vern: "אילוסטרירט פון מיטשעל לאועב."
+title_uniform_130:
+  doc_id: "991012132499760610"
+  title_uniform: "Dictionary of American history: 130. Subfield D. Subfield F. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield S."
+  title_uniform_vern: "Title Uniform Vern"
+title_uniform_240:
+  doc_id: "991012132499760611"
+  title_uniform: "Dictionary of American history: 240. Subfield D. Subfield F. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield S."
+title_uniform_730:
+  doc_id: "991012132499760612"
+  title_uniform: "Dictionary of American history: 730. Subfield I. Subfield L."
+title_addl_210:
+  doc_id: "991012132499760613"
+  title_addl: "Dictionary of American history: 210. Subfield B."
+  title_addl_vern: "Title Additional Vern."
+title_addl_246:
+  doc_id: "991012132499760614"
+  title_addl: "Dictionary of American history: 246. Subfield B. Subfield F. Subfield G. Subfield N. Subfield P."
+title_addl_247:
+  doc_id: "991012132499760615"
+  title_addl: "Dictionary of American history: 247. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield N. Subfield P."
+title_addl_740:
+  doc_id: "991012132499760616"
+  title_addl: "Dictionary of American history: 740. Subfield N. Subfield P."
+creator_100:
+  doc_id: "991012172649703811"
+  creator: "Meḳler, D. L."
+  creator_vern: "מעקלער, ד.ל. and לאועב, מיטשעל"
+creator_110:
+  doc_id: "991012132499760618"
+  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E."
+creator_111:
+  doc_id: "991012132499760619"
+  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield N."
+creator_700:
+  doc_id: "991012132499760620"
+  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield Q."
+creator_710:
+  doc_id: "991012132499760621"
+  creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E."
+creator_711:
+  doc_id: "991012132499760622"
+  creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J."
+imprint_260:
+  doc_id: "991012132499760623"
+  imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
+imprint_264:
+  doc_id: "991012132499760624"
+  imprint: "Dictionary of American history: 264. Subfield B. Subfield C. Subfield 3."
+edition_250:
+  doc_id: "991012132499760625"
+  edition: "Dictionary of American history: 250"
+edition_254:
+  doc_id: "991012132499760626"
+  edition: "Dictionary of American history: 254"
+phys_desc_300:
+  doc_id: "991012132499760627"
+  phys_desc: "Dictionary of American history: 300. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G."
+phys_desc_340:
+  doc_id: "991012132499760628"
+  phys_desc: "Dictionary of American history: 340. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield H. Subfield I. Subfield J. Subfield K. Subfield M. Subfield N. Subfield O."
+title_series_830:
+  doc_id: "991012132499760629"
+  title_series: "Dictionary of American history: 830. Subfield V."
+  title_series_vern: "مطبوعات المجمع؛."
+title_series_490:
+  doc_id: "991012132499760630"
+  title_series: "Dictionary of American history: 490. Subfield V."
+title_series_440:
+  doc_id: "991012132499760631"
+  title_series: "Dictionary of American history: 440. Subfield N. Subfield P. Subfield V."
+duration_306:
+  doc_id: "991012132499760632"
+  duration: "Dictionary of American history: 306."
+frequency_310:
+  doc_id: "991012132499760633"
+  frequency: "Dictionary of American history: 310. Subfield B."
+frequency_321:
+  doc_id: "991012132499760634"
+  frequency: "Dictionary of American history: 321. Subfield B."
+sound_344:
+  doc_id: "991012132499760635"
+  sound: "Dictionary of American history: 344. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H."
+digital_file_347:
+  doc_id: "991012132499760636"
+  digital_file: "Dictionary of American history: 347. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F."
+form_work_380:
+  doc_id: "991012132499760637"
+  form_work: "Dictionary of American history: 380."
+performance_382:
+  doc_id: "991012132499760638"
+  performance: "Dictionary of American history: 382. Subfield B. Subfield D. Subfield E. Subfield N. Subfield P. Subfield R. Subfield S. Subfield T."
+music_no_383:
+  doc_id: "991012132499760639"
+  music_no: "Dictionary of American history: 383. Subfield B. Subfield C. Subfield D. Subfield E."
+note_500:
+  doc_id: "991012132499760640"
+  note: "Dictionary of American history: 500."
+note_508:
+  doc_id: "991012132499760641"
+  note: "Dictionary of American history: 508."
+note_511:
+  doc_id: "991012132499760642"
+  note: "Dictionary of American history: 511."
+note_515:
+  doc_id: "991012132499760643"
+  note: "Dictionary of American history: 515."
+note_518:
+  doc_id: "991012132499760644"
+  note: "Dictionary of American history: 518."
+note_521:
+  doc_id: "991012132499760645"
+  note: "Dictionary of American history: 521. Subfield B."
+note_530:
+  doc_id: "991012132499760646"
+  note: "Dictionary of American history: 530. Subfield B. Subfield C. Subfield D."
+note_533:
+  doc_id: "991012132499760647"
+  note: "Dictionary of American history: 533. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield M. Subfield N."
+note_534:
+  doc_id: "991012132499760648"
+  note: "Dictionary of American history: 534. Subfield P. Subfield B. Subfield C. Subfield E. Subfield F. Subfield K. Subfield L. Subfield M. Subfield N. Subfield T."
+note_538:
+  doc_id: "991012132499760649"
+  note: "Dictionary of American history: 538. Subfield I. Subfield U."
+note_546:
+  doc_id: "991012132499760650"
+  note: "Dictionary of American history: 546. Subfield B."
+note_550:
+  doc_id: "991012132499760651"
+  note: "Dictionary of American history: 550."
+note_586:
+  doc_id: "991012132499760652"
+  note: "Dictionary of American history: 586."
+note_588:
+  doc_id: "991012132499760653"
+  note: "Dictionary of American history: 588."
+note_with_501:
+  doc_id: "991012132499760654"
+  note_with: "Dictionary of American history: 501."
+note_diss_502:
+  doc_id: "991012132499760655"
+  note_diss: "Dictionary of American history: 502. Subfield B. Subfield C. Subfield D. Subfield G. Subfield O."
+note_biblio_504:
+  doc_id: "991012132499760656"
+  note_biblio: "Dictionary of American history: 504."
+note_toc_505:
+  doc_id: "991012132499760657"
+  note_toc: "Dictionary of American history: 505. Subfield G. Subfield R. Subfield T."
+note_restrictions_506:
+  doc_id: "991012132499760658"
+  note_restrictions: "Dictionary of American history: 506. Subfield B. Subfield C. Subfield D. Subfield E."
+note_references_510:
+  doc_id: "991012132499760659"
+  note_references: "Dictionary of American history: 510. Subfield B. Subfield C."
+note_summary_520:
+  doc_id: "991012132499760660"
+  note_summary: "Dictionary of American history: 520. Subfield B."
+note_cite_524:
+  doc_id: "991012132499760661"
+  note_cite: "Dictionary of American history: 524."
+note_terms_540:
+  doc_id: "991012132499760662"
+  note_terms: "Dictionary of American history: 540."
+note_bio_545:
+  doc_id: "991012132499760663"
+  note_bio: "Dictionary of American history: 545. Subfield B. Subfield U."
+note_finding_aid_555:
+  doc_id: "991012132499760664"
+  note_finding_aid: "Dictionary of American history: 555. Subfield B. Subfield C. Subfield D. Subfield U. Subfield 3."
+note_custodial_561:
+  doc_id: "991012132499760665"
+  note_custodial: "Dictionary of American history: 561."
+note_binding_563:
+  doc_id: "991012132499760666"
+  note_binding: "Dictionary of American history: 563."
+note_related_580:
+  doc_id: "991012132499760667"
+  note_related: "Dictionary of American history: 580."
+note_accruals_584:
+  doc_id: "991012132499760668"
+  note_accruals: "Dictionary of American history: 584."
+note_local_590:
+  doc_id: "991012132499760669"
+  note_local: "Dictionary of American history: 590."
+subject_600:
+  doc_id: "991012132499760670"
+  subject: "Dictionary of American history: 600. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z."
+subject_610:
+  doc_id: "991012132499760671"
+  subject: "Dictionary of American history: 610. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield S. Subfield T. Subfield U. Subfield V. Subfield X. Subfield Y."
+subject_611:
+  doc_id: "991012132499760672"
+  subject: "Dictionary of American history: 611. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield J. Subfield K. Subfield L. Subfield N. Subfield P. Subfield Q. Subfield S. Subfield T. Subfield U. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_630:
+  doc_id: "991012132499760673"
+  subject: "Dictionary of American history: 630. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield S. Subfield T. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_648:
+  doc_id: "991012132499760674"
+  subject: "Dictionary of American history: 648. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_650:
+  doc_id: "991012132499760675"
+  subject: "Dictionary of American history: 650. Subfield B. Subfield C. Subfield D. Subfield E. Subfield G. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_651:
+  doc_id: "991012132499760676"
+  subject: "Dictionary of American history: 651. Subfield E. Subfield G. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_653:
+  doc_id: "991012132499760677"
+  subject: "Dictionary of American history: 653"
+subject_690:
+  doc_id: "991012132499760678"
+  subject: "Dictionary of American history: 690. Subfield B. Subfield C. Subfield D. Subfield E. Subfield G. Subfield V. Subfield X. Subfield Y. Subfield Z."
+isbn_020:
+  doc_id: "991012132499760679"
+  isbn: "Dictionary of American history: 020."
+issn_022:
+  doc_id: "991012132499760680"
+  issn: "Dictionary of American history: 022."
+pub_no_028:
+  doc_id: "991012132499760681"
+  pub_no: "Dictionary of American history: 028. Subfield B."
+pub_date_260:
+  doc_id: "991012132499760682"
+  pub_date: "2017"
+title_series_440_v:
+  doc_id: "991012132499760683"
+  title_series: "Vern Title. Subfield N. Subfield P."
+volume_830_vol:
+  doc_id: "991012132499760684"
+  volume_series: "Subfield V."
+volume_490_vol:
+  doc_id: "991012132499760685"
+  volume_series: "Subfield V."
+volume_440_vol:
+  doc_id: "991012132499760686"
+  volume_series: "Subfield V."
+pub_date_264:
+  doc_id: "991012132499760687"
+  pub_date: "2017"
+entry_preced_780:
+  doc_id: "991012132499760688"
+  entry_preced: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G.
+  Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_succeed_785:
+  doc_id: "991012132499760689"
+  entry_succeed: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G.
+  Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+
+
+
+# Work split between developers (Prevent Git Merge overwrite hack)
+
+govdoc:
+  doc_id: "991012132499760696"
+  govdoc: "GA 1.5/2:GAO-05-1031 T"
+language:
+  doc_id: "991012132499760699"
+  language: "English"
+language_jpn:
+  doc_id: "991012132499760698"
+  language: "Japanese"
+language_041_a:
+  doc_id: "991012132499760695"
+  language: "Japanese and English"
+language_041_d:
+  doc_id: "991012132499760694"
+  language: "Japanese and English"
+language_041_e:
+  doc_id: "991012132499760693"
+  language: "Japanese and English"
+language_041_g:
+  doc_id: "991012132499760692"
+  language: "Japanese and English"
+language_041_j:
+  doc_id: "991012132499760691"
+  language: "Japanese and English"

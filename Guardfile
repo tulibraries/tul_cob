@@ -28,6 +28,11 @@
 #
 # $ guard -p -l 1
 #
+guard :shell do
+  watch("spec/fixtures/marc_fixture.xml") {
+    `RAILS_ENV=test bundle exec traject -c app/models/traject_indexer.rb spec/fixtures/marc_fixture.xml`
+  }
+end
 
 guard :rspec, cmd: "bundle exec rspec" do
   require "guard/rspec/dsl"

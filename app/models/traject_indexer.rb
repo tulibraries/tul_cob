@@ -48,6 +48,7 @@ to_field "text", extract_all_marc_values do |r, acc|
 end
 
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
+to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
 
 to_field "format", marc_formats
 
@@ -218,7 +219,7 @@ end
     #Title fields
 
     to_field 'title_statement_display', extract_marc('245abcfgknps', :alternate_script=>false)
-    to_field 'title_statement_vern_display', extract_marc('880abcfgknps', :alternate_script=>:only)
+    to_field 'title_statement_vern_display', extract_marc('245abcfgknps', :alternate_script=>:only)
     to_field 'title_uniform_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>false)
     to_field 'title_uniform_vern_display', extract_marc('130adfklmnoprs:240adfklmnoprs:730ail', :alternate_script=>:only)
     to_field 'title_addl_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>false)
@@ -226,7 +227,7 @@ end
 
     #Creator/contributor fields
 
-    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdejn:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>:only)
     #creator_facet?
 
@@ -260,7 +261,7 @@ end
 
     #series fields
 
-    to_field 'title_series_display', extract_marc('830a:490a:440anp', :alternate_script=>false)
+    to_field 'title_series_display', extract_marc('830av:490av:440anpv', :alternate_script=>false)
     to_field 'title_series_vern_display', extract_marc('830a:490a:440anp', :alternate_script=>:only)
     # to_field 'date_series', extract_marc('362a')
     to_field 'volume_series_display', extract_marc('830v:490v:440v')
@@ -310,7 +311,10 @@ end
     #Identifier fields
 
     #to_field 'isbn_display', extract_marc('020aq')
+    to_field 'isbn_display', extract_marc('020a')
     to_field 'issn_display', extract_marc('022a')
-    to_field 'pub_no_display', extract_marc('086az')
+    to_field 'pub_no_display', extract_marc('028ab')
     to_field 'govdoc_display', extract_marc('086az')
     to_field 'diamond_id_display', extract_marc('907a')
+    to_field 'entry_preced_display', extract_marc('780iabdghkmnopqrstuxyz3')
+    to_field 'entry_succeed_display', extract_marc('785iabdghkmnopqrstuxyz3')
