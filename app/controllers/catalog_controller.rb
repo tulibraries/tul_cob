@@ -205,7 +205,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'pub_date', label: 'Date'
     config.add_show_field 'phys_desc_display', label: 'Physical Description'
     config.add_show_field 'title_series_display', label: 'Series Title'
-    config.add_show_field 'title_series_vern_display', label: 'Series Title Vern'
+    config.add_show_field 'title_series_vern_display', label: 'Series Title'
     config.add_show_field 'volume_series_display', label: 'Volume'
     config.add_show_field 'duration_display', label: 'Duration'
     config.add_show_field 'frequency_display', label: 'Frequency'

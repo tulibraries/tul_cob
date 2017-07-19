@@ -8,7 +8,6 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   feature "MARC Title Statement Fields" do
     let (:item) { fixtures.fetch("title_statement") }
-
     scenario "User visits a document with full title statement" do
       visit "catalog/#{item['doc_id']}"
       expect(page).to have_text(item['title_statement'])
@@ -194,7 +193,6 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Publication Date Fields" do
-    # [TODO] This is causing a new test failure in the Indices Home Page
     let (:item_260) { fixtures.fetch("pub_date_260") }
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_260['doc_id']}"
@@ -257,7 +255,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
 
     let (:item_830) { fixtures.fetch("title_series_830") }
-    # [TODO] This only passes if you change alternate_script to false in the traject indexer
     scenario "User visits a document with series title vernacular" do
       visit "catalog/#{item_830['doc_id']}"
       within "dd.blacklight-title_series_vern_display" do
@@ -290,9 +287,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_440_vol['volume_series'])
       end
     end
-
-
-
   end
 
   feature "MARC Duration Fields" do
@@ -346,7 +340,6 @@ RSpec.feature "RecordPageFields", type: :feature do
   feature "MARC Form Work Fields" do
     let (:item_380) { fixtures.fetch("form_work_380") }
     scenario "User visits a document with form work" do
-      # [TODO] Check whether this should be called fom_work as used in the data tables in confluence or form_work as used in the traject indexer file.  For now, it is using form_work
       visit "catalog/#{item_380['doc_id']}"
       within "dd.blacklight-form_work_display" do
         expect(page).to have_text(item_380['form_work'])
@@ -844,11 +837,9 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item) { fixtures.fetch("simple_search") }
     scenario "User visits a document with format field" do
       visit "catalog/#{item['doc_id']}"
-      save_and_open_page
       within "dd.blacklight-format" do
         expect(page).to have_text(item['format'])
       end
     end
-    # [TODO] https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Displays#DataDisplays-FieldstoincludeinRecordPages
   end
 end
