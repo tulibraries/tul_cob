@@ -716,13 +716,50 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Entry Preced Fields" do
-    let (:item_780) { fixtures.fetch("entry_preced_780") }
-    scenario "User visits a document with entry preced" do
-      visit "catalog/#{item_780['doc_id']}"
-      within "dd.blacklight-entry_preced_display" do
-        expect(page).to have_text(item_780['entry_preced'])
+    let (:item_780_00) { fixtures.fetch("entry_preced_780_00") }
+    scenario "User visits a document with continues" do
+      visit "catalog/#{item_780_00['doc_id']}"
+      within "dd.blacklight-continues_display" do
+        expect(page).to have_text(item_780_00['continues'])
       end
     end
+
+    let (:item_780_03) { fixtures.fetch("entry_preced_780_03") }
+    scenario "User visits a document with continues_in_part" do
+      visit "catalog/#{item_780_03['doc_id']}"
+      within "dd.blacklight-continues_in_part_display" do
+        expect(page).to have_text(item_780_03['continues_in_part'])
+      end
+    end
+
+    let (:item_780_04) { fixtures.fetch("entry_preced_780_04") }
+    scenario "User visits a document with formed_from" do
+      visit "catalog/#{item_780_04['doc_id']}"
+      within "dd.blacklight-formed_from_display" do
+        expect(page).to have_text(item_780_04['formed_from'])
+      end
+    end
+
+    let (:item_780_05) { fixtures.fetch("entry_preced_780_05") }
+    scenario "User visits a document with absorbed" do
+      visit "catalog/#{item_780_05['doc_id']}"
+      within "dd.blacklight-absorbed_display" do
+        expect(page).to have_text(item_780_05['absorbed'])
+      end
+    end
+
+    let (:item_780_06) { fixtures.fetch("entry_preced_780_06") }
+    scenario "User visits a document with absorbed_in_part" do
+      visit "catalog/#{item_780_06['doc_id']}"
+      save_and_open_page
+      within "dd.blacklight-absorbed_in_part_display" do
+        expect(page).to have_text(item_780_06['absorbed_in_part'])
+      end
+    end
+
+
+
+
   end
 
   feature "MARC Entry Succeed Fields" do

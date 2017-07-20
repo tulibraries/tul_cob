@@ -167,7 +167,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'imprint', label: 'Imprint'
     config.add_index_field 'creator', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
-
+    config.add_index_field 'entry_preced', label: 'Entry Preced'
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     # config.add_show_field 'title_display', label: 'Title'
@@ -239,7 +239,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'govdoc_display', label: 'Government Document Classification'
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
-    config.add_show_field 'entry_preced_display', label: ''
+    config.add_show_field 'continues_display', label: 'Continues'
+    config.add_show_field 'continues_in_part_display', label: 'Continues in part'
+    config.add_show_field 'formed_from_display', label: 'Formed from'
+    config.add_show_field 'absorbed_display', label: 'Absorbed'
+    config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part'
+    config.add_show_field 'separated_from_display', label: 'Separated from'
     config.add_show_field 'entry_succeed_display', label: ''
 
 

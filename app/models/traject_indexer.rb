@@ -316,5 +316,13 @@ end
     to_field 'pub_no_display', extract_marc('028ab')
     to_field 'govdoc_display', extract_marc('086az')
     to_field 'diamond_id_display', extract_marc('907a')
-    to_field 'entry_preced_display', extract_marc('780iabdghkmnopqrstuxyz3')
+
+    #Preceding Entry fields
+    to_field 'continues_display', extract_marc('780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'continues_in_part_display', extract_marc('780|01|iabdghkmnopqrstuxyz3:780|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'formed_from_display', extract_marc('780|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_display', extract_marc('780|05|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_in_part_display', extract_marc('780|06|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'separated_from_display', extract_marc('780|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+
     to_field 'entry_succeed_display', extract_marc('785iabdghkmnopqrstuxyz3')

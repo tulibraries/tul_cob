@@ -251,14 +251,25 @@ volume_440_vol:
 pub_date_264:
   doc_id: "991012132499760687"
   pub_date: "2017"
-entry_preced_780:
+entry_preced_780_00:
   doc_id: "991012132499760688"
-  entry_preced: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G.
-  Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
-entry_succeed_785:
+  continues: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_preced_780_03:
   doc_id: "991012132499760689"
-  entry_succeed: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G.
-  Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+  continues_in_part: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_preced_780_04:
+  doc_id: "991012132499760700"
+  formed_from: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_preced_780_05:
+  doc_id: "991012132499760701"
+  absorbed: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_preced_780_06:
+  doc_id: "991012132499760702"
+  absorbed_in_part: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+
+entry_succeed_785:
+  doc_id: "991012132499760690"
+  entry_succeed: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 
 
 
