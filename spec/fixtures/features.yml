@@ -270,9 +270,15 @@ entry_preced_780_06:
 entry_preced_780_07:
   doc_id: "991012132499760703"
   separated_from: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
-entry_succeed_785:
+entry_succeed_785_00:
   doc_id: "991012132499760690"
-  entry_succeed: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+  continued_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_succeed_785_03:
+  doc_id: "991012132499760704"
+  continued_in_part_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+entry_succeed_785_04:
+  doc_id: "991012132499760705"
+  absorbed_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 
 
 

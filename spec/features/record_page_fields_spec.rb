@@ -767,26 +767,38 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_780_07) { fixtures.fetch("entry_preced_780_07") }
     scenario "User visits a document with separated_from" do
       visit "catalog/#{item_780_07['doc_id']}"
-      save_and_open_page
       within "dd.blacklight-separated_from_display" do
         expect(page).to have_text(item_780_07['separated_from'])
       end
     end
-
-
-
-
-
   end
 
   feature "MARC Entry Succeed Fields" do
-    let (:item_785) { fixtures.fetch("entry_succeed_785") }
-    scenario "User visits a document with entry succeed" do
-      visit "catalog/#{item_785['doc_id']}"
-      within "dd.blacklight-entry_succeed_display" do
-        expect(page).to have_text(item_785['entry_succeed'])
+    let (:item_785_00) { fixtures.fetch("entry_succeed_785_00") }
+    scenario "User visits a document with continued_by" do
+      visit "catalog/#{item_785_00['doc_id']}"
+      within "dd.blacklight-continued_by_display" do
+        expect(page).to have_text(item_785_00['continued_by'])
       end
     end
+
+    let (:item_785_03) { fixtures.fetch("entry_succeed_785_03") }
+    scenario "User visits a document with continued_in_part_by" do
+      visit "catalog/#{item_785_03['doc_id']}"
+      within "dd.blacklight-continued_in_part_by_display" do
+        expect(page).to have_text(item_785_03['continued_in_part_by'])
+      end
+    end
+
+    let (:item_785_04) { fixtures.fetch("entry_succeed_785_04") }
+    scenario "User visits a document with absorbed_by" do
+      visit "catalog/#{item_785_04['doc_id']}"
+      within "dd.blacklight-absorbed_by_display" do
+        expect(page).to have_text(item_785_04['absorbed_by'])
+      end
+    end
+
+
   end
 
   feature "MARC Isbn Fields" do
