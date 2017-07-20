@@ -22457,11 +22457,14 @@
     <leader>01120cam a22003610  4500</leader>
     <controlfield tag='001'>991012132499760624</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
-    <datafield ind1='0' ind2='0' tag='264'>
-      <subfield code='a'>Dictionary of American history: 264.</subfield>
-      <subfield code='b'>Subfield B.</subfield>
-      <subfield code='c'>Subfield C.</subfield>
+    <datafield ind1='0' ind2='1' tag='264'>
+      <subfield code='a'>New York :</subfield>
+      <subfield code='b'>W.W. Norton &amp; Company,</subfield>
+      <subfield code='c'>2014.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='4' tag='264'>
+      <subfield code='c'>©2014</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
@@ -23360,7 +23363,7 @@
     <leader>01120cam a22003610  4500</leader>
     <controlfield tag='001'>991012132499760687</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
-    <datafield ind1='0' ind2='0' tag='264'>
+    <datafield ind1='0' ind2='1' tag='264'>
       <subfield code='c'>2017.</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
