@@ -339,4 +339,11 @@ end
     to_field 'absorbed_in_part_display', extract_marc('780|06|iabdghkmnopqrstuxyz3', trim_punctuation: true)
     to_field 'separated_from_display', extract_marc('780|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
 
-    to_field 'entry_succeed_display', extract_marc('785iabdghkmnopqrstuxyz3')
+    #Succeeding Entry fields
+    to_field 'continued_by_display', extract_marc('785|00|iabdghkmnopqrstuxyz3:785|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'continued_in_part_by_display', extract_marc('785|01|iabdghkmnopqrstuxyz3:785|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_by_display', extract_marc('785|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_in_part_by_display', extract_marc('785|05|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'split_into_display', extract_marc('785|06|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'merged_to_form_display', extract_marc('785|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'changed_back_to_display', extract_marc('785|08|iabdghkmnopqrstuxyz3', trim_punctuation: true)
