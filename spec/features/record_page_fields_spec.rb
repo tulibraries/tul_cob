@@ -95,7 +95,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_210['title_addl_vern'])
       end
     end
-
   end
 
   feature "MARC Creator Fields" do
@@ -178,7 +177,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_264) { fixtures.fetch("imprint_264") }
     scenario "User visits a document with date_copyright" do
       visit "catalog/#{item_264['doc_id']}"
-      save_and_open_page
       within "dd.blacklight-date_copyright_display" do
         expect(page).to have_text(item_264['date_copyright'])
       end
@@ -761,11 +759,20 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_780_06) { fixtures.fetch("entry_preced_780_06") }
     scenario "User visits a document with absorbed_in_part" do
       visit "catalog/#{item_780_06['doc_id']}"
-      save_and_open_page
       within "dd.blacklight-absorbed_in_part_display" do
         expect(page).to have_text(item_780_06['absorbed_in_part'])
       end
     end
+
+    let (:item_780_07) { fixtures.fetch("entry_preced_780_07") }
+    scenario "User visits a document with separated_from" do
+      visit "catalog/#{item_780_07['doc_id']}"
+      save_and_open_page
+      within "dd.blacklight-separated_from_display" do
+        expect(page).to have_text(item_780_07['separated_from'])
+      end
+    end
+
 
 
 
