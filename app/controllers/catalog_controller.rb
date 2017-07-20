@@ -164,7 +164,7 @@ class CatalogController < ApplicationController
     # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
     config.add_index_field 'title_statement_display', label: 'Title Statement'
-    config.add_index_field 'imprint', label: 'Imprint'
+    config.add_index_field 'imprint', label: 'Published'
     config.add_index_field 'creator', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
 
@@ -200,9 +200,10 @@ class CatalogController < ApplicationController
     config.add_show_field 'creator_display', label: 'Author/creator'
     config.add_show_field 'creator_vern_display', label: 'Author/creator'
     config.add_show_field 'format', label: 'Resource Type'
-    config.add_show_field 'imprint_display', label: 'Imprint'
+    config.add_show_field 'imprint_display', label: 'Published'
     config.add_show_field 'edition_display', label: 'Edition'
     config.add_show_field 'pub_date', label: 'Date'
+    config.add_show_field 'date_copyright_display', label: 'Copyright Notice'
     config.add_show_field 'phys_desc_display', label: 'Physical Description'
     config.add_show_field 'title_series_display', label: 'Series Title'
     config.add_show_field 'title_series_vern_display', label: 'Series Title'

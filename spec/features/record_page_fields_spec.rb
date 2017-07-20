@@ -174,6 +174,17 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
+  feature "MARC Copyright notice date" do
+    let (:item_264) { fixtures.fetch("imprint_264") }
+    scenario "User visits a document with date_copyright" do
+      visit "catalog/#{item_264['doc_id']}"
+      save_and_open_page
+      within "dd.blacklight-date_copyright_display" do
+        expect(page).to have_text(item_264['date_copyright'])
+      end
+    end
+  end
+
   feature "MARC Edition Fields" do
     let (:item_250) { fixtures.fetch("edition_250") }
     scenario "User visits a document with edition" do
@@ -208,7 +219,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_264['pub_date'])
       end
     end
-
   end
 
   feature "MARC Physical Description Fields" do
