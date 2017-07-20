@@ -253,7 +253,7 @@ end
       end
 
       rec.fields(['264']).each do |field|
-        acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  unless field.indicator2 == '4'
+        acc << field['c'].gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip  unless field['c'].nil? || field.indicator2 == '4' 
       end
     end
 
