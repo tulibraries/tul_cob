@@ -798,6 +798,42 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_785_05) { fixtures.fetch("entry_succeed_785_05") }
+    scenario "User visits a document with absorbed_in_part_by" do
+      visit "catalog/#{item_785_05['doc_id']}"
+      within "dd.blacklight-absorbed_in_part_by_display" do
+        expect(page).to have_text(item_785_05['absorbed_in_part_by'])
+      end
+    end
+
+    let (:item_785_06) { fixtures.fetch("entry_succeed_785_06") }
+    scenario "User visits a document with split_into" do
+      visit "catalog/#{item_785_06['doc_id']}"
+      within "dd.blacklight-split_into_display" do
+        expect(page).to have_text(item_785_06['split_into'])
+      end
+    end
+
+    let (:item_785_07) { fixtures.fetch("entry_succeed_785_07") }
+    scenario "User visits a document with merged_to_form_into" do
+      visit "catalog/#{item_785_07['doc_id']}"
+      within "dd.blacklight-merged_to_form_display" do
+        expect(page).to have_text(item_785_07['merged_to_form'])
+      end
+    end
+
+    let (:item_785_08) { fixtures.fetch("entry_succeed_785_08") }
+    scenario "User visits a document with changed_back_to" do
+      visit "catalog/#{item_785_08['doc_id']}"
+      within "dd.blacklight-changed_back_to_display" do
+        expect(page).to have_text(item_785_08['changed_back_to'])
+      end
+    end
+
+
+
+
+
 
   end
 
