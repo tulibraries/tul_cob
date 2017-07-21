@@ -167,7 +167,6 @@ class CatalogController < ApplicationController
     config.add_index_field 'imprint', label: 'Published'
     config.add_index_field 'creator', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
-    config.add_index_field 'entry_preced', label: 'Entry Preced'
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     # config.add_show_field 'title_display', label: 'Title'
