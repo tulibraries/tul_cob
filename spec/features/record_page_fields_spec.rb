@@ -106,11 +106,11 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
-    let (:item_100) { fixtures.fetch("creator_100") }
+    let (:item_100_v) { fixtures.fetch("creator_100_v") }
     scenario "User visits a document with creator vernacular" do
-      visit "catalog/#{item_100['doc_id']}"
+      visit "catalog/#{item_100_v['doc_id']}"
       within "dd.blacklight-creator_vern_display" do
-        expect(page).to have_text(item_100['creator_vern'])
+        expect(page).to have_text(item_100_v['creator_vern'])
       end
     end
 
@@ -569,14 +569,23 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "MARC Note Terms Fields" do
-    let (:item_540) { fixtures.fetch("note_terms_540") }
-    scenario "User visits a document with note terms" do
+  feature "MARC Note Copyright Fields" do
+    let (:item_540) { fixtures.fetch("note_copyright_540") }
+    scenario "User visits a document with note copyright" do
       visit "catalog/#{item_540['doc_id']}"
-      within "dd.blacklight-note_terms_display" do
-        expect(page).to have_text(item_540['note_terms'])
+      within "dd.blacklight-note_copyright_display" do
+        expect(page).to have_text(item_540['note_copyright'])
       end
     end
+
+    let (:item_542) { fixtures.fetch("note_copyright_542") }
+    scenario "User visits a document with note copyright" do
+      visit "catalog/#{item_542['doc_id']}"
+      within "dd.blacklight-note_copyright_display" do
+        expect(page).to have_text(item_542['note_copyright'])
+      end
+    end
+
   end
 
   feature "MARC Note Bio Fields" do
@@ -829,12 +838,6 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_785_08['changed_back_to'])
       end
     end
-
-
-
-
-
-
   end
 
   feature "MARC Isbn Fields" do

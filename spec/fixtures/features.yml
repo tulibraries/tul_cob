@@ -37,24 +37,26 @@ title_addl_740:
   doc_id: "991012132499760616"
   title_addl: "Dictionary of American history: 740. Subfield N. Subfield P."
 creator_100:
+  doc_id: "991012132499760617"
+  creator: "Meḳler, D. L., Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
+creator_100_v:
   doc_id: "991012172649703811"
-  creator: "Meḳler, D. L."
   creator_vern: "מעקלער, ד.ל. and לאועב, מיטשעל"
 creator_110:
   doc_id: "991012132499760618"
-  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E."
+  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_111:
   doc_id: "991012132499760619"
-  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield N."
+  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_700:
   doc_id: "991012132499760620"
-  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield Q."
+  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
 creator_710:
   doc_id: "991012132499760621"
-  creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E."
+  creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_711:
   doc_id: "991012132499760622"
-  creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J."
+  creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
 imprint_260:
   doc_id: "991012132499760623"
   imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
@@ -174,9 +176,12 @@ note_summary_520:
 note_cite_524:
   doc_id: "991012132499760661"
   note_cite: "Dictionary of American history: 524."
-note_terms_540:
+note_copyright_540:
   doc_id: "991012132499760662"
-  note_terms: "Dictionary of American history: 540."
+  note_copyright: "Dictionary of American history: 540."
+note_copyright_542:
+  doc_id: "991012132499760710"
+  note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
 note_bio_545:
   doc_id: "991012132499760663"
   note_bio: "Dictionary of American history: 545. Subfield B. Subfield U."
