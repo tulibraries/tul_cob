@@ -31,7 +31,7 @@ def get_xml options={}
 end
 
 def four_digit_year(field)
-  field.gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip
+  field.gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip unless field.nil?
 end
 
 settings do
