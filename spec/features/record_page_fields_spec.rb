@@ -855,7 +855,7 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   feature "MARC Isbn Fields" do
     let (:item_020) { fixtures.fetch("isbn_020") }
-    scenario "User visits a document with entry isbn" do
+    scenario "User visits a document with isbn" do
       visit "catalog/#{item_020['doc_id']}"
       within "dd.blacklight-isbn_display" do
         expect(page).to have_text(item_020['isbn'])
@@ -865,7 +865,7 @@ RSpec.feature "RecordPageFields", type: :feature do
 
   feature "MARC Issn Fields" do
     let (:item_022) { fixtures.fetch("issn_022") }
-    scenario "User visits a document with entry issn" do
+    scenario "User visits a document with issn" do
       visit "catalog/#{item_022['doc_id']}"
       within "dd.blacklight-issn_display" do
         expect(page).to have_text(item_022['issn'])
@@ -873,9 +873,39 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
+  feature "MARC lccn Fields" do
+    let (:item_010) { fixtures.fetch("lccn_010") }
+    scenario "User visits a document with lccn" do
+      visit "catalog/#{item_010['doc_id']}"
+      within "dd.blacklight-lccn_display" do
+        expect(page).to have_text(item_010['lccn'])
+      end
+    end
+  end
+
+  feature "MARC gpo Fields" do
+    let (:item_074) { fixtures.fetch("gpo_074") }
+    scenario "User visits a document with gpo" do
+      visit "catalog/#{item_074['doc_id']}"
+      within "dd.blacklight-gpo_display" do
+        expect(page).to have_text(item_074['gpo'])
+      end
+    end
+  end
+
+  feature "MARC alma_mms Fields" do
+    let (:item_001) { fixtures.fetch("alma_mms_001") }
+    scenario "User visits a document with gpo" do
+      visit "catalog/#{item_001['doc_id']}"
+      within "dd.blacklight-alma_mms_display" do
+        expect(page).to have_text(item_001['alma_mms'])
+      end
+    end
+  end
+
   feature "MARC Pub No Fields" do
     let (:item_028) { fixtures.fetch("pub_no_028") }
-    scenario "User visits a document with entry pub no" do
+    scenario "User visits a document with pub no" do
       visit "catalog/#{item_028['doc_id']}"
       within "dd.blacklight-pub_no_display" do
         expect(page).to have_text(item_028['pub_no'])
@@ -883,13 +913,25 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "MARC Govdoc Fields" do
-    let (:item) { fixtures.fetch("govdoc") }
-    scenario "User visits a document with entry govdoc" do
-      visit "catalog/#{item['doc_id']}"
-      within "dd.blacklight-govdoc_display" do
-        expect(page).to have_text(item['govdoc'])
+  feature "MARC sudoc Fields" do
+    let (:item_086) { fixtures.fetch("sudoc_086") }
+    scenario "User visits a document with sudoc indicator1 value unassigned" do
+      visit "catalog/#{item_086['doc_id']}"
+        expect(page).to_not have_text(item_086['sudoc'])
+    end
+
+    let (:item_086_0) { fixtures.fetch("sudoc_086_0") }
+    scenario "User visits a document with sudoc indicator1 value 0" do
+      visit "catalog/#{item_086_0['doc_id']}"
+      within "dd.blacklight-sudoc_display" do
+        expect(page).to have_text(item_086_0['sudoc'])
       end
+    end
+
+    let (:item_086_1) { fixtures.fetch("sudoc_086_1") }
+    scenario "User visits a document with udoc indicator1 value1" do
+      visit "catalog/#{item_086_1['doc_id']}"
+        expect(page).to_not have_text(item_086_1['sudoc'])
     end
   end
 

@@ -292,6 +292,7 @@ end
     to_field 'note_references_display', extract_marc('510abc')
     to_field 'note_summary_display', extract_marc('520ab')
     to_field 'note_cite_display', extract_marc('524a')
+    # Note Copyright should not display if ind1 = 0.  This ensures that it works if the value is unassigned or 1
     to_field 'note_copyright_display', extract_marc('540a:542|1*|abcdefghijklmnopqr3:542| *|abcdefghijklmnopqr3')
     to_field 'note_bio_display', extract_marc('545abu')
     to_field 'note_finding_aid_display', extract_marc('555abcdu3')
@@ -328,8 +329,12 @@ end
     to_field 'isbn_display', extract_marc('020a')
     to_field 'issn_display', extract_marc('022a')
     to_field 'pub_no_display', extract_marc('028ab')
-    to_field 'govdoc_display', extract_marc('086az')
+    to_field 'sudoc_display', extract_marc('086|0*|a')
     to_field 'diamond_id_display', extract_marc('907a')
+    to_field 'lccn_display', extract_marc('010ab')
+    to_field 'gpo_display', extract_marc('074a')
+    to_field 'alma_mms_display', extract_marc('001')
+
 
     #Preceding Entry fields
     to_field 'continues_display', extract_marc('780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)

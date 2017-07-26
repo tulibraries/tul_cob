@@ -302,6 +302,24 @@ entry_succeed_785_07:
 entry_succeed_785_08:
   doc_id: "991012132499760709"
   changed_back_to: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+lccn_010:
+  doc_id: "991012132499760713"
+  lccn: "lccn number Subfield B"
+gpo_074:
+  doc_id: "991012132499760714"
+  gpo: "gpo number"
+alma_mms_001:
+  doc_id: "991012132499760715"
+  alma_mms: "991012132499760715"
+sudoc_086:
+  doc_id: "991012132499760718"
+  sudoc: "test"
+sudoc_086_0:
+  doc_id: "991012132499760716"
+  sudoc: "Y 4.C 73/7:S.HRG.109-174"
+sudoc_086_1:
+  doc_id: "991012132499760717"
+  sudoc: "test"
 
 
 

@@ -235,8 +235,11 @@ class CatalogController < ApplicationController
     #config.add_show_field 'call_number', label: 'Call Number'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
+    config.add_show_field 'lccn_display', label: 'LCCN'
+    config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
+    config.add_show_field 'gpo_display', label: 'GPO Item Number'
     config.add_show_field 'pub_no_display', label: 'Publication Number Classification'
-    config.add_show_field 'govdoc_display', label: 'Government Document Classification'
+    config.add_show_field 'sudoc_display', label: 'SuDOC'
     config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
     config.add_show_field 'continues_display', label: 'Continues'
