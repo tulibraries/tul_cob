@@ -231,14 +231,14 @@ end
 
     #Creator/contributor fields
 
-    to_field 'creator_display', extract_marc('100abcdeq:110abcde:111acdejn:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>false)
-    to_field 'creator_vern_display', extract_marc('100abcdeq:110abcde:111acdej:700abcdeq:710abcde:711acdej', :trim_punctuation => true, :alternate_script=>:only)
+    to_field 'creator_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>false)
+    to_field 'creator_vern_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>:only)
     #creator_facet?
 
     #publication fields
     # For the imprint, make sure to take RDA-style 264, second
     # indicator = 1
-    to_field 'imprint_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>false)
+    to_field 'imprint_display', extract_marc('260abcefg3:264|*0|abc3:264|*1|abc3:264|*2|abc3:264|*3|abc3', :alternate_script=>false)
     to_field 'imprint_vern_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>:only)
     to_field 'edition_display', extract_marc('250a:254a', :trim_punctuation => true, :alternate_script=>false)
     to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
@@ -292,7 +292,8 @@ end
     to_field 'note_references_display', extract_marc('510abc')
     to_field 'note_summary_display', extract_marc('520ab')
     to_field 'note_cite_display', extract_marc('524a')
-    to_field 'note_terms_display', extract_marc('540a')
+    # Note Copyright should not display if ind1 = 0.  This ensures that it works if the value is unassigned or 1
+    to_field 'note_copyright_display', extract_marc('540a:542|1*|abcdefghijklmnopqr3:542| *|abcdefghijklmnopqr3')
     to_field 'note_bio_display', extract_marc('545abu')
     to_field 'note_finding_aid_display', extract_marc('555abcdu3')
     to_field 'note_custodial_display', extract_marc('561a')
@@ -303,7 +304,7 @@ end
 
     #subject fields
     #Note need to improve the subjects
-    to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:690abcdegvxyz', :trim_punctuation => true)
+    to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :trim_punctuation => true)
     to_field 'subject_topic_facet', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
     to_field 'subject_era_facet', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
     to_field 'subject_region_facet', extract_marc('651a:650z:654z:655z', :trim_punctuation => true)
@@ -328,8 +329,12 @@ end
     to_field 'isbn_display', extract_marc('020a')
     to_field 'issn_display', extract_marc('022a')
     to_field 'pub_no_display', extract_marc('028ab')
-    to_field 'govdoc_display', extract_marc('086az')
+    to_field 'sudoc_display', extract_marc('086|0*|a')
     to_field 'diamond_id_display', extract_marc('907a')
+    to_field 'lccn_display', extract_marc('010ab')
+    to_field 'gpo_display', extract_marc('074a')
+    to_field 'alma_mms_display', extract_marc('001')
+
 
     #Preceding Entry fields
     to_field 'continues_display', extract_marc('780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)

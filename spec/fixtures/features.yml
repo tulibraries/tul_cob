@@ -37,24 +37,26 @@ title_addl_740:
   doc_id: "991012132499760616"
   title_addl: "Dictionary of American history: 740. Subfield N. Subfield P."
 creator_100:
+  doc_id: "991012132499760617"
+  creator: "Meḳler, D. L., Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
+creator_100_v:
   doc_id: "991012172649703811"
-  creator: "Meḳler, D. L."
   creator_vern: "מעקלער, ד.ל. and לאועב, מיטשעל"
 creator_110:
   doc_id: "991012132499760618"
-  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E."
+  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_111:
   doc_id: "991012132499760619"
-  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield N."
+  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_700:
   doc_id: "991012132499760620"
-  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield Q."
+  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
 creator_710:
   doc_id: "991012132499760621"
-  creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E."
+  creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_711:
   doc_id: "991012132499760622"
-  creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J."
+  creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
 imprint_260:
   doc_id: "991012132499760623"
   imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
@@ -62,6 +64,22 @@ imprint_264:
   doc_id: "991012163279703811"
   imprint: "Santa Barbara, California : Santa Barbara Museum of Art, 2016."
   date_copyright: "2016"
+imprint_264_0:
+  doc_id: "991012163279703811"
+  imprint: "Santa Barbara, California : Santa Barbara Museum of Art, 2016."
+  date_copyright: "2016"
+imprint_264_1:
+  doc_id: "991012132499760723"
+  imprint: "Dictionary of American history: 264. Subfield B. Subfield C. Subfield 3."
+imprint_264_2:
+  doc_id: "991012132499760724"
+  imprint: "Dictionary of American history: 264. Subfield B. Subfield C. Subfield 3."
+imprint_264_3:
+  doc_id: "991012132499760725"
+  imprint: "Dictionary of American history: 264. Subfield B. Subfield C. Subfield 3."
+imprint_264_4:
+  doc_id: "991012132499760726"
+  imprint: "Dictionary of American history: 264. Subfield B. Subfield C. Subfield 3."
 edition_250:
   doc_id: "991012132499760625"
   edition: "Dictionary of American history: 250"
@@ -174,9 +192,18 @@ note_summary_520:
 note_cite_524:
   doc_id: "991012132499760661"
   note_cite: "Dictionary of American history: 524."
-note_terms_540:
+note_copyright_540:
   doc_id: "991012132499760662"
-  note_terms: "Dictionary of American history: 540."
+  note_copyright: "Dictionary of American history: 540."
+note_copyright_542:
+  doc_id: "991012132499760710"
+  note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
+note_copyright_542_0:
+  doc_id: "991012132499760711"
+  note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
+note_copyright_542_1:
+  doc_id: "991012132499760712"
+  note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
 note_bio_545:
   doc_id: "991012132499760663"
   note_bio: "Dictionary of American history: 545. Subfield B. Subfield U."
@@ -222,6 +249,19 @@ subject_651:
 subject_653:
   doc_id: "991012132499760677"
   subject: "Dictionary of American history: 653"
+subject_654:
+  doc_id: "991012132499760719"
+  subject: "Dictionary of American history: 654. Subfield B. Subfield C. Subfield E. Subfield V. Subfield Y. Subfield Z."
+subject_655:
+  doc_id: "991012132499760720"
+  subject: "Dictionary of American history: 655. Subfield B. Subfield C. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_656:
+  doc_id: "991012132499760721"
+  subject: "Dictionary of American history: 656. Subfield K. Subfield V. Subfield X. Subfield Y. Subfield Z."
+subject_657:
+  doc_id: "991012132499760722"
+  subject: "Dictionary of American history: 657. Subfield V. Subfield X. Subfield Y. Subfield Z."
+
 subject_690:
   doc_id: "991012132499760678"
   subject: "Dictionary of American history: 690. Subfield B. Subfield C. Subfield D. Subfield E. Subfield G. Subfield V. Subfield X. Subfield Y. Subfield Z."
@@ -291,6 +331,24 @@ entry_succeed_785_07:
 entry_succeed_785_08:
   doc_id: "991012132499760709"
   changed_back_to: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
+lccn_010:
+  doc_id: "991012132499760713"
+  lccn: "lccn number Subfield B"
+gpo_074:
+  doc_id: "991012132499760714"
+  gpo: "gpo number"
+alma_mms_001:
+  doc_id: "991012132499760715"
+  alma_mms: "991012132499760715"
+sudoc_086:
+  doc_id: "991012132499760718"
+  sudoc: "test"
+sudoc_086_0:
+  doc_id: "991012132499760716"
+  sudoc: "Y 4.C 73/7:S.HRG.109-174"
+sudoc_086_1:
+  doc_id: "991012132499760717"
+  sudoc: "test"
 
 
 
