@@ -238,7 +238,7 @@ end
     #publication fields
     # For the imprint, make sure to take RDA-style 264, second
     # indicator = 1
-    to_field 'imprint_display', extract_marc('260abcefg3:264|*2|abc3', :alternate_script=>false)
+    to_field 'imprint_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>false)
     to_field 'imprint_vern_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>:only)
     to_field 'edition_display', extract_marc('250a:254a', :trim_punctuation => true, :alternate_script=>false)
     to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
@@ -292,7 +292,7 @@ end
     to_field 'note_references_display', extract_marc('510abc')
     to_field 'note_summary_display', extract_marc('520ab')
     to_field 'note_cite_display', extract_marc('524a')
-    to_field 'note_copyright_display', extract_marc('540a:542|1*|abcdefghijklmnopqr3')
+    to_field 'note_copyright_display', extract_marc('540a:542|1*|abcdefghijklmnopqr3:542| *|abcdefghijklmnopqr3')
     to_field 'note_bio_display', extract_marc('545abu')
     to_field 'note_finding_aid_display', extract_marc('555abcdu3')
     to_field 'note_custodial_display', extract_marc('561a')

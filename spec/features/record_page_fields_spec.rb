@@ -579,13 +579,26 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
 
     let (:item_542) { fixtures.fetch("note_copyright_542") }
-    scenario "User visits a document with note copyright" do
+    scenario "User visits a document with note copyright indicator 1 value unassigned" do
       visit "catalog/#{item_542['doc_id']}"
       within "dd.blacklight-note_copyright_display" do
         expect(page).to have_text(item_542['note_copyright'])
       end
     end
 
+    let (:item_542_0) { fixtures.fetch("note_copyright_542_0") }
+    scenario "User visits a document with note copyright indicator 1 value 0" do
+      visit "catalog/#{item_542_0['doc_id']}"
+      expect(page).to_not have_text(item_542_0['note_copyright'])
+    end
+
+    let (:item_542_1) { fixtures.fetch("note_copyright_542_1") }
+    scenario "User visits a document with note copyright indicator 1 value 1" do
+      visit "catalog/#{item_542_1['doc_id']}"
+      within "dd.blacklight-note_copyright_display" do
+        expect(page).to have_text(item_542_1['note_copyright'])
+      end
+    end
   end
 
   feature "MARC Note Bio Fields" do
