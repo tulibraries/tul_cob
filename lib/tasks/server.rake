@@ -1,4 +1,4 @@
-require 'solr_wrapper'
+require 'solr_wrapper' unless Rails.env.production?
 
 desc 'Run test suite'
 task :ci do
