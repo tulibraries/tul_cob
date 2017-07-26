@@ -736,6 +736,38 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_654) { fixtures.fetch("subject_654") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_654['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_654['subject'])
+      end
+    end
+
+    let (:item_655) { fixtures.fetch("subject_655") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_655['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_655['subject'])
+      end
+    end
+
+    let (:item_656) { fixtures.fetch("subject_656") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_656['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_656['subject'])
+      end
+    end
+
+    let (:item_657) { fixtures.fetch("subject_657") }
+    scenario "User visits a document with subject" do
+      visit "catalog/#{item_657['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_text(item_657['subject'])
+      end
+    end
+
     let (:item_690) { fixtures.fetch("subject_690") }
     scenario "User visits a document with subject" do
       visit "catalog/#{item_690['doc_id']}"
