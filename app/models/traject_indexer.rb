@@ -244,10 +244,9 @@ end
     to_field 'pub_location_t', extract_marc('260a:264a', :trim_punctuation => true)
     to_field 'publisher_t', extract_marc('260b:264b', :trim_punctuation => true)
 
-    to_field 'pub_date' do |rec, acc|   #, extract_marc('260c:264c')
-      # fairly aggressive prune to get pub dates down to a 4 digit year
+    to_field 'pub_date' do |rec, acc|
       rec.fields(['260']).each do |field|
-        acc << four_digit_year(field['c'])  unless field['c'].nil?
+        acc << four_digit_year(field['c']) unless field['c'].nil?
       end
 
       rec.fields(['264']).each do |field|
@@ -331,5 +330,20 @@ end
     to_field 'pub_no_display', extract_marc('028ab')
     to_field 'govdoc_display', extract_marc('086az')
     to_field 'diamond_id_display', extract_marc('907a')
-    to_field 'entry_preced_display', extract_marc('780iabdghkmnopqrstuxyz3')
-    to_field 'entry_succeed_display', extract_marc('785iabdghkmnopqrstuxyz3')
+
+    #Preceding Entry fields
+    to_field 'continues_display', extract_marc('780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'continues_in_part_display', extract_marc('780|01|iabdghkmnopqrstuxyz3:780|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'formed_from_display', extract_marc('780|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_display', extract_marc('780|05|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_in_part_display', extract_marc('780|06|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'separated_from_display', extract_marc('780|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+
+    #Succeeding Entry fields
+    to_field 'continued_by_display', extract_marc('785|00|iabdghkmnopqrstuxyz3:785|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'continued_in_part_by_display', extract_marc('785|01|iabdghkmnopqrstuxyz3:785|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_by_display', extract_marc('785|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'absorbed_in_part_by_display', extract_marc('785|05|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'split_into_display', extract_marc('785|06|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'merged_to_form_display', extract_marc('785|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
+    to_field 'changed_back_to_display', extract_marc('785|08|iabdghkmnopqrstuxyz3', trim_punctuation: true)
