@@ -164,12 +164,42 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
-    let (:item_264) { fixtures.fetch("imprint_264") }
-    scenario "User visits a document with imprint" do
-      visit "catalog/#{item_264['doc_id']}"
+    let (:item_264_0) { fixtures.fetch("imprint_264_0") }
+    scenario "User visits a document with imprint indicator2 value 0" do
+      visit "catalog/#{item_264_0['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264['imprint'])
+        expect(page).to have_text(item_264_0['imprint'])
       end
+    end
+
+    let (:item_264_1) { fixtures.fetch("imprint_264_1") }
+    scenario "User visits a document with imprint indicator2 value 1" do
+      visit "catalog/#{item_264_1['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_264_1['imprint'])
+      end
+    end
+
+    let (:item_264_2) { fixtures.fetch("imprint_264_2") }
+    scenario "User visits a document with imprint indicator2 value 2" do
+      visit "catalog/#{item_264_2['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_264_2['imprint'])
+      end
+    end
+
+    let (:item_264_3) { fixtures.fetch("imprint_264_3") }
+    scenario "User visits a document with imprint indicator2 value 3" do
+      visit "catalog/#{item_264_3['doc_id']}"
+      within "dd.blacklight-imprint_display" do
+        expect(page).to have_text(item_264_3['imprint'])
+      end
+    end
+
+    let (:item_264_4) { fixtures.fetch("imprint_264_4") }
+    scenario "User visits a document with imprint indicator2 value 4" do
+      visit "catalog/#{item_264_4['doc_id']}"
+        expect(page).to_not have_text(item_264_4['imprint'])
     end
   end
 
