@@ -42,7 +42,7 @@ settings do
   # extend commit timeout
   provide 'solr_writer.commit_timeout', 300
   provide 'solr.url', solr_url
-  provide "solr_writer.commit_on_close", "true"
+  provide "solr_writer.commit_on_close", "false"
 end
 
 to_field "id", extract_marc("001", :first => true)
