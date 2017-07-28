@@ -230,7 +230,7 @@ end
     to_field 'title_addl_vern_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>:only)
 
     #Creator/contributor fields
-
+    to_field "creator", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", :trim_punctuation => true)
     to_field 'creator_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>:only)
     #creator_facet?
