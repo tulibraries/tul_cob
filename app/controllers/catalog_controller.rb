@@ -135,7 +135,7 @@ class CatalogController < ApplicationController
                              chart_js: true,
                              maxlength: 4
                            }
-    config.add_facet_field 'creator', label: 'Author/creator'
+    config.add_facet_field 'creator', label: 'Author/creator', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
@@ -196,7 +196,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
-    config.add_show_field 'creator_display', label: 'Author/creator/contributor'
+    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :link_to_search => 'creator'
     config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor'
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
