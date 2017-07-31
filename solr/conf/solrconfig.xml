@@ -54,12 +54,16 @@
   <admin>
     <defaultQuery>*:*</defaultQuery>
   </admin>
- 
-  <autoCommit>
-    <maxDocs>50000</maxDocs>
-    <maxTime>100000</maxTime>
-    <openSearcher>false</openSearcher>
-  </autoCommit>
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <autoCommit>
+      <maxDocs>1000000</maxDocs>
+      <maxTime>900000</maxTime>
+      <openSearcher>true</openSearcher>
+    </autoCommit>
+  </updateHandler>
+
+
 
 
   <!-- SearchHandler
