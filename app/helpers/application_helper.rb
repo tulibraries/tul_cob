@@ -8,4 +8,7 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
+  def new_line(args)
+    args[:document][args[:field]].join("</br>").html_safe
+  end
 end
