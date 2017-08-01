@@ -199,7 +199,7 @@ GEM
     lumberjack (1.0.12)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
-    marc (1.0.0)
+    marc (1.0.2)
       scrub_rb (>= 1.0.1, < 2)
       unf
     marc-fastxmlwriter (1.0.0)
