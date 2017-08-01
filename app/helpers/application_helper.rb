@@ -16,6 +16,11 @@ module ApplicationHelper
 
   def get_search_params(field, query)
     { :controller => "catalog", :action => 'index', :search_field => field, :q=> query }
+    if 'creator_display'
+      { :controller => "catalog", :action => 'index', :search_field => 'creator', :q=> query }
+    elsif 'subject_display'
+      { :controller => "catalog", :action => 'index', :search_field => 'subject', :q=> query }
+    end
   end
 
   def fielded_search(query, field)
@@ -24,4 +29,9 @@ module ApplicationHelper
     link_to(query, link_url)
   end
 
+  def list_with_links(args)
+    content_tag :ul do
+      args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
+    end
+  end
 end

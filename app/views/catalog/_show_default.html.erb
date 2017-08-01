@@ -5,7 +5,7 @@
       <% if should_render_show_field? document, field %>
         <% if field.linked_fielded_search %>
           <dt class="blacklight-<%= field_name.parameterize %>">
-                <%= render_document_show_field_label document, :field => field_name %>
+            <%= render_document_show_field_label document, :field => field_name %>
           </dt>
           <% if field.multi %>
               <% document[field.field].each do |fvalue| %>

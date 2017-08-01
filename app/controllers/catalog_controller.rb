@@ -196,7 +196,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
-    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :linked_fielded_search => 'creator', :multi => true
+    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :helper_method => :list_with_links, :multi => true
     config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
