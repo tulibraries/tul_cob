@@ -65,6 +65,15 @@ class CatalogController < ApplicationController
     # items to show per page, each number in the array represent another option to choose from.
     #config.per_page = [10,20,50,100]
 
+    config.display_clickable = {
+      'creator_display' => {
+            :search_field => 'creator',
+            :related_search_field => 'creator',
+            :sep => '|',
+            :key_value => true
+        },
+    }
+
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
@@ -135,7 +144,7 @@ class CatalogController < ApplicationController
                              chart_js: true,
                              maxlength: 4
                            }
-    config.add_facet_field 'creator', label: 'Author/creator'
+    config.add_facet_field 'creator', label: 'Author/creator', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
@@ -196,8 +205,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
-    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :helper_method => :new_line
-    config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :new_line
+    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :linked_fielded_search => 'creator'
+    config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
     config.add_show_field 'edition_display', label: 'Edition'
@@ -214,7 +223,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'form_work_display', label: ''
     config.add_show_field 'performance_display', label: ''
     config.add_show_field 'music_no_display', label: ''
-    config.add_show_field 'note_display', label: 'Note', :helper_method => :new_line
+    config.add_show_field 'note_display', label: 'Note', :helper_method => :list
     config.add_show_field 'note_with_display', label: 'With'
     config.add_show_field 'note_diss_display', label: 'Dissertation Note'
     config.add_show_field 'note_biblio_display', label: 'Bibliography'
@@ -231,7 +240,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'note_related_display', label: 'Related Materials'
     config.add_show_field 'note_accruals_display', label: 'Additions to Collection'
     config.add_show_field 'note_local_display', label: 'Local Note'
-    config.add_show_field 'subject_display', label: 'Subject', :helper_method => :new_line
+    config.add_show_field 'subject_display', label: 'Subject', :helper_method => :list
 
     # Preceeding Entry fields
     config.add_show_field 'continues_display', label: 'Continues'
@@ -258,7 +267,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'sudoc_display', label: 'SuDOC'
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
-    config.add_show_field 'language_display', label: 'Language', :helper_method => :new_line
+    config.add_show_field 'language_display', label: 'Language', :helper_method => :list
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
 
     # "fielded" search configuration. Used by pulldown among other places.
@@ -318,6 +327,14 @@ class CatalogController < ApplicationController
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
+    end
+
+    config.add_search_field('creator_display',:label=>'Author/Contributor') do |field|
+       field.include_in_simple_select = false
+       field.solr_local_parameters = {
+         :qf => '$creator_qf',
+         :pf => '$creator_pf'
+       }
     end
 
     # "sort results by" select (pulldown)
