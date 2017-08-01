@@ -5,11 +5,7 @@
       <% if should_render_show_field? document, field %>
         <% if field.linked_fielded_search %>
           <dt class="blacklight-<%= field_name.parameterize %>">
-              <% if field_name == "author_addl_display" && document.bdr_record? %>
-                Contributors:
-              <% else %>
                 <%= render_document_show_field_label document, :field => field_name %>
-              <% end %>
           </dt>
           <% if field.multi %>
               <% document[field.field].each do |fvalue| %>

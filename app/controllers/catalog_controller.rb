@@ -65,15 +65,6 @@ class CatalogController < ApplicationController
     # items to show per page, each number in the array represent another option to choose from.
     #config.per_page = [10,20,50,100]
 
-    config.display_clickable = {
-      'creator_display' => {
-            :search_field => 'creator',
-            :related_search_field => 'creator',
-            :sep => '|',
-            :key_value => true
-        },
-    }
-
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
@@ -205,7 +196,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
-    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :linked_fielded_search => 'creator'
+    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :linked_fielded_search => 'creator', :multi => true
     config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
@@ -327,14 +318,6 @@ class CatalogController < ApplicationController
         qf: '$subject_qf',
         pf: '$subject_pf'
       }
-    end
-
-    config.add_search_field('creator_display',:label=>'Author/Contributor') do |field|
-       field.include_in_simple_select = false
-       field.solr_local_parameters = {
-         :qf => '$creator_qf',
-         :pf => '$creator_pf'
-       }
     end
 
     # "sort results by" select (pulldown)

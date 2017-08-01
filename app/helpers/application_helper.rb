@@ -14,14 +14,14 @@ module ApplicationHelper
     end
   end
 
+  def get_search_params(field, query)
+    { :controller => "catalog", :action => 'index', :search_field => field, :q=> query }
+  end
+
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
     link_to(query, link_url)
   end
 
-  def get_search_params(field, query)
-    #Remove > for links and replace with blank.
-    {:controller => "catalog", :action => 'index', :search_field => field, :q=> query }
-  end
 end
