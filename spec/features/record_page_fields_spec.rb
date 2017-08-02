@@ -155,14 +155,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "Creator links to search" do
-    let (:item_100) { fixtures.fetch("creator_100") }
-    scenario "Has link to creator" do
-      visit "catalog/#{item_100['doc_id']}"
-      expect(page).to have_link("#{item_100['creator_display']}")
-    end
-  end
-
   feature "MARC Imprint Fields" do
     let (:item_260) { fixtures.fetch("imprint_260") }
     scenario "User visits a document with imprint" do
@@ -715,6 +707,7 @@ RSpec.feature "RecordPageFields", type: :feature do
       visit "catalog/#{item_600['doc_id']}"
       within "dd.blacklight-subject_display" do
         expect(page).to have_text(item_600['subject'])
+        expect(page).to have_text(" — ")
       end
     end
 
@@ -1112,6 +1105,20 @@ RSpec.feature "RecordPageFields", type: :feature do
       within "dd.blacklight-language_display" do
         expect(page).to have_css("li.list_items")
       end
+    end
+  end
+
+  feature "Links to search" do
+    let (:item_100) { fixtures.fetch("creator_100") }
+    scenario "Has link to creator" do
+      visit "catalog/#{item_100['doc_id']}"
+      expect(page).to have_link("#{item_100['creator_display']}")
+    end
+
+    let (:item_600) { fixtures.fetch("subject_600") }
+    scenario "Has link to subject" do
+      visit "catalog/#{item_600['doc_id']}"
+      expect(page).to have_link("#{item_600['subject_display']}")
     end
   end
 end
