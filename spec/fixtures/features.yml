@@ -41,7 +41,7 @@ creator_100:
   creator: "Meḳler, D. L., Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
 creator_100_v:
   doc_id: "991012172649703811"
-  creator_vern: "מעקלער, ד.ל. and לאועב, מיטשעל"
+  creator_vern: "מעקלער, ד.ל.  לאועב, מיטשעל"
 creator_110:
   doc_id: "991012132499760618"
   creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
@@ -365,16 +365,16 @@ language_jpn:
   language: "Japanese"
 language_041_a:
   doc_id: "991012132499760695"
-  language: "Japanese and English"
+  language: "Japanese English"
 language_041_d:
   doc_id: "991012132499760694"
-  language: "Japanese and English"
+  language: "Japanese English"
 language_041_e:
   doc_id: "991012132499760693"
-  language: "Japanese and English"
+  language: "Japanese English"
 language_041_g:
   doc_id: "991012132499760692"
-  language: "Japanese and English"
+  language: "Japanese English"
 language_041_j:
   doc_id: "991012132499760691"
-  language: "Japanese and English"
+  language: "Japanese English"
