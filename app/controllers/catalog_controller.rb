@@ -197,7 +197,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
     config.add_show_field 'creator_display', label: 'Author/creator/contributor', :helper_method => :list_with_links, :multi => true
-    config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list
+    config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list_with_links
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
     config.add_show_field 'edition_display', label: 'Edition'
