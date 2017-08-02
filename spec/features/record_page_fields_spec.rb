@@ -155,6 +155,14 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
+  feature "Creator links to search" do
+    let (:item_100) { fixtures.fetch("creator_100") }
+    scenario "Has link to creator" do
+      visit "catalog/#{item_100['doc_id']}"
+      expect(page).to have_link("#{item_100['creator_display']}")
+    end
+  end
+
   feature "MARC Imprint Fields" do
     let (:item_260) { fixtures.fetch("imprint_260") }
     scenario "User visits a document with imprint" do
@@ -1061,6 +1069,48 @@ RSpec.feature "RecordPageFields", type: :feature do
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-format" do
         expect(page).to have_text(item['format'])
+      end
+    end
+  end
+
+  feature "Multiple value fields display as a list" do
+    let (:item_100) { fixtures.fetch("creator_100") }
+    scenario "Has list of creators" do
+      visit "catalog/#{item_100['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_css("li.list_items")
+      end
+    end
+
+    let (:item_100_v) { fixtures.fetch("creator_100_v") }
+    scenario "Has list of creators" do
+      visit "catalog/#{item_100_v['doc_id']}"
+      within "dd.blacklight-creator_display" do
+        expect(page).to have_css("li.list_items")
+      end
+    end
+
+    let (:note_500) { fixtures.fetch("note_500") }
+    scenario "Has list of notes" do
+      visit "catalog/#{note_500['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_css("li.list_items")
+      end
+    end
+
+    let (:subject_600) { fixtures.fetch("subject_600") }
+    scenario "Has list of subjects" do
+      visit "catalog/#{subject_600['doc_id']}"
+      within "dd.blacklight-subject_display" do
+        expect(page).to have_css("li.list_items")
+      end
+    end
+
+    let (:language) { fixtures.fetch("language") }
+    scenario "Has list of languages" do
+      visit "catalog/#{language['doc_id']}"
+      within "dd.blacklight-language_display" do
+        expect(page).to have_css("li.list_items")
       end
     end
   end
