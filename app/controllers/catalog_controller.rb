@@ -31,6 +31,7 @@ class CatalogController < ApplicationController
     author_display
     author_vern_display
     format
+    format_facet
     isbn_t
     language_facet
     lc_callnum_display
@@ -109,7 +110,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     # config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
-    # config.add_facet_field 'format', label: 'Format'
+    config.add_facet_field 'format_facet', label: 'Resource Type'
     # config.add_facet_field 'pub_date', label: 'Publication Year', single: true
     # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
     # config.add_facet_field 'language_facet', label: 'Language', limit: true
