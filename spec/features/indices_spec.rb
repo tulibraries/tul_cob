@@ -15,6 +15,7 @@ RSpec.feature "Indices", type: :feature do
         expect(page).to have_text "Welcome!"
         within("#facets") do
             expect(page).to have_text "Date"
+            expect(page).to have_text "Resource Type"
         end
       end
 
