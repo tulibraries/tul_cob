@@ -715,6 +715,7 @@ RSpec.feature "RecordPageFields", type: :feature do
       visit "catalog/#{item_600['doc_id']}"
       within "dd.blacklight-subject_display" do
         expect(page).to have_text(item_600['subject'])
+        expect(page).to have_text(" — ")
       end
     end
 
