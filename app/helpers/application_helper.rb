@@ -15,11 +15,13 @@ module ApplicationHelper
   end
 
   def get_search_params(field, query)
-    { :controller => "catalog", :action => 'index', :search_field => field, :q=> query }
-    if 'creator_display'
+    if field == 'creator_display'
       { :controller => "catalog", :action => 'index', :search_field => 'creator', :q=> query }
-    elsif 'subject_display'
-      { :controller => "catalog", :action => 'index', :search_field => 'subject', :q=> query }
+    elsif field == 'subject_display'
+      { :controller => "catalog", :action => 'index', :search_field => 'subject', :q=> query.gsub(/>|—/, '') }
+    else
+      { :controller => "catalog", :action => 'index', :search_field => field, :q=> query }
+
     end
   end
 

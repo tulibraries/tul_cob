@@ -135,6 +135,8 @@ class CatalogController < ApplicationController
                              chart_js: true,
                              maxlength: 4
                            }
+
+    config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
     config.add_facet_field 'creator', label: 'Author/creator', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'
     config.add_facet_field 'subject_era_facet', label: 'Era'
@@ -231,7 +233,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'note_related_display', label: 'Related Materials'
     config.add_show_field 'note_accruals_display', label: 'Additions to Collection'
     config.add_show_field 'note_local_display', label: 'Local Note'
-    config.add_show_field 'subject_display', label: 'Subject', :helper_method => :list
+    config.add_show_field 'subject_display', label: 'Subject', :helper_method => :list_with_links, :multi => true
 
     # Preceeding Entry fields
     config.add_show_field 'continues_display', label: 'Continues'
