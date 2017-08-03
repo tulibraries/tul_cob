@@ -30,12 +30,15 @@ RSpec.feature "Indices", type: :feature do
       click_button 'Search'
       expect(current_url).to eq results_url
       within(".document-position-0 h3") do
-        expect(page).to have_text title
+        expect(page).to have_text(:title)
       end
       within(".document-metadata") do
+        expect(page).to have_text :title
         expect(page).to have_text "Resource Type:"
         expect(page).to have_text "Book and Print"
         expect(page).to have_text "Status/Location:"
+        expect(page).to have_text "Author/creator:"
+        expect(page).to have_text "Published:"
       end
     end
   end
@@ -70,6 +73,4 @@ RSpec.feature "Indices", type: :feature do
       expect(page).to have_text(item['title'])
     end
   end
-
-  
 end

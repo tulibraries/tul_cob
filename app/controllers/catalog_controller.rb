@@ -30,7 +30,9 @@ class CatalogController < ApplicationController
     score
     author_display
     author_vern_display
+    creator_display
     format
+    imprint_display
     isbn_t
     language_facet
     lc_callnum_display
@@ -166,8 +168,8 @@ class CatalogController < ApplicationController
     # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
     #new
     #config.add_index_field 'title_statement_display', label: 'Title Statement'
-    config.add_index_field 'imprint', label: 'Published'
-    config.add_index_field 'creator', label: 'Author/creator'
+    config.add_index_field 'imprint_display', label: 'Published'
+    config.add_index_field 'creator_display', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
