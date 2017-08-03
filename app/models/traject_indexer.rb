@@ -54,8 +54,10 @@ end
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
 to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
 
-to_field "format", marc_formats
-to_field "format_facet", marc_formats
+to_field "format", marc_formats do |rec, acc|
+  acc.delete('Print')
+  acc.delete('Online')
+end
 
 to_field "isbn_t",  extract_marc('020a', :separator=>nil) do |rec, acc|
      orig = acc.dup
