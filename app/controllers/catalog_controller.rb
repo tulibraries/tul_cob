@@ -255,7 +255,7 @@ class CatalogController < ApplicationController
     #config.add_show_field 'call_number', label: 'Call Number'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
-    config.add_show_field 'pub_no_display', label: 'Publication Number Classification'
+    config.add_show_field 'pub_no_display', label: 'Publication Number'
     config.add_show_field 'gpo_display', label: 'GPO Item Number'
     config.add_show_field 'sudoc_display', label: 'SuDOC'
     config.add_show_field 'lccn_display', label: 'LCCN'
