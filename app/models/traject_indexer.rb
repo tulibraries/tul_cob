@@ -66,10 +66,8 @@ to_field "isbn_t",  extract_marc('020a', :separator=>nil) do |rec, acc|
      acc.uniq!
 end
 
-#to_field 'material_type_display', extract_marc('300a', :trim_punctuation => true)
-
 # Title fields
-#    primary title
+# primary title
 
 to_field 'title_t', extract_marc('245a')
 to_field 'title_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>false) do |r, acc|
@@ -78,7 +76,7 @@ end
 
 to_field 'title_vern_display', extract_marc('245a', :trim_punctuation => true, :alternate_script=>:only)
 
-#    subtitle
+# subtitle
 
 to_field 'subtitle_t', extract_marc('245b')
 to_field 'subtitle_display', extract_marc('245b', :trim_punctuation => true, :alternate_script=>false)do |r, acc|
@@ -86,7 +84,7 @@ to_field 'subtitle_display', extract_marc('245b', :trim_punctuation => true, :al
 end
 to_field 'subtitle_vern_display', extract_marc('245b', :trim_punctuation => true, :alternate_script=>:only)
 
-#    additional title fields
+# additional title fields
 to_field 'title_addl_t',
   extract_marc(%W{
     245abnps
@@ -133,10 +131,6 @@ to_field 'subject_t', extract_marc(%W(
   653a:654abcde:655abc
 ).join(':'))
 to_field 'subject_addl_t', extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:650vwxyz:651vwxyz:654vwxyz:655vwxyz")
-
-# Publication fields
-#to_field 'published_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>false)
-#to_field 'published_vern_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>:only)
 
 #does marc_publication_date guarantee single value?
 to_field 'pub_date_sort', marc_publication_date
@@ -214,8 +208,6 @@ end
       acc.replace [acc.join(",")]
     end
 
-    #new solr fields for TUL search
-
     #Title fields
 
     to_field 'title_statement_display', extract_marc('245abcfgknps', :alternate_script=>false)
@@ -253,8 +245,6 @@ end
         acc << four_digit_year(field['c'])  if field.indicator2 == '4'
       end
     end
-
-    # to_field 'carto_data_display', extract_marc('', :trim_punctuation => true)
 
     #physical characteristics fields -3xx
 
@@ -296,7 +286,7 @@ end
     to_field 'note_local_display', extract_marc('590a')
 
     #subject fields
-    #Note need to improve the subjects
+    #[TODO] need to improve the subjects
 
     to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
@@ -329,7 +319,6 @@ end
     to_field 'lccn_display', extract_marc('010ab')
     to_field 'gpo_display', extract_marc('074a')
     to_field 'alma_mms_display', extract_marc('001')
-
 
     #Preceding Entry fields
 
