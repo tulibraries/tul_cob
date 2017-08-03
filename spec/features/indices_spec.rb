@@ -35,7 +35,7 @@ RSpec.feature "Indices", type: :feature do
       end
       within(".document-metadata") do
         expect(page).to have_text "Resource Type:"
-        expect(page).to have_text "Book and Print"
+        expect(page).to have_text "Book"
         expect(page).to have_text "Status/Location:"
       end
     end
