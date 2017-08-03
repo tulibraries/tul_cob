@@ -15,6 +15,7 @@ RSpec.feature "Indices", type: :feature do
         expect(page).to have_text "Welcome!"
         within("#facets") do
             expect(page).to have_text "Date"
+            expect(page).to have_text "Resource Type"
         end
       end
 
@@ -35,7 +36,7 @@ RSpec.feature "Indices", type: :feature do
       within(".document-metadata") do
         expect(page).to have_text :title
         expect(page).to have_text "Resource Type:"
-        expect(page).to have_text "Book and Print"
+        expect(page).to have_text "Book"
         expect(page).to have_text "Status/Location:"
         expect(page).to have_text "Author/creator:"
         expect(page).to have_text "Published:"
