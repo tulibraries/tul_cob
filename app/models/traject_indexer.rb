@@ -133,9 +133,6 @@ to_field 'subject_t', extract_marc(%W(
   653a:654abcde:655abc
 ).join(':'))
 to_field 'subject_addl_t', extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:650vwxyz:651vwxyz:654vwxyz:655vwxyz")
-#to_field 'subject_topic_facet', extract_marc("600abcdq:610ab:611ab:630aa:650aa:653aa:654ab:655ab", :trim_punctuation => true)
-#to_field 'subject_era_facet',  extract_marc("650y:651y:654y:655y", :trim_punctuation => true)
-#to_field 'subject_geo_facet',  extract_marc("651a:650z",:trim_punctuation => true )
 
 # Publication fields
 #to_field 'published_display', extract_marc('260a', :trim_punctuation => true, :alternate_script=>false)
@@ -202,7 +199,6 @@ to_field 'url_suppl_display' do |rec, acc|
   end
 end
 
-
     to_field 'location_facet' do |rec, acc|
       rec.fields('945').each do |field|
         #Strip the values, as many come in with space padding
@@ -217,8 +213,6 @@ end
       end
       acc.replace [acc.join(",")]
     end
-
-
 
     #new solr fields for TUL search
 
@@ -235,11 +229,9 @@ end
     to_field "creator", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", :trim_punctuation => true)
     to_field 'creator_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>:only)
-    #creator_facet?
 
     #publication fields
-    # For the imprint, make sure to take RDA-style 264, second
-    # indicator = 1
+    # For the imprint, make sure to take RDA-style 264, second indicator = 1
     to_field 'imprint_display', extract_marc('260abcefg3:264|*0|abc3:264|*1|abc3:264|*2|abc3:264|*3|abc3', :alternate_script=>false)
     to_field 'imprint_vern_display', extract_marc('260abcefg3:264|*1|abc3', :alternate_script=>:only)
     to_field 'edition_display', extract_marc('250a:254a', :trim_punctuation => true, :alternate_script=>false)
@@ -282,7 +274,6 @@ end
     # to_field 'date_series', extract_marc('362a')
     to_field 'volume_series_display', extract_marc('830v:490v:440v')
 
-
     #note fields
 
     to_field 'note_display', extract_marc('500a:508a:511a:515a:518a:521ab:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a')
@@ -306,8 +297,8 @@ end
 
     #subject fields
     #Note need to improve the subjects
-    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
 
+    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_topic_facet', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
     to_field 'subject_era_facet', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
@@ -341,6 +332,7 @@ end
 
 
     #Preceding Entry fields
+
     to_field 'continues_display', extract_marc('780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
     to_field 'continues_in_part_display', extract_marc('780|01|iabdghkmnopqrstuxyz3:780|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
     to_field 'formed_from_display', extract_marc('780|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
@@ -349,6 +341,7 @@ end
     to_field 'separated_from_display', extract_marc('780|07|iabdghkmnopqrstuxyz3', trim_punctuation: true)
 
     #Succeeding Entry fields
+
     to_field 'continued_by_display', extract_marc('785|00|iabdghkmnopqrstuxyz3:785|02|iabdghkmnopqrstuxyz3', trim_punctuation: true)
     to_field 'continued_in_part_by_display', extract_marc('785|01|iabdghkmnopqrstuxyz3:785|03|iabdghkmnopqrstuxyz3', trim_punctuation: true)
     to_field 'absorbed_by_display', extract_marc('785|04|iabdghkmnopqrstuxyz3', trim_punctuation: true)
