@@ -29,7 +29,6 @@ RSpec.feature "Indices", type: :feature do
       fill_in 'q', with: title
       click_button 'Search'
       expect(current_url).to eq results_url
-      save_and_open_page
       within(".document-position-0 h3") do
         expect(page).to have_text(:title)
       end
