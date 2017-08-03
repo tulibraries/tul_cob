@@ -25,41 +25,41 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-  fl: %w[
-    id
-    score
-    author_display
-    author_vern_display
-    creator_display
-    format
-    imprint_display
-    isbn_t
-    language_facet
-    lc_callnum_display
-    material_type_display
-    published_display
-    published_vern_display
-    pub_date
-    title_series_vern_display
-    title_display
-    title_vern_display
-    subject_topic_facet
-    subject_geo_facet
-    subject_era_facet
-    subtitle_display
-    subtitle_vern_display
-    url_fulltext_display
-    url_suppl_display
-    title_statement_display
-    title_uniform_display
-    imprint
-    summary
-    contents
-    issn
-  ].join(" "),
-  wt: "json",
-  rows: 10,
-}
+      fl: %w[
+        id
+        score
+        author_display
+        author_vern_display
+        creator_display
+        format
+        imprint_display
+        isbn_t
+        language_facet
+        lc_callnum_display
+        material_type_display
+        published_display
+        published_vern_display
+        pub_date
+        title_series_vern_display
+        title_display
+        title_vern_display
+        subject_topic_facet
+        subject_geo_facet
+        subject_era_facet
+        subtitle_display
+        subtitle_vern_display
+        url_fulltext_display
+        url_suppl_display
+        title_statement_display
+        title_uniform_display
+        imprint
+        summary
+        contents
+        issn
+      ].join(" "),
+      wt: "json",
+      rows: 10,
+    }
 
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
@@ -110,17 +110,9 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    # config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
-    config.add_facet_field 'format', label: 'Resource Type'
-    # config.add_facet_field 'pub_date', label: 'Publication Year', single: true
-    # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
-    # config.add_facet_field 'language_facet', label: 'Language', limit: true
-    # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
-    # config.add_facet_field 'subject_geo_facet', label: 'Region'
-    # config.add_facet_field 'subject_era_facet', label: 'Era'
-    #
+    # Facet Fields
+
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['format', 'language_facet']
-    #
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
     #    :years_5 => { label: 'within 5 Years', fq: "pub_date:[#{Time.zone.now.year - 5 } TO *]" },
     #    :years_10 => { label: 'within 10 Years', fq: "pub_date:[#{Time.zone.now.year - 10 } TO *]" },
@@ -140,11 +132,12 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
     config.add_facet_field 'creator', label: 'Author/creator', limit: true, show: false
-    config.add_facet_field 'subject_topic_facet', label: 'Topic'
+    config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
     config.add_facet_field 'genre_facet', label: 'Genre'
-    config.add_facet_field 'language_facet', label: 'Language'
+    config.add_facet_field 'language_facet', label: 'Language'     # limit: true
+    config.add_facet_field 'format', label: 'Resource Type'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -153,48 +146,14 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    # config.add_index_field 'title_display', label: 'Title'
-    # config.add_index_field 'title_vern_display', label: 'Title Vern'
-    # config.add_index_field 'title_uniform_vern_display', label: 'Title Uniform Vern'
-    # config.add_index_field 'title_series_vern_display', label: 'Title Series Vern'
-    # config.add_index_field 'title_addl_vern_display', label: 'Additional Title Vern'
-    # config.add_index_field 'author_display', label: 'Author'
-    # config.add_index_field 'author_vern_display', label: 'Author Vern'
-    # config.add_index_field 'format', label: 'Format'
-    # config.add_index_field 'language_facet', label: 'Language'
-    # config.add_index_field 'published_display', label: 'Published'
-    # config.add_index_field 'published_vern_display', label: 'Published Vern'
-    # config.add_index_field 'lc_callnum_display', label: 'Call number'
-    # config.add_index_field 'location_display', label: 'Location', helper_method: :render_location
-    #new
-    #config.add_index_field 'title_statement_display', label: 'Title Statement'
+
     config.add_index_field 'imprint_display', label: 'Published'
     config.add_index_field 'creator_display', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
+
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    # config.add_show_field 'title_display', label: 'Title'
-    # config.add_show_field 'title_vern_display', label: 'Title'
-    # config.add_show_field 'subtitle_display', label: 'Subtitle'
-    # config.add_show_field 'subtitle_vern_display', label: 'Subtitle'
-    # config.add_show_field 'author_display', label: 'Author'
-    # config.add_show_field 'author_vern_display', label: 'Author'
-    # config.add_show_field 'format', label: 'Format'
-    # config.add_show_field 'url_fulltext_display', label: 'URL'
-    # config.add_show_field 'url_suppl_display', label: 'More Information'
-    # config.add_show_field 'language_facet', label: 'Language Facet'
-    # config.add_show_field 'language', label: 'Language'
-    # config.add_show_field 'published_display', label: 'Published'
-    # config.add_show_field 'published_vern_display', label: 'Published'
-    # config.add_show_field 'lc_callnum_display', label: 'Call number'
-    # config.add_show_field 'isbn_t', label: 'ISBN'
-    # config.add_show_field 'control_number_display', label: 'Control Number'
-    # config.add_show_field 'location_display', label: 'Location', helper_method: :render_location
 
-    #new
-    #config.add_show_field 'title_statement_display', label: 'Title Statement'
-    #config.add_show_field 'title', label: 'Title'
-    #config.add_show_field 'subtitle', label: 'Subtitle'
     config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
     config.add_show_field 'title_uniform_display', label: 'Uniform title'
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
@@ -285,7 +244,6 @@ class CatalogController < ApplicationController
 
     config.add_search_field 'all_fields', label: 'All Fields'
 
-
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
@@ -328,6 +286,7 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
+
     config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', label: 'relevance'
     config.add_sort_field 'pub_date_sort desc, title_sort asc', label: 'year'
     config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
