@@ -119,7 +119,6 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {
