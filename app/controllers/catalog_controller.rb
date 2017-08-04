@@ -282,6 +282,16 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('creator') do |field|
+      #field.solr_parameters = { :'spellcheck.dictionary' => 'creator' }
+      field.qt = 'search'
+      field.solr_local_parameters = {
+        qf: 'creator',
+        pf: 'creator'
+      }
+    end
+
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
