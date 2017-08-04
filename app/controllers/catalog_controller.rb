@@ -25,39 +25,41 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-  fl: %w[
-    id
-    score
-    author_display
-    author_vern_display
-    format
-    isbn_t
-    language_facet
-    lc_callnum_display
-    material_type_display
-    published_display
-    published_vern_display
-    pub_date
-    title_series_vern_display
-    title_display
-    title_vern_display
-    subject_topic_facet
-    subject_geo_facet
-    subject_era_facet
-    subtitle_display
-    subtitle_vern_display
-    url_fulltext_display
-    url_suppl_display
-    title_statement_display
-    title_uniform_display
-    imprint
-    summary
-    contents
-    issn
-  ].join(" "),
-  wt: "json",
-  rows: 10,
-}
+      fl: %w[
+        id
+        score
+        author_display
+        author_vern_display
+        creator_display
+        format
+        imprint_display
+        isbn_t
+        language_facet
+        lc_callnum_display
+        material_type_display
+        published_display
+        published_vern_display
+        pub_date
+        title_series_vern_display
+        title_display
+        title_vern_display
+        subject_topic_facet
+        subject_geo_facet
+        subject_era_facet
+        subtitle_display
+        subtitle_vern_display
+        url_fulltext_display
+        url_suppl_display
+        title_statement_display
+        title_uniform_display
+        imprint
+        summary
+        contents
+        issn
+      ].join(" "),
+      wt: "json",
+      rows: 10,
+    }
 
     # solr path which will be added to solr base url before the other solr params.
     #config.solr_path = 'select'
@@ -108,15 +110,8 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    # config.add_facet_field 'location_facet', label: 'Location', helper_method: :render_location
-    config.add_facet_field 'format', label: 'Resource Type'
-    # config.add_facet_field 'pub_date', label: 'Publication Year', single: true
-    # config.add_facet_field 'subject_topic_facet', label: 'Topic', limit: 20, index_range: 'A'..'Z'
-    # config.add_facet_field 'language_facet', label: 'Language', limit: true
-    # config.add_facet_field 'lc_1letter_facet', label: 'Call Number'
-    # config.add_facet_field 'subject_geo_facet', label: 'Region'
-    # config.add_facet_field 'subject_era_facet', label: 'Era'
-    #
+    # Facet Fields
+
     # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['format', 'language_facet']
     # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
     #    :years_5 => { label: 'within 5 Years', fq: "pub_date:[#{Time.zone.now.year - 5 } TO *]" },
@@ -124,6 +119,7 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
+    config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {
