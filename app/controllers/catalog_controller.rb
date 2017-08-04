@@ -178,22 +178,22 @@ class CatalogController < ApplicationController
     config.add_show_field 'performance_display', label: ''
     config.add_show_field 'music_no_display', label: ''
     config.add_show_field 'note_display', label: 'Note', :helper_method => :list
-    config.add_show_field 'note_with_display', label: 'With'
-    config.add_show_field 'note_diss_display', label: 'Dissertation Note'
-    config.add_show_field 'note_biblio_display', label: 'Bibliography'
-    config.add_show_field 'note_toc_display', label: 'Contents'
-    config.add_show_field 'note_restrictions_display', label: 'Access and Restrictions'
-    config.add_show_field 'note_references_display', label: 'Cited in'
-    config.add_show_field 'note_summary_display', label: 'Summary'
-    config.add_show_field 'note_cite_display', label: 'Cite as'
-    config.add_show_field 'note_copyright_display', label: 'Copyright Note'
-    config.add_show_field 'note_bio_display', label: 'Biographical or Historical Note'
-    config.add_show_field 'note_finding_aid_display', label: 'Finding Aids'
-    config.add_show_field 'note_custodial_display', label: 'Custodial History'
-    config.add_show_field 'note_binding_display', label: 'Binding Note'
-    config.add_show_field 'note_related_display', label: 'Related Materials'
-    config.add_show_field 'note_accruals_display', label: 'Additions to Collection'
-    config.add_show_field 'note_local_display', label: 'Local Note'
+    config.add_show_field 'note_with_display', label: 'With', :helper_method => :list
+    config.add_show_field 'note_diss_display', label: 'Dissertation Note', :helper_method => :list
+    config.add_show_field 'note_biblio_display', label: 'Bibliography', :helper_method => :list
+    config.add_show_field 'note_toc_display', label: 'Contents', :helper_method => :list
+    config.add_show_field 'note_restrictions_display', label: 'Access and Restrictions', :helper_method => :list
+    config.add_show_field 'note_references_display', label: 'Cited in', :helper_method => :list
+    config.add_show_field 'note_summary_display', label: 'Summary', :helper_method => :list
+    config.add_show_field 'note_cite_display', label: 'Cite as', :helper_method => :list
+    config.add_show_field 'note_copyright_display', label: 'Copyright Note', :helper_method => :list
+    config.add_show_field 'note_bio_display', label: 'Biographical or Historical Note', :helper_method => :list
+    config.add_show_field 'note_finding_aid_display', label: 'Finding Aids', :helper_method => :list
+    config.add_show_field 'note_custodial_display', label: 'Custodial History', :helper_method => :list
+    config.add_show_field 'note_binding_display', label: 'Binding Note', :helper_method => :list
+    config.add_show_field 'note_related_display', label: 'Related Materials', :helper_method => :list
+    config.add_show_field 'note_accruals_display', label: 'Additions to Collection', :helper_method => :list
+    config.add_show_field 'note_local_display', label: 'Local Note', :helper_method => :list
     config.add_show_field 'subject_display', label: 'Subject', :helper_method => :list_with_links, :multi => true
 
     # Preceeding Entry fields
