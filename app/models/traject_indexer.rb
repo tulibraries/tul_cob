@@ -1,4 +1,5 @@
 $:.unshift './config'
+$:.unshift './lib'
 require 'yaml'
 solr_config = YAML.load_file("config/blacklight.yml")[(ENV["RAILS_ENV"] || "development")]
 solr_url = ERB.new(solr_config['url']).result
