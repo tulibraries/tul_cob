@@ -131,7 +131,7 @@ class CatalogController < ApplicationController
                            }
 
     config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
-    config.add_facet_field 'creator', label: 'Author/creator', limit: true, show: false
+    config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
@@ -282,11 +282,11 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator') do |field|
+    config.add_search_field('creator_t', label: "Creator") do |field|
       field.qt = 'search'
       field.solr_local_parameters = {
-        qf: 'creator',
-        pf: 'creator'
+        qf: 'creator_t',
+        pf: 'creator_t'
       }
     end
 
