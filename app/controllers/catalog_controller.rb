@@ -224,6 +224,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
     config.add_show_field 'language_display', label: 'Language', :helper_method => :list
     config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
+    config.add_show_field 'url_display', label: 'More Links', :helper_method => :electronic_access_links
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

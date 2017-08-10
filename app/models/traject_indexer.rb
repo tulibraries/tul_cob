@@ -152,15 +152,18 @@ to_field 'lc_alpha_facet', extract_marc('050a', :first=>true) do |rec, acc|
 end
 
 to_field 'lc_b4cutter_facet', extract_marc('050a', :first=>true)
-
+=begin
 # URL Fields
-
 notfulltext = /abstract|description|sample text|table of contents|/i
 
 to_field('url_fulltext_display') do |rec, acc|
   rec.fields('856').each do |f|
     case f.indicator2
     when '0'
+      z3 = [f['z'], f['3']].join(' ')
+      f.find_all{|sf| sf.code == 'z'}.each do |z|
+        acc << z.value
+      end
       f.find_all{|sf| sf.code == 'u'}.each do |url|
         acc << url.value
       end
@@ -169,8 +172,10 @@ to_field('url_fulltext_display') do |rec, acc|
     else
       z3 = [f['z'], f['3']].join(' ')
       unless notfulltext.match(z3)
+        acc << z3
         acc << f['u'] unless f['u'].nil?
       end
+      acc
     end
   end
 end
@@ -180,6 +185,10 @@ to_field 'url_suppl_display' do |rec, acc|
   rec.fields('856').each do |f|
     case f.indicator2
     when '2'
+      z3 = [f['z'], f['3']].join(' ')
+      f.find_all{|sf| sf.code == 'z'}.each do |z|
+        acc << z.value
+      end
       f.find_all{|sf| sf.code == 'u'}.each do |url|
         acc << url.value
       end
@@ -188,11 +197,14 @@ to_field 'url_suppl_display' do |rec, acc|
     else
       z3 = [f['z'], f['3']].join(' ')
       if notfulltext.match(z3)
+        acc << z3
         acc << f['u'] unless f['u'].nil?
       end
+      acc.replace [acc.join(" | ")]
     end
   end
 end
+=end
 
     to_field 'location_facet' do |rec, acc|
       rec.fields('945').each do |field|
@@ -309,7 +321,7 @@ end
       end
     end
 
-    to_field 'url', extract_marc(%W(856#{ATOZ}))  #Chad and Emily are working on this
+    to_field 'url_display', extract_marc('856z3yu', :separator => " | ")  #Chad and Emily are working on this
 
     #Identifier fields
 

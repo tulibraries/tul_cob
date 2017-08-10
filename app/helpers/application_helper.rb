@@ -33,13 +33,20 @@ module ApplicationHelper
       args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
     end
   end
-
+  
   def browse_creator(args)
     args[:document][args[:field]].each_with_index do |name, i|
       content_tag :ul do
       newname = link_to(name, "/?f[creator_facet][]=#{name}", class: "list_items")
       args[:document][args[:field]][i] = newname.html_safe
       end
+    end
+  end
+
+  def electronic_access_links(args)
+    content_tag :ul do
+      new_link = args[:document][args[:field]].each_with_index.map { |field, i| content_tag(:li, link_to(args[:value][i].split(" | ").first.sub(/ *[ ,\/;:] *\Z/, ''), args[:value][i].split(" | ").last), class: "list_items") }
+      new_link.join("<br />").html_safe
     end
   end
 end
