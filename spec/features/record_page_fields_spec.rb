@@ -998,6 +998,17 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
+  feature "MARC URL Fields" do
+    let (:item_856) { fixtures.fetch("url_856") }
+    scenario "User visits a document with url" do
+      visit "catalog/#{item_856['doc_id']}"
+      within "dd.blacklight-url_display" do
+        expect(page).to have_text(item_856['url'])
+        expect(page).to have_link("#{item_856['url']}", href: "#{item_856['url_href']}")
+      end
+    end
+  end
+
   feature "MARC Language Fields" do
     let (:item) { fixtures.fetch("language") }
     scenario "User visits a document with entry language" do
