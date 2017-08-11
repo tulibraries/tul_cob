@@ -38,6 +38,10 @@ RSpec.describe User, type: :model do
       expect(patron_account).to have_attribute(:uid)
     end
 
+    it "has an email address" do
+      expect(patron_account).to have_attribute(:email)
+    end
+
     it "shows items borrowed" do
       allow(Alma::User).to receive(:get_loans).and_return(double(:list => loans))
       items = patron_account.get_loans
@@ -71,6 +75,64 @@ RSpec.describe User, type: :model do
 
     it "shows the user string as the email address" do
       expect(authorized_user.to_s).to match(authorized_user.email)
+    end
+  end
+
+  describe "User maintenance" do
+    before :all do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    after :all do
+      DatabaseCleaner.clean
+    end
+
+    let(:details) {
+      {
+        primary_id: "History",
+        user_title: {
+          contact_info: {
+            emails: {
+              email_address: "guest@temple.edu"
+            }
+          }
+        }
+      }
+    }
+  end
+
+  describe "Alma Cleanup" do
+    let (:user_id) { "123456789" }
+    let (:user) { Alma::User.find("123456789")}
+
+    before(:each) {
+      allow(Alma::User).to receive(:find).with(user_id) {
+        filename = File.join(File.expand_path("../../fixtures", __FILE__), "user.json")
+        Alma::User.new JSON.parse(File.read(filename))["response"]
+      }
+
+      allow(Alma::User).to receive(:users_base_path) {
+        "https://api-eu.hosted.exlibrisgroup.com/almaws/v1/users"
+      }
+    }
+
+    it "get the user's email address" do
+      expect(user.email).to match("bilbo.baggins@hobbiton.edu")
+    end
+
+    describe '#expire' do
+      let (:expired_email_address) { "blank@expired.temple.edu" }
+
+      it 'is responded to' do
+        expect(user).to respond_to :email
+        expect(user).to respond_to :expire_email!
+      end
+
+      it 'changes the email address' do
+        skip
+        new_email = user.expire_email!
+        expect(user.email).to match(expired_email_address)
+      end
     end
   end
 
