@@ -119,7 +119,9 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
+    #config.add_facet_field 'availability', label: 'Availability', helper_method: :render_availability, show: false
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
+    config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {
                              num_segments: 6,
@@ -130,14 +132,17 @@ class CatalogController < ApplicationController
                              maxlength: 4
                            }
 
+    config.add_facet_field 'creator', label: 'Author/Creator', limit: true, show: true
     config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
+<<<<<<< HEAD
     config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: false
+=======
+>>>>>>> 50dcf83d8420890dd922bca0e7fdf1fa658a4e3b
     config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
     config.add_facet_field 'genre_facet', label: 'Genre'
     config.add_facet_field 'language_facet', label: 'Language'     # limit: true
-    config.add_facet_field 'format', label: 'Resource Type'
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
