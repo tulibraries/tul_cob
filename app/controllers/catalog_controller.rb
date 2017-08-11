@@ -134,10 +134,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'creator', label: 'Author/Creator', limit: true, show: true
     config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
-<<<<<<< HEAD
     config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: false
-=======
->>>>>>> 50dcf83d8420890dd922bca0e7fdf1fa658a4e3b
     config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
