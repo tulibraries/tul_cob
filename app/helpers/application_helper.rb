@@ -36,8 +36,10 @@ module ApplicationHelper
 
   def browse_creator(args)
     args[:document][args[:field]].each_with_index do |name, i|
+      content_tag :ul do
       newname = link_to(name, "/?f[creator_facet][]=#{name}", class: "list_items")
       args[:document][args[:field]][i] = newname.html_safe
+      end
     end
   end
 end
