@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'traject'
 require 'traject/command_line'
 require 'yaml'
-require 'pry'
 
 RSpec.feature "Indices", type: :feature do
   let (:fixtures) {
@@ -20,31 +19,6 @@ RSpec.feature "Indices", type: :feature do
         end
       end
 
-    end
-  end
-
-  feature "Facets" do
-    let (:facets) {
-      [ #[TODO] "Availability",
-        #[TODO] "Library",
-        "Resource Type",
-        "Date",
-        "Author/Creator",
-        "Topic",
-        "Era",
-        "Region",
-        "Genre",
-        "Language"]
-    }
-    context "publicly available pages" do
-      scenario "User visits home page" do
-        visit '/'
-        within("#facets") do
-          all('div.panel').each_with_index do |div_panel, i|
-            expect(div_panel).to have_text facets[i]
-          end
-        end
-      end
     end
   end
 
