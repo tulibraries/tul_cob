@@ -1071,7 +1071,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "Has list of creators" do
       visit "catalog/#{item_100['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li.list_items")
+        expect(page).to have_css("li a.list_items")
       end
     end
 
@@ -1079,7 +1079,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "Has list of creators" do
       visit "catalog/#{item_100_v['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li.list_items")
+        expect(page).to have_css("li a.list_items")
       end
     end
 
