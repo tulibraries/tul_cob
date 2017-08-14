@@ -152,18 +152,14 @@ to_field 'lc_alpha_facet', extract_marc('050a', :first=>true) do |rec, acc|
 end
 
 to_field 'lc_b4cutter_facet', extract_marc('050a', :first=>true)
-=begin
-# URL Fields
-notfulltext = /abstract|description|sample text|table of contents|/i
 
-to_field('url_fulltext_display') do |rec, acc|
-  rec.fields('856').each do |f|
+# URL Fields
+notfulltext = /book review|publisher description|sample text|table of contents|/i
+
+to_field('url_resource_display') do |rec, acc|
+  rec.fields('856').each_with_index do |f|
     case f.indicator2
     when '0'
-      z3 = [f['z'], f['3']].join(' ')
-      f.find_all{|sf| sf.code == 'z'}.each do |z|
-        acc << z.value
-      end
       f.find_all{|sf| sf.code == 'u'}.each do |url|
         acc << url.value
       end
@@ -172,39 +168,44 @@ to_field('url_fulltext_display') do |rec, acc|
     else
       z3 = [f['z'], f['3']].join(' ')
       unless notfulltext.match(z3)
-        acc << z3
-        acc << f['u'] unless f['u'].nil?
+        if z3 == ' '
+          z3 = f['y'] || "Link to Resource"
+          z3 << + "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        else
+          z3 << + "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        end
       end
-      acc
     end
   end
 end
 
 # Very similar to url_fulltext_display. Should DRY up.
-to_field 'url_suppl_display' do |rec, acc|
-  rec.fields('856').each do |f|
+to_field 'url_more_links_display' do |rec, acc|
+  rec.fields('856').each_with_index.map do |f|
     case f.indicator2
     when '2'
-      z3 = [f['z'], f['3']].join(' ')
-      f.find_all{|sf| sf.code == 'z'}.each do |z|
-        acc << z.value
-      end
       f.find_all{|sf| sf.code == 'u'}.each do |url|
-        acc << url.value
+        acc << [url.value]
       end
     when '0'
       # do nothing
     else
       z3 = [f['z'], f['3']].join(' ')
       if notfulltext.match(z3)
-        acc << z3
-        acc << f['u'] unless f['u'].nil?
+        if z3 == ' '
+          z3 = f['y'] || "Link to Resource"
+          z3 << + "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        else
+          z3 << + "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        end
       end
-      acc.replace [acc.join(" | ")]
     end
   end
 end
-=end
 
     to_field 'location_facet' do |rec, acc|
       rec.fields('945').each do |field|
@@ -320,8 +321,6 @@ end
         acc << field['b'].strip.downcase unless field['b'].nil?
       end
     end
-
-    to_field 'url_display', extract_marc('856z3yu', :separator => " | ")  #Chad and Emily are working on this
 
     #Identifier fields
 
