@@ -123,14 +123,8 @@ RSpec.describe User, type: :model do
     describe '#expire' do
       let (:expired_email_address) { "blank@expired.temple.edu" }
 
-      it 'is responded to' do
-        expect(user).to respond_to :email
-        expect(user).to respond_to :expire_email!
-      end
-
       it 'changes the email address' do
-        skip
-        new_email = user.expire_email!
+        new_mail = user.update_email!(expired_email_address)
         expect(user.email).to match(expired_email_address)
       end
     end
