@@ -132,7 +132,7 @@ class CatalogController < ApplicationController
                              maxlength: 4
                            }
 
-    config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: false
+    config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: true
     config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
