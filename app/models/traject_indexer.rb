@@ -219,9 +219,11 @@ end
     to_field 'title_addl_vern_display', extract_marc('210ab:246abfgnp:247abcdefgnp:740anp', :alternate_script=>:only)
 
     #Creator/contributor fields
-    to_field "creator", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", :trim_punctuation => true)
+    to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", :trim_punctuation => true)
+    to_field "creator_facet", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", :trim_punctuation => true)
     to_field 'creator_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>false)
     to_field 'creator_vern_display', extract_marc('100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt', :trim_punctuation => true, :alternate_script=>:only)
+
 
     #publication fields
     # For the imprint, make sure to take RDA-style 264, second indicator = 1
@@ -290,7 +292,7 @@ end
     #[TODO] need to improve the subjects
 
     to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
-    to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
+    to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_topic_facet', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
     to_field 'subject_era_facet', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
     to_field 'subject_region_facet', extract_marc('651a:650z:654z:655z', :trim_punctuation => true)
