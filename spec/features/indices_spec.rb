@@ -29,7 +29,7 @@ RSpec.feature "Indices", type: :feature do
         #[TODO] "Library",
         "Resource Type",
         "Date",
-        "Author/Creator",
+        "Author/creator",
         "Topic",
         "Era",
         "Region",
