@@ -16,17 +16,15 @@ namespace :fortytu do
       
       progressbar = ProgressBar.create(:title => "Clean", :total => csv.count, format: "%t (%c/%C) %a |%B|")
       csv.each_with_index do |user, i|
-        begin
+        # begin
           u = Alma::User.find(user['Username'])
-          u.update_email!("blank@expired.temple.edu")
-          if (i > 10)
-            exit
-          end
-        rescue Exception => e
-          unless $!.nil? || $!.is_a?(SystemExit)
-            puts "Blank #{user['Username']} failed : #{e.message}"
-          end
-        end
+          u["contact_info"]["email"].first["email_address"] = "blank@expired.temple.edu"
+          Alma::User.save!(user['Username'], u.response)
+        # rescue Exception => e
+        #   unless $!.nil? || $!.is_a?(SystemExit)
+        #     puts "Blank #{user['Username']} failed : #{e.message}"
+        #   end
+        # end
         progressbar.increment
       end
     end
@@ -43,14 +41,14 @@ namespace :fortytu do
       csv = CSV.read(csv_source, headers: true, encoding: 'utf-8') 
       
       csv.each_with_index do |user, i|
-        begin
+        # begin
           u = Alma::User.find(user['Username'])
-        rescue Exception => e
-          unless $!.nil? || $!.is_a?(SystemExit)
-            puts "List #{user['Username']} failed : #{e.message}"
-          end
-        end
-        puts "#{i}/#{csv.count}: #{user['Username']}, #{user['Email']} -> #{u.email}"
+        # rescue Exception => e
+        #   unless $!.nil? || $!.is_a?(SystemExit)
+        #     puts "List #{user['Username']} failed : #{e.message}"
+        #   end
+        # end
+        puts "#{i}/#{csv.count}: #{user['Username']} -> #{u.email}"
       end
     end
     
@@ -66,15 +64,16 @@ namespace :fortytu do
       csv = CSV.read(csv_source, headers: true, encoding: 'utf-8') 
       
       csv.each_with_index do |user, i|
-        begin
+        # begin
           u = Alma::User.find(user['Username'])
           puts "#{i}/#{csv.count}: #{user['Username']}, #{u.email} -> #{user['Email']}"
-          u.update_email!(user['Email'])
-        rescue Exception => e
-          unless $!.nil? || $!.is_a?(SystemExit)
-            puts "Reset #{user['Username']} failed : #{e.message}"
-          end
-        end
+          u["contact_info"]["email"].first["email_address"] = user['Email']
+          Alma::User.save!(user['Username'], u.response)
+        # rescue Exception => e
+        #   unless $!.nil? || $!.is_a?(SystemExit)
+        #     puts "Reset #{user['Username']} failed : #{e.message}"
+        #   end
+        # end
       end
     end
     
