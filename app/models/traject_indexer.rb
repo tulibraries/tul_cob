@@ -154,14 +154,22 @@ end
 to_field 'lc_b4cutter_facet', extract_marc('050a', :first=>true)
 
 # URL Fields
-notfulltext = /book review|publisher description|sample text|table of contents|/i
+notfulltext = /book review|publisher description|sample text|table of contents/i
 
 to_field('url_resource_display') do |rec, acc|
-  rec.fields('856').each_with_index do |f|
+  rec.fields('856').each do |f|
     case f.indicator2
     when '0'
-      f.find_all{|sf| sf.code == 'u'}.each do |url|
-        acc << url.value
+      z3 = [f['z'], f['3']].join(' ')
+      unless notfulltext.match(z3)
+        if z3 == ' '
+          z3 = f['y'] || "Link to Resource"
+          z3 << "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        else
+          z3 << "|#{f['u']}" unless f['u'].nil?
+          acc << z3
+        end
       end
     when '2'
       # do nothing
@@ -170,10 +178,10 @@ to_field('url_resource_display') do |rec, acc|
       unless notfulltext.match(z3)
         if z3 == ' '
           z3 = f['y'] || "Link to Resource"
-          z3 << + "|#{f['u']}" unless f['u'].nil?
+          z3 << "|#{f['u']}" unless f['u'].nil?
           acc << z3
         else
-          z3 << + "|#{f['u']}" unless f['u'].nil?
+          z3 << "|#{f['u']}" unless f['u'].nil?
           acc << z3
         end
       end
@@ -183,11 +191,17 @@ end
 
 # Very similar to url_fulltext_display. Should DRY up.
 to_field 'url_more_links_display' do |rec, acc|
-  rec.fields('856').each_with_index.map do |f|
+  rec.fields('856').each do |f|
     case f.indicator2
     when '2'
-      f.find_all{|sf| sf.code == 'u'}.each do |url|
-        acc << [url.value]
+      z3 = [f['z'], f['3']].join(' ')
+      if z3 == ' '
+        z3 = f['y'] || "Link to Resource"
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
+      else
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
       end
     when '0'
       # do nothing
@@ -196,10 +210,10 @@ to_field 'url_more_links_display' do |rec, acc|
       if notfulltext.match(z3)
         if z3 == ' '
           z3 = f['y'] || "Link to Resource"
-          z3 << + "|#{f['u']}" unless f['u'].nil?
+          z3 << "|#{f['u']}" unless f['u'].nil?
           acc << z3
         else
-          z3 << + "|#{f['u']}" unless f['u'].nil?
+          z3 << " |#{f['u']}" unless f['u'].nil?
           acc << z3
         end
       end

@@ -33,8 +33,7 @@ module ApplicationHelper
       args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
     end
   end
-<<<<<<< HEAD
-  
+
   def browse_creator(args)
     args[:document][args[:field]].each_with_index do |name, i|
       content_tag :ul do
@@ -43,20 +42,6 @@ module ApplicationHelper
       end
     end
   end
-=======
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> BL-6 Links to resources working
 
   def electronic_access_links(args)
     content_tag :ul do

@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'yaml'
+include ApplicationHelper
 
 RSpec.feature "RecordPageFields", type: :feature do
   let (:fixtures) {
@@ -999,12 +1000,39 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC URL Fields" do
-    let (:item_856) { fixtures.fetch("url_856") }
-    scenario "User visits a document with url" do
-      visit "catalog/#{item_856['doc_id']}"
-      within "dd.blacklight-url_display" do
-        expect(page).to have_text(item_856['url'])
-        expect(page).to have_link("#{item_856['url']}", href: "#{item_856['url_href']}")
+    let (:item_856_0) { fixtures.fetch("url_856_0") }
+    scenario "User visits a document with url indicator2 value0" do
+      visit "catalog/#{item_856_0['doc_id']}"
+      within "dd.blacklight-url_resource_display" do
+        expect(page).to have_text(item_856_0['url'])
+        expect(page).to have_link("#{item_856_0['url']}", href: "#{item_856_0['url_href']}")
+      end
+    end
+
+    let (:item_856_1) { fixtures.fetch("url_856_1") }
+    scenario "User visits a document with url indicator2 value1 no text match" do
+      visit "catalog/#{item_856_1['doc_id']}"
+      within "dd.blacklight-url_resource_display" do
+        expect(page).to have_text(item_856_1['url'])
+        expect(page).to have_link("#{item_856_1['url']}", href: "#{item_856_1['url_href']}")
+      end
+    end
+
+    let (:item_856_2) { fixtures.fetch("url_856_2") }
+    scenario "User visits a document with url indicator2 value2" do
+      visit "catalog/#{item_856_2['doc_id']}"
+      within "dd.blacklight-url_more_links_display" do
+        expect(page).to have_text(item_856_2['url'])
+        expect(page).to have_link("#{item_856_2['url']}", href: "#{item_856_2['url_href']}")
+      end
+    end
+
+    let (:item_856_more_1) { fixtures.fetch("url_856_more_1") }
+    scenario "User visits a document with url indicator2 value1 text match" do
+      visit "catalog/#{item_856_more_1['doc_id']}"
+      within "dd.blacklight-url_more_links_display" do
+        expect(page).to have_text(item_856_more_1['url_1'])
+        expect(page).to have_link("#{item_856_more_1['url']}", href: "#{item_856_more_1['url_href']}")
       end
     end
   end
