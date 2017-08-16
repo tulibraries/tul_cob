@@ -1,4 +1,6 @@
 Alma.configure do |config|
   # You have to set te apikey
-  config.apikey     = Rails.configuration.alma[:apikey]
+  ENV['ALMA_API_KEY']
+  ENV['ALMA_DELIVERY_DOMAIN']
+  ENV['ALMA_INSTITUTION_CODE']
 end
