@@ -16,4 +16,17 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  # used by blacklight_alma
+  def alma_mms_id
+    fetch('alma_mms_id', nil)
+  end
+
+  # returns an array of IDs to query through API to get holdings
+  # for this document. This is usually just the alma MMS ID for
+  # this bib record, but in the case of boundwith records, we return
+  # the boundwith IDs, because that's where Alma stores the holdings.
+  def alma_availability_mms_ids
+    fetch('bound_with_ids', [alma_mms_id])
+  end
 end
