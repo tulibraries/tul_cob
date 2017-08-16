@@ -348,6 +348,22 @@ sudoc_086_0:
 sudoc_086_1:
   doc_id: "991012132499760717"
   sudoc: "test"
+url_856_0:
+  doc_id: "991012065429703811"
+  url: "PDF version"
+  url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
+url_856_1:
+  doc_id: "991012132499760727"
+  url: "Access Contributor biographical information"
+  url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
+url_856_2:
+  doc_id: "991012132499760728"
+  url: "More Links"
+  url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
+url_856_more_1:
+  doc_id: "991012132499760729"
+  url: "table of contents"
+  url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
 
 
 

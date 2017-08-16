@@ -5692,8 +5692,8 @@
     <datafield ind1=' ' ind2='0' tag='650'>
       <subfield code='a'>State, The.</subfield>
     </datafield>
-    <datafield ind1='4' ind2='1' tag='856'>
-      <subfield code='z'>Access Table of contents.</subfield>
+    <datafield ind1='4' ind2='0' tag='856'>
+      <subfield code='z'>PDF version.</subfield>
       <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='902'>
@@ -24071,6 +24071,61 @@
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01120cam a22003610  4500</leader>
+    <controlfield tag='001'>991012132499760727</controlfield>
+    <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+    <datafield ind1='0' ind2='4' tag='264'>
+      <subfield code='a'>Dictionary of American history: 264.</subfield>
+      <subfield code='b'>Subfield B.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield ind1='4' ind2='1' tag='856'>
+      <subfield code='z'>Access Contributor biographical information.</subfield>
+      <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01322cam a2200313 a 4500</leader>
+    <controlfield tag='001'>991012132499760728</controlfield>
+    <controlfield tag='005'>20040210180633.0</controlfield>
+    <controlfield tag='008'>040120s2004    enk      b    001 0 eng  </controlfield>
+    <datafield ind1='1' ind2=' ' tag='100'>
+      <subfield code='a'>Constantinou, Costas M.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>States of political discourse :</subfield>
+      <subfield code='b'>words, regimes, seditions /</subfield>
+      <subfield code='c'>Costas M. Constantinou.</subfield>
+    </datafield>
+    <datafield ind1='4' ind2='2' tag='856'>
+      <subfield code='z'>More Links.</subfield>
+      <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01322cam a2200313 a 4500</leader>
+    <controlfield tag='001'>991012132499760729</controlfield>
+    <controlfield tag='005'>20040210180633.0</controlfield>
+    <controlfield tag='008'>040120s2004    enk      b    001 0 eng  </controlfield>
+    <datafield ind1='1' ind2=' ' tag='100'>
+      <subfield code='a'>Constantinou, Costas M.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>States of political discourse :</subfield>
+      <subfield code='b'>words, regimes, seditions /</subfield>
+      <subfield code='c'>Costas M. Constantinou.</subfield>
+    </datafield>
+    <datafield ind1='4' ind2='1' tag='856'>
+      <subfield code='z'>table of contents</subfield>
+      <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
+    </datafield>
+  </record>
+
 
 
 

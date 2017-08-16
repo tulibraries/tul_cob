@@ -42,4 +42,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def electronic_access_links(args)
+    content_tag :ul do
+      new_link = args[:document][args[:field]].each_with_index.map { |field, i|
+        content_tag(:li, link_to(args[:value][i].split("|").first.sub(/ *[ ,.\/;:] *\Z/, ''), args[:value][i].split("|").last), class: "list_items") }
+      new_link.join("<br />").html_safe
+    end
+  end
 end
