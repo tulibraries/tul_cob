@@ -6,6 +6,10 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
 
+  include BlacklightAlma::Availability
+
+  #helper BlacklightAlma::HelperBehavior
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
