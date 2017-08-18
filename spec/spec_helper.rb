@@ -1,4 +1,8 @@
 require 'simplecov'
+require 'webmock/rspec'
+
+SPEC_ROOT = File.dirname __FILE__
+
 SimpleCov.start 'rails' do
   # Code from other repositories
   add_filter "/lib/alma_rb/"
@@ -26,6 +30,16 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
+  config.before(:each) do
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
+        with(query: hash_including({expand: 'p_avail,e_avail,d_avail', mms_id: '1,2' })).
+        to_return(:status => 200,
+                  :body => File.open(SPEC_ROOT + '/fixtures/availability_response.xml').read,
+                  :headers => { 'content-type' => ['application/xml;charset=UTF-8']})
+
+  end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
