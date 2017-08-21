@@ -32,24 +32,27 @@ namespace :fortytu do
     task :conform do
       harvest_file = "harvest.xml"
       converted_file = "converted.xml"
+
       oai = Nokogiri::XML(File.open(harvest_file))
       records = oai.xpath("//oai:record/oai:metadata/marc21:record", {'oai' => 'http://www.openarchives.org/OAI/2.0/', 'marc21' => "http://www.loc.gov/MARC21/slim"})
-      binding.pry
-      collection_attributes = {
+      collection_namespaces = {
         'xmlns' => 'http://www.loc.gov/MARC21/slim',
         'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-        'xsi:schemaLocation' => 'http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'
+        'xsi:schemaLocation' => 'http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'
       }
-      collection = "<collection xmlns='http://www.loc.gov/MARC21/slim' " +
-                   "xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' " +
-                   "xsi:schemaLocation='http://www.loc.gov/MARC21/slim " +
-                   "http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>" +
-                   "#{records}</collection>"
-      marc_doc = Nokogiri::XML collection
+
+      marc_doc = Nokogiri::XML::Builder.new("encoding" => "UTF-8") do |xml|
+        xml.collection(collection_namespaces) do |col|
+          records.each do |rec|
+            xml.record do
+              xml.parent << rec.inner_html
+            end
+          end
+        end
+      end
 
       File.open(converted_file, 'w') { |f| f.write marc_doc.to_xml }
 
-      # collection = Nokogiri::XML::Node.new "collection", ""
     end
   end
 end
