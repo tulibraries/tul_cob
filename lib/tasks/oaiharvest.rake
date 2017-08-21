@@ -1,5 +1,6 @@
 require 'rsolr'
 require 'nokogiri'
+require 'tempfile'
 
 namespace :fortytu do
 
@@ -23,14 +24,14 @@ namespace :fortytu do
       output_file = "harvest.xml"
       output_file_mode = "w"
       response = HTTParty.get(oai_url)
-      File.open(output_file,  output_file_mode) do |f|
-        f.write(response.body)
-      end
+      harvest_file = Tempfile.create(['alma-', '.xml'], './tmp')
+      harvest_file.write(response.body)
+      puts "Records harvested to: #{harvest_file.path}"
     end
 
     desc 'Conforms raw OAI MARC records to traject readable MARC records'
-    task :conform do
-      harvest_file = "harvest.xml"
+    task :conform, [:harvest_file] => :environment do |t, args|
+      harvest_file = args[:harvest_file]
       converted_file = "converted.xml"
 
       oai = Nokogiri::XML(File.open(harvest_file))
@@ -51,7 +52,9 @@ namespace :fortytu do
         end
       end
 
-      File.open(converted_file, 'w') { |f| f.write marc_doc.to_xml }
+      marc_file = Tempfile.create(['marc-', '.xml'], './tmp')
+      marc_file.write(marc_doc.to_xml)
+      puts "MARC file: #{marc_file.path}"
 
     end
   end
