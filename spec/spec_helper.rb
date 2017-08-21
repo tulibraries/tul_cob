@@ -1,5 +1,9 @@
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require 'simplecov'
+require 'alma'
 require 'webmock/rspec'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__
 

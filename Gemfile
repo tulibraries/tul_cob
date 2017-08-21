@@ -77,3 +77,4 @@ gem 'blacklight_alma', :git => "https://github.com/tulibraries/blacklight_alma.g
 gem 'ezwadl'
 gem 'awesome_print'
 gem 'capybara'
+gem 'webmock'
