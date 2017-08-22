@@ -41,6 +41,7 @@ module ApplicationHelper
       args[:document][args[:field]][i] = newname.html_safe
       end
     end
+    list_with_links(args)
   end
 
   def electronic_access_links(args)
