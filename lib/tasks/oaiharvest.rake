@@ -1,6 +1,7 @@
 require 'rsolr'
 require 'nokogiri'
 require 'tempfile'
+require 'oai/alma'
 
 namespace :fortytu do
 
@@ -20,42 +21,25 @@ namespace :fortytu do
   namespace :oai do
     desc 'Harvests OAI MARC records from Alma'
     task :harvest do
-      oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21"
-      output_file = "harvest.xml"
-      output_file_mode = "w"
-      response = HTTParty.get(oai_url)
-      harvest_file = Tempfile.create(['alma-', '.xml'], './tmp')
-      harvest_file.write(response.body)
-      puts "Records harvested to: #{harvest_file.path}"
+      file_path = Oai::Alma.harvest
+      puts "Records harvested to: #{file_path}"
     end
 
     desc 'Conforms raw OAI MARC records to traject readable MARC records'
     task :conform, [:harvest_file] => :environment do |t, args|
-      harvest_file = args[:harvest_file]
-      converted_file = "converted.xml"
-
-      oai = Nokogiri::XML(File.open(harvest_file))
-      records = oai.xpath("//oai:record/oai:metadata/marc21:record", {'oai' => 'http://www.openarchives.org/OAI/2.0/', 'marc21' => "http://www.loc.gov/MARC21/slim"})
-      collection_namespaces = {
-        'xmlns' => 'http://www.loc.gov/MARC21/slim',
-        'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
-        'xsi:schemaLocation' => 'http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'
-      }
-
-      marc_doc = Nokogiri::XML::Builder.new("encoding" => "UTF-8") do |xml|
-        xml.collection(collection_namespaces) do |col|
-          records.each do |rec|
-            xml.record do
-              xml.parent << rec.inner_html
-            end
-          end
-        end
-      end
-
-      marc_file = Tempfile.create(['marc-', '.xml'], './tmp')
-      marc_file.write(marc_doc.to_xml)
-      puts "MARC file: #{marc_file.path}"
-
+      file_path = Oai::Alma.conform(args[:harvest_file])
+      puts "MARC file: #{file_path}"
     end
+
+    desc 'Conforms all raw OAI MARC records to traject readable MARC records'
+    task :conform_all => :environment do
+      oai_path = File.join(Rails.root, 'tmp', 'alma', 'oai', '*.xml')
+      harvest_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
+      harvest_files.each do |f|
+        file_path = Oai::Alma.conform(f)
+        puts "MARC file: #{file_path}"
+      end
+    end
+
   end
 end
