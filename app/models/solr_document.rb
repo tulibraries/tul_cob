@@ -2,7 +2,7 @@
 class SolrDocument
   include Blacklight::Solr::Document
 
-  # self.unique_key = 'id'
+   #self.unique_key = 'id'
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(Blacklight::Document::Email)
@@ -16,4 +16,14 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  # used by blacklight_alma
+
+  # returns an array of IDs to query through API to get holdings
+  # for this document. This is usually just the alma MMS ID for
+  # this bib record, but in the case of boundwith records, we return
+  # the boundwith IDs, because that's where Alma stores the holdings.
+  def alma_availability_mms_ids
+    fetch('bound_with_ids', [id])
+  end
 end
