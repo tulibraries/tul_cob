@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => "catalog#index"
+
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
