@@ -21,8 +21,8 @@ namespace :fortytu do
   namespace :oai do
     desc 'Harvests OAI MARC records from Alma'
     task :harvest do
-      file_path = Oai::Alma.harvest
-      puts "Records harvested to: #{file_path}"
+      file_paths = Oai::Alma.harvest
+      puts "Records harvested to: #{file_paths}"
     end
 
     desc 'Conforms raw OAI MARC records to traject readable MARC records'

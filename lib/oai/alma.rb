@@ -2,18 +2,27 @@ require 'rsolr'
 require 'nokogiri'
 require 'tempfile'
 require 'fileutils'
+require 'oai'
 
 module Oai
   module Alma
     def self.harvest
+      harvest_files = []
       oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21"
-      response = HTTParty.get(oai_url)
-
-      tmp_path = File.join(Rails.root, 'tmp', 'alma', 'oai')
-      FileUtils::mkdir_p tmp_path
-      harvest_file = Tempfile.create(['alma-', '.xml'], tmp_path)
-      harvest_file.write(response.body)
-      harvest_file.path
+      begin
+        puts "Retrieving #{oai_url}"
+        client = OAI::Client.new oai_url
+        response = HTTParty.get(oai_url)
+        oai = Nokogiri::XML(response.body)
+        resumptionToken = oai.xpath("//oai:resumptionToken", {'oai' => 'http://www.openarchives.org/OAI/2.0/', 'marc21' => "http://www.loc.gov/MARC21/slim"})
+        tmp_path = File.join(Rails.root, 'tmp', 'alma', 'oai')
+        FileUtils::mkdir_p tmp_path
+        harvest_file = Tempfile.create(['alma-', '.xml'], tmp_path)
+        harvest_file.write(response.body)
+        harvest_files << harvest_file.path
+        oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&resumptionToken=#{resumptionToken.text}"
+      end while resumptionToken
+      harvest_files
     end
 
     def self.conform(harvest_filename)
