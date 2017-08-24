@@ -38,4 +38,8 @@
     <% end -%>
   </dl>
 </div>
-<iframe src="<%= alma_app_fulfillment_url(document) %>" style="width: 100%"></iframe>
+
+<div class="availability_iframe panel panel-default">
+  <h4 class="panel-heading">Availability</h4>
+  <iframe class="bl_alma_iframe" src="<%= alma_app_fulfillment_url(document) %>"></iframe>
+</div>
