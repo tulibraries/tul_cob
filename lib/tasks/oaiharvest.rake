@@ -58,20 +58,22 @@ namespace :fortytu do
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'marc', '*.xml')
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
-        progressbar = ProgressBar.create(:title => "Harvest ", :total => marc_files.count, format: "%t (%c/%C) %a |%B|")
-        marc_files.each do |f|
+        marc_files.each_with_index do |f, i|
           logger.info "Index: traject -c app/models/traject_indexer.rb #{f}"
-          fork {
-            `traject -c app/models/traject_indexer.rb #{f}`
-          }
-          Process.wait
-          progressbar.increment
+          `traject -c app/models/traject_indexer.rb #{f}`
+          if ((i % 10) == 0)
+            logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
+            `traject -c app/models/traject_indexer.rb -x commit`
+          end
         end
-        `traject -c app/models/traject_indexer.rb -x commit`
         logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
+        `traject -c app/models/traject_indexer.rb -x commit`
       rescue => e
         logger.fatal("Fatal Error")
         logger.fatal(e)
+      ensure
+        `traject -c app/models/traject_indexer.rb -x commit`
+        logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
       end
     end
   end
