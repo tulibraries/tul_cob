@@ -57,6 +57,8 @@ to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j
 to_field "format", marc_formats do |rec, acc|
   acc.delete('Print')
   acc.delete('Online')
+  acc.map! { |x| x == "Archival" ? "Archival Material" : x }.flatten! # replace Archival with Archival Material
+  acc.map! { |x| x == "Conference" ? "Conference Proceedings" : x }.flatten! # replace Conference with Conference Proceedings
 end
 
 to_field "isbn_t",  extract_marc('020a', :separator=>nil) do |rec, acc|
