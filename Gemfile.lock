@@ -164,7 +164,7 @@ GEM
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
     hashie (3.4.6)
-    httparty (0.15.5)
+    httparty (0.15.6)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
     i18n (0.8.6)
@@ -414,4 +414,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.15.1
+   1.15.4
