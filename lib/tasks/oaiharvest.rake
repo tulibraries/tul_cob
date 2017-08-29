@@ -55,25 +55,34 @@ namespace :fortytu do
     task :ingest_all => :environment do
       log_path = File.join(Rails.root, 'log/fortytu.log')
       logger = Logger.new(log_path, 10, 1024000)
+      commit_frequency = 100
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'marc', '*.xml')
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
+        progressbar = ProgressBar.create(:title => "Ingest", :total => marc_files.count, format: "%t (%c/%C) %a |%B|")
+        traject_commit = %W[traject -s
+          log.file=#{log_path}
+          -c app/models/traject_indexer.rb
+          -x commit].join(' ')
         marc_files.each_with_index do |f, i|
-          logger.info "Index: traject -c app/models/traject_indexer.rb #{f}"
-          `traject -c app/models/traject_indexer.rb #{f}`
-          if ((i % 10) == 0)
-            logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
-            `traject -c app/models/traject_indexer.rb -x commit`
+          logger.info "Indexing  #{f}"
+          traject_index = %W[traject
+            -s log.file=#{log_path}
+            -c app/models/traject_indexer.rb
+            #{f}].join(' ')
+          system(traject_index)
+          if ((i % commit_frequency) == 0)
+            logger.info "Committing Data"
+            system(traject_commit)
           end
+          progressbar.increment
         end
-        logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
-        `traject -c app/models/traject_indexer.rb -x commit`
       rescue => e
         logger.fatal("Fatal Error")
         logger.fatal(e)
       ensure
-        `traject -c app/models/traject_indexer.rb -x commit`
-        logger.info "Commit: traject -c app/models/traject_indexer.rb -x commit"
+        logger.info "Commiting data"
+        system(traject_commit)
       end
     end
   end
