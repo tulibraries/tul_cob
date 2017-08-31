@@ -78,7 +78,7 @@ namespace :fortytu do
             -c app/models/traject_indexer.rb
             #{f}].join(' ')
           pids << Process.spawn(traject_index)
-          if ((i % batch_size) == 0)
+          if ((i > 0) && (i % batch_size) == 0)
             logger.info "Wait for for spawned process completion"
             pids.each do |p|
               logger.info "Waiting for process #{p}"
