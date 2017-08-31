@@ -66,6 +66,7 @@ RSpec.feature "Indices", type: :feature do
         expect(page).to have_text "Status/Location:"
         expect(page).to have_text "Author/creator:"
         expect(page).to have_text "Published:"
+        has_css?(".avail-button", :visible => true)
       end
     end
   end
