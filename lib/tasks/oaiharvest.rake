@@ -35,7 +35,7 @@ namespace :fortytu do
     desc 'Conforms all raw OAI MARC records to traject readable MARC records'
     task :conform_all => :environment do
       log_path = File.join(Rails.root, 'log/fortytu.log')
-      logger = Logger.new(log_path, 10, 1024000)
+      logger = Logger.new(log_path, 10, 4096000)
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'oai', '*.xml')
         harvest_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
@@ -53,27 +53,38 @@ namespace :fortytu do
 
     desc 'Ingest all readable MARC records'
     task :ingest_all => :environment do
-      log_path = File.join(Rails.root, 'log/fortytu.log')
-      logger = Logger.new(log_path, 10, 1024000)
-      commit_frequency = 100
+      main_logdir = File.join(Rails.root, 'log/')
+      main_log = File.join(main_logdir, 'fortytu.log')
+      logger = Logger.new(main_log, 10, 1024000)
+
+      ingest_logdir = File.join(main_logdir, 'ingest/')
+      FileUtils::mkdir_p ingest_logdir
+
+      batch_size = 10
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'marc', '*.xml')
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
         progressbar = ProgressBar.create(:title => "Ingest", :total => marc_files.count, format: "%t (%c/%C) %a |%B|")
         traject_commit = %W[traject -s
-          log.file=#{log_path}
+          log.file=#{main_log}
           -c app/models/traject_indexer.rb
           -x commit].join(' ')
+        pids = []
         marc_files.each_with_index do |f, i|
           logger.info "Indexing  #{f}"
+          ingest_log = File.join(ingest_logdir, File.basename(f, '.xml') + '.log')
           traject_index = %W[traject
-            -s log.file=#{log_path}
+            -s log.file=#{ingest_log}
             -c app/models/traject_indexer.rb
             #{f}].join(' ')
-          system(traject_index)
-          if ((i % commit_frequency) == 0)
-            logger.info "Committing Data"
-            system(traject_commit)
+          pids << Process.spawn(traject_index)
+          if ((i % batch_size) == 0)
+            logger.info "Wait for for spawned process completion"
+            pids.each do |p|
+              logger.info "Waiting for process #{p}"
+              Process.waitpid(p)
+            end
+            pids.clear
           end
           progressbar.increment
         end
