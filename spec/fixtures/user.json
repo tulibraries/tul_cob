@@ -1,0 +1,264 @@
+{
+  "response": {
+    "record_type": {
+      "value": "PUBLIC",
+      "desc": "Public"
+    },
+    "primary_id": "123456789",
+    "first_name": "Bilbo",
+    "middle_name": "",
+    "last_name": "Baggins",
+    "full_name": "Bilbo Baggins",
+    "user_title": {
+      "value": "",
+      "desc": ""
+    },
+    "job_category": {
+      "value": "",
+      "desc": ""
+    },
+    "job_description": "",
+    "gender": {
+      "value": "",
+      "desc": ""
+    },
+    "user_group": {
+      "value": "3",
+      "desc": "Hobbit/Professional"
+    },
+    "campus_code": {
+      "value": "m",
+      "desc": "Main "
+    },
+    "web_site_url": "",
+    "cataloger_level": {
+      "value": "00",
+      "desc": "[00] Default Level"
+    },
+    "preferred_language": {
+      "value": "en",
+      "desc": "English"
+    },
+    "account_type": {
+      "value": "INTERNAL",
+      "desc": "Internal"
+    },
+    "external_id": "",
+    "password": "",
+    "force_password_change": "",
+    "status": {
+      "value": "ACTIVE",
+      "desc": "Active"
+    },
+    "requests": null,
+    "loans": null,
+    "fees": null,
+    "contact_info": {
+      "address": [],
+      "email": [
+        {
+          "email_address": "bilbo.baggins@hobbiton.edu",
+          "description": null,
+          "preferred": true,
+          "segment_type": "Internal",
+          "email_type": [
+            {
+              "value": "work",
+              "desc": "Work"
+            }
+          ]
+        }
+      ],
+      "phone": [
+        {
+          "phone_number": "1-215-555-1212",
+          "preferred": true,
+          "preferred_sms": false,
+          "segment_type": "Internal",
+          "phone_type": [
+            {
+              "value": "office",
+              "desc": "Office"
+            }
+          ]
+        }
+      ]
+    },
+    "link": null,
+    "user_identifier": [
+      {
+        "value": "123456789-1",
+        "id_type": {
+          "value": "BARCODE",
+          "desc": "Barcode"
+        },
+        "note": null,
+        "status": "ACTIVE",
+        "segment_type": "Internal"
+      },
+      {
+        "value": "hob00001",
+        "id_type": {
+          "value": "ACCESSNET",
+          "desc": "AccessNet"
+        },
+        "note": null,
+        "status": "ACTIVE",
+        "segment_type": "Internal"
+      }
+    ],
+    "user_role": [
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "200",
+          "desc": "Patron"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "223",
+          "desc": "API Fulfillment Read"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "236",
+          "desc": "API Fulfillment Write"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "238",
+          "desc": "API Infra Read"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "235",
+          "desc": "API Resource Management Read"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "233",
+          "desc": "API User Information Read"
+        },
+        "parameter": []
+      },
+      {
+        "status": {
+          "value": "ACTIVE",
+          "desc": "Active"
+        },
+        "scope": {
+          "value": "01TULI_INST",
+          "desc": "Temple University Libraries"
+        },
+        "role_type": {
+          "value": "234",
+          "desc": "API User Information Write"
+        },
+        "parameter": []
+      }
+    ],
+    "user_block": [],
+    "user_note": [
+      {
+        "note_type": {
+          "value": "LIBRARY",
+          "desc": "Library"
+        },
+        "note_text": "CUR CHKOUT: 2",
+        "user_viewable": false,
+        "created_by": "EX_LIBRIS",
+        "segment_type": "Internal"
+      },
+      {
+        "note_type": {
+          "value": "OTHER",
+          "desc": "Other"
+        },
+        "note_text": "CL RTRND: 0",
+        "user_viewable": true,
+        "created_by": "EX_LIBRIS",
+        "segment_type": "Internal"
+      },
+      {
+        "note_type": {
+          "value": "OTHER",
+          "desc": "Other"
+        },
+        "note_text": "PCODE3: 251",
+        "user_viewable": true,
+        "created_by": "EX_LIBRIS",
+        "segment_type": "Internal"
+      },
+      {
+        "note_type": {
+          "value": "OTHER",
+          "desc": "Other"
+        },
+        "note_text": "OD PENALTY: 0",
+        "user_viewable": true,
+        "created_by": "EX_LIBRIS",
+        "segment_type": "Internal"
+      }
+    ],
+    "user_statistic": [],
+    "proxy_for_user": []
+  },
+  "recheck_loans": true
+}

@@ -5,6 +5,7 @@ FactoryGirl.define do
     encrypted_password "asdfjkl;"
     uid "patron12345"
     provider "libprovidr"
+    email "patron12345@example.edu"
     guest false
   end
 end
