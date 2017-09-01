@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: b2d9ab040a83356cf3461ebdbddd1c7fa4d54a55
+  revision: 1aa838522a7879bbebd34b8cc0b4a53b6b57e8c7
   specs:
     blacklight_alma (0.0.1)
       blacklight (~> 6.0)
@@ -426,4 +426,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.3
+   1.15.4

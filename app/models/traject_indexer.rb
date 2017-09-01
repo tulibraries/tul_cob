@@ -331,10 +331,10 @@ end
 
     to_field 'call_number_display', extract_marc('852hi')
 
-    to_field 'library_display' do |rec, acc|   #extract_marc('852b')
+    to_field 'library' do |rec, acc|   #extract_marc('852b')
       rec.fields('852').each do |field|
-        # Strip the values and downcase for indexing into locations.yml
-        acc << field['b'].strip.downcase unless field['b'].nil?
+        # Strip the values and upcase for indexing into locations.yml
+        acc << field['b'].strip.upcase unless field['b'].nil?
       end
     end
 
