@@ -1,10 +1,13 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
-<div class="show_page_records">
-  <dl class="dl-horizontal  dl-invert">
-    <dt class="blacklight-availability show-page-avail">Status/Location:</dt>
-    <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>">Loading...</dd>
-
+  <div class="availability">
+    <dl class="dl-horizontal  dl-invert">
+      <dt class="blacklight-availability show-page-avail">Status/Location:</dt>
+      <dd class="blacklight-availability availability-ajax-load show-page-avail" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>">Loading...</dd>
+    </dl>
+  </div>
+  <div class="show_page_records">
+    <dl class="dl-horizontal  dl-invert">
     <% document_show_fields(document).each do |field_name, field| -%>
         <% if should_render_show_field? document, field %>
           <% if field.linked_fielded_search %>

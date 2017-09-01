@@ -7,10 +7,6 @@
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }
 
-.show_page_records {
-  margin-top: 25px;
-}
-
 ul {
   display: table;
   list-style: none;
@@ -24,31 +20,21 @@ ul {
   list-style-type: none;
 }
 
+/* === AVAILABILITY === */
+
+.availability {
+  margin-top: 25px;
+}
+
 button.avail-button {
-  margin: 5px 5px 10px 10px;
   display: inline-block;
+  margin: 5px 5px 10px 10px;
 }
 
 dd.blacklight-availability {
   display: inline-block;
-  margin-left: 5px;
+  margin-left: 10px;
   vertical-align: middle;
-}
-
-@media (min-width: 768px) {
-  .document dt {
-    white-space: normal;
-    word-break: break-word;
-    width: 170px;
-  }
-
-  dt.show-page-avail {
-    margin-bottom: 20px;
-  }
-
-.show_page_records dd {
-    margin-bottom: 20px;
-  }
 }
 
 .availability_iframe {
@@ -62,4 +48,18 @@ dd.blacklight-availability {
 .bl_alma_iframe {
   border: 0;
   width: 99.9%;
+}
+
+/* === MEDIA QUERIES === */
+
+@media (min-width: 768px) {
+  .document dt {
+    white-space: normal;
+    width: 170px;
+    word-break: break-word;
+  }
+
+  .show_page_records dd {
+    margin-bottom: 20px;
+  }
 }
