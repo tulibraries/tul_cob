@@ -6,12 +6,22 @@ require 'oai'
 
 module Oai
   module Alma
-    def self.harvest
+
+    # Harvests OAI records from the alma server given an optional start and end time
+    # Params
+    # +time_range+:: Optinoal hash containing +:from+ (start) and +:to+ (end) time in ISO8601.
+    def self.harvest(time_range)
       log_path = File.join(Rails.root, 'log/fortytu.log')
       logger = Logger.new(log_path, 10, 1024000)
-      harvest_files = []
+
+      from_time = time_range.fetch(:from) { "" }
+      to_time = time_range.fetch(:to) { "" }
       oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21"
-      done = false
+      oai_url << "&from=#{from_time}" unless from_time.empty?
+      oai_url << "&to=#{to_time}" unless to_time.empty?
+
+      harvest_files = []
+
       begin
         loop do
           logger.info("Retrieving #{oai_url}")
@@ -26,7 +36,7 @@ module Oai
           harvest_files << harvest_file.path
           resumptionToken = oai.xpath("//oai:resumptionToken", {'oai' => 'http://www.openarchives.org/OAI/2.0/', 'marc21' => "http://www.loc.gov/MARC21/slim"})
           break if resumptionToken.empty?
-          oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&resumptionToken=#{resumptionToken.text}"
+          oai_url = "https://sandbox02-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&resumptionToken=#{resumptionToken.text}"
         end
       rescue => e
         logger.fatal("Fatal Error")
@@ -40,32 +50,51 @@ module Oai
       logger = Logger.new(log_path, 10, 1024000)
       begin
         oai = Nokogiri::XML(File.open(harvest_filename))
-        records = oai.xpath("//oai:record/oai:metadata/marc21:record", {'oai' => 'http://www.openarchives.org/OAI/2.0/', 'marc21' => "http://www.loc.gov/MARC21/slim"})
+        updated_records = oai.xpath("//oai:record/oai:metadata/marc21:record",
+                                    {'oai' => 'http://www.openarchives.org/OAI/2.0/',
+                                     'marc21' => "http://www.loc.gov/MARC21/slim"})
+        deleted_records = oai.xpath('/oai:OAI-PMH/oai:ListRecords/oai:record[oai:header/@status="deleted"]',
+                                    {'oai' => 'http://www.openarchives.org/OAI/2.0/',
+                                     'marc21' => "http://www.loc.gov/MARC21/slim"})
+        logger.info("Delete Records found") unless deleted_records.empty?
         collection_namespaces = {
           'xmlns' => 'http://www.loc.gov/MARC21/slim',
           'xmlns:xsi' => 'http://www.w3.org/2001/XMLSchema-instance',
           'xsi:schemaLocation' => 'http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'
         }
 
-        marc_doc = Nokogiri::XML::Builder.new("encoding" => "UTF-8") do |xml|
-          xml.collection(collection_namespaces) do |col|
-            records.each do |rec|
-              xml.record do
-                xml.parent << rec.inner_html
-              end
-            end
-          end
+        unless updated_records.empty?
+          update_filename = File.join(Rails.root, 'tmp', 'alma', 'marc', File.basename(harvest_filename))
+          write_updated(collection_namespaces, updated_records, update_filename)
         end
 
-        tmp_path = File.join(Rails.root, 'tmp', 'alma', 'marc')
-        FileUtils::mkdir_p tmp_path
-        marc_file = File.new(File.join(tmp_path, File.basename(harvest_filename)), "w")
-        marc_file.write(marc_doc.to_xml)
-        marc_file.path
+        unless deleted_records.empty?
+          delete_filename = File.join(Rails.root, 'tmp', 'alma', 'marc-delete', File.basename(harvest_filename))
+          write_updated(collection_namespaces, deleted_records, delete_filename)
+        end
+
       rescue => e
         logger.fatal("Fatal Error")
         logger.fatal(e)
       end
+
+      { updated_records: updated_records, deleted_records: deleted_records }
+    end
+
+    def self.write_updated(collection_namespaces, records, filename)
+      marc_doc = Nokogiri::XML::Builder.new("encoding" => "UTF-8") do |xml|
+        xml.collection(collection_namespaces) do |col|
+          records.each do |rec|
+            xml.record do
+              xml.parent << rec.inner_html
+            end
+          end
+        end
+      end
+      FileUtils::mkdir_p File.dirname(filename)
+      marc_file = File.new(filename, "w")
+      marc_file.write(marc_doc.to_xml)
+      marc_file.path
     end
   end
 end

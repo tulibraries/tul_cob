@@ -19,10 +19,26 @@ namespace :fortytu do
     solr.update data: '<commit/>'
   end
 
+  desc 'Remove deleted items from Solr'
+  task :purge => :environment do
+    solr = RSolr.connect :url => Blacklight.connection_config[:url]
+    delete_files_path = File.join(Rails.root, 'tmp', 'alma', 'marc-delete', '*.xml')
+    delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
+    #progressbar = ProgressBar.create(:title => "Purge", :total => delete_files.count, format: "%t (%c/%C) %a |%B|")
+    delete_files.each do |f|
+      delete_doc = Nokogiri::XML(f)
+      binding.pry
+      #solr.update data: "<delete><query>id:#{id}</query></delete>"
+      
+      #progressbar.increment
+    end
+    solr.update data: '<commit/>'
+  end
+
   namespace :oai do
-    desc 'Harvests OAI MARC records from Alma'
-    task :harvest do
-      file_paths = Oai::Alma.harvest
+    desc 'Harvests OAI MARC records between optional start and end time from Alma.'
+    task :harvest, [:from, :to] => :environment do |t, args|
+      file_paths = Oai::Alma.harvest(args)
       puts "Records harvested to: #{file_paths}"
     end
 
@@ -42,7 +58,7 @@ namespace :fortytu do
         progressbar = ProgressBar.create(:title => "Harvest ", :total => harvest_files.count, format: "%t (%c/%C) %a |%B|")
         harvest_files.each do |f|
           logger.info "MARC file: #{f}"
-          file_path = Oai::Alma.conform(f)
+          harvest_records = Oai::Alma.conform(f)
           progressbar.increment
         end
       rescue => e
