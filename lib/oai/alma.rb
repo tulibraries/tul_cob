@@ -53,7 +53,7 @@ module Oai
         updated_records = oai.xpath("//oai:record/oai:metadata/marc21:record",
                                     {'oai' => 'http://www.openarchives.org/OAI/2.0/',
                                      'marc21' => "http://www.loc.gov/MARC21/slim"})
-        deleted_records = oai.xpath('/oai:OAI-PMH/oai:ListRecords/oai:record[oai:header/@status="deleted"]',
+        deleted_records = oai.xpath('//oai:OAI-PMH/oai:ListRecords/oai:record[oai:header/@status="deleted"]',
                                     {'oai' => 'http://www.openarchives.org/OAI/2.0/',
                                      'marc21' => "http://www.loc.gov/MARC21/slim"})
         logger.info("Delete Records found") unless deleted_records.empty?

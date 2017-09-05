@@ -24,13 +24,13 @@ namespace :fortytu do
     solr = RSolr.connect :url => Blacklight.connection_config[:url]
     delete_files_path = File.join(Rails.root, 'tmp', 'alma', 'marc-delete', '*.xml')
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
-    #progressbar = ProgressBar.create(:title => "Purge", :total => delete_files.count, format: "%t (%c/%C) %a |%B|")
+    progressbar = ProgressBar.create(:title => "Purge", :total => delete_files.count, format: "%t (%c/%C) %a |%B|")
     delete_files.each do |f|
-      delete_doc = Nokogiri::XML(f)
-      binding.pry
-      #solr.update data: "<delete><query>id:#{id}</query></delete>"
-      
-      #progressbar.increment
+      delete_doc = Nokogiri::XML(File.open(f))
+      delete_doc.xpath('//xmlns:identifier').map do |id|
+        solr.update data: "<delete><query>id:#{id.text.split(':').last}</query></delete>"
+      end
+      progressbar.increment
     end
     solr.update data: '<commit/>'
   end
