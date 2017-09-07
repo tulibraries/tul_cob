@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: 1aa838522a7879bbebd34b8cc0b4a53b6b57e8c7
+  revision: f980b2dba8b98bf06a4971a82ed975d19bd2accb
   specs:
     blacklight_alma (0.0.1)
       blacklight (~> 6.0)
