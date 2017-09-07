@@ -330,6 +330,7 @@ end
     #location fields
 
     to_field 'call_number_display', extract_marc('HLDhi')
+    to_field 'call_number_alt_display', extract_marc('ITMjk')
 
     to_field 'library' do |rec, acc|
       rec.fields('HLD').each do |field|

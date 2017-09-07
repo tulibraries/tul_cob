@@ -219,6 +219,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'changed_back_to_display', label: 'Changed back to'
 
     #config.add_show_field 'call_number', label: 'Call Number'
+    #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
     config.add_show_field 'pub_no_display', label: 'Publication Number'
@@ -227,7 +228,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
     config.add_show_field 'language_display', label: 'Language', :helper_method => :list
-    #config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
     config.add_show_field 'url_resource_display', label: 'Available Online', :helper_method => :electronic_access_links
     config.add_show_field 'url_more_links_display', label: 'Other Links', :helper_method => :electronic_access_links
 
