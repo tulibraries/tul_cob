@@ -3,6 +3,7 @@
   <div class="availability">
     <dl class="dl-horizontal  dl-invert">
       <dt class="blacklight-availability show-page-avail">Status/Location:</dt>
+      <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
       <dd class="blacklight-availability availability-ajax-load show-page-avail" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>">Loading...</dd>
     </dl>
   </div>

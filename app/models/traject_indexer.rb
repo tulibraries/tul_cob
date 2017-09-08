@@ -54,6 +54,15 @@ end
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
 to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
 
+to_field "availability_facet" do |rec, acc|
+  unless rec.fields('PRT').empty? || rec.fields('856').empty?
+    acc << "Online"
+  end
+  unless rec.fields('HLD').empty?
+    acc << "At the Library"
+  end
+end
+
 to_field "format", marc_formats do |rec, acc|
   acc.delete('Print')
   acc.delete('Online')
@@ -329,10 +338,11 @@ end
 
     #location fields
 
-    to_field 'call_number_display', extract_marc('852hi')
+    to_field 'call_number_display', extract_marc('HLDhi')
+    to_field 'call_number_alt_display', extract_marc('ITMjk')
 
-    to_field 'library' do |rec, acc|   #extract_marc('852b')
-      rec.fields('852').each do |field|
+    to_field 'library' do |rec, acc|
+      rec.fields('HLD').each do |field|
         # Strip the values and upcase for indexing into locations.yml
         acc << field['b'].strip.upcase unless field['b'].nil?
       end

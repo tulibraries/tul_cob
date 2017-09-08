@@ -9,6 +9,7 @@ simple_search:
   series_title: "Palgrave critical university studies"
   status_location: "Paley Stacks"
   url: "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity"
+  HLD: "AMBLER"
 title_statement:
   doc_id: "991012172649703811"
   title_statement: "Der emes̀ ṿegen Henri Ford / fun D.L. Meḳler ; ilusṭrirṭ fun Miṭshel Loueb."

@@ -20129,6 +20129,12 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag="HLD" ind1=" " ind2=" ">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">DVD 16 A15</subfield>
+      <subfield code="8">22287355870003811</subfield>
+    </datafield>
   </record>
   <record>
     <leader>01597nam a2200349 a 4500</leader>

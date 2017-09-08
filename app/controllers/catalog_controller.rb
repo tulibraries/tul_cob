@@ -123,7 +123,7 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    #config.add_facet_field 'availability', label: 'Availability', helper_method: :render_availability, show: false
+    config.add_facet_field 'availability_facet', label: 'Availability'
     config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'pub_date', label: 'Date',
@@ -160,10 +160,10 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
-    config.add_show_field 'title_uniform_display', label: 'Uniform title'
-    config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
-    config.add_show_field 'title_addl_display', label: 'Additional titles'
-    config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
+    config.add_show_field 'title_uniform_display', label: 'Uniform title', :helper_method => :list
+    config.add_show_field 'title_uniform_vern_display', label: 'Uniform title', :helper_method => :list
+    config.add_show_field 'title_addl_display', label: 'Additional titles', :helper_method => :list
+    config.add_show_field 'title_addl_vern_display', label: 'Additional titles', :helper_method => :list
     config.add_show_field 'creator_display', label: 'Author/creator/contributor', :helper_method => :browse_creator, :multi => true
     config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list_with_links
     config.add_show_field 'format', label: 'Resource Type'
@@ -219,6 +219,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'changed_back_to_display', label: 'Changed back to'
 
     #config.add_show_field 'call_number', label: 'Call Number'
+    #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
     config.add_show_field 'pub_no_display', label: 'Publication Number'
@@ -227,7 +228,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
     config.add_show_field 'language_display', label: 'Language', :helper_method => :list
-    #config.add_show_field 'library', label: 'Library', helper_method: :render_location_show
     config.add_show_field 'url_resource_display', label: 'Available Online', :helper_method => :electronic_access_links
     config.add_show_field 'url_more_links_display', label: 'Other Links', :helper_method => :electronic_access_links
 

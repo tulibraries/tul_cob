@@ -25,7 +25,7 @@ RSpec.feature "Indices", type: :feature do
 
   feature "Facets" do
     let (:facets) {
-      [ #[TODO] "Availability",
+      [ "Availability",
         "Library",
         "Resource Type",
         "Date",
