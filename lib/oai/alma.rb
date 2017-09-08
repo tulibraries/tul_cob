@@ -26,7 +26,6 @@ module Oai
         loop do
           logger.info("Retrieving #{oai_url}")
           puts "Retrieving #{oai_url}"
-          client = OAI::Client.new oai_url
           response = HTTParty.get(oai_url)
           oai = Nokogiri::XML(response.body)
           tmp_path = File.join(Rails.root, 'tmp', 'alma', 'oai')

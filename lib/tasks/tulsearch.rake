@@ -9,8 +9,8 @@ namespace :fortytu do
       `traject -c app/models/traject_indexer.rb -x commit`
     end
 
-    desc 'Delete fixtures from Solr'
-    task :empty_index do
+    desc 'Delete all items from Solr'
+    task :clean do
       solr = RSolr.connect :url => Blacklight.connection_config[:url]
       solr.update data: '<delete><query>*:*</query></delete>'
       solr.update data: '<commit/>'
