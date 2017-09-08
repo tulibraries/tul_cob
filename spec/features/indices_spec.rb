@@ -39,7 +39,6 @@ RSpec.feature "Indices", type: :feature do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit '/'
-        save_and_open_page
         within("#facets") do
           all('div.panel').each_with_index do |div_panel, i|
             expect(div_panel).to have_text facets[i]
