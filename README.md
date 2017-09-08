@@ -38,7 +38,7 @@ bundle exec solr_wrapper
 bundle exec rails server
 ```
 
-## Importing Data
+## Importing from a Data File
 
 Download the 10000 [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
 
@@ -66,6 +66,18 @@ That will updates the xml files in place.
 Now you are ready to ingest                                        
 
 Import the MARC records with `bundle exec traject -c app/models/traject_indexer.rb PATH/TO/MARC.xml`
+
+## Importing from Alma
+
+In order to import from Alma directly execute the following Rake tasks. Harvest may be supplied with
+an optional date/time ranges in ISO8901 format and enclosed in brackets. You may provide `from` and/or `ta`o
+date/times. You may not provide only a `to` date/time
+
+```bash
+bundle exec rake fortytu:oai:harvest[from,to]
+bundle exec rake fortytu:oai:conform_all
+bundle exec rake fortytu:oai:ingest_all
+```
 
 ## Running the Tests
 
