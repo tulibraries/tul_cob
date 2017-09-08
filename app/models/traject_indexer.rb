@@ -54,6 +54,15 @@ end
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
 to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
 
+to_field "availability_facet" do |rec, acc|
+  unless rec.fields('PRT').empty? || rec.fields('856').empty?
+    acc << "Online"
+  end
+  unless rec.fields('HLD').empty?
+    acc << "At the Library"
+  end
+end
+
 to_field "format", marc_formats do |rec, acc|
   acc.delete('Print')
   acc.delete('Online')
