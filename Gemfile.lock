@@ -144,8 +144,6 @@ GEM
       railties (>= 3.0.0)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
-    faraday_middleware (0.12.2)
-      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
@@ -228,10 +226,6 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    oai (0.4.0)
-      builder (>= 3.1.0)
-      faraday
-      faraday_middleware
     omniauth (1.6.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -413,7 +407,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (~> 3.0.5)
-  oai
   omniauth
   omniauth-alma!
   pry-rails

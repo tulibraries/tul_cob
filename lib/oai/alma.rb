@@ -2,7 +2,6 @@ require 'rsolr'
 require 'nokogiri'
 require 'tempfile'
 require 'fileutils'
-require 'oai'
 
 module Oai
   module Alma
