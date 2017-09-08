@@ -2,7 +2,6 @@ require 'rsolr'
 require 'nokogiri'
 require 'tempfile'
 require 'oai/alma'
-require 'ruby-progressbar'
 
 namespace :fortytu do
 
@@ -17,13 +16,11 @@ namespace :fortytu do
     solr = RSolr.connect :url => Blacklight.connection_config[:url]
     delete_files_path = File.join(Rails.root, 'tmp', 'alma', 'marc-delete', '*.xml')
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
-    progressbar = ProgressBar.create(:title => "Purge", :total => delete_files.count, format: "%t (%c/%C) %a |%B|")
     delete_files.each do |f|
       delete_doc = Nokogiri::XML(File.open(f))
       delete_doc.xpath('//xmlns:identifier').map do |id|
         solr.update data: "<delete><query>id:#{id.text.split(':').last}</query></delete>"
       end
-      progressbar.increment
     end
     solr.update data: '<commit/>'
   end
@@ -48,11 +45,9 @@ namespace :fortytu do
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'oai', '*.xml')
         harvest_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
-        progressbar = ProgressBar.create(:title => "Harvest ", :total => harvest_files.count, format: "%t (%c/%C) %a |%B|")
         harvest_files.each do |f|
           logger.info "MARC file: #{f}"
           harvest_records = Oai::Alma.conform(f)
-          progressbar.increment
         end
       rescue => e
         logger.fatal("Fatal Error")
@@ -73,7 +68,6 @@ namespace :fortytu do
       begin
         oai_path = File.join(Rails.root, 'tmp', 'alma', 'marc', '*.xml')
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
-        progressbar = ProgressBar.create(:title => "Ingest", :total => marc_files.count, format: "%t (%c/%C) %a |%B|")
         traject_commit = %W[traject -s
           log.file=#{main_log}
           -c app/models/traject_indexer.rb
@@ -95,7 +89,6 @@ namespace :fortytu do
             end
             pids.clear
           end
-          progressbar.increment
         end
       rescue => e
         logger.fatal("Fatal Error")
