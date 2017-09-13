@@ -125,7 +125,7 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'availability_facet', label: 'Availability'
-    config.add_facet_field 'library', label: 'Library', helper_method: :render_location
+    config.add_facet_field 'library', label: 'Library'
     config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {

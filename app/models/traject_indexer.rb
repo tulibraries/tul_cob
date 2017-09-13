@@ -341,12 +341,7 @@ end
     to_field 'call_number_display', extract_marc('HLDhi')
     to_field 'call_number_alt_display', extract_marc('ITMjk')
 
-    to_field 'library' do |rec, acc|
-      rec.fields('HLD').each do |field|
-        # Strip the values and upcase for indexing into locations.yml
-        acc << field['b'].strip.upcase unless field['b'].nil?
-      end
-    end
+    to_field 'library', extract_marc('HLDb', :translation_map=>'locations_map')
 
     #Identifier fields
 
