@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require 'blacklight_advanced_search'
-
-
+//= require chosen-jquery
+//= require tulcob
 //= require jquery_ujs
 //= require turbolinks//
 // Required by Blacklight
@@ -78,4 +78,3 @@ function deselectallchecks() {
 	    }
 	}
 }
-
