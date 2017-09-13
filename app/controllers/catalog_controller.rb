@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format library_facet)
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format library)
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -125,7 +125,7 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'availability_facet', label: 'Availability'
-    config.add_facet_field 'library_facet', label: 'Library', helper_method: :render_location
+    config.add_facet_field 'library', label: 'Library', helper_method: :render_location
     config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {
