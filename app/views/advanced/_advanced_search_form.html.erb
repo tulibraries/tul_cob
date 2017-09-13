@@ -17,9 +17,8 @@
     </div>
   </div>
 
-  <div id="advanced_search">
+  <div id="advanced_search" class="form-group">
     <%= render 'advanced/advanced_search_fields' %>
-    <div class="form-group advanced-search-facet">
       <%= render 'advanced_search_facets' %>
       <%= label_tag "publication_date", :class => "col-sm-3 control-label" do %>
           Publication Year
@@ -27,7 +26,6 @@
       <div class="col-sm-9">
           <%= render_range_input("pub_date", :begin) %> - <%= render_range_input("pub_date", :end) %>
       </div>
-    </div>
   </div>
 
   <hr>
