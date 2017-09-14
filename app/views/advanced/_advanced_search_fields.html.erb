@@ -1,0 +1,36 @@
+
+<% for i in 2..2 do %>
+<div class="container">
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= select_tag("search_field_row[]", options_for_select(search_fields_for_advanced_search.collect{|key, field_def| [field_def.label, field_def.field]}), :class => 'advanced-search-select form-control', :id => "search_field_advanced#{i}" ) %>
+      <label for="q_row<%= i %>" class="sr-only"><%= t('blacklight.search.form.q') %></label>
+    </div>
+    <div class="col-sm-4">
+      <%= text_field_tag "q_row[]", nil, :autocapitalize => "off", :id => "q_row#{i}", :class => "form-control advanced_search_input" %>
+    </div>
+  </div>
+  <div class="row booleans">
+    <div class="col-sm-5 col-sm-offset-2">
+      <label class="radio-inline">
+        <input type="radio" name="boolean_row[<%= i-1 %>]" value="AND" checked="checked"> and
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="boolean_row[<%= i-1 %>]" value="OR"> or
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="boolean_row[<%= i-1 %>]" value="NOT"> not
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-sm-2">
+      <%= select_tag("search_field_row[]", options_for_select(search_fields_for_advanced_search.collect{|key, field_def| [field_def.label, field_def.field]}), :class => 'advanced-search-select form-control', :id => "search_field_advanced#{i}" ) %>
+      <label for="q_row<%= i %>" class="sr-only"><%= t('blacklight.search.form.q') %></label>
+    </div>
+    <div class="col-sm-4">
+      <%= text_field_tag "q_row[]", nil, :autocapitalize => "off", :id => "q_row#{i}", :class => "form-control advanced_search_input" %>
+    </div>
+  </div>
+</div>
+<% end %>

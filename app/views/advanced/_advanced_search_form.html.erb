@@ -10,14 +10,6 @@
 
   <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context)) %>
 
-  <div class="input-criteria">
-    <div class="query-criteria">
-      <h3 class="query-criteria-heading">
-        <%= t('blacklight_advanced_search.form.query_criteria_heading_html', :select_menu =>  select_menu_for_field_operator ) %>
-      </h3>
-    </div>
-  </div>
-
   <div id="advanced_search" class="form-group">
     <%= render 'advanced/advanced_search_fields' %>
       <%= render 'advanced_search_facets' %>
