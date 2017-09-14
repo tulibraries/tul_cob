@@ -1,3 +1,4 @@
+<div id="advanced-search-facets">
   <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
     <div class="constraints well search_history">
       <h4><%= t 'blacklight_advanced_search.form.search_context' %></h4>
@@ -10,26 +11,22 @@
   <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context)) %>
 
   <div class="input-criteria">
+    <div class="query-criteria">
+      <h3 class="query-criteria-heading">
+        <%= t('blacklight_advanced_search.form.query_criteria_heading_html', :select_menu =>  select_menu_for_field_operator ) %>
+      </h3>
+    </div>
+  </div>
 
-      <div class="query-criteria">
-        <h3 class="query-criteria-heading">
-          <%= t('blacklight_advanced_search.form.query_criteria_heading_html', :select_menu =>  select_menu_for_field_operator ) %> 
-        </h3>
-
-        <div id="advanced_search">
-          <%= render 'advanced/advanced_search_fields' %>
-          <div class="form-group advanced-search-facet">
-            <%= label_tag "publication_date", :class => "col-sm-3 control-label" do %>
-                Publication Year
-            <% end %>
-
-            <div class="col-sm-9">
-                <%= render_range_input("pub_date", :begin) %> - <%= render_range_input("pub_date", :end) %>      
-            </div>
-          </div>
-        </div>
+  <div id="advanced_search" class="form-group">
+    <%= render 'advanced/advanced_search_fields' %>
+      <%= render 'advanced_search_facets' %>
+      <%= label_tag "publication_date", :class => "col-sm-3 control-label" do %>
+          Publication Year
+      <% end %>
+      <div class="col-sm-9">
+          <%= render_range_input("pub_date", :begin) %> - <%= render_range_input("pub_date", :end) %>
       </div>
-      
   </div>
 
   <hr>
@@ -39,3 +36,4 @@
   </div>
 
 <% end %>
+</div>
