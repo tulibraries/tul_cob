@@ -104,4 +104,79 @@ RSpec.feature "Searches", type: :feature do
       end
     end
   end
+
+  feature "Search all fields in journals" do
+    let (:item) { fixtures.fetch("journal_search") }
+    scenario "Search Title" do
+      visit '/'
+      fill_in 'q', with: item['title']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search ID" do
+      visit '/'
+      fill_in 'q', with: item['doc_id']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search creator" do
+      visit '/'
+      fill_in 'q', with: item['creator']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search imprint" do
+      visit '/'
+      fill_in 'q', with: item['imprint']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search physical description" do
+      visit '/'
+      fill_in 'q', with: item['physical_description']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search subject" do
+      visit '/'
+      fill_in 'q', with: item['subject']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+
+    scenario "Search ISSN" do
+      visit '/'
+      fill_in 'q', with: item['issn']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+    
+    scenario "Search LCCN" do
+      visit '/'
+      fill_in 'q', with: item['lccn']
+      click_button 'Search'
+      within(".document-position-0 h3") do
+        expect(page).to have_text item['title']
+      end
+    end
+  end
 end
