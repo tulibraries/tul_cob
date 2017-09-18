@@ -1,18 +1,19 @@
-<div id="advanced-search-facets">
-  <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
-    <div class="constraints well search_history">
-      <h4><%= t 'blacklight_advanced_search.form.search_context' %></h4>
-      <%= search_context_str %>
-    </div>
-  <% end %>
-
 <%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
+
+
+  <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
+      <div class="constraints well search_history">
+        <h4><%= t 'blacklight_advanced_search.form.search_context' %></h4>
+        <%= search_context_str %>
+      </div>
+    <% end %>
+
 
   <%= render_hash_as_hidden_fields(search_state.params_for_search(advanced_search_context)) %>
 
   <div id="advanced_search" class="form-group">
     <%= render 'advanced/advanced_search_fields' %>
-      <%= render 'advanced_search_facets' %>
+    <%= render 'advanced_search_facets' %>
       <%= label_tag "publication_date", :class => "col-sm-3 control-label" do %>
           Publication Year
       <% end %>
@@ -28,4 +29,3 @@
   </div>
 
 <% end %>
-</div>
