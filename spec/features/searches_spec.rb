@@ -50,7 +50,7 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    scenario "Search physical description" do
+    xscenario "Search physical description" do
       visit '/'
       fill_in 'q', with: item['physical_description']
       click_button 'Search'
@@ -94,7 +94,7 @@ RSpec.feature "Searches", type: :feature do
         expect(page).to have_text item['title']
       end
     end
-    
+
     scenario "Search LCCN" do
       visit '/'
       fill_in 'q', with: item['lccn']
@@ -143,7 +143,7 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    scenario "Search physical description" do
+    xscenario "Search physical description" do
       visit '/'
       fill_in 'q', with: item['physical_description']
       click_button 'Search'
@@ -169,7 +169,7 @@ RSpec.feature "Searches", type: :feature do
         expect(page).to have_text item['title']
       end
     end
-    
+
     scenario "Search LCCN" do
       visit '/'
       fill_in 'q', with: item['lccn']
