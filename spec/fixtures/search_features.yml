@@ -1,0 +1,26 @@
+---
+book_search:
+  doc_id: "991032411489703811"
+  title: "Google"
+  creator: "Scott, Virginia A."
+  format: "Book"
+  imprint: "Westport, Conn. : Greenwood Press, 2008."
+  date: "2008"
+  physical_description: "x, 153 p. : ill. ; 25 cm."
+  series_title: "Corporations that changed the world,"
+  content: "The origin and history of Google"
+  subject: "Internet industry"
+  isbn: "9780313351273"
+  lccn: "2008030541"
+journal_search:
+  doc_id: "991013867929703811"
+  title: "Annual review of public health."
+  additional_titles: "Annu. rev. public health"
+  creator: "Annual Reviews, Inc"
+  imprint: "Palo Alto, Calif., Annual Reviews Inc.:"
+  physical_description: "v. 23 cm."
+  note: "Also available online."
+  cited_in: "Chemical abstracts"
+  subject: "Public health — Periodicals"
+  issn: 0163-7525
+  lccn: 80644745
