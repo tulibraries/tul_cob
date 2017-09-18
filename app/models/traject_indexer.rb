@@ -54,15 +54,6 @@ end
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
 to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
 
-to_field "availability_facet" do |rec, acc|
-  unless rec.fields('PRT').empty? || rec.fields('856').empty?
-    acc << "Online"
-  end
-  unless rec.fields('HLD').empty?
-    acc << "At the Library"
-  end
-end
-
 to_field "format", marc_formats do |rec, acc|
   acc.delete('Print')
   acc.delete('Online')
@@ -222,6 +213,25 @@ to_field 'url_more_links_display' do |rec, acc|
         end
       end
     end
+  end
+end
+
+#Availability
+
+to_field "availability_facet" do |rec, acc|
+  unless rec.fields('PRT').empty?
+    acc << "Online"
+  end
+  unless acc.include?('Online')
+    rec.fields(['856']).each do |field|
+    z3 = [field['z'], field['3']].join(' ')
+      unless notfulltext.match(z3) || rec.fields('856').empty?
+      acc << "Online" if field.indicator1 == '4' && field.indicator2 != '2'
+      end
+    end
+  end
+  unless rec.fields('HLD').empty?
+    acc << "At the Library"
   end
 end
 
