@@ -46,7 +46,7 @@ settings do
 end
 
 to_field "id", extract_marc("001", :first => true)
-to_field 'marc_display', get_xml
+to_field 'marc_display_raw', get_xml
 to_field "text", extract_all_marc_values do |r, acc|
   acc.replace [acc.join(' ')] # turn it into a single string
 end
@@ -70,13 +70,6 @@ to_field "format", marc_formats do |rec, acc|
   acc.map! { |x| x == "Conference" ? "Conference Proceedings" : x }.flatten! # replace Conference with Conference Proceedings
 end
 
-to_field "isbn_t",  extract_marc('020a', :separator=>nil) do |rec, acc|
-     orig = acc.dup
-     acc.map!{|x| StdNum::ISBN.allNormalizedValues(x)}
-     acc << orig
-     acc.flatten!
-     acc.uniq!
-end
 
 # Title fields
 # primary title
@@ -329,7 +322,7 @@ end
     #subject fields
     #[TODO] need to improve the subjects
 
-    to_field 'subject', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
+    to_field 'subject_facet', extract_marc('600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_display', extract_marc('600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz', :separator => " — ", :trim_punctuation => true)
     to_field 'subject_topic_facet', extract_marc('600abcdq:610ab:611a:630a:650a:653a:654ab:655ab')
     to_field 'subject_era_facet', extract_marc('648a:650y:651y:654y:655y:690y', :trim_punctuation => true)
@@ -341,17 +334,37 @@ end
     to_field 'call_number_display', extract_marc('HLDhi')
     to_field 'call_number_alt_display', extract_marc('ITMjk')
 
-    to_field 'library', extract_marc('HLDb', :translation_map=>'locations_map')
+    to_field 'library_facet', extract_marc('HLDb', :translation_map=>'locations_map')
 
     #Identifier fields
 
-    #to_field 'isbn_display', extract_marc('020aq')
-    to_field 'isbn_display', extract_marc('020a')
-    to_field 'issn_display', extract_marc('022a')
+    to_field "isbn_display",  extract_marc('020a', :separator=>nil) do |rec, acc|
+         orig = acc.dup
+         acc.map!{|x| StdNum::ISBN.allNormalizedValues(x)}
+         acc << orig
+         acc.flatten!
+         acc.uniq!
+    end
+
+    to_field 'issn_display', extract_marc('022a', :separator=>nil) do |rec, acc|
+         orig = acc.dup
+         acc.map!{|x| StdNum::ISSN.normalize(x)}
+         acc << orig
+         acc.flatten!
+         acc.uniq!
+    end
+
+    to_field 'lccn_display', extract_marc('010ab', :separator=>nil) do |rec, acc|
+         orig = acc.dup
+         acc.map!{|x| StdNum::LCCN.normalize(x)}
+         acc << orig
+         acc.flatten!
+         acc.uniq!
+    end
+
     to_field 'pub_no_display', extract_marc('028ab')
     to_field 'sudoc_display', extract_marc('086|0*|a')
     to_field 'diamond_id_display', extract_marc('907a')
-    to_field 'lccn_display', extract_marc('010ab')
     to_field 'gpo_display', extract_marc('074a')
     to_field 'alma_mms_display', extract_marc('001')
 
