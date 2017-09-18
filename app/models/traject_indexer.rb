@@ -223,16 +223,18 @@ to_field 'url_more_links_display' do |rec, acc|
   end
 end
 
-#Availability 
+#Availability
 
 to_field "availability_facet" do |rec, acc|
   unless rec.fields('PRT').empty?
     acc << "Online"
   end
-  rec.fields(['856']).each do |field|
+  unless acc.include?('Online')
+    rec.fields(['856']).each do |field|
     z3 = [field['z'], field['3']].join(' ')
-    unless notfulltext.match(z3) || rec.fields('856').empty?
+      unless notfulltext.match(z3) || rec.fields('856').empty?
       acc << "Online" if field.indicator1 == '4' && field.indicator2 != '2'
+      end
     end
   end
   unless rec.fields('HLD').empty?
