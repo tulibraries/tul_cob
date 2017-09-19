@@ -24360,5 +24360,450 @@
     <subfield code="8">22266041880003811</subfield>
   </datafield>
 </record>
+<record>
+  <leader>01499pam a22003854a 4500</leader>
+  <controlfield tag="005">20081105191406.9</controlfield>
+  <controlfield tag="008">080717s2008    ctua     b    001 0 eng  </controlfield>
+  <controlfield tag="001">991032411489703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">2008030541</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9780313351273 (alk. paper)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">0313351279 (alk. paper)</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b3685928x-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)ocn492622586</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)234146408</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DLC</subfield>
+    <subfield code="c">DLC</subfield>
+    <subfield code="d">YDXCP</subfield>
+    <subfield code="d">BAKER</subfield>
+    <subfield code="d">C#P</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn234146408</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">HD9696.8.U64</subfield>
+    <subfield code="b">G6665 2008</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Scott, Virginia A.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Google /</subfield>
+    <subfield code="c">Virginia Scott.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Westport, Conn. :</subfield>
+    <subfield code="b">Greenwood Press,</subfield>
+    <subfield code="c">2008.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">x, 153 p. :</subfield>
+    <subfield code="b">ill. ;</subfield>
+    <subfield code="c">25 cm.</subfield>
+  </datafield>
+  <datafield tag="440" ind1=" " ind2="0">
+    <subfield code="a">Corporations that changed the world,</subfield>
+    <subfield code="x">1939-2486</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references and index.</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2=" ">
+    <subfield code="a">Meet Google's founders -- The origin and history of Google -- Internet search: the historical context -- What made Google so much better? -- The wonderful world of work and play at Google -- How Google uses fun to attract customers -- Google philanthropy -- Google and education -- Using google to make money -- Google controversies -- The future of google.</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="0">
+    <subfield code="a">Google (Firm)</subfield>
+    <subfield code="x">History.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Internet industry</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b3685928x</subfield>
+    <subfield code="b">p    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">131204</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">081118</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">BNA</subfield>
+  </datafield>
+  <datafield tag="901" ind1=" " ind2=" ">
+    <subfield code="a">R0742283</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">081105AB0701</subfield>
+  </datafield>
+  <datafield tag="905" ind1="0" ind2="0">
+    <subfield code="a">Corporations that changed the world</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">081118</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">pstk </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>
+<record>
+  <leader>02526nas a2200829   4500</leader>
+  <controlfield tag="005">19891201203444.0</controlfield>
+  <controlfield tag="008">840806c19809999cauar         0    0eng  </controlfield>
+  <controlfield tag="001">991013867929703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">80644745</subfield>
+    <subfield code="z">sn 78006898</subfield>
+  </datafield>
+  <datafield tag="022" ind1="0" ind2=" ">
+    <subfield code="a">0163-7525</subfield>
+  </datafield>
+  <datafield tag="030" ind1=" " ind2=" ">
+    <subfield code="a">AREHDT</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b12831049-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn471235607</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATG84-S00316</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">4471173    </subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DLC</subfield>
+    <subfield code="c">NSD</subfield>
+    <subfield code="d">DLC</subfield>
+    <subfield code="d">NSD</subfield>
+    <subfield code="d">DLC</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">OCL</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">SER</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AGL</subfield>
+    <subfield code="d">NSD</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">HEA</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield tag="069" ind1="1" ind2=" ">
+    <subfield code="a">A54310000</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm04471173</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">RA421</subfield>
+    <subfield code="b">.A66</subfield>
+  </datafield>
+  <datafield tag="210" ind1="0" ind2=" ">
+    <subfield code="a">Annu. rev. public health</subfield>
+  </datafield>
+  <datafield tag="222" ind1=" " ind2="0">
+    <subfield code="a">Annual review of public health</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Annual review of public health.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Palo Alto, Calif.,</subfield>
+    <subfield code="b">Annual Reviews Inc.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">v.</subfield>
+    <subfield code="c">23 cm.</subfield>
+  </datafield>
+  <datafield tag="350" ind1=" " ind2=" ">
+    <subfield code="a">$17.00 (U.S.)</subfield>
+    <subfield code="a">$17.50 (foreign)</subfield>
+  </datafield>
+  <datafield tag="362" ind1="0" ind2=" ">
+    <subfield code="a">v. 1-   1980-</subfield>
+  </datafield>
+  <datafield tag="510" ind1="2" ind2=" ">
+    <subfield code="a">Chemical abstracts</subfield>
+    <subfield code="x">0009-2258</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Also available online.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Public health</subfield>
+    <subfield code="v">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Public health</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="2">
+    <subfield code="a">Public Health</subfield>
+    <subfield code="v">periodicals</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Annual Reviews, Inc.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b12831049</subfield>
+    <subfield code="b">multi</subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">170502</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">37</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">s</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">AAH-6813</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00301503</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">P</subfield>
+    <subfield code="v">v.1;</subfield>
+    <subfield code="y">1980</subfield>
+    <subfield code="n">#9</subfield>
+    <subfield code="f">use v.</subfield>
+    <subfield code="i">08/06/84 C</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">P</subfield>
+    <subfield code="c">(v.1:1980)</subfield>
+    <subfield code="i">08/06/84 C</subfield>
+  </datafield>
+  <datafield tag="956" ind1=" " ind2=" ">
+    <subfield code="a">WA 105 .A55</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">08/06/84</subfield>
+    <subfield code="t">c</subfield>
+    <subfield code="s">9110</subfield>
+    <subfield code="n">PPT</subfield>
+    <subfield code="w">DCLC80644745S</subfield>
+    <subfield code="d">08/06/84</subfield>
+    <subfield code="c">RW</subfield>
+    <subfield code="b">BK</subfield>
+    <subfield code="i">840806</subfield>
+    <subfield code="l">PATG</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">hkjst</subfield>
+    <subfield code="a">WA 105 .A55</subfield>
+    <subfield code="u">v.v.12 1991</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">hkjst</subfield>
+    <subfield code="a">WA 105 .A55</subfield>
+    <subfield code="u">v.v.11 1990</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.1</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.2</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.3</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.4</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.5</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.6</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.7</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.8</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.9</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.10</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.11</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.12</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.13</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.14</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.15</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.16</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.17</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.18</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.19</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.20</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.21</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.22</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.23</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.24</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.25</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.26</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.27</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.28</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.29</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.30</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>
 
 </collection>
