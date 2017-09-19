@@ -64,6 +64,29 @@ class CatalogController < ApplicationController
       ].join(" "),
       wt: "json",
       rows: 10,
+      qf: %w[
+        title_unstem_search^100000
+        subtitle_unstem_search^50000
+        title_t^25000
+        subtitle_t^10000
+        title_addl_unstem_search^5000
+        title_addl_t^2500
+        title_added_entry_unstem_search^1500
+        title_added_entry_t^1250
+        subject_topic_unstem_search^1000
+        subject_unstem_search^750
+        subject_topic_facet^625
+        subject_t^500
+        author_unstem_search^250
+        author_addl_unstem_search^250
+        author_t^100
+        author_addl_t^50
+        subject_addl_unstem_search^250
+        subject_addl_t^50
+        title_series_unstem_search^25
+        title_series_t^10
+        text
+      ].join(" ")
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -125,7 +148,7 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field 'availability_facet', label: 'Availability'
-    config.add_facet_field 'library', label: 'Library'
+    config.add_facet_field 'library_facet', label: 'Library'
     config.add_facet_field 'format', label: 'Resource Type'
     config.add_facet_field 'pub_date', label: 'Date',
                            range: {
@@ -138,7 +161,7 @@ class CatalogController < ApplicationController
                            }
 
     config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: true
-    config.add_facet_field 'subject', label: 'Subject', limit: true, show: false
+    config.add_facet_field 'subject_facet', label: 'Subject', limit: true, show: false
     config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'

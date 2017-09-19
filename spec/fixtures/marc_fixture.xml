@@ -24242,4 +24242,123 @@
       <subfield code='a'>Dictionary of American history: 008.</subfield>
     </datafield>
   </record>
+<record>
+  <leader>01753nas a2200481 a 4500</leader>
+  <controlfield tag="005">20020418062816.0</controlfield>
+  <controlfield tag="008">020418c19959999nyuqr p b g   0  |a0eng d</controlfield>
+  <controlfield tag="001">991027045839703811</controlfield>
+  <datafield tag="022" ind1="0" ind2="">
+    <subfield code="a">1521-6497</subfield>
+    <subfield code="y">0164-9345</subfield>
+  </datafield>
+  <datafield tag="035" ind1="" ind2="">
+    <subfield code="a">(PPT)b24728196-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1="" ind2="">
+    <subfield code="a">PATL02-S26</subfield>
+  </datafield>
+  <datafield tag="040" ind1="" ind2="">
+    <subfield code="a">TxU-L</subfield>
+    <subfield code="c">TxU-L</subfield>
+    <subfield code="d">MnU-L</subfield>
+  </datafield>
+  <datafield tag="043" ind1="" ind2="">
+    <subfield code="a">n-us-ky</subfield>
+  </datafield>
+  <datafield tag="130" ind1="0" ind2="">
+    <subfield code="a">Bench &amp; bar (Frankfort, Ky.)</subfield>
+  </datafield>
+  <datafield tag="210" ind1="0" ind2="">
+    <subfield code="a">Bench bar</subfield>
+    <subfield code="b">(Frankfort, Ky.)</subfield>
+  </datafield>
+  <datafield tag="222" ind1="" ind2="0">
+    <subfield code="a">Bench &amp; bar</subfield>
+    <subfield code="b">(Frankfort, Ky.)</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Bench &amp; bar</subfield>
+    <subfield code="h">[microform] /</subfield>
+    <subfield code="c">Kentucky Bar Association.</subfield>
+  </datafield>
+  <datafield tag="246" ind1="1" ind2="3">
+    <subfield code="a">Kentucky bench &amp; bar</subfield>
+    <subfield code="f">1995-2001</subfield>
+  </datafield>
+  <datafield tag="246" ind1="1" ind2="3">
+    <subfield code="a">Kentucky Bar Association bench &amp; bar</subfield>
+  </datafield>
+  <datafield tag="246" ind1="1" ind2="">
+    <subfield code="a">Bench and bar</subfield>
+  </datafield>
+  <datafield tag="260" ind1="" ind2="">
+    <subfield code="a">Frankfort, Ky. :</subfield>
+    <subfield code="b">Kentucky Bar Association,</subfield>
+    <subfield code="c">1995-</subfield>
+  </datafield>
+  <datafield tag="300" ind1="" ind2="">
+    <subfield code="a">v. :</subfield>
+    <subfield code="b">ill. ;</subfield>
+    <subfield code="c">28 cm.</subfield>
+  </datafield>
+  <datafield tag="310" ind1="" ind2="">
+    <subfield code="a">Bimonthly,</subfield>
+    <subfield code="b">1998-</subfield>
+  </datafield>
+  <datafield tag="321" ind1="" ind2="">
+    <subfield code="a">Quarterly,</subfield>
+    <subfield code="b">1995-1998</subfield>
+  </datafield>
+  <datafield tag="362" ind1="0" ind2="">
+    <subfield code="a">Vol. 59, no. 3 (summer 1995)-</subfield>
+  </datafield>
+  <datafield tag="500" ind1="" ind2="">
+    <subfield code="a">Title from cover.</subfield>
+  </datafield>
+  <datafield tag="500" ind1="" ind2="">
+    <subfield code="a">Title on microfiche header: Kentucky bench &amp; bar, 1995-2001.</subfield>
+  </datafield>
+  <datafield tag="500" ind1="" ind2="">
+    <subfield code="a">Also called: Kentucky Bar Association bench &amp; bar.</subfield>
+  </datafield>
+  <datafield tag="533" ind1="" ind2="">
+    <subfield code="a">Microfiche.</subfield>
+    <subfield code="b">Buffalo, NY :</subfield>
+    <subfield code="c">W.S. Hein,</subfield>
+    <subfield code="d">1995- .</subfield>
+    <subfield code="e">microfiches : negative.</subfield>
+    <subfield code="f">(Hein's bar journal service).</subfield>
+  </datafield>
+  <datafield tag="650" ind1="" ind2="0">
+    <subfield code="a">Law</subfield>
+    <subfield code="z">Kentucky</subfield>
+    <subfield code="v">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="0">
+    <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+    <subfield code="v">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="650" ind1="" ind2="0">
+    <subfield code="a">Bar associations</subfield>
+    <subfield code="z">Kentucky</subfield>
+    <subfield code="v">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2="">
+    <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+  </datafield>
+  <datafield tag="776" ind1="1" ind2="">
+    <subfield code="d">(Original)</subfield>
+    <subfield code="w">(DLC)sn 96041529</subfield>
+  </datafield>
+  <datafield tag="780" ind1="0" ind2="0">
+    <subfield code="t">Kentucky bench &amp; bar</subfield>
+    <subfield code="x">0164-9345</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="" ind2="">
+    <subfield code="b">LAW</subfield>
+    <subfield code="c">micro</subfield>
+    <subfield code="8">22266041880003811</subfield>
+  </datafield>
+</record>
+
 </collection>
