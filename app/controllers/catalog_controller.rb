@@ -17,7 +17,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format library)
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format library_facet)
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -86,6 +86,19 @@ class CatalogController < ApplicationController
         title_series_unstem_search^25
         title_series_t^10
         text
+      ].join(" "),
+      title_qf: %w[
+        title_unstem_search^50000
+        subtitle_unstem_search^25000
+        title_addl_unstem_search^10000
+        title_t^5000
+        subtitle_t^2500
+        title_addl_t^100
+        title_added_entry_unstem_search^50
+        title_added_entry_t^10
+        title_series_unstem_search^5
+        title_series_t
+        title_uniform_t
       ].join(" ")
     }
 
@@ -288,12 +301,13 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        qf: '$title_qf',
+        qf: 'title_qf',
         pf: '$title_pf'
       }
     end
 
     config.add_search_field('author') do |field|
+      field.include_in_advanced_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = {
         qf: '$author_qf',
