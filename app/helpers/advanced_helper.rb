@@ -31,6 +31,7 @@ end
 module BlacklightAdvancedSearch
   class QueryParser
     include AdvancedHelper
+
     def keyword_op
       # NOTs get added to the query. Only AND/OR are operations
       @keyword_op = []
@@ -42,8 +43,44 @@ module BlacklightAdvancedSearch
       end
       @keyword_op
     end
+
+    def keyword_queries
+        unless @keyword_queries
+          @keyword_queries = {}
+
+          return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
+
+          q1 = @params[:q1]
+          q2 = @params[:q2]
+          q3 = @params[:q3]
+
+          been_combined = false
+          @keyword_queries[@params[:f1]] = q1 unless @params[:q1].blank?
+          unless @params[:q2].blank?
+            if @keyword_queries.key?(@params[:f2])
+              @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
+              been_combined = true
+            elsif @params[:op2] == 'NOT'
+              @keyword_queries[@params[:f2]] = 'NOT ' + q2
+            else
+              @keyword_queries[@params[:f2]] = q2
+            end
+          end
+          unless @params[:q3].blank?
+            if @keyword_queries.key?(@params[:f3])
+              @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
+              @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
+            elsif @params[:op3] == 'NOT'
+              @keyword_queries[@params[:f3]] = 'NOT ' + q3
+            else
+              @keyword_queries[@params[:f3]] = q3
+            end
+          end
+        end
+        @keyword_queries
+      end
+    end
   end
-end
 
 module BlacklightAdvancedSearch
   module ParsingNestingParser

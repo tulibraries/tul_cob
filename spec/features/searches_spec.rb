@@ -3,12 +3,6 @@ require 'yaml'
 include ApplicationHelper
 
 RSpec.feature "Searches", type: :feature do
-  before :all do
-    Alma.configure
-    `traject -c app/models/traject_indexer.rb #{fixture_path}/alma-fixture.xml`
-    `traject -c app/models/traject_indexer.rb -x commit`
-  end
-
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/search_features.yml")
   }
@@ -50,7 +44,8 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    xscenario "Search physical description" do
+    scenario "Search physical description" do
+      skip "TBD"
       visit '/'
       fill_in 'q', with: item['physical_description']
       click_button 'Search'
@@ -143,7 +138,8 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    xscenario "Search physical description" do
+    scenario "Search physical description" do
+      skip "TBD"
       visit '/'
       fill_in 'q', with: item['physical_description']
       click_button 'Search'
