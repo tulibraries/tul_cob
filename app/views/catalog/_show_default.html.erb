@@ -7,37 +7,39 @@
       <dd class="blacklight-availability availability-ajax-load show-page-avail" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>">Loading...</dd>
     </dl>
   </div>
+
   <div class="show_page_records">
     <dl class="dl-horizontal  dl-invert">
     <% document_show_fields(document).each do |field_name, field| -%>
-        <% if should_render_show_field? document, field %>
-          <% if field.linked_fielded_search %>
-            <dt class="blacklight-<%= field_name.parameterize %>">
-              <%= render_document_show_field_label document, :field => field_name %>
-            </dt>
-            <% if field.multi %>
-                <% document[field.field].each do |fvalue| %>
-                    <dd class="blacklight-<%= field_name.parameterize %>"><%= fielded_search(fvalue, field.linked_fielded_search) %></dd>
-                <% end -%>
+      <% if should_render_show_field? document, field %>
+        <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
+        <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
+              <% valdir = Array(document[field_name]).first %>
+              <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+                <% value = doc_presenter.field_value field_name %>
+              <% else %>
+                <% value = document[field_name] %>
+              <% end %>
+              <dd class="blacklight-<%= field_name.parameterize %>"><%= safe_join(Array.wrap(value)) %></li>
             <% else %>
-                <dd class="blacklight-<%= field_name.parameterize %>">
-                    <%= fielded_search(document[field.field], field.linked_fielded_search) %>
-                </dd>
-            <% end -%>
-        <% else %>
-            <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
-        <% end -%>
+              <% valdirs = [] %>
+              <% document[field_name].each do |value| %>
+                 <% valdirs << value %>
+              <% end %>
 
-        <dd class="blacklight-<%= field_name.parameterize %>">
-          <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-            <% values = Array.wrap(doc_presenter.field_value field_name) %>
-          <% else %>
-            <% values = document[field_name] %>
+              <dd class="blacklight-<%= field_name.parameterize %>">
+                <ul>
+                <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+                  <% values = Array.wrap(doc_presenter.field_value field_name) %>
+                <% else %>
+                  <% values = document[field_name] %>
+                <% end %>
+                <% values.each do |value| %>
+                  <li class="list-items"> <%= safe_join(Array.wrap(value)) %> </li>
+                <% end %>
+                </ul>
+              </dd>
           <% end %>
-          <% values.each do |value| %>
-            <%= value %>
-          <% end %>
-        </dd>
       <% end -%>
     <% end -%>
   </dl>
