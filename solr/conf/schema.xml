@@ -588,6 +588,30 @@
    <copyField source="subject_t" dest="subject_spell"/>
    <copyField source="subject_addl_t" dest="subject_spell"/>
 
+   <!-- search fields for advanced search form-->
+   <copyField source="title_display" dest="title_t"/>
+   <copyField source="title_uniform_display" dest="title_uniform_t"/>
+   <copyField source="title_addl_display" dest="title_addl_t"/>
+   <copyField source="isbn_display" dest="isbn_t"/>
+   <copyField source="issn_display" dest="issn_t"/>
+   <copyField source="alma_mms_display" dest="alma_mms_t"/>
+   <copyField source="title_series_display" dest="title_series_t"/>
+   <copyField source="note_display" dest="note_t"/>
+   <copyField source="note_with_display" dest="note_with_t"/>
+   <copyField source="note_diss_display" dest="note_diss_t"/>
+   <copyField source="note_biblio_display" dest="note_biblio_t"/>
+   <copyField source="note_toc_display" dest="note_toc_t"/>
+   <copyField source="note_restrictions_display" dest="note_restrictions_t"/>
+   <copyField source="note_references_display" dest="note_references_t"/>
+   <copyField source="note_summary_display" dest="note_summary_t"/>
+   <copyField source="note_cite_display" dest="note_cite_t"/>
+   <copyField source="note_finding_aid_display" dest="note_finding_aid_t"/>
+   <copyField source="note_custodial_display" dest="note_custodial_t"/>
+   <copyField source="note_binding_display" dest="note_binding_t"/>
+   <copyField source="note_related_display" dest="note_related_t"/>
+   <copyField source="note_accruals_display" dest="note_accruals_t"/>
+   <copyField source="note_local_display" dest="note_local_t"/>
+
    <!-- OpenSearch query field should match request handler search fields -->
    <copyField source="title_t" dest="opensearch_display"/>
    <copyField source="subtitle_t" dest="opensearch_display"/>

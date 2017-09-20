@@ -264,7 +264,7 @@ class CatalogController < ApplicationController
     config.add_show_field 'sudoc_display', label: 'SuDOC'
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
-    config.add_show_field 'language_display', label: 'Language', :helper_method => :list
+    config.add_show_field 'language_display', label: 'Language'
     config.add_show_field 'url_resource_display', label: 'Available Online', :helper_method => :electronic_access_links
     config.add_show_field 'url_more_links_display', label: 'Other Links', :helper_method => :electronic_access_links
 
@@ -301,7 +301,7 @@ class CatalogController < ApplicationController
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        qf: 'title_qf',
+        qf: %w[title title_t title_qf title_uniform_t title_addl_t].join(" "),
         pf: '$title_pf'
       }
     end
@@ -312,6 +312,14 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         qf: '$author_qf',
         pf: '$author_pf'
+      }
+    end
+
+    config.add_search_field('creator_t', label: "Author/Creator") do |field|
+      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_local_parameters = {
+        qf: 'creator_t',
+        pf: 'creator_t'
       }
     end
 
@@ -327,10 +335,39 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator_t', label: "Creator") do |field|
+    config.add_search_field('publisher_t', label: "Publisher") do |field|
       field.solr_local_parameters = {
-        qf: 'creator_t',
-        pf: 'creator_t'
+        qf: 'publisher_t',
+      }
+    end
+
+    config.add_search_field('title_series_t', label: "Series Title") do |field|
+      field.solr_local_parameters = {
+        qf: 'title_series_t',
+      }
+    end
+
+    config.add_search_field('note_t', label: "Description") do |field|
+      field.solr_local_parameters = {
+        qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t note_restrictions_t note_references_t note_summary_t note_cite_t note_copyright_t note_bio_t note_finding_aid_t note_custodial_t note_binding_t note_related_t note_accruals_t note_local_t].join(" ")
+      }
+    end
+
+    config.add_search_field('isbn_t', label: "ISBN") do |field|
+      field.solr_local_parameters = {
+        qf: 'isbn_t',
+      }
+    end
+
+    config.add_search_field('issn_t', label: "ISSN") do |field|
+      field.solr_local_parameters = {
+        qf: 'issn_t',
+      }
+    end
+
+    config.add_search_field('alma_mms_t', label: "Catalog Record ID") do |field|
+      field.solr_local_parameters = {
+        qf: 'alma_mms_t',
       }
     end
 
