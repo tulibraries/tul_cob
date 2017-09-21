@@ -8,12 +8,6 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
-  def list(args)
-    content_tag :ul do
-      args[:document][args[:field]].map { |field| content_tag(:li, field, class: "list_items") }.join("<br /> ").html_safe
-    end
-  end
-
   def get_search_params(field, query)
     if field == 'subject_display'
       { :controller => "catalog", :action => 'index', :search_field => 'subject', :q=> query.gsub(/>|—/, '') }
@@ -29,9 +23,7 @@ module ApplicationHelper
   end
 
   def list_with_links(args)
-    content_tag(:ul) do
-      args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
-    end
+    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
   end
 
   def browse_creator(args)
