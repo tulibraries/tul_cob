@@ -86,19 +86,6 @@ class CatalogController < ApplicationController
         title_series_unstem_search^25
         title_series_t^10
         text
-      ].join(" "),
-      title_qf: %w[
-        title_unstem_search^50000
-        subtitle_unstem_search^25000
-        title_addl_unstem_search^10000
-        title_t^5000
-        subtitle_t^2500
-        title_addl_t^100
-        title_added_entry_unstem_search^50
-        title_added_entry_t^10
-        title_series_unstem_search^5
-        title_series_t
-        title_uniform_t
       ].join(" ")
     }
 
@@ -315,7 +302,7 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('creator_t', label: "Author/Creator") do |field|
+    config.add_search_field('creator_t', label: "Author/creator/contributor") do |field|
       field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = {
         qf: 'creator_t',
