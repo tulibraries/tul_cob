@@ -1140,7 +1140,7 @@ RSpec.feature "RecordPageFields", type: :feature do
 
     let (:language_041_a) { fixtures.fetch("language_041_a") }
     scenario "Has list of languages" do
-      visit "catalog/#{language['doc_id']}"
+      visit "catalog/#{language_041_a['doc_id']}"
 
       within "dd.blacklight-language_display" do
         expect(page).to have_css("li.list_items")
