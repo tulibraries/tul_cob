@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   @@per_page = 10
   def index
     if params[:q]
-      searcher = BentoSearch::ConcurrentSearcher.new(:summon, :gbs)
+      searcher = BentoSearch::ConcurrentSearcher.new(:blacklight)
       searcher.search(params[:q], :per_page => @@per_page, :semantic_search_field => params[:field])
       @results = searcher.results
     end
