@@ -28,7 +28,7 @@ end
 
 desc 'Run solr and blacklight for interactive development'
 task :server, [:rails_server_args] do |t, args|
-  run_solr('development', { port: '8983' }) do
+  run_solr('dev', { port: '8983' }) do
     Rake::Task['fortytu:solr:load_fixtures'].invoke
     system "bundle exec rails s #{args[:rails_server_args]}"
   end
