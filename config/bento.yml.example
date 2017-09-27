@@ -1,13 +1,10 @@
 
 
 default: &default
-  summon:
-    secret_key: "A SECRET KEY"
-    access_id: "AN ACCESS ID"
-    nice_name: "Articles"
-  gbs:
-    api_key: "AN API KEY"
-    nice_name: "Google Books"
+  primo:
+    base_url: "https://api-na.hosted.exlibrisgroup.com/primo/v1/pnxs"
+    apikey: "YOUR LONG API KEY HERE"
+    primo_base_web_url: "https://my-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
 
 
 

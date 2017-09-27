@@ -2,4 +2,5 @@ en:
   bento:
     blacklight:
       nice_name: 'Blacklight'
-    
+    primo:
+      nice_name: "Primo"
