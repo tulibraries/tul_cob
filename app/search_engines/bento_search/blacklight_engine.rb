@@ -13,7 +13,7 @@ class BentoSearch::BlacklightEngine
       result = BentoSearch::ResultItem.new({
         title: item.fetch("title_display", []).first,
         authors: item.fetch("creator_display", []).map { |author| BentoSearch::Author.new({display: author})},
-        link: "http://localhost:3000/catalog/#{item['id']}"
+        link: Rails.application.routes.url_helpers.solr_document_url(item["id"], :only_path => true)
         })
       results << result
     end
