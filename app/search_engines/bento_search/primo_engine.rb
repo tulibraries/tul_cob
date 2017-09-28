@@ -11,7 +11,7 @@ class BentoSearch::PrimoEngine
     primo_results['docs'].each do |doc|
       result = BentoSearch::ResultItem.new({
         title: doc.fetch("title", ""),
-        authors: doc.fetch("creator", []).map { |creator| BentoSearch::Author.new({display: creator})},
+        authors: doc.fetch("contributor", []).map { |creator| BentoSearch::Author.new({display: creator})},
         link: build_primo_url(doc) })
       results << result
     end
@@ -23,9 +23,9 @@ class BentoSearch::PrimoEngine
     query = args.fetch(:q) { raise Exception }
 
     url = URI.escape("#{configuration.base_url}?q=any,contains,#{query}&apikey=#{configuration.apikey}")
-    binding.pry
-
+    #binding.pry
     JSON.parse(open(url).read)
+
 
   end
 
