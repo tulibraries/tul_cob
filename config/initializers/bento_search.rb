@@ -6,8 +6,9 @@ end
 
 BentoSearch.register_engine("primo") do |conf|
   conf.engine   = "BentoSearch::PrimoEngine"
-  conf.base_url = Rails.configuration.bento[:primo][:base_url]
+  conf.api_base_url = Rails.configuration.bento[:primo][:api_base_url]
   conf.apikey   = Rails.configuration.bento[:primo][:apikey]
-  conf.primo_base_web_url = Rails.configuration.bento[:primo][:primo_base_web_url]
-
+  conf.scope = Rails.configuration.bento[:primo][:scope]
+  conf.vid = Rails.configuration.bento[:primo][:vid]
+  conf.web_ui_base_url = Rails.configuration.bento[:primo][:web_ui_base_url]
 end

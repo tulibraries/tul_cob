@@ -2,9 +2,11 @@
 
 default: &default
   primo:
-    base_url: "https://api-na.hosted.exlibrisgroup.com/primo/v1/pnxs"
+    api_base_url: "https://api-na.hosted.exlibrisgroup.com/primo/v1/pnxs"
     apikey: "YOUR LONG API KEY HERE"
-    primo_base_web_url: "https://my-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
+    scope: "pci_scope"
+    vid: "TULI"
+    web_ui_base_url: "https://your-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
 
 
 
