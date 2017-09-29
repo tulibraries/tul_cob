@@ -9,6 +9,7 @@ jdk:
 before_script:
 - cp config/secrets.yml.example config/secrets.yml
 - cp config/alma.yml.example config/alma.yml
+- cp config/bento.yml.example config/bento.yml
 - RAILS_ENV=test bundle exec rake db:migrate
 - RAILS_ENV=test bundle exec rake db:seed
 notifications:

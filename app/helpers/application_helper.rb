@@ -41,4 +41,8 @@ module ApplicationHelper
       content_tag(:li, link_to(args[:value][i].split("|").first.sub(/ *[ ,.\/;:] *\Z/, ''), args[:value][i].split("|").last), class: "list_items") }
     new_link.join("<br />").html_safe
   end
+
+  def bento_engine_nice_name(engine_id)
+    I18n.t("bento.#{engine_id}.nice_name")
+  end
 end
