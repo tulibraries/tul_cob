@@ -38,29 +38,12 @@ class CatalogController < ApplicationController
         creator_display
         format
         imprint_display
-        isbn_t
-        language_facet
-        lc_callnum_display
-        material_type_display
-        published_display
-        published_vern_display
         pub_date
         title_series_vern_display
         title_display
         title_vern_display
-        subject_topic_facet
-        subject_geo_facet
-        subject_era_facet
-        subtitle_display
-        subtitle_vern_display
-        url_fulltext_display
-        url_suppl_display
         title_statement_display
         title_uniform_display
-        imprint
-        summary
-        contents
-        issn
       ].join(" "),
       wt: "json",
       rows: 10,
