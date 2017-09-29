@@ -4,29 +4,30 @@ class BentoSearch::PrimoEngine
   include BentoSearch::SearchEngine
 
   def search_implementation(args)
+
+    query = args.fetch(:query, "")
+    primo_results = search_primo({q: query})
+
     results = BentoSearch::Results.new
-
-    primo_results = search_primo({q: args[:query]})
-
     primo_results['docs'].each do |doc|
-      result = BentoSearch::ResultItem.new({
-        title: doc.fetch("title", ""),
-        authors: doc.fetch("contributor", []).map { |creator| BentoSearch::Author.new({display: creator})},
-        link: build_primo_url(doc) })
-      results << result
+      results << conform_to_bento_result(doc)
     end
 
     results
   end
 
+    def conform_to_bento_result(item)
+      BentoSearch::ResultItem.new({
+        title: item.fetch("title", ""),
+        authors: item.fetch("contributor", []).map { |creator| BentoSearch::Author.new({display: creator})},
+        link: build_primo_url(item)
+        })
+    end
+
   def search_primo(args = {})
-    query = args.fetch(:q) { raise Exception }
-
+    query = args.fetch(:q, "")
     url = URI.escape("#{configuration.base_url}?q=any,contains,#{query}&apikey=#{configuration.apikey}")
-    #binding.pry
     JSON.parse(open(url).read)
-
-
   end
 
   def build_primo_url(primo_doc)
