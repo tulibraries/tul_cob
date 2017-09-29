@@ -38,6 +38,17 @@ bundle exec solr_wrapper
 bundle exec rails server
 ```
 
+### Start the Application with some sample data for Development
+
+If you want to quickly get the application running for development with a minimal
+set of example data, you can run
+
+`bundle exec rake server`
+
+It will start up solr_wrapper, ingest a few hundred sample records, and start the rails server.
+
+
+
 ## Importing from a Data File
 
 Download the 10000 [sample Alma MARCXML data](https://raw.githubusercontent.com/tulibraries/tul_cob/master/sample_data/sample_alma_marcxml.tgz).
