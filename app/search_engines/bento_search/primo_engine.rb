@@ -26,7 +26,7 @@ class BentoSearch::PrimoEngine
 
   def search_primo(args = {})
     query = args.fetch(:q, "")
-    url = URI.escape("#{configuration.base_url}?q=any,contains,#{query}&apikey=#{configuration.apikey}")
+    url = URI.escape("#{configuration.base_url}?q=any,contains,#{query}&apikey=#{configuration.apikey}&limit=10")
     JSON.parse(open(url).read)
   end
 
