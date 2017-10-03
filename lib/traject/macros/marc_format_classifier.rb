@@ -19,6 +19,11 @@ module Traject
           accumulator.concat Traject::Macros::MarcFormatClassifier.new(record).formats
         end
       end
+
+      def four_digit_year(field)
+        year = field.to_s.match(/[0-9]{4}/).to_s
+        year unless year.empty?
+      end
     end
 
 

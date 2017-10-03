@@ -30,11 +30,6 @@ def get_xml options={}
   end
 end
 
-def four_digit_year(field)
-  year = field.gsub(/[^0-9,.]/, '').gsub(/[[:punct:]]/, '')[0..3].strip unless field.nil?
-  return year unless (year.nil? || year.empty?)
-end
-
 settings do
   # type may be 'binary', 'xml', or 'json'
   provide "marc_source.type", "xml"
