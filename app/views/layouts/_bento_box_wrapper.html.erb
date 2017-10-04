@@ -4,7 +4,7 @@
 %>
 
 <div class="bento-search-engine">
-<p>Total records from <%= bento_engine_nice_name(results.engine_id) %>: 
+<p class="record-count">Total records from <%= bento_engine_nice_name(results.engine_id) %>: 
 	<span><%= results.count || '?' %></span>
 </p>
 <%# our app chooses to use 'q' as the query param; the ajax loading controller uses 'query'

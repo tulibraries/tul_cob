@@ -26,11 +26,11 @@
 }
 
 .bento-search-engine {
-	p {
+	p.record-count {
 		padding-left: 7px;
-	}
-	span {
-		font-weight: 600;
+		span {
+			font-weight: 600;
+		}
 	}
 	.search-results {
 		background-color: $tan;
