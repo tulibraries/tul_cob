@@ -3,19 +3,18 @@
     they still have this stuff !  See config.for_display.ajax.wrapper_template
 %>
 
-<div>
-<dl>
-  <dt>Total records from : <%= bento_engine_nice_name(results.engine_id) %> </dt><dd><%= results.total_items %><dd>
-
-  <dt>Response generation time (seconds):</dt><dd><%= results.timing %></dd>
-</dl>
+<div class="bento-search-engine">
+<p>Total records from <%= bento_engine_nice_name(results.engine_id) %>: 
+	<span><%= results.count || '?' %></span>
+</p>
 <%# our app chooses to use 'q' as the query param; the ajax loading controller uses 'query'
       This ordinarily is fine, but since we want this layout to work for both, we have to
       look for both, oh well.
 %>
 
-<hr>
+<div class="search-results">
 
 <%= yield %>
 
+</div>
 </div>
