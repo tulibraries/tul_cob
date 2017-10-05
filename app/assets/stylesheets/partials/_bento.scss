@@ -1,0 +1,39 @@
+@import "_vars.scss";
+
+.hero-unit {
+	margin-bottom: 28px;
+}
+
+.bento_box.row {
+	margin-left: 22%;
+}
+
+.span4 {
+	width: 46%;
+	border: solid $light-grey 1px;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 3%;
+}
+
+.bento_compartment {
+	h2 {
+		margin-top: 0;
+		padding: 7px;
+		background-color: $red;
+		color:white;
+	}	
+}
+
+.bento-search-engine {
+	p.record-count {
+		padding-left: 7px;
+		span {
+			font-weight: 600;
+		}
+	}
+	.search-results {
+		background-color: $tan;
+		padding: 7px 14px;
+	}
+}

@@ -154,7 +154,7 @@ GEM
     ezwadl (0.0.1)
       httparty (~> 0.14)
       nokogiri (~> 1.6)
-    factory_girl (4.8.0)
+    factory_girl (4.8.1)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
@@ -247,7 +247,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    omniauth (1.6.1)
+    omniauth (1.7.0)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
     openurl (1.0.0)
@@ -319,7 +319,7 @@ GEM
       rspec-mocks (~> 3.6.0)
       rspec-support (~> 3.6.0)
     rspec-support (3.6.0)
-    ruby-progressbar (1.8.3)
+    ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.5.1)
@@ -454,4 +454,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.1
+   1.16.0.pre.2

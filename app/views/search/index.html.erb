@@ -3,11 +3,11 @@
   <div class="row">
     <div class="span12">
       <div class="hero-unit">
-        <h1> Multi-Search Example </h1>
+        <h1> Search Results </h1>
 
-        <p>A quick and dirty example of bento_search functionality. <%= link_to 'http://github.com/jrochkind/bento_search' %></p>
+        <p></p>
 
-        <%= form_tag({}, :method=> "get", :class => "well form-search") do %>
+        <%= form_tag({}, :method=> "get", :class => "well form-search", :style => 'display: none') do %>
 
             Search: <%= search_field_tag 'q', params[:q], :class => "search-query" %>
 
@@ -41,8 +41,9 @@
 
         <% @results.each_pair do |key, result| %>
             <div class="span4">
+              
               <div class="bento_compartment <%= key %>">
-                <h2><%= key %> </h2>
+                <h2><%= key.titleize %> </h2>
                 <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
                     <%= bento_search result %>
                 <% end %>
