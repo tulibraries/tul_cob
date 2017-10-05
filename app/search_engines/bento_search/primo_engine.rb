@@ -54,7 +54,7 @@ class BentoSearch::PrimoEngine
 
 
   def build_primo_url(primo_doc)
-    "#{configuration.web_ui_base_web}#{primo_doc['pnxId']}&context=L&vid=#{configuration.vid}&search_scope=default_scope&tab=default_tab&lang=en_US"
+    "#{configuration.web_ui_base_url}#{primo_doc['pnxId']}&context=L&vid=#{configuration.vid}&search_scope=default_scope&tab=default_tab&lang=en_US"
   end
 
 end
