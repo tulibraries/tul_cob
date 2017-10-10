@@ -38,6 +38,11 @@ bundle exec solr_wrapper
 bundle exec rails server
 ```
 
+* Alternatively, use docker if it is available locally.
+```bash
+rake docker:up
+```
+
 ### Start the Application with some sample data for Development
 
 If you want to quickly get the application running for development with a minimal
