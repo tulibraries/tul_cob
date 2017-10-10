@@ -38,10 +38,14 @@ body {
 		width:100%;
 		max-width:1140px;
 		.region-postscript-first {
-			padding-left: 2.5%;
+			padding-left: 42px;
 			width:35%;
 			display:inline-block;
 			background:url('http://web.temple.edu/sites/web.temple.edu/themes/web_communication_theme/images/web-communications-footer-icon-location.png') no-repeat 5px 9px transparent;
+			@media only screen and (max-width : 650px) {
+		    padding-left: 6%;
+		    width: 100%;
+    	}
 		}
 		.region-postscript-second {
 			padding-left: 2.5%;
@@ -55,6 +59,12 @@ body {
 					}
 				}
 			}
+			@media only screen and (max-width : 650px) {
+				display: block;
+		    margin-bottom: 21px;
+		    padding-left: 6%;
+		    width: 100%;
+    	}
 		}
 		.region-postscript-third {
 			padding-left: 2.5%;
@@ -70,6 +80,14 @@ body {
 					}
 				}
 			}
+			@media only screen and (max-width : 760px) {
+		    display: block;
+		    padding-left: 42px;
+		  }
+			@media only screen and (max-width : 650px) {
+		    padding-left: 6%;
+		    width: 100%;
+    	}
 		}
 		address {
 			.place-title {
