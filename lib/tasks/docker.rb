@@ -4,7 +4,14 @@ namespace :docker do
   task :build do
     server_pid = 'tmp/pids/server.pid'
     File.delete server_pid if File.exist? server_pid
-    print `docker-compose build`
+    IO.popen('docker-compose build') do |io|
+      line = io.gets
+      while line
+        print line
+        line = io.gets
+      end
+      io.close
+    end
   end
 
   task up: :build do
