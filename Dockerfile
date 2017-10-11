@@ -4,5 +4,7 @@ RUN mkdir /tul_cob
 WORKDIR /tul_cob
 ADD Gemfile /tul_cob/Gemfile
 ADD Gemfile.lock /tul_cob/Gemfile.lock
+ADD config/bento.yml.example /tul_cob/config/bento.yml
+ADD config/alma.yml.example /tul_cob/config/alma.yml
 RUN bundle install
 ADD . /tul_cob
