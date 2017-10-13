@@ -1,0 +1,25 @@
+version: '3'
+services:
+  app:
+    build: .
+    command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/tul_cob
+    ports:
+      - "3000"
+    links:
+      - solr
+    environment:
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      LC_ALL: "C.UTF-8"
+  solr:
+    image: solr:6.6.1
+    ports:
+      - "8983"
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - blacklight
+      - /opt/solr/conf
+    volumes:
+      - $PWD/solr/conf:/opt/solr/conf
