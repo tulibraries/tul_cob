@@ -17,6 +17,7 @@ namespace :docker do
 
   task up: :build do
     print `docker-compose up -d`
+    Rake::Task['docker:init'].invoke
     Rake::Task['docker:ps'].invoke
   end
 
@@ -36,5 +37,9 @@ namespace :docker do
 
   task :ps do
     print `docker-compose ps`
+  end
+
+  task :init do
+    print `docker-compose exec app rails db:migrate`
   end
 end

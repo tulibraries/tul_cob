@@ -6,4 +6,3 @@ ADD Gemfile .
 ADD Gemfile.lock .
 ADD sample_data/sample_alma_marcxml.tgz /tmp/
 RUN bundle install
-RUN rails db:migrate
