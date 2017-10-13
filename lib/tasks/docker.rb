@@ -41,5 +41,6 @@ namespace :docker do
 
   task :init do
     print `docker-compose exec app rails db:migrate`
+    print `docker-compose exec app rake fortytu:solr:load_fixtures`
   end
 end
