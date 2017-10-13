@@ -15,12 +15,10 @@ services:
     image: solr:6.6.1
     ports:
       - "8983"
-    volumes:
-      - ./solr/conf:/opt/solr/server/solr/mycores/blacklight/conf
-      - ./solr:/opt/solr/server/solr/mycores
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
       - blacklight
-volumes:
-  solr:
+      - /opt/solr/conf
+    volumes:
+      - $PWD/solr/conf:/opt/solr/conf
