@@ -95,3 +95,59 @@ module BlacklightAdvancedSearch
     end
   end
 end
+
+module BlacklightAdvancedSearch
+  module CatalogHelperOverride
+    def remove_guided_keyword_query(fields, my_params = params)
+      my_params = Blacklight::SearchState.new(my_params, blacklight_config).to_h
+      fields.each do |guided_field|
+        my_params.delete(guided_field)
+      end
+      my_params
+    end
+  end
+end
+
+module BlacklightAdvancedSearch
+  module RenderConstraintsOverride
+    def guided_search(my_params = params)
+      constraints = []
+      unless my_params[:q1].blank?
+        label = search_field_def_for_key(my_params[:f1])[:label]
+        query = my_params[:q1]
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query([:f1, :q1], my_params))
+        )
+      end
+      unless my_params[:q2].blank?
+        label = search_field_def_for_key(my_params[:f2])[:label]
+        query = my_params[:q2]
+        query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
+        )
+      end
+      unless my_params[:q3].blank?
+        label = search_field_def_for_key(my_params[:f3])[:label]
+        query = my_params[:q3]
+        query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))
+        )
+      end
+      constraints
+    end
+
+    def render_constraints_query(my_params = params)
+      if advanced_query.nil? || advanced_query.keyword_queries.empty?
+        super(my_params)
+      else
+        content = guided_search
+        safe_join(content.flatten, "\n")
+      end
+    end
+  end
+end
