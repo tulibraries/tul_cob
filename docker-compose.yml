@@ -11,6 +11,7 @@ services:
       - solr
     environment:
       SOLR_URL: "http://solr:8983/solr/blacklight"
+      LC_ALL: "C.UTF-8"
   solr:
     image: solr:6.6.1
     ports:
