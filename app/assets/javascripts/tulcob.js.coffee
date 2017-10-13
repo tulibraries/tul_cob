@@ -6,4 +6,4 @@ $(document).on "turbolinks:load", ->
     width: '250px'
 
 
-  $(select).trigger 'chosen:updated'
+  $('select').trigger 'chosen:updated'
