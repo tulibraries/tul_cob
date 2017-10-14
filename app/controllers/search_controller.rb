@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
-
-
   @@per_page = 10
   def index
     if params[:q]
       searcher = BentoSearch::ConcurrentSearcher.new(:blacklight, :primo)
-      searcher.search(params[:q], :per_page => @@per_page, :semantic_search_field => params[:field])
+      searcher.search(params[:q], per_page: @@per_page, semantic_search_field: params[:field])
       @results = searcher.results
     end
   end
@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     begin
       @engine = BentoSearch.get_engine(params[:engine])
     rescue BentoSearch::NoSuchEngine => e
-      render :status => 404, :text => e.message
+      render status: 404, text: e.message
       return
     end
 
@@ -32,7 +32,7 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.atom { render :template => "bento_search/atom_results", :locals => {:atom_results => @results} }
+      format.atom { render template: 'bento_search/atom_results', locals: { atom_results: @results } }
     end
   end
 end

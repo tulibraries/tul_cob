@@ -16,6 +16,10 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+tags
+*.swp
+*.swo
+vdebug_log
 
 # Ignore Byebug command history file.
 .byebug_history
@@ -29,3 +33,5 @@ coverage
 
 config/alma.yml
 config/bento.yml
+
+solr/blacklight

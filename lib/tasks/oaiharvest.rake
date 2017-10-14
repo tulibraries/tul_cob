@@ -47,7 +47,7 @@ namespace :fortytu do
         harvest_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
         harvest_files.each do |f|
           logger.info "MARC file: #{f}"
-          harvest_records = Oai::Alma.conform(f)
+          Oai::Alma.conform(f)
         end
       rescue => e
         logger.fatal("Fatal Error")

@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/tulibraries/blacklight-marc
-  revision: 0e9d4a39f12eee507b025502ac96c017d12926fd
-  branch: fix-extract_marc-format-008
-  specs:
-    blacklight-marc (6.1.1)
-      blacklight (> 6.1, < 8.a)
-      library_stdnums
-      marc (>= 0.4.3, < 1.1)
-      marc-fastxmlwriter
-      rails
-      traject (~> 2.1)
-
-GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
   revision: f980b2dba8b98bf06a4971a82ed975d19bd2accb
   specs:
@@ -98,6 +85,13 @@ GEM
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+    blacklight-marc (6.2.0)
+      blacklight (> 6.1, < 8.a)
+      library_stdnums
+      marc (>= 0.4.3, < 1.1)
+      marc-fastxmlwriter
+      rails
+      traject (~> 2.1)
     blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
@@ -413,7 +407,7 @@ DEPENDENCIES
   awesome_print
   bento_search
   blacklight
-  blacklight-marc!
+  blacklight-marc
   blacklight_advanced_search
   blacklight_alma!
   blacklight_range_limit

@@ -1,4 +1,9 @@
 # frozen_string_literal: true
+
+# rubocop:disable ClassLength
+# rubocop:disable BlockLength
+
+# Controller for the Catalog model.
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
@@ -8,86 +13,63 @@ class CatalogController < ApplicationController
 
   include BlacklightAlma::Availability
 
-  #helper BlacklightAlma::HelperBehavior
+  # helper BlacklightAlma::HelperBehavior
 
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    #config.advanced_search[:qt] ||= 'advanced'
+    # config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]['facet.field'] ||= %w(format library_facet)
+    config.advanced_search[:form_solr_parameters]['facet.field'] ||=
+      %w[format library_facet]
 
-    ## Class for sending and receiving requests from a search index
-    # config.repository_class = Blacklight::Solr::Repository
-    #
-    ## Class for converting Blacklight's url parameters to into request parameters for the search index
-    # config.search_builder_class = ::SearchBuilder
-    #
-    ## Model that maps search index responses to the blacklight response model
-    # config.response_model = Blacklight::Solr::Response
-
-    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
-    config.default_solr_params = {
-      fl: %w[
-        id
-        score
-        author_display
-        author_vern_display
-        creator_display
-        format
-        imprint_display
-        pub_date
-        title_series_vern_display
-        title_display
-        title_vern_display
-        title_statement_display
-        title_uniform_display
-      ].join(" "),
-      wt: "json",
-      rows: 10,
-      qf: %w[
-        title_unstem_search^100000
-        subtitle_unstem_search^50000
-        title_t^25000
-        subtitle_t^10000
-        title_addl_unstem_search^5000
-        title_addl_t^2500
-        title_added_entry_unstem_search^1500
-        title_added_entry_t^1250
-        subject_topic_unstem_search^1000
-        subject_unstem_search^750
-        subject_topic_facet^625
-        subject_t^500
-        author_unstem_search^250
-        author_addl_unstem_search^250
-        author_t^100
-        author_addl_t^50
-        subject_addl_unstem_search^250
-        subject_addl_t^50
-        title_series_unstem_search^25
-        title_series_t^10
-        text
-      ].join(" ")
-    }
-
-    # solr path which will be added to solr base url before the other solr params.
-    #config.solr_path = 'select'
-
-    # items to show per page, each number in the array represent another option to choose from.
-    #config.per_page = [10,20,50,100]
-
-    ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
-    ## parameters included in the Blacklight-jetty document requestHandler.
-    #
-    #config.default_document_solr_params = {
-    #  qt: 'document',
-    #  ## These are hard-coded in the blacklight 'document' requestHandler
-    #  # fl: '*',
-    #  # rows: 1,
-    #  # q: '{!term f=id v=$id}'
-    #}
+    # Default parameters to send to solr for all search-like requests. See
+    # also SearchBuilder#processed_parameters
+    config.default_solr_params =
+      {
+        fl: %w[
+          id
+          score
+          author_display
+          author_vern_display
+          creator_display
+          format
+          imprint_display
+          pub_date
+          title_series_vern_display
+          title_display
+          title_vern_display
+          title_statement_display
+          title_uniform_display
+        ].join(' '),
+        wt: 'json',
+        rows: 10,
+        qf: %w[
+          title_unstem_search^100000
+          subtitle_unstem_search^50000
+          title_t^25000
+          subtitle_t^10000
+          title_addl_unstem_search^5000
+          title_addl_t^2500
+          title_added_entry_unstem_search^1500
+          title_added_entry_t^1250
+          subject_topic_unstem_search^1000
+          subject_unstem_search^750
+          subject_topic_facet^625
+          subject_t^500
+          author_unstem_search^250
+          author_addl_unstem_search^250
+          author_t^100
+          author_addl_t^50
+          subject_addl_unstem_search^250
+          subject_addl_t^50
+          title_series_unstem_search^25
+          title_series_t^10
+          text
+        ].join(' ')
+      }
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_statement_display'
@@ -95,7 +77,7 @@ class CatalogController < ApplicationController
 
     # solr field configuration for document/show views
     config.show.title_field = 'title_statement_display'
-    #config.show.display_type_field = 'format'
+    # config.show.display_type_field = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -117,39 +99,40 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the
     # facet bar
     #
-    # set :index_range to true if you want the facet pagination view to have facet prefix-based navigation
-    #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
-    # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
+    # set :index_range to true if you want the facet pagination view to have
+    # facet prefix-based navigation (useful when user clicks "more" on a large
+    # facet and wants to navigate alphabetically across a large set of results)
+    # :index_range can be an array or range of prefixes that will be used to
+    # create the navigation (note: It is case sensitive when searching values)
 
     # Facet Fields
-
-    # config.add_facet_field 'example_pivot_field', label: 'Pivot Field', :pivot => ['format', 'language_facet']
-    # config.add_facet_field 'example_query_facet_field', label: 'Publish Date', :query => {
-    #    :years_5 => { label: 'within 5 Years', fq: "pub_date:[#{Time.zone.now.year - 5 } TO *]" },
-    #    :years_10 => { label: 'within 10 Years', fq: "pub_date:[#{Time.zone.now.year - 10 } TO *]" },
-    #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
-    # }
-
     config.add_facet_field 'availability_facet', label: 'Availability'
     config.add_facet_field 'library_facet', label: 'Library'
     config.add_facet_field 'format', label: 'Resource Type'
-    config.add_facet_field 'pub_date', label: 'Date',
-                           range: {
-                             num_segments: 6,
-                             assumed_boundaries: [1100, Time.now.year + 2],
-                             segments: true,
-                             slider_js: true,
-                             chart_js: true,
-                             maxlength: 4
-                           }
+    config.add_facet_field(
+      'pub_date',
+      label: 'Date',
+      range: {
+        num_segments: 6,
+        assumed_boundaries: [1100, Time.now.year + 2],
+        segments: true,
+        slider_js: true,
+        chart_js: true,
+        maxlength: 4
+      }
+    )
 
-    config.add_facet_field 'creator_facet', label: 'Author/creator', limit: true, show: true
-    config.add_facet_field 'subject_facet', label: 'Subject', limit: true, show: false
-    config.add_facet_field 'subject_topic_facet', label: 'Topic'     # limit: 20, index_range: 'A'..'Z'
+    config.add_facet_field(
+      'creator_facet', label: 'Author/creator', limit: true, show: true
+    )
+    config.add_facet_field(
+      'subject_facet', label: 'Subject', limit: true, show: false
+    )
+    config.add_facet_field 'subject_topic_facet', label: 'Topic'
     config.add_facet_field 'subject_era_facet', label: 'Era'
     config.add_facet_field 'subject_region_facet', label: 'Region'
     config.add_facet_field 'genre_facet', label: 'Genre'
-    config.add_facet_field 'language_facet', label: 'Language'     # limit: true
+    config.add_facet_field 'language_facet', label: 'Language' # limit: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -166,13 +149,22 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
-    config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
+    config.add_show_field(
+      'title_statement_vern_display', label: 'Title Statement'
+    )
     config.add_show_field 'title_uniform_display', label: 'Uniform title'
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
     config.add_show_field 'title_addl_display', label: 'Additional titles'
     config.add_show_field 'title_addl_vern_display', label: 'Additional titles'
-    config.add_show_field 'creator_display', label: 'Author/creator/contributor', :helper_method => :browse_creator, :multi => true
-    config.add_show_field 'creator_vern_display', label: 'Author/creator/contributor', :helper_method => :list_with_links
+    config.add_show_field(
+      'creator_display',
+      label: 'Author/creator/contributor',
+      helper_method: :browse_creator, multi: true
+    )
+    config.add_show_field(
+      'creator_vern_display',
+      label: 'Author/creator/contributor', helper_method: :list_with_links
+    )
     config.add_show_field 'format', label: 'Resource Type'
     config.add_show_field 'imprint_display', label: 'Published'
     config.add_show_field 'edition_display', label: 'Edition'
@@ -194,39 +186,51 @@ class CatalogController < ApplicationController
     config.add_show_field 'note_diss_display', label: 'Dissertation Note'
     config.add_show_field 'note_biblio_display', label: 'Bibliography'
     config.add_show_field 'note_toc_display', label: 'Contents'
-    config.add_show_field 'note_restrictions_display', label: 'Access and Restrictions'
+    config.add_show_field(
+      'note_restrictions_display', label: 'Access and Restrictions'
+    )
     config.add_show_field 'note_references_display', label: 'Cited in'
     config.add_show_field 'note_summary_display', label: 'Summary'
     config.add_show_field 'note_cite_display', label: 'Cite as'
     config.add_show_field 'note_copyright_display', label: 'Copyright Note'
-    config.add_show_field 'note_bio_display', label: 'Biographical or Historical Note'
+    config.add_show_field(
+      'note_bio_display', label: 'Biographical or Historical Note'
+    )
     config.add_show_field 'note_finding_aid_display', label: 'Finding Aids'
     config.add_show_field 'note_custodial_display', label: 'Custodial History'
     config.add_show_field 'note_binding_display', label: 'Binding Note'
     config.add_show_field 'note_related_display', label: 'Related Materials'
-    config.add_show_field 'note_accruals_display', label: 'Additions to Collection'
+    config.add_show_field(
+      'note_accruals_display', label: 'Additions to Collection'
+    )
     config.add_show_field 'note_local_display', label: 'Local Note'
-    config.add_show_field 'subject_display', label: 'Subject', :helper_method => :list_with_links, :multi => true
+    config.add_show_field 'subject_display',
+                          label: 'Subject',
+                          helper_method: :list_with_links, multi: true
 
     # Preceeding Entry fields
     config.add_show_field 'continues_display', label: 'Continues'
-    config.add_show_field 'continues_in_part_display', label: 'Continues in part'
+    config.add_show_field 'continues_in_part_display',
+                          label: 'Continues in part'
     config.add_show_field 'formed_from_display', label: 'Formed from'
     config.add_show_field 'absorbed_display', label: 'Absorbed'
     config.add_show_field 'absorbed_in_part_display', label: 'Absorbed in part'
     config.add_show_field 'separated_from_display', label: 'Separated from'
 
     # Succeeding Entry fields
-    config.add_show_field 'continued_by_display', label: 'Continued by'
-    config.add_show_field 'continued_in_part_by_display', label: 'Continued in part by'
+    config.add_show_field 'continued_by_display',
+                          label: 'Continued by'
+    config.add_show_field 'continued_in_part_by_display',
+                          label: 'Continued in part by'
     config.add_show_field 'absorbed_by_display', label: 'Absorbed by'
-    config.add_show_field 'absorbed_in_part_by_display', label: 'Absorbed in part by'
+    config.add_show_field 'absorbed_in_part_by_display',
+                          label: 'Absorbed in part by'
     config.add_show_field 'split_into_display', label: 'Split into'
     config.add_show_field 'merged_to_form_display', label: 'Merged to form'
     config.add_show_field 'changed_back_to_display', label: 'Changed back to'
 
-    #config.add_show_field 'call_number', label: 'Call Number'
-    #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
+    # config.add_show_field 'call_number', label: 'Call Number'
+    # config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field 'isbn_display', label: 'ISBN'
     config.add_show_field 'issn_display', label: 'ISSN'
     config.add_show_field 'pub_no_display', label: 'Publication Number'
@@ -235,8 +239,12 @@ class CatalogController < ApplicationController
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
     config.add_show_field 'language_display', label: 'Language'
-    config.add_show_field 'url_resource_display', label: 'Available Online', :helper_method => :electronic_access_links
-    config.add_show_field 'url_more_links_display', label: 'Other Links', :helper_method => :electronic_access_links
+    config.add_show_field 'url_resource_display',
+                          label: 'Available Online',
+                          helper_method: :electronic_access_links
+    config.add_show_field 'url_more_links_display',
+                          label: 'Other Links',
+                          helper_method: :electronic_access_links
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -253,8 +261,9 @@ class CatalogController < ApplicationController
     # or can be specified manually to be different.
 
     # This one uses all the defaults set by the solr request handler. Which
-    # solr request handler? The one set in config[:default_solr_parameters][:qt],
-    # since we aren't specifying it otherwise.
+    # solr request handler? The one set in
+    # config[:default_solr_parameters][:qt], since we aren't specifying it
+    # otherwise.
 
     config.add_search_field 'all_fields', label: 'All Fields'
 
@@ -264,14 +273,14 @@ class CatalogController < ApplicationController
 
     config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { :'spellcheck.dictionary' => 'title' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'title' }
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        qf: %w[title title_t title_qf title_uniform_t title_addl_t].join(" "),
+        qf: %w[title title_t title_qf title_uniform_t title_addl_t].join(' '),
         pf: '$title_pf'
       }
     end
@@ -280,15 +289,16 @@ class CatalogController < ApplicationController
     config.add_search_field('author') do |field|
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'author' }
       field.solr_local_parameters = {
         qf: '$author_qf',
         pf: '$author_pf'
       }
     end
 
-    config.add_search_field('creator_t', label: "Author/creator/contributor") do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
+    config.add_search_field('creator_t',
+                            label: 'Author/creator/contributor') do |field|
+      field.solr_parameters = { 'spellcheck.dictionary': 'author' }
       field.solr_local_parameters = {
         qf: 'creator_t',
         pf: 'creator_t'
@@ -299,7 +309,7 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
-      field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
+      field.solr_parameters = { 'spellcheck.dictionary': 'subject' }
       field.qt = 'search'
       field.solr_local_parameters = {
         qf: '$subject_qf',
@@ -307,53 +317,57 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('publisher_t', label: "Publisher") do |field|
+    config.add_search_field('publisher_t', label: 'Publisher') do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {
-        qf: 'publisher_t',
+        qf: 'publisher_t'
       }
     end
 
-    config.add_search_field('title_series_t', label: "Series Title") do |field|
+    config.add_search_field('title_series_t', label: 'Series Title') do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {
-        qf: 'title_series_t',
+        qf: 'title_series_t'
       }
     end
 
-    config.add_search_field('note_t', label: "Description") do |field|
+    config.add_search_field('note_t', label: 'Description') do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {
-        qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t note_restrictions_t note_references_t note_summary_t note_cite_t note_copyright_t note_bio_t note_finding_aid_t note_custodial_t note_binding_t note_related_t note_accruals_t note_local_t].join(" ")
+        qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t
+               note_restrictions_t note_references_t note_summary_t note_cite_t
+               note_copyright_t note_bio_t note_finding_aid_t note_custodial_t
+               note_binding_t note_related_t note_accruals_t
+               note_local_t].join(' ')
       }
     end
 
-    config.add_search_field('isbn_t', label: "ISBN") do |field|
+    config.add_search_field('isbn_t', label: 'ISBN') do |field|
       field.solr_local_parameters = {
-        qf: 'isbn_t',
+        qf: 'isbn_t'
       }
     end
 
-    config.add_search_field('issn_t', label: "ISSN") do |field|
+    config.add_search_field('issn_t', label: 'ISSN') do |field|
       field.solr_local_parameters = {
-        qf: 'issn_t',
+        qf: 'issn_t'
       }
     end
 
-    config.add_search_field('alma_mms_t', label: "Catalog Record ID") do |field|
+    config.add_search_field('alma_mms_t', label: 'Catalog Record ID') do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {
-        qf: 'alma_mms_t',
+        qf: 'alma_mms_t'
       }
     end
-
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
 
-    config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc', label: 'relevance'
+    config.add_sort_field 'score desc, pub_date_sort desc, title_sort asc',
+                          label: 'relevance'
     config.add_sort_field 'pub_date_sort desc, title_sort asc', label: 'year'
     config.add_sort_field 'author_sort asc, title_sort asc', label: 'author'
     config.add_sort_field 'title_sort asc, pub_date_sort desc', label: 'title'
