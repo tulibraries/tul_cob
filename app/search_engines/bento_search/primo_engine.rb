@@ -3,7 +3,7 @@ require 'open-uri'
 class BentoSearch::PrimoEngine
   include BentoSearch::SearchEngine
 
-  @@per_page = 15
+  @@per_page = 10
 
   attr_accessor :query
 
