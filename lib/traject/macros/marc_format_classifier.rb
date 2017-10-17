@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Traject
   module Macros
     # To use the marc_format macro, in your configuration file:
@@ -47,7 +49,7 @@ module Traject
       # See also individual methods which you can use you seperate into
       # different facets or do other custom things.
       def formats(options = {})
-        options = {:default => "Other"}.merge(options)
+        options = { default: "Other" }.merge(options)
 
         formats = []
 
@@ -62,7 +64,7 @@ module Traject
         end
 
         if proceeding?
-          formats <<  "Conference"
+          formats << "Conference"
         end
 
         if formats.empty?
@@ -86,9 +88,9 @@ module Traject
         marc_genre_leader = Traject::TranslationMap.new("marc_genre_leader")
         marc_genre_007    = Traject::TranslationMap.new("marc_genre_007")
 
-        results = marc_genre_leader[ record.leader.slice(6,2) ] ||
+        results = marc_genre_leader[ record.leader.slice(6, 2) ] ||
           marc_genre_leader[ record.leader.slice(6)] ||
-          record.find_all {|f| f.tag == "007"}.collect {|f| marc_genre_007[f.value.slice(0)]}
+          record.find_all { |f| f.tag == "007" }.collect { |f| marc_genre_007[f.value.slice(0)] }
 
         [results].flatten
       end
@@ -96,7 +98,7 @@ module Traject
       # Just checks if it has a 502, if it does it's considered a thesis
       def thesis?
         @thesis_q ||= begin
-          ! record.find {|a| a.tag == "502"}.nil?
+          ! record.find { |a| a.tag == "502" }.nil?
         end
       end
 
@@ -104,8 +106,8 @@ module Traject
       def proceeding?
         @proceeding_q ||= begin
           ! record.find do |field|
-            field.tag.slice(0) == '6' &&
-                field.subfields.find {|sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
+            field.tag.slice(0) == "6" &&
+                field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
           end.nil?
         end
       end
@@ -120,11 +122,9 @@ module Traject
       # downcased version of the gmd, or else empty string
       def normalized_gmd
         @gmd ||= begin
-          ((a245 = record['245']) && a245['h'] && a245['h'].downcase) || ""
+          ((a245 = record["245"]) && a245["h"] && a245["h"].downcase) || ""
         end
       end
-
-
     end
   end
 end
