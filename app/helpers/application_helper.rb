@@ -10,10 +10,10 @@ module ApplicationHelper
   end
 
   def get_search_params(field, query)
-    if field == 'subject_display'
-      { controller: 'catalog', action: 'index', search_field: 'subject', q: query.gsub(/>|—/, '') }
+    if field == "subject_display"
+      { controller: "catalog", action: "index", search_field: "subject", q: query.gsub(/>|—/, "") }
     else
-      { controller: 'catalog', action: 'index', search_field: field, q: query }
+      { controller: "catalog", action: "index", search_field: field, q: query }
     end
   end
 
@@ -24,13 +24,13 @@ module ApplicationHelper
   end
 
   def list_with_links(args)
-    args[:document][args[:field]].map { |field| content_tag(:li, fielded_search(field, args[:field]), class: 'list_items') }.join('<br /> ').html_safe
+    args[:document][args[:field]].map { |field| content_tag(:li, fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
   end
 
   def browse_creator(args)
     args[:document][args[:field]].each_with_index do |name, i|
       content_tag :ul do
-        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: 'list_items')
+        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
         args[:document][args[:field]][i] = newname.html_safe
       end
     end
@@ -39,9 +39,9 @@ module ApplicationHelper
 
   def electronic_access_links(args)
     new_link = args[:document][args[:field]].each_with_index.map do |_field, i|
-      content_tag(:li, link_to(args[:value][i].split('|').first.sub(/ *[ ,.\/;:] *\Z/, ''), args[:value][i].split('|').last), class: 'list_items')
+      content_tag(:li, link_to(args[:value][i].split("|").first.sub(/ *[ ,.\/;:] *\Z/, ""), args[:value][i].split("|").last), class: "list_items")
     end
-    new_link.join('<br />').html_safe
+    new_link.join("<br />").html_safe
   end
 
   def bento_engine_nice_name(engine_id)

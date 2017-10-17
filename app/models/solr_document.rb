@@ -25,6 +25,6 @@ class SolrDocument
   # this bib record, but in the case of boundwith records, we return
   # the boundwith IDs, because that's where Alma stores the holdings.
   def alma_availability_mms_ids
-    fetch('bound_with_ids', [id])
+    fetch("bound_with_ids", [id])
   end
 end

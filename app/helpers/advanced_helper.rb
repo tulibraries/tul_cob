@@ -25,7 +25,7 @@ module AdvancedHelper
     if params[op_num]
       params[op_num] == op
     else
-      op == 'AND'
+      op == "AND"
     end
   end
 end
@@ -37,10 +37,10 @@ module BlacklightAdvancedSearch
     def keyword_op
       # NOTs get added to the query. Only AND/OR are operations
       @keyword_op = []
-      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == 'NOT'
+      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == "NOT"
         @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
       end
-      unless @params[:q3].blank? || @params[:op3] == 'NOT' || (@params[:q1].blank? && @params[:q2].blank?)
+      unless @params[:q3].blank? || @params[:op3] == "NOT" || (@params[:q1].blank? && @params[:q2].blank?)
         @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && !@params[:q1].blank?) || (@params[:f2] == @params[:f3] && !@params[:q2].blank?))
       end
       @keyword_op
@@ -62,8 +62,8 @@ module BlacklightAdvancedSearch
           if @keyword_queries.key?(@params[:f2])
             @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
             been_combined = true
-          elsif @params[:op2] == 'NOT'
-            @keyword_queries[@params[:f2]] = 'NOT ' + q2
+          elsif @params[:op2] == "NOT"
+            @keyword_queries[@params[:f2]] = "NOT " + q2
           else
             @keyword_queries[@params[:f2]] = q2
           end
@@ -72,8 +72,8 @@ module BlacklightAdvancedSearch
           if @keyword_queries.key?(@params[:f3])
             @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
             @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
-          elsif @params[:op3] == 'NOT'
-            @keyword_queries[@params[:f3]] = 'NOT ' + q3
+          elsif @params[:op3] == "NOT"
+            @keyword_queries[@params[:f3]] = "NOT " + q3
           else
             @keyword_queries[@params[:f3]] = q3
           end
@@ -93,7 +93,7 @@ module BlacklightAdvancedSearch
         queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         queries << ops.shift
       end
-      queries.join(' ')
+      queries.join(" ")
     end
   end
 end
@@ -125,7 +125,7 @@ module BlacklightAdvancedSearch
       unless my_params[:q2].blank?
         label = search_field_def_for_key(my_params[:f2])[:label]
         query = my_params[:q2]
-        query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
+        query = "NOT " + my_params[:q2] if my_params[:op2] == "NOT"
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
@@ -134,7 +134,7 @@ module BlacklightAdvancedSearch
       unless my_params[:q3].blank?
         label = search_field_def_for_key(my_params[:f3])[:label]
         query = my_params[:q3]
-        query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
+        query = "NOT " + my_params[:q3] if my_params[:op3] == "NOT"
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))

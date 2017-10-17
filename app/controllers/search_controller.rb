@@ -32,7 +32,7 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.atom { render template: 'bento_search/atom_results', locals: { atom_results: @results } }
+      format.atom { render template: "bento_search/atom_results", locals: { atom_results: @results } }
     end
   end
 end
