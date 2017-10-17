@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative 'boot'
+require_relative "boot"
 
-require 'rails/all'
-require 'awesome_print'
+require "rails/all"
+require "awesome_print"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,7 +22,7 @@ module Tulcob
     config.exceptions_app = routes
 
     begin
-      config.relative_url_root = config_for(:deploy_to)['path']
+      config.relative_url_root = config_for(:deploy_to)["path"]
     rescue StandardError => error
       error
     end
