@@ -276,7 +276,9 @@ class CatalogController < ApplicationController
       }
     end
 
+    # Are we using this anywhere?
     config.add_search_field('author') do |field|
+      field.include_in_simple_select = false
       field.include_in_advanced_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'author' }
       field.solr_local_parameters = {
@@ -306,18 +308,21 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('publisher_t', label: "Publisher") do |field|
+      field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: 'publisher_t',
       }
     end
 
     config.add_search_field('title_series_t', label: "Series Title") do |field|
+      field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: 'title_series_t',
       }
     end
 
     config.add_search_field('note_t', label: "Description") do |field|
+      field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t note_restrictions_t note_references_t note_summary_t note_cite_t note_copyright_t note_bio_t note_finding_aid_t note_custodial_t note_binding_t note_related_t note_accruals_t note_local_t].join(" ")
       }
@@ -336,6 +341,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('alma_mms_t', label: "Catalog Record ID") do |field|
+      field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: 'alma_mms_t',
       }
