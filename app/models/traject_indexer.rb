@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 
 $LOAD_PATH.unshift "./config"
 $LOAD_PATH.unshift "./lib"
