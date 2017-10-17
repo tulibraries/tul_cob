@@ -1,8 +1,10 @@
-require 'rails_helper'
-require 'traject'
-require 'traject/command_line'
-require 'yaml'
-require 'pry'
+# frozen_string_literal: true
+
+require "rails_helper"
+require "traject"
+require "traject/command_line"
+require "yaml"
+require "pry"
 
 RSpec.feature "Indices", type: :feature do
   let (:fixtures) {
@@ -12,11 +14,11 @@ RSpec.feature "Indices", type: :feature do
   feature "Home Page" do
     context "publicly available pages" do
       scenario "User visits home page" do
-        visit '/'
+        visit "/"
         expect(page).to have_text "Welcome!"
         within("#facets") do
-            expect(page).to have_text "Date"
-            expect(page).to have_text "Resource Type"
+          expect(page).to have_text "Date"
+          expect(page).to have_text "Resource Type"
         end
       end
 
@@ -38,9 +40,9 @@ RSpec.feature "Indices", type: :feature do
     }
     context "publicly available pages" do
       scenario "User visits home page" do
-        visit '/'
+        visit "/"
         within("#facets") do
-          all('div.panel').each_with_index do |div_panel, i|
+          all("div.panel").each_with_index do |div_panel, i|
             expect(div_panel).to have_text facets[i]
           end
         end
@@ -52,9 +54,9 @@ RSpec.feature "Indices", type: :feature do
     let (:title) { "Academic freedom in an age of conformity" }
     let (:results_url) { "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
-      visit '/'
-      fill_in 'q', with: title
-      click_button 'Search'
+      visit "/"
+      fill_in "q", with: title
+      click_button "Search"
       expect(current_url).to eq results_url
       within(".document-position-0 h3") do
         expect(page).to have_text(:title)
@@ -66,7 +68,7 @@ RSpec.feature "Indices", type: :feature do
         expect(page).to have_text "Status/Location:"
         expect(page).to have_text "Author/creator:"
         expect(page).to have_text "Published:"
-        has_css?(".avail-button", :visible => true)
+        has_css?(".avail-button", visible: true)
       end
     end
   end
@@ -81,24 +83,24 @@ RSpec.feature "Indices", type: :feature do
     }
 
     scenario "Search" do
-      visit '/'
-      fill_in 'q', with: item['title']
-      click_button 'Search'
-      expect(current_url).to eq item['url']
+      visit "/"
+      fill_in "q", with: item["title"]
+      click_button "Search"
+      expect(current_url).to eq item["url"]
       within(".document-position-0") do
-        click_link item['title']
+        click_link item["title"]
         expect(current_url).to eq item_url
         within("h3") do
-          expect(page).to have_text item['title']
+          expect(page).to have_text item["title"]
         end
-        click_link item['title']
+        click_link item["title"]
       end
     end
 
     scenario "User visits a document directly" do
       visit "catalog/#{item['doc_id']}"
       expect(current_url).to eq item_url
-      expect(page).to have_text(item['title'])
+      expect(page).to have_text(item["title"])
     end
   end
 end

@@ -1,5 +1,7 @@
-require 'rspec'
-require 'traject/macros/marc_format_classifier'
+# frozen_string_literal: true
+
+require "rspec"
+require "traject/macros/marc_format_classifier"
 include Traject::Macros::MarcFormats
 
 RSpec.describe "four_digit_year(field):" do

@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
 
@@ -8,15 +10,13 @@ RSpec.describe UsersController, type: :controller do
       DatabaseCleaner.strategy = :truncation
       OmniAuth.config.test_mode = true
       user = FactoryGirl.create :user
-      OmniAuth.config.mock_auth[:alma] = OmniAuth::AuthHash.new({
-        email: user.email,
+      OmniAuth.config.mock_auth[:alma] = OmniAuth::AuthHash.new(email: user.email,
         created_at: user.created_at,
         updated_at: user.updated_at,
         guest: user.guest,
         alma_id: user.alma_id,
         provider: user.provider,
-        uid: user.uid
-      })
+        uid: user.uid)
     end
 
     after :all do
@@ -33,8 +33,8 @@ RSpec.describe UsersController, type: :controller do
 
       describe "GET #holds" do
         xit "returns http success" do
-          get :holds
-          expect(response).to have_http_status(:success)
+  get :holds
+  expect(response).to have_http_status(:success)
 end
       end
 

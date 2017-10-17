@@ -1,5 +1,7 @@
-require 'rails_helper'
-require 'yaml'
+# frozen_string_literal: true
+
+require "rails_helper"
+require "yaml"
 include ApplicationHelper
 
 RSpec.feature "Advanced Search", type: :feature do
@@ -15,13 +17,13 @@ RSpec.feature "Advanced Search", type: :feature do
     }
     context "advanced search page displays facets" do
       scenario "User visits advanced search page" do
-        visit '/advanced'
-        within('form.advanced') do
-          all('div.advanced-search-fields') do
-            expect(page).to have_tag('select.advanced-search-select')
-            expect(page).to have_tag('input.advanced_search_input')
+        visit "/advanced"
+        within("form.advanced") do
+          all("div.advanced-search-fields") do
+            expect(page).to have_tag("select.advanced-search-select")
+            expect(page).to have_tag("input.advanced_search_input")
           end
-          all('div.limit-input').each_with_index do |div_panel, i|
+          all("div.limit-input").each_with_index do |div_panel, i|
             expect(div_panel).to have_text facets[i]
           end
         end

@@ -1,5 +1,7 @@
-require 'rails_helper'
-require 'database_cleaner'
+# frozen_string_literal: true
+
+require "rails_helper"
+require "database_cleaner"
 
 RSpec.describe User, type: :model do
   describe "Alma services" do
@@ -39,19 +41,19 @@ RSpec.describe User, type: :model do
     end
 
     it "shows items borrowed" do
-      allow(Alma::User).to receive(:get_loans).and_return(double(:list => loans))
+      allow(Alma::User).to receive(:get_loans).and_return(double(list: loans))
       items = patron_account.get_loans
       expect(items.list.sort).to match(loans.sort)
     end
 
     it "shows items requested" do
-      allow(Alma::User).to receive(:get_requests).and_return(double(:list => holds))
+      allow(Alma::User).to receive(:get_requests).and_return(double(list: holds))
       items = patron_account.get_holds
       expect(items.list.sort).to match(holds.sort)
     end
 
     it "shows fines owed" do
-      allow(Alma::User).to receive(:get_fines).and_return(double(:list => fines))
+      allow(Alma::User).to receive(:get_fines).and_return(double(list: fines))
       items = patron_account.get_fines
       expect(items.list.sort).to match(fines.sort)
     end

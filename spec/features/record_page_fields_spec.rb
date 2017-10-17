@@ -1,5 +1,7 @@
-require 'rails_helper'
-require 'yaml'
+# frozen_string_literal: true
+
+require "rails_helper"
+require "yaml"
 include ApplicationHelper
 
 RSpec.feature "RecordPageFields", type: :feature do
@@ -11,49 +13,49 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item) { fixtures.fetch("title_statement") }
     scenario "User visits a document with full title statement" do
       visit "catalog/#{item['doc_id']}"
-      expect(page).to have_text(item['title_statement'])
+      expect(page).to have_text(item["title_statement"])
     end
 
     scenario "User visits a document with title statement vernacular" do
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-title_statement_vern_display" do
-        expect(page).to have_text(item['title_statement_vern'])
+        expect(page).to have_text(item["title_statement_vern"])
       end
     end
   end
 
   feature "MARC Title Uniform Fields" do
-    let (:item_130) { fixtures.fetch("title_uniform_130") }
-    scenario "User visits a document with field 130 only" do
-      visit "catalog/#{item_130['doc_id']}"
-      within "dd.blacklight-title_uniform_display" do
-        expect(page).to have_text(item_130['title_uniform'])
-      end
-    end
-
-    let (:item_240) { fixtures.fetch("title_uniform_240") }
-    scenario "User visits a document with field 240 only" do
-      visit "catalog/#{item_240['doc_id']}"
-      within "dd.blacklight-title_uniform_display" do
-        expect(page).to have_text(item_240['title_uniform'])
-      end
-    end
-
-    let (:item_730) { fixtures.fetch("title_uniform_730") }
-    scenario "User visits a document with field 730 only" do
-      visit "catalog/#{item_730['doc_id']}"
-      within "dd.blacklight-title_uniform_display" do
-        expect(page).to have_text(item_730['title_uniform'])
-      end
-    end
-
-    let (:item_130) { fixtures.fetch("title_uniform_130") }
-    scenario "User visits a document with uniform title vernacular" do
-      visit "catalog/#{item_130['doc_id']}"
-      within "dd.blacklight-title_uniform_vern_display" do
-          expect(page).to have_text(item_130['title_uniform_vern'])
+      let (:item_130) { fixtures.fetch("title_uniform_130") }
+      scenario "User visits a document with field 130 only" do
+        visit "catalog/#{item_130['doc_id']}"
+        within "dd.blacklight-title_uniform_display" do
+          expect(page).to have_text(item_130["title_uniform"])
         end
       end
+
+      let (:item_240) { fixtures.fetch("title_uniform_240") }
+      scenario "User visits a document with field 240 only" do
+        visit "catalog/#{item_240['doc_id']}"
+        within "dd.blacklight-title_uniform_display" do
+          expect(page).to have_text(item_240["title_uniform"])
+        end
+      end
+
+      let (:item_730) { fixtures.fetch("title_uniform_730") }
+      scenario "User visits a document with field 730 only" do
+        visit "catalog/#{item_730['doc_id']}"
+        within "dd.blacklight-title_uniform_display" do
+          expect(page).to have_text(item_730["title_uniform"])
+        end
+      end
+
+      let (:item_130) { fixtures.fetch("title_uniform_130") }
+      scenario "User visits a document with uniform title vernacular" do
+          visit "catalog/#{item_130['doc_id']}"
+          within "dd.blacklight-title_uniform_vern_display" do
+              expect(page).to have_text(item_130["title_uniform_vern"])
+            end
+        end
     end
 
   feature "MARC Title Additional Fields" do
@@ -61,7 +63,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with additional title " do
       visit "catalog/#{item_210['doc_id']}"
       within "dd.blacklight-title_addl_display" do
-        expect(page).to have_text(item_210['title_addl'])
+        expect(page).to have_text(item_210["title_addl"])
       end
     end
 
@@ -69,7 +71,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with additional title " do
       visit "catalog/#{item_246['doc_id']}"
       within "dd.blacklight-title_addl_display" do
-        expect(page).to have_text(item_246['title_addl'])
+        expect(page).to have_text(item_246["title_addl"])
       end
     end
 
@@ -77,7 +79,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with additional title " do
       visit "catalog/#{item_247['doc_id']}"
       within "dd.blacklight-title_addl_display" do
-        expect(page).to have_text(item_247['title_addl'])
+        expect(page).to have_text(item_247["title_addl"])
       end
     end
 
@@ -85,7 +87,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with additional title " do
       visit "catalog/#{item_740['doc_id']}"
       within "dd.blacklight-title_addl_display" do
-        expect(page).to have_text(item_740['title_addl'])
+        expect(page).to have_text(item_740["title_addl"])
       end
     end
 
@@ -93,7 +95,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with additional title vernacular" do
       visit "catalog/#{item_210['doc_id']}"
       within "dd.blacklight-title_addl_vern_display" do
-        expect(page).to have_text(item_210['title_addl_vern'])
+        expect(page).to have_text(item_210["title_addl_vern"])
       end
     end
   end
@@ -103,7 +105,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_100['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_100['creator'])
+        expect(page).to have_text(item_100["creator"])
       end
     end
 
@@ -111,7 +113,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator vernacular" do
       visit "catalog/#{item_100_v['doc_id']}"
       within "dd.blacklight-creator_vern_display" do
-        expect(page).to have_text(item_100_v['creator_vern'])
+        expect(page).to have_text(item_100_v["creator_vern"])
       end
     end
 
@@ -119,7 +121,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_110['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_110['creator'])
+        expect(page).to have_text(item_110["creator"])
       end
     end
 
@@ -127,7 +129,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_111['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_111['creator'])
+        expect(page).to have_text(item_111["creator"])
       end
     end
 
@@ -135,7 +137,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_700['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_700['creator'])
+        expect(page).to have_text(item_700["creator"])
       end
     end
 
@@ -143,7 +145,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_710['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_710['creator'])
+        expect(page).to have_text(item_710["creator"])
       end
     end
 
@@ -151,7 +153,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with creator" do
       visit "catalog/#{item_711['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_711['creator'])
+        expect(page).to have_text(item_711["creator"])
       end
     end
   end
@@ -161,7 +163,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with imprint" do
       visit "catalog/#{item_260['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_260['imprint'])
+        expect(page).to have_text(item_260["imprint"])
       end
     end
 
@@ -169,7 +171,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with imprint indicator2 value 0" do
       visit "catalog/#{item_264_0['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_0['imprint'])
+        expect(page).to have_text(item_264_0["imprint"])
       end
     end
 
@@ -177,7 +179,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with imprint indicator2 value 1" do
       visit "catalog/#{item_264_1['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_1['imprint'])
+        expect(page).to have_text(item_264_1["imprint"])
       end
     end
 
@@ -185,7 +187,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with imprint indicator2 value 2" do
       visit "catalog/#{item_264_2['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_2['imprint'])
+        expect(page).to have_text(item_264_2["imprint"])
       end
     end
 
@@ -193,14 +195,14 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with imprint indicator2 value 3" do
       visit "catalog/#{item_264_3['doc_id']}"
       within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_3['imprint'])
+        expect(page).to have_text(item_264_3["imprint"])
       end
     end
 
     let (:item_264_4) { fixtures.fetch("imprint_264_4") }
     scenario "User visits a document with imprint indicator2 value 4" do
       visit "catalog/#{item_264_4['doc_id']}"
-        expect(page).to_not have_text(item_264_4['imprint'])
+      expect(page).to_not have_text(item_264_4["imprint"])
     end
   end
 
@@ -209,7 +211,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with date_copyright" do
       visit "catalog/#{item_264['doc_id']}"
       within "dd.blacklight-date_copyright_display" do
-        expect(page).to have_text(item_264['date_copyright'])
+        expect(page).to have_text(item_264["date_copyright"])
       end
     end
   end
@@ -219,7 +221,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with edition" do
       visit "catalog/#{item_250['doc_id']}"
       within "dd.blacklight-edition_display" do
-        expect(page).to have_text(item_250['edition'])
+        expect(page).to have_text(item_250["edition"])
       end
     end
 
@@ -227,7 +229,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with edition" do
       visit "catalog/#{item_254['doc_id']}"
       within "dd.blacklight-edition_display" do
-        expect(page).to have_text(item_254['edition'])
+        expect(page).to have_text(item_254["edition"])
       end
     end
   end
@@ -237,7 +239,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_260['doc_id']}"
       within "dd.blacklight-pub_date" do
-        expect(page).to have_text(item_260['pub_date'])
+        expect(page).to have_text(item_260["pub_date"])
       end
     end
 
@@ -245,7 +247,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with publication date" do
       visit "catalog/#{item_264['doc_id']}"
       within "dd.blacklight-pub_date" do
-        expect(page).to have_text(item_264['pub_date'])
+        expect(page).to have_text(item_264["pub_date"])
       end
     end
   end
@@ -255,7 +257,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with physical description" do
       visit "catalog/#{item_300['doc_id']}"
       within "dd.blacklight-phys_desc_display" do
-        expect(page).to have_text(item_300['phys_desc'])
+        expect(page).to have_text(item_300["phys_desc"])
       end
     end
 
@@ -263,7 +265,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with physical description" do
       visit "catalog/#{item_340['doc_id']}"
       within "dd.blacklight-phys_desc_display" do
-        expect(page).to have_text(item_340['phys_desc'])
+        expect(page).to have_text(item_340["phys_desc"])
       end
     end
   end
@@ -273,7 +275,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with series title" do
       visit "catalog/#{item_830['doc_id']}"
       within "dd.blacklight-title_series_display" do
-        expect(page).to have_text(item_830['title_series'])
+        expect(page).to have_text(item_830["title_series"])
       end
     end
 
@@ -281,7 +283,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with series title" do
       visit "catalog/#{item_490['doc_id']}"
       within "dd.blacklight-title_series_display" do
-        expect(page).to have_text(item_490['title_series'])
+        expect(page).to have_text(item_490["title_series"])
       end
     end
 
@@ -289,7 +291,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with series title" do
       visit "catalog/#{item_440['doc_id']}"
       within "dd.blacklight-title_series_display" do
-        expect(page).to have_text(item_440['title_series'])
+        expect(page).to have_text(item_440["title_series"])
       end
     end
 
@@ -297,7 +299,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with series title vernacular" do
       visit "catalog/#{item_830['doc_id']}"
       within "dd.blacklight-title_series_vern_display" do
-        expect(page).to have_text(item_830['title_series_vern'])
+        expect(page).to have_text(item_830["title_series_vern"])
       end
     end
   end
@@ -307,7 +309,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with volume series" do
       visit "catalog/#{item_830_vol['doc_id']}"
       within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_830_vol['volume_series'])
+        expect(page).to have_text(item_830_vol["volume_series"])
       end
     end
 
@@ -315,7 +317,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with volume series" do
       visit "catalog/#{item_490_vol['doc_id']}"
       within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_490_vol['volume_series'])
+        expect(page).to have_text(item_490_vol["volume_series"])
       end
     end
 
@@ -323,7 +325,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with volume series" do
       visit "catalog/#{item_440_vol['doc_id']}"
       within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_440_vol['volume_series'])
+        expect(page).to have_text(item_440_vol["volume_series"])
       end
     end
   end
@@ -333,7 +335,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with duration" do
       visit "catalog/#{item_306['doc_id']}"
       within "dd.blacklight-duration_display" do
-        expect(page).to have_text(item_306['duration'])
+        expect(page).to have_text(item_306["duration"])
       end
     end
   end
@@ -343,7 +345,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with frequency" do
       visit "catalog/#{item_310['doc_id']}"
       within "dd.blacklight-frequency_display" do
-        expect(page).to have_text(item_310['frequency'])
+        expect(page).to have_text(item_310["frequency"])
       end
     end
 
@@ -351,7 +353,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with frequency" do
       visit "catalog/#{item_321['doc_id']}"
       within "dd.blacklight-frequency_display" do
-        expect(page).to have_text(item_321['frequency'])
+        expect(page).to have_text(item_321["frequency"])
       end
     end
   end
@@ -361,7 +363,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with sound" do
       visit "catalog/#{item_344['doc_id']}"
       within "dd.blacklight-sound_display" do
-        expect(page).to have_text(item_344['sound'])
+        expect(page).to have_text(item_344["sound"])
       end
     end
   end
@@ -371,7 +373,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with digital file" do
       visit "catalog/#{item_347['doc_id']}"
       within "dd.blacklight-digital_file_display" do
-        expect(page).to have_text(item_347['digital_file'])
+        expect(page).to have_text(item_347["digital_file"])
       end
     end
   end
@@ -381,7 +383,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with form work" do
       visit "catalog/#{item_380['doc_id']}"
       within "dd.blacklight-form_work_display" do
-        expect(page).to have_text(item_380['form_work'])
+        expect(page).to have_text(item_380["form_work"])
       end
     end
   end
@@ -391,7 +393,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with performance" do
       visit "catalog/#{item_382['doc_id']}"
       within "dd.blacklight-performance_display" do
-        expect(page).to have_text(item_382['performance'])
+        expect(page).to have_text(item_382["performance"])
       end
     end
   end
@@ -401,7 +403,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with music no" do
       visit "catalog/#{item_383['doc_id']}"
       within "dd.blacklight-music_no_display" do
-        expect(page).to have_text(item_383['music_no'])
+        expect(page).to have_text(item_383["music_no"])
       end
     end
   end
@@ -411,7 +413,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_500['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_500['note'])
+        expect(page).to have_text(item_500["note"])
       end
     end
 
@@ -419,7 +421,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_508['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_508['note'])
+        expect(page).to have_text(item_508["note"])
       end
     end
 
@@ -427,7 +429,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_511['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_511['note'])
+        expect(page).to have_text(item_511["note"])
       end
     end
 
@@ -435,7 +437,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_515['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_515['note'])
+        expect(page).to have_text(item_515["note"])
       end
     end
 
@@ -443,7 +445,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_518['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_518['note'])
+        expect(page).to have_text(item_518["note"])
       end
     end
 
@@ -451,7 +453,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_521['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_521['note'])
+        expect(page).to have_text(item_521["note"])
       end
     end
 
@@ -459,7 +461,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_530['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_530['note'])
+        expect(page).to have_text(item_530["note"])
       end
     end
 
@@ -467,7 +469,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_533['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_533['note'])
+        expect(page).to have_text(item_533["note"])
       end
     end
 
@@ -475,7 +477,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_534['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_534['note'])
+        expect(page).to have_text(item_534["note"])
       end
     end
 
@@ -483,7 +485,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_538['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_538['note'])
+        expect(page).to have_text(item_538["note"])
       end
     end
 
@@ -491,7 +493,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_546['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_546['note'])
+        expect(page).to have_text(item_546["note"])
       end
     end
 
@@ -499,7 +501,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_550['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_550['note'])
+        expect(page).to have_text(item_550["note"])
       end
     end
 
@@ -507,7 +509,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_586['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_586['note'])
+        expect(page).to have_text(item_586["note"])
       end
     end
 
@@ -515,7 +517,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note" do
       visit "catalog/#{item_588['doc_id']}"
       within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_588['note'])
+        expect(page).to have_text(item_588["note"])
       end
     end
   end
@@ -525,7 +527,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note with" do
       visit "catalog/#{item_501['doc_id']}"
       within "dd.blacklight-note_with_display" do
-        expect(page).to have_text(item_501['note_with'])
+        expect(page).to have_text(item_501["note_with"])
       end
     end
   end
@@ -535,7 +537,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note diss" do
       visit "catalog/#{item_502['doc_id']}"
       within "dd.blacklight-note_diss_display" do
-        expect(page).to have_text(item_502['note_diss'])
+        expect(page).to have_text(item_502["note_diss"])
       end
     end
   end
@@ -545,7 +547,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note biblio" do
       visit "catalog/#{item_504['doc_id']}"
       within "dd.blacklight-note_biblio_display" do
-        expect(page).to have_text(item_504['note_biblio'])
+        expect(page).to have_text(item_504["note_biblio"])
       end
     end
   end
@@ -555,7 +557,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note table of contents" do
       visit "catalog/#{item_505['doc_id']}"
       within "dd.blacklight-note_toc_display" do
-        expect(page).to have_text(item_505['note_toc'])
+        expect(page).to have_text(item_505["note_toc"])
       end
     end
   end
@@ -565,7 +567,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note restrictions" do
       visit "catalog/#{item_506['doc_id']}"
       within "dd.blacklight-note_restrictions_display" do
-        expect(page).to have_text(item_506['note_restrictions'])
+        expect(page).to have_text(item_506["note_restrictions"])
       end
     end
   end
@@ -575,7 +577,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note references" do
       visit "catalog/#{item_510['doc_id']}"
       within "dd.blacklight-note_references_display" do
-        expect(page).to have_text(item_510['note_references'])
+        expect(page).to have_text(item_510["note_references"])
       end
     end
   end
@@ -585,7 +587,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note summary" do
       visit "catalog/#{item_520['doc_id']}"
       within "dd.blacklight-note_summary_display" do
-        expect(page).to have_text(item_520['note_summary'])
+        expect(page).to have_text(item_520["note_summary"])
       end
     end
   end
@@ -595,7 +597,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note cite" do
       visit "catalog/#{item_524['doc_id']}"
       within "dd.blacklight-note_cite_display" do
-        expect(page).to have_text(item_524['note_cite'])
+        expect(page).to have_text(item_524["note_cite"])
       end
     end
   end
@@ -605,7 +607,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note copyright" do
       visit "catalog/#{item_540['doc_id']}"
       within "dd.blacklight-note_copyright_display" do
-        expect(page).to have_text(item_540['note_copyright'])
+        expect(page).to have_text(item_540["note_copyright"])
       end
     end
 
@@ -613,21 +615,21 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note copyright indicator 1 value unassigned" do
       visit "catalog/#{item_542['doc_id']}"
       within "dd.blacklight-note_copyright_display" do
-        expect(page).to have_text(item_542['note_copyright'])
+        expect(page).to have_text(item_542["note_copyright"])
       end
     end
 
     let (:item_542_0) { fixtures.fetch("note_copyright_542_0") }
     scenario "User visits a document with note copyright indicator 1 value 0" do
       visit "catalog/#{item_542_0['doc_id']}"
-      expect(page).to_not have_text(item_542_0['note_copyright'])
+      expect(page).to_not have_text(item_542_0["note_copyright"])
     end
 
     let (:item_542_1) { fixtures.fetch("note_copyright_542_1") }
     scenario "User visits a document with note copyright indicator 1 value 1" do
       visit "catalog/#{item_542_1['doc_id']}"
       within "dd.blacklight-note_copyright_display" do
-        expect(page).to have_text(item_542_1['note_copyright'])
+        expect(page).to have_text(item_542_1["note_copyright"])
       end
     end
   end
@@ -637,7 +639,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note bio" do
       visit "catalog/#{item_545['doc_id']}"
       within "dd.blacklight-note_bio_display" do
-        expect(page).to have_text(item_545['note_bio'])
+        expect(page).to have_text(item_545["note_bio"])
       end
     end
   end
@@ -647,7 +649,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note finding aid" do
       visit "catalog/#{item_555['doc_id']}"
       within "dd.blacklight-note_finding_aid_display" do
-        expect(page).to have_text(item_555['note_finding_aid'])
+        expect(page).to have_text(item_555["note_finding_aid"])
       end
     end
   end
@@ -657,7 +659,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note custodial" do
       visit "catalog/#{item_561['doc_id']}"
       within "dd.blacklight-note_custodial_display" do
-        expect(page).to have_text(item_561['note_custodial'])
+        expect(page).to have_text(item_561["note_custodial"])
       end
     end
   end
@@ -667,7 +669,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note binding" do
       visit "catalog/#{item_563['doc_id']}"
       within "dd.blacklight-note_binding_display" do
-        expect(page).to have_text(item_563['note_binding'])
+        expect(page).to have_text(item_563["note_binding"])
       end
     end
   end
@@ -677,7 +679,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note related" do
       visit "catalog/#{item_580['doc_id']}"
       within "dd.blacklight-note_related_display" do
-        expect(page).to have_text(item_580['note_related'])
+        expect(page).to have_text(item_580["note_related"])
       end
     end
   end
@@ -687,7 +689,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note accruals" do
       visit "catalog/#{item_584['doc_id']}"
       within "dd.blacklight-note_accruals_display" do
-        expect(page).to have_text(item_584['note_accruals'])
+        expect(page).to have_text(item_584["note_accruals"])
       end
     end
   end
@@ -697,7 +699,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with note local" do
       visit "catalog/#{item_590['doc_id']}"
       within "dd.blacklight-note_local_display" do
-        expect(page).to have_text(item_590['note_local'])
+        expect(page).to have_text(item_590["note_local"])
       end
     end
   end
@@ -707,7 +709,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_600['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_600['subject'])
+        expect(page).to have_text(item_600["subject"])
         expect(page).to have_text(" — ")
       end
     end
@@ -716,7 +718,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_610['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_610['subject'])
+        expect(page).to have_text(item_610["subject"])
       end
     end
 
@@ -724,7 +726,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_611['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_611['subject'])
+        expect(page).to have_text(item_611["subject"])
       end
     end
 
@@ -732,7 +734,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_630['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_630['subject'])
+        expect(page).to have_text(item_630["subject"])
       end
     end
 
@@ -740,7 +742,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_648['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_648['subject'])
+        expect(page).to have_text(item_648["subject"])
       end
     end
 
@@ -748,7 +750,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_650['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_650['subject'])
+        expect(page).to have_text(item_650["subject"])
       end
     end
 
@@ -756,7 +758,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_651['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_651['subject'])
+        expect(page).to have_text(item_651["subject"])
       end
     end
 
@@ -764,7 +766,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_653['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_653['subject'])
+        expect(page).to have_text(item_653["subject"])
       end
     end
 
@@ -772,7 +774,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_654['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_654['subject'])
+        expect(page).to have_text(item_654["subject"])
       end
     end
 
@@ -780,7 +782,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_655['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_655['subject'])
+        expect(page).to have_text(item_655["subject"])
       end
     end
 
@@ -788,7 +790,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_656['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_656['subject'])
+        expect(page).to have_text(item_656["subject"])
       end
     end
 
@@ -796,7 +798,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_657['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_657['subject'])
+        expect(page).to have_text(item_657["subject"])
       end
     end
 
@@ -804,7 +806,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with subject" do
       visit "catalog/#{item_690['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_text(item_690['subject'])
+        expect(page).to have_text(item_690["subject"])
       end
     end
   end
@@ -814,7 +816,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with continues" do
       visit "catalog/#{item_780_00['doc_id']}"
       within "dd.blacklight-continues_display" do
-        expect(page).to have_text(item_780_00['continues'])
+        expect(page).to have_text(item_780_00["continues"])
       end
     end
 
@@ -822,7 +824,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with continues_in_part" do
       visit "catalog/#{item_780_03['doc_id']}"
       within "dd.blacklight-continues_in_part_display" do
-        expect(page).to have_text(item_780_03['continues_in_part'])
+        expect(page).to have_text(item_780_03["continues_in_part"])
       end
     end
 
@@ -830,7 +832,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with formed_from" do
       visit "catalog/#{item_780_04['doc_id']}"
       within "dd.blacklight-formed_from_display" do
-        expect(page).to have_text(item_780_04['formed_from'])
+        expect(page).to have_text(item_780_04["formed_from"])
       end
     end
 
@@ -838,7 +840,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with absorbed" do
       visit "catalog/#{item_780_05['doc_id']}"
       within "dd.blacklight-absorbed_display" do
-        expect(page).to have_text(item_780_05['absorbed'])
+        expect(page).to have_text(item_780_05["absorbed"])
       end
     end
 
@@ -846,7 +848,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with absorbed_in_part" do
       visit "catalog/#{item_780_06['doc_id']}"
       within "dd.blacklight-absorbed_in_part_display" do
-        expect(page).to have_text(item_780_06['absorbed_in_part'])
+        expect(page).to have_text(item_780_06["absorbed_in_part"])
       end
     end
 
@@ -854,7 +856,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with separated_from" do
       visit "catalog/#{item_780_07['doc_id']}"
       within "dd.blacklight-separated_from_display" do
-        expect(page).to have_text(item_780_07['separated_from'])
+        expect(page).to have_text(item_780_07["separated_from"])
       end
     end
   end
@@ -864,7 +866,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with continued_by" do
       visit "catalog/#{item_785_00['doc_id']}"
       within "dd.blacklight-continued_by_display" do
-        expect(page).to have_text(item_785_00['continued_by'])
+        expect(page).to have_text(item_785_00["continued_by"])
       end
     end
 
@@ -872,7 +874,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with continued_in_part_by" do
       visit "catalog/#{item_785_03['doc_id']}"
       within "dd.blacklight-continued_in_part_by_display" do
-        expect(page).to have_text(item_785_03['continued_in_part_by'])
+        expect(page).to have_text(item_785_03["continued_in_part_by"])
       end
     end
 
@@ -880,7 +882,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with absorbed_by" do
       visit "catalog/#{item_785_04['doc_id']}"
       within "dd.blacklight-absorbed_by_display" do
-        expect(page).to have_text(item_785_04['absorbed_by'])
+        expect(page).to have_text(item_785_04["absorbed_by"])
       end
     end
 
@@ -888,7 +890,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with absorbed_in_part_by" do
       visit "catalog/#{item_785_05['doc_id']}"
       within "dd.blacklight-absorbed_in_part_by_display" do
-        expect(page).to have_text(item_785_05['absorbed_in_part_by'])
+        expect(page).to have_text(item_785_05["absorbed_in_part_by"])
       end
     end
 
@@ -896,7 +898,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with split_into" do
       visit "catalog/#{item_785_06['doc_id']}"
       within "dd.blacklight-split_into_display" do
-        expect(page).to have_text(item_785_06['split_into'])
+        expect(page).to have_text(item_785_06["split_into"])
       end
     end
 
@@ -904,7 +906,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with merged_to_form_into" do
       visit "catalog/#{item_785_07['doc_id']}"
       within "dd.blacklight-merged_to_form_display" do
-        expect(page).to have_text(item_785_07['merged_to_form'])
+        expect(page).to have_text(item_785_07["merged_to_form"])
       end
     end
 
@@ -912,7 +914,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with changed_back_to" do
       visit "catalog/#{item_785_08['doc_id']}"
       within "dd.blacklight-changed_back_to_display" do
-        expect(page).to have_text(item_785_08['changed_back_to'])
+        expect(page).to have_text(item_785_08["changed_back_to"])
       end
     end
   end
@@ -922,7 +924,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with isbn" do
       visit "catalog/#{item_020['doc_id']}"
       within "dd.blacklight-isbn_display" do
-        expect(page).to have_text(item_020['isbn'])
+        expect(page).to have_text(item_020["isbn"])
       end
     end
   end
@@ -932,7 +934,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with issn" do
       visit "catalog/#{item_022['doc_id']}"
       within "dd.blacklight-issn_display" do
-        expect(page).to have_text(item_022['issn'])
+        expect(page).to have_text(item_022["issn"])
       end
     end
   end
@@ -942,7 +944,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with lccn" do
       visit "catalog/#{item_010['doc_id']}"
       within "dd.blacklight-lccn_display" do
-        expect(page).to have_text(item_010['lccn'])
+        expect(page).to have_text(item_010["lccn"])
       end
     end
   end
@@ -952,7 +954,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with gpo" do
       visit "catalog/#{item_074['doc_id']}"
       within "dd.blacklight-gpo_display" do
-        expect(page).to have_text(item_074['gpo'])
+        expect(page).to have_text(item_074["gpo"])
       end
     end
   end
@@ -962,7 +964,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with gpo" do
       visit "catalog/#{item_001['doc_id']}"
       within "dd.blacklight-alma_mms_display" do
-        expect(page).to have_text(item_001['alma_mms'])
+        expect(page).to have_text(item_001["alma_mms"])
       end
     end
   end
@@ -972,7 +974,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with pub no" do
       visit "catalog/#{item_028['doc_id']}"
       within "dd.blacklight-pub_no_display" do
-        expect(page).to have_text(item_028['pub_no'])
+        expect(page).to have_text(item_028["pub_no"])
       end
     end
   end
@@ -981,21 +983,21 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_086) { fixtures.fetch("sudoc_086") }
     scenario "User visits a document with sudoc indicator1 value unassigned" do
       visit "catalog/#{item_086['doc_id']}"
-        expect(page).to_not have_text(item_086['sudoc'])
+      expect(page).to_not have_text(item_086["sudoc"])
     end
 
     let (:item_086_0) { fixtures.fetch("sudoc_086_0") }
     scenario "User visits a document with sudoc indicator1 value 0" do
       visit "catalog/#{item_086_0['doc_id']}"
       within "dd.blacklight-sudoc_display" do
-        expect(page).to have_text(item_086_0['sudoc'])
+        expect(page).to have_text(item_086_0["sudoc"])
       end
     end
 
     let (:item_086_1) { fixtures.fetch("sudoc_086_1") }
     scenario "User visits a document with udoc indicator1 value1" do
       visit "catalog/#{item_086_1['doc_id']}"
-        expect(page).to_not have_text(item_086_1['sudoc'])
+      expect(page).to_not have_text(item_086_1["sudoc"])
     end
   end
 
@@ -1004,7 +1006,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with url indicator2 value0" do
       visit "catalog/#{item_856_0['doc_id']}"
       within "dd.blacklight-url_resource_display" do
-        expect(page).to have_text(item_856_0['url'])
+        expect(page).to have_text(item_856_0["url"])
         expect(page).to have_link("#{item_856_0['url']}", href: "#{item_856_0['url_href']}")
       end
     end
@@ -1013,7 +1015,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with url indicator2 value1 no text match" do
       visit "catalog/#{item_856_1['doc_id']}"
       within "dd.blacklight-url_resource_display" do
-        expect(page).to have_text(item_856_1['url'])
+        expect(page).to have_text(item_856_1["url"])
         expect(page).to have_link("#{item_856_1['url']}", href: "#{item_856_1['url_href']}")
       end
     end
@@ -1022,7 +1024,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with url indicator2 value2" do
       visit "catalog/#{item_856_2['doc_id']}"
       within "dd.blacklight-url_more_links_display" do
-        expect(page).to have_text(item_856_2['url'])
+        expect(page).to have_text(item_856_2["url"])
         expect(page).to have_link("#{item_856_2['url']}", href: "#{item_856_2['url_href']}")
       end
     end
@@ -1031,7 +1033,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with url indicator2 value1 text match" do
       visit "catalog/#{item_856_more_1['doc_id']}"
       within "dd.blacklight-url_more_links_display" do
-        expect(page).to have_text(item_856_more_1['url_1'])
+        expect(page).to have_text(item_856_more_1["url_1"])
         expect(page).to have_link("#{item_856_more_1['url']}", href: "#{item_856_more_1['url_href']}")
       end
     end
@@ -1042,7 +1044,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry language" do
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item['language'])
+        expect(page).to have_text(item["language"])
       end
     end
 
@@ -1050,7 +1052,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry language other than English" do
       visit "catalog/#{item_jpn['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_jpn['language'])
+        expect(page).to have_text(item_jpn["language"])
       end
     end
 
@@ -1058,7 +1060,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041" do
       visit "catalog/#{item_041_a['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_a['language'])
+        expect(page).to have_text(item_041_a["language"])
       end
     end
 
@@ -1066,7 +1068,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041" do
       visit "catalog/#{item_041_d['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_d['language'])
+        expect(page).to have_text(item_041_d["language"])
       end
     end
 
@@ -1074,7 +1076,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041" do
       visit "catalog/#{item_041_e['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_e['language'])
+        expect(page).to have_text(item_041_e["language"])
       end
     end
 
@@ -1082,7 +1084,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041" do
       visit "catalog/#{item_041_g['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_g['language'])
+        expect(page).to have_text(item_041_g["language"])
       end
     end
 
@@ -1090,7 +1092,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with entry languages code specified in field 041" do
       visit "catalog/#{item_041_j['doc_id']}"
       within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_j['language'])
+        expect(page).to have_text(item_041_j["language"])
       end
     end
   end
@@ -1100,7 +1102,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with format field" do
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-format" do
-        expect(page).to have_text(item['format'])
+        expect(page).to have_text(item["format"])
       end
     end
   end
