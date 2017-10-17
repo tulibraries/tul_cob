@@ -6,9 +6,9 @@
 
 if Rake.application.top_level_tasks.any? { |arg| arg.match(/^docker/) }
   # We connot assume that bundle install has run on the host.
-  require_relative 'lib/tasks/docker'
+  require_relative "lib/tasks/docker"
 else
-  require_relative 'config/application'
+  require_relative "config/application"
 
   Rails.application.load_tasks
 
