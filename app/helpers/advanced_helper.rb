@@ -80,9 +80,9 @@ module BlacklightAdvancedSearch
         end
       end
       @keyword_queries
-      end
     end
   end
+end
 
 module BlacklightAdvancedSearch
   module ParsingNestingParser
