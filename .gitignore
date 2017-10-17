@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+*tags
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
