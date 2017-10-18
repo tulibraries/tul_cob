@@ -3,10 +3,11 @@ module BlacklightAlmaHelper
   include BlacklightAlma::HelperBehavior
 
   def alma_service_type_for_fulfillment_url(document)
+    return false if document['availability_facet'].nil?
     if document['availability_facet'].include?("Online")
-      output = 'viewit'
+      'viewit'
     else
-      output = 'getit'
+      'getit'
     end
   end
 end
