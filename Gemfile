@@ -63,6 +63,7 @@ group :development, :test do
   gem 'guard-shell'
   gem 'launchy'
   gem 'foreman'
+  gem 'vcr'
 end
 
 gem 'rsolr', '~> 1.0'
