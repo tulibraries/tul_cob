@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe SearchController, type: :controller do
+RSpec.describe BentoSearch, type: :search_engine do
   primo_se = BentoSearch.get_engine("primo")
   blacklight_se = BentoSearch.get_engine("blacklight")
 
