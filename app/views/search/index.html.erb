@@ -7,7 +7,7 @@
 
         <p></p>
 
-        <%= form_tag({}, :method=> "get", :class => "well form-search", :style => 'display: none') do %>
+        <%= form_tag({}, :method=> "get", :class => "well form-search") do %>
 
             Search: <%= search_field_tag 'q', params[:q], :class => "search-query" %>
 
