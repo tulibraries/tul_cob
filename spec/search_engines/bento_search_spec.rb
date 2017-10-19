@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "vcr"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.default_cassette_options = {
+    match_requests_on: [:method]
+  }
+end
 
 RSpec.describe BentoSearch, type: :search_engine do
   primo_se = BentoSearch.get_engine("primo")
