@@ -22,6 +22,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] ||= "dismax"
     config.advanced_search[:form_solr_parameters] ||= {}
+
     config.advanced_search[:form_solr_parameters]["facet.field"] ||=
       %w[format library_facet]
 
@@ -34,6 +35,7 @@ class CatalogController < ApplicationController
           score
           author_display
           author_vern_display
+          availability_facet
           creator_display
           format
           imprint_display
@@ -70,7 +72,7 @@ class CatalogController < ApplicationController
           text
         ].join(" ")
       }
-
+    
     # solr field configuration for search results/index views
     config.index.title_field = "title_statement_display"
     config.index.display_type_field = "format"
