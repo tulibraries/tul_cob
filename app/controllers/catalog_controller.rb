@@ -35,6 +35,7 @@ class CatalogController < ApplicationController
         score
         author_display
         author_vern_display
+        availability_facet
         creator_display
         format
         imprint_display
