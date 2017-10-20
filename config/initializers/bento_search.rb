@@ -2,6 +2,10 @@
 
 BentoSearch.register_engine("blacklight") do |conf|
   conf.engine = "BentoSearch::BlacklightEngine"
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+  end
+
 end
 
 BentoSearch.register_engine("primo") do |conf|
@@ -11,4 +15,7 @@ BentoSearch.register_engine("primo") do |conf|
   conf.scope = Rails.configuration.bento[:primo][:scope]
   conf.vid = Rails.configuration.bento[:primo][:vid]
   conf.web_ui_base_url = Rails.configuration.bento[:primo][:web_ui_base_url]
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+  end
 end

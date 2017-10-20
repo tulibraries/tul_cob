@@ -39,7 +39,8 @@ class BentoSearch::PrimoEngine
     BentoSearch::ResultItem.new({
       title: item.fetch("title", ""),
       authors: authors(item),
-      link: build_primo_url(item)
+      publisher: item.fetch("isPartOf", "None found"),
+      link: build_primo_url(item),
       })
   end
 
