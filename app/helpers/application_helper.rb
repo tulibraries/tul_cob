@@ -62,12 +62,16 @@ module ApplicationHelper
       alma_build_openurl(query)
     end
 
-    def electronic_resource(args)
-      new_link = args[:document][args[:field]].each_with_index.map { |field, i|
-        if args[:value][i].tr('|', '').scan(/\D/).empty?
-          content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(args[:value][i].split("|").first)), class: "list_items")
+    def electronic_resource_link_builder(args)
+      new_link = args[:document][args[:field]].map { |field|
+        electronic_resource_from_traject = field.split("|")
+        portfolio_pid = electronic_resource_from_traject.first
+        database_name = electronic_resource_from_traject.second
+
+        if electronic_resource_from_traject.length == 1
+          content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
         else
-          content_tag(:li, link_to(args[:value][i].split("|").second, alma_electronic_resource_direct_link(args[:value][i].split("|").first)), class: "list_items")
+          content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
         end
        }
       new_link.join("<br />").html_safe

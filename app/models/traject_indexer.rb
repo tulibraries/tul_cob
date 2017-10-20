@@ -214,8 +214,8 @@ end
 
 to_field('electronic_resource_display') do |rec, acc|
   rec.fields('PRT').each do |f|
-    joined_subfields = [f['a'], f['c'], f['g']].join('|')
-    acc << joined_subfields
+    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
+    acc << selected_subfields
   end
 end
 

@@ -165,8 +165,8 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    
-    config.add_show_field 'electronic_resource_display', label: 'Status/Location', :helper_method => :electronic_resource
+
+    config.add_show_field 'electronic_resource_display', label: 'Status/Location', :helper_method => :electronic_resource_link_builder
     config.add_show_field 'title_statement_vern_display', label: 'Title Statement'
     config.add_show_field 'title_uniform_display', label: 'Uniform title'
     config.add_show_field 'title_uniform_vern_display', label: 'Uniform title'
