@@ -42,7 +42,42 @@ module ApplicationHelper
     new_link.join("<br />").html_safe
   end
 
-  def bento_engine_nice_name(engine_id)
-    I18n.t("bento.#{engine_id}.nice_name")
+  def alma_build_openurl(query)
+    query_defaults = {
+      rfr_id: 'info:sid/primo.exlibrisgroup.com',
+    }
+
+    URI::HTTPS.build(
+        host: alma_domain,
+        path: "/view/uresolver/#{alma_institution_code}/openurl",
+        query: query_defaults.merge(query).to_query).to_s
+    end
+
+    def alma_electronic_resource_direct_link(portfolio_pid)
+      query = {
+          'u.ignore_date_coverage': 'true',
+          'Force_direct': true,
+          portfolio_pid: portfolio_pid
+      }
+      alma_build_openurl(query)
+    end
+
+    def electronic_resource_link_builder(args)
+      new_link = args[:document][args[:field]].map { |field|
+        electronic_resource_from_traject = field.split("|")
+        portfolio_pid = electronic_resource_from_traject.first
+        database_name = electronic_resource_from_traject.second
+
+        if electronic_resource_from_traject.length == 1
+          content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
+        else
+          content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
+        end
+       }
+      new_link.join("<br />").html_safe
+    end
+
+    def bento_engine_nice_name(engine_id)
+      I18n.t("bento.#{engine_id}.nice_name")
+    end
   end
-end

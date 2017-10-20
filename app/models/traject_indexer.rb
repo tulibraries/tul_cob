@@ -212,6 +212,13 @@ to_field 'url_more_links_display' do |rec, acc|
   end
 end
 
+to_field('electronic_resource_display') do |rec, acc|
+  rec.fields('PRT').each do |f|
+    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
+    acc << selected_subfields
+  end
+end
+
 #Availability
 
 to_field "availability_facet" do |rec, acc|
