@@ -10,8 +10,7 @@ RSpec.describe BentoSearch, type: :search_engine do
   end
 
 
-  let(:expected_fields) { Rails.configuration.bento["expected_fields"]
-    .map { |f| f.to_sym } }
+  let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
   describe "Bento Blacklight Search Engine" do
     let (:item) { blacklight_search_results[0] }

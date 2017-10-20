@@ -9,8 +9,7 @@ RSpec.describe BentoSearch, type: :search_engine do
     primo_se.search("james")
   end
 
-  let(:expected_fields) { Rails.configuration.bento["expected_fields"]
-    .map { |f| f.to_sym } }
+  let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
   describe "Bento  Primo Search Engine" do
     let (:item) { primo_search_results[0] }

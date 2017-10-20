@@ -1,11 +1,6 @@
 
 
 default: &default
-  expected_fields:
-    - "title"
-    - "authors"
-    - "publisher"
-    - "link"
   primo:
     api_base_url: "api-na.hosted.exlibrisgroup.com"
     apikey: "YOUR LONG API KEY HERE"

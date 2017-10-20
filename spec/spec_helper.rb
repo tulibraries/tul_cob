@@ -124,6 +124,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.add_setting :bento_expected_fields,
+    default: [ :title, :authors, :publisher, :link ]
 end
 
 VCR.configure do |config|
