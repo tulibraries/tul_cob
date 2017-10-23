@@ -110,44 +110,34 @@ end
 
 module BlacklightAdvancedSearch
   module RenderConstraintsOverride
-    def guided_search(my_params = params)
-      constraints = []
-      unless my_params[:q1].blank?
-        label = search_field_def_for_key(my_params[:f1])[:label]
-        query = my_params[:q1]
-        constraints << render_constraint_element(
+    # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query
+    # We need this in order to render multiple clearable buttons on advanced searches.
+    def render_constraints_query(my_params = params)
+      buttons = guided_search.map { |s|
+        label, query, action = s
+
+        render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f1, :q1], my_params))
+          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
         )
-      end
-      unless my_params[:q2].blank?
-        label = search_field_def_for_key(my_params[:f2])[:label]
-        query = my_params[:q2]
-        query = 'NOT ' + my_params[:q2] if my_params[:op2] == 'NOT'
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f2, :q2, :op2], my_params))
-        )
-      end
-      unless my_params[:q3].blank?
-        label = search_field_def_for_key(my_params[:f3])[:label]
-        query = my_params[:q3]
-        query = 'NOT ' + my_params[:q3] if my_params[:op3] == 'NOT'
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query([:f3, :q3, :op3], my_params))
-        )
-      end
-      constraints
+      }.flatten
+
+      safe_join(buttons, "\n")
     end
 
-    def render_constraints_query(my_params = params)
-      if advanced_query.nil? || advanced_query.keyword_queries.empty?
-        super(my_params)
-      else
-        content = guided_search
-        safe_join(content.flatten, "\n")
-      end
+    def guided_search(my_params = params)
+      my_params.select { |p| p.match(/^q/) }
+        .to_unsafe_h.with_indifferent_access
+        .select { |q, v| ! my_params[q].blank? }
+        .map { |q, v|
+
+        position = q.to_s.scan(/\d+$/)[0]
+        f = "f#{position}".to_sym
+        op = "op#{position}".to_sym
+        label = search_field_def_for_key(my_params[f])[:label]
+        query = my_params[op].to_s + " " + my_params[q]
+        [label, query, [f, q, op]]
+      }
     end
   end
 end
