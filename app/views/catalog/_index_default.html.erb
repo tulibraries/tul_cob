@@ -1,13 +1,29 @@
 <% doc_presenter = index_presenter(document) %>
 <%# default partial to display solr document fields in catalog index view -%>
 <dl class="document-metadata dl-horizontal dl-invert">
-
   <% index_fields(document).each do |field_name, field| -%>
-      <% if should_render_index_field? document, field %>
-          <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
-          <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
-      <% end -%>
+    <% if should_render_index_field? document, field %>
+      <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+      <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
+    <% end -%>
   <% end -%>
+
+  <% @response["response"][:docs].each_with_index {|field, i| %>
+    <% if document["availability_facet"][i] == "Online" %>
+      <button class="btn btn-sm btn-info" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
+      <div id="online-document-<%= document_counter %>" class="collapse">
+        <% doc_presenter = show_presenter(document) %>
+        <% document_show_fields(document).each do |field_name, field| -%>
+          <% if field_name == 'electronic_resource_display' %>
+            <% if should_render_show_field? document, field %>
+	            <dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= doc_presenter.field_value field_name %></dd>
+            <% end -%>
+          <% end -%>
+        <% end -%>
+      </div>
+    <% end %>
+  <% } %>
+
 
   <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
   <dt class="availability-show-on-ajax-load hide"></dt>
@@ -15,5 +31,7 @@
     <button class="btn btn-default availability-toggle-details" data-show-text="Show Availability Details" data-hide-text="Hide Availability Details">Show Availability Details</button>
   </dd>
 </dl>
+
+
 
 <div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>

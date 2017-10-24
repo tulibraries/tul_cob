@@ -37,6 +37,7 @@ class CatalogController < ApplicationController
         author_vern_display
         availability_facet
         creator_display
+        electronic_resource_display
         format
         imprint_display
         pub_date
@@ -163,7 +164,6 @@ class CatalogController < ApplicationController
     config.add_index_field 'imprint_display', label: 'Published'
     config.add_index_field 'creator_display', label: 'Author/creator'
     config.add_index_field 'format', label: 'Resource Type'
-
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
