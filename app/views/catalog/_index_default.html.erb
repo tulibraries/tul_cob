@@ -16,7 +16,9 @@
         <% document_show_fields(document).each do |field_name, field| -%>
           <% if field_name == 'electronic_resource_display' %>
             <% if should_render_show_field? document, field %>
-	            <dd class="blacklight-<%= field_name.parameterize %> col-md-9"><%= doc_presenter.field_value field_name %></dd>
+            <ul>
+	            <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
+            </ul>
             <% end -%>
           <% end -%>
         <% end -%>
@@ -24,13 +26,14 @@
     <% end %>
   <% } %>
 
-
+  <% if document["availability_facet"] == "At the Library" %>
   <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
   <dt class="availability-show-on-ajax-load hide"></dt>
   <dd class="availability-show-on-ajax-load hide">
     <button class="btn btn-default availability-toggle-details" data-show-text="Show Availability Details" data-hide-text="Hide Availability Details">Show Availability Details</button>
   </dd>
 </dl>
+<% end %>
 
 
 
