@@ -24,17 +24,16 @@
         <% end -%>
       </div>
     <% end %>
+
+    <% if document["availability_facet"][i] == "At the Library" %>
+      <button class="btn btn-sm btn-success" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">Available</button>
+      <div id="physical-document-<%= document_counter %>" class="collapse">
+        <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
+        <dt class="availability-show-on-ajax-load hide"></dt>
+        <dd class="availability-show-on-ajax-load hide">
+          <button class="btn btn-default availability-toggle-details" data-show-text="Show Availability Details" data-hide-text="Hide Availability Details">Show Availability Details</button>
+        </dd>
+        <div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>
+    <% end %>
   <% } %>
-
-  <% if document["availability_facet"] == "At the Library" %>
-  <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
-  <dt class="availability-show-on-ajax-load hide"></dt>
-  <dd class="availability-show-on-ajax-load hide">
-    <button class="btn btn-default availability-toggle-details" data-show-text="Show Availability Details" data-hide-text="Hide Availability Details">Show Availability Details</button>
-  </dd>
 </dl>
-<% end %>
-
-
-
-<div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>
