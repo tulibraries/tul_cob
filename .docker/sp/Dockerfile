@@ -8,7 +8,9 @@ RUN apt-get update -qq \
       apache2 \
       libapache2-mod-shib2 \
       libapache2-mod-passenger \
-      && apt-get clean
+      && apt-get clean \
+      && a2enmod ssl
+
 
 RUN cd /etc/shibboleth/ \
     && shib-keygen
