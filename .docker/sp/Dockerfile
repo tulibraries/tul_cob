@@ -22,8 +22,8 @@ ADD Gemfile .
 ADD Gemfile.lock .
 
 COPY bin/httpd-foreground /usr/local/bin/
-COPY .docker/etc-shibboleth /etc/shibboleth/
-COPY .docker/etc-apache-sites-enabled/conf.d/sp.conf /etc/apache2/sites-enabled/000-default.conf
+COPY .docker/sp/etc-shibboleth /etc/shibboleth/
+COPY .docker/sp/etc-apache-sites-enabled/conf.d/sp.conf /etc/apache2/sites-enabled/000-default.conf
 
 RUN bundle install
 

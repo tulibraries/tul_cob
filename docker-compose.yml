@@ -18,7 +18,11 @@ services:
       LC_ALL: "C.UTF-8"
 
   sp:
-    build: .docker/sp
+    build:
+      context: .
+      dockerfile: .docker/sp/Dockerfile
+    ports:
+      - "443"
     volumes:
       - .:/var/www/html/tul_cob
 
