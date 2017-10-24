@@ -9,7 +9,8 @@ RUN apt-get update -qq \
       libapache2-mod-shib2 \
       libapache2-mod-passenger \
       && apt-get clean \
-      && a2enmod ssl
+      && a2enmod ssl \
+      && a2enmod proxy_http
 
 
 RUN cd /etc/shibboleth/ \
