@@ -6,4 +6,7 @@ set -e
 # Apache gets grumpy about PID files pre-existing
 rm -f /usr/local/apache2/logs/httpd.pid
 
+# Make sure shib module loads first or passenger will override path.
+mv /etc/apache2/mods-enabled/shib2.load /etc/apache2/mods-enabled/000-shib2.load 2> /dev/null
+
 exec apachectl -DFOREGROUND
