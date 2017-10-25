@@ -12,24 +12,14 @@ RUN apt-get update -qq \
       && a2enmod ssl \
       && a2enmod proxy_http
 
-
-RUN cd /etc/shibboleth/ \
-    && shib-keygen
-
-RUN mkdir /var/www/html/tul_cob
-
-WORKDIR /var/www/html/tul_cob
-
 ADD Gemfile .
 
 ADD Gemfile.lock .
 
-COPY bin/httpd-foreground /usr/local/bin/
-COPY .docker/sp/etc-shibboleth /etc/shibboleth/
-COPY .docker/sp/etc-apache-sites-enabled/conf.d/sp.conf /etc/apache2/sites-enabled/000-default.conf
-
 RUN bundle install
 
-EXPOSE 80 443
+WORKDIR /var/www/html/tul_cob
+
+COPY bin/httpd-foreground /usr/local/bin/
 
 CMD ["httpd-foreground"]

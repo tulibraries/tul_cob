@@ -27,9 +27,10 @@ services:
       - "80"
       - "443"
     volumes:
-      - .docker/sp/etc-apache-sites-enabled/conf.d/sp.conf:/etc/apache2/sites-enabled/000-default.conf
       - .:/var/www/html/tul_cob
+      - .docker/sp/etc-apache-sites-enabled/conf.d/sp.conf:/etc/apache2/sites-enabled/000-default.conf
       - .docker/sp/etc-apache-ssl:/etc/apache2/ssl
+      - .docker/sp/etc-shibboleth:/etc/shibboleth
     environment:
       SOLR_URL: "http://solr:8983/solr/blacklight"
       LC_ALL: "C.UTF-8"
