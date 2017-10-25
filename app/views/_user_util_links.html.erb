@@ -13,7 +13,8 @@
             </li>
         <% else %>
             <li>
-              <%= link_to t('blacklight.header_links.login'), user_alma_omniauth_authorize_path %>            </li>
+              <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+            </li>
         <% end %>
       </ul>
   <% end %>

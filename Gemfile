@@ -73,7 +73,6 @@ gem 'alma', '~> 0.2.4'
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem 'hashie', '~>3.4.6'
 gem 'omniauth'
-gem 'omniauth-alma', git: 'https://github.com/tulibraries/omniauth-alma.git'
 gem 'blacklight_alma', git: "https://github.com/tulibraries/blacklight_alma.git"
 gem 'ezwadl'
 gem 'awesome_print'
