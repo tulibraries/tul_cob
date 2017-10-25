@@ -7,6 +7,9 @@ set -e
 rm -f /usr/local/apache2/logs/httpd.pid
 
 # Make sure shib module loads first or passenger will override path.
-mv /etc/apache2/mods-enabled/shib2.load /etc/apache2/mods-enabled/000-shib2.load 2> /dev/null
+APACHE_MOD_PATH=/etc/apache2/mods-enabled
+if [ ! -e ${APACHE_MOD_PATH}/000-shib2.load ]; then
+  mv ${APACHE_MOD_PATH}/shib2.load ${APACHE_MOD_PATH}/000-shib2.load
+fi
 
 exec apachectl -DFOREGROUND
