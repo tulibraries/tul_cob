@@ -16,10 +16,10 @@
           <% if should_render_show_field? document, field %>
             <% if document[field_name].length == 1 %>
             <%# require 'pry'; binding.pry %>
-              <%= button_to "Online", single_link_builder(document[field_name][i]), class:"btn btn-sm btn-info" %>
+              <%= button_to "Online", single_link_builder(document[field_name][i]), class:"collapse-button btn btn-sm btn-info" %>
             <% else %>
-              <button class="btn btn-sm btn-info" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
-              <div id="online-document-<%= document_counter %>" class="collapse">
+              <button class="btn btn-sm btn-info collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
+              <div id="online-document-<%= document_counter %>" class="collapse online_resources">
                 <ul>
   	              <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
                 </ul>
@@ -31,13 +31,9 @@
     <% end %>
 
     <% if document["availability_facet"][i] == "At the Library" %>
-      <button class="btn btn-sm btn-success" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">Available</button>
+      <button class="btn btn-sm btn-success availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>" data-show-text="">Check Availability</button>
+      <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
       <div id="physical-document-<%= document_counter %>" class="collapse">
-        <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
-        <dt class="availability-show-on-ajax-load hide"></dt>
-        <dd class="availability-show-on-ajax-load hide">
-          <button class="btn btn-default availability-toggle-details" data-show-text="Show Availability Details" data-hide-text="Hide Availability Details">Show Availability Details</button>
-        </dd>
         <div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>
     <% end %>
   <% } %>
