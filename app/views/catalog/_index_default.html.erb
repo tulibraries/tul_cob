@@ -10,19 +10,24 @@
 
   <% @response["response"][:docs].each_with_index {|field, i| %>
     <% if document["availability_facet"][i] == "Online" %>
-      <button class="btn btn-sm btn-info" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
-      <div id="online-document-<%= document_counter %>" class="collapse">
-        <% doc_presenter = show_presenter(document) %>
-        <% document_show_fields(document).each do |field_name, field| -%>
-          <% if field_name == 'electronic_resource_display' %>
-            <% if should_render_show_field? document, field %>
-            <ul>
-	            <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
-            </ul>
-            <% end -%>
+      <% doc_presenter = show_presenter(document) %>
+      <% document_show_fields(document).each do |field_name, field| -%>
+        <% if field_name == 'electronic_resource_display' %>
+          <% if should_render_show_field? document, field %>
+            <% if document[field_name].length == 1 %>
+            <%# require 'pry'; binding.pry %>
+              <%= button_to "Online", single_link_builder(document[field_name][i]), class:"btn btn-sm btn-info" %>
+            <% else %>
+              <button class="btn btn-sm btn-info" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
+              <div id="online-document-<%= document_counter %>" class="collapse">
+                <ul>
+  	              <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
+                </ul>
+              </div>
+            <% end %>
           <% end -%>
         <% end -%>
-      </div>
+      <% end -%>
     <% end %>
 
     <% if document["availability_facet"][i] == "At the Library" %>

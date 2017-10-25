@@ -63,11 +63,10 @@ module ApplicationHelper
     end
 
     def electronic_resource_link_builder(args)
-      new_link = args[:document][args[:field]].map { |field|
+      new_link = args[:document][args[:field]].each_with_index.map { |field|
         electronic_resource_from_traject = field.split("|")
         portfolio_pid = electronic_resource_from_traject.first
         database_name = electronic_resource_from_traject.second
-
         if electronic_resource_from_traject.length == 1
           content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
         else
@@ -75,6 +74,11 @@ module ApplicationHelper
         end
        }
       new_link.join("<br />").html_safe
+    end
+
+    def single_link_builder(document)
+      portfolio_pid = document.scan(/\d/).join("")
+      alma_electronic_resource_direct_link(portfolio_pid)
     end
 
     def bento_engine_nice_name(engine_id)
