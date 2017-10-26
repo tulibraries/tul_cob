@@ -922,6 +922,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield ind1=' ' ind2=' ' tag='HLD'>
+    </datafield>
   </record>
   <record>
     <leader>01732nas a2200433u  4500</leader>
@@ -24480,6 +24482,8 @@
     <subfield code="l">pstk </subfield>
     <subfield code="g">1</subfield>
   </datafield>
+  <datafield tag="HLD" ind1=" " ind2=" ">
+  </datafield>
 </record>
 <record>
   <leader>02526nas a2200829   4500</leader>
@@ -24806,6 +24810,10 @@
     <subfield code="l">kstk </subfield>
     <subfield code="u">v.v.30</subfield>
     <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="PRT" ind1=" " ind2=" ">
+    <subfield code="a">53394076770003811</subfield>
+    <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
   </datafield>
 </record>
 
