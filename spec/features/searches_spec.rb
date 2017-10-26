@@ -26,11 +26,12 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    scenario "Search creator" do
+    scenario "Search book creator" do
       visit '/'
       fill_in 'q', with: item['creator']
       click_button 'Search'
-      within(".document-position-0 h3") do
+      save_and_open_page
+      within first(".document-position-0 h3") do
         expect(page).to have_text item['title']
       end
     end
@@ -64,6 +65,7 @@ RSpec.feature "Searches", type: :feature do
     end
 
     scenario "Search content" do
+      skip "TBD"
       visit '/'
       fill_in 'q', with: item['content']
       click_button 'Search'
@@ -120,7 +122,7 @@ RSpec.feature "Searches", type: :feature do
       end
     end
 
-    scenario "Search creator" do
+    scenario "Search journal creator" do
       visit '/'
       fill_in 'q', with: item['creator']
       click_button 'Search'

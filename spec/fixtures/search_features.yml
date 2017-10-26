@@ -12,6 +12,7 @@ book_search:
   subject: "Internet industry"
   isbn: "9780313351273"
   lccn: "2008030541"
+  availability_facet: "At the Library"
 journal_search:
   doc_id: "991013867929703811"
   title: "Annual review of public health."
@@ -24,3 +25,4 @@ journal_search:
   subject: "Public health — Periodicals"
   issn: 0163-7525
   lccn: 80644745
+  availability_facet: "Online"
