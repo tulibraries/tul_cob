@@ -8,7 +8,8 @@ module BlacklightAlmaHelper
   # records may have both physical and electronic holdings: This guarantees
   # that we always "viewit" in the case of an "Online" record.
   def alma_service_type_for_fulfillment_url(document = {})
-    if document.to_h["availability_facet"].to_a.include?("Online")
+    document ||= {}
+    if document.fetch("availability_facet", []).include?("Online")
       "viewit"
     else
       "getit"

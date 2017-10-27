@@ -134,7 +134,8 @@ module BlacklightAdvancedSearch
         position = q.to_s.scan(/\d+$/)[0]
         f = "f#{position}".to_sym
         op = "op#{position}".to_sym
-        label = search_field_def_for_key(my_params[f])[:label]
+        field = search_field_def_for_key(my_params[f]).to_h
+        label = field[:label].to_s
         query = my_params[op].to_s + " " + my_params[q]
         [label, query, [f, q, op]]
       }
