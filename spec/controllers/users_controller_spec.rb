@@ -7,7 +7,7 @@ RSpec.describe UsersController, type: :controller do
       DatabaseCleaner.clean
       DatabaseCleaner.strategy = :truncation
       OmniAuth.config.test_mode = true
-      user = FactoryGirl.create :user
+      user = FactoryBot.create :user
       OmniAuth.config.mock_auth[:alma] = OmniAuth::AuthHash.new({
         email: user.email,
         created_at: user.created_at,
