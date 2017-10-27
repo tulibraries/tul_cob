@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       DatabaseCleaner.clean
     end
 
-    let(:patron_account) { FactoryGirl.build(:user) }
+    let(:patron_account) { FactoryBot.build(:user) }
     let(:loans) {
       [{
         title: "History",
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "Authentication services" do
-    let(:new_user) { FactoryGirl.build(:user) }
+    let(:new_user) { FactoryBot.build(:user) }
     let(:authorized_user) { User.from_omniauth(new_user) }
 
     it "creates a valid omniauth user" do
