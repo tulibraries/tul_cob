@@ -1,8 +1,10 @@
+require "library_stdnums"
+
 module Traject
   module Macros
     # To use the marc_format macro, in your configuration file:
     #
-    #     require 'traject/macros/marc_format_classifier'
+    #     require "traject/macros/marc_format_classifier"
     #     extend Traject::Macros::MarcFormats
     #
     #     to_field "format", marc_formats
@@ -13,9 +15,10 @@ module Traject
       # very opionated macro that just adds a grab bag of format/genre/types
       # from our own custom vocabulary, all into one field.
       # You may want to build your own from MarcFormatClassifier functions instead.
-      #
+      NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
+
       def marc_formats
-        lambda do |record, accumulator|
+        Proc.new do |record, accumulator|
           accumulator.concat Traject::Macros::MarcFormatClassifier.new(record).formats
         end
       end
@@ -23,6 +26,201 @@ module Traject
       def four_digit_year(field)
         year = field.to_s.match(/[0-9]{4}/).to_s
         year unless year.empty?
+      end
+
+      def get_xml
+        Proc.new do |rec, acc|
+          acc << MARC::FastXMLWriter.encode(rec)
+        end
+      end
+
+      def to_single_string
+        Proc.new do |rec, acc|
+          acc.replace [acc.join(" ")] # turn it into a single string
+        end
+      end
+
+      def first_letters_only
+        Proc.new do |rec, acc|
+          # Just get the first letter to send to the translation map
+          acc.map! { |x| x[0] }
+        end
+      end
+
+      def extract_url_resource
+        Proc.new do |rec, acc|
+          rec.fields("856").each do |f|
+            case f.indicator2
+            when "0"
+              z3 = [f["z"], f["3"]].join(" ")
+              unless NOT_FULL_TEXT.match(z3)
+                if z3 == " "
+                  z3 = f["y"] || "Link to Resource"
+                  z3 << "|#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                else
+                  z3 << "|#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                end
+              end
+            when "2"
+              # do nothing
+            else
+              z3 = [f["z"], f["3"]].join(" ")
+              unless NOT_FULL_TEXT.match(z3)
+                if z3 == " "
+                  z3 = f["y"] || "Link to Resource"
+                  z3 << "|#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                else
+                  z3 << "|#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                end
+              end
+            end
+          end
+        end
+      end
+
+      def extract_url_more_links
+        lambda { |rec, acc|
+          rec.fields("856").each do |f|
+            case f.indicator2
+            when "2"
+              z3 = [f["z"], f["3"]].join(" ")
+              if z3 == " "
+                z3 = f["y"] || "Link to Resource"
+                z3 << "|#{f["u"]}" unless f["u"].nil?
+                acc << z3
+              else
+                z3 << "|#{f["u"]}" unless f["u"].nil?
+                acc << z3
+              end
+            when "0"
+              # do nothing
+            else
+              z3 = [f["z"], f["3"]].join(" ")
+              if NOT_FULL_TEXT.match(z3)
+                if z3 == " "
+                  z3 = f["y"] || "Link to Resource"
+                  z3 << "|#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                else
+                  z3 << " |#{f["u"]}" unless f["u"].nil?
+                  acc << z3
+                end
+              end
+            end
+          end
+        }
+      end
+
+      def extract_electronic_resource
+        lambda { |rec, acc|
+          rec.fields("PRT").each do |f|
+            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
+            acc << selected_subfields
+          end
+        }
+      end
+
+      def extract_availability
+        lambda { |rec, acc|
+          unless rec.fields("PRT").empty?
+            acc << "Online"
+          end
+          unless acc.include?("Online")
+            rec.fields(["856"]).each do |field|
+              z3 = [field["z"], field["3"]].join(" ")
+              unless NOT_FULL_TEXT.match(z3) || rec.fields("856").empty?
+                acc << "Online" if field.indicator1 == "4" && field.indicator2 != "2"
+              end
+            end
+          end
+          unless rec.fields("HLD").empty?
+            acc << "At the Library"
+          end
+        }
+      end
+
+      def extract_location
+        lambda { |rec, acc|
+          rec.fields("945").each do |field|
+            #Strip the values, as many come in with space padding
+            acc << field["l"].strip unless field["l"].nil?
+          end
+        }
+      end
+
+      def normalize_lc_alpha
+        Proc.new do |rec, acc|
+          alpha_pat = /\A([A-Z]{1,3})\d.*\Z/
+          acc.map! do |x|
+            (m = alpha_pat.match(x)) ? m[1] : nil
+          end
+          acc.compact! # eliminate nils
+        end
+      end
+
+      def  normalize_format
+        Proc.new do |rec, acc|
+          acc.delete("Print")
+          acc.delete("Online")
+          # replace Archival with Archival Material
+          acc.map! { |x| x == "Archival" ? "Archival Material" : x }.flatten!
+          # replace Conference with Conference Proceedings
+          acc.map! { |x| x == "Conference" ? "Conference Proceedings" : x }.flatten!
+        end
+      end
+
+      def normalize_isbn
+        Proc.new do |rec, acc|
+          orig = acc.dup
+          acc.map! { |x| StdNum::ISBN.allNormalizedValues(x) }
+          acc << orig
+          acc.flatten!
+          acc.uniq!
+        end
+      end
+
+      def normalize_issn
+        Proc.new do |rec, acc|
+          orig = acc.dup
+          acc.map! { |x| StdNum::ISSN.normalize(x) }
+          acc << orig
+          acc.flatten!
+          acc.uniq!
+        end
+      end
+
+      def normalize_lccn
+        Proc.new do |rec, acc|
+          orig = acc.dup
+          acc.map! { |x| StdNum::LCCN.normalize(x) }
+          acc << orig
+          acc.flatten!
+          acc.uniq!
+        end
+      end
+
+      def extract_pub_date
+        Proc.new do |rec, acc|
+          rec.fields(["260"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil?
+          end
+
+          rec.fields(["264"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          end
+        end
+      end
+
+      def extract_copyright
+        Proc.new do |rec, acc|
+          rec.fields(["264"]).each do |field|
+            acc << four_digit_year(field["c"])  if field.indicator2 == "4"
+          end
+        end
       end
     end
 
@@ -47,7 +245,7 @@ module Traject
       # See also individual methods which you can use you seperate into
       # different facets or do other custom things.
       def formats(options = {})
-        options = {:default => "Other"}.merge(options)
+        options = { default: "Other" }.merge(options)
 
         formats = []
 
@@ -55,14 +253,14 @@ module Traject
 
         formats << "Archival" if archival?
 
-        # If it's a Dissertation, we decide it's NOT a book
+        # If it"s a Dissertation, we decide it"s NOT a book
         if thesis?
           formats.delete("Book")
           formats << "Dissertation/Thesis"
         end
 
         if proceeding?
-          formats <<  "Conference"
+          formats << "Conference"
         end
 
         if formats.empty?
@@ -86,28 +284,28 @@ module Traject
         marc_genre_leader = Traject::TranslationMap.new("marc_genre_leader")
         marc_genre_007    = Traject::TranslationMap.new("marc_genre_007")
 
-        results = marc_genre_leader[ record.leader.slice(6,2) ] ||
+        results = marc_genre_leader[ record.leader.slice(6, 2) ] ||
           marc_genre_leader[ record.leader.slice(6)] ||
-          record.find_all {|f| f.tag == "007"}.collect {|f| marc_genre_007[f.value.slice(0)]}
+          record.find_all { |f| f.tag == "007" }.collect { |f| marc_genre_007[f.value.slice(0)] }
 
         [results].flatten
       end
 
-      # Just checks if it has a 502, if it does it's considered a thesis
+      # Just checks if it has a 502, if it does it"s considered a thesis
       def thesis?
         @thesis_q ||= begin
-          ! record.find {|a| a.tag == "502"}.nil?
-        end
+                        ! record.find { |a| a.tag == "502" }.nil?
+                      end
       end
 
       # Just checks all $6xx for a $v "Congresses"
       def proceeding?
         @proceeding_q ||= begin
-          ! record.find do |field|
-            field.tag.slice(0) == '6' &&
-                field.subfields.find {|sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
-          end.nil?
-        end
+                            ! record.find do |field|
+                              field.tag.slice(0) == "6" &&
+                                field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
+                            end.nil?
+                          end
       end
 
       # Marked as archival
@@ -120,11 +318,9 @@ module Traject
       # downcased version of the gmd, or else empty string
       def normalized_gmd
         @gmd ||= begin
-          ((a245 = record['245']) && a245['h'] && a245['h'].downcase) || ""
-        end
+                   ((a245 = record["245"]) && a245["h"] && a245["h"].downcase) || ""
+                 end
       end
-
-
     end
   end
 end
