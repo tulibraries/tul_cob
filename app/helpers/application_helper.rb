@@ -47,7 +47,9 @@ module ApplicationHelper
   end
 
   def electronic_access_links(field)
-    new_link = content_tag(:li, link_to(field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, ''), field.split("|").last), class: "list_items") 
+    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, '')
+    link_url = field.split("|").last
+    new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
     new_link
   end
 
