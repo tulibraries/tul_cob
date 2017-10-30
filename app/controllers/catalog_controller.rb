@@ -51,7 +51,6 @@ class CatalogController < ApplicationController
       defType: "dismax",
       echoParams: "explicit",
       rows: "10",
-      q.alt: "*:*",
       mm: "2&lt;-1 5&lt;-2 6&lt;90%",
       ps: "3",
       tie: "0.01",
@@ -155,22 +154,7 @@ class CatalogController < ApplicationController
         subject_addl_t^10
       ].join(" "),
       facet: "true",
-      facet.mincount: "1",
-      facet.field: "format",
-      facet.field: "lc_1letter_facet",
-      facet.field: "lc_alpha_facet",
-      facet.field: "lc_b4cutter_facet",
-      facet.field: "language_facet",
-      facet.field: "pub_date",
-      facet.field: "subject_era_facet",
-      facet.field: "subject_geo_facet",
-      facet.field: "subject_topic_facet",
       spellcheck: "true",
-      spellcheck.dictionary: "default",
-      spellcheck.onlyMorePopular: "true",
-      spellcheck.extendedResults: "true",
-      spellcheck.collate: "false",
-      spellcheck.count: "5"
     }
 
     # solr path which will be added to solr base url before the other solr params.
