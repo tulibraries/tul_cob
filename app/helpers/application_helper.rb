@@ -76,20 +76,17 @@ module ApplicationHelper
   def electronic_resource_link_builder(field)
     electronic_resource_from_traject = field.split("|")
     portfolio_pid = electronic_resource_from_traject.first
-    database_name = electronic_resource_from_traject.second
+    database_name = electronic_resource_from_traject.second || "Find it online"
     #additional_info = electronic_resource_from_traject.last
-    if electronic_resource_from_traject.length == 1
-      new_link = content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-    else
       new_link = content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-    end
     new_link
     #binding.pry
 
   end
 
-  def single_link_builder(document)
-    portfolio_pid = document.scan(/\d/).join("")
+  def single_link_builder(field)
+    electronic_resource_from_traject = field.split("|")
+    portfolio_pid = electronic_resource_from_traject.first
     alma_electronic_resource_direct_link(portfolio_pid)
   end
 
