@@ -18,7 +18,7 @@ module Traject
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
 
       def marc_formats
-        Proc.new do |record, accumulator|
+        lambda do |record, accumulator|
           accumulator.concat Traject::Macros::MarcFormatClassifier.new(record).formats
         end
       end
@@ -29,7 +29,7 @@ module Traject
       end
 
       def get_xml
-        Proc.new do |rec, acc|
+        lambda do |rec, acc|
           acc << MARC::FastXMLWriter.encode(rec)
         end
       end
@@ -48,7 +48,7 @@ module Traject
       end
 
       def extract_url_resource
-        Proc.new do |rec, acc|
+        lambda do |rec, acc|
           rec.fields("856").each do |f|
             case f.indicator2
             when "0"
@@ -162,7 +162,7 @@ module Traject
         end
       end
 
-      def  normalize_format
+      def normalize_format
         Proc.new do |rec, acc|
           acc.delete("Print")
           acc.delete("Online")
@@ -204,7 +204,7 @@ module Traject
       end
 
       def extract_pub_date
-        Proc.new do |rec, acc|
+        lambda do |rec, acc|
           rec.fields(["260"]).each do |field|
             acc << four_digit_year(field["c"]) unless field["c"].nil?
           end
@@ -216,7 +216,7 @@ module Traject
       end
 
       def extract_copyright
-        Proc.new do |rec, acc|
+        lambda do |rec, acc|
           rec.fields(["264"]).each do |field|
             acc << four_digit_year(field["c"])  if field.indicator2 == "4"
           end

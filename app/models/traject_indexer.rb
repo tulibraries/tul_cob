@@ -17,7 +17,6 @@ extend  Traject::Macros::Marc21Semantics
 # To have access to the traject marc format/carrier classifier
 require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
-require "./lib/traject/indexer"
 
 settings do
   # type may be "binary", "xml", or "json"
@@ -32,15 +31,15 @@ end
 
 to_field "id", extract_marc("001", first: true)
 to_field "marc_display_raw", get_xml
-to_field "text", extract_all_marc_values, to_single_string
+to_field("text", extract_all_marc_values, &to_single_string)
 to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
 to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
-to_field("format", marc_formats, normalize_format)
+to_field("format", marc_formats, &normalize_format)
 
 # Title fields
 # primary title
 to_field "title_t", extract_marc("245a")
-to_field "title_display", extract_marc("245a", trim_punctuation: true, alternate_script: false), to_single_string
+to_field "title_display", extract_marc("245a", trim_punctuation: true, alternate_script: false), &to_single_string
 to_field "title_vern_display", extract_marc("245a", trim_punctuation: true, alternate_script: :only)
 to_field "title_statement_display", extract_marc("245abcfgknps", alternate_script: false)
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
@@ -51,7 +50,7 @@ to_field "title_addl_vern_display", extract_marc("210ab:246abfgnp:247abcdefgnp:7
 
 # subtitle
 to_field "subtitle_t", extract_marc("245b")
-to_field "subtitle_display", extract_marc("245b", trim_punctuation: true, alternate_script: false), to_single_string
+to_field("subtitle_display", extract_marc("245b", trim_punctuation: true, alternate_script: false), &to_single_string)
 to_field "subtitle_vern_display", extract_marc("245b", trim_punctuation: true, alternate_script: :only)
 
 # additional title fields
@@ -104,8 +103,8 @@ to_field "pub_date_sort", marc_publication_date
 
 # Call Number fields
 to_field "lc_callnum_display", extract_marc("050ab", first: true)
-to_field "lc_1letter_facet", extract_marc("050ab", first: true, translation_map: "callnumber_map"), first_letters_only
-to_field "lc_alpha_facet", extract_marc("050a", first: true), normalize_lc_alpha
+to_field("lc_1letter_facet", extract_marc("050ab", first: true, translation_map: "callnumber_map"), &first_letters_only)
+to_field("lc_alpha_facet", extract_marc("050a", first: true), &normalize_lc_alpha)
 to_field "lc_b4cutter_facet", extract_marc("050a", first: true)
 
 # URL Fields
@@ -187,9 +186,9 @@ to_field "call_number_alt_display", extract_marc("ITMjk")
 to_field "library_facet", extract_marc("HLDb", translation_map: "locations_map")
 
 # Identifier fields
-to_field "isbn_display",  extract_marc("020a", separator: nil), normalize_isbn
-to_field "issn_display", extract_marc("022a", separator: nil), normalize_issn
-to_field "lccn_display", extract_marc("010ab", separator: nil), normalize_lccn
+to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)
+to_field("issn_display", extract_marc("022a", separator: nil), &normalize_issn)
+to_field("lccn_display", extract_marc("010ab", separator: nil), &normalize_lccn)
 to_field "pub_no_display", extract_marc("028ab")
 to_field "sudoc_display", extract_marc("086|0*|a")
 to_field "diamond_id_display", extract_marc("907a")
