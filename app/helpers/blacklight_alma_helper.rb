@@ -1,13 +1,18 @@
-module BlacklightAlmaHelper
+# frozen_string_literal: true
 
+module BlacklightAlmaHelper
   include BlacklightAlma::HelperBehavior
 
-  def alma_service_type_for_fulfillment_url(document)
-    return false if document['availability_facet'].nil?
-    if document['availability_facet'].include?("Online")
-      'viewit'
+  # Overrides
+  # BlacklightAlma::HelperBehavior#alma_service_type_for_fulfillment_url.  Bib
+  # records may have both physical and electronic holdings: This guarantees
+  # that we always "viewit" in the case of an "Online" record.
+  def alma_service_type_for_fulfillment_url(document = {})
+    document ||= {}
+    if document.fetch("availability_facet", []).include?("Online")
+      "viewit"
     else
-      'getit'
+      "getit"
     end
   end
 end
