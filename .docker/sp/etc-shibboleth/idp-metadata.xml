@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui" entityID="https://np-fim.temple.edu/idp/shibboleth">
+
+    <IDPSSODescriptor protocolSupportEnumeration="urn:mace:shibboleth:1.0 urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+        <Extensions>
+            <shibmd:Scope regexp="false">temple.edu</shibmd:Scope>
+			<mdui:UIInfo>
+			<mdui:DisplayName xml:lang="en">Temple University</mdui:DisplayName>
+			<mdui:PrivacyStatementURL xml:lang="en">http://policies.temple.edu/getdoc.asp?policy_no=04.72.11</mdui:PrivacyStatementURL>
+			<mdui:Logo height="67" width="310" xml:lang="en">https://temple.edu/sites/all/themes/edu/logo.png</mdui:Logo>
+			</mdui:UIInfo>
+			</Extensions>
+
+        <KeyDescriptor>
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIIDLzCCAhegAwIBAgIUHgMECbhwNCbGapQiclMvbGTcdzIwDQYJKoZIhvcNAQEF
+BQAwHDEaMBgGA1UEAxMRbnAtZmltLnRlbXBsZS5lZHUwHhcNMTIxMDAyMTM0ODU4
+WhcNMzIxMDAyMTM0ODU4WjAcMRowGAYDVQQDExFucC1maW0udGVtcGxlLmVkdTCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMg4Da5oRSU5A2UyOdHmxpu1
+79cDp7jLMNHsZNR9ArRyc6oqTZTPCFh3BJ+yDhdjJksHFs/iSVD75nLyHLanq7ac
+8vANaEtV1kLzlyhHPziWGrlf8AGH2dWOSNm3bHy2UQ3lCMwQWoT4VT/+hfoyvXUL
+I0dseC+n7lKgJucN8AHE8h0Pl/eFo6E8sd1c+SC3tCRxcapFrdjZpQHAz61c2VpR
+++WvBCLzCCIYiNSABFAethDw98jdzc/TccUzkzjRr1xJCAd3hlDsLs/mCw4FBbsy
+5cBbuH+xhjnSG+09DoR+yO1T9xpzsk5mPxniyBZINzncA7acsyjBOIsyZVIUEGUC
+AwEAAaNpMGcwRgYDVR0RBD8wPYIRbnAtZmltLnRlbXBsZS5lZHWGKGh0dHBzOi8v
+bnAtZmltLnRlbXBsZS5lZHUvaWRwL3NoaWJib2xldGgwHQYDVR0OBBYEFHAGjie3
+jKG5wsp0f4D8+SabOnoPMA0GCSqGSIb3DQEBBQUAA4IBAQCqiUAVQan7vt8pifjS
+Bru/1qzhjJGYwvLg1c79HdM21qdiiiRP2encGSmEq4w1m1Ujyb3Sg9mTMNRzU42p
+3IUwZ9m/Q3YCQPapW1Tqrtx3+bPo8oVCyX+WEtiJyL4ucNTjYvZqnv6zF1EPb913
+42quBGr3xCSo/v+ypj9NfKvwvQLB7SWNLxjGVo5D0isBcINZFCaw2GG/ZeJ037iA
+HKC9hPFUzACb9m27w/7/pycLZ1A5kHX2E9X6ISD47u4ogsk7fljVC2hM0g0oSkn7
+S85K8/mruHubOOpL3tLq+CgKN0cXzpanPUkduFK7zwQRbkSNMHepkpzIdSd1rlcV
+coZQ
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </KeyDescriptor>
+
+        <NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</NameIDFormat>
+        <SingleSignOnService Binding="urn:mace:shibboleth:1.0:profiles:AuthnRequest" Location="https://np-fim.temple.edu/idp/profile/Shibboleth/SSO"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://np-fim.temple.edu/idp/profile/SAML2/POST/SSO"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST-SimpleSign" Location="https://np-fim.temple.edu/idp/profile/SAML2/POST-SimpleSign/SSO"/>
+        <SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://np-fim.temple.edu/idp/profile/SAML2/Redirect/SSO"/>
+    </IDPSSODescriptor>
+
+    <AttributeAuthorityDescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
+        <AttributeService Binding="urn:oasis:names:tc:SAML:2.0:bindings:SOAP" Location="https://np-fim.temple.edu/idp/profile/SAML2/SOAP/AttributeQuery"/>
+        <Extensions>
+            <shibmd:Scope regexp="false">temple.edu</shibmd:Scope>
+        </Extensions>
+
+        <KeyDescriptor>
+            <ds:KeyInfo>
+                <ds:X509Data>
+                    <ds:X509Certificate>
+MIIDLzCCAhegAwIBAgIUHgMECbhwNCbGapQiclMvbGTcdzIwDQYJKoZIhvcNAQEF
+BQAwHDEaMBgGA1UEAxMRbnAtZmltLnRlbXBsZS5lZHUwHhcNMTIxMDAyMTM0ODU4
+WhcNMzIxMDAyMTM0ODU4WjAcMRowGAYDVQQDExFucC1maW0udGVtcGxlLmVkdTCC
+ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMg4Da5oRSU5A2UyOdHmxpu1
+79cDp7jLMNHsZNR9ArRyc6oqTZTPCFh3BJ+yDhdjJksHFs/iSVD75nLyHLanq7ac
+8vANaEtV1kLzlyhHPziWGrlf8AGH2dWOSNm3bHy2UQ3lCMwQWoT4VT/+hfoyvXUL
+I0dseC+n7lKgJucN8AHE8h0Pl/eFo6E8sd1c+SC3tCRxcapFrdjZpQHAz61c2VpR
+++WvBCLzCCIYiNSABFAethDw98jdzc/TccUzkzjRr1xJCAd3hlDsLs/mCw4FBbsy
+5cBbuH+xhjnSG+09DoR+yO1T9xpzsk5mPxniyBZINzncA7acsyjBOIsyZVIUEGUC
+AwEAAaNpMGcwRgYDVR0RBD8wPYIRbnAtZmltLnRlbXBsZS5lZHWGKGh0dHBzOi8v
+bnAtZmltLnRlbXBsZS5lZHUvaWRwL3NoaWJib2xldGgwHQYDVR0OBBYEFHAGjie3
+jKG5wsp0f4D8+SabOnoPMA0GCSqGSIb3DQEBBQUAA4IBAQCqiUAVQan7vt8pifjS
+Bru/1qzhjJGYwvLg1c79HdM21qdiiiRP2encGSmEq4w1m1Ujyb3Sg9mTMNRzU42p
+3IUwZ9m/Q3YCQPapW1Tqrtx3+bPo8oVCyX+WEtiJyL4ucNTjYvZqnv6zF1EPb913
+42quBGr3xCSo/v+ypj9NfKvwvQLB7SWNLxjGVo5D0isBcINZFCaw2GG/ZeJ037iA
+HKC9hPFUzACb9m27w/7/pycLZ1A5kHX2E9X6ISD47u4ogsk7fljVC2hM0g0oSkn7
+S85K8/mruHubOOpL3tLq+CgKN0cXzpanPUkduFK7zwQRbkSNMHepkpzIdSd1rlcV
+coZQ
+
+                    </ds:X509Certificate>
+                </ds:X509Data>
+            </ds:KeyInfo>
+        </KeyDescriptor>
+    </AttributeAuthorityDescriptor>
+
+  <Organization>
+    <OrganizationName xml:lang="en">Temple University</OrganizationName>
+    <OrganizationDisplayName xml:lang="en">Temple University</OrganizationDisplayName>
+    <OrganizationURL xml:lang="en">http://www.temple.edu/</OrganizationURL>
+  </Organization>
+  <ContactPerson contactType="support">
+    <GivenName>Computer Services HelpDesk</GivenName>
+    <EmailAddress>help@temple.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="technical">
+    <GivenName>Office of Identity and Access Management</GivenName>
+    <EmailAddress>oiam@temple.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson xmlns:remd="http://refeds.org/metadata" contactType="other" remd:contactType="http://refeds.org/metadata/contactType/security">
+    <GivenName>Information Security</GivenName>
+    <EmailAddress>infosec@temple.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="administrative">
+    <GivenName>Jorj Bauer</GivenName>
+    <EmailAddress>jorj@temple.edu</EmailAddress>
+  </ContactPerson>
+  <ContactPerson contactType="administrative">
+    <GivenName>Office of Identity and Access Management</GivenName>
+    <EmailAddress>oiam@temple.edu</EmailAddress>
+  </ContactPerson>
+</EntityDescriptor>

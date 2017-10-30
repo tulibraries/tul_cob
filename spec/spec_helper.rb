@@ -4,6 +4,7 @@ $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "simplecov"
 require "alma"
 require "webmock/rspec"
+require "vcr"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -125,4 +126,15 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.add_setting :bento_expected_fields,
+    default: [ :title, :authors, :publisher, :link ]
+end
+
+VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.default_cassette_options = {
+    match_requests_on: [:method]
+  }
 end

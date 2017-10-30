@@ -1,6 +1,6 @@
 default: &default
   apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
-  institution_code: INST_CODE
+  institution_code: 01TULI_INST
   delivery_domain: alma.delivery.exlibrisgroup.com
 
 development:

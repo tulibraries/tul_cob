@@ -40,6 +40,7 @@ class BentoSearch::PrimoEngine
   def conform_to_bento_result(item)
     BentoSearch::ResultItem.new(title: item.fetch("title", ""),
       authors: authors(item),
+      publisher: item.fetch("isPartOf", "None found"),
       link: build_primo_url(item))
   end
 
