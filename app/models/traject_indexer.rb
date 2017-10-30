@@ -147,7 +147,11 @@ to_field 'lc_b4cutter_facet', extract_marc('050a', :first=>true)
 # URL Fields
 notfulltext = /book review|publisher description|sample text|table of contents/i
 
-to_field('url_resource_display') do |rec, acc|
+to_field('electronic_resource_display') do |rec, acc|
+  rec.fields('PRT').each do |f|
+    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
+    acc << selected_subfields
+  end
   rec.fields('856').each do |f|
     case f.indicator2
     when '0'
@@ -178,6 +182,39 @@ to_field('url_resource_display') do |rec, acc|
       end
     end
   end
+end
+
+to_field 'url_resource_display' do |rec, acc|
+rec.fields('856').each do |f|
+  case f.indicator2
+  when '0'
+    z3 = [f['z'], f['3']].join(' ')
+    unless notfulltext.match(z3)
+      if z3 == ' '
+        z3 = f['y'] || "Link to Resource"
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
+      else
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
+      end
+    end
+  when '2'
+    # do nothing
+  else
+    z3 = [f['z'], f['3']].join(' ')
+    unless notfulltext.match(z3)
+      if z3 == ' '
+        z3 = f['y'] || "Link to Resource"
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
+      else
+        z3 << "|#{f['u']}" unless f['u'].nil?
+        acc << z3
+      end
+    end
+  end
+end
 end
 
 # Very similar to url_fulltext_display. Should DRY up.
@@ -209,13 +246,6 @@ to_field 'url_more_links_display' do |rec, acc|
         end
       end
     end
-  end
-end
-
-to_field('electronic_resource_display') do |rec, acc|
-  rec.fields('PRT').each do |f|
-    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
-    acc << selected_subfields
   end
 end
 
