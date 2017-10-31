@@ -93,6 +93,10 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00590nas a2200217u  4500</leader>
@@ -159,6 +163,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -334,6 +340,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00788nas a2200265u  4500</leader>
@@ -417,6 +425,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00601nas a2200229u  4500</leader>
@@ -486,6 +496,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -590,6 +602,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -712,6 +726,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01165nam a22003370  4500</leader>
@@ -831,6 +847,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00827nam a22002530  4500</leader>
@@ -923,6 +941,8 @@
       <subfield code='l'>PATG</subfield>
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='HLD'>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -1072,6 +1092,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00669cam a22002530  4500</leader>
@@ -1162,6 +1184,8 @@
       <subfield code='i'>831021</subfield>
       <subfield code='h'>830913</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -1271,6 +1295,8 @@
       <subfield code='b'>BK</subfield>
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -1468,6 +1494,8 @@
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>DH</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01148cam a22003610  4500</leader>
@@ -1603,6 +1631,8 @@
       <subfield code='i'>830914</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01049nam a22003370  4500</leader>
@@ -1732,6 +1762,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00902nam a22002890  4500</leader>
@@ -1834,6 +1866,8 @@
       <subfield code='i'>830913</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00842cam a22002770  4500</leader>
@@ -1935,6 +1969,8 @@
       <subfield code='b'>MK</subfield>
       <subfield code='i'>830914</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -2049,6 +2085,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>CDC</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01237cam a2200313 a 4500</leader>
@@ -2162,6 +2200,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -2281,6 +2321,8 @@
       <subfield code='i'>830914</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00792nam a2200265 a 4500</leader>
@@ -2368,6 +2410,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -2477,6 +2521,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -2622,6 +2668,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00852pam a2200277 a 4500</leader>
@@ -2711,6 +2759,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -2818,6 +2868,8 @@
       <subfield code='i'>830914</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00979cam a2200325Ka 4500</leader>
@@ -2919,6 +2971,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>DG </subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00983pam a2200325 a 4500</leader>
@@ -3016,6 +3070,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -3117,6 +3173,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00937ccm a2200301 a 4500</leader>
@@ -3216,6 +3274,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>cep </subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00869pam a2200289 a 4500</leader>
@@ -3305,6 +3365,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -3403,6 +3465,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>3</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01029nam a22003018a 4500</leader>
@@ -3499,6 +3563,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -3603,6 +3669,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -3718,6 +3786,8 @@
       <subfield code='b'>BK</subfield>
       <subfield code='i'>830916</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -3853,6 +3923,8 @@
       <subfield code='i'>830916</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01093nam a22003250  4500</leader>
@@ -3971,6 +4043,8 @@
       <subfield code='i'>830916</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00875nam a22003138a 4500</leader>
@@ -4064,6 +4138,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -4167,6 +4243,8 @@
       <subfield code='a'>07/06/07</subfield>
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>cep </subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -4305,6 +4383,8 @@
       <subfield code='i'>830919</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01133pam a2200361 a 4500</leader>
@@ -4418,6 +4498,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00767cam a22002530  4500</leader>
@@ -4512,6 +4594,8 @@
       <subfield code='i'>830927</subfield>
       <subfield code='h'>830919</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -4611,6 +4695,8 @@
       <subfield code='i'>840321</subfield>
       <subfield code='h'>830920</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -4738,6 +4824,8 @@
       <subfield code='b'>RF</subfield>
       <subfield code='i'>830919</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -4869,6 +4957,8 @@
       <subfield code='s'>CIP</subfield>
       <subfield code='c'>CDC</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01225nam a22003730  4500</leader>
@@ -4996,6 +5086,8 @@
       <subfield code='h'>830920</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00746nam a2200265 a 4500</leader>
@@ -5086,6 +5178,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -5184,6 +5278,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -5312,6 +5408,8 @@
       <subfield code='h'>830920</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01011nam a2200337 a 4500</leader>
@@ -5413,6 +5511,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -5526,6 +5626,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00899cam a2200289 a 4500</leader>
@@ -5625,6 +5727,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01322cam a2200313 a 4500</leader>
@@ -5722,6 +5826,8 @@
       <subfield code='a'>05/09/06</subfield>
       <subfield code='s'>CIP</subfield>
       <subfield code='c'>AT</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -5827,6 +5933,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>YL</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01148cam a2200325 a 4500</leader>
@@ -5929,6 +6037,8 @@
       <subfield code='s'>CIP</subfield>
       <subfield code='c'>DH</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01056cam a22003254a 4500</leader>
@@ -6030,6 +6140,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01643cam a22003134a 4500</leader>
@@ -6124,6 +6236,8 @@
       <subfield code='a'>03/02/06</subfield>
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -6248,6 +6362,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>MRTL</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01603cgm a2200373 a 4500</leader>
@@ -6358,6 +6474,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -6473,6 +6591,8 @@
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01644cgm a2200373 a 4500</leader>
@@ -6583,6 +6703,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -6765,6 +6887,8 @@
       <subfield code='h'>830921</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01353pam a22003614a 4500</leader>
@@ -6869,6 +6993,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -6982,6 +7108,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00820cam a2200265ua 4500</leader>
@@ -7063,6 +7191,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -7158,6 +7288,8 @@
       <subfield code='i'>831102</subfield>
       <subfield code='h'>830921</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -7264,6 +7396,8 @@
       <subfield code='i'>830921</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00938nam a22002770  4500</leader>
@@ -7369,6 +7503,8 @@
       <subfield code='b'>JF</subfield>
       <subfield code='i'>830922</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -7477,6 +7613,8 @@
       <subfield code='b'>JF</subfield>
       <subfield code='i'>830922</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -7597,6 +7735,8 @@
       <subfield code='i'>830922</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01023cam a22003854a 4500</leader>
@@ -7711,6 +7851,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01696pam a22003734a 4500</leader>
@@ -7822,6 +7964,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00813cam a2200253ua 4500</leader>
@@ -7894,6 +8038,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00673cam a2200229ua 4500</leader>
@@ -7965,6 +8111,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -8065,6 +8213,8 @@
       <subfield code='i'>830922</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01015cam a2200313ua 4500</leader>
@@ -8158,6 +8308,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -8261,6 +8413,8 @@
       <subfield code='i'>830922</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00902nam a22002890  4500</leader>
@@ -8362,6 +8516,8 @@
       <subfield code='i'>830926</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00812nam a22002770  4500</leader>
@@ -8460,6 +8616,8 @@
       <subfield code='b'>JB</subfield>
       <subfield code='i'>830926</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -8600,6 +8758,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00989pam a22003494a 4500</leader>
@@ -8701,6 +8861,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00801cam a2200253ua 4500</leader>
@@ -8780,6 +8942,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -8894,6 +9058,8 @@
       <subfield code='i'>830926</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01033cam a22003498a 4500</leader>
@@ -9000,6 +9166,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9120,6 +9288,8 @@
       <subfield code='b'>MMC</subfield>
       <subfield code='i'>830926</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9273,6 +9443,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00639cam a2200241ua 4500</leader>
@@ -9347,6 +9519,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9445,6 +9619,8 @@
       <subfield code='i'>830927</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00666cam a2200217ua 4500</leader>
@@ -9507,6 +9683,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9594,6 +9772,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9727,6 +9907,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00619cam a2200229ua 4500</leader>
@@ -9798,6 +9980,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -9899,6 +10083,8 @@
       <subfield code='i'>840315</subfield>
       <subfield code='h'>830927</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -10036,6 +10222,8 @@
       <subfield code='i'>830927</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00902nam a22003010  4500</leader>
@@ -10148,6 +10336,8 @@
       <subfield code='i'>830927</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00822cam a2200241ua 4500</leader>
@@ -10223,6 +10413,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -10322,6 +10514,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -10468,6 +10662,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00809cam a2200241ua 4500</leader>
@@ -10545,6 +10741,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -10680,6 +10878,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00767cam a2200253ua 4500</leader>
@@ -10757,6 +10957,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -10879,6 +11081,8 @@
       <subfield code='i'>830928</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01151pam a22003494a 4500</leader>
@@ -10983,6 +11187,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01035cam a2200277ua 4500</leader>
@@ -11067,6 +11273,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -11179,6 +11387,8 @@
       <subfield code='i'>830928</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00735cam a2200253ua 4500</leader>
@@ -11256,6 +11466,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -11350,6 +11562,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00845cam a2200277ua 4500</leader>
@@ -11438,6 +11652,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00898cam a2200265ua 4500</leader>
@@ -11520,6 +11736,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00758cam a2200265ua 4500</leader>
@@ -11600,6 +11818,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -11706,6 +11926,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00697cam a2200229ua 4500</leader>
@@ -11777,6 +11999,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -11878,6 +12102,8 @@
       <subfield code='a'>06/21/06</subfield>
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>RM</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -12007,6 +12233,8 @@
       <subfield code='i'>830929</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00973cam a2200289ua 4500</leader>
@@ -12095,6 +12323,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00859cam a2200277ua 4500</leader>
@@ -12179,6 +12409,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00854cam a2200277ua 4500</leader>
@@ -12262,6 +12494,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -12405,6 +12639,8 @@
       <subfield code='s'>CIP</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00693cam a2200241ua 4500</leader>
@@ -12479,6 +12715,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -12575,6 +12813,8 @@
       <subfield code='i'>830929</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01172cam a2200277ua 4500</leader>
@@ -12663,6 +12903,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -12781,6 +13023,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00952nam a2200241 a 4500</leader>
@@ -12861,6 +13105,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00865cam a2200241ua 4500</leader>
@@ -12935,6 +13181,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13040,6 +13288,8 @@
       <subfield code='a'>03/22/06</subfield>
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13164,6 +13414,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00912cam a2200241ua 4500</leader>
@@ -13239,6 +13491,8 @@
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00724cam a2200241ua 4500</leader>
@@ -13312,6 +13566,8 @@
       <subfield code='e'>1</subfield>
       <subfield code='f'>b</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13411,6 +13667,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00803cam a2200277ua 4500</leader>
@@ -13494,6 +13752,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13580,6 +13840,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13710,6 +13972,8 @@
       <subfield code='i'>831003</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00813nam a2200289Ka 4500</leader>
@@ -13798,6 +14062,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00876cam a2200253 a 4500</leader>
@@ -13882,6 +14148,8 @@
       <subfield code='a'>02/09/06</subfield>
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>MW</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -13972,6 +14240,8 @@
       <subfield code='a'>02/07/06</subfield>
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>MW</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -14077,6 +14347,8 @@
       <subfield code='i'>831101</subfield>
       <subfield code='h'>831003</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -14184,6 +14456,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00940cam a2200301 a 4500</leader>
@@ -14285,6 +14559,8 @@
       <subfield code='a'>09/01/06</subfield>
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>RM</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -14399,6 +14675,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01044nam a22003130  4500</leader>
@@ -14511,6 +14789,8 @@
       <subfield code='b'>BK</subfield>
       <subfield code='i'>831003</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -14652,6 +14932,8 @@
       <subfield code='h'>840327</subfield>
       <subfield code='h'>831003</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -14828,6 +15110,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00847cam a2200253ua 4500</leader>
@@ -14906,6 +15190,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -15027,6 +15313,8 @@
       <subfield code='i'>831004</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01131nam a22003130  4500</leader>
@@ -15137,6 +15425,8 @@
       <subfield code='b'>RF</subfield>
       <subfield code='i'>831004</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -15253,6 +15543,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00824cam a2200265ua 4500</leader>
@@ -15335,6 +15627,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -15459,6 +15753,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01028pam a2200337 a 4500</leader>
@@ -15564,6 +15860,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00987cam a22002890  4500</leader>
@@ -15668,6 +15966,8 @@
       <subfield code='h'>831004</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00747nam a22002650  4500</leader>
@@ -15760,6 +16060,8 @@
       <subfield code='i'>831004</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00682cam a2200229ua 4500</leader>
@@ -15833,6 +16135,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -15909,6 +16213,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -16025,6 +16331,8 @@
       <subfield code='h'>831005</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00721cam a2200241ua 4500</leader>
@@ -16094,6 +16402,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -16222,6 +16532,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00626cam a2200217ua 4500</leader>
@@ -16291,6 +16603,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -16416,6 +16730,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00835nam a2200289   4500</leader>
@@ -16524,6 +16840,8 @@
       <subfield code='i'>831005</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00679cam a2200229ua 4500</leader>
@@ -16596,6 +16914,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -16696,6 +17016,8 @@
       <subfield code='i'>831108</subfield>
       <subfield code='h'>831005</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -16809,6 +17131,8 @@
       <subfield code='a'>06/28/06</subfield>
       <subfield code='s'>RLIN</subfield>
       <subfield code='c'>DH</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -16924,6 +17248,8 @@
       <subfield code='i'>831005</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00757cam a2200253ua 4500</leader>
@@ -17005,6 +17331,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -17111,6 +17439,8 @@
       <subfield code='i'>831005</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01136cam a22003134a 4500</leader>
@@ -17207,6 +17537,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00663cam a2200229ua 4500</leader>
@@ -17279,6 +17611,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -17409,6 +17743,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>YL</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>02139nam a2200433Ia 4500</leader>
@@ -17536,6 +17872,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00940nam a2200313 a 4500</leader>
@@ -17629,6 +17967,8 @@
       <subfield code='s'>CIP</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00853cam a2200253ua 4500</leader>
@@ -17702,6 +18042,8 @@
       <subfield code='e'>3</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -17838,6 +18180,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00651cam a2200217ua 4500</leader>
@@ -17907,6 +18251,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -18027,6 +18373,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>3</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01108cam a22003130  4500</leader>
@@ -18137,6 +18485,8 @@
       <subfield code='i'>831006</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>00775cam a22002650  4500</leader>
@@ -18233,6 +18583,8 @@
       <subfield code='i'>840322</subfield>
       <subfield code='h'>831006</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -18341,6 +18693,8 @@
       <subfield code='e'>m</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -18451,6 +18805,8 @@
       <subfield code='i'>840222</subfield>
       <subfield code='h'>831006</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -18582,6 +18938,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00997cam a22003010  4500</leader>
@@ -18690,6 +19048,8 @@
       <subfield code='i'>831018</subfield>
       <subfield code='h'>831006</subfield>
       <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -18823,6 +19183,8 @@
       <subfield code='e'>m</subfield>
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -19037,6 +19399,8 @@
       <subfield code='s'>LC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01320nam a2200373 a 4500</leader>
@@ -19167,6 +19531,8 @@
       <subfield code='w'>DCLC9912719B</subfield>
       <subfield code='d'>01/04/00</subfield>
       <subfield code='b'>YL</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -19335,6 +19701,8 @@
       <subfield code='d'>01/04/00</subfield>
       <subfield code='b'>YL</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01306nam a2200373 a 4500</leader>
@@ -19471,6 +19839,8 @@
       <subfield code='d'>01/04/00</subfield>
       <subfield code='b'>YL</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01187cam a2200349Ia 4500</leader>
@@ -19575,6 +19945,8 @@
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01084ntm a2200325 a 4500</leader>
@@ -19675,6 +20047,8 @@
       <subfield code='a'>01/10/06</subfield>
       <subfield code='s'>DISS</subfield>
       <subfield code='s'>DH</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -19784,6 +20158,8 @@
       <subfield code='a'>4/28/2016</subfield>
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>ac</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -19939,6 +20315,8 @@
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01898nam a2200457 a 4500</leader>
@@ -20073,6 +20451,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>00625pam a2200181 i 4500</leader>
@@ -20131,11 +20511,13 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
-    <datafield tag="HLD" ind1=" " ind2=" ">
+    <datafield tag='HLD' ind1=" " ind2=" ">
       <subfield code="b">AMBLER</subfield>
       <subfield code="c">media</subfield>
       <subfield code="h">DVD 16 A15</subfield>
       <subfield code="8">22287355870003811</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -20265,6 +20647,8 @@
       <subfield code='d'>01/05/00</subfield>
       <subfield code='c'>AT </subfield>
       <subfield code='b'>AT</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -20401,6 +20785,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>AT</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>02017nam a2200433 a 4500</leader>
@@ -20529,6 +20915,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -20659,6 +21047,8 @@
       <subfield code='e'>a</subfield>
       <subfield code='f'>n</subfield>
       <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -20840,6 +21230,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>MKD</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01927nam a2200433Ii 4500</leader>
@@ -20992,6 +21384,8 @@
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>cep </subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01839cam a2200457 a 4500</leader>
@@ -21131,6 +21525,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>4</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01957cam a2200421 a 4500</leader>
@@ -21259,6 +21655,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01406cam a22003734a 4500</leader>
@@ -21369,6 +21767,8 @@
       <subfield code='a'>03/17/06</subfield>
       <subfield code='s'>LC</subfield>
       <subfield code='c'>MRTL</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
   <record>
@@ -21583,6 +21983,8 @@
       <subfield code='f'>-</subfield>
       <subfield code='g'>0</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01215cam a2200349 i 4500</leader>
@@ -21706,6 +22108,8 @@
       <subfield code='a'>06/03/16</subfield>
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>AT</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -21849,6 +22253,8 @@
       <subfield code='a'>06/03/16</subfield>
       <subfield code='s'>OCLC</subfield>
       <subfield code='c'>AT</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22005,6 +22411,8 @@
       <subfield code='h'>831003</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22156,6 +22564,8 @@
       <subfield code='h'>831003</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22299,6 +22709,8 @@
       <subfield code='h'>831003</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22315,6 +22727,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22330,6 +22744,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22350,6 +22766,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22362,6 +22780,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22388,6 +22808,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22409,6 +22831,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22428,6 +22852,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22454,6 +22880,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22475,6 +22903,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22495,6 +22925,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22511,6 +22943,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22529,6 +22963,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22540,6 +22976,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22550,6 +22988,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22566,6 +23006,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22590,6 +23032,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22606,6 +23050,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22617,6 +23063,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22632,6 +23080,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22642,6 +23092,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22655,6 +23107,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22666,6 +23120,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22685,6 +23141,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22701,6 +23159,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22711,6 +23171,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22731,6 +23193,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22746,6 +23210,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22760,6 +23226,8 @@
     <datafield ind1='0' ind2='0' tag='500'>
       <subfield code='a'>Dictionary of American history: 500 2.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22770,6 +23238,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22782,6 +23252,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22792,6 +23264,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22804,6 +23278,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22815,6 +23291,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22829,6 +23307,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22847,6 +23327,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22869,6 +23351,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22882,6 +23366,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22894,6 +23380,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22904,6 +23392,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22916,6 +23406,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22927,6 +23419,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22937,6 +23431,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22954,6 +23450,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -22964,6 +23462,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22978,6 +23478,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -22994,6 +23496,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23007,6 +23511,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23019,6 +23525,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23030,6 +23538,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23040,6 +23550,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23053,6 +23565,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23070,6 +23584,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23080,6 +23596,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23092,6 +23610,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23102,6 +23622,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23114,6 +23636,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23124,6 +23648,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23158,6 +23684,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23189,6 +23717,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23219,6 +23749,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23248,6 +23780,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23262,6 +23796,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23283,6 +23819,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23300,6 +23838,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23310,6 +23850,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23331,6 +23873,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23342,6 +23886,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23352,6 +23898,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23365,6 +23913,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23375,6 +23925,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23389,6 +23941,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23399,6 +23953,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23411,6 +23967,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23422,6 +23980,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23432,6 +23992,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23463,6 +24025,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23492,6 +24056,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23523,6 +24089,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23552,6 +24120,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23583,6 +24153,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23612,6 +24184,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23643,6 +24217,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23672,6 +24248,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23703,6 +24281,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23732,6 +24312,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23763,6 +24345,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23792,6 +24376,8 @@
       <subfield code='y'>Subfield Y.</subfield>
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23823,6 +24409,8 @@
       <subfield code='z'>Subfield Z.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23851,6 +24439,8 @@
       <subfield code='q'>Subfield Q.</subfield>
       <subfield code='r'>Subfield R.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23881,6 +24471,8 @@
       <subfield code='r'>Subfield R.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23910,6 +24502,8 @@
       <subfield code='r'>Subfield R.</subfield>
       <subfield code='3'>Subfield 3.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23922,6 +24516,8 @@
     <datafield ind1='0' ind2='0' tag='264'>
       <subfield code='c'>2017.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23930,12 +24526,15 @@
     <datafield ind1=' ' ind2=' ' tag='074'>
       <subfield code='a'>gpo number</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
     <controlfield tag='001'>991012132499760715</controlfield>
     <controlfield tag='001'>991012132499760715</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+  <datafield tag='PRT'></datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23943,6 +24542,8 @@
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2=' ' tag='086'>
       <subfield code='a'>Y 4.C 73/7:S.HRG.109-174</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23952,6 +24553,8 @@
     <datafield ind1='1' ind2=' ' tag='086'>
       <subfield code='a'>test</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23959,6 +24562,8 @@
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1=' ' ind2=' ' tag='086'>
       <subfield code='a'>test</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -23977,6 +24582,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -23994,6 +24601,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24010,6 +24619,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24025,6 +24636,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24038,6 +24651,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24053,6 +24668,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24067,6 +24684,8 @@
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24080,6 +24699,8 @@
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24099,6 +24720,8 @@
       <subfield code='z'>Access Contributor biographical information.</subfield>
       <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
   <record>
     <leader>01322cam a2200313 a 4500</leader>
@@ -24116,6 +24739,8 @@
     <datafield ind1='4' ind2='2' tag='856'>
       <subfield code='z'>More Links.</subfield>
       <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24135,20 +24760,10 @@
       <subfield code='z'>table of contents</subfield>
       <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
     </datafield>
+    <datafield tag='PRT' >
+    </datafield>
   </record>
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Work split between developers -->
+  <!-- Work split between developers -->
   <record>
     <controlfield tag='001'>991012132499760691</controlfield>
     <controlfield tag='008'>041123s2005    xxu092 e          vljpn d</controlfield>
@@ -24157,6 +24772,8 @@
     </datafield>
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24168,6 +24785,8 @@
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <controlfield tag='001'>991012132499760693</controlfield>
@@ -24177,6 +24796,8 @@
     </datafield>
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24188,6 +24809,8 @@
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <controlfield tag='001'>991012132499760695</controlfield>
@@ -24197,6 +24820,8 @@
     </datafield>
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24213,6 +24838,8 @@
       <subfield code='h'>[electronic resource] :</subfield>
       <subfield code='b'>Department of Labor and Veterans Affairs : testimony before the Subcommittee on Government Management, Finance, and Accountability, Committee on Government Reform, House of Representatives /</subfield>
       <subfield code='c'>statement of Robert E. Martin.</subfield>
+    </datafield>
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <record>
@@ -24239,6 +24866,8 @@
       <subfield code='b'>Youth of the beast /</subfield>
       <subfield code='c'>a Janus Films release ; produced by Keinosuke Kubo ; screenplay by Ichoro Ikeda Tadaaki Yamazaki ; directed by Seijun Suzuki.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
   <record>
     <controlfield tag='001'>991012132499760699</controlfield>
@@ -24246,575 +24875,582 @@
     <datafield ind1='0' ind2='0' tag='245'>
       <subfield code='a'>Dictionary of American history: 008.</subfield>
     </datafield>
+    <datafield tag='HLD' >
+    </datafield>
   </record>
-<record>
-  <leader>01753nas a2200481 a 4500</leader>
-  <controlfield tag="005">20020418062816.0</controlfield>
-  <controlfield tag="008">020418c19959999nyuqr p b g   0  |a0eng d</controlfield>
-  <controlfield tag="001">991027045839703811</controlfield>
-  <datafield tag="022" ind1="0" ind2="">
-    <subfield code="a">1521-6497</subfield>
-    <subfield code="y">0164-9345</subfield>
-  </datafield>
-  <datafield tag="035" ind1="" ind2="">
-    <subfield code="a">(PPT)b24728196-01tuli_inst</subfield>
-  </datafield>
-  <datafield tag="035" ind1="" ind2="">
-    <subfield code="a">PATL02-S26</subfield>
-  </datafield>
-  <datafield tag="040" ind1="" ind2="">
-    <subfield code="a">TxU-L</subfield>
-    <subfield code="c">TxU-L</subfield>
-    <subfield code="d">MnU-L</subfield>
-  </datafield>
-  <datafield tag="043" ind1="" ind2="">
-    <subfield code="a">n-us-ky</subfield>
-  </datafield>
-  <datafield tag="130" ind1="0" ind2="">
-    <subfield code="a">Bench &amp; bar (Frankfort, Ky.)</subfield>
-  </datafield>
-  <datafield tag="210" ind1="0" ind2="">
-    <subfield code="a">Bench bar</subfield>
-    <subfield code="b">(Frankfort, Ky.)</subfield>
-  </datafield>
-  <datafield tag="222" ind1="" ind2="0">
-    <subfield code="a">Bench &amp; bar</subfield>
-    <subfield code="b">(Frankfort, Ky.)</subfield>
-  </datafield>
-  <datafield tag="245" ind1="1" ind2="0">
-    <subfield code="a">Bench &amp; bar</subfield>
-    <subfield code="h">[microform] /</subfield>
-    <subfield code="c">Kentucky Bar Association.</subfield>
-  </datafield>
-  <datafield tag="246" ind1="1" ind2="3">
-    <subfield code="a">Kentucky bench &amp; bar</subfield>
-    <subfield code="f">1995-2001</subfield>
-  </datafield>
-  <datafield tag="246" ind1="1" ind2="3">
-    <subfield code="a">Kentucky Bar Association bench &amp; bar</subfield>
-  </datafield>
-  <datafield tag="246" ind1="1" ind2="">
-    <subfield code="a">Bench and bar</subfield>
-  </datafield>
-  <datafield tag="260" ind1="" ind2="">
-    <subfield code="a">Frankfort, Ky. :</subfield>
-    <subfield code="b">Kentucky Bar Association,</subfield>
-    <subfield code="c">1995-</subfield>
-  </datafield>
-  <datafield tag="300" ind1="" ind2="">
-    <subfield code="a">v. :</subfield>
-    <subfield code="b">ill. ;</subfield>
-    <subfield code="c">28 cm.</subfield>
-  </datafield>
-  <datafield tag="310" ind1="" ind2="">
-    <subfield code="a">Bimonthly,</subfield>
-    <subfield code="b">1998-</subfield>
-  </datafield>
-  <datafield tag="321" ind1="" ind2="">
-    <subfield code="a">Quarterly,</subfield>
-    <subfield code="b">1995-1998</subfield>
-  </datafield>
-  <datafield tag="362" ind1="0" ind2="">
-    <subfield code="a">Vol. 59, no. 3 (summer 1995)-</subfield>
-  </datafield>
-  <datafield tag="500" ind1="" ind2="">
-    <subfield code="a">Title from cover.</subfield>
-  </datafield>
-  <datafield tag="500" ind1="" ind2="">
-    <subfield code="a">Title on microfiche header: Kentucky bench &amp; bar, 1995-2001.</subfield>
-  </datafield>
-  <datafield tag="500" ind1="" ind2="">
-    <subfield code="a">Also called: Kentucky Bar Association bench &amp; bar.</subfield>
-  </datafield>
-  <datafield tag="533" ind1="" ind2="">
-    <subfield code="a">Microfiche.</subfield>
-    <subfield code="b">Buffalo, NY :</subfield>
-    <subfield code="c">W.S. Hein,</subfield>
-    <subfield code="d">1995- .</subfield>
-    <subfield code="e">microfiches : negative.</subfield>
-    <subfield code="f">(Hein's bar journal service).</subfield>
-  </datafield>
-  <datafield tag="650" ind1="" ind2="0">
-    <subfield code="a">Law</subfield>
-    <subfield code="z">Kentucky</subfield>
-    <subfield code="v">Periodicals.</subfield>
-  </datafield>
-  <datafield tag="610" ind1="2" ind2="0">
-    <subfield code="a">Kentucky Bar Association (1971- )</subfield>
-    <subfield code="v">Periodicals.</subfield>
-  </datafield>
-  <datafield tag="650" ind1="" ind2="0">
-    <subfield code="a">Bar associations</subfield>
-    <subfield code="z">Kentucky</subfield>
-    <subfield code="v">Periodicals.</subfield>
-  </datafield>
-  <datafield tag="710" ind1="2" ind2="">
-    <subfield code="a">Kentucky Bar Association (1971- )</subfield>
-  </datafield>
-  <datafield tag="776" ind1="1" ind2="">
-    <subfield code="d">(Original)</subfield>
-    <subfield code="w">(DLC)sn 96041529</subfield>
-  </datafield>
-  <datafield tag="780" ind1="0" ind2="0">
-    <subfield code="t">Kentucky bench &amp; bar</subfield>
-    <subfield code="x">0164-9345</subfield>
-  </datafield>
-  <datafield tag="HLD" ind1="" ind2="">
-    <subfield code="b">LAW</subfield>
-    <subfield code="c">micro</subfield>
-    <subfield code="8">22266041880003811</subfield>
-  </datafield>
-</record>
-<record>
-  <leader>01499pam a22003854a 4500</leader>
-  <controlfield tag="005">20081105191406.9</controlfield>
-  <controlfield tag="008">080717s2008    ctua     b    001 0 eng  </controlfield>
-  <controlfield tag="001">991032411489703811</controlfield>
-  <datafield tag="010" ind1=" " ind2=" ">
-    <subfield code="a">2008030541</subfield>
-  </datafield>
-  <datafield tag="020" ind1=" " ind2=" ">
-    <subfield code="a">9780313351273 (alk. paper)</subfield>
-  </datafield>
-  <datafield tag="020" ind1=" " ind2=" ">
-    <subfield code="a">0313351279 (alk. paper)</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">(PPT)b3685928x-01tuli_inst</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">(OCoLC)ocn492622586</subfield>
-    <subfield code="9">ExL</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">(OCoLC)234146408</subfield>
-  </datafield>
-  <datafield tag="040" ind1=" " ind2=" ">
-    <subfield code="a">DLC</subfield>
-    <subfield code="c">DLC</subfield>
-    <subfield code="d">YDXCP</subfield>
-    <subfield code="d">BAKER</subfield>
-    <subfield code="d">C#P</subfield>
-  </datafield>
-  <datafield tag="043" ind1=" " ind2=" ">
-    <subfield code="a">n-us---</subfield>
-  </datafield>
-  <datafield tag="079" ind1=" " ind2=" ">
-    <subfield code="a">ocn234146408</subfield>
-  </datafield>
-  <datafield tag="090" ind1=" " ind2=" ">
-    <subfield code="a">HD9696.8.U64</subfield>
-    <subfield code="b">G6665 2008</subfield>
-  </datafield>
-  <datafield tag="100" ind1="1" ind2=" ">
-    <subfield code="a">Scott, Virginia A.</subfield>
-  </datafield>
-  <datafield tag="245" ind1="1" ind2="0">
-    <subfield code="a">Google /</subfield>
-    <subfield code="c">Virginia Scott.</subfield>
-  </datafield>
-  <datafield tag="260" ind1=" " ind2=" ">
-    <subfield code="a">Westport, Conn. :</subfield>
-    <subfield code="b">Greenwood Press,</subfield>
-    <subfield code="c">2008.</subfield>
-  </datafield>
-  <datafield tag="300" ind1=" " ind2=" ">
-    <subfield code="a">x, 153 p. :</subfield>
-    <subfield code="b">ill. ;</subfield>
-    <subfield code="c">25 cm.</subfield>
-  </datafield>
-  <datafield tag="440" ind1=" " ind2="0">
-    <subfield code="a">Corporations that changed the world,</subfield>
-    <subfield code="x">1939-2486</subfield>
-  </datafield>
-  <datafield tag="504" ind1=" " ind2=" ">
-    <subfield code="a">Includes bibliographical references and index.</subfield>
-  </datafield>
-  <datafield tag="505" ind1="0" ind2=" ">
-    <subfield code="a">Meet Google's founders -- The origin and history of Google -- Internet search: the historical context -- What made Google so much better? -- The wonderful world of work and play at Google -- How Google uses fun to attract customers -- Google philanthropy -- Google and education -- Using google to make money -- Google controversies -- The future of google.</subfield>
-  </datafield>
-  <datafield tag="610" ind1="2" ind2="0">
-    <subfield code="a">Google (Firm)</subfield>
-    <subfield code="x">History.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="0">
-    <subfield code="a">Internet industry</subfield>
-    <subfield code="z">United States</subfield>
-    <subfield code="x">History.</subfield>
-  </datafield>
-  <datafield tag="907" ind1=" " ind2=" ">
-    <subfield code="a">.b3685928x</subfield>
-    <subfield code="b">p    </subfield>
-    <subfield code="c">-</subfield>
-  </datafield>
-  <datafield tag="902" ind1=" " ind2=" ">
-    <subfield code="a">131204</subfield>
-  </datafield>
-  <datafield tag="998" ind1=" " ind2=" ">
-    <subfield code="b">1</subfield>
-    <subfield code="c">081118</subfield>
-    <subfield code="d">m</subfield>
-    <subfield code="e">a</subfield>
-    <subfield code="f">-</subfield>
-    <subfield code="g">0</subfield>
-  </datafield>
-  <datafield tag="901" ind1=" " ind2=" ">
-    <subfield code="a">BNA</subfield>
-  </datafield>
-  <datafield tag="901" ind1=" " ind2=" ">
-    <subfield code="a">R0742283</subfield>
-  </datafield>
-  <datafield tag="902" ind1=" " ind2=" ">
-    <subfield code="a">081105AB0701</subfield>
-  </datafield>
-  <datafield tag="905" ind1="0" ind2="0">
-    <subfield code="a">Corporations that changed the world</subfield>
-  </datafield>
-  <datafield tag="998" ind1=" " ind2=" ">
-    <subfield code="b">1</subfield>
-    <subfield code="c">081118</subfield>
-    <subfield code="d">m</subfield>
-    <subfield code="e">a</subfield>
-    <subfield code="f">-</subfield>
-    <subfield code="g">0</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">pstk </subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="HLD" ind1=" " ind2=" ">
-  </datafield>
-</record>
-<record>
-  <leader>02526nas a2200829   4500</leader>
-  <controlfield tag="005">19891201203444.0</controlfield>
-  <controlfield tag="008">840806c19809999cauar         0    0eng  </controlfield>
-  <controlfield tag="001">991013867929703811</controlfield>
-  <datafield tag="010" ind1=" " ind2=" ">
-    <subfield code="a">80644745</subfield>
-    <subfield code="z">sn 78006898</subfield>
-  </datafield>
-  <datafield tag="022" ind1="0" ind2=" ">
-    <subfield code="a">0163-7525</subfield>
-  </datafield>
-  <datafield tag="030" ind1=" " ind2=" ">
-    <subfield code="a">AREHDT</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">(PPT)b12831049-01tuli_inst</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">ocn471235607</subfield>
-    <subfield code="9">ExL</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">PATG84-S00316</subfield>
-  </datafield>
-  <datafield tag="035" ind1=" " ind2=" ">
-    <subfield code="a">4471173    </subfield>
-  </datafield>
-  <datafield tag="040" ind1=" " ind2=" ">
-    <subfield code="a">DLC</subfield>
-    <subfield code="c">NSD</subfield>
-    <subfield code="d">DLC</subfield>
-    <subfield code="d">NSD</subfield>
-    <subfield code="d">DLC</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">OCL</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">SER</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AIP</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AIP</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AIP</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AIP</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AIP</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">AGL</subfield>
-    <subfield code="d">NSD</subfield>
-    <subfield code="d">NST</subfield>
-    <subfield code="d">HEA</subfield>
-  </datafield>
-  <datafield tag="043" ind1=" " ind2=" ">
-    <subfield code="a">n-us---</subfield>
-  </datafield>
-  <datafield tag="069" ind1="1" ind2=" ">
-    <subfield code="a">A54310000</subfield>
-  </datafield>
-  <datafield tag="079" ind1=" " ind2=" ">
-    <subfield code="a">ocm04471173</subfield>
-  </datafield>
-  <datafield tag="090" ind1=" " ind2=" ">
-    <subfield code="a">RA421</subfield>
-    <subfield code="b">.A66</subfield>
-  </datafield>
-  <datafield tag="210" ind1="0" ind2=" ">
-    <subfield code="a">Annu. rev. public health</subfield>
-  </datafield>
-  <datafield tag="222" ind1=" " ind2="0">
-    <subfield code="a">Annual review of public health</subfield>
-  </datafield>
-  <datafield tag="245" ind1="0" ind2="0">
-    <subfield code="a">Annual review of public health.</subfield>
-  </datafield>
-  <datafield tag="260" ind1=" " ind2=" ">
-    <subfield code="a">Palo Alto, Calif.,</subfield>
-    <subfield code="b">Annual Reviews Inc.</subfield>
-  </datafield>
-  <datafield tag="300" ind1=" " ind2=" ">
-    <subfield code="a">v.</subfield>
-    <subfield code="c">23 cm.</subfield>
-  </datafield>
-  <datafield tag="350" ind1=" " ind2=" ">
-    <subfield code="a">$17.00 (U.S.)</subfield>
-    <subfield code="a">$17.50 (foreign)</subfield>
-  </datafield>
-  <datafield tag="362" ind1="0" ind2=" ">
-    <subfield code="a">v. 1-   1980-</subfield>
-  </datafield>
-  <datafield tag="510" ind1="2" ind2=" ">
-    <subfield code="a">Chemical abstracts</subfield>
-    <subfield code="x">0009-2258</subfield>
-  </datafield>
-  <datafield tag="530" ind1=" " ind2=" ">
-    <subfield code="a">Also available online.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="0">
-    <subfield code="a">Public health</subfield>
-    <subfield code="v">Periodicals.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="0">
-    <subfield code="a">Public health</subfield>
-    <subfield code="z">United States</subfield>
-    <subfield code="v">Periodicals.</subfield>
-  </datafield>
-  <datafield tag="650" ind1=" " ind2="2">
-    <subfield code="a">Public Health</subfield>
-    <subfield code="v">periodicals</subfield>
-  </datafield>
-  <datafield tag="710" ind1="2" ind2=" ">
-    <subfield code="a">Annual Reviews, Inc.</subfield>
-  </datafield>
-  <datafield tag="907" ind1=" " ind2=" ">
-    <subfield code="a">.b12831049</subfield>
-    <subfield code="b">multi</subfield>
-    <subfield code="c">-</subfield>
-  </datafield>
-  <datafield tag="902" ind1=" " ind2=" ">
-    <subfield code="a">170502</subfield>
-  </datafield>
-  <datafield tag="998" ind1=" " ind2=" ">
-    <subfield code="b">37</subfield>
-    <subfield code="c">990101</subfield>
-    <subfield code="d">s</subfield>
-    <subfield code="e">a</subfield>
-    <subfield code="f">-</subfield>
-    <subfield code="g">0</subfield>
-  </datafield>
-  <datafield tag="935" ind1=" " ind2=" ">
-    <subfield code="a">AAH-6813</subfield>
-  </datafield>
-  <datafield tag="935" ind1=" " ind2=" ">
-    <subfield code="a">00301503</subfield>
-  </datafield>
-  <datafield tag="950" ind1=" " ind2=" ">
-    <subfield code="l">P</subfield>
-    <subfield code="v">v.1;</subfield>
-    <subfield code="y">1980</subfield>
-    <subfield code="n">#9</subfield>
-    <subfield code="f">use v.</subfield>
-    <subfield code="i">08/06/84 C</subfield>
-  </datafield>
-  <datafield tag="955" ind1=" " ind2=" ">
-    <subfield code="l">P</subfield>
-    <subfield code="c">(v.1:1980)</subfield>
-    <subfield code="i">08/06/84 C</subfield>
-  </datafield>
-  <datafield tag="956" ind1=" " ind2=" ">
-    <subfield code="a">WA 105 .A55</subfield>
-  </datafield>
-  <datafield tag="998" ind1=" " ind2=" ">
-    <subfield code="a">08/06/84</subfield>
-    <subfield code="t">c</subfield>
-    <subfield code="s">9110</subfield>
-    <subfield code="n">PPT</subfield>
-    <subfield code="w">DCLC80644745S</subfield>
-    <subfield code="d">08/06/84</subfield>
-    <subfield code="c">RW</subfield>
-    <subfield code="b">BK</subfield>
-    <subfield code="i">840806</subfield>
-    <subfield code="l">PATG</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">hkjst</subfield>
-    <subfield code="a">WA 105 .A55</subfield>
-    <subfield code="u">v.v.12 1991</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">hkjst</subfield>
-    <subfield code="a">WA 105 .A55</subfield>
-    <subfield code="u">v.v.11 1990</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.1</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.2</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.3</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.4</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.5</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.6</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.7</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.8</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.9</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.10</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.11</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.12</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.13</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.14</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.15</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.16</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.17</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.18</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.19</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.20</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.21</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.22</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.23</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.24</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.25</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.26</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.27</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.28</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.29</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="945" ind1=" " ind2=" ">
-    <subfield code="l">kstk </subfield>
-    <subfield code="u">v.v.30</subfield>
-    <subfield code="g">1</subfield>
-  </datafield>
-  <datafield tag="PRT" ind1=" " ind2=" ">
-    <subfield code="a">53394076770003811</subfield>
-    <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
-  </datafield>
-</record>
-
+  <record>
+    <leader>01753nas a2200481 a 4500</leader>
+    <controlfield tag="005">20020418062816.0</controlfield>
+    <controlfield tag="008">020418c19959999nyuqr p b g   0  |a0eng d</controlfield>
+    <controlfield tag="001">991027045839703811</controlfield>
+    <datafield tag="022" ind1="0" ind2="">
+      <subfield code="a">1521-6497</subfield>
+      <subfield code="y">0164-9345</subfield>
+    </datafield>
+    <datafield tag="035" ind1="" ind2="">
+      <subfield code="a">(PPT)b24728196-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="035" ind1="" ind2="">
+      <subfield code="a">PATL02-S26</subfield>
+    </datafield>
+    <datafield tag="040" ind1="" ind2="">
+      <subfield code="a">TxU-L</subfield>
+      <subfield code="c">TxU-L</subfield>
+      <subfield code="d">MnU-L</subfield>
+    </datafield>
+    <datafield tag="043" ind1="" ind2="">
+      <subfield code="a">n-us-ky</subfield>
+    </datafield>
+    <datafield tag="130" ind1="0" ind2="">
+      <subfield code="a">Bench &amp; bar (Frankfort, Ky.)</subfield>
+    </datafield>
+    <datafield tag="210" ind1="0" ind2="">
+      <subfield code="a">Bench bar</subfield>
+      <subfield code="b">(Frankfort, Ky.)</subfield>
+    </datafield>
+    <datafield tag="222" ind1="" ind2="0">
+      <subfield code="a">Bench &amp; bar</subfield>
+      <subfield code="b">(Frankfort, Ky.)</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Bench &amp; bar</subfield>
+      <subfield code="h">[microform] /</subfield>
+      <subfield code="c">Kentucky Bar Association.</subfield>
+    </datafield>
+    <datafield tag="246" ind1="1" ind2="3">
+      <subfield code="a">Kentucky bench &amp; bar</subfield>
+      <subfield code="f">1995-2001</subfield>
+    </datafield>
+    <datafield tag="246" ind1="1" ind2="3">
+      <subfield code="a">Kentucky Bar Association bench &amp; bar</subfield>
+    </datafield>
+    <datafield tag="246" ind1="1" ind2="">
+      <subfield code="a">Bench and bar</subfield>
+    </datafield>
+    <datafield tag="260" ind1="" ind2="">
+      <subfield code="a">Frankfort, Ky. :</subfield>
+      <subfield code="b">Kentucky Bar Association,</subfield>
+      <subfield code="c">1995-</subfield>
+    </datafield>
+    <datafield tag="300" ind1="" ind2="">
+      <subfield code="a">v. :</subfield>
+      <subfield code="b">ill. ;</subfield>
+      <subfield code="c">28 cm.</subfield>
+    </datafield>
+    <datafield tag="310" ind1="" ind2="">
+      <subfield code="a">Bimonthly,</subfield>
+      <subfield code="b">1998-</subfield>
+    </datafield>
+    <datafield tag="321" ind1="" ind2="">
+      <subfield code="a">Quarterly,</subfield>
+      <subfield code="b">1995-1998</subfield>
+    </datafield>
+    <datafield tag="362" ind1="0" ind2="">
+      <subfield code="a">Vol. 59, no. 3 (summer 1995)-</subfield>
+    </datafield>
+    <datafield tag="500" ind1="" ind2="">
+      <subfield code="a">Title from cover.</subfield>
+    </datafield>
+    <datafield tag="500" ind1="" ind2="">
+      <subfield code="a">Title on microfiche header: Kentucky bench &amp; bar, 1995-2001.</subfield>
+    </datafield>
+    <datafield tag="500" ind1="" ind2="">
+      <subfield code="a">Also called: Kentucky Bar Association bench &amp; bar.</subfield>
+    </datafield>
+    <datafield tag="533" ind1="" ind2="">
+      <subfield code="a">Microfiche.</subfield>
+      <subfield code="b">Buffalo, NY :</subfield>
+      <subfield code="c">W.S. Hein,</subfield>
+      <subfield code="d">1995- .</subfield>
+      <subfield code="e">microfiches : negative.</subfield>
+      <subfield code="f">(Hein's bar journal service).</subfield>
+    </datafield>
+    <datafield tag="650" ind1="" ind2="0">
+      <subfield code="a">Law</subfield>
+      <subfield code="z">Kentucky</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield tag="610" ind1="2" ind2="0">
+      <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield tag="650" ind1="" ind2="0">
+      <subfield code="a">Bar associations</subfield>
+      <subfield code="z">Kentucky</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2="">
+      <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+    </datafield>
+    <datafield tag="776" ind1="1" ind2="">
+      <subfield code="d">(Original)</subfield>
+      <subfield code="w">(DLC)sn 96041529</subfield>
+    </datafield>
+    <datafield tag="780" ind1="0" ind2="0">
+      <subfield code="t">Kentucky bench &amp; bar</subfield>
+      <subfield code="x">0164-9345</subfield>
+    </datafield>
+    <datafield tag='HLD' ind1="" ind2="">
+      <subfield code="b">LAW</subfield>
+      <subfield code="c">micro</subfield>
+      <subfield code="8">22266041880003811</subfield>
+    </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+  </record>
+  <record>
+    <leader>01499pam a22003854a 4500</leader>
+    <controlfield tag="005">20081105191406.9</controlfield>
+    <controlfield tag="008">080717s2008    ctua     b    001 0 eng  </controlfield>
+    <controlfield tag="001">991032411489703811</controlfield>
+    <datafield tag="010" ind1=" " ind2=" ">
+      <subfield code="a">2008030541</subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">9780313351273 (alk. paper)</subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">0313351279 (alk. paper)</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b3685928x-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)ocn492622586</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)234146408</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">DLC</subfield>
+      <subfield code="c">DLC</subfield>
+      <subfield code="d">YDXCP</subfield>
+      <subfield code="d">BAKER</subfield>
+      <subfield code="d">C#P</subfield>
+    </datafield>
+    <datafield tag="043" ind1=" " ind2=" ">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield tag="079" ind1=" " ind2=" ">
+      <subfield code="a">ocn234146408</subfield>
+    </datafield>
+    <datafield tag="090" ind1=" " ind2=" ">
+      <subfield code="a">HD9696.8.U64</subfield>
+      <subfield code="b">G6665 2008</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Scott, Virginia A.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Google /</subfield>
+      <subfield code="c">Virginia Scott.</subfield>
+    </datafield>
+    <datafield tag="260" ind1=" " ind2=" ">
+      <subfield code="a">Westport, Conn. :</subfield>
+      <subfield code="b">Greenwood Press,</subfield>
+      <subfield code="c">2008.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">x, 153 p. :</subfield>
+      <subfield code="b">ill. ;</subfield>
+      <subfield code="c">25 cm.</subfield>
+    </datafield>
+    <datafield tag="440" ind1=" " ind2="0">
+      <subfield code="a">Corporations that changed the world,</subfield>
+      <subfield code="x">1939-2486</subfield>
+    </datafield>
+    <datafield tag="504" ind1=" " ind2=" ">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield tag="505" ind1="0" ind2=" ">
+      <subfield code="a">Meet Google's founders -- The origin and history of Google -- Internet search: the historical context -- What made Google so much better? -- The wonderful world of work and play at Google -- How Google uses fun to attract customers -- Google philanthropy -- Google and education -- Using google to make money -- Google controversies -- The future of google.</subfield>
+    </datafield>
+    <datafield tag="610" ind1="2" ind2="0">
+      <subfield code="a">Google (Firm)</subfield>
+      <subfield code="x">History.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Internet industry</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="x">History.</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b3685928x</subfield>
+      <subfield code="b">p    </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="902" ind1=" " ind2=" ">
+      <subfield code="a">131204</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">1</subfield>
+      <subfield code="c">081118</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="901" ind1=" " ind2=" ">
+      <subfield code="a">BNA</subfield>
+    </datafield>
+    <datafield tag="901" ind1=" " ind2=" ">
+      <subfield code="a">R0742283</subfield>
+    </datafield>
+    <datafield tag="902" ind1=" " ind2=" ">
+      <subfield code="a">081105AB0701</subfield>
+    </datafield>
+    <datafield tag="905" ind1="0" ind2="0">
+      <subfield code="a">Corporations that changed the world</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">1</subfield>
+      <subfield code="c">081118</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">pstk </subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag='HLD' ind1=" " ind2=" ">
+    </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+  </record>
+  <record>
+    <leader>02526nas a2200829   4500</leader>
+    <controlfield tag="005">19891201203444.0</controlfield>
+    <controlfield tag="008">840806c19809999cauar         0    0eng  </controlfield>
+    <controlfield tag="001">991013867929703811</controlfield>
+    <datafield tag="010" ind1=" " ind2=" ">
+      <subfield code="a">80644745</subfield>
+      <subfield code="z">sn 78006898</subfield>
+    </datafield>
+    <datafield tag="022" ind1="0" ind2=" ">
+      <subfield code="a">0163-7525</subfield>
+    </datafield>
+    <datafield tag="030" ind1=" " ind2=" ">
+      <subfield code="a">AREHDT</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b12831049-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">ocn471235607</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">PATG84-S00316</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">4471173    </subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">DLC</subfield>
+      <subfield code="c">NSD</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NSD</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">SER</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">AGL</subfield>
+      <subfield code="d">NSD</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">HEA</subfield>
+    </datafield>
+    <datafield tag="043" ind1=" " ind2=" ">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield tag="069" ind1="1" ind2=" ">
+      <subfield code="a">A54310000</subfield>
+    </datafield>
+    <datafield tag="079" ind1=" " ind2=" ">
+      <subfield code="a">ocm04471173</subfield>
+    </datafield>
+    <datafield tag="090" ind1=" " ind2=" ">
+      <subfield code="a">RA421</subfield>
+      <subfield code="b">.A66</subfield>
+    </datafield>
+    <datafield tag="210" ind1="0" ind2=" ">
+      <subfield code="a">Annu. rev. public health</subfield>
+    </datafield>
+    <datafield tag="222" ind1=" " ind2="0">
+      <subfield code="a">Annual review of public health</subfield>
+    </datafield>
+    <datafield tag="245" ind1="0" ind2="0">
+      <subfield code="a">Annual review of public health.</subfield>
+    </datafield>
+    <datafield tag="260" ind1=" " ind2=" ">
+      <subfield code="a">Palo Alto, Calif.,</subfield>
+      <subfield code="b">Annual Reviews Inc.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">v.</subfield>
+      <subfield code="c">23 cm.</subfield>
+    </datafield>
+    <datafield tag="350" ind1=" " ind2=" ">
+      <subfield code="a">$17.00 (U.S.)</subfield>
+      <subfield code="a">$17.50 (foreign)</subfield>
+    </datafield>
+    <datafield tag="362" ind1="0" ind2=" ">
+      <subfield code="a">v. 1-   1980-</subfield>
+    </datafield>
+    <datafield tag="510" ind1="2" ind2=" ">
+      <subfield code="a">Chemical abstracts</subfield>
+      <subfield code="x">0009-2258</subfield>
+    </datafield>
+    <datafield tag="530" ind1=" " ind2=" ">
+      <subfield code="a">Also available online.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Public health</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Public health</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="2">
+      <subfield code="a">Public Health</subfield>
+      <subfield code="v">periodicals</subfield>
+    </datafield>
+    <datafield tag="710" ind1="2" ind2=" ">
+      <subfield code="a">Annual Reviews, Inc.</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b12831049</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="902" ind1=" " ind2=" ">
+      <subfield code="a">170502</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">37</subfield>
+      <subfield code="c">990101</subfield>
+      <subfield code="d">s</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="935" ind1=" " ind2=" ">
+      <subfield code="a">AAH-6813</subfield>
+    </datafield>
+    <datafield tag="935" ind1=" " ind2=" ">
+      <subfield code="a">00301503</subfield>
+    </datafield>
+    <datafield tag="950" ind1=" " ind2=" ">
+      <subfield code="l">P</subfield>
+      <subfield code="v">v.1;</subfield>
+      <subfield code="y">1980</subfield>
+      <subfield code="n">#9</subfield>
+      <subfield code="f">use v.</subfield>
+      <subfield code="i">08/06/84 C</subfield>
+    </datafield>
+    <datafield tag="955" ind1=" " ind2=" ">
+      <subfield code="l">P</subfield>
+      <subfield code="c">(v.1:1980)</subfield>
+      <subfield code="i">08/06/84 C</subfield>
+    </datafield>
+    <datafield tag="956" ind1=" " ind2=" ">
+      <subfield code="a">WA 105 .A55</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="a">08/06/84</subfield>
+      <subfield code="t">c</subfield>
+      <subfield code="s">9110</subfield>
+      <subfield code="n">PPT</subfield>
+      <subfield code="w">DCLC80644745S</subfield>
+      <subfield code="d">08/06/84</subfield>
+      <subfield code="c">RW</subfield>
+      <subfield code="b">BK</subfield>
+      <subfield code="i">840806</subfield>
+      <subfield code="l">PATG</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">hkjst</subfield>
+      <subfield code="a">WA 105 .A55</subfield>
+      <subfield code="u">v.v.12 1991</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">hkjst</subfield>
+      <subfield code="a">WA 105 .A55</subfield>
+      <subfield code="u">v.v.11 1990</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.1</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.2</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.3</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.4</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.5</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.6</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.7</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.8</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.9</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.10</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.11</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.12</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.13</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.14</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.15</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.16</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.17</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.18</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.19</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.20</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.21</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.22</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.23</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.24</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.25</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.26</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.27</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.28</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.29</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">kstk </subfield>
+      <subfield code="u">v.v.30</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag='PRT' ind1=" " ind2=" ">
+      <subfield code="a">53394076770003811</subfield>
+      <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
+    </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+  </record>
 </collection>
