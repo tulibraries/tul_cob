@@ -19,6 +19,7 @@ end
 
 desc 'Ingest a single file into solr and commit'
 task :ingest, [:filepath] => [:environment] do |t, args|
+  args.with_defaults(filepath: "sample_data/alma_bibs.xml")
   `traject -c app/models/traject_indexer.rb #{args[:filepath]}`
   `traject -c app/models/traject_indexer.rb -x commit`
 end
