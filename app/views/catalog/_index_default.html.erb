@@ -29,8 +29,8 @@
       <% end -%>
 
     <% elsif document["availability_facet"][i] == "At the Library" %>
-      <button class="btn btn-sm btn-success availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>" data-show-text="">Check Availability</button>
-      <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >Loading...</dd>
+      <button class="btn btn-sm btn-default availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">Loading...</button>
+      <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>
       <div id="physical-document-<%= document_counter %>" class="collapse">
         <div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>
     <% end %>
