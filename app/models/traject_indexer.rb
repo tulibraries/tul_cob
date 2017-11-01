@@ -232,6 +232,7 @@ to_field "availability_facet" do |rec, acc|
   unless rec.fields('HLD').empty?
     acc << "At the Library"
   end
+  acc.uniq!
 end
 
     to_field 'location_facet' do |rec, acc|
