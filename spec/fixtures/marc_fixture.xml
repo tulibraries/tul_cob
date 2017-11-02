@@ -24534,7 +24534,7 @@
     <controlfield tag='001'>991012132499760715</controlfield>
     <controlfield tag='001'>991012132499760715</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
-  <datafield tag='PRT'></datafield>
+  <datafield tag='HLD'></datafield>
   </record>
   <record>
     <leader>01120cam a22003610  4500</leader>
@@ -24760,7 +24760,7 @@
       <subfield code='z'>table of contents</subfield>
       <subfield code='u'>http://www.loc.gov/catdir/toc/ecip0413/2004001291.html</subfield>
     </datafield>
-    <datafield tag='PRT' >
+    <datafield tag='HLD' >
     </datafield>
   </record>
   <!-- Work split between developers -->
