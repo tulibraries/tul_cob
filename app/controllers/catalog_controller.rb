@@ -51,7 +51,11 @@ class CatalogController < ApplicationController
       defType: "dismax",
       echoParams: "explicit",
       rows: "10",
-      mm: "2&lt;-1 5&lt;-2 6&lt;90%",
+      mm:[ 
+        "2<-1", 
+        "5<-2", 
+        URI.escape("6<90%")
+          ],
       ps: "3",
       tie: "0.01",
       qf: %w[
