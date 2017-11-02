@@ -147,7 +147,11 @@ to_field 'lc_b4cutter_facet', extract_marc('050a', :first=>true)
 # URL Fields
 notfulltext = /book review|publisher description|sample text|table of contents/i
 
-to_field('url_resource_display') do |rec, acc|
+to_field('electronic_resource_display') do |rec, acc|
+  rec.fields('PRT').each do |f|
+    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
+    acc << selected_subfields
+  end
   rec.fields('856').each do |f|
     case f.indicator2
     when '0'
@@ -180,7 +184,6 @@ to_field('url_resource_display') do |rec, acc|
   end
 end
 
-# Very similar to url_fulltext_display. Should DRY up.
 to_field 'url_more_links_display' do |rec, acc|
   rec.fields('856').each do |f|
     case f.indicator2
@@ -212,13 +215,6 @@ to_field 'url_more_links_display' do |rec, acc|
   end
 end
 
-to_field('electronic_resource_display') do |rec, acc|
-  rec.fields('PRT').each do |f|
-    selected_subfields = [f['a'], f['c'], f['g']].compact.join("|")
-    acc << selected_subfields
-  end
-end
-
 #Availability
 
 to_field "availability_facet" do |rec, acc|
@@ -236,6 +232,7 @@ to_field "availability_facet" do |rec, acc|
   unless rec.fields('HLD').empty?
     acc << "At the Library"
   end
+  acc.uniq!
 end
 
     to_field 'location_facet' do |rec, acc|

@@ -236,7 +236,6 @@ class CatalogController < ApplicationController
     config.add_show_field 'lccn_display', label: 'LCCN'
     config.add_show_field 'alma_mms_display', label: 'Catalog Record ID'
     config.add_show_field 'language_display', label: 'Language'
-    config.add_show_field 'url_resource_display', label: 'Available Online', :helper_method => :electronic_access_links
     config.add_show_field 'url_more_links_display', label: 'Other Links', :helper_method => :electronic_access_links
     config.add_show_field 'electronic_resource_display', label: 'Available Online', :helper_method => :electronic_resource_link_builder
 
