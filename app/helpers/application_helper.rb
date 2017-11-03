@@ -36,10 +36,21 @@ module ApplicationHelper
     list_with_links(args)
   end
 
-  def electronic_access_links(args)
-    new_link = args[:document][args[:field]].each_with_index.map { |field, i|
-      content_tag(:li, link_to(args[:value][i].split("|").first.sub(/ *[ ,.\/;:] *\Z/, ''), args[:value][i].split("|").last), class: "list_items") }
-    new_link.join("<br />").html_safe
+  def check_for_full_http_link(args)
+    args[:document][args[:field]].map { |field|
+      if field.include?("http")
+        electronic_access_links(field)
+      else
+        electronic_resource_link_builder(field)
+      end
+    }.join("<br />").html_safe
+  end
+
+  def electronic_access_links(field)
+    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, '')
+    link_url = field.split("|").last
+    new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
+    new_link
   end
 
   def alma_build_openurl(query)
@@ -51,37 +62,33 @@ module ApplicationHelper
         host: alma_domain,
         path: "/view/uresolver/#{alma_institution_code}/openurl",
         query: query_defaults.merge(query).to_query).to_s
-    end
-
-    def alma_electronic_resource_direct_link(portfolio_pid)
-      query = {
-          'u.ignore_date_coverage': 'true',
-          'Force_direct': true,
-          portfolio_pid: portfolio_pid
-      }
-      alma_build_openurl(query)
-    end
-
-    def electronic_resource_link_builder(args)
-      new_link = args[:document][args[:field]].each_with_index.map { |field|
-        electronic_resource_from_traject = field.split("|")
-        portfolio_pid = electronic_resource_from_traject.first
-        database_name = electronic_resource_from_traject.second
-        if electronic_resource_from_traject.length == 1
-          content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-        else
-          content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-        end
-       }
-      new_link.join("<br />").html_safe
-    end
-
-    def single_link_builder(document)
-      portfolio_pid = document.scan(/\d/).join("")
-      alma_electronic_resource_direct_link(portfolio_pid)
-    end
-
-    def bento_engine_nice_name(engine_id)
-      I18n.t("bento.#{engine_id}.nice_name")
-    end
   end
+
+  def alma_electronic_resource_direct_link(portfolio_pid)
+    query = {
+        'u.ignore_date_coverage': 'true',
+        'Force_direct': true,
+        portfolio_pid: portfolio_pid
+    }
+    alma_build_openurl(query)
+  end
+
+  def electronic_resource_link_builder(field)
+    electronic_resource_from_traject = field.split("|")
+    portfolio_pid = electronic_resource_from_traject.first
+    database_name = electronic_resource_from_traject.second || "Find it online"
+    additional_info = electronic_resource_from_traject.third || ""
+      new_link = content_tag(:li, link_to(database_name + " " + additional_info, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
+    new_link
+  end
+
+  def single_link_builder(field)
+    electronic_resource_from_traject = field.split("|")
+    portfolio_pid = electronic_resource_from_traject.first
+    alma_electronic_resource_direct_link(portfolio_pid)
+  end
+
+  def bento_engine_nice_name(engine_id)
+    I18n.t("bento.#{engine_id}.nice_name")
+  end
+end

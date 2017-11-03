@@ -26,3 +26,31 @@ journal_search:
   issn: 0163-7525
   lccn: 80644745
   availability_facet: "Online"
+results_queries:
+  - doc_id:
+      - "991001254809703811"
+      - "991022272009703811"
+    PCI_recordid:
+      - "TN_crossref10.1080/07268602.2017.1295798"
+    title:
+      - "test"
+    query_type:
+      - "title"
+  - doc_id:
+      - "991024587289703811"
+    title:
+      - "Crisis management in American higher education"
+    query_type:
+      - "title"
+  - doc_id:
+      - "991036742233003811"
+      - "991017814679703811"
+      - "991001513649703811"
+      - "991002431869703811"
+    title:
+      - "States of political discourse"
+    subtitle:
+      - "words, regimes, seditions"
+    query_type:
+      - "title"
+      - "subtitle"
