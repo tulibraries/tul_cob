@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 $:.unshift "./config"
 $:.unshift "./lib"
 require "yaml"
@@ -17,6 +19,10 @@ extend  Traject::Macros::Marc21Semantics
 # To have access to the traject marc format/carrier classifier
 require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
+
+# Include custom traject macros
+require "traject/macros/custom"
+extend Traject::Macros::Custom
 
 settings do
   # type may be "binary", "xml", or "json"
