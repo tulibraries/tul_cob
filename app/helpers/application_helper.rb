@@ -5,7 +5,7 @@ module ApplicationHelper
     Rails.configuration.locations[value]
   end
 
-  def render_location_show(value) # why do we get the entire solr document in show fields?
+  def render_location_show(value)  # why do we get the entire solr document in show fields?
     render_location(value[:value].first)
   end
 
@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def list_with_links(args)
-    args[:document][args[:field]].map { |field| content_tag(:li, fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
+    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
   end
 
   def browse_creator(args)
@@ -37,11 +37,21 @@ module ApplicationHelper
     list_with_links(args)
   end
 
-  def electronic_access_links(args)
-    new_link = args[:document][args[:field]].each_with_index.map do |_field, i|
-      content_tag(:li, link_to(args[:value][i].split("|").first.sub(/ *[ ,.\/;:] *\Z/, ""), args[:value][i].split("|").last), class: "list_items")
-    end
-    new_link.join("<br />").html_safe
+  def check_for_full_http_link(args)
+    args[:document][args[:field]].map { |field|
+      if field.include?("http")
+        electronic_access_links(field)
+      else
+        electronic_resource_link_builder(field)
+      end
+    }.join("<br />").html_safe
+  end
+
+  def electronic_access_links(field)
+    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
+    link_url = field.split("|").last
+    new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
+    new_link
   end
 
   def alma_build_openurl(query)
@@ -64,22 +74,18 @@ module ApplicationHelper
     alma_build_openurl(query)
   end
 
-  def electronic_resource_link_builder(args)
-    new_link = args[:document][args[:field]].each_with_index.map { |field|
-       electronic_resource_from_traject = field.split("|")
-       portfolio_pid = electronic_resource_from_traject.first
-       database_name = electronic_resource_from_traject.second
-       if electronic_resource_from_traject.length == 1
-         content_tag(:li, link_to("Find it online", alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-       else
-         content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-       end
-     }
-    new_link.join("<br />").html_safe
+  def electronic_resource_link_builder(field)
+    electronic_resource_from_traject = field.split("|")
+    portfolio_pid = electronic_resource_from_traject.first
+    database_name = electronic_resource_from_traject.second || "Find it online"
+    additional_info = electronic_resource_from_traject.last
+    new_link = content_tag(:li, link_to(database_name + " " + additional_info, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
+    new_link
   end
 
-  def single_link_builder(document)
-    portfolio_pid = document.scan(/\d/).join("")
+  def single_link_builder(field)
+    electronic_resource_from_traject = field.split("|")
+    portfolio_pid = electronic_resource_from_traject.first
     alma_electronic_resource_direct_link(portfolio_pid)
   end
 

@@ -32,7 +32,6 @@ RSpec.feature "Searches", type: :feature do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button "Search"
-      save_and_open_page
       within first(".document-position-0 h3") do
         expect(page).to have_text item["title"]
       end
