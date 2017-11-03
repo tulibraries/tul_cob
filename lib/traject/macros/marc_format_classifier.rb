@@ -47,8 +47,12 @@ module Traject
         end
       end
 
-      def extract_url_resource
+      def extract_electronic_resource
         lambda do |rec, acc|
+          rec.fields("PRT").each do |f|
+            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
+            acc << selected_subfields
+          end
           rec.fields("856").each do |f|
             case f.indicator2
             when "0"
@@ -115,15 +119,6 @@ module Traject
         }
       end
 
-      def extract_electronic_resource
-        lambda { |rec, acc|
-          rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
-            acc << selected_subfields
-          end
-        }
-      end
-
       def extract_availability
         lambda { |rec, acc|
           unless rec.fields("PRT").empty?
@@ -140,6 +135,7 @@ module Traject
           unless rec.fields("HLD").empty?
             acc << "At the Library"
           end
+          acc.uniq!
         }
       end
 
