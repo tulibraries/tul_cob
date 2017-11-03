@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 # Specs in this file have access to a helper object that includes
 # the UsersHelper. For example:
@@ -12,18 +14,18 @@ require 'rails_helper'
 # end
 RSpec.describe UsersHelper, type: :helper do
   describe "#is_renewable" do
-    it 'returns true when loan.renewable value is true' do
-      loan = MockLoan.new({renewable: 'true'})
+    it "returns true when loan.renewable value is true" do
+      loan = MockLoan.new(renewable: "true")
       expect(is_not_renewable?(loan)).to be false
     end
 
     it 'returns false when loan.renewable  is "false" ' do
-      loan = MockLoan.new({renewable: 'false'})
+      loan = MockLoan.new(renewable: "false")
       expect(is_not_renewable?(loan)).to be true
     end
 
-    it 'returns true loan does not have a renewable field' do
-      loan = MockLoan.new({not_renewable: 'true'})
+    it "returns true loan does not have a renewable field" do
+      loan = MockLoan.new(not_renewable: "true")
       expect(is_not_renewable?(loan)).to be false
     end
 
@@ -37,5 +39,4 @@ class MockLoan
       @renewable = loan[:renewable]
     end
   end
-
 end

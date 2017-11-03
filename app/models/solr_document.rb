@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 class SolrDocument
   include Blacklight::Solr::Document
 
-   #self.unique_key = 'id'
+  # self.unique_key = 'id'
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(Blacklight::Document::Email)
@@ -24,6 +25,6 @@ class SolrDocument
   # this bib record, but in the case of boundwith records, we return
   # the boundwith IDs, because that's where Alma stores the holdings.
   def alma_availability_mms_ids
-    fetch('bound_with_ids', [id])
+    fetch("bound_with_ids", [id])
   end
 end

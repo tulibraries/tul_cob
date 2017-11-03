@@ -1,5 +1,6 @@
-module ApplicationHelper
+# frozen_string_literal: true
 
+module ApplicationHelper
   def render_location(value)
     Rails.configuration.locations[value]
   end
@@ -9,10 +10,10 @@ module ApplicationHelper
   end
 
   def get_search_params(field, query)
-    if field == 'subject_display'
-      { :controller => "catalog", :action => 'index', :search_field => 'subject', :q=> query.gsub(/>|—/, '') }
+    if field == "subject_display"
+      { controller: "catalog", action: "index", search_field: "subject", q: query.gsub(/>|—/, "") }
     else
-      { :controller => "catalog", :action => 'index', :search_field => field, :q=> query }
+      { controller: "catalog", action: "index", search_field: field, q: query }
     end
   end
 
@@ -29,8 +30,8 @@ module ApplicationHelper
   def browse_creator(args)
     args[:document][args[:field]].each_with_index do |name, i|
       content_tag :ul do
-      newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
-      args[:document][args[:field]][i] = newname.html_safe
+        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
+        args[:document][args[:field]][i] = newname.html_safe
       end
     end
     list_with_links(args)
@@ -47,7 +48,7 @@ module ApplicationHelper
   end
 
   def electronic_access_links(field)
-    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, '')
+    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
     new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
     new_link
@@ -55,18 +56,18 @@ module ApplicationHelper
 
   def alma_build_openurl(query)
     query_defaults = {
-      rfr_id: 'info:sid/primo.exlibrisgroup.com',
+      rfr_id: "info:sid/primo.exlibrisgroup.com",
     }
 
     URI::HTTPS.build(
-        host: alma_domain,
-        path: "/view/uresolver/#{alma_institution_code}/openurl",
-        query: query_defaults.merge(query).to_query).to_s
+      host: alma_domain,
+      path: "/view/uresolver/#{alma_institution_code}/openurl",
+      query: query_defaults.merge(query).to_query).to_s
   end
 
   def alma_electronic_resource_direct_link(portfolio_pid)
     query = {
-        'u.ignore_date_coverage': 'true',
+        'u.ignore_date_coverage': "true",
         'Force_direct': true,
         portfolio_pid: portfolio_pid
     }
@@ -78,7 +79,7 @@ module ApplicationHelper
     portfolio_pid = electronic_resource_from_traject.first
     database_name = electronic_resource_from_traject.second || "Find it online"
     additional_info = electronic_resource_from_traject.third || ""
-      new_link = content_tag(:li, link_to(database_name + " " + additional_info, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
+    new_link = content_tag(:li, link_to(database_name + " " + additional_info, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
     new_link
   end
 

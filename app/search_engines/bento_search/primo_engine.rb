@@ -1,4 +1,6 @@
-require 'open-uri'
+# frozen_string_literal: true
+
+require "open-uri"
 
 class BentoSearch::PrimoEngine
   include BentoSearch::SearchEngine
@@ -13,7 +15,7 @@ class BentoSearch::PrimoEngine
     results = BentoSearch::Results.new
 
     primo_results = search_primo
-    primo_results['docs'].each do |doc|
+    primo_results["docs"].each do |doc|
       results << conform_to_bento_result(doc)
     end
     results
@@ -32,16 +34,14 @@ class BentoSearch::PrimoEngine
       scope: configuration.scope,
       vid: configuration.vid
     }
-    URI::HTTPS.build(host: configuration.api_base_url, path: "/primo/v1/pnxs", query: params.to_query ).to_s
+    URI::HTTPS.build(host: configuration.api_base_url, path: "/primo/v1/pnxs", query: params.to_query).to_s
   end
 
   def conform_to_bento_result(item)
-    BentoSearch::ResultItem.new({
-      title: item.fetch("title", ""),
+    BentoSearch::ResultItem.new(title: item.fetch("title", ""),
       authors: authors(item),
       publisher: item.fetch("isPartOf", "None found"),
-      link: build_primo_url(item),
-      })
+      link: build_primo_url(item))
   end
 
 
@@ -50,12 +50,11 @@ class BentoSearch::PrimoEngine
       .flatten
       .compact
       .uniq
-      .map { |creator| BentoSearch::Author.new({display: creator})}
+      .map { |creator| BentoSearch::Author.new(display: creator) }
   end
 
 
   def build_primo_url(primo_doc)
     "#{configuration.web_ui_base_url}#{primo_doc['pnxId']}&context=L&vid=#{configuration.vid}&search_scope=default_scope&tab=default_tab&lang=en_US"
   end
-
 end

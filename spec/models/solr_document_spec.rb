@@ -1,8 +1,10 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe SolrDocument, type: :model do
   let(:document) { SolrDocument.new }
-  
+
   it "handles Email" do
     expect(document).to respond_to(:to_email_text)
   end
