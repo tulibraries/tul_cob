@@ -1,0 +1,32 @@
+<% doc_presenter = show_presenter(document) %>
+<%# partial to display availability details in catalog show view -%>
+
+<% @response["response"][:docs].each_with_index do |field, i| %>
+  <% if document["availability_facet"][i] == "Online" %>
+    <% document_show_fields(document).each do |field_name, field| %>
+    <% if field_name == 'electronic_resource_display' %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt></h3>
+        </div>
+        <div class="panel-body">
+          <dd class="blacklight-<%= field_name.parameterize %>">
+            <ul>
+            <% doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+              <% values = Array.wrap(doc_presenter.field_value field_name) %>
+              <% values.each do |value| %>
+              <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+            </ul>
+          </dd>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% elsif document["availability_facet"][i] == "At the Library" %>
+    <div class="availability_iframe panel panel-default">
+      <h4 class="panel-heading">Availability</h4>
+      <iframe class="bl_alma_iframe" src="<%= alma_app_fulfillment_url(document) %>"></iframe>
+    </div>
+  <% end %>
+<% end %>
