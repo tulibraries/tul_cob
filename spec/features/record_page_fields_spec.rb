@@ -1013,7 +1013,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "User visits a document with url indicator2 value1 text match" do
       visit "catalog/#{item_856_more_1['doc_id']}"
       within "dd.blacklight-url_more_links_display" do
-        expect(page).to have_text(item_856_more_1['url_1'])
+        expect(page).to have_text(item_856_more_1['url'])
         expect(page).to have_link("#{item_856_more_1['url']}", href: "#{item_856_more_1['url_href']}")
       end
     end

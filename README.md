@@ -13,7 +13,6 @@ git clone git@github.com:tulibraries/tul_cob
 cd tul_cob
 bundle install
 cp config/secrets.yml.example config/secrets.yml
-bundle exec rails db:migrate
 ```
 
 We also need to configure the application with our Alma and Primo apikey for development work on the Bento box or User account. Start by copying the example alma and bento config files.
@@ -24,6 +23,10 @@ cp config/bento.yml.example config/bento.yml
 ```
 
 Then edit them adding in the apikeys for our application specified in our Ex Libris Developer Network.
+
+```bash
+bundle exec rails db:migrate
+```
 
 
 ### Start the Application

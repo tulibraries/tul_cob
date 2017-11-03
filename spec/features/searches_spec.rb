@@ -176,4 +176,29 @@ RSpec.feature "Searches", type: :feature do
       end
     end
   end
+
+  feature "Test queries" do
+    let (:test_queries) { fixtures.fetch("results_queries") }
+    scenario "Test queries" do
+      test_queries.each do |test_item|
+        search_string = ''
+        test_item['query_type'].each do |query_field|
+          test_item[query_field].each do |search_term|
+            search_string += search_term + " "
+          end
+        end
+        visit '/'
+        fill_in 'q', with: search_string
+        click_button 'Search'
+        #save_and_open_page
+        within first(".document-position-0 h3") do
+          test_item['query_type'].each do |query_field|
+            test_item[query_field].each do |search_term|
+              expect(page).to have_text search_term
+            end
+          end
+        end
+      end
+    end
+  end
 end
