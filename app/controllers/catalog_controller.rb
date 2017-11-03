@@ -30,6 +30,7 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
+      wt: "json",
       fl: %w[
         id
         score
@@ -47,8 +48,16 @@ class CatalogController < ApplicationController
         title_statement_display
         title_uniform_display
       ].join(" "),
-      wt: "json",
-      rows: 10,
+      defType: "dismax",
+      echoParams: "explicit",
+      rows: "10",
+      mm:[ 
+        "2<-1", 
+        "5<-2", 
+        URI.escape("6<90%")
+          ],
+      ps: "3",
+      tie: "0.01",
       qf: %w[
         title_unstem_search^100000
         subtitle_unstem_search^50000
@@ -70,8 +79,86 @@ class CatalogController < ApplicationController
         subject_addl_t^50
         title_series_unstem_search^25
         title_series_t^10
+        isbn_t
         text
-      ].join(" ")
+      ].join(" "),
+      pf: %w[
+        title_unstem_search^1000000
+        subtitle_unstem_search^500000
+        title_t^250000
+        subtitle_t^100000
+        title_addl_unstem_search^50000
+        title_addl_t^25000
+        title_added_entry_unstem_search^15000
+        title_added_entry_t^12500
+        subject_topic_unstem_search^10000
+        subject_unstem_search^7500
+        subject_topic_facet^6250
+        subject_t^5000
+        author_unstem_search^2500
+        author_addl_unstem_search^2500
+        author_t^1000
+        author_addl_t^500
+        subject_addl_unstem_search^2500
+        subject_addl_t^500
+        title_series_unstem_search^250
+        title_series_t^100
+        text^10
+      ].join(" "),
+      author_qf: %w[
+        author_unstem_search^200
+        author_addl_unstem_search^50
+        author_t^20
+        author_addl_t
+      ].join(" "),
+      author_pf: %w[
+        author_unstem_search^2000
+        author_addl_unstem_search^500
+        author_t^200
+        author_addl_t^10
+      ].join(" "),
+      title_qf: %w[
+        title_unstem_search^50000
+        subtitle_unstem_search^25000
+        title_addl_unstem_search^10000
+        title_t^5000
+        subtitle_t^2500
+        title_addl_t^100
+        title_added_entry_unstem_search^50
+        title_added_entry_t^10
+        title_series_unstem_search^5
+        title_series_t
+      ].join(" "),
+      title_pf: %w[
+        title_unstem_search^500000
+        subtitle_unstem_search^250000
+        title_addl_unstem_search^100000
+        title_t^50000
+        subtitle_t^25000
+        title_addl_t^1000
+        title_added_entry_unstem_search^500
+        title_added_entry_t^100
+        title_series_t^50
+        title_series_unstem_search^10
+      ].join(" "),
+      subject_qf: %w[
+        subject_topic_unstem_search^200
+        subject_unstem_search^125
+        subject_topic_facet^100
+        subject_t^50
+        subject_addl_unstem_search^10
+        subject_addl_t
+      ].join(" "),
+      subject_pf: %w[
+        subject_topic_unstem_search^2000
+        subject_unstem_search^1250
+        subject_t^1000
+        subject_topic_facet^500
+        subject_addl_unstem_search^100
+        subject_addl_t^10
+      ].join(" "),
+      facet: "true",
+      spellcheck: "true",
     }
 
     # solr path which will be added to solr base url before the other solr params.
