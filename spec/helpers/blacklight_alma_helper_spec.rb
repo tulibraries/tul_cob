@@ -14,22 +14,22 @@ require "rails_helper"
 # end
 RSpec.describe BlacklightAlmaHelper, type: :helper do
   describe "#alma_service_type_for_fulfillment_url" do
-    example "An online file is available" do
-      doc = { "availability_facet" => ["Online"] }
-      actual = helper.alma_service_type_for_fulfillment_url doc
-      expect(actual).to be("viewit")
-    end
-
-    example "An online file is not available" do
-      doc = { "availability_facet" => [] }
+    example "A physical holding is available" do
+      doc = { "availability_facet" => ["At the Library"] }
       actual = helper.alma_service_type_for_fulfillment_url doc
       expect(actual).to be("getit")
+    end
+
+    example "A physical holding is not available" do
+      doc = { "availability_facet" => [] }
+      actual = helper.alma_service_type_for_fulfillment_url doc
+      expect(actual).to be("viewit")
     end
 
     example "Something has gone terribly wrong" do
       doc = nil
       actual = helper.alma_service_type_for_fulfillment_url doc
-      expect(actual).to be("getit")
+      expect(actual).to be("viewit")
     end
   end
 end

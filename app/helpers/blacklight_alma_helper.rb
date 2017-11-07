@@ -9,10 +9,10 @@ module BlacklightAlmaHelper
   # that we always "viewit" in the case of an "Online" record.
   def alma_service_type_for_fulfillment_url(document = {})
     document ||= {}
-    if document.fetch("availability_facet", []).include?("Online")
-      "viewit"
-    else
+    if document.fetch("availability_facet", []).include?("At the Library")
       "getit"
+    else
+      "viewit"
     end
   end
 end
