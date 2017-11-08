@@ -10,6 +10,7 @@
           <h3 class="panel-title"><dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt></h3>
         </div>
         <div class="panel-body">
+          <h5>Online</h5>
           <dd class="blacklight-<%= field_name.parameterize %>">
             <ul>
             <% doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
