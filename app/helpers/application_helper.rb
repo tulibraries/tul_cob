@@ -65,6 +65,10 @@ module ApplicationHelper
       query: query_defaults.merge(query).to_query).to_s
   end
 
+  def render_alma_eresource_link(portfolio_pid, db_name)
+    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid))
+  end
+
   def alma_electronic_resource_direct_link(portfolio_pid)
     query = {
         'u.ignore_date_coverage': "true",
@@ -74,12 +78,17 @@ module ApplicationHelper
     alma_build_openurl(query)
   end
 
+  def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
+    item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
+    item_html = item_parts.compact.join(" - ").html_safe
+    content_tag(:li, item_html , class: "list_items")
+  end
+
   def electronic_resource_link_builder(field)
-    electronic_resource_from_traject = field.split("|")
-    portfolio_pid = electronic_resource_from_traject.first
-    database_name = electronic_resource_from_traject.second || "Find it online"
-    additional_info = electronic_resource_from_traject.third || ""
-    new_link = content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)) + " - " + additional_info , class: "list_items")
+    return if field.empty?
+    portfolio_pid, db_name, addl_info = field.split("|")
+    db_name ||= "Find it online"
+    electronic_resource_list_item(portfolio_pid, db_name, addl_info)
   end
 
   def single_link_builder(field)
