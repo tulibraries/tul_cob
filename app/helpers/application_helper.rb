@@ -79,8 +79,7 @@ module ApplicationHelper
     portfolio_pid = electronic_resource_from_traject.first
     database_name = electronic_resource_from_traject.second || "Find it online"
     additional_info = electronic_resource_from_traject.third || ""
-    new_link = content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)), class: "list_items")
-    new_link + additional_info
+    new_link = content_tag(:li, link_to(database_name, alma_electronic_resource_direct_link(portfolio_pid)) + " - " + additional_info , class: "list_items")
   end
 
   def single_link_builder(field)
