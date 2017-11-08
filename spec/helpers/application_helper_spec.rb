@@ -23,6 +23,10 @@ RSpec.describe ApplicationHelper, type: :helper do
       it "has correct link to resource" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Find it online", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=12345&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
       end
+
+      it "does not have a separator" do
+        expect(electronic_resource_link_builder(field)).to_not have_text(" - ")
+      end
     end
 
     context "two subfields present" do
@@ -30,6 +34,10 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "displays database name if available" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
+      end
+
+      it "does not contain a separator" do
+        expect(electronic_resource_link_builder(field)).to_not have_text(" - ")
       end
     end
 
