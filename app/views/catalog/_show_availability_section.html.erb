@@ -18,13 +18,14 @@
               <% values.each do |value| %>
               <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
             </ul>
+            <% end %>
           </dd>
         </div>
       </div>
       <% end %>
     <% end %>
   <% end %>
-  <% elsif document["availability_facet"][i] == "At the Library" %>
+  <% if document["availability_facet"][i] == "At the Library" %>
     <div class="availability_iframe panel panel-default">
       <h4 class="panel-heading">Availability</h4>
       <iframe class="bl_alma_iframe" src="<%= alma_app_fulfillment_url(document) %>"></iframe>

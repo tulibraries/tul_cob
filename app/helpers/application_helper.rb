@@ -92,9 +92,13 @@ module ApplicationHelper
   end
 
   def single_link_builder(field)
-    electronic_resource_from_traject = field.split("|")
-    portfolio_pid = electronic_resource_from_traject.first
-    alma_electronic_resource_direct_link(portfolio_pid)
+    if field.include?("http")
+      field.split("|").last
+    else
+      electronic_resource_from_traject = field.split("|")
+      portfolio_pid = electronic_resource_from_traject.first
+      alma_electronic_resource_direct_link(portfolio_pid)
+    end
   end
 
   def bento_engine_nice_name(engine_id)
