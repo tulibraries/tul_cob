@@ -108,7 +108,8 @@ module ApplicationHelper
   def aeon_request_button(document)
     #binding.pry
     if document.include?("aeon_request_display")
-      button_to("Request Onsite Access", "http" , class:"aeon-request btn btn-warning")
+      button_to("Request Onsite Access", "http" , class:"aeon-request btn btn-warning") +
+      content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
     end
   end
 end
