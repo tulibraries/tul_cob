@@ -106,8 +106,7 @@ module ApplicationHelper
   end
 
   def aeon_request_button(document)
-    #binding.pry
-    if document.include?("aeon_request_display")
+    if document["location_display"] == ["rarestacks"] && document["library_facet"] == ["Special Collections Research Center"]
       button_to("Request Onsite Access", "http" , class:"aeon-request btn btn-warning") +
       content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
     end
