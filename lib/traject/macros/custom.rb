@@ -117,6 +117,15 @@ module Traject
         }
       end
 
+      def extract_aeon
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            bc = [field["b"], field["c"]].join(" ")
+            acc << bc if bc == "SCRC rarestacks"
+          end
+        end
+      end
+
       def extract_location
         lambda { |rec, acc|
           rec.fields("945").each do |field|
