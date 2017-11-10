@@ -35,7 +35,6 @@ class CatalogController < ApplicationController
       fl: %w[
         id
         score
-        aeon_request_display
         author_display
         author_vern_display
         availability_facet
