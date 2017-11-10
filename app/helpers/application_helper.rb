@@ -104,4 +104,11 @@ module ApplicationHelper
   def bento_engine_nice_name(engine_id)
     I18n.t("bento.#{engine_id}.nice_name")
   end
+
+  def aeon_request_button(document)
+    #binding.pry
+    if document.include?("aeon_request_display")
+      button_to("Request Onsite Access", "http" , class:"aeon-request btn btn-warning")
+    end
+  end
 end
