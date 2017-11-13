@@ -1,6 +1,22 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+
+  def index
+    @users = User.order(:id)
+  end
+
+  def impersonate
+    user = User.find(params[:id])
+    impersonate_user(user)
+    redirect_to root_path
+  end
+
+  def stop_impersonating
+    stop_impersonating_user
+    redirect_to root_path
+  end
+
   def account
     @loans = current_user.get_loans
     @holds = current_user.get_holds
