@@ -107,16 +107,17 @@ module ApplicationHelper
   end
 
   def aeon_request_url(document)
-    openurl_parameters = {
-      ItemTitle: document["title_statement_display"],
-      ItemPlace: document["imprint_display"],
-      ReferenceNumber: document["alma_mms_display"],
-      CallNumber: document["call_number_display"],
-      ItemAuthor: document["creator_display"]
+    openurl_field_values = {
+      ItemTitle: document["title_statement_display"].first.to_s,
+      ItemPlace: document["imprint_display"].first.to_s,
+      ReferenceNumber: document["alma_mms_display"].first.to_s,
+      CallNumber: document["call_number_display"].first.to_s,
+      ItemAuthor: document["creator_display"].first.to_s
     }
       URI::HTTPS.build(
-      path:  "/temple.aeon.atlas-sys.com/aeon/aeon.dll/OpenURL",
-      query: openurl_parameters.merge(openurl_parameters).to_query).to_s
+      host:  "temple.aeon.atlas-sys.com",
+      path: "/aeon/aeon.dll/OpenURL",
+      query: openurl_field_values.to_query).to_s
   end
 
   def aeon_request_button(document)
