@@ -109,10 +109,10 @@ module ApplicationHelper
   def aeon_request_url(document)
     openurl_field_values = {
       ItemTitle: document["title_statement_display"].first.to_s,
-      ItemPlace: document["imprint_display"].first.to_s,
+      ItemPlace: document["imprint_display"].first.to_s.delete('[]'),
       ReferenceNumber: document["alma_mms_display"].first.to_s,
       CallNumber: document["call_number_display"].first.to_s,
-      ItemAuthor: document["creator_display"].first.to_s
+      ItemAuthor: document["creator_display"].to_s.delete('[]""')
     }
       URI::HTTPS.build(
       host:  "temple.aeon.atlas-sys.com",
