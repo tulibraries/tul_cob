@@ -57,6 +57,7 @@ module ApplicationHelper
   def alma_build_openurl(query)
     query_defaults = {
       'is_new_ui': true,
+      "req.skin": "temple_01",
       rfr_id: "info:sid/primo.exlibrisgroup.com",
     }
 
