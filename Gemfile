@@ -66,6 +66,7 @@ group :development, :test do
   gem "launchy"
   gem "foreman"
   gem "vcr"
+  gem "pretender"
 end
 
 gem "rsolr", "~> 1.0"
