@@ -1094,7 +1094,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "Has list of creators" do
       visit "catalog/#{item_100['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li a.list_items")
+        expect(page).to have_css("li.list_items")
       end
     end
 
@@ -1102,7 +1102,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "Has list of creators" do
       visit "catalog/#{item_100_v['doc_id']}"
       within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li a.list_items")
+        expect(page).to have_css("li.list_items")
       end
     end
 
@@ -1143,6 +1143,20 @@ RSpec.feature "RecordPageFields", type: :feature do
     scenario "Has link to subject" do
       visit "catalog/#{item_600['doc_id']}"
       expect(page).to have_link("#{item_600['subject_display']}")
+    end
+  end
+
+  feature "Button for Aeon Request" do
+    let (:item_rarestacks) { fixtures.fetch("rarestacks") }
+    scenario "Has button for Aeon request" do
+      visit "catalog/#{item_rarestacks['doc_id']}"
+      expect(page).to have_css(".aeon-request")
+    end
+
+    let (:item_600) { fixtures.fetch("subject_600") }
+    scenario "Has button for Aeon request" do
+      visit "catalog/#{item_600['doc_id']}"
+      expect(page).to_not have_css(".aeon-request")
     end
   end
 end
