@@ -52,7 +52,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "blacklight"
 gem "blacklight_advanced_search"
-gem "blacklight-marc",  git: "https://github.com/tulibraries/blacklight-marc", branch: "fix-extract_marc-format-008"
+gem "blacklight-marc"
 gem "blacklight_range_limit"
 
 group :development, :test do
