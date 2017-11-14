@@ -2,10 +2,11 @@
     to DRY it up -- and so we can use it with the ajax results too, so
     they still have this stuff !  See config.for_display.ajax.wrapper_template
 %>
+<%# require 'pry'; binding.pry %>
 
 <div class="bento-search-engine">
-<p class="record-count">Total records from <%= bento_engine_nice_name(results.engine_id) %>: 
-	<span><%= results.count || '?' %></span>
+<p class="record-count">Total records from <%= bento_engine_nice_name(results.engine_id) %>:
+	<span><%= results.total_items || '?' %></span>
 </p>
 <%# our app chooses to use 'q' as the query param; the ajax loading controller uses 'query'
       This ordinarily is fine, but since we want this layout to work for both, we have to
