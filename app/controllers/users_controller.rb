@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_admin!, only: [:index]
+
+  def require_admin!
+    redirect_to root_path unless current_user && current_user.admin
+  end
 
   def index
     @users = User.order(:id)
