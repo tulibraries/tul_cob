@@ -8,8 +8,10 @@ module BentoSearch
       query = args.fetch(:query, "")
 
       results = BentoSearch::Results.new
+      solr_result = search_results(q: query)
+      results.total_items = solr_result['numFound']
 
-      search_results(q: query).each do |item|
+      solr_result['docs'].each do |item|
         results << conform_to_bento_result(item)
       end
 
@@ -24,7 +26,7 @@ module BentoSearch
     end
 
     def search_results(args)
-      SearchHelperWrapper.search_results(args).first["response"]["docs"]
+      SearchHelperWrapper.search_results(args).first["response"]
     end
   end
 end

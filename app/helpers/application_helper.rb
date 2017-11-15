@@ -57,6 +57,7 @@ module ApplicationHelper
 
   def alma_build_openurl(query)
     query_defaults = {
+      'is_new_ui': true,
       rfr_id: "info:sid/primo.exlibrisgroup.com",
     }
 
@@ -128,6 +129,13 @@ module ApplicationHelper
     if document["location_display"] == ["rarestacks"] && document["library_facet"] == ["Special Collections Research Center"]
       button_to("Request Onsite Access", aeon_request_url(document), class:"aeon-request btn btn-warning") +
       content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
+
+  def bento_link_to_full_results(results)
+    if results.engine_id.include?("blacklight")
+  	   link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(:q => params[:q]), class: "full-results"
+  	else
+      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || '?', class: "record-count")
+
     end
   end
 end
