@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
-        it "returns http success" do
+        xit "returns http success" do
           get :loans
           expect(response).to have_http_status(:success)
         end
@@ -33,9 +33,9 @@ RSpec.describe UsersController, type: :controller do
 
       describe "GET #holds" do
         xit "returns http success" do
-  get :holds
-  expect(response).to have_http_status(:success)
-end
+          get :holds
+          expect(response).to have_http_status(:success)
+        end
       end
 
       describe "GET #fines" do
@@ -91,13 +91,13 @@ end
 
     context "Test" do
       subject { get :index }
-      context "Impersonator not allowed" do
-        xit "shows users page" do
+      context "Configured impersonator not allowed" do
+        it "shows users page" do
           expect(subject).to render_template(:index)
         end
       end
 
-      context "Impersonator allowed" do
+      context "Configured impersonator allowed" do
         xit "shows users page" do
           expect(subject).to render_template("users/index")
         end
@@ -111,13 +111,13 @@ end
 
       subject { get :index }
 
-      context "Impersonator not allowed" do
+      context "Configured impersonator not allowed" do
         xit "shows users page" do
           expect(subject).to render_template(:index)
         end
       end
 
-      context "Impersonator allowed" do
+      context "Configured impersonator allowed" do
         xit "shows users page" do
           expect(subject).to render_template(:index)
         end
@@ -129,11 +129,11 @@ end
         Rails.env = "production"
       end
 
-      context "Impersonator not allowed" do
+      context "Configured impersonator not allowed" do
         it "redirects to root"
       end
 
-      context "Impersonator allowed" do
+      context "Configured impersonator allowed" do
         it "shows users page"
       end
     end
