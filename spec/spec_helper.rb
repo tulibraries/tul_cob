@@ -128,6 +128,8 @@ RSpec.configure do |config|
 =end
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
+
+  config.fail_fast = 1
 end
 
 VCR.configure do |config|
