@@ -19,8 +19,7 @@ task :rspec, [:spec_args] do |t, args|
   if Rails.env.test?
     run_solr("test", port: "8985") do
       Rake::Task["fortytu:solr:load_fixtures"].invoke
-      rspec_cmd = "rspec"
-      rspec_cmd << " #{args[:spec_args]}" unless args[:spec_args].nil?
+      rspec_cmd = "rspec" + (" #{args[:spec_args]}" unless args[:spec_args].nil?)
       system(rspec_cmd)
     end
   else
