@@ -1,8 +1,28 @@
-# frozen_string_literal: true
-
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe CatalogController, type: :controller do
+  describe "GET index as json" do
+    render_views
+    before do
+      get(:index, params: {q: "education"}, :format => :json)
+    end
+    let(:docs) { JSON.parse(response.body)["response"]["docs"] }
+    let(:single_doc) { docs.first }
+    let(:doc_keys) { single_doc.keys}
+    let(:expected_keys) {
+      %w[ id
+          imprint_display
+          creator_display
+          pub_date
+
+        ]
+    }
+
+    context 'an individual record' do
+      it 'has an the expected fields' do
+        expect(doc_keys).to include(*expected_keys)
+      end
+
 
   let(:doc_id) { "991012041239703811" }
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
