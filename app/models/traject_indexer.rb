@@ -119,9 +119,7 @@ to_field "electronic_resource_display", extract_electronic_resource
 
 # Availability
 to_field "availability_facet", extract_availability
-to_field "location_facet", extract_location
-# This should probably not be a display
-to_field "location_display", extract_location
+to_field "location_display", extract_marc("HLDc")
 
 # Creator/contributor fields
 to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)

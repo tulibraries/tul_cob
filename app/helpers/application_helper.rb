@@ -28,10 +28,11 @@ module ApplicationHelper
   end
 
   def browse_creator(args)
-    args[:document][args[:field]].each_with_index do |name, i|
+    creator = args[:document][args[:field]]
+    creator.each_with_index do |name, i|
       content_tag :ul do
         newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
-        args[:document][args[:field]][i] = newname.html_safe
+        creator = newname.html_safe
       end
     end
     list_with_links(args)
@@ -106,11 +107,37 @@ module ApplicationHelper
     I18n.t("bento.#{engine_id}.nice_name")
   end
 
+  def aeon_request_url(document)
+    form_fields = {
+         ItemTitle: "title_statement_display",
+         ItemPlace: "imprint_display",
+         ReferenceNumber: "alma_mms_display",
+         CallNumber: "call_number_display",
+         ItemAuthor: "creator_display"
+     }
+
+    openurl_field_values = form_fields.map { |k, k2|
+      [k, document[k2].to_s.delete('[]""')] }.to_h
+
+      URI::HTTPS.build(
+      host:  "temple.aeon.atlas-sys.com",
+      path: "/aeon/aeon.dll/OpenURL",
+      query: openurl_field_values.to_query).to_s
+  end
+
+  def aeon_request_button(document)
+    if document["location_display"] == ["rarestacks"] && document["library_facet"] == ["Special Collections Research Center"]
+      button_to("Request Onsite Access", aeon_request_url(document), class:"aeon-request btn btn-warning") +
+      content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
+    end
+  end
+
   def bento_link_to_full_results(results)
     if results.engine_id.include?("blacklight")
   	   link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(:q => params[:q]), class: "full-results"
   	else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || '?', class: "record-count")
+
     end
   end
 end

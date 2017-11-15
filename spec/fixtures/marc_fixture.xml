@@ -1970,7 +1970,12 @@
       <subfield code='i'>830914</subfield>
       <subfield code='l'>PATG</subfield>
     </datafield>
-    <datafield tag='HLD' >
+    <datafield ind1='0' ind2=' ' tag='HLD'>
+      <subfield code='b'>SCRC</subfield>
+      <subfield code='c'>rarestacks</subfield>
+      <subfield code='h'>PR6063.U367 A6 2015b</subfield>
+      <subfield code='i'>Fishman-MacElderry</subfield>
+
     </datafield>
   </record>
   <record>
