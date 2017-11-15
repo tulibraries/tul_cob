@@ -2,12 +2,16 @@
     to DRY it up -- and so we can use it with the ajax results too, so
     they still have this stuff !  See config.for_display.ajax.wrapper_template
 %>
-<%# require 'pry'; binding.pry %>
 
 <div class="bento-search-engine">
-<p class="record-count">Total records from <%= bento_engine_nice_name(results.engine_id) %>:
-	<span><%= results.total_items || '?' %></span>
-</p>
+	<%# require 'pry'; binding.pry %>
+	<% if key.include?("blacklight") %>
+		<%= link_to "See all #{results.total_items} results.", search_catalog_path(:q => params[:q]) %>
+	<% else %>
+		<p class="record-count">Total records from <%= 	bento_engine_nice_name(results.engine_id) %>:
+		<span><%= results.count || '?' %></span>
+		</p>
+	<% end %>
 <%# our app chooses to use 'q' as the query param; the ajax loading controller uses 'query'
       This ordinarily is fine, but since we want this layout to work for both, we have to
       look for both, oh well.

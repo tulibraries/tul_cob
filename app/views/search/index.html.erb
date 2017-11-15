@@ -41,10 +41,10 @@
 
         <% @results.each_pair do |key, result| %>
             <div class="span4">
-              
+
               <div class="bento_compartment <%= key %>">
                 <h2><%= key.titleize %> </h2>
-                <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
+                <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result, :key => key} do %>
                     <%= bento_search result %>
                 <% end %>
               </div>
