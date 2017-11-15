@@ -57,7 +57,6 @@ module ApplicationHelper
 
   def alma_build_openurl(query)
     query_defaults = {
-      'is_new_ui': true,
       rfr_id: "info:sid/primo.exlibrisgroup.com",
     }
 
