@@ -2,9 +2,14 @@
 
 class UsersController < ApplicationController
   before_action :require_admin!, only: [:index]
+  before_action :require_non_production!, only: [:index]
 
   def require_admin!
     redirect_to root_path unless current_user && current_user.admin
+  end
+
+  def require_non_production!
+    redirect_to root_path if Rails.env.production? #&& !Rails.config.allow_impersonator
   end
 
   def index
