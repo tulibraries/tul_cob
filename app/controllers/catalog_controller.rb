@@ -9,13 +9,14 @@ class CatalogController < ApplicationController
 
   include BlacklightAlma::Availability
 
+  include Blacklight::Marc::Catalog
+
   #helper BlacklightAlma::HelperBehavior
 
   # Overrides CatalogController::show in order to add extra instance variables.
   def show
     super
     @staff_view_title = t("blacklight.search.librarian_view.title")
-    @staff_view_path = "/catalog/#{params[:id]}/staff_view"
   end
 
   configure_blacklight do |config|
