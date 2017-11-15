@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
-        xit "returns http success" do
+        it "returns http success" do
           get :loans
           expect(response).to have_http_status(:success)
         end
@@ -77,6 +77,65 @@ end
     xit "returns http success" do
       get :renew_all_loans
       expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe "Impersonate user" do
+    before :each do
+      @original_state = Rails.env
+    end
+
+    after (:each) do
+      Rails.env = @original_state
+    end
+
+    context "Test" do
+      subject { get :index }
+      context "Impersonator not allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template(:index)
+        end
+      end
+
+      context "Impersonator allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template("users/index")
+        end
+      end
+    end
+
+    context "Development" do
+      before (:all) do
+        Rails.env = "development"
+      end
+
+      subject { get :index }
+
+      context "Impersonator not allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template(:index)
+        end
+      end
+
+      context "Impersonator allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template(:index)
+        end
+      end
+    end
+
+    context "Production" do
+      before :each do
+        Rails.env = "production"
+      end
+
+      context "Impersonator not allowed" do
+        it "redirects to root"
+      end
+
+      context "Impersonator allowed" do
+        it "shows users page"
+      end
     end
   end
 
