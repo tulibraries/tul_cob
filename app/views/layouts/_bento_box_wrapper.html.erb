@@ -4,14 +4,7 @@
 %>
 
 <div class="bento-search-engine">
-	<%# require 'pry'; binding.pry %>
-	<% if key.include?("blacklight") %>
-		<%= link_to "See all #{results.total_items} results.", search_catalog_path(:q => params[:q]), class: "full-results" %>
-	<% else %>
-		<p class="record-count">Total records from <%= 	bento_engine_nice_name(results.engine_id) %>:
-		<span><%= results.count || '?' %></span>
-		</p>
-	<% end %>
+	<%= bento_link_to_full_results(results, key) %>
 <%# our app chooses to use 'q' as the query param; the ajax loading controller uses 'query'
       This ordinarily is fine, but since we want this layout to work for both, we have to
       look for both, oh well.

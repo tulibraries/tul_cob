@@ -105,4 +105,12 @@ module ApplicationHelper
   def bento_engine_nice_name(engine_id)
     I18n.t("bento.#{engine_id}.nice_name")
   end
+
+  def bento_link_to_full_results(results, key)
+    if key.include?("blacklight")
+  	   link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(:q => params[:q]), class: "full-results"
+  	else
+      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || '?', class: "record-count")
+    end
+  end
 end
