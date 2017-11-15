@@ -87,7 +87,6 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - 'app/models/traject_indexer.rb'
     - 'db/schema.rb'
-    - 'lib/blacklight/marc/catalog.rb'
 
 # Use `foo {}` not `foo{}`.
 Layout/SpaceBeforeBlockBraces:
