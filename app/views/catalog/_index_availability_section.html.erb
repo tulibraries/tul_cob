@@ -7,7 +7,7 @@
           <% if document[field_name].length == 1 %>
             <%= button_to "Online", single_link_builder(document[field_name][i]), class:"collapse-button btn btn-sm btn-info" %>
           <% else %>
-            <button class="btn btn-sm btn-info collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
+            <button class="btn-block btn btn-sm btn-info collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
             <div id="online-document-<%= document_counter %>" class="collapse online_resources">
               <ul>
                 <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
@@ -17,6 +17,8 @@
         <% end -%>
       <% end -%>
     <% end -%>
+    
+  <div class="row button-break"></div>
 
   <% elsif document.fetch("availability_facet", [])[i] == "At the Library" %>
     <button class="btn btn-sm btn-default availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">Loading...</button>
