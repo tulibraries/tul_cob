@@ -42,22 +42,25 @@ creator_100:
   creator: "Giovanni, Nikki. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
 creator_100_v:
   doc_id: "991012172649703811"
-  creator_vern: "מעקלער, ד.ל.  לאועב, מיטשעל"
+  creator_vern: "מעקלער, ד.ל."
 creator_110:
   doc_id: "991012132499760618"
   creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_111:
   doc_id: "991012132499760619"
   creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
-creator_700:
+contributor_700:
   doc_id: "991012132499760620"
   creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
-creator_710:
+contributor_710:
   doc_id: "991012132499760621"
   creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
-creator_711:
+contributor_711:
   doc_id: "991012132499760622"
   creator: "Dictionary of American history: 711. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
+contributor_700_v:
+  doc_id: "991012172649703811"
+  contributor_vern: "לאועב, מיטשעל"
 imprint_260:
   doc_id: "991012132499760623"
   imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
