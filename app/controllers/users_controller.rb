@@ -1,6 +1,32 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :require_admin!, only: [:index]
+  before_action :require_non_production!, only: [:index]
+
+  def require_admin!
+    redirect_to root_path unless current_user && current_user.admin
+  end
+
+  def require_non_production!
+    redirect_to root_path if Rails.env.production? && !Rails.configuration.allow_impersonator
+  end
+
+  def index
+    @users = User.order(:id)
+  end
+
+  def impersonate
+    user = User.find(params[:id])
+    impersonate_user(user)
+    redirect_to root_path
+  end
+
+  def stop_impersonating
+    stop_impersonating_user
+    redirect_to root_path
+  end
+
   def account
     @loans = current_user.get_loans
     @holds = current_user.get_holds
