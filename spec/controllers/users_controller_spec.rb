@@ -90,15 +90,21 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "Test" do
+      before :each do
+        admin = FactoryBot.create :user_admin
+        sign_in :user, admin
+      end
+
       subject { get :index }
+
       context "Configured impersonator not allowed" do
-        it "shows users page" do
+        it "shows users page anyways" do
           expect(subject).to render_template(:index)
         end
       end
 
       context "Configured impersonator allowed" do
-        xit "shows users page" do
+        it "shows users page" do
           expect(subject).to render_template("users/index")
         end
       end
@@ -111,30 +117,91 @@ RSpec.describe UsersController, type: :controller do
 
       subject { get :index }
 
-      context "Configured impersonator not allowed" do
-        xit "shows users page" do
-          expect(subject).to render_template(:index)
+      context "User Not Logged In" do
+
+        context "Configured impersonator not allowed" do
+          it "shows users page" do
+            expect(subject).to redirect_to('http://test.host/')
+          end
         end
       end
 
-      context "Configured impersonator allowed" do
-        xit "shows users page" do
-          expect(subject).to render_template(:index)
+      context "User Logged In" do
+        before :each do
+          admin = FactoryBot.create :user_admin
+          sign_in :user, admin
+        end
+
+        context "Configured impersonator not allowed" do
+          it "shows users page" do
+            expect(subject).to render_template(:index)
+          end
+        end
+
+        context "Configured impersonator allowed" do
+          it "shows users page" do
+            expect(subject).to render_template(:index)
+          end
         end
       end
     end
 
-    context "Production" do
+    context "Production environment" do
       before :each do
         Rails.env = "production"
+        request.env["HTTP_REFERER"] = "back"
       end
 
-      context "Configured impersonator not allowed" do
-        it "redirects to root"
+      subject { get :index }
+
+      context "User Logged In" do
+        before :each do
+          admin = FactoryBot.create :user_admin
+          sign_in :user, admin
+        end
+
+        context "Configured impersonator not allowed" do
+          before :each do
+            Rails.configuration.allow_impersonator = false
+          end
+
+          it "redirects to root" do
+            expect(subject).to redirect_to('http://test.host/')
+          end
+        end
+
+        context "Configured impersonator allowed" do
+          before :each do
+            Rails.configuration.allow_impersonator = true
+          end
+
+          it "shows users page" do
+            expect(subject).to render_template(:index)
+          end
+        end
       end
 
-      context "Configured impersonator allowed" do
-        it "shows users page"
+      context "No User Logged In" do
+
+        context "Configured impersonator not allowed" do
+          before :each do
+            Rails.configuration.allow_impersonator = false
+          end
+
+          it "redirects to root" do
+            expect(subject).to redirect_to('http://test.host/')
+          end
+        end
+
+        context "Configured impersonator allowed" do
+          before :each do
+            Rails.configuration.allow_impersonator = true
+          end
+
+          it "redirects to root" do
+            expect(subject).to redirect_to('http://test.host/')
+          end
+        end
       end
     end
   end

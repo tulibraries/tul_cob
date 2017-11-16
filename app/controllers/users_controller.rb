@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def require_non_production!
-    redirect_to root_path if Rails.env.production? #&& !Rails.config.allow_impersonator
+    redirect_to root_path if Rails.env.production? && !Rails.configuration.allow_impersonator
   end
 
   def index
