@@ -149,7 +149,6 @@ RSpec.describe UsersController, type: :controller do
     context "Production environment" do
       before :each do
         Rails.env = "production"
-        request.env["HTTP_REFERER"] = "back"
       end
 
       subject { get :index }
