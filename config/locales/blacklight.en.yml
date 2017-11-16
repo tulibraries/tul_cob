@@ -1,5 +1,9 @@
 en:
   blacklight:
-    application_name: 'Blacklight'
+    application_name: "Blacklight"
     header_links:
-      library_account: 'Library Account'
+      library_account: "Library Account"
+
+    search:
+      librarian_view:
+        title: "Staff View"

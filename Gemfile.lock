@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/tulibraries/blacklight-marc
-  revision: 0e9d4a39f12eee507b025502ac96c017d12926fd
-  branch: fix-extract_marc-format-008
-  specs:
-    blacklight-marc (6.1.1)
-      blacklight (> 6.1, < 8.a)
-      library_stdnums
-      marc (>= 0.4.3, < 1.1)
-      marc-fastxmlwriter
-      rails
-      traject (~> 2.1)
-
-GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
   revision: 3af87cbe555ade3a3d732b1a1bc96186a7cb6b7b
   specs:
@@ -91,6 +78,13 @@ GEM
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+    blacklight-marc (6.2.0)
+      blacklight (> 6.1, < 8.a)
+      library_stdnums
+      marc (>= 0.4.3, < 1.1)
+      marc-fastxmlwriter
+      rails
+      traject (~> 2.1)
     blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
@@ -273,6 +267,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.0.6)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.2)
+      actionpack (~> 5.x, >= 5.0.1)
+      actionview (~> 5.x, >= 5.0.1)
+      activesupport (~> 5.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -410,7 +408,7 @@ DEPENDENCIES
   awesome_print
   bento_search
   blacklight
-  blacklight-marc!
+  blacklight-marc
   blacklight_advanced_search
   blacklight_alma!
   blacklight_range_limit
@@ -436,6 +434,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
+  rails-controller-testing
   rsolr (~> 1.0)
   rspec-rails
   sass-rails (~> 5.0)
@@ -452,4 +451,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.15.1
+   1.16.0.pre.3

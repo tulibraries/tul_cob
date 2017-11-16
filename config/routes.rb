@@ -71,6 +71,7 @@ Rails.application.routes.draw do
 
   end
 
+  get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
 
   concern :exportable, Blacklight::Routes::Exportable.new
 
