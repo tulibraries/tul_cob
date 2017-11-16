@@ -66,7 +66,6 @@ group :development, :test do
   gem "launchy"
   gem "foreman"
   gem "vcr"
-  gem "rails-controller-testing"
   gem "pretender"
   gem 'rails-controller-testing'
   gem 'faker'
