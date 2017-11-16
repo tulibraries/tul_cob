@@ -18,6 +18,7 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
       allow(view).to receive(:staff_view_path).and_return("/catalog/1/staff_view")
     end
     stub_template "catalog/_show_availability_section.html.erb" => ""
+    stub_template "catalog/_aeon_request.html.erb" => ""
     @rendered = view.render_document_partial @document, :show
   end
 
