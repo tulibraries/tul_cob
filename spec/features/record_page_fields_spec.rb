@@ -132,28 +132,38 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_111["creator"])
       end
     end
+  end
 
-    let (:item_700) { fixtures.fetch("creator_700") }
-    scenario "User visits a document with creator" do
+  feature "MARC Contributor Fields" do
+    let (:item_700) { fixtures.fetch("contributor_700") }
+    scenario "User visits a document with contributor" do
       visit "catalog/#{item_700['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_700["creator"])
+      within "dd.blacklight-contributor_display" do
+        expect(page).to have_text(item_700["contributor"])
       end
     end
 
-    let (:item_710) { fixtures.fetch("creator_710") }
-    scenario "User visits a document with creator" do
+    let (:item_710) { fixtures.fetch("contributor_710") }
+    scenario "User visits a document with contributor" do
       visit "catalog/#{item_710['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_710["creator"])
+      within "dd.blacklight-contributor_display" do
+        expect(page).to have_text(item_710["contributor"])
       end
     end
 
-    let (:item_711) { fixtures.fetch("creator_711") }
-    scenario "User visits a document with creator" do
+    let (:item_711) { fixtures.fetch("contributor_711") }
+    scenario "User visits a document with contributor" do
       visit "catalog/#{item_711['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_text(item_711["creator"])
+      within "dd.blacklight-contributor_display" do
+        expect(page).to have_text(item_711["contributor"])
+      end
+    end
+
+    let (:item_700_v) { fixtures.fetch("contributor_700_v") }
+    scenario "User visits a document with contributor vernacular" do
+      visit "catalog/#{item_700_v['doc_id']}"
+      within "dd.blacklight-contributor_vern_display" do
+        expect(page).to have_text(item_700_v["contributor_vern"])
       end
     end
   end
