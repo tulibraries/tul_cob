@@ -467,6 +467,7 @@
 
    <field name="marc_display_raw" type="string" indexed="false" stored="true" multiValued="false"/>
 
+   <field name="library_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="availability_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="language_facet" type="string" indexed="true" stored="true" multiValued="true" />
    <field name="subject_topic_facet" type="string" indexed="true" stored="true" multiValued="true" />

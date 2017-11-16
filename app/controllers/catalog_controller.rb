@@ -329,7 +329,6 @@ class CatalogController < ApplicationController
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
 
-
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #

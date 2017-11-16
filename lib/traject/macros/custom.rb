@@ -117,15 +117,6 @@ module Traject
         }
       end
 
-      def extract_location
-        lambda { |rec, acc|
-          rec.fields("945").each do |field|
-            #Strip the values, as many come in with space padding
-            acc << field["l"].strip unless field["l"].nil?
-          end
-        }
-      end
-
       def normalize_lc_alpha
         Proc.new do |rec, acc|
           alpha_pat = /\A([A-Z]{1,3})\d.*\Z/
