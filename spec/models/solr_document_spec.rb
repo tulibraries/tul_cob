@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe SolrDocument, type: :model do
-  let(:document) { SolrDocument.new }
+  let(:document) { SolrDocument.new(id: "991012041239703811", marc_display_raw: "foobar") }
 
   it "handles Email" do
     expect(document).to respond_to(:to_email_text)
@@ -13,5 +13,9 @@ RSpec.describe SolrDocument, type: :model do
   end
   it "handles Dubin Core" do
     expect(document).to respond_to(:dublin_core_field_names)
+  end
+
+  it "handles to Marc messages" do
+    expect(document).to respond_to(:to_marc)
   end
 end

@@ -11,6 +11,13 @@ class SolrDocument
   # SMS uses the semantic field mappings below to generate the body of an SMS email.
   SolrDocument.use_extension(Blacklight::Document::Sms)
 
+  # Add Blacklight-Marc extension:
+  SolrDocument.use_extension(Blacklight::Solr::Document::Marc) do |doc|
+    doc.has_field? "marc_display_raw"
+  end
+  SolrDocument.extension_parameters[:marc_source_field] = "marc_display_raw"
+  SolrDocument.extension_parameters[:marc_format_type] = :marcxml
+
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
   # Semantic mappings of solr stored fields. Fields may be multi or
   # single valued. See Blacklight::Document::SemanticFields#field_semantics
