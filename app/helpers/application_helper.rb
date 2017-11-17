@@ -118,9 +118,13 @@ module ApplicationHelper
     openurl_field_values = form_fields.map { |k, k2|
       [k, document[k2].to_s.delete('[]""')] }.to_h
 
+    openurl_field_values["Action"] = 10
+    openurl_field_values["Form"] = 30
+
+
       URI::HTTPS.build(
       host:  "temple.aeon.atlas-sys.com",
-      path: "/aeon/aeon.dll/OpenURL",
+      path: "/Logon/",
       query: openurl_field_values.to_query).to_s
   end
 
