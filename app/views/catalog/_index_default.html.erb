@@ -1,12 +1,17 @@
+<div class="row">
 <% doc_presenter = index_presenter(document) %>
 <%# default partial to display solr document fields in catalog index view -%>
-<dl class="document-metadata dl-horizontal dl-invert">
-  <% index_fields(document).each do |field_name, field| -%>
-    <% if should_render_index_field? document, field %>
-      <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
-      <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
+  <div class="col-sm-9 col-lg-10">
+    <dl class="document-metadata dl-horizontal dl-invert">
+    <% index_fields(document).each do |field_name, field| -%>
+      <% if should_render_index_field? document, field %>
+        <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+        <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
+      <% end -%>
     <% end -%>
-  <% end -%>
-
-  <%= render "index_availability_section", document: document, document_counter: document_counter %>
-</dl>
+          <%= render "index_availability_section", document: document, document_counter: document_counter %>
+    </dl>
+  </div>
+  <div class="<%= thumbnail_classes(document) %>" <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
+  </div>
+</div>
