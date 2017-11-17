@@ -12,8 +12,6 @@
     <% if current_user != true_user %>
       You (<%= true_user.email %>) are signed in as <%= current_user.email %>
       <%= link_to "Back to admin", stop_impersonating_users_path, method: :post %>
-    <% else %>
-      You are signed in as <%= current_user.email %>
     <% end %>
 
   	<div id="page-wrapper">
