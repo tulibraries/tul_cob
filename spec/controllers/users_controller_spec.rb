@@ -106,11 +106,11 @@ end
     end
 
     context "Development Environment" do
-      before (:all) do
-        Rails.env = "development"
-      end
+#      before (:all) do
+#        Rails.env = "development"
+#      end
 
-#      subject { get :index }
+      subject { get :index }
 
       context "Impersonator not allowed" do
         it "shows users page"
