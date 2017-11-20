@@ -110,7 +110,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "Development environment" do
+    context "rails dev environment" do
       before (:all) do
         Rails.env = "development"
       end
