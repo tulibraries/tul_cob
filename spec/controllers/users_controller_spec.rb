@@ -81,6 +81,8 @@ end
   end
 
   describe "Impersonate user" do
+    skip
+
     before :each do
       @original_state = Rails.env
     end
