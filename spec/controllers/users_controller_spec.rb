@@ -111,18 +111,18 @@ end
       end
 
       subject { get :index }
-#
-#      context "Impersonator not allowed" do
+
+      context "Impersonator not allowed" do
 #        xit "shows users page" do
 #          expect(subject).to render_template(:index)
 #        end
-#      end
-#
-#      context "Impersonator allowed" do
+      end
+
+      context "Impersonator allowed" do
 #        xit "shows users page" do
 #          expect(subject).to render_template(:index)
 #        end
-#      end
+      end
     end
 #
 #    context "Production" do
