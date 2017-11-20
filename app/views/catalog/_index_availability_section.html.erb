@@ -11,7 +11,7 @@
             <button class="btn-block btn btn-sm btn-info collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">Online</button>
             <div id="online-document-<%= document_counter %>" class="collapse online_resources">
               <ul>
-                <p class="online_resources col-md-9"><%= doc_presenter.field_value field_name %></p>
+                <%= doc_presenter.field_value field_name %>
               </ul>
             </div>
           <% end %>
