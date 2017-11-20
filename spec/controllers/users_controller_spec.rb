@@ -81,14 +81,14 @@ end
   end
 
   describe "Impersonate user" do
-#
-#    before :each do
-#      @original_state = Rails.env
-#    end
-#
-#    after (:each) do
-#      Rails.env = @original_state
-#    end
+
+    before :each do
+      @original_state = Rails.env
+    end
+
+    after (:each) do
+      Rails.env = @original_state
+    end
 #
 #    context "Test" do
 #      subject { get :index }
