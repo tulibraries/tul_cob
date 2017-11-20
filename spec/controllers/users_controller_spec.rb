@@ -80,4 +80,64 @@ end
     end
   end
 
+  describe "Impersonate user" do
+#
+#    before :each do
+#      @original_state = Rails.env
+#    end
+#
+#    after (:each) do
+#      Rails.env = @original_state
+#    end
+#
+#    context "Test" do
+#      subject { get :index }
+#      context "Impersonator not allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template(:index)
+#        end
+#      end
+#
+#      context "Impersonator allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template("users/index")
+#        end
+#      end
+#    end
+#
+#    context "Development" do
+#      before (:all) do
+#        Rails.env = "development"
+#      end
+#
+#      subject { get :index }
+#
+#      context "Impersonator not allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template(:index)
+#        end
+#      end
+#
+#      context "Impersonator allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template(:index)
+#        end
+#      end
+#    end
+#
+#    context "Production" do
+#      before :each do
+#        Rails.env = "production"
+#      end
+#
+#      context "Impersonator not allowed" do
+#        xit "redirects to root"
+#      end
+#
+#      context "Impersonator allowed" do
+#        xit "shows users page"
+#      end
+#    end
+  end
+
 end
