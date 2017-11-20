@@ -110,42 +110,6 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "rails dev environment" do
-      before (:all) do
-        Rails.env = "development"
-      end
-
-      subject { get :index }
-
-      context "User Not Logged In" do
-
-        context "Configured impersonator not allowed" do
-          it "shows users page" do
-            expect(subject).to redirect_to('http://test.host/')
-          end
-        end
-      end
-
-      context "User Logged In" do
-        before :each do
-          admin = FactoryBot.create :user_admin
-          sign_in :user, admin
-        end
-
-        context "Configured impersonator not allowed" do
-          it "shows users page" do
-            expect(subject).to render_template(:index)
-          end
-        end
-
-        context "Configured impersonator allowed" do
-          it "shows users page" do
-            expect(subject).to render_template(:index)
-          end
-        end
-      end
-    end
-
     context "Production environment" do
       before :each do
         Rails.env = "production"
