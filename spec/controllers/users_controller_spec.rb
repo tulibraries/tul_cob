@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: :controller do
       Rails.env = @original_state
     end
 
-    context "Test" do
+    context "Test environment" do
       before :each do
         admin = FactoryBot.create :user_admin
         sign_in :user, admin
@@ -110,7 +110,7 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
-    context "Development" do
+    context "Development environment" do
       before (:all) do
         Rails.env = "development"
       end
