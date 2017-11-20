@@ -89,21 +89,21 @@ end
     after (:each) do
       Rails.env = @original_state
     end
-#
-#    context "Test" do
-#      subject { get :index }
-#      context "Impersonator not allowed" do
-#        xit "shows users page" do
-#          expect(subject).to render_template(:index)
-#        end
-#      end
-#
-#      context "Impersonator allowed" do
-#        xit "shows users page" do
-#          expect(subject).to render_template("users/index")
-#        end
-#      end
-#    end
+
+    context "Test" do
+      subject { get :index }
+      context "Impersonator not allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template(:index)
+        end
+      end
+
+      context "Impersonator allowed" do
+        xit "shows users page" do
+          expect(subject).to render_template("users/index")
+        end
+      end
+    end
 #
 #    context "Development" do
 #      before (:all) do
