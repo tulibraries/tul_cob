@@ -106,23 +106,23 @@ end
     end
 
     context "Development" do
-      before (:all) do
-        Rails.env = "development"
-      end
-
-      subject { get :index }
-
-      context "Impersonator not allowed" do
-        xit "shows users page" do
-          expect(subject).to render_template(:index)
-        end
-      end
-
-      context "Impersonator allowed" do
-        xit "shows users page" do
-          expect(subject).to render_template(:index)
-        end
-      end
+#      before (:all) do
+#        Rails.env = "development"
+#      end
+#
+#      subject { get :index }
+#
+#      context "Impersonator not allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template(:index)
+#        end
+#      end
+#
+#      context "Impersonator allowed" do
+#        xit "shows users page" do
+#          expect(subject).to render_template(:index)
+#        end
+#      end
     end
 #
 #    context "Production" do
