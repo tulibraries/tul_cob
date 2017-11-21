@@ -16,7 +16,6 @@
 
   <% if document.fetch("availability_facet", [])[i] == "At the Library" %>
     <div class="row button-break"></div>
-    <div class="row button-break"></div>
     <button class="btn btn-sm btn-default availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">Loading...</button>
     <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>
     <div id="physical-document-<%= document_counter %>" class="collapse">
