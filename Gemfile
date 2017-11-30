@@ -67,6 +67,7 @@ group :development, :test do
   gem "foreman"
   gem "vcr"
   gem "rails-controller-testing"
+  gem "pretender"
 end
 
 gem "rsolr", "~> 1.0"
