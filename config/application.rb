@@ -20,7 +20,7 @@ module Tulcob
     config.alma = config_for(:alma).with_indifferent_access
     config.bento = config_for(:bento).with_indifferent_access
     config.exceptions_app = routes
-    config.allow_impersonator = false
+    ENV["ALLOW_IMPERSONATOR"] ||= "no"
 
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]

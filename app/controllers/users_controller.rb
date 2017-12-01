@@ -9,11 +9,12 @@ class UsersController < ApplicationController
   end
 
   def require_non_production!
-    redirect_to root_path if Rails.env.production? && !Rails.configuration.allow_impersonator
+    redirect_to root_path if Rails.env.production? && ENV["ALLOW_IMPERSONATOR"].downcase != "yes"
   end
 
   def index
-    @users = User.order(:id)
+    registered_users = User.where.not(guest: true)
+    @users = registered_users.order(:id)
   end
 
   def impersonate

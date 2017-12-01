@@ -110,3 +110,9 @@ bundle exec rake fortytu:oai:ingest_all
 `bundle exec rake ci`
 
 This will spin up a test solr instance, import a few hundred records, and run the test suite.
+
+
+## Running in Masquerade mode
+
+An administration user may impersonate another non-guest user in `development` or `test` environment, or if the ALLOW_IMPERSONATOR environment variable is set to 'yes' in `production`.
+

@@ -125,7 +125,7 @@ RSpec.describe UsersController, type: :controller do
 
         context "Configured impersonator not allowed" do
           before :each do
-            Rails.configuration.allow_impersonator = false
+            ENV["ALLOW_IMPERSONATOR"] = "no"
           end
 
           it "redirects to root" do
@@ -135,7 +135,7 @@ RSpec.describe UsersController, type: :controller do
 
         context "Configured impersonator allowed" do
           before :each do
-            Rails.configuration.allow_impersonator = true
+            ENV["ALLOW_IMPERSONATOR"] = "yes"
           end
 
           it "shows users page" do
@@ -148,7 +148,7 @@ RSpec.describe UsersController, type: :controller do
 
         context "Configured impersonator not allowed" do
           before :each do
-            Rails.configuration.allow_impersonator = false
+            ENV["ALLOW_IMPERSONATOR"] = "no"
           end
 
           it "redirects to root" do
@@ -158,7 +158,7 @@ RSpec.describe UsersController, type: :controller do
 
         context "Configured impersonator allowed" do
           before :each do
-            Rails.configuration.allow_impersonator = true
+            ENV["ALLOW_IMPERSONATOR"] = "yes"
           end
 
           it "redirects to root" do
