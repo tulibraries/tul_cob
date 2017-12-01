@@ -225,16 +225,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "availability_facet", label: "Availability"
     config.add_facet_field "library_facet", label: "Library"
     config.add_facet_field "format", label: "Resource Type"
-    config.add_facet_field "pub_date", label: "Date",
-                           range: {
-                             num_segments: 6,
-                             assumed_boundaries: [1100, Time.now.year + 2],
-                             segments: true,
-                             slider_js: true,
-                             chart_js: true,
-                             maxlength: 4
-                           }
-
+    config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
     config.add_facet_field "subject_topic_facet", label: "Topic"     # limit: 20, index_range: 'A'..'Z'
