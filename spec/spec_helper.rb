@@ -5,6 +5,7 @@ require "simplecov"
 require "alma"
 require "webmock/rspec"
 require "vcr"
+require "database_cleaner"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -128,6 +129,11 @@ RSpec.configure do |config|
 =end
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
+
+  # So we can test logged in users.
+  require "warden"
+  config.include Warden::Test::Helpers
+
 end
 
 VCR.configure do |config|
