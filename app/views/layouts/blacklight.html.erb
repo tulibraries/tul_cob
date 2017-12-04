@@ -7,7 +7,7 @@
     <!-- Mobile viewport optimization h5bp.com/ad -->
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    
+
     <!-- Internet Explorer use the highest version available -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -27,7 +27,7 @@
   <body class="<%= render_body_class %>">
     <div id="page-wrapper">
 
-    <% if current_user != true_user %>
+    <% if defined? true_user && current_user != true_user %>
       <div class="navbar-masquerade" id="user-masquerade">
         <div id="masquerade-status">You (<%= true_user.email %>) are signed in as <%= current_user.email %></div>
         <div id="masquerade-logout"><%= link_to "Back to admin", stop_impersonating_users_path, method: :post %></div>
