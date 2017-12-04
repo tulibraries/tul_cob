@@ -50,6 +50,8 @@ class CatalogController < ApplicationController
         title_vern_display
         title_statement_display
         title_uniform_display
+        isbn_display
+        lccn_display
       ].join(" "),
       defType: "dismax",
       echoParams: "explicit",
@@ -225,16 +227,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "availability_facet", label: "Availability"
     config.add_facet_field "library_facet", label: "Library"
     config.add_facet_field "format", label: "Resource Type"
-    config.add_facet_field "pub_date", label: "Date",
-                           range: {
-                             num_segments: 6,
-                             assumed_boundaries: [1100, Time.now.year + 2],
-                             segments: true,
-                             slider_js: true,
-                             chart_js: true,
-                             maxlength: 4
-                           }
-
+    config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
     config.add_facet_field "subject_topic_facet", label: "Topic"     # limit: 20, index_range: 'A'..'Z'
@@ -254,6 +247,9 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_display", label: "Published"
     config.add_index_field "creator_display", label: "Author/creator"
     config.add_index_field "format", label: "Resource Type"
+
+
+
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
@@ -458,5 +454,7 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = "suggest"
+
+    config.add_nav_action :library_account, partial: "/users/account_link", if: :user_signed_in?
   end
 end

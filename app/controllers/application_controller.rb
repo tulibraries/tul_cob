@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_action do
-    blacklight_config.add_nav_action(
-      :library_account,
-      partial: "/users/account_link"
-    )
-  end
+
+  impersonates :user unless Rails.env.production?
 end

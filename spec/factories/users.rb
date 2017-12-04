@@ -8,4 +8,13 @@ FactoryBot.define do
     provider "libprovidr"
     guest false
   end
+
+  factory :user_admin, class: User do
+    password "secret"
+    password_confirmation "secret"
+    uid "staff12345"
+    email "admin@example.edu"
+    guest false
+    admin true
+  end
 end
