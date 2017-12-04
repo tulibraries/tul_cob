@@ -17,6 +17,13 @@ GIT
       jwt (= 1.5.6)
       rails (>= 4.2, < 6)
 
+GIT
+  remote: https://github.com/tulibraries/primo
+  revision: 86fdc53893ff135fa98bd17723dc4bbbca19ad1a
+  specs:
+    primo (0.1.0)
+      httparty
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -472,6 +479,7 @@ DEPENDENCIES
   omniauth
   omniauth-shibboleth
   pretender
+  primo!
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)
