@@ -87,6 +87,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :users, only: [:index] do
+    post :impersonate, on: :member
+    post :stop_impersonating, on: :collection
+  end
+
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
 

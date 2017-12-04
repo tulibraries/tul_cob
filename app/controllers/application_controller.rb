@@ -8,4 +8,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+
+  impersonates :user unless Rails.env.production?
 end
