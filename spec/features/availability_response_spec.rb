@@ -10,16 +10,38 @@ describe Alma::AvailabilityResponse, js: true  do
   before(:all) do
       Alma.configure
     end
-    
+
   feature "Availability Buttons by status" do
     scenario "Available items should have a green button" do
       visit "/"
       fill_in "q", with: "Academic freedom"
       click_button "Search"
-      within(".document-position-0 h3") do
+      within(".document-position-0") do
         expect(page).to have_css(".btn-success")
       end
     end
+
+    scenario "Items with only a check_holdings status should not have a button" do
+      visit "/"
+      fill_in "q", with: "Declassified documents quarterly catalog"
+      click_button "Search"
+      within(".document-position-0") do
+        expect(page).to have_no_css(".btn-success" || ".btn-warning")
+      end
+    end
+
+    scenario "Items with an unavailable status should have a yellow button" do
+      visit "/"
+      fill_in "q", with: "Vital dust : the origin and evolution of life on earth"
+      click_button "Search"
+      within(".document-position-0") do
+        expect(page).to have_css(".btn-warning")
+      end
+    end
+
+
+
+
   end
 
   describe "availability attribute" do

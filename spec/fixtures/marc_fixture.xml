@@ -25458,4 +25458,131 @@
     <datafield tag='HLD' >
     </datafield>
   </record>
+  <record xmlns='http://www.loc.gov/MARC21/slim'>
+    <leader>01445cas a2200361 a 4500</leader>
+    <controlfield tag='005'>19931013061929.0</controlfield>
+    <controlfield tag='008'>751230d19751985ctuqr1p  b    0uuua0eng  </controlfield>
+    <controlfield tag='001'>991012029669703811</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='010'>
+      <subfield code='a'>75646773</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='022'>
+      <subfield code='a'>0099-0957</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b12453006-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>PATG02243293S</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='040'>
+      <subfield code='d'>NSDP</subfield>
+      <subfield code='d'>OCoLC</subfield>
+      <subfield code='d'>NSDP</subfield>
+      <subfield code='d'>NST</subfield>
+      <subfield code='d'>OCoLC</subfield>
+      <subfield code='d'>NST</subfield>
+      <subfield code='d'>CStRLIN</subfield>
+      <subfield code='d'>NjP</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='042'>
+      <subfield code='a'>lc</subfield>
+      <subfield code='a'>nsdp</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='043'>
+      <subfield code='a'>n-us---</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>Z1223.Z9D4</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='222'>
+      <subfield code='a'>The Declassified documents quarterly catalog</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='4' tag='245'>
+      <subfield code='a'>The Declassified documents quarterly catalog.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='260'>
+      <subfield code='a'>Washington :</subfield>
+      <subfield code='b'>Carrollton Press,</subfield>
+      <subfield code='c'>c1975-c1985.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>v. ;</subfield>
+      <subfield code='c'>23 cm.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='310'>
+      <subfield code='a'>Quarterly</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='362'>
+      <subfield code='a'>Vol. 1, no. 1 (Jan.-Mar. 1975)-v. 11, no. 5 (Jan.-Dec. 1985).</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Indexes documents in the Declassified documents reference system.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Imprint varies: July/Sept. 1981-1985, Woodbrige, CT : Research Publications.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='555'>
+      <subfield code='a'>Each vol. accompanied by a cumulative subject index issued as a part of no. 4, 1975-1981; as no. 5, 1982-1985.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Government publications</subfield>
+      <subfield code='z'>United States</subfield>
+      <subfield code='x'>Bibliography</subfield>
+      <subfield code='x'>Catalogs</subfield>
+      <subfield code='x'>Periodicals.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='1' tag='730'>
+      <subfield code='a'>Declassified documents reference system.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b12453006</subfield>
+      <subfield code='b'>g    </subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>170523</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>2</subfield>
+      <subfield code='c'>990101</subfield>
+      <subfield code='d'>s</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>4</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='935'>
+      <subfield code='a'>00261739</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>PREF</subfield>
+      <subfield code='v'>v.1-11;</subfield>
+      <subfield code='y'>1975-1985.</subfield>
+      <subfield code='f'>PER.</subfield>
+      <subfield code='i'>10/13/93 N  325:SL</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='955'>
+      <subfield code='l'>PREF</subfield>
+      <subfield code='c'>0:(v.1:1975)</subfield>
+      <subfield code='i'>10/13/93 C</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='a'>10/13/93</subfield>
+      <subfield code='t'>c</subfield>
+      <subfield code='s'>9110</subfield>
+      <subfield code='n'>PPT</subfield>
+      <subfield code='w'>NYPG754443996S</subfield>
+      <subfield code='d'>08/02/83</subfield>
+      <subfield code='c'>CW</subfield>
+      <subfield code='b'>AT</subfield>
+      <subfield code='i'>931013</subfield>
+      <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='HLD'>
+      <subfield code='b'>KARDON</subfield>
+      <subfield code='c'>p_GovDocs</subfield>
+      <subfield code='x'>INT. NOTE: PER. | INT. NOTE: Location changed from rstk to g per request from RIS BA  02/22/07 MRTL | RETENTION: -</subfield>
+      <subfield code='8'>22239030840003811</subfield>
+    </datafield>
+  </record>
 </collection>
