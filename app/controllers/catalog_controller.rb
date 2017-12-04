@@ -458,5 +458,7 @@ class CatalogController < ApplicationController
     # Configuration for autocomplete suggestor
     config.autocomplete_enabled = true
     config.autocomplete_path = "suggest"
+
+    config.add_nav_action :library_account, partial: "/users/account_link", if: :user_signed_in?
   end
 end
