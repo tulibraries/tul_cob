@@ -1,3 +1,3 @@
 Primo.configure do |config|
-  config.apikey = Rails.config.bento[:apikey]
+  config.apikey = Rails.configuration.bento[:primo][:apikey]
 end

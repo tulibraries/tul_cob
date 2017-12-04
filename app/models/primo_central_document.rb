@@ -1,8 +1,8 @@
 class PrimoCentralDocument
 
-    require_dependency 'blacklight/primo'
+    require 'blacklight/primo_central'
 
-    include Blacklight::Primo::Document
+    include Blacklight::PrimoCentral::Document
 
 
     self.unique_key = 'id'

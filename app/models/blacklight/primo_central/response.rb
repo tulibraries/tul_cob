@@ -1,7 +1,7 @@
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
 
-    include Blacklight::PrimoCentral::Response
+    #include Blacklight::PrimoCentral::Response::Response
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
 
@@ -27,6 +27,11 @@ module Blacklight::PrimoCentral
     def limit_value
       10
     end
+
+    def aggregations
+      {}
+    end
+
 
 
     def total_count

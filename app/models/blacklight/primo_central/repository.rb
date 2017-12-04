@@ -12,15 +12,15 @@ module Blacklight::PrimoCentral
     #
     def search(params = {})
       params = params.to_hash unless params.is_a?(Hash)
-      time = Benchmark.realtime do
-        primo_response = Primo.find(params.fetch(:q, ''))
-      end
-      Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{time} seconds"
-      docs = search.documents
+
+      primo_response = Primo.find(params.fetch(:q, ''))
+      #binding.pry
+      Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{primo_response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
+      docs = primo_response.docs
 
       response_opts = {
-          facet_counts: 2,
-          numFound: search.record_count,
+          facet_counts: primo_response.facets.length,
+          numFound: primo_response.info.total,
           document_model: blacklight_config.document_model,
           blacklight_config: blacklight_config
       }.with_indifferent_access

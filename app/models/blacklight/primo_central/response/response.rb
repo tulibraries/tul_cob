@@ -1,4 +1,4 @@
-module Blacklight::Primo::Response::Response
+module Blacklight::PrimoCentral::Response::Response
   def response
     self[:response] || {}
   end
