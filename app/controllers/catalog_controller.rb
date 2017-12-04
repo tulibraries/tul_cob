@@ -460,5 +460,9 @@ class CatalogController < ApplicationController
     config.autocomplete_path = "suggest"
 
     config.add_nav_action :library_account, partial: "/users/account_link", if: :user_signed_in?
+
+    # marc config
+    # Do not show library_view link
+    config.show.document_actions.delete(:librarian_view)
   end
 end
