@@ -31,8 +31,11 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :users, only: [:index] do
+    post :impersonate, on: :member
+    post :stop_impersonating, on: :collection
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -66,8 +69,6 @@ Rails.application.routes.draw do
   # we want helper methods for multi_search_path and multi_search_url
   # too, without removing root_url and root_path helpers. oddly, repeating
   # root seems to work.
-
-
 
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
