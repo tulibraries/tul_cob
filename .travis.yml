@@ -1,5 +1,4 @@
 language: ruby
-dist: trusty
 sudo: false
 rvm:
 - 2.4.1
@@ -13,8 +12,6 @@ before_script:
 - cp config/bento.yml.example config/bento.yml
 - RAILS_ENV=test bundle exec rake db:migrate
 - RAILS_ENV=test bundle exec rake db:seed
-addons:
-  chrome: stable
 notifications:
   email:
     recipients:
@@ -29,5 +26,4 @@ notifications:
     on_pull_requests: false
     on_success: change
     on_failure: always
-  before_install:
-      - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  
