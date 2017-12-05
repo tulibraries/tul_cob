@@ -1,15 +1,25 @@
 # frozen_string_literal: true
 require "rails_helper"
 require "yaml"
-require "spec_helper"
-
-
+require "selenium-webdriver"
 
 describe Alma::AvailabilityResponse, js: true  do
 
   before(:all) do
-      Alma.configure
+    Capybara.javascript_driver = :headless_chrome
+
+    Capybara.register_driver :headless_chrome do |app|
+      capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+        chromeOptions: { args: %w[headless disable-gpu] }
+  )
+
+    Capybara::Selenium::Driver.new(app,
+                                 browser: :chrome,
+                                 desired_capabilities: capabilities)
     end
+
+    Alma.configure
+  end
 
   feature "Availability Buttons by status" do
     scenario "Available items should have a green button" do
@@ -38,10 +48,6 @@ describe Alma::AvailabilityResponse, js: true  do
         expect(page).to have_css(".btn-warning")
       end
     end
-
-
-
-
   end
 
   describe "availability attribute" do

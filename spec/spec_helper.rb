@@ -7,18 +7,6 @@ require "webmock/rspec"
 require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
-require "selenium-webdriver"
-
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
-end
-
-Capybara.javascript_driver = :selenium_chrome
-
-Capybara.configure do |config|
-  config.default_max_wait_time = 10 # seconds
-  config.default_driver        = :selenium
-end
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
