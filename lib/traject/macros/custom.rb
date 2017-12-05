@@ -171,8 +171,9 @@ module Traject
       def extract_library
         lambda do |rec, acc|
           rec.fields(["HLD"]).each do |field|
-            subfield_b = field["b"] if field["b"] != "RES_SHARE"
-            acc << Traject::TranslationMap.new("locations_map")[subfield_b]
+            if field["b"] != "RES_SHARE"
+              acc << Traject::TranslationMap.new("locations_map")[field["b"]]
+            end
           end
         end
       end
