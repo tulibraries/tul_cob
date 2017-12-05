@@ -168,6 +168,16 @@ module Traject
         end
       end
 
+      def extract_library
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            if field["b"] != "RES_SHARE"
+              acc << Traject::TranslationMap.new("locations_map")[field["b"]]
+            end
+          end
+        end
+      end
+
       def extract_pub_date
         lambda do |rec, acc|
           rec.fields(["260"]).each do |field|

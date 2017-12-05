@@ -187,7 +187,7 @@ to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av",
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")
 to_field "call_number_alt_display", extract_marc("ITMjk")
-to_field "library_facet", extract_marc("HLDb", translation_map: "locations_map")
+to_field "library_facet", extract_library
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)
