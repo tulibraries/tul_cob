@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <%= link_to t("blacklight.search.back"), "/catalog/#{@document.id}", :class =>"pull-right" %>
+  <%= link_to t("blacklight.search.back"), "../#{@document.id}", :class =>"pull-right" %>
   <h3 class="modal-title"><%= t('blacklight.search.librarian_view.title') %></h3>
 </div>
 <%- if @document.respond_to?(:to_marc) -%>
