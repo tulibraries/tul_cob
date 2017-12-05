@@ -26,7 +26,6 @@ describe Alma::AvailabilityResponse, js: true  do
       visit "/"
       fill_in "q", with: "Academic freedom"
       click_button "Search"
-      wait_for_ajax
       within(".document-position-0") do
         expect(page).to have_css(".btn-success")
       end
