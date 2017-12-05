@@ -118,14 +118,18 @@ module ApplicationHelper
     openurl_field_values = form_fields.map { |k, k2|
       [k, document[k2].to_s.delete('[]""')] }.to_h
 
+    openurl_field_values["Action"] = 10
+    openurl_field_values["Form"] = 30
+
+
       URI::HTTPS.build(
       host:  "temple.aeon.atlas-sys.com",
-      path: "/aeon/aeon.dll/OpenURL",
+      path: "/Logon/",
       query: openurl_field_values.to_query).to_s
   end
 
   def aeon_request_button(document)
-    if document["location_display"] == ["rarestacks"] && document["library_facet"] == ["Special Collections Research Center"]
+    if document["location_display"] == ["rarestacks"] && document["library_facet"].include?("Special Collections Research Center")
       button_to("Request Onsite Access", aeon_request_url(document), class:"aeon-request btn btn-warning") +
       content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
     end

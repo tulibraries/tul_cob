@@ -110,3 +110,5 @@ bundle exec rake fortytu:oai:ingest_all
 `bundle exec rake ci`
 
 This will spin up a test solr instance, import a few hundred records, and run the test suite.
+
+
