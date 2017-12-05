@@ -6,6 +6,7 @@ require "alma"
 require "webmock/rspec"
 require "vcr"
 require "database_cleaner"
+require "capybara/rspec"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
