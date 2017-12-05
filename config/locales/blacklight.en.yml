@@ -5,5 +5,6 @@ en:
       library_account: "Library Account"
 
     search:
+      back: "Back to Main View"
       librarian_view:
         title: "Staff View"
