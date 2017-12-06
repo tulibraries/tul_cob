@@ -31,7 +31,7 @@ module ApplicationHelper
     #binding.pry
     creator = args[:document][args[:field]]
     creator.map do |name|
-      linked_subfield = name.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
+      linked_subfield = name.split("|").first
       newname = link_to(linked_subfield, root_url + "/?f[creator_facet][]=#{linked_subfield}").html_safe
       plain_text_subfields = name.split("|").second
       creator = newname
