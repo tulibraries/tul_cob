@@ -28,14 +28,13 @@ module ApplicationHelper
   end
 
   def browse_creator(args)
+    #binding.pry
     creator = args[:document][args[:field]]
-    creator.each_with_index do |name, i|
-      content_tag :ul do
-        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
-        creator = newname.html_safe
-      end
+    creator.map do |name|
+      newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}").html_safe
+      creator = newname
     end
-    list_with_links(args)
+    creator
   end
 
   def check_for_full_http_link(args)
