@@ -28,6 +28,7 @@ module ApplicationHelper
   end
 
   def browse_creator(args)
+    #binding.pry
     creator = args[:document][args[:field]]
     creator.map do |name|
       linked_subfield = name.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
@@ -42,10 +43,9 @@ module ApplicationHelper
   end
 
   def creator_index_separator(args)
-    #binding.pry
     creator = args[:document][args[:field]]
     creator.map do |name|
-      plain_text_subfields = name.delete("[]|")
+      plain_text_subfields = name.gsub("|", " ")
       creator = plain_text_subfields
     end
     creator

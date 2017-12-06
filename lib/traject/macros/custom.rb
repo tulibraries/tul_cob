@@ -30,8 +30,8 @@ module Traject
       def extract_creator
         lambda do |rec, acc|
           rec.fields("100").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(",")
-            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(",")
+            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << linked_subfields + "|" + plain_text_subfields
           end
         end
