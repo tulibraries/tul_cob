@@ -245,7 +245,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_index_field "imprint_display", label: "Published"
-    config.add_index_field "creator_display", label: "Author/creator"
+    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type"
 
 

@@ -28,11 +28,25 @@ module ApplicationHelper
   end
 
   def browse_creator(args)
+    creator = args[:document][args[:field]]
+    creator.map do |name|
+      linked_subfield = name.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
+      newname = link_to(linked_subfield, root_url + "/?f[creator_facet][]=#{linked_subfield}").html_safe
+      plain_text_subfields = name.split("|").second
+      creator = newname
+      if plain_text_subfields.present?
+        creator = newname + ", " + plain_text_subfields
+      end
+    end
+    creator
+  end
+
+  def creator_index_separator(args)
     #binding.pry
     creator = args[:document][args[:field]]
     creator.map do |name|
-      newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}").html_safe
-      creator = newname
+      plain_text_subfields = name.delete("[]|")
+      creator = plain_text_subfields
     end
     creator
   end

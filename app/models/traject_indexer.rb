@@ -124,7 +124,7 @@ to_field "location_display", extract_marc("HLDc")
 # Creator/contributor fields
 to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
 to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj", trim_punctuation: true)
-to_field "creator_display", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, alternate_script: false)
+to_field "creator_display", extract_creator
 to_field "contributor_display", extract_marc("700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true, alternate_script: false)
 to_field "creator_vern_display", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, alternate_script: :only)
 to_field "contributor_vern_display", extract_marc("700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true, alternate_script: :only)
