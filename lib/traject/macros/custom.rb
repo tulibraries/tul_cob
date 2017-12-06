@@ -25,13 +25,24 @@ module Traject
         end
       end
 
-      #100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt
+      # creator_facet = "100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj"
+      # creator_display = 100ejlmnoprtu:110elmnopt:111elnopt
 
       def extract_creator
         lambda do |rec, acc|
           rec.fields("100").each do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
+            acc << linked_subfields + "|" + plain_text_subfields
+          end
+          rec.fields("110").each do |f|
+            linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
+            acc << linked_subfields + "|" + plain_text_subfields
+          end
+          rec.fields("111").each do |f|
+            linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << linked_subfields + "|" + plain_text_subfields
           end
         end
