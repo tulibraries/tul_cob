@@ -26,9 +26,10 @@
   <% end %>
 
   <% if document["availability_facet"].include?("At the Library") %>
-    <div class="availability_iframe panel-body">
+    <div class="availability_iframe physical-holding-panel panel-body">
       <h5>In Library</h5>
       <iframe class="bl_alma_iframe" src="<%= alma_app_fulfillment_url(document) %>"></iframe>
     </div>
   <% end %>
+  <%= render "aeon_request", :document => document %>
 </div>
