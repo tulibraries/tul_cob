@@ -24,7 +24,7 @@ module ApplicationHelper
   end
 
   def list_with_links(args)
-    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("<br /> ").html_safe
+    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
   end
 
   def browse_creator(args)
