@@ -28,7 +28,6 @@ module ApplicationHelper
   end
 
   def browse_creator(args)
-    #binding.pry
     creator = args[:document][args[:field]]
     creator.map do |name|
       linked_subfield = name.split("|").first
