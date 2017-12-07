@@ -16,7 +16,7 @@ module Blacklight::PrimoCentral
       primo_response = Primo.find(params.fetch(:q, ''))
       #binding.pry
       Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{primo_response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
-      docs = primo_response.docs
+      data = primo_response
 
       response_opts = {
           facet_counts: primo_response.facets.length,
@@ -25,7 +25,7 @@ module Blacklight::PrimoCentral
           blacklight_config: blacklight_config
       }.with_indifferent_access
 
-      blacklight_config.response_model.new(docs, params, response_opts)
+      blacklight_config.response_model.new(data, params, response_opts)
 
     end
   end

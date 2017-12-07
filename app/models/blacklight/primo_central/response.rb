@@ -1,15 +1,15 @@
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
 
-    #include Blacklight::PrimoCentral::Response::Response
+    include Blacklight::PrimoCentral::Response
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
 
     attr_reader :request_params
     attr_accessor :document_model, :blacklight_config
 
-    def initialize(docs, request_params, options = {})
-      @docs = docs
+    def initialize(data, request_params, options = {})
+      @docs = data.docs
       @request_params = request_params.with_indifferent_access
       self.document_model =  ::PrimoCentralDocument
       self.blacklight_config = options[:blacklight_config]
