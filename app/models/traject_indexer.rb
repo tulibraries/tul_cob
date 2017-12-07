@@ -126,8 +126,8 @@ to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejln
 to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj")
 to_field "creator_display", extract_creator
 to_field "contributor_display", extract_contributor
-to_field "creator_vern_display", extract_creator
-to_field "contributor_vern_display", extract_contributor
+to_field "creator_vern_display", extract_creator_vern
+to_field "contributor_vern_display", extract_contributor_vern
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1

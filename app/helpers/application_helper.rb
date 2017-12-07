@@ -36,7 +36,7 @@ module ApplicationHelper
       plain_text_subfields = name.split("|").second
       creator = newname
       if plain_text_subfields.present?
-        creator = newname + ", " + plain_text_subfields
+        creator = newname + " " + plain_text_subfields
       end
     end
     creator
