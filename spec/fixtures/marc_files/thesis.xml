@@ -1,7 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record>
-  <leader>01345ngm a2200373Ki 4500</leader>
-  <controlfield tag="007">vd cvaizu</controlfield>
-  <controlfield tag="008">160201s2014 097 vleng d</controlfield>
-  <controlfield tag="001">991019830779703811</controlfield>
+  <leader>01318cam a22003851  4500</leader>
+  <controlfield tag="005">19940223135012.0</controlfield>
+  <controlfield tag="008">940216s1972    pau           000 0 eng d</controlfield>
+  <controlfield tag="001">991031770069703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b16528839-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(CStRLIN)ocn476500225</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATG94-B03404</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">PPT</subfield>
+    <subfield code="c">PPT</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm29865833</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">191 1972</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Whiteway, Lloyd M.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="4">
+    <subfield code="a">The concept of conscience in the ethical theory of Bishop Joseph Butler,</subfield>
+    <subfield code="c">by Lloyd Whiteway.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">[Philadelphia]</subfield>
+    <subfield code="c">1972.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">158 "l."</subfield>
+    <subfield code="c">28 cm.</subfield>
+  </datafield>
+  <datafield tag="502" ind1=" " ind2=" ">
+    <subfield code="a">Thesis (Ph.D.) -- Temple University, 1972.</subfield>
+  </datafield>
+  <datafield tag="590" ind1=" " ind2=" ">
+    <subfield code="a">One copy is located in the following collections: (LTD), (TEM), and (MICR). Microform copy is classified Microfilm TT 635.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Butler, Joseph,</subfield>
+    <subfield code="d">1692-1752.</subfield>
+  </datafield>
+  <datafield tag="690" ind1=" " ind2="4">
+    <subfield code="a">Temple University</subfield>
+    <subfield code="x">Theses.</subfield>
+  </datafield>
+  <datafield tag="690" ind1=" " ind2="4">
+    <subfield code="a">Philosophy</subfield>
+    <subfield code="x">Temple University theses.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Conscience.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b16528839</subfield>
+    <subfield code="b">multi</subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">130919</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">2</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">4</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00711149</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">DIS</subfield>
+    <subfield code="b">191 1972</subfield>
+    <subfield code="i">02/23/94 N</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">TEM</subfield>
+    <subfield code="b">191 1972</subfield>
+    <subfield code="i">02/23/94 N</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">DIS</subfield>
+    <subfield code="c">0</subfield>
+    <subfield code="r">39074007403942</subfield>
+    <subfield code="i">02/23/94 C</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">TEM</subfield>
+    <subfield code="c">0</subfield>
+    <subfield code="h">02/16/94 C</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">02/23/94</subfield>
+    <subfield code="t">c</subfield>
+    <subfield code="s">9124</subfield>
+    <subfield code="n">PPT</subfield>
+    <subfield code="w">PATG94B3404</subfield>
+    <subfield code="d">02/16/94</subfield>
+    <subfield code="b">MS</subfield>
+    <subfield code="i">940223</subfield>
+    <subfield code="h">940216</subfield>
+    <subfield code="l">PATG</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kdis </subfield>
+    <subfield code="a">Shelved by author</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">stem </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">stem </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
 </record>

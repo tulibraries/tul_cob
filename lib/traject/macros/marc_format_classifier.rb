@@ -63,7 +63,7 @@ module Traject
           formats << "Dissertation/Thesis"
         end
 
-        formats << "Conference" if proceeding?
+        formats << "Conference Proceeding" if proceeding?
         formats << options[:default] if formats.empty?
 
         return formats
@@ -109,8 +109,6 @@ module Traject
             controlfield_value(controlfield_006, 4, marc_genre_008_26)
         end
         
-        puts "results: #{results}"
-
         [results].flatten.map { |r| resource_type_codes[r] }
       end
 
@@ -127,10 +125,12 @@ module Traject
 
       # Just checks all $6xx for a $v "Congresses"
       def proceeding?
+        controlfield_008 = @record.find_all { |f| f.tag == "008" }
         @proceeding_q ||= begin
                             ! @record.find do |field|
-                              field.tag.slice(0) == "6" &&
-                                field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
+                              (field.tag.slice(0) == "6" &&
+                                field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }) ||
+                                (controlfield_008[29] == "1")
                             end.nil?
                           end
       end

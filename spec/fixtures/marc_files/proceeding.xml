@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record>
-  <leader>04865nam a22004213u 4500</leader>
-  <controlfield tag="001">991036804823903811</controlfield>
-  <controlfield tag="005">20151012013917.0</controlfield>
-  <controlfield tag="006">m d</controlfield>
-  <controlfield tag="007">cr -n---------</controlfield>
-  <controlfield tag="008">151012s2015||||||| s|||||||||||eng|d</controlfield>
+  <leader>01007nam a2200277u  4500</leader>
+  <controlfield tag="008">050913s1968    pau      b    000 0 eng d</controlfield>
+  <controlfield tag="001">991011019949703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b29678778-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn490844568</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">MRC10323786 </subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="c">MvI</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm79427799</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">169 P5R4</subfield>
+  </datafield>
+  <datafield tag="110" ind1="2" ind2=" ">
+    <subfield code="a">Phi Delta Kappa.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Research symposium on employment relations in higher education, sponsored by Phi Delta Kappa together with the College of Education and the School of Business Administration [of] Temple University [held] Nov. 14-15, 1968 :</subfield>
+    <subfield code="b">[a report.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Philadelphia,</subfield>
+    <subfield code="c">1968?]</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">27, 44, 25, 34, 22 ̋. ;</subfield>
+    <subfield code="c">28 cm.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Cover title.</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographies.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">College personnel</subfield>
+    <subfield code="v">Congresses.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Teacher unions</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Congresses.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Temple University.</subfield>
+  </datafield>
+  <datafield tag="740" ind1="0" ind2=" ">
+    <subfield code="a">Employment relations in higher education.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b29678778</subfield>
+    <subfield code="b">s    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">160106</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">051225</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">MARCIVE RECON PROJECT</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">stem </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
 </record>

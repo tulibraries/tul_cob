@@ -62,11 +62,6 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("score.xml").genre).to include("Score")
       end
     end
-    context "Thesis" do
-      xit "says thesis" do
-        expect(classifier_for("thesis.xml").genre).to include("Thesis")
-      end
-    end
     context "Database" do
       it "says database" do
         expect(classifier_for("database.xml").genre).to include("Database")
@@ -82,15 +77,24 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("map.xml").genre).to include("Map")
       end
     end
-    context "Conference Proceedings" do
-      xit "says book and proceeding" do
-        expect(classifier_for("proceeding.xml").genre).to include("Book")
-        expect(classifier_for("proceeding.xml").genre).to include("Proceeding")
-      end
-    end
     context "Object" do
       it "says object" do
         expect(classifier_for("object.xml").genre).to include("Object")
+      end
+    end
+  end
+  
+  describe "format" do
+    context "Thesis" do
+      it "says thesis" do
+        expect(classifier_for("thesis.xml").formats).to include("Dissertation/Thesis")
+      end
+    end
+    context "Conference Proceedings" do
+      describe "Conference Proceedings" do
+        subject { classifier_for("proceeding.xml").formats }
+        it { is_expected.to include("Book") }
+        it { is_expected.to include("Conference Proceeding") }
       end
     end
   end
