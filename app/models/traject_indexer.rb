@@ -179,10 +179,10 @@ to_field "note_local_display", extract_marc("590a")
 # [TODO] need to improve the subjects
 to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
 to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
-to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:655ab")
-to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y", trim_punctuation: true)
-to_field "subject_region_facet", extract_marc("651a:650z:654z:655z", trim_punctuation: true)
-to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av", trim_punctuation: true)
+to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
+to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
+to_field "subject_region_facet", extract_marc("651a:650z:654z:655z:647z", trim_punctuation: true)
+to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
 
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")
