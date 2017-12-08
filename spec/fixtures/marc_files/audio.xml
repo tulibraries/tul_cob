@@ -1,7 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record>
-  <leader>01636njm a2200433 4500</leader>
+  <leader>01636njm a2200433   4500</leader>
   <controlfield tag="007">sd fznznnmmne</controlfield>
-  <controlfield tag="008">891211s1987 xx mu| f eng d</controlfield>
-  <controlfield tag="001">991005473739703811</controlfield>
+  <controlfield tag="008">891211s1987    xx mu|   f          eng d</controlfield>
+  <controlfield tag="001">991025606399703811</controlfield>
+  <datafield tag="028" ind1="0" ind2="2">
+    <subfield code="a">CDH 61005</subfield>
+    <subfield code="b">EMI</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b15291893-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn471821946</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATG89-R00436</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">PPT</subfield>
+    <subfield code="c">PPT</subfield>
+  </datafield>
+  <datafield tag="047" ind1=" " ind2=" ">
+    <subfield code="a">co</subfield>
+    <subfield code="a">sn</subfield>
+  </datafield>
+  <datafield tag="048" ind1=" " ind2=" ">
+    <subfield code="b">Ka01</subfield>
+    <subfield code="a">oa</subfield>
+  </datafield>
+  <datafield tag="048" ind1=" " ind2=" ">
+    <subfield code="b">Ka01</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm20820797</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">EMI CDH 61005</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Beethoven, Ludwig van,</subfield>
+    <subfield code="d">1770-1827.</subfield>
+  </datafield>
+  <datafield tag="240" ind1="0" ind2="0">
+    <subfield code="a">Concertos,</subfield>
+    <subfield code="m">piano, orchestra,</subfield>
+    <subfield code="n">no.5, op.73,</subfield>
+    <subfield code="r">Eb major</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Piano concerto, no.5 in E flat major, op. 73 (Emperor); Piano sonata no.7 in D major, op. 10, no.3</subfield>
+    <subfield code="h">[sound recording] /</subfield>
+    <subfield code="c">Beethoven</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">[Canada] :</subfield>
+    <subfield code="b">EMI,</subfield>
+    <subfield code="c">1987</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 sound disc :</subfield>
+    <subfield code="b">digital, mono. ;</subfield>
+    <subfield code="c">4 3/4 in.</subfield>
+  </datafield>
+  <datafield tag="440" ind1=" " ind2="0">
+    <subfield code="a">Great recordings of the century.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Compact disc.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Program notes by Denis Mathews on container.</subfield>
+  </datafield>
+  <datafield tag="511" ind1="0" ind2=" ">
+    <subfield code="a">Edwin Fischer, piano; Philharmonia Orchestra, Wilhelm Furtwangler, conductor.</subfield>
+  </datafield>
+  <datafield tag="518" ind1=" " ind2=" ">
+    <subfield code="a">Concerto no.5 recorded at Abbey Road Studios, London on February 19-20, 1951. Sonata no.7 recorded at Abbey Road Studios, London on May 19-20, 1954.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Concertos (Piano)</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Sonatas (Piano)</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Fischer, Edwin,</subfield>
+    <subfield code="d">1886-1960.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Furtwängler, Wilhelm,</subfield>
+    <subfield code="d">1886-1954.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Philharmonia Orchestra (London, England)</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b15291893</subfield>
+    <subfield code="b">k    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">160106</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">j</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00569944</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">AUD</subfield>
+    <subfield code="b">EMI CDH 61005</subfield>
+    <subfield code="i">12/11/89 N  135:SL</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">AUD</subfield>
+    <subfield code="c">0</subfield>
+    <subfield code="i">12/11/89 C</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">12/11/89</subfield>
+    <subfield code="t">c</subfield>
+    <subfield code="s">9114</subfield>
+    <subfield code="n">PPT</subfield>
+    <subfield code="d">12/11/89</subfield>
+    <subfield code="c">RD</subfield>
+    <subfield code="b">AT</subfield>
+    <subfield code="i">891211</subfield>
+    <subfield code="l">PATG</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kz   </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1=" " ind2=" ">
+    <subfield code="b">KARDON</subfield>
+    <subfield code="c">p_remote</subfield>
+    <subfield code="h">EMI CDH 61005</subfield>
+    <subfield code="8">22237540850003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22237540850003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="g">p_remote</subfield>
+    <subfield code="9">39074006938344</subfield>
+    <subfield code="e">p_remote</subfield>
+    <subfield code="8">23237540810003811</subfield>
+    <subfield code="a">7</subfield>
+    <subfield code="q">2017-06-20 05:52:22</subfield>
+    <subfield code="i">EMI CDH 61005</subfield>
+    <subfield code="d">KARDON</subfield>
+    <subfield code="f">KARDON</subfield>
+  </datafield>
 </record>
