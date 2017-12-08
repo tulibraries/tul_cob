@@ -63,13 +63,8 @@ module Traject
           formats << "Dissertation/Thesis"
         end
 
-        if proceeding?
-          formats << "Conference"
-        end
-
-        if formats.empty?
-          formats << options[:default]
-        end
+        formats << "Conference" if proceeding?
+        formats << options[:default] if formats.empty?
 
         return formats
       end
@@ -85,27 +80,55 @@ module Traject
       # Gets actual labels from marc_genre_leader and marc_genre_007 translation maps,
       # so you can customize labels if you want.
       def genre
-        marc_genre_leader = Traject::TranslationMap.new("marc_genre_leader")
-        marc_genre_007    = Traject::TranslationMap.new("marc_genre_007")
+        marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader")
+        marc_genre_007      = Traject::TranslationMap.new("marc_genre_007")
+        marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21")
+        marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26")
+        marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33")
+        resource_type_codes = Traject::TranslationMap.new("resource_type_codes")
+      
+        leader06 = @record.leader.slice(6)
+        leader06_2 = @record.leader.slice(6, 2)
+        leader07 = @record.leader.slice(7)
+        controlfield_006 = @record.find_all { |f| f.tag == "006" }
+        controlfield_007 = @record.find_all { |f| f.tag == "007" }
+        controlfield_008 = @record.find_all { |f| f.tag == "008" }
+        
+        results = marc_genre_leader[ leader06_2 ] ||
+          marc_genre_leader[ leader06 ] ||
+          controlfield_value(controlfield_007, 0, marc_genre_007)
+          
+        if leader06 == 'a'
+          if "b,i,s".split(',').include?(leader07)
+            results = controlfield_value(controlfield_008, 21, marc_genre_008_21) ||
+            controlfield_value(controlfield_006, 4, marc_genre_008_21) ||
+            controlfield_value(controlfield_007, 0, marc_genre_007)
+          end
+        elsif leader06 == 'm'
+          results = controlfield_value(controlfield_008, 26, marc_genre_008_26) ||
+            controlfield_value(controlfield_006, 4, marc_genre_008_26)
+        end
+        
+        puts "results: #{results}"
 
-        results = marc_genre_leader[ record.leader.slice(6, 2) ] ||
-          marc_genre_leader[ record.leader.slice(6)] ||
-          record.find_all { |f| f.tag == "007" }.collect { |f| marc_genre_007[f.value.slice(0)] }
+        [results].flatten.map { |r| resource_type_codes[r] }
+      end
 
-        [results].flatten
+      def controlfield_value(controlfield, position, translation_map)
+          controlfield.collect { |f| translation_map[f.value.slice(position)] }
       end
 
       # Just checks if it has a 502, if it does it"s considered a thesis
       def thesis?
         @thesis_q ||= begin
-                        ! record.find { |a| a.tag == "502" }.nil?
+                        ! @record.find { |a| a.tag == "502" }.nil?
                       end
       end
 
       # Just checks all $6xx for a $v "Congresses"
       def proceeding?
         @proceeding_q ||= begin
-                            ! record.find do |field|
+                            ! @record.find do |field|
                               field.tag.slice(0) == "6" &&
                                 field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }
                             end.nil?
@@ -114,15 +137,15 @@ module Traject
 
       # Marked as archival
       def archival?
-        leader06 = record.leader.slice(6)
-        leader08 = record.leader.slice(8)
+        leader06 = @record.leader.slice(6)
+        leader08 = @record.leader.slice(8)
         %w{t d f}.include?(leader06) && leader08 == "a"
       end
 
       # downcased version of the gmd, or else empty string
       def normalized_gmd
         @gmd ||= begin
-                   ((a245 = record["245"]) && a245["h"] && a245["h"].downcase) || ""
+                   ((a245 = @record["245"]) && a245["h"] && a245["h"].downcase) || ""
                  end
       end
     end

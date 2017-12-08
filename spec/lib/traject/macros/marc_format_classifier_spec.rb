@@ -1,49 +1,98 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-require 'marc'
-require 'traject/macros/marc_format_classifier'
-require 'pry'
-
+require 'rails_helper'
 require "traject"
-
-# # To have access to various built-in logic
-# # for pulling things out of MARC21, like `marc_languages`
-# require "traject/macros/marc21_semantics"
-# extend  Traject::Macros::Marc21Semantics
-# 
-# # To have access to the traject marc format/carrier classifier
-# require "traject/macros/marc_format_classifier"
-# extend Traject::Macros::MarcFormats
+require 'traject/macros/marc_format_classifier'
 
 # Include custom traject macros
 require "traject/macros/custom"
 extend Traject::Macros::Custom
+
 MarcFormatClassifier = Traject::Macros::MarcFormatClassifier
 
+RSpec.configure do |config|
+  config.file_fixture_path = "spec/fixtures/marc_files"
+end
+
 def classifier_for(filename)
-  source_path = File.expand_path(File.join("../../..", "fixtures"), File.dirname(__FILE__))
-  file_path = File.join(source_path, filename )
-  record = MARC::XMLReader.new(file_path).to_a.first
+  record = MARC::XMLReader.new(file_fixture(filename).to_s).to_a.first
   return MarcFormatClassifier.new( record )
 end
 
 RSpec.describe MarcFormatClassifier, type: :lib do
   
   describe "genre" do
-    # We don't have the patience to test every case, just a sampling
-    it "says book" do
-      expect(classifier_for("book_leader_07_acdm.xml").genre).to include("book")
+    context "Leader 06=a; 07=[a|c|d|m]" do
+      it "says book" do
+        expect(classifier_for("book_leader_07_acdm.xml").genre).to include("Book")
+      end
     end
-    # it "says Book for a weird one" do
-    #   expect(classifier_for("microform_online_conference.marc").genre).to be(["Book"])
-    # end
-    # it "says Musical Recording" do
-    #   expect(classifier_for("musical_cage.marc").genre).to be(["Musical Recording"])
-    # end
-    # it "says Journal" do
-    #   expect(classifier_for("the_business_ren.marc").genre).to be(["Journal/Newspaper"])
-    # end
+    context "Leader 06=a; 07=[b|i|s]; 008[21]=m or 006[04]=m" do
+      it "says Book" do
+        expect(classifier_for("book_07s_008-21m.xml").genre).to include("Book")
+      end
+    end
+    context "Leader 06=a; 07=[b|i|s]; 008[21]=d or 006[04]=d" do
+      it "says database" do
+        expect(classifier_for("book_07i_008-21d.xml").genre).to include("Database")
+      end
+    end
+    context "Leader 06=a; 07=[b|i|s]; 008[21]=w or 006[04]=w" do
+      it "says website" do
+        expect(classifier_for("book_07i_008-21w.xml").genre).to include("Website")
+      end
+    end
+    context "Leader 06=m; 008[26]=a or 006[09]=a" do
+      it "says dataset" do
+        expect(classifier_for("data_06m_008-26a.xml").genre).to include("Dataset")
+      end
+    end
+    context "Audio recording" do
+      it "says audio" do
+        expect(classifier_for("audio.xml").genre).to include("Audio")
+      end
+    end
+    context "Video recording" do
+      it "says video" do
+        expect(classifier_for("video.xml").genre).to include("Video")
+      end
+    end
+    context "Score" do
+      it "says score" do
+        expect(classifier_for("score.xml").genre).to include("Score")
+      end
+    end
+    context "Thesis" do
+      xit "says thesis" do
+        expect(classifier_for("thesis.xml").genre).to include("Thesis")
+      end
+    end
+    context "Database" do
+      it "says database" do
+        expect(classifier_for("database.xml").genre).to include("Database")
+      end
+    end
+    context "Archival" do
+      it "says archival" do
+        expect(classifier_for("archival.xml").genre).to include("Archival Material")
+      end
+    end
+    context "Map" do
+      it "says map" do
+        expect(classifier_for("map.xml").genre).to include("Map")
+      end
+    end
+    context "Conference Proceedings" do
+      xit "says book and proceeding" do
+        expect(classifier_for("proceeding.xml").genre).to include("Book")
+        expect(classifier_for("proceeding.xml").genre).to include("Proceeding")
+      end
+    end
+    context "Object" do
+      it "says object" do
+        expect(classifier_for("object.xml").genre).to include("Object")
+      end
+    end
   end
 
 end
