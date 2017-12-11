@@ -1,11 +1,11 @@
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
 
-    include Blacklight::PrimoCentral::Response
+    #include Blacklight::PrimoCentral::Response::Response
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
 
-    attr_reader :request_params
+    attr_reader :request_params, :total
     attr_accessor :document_model, :blacklight_config
 
     def initialize(data, request_params, options = {})
@@ -15,7 +15,8 @@ module Blacklight::PrimoCentral
       self.blacklight_config = options[:blacklight_config]
 
       facet_counts = options.fetch(:facet_counts, {})
-      super(response: {numFound: options[:numFound], start: self.start, docs: documents},
+      @total = options[:numFound]
+      super(response: {numFound: @total, start: self.start, docs: documents},
             facet_counts: facet_counts
       )
     end
@@ -31,8 +32,6 @@ module Blacklight::PrimoCentral
     def aggregations
       {}
     end
-
-
 
     def total_count
       total

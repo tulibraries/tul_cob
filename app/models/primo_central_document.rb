@@ -4,7 +4,6 @@ class PrimoCentralDocument
 
     include Blacklight::PrimoCentral::Document
 
-
-    self.unique_key = 'id'
+    self.unique_key = :pnxId
 
 end
