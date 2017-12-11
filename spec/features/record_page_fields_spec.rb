@@ -305,6 +305,30 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_800) { fixtures.fetch("title_series_800") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_800['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_800["title_series"])
+      end
+    end
+
+    let (:item_810) { fixtures.fetch("title_series_810") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_810['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_810["title_series"])
+      end
+    end
+
+    let (:item_811) { fixtures.fetch("title_series_811") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_811['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_811["title_series"])
+      end
+    end
+
     let (:item_830) { fixtures.fetch("title_series_830") }
     scenario "User visits a document with series title vernacular" do
       visit "catalog/#{item_830['doc_id']}"

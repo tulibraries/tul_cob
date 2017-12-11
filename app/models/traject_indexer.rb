@@ -45,7 +45,7 @@ to_field("format", marc_formats, &normalize_format)
 # Title fields
 # primary title
 to_field "title_t", extract_marc("245a")
-to_field "title_display", extract_marc("245abnpkfg", trim_punctuation: true, alternate_script: false), &to_single_string
+to_field "title_display", extract_marc("245a", trim_punctuation: true, alternate_script: false), &to_single_string
 to_field "title_vern_display", extract_marc("245a", trim_punctuation: true, alternate_script: :only)
 to_field "title_statement_display", extract_marc("245abcfgknps", alternate_script: false)
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
