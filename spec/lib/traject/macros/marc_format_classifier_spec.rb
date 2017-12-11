@@ -22,9 +22,24 @@ end
 RSpec.describe MarcFormatClassifier, type: :lib do
   
   describe "genre" do
-    context "Leader 06=a; 07=[a|c|d|m]" do
+    context "Leader 06=a; 07=[m]" do
       it "says book" do
-        expect(classifier_for("book_leader_07_acdm.xml").genre).to include("Book")
+        expect(classifier_for("book_leader_am.xml").genre).to include("Book")
+      end
+    end
+    context "Leader 06=a; 07=[a]" do
+      it "says book" do
+        expect(classifier_for("book_leader_aa.xml").genre).to include("Book")
+      end
+    end
+    context "Leader 06=a; 07=[c]" do
+      it "says book" do
+        expect(classifier_for("book_leader_ac.xml").genre).to include("Book")
+      end
+    end
+    context "Leader 06=a; 07=[d]" do
+      it "says book" do
+        expect(classifier_for("book_leader_ad.xml").genre).to include("Book")
       end
     end
     context "Leader 06=a; 07=[b|i|s]; 008[21]=m or 006[04]=m" do

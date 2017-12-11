@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" >
+  <leader>02330cac a2200529 i 4500</leader>
+  <controlfield tag="005">20160802140107.0</controlfield>
+  <controlfield tag="006">m     o  d f      </controlfield>
+  <controlfield tag="007">cr mn|||||||||</controlfield>
+  <controlfield tag="008">160527s2015    mdua    obs  f000 0 eng c</controlfield>
+  <controlfield tag="001">991023217629703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b61544139-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)ocn950740532</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">GPO</subfield>
+    <subfield code="b">eng</subfield>
+    <subfield code="e">rda</subfield>
+    <subfield code="e">pn</subfield>
+    <subfield code="c">GPO</subfield>
+    <subfield code="d">MvI</subfield>
+  </datafield>
+  <datafield tag="042" ind1=" " ind2=" ">
+    <subfield code="a">pcc</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">0500-E-17 (online)</subfield>
+  </datafield>
+  <datafield tag="086" ind1=" " ind2=" ">
+    <subfield code="a">HE 20.6234:185</subfield>
+  </datafield>
+  <datafield tag="086" ind1="0" ind2=" ">
+    <subfield code="a">HE 20.6234:185</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Albert, Michael,</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Emergency department visits for motor vehicle traffic injuries :</subfield>
+    <subfield code="b">United States, 2010-2011 /</subfield>
+    <subfield code="c">Michael Albert, and Linda F. McCaig.</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Hyattsville, MD :</subfield>
+    <subfield code="b">U.S. Department of Health and Human Services, Centers for Disease Control and Prevention, National Center for Health Statistics,</subfield>
+    <subfield code="c">2015.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 online resource (7 pages, 1 unnumbered page) :</subfield>
+    <subfield code="b">color illustrations.</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">text</subfield>
+    <subfield code="b">txt</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">computer</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">online resource</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="490" ind1="1" ind2=" ">
+    <subfield code="a">NCHS data brief,</subfield>
+    <subfield code="x">1941-4935 ;</subfield>
+    <subfield code="v">no. 185</subfield>
+  </datafield>
+  <datafield tag="490" ind1="1" ind2=" ">
+    <subfield code="a">DHHS publication ;</subfield>
+    <subfield code="v">no. 2015-1209</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Title from title screen (viewed May 27, 2016).</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">"January 2015."</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references (page [8]).</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">"CS253736."</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="0">
+    <subfield code="a">National Hospital Ambulatory Medical Care Survey (U.S.)</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Hospitals</subfield>
+    <subfield code="x">Emergency services</subfield>
+    <subfield code="x">Utilization</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Emergency medicine</subfield>
+    <subfield code="x">Utilization</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Traffic accidents</subfield>
+    <subfield code="x">Wounds and injuries</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Critical care medicine</subfield>
+    <subfield code="x">Utilization</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Traffic accidents</subfield>
+    <subfield code="x">Wounds and injuries</subfield>
+    <subfield code="x">Treatment</subfield>
+    <subfield code="z">United States.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">McCaig, Linda F.,</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">National Center for Health Statistics (U.S.),</subfield>
+    <subfield code="e">issuing body.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">National Hospital Ambulatory Medical Care Survey (U.S.)</subfield>
+  </datafield>
+  <datafield tag="776" ind1="0" ind2="8">
+    <subfield code="i">Print version:</subfield>
+    <subfield code="a">Albert, Michael.</subfield>
+    <subfield code="t">Emergency department visits for motor vehicle traffic injuries</subfield>
+    <subfield code="w">(OCoLC)904757256</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">NCHS data brief (Series) ;</subfield>
+    <subfield code="v">no. 185.</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">DHHS publication ;</subfield>
+    <subfield code="v">no. 2015-1209.</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="u">http://purl.fdlp.gov/GPO/gpo68288</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b61544139</subfield>
+    <subfield code="b">gweb </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">160909</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">160611</subfield>
+    <subfield code="d">c</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">gweb </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+        </record>

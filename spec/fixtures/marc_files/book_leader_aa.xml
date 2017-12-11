@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>02170caa a2200421 a 4500</leader>
+  <controlfield tag="005">20021212172348.0</controlfield>
+  <controlfield tag="007">he bmv---bbcp</controlfield>
+  <controlfield tag="008">831103s1765    mau     b     000 0 eng d</controlfield>
+  <controlfield tag="001">991008134819703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b29102649-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn491389230</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">aas99005096</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">MWA</subfield>
+    <subfield code="c">MWA</subfield>
+    <subfield code="e">bdrb</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm55824705</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">Micro- card Evans 9913;</subfield>
+    <subfield code="b">41520</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Watts, Isaac,</subfield>
+    <subfield code="d">1674-1748.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Appendix, containing a number of hymns,</subfield>
+    <subfield code="h">[microform] /</subfield>
+    <subfield code="c">taken chiefly from Dr. Watts's scriptural collection. ; [One line from Revelation]</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Boston: :</subfield>
+    <subfield code="b">Printed by Kneeland and Adams, for the Company of Stationers.,</subfield>
+    <subfield code="c">1765.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">84 p. ;</subfield>
+    <subfield code="c">19 cm. (12mo)</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Without music. Selected in part from: Watts, Isaac. Hymns and spiritual songs.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Issued with the several issues of the Kneeland and Adams edition of: Bible. O.T. Psalms. English. Brady-Tate. 1765. A new version of the Psalms of David.</subfield>
+  </datafield>
+  <datafield tag="510" ind1="4" ind2=" ">
+    <subfield code="a">Evans</subfield>
+    <subfield code="c">9913</subfield>
+  </datafield>
+  <datafield tag="510" ind1="4" ind2=" ">
+    <subfield code="a">Bristol</subfield>
+    <subfield code="c">B2553</subfield>
+  </datafield>
+  <datafield tag="510" ind1="4" ind2=" ">
+    <subfield code="a">Shipton &amp; Mooney</subfield>
+    <subfield code="c">41520</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Digital image available in the Readex/Newsbank Digital Evans series.</subfield>
+  </datafield>
+  <datafield tag="533" ind1=" " ind2=" ">
+    <subfield code="a">Microfiche.</subfield>
+    <subfield code="b">[New York :</subfield>
+    <subfield code="c">Readex Microprint,</subfield>
+    <subfield code="d">1985]</subfield>
+    <subfield code="e">11 x 15 cm.</subfield>
+    <subfield code="f">(Early American imprints. First series ; no. 9913).</subfield>
+  </datafield>
+  <datafield tag="533" ind1=" " ind2=" ">
+    <subfield code="a">Microfiche.</subfield>
+    <subfield code="b">[New York :</subfield>
+    <subfield code="c">Readex Microprint,</subfield>
+    <subfield code="d">1985]</subfield>
+    <subfield code="e">11 x 15 cm.</subfield>
+    <subfield code="f">(Early American imprints. First series ; no. 41520).</subfield>
+  </datafield>
+  <datafield tag="590" ind1=" " ind2=" ">
+    <subfield code="a">Access to electronic verison is available to the Temple Community through use of a networked computer with a Temple IP address.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Hymnals.</subfield>
+    <subfield code="2">rbgenr.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Watts, Isaac,</subfield>
+    <subfield code="d">1674-1748.</subfield>
+    <subfield code="t">Hymns and spiritual songs.</subfield>
+    <subfield code="k">Selections.</subfield>
+  </datafield>
+  <datafield tag="752" ind1=" " ind2=" ">
+    <subfield code="a">United States</subfield>
+    <subfield code="b">Massachusetts</subfield>
+    <subfield code="d">Boston.</subfield>
+  </datafield>
+  <datafield tag="773" ind1="0" ind2=" ">
+    <subfield code="t">[Unknown host].</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">Early American imprints.</subfield>
+    <subfield code="n">First series ;</subfield>
+    <subfield code="v">no. 9913.</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">Early American imprints.</subfield>
+    <subfield code="n">First series ;</subfield>
+    <subfield code="v">no. 41520.</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="1">
+    <subfield code="z">Access full text via Early American Imprints, Series I: Evans database (Search by title).</subfield>
+    <subfield code="u">http://libproxy.temple.edu/login?url=http://infoweb.newsbank.com/?db=EVAN</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b29102649</subfield>
+    <subfield code="b">kmicr</subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">111024</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">051217</subfield>
+    <subfield code="d">a</subfield>
+    <subfield code="e">m</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">051217</subfield>
+    <subfield code="d">a</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kmicr</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>

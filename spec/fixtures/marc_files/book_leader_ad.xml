@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd" >
+  <leader>01848nad a2200397 a 4500</leader>
+  <controlfield tag="005">20031125000000.0</controlfield>
+  <controlfield tag="006">m        m        </controlfield>
+  <controlfield tag="007">cr mnummmmuuuu</controlfield>
+  <controlfield tag="008">031027s1981    enkb    sb    00110 eng d</controlfield>
+  <controlfield tag="001">991013846409703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">81066330</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">0389202126 (Barnes &amp; Noble)</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b30460013-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">MIU01000000000000003865375</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">MiU</subfield>
+    <subfield code="c">MiU</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">e-ie---</subfield>
+    <subfield code="a">e-uk-ni</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">RC450.I73</subfield>
+    <subfield code="b">(INTERNET)</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Finnane, Mark.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Insanity and the insane in post-famine Ireland</subfield>
+    <subfield code="h">[electronic resource] /</subfield>
+    <subfield code="c">Mark Finnane.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">London :</subfield>
+    <subfield code="b">Croom Helm ;</subfield>
+    <subfield code="a">Totowa, N.J. :</subfield>
+    <subfield code="b">Barnes &amp; Noble Books,</subfield>
+    <subfield code="c">1981.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">241 p. :</subfield>
+    <subfield code="b">map ;</subfield>
+    <subfield code="c">22 cm.</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliography (p. 236-238) and index.</subfield>
+  </datafield>
+  <datafield tag="533" ind1=" " ind2=" ">
+    <subfield code="a">Electronic text and image data.</subfield>
+    <subfield code="b">Ann Arbor, Mich. :</subfield>
+    <subfield code="c">University of Michigan, Scholarly Publishing Office,</subfield>
+    <subfield code="d">2003.</subfield>
+    <subfield code="e">Includes both TIFF files and keyword searchable text.</subfield>
+    <subfield code="f">([History e-book project])</subfield>
+    <subfield code="n">Mode of access: Intranet.</subfield>
+    <subfield code="n">This volume is made possible by a grant from the Andrew W. Mellon Foundation.</subfield>
+  </datafield>
+  <datafield tag="590" ind1=" " ind2=" ">
+    <subfield code="a">Access is available to the Temple Community through use of a networked computer with a Temple IP address.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Psychiatric hospitals</subfield>
+    <subfield code="z">Ireland</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">19th century.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Mental health policy</subfield>
+    <subfield code="z">Ireland</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">19th century.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="2">
+    <subfield code="a">Mental illness</subfield>
+    <subfield code="z">Ireland.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Hospitals</subfield>
+    <subfield code="z">Ireland</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">19th century.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="0">
+    <subfield code="a">Electronic books.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">American Council of Learned Societies.</subfield>
+  </datafield>
+  <datafield tag="773" ind1="0" ind2=" ">
+    <subfield code="t">ACLS humanities e-book.</subfield>
+    <subfield code="n">URL: http://www.historyebook.org</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">ACLS humanities e-book.</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="z">Access full text online.</subfield>
+    <subfield code="u">http://libproxy.temple.edu/login?url=http://hdl.handle.net/2027/heb.02206</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b30460013</subfield>
+    <subfield code="b">w    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">130112</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">060205</subfield>
+    <subfield code="d">d</subfield>
+    <subfield code="e">@</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">e-resources trial</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">w    </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>
