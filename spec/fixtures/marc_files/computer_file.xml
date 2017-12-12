@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<record schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>01637nmm a2200361   4500</leader>
+  <controlfield tag="006">m    f   a u      </controlfield>
+  <controlfield tag="007">cr mn mmmmuuuu</controlfield>
+  <controlfield tag="008">110203s1984    miu    f   a        eng d</controlfield>
+  <controlfield tag="001">991022211039703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b50184271-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(MiAaI)ICPSR05902</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">MiAaI</subfield>
+    <subfield code="c">MiAaI</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">British Speeches, 1870-1914, and German Speeches, 1871-1912</subfield>
+    <subfield code="h">[electronic resource]</subfield>
+    <subfield code="c">Robert North, Richard Lagerstrom, William Mitchell</subfield>
+  </datafield>
+  <datafield tag="250" ind1=" " ind2=" ">
+    <subfield code="a">1992-02-16</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Ann Arbor, Mich.</subfield>
+    <subfield code="b">Inter-university Consortium for Political and Social Research [distributor]</subfield>
+    <subfield code="c">1984</subfield>
+  </datafield>
+  <datafield tag="490" ind1="1" ind2=" ">
+    <subfield code="a">ICPSR</subfield>
+    <subfield code="v">5902</subfield>
+  </datafield>
+  <datafield tag="538" ind1=" " ind2=" ">
+    <subfield code="a">Mode of access: Intranet.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Title from ICPSR DDI metadata of 2011-02-03.</subfield>
+  </datafield>
+  <datafield tag="506" ind1=" " ind2=" ">
+    <subfield code="a">AVAILABLE. This study is freely available to ICPSR member institutions.</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Also available as downloadable files.</subfield>
+  </datafield>
+  <datafield tag="520" ind1="3" ind2=" ">
+    <subfield code="a">Cf.: http://dx.doi.org/10.3886/ICPSR05902</subfield>
+  </datafield>
+  <datafield tag="590" ind1=" " ind2=" ">
+    <subfield code="a">Access is available to the Temple Community through use of a networked computer with a Temple IP address.</subfield>
+  </datafield>
+  <datafield tag="653" ind1="0" ind2=" ">
+    <subfield code="a">ICPSR XIII.B. Legislative and Deliberative Bodies, Studies of Decision-Making in Deliberative Bodies</subfield>
+    <subfield code="a">IDRC III. Electoral Systems and Political Behavior</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">North, Robert</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Lagerstrom, Richard</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Mitchell, William</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Inter-university Consortium for Political and Social Research.</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">ICPSR (Series)</subfield>
+    <subfield code="v">5902</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="z">Access data sets; authentication may be required:</subfield>
+    <subfield code="u">http://libproxy.temple.edu/login?url=http://dx.doi.org/10.3886/ICPSR05902</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b50184271</subfield>
+    <subfield code="b">w    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">140122</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">111105</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">m</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">w    </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>

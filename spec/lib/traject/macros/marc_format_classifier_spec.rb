@@ -92,6 +92,26 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("map.xml").genre).to include("Map")
       end
     end
+    context "Kit" do
+      it "says kit" do
+        expect(classifier_for("kit.xml").genre).to include("Kit")
+      end
+    end
+    context "Serial" do
+      xit "says serial" do
+        expect(classifier_for("serial.xml").genre).to include("Journal/Periodical")
+      end
+    end
+    context "Visual" do
+      it "says image" do
+        expect(classifier_for("visual.xml").genre).to include("Image")
+      end
+    end
+    context "Computer File" do
+      it "says Computer File" do
+        expect(classifier_for("computer_file.xml").genre).to include("Computer File")
+      end
+    end
     context "Object" do
       it "says object" do
         expect(classifier_for("object.xml").genre).to include("Object")
