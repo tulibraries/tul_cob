@@ -64,6 +64,18 @@ contributor_700_v:
 imprint_260:
   doc_id: "991012132499760623"
   imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
+imprint_260_c:
+  doc_id: "991012181699703811"
+  date_copyright: "2005"
+imprint_260_p:
+  doc_id: "991012032049703811"
+  date_copyright: "1983"
+imprint_260_copyright:
+  doc_id: "991012032209703811"
+  date_copyright: "1983"
+imprint_260_year_only:
+  doc_id: "991012036199703811"
+  date_copyright: "1979"
 imprint_264:
   doc_id: "991012163279703811"
   imprint: "Santa Barbara, California : Santa Barbara Museum of Art, 2016."
