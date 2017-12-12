@@ -1555,6 +1555,9 @@
     <datafield ind1=' ' ind2=' ' tag='500'>
       <subfield code='a'>Translation of Fuchs über Ernst Fuchs.</subfield>
     </datafield>
+    <datafield ind1=' ' ind2=' ' tag='525'>
+      <subfield code='a'>Subfield a.</subfield>
+    </datafield>
     <datafield ind1='1' ind2='0' tag='600'>
       <subfield code='a'>Fuchs, Ernst,</subfield>
       <subfield code='d'>1930-2015</subfield>

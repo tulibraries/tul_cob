@@ -156,7 +156,7 @@ to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate
 to_field "volume_series_display", extract_marc("830v:490v:440v")
 
 # Note fields
-to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
+to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:525a:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
 to_field "note_with_display", extract_marc("501a")
 to_field "note_diss_display", extract_marc("502abcdgo")
 to_field "note_biblio_display", extract_marc("504a")

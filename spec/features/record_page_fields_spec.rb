@@ -521,6 +521,14 @@ RSpec.feature "RecordPageFields", type: :feature do
       end
     end
 
+    let (:item_525) { fixtures.fetch("note_525") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_525['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_525["note"])
+      end
+    end
+
     let (:item_530) { fixtures.fetch("note_530") }
     scenario "User visits a document with note" do
       visit "catalog/#{item_530['doc_id']}"
