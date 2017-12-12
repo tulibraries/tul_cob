@@ -63,7 +63,7 @@ def find_by_type(doc, search_type)
   
   doc.remove_namespaces!
   doc_ids = []
-  doc.xpath('//record//metadata//record').each do |record|
+  doc.xpath('//record').each do |record|
     leader = record.xpath('leader').first.text
     cf008 = record.xpath("controlfield[@tag='008']").text
     cf006 = record.xpath("controlfield[@tag='006']").text
