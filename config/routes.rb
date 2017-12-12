@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   match '/primo', to: 'primo_central#index', as: 'search', via: [:get, :post]
 
+
+  resources :primo_central_documents, only: [:show], path: "/catalog", controller: "catalog" do
+    concerns :exportable
+  end
+
   # resource and resources
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable

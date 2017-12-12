@@ -1,7 +1,7 @@
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
 
-    #include Blacklight::PrimoCentral::Response::Response
+    include Blacklight::PrimoCentral::Response::Facets
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
 
@@ -17,21 +17,18 @@ module Blacklight::PrimoCentral
       facet_counts = options.fetch(:facet_counts, {})
       @total = options[:numFound]
       super(response: {numFound: @total, start: self.start, docs: documents},
-            facet_counts: facet_counts
+            facet_counts: facet_counts, facets: data.facets
       )
     end
 
     def documents
-      @documents ||= (@docs || []).collect{|doc| document_model.new(doc, self) }
+      @documents ||= (@docs || []).collect{|doc| document_model.new(doc.to_h, self) }
     end
 
     def limit_value
       10
     end
 
-    def aggregations
-      {}
-    end
 
     def total_count
       total

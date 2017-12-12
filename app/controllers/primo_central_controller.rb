@@ -23,7 +23,9 @@ class PrimoCentralController < CatalogController
       config.add_index_field 'link'
       config.add_index_field 'year', label: 'Year'
       config.add_index_field 'subtitle', label: 'Subtitle'
-      config.add_index_field 'authors'
+      config.add_index_field 'creator', label: 'Creators'
+
+      config.add_facet_field 'creator', label: "Creators", limit: 10
 
 
     end
