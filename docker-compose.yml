@@ -1,16 +1,15 @@
 version: "3.2"
 
 services:
-
   app:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
     command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
-    tty: true
-    stdin_open: true
     volumes:
       - .:/tul_cob
+    tty: true
+    stdin_open: true
     ports:
       - "3000"
     environment:
@@ -21,6 +20,10 @@ services:
     build:
       context: .
       dockerfile: .docker/sp/Dockerfile
+    image: "tulcob_app:latest"
+    tty: true
+    depends_on:
+      - "app"
     ports:
       - "80"
       - "443"
@@ -44,3 +47,21 @@ services:
       - /opt/solr/conf
     volumes:
       - $PWD/solr/conf:/opt/solr/conf
+
+  cli:
+    build:
+      context: .
+      dockerfile: .docker/cli/Dockerfile
+    image: "tulcob_app:latest"
+    tty: true
+    depends_on:
+      - "app"
+    volumes:
+      - .:/tul_cob
+    ports:
+      - "3000"
+    environment:
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      LC_ALL: "C.UTF-8"
+      TERM: "xterm"
+

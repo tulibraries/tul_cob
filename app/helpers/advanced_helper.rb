@@ -28,6 +28,10 @@ module AdvancedHelper
       op == "AND"
     end
   end
+
+  def advanced_search_config
+    blacklight_config.fetch(:advanced_search, {})
+  end
 end
 
 module BlacklightAdvancedSearch
@@ -37,11 +41,11 @@ module BlacklightAdvancedSearch
     def keyword_op
       # NOTs get added to the query. Only AND/OR are operations
       @keyword_op = []
-      unless @params[:q1].blank? || @params[:q2].blank? || @params[:op2] == "NOT"
-        @keyword_op << @params[:op2] if @params[:f1] != @params[:f2]
+      unless @params[:q_1].blank? || @params[:q_2].blank? || @params[:op_1] == "NOT"
+        @keyword_op << @params[:op_1] if @params[:f_1] != @params[:f_2]
       end
-      unless @params[:q3].blank? || @params[:op3] == "NOT" || (@params[:q1].blank? && @params[:q2].blank?)
-        @keyword_op << @params[:op3] unless [@params[:f1], @params[:f2]].include?(@params[:f3]) && ((@params[:f1] == @params[:f3] && !@params[:q1].blank?) || (@params[:f2] == @params[:f3] && !@params[:q2].blank?))
+      unless @params[:q_3].blank? || @params[:op_2] == "NOT" || (@params[:q_1].blank? && @params[:q_2].blank?)
+        @keyword_op << @params[:op_2] unless [@params[:f_1], @params[:f_2]].include?(@params[:f_3]) && ((@params[:f_1] == @params[:f_3] && !@params[:q_1].blank?) || (@params[:f_2] == @params[:f_3] && !@params[:q_2].blank?))
       end
       @keyword_op
     end
@@ -52,30 +56,30 @@ module BlacklightAdvancedSearch
 
         return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
-        q1 = @params[:q1]
-        q2 = @params[:q2]
-        q3 = @params[:q3]
+        q1 = @params[:q_1]
+        q2 = @params[:q_2]
+        q3 = @params[:q_3]
 
         been_combined = false
-        @keyword_queries[@params[:f1]] = q1 unless @params[:q1].blank?
-        unless @params[:q2].blank?
-          if @keyword_queries.key?(@params[:f2])
-            @keyword_queries[@params[:f2]] = "(#{@keyword_queries[@params[:f2]]}) " + @params[:op2] + " (#{q2})"
+        @keyword_queries[@params[:f_1]] = q1 unless @params[:q_1].blank?
+        unless @params[:q_2].blank?
+          if @keyword_queries.key?(@params[:f_2])
+            @keyword_queries[@params[:f_2]] = "(#{@keyword_queries[@params[:f_2]]}) " + @params[:op_1] + " (#{q2})"
             been_combined = true
-          elsif @params[:op2] == "NOT"
-            @keyword_queries[@params[:f2]] = "NOT " + q2
+          elsif @params[:op_1] == "NOT"
+            @keyword_queries[@params[:f_2]] = "NOT " + q2
           else
-            @keyword_queries[@params[:f2]] = q2
+            @keyword_queries[@params[:f_2]] = q2
           end
         end
-        unless @params[:q3].blank?
-          if @keyword_queries.key?(@params[:f3])
-            @keyword_queries[@params[:f3]] = "(#{@keyword_queries[@params[:f3]]})" unless been_combined
-            @keyword_queries[@params[:f3]] = "#{@keyword_queries[@params[:f3]]} " + @params[:op3] + " (#{q3})"
-          elsif @params[:op3] == "NOT"
-            @keyword_queries[@params[:f3]] = "NOT " + q3
+        unless @params[:q_3].blank?
+          if @keyword_queries.key?(@params[:f_3])
+            @keyword_queries[@params[:f_3]] = "(#{@keyword_queries[@params[:f_3]]})" unless been_combined
+            @keyword_queries[@params[:f_3]] = "#{@keyword_queries[@params[:f_3]]} " + @params[:op_2] + " (#{q3})"
+          elsif @params[:op_2] == "NOT"
+            @keyword_queries[@params[:f_3]] = "NOT " + q3
           else
-            @keyword_queries[@params[:f3]] = q3
+            @keyword_queries[@params[:f_3]] = q3
           end
         end
       end
@@ -133,9 +137,9 @@ module BlacklightAdvancedSearch
         .select { |q, v| ! my_params[q].blank? }
         .map { |q, v|
 
-        position = q.to_s.scan(/\d+$/)[0]
-        f = "f#{position}".to_sym
-        op = "op#{position}".to_sym
+        position = q.to_s.scan(/_\d+$/)[0]
+        f = "f_#{position}".to_sym
+        op = "op_#{position}".to_sym
         field = search_field_def_for_key(my_params[f]).to_h
         label = field[:label].to_s
         query = my_params[op].to_s + " " + my_params[q]

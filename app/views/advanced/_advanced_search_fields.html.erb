@@ -1,40 +1,26 @@
 <div class="advanced-search-fields container">
+  <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
   <div class="row">
-    <div class="form-group col-sm-2">
-      <%= select_tag('f1', options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"advanced-search-select form-control") %>
+    <div class="col-sm-2">
+    <%= select_tag("f_#{count}", options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"form-control") %>
     </div>
-    <div class="col-sm-4">
-      <%= text_field_tag "q1", label_tag_default_for(:q1), :class => 'form-control advanced_search_input', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+
+    <div class="col-sm-2">
+      <%= select_tag("op_row[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, "contains"), :class => "form-control" ) %>
+    </div>
+
+    <div class="col-sm-3">
+    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
   <div class="row booleans">
+  <% if count != advanced_search_config[:fields_row_count] %>
     <div class="col-sm-5 col-sm-offset-2">
-      <%= radio_button_tag("op2", "AND", booleans(:op2, "AND")) %><label> AND</label>
-      <%= radio_button_tag("op2", "OR", booleans(:op2, "OR")) %><label> OR</label>
-      <%= radio_button_tag("op2", "NOT", booleans(:op2, "NOT")) %><label> NOT</label>
+    <%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND")) %><label> AND</label>
+    <%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %><label> OR</label>
+    <%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %><label> NOT</label>
     </div>
+  <% end %>
   </div>
-  <div class="row">
-    <div class="form-group col-sm-2">
-      <%= select_tag('f2', options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"advanced-search-select form-control") %>
-    </div>
-    <div class="col-sm-4">
-      <%= text_field_tag "q2", label_tag_default_for(:q2), :class => 'form-control advanced_search_input', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
-    </div>
-  </div>
-  <div class="row booleans">
-    <div class="col-sm-5 col-sm-offset-2">
-      <%= radio_button_tag("op3", "AND", booleans(:op3, "AND")) %><label> AND</label>
-      <%= radio_button_tag("op3", "OR", booleans(:op3, "OR")) %><label> OR</label>
-      <%= radio_button_tag("op3", "NOT", booleans(:op3, "NOT")) %><label> NOT</label>
-    </div>
-  </div>
-  <div class="row">
-    <div class="form-group col-sm-2">
-      <%= select_tag('f3', options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"advanced-search-select form-control") %>
-    </div>
-    <div class="col-sm-4">
-      <%= text_field_tag "q3", label_tag_default_for(:q3), :class => 'form-control advanced_search_input', autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
-    </div>
-  </div>
+  <% end %>
 </div>

@@ -51,10 +51,10 @@ to_field "title_uniform_vern_display", extract_marc("130adfklmnoprs:240adfklmnop
 to_field "title_addl_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: false)
 to_field "title_addl_vern_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: :only)
 
-to_field "title_t", extract_marc("245a")
-to_field "subtitle_t", extract_marc("245b")
-to_field "title_statement_t", extract_marc("245abfgknps")
-to_field "title_uniform_t", extract_marc("130adfklmnoprs:240adfklmnoprs:730abcdefgklmnopqrst")
+to_field "title_t", extract_marc_with_flank("245a")
+to_field "subtitle_t", extract_marc_with_flank("245b")
+to_field "title_statement_t", extract_marc_with_flank("245abfgknps")
+to_field "title_uniform_t", extract_marc_with_flank("130adfklmnoprs:240adfklmnoprs:730abcdefgklmnopqrst")
 
 ATOZ = ("a".."z").to_a.join("")
 ATOU = ("a".."u").to_a.join("")
@@ -68,7 +68,7 @@ to_field "title_addl_t",
     247abcdefgnp
     740anp
                }.join(":"))
-to_field "title_added_entry_t", extract_marc(%W{
+to_field "title_added_entry_t", extract_marc_with_flank(%W{
   700gklmnoprst
   710fgklmnopqrst
   711fgklnpst
@@ -77,14 +77,14 @@ to_field "title_added_entry_t", extract_marc(%W{
 to_field "title_sort", marc_sortable_title
 
 # Creator/contributor fields
-to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
+to_field "creator_t", extract_marc_with_flank("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
 to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj")
 to_field "creator_display", extract_creator
 to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "creator_t", extract_marc("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
+to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
 to_field "author_sort", marc_sortable_author
 
 # Publication fields
@@ -95,8 +95,8 @@ to_field "edition_display", extract_marc("250a:254a", trim_punctuation: true, al
 to_field "pub_date", extract_pub_date
 to_field "date_copyright_display", extract_copyright
 
-to_field "pub_location_t", extract_marc("260a:264a", trim_punctuation: true)
-to_field "publisher_t", extract_marc("260b:264b", trim_punctuation: true)
+to_field "pub_location_t", extract_marc_with_flank("260a:264a", trim_punctuation: true)
+to_field "publisher_t", extract_marc_with_flank("260b:264b", trim_punctuation: true)
 to_field "pub_date_sort", marc_publication_date
 
 # Physical characteristics fields -3xx
@@ -114,7 +114,7 @@ to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjk
 to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate_script: :only)
 # to_field "date_series", extract_marc("362a")
 
-to_field "title_series_t", extract_marc("830av:490av:440anpv")
+to_field "title_series_t", extract_marc_with_flank("830av:490av:440anpv")
 
 # Note fields
 to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:525a:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
@@ -144,7 +144,7 @@ to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y",
 to_field "subject_region_facet", marc_geo_facet
 to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
 
-to_field "subject_t", extract_marc(%W(
+to_field "subject_t", extract_marc_with_flank(%W(
   600#{ATOU}
   610#{ATOU}
   611#{ATOU}
@@ -153,7 +153,7 @@ to_field "subject_t", extract_marc(%W(
   650abcde
   653a:654abcde
                                    ).join(":"))
-to_field "subject_addl_t", extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvwxyz")
+to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvwxyz")
 
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")

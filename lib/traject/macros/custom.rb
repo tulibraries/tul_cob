@@ -282,6 +282,25 @@ module Traject
           end
         end
       end
+
+      def extract_marc_with_flank(*args)
+        marc_proc = extract_marc(*args)
+
+        lambda do |record, accumulator, context|
+          accumulator << marc_proc.call(record, accumulator, context)
+          accumulator.map! { |v| flank v }
+        end
+      end
+
+      def flank(string = "", starts = nil, ends = nil)
+        starts ||= "matchbeginswith"
+        ends ||= "matchendswith"
+        if !string.to_s.empty? && !string.match(/^#{starts}/)
+          "#{starts} #{string} #{ends}"
+        else
+          string
+        end
+      end
     end
   end
 end
