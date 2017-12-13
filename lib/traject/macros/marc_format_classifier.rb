@@ -80,34 +80,48 @@ module Traject
       # Gets actual labels from marc_genre_leader and marc_genre_007 translation maps,
       # so you can customize labels if you want.
       def genre
-        marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader")
-        marc_genre_007      = Traject::TranslationMap.new("marc_genre_007")
-        marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21")
-        marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26")
-        marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33")
-        resource_type_codes = Traject::TranslationMap.new("resource_type_codes")
+        marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader").to_hash
+        marc_genre_007      = Traject::TranslationMap.new("marc_genre_007").to_hash
+        marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21").to_hash
+        marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26").to_hash
+        marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash
+        resource_type_codes = Traject::TranslationMap.new("resource_type_codes").to_hash
       
-        leader06 = @record.leader.slice(6)
-        leader06_2 = @record.leader.slice(6, 2)
-        leader07 = @record.leader.slice(7)
-        controlfield_006 = @record.find_all { |f| f.tag == "006" }
-        controlfield_007 = @record.find_all { |f| f.tag == "007" }
-        controlfield_008 = @record.find_all { |f| f.tag == "008" }
+        leader = @record.leader
+        cf006 = @record.find_all { |f| f.tag == "006" }.first
+        cf008 = @record.find_all { |f| f.tag == "008" }.first
         
-        results = marc_genre_leader[ leader06_2 ] ||
-          marc_genre_leader[ leader06 ] ||
-          controlfield_value(controlfield_007, 0, marc_genre_007)
-          
-        if leader06 == 'a'
-          if "b,i,s".split(',').include?(leader07)
-            results = controlfield_value(controlfield_008, 21, marc_genre_008_21) ||
-            controlfield_value(controlfield_006, 4, marc_genre_008_21) ||
-            controlfield_value(controlfield_007, 0, marc_genre_007)
-          end
-        elsif leader06 == 'm'
-          results = controlfield_value(controlfield_008, 26, marc_genre_008_26) ||
-            controlfield_value(controlfield_006, 4, marc_genre_008_26)
+        results = marc_genre_leader.fetch(@record.leader[6..7]) { # Leaders 6 and 7
+          marc_genre_leader.fetch(@record.leader[6]) { # Leader 6
+            'unknown'
+          }
+        }
+      
+        # Additional qualifiers
+        
+        case results
+        when "serial" # Serial component, Integrating resource, Serial
+          additional_qualifier = marc_genre_008_21.fetch(cf008.value[21]) { # Controlfield 008[21]
+            cf006.nil? ? "serial" : marc_genre_008_21.fetch(cf006.value[4]) {  # Controlfield 006[4]
+                "serial"
+            }
+          }
+        when "video" # Projected medium
+          additional_qualifier = marc_genre_008_33.fetch(cf008.value[33]) { # Controlfield 008[33]
+            cf006.nil? ? "visual" : marc_genre_008_33.fetch(cf006.value[16]) { # Controlfield 006[16]
+              "visual"
+            }
+          }
+        when "computer_file"
+          additional_qualifier = marc_genre_008_26.fetch(cf008.value[26]) { # Controlfield 008[26]
+            cf006.nil? ? "computer_file" : marc_genre_008_26.fetch(cf006.value[9]) { # Controlfield 006[9]
+                "computer_file"
+            }
+          }
+        else # Everything else
+          additional_qualifier = nil
         end
+        results = additional_qualifier if additional_qualifier
         
         [results].flatten.map { |r| resource_type_codes[r] }
       end

@@ -7,6 +7,7 @@
 # example: bin/find_xml.rb computer_file ../sample_data/almadata.xml
 #          bin/find_xml.rb computer_file ../sample_data/alma*.xml (for multiple files)
 
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require 'nokogiri'
 require "traject"
 require 'traject/macros/marc_format_classifier'
@@ -27,69 +28,59 @@ def extract_by_type(file_path, data_type)
 end
 
 def find_by_type(doc, search_type)
-  qualifier_bis = ['b', 'i', 's']
-  qualifier_fmv = ['f', 'm', 'v']
-  leader6a_types = {
-    'm': 'book',
-    'd': 'database',
-    'w': 'website'
-  }
-  leader6g_types = {
-    'f': 'video',
-    'm': 'video',
-    'v': 'video'
-  }
-  leader6m_types = {
-    'j': 'database',
-    'h': 'audio',
-    'a': 'data',
-    'g': 'computer_file'
-  }
-  leader6_types = {
-    'c': "score",
-    'd': "score",
-    'e': "map",
-    'f': "map",
-    'g': "video",
-    'i': "audio",
-    'j': "audio",
-    'k': "visual",
-    'm': "computer_file",
-    'o': "kit",
-    'p': "archival",
-    'r': "object",
-    't': "archival"
-  } 
+  
+  marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader").to_hash
+  marc_genre_007      = Traject::TranslationMap.new("marc_genre_007").to_hash
+  marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21").to_hash
+  marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26").to_hash
+  marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash
+  resource_type_codes = Traject::TranslationMap.new("resource_type_codes").to_hash
   
   doc.remove_namespaces!
   doc_ids = []
-  doc.xpath('//record').each do |record|
+  doc.xpath('//record//metadata//record').each do |record|
+  #doc.xpath('//record').each do |record|
     leader = record.xpath('leader').first.text
     cf008 = record.xpath("controlfield[@tag='008']").text
     cf006 = record.xpath("controlfield[@tag='006']").text
     id = record.xpath("controlfield[@tag='001']").text
     
-    newxml = Nokogiri::XML(record.to_xml)  
-  
-    record_type = leader6_types.fetch(leader[6].to_sym) { |l6|
-      case l6
-      when :a
-        if (qualifier_bis.include?(leader[7]))
-          qualifier = cf008[21] ? cf008[21].to_sym : cf006[4].to_sym
-          leader6a_types.fetch(qualifier) { |l6a| "serial" }
-        else
-          "book"
-        end
-      when :g
-        leader6g_types[cf008[33].to_sym] if cf008[33]
-      when :m
-        leader6m_types[cf008[26].to_sym] if cf008[26]
-      else
+    newxml = Nokogiri::XML(record.to_xml) 
+    
+    results = marc_genre_leader.fetch(leader[6..7]) { # Leaders 6 and 7
+      marc_genre_leader.fetch(leader[6]) { # Leader 6
         'unknown'
-      end
+      }
     }
+  
+    # Additional qualifiers
+    
+    case results
+    when "serial" # Serial component, Integrating resource, Serial
+      additional_qualifier = marc_genre_008_21.fetch(cf008[21]) { # Controlfield 008[21]
+        cf006.nil? ? "serial" : marc_genre_008_21.fetch(cf006[4]) {  # Controlfield 006[4]
+            "serial"
+        }
+      }
+    when "video" # Projected medium
+      additional_qualifier = marc_genre_008_33.fetch(cf008[33]) { # Controlfield 008[33]
+        cf006.nil? ? "visual" : marc_genre_008_33.fetch(cf006[16]) { # Controlfield 006[16]
+          "visual"
+        }
+      }
+    when "computer_file"
+      additional_qualifier = marc_genre_008_26.fetch(cf008[26]) { # Controlfield 008[26]
+        cf006.nil? ? "computer_file" : marc_genre_008_26.fetch(cf006[9]) { # Controlfield 006[9]
+            "computer_file"
+        }
+      }
+    else # Everything else
+      additional_qualifier = nil
+    end
+    results = additional_qualifier if additional_qualifier
+    
     #puts "http://libqa.library.temple.edu/catalog/catalog/#{id} L6:#{leader[6]} L7:#{leader[7]} 008[21]:#{cf008[21]} 006[4]:#{cf006[4]} 008[33]:#{cf008[33]} 006[16]:#{cf006[16]} 008[26]:#{cf008[26]} 006[9]:#{cf006[9]} type:#{record_type}"
-    doc_ids << id if (record_type == search_type)
+    doc_ids << id if (results == search_type)
   end
   doc_ids
 end

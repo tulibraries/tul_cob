@@ -98,7 +98,7 @@ RSpec.describe MarcFormatClassifier, type: :lib do
       end
     end
     context "Serial" do
-      xit "says serial" do
+      it "says serial" do
         expect(classifier_for("serial.xml").genre).to include("Journal/Periodical")
       end
     end
