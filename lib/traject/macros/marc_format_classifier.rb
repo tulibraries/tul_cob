@@ -79,6 +79,8 @@ module Traject
       #
       # Gets actual labels from marc_genre_leader and marc_genre_007 translation maps,
       # so you can customize labels if you want.
+      #
+      # Reference: https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Mappings+Displays+Facets+Search#DataMappings(Displays,Facets,Search)-ResourceTypeMappings
       def genre
         marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader").to_hash
         marc_genre_007      = Traject::TranslationMap.new("marc_genre_007").to_hash
@@ -87,9 +89,16 @@ module Traject
         marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash
         resource_type_codes = Traject::TranslationMap.new("resource_type_codes").to_hash
       
+        # Leader Field
+
         leader = @record.leader
+
+        # Control Fields
+
         cf006 = @record.find_all { |f| f.tag == "006" }.first
         cf008 = @record.find_all { |f| f.tag == "008" }.first
+
+        # Without qualifiers
         
         results = marc_genre_leader.fetch(@record.leader[6..7]) { # Leaders 6 and 7
           marc_genre_leader.fetch(@record.leader[6]) { # Leader 6
