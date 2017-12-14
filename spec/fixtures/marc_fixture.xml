@@ -649,7 +649,7 @@
     <datafield ind1=' ' ind2=' ' tag='260'>
       <subfield code='a'>New York, N.Y. :</subfield>
       <subfield code='b'>Praeger,</subfield>
-      <subfield code='c'>1983.</subfield>
+      <subfield code='c'>©1983.</subfield>
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='300'>
       <subfield code='a'>xii, 355 p. :</subfield>
@@ -770,7 +770,7 @@
       <subfield code='b'>D. Reidel ;</subfield>
       <subfield code='a'>Hingham, MA :</subfield>
       <subfield code='b'>Sold and distributed in the U.S.A. by Kluwer Boston,</subfield>
-      <subfield code='c'>1983.</subfield>
+      <subfield code='c'>p1983.</subfield>
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='300'>
       <subfield code='a'>xii, 237 p. :</subfield>
@@ -1554,6 +1554,9 @@
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='500'>
       <subfield code='a'>Translation of Fuchs über Ernst Fuchs.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='525'>
+      <subfield code='a'>Subfield a.</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='600'>
       <subfield code='a'>Fuchs, Ernst,</subfield>
@@ -20128,6 +20131,29 @@
       <subfield code='a'>Andaloro, Maria,</subfield>
       <subfield code='e'>editor.</subfield>
     </datafield>
+    <datafield ind1='1' ind2=' ' tag='800'>
+      <subfield code='a'>United States.</subfield>
+      <subfield code='b'>Congress.</subfield>
+      <subfield code='c'>Senate.</subfield>
+      <subfield code='d'>Subfield d.</subfield>
+      <subfield code='e'>Subfield e.</subfield>
+      <subfield code='f'>Subfield f.</subfield>
+      <subfield code='g'>Subfield g.</subfield>
+      <subfield code='h'>Subfield h.</subfield>
+      <subfield code='j'>Subfield j.</subfield>
+      <subfield code='k'>Subfield k.</subfield>
+      <subfield code='l'>Subfield l.</subfield>
+      <subfield code='m'>Subfield m.</subfield>
+      <subfield code='n'>Subfield n.</subfield>
+      <subfield code='o'>Subfield o.</subfield>
+      <subfield code='p'>Subfield p.</subfield>
+      <subfield code='q'>Subfield q.</subfield>
+      <subfield code='r'>Subfield r.</subfield>
+      <subfield code='s'>Subfield s.</subfield>
+      <subfield code='t'>Executive report ;</subfield>
+      <subfield code='u'>Subfield u.</subfield>
+      <subfield code='v'>109-5.</subfield>
+    </datafield>
     <datafield ind1='4' ind2='2' tag='856'>
       <subfield code='z'>Access table of contents</subfield>
       <subfield code='u'>http://www.liberdomus.it/liberdomus/nrdcc/abstracts/D0121052122.pdf</subfield>
@@ -20230,10 +20256,6 @@
       <subfield code='a'>3 p. ;</subfield>
       <subfield code='c'>24 cm.</subfield>
     </datafield>
-    <datafield ind1='1' ind2=' ' tag='490'>
-      <subfield code='a'>Exec. rept. / 109th Congress, 1st session, Senate ;</subfield>
-      <subfield code='v'>109-5</subfield>
-    </datafield>
     <datafield ind1=' ' ind2=' ' tag='500'>
       <subfield code='a'>Caption title.</subfield>
     </datafield>
@@ -20285,8 +20307,21 @@
     <datafield ind1='1' ind2=' ' tag='810'>
       <subfield code='a'>United States.</subfield>
       <subfield code='b'>Congress.</subfield>
-      <subfield code='b'>Senate.</subfield>
+      <subfield code='c'>Senate.</subfield>
+      <subfield code='d'>Subfield d.</subfield>
+      <subfield code='e'>Subfield e.</subfield>
+      <subfield code='g'>Subfield g.</subfield>
+      <subfield code='h'>Subfield h.</subfield>
+      <subfield code='k'>Subfield k.</subfield>
+      <subfield code='l'>Subfield l.</subfield>
+      <subfield code='m'>Subfield m.</subfield>
+      <subfield code='n'>Subfield n.</subfield>
+      <subfield code='o'>Subfield o.</subfield>
+      <subfield code='p'>Subfield p.</subfield>
+      <subfield code='r'>Subfield r.</subfield>
+      <subfield code='s'>Subfield s.</subfield>
       <subfield code='t'>Executive report ;</subfield>
+      <subfield code='u'>Subfield u.</subfield>
       <subfield code='v'>109-5.</subfield>
     </datafield>
     <datafield ind1='4' ind2='1' tag='856'>
@@ -20429,6 +20464,25 @@
     <datafield ind1=' ' ind2='0' tag='650'>
       <subfield code='a'>Large astronomical telescopes</subfield>
       <subfield code='z'>United States.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='811'>
+      <subfield code='a'>United States.</subfield>
+      <subfield code='c'>Senate.</subfield>
+      <subfield code='d'>Subfield d.</subfield>
+      <subfield code='e'>Subfield e.</subfield>
+      <subfield code='f'>Subfield f.</subfield>
+      <subfield code='g'>Subfield g.</subfield>
+      <subfield code='h'>Subfield h.</subfield>
+      <subfield code='j'>Subfield j.</subfield>
+      <subfield code='k'>Subfield k.</subfield>
+      <subfield code='l'>Subfield l.</subfield>
+      <subfield code='n'>Subfield n.</subfield>
+      <subfield code='p'>Subfield p.</subfield>
+      <subfield code='q'>Subfield q.</subfield>
+      <subfield code='s'>Subfield s.</subfield>
+      <subfield code='t'>Executive report ;</subfield>
+      <subfield code='u'>Subfield u.</subfield>
+      <subfield code='v'>109-5.</subfield>
     </datafield>
     <datafield ind1='4' ind2='1' tag='856'>
       <subfield code='u'>http://purl.access.gpo.gov/GPO/LPS65514</subfield>

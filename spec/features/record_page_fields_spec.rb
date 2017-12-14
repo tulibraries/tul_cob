@@ -217,6 +217,36 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "MARC Copyright notice date" do
+    let (:item_260_c) { fixtures.fetch("imprint_260_c") }
+    scenario "User visits a document with date_copyright including 'c'" do
+      visit "catalog/#{item_260_c['doc_id']}"
+      within "dd.blacklight-date_copyright_display" do
+        expect(page).to have_text(item_260_c["date_copyright"])
+      end
+    end
+
+    let (:item_260_p) { fixtures.fetch("imprint_260_p") }
+    scenario "User visits a document with date_copyright including 'p'" do
+      visit "catalog/#{item_260_p['doc_id']}"
+      within "dd.blacklight-date_copyright_display" do
+        expect(page).to have_text(item_260_p["date_copyright"])
+      end
+    end
+
+    let (:item_260_copyright) { fixtures.fetch("imprint_260_copyright") }
+    scenario "User visits a document with date_copyright including copyright symbol" do
+      visit "catalog/#{item_260_copyright['doc_id']}"
+      within "dd.blacklight-date_copyright_display" do
+        expect(page).to have_text(item_260_copyright["date_copyright"])
+      end
+    end
+
+    let (:item_260_year_only) { fixtures.fetch("imprint_260_year_only") }
+    scenario "User visits a document including year only in subfield 'c'" do
+      visit "catalog/#{item_260_year_only['doc_id']}"
+        expect(page).to_not have_css("dd.blacklight-date_copyright_display")
+    end
+
     let (:item_264) { fixtures.fetch("imprint_264") }
     scenario "User visits a document with date_copyright" do
       visit "catalog/#{item_264['doc_id']}"
@@ -302,6 +332,30 @@ RSpec.feature "RecordPageFields", type: :feature do
       visit "catalog/#{item_440['doc_id']}"
       within "dd.blacklight-title_series_display" do
         expect(page).to have_text(item_440["title_series"])
+      end
+    end
+
+    let (:item_800) { fixtures.fetch("title_series_800") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_800['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_800["title_series"])
+      end
+    end
+
+    let (:item_810) { fixtures.fetch("title_series_810") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_810['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_810["title_series"])
+      end
+    end
+
+    let (:item_811) { fixtures.fetch("title_series_811") }
+    scenario "User visits a document with series title" do
+      visit "catalog/#{item_811['doc_id']}"
+      within "dd.blacklight-title_series_display" do
+        expect(page).to have_text(item_811["title_series"])
       end
     end
 
@@ -464,6 +518,14 @@ RSpec.feature "RecordPageFields", type: :feature do
       visit "catalog/#{item_521['doc_id']}"
       within "dd.blacklight-note_display" do
         expect(page).to have_text(item_521["note"])
+      end
+    end
+
+    let (:item_525) { fixtures.fetch("note_525") }
+    scenario "User visits a document with note" do
+      visit "catalog/#{item_525['doc_id']}"
+      within "dd.blacklight-note_display" do
+        expect(page).to have_text(item_525["note"])
       end
     end
 

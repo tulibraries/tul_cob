@@ -192,8 +192,13 @@ module Traject
 
       def extract_copyright
         lambda do |rec, acc|
+          rec.fields(["260"]).each do |field|
+            unless field["c"].nil?
+              acc << four_digit_year(field["c"]) if field["c"].include?("c") || field["c"].include?("p") || field["c"].include?("\u00A9")
+            end
+          end
           rec.fields(["264"]).each do |field|
-            acc << four_digit_year(field["c"])  if field.indicator2 == "4"
+            acc << four_digit_year(field["c"]) if field.indicator2 == "4"
           end
         end
       end
