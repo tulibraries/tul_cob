@@ -245,7 +245,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_index_field "imprint_display", label: "Published"
-    config.add_index_field "creator_display", label: "Author/creator"
+    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type"
 
 
@@ -260,8 +260,8 @@ class CatalogController < ApplicationController
     config.add_show_field "title_addl_vern_display", label: "Additional titles"
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator
-    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true
+    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "format", label: "Resource Type"
     config.add_show_field "imprint_display", label: "Published"
     config.add_show_field "edition_display", label: "Edition"

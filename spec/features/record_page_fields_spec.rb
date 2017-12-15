@@ -1162,22 +1162,6 @@ RSpec.feature "RecordPageFields", type: :feature do
   end
 
   feature "Multiple value fields display as a list" do
-    let (:item_100) { fixtures.fetch("creator_100") }
-    scenario "Has list of creators" do
-      visit "catalog/#{item_100['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li.list_items")
-      end
-    end
-
-    let (:item_100_v) { fixtures.fetch("creator_100_v") }
-    scenario "Has list of creators" do
-      visit "catalog/#{item_100_v['doc_id']}"
-      within "dd.blacklight-creator_display" do
-        expect(page).to have_css("li.list_items")
-      end
-    end
-
     let (:note_500) { fixtures.fetch("note_500") }
     scenario "Has list of notes" do
       visit "catalog/#{note_500['doc_id']}"

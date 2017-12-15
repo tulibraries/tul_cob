@@ -29,13 +29,25 @@ module ApplicationHelper
 
   def browse_creator(args)
     creator = args[:document][args[:field]]
-    creator.each_with_index do |name, i|
-      content_tag :ul do
-        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
-        creator = newname.html_safe
+    creator.map do |name|
+      linked_subfield = name.split("|").first
+      newname = link_to(linked_subfield, root_url + "/?f[creator_facet][]=#{linked_subfield}").html_safe
+      plain_text_subfields = name.split("|").second
+      creator = newname
+      if plain_text_subfields.present?
+        creator = newname + " " + plain_text_subfields
       end
     end
-    list_with_links(args)
+    creator
+  end
+
+  def creator_index_separator(args)
+    creator = args[:document][args[:field]]
+    creator.map do |name|
+      plain_text_subfields = name.gsub("|", " ")
+      creator = plain_text_subfields
+    end
+    creator
   end
 
   def check_for_full_http_link(args)
