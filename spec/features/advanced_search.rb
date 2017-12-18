@@ -12,7 +12,10 @@ RSpec.feature "Advanced Search", type: :feature do
   feature "Advanced Search" do
     let (:facets) {
       [ "Library",
-        "Resource Type"
+        "Resource Type",
+        "Availability",
+        "Languages",
+        "Publication Year"
       ]
     }
     context "advanced search page displays facets" do

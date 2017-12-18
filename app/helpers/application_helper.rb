@@ -29,13 +29,25 @@ module ApplicationHelper
 
   def browse_creator(args)
     creator = args[:document][args[:field]]
-    creator.each_with_index do |name, i|
-      content_tag :ul do
-        newname = link_to(name, root_url + "/?f[creator_facet][]=#{name}", class: "list_items")
-        creator = newname.html_safe
+    creator.map do |name|
+      linked_subfield = name.split("|").first
+      newname = link_to(linked_subfield, root_url + "/?f[creator_facet][]=#{linked_subfield}").html_safe
+      plain_text_subfields = name.split("|").second
+      creator = newname
+      if plain_text_subfields.present?
+        creator = newname + " " + plain_text_subfields
       end
     end
-    list_with_links(args)
+    creator
+  end
+
+  def creator_index_separator(args)
+    creator = args[:document][args[:field]]
+    creator.map do |name|
+      plain_text_subfields = name.gsub("|", " ")
+      creator = plain_text_subfields
+    end
+    creator
   end
 
   def check_for_full_http_link(args)
@@ -129,9 +141,9 @@ module ApplicationHelper
   end
 
   def aeon_request_button(document)
-    if document["location_display"] == ["rarestacks"] && document["library_facet"].include?("Special Collections Research Center")
-      button_to("Request Onsite Access", aeon_request_url(document), class:"aeon-request btn btn-warning") +
-      content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
+    if document.fetch("location_display", []).include?("rarestacks") && document["library_facet"].include?("Special Collections Research Center")
+      button_to("Request to View in Reading Room", aeon_request_url(document), class:"aeon-request btn btn-primary") +
+      content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
     end
   end
 

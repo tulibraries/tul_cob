@@ -77,11 +77,12 @@ to_field "title_added_entry_t", extract_marc(%W{
 to_field "title_sort", marc_sortable_title
 
 # Creator/contributor fields
-to_field "creator_facet", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
-to_field "creator_display", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, alternate_script: false)
-to_field "contributor_display", extract_marc("700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true, alternate_script: false)
-to_field "creator_vern_display", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, alternate_script: :only)
-to_field "contributor_vern_display", extract_marc("700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true, alternate_script: :only)
+to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
+to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj")
+to_field "creator_display", extract_creator
+to_field "contributor_display", extract_contributor
+to_field "creator_vern_display", extract_creator_vern
+to_field "contributor_vern_display", extract_contributor_vern
 
 to_field "creator_t", extract_marc("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
 to_field "author_sort", marc_sortable_author
@@ -109,14 +110,14 @@ to_field "performance_display", extract_marc("382abdenprst")
 to_field "music_no_display", extract_marc("383abcde")
 
 # Series fields
-to_field "title_series_display", extract_marc("830av:490av:440anpv", alternate_script: false)
+to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
 to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate_script: :only)
 # to_field "date_series", extract_marc("362a")
 
 to_field "title_series_t", extract_marc("830av:490av:440anpv")
 
 # Note fields
-to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
+to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:525a:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
 to_field "note_with_display", extract_marc("501a")
 to_field "note_diss_display", extract_marc("502abcdgo")
 to_field "note_biblio_display", extract_marc("504a")
@@ -138,10 +139,10 @@ to_field "note_local_display", extract_marc("590a")
 # Subject fields
 to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
 to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
-to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:655ab")
-to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y", trim_punctuation: true)
-to_field "subject_region_facet", extract_marc("651a:650z:654z:655z", trim_punctuation: true)
-to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av", trim_punctuation: true)
+to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
+to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
+to_field "subject_region_facet", marc_geo_facet
+to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
 
 to_field "subject_t", extract_marc(%W(
   600#{ATOU}

@@ -39,7 +39,7 @@ title_addl_740:
   title_addl: "Dictionary of American history: 740. Subfield N. Subfield P."
 creator_100:
   doc_id: "991012132499760617"
-  creator: "Giovanni, Nikki. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
+  creator: "Giovanni, Nikki. Subfield B. Subfield C. Subfield D. Subfield Q. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield T. Subfield U."
 creator_100_v:
   doc_id: "991012172649703811"
   creator_vern: "מעקלער, ד.ל."
@@ -48,7 +48,7 @@ creator_110:
   creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
 creator_111:
   doc_id: "991012132499760619"
-  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
+  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield J. Subfield E.  Subfield L. Subfield N. Subfield O. Subfield P. Subfield T."
 contributor_700:
   doc_id: "991012132499760620"
   creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
@@ -64,6 +64,18 @@ contributor_700_v:
 imprint_260:
   doc_id: "991012132499760623"
   imprint: "Dictionary of American history: 260. Subfield B. Subfield C. Subfield E. Subfield F. Subfield G. Subfield 3."
+imprint_260_c:
+  doc_id: "991012181699703811"
+  date_copyright: "2005"
+imprint_260_p:
+  doc_id: "991012032049703811"
+  date_copyright: "1983"
+imprint_260_copyright:
+  doc_id: "991012032209703811"
+  date_copyright: "1983"
+imprint_260_year_only:
+  doc_id: "991012036199703811"
+  date_copyright: "1979"
 imprint_264:
   doc_id: "991012163279703811"
   imprint: "Santa Barbara, California : Santa Barbara Museum of Art, 2016."
@@ -106,6 +118,17 @@ title_series_490:
 title_series_440:
   doc_id: "991012132499760631"
   title_series: "Dictionary of American history: 440. Subfield N. Subfield P. Subfield V."
+title_series_800:
+  doc_id: "991012171319703811"
+  title_series: "United States. Congress. Senate. Subfield d. Subfield e. Subfield f. Subfield g. Subfield h. Subfield j. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield q. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
+title_series_810:
+  doc_id: "991012171179703811"
+  title_series: "United States. Congress. Senate. Subfield d. Subfield e.  Subfield g. Subfield h. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
+
+title_series_811:
+  doc_id: "991012177359703811"
+  title_series: "United States. Senate. Subfield d. Subfield e. Subfield f.  Subfield g. Subfield h. Subfield j. Subfield k. Subfield l.  Subfield n. Subfield p. Subfield q. Subfield s. Executive report ; Subfield u. 109-5."
+
 duration_306:
   doc_id: "991012132499760632"
   duration: "Dictionary of American history: 306."
@@ -148,6 +171,9 @@ note_518:
 note_521:
   doc_id: "991012132499760645"
   note: "Dictionary of American history: 521. Subfield B."
+note_525:
+  doc_id: "991012036199703811"
+  note: "Translation of Fuchs über Ernst Fuchs. Subfield a."
 note_530:
   doc_id: "991012132499760646"
   note: "Dictionary of American history: 530. Subfield B. Subfield C. Subfield D."

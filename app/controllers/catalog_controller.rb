@@ -20,7 +20,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] ||= "dismax"
     config.advanced_search[:form_solr_parameters] ||= {}
-    config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet)
+    config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -248,7 +248,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_index_field "imprint_display", label: "Published"
-    config.add_index_field "creator_display", label: "Author/creator"
+    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type"
 
 
@@ -263,8 +263,8 @@ class CatalogController < ApplicationController
     config.add_show_field "title_addl_vern_display", label: "Additional titles"
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator
-    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true
+    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "format", label: "Resource Type"
     config.add_show_field "imprint_display", label: "Published"
     config.add_show_field "edition_display", label: "Edition"
