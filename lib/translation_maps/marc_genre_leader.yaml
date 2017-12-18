@@ -3,28 +3,28 @@
 
 # first some mappings from leader bytes 6 and 7 combined:
 
-'aa': Book
-'ac': Book
-'ad': Book
-'am': Book
-'ab': Journal
-'ai': Journal
-'as': Journal
-'ta': Book
-'tm': Book
+'aa': book
+'ac': book
+'ad': book
+'am': book
+'ab': serial
+'ai': serial
+'as': serial
+'ta': archival
+'tm': archival
 
 # Now some from just byte 6
-'c': Score
-'d': Score
-'e': Map
-'f': Map
-'g': Video
-'i': Audio Recording
-'j': Audio Recording
-'k': Visual Material
-'m': Data File
-'o': Visual Material
-'p': Archival Material
-'r': Visual Material
-'t': Book
-'s': Journal
+'a': serial
+'c': score
+'d': score
+'e': map
+'f': map
+'g': video
+'i': audio
+'j': audio
+'k': visual
+'m': computer_file
+'o': kit
+'p': archival
+'r': object
+'t': archival

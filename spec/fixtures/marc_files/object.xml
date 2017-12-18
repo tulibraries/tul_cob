@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>00381nrm a22001450  4500</leader>
+  <controlfield tag="008">000000         xx                  und d</controlfield>
+  <controlfield tag="001">991018745349703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b13814102-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATG04796297B</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">HG1615.M28</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2="0">
+    <subfield code="a">Mason, John M.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Financial management of commercial banks / c1979.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b13814102</subfield>
+    <subfield code="b">p    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">080125</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">-</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00407127</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">pstk </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="0" ind2=" ">
+    <subfield code="b">MAIN</subfield>
+    <subfield code="c">stacks</subfield>
+    <subfield code="h">HG1615.M28</subfield>
+    <subfield code="8">22238327810003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22238327810003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">stacks</subfield>
+    <subfield code="9">39074000286252</subfield>
+    <subfield code="e">stacks</subfield>
+    <subfield code="8">23238327790003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="q">2017-06-20 05:56:24</subfield>
+    <subfield code="i">HG1615.M28</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="f">MAIN</subfield>
+  </datafield>
+</record>

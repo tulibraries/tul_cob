@@ -1,0 +1,146 @@
+<record>
+  <leader>01305ccm a2200385Ia 4500</leader>
+  <controlfield tag="005">20090618103625.0</controlfield>
+  <controlfield tag="008">090403s2009    xxkopb   bhi   n    eng d</controlfield>
+  <controlfield tag="001">991034046449703811</controlfield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9783795763411 (pbk.)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">379576341X (pbk.)</subfield>
+  </datafield>
+  <datafield tag="028" ind1="2" ind2="0">
+    <subfield code="a">EE 6885</subfield>
+    <subfield code="b">Eulenburg</subfield>
+  </datafield>
+  <datafield tag="028" ind1="3" ind2="0">
+    <subfield code="a">8027</subfield>
+    <subfield code="b">Eulenburg</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b38709739-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)ocn492831095</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)317921236</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">OHX</subfield>
+    <subfield code="c">OHX</subfield>
+    <subfield code="d">FQG</subfield>
+    <subfield code="d">COO</subfield>
+    <subfield code="d">PPT</subfield>
+  </datafield>
+  <datafield tag="041" ind1="1" ind2=" ">
+    <subfield code="a">eng</subfield>
+    <subfield code="g">eng</subfield>
+    <subfield code="g">ger</subfield>
+    <subfield code="g">fre</subfield>
+    <subfield code="h">eng</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">M</subfield>
+    <subfield code="2">lcco</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn317921236</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">M1500.P98</subfield>
+    <subfield code="b">F3 2009</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Purcell, Henry,</subfield>
+    <subfield code="d">1659-1695.</subfield>
+  </datafield>
+  <datafield tag="240" ind1="1" ind2="0">
+    <subfield code="a">Fairy queen</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="4">
+    <subfield code="a">The Fairy-Queen :</subfield>
+    <subfield code="b">an opera /</subfield>
+    <subfield code="c">Henry Purcell ; edited my Michael Burden.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">New York ;</subfield>
+    <subfield code="a">London :</subfield>
+    <subfield code="b">Eulenburg ;</subfield>
+    <subfield code="a">[Milwaukee, Wis.] :</subfield>
+    <subfield code="b">Distributed by Hal Leonard,</subfield>
+    <subfield code="c">c2009.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 score (xxv, 357 p.) ;</subfield>
+    <subfield code="c">27 cm.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">For solo voices, choir and orchestra.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Pref. in English with German and French translations.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Extensive editorial and critical commentary in English (p. 293-354).</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Operas</subfield>
+    <subfield code="v">Scores.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Burden, Michael,</subfield>
+    <subfield code="d">1960-</subfield>
+    <subfield code="4">edt</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b38709739</subfield>
+    <subfield code="b">p    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">150611</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">0</subfield>
+    <subfield code="c">090618</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">c</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">4</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">06/18/09</subfield>
+    <subfield code="s">OCLC</subfield>
+    <subfield code="c">LM </subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">pstk </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="0" ind2=" ">
+    <subfield code="b">MAIN</subfield>
+    <subfield code="c">stacks</subfield>
+    <subfield code="h">M1500.P98</subfield>
+    <subfield code="i">F3 2009</subfield>
+    <subfield code="8">22241231840003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22241231840003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">stacks</subfield>
+    <subfield code="9">39074024850844</subfield>
+    <subfield code="e">stacks</subfield>
+    <subfield code="8">23241231830003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="q">2017-06-20 06:05:39</subfield>
+    <subfield code="i">M1500.P98 F3 2009</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="f">MAIN</subfield>
+  </datafield>
+</record>

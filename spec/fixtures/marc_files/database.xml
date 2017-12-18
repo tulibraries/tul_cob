@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>02371cai a2200481 i 4500</leader>
+  <controlfield tag="005">20170613131704.0</controlfield>
+  <controlfield tag="006">m     o  d f      </controlfield>
+  <controlfield tag="007">cr bn|||||||||</controlfield>
+  <controlfield tag="008">040325c19979999dcu x d o s  f0    2eng c</controlfield>
+  <controlfield tag="001">991000587469703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">   2017231994</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)ocm54810920</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">GPO</subfield>
+    <subfield code="b">eng</subfield>
+    <subfield code="e">rda</subfield>
+    <subfield code="e">pn</subfield>
+    <subfield code="c">GPO</subfield>
+    <subfield code="d">OCLCQ</subfield>
+    <subfield code="d">GPO</subfield>
+    <subfield code="d">GAO</subfield>
+    <subfield code="d">OCLCQ</subfield>
+    <subfield code="d">OCLCF</subfield>
+    <subfield code="d">OCLCQ</subfield>
+    <subfield code="d">OCLCO</subfield>
+    <subfield code="d">OCLCQ</subfield>
+    <subfield code="d">GPO</subfield>
+    <subfield code="d">MvI</subfield>
+  </datafield>
+  <datafield tag="042" ind1=" " ind2=" ">
+    <subfield code="a">pcc</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">0455-N-11 (online)</subfield>
+  </datafield>
+  <datafield tag="086" ind1="0" ind2=" ">
+    <subfield code="a">ED 1.334/4-2:</subfield>
+  </datafield>
+  <datafield tag="130" ind1="0" ind2=" ">
+    <subfield code="a">Integrated postsecondary education data system (Online)</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Integrated postsecondary education data system.</subfield>
+  </datafield>
+  <datafield tag="246" ind1="1" ind2=" ">
+    <subfield code="i">Also known as:</subfield>
+    <subfield code="a">IPEDS</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">[Washington, D.C.] :</subfield>
+    <subfield code="b">National Center for Education Statistics</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 online resource</subfield>
+  </datafield>
+  <datafield tag="310" ind1=" " ind2=" ">
+    <subfield code="a">Updated irregularly</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">text</subfield>
+    <subfield code="b">txt</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">computer</subfield>
+    <subfield code="b">c</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">online resource</subfield>
+    <subfield code="b">cr</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="362" ind1="1" ind2=" ">
+    <subfield code="a">Began in 1997?</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Originally issued 1967-1986 as (HEGIS) data, [now in] IPEDS data archive at International Archive of Education Data housed at the University of Michigan; 1986-87 and 1990-91 as (SHEP) data, and: (IPEDS) data 1994- archived on the NCES web site.</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">IPEDS core postsecondary data collection system features the IPEDS peer analysis system and IPEDS college opportunities on-line; system tools for data and analysis.</subfield>
+  </datafield>
+  <datafield tag="588" ind1=" " ind2=" ">
+    <subfield code="a">Description based on contents viewed June 25, 2004; title from caption.</subfield>
+  </datafield>
+  <datafield tag="580" ind1=" " ind2=" ">
+    <subfield code="a">Survey data also issued on CD-ROMs.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Educational surveys</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Databases.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Education, Higher</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics</subfield>
+    <subfield code="v">Databases.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Universities and colleges</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Statistics</subfield>
+    <subfield code="v">Databases.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Education, Higher</subfield>
+    <subfield code="x">Statistics.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00903118</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Educational surveys.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00903613</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Universities and colleges</subfield>
+    <subfield code="x">Statistics.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01161883</subfield>
+  </datafield>
+  <datafield tag="651" ind1=" " ind2="7">
+    <subfield code="a">United States.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01204155</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">National Center for Education Statistics,</subfield>
+    <subfield code="e">issuing body.</subfield>
+  </datafield>
+  <datafield tag="780" ind1="0" ind2="1">
+    <subfield code="t">Directory of postsecondary institutions</subfield>
+    <subfield code="x">0898-2317</subfield>
+    <subfield code="w">(DLC) 2016231201</subfield>
+    <subfield code="w">(OCoLC)604215260</subfield>
+  </datafield>
+  <datafield tag="787" ind1="1" ind2=" ">
+    <subfield code="a">Integrated postsecondary education data system</subfield>
+    <subfield code="w">(DLC) 97644507</subfield>
+    <subfield code="w">(OCoLC)30631461</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="u">http://purl.access.gpo.gov/GPO/LPS46097</subfield>
+  </datafield>
+  <datafield tag="949" ind1=" " ind2=" ">
+    <subfield code="a">ED 1.334/4-2:</subfield>
+    <subfield code="l">gweb</subfield>
+    <subfield code="s">e</subfield>
+    <subfield code="z">086</subfield>
+  </datafield>
+  <datafield tag="979" ind1=" " ind2=" ">
+    <subfield code="a">ocm54810920</subfield>
+  </datafield>
+  <datafield tag="PRT" ind1=" " ind2=" ">
+    <subfield code="a">53388968610003811</subfield>
+    <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991000587469703811</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="8">53388968610003811</subfield>
+  </datafield>
+</record>

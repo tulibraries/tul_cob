@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>02327pem a2200589 i 4500</leader>
+  <controlfield tag="005">20170328135504.0</controlfield>
+  <controlfield tag="007">ad canzn</controlfield>
+  <controlfield tag="008">160512t20172017enk       e     1   eng  </controlfield>
+  <controlfield tag="001">991030814199703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">2016021305</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9781138022058</subfield>
+    <subfield code="q">(hb)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">1138022055</subfield>
+    <subfield code="q">(hb)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9781138022065</subfield>
+    <subfield code="q">(pb)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">1138022063</subfield>
+    <subfield code="q">(pb)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="z">9781315777313</subfield>
+    <subfield code="q">(ebk)</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="z">1315777312</subfield>
+    <subfield code="q">(ebk)</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b64298942-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)949910510</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DLC</subfield>
+    <subfield code="b">eng</subfield>
+    <subfield code="e">rda</subfield>
+    <subfield code="c">DLC</subfield>
+    <subfield code="d">OCLCF</subfield>
+    <subfield code="d">GBVCP</subfield>
+    <subfield code="d">OCLCO</subfield>
+  </datafield>
+  <datafield tag="041" ind1="1" ind2=" ">
+    <subfield code="a">eng</subfield>
+    <subfield code="h">fre</subfield>
+  </datafield>
+  <datafield tag="042" ind1=" " ind2=" ">
+    <subfield code="a">pcc</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn981111595</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">G1046.E27</subfield>
+    <subfield code="b">I613 2017</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Ionesco, Dina,</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="240" ind1="0" ind2="0">
+    <subfield code="a">Atlas des migrations environnementales.</subfield>
+    <subfield code="l">English</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="4">
+    <subfield code="a">The atlas of environmental migration /</subfield>
+    <subfield code="c">Dina Ionesco, Daria Mokhnacheva, François Gemenne.</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">Milton Park, Abingdon, Oxon ;</subfield>
+    <subfield code="a">New York, NY :</subfield>
+    <subfield code="b">Routledge is an imprint of the Taylor &amp; Francis Group, an Informa business,</subfield>
+    <subfield code="c">2017.</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="4">
+    <subfield code="c">©2017</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 atlas (xv, 152 pages) :</subfield>
+    <subfield code="b">color illustrations, color maps ;</subfield>
+    <subfield code="c">30 cm</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">cartographic image</subfield>
+    <subfield code="b">cri</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">unmediated</subfield>
+    <subfield code="b">n</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">volume</subfield>
+    <subfield code="b">nc</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">©2016 Dina Ionesco and Daria Mokhnacheva (IOM), and François Gemenne.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Originally published in French under title Atlas des migrations environnementales by Ionesco, Dina, Mokhnacheva, Daria, Gemenne, François -- Publisher's information.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">"Earthscan from Routledge."</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references and index.</subfield>
+  </datafield>
+  <datafield tag="546" ind1=" " ind2=" ">
+    <subfield code="a">Translated from the French.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Emigration and immigration</subfield>
+    <subfield code="v">Maps.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Climatic changes</subfield>
+    <subfield code="v">Maps.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Human beings</subfield>
+    <subfield code="x">Migrations</subfield>
+    <subfield code="v">Maps.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Climatic changes.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00864229</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Emigration and immigration.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00908690</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Human beings</subfield>
+    <subfield code="x">Migrations.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00962853</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Atlases.</subfield>
+    <subfield code="2">lcgft</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Atlases.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01423875</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Maps.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01423704</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Mokhnacheva, Daria,</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Gemenne, François,</subfield>
+    <subfield code="d">1980-</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b64298942</subfield>
+    <subfield code="b">p    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">170522</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">170414</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">e</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">4</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">170414</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">e</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">4</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">psov2</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="0" ind2=" ">
+    <subfield code="b">MAIN</subfield>
+    <subfield code="c">psov2</subfield>
+    <subfield code="h">G1046.E27</subfield>
+    <subfield code="i">I613 2017</subfield>
+    <subfield code="8">22240817850003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22240817850003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">psov2</subfield>
+    <subfield code="9">39074030208912</subfield>
+    <subfield code="e">psov2</subfield>
+    <subfield code="8">23240817840003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="q">2017-06-20 06:04:13</subfield>
+    <subfield code="i">G1046.E27 I613 2017</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="f">MAIN</subfield>
+  </datafield>
+</record>

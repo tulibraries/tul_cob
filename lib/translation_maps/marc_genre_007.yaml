@@ -1,9 +1,9 @@
 # attempted mapping from 007 byte 1 to format/genres
 
-'a': Book
-'c': Book
-'d': Book
-'m': Book
-'b': Journal
-'i': Journal
-'s': Journal
+'a': book
+'c': book
+'d': book
+'m': book
+'b': serial
+'i': serial
+'s': serial

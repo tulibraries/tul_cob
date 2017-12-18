@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<record schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>01045ckm a2200313 a 4500</leader>
+  <controlfield tag="005">19970228071951.0</controlfield>
+  <controlfield tag="008">960917s1812    xxunnn            cneng d</controlfield>
+  <controlfield tag="001">991002920299703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b1835998x-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(CStRLIN)ocn483356012</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATW96-F00044</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">PPT-B</subfield>
+    <subfield code="c">PPT-B</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocm82560474</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">N6538.N5M64x 1812</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Molineaux</subfield>
+    <subfield code="h">[graphic]</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">[S.l. :</subfield>
+    <subfield code="b">s.n.]</subfield>
+    <subfield code="c">1812.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 art print :</subfield>
+    <subfield code="b">water color ;</subfield>
+    <subfield code="c">27 x 17 cm.</subfield>
+  </datafield>
+  <datafield tag="506" ind1=" " ind2=" ">
+    <subfield code="a">Access to the print collection is by appointment only.</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">Drawing depicts Black man in martial arts stance.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">African American art.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">African Americans in art.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Temple University.</subfield>
+    <subfield code="b">Charles L. Blockson Afro-American Collection.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b1835998x</subfield>
+    <subfield code="b">b    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">120920</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">k</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00812853</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">BLOC</subfield>
+    <subfield code="h">09/17/96 C</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">BLOC</subfield>
+    <subfield code="c">1</subfield>
+    <subfield code="s">BLOC PHOTO COLL ; A030pr D-2</subfield>
+    <subfield code="h">09/17/96 C</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">02/28/97</subfield>
+    <subfield code="t">c</subfield>
+    <subfield code="s">9114</subfield>
+    <subfield code="n">PPT-B</subfield>
+    <subfield code="w">PATW96F44</subfield>
+    <subfield code="d">09/17/96</subfield>
+    <subfield code="c">AB</subfield>
+    <subfield code="b">MJ</subfield>
+    <subfield code="i">970228</subfield>
+    <subfield code="h">960917</subfield>
+    <subfield code="l">PATW</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">b    </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>

@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>01797cpc a2200433 a 4500</leader>
+  <controlfield tag="005">19921020081247.0</controlfield>
+  <controlfield tag="008">921015i18291839pau                 eng d</controlfield>
+  <controlfield tag="001">991029941219703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b16160654-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn727945621</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATV92-A00477</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">PPT</subfield>
+    <subfield code="c">PPT</subfield>
+    <subfield code="e">appm</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us-pa</subfield>
+  </datafield>
+  <datafield tag="072" ind1=" " ind2="7">
+    <subfield code="a">BH</subfield>
+    <subfield code="2">NHPRC</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn122365289</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">(SPC) MSS BH 179 COCH</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Lee, Franklin.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="k">19th century tax receipt book,</subfield>
+    <subfield code="f">1829-1839.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">1 item (1 v.);</subfield>
+    <subfield code="c">10 x 16 cm.</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">Early 19th century receipt book kept by county tax collector Franklin Lee describing the payment of corporate and county taxes from Philadelphia individuals and business including; John Hemphill, a local merchant; Allen Middleton, an iron merchant, and Joseph L. Thomas, a local physician.</subfield>
+  </datafield>
+  <datafield tag="541" ind1=" " ind2=" ">
+    <subfield code="0">N</subfield>
+    <subfield code="d">1992</subfield>
+    <subfield code="e">92-3000</subfield>
+    <subfield code="3">Receipt book</subfield>
+    <subfield code="a">Unknown (Hausdorfer)</subfield>
+  </datafield>
+  <datafield tag="555" ind1=" " ind2=" ">
+    <subfield code="a">Accession list.</subfield>
+  </datafield>
+  <datafield tag="561" ind1=" " ind2=" ">
+    <subfield code="a">Source unknown.</subfield>
+  </datafield>
+  <datafield tag="583" ind1=" " ind2=" ">
+    <subfield code="3">Receipt book</subfield>
+    <subfield code="0">N</subfield>
+    <subfield code="a">Inventoried</subfield>
+    <subfield code="c">09/10/92</subfield>
+    <subfield code="l">Processed</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Hemphill, John.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Hocckley, Jacob F.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Middleton, Allen.</subfield>
+  </datafield>
+  <datafield tag="600" ind1="1" ind2="0">
+    <subfield code="a">Thomas, Joseph L.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Corporations</subfield>
+    <subfield code="x">Taxation.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Receipts (Acknowledgements)</subfield>
+    <subfield code="z">Pennsylvania</subfield>
+    <subfield code="z">Philadelphia.</subfield>
+  </datafield>
+  <datafield tag="651" ind1=" " ind2="0">
+    <subfield code="a">Philadelphia (Pa.)</subfield>
+    <subfield code="x">Economic conditions.</subfield>
+  </datafield>
+  <datafield tag="651" ind1=" " ind2="0">
+    <subfield code="a">Philadelphia (Pa.)</subfield>
+    <subfield code="x">Officials and employees.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Receipts.</subfield>
+    <subfield code="2">aat</subfield>
+  </datafield>
+  <datafield tag="773" ind1="0" ind2=" ">
+    <subfield code="7">p1bc</subfield>
+    <subfield code="a">Hausdorfer, Walter.</subfield>
+    <subfield code="t">Cochran History of Business Collection : manuscripts and documents.</subfield>
+    <subfield code="w">(CStRLIN)PATV92-A1.</subfield>
+    <subfield code="g">Temple University, Special Collections, Philadelphia, Pa.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b16160654</subfield>
+    <subfield code="b">s    </subfield>
+    <subfield code="c">a</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">130919</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">c</subfield>
+    <subfield code="e">p</subfield>
+    <subfield code="f">a</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00673321</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">PATV</subfield>
+    <subfield code="i">10/20/92 C</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">10/20/92</subfield>
+    <subfield code="t">d</subfield>
+    <subfield code="s">9554</subfield>
+    <subfield code="n">PPT</subfield>
+    <subfield code="w">PATV92A477</subfield>
+    <subfield code="d">10/15/92</subfield>
+    <subfield code="p">b</subfield>
+    <subfield code="i">921020</subfield>
+    <subfield code="l">PATV</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">sarc </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1=" " ind2=" ">
+    <subfield code="b">SCRC</subfield>
+    <subfield code="c">rarestacks</subfield>
+    <subfield code="h">(SPC) MSS BH 179 COCH</subfield>
+    <subfield code="8">22242242490003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22242242490003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="g">rarestacks</subfield>
+    <subfield code="e">rarestacks</subfield>
+    <subfield code="8">23242242470003811</subfield>
+    <subfield code="a">4</subfield>
+    <subfield code="q">2017-06-20 06:08:31</subfield>
+    <subfield code="i">(SPC) MSS BH 179 COCH</subfield>
+    <subfield code="d">SCRC</subfield>
+    <subfield code="f">SCRC</subfield>
+  </datafield>
+</record>

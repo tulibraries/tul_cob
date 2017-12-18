@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>03997cgm a2200757 a 4500</leader>
+  <controlfield tag="005">20120117125714.0</controlfield>
+  <controlfield tag="007">vd cvaizs</controlfield>
+  <controlfield tag="008">090406s2008    cau167 g          vleng d</controlfield>
+  <controlfield tag="001">991026089579703811</controlfield>
+  <datafield tag="028" ind1="4" ind2="2">
+    <subfield code="a">27885DIG</subfield>
+    <subfield code="b">Sony Pictures Home Entertainment (set)</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b51097758-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)ocn775883375</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)317870349</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">WIM</subfield>
+    <subfield code="b">eng</subfield>
+    <subfield code="c">WIM</subfield>
+    <subfield code="d">WIM</subfield>
+    <subfield code="d">NBJ</subfield>
+    <subfield code="d">BTCTA</subfield>
+    <subfield code="d">OCLCA</subfield>
+    <subfield code="d">OCLCQ</subfield>
+  </datafield>
+  <datafield tag="041" ind1="1" ind2=" ">
+    <subfield code="a">eng</subfield>
+    <subfield code="a">fre</subfield>
+    <subfield code="j">eng</subfield>
+    <subfield code="j">fre</subfield>
+    <subfield code="h">eng</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">a-br---</subfield>
+  </datafield>
+  <datafield tag="050" ind1=" " ind2="4">
+    <subfield code="a">PN1997</subfield>
+    <subfield code="b">.B75 2008</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn317870349</subfield>
+  </datafield>
+  <datafield tag="099" ind1=" " ind2=" ">
+    <subfield code="a">DVD 12 A45</subfield>
+  </datafield>
+  <datafield tag="130" ind1="0" ind2=" ">
+    <subfield code="a">Bridge on the River Kwai (Motion picture)</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="4">
+    <subfield code="a">The bridge on the River Kwai</subfield>
+    <subfield code="h">[videorecording] /</subfield>
+    <subfield code="c">Columbia Pictures presents a Sam Spiegel production ; screenplay by Michael Wilson and Carl Foreman ; produced by Sam Spiegel ; directed by David Lean.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Culver City, Calif. :</subfield>
+    <subfield code="b">Columbia Pictures :</subfield>
+    <subfield code="b">Sony Pictures Home Entertainment,</subfield>
+    <subfield code="c">2008.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">2 videodisc (ca. 167 min.) :</subfield>
+    <subfield code="b">sd., col. ;</subfield>
+    <subfield code="c">4 3/4 in.  </subfield>
+  </datafield>
+  <datafield tag="538" ind1=" " ind2=" ">
+    <subfield code="a">DVD, region 1, Dolby Digital 5.1, stereo.; 2.55:1 anamorphic widescreen presentation; remastered in high definition.</subfield>
+  </datafield>
+  <datafield tag="546" ind1=" " ind2=" ">
+    <subfield code="a">English (Dolby digital 5.1) dialogue; English or French (stereo) dialogue; subtitles in English or French; closed-captioned.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Title from discs.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Issued as part of set : Best picture collection Columbia Pictures.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Based on Pont de la rivière Kwaï by Pierre Boulle.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Originally released as a motion picture in 1957.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">For special features see interactive menu on discs.</subfield>
+  </datafield>
+  <datafield tag="508" ind1=" " ind2=" ">
+    <subfield code="a">Cinematography, Jack Hildyard ; editing, Peter Taylor ; music, Malcolm Arnold.</subfield>
+  </datafield>
+  <datafield tag="511" ind1="1" ind2=" ">
+    <subfield code="a">William Holden, Alec Guinness, Jack Hawkins, Sessue Hayakawa, James Donald, Ann Sears, Geoffrey Horne.</subfield>
+  </datafield>
+  <datafield tag="521" ind1="8" ind2=" ">
+    <subfield code="a">Rated PG for mild war violence.</subfield>
+  </datafield>
+  <datafield tag="586" ind1="8" ind2=" ">
+    <subfield code="a">Academy Award, USA, 1957: Best Picture ; Best Actor (Alec Guinness) ; Best Cinematography (Jack Hildyard) ; Best Director (David Lean) ; Best Film Editing (Peter Taylor) ; Best Music (Scoring) (Malcolm Arnold) ; Best Writing (Adapted Screenplay) (Michael Wilson, Carl Foreman, Pierre Boulle).</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">Set in wartime Burma during World War II, British POWs are forced to build a bridge over the River Kwai to link vital Japanese supply lines. Colonel Nicholson sees this as a way to restore his men's pride by building the perfect bridge as a tribute to British superiority. The morning the bridge is set to open, Nicholson discovers a British plot to blow up the bridge and scrambles to thwart it, leading to one of the most gripping, nail-biting endings in cinematic history.</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="0">
+    <subfield code="a">Burma-Siam Railroad</subfield>
+    <subfield code="v">Drama.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">World War, 1939-1945</subfield>
+    <subfield code="v">Drama.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">World War, 1939-1945</subfield>
+    <subfield code="x">Prisoners and prisons, Japanese</subfield>
+    <subfield code="v">Drama.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">World War, 1939-1945</subfield>
+    <subfield code="x">Campaigns</subfield>
+    <subfield code="z">Burma</subfield>
+    <subfield code="v">Drama.</subfield>
+  </datafield>
+  <datafield tag="651" ind1=" " ind2="0">
+    <subfield code="a">Burma</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">Japanese occupation, 1942-1945</subfield>
+    <subfield code="v">Drama.</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">War films.</subfield>
+    <subfield code="2">lcgft</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Feature films.</subfield>
+    <subfield code="2">lcgft</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Fiction films.</subfield>
+    <subfield code="2">lcgft</subfield>
+  </datafield>
+  <datafield tag="655" ind1=" " ind2="7">
+    <subfield code="a">Video recordings for the hearing impaired.</subfield>
+    <subfield code="2">lcgft</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Lean, David,</subfield>
+    <subfield code="d">1908-1991.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Spiegel, Sam.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Wilson, Michael,</subfield>
+    <subfield code="d">1914-1978.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Foreman, Carl.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Hildyard, Jack.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Taylor, Peter,</subfield>
+    <subfield code="d">1922-1997.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Arnold, Malcolm.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Holden, William,</subfield>
+    <subfield code="d">1918-1981.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Guinness, Alec,</subfield>
+    <subfield code="d">1914-2000.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Hawkins, Jack,</subfield>
+    <subfield code="d">1910-1973.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Hayakawa, Sesshū,</subfield>
+    <subfield code="d">1889-1973.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Donald, James,</subfield>
+    <subfield code="d">1917-1993.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Sears, Ann,</subfield>
+    <subfield code="d">1933-1992.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Horne, Geoffrey.</subfield>
+  </datafield>
+  <datafield tag="700" ind1="1" ind2=" ">
+    <subfield code="a">Boulle, Pierre,</subfield>
+    <subfield code="d">1912-1994.</subfield>
+    <subfield code="t">Pont de la rivière Kwaï.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Columbia Pictures.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Sony Pictures Home Entertainment (Firm)</subfield>
+  </datafield>
+  <datafield tag="740" ind1="0" ind2="2">
+    <subfield code="a">Best picture collection Columbia Pictures.</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b51097758</subfield>
+    <subfield code="b">a    </subfield>
+    <subfield code="c">g</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">160106</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">0</subfield>
+    <subfield code="c">120117</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">g</subfield>
+    <subfield code="f">g</subfield>
+    <subfield code="g">4</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">01/17/12</subfield>
+    <subfield code="s">OCLC</subfield>
+    <subfield code="c">DH</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">avid </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1=" " ind2=" ">
+    <subfield code="b">AMBLER</subfield>
+    <subfield code="c">media</subfield>
+    <subfield code="h">DVD 12 A45</subfield>
+    <subfield code="8">22243402340003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22243402340003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="g">media</subfield>
+    <subfield code="9">39074027360155</subfield>
+    <subfield code="e">media</subfield>
+    <subfield code="8">23243402320003811</subfield>
+    <subfield code="a">5</subfield>
+    <subfield code="q">2017-06-20 06:13:22</subfield>
+    <subfield code="i">DVD 12 A45</subfield>
+    <subfield code="d">AMBLER</subfield>
+    <subfield code="f">AMBLER</subfield>
+  </datafield>
+</record>

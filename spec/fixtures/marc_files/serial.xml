@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<record schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <leader>02315nas a2200601   4500</leader>
+  <controlfield tag="005">19900809064239.0</controlfield>
+  <controlfield tag="008">900809d19731981maumn1p       0uuua0eng d</controlfield>
+  <controlfield tag="001">991026747009703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">sn 79004323</subfield>
+  </datafield>
+  <datafield tag="022" ind1="0" ind2=" ">
+    <subfield code="a">0040-2494</subfield>
+  </datafield>
+  <datafield tag="030" ind1=" " ind2=" ">
+    <subfield code="a">TLCOAY</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b15519867-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">ocn471979321</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">PATG90-S00790</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">NSDP</subfield>
+    <subfield code="d">InU</subfield>
+    <subfield code="d">NSDP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">InU</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">OCoLC</subfield>
+    <subfield code="d">AIP</subfield>
+    <subfield code="d">NSDP</subfield>
+    <subfield code="d">NST</subfield>
+    <subfield code="d">NvU</subfield>
+    <subfield code="d">PPT</subfield>
+  </datafield>
+  <datafield tag="042" ind1=" " ind2=" ">
+    <subfield code="a">nsdp</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn174071685</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">TK5101.A1T36x</subfield>
+  </datafield>
+  <datafield tag="130" ind1="0" ind2="0">
+    <subfield code="a">Telecommunications (International edition)</subfield>
+  </datafield>
+  <datafield tag="210" ind1="0" ind2=" ">
+    <subfield code="a">Telecommunications</subfield>
+    <subfield code="b">(Int. ed.)</subfield>
+  </datafield>
+  <datafield tag="222" ind1="0" ind2="0">
+    <subfield code="a">Telecommunications</subfield>
+    <subfield code="b">(International ed.)</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Telecommunications.</subfield>
+  </datafield>
+  <datafield tag="250" ind1=" " ind2=" ">
+    <subfield code="a">International ed.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">[Dedham, Mass.,</subfield>
+    <subfield code="b">Horizon House]</subfield>
+  </datafield>
+  <datafield tag="265" ind1=" " ind2=" ">
+    <subfield code="a">Telecommunications, 610 Washington, St., Dedham, Mass. 02026</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">9 v.</subfield>
+    <subfield code="b">ill.</subfield>
+    <subfield code="c">28 cm.</subfield>
+  </datafield>
+  <datafield tag="310" ind1=" " ind2=" ">
+    <subfield code="a">Monthly (semimonthly in Sept.)</subfield>
+  </datafield>
+  <datafield tag="362" ind1="0" ind2=" ">
+    <subfield code="a">v. 7-15, no. 8; 1973-Aug. 1981.</subfield>
+  </datafield>
+  <datafield tag="510" ind1="2" ind2=" ">
+    <subfield code="a">ABI/INFORM</subfield>
+    <subfield code="b">Jan. 1979-Aug. 1981</subfield>
+  </datafield>
+  <datafield tag="510" ind1="2" ind2=" ">
+    <subfield code="a">Ship abstracts</subfield>
+    <subfield code="x">0346-1025</subfield>
+  </datafield>
+  <datafield tag="510" ind1="1" ind2=" ">
+    <subfield code="a">Business periodicals index</subfield>
+    <subfield code="x">0007-6961</subfield>
+  </datafield>
+  <datafield tag="510" ind1="0" ind2=" ">
+    <subfield code="a">Engineering index annual</subfield>
+    <subfield code="x">0360-8557</subfield>
+  </datafield>
+  <datafield tag="510" ind1="0" ind2=" ">
+    <subfield code="a">Engineering index monthly</subfield>
+    <subfield code="x">0013-7960</subfield>
+  </datafield>
+  <datafield tag="580" ind1=" " ind2=" ">
+    <subfield code="a">Continued in part by: Telecommunications. Euro-global ed. in 1979?; and: Telecommunications (North American edition) in Sept. 1981.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Telecommunication</subfield>
+    <subfield code="x">Periodicals.</subfield>
+  </datafield>
+  <datafield tag="775" ind1="0" ind2=" ">
+    <subfield code="t">Telecommunications.</subfield>
+    <subfield code="c">Euro-global ed.</subfield>
+    <subfield code="x">0192-6209</subfield>
+    <subfield code="w">(OCoLC)5056192</subfield>
+  </datafield>
+  <datafield tag="780" ind1="0" ind2="0">
+    <subfield code="t">Telecommunications</subfield>
+    <subfield code="x">0192-6624</subfield>
+    <subfield code="w">(OCoLC)2254658</subfield>
+  </datafield>
+  <datafield tag="785" ind1="1" ind2="1">
+    <subfield code="t">Telecommunications.</subfield>
+    <subfield code="c">Euro-global ed.</subfield>
+    <subfield code="x">0192-6209</subfield>
+    <subfield code="w">(OCoLC)5056192</subfield>
+  </datafield>
+  <datafield tag="785" ind1="1" ind2="1">
+    <subfield code="t">Telecommunications (North American edition)</subfield>
+    <subfield code="x">0278-4831</subfield>
+    <subfield code="w">(OCoLC)7832220</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b15519867</subfield>
+    <subfield code="b">k    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">170523</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">2</subfield>
+    <subfield code="c">990101</subfield>
+    <subfield code="d">s</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="935" ind1=" " ind2=" ">
+    <subfield code="a">00594865</subfield>
+  </datafield>
+  <datafield tag="950" ind1=" " ind2=" ">
+    <subfield code="l">P</subfield>
+    <subfield code="v">v.7-v.15,no.8;</subfield>
+    <subfield code="y">1973-Aug.1981.</subfield>
+    <subfield code="i">08/09/90 N</subfield>
+  </datafield>
+  <datafield tag="955" ind1=" " ind2=" ">
+    <subfield code="l">P</subfield>
+    <subfield code="c">0</subfield>
+    <subfield code="a">REF-1</subfield>
+    <subfield code="i">08/09/90 C</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="a">08/09/90</subfield>
+    <subfield code="t">c</subfield>
+    <subfield code="s">9110</subfield>
+    <subfield code="n">PPT</subfield>
+    <subfield code="w">DCLCSN794323S</subfield>
+    <subfield code="d">08/09/90</subfield>
+    <subfield code="c">AMC</subfield>
+    <subfield code="b">AS</subfield>
+    <subfield code="i">900809</subfield>
+    <subfield code="l">PATG</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.7 (1973)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.8 (1974)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.9 (1975)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.10 (1976)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.11 (1977)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.12 (1978)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.13 (1979)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.14 (1980)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">kstk </subfield>
+    <subfield code="u">v.v.15 (1981)</subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>

@@ -1,0 +1,20 @@
+# Resource Code to facet text mapping
+
+archival:      Archival Material
+audio:         Audio
+book:          Book
+computer_file: Computer File
+data:          Dataset
+database:      Database
+kit:           Kit
+map:           Map
+score:         Score
+object:        Object
+serial:        Journal/Periodical
+video:         Video
+visual:        Image
+unknown:       Unknown
+website:       Website
+govdoc:        Government Document
+proceeding:    Conference Proceeding
+thesis:        Dissertation/Thesis

@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>05191cam a2200505 i 4500</leader>
+  <controlfield tag="005">20160919135307.0</controlfield>
+  <controlfield tag="008">160317s2016    nyua     b    001 0 eng  </controlfield>
+  <controlfield tag="001">991026069919703811</controlfield>
+  <datafield tag="010" ind1=" " ind2=" ">
+    <subfield code="a">2016000477</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">9780375423222</subfield>
+    <subfield code="q">hardcover</subfield>
+  </datafield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">0375423222</subfield>
+    <subfield code="q">hardcover</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b62973782-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(OCoLC)945169854</subfield>
+    <subfield code="z">(OCoLC)930824958</subfield>
+    <subfield code="z">(OCoLC)956653741</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DLC</subfield>
+    <subfield code="e">rda</subfield>
+    <subfield code="b">eng</subfield>
+    <subfield code="c">DLC</subfield>
+    <subfield code="d">YDX</subfield>
+    <subfield code="d">YDXCP</subfield>
+    <subfield code="d">BTCTA</subfield>
+    <subfield code="d">BDX</subfield>
+    <subfield code="d">OCLCF</subfield>
+    <subfield code="d">ORX</subfield>
+    <subfield code="d">BKL</subfield>
+    <subfield code="d">IK2</subfield>
+    <subfield code="d">BUR</subfield>
+    <subfield code="d">FM0</subfield>
+    <subfield code="d">ABG</subfield>
+    <subfield code="d">ZLM</subfield>
+  </datafield>
+  <datafield tag="042" ind1=" " ind2=" ">
+    <subfield code="a">pcc</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us-ny</subfield>
+  </datafield>
+  <datafield tag="079" ind1=" " ind2=" ">
+    <subfield code="a">ocn945169854</subfield>
+  </datafield>
+  <datafield tag="090" ind1=" " ind2=" ">
+    <subfield code="a">HV9475.N716</subfield>
+    <subfield code="b">T46 2016</subfield>
+  </datafield>
+  <datafield tag="100" ind1="1" ind2=" ">
+    <subfield code="a">Thompson, Heather Ann,</subfield>
+    <subfield code="d">1963-</subfield>
+    <subfield code="e">author.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Blood in the water :</subfield>
+    <subfield code="b">the Attica Prison uprising of 1971 and its legacy /</subfield>
+    <subfield code="c">Heather Ann Thompson.</subfield>
+  </datafield>
+  <datafield tag="250" ind1=" " ind2=" ">
+    <subfield code="a">First edition.</subfield>
+  </datafield>
+  <datafield tag="264" ind1=" " ind2="1">
+    <subfield code="a">New York :</subfield>
+    <subfield code="b">Pantheon Books,</subfield>
+    <subfield code="c">[2016]</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">xvii, 724 pages :</subfield>
+    <subfield code="b">illustrations ;</subfield>
+    <subfield code="c">25 cm</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">text</subfield>
+    <subfield code="b">txt</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="336" ind1=" " ind2=" ">
+    <subfield code="a">still image</subfield>
+    <subfield code="b">sti</subfield>
+    <subfield code="2">rdacontent</subfield>
+  </datafield>
+  <datafield tag="337" ind1=" " ind2=" ">
+    <subfield code="a">unmediated</subfield>
+    <subfield code="b">n</subfield>
+    <subfield code="2">rdamedia</subfield>
+  </datafield>
+  <datafield tag="338" ind1=" " ind2=" ">
+    <subfield code="a">volume</subfield>
+    <subfield code="b">nc</subfield>
+    <subfield code="2">rdacarrier</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Map on lining papers.</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references (pages 579-684) and index.</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2=" ">
+    <subfield code="a">State secrets -- The tinderbox -- Power and politics unleashed -- The sound before the fury -- Retribution and reprisals unimagined -- Reckonings and reactions -- Inquiries and diversions -- Justice on trial -- Blowing the whistle -- David and Goliath -- A final flight.</subfield>
+  </datafield>
+  <datafield tag="505" ind1="0" ind2=" ">
+    <subfield code="a">The tinderbox. Frank "Big Black" Smith -- Not So Greener Pastures -- Responding to Resistance -- Voices from Auburn -- Knowledge Is Power -- Playing by the Rules -- Back and Forth -- End of the Line -- Power and politics unleashed. Michael Smith -- Talking Back -- Burning Down the House -- Reeling and Reacting -- Order Out of Chaos -- What's Going On -- Into the Night -- A New Day Dawns -- The sound before the fury. Tom Wicker -- Getting Down to Business -- Dreams and Nightmares -- On the Precipice -- Deciding Disaster  -- Retribution and reprisals unimagined. Tony Strollo -- Chomping at the Bit -- Standing Firm -- No Mercy -- Spinning Disaster -- And the Beat Goes On -- Reckonings and reactions. Robert Douglass -- Speaking Up -- Stepping Back -- Funerals and Fallout -- Prodding and Probing -- Which Side Are You On? -- Ducks in a Row -- Inquiries and diversions. Anthony Simonetti -- Digging More Deeply -- Foxes in the Hen House -- Stick and Carrot -- Seeking Help -- Indictments All Around -- Justice on Trial. Ernest Goodman -- Mobilizing and Maneuvering -- A House Divided -- Laying the Groundwork -- Testing the Waters -- Going for Broke -- Evening the Score -- A Long Journey Ahead -- Blowing the Whistle. Malcolm Bell -- Joining the Team -- Protecting the Police -- Smoking Guns -- Going Public -- Investigating the Investigation -- Closing the Book -- David and Goliath. Elizabeth Fink -- It Ain't Over Till It's Over -- Shining the Light on Evil -- Delay Tactics -- The Price of Blood -- Deal with the Devil -- A Final Fight. Deanne Quinn Miller -- Family Fury -- Manipulated and Outmaneuvered -- Biting the Hand -- Getting Heard -- Waiting Game -- A Hollow Victory -- Epilogue: Prisons and Power.</subfield>
+  </datafield>
+  <datafield tag="520" ind1=" " ind2=" ">
+    <subfield code="a">On September 9, 1971, nearly 1,300 prisoners took over the Attica Correctional Facility in upstate New York to protest years of mistreatment. Holding guards and civilian employees hostage, the prisoners negotiated with officials for improved conditions during the four long days and nights that followed. On September 13, the state abruptly sent hundreds of heavily armed troopers and correction officers to retake the prison by force. Their gunfire killed thirty-nine men--hostages as well as prisoners--and severely wounded more than one hundred others. In the ensuing hours, weeks, and months, troopers and officers brutally retaliated against the prisoners. Ultimately, New York State authorities prosecuted only the prisoners, never once bringing charges against the officials involved in the retaking and its aftermath and neglecting to provide support to the survivors and the families of the men who had been killed. Drawing from more than a decade of extensive research, historian Heather Ann Thompson sheds new light on every aspect of the uprising and its legacy, giving voice to all those who took part in this 45-year fight for justice: prisoners, former hostages, families of the victims, lawyers and judges, and state officials and members of law enforcement. This book is the first full account of one of the most important civil rights stories of the last century.--Adapted from dust jacket.</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="0">
+    <subfield code="a">Attica Prison.</subfield>
+  </datafield>
+  <datafield tag="610" ind1="2" ind2="7">
+    <subfield code="a">Attica Prison.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst00514938</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Prison riots</subfield>
+    <subfield code="z">New York (State)</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">HISTORY</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">20th Century.</subfield>
+    <subfield code="2">bisacsh</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">LAW</subfield>
+    <subfield code="x">Criminal Law</subfield>
+    <subfield code="x">General.</subfield>
+    <subfield code="2">bisacsh</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">POLITICAL SCIENCE</subfield>
+    <subfield code="x">Political Freedom &amp; Security</subfield>
+    <subfield code="x">Law Enforcement.</subfield>
+    <subfield code="2">bisacsh</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="7">
+    <subfield code="a">Prison riots.</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01077075</subfield>
+  </datafield>
+  <datafield tag="651" ind1=" " ind2="7">
+    <subfield code="a">New York (State)</subfield>
+    <subfield code="2">fast</subfield>
+    <subfield code="0">(OCoLC)fst01210280</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b62973782</subfield>
+    <subfield code="b">multi</subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">170501</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">4</subfield>
+    <subfield code="c">160929</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">160929</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">b    </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">pstk </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="0" ind2=" ">
+    <subfield code="b">MAIN</subfield>
+    <subfield code="c">stacks</subfield>
+    <subfield code="h">HV9475.N716</subfield>
+    <subfield code="i">T46 2016</subfield>
+    <subfield code="8">22246535160003811</subfield>
+  </datafield>
+  <datafield tag="HLD" ind1="0" ind2=" ">
+    <subfield code="b">BLOCKSON</subfield>
+    <subfield code="c">rarestacks</subfield>
+    <subfield code="h">HV9475.N716</subfield>
+    <subfield code="i">T46 2016</subfield>
+    <subfield code="8">22246535140003811</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22246535140003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">rarestacks</subfield>
+    <subfield code="e">rarestacks</subfield>
+    <subfield code="8">23246535130003811</subfield>
+    <subfield code="a">4</subfield>
+    <subfield code="q">2017-06-20 06:22:34</subfield>
+    <subfield code="i">HV9475.N716 T46 2016</subfield>
+    <subfield code="d">BLOCKSON</subfield>
+    <subfield code="f">BLOCKSON</subfield>
+  </datafield>
+  <datafield tag="ITM" ind1=" " ind2=" ">
+    <subfield code="r">22246535160003811</subfield>
+    <subfield code="b">0</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">stacks</subfield>
+    <subfield code="9">39074030149991</subfield>
+    <subfield code="e">stacks</subfield>
+    <subfield code="8">23246535150003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="q">2017-06-20 06:22:34</subfield>
+    <subfield code="i">HV9475.N716 T46 2016</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="f">MAIN</subfield>
+  </datafield>
+</record>
