@@ -141,9 +141,9 @@ module ApplicationHelper
   end
 
   def aeon_request_button(document)
-    if document["location_display"] == ["rarestacks"] && document["library_facet"].include?("Special Collections Research Center")
-      button_to("Request Onsite Access", aeon_request_url(document), class:"aeon-request btn btn-warning") +
-      content_tag(:p, "For viewing materials from the Special Collections Research Center only", class: "aeon-text")
+    if document.fetch("location_display", []).include?("rarestacks") && document["library_facet"].include?("Special Collections Research Center")
+      button_to("Request to View in Reading Room", aeon_request_url(document), class:"aeon-request btn btn-primary") +
+      content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
     end
   end
 
