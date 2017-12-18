@@ -55,8 +55,6 @@ module Traject
 
         formats.concat genre
 
-        formats << "Archival" if archival?
-
         # If it"s a Dissertation, we decide it"s NOT a book
         if thesis?
           formats.delete("Book")
@@ -155,13 +153,6 @@ module Traject
                                 (controlfield_008[29] == "1")
                             end.nil?
                           end
-      end
-
-      # Marked as archival
-      def archival?
-        leader06 = @record.leader.slice(6)
-        leader08 = @record.leader.slice(8)
-        %w{t d f}.include?(leader06) && leader08 == "a"
       end
 
       # downcased version of the gmd, or else empty string
