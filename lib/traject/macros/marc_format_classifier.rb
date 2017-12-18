@@ -88,17 +88,17 @@ module Traject
       
         # Leader Field
 
-        leader = @record.leader
+        leader = record.leader
 
         # Control Fields
 
-        cf006 = @record.find_all { |f| f.tag == "006" }.first
-        cf008 = @record.find_all { |f| f.tag == "008" }.first
+        cf006 = record.find_all { |f| f.tag == "006" }.first
+        cf008 = record.find_all { |f| f.tag == "008" }.first
 
         # Without qualifiers
         
-        results = marc_genre_leader.fetch(@record.leader[6..7]) { # Leaders 6 and 7
-          marc_genre_leader.fetch(@record.leader[6]) { # Leader 6
+        results = marc_genre_leader.fetch(record.leader[6..7]) { # Leaders 6 and 7
+          marc_genre_leader.fetch(record.leader[6]) { # Leader 6
             'unknown'
           }
         }
@@ -139,15 +139,15 @@ module Traject
       # Just checks if it has a 502, if it does it"s considered a thesis
       def thesis?
         @thesis_q ||= begin
-                        ! @record.find { |a| a.tag == "502" }.nil?
+                        ! record.find { |a| a.tag == "502" }.nil?
                       end
       end
 
       # Just checks all $6xx for a $v "Congresses"
       def proceeding?
-        controlfield_008 = @record.find_all { |f| f.tag == "008" }
+        controlfield_008 = record.find_all { |f| f.tag == "008" }
         @proceeding_q ||= begin
-                            ! @record.find do |field|
+                            ! record.find do |field|
                               (field.tag.slice(0) == "6" &&
                                 field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }) ||
                                 (controlfield_008[29] == "1")
@@ -158,7 +158,7 @@ module Traject
       # downcased version of the gmd, or else empty string
       def normalized_gmd
         @gmd ||= begin
-                   ((a245 = @record["245"]) && a245["h"] && a245["h"].downcase) || ""
+                   ((a245 = record["245"]) && a245["h"] && a245["h"].downcase) || ""
                  end
       end
     end
