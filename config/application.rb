@@ -32,5 +32,6 @@ module Tulcob
       g.test_framework :rspec, spec: true
       g.fixture_replacement :factory_bot
     end
+    #config.log_level = :debug
   end
 end

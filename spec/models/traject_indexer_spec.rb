@@ -2,7 +2,9 @@
 
 require "rspec"
 require "traject/macros/marc_format_classifier"
+require "traject/macros/custom"
 include Traject::Macros::MarcFormats
+include Traject::Macros::Custom
 
 RSpec.describe "four_digit_year(field):" do
   describe "four_digit_year(field)" do
@@ -40,3 +42,38 @@ RSpec.describe "four_digit_year(field):" do
     end
   end
 end
+
+RSpec.describe "#to_marc_normalized" do
+
+  describe "#flank(field)" do
+    let(:input) {}
+    subject { Traject::Macros::Custom.flank input }
+    context "nil" do
+      it "returns an empty string" do
+        expect(subject).to be_nil
+      end
+    end
+
+    context "empty string" do
+      let(:input) { "" }
+      it "returns an empty string" do
+        expect(subject).to eq("")
+      end
+    end
+
+    context "non empty string" do
+      let(:input) { "foo" }
+      it "returns a flanked string" do
+        expect(subject).to eq("matchbeginswith foo matchendswith")
+      end
+    end
+
+    context "a string that is flanked" do
+      let(:input) { "matchbeginswith foo matchendswith"}
+      it "does not reflank a string" do
+        expect(subject).to eq(input)
+      end
+    end
+  end
+end
+
