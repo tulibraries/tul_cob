@@ -43,10 +43,7 @@ to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j
 to_field("format", marc_formats, &normalize_format)
 
 # Title fields
-# primary title
-to_field "title_t", extract_marc("245a")
-to_field "title_display", extract_marc("245a", trim_punctuation: true, alternate_script: false), &to_single_string
-to_field "title_vern_display", extract_marc("245a", trim_punctuation: true, alternate_script: :only)
+
 to_field "title_statement_display", extract_marc("245abcfgknps", alternate_script: false)
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
 to_field "title_uniform_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: false)
@@ -54,72 +51,30 @@ to_field "title_uniform_vern_display", extract_marc("130adfklmnoprs:240adfklmnop
 to_field "title_addl_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: false)
 to_field "title_addl_vern_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: :only)
 
-# subtitle
+to_field "title_t", extract_marc("245a")
 to_field "subtitle_t", extract_marc("245b")
-to_field("subtitle_display", extract_marc("245b", trim_punctuation: true, alternate_script: false), &to_single_string)
-to_field "subtitle_vern_display", extract_marc("245b", trim_punctuation: true, alternate_script: :only)
+to_field "title_statement_t", extract_marc("245abfgknps")
+to_field "title_uniform_t", extract_marc("130adfklmnoprs:240adfklmnoprs:730abcdefgklmnopqrst")
 
-# additional title fields
 ATOZ = ("a".."z").to_a.join("")
 ATOU = ("a".."u").to_a.join("")
 to_field "title_addl_t",
   extract_marc(%W{
-    245abnps
-    130#{ATOZ}
-    240abcdefgklmnopqrs
     210ab
     222ab
     242abnp
     243abcdefgklmnopqrs
     246abcdefgnp
     247abcdefgnp
+    740anp
                }.join(":"))
 to_field "title_added_entry_t", extract_marc(%W{
   700gklmnoprst
   710fgklmnopqrst
   711fgklnpst
-  730abcdefgklmnopqrst
-  740anp
+
                                              }.join(":"))
-to_field "title_series_t", extract_marc("440anpv:490av")
 to_field "title_sort", marc_sortable_title
-
-# Author fields
-to_field "author_t", extract_marc("100abcegqu:110abcdegnu:111acdegjnqu")
-to_field "author_addl_t", extract_marc("700abcegqu:710abcdegnu:711acdegjnqu")
-to_field "author_display", extract_marc("100abcdq:110#{ATOZ}:111#{ATOZ}", alternate_script: false)
-to_field "author_vern_display", extract_marc("100abcdq:110#{ATOZ}:111#{ATOZ}", alternate_script: :only)
-
-# JSTOR isn"t an author. Try to not use it as one
-to_field "author_sort", marc_sortable_author
-
-# Subject fields
-to_field "subject_t", extract_marc(%W(
-  600#{ATOU}
-  610#{ATOU}
-  611#{ATOU}
-  630#{ATOU}
-  650abcde
-  651ae
-  653a:654abcde:655abc
-                                   ).join(":"))
-to_field "subject_addl_t", extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:650vwxyz:651vwxyz:654vwxyz:655vwxyz")
-# Does marc_publication_date guarantee single value?
-to_field "pub_date_sort", marc_publication_date
-
-# Call Number fields
-to_field "lc_callnum_display", extract_marc("050ab", first: true)
-to_field("lc_1letter_facet", extract_marc("050ab", first: true, translation_map: "callnumber_map"), &first_letters_only)
-to_field("lc_alpha_facet", extract_marc("050a", first: true), &normalize_lc_alpha)
-to_field "lc_b4cutter_facet", extract_marc("050a", first: true)
-
-# URL Fields
-to_field "url_more_links_display", extract_url_more_links
-to_field "electronic_resource_display", extract_electronic_resource
-
-# Availability
-to_field "availability_facet", extract_availability
-to_field "location_display", extract_marc("HLDc")
 
 # Creator/contributor fields
 to_field "creator_t", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
@@ -129,15 +84,20 @@ to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
+to_field "creator_t", extract_marc("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
+to_field "author_sort", marc_sortable_author
+
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
 to_field "imprint_display", extract_marc("260abcefg3:264|*0|abc3:264|*1|abc3:264|*2|abc3:264|*3|abc3", alternate_script: false)
 to_field "imprint_vern_display", extract_marc("260abcefg3:264|*1|abc3", alternate_script: :only)
 to_field "edition_display", extract_marc("250a:254a", trim_punctuation: true, alternate_script: false)
-to_field "pub_location_t", extract_marc("260a:264a", trim_punctuation: true)
-to_field "publisher_t", extract_marc("260b:264b", trim_punctuation: true)
 to_field "pub_date", extract_pub_date
 to_field "date_copyright_display", extract_copyright
+
+to_field "pub_location_t", extract_marc("260a:264a", trim_punctuation: true)
+to_field "publisher_t", extract_marc("260b:264b", trim_punctuation: true)
+to_field "pub_date_sort", marc_publication_date
 
 # Physical characteristics fields -3xx
 to_field "phys_desc_display", extract_marc("300abcefg3:340abcdefhijkmno")
@@ -153,7 +113,8 @@ to_field "music_no_display", extract_marc("383abcde")
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
 to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate_script: :only)
 # to_field "date_series", extract_marc("362a")
-to_field "volume_series_display", extract_marc("830v:490v:440v")
+
+to_field "title_series_t", extract_marc("830av:490av:440anpv")
 
 # Note fields
 to_field "note_display", extract_marc("500a:508a:511a:515a:518a:521ab:525a:530abcd:533abcdefmn:534pabcefklmnt:538aiu:546ab:550a:586a:588a")
@@ -176,7 +137,6 @@ to_field "note_accruals_display", extract_marc("584a")
 to_field "note_local_display", extract_marc("590a")
 
 # Subject fields
-# [TODO] need to improve the subjects
 to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
 to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
 to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
@@ -184,10 +144,35 @@ to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y",
 to_field "subject_region_facet", marc_geo_facet
 to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
 
+to_field "subject_t", extract_marc(%W(
+  600#{ATOU}
+  610#{ATOU}
+  611#{ATOU}
+  630#{ATOU}
+  647acdg
+  650abcde
+  653a:654abcde
+                                   ).join(":"))
+to_field "subject_addl_t", extract_marc("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvwxyz")
+
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")
 to_field "call_number_alt_display", extract_marc("ITMjk")
 to_field "library_facet", extract_library
+
+# Call Number fields
+to_field "lc_callnum_display", extract_marc("050ab", first: true)
+to_field("lc_1letter_facet", extract_marc("050ab", first: true, translation_map: "callnumber_map"), &first_letters_only)
+to_field("lc_alpha_facet", extract_marc("050a", first: true), &normalize_lc_alpha)
+to_field "lc_b4cutter_facet", extract_marc("050a", first: true)
+
+# URL Fields
+to_field "url_more_links_display", extract_url_more_links
+to_field "electronic_resource_display", extract_electronic_resource
+
+# Availability
+to_field "availability_facet", extract_availability
+to_field "location_display", extract_marc("HLDc")
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)

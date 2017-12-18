@@ -37,17 +37,14 @@ class CatalogController < ApplicationController
       fl: %w[
         id
         score
-        author_display
-        author_vern_display
         availability_facet
         creator_display
+        contributor_display
         electronic_resource_display
         format
         imprint_display
         pub_date
-        title_series_vern_display
-        title_display
-        title_vern_display
+        title_series_display
         title_statement_display
         title_uniform_display
         isbn_display
@@ -68,6 +65,8 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^50000
         title_t^25000
         subtitle_t^10000
+        title_uniform_unstem_search^5000
+        title_uniform_t^2500
         title_addl_unstem_search^5000
         title_addl_t^2500
         title_added_entry_unstem_search^1500
@@ -76,10 +75,8 @@ class CatalogController < ApplicationController
         subject_unstem_search^750
         subject_topic_facet^625
         subject_t^500
-        author_unstem_search^250
-        author_addl_unstem_search^250
-        author_t^100
-        author_addl_t^50
+        creator_unstem_search^250
+        creator_t^100
         subject_addl_unstem_search^250
         subject_addl_t^50
         title_series_unstem_search^25
@@ -92,6 +89,10 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
+        title_uniform_unstem_search^75000
+        title_uniform_t^50000
+        title_statement_unstem_search^50000
+        title_statement_t^25000
         title_addl_unstem_search^50000
         title_addl_t^25000
         title_added_entry_unstem_search^15000
@@ -100,10 +101,8 @@ class CatalogController < ApplicationController
         subject_unstem_search^7500
         subject_topic_facet^6250
         subject_t^5000
-        author_unstem_search^2500
-        author_addl_unstem_search^2500
-        author_t^1000
-        author_addl_t^500
+        creator_unstem_search^2500
+        creator_t^1000
         subject_addl_unstem_search^2500
         subject_addl_t^500
         title_series_unstem_search^250
@@ -111,23 +110,23 @@ class CatalogController < ApplicationController
         text^10
       ].join(" "),
       author_qf: %w[
-        author_unstem_search^200
-        author_addl_unstem_search^50
-        author_t^20
-        author_addl_t
+        creator_unstem_search^200
+        creator_t^20
       ].join(" "),
       author_pf: %w[
-        author_unstem_search^2000
-        author_addl_unstem_search^500
-        author_t^200
-        author_addl_t^10
+        creator_unstem_search^2000
+        creator_t^200
       ].join(" "),
       title_qf: %w[
         title_unstem_search^50000
         subtitle_unstem_search^25000
+        title_uniform_unstem_search^15000
+        title_statement_unstem_search^10000
         title_addl_unstem_search^10000
         title_t^5000
         subtitle_t^2500
+        title_uniform_t^150
+        title_statement_t^100
         title_addl_t^100
         title_added_entry_unstem_search^50
         title_added_entry_t^10
@@ -137,9 +136,13 @@ class CatalogController < ApplicationController
       title_pf: %w[
         title_unstem_search^500000
         subtitle_unstem_search^250000
+        title_uniform_unstem_search^150000
+        title_statement_unstem_search^100000
         title_addl_unstem_search^100000
         title_t^50000
         subtitle_t^25000
+        title_uniform_t^1500
+        title_statement_t^1000
         title_addl_t^1000
         title_added_entry_unstem_search^500
         title_added_entry_t^100

@@ -368,32 +368,6 @@ RSpec.feature "RecordPageFields", type: :feature do
     end
   end
 
-  feature "MARC Volume Fields" do
-    let (:item_830_vol) { fixtures.fetch("volume_830_vol") }
-    scenario "User visits a document with volume series" do
-      visit "catalog/#{item_830_vol['doc_id']}"
-      within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_830_vol["volume_series"])
-      end
-    end
-
-    let (:item_490_vol) { fixtures.fetch("volume_490_vol") }
-    scenario "User visits a document with volume series" do
-      visit "catalog/#{item_490_vol['doc_id']}"
-      within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_490_vol["volume_series"])
-      end
-    end
-
-    let (:item_440_vol) { fixtures.fetch("volume_440_vol") }
-    scenario "User visits a document with volume series" do
-      visit "catalog/#{item_440_vol['doc_id']}"
-      within "dd.blacklight-volume_series_display" do
-        expect(page).to have_text(item_440_vol["volume_series"])
-      end
-    end
-  end
-
   feature "MARC Duration Fields" do
     let (:item_306) { fixtures.fetch("duration_306") }
     scenario "User visits a document with duration" do
