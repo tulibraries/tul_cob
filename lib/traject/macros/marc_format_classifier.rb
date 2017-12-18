@@ -75,15 +75,14 @@ module Traject
       # Book; Journal/Newspaper; Musical Score; Map/Globe; Non-musical Recording; Musical Recording
       # Image; Software/Data; Video/Film
       #
-      # Uses leader byte 6, leader byte 7, and 007 byte 0.
+      # Uses leader byte 6, leader byte 7.
       #
-      # Gets actual labels from marc_genre_leader and marc_genre_007 translation maps,
+      # Gets actual labels from marc_genre_leader translation maps,
       # so you can customize labels if you want.
       #
       # Reference: https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Mappings+Displays+Facets+Search#DataMappings(Displays,Facets,Search)-ResourceTypeMappings
       def genre
         marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader").to_hash
-        marc_genre_007      = Traject::TranslationMap.new("marc_genre_007").to_hash
         marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21").to_hash
         marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26").to_hash
         marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash

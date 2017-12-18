@@ -42,17 +42,17 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("book_leader_ad.xml").genre).to include("Book")
       end
     end
-    context "Leader 06=a; 07=[b|i|s]; 008[21]=m or 006[04]=m" do
+    context "Leader 06=a; 008[21]=m or 006[04]=m" do
       it "says Book" do
         expect(classifier_for("book_07s_008-21m.xml").genre).to include("Book")
       end
     end
-    context "Leader 06=a; 07=[b|i|s]; 008[21]=d or 006[04]=d" do
+    context "Leader 06=a; 008[21]=d or 006[04]=d" do
       it "says database" do
         expect(classifier_for("book_07i_008-21d.xml").genre).to include("Database")
       end
     end
-    context "Leader 06=a; 07=[b|i|s]; 008[21]=w or 006[04]=w" do
+    context "Leader 06=a; 008[21]=w or 006[04]=w" do
       it "says website" do
         expect(classifier_for("book_07i_008-21w.xml").genre).to include("Website")
       end
