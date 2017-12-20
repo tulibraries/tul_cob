@@ -79,7 +79,7 @@ bundle exec rake ingest
 
 You can also pass in ther path to a separate file you would like to ingest as a parameter
 
-``bash
+```bash
 bundle exec rake ingest[/some/other/path.xml]
 ```
 
