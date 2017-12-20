@@ -37,8 +37,8 @@ module ApplicationHelper
       if plain_text_subfields.present?
         creator = newname + " " + plain_text_subfields
       end
+      creator
     end
-    creator
   end
 
   def creator_index_separator(args)
