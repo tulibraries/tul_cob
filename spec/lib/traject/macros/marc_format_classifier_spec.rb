@@ -20,7 +20,7 @@ def classifier_for(filename)
 end
 
 RSpec.describe MarcFormatClassifier, type: :lib do
-  
+
   describe "genre" do
     context "Leader 06=a; 07=[m]" do
       it "says book" do
@@ -117,8 +117,13 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("object.xml").genre).to include("Object")
       end
     end
+    context "Record missing 006 and 008" do
+      it "still parses correct from leader" do
+        expect(classifier_for("serial_no_control_fields.xml").genre).to include("Journal/Periodical")
+      end
+    end
   end
-  
+
   describe "format" do
     context "Thesis" do
       it "says thesis" do
