@@ -85,7 +85,7 @@ module Traject
         marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26").to_hash
         marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash
         resource_type_codes = Traject::TranslationMap.new("resource_type_codes").to_hash
-      
+
         # Leader Field
 
         leader = record.leader
@@ -96,39 +96,32 @@ module Traject
         cf008 = record.find_all { |f| f.tag == "008" }.first
 
         # Without qualifiers
-        
+
         results = marc_genre_leader.fetch(record.leader[6..7]) { # Leaders 6 and 7
           marc_genre_leader.fetch(record.leader[6]) { # Leader 6
             'unknown'
           }
         }
-      
+
         # Additional qualifiers
-        
+        additional_qualifier = nil
         case results
         when "serial" # Serial component, Integrating resource, Serial
-          additional_qualifier = marc_genre_008_21.fetch(cf008.value[21]) { # Controlfield 008[21]
-            cf006.nil? ? "serial" : marc_genre_008_21.fetch(cf006.value[4]) {  # Controlfield 006[4]
-                "serial"
-            }
-          }
+          additional_qualifier = marc_genre_008_21.fetch(cf008.value[21], nil) unless cf008.nil? # Controlfield 008[21]
+          additional_qualifier ||= marc_genre_008_21.fetch(cf006.value[4], nil) unless cf006.nil?  # Controlfield 006[4]
+          additional_qualifier ||= "serial"
         when "video" # Projected medium
-          additional_qualifier = marc_genre_008_33.fetch(cf008.value[33]) { # Controlfield 008[33]
-            cf006.nil? ? "visual" : marc_genre_008_33.fetch(cf006.value[16]) { # Controlfield 006[16]
-              "visual"
-            }
-          }
+          additional_qualifier = marc_genre_008_33.fetch(cf008.value[33], nil) unless cf008.nil? # Controlfield 008[33]
+          additional_qualifier ||= marc_genre_008_33.fetch(cf006.value[16], nil) unless cf006.nil? # Controlfield 006[16]
+          additional_qualifier ||= "visual"
         when "computer_file"
-          additional_qualifier = marc_genre_008_26.fetch(cf008.value[26]) { # Controlfield 008[26]
-            cf006.nil? ? "computer_file" : marc_genre_008_26.fetch(cf006.value[9]) { # Controlfield 006[9]
-                "computer_file"
-            }
-          }
+          additional_qualifier = marc_genre_008_26.fetch(cf008.value[26], nil) unless cf008.nil? # Controlfield 008[26]
+          additional_qualifier ||= marc_genre_008_26.fetch(cf006.value[9], nil) unless cf006.nil? # Controlfield 006[9]
+          additional_qualifier ||= "computer_file"
         else # Everything else
-          additional_qualifier = nil
         end
         results = additional_qualifier if additional_qualifier
-        
+
         [results].flatten.map { |r| resource_type_codes[r] }
       end
 
