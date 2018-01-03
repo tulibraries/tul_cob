@@ -30,15 +30,16 @@ module ApplicationHelper
   def browse_creator(args)
     creator = args[:document][args[:field]]
     creator.map do |name|
-      linked_subfield = name.split("|").first
-      newname = link_to(linked_subfield, root_url + "/?f[creator_facet][]=#{linked_subfield}").html_safe
+      linked_subfields = name.split("|").first
+      newname = link_to(linked_subfields, root_url + "/?f[creator_facet][]=#{linked_subfields}").html_safe
       plain_text_subfields = name.split("|").second
       creator = newname
       if plain_text_subfields.present?
+        plain_text_subfields = plain_text_subfields
         creator = newname + " " + plain_text_subfields
       end
+      creator
     end
-    creator
   end
 
   def creator_index_separator(args)

@@ -25,22 +25,30 @@ module Traject
         end
       end
 
+      def creator_name_trim_punctuation(name)
+        name.sub(/ *[ ,\/;:] *\Z/, '').sub(/( *[[:word:]]{3,})\. *\Z/, '\1')
+      end
+
+      def creator_role_trim_punctuation(role)
+        role.sub(/ *[ ,.\/;:] *\Z/, '')
+      end
+
       def extract_creator
         lambda do |rec, acc|
           rec.fields("100").each do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("110").each do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("111").each do |f|
             linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
       end
@@ -50,17 +58,17 @@ module Traject
           MarcExtractor.cached("100abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("110abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("111acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
       end
@@ -70,17 +78,17 @@ module Traject
           rec.fields("700").each do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("710").each do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("711").each do |f|
             linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
       end
@@ -90,17 +98,17 @@ module Traject
           MarcExtractor.cached("700abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("710abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("711acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
             linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << linked_subfields + "|" + plain_text_subfields
+            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
       end
