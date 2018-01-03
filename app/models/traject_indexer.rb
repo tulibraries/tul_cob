@@ -111,7 +111,7 @@ to_field "music_no_display", extract_marc("383abcde")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
-to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate_script: :only)
+to_field "title_series_vern_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: :only)
 # to_field "date_series", extract_marc("362a")
 
 to_field "title_series_t", extract_marc_with_flank("830av:490av:440anpv")
