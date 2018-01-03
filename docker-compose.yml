@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: .docker/app/Dockerfile
     command: "bundle exec rails s -p 3000 -b '0.0.0.0'"
+    container_name: "$CONTAINER_NAME"
     volumes:
       - .:/tul_cob
     tty: true
@@ -15,6 +16,15 @@ services:
     environment:
       SOLR_URL: "http://solr:8983/solr/blacklight"
       LC_ALL: "C.UTF-8"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.frontend.rule=Host:${CONTAINER_NAME}.${DOMAIN}"
+      - "traefik.docker.network=tul_cob_default"
+      - "traefik.backend=microbot"
+      - "traefik.docker.network=reverseproxy_default"
+    networks:
+      - "reverseproxy_default"
+      - "default"
 
   sp:
     build:
@@ -65,3 +75,7 @@ services:
       LC_ALL: "C.UTF-8"
       TERM: "xterm"
 
+networks:
+  reverseproxy_default:
+    external:
+      name: reverseproxy_default
