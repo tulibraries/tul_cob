@@ -7,7 +7,6 @@ require "webmock/rspec"
 require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
-
 WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__
@@ -81,7 +80,6 @@ RSpec.configure do |config|
 
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
-=begin
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing
   # is tagged with `:focus`, all examples get run. RSpec also provides
@@ -127,7 +125,7 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
-=end
+
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
 
