@@ -4,7 +4,7 @@ require "rails_helper"
 require "yaml"
 include ApplicationHelper
 
-RSpec.feature "RecordPageFields", type: :feature do
+RSpec.feature "RecordPageFields" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/features.yml")
   }

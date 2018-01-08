@@ -1,7 +1,7 @@
 require "rails_helper"
 
 
-RSpec.feature "Basic Page Elements", type: :feature do
+RSpec.feature "Basic Page Elements" do
 
   feature "Check the home page for nav elements when anonymous" do
     scenario "Go to the home page" do
