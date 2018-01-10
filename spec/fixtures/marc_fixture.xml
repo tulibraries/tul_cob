@@ -23772,6 +23772,7 @@
       <subfield code='v'>Subfield V.</subfield>
       <subfield code='x'>Subfield X.</subfield>
       <subfield code='y'>Subfield Y.</subfield>
+      <subfield code='z'>Subfield Z.</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
