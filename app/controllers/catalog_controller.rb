@@ -229,16 +229,16 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field "availability_facet", label: "Availability"
-    config.add_facet_field "library_facet", label: "Library"
-    config.add_facet_field "format", label: "Resource Type"
+    config.add_facet_field "library_facet", label: "Library", limit: true, show: true
+    config.add_facet_field "format", label: "Resource Type", limit: true, show: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
-    config.add_facet_field "subject_topic_facet", label: "Topic"     # limit: 20, index_range: 'A'..'Z'
-    config.add_facet_field "subject_era_facet", label: "Era"
-    config.add_facet_field "subject_region_facet", label: "Region"
-    config.add_facet_field "genre_facet", label: "Genre"
-    config.add_facet_field "language_facet", label: "Language"     # limit: true
+    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true
+    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
+    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
+    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
