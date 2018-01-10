@@ -115,20 +115,22 @@ title_series_830:
 title_series_490:
   doc_id: "991012132499760630"
   title_series: "Dictionary of American history: 490. Subfield V."
+  title_series_vern: "مطبوعات المجمع؛."
 title_series_440:
   doc_id: "991012132499760631"
   title_series: "Dictionary of American history: 440. Subfield N. Subfield P. Subfield V."
 title_series_800:
   doc_id: "991012171319703811"
   title_series: "United States. Congress. Senate. Subfield d. Subfield e. Subfield f. Subfield g. Subfield h. Subfield j. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield q. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
+  title_series_vern: "مطبوعات المجمع؛."
 title_series_810:
   doc_id: "991012171179703811"
   title_series: "United States. Congress. Senate. Subfield d. Subfield e.  Subfield g. Subfield h. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
-
+  title_series_vern: "مطبوعات المجمع؛."
 title_series_811:
   doc_id: "991012177359703811"
   title_series: "United States. Senate. Subfield d. Subfield e. Subfield f.  Subfield g. Subfield h. Subfield j. Subfield k. Subfield l.  Subfield n. Subfield p. Subfield q. Subfield s. Executive report ; Subfield u. 109-5."
-
+  title_series_vern: "مطبوعات المجمع؛."
 duration_306:
   doc_id: "991012132499760632"
   duration: "Dictionary of American history: 306."
@@ -260,7 +262,7 @@ subject_600:
   subject: "Dictionary of American history: 600.  — Subfield B.  — Subfield C.  — Subfield D.  — Subfield E.  — Subfield F.  — Subfield G.  — Subfield H.  — Subfield K.  — Subfield L.  — Subfield M.  — Subfield N.  — Subfield O.  — Subfield P.  — Subfield Q.  — Subfield R.  — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."
 subject_610:
   doc_id: "991012132499760671"
-  subject: "Dictionary of American history: 610. — Subfield B. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield K. — Subfield L. — Subfield M. — Subfield N. — Subfield O. — Subfield P. — Subfield R. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y."
+  subject: "Dictionary of American history: 610. — Subfield B. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield K. — Subfield L. — Subfield M. — Subfield N. — Subfield O. — Subfield P. — Subfield R. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y.  — Subfield Z."
 subject_611:
   doc_id: "991012132499760672"
   subject: "Dictionary of American history: 611. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield J. — Subfield K. — Subfield L. — Subfield N. — Subfield P. — Subfield Q. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."

@@ -366,6 +366,49 @@ RSpec.feature "RecordPageFields", type: :feature do
         expect(page).to have_text(item_830["title_series_vern"])
       end
     end
+
+    let (:item_490) { fixtures.fetch("title_series_490") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_490['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_490["title_series_vern"])
+      end
+    end
+
+    let (:item_440) { fixtures.fetch("title_series_440") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_440['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_440["title_series_vern"])
+      end
+    end
+
+    let (:item_800) { fixtures.fetch("title_series_800") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_800['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_800["title_series_vern"])
+      end
+    end
+
+    let (:item_810) { fixtures.fetch("title_series_810") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_810['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_810["title_series_vern"])
+      end
+    end
+
+    let (:item_811) { fixtures.fetch("title_series_811") }
+    scenario "User visits a document with series title vernacular" do
+      visit "catalog/#{item_811['doc_id']}"
+      within "dd.blacklight-title_series_vern_display" do
+        expect(page).to have_text(item_811["title_series_vern"])
+      end
+    end
+
+
+
   end
 
   feature "MARC Duration Fields" do

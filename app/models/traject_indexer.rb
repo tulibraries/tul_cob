@@ -111,7 +111,7 @@ to_field "music_no_display", extract_marc("383abcde")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
-to_field "title_series_vern_display", extract_marc("830a:490a:440anp", alternate_script: :only)
+to_field "title_series_vern_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: :only)
 # to_field "date_series", extract_marc("362a")
 
 to_field "title_series_t", extract_marc_with_flank("830av:490av:440anpv")
@@ -138,7 +138,7 @@ to_field "note_local_display", extract_marc("590a")
 
 # Subject fields
 to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
-to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
+to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
 to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
 to_field "subject_region_facet", marc_geo_facet

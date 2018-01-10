@@ -20165,6 +20165,10 @@
       <subfield code='h'>NA5620.S47</subfield>
       <subfield code='i'>S26 2016</subfield>
     </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>800-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+    </datafield>
     <datafield ind1=' ' ind2=' ' tag='902'>
       <subfield code='a'>160511</subfield>
     </datafield>
@@ -20332,6 +20336,10 @@
       <subfield code='3'>PDF version:</subfield>
       <subfield code='u'>http://purl.access.gpo.gov/GPO/LPS65590</subfield>
     </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>810-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+    </datafield>
     <datafield ind1=' ' ind2=' ' tag='902'>
       <subfield code='a'>130330</subfield>
     </datafield>
@@ -20486,6 +20494,10 @@
     </datafield>
     <datafield ind1='4' ind2='1' tag='856'>
       <subfield code='u'>http://purl.access.gpo.gov/GPO/LPS65514</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>811-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
     </datafield>
     <datafield ind1=' ' ind2=' ' tag='902'>
       <subfield code='a'>140917</subfield>
@@ -23120,6 +23132,10 @@
       <subfield code='a'>Dictionary of American history: 490.</subfield>
       <subfield code='v'>Subfield V.</subfield>
     </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>490-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+    </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
     </datafield>
@@ -23135,6 +23151,10 @@
       <subfield code='n'>Subfield N.</subfield>
       <subfield code='p'>Subfield P.</subfield>
       <subfield code='v'>Subfield V.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>440-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
@@ -23772,6 +23792,7 @@
       <subfield code='v'>Subfield V.</subfield>
       <subfield code='x'>Subfield X.</subfield>
       <subfield code='y'>Subfield Y.</subfield>
+      <subfield code='z'>Subfield Z.</subfield>
     </datafield>
     <datafield ind1='1' ind2='0' tag='245'>
       <subfield code='a'>Concise dictionary of American history.</subfield>
