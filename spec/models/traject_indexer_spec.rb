@@ -75,7 +75,7 @@ RSpec.describe "#to_marc_normalized" do
     end
 
     context "a string that is flanked" do
-      let(:input) { "matchbeginswith foo matchendswith"}
+      let(:input) { "matchbeginswith foo matchendswith" }
       it "does not reflank a string" do
         expect(subject).to eq(input)
       end

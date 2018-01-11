@@ -1,4 +1,6 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller do
 
@@ -21,20 +23,19 @@ RSpec.describe CatalogController, type: :controller do
   describe "GET index as json" do
     render_views
     before do
-      get(:index, params: {q: "education"}, :format => :json)
-      #binding.pry
+      get(:index, params: { q: "education" }, format: :json)
     end
     let(:docs) { JSON.parse(response.body)["response"]["docs"] }
     # Collect the keys from the document hashes into a single array
-    let(:docs_keys) { docs.collect {|doc| doc.keys}.flatten.uniq }
+    let(:docs_keys) { docs.collect { |doc| doc.keys }.flatten.uniq }
     let(:expected_keys) {
       %w[ id imprint_display creator_display pub_date
           format isbn_display lccn_display
         ]
     }
 
-    context 'an individual index result' do
-      it 'has an the expected fields' do
+    context "an individual index result" do
+      it "has an the expected fields" do
         expected_keys.each do |key|
           expect(docs_keys).to include key
         end

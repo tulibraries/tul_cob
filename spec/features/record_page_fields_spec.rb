@@ -244,7 +244,7 @@ RSpec.feature "RecordPageFields" do
     let (:item_260_year_only) { fixtures.fetch("imprint_260_year_only") }
     scenario "User visits a document including year only in subfield 'c'" do
       visit "catalog/#{item_260_year_only['doc_id']}"
-        expect(page).to have_no_css("dd.blacklight-date_copyright_display")
+      expect(page).to have_no_css("dd.blacklight-date_copyright_display")
     end
 
     let (:item_264) { fixtures.fetch("imprint_264") }
