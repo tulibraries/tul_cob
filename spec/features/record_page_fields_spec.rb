@@ -9,7 +9,7 @@ RSpec.feature "RecordPageFields" do
     YAML.load_file("#{fixture_path}/features.yml")
   }
 
-  feature "MARC Title Statement Fields", :focus do
+  feature "MARC Title Statement Fields" do
     let (:item) { fixtures.fetch("title_statement") }
     scenario "User visits a document with full title statement" do
       visit "catalog/#{item['doc_id']}"
