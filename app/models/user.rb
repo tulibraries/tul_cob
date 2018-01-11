@@ -34,6 +34,7 @@ class User < ApplicationRecord
       user.uid      = auth.uid
       user.provider = auth.provider
       user.email    = "#{auth.uid}@temple.edu"
+      user.name     = auth.cn
     end
   end
 
