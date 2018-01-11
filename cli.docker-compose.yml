@@ -1,0 +1,19 @@
+version: "3.2"
+
+services:
+  cli:
+    build:
+      context: .
+      dockerfile: .docker/cli/Dockerfile
+    image: "tulcob_app:latest"
+    tty: true
+    depends_on:
+      - "app"
+    volumes:
+      - .:/tul_cob
+    ports:
+      - "3000"
+    environment:
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      LC_ALL: "C.UTF-8"
+      TERM: "xterm"
