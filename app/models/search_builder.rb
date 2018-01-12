@@ -13,7 +13,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     # Process order matters; :begins_with_search assumes :exact_phrase_search
     # happens after it, see the note for :to_phrase method for extra context.
     [ :begins_with_search ] +
-    [ :exact_phrase_search ]
+    [ :exact_phrase_search ] +
+    [ :disable_advanced_spellcheck ]
 
 
   def begins_with_search(solr_parameters)
@@ -24,6 +25,14 @@ class SearchBuilder < Blacklight::SearchBuilder
     dereference_with(:to_phrase, solr_parameters)
   end
 
+  def disable_advanced_spellcheck(solr_parameters)
+    params = get_params
+    if !params.empty? && params["search_field"] == "advanced"
+      # @See BL-234
+      solr_parameters["spellcheck"] = "false"
+    end
+  end
+
   private
 
     def dereference_with(method, solr_parameters)
@@ -32,7 +41,6 @@ class SearchBuilder < Blacklight::SearchBuilder
 
       # Search misbehaves if we alter non advanced search query.
       if !query.empty? && !params.empty? && params["search_field"] == "advanced"
-
         # We need the original values in the search for use in creating
         # a de-referenced version of the query.
         fields = get_params.select { |k| k.match(/^q_/) }

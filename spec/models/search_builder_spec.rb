@@ -9,6 +9,32 @@ RSpec.describe SearchBuilder , type: :model do
 
   subject { search_builder }
 
+  describe ".disable_advanced_spellcheck" do
+    let(:solr_parameters) { Blacklight::Solr::Request.new(spellcheck: "true") }
+
+    context "when not doing an advanced search" do
+      let(:params) { ActionController::Parameters.new }
+
+      it "does not disable the spellcheck" do
+        allow(context).to receive(:params).and_return(params)
+        subject.disable_advanced_spellcheck(solr_parameters)
+        expect(solr_parameters["spellcheck"]).to eq("true")
+      end
+
+    end
+
+    context "when doing an advanced search" do
+      let(:params) { ActionController::Parameters.new(search_field: "advanced") }
+
+      it "disables the spellcheck" do
+        allow(context).to receive(:params).and_return(params)
+        subject.disable_advanced_spellcheck(solr_parameters)
+        expect(solr_parameters["spellcheck"]).to eq("false")
+      end
+    end
+  end
+
+
   describe "#begins_with_search" do
     context "passing empty solr_parameters" do
       it "does nothing" do
