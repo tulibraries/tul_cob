@@ -26,8 +26,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def disable_advanced_spellcheck(solr_parameters)
-    params = get_params
-    if !params.empty? && params["search_field"] == "advanced"
+    if blacklight_params["search_field"] == "advanced"
       # @See BL-234
       solr_parameters["spellcheck"] = "false"
     end
@@ -37,13 +36,12 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     def dereference_with(method, solr_parameters)
       query = solr_parameters["q"] || ""
-      params = get_params
 
       # Search misbehaves if we alter non advanced search query.
-      if !query.empty? && !params.empty? && params["search_field"] == "advanced"
+      if !query.empty? && blacklight_params["search_field"] == "advanced"
         # We need the original values in the search for use in creating
         # a de-referenced version of the query.
-        fields = get_params.select { |k| k.match(/^q_/) }
+        fields = blacklight_params.select { |k| k.match(/^q_/) }
 
         # We de-reference values in order to be able to quote them; otherwise,
         # solr throws a 500 error: https://stackoverflow.com/a/10183238/256854
@@ -59,7 +57,7 @@ class SearchBuilder < Blacklight::SearchBuilder
         solr_parameters["q"] = queries.join(" ")
 
         # De-referenced values have to be added as solr request parameters.
-        ops = params.fetch("op_row", [])
+        ops = blacklight_params.fetch("op_row", [])
         ops.zip(fields).each { |op, f|
           k, v = f
           solr_parameters[k] = send(method, v, op)
@@ -71,8 +69,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     def append_start_flank(value, op)
       return if value.nil?
 
-      # value is always fresh from params so we don't have to worry about
-      # process duplication/mutation but we do have to reapply processes.
+      # value is always fresh from blacklight_params so we don't have to worry
+      # about process duplication/mutation but we do have to reapply processes.
       if op == "begins_with"
         to_phrase("#{BEGINS_WITH_TAG} #{value}", "is")
       else
@@ -83,8 +81,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     def to_phrase(value, op)
       return if value.nil?
 
-      # value is always fresh from params so we don't have to worry about
-      # process duplication/mutation but we do have to reapply processes.
+      # value is always fresh from blacklight_params so we don't have to worry
+      # about process duplication/mutation but we do have to reapply processes.
       if op == "is"
         "\"#{value}\""
       elsif op == "begins_with"
@@ -113,13 +111,5 @@ class SearchBuilder < Blacklight::SearchBuilder
     def param_dereference(q, k)
       local_param, _, connector = q
       "_query_:\"{#{local_param} v=$#{k}}\" #{connector}"
-    end
-
-    def get_params
-      if scope.respond_to? :params
-        scope.params || {}
-      else
-        {}
-      end
     end
 end
