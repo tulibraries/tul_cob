@@ -12,9 +12,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def shibboleth
     # You need to implement the method below in your model (e.g. app/models/user.rb)
+    next_url = params[:next] || 'user#account'
     @user = User.from_omniauth(request.env["omniauth.auth"])
+    session[:alma_auth_type] = 'sso'
+    session[:alma_sso_user] = @user.uid
+    session[:alma_sso_token] = SecureRandom.hex(10)
     set_flash_message(:notice, :success, kind: "Shibboleth") if is_navigational_format?
-    sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+    sign_in_and_redirect next_url, event: :authentication #this will throw if @user is not activated
   end
 
   def failure
