@@ -1,7 +1,7 @@
 <div class="user-info row row-eq-height">
 	<div class="col col-md-5">
 	  <ul>
-	    <li><span>Name:</span> Laura Pierson </li>
+	    <li><span>Name:</span> <%= current_user.name %></li>
 	    <li><span>Status:</span> Active </li>
 	    <li><span>Items checked out:</span> <%= total_loans(@loans) %></li>
 	    <li><span>Items requested:</span> <%= total_holds(@holds) %></li>
