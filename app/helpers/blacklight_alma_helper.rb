@@ -17,28 +17,28 @@ module BlacklightAlmaHelper
   end
 
   def alma_app_fulfillment_url(document, service_type: nil, language: nil, view: nil)
-      mms_id = document.respond_to?(:alma_mms_id) ? document.alma_mms_id : document.id
-      service_type ||= alma_service_type_for_fulfillment_url(document)
+    mms_id = document.respond_to?(:alma_mms_id) ? document.alma_mms_id : document.id
+    service_type ||= alma_service_type_for_fulfillment_url(document)
 
-      query = {
-          'is_new_ui': true,
-          "req.skin": "temple_01",
-          svc_dat: service_type,
-          'rft.mms_id': mms_id,
-      }
-      rft_dat_value = [language.present? ? "language=#{language}" : nil,
-                       view.present? ? "view=#{view}" : nil].compact.join(',')
-      query['rft_dat'] = rft_dat_value if rft_dat_value.present?
-      query['u.ignore_date_coverage'] = 'true' if service_type == 'viewit'
+    query = {
+        'is_new_ui': true,
+        "req.skin": "temple_01",
+        svc_dat: service_type,
+        'rft.mms_id': mms_id,
+    }
+    rft_dat_value = [language.present? ? "language=#{language}" : nil,
+                     view.present? ? "view=#{view}" : nil].compact.join(",")
+    query["rft_dat"] = rft_dat_value if rft_dat_value.present?
+    query["u.ignore_date_coverage"] = "true" if service_type == "viewit"
 
-      if session[:alma_auth_type] == 'sso' && session[:alma_sso_token].present?
-        query['sso'] = 'true'
-        query['token'] = session[:alma_sso_token]
-      elsif session[:alma_social_login_provider].present?
-        query['oauth'] = 'true'
-        query['provider'] = session[:alma_social_login_provider]
-      end
+    if session[:alma_auth_type] == "sso" && session[:alma_sso_token].present?
+      query["sso"] = "true"
+      query["token"] = session[:alma_sso_token]
+    elsif session[:alma_social_login_provider].present?
+      query["oauth"] = "true"
+      query["provider"] = session[:alma_social_login_provider]
+    end
 
-      alma_build_openurl(query)
+    alma_build_openurl(query)
   end
 end
