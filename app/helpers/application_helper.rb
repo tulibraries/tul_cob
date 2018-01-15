@@ -64,7 +64,7 @@ module ApplicationHelper
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
+    new_link = content_tag(:li, link_to(link_text, link_url), class: "list_items")
     new_link
   end
 
@@ -153,7 +153,6 @@ module ApplicationHelper
       link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
-
     end
   end
 end
