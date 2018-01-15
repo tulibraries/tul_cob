@@ -64,7 +64,7 @@ module ApplicationHelper
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url, class: "list_items"))
+    new_link = content_tag(:li, link_to(link_text, link_url), class: "list_items")
     new_link
   end
 
@@ -135,7 +135,7 @@ module ApplicationHelper
     openurl_field_values["Form"] = 30
 
 
-      URI::HTTPS.build(
+    URI::HTTPS.build(
       host:  "temple.aeon.atlas-sys.com",
       path: "/Logon/",
       query: openurl_field_values.to_query).to_s
@@ -143,17 +143,16 @@ module ApplicationHelper
 
   def aeon_request_button(document)
     if document.fetch("location_display", []).include?("rarestacks") && document["library_facet"].include?("Special Collections Research Center")
-      button_to("Request to View in Reading Room", aeon_request_url(document), class:"aeon-request btn btn-primary") +
+      button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request btn btn-primary") +
       content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
     end
   end
 
   def bento_link_to_full_results(results)
     if results.engine_id.include?("blacklight")
-  	   link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(:q => params[:q]), class: "full-results"
-  	else
-      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || '?', class: "record-count")
-
+      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
+    else
+      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end
   end
 end
