@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def account
+    @user_name = current_user.name
     @loans = current_user.get_loans
     @holds = current_user.get_holds
     @fines = current_user.get_fines

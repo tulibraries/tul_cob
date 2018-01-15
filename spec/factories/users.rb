@@ -16,5 +16,8 @@ FactoryBot.define do
     email "admin@example.edu"
     guest false
     admin true
+    name "Slarty Bartfast"
+    last_name "Bartfast"
+    first_name "Slarty"
   end
 end
