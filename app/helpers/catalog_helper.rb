@@ -16,13 +16,13 @@ module CatalogHelper
     value = document.fetch(:isbn_display, "")
     return value if value.empty?
     # Get the first ISBN and strip non-numerics
-    "data-isbn=#{value.first.gsub(/\D/,'')}"
+    "data-isbn=#{value.first.gsub(/\D/, '')}"
   end
 
   def lccn_data_attribute(document)
     value = document.fetch(:lccn_display, "")
     return value if value.empty?
     # Get the first ISSN and strip non-numerics
-    "data-lccn=#{value.first.gsub(/\D/,'')}"
+    "data-lccn=#{value.first.gsub(/\D/, '')}"
   end
 end
