@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'fileutils'
 
 # Map example config files to use in development.
 Dir.glob("config/*")
@@ -6,7 +7,7 @@ Dir.glob("config/*")
   .each do |p|
   src = p
   dest = p.gsub(".example", "")
-  copy_file(src, dest) unless File.exist? dest
+  FileUtils.copy_file(src, dest) unless File.exist? dest
 end
 
 # Rails is temperamental if pid is left around.

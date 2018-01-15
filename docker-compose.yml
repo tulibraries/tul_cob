@@ -8,8 +8,6 @@ services:
     container_name: "$ROPER_REPO_BRANCH"
     volumes:
       - .:/tul_cob
-    tty: true
-    stdin_open: true
     ports:
       - "3000"
     environment:
