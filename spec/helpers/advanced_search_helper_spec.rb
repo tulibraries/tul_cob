@@ -13,7 +13,7 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
   describe "#guided_search" do
 
     example "empty search fields" do
-      expect(helper.guided_search.empty?).to be(true)
+      expect(helper.guided_search).to be_empty
     end
 
     example "one search field" do

@@ -9,9 +9,9 @@ module BentoSearch
 
       results = BentoSearch::Results.new
       solr_result = search_results(q: query)
-      results.total_items = solr_result['numFound']
+      results.total_items = solr_result["numFound"]
 
-      solr_result['docs'].each do |item|
+      solr_result["docs"].each do |item|
         results << conform_to_bento_result(item)
       end
 

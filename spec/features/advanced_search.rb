@@ -4,7 +4,7 @@ require "rails_helper"
 require "yaml"
 include ApplicationHelper
 
-RSpec.feature "Advanced Search", type: :feature do
+RSpec.feature "Advanced Search" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/features.yml")
   }

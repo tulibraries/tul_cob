@@ -67,8 +67,9 @@ group :development, :test do
   gem "foreman"
   gem "vcr"
   gem "pretender"
-  gem 'rails-controller-testing'
-  gem 'faker'
+  gem "rails-controller-testing"
+  gem "faker"
+  gem "rubocop"
 end
 
 gem "rsolr", "~> 1.0"

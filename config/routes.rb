@@ -31,7 +31,7 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
-  
+
   resources :users, only: [:index] do
     post :impersonate, on: :member
     post :stop_impersonating, on: :collection

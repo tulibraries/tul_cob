@@ -3,7 +3,7 @@
 require "rails_helper"
 require "yaml"
 
-RSpec.feature "Bento Searches", type: :feature do
+RSpec.feature "Bento Searches" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/search_features.yml")
   }

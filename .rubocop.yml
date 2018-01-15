@@ -8,6 +8,7 @@ AllCops:
     - '**/vendor/**/*'
     - 'actionpack/lib/action_dispatch/journey/parser.rb'
     - 'bin/*'
+    - 'lib/traject/custom/macros/custom.rb'
 
 # Prefer &&/|| over and/or.
 Style/AndOr:
@@ -132,4 +133,7 @@ Lint/EndAlignment:
 
 # Use my_method(my_arg) not my_method( my_arg ) or my_method my_arg.
 Lint/RequireParentheses:
+  Enabled: true
+
+Rails:
   Enabled: true

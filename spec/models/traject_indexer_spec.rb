@@ -8,19 +8,25 @@ include Traject::Macros::Custom
 
 RSpec.describe "four_digit_year(field):" do
   describe "four_digit_year(field)" do
-    it "returns nil if given nil" do
-      expect(four_digit_year nil).to eq(nil)
+    context "when field is nil" do
+      it "returns nil" do
+        expect(four_digit_year nil).to eq(nil)
+      end
     end
 
-    it "returns nil if given empty string" do
-      expect(four_digit_year "").to eq(nil)
-      expect(four_digit_year "\n").to eq(nil)
-      expect(four_digit_year "\n\n").to eq(nil)
-      expect(four_digit_year "      ").to eq(nil)
+    context "when given an empty string" do
+      it "returns nil" do
+        expect(four_digit_year "").to eq(nil)
+        expect(four_digit_year "\n").to eq(nil)
+        expect(four_digit_year "\n\n").to eq(nil)
+        expect(four_digit_year "      ").to eq(nil)
+      end
     end
 
-    it "returns nil for Roman Numerals" do
-      expect(four_digit_year "MCCXLV").to eq(nil)
+    context "when contains Roman Numerals" do
+      it "returns nil" do
+        expect(four_digit_year "MCCXLV").to eq(nil)
+      end
     end
 
     it "returns nil for [n.d.],''" do
@@ -69,11 +75,10 @@ RSpec.describe "#to_marc_normalized" do
     end
 
     context "a string that is flanked" do
-      let(:input) { "matchbeginswith foo matchendswith"}
+      let(:input) { "matchbeginswith foo matchendswith" }
       it "does not reflank a string" do
         expect(subject).to eq(input)
       end
     end
   end
 end
-
