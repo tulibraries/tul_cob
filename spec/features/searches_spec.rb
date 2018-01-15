@@ -4,7 +4,7 @@ require "rails_helper"
 require "yaml"
 include ApplicationHelper
 
-RSpec.feature "Searches", type: :feature do
+RSpec.feature "Searches" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/search_features.yml")
   }
@@ -183,18 +183,18 @@ RSpec.feature "Searches", type: :feature do
     let (:test_queries) { fixtures.fetch("results_queries") }
     scenario "Test queries" do
       test_queries.each do |test_item|
-        search_string = ''
-        test_item['query_type'].each do |query_field|
+        search_string = ""
+        test_item["query_type"].each do |query_field|
           test_item[query_field].each do |search_term|
             search_string += search_term + " "
           end
         end
-        visit '/'
-        fill_in 'q', with: search_string
-        click_button 'Search'
+        visit "/"
+        fill_in "q", with: search_string
+        click_button "Search"
         #save_and_open_page
         within first(".document-position-0 h3") do
-          test_item['query_type'].each do |query_field|
+          test_item["query_type"].each do |query_field|
             test_item[query_field].each do |search_term|
               expect(page).to have_text search_term
             end

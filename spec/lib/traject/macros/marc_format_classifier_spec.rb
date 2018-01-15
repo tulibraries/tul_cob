@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 require "traject"
-require 'traject/macros/marc_format_classifier'
+require "traject/macros/marc_format_classifier"
 
 # Include custom traject macros
 require "traject/macros/custom"
@@ -16,7 +16,7 @@ end
 
 def classifier_for(filename)
   record = MARC::XMLReader.new(file_fixture(filename).to_s).to_a.first
-  return MarcFormatClassifier.new( record )
+  return MarcFormatClassifier.new(record)
 end
 
 RSpec.describe MarcFormatClassifier, type: :lib do
