@@ -123,7 +123,7 @@ module Traject
           end
           # Sort on availability
           unless resources.empty?
-            resources.sort! { |r1, r2| (r1[2] || "") <=> (r2[2] || "") }
+            resources.sort! { |r1, r2| r1[2] <=> r2[2] }
             resources.each do |res|
               acc << res.compact.join("|")
             end
