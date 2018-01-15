@@ -115,12 +115,19 @@ module Traject
           end
         end
       end
-
+      
       def extract_electronic_resource
         lambda do |rec, acc|
+          resources = []
           rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
-            acc << selected_subfields
+            resources << [f["a"], f["c"], f["g"]]
+          end
+          # Sort on availability
+          unless resources.empty?
+            resources.sort! { |r1, r2| r1[2] <=> r2[2] }
+            resources.each do |res|
+              acc << res.compact.join("|")
+            end
           end
           rec.fields("856").each do |f|
             case f.indicator2
