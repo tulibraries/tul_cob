@@ -129,7 +129,7 @@ RSpec.describe UsersController, type: :controller do
           end
 
           it "redirects to root" do
-            expect(subject).to redirect_to('http://test.host/')
+            expect(subject).to redirect_to("http://test.host/")
           end
         end
 
@@ -152,7 +152,7 @@ RSpec.describe UsersController, type: :controller do
           end
 
           it "redirects to root" do
-            expect(subject).to redirect_to('http://test.host/')
+            expect(subject).to redirect_to("http://test.host/")
           end
         end
 
@@ -162,7 +162,7 @@ RSpec.describe UsersController, type: :controller do
           end
 
           it "redirects to root" do
-            expect(subject).to redirect_to('http://test.host/')
+            expect(subject).to redirect_to("http://test.host/")
           end
         end
       end

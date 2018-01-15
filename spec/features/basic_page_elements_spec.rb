@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 
@@ -23,7 +25,7 @@ RSpec.feature "Basic Page Elements", type: :feature do
     before do
       DatabaseCleaner.clean
       user = FactoryBot.create(:user)
-      login_as(user, :scope => :user)
+      login_as(user, scope: :user)
 
     end
 
