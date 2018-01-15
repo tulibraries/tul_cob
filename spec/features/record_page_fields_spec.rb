@@ -4,7 +4,7 @@ require "rails_helper"
 require "yaml"
 include ApplicationHelper
 
-RSpec.feature "RecordPageFields", type: :feature do
+RSpec.feature "RecordPageFields" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/features.yml")
   }
@@ -212,7 +212,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_264_4) { fixtures.fetch("imprint_264_4") }
     scenario "User visits a document with imprint indicator2 value 4" do
       visit "catalog/#{item_264_4['doc_id']}"
-      expect(page).to_not have_text(item_264_4["imprint"])
+      expect(page).to have_no_text(item_264_4["imprint"])
     end
   end
 
@@ -244,7 +244,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_260_year_only) { fixtures.fetch("imprint_260_year_only") }
     scenario "User visits a document including year only in subfield 'c'" do
       visit "catalog/#{item_260_year_only['doc_id']}"
-        expect(page).to_not have_css("dd.blacklight-date_copyright_display")
+      expect(page).to have_no_css("dd.blacklight-date_copyright_display")
     end
 
     let (:item_264) { fixtures.fetch("imprint_264") }
@@ -711,7 +711,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_542_0) { fixtures.fetch("note_copyright_542_0") }
     scenario "User visits a document with note copyright indicator 1 value 0" do
       visit "catalog/#{item_542_0['doc_id']}"
-      expect(page).to_not have_text(item_542_0["note_copyright"])
+      expect(page).to have_no_text(item_542_0["note_copyright"])
     end
 
     let (:item_542_1) { fixtures.fetch("note_copyright_542_1") }
@@ -1072,7 +1072,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_086) { fixtures.fetch("sudoc_086") }
     scenario "User visits a document with sudoc indicator1 value unassigned" do
       visit "catalog/#{item_086['doc_id']}"
-      expect(page).to_not have_text(item_086["sudoc"])
+      expect(page).to have_no_text(item_086["sudoc"])
     end
 
     let (:item_086_0) { fixtures.fetch("sudoc_086_0") }
@@ -1086,7 +1086,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_086_1) { fixtures.fetch("sudoc_086_1") }
     scenario "User visits a document with udoc indicator1 value1" do
       visit "catalog/#{item_086_1['doc_id']}"
-      expect(page).to_not have_text(item_086_1["sudoc"])
+      expect(page).to have_no_text(item_086_1["sudoc"])
     end
   end
 
@@ -1229,7 +1229,7 @@ RSpec.feature "RecordPageFields", type: :feature do
     let (:item_600) { fixtures.fetch("subject_600") }
     scenario "Has button for Aeon request" do
       visit "catalog/#{item_600['doc_id']}"
-      expect(page).to_not have_css(".aeon-request")
+      expect(page).to have_no_css(".aeon-request")
     end
   end
 end

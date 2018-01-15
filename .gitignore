@@ -30,3 +30,5 @@ coverage
 config/alma.yml
 config/bento.yml
 config/deploy_to.yml
+
+spec/examples.txt
