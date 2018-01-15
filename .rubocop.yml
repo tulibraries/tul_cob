@@ -8,6 +8,7 @@ AllCops:
     - '**/vendor/**/*'
     - 'actionpack/lib/action_dispatch/journey/parser.rb'
     - 'bin/*'
+    - 'lib/traject/custom/macros/custom.rb'
 
 # Prefer &&/|| over and/or.
 Style/AndOr:
