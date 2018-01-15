@@ -228,9 +228,9 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability"
-    config.add_facet_field "library_facet", label: "Library", limit: true, show: true
-    config.add_facet_field "format", label: "Resource Type", limit: true, show: true
+    config.add_facet_field "availability_facet", label: "Availability", home: true
+    config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
+    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false

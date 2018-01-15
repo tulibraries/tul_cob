@@ -1,6 +1,5 @@
 # frozen_string_literal: false
 
-
 require "library_stdnums"
 
 # A set of custom traject macros (extractors and normalizers) used by the
