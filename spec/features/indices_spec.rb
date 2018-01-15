@@ -15,9 +15,10 @@ RSpec.feature "Indices", type: :feature do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit "/"
-        expect(page).to have_text "Welcome!"
+        expect(page).to have_text "Try our new beta Library Search"
         within("#facets") do
-          expect(page).to have_text "Date"
+          expect(page).to have_text "Availability"
+          expect(page).to have_text "Library"
           expect(page).to have_text "Resource Type"
         end
       end
