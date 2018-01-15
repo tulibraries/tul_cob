@@ -115,7 +115,7 @@ module Traject
           end
         end
       end
-      
+
       def extract_electronic_resource
         lambda do |rec, acc|
           resources = []
