@@ -99,7 +99,7 @@ module Traject
 
         results = marc_genre_leader.fetch(record.leader[6..7]) { # Leaders 6 and 7
           marc_genre_leader.fetch(record.leader[6]) { # Leader 6
-            'unknown'
+            "unknown"
           }
         }
 
@@ -126,7 +126,7 @@ module Traject
       end
 
       def controlfield_value(controlfield, position, translation_map)
-          controlfield.collect { |f| translation_map[f.value.slice(position)] }
+        controlfield.collect { |f| translation_map[f.value.slice(position)] }
       end
 
       # Just checks if it has a 502, if it does it"s considered a thesis
