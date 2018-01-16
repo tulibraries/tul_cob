@@ -1,22 +1,7 @@
 version: "3.2"
 
 services:
-  sp:
+  app:
     build:
       context: .
       dockerfile: .docker/sp/Dockerfile
-    image: "tulcob_app:latest"
-    tty: true
-    depends_on:
-      - "app"
-    ports:
-      - "80"
-      - "443"
-    volumes:
-      - .:/var/www/html/tul_cob
-      - .docker/sp/etc-apache2-sites-enabled:/etc/apache2/sites-enabled
-      - .docker/sp/etc-apache2-ssl:/etc/apache2/ssl
-      - .docker/sp/etc-shibboleth:/etc/shibboleth
-    environment:
-      SOLR_URL: "http://solr:8983/solr/blacklight"
-      LC_ALL: "C.UTF-8"

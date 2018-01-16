@@ -6,8 +6,6 @@ services:
       context: .
       dockerfile: .docker/app/Dockerfile
     container_name: "$ROPER_REPO_BRANCH"
-    volumes:
-      - .:/tul_cob
     ports:
       - "3000"
     environment:
@@ -29,6 +27,9 @@ services:
       - bin/app-start.rb
 
   solr:
+    build:
+      context: .
+      dockerfile: .docker/solr/Dockerfile
     image: solr:6.6.1
     ports:
       - "8983"
@@ -37,8 +38,6 @@ services:
       - solr-precreate
       - blacklight
       - /opt/solr/conf
-    volumes:
-      - $PWD/solr/conf:/opt/solr/conf
 
 networks:
   reverseproxy_default:
