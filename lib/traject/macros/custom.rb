@@ -128,67 +128,37 @@ module Traject
               acc << res.compact.join("|")
             end
           end
+
+          # Short circuit if PRT field present.
+          if !rec.fields("PRT").empty?
+            return acc
+          end
+
           rec.fields("856").each do |f|
-            case f.indicator2
-            when "0"
-              z3 = [f["z"], f["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
-              end
-            when "2"
-              # do nothing
-            else
-              z3 = [f["z"], f["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
+            if f.indicator2 != "2"
+              label = url_label(f["z"], f["3"], f["y"])
+              unless NOT_FULL_TEXT.match(label)
+                acc << [label, f["u"]].compact.join("|")
               end
             end
           end
         end
       end
 
+      def url_label(z, n, y)
+        label = [z, n].compact.join(" ")
+        if label.empty?
+          label = y || "Link to Resource"
+        end
+        label
+      end
+
       def extract_url_more_links
         lambda { |rec, acc|
           rec.fields("856").each do |f|
-            case f.indicator2
-            when "2"
-              z3 = [f["z"], f["3"]].join(" ")
-              if z3 == " "
-                z3 = f["y"] || "Link to Resource"
-                z3 << "|#{f["u"]}" unless f["u"].nil?
-                acc << z3
-              else
-                z3 << "|#{f["u"]}" unless f["u"].nil?
-                acc << z3
-              end
-            when "0"
-              # do nothing
-            else
-              z3 = [f["z"], f["3"]].join(" ")
-              if NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << " |#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
-              end
+            label = url_label(f["z"], f["3"], f["y"])
+            if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty?
+              acc << [label, f["u"]].compact.join("|")
             end
           end
         }

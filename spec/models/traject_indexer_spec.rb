@@ -3,6 +3,10 @@
 require "rspec"
 require "traject/macros/marc_format_classifier"
 require "traject/macros/custom"
+
+require "traject/indexer"
+require "marc/record"
+
 include Traject::Macros::MarcFormats
 include Traject::Macros::Custom
 
@@ -78,6 +82,168 @@ RSpec.describe "#to_marc_normalized" do
       let(:input) { "matchbeginswith foo matchendswith" }
       it "does not reflank a string" do
         expect(subject).to eq(input)
+      end
+    end
+  end
+end
+
+RSpec.describe Traject::Macros::Custom do
+  let(:test_class) do
+    c = Class.new(Traject::Indexer)
+    c.send :extend, Traject::Macros::MarcFormats
+    c.send :extend, Traject::Macros::Custom
+    c
+  end
+
+  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
+  let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
+
+
+  subject { test_class.new }
+
+  describe "#extract_electronic_resource" do
+    before(:each) do
+      subject.instance_eval do
+        to_field "electronic_resource_display", extract_electronic_resource
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "Neither PRT nor 856 fields are present" do
+      it "does not map a field to electronic_resource_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "Only PRT fields are present" do
+      context "single PRT field to electronic_resource_display" do
+        it "maps a single PRT field" do
+          expect(subject.map_record(records[1])).to eq(
+            "electronic_resource_display" => ["foo"]
+          )
+        end
+      end
+
+      context "multiple PRT fields present" do
+        it "maps a multiple PRT fields to electronic_resource_display" do
+          expect(subject.map_record(records[2])).to eq(
+            "electronic_resource_display" => ["foo", "bar"]
+          )
+        end
+      end
+    end
+
+    context "Only 856 fields are present" do
+      context "single 856 field (ind1 = 4; ind2 = not 2) and no exceptions" do
+        it "maps a single 856 field to electronic_resource_display" do
+          expect(subject.map_record(records[3])).to eq(
+            "electronic_resource_display" => ["foo|http://foobar.com"]
+          )
+        end
+      end
+
+      context "multiple 856 fields (ind1=4; ind2 not 2) and no exceptions" do
+        it "maps multiple 856 fields to electronic_resource_display" do
+          expect(subject.map_record(records[4])).to eq(
+            "electronic_resource_display" => [
+              "z 3|http://foobar.com",
+              "y|http://foobar.com",
+              "Link to Resource|http://foobar.com"
+            ]
+          )
+        end
+      end
+
+      context "single 856 field (ind1 = 4; ind2 = not 2) with exception" do
+        it "does not map a field to electronic_resource_display" do
+          expect(subject.map_record(records[5])).to eq({})
+        end
+      end
+
+      context "multiple 856 fields (ind1 = 4; ind2 = not 2) with exceptions" do
+        it "does not map a field to electronic_resource_display" do
+          expect(subject.map_record(records[6])).to eq({})
+        end
+      end
+    end
+
+    context "Both PRT and 856 fields are present" do
+      context "856 field has exception" do
+        it "only maps the PRT field to electronic_resource_display" do
+          expect(subject.map_record(records[7])).to eq(
+            "electronic_resource_display" => ["foo"]
+          )
+        end
+      end
+      context "856 has no exception" do
+        it "only maps the PRT field to electronic_resource_display" do
+          expect(subject.map_record(records[8])).to eq(
+            "electronic_resource_display" => ["foo"]
+          )
+        end
+      end
+    end
+  end
+
+  describe "#extract_url_more_links" do
+    before(:each) do
+      subject.instance_eval do
+        to_field "url_more_links_display", extract_url_more_links
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "Neither PRT nor 856 fields are present" do
+      it "it does not map a url_more_links_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "Only a PRT field is present" do
+      context "single PRT field" do
+        it "does not map a field to url_more_links_display" do
+          expect(subject.map_record(records[1])).to eq({})
+        end
+      end
+    end
+
+    context "Only 856 field is present" do
+      context "single 856 field (ind1 = 4; ind2 = not 2) with no exceptions" do
+        it "maps a single 856 field to electronic_resource_display" do
+          expect(subject.map_record(records[3])).to eq({})
+        end
+      end
+
+      context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
+        it "maps a single 856 field to electronic_resource_display" do
+          expect(subject.map_record(records[5])).to eq(
+            "url_more_links_display" => ["book review|http://foobar.com"],
+          )
+        end
+      end
+
+    end
+
+    context "Both PRT and 856 fields are present" do
+      context "856 field has exception" do
+        it "only maps the PRT field to electronic_resource_display" do
+          expect(subject.map_record(records[7])).to eq(
+            "url_more_links_display" => ["BOOK review|http://foobar.com"]
+          )
+        end
+      end
+      context "856 has no exception" do
+        it "only maps the PRT field to electronic_resource_display" do
+          expect(subject.map_record(records[8])).to eq(
+            "url_more_links_display" => ["bar|http://foobar.com"]
+          )
+        end
       end
     end
   end
