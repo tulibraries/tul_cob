@@ -14,6 +14,57 @@ RSpec.describe SearchBuilder , type: :model do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
   end
 
+  describe ".escape_colons" do
+    let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{ foo:bar }Hello:World\"") }
+
+    before(:example) do
+      subject.escape_colons(solr_parameters)
+    end
+
+    context "when not doing an advanced search" do
+      it "does not escape colons in _query_: tag" do
+        expect(solr_parameters["q"]).to match(/_query_:/)
+      end
+
+      it "does not escape colons within the local parameters section" do
+        expect(solr_parameters["q"]).to match(/foo:bar/)
+      end
+
+      it "escapes the colons within the query section" do
+        expect(solr_parameters["q"]).to match(/Hello\\:World/)
+      end
+    end
+
+    context "when doing a multi query" do
+      let(:solr_parameters) {
+        Blacklight::Solr::Request.new(
+          q: "_query_:\"{ foo:bar }Hello:World : ::\" AND _query_:\"{bizz:buzz} foo : bum\""
+        )
+      }
+
+      it "does not escape colons within any local param section" do
+        expect(solr_parameters["q"]).to match(/bizz:buzz/)
+      end
+
+      it "escapes all the colons within the query sections" do
+        expect(solr_parameters["q"]).to match(/ \\: \\:\\:/)
+        expect(solr_parameters["q"]).to match(/foo \\: bum/)
+      end
+    end
+
+    context "when doing an advanced search" do
+      let(:params) { ActionController::Parameters.new(
+        search_field: "advanced",
+        q_1:  ":",
+        q_2: ":foo ::: bar",
+      ) }
+
+      it "escapse colons in the addtional query values: q_1, q_2, q_3" do
+        expect(solr_parameters["q_1"]).to eq("\\:")
+        expect(solr_parameters["q_2"]).to eq("\\:foo \\:\\:\\: bar")
+      end
+    end
+  end
 
   describe ".disable_advanced_spellcheck" do
     let(:solr_parameters) { Blacklight::Solr::Request.new(spellcheck: "true") }

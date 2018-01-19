@@ -14,7 +14,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     # happens after it, see the note for :to_phrase method for extra context.
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
-    [ :disable_advanced_spellcheck ]
+    [ :disable_advanced_spellcheck ] +
+    [ :escape_colons ]
 
 
   def begins_with_search(solr_parameters)
@@ -32,6 +33,21 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def escape_colons(solr_parameters)
+    queries = parse_queries(solr_parameters["q"])
+
+    # [ c, l, q ] = [ connector, local_param, query ]
+    solr_parameters["q"] = queries
+      .map { |q| c, l, q = q; [c, l, q.gsub(":", "\\:")] }
+      .map(&:join)
+      .join(" ")
+
+    # In the advanced search context the dereferenced values must be escaped.
+    if blacklight_params["search_field"] == "advanced"
+      fields.each { |k, v| solr_parameters[k] = v.gsub(":", "\\:") }
+    end
+  end
+
   private
 
     def dereference_with(method, solr_parameters)
@@ -41,8 +57,7 @@ class SearchBuilder < Blacklight::SearchBuilder
       if !query.empty? && blacklight_params["search_field"] == "advanced"
         # We need the original values in the search for use in creating
         # a de-referenced version of the query.
-        fields = blacklight_params.select { |k| k.match(/^q_/) }
-
+        #
         # We de-reference values in order to be able to quote them; otherwise,
         # solr throws a 500 error: https://stackoverflow.com/a/10183238/256854
         #
@@ -68,6 +83,10 @@ class SearchBuilder < Blacklight::SearchBuilder
         }
 
       end
+    end
+
+    def fields
+      blacklight_params.select { |k| k.match(/^q_/) }
     end
 
     def append_start_flank(value, op)
@@ -101,6 +120,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # splits it into its components (connector, local params, query)
     # ["AND _query_:", "foo", "bar"], ["NOT", "biz", "buz"]]
     def parse_queries(query_string)
+      query_string ||= ""
       query_string
         .scan(/((AND|OR|NOT|AND NOT)?\s*_query_:\"{.*?}.*?\")/)
         .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
