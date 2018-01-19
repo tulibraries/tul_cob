@@ -258,9 +258,9 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
-    config.add_show_field "title_uniform_display", label: "Uniform title"
+    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
-    config.add_show_field "title_addl_display", label: "Additional titles"
+    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
     config.add_show_field "title_addl_vern_display", label: "Additional titles"
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator

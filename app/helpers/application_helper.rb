@@ -12,6 +12,8 @@ module ApplicationHelper
   def get_search_params(field, query)
     if field == "subject_display"
       { controller: "catalog", action: "index", search_field: "subject", q: query.gsub(/>|—/, "") }
+    elsif field == "title_uniform_display" || field == "title_addl_display"
+      { controller: "catalog", action: "index", search_field: "title", q: query }
     else
       { controller: "catalog", action: "index", search_field: field, q: query }
     end
