@@ -1,0 +1,18 @@
+
+
+default: &default
+  twilio:
+    account_sid: "TWILIO_ACCOUNT_SID"
+    auth_token: "TWILIO_AUTH_TOKEN"
+    phone_number: "TWILIO_PHONE_NUMBER"
+
+
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

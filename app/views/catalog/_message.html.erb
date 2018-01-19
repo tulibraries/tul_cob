@@ -1,0 +1,14 @@
+<%= form_tag do |f| %>
+  <legend>Send SMS</legend>
+  <div>
+    <%= label_tag :name, 'Message:' %>
+    <%= text_area_tag :record_message, "The partial message"%>
+  </div>
+  <div>
+    <%= label_tag :name, 'Phone Number:' %>
+    <%= text_field_tag :phone_number %>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Send" %>
+  </div>
+<% end %>

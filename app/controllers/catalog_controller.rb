@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'twilio-ruby'
+
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
@@ -464,5 +466,33 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
+
+    # Configuration for text to phone_number
+    config.show.document_actions.delete(:sms)
+    config.add_show_tools_partial(:message, if: :render_message_action?, callback: :message_action)
+  end
+
+  def message
+    respond_to do |format|
+        format.html
+        format.js { render :layout => false }
+    end
+  end
+
+  def render_message_action?(_config, _options)
+    true
+  end
+
+  # GET /catalog/send_message
+  def message_action
+    @account_sid = ENV['TWILIO_ACCOUNT_SID'] # Your Account SID from www.twilio.com/console
+    @auth_token = ENV['TWILIO_AUTH_TOKEN']   # Your Auth Token from www.twilio.com/console
+    @phone_number = ENV['TWILIO_PHONE_NUMBER'] # Your Twilio number
+
+    @client = Twilio::REST::Client.new @account_sid, @auth_token
+    message = @client.messages.create(
+        body: "Hello from Ruby TUL_COB #{params[:id]}",
+        to: "+14242473614",    # Replace with your phone number
+        from: phone_number)  # Replace with your Twilio number
   end
 end
