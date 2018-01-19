@@ -28,7 +28,7 @@ module Traject
       end
 
       def creator_name_trim_punctuation(name)
-        name.sub(/ *[ ,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1')
+        name.sub(/ *[ ,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1').sub(/(?<=\))\./ , "")
       end
 
       def creator_role_trim_punctuation(role)

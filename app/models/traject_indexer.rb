@@ -16,6 +16,10 @@ solr_url = ERB.new(solr_config["url"]).result
 require "traject/macros/marc21_semantics"
 extend  Traject::Macros::Marc21Semantics
 
+# Overrides the trim_punctuation method to remove periods preceded by parentheses
+require "traject/macros/custom_marc21"
+
+
 # To have access to the traject marc format/carrier classifier
 require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
