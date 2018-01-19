@@ -34,17 +34,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def escape_colons(solr_parameters)
-    queries = parse_queries(solr_parameters["q"])
+    query = solr_parameters["q"] || ""
 
-    # [ c, l, q ] = [ connector, local_param, query ]
-    solr_parameters["q"] = queries
-      .map { |q| c, l, q = q; [c, l, q.gsub(":", "\\:")] }
-      .map(&:join)
-      .join(" ")
+    return unless !query.empty?
 
-    # In the advanced search context the dereferenced values must be escaped.
+    # In the advanced search context dereferenced values must be escaped.
     if blacklight_params["search_field"] == "advanced"
-      fields.each { |k, v| solr_parameters[k] = v.gsub(":", "\\:") }
+      fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
+    else
+      solr_parameters["q"] = query.gsub(/:/, " ")
     end
   end
 
