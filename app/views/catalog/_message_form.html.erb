@@ -1,4 +1,8 @@
-<%= form_tag do |f| %>
+<%= form_tag url_for(controller: controller_name, action: "message"),
+             data: { blacklight_modal: 'trigger' },
+             id: 'sms_form',
+             class: "modal_form",
+             method: :post do %>
   <legend>Send SMS</legend>
   <div>
     <%= label_tag :name, 'Message:' %>

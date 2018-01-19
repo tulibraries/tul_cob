@@ -484,7 +484,7 @@ class CatalogController < ApplicationController
   end
 
   # GET /catalog/send_message
-  def message_action
+  def message_action documents
     @account_sid = ENV['TWILIO_ACCOUNT_SID'] # Your Account SID from www.twilio.com/console
     @auth_token = ENV['TWILIO_AUTH_TOKEN']   # Your Auth Token from www.twilio.com/console
     @phone_number = ENV['TWILIO_PHONE_NUMBER'] # Your Twilio number

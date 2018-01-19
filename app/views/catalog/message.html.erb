@@ -1,14 +1,7 @@
-<%= form_tag do |f| %>
-  <legend>Send SMS</legend>
-  <div>
-    <%= label_tag :name, 'Message:' %>
-    <%= text_area_tag :record_message, "The page message"%>
-  </div>
-  <div>
-    <%= label_tag :name, 'Phone Number:' %>
-    <%= text_field_tag :phone_number %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Send" %>
-  </div>
-<% end %>
+<div class="modal-header">
+	<h1 class="modal-title"><%= t('blacklight.sms.form.title') %></h1>
+	<button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<%= render :partial => 'message_form' %>
