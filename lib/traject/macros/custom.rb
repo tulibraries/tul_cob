@@ -123,7 +123,7 @@ module Traject
           end
           # Sort on availability
           unless resources.empty?
-            resources.sort_by! { |r|  (r[2] || "9999").scan(/\d+/).first.to_i }
+            resources.sort_by! { |r|  (r[2] || "9999").scan(/\d+/).first.to_i }.reverse!
             resources.each do |res|
               acc << res.compact.join("|")
             end
