@@ -67,7 +67,7 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences the key value" do
         subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
       end
 
       it "sets a custom solr_parameter for q_1 field." do
@@ -82,7 +82,7 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences the key value" do
         subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
       end
 
       it "quotes the passed in value." do
@@ -97,13 +97,23 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences multiple key values" do
         subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
       end
 
       it "quotes the passed if used" do
         subject.begins_with_search(solr_parameters)
         expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
         expect(solr_parameters["q_2"]).to eq("World")
+      end
+    end
+
+    context "passing advanced subqueries where start query is qualified" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{}Hello\" AND _query_:\"{}World\"") }
+      let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
+
+      it "does not drop the first query qualifier" do
+        subject.begins_with_search(solr_parameters)
+        expect(solr_parameters["q"]).to eq("NOT _query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
       end
     end
 
@@ -164,7 +174,7 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences the key value" do
         subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
       end
 
       it "sets a custom solr_parameter for q_1 field." do
@@ -179,7 +189,7 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences the key value" do
         subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
       end
 
       it "quotes the passed in value." do
@@ -194,7 +204,7 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "dereferences multiple key values" do
         subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\" ")
+        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
       end
 
       it "quotes the passed if used" do
