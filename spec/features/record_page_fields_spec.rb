@@ -30,6 +30,7 @@ RSpec.feature "RecordPageFields" do
         visit "catalog/#{item_130['doc_id']}"
         within "dd.blacklight-title_uniform_display" do
           expect(page).to have_text(item_130["title_uniform"])
+          expect(page).to have_link(item_130["title_uniform"])
         end
       end
 
@@ -38,6 +39,7 @@ RSpec.feature "RecordPageFields" do
         visit "catalog/#{item_240['doc_id']}"
         within "dd.blacklight-title_uniform_display" do
           expect(page).to have_text(item_240["title_uniform"])
+          expect(page).to have_link(item_240["title_uniform"])
         end
       end
 
@@ -46,6 +48,7 @@ RSpec.feature "RecordPageFields" do
         visit "catalog/#{item_730['doc_id']}"
         within "dd.blacklight-title_uniform_display" do
           expect(page).to have_text(item_730["title_uniform"])
+          expect(page).to have_link(item_730["title_uniform"])
         end
       end
 
@@ -64,6 +67,7 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{item_210['doc_id']}"
       within "dd.blacklight-title_addl_display" do
         expect(page).to have_text(item_210["title_addl"])
+        expect(page).to have_link(item_210["title_addl"])
       end
     end
 
@@ -72,6 +76,7 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{item_246['doc_id']}"
       within "dd.blacklight-title_addl_display" do
         expect(page).to have_text(item_246["title_addl"])
+        expect(page).to have_link(item_246["title_addl"])
       end
     end
 
@@ -80,6 +85,7 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{item_247['doc_id']}"
       within "dd.blacklight-title_addl_display" do
         expect(page).to have_text(item_247["title_addl"])
+        expect(page).to have_link(item_247["title_addl"])
       end
     end
 
@@ -88,6 +94,7 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{item_740['doc_id']}"
       within "dd.blacklight-title_addl_display" do
         expect(page).to have_text(item_740["title_addl"])
+        expect(page).to have_link(item_740["title_addl"])
       end
     end
 
