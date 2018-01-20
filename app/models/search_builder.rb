@@ -15,7 +15,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
     [ :disable_advanced_spellcheck ] +
-    [ :escape_colons ]
+    [ :substitute_colons ]
 
 
   def begins_with_search(solr_parameters)
@@ -33,12 +33,12 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def escape_colons(solr_parameters)
+  def substitute_colons(solr_parameters)
     query = solr_parameters["q"] || ""
 
     return unless !query.empty?
 
-    # In the advanced search context dereferenced values must be escaped.
+    # In the advanced the query is dereferenced.
     if blacklight_params["search_field"] == "advanced"
       fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
     else

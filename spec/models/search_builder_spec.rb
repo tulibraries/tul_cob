@@ -14,11 +14,11 @@ RSpec.describe SearchBuilder , type: :model do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
   end
 
-  describe ".escape_colons" do
+  describe ".substitute_colons" do
     let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo :: bar:buzz") }
 
     before(:example) do
-      subject.escape_colons(solr_parameters)
+      subject.substitute_colons(solr_parameters)
     end
 
     context "when not doing an advanced search" do
