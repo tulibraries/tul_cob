@@ -15,7 +15,6 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
     @document[:format] = []
     without_partial_double_verification do
       allow(view).to receive(:blacklight_config).and_return(@config)
-      allow(view).to receive(:blacklight_config).and_return(@config)
       allow(view).to receive(:blacklight_configuration_context).and_return(@context)
       allow(view).to receive(:staff_view_path).and_return("/catalog/1/staff_view")
     end
