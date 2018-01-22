@@ -1,10 +1,10 @@
-<%= form_tag url_for(controller: controller_name, action: "message_action"),
+<%= form_tag url_for(controller: controller_name, action: "message"),
                data: { blacklight_modal: 'trigger' },
                id: 'message_form',
                class: "modal_form",
                method: :post do %>
   <div class="modal-body">
-    <%# render '/shared/flash_msg' %>
+    <%= render partial: '/flash_msg' %>
       <div class="form-group row">
         <label class="control-label col-sm-2" for="to">
           <%= t('blacklight.message.form.body') %>
