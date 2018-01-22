@@ -1,18 +1,28 @@
 <%= form_tag url_for(controller: controller_name, action: "message_action"),
-             data: { blacklight_modal: 'trigger' },
-             id: 'sms_form',
-             class: "modal_form",
-             method: :post do %>
-  <legend>Send SMS</legend>
-  <div>
-    <%= label_tag :name, 'Message:' %>
-    <%= text_area_tag :record_message, "The partial message"%>
+               data: { blacklight_modal: 'trigger' },
+               id: 'message_form',
+               class: "modal_form",
+               method: :post do %>
+  <div class="modal-body">
+    <%# render '/shared/flash_msg' %>
+      <div class="form-group row">
+        <label class="control-label col-sm-2" for="to">
+          <%= t('blacklight.message.form.body') %>
+        </label>
+        <div class="col-sm-10">
+          <%= text_area_tag :body, params[:body], class: 'form-control' %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-sm-2" for="to">
+          <%= t('blacklight.message.form.to') %>
+        </label>
+        <div class="col-sm-10">
+          <%= telephone_field_tag :to, params[:to], class: 'form-control' %>
+        </div>
+      </div>
   </div>
-  <div>
-    <%= label_tag :name, 'Phone Number:' %>
-    <%= text_field_tag :phone_number %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Send" %>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary"> <%= t('blacklight.message.form.submit') %></button>
   </div>
 <% end %>

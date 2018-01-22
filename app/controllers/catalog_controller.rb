@@ -469,12 +469,13 @@ class CatalogController < ApplicationController
 
     # Configuration for text to phone_number
     config.show.document_actions.delete(:sms)
-    config.add_show_tools_partial(:message, if: :render_message_action?, callback: :message_action)
+    config.add_show_tools_partial(:message, callback: :message_action)
   end
 
   def message
+    @text_this_message = "Text This Message! #{Time.now}"
     respond_to do |format|
-        format.html { render :layout => false }
+        format.html { render layout: false }
     end
   end
 
@@ -482,17 +483,21 @@ class CatalogController < ApplicationController
     true
   end
 
-  # GET /catalog/send_message
-  def message_action
-    @account_sid = ENV['TWILIO_ACCOUNT_SID'] # Your Account SID from www.twilio.com/console
-    @auth_token = ENV['TWILIO_AUTH_TOKEN']   # Your Auth Token from www.twilio.com/console
-    @phone_number = ENV['TWILIO_PHONE_NUMBER'] # Your Twilio number
-
-    @client = Twilio::REST::Client.new @account_sid, @auth_token
-    message = @client.messages.create(
-        body: params[:record_message],
-        to: params[:phone_number],    # Replace with your phone number
-        from: @phone_number)  # Replace with your Twilio number
-    return
+  def validate_message_params
+    if params[:to].blank?
+      flash[:error] = I18n.t('blacklight.message.errors.to.blank')
+    elsif params[:to].gsub(/[^\d]/, '').length != 10
+      flash[:error] = I18n.t('blacklight.message.errors.to.invalid', to: params[:to])
+    end
+    flash[:error].blank?
   end
+
+  def message_action #documents
+     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+     message = @client.messages.create(
+         body: params[:body],
+         to:   params[:to],    # Replace with your phone number
+         from: ENV['TWILIO_PHONE_NUMBER'])  # Replace with your Twilio number
+  end
+
 end
