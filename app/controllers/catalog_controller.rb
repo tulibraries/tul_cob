@@ -473,7 +473,10 @@ class CatalogController < ApplicationController
   end
 
   def message
-    @text_this_message = "Text This Message! #{Time.now}"
+    show
+    params[:body] = "#{@document['title_statement_display'].first}\n" +
+    "#{@document['call_number_display'].first}\n" +
+    "#{@document['library_facet'].first}"
     respond_to do |format|
         format.html { render layout: false }
     end
