@@ -483,15 +483,16 @@ class CatalogController < ApplicationController
   end
 
   # GET /catalog/send_message
-  def message_action documents
+  def message_action
     @account_sid = ENV['TWILIO_ACCOUNT_SID'] # Your Account SID from www.twilio.com/console
     @auth_token = ENV['TWILIO_AUTH_TOKEN']   # Your Auth Token from www.twilio.com/console
     @phone_number = ENV['TWILIO_PHONE_NUMBER'] # Your Twilio number
 
     @client = Twilio::REST::Client.new @account_sid, @auth_token
     message = @client.messages.create(
-        body: "Hello from Ruby TUL_COB #{params[:id]}",
-        to: "+14242473614",    # Replace with your phone number
-        from: phone_number)  # Replace with your Twilio number
+        body: params[:record_message],
+        to: params[:phone_number],    # Replace with your phone number
+        from: @phone_number)  # Replace with your Twilio number
+    return
   end
 end

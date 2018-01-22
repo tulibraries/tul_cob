@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
   # NOTE: Will not run unless `_solr_document` is added to the `as:` option. Doesn't match up with https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
   get "/catalog/:id/message", to: "catalog#message", as: "message_solr_document"
+  post "/catalog/:id/message", to: "catalog#message_action"
 
   # matches
   match "/404", to: "errors#not_found", via: :all

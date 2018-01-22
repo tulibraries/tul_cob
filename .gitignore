@@ -20,6 +20,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+# Ignore vim swap files
+.*.sw*
+
 Vagrantfile
 ansible
 config/secrets.yml
