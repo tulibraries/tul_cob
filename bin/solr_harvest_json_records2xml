@@ -3,40 +3,54 @@ require 'net/http'
 require 'json'
 require 'yaml'
 
+
+# The purpose of this utility is to populate an XML file of search results
+# from a good Solr index to be loaded into a blank index for testing.
+
+# YAML file has a list of items we want the results for
 test_queries = YAML.load_file("spec/fixtures/search_features.yml").fetch("results_queries")
 
+# Prepare an output file to store the XML we get out of Solr...
 outfile = File.open('test_search_marc_records.xml', 'a')
 outfile.puts('<?xml version="1.0" encoding="UTF-8"?>')
 outfile.puts("<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>")
 
+# for every test item in our YAML file...
 test_queries.each do |test_item|
   pageindex = 1
   search_string = ''
 
+  # ...assemble the search terms to query the catalog for
   test_item['query_type'].each do |query_field|
     search_string += test_item[query_field] + " "
   end
 
-  puts search_string
+  # from page 1 to 100 or if there aren't 100 pages of results 1 to however many there are...
+  # (why doesn't ruby have do-while loops? guh)
   loop do
+    # ...assemble the search URL and query it
     url = 'http://libqa.library.temple.edu/catalog/?q=' + search_string + '&search_field=all_fields&format=json&page=' + pageindex.to_s
     uri = URI(url)
     response = Net::HTTP.get(uri)
     page = JSON.parse(response)["response"]
 
+    # for every item on the page of results...
     page["docs"].each do |doc|
+      # format the URL for the JSON representation and query it
       recordid = doc["id"]
       recordurl = "http://libqa.library.temple.edu/catalog/catalog/" + recordid + ".json"
       uri = URI(recordurl)
       response = Net::HTTP.get(uri)
+      # take the JSON, parse out the MARC XML, and dump it to file
       record = JSON.parse(response)["response"]
       marcxml = record["document"]["marc_display_raw"]
       outfile.puts(marcxml)
     end
     pageindex = page["pages"]["next_page"]
-    puts page["pages"]["current_page"].to_s + " of " + page["pages"]["total_pages"].to_s
+    #puts page["pages"]["current_page"].to_s + " of " + page["pages"]["total_pages"].to_s
     break if page["pages"]["current_page"] == [page["pages"]["total_pages"], 100].min
   end
 end
 
+# ...close out our XML file
 outfile.puts("</collection>")
