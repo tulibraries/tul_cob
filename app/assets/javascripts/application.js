@@ -27,6 +27,7 @@
 //= require_tree .
 
 $(document).ready(function(){
+  $('#appliedParams').insertAfter('h1.application-heading');
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);
 	$('input[type=checkbox]').click(function(){
 		var x = document.getElementsByName("loan_ids[]");
