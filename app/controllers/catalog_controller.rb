@@ -281,7 +281,7 @@ class CatalogController < ApplicationController
     config.add_show_field "digital_file_display", label: "Digital file characteristics"
     config.add_show_field "video_file_display", label: "Video characteristics"
     config.add_show_field "music_format_display", label: "Format of notated music"
-     config.add_show_field "form_work_display", label: "Form of work"
+    config.add_show_field "form_work_display", label: "Form of work"
     config.add_show_field "performance_display", label: "Medium of performance"
     config.add_show_field "music_no_display", label: "Music no."
     config.add_show_field "music_key_display", label: "Musical key"
