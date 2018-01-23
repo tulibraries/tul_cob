@@ -472,11 +472,14 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:message, callback: :message_action)
   end
 
+  # TODO Is this how catalog controller is suppoed to get the current document?
   def message
-    show
+    params[:to] = ENV['TO_PHONE_NUMBER']
+    @document = SolrDocument.find(params[:id])
+    # OPTIMIZE Put in helper
     params[:body] = "#{@document['title_statement_display'].first}\n" +
-    "#{@document['call_number_display'].first}\n" +
-    "#{@document['library_facet'].first}"
+                    "#{@document['call_number_display'].first}\n" +
+                    "#{@document['library_facet'].first}"
     respond_to do |format|
         format.html { render layout: false }
     end
@@ -495,12 +498,20 @@ class CatalogController < ApplicationController
     flash[:error].blank?
   end
 
+  # FIXME Does not conform to "Adding new document actions"
+  # https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
+  # - Document actions does not pass documents argument to message_action
+  # - Must manually redirect to solr_document_url. It should be done automatically
+  #   without calling redirect_to
+  # - app/views/message_success does not render
   def message_action #documents
      @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
      message = @client.messages.create(
          body: params[:body],
          to:   params[:to],    # Replace with your phone number
          from: ENV['TWILIO_PHONE_NUMBER'])  # Replace with your Twilio number
+     logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+     redirect_to solr_document_url
   end
 
 end
