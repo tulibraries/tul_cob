@@ -7,7 +7,11 @@ namespace :fortytu do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures do
-      Rake::Task["ingest"].invoke("spec/fixtures/marc_fixture.xml")
+      Dir.glob("spec/fixtures/*.xml").each do |file|
+        `traject -c app/models/traject_indexer.rb #{file}`
+      end
+
+      `traject -c app/models/traject_indexer.rb -x commit`
     end
 
     desc "Delete all items from Solr"
