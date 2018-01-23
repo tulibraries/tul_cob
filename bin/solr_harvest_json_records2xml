@@ -45,6 +45,7 @@ test_queries.each do |test_item|
     # for every item on the page of results...
     page["docs"].each do |doc|
       # format the URL for the JSON representation and query it
+      recordid = doc["id"]
       recordurl = "https://libqa.library.temple.edu/catalog/catalog/" + recordid + ".json"
       uri = URI.parse(recordurl)
       http = Net::HTTP.new(uri.host, uri.port)
