@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'twilio-ruby'
+require "twilio-ruby"
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
@@ -473,7 +473,7 @@ class CatalogController < ApplicationController
   end
 
   def message
-    params[:to] = ENV['TO_PHONE_NUMBER']
+    params[:to] = ENV["TO_PHONE_NUMBER"]
     # TODO Is this how catalog controller is supposed to get the current document?
     @document = SolrDocument.find(params[:id])
     respond_to do |format|
@@ -488,9 +488,9 @@ class CatalogController < ApplicationController
 
   def validate_message_params
     if params[:to].blank?
-      flash[:error] = I18n.t('blacklight.message.errors.to.blank')
-    elsif params[:to].gsub(/[^\d]/, '').length != 10
-      flash[:error] = I18n.t('blacklight.message.errors.to.invalid', to: params[:to])
+      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
+    elsif params[:to].gsub(/[^\d]/, "").length != 10
+      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
     end
     flash[:error].blank?
   end
@@ -502,13 +502,12 @@ class CatalogController < ApplicationController
   #   without calling redirect_to
   # - app/views/message_success does not render
   def message_action #documents
-     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-     message = @client.messages.create(
-         body: params[:body],
-         to:   params[:to],    # Replace with your phone number
-         from: ENV['TWILIO_PHONE_NUMBER'])  # Replace with your Twilio number
-     logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
-     redirect_to solr_document_url
+    @client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"])
+    message = @client.messages.create(
+      body: params[:body],
+      to:   params[:to],    # Replace with your phone number
+      from: ENV["TWILIO_PHONE_NUMBER"])  # Replace with your Twilio number
+    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+    redirect_to solr_document_url
   end
-
 end

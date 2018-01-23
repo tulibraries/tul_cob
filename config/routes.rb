@@ -56,7 +56,7 @@ Rails.application.routes.draw do
     post "users/renew_all"
 
   end
-0
+
   # gets
   get "bento" => "search#index"
   get "bento" => "search#index", :as => "multi_search"
