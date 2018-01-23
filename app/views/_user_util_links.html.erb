@@ -1,7 +1,13 @@
 <div class="navbar-right">
   <ul class="nav navbar-nav">
-    <%= render_nav_actions do |config, action|%>
+    <% if current_user %>
+      <% render_nav_actions do |config, action|%>
         <li><%= action %></li>
+      <% end %>
+    <% else %>
+      <li>
+        <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+      </li>
     <% end %>
   </ul>
 
@@ -10,10 +16,6 @@
         <% if current_user %>
             <li>
               <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :method => 'delete' %>
-            </li>
-        <% else %>
-            <li>
-              <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
             </li>
         <% end %>
       </ul>

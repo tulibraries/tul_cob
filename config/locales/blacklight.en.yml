@@ -2,7 +2,12 @@ en:
   blacklight:
     application_name: "Blacklight"
     header_links:
-      library_account: "Library Account"
+      library_account: "My Library Account"
+      login: 'My Library Account'
+      logout: 'Log Out'
+      bookmarks: 'Bookmarks'
+      saved_searches: 'Saved Searches'
+      search_history: 'Search History'
 
     search:
       back: "Back to Main View"

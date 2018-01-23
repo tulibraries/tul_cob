@@ -1,10 +1,21 @@
 @import "_vars.scss";
 
+#header-navbar {
+	  border-bottom: 0;
+	  padding-bottom: 7px;
+	.navbar-brand {
+	  width: 300px;
+	  height: 67px;
+	  margin: 10px 21px 0px 0px;
+	  padding: 0;
+	}
+}
 .navbar-default {
 	background-color: $tan;
 }
 
 .navbar-inverse {
+	margin-bottom: 0;
 	background-color: $white;
 	border-color: $grey;
 	.navbar-nav {
@@ -12,6 +23,18 @@
 			a, a:visited, a:hover, a:active {
 				color: $red;
 				font-size: 110%;
+			}
+		}
+	}
+}
+#user-util-collapse {
+	background-color: $red;
+	padding: 1px 35px;
+	.navbar-nav {
+		li {
+			a, a:visited, a:hover, a:active {
+				color: $white;
+				padding: 4px 21px;
 			}
 		}
 	}
