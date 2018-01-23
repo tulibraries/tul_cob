@@ -25,4 +25,10 @@ module CatalogHelper
     # Get the first ISSN and strip non-numerics
     "data-lccn=#{value.first.gsub(/\D/, '')}"
   end
+  
+  def message_body(document)
+    "#{document['title_statement_display'].first}\n" +
+    "#{document['call_number_display'].first}\n" +
+    "#{document['library_facet'].first}"
+  end
 end

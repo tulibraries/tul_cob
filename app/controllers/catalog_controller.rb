@@ -472,16 +472,13 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:message, callback: :message_action)
   end
 
-  # TODO Is this how catalog controller is suppoed to get the current document?
   def message
     params[:to] = ENV['TO_PHONE_NUMBER']
+    # TODO Is this how catalog controller is supposed to get the current document?
     @document = SolrDocument.find(params[:id])
-    # OPTIMIZE Put in helper
-    params[:body] = "#{@document['title_statement_display'].first}\n" +
-                    "#{@document['call_number_display'].first}\n" +
-                    "#{@document['library_facet'].first}"
     respond_to do |format|
-        format.html { render layout: false }
+      format.html { render layout: false }
+      format.js
     end
   end
 
