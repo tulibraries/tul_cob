@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <!-- 0. Neigther PRT nor 856 fiels -->
+  </record>
+  <record>
+    <!-- 1. Only singele PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 2. Only multiple PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">bar</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 3. Only single 856 field (no exception) -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">foo</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 4. Only multiple 856 fields (no exceptions) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">z</subfield>
+      <subfield code="3">3</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="y">y</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 5. Only single 856 field (with exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">book review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 6. Multiple 856 fields (with exceptions) -->
+    NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">BOOK review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">pubLisher description</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">tabLe of Contents</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 7. PRT field and 856 field (with exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">BOOK review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 8. PRT field and 856 field (no exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">bar</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+</collection>

@@ -16,6 +16,10 @@ solr_url = ERB.new(solr_config["url"]).result
 require "traject/macros/marc21_semantics"
 extend  Traject::Macros::Marc21Semantics
 
+# Overrides the trim_punctuation method to remove periods preceded by parentheses
+require "traject/macros/custom_marc21"
+
+
 # To have access to the traject marc format/carrier classifier
 require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
@@ -108,6 +112,12 @@ to_field "digital_file_display", extract_marc("347abcdef")
 to_field "form_work_display", extract_marc("380a")
 to_field "performance_display", extract_marc("382abdenprst")
 to_field "music_no_display", extract_marc("383abcde")
+to_field "video_file_display", extract_marc("346ab")
+to_field "music_format_display", extract_marc("348ab")
+to_field "music_key_display", extract_marc("384a")
+to_field "audience_display", extract_marc("385am")
+to_field "creator_group_display", extract_marc("386aim")
+to_field "date_period_display", extract_marc("388a")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
