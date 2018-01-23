@@ -125,20 +125,20 @@ results_queries:
     ISBN: "9780140449198"
     query_type:
       - "ISBN"
-  - doc_id:
-      - "991006700799703811"
-    ISBN: "140449191"
-    query_type:
-      - "ISBN"
+  # - doc_id:
+  #     - "991006700799703811"
+  #   ISBN: "140449191"
+  #   query_type:
+  #     - "ISBN"
   # - doc_id:
   #     - "991036743832103811"
   #   query_type:
   #     - "doc_id"
-  - doc_id:
-      - "991035120939703811"
-    callnum: "PN1997.2 .S462x 2003"
-    query_type:
-      - "callnum"
+  # - doc_id:
+  #     - "991035120939703811"
+  #   callnum: "PN1997.2 .S462x 2003"
+  #   query_type:
+  #     - "callnum"
   # - doc_id:
   #     - "991035120939703811"
   #   callnum: "PN1997.2.S462x2003"

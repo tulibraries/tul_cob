@@ -37,17 +37,17 @@ RSpec.describe CatalogController, type: :controller do
               end
             end
           end
-          # if (test_item["doc_id"].length > 0) || (test_item.include?("secondary_id") && test_item["secondary_id"].length > 0)
-          #   puts 'test_item["doc_id"].length > 0'
-          #   puts "\n search string:"
-          #   puts search_string
-          #   puts "\n test item (ids not found):"
-          #   puts test_item
-          #   puts "\n"
-          #   puts "\n search results:"
-          #   puts docs
-          #   puts "\n"
-          # end
+          if (test_item["doc_id"].length > 0) || (test_item.include?("secondary_id") && test_item["secondary_id"].length > 0)
+            puts 'test_item["doc_id"].length > 0'
+            puts "\n search string:"
+            puts search_string
+            puts "\n test item (ids not found):"
+            puts test_item
+            puts "\n"
+            puts "\n search results:"
+            puts docs
+            puts "\n"
+          end
           #binding.pry
           expect(test_item).to satisfy { test_item["doc_id"].length == 0 }
           expect(test_item).to satisfy { test_item.exclude?("secondary_id") || test_item["secondary_id"].length == 0 }
