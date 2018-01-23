@@ -16,8 +16,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :exact_phrase_search ] +
     [ :disable_advanced_spellcheck ] +
     [ :substitute_colons ] +
-    [ :normalize_and_search ]
-
+    [ :normalize_and_search ] +
+    [ :limit_facets ]
 
   def begins_with_search(solr_parameters)
     dereference_with(:append_start_flank, solr_parameters)
@@ -57,6 +57,17 @@ class SearchBuilder < Blacklight::SearchBuilder
       fields.each { |k, v| solr_parameters[k] = v.gsub(/ & /, " and ") }
     else
       solr_parameters["q"] = query.gsub(/ & /, " and ")
+    end
+  end
+
+  def limit_facets(solr_parameters)
+    path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
+    count = blacklight_params.count
+
+    if path == "catalog/index" && count == 2
+      solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
+    elsif path == "catalog/range_limit" || path == "catalog/advanced"
+      solr_parameters["facet.field"] = []
     end
   end
 
