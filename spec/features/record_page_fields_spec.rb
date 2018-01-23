@@ -486,6 +486,66 @@ RSpec.feature "RecordPageFields" do
     end
   end
 
+  feature "MARC Video File Fields" do
+    let (:item_346) { fixtures.fetch("video_file_346") }
+    scenario "User visits a document with video file" do
+      visit "catalog/#{item_346['doc_id']}"
+      within "dd.blacklight-video_file_display" do
+        expect(page).to have_text(item_346["video_file"])
+      end
+    end
+  end
+
+  feature "MARC Music Format Fields" do
+    let (:item_348) { fixtures.fetch("music_format_348") }
+    scenario "User visits a document with music format" do
+      visit "catalog/#{item_348['doc_id']}"
+      within "dd.blacklight-music_format_display" do
+        expect(page).to have_text(item_348["music_format"])
+      end
+    end
+  end
+
+  feature "MARC Music Key Fields" do
+    let (:item_384) { fixtures.fetch("music_key_384") }
+    scenario "User visits a document with music key" do
+      visit "catalog/#{item_384['doc_id']}"
+      within "dd.blacklight-music_key_display" do
+        expect(page).to have_text(item_384["music_key"])
+      end
+    end
+  end
+
+  feature "MARC Audience Fields" do
+    let (:item_385) { fixtures.fetch("audience_385") }
+    scenario "User visits a document with audience" do
+      visit "catalog/#{item_385['doc_id']}"
+      within "dd.blacklight-audience_display" do
+        expect(page).to have_text(item_385["audience"])
+      end
+    end
+  end
+
+  feature "MARC Creator Group Fields" do
+    let (:item_386) { fixtures.fetch("creator_group_386") }
+    scenario "User visits a document with creator_group" do
+      visit "catalog/#{item_386['doc_id']}"
+      within "dd.blacklight-creator_group_display" do
+        expect(page).to have_text(item_386["creator_group"])
+      end
+    end
+  end
+
+  feature "MARC Date Period Fields" do
+    let (:item_388) { fixtures.fetch("date_period_388") }
+    scenario "User visits a document with date_period" do
+      visit "catalog/#{item_388['doc_id']}"
+      within "dd.blacklight-date_period_display" do
+        expect(page).to have_text(item_388["date_period"])
+      end
+    end
+  end
+
   feature "MARC Music No Fields" do
     let (:item_383) { fixtures.fetch("music_no_383") }
     scenario "User visits a document with music no" do
