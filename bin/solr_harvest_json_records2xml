@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'json'
+require 'yaml'
+
+test_queries = YAML.load_file("spec/fixtures/search_features.yml").fetch("results_queries")
+
+outfile = File.open('test_search_marc_records.xml', 'a')
+outfile.puts('<?xml version="1.0" encoding="UTF-8"?>')
+outfile.puts("<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>")
+
+test_queries.each do |test_item|
+  pageindex = 1
+  search_string = ''
+
+  test_item['query_type'].each do |query_field|
+    search_string += test_item[query_field] + " "
+  end
+
+  puts search_string
+  loop do
+    url = 'http://libqa.library.temple.edu/catalog/?q=' + search_string + '&search_field=all_fields&format=json&page=' + pageindex.to_s
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    page = JSON.parse(response)["response"]
+
+    page["docs"].each do |doc|
+      recordid = doc["id"]
+      recordurl = "http://libqa.library.temple.edu/catalog/catalog/" + recordid + ".json"
+      uri = URI(recordurl)
+      response = Net::HTTP.get(uri)
+      record = JSON.parse(response)["response"]
+      marcxml = record["document"]["marc_display_raw"]
+      outfile.puts(marcxml)
+    end
+    pageindex = page["pages"]["next_page"]
+    puts page["pages"]["current_page"].to_s + " of " + page["pages"]["total_pages"].to_s
+    break if page["pages"]["current_page"] == [page["pages"]["total_pages"], 100].min
+  end
+end
+
+outfile.puts("</collection>")
