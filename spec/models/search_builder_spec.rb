@@ -108,12 +108,17 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     context "passing advanced subqueries where start query is qualified" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{}Hello\" AND _query_:\"{}World\"") }
+      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{} NOT Hello\" AND _query_:\"{}World\"") }
       let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
 
       it "does not drop the first query qualifier" do
         subject.begins_with_search(solr_parameters)
         expect(solr_parameters["q"]).to eq("NOT _query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
+      end
+
+      it "removes the prefixed BOOLEAN from a reference value" do
+        subject.begins_with_search(solr_parameters)
+        expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
       end
     end
 
