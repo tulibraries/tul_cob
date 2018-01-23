@@ -92,8 +92,6 @@ class CatalogController < ApplicationController
         subtitle_t^100000
         title_uniform_unstem_search^75000
         title_uniform_t^50000
-        title_statement_unstem_search^50000
-        title_statement_t^25000
         title_addl_unstem_search^50000
         title_addl_t^25000
         title_added_entry_unstem_search^15000
@@ -122,12 +120,10 @@ class CatalogController < ApplicationController
         title_unstem_search^50000
         subtitle_unstem_search^25000
         title_uniform_unstem_search^15000
-        title_statement_unstem_search^10000
         title_addl_unstem_search^10000
         title_t^5000
         subtitle_t^2500
         title_uniform_t^150
-        title_statement_t^100
         title_addl_t^100
         title_added_entry_unstem_search^50
         title_added_entry_t^10
@@ -138,12 +134,10 @@ class CatalogController < ApplicationController
         title_unstem_search^500000
         subtitle_unstem_search^250000
         title_uniform_unstem_search^150000
-        title_statement_unstem_search^100000
         title_addl_unstem_search^100000
         title_t^50000
         subtitle_t^25000
         title_uniform_t^1500
-        title_statement_t^1000
         title_addl_t^1000
         title_added_entry_unstem_search^500
         title_added_entry_t^100
@@ -258,9 +252,9 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
-    config.add_show_field "title_uniform_display", label: "Uniform title"
+    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
-    config.add_show_field "title_addl_display", label: "Additional titles"
+    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
     config.add_show_field "title_addl_vern_display", label: "Additional titles"
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator
@@ -277,11 +271,17 @@ class CatalogController < ApplicationController
     config.add_show_field "volume_series_display", label: "Volume"
     config.add_show_field "duration_display", label: "Duration"
     config.add_show_field "frequency_display", label: "Frequency"
-    config.add_show_field "sound_display", label: ""
-    config.add_show_field "digital_file_display", label: ""
-    config.add_show_field "form_work_display", label: ""
-    config.add_show_field "performance_display", label: ""
-    config.add_show_field "music_no_display", label: ""
+    config.add_show_field "sound_display", label: "Sound characteristics"
+    config.add_show_field "digital_file_display", label: "Digital file characteristics"
+    config.add_show_field "video_file_display", label: "Video characteristics"
+    config.add_show_field "music_format_display", label: "Format of notated music"
+    config.add_show_field "form_work_display", label: "Form of work"
+    config.add_show_field "performance_display", label: "Medium of performance"
+    config.add_show_field "music_no_display", label: "Music no."
+    config.add_show_field "music_key_display", label: "Musical key"
+    config.add_show_field "audience_display", label: "Audience"
+    config.add_show_field "creator_group_display", label: "Creator/Contributor characteristics"
+    config.add_show_field "date_period_display", label: "Time Period"
     config.add_show_field "note_display", label: "Note"
     config.add_show_field "note_with_display", label: "With"
     config.add_show_field "note_diss_display", label: "Dissertation Note"

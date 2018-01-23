@@ -1,5 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
+<div class="col-sm-12">
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 id="availability-heading">Availability</h4>
@@ -32,4 +33,5 @@
     </div>
   <% end %>
   <%= render "aeon_request", :document => document %>
+</div>
 </div>

@@ -88,9 +88,13 @@ class SearchBuilder < Blacklight::SearchBuilder
         solr_parameters["q"] = queries.join(" ")
 
         # De-referenced values have to be added as solr request parameters.
+        # TODO: move to it's own preprocessor
         ops = blacklight_params.fetch("op_row", [])
         ops.zip(fields).each { |op, f|
           k, v = f
+          # REF BL-253
+          # advanced_search moves prefix BOOLEAN to query connector.
+          v = v.gsub(/^\s*(AND NOT|OR|NOT|AND)\s*/, "") unless v.nil?
           solr_parameters[k] = send(method, v, op)
         }
 
@@ -134,7 +138,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     def parse_queries(query_string)
       query_string ||= ""
       query_string
-        .scan(/((AND|OR|NOT|AND NOT)?\s*_query_:\"{.*?}.*?\")/)
+        .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
         .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
         .map(&:flatten)
     end
