@@ -29,7 +29,6 @@
 }
 #user-util-collapse {
 	background-color: $red;
-	padding: 1px 35px;
 	.navbar-nav {
 		li {
 			a, a:visited, a:hover, a:active {
@@ -39,7 +38,11 @@
 		}
 	}
 }
-
+#user-util-links {
+	background-color:#A50030;
+	padding:0;
+	margin:0;
+}
 .navbar-right {
 	a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
 		color: $med-grey;
