@@ -94,4 +94,55 @@
       <subfield code="u">http://foobar.com</subfield>
     </datafield>
   </record>
+  <record>
+    <!-- 9. Multiple PRT field with single non-overlapping coverage dates  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">From 2001</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 2001.</subfield>
+      <subfield code="h">611000000000002607</subfield>
+      <subfield code="8">53347200660003811</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">From 2003</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 2003.</subfield>
+      <subfield code="h">613640000000000036</subfield>
+      <subfield code="8">53360346100003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 10. Multiple PRT field with duplicate single coverage dates  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">A-From 2001</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 2001.</subfield>
+      <subfield code="h">611000000000002607</subfield>
+      <subfield code="8">53347200660003811</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">B-From 2001</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 2001</subfield>
+      <subfield code="h">613640000000000036</subfield>
+      <subfield code="8">53360346100003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 11. Multiple PRT field with overlapping coverage dates  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">alpha</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 1981.</subfield>
+      <subfield code="h">611000000000002607</subfield>
+      <subfield code="8">53347200660003811</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">bravo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036721651303811</subfield>
+      <subfield code="g"> Available from 1983.</subfield>
+      <subfield code="h">613640000000000036</subfield>
+      <subfield code="8">53360346100003811</subfield>
+    </datafield>
+  </record>
 </collection>
