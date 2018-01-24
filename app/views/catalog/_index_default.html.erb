@@ -12,7 +12,9 @@
           <%= render "index_availability_section", document: document, document_counter: document_counter %>
     </dl>
   </div>
+
   <div class="<%= thumbnail_classes(document) %>" <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
-    <%= image_tag "book.png" %>
+    <%= image_tag default_cover_image(document), :class => "default" %>
   </div>
+
 </div>

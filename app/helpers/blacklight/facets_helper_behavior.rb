@@ -147,7 +147,7 @@ module Blacklight::FacetsHelperBehavior
   def render_selected_facet_value(facet_field, item)
     remove_href = search_action_path(search_state.remove_facet_params(facet_field, item))
     content_tag(:span, class: "facet-label") do
-      content_tag(:span, facet_display_value(facet_field, item), class: "selected") +
+      content_tag(:span, facet_display_value(facet_field, item), class: "selected "+item.value.downcase.parameterize.underscore) +
       # remove link
       link_to(remove_href, class: "remove") do
         content_tag(:span, '', class: "glyphicon glyphicon-remove") +
