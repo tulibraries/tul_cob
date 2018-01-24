@@ -14,7 +14,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     # happens after it, see the note for :to_phrase method for extra context.
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
-    [ :disable_advanced_spellcheck ]
+    [ :disable_advanced_spellcheck ] +
+    [ :substitute_colons ]
 
 
   def begins_with_search(solr_parameters)
@@ -32,6 +33,19 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def substitute_colons(solr_parameters)
+    query = solr_parameters["q"] || ""
+
+    return unless !query.empty?
+
+    # In the advanced the query is dereferenced.
+    if blacklight_params["search_field"] == "advanced"
+      fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
+    else
+      solr_parameters["q"] = query.gsub(/:/, " ")
+    end
+  end
+
   private
 
     def dereference_with(method, solr_parameters)
@@ -41,8 +55,7 @@ class SearchBuilder < Blacklight::SearchBuilder
       if !query.empty? && blacklight_params["search_field"] == "advanced"
         # We need the original values in the search for use in creating
         # a de-referenced version of the query.
-        fields = blacklight_params.select { |k| k.match(/^q_/) }
-
+        #
         # We de-reference values in order to be able to quote them; otherwise,
         # solr throws a 500 error: https://stackoverflow.com/a/10183238/256854
         #
@@ -72,6 +85,10 @@ class SearchBuilder < Blacklight::SearchBuilder
         }
 
       end
+    end
+
+    def fields
+      blacklight_params.select { |k| k.match(/^q_/) }
     end
 
     def append_start_flank(value, op)
@@ -105,6 +122,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # splits it into its components (connector, local params, query)
     # ["AND _query_:", "foo", "bar"], ["NOT", "biz", "buz"]]
     def parse_queries(query_string)
+      query_string ||= ""
       query_string
         .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
         .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }

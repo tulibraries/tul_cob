@@ -14,6 +14,32 @@ RSpec.describe SearchBuilder , type: :model do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
   end
 
+  describe ".substitute_colons" do
+    let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo :: bar:buzz") }
+
+    before(:example) do
+      subject.substitute_colons(solr_parameters)
+    end
+
+    context "when not doing an advanced search" do
+      it "substitutes all the colons with spaces" do
+        expect(solr_parameters["q"]).to eq("foo    bar buzz")
+      end
+    end
+
+    context "when doing an advanced search" do
+      let(:params) { ActionController::Parameters.new(
+        search_field: "advanced",
+        q_1:  ":",
+        q_2: ":foo ::: bar",
+      ) }
+
+      it "substitue colons in the addtional query values: q_1, q_2, q_3" do
+        expect(solr_parameters["q_1"]).to eq(" ")
+        expect(solr_parameters["q_2"]).to eq(" foo     bar")
+      end
+    end
+  end
 
   describe ".disable_advanced_spellcheck" do
     let(:solr_parameters) { Blacklight::Solr::Request.new(spellcheck: "true") }
@@ -120,6 +146,7 @@ RSpec.describe SearchBuilder , type: :model do
         subject.begins_with_search(solr_parameters)
         expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
       end
+
     end
 
     context "process exact_phrase_search after :begins_with" do
