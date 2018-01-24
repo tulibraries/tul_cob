@@ -55,6 +55,7 @@ RSpec.describe SearchBuilder , type: :model do
       subject.substitute_colons(solr_parameters)
     end
 
+
     context "when search is empty" do
       let(:solr_parameters) { Blacklight::Solr::Request.new }
       it "does nothing when search is empty" do
@@ -187,6 +188,7 @@ RSpec.describe SearchBuilder , type: :model do
         subject.begins_with_search(solr_parameters)
         expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
       end
+
     end
 
     context "process exact_phrase_search after :begins_with" do

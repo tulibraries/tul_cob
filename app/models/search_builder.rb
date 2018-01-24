@@ -18,7 +18,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :substitute_colons ] +
     [ :normalize_and_search ]
 
-
   def begins_with_search(solr_parameters)
     dereference_with(:append_start_flank, solr_parameters)
   end

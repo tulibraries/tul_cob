@@ -81,14 +81,13 @@ to_field "title_added_entry_t", extract_marc_with_flank(%W{
 to_field "title_sort", marc_sortable_title
 
 # Creator/contributor fields
-to_field "creator_t", extract_marc_with_flank("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
-to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj", trim_punctuation: true)
+to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
+to_field "creator_facet", extract_marc("100abcdq:110abcd:111ancdj:700abcdq:710abcd:711ancdj", trim_punctuation: true)
 to_field "creator_display", extract_creator
 to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
 to_field "author_sort", marc_sortable_author
 
 # Publication fields
