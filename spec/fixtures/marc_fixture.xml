@@ -26007,4 +26007,115 @@
       <subfield code="f">MEDIA</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01044cam a2200289 i 4500</leader>
+    <controlfield tag="005">20111129105838.0</controlfield>
+    <controlfield tag="008">781007s1966    nbuc     b    000 0 eng d</controlfield>
+    <controlfield tag="001">991023012549703811</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b50390545-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)ocn768308275</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)4280382</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">LDL</subfield>
+      <subfield code="c">LDL</subfield>
+      <subfield code="d">PPT</subfield>
+    </datafield>
+    <datafield tag="043" ind1=" " ind2=" ">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield tag="079" ind1=" " ind2=" ">
+      <subfield code="a">ocm04280382</subfield>
+    </datafield>
+    <datafield tag="090" ind1=" " ind2=" ">
+      <subfield code="a">BV741</subfield>
+      <subfield code="b">.L588 1966 Littell</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Littell, Franklin H.</subfield>
+      <subfield code="q">(Franklin Hamlin),</subfield>
+      <subfield code="d">1917-2009.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Religious liberty :</subfield>
+      <subfield code="b">the positive dimension : an address /</subfield>
+      <subfield code="c">by Franklin H. Littell at Doane College on April 26, 1966.</subfield>
+    </datafield>
+    <datafield tag="260" ind1=" " ind2=" ">
+      <subfield code="a">[Crete, Neb.] :</subfield>
+      <subfield code="b">Doane College,</subfield>
+      <subfield code="c">[1966]</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">22 p. :</subfield>
+      <subfield code="b">port. ;</subfield>
+      <subfield code="c">22 cm.</subfield>
+    </datafield>
+    <datafield tag="504" ind1=" " ind2=" ">
+      <subfield code="a">Includes bibliographical references.</subfield>
+    </datafield>
+    <datafield tag="590" ind1=" " ind2=" ">
+      <subfield code="a">Given by Drs. Jonathan and Susan Sachs in honor of Drs. Franklin and Marcia Sachs Littell.</subfield>
+    </datafield>
+    <datafield tag="650" ind1=" " ind2="0">
+      <subfield code="a">Freedom of religion</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield tag="740" ind1="0" ind2=" ">
+      <subfield code="a">Franklin and Marcia Sachs Littell Collection.</subfield>
+      <subfield code="5">PPT</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b50390545</subfield>
+      <subfield code="b">s    </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="902" ind1=" " ind2=" ">
+      <subfield code="a">130919</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">0</subfield>
+      <subfield code="c">111129</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="a">11/29/11</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">RM</subfield>
+    </datafield>
+    <datafield tag="945" ind1=" " ind2=" ">
+      <subfield code="l">srare</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield tag="HLD" ind1="0" ind2=" ">
+      <subfield code="b">SCRC</subfield>
+      <subfield code="c">rarestacks</subfield>
+      <subfield code="h">BV741</subfield>
+      <subfield code="i">.L588 1966 Littell</subfield>
+      <subfield code="8">22307851340003811</subfield>
+    </datafield>
+    <datafield tag="ITM" ind1=" " ind2=" ">
+      <subfield code="r">22307851340003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">rarestacks</subfield>
+      <subfield code="9">39074027330349</subfield>
+      <subfield code="e">rarestacks</subfield>
+      <subfield code="8">23307851320003811</subfield>
+      <subfield code="a">4</subfield>
+      <subfield code="q">2017-06-20 10:58:36</subfield>
+      <subfield code="i">BV741 .L588 1966 Littell</subfield>
+      <subfield code="d">SCRC</subfield>
+      <subfield code="f">SCRC</subfield>
+    </datafield>
+  </record>
 </collection>
