@@ -14,11 +14,53 @@ RSpec.describe SearchBuilder , type: :model do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
   end
 
-  describe ".substitute_colons" do
+  describe "#normalize_and_search" do
+    let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo & bar") }
+
+    before(:example) do
+      subject.normalize_and_search(solr_parameters)
+    end
+
+    context "when search is empty" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+      it "does nothing when search is empty" do
+        expect(solr_parameters["q"]).to be_nil
+      end
+    end
+
+    context "when not doing an advanced search" do
+      it "substitutes all the & with and" do
+        expect(solr_parameters["q"]).to eq("foo and bar")
+      end
+    end
+
+    context "when doing an advanced search" do
+      let(:params) { ActionController::Parameters.new(
+        search_field: "advanced",
+        q_1:  "foo & bar",
+        q_2: "bizz & buzz",
+      ) }
+
+      it "substitue colons in the addtional query values: q_1, q_2, q_3" do
+        expect(solr_parameters["q_1"]).to eq("foo and bar")
+        expect(solr_parameters["q_2"]).to eq("bizz and buzz")
+      end
+    end
+  end
+
+  describe "#substitute_colons" do
     let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo :: bar:buzz") }
 
     before(:example) do
       subject.substitute_colons(solr_parameters)
+    end
+
+
+    context "when search is empty" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+      it "does nothing when search is empty" do
+        expect(solr_parameters["q"]).to be_nil
+      end
     end
 
     context "when not doing an advanced search" do

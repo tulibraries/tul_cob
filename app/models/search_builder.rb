@@ -15,8 +15,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
     [ :disable_advanced_spellcheck ] +
-    [ :substitute_colons ]
-
+    [ :substitute_colons ] +
+    [ :normalize_and_search ]
 
   def begins_with_search(solr_parameters)
     dereference_with(:append_start_flank, solr_parameters)
@@ -43,6 +43,19 @@ class SearchBuilder < Blacklight::SearchBuilder
       fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
     else
       solr_parameters["q"] = query.gsub(/:/, " ")
+    end
+  end
+
+  def normalize_and_search(solr_parameters)
+    query = solr_parameters["q"] || ""
+
+    return unless !query.empty?
+
+    # In the advanced the query is dereferenced.
+    if blacklight_params["search_field"] == "advanced"
+      fields.each { |k, v| solr_parameters[k] = v.gsub(/ & /, " and ") }
+    else
+      solr_parameters["q"] = query.gsub(/ & /, " and ")
     end
   end
 
