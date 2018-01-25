@@ -14,7 +14,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["title"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -23,7 +23,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["doc_id"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -32,7 +32,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button "Search"
-      within first(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -41,7 +41,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["imprint"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -51,7 +51,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["physical_description"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -60,7 +60,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["series_title"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -70,7 +70,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["content"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -79,7 +79,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -88,7 +88,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["isbn"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -97,7 +97,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["lccn"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -109,7 +109,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["title"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -118,7 +118,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["doc_id"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -127,7 +127,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -136,7 +136,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["imprint"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -146,7 +146,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["physical_description"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -155,7 +155,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -164,7 +164,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["issn"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -173,10 +173,9 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["lccn"]
       click_button "Search"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
-  end
-
+   end
 end

@@ -31,13 +31,13 @@ RSpec.describe CatalogController, type: :controller do
               if test_item["doc_id"].include?(search_result["id"])
                 test_item["doc_id"].delete(search_result["id"])
               end
-            elsif test_item.include?("secondary_id") && test_item["secondary_id"].length > 0
+            elsif test_item.include?("secondary_id") && !(test_item["secondary_id"].nil?) && test_item["secondary_id"].length > 0
               if test_item["secondary_id"].include?(search_result["id"])
                 test_item["secondary_id"].delete(search_result["id"])
               end
             end
           end
-          if (test_item["doc_id"].length > 0) || (test_item.include?("secondary_id") && test_item["secondary_id"].length > 0)
+          if (test_item["doc_id"].length > 0) || (test_item.include?("secondary_id") && !(test_item["secondary_id"].nil?) && test_item["secondary_id"].length > 0)
             puts 'test_item["doc_id"].length > 0'
             puts "\n search string:"
             puts search_string
@@ -50,7 +50,7 @@ RSpec.describe CatalogController, type: :controller do
           end
           #binding.pry
           expect(test_item).to satisfy { test_item["doc_id"].length == 0 }
-          expect(test_item).to satisfy { test_item.exclude?("secondary_id") || test_item["secondary_id"].length == 0 }
+          expect(test_item).to satisfy { test_item.exclude?("secondary_id") || (test_item["secondary_id"].nil?) || test_item["secondary_id"].length == 0 }
         end
       end
     end
