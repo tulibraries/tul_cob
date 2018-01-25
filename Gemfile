@@ -72,6 +72,8 @@ group :development, :test do
   gem "rubocop"
 end
 
+
+
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
@@ -88,3 +90,8 @@ gem "chosen-rails"
 gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
+
+
+group :production do
+    gem 'mysql2', '~> 0.4.9'
+end
