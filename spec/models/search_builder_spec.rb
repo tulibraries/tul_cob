@@ -194,7 +194,7 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     context "passing advanced subqueries where start query is qualified" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{}Hello\" AND _query_:\"{}World\"") }
+      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{} NOT Hello\" AND _query_:\"{}World\"") }
       let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
 
       it "does not drop the first query qualifier" do
