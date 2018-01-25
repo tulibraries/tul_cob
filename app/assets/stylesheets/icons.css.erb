@@ -1,3 +1,19 @@
+span.btn-drop-down {
+  background: transparent url(<%= asset_path 'drop-down.png' %>) no-repeat center right;
+  padding-right: 0;
+  display:inline-block;
+  width: 100%;
+}
+span.btn-drop-down.available {
+  font-size:15px;
+  padding-left: 7px;
+}
+span.btn-drop-down.notavailable {
+  font-size:13px;
+}
+.availability-toggle-details {
+  text-align: left;
+}
 span.book, a.facet_book {
   background: transparent url(<%= asset_path 'icons/book.png' %>) no-repeat top left;
   padding-left: 26px;

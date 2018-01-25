@@ -35,7 +35,7 @@ module CatalogHelper
     document[:format].each do |format|
        formats << '<span class="'+"#{format.to_s.parameterize.underscore}"+'">'+format.to_s+'</span>'.html_safe
     end
-    formats.join('<span style="padding-left:7px;padding-right:14px;">and</span>')
+    formats.join('<span class="format-concatenator">and</span>')
   end
 
 end
