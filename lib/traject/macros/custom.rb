@@ -28,7 +28,7 @@ module Traject
       end
 
       def creator_name_trim_punctuation(name)
-        name.sub(/ *[ ,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1')
+        name.sub(/ *[ ,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1').sub(/(?<=\))\./ , "")
       end
 
       def creator_role_trim_punctuation(role)
@@ -38,18 +38,18 @@ module Traject
       def extract_creator
         lambda do |rec, acc|
           rec.fields("100").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("110").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("111").each do |f|
-            linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
+            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
@@ -58,18 +58,18 @@ module Traject
       def extract_creator_vern
         lambda do |rec, acc|
           MarcExtractor.cached("100abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("110abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("111acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
+            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
@@ -78,18 +78,18 @@ module Traject
       def extract_contributor
         lambda do |rec, acc|
           rec.fields("700").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("710").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("711").each do |f|
-            linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
+            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
@@ -98,18 +98,18 @@ module Traject
       def extract_contributor_vern
         lambda do |rec, acc|
           MarcExtractor.cached("700abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"], f["q"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("710abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["d"]].compact.join(" ")
+            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           MarcExtractor.cached("711acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["c"], f["d"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
+            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
         end
@@ -128,67 +128,37 @@ module Traject
               acc << res.compact.join("|")
             end
           end
+
+          # Short circuit if PRT field present.
+          if !rec.fields("PRT").empty?
+            return acc
+          end
+
           rec.fields("856").each do |f|
-            case f.indicator2
-            when "0"
-              z3 = [f["z"], f["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
-              end
-            when "2"
-              # do nothing
-            else
-              z3 = [f["z"], f["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
+            if f.indicator2 != "2"
+              label = url_label(f["z"], f["3"], f["y"])
+              unless NOT_FULL_TEXT.match(label)
+                acc << [label, f["u"]].compact.join("|")
               end
             end
           end
         end
       end
 
+      def url_label(z, n, y)
+        label = [z, n].compact.join(" ")
+        if label.empty?
+          label = y || "Link to Resource"
+        end
+        label
+      end
+
       def extract_url_more_links
         lambda { |rec, acc|
           rec.fields("856").each do |f|
-            case f.indicator2
-            when "2"
-              z3 = [f["z"], f["3"]].join(" ")
-              if z3 == " "
-                z3 = f["y"] || "Link to Resource"
-                z3 << "|#{f["u"]}" unless f["u"].nil?
-                acc << z3
-              else
-                z3 << "|#{f["u"]}" unless f["u"].nil?
-                acc << z3
-              end
-            when "0"
-              # do nothing
-            else
-              z3 = [f["z"], f["3"]].join(" ")
-              if NOT_FULL_TEXT.match(z3)
-                if z3 == " "
-                  z3 = f["y"] || "Link to Resource"
-                  z3 << "|#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                else
-                  z3 << " |#{f["u"]}" unless f["u"].nil?
-                  acc << z3
-                end
-              end
+            label = url_label(f["z"], f["3"], f["y"])
+            if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty?
+              acc << [label, f["u"]].compact.join("|")
             end
           end
         }

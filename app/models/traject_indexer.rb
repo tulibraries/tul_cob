@@ -16,6 +16,10 @@ solr_url = ERB.new(solr_config["url"]).result
 require "traject/macros/marc21_semantics"
 extend  Traject::Macros::Marc21Semantics
 
+# Overrides the trim_punctuation method to remove periods preceded by parentheses
+require "traject/macros/custom_marc21"
+
+
 # To have access to the traject marc format/carrier classifier
 require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
@@ -77,14 +81,13 @@ to_field "title_added_entry_t", extract_marc_with_flank(%W{
 to_field "title_sort", marc_sortable_title
 
 # Creator/contributor fields
-to_field "creator_t", extract_marc_with_flank("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejlmnopqrtu:710abcdelmnopt:711acdejlnopt", trim_punctuation: true)
-to_field "creator_facet", extract_marc("100abcdq:110abcd:111acdj:700abcdq:710abcd:711acdj", trim_punctuation: true)
+to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
+to_field "creator_facet", extract_marc("100abcdq:110abcd:111ancdj:700abcdq:710abcd:711ancdj", trim_punctuation: true)
 to_field "creator_display", extract_creator
 to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
 to_field "author_sort", marc_sortable_author
 
 # Publication fields
@@ -108,6 +111,12 @@ to_field "digital_file_display", extract_marc("347abcdef")
 to_field "form_work_display", extract_marc("380a")
 to_field "performance_display", extract_marc("382abdenprst")
 to_field "music_no_display", extract_marc("383abcde")
+to_field "video_file_display", extract_marc("346ab")
+to_field "music_format_display", extract_marc("348ab")
+to_field "music_key_display", extract_marc("384a")
+to_field "audience_display", extract_marc("385am")
+to_field "creator_group_display", extract_marc("386aim")
+to_field "date_period_display", extract_marc("388a")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)

@@ -16,7 +16,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :exact_phrase_search ] +
     [ :disable_advanced_spellcheck ] +
     [ :substitute_colons ] +
-    [ :normalize_and_search ] +
     [ :limit_facets ]
 
   def begins_with_search(solr_parameters)
@@ -44,19 +43,6 @@ class SearchBuilder < Blacklight::SearchBuilder
       fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
     else
       solr_parameters["q"] = query.gsub(/:/, " ")
-    end
-  end
-
-  def normalize_and_search(solr_parameters)
-    query = solr_parameters["q"] || ""
-
-    return unless !query.empty?
-
-    # In the advanced the query is dereferenced.
-    if blacklight_params["search_field"] == "advanced"
-      fields.each { |k, v| solr_parameters[k] = v.gsub(/ & /, " and ") }
-    else
-      solr_parameters["q"] = query.gsub(/ & /, " and ")
     end
   end
 
@@ -99,9 +85,13 @@ class SearchBuilder < Blacklight::SearchBuilder
         solr_parameters["q"] = queries.join(" ")
 
         # De-referenced values have to be added as solr request parameters.
+        # TODO: move to it's own preprocessor
         ops = blacklight_params.fetch("op_row", [])
         ops.zip(fields).each { |op, f|
           k, v = f
+          # REF BL-253
+          # advanced_search moves prefix BOOLEAN to query connector.
+          v = v.gsub(/^\s*(AND NOT|OR|NOT|AND)\s*/, "") unless v.nil?
           solr_parameters[k] = send(method, v, op)
         }
 
@@ -145,7 +135,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     def parse_queries(query_string)
       query_string ||= ""
       query_string
+<<<<<<< HEAD
         .scan(/((AND|OR|NOT|AND NOT)?\s*_query_:\"{.*?}.*?\")/)
+=======
+        .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
+>>>>>>> master
         .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
         .map(&:flatten)
     end
