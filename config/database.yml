@@ -23,7 +23,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  host: <%= ENV["COB_DB_HOST"] %>
+  host: <%= ENV["COB_DB_HOST"] || localhost %>
   database: <%= ENV["COB_DB_NAME"] %>
   username: <%= ENV["COB_DB_USER"] %>
   password: <%= ENV["COB_DB_PASSWORD"] %>
