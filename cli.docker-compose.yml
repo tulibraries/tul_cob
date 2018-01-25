@@ -1,0 +1,15 @@
+version: "3.2"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/cli/Dockerfile
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/tul_cob
+
+  solr:
+    volumes:
+      - $PWD/solr/conf:/opt/solr/conf

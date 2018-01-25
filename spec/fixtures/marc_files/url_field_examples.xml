@@ -61,7 +61,6 @@
   </record>
   <record>
     <!-- 6. Multiple 856 fields (with exceptions) -->
-    NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
     <datafield tag="856" ind1="4" ind2="1">
       <subfield code="z">BOOK review</subfield>
       <subfield code="u">http://foobar.com</subfield>

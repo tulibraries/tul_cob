@@ -177,5 +177,25 @@ RSpec.feature "Searches" do
         expect(page).to have_text item["title"]
       end
     end
-   end
+  end
+  
+  feature "Search for an item with a colon in title" do
+    let (:item) { fixtures.fetch("has_a_colon") }
+    scenario "using default serch" do
+      visit "/"
+      fill_in "q", with: item["title_statement"]
+      click_button "Search"
+      within(".document-position-0 h3") do
+        expect(page).to have_text item["exact_title"]
+      end
+    end
+    scenario "using advanced serch" do
+      visit "/advanced"
+      fill_in "q_1", with: item["title_statement"]
+      click_button "advanced-search-submit"
+      within(".document-position-0 h3") do
+        expect(page).to have_text item["exact_title"]
+      end
+    end
+  end
 end

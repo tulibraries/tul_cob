@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "twilio-ruby"
+
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
@@ -464,5 +466,48 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
+
+    # Configuration for text to phone_number
+    config.show.document_actions.delete(:sms)
+    config.add_show_tools_partial(:message, callback: :message_action)
+  end
+
+  def message
+    # TODO Is this how catalog controller is supposed to get the current document?
+    @document = SolrDocument.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: false }
+      format.js
+    end
+  end
+
+  def render_message_action?(_config, _options)
+    true
+  end
+
+  def validate_message_params
+    if params[:to].blank?
+      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
+    elsif params[:to].gsub(/[^\d]/, "").length != 10
+      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
+    end
+    flash[:error].blank?
+  end
+
+  # FIXME Does not conform to "Adding new document actions"
+  # https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
+  # - Document actions does not pass documents argument to message_action
+  # - Must manually redirect to solr_document_url. It should be done automatically
+  #   without calling redirect_to
+  # - app/views/message_success does not render
+  def message_action #documents
+    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+    message = @client.messages.create(
+      body: params[:body],
+      to:   params[:to],
+      from: Rails.configuration.twilio[:phone_number]
+      )
+    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+    redirect_to solr_document_url
   end
 end

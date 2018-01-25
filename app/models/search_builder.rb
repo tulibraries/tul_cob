@@ -14,8 +14,9 @@ class SearchBuilder < Blacklight::SearchBuilder
     # happens after it, see the note for :to_phrase method for extra context.
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
-    [ :disable_advanced_spellcheck ]
-
+    [ :disable_advanced_spellcheck ] +
+    [ :substitute_colons ] +
+    [ :limit_facets ]
 
   def begins_with_search(solr_parameters)
     dereference_with(:append_start_flank, solr_parameters)
@@ -32,6 +33,33 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def substitute_colons(solr_parameters)
+    query = solr_parameters["q"] || ""
+
+    return unless !query.empty?
+
+    # In the advanced the query is dereferenced.
+    if blacklight_params["search_field"] == "advanced"
+      fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
+    else
+      solr_parameters["q"] = query.gsub(/:/, " ")
+    end
+  end
+
+  def limit_facets(solr_parameters)
+    path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
+    count = blacklight_params.count
+
+    # When only the controller and action are defined (count == 2), and the
+    # controller is set to "catalog" and the action is set to "index", then we
+    # are at the search page prior to doing a search.
+    if path == "catalog/index" && count == 2
+      solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
+    elsif path == "catalog/range_limit" || path == "catalog/advanced"
+      solr_parameters["facet.field"] = []
+    end
+  end
+
   private
 
     def dereference_with(method, solr_parameters)
@@ -41,29 +69,40 @@ class SearchBuilder < Blacklight::SearchBuilder
       if !query.empty? && blacklight_params["search_field"] == "advanced"
         # We need the original values in the search for use in creating
         # a de-referenced version of the query.
-        fields = blacklight_params.select { |k| k.match(/^q_/) }
-
+        #
         # We de-reference values in order to be able to quote them; otherwise,
         # solr throws a 500 error: https://stackoverflow.com/a/10183238/256854
         #
-        # First we generate something like:
-        # [[["{}", "foo", "AND"], "q_1"], [["{}", "bar", "OR"], "q_2"]]
-        # And then we map that to ["_query_:..", "_query_:..."]
+        # First we take the query string and generate something like:
+        # [[["AND _query_:", "foo", "bar"], "q_1"], [["OR _query_:", "biz", "buz"], "q_2"]]
+        # And then we transform and rejoin that into a dereferenced query:
+        #
+        # "AND _query_:\"{foo v=$q_1}\" OR _query_:\"{biz v=$q_2}\""
+        #
         # @see :parse_queries, and :param_dereference methods below for more
         # details.
         queries = parse_queries(solr_parameters["q"])
           .zip(fields.keys)
           .map { |q, k| param_dereference(q, k) }
+
         solr_parameters["q"] = queries.join(" ")
 
         # De-referenced values have to be added as solr request parameters.
+        # TODO: move to it's own preprocessor
         ops = blacklight_params.fetch("op_row", [])
         ops.zip(fields).each { |op, f|
           k, v = f
+          # REF BL-253
+          # advanced_search moves prefix BOOLEAN to query connector.
+          v = v.gsub(/^\s*(AND NOT|OR|NOT|AND)\s*/, "") unless v.nil?
           solr_parameters[k] = send(method, v, op)
         }
 
       end
+    end
+
+    def fields
+      blacklight_params.select { |k| k.match(/^q_/) }
     end
 
     def append_start_flank(value, op)
@@ -93,23 +132,27 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     # Given a blacklight solr query string in the form
-    # "_query_:\"{}foo\" (AND|OR|NOT) (__query:\"{}bar\")..."
-    # parses it to return an array of query components:
-    # [["{}", "foo", AND], ["{}", "bar", nil]]
+    # "AND _query_:\"{foo} bar\" NOT _query:\"{biz} buz\""
+    # splits it into its components (connector, local params, query)
+    # ["AND _query_:", "foo", "bar"], ["NOT", "biz", "buz"]]
     def parse_queries(query_string)
-      query_string.split("_query_:")
-        .select { |q| q[0..1] == "\"{" }
-        .map { |q| q.scan(/{(.*)}(.*)\".?(AND|OR|NOT)?/) }
-        .map { |q| q.flatten }
+      query_string ||= ""
+      query_string
+        .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
+        .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
+        .map(&:flatten)
     end
 
-    # Given an array q representing the components of a single query:
-    # i.e. ["{}", "foo", "AND"], generates a new string representation
-    # of the query.
+    # Given an array representing the components of a single query, and
+    # a parameter key: i.e. ["AND _query_:", "foo", "bar"], key
+    # generates dereferenced representation of the query.
+    #
+    # "AND _query_:\"{foo v=$key}\""
+    #
     # @see https://lucene.apache.org/solr/guide/6_6/local-parameters-in-queries.html
     # For details on local parameter dereferencing syntax.
     def param_dereference(q, k)
-      local_param, _, connector = q
-      "_query_:\"{#{local_param} v=$#{k}}\" #{connector}"
+      connector, local_param, _ = q
+      "#{connector}\"{#{local_param} v=$#{k}}\""
     end
 end
