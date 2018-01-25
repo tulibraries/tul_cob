@@ -125,11 +125,11 @@ results_queries:
     ISBN: "9780140449198"
     query_type:
       - "ISBN"
-  - doc_id:
-      - "991006700799703811"
-    ISBN: "140449191"
-    query_type:
-      - "ISBN"
+  # - doc_id:
+  #     - "991006700799703811"
+  #   ISBN: "140449191"
+  #   query_type:
+  #     - "ISBN"
   # - doc_id:
   #     - "991036743832103811"
   #   query_type:
