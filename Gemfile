@@ -93,5 +93,5 @@ gem "twilio-ruby"
 
 
 group :production do
-    gem 'mysql2', '~> 0.4.9'
+  gem "mysql2", "~> 0.4.9"
 end
