@@ -50,6 +50,9 @@ class SearchBuilder < Blacklight::SearchBuilder
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
     count = blacklight_params.count
 
+    # When only the controller and action are defined (count == 2), and the
+    # controller is set to "catalog" and the action is set to "index", then we
+    # are at the search page prior to doing a search.
     if path == "catalog/index" && count == 2
       solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
     elsif path == "catalog/range_limit" || path == "catalog/advanced"
