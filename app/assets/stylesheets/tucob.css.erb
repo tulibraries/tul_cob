@@ -3,7 +3,10 @@
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }
 div.navbar-form {
-  padding-top: 8px;
+  position:relative;
+  top: 8px;
+  left: -77px;
+  border: 0;
 }
 /* === AEON REQUESTS === */
 
@@ -120,6 +123,18 @@ div.physical-holding-panel {
 }
 
 /* === MEDIA QUERIES === */
+
+@media (max-width: 1200px) {
+  div.navbar-form {
+    left: -21px;
+  }
+}
+@media (max-width: 992px) {
+  div.navbar-form {
+    left: 0px;
+    top: 0px;
+  }
+}
 
 @media (min-width: 768px) {
   .document dt {
