@@ -213,3 +213,8 @@ results_queries:
     title: "the epic of gilgamesh"
     query_type:
       - "title"
+
+has_a_colon:
+  doc_id: "991023012549703811"
+  title_statement: "Religious liberty :the positive dimension : an address"
+  exact_title: " Religious liberty : the positive dimension : an address / by Franklin H. Littell at Doane College on April 26, 1966."

@@ -178,4 +178,50 @@ RSpec.feature "Searches" do
       end
     end
    end
+
+  feature "Test queries" do
+    let (:test_queries) { fixtures.fetch("results_queries") }
+    scenario "Test queries" do
+      test_queries.each do |test_item|
+        search_string = ""
+        test_item["query_type"].each do |query_field|
+          test_item[query_field].each do |search_term|
+            search_string += search_term + " "
+          end
+        end
+        visit "/"
+        fill_in "q", with: search_string
+        click_button "Search"
+        #save_and_open_page
+        within first(".document-position-0 h3") do
+          test_item["query_type"].each do |query_field|
+            test_item[query_field].each do |search_term|
+              expect(page).to have_text search_term
+            end
+          end
+        end
+      end
+    end
+  end
+
+
+  feature "Search for an item with a colon in title" do
+    let (:item) { fixtures.fetch("has_a_colon") }
+    scenario "using default serch" do
+      visit "/"
+      fill_in "q", with: item["title_statement"]
+      click_button "Search"
+      within(".document-position-0 h3") do
+        expect(page).to have_text item["exact_title"]
+      end
+    end
+    scenario "using advanced serch" do
+      visit "/advanced"
+      fill_in "q_1", with: item["title_statement"]
+      click_button "advanced-search-submit"
+      within(".document-position-0 h3") do
+        expect(page).to have_text item["exact_title"]
+      end
+    end
+  end
 end

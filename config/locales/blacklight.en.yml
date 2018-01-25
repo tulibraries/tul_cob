@@ -10,3 +10,18 @@ en:
       back: "Back to Main View"
       librarian_view:
         title: "Staff View"
+
+    message:
+      form:
+        title: "Text This"
+        to: 'Phone Number:'
+        submit: 'Send'
+      text:
+        title: '%{value}'
+        author: ' by %{value}'
+        url: 'Link: %{url}'
+      success: "Text Sent"
+      errors:
+        to:
+          invalid: 'You must enter a valid 10 digit phone number'
+          blank: "You must enter a recipient's phone number in order to send this message"
