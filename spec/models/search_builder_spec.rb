@@ -14,11 +14,71 @@ RSpec.describe SearchBuilder , type: :model do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
   end
 
-  describe ".substitute_colons" do
+  describe "#limit_facets" do
+    let(:solr_parameters) {
+      sp = Blacklight::Solr::Request.new
+      # I can't figure out the "right" way to add my test facet fields.
+      sp["facet.field"] = [ "foo", "bar", "bizz", "buzz" ]
+      sp
+    }
+
+    before(:example) do
+      subject.limit_facets(solr_parameters)
+    end
+
+    context "the unknown" do
+      it "does not affect any facet fields" do
+        expect(solr_parameters["facet.field"]).to eq([ "foo", "bar", "bizz", "buzz" ])
+      end
+    end
+
+    context "catalog index before performing an actual search" do
+      let(:params) { ActionController::Parameters.new(
+        controller: "catalog",
+        action: "index",
+      ) }
+
+      it "limits the fields to three selected facets" do
+        expect(solr_parameters["facet.field"]).to eq([ "availability_facet", "library_facet", "format" ])
+      end
+    end
+
+    context "when range limit pings solr" do
+      let(:params) { ActionController::Parameters.new(
+        controller: "catalog",
+        action: "range_limit",
+      ) }
+
+      it "limits the facet field to an empty set" do
+        expect(solr_parameters["facet.field"]).to eq([])
+      end
+    end
+
+    context "when on the the advanced search page" do
+      let(:params) { ActionController::Parameters.new(
+        controller: "catalog",
+        action: "range_limit",
+      ) }
+
+      it "limits the facet field to an empty set" do
+        expect(solr_parameters["facet.field"]).to eq([])
+      end
+    end
+  end
+
+
+  describe "#substitute_colons" do
     let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo :: bar:buzz") }
 
     before(:example) do
       subject.substitute_colons(solr_parameters)
+    end
+
+    context "when search is empty" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+      it "does nothing when search is empty" do
+        expect(solr_parameters["q"]).to be_nil
+      end
     end
 
     context "when not doing an advanced search" do
@@ -146,7 +206,6 @@ RSpec.describe SearchBuilder , type: :model do
         subject.begins_with_search(solr_parameters)
         expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
       end
-
     end
 
     context "process exact_phrase_search after :begins_with" do

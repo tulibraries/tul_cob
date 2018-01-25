@@ -15,8 +15,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     [ :begins_with_search ] +
     [ :exact_phrase_search ] +
     [ :disable_advanced_spellcheck ] +
-    [ :substitute_colons ]
-
+    [ :substitute_colons ] +
+    [ :limit_facets ]
 
   def begins_with_search(solr_parameters)
     dereference_with(:append_start_flank, solr_parameters)
@@ -43,6 +43,20 @@ class SearchBuilder < Blacklight::SearchBuilder
       fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
     else
       solr_parameters["q"] = query.gsub(/:/, " ")
+    end
+  end
+
+  def limit_facets(solr_parameters)
+    path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
+    count = blacklight_params.count
+
+    # When only the controller and action are defined (count == 2), and the
+    # controller is set to "catalog" and the action is set to "index", then we
+    # are at the search page prior to doing a search.
+    if path == "catalog/index" && count == 2
+      solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
+    elsif path == "catalog/range_limit" || path == "catalog/advanced"
+      solr_parameters["facet.field"] = []
     end
   end
 
