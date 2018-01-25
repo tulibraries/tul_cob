@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Rock musicians</subfield>
+      <subfield code='z'>England</subfield>
+      <subfield code='v'>Drama</subfield>
+    </datafield>
+  </record>
+  <record>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Rock musicians</subfield>
+      <subfield code='z'>England</subfield>
+      <subfield code='v'>Electronic book</subfield>
+    </datafield>
+  </record>
 </collection>
-<record>
-  <datafield ind1=' ' ind2='0' tag='650'>
-    <subfield code='a'>Rock musicians</subfield>
-    <subfield code='z'>England</subfield>
-    <subfield code='v'>Biography.</subfield>
-  </datafield>
-</record>

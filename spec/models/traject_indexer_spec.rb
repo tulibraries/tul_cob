@@ -144,6 +144,7 @@ RSpec.describe Traject::Macros::Custom do
         settings do
           provide "marc_source.type", "xml"
         end
+        ex1 = Traject::MarcExtractor.cached("600v:610v:611v:630v:648v:650v:651v:655av:647v", :separator => nil)
       end
     end
 
@@ -152,6 +153,13 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[0])).to eq("genre_facet" => ["Drama"])
       end
     end
+
+    context "String found in GENRE_STOP_WORDS" do
+      it "does not map a field to genre_facet" do
+        expect(subject.map_record(records[1])).to eq({})
+      end
+    end
+
 
   end
 
