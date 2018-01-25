@@ -33,6 +33,5 @@ coverage
 config/alma.yml
 config/bento.yml
 config/deploy_to.yml
-config/twilio.yml
 
 spec/examples.txt

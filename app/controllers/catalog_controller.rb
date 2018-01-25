@@ -473,7 +473,6 @@ class CatalogController < ApplicationController
   end
 
   def message
-    params[:to] = ENV["TO_PHONE_NUMBER"]
     # TODO Is this how catalog controller is supposed to get the current document?
     @document = SolrDocument.find(params[:id])
     respond_to do |format|
@@ -502,11 +501,12 @@ class CatalogController < ApplicationController
   #   without calling redirect_to
   # - app/views/message_success does not render
   def message_action #documents
-    @client = Twilio::REST::Client.new(ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"])
+    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
     message = @client.messages.create(
       body: params[:body],
-      to:   params[:to],    # Replace with your phone number
-      from: ENV["TWILIO_PHONE_NUMBER"])  # Replace with your Twilio number
+      to:   params[:to],
+      from: Rails.configuration.twilio[:phone_number]
+      )
     logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
     redirect_to solr_document_url
   end
