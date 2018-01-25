@@ -31,8 +31,11 @@ module CatalogHelper
   end
 
   def separate_formats(document)
+    formats = %w[]
     document[:format].each do |format|
-      "<span class='"+document.fetch(:format, "unknown")[0].to_s.parameterize.underscore+"'>"+document.fetch(:format, "unknown")[0].to_s+"</span>"
+       formats << '<span class="'+"#{format.to_s.parameterize.underscore}"+'">'+format.to_s+'</span>'.html_safe
     end
+    formats.join('<span style="padding-left:7px;padding-right:14px;">and</span>')
   end
+
 end

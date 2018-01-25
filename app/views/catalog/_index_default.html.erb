@@ -6,7 +6,14 @@
     <% index_fields(document).each do |field_name, field| -%>
       <% if should_render_index_field? document, field %>
         <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
-        <dd class="blacklight-<%= field_name.parameterize %>"><%= doc_presenter.field_value field_name %></dd>
+        <dd class="blacklight-<%= field_name.parameterize %>">
+          <% if field_name == "format"  %>
+            <%= separate_formats(document).html_safe %>
+          <% else %>
+            <%= doc_presenter.field_value field_name %>
+          <% end -%>
+             
+            </dd> 
       <% end -%>
     <% end -%>
           <%= render "index_availability_section", document: document, document_counter: document_counter %>
