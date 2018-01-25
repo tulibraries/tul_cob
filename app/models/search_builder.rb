@@ -135,11 +135,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     def parse_queries(query_string)
       query_string ||= ""
       query_string
-<<<<<<< HEAD
-        .scan(/((AND|OR|NOT|AND NOT)?\s*_query_:\"{.*?}.*?\")/)
-=======
         .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
->>>>>>> master
         .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
         .map(&:flatten)
     end
