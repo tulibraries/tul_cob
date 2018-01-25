@@ -7,7 +7,7 @@ module Traject
   module Macros
     module Custom
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
-
+      GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites/i
       def get_xml
         lambda do |rec, acc|
           acc << MARC::FastXMLWriter.encode(rec)
@@ -182,6 +182,18 @@ module Traject
           end
           acc.uniq!
         }
+      end
+
+      def extract_genre
+        lambda do |rec, acc|
+          MarcExtractor.cached("600v:610v:611v:630v:648v:650v:651v:655av:647v").collect_matching_lines(rec) do |field, spec, extractor|
+            genre = extractor.collect_subfields(field, spec).first
+            unless GENRE_STOP_WORDS.match(genre)
+              acc << genre.gsub(/[[:punct:]]?$/, "") unless genre.nil?
+            end
+            acc.uniq!
+          end
+        end
       end
 
       def normalize_lc_alpha
