@@ -189,7 +189,7 @@ module Traject
           MarcExtractor.cached("600v:610v:611v:630v:648v:650v:651v:655av:647v").collect_matching_lines(rec) do |field, spec, extractor|
             genre = extractor.collect_subfields(field, spec).first
             unless GENRE_STOP_WORDS.match(genre)
-              acc << genre.gsub(/[[:punct:]]?$/,'') unless genre.nil?
+              acc << genre.gsub(/[[:punct:]]?$/, "") unless genre.nil?
             end
             acc.uniq!
           end
