@@ -136,20 +136,23 @@ module Traject
           end
         end
       end
+      
+      def sort_by_coverage(acc)
+        acc.sort_by! { |r|
+          subfields = r.split('|')
+          available = /Available from (\d+).* until (\d+)/.match(subfields.last)
+          unless available
+            available = []
+          end
+          [available[1] || "9999", available[2] || "9999", subfields.first]
+        }.reverse!
+      end
 
       def sort_electronic_resource
         lambda do |rec, acc, context|
           # Sort on availability
           unless acc.empty?
-            # Sort by name
-            acc.sort_by! { |r|
-              subfields = r.split('|')
-              available = /(\d+)\D*(\d+)/.match(subfields.last)
-              unless available
-                available = []
-              end
-              [available[1] || "9999", available[2] || "9999", subfields.first]
-            }.reverse!
+            acc = sort_by_coverage(acc)
           end
         end
       end
