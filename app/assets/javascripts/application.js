@@ -29,9 +29,11 @@
 $(window).load(function(){
 	$('#appliedParams').insertAfter('h1.application-heading');
 });
+
 $(document).ajaxComplete(function(){
 	$('#appliedParams').insertAfter('h1.application-heading');
 });
+
 
 $(document).ready(function(){
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);

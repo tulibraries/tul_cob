@@ -136,18 +136,41 @@ div.physical-holding-panel {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .document dt {
     white-space: normal;
-    width: 170px;
+    width: 100px;
+    text-align: right;
     word-break: break-word;
+    margin-left: 90px;
+  }
+  .dl-horizontal dd {
+    margin-left: 198px;
   }
 
   .show_page_records dd {
     margin-bottom: 20px;
   }
 }
+@media (max-width: 992px) {
+  .document dt {
+    width: 100px;
+    text-align: left;
+    margin-left: 0;
+    display:inline-block;
+  }
+  .dl-horizontal dd {
+    margin-left: 0px;
+    width: 100%;
+  }
 
+  .show_page_records dd {
+    margin-bottom: 20px;
+  }
+  .document-metadata form {
+    margin-top: 21px;
+  }
+}
 div.navbar-masquerade {
   text-align: right;
   padding-right: 5px;

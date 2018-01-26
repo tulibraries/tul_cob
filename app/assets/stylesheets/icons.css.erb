@@ -1,3 +1,12 @@
+.book-info-srch {
+  float:right;
+  margin-right:42px;
+}
+
+.show_page_records dd {
+  margin-bottom: 20px;
+}
+
 span.btn-drop-down {
   background: transparent url(<%= asset_path 'drop-down.png' %>) no-repeat center right;
   padding-right: 0;
@@ -17,7 +26,7 @@ span.btn-drop-down.notavailable {
 span.book, a.facet_book {
   background: transparent url(<%= asset_path 'icons/book.png' %>) no-repeat top left;
   padding-left: 26px;
-  margin-left: -6px;
+  /*margin-left: -6px;*/
 }
 span.conference_proceeding, a.facet_conference_proceeding {
   background: transparent url(<%= asset_path 'icons/play-circle.png' %>) no-repeat top left;
@@ -103,4 +112,16 @@ div.thumbnail img.default {
   height: 90px;
   width: 90px;
   opacity: .25;
+}
+
+@media (max-width: 992px) {
+  .book-info-srch {
+    float:none;
+  }
+  .book_format {
+    margin-left: 14px;
+  }
+  span.book {
+    margin-left: 0;
+  }
 }
