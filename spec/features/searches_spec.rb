@@ -155,8 +155,8 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
+      puts page.html
       within first(".document-position-0 h3", text: item["title"]) do
-        puts page.html
         expect(page).to have_text item["title"]
       end
     end
