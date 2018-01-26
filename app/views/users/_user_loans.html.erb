@@ -37,7 +37,11 @@
                 </label>
               </div>
             </td>
-            <td id="<%= loan.loan_id %>" class="overdue"><%= is_overdue(loan.loan_status) %></td>
+            <td id="<%= loan.loan_id %>" class="overdue"><%= is_overdue(loan.loan_status) %>
+              <% unless loan.renewable %>
+                <span class="glyphicon glyphicon-exclamation-sign"></span>
+              <% end %>
+            </td>
           </tr>
         <% end %>
           <tr>
