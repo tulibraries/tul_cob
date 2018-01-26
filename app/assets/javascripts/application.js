@@ -26,8 +26,22 @@
 
 //= require_tree .
 
-$(window).load(function(){
-	$('#appliedParams').insertAfter('h1.application-heading');
+$(window).load(function(){	
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
+});
+
+$(window).on('resize', function() {
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
 });
 
 $(document).ajaxComplete(function(){

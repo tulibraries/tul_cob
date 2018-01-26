@@ -33,7 +33,7 @@ var BlacklightAlma = function (options) {
      }
      else {
        console.log("nothing");
-       $(availButton).html("<span class='btn-drop-down not-available' style='font-size:13px;'>Not Available</span>");
+       $(availButton).html("<span class='btn-drop-down not-available'>Not Available</span>");
        $(availButton).removeClass("btn-default");
        $(availButton).addClass("btn-warning");
        $(availButton).show();
