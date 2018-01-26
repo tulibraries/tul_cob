@@ -48,7 +48,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
-    count = blacklight_params.count
+    count = blacklight_params.to_h.count
 
     # When only the controller and action are defined (count == 2), and the
     # controller is set to "catalog" and the action is set to "index", then we
