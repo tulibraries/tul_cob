@@ -36,16 +36,13 @@ task :server, [:rails_server_args] do |t, args|
 end
 
 def run_solr(environment, solr_params)
+  solr_params.merge!(url: "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip")
   solr_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr")
   SolrWrapper.wrap(solr_params) do |solr|
     ENV["SOLR_TEST_PORT"] = solr.port
 
     # additional solr configuration
-    solr.with_collection(
-      name: "blacklight-core-#{environment}",
-      dir: File.join(solr_dir, "conf"),
-      url: "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip",
-    ) do
+    solr.with_collection(name: "blacklight-core-#{environment}", dir: File.join(solr_dir, "conf")) do
       puts "\n#{environment.titlecase} solr server running: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}"
       puts "\n^C to stop"
       puts " "
