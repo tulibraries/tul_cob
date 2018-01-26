@@ -78,7 +78,7 @@ to_field "title_added_entry_t", extract_marc_with_flank(%W{
   711fgklnpst
 
                                              }.join(":"))
-to_field "title_sort", marc_sortable_title
+to_field "title_sort", extract_marc("245abcfgknps", alternate_script: false)
 
 # Creator/contributor fields
 to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
@@ -88,7 +88,7 @@ to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "author_sort", marc_sortable_author
+to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true)
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
