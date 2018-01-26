@@ -156,6 +156,7 @@ RSpec.feature "Searches" do
       fill_in "q", with: item["subject"]
       click_button "Search"
       within first(".document-position-0 h3", text: item["title"]) do
+        puts page.html
         expect(page).to have_text item["title"]
       end
     end
@@ -178,7 +179,7 @@ RSpec.feature "Searches" do
       end
     end
   end
-  
+
   feature "Search for an item with a colon in title" do
     let (:item) { fixtures.fetch("has_a_colon") }
     scenario "using default serch" do
