@@ -88,7 +88,7 @@ to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true)
+to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, first: true)
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
