@@ -467,6 +467,9 @@ class CatalogController < ApplicationController
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
 
+    # Do not show endnotes for beta release
+    config.show.document_actions.delete(:endnote)
+
     # Configuration for text to phone_number
     config.show.document_actions.delete(:sms)
     config.add_show_tools_partial(:message, callback: :message_action)
