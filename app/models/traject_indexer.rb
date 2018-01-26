@@ -78,7 +78,7 @@ to_field "title_added_entry_t", extract_marc_with_flank(%W{
   711fgklnpst
 
                                              }.join(":"))
-to_field "title_sort", extract_marc("245abcfgknps", alternate_script: false)
+to_field "title_sort", extract_marc("245abcfgknps", alternate_script: false, first: true)
 
 # Creator/contributor fields
 to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
