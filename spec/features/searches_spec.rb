@@ -14,36 +14,32 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["title"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search ID" do
       visit "/"
       fill_in "q", with: item["doc_id"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search book creator" do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search imprint" do
       visit "/"
       fill_in "q", with: item["imprint"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search physical description" do
@@ -51,18 +47,16 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["physical_description"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search series title" do
       visit "/"
       fill_in "q", with: item["series_title"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search content" do
@@ -70,36 +64,32 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["content"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search subject" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search ISBN" do
       visit "/"
       fill_in "q", with: item["isbn"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
 
     scenario "Search LCCN" do
       visit "/"
       fill_in "q", with: item["lccn"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(first(".document-position-0 h3", text: item["title"]))
+        .to have_text item["title"]
     end
   end
 
@@ -109,36 +99,28 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["title"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search ID" do
       visit "/"
       fill_in "q", with: item["doc_id"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search journal creator" do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search imprint" do
       visit "/"
       fill_in "q", with: item["imprint"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search physical description" do
@@ -146,38 +128,28 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["physical_description"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search subject" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
-      STDERR.puts "The search page HTML is..."
-      STDERR.puts page.html
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search ISSN" do
       visit "/"
       fill_in "q", with: item["issn"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
 
     scenario "Search LCCN" do
       visit "/"
       fill_in "q", with: item["lccn"]
       click_button "Search"
-      within first(".document-position-0 h3", text: item["title"]) do
-        expect(page).to have_text item["title"]
-      end
+      expect(page).to have_text item["title"]
     end
   end
 
@@ -187,17 +159,13 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["title_statement"]
       click_button "Search"
-      within(".document-position-0 h3") do
-        expect(page).to have_text item["exact_title"]
-      end
+      expect(page).to have_text item["exact_title"]
     end
     scenario "using advanced serch" do
       visit "/advanced"
       fill_in "q_1", with: item["title_statement"]
       click_button "advanced-search-submit"
-      within(".document-position-0 h3") do
-        expect(page).to have_text item["exact_title"]
-      end
+      expect(page).to have_text item["exact_title"]
     end
   end
 end

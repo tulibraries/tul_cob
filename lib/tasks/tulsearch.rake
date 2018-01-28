@@ -7,7 +7,7 @@ namespace :fortytu do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures do
-      Dir.glob("spec/fixtures/*.xml").each do |file|
+      Dir.glob("spec/fixtures/*.xml").sort.each do |file|
         `traject -c app/models/traject_indexer.rb #{file}`
       end
 
@@ -28,7 +28,7 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   if args[:filepath]
     `traject -c app/models/traject_indexer.rb #{args[:filepath]}`
   else
-    Dir.glob("sample_data/**/*.xml").each do |file|
+    Dir.glob("sample_data/**/*.xml").sort.each do |file|
       `traject -c app/models/traject_indexer.rb #{file}`
     end
   end
