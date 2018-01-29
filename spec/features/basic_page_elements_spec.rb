@@ -10,9 +10,7 @@ RSpec.feature "Basic Page Elements" do
       visit "/"
       within(".navbar-right") do
         expect(page).to have_text "Bookmarks"
-        expect(page).to have_text "History"
-        expect(page).to have_text "Login"
-        expect(page).to have_no_text "Library Account"
+        expect(page).to have_text "My Library Account"
       end
     end
 
@@ -32,8 +30,7 @@ RSpec.feature "Basic Page Elements" do
     scenario "Go to the home page" do
       visit "/"
       within(".navbar-right") do
-        expect(page).to have_no_text "Login"
-        expect(page).to have_text "Library Account"
+        expect(page).to have_text "My Library Account"
         expect(page).to have_text "Log Out"
       end
     end

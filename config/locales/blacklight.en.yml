@@ -4,7 +4,12 @@ en:
     greeting: "Try our new beta Library Search"
     introduction: "Based on user feedback, Temple University Libraries are in the process of building an enhanced version of the Library Search. This is still under development, as we continue to add new features and functionality through spring 2018. Try out the new beta and let us know what you think at asktulibrary@temple.edu!"
     header_links:
-      library_account: "Library Account"
+      library_account: "My Library Account"
+      login: 'My Library Account'
+      logout: 'Log Out'
+      bookmarks: 'Bookmarks'
+      saved_searches: 'Saved Searches'
+      search_history: 'Search History'
 
     search:
       back: "Back to Main View"

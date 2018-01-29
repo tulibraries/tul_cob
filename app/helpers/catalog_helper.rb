@@ -7,7 +7,7 @@ module CatalogHelper
   def thumbnail_classes(document)
     classes = %w[thumbnail col-sm-3 col-lg-2]
     document[:format].each do |format|
-      classes << "#{format.downcase}-format"
+      classes << "#{format.parameterize.downcase.underscore}_format"
     end
     classes.join " "
   end
@@ -24,6 +24,19 @@ module CatalogHelper
     return value if value.empty?
     # Get the first ISSN and strip non-numerics
     "data-lccn=#{value.first.gsub(/\D/, '')}"
+  end
+
+
+  def default_cover_image(document)
+    "svg/" + document.fetch(:format, "unknown")[0].to_s.parameterize.underscore + ".svg"
+  end
+
+  def separate_formats(document)
+    formats = %w[]
+    document[:format].each do |format|
+      formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + "</span>".html_safe
+    end
+    formats.join('<span class="format-concatenator">and</span>')
   end
 
   def message_body(document)
