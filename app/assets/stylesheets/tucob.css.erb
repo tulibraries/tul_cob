@@ -4,6 +4,7 @@
 
 #header-navbar .navbar-brand {
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
+   margin-left: 7px;
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }
 div.navbar-form {
@@ -11,6 +12,14 @@ div.navbar-form {
   top: 8px;
   left: -42px;
   border: 0;
+}
+
+ul.navbar-nav {
+  margin: auto auto;
+}
+
+form.search-query-form {
+  margin-left: 7px;
 }
 /* === AEON REQUESTS === */
 
@@ -184,6 +193,13 @@ div.physical-holding-panel {
   }
   span.book {
     margin-left: 0;
+  }
+  #user-util-links li, #user-util-links li a, ul.navbar-nav {
+    display: inline-block;
+    float: left;
+  }
+  #appliedParams {
+    padding-left: 7px;
   }
 }
 

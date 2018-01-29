@@ -44,8 +44,13 @@ $(window).on('resize', function() {
 	}
 });
 
-$(document).ajaxComplete(function(){
-	$('#appliedParams').insertAfter('h1.application-heading');
+$(document).ajaxComplete(function(){	
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
 });
 
 
