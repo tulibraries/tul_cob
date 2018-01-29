@@ -310,4 +310,33 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
+  describe "#sort_electronic_resource" do
+    before(:each) do
+      subject.instance_eval do
+        to_field "url_more_links_display", extract_electronic_resource, &sort_electronic_resource!
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "multiple PRT fields present" do
+      it "reverses the order of multipe PRT fields" do
+        expect(subject.map_record(records[2])).to eq(
+          "url_more_links_display" => ["bar", "foo"]
+        )
+      end
+    end
+
+    context "An empty set" do
+      it "handles an empty accumulator correctly" do
+        acc = []
+        rec = []
+        context = nil
+        expect(sort_electronic_resource![acc, rec, context]).to eq([])
+      end
+    end
+  end
 end

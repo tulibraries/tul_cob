@@ -137,25 +137,18 @@ module Traject
         end
       end
 
-      def sort_by_coverage(acc)
-        acc.sort_by! { |r|
-          subfields = r.split("|")
-          available = /Available from (\d+).* until (\d+)/.match(subfields.last)
-          title = subfields[1]
-          subtitle = subfields[2]
-          unless available
-            available = []
-          end
-          [available[1] || "9999", available[2] || "9999", title, subtitle || ""]
-        }.reverse!
-      end
-
-      def sort_electronic_resource
+      def sort_electronic_resource!
         lambda do |rec, acc, context|
-          # Sort on availability
-          unless acc.empty?
-            acc = sort_by_coverage(acc)
-          end
+          acc.sort_by! { |r|
+            subfields = r.split("|")
+            available = /Available from (\d+).* until (\d+)/.match(subfields.last)
+            title = subfields[1]
+            subtitle = subfields[2]
+            unless available
+              available = []
+            end
+            [available[1] || "9999", available[2] || "9999", title, subtitle || ""]
+          }.reverse!
         end
       end
 

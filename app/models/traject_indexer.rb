@@ -177,7 +177,7 @@ to_field "lc_b4cutter_facet", extract_marc("050a", first: true)
 
 # URL Fields
 to_field "url_more_links_display", extract_url_more_links
-to_field("electronic_resource_display", extract_electronic_resource, &sort_electronic_resource)
+to_field("electronic_resource_display", extract_electronic_resource, &sort_electronic_resource!)
 
 # Availability
 to_field "availability_facet", extract_availability
