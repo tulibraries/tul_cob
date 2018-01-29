@@ -7,7 +7,11 @@ namespace :fortytu do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures do
-      Rake::Task["ingest"].invoke("spec/fixtures/marc_fixture.xml")
+      Dir.glob("spec/fixtures/*.xml").sort.reverse.each do |file|
+        `traject -c app/models/traject_indexer.rb #{file}`
+      end
+
+      `traject -c app/models/traject_indexer.rb -x commit`
     end
 
     desc "Delete all items from Solr"
@@ -24,7 +28,7 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   if args[:filepath]
     `traject -c app/models/traject_indexer.rb #{args[:filepath]}`
   else
-    Dir.glob("sample_data/**/*.xml").each do |file|
+    Dir.glob("sample_data/**/*.xml").sort.each do |file|
       `traject -c app/models/traject_indexer.rb #{file}`
     end
   end

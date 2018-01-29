@@ -449,9 +449,12 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
 
     config.add_sort_field "score desc, pub_date_sort desc, title_sort asc", label: "relevance"
-    config.add_sort_field "pub_date_sort desc, title_sort asc", label: "year"
-    config.add_sort_field "author_sort asc, title_sort asc", label: "author"
-    config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title"
+    config.add_sort_field "pub_date_sort desc, title_sort asc", label: "date (new to old)"
+    config.add_sort_field "pub_date_sort asc, title_sort asc", label: "date (old to new)"
+    config.add_sort_field "author_sort asc, title_sort asc", label: "author/creator (A to Z)"
+    config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
+    config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
+    config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -466,6 +469,9 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
+
+    # Do not show endnotes for beta release
+    config.show.document_actions.delete(:endnote)
 
     # Configuration for text to phone_number
     config.show.document_actions.delete(:sms)

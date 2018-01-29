@@ -26,6 +26,29 @@
 
 //= require_tree .
 
+$(window).load(function(){	
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
+});
+
+$(window).on('resize', function() {
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
+});
+
+$(document).ajaxComplete(function(){
+	$('#appliedParams').insertAfter('h1.application-heading');
+});
+
+
 $(document).ready(function(){
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);
 	$('input[type=checkbox]').click(function(){
