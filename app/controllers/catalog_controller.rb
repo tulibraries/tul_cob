@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "twilio-ruby"
+
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
@@ -92,8 +94,6 @@ class CatalogController < ApplicationController
         subtitle_t^100000
         title_uniform_unstem_search^75000
         title_uniform_t^50000
-        title_statement_unstem_search^50000
-        title_statement_t^25000
         title_addl_unstem_search^50000
         title_addl_t^25000
         title_added_entry_unstem_search^15000
@@ -122,12 +122,10 @@ class CatalogController < ApplicationController
         title_unstem_search^50000
         subtitle_unstem_search^25000
         title_uniform_unstem_search^15000
-        title_statement_unstem_search^10000
         title_addl_unstem_search^10000
         title_t^5000
         subtitle_t^2500
         title_uniform_t^150
-        title_statement_t^100
         title_addl_t^100
         title_added_entry_unstem_search^50
         title_added_entry_t^10
@@ -138,12 +136,10 @@ class CatalogController < ApplicationController
         title_unstem_search^500000
         subtitle_unstem_search^250000
         title_uniform_unstem_search^150000
-        title_statement_unstem_search^100000
         title_addl_unstem_search^100000
         title_t^50000
         subtitle_t^25000
         title_uniform_t^1500
-        title_statement_t^1000
         title_addl_t^1000
         title_added_entry_unstem_search^500
         title_added_entry_t^100
@@ -258,9 +254,9 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
-    config.add_show_field "title_uniform_display", label: "Uniform title"
+    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
-    config.add_show_field "title_addl_display", label: "Additional titles"
+    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
     config.add_show_field "title_addl_vern_display", label: "Additional titles"
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator
@@ -277,11 +273,17 @@ class CatalogController < ApplicationController
     config.add_show_field "volume_series_display", label: "Volume"
     config.add_show_field "duration_display", label: "Duration"
     config.add_show_field "frequency_display", label: "Frequency"
-    config.add_show_field "sound_display", label: ""
-    config.add_show_field "digital_file_display", label: ""
-    config.add_show_field "form_work_display", label: ""
-    config.add_show_field "performance_display", label: ""
-    config.add_show_field "music_no_display", label: ""
+    config.add_show_field "sound_display", label: "Sound characteristics"
+    config.add_show_field "digital_file_display", label: "Digital file characteristics"
+    config.add_show_field "video_file_display", label: "Video characteristics"
+    config.add_show_field "music_format_display", label: "Format of notated music"
+    config.add_show_field "form_work_display", label: "Form of work"
+    config.add_show_field "performance_display", label: "Medium of performance"
+    config.add_show_field "music_no_display", label: "Music no."
+    config.add_show_field "music_key_display", label: "Musical key"
+    config.add_show_field "audience_display", label: "Audience"
+    config.add_show_field "creator_group_display", label: "Creator/Contributor characteristics"
+    config.add_show_field "date_period_display", label: "Time Period"
     config.add_show_field "note_display", label: "Note"
     config.add_show_field "note_with_display", label: "With"
     config.add_show_field "note_diss_display", label: "Dissertation Note"
@@ -464,5 +466,51 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
+
+    # Do not show endnotes for beta release
+    config.show.document_actions.delete(:endnote)
+
+    # Configuration for text to phone_number
+    config.show.document_actions.delete(:sms)
+    config.add_show_tools_partial(:message, callback: :message_action)
+  end
+
+  def message
+    # TODO Is this how catalog controller is supposed to get the current document?
+    @document = SolrDocument.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: false }
+      format.js
+    end
+  end
+
+  def render_message_action?(_config, _options)
+    true
+  end
+
+  def validate_message_params
+    if params[:to].blank?
+      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
+    elsif params[:to].gsub(/[^\d]/, "").length != 10
+      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
+    end
+    flash[:error].blank?
+  end
+
+  # FIXME Does not conform to "Adding new document actions"
+  # https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
+  # - Document actions does not pass documents argument to message_action
+  # - Must manually redirect to solr_document_url. It should be done automatically
+  #   without calling redirect_to
+  # - app/views/message_success does not render
+  def message_action #documents
+    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+    message = @client.messages.create(
+      body: params[:body],
+      to:   params[:to],
+      from: Rails.configuration.twilio[:phone_number]
+      )
+    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+    redirect_to solr_document_url
   end
 end

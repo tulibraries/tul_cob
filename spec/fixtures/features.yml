@@ -39,16 +39,16 @@ title_addl_740:
   title_addl: "Dictionary of American history: 740. Subfield N. Subfield P."
 creator_100:
   doc_id: "991012132499760617"
-  creator: "Giovanni, Nikki. Subfield B. Subfield C. Subfield D. Subfield Q. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield T. Subfield U"
+  creator: "Giovanni, Nikki. Subfield B. Subfield C. Subfield Q. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield R. Subfield T. Subfield U"
 creator_100_v:
   doc_id: "991012172649703811"
   creator_vern: "מעקלער, ד.ל"
 creator_110:
   doc_id: "991012132499760618"
-  creator: "Dictionary of American history: 110. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T"
+  creator: "Dictionary of American history: 110. Subfield B. Subfield D. Subfield C. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T"
 creator_111:
   doc_id: "991012132499760619"
-  creator: "Dictionary of American history: 111. Subfield C. Subfield D. Subfield J. Subfield E.  Subfield L. Subfield N. Subfield O. Subfield P. Subfield T"
+  creator: "Dictionary of American history: 111. Subfield N. Subfield D. Subfield C. Subfield J. Subfield E.  Subfield L. Subfield O. Subfield P. Subfield T"
 contributor_700:
   doc_id: "991012132499760620"
   creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
@@ -152,6 +152,24 @@ form_work_380:
 performance_382:
   doc_id: "991012132499760638"
   performance: "Dictionary of American history: 382. Subfield B. Subfield D. Subfield E. Subfield N. Subfield P. Subfield R. Subfield S. Subfield T."
+video_file_346:
+  doc_id: "991030811139703811"
+  video_file: "NTSC"
+music_format_348:
+  doc_id: "991012047209703811"
+  music_format: "vocal score"
+music_key_384:
+  doc_id: "991012047209703811"
+  music_key: "D major"
+audience_385:
+  doc_id: "991012047209703811"
+  audience: "Children"
+creator_group_386:
+  doc_id: "991012047209703811"
+  creator_group: "Americans"
+date_period_388:
+  doc_id: "991012047209703811"
+  date_period: "Anglo-Saxon period"
 music_no_383:
   doc_id: "991012132499760639"
   music_no: "Dictionary of American history: 383. Subfield B. Subfield C. Subfield D. Subfield E."

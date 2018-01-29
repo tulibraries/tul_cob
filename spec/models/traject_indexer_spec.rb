@@ -10,78 +10,113 @@ require "marc/record"
 include Traject::Macros::MarcFormats
 include Traject::Macros::Custom
 
-RSpec.describe "four_digit_year(field):" do
-  describe "four_digit_year(field)" do
-    context "when field is nil" do
-      it "returns nil" do
-        expect(four_digit_year nil).to eq(nil)
+RSpec.describe "custom methods" do
+
+  describe "#four_digit_year(field):" do
+    describe "#four_digit_year(field)" do
+      context "when field is nil" do
+        it "returns nil" do
+          expect(four_digit_year nil).to eq(nil)
+        end
       end
-    end
 
-    context "when given an empty string" do
-      it "returns nil" do
-        expect(four_digit_year "").to eq(nil)
-        expect(four_digit_year "\n").to eq(nil)
-        expect(four_digit_year "\n\n").to eq(nil)
-        expect(four_digit_year "      ").to eq(nil)
+      context "when given an empty string" do
+        it "returns nil" do
+          expect(four_digit_year "").to eq(nil)
+          expect(four_digit_year "\n").to eq(nil)
+          expect(four_digit_year "\n\n").to eq(nil)
+          expect(four_digit_year "      ").to eq(nil)
+        end
       end
-    end
 
-    context "when contains Roman Numerals" do
-      it "returns nil" do
-        expect(four_digit_year "MCCXLV").to eq(nil)
+      context "when contains Roman Numerals" do
+        it "returns nil" do
+          expect(four_digit_year "MCCXLV").to eq(nil)
+        end
       end
-    end
 
-    it "returns nil for [n.d.],''" do
-      expect(four_digit_year '[n.d.],""').to eq(nil)
-    end
+      it "returns nil for [n.d.],''" do
+        expect(four_digit_year '[n.d.],""').to eq(nil)
+      end
 
-    it "extracts year from MCCXLV [1745],1745" do
-      expect(four_digit_year "MCCXLV [1745],1745").to eq("1745")
-    end
+      it "extracts year from MCCXLV [1745],1745" do
+        expect(four_digit_year "MCCXLV [1745],1745").to eq("1745")
+      end
 
-    it "extracts the first possible 4 digit numeral" do
-      expect(four_digit_year "1918-1966.,1918   ").to eq("1918")
-    end
+      it "extracts the first possible 4 digit numeral" do
+        expect(four_digit_year "1918-1966.,1918   ").to eq("1918")
+      end
 
-    it "extracts the first possible 4 digit numeral" do
-      expect(four_digit_year "'18-1966.,1918   ").to eq("1966")
-      expect(four_digit_year "c1993.,1993").to eq("1993")
-      expect(four_digit_year "©2012,2012").to eq("2012")
+      it "extracts the first possible 4 digit numeral" do
+        expect(four_digit_year "'18-1966.,1918   ").to eq("1966")
+        expect(four_digit_year "c1993.,1993").to eq("1993")
+        expect(four_digit_year "©2012,2012").to eq("2012")
+      end
     end
   end
-end
 
-RSpec.describe "#to_marc_normalized" do
+  describe "#to_marc_normalized" do
+    describe "#flank(field)" do
+      let(:input) {}
+      subject { Traject::Macros::Custom.flank input }
+      context "nil" do
+        it "returns an empty string" do
+          expect(subject).to be_nil
+        end
+      end
 
-  describe "#flank(field)" do
-    let(:input) {}
-    subject { Traject::Macros::Custom.flank input }
-    context "nil" do
-      it "returns an empty string" do
-        expect(subject).to be_nil
+      context "empty string" do
+        let(:input) { "" }
+        it "returns an empty string" do
+          expect(subject).to eq("")
+        end
+      end
+
+      context "non empty string" do
+        let(:input) { "foo" }
+        it "returns a flanked string" do
+          expect(subject).to eq("matchbeginswith foo matchendswith")
+        end
+      end
+
+      context "a string that is flanked" do
+        let(:input) { "matchbeginswith foo matchendswith" }
+        it "does not reflank a string" do
+          expect(subject).to eq(input)
+        end
       end
     end
+  end
 
-    context "empty string" do
-      let(:input) { "" }
-      it "returns an empty string" do
-        expect(subject).to eq("")
+  describe "#creator_name_trim_punctuation(name)" do
+    context "removes trailing comma, slash" do
+      let(:input) { "Richard M. Restak." }
+      it "removes trailing period" do
+        expect(creator_name_trim_punctuation(input)).to eq("Richard M. Restak")
       end
-    end
 
-    context "non empty string" do
-      let(:input) { "foo" }
-      it "returns a flanked string" do
-        expect(subject).to eq("matchbeginswith foo matchendswith")
+      let(:input) { "Richard M. Restak," }
+      it "removes trailing comma" do
+        expect(creator_name_trim_punctuation(input)).to eq("Richard M. Restak")
       end
-    end
 
-    context "a string that is flanked" do
-      let(:input) { "matchbeginswith foo matchendswith" }
-      it "does not reflank a string" do
-        expect(subject).to eq(input)
+      let(:input) { "Richard M. Restak/" }
+      it "removes trailing slash" do
+        expect(creator_name_trim_punctuation(input)).to eq("Richard M. Restak")
+      end
+
+      context "keeps period if preceded by characters other than parentheses" do
+        let(:input) { "Richard M. Restak" }
+        it "retains period after middle initial" do
+          expect(creator_name_trim_punctuation(input)).to eq("Richard M. Restak")
+        end
+      end
+
+      context "removes period following parentheses" do
+        let(:input) { "4 Learning (Firm)." }
+        it "retains period after middle initial" do
+          expect(creator_name_trim_punctuation(input)).to eq("4 Learning (Firm)")
+        end
       end
     end
   end
@@ -95,11 +130,39 @@ RSpec.describe Traject::Macros::Custom do
     c
   end
 
-  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
   let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
 
 
   subject { test_class.new }
+
+  describe "#extract_genre" do
+    let(:file) { File.new("spec/fixtures/marc_files/genre_facet_examples.xml") }
+    before(:each) do
+      subject.instance_eval do
+        to_field "genre_facet", extract_genre
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "String not found in GENRE_STOP_WORDS" do
+      it "does map a field to genre_facet" do
+        expect(subject.map_record(records[0])).to eq("genre_facet" => ["Drama"])
+      end
+    end
+
+    context "String found in GENRE_STOP_WORDS" do
+      it "does not map a field to genre_facet" do
+        expect(subject.map_record(records[1])).to eq({})
+      end
+    end
+
+
+  end
+
+  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
 
   describe "#extract_electronic_resource" do
     before(:each) do
