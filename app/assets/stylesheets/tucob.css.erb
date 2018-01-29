@@ -135,12 +135,11 @@ div.physical-holding-panel {
   padding-top: 0;
 }
 
-/* === MEDIA QUERIES === */
-@media (min-width: 768px) {
-  .show_page_records dd {
-    margin-bottom: 20px;
-  }
+.show_page_records dd {
+  margin-bottom: 7px;
 }
+
+/* === MEDIA QUERIES === */
 
 @media (min-width: 992px) {
   .document dt {
@@ -185,9 +184,6 @@ div.physical-holding-panel {
 }
 
 @media (max-width: 768px) {
-  .show_page_records dd {
-    margin-bottom: 20px;
-  }
   .book_format {
     margin-left: 21px;
   }
@@ -232,6 +228,12 @@ img {
   width: auto;
 }
 
+.record-view.thumbnail {
+  max-width: 150%;
+}
+.record-view.thumbnail img {
+  max-width: 150%;
+}
 textarea#message-body.form-control {
   height: 100px;
 }
