@@ -26,6 +26,7 @@ module CatalogHelper
     "data-lccn=#{value.first.gsub(/\D/, '')}"
   end
 
+
   def default_cover_image(document)
     "svg/"+document.fetch(:format, "unknown")[0].to_s.parameterize.underscore+".svg"
   end
@@ -36,6 +37,12 @@ module CatalogHelper
        formats << '<span class="'+"#{format.to_s.parameterize.underscore}"+'">'+format.to_s+'</span>'.html_safe
     end
     formats.join('<span class="format-concatenator">and</span>')
+  end
+
+  def message_body(document)
+    "#{document['title_statement_display'].first}\n" +
+    "#{document['call_number_display'].first}\n" +
+    "#{document['library_facet'].first}"
   end
 
 end

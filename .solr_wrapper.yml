@@ -6,5 +6,5 @@ collection:
   persist: true
 persist: true
 instance_dir: tmp/solr/
-download_dir: tmp/
+download_dir: tmp/solr_dl
 version: 6.6.1
