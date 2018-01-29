@@ -24,7 +24,7 @@ RSpec.describe CatalogController, type: :controller do
 
         it "for search #{search_string}" do
           for page in [1..2] do
-            get(:index, params: { q: search_string, page: page.to_s }, format: "json" )
+            get(:index, params: { q: search_string, page: page.to_s }, format: "json")
             docs += JSON.parse(response.body)["response"]["docs"]
           end
 
