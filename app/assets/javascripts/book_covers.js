@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
       queries.push("ISBN:" + isbn);
     }
   });
-    
+
   $.ajax(
     {
       url: "https://books.google.com/books?jscmd=viewapi&bibkeys=" + queries.join(),
@@ -32,6 +32,5 @@ $(document).on('turbolinks:load', function() {
 })
 
 function thumbnail_img(gb_result) {
-  return "<img src='" + gb_result.thumbnail_url +  "' />"
+  return "<img src='" + gb_result.thumbnail_url +  "' alt='book-cover-image' />"
 }
-
