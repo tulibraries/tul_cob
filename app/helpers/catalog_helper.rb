@@ -27,15 +27,14 @@ module CatalogHelper
   end
 
   def default_cover_image(document)
-    "svg/"+document.fetch(:format, "unknown")[0].to_s.parameterize.underscore+".svg"
+    "svg/" + document.fetch(:format, "unknown")[0].to_s.parameterize.underscore + ".svg"
   end
 
   def separate_formats(document)
     formats = %w[]
     document[:format].each do |format|
-       formats << '<span class="'+"#{format.to_s.parameterize.underscore}"+'">'+format.to_s+'</span>'.html_safe
+      formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + '</span>'.html_safe
     end
     formats.join('<span class="format-concatenator">and</span>')
   end
-
 end

@@ -11,23 +11,22 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
-  def render_facet_value(facet_field, item, options ={})
+  def render_facet_value(facet_field, item, options = {})
     path = path_for_facet(facet_field, item)
-    content_tag(:span, :class => "facet-label") do
-      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, :class=>"facet_select facet_"+item.value.downcase.parameterize.underscore)
+    content_tag(:span, class: "facet-label") do
+      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, class: "facet_select facet_" + item.value.downcase.parameterize.underscore)
     end + render_facet_count(item.hits)
   end
 
   def render_selected_facet_value(facet_field, item)
     remove_href = search_action_path(search_state.remove_facet_params(facet_field, item))
     content_tag(:span, class: "facet-label") do
-      content_tag(:span, facet_display_value(facet_field, item), class: "selected "+item.value.downcase.parameterize.underscore) +
+      content_tag(:span, facet_display_value(facet_field, item), class: "selected " + item.value.downcase.parameterize.underscore) +
       # remove link
       link_to(remove_href, class: "remove") do
-        content_tag(:span, '', class: "glyphicon glyphicon-remove") +
-        content_tag(:span, '[remove]', class: 'sr-only')
+        content_tag(:span, "", class: "glyphicon glyphicon-remove") +
+        content_tag(:span, "[remove]", class: "sr-only")
       end
-    end + render_facet_count(item.hits, :classes => ["selected"])
+    end + render_facet_count(item.hits, classes: ["selected"])
   end
-  
 end
