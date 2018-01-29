@@ -57,7 +57,7 @@ RSpec.feature "Indices" do
     scenario "Search" do
       visit "/"
       fill_in "q", with: title
-      click_button "button#search"
+      click_button "search"
       expect(current_url).to eq results_url
       within(".document-position-0 h3") do
         expect(page).to have_text(:title)
@@ -85,7 +85,7 @@ RSpec.feature "Indices" do
     scenario "Search" do
       visit "/"
       fill_in "q", with: item["title"]
-      click_button "button#search"
+      click_button "search"
       expect(current_url).to eq item["url"]
       within(".document-position-0") do
         click_link item["title"]

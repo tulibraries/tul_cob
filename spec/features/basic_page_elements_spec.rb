@@ -11,7 +11,6 @@ RSpec.feature "Basic Page Elements" do
       within(".navbar-right") do
         expect(page).to have_text "Bookmarks"
         expect(page).to have_text "My Library Account"
-        expect(page).to have_no_text "Library Account"
       end
     end
 
