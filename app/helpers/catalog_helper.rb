@@ -34,7 +34,7 @@ module CatalogHelper
   def separate_formats(document)
     formats = %w[]
     document[:format].each do |format|
-      formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + '</span>'.html_safe
+      formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + "</span>".html_safe
     end
     formats.join('<span class="format-concatenator">and</span>')
   end

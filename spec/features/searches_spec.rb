@@ -13,7 +13,7 @@ RSpec.feature "Searches" do
     scenario "Search Title" do
       visit "/"
       fill_in "q", with: item["title"]
-      click_button "Search"
+      click_button "button#search"
       within(".document-position-0 h3") do
         expect(page).to have_text item["title"]
       end
