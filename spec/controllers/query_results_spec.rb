@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller do
@@ -5,14 +7,14 @@ RSpec.describe CatalogController, type: :controller do
   describe "Query results as JSON" do
     render_views
 
-    context 'to check that the search results' do
+    context "to check that the search results" do
       fixtures = YAML.load_file("#{fixture_path}/search_features.yml")
       test_queries = fixtures.fetch("results_queries")
       docs = []
       test_queries.each do |test_item|
         search_string = ""
 
-        test_item['query_type'].each do |query_field|
+        test_item["query_type"].each do |query_field|
           search_term = test_item[query_field]
           if search_term.kind_of?(Array) == true
             search_term = search_term.to_s
@@ -22,7 +24,7 @@ RSpec.describe CatalogController, type: :controller do
 
         it "for search #{search_string}" do
           for page in [1..2] do
-            get(:index, params: {q: search_string, page: page.to_s}, :format => :json)
+            get(:index, params: { q: search_string, page: page.to_s }, format: "json" )
             docs += JSON.parse(response.body)["response"]["docs"]
           end
 
