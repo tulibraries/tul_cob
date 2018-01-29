@@ -130,11 +130,39 @@ RSpec.describe Traject::Macros::Custom do
     c
   end
 
-  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
   let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
 
 
   subject { test_class.new }
+
+  describe "#extract_genre" do
+    let(:file) { File.new("spec/fixtures/marc_files/genre_facet_examples.xml") }
+    before(:each) do
+      subject.instance_eval do
+        to_field "genre_facet", extract_genre
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "String not found in GENRE_STOP_WORDS" do
+      it "does map a field to genre_facet" do
+        expect(subject.map_record(records[0])).to eq("genre_facet" => ["Drama"])
+      end
+    end
+
+    context "String found in GENRE_STOP_WORDS" do
+      it "does not map a field to genre_facet" do
+        expect(subject.map_record(records[1])).to eq({})
+      end
+    end
+
+
+  end
+
+  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
 
   describe "#extract_electronic_resource" do
     before(:each) do

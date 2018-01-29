@@ -155,8 +155,6 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["subject"]
       click_button "Search"
-      STDERR.puts "The search page HTML is..."
-      STDERR.puts page.html
       within first(".document-position-0 h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
@@ -186,7 +184,7 @@ RSpec.feature "Searches" do
     scenario "using default serch" do
       visit "/"
       fill_in "q", with: item["title_statement"]
-      click_button "Search"
+      click_button "search"
       within(".document-position-0 h3") do
         expect(page).to have_text item["exact_title"]
       end

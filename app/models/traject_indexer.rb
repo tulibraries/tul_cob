@@ -151,7 +151,7 @@ to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefgh
 to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
 to_field "subject_region_facet", marc_geo_facet
-to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
+to_field "genre_facet", extract_genre
 
 to_field "subject_t", extract_marc_with_flank(%W(
   600#{ATOU}
