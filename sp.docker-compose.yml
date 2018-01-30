@@ -5,3 +5,13 @@ services:
     build:
       context: .
       dockerfile: .docker/sp/Dockerfile
+    entrypoint:
+      - httpd-foreground
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/var/www/html/tul_cob
+      - .docker/sp/etc-apache2-sites-enabled:/etc/apache2/sites-enabled
+      - .docker/sp/etc-apache2-ssl:/etc/apache2/ssl
+      - .docker/sp/etc-shibboleth:/etc/shibboleth
