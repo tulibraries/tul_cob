@@ -32,5 +32,5 @@ $(document).on('turbolinks:load', function() {
 })
 
 function thumbnail_img(gb_result) {
-  return "<img src='" + gb_result.thumbnail_url +  "' alt='book-cover-image' />"
+  return "<img src='" + gb_result.thumbnail_url +  "' alt='' />"
 }
