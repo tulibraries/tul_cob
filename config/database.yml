@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  host: <%= ENV["COB_DB_HOST"] || "localhost" %>
+  database: <%= ENV["COB_DB_NAME"] %>
+  username: <%= ENV["COB_DB_USER"] %>
+  password: <%= ENV["COB_DB_PASSWORD"] %>
+  pool: 5
+  timeout: 5000

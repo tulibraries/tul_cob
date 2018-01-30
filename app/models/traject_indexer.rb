@@ -78,7 +78,7 @@ to_field "title_added_entry_t", extract_marc_with_flank(%W{
   711fgklnpst
 
                                              }.join(":"))
-to_field "title_sort", marc_sortable_title
+to_field "title_sort", extract_marc("245abcfgknps", alternate_script: false, first: true)
 
 # Creator/contributor fields
 to_field "creator_t", extract_marc_with_flank("245c:100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt:700abcdejqu:710abcde:711acdej", trim_punctuation: true)
@@ -88,7 +88,7 @@ to_field "contributor_display", extract_contributor
 to_field "creator_vern_display", extract_creator_vern
 to_field "contributor_vern_display", extract_contributor_vern
 
-to_field "author_sort", marc_sortable_author
+to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdejlnopt", trim_punctuation: true, first: true)
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
@@ -151,7 +151,7 @@ to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefgh
 to_field "subject_topic_facet", extract_marc("600abcdq:610ab:611a:630a:650a:653a:654ab:647acdg")
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
 to_field "subject_region_facet", marc_geo_facet
-to_field "genre_facet", extract_marc("600v:610v:611v:630v:648v:650v:651v:655av:647v", trim_punctuation: true)
+to_field "genre_facet", extract_genre
 
 to_field "subject_t", extract_marc_with_flank(%W(
   600#{ATOU}
@@ -177,7 +177,7 @@ to_field "lc_b4cutter_facet", extract_marc("050a", first: true)
 
 # URL Fields
 to_field "url_more_links_display", extract_url_more_links
-to_field "electronic_resource_display", extract_electronic_resource
+to_field("electronic_resource_display", extract_electronic_resource, &sort_electronic_resource!)
 
 # Availability
 to_field "availability_facet", extract_availability

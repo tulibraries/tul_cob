@@ -3,14 +3,15 @@
 }
 
 #header-navbar .navbar-brand {
-  width: 300px;
-  height: 67px;
-  margin: 10px 21px 10px 0px;
-  padding: 0;
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }
-
+div.navbar-form {
+  position:relative;
+  top: 8px;
+  left: -42px;
+  border: 0;
+}
 /* === AEON REQUESTS === */
 
 .aeon-wrapper {
@@ -107,8 +108,8 @@ div.online_resources {
 }
 
 .collapse-button {
-  width: 110px !important;
-  padding-left: 5px;
+  width: 121px !important;
+  /*padding-left: 5px;*/
 }
 
 .button-break {
@@ -126,17 +127,72 @@ div.physical-holding-panel {
 }
 
 /* === MEDIA QUERIES === */
-
 @media (min-width: 768px) {
-  .document dt {
-    white-space: normal;
-    width: 170px;
-    word-break: break-word;
-  }
-
   .show_page_records dd {
     margin-bottom: 20px;
   }
+}
+
+@media (min-width: 992px) {
+  .document dt {
+    white-space: normal;
+    width: 100px;
+    text-align: right;
+    word-break: break-word;
+    margin-left: 90px;
+  }
+  .dl-horizontal dd {
+    margin-left: 198px;
+  }
+}
+
+@media (max-width: 1200px) {
+  div.navbar-form {
+    left: -21px;
+  }
+}
+
+@media (max-width: 991px) {
+  div.navbar-form {
+    left: 0px;
+    top: 0px;
+  }
+  .document dt {
+    white-space: normal;
+    width: 100px;
+    text-align: left;
+    word-break: break-word;
+    margin-left: 0px;
+    float: none;
+  }
+  .dl-horizontal dd {
+    margin-left: 0px;
+    width: 100%;
+  }
+  .book-info-srch {
+    float:none;
+    margin-left: 21px;
+  }
+}
+
+@media (max-width: 768px) {
+  .show_page_records dd {
+    margin-bottom: 20px;
+  }
+  .book_format {
+    margin-left: 21px;
+  }
+  span.book {
+    margin-left: 0;
+  }
+}
+
+.format-concatenator {
+  padding-left:7px;
+  padding-right:14px;
+}
+.document-metadata form {
+  margin-top: 14px;
 }
 
 div.navbar-masquerade {
@@ -150,6 +206,7 @@ div.navbar-masquerade {
   display: block;
   padding: 0;
   width: 100px;
+  border: 0;
 }
 
 img {
@@ -157,4 +214,8 @@ img {
   max-height: 100%;
   max-width: 100%;
   width: auto;
+}
+
+textarea#message-body.form-control {
+  height: 100px;
 }

@@ -1,10 +1,21 @@
 @import "_vars.scss";
 
+#header-navbar {
+	  border-bottom: 0;
+	  padding-bottom: 7px;
+	.navbar-brand {
+	  width: 300px;
+	  height: 67px;
+	  margin: 10px 21px 0px 0px;
+	  padding: 0;
+	}
+}
 .navbar-default {
 	background-color: $tan;
 }
 
 .navbar-inverse {
+	margin-bottom: 0;
 	background-color: $white;
 	border-color: $grey;
 	.navbar-nav {
@@ -16,7 +27,22 @@
 		}
 	}
 }
-
+#user-util-collapse {
+	background-color: $red;
+	.navbar-nav {
+		li {
+			a, a:visited, a:hover, a:active {
+				color: $white;
+				padding: 4px 21px;
+			}
+		}
+	}
+}
+#user-util-links {
+	background-color:#A50030;
+	padding:0;
+	margin:0;
+}
 .navbar-right {
 	a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
 		color: $med-grey;

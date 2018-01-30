@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "twilio-ruby"
+
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
@@ -447,9 +449,12 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
 
     config.add_sort_field "score desc, pub_date_sort desc, title_sort asc", label: "relevance"
-    config.add_sort_field "pub_date_sort desc, title_sort asc", label: "year"
-    config.add_sort_field "author_sort asc, title_sort asc", label: "author"
-    config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title"
+    config.add_sort_field "pub_date_sort desc, title_sort asc", label: "date (new to old)"
+    config.add_sort_field "pub_date_sort asc, title_sort asc", label: "date (old to new)"
+    config.add_sort_field "author_sort asc, title_sort asc", label: "author/creator (A to Z)"
+    config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
+    config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
+    config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -464,5 +469,51 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
+
+    # Do not show endnotes for beta release
+    config.show.document_actions.delete(:endnote)
+
+    # Configuration for text to phone_number
+    config.show.document_actions.delete(:sms)
+    config.add_show_tools_partial(:message, callback: :message_action)
+  end
+
+  def message
+    # TODO Is this how catalog controller is supposed to get the current document?
+    @document = SolrDocument.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: false }
+      format.js
+    end
+  end
+
+  def render_message_action?(_config, _options)
+    true
+  end
+
+  def validate_message_params
+    if params[:to].blank?
+      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
+    elsif params[:to].gsub(/[^\d]/, "").length != 10
+      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
+    end
+    flash[:error].blank?
+  end
+
+  # FIXME Does not conform to "Adding new document actions"
+  # https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
+  # - Document actions does not pass documents argument to message_action
+  # - Must manually redirect to solr_document_url. It should be done automatically
+  #   without calling redirect_to
+  # - app/views/message_success does not render
+  def message_action #documents
+    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+    message = @client.messages.create(
+      body: params[:body],
+      to:   params[:to],
+      from: Rails.configuration.twilio[:phone_number]
+      )
+    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+    redirect_to solr_document_url
   end
 end
