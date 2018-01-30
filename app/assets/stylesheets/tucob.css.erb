@@ -1,7 +1,20 @@
+@import "_vars.scss";
+
 .cite-modal {
   padding: 14px;
 }
-
+.page_links {
+  margin: auto 7%;
+  width: 200px;
+}
+.nav-tools {
+  display: inline-block;
+}
+.nav-tools li {
+  padding: 10px;
+  background-color: #f1efe7;
+  border-radius: 4px;
+}
 #header-navbar .navbar-brand {
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
    margin-left: 7px;
@@ -20,6 +33,12 @@ ul.navbar-nav {
 
 form.search-query-form {
   margin-left: 7px;
+}
+#tools-navbar {
+  
+}
+#tools-navbar li, #tools-navbar li a {
+  display: inline-block;
 }
 /* === AEON REQUESTS === */
 
