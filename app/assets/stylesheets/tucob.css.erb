@@ -11,9 +11,34 @@
   display: inline-block;
 }
 .nav-tools li {
-  padding: 10px;
   background-color: #f1efe7;
   border-radius: 4px;
+  margin-right: 4px;
+  padding: 7px 14px;
+}
+.nav-tools div.toggle_bookmark {
+  padding-top: 0;
+  min-height: auto;
+}
+.nav-tools div.toggle_bookmark label {
+  color: #A50030;
+  min-width:auto;
+}
+.nav-tools div.toggle_bookmark input.toggle_bookmark {
+  visibility: hidden!important;
+}
+.nav-tools div.toggle_bookmark span {
+  position:relative;
+  left:-10px;
+}
+#sendto {
+  margin-top: -14px;
+  margin-left: -14px;
+}
+#sendto button {
+  border: 0;
+  background-color: #f1efe7;
+  color: #A50030;
 }
 #header-navbar .navbar-brand {
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;

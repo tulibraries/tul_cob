@@ -8,16 +8,33 @@
 
 -%>
 <% if show_doc_actions? %>
-
+<span style="display:none;"><%= @sendto = {} %></span>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
         <% unless config.key == :refworks %>
+        <% if config.key == :citation || config.key == :bookmark %>
           <li class="<%= config.key %>">
             <%= inner %>
           </li>
+        <% else %>
+        
+          <% @sendto[config.key] = inner %>
           
         <% end %>
         <% end %>
+        <% end %>
+        <li style="background-color: #fff;">
+          <div id="sendto" class="pull-right" style="position:absolute;z-index:9000;display:inline-block;background-color: #fff;">
+            <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
+            <ul class="dropdown-menu" style="float:none;position:relative;background-color: #fff;">
+              <li class="" style="margin-left: 0;display:block;background-color: #fff;">
+                <%= @sendto[:email] %>
+              </li>
+              <li class="" style="margin-left: 0;display:block;background-color: #fff;">
+                <%= @sendto[:message] %>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
-
 <% end %>
