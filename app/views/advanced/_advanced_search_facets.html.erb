@@ -24,19 +24,19 @@
 <div class="container">
 <div class="row">
 
-    <div class="col-sm-2 control-label">
+    <div class="col col-sm-2 control-label">
       <%= label_tag "publication_date" do %>
         Publication Year
       <% end %>
     </div>
-    <div class="col-sm-8" style="vertical-align:middle">
-    <div class="col-sm-3 " style="padding-left: 0;padding-right: 0;">
+    <div class="col col-sm-8">
+    <div class="col col-sm-3 pub-date">
       <%= render_range_input("pub_date_sort", :begin) %>
     </div>
-    <div class="col-sm-1" style="text-align:center;"> 
-     - 
+    <div class="col col-sm-1 pub-date-separator"> 
+     to 
     </div>
-    <div class="col-sm-3 " style="padding-left: 0;padding-right: 0;">
+    <div class="col col-sm-3 pub-date">
        <%= render_range_input("pub_date_sort", :end) %>
     </div>
   </div>

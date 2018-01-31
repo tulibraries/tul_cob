@@ -1,7 +1,9 @@
 .cite-modal {
   padding: 14px;
 }
-
+#sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
+  color: $red;
+}
 #header-navbar .navbar-brand {
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
@@ -68,14 +70,15 @@ input[type="radio"] + label {
   padding: 0 5px 3.25px;
 }
 
-.begin-pub-date {
-  margin-left: 20px;
-  margin-right: -10px;
+.pub-date {
+  padding-left: 0;
+  padding-right: 0;
+}
+.pub-date-separator {
+  text-align:center;
+  padding-top: 6px;
 }
 
-.end-pub-date {
-  margin-left: -20px;
-}
 /* === AVAILABILITY === */
 
 .availability {
@@ -141,6 +144,9 @@ button.collapse-button.collapsed .avail-label:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
+
+/* === ADVANCED SEARCH === */
+
 
 
 /* === MEDIA QUERIES === */
