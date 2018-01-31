@@ -1,89 +1,7 @@
 @import "_vars.scss";
 
-.cite-modal {
-  padding: 14px;
-}
-.page-links {
-
-}
-#record-page-nav-tools {
-  float: right;
-  padding-right: 142px;
-}
-.nav-tools {
-  display: inline-block;
-}
-.nav-tools li {
-  background-color: #f1efe7;
-  border-radius: 4px;
-  margin-right: 4px;
-  padding: 7px 14px;
-}
-.nav-tools div.toggle_bookmark {
-  padding-top: 0;
-  min-height: auto;
-}
-.nav-tools div.toggle_bookmark label {
-  color: #A50030;
-  min-width:auto;
-}
-.nav-tools div.toggle_bookmark input.toggle_bookmark {
-  visibility: hidden!important;
-}
-.nav-tools div.toggle_bookmark span {
-  position:relative;
-  left:-10px;
-}
-#sendto {
-  margin-top: -14px;
-  margin-left: -14px;
-  position:absolute;
-  z-index:9000;
-  display:inline-block;
-  background-color: #fff;
-}
-#sendto button {
-  border: 0;
-  background-color: #f1efe7;
-  color: #A50030;
-}
-#sendto-menu {
-  background-color: #fff;
-}
-#sendto ul {
-  float:none;
-  position:relative;
-  background-color: #fff;
-}
-.sendto-item {
-  margin-left: 0;
-  display:block;
-  background-color: #fff;
-}
-#header-navbar .navbar-brand {
-   background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
-   margin-left: 7px;
-  /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
-}
-div.navbar-form {
-  display:inline-block;
-  padding-top: 8px;
-  margin-left: -42px;
-  border: 0;
-}
-
-ul.navbar-nav {
-  margin: auto auto;
-}
-
 form.search-query-form {
   margin-left: 7px;
-}
-#tools-navbar {
-  
-}
-#tools-navbar li, #tools-navbar li a {
-  display: inline-block;
 }
 /* === AEON REQUESTS === */
 
@@ -203,6 +121,99 @@ div.physical-holding-panel {
   margin-bottom: 7px;
 }
 
+/* RECORD NAV TOOLS*/
+
+.cite-modal {
+  padding: 14px;
+}
+.page-links {
+
+}
+#record-page-nav-tools {
+  float: right;
+  padding-right: 142px;
+}
+.nav-tools {
+  display: inline-block;
+}
+.nav-tools li {
+  background-color: #f1efe7;
+  border-radius: 4px;
+  margin-right: 4px;
+  padding: 7px 14px;
+}
+.nav-tools div.toggle_bookmark {
+  padding-top: 0;
+  min-height: auto;
+}
+.nav-tools div.toggle_bookmark label {
+  color: #A50030;
+  min-width:auto;
+}
+.nav-tools div.toggle_bookmark input.toggle_bookmark {
+  visibility: hidden!important;
+}
+.nav-tools div.toggle_bookmark span {
+  position:relative;
+  left:-10px;
+}
+#sendto {
+  margin-top: -14px;
+  margin-left: -14px;
+  position:absolute;
+
+  display:inline-block;
+  background-color: #fff;
+}
+#sendto button {
+  border: 0;
+  background-color: #f1efe7;
+  color: #A50030;
+}
+#sendto-menu {
+  background-color: #fff;
+}
+#sendto .dropdown-menu {
+  background-color: #fff;
+  width: 111px;
+}
+#sendto ul {
+  float:none;
+  position:relative;
+  background-color: #fff;
+}
+.sendto-item {
+  margin-left: 0;
+  display:block;
+  background-color: #fff!important;
+  width: 100%;
+}
+.sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
+  color: #A50030!important;
+  background-color: #fff!important;
+}
+#header-navbar .navbar-brand {
+   background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
+   margin-left: 7px;
+  /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
+}
+div.navbar-form {
+  display:inline-block;
+  padding-top: 8px;
+  margin-left: -42px;
+  border: 0;
+}
+
+ul.navbar-nav {
+  margin: auto auto;
+}
+#tools-navbar {
+  
+}
+#tools-navbar li, #tools-navbar li a {
+  display: inline-block;
+}
+
 /* === MEDIA QUERIES === */
 
 @media (min-width: 992px) {
@@ -287,8 +298,8 @@ div.physical-holding-panel {
   #tools-navbar li, #tools-navbar li a {
     display: block;
     width: 100%;
-    color: white;
-    background-color: #A50030;
+    color: white!important;
+    background-color: #A50030!important;
     border-radius: 0;
     margin-bottom: 2px;
     padding-left: 10px;
@@ -330,10 +341,14 @@ div.physical-holding-panel {
     position:relative;
     background-color: #fff;
   }
+  #sendto .dropdown-menu {
+    background-color: #A50030;
+    width: 100%;
+  }
   .sendto-item {
     margin-left: 0;
     display:block;
-    background-color: #A50030;
+    background-color: #A50030!important;
     /*border-bottom: solid #fff 2px;*/
   }
 }
