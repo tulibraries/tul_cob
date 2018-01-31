@@ -54,27 +54,14 @@ a.catalog_startOverLink {
 	color: $red;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.facet_limit-active {
+	.panel-heading.collapse-toggle.collapsed .panel-title:after {
+		color: white;
+	}
+	.panel-heading.collapse-toggle .panel-title:after {
+		color: white;
+	}
+	.panel-heading.collapse-toggle.collapsed .panel-title:after {
+		color: white;
+	}
+}
