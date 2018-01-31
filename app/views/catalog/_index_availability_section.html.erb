@@ -18,8 +18,8 @@
 
   <% if document.fetch("availability_facet", [])[i] == "At the Library" %>
     <div class="row button-break"></div>
-    <button data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">
-      <span class="avail-label" aria-expanded="false">Loading...</span>
+    <button data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">
+      <span aria-expanded="false">Loading...</span>
     </button>
 
     <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>
