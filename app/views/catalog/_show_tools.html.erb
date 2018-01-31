@@ -11,7 +11,6 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-        <% unless config.key == :refworks %>
         <% if config.key == :citation || config.key == :bookmark %>
           <li class="<%= config.key %>">
             <%= inner %>
@@ -20,7 +19,6 @@
         
           <% @sendto[config.key] = inner %>
           
-        <% end %>
         <% end %>
         <% end %>
         <li id="sendto-menu">
