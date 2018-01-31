@@ -27,12 +27,11 @@
           <div id="sendto" class="pull-right">
             <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li class="sendto-item">
-                <%= @sendto[:email] %>
-              </li>
-              <li class="sendto-item">
-                <%= @sendto[:message] %>
-              </li>
+              <% @sendto.each do |key,value| %>
+                <li class="sendto-item">
+                  <%= value %>
+                </li>
+              <% end %>
             </ul>
           </div>
         </li>
