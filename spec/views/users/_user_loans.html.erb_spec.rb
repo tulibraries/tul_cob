@@ -9,7 +9,7 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
   end
 
   let(:one_day) { 24 * 3600 }
-  
+
   context "Renewable" do
     let(:renewable_loan) {
       OpenStruct.new(
@@ -22,7 +22,7 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
         loan_status: "Active"
       )
     }
-    
+
     let(:renewable_loan_without_flag) {
       OpenStruct.new(
         loan_id: "12345",
@@ -33,14 +33,14 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
         loan_status: "Active"
       )
     }
-    
+
     it "doesn't show exclamation point in renewal column" do
       allow(@loans).to receive(:list).and_return([renewable_loan])
 
       render partial: "users/user_loans"
       expect(rendered).to_not have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
     end
-    
+
     it "doesn't show exclamation point in renewal column" do
       allow(@loans).to receive(:list).and_return([renewable_loan_without_flag])
 
