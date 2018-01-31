@@ -8,7 +8,7 @@
 
 -%>
 <% if show_doc_actions? %>
-<span style="display:none;"><%= @sendto = {} %></span>
+<% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
         <% unless config.key == :refworks %>
@@ -23,14 +23,14 @@
         <% end %>
         <% end %>
         <% end %>
-        <li style="background-color: #fff;">
-          <div id="sendto" class="pull-right" style="position:absolute;z-index:9000;display:inline-block;background-color: #fff;">
+        <li id="sendto-menu">
+          <div id="sendto" class="pull-right">
             <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
-            <ul class="dropdown-menu" style="float:none;position:relative;background-color: #fff;">
-              <li class="" style="margin-left: 0;display:block;background-color: #fff;">
+            <ul class="dropdown-menu">
+              <li class="sendto-item">
                 <%= @sendto[:email] %>
               </li>
-              <li class="" style="margin-left: 0;display:block;background-color: #fff;">
+              <li class="sendto-item">
                 <%= @sendto[:message] %>
               </li>
             </ul>

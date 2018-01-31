@@ -8,16 +8,18 @@
       <%=link_to t('blacklight.search.start_over'), start_over_path(current_search_session.try(:query_params) || {}), id: 'startOverLink', class: 'btn btn-sm' %>
     </div>
   <% end %>
+  <div id="record-page-nav-tools">
   <% if @previous_document || @next_document %>
-    <div class="page_links">
+    <div id="page-links" class="page_links">
       <%= link_to_previous_document @previous_document %> |
 
       <%= item_page_entry_info %> |
 
       <%= link_to_next_document @next_document %>
     </div>
-    <div class="nav-tools">
+    <div id="nav-tools" class="nav-tools">
       <%= render partial: 'show_tools_navbar' %>
     </div>
   <% end %>
+</div>
 </div>

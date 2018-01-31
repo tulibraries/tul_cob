@@ -3,9 +3,12 @@
 .cite-modal {
   padding: 14px;
 }
-.page_links {
-  margin: auto 7%;
-  width: 200px;
+.page-links {
+
+}
+#record-page-nav-tools {
+  float: right;
+  padding-right: 142px;
 }
 .nav-tools {
   display: inline-block;
@@ -34,11 +37,28 @@
 #sendto {
   margin-top: -14px;
   margin-left: -14px;
+  position:absolute;
+  z-index:9000;
+  display:inline-block;
+  background-color: #fff;
 }
 #sendto button {
   border: 0;
   background-color: #f1efe7;
   color: #A50030;
+}
+#sendto-menu {
+  background-color: #fff;
+}
+#sendto ul {
+  float:none;
+  position:relative;
+  background-color: #fff;
+}
+.sendto-item {
+  margin-left: 0;
+  display:block;
+  background-color: #fff;
 }
 #header-navbar .navbar-brand {
    background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
@@ -225,6 +245,12 @@ div.physical-holding-panel {
     float:none;
     margin-left: 21px;
   }
+  #record-page-nav-tools {
+    float: left!important;
+    clear: both;
+    padding-top: 14px;
+    padding-right: 0;
+  }
 }
 
 @media (max-width: 768px) {
@@ -240,6 +266,75 @@ div.physical-holding-panel {
   }
   #appliedParams {
     padding-left: 7px;
+  }
+  #previousNextDocument {
+    padding-left: 7px;
+  }
+  #document h1 {
+    padding-left: 7px;
+  }
+  .col-xs-12 {
+    float: none;
+  }
+@media (max-width: 601px) {
+  #nav-tools {
+    margin-top: 14px;
+    width: 100%;
+  }
+  #tools-navbar {
+    padding-left: 0;
+    }
+  #tools-navbar li, #tools-navbar li a {
+    display: block;
+    width: 100%;
+    color: white;
+    background-color: #A50030;
+    border-radius: 0;
+    margin-bottom: 2px;
+    padding-left: 10px;
+  }
+  .nav-tools div.toggle_bookmark {
+    padding-top: 0;
+    min-height: auto;
+  }
+  .nav-tools div.toggle_bookmark label {
+    color: #fff;
+    min-width:auto;
+  }
+  .nav-tools div.toggle_bookmark input.toggle_bookmark {
+    visibility: hidden!important;
+  }
+  .nav-tools div.toggle_bookmark span {
+    position:relative;
+    left:-10px;
+  }
+  #sendto {
+    margin-top: auto;
+    margin-left: auto;
+    position:relative;
+    z-index:0;
+    display:block;
+    background-color: transparent;
+    float: none!important;
+  }
+  #sendto button {
+    border: 0;
+    background-color: #A50030;
+    color: #fff;
+  }
+  #sendto-menu {
+    background-color: #A50030;
+  }
+  #sendto ul {
+    float:none;
+    position:relative;
+    background-color: #fff;
+  }
+  .sendto-item {
+    margin-left: 0;
+    display:block;
+    background-color: #A50030;
+    /*border-bottom: solid #fff 2px;*/
   }
 }
 
