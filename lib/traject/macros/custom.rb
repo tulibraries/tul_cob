@@ -148,7 +148,7 @@ module Traject
               unless available
                 available = []
               end
-              [available[1] || "9999", available[2] || "9999", title, subtitle || ""]
+              [available[1] || "9999", available[2] || "9999", "#{title}", "#{subtitle}"]
             }.reverse!
           rescue
             logger.error("Failed `sort_electronic_resource!` on sorting #{rec}")
