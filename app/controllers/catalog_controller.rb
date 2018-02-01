@@ -508,12 +508,18 @@ class CatalogController < ApplicationController
   # - app/views/message_success does not render
   def message_action #documents
     @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+    body = text_this_message_body(params)
     message = @client.messages.create(
-      body: params[:body],
-      to:   params[:to],
-      from: Rails.configuration.twilio[:phone_number]
-      )
-    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
+       body: body,
+       to:   params[:to],
+       from: Rails.configuration.twilio[:phone_number]
+    )
+    logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
     redirect_to solr_document_url
+  end
+  
+  def text_this_message_body(params)
+    "#{params[:title]}\n" + 
+    "#{params[:location]}" 
   end
 end

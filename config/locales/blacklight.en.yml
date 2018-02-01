@@ -18,9 +18,11 @@ en:
 
     message:
       form:
-        title: "Text This"
-        to: 'Phone Number:'
-        submit: 'Send'
+        form_title: "Text This"
+        title: "Title"
+        location: "Select a Location"
+        to: "Cell Phone Number"
+        submit: "Send Message"
       text:
         title: '%{value}'
         author: ' by %{value}'
