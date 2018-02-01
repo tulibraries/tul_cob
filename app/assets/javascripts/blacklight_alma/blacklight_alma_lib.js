@@ -19,20 +19,20 @@ var BlacklightAlma = function (options) {
 
  availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
-   if (!$(availButton).hasClass("btn-success collapse-button")) {
+   if (!$(availButton).hasClass("btn-success collapse-button available")) {
      if(holding['availability'] == 'available') {
        $(availButton).html("<span class='avail-label'>Available</span>");
        $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-success collapsed");
+       $(availButton).addClass("btn-success collapsed collapse-button");
        $(availButton).show();
      }
      else if(holding['availability'] == 'check_holdings') {
        $(availButton).hide();
      }
      else {
-       $(availButton).html("<span class='btn-drop-down collapsed collapse-button not-available'>Not Available</span>");
+       $(availButton).html("<span class='avail-label'>Not Available</span>");
        $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-warning");
+       $(availButton).addClass("btn-warning collapsed collapse-button");
        $(availButton).show();
      }
    }
