@@ -3,7 +3,7 @@
 # rubocop:disable BlockLength
 namespace :docker do
   task :up do
-    print `docker-compose -f docker-compose -f cli.docker-compose up -d --build`
+    print `docker-compose -f docker-compose.yml -f cli.docker-compose.yml up -d --build`
     Rake::Task["docker:ps"].invoke
   end
 
