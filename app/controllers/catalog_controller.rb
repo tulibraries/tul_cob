@@ -491,13 +491,21 @@ class CatalogController < ApplicationController
     true
   end
 
-  def validate_message_params
-    if params[:to].blank?
-      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
-    elsif params[:to].gsub(/[^\d]/, "").length != 10
-      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
+  def validate_message_params?
+    valid = true
+    if params.has_key?(:location)
+      flash[:error] = I18n.t("blacklight.message.error.location")
+      valid = false
     end
-    flash[:error].blank?
+    if params[:to].blank?
+      flash[:error] = I18n.t("blacklight.message.error.to.blank")
+      valid = false
+    end
+    if params[:to].gsub(/[^\d]/, "").length != 10
+      flash[:error] = I18n.t("blacklight.message.error.to.invalid", to: params[:to])
+      valid = false
+    end
+    return valid
   end
 
   # FIXME Does not conform to "Adding new document actions"
@@ -507,6 +515,11 @@ class CatalogController < ApplicationController
   #   without calling redirect_to
   # - app/views/message_success does not render
   def message_action #documents
+    unless validate_message_params?
+      redirect_to solr_document_url
+      return
+    end
+    
     @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
     body = text_this_message_body(params)
     message = @client.messages.create(
@@ -516,6 +529,10 @@ class CatalogController < ApplicationController
     )
     logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
     redirect_to solr_document_url
+  end
+  
+  def phone_valid(phone_number)
+    /\d\d\d-\d\d\d-\d\d\d\d/ =~ phone_number
   end
   
   def text_this_message_body(params)

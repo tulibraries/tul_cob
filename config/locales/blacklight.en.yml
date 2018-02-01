@@ -28,7 +28,8 @@ en:
         author: ' by %{value}'
         url: 'Link: %{url}'
       success: "Text Sent"
-      errors:
+      error:
+        location: 'You must select a location'
         to:
           invalid: 'You must enter a valid 10 digit phone number'
           blank: "You must enter a recipient's phone number in order to send this message"
