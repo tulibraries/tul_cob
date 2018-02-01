@@ -7,4 +7,5 @@ RUN apt-get update -qq \
 
 WORKDIR /tul_cob
 
+RUN bundle install
 CMD ["bash"]
