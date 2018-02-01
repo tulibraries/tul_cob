@@ -349,6 +349,8 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
+    skylight (1.5.0)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     solr_wrapper (1.1.0)
       faraday
@@ -463,6 +465,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   simplecov
+  skylight
   solr_wrapper (>= 0.3)
   spring
   spring-watcher-listen (~> 2.0.0)
