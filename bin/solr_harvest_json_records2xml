@@ -2,6 +2,7 @@
 require 'net/http'
 require 'json'
 require 'yaml'
+require 'OpenSSL'
 
 
 # The purpose of this utility is to populate an XML file of search results
@@ -24,16 +25,19 @@ test_queries.each do |test_item|
   test_item['query_type'].each do |query_field|
     search_term = test_item[query_field]
     if search_term.kind_of?(Array) == true
-      search_term = search_term.to_s
+      search_term = search_term[0].to_s
     end
     search_string += search_term + " "
   end
+
+  puts search_string
 
   # from page 1 to 100 or if there aren't 100 pages of results 1 to however many there are...
   # (why doesn't ruby have do-while loops? guh)
   loop do
     # ...assemble the search URL and query it
     url = "https://libqa.library.temple.edu/catalog/?q=" + search_string + "&search_field=all_fields&format=json&page=" + pageindex.to_s
+    puts url
     uri = URI.parse(url)
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -59,8 +63,8 @@ test_queries.each do |test_item|
       outfile.puts(marcxml)
     end
     pageindex = page["pages"]["next_page"]
-    #puts page["pages"]["current_page"].to_s + " of " + page["pages"]["total_pages"].to_s
-    break if page["pages"]["current_page"] == [page["pages"]["total_pages"], 100].min
+    puts page["pages"]["current_page"].to_s + " of " + page["pages"]["total_pages"].to_s
+    break if page["pages"]["current_page"] >= [page["pages"]["total_pages"], 100].min
   end
 end
 
