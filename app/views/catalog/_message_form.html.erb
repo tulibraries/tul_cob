@@ -18,7 +18,7 @@
           <%= t('blacklight.message.form.location') %>
         </label>
         <div class="col-sm-10">
-          <% @document[:library_facet].each do |library| %>
+          <% @document[:library_location_display].each do |library| %>
             <div>
               <%= radio_button_tag("location", library) %>
               <%= label_tag("location-#{library}", library) %>

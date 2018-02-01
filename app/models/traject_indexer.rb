@@ -168,6 +168,7 @@ to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:6
 to_field "call_number_display", extract_marc("HLDhi")
 to_field "call_number_alt_display", extract_marc("ITMjk")
 to_field "library_facet", extract_library
+to_field "library_location_display", extract_library_shelf_call_number
 
 # Call Number fields
 to_field "lc_callnum_display", extract_marc("050ab", first: true)
