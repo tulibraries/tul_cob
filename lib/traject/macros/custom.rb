@@ -7,7 +7,7 @@ module Traject
   module Macros
     module Custom
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
-      GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites/i
+      GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
       def get_xml
         lambda do |rec, acc|
           acc << MARC::FastXMLWriter.encode(rec)
@@ -116,19 +116,11 @@ module Traject
       end
 
       def extract_electronic_resource
-        lambda do |rec, acc|
-          resources = []
+        lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
-            resources << [f["a"], f["c"], f["g"]]
+            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
+            acc << selected_subfields
           end
-          # Sort on availability
-          unless resources.empty?
-            resources.sort_by! { |r|  (r[2] || "9999").scan(/\d+/).first.to_i }
-            resources.each do |res|
-              acc << res.compact.join("|")
-            end
-          end
-
           # Short circuit if PRT field present.
           if !rec.fields("PRT").empty?
             return acc
@@ -141,6 +133,26 @@ module Traject
                 acc << [label, f["u"]].compact.join("|")
               end
             end
+          end
+        end
+      end
+
+      def sort_electronic_resource!
+        lambda do |rec, acc, context|
+          begin
+            acc.sort_by! { |r|
+              subfields = r.split("|")
+              available = /Available from (\d+).* until (\d+)/.match(subfields.last)
+              title = subfields[1]
+              subtitle = subfields[2]
+              unless available
+                available = []
+              end
+              [available[1] || "9999", available[2] || "9999", "#{title}", "#{subtitle}"]
+            }.reverse!
+          rescue
+            logger.error("Failed `sort_electronic_resource!` on sorting #{rec}")
+            acc
           end
         end
       end

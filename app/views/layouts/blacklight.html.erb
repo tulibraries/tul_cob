@@ -26,6 +26,7 @@
   </head>
   <body class="<%= render_body_class %>">
     <div id="page-wrapper">
+    <%= render :partial => 'shared/banner' %>
 
     <% if (defined? true_user) && (current_user != true_user) %>
       <div class="navbar-masquerade" id="user-masquerade">
