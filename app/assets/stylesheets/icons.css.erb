@@ -7,7 +7,7 @@
   margin-bottom: 20px;
 }
 
-span.btn-drop-down {
+span.btn-drop-down, input.online  {
   background: transparent url(<%= asset_path 'drop-down.png' %>) no-repeat center right;
   padding-right: 0;
   display:inline-block;
@@ -19,6 +19,13 @@ span.btn-drop-down.available {
 }
 span.btn-drop-down.not-available {
   font-size:13px;
+}
+span.btn-drop-down.online, input.online {
+  background: transparent url(<%= asset_path 'drop-down.png' %>) no-repeat 90% center;
+  font-size:15px;
+  padding-right: 14px;
+  display: inline-block;
+  width: 100%;
 }
 .availability-toggle-details {
   text-align: left;
