@@ -38,6 +38,8 @@ services:
       - solr-precreate
       - blacklight
       - /opt/solr/conf
+      - "-Xms256m"
+      - "-Xmx512m"
 
 networks:
   reverseproxy_default:
