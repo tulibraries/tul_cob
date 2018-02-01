@@ -117,6 +117,10 @@ div.online_resources {
   /*padding-left: 5px;*/
 }
 
+.availability-toggle-details {
+  padding-left: 30px;
+}
+
 .button-break {
   padding: 3px;
 }
@@ -130,6 +134,19 @@ div.online_resources {
 div.physical-holding-panel {
   padding-top: 0;
 }
+
+button.collapse-button .avail-label:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: white;         /* adjust as needed */
+}
+button.collapse-button.collapsed .avail-label:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
 
 /* === MEDIA QUERIES === */
 @media (min-width: 768px) {
@@ -224,3 +241,19 @@ img {
 textarea#message-body.form-control {
   height: 100px;
 }
+
+.beta-tag {
+  background: #1060aa;
+  border-radius: 5px;
+  color: #fff;
+  padding: .24em .5em;
+  margin: 25px 10px;
+}
+
+.site-message {
+  background: #f1efe7;
+  border-bottom: 2px solid #951936;
+  padding-top: 10px;
+  margin-bottom: 5px;
+}
+
