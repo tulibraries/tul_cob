@@ -1,8 +1,15 @@
-form.search-query-form {
-  margin-left: 7px;
+#record-view-iframe {
+  max-width: 900px;
+  margin:auto;
+}
+#search-navbar .search-query-form {
+  margin-left: 0;
 }
 h1[itemprop="name"] {
   font-size: 28px;
+}
+#search-navbar .container {
+  padding-left: 0;
 }
 /* === AEON REQUESTS === */
 
@@ -241,13 +248,13 @@ ul.navbar-nav {
 @media (min-width: 992px) {
   .document dt {
     white-space: normal;
-    width: 100px;
+    width: 142px;
     text-align: right;
     word-break: break-word;
     margin-left: 90px;
   }
   .dl-horizontal dd {
-    margin-left: 198px;
+    margin-left: 240px;
   }
 }
 
@@ -287,6 +294,9 @@ ul.navbar-nav {
 }
 
 @media (max-width: 768px) {
+  #search-navbar .search-query-form  {
+    margin-left: 7px;
+  }
   .book_format {
     margin-left: 21px;
   }
