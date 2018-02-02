@@ -24,7 +24,8 @@ $(document).on('turbolinks:load', function() {
         if(b.hasOwnProperty("thumbnail_url")) {
           type = b.bib_key.split(":")[0];
           identifier = b.bib_key.split(":")[1];
-          $('[data-' + type.toLowerCase() + '=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image").siblings().remove();
+          $('[data-' + type.toLowerCase() + '=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image");
+          $('[data-' + type.toLowerCase() + '=' + identifier + '] .default').remove();
         }
       }
     }
