@@ -163,7 +163,7 @@ class CatalogController < ApplicationController
         subject_addl_t^10
       ].join(" "),
       facet: "true",
-      spellcheck: "true",
+      spellcheck: "false",
     }
 
     # solr path which will be added to solr base url before the other solr params.
