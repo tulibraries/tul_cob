@@ -13,13 +13,27 @@ span.btn-drop-down, input.online  {
   display:inline-block;
   width: 100%;
 }
-span.btn-drop-down.available {
+button.collapse-button .avail-label.available{
   font-size:15px;
-  padding-left: 7px;
+  padding-left: 14px;
 }
-span.btn-drop-down.not-available {
-  font-size:13px;
+button.collapse-button.collapsed .avail-label.not-available {
+  font-size:14px;
 }
+
+                   
+button.collapse-button .avail-label:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: white;         /* adjust as needed */
+}
+button.collapse-button.collapsed .avail-label:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+
 span.btn-drop-down.online, input.online {
   background: transparent url(<%= asset_path 'drop-down.png' %>) no-repeat 90% center;
   font-size:15px;
