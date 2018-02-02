@@ -54,7 +54,10 @@ var BlacklightAlma = function (options) {
         }).join(" ");
   }
   else {
-    return "Checked out or temporarily unavailable"
+    return ["Checked out or temporarily unavailable at ", holding['library']]
+        .filter(function (item) {
+            return item != null && item.length > 0;
+        }).join(" ");
   }
 }
 
