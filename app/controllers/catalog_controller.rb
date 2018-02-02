@@ -474,38 +474,24 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:endnote)
 
     # Configuration for text to phone_number
-    config.show.document_actions.delete(:sms)
-    config.add_show_tools_partial(:message, callback: :message_action)
+    # config.show.document_actions.delete(:sms)
+    # config.add_show_tools_partial(:message, callback: :message_action, validator: :validate_message_params)
   end
 
-  def message
-    # TODO Is this how catalog controller is supposed to get the current document?
-    @document = SolrDocument.find(params[:id])
-    respond_to do |format|
-      format.html { render layout: false }
-      format.js
-    end
-  end
-
-  def render_message_action?(_config, _options)
+  def render_sms_action?(_config, _options)
     true
   end
 
-  def validate_message_params?
-    valid = true
-    unless params.has_key?(:location)
+  def validate_sms_params
+    if !params.has_key?(:location)
       flash[:error] = I18n.t("blacklight.message.error.location")
-      valid = false
-    end
-    if params[:to].blank?
+    elsif params[:to].blank?
       flash[:error] = I18n.t("blacklight.message.error.to.blank")
-      valid = false
-    end
-    if params[:to].gsub(/[^\d]/, "").length != 10
+    elsif params[:to].gsub(/[^\d]/, "").length != 10
       flash[:error] = I18n.t("blacklight.message.error.to.invalid", to: params[:to])
-      valid = false
     end
-    return valid
+
+    flash[:error].blank?
   end
 
   # FIXME Does not conform to "Adding new document actions"
@@ -514,22 +500,17 @@ class CatalogController < ApplicationController
   # - Must manually redirect to solr_document_url. It should be done automatically
   #   without calling redirect_to
   # - app/views/message_success does not render
-  def message_action #documents
-    unless validate_message_params?
-      redirect_to(solr_document_url)
-      return
-    end
-
-    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+  def sms_action documents
+    logger.info "SMS: sms_action method "
+    # @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
     body = text_this_message_body(params)
-    message = @client.messages.create(
-      body: body,
-      to:   params[:to],
-      from: Rails.configuration.twilio[:phone_number]
-    )
+    # message = @client.messages.create(
+    #   body: body,
+    #   to:   params[:to],
+    #   from: Rails.configuration.twilio[:phone_number]
+    # )
     logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
     flash[:success] = I18n.t("blacklight.message.success")
-    redirect_to(solr_document_url)
   end
 
   def phone_valid(phone_number)
