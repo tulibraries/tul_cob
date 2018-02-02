@@ -516,7 +516,7 @@ class CatalogController < ApplicationController
   # - app/views/message_success does not render
   def message_action #documents
     unless validate_message_params?
-      redirect_to solr_document_url
+      redirect_to(solr_document_url)
       return
     end
 
@@ -528,7 +528,8 @@ class CatalogController < ApplicationController
       from: Rails.configuration.twilio[:phone_number]
     )
     logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
-    redirect_to solr_document_url
+    flash[:success] = I18n.t("blacklight.message.success")
+    redirect_to(solr_document_url)
   end
 
   def phone_valid(phone_number)
