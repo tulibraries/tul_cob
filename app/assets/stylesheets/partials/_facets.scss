@@ -23,12 +23,15 @@ a.facet_select, a.facet_select:active, a.facet_select:visited {
 	btn {
 		border-radius: 5px;
 	}
-	#startOverLink {
-		color: #fff;
-	  background-color: #337ab7;
-	  border-color: #2e6da4;
-	  margin-right: 4px;
-	}
+}
+#startOverLink {
+	color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  margin-right: 4px;
+}
+.dl-horizontal dd:after {
+	clear:both;
 }
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
 	background-color: $red!important;
@@ -40,10 +43,20 @@ button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, inp
     background-color: #337ab7!important;
     border-color: #2e6da4!important;
 }
+a.btn-info, a.btn-info:active, a.btn-info:hover, a.btn-info:focus, a.btn-info:visited {
+    color: #fff!important;
+    background-color: #337ab7!important;
+    border-color: #2e6da4!important;
+} 
 button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
 	background-color: #3A833A!important;
 	color: $white!important;
 	border-color: #224922!important;
+}
+a.btn-back-to-search, a.btn-back-to-search:focus, a.btn-back-to-search:hover, a.btn-back-to-search:active, a.btn-back-to-search:visited {
+	background-color: #fff!important;
+	color: $red!important;
+	border-color: #ccc;
 }
 
 a.catalog_startOverLink {
@@ -54,27 +67,14 @@ a.catalog_startOverLink {
 	color: $red;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.facet_limit-active {
+	.panel-heading.collapse-toggle.collapsed .panel-title:after {
+		color: white;
+	}
+	.panel-heading.collapse-toggle .panel-title:after {
+		color: white;
+	}
+	.panel-heading.collapse-toggle.collapsed .panel-title:after {
+		color: white;
+	}
+}

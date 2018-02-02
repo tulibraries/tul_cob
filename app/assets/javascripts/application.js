@@ -33,6 +33,12 @@ $(window).load(function(){
 	else {
 		$('#appliedParams').insertAfter('h1.application-heading');
 	}
+	if ($(window).width() < 600) {
+		$('#nav-tools').insertAfter('#document');
+	}
+	else {
+		$('#nav-tools').insertAfter('#page-links');
+	}
 });
 
 $(window).on('resize', function() {
@@ -42,10 +48,21 @@ $(window).on('resize', function() {
 	else {
 		$('#appliedParams').insertAfter('h1.application-heading');
 	}
+	if ($(window).width() < 600) {
+		$('#nav-tools').insertAfter('#document');
+	}
+	else {
+		$('#nav-tools').insertAfter('#page-links');
+	}
 });
 
-$(document).ajaxComplete(function(){
-	$('#appliedParams').insertAfter('h1.application-heading');
+$(document).ajaxComplete(function(){	
+	if ($(window).width() < 768) {
+		$('#appliedParams').insertAfter('#sidebar');
+	}
+	else {
+		$('#appliedParams').insertAfter('h1.application-heading');
+	}
 });
 
 

@@ -1,6 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
-  <div class="<%= thumbnail_classes(document) %> col-sm-2 col-xs-12"
+  <div class="record-view <%= thumbnail_classes(document) %> col-sm-2 col-xs-12"
     <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
   </div>
   

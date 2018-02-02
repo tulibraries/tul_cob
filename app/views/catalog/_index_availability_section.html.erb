@@ -3,11 +3,12 @@
 <% @response["response"][:docs].each_with_index do |field, i| %>
   <% if document.fetch("availability_facet", [])[i] == "Online" %>
     <% if document["electronic_resource_display"].length == 1 %>
-      <%= button_to "Online", single_link_builder(document["electronic_resource_display"][i]), class:"collapse-button btn btn-sm btn-info" %>
+      <%= link_to "Online", single_link_builder(document["electronic_resource_display"][i]), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank" %>
     <% else %>
+    <div class="row button-break"></div>
       <button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">
-        <span class="avail-label" aria-expanded="false">Online</span>
-      </button>
+      <span class="avail-label" aria-expanded="false">Online</span>
+    </button>
       <div id="online-document-<%= document_counter %>" class="collapse online_resources">
         <ul>
           <%= check_for_full_http_link({document: document, field: "electronic_resource_display"}) %>
@@ -18,8 +19,8 @@
 
   <% if document.fetch("availability_facet", [])[i] == "At the Library" %>
     <div class="row button-break"></div>
-    <button data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details collapse-button" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">
-      <span class="avail-label" aria-expanded="false">Loading...</span>
+    <button data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">
+      <span aria-expanded="false">Loading...</span>
     </button>
 
     <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>

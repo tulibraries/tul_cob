@@ -5,6 +5,10 @@ RUN apt-get update -qq \
       && apt-get clean \
       && cd; wget -qO - https://raw.github.com/dkinzer/.vim/master/deploy.sh | bash
 
-WORKDIR /tul_cob
 
+ADD Gemfile .
+ADD Gemfile.lock .
+RUN bundle install
+
+WORKDIR /tul_cob
 CMD ["bash"]

@@ -90,6 +90,9 @@ gem "chosen-rails"
 gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
+gem "skylight"
+
+
 
 
 group :production do
