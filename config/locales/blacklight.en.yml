@@ -16,10 +16,10 @@ en:
       librarian_view:
         title: "Staff View"
 
-    message:
+    sms:
       form:
-        form_title: "Text This"
-        title: "Title"
+        title: "Text This"
+        title_statement: "Title"
         location: "Select a Location"
         to: "Cell Phone Number"
         submit: "Send Message"
@@ -28,8 +28,12 @@ en:
         author: ' by %{value}'
         url: 'Link: %{url}'
       success: "Text Sent"
-      error:
-        location: 'You must select a location'
+      errors:
+        location:
+          blank: 'You must select a location'
         to:
           invalid: 'You must enter a valid 10 digit phone number'
           blank: "You must enter a recipient's phone number in order to send this message"
+
+    tools:
+      sms: 'Text This'
