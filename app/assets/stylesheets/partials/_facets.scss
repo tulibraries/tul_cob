@@ -37,21 +37,35 @@ button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.b
 	background-color: $red!important;
 	color: $white!important;
 	border-color: #d43f3a!important;
+  span.avail-label.not-available {
+  	padding-left: 5px;
+  	font-size: 13px;
+  }
 }
 button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, input.btn-info:active, input.btn-info:visited {
     color: #fff!important;
     background-color: #337ab7!important;
     border-color: #2e6da4!important;
+    span.avail-label {
+    	font-size: 15px;
+    	padding-left: 10px;
+    }
 }
 a.btn-info, a.btn-info:active, a.btn-info:hover, a.btn-info:focus, a.btn-info:visited {
     color: #fff!important;
     background-color: #337ab7!important;
     border-color: #2e6da4!important;
+    font-size: 15px;
+    padding:left 3px;
 } 
 button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
 	background-color: #3A833A!important;
 	color: $white!important;
 	border-color: #224922!important;
+  span.avail-label.available {
+  	padding-left: 14px;
+  	font-size: 15px;
+  }
 }
 a.btn-back-to-search, a.btn-back-to-search:focus, a.btn-back-to-search:hover, a.btn-back-to-search:active, a.btn-back-to-search:visited {
 	background-color: #fff!important;
