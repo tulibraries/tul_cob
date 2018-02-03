@@ -2,9 +2,11 @@
   max-width: 900px;
   margin:auto;
 }
-#search-navbar .search-query-form {
-  margin-left: 0;
+
+#sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
+  color: #A50030;
 }
+
 h1[itemprop="name"] {
   font-size: 28px;
 }
@@ -67,14 +69,22 @@ input[type="radio"] + label {
   padding: 0 5px 3.25px;
 }
 
-.begin-pub-date {
-  margin-left: 20px;
-  margin-right: -10px;
+.pub-date {
+  padding-left: 0;
+  padding-right: 0;
+}
+.pub-date-separator {
+  text-align:center;
+  padding-top: 6px;
 }
 
-.end-pub-date {
-  margin-left: -20px;
+.advanced-search-start-over, .advanced-search-start-over a:hover, .advanced-search-start-over a:focus {
+    color: #fff!important;
+    background-color: #337ab7!important;
+    border-color: #2e6da4;
+    margin-right: 4px;
 }
+
 /* === AVAILABILITY === */
 
 .availability {
@@ -231,6 +241,9 @@ button.collapse-button.collapsed .avail-label:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
+
+/* === ADVANCED SEARCH === */
+
 
 
 ul.navbar-nav {
