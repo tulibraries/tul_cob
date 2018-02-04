@@ -10,6 +10,7 @@ RSpec.feature "Advanced Search" do
       home_facets = page.all(".facet_limit").length
 
       visit "/catalog?search_field=all_fields&q=test"
+      expect(page).to have_current_path("/catalog?search_field=all_fields&q=test")
       expect(page).to have_text("You searched for:")
 
       search_facets = page.all(".facet_limit").length
