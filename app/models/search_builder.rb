@@ -9,42 +9,9 @@ class SearchBuilder < Blacklight::SearchBuilder
   ENDS_WITH_TAG = "matchendswith"
 
   self.default_processor_chain +=
-    %i[add_advanced_parse_q_to_solr add_advanced_search_to_solr ] +
-    # Process order matters; :begins_with_search assumes :exact_phrase_search
-    # happens after it, see the note for :to_phrase method for extra context.
-    [ :begins_with_search ] +
-    [ :exact_phrase_search ] +
-    [ :disable_advanced_spellcheck ] +
-    [ :substitute_colons ] +
-    [ :limit_facets ]
-
-  def begins_with_search(solr_parameters)
-    dereference_with(:append_start_flank, solr_parameters)
-  end
-
-  def exact_phrase_search(solr_parameters)
-    dereference_with(:to_phrase, solr_parameters)
-  end
-
-  def disable_advanced_spellcheck(solr_parameters)
-    if blacklight_params["search_field"] == "advanced"
-      # @See BL-234
-      solr_parameters["spellcheck"] = "false"
-    end
-  end
-
-  def substitute_colons(solr_parameters)
-    query = solr_parameters["q"] || ""
-
-    return unless !query.empty?
-
-    # In the advanced the query is dereferenced.
-    if blacklight_params["search_field"] == "advanced"
-      fields.each { |k, v| solr_parameters[k] = v.gsub(/:/, " ") }
-    else
-      solr_parameters["q"] = query.gsub(/:/, " ")
-    end
-  end
+    %i[ add_advanced_parse_q_to_solr
+        add_advanced_search_to_solr
+        limit_facets ]
 
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
@@ -60,99 +27,95 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  # Overrides Blacklight::SearchBuilder#blacklight_params
+  #
+  # We need to do this because so much of what advanced_search is doing depends
+  # on it and currenlty there isn't a cleaner way beyond overriding it.
+  #
+  # @see projectblacklight/blacklight_advanced_search#82
+  def blacklight_params
+    params = super
+
+    # This method needs to be idempotent.
+    if params["processed"]
+      params
+    else
+      process_params!(params, params_process_chain)
+    end
+  end
+
+  def params_process_chain
+    # These named procedures MUST take a value, and an operator as arguments
+    # and return a value that can be processed by the next procedure on the
+    # list.
+    [ :process_begins_with, :process_is, :substitute_colons ]
+  end
+
+  def process_begins_with(value, op)
+    return if value.nil?
+
+    if op == "begins_with"
+      value = process_is("#{BEGINS_WITH_TAG} #{value}", "is")
+      value
+    else
+      value
+    end
+  end
+
+  def process_is(value, op)
+    return value if value.nil? || value.match(/"/)
+
+    if op == "is"
+      "\"#{value}\""
+    else
+      value
+    end
+  end
+
+  def substitute_colons(value, _)
+    return value if value.nil?
+
+    value.gsub(/:/, " ")
+  end
+
   private
-
-    def dereference_with(method, solr_parameters)
-      query = solr_parameters["q"] || ""
-
-      # Search misbehaves if we alter non advanced search query.
-      if !query.empty? && blacklight_params["search_field"] == "advanced"
-        # We need the original values in the search for use in creating
-        # a de-referenced version of the query.
-        #
-        # We de-reference values in order to be able to quote them; otherwise,
-        # solr throws a 500 error: https://stackoverflow.com/a/10183238/256854
-        #
-        # First we take the query string and generate something like:
-        # [[["AND _query_:", "foo", "bar"], "q_1"], [["OR _query_:", "biz", "buz"], "q_2"]]
-        # And then we transform and rejoin that into a dereferenced query:
-        #
-        # "AND _query_:\"{foo v=$q_1}\" OR _query_:\"{biz v=$q_2}\""
-        #
-        # @see :parse_queries, and :param_dereference methods below for more
-        # details.
-        queries = parse_queries(solr_parameters["q"])
-          .zip(fields.keys)
-          .map { |q, k| param_dereference(q, k) }
-
-        solr_parameters["q"] = queries.join(" ")
-
-        # De-referenced values have to be added as solr request parameters.
-        # TODO: move to it's own preprocessor
-        ops = blacklight_params.fetch("op_row", [])
-        ops.zip(fields).each { |op, f|
-          k, v = f
-          # REF BL-253
-          # advanced_search moves prefix BOOLEAN to query connector.
-          v = v.gsub(/^\s*(AND NOT|OR|NOT|AND)\s*/, "") unless v.nil?
-          solr_parameters[k] = send(method, v, op)
-        }
-
-      end
-    end
-
-    def fields
-      blacklight_params.select { |k| k.match(/^q_/) }
-    end
-
-    def append_start_flank(value, op)
-      return if value.nil?
-
-      # value is always fresh from blacklight_params so we don't have to worry
-      # about process duplication/mutation but we do have to reapply processes.
-      if op == "begins_with"
-        to_phrase("#{BEGINS_WITH_TAG} #{value}", "is")
-      else
-        value
-      end
-    end
-
-    def to_phrase(value, op)
-      return if value.nil?
-
-      # value is always fresh from blacklight_params so we don't have to worry
-      # about process duplication/mutation but we do have to reapply processes.
-      if op == "is"
-        "\"#{value}\""
-      elsif op == "begins_with"
-        append_start_flank(value, op)
-      else
-        value
-      end
-    end
-
-    # Given a blacklight solr query string in the form
-    # "AND _query_:\"{foo} bar\" NOT _query:\"{biz} buz\""
-    # splits it into its components (connector, local params, query)
-    # ["AND _query_:", "foo", "bar"], ["NOT", "biz", "buz"]]
-    def parse_queries(query_string)
-      query_string ||= ""
-      query_string
-        .scan(/((AND NOT|OR|NOT|AND)?\s*_query_:\"{.*?}.*?\")/)
-        .map { |q, _| q.scan(/(.*)\"{(.*)}(.*)\"/) }
-        .map(&:flatten)
-    end
-
-    # Given an array representing the components of a single query, and
-    # a parameter key: i.e. ["AND _query_:", "foo", "bar"], key
-    # generates dereferenced representation of the query.
+    # Updates in place the query values in params by folding the named
+    # procedures passed in through the values.
     #
-    # "AND _query_:\"{foo v=$key}\""
+    # @param [ActionController::Parameters] params Set of search parameters.
+    # @param [Array] procedures A list of tokens denoting named procedures.
+    # @see params_process_chain
     #
-    # @see https://lucene.apache.org/solr/guide/6_6/local-parameters-in-queries.html
-    # For details on local parameter dereferencing syntax.
-    def param_dereference(q, k)
-      connector, local_param, _ = q
-      "#{connector}\"{#{local_param} v=$#{k}}\""
+    # @return [ActionController::Parameters] The updated set of search parameters.
+    def process_params!(params, procedures)
+      params ||= {}
+      procedures ||= []
+      params["processed"] = true
+
+      ops = params_field_ops(params)
+      ops.each { |op, f|
+        query_key, query_value = f
+        # Fold the procedures onto the query value.
+        params[query_key] = procedures.reduce(query_value) { |v, p| send(p, v, op) }
+      }
+      params
+    end
+
+    # Helper function that transforms the params in the typical
+    # blacklight_params advanced search format into a list of tuples of the
+    # form [[op, field])] where op is the operator and field is a key value
+    # pair, [query_key, query_value].
+    #
+    # @param [ActionController::Parameters] params Set of search parameters.
+    #
+    # @return [Array] A transformed set of search parameters OR and empty set.
+    def params_field_ops(params)
+      begin
+        fields = params.to_unsafe_h.compact.select { |k| k.match(/(^q$|^q_)/) }
+        ops = params.to_unsafe_h.fetch("op_row", ["default"])
+        ops.zip(fields)
+      rescue
+        []
+      end
     end
 end
