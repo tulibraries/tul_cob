@@ -1,7 +1,8 @@
+<div class="container" id="advanced-search-facets" style="margin-top: 14px;">
 <% facets_from_request(facet_field_names).each do |display_facet| %>
 
   <div class="form-group advanced-search-facet row">
-    <%= label_tag display_facet.name.parameterize, :class => "col-sm-3 control-label" do %>
+    <%= label_tag display_facet.name.parameterize, :class => "col-sm-2 control-label" do %>
       <%= facet_field_label(display_facet.name) %>
     <% end %>
     <div class="col-sm-5">
@@ -19,21 +20,25 @@
     </div>
   </div>
 <% end %>
+</div>
+<div class="container">
 <div class="row">
-  <div class="col-sm-10">
-    <div class="col-sm-3 control-label">
+
+    <div class="col col-sm-2 control-label">
       <%= label_tag "publication_date" do %>
         Publication Year
       <% end %>
     </div>
-    <div class="col-sm-3 col-sm-offset-1 begin-pub-date">
+    <div class="col col-sm-8">
+    <div class="col col-sm-3 pub-date">
       <%= render_range_input("pub_date_sort", :begin) %>
     </div>
-    <div class="col-sm-1">
-      -
+    <div class="col col-sm-1 pub-date-separator"> 
+     to 
     </div>
-    <div class="col-sm-3 end-pub-date">
-      <%= render_range_input("pub_date_sort", :end) %>
+    <div class="col col-sm-3 pub-date">
+       <%= render_range_input("pub_date_sort", :end) %>
     </div>
   </div>
+</div>
 </div>
