@@ -10,11 +10,11 @@ RSpec.describe SearchBuilder , type: :model do
 
   subject { search_builder }
 
-  before(:example) do
-    allow(search_builder).to receive(:blacklight_params).and_return(params)
-  end
-
   describe "#limit_facets" do
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+    end
+
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
       # I can't figure out the "right" way to add my test facet fields.
@@ -66,257 +66,136 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#process_begins_with" do
+    it "can handle nil gracefully" do
+      expect(subject.process_begins_with(nil, nil)).to be_nil
+      expect(subject.process_begins_with("foo", nil)).to eq("foo")
+    end
+
+    it "ignores values if op is not begins_with" do
+      expect(subject.process_begins_with("foo", "opbar")).to eq("foo")
+    end
+
+    it "adds prefix and quotes to value if op equals begins_with" do
+      expect(subject.process_begins_with("foo", "begins_with")).to eq("\"#{begins_with_tag} foo\"")
+    end
+
+  end
+
+  describe "#process_is" do
+    it "can handle nil case with grace" do
+      expect(subject.process_is(nil, nil)).to be_nil
+      expect(subject.process_is("foo", nil)).to eq("foo")
+    end
+
+    it "ignores values if op is not is" do
+      expect(subject.process_is("foo", "opbar")).to eq("foo")
+    end
+
+    it "adds quotes to value if op equals is" do
+      expect(subject.process_is("foo", "is")).to eq("\"foo\"")
+    end
+
+    it "avoids escape hell by ignoring values with quotes" do
+      expect(subject.process_is("foo\"bar\"", "is")).to eq("foo\"bar\"")
+    end
+  end
 
   describe "#substitute_colons" do
-    let(:solr_parameters) { Blacklight::Solr::Request.new(q: "foo :: bar:buzz") }
-
-    before(:example) do
-      subject.substitute_colons(solr_parameters)
+    it "can handle nil case with grace" do
+      expect(subject.substitute_colons(nil, nil)).to be_nil
+      expect(subject.substitute_colons("foo", nil)).to eq("foo")
     end
 
-    context "when search is empty" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new }
-      it "does nothing when search is empty" do
-        expect(solr_parameters["q"]).to be_nil
-      end
+    it "substitutes colons from values no matter what op is" do
+      expect(subject.substitute_colons("foo:bar", nil)).to eq("foo bar")
     end
 
-    context "when not doing an advanced search" do
-      it "substitutes all the colons with spaces" do
-        expect(solr_parameters["q"]).to eq("foo    bar buzz")
-      end
-    end
-
-    context "when doing an advanced search" do
-      let(:params) { ActionController::Parameters.new(
-        search_field: "advanced",
-        q_1:  ":",
-        q_2: ":foo ::: bar",
-      ) }
-
-      it "substitue colons in the addtional query values: q_1, q_2, q_3" do
-        expect(solr_parameters["q_1"]).to eq(" ")
-        expect(solr_parameters["q_2"]).to eq(" foo     bar")
-      end
+    it "substitutes all the colons from values" do
+      expect(subject.substitute_colons("foo:bar:bum", nil)).to eq("foo bar bum")
     end
   end
 
-  describe ".disable_advanced_spellcheck" do
-    let(:solr_parameters) { Blacklight::Solr::Request.new(spellcheck: "true") }
-
-    context "when not doing an advanced search" do
-      it "does not disable the spellcheck" do
-        subject.disable_advanced_spellcheck(solr_parameters)
-        expect(solr_parameters["spellcheck"]).to eq("true")
-      end
+  describe "#blacklight_params" do
+    it "gets tagged as being processed" do
+      expect(subject.blacklight_params).to eq("processed" => true)
     end
 
-    context "when doing an advanced search" do
-      let(:params) { ActionController::Parameters.new(search_field: "advanced") }
-
-      it "disables the spellcheck" do
-        subject.disable_advanced_spellcheck(solr_parameters)
-        expect(solr_parameters["spellcheck"]).to eq("false")
-      end
+    it "is idempotent" do
+      subject.blacklight_params
+      subject.blacklight_params
+      subject.blacklight_params
+      subject.blacklight_params
+      expect(subject.blacklight_params).to eq("processed" => true)
     end
   end
 
+  class SearchBuilder < Blacklight::SearchBuilder
+    def proc1(v, _) "#{v} foo" end
+    def proc2(v, _) "#{v} bar" end
+    def proc3(v, _) "#{v} bum" end
+  end
 
-  describe "#begins_with_search" do
-    context "passing empty solr_parameters" do
-      it "does nothing" do
-        solr_parameters = Blacklight::Solr::Request.new
+  describe "#process_params!" do
+    let(:params) { ActionController::Parameters.new(
+      "op_row" => ["bizz", "buzz", "bazz"],
+      "f_1" => "all_fields", "q_1" => "Hello",
+      "f_2" => "all_fields", "q_2" => "Beautiful",
+      "f_3" => "all_fields", "q_3" => "World",
+      search_field: "advanced") }
 
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to be_nil
-      end
+    it "tags the passed in parameters as processed" do
+      subject.send(:process_params!, params, [])
+      expect(params["processed"]).to be true
     end
 
-    context "Passing non advanced query." do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["contains", "contains", "contains"], "q_1" => "Hello") }
-
-      it "does not dereference the key value" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{}Hello\"")
-      end
-
-      it "does not set a custom solr_parameter for q_1 field." do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to be_nil
-      end
+    it "folds the procedures over the parameter values" do
+      subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
+      expect(params["q_1"]).to eq("Hello foo bar bum")
+      expect(params["q_2"]).to eq("Beautiful foo bar bum")
+      expect(params["q_3"]).to eq("World foo bar bum")
     end
 
-    context "passing advanced query with :contains precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["contains", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-
-      it "dereferences the key value" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
-      end
-
-      it "sets a custom solr_parameter for q_1 field." do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("Hello")
-      end
+    it "handles the nil params case gracefully" do
+      params = subject.send(:process_params!, nil, [:proc1, :proc2, :proc3])
+      expect(params["processed"]).to be true
     end
 
-    context "passing advanced query  with :begins_with precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-
-      it "dereferences the key value" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
-      end
-
-      it "quotes the passed in value." do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
-      end
-    end
-
-    context "passing advanced subqueries with :begins_with precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\" AND _query_:\"{}World\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
-
-      it "dereferences multiple key values" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
-      end
-
-      it "quotes the passed if used" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
-        expect(solr_parameters["q_2"]).to eq("World")
-      end
-    end
-
-    context "passing advanced subqueries where start query is qualified" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "NOT _query_:\"{} NOT Hello\" AND _query_:\"{}World\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
-
-      it "does not drop the first query qualifier" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("NOT _query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
-      end
-
-      it "removes the prefixed BOOLEAN from a reference value" do
-        subject.begins_with_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
-      end
-    end
-
-    context "process exact_phrase_search after :begins_with" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-
-      it "quotes the passed in value." do
-        subject.begins_with_search(solr_parameters)
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"#{begins_with_tag} Hello\"")
-      end
-    end
-
-    context "process contains after :begins_with" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params1) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-      let(:params2) { ActionController::Parameters.new("op_row" => ["contains", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-
-      it "does not quote the value." do
-        allow(search_builder).to receive(:blacklight_params).and_return(params1)
-        subject.begins_with_search(solr_parameters)
-        allow(search_builder).to receive(:blacklight_params).and_return(params2)
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("Hello")
-      end
+    it "handles the nil procedures gracefully" do
+      subject.send(:process_params!, params, nil)
+      expect(params["processed"]).to be true
     end
   end
 
-  describe "#exact_phrase_search" do
-    context "passing empty solr_parameters" do
-      it "does nothing" do
-        solr_parameters = Blacklight::Solr::Request.new
-
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to be_nil
-      end
+  describe "#params_field_ops" do
+    it "handles the nil params case gracefully" do
+      expect(subject.send(:params_field_ops, nil)).to eq([])
     end
 
-    context "passing non advanced query" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["contains", "contains", "contains"], "q_1" => "Hello") }
-
-      it "does not dereferences the key value" do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{}Hello\"")
-      end
-
-      it "does not set a custom solr_parameter for q_1 field." do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to be_nil
-      end
+    it "handles the empty params case gracefully" do
+      expect(subject.send(:params_field_ops, {})).to eq([])
     end
 
-    context "passing advanced query with :contains precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["contains", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
+    it "handles a typical advanced search params as expected" do
+      params = ActionController::Parameters.new(
+        "op_row" => ["bizz", "buzz", "bazz"],
+        "f_1" => "all_fields", "q_1" => "Hello",
+        "f_2" => "all_fields", "q_2" => "Beautiful",
+        "f_3" => "all_fields", "q_3" => "World",
+        search_field: "advanced")
 
-      it "dereferences the key value" do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
-      end
-
-      it "sets a custom solr_parameter for q_1 field." do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("Hello")
-      end
+      expect(subject.send(:params_field_ops, params)).to eq([
+        ["bizz", ["q_1", "Hello"]],
+        ["buzz", ["q_2", "Beautiful"]],
+        ["bazz", ["q_3", "World"]]])
     end
 
-    context "passing advanced query with :is precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["is", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
+    it "handles a typical regular search params as expected" do
+      params = ActionController::Parameters.new(
+        "field" => "all_fields", "q" => "Hello")
 
-      it "dereferences the key value" do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\"")
-      end
-
-      it "quotes the passed in value." do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"Hello\"")
-      end
-    end
-
-    context "passing advanced subqueries with :is precision" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\" AND _query_:\"{}World\"") }
-      let(:params) { ActionController::Parameters.new("op_row" => ["is", "contains", "contains"], "q_1" => "Hello", "q_2" => "World", search_field: "advanced") }
-
-      it "dereferences multiple key values" do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q"]).to eq("_query_:\"{ v=$q_1}\" AND _query_:\"{ v=$q_2}\"")
-      end
-
-      it "quotes the passed if used" do
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"Hello\"")
-        expect(solr_parameters["q_2"]).to eq("World")
-      end
-    end
-
-    context "process exact_phrase_search with :is after begins_with_search with :begins_with" do
-      let(:solr_parameters) { Blacklight::Solr::Request.new(q: "_query_:\"{}Hello\"") }
-      let(:params1) { ActionController::Parameters.new("op_row" => ["begins_with", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-      let(:params2) { ActionController::Parameters.new("op_row" => ["is", "contains", "contains"], "q_1" => "Hello", search_field: "advanced") }
-
-      it "quotes the passed in value." do
-        allow(search_builder).to receive(:blacklight_params).and_return(params1)
-        subject.begins_with_search(solr_parameters)
-        allow(search_builder).to receive(:blacklight_params).and_return(params2)
-        subject.exact_phrase_search(solr_parameters)
-        expect(solr_parameters["q_1"]).to eq("\"Hello\"")
-      end
+      expect(subject.send(:params_field_ops, params)).to eq([
+        ["default", ["q", "Hello"]]])
     end
 
   end
