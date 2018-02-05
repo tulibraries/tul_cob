@@ -46,6 +46,8 @@
   </div>
 
   <%= render "show_availability_section", :document => @document %>
-  <div class="col-sm-9 col-xs-12">
-    <%= link_to t("blacklight.search.librarian_view.title"), staff_view_path %>
+  <div class="col-sm-12">
+    <div id="stafflink">
+      <%= link_to t("blacklight.search.librarian_view.title"), staff_view_path %>
+    </div>
   </div>
