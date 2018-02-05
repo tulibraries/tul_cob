@@ -55,8 +55,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if value.nil?
 
     if op == "begins_with"
-      value = process_is("#{BEGINS_WITH_TAG} #{value}", "is")
-      value
+      process_is("#{BEGINS_WITH_TAG} #{value}", "is")
     else
       value
     end
