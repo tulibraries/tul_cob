@@ -2,8 +2,10 @@
 <%# default partial to display solr document fields in catalog show view -%>
   <div class="record-view <%= thumbnail_classes(document) %> col-sm-2 col-xs-12"
     <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
+    <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible" %>
+    <%= image_tag default_cover_image(document), :class => "default" %>
   </div>
-  
+
   <div class="show_page_records col-sm-9 col-xs-12">
     <dl class="dl-horizontal  dl-invert">
       <% document_show_fields(document).each do |field_name, field| %>
