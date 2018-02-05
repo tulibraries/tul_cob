@@ -11,11 +11,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def shibboleth
-    # You need to implement the method below in your model (e.g. app/models/user.rb)
-    next_url = params[:next] || 'user#account'
+    next_url = params[:next] || "user#account"
     @user = User.from_omniauth(request.env["omniauth.auth"])
     sign_in(:user, @user)
-    session[:alma_auth_type] = 'sso'
+    session[:alma_auth_type] = "sso"
     session[:alma_sso_user] = @user.uid
     session[:alma_sso_token] = SecureRandom.hex(10)
     set_flash_message(:notice, :success, kind: "Temple Single Sign On") if is_navigational_format?
