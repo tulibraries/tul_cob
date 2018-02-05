@@ -41,7 +41,6 @@ var BlacklightAlma = function (options) {
  availabilityInfo = function (holding, holdings) {
    var libraryAndLocation = [holding['library'], holding['location']].join(" - ");
    var capitalAvail = holding['availability'].charAt(0).toUpperCase() + holding['availability'].slice(1);
-   console.log(holdings);
 
    for (var i = 0; i < holdings.length; i++) {
      if (holdings[i].availability == 'available') {
@@ -49,7 +48,7 @@ var BlacklightAlma = function (options) {
          capitalAvail = "Checked out or temporarily unavailable"
        }
        if (capitalAvail == 'Check_holdings') {
-         capitalAvail = "Check holdings for" 
+         capitalAvail = "Check holdings for"
        }
        return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
               .filter(function (item) {
