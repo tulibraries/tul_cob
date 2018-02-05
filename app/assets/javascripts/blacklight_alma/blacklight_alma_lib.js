@@ -19,11 +19,11 @@ var BlacklightAlma = function (options) {
 
  availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
-   if (!$(availButton).hasClass("btn-success collapse-button available")) {
+   if (!$(availButton).hasClass("btn-success")) {
      if(holding['availability'] == 'available') {
        $(availButton).html("<span class='avail-label available'>Available</span>");
        $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-success collapsed collapse-button");
+       $(availButton).addClass("btn-success collapsed collapse-button available");
        $(availButton).show();
      }
      else if(holding['availability'] == 'check_holdings') {
@@ -38,32 +38,39 @@ var BlacklightAlma = function (options) {
    }
  }
 
- availabilityInfo = function (holding) {
+ availabilityInfo = function (holding, holdings) {
    var libraryAndLocation = [holding['library'], holding['location']].join(" - ");
    var capitalAvail = holding['availability'].charAt(0).toUpperCase() + holding['availability'].slice(1);
-   if(holding['availability'] == 'available') {
-     return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
-         .filter(function (item) {
-             return item != null && item.length > 0;
-         }).join(" ");
+   console.log(holdings);
+
+   for (var i = 0; i < holdings.length; i++) {
+     if (holdings[i].availability == 'available') {
+       if (capitalAvail == 'Unavailable') {
+         capitalAvail = "Checked out or temporarily unavailable"
+       }
+       if (capitalAvail == 'Check_holdings') {
+         capitalAvail = "Check holdings for" 
+       }
+       return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
+              .filter(function (item) {
+                return item != null && item.length > 0;
+              }).join(" ");
+      }
+     if (holdings[i].availability == 'check_holdings' ) {
+       return ["Check holdings for", libraryAndLocation, holding['call_number']]
+            .filter(function (item) {
+                return item != null && item.length > 0;
+            }).join(" ");
+     }
+     if (holdings[i].availability == 'unavailable' ) {
+       return "Checked out or temporarily unavailable"
    }
-   else if(holding['availability'] == 'check_holdings') {
-    return ["Check holdings for", libraryAndLocation, holding['call_number']]
-        .filter(function (item) {
-            return item != null && item.length > 0;
-        }).join(" ");
-  }
-  else {
-    return ["Checked out or temporarily unavailable at ", holding['library']]
-        .filter(function (item) {
-            return item != null && item.length > 0;
-        }).join(" ");
-  }
+ }
 }
 
- BlacklightAlma.prototype.formatHolding = function (mms_id, holding) {
+ BlacklightAlma.prototype.formatHolding = function (mms_id, holding, holdings) {
      if(holding['inventory_type'] == 'physical') {
-         return availabilityInfo(holding);
+         return availabilityInfo(holding, holdings);
      }
  };
 
@@ -96,7 +103,6 @@ var BlacklightAlma = function (options) {
          if(ids.filter(function(id) { return idsLoaded.includes(id); }).length != ids.length) {
              return;
          }
-
          // jquery's map auto-flattens and strips out nulls
          var html = $.map(ids, function(id) {
              if (baObj.availability[id]) {
@@ -104,7 +110,7 @@ var BlacklightAlma = function (options) {
                  if (holdings.length > 0) {
                      var formatted = $.map(holdings, function(holding) {
                        availabilityButton(id, holding);
-                       return baObj.formatHolding(id, holding);
+                       return baObj.formatHolding(id, holding, holdings);
                      });
                      return baObj.formatHoldings(formatted);
                  }
