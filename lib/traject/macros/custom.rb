@@ -142,13 +142,13 @@ module Traject
           begin
             acc.sort_by! { |r|
               subfields = r.split("|")
-              available = /Available from (\d+).* until (\d+)/.match(subfields.last)
+              available = /Available from (\d{4})( until (\d{4}))?/.match(r)
               title = subfields[1]
               subtitle = subfields[2]
               unless available
                 available = []
               end
-              [available[1] || "9999", available[2] || "9999", "#{title}", "#{subtitle}"]
+              [available[1] || "9999", available[3] || "9999", "#{title}", "#{subtitle}"]
             }.reverse!
           rescue
             logger.error("Failed `sort_electronic_resource!` on sorting #{rec}")
