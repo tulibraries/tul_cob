@@ -474,9 +474,10 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:endnote)
   end
 
-  # def render_sms_action?(_config, _options)
-  #   true
-  # end
+  def render_sms_action?(_config, _options)
+    # Render if the item can be found at a library
+    _options[:document].response.docs.first[:library_location_display]
+  end
 
   def sms_action(documents)
     @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
