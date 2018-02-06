@@ -1,6 +1,5 @@
 default: &default
-  devise:
-    sign_out_redirect_url: <%= ENV["IDP_REDIRECT_URL"] || "/Shibboleth.sso/Logout?return=https://np-fim.temple.edu/idp/profile/Logout" %>
+  sign_out_redirect_url: <%= ENV["IDP_REDIRECT_URL"] || "/Shibboleth.sso/Logout?return=https://np-fim.temple.edu/idp/profile/Logout" %>
 
 development:
   <<: *default
