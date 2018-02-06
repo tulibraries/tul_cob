@@ -69,7 +69,7 @@ module ApplicationHelper
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url, {title: "Target opens in new window", target: "_blank"}), class: "list_items")
+    new_link = content_tag(:li, link_to(link_text, link_url, { title: "Target opens in new window", target: "_blank" }), class: "list_items")
     new_link
   end
 
@@ -85,7 +85,7 @@ module ApplicationHelper
   end
 
   def render_alma_eresource_link(portfolio_pid, db_name)
-    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), {title: "Target opens in new window", target: "_blank"})
+    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), { title: "Target opens in new window", target: "_blank" })
   end
 
   def alma_electronic_resource_direct_link(portfolio_pid)
