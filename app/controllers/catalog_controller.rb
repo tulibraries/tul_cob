@@ -476,7 +476,7 @@ class CatalogController < ApplicationController
 
   def render_sms_action?(_config, _options)
     # Render if the item can be found at a library
-    _options[:document].response.docs.first[:library_location_display]
+    _options[:document].response.docs.first[:library_facet]
   end
 
   def sms_action(documents)
