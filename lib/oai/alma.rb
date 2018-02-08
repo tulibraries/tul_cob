@@ -16,9 +16,9 @@ module Oai
 
       from_time = time_range.fetch(:from) { "" }
       to_time = time_range.fetch(:to) { "" }
-      oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21"
-      oai_url << "&from=#{from_time}" unless from_time.empty?
-      oai_url << "&to=#{to_time}" unless to_time.empty?
+      oai_from = from_time.empty? ? from_time : "&from=#{from_time}"
+      oai_to = to_time.empty? ? to_time : "&to=#{to_time}"
+      oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21" + oai_from + oai_to
 
       harvest_files = []
 

@@ -4,6 +4,7 @@ require "rsolr"
 require "nokogiri"
 require "tempfile"
 require "oai/alma"
+require "time"
 
 namespace :fortytu do
 
@@ -28,6 +29,50 @@ namespace :fortytu do
   end
 
   namespace :oai do
+
+    desc "Run the oai harvest from a Jenkins Job"
+    task :jenkins_harvest do
+      if ENV["JOB_URL"]
+        url = "#{ENV["JOB_URL"]}lastBuild/api/json"
+        user_name = ENV["JENKINS_USER_NAME"]
+        api_token = ENV["JENKINS_USER_API_TOKEN"]
+        auth = { username: user_name, password: api_token }
+        job = HTTParty.get(url, verify: false, basic_auth: auth).parsed_response
+
+        # Obtain the harvest time frame
+        # (from last build to now).
+        timestamp = job["timestamp"] || 0
+
+        # Jenkins timestamps are in milliseconds.
+        milliseconds_per_second = 1000
+        from = Time.at(timestamp / milliseconds_per_second).utc.iso8601
+        to = Time.now.utc.iso8601
+
+        # Delete the previous build's marc_xml_files.
+        Dir.glob("tmp/alma/oai/**/*.xml").each { |file| File.delete file }
+
+        # Run the harvester.
+        Rake::Task["fortytu:oai:harvest"].invoke(from, to)
+
+        # Check the build for errors.
+        if File.file? "log/fortytu.log.error"
+
+          # Print and archive the Error logs
+          error_log = "log/fortytu.log.error"
+          puts "Errors:"
+          File.open(error_log) do |file|
+            file.each_line { |line| puts line }
+          end
+          File.rename(error_log, "#{error_log}-#{timestamp}")
+
+          # Fail this build
+          exit 1
+        end
+
+        # (Rinse repeat)
+      end
+    end
+
     desc "Harvests OAI MARC records between optional start and end time from Alma."
     task :harvest, [:from, :to] => :environment do |t, args|
       file_paths = Oai::Alma.harvest(args)
@@ -72,6 +117,7 @@ namespace :fortytu do
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
         traject_commit = %W[traject -s
           log.file=#{main_log}
+          log.error_file="#{main_log}.error"
           -c app/models/traject_indexer.rb
           -x commit].join(" ")
         pids = []
