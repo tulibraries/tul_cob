@@ -1,8 +1,11 @@
 en:
   blacklight:
     application_name: "Library Search Beta"
-    greeting: "Try our new beta Library Search"
-    introduction: "Based on user feedback, Temple University Libraries are in the process of building an enhanced version of the Library Search. This is still under development, as we continue to add new features and functionality through spring 2018. Try out the new beta and let us know what you think at asktulibrary@temple.edu!"
+    greeting: "Try out the Library Search beta"
+    introduction: "An enhanced version of the Library Search is currently under development at Temple University Libraries. This new search interface is currently in beta and contains only records from our local collections (such as books, journals, and media). As work continues through the Spring 2018 semester, the Libraries will incrementally be adding new features and incorporating more records, including those for online articles."
+    directions_html: "Please refer to our %{href} for more information about work in progress and providing feedback."
+    directions_href: "Library Search Road Map"
+    href_link: "https://library.temple.edu/library-search-faq/roadmap"
     header_links:
       library_account: "My Library Account"
       login: 'My Library Account'
