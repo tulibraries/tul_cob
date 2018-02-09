@@ -38,38 +38,32 @@ var BlacklightAlma = function (options) {
    }
  }
 
- availabilityInfo = function (holding, holdings) {
+ availabilityInfo = function (holding) {
    var libraryAndLocation = [holding['library'], holding['location']].join(" - ");
    var capitalAvail = holding['availability'].charAt(0).toUpperCase() + holding['availability'].slice(1);
-
-   for (var i = 0; i < holdings.length; i++) {
-     if (holdings[i].availability == 'available') {
-       if (capitalAvail == 'Unavailable') {
-         capitalAvail = "Checked out or temporarily unavailable"
-       }
-       if (capitalAvail == 'Check_holdings') {
-         capitalAvail = "Check holdings for"
-       }
-       return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
-              .filter(function (item) {
-                return item != null && item.length > 0;
-              }).join(" ");
-      }
-     if (holdings[i].availability == 'check_holdings' ) {
-       return ["Check holdings for", libraryAndLocation, holding['call_number']]
-            .filter(function (item) {
-                return item != null && item.length > 0;
-            }).join(" ");
-     }
-     if (holdings[i].availability == 'unavailable' ) {
-       return "Checked out or temporarily unavailable"
+   if(holding['availability'] == 'available') {
+     return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
+         .filter(function (item) {
+             return item != null && item.length > 0;
+         }).join(" ");
    }
- }
+   else if(holding['availability'] == 'check_holdings') {
+    return ["Check holdings for", libraryAndLocation, holding['call_number']]
+        .filter(function (item) {
+            return item != null && item.length > 0;
+        }).join(" ");
+  }
+  else {
+    return ["Checked out or temporarily unavailable at ", holding['library']]
+        .filter(function (item) {
+            return item != null && item.length > 0;
+        }).join(" ");
+  }
 }
 
- BlacklightAlma.prototype.formatHolding = function (mms_id, holding, holdings) {
+ BlacklightAlma.prototype.formatHolding = function (mms_id, holding) {
      if(holding['inventory_type'] == 'physical') {
-         return availabilityInfo(holding, holdings);
+         return availabilityInfo(holding);
      }
  };
 
@@ -109,7 +103,7 @@ var BlacklightAlma = function (options) {
                  if (holdings.length > 0) {
                      var formatted = $.map(holdings, function(holding) {
                        availabilityButton(id, holding);
-                       return baObj.formatHolding(id, holding, holdings);
+                       return baObj.formatHolding(id, holding);
                      });
                      return baObj.formatHoldings(formatted);
                  }
