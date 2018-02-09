@@ -7,6 +7,8 @@
 
   <% if has_user_authentication_provider? %>
       <ul class="nav navbar-nav">
+      <% 
+=begin %>
         <% if current_user %>
             <li>
               <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :method => 'delete' %>
@@ -16,6 +18,8 @@
               <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
             </li>
         <% end %>
+        <%
+=end %>
       </ul>
   <% end %>
 </div>
