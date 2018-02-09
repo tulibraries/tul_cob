@@ -9,16 +9,6 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
-  def string_with_link(str, link_url, link_options = {})
-    match = str.match(/__([^_]{2,30})__/)
-    if !match.blank?
-      raw($` + link_to($1, link_url, link_options) + $')
-    else
-      raise "string_with_link: No place for __link__ given in #{str}" if Rails.env.test?
-      nil
-    end
-  end
-
   def get_search_params(field, query)
     case field
     when "subject_display"
