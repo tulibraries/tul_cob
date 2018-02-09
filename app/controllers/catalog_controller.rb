@@ -470,8 +470,10 @@ class CatalogController < ApplicationController
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
 
-    # Do not show endnotes for beta release
+    # Do not show endnotes, SMS or email  for beta release
     config.show.document_actions.delete(:endnote)
+    config.show.document_actions.delete(:sms)
+    config.show.document_actions.delete(:email)
   end
 
   def render_sms_action?(_config, _options)
