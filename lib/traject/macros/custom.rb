@@ -269,6 +269,19 @@ module Traject
         end
       end
 
+      def extract_library_shelf_call_number
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            if field["b"] != "RES_SHARE"
+              location = Traject::TranslationMap.new("locations_map")[field["b"]]
+              shelf = Traject::TranslationMap.new("shelf_map")[field["c"]]
+              call_number = field["h"]
+              acc << "#{location} (#{shelf})\n(#{call_number})"
+            end
+          end
+        end
+      end
+
       def extract_pub_date
         lambda do |rec, acc|
           rec.fields(["260"]).each do |field|

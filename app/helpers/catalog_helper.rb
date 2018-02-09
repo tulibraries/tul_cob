@@ -38,10 +38,4 @@ module CatalogHelper
     end
     formats.join('<span class="format-concatenator">and</span>')
   end
-
-  def message_body(document)
-    "#{document['title_statement_display'].first}\n" +
-    "#{document['call_number_display'].first}\n" +
-    "#{document['library_facet'].first}"
-  end
 end
