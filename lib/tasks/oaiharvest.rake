@@ -31,47 +31,32 @@ namespace :fortytu do
   namespace :oai do
 
     desc "Run the oai harvest from a Jenkins Job"
-    task :jenkins_harvest do
-      if ENV["JOB_URL"]
-        url = "#{ENV["JOB_URL"]}lastBuild/api/json"
-        user_name = ENV["JENKINS_USER_NAME"]
-        api_token = ENV["JENKINS_USER_API_TOKEN"]
-        auth = { username: user_name, password: api_token }
-        job = HTTParty.get(url, verify: false, basic_auth: auth).parsed_response
+    task :jenkins_harvest, [:from, :to] do |task, args|
+      from = args[:from] || Jenkins.last_build_time
+      to = args[:to] || Time.now
+      from, to = [from, to].map { |t| t.to_time.utc.iso8601 }
 
-        # Obtain the harvest time frame
-        # (from last build to now).
-        timestamp = job["timestamp"] || 0
+      # Delete the previous build's marc_xml_files.
+      Dir.glob("tmp/alma/oai/**/*.xml").each { |file| File.delete file }
 
-        # Jenkins timestamps are in milliseconds.
-        milliseconds_per_second = 1000
-        from = Time.at(timestamp / milliseconds_per_second).utc.iso8601
-        to = Time.now.utc.iso8601
+      # Run the harvester.
+      Rake::Task["fortytu:oai:harvest"].invoke(from, to)
+      Rake::Task["fortytu:oai:conform_all"]
+      Rake::Task["fortytu:oai:ingest_all"]
 
-        # Delete the previous build's marc_xml_files.
-        Dir.glob("tmp/alma/oai/**/*.xml").each { |file| File.delete file }
+      # Check the build for errors.
+      if File.file? "log/fortytu.log.error"
 
-        # Run the harvester.
-        Rake::Task["fortytu:oai:harvest"].invoke(from, to)
-        Rake::Task["fortytu:oai:conform_all"]
-        Rake::Task["fortytu:oai:ingest_all"]
-
-        # Check the build for errors.
-        if File.file? "log/fortytu.log.error"
-
-          # Print and archive the Error logs
-          error_log = "log/fortytu.log.error"
-          puts "Errors:"
-          File.open(error_log) do |file|
-            file.each_line { |line| puts line }
-          end
-          File.rename(error_log, "#{error_log}-#{timestamp}")
-
-          # Fail this build
-          exit 1
+        # Print and archive the Error logs
+        error_log = "log/fortytu.log.error"
+        puts "Errors:"
+        File.open(error_log) do |file|
+          file.each_line { |line| puts line }
         end
+        File.rename(error_log, "#{error_log}-#{timestamp}")
 
-        # (Rinse repeat)
+        # Fail this build
+        exit 1
       end
     end
 
