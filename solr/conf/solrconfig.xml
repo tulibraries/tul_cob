@@ -479,6 +479,7 @@
 
     <queryResultWindowSize>100</queryResultWindowSize>
     <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+    <slowQueryThresholdMillis>500</slowQueryThresholdMillis>
 </query>
 
 </config>
