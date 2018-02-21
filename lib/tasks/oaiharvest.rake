@@ -48,7 +48,11 @@ namespace :fortytu do
       if File.file? "log/fortytu.log.error"
 
         # Print and archive the Error logs
-        error_log = "log/fortytu.log.error"
+        # TODO: DRY up log file determination
+        main_logdir = File.join(Rails.root, "log/")
+        main_log = File.join(main_logdir, "fortytu.log")
+        error_log = "#{main_log}.error"
+
         puts "Errors:"
         File.open(error_log) do |file|
           file.each_line { |line| puts line }
