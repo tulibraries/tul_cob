@@ -41,8 +41,8 @@ namespace :fortytu do
 
       # Run the harvester.
       Rake::Task["fortytu:oai:harvest"].invoke(from, to)
-      Rake::Task["fortytu:oai:conform_all"]
-      Rake::Task["fortytu:oai:ingest_all"]
+      Rake::Task["fortytu:oai:conform_all"].invoke()
+      Rake::Task["fortytu:oai:ingest_all"].invoke()
 
       # Check the build for errors.
       if File.file? "log/fortytu.log.error"
