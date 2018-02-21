@@ -75,7 +75,7 @@ namespace :fortytu do
     desc "Conforms all raw OAI MARC records to traject readable MARC records"
     task conform_all: :environment do
       log_path = File.join(Rails.root, "log/fortytu.log")
-      logger = Logger.new(log_path, 10, 4096000)
+      logger = Logger.new("| tee #{log_path}", 10, 4096000)
       begin
         oai_path = File.join(Rails.root, "tmp", "alma", "oai", "*.xml")
         harvest_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
@@ -93,7 +93,7 @@ namespace :fortytu do
     task ingest_all: :environment do
       main_logdir = File.join(Rails.root, "log/")
       main_log = File.join(main_logdir, "fortytu.log")
-      logger = Logger.new(main_log, 10, 1024000)
+      logger = Logger.new("| tee #{main_log}", 10, 1024000)
 
       ingest_logdir = File.join(main_logdir, "ingest/")
       FileUtils::mkdir_p ingest_logdir
