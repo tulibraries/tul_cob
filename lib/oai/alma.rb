@@ -18,7 +18,10 @@ module Oai
       to_time = time_range.fetch(:to) { "" }
       oai_from = from_time.empty? ? from_time : "&from=#{from_time}"
       oai_to = to_time.empty? ? to_time : "&until=#{to_time}"
-      oai_url = "https://temple.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21" + oai_from + oai_to
+      oai_url_base = "https://temple.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?"
+      oai_url = oai_url_base +
+        "verb=ListRecords&set=blacklight&metadataPrefix=marc21" +
+        oai_from + oai_to
 
       harvest_files = []
 
@@ -35,7 +38,8 @@ module Oai
           harvest_files << harvest_file.path
           resumptionToken = oai.xpath("//oai:resumptionToken", "oai" => "http://www.openarchives.org/OAI/2.0/", "marc21" => "http://www.loc.gov/MARC21/slim")
           break if resumptionToken.empty?
-          oai_url = "https://sandbox02-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&resumptionToken=#{resumptionToken.text}"
+          oai_url = oai_url_base +
+            "verb=ListRecords&resumptionToken=#{resumptionToken.text}"
         end
       rescue => e
         logger.fatal("Fatal Error")
