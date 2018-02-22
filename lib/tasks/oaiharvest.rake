@@ -37,7 +37,7 @@ namespace :fortytu do
       from, to = [from, to].map { |t| t.to_time.utc.iso8601 }
 
       # Delete the previous build's marc_xml_files.
-      Dir.glob("tmp/alma/oai/**/*.xml").each { |file| File.delete file }
+      Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
 
       # Run the harvester.
       Rake::Task["fortytu:oai:harvest"].invoke(from, to)
