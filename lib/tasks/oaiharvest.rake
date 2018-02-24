@@ -31,17 +31,19 @@ namespace :fortytu do
   namespace :oai do
 
     desc "Run the oai harvest from a Jenkins Job"
-    task :jenkins_harvest, [:from, :to] do |task, args|
+    task :jenkins_harvest, [:from, :to, :use_cache] do |task, args|
       from = args[:from] || Jenkins.last_build_time
       to = args[:to] || Time.now
       from, to = [from, to].map { |t| t.to_time.utc.iso8601 }
 
-      # Delete the previous build's marc_xml_files.
-      Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
-
       # Run the harvester.
-      Rake::Task["fortytu:oai:harvest"].invoke(from, to)
-      Rake::Task["fortytu:oai:conform_all"].invoke()
+      if !args[:use_cache]
+        # Delete the previous build's marc_xml_files.
+        Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
+        Rake::Task["fortytu:oai:harvest"].invoke(from, to)
+        Rake::Task["fortytu:oai:conform_all"].invoke()
+      end
+
       Rake::Task["fortytu:oai:ingest_all"].invoke()
 
       # Check the build for errors.
