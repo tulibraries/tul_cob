@@ -11,6 +11,15 @@ module AdvancedHelper
     key_value
   end
 
+  # Get default value for op_row[] field in advanced_search form.
+  def op_row_default(count)
+    if !params["op_row"]
+      "contains"
+    else
+      params["op_row"][count - 1]
+    end
+  end
+
   def search_fields_for_advanced_search
     search_fields_for_advanced_search ||= begin
       hash = blacklight_config.search_fields.class.new
