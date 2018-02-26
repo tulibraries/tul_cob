@@ -2,11 +2,11 @@
   <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
   <div class="row">
     <div class="col-sm-2">
-    <%= select_tag("f_#{count}", options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"form-control") %>
+      <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), :class=>"form-control") %>
     </div>
 
     <div class="col-sm-2">
-      <%= select_tag("op_row[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, "contains"), :class => "form-control" ) %>
+      <%= select_tag("op_row[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, op_row_default(count)), :class => "form-control" ) %>
     </div>
 
     <div class="col-sm-3">
