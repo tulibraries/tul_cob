@@ -11,6 +11,19 @@ module AdvancedHelper
     key_value
   end
 
+  # Get default value for op_row[] field in advanced_search form.
+  def op_row_default(count)
+    if !params["op_row"]
+      "contains"
+    else
+      # Always select from last rows count of total values in op_row[]
+      # @see BL-334
+      rows = params.select { |k| k.match(/^q_/) }
+      count_rows = rows.count
+      params["op_row"][-count_rows + count - 1]
+    end
+  end
+
   def search_fields_for_advanced_search
     search_fields_for_advanced_search ||= begin
       hash = blacklight_config.search_fields.class.new
