@@ -198,5 +198,19 @@ RSpec.describe SearchBuilder , type: :model do
         ["default", ["q", "Hello"]]])
     end
 
+    # REF BL-334
+    it "uses the last 3 values in op_row not all of it" do
+      params = ActionController::Parameters.new(
+        "op_row" => ["foo", "foo", "foo", "bizz", "buzz", "bazz"],
+        "f_1" => "all_fields", "q_1" => "Hello",
+        "f_2" => "all_fields", "q_2" => "Beautiful",
+        "f_3" => "all_fields", "q_3" => "World",
+        search_field: "advanced")
+
+      expect(subject.send(:params_field_ops, params)).to eq([
+        ["bizz", ["q_1", "Hello"]],
+        ["buzz", ["q_2", "Beautiful"]],
+        ["bazz", ["q_3", "World"]]])
+    end
   end
 end

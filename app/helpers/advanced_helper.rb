@@ -16,7 +16,11 @@ module AdvancedHelper
     if !params["op_row"]
       "contains"
     else
-      params["op_row"][count - 1]
+      # Always select from last rows count of total values in op_row[]
+      # @see BL-334
+      rows = params.select { |k| k.match(/^q_/) }
+      count_rows = rows.count
+      params["op_row"][-count_rows + count - 1]
     end
   end
 
