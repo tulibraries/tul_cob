@@ -110,8 +110,19 @@ class SearchBuilder < Blacklight::SearchBuilder
     # @return [Array] A transformed set of search parameters OR and empty set.
     def params_field_ops(params)
       begin
-        fields = params.to_unsafe_h.compact.select { |k| k.match(/(^q$|^q_)/) }
-        ops = params.to_unsafe_h.fetch("op_row", ["default"])
+        p = params.to_unsafe_h.compact
+
+        fields = p.select { |k| k.match(/(^q$|^q_)/) }
+        ops = p.fetch("op_row", ["default"])
+
+        # Always use last rows count of total values in op_row[]
+        # @see BL-334
+        rows = p.select { |k| k.match(/^q_/) }
+        rows_count = rows.count
+        if ops.count > rows_count
+          ops = ops[-rows_count..-1]
+        end
+
         ops.zip(fields)
       rescue
         []
