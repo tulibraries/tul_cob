@@ -17,6 +17,7 @@ services:
       - "traefik.backend=microbot"
       - "traefik.docker.network=reverseproxy_default"
     networks:
+      - "default"
       - "reverseproxy_default"
     depends_on:
       - solr
@@ -31,6 +32,8 @@ services:
     image: solr:6.6.1
     ports:
       - "8983"
+    networks:
+      - "default"
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
@@ -38,10 +41,6 @@ services:
       - /opt/solr/conf
       - "-Xms256m"
       - "-Xmx512m"
-    labels:
-      - "traefik.docker.network=reverseproxy_default"
-    networks:
-      - "reverseproxy_default"
 
 networks:
   reverseproxy_default:
