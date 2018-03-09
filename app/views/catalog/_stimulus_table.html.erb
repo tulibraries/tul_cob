@@ -1,0 +1,21 @@
+<% doc_presenter = show_presenter(document) %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Library</th>
+        <th scope="col">Location</th>
+        <th scope="col">Availability</th>
+        <th scope="col">Call Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% document["library_facet"].each do |library| %>
+        <tr>
+          <td scope="row"><strong><%= library %></strong></td>
+          <td scope="row"><strong>Location</strong></td>
+          <td scope="row">Availability</td>
+          <td scope="row"><%= doc_presenter.field_value(field: "call_number_display") %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
