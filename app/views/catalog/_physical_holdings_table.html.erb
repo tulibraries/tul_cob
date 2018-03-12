@@ -1,5 +1,5 @@
 <% doc_presenter = show_presenter(document) %>
-  <table data-controller="availability" data-availability-url="https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/<%='#{mms_id}'%>?apikey=l7xxca94315bafb24ea7a76caad1db790c10&expand=p_avail&format=json" class="table table-hover">
+  <table data-controller="availability" data-availability-url="<%= 'https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/#{mms_id}?apikey=#{Rails.configuration.alma[:apikey]}&expand=p_avail&format=json" class="table table-hover' %>">
     <thead>
       <tr>
         <th scope="col">Library</th>
