@@ -45,6 +45,7 @@ namespace :fortytu do
       end
 
       Rake::Task["fortytu:oai:ingest_all"].invoke()
+      Rake::Task["fortytu:oai:purge"].invoke()
 
       # Check the build for errors.
       if File.file? "log/fortytu.log.error"
