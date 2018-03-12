@@ -91,7 +91,7 @@ gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
 gem "skylight"
-
+gem "webpacker"
 
 
 

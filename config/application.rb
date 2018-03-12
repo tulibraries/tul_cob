@@ -24,6 +24,11 @@ module Tulcob
     config.exceptions_app = routes
     ENV["ALLOW_IMPERSONATOR"] ||= "no"
 
+    config.action_dispatch.default_headers.merge!({
+    'Access-Control-Allow-Origin' => '*',
+    'Access-Control-Request-Method' => '*'
+  })
+
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]
     rescue StandardError => error
