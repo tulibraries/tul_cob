@@ -19,12 +19,14 @@ namespace :fortytu do
     solr = RSolr.connect url: Blacklight.connection_config[:url]
     delete_files_path = File.join(Rails.root, "tmp", "alma", "marc-delete", "*.xml")
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
+    ids = []
     delete_files.each do |f|
       delete_doc = Nokogiri::XML(File.open(f))
       delete_doc.xpath("//xmlns:identifier").map do |id|
-        solr.update data: "<delete><query>id:#{id.text.split(':').last}</query></delete>"
+        ids << id.text.split(":").last
       end
     end
+    solr.delete_by_id ids
     solr.update data: "<commit/>"
   end
 
