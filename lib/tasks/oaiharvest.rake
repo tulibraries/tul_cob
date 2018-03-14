@@ -22,10 +22,13 @@ namespace :fortytu do
     ids = []
     delete_files.each do |f|
       delete_doc = Nokogiri::XML(File.open(f))
-      delete_doc.xpath("//xmlns:identifier").map do |id|
+      delete_doc.remove_namespaces!
+      delete_doc.xpath("//identifier").map do |id|
         ids << id.text.split(":").last
       end
     end
+    puts "Purging the following IDs:"
+    puts ids
     solr.delete_by_id ids
     solr.update data: "<commit/>"
   end
