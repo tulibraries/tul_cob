@@ -16,6 +16,7 @@ module Blacklight::PrimoCentral
       params = params.to_hash
 
       primo_response = Primo.find(params.fetch(:q, ""))
+
       Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{primo_response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
       data = primo_response
 
