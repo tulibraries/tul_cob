@@ -8,7 +8,7 @@ module Traject
     module Custom
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
-      SEPARATOR = '—'
+      SEPARATOR = '--'
 
       def get_xml
         lambda do |rec, acc|
@@ -117,9 +117,16 @@ module Traject
         end
       end
 
-      def process_subject_topic_facet rec
+      def extract_subject_topic_facet
+        lambda do |rec, acc|
           subjects = []
-          Traject::MarcExtractor.cached("600abcdq:610ab:611a:630a:650ax:653a:654ab:647acdg").collect_matching_lines(rec) do |field, spec, extractor|
+          Traject::MarcExtractor.cached("600abcdq:610ab:611a:630a:653a:654ab:647acdg").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            subject = subject.split(SEPARATOR)
+            subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }
+          end
+
+          Traject::MarcExtractor.cached("650ax").collect_matching_lines(rec) do |field, spec, extractor|
             subject = extractor.collect_subfields(field, spec).first
             unless subject.nil?
               field.subfields.each do |s_field|
@@ -128,10 +135,13 @@ module Traject
                 end
               end
               subject = subject.split(SEPARATOR)
-              subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }
+              subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
             end
           end
           subjects.flatten
+          acc.replace(subjects)
+          acc.uniq!
+        end
       end
 
       def extract_electronic_resource
