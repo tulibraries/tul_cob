@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => "/"
   mount BentoSearch::Engine => "/bento"
 
-  match '/primo', to: 'primo_central#index', as: 'search', via: [:get, :post]
+  match "/primo", to: "primo_central#index", as: "search", via: [:get, :post]
 
 
   resources :primo_central_documents, only: [:show], path: "/catalog", controller: "catalog" do

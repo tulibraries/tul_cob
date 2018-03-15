@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class PrimoCentralDocument
+  require "blacklight/primo_central"
 
-    require 'blacklight/primo_central'
+  include Blacklight::PrimoCentral::Document
 
-    include Blacklight::PrimoCentral::Document
-
-    self.unique_key = :pnxId
-
+  self.unique_key = :pnxId
 end

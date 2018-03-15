@@ -1,4 +1,6 @@
-require 'primo'
+# frozen_string_literal: true
+
+require "primo"
 
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
@@ -13,7 +15,7 @@ module Blacklight::PrimoCentral
     def search(params = {})
       params = params.to_hash unless params.is_a?(Hash)
 
-      primo_response = Primo.find(params.fetch(:q, ''))
+      primo_response = Primo.find(params.fetch(:q, ""))
       #binding.pry
       Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{primo_response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
       data = primo_response
@@ -26,7 +28,6 @@ module Blacklight::PrimoCentral
       }.with_indifferent_access
 
       blacklight_config.response_model.new(data, params, response_opts)
-
     end
   end
 end

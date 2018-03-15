@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
-
     include Blacklight::PrimoCentral::Response::Facets
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
@@ -16,13 +17,13 @@ module Blacklight::PrimoCentral
 
       facet_counts = options.fetch(:facet_counts, {})
       @total = options[:numFound]
-      super(response: {numFound: @total, start: self.start, docs: documents},
+      super(response: { numFound: @total, start: self.start, docs: documents },
             facet_counts: facet_counts, facets: data.facets
       )
     end
 
     def documents
-      @documents ||= (@docs || []).collect{|doc| document_model.new(doc.to_h, self) }
+      @documents ||= (@docs || []).collect { |doc| document_model.new(doc.to_h, self) }
     end
 
     def limit_value
@@ -62,6 +63,5 @@ module Blacklight::PrimoCentral
       $stderr.puts("Call to Response##{meth}")
       super if respond_to? :super
     end
-
   end
 end
