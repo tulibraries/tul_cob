@@ -70,6 +70,10 @@ Rails.application.routes.draw do
   # too, without removing root_url and root_path helpers. oddly, repeating
   # root seems to work.
 
+  get 'almaws/getitems/:mms_id', to: 'almaws#show'
+  get 'almaws/getitem_details', to: 'almaws#item_details'
+
+
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
   end

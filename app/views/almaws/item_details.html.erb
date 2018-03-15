@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Barcode</th>
+      <th scope="col">Type</th>
+      <th scope="col">Policy</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody >
+    <% @items["item"].each do |item| %>
+      <tr>
+        <td scope="row"><%= item["item_data"]["barcode"] %></td>
+        <td scope="row"><%= item["item_data"]["physical_material_type"]["desc"] %></td>
+        <td scope="row"><%= item["item_data"]["policy"]["desc"] %></td>
+        <td scope="row"><%= item["item_data"]["base_status"]["desc"] %></td>
+        <td scope="row"></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
