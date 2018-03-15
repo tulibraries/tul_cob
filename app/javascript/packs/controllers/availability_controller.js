@@ -9,12 +9,22 @@ export default class extends Controller {
 
   load() {
     fetch(this.data.get("url"))
-      .then(data => {
-        console.log(data);
-      })
-      //const location = this.locationTarget
-      //const newValue = $$c)
-      //location.value = newValue
-      //return newValue
+      .then(response => response.json())
+      .then(function(data) {
+        console.log(data.response.document)
+        let locations = data.response.document.location_display;
+        return locations.map(function(location) {
+          console.log(location)
+          let td = document.querySelector('td.location')
+          td.innerHTML = location
+        })
+    })
+  }
+
+  showLocation(index) {
+    this.index = index
+    this.locationTargets.forEach((el, i) => {
+
+    })
   }
 }
