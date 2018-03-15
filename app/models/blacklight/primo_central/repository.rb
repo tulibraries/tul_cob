@@ -13,10 +13,9 @@ module Blacklight::PrimoCentral
     # Execute a search against Summon
     #
     def search(params = {})
-      params = params.to_hash unless params.is_a?(Hash)
+      params = params.to_hash
 
       primo_response = Primo.find(params.fetch(:q, ""))
-      #binding.pry
       Rails.logger.info "Primo searched with query #{params.fetch(:q, '')} in #{primo_response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
       data = primo_response
 
