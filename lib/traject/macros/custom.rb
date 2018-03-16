@@ -130,8 +130,10 @@ module Traject
           rec.fields("856").each do |f|
             if f.indicator2 != "2"
               label = url_label(f["z"], f["3"], f["y"])
-              unless NOT_FULL_TEXT.match(label)
-                acc << [label, f["u"]].compact.join("|")
+              unless f["u"].nil?
+                unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << [label, f["u"]].compact.join("|")
+                end
               end
             end
           end
