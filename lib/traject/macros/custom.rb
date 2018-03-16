@@ -190,7 +190,7 @@ module Traject
             if f.indicator1 == "4" && f.indicator2 == "2"
               unless f["u"].nil?
                 if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
-                acc << [label, f["u"]].compact.join("|")
+                  acc << [label, f["u"]].compact.join("|")
                 end
               end
             end
