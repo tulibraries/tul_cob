@@ -91,6 +91,7 @@ gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
 gem "skylight"
+gem 'google-analytics-rails', '1.1.1'
 
 
 
