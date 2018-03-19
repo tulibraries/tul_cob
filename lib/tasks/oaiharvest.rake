@@ -19,30 +19,38 @@ namespace :fortytu do
     solr = RSolr.connect url: Blacklight.connection_config[:url]
     delete_files_path = File.join(Rails.root, "tmp", "alma", "marc-delete", "*.xml")
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
+    ids = []
     delete_files.each do |f|
       delete_doc = Nokogiri::XML(File.open(f))
-      delete_doc.xpath("//xmlns:identifier").map do |id|
-        solr.update data: "<delete><query>id:#{id.text.split(':').last}</query></delete>"
+      delete_doc.remove_namespaces!
+      delete_doc.xpath("//identifier").map do |id|
+        ids << id.text.split(":").last
       end
     end
+    puts "Purging the following IDs:"
+    puts ids
+    solr.delete_by_id ids
     solr.update data: "<commit/>"
   end
 
   namespace :oai do
 
     desc "Run the oai harvest from a Jenkins Job"
-    task :jenkins_harvest, [:from, :to] do |task, args|
+    task :jenkins_harvest, [:from, :to, :use_cache] do |task, args|
       from = args[:from] || Jenkins.last_build_time
       to = args[:to] || Time.now
       from, to = [from, to].map { |t| t.to_time.utc.iso8601 }
 
-      # Delete the previous build's marc_xml_files.
-      Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
-
       # Run the harvester.
-      Rake::Task["fortytu:oai:harvest"].invoke(from, to)
-      Rake::Task["fortytu:oai:conform_all"].invoke()
+      if !args[:use_cache]
+        # Delete the previous build's marc_xml_files.
+        Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
+        Rake::Task["fortytu:oai:harvest"].invoke(from, to)
+        Rake::Task["fortytu:oai:conform_all"].invoke()
+      end
+
       Rake::Task["fortytu:oai:ingest_all"].invoke()
+      Rake::Task["fortytu:purge"].invoke()
 
       # Check the build for errors.
       if File.file? "log/fortytu.log.error"
