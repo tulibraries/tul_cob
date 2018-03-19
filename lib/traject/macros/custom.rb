@@ -6,6 +6,7 @@ require "library_stdnums"
 module Traject
   module Macros
     module Custom
+      ARCHIVE_IT_LINKS = "https://archive-it.org/collections/"
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
       SEPARATOR = "--"
@@ -158,8 +159,10 @@ module Traject
           rec.fields("856").each do |f|
             if f.indicator2 != "2"
               label = url_label(f["z"], f["3"], f["y"])
-              unless NOT_FULL_TEXT.match(label)
-                acc << [label, f["u"]].compact.join("|")
+              unless f["u"].nil?
+                unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << [label, f["u"]].compact.join("|")
+                end
               end
             end
           end
@@ -198,8 +201,27 @@ module Traject
         lambda { |rec, acc|
           rec.fields("856").each do |f|
             label = url_label(f["z"], f["3"], f["y"])
-            if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty?
-              acc << [label, f["u"]].compact.join("|")
+            unless f["u"].nil?
+              if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty? || f["u"].include?(ARCHIVE_IT_LINKS)
+                unless f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
+            end
+          end
+        }
+      end
+
+      def extract_url_finding_aid
+        lambda { |rec, acc|
+          rec.fields("856").each do |f|
+            label = url_label(f["z"], f["3"], f["y"])
+            if f.indicator1 == "4" && f.indicator2 == "2"
+              unless f["u"].nil?
+                if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
             end
           end
         }

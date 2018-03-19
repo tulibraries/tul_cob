@@ -26118,4 +26118,20 @@
       <subfield code="f">SCRC</subfield>
     </datafield>
   </record>
+  <record>
+    <controlfield tag="001">991034281219703811</controlfield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Occupy Philadelphia records</subfield>
+      <subfield code="f">2006-2014 /</subfield>
+      <subfield code="g">(bulk 2011-2012).</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+      <subfield code="u">http://library.temple.edu/scrc/occupy-philadelphia-records</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="3">View preserved website versions on Archive-It.</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+  </record>
 </collection>
