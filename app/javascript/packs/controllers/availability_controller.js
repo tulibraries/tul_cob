@@ -1,30 +1,20 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "location" ]
+  static targets = [ "panel", "button", "spinner" ]
 
-  connect() {
-    this.load()
-  }
+  item() {
+    this.buttonTarget.classList.toggle("collapsed");
 
-  load() {
-    fetch(this.data.get("url"))
-      .then(response => response.json())
-      .then(function(data) {
-        console.log(data.response.document)
-        let locations = data.response.document.location_display;
-        return locations.map(function(location) {
-          console.log(location)
-          let td = document.querySelector('td.location')
-          td.innerHTML = location
-        })
-    })
-  }
-
-  showLocation(index) {
-    this.index = index
-    this.locationTargets.forEach((el, i) => {
-
-    })
+    if (!this.buttonTarget.classList.contains("clicked")) {
+      $(this.spinnerTarget).show();
+      fetch(this.data.get("url"))
+        .then(response => response.text())
+        .then(html => {
+          this.spinnerTarget.remove();
+          this.panelTarget.innerHTML = html
+        this.buttonTarget.classList.add("clicked")
+      })
+    }
   }
 }
