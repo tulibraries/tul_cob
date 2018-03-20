@@ -33,7 +33,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["creator"]
       click_button search_element_id
-      within first(".document-position-0 h3", text: item["title"]) do
+      within("h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
@@ -137,7 +137,7 @@ RSpec.feature "Searches" do
       visit "/"
       fill_in "q", with: item["imprint"]
       click_button search_element_id
-      within first(".document-position-0 h3", text: item["title"]) do
+      within("h3", text: item["title"]) do
         expect(page).to have_text item["title"]
       end
     end
