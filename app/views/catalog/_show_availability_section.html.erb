@@ -29,10 +29,14 @@
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div class="online-border"></div>
-    <div class="availability_iframe physical-holding-panel panel-body">
+    <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
       <h5>In Library</h5>
-      <iframe class="bl_alma_iframe" src="<%= alma_app_fulfillment_url(document) %>"></iframe>
-    </div>
+      <div data-target="show.panel" class="panel-content" >
+        <div data-target="show.spinner" class="spinner">
+          <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>
+          Loading Availability
+        </div>
+      </div>
   <% end %>
   <%= render "aeon_request", :document => document %>
 </div>
