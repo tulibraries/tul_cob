@@ -7,6 +7,7 @@ module Blacklight::PrimoCentral
     included do
         self.default_processor_chain = [
             :add_query_to_primo_central,
+            :set_query_field,
             :add_query_facets,
         ]
       end
@@ -23,13 +24,18 @@ module Blacklight::PrimoCentral
         primo_central_parameters[:query] = {
           limit: per_page,
           offset:  offset,
-          q: { field: :any, value: value }
+          q: { value: value }
         }
       else
         primo_central_parameters[:query] = {
-          q: { field: :any, value: value },
+          q: { value: value },
         }
       end
+    end
+
+    def set_query_field(primo_central_parameters)
+      field = to_primo_field(blacklight_params[:search_field])
+      primo_central_parameters[:query][:q][:field] = field
     end
 
     def add_query_facets(primo_central_parameters)
@@ -45,5 +51,18 @@ module Blacklight::PrimoCentral
         end
       end
     end
+
+    private
+
+      def to_primo_field(field)
+        {
+          all_fields: :any,
+          creator_t: :creator,
+          isbn_t: :isbn,
+          issn_t: :issn,
+        }
+          .with_indifferent_access
+          .fetch(field, field) || :any
+      end
   end
 end
