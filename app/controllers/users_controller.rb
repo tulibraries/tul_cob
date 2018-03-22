@@ -30,21 +30,21 @@ class UsersController < ApplicationController
 
   def account
     @user_name = current_user.name
-    @loans = current_user.loans
-    @holds = current_user.holds
-    @fines = current_user.fines
+    @loans = current_user.get_loans
+    @holds = current_user.get_holds
+    @fines = current_user.get_fines
   end
 
   def loans
-    @items = current_user.loans
+    @items = current_user.get_loans
   end
 
   def holds
-    @items = current_user.holds
+    @items = current_user.get_holds
   end
 
   def fines
-    @items = current_user.fines
+    @items = current_user.get_fines
   end
 
   def renew

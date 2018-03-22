@@ -18,15 +18,15 @@ class User < ApplicationRecord
   end
 
   def get_loans
-    item_loans = Alma::User.get_loans(user_id: uid, expand: "renewable")
+    Alma::User.loans(user_id: uid, expand: "renewable")
   end
 
   def get_holds
-    item_holds = Alma::User.get_requests(user_id: uid)
+    Alma::User.requests(user_id: uid)
   end
 
   def get_fines
-    item_fines = Alma::User.get_fines(user_id: uid)
+    Alma::User.fines(user_id: uid)
   end
 
   def self.from_omniauth(auth)
