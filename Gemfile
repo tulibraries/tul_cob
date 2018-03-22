@@ -91,8 +91,7 @@ gem "twilio-ruby"
 gem "skylight"
 gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
-
-gem "primo", git: "https://github.com/tulibraries/primo"
+gem "primo", git: "https://github.com/tulibraries/primo", branch: "allow-use-string-keys-defaults"
 
 group :production do
   gem "mysql2", "~> 0.4.9"

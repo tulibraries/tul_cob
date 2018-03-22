@@ -19,7 +19,8 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 86fdc53893ff135fa98bd17723dc4bbbca19ad1a
+  revision: 334f99a157b0ca44fadac11cef31b42bf4e920ff
+  branch: allow-use-string-keys-defaults
   specs:
     primo (0.1.0)
       httparty
@@ -68,7 +69,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     ast (2.3.0)
-    autoprefixer-rails (7.2.1)
+    autoprefixer-rails (8.2.0)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
@@ -83,7 +84,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.12.0)
+    blacklight (6.14.1)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid

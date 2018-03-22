@@ -18,6 +18,8 @@ class PrimoCentralController < CatalogController
 
     config.index.document_presenter_class = PrimoCentralPresenter
 
+    # Pagination handler
+    config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
 
     config.add_index_field "id"
@@ -28,7 +30,5 @@ class PrimoCentralController < CatalogController
     config.add_index_field "creator", label: "Creators"
 
     config.add_facet_field "creator", label: "Creators", limit: 10
-
-
   end
 end

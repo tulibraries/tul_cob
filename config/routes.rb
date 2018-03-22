@@ -13,13 +13,6 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => "/"
   mount BentoSearch::Engine => "/bento"
 
-  match "/primo", to: "primo_central#index", as: "search", via: [:get, :post]
-
-
-  resources :primo_central_documents, only: [:show], path: "/catalog", controller: "catalog" do
-    concerns :exportable
-  end
-
   # resource and resources
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
@@ -36,6 +29,10 @@ Rails.application.routes.draw do
     collection do
       delete "clear"
     end
+  end
+
+  resources :primo_central_documents, only: [:show], path: "/catalog", controller: "catalog" do
+    concerns :exportable
   end
 
   resources :users, only: [:index] do
@@ -87,6 +84,7 @@ Rails.application.routes.draw do
   # matches
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
+  match "/primo", to: "primo_central#index", as: "search", via: [:get, :post]
 
   Blacklight::Marc.add_routes(self)
 

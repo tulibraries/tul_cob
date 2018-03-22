@@ -44,11 +44,11 @@ module Blacklight::PrimoCentral
     end
 
     def start
-      params[:start].to_i
+      params[:offset].to_i
     end
 
     def rows
-      params[:rows].to_i
+      @docs.count
     end
 
     def sort
