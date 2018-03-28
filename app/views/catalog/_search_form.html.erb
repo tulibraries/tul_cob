@@ -23,7 +23,14 @@
 <% end %>
 
 
+<% unless current_page?("/advanced") %>
+  <div class="navbar-form">
+    <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h), class: 'advanced_search'%>
+  </div>
+<% end %>
 
-<div class="navbar-form">
-  <%= link_to 'Advanced Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h), class: 'advanced_search'%>
-</div>
+<% if current_page?("/advanced") %>
+  <div class="navbar-form">
+    <%= link_to 'Basic Search', root_path, class: 'advanced_search'%>
+  </div>
+<% end %>
