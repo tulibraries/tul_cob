@@ -21,6 +21,8 @@ module Tulcob
     config.bento = config_for(:bento).with_indifferent_access
     config.twilio = config_for(:twilio).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
+    config.features = Hash.new.with_indifferent_access
+
     config.exceptions_app = routes
     ENV["ALLOW_IMPERSONATOR"] ||= "no"
 
