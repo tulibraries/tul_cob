@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 
 require "library_stdnums"
 
@@ -6,8 +6,11 @@ require "library_stdnums"
 module Traject
   module Macros
     module Custom
+      ARCHIVE_IT_LINKS = "archive-it.org/collections/"
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
+      SEPARATOR = "--"
+
       def get_xml
         lambda do |rec, acc|
           acc << MARC::FastXMLWriter.encode(rec)
@@ -115,6 +118,33 @@ module Traject
         end
       end
 
+      def extract_subject_topic_facet
+        lambda do |rec, acc|
+          subjects = []
+          Traject::MarcExtractor.cached("600abcdq:610ab:611a:630a:653a:654ab:647acdg").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            subject = subject.split(SEPARATOR)
+            subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }
+          end
+
+          Traject::MarcExtractor.cached("650ax").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            unless subject.nil?
+              field.subfields.each do |s_field|
+                if (s_field.code == "x")
+                  subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}")
+                end
+              end
+              subject = subject.split(SEPARATOR)
+              subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+          end
+          subjects.flatten
+          acc.replace(subjects)
+          acc.uniq!
+        end
+      end
+
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
@@ -129,8 +159,10 @@ module Traject
           rec.fields("856").each do |f|
             if f.indicator2 != "2"
               label = url_label(f["z"], f["3"], f["y"])
-              unless NOT_FULL_TEXT.match(label)
-                acc << [label, f["u"]].compact.join("|")
+              unless f["u"].nil?
+                unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << [label, f["u"]].compact.join("|")
+                end
               end
             end
           end
@@ -169,8 +201,27 @@ module Traject
         lambda { |rec, acc|
           rec.fields("856").each do |f|
             label = url_label(f["z"], f["3"], f["y"])
-            if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty?
-              acc << [label, f["u"]].compact.join("|")
+            unless f["u"].nil?
+              if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty? || f["u"].include?(ARCHIVE_IT_LINKS)
+                unless f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
+            end
+          end
+        }
+      end
+
+      def extract_url_finding_aid
+        lambda { |rec, acc|
+          rec.fields("856").each do |f|
+            label = url_label(f["z"], f["3"], f["y"])
+            if f.indicator1 == "4" && f.indicator2 == "2"
+              unless f["u"].nil?
+                if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
             end
           end
         }

@@ -405,6 +405,14 @@ url_856_more_1:
   doc_id: "991012132499760729"
   url: "table of contents"
   url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
+url_856_more_3:
+  doc_id: "991034281219703811"
+  url: "View preserved website versions on Archive-It"
+  url_href: "https://archive-it.org/collections/4487"
+url_856_4:
+  doc_id: "991034281219703811"
+  url: "View a description and list of collection contents in the online finding aid"
+  url_href: "http://library.temple.edu/scrc/occupy-philadelphia-records"
 rarestacks:
   doc_id: "991012036369703811"
   library: "Special Collections Research Center"

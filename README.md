@@ -2,6 +2,7 @@
 
 A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
 
+[![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
 
 ## Getting started
 

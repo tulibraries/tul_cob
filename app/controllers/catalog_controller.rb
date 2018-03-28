@@ -330,6 +330,7 @@ class CatalogController < ApplicationController
     config.add_show_field "lccn_display", label: "LCCN"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
 

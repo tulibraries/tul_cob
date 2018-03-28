@@ -112,36 +112,36 @@ results_queries:
   #   ISSN: "0009-5982"
   #   query_type:
   #     - "ISSN"
-  # - doc_id:
-  #     - "991036721510203811"
-  #     - "991012152319703811"
-  #     - "991017377949703811"
-  #     - "991006975379703811"
-  #   ISSN: "95982"
-  #   query_type:
-  #     - "ISSN"
+  - doc_id:
+      - "991036721510203811"
+      - "991012152319703811"
+      - "991017377949703811"
+      - "991006975379703811"
+    ISSN: "00095982"
+    query_type:
+      - "ISSN"
   - doc_id:
       - "991006700799703811"
     ISBN: "9780140449198"
     query_type:
       - "ISBN"
-  # - doc_id:
-  #     - "991006700799703811"
-  #   ISBN: "140449191"
-  #   query_type:
-  #     - "ISBN"
-  # - doc_id:
-  #     - "991036743832103811"
-  #   query_type:
-  #     - "doc_id"
+  - doc_id:
+      - "991006700799703811"
+    ISBN: "0140449191"
+    query_type:
+      - "ISBN"
+  - doc_id:
+      - "991036743832103811"
+    query_type:
+      - "doc_id"
+  - doc_id:
+      - "991035120939703811"
+    callnum: '"PN1997.2 .S462x 2003"'
+    query_type:
+      - "callnum"
   # - doc_id:
   #     - "991035120939703811"
-  #   callnum: "PN1997.2 .S462x 2003"
-  #   query_type:
-  #     - "callnum"
-  # - doc_id:
-  #     - "991035120939703811"
-  #   callnum: "PN1997.2.S462x2003"
+  #   callnum: '"PN1997.2.S462x2003"'
   #   query_type:
   #     - "callnum"
   - doc_id:
@@ -155,9 +155,7 @@ results_queries:
       - "991036749632703811"
     secondary_id:
       - "991036749633503811"
-      # - "991000032309703811"
       - "991036749630403811"
-      # - "991036737095503811"
       - "991036749630103811"
     title: "journal of materials chemistry"
     query_type:
