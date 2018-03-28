@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/tulibraries/alma_rb
+  revision: 330136c6b72709263dc49172987999af0a756aae
+  specs:
+    alma (0.2.4)
+      ezwadl
+      httparty
+      xml-simple
+
+GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
   revision: 5538880d97fb154e06d5522aff6c0490c9344f2e
   specs:
@@ -50,8 +59,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    alma (0.2.4)
-      ezwadl
     arel (7.1.4)
     ast (2.3.0)
     autoprefixer-rails (7.2.1)
@@ -181,7 +188,7 @@ GEM
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (0.9.1)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -211,7 +218,7 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.1.1)
+    loofah (2.2.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.12)
@@ -225,14 +232,14 @@ GEM
     method_source (0.9.0)
     mini_mime (0.1.4)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
+    minitest (5.11.3)
     multi_json (1.12.2)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     mysql2 (0.4.9)
     nenv (0.3.0)
     nio4r (2.1.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -260,7 +267,9 @@ GEM
       pry (>= 0.10.4)
     public_suffix (3.0.0)
     puma (3.10.0)
-    rack (2.0.3)
+    rack (2.0.4)
+    rack-proxy (0.6.4)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.6)
@@ -396,7 +405,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
@@ -416,9 +425,14 @@ GEM
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
+    webpacker (3.3.0)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    xml-simple (1.1.5)
     xpath (2.1.0)
       nokogiri (~> 1.3)
     yell (2.0.7)
@@ -427,7 +441,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alma (~> 0.2.4)
+  alma!
   awesome_print
   bento_search
   blacklight
@@ -479,6 +493,7 @@ DEPENDENCIES
   vcr
   web-console
   webmock
+  webpacker
 
 BUNDLED WITH
    1.16.1

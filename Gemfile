@@ -77,7 +77,7 @@ end
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
-gem "alma", "~> 0.2.4"
+gem "alma", git: "https://github.com/tulibraries/alma_rb"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
@@ -91,9 +91,8 @@ gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
 gem "skylight"
+gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
-
-
 
 
 group :production do

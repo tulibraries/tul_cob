@@ -18,13 +18,17 @@
   <% end %>
 
   <% if document.fetch("availability_facet", [])[i] == "At the Library" %>
+  <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>
     <div class="row button-break"></div>
-    <button data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>">
-      <span aria-expanded="false">Loading...</span>
-    </button>
-
-    <dd class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dd>
-    <div id="physical-document-<%= document_counter %>" class="collapse">
-    <div class="availability-details-container" data-availability-iframe-url="<%= alma_app_fulfillment_url(document) %>"></div>
+    <div data-controller="availability" data-availability-url="<%= item_url(document.id) %>">
+      <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button">
+        <span role="spin" aria-expanded="false">Loading...</span>
+      </button>
+        <div data-target="availability.spinner" class="spinner">
+          <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+          Loading Availability
+        </div>
+      <div data-target="availability.panel" id="physical-document-<%= document_counter %>" class="collapse panel-content"></div>
+    </div>
   <% end %>
 <% end %>
