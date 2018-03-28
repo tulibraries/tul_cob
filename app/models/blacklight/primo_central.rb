@@ -8,5 +8,6 @@ module Blacklight
     autoload :Request, "blacklight/primo_central/request"
     autoload :Response, "blacklight/primo_central/response"
     autoload :SearchBuilderBehavior, "blacklight/primo_central/search_builder_behavior"
+    autoload :SolrAdaptor, "blacklight/primo_central/solr_adaptor"
   end
 end

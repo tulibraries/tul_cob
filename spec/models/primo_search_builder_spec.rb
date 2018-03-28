@@ -21,10 +21,8 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "the unknown" do
-      it "has a default query" do
-        expect(primo_central_parameters["query"]).to eq(
-          "q" => { "value" => nil }
-        )
+      it "has a default query value" do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("*")
       end
     end
 

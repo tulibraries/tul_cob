@@ -5,25 +5,32 @@ module Blacklight::PrimoCentral
     include Blacklight::PrimoCentral::Response::Facets
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
+    include Blacklight::PrimoCentral::SolrAdaptor
 
     attr_reader :request_params, :total
     attr_accessor :document_model, :blacklight_config
 
     def initialize(data, request_params, options = {})
-      @docs = data.docs
+      @docs = data.docs || [ self ]
       @request_params = request_params.with_indifferent_access
       self.document_model =  ::PrimoCentralDocument
       self.blacklight_config = options[:blacklight_config]
+      facets = data.facets || []
+
+      # Adapt primo facets to solr so that facets get hooked up properly
+      facets.each do |f|
+        f.name = primo_to_solr_facet(f.name)
+      end
 
       facet_counts = options.fetch(:facet_counts, {})
-      @total = options[:numFound]
+      @total = options[:numFound] || 1
       super(response: { numFound: @total, start: self.start, docs: documents },
-            facet_counts: facet_counts, facets: data.facets
+            facet_counts: facet_counts, facets: facets
       )
     end
 
     def documents
-      @documents ||= (@docs || []).collect { |doc| document_model.new(doc.to_h, self) }
+      @documents ||= (@docs || []).collect { |doc| document_model.new(doc, self) }
     end
 
     def limit_value

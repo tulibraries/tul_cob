@@ -5,9 +5,9 @@ require "primo"
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
-      search params.merge(id: id, fields: blacklight_config.show_fields.values)
+      response = Primo.find(id: id)
+      blacklight_config.document_model.new response.to_h
     end
-
 
     ##
     # Execute a search against Summon
@@ -18,7 +18,6 @@ module Blacklight::PrimoCentral
 
       Rails.logger.info "Primo searched with query #{params[:q]} in #{response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
 
-      blacklight_config[:q] = ""
       response_opts = {
           facet_counts: response.facets.length,
           numFound: response.info.total,

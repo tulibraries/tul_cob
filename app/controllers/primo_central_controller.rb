@@ -22,13 +22,29 @@ class PrimoCentralController < CatalogController
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
 
-    config.add_index_field "id"
-    config.add_index_field "title", label: "Title"
-    config.add_index_field "link"
-    config.add_index_field "year", label: "Year"
+    # Index fields
+    config.add_index_field "pub_date", label: "Year"
     config.add_index_field "subtitle", label: "Subtitle"
-    config.add_index_field "creator", label: "Creators"
 
-    config.add_facet_field "creator", label: "Creators", limit: 10
+    # Show fields
+    config.add_show_field "isPartOf", label: "Is Part of"
+    config.add_show_field "relation", label: "Related Title", helper_method: "list_with_links"
+    config.add_show_field "doi", label: "DOI"
+  end
+
+  # get a single document from the index
+  # to add responses for formats other than html or json see _Blacklight::Document::Export_
+  def show
+    @document = repository.find params[:id]
+    respond_to do |format|
+      format.html { setup_next_and_previous_documents }
+      format.json { render json: { response: { document: @document } } }
+      additional_export_formats(@document, format)
+    end
+  end
+
+  def render_sms_action?(_config, _options)
+    # Render if the item can be found at a library
+    false
   end
 end

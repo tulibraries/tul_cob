@@ -22,11 +22,12 @@ module Blacklight::PrimoCentral
       super
 
       # count is solr's default
-      @sort ||= if @limit.to_i > 0
-                  "count"
-                else
-                  "index"
-                end
+      @sort ||=
+        if @limit.to_i > 0
+          "count"
+        else
+          "index"
+        end
     end
   end
 end
