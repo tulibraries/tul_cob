@@ -4,10 +4,9 @@ require "rails_helper"
 
 RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helper do
   describe "#guided_search" do
-
-    example "empty search fields" do
-      expect(helper.guided_search).to be_empty
-    end
+     example "empty search fields" do
+       expect(helper.guided_search).to be_empty
+     end
    end
 
   describe ".op_row_default" do

@@ -155,7 +155,7 @@ module BlacklightAdvancedSearch
         field = search_field_def_for_key(my_params[:f_2]).to_h
         label = field[:label].to_s
         query = my_params[:q_2]
-        query = 'NOT ' + my_params[:q_2] if my_params[:op_1] == 'NOT'
+        query = "NOT " + my_params[:q_2] if my_params[:op_1] == "NOT"
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query(%i[f_2 q_2 op_2], my_params))
@@ -165,7 +165,7 @@ module BlacklightAdvancedSearch
         field = search_field_def_for_key(my_params[:f_3]).to_h
         label = field[:label].to_s
         query = my_params[:q_3]
-        query = 'NOT ' + my_params[:q_3] if my_params[:op_2] == 'NOT'
+        query = "NOT " + my_params[:q_3] if my_params[:op_2] == "NOT"
         constraints << render_constraint_element(
           label, query,
           remove: search_catalog_path(remove_guided_keyword_query(%i[f_3 q_3 op_3], my_params))
