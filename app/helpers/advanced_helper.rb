@@ -132,32 +132,46 @@ module BlacklightAdvancedSearch
     # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query
     # We need this in order to render multiple clearable buttons on advanced searches.
     def render_constraints_query(my_params = params)
-      buttons = guided_search.map { |s|
-        label, query, action = s
-
-        render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
-        )
-      }.flatten
-
-      safe_join(buttons, "\n")
+      if advanced_query.nil? || advanced_query.keyword_queries.empty?
+        super(my_params)
+      else
+        content = guided_search
+        safe_join(content.flatten, "\n")
+      end
     end
 
     def guided_search(my_params = params)
-      my_params.select { |p| p.match(/^q/) }
-        .to_unsafe_h.with_indifferent_access
-        .select { |q, v| ! my_params[q].blank? }
-        .map { |q, v|
-
-        position = q.to_s.scan(/_\d+$/)[0]
-        f = "f_#{position}".to_sym
-        op = "op_#{position}".to_sym
-        field = search_field_def_for_key(my_params[f]).to_h
+      constraints = []
+      if my_params[:q_1].present?
+        field = search_field_def_for_key(my_params[:f_1]).to_h
         label = field[:label].to_s
-        query = my_params[op].to_s + " " + my_params[q]
-        [label, query, [f, q, op]]
-      }
+        query = my_params[:q_1]
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f_1 q_1], my_params))
+        )
+      end
+      if my_params[:q_2].present?
+        field = search_field_def_for_key(my_params[:f_2]).to_h
+        label = field[:label].to_s
+        query = my_params[:q_2]
+        query = 'NOT ' + my_params[:q_2] if my_params[:op_1] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f_2 q_2 op_2], my_params))
+        )
+      end
+      if my_params[:q_3].present?
+        field = search_field_def_for_key(my_params[:f_3]).to_h
+        label = field[:label].to_s
+        query = my_params[:q_3]
+        query = 'NOT ' + my_params[:q_3] if my_params[:op_2] == 'NOT'
+        constraints << render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query(%i[f_3 q_3 op_3], my_params))
+        )
+      end
+      constraints
     end
   end
 end

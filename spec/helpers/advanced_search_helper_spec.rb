@@ -3,9 +3,6 @@
 require "rails_helper"
 module BlacklightAdvancedSearch
   module RenderConstraintsOverride
-    def search_field_def_for_key(key)
-      nil
-    end
   end
 end
 
