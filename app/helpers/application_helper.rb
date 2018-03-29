@@ -13,7 +13,7 @@ module ApplicationHelper
     case field
     when "subject_display"
 
-      { search_field: "subject", q: query.gsub(/>|—/, "") }
+      { search_field: "subject", q: query.gsub(/>|—/, ""), title: query }
     when "title_uniform_display", "title_addl_display"
       { search_field: "title", q: query }
     when "relation"
@@ -26,7 +26,8 @@ module ApplicationHelper
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
-    link_to(params[:q], link_url)
+    title = params[:title] || params[:q]
+    link_to(title, link_url)
   end
 
   def list_with_links(args)
