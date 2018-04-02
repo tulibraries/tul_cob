@@ -41,7 +41,10 @@ RSpec.feature "Advanced Search" do
         f_2: "title", q_2: "exercises",
         search_field: "advanced",
       }.to_query}"
+
       expect(page).to have_selector(results_selector, count: 1)
+      expect(page).to have_text("Title full")
+      expect(page).to have_text("Title AND exercises")
       expect(first(results_selector).text).to eq("1. Everyday Activities to Help Your Young Child with Autism Live Life to the Full Simple Exercises to Boost Functional Skills, Sensory Processing, Coordination and Self-Care")
     end
 
@@ -52,9 +55,23 @@ RSpec.feature "Advanced Search" do
         f_2: "title", q_2: "exercises",
         search_field: "advanced",
       }.to_query}"
-
       expect(page).to have_selector(results_selector, count: 10)
+      expect(page).to have_text("Title full")
+      expect(page).to have_text("Title OR exercises")
     end
+
+    scenario "searching title for x NOT y" do
+      visit "catalog?#{{
+        op_row: ["contains", "contains"],
+        f_1: "title", q_1: "full", op_1: "NOT",
+        f_2: "title", q_2: "exercises",
+        search_field: "advanced",
+      }.to_query}"
+
+      expect(page).to have_text("Title full")
+      expect(page).to have_text("Title NOT exercises")
+    end
+
 
     scenario "searching with begins_with" do
       visit "catalog?#{{
@@ -75,7 +92,7 @@ RSpec.feature "Advanced Search" do
         search_field: "advanced",
       }.to_query}"
 
-      expect(page).to have_selector(results_selector, count: 2)
+      expect(page).to have_selector(results_selector)
       expect(first(results_selector).text).to match(/^1. Silencio roto/)
     end
 

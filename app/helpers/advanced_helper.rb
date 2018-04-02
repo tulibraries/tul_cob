@@ -131,6 +131,7 @@ module BlacklightAdvancedSearch
   module RenderConstraintsOverride
     # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query
     # We need this in order to render multiple clearable buttons on advanced searches.
+
     def render_constraints_query(my_params = params)
       buttons = guided_search.map { |s|
         label, query, action = s
@@ -151,11 +152,23 @@ module BlacklightAdvancedSearch
         .map { |q, v|
 
         position = q.to_s.scan(/_\d+$/)[0]
-        f = "f_#{position}".to_sym
-        op = "op_#{position}".to_sym
+
+        if position.nil?
+          f = "search_field"
+        else
+          position = position.gsub("_", "").to_i
+          f = "f_#{position}"
+          # position -1 gets us the first op
+          op = "op_#{position - 1}"
+        end
+
         field = search_field_def_for_key(my_params[f]).to_h
         label = field[:label].to_s
-        query = my_params[op].to_s + " " + my_params[q]
+        if position == 1
+          query = my_params[q]
+        else
+          query = my_params[op].to_s + " " + my_params[q]
+        end
         [label, query, [f, q, op]]
       }
     end
