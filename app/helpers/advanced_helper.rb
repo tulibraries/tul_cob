@@ -3,6 +3,14 @@
 module AdvancedHelper
   include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
+  def label_tag_default_for(key)
+    if params[key].present?
+      params[key]
+    elsif params['search_field'] == key
+      params['q']
+    end
+  end
+
   def advanced_key_value
     key_value = []
     search_fields_for_advanced_search.each do |field|
@@ -131,47 +139,46 @@ module BlacklightAdvancedSearch
   module RenderConstraintsOverride
     # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query
     # We need this in order to render multiple clearable buttons on advanced searches.
+
     def render_constraints_query(my_params = params)
-      if advanced_query.nil? || advanced_query.keyword_queries.empty?
-        super(my_params)
-      else
-        content = guided_search
-        safe_join(content.flatten, "\n")
-      end
+      buttons = guided_search.map { |s|
+        label, query, action = s
+
+        render_constraint_element(
+          label, query,
+          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
+        )
+      }.flatten
+
+      safe_join(buttons, "\n")
     end
 
     def guided_search(my_params = params)
-      constraints = []
-      if my_params[:q_1].present?
-        field = search_field_def_for_key(my_params[:f_1]).to_h
+      my_params.select { |p| p.match(/^q/) }
+        .to_unsafe_h.with_indifferent_access
+        .select { |q, v| ! my_params[q].blank? }
+        .map { |q, v|
+
+        position = q.to_s.scan(/_\d+$/)[0]
+
+        if position.nil?
+          f = "search_field"
+        else
+          position = position.gsub("_", "").to_i
+          f = "f_#{position}"
+          # position -1 gets us the first op
+          op = "op_#{position - 1}"
+        end
+
+        field = search_field_def_for_key(my_params[f]).to_h
         label = field[:label].to_s
-        query = my_params[:q_1]
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f_1 q_1], my_params))
-        )
-      end
-      if my_params[:q_2].present?
-        field = search_field_def_for_key(my_params[:f_2]).to_h
-        label = field[:label].to_s
-        query = my_params[:q_2]
-        query = "NOT " + my_params[:q_2] if my_params[:op_1] == "NOT"
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f_2 q_2 op_2], my_params))
-        )
-      end
-      if my_params[:q_3].present?
-        field = search_field_def_for_key(my_params[:f_3]).to_h
-        label = field[:label].to_s
-        query = my_params[:q_3]
-        query = "NOT " + my_params[:q_3] if my_params[:op_2] == "NOT"
-        constraints << render_constraint_element(
-          label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(%i[f_3 q_3 op_3], my_params))
-        )
-      end
-      constraints
+        if position == 1
+          query = my_params[q]
+        else
+          query = my_params[op].to_s + " " + my_params[q]
+        end
+        [label, query, [f, q, op]]
+      }
     end
   end
 end
