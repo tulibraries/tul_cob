@@ -39,4 +39,10 @@ module AlmaDataHelper
     end
   end
 
+  def alternative_call_number(item)
+    if item["item_data"]["alternative_call_number"].present?
+      "(Also found under " + item["item_data"]["alternative_call_number"] + ")"
+    end
+  end
+
 end

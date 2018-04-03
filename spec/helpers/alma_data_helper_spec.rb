@@ -134,4 +134,18 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
   end
+
+  describe "#alternative_call_number(item)" do
+    context "item has an alternate call number" do
+      let(:item) do
+       { "item_data" =>
+          { "alternative_call_number" => "alternate" }
+        }
+      end
+
+      it "displays alternate call number" do
+        expect(alternative_call_number(item)).to eq "(Also found under alternate)"
+      end
+    end
+  end
 end
