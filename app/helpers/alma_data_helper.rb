@@ -6,7 +6,7 @@ module AlmaDataHelper
   def availability_status(item)
     if item["item_data"]["base_status"]["value"] == "1"
       "Available"
-    elsif item["item_data"]["base_status"]["value"]  == "0"
+    elsif item["item_data"]["base_status"]["value"] == "0"
       "Checked out or currently unavailable"
     end
   end
@@ -44,5 +44,4 @@ module AlmaDataHelper
       "(Also found under " + item["item_data"]["alternative_call_number"] + ")"
     end
   end
-
 end
