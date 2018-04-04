@@ -1,21 +1,153 @@
-
 default: &default
-  MAIN: "Paley Library"
-  AMBLER: "Ambler Campus Library"
-  BLOCKSON: "Blockson Collection"
-  CLAEDTECH: "CLA Ed Tech Library"
-  GINSBURG: "Ginsburg Health Science Library"
-  HARRISBURG: "Harrisburg Campus Library"
-  JAPAN: "Japan Campus Library"
-  KARDON: "Remote Storage"
-  LAW: "Law Library"
-  MEDIA: "Media Services"
-  PODIATRY: "Krausz Library of Podiatric Medicine"
-  PRESSER: "Presser Music Library"
-  RES_SHARE: "Resource Sharing Library"
-  ROME: "Rome Campus Library"
-  SCRC: "Special Collections Research Center"
-  EMPTY: "Other"
+  AMBLER:
+    aarc: Ambler Archives Collection
+    imc: IMC
+    intref: Internal Reference
+    aleisure: Ambler Leisure Reading
+    media: Ambler Media
+    micro: Ambler Microform
+    newbooks: New Books Shelf
+    orders: Ambler Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    stacks: Stacks
+  BLOCKSON:
+    orders: Blockson Afro-American Collection
+    rarestacks: Reading Room
+  CLAEDTECH:
+    media: Media
+    reserves: Reserves
+  DSC:
+    DSC: Equipment
+  GINSBURG:
+    circ: Circulation Collection
+    intref: Internal Reference
+    leisure: Leisure Reading
+    medhum: Medical Humanities
+    orders: Ginsburg Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    techserv: Technical Services
+  HARRISBURG:
+    intref: Internal Reference
+    harrisburg: Harrisburg Library
+    media: Media
+    orders: Harrisburg Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    stacks: Stacks
+  RES_SHARE: {}
+  JAPAN:
+    media: Media
+    osaka: Osaka Collection
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    remote: Closed Stacks
+  LAW:
+    closestack: Closed Stacks - Ask At Desk
+    oversize2: Closed Stacks - Ask At Desk
+    web: Online Access
+    media: Media
+    micro: Microform
+    open3: Open Stacks - 3
+    open3a: Open Stacks - 3A
+    open4: Open Stacks - 4
+    open4a: Open Stacks - 4A
+    open5: Open Stacks - 5
+    open5a: Open Stacks - 5A
+    open6a: Open Stacks - 6A
+    govdoc: Open Stacks - 7
+    oversize5a: Open Stacks - Oversize - 5A
+    orders: Law Library
+    rarestacks: Remote
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    archives: Archives - Ask At Desk
+    trials: Special Collections - Ask At Desk
+    hirst: Special Collections - Ask At Desk
+    specintl: Special Collections - Ask At Desk
+    pamphlets: Special Collections - Ask At Desk
+    specpa: Special Collections - Ask At Desk
+    rawle: Special Collections - Ask At Desk
+    rawle3: Special Collections - Ask At Desk
+    stacks: Stacks
+  MEDIA:
+    dsc: Digital Scholarship Center
+    media: Media
+    reserve: Reserves
+    micro: Microform
+    orders: Media Services
+    zmedia: deleted location
+    zpaley: deleted location
+  MAIN:
+    serials: Journals
+    govdocmicr: Government Doc Microforms
+    govdoc: Government Documents
+    govweb: Government Doc Web
+    ILL: Inter-Library Loan
+    intref: Internal Reference
+    leisure: Leisure Reading
+    micro: Microform
+    orders: Paley Library
+    rarestacks: Remote
+    reference: Paley Reference
+    reserve: Reserves
+    stacks: Stacks
+    techserv: Technical Services
+    psof2: Flat Shelving
+    psof3: Flat Shelving
+    zpaley: Paley News Center
+    psov2: Oversize Stacks
+    psov3: Oversize Stacks
+    UNASSIGNED: 'Problem: See Library Staff'
+    zdelete: Deleted Location
+    zbio: deleted location
+    zchem: deleted location
+    zmath: deleted location
+    zsel: deleted location
+    ztyler: deleted location
+    zzahn: deleted location
+    web: Available Online
+  PODIATRY:
+    intref: Internal Reference
+    media: Media
+    orders: Podiatry Library
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    techserv: Technical Services
+  PRESSER:
+    presser: Learning Center
+    plc: Listening Library
+    zpresser: deleted location
+  KARDON:
+    a_rare: Ambler
+    b_rare: Blockson
+    g_remote: Ginsburg
+    l_remote: Law
+    p_govdocmf: Paley Government Documents
+    p_GovDocs: Paley Government Documents
+    p_remote: Paley
+  ROME:
+    exhibit: Exhibits
+    fiction: Fiction
+    media: Media
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+  SCRC:
+    rarestacks: Reading Room
 
 test:
   <<: *default
