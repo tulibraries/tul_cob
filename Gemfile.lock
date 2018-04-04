@@ -19,8 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 334f99a157b0ca44fadac11cef31b42bf4e920ff
-  branch: allow-use-string-keys-defaults
+  revision: 64e774ec59a951093d41200ad9a4379944951d09
   specs:
     primo (0.1.0)
       httparty
