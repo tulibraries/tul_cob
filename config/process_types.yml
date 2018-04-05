@@ -1,0 +1,22 @@
+default: &default
+  ACQ: On order
+  CLAIM_RETURNED_LOAN: Claimed returned
+  HOLDSHELF: On hold shelf
+  ILL: At another institution
+  LOAN: Checked out
+  LOST_LOAN: Lost
+  MISSING: Missing
+  NOPROCESS: On shelf
+  OVERDUE: Checked out - overdue
+  REQUESTED: Requested
+  TECHNICAL: Unavailable - technical issue
+  TRANSIT: In transit
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
