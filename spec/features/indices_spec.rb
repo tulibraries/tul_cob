@@ -52,7 +52,7 @@ RSpec.feature "Indices" do
 
   feature "Catalog" do
     let (:title) { "Academic freedom in an age of conformity" }
-    let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
+    let (:results_url) { "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
       visit "/"
       fill_in "q", with: title
