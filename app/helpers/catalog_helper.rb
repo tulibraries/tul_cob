@@ -39,8 +39,9 @@ module CatalogHelper
     formats.join('<span class="format-concatenator">and</span>')
   end
 
+  # Used to toggle the search bar form path.
+  # Hack for Advanced search page
   def search_url_picker
     current_page?("/advanced") ? search_catalog_url : search_action_url
   end
-
 end
