@@ -5,7 +5,7 @@ require "yaml"
 
 namespace :locations do
   desc "Import locations for each library"
-  task :import => :environment do
+  task import: :environment do
 
     library_response = HTTParty.get("https://api-na.hosted.exlibrisgroup.com/almaws/v1/conf/libraries?apikey=#{apikey}")
     library = library_response["libraries"]["library"]
@@ -34,7 +34,7 @@ namespace :locations do
 
   private
 
-  def self.apikey
-    Alma.configuration.apikey
-  end
+    def self.apikey
+      Alma.configuration.apikey
+    end
 end
