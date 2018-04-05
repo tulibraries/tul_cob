@@ -22,13 +22,43 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "item_data" =>
            { "base_status" =>
-             { "value" => "0" }
+             { "value" => "0" },
+             "process_type" => { "value" => "ILL" }
            }
          }
       end
 
-      it "displays available" do
-        expect(availability_status(item)).to eq "Checked out or currently unavailable"
+      it "displays unavailable" do
+        expect(availability_status(item)).to eq "At another institution"
+      end
+    end
+  end
+
+  describe "#unavailable_items(item)" do
+    context "item includes process_type" do
+      let(:item) do
+        { "item_data" =>
+           { "base_status" =>
+             { "value" => "0" },
+             "process_type" => { "value" => "ILL" }
+           }
+         }
+      end
+      it "displays process type" do
+        expect(unavailable_items(item)).to eq "At another institution"
+      end
+    end
+
+    context "item has no process_type" do
+      let(:item) do
+        { "item_data" =>
+           { "base_status" =>
+             { "value" => "0" }
+           }
+         }
+      end
+      it "displays default message" do
+        expect(unavailable_items(item)).to eq "Checked out or currently unavailable"
       end
     end
   end

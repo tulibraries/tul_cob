@@ -12,7 +12,7 @@ module AlmaDataHelper
   end
 
   def unavailable_items(item)
-    if item["item_data"]["process_type"]["value"].present?
+    if item["item_data"]["process_type"].present?
       Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
     else
       "Checked out or currently unavailable"
