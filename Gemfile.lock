@@ -17,6 +17,13 @@ GIT
       jwt (= 1.5.6)
       rails (>= 4.2, < 6)
 
+GIT
+  remote: https://github.com/tulibraries/primo
+  revision: 64e774ec59a951093d41200ad9a4379944951d09
+  specs:
+    primo (0.1.0)
+      httparty
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -61,7 +68,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     ast (2.3.0)
-    autoprefixer-rails (7.2.1)
+    autoprefixer-rails (8.2.0)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
@@ -76,7 +83,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.12.0)
+    blacklight (6.14.1)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid
@@ -472,6 +479,7 @@ DEPENDENCIES
   omniauth
   omniauth-shibboleth
   pretender
+  primo!
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.1)

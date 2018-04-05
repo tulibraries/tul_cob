@@ -1,0 +1,16 @@
+
+<div class="col-sm-12">
+<div id="record-view-iframe"  class="panel panel-default">
+  <div class="panel-heading">
+    <h4 id="availability-heading">Availability</h4>
+  </div>
+
+  <% if document["link"] %>
+    <div class="online-border"></div>
+    <div class="availability_iframe physical-holding-panel panel-body">
+      <h5>Details</h5>
+      <iframe class="bl_alma_iframe" src="<%= document["link"] %>"></iframe>
+    </div>
+  <% end %>
+</div>
+</div>

@@ -12,20 +12,22 @@ module ApplicationHelper
   def get_search_params(field, query)
     case field
     when "subject_display"
-      { controller: "catalog", action: "index", search_field: "subject", q: query.gsub(/>|—/, "") }
-    when "title_uniform_display"
-      { controller: "catalog", action: "index", search_field: "title", q: query }
-    when "title_addl_display"
-      { controller: "catalog", action: "index", search_field: "title", q: query }
+
+      { search_field: "subject", q: query.gsub(/>|—/, ""), title: query }
+    when "title_uniform_display", "title_addl_display"
+      { search_field: "title", q: query }
+    when "relation"
+      { search_field: "title", q: query["relatedTitle"] }
     else
-      { controller: "catalog", action: "index", search_field: field, q: query }
+      { search_field: field, q: query }
     end
   end
 
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
-    link_to(query, link_url)
+    title = params[:title] || params[:q]
+    link_to(title, link_url)
   end
 
   def list_with_links(args)
@@ -36,7 +38,7 @@ module ApplicationHelper
     creator = args[:document][args[:field]]
     creator.map do |name|
       linked_subfields = name.split("|").first
-      newname = link_to(linked_subfields, root_url + "/?f[creator_facet][]=#{url_encode(linked_subfields)}").html_safe
+      newname = link_to(linked_subfields, base_path + "?f[creator_facet][]=#{url_encode(linked_subfields)}").html_safe
       plain_text_subfields = name.split("|").second
       creator = newname
       if plain_text_subfields.present?
@@ -159,5 +161,16 @@ module ApplicationHelper
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end
+  end
+
+  # Gets the base_path of current_page (i.e. /articles if at /articles/foobar)
+  def base_path
+    File.dirname(url_for)
+  end
+
+  # Render the index field (link)
+  def index_field_url_link(arg)
+    url = arg[:value].first
+    link_to "direct link", url, remote: true
   end
 end

@@ -6,7 +6,7 @@ module CatalogHelper
 
   def thumbnail_classes(document)
     classes = %w[thumbnail col-sm-3 col-lg-2]
-    document[:format].each do |format|
+    document.fetch(:format, []).each do |format|
       classes << "#{format.parameterize.downcase.underscore}_format"
     end
     classes.join " "
@@ -37,5 +37,11 @@ module CatalogHelper
       formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + "</span>".html_safe
     end
     formats.join('<span class="format-concatenator">and</span>')
+  end
+
+  # Used to toggle the search bar form path.
+  # Hack for Advanced search page
+  def search_url_picker
+    current_page?("/advanced") ? search_catalog_url : search_action_url
   end
 end

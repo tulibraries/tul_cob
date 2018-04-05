@@ -72,8 +72,6 @@ group :development, :test do
   gem "rubocop"
 end
 
-
-
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
@@ -93,7 +91,7 @@ gem "twilio-ruby"
 gem "skylight"
 gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
-
+gem "primo", git: "https://github.com/tulibraries/primo"
 
 group :production do
   gem "mysql2", "~> 0.4.9"
