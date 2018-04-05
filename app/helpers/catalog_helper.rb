@@ -38,4 +38,9 @@ module CatalogHelper
     end
     formats.join('<span class="format-concatenator">and</span>')
   end
+
+  def search_url_picker
+    current_page?("/advanced") ? search_catalog_url : search_action_url
+  end
+
 end
