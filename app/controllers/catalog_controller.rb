@@ -472,8 +472,8 @@ class CatalogController < ApplicationController
 
     # Do not show endnotes, SMS or email  for beta release
     config.show.document_actions.delete(:endnote)
-    config.show.document_actions.delete(:sms)
-    config.show.document_actions.delete(:email)
+    config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
+    config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
   def render_sms_action?(_config, _options)

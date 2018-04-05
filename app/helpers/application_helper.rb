@@ -160,4 +160,8 @@ module ApplicationHelper
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end
   end
+
+  def login_disabled?
+    Rails.configuration.features.fetch(:login_disabled, false)
+  end
 end
