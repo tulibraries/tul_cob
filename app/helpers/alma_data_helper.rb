@@ -37,6 +37,7 @@ module AlmaDataHelper
 
   def library_status(item)
     if item["holding_data"]["in_temp_location"] == true
+
       Rails.configuration.libraries[item["holding_data"]["temp_library"]["value"]]
     else
       Rails.configuration.libraries[item["item_data"]["library"]["value"]]
