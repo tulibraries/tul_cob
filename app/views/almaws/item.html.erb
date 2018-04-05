@@ -1,28 +1,27 @@
-<table class="table table-responsive table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Location</th>
-      <th scope="col">Availability</th>
-      <th scope="col">Call Number</th>
-    </tr>
-  </thead>
-  <tbody >
-    <% @items["item"].each do |item| %>
-      <tr class="clickable" data-toggle="collapse" data-target=".row1">
-        <td scope="row"><i class="glyphicon glyphicon-chevron-right avail-icon"></i><strong><%= item["item_data"]["library"]["desc"] %> - <%= item["item_data"]["location"]["value"] %></strong></td>
-        <td scope="row"><%= item["item_data"]["base_status"]["desc"] %></td>
-        <td scope="row"><%= item["holding_data"]["call_number"] %></td>
-      </tr>
-
-      <tr class="collapse row1">
-        <td scope="row">Barcode: <%= item["item_data"]["barcode"] %></td>
-        <td scope="row">Type: <%= item["item_data"]["physical_material_type"]["desc"] %></td>
-        <td scope="row">Policy: <%= item["item_data"]["policy"]["desc"] %></td>
-        <td scope="row">Status: <%= item["item_data"]["base_status"]["desc"] %></td>
-      </tr>
-    <% end %>
+<table class="table table-responsive borderless">
+  <% @items["item"].each do |item| %>
+    <thead>
       <tr>
-        <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
+        <th scope="col"><%= library_status(item) %></th>
+        <th scope="col">Availability</th>
       </tr>
-  </tbody>
+    </thead>
+    <tbody >
+        <tr>
+          <td scope="row"><%= location_status(item) %> <%= alternative_call_number(item) %></td>
+          <td scope="row"><%= availability_status(item) %></td>
+          <td scope="row"></td>
+        </tr>
+
+        <tr>
+          <td scope="row"><%= description(item) %></td>
+        </tr>
+        <tr>
+          <td scope="row"><%= public_note(item) %></td>
+        </tr>
+        <!-- <tr>
+          <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
+        </tr> -->
+    </tbody>
+  <% end %>
 </table>
