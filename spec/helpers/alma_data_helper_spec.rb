@@ -90,7 +90,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "holding_data" =>
            { "in_temp_location" => true,
-             "temp_location" => "Temporary location",
+             "temp_location" => { "desc" => "Temporary location" },
              "temp_call_number" => "Temp call number"
             }
          }
@@ -108,13 +108,14 @@ RSpec.describe AlmaDataHelper, type: :helper do
              "call_number" => "Perm call number"
            },
            "item_data" => {
-             "location" => { "value" => "Permanent location" },
+             "library" => { "value" => "MAIN" },
+             "location" => { "value" => "stacks" },
            }
          }
       end
 
       it "displays location and call number" do
-        expect(location_status(item)).to eq "Permanent location - Perm call number"
+        expect(location_status(item)).to eq "Stacks - Perm call number"
       end
     end
   end
@@ -124,13 +125,13 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "holding_data" =>
            { "in_temp_location" => true,
-             "temp_library" => { "value" => "Temporary Library" },
+             "temp_library" => { "value" => "KARDON" }
             }
          }
       end
 
       it "displays temporary library" do
-        expect(library_status(item)).to eq "Temporary Library"
+        expect(library_status(item)).to eq "Remote Storage"
       end
     end
   end

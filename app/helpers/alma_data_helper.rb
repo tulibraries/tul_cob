@@ -25,23 +25,28 @@ module AlmaDataHelper
 
   def location_status(item)
     if item["holding_data"]["in_temp_location"] == true
-      item["holding_data"]["temp_location"] + " - " + item["holding_data"]["temp_call_number"]
+      if item["holding_data"]["temp_call_number"].empty?
+        "#{item["holding_data"]["temp_location"]["desc"]}"
+      else
+        "#{item["holding_data"]["temp_location"]["desc"]} - #{item["holding_data"]["temp_call_number"]}"
+      end
     else
-      item["item_data"]["location"]["value"] + " - " + item["holding_data"]["call_number"]
+      "#{Rails.configuration.locations[item["item_data"]["library"]["value"]][item["item_data"]["location"]["value"]]} - #{item["holding_data"]["call_number"]}"
     end
   end
 
   def library_status(item)
     if item["holding_data"]["in_temp_location"] == true
-      item["holding_data"]["temp_library"]["value"]
+
+      Rails.configuration.libraries[item["holding_data"]["temp_library"]["value"]]
     else
-      Rails.configuration.locations[item["item_data"]["library"]["value"]]
+      Rails.configuration.libraries[item["item_data"]["library"]["value"]]
     end
   end
 
   def alternative_call_number(item)
     if item["item_data"]["alternative_call_number"].present?
-      "(Also found under " + item["item_data"]["alternative_call_number"] + ")"
+      "(Also found under #{item["item_data"]["alternative_call_number"]})"
     end
   end
 end
