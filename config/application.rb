@@ -16,6 +16,7 @@ module Tulcob
     # here. Application configuration should go into files in
     # config/initializers: All .rb files in that directory are automatically
     # loaded.
+    config.process_types = config_for(:process_types).with_indifferent_access
     config.libraries = config_for(:libraries).with_indifferent_access
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
