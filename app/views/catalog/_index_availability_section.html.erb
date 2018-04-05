@@ -2,7 +2,7 @@
 
 <% @response["response"][:docs].each_with_index do |field, i| %>
   <% if document.fetch("availability_facet", [])[i] == "Online" %>
-    <% if document["electronic_resource_display"].length == 1 %>
+    <% if document.fetch("electronic_resource_display",[]).length == 1 %>
       <%= link_to "Online", single_link_builder(document["electronic_resource_display"][i]), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank" %>
     <% else %>
     <div class="row button-break"></div>
