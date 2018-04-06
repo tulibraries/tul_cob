@@ -73,6 +73,10 @@
       <subfield code="z">tabLe of Contents</subfield>
       <subfield code="u">http://foobar.com</subfield>
     </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">Archive</subfield>
+      <subfield code="u">http://archive-it.org/collections/4222</subfield>
+    </datafield>
   </record>
   <record>
     <!-- 7. PRT field and 856 field (with exception)  -->
@@ -92,6 +96,27 @@
     <datafield tag="856" ind1="4" ind2="1">
       <subfield code="z">bar</subfield>
       <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 9. ARCHIVE_IT_LINKS aren't included in Online Availability  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">archive</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 10. Only single 856 field (with archive-it exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">Archive</subfield>
+      <subfield code="u">http://archive-it.org/collections/4222</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 11. Links with temple url and scrc map to url_finding_aid_display -->
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="z">Finding aid</subfield>
+      <subfield code="u">http://library.temple.edu/scrc</subfield>
     </datafield>
   </record>
 </collection>

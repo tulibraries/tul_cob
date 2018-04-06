@@ -26141,7 +26141,7 @@
       <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
       <subfield code="u">http://library.temple.edu/scrc/occupy-philadelphia-records</subfield>
     </datafield>
-    <datafield tag="856" ind1="4" ind2="2">
+    <datafield tag="856" ind1="4" ind2="0">
       <subfield code="3">View preserved website versions on Archive-It.</subfield>
       <subfield code="u">https://archive-it.org/collections/4487</subfield>
     </datafield>
