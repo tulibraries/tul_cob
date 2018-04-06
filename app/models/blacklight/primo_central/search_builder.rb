@@ -11,6 +11,7 @@ module Blacklight::PrimoCentral
       :process_advanced_search,
       :previous_and_next_document,
       :add_query_facets,
+      :process_date_range_query,
     ]
   end
 end

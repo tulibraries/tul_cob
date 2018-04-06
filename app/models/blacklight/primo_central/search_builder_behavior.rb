@@ -79,7 +79,7 @@ module Blacklight::PrimoCentral
       end
     end
 
-    # This needs to come last as it instantiates the pnxs query.
+    # Query is a Primo::Pnxs::Query instance after this process.
     def add_query_facets(primo_central_parameters)
       if primo_central_parameters[:query][:q][:value].is_a? Array
         op = :build
@@ -102,6 +102,21 @@ module Blacklight::PrimoCentral
             value: value
           )
         end
+      end
+    end
+
+    def process_date_range_query(primo_central_parameters)
+      params = blacklight_params
+
+      min = params.dig("range", "creationdate", "begin")
+      max = params.dig("range", "creationdate", "end")
+      primo_central_parameters[:range] = OpenStruct.new(min: min, max: max)
+
+      if (min && max)
+        primo_central_parameters[:query][:q].facet(
+          field: "searchcreationdate",
+          value: "[#{min} TO #{max}]",
+        )
       end
     end
 

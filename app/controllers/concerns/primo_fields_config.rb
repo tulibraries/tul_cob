@@ -27,6 +27,7 @@ module PrimoFieldsConfig
       # Facet fields
       config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
       config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
+      config.add_facet_field :creationdate, label: "Date", range: true
       config.add_facet_field :creator, label: "Author/Creator"
       config.add_facet_field :topic, label: "Topic"
       config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code

@@ -44,6 +44,7 @@ module Blacklight::PrimoCentral
           facet_counts: response["facets"].length,
           numFound: response["info"]["total"]
         )
+        data[:range] = params[:range] || {}
       else
         if response.count == 1
           raise ArticleNotFound
