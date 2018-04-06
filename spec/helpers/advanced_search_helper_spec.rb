@@ -30,3 +30,19 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
   end
 
 end
+
+RSpec.describe AdvancedHelper, type: :helper do
+
+  describe "label_tag_default_for" do
+    example "basic search to search" do
+      params = {
+        "search_field" => "First Name",
+        "q" => "james"
+      }
+      allow(helper).to receive(:params).and_return(params)
+
+      expect(helper.label_tag_default_for("q_1")).to eq("james")
+      expect(helper.label_tag_default_for("f_1")).to eq("First Name")
+    end
+  end
+end
