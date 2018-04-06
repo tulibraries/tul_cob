@@ -86,7 +86,7 @@ RSpec.feature "Indices" do
       fill_in "q", with: item["title"]
       click_button "search"
       expect(current_url).to eq item["url"]
-      within(".document-position-0") do
+      within(".documentHeader") do
         click_link item["title"]
         expect(current_url).to eq item_url
         within("h3") do
