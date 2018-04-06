@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+ <!-- 600abcdq:610ab:611a:630a:653a:654ab:647acdg -->
+  <record>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>The Queen is Dead</subfield>
+      <subfield code='x'>Meat is Murder</subfield>
+    </datafield>
+  </record>
+  <record>
+    <datafield ind1=' ' ind2='0' tag='600'>
+      <subfield code='a'>Subject Topic moves on</subfield>
+      <subfield code='c'>to the year 3000</subfield>
+    </datafield>
+  </record>
+</collection>
