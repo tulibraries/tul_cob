@@ -122,7 +122,7 @@ module Traject
         lambda do |rec, acc|
           subjects = []
           Traject::MarcExtractor.cached("600abcdq:610ab:611a:630a:653a:654ab:647acdg").collect_matching_lines(rec) do |field, spec, extractor|
-            subject = extractor.collect_subfields(field, spec).first.to_s
+            subject = extractor.collect_subfields(field, spec).fetch(0, "")
             subject = subject.split(SEPARATOR)
             subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }
           end
