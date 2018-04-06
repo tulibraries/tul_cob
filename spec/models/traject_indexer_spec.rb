@@ -158,8 +158,26 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[1])).to eq({})
       end
     end
+  end
 
+  let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
 
+  describe "#extract_availability" do
+    before(:each) do
+      subject.instance_eval do
+        to_field "availability_facet", extract_availability
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "Archive-it links are NOT Online" do
+      it "does not include ARCHIVE_IT_LINKS in Online records" do
+        expect(subject.map_record(records[9])).to_not eq("Online")
+      end
+    end
   end
 
   let(:file) { File.new("spec/fixtures/marc_files/url_field_examples.xml") }
@@ -278,35 +296,62 @@ RSpec.describe Traject::Macros::Custom do
 
     context "Only 856 field is present" do
       context "single 856 field (ind1 = 4; ind2 = not 2) with no exceptions" do
-        it "maps a single 856 field to electronic_resource_display" do
+        it "maps a single 856 field to url_more_links_display" do
           expect(subject.map_record(records[3])).to eq({})
         end
       end
 
-      context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
-        it "maps a single 856 field to electronic_resource_display" do
-          expect(subject.map_record(records[5])).to eq(
-            "url_more_links_display" => ["book review|http://foobar.com"],
-          )
+      context "single 856 field (ind1 = 4; ind2 = not 2) with archive-it exception" do
+        it "maps a single 856 field to url_more_links_display" do
+          expect(subject.map_record(records[10])).to eq("url_more_links_display" => ["Archive|http://archive-it.org/collections/4222"])
         end
       end
 
+      context "single 856 field (ind1 = 4; ind2 = not 2) with temple and scrc should not map to more_links" do
+        it "maps a single 856 field to url_more_links_display" do
+          expect(subject.map_record(records[10])).to eq("url_more_links_display" => ["Archive|http://archive-it.org/collections/4222"])
+        end
+      end
+
+      context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
+        it "maps a single 856 field to url_more_links_display" do
+          expect(subject.map_record(records[5])).to eq("url_more_links_display" => ["book review|http://foobar.com"])
+        end
+      end
     end
 
     context "Both PRT and 856 fields are present" do
       context "856 field has exception" do
-        it "only maps the PRT field to electronic_resource_display" do
+        it "only maps the PRT field to url_more_links_display" do
           expect(subject.map_record(records[7])).to eq(
-            "url_more_links_display" => ["BOOK review|http://foobar.com"]
-          )
+            "url_more_links_display" => ["BOOK review|http://foobar.com"])
         end
       end
       context "856 has no exception" do
-        it "only maps the PRT field to electronic_resource_display" do
+        it "only maps the PRT field to url_more_links_display" do
           expect(subject.map_record(records[8])).to eq(
-            "url_more_links_display" => ["bar|http://foobar.com"]
-          )
+            "url_more_links_display" => ["bar|http://foobar.com"])
         end
+      end
+    end
+  end
+
+  describe "#extract_url_finding_aid" do
+    before(:each) do
+      subject.instance_eval do
+        to_field "url_finding_aid_display", extract_url_finding_aid
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "856 field includes temple and scrc" do
+      it "it maps to url_finding_aid_display" do
+        expect(subject.map_record(records[11])).to eq(
+          "url_finding_aid_display" => ["Finding aid|http://library.temple.edu/scrc"])
+
       end
     end
   end
