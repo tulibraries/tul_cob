@@ -4,7 +4,6 @@ module AdvancedHelper
   include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
   def label_tag_default_for(key)
-
     unless params[key]
       if ("f_1" == key)
         return params["search_field"]
