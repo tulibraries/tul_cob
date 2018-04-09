@@ -10,6 +10,7 @@ module Blacklight::PrimoCentral
             :set_query_field,
             :set_query_sort_order,
             :add_query_facets,
+            :process_date_range_query,
         ]
       end
 
@@ -57,6 +58,22 @@ module Blacklight::PrimoCentral
         end
       end
     end
+
+    def process_date_range_query(primo_central_parameters)
+      # creation date values are only 1,2,5,10,20-YEAR
+      params = blacklight_params
+      if params["range"] && params["range"]["pub_date_sort"]
+        dr_s = params["range"]["pub_date_sort"].fetch("begin", "00000101")
+        dr_e = params["range"]["pub_date_sort"].fetch("end", "99991231")
+
+        dr_s = "#{dr_s}0101" if dr_s.length == 4
+        dr_e = "#{dr_e}1231" if dr_e.length == 4
+        primo_central_parameters[:query][:q]
+          .and(field: "dr_s", value: dr_s, precision: :exact)
+          .and(field: "dr_e", value: dr_e, precision: :exact)
+      end
+    end
+
 
     private
 

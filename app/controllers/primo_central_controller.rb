@@ -3,6 +3,8 @@
 class PrimoCentralController < CatalogController
   include Blacklight::Catalog
 
+  helper_method :solr_range_queries_to_a
+
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -46,5 +48,9 @@ class PrimoCentralController < CatalogController
   def render_sms_action?(_config, _options)
     # Render if the item can be found at a library
     false
+  end
+
+  def solr_range_queries_to_a(solr_field)
+    @response[:stats][:stats_fields][solr_field][:data] || []
   end
 end
