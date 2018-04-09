@@ -24,7 +24,11 @@ module Blacklight::PrimoCentral
 
       facet_counts = options.fetch(:facet_counts, {})
       @total = options[:numFound] || 1
-      super(response: { numFound: @total, start: self.start, docs: documents },
+
+      stats = { stats_fields: {
+        pub_date_sort: { min: 0, max: 2017, missing: 0 },
+      } }
+      super(stats: stats, response: { numFound: @total, start: self.start, docs: documents },
             facet_counts: facet_counts, facets: facets
       )
     end
