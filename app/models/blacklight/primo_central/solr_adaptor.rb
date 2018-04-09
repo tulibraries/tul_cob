@@ -40,7 +40,7 @@ module Blacklight::PrimoCentral
         "creator_facet" => "creator",
         "availability_facet" => "tlevel",
         "format" => "rtype",
-        "pub_date_sort" => "creationdate",
+        #"pub_date_sort" => "creationdate",
         "subject_topic_facet" => "topic",
         "language_facet" => "lang",
       }
