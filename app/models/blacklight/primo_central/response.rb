@@ -6,6 +6,7 @@ module Blacklight::PrimoCentral
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
     include Blacklight::PrimoCentral::SolrAdaptor
+    include BlacklightRangeLimit::SegmentCalculation
 
     attr_reader :request_params, :total
     attr_accessor :document_model, :blacklight_config
@@ -22,15 +23,52 @@ module Blacklight::PrimoCentral
         f.name = primo_to_solr_facet(f.name)
       end
 
-      facet_counts = options.fetch(:facet_counts, {})
       @total = options[:numFound] || 1
 
-      stats = { stats_fields: {
-        pub_date_sort: { min: 0, max: 2017, missing: 0 },
-      } }
-      super(stats: stats, response: { numFound: @total, start: self.start, docs: documents },
-            facet_counts: facet_counts, facets: facets
-      )
+      # Add stats for range facets
+      stats = options[:stats] || get_range_stats(facets)
+
+      super(response: { numFound: @total, start: self.start, docs: documents }, facets: facets, stats: stats)
+    end
+
+    # Generates stats for range fields in a solr format.
+    def get_range_stats(facets)
+      range_facet_fields = blacklight_config.facet_fields
+        .select { |name, field| field[:range] }.keys
+
+      stats = facets.select { |f| range_facet_fields.include? f["name"] }
+        .map { |field|
+
+        values = field["values"]
+          .map { |f| { value: f["value"].to_i, count: f["count"] } }
+          .sort_by { |f| f[:value] }
+
+        min = values.first[:value]
+        max = values.last[:value]
+        data = facet_segments(field["name"], min, max, values)
+        stat = { min: min, max: max, missing: 0, data: data }
+        [field["name"], stat]
+      }.to_h
+
+      { stats_fields: stats }
+    end
+
+    def facet_segments(field, min, max, values)
+      segments = []
+      field_config = BlacklightRangeLimit.range_config(blacklight_config, field)
+      boundaries = boundaries_for_range_facets(min, max, (field_config[:num_segments] || 10))
+
+      # Now make the boundaries into actual filter.queries.
+      0.upto(boundaries.length - 2) do |index|
+        first = boundaries[index]
+        last =  boundaries[index + 1].to_i - 1
+        count = values.select { |f| f[:value] >= first && f[:value] < last }
+          .map { |f| f[:count] }
+          .reduce(0, &:+)
+
+        segments << { from: first, to: last, count: count }
+      end
+      segments
     end
 
     def documents

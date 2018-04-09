@@ -51,8 +51,6 @@ class PrimoCentralController < CatalogController
   end
 
   def solr_range_queries_to_a(solr_field)
-    debugger
-    [ {from: 1900, to: 1950, count: 30 }, { from: 1951, to: 2000, count: 500}, { from: 2001, to: 2018, count: 10000 }]
+    @response[:stats][:stats_fields][solr_field][:data] || []
   end
-
 end
