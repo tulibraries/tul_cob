@@ -2,13 +2,31 @@
 
 require "rails_helper"
 
-RSpec.describe AlmaDataHelper, type: :helper do
+RSpec.describe AlmaDataHelper type: :helper do
   describe "#availability_status(item)" do
+    context "item base_status is 1 and policy is Non-circulating" do
+      let(:item) do
+        { "item_data" =>
+           { "base_status" =>
+             { "value" => "1" },
+             "policy" =>
+             { "desc" => "Non-circulating" }
+           }
+         }
+      end
+
+      it "displays library use only" do
+        expect(availability_status(item)).to eq "Library Use Only"
+      end
+    end
+
     context "item base_status is 1" do
       let(:item) do
         { "item_data" =>
            { "base_status" =>
-             { "value" => "1" }
+             { "value" => "1" },
+             "policy" =>
+             { "desc" => "" }
            }
          }
       end
