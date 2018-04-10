@@ -30,6 +30,9 @@ class PrimoCentralController < CatalogController
     config.add_show_field "isPartOf", label: "Is Part of"
     config.add_show_field "relation", label: "Related Title", helper_method: "list_with_links"
     config.add_show_field "doi", label: "DOI"
+
+    # Facet fields
+    config.add_facet_field "domain", label: "Collection", limit: true, show: true
   end
 
   # get a single document from the index
