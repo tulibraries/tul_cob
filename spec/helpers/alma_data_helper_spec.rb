@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe AlmaDataHelper type: :helper do
+RSpec.describe AlmaDataHelper, type: :helper do
   describe "#availability_status(item)" do
     context "item base_status is 1 and policy is Non-circulating" do
       let(:item) do
