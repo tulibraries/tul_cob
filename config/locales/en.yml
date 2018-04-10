@@ -22,6 +22,9 @@
 en:
   bento_search:
     published: "Published"
+  availability_code:
+    online_resources: "Online"
+    peer_reviewed: "Peer Reviewed"
   language_code:
     ar: "Afar"
     abk: "Abkhaz"
