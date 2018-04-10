@@ -14,6 +14,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
 
   #helper BlacklightAlma::HelperBehavior
+  helper_method :translate_language_code
 
   configure_blacklight do |config|
     # default advanced config values
@@ -234,7 +235,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, helper_method: :translate_language_code
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -483,7 +484,7 @@ class CatalogController < ApplicationController
   def sms_action(documents)
     @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
     body = text_this_message_body(params)
-    message = @client.messages.create(
+    @client.messages.create(
       body: body,
       to:   params[:to],
       from: Rails.configuration.twilio[:phone_number]
@@ -506,5 +507,9 @@ class CatalogController < ApplicationController
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"
+  end
+
+  def translate_language_code(code)
+    t("language_code.#{code}", default: code)
   end
 end
