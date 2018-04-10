@@ -43,12 +43,16 @@ module AlmaDataHelper
     end
   end
 
-  def library_status(item)
-    if item["holding_data"]["in_temp_location"] == true
-      Rails.configuration.libraries[item["holding_data"]["temp_library"]["value"]]
-    else
-      Rails.configuration.libraries[item["item_data"]["library"]["value"]]
-    end
+  def library_name(item)
+    libraries = item.group_by { |lib| lib["item_data"]["library"]["value"] }
+  end
+
+  def temp_library(item)
+    libraries = item.map { |lib| lib["holding_data"]["temp_library"]["value"] if lib["holding_data"]["in_temp_location"] == true }
+  end
+
+  def library_name_from_short_code(short_code)
+    Rails.configuration.libraries[short_code]
   end
 
   def alternative_call_number(item)

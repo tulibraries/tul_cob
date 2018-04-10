@@ -150,18 +150,42 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#library_status(item)" do
-    context "item is in temporary library" do
+  describe "#temp_library(item)" do
+    context "item is in a temporary location" do
       let(:item) do
-        { "holding_data" =>
+        [{ "holding_data" =>
            { "in_temp_location" => true,
              "temp_library" => { "value" => "KARDON" }
             }
-         }
+        }]
       end
 
-      it "displays temporary library" do
-        expect(library_status(item)).to eq "Remote Storage"
+      it "displays temporary library code" do
+        expect(temp_library(item)).to have_text "KARDON"
+      end
+    end
+  end
+
+  describe "#library_name(item)" do
+    context "item is in a library" do
+      let(:item) do
+        [{ "item_data" => {
+          "library" => { "value" => "MAIN" }
+          }
+        }]
+      end
+
+      it "displays library code" do
+        expect(library_name(item)).to have_text "MAIN"
+      end
+    end
+  end
+
+  describe "#library_name_from_short_code(short_code)" do
+    context "library codes are converted to names using translation map" do
+      let(:short_code) { "MAIN" }
+      it "displays library name" do
+        expect(library_name_from_short_code(short_code)).to eq "Paley Library"
       end
     end
   end
@@ -171,7 +195,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "item_data" =>
            { "alternative_call_number" => "alternate" }
-         }
+        }
       end
 
       it "displays alternate call number" do
