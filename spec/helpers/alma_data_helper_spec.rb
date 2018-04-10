@@ -163,7 +163,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays library code" do
-        expect(library_name(item)).to eq "MAIN" => [{"holding_data"=>{"in_temp_location"=>false}, "item_data"=>{"library"=>{"value"=>"MAIN"}}}]
+        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" } } }]
       end
     end
 
@@ -180,7 +180,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays temporary library code" do
-        expect(library_name(item)).to eq "RES-SHARE" => [{"holding_data"=>{"in_temp_location"=>true, "temp_library"=>{"value"=>"RES-SHARE"}}, "item_data"=>{"library"=>{"value"=>"MAIN"}}}]
+        expect(library_name(item)).to eq "RES-SHARE" => [{ "holding_data" => { "in_temp_location" => true, "temp_library" => { "value" => "RES-SHARE" } }, "item_data" => { "library" => { "value" => "MAIN" } } }]
       end
     end
   end
