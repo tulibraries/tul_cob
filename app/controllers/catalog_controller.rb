@@ -14,7 +14,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
 
   #helper BlacklightAlma::HelperBehavior
-  helper_method :translate_language_code, :translate_availability_code
+  helper_method :translate_language_code, :translate_availability_code, :translate_resource_type_code
 
   configure_blacklight do |config|
     # default advanced config values
@@ -227,7 +227,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field "availability_facet", label: "Availability", home: true, helper_method: :translate_availability_code
     config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
+    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
@@ -519,5 +519,9 @@ class CatalogController < ApplicationController
 
   def translate_availability_code(code)
     translate_code(code, "availability")
+  end
+
+  def translate_resource_type_code(code)
+    translate_code(code, "resource_type")
   end
 end
