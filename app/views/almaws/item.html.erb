@@ -3,13 +3,7 @@
     <thead>
       <tr>
         <th scope="col">
-          <% temp_library(items).each do |temp| %>
-            <% if temp.present? %>
-              <%= library_name_from_short_code(temp) %>
-            <% else %>
-              <%= library_name_from_short_code(key) %>
-            <% end %>
-          <% end %>
+          <%= library_name_from_short_code(key) %>
         </th>
         <th scope="col">Availability</th>
       </tr>

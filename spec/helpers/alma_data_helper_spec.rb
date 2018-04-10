@@ -150,33 +150,37 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#temp_library(item)" do
-    context "item is in a temporary location" do
+  describe "#library_name(item)" do
+    context "item is in a permanent library" do
       let(:item) do
         [{ "holding_data" =>
-           { "in_temp_location" => true,
-             "temp_library" => { "value" => "KARDON" }
-            }
-        }]
-      end
-
-      it "displays temporary library code" do
-        expect(temp_library(item)).to have_text "KARDON"
-      end
-    end
-  end
-
-  describe "#library_name(item)" do
-    context "item is in a library" do
-      let(:item) do
-        [{ "item_data" => {
-          "library" => { "value" => "MAIN" }
-          }
-        }]
+           { "in_temp_location" => false,
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" }
+           }
+         }]
       end
 
       it "displays library code" do
-        expect(library_name(item)).to have_text "MAIN"
+        expect(library_name(item)).to eq "MAIN" => [{"holding_data"=>{"in_temp_location"=>false}, "item_data"=>{"library"=>{"value"=>"MAIN"}}}]
+      end
+    end
+
+    context "item is in a temporary library" do
+      let(:item) do
+        [{ "holding_data" =>
+           { "in_temp_location" => true,
+             "temp_library" => { "value" => "RES-SHARE" },
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" }
+           }
+         }]
+      end
+
+      it "displays temporary library code" do
+        expect(library_name(item)).to eq "RES-SHARE" => [{"holding_data"=>{"in_temp_location"=>true, "temp_library"=>{"value"=>"RES-SHARE"}}, "item_data"=>{"library"=>{"value"=>"MAIN"}}}]
       end
     end
   end
