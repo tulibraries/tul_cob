@@ -7,7 +7,13 @@ BentoSearch.register_engine("blacklight") do |conf|
   conf.for_display do |display|
     display.decorator = "TulDecorator"
   end
+end
 
+BentoSearch.register_engine("journals") do |conf|
+  conf.engine = "BentoSearch::JournalsEngine"
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+  end
 end
 
 BentoSearch.register_engine("primo") do |conf|
