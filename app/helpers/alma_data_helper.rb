@@ -43,8 +43,8 @@ module AlmaDataHelper
     end
   end
 
-  def library_name(item)
-    libraries = item.group_by do |lib|
+  def library_name(items)
+    items.group_by do |lib|
       (lib["holding_data"]["temp_library"]["value"] if lib["holding_data"]["in_temp_location"] == true) || (lib["item_data"]["library"]["value"])
     end
   end
