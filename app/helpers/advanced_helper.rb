@@ -3,6 +3,24 @@
 module AdvancedHelper
   include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
+  def label_tag_default_for(key)
+    unless params[key]
+      if ("f_1" == key)
+        return params["search_field"]
+      elsif ("q_1" == key)
+        return params["q"]
+      end
+    end
+
+    if !params[key].blank?
+      return params[key]
+    elsif params["search_field"] == key
+      return params["q"]
+    else
+      return nil
+    end
+  end
+
   def advanced_key_value
     key_value = []
     search_fields_for_advanced_search.each do |field|
