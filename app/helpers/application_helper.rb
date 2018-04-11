@@ -155,9 +155,13 @@ module ApplicationHelper
     end
   end
 
+  # TODO: Is variation here better handled in multiple link templates?
   def bento_link_to_full_results(results)
-    if results.engine_id.include?("blacklight")
+    case results.engine_id
+    when "blaclight"
       link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
+    when "journals"
+      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] }), class: "full-results"
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end
