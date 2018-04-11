@@ -11,10 +11,14 @@ class BentoSearch::PrimoEngine
 
   def search_implementation(args)
     @query = args.fetch(:query, "")
-
     results = BentoSearch::Results.new
 
-    primo_results = search_primo
+    if @query.empty?
+      primo_results = { "docs" => [] }
+    else
+      primo_results = search_primo
+    end
+
     primo_results["docs"].each do |doc|
       results << conform_to_bento_result(doc)
     end
@@ -22,7 +26,6 @@ class BentoSearch::PrimoEngine
   end
 
   def search_primo
-    puts api_url
     JSON.parse(open(api_url).read)
   end
 
