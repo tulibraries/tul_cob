@@ -5,7 +5,11 @@ module AlmaDataHelper
 
   def availability_status(item)
     if item["item_data"]["base_status"]["value"] == "1"
-      "Available"
+      if item["item_data"]["policy"]["desc"].include?("Non-circulating")
+        "Library Use Only"
+      else
+        "Available"
+      end
     elsif item["item_data"]["base_status"]["value"] == "0"
       unavailable_items(item)
     end
