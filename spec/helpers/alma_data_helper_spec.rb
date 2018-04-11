@@ -150,18 +150,46 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#library_status(item)" do
-    context "item is in temporary library" do
+  describe "#library_name(item)" do
+    context "item is in a permanent library" do
       let(:item) do
-        { "holding_data" =>
-           { "in_temp_location" => true,
-             "temp_library" => { "value" => "KARDON" }
-            }
-         }
+        [{ "holding_data" =>
+           { "in_temp_location" => false,
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" }
+           }
+         }]
       end
 
-      it "displays temporary library" do
-        expect(library_status(item)).to eq "Remote Storage"
+      it "displays library code" do
+        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" } } }]
+      end
+    end
+
+    context "item is in a temporary library" do
+      let(:item) do
+        [{ "holding_data" =>
+           { "in_temp_location" => true,
+             "temp_library" => { "value" => "RES-SHARE" },
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" }
+           }
+         }]
+      end
+
+      it "displays temporary library code" do
+        expect(library_name(item)).to eq "RES-SHARE" => [{ "holding_data" => { "in_temp_location" => true, "temp_library" => { "value" => "RES-SHARE" } }, "item_data" => { "library" => { "value" => "MAIN" } } }]
+      end
+    end
+  end
+
+  describe "#library_name_from_short_code(short_code)" do
+    context "library codes are converted to names using translation map" do
+      let(:short_code) { "MAIN" }
+      it "displays library name" do
+        expect(library_name_from_short_code(short_code)).to eq "Paley Library"
       end
     end
   end
@@ -171,7 +199,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "item_data" =>
            { "alternative_call_number" => "alternate" }
-         }
+        }
       end
 
       it "displays alternate call number" do
