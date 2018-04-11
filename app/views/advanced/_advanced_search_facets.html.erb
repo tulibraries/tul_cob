@@ -31,13 +31,15 @@
     </div>
     <div class="col col-sm-8">
     <div class="col col-sm-3 pub-date">
+      <label for="range_pub_date_sort_begin" class="sr-only">Publication date range (starting year)</label>
       <%= render_range_input("pub_date_sort", :begin) %>
     </div>
-    <div class="col col-sm-1 pub-date-separator"> 
-     to 
+    <div class="col col-sm-1 pub-date-separator">
+     to
     </div>
     <div class="col col-sm-3 pub-date">
-       <%= render_range_input("pub_date_sort", :end) %>
+      <label for="range_pub_date_sort_end" class="sr-only">Publication date range (ending year)</label>
+      <%= render_range_input("pub_date_sort", :end) %>
     </div>
   </div>
 </div>
