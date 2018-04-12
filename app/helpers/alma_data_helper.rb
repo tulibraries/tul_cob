@@ -38,9 +38,9 @@ module AlmaDataHelper
   def location_status(item)
     if item["holding_data"]["in_temp_location"] == true
       if item["holding_data"]["temp_call_number"].empty?
-        "#{item["holding_data"]["temp_location"]["desc"]}"
+        "#{Rails.configuration.locations[item["holding_data"]["temp_library"]["value"]][item["holding_data"]["temp_location"]["value"]]}"
       else
-        "#{item["holding_data"]["temp_location"]["desc"]} - #{item["holding_data"]["temp_call_number"]}"
+        "#{Rails.configuration.locations[item["holding_data"]["temp_library"]["value"]][item["holding_data"]["temp_location"]["value"]]}"
       end
     else
       "#{Rails.configuration.locations[item["item_data"]["library"]["value"]][item["item_data"]["location"]["value"]]} - #{item["holding_data"]["call_number"]}"

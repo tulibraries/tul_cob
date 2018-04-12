@@ -20,7 +20,11 @@ namespace :locations do
       locations = location_response["locations"]["location"]
       location_list[code] =  {}
       locations.each do |l|
-        location_list[code][l["code"]] = l.fetch("external_name") if !l.fetch("external_name").nil?
+        if code == "RES_SHARE"
+          location_list[code][l["code"]] = l.fetch("name") if !l.fetch("name").nil?
+        else
+          location_list[code][l["code"]] = l.fetch("external_name") if !l.fetch("external_name").nil?
+        end
       end
     end
 
