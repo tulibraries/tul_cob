@@ -137,6 +137,153 @@ RSpec.describe Traject::Macros::Custom do
 
   subject { test_class.new }
 
+  describe "#extract_creator" do
+    let(:path) { "creator_examples.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "creator_field", extract_creator
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "No name available" do
+      it "does not extract a cretor" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "Tag 100 only with values in all the subfields" do
+      it "extracts creator field in an expected way" do
+        expected = { "creator_field" => ["a b c q d|e j m n o p"] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
+    context "Tag 110 only with values in all the subfields" do
+      it "extracts creator field in an expected way" do
+        expected = { "creator_field" => ["a b d c|e l m n o p t"] }
+        expect(subject.map_record(records[2])).to eq(expected)
+      end
+    end
+
+    context "Tag 111 only with values in all the subfields" do
+      it "extracts creator field in an expected way" do
+        expected = { "creator_field" => ["a n d c j|e l o p t"] }
+        expect(subject.map_record(records[3])).to eq(expected)
+      end
+    end
+
+    context "All three creator fields (100, 110, 111) with all values." do
+      it "extracts creator fields in an expected way" do
+        expected = { "creator_field" => ["a b c q d|e j m n o p",
+                                         "a b d c|e l m n o p t",
+                                         "a n d c j|e l o p t"] }
+        expect(subject.map_record(records[4])).to eq(expected)
+      end
+    end
+  end
+
+  describe "#extract_creator_vern" do
+    let(:path) { "creator_vern_examples.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "creator_vern_display", extract_creator_vern
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "No name available" do
+      xit "does not extract a cretor" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "Tag 100 only with values in all the subfields" do
+      xit "extracts creator field in an expected way" do
+        expected = { "creator_vern_field" => ["a b c q d|e j m n o p"] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
+    context "Tag 110 only with values in all the subfields" do
+      xit "extracts creator field in an expected way" do
+        expected = { "creator_vern_field" => ["a b d c|e l m n o p t"] }
+        expect(subject.map_record(records[2])).to eq(expected)
+      end
+    end
+
+    context "Tag 111 only with values in all the subfields" do
+      xit "extracts creator field in an expected way" do
+        expected = { "creator_vern_field" => ["a n d c j|e l o p t"] }
+        expect(subject.map_record(records[3])).to eq(expected)
+      end
+    end
+
+    context "All three creator fields (100, 110, 111) with all values." do
+      xit "extracts creator fields in an expected way" do
+        expected = { "creator_field" => ["a b c q d|e j m n o p",
+                                         "a b d c|e l m n o p t",
+                                         "a n d c j|e l o p t"] }
+        expect(subject.map_record(records[4])).to eq(expected)
+      end
+    end
+  end
+
+  describe "#extract_contributor" do
+    let(:path) { "contributor_examples.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "contributor_display", extract_contributor
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "No contributor info available" do
+      it "does not extract a cretor" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "Tag 700contributor with values in all the subfields" do
+      it "extracts creator field in an expected way" do
+        expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u"] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
+    context "Tag 710 ontributor with values in all the subfields" do
+      it "extracts creator field idisaplayexpected way" do
+        expected = { "contributor_display" => ["a b d c|e l m n o p t"] }
+        expect(subject.map_record(records[2])).to eq(expected)
+      end
+    end
+
+    context "Tag 711 ontributor with values in all the subfields" do
+      it "extracts creator field in an expected way" do
+        expected = { "contributor_display" => ["a n d c j|e l o p t"] }
+        expect(subject.map_record(records[3])).to eq(expected)
+      end
+    end
+
+    context "All threontributor fields (700, 710, 711) with all values." do
+      it "extracts creator fields display expected way" do
+        expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u",
+                                         "a b d c|e l m n o p t",
+                                         "a n d c j|e l o p t"] }
+        expect(subject.map_record(records[4])).to eq(expected)
+      end
+    end
+  end
+
   describe "#extract_genre" do
     let(:path) { "genre_facet_examples.xml" }
     before(:each) do
@@ -160,8 +307,6 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[1])).to eq({})
       end
     end
-
-
   end
 
   context "electronic resource macros" do
