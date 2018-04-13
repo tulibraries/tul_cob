@@ -21,9 +21,11 @@ namespace :locations do
       location_list[code] =  {}
       locations.each do |l|
         if code == "RES_SHARE"
-          location_list[code][l["code"]] = l.fetch("name") if !l.fetch("name").nil?
+          name = l.fetch("name", "").to_s
+          location_list[code][l["code"]]  = (name.empty?) ? "Location information not available" : name
         else
-          location_list[code][l["code"]] = l.fetch("external_name") if !l.fetch("external_name").nil?
+          external_name = l.fetch("external_name", "").to_s
+          location_list[code][l["code"]]  = (external_name.empty?) ? "Location information not available" : external_name
         end
       end
     end
