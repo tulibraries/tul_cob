@@ -4,7 +4,7 @@ require_relative "boot"
 
 require "rails/all"
 require "awesome_print"
-require 'dot_properties'
+require "dot_properties"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

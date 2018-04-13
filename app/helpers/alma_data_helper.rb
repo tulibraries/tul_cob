@@ -40,7 +40,7 @@ module AlmaDataHelper
       if item["holding_data"]["temp_call_number"].empty?
         "#{Rails.configuration.locations[item["holding_data"]["temp_library"]["value"]][item["holding_data"]["temp_location"]["value"]]}"
       else
-        "#{Rails.configuration.locations[item["holding_data"]["temp_library"]["value"]][item["holding_data"]["temp_location"]["value"]]}"
+        "#{Rails.configuration.locations[item["holding_data"]["temp_library"]["value"]][item["holding_data"]["temp_location"]["value"]]} - #{item["holding_data"]["temp_call_number"]}"
       end
     else
       "#{Rails.configuration.locations[item["item_data"]["library"]["value"]][item["item_data"]["location"]["value"]]} - #{item["holding_data"]["call_number"]}"
