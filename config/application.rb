@@ -4,6 +4,7 @@ require_relative "boot"
 
 require "rails/all"
 require "awesome_print"
+require "dot_properties"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -17,7 +18,7 @@ module Tulcob
     # config/initializers: All .rb files in that directory are automatically
     # loaded.
     config.process_types = config_for(:process_types).with_indifferent_access
-    config.libraries = config_for(:libraries).with_indifferent_access
+    config.libraries = DotProperties.load(Rails.root + "config/translation_maps/libraries_map.properties")
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
     config.bento = config_for(:bento).with_indifferent_access

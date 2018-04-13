@@ -138,14 +138,15 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         { "holding_data" =>
            { "in_temp_location" => true,
-             "temp_location" => { "desc" => "Temporary location" },
+             "temp_library" => { "value" => "RES_SHARE" },
+             "temp_location" => { "value" => "IN_RS_REQ" },
              "temp_call_number" => "Temp call number"
             }
          }
       end
 
       it "displays temporary location and call number" do
-        expect(location_status(item)).to eq "Temporary location - Temp call number"
+        expect(location_status(item)).to eq "Lending Resource Sharing Requests - Temp call number"
       end
     end
 

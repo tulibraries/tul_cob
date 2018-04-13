@@ -316,7 +316,7 @@ module Traject
         lambda do |rec, acc|
           rec.fields(["HLD"]).each do |field|
             if field["b"] != "RES_SHARE"
-              acc << Traject::TranslationMap.new("locations_map")[field["b"]]
+              acc << Traject::TranslationMap.new("libraries_map")[field["b"]]
             end
           end
         end
@@ -326,7 +326,7 @@ module Traject
         lambda do |rec, acc|
           rec.fields(["HLD"]).each do |field|
             if field["b"] != "RES_SHARE"
-              location = Traject::TranslationMap.new("locations_map")[field["b"]]
+              location = Traject::TranslationMap.new("libraries_map")[field["b"]]
               shelf = Traject::TranslationMap.new("shelf_map")[field["c"]]
               call_number = field["h"]
               acc << "#{location} (#{shelf})\n(#{call_number})"
