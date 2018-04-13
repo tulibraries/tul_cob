@@ -155,15 +155,12 @@ module BlacklightAdvancedSearch
       buttons = guided_search.map { |s|
         label, query, action = s
 
-        binding.pry
         render_constraint_element(
           label, query,
-          #remove: search_action_path(remove_guided_keyword_query(action, my_params))
-          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
+          remove: search_action_path(remove_guided_keyword_query(action, my_params))
         )
       }.flatten
 
-      binding.pry
       safe_join(buttons, "\n")
     end
 
