@@ -483,7 +483,7 @@ class CatalogController < ApplicationController
   def sms_action(documents)
     @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
     body = text_this_message_body(params)
-    message = @client.messages.create(
+    @client.messages.create(
       body: body,
       to:   params[:to],
       from: Rails.configuration.twilio[:phone_number]

@@ -8,7 +8,7 @@ module Blacklight::PrimoCentral::Document
 
   def initialize(doc, req = nil)
     format = doc["@TYPE"] || doc["type"]
-    doc["format"] = [format]
+    doc["type"] = [format]
     url = doc["delivery"]["GetIt1"]
       .first["links"]
       .first["link"]
