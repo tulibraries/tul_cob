@@ -156,7 +156,7 @@ module BlacklightAdvancedSearch
 
         render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
+          remove: search_action_path(remove_guided_keyword_query(action, my_params))
         )
       }.flatten
 
