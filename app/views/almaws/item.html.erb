@@ -1,31 +1,39 @@
 <table class="table table-responsive borderless">
-  <% library_name(@items["item"]).each do |key,items| %>
-    <thead>
-      <tr>
-        <th scope="col">
-          <%= library_name_from_short_code(key) %>
-        </th>
-        <th scope="col">Availability</th>
-      </tr>
-    </thead>
-    <tbody >
-      <% items.each do |item| %>
+  <% unless @items["item"].nil? %>
+    <% library_name(@items["item"]).each do |key,items| %>
+      <thead>
         <tr>
-          <td scope="row"><%= location_status(item) %> <%= alternative_call_number(item) %></td>
-          <td scope="row"><%= availability_status(item) %></td>
-          <td scope="row"></td>
+          <th scope="col">
+            <%= library_name_from_short_code(key) %>
+          </th>
+          <th scope="col">Availability</th>
         </tr>
+      </thead>
+      <tbody >
+        <% items.each do |item| %>
+          <tr>
+            <td scope="row"><%= location_status(item) %> <%= alternative_call_number(item) %></td>
+            <td scope="row"><%= availability_status(item) %></td>
+            <td scope="row"></td>
+          </tr>
 
-        <tr>
-          <td scope="row"><%= description(item) %></td>
-        </tr>
-        <tr>
-          <td scope="row"><%= public_note(item) %></td>
-        </tr>
-        <!-- <tr>
-          <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
-        </tr> -->
-      <% end %>
-    </tbody>
+          <tr>
+            <td scope="row"><%= description(item) %></td>
+          </tr>
+          <tr>
+            <td scope="row"><%= public_note(item) %></td>
+          </tr>
+          <!-- <tr>
+            <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
+          </tr> -->
+        <% end %>
+      </tbody>
+    <% end %>
+    <% else %>
+    <tr>
+      <td>
+        We are unable to find availability information for this record. Please contact the library for more information.
+      </td>
+    </tr>
   <% end %>
 </table>
