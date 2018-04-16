@@ -40,6 +40,7 @@ class PrimoCentralController < CatalogController
 
     # Index fields
     config.add_index_field :isPartOf, label: "Is Part Of"
+    config.add_index_field :creator, label: "Author/Creator", multi: true
     config.add_index_field :date, label: "Year"
 
     # Facet fields
