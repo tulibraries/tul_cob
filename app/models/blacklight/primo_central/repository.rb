@@ -5,6 +5,7 @@ require "primo"
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
+      id = id.gsub("-dot-", ".")
       response = Primo.find(id: id)
       blacklight_config.document_model.new response.to_h
     end
