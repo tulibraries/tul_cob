@@ -102,13 +102,11 @@ class PrimoCentralController < CatalogController
 
   def doc_translate_language_code(response)
     codes = response[:document][:languageId]
-    codes.map { |c| translate_code(c, "language")}
+    codes.map { |c| translate_code(c, "language") }
   end
 
   def doc_translate_resource_type_code(response)
     codes = response[:document][:type]
-    codes.map { |c| translate_code(c, "resource_type")}
+    codes.map { |c| translate_code(c, "resource_type") }
   end
-
-
 end
