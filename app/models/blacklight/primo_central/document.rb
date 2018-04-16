@@ -13,6 +13,9 @@ module Blacklight::PrimoCentral::Document
       .first["links"]
       .first["link"]
 
+    # dots do not get URL encoded and break links to articles.
+    doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
+
     doc["link"] = url
 
     solr_to_primo_keys.each do |solr_key, primo_key|
