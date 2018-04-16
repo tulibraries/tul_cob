@@ -19,7 +19,7 @@ module Blacklight::PrimoCentral
 
       # Adapt primo facets to solr so that facets get hooked up properly
       facets.each do |f|
-        f.name = primo_to_solr_facet(f.name)
+        #f.name = primo_to_solr_facet(f.name)
       end
 
       facet_counts = options.fetch(:facet_counts, {})

@@ -14,7 +14,6 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
 
   #helper BlacklightAlma::HelperBehavior
-  helper_method :translate_language_code, :translate_availability_code, :translate_resource_type_code
 
   configure_blacklight do |config|
     # default advanced config values
@@ -225,9 +224,9 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true, helper_method: :translate_availability_code
+    config.add_facet_field "availability_facet", label: "Availability", home: true
     config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
+    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
@@ -235,7 +234,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, helper_method: :translate_language_code
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -507,21 +506,5 @@ class CatalogController < ApplicationController
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"
-  end
-
-  def translate_code(code, type)
-    t("#{type}_code.#{code}", default: code)
-  end
-
-  def translate_language_code(code)
-    translate_code(code, "language")
-  end
-
-  def translate_availability_code(code)
-    translate_code(code, "availability")
-  end
-
-  def translate_resource_type_code(code)
-    translate_code(code, "resource_type")
   end
 end
