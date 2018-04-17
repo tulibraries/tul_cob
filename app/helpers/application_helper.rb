@@ -58,6 +58,14 @@ module ApplicationHelper
     creator
   end
 
+  def has_one_electronic_resource?(document)
+    document.fetch("electronic_resource_display", []).length == 1
+  end
+
+  def has_many_electronic_resources?(document)
+    document.fetch("electronic_resource_display", []).length > 1
+  end
+
   def check_for_full_http_link(args)
     args[:document][args[:field]].map { |field|
       if field.include?("http")

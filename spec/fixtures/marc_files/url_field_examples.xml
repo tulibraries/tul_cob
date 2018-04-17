@@ -324,10 +324,24 @@
     </datafield>
   </record>
   <record>
-    <!-- 14. ARCHIVE_IT_LINKS aren't included in Online Availability  -->
+    <!-- 14. Indicator1= 4 and indicator2 = NOT 2 maps to Online  -->
     <datafield tag="856" ind1="4" ind2="0">
       <subfield code="z">Adobe Acrobat reader required to view</subfield>
       <subfield code="u">http://www.access.gpo.gov/congress/commissions/secrecy/index.html</subfield>
     </datafield>
   </record>
+  <record>
+  <!-- 15. Finding aid and more links test record  -->
+  <datafield tag="245" ind1="4" ind2="2">
+    <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+    <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+    <subfield code="u">http://library.temple.edu/collections/scrc/camp-kennebec-alumni</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="3">View preserved website versions on Archive-It.</subfield>
+    <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
+  </datafield>
+</record>
 </collection>

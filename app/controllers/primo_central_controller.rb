@@ -41,6 +41,7 @@ class PrimoCentralController < CatalogController
     # Index fields
     config.add_index_field :isPartOf, label: "Is Part Of"
     config.add_index_field :creator, label: "Author/Creator", multi: true
+    config.add_index_field :type, label: "Resource Type", multi: true
     config.add_index_field :date, label: "Year"
 
     # Facet fields
@@ -56,7 +57,6 @@ class PrimoCentralController < CatalogController
     config.add_show_field :contributor, helper_method: :browse_creator, multi: true
     config.add_show_field :type, label: "Resource Type", multi: true, helper_method: :doc_translate_resource_type_code
     config.add_show_field :publisher, label: "Published"
-    config.add_show_field :format, label: "Physical Description Display"
     config.add_show_field :date, label: "Date"
     config.add_show_field :isPartOf, label: "Is Part of"
     config.add_show_field :relation, label: "Related Title", helper_method: "list_with_links"
