@@ -412,7 +412,7 @@ RSpec.describe Traject::Macros::Custom do
 
         context "multiple 856 fields (ind1 = 4; ind2 = not 2) with exceptions" do
           it "does not map a field to electronic_resource_display" do
-            expect(subject.map_record(records[6])).to eq({})
+            expect(subject.map_record(records[15])).to eq({})
           end
         end
       end
