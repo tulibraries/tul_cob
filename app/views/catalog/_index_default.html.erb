@@ -13,10 +13,10 @@
       <% if should_render_index_field? document, field %>
         <dt class="blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
         <dd class="blacklight-<%= field_name.parameterize %>">
-          <% if field_name == "format"  %>
-            <%= separate_formats(document).html_safe %>
+          <% if field[:raw] %>
+            <%= raw doc_presenter.field_value(field_name) %>
           <% else %>
-            <%= doc_presenter.field_value field_name %>
+            <%= doc_presenter.field_value(field_name) %>
           <% end -%>
 
             </dd>
