@@ -323,6 +323,24 @@ RSpec.describe Traject::Macros::Custom do
         end
       end
 
+      context "856 fields with an indicator 1 = 7 are NOT Online" do
+        it "only indicator1 value 4 are included in Online records" do
+          expect(subject.map_record(records[12])).to_not eq("Online")
+        end
+      end
+
+      context "856 fields with an indicator 1 = 4 with no subfield u" do
+        it "does not throw error with nil subfield u" do
+          expect(subject.map_record(records[13])).to_not eq("Online")
+        end
+      end
+
+      context "856 fields with correct indactors are Online" do
+        it "indicator1 = 4 and indicator2 = NOT 2 maps to Online" do
+          expect(subject.map_record(records[14])).to eq("availability_facet" => ["Online"])
+        end
+      end
+
       context "Archive-it links are NOT Online" do
         it "does not include ARCHIVE_IT_LINKS in Online records" do
           expect(subject.map_record(records[9])).to_not eq("Online")

@@ -235,8 +235,10 @@ module Traject
           unless acc.include?("Online")
             rec.fields(["856"]).each do |field|
               z3 = [field["z"], field["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3) || rec.fields("856").empty? || field["u"].include?(ARCHIVE_IT_LINKS)
-                acc << "Online" if field.indicator1 == "4" && field.indicator2 != "2"
+              unless field["u"].nil?
+                unless NOT_FULL_TEXT.match(z3) || rec.fields("856").empty? || field["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << "Online" if field.indicator1 == "4" && field.indicator2 != "2"
+                end
               end
             end
           end
