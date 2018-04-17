@@ -52,6 +52,6 @@ module Blacklight::PrimoCentral::Document
     end
 
     def lccn
-      @url_query["rtf.lccn"]
+      @url_query["rft.lccn"]
     end
 end
