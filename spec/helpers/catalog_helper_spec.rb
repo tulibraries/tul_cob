@@ -32,7 +32,7 @@ RSpec.describe CatalogHelper, type: :helper do
     context "document contains an isbn" do
       let(:document) { {} }
       it "returns the data-isbn string" do
-        expect(isbn_data_attribute(document)).to eql ""
+        expect(isbn_data_attribute(document)).to be_nil
       end
     end
   end
