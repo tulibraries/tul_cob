@@ -7,17 +7,17 @@ module Blacklight::PrimoCentral::Document
   include Blacklight::PrimoCentral::SolrAdaptor
 
   def initialize(doc, req = nil)
-    format = doc["@TYPE"] || doc["type"]
-    doc["type"] = [format]
-    doc["format"] = [format]
     @url = url(doc)
     @url_query = url_query
 
+    format = doc["@TYPE"] || doc["type"]
     # dots do not get URL encoded and break links to articles.
     doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
+    doc["type"] = [format]
+    doc["format"] = [format]
     doc["link"] = @url
-    doc["isbn"] = isbn unless doc["isbn"]
-    doc["lccn"] = lccn unless doc["lccn"]
+    doc["isbn"] ||= isbn
+    doc["lccn"] ||= lccn
 
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
