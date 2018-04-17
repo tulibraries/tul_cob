@@ -246,7 +246,7 @@ class CatalogController < ApplicationController
 
     config.add_index_field "imprint_display", label: "Published"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
-    config.add_index_field "format", label: "Resource Type"
+    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
 
 
 

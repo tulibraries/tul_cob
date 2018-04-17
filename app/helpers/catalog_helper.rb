@@ -31,12 +31,15 @@ module CatalogHelper
     "svg/" + document.fetch(:format, "unknown")[0].to_s.parameterize.underscore + ".svg"
   end
 
-  def separate_formats(document)
+  def separate_formats(response)
+    document = response[:document]
     formats = %w[]
     document[:format].each do |format|
-      formats << '<span class="' + "#{format.to_s.parameterize.underscore}" + '">' + format.to_s + "</span>".html_safe
+      format = h(format)
+      css_class = format.to_s.parameterize.underscore
+      formats << "<span class='#{css_class}'> #{format}</span>"
     end
-    formats.join('<span class="format-concatenator">and</span>')
+    formats.join("<span class='format-concatenator'>and</span>")
   end
 
   # Used to toggle the search bar form path.
