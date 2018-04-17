@@ -13,22 +13,40 @@ module CatalogHelper
   end
 
   def isbn_data_attribute(document)
-    value = document.fetch(:isbn_display, "")
-    return value if value.empty?
+    value = document.fetch(:isbn_display, []).first
     # Get the first ISBN and strip non-numerics
-    "data-isbn=#{value.first.gsub(/\D/, '')}"
+    "data-isbn=#{value.gsub(/\D/, '')}" if value
   end
 
   def lccn_data_attribute(document)
-    value = document.fetch(:lccn_display, "")
-    return value if value.empty?
+    value = document.fetch(:lccn_display, []).first
     # Get the first ISSN and strip non-numerics
-    "data-lccn=#{value.first.gsub(/\D/, '')}"
+    "data-lccn=#{value.first.gsub(/\D/, '')}" if value
   end
 
 
   def default_cover_image(document)
-    "svg/" + document.fetch(:format, "unknown")[0].to_s.parameterize.underscore + ".svg"
+    formats = document.fetch(:format, ["unknown"])
+    format = formats.first.to_s.parameterize.underscore
+    default_image = {
+      "article" => "journal_periodical",
+      "dissertation" => "script",
+      "government_document" => "journal_periodical",
+      "journal" => "journal_periodical",
+      "legal_document" => "journal_periodical",
+      "newspaper_article" => "journal_periodical",
+      "other" => "unknown",
+      "patent" => "journal_periodical",
+      "reference_entry" => "journal_periodical",
+      "research_dataset" => "dataset",
+      "review" => "journal_periodical",
+      "statistical_data_set" => "dataset",
+      "technical_report" => "journal_periodical",
+      "text_resource" => "journal_periodical",
+    }
+
+    format = default_image[format] || format
+    "svg/" + format + ".svg"
   end
 
   def separate_formats(document)
