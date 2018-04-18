@@ -170,6 +170,8 @@ module ApplicationHelper
       link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
     when "journals"
       link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] }), class: "full-results"
+    when "books"
+      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end

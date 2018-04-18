@@ -6,3 +6,5 @@ en:
       nice_name: "Primo"
     journals:
       nice_name: "Journals"
+    books:
+      nice_name: "Books"
