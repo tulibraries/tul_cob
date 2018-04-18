@@ -180,7 +180,7 @@ module BlacklightAdvancedSearch
           op = "op_#{position - 1}"
         end
 
-        field = search_field_def_for_key(my_params[f]).to_h
+        field = blacklight_config.search_fields[my_params[f]].to_h
         label = field[:label].to_s
         if position == 1
           query = my_params[q]
