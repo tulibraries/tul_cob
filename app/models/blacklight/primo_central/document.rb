@@ -11,8 +11,9 @@ module Blacklight::PrimoCentral::Document
     @url_query = url_query
 
     format = doc["@TYPE"] || doc["type"]
-    # dots do not get URL encoded and break links to articles.
+    # Dots and slahes break links to articles.
     doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
+    doc[:pnxId] = doc[:pnxId].gsub("/", "-slash-") if doc[:pnxId]
     doc["type"] = [format]
     doc["format"] = [format]
     doc["link"] = @url
