@@ -50,7 +50,6 @@ module Blacklight::PrimoCentral
         "creator_display" => "creator",
         "imprint_display" => "publisher",
         "contributor_display" => "contributor",
-        "phys_desc_display" => "format",
         "pub_date_display" => "creationdate",
         "pub_date" => "creationdate",
         "note_display" => "description",
