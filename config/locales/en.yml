@@ -22,6 +22,14 @@
 en:
   bento_search:
     published: "Published"
+    no_results:
+      title: "No records found"
+      modify_search: "Suggestions"
+      add_search_term: "Enter search terms, if previously empty"
+      spell_check: "Make sure that all words are spelled correctly"
+      modify_words: "Try different keywords"
+      ask_librarian: "Ask a Librarian"
+      for_help: "for help"
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer Reviewed"
