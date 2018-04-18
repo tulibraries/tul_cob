@@ -33,7 +33,7 @@ class PrimoCentralController < CatalogController
     # Search fields
     config.add_search_field :any, label: "All Fields"
     config.add_search_field :title
-    config.add_search_field :creator, label: "Author/Creator/Contributor"
+    config.add_search_field :creator, label: "Author/Creator"
     config.add_search_field :subject
     config.add_search_field :isbn, label: "ISBN"
     config.add_search_field :issn, label: "ISSN"
@@ -53,8 +53,8 @@ class PrimoCentralController < CatalogController
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code
 
     # Show fields
-    config.add_show_field :creator, label: "Author/Creator/Contributor", helper_method: :browse_creator, multi: true
-    config.add_show_field :contributor, helper_method: :browse_creator, multi: true
+    config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true
+    config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true
     config.add_show_field :type, label: "Resource Type", multi: true, helper_method: :doc_translate_resource_type_code
     config.add_show_field :publisher, label: "Published"
     config.add_show_field :date, label: "Date"
