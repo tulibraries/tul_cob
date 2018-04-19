@@ -3,8 +3,6 @@
 class PrimoCentralController < CatalogController
   include Blacklight::Catalog
 
-  helper_method :translate_language_code, :translate_availability_code, :translate_resource_type_code, :doc_translate_resource_type_code, :doc_translate_language_code
-
   configure_blacklight do |config|
     # Reinitialize field configruations.
     config.search_fields = ActiveSupport::OrderedHash.new
@@ -41,7 +39,7 @@ class PrimoCentralController < CatalogController
     # Index fields
     config.add_index_field :isPartOf, label: "Is Part Of"
     config.add_index_field :creator, label: "Author/Creator", multi: true
-    config.add_index_field :type, label: "Resource Type", multi: true
+    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
     config.add_index_field :date, label: "Year"
 
     # Facet fields
@@ -55,7 +53,7 @@ class PrimoCentralController < CatalogController
     # Show fields
     config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true
     config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true
-    config.add_show_field :type, label: "Resource Type", multi: true, helper_method: :doc_translate_resource_type_code
+    config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code
     config.add_show_field :publisher, label: "Published"
     config.add_show_field :date, label: "Date"
     config.add_show_field :isPartOf, label: "Is Part of"
@@ -83,31 +81,5 @@ class PrimoCentralController < CatalogController
   def render_sms_action?(_config, _options)
     # Render if the item can be found at a library
     false
-  end
-
-  def translate_code(code, type)
-    t("#{type}_code.#{code}", default: code)
-  end
-
-  def translate_language_code(code)
-    translate_code(code, "language")
-  end
-
-  def translate_availability_code(code)
-    translate_code(code, "availability")
-  end
-
-  def translate_resource_type_code(code)
-    translate_code(code, "resource_type")
-  end
-
-  def doc_translate_language_code(response)
-    codes = response[:document][:languageId]
-    codes.map { |c| translate_code(c, "language") }
-  end
-
-  def doc_translate_resource_type_code(response)
-    codes = response[:document][:type]
-    codes.map { |c| translate_code(c, "resource_type") }
   end
 end
