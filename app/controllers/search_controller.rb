@@ -48,11 +48,4 @@ class SearchController < CatalogController
       format.atom { render template: "bento_search/atom_results", locals: { atom_results: @results } }
     end
   end
-
-  protected
-    # Get controller to find templates in CatalogController too,
-    # so we can reuse facet templates.
-    def self.local_prefixes
-      @local_prefixes ||= super.push("catalog")
-    end
 end
