@@ -4,6 +4,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
+  include BentoSearchBuilderBehavior
 
   BEGINS_WITH_TAG = "matchbeginswith"
   ENDS_WITH_TAG = "matchendswith"
