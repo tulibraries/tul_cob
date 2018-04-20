@@ -26160,4 +26160,44 @@
       <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>03545cgm a2200757Ia 4500</leader>
+    <controlfield tag="005">20170825173006.0</controlfield>
+    <controlfield tag="007">vd cvaizq</controlfield>
+    <controlfield tag="008">081016p20081982nyu090 g vleng d</controlfield>
+    <controlfield tag="001">991016705469703811</controlfield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">White dog</subfield>
+      <subfield code="h">[videorecording] /</subfield>
+      <subfield code="c">Paramount Pictures presents an Edgar J. Scherick production ; a Samuel Fuller film ; produced by Jon Davison ; screenplay by Samuel Fuller and Curtis Hanson ; directed by Samuel Fuller.</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="521">
+      <subfield code="a">MPAA rating: PG.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">A German shepherd is adopted by an actress who learns that the dog has been trained to attack only African Americans. Now it's up to an animal trainer to try to change the dog.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn262623833</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="c">110825</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">08/25/11</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">DH</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">DVD 11 843</subfield>
+      <subfield code="8">22318756170003811</subfield>
+    </datafield>
+  </record>
 </collection>

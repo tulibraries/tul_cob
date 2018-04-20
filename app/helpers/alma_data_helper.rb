@@ -53,7 +53,7 @@ module AlmaDataHelper
   end
 
   def library_name(items)
-    items.group_by do |lib|
+    items.select { |item| item unless item["item_data"]["process_type"].has_value?("MISSING") || item["item_data"]["process_type"].has_value?("LOST") }.group_by do |lib|
       (lib["holding_data"]["temp_library"]["value"] if lib["holding_data"]["in_temp_location"] == true) || (lib["item_data"]["library"]["value"])
     end
   end

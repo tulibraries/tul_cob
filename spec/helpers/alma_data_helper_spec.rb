@@ -170,19 +170,56 @@ RSpec.describe AlmaDataHelper, type: :helper do
   end
 
   describe "#library_name(item)" do
+    context "does not display items that are lost" do
+      let(:item) do
+        [{ "holding_data" =>
+           { "in_temp_location" => false,
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" },
+             "process_type" => { "value" => "LOST" }
+           }
+         }]
+      end
+
+      it "does not display item" do
+        expect(library_name(item)).to eq({})
+      end
+    end
+
+    context "does not display items that are missing" do
+      let(:item) do
+        [{ "holding_data" =>
+           { "in_temp_location" => false,
+           },
+           "item_data" => {
+             "library" => { "value" => "MAIN" },
+             "process_type" => { "value" => "MISSING" }
+           }
+         }]
+      end
+
+      it "does not display item" do
+        expect(library_name(item)).to eq({})
+      end
+    end
+
+
     context "item is in a permanent library" do
       let(:item) do
         [{ "holding_data" =>
            { "in_temp_location" => false,
            },
            "item_data" => {
-             "library" => { "value" => "MAIN" }
+             "library" => { "value" => "MAIN" },
+             "process_type" => { "value" => "" }
            }
          }]
       end
 
       it "displays library code" do
-        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" } } }]
+        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" },              "process_type" => { "value" => "" }
+ } }]
       end
     end
 
@@ -193,13 +230,15 @@ RSpec.describe AlmaDataHelper, type: :helper do
              "temp_library" => { "value" => "RES-SHARE" },
            },
            "item_data" => {
-             "library" => { "value" => "MAIN" }
+             "library" => { "value" => "MAIN" },
+             "process_type" => { "value" => "" }
            }
          }]
       end
 
       it "displays temporary library code" do
-        expect(library_name(item)).to eq "RES-SHARE" => [{ "holding_data" => { "in_temp_location" => true, "temp_library" => { "value" => "RES-SHARE" } }, "item_data" => { "library" => { "value" => "MAIN" } } }]
+        expect(library_name(item)).to eq "RES-SHARE" => [{ "holding_data" => { "in_temp_location" => true, "temp_library" => { "value" => "RES-SHARE" } }, "item_data" => { "library" => { "value" => "MAIN" },              "process_type" => { "value" => "" }
+ } }]
       end
     end
   end
