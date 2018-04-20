@@ -182,7 +182,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
          }]
       end
 
-      it "does not display item" do
+      it "does not display lost item" do
         expect(library_name(item)).to eq({})
       end
     end
@@ -199,7 +199,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
          }]
       end
 
-      it "does not display item" do
+      it "does not display missing item" do
         expect(library_name(item)).to eq({})
       end
     end
