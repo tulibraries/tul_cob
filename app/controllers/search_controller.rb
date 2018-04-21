@@ -10,7 +10,7 @@ class SearchController < CatalogController
     config.facet_fields = ActiveSupport::OrderedHash.new
     config.index_fields = ActiveSupport::OrderedHash.new
     config.sort_fields = ActiveSupport::OrderedHash.new
-    config.add_facet_field "format", label: "Resource Type", collapse: false, limit: false
+    config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet
   end
 
   @@per_page = 10
