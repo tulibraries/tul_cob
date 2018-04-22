@@ -24,9 +24,7 @@ module BentoSearch
 
     def proc_remove_facets
       Proc.new { |builder|
-        processor_chain = [ :add_query_to_solr, :remove_facets ]
-        builder.except(builder.default_processor_chain)
-          .append(*processor_chain)
+        builder.append(:remove_facets)
       }
     end
 

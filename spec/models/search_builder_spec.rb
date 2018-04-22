@@ -213,4 +213,7 @@ RSpec.describe SearchBuilder , type: :model do
         ["bazz", ["q_3", "World"]]])
     end
   end
+
+  describe BentoSearchBuilderBehavior do
+  end
 end

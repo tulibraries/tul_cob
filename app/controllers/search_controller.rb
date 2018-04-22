@@ -20,6 +20,7 @@ class SearchController < CatalogController
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @@per_page, semantic_search_field: params[:field])
       @results = searcher.results
+      @response = @results["more"].first.custom_data
     end
   end
 
