@@ -215,5 +215,54 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   describe BentoSearchBuilderBehavior do
+    let(:solr_parameters) {
+      sp = Blacklight::Solr::Request.new
+      sp["facet.field"] = [ "foo", "bar", "bizz", "buzz" ]
+      sp["facets"] = true
+      sp["rows"] = 10
+      sp["stats"] = true
+      sp
+    }
+
+    describe "#remove_facets" do
+      before(:example) do
+        subject.remove_facets(solr_parameters)
+      end
+
+      it "sets facets param to false" do
+        expect(solr_parameters["facets"]).to be(false)
+      end
+
+      it "removes the facet.field params" do
+        expect(solr_parameters["facet.field"]).to be_nil
+      end
+
+      it "sets stats to false" do
+        expect(solr_parameters["stats"]).to be(false)
+      end
+
+      it "does not touch rows" do
+        expect(solr_parameters["rows"]).to eq(10)
+      end
+    end
+
+    describe "#format_facet_only" do
+      before(:example) do
+        subject.format_facet_only(solr_parameters)
+      end
+
+      it "sets the facet.field param to format" do
+        expect(solr_parameters["facet.field"]).to eq("format")
+      end
+
+      it "sets the rows param to 0" do
+        expect(solr_parameters["rows"]).to eq(0)
+      end
+
+      it "sets the facets param to true" do
+        expect(solr_parameters["facets"]).to be(true)
+      end
+    end
+
   end
 end
