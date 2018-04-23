@@ -1,4 +1,26 @@
 GIT
+  remote: https://github.com/dkinzer/blacklight_advanced_search
+  revision: bfcf683b8e7edf1a6565ad5a148f6b9d8c501115
+  branch: fix-deprecation-warning
+  specs:
+    blacklight_advanced_search (6.3.1)
+      blacklight (>= 6.0.1)
+      parslet
+
+GIT
+  remote: https://github.com/projectblacklight/blacklight
+  revision: 489b581beba9f1897fe3d9a9abe8fec8b41421c5
+  ref: v7.0.0.rc1
+  specs:
+    blacklight (7.0.0.rc1)
+      deprecation
+      globalid
+      jbuilder
+      kaminari (>= 0.15)
+      nokogiri (~> 1.6)
+      rails (~> 5.0)
+
+GIT
   remote: https://github.com/tulibraries/alma_rb
   revision: 330136c6b72709263dc49172987999af0a756aae
   specs:
@@ -8,11 +30,12 @@ GIT
       xml-simple
 
 GIT
-  remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: 5538880d97fb154e06d5522aff6c0490c9344f2e
+  remote: https://github.com/tulibraries/blacklight_alma
+  revision: 1f3683b58f622a4f3552b4b4b76190160621a45b
+  branch: update-blacklight-dependency
   specs:
     blacklight_alma (0.0.1)
-      blacklight (~> 6.0)
+      blacklight (>= 6.0)
       ezwadl (= 0.0.1)
       jwt (= 1.5.6)
       rails (>= 4.2, < 6)
@@ -68,8 +91,6 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (7.1.4)
     ast (2.3.0)
-    autoprefixer-rails (8.2.0)
-      execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
     bento_search (1.7.0)
@@ -83,16 +104,6 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.14.1)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      globalid
-      jbuilder
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 4.2, < 6)
-      rsolr (>= 1.0.6, < 3)
-      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
     blacklight-marc (6.2.0)
       blacklight (> 6.1, < 8.a)
       library_stdnums
@@ -100,16 +111,10 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 2.1)
-    blacklight_advanced_search (6.3.1)
-      blacklight (~> 6.0, >= 6.0.1)
-      parslet
     blacklight_range_limit (6.2.1)
       blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
-    bootstrap-sass (3.3.7)
-      autoprefixer-rails (>= 5.2.1)
-      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.15.4)
@@ -263,7 +268,7 @@ GEM
     parallel (1.12.1)
     parser (2.4.0.2)
       ast (~> 2.3)
-    parslet (1.8.0)
+    parslet (1.8.2)
     powerpack (0.1.1)
     pretender (0.3.1)
       actionpack
@@ -408,10 +413,6 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
-    twitter-typeahead-rails (0.11.1.pre.corejavascript)
-      actionpack (>= 3.1)
-      jquery-rails
-      railties (>= 3.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -451,9 +452,9 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight
+  blacklight!
   blacklight-marc
-  blacklight_advanced_search
+  blacklight_advanced_search!
   blacklight_alma!
   blacklight_range_limit
   byebug
