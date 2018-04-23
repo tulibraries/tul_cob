@@ -50,8 +50,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "blacklight"
-gem "blacklight_advanced_search"
+gem "blacklight",
+  git: "https://github.com/projectblacklight/blacklight",
+  ref: "v7.0.0.rc1"
+gem "blacklight_advanced_search",
+  git: "https://github.com/dkinzer/blacklight_advanced_search",
+  branch: "fix-deprecation-warning"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
 
@@ -79,7 +83,9 @@ gem "alma", git: "https://github.com/tulibraries/alma_rb"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
-gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git"
+gem "blacklight_alma",
+  git: "https://github.com/tulibraries/blacklight_alma",
+  branch: "update-blacklight-dependency"
 gem "ezwadl"
 gem "awesome_print"
 gem "capybara"
