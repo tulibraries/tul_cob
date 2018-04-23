@@ -11,7 +11,7 @@ class SearchController < CatalogController
   @@per_page = 10
   def index
     if params[:q]
-      engines = %i( blacklight journals books primo  more )
+      engines = %i( books journals primo  more )
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @@per_page, semantic_search_field: params[:field])
       @results = searcher.results
