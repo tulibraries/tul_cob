@@ -1,13 +1,21 @@
 # frozen_string_literal: true
 
-class SearchController < ApplicationController
+class SearchController < CatalogController
+  include Blacklight::RequestBuilders
+  include CatalogConfigReinit
+
+  blacklight_config.configure do |config|
+    config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet
+  end
+
   @@per_page = 10
   def index
     if params[:q]
-      engines = %i( blacklight journals books primo )
+      engines = %i( books journals primo  more )
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @@per_page, semantic_search_field: params[:field])
       @results = searcher.results
+      @response = @results["more"].first.custom_data
     end
   end
 

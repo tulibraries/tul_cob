@@ -1,0 +1,58 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://solr:8983/solr/blacklight/select?author_pf=creator_unstem_search%5E2000%20creator_t%5E200&author_qf=creator_unstem_search%5E200%20creator_t%5E20&defType=dismax&echoParams=explicit&f.creator_facet.facet.limit=11&f.format.facet.limit=11&f.genre_facet.facet.limit=11&f.language_facet.facet.limit=11&f.library_facet.facet.limit=11&f.subject_era_facet.facet.limit=11&f.subject_facet.facet.limit=11&f.subject_region_facet.facet.limit=11&f.subject_topic_facet.facet.limit=11&facet=true&facet.field=format&facets=true&fl=id%20score%20availability_facet%20creator_display%20contributor_display%20electronic_resource_display%20format%20imprint_display%20pub_date%20title_series_display%20title_statement_display%20title_uniform_display%20isbn_display%20lccn_display&mm=6%253C90%2525&pf=title_unstem_search%5E1000000%20subtitle_unstem_search%5E500000%20title_t%5E250000%20subtitle_t%5E100000%20title_uniform_unstem_search%5E75000%20title_uniform_t%5E50000%20title_addl_unstem_search%5E50000%20title_addl_t%5E25000%20title_added_entry_unstem_search%5E15000%20title_added_entry_t%5E12500%20subject_topic_unstem_search%5E10000%20subject_unstem_search%5E7500%20subject_topic_facet%5E6250%20subject_t%5E5000%20creator_unstem_search%5E2500%20creator_t%5E1000%20subject_addl_unstem_search%5E2500%20subject_addl_t%5E500%20title_series_unstem_search%5E250%20title_series_t%5E100%20text%5E10&ps=3&q=food&qf=title_unstem_search%5E100000%20subtitle_unstem_search%5E50000%20title_t%5E25000%20subtitle_t%5E10000%20title_uniform_unstem_search%5E5000%20title_uniform_t%5E2500%20title_addl_unstem_search%5E5000%20title_addl_t%5E2500%20title_added_entry_unstem_search%5E1500%20title_added_entry_t%5E1250%20subject_topic_unstem_search%5E1000%20subject_unstem_search%5E750%20subject_topic_facet%5E625%20subject_t%5E500%20creator_unstem_search%5E250%20creator_t%5E100%20subject_addl_unstem_search%5E250%20subject_addl_t%5E50%20title_series_unstem_search%5E25%20title_series_t%5E10%20isbn_t%20text&rows=0&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&spellcheck=false&stats=true&stats.field=pub_date_sort&subject_pf=subject_topic_unstem_search%5E2000%20subject_unstem_search%5E1250%20subject_t%5E1000%20subject_topic_facet%5E500%20subject_addl_unstem_search%5E100%20subject_addl_t%5E10&subject_qf=subject_topic_unstem_search%5E200%20subject_unstem_search%5E125%20subject_topic_facet%5E100%20subject_t%5E50%20subject_addl_unstem_search%5E10%20subject_addl_t&tie=0.01&title_pf=title_unstem_search%5E500000%20subtitle_unstem_search%5E250000%20title_uniform_unstem_search%5E150000%20title_addl_unstem_search%5E100000%20title_t%5E50000%20subtitle_t%5E25000%20title_uniform_t%5E1500%20title_addl_t%5E1000%20title_added_entry_unstem_search%5E500%20title_added_entry_t%5E100%20title_series_t%5E50%20title_series_unstem_search%5E10&title_qf=title_unstem_search%5E50000%20subtitle_unstem_search%5E25000%20title_uniform_unstem_search%5E15000%20title_addl_unstem_search%5E10000%20title_t%5E5000%20subtitle_t%5E2500%20title_uniform_t%5E150%20title_addl_t%5E100%20title_added_entry_unstem_search%5E50%20title_added_entry_t%5E10%20title_series_unstem_search%5E5%20title_series_t&wt=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Last-Modified:
+      - Fri, 20 Apr 2018 18:58:30 GMT
+      Etag:
+      - '"MzAwMDAwMDAwMDAwMDAwMFNvbHI="'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '3453'
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":11,"params":{"f.subject_facet.facet.limit":"11","ps":"3","echoParams":"explicit","fl":"id
+        score availability_facet creator_display contributor_display electronic_resource_display
+        format imprint_display pub_date title_series_display title_statement_display
+        title_uniform_display isbn_display lccn_display","subject_qf":"subject_topic_unstem_search^200
+        subject_unstem_search^125 subject_topic_facet^100 subject_t^50 subject_addl_unstem_search^10
+        subject_addl_t","facets":"true","tie":"0.01","defType":"dismax","qf":"title_unstem_search^100000
+        subtitle_unstem_search^50000 title_t^25000 subtitle_t^10000 title_uniform_unstem_search^5000
+        title_uniform_t^2500 title_addl_unstem_search^5000 title_addl_t^2500 title_added_entry_unstem_search^1500
+        title_added_entry_t^1250 subject_topic_unstem_search^1000 subject_unstem_search^750
+        subject_topic_facet^625 subject_t^500 creator_unstem_search^250 creator_t^100
+        subject_addl_unstem_search^250 subject_addl_t^50 title_series_unstem_search^25
+        title_series_t^10 isbn_t text","stats":"true","title_qf":"title_unstem_search^50000
+        subtitle_unstem_search^25000 title_uniform_unstem_search^15000 title_addl_unstem_search^10000
+        title_t^5000 subtitle_t^2500 title_uniform_t^150 title_addl_t^100 title_added_entry_unstem_search^50
+        title_added_entry_t^10 title_series_unstem_search^5 title_series_t","author_pf":"creator_unstem_search^2000
+        creator_t^200","wt":"json","f.format.facet.limit":"11","stats.field":"pub_date_sort","mm":["2<-1","5<-2","6%3C90%25"],"facet.field":"format","f.subject_era_facet.facet.limit":"11","f.library_facet.facet.limit":"11","subject_pf":"subject_topic_unstem_search^2000
+        subject_unstem_search^1250 subject_t^1000 subject_topic_facet^500 subject_addl_unstem_search^100
+        subject_addl_t^10","sort":"score desc, pub_date_sort desc, title_sort asc","rows":"0","f.creator_facet.facet.limit":"11","q":"food","f.subject_topic_facet.facet.limit":"11","spellcheck":"false","pf":"title_unstem_search^1000000
+        subtitle_unstem_search^500000 title_t^250000 subtitle_t^100000 title_uniform_unstem_search^75000
+        title_uniform_t^50000 title_addl_unstem_search^50000 title_addl_t^25000 title_added_entry_unstem_search^15000
+        title_added_entry_t^12500 subject_topic_unstem_search^10000 subject_unstem_search^7500
+        subject_topic_facet^6250 subject_t^5000 creator_unstem_search^2500 creator_t^1000
+        subject_addl_unstem_search^2500 subject_addl_t^500 title_series_unstem_search^250
+        title_series_t^100 text^10","title_pf":"title_unstem_search^500000 subtitle_unstem_search^250000
+        title_uniform_unstem_search^150000 title_addl_unstem_search^100000 title_t^50000
+        subtitle_t^25000 title_uniform_t^1500 title_addl_t^1000 title_added_entry_unstem_search^500
+        title_added_entry_t^100 title_series_t^50 title_series_unstem_search^10","author_qf":"creator_unstem_search^200
+        creator_t^20","f.genre_facet.facet.limit":"11","facet":"true","f.subject_region_facet.facet.limit":"11","f.language_facet.facet.limit":"11"}},"response":{"numFound":126,"start":0,"maxScore":3.7970283,"docs":[]},"facet_counts":{"facet_queries":{},"facet_fields":{"format":["Book",119,"Conference
+        Proceeding",6,"Journal/Periodical",4,"Image",2,"Dissertation/Thesis",1]},"facet_ranges":{},"facet_intervals":{},"facet_heatmaps":{}},"stats":{"stats_fields":{"pub_date_sort":{"min":1948.0,"max":2016.0,"count":124,"missing":2,"sum":248375.0,"sumOfSquares":4.97518971E8,"mean":2003.024193548387,"stddev":12.042245225706692}}}}
+
+'
+    http_version: 
+  recorded_at: Fri, 20 Apr 2018 19:26:34 GMT
+recorded_with: VCR 3.0.3
