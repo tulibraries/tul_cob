@@ -2,14 +2,9 @@
 
 class SearchController < CatalogController
   include Blacklight::RequestBuilders
+  include CatalogConfigReinit
 
   blacklight_config.configure do |config|
-    # Reinitialize field configurations
-    config.search_fields = ActiveSupport::OrderedHash.new
-    config.show_fields = ActiveSupport::OrderedHash.new
-    config.facet_fields = ActiveSupport::OrderedHash.new
-    config.index_fields = ActiveSupport::OrderedHash.new
-    config.sort_fields = ActiveSupport::OrderedHash.new
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet
   end
 

@@ -2,15 +2,9 @@
 
 class PrimoCentralController < CatalogController
   include Blacklight::Catalog
+  include CatalogConfigReinit
 
   configure_blacklight do |config|
-    # Reinitialize field configruations.
-    config.search_fields = ActiveSupport::OrderedHash.new
-    config.show_fields = ActiveSupport::OrderedHash.new
-    config.facet_fields = ActiveSupport::OrderedHash.new
-    config.index_fields = ActiveSupport::OrderedHash.new
-    config.sort_fields = ActiveSupport::OrderedHash.new
-
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
 
