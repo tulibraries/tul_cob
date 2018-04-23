@@ -52,10 +52,15 @@ module AlmaDataHelper
     end
   end
 
+  def missing_or_lost?(item)
+    item["item_data"]["process_type"].has_value?("MISSING") || item["item_data"]["process_type"].has_value?("LOST")
+  end
+
   def library_name(items)
-    items.select { |item| item unless item["item_data"]["process_type"].has_value?("MISSING") || item["item_data"]["process_type"].has_value?("LOST") }.group_by do |lib|
-      (lib["holding_data"]["temp_library"]["value"] if lib["holding_data"]["in_temp_location"] == true) || (lib["item_data"]["library"]["value"])
-    end
+    items.select { |item| item unless missing_or_lost?(item) }
+      .group_by do |lib|
+        (lib["holding_data"]["temp_library"]["value"] if lib["holding_data"]["in_temp_location"] == true) || (lib["item_data"]["library"]["value"])
+      end
   end
 
   def library_name_from_short_code(short_code)
