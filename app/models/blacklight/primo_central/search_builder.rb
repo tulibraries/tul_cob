@@ -11,6 +11,5 @@ module Blacklight::PrimoCentral
       :set_query_sort_order,
       :add_query_facets,
     ]
-    
   end
 end
