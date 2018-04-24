@@ -25,7 +25,7 @@ module Tulcob
     config.twilio = config_for(:twilio).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
     config.exceptions_app = routes
-    config.traject_indexer  = File.join(Rails.root, "lib/traject/indexer_config.rb")
+    config.traject_indexer = File.join(Rails.root, "lib/traject/indexer_config.rb")
     ENV["ALLOW_IMPERSONATOR"] ||= "no"
 
     begin
