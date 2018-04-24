@@ -85,10 +85,10 @@ bundle exec rake ingest[/some/other/path.xml]
 ```
 
 
-Under the hood, that command uses [traject](https://github.com/traject/traject), with hard coded defaults. If you need to override a default to ingest your data, You can call traject directly: 
+Under the hood, that command uses [traject](https://github.com/traject/traject), with hard coded defaults. If you need to override a default to ingest your data, You can call traject directly:
 
 ```bash
-bundle exec traject -s solr.url=http://somehere/solr -c app/models/traject_indexer.rb sample_data/alma_bibs.xml
+bundle exec traject -s solr.url=http://somehere/solr -c lib/traject/indexer_config.rb sample_data/alma_bibs.xml
 ```
 
 If using docker, then ingest using `docker-compose exec app traject -c app/models/traject_indexer.rb sample_data/alma_bibs.xml`.
