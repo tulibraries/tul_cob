@@ -32,6 +32,16 @@ module Blacklight::PrimoCentral
       primo_central_parameters[:query][:q][:field] = field
     end
 
+    def previous_and_next_document(primo_central_parameters)
+      if @start
+        primo_central_parameters[:query][:offset] = @start
+      end
+
+      if  @rows
+        primo_central_parameters[:query][:limit] = @rows
+      end
+    end
+
     def set_query_sort_order(primo_central_parameters)
     end
 
