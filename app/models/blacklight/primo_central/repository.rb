@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "primo"
+#require "primo"
 
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
