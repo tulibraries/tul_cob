@@ -6,6 +6,8 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   let(:context) { CatalogController.new }
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { Blacklight::PrimoCentral::SearchBuilder.new(context) }
+  let(:rows) { false }
+  let(:start) { false }
 
   subject { search_builder }
 
@@ -73,5 +75,38 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   end
 
   describe ".add_query_facets" do
+  end
+
+  describe ".previous_and_next_document" do
+    before(:example) do
+      subject.instance_variable_set(:@rows, 3) if rows
+      subject.instance_variable_set(:@start, 5) if start
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.previous_and_next_document(primo_central_parameters)
+    end
+
+    context "neither @rows nor @start is set" do
+      it "does not affect the limit parameter" do
+        expect(primo_central_parameters["query"]["limit"]).to eq(10)
+      end
+
+      it "does not affect the offset parameter" do
+        expect(primo_central_parameters["query"]["offset"]).to eq(0)
+      end
+    end
+
+    context "@rows is set" do
+      let(:rows) { true }
+      it "sets the limit param equal to @rows" do
+        expect(primo_central_parameters["query"]["limit"]).to eq(3)
+      end
+    end
+
+    context "@start is set" do
+      let(:start) { true }
+      it "it sets the offset param equal to @start" do
+        expect(primo_central_parameters["query"]["offset"]).to eq(5)
+      end
+    end
   end
 end

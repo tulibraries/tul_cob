@@ -9,6 +9,7 @@ module Blacklight::PrimoCentral
         :add_query_to_primo_central,
         :set_query_field,
         :set_query_sort_order,
+        :previous_and_next_document,
         :add_query_facets,
       ]
     end
@@ -39,6 +40,16 @@ module Blacklight::PrimoCentral
     def set_query_field(primo_central_parameters)
       field = to_primo_field(blacklight_params[:search_field])
       primo_central_parameters[:query][:q][:field] = field
+    end
+
+    def previous_and_next_document(primo_central_parameters)
+      if @start
+        primo_central_parameters[:query][:offset] = @start
+      end
+
+      if  @rows
+        primo_central_parameters[:query][:limit] = @rows
+      end
     end
 
     def set_query_sort_order(primo_central_parameters)
