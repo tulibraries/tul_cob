@@ -10,8 +10,8 @@ namespace :fortytu do
 
   desc "Posts fixtures to Solr"
   task :ingest, [:marc_file] => :environment do |t, args|
-    `traject -c app/models/traject_indexer.rb #{args[:marc_file]}`
-    `traject -c app/models/traject_indexer.rb -x commit`
+    `traject -c #{Rails.configuration.traject_indexer} #{args[:marc_file]}`
+    `traject -c #{Rails.configuration.traject_indexer} -x commit`
   end
 
   desc "Remove deleted items from Solr"
@@ -109,7 +109,7 @@ namespace :fortytu do
         traject_commit = %W[traject -s
           log.file=#{main_log}
           log.error_file="#{main_log}.error"
-          -c app/models/traject_indexer.rb
+          -c #{Rails.configuration.traject_indexer}
           -x commit].join(" ")
         pids = []
         marc_files.each_with_index do |f, i|
@@ -117,7 +117,7 @@ namespace :fortytu do
           ingest_log = File.join(ingest_logdir, File.basename(f, ".xml") + ".log")
           traject_index = %W[traject
             -s log.file=#{ingest_log}
-            -c app/models/traject_indexer.rb
+            -c #{Rails.configuration.traject_indexer}
             #{f}].join(" ")
           pids << Process.spawn(traject_index)
           if ((i > 0) && (i % batch_size) == 0)

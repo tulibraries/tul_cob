@@ -4,16 +4,6 @@ module Blacklight::PrimoCentral
   module SearchBuilderBehavior
     extend ActiveSupport::Concern
 
-    included do
-      self.default_processor_chain = [
-        :add_query_to_primo_central,
-        :set_query_field,
-        :set_query_sort_order,
-        :previous_and_next_document,
-        :add_query_facets,
-      ]
-    end
-
     def add_query_to_primo_central(primo_central_parameters)
       per_page = (blacklight_params["per_page"] || blacklight_config.default_per_page).to_i
       page = (blacklight_params["page"] || 1).to_i
