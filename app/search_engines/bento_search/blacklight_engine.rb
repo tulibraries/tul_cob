@@ -11,21 +11,25 @@ module BentoSearch
       query = args.fetch(:query, "")
 
       results = BentoSearch::Results.new
-      solr_result = search_results(q: query, &proc_remove_facets).first.response
-
-      results.total_items = solr_result["numFound"]
-
-      solr_result["docs"].each do |item|
-        results << conform_to_bento_result(item)
-      end
-
-      results
+      response = search_results(q: query, &proc_remove_facets).first.response
+      results(response)
     end
 
     def proc_remove_facets
       Proc.new { |builder|
         builder.append(:remove_facets)
       }
+    end
+
+    def results(response)
+      results = BentoSearch::Results.new
+
+      results.total_items = response["numFound"]
+      response["docs"].each do |doc|
+        results << conform_to_bento_result(doc)
+      end
+
+      results
     end
 
     def conform_to_bento_result(item)

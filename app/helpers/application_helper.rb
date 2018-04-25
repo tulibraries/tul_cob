@@ -174,6 +174,8 @@ module ApplicationHelper
       link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
     when "more"
       ""
+    when "articles"
+      link_to "See all #{number_with_delimiter(results.total_items)} articles", url_for(action: :index, controller: :primo_central, q: params[:q])
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end
