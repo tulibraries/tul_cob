@@ -169,7 +169,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#library_name(item)" do
+  describe "#group_and_order_items(item)" do
     context "does not display items that are lost" do
       let(:item) do
         [{ "holding_data" =>
@@ -183,7 +183,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "does not display lost item" do
-        expect(library_name(item)).to eq({})
+        expect(group_and_order_items(item)).to eq({})
       end
     end
 
@@ -200,7 +200,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "does not display missing item" do
-        expect(library_name(item)).to eq({})
+        expect(group_and_order_items(item)).to eq({})
       end
     end
 
@@ -219,7 +219,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays library code" do
-        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" }, "location" => { "value" => "" }, "process_type" => { "value" => "" }
+        expect(group_and_order_items(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" }, "location" => { "value" => "" }, "process_type" => { "value" => "" }
  } }]
       end
     end
@@ -239,7 +239,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays temporary library code" do
-        expect(library_name(item).keys).to have_text "RES_SHARE"
+        expect(group_and_order_items(item).keys).to have_text "RES_SHARE"
       end
     end
   end
