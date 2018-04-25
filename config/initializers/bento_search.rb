@@ -30,13 +30,8 @@ BentoSearch.register_engine("more") do |conf|
   end
 end
 
-BentoSearch.register_engine("primo") do |conf|
+BentoSearch.register_engine("articles") do |conf|
   conf.engine = "BentoSearch::PrimoEngine"
-  conf.api_base_url = Rails.configuration.bento[:primo][:api_base_url]
-  conf.apikey = Rails.configuration.bento[:primo][:apikey]
-  conf.scope = Rails.configuration.bento[:primo][:scope]
-  conf.vid = Rails.configuration.bento[:primo][:vid]
-  conf.web_ui_base_url = Rails.configuration.bento[:primo][:web_ui_base_url]
   conf.for_display do |display|
     display.decorator = "TulDecorator"
   end

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe BentoSearch, type: :search_engine do
-  primo_se = BentoSearch.get_engine("primo")
+  primo_se = BentoSearch.get_engine("articles")
 
   primo_search_results = VCR.use_cassette("bento_search_primo") do
     primo_se.search("james")

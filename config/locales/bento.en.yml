@@ -2,8 +2,8 @@ en:
   bento:
     blacklight:
       nice_name: 'Blacklight'
-    primo:
-      nice_name: "Primo"
+    articles:
+      nice_name: "Articles"
     journals:
       nice_name: "Journals"
     books:
