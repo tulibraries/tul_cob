@@ -12,14 +12,7 @@ module BentoSearch
 
       results = BentoSearch::Results.new
       response = search_results(q: query, &proc_remove_facets).first.response
-
-      results.total_items = response["numFound"]
-
-      response["docs"].each do |item|
-        results << conform_to_bento_result(item)
-      end
-
-      results
+      results(response)
     end
 
     def proc_remove_facets
