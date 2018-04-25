@@ -1,6 +1,6 @@
 <table class="table table-responsive borderless">
   <% unless @items["item"].nil? %>
-    <% library_name(@items["item"]).each do |key,items| %>
+    <% group_and_order_items(@items["item"]).each do |key,items| %>
       <thead>
         <tr>
           <th scope="col">

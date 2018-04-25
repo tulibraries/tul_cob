@@ -169,7 +169,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#library_name(item)" do
+  describe "#group_and_order_items(item)" do
     context "does not display items that are lost" do
       let(:item) do
         [{ "holding_data" =>
@@ -183,7 +183,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "does not display lost item" do
-        expect(library_name(item)).to eq({})
+        expect(group_and_order_items(item)).to eq({})
       end
     end
 
@@ -200,7 +200,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "does not display missing item" do
-        expect(library_name(item)).to eq({})
+        expect(group_and_order_items(item)).to eq({})
       end
     end
 
@@ -212,13 +212,14 @@ RSpec.describe AlmaDataHelper, type: :helper do
            },
            "item_data" => {
              "library" => { "value" => "MAIN" },
+             "location" => { "value" => "" },
              "process_type" => { "value" => "" }
            }
          }]
       end
 
       it "displays library code" do
-        expect(library_name(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" },              "process_type" => { "value" => "" }
+        expect(group_and_order_items(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" }, "location" => { "value" => "" }, "process_type" => { "value" => "" }
  } }]
       end
     end
@@ -227,7 +228,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         [{ "holding_data" =>
            { "in_temp_location" => true,
-             "temp_library" => { "value" => "RES-SHARE" },
+             "temp_library" => { "value" => "RES_SHARE" },
+             "temp_location" => { "value" => "IN_RS_REQ" }
            },
            "item_data" => {
              "library" => { "value" => "MAIN" },
@@ -237,8 +239,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays temporary library code" do
-        expect(library_name(item)).to eq "RES-SHARE" => [{ "holding_data" => { "in_temp_location" => true, "temp_library" => { "value" => "RES-SHARE" } }, "item_data" => { "library" => { "value" => "MAIN" },              "process_type" => { "value" => "" }
- } }]
+        expect(group_and_order_items(item).keys).to have_text "RES_SHARE"
       end
     end
   end
@@ -262,6 +263,159 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
       it "displays alternate call number" do
         expect(alternative_call_number(item)).to eq "(Also found under alternate)"
+      end
+    end
+  end
+
+  describe "#sort_order_for_holdings(items)" do
+    context "items are sorted by library name with Paley first" do
+      let(:items) do
+        {
+          "MAIN" => {},
+          "AMBLER" => {}
+        }
+      end
+
+      it "returns Paley first, then Ambler and Kardon" do
+        expect(sort_order_for_holdings(items).keys).to eq(["MAIN", "AMBLER"])
+      end
+    end
+
+    context "items in Kardon sort by Remote Storage, not KARDON" do
+      let(:items) do
+        {
+          "KARDON" => {},
+          "MEDIA" => {}
+        }
+      end
+
+      it "returns Media before Kardon" do
+        expect(sort_order_for_holdings(items).keys).to eq(["MEDIA", "KARDON"])
+      end
+    end
+
+    context "Items are ordered by location after library name" do
+      let(:items) do
+        { "MAIN" => [{
+          "holding_data" =>
+             { "in_temp_location" => false
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" }
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "serials" }
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "reference" }
+            }
+          }]
+        }
+      end
+
+      it "returns copies for each library by location" do
+        sorted_locations = sort_order_for_holdings(items)["MAIN"].map do |item|
+          item["item_data"]["location"]["value"]
+        end
+        expect(sorted_locations).to eq(["serials", "reference", "stacks"])
+      end
+    end
+
+    context "Items are ordered by call number after location" do
+      let(:items) do
+        { "MAIN" => [{
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "MT655.P45x"
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" }
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "AC1 .G72"
+
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" }
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "HF5006 .I614"
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" }
+            }
+          }]
+        }
+      end
+
+      it "returns copies for each library by call number" do
+        sorted_call_numbers = sort_order_for_holdings(items)["MAIN"].map do |item|
+          item["holding_data"]["call_number"]
+        end
+        expect(sorted_call_numbers).to eq(["AC1 .G72", "HF5006 .I614", "MT655.P45x"])
+      end
+    end
+
+    context "Items are ordered by description after call number" do
+      let(:items) do
+        { "MAIN" => [{
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "MT655.P45x"
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" },
+            "description" => "v.55, no.5 (Nov. 2017)"
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "MT655.P45x"
+
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" },
+            "description" => "v.42 (2004)"
+          }
+        }, {
+          "holding_data" =>
+             { "in_temp_location" => false,
+               "call_number" => "MT655.P45x"
+          },
+          "item_data" => {
+            "library" => { "value" => "MAIN" },
+            "location" => { "value" => "stacks" },
+            "description" => "v.53 (2016)"
+            }
+          }]
+        }
+      end
+
+      it "returns copies for each library by description" do
+        sorted_descriptions = sort_order_for_holdings(items)["MAIN"].map do |item|
+          item["item_data"]["description"]
+        end
+        expect(sorted_descriptions).to eq(["v.42 (2004)", "v.53 (2016)", "v.55, no.5 (Nov. 2017)"])
       end
     end
   end
