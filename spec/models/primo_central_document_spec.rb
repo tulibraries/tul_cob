@@ -5,11 +5,11 @@ require "rails_helper"
 RSpec.describe PrimoCentralDocument, type: :model do
   let (:subject) { PrimoCentralDocument.new(doc, nil) }
 
-  context "document direct_link contains rtf.isbn = ''" do
+  context "document direct_link contains rft.isbn = ''" do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {
         GetIt1: [{
-          "links" => [{ "link" => "http://foobar.com?rtf.isbn=''" }],
+          "links" => [{ "link" => "http://foobar.com?rft.isbn=''" }],
         }] }) }
     it "sets @doc['isbn'] to nil" do
       expect(subject["isbn"]).to be_nil
@@ -20,7 +20,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {
         GetIt1: [{
-          "links" => [{ "link" => "http://foobar.com?rtf.isbn=a" }],
+          "links" => [{ "link" => "http://foobar.com?rft.isbn=a" }],
         }] }) }
     it "sets @doc['isbn'] to [a]" do
       expect(subject["isbn"]).to eq(["a"])
