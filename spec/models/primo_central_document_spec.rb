@@ -9,7 +9,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {
         GetIt1: [{
-          "links" => [{ "link" => "http://foobar.com?rft.isbn=''" }],
+          "links" => [{ "link" => "http://foobar.com?rft.isbn=" }],
         }] }) }
     it "sets @doc['isbn'] to nil" do
       expect(subject["isbn"]).to be_nil
