@@ -10,6 +10,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  ActionController::Parameters.permit_all_parameters = true
+
+
   impersonates :user unless Rails.env.production?
 
   helper_method :should_show_spellcheck_suggestions?

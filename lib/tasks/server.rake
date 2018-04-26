@@ -14,11 +14,12 @@ task :ci do
   end
 end
 
+
 desc "Run selected specs (Use with Guard)"
 task :rspec, [:spec_args] do |t, args|
   if Rails.env.test?
     run_solr("test", port: "8985") do
-      Rake::Task["fortytu:solr:load_fixtures"].invoke
+      Rake::Task["fortytu:solr:load_fixtures"].invoke unless ENV["NO_INGEST"]
       rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
       system(rspec_cmd)
     end
@@ -30,7 +31,7 @@ end
 desc "Run solr and blacklight for interactive development"
 task :server, [:rails_server_args] do |t, args|
   run_solr("dev", port: "8983") do
-    Rake::Task["fortytu:solr:load_fixtures"].invoke
+    Rake::Task["fortytu:solr:load_fixtures"].invoke unless ENV["NO_INGEST"]
     system "bundle exec rails s #{args[:rails_server_args]}"
   end
 end
