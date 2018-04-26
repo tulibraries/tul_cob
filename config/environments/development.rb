@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+
+
+  config.active_storage.service = :local
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = true
 
