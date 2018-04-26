@@ -26200,4 +26200,74 @@
       <subfield code="8">22318756170003811</subfield>
     </datafield>
   </record>
+  <record>
+    <controlfield tag="001">991006442049703811</controlfield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Behavioral medicine.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="2" tag="650">
+      <subfield code="a">Stress, Physiological</subfield>
+      <subfield code="x">periodicals.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="780">
+      <subfield code="t">Journal of human stress</subfield>
+      <subfield code="x">0097-840X</subfield>
+      <subfield code="w">(DLC) 75642788</subfield>
+      <subfield code="w">(OCoLC)179946</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">161213</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="902">
+      <subfield code="a">111-238-481</subfield>
+      <subfield code="b">RB4782900/01</subfield>
+      <subfield code="c">TEM-EBSC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b19455100</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="935">
+      <subfield code="a">AAS-6264</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">v.23-24 1997-1998 INC.</subfield>
+      <subfield code="h">39074500123203</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">20-22 1994-1997</subfield>
+      <subfield code="h">39074500457981</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">17-19 1991-1993</subfield>
+      <subfield code="h">39074500963798</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">14-16 1988-1990</subfield>
+      <subfield code="h">39074500963806</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">990605</subfield>
+      <subfield code="d">s</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="HLD">
+      <subfield code="b">GINSBURG</subfield>
+      <subfield code="c">serials</subfield>
+      <subfield code="h">WB 103 .B41</subfield>
+      <subfield code="8">22391529960003811</subfield>
+    </datafield>
+  </record>
 </collection>
