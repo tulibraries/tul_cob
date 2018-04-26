@@ -9,7 +9,6 @@ module Blacklight::PrimoCentral::Document
   def initialize(doc, req = nil)
     @url = url(doc)
     @url_query = url_query
-
     format = doc["@TYPE"] || doc["type"]
     # Dots and slahes break links to articles.
     doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
@@ -17,6 +16,7 @@ module Blacklight::PrimoCentral::Document
     doc["type"] = [format]
     doc["format"] = [format]
     doc["link"] = @url
+    doc["link_label"] = link_label(doc)
     doc["isbn"] ||= isbn
     doc["lccn"] ||= lccn
 
@@ -25,6 +25,12 @@ module Blacklight::PrimoCentral::Document
     end
 
     super(doc, req)
+  end
+
+  def has_direct_link?
+    availability = @_source.fetch("delivery", {})
+      .fetch("availability", [])
+    availability == ["fulltext_linktorsrc"]
   end
 
   private
@@ -36,13 +42,27 @@ module Blacklight::PrimoCentral::Document
     }
 
     def url(doc)
-      doc["delivery"]["GetIt1"].first["links"].first["link"]
+      get_it(doc).fetch("link", "")
     end
+
+    def link_label(doc)
+      get_it(doc).fetch("displayText", "Direct Link")
+        .gsub("$$E", "")
+        .gsub("_", " ")
+    end
+
+    def get_it(doc)
+      doc.to_h.fetch("delivery", {})
+        .fetch("GetIt1", [{}])
+        .first.fetch("links", [{}])
+        .first
+    end
+
 
     def url_query
       query = URI.parse(@url).query
       if (query)
-        CGI.parse(query)
+        CGI.parse(query) || {}
       else
         {}
       end
