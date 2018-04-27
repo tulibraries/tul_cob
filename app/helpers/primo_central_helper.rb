@@ -32,4 +32,23 @@ module PrimoCentralHelper
     presenter[:document][:format] = codes
     separate_formats(presenter)
   end
+
+  # Returns a list of partials to render in the availability section
+  def availability_link_partials
+    partials = []
+    if @document.has_direct_link?
+      partials.push("direct_link")
+    else
+      partials.push("online")
+    end
+    partials
+  end
+
+  def document_link
+    @document["link"]
+  end
+
+  def document_link_label
+    @document["link_label"]
+  end
 end

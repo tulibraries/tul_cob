@@ -5,12 +5,12 @@
     <h4 id="availability-heading">Availability</h4>
   </div>
 
-  <% if document["link"] %>
-    <div class="online-border"></div>
-    <div class="availability_iframe physical-holding-panel panel-body">
-      <h5>Online</h5>
-      <iframe class="bl_alma_iframe" src="<%= document["link"] %>"></iframe>
-    </div>
-  <% end %>
+  <div class="online-border"></div>
+  <div class="availability_iframe physical-holding-panel panel-body">
+    <h5>Online</h5>
+    <% availability_link_partials.each do |partial| %>
+      <%= render(partial) %>
+    <% end %>
+  </div>
 </div>
 </div>
