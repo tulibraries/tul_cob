@@ -3,11 +3,11 @@
 Rails.application.configure do
 
 
-  Sprockets::Rails::Helper.prepend(Module.new do
-  def resolve_asset_path(path, *)
-    super || path
-  end
-end)
+#   Sprockets::Rails::Helper.prepend(Module.new do
+#   def resolve_asset_path(path, *)
+#     super || path
+#   end
+# end)
   config.active_storage.service = :local
   # Settings specified here will take precedence over those in config/application.rb.
 

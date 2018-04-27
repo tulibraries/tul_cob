@@ -31,6 +31,7 @@ module CatalogHelper
     default_image = {
       "article" => "journal_periodical",
       "dissertation" => "script",
+      "dissertation_thesis" => "script",
       "government_document" => "journal_periodical",
       "journal" => "journal_periodical",
       "legal_document" => "journal_periodical",
