@@ -4,13 +4,17 @@ module AlmaDataHelper
   include Blacklight::CatalogHelperBehavior
 
   def availability_status(item)
-    if item["item_data"]["base_status"]["value"] == "1"
-      if item["item_data"]["policy"]["desc"].include?("Non-circulating")
+    non_circulating = item.dig("item_data", "policy", "desc")
+    base_status = item["item_data"]["base_status"]["value"]
+    if base_status == "1"
+      if non_circulating.nil?
+        "Available"
+      elsif non_circulating.include?("Non-circulating")
         "Library Use Only"
       else
         "Available"
       end
-    elsif item["item_data"]["base_status"]["value"] == "0"
+    elsif base_status == "0"
       unavailable_items(item)
     end
   end
