@@ -92,7 +92,7 @@ gem "omniauth-shibboleth"
 gem "twilio-ruby"
 gem "skylight"
 gem "loofah", "~> 2.2.1"
-gem "rails-html-sanitizer", "~> 1.0.4" 
+gem "rails-html-sanitizer", "~> 1.0.4"
 
 
 
