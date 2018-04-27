@@ -57,6 +57,8 @@ module PrimoCentralHelper
   end
 
   def document_id
-    @document["pnxId"]
+    # This just needs to be unique.
+    # Hashing because () characters mess with javacript.
+    @document["pnxId"].hash
   end
 end
