@@ -54,7 +54,12 @@ set of example data, you can run
 
 `bundle exec rake server`
 
-It will start up solr_wrapper, ingest a few hundred sample records, and start the rails server.
+It will start up solr_wrapper and start the rails server.
+
+You can also have it ingest a few thousand sample records by setting the
+`DO_INGEST` environment variable to any value. For example:
+
+`DO_INGEST="true" bundle exec rake server`
 
 
 ### Preparing Alma Data
@@ -107,7 +112,13 @@ bundle exec rake fortytu:oai:ingest_all
 
 ## Running the Tests
 
+`bundle exec rake ci` will start solr, clean out all solr records, ingest the
+test records, and run your test suite.
 
-`bundle exec rake ci`
+`bundle exec rake rspec` will start your solr and run your test suite, assuming
+you already have the test records in your solr.
 
-This will spin up a test solr instance, import a few hundred records, and run the test suite.
+The `rake rspec` rake task can also take any `rspec` command line parameters, for
+example to [use a seed to determine order](https://relishapp.com/rspec/rspec-core/v/3-7/docs/command-line/order) , you can run:
+
+`bundle exec rake rspec["--seed=12345"]`
