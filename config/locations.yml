@@ -12,14 +12,18 @@ default: &default
     reference: Reference
     reserve: Reserves
     stacks: Stacks
+    UNASSIGNED: Location information not available
   BLOCKSON:
     orders: Blockson Afro-American Collection
     rarestacks: Reading Room
+    UNASSIGNED: Location information not available
   CLAEDTECH:
     media: Media
     reserves: Reserves
+    UNASSIGNED: Location information not available
   DSC:
     DSC: Equipment
+    UNASSIGNED: Location information not available
   GINSBURG:
     circ: Circulation Collection
     intref: Internal Reference
@@ -32,6 +36,7 @@ default: &default
     serials: Journals
     stacks: Stacks
     techserv: Technical Services
+    UNASSIGNED: Location information not available
   HARRISBURG:
     intref: Internal Reference
     harrisburg: Harrisburg Library
@@ -41,6 +46,7 @@ default: &default
     reference: Reference
     reserve: Reserves
     stacks: Stacks
+    UNASSIGNED: Location information not available
   RES_SHARE:
     OUT_RS_REQ: Borrowing Resource Sharing Requests
     IN_RS_REQ: Lending Resource Sharing Requests
@@ -52,6 +58,7 @@ default: &default
     serials: Journals
     stacks: Stacks
     remote: Closed Stacks
+    UNASSIGNED: Location information not available
   LAW:
     closestack: Closed Stacks - Ask At Desk
     oversize2: Closed Stacks - Ask At Desk
@@ -81,14 +88,17 @@ default: &default
     rawle: Special Collections - Ask At Desk
     rawle3: Special Collections - Ask At Desk
     stacks: Stacks
+    UNASSIGNED: Location information not available
   MEDIA:
     dsc: Digital Scholarship Center
     media: Media
     reserve: Reserves
     micro: Microform
     orders: Media Services
+    msequip: Location information not available
     zmedia: deleted location
     zpaley: deleted location
+    UNASSIGNED: Location information not available
   MAIN:
     serials: Journals
     govdocmicr: Government Doc Microforms
@@ -110,6 +120,7 @@ default: &default
     psov2: Oversize Stacks
     psov3: Oversize Stacks
     UNASSIGNED: 'Problem: See Library Staff'
+    remote: Location information not available
     zdelete: Deleted Location
     zbio: deleted location
     zchem: deleted location
@@ -127,18 +138,22 @@ default: &default
     serials: Journals
     stacks: Stacks
     techserv: Technical Services
+    UNASSIGNED: Location information not available
   PRESSER:
     presser: Learning Center
     plc: Listening Library
     zpresser: deleted location
+    UNASSIGNED: Location information not available
   KARDON:
-    a_rare: Ambler
-    b_rare: Blockson
-    g_remote: Ginsburg
-    l_remote: Law
-    p_govdocmf: Paley Government Documents
-    p_GovDocs: Paley Government Documents
-    p_remote: Paley
+    a_rare: Remote Storage Ambler
+    b_rare: Remote Storage Blockson
+    g_remote: Remote Storage Ginsburg
+    l_remote: Remote Storage Law
+    p_govdocmf: Remote Storage Paley Government Documents
+    p_GovDocs: Remote Storage Paley Government Documents
+    p_media: Location information not available
+    p_micro: Location information not available
+    p_remote: Remote Storage Paley
   ROME:
     exhibit: Exhibits
     fiction: Fiction
@@ -148,8 +163,10 @@ default: &default
     reserve: Reserves
     serials: Journals
     stacks: Stacks
+    UNASSIGNED: Location information not available
   SCRC:
     rarestacks: Reading Room
+    UNASSIGNED: Location information not available
 
 test:
   <<: *default
