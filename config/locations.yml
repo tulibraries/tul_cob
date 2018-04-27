@@ -145,15 +145,15 @@ default: &default
     zpresser: deleted location
     UNASSIGNED: Location information not available
   KARDON:
-    a_rare: Remote Storage Ambler
-    b_rare: Remote Storage Blockson
-    g_remote: Remote Storage Ginsburg
-    l_remote: Remote Storage Law
-    p_govdocmf: Remote Storage Paley Government Documents
-    p_GovDocs: Remote Storage Paley Government Documents
+    a_rare: Remote Storage, Ambler
+    b_rare: Remote Storage, Blockson
+    g_remote: Remote Storage, Ginsburg
+    l_remote: Remote Storage, Law
+    p_govdocmf: Remote Storage, Paley Government Documents
+    p_GovDocs: Remote Storage, Paley Government Documents
     p_media: Location information not available
     p_micro: Location information not available
-    p_remote: Remote Storage Paley
+    p_remote: Remote Storage, Paley
   ROME:
     exhibit: Exhibits
     fiction: Fiction

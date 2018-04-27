@@ -25,7 +25,7 @@ namespace :locations do
           location_list[code][l["code"]] = (name.empty?) ? "Location information not available" : name
         elsif code == "KARDON"
           external_name = l.fetch("external_name", "").to_s
-          location_list[code][l["code"]] = (external_name.empty?) ? "Location information not available" : "Remote Storage #{external_name}"
+          location_list[code][l["code"]] = (external_name.empty?) ? "Location information not available" : "Remote Storage, #{external_name}"
         else
           external_name = l.fetch("external_name", "").to_s
           location_list[code][l["code"]] = (external_name.empty?) ? "Location information not available" : external_name
