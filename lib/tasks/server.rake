@@ -5,6 +5,7 @@ require "solr_wrapper" unless Rails.env.production?
 desc "Run test suite"
 task :ci do
   ENV["DO_INGEST"] = "true"
+  system "bundle exec solr_wrapper clean"
   Rake::Task["rspec"].invoke
 end
 
