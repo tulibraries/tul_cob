@@ -44,11 +44,19 @@ module PrimoCentralHelper
     partials
   end
 
+  def index_buttons_partials
+    availability_link_partials.map { |p| "#{p}_button" }
+  end
+
   def document_link
     @document["link"]
   end
 
   def document_link_label
     @document["link_label"]
+  end
+
+  def document_id
+    @document["pnxId"]
   end
 end
