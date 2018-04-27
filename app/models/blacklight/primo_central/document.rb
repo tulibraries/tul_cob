@@ -28,8 +28,7 @@ module Blacklight::PrimoCentral::Document
   end
 
   def has_direct_link?
-    availability = @_source.fetch("delivery", {})
-      .fetch("availability", [])
+    availability = @_source.dig("delivery", "availability") || []
     availability == ["fulltext_linktorsrc"]
   end
 
@@ -52,10 +51,7 @@ module Blacklight::PrimoCentral::Document
     end
 
     def get_it(doc)
-      doc.to_h.fetch("delivery", {})
-        .fetch("GetIt1", [{}])
-        .first.fetch("links", [{}])
-        .first
+      doc.to_h.dig("delivery", "GetIt1", 0, "links", 0) || {}
     end
 
 
