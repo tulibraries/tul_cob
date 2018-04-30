@@ -43,16 +43,11 @@ module AlmaDataHelper
     if item["holding_data"]["in_temp_location"] == true
       temp_library = item["holding_data"]["temp_library"]["value"]
       temp_location = item["holding_data"]["temp_location"]["value"]
-
-      if item["holding_data"]["temp_call_number"].empty?
         "#{Rails.configuration.locations[temp_library][temp_location]}"
-      else
-        "#{Rails.configuration.locations[temp_library][temp_location]} - #{item["holding_data"]["temp_call_number"]}"
-      end
     else
       library = item["item_data"]["library"]["value"]
       location = item["item_data"]["location"]["value"]
-      "#{Rails.configuration.locations[library][location]} - #{item["holding_data"]["call_number"]}"
+      "#{Rails.configuration.locations[library][location]}"
     end
   end
 
@@ -81,6 +76,14 @@ module AlmaDataHelper
       library = item["item_data"]["library"]["value"]
       location = item["item_data"]["location"]["value"]
       Rails.configuration.locations[library][location]
+    end
+  end
+
+  def call_number(item)
+    if item["holding_data"]["temp_call_number"].empty?
+      item["holding_data"]["call_number"]
+    else
+      item["holding_data"]["temp_call_number"]
     end
   end
 
