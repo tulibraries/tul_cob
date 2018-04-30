@@ -39,10 +39,10 @@ var BlacklightAlma = function (options) {
  }
 
  availabilityInfo = function (holding) {
-   var libraryAndLocation = [holding['library'], holding['location']].join(" - ");
+   var library = [holding['library']];
    var capitalAvail = holding['availability'].charAt(0).toUpperCase() + holding['availability'].slice(1);
    if(holding['availability'] == 'available') {
-     return [capitalAvail, 'at', libraryAndLocation, holding['call_number']]
+     return [capitalAvail, 'at', library]
          .filter(function (item) {
              return item != null && item.length > 0;
          }).join(" ");
