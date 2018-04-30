@@ -24,7 +24,7 @@ module AlmaDataHelper
       process_type = Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
       content_tag(:span, "", class: "close-icon") + process_type
     else
-      content_tag(:span, "", class: "close") + "Checked out or currently unavailable"
+      content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
     end
   end
 
