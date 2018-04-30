@@ -26270,4 +26270,39 @@
       <subfield code="8">22391529960003811</subfield>
     </datafield>
   </record>
+  <record>
+    <controlfield tag="001">991036796336503811</controlfield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Chemie der Erde</subfield>
+      <subfield code="h">[electronic resource].</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Chimie inorganique</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Pétrologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Géologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Sols</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Pédologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Géochimie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Minéraux</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+  </record>
 </collection>
