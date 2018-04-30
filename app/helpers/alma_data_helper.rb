@@ -8,11 +8,11 @@ module AlmaDataHelper
     base_status = item["item_data"]["base_status"]["value"]
     if base_status == "1"
       if non_circulating.nil?
-        "Available"
+        content_tag(:span, "", class: "check") + "Available"
       elsif non_circulating.include?("Non-circulating")
-        "Library Use Only"
+        content_tag(:span, "", class: "check") + "Library Use Only"
       else
-        "Available"
+        content_tag(:span, "", class: "check") + "Available"
       end
     elsif base_status == "0"
       unavailable_items(item)
@@ -21,9 +21,10 @@ module AlmaDataHelper
 
   def unavailable_items(item)
     if item["item_data"]["process_type"].present?
-      Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
+      process_type = Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
+      content_tag(:span, "", class: "close-icon") + process_type
     else
-      "Checked out or currently unavailable"
+      content_tag(:span, "", class: "close") + "Checked out or currently unavailable"
     end
   end
 
