@@ -44,7 +44,7 @@ module AlmaDataHelper
     if item["holding_data"]["in_temp_location"] == true
       temp_library = item["holding_data"]["temp_library"]["value"]
       temp_location = item["holding_data"]["temp_location"]["value"]
-        "#{Rails.configuration.locations[temp_library][temp_location]}"
+      "#{Rails.configuration.locations[temp_library][temp_location]}"
     else
       library = item["item_data"]["library"]["value"]
       location = item["item_data"]["location"]["value"]

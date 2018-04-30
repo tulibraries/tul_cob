@@ -16,7 +16,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays library use only" do
-        expect(availability_status(item)).to eq "Library Use Only"
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays available" do
-        expect(availability_status(item)).to eq "Available"
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Available"
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays unavailable" do
-        expect(availability_status(item)).to eq "At another institution"
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
   end
@@ -63,7 +63,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
          }
       end
       it "displays process type" do
-        expect(unavailable_items(item)).to eq "At another institution"
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
 
@@ -76,7 +76,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
          }
       end
       it "displays default message" do
-        expect(unavailable_items(item)).to eq "Checked out or currently unavailable"
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
     end
   end
@@ -146,7 +146,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays temporary location and call number" do
-        expect(location_status(item)).to eq "Lending Resource Sharing Requests - Temp call number"
+        expect(location_status(item)).to eq "Lending Resource Sharing Requests"
       end
     end
 
@@ -164,7 +164,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
 
       it "displays location and call number" do
-        expect(location_status(item)).to eq "Stacks - Perm call number"
+        expect(location_status(item)).to eq "Stacks"
       end
     end
   end
