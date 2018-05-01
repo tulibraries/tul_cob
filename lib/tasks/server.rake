@@ -9,6 +9,7 @@ task :ci do
   Rake::Task["rspec"].invoke
 end
 
+
 desc "Run selected specs (Use with Guard)"
 task :rspec, [:spec_args] do |t, args|
   if Rails.env.test?

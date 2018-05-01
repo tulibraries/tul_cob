@@ -37,7 +37,7 @@ module AdvancedHelper
       # Always select from last rows count of total values in op_row[]
       # @see BL-334
       rows = params.select { |k| k.match(/^q_/) }
-      count_rows = rows.count
+      count_rows = rows.to_h.count
       params["op_row"][-count_rows + count - 1]
     end
   end
