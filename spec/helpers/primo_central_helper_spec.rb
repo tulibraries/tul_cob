@@ -5,10 +5,8 @@ require "rails_helper"
 RSpec.describe PrimoCentralHelper, type: :helper do
   let(:doc) { Hash.new }
   let(:document) { PrimoCentralDocument.new(doc) }
-  let(:base_path) { "" }
 
   before(:example) do
-    allow(helper).to receive(:base_path).and_return("")
     @document = document
   end
 
