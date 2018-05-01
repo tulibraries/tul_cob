@@ -61,4 +61,12 @@ module PrimoCentralHelper
     # Hashing because () characters mess with javacript.
     @document["pnxId"].hash
   end
+
+  def browse_creator(args)
+    creator = args[:document][args[:field]] || []
+    creator.map do |name|
+      linked_subfields = name.split("|").first
+      link_to(linked_subfields, base_path + "?search_field=creator&q=#{url_encode(linked_subfields)}")
+    end
+  end
 end

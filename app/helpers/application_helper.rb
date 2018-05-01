@@ -34,21 +34,6 @@ module ApplicationHelper
     args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
   end
 
-  def browse_creator(args)
-    creator = args[:document][args[:field]]
-    creator.map do |name|
-      linked_subfields = name.split("|").first
-      newname = link_to(linked_subfields, base_path + "?f[creator_facet][]=#{url_encode(linked_subfields)}").html_safe
-      plain_text_subfields = name.split("|").second
-      creator = newname
-      if plain_text_subfields.present?
-        plain_text_subfields = plain_text_subfields
-        creator = newname + " " + plain_text_subfields
-      end
-      creator
-    end
-  end
-
   def creator_index_separator(args)
     creator = args[:document][args[:field]]
     creator.map do |name|

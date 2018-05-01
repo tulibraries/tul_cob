@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+include ERB::Util
 
 RSpec.describe PrimoCentralHelper, type: :helper do
   let(:doc) { Hash.new }
   let(:document) { PrimoCentralDocument.new(doc) }
+  let(:base_path) { "" }
+
   before(:example) do
+    allow(helper).to receive(:base_path).and_return("")
     @document = document
   end
 
@@ -51,5 +55,27 @@ RSpec.describe PrimoCentralHelper, type: :helper do
         expect(document_link_label).to eq("Link to Resource")
       end
     end
+  end
+
+  describe "#browse_creator" do
+    context "no creator" do
+      let(:presenter) { { document: document, field: "creator" } }
+      it "returns an empty list if nos creators are available" do
+        expect(browse_creator(presenter)).to eq([])
+      end
+    end
+
+    context "a creator" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        creator: ["Hello, World"],
+      )}
+      let(:presenter) { { document: document, field: "creator" } }
+      it "returns a list of links to creator search for each creator" do
+        expect(browse_creator(presenter)).to eq([
+          "<a href=\"?search_field=creator&amp;q=Hello%2C%20World\">Hello, World</a>",
+        ])
+      end
+    end
+
   end
 end
