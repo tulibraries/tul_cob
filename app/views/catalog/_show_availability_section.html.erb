@@ -28,9 +28,10 @@
   <% end %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div class="online-border"></div>
+    <% if document.fetch("availability_facet", []).include?("At the Library") && document.fetch("availability_facet", []).include?("Online") %>
+      <div class="online-border"></div>
+    <% end %>
     <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
-      <h5>In Library</h5>
       <div data-target="show.panel" class="panel-content" >
         <div data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>
