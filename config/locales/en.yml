@@ -30,6 +30,8 @@ en:
       modify_words: "Try different keywords"
       ask_librarian: "Ask a Librarian"
       for_help: "for help"
+  primo_central:
+    link_to_resource: "Link to Resource"
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer Reviewed"

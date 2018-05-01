@@ -30,18 +30,7 @@ RSpec.describe PrimoCentralHelper, type: :helper do
   describe "#document_link_label" do
     context "no link label found" do
       it "returns a default value when no direct link label is found" do
-        expect(document_link_label).to eq("Direct Link")
-      end
-    end
-
-    context "link label available" do
-      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-        delivery: {
-          GetIt1: [{
-            "links" => [{ "displayText" => "$$EView_full_text_via_AgEcon" }],
-          }] }) }
-      it "correctly normalized label if found" do
-        expect(document_link_label).to eq("View full text via AgEcon")
+        expect(document_link_label).to eq("Link to Resource")
       end
     end
   end
