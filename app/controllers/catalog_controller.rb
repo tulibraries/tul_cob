@@ -13,7 +13,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  #helper BlacklightAlma::HelperBehavior
+  helper_method :browse_creator
 
   configure_blacklight do |config|
     # default advanced config values
@@ -443,7 +443,6 @@ class CatalogController < ApplicationController
       }
     end
 
-
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
@@ -506,5 +505,21 @@ class CatalogController < ApplicationController
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"
+  end
+
+  def browse_creator(args)
+    creator = args[:document][args[:field]]
+    creator.map do |name|
+      linked_subfields = name.split("|").first
+      facet_query = view_context.send(:url_encode, (linked_subfields))
+      newname = view_context.link_to(linked_subfields, base_path + "?f[creator_facet][]=#{facet_query}")
+      plain_text_subfields = name.split("|").second
+      creator = newname
+      if plain_text_subfields.present?
+        plain_text_subfields = plain_text_subfields
+        creator = newname + " " + plain_text_subfields
+      end
+      creator
+    end
   end
 end

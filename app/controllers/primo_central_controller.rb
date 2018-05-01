@@ -4,6 +4,8 @@ class PrimoCentralController < CatalogController
   include Blacklight::Catalog
   include CatalogConfigReinit
 
+  helper_method :browse_creator
+
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -75,5 +77,16 @@ class PrimoCentralController < CatalogController
   def render_sms_action?(_config, _options)
     # Render if the item can be found at a library
     false
+  end
+
+  def browse_creator(args)
+    creator = args[:document][args[:field]] || []
+    creator.map do |name|
+      linked_subfields = name.split("|").first
+
+      query = view_context.send(:url_encode, (linked_subfields))
+
+      view_context.link_to(linked_subfields, base_path + "?search_field=creator&q=#{query}")
+    end
   end
 end
