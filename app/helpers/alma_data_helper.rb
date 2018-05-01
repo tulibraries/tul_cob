@@ -53,7 +53,7 @@ module AlmaDataHelper
   end
 
   def missing_or_lost?(item)
-    item["item_data"]["process_type"].has_value?("MISSING") || item["item_data"]["process_type"].has_value?("LOST")
+    item["item_data"]["process_type"].has_value?("MISSING") || item["item_data"]["process_type"].has_value?("LOST_LOAN")
   end
 
   def group_and_order_items(items)
