@@ -48,7 +48,7 @@ var BlacklightAlma = function (options) {
          }).join(" ");
    }
    else if(holding['availability'] == 'check_holdings') {
-    return ["Check holdings for", libraryAndLocation, holding['call_number']]
+    return ["Check holdings for", library]
         .filter(function (item) {
             return item != null && item.length > 0;
         }).join(" ");
