@@ -50,8 +50,9 @@ module Blacklight::PrimoCentral::Document
         .gsub("_", " ")
     end
 
-    def get_it(doc)
-      doc.to_h.dig("delivery", "GetIt1", 0, "links", 0) || {}
+    def get_it(doc = nil)
+      doc = (doc || @_source || {})
+      doc.dig("delivery", "GetIt1", 0, "links", 0) || {}
     end
 
 
