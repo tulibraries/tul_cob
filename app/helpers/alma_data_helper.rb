@@ -8,11 +8,11 @@ module AlmaDataHelper
     base_status = item["item_data"]["base_status"]["value"]
     if base_status == "1"
       if non_circulating.nil?
-        "Available"
+        content_tag(:span, "", class: "check") + "Available"
       elsif non_circulating.include?("Non-circulating")
-        "Library Use Only"
+        content_tag(:span, "", class: "check") + "Library Use Only"
       else
-        "Available"
+        content_tag(:span, "", class: "check") + "Available"
       end
     elsif base_status == "0"
       unavailable_items(item)
@@ -21,9 +21,10 @@ module AlmaDataHelper
 
   def unavailable_items(item)
     if item["item_data"]["process_type"].present?
-      Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
+      process_type = Rails.configuration.process_types[item["item_data"]["process_type"]["value"]]
+      content_tag(:span, "", class: "close-icon") + process_type
     else
-      "Checked out or currently unavailable"
+      content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
     end
   end
 
@@ -43,16 +44,11 @@ module AlmaDataHelper
     if item["holding_data"]["in_temp_location"] == true
       temp_library = item["holding_data"]["temp_library"]["value"]
       temp_location = item["holding_data"]["temp_location"]["value"]
-
-      if item["holding_data"]["temp_call_number"].empty?
-        "#{Rails.configuration.locations[temp_library][temp_location]}"
-      else
-        "#{Rails.configuration.locations[temp_library][temp_location]} - #{item["holding_data"]["temp_call_number"]}"
-      end
+      "#{Rails.configuration.locations[temp_library][temp_location]}"
     else
       library = item["item_data"]["library"]["value"]
       location = item["item_data"]["location"]["value"]
-      "#{Rails.configuration.locations[library][location]} - #{item["holding_data"]["call_number"]}"
+      "#{Rails.configuration.locations[library][location]}"
     end
   end
 
@@ -81,6 +77,14 @@ module AlmaDataHelper
       library = item["item_data"]["library"]["value"]
       location = item["item_data"]["location"]["value"]
       Rails.configuration.locations[library][location]
+    end
+  end
+
+  def call_number(item)
+    if item["holding_data"]["temp_call_number"].empty?
+      item["holding_data"]["call_number"]
+    else
+      item["holding_data"]["temp_call_number"]
     end
   end
 

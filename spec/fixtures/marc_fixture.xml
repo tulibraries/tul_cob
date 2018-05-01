@@ -26271,6 +26271,233 @@
     </datafield>
   </record>
   <record>
+    <leader>02948ngm a2200721 a 4500</leader>
+    <controlfield tag="005">20170826031103.0</controlfield>
+    <controlfield tag="007">vd bvaizm</controlfield>
+    <controlfield tag="008">060622s2003 cau094 vleng d</controlfield>
+    <controlfield tag="001">991013473489703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">078328344X</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="024">
+      <subfield code="a">025192312120</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="0" tag="028">
+      <subfield code="a">23121</subfield>
+      <subfield code="b">Universal Studios</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b30358577-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CStRLIN)ocn491720327</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">PPTb30358577</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">LAS</subfield>
+      <subfield code="c">LAS</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">PRC</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">VP@</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">CUY</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">PN1997</subfield>
+      <subfield code="b">.S274x 2003</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="130">
+      <subfield code="a">Scarface (Motion picture : 1932)</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Scarface</subfield>
+      <subfield code="h">[videorecording] /</subfield>
+      <subfield code="c">produced by Howard Hughes ; directed by Howard Hawks.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">1932 version.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Universal City, CA :</subfield>
+      <subfield code="b">Universal Studios,</subfield>
+      <subfield code="c">c2003.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 videodisc (94 min.) :</subfield>
+      <subfield code="c">4 3/4 in.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Based on the book: Scarface by Armitage Trail.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Videodisc release of the 1932 motion picture by Universal.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Special feature include original and alternate endings.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">United Artists Picture.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="508">
+      <subfield code="a">Screen story, Ben Hecht ; continuity and dialogue, Seton I. Miller, John Lee Mahin, W.R. Burnett ; photography, Lee Garmes and L.W. O'Connell ; film editor, Edward Curtiss ; musical directors, Adolph Tandler and Gus Arnheim.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="511">
+      <subfield code="a">Paul Muni, Ann Dvorak, George Raft, Boris Karloff.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">"He didn't create crime. He just organized it." Tells the story of organized crime's control of the city of Chicago during prohibition and the ruthless drive of Tony Carmonte to become the city's top gangster.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="538">
+      <subfield code="a">DVD.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">In English with optional subtitles in English, Spanish and French.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Mafia</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Mafia</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Gangsters</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Prohibition</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Chicago (Ill.)</subfield>
+      <subfield code="x">Social conditions</subfield>
+      <subfield code="y">20th century</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hawks, Howard,</subfield>
+      <subfield code="d">1896-1977.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hughes, Howard,</subfield>
+      <subfield code="d">1905-1976.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hecht, Ben,</subfield>
+      <subfield code="d">1894-1964.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Miller, Seton I.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Mahin, John Lee,</subfield>
+      <subfield code="d">1902-1984.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Burnett, W. R.</subfield>
+      <subfield code="q">(William Riley),</subfield>
+      <subfield code="d">1899-1982.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Garmes, Lee.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">O'Connell, L.W.,</subfield>
+      <subfield code="d">1890-</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Muni, Paul,</subfield>
+      <subfield code="d">1895-1967.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Dvorak, Ann,</subfield>
+      <subfield code="d">1911-1979.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Raft, George.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Karloff, Boris,</subfield>
+      <subfield code="d">1887-1969.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Trail, Armitage.</subfield>
+      <subfield code="t">Scarface.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Tandler, Adolf.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Arnheim, Gus.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">United Artists Corporation.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Universal Pictures Corporation.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Universal City Studios.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">170224</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b30358577</subfield>
+      <subfield code="b">pmed</subfield>
+      <subfield code="c">g</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pmed</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="c">061011</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">10/11/06</subfield>
+      <subfield code="s">RLIN</subfield>
+      <subfield code="c">MH</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">PN1997</subfield>
+      <subfield code="i">.S274x 2003</subfield>
+      <subfield code="8">22397127340003811</subfield>
+    </datafield>
+  </record>
+  <record>
     <controlfield tag="001">991036796336503811</controlfield>
     <datafield ind1="1" ind2="0" tag="245">
       <subfield code="a">Chemie der Erde</subfield>
