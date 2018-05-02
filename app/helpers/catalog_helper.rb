@@ -45,10 +45,11 @@ module CatalogHelper
       "review" => "journal_periodical",
       "statistical_data_set" => "dataset",
       "technical_report" => "journal_periodical",
+      "book_chapter" => "book",
       "text_resource" => "journal_periodical",
     }
 
-    format = default_image[format] || format
+    format = default_image[format] || [ "unknown" ]
     "svg/" + format + ".svg"
   end
 
