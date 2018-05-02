@@ -57,16 +57,36 @@ var BlacklightAlma = function (options) {
      }
  };
 
+ availableLibrarySort = function (holdings) {
+   if (holdings.indexOf('Available at Paley Library') > 0) {
+       holdings.splice(holdings.indexOf('Available at Paley Library'), 1);
+       holdings.unshift('Available at Paley Library');
+   }
+ }
+
+ unavailableLibrarySort = function (holdings) {
+   if (holdings.indexOf('Checked out or temporarily unavailable at Paley Library') > 0) {
+       holdings.splice(holdings.indexOf('Checked out or temporarily unavailable at Paley Library'), 1);
+       holdings.unshift('Checked out or temporarily unavailable at Paley Library');
+   }
+ }
+
+ checkHoldingsLibrarySort = function (holdings) {
+   if (holdings.indexOf('Check holdings for Paley Library') > 0) {
+       holdings.splice(holdings.indexOf('Check holdings for Paley Library'), 1);
+       holdings.unshift('Check holdings for Paley Library');
+   }
+ }
+
  /**
   * Subclasses should override to customize.
   * @param holding
   * @returns {string}
   */
  BlacklightAlma.prototype.formatHoldings = function (holdings) {
-   if (holdings.indexOf('Available at Paley Library') > 0) {
-       holdings.splice(holdings.indexOf('Available at Paley Library'), 1);
-       holdings.unshift('Available at Paley Library');
-   }
+   availableLibrarySort(holdings);
+   unavailableLibrarySort(holdings);
+   checkHoldingsLibrarySort(holdings);
    list = holdings.filter(function (x, i, a) {
     return a.indexOf(x) == i;
    });
