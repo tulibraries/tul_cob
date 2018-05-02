@@ -81,7 +81,7 @@ class PrimoCentralController < CatalogController
 
   def browse_creator(args)
     creator = args[:document][args[:field]] || []
-    base_path = File.dirname(url_for)
+    base_path = helpers.base_path
     creator.map do |name|
       query = view_context.send(:url_encode, (name))
       view_context.link_to(name, base_path + "?search_field=creator&q=#{query}")
