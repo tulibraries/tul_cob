@@ -177,7 +177,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
            },
            "item_data" => {
              "library" => { "value" => "MAIN" },
-             "process_type" => { "value" => "LOST" }
+             "process_type" => { "value" => "LOST_LOAN" }
            }
          }]
       end

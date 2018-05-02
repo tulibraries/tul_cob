@@ -40,26 +40,16 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = [holding['library']];
-   var capitalAvail = holding['availability'].charAt(0).toUpperCase() + holding['availability'].slice(1);
    if(holding['availability'] == 'available') {
-     return [capitalAvail, 'at', library]
-         .filter(function (item) {
-             return item != null && item.length > 0;
-         }).join(" ");
+     return "Available at " + library;
    }
    else if(holding['availability'] == 'check_holdings') {
-    return ["Check holdings for", libraryAndLocation, holding['call_number']]
-        .filter(function (item) {
-            return item != null && item.length > 0;
-        }).join(" ");
+    return "Check holdings for " + library;
   }
   else {
-    return ["Checked out or temporarily unavailable at ", holding['library']]
-        .filter(function (item) {
-            return item != null && item.length > 0;
-        }).join(" ");
+    return "Checked out or temporarily unavailable at " + library
   }
-}
+ }
 
  BlacklightAlma.prototype.formatHolding = function (mms_id, holding) {
      if(holding['inventory_type'] == 'physical') {
@@ -73,7 +63,14 @@ var BlacklightAlma = function (options) {
   * @returns {string}
   */
  BlacklightAlma.prototype.formatHoldings = function (holdings) {
-     return holdings.join("<br/>");
+   if (holdings.indexOf('Available at Paley Library') > 0) {
+       holdings.splice(holdings.indexOf('Available at Paley Library'), 1);
+       holdings.unshift('Available at Paley Library');
+   }
+   list = holdings.filter(function (x, i, a) {
+    return a.indexOf(x) == i;
+   });
+   return list.join("<br/>");
  };
 
  /**
