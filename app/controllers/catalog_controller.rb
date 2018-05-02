@@ -509,6 +509,7 @@ class CatalogController < ApplicationController
 
   def browse_creator(args)
     creator = args[:document][args[:field]]
+    base_path = File.dirname(url_for)
     creator.map do |name|
       linked_subfields = name.split("|").first
       facet_query = view_context.send(:url_encode, (linked_subfields))
