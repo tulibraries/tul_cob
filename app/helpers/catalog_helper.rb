@@ -24,7 +24,6 @@ module CatalogHelper
     "data-lccn=#{value.first.gsub(/\D/, '')}" if value
   end
 
-
   def default_cover_image(document)
     formats = document.fetch(:format, [])
     # In case we fetched the default value, or the format value was ""

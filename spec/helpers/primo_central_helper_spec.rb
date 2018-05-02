@@ -5,6 +5,7 @@ require "rails_helper"
 RSpec.describe PrimoCentralHelper, type: :helper do
   let(:doc) { Hash.new }
   let(:document) { PrimoCentralDocument.new(doc) }
+
   before(:example) do
     @document = document
   end
