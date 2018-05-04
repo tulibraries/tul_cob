@@ -36,6 +36,7 @@ div #facet-availability_facet .panel-body {
 .aeon-wrapper {
   display: table;
   margin-bottom: 20px;
+  padding-bottom: 20px;
   width: 100%;
 }
 
@@ -119,14 +120,14 @@ dd.blacklight-availability {
   vertical-align: middle;
 }
 
-#availability-heading {
-  margin: 0;
-  padding: 0;
+.availability-panel-heading {
+  background-color: #A30733 !important;
+  color: #fff !important;
+  padding: 5px;
 }
 
-.bl_alma_iframe {
-  border: 0;
-  width: 99.9%;
+#availability-heading {
+  margin-left: 5px;
 }
 
 div.online_resources {
@@ -155,7 +156,8 @@ div.online_resources {
 }
 
 div.physical-holding-panel {
-  padding-top: 0;
+  padding: 0 !important;
+  margin-bottom: -20px !important;
 }
 
 .show_page_records dd {
@@ -171,13 +173,14 @@ div.physical-holding-panel {
   margin-top: 10px;
 }
 
-.physical-holding-panel {
-  padding: 0 !important;
+.border-bottom td, .border-bottom th {
+  border-bottom: 1px solid #CFC7B0;
 }
 
-.borderless td, .borderless th {
-  border: none !important;
+table {
+  border: 1px solid #CFC7B0;
 }
+
 
 /* ALMA DATA TABLE */
 .table-heading {
