@@ -40,34 +40,26 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = [holding['library']];
-   if(holding['availability'] == 'available') {
-     return "Available at " + library;
-   }
-   else if(holding['availability'] == 'check_holdings') {
-    return "Check holdings for " + library;
-  }
-  else {
-    return "Checked out or temporarily unavailable at " + library
-  }
+    return library;
  }
 
  BlacklightAlma.prototype.formatHolding = function (mms_id, holding) {
      if(holding['inventory_type'] == 'physical') {
-         return availabilityInfo(holding);
+       if(holding['availability'] == 'available') {
+         label = "Available at ";
+         return label + availabilityInfo(holding);
+       }
+       else if(holding['availability'] == 'check_holdings') {
+         label = "Other libraries: ";
+         return label + availabilityInfo(holding);
      }
+   }
  };
 
- availableLibrarySort = function (holdings) {
+ availableLibrarySort = function (holdings, holding) {
    if (holdings.indexOf('Available at Paley Library') > 0) {
        holdings.splice(holdings.indexOf('Available at Paley Library'), 1);
        holdings.unshift('Available at Paley Library');
-   }
- }
-
- unavailableLibrarySort = function (holdings) {
-   if (holdings.indexOf('Checked out or temporarily unavailable at Paley Library') > 0) {
-       holdings.splice(holdings.indexOf('Checked out or temporarily unavailable at Paley Library'), 1);
-       holdings.unshift('Checked out or temporarily unavailable at Paley Library');
    }
  }
 
@@ -85,7 +77,6 @@ var BlacklightAlma = function (options) {
   */
  BlacklightAlma.prototype.formatHoldings = function (holdings) {
    availableLibrarySort(holdings);
-   unavailableLibrarySort(holdings);
    checkHoldingsLibrarySort(holdings);
    list = holdings.filter(function (x, i, a) {
     return a.indexOf(x) == i;
