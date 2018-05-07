@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  post 'articles/:id/track' => 'primo_central#track', as: :track_primo_central
+  post "articles/:id/track" => "primo_central#track", as: :track_primo_central
 
   resources :users, only: [:index] do
     post :impersonate, on: :member
