@@ -39,35 +39,66 @@ var BlacklightAlma = function (options) {
  }
 
  availabilityInfo = function (holding) {
-   var library = [holding['library']];
-    return library;
+   var library = holding['library'];
+   var availability = holding['availability'];
+
+   if (availability == "available") {
+     availItem = {};
+     Object.assign(availItem, {library, availability})
+     return availItem;
+   }
+
+   if (availability == "check_holdings") {
+     checkItem = {};
+     Object.assign(checkItem, {library, availability})
+     return checkItem;
+   }
  }
 
- BlacklightAlma.prototype.formatHolding = function (mms_id, holding) {
-     if(holding['inventory_type'] == 'physical') {
-       if(holding['availability'] == 'available') {
-         label = "Available at ";
-         return label + availabilityInfo(holding);
-       }
-       else if(holding['availability'] == 'check_holdings') {
-         label = "Other libraries: ";
-         return label + availabilityInfo(holding);
-     }
+ BlacklightAlma.prototype.formatHolding = function (holding) {
+   if(holding['inventory_type'] == 'physical') {
+     return availabilityInfo(holding);
    }
  };
 
- availableLibrarySort = function (holdings, holding) {
-   if (holdings.indexOf('Available at Paley Library') > 0) {
-       holdings.splice(holdings.indexOf('Available at Paley Library'), 1);
-       holdings.unshift('Available at Paley Library');
+ sortedLibraries = function (holdings) {
+   holdings.sort();
+   if (holdings.indexOf('Paley Library') > 0) {
+       holdings.splice(holdings.indexOf('Paley Library'), 1);
+       holdings.unshift('Paley Library');
    }
  }
 
- checkHoldingsLibrarySort = function (holdings) {
-   if (holdings.indexOf('Check holdings for Paley Library') > 0) {
-       holdings.splice(holdings.indexOf('Check holdings for Paley Library'), 1);
-       holdings.unshift('Check holdings for Paley Library');
-   }
+ availableHoldings = function (holdings) {
+   availHoldings = [];
+   holdings.forEach(function(item) {
+     if (item.availability == "available") {
+       availHoldings.push(item.library);
+     }
+   });
+
+   sortedLibraries(availHoldings);
+
+   var list = availHoldings.filter(function (x, i, a) {
+     return a.indexOf(x) == i;
+   });
+   return list.join("<br/>");
+ }
+
+ checkHoldings = function (holdings) {
+   check = [];
+   holdings.forEach(function(item) {
+     if (item.availability == "check_holdings") {
+       check.push(item.library);
+     }
+   });
+
+   sortedLibraries(check);
+
+   var list = check.filter(function (x, i, a) {
+     return a.indexOf(x) == i;
+   });
+   return list.join("<br/>");
  }
 
  /**
@@ -76,12 +107,18 @@ var BlacklightAlma = function (options) {
   * @returns {string}
   */
  BlacklightAlma.prototype.formatHoldings = function (holdings) {
-   availableLibrarySort(holdings);
-   checkHoldingsLibrarySort(holdings);
-   list = holdings.filter(function (x, i, a) {
-    return a.indexOf(x) == i;
-   });
-   return list.join("<br/>");
+   html = ""
+   available = availableHoldings(holdings);
+   check = checkHoldings(holdings);
+
+   if (available) {
+     html = "<dt >Available at: </dt><dd>" + available + "</dd>";
+   }
+
+   if (check) {
+   html += "<dt >Other Libraries: </dt><dd>" + check + "</dd>";
+   }
+   return html;
  };
 
  /**
@@ -111,7 +148,7 @@ var BlacklightAlma = function (options) {
                  if (holdings.length > 0) {
                      var formatted = $.map(holdings, function(holding) {
                        availabilityButton(id, holding);
-                       return baObj.formatHolding(id, holding);
+                       return baObj.formatHolding(holding);
                      });
                      return baObj.formatHoldings(formatted);
                  }
