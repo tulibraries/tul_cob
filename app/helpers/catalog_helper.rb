@@ -50,8 +50,7 @@ module CatalogHelper
         "text_resource" => "journal_periodical",
     )
 
-    image = default_image[format] || "unknown"
-    "svg/" + image + ".svg"
+    "svg/" + default_image.fetch(format, "unknown") + ".svg"
   end
 
   def separate_formats(response)
