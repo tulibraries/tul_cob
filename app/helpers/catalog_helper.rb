@@ -49,7 +49,12 @@ module CatalogHelper
       "text_resource" => "journal_periodical",
     }
 
-    format = default_image[format] || [ "unknown" ]
+    format = default_image[format]
+
+    if !File.exists?("app/assets/images/svg/#{format}.svg")
+      format = "unknown"
+    end
+
     "svg/" + format + ".svg"
   end
 
