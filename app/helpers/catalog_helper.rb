@@ -31,6 +31,23 @@ module CatalogHelper
     formats << "unknown" if formats.empty?
     format = formats.first.to_s.parameterize.underscore
     default_image = {
+      "archive_material" => "archive_material",
+      "audio" => "audio",
+      "book" => "book",
+      "computer_file"=> "computer_file",
+      "conference_proceedings" => "conference_proceedings",
+      "database" => "database",
+      "dataset" => "dataset",
+      "image" => "image",
+      "journal_periodical" => "journal_periodical",
+      "kit" => "kit",
+      "map" => "map",
+      "object" => "object",
+      "score" => "score",
+      "script" => "script",
+      "unknown" => "unknown",
+      "video" => "video",
+      "website" => "website",
       "article" => "journal_periodical",
       "dissertation" => "script",
       "dissertation_thesis" => "script",
@@ -49,11 +66,7 @@ module CatalogHelper
       "text_resource" => "journal_periodical",
     }
 
-    format = default_image[format]
-
-    if !File.exists?("app/assets/images/svg/#{format}.svg")
-      format = "unknown"
-    end
+    format = default_image[format] | "unknown"
 
     "svg/" + format + ".svg"
   end
