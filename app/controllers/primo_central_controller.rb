@@ -40,7 +40,6 @@ class PrimoCentralController < CatalogController
 
     # Facet fields
     config.add_facet_field :tlevel, label: "Availability", home: true, helper_method: :translate_availability_code
-    config.add_facet_field :domain, label: "Collection", limit: true, show: true
     config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
     config.add_facet_field :creator, label: "Author/Creator"
     config.add_facet_field :topic, label: "Topic"
