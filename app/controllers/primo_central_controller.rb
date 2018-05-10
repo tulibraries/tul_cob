@@ -87,4 +87,16 @@ class PrimoCentralController < CatalogController
       view_context.link_to(name, base_path + "?search_field=creator&q=#{query}")
     end
   end
+
+  ##
+  # Retrieve a set of documents by id
+  # @param [Array] ids
+  # @param [HashWithIndifferentAccess] user_params
+  # @param [HashWithIndifferentAccess] extra_controller_params
+  def fetch_many(ids, user_params, extra_controller_params)
+    # multi id search prep and response go here.
+    user_params ||= params
+    extra_controller_params ||= {}
+    []
+  end
 end

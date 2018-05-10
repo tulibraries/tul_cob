@@ -13,7 +13,14 @@ module Blacklight::PrimoCentral
       value = "*" if value.nil? || value.empty?
 
       if value.is_a? Hash
-        raise "FIXME, translation of Solr search for Summon"
+        # Trying to fetch multiple docs.
+        if value["PnxId"].&is_a? Array
+
+        # Tring to fetch a single doc.
+        elsif value["PnxId"]
+        else
+          raise "FIXME, translation of Solr search for Summon"
+        end
       elsif value
         primo_central_parameters[:query] = {
           limit: per_page,
