@@ -5,7 +5,7 @@
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
-      duration = duratin_for(:article_record_cache_life)
+      duration = duration_for(:article_record_cache_life)
       response = Rails.cache.fetch("articles/show/#{id}", expires_in: duration) do
         id = id.gsub("-dot-", ".")
           .gsub("-slash-", "/")
