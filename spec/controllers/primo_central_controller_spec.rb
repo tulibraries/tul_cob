@@ -6,11 +6,11 @@ require "rails_helper"
 RSpec.describe PrimoCentralController, type: :controller do
   let(:doc) { Hash.new }
   let(:document) { PrimoCentralDocument.new(doc) }
+  let(:helpers) { double("helper", base_path: "/") }
 
   before(:each) do
-    allow(controller).to receive(:url_for).and_return("/foobar")
+    allow(controller).to receive(:helpers).and_return(helpers)
   end
-
 
   describe "#browse_creator" do
     context "no creator" do

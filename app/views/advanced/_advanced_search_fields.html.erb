@@ -8,7 +8,7 @@
 
     <div class="col-sm-2">
       <label for="op_row[]" class="sr-only">Operator</label>
-      <%= select_tag("op_row[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, op_row_default(count)), :class => "form-control", :id =>"op_row[]") %>
+      <%= select_tag("operator", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, op_row_default(count)), :class => "form-control", :id =>"op_row[]") %>
     </div>
 
     <div class="col-sm-3">
@@ -19,9 +19,9 @@
   <div class="row booleans">
   <% if count != advanced_search_config[:fields_row_count] %>
     <div class="col-sm-5 col-sm-offset-2">
-    <label><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND")) %> AND</label>
-    <label><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
-    <label><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
+    <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
+    <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
+    <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
     </div>
   <% end %>
   </div>
