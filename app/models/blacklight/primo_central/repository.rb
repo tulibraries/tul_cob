@@ -5,8 +5,7 @@
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
-      delta = Rails.configuration.caches[:article_record_cache_life]
-      duration = ActiveSupport::Duration.parse(delta)
+      duration = duratin_for(:article_record_cache_life)
       response = Rails.cache.fetch("articles/show/#{id}", expires_in: duration) do
         id = id.gsub("-dot-", ".")
           .gsub("-slash-", "/")
@@ -22,8 +21,7 @@ module Blacklight::PrimoCentral
     #
     def search(params = {})
       data = params[:query]
-      delta = Rails.configuration.caches[:article_record_cache_life]
-      duration = ActiveSupport::Duration.parse(delta)
+      duration = duration_for(:article_search_cache_life)
       response = Rails.cache.fetch("articles/index/#{data}", expires_in: duration) do
         # We convert to hash because we cannot serialize the Primo response.
         # @see https://github.com/rails/rails/issues/7375
@@ -39,5 +37,12 @@ module Blacklight::PrimoCentral
 
       blacklight_config.response_model.new(response, data, response_opts)
     end
+
+    private
+
+      def duration_for(cache_name)
+        delta = Rails.configuration.caches[cache_name]
+        ActiveSupport::Duration.parse(delta)
+      end
   end
 end
