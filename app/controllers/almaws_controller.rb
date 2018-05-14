@@ -5,6 +5,8 @@ class AlmawsController < ApplicationController
 
   def item
     mms_id = params[:mms_id]
-    @items = Alma::BibItems.find(mms_id)
+    @items = Alma::BibItem.find(mms_id)
+      .filter_missing_and_lost
+      .grouped_by_library
   end
 end
