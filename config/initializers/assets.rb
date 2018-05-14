@@ -12,6 +12,12 @@ Rails.application.config.assets.paths << Rails.root.join("node_modules")
 
 Rails.application.config.assets.unknown_asset_fallback = true
 
+# Cache the available format images for use in helper method.
+Rails.application.config.assets.default_cover_image =
+  Dir.glob("app/assets/images/svg/*").select { |m| m.match(/.svg$/) }
+  .map { |p| File.basename(p, ".svg") }
+  .map { |n| [n, n] }.to_h
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.

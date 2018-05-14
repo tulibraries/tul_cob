@@ -29,26 +29,27 @@ module CatalogHelper
     # In case we fetched the default value, or the format value was ""
     formats << "unknown" if formats.empty?
     format = formats.first.to_s.parameterize.underscore
-    default_image = {
-      "article" => "journal_periodical",
-      "dissertation" => "script",
-      "dissertation_thesis" => "script",
-      "government_document" => "journal_periodical",
-      "journal" => "journal_periodical",
-      "legal_document" => "journal_periodical",
-      "newspaper_article" => "journal_periodical",
-      "other" => "unknown",
-      "patent" => "journal_periodical",
-      "reference_entry" => "journal_periodical",
-      "research_dataset" => "dataset",
-      "review" => "journal_periodical",
-      "statistical_data_set" => "dataset",
-      "technical_report" => "journal_periodical",
-      "text_resource" => "journal_periodical",
-    }
+    image = Rails.application.config.assets.default_cover_image
+      .merge(
+        "article" => "journal_periodical",
+        "dissertation" => "script",
+        "dissertation_thesis" => "script",
+        "government_document" => "journal_periodical",
+        "journal" => "journal_periodical",
+        "legal_document" => "journal_periodical",
+        "newspaper_article" => "journal_periodical",
+        "other" => "unknown",
+        "patent" => "journal_periodical",
+        "reference_entry" => "journal_periodical",
+        "research_dataset" => "dataset",
+        "review" => "journal_periodical",
+        "statistical_data_set" => "dataset",
+        "technical_report" => "journal_periodical",
+        "book_chapter" => "book",
+        "text_resource" => "journal_periodical",
+    ).fetch(format, "unknown")
 
-    format = default_image[format] || format
-    "svg/" + format + ".svg"
+    "svg/" + image + ".svg"
   end
 
   def separate_formats(response)
