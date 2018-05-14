@@ -11,11 +11,11 @@ module Blacklight::PrimoCentral
     attr_accessor :document_model, :blacklight_config
 
     def initialize(data, request_params, options = {})
-      @docs = data.docs || [ self ]
+      @docs = data["docs"] || [ self ]
       @request_params = request_params.with_indifferent_access
       self.document_model =  ::PrimoCentralDocument
       self.blacklight_config = options[:blacklight_config]
-      facets = data.facets || []
+      facets = data["facets"] || []
 
       # Adapt primo facets to solr so that facets get hooked up properly
       facets.each do |f|
