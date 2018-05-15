@@ -6,6 +6,7 @@ A minimal Blacklight Application for exploring Temple University MARC data in pr
 
 ## Getting started
 
+
 ### Install the Application
 This only needs to happen the first time.
 
