@@ -50,7 +50,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "blacklight"
+gem "blacklight", path: "blacklight"
 gem "blacklight_advanced_search"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
@@ -91,7 +91,9 @@ gem "twilio-ruby"
 gem "skylight"
 gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
-gem "primo", git: "https://github.com/tulibraries/primo"
+gem "primo",
+  path: "primo"
+  #git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
 
 group :production do

@@ -67,4 +67,14 @@ module CatalogHelper
   def search_url_picker
     current_page?("/advanced") ? search_catalog_url : search_action_url
   end
+
+  # Overridden because we want to use our merged @response["docs"] with docs
+  # from solr and primo together.
+  def current_bookmarks(response = nil)
+    response ||= @response
+    @current_bookmarks ||=
+      current_or_guest_user
+      .bookmarks_for_documents(@response["docs"] ||
+    response.documents).to_a
+  end
 end

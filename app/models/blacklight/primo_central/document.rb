@@ -13,8 +13,8 @@ module Blacklight::PrimoCentral::Document
     # Dots and slahes break links to articles.
     doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
     doc[:pnxId] = doc[:pnxId].gsub("/", "-slash-") if doc[:pnxId]
-    doc["type"] = [format]
-    doc["format"] = [format]
+    doc["type"] = [format].compact
+    doc["format"] = [format].compact
     doc["link"] = @url
     doc["link_label"] = link_label(doc)
     doc["isbn"] ||= isbn

@@ -13,11 +13,11 @@ module Blacklight::PrimoCentral
       value = "*" if value.nil? || value.empty?
 
       if value.is_a? Hash
-        # Trying to fetch multiple docs.
-        if value["PnxId"].&is_a? Array
-
-        # Tring to fetch a single doc.
-        elsif value["PnxId"]
+        if value["pnxId"]&.is_a? Array
+          queries = to_primo_id_queries(value["pnxId"])
+          primo_central_parameters[:query] = {
+            q: { value: queries },
+          }
         else
           raise "FIXME, translation of Solr search for Summon"
         end
@@ -53,6 +53,9 @@ module Blacklight::PrimoCentral
     end
 
     def add_query_facets(primo_central_parameters)
+      # skip if query is for doc ids.
+      return if primo_central_parameters[:query][:q][:value].is_a? Array
+
       q = Primo::Pnxs::Query.new primo_central_parameters[:query][:q]
       primo_central_parameters[:query][:q] = q
 
@@ -67,6 +70,22 @@ module Blacklight::PrimoCentral
     end
 
     private
+      def to_primo_id_queries(values)
+        values.map { |v|
+          {
+            field: :any,
+            value: to_primo_id(v),
+            precision: :contains,
+            operator: :OR,
+          }
+        }
+      end
+
+      def to_primo_id(value)
+        value.gsub(/^TN_/, "")
+          .gsub("-dot-", ".")
+          .gsub("-slash-", "/")
+      end
 
       def to_primo_field(field)
         {

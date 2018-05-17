@@ -11,18 +11,15 @@ module Blacklight::PrimoCentral
     attr_accessor :document_model, :blacklight_config
 
     def initialize(data, request_params, options = {})
-      @docs = data.docs || [ self ]
+      @docs = begin data.docs rescue [ data ] end || [ data ]
       @request_params = request_params.with_indifferent_access
-      self.document_model =  ::PrimoCentralDocument
+
+      self.document_model = ::PrimoCentralDocument
       self.blacklight_config = options[:blacklight_config]
-      facets = data.facets || []
 
-      # Adapt primo facets to solr so that facets get hooked up properly
-      facets.each do |f|
-        #f.name = primo_to_solr_facet(f.name)
-      end
-
+      facets = begin data.facets rescue [] end
       facet_counts = options.fetch(:facet_counts, {})
+
       @total = options[:numFound] || 1
       super(response: { numFound: @total, start: self.start, docs: documents },
             facet_counts: facet_counts, facets: facets
@@ -30,13 +27,12 @@ module Blacklight::PrimoCentral
     end
 
     def documents
-      @documents ||= (@docs || []).collect { |doc| document_model.new(doc, self) }
+      @documents ||= (@docs || []).collect { |doc| document_model.new(doc.to_h.with_indifferent_access) }
     end
 
     def limit_value
       10
     end
-
 
     def total_count
       total

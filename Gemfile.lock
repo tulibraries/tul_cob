@@ -17,9 +17,22 @@ GIT
       jwt (= 1.5.6)
       rails (>= 4.2, < 6)
 
-GIT
-  remote: https://github.com/tulibraries/primo
-  revision: bf5557372e248e3b33706acdab8ce6c474bf3136
+PATH
+  remote: blacklight
+  specs:
+    blacklight (6.14.1)
+      bootstrap-sass (~> 3.2)
+      deprecation
+      globalid
+      jbuilder
+      kaminari (>= 0.15)
+      nokogiri (~> 1.6)
+      rails (>= 4.2, < 6)
+      rsolr (>= 1.0.6, < 3)
+      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+
+PATH
+  remote: primo
   specs:
     primo (0.1.0)
       httparty
@@ -87,16 +100,6 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.14.1)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      globalid
-      jbuilder
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 4.2, < 6)
-      rsolr (>= 1.0.6, < 3)
-      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
     blacklight-marc (6.2.0)
       blacklight (> 6.1, < 8.a)
       library_stdnums
@@ -464,7 +467,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight
+  blacklight!
   blacklight-marc
   blacklight_advanced_search
   blacklight_alma!

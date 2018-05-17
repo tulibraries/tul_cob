@@ -7,8 +7,7 @@ module Blacklight::PrimoCentral
     def find(id, params = {})
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
-      response = Primo.find(id: id)
-      blacklight_config.document_model.new response.to_h
+      search(query: { id: id })
     end
 
     ##
@@ -18,14 +17,19 @@ module Blacklight::PrimoCentral
       data = params[:query]
       response = Primo.find(data)
 
-      Rails.logger.info "Primo searched with query #{params[:q]} in #{response.timelog.BriefSearchDeltaTime / 1000.0} seconds"
-
       response_opts = {
+        facet_counts: 0,
+        numFound: 1,
+        document_model: blacklight_config.document_model,
+        blacklight_config: blacklight_config,
+      }.with_indifferent_access
+
+      if !data[:id]
+        response_opts.merge!(
           facet_counts: response.facets.length,
           numFound: response.info.total,
-          document_model: blacklight_config.document_model,
-          blacklight_config: blacklight_config,
-      }.with_indifferent_access
+        )
+      end
 
       blacklight_config.response_model.new(response, data, response_opts)
     end
