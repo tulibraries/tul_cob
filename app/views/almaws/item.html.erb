@@ -1,6 +1,6 @@
 <table class="table table-responsive border-bottom">
-  <% unless @items["item"].nil? %>
-    <% group_and_order_items(@items["item"]).each do |key,items| %>
+  <% unless @items.empty? %>
+    <% sort_order_for_holdings(@items).each do |key,items| %>
       <thead class="table-heading">
         <tr>
           <th colspan="5">
@@ -12,7 +12,7 @@
         <% items.each do |item| %>
           <tr>
             <td scope="row"><%= location_status(item) %></td>
-            <td scope="row"><%= call_number(item) %> <%= alternative_call_number(item) %></td>
+            <td scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
             <td scope="row"><%= description(item) %></td>
             <td scope="row"><%= public_note(item) %></td>
             <td scope="row"><%= availability_status(item) %></td>

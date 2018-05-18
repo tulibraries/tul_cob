@@ -11,13 +11,14 @@ module Blacklight::PrimoCentral
     attr_accessor :document_model, :blacklight_config
 
     def initialize(data, request_params, options = {})
-      @docs = begin data.docs rescue [ data ] end || [ data ]
+      @docs = begin data["docs"] rescue [ data ] end || [ data ]
       @request_params = request_params.with_indifferent_access
 
       self.document_model = ::PrimoCentralDocument
       self.blacklight_config = options[:blacklight_config]
 
-      facets = begin data.facets rescue [] end
+      #facets = begin data.facets rescue [] end
+      facets = data["facets"] || []
       facet_counts = options.fetch(:facet_counts, {})
 
       @total = options[:numFound] || 1

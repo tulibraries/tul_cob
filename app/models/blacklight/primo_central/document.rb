@@ -11,10 +11,10 @@ module Blacklight::PrimoCentral::Document
     @url_query = url_query
     format = doc["@TYPE"] || doc["type"]
     # Dots and slahes break links to articles.
-    doc[:pnxId] = doc[:pnxId].gsub(".", "-dot-") if doc[:pnxId]
-    doc[:pnxId] = doc[:pnxId].gsub("/", "-slash-") if doc[:pnxId]
-    doc["type"] = [format].compact
-    doc["format"] = [format].compact
+    doc["pnxId"] = doc["pnxId"]&.gsub(".", "-dot-")
+    doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
+    doc["type"] = [format]
+    doc["format"] = [format]
     doc["link"] = @url
     doc["link_label"] = link_label(doc)
     doc["isbn"] ||= isbn
