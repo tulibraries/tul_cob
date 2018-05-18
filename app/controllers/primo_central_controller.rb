@@ -67,6 +67,11 @@ class PrimoCentralController < CatalogController
     config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code
   end
 
+  def render_sms_action?(_config, _options)
+    # Render if the item can be found at a library
+    false
+  end
+
   def browse_creator(args)
     creator = args[:document][args[:field]] || []
     base_path = helpers.base_path
