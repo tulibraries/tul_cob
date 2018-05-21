@@ -2,18 +2,18 @@
 
 require "rails_helper"
 
-RSpec.describe FacetsHelper, type: :helper do
-  FacetsHelper.module_eval do
-    def blacklight_config
-    end
-
-    def my_facet_value_renderer(item)
-    end
-  end
-
+RSpec.describe FacetsHelper do
   let(:blacklight_config) { Blacklight::Configuration.new }
 
   before(:each) do
+    FacetsHelper.module_eval do
+      def blacklight_config
+      end
+
+      def my_facet_value_renderer(item)
+      end
+    end
+
     allow(helper).to receive(:blacklight_config).and_return blacklight_config
   end
 
