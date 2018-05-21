@@ -181,8 +181,15 @@ table {
 .table-wrapper {
     display: block;
     max-height: 300px;
-    overflow-y: auto;
-    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-y: scroll;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: gray;
 }
 
 
