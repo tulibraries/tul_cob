@@ -151,7 +151,6 @@ div.online_resources {
 
 div.physical-holding-panel {
   padding: 0 !important;
-  margin-bottom: -20px !important;
 }
 
 .show_page_records dd {
@@ -167,6 +166,7 @@ div.physical-holding-panel {
   margin-top: 10px;
 }
 
+/* ALMA DATA TABLE */
 .border-bottom td, .border-bottom th {
   border-bottom: 1px solid #CFC7B0;
 }
@@ -174,12 +174,24 @@ div.physical-holding-panel {
 table {
   border: 1px solid #CFC7B0;
 }
-
-
-/* ALMA DATA TABLE */
 .table-heading {
   background-color: #F1EFE8;
 }
+
+.table-wrapper {
+  display: block;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
 
 /* RECORD NAV TOOLS */
 
@@ -370,7 +382,7 @@ ul.navbar-nav {
   #search-navbar .input-group-addon.for-search-field {
     width: 15ch;
   }
-  
+
   #nav-tools {
     margin-top: 14px;
     width: 100%;
