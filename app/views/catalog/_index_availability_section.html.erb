@@ -29,5 +29,8 @@
           Loading Availability
         </div>
       <div data-target="availability.panel" id="physical-document-<%= document_counter %>" class="collapse panel-content"></div>
+      <div id="physical-document-<%= document_counter %>" class="collapse panel-content">
+        <%= render "check_holdings", document: document, document_counter: document_counter %>
+      </div>
     </div>
   <% end %>

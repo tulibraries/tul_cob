@@ -51,6 +51,15 @@ module ApplicationHelper
     document.fetch("electronic_resource_display", []).length > 1
   end
 
+  def check_holdings_library_name(document)
+    document.fetch("library_facet", [])
+  end
+
+  def check_holdings_call_number(document)
+    document.fetch("library_location_display", [])
+  end
+
+
   def check_for_full_http_link(args)
     args[:document][args[:field]].map { |field|
       if field.include?("http")

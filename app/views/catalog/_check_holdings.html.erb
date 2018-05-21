@@ -1,0 +1,18 @@
+<% doc_presenter = show_presenter(document) %>
+
+<table class="table table-responsive border-bottom">
+  <% check_holdings_library_name(document).each do |library| %>
+    <thead class="table-heading">
+      <tr>
+        <th ><%= library %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% check_holdings_call_number(document).each do |call_number| %>
+      <tr>
+        <td><%= call_number  %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

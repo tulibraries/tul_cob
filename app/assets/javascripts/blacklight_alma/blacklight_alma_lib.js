@@ -27,7 +27,10 @@ var BlacklightAlma = function (options) {
        $(availButton).show();
      }
      else if(holding['availability'] == 'check_holdings') {
-       $(availButton).hide();
+       $(availButton).html("<span class='avail-label available'>Available</span>");
+       $(availButton).removeClass("btn-default");
+       $(availButton).addClass("btn-success collapsed collapse-button available");
+       $(availButton).show();
      }
      else {
        $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
