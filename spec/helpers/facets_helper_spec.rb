@@ -43,5 +43,10 @@ RSpec.describe FacetsHelper, type: :helper do
       allow(helper).to receive(:facet_configuration_for_field).with('date_facet').and_return(double('date' => { :format => :short }, :query => nil, :helper_method => nil, :url_method => nil))
       expect(helper.facet_display_value('date_facet', '2012-01-01')).to eq '01 Jan 00:00'
     end
+
+    it "removes braces from faceted value label" do
+      allow(helper).to receive(:facet_configuration_for_field).with('simple_field').and_return(double(:query => nil, :date => nil, :helper_method => nil, :url_method => nil))
+      expect(helper.facet_display_value('simple_field', '[asdf]')).to eq 'asdf'
+    end
   end
 end
