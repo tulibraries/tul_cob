@@ -41,7 +41,7 @@
 			padding-left: 42px;
 			width:35%;
 			display:inline-block;
-			background:url('http://web.temple.edu/sites/web.temple.edu/themes/web_communication_theme/images/web-communications-footer-icon-location.png') no-repeat 5px 9px transparent;
+			background:asset-data-url('location.png') no-repeat 5px 9px transparent;
 			@media only screen and (max-width : 650px) {
 		    padding-left: 6%;
 		    width: 100%;
