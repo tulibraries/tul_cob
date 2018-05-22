@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+require 'thor'
+require 'open-uri'
+require 'openssl'
+require 'json'
+
+class GetRecords < Thor
+
+  option :save_to
+  desc "Get Records from Query", "Build a marc collection based on solr query string"
+  def from(search_uri)
+    outfilename = options.fetch(:save_to, "marc_from_query.xml")
+    outfile = File.open(outfilename, 'a')
+
+    u = URI.parse(search_uri)
+    good_params = u.query.split("&").reject {|q| !!q.match(/per_page|format/) }
+    u.query = (good_params + ["format=json", "per_page=50"]).join("&")
+
+    ssl_opts = {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}
+
+    outfile.puts "<?xml version='1.0' encoding='UTF-8'?>"
+    outfile.puts "<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>"
+
+
+    parsed = JSON.parse(open(u.to_s,ssl_opts).read)
+    parsed["response"]["docs"].each do |doc|
+      item_uri = "#{u.scheme}://#{u.host}#{u.path}catalog/#{doc['id']}.xml"
+      puts "Getting #{item_uri}"
+      outfile.puts open(item_uri, ssl_opts).read
+    end
+
+    outfile.puts "</collection>"
+
+  end
+end
+
+GetRecords.start(ARGV)
