@@ -30,4 +30,10 @@ module FacetsHelper
       end
     end + render_facet_count(item.hits, classes: ["selected"])
   end
+
+  # Overrides Blacklight::FacetsHelperBehavior.facet_display_value
+  # In order to remove brackets from Solr returned value.
+  def facet_display_value(field, item)
+    super(field, item).gsub(/^\[/, "").gsub(/\]$/, "")
+  end
 end
