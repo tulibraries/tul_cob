@@ -30,7 +30,7 @@ module AdvancedHelper
   end
 
   # Get default value for operator[] field in advanced_search form.
-  def op_row_default(count)
+  def operator_default(count)
     if !params["operator"]
       "contains"
     else
