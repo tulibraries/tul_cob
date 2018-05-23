@@ -21,7 +21,7 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
         q_1: "james",
         q_2: "john",
         q_3: "david",
-        op_row: [ "fizz", "fizz", "fizz", "foo", "bar", "bum" ]
+        operator: [ "fizz", "fizz", "fizz", "foo", "bar", "bum" ]
       )
       allow(helper).to receive(:params).and_return(params)
 

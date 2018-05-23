@@ -7,8 +7,8 @@
     </div>
 
     <div class="col-sm-2">
-      <label for="op_row[]" class="sr-only">Operator</label>
-      <%= select_tag("operator", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, op_row_default(count)), :class => "form-control", :id =>"op_row[]") %>
+      <label for="operator[]" class="sr-only">Operator</label>
+      <%= select_tag("operator[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, operator_default(count)), :class => "form-control", :id =>"operator[]") %>
     </div>
 
     <div class="col-sm-3">
