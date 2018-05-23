@@ -48,7 +48,7 @@ class CatalogController < ApplicationController
         format
         imprint_display
         library_facet
-        library_location_display
+        location_display
         pub_date
         title_series_display
         title_statement_display

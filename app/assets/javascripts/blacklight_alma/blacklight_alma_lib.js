@@ -17,6 +17,15 @@ var BlacklightAlma = function (options) {
  * @returns {string}
  */
 
+ otherLibraries = function(id, holding) {
+   var availTable = $("div[data-availability-ids='" + id + "'] table");
+   if(holding['availability'] == 'check_holdings') {
+     $(availTable).show();
+   } else {
+     $(availTable).hide();
+   }
+ }
+
  availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("btn-success")) {
@@ -151,6 +160,7 @@ var BlacklightAlma = function (options) {
                  if (holdings.length > 0) {
                      var formatted = $.map(holdings, function(holding) {
                        availabilityButton(id, holding);
+                       otherLibraries(id, holding);
                        return baObj.formatHolding(holding);
                      });
                      return baObj.formatHoldings(formatted);

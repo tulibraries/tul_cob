@@ -1,18 +1,21 @@
 <% doc_presenter = show_presenter(document) %>
 
-<table class="table table-responsive border-bottom">
+<table class=" other_libraries table table-responsive border-bottom">
   <% check_holdings_library_name(document).each do |library| %>
     <thead class="table-heading">
       <tr>
-        <th ><%= library %></th>
+        <th colspan="5" ><%= library %></th>
       </tr>
     </thead>
     <tbody>
-      <% check_holdings_call_number(document).each do |call_number| %>
       <tr>
-        <td><%= call_number  %></td>
+        <% check_holdings_location(document).each do |holding| %>
+        <td scope="row"><%= holding  %></td>
+        <% end %>
+        <td scope="row"><%= check_holdings_call_number(document) %></td>
+        <td scope="row">We are unable to find availability information for this item. Please contact the library for more information.</td>
       </tr>
-      <% end %>
+
     </tbody>
   <% end %>
 </table>

@@ -56,9 +56,15 @@ module ApplicationHelper
   end
 
   def check_holdings_call_number(document)
-    document.fetch("library_location_display", [])
+    document.fetch("call_number_display", []).first
   end
 
+  def check_holdings_location(document)
+    document.fetch("location_display", []).map { |field|
+    lib = field.split(" ").first
+    location = field.split(" ").last
+    Rails.configuration.locations.dig(lib, location)}
+  end
 
   def check_for_full_http_link(args)
     args[:document][args[:field]].map { |field|
