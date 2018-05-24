@@ -588,11 +588,10 @@ RSpec.describe Traject::Macros::Custom do
 
       it "maps data from the 600 to the expected field" do
         expect(subject.map_record(records[1])).to eq(
-          "subject_topic_facet" => [["Subject Topic moves on to the year 3000"]]
+          # Note that value is flattened
+          "subject_topic_facet" => ["Subject Topic moves on to the year 3000"]
           )
       end
-
-
     end
   end
 end
