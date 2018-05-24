@@ -52,18 +52,23 @@ module ApplicationHelper
   end
 
   def check_holdings_library_name(document)
-    document.fetch("library_facet", [])
+    location_hash = document.fetch("location_display", []).map { |field|
+      field.split() }.to_h
+    lib = location_hash.keys
+    lib
   end
 
   def check_holdings_call_number(document)
     document.fetch("call_number_display", []).first
   end
 
-  def check_holdings_location(document)
-    document.fetch("location_display", []).map { |field|
-    lib = field.split(" ").first
-    location = field.split(" ").last
-    Rails.configuration.locations.dig(lib, location)}
+  def check_holdings_location(document, library)
+    location_hash = document.fetch("location_display", []).select { |location| location.include?(library)}.map { |field|
+      field.split() }.to_h
+    lib = location_hash.keys
+    locations = location_hash.map { |k, v|
+      Rails.configuration.locations.dig(k, v)
+    }
   end
 
   def check_for_full_http_link(args)
