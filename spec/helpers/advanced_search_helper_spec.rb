@@ -10,9 +10,9 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
     end
   end
 
-  describe ".op_row_default" do
+  describe ".operator_default" do
     example "default" do
-      expect(helper.op_row_default(2)).to eq("contains")
+      expect(helper.operator_default(2)).to eq("contains")
     end
 
     # REF BL-334
@@ -21,11 +21,11 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
         q_1: "james",
         q_2: "john",
         q_3: "david",
-        op_row: [ "fizz", "fizz", "fizz", "foo", "bar", "bum" ]
+        operator: [ "fizz", "fizz", "fizz", "foo", "bar", "bum" ]
       )
       allow(helper).to receive(:params).and_return(params)
 
-      expect(helper.op_row_default(2)).to eq("bar")
+      expect(helper.operator_default(2)).to eq("bar")
     end
   end
 

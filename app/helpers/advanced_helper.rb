@@ -29,16 +29,16 @@ module AdvancedHelper
     key_value
   end
 
-  # Get default value for op_row[] field in advanced_search form.
-  def op_row_default(count)
-    if !params["op_row"]
+  # Get default value for operator[] field in advanced_search form.
+  def operator_default(count)
+    if !params["operator"]
       "contains"
     else
-      # Always select from last rows count of total values in op_row[]
+      # Always select from last rows count of total values in operator[]
       # @see BL-334
       rows = params.select { |k| k.match(/^q_/) }
       count_rows = rows.to_h.count
-      params["op_row"][-count_rows + count - 1]
+      params["operator"][-count_rows + count - 1]
     end
   end
 
