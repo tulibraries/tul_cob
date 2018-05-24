@@ -53,7 +53,7 @@ class CatalogController < ApplicationController
         isbn_display
         lccn_display
       ].join(" "),
-      defType: "dismax",
+      defType: "edismax",
       echoParams: "explicit",
       rows: "10",
       mm: [
@@ -102,6 +102,10 @@ class CatalogController < ApplicationController
         subject_unstem_search^7500
         subject_topic_facet^6250
         subject_t^5000
+        note_toc_unstem_search~0^5000
+        note_toc_unstem_search~0^5000
+        note_toc_unstem_search^1000
+        note_toc_unstem_search^1000
         creator_unstem_search^2500
         creator_t^1000
         subject_addl_unstem_search^2500

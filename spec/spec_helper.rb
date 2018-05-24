@@ -104,6 +104,7 @@ RSpec.configure do |config|
   # aliases for `it`, `describe`, and `context` that include `:focus`
   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
   config.filter_run_when_matching :focus
+  config.filter_run_excluding relevance: true unless ENV["RELEVANCE"]
 
   # Allows RSpec to persist some state between runs in order to support
   # the `--only-failures` and `--next-failure` CLI options. We recommend
@@ -162,4 +163,27 @@ VCR.configure do |config|
   config.default_cassette_options = {
     match_requests_on: [:method]
   }
+end
+
+
+require "rspec/expectations"
+RSpec::Matchers.define :include_docs do |more_relevant_docs|
+  match do |actual|
+    require "pry"
+    binding.pry
+    docs = actual["response"]["docs"]
+    rv = false
+    docs.map { |doc| doc["id"] }.each do |id|
+      if more_relevant_docs.include? id
+        more_relevant_docs.delete(id)
+      elsif later_docs.include? id
+        if more_relevant_docs.empty?
+          rv = true
+        else
+          rv = false
+        end
+      end
+    end
+  end
+  chain :before, :later_docs
 end
