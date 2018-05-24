@@ -9,6 +9,7 @@ module Blacklight::PrimoCentral
       :add_query_to_primo_central,
       :set_query_field,
       :set_query_sort_order,
+      :process_advanced_search,
       :previous_and_next_document,
       :add_query_facets,
     ]

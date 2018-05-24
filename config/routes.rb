@@ -65,6 +65,7 @@ Rails.application.routes.draw do
   # gets
   get "bento" => "search#index", :as => "multi_search"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
+  get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
 
 
   #
