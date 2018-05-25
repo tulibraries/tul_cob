@@ -51,7 +51,7 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "blacklight"
-gem "blacklight_advanced_search"
+gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
 
@@ -91,7 +91,7 @@ gem "twilio-ruby"
 gem "skylight"
 gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
-gem "primo", git: "https://github.com/tulibraries/primo", branch: "BL-414-build-query-from-array-values"
+gem "primo", git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
 
 group :production do

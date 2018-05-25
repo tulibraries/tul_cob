@@ -19,8 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 22bd4d019382ce30b1976ab084b9dbda15fe8a56
-  branch: BL-414-build-query-from-array-values
+  revision: b5c4e85e12d82bfcf35cf17d4968726c61847883
   specs:
     primo (0.1.0)
       httparty
@@ -467,7 +466,7 @@ DEPENDENCIES
   bento_search
   blacklight
   blacklight-marc
-  blacklight_advanced_search
+  blacklight_advanced_search (~> 6.3)
   blacklight_alma!
   blacklight_range_limit
   bootsnap

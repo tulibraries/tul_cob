@@ -11,6 +11,7 @@
 
   <h3 class='section-heading'><%= t('blacklight.bookmarks.no_bookmarks') %></h3>
 <% else %>
+  <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
   <%= render 'sort_and_per_page' %>
   <%= render partial: 'tools', locals: { document_list: @document_list } %>
 
