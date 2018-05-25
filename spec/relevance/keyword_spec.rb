@@ -4,7 +4,7 @@ require "rails_helper"
 require "rake"
 Rails.application.load_tasks
 
-RSpec.describe CatalogController, :focus, type: :controller, relevance: true do
+RSpec.describe CatalogController, type: :controller, relevance: true do
   render_views
 
   before(:all) do
