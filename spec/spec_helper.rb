@@ -169,21 +169,41 @@ end
 require "rspec/expectations"
 RSpec::Matchers.define :include_docs do |more_relevant_docs|
   match do |actual|
-    require "pry"
-    binding.pry
-    docs = actual["response"]["docs"]
-    rv = false
-    docs.map { |doc| doc["id"] }.each do |id|
-      if more_relevant_docs.include? id
-        more_relevant_docs.delete(id)
-      elsif later_docs.include? id
-        if more_relevant_docs.empty?
-          rv = true
-        else
-          rv = false
-        end
-      end
-    end
+    ids = ids(actual)
+    # Find index of relevant docs in array of actual ids  and grab the largest index
+    # if none of the docs are in the actual index (which returns nil), throw an exception
+    last_more_relevant_index = more_relevant_docs.map { |d| ids.index(d) }.compact.max
+    raise ArgumentError.new("None of the more relevant docs were in the results set") unless last_more_relevant_index
+    # Find index of the less relevant docs in array of actual ids and grab the smallest index
+    # if none of the docs are in the actual index (which returns nil), set to 1 more than
+    # thu number of returned results
+    first_less_relevant_index = (
+      less_relevant_docs.map { |d| ids.index(d) }.compact.min ||
+      actual.dig("response", "pages", "total_count", 100) + 1)
+
+    # The last more relevant doc should have a smaller index
+    # than the firs less relevant doc
+    last_more_relevant_index < first_less_relevant_index
+
+    # rv = true
+    # ids(actual).each do |id|
+    #   if more_relevant_docs.include?(id)
+    #     more_relevant_docs.delete(id)
+    #   elsif less_relevant_docs.include?(id) && !more_relevant_docs.empty?
+    #     rv = false
+    #     break
+    #   end
+    # end
+    # return more_relevant_docs.empty? ? rv : false
   end
-  chain :before, :later_docs
+
+  chain :before, :less_relevant_docs
+
+  failure_message do |actual|
+    "expected that #{more_relevant_docs} would be appear before #{less_relevant_docs} in #{ids(actual)}"
+  end
+
+  def ids(actual)
+    (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
+  end
 end

@@ -20,7 +20,7 @@ class CatalogController < ApplicationController
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "dismax"
+    config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:fields_row_count] = 3
@@ -102,10 +102,10 @@ class CatalogController < ApplicationController
         subject_unstem_search^7500
         subject_topic_facet^6250
         subject_t^5000
-        note_toc_unstem_search~0^5000
-        note_toc_unstem_search~0^5000
+        note_toc_unstem_search~0^6000
+        note_summary_unstem_search~0^6000
         note_toc_unstem_search^1000
-        note_toc_unstem_search^1000
+        note_summary_unstem_search^1000
         creator_unstem_search^2500
         creator_t^1000
         subject_addl_unstem_search^2500
