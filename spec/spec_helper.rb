@@ -104,6 +104,7 @@ RSpec.configure do |config|
   # aliases for `it`, `describe`, and `context` that include `:focus`
   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
   config.filter_run_when_matching :focus
+
   config.filter_run_excluding relevance: true unless ENV["RELEVANCE"]
 
   # Allows RSpec to persist some state between runs in order to support
@@ -165,6 +166,15 @@ VCR.configure do |config|
   }
 end
 
+if ENV["RELEVANCE"]
+  RSpec.configure do |config|
+    config.before(:suite) do
+      require "rake"
+      Rails.application.load_tasks
+      Rake::Task["fortytu:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
+    end
+  end
+end
 
 require "rspec/expectations"
 RSpec::Matchers.define :include_docs do |more_relevant_docs|
