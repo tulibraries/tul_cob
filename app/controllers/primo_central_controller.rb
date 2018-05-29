@@ -5,6 +5,7 @@ class PrimoCentralController < CatalogController
   include CatalogConfigReinit
 
   helper_method :browse_creator
+  helper_method :tags_strip
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
@@ -58,7 +59,7 @@ class PrimoCentralController < CatalogController
     config.add_show_field :date, label: "Date"
     config.add_show_field :isPartOf, label: "Is Part of"
     config.add_show_field :relation, label: "Related Title", helper_method: "list_with_links"
-    config.add_show_field :description, label: "Note"
+    config.add_show_field :description, label: "Note", helper_method: :tags_strip
     config.add_show_field :subject, helper_method: :list_with_links, multi: true
     config.add_show_field :isbn, label: "ISBN"
     config.add_show_field :issn, label: "ISSN"
@@ -79,5 +80,9 @@ class PrimoCentralController < CatalogController
       query = view_context.send(:url_encode, (name))
       view_context.link_to(name, base_path + "?search_field=creator&q=#{query}")
     end
+  end
+
+  def tags_strip(args)
+    args[:value].map { |v| helpers.strip_tags v }
   end
 end

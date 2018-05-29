@@ -8,6 +8,22 @@ require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
 
+# Monkey patch at_exit to avoid travis build bug.
+# @see https://docs.travis-ci.com/user/common-build-problems/#Ruby%3A-RSpec-returns-0-even-though-the-build-failed
+# @see http://www.davekonopka.com/2013/rspec-exit-code.html
+if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
+  module Kernel
+    alias :__at_exit :at_exit
+    def at_exit(&block)
+      __at_exit do
+        exit_status = $!.status if $!.is_a?(SystemExit)
+        block.call
+        exit exit_status if exit_status
+      end
+    end
+  end
+end
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__

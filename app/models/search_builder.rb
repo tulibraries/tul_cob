@@ -114,9 +114,9 @@ class SearchBuilder < Blacklight::SearchBuilder
         p = params.to_unsafe_h.compact
 
         fields = p.select { |k| k.match(/(^q$|^q_)/) }
-        ops = p.fetch("op_row", ["default"])
+        ops = p.fetch("operator", ["default"])
 
-        # Always use last rows count of total values in op_row[]
+        # Always use last rows count of total values in operator[]
         # @see BL-334
         rows = p.select { |k| k.match(/^q_/) }
         rows_count = rows.count

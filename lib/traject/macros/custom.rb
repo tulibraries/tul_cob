@@ -139,7 +139,7 @@ module Traject
               subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
             end
           end
-          subjects.flatten
+          subjects = subjects.flatten
           acc.replace(subjects)
           acc.uniq!
         end
