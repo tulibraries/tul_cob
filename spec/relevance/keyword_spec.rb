@@ -1,15 +1,9 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "rake"
-Rails.application.load_tasks
 
 RSpec.describe CatalogController, type: :controller, relevance: true do
   render_views
-
-  before(:all) do
-    Rake::Task["fortytu:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
-  end
 
   let(:response) { JSON.parse(get(:index, params: { q: search_term, per_page: 100 }, format: "json").body) }
 
