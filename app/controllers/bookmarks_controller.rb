@@ -4,4 +4,5 @@
 class BookmarksController < CatalogController
   include Blacklight::Bookmarks
   include MultiSourceBookmarks
+  include BookmarksConfig
 end

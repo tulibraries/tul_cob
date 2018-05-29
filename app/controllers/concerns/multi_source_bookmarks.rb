@@ -17,7 +17,6 @@ module MultiSourceBookmarks
   def index
     @bookmarks = token_or_current_or_guest_user.bookmarks
     document_list = []
-
     # This bit should probably be  made concurrent
     blacklight_config.bookmark_sources.each do |source|
       source_class = "#{source}_bookmark_search".classify.constantize
@@ -33,11 +32,14 @@ module MultiSourceBookmarks
 
     # Reorder the document list to match the bookmark order.
     document_map = document_list.map { |d| [d.id, d] }.to_h
-    @document_list = @bookmarks.map { |b| document_map[b.document_id] }
+    @document_list = @bookmarks.map { |b| document_map[b.document_id] }.compact
 
     # Capture full document list in response for correct current_bookmarks count.
-    @documents = document_list
+    @documents = @document_list
     @response["docs"] = @documents if @response
+
+    # Just display all the bookmarks in one page
+    @response["rows"] = @bookmarks.count if @response
     @docs = @documents
 
     respond_to do |format|

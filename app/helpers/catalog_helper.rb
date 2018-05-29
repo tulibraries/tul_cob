@@ -78,4 +78,16 @@ module CatalogHelper
       .bookmarks_for_documents(@response["docs"] ||
     response.documents).to_a
   end
+
+  ##
+  # Overridden so that we can controll the number of pages from the controller.
+  #
+  # Look up the current per page value, or the default if none if set
+  #
+  # @return [Integer]
+  def current_per_page
+    (@response["rows"] if @response["rows"] && @response["rows"] > 0) ||
+      (@response.rows if @response && @response.rows > 0) ||
+      params.fetch(:per_page, default_per_page).to_i
+  end
 end

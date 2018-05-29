@@ -16,20 +16,18 @@ module Blacklight::PrimoCentral
         if value["pnxId"]&.is_a? Array
           queries = to_primo_id_queries(value["pnxId"])
           primo_central_parameters[:query] = {
+            limit: per_page,
+            offset:  offset,
             q: { value: queries },
           }
         else
           raise "FIXME, translation of Solr search for Summon"
         end
-      elsif value
+      else
         primo_central_parameters[:query] = {
           limit: per_page,
           offset:  offset,
           q: { value: value }
-        }
-      else
-        primo_central_parameters[:query] = {
-          q: { value: value },
         }
       end
     end
