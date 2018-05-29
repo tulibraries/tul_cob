@@ -63,12 +63,13 @@ module ApplicationHelper
   end
 
   def check_holdings_location(document, library)
-    location_hash = document.fetch("location_display", []).select { |location| location.include?(library)}.map { |field|
-      field.split() }.to_h
-    lib = location_hash.keys
-    locations = location_hash.map { |k, v|
-      Rails.configuration.locations.dig(k, v)
+    locations_array = []
+    locations = document.fetch("location_display", []).select { |location| location.include?(library)}.map { |field| field.split() }
+    locations.each { |k, v|
+      shelf = Rails.configuration.locations.dig(k, v)
+      locations_array << shelf
     }
+    locations_array
   end
 
   def check_for_full_http_link(args)
