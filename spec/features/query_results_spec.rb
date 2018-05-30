@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogController, type: :controller, relevance: true do
+RSpec.describe CatalogController, type: :controller do
 
   describe "Query results as JSON" do
     render_views
