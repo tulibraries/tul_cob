@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogController, type: :controller, relevance: true do
+RSpec.describe CatalogController, :focus, type: :controller, relevance: true do
   render_views
 
   let(:response) { JSON.parse(get(:index, params: { q: search_term, per_page: 100 }, format: "json").body) }
@@ -25,7 +25,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
 
   it "has expected results before a less relevant result" do
     expect(response)
-      .to include_docs(%w[991020778949703811 991001777289703811 991027229969703811 991001812089703811])
+      .to include_docs(%w[991020778949703811 991001777289703811 991027229969703811 991001812089703811 991036804904003811])
       .before(["991029142769703811"])
   end
 end
