@@ -14,7 +14,7 @@ class GetRecords < Thor
 
     u = URI.parse(search_uri)
     good_params = u.query.split("&").reject {|q| !!q.match(/per_page|format/) }
-    u.query = (good_params + ["format=json", "per_page=50"]).join("&")
+    u.query = (good_params + ["format=json", "per_page=100"]).join("&")
 
     ssl_opts = {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}
 
