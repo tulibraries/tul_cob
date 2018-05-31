@@ -14,7 +14,8 @@ module Blacklight::PrimoCentral
 
       if value.is_a? Hash
         if value["pnxId"]&.is_a? Array
-          queries = to_primo_id_queries(value["pnxId"])
+          # limit ids to 9 or API returns 0 results
+          queries = to_primo_id_queries(value["pnxId"][0, 9])
           primo_central_parameters[:query] = {
             limit: per_page,
             offset:  offset,
@@ -80,9 +81,10 @@ module Blacklight::PrimoCentral
       end
 
       def to_primo_id(value)
-        value.gsub(/^TN_/, "")
+        "'#{value.gsub(/^TN_/, "")
           .gsub("-dot-", ".")
           .gsub("-slash-", "/")
+          .gsub("-", " ")}'"
       end
 
       def to_primo_field(field)
