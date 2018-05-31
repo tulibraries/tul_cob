@@ -8,7 +8,7 @@ class SearchController < CatalogController
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet
   end
 
-  @@per_page = 10
+  @@per_page = 3
   def index
     if params[:q]
       engines = %i( books articles journals more )
@@ -32,7 +32,7 @@ class SearchController < CatalogController
       args[:query] = params[:q]
       args[:page] = params[:page]
       args[:semantic_search_field] = params[:field]
-      args[:per_page] = 10
+      args[:per_page] = 3
       args[:sort] = params[:sort]
       args[:per_page] = params[:per_page]
 

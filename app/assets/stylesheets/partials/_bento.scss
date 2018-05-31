@@ -17,23 +17,76 @@
 }
 
 .bento_compartment {
-	h2 {
-		margin-top: 0;
-		padding: 7px;
-		background-color: $red;
-		color:white;
-	}	
+	margin: 0 15px !important;
+	padding: 0;
+	width: 22%;
+	}
+
+.bento_compartment h2 {
+		background-color: #CECED0;
+		border-radius: 10px 10px 0 0;
+		color: #2B2E34;
+		font-family: "Colfax-Regular";
+		font-weight: bold;
+		font-size: 24px;
+		height: 50px;
+		padding: 12px;
+}
+
+.blacklight-search {
+	background-color: #F5F5F5;
 }
 
 .bento-search-engine {
-	p.record-count {
-		padding-left: 7px;
-		span {
-			font-weight: 600;
-		}
-	}
-	.search-results {
-		background-color: $tan;
-		padding: 7px 14px;
-	}
+	border-radius: 0 0 10px 10px;
+	background-color: white;
+	margin-top: -10px !important;
+}
+
+.bento_search_no_results {
+	margin: 15px;
+	margin-top: -20px !important;
+	padding-bottom: 10px;
+}
+
+.bento_search_no_results h3 {
+	font-size: 20px;
+	padding-top: 15px !important;
+}
+
+.bento_item {
+	border-bottom: 1px solid #B6B6B9;
+	padding-right: 10px;
+	padding-top: 10px;
+}
+
+.bento_item_title {
+	font-size: 14px;
+	margin-left: 15px;
+}
+
+.bento_item_title a {
+	text-decoration: underline;
+}
+
+.bento_item_body {
+	margin-left: 15px;
+}
+
+.authors {
+	font-weight: 500;
+}
+
+.bento-icon {
+	margin: 10px;
+}
+
+.total-results {
+	background-color: white;
+	border-radius: 0 0 10px 10px;
+	padding: 10px;
+}
+
+.bento-results {
+	margin-left: 40px;
 }

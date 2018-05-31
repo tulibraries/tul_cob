@@ -119,6 +119,19 @@ module ApplicationHelper
     I18n.t("bento.#{engine_id}.nice_name")
   end
 
+  def bento_icons(engine_id)
+    case engine_id
+    when "books"
+      content_tag(:span, "", class: "bento-icon bento-book")
+    when "articles"
+      content_tag(:span, "", class: "bento-icon bento-article")
+    when "journals"
+      content_tag(:span, "", class: "bento-icon bento-journal")
+    when "more"
+      content_tag(:span, "", class: "bento-icon bento-more")
+    end
+  end
+
   def aeon_request_url(document)
     form_fields = {
          ItemTitle: "title_statement_display",
@@ -152,15 +165,15 @@ module ApplicationHelper
   def bento_link_to_full_results(results)
     case results.engine_id
     when "blacklight"
-      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
+      link_to "View all #{number_with_delimiter(results.total_items)} items", search_catalog_path(q: params[:q]), class: "full-results"
     when "journals"
-      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] }), class: "full-results"
+      link_to "View all #{number_with_delimiter(results.total_items)} journals", search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] }), class: "full-results"
     when "books"
-      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
+      link_to "View all #{number_with_delimiter(results.total_items)} books", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
     when "more"
       ""
     when "articles"
-      link_to "See all #{number_with_delimiter(results.total_items)} articles", url_for(action: :index, controller: :primo_central, q: params[:q])
+      link_to "View all #{number_with_delimiter(results.total_items)} articles", url_for(action: :index, controller: :primo_central, q: params[:q])
     else
       content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
     end

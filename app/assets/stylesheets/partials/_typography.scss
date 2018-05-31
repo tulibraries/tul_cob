@@ -15,6 +15,12 @@
 }
 
 @font-face {
+font-family:'Colfax-Regular';
+src:url(/fonts/Colfax-Regular.eot);
+src:url(/fonts/Colfax-Regular.eot?#iefix) format("embedded-opentype"),font-url('Colfax-Regular.otf') format("woff"),font-url('Colfax-Regular.ttf') format("truetype"),font-url('Colfax-Regular.svg#svgFontName') format("svg");
+}
+
+@font-face {
   font-family: 'DroidBld';
   src: font-url('droidsans-bold-webfont.eot');
   src: font-url('droidsans-bold-webfont.eot?#iefix') format('embedded-opentype'),font-url('droidsans-bold-webfont.woff') format('woff'),font-url('droidsans-bold-webfont.ttf') format('truetype'),font-url('droidsans-bold-webfont.svg#DroidBld') format('svg');

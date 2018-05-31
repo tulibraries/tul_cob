@@ -11,7 +11,7 @@ module BentoSearch
       if query.empty?
         response = { "docs" => [] }
       else
-        response = search_results(q: query).first["response"]
+        response = search_results(q: query, per_page: 3).first["response"]
       end
 
       results(response)
@@ -20,7 +20,7 @@ module BentoSearch
     def conform_to_bento_result(item)
       BentoSearch::ResultItem.new(
         title: item["title"],
-        authors: item.fetch("creator", []).map { |author| BentoSearch::Author.new(display: author) },
+        authors: item.fetch("creator", []).map { |author| BentoSearch::Author.new(display: author.tr(";", " ")) },
         publisher: item.fetch("isPartOf", "Non found"),
         link: Rails.application.routes.url_helpers.primo_central_document_url(item["pnxId"], only_path: true))
     end
