@@ -9,7 +9,6 @@ class TulDecorator < BentoSearch::StandardDecorator
     if self.source_title.present?
       parts << _h.content_tag("span", self.source_title, class: "source_title")
     elsif self.publisher.present?
-      parts << _h.content_tag("span", publisher, class: "source_label")
       parts << _h.content_tag("span", self.publisher, class: "publisher")
     end
 
