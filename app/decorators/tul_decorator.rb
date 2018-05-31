@@ -21,10 +21,10 @@ class TulDecorator < BentoSearch::StandardDecorator
   def render_authors_list
     parts = []
 
-    first_three = self.authors.slice(0,3)
+    first_three = self.authors.slice(0, 3)
 
     first_three.each_with_index do |author, index|
-      parts << _h.content_tag("span", :class => "author") do
+      parts << _h.content_tag("span", class: "author") do
         self.author_display(author)
       end
       if (index + 1) < first_three.length
