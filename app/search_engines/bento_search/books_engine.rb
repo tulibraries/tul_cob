@@ -4,7 +4,8 @@ module BentoSearch
   class BooksEngine < BlacklightEngine
     def search_implementation(args)
       query = args.fetch(:query, "")
-      query = { q: query, per_page: 3, f: { format: ["Book"] } }
+      per_page = args.fetch(:per_page)
+      query = { q: query, per_page: per_page, f: { format: ["Book"] } }
 
       response = search_results(query, &proc_remove_facets).first.response
       results(response)

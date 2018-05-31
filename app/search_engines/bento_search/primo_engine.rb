@@ -6,12 +6,13 @@ module BentoSearch
 
     def search_implementation(args)
       query = args.fetch(:query, "")
+      per_page = args.fetch(:per_page)
 
       # Avoid making a costly call for no reason.
       if query.empty?
         response = { "docs" => [] }
       else
-        response = search_results(q: query, per_page: 3).first["response"]
+        response = search_results(q: query, per_page: per_page).first["response"]
       end
 
       results(response)
