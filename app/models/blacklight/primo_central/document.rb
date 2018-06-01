@@ -9,7 +9,7 @@ module Blacklight::PrimoCentral::Document
   def initialize(doc, req = nil)
     @url = url(doc)
     @url_query = url_query
-    format = doc["@TYPE"] || doc["type"]
+    format = doc["@TYPE"] || doc["type"] || "unknown"
     # Dots and slahes break links to articles.
     doc["pnxId"] = doc["pnxId"]&.gsub(".", "-dot-")
     doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
