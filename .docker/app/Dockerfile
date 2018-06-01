@@ -5,10 +5,9 @@ RUN \
       echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
       apt-get update -qq && \
       apt-get install -y --force-yes --no-install-recommends \
-      nodejs yarn build-essential libpq-dev nodejs
+      nodejs yarn build-essential libpq-dev
 RUN mkdir /app
 WORKDIR /app
-RUN yarn
 ADD Gemfile .
 ADD Gemfile.lock .
 RUN bundle install

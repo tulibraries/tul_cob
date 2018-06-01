@@ -8,7 +8,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - .:/tul_cob
+      - .:/app
 
   solr:
     volumes:
