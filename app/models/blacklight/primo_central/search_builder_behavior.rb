@@ -13,16 +13,22 @@ module Blacklight::PrimoCentral
       value = "*" if value.nil? || value.empty?
 
       if value.is_a? Hash
-        raise "FIXME, translation of Solr search for Summon"
-      elsif value
+        if value["pnxId"]&.is_a? Array
+          # limit ids to 9 or API returns 0 results
+          queries = to_primo_id_queries(value["pnxId"][0, 9])
+          primo_central_parameters[:query] = {
+            limit: per_page,
+            offset:  offset,
+            q: { value: queries },
+          }
+        else
+          raise "FIXME, translation of Solr search for Summon"
+        end
+      else
         primo_central_parameters[:query] = {
           limit: per_page,
           offset:  offset,
           q: { value: value }
-        }
-      else
-        primo_central_parameters[:query] = {
-          q: { value: value },
         }
       end
     end
@@ -75,6 +81,7 @@ module Blacklight::PrimoCentral
       end
 
       q = Primo::Pnxs::Query.send(op, query)
+
       primo_central_parameters[:query][:q] = q
 
       blacklight_params.fetch(:f, {})
@@ -90,6 +97,23 @@ module Blacklight::PrimoCentral
     end
 
     private
+      def to_primo_id_queries(values)
+        values.map { |v|
+          {
+            field: :any,
+            value: to_primo_id(v),
+            precision: :contains,
+            operator: :OR,
+          }
+        }
+      end
+
+      def to_primo_id(value)
+        "'#{value.gsub(/^TN_/, "")
+          .gsub("-dot-", ".")
+          .gsub("-slash-", "/")
+          .gsub("-", " ")}'"
+      end
 
       def to_primo_field(field)
         {

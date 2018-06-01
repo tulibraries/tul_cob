@@ -51,7 +51,7 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "blacklight"
-gem "blacklight_advanced_search"
+gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
 

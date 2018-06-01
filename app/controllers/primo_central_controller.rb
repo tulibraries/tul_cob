@@ -7,6 +7,11 @@ class PrimoCentralController < CatalogController
   helper_method :browse_creator
   helper_method :tags_strip
 
+  # We are not including the default configuration by default until we are sure all features work with Primo.
+  add_show_tools_partial(:bookmark, partial: "bookmark_control")
+  add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
+  add_results_document_tool(:bookmark, partial: "bookmark_control")
+
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -61,17 +66,6 @@ class PrimoCentralController < CatalogController
     config.add_show_field :lccn, label: "LCCN"
     config.add_show_field :doi, label: "DOI"
     config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code
-  end
-
-  # get a single document from the index
-  # to add responses for formats other than html or json see _Blacklight::Document::Export_
-  def show
-    @document = repository.find params[:id]
-    respond_to do |format|
-      format.html { setup_next_and_previous_documents }
-      format.json { render json: { response: { document: @document } } }
-      additional_export_formats(@document, format)
-    end
   end
 
   def render_sms_action?(_config, _options)
