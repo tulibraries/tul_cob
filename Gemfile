@@ -49,12 +49,10 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 gem "blacklight",
   git: "https://github.com/dkinzer/blacklight.git",
   branch: "backport-safari-bug-fix"
-
-gem "blacklight_advanced_search"
+gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
 

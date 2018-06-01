@@ -35,7 +35,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: bf5557372e248e3b33706acdab8ce6c474bf3136
+  revision: b5c4e85e12d82bfcf35cf17d4968726c61847883
   specs:
     primo (0.1.0)
       httparty
@@ -472,7 +472,7 @@ DEPENDENCIES
   bento_search
   blacklight!
   blacklight-marc
-  blacklight_advanced_search
+  blacklight_advanced_search (~> 6.3)
   blacklight_alma!
   blacklight_range_limit
   bootsnap
