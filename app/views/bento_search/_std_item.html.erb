@@ -72,5 +72,9 @@
       <% end %>
     </div>
 
+      <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
+        <%= render :partial => "bento_availability", :object => item, :as => 'item' %>
+      <% end %>
+
   </div>
 <% end %>

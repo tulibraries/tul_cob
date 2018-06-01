@@ -115,6 +115,12 @@ module ApplicationHelper
     end
   end
 
+  def bento_single_link(field)
+    electronic_resource = field.first.split("|")
+    portfolio_pid = electronic_resource.first
+    alma_electronic_resource_direct_link(portfolio_pid)
+  end
+
   def bento_engine_nice_name(engine_id)
     I18n.t("bento.#{engine_id}.nice_name")
   end
