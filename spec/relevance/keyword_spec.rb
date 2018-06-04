@@ -70,5 +70,16 @@ RSpec.describe CatalogController, :focus, type: :controller, relevance: true do
           .before(%w[991036800002703811 991026974219703811 991013963759703811])
       end
     end
+
+    context "Bioinformatics" do
+      let(:search_term) {"Bioinformatics"}
+
+      it "returns more recent results before older results" do
+        expect(response)
+          .to include_docs(
+            %w[991036719384303811 991036792223603811 991036798582803811 991036700239703811])
+          .within_the_first(10)
+      end
+    end
   end
 end
