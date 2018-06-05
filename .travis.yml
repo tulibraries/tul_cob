@@ -19,7 +19,7 @@ before_script:
 - RAILS_ENV=test bundle exec rails webpacker:compile
 
 script:
-- bundle exec rake ci
+- RELEVANCE=y bundle exec rake ci
 - bundle exec rubocop
 notifications:
   email:

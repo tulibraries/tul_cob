@@ -126,6 +126,8 @@ example to [use a seed to determine order](https://relishapp.com/rspec/rspec-cor
 
 ### Relevance Tests
 
+#### Running relevance tests
+
 Relevance tests are run separate from other tests, to avoid loading tens of thousands of
 MARC records every time test run. To run relevance tests along with regular tests
 just preface any test running command with `RELEVANCE=y`.(y or any other character)
@@ -136,3 +138,14 @@ for example:
 This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
 an any describe blocked passed the `relevance: true` option to be run. By convention,
 these tests exist in `spec/relevance/`
+
+#### Getting relevance tests examples
+
+A utility has been added to fetch records for example queries. It takes the URL from a known
+search in an existing blacklight (probably libqa), downloads the marcxml for each record
+and adds them all to a file. By default, it saves to `marc_from_query.xml` locally, but you
+can also provide a path  and filename with the `--save_to` command line flag.
+
+```
+./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" --save_to=spec/relevance/fixtures/contingent+labor.xml
+```
