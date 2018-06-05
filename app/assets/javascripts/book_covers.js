@@ -4,10 +4,15 @@ $(document).on('turbolinks:load', function() {
     lccn = $(thumbnail).attr('data-lccn');
     isbn = $(thumbnail).attr('data-isbn');
     if(lccn) {
-      queries.push("LCCN:" + lccn);
+      isbn.split(",").map(function(value){
+        queries.push("LCCN:" + value);
+      })
     }
-    else if(isbn) {
-      queries.push("ISBN:" + isbn);
+
+    if(isbn) {
+      isbn.split(",").map(function(value){
+        queries.push("ISBN:" + value);
+      })
     }
   });
 
@@ -24,8 +29,8 @@ $(document).on('turbolinks:load', function() {
         if(b.hasOwnProperty("thumbnail_url")) {
           type = b.bib_key.split(":")[0];
           identifier = b.bib_key.split(":")[1];
-          $('[data-' + type.toLowerCase() + '=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image");
-          $('[data-' + type.toLowerCase() + '=' + identifier + '] .default').remove();
+          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image");
+          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .default').remove();
         }
       }
     }
