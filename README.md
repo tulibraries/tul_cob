@@ -84,7 +84,7 @@ The simplest way to ingest a marc data file into your local solr is with the `in
 bundle exec rake ingest
 ```
 
-You can also pass in ther path to a separate file you would like to ingest as a parameter
+You can also pass in their path to a separate file you would like to ingest as a parameter
 
 ```bash
 bundle exec rake ingest[/some/other/path.xml]
@@ -117,9 +117,22 @@ bundle exec rake fortytu:oai:ingest_all
 test records, and run your test suite.
 
 `bundle exec rake rspec` will start your solr and run your test suite, assuming
-you already have the test records in your solr.
+you already have the test records in your test solr.
 
 The `rake rspec` rake task can also take any `rspec` command line parameters, for
 example to [use a seed to determine order](https://relishapp.com/rspec/rspec-core/v/3-7/docs/command-line/order) , you can run:
 
 `bundle exec rake rspec["--seed=12345"]`
+
+### Relevance Tests
+
+Relevance tests are run separate from other tests, to avoid loading tens of thousands of
+MARC records every time test run. To run relevance tests along with regular tests
+just preface any test running command with `RELEVANCE=y`.(y or any other character)
+for example:
+
+`RELEVANCE=y bundle exec rake ci`
+
+This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
+an any describe blocked passed the `relevance: true` option to be run. By convention,
+these tests exist in `spec/relevance/`
