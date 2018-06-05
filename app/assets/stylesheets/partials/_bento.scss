@@ -26,8 +26,7 @@
 		background-color: #CECED0;
 		border-radius: 10px 10px 0 0;
 		color: #2B2E34;
-		font-family: "Colfax-Regular";
-		font-weight: bold;
+		font-family: "Colfax-Medium";
 		font-size: 24px;
 		height: 50px;
 		padding: 12px;
@@ -67,14 +66,6 @@
 	margin-bottom: 3px;
 }
 
-.bento_item_title a {
-	text-decoration: underline;
-}
-
-.bento_item_title a:hover {
-	text-decoration: none;
-}
-
 .bento_item_body {
 	margin-left: 15px;
 }
@@ -93,19 +84,26 @@
 	padding: 10px;
 }
 
-.first_about {
-	margin-bottom: 3px;
+.total-results p {
+	color: #A50030;
+	font-weight: bold;
 }
 
-.bento-avail-btn {
-	background-color: #095780;
-	color: white;
-	padding: 2px 10px;
-	margin-bottom: 15px;
-	margin-left: 15px;
+.total-results a,
+.bento_item_title a {
+	text-decoration: underline;
 }
 
-.bento-avail-btn:hover,
-.bento-avail-btn:visited {
-	color: white;
+.total-results a:hover,
+.bento_item_title a:hover {
+	text-decoration: none;
+}
+
+
+.more .total-results {
+	display: none;
+}
+
+.bento-results {
+	margin-left: 40px;
 }
