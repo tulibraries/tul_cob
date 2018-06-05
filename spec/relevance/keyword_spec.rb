@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogController, :focus, type: :controller, relevance: true do
+RSpec.describe CatalogController, type: :controller, relevance: true do
   render_views
 
   let(:response) { JSON.parse(get(:index, params: { q: search_term, per_page: 100 }, format: "json").body) }
