@@ -72,5 +72,12 @@
       <% end %>
     </div>
 
+      <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
+        <%= render :partial => "blacklight_availability", :object => item, :as => 'item' %>
+      <% end %>
+      
+      <% if item.engine_id == "articles" %>
+        <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
+      <% end %>
   </div>
 <% end %>
