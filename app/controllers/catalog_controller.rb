@@ -106,6 +106,7 @@ class CatalogController < ApplicationController
         note_summary_unstem_search~0^6000
         note_toc_unstem_search^1000
         note_summary_unstem_search^1000
+        creator_unstem_search~2^7500
         creator_unstem_search^2500
         creator_t^1000
         subject_addl_unstem_search^2500
