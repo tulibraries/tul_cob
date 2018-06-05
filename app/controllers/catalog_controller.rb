@@ -383,6 +383,8 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field "format", label: "Format"
+
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
       field.solr_parameters = { 'spellcheck.dictionary': "author" }
       field.solr_local_parameters = {

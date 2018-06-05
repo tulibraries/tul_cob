@@ -78,6 +78,17 @@ class SearchBuilder < Blacklight::SearchBuilder
     value.gsub(/:/, " ")
   end
 
+  def no_books_or_journals(solr_parameters)
+    q = solr_parameters[:q]
+    parser = blacklight_config.advanced_search[:query_parser] || "dismax"
+    query = " NOT _query_:\"{!#{parser} qf=format}Book\" AND NOT _query_:\"{!#{parser} qf=format}Journal/Periodical\""
+    if q.match?("_query_")
+      solr_parameters[:q] = "#{q} #{query}"
+    else
+      solr_parameters[:q] = "_query_:\"{!#{parser }}#{q} #{query}"
+    end
+  end
+
   private
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.
