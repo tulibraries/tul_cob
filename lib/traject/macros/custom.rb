@@ -359,7 +359,7 @@ module Traject
             acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
           end
           if !acc.empty?
-           acc.replace [Date.ordinal(acc.first.to_i, 1 ).strftime("%FT%TZ")]
+            acc.replace [Date.ordinal(acc.first.to_i, 1).strftime("%FT%TZ")]
           end
         end
       end
