@@ -22,8 +22,9 @@ module BentoSearch
       BentoSearch::ResultItem.new(
         title: item["title"],
         authors: item.fetch("creator", []).map { |author| BentoSearch::Author.new(display: author.tr(";", " ")) },
-        publisher: item.fetch("isPartOf", "Non found"),
-        link: Rails.application.routes.url_helpers.primo_central_document_url(item["pnxId"], only_path: true))
+        publisher: item.fetch("isPartOf", "None found"),
+        link: Rails.application.routes.url_helpers.primo_central_document_url(item["pnxId"], only_path: true),
+        custom_data: item)
     end
   end
 end
