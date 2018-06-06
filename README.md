@@ -136,8 +136,53 @@ for example:
 `RELEVANCE=y bundle exec rake ci`
 
 This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
-an any describe blocked passed the `relevance: true` option to be run. By convention,
-these tests exist in `spec/relevance/`
+and will run all `describe`/`context` blocks that have the `relevance: true` option. 
+
+#### Creating new relevance tests
+By convention,these tests exist in (`spec/relevance/`)[https://github.com/tulibraries/tul_cob/tree/master/spec/relevance].
+
+When creating a new test, be sure to pass the `relevance: true` option to the wrapping `describe`, as in
+
+```ruby
+RSpec.describe CatalogController, type: :controller, relevance: true do
+#lots of expectations
+...
+end
+```
+
+You can also tak advantage of some custom Rspec matchers to make checking for documents easier.
+
+`include_docs(array_of_doc_ids)` - Check that the expected ids are in the first set of results
+
+```
+# fetch the json solr response from Blacklight index and parse it
+let(:response) { JSON.parse(get(:index, params: { q: "SEARC TERM", per_page: 100 }, format: "json").body) }
+
+it "has expected results " do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+end
+```
+
+You can also chain extra matchers onto `include_docs` for more precision:
+
+`before([other_array_doc_ids])` - second array of IDs that should come after set you expect included
+```
+it "has expected results before a less relevant result" do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+    .before(["991036813237303811"])
+end
+```
+
+`within_the_first(integer)` - the included docs should appear before this number in the results array index 
+```
+it "has expected results within the first 20 results" do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+    .within_the_first(20)
+end
+```
 
 #### Getting relevance tests examples
 
@@ -147,5 +192,8 @@ and adds them all to a file. By default, it saves to `marc_from_query.xml` local
 can also provide a path  and filename with the `--save_to` command line flag.
 
 ```
-./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" --save_to=spec/relevance/fixtures/contingent+labor.xml
+./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" \ 
+--save_to=spec/relevance/fixtures/contingent+labor.xml
 ```
+
+
