@@ -4,7 +4,7 @@ $(document).on('turbolinks:load', function() {
     lccn = $(thumbnail).attr('data-lccn');
     isbn = $(thumbnail).attr('data-isbn');
     if(lccn) {
-      isbn.split(",").map(function(value){
+      lccn.split(",").map(function(value){
         queries.push("LCCN:" + value);
       })
     }
