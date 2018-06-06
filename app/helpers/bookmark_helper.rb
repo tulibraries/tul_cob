@@ -2,8 +2,11 @@
 
 module BookmarkHelper
   def toggle_document_context(document = nil)
-    blacklight_reconfig(document)
-    reset_lookup_context(document)
+    # Only toggle the lookup_context for Bookmark items.
+    if @_controller.class == BookmarksController
+      blacklight_reconfig(document)
+      reset_lookup_context(document)
+    end
   end
 
   def blacklight_reconfig(document = nil)
