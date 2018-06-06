@@ -79,14 +79,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def no_books_or_journals(solr_parameters)
-    q = solr_parameters[:q]
-    parser = blacklight_config.advanced_search[:query_parser] || "dismax"
-    query = " NOT _query_:\"{!#{parser} qf=format}Book\" AND NOT _query_:\"{!#{parser} qf=format}Journal/Periodical\""
-    if q.match?("_query_")
-      solr_parameters[:q] = "#{q} #{query}"
-    else
-      solr_parameters[:q] = "_query_:\"{!#{parser }}#{q} #{query}"
-    end
+    solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
   end
 
   private
