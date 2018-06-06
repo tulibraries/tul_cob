@@ -85,8 +85,8 @@ module ApplicationHelper
 
   def alma_electronic_resource_direct_link(portfolio_pid)
     query = {
-        'u.ignore_date_coverage': "true",
-        'Force_direct': true,
+        "u.ignore_date_coverage": "true",
+        "Force_direct": true,
         portfolio_pid: portfolio_pid
     }
     alma_build_openurl(query)
@@ -194,5 +194,23 @@ module ApplicationHelper
   def index_field_url_link(arg)
     url = arg[:value].first
     link_to "direct link", url, remote: true
+  end
+
+  def navigational_headers
+    if params[:controller] == "catalog" || current_page?("/advanced")
+      content_tag(:h2, "Catalog Search", class: "nav-header")
+    elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
+      content_tag(:h2, "Articles Search", class: "nav-header")
+    end
+  end
+
+  def navigational_links
+    if navigational_headers.present?
+      if navigational_headers.include?("Catalog Search")
+        link_to("Article Search", search_path, class: "btn btn-primary nav-btn")
+      elsif navigational_headers.include?("Articles Search")
+        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
+      end
+    end
   end
 end

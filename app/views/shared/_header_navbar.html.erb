@@ -1,13 +1,16 @@
 <div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
   <div class="<%= container_classes %>">
     <div class="navbar-header">
-    <%= link_to "Temple University Libraries", "http://library.temple.edu/", class: "navbar-brand" %> 
+    <%= link_to "Temple University Libraries", "http://library.temple.edu/", class: "navbar-brand" %>
     </div>
   </div>
 </div>
 <div id="user-util-links">
-<div class="container">
+<div class=" red-navbar container">
+  <%= navigational_headers %>
+
   <div class="text-right" id="user-util-collapse">
+    <%= navigational_links %>
     <%= render :partial=>'/user_util_links' %>
   </div>
 </div>
