@@ -4,4 +4,10 @@
 
 require_relative "config/environment"
 
-run Rails.application
+if ENV["HOSTNAME"] == "libqa.library.temple.edu"
+  map "catalog" do
+    run Rails.application
+  end
+else
+  run Rails.application
+end
