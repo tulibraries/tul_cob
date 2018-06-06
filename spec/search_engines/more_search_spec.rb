@@ -52,7 +52,7 @@ RSpec.describe BentoSearch, type: :search_engine do
 
     it "Appends :no_books_or_journals processor to processor_chain" do
       _builder = more_se.proc_minus_books_journals[builder]
-      expect(builder.processor_chain).to include(:no_books_or_journals)
+      expect(_builder.processor_chain).to include(:no_books_or_journals)
     end
   end
 
