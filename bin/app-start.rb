@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require 'fileutils'
+
+require "fileutils"
 
 # Map example config files to use in development.
 Dir.glob("config/*")
@@ -16,6 +17,7 @@ File.delete server_pid if File.exist? server_pid
 
 # Start rails app but do not block the rest of the script.
 `rails db:migrate`
+`yarn`
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 
 # Next, provision with test data.

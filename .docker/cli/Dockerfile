@@ -1,4 +1,4 @@
-FROM tulcob_app:latest
+FROM tul_cob_app:latest
 
 RUN apt-get update -qq \
       && apt-get install -y vim ctags tmux \
@@ -10,5 +10,5 @@ ADD Gemfile .
 ADD Gemfile.lock .
 RUN bundle install
 
-WORKDIR /tul_cob
+WORKDIR /app
 CMD ["bash"]

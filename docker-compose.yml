@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.4"
 
 services:
   app:
@@ -23,7 +23,7 @@ services:
       - solr
     entrypoint:
       - ruby
-      - bin/app-start.rb
+      - /app/bin/app-start.rb
 
   solr:
     build:
