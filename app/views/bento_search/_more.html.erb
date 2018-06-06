@@ -1,2 +1,4 @@
 
-<%= render_facet_partials ["format"] %>
+<% bento_more_partials(item).each do |partial| %>
+  <%= render partial, { item: item } %>
+<% end %>

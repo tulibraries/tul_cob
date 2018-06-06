@@ -78,6 +78,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     value.gsub(/:/, " ")
   end
 
+  def no_books_or_journals(solr_parameters)
+    solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
+  end
+
   private
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.
