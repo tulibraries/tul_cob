@@ -13,15 +13,21 @@ module CatalogHelper
   end
 
   def isbn_data_attribute(document)
-    value = document.fetch(:isbn_display, []).first
-    # Get the first ISBN and strip non-numerics
-    "data-isbn=#{value.gsub(/\D/, '')}" if value
+    values = document.fetch(:isbn_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-isbn=#{values}" if !values.empty?
   end
 
   def lccn_data_attribute(document)
-    value = document.fetch(:lccn_display, []).first
-    # Get the first ISSN and strip non-numerics
-    "data-lccn=#{value.first.gsub(/\D/, '')}" if value
+    values = document.fetch(:lccn_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-lccn=#{values}" if !values.empty?
   end
 
   def default_cover_image(document)
