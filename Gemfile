@@ -51,7 +51,7 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "blacklight",
-  git: "https://github.com/dkinzer/blacklight.git",
+  git: "https://github.com/tulibraries/blacklight.git",
   branch: "backport-safari-bug-fix"
 
 gem "blacklight_advanced_search"
