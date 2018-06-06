@@ -6,8 +6,9 @@ namespace :fortytu do
   namespace :solr do
 
     desc "Posts fixtures to Solr"
-    task :load_fixtures do
-      Dir.glob("spec/fixtures/*.xml").sort.reverse.each do |file|
+    task :load_fixtures, [:filepath] do |t, args|
+      fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
+      Dir.glob(fixtures).sort.reverse.each do |file|
         `traject -c #{Rails.configuration.traject_indexer} #{file}`
       end
 

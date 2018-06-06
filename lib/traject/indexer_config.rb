@@ -101,6 +101,7 @@ to_field "date_copyright_display", extract_copyright
 to_field "pub_location_t", extract_marc_with_flank("260a:264a", trim_punctuation: true)
 to_field "publisher_t", extract_marc_with_flank("260b:264b", trim_punctuation: true)
 to_field "pub_date_sort", marc_publication_date
+to_field "pub_date_tdt", extract_pub_datetime
 
 # Physical characteristics fields -3xx
 to_field "phys_desc_display", extract_marc("300abcefg3:340abcdefhijkmno")
