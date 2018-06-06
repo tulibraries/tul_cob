@@ -33,8 +33,8 @@
 		li {
 			a, a:visited, a:hover, a:active {
 				color: $white;
-				padding: 4px 21px;
 				background-color: transparent;
+				margin-top: 3px;
 			}
 		}
 	}
@@ -57,4 +57,27 @@
 .form-control:focus {
 	border-color: $red;
 	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
+}
+
+.nav-header {
+	color: white;
+	display: inline;
+	float: left;
+	font-family: "Colfax-Medium";
+	font-size: 30px;
+}
+
+.nav-btn, .nav-btn:visited, .nav-btn:hover, .nav-btn:active {
+	border: 2px solid white;
+	color: white;
+	font-family: "Colfax-Medium";
+	letter-spacing: 1px;
+	margin-top: 10px;
+	margin-right: 20px;
+	padding: 8px 10px 7px 10px;
+}
+
+a.advanced_search {
+	font-weight: bold;
+	letter-spacing: 1px;
 }
