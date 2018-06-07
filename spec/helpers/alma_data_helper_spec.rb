@@ -107,6 +107,36 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
+  describe "#physical_material_type(item)" do
+    context "item includes physical_material_type" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "physical_material_type" =>
+             { "value" => "DVD" }
+           }
+         )
+      end
+
+      it "displays physical_material_type" do
+        expect(physical_material_type(item)).to eq "DVD"
+      end
+    end
+
+    context "item does NOT include PHYSICAL_TYPE_EXCLUSIONS" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "physical_material_type" =>
+             { "value" => "BOOK" }
+           }
+         )
+      end
+
+      it "displays nothing" do
+        expect(physical_material_type(item)).to eq nil
+      end
+    end
+  end
+
   describe "#public_note(item)" do
     context "item includes public note" do
       let(:item) do
