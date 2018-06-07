@@ -177,7 +177,7 @@ module ApplicationHelper
     when "books"
       link_to "View all #{number_with_delimiter(results.total_items)} books", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
     when "more"
-      ""
+      link_to "View all catalog results", search_catalog_path(q: params[:q]), class: "full-results"
     when "articles"
       link_to "View all #{number_with_delimiter(results.total_items)} articles", url_for(action: :index, controller: :primo_central, q: params[:q])
     else
