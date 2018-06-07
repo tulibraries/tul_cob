@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/tulibraries/alma_rb
+  revision: 6060ca25486bd1fc24f8325d6e3a233fedeafb8e
+  specs:
+    alma (0.2.5)
+      ezwadl
+      httparty
+      xml-simple
+
+GIT
   remote: https://github.com/tulibraries/blacklight.git
   revision: db2f289afe96feeb2446dd4f7565002a6d134f26
   branch: backport-safari-bug-fix
@@ -13,15 +22,6 @@ GIT
       rails (>= 4.2, < 6)
       rsolr (>= 1.0.6, < 3)
       twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
-
-GIT
-  remote: https://github.com/tulibraries/alma_rb
-  revision: 6060ca25486bd1fc24f8325d6e3a233fedeafb8e
-  specs:
-    alma (0.2.5)
-      ezwadl
-      httparty
-      xml-simple
 
 GIT
   remote: https://github.com/tulibraries/blacklight_alma.git

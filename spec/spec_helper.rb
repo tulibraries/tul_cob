@@ -149,8 +149,6 @@ RSpec.configure do |config|
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
 
-  config.fail_fast = 1
-
   # So we can test logged in users.
   require "warden"
   config.include Warden::Test::Helpers
