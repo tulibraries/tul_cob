@@ -1098,6 +1098,7 @@ RSpec.feature "RecordPageFields" do
   feature "MARC lccn Fields" do
     let (:item_010) { fixtures.fetch("lccn_010") }
     scenario "User visits a document with lccn" do
+      skip
       visit "catalog/#{item_010['doc_id']}"
       within "dd.blacklight-lccn_display" do
         expect(page).to have_text(item_010["lccn"])

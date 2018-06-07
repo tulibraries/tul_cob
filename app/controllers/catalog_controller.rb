@@ -333,7 +333,6 @@ class CatalogController < ApplicationController
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
-    config.add_show_field "lccn_display", label: "LCCN"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
