@@ -24,7 +24,7 @@ RSpec.describe CatalogHelper, type: :helper do
     context "document contains multiple isbn" do
       let(:document) { { isbn_display: ["23445667890", "123456789"] } }
       it "returns the data-isbn string" do
-        expect(isbn_data_attribute(document)).to eql "data-isbn=23445667890"
+        expect(isbn_data_attribute(document)).to eql "data-isbn=23445667890,123456789"
       end
     end
 
