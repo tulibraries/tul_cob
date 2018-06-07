@@ -1,12 +1,9 @@
-<% doc_presenter = show_presenter(document) %>
-
 <div class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >
 </div>
 
-<% @response["response"][:docs].each_with_index do |field, i| %>
-  <% if document.fetch("availability_facet", [])[i] == "Online" %>
+  <% if document.fetch("availability_facet", []).include? "Online" %>
     <% if has_one_electronic_resource?(document) %>
-      <%= link_to "Online", single_link_builder(document["electronic_resource_display"][i]), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank" %>
+      <%= link_to "Online", single_link_builder(document["electronic_resource_display"].first), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank" %>
     <% elsif has_many_electronic_resources?(document) %>
     <div class="row button-break"></div>
       <button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">
@@ -20,7 +17,7 @@
     <% end %>
   <% end %>
 
-  <% if document.fetch("availability_facet", [])[i] == "At the Library" %>
+  <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.id) %>">
       <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button">
@@ -33,4 +30,3 @@
       <div data-target="availability.panel" id="physical-document-<%= document_counter %>" class="collapse panel-content"></div>
     </div>
   <% end %>
-<% end %>
