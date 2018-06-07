@@ -197,7 +197,7 @@ module ApplicationHelper
   end
 
   def navigational_headers
-    if params[:controller] == "catalog" || current_page?("/advanced")
+    if params[:controller] == "catalog" || params[:controller] == "advanced"
       content_tag(:h2, "Catalog Search", class: "nav-header")
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
       content_tag(:h2, "Articles Search", class: "nav-header")
@@ -207,7 +207,7 @@ module ApplicationHelper
   def navigational_links
     if navigational_headers.present?
       if navigational_headers.include?("Catalog Search")
-        link_to("Article Search", search_path, class: "btn btn-primary nav-btn")
+        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn")
       elsif navigational_headers.include?("Articles Search")
         link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
       end
