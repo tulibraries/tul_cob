@@ -4,7 +4,7 @@
       <% sort_order_for_holdings(@items).each do |key,items| %>
         <thead class="table-heading">
           <tr>
-            <th colspan="5">
+            <th colspan="6">
               <%= library_name_from_short_code(key) %>
             </th>
           </tr>
@@ -15,6 +15,7 @@
               <td scope="row"><%= location_status(item) %></td>
               <td scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
               <td scope="row"><%= description(item) %></td>
+              <td scope="row"><%= physical_material_type(item) %></td>
               <td scope="row"><%= public_note(item) %></td>
               <td scope="row"><%= availability_status(item) %></td>
             <!-- <tr>
