@@ -52,6 +52,7 @@ class CatalogController < ApplicationController
         title_uniform_display
         isbn_display
         lccn_display
+        url_finding_aid_display
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -253,13 +254,14 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_display", label: "Published"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
-
+    config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
     config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
@@ -335,7 +337,6 @@ class CatalogController < ApplicationController
     config.add_show_field "sudoc_display", label: "SuDOC"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
-    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
 
