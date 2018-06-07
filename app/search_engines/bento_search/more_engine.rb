@@ -4,9 +4,7 @@ module BentoSearch
   class MoreEngine < BlacklightEngine
     def search_implementation(args)
       query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
-
-      query = { q: query, per_page: per_page, seach_field: "advanced" }
+      query = { q: query, per_page: 2 }
 
       response = search_results(query, &proc_minus_books_journals).first
 
