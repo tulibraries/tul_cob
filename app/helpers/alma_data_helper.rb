@@ -34,8 +34,8 @@ module AlmaDataHelper
   end
 
   def physical_material_type(item)
-    if item.physical_material_type.present? && !PHYSICAL_TYPE_EXCLUSIONS.match(item.physical_material_type)
-      return item.physical_material_type
+    if item.physical_material_type.present? && !PHYSICAL_TYPE_EXCLUSIONS.match(item.physical_material_type["value"])
+      return item.physical_material_type["desc"]
     end
   end
 
