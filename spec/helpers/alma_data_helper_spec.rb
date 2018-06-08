@@ -136,6 +136,28 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(physical_material_type(item)).to eq nil
       end
     end
+
+    context "item does not include a physical_material_type" do
+      let(:item) { Alma::BibItem.new("item_data" => {}) }
+
+      it "displays nothing" do
+        expect(physical_material_type(item)).to eq nil
+      end
+    end
+
+    context "item contains bad physical_material_type data" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "physical_material_type" =>
+             { "value" => nil }
+           }
+         )
+      end
+      it "displays nothing" do
+        expect(physical_material_type(item)).to eq nil
+      end
+    end
+
   end
 
   describe "#public_note(item)" do
