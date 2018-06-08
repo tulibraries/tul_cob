@@ -4,10 +4,6 @@
 	margin-bottom: 28px;
 }
 
-.bento_box.row {
-	margin-left: 22%;
-}
-
 .span4 {
 	width: 46%;
 	border: solid $light-grey 1px;
@@ -24,6 +20,10 @@
 		font-size: 24px;
 		height: 50px;
 		padding: 12px;
+}
+
+.bento_compartment h3 {
+	padding-left: 15px;
 }
 
 .blacklight-search {
@@ -104,8 +104,4 @@
 .bento-avail-btn:hover,
 .bento-avail-btn:visited {
  	color: white;
-}
-
-.bento-results {
-	margin: 0 5%;
 }
