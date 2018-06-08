@@ -112,13 +112,14 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) do
         Alma::BibItem.new("item_data" =>
            { "physical_material_type" =>
-             { "value" => "DVD" }
+             { "value" => "RECORD",
+                "desc" => "Sound Recording" }
            }
          )
       end
 
       it "displays physical_material_type" do
-        expect(physical_material_type(item)).to eq "DVD"
+        expect(physical_material_type(item)).to eq "Sound Recording"
       end
     end
 
