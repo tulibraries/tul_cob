@@ -12,16 +12,18 @@
     <% if field_name == 'electronic_resource_display' %>
 
       <div class="panel-body online-panel">
-        <h5>Online</h5>
-        <dd class="blacklight-<%= field_name.parameterize %>">
-          <ul>
-            <% doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
-            <% values = Array.wrap(doc_presenter.field_value field_name) %>
-            <% values.each do |value| %>
-              <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
-            <% end %>
-          </ul>
-        </dd>
+        <h5 class="online-panel-heading">Online</h5>
+        <div class="online-panel-body">
+          <dd class="blacklight-<%= field_name.parameterize %>">
+            <ul>
+              <% doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+              <% values = Array.wrap(doc_presenter.field_value field_name) %>
+              <% values.each do |value| %>
+                <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+              <% end %>
+            </ul>
+          </dd>
+        </div>
       </div>
       <% end %>
     <% end %>
