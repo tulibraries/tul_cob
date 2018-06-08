@@ -11,20 +11,29 @@ module BentoSearch
       query = args.fetch(:query, "")
 
       results = BentoSearch::Results.new
-      response = search_results(q: query, &proc_remove_facets).first.response
+      response = search_results(q: query, &proc_availability_facet_only).first
       results(response)
     end
 
-    def proc_remove_facets
+    def proc_availability_facet_only
       Proc.new { |builder|
-        builder.append(:remove_facets)
+        builder.append(:availability_facet_only)
       }
     end
 
     def results(response)
       results = BentoSearch::Results.new
+      availability_facet =
+        response.facet_counts&.dig("facet_fields", "availability_facet")
+        .to_a.each_slice(2).to_h
 
-      results.total_items = response["numFound"]
+      response = response["response"]
+
+      results.total_items = {
+        query_total: response["numFound"],
+        online_total: availability_facet["Online"]
+      }
+
       response["docs"].each do |doc|
         results << conform_to_bento_result(doc)
       end

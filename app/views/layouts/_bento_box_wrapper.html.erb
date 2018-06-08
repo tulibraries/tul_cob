@@ -9,13 +9,19 @@
       look for both, oh well.
 %>
 
-	<div class="search-results">
-		<%= yield %>
-	</div>
+  <div class="search-results">
+    <%= yield %>
+  </div>
 
-	<% unless results.total_items == 0 %>
-		<div class="total-results">
-			<p><%= bento_link_to_full_results(results) %> ></p>
-		</div>
-	<% end %>
+  <% unless total_items(results) == 0 %>
+    <div class="total-results">
+      <%= bento_link_to_full_results(results) %> >
+    </div>
+  <% end %>
+
+  <% unless total_online(results) == 0 %>
+    <div class="total-results">
+      <%= bento_link_to_online_results(results) %> >
+    </div>
+  <% end %>
 </div>

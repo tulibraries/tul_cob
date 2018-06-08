@@ -8,7 +8,7 @@ module BentoSearch
 
       query = { q: query, per_page: per_page, f: { format: ["Journal/Periodical"] } }
 
-      response = search_results(query, &proc_remove_facets).first.response
+      response = search_results(query, &proc_availability_facet_only).first
       results(response)
     end
   end

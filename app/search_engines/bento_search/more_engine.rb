@@ -10,8 +10,7 @@ module BentoSearch
 
       item = BentoSearch::ResultItem.new(custom_data: response)
 
-      (results(response.response))
-        .append(item)
+      results(response).append(item)
     end
 
     def proc_minus_books_journals
