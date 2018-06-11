@@ -117,11 +117,6 @@ input[type="radio"] + label {
   margin-left: 5px;
 }
 
-div.online_resources {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
 .collapse-button {
   width: 121px !important;
   white-space: normal;
@@ -137,7 +132,6 @@ div.online_resources {
 }
 
 .online-border {
-  border-bottom: 1px solid #ececec;
   padding-top: 0;
 }
 
@@ -165,14 +159,42 @@ div.physical-holding-panel {
 
 .online-panel-heading {
   background-color: #F1EFE8;
-  border-bottom: 1px solid #CFC7B0;
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  font-size: 14px;
+  font-weight: bold;
   height: 40px;
-  margin: 0 0 15px 0;
-  padding: 10px;
+  margin: 0;
+  padding: 8px;
 }
 
 .online-panel-body {
-  margin: 10px;
+  margin-top: -20px;
+}
+
+.list_elec_links {
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.search_results_table {
+  border: 1px solid #CFC7B0;
+}
+
+.record_page_elec_links {
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.electronic_links  {
+  border-bottom: 1px solid #CFC7B0;
+  display: block;
+  padding: 8px;
+  width: 100%;
 }
 
 /* ALMA DATA TABLE */
@@ -180,7 +202,7 @@ div.physical-holding-panel {
   border-bottom: 1px solid #CFC7B0;
 }
 
-table {
+table.border-bottom {
   border: 1px solid #CFC7B0;
   padding: 0 !important;
   margin: 0 !important;
