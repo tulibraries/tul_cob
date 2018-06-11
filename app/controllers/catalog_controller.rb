@@ -62,6 +62,8 @@ class CatalogController < ApplicationController
         "5<-2",
         URI.escape("6<90%")
           ],
+      "mm.autorelax" => "true",
+      lowercaseOperators: false,
       ps: "3",
       tie: "0.01",
       qf: %w[
