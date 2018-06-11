@@ -22823,6 +22823,7 @@
     <controlfield tag='001'>991012132499760614</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2='0' tag='246'>
+      <subfield code='i'>Subfield I.</subfield>
       <subfield code='a'>Dictionary of American history: 246.</subfield>
       <subfield code='b'>Subfield B.</subfield>
       <subfield code='f'>Subfield F.</subfield>
