@@ -59,7 +59,7 @@ module Blacklight::PrimoCentral
           value = blacklight_params["q_#{count}"]
           precision = blacklight_params["operator_#{count}"]
           field = blacklight_params["f_#{count}"]
-          operator = blacklight_params["op_#{count}"]
+          operator = blacklight_params["op_#{count}"] || "AND"
 
           if !value&.empty? && !value.nil?
             { value: value, field: field, precision: precision, operator: operator }
@@ -80,9 +80,9 @@ module Blacklight::PrimoCentral
         query = primo_central_parameters[:query][:q]
       end
 
-      q = Primo::Pnxs::Query.send(op, query)
+      pq = Primo::Pnxs::Query.send(op, query)
 
-      primo_central_parameters[:query][:q] = q
+      primo_central_parameters[:query][:q] = pq
 
       blacklight_params.fetch(:f, {})
         .merge(blacklight_params.fetch(:f_inclusive, {}))
