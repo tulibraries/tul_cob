@@ -493,6 +493,9 @@
    <!--field name="library_facet" type="string" indexed="true" stored="true" multiValued="true"/>
    <field name="subject" type="string" indexed="true" stored="true" multiValued="true"/ -->
 
+   <field name="record_creation_date" type="string" indexed="true" stored="true" multiValued="false"/>
+   <field name="record_update_date" type="string" indexed="true" stored="true" multiValued="false"/>
+
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields
         will be used if the name matches any of the patterns.
         RESTRICTION: the glob-like pattern in the name attribute must have
