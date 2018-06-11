@@ -211,3 +211,12 @@ to_field "absorbed_in_part_by_display", extract_marc("785|05|iabdghkmnopqrstuxyz
 to_field "split_into_display", extract_marc("785|06|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "merged_to_form_display", extract_marc("785|07|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", trim_punctuation: true)
+
+# Administrative data enrichment fields
+# a=create date, b=update date, c=Suppress from publishing, d=Originating system, e=Originating system ID, f=Originating system version
+to_field "record_creation_date", extract_marc("ADMa")
+to_field "record_update_date", extract_marc("ADMb")
+
+# each_record do |record, context|
+#   puts context
+# end
