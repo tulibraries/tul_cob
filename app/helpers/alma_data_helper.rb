@@ -3,6 +3,9 @@
 module AlmaDataHelper
   include Blacklight::CatalogHelperBehavior
 
+  PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
+
+
   def availability_status(item)
     if item.in_place?
       if item.non_circulating?
@@ -27,6 +30,16 @@ module AlmaDataHelper
   def description(item)
     if item.description.present?
       return "Description: " + item.description
+    end
+  end
+
+  def physical_material_type(item)
+    return  unless item.physical_material_type.present?
+
+    type = item.physical_material_type["value"].to_s
+
+    if !type.match(PHYSICAL_TYPE_EXCLUSIONS)
+      return item.physical_material_type["desc"]
     end
   end
 

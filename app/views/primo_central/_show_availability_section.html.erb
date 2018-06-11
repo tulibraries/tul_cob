@@ -1,16 +1,18 @@
 
 <div class="col-sm-12">
 <div id="record-view-iframe"  class="panel panel-default">
-  <div class="panel-heading">
+  <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading">Availability</h4>
   </div>
 
   <div class="online-border"></div>
   <div class="availability_iframe physical-holding-panel panel-body">
-    <h5>Online</h5>
-    <% availability_link_partials.each do |partial| %>
-      <%= render(partial) %>
-    <% end %>
+    <h5 class="online-panel-heading">Online</h5>
+    <div class="online-panel-body">
+      <% availability_link_partials.each do |partial| %>
+        <%= render(partial) %>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>

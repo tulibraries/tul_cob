@@ -19,8 +19,8 @@ before_script:
 - RAILS_ENV=test bundle exec rails webpacker:compile
 
 script:
-- bundle exec rake ci
 - bundle exec rubocop
+- bundle exec rake ci
 notifications:
   email:
     recipients:

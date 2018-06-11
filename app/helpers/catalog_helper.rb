@@ -6,22 +6,28 @@ module CatalogHelper
 
   def thumbnail_classes(document)
     classes = %w[thumbnail col-sm-3 col-lg-2]
-    document.fetch(:format, []).each do |format|
+    document.fetch(:format, []).compact.each do |format|
       classes << "#{format.parameterize.downcase.underscore}_format"
     end
     classes.join " "
   end
 
   def isbn_data_attribute(document)
-    value = document.fetch(:isbn_display, []).first
-    # Get the first ISBN and strip non-numerics
-    "data-isbn=#{value.gsub(/\D/, '')}" if value
+    values = document.fetch(:isbn_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-isbn=#{values}" if !values.empty?
   end
 
   def lccn_data_attribute(document)
-    value = document.fetch(:lccn_display, []).first
-    # Get the first ISSN and strip non-numerics
-    "data-lccn=#{value.first.gsub(/\D/, '')}" if value
+    values = document.fetch(:lccn_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-lccn=#{values}" if !values.empty?
   end
 
   def default_cover_image(document)
@@ -67,5 +73,27 @@ module CatalogHelper
   # Hack for Advanced search page
   def search_url_picker
     current_page?("/advanced") ? search_catalog_url : search_action_url
+  end
+
+  # Overridden because we want to use our merged @response["docs"] with docs
+  # from solr and primo together.
+  def current_bookmarks(response = nil)
+    response ||= @response
+    @current_bookmarks ||=
+      current_or_guest_user
+      .bookmarks_for_documents(@response["docs"] ||
+    response.documents).to_a
+  end
+
+  ##
+  # Overridden so that we can controll the number of pages from the controller.
+  #
+  # Look up the current per page value, or the default if none if set
+  #
+  # @return [Integer]
+  def current_per_page
+    (@response["rows"] if @response["rows"] && @response["rows"] > 0) ||
+      (@response.rows if @response && @response.rows > 0) ||
+      params.fetch(:per_page, default_per_page).to_i
   end
 end

@@ -34,9 +34,10 @@ module BentoSearch
 
     def conform_to_bento_result(item)
       BentoSearch::ResultItem.new(title: item.fetch("title_statement_display", []).first,
-        authors: item.fetch("creator_display", []).map { |author| BentoSearch::Author.new(display: author) },
+        authors: item.fetch("creator_display", []).map { |author| BentoSearch::Author.new(display: author.tr("|", " ")) },
         publisher: item.fetch("imprint_display", []).join(" "),
-        link: Rails.application.routes.url_helpers.solr_document_url(item["id"], only_path: true))
+        link: Rails.application.routes.url_helpers.solr_document_url(item["id"], only_path: true),
+        custom_data: item)
     end
   end
 end

@@ -138,7 +138,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#process_params!" do
     let(:params) { ActionController::Parameters.new(
-      "op_row" => ["bizz", "buzz", "bazz"],
+      "operator" => ["bizz", "buzz", "bazz"],
       "f_1" => "all_fields", "q_1" => "Hello",
       "f_2" => "all_fields", "q_2" => "Beautiful",
       "f_3" => "all_fields", "q_3" => "World",
@@ -178,7 +178,7 @@ RSpec.describe SearchBuilder , type: :model do
 
     it "handles a typical advanced search params as expected" do
       params = ActionController::Parameters.new(
-        "op_row" => ["bizz", "buzz", "bazz"],
+        "operator" => ["bizz", "buzz", "bazz"],
         "f_1" => "all_fields", "q_1" => "Hello",
         "f_2" => "all_fields", "q_2" => "Beautiful",
         "f_3" => "all_fields", "q_3" => "World",
@@ -199,9 +199,9 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     # REF BL-334
-    it "uses the last 3 values in op_row not all of it" do
+    it "uses the last 3 values in operator not all of it" do
       params = ActionController::Parameters.new(
-        "op_row" => ["foo", "foo", "foo", "bizz", "buzz", "bazz"],
+        "operator" => ["foo", "foo", "foo", "bizz", "buzz", "bazz"],
         "f_1" => "all_fields", "q_1" => "Hello",
         "f_2" => "all_fields", "q_2" => "Beautiful",
         "f_3" => "all_fields", "q_3" => "World",

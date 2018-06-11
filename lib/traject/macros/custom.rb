@@ -139,7 +139,7 @@ module Traject
               subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
             end
           end
-          subjects.flatten
+          subjects = subjects.flatten
           acc.replace(subjects)
           acc.uniq!
         end
@@ -345,6 +345,21 @@ module Traject
 
           rec.fields(["264"]).each do |field|
             acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          end
+        end
+      end
+
+      def extract_pub_datetime
+        lambda do |rec, acc|
+          rec.fields(["260"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil?
+          end
+
+          rec.fields(["264"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          end
+          if !acc.empty?
+            acc.replace [Date.ordinal(acc.first.to_i, 1).strftime("%FT%TZ")]
           end
         end
       end

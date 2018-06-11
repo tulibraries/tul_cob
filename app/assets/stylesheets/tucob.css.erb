@@ -6,6 +6,7 @@
   padding-top: 10px;
   padding-left: 7px;
 }
+
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
   color: #A50030;
 }
@@ -13,6 +14,7 @@
 h1[itemprop="name"] {
   font-size: 28px;
 }
+
 #search-navbar .container {
   padding-left: 0;
 }
@@ -21,21 +23,12 @@ h1.advanced.page-header a {
   display:none;
 }
 
-/* === FACETS === */
-#facet-panel-collapse .blacklight-availability_facet h3,
-div #facet-panel-collapse .blacklight-availability_facet  {
-  visibility: hidden;
-}
-div #facet-availability_facet .panel-body {
-  border-top: none !important;
-  visibility: visible;
-}
-
 /* === AEON REQUESTS === */
 
 .aeon-wrapper {
   display: table;
   margin-bottom: 20px;
+  margin-top: 20px;
   padding-bottom: 20px;
   width: 100%;
 }
@@ -145,7 +138,6 @@ div.online_resources {
 
 .online-border {
   border-bottom: 1px solid #ececec;
-  padding-bottom: 10px;
   padding-top: 0;
 }
 
@@ -166,6 +158,23 @@ div.physical-holding-panel {
   margin-top: 10px;
 }
 
+.online-panel {
+  margin: 0;
+  padding: 0;
+}
+
+.online-panel-heading {
+  background-color: #F1EFE8;
+  border-bottom: 1px solid #CFC7B0;
+  height: 40px;
+  margin: 0 0 15px 0;
+  padding: 10px;
+}
+
+.online-panel-body {
+  margin: 10px;
+}
+
 /* ALMA DATA TABLE */
 .border-bottom td, .border-bottom th {
   border-bottom: 1px solid #CFC7B0;
@@ -173,7 +182,11 @@ div.physical-holding-panel {
 
 table {
   border: 1px solid #CFC7B0;
+  padding: 0 !important;
+  margin: 0 !important;
+
 }
+
 .table-heading {
   background-color: #F1EFE8;
 }
@@ -182,6 +195,9 @@ table {
   display: block;
   max-height: 300px;
   overflow-y: scroll;
+  margin-right: -10px;
+  margin-bottom: 0 !important;
+
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -268,7 +284,7 @@ table {
   background-color: #fff!important;
 }
 #header-navbar .navbar-brand {
-   background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
+   background: transparent url(<%= asset_path 'library_logo.jpg' %>) no-repeat top left;
    margin-left: 7px;
   /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }

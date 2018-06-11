@@ -45,6 +45,45 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
   end
 
+  describe ".process_advanced_search" do
+    before(:example) do
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.process_advanced_search(primo_central_parameters)
+    end
+
+    context "the unknown" do
+      it "does not mess with non adavanced search " do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("*")
+      end
+    end
+
+    context "advanced search" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "properly sets a query to be a build query" do
+        expected = [{ "value" => "foo", "field" => nil, "precision" => nil, "operator" => nil }]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
+    context "empty advanced search" do
+      let(:params) { ActionController::Parameters.new(q_1: "") }
+
+      it "shouldn't bother building an empty advanced query" do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("*")
+      end
+    end
+
+    context "simple advanced search" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo", q_2: "") }
+
+      it "should skip empty advanced queries" do
+        expected = [{ "value" => "foo", "field" => nil, "precision" => nil, "operator" => nil }]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+  end
+
   describe ".set_query_field" do
     before(:example) do
       subject.add_query_to_primo_central(primo_central_parameters)

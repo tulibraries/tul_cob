@@ -446,3 +446,23 @@ language_041_g:
 language_041_j:
   doc_id: "991012132499760691"
   language: "Japanese English"
+single_online_resource:
+  doc_id: "991036817698903811"
+  title: "Computational Chemistry Theories, Methods and Applications"
+  format: "Book"
+  imprint: "Hauppauge : Nova Science Publishers, Inc., 2014."
+  date: "2014"
+  electronic_resource_display:
+    - "53395029150003811|EBSCOhost Academic eBook Collection (North America)"
+  availability_facet: "Online"
+multiple_online_resources:
+  doc_id: "991036805050403811"
+  title: "Tanzania : party transformation and economic development / Henry Bienen."
+  format: "Book"
+  imprint: "Princeton, New Jersey : Princeton University Press, 1970."
+  date: "1970"
+  electronic_resource_display:
+    - "53408990450003811|JSTOR Books EBA Pilot"
+    - "53424825710003811|Ebook Central University Press"
+    - "53395104810003811|EBSCOhost Academic eBook Collection (North America)"
+  availability_facet: "Online"

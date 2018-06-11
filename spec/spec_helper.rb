@@ -8,6 +8,22 @@ require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
 
+# Monkey patch at_exit to avoid travis build bug.
+# @see https://docs.travis-ci.com/user/common-build-problems/#Ruby%3A-RSpec-returns-0-even-though-the-build-failed
+# @see http://www.davekonopka.com/2013/rspec-exit-code.html
+if defined?(RUBY_ENGINE) && RUBY_ENGINE == "ruby" && RUBY_VERSION >= "1.9"
+  module Kernel
+    alias :__at_exit :at_exit
+    def at_exit(&block)
+      __at_exit do
+        exit_status = $!.status if $!.is_a?(SystemExit)
+        block.call
+        exit exit_status if exit_status
+      end
+    end
+  end
+end
+
 WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__
@@ -89,6 +105,8 @@ RSpec.configure do |config|
   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
   config.filter_run_when_matching :focus
 
+  config.filter_run_excluding relevance: true unless ENV["RELEVANCE"]
+
   # Allows RSpec to persist some state between runs in order to support
   # the `--only-failures` and `--next-failure` CLI options. We recommend
   # you configure your source control system to ignore this file.
@@ -131,8 +149,6 @@ RSpec.configure do |config|
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
 
-  config.fail_fast = 1
-
   # So we can test logged in users.
   require "warden"
   config.include Warden::Test::Helpers
@@ -146,4 +162,64 @@ VCR.configure do |config|
   config.default_cassette_options = {
     match_requests_on: [:method]
   }
+end
+
+if ENV["RELEVANCE"]
+  RSpec.configure do |config|
+    config.before(:suite) do
+      require "rake"
+      Rails.application.load_tasks
+      Rake::Task["fortytu:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
+    end
+  end
+end
+
+require "rspec/expectations"
+RSpec::Matchers.define :include_docs do |more_relevant_docs|
+  match do |actual|
+    ids = ids(actual)
+    # Find index of relevant docs in array of actual ids
+    # if any of the docs are not in the actual index (which returns nil), throw an exception
+    more_relevant_index_points = more_relevant_docs.map { |d| ids.index(d) }
+    raise ArgumentError.new("At least one of the more relevant docs was not in the results set") unless more_relevant_index_points.none?(&:nil?)
+
+    #grab the largest index
+    last_more_relevant_index = more_relevant_index_points.compact.max
+
+    # if we used the before chain method
+    if less_relevant_docs
+
+      # Find index of the less relevant docs in array of actual ids and grab the smallest index
+      # if none of the docs are in the actual index (which returns nil), set to 1 more than
+      # thu number of returned results
+      first_less_relevant_index = (
+        less_relevant_docs.map { |d| ids.index(d) }.compact.min ||
+        (actual.dig("response", "pages", "total_count") || 100) + 1)
+
+      # The last more relevant doc should have a smaller index
+      # than the firs less relevant doc
+      last_more_relevant_index < first_less_relevant_index
+
+    #if we used the within_the_first chain method
+    elsif within_index
+      last_more_relevant_index < within_index
+    end
+  end
+
+  chain :before, :less_relevant_docs
+
+  chain :within_the_first, :within_index
+
+  failure_message do |actual|
+    if less_relevant_docs
+      "expected that #{more_relevant_docs} would be appear before #{less_relevant_docs} in #{ids(actual)}"
+    elsif within_index
+      "expected that #{more_relevant_docs} would appear in the first #{within_index} docs"
+    end
+
+  end
+
+  def ids(actual)
+    (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
+  end
 end

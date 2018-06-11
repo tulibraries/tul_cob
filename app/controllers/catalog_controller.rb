@@ -20,7 +20,7 @@ class CatalogController < ApplicationController
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "dismax"
+    config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:fields_row_count] = 3
@@ -52,8 +52,9 @@ class CatalogController < ApplicationController
         title_uniform_display
         isbn_display
         lccn_display
+        url_finding_aid_display
       ].join(" "),
-      defType: "dismax",
+      defType: "edismax",
       echoParams: "explicit",
       rows: "10",
       mm: [
@@ -102,6 +103,11 @@ class CatalogController < ApplicationController
         subject_unstem_search^7500
         subject_topic_facet^6250
         subject_t^5000
+        note_toc_unstem_search~0^6000
+        note_summary_unstem_search~0^6000
+        note_toc_unstem_search^1000
+        note_summary_unstem_search^1000
+        creator_unstem_search~2^7500
         creator_unstem_search^2500
         creator_t^1000
         subject_addl_unstem_search^2500
@@ -164,6 +170,7 @@ class CatalogController < ApplicationController
       ].join(" "),
       facet: "true",
       spellcheck: "false",
+      bq: "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -247,13 +254,14 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_display", label: "Published"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
-
+    config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
     config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
@@ -327,10 +335,8 @@ class CatalogController < ApplicationController
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
-    config.add_show_field "lccn_display", label: "LCCN"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
-    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
 
