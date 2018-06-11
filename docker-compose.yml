@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
+      target: production
     container_name: "$ROPER_REPO_BRANCH"
     ports:
       - "3000"
