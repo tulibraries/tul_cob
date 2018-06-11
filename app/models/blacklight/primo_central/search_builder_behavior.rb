@@ -59,7 +59,7 @@ module Blacklight::PrimoCentral
           value = blacklight_params["q_#{count}"]
           precision = blacklight_params["operator_#{count}"]
           field = blacklight_params["f_#{count}"]
-          operator = blacklight_params["op_#{count}"] || "AND"
+          operator = blacklight_params["op_#{count}"]
 
           if !value&.empty? && !value.nil?
             { value: value, field: field, precision: precision, operator: operator }
