@@ -52,7 +52,7 @@ to_field "title_statement_display", extract_marc("245abcfgknps", alternate_scrip
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
 to_field "title_uniform_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: false)
 to_field "title_uniform_vern_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: :only)
-to_field "title_addl_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: false)
+to_field "title_addl_display", extract_marc("210ab:246iabfgnp:247abcdefgnp:740anp", alternate_script: false)
 to_field "title_addl_vern_display", extract_marc("210ab:246abfgnp:247abcdefgnp:740anp", alternate_script: :only)
 
 to_field "title_t", extract_marc_with_flank("245a")

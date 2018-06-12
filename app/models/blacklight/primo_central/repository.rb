@@ -11,6 +11,7 @@ module Blacklight::PrimoCentral
     # Execute a search against Primo PNXS API.
     def search(params = {})
       data = params[:query]
+
       duration =
         if data[:id]
           duration_for(:article_record_cache_life)

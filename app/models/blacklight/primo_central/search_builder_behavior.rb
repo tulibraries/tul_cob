@@ -80,9 +80,9 @@ module Blacklight::PrimoCentral
         query = primo_central_parameters[:query][:q]
       end
 
-      q = Primo::Pnxs::Query.send(op, query)
+      pq = Primo::Pnxs::Query.send(op, query)
 
-      primo_central_parameters[:query][:q] = q
+      primo_central_parameters[:query][:q] = pq
 
       blacklight_params.fetch(:f, {})
         .merge(blacklight_params.fetch(:f_inclusive, {}))
