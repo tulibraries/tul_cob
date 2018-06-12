@@ -13,6 +13,13 @@ module BentoSearch
       results(response).append(item)
     end
 
+    def results(response)
+      r = super response
+      r.total_items[:online_total] = 0
+      r
+    end
+
+
     def proc_minus_books_journals
       Proc.new { |builder|
         processor_chain = [ :no_books_or_journals ]
