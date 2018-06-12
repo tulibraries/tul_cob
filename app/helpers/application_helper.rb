@@ -218,7 +218,6 @@ module ApplicationHelper
       })
       link_to "View all #{total} ebooks", url, class: "full-results"
     when "more"
-      debugger
       ""
     when "articles"
       url = url_for(
