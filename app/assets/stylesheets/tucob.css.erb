@@ -279,10 +279,23 @@ table.border-bottom {
   display:inline-block;
   background-color: #fff;
 }
+#bookmarks-sendto {
+  display:inline-block;
+  background-color: #fff;
+}
 #sendto button {
   border: 0;
   background-color: #f1efe7;
   color: #A50030;
+}
+#bookmarks-sendto button {
+  border: 0;
+  background-color: #f1efe7;
+  color: #A50030;
+  padding: 8px 12px;
+}
+.clear-bookmarks {
+  display: inline-block;
 }
 #sendto-menu {
   background-color: #fff;
@@ -291,6 +304,13 @@ table.border-bottom {
   background-color: #fff;
   width: 111px;
 }
+#bookmarks-sendto .dropdown-menu {
+  background-color: #fff;
+  width: 111px;
+  top:auto;
+  left:auto;
+}
+
 #sendto ul {
   float:none;
   position:relative;
@@ -303,7 +323,11 @@ table.border-bottom {
   width: 100%;
 }
 .sendto-item a {
-  padding-left: 2px!important;
+  /*padding-left: 2px!important;*/
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 2em;
 }
 .sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
   color: #A50030!important;
@@ -326,6 +350,14 @@ ul.navbar-nav {
 }
 #tools-navbar {
 
+}
+.bookmarks-tools #tools-navbar {
+  display:inline-block;
+  padding-left: 14px;
+}
+.bookmarks-sort-and-per-page {
+  padding: 0;
+  margin-bottom:0;
 }
 #tools-navbar li, #tools-navbar li a {
   display: inline-block;
@@ -440,6 +472,20 @@ ul.navbar-nav {
     border-radius: 0;
     margin-bottom: 2px;
     padding-left: 10px;
+  }  
+  .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
+    display: block;
+    width: 100%;
+    color: #A50030!important;
+    background-color: transparent!important;
+    border-radius: 0;
+    margin-bottom: 2px;
+    padding-left: 10px;
+  }
+  #bookmarks-sendto .dropdown-menu {
+    position: absolute;
+    top: auto!important;
+    left: auto!important;
   }
   .nav-tools div.toggle_bookmark {
     padding-top: 0;
