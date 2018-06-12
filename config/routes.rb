@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
+  post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
 
   resources :users, only: [:index] do
