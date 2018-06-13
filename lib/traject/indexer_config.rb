@@ -34,7 +34,7 @@ settings do
   # set this to be non-negative if threshold should be enforced
   provide "solr_writer.max_skipped", -1
   # extend commit timeout
-  provide "solr_writer.commit_timeout", 300
+  provide "solr_writer.commit_timeout", (15 * 60)
   provide "solr.url", solr_url
   provide "solr_writer.commit_on_close", "false"
 end
