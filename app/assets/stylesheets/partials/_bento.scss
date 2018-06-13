@@ -73,23 +73,28 @@
 	margin: 10px;
 }
 
-.total-results {
+.total-results,
+.online-only {
 	background-color: white;
 	border-radius: 0 0 10px 10px;
 	padding: 10px;
 }
 
-.total-results p {
+.total-results p,
+.online-only p,
+{
 	color: #A50030;
 	font-weight: bold;
 }
 
 .total-results a,
+.online-only a,
 .bento_item_title a {
 	text-decoration: underline;
 }
 
 .total-results a:hover,
+.online-only a:hover,
 .bento_item_title a:hover {
 	text-decoration: none;
 }
@@ -105,4 +110,12 @@
 .bento-avail-btn:hover,
 .bento-avail-btn:visited {
  	color: white;
+}
+
+.bento-results {
+	margin: 0 5%;
+}
+
+.more .online-only {
+  display: none;
 }

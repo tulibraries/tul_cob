@@ -27,6 +27,11 @@ RSpec.feature "Bento Availability" do
         link_tag = find("a.bento-avail-btn")
         expect(link_tag[:href]).to eq(electronic_resource_url)
       end
+
+      within first("div.bento-search-engine") do
+        expect(page).to have_link("View all 1 books")
+        expect(page).to have_link("View all 1 ebooks")
+      end
     end
 
     scenario "Items with multiple links go to record page" do
