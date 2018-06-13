@@ -3,6 +3,8 @@
 class UsersController < ApplicationController
   before_action :require_admin!, only: [:index]
   before_action :require_non_production!, only: [:index]
+  before_action :set_user, only: [:account]
+
 
   def require_admin!
     redirect_to root_path unless current_user && current_user.admin
@@ -35,17 +37,17 @@ class UsersController < ApplicationController
     @fines = current_user.get_fines
   end
 
-  def loans
-    @items = current_user.get_loans
-  end
-
-  def holds
-    @items = current_user.get_holds
-  end
-
-  def fines
-    @items = current_user.get_fines
-  end
+  # def loans
+  #   @items = current_user.get_loans
+  # end
+  #
+  # def holds
+  #   @items = current_user.get_holds
+  # end
+  #
+  # def fines
+  #   @items = current_user.get_fines
+  # end
 
   def renew
     lib_user = Alma::User.find(user_id: current_user.uid)
