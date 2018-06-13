@@ -4,10 +4,6 @@
 	margin-bottom: 28px;
 }
 
-.bento_box.row {
-	margin-left: 22%;
-}
-
 .span4 {
 	width: 46%;
 	border: solid $light-grey 1px;
@@ -24,6 +20,11 @@
 		font-size: 24px;
 		height: 50px;
 		padding: 12px;
+}
+
+.bento_compartment h3 {
+	font-size: 20px;
+	padding-left: 15px;
 }
 
 .blacklight-search {

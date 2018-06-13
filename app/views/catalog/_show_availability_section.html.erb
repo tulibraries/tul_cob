@@ -12,25 +12,21 @@
     <% if field_name == 'electronic_resource_display' %>
 
       <div class="panel-body online-panel">
-        <h5>Online</h5>
-        <dd class="blacklight-<%= field_name.parameterize %>">
-          <ul>
-            <% doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+        <h5 class="online-panel-heading">Online</h5>
+          <table class="record_page_elec_links">
             <% values = Array.wrap(doc_presenter.field_value field_name) %>
             <% values.each do |value| %>
-              <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+            <tr>
+              <td class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+            </tr>
             <% end %>
-          </ul>
-        </dd>
+          </table>
       </div>
       <% end %>
     <% end %>
   <% end %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <% if document.fetch("availability_facet", []).include?("At the Library") && document.fetch("availability_facet", []).include?("Online") %>
-      <div class="online-border"></div>
-    <% end %>
     <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
       <div data-target="show.panel" class="panel-content" >
         <div data-target="show.spinner" class="spinner">

@@ -58,13 +58,13 @@ module ApplicationHelper
       else
         electronic_resource_link_builder(field)
       end
-    }.join("<br />").html_safe
+    }.join("").html_safe
   end
 
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "list_items")
+    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
     new_link
   end
 
@@ -95,7 +95,7 @@ module ApplicationHelper
   def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
     item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
     item_html = item_parts.compact.join(" - ").html_safe
-    content_tag(:li, item_html , class: "list_items")
+    content_tag(:td, item_html , class: " electronic_links list_items")
   end
 
   def electronic_resource_link_builder(field)
