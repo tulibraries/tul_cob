@@ -2,10 +2,10 @@
     <% if @results %>
       <div class="row bento-results">
 
-        <% @results.each_pair do |key, result| %>
-          <% unless key == "more" && result.first.custom_data.dig("response","numFound") == 0 %>
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment <%= key %>">
-                  <h2><%= bento_icons(key) %><%= key.titleize %> </h2>
+        <% @results.each_pair do |engine_id, result| %>
+          <% unless engine_id == "more" && total_items(result) == 0 %>
+          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment <%= engine_id %>">
+                  <h2><%= bento_icons(engine_id) %><%= engine_id.titleize %> </h2>
                   <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
                       <%= bento_search result %>
                   <% end %>
