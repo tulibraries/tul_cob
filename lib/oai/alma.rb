@@ -12,13 +12,16 @@ module Oai
     # +time_range+:: Optinoal hash containing +:from+ (start) and +:to+ (end) time in ISO8601.
     def self.harvest(time_range)
       log_path = File.join(Rails.root, "log/fortytu.log")
-      logger = Logger.new(log_path, 10, 1024000)
+      logger = Logger.new("| tee #{log_path}", 10, 1024000)
 
       from_time = time_range.fetch(:from) { "" }
       to_time = time_range.fetch(:to) { "" }
-      oai_url = "https://sandbox01-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&set=blacklight&metadataPrefix=marc21"
-      oai_url << "&from=#{from_time}" unless from_time.empty?
-      oai_url << "&to=#{to_time}" unless to_time.empty?
+      oai_from = from_time.empty? ? from_time : "&from=#{from_time}"
+      oai_to = to_time.empty? ? to_time : "&until=#{to_time}"
+      oai_url_base = "https://temple.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?"
+      oai_url = oai_url_base +
+        "verb=ListRecords&set=blacklight&metadataPrefix=marc21" +
+        oai_from + oai_to
 
       harvest_files = []
 
@@ -35,7 +38,8 @@ module Oai
           harvest_files << harvest_file.path
           resumptionToken = oai.xpath("//oai:resumptionToken", "oai" => "http://www.openarchives.org/OAI/2.0/", "marc21" => "http://www.loc.gov/MARC21/slim")
           break if resumptionToken.empty?
-          oai_url = "https://sandbox02-na.alma.exlibrisgroup.com/view/oai/01TULI_INST/request?verb=ListRecords&resumptionToken=#{resumptionToken.text}"
+          oai_url = oai_url_base +
+            "verb=ListRecords&resumptionToken=#{resumptionToken.text}"
         end
       rescue => e
         logger.fatal("Fatal Error")
@@ -46,7 +50,7 @@ module Oai
 
     def self.conform(harvest_filename)
       log_path = File.join(Rails.root, "log/fortytu.log")
-      logger = Logger.new(log_path, 10, 1024000)
+      logger = Logger.new("| tee #{log_path}", 10, 1024000)
       begin
         oai = Nokogiri::XML(File.open(harvest_filename))
         updated_records = oai.xpath("//oai:record/oai:metadata/marc21:record",

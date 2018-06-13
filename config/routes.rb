@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => "/"
   mount BentoSearch::Engine => "/bento"
 
-
   # resource and resources
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
@@ -31,6 +30,13 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
+
+  resources :primo_central_documents, only: [:show], path: "/articles", controller: "primo_central" do
+    concerns :exportable
+  end
+
+  post "catalog/:id/track" => "catalog#track"
+  post "articles/:id/track" => "primo_central#track", as: :track_primo_central
 
   resources :users, only: [:index] do
     post :impersonate, on: :member
@@ -58,8 +64,9 @@ Rails.application.routes.draw do
   end
 
   # gets
-  get "bento" => "search#index"
   get "bento" => "search#index", :as => "multi_search"
+  get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
+  get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
 
 
   #
@@ -70,18 +77,17 @@ Rails.application.routes.draw do
   # too, without removing root_url and root_path helpers. oddly, repeating
   # root seems to work.
 
+  get "almaws/item/:mms_id", to:  "almaws#item", as: "item"
+
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
   end
 
-  get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-  # NOTE: Will not run unless `_solr_document` is added to the `as:` option. Doesn't match up with https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
-  get "/catalog/:id/message" => "catalog#message", as: "message_solr_document"
-  post "/catalog/:id/message", to: "catalog#message_action"
 
   # matches
   match "/404", to: "errors#not_found", via: :all
   match "/500", to: "errors#internal_server_error", via: :all
+  match "/articles", to: "primo_central#index", as: "search", via: [:get, :post]
 
   Blacklight::Marc.add_routes(self)
 

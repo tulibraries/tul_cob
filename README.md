@@ -2,8 +2,10 @@
 
 A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
 
+[![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
 
 ## Getting started
+
 
 ### Install the Application
 This only needs to happen the first time.
@@ -53,7 +55,12 @@ set of example data, you can run
 
 `bundle exec rake server`
 
-It will start up solr_wrapper, ingest a few hundred sample records, and start the rails server.
+It will start up solr_wrapper and start the rails server.
+
+You can also have it ingest a few thousand sample records by setting the
+`DO_INGEST` environment variable to any value. For example:
+
+`DO_INGEST="true" bundle exec rake server`
 
 
 ### Preparing Alma Data
@@ -77,17 +84,17 @@ The simplest way to ingest a marc data file into your local solr is with the `in
 bundle exec rake ingest
 ```
 
-You can also pass in ther path to a separate file you would like to ingest as a parameter
+You can also pass in their path to a separate file you would like to ingest as a parameter
 
 ```bash
 bundle exec rake ingest[/some/other/path.xml]
 ```
 
 
-Under the hood, that command uses [traject](https://github.com/traject/traject), with hard coded defaults. If you need to override a default to ingest your data, You can call traject directly: 
+Under the hood, that command uses [traject](https://github.com/traject/traject), with hard coded defaults. If you need to override a default to ingest your data, You can call traject directly:
 
 ```bash
-bundle exec traject -s solr.url=http://somehere/solr -c app/models/traject_indexer.rb sample_data/alma_bibs.xml
+bundle exec traject -s solr.url=http://somehere/solr -c lib/traject/indexer_config.rb sample_data/alma_bibs.xml
 ```
 
 If using docker, then ingest using `docker-compose exec app traject -c app/models/traject_indexer.rb sample_data/alma_bibs.xml`.
@@ -106,7 +113,87 @@ bundle exec rake fortytu:oai:ingest_all
 
 ## Running the Tests
 
+`bundle exec rake ci` will start solr, clean out all solr records, ingest the
+test records, and run your test suite.
 
-`bundle exec rake ci`
+`bundle exec rake rspec` will start your solr and run your test suite, assuming
+you already have the test records in your test solr.
 
-This will spin up a test solr instance, import a few hundred records, and run the test suite.
+The `rake rspec` rake task can also take any `rspec` command line parameters, for
+example to [use a seed to determine order](https://relishapp.com/rspec/rspec-core/v/3-7/docs/command-line/order) , you can run:
+
+`bundle exec rake rspec["--seed=12345"]`
+
+### Relevance Tests
+
+#### Running relevance tests
+
+Relevance tests are run separate from other tests, to avoid loading tens of thousands of
+MARC records every time test run. To run relevance tests along with regular tests
+just preface any test running command with `RELEVANCE=y`.(y or any other character)
+for example:
+
+`RELEVANCE=y bundle exec rake ci`
+
+This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
+and will run all `describe`/`context` blocks that have the `relevance: true` option. 
+
+#### Creating new relevance tests
+By convention,these tests exist in (`spec/relevance/`)[https://github.com/tulibraries/tul_cob/tree/master/spec/relevance].
+
+When creating a new test, be sure to pass the `relevance: true` option to the wrapping `describe`, as in
+
+```ruby
+RSpec.describe CatalogController, type: :controller, relevance: true do
+#lots of expectations
+...
+end
+```
+
+You can also tak advantage of some custom Rspec matchers to make checking for documents easier.
+
+`include_docs(array_of_doc_ids)` - Check that the expected ids are in the first set of results
+
+```
+# fetch the json solr response from Blacklight index and parse it
+let(:response) { JSON.parse(get(:index, params: { q: "SEARC TERM", per_page: 100 }, format: "json").body) }
+
+it "has expected results " do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+end
+```
+
+You can also chain extra matchers onto `include_docs` for more precision:
+
+`before([other_array_doc_ids])` - second array of IDs that should come after set you expect included
+```
+it "has expected results before a less relevant result" do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+    .before(["991036813237303811"])
+end
+```
+
+`within_the_first(integer)` - the included docs should appear before this number in the results array index 
+```
+it "has expected results within the first 20 results" do
+  expect(response)
+    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
+    .within_the_first(20)
+end
+```
+
+#### Getting relevance tests examples
+
+A utility has been added to fetch records for example queries. It takes the URL from a known
+search in an existing blacklight (probably libqa), downloads the marcxml for each record
+and adds them all to a file. By default, it saves to `marc_from_query.xml` locally, but you
+can also provide a path  and filename with the `--save_to` command line flag.
+
+```
+./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" \ 
+--save_to=spec/relevance/fixtures/contingent+labor.xml
+```
+
+

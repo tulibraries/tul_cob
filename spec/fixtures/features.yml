@@ -30,7 +30,7 @@ title_addl_210:
   title_addl_vern: "Title Additional Vern."
 title_addl_246:
   doc_id: "991012132499760614"
-  title_addl: "Dictionary of American history: 246. Subfield B. Subfield F. Subfield G. Subfield N. Subfield P."
+  title_addl: "Subfield I. Dictionary of American history: 246. Subfield B. Subfield F. Subfield G. Subfield N. Subfield P."
 title_addl_247:
   doc_id: "991012132499760615"
   title_addl: "Dictionary of American history: 247. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield N. Subfield P."
@@ -48,10 +48,10 @@ creator_110:
   creator: "Dictionary of American history: 110. Subfield B. Subfield D. Subfield C. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T"
 creator_111:
   doc_id: "991012132499760619"
-  creator: "Dictionary of American history: 111. Subfield N. Subfield D. Subfield C. Subfield J. Subfield E.  Subfield L. Subfield O. Subfield P. Subfield T"
+  creator: "Dictionary of American history: 111. Subfield N. Subfield D. Subfield C. Subfield J. Subfield E. Subfield L. Subfield O. Subfield P. Subfield T"
 contributor_700:
   doc_id: "991012132499760620"
-  creator: "Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
+  creator: "Subfield I. Dictionary of American history: 700. Subfield B. Subfield C. Subfield D. Subfield E. Subfield J. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield T. Subfield U."
 contributor_710:
   doc_id: "991012132499760621"
   creator: "Dictionary of American history: 710. Subfield B. Subfield C. Subfield D. Subfield E. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield T."
@@ -125,11 +125,11 @@ title_series_800:
   title_series_vern: "مطبوعات المجمع؛."
 title_series_810:
   doc_id: "991012171179703811"
-  title_series: "United States. Congress. Senate. Subfield d. Subfield e.  Subfield g. Subfield h. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
+  title_series: "United States. Congress. Senate. Subfield d. Subfield e. Subfield g. Subfield h. Subfield k. Subfield l. Subfield m. Subfield n. Subfield o. Subfield p. Subfield r. Subfield s. Executive report ; Subfield u. 109-5."
   title_series_vern: "مطبوعات المجمع؛."
 title_series_811:
   doc_id: "991012177359703811"
-  title_series: "United States. Senate. Subfield d. Subfield e. Subfield f.  Subfield g. Subfield h. Subfield j. Subfield k. Subfield l.  Subfield n. Subfield p. Subfield q. Subfield s. Executive report ; Subfield u. 109-5."
+  title_series: "United States. Senate. Subfield d. Subfield e. Subfield f. Subfield g. Subfield h. Subfield j. Subfield k. Subfield l. Subfield n. Subfield p. Subfield q. Subfield s. Executive report ; Subfield u. 109-5."
   title_series_vern: "مطبوعات المجمع؛."
 duration_306:
   doc_id: "991012132499760632"
@@ -277,10 +277,10 @@ note_local_590:
   note_local: "Dictionary of American history: 590."
 subject_600:
   doc_id: "991012132499760670"
-  subject: "Dictionary of American history: 600.  — Subfield B.  — Subfield C.  — Subfield D.  — Subfield E.  — Subfield F.  — Subfield G.  — Subfield H.  — Subfield K.  — Subfield L.  — Subfield M.  — Subfield N.  — Subfield O.  — Subfield P.  — Subfield Q.  — Subfield R.  — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."
+  subject: "Dictionary of American history: 600. — Subfield B. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield K. — Subfield L. — Subfield M. — Subfield N. — Subfield O. — Subfield P. — Subfield Q. — Subfield R. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."
 subject_610:
   doc_id: "991012132499760671"
-  subject: "Dictionary of American history: 610. — Subfield B. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield K. — Subfield L. — Subfield M. — Subfield N. — Subfield O. — Subfield P. — Subfield R. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y.  — Subfield Z."
+  subject: "Dictionary of American history: 610. — Subfield B. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield K. — Subfield L. — Subfield M. — Subfield N. — Subfield O. — Subfield P. — Subfield R. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."
 subject_611:
   doc_id: "991012132499760672"
   subject: "Dictionary of American history: 611. — Subfield C. — Subfield D. — Subfield E. — Subfield F. — Subfield G. — Subfield H. — Subfield J. — Subfield K. — Subfield L. — Subfield N. — Subfield P. — Subfield Q. — Subfield S. — Subfield T. — Subfield U. — Subfield V. — Subfield X. — Subfield Y. — Subfield Z."
@@ -405,6 +405,14 @@ url_856_more_1:
   doc_id: "991012132499760729"
   url: "table of contents"
   url_href: "http://www.loc.gov/catdir/toc/ecip0413/2004001291.html"
+url_856_more_3:
+  doc_id: "991034281219703811"
+  url: "View preserved website versions on Archive-It"
+  url_href: "https://archive-it.org/collections/4487"
+url_856_4:
+  doc_id: "991034281219703811"
+  url: "View a description and list of collection contents in the online finding aid"
+  url_href: "http://library.temple.edu/scrc/occupy-philadelphia-records"
 rarestacks:
   doc_id: "991012036369703811"
   library: "Special Collections Research Center"
@@ -438,3 +446,23 @@ language_041_g:
 language_041_j:
   doc_id: "991012132499760691"
   language: "Japanese English"
+single_online_resource:
+  doc_id: "991036817698903811"
+  title: "Computational Chemistry Theories, Methods and Applications"
+  format: "Book"
+  imprint: "Hauppauge : Nova Science Publishers, Inc., 2014."
+  date: "2014"
+  electronic_resource_display:
+    - "53395029150003811|EBSCOhost Academic eBook Collection (North America)"
+  availability_facet: "Online"
+multiple_online_resources:
+  doc_id: "991036805050403811"
+  title: "Tanzania : party transformation and economic development / Henry Bienen."
+  format: "Book"
+  imprint: "Princeton, New Jersey : Princeton University Press, 1970."
+  date: "1970"
+  electronic_resource_display:
+    - "53408990450003811|JSTOR Books EBA Pilot"
+    - "53424825710003811|Ebook Central University Press"
+    - "53395104810003811|EBSCOhost Academic eBook Collection (North America)"
+  availability_facet: "Online"

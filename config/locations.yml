@@ -1,21 +1,172 @@
-
 default: &default
-  MAIN: "Paley Library"
-  AMBLER: "Ambler Campus Library"
-  BLOCKSON: "Blockson Collection"
-  CLAEDTECH: "CLA Ed Tech Library"
-  GINSBURG: "Ginsburg Health Science Library"
-  HARRISBURG: "Harrisburg Campus Library"
-  JAPAN: "Japan Campus Library"
-  KARDON: "Remote Storage"
-  LAW: "Law Library"
-  MEDIA: "Media Services"
-  PODIATRY: "Krausz Library of Podiatric Medicine"
-  PRESSER: "Presser Music Library"
-  RES_SHARE: "Resource Sharing Library"
-  ROME: "Rome Campus Library"
-  SCRC: "Special Collections Research Center"
-  EMPTY: "Other"
+  AMBLER:
+    aarc: Ambler Archives Collection
+    imc: IMC
+    intref: Internal Reference
+    aleisure: Ambler Leisure Reading
+    media: Ambler Media
+    micro: Ambler Microform
+    newbooks: New Books Shelf
+    orders: Ambler Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    stacks: Stacks
+    UNASSIGNED: Location information not available
+  BLOCKSON:
+    orders: Blockson Afro-American Collection
+    rarestacks: Reading Room
+    UNASSIGNED: Location information not available
+  CLAEDTECH:
+    media: Media
+    reserves: Reserves
+    UNASSIGNED: Location information not available
+  DSC:
+    DSC: Equipment
+    UNASSIGNED: Location information not available
+  GINSBURG:
+    circ: Circulation Collection
+    intref: Internal Reference
+    leisure: Leisure Reading
+    medhum: Medical Humanities
+    orders: Ginsburg Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    techserv: Technical Services
+    UNASSIGNED: Location information not available
+  HARRISBURG:
+    intref: Internal Reference
+    harrisburg: Harrisburg Library
+    media: Media
+    orders: Harrisburg Library
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    stacks: Stacks
+    UNASSIGNED: Location information not available
+  RES_SHARE:
+    OUT_RS_REQ: Borrowing Resource Sharing Requests
+    IN_RS_REQ: Lending Resource Sharing Requests
+  JAPAN:
+    media: Media
+    osaka: Osaka Collection
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    remote: Closed Stacks
+    UNASSIGNED: Location information not available
+  LAW:
+    closestack: Closed Stacks - Ask At Desk
+    oversize2: Closed Stacks - Ask At Desk
+    web: Online Access
+    media: Media
+    micro: Microform
+    open3: Open Stacks - 3
+    open3a: Open Stacks - 3A
+    open4: Open Stacks - 4
+    open4a: Open Stacks - 4A
+    open5: Open Stacks - 5
+    open5a: Open Stacks - 5A
+    open6a: Open Stacks - 6A
+    govdoc: Open Stacks - 7
+    oversize5a: Open Stacks - Oversize - 5A
+    orders: Law Library
+    rarestacks: Remote
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    archives: Archives - Ask At Desk
+    trials: Special Collections - Ask At Desk
+    hirst: Special Collections - Ask At Desk
+    specintl: Special Collections - Ask At Desk
+    pamphlets: Special Collections - Ask At Desk
+    specpa: Special Collections - Ask At Desk
+    rawle: Special Collections - Ask At Desk
+    rawle3: Special Collections - Ask At Desk
+    stacks: Stacks
+    UNASSIGNED: Location information not available
+  MEDIA:
+    dsc: Digital Scholarship Center
+    media: Media
+    reserve: Reserves
+    micro: Microform
+    orders: Media Services
+    msequip: Location information not available
+    zmedia: deleted location
+    zpaley: deleted location
+    UNASSIGNED: Location information not available
+  MAIN:
+    serials: Journals
+    govdocmicr: Government Doc Microforms
+    govdoc: Government Documents
+    govweb: Government Doc Web
+    ILL: Inter-Library Loan
+    intref: Internal Reference
+    leisure: Leisure Reading
+    micro: Microform
+    orders: Paley Library
+    rarestacks: Remote
+    reference: Paley Reference
+    reserve: Reserves
+    stacks: Stacks
+    techserv: Technical Services
+    psof2: Flat Shelving
+    psof3: Flat Shelving
+    zpaley: Paley News Center
+    psov2: Oversize Stacks
+    psov3: Oversize Stacks
+    UNASSIGNED: 'Problem: See Library Staff'
+    remote: Location information not available
+    zdelete: Deleted Location
+    zbio: deleted location
+    zchem: deleted location
+    zmath: deleted location
+    zsel: deleted location
+    ztyler: deleted location
+    zzahn: deleted location
+    web: Available Online
+  PODIATRY:
+    intref: Internal Reference
+    media: Media
+    orders: Podiatry Library
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    techserv: Technical Services
+    UNASSIGNED: Location information not available
+  PRESSER:
+    presser: Learning Center
+    plc: Listening Library
+    zpresser: deleted location
+    UNASSIGNED: Location information not available
+  KARDON:
+    a_rare: Remote Storage, Ambler
+    b_rare: Remote Storage, Blockson
+    g_remote: Remote Storage, Ginsburg
+    l_remote: Remote Storage, Law
+    p_govdocmf: Remote Storage, Paley Government Documents
+    p_GovDocs: Remote Storage, Paley Government Documents
+    p_media: Location information not available
+    p_micro: Location information not available
+    p_remote: Remote Storage, Paley
+  ROME:
+    exhibit: Exhibits
+    fiction: Fiction
+    media: Media
+    oversize: Oversize Stacks
+    reference: Reference
+    reserve: Reserves
+    serials: Journals
+    stacks: Stacks
+    UNASSIGNED: Location information not available
+  SCRC:
+    rarestacks: Reading Room
+    UNASSIGNED: Location information not available
 
 test:
   <<: *default

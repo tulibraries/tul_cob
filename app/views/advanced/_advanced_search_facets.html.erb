@@ -2,17 +2,17 @@
 <% facets_from_request(facet_field_names).each do |display_facet| %>
 
   <div class="form-group advanced-search-facet row">
-    <%= label_tag display_facet.name.parameterize, :class => "col-sm-2 control-label" do %>
+    <%= label_tag display_facet.name.parameterize, class: "col-sm-2 control-label" do %>
       <%= facet_field_label(display_facet.name) %>
     <% end %>
     <div class="col-sm-5">
-      <%= content_tag(:select, :multiple => true,
-        :name   => "f_inclusive[#{display_facet.name}][]",
-        :id     => display_facet.name.parameterize,
-        :class  => "form-control custom-select chosen-select",
+      <%= content_tag(:select, multiple: true,
+        name: "f_inclusive[#{display_facet.name}][]",
+        id: display_facet.name.parameterize,
+        class: "form-control custom-select chosen-select",
         data: { placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
         <% display_facet.items.each do |facet_item| %>
-          <%= content_tag :option, :value => facet_item.value, :selected => facet_value_checked?(display_facet.name, facet_item.value) do %>
+          <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
             <%= facet_display_value(display_facet.name, facet_item.label) %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
           <% end %>
         <% end %>
@@ -25,19 +25,23 @@
 <div class="row">
 
     <div class="col col-sm-2 control-label">
-      <%= label_tag "publication_date" do %>
+      <%= label_tag "range_pub_date_sort_begin" do %>
         Publication Year
       <% end %>
     </div>
     <div class="col col-sm-8">
     <div class="col col-sm-3 pub-date">
+      <span class="sr-only">Publication date range (starting year)</span>
       <%= render_range_input("pub_date_sort", :begin) %>
     </div>
-    <div class="col col-sm-1 pub-date-separator"> 
-     to 
+    <div class="col col-sm-1 pub-date-separator">
+      <%= label_tag "range_pub_date_sort_end" do %>
+        to
+      <% end %>
     </div>
     <div class="col col-sm-3 pub-date">
-       <%= render_range_input("pub_date_sort", :end) %>
+      <span class="sr-only">Publication date range (ending year)</span>
+      <%= render_range_input("pub_date_sort", :end) %>
     </div>
   </div>
 </div>

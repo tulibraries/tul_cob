@@ -15,10 +15,12 @@ before_script:
 - cp config/bento.yml.example config/bento.yml
 - RAILS_ENV=test bundle exec rake db:migrate
 - RAILS_ENV=test bundle exec rake db:seed
+- RAILS_ENV=test bundle exec yarn
+- RAILS_ENV=test bundle exec rails webpacker:compile
 
 script:
-- bundle exec rake ci
 - bundle exec rubocop
+- RELEVANCE=y bundle exec rake ci
 notifications:
   email:
     recipients:

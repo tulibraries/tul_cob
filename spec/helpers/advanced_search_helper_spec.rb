@@ -1,13 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-module BlacklightAdvancedSearch
-  module RenderConstraintsOverride
-    def search_field_def_for_key(key)
-      nil
-    end
-  end
-end
 
 RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helper do
   describe "#guided_search" do
@@ -15,44 +8,41 @@ RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helpe
     example "empty search fields" do
       expect(helper.guided_search).to be_empty
     end
+  end
 
-    example "one search field" do
-      params = ActionController::Parameters.new(
-        f1: "all_fields",
-        search_field: "advanced",
-        q1: "james"
-      )
-      expect(helper.guided_search(params).count).to eq(1)
+  describe ".operator_default" do
+    example "default" do
+      expect(helper.operator_default(2)).to eq("contains")
     end
 
-    example "two search fields" do
+    # REF BL-334
+    example "two consecutive searches" do
       params = ActionController::Parameters.new(
-        f1: "all_fields",
-        search_field: "advanced",
-        q1: "james",
-        f2: "all_fields",
-        q2: "james",
-        op2: "OR"
+        q_1: "james",
+        q_2: "john",
+        q_3: "david",
+        operator: [ "fizz", "fizz", "fizz", "foo", "bar", "bum" ]
       )
-      expect(helper.guided_search(params).count).to eq(2)
-    end
+      allow(helper).to receive(:params).and_return(params)
 
-    it "can handle more than the number of fields defined (current is 3)" do
-      params = ActionController::Parameters.new(
-        f1: "all_fields",
-        search_field: "advanced",
-        q1: "james",
-        f2: "all_fields",
-        q2: "john",
-        op2: "OR",
-        f3: "all_fields",
-        q3: "david",
-        op3: "OR",
-        f4: "all_fields",
-        q4: "summer",
-        op4: "OR"
-      )
-      expect(helper.guided_search(params).count).to eq(4)
+      expect(helper.operator_default(2)).to eq("bar")
+    end
+  end
+
+end
+
+RSpec.describe AdvancedHelper, type: :helper do
+
+  describe "label_tag_default_for" do
+    example "basic search to search" do
+      params = {
+        "search_field" => "First Name",
+        "q" => "james"
+      }
+      allow(helper).to receive(:params).and_return(params)
+
+      expect(helper.label_tag_default_for("q_1")).to eq("james")
+      expect(helper.label_tag_default_for("f_1")).to eq("First Name")
     end
   end
 end

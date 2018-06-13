@@ -1,23 +1,17 @@
 @import "_vars.scss";
 
 #footer {
-	position: relative;
-	clear: left;
-	margin-top: 210px;
+	width: 100%;
 }
 
 #site-footer {
 	background-color:#222222;
 	border-top: solid #303030 1.4rem;
-	padding-bottom:0;
-	width:100%;
 	color:#fff!important;
 	font-family: droid, sans;
 	margin-top: 32px;
 	width: 100%;
 	height: 100%;
-	position: absolute;
-	bottom: 0;
 	color: #666;
 	a {
 		color: #903
@@ -41,7 +35,7 @@
 			padding-left: 42px;
 			width:35%;
 			display:inline-block;
-			background:url('http://web.temple.edu/sites/web.temple.edu/themes/web_communication_theme/images/web-communications-footer-icon-location.png') no-repeat 5px 9px transparent;
+			background:asset-data-url('location.png') no-repeat 5px 9px transparent;
 			@media only screen and (max-width : 650px) {
 		    padding-left: 6%;
 		    width: 100%;

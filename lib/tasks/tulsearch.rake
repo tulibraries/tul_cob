@@ -6,12 +6,13 @@ namespace :fortytu do
   namespace :solr do
 
     desc "Posts fixtures to Solr"
-    task :load_fixtures do
-      Dir.glob("spec/fixtures/*.xml").sort.reverse.each do |file|
-        `traject -c app/models/traject_indexer.rb #{file}`
+    task :load_fixtures, [:filepath] do |t, args|
+      fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
+      Dir.glob(fixtures).sort.reverse.each do |file|
+        `traject -c #{Rails.configuration.traject_indexer} #{file}`
       end
 
-      `traject -c app/models/traject_indexer.rb -x commit`
+      `traject -c #{Rails.configuration.traject_indexer} -x commit`
     end
 
     desc "Delete all items from Solr"
@@ -26,12 +27,12 @@ end
 desc "Ingest a single file or all XML files in the sammple_data folder"
 task :ingest, [:filepath] => [:environment] do |t, args|
   if args[:filepath]
-    `traject -c app/models/traject_indexer.rb #{args[:filepath]}`
+    `traject -c #{Rails.configuration.traject_indexer} #{args[:filepath]}`
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |file|
-      `traject -c app/models/traject_indexer.rb #{file}`
+      `traject -c #{Rails.configuration.traject_indexer} #{file}`
     end
   end
 
-  `traject -c app/models/traject_indexer.rb -x commit`
+  `traject -c #{Rails.configuration.traject_indexer} -x commit`
 end

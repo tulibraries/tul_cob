@@ -12,39 +12,26 @@ module ApplicationHelper
   def get_search_params(field, query)
     case field
     when "subject_display"
-      { controller: "catalog", action: "index", search_field: "subject", q: query.gsub(/>|—/, "") }
-    when "title_uniform_display"
-      { controller: "catalog", action: "index", search_field: "title", q: query }
-    when "title_addl_display"
-      { controller: "catalog", action: "index", search_field: "title", q: query }
+
+      { search_field: "subject", q: query.gsub(/>|—/, ""), title: query }
+    when "title_uniform_display", "title_addl_display"
+      { search_field: "title", q: query }
+    when "relation"
+      { search_field: "title", q: query["relatedTitle"] }
     else
-      { controller: "catalog", action: "index", search_field: field, q: query }
+      { search_field: field, q: query }
     end
   end
 
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
-    link_to(query, link_url)
+    title = params[:title] || params[:q]
+    link_to(title, link_url)
   end
 
   def list_with_links(args)
     args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
-  end
-
-  def browse_creator(args)
-    creator = args[:document][args[:field]]
-    creator.map do |name|
-      linked_subfields = name.split("|").first
-      newname = link_to(linked_subfields, root_url + "/?f[creator_facet][]=#{linked_subfields}").html_safe
-      plain_text_subfields = name.split("|").second
-      creator = newname
-      if plain_text_subfields.present?
-        plain_text_subfields = plain_text_subfields
-        creator = newname + " " + plain_text_subfields
-      end
-      creator
-    end
   end
 
   def creator_index_separator(args)
@@ -56,6 +43,14 @@ module ApplicationHelper
     creator
   end
 
+  def has_one_electronic_resource?(document)
+    document.fetch("electronic_resource_display", []).length == 1
+  end
+
+  def has_many_electronic_resources?(document)
+    document.fetch("electronic_resource_display", []).length > 1
+  end
+
   def check_for_full_http_link(args)
     args[:document][args[:field]].map { |field|
       if field.include?("http")
@@ -63,13 +58,13 @@ module ApplicationHelper
       else
         electronic_resource_link_builder(field)
       end
-    }.join("<br />").html_safe
+    }.join("").html_safe
   end
 
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url), class: "list_items")
+    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
     new_link
   end
 
@@ -85,13 +80,13 @@ module ApplicationHelper
   end
 
   def render_alma_eresource_link(portfolio_pid, db_name)
-    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid))
+    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), title: "Target opens in new window", target: "_blank")
   end
 
   def alma_electronic_resource_direct_link(portfolio_pid)
     query = {
-        'u.ignore_date_coverage': "true",
-        'Force_direct': true,
+        "u.ignore_date_coverage": "true",
+        "Force_direct": true,
         portfolio_pid: portfolio_pid
     }
     alma_build_openurl(query)
@@ -100,7 +95,7 @@ module ApplicationHelper
   def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
     item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
     item_html = item_parts.compact.join(" - ").html_safe
-    content_tag(:li, item_html , class: "list_items")
+    content_tag(:td, item_html , class: " electronic_links list_items")
   end
 
   def electronic_resource_link_builder(field)
@@ -120,8 +115,27 @@ module ApplicationHelper
     end
   end
 
+  def bento_single_link(field)
+    electronic_resource = field.first.split("|")
+    portfolio_pid = electronic_resource.first
+    alma_electronic_resource_direct_link(portfolio_pid)
+  end
+
   def bento_engine_nice_name(engine_id)
     I18n.t("bento.#{engine_id}.nice_name")
+  end
+
+  def bento_icons(engine_id)
+    case engine_id
+    when "books"
+      content_tag(:span, "", class: "bento-icon bento-book")
+    when "articles"
+      content_tag(:span, "", class: "bento-icon bento-article")
+    when "journals"
+      content_tag(:span, "", class: "bento-icon bento-journal")
+    when "more"
+      content_tag(:span, "", class: "bento-icon bento-more")
+    end
   end
 
   def aeon_request_url(document)
@@ -153,11 +167,103 @@ module ApplicationHelper
     end
   end
 
+  def total_items(results)
+    results.total_items[:query_total] || 0 rescue 0
+  end
+
+  def total_online(results)
+    results.total_items[:online_total] || 0 rescue 0
+  end
+
+  # TODO: Is variation here better handled in multiple link templates?
   def bento_link_to_full_results(results)
-    if results.engine_id.include?("blacklight")
-      link_to "See all #{number_with_delimiter(results.total_items)} results.", search_catalog_path(q: params[:q]), class: "full-results"
+    total = number_with_delimiter(total_items results)
+    case results.engine_id
+    when "blacklight"
+      url = search_catalog_path(q: params[:q])
+      link_to "View all #{total} items", url, class: "full-results"
+    when "journals"
+      url = search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] })
+      link_to "View all #{total} journals", url, class: "full-results"
+    when "books"
+      url = search_catalog_path(q: params[:q], f: { format: ["Book"] })
+      link_to "View all #{total} books", url, class: "full-results"
+    when "more"
+      url = search_catalog_path(q: params[:q])
+      link_to "View all catalog results", url, class: "full-results"
+    when "articles"
+      url = url_for(action: :index, controller: :primo_central, q: params[:q])
+      link_to "View all #{total} articles", url, class: "full-results"
     else
-      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
+      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{total}" || "?", class: "record-count")
     end
+  end
+
+  def bento_link_to_online_results(results)
+    total = number_with_delimiter(total_online results)
+    case results.engine_id
+    when "blacklight"
+      url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
+      link_to "View all #{total} online items", url, class: "full-results"
+    when "journals"
+      url = search_catalog_path(q: params[:q], f: {
+        format: ["Journal/Periodical"],
+        availability_facet: ["Online"]
+      })
+      link_to "View all #{total} online journals", url, class: "full-results"
+    when "books"
+      url = search_catalog_path(q: params[:q], f: {
+        format: ["Book"],
+        availability_facet: ["Online"]
+      })
+      link_to "View all #{total} ebooks", url, class: "full-results"
+    when "more"
+      ""
+    when "articles"
+      url = url_for(
+        action: :index, controller: :primo_central,
+        q: params[:q], f: { availability_facet: ["Online"] }
+      )
+      link_to "View all #{total} online articles", url, class: "full-results"
+    else
+      ""
+    end
+  end
+
+  # Gets the base_path of current_page (i.e. /articles if at /articles/foobar)
+  def base_path
+    File.dirname(url_for)
+  end
+
+  # Render the index field (link)
+  def index_field_url_link(arg)
+    url = arg[:value].first
+    link_to "direct link", url, remote: true
+  end
+
+  def navigational_headers
+    if params[:controller] == "catalog" || params[:controller] == "advanced"
+      content_tag(:h1, "Catalog Search", class: "nav-header")
+    elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
+      content_tag(:h1, "Articles Search", class: "nav-header")
+    end
+  end
+
+  def navigational_links
+    if navigational_headers.present?
+      if navigational_headers.include?("Catalog Search")
+        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn")
+      elsif navigational_headers.include?("Articles Search")
+        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
+      end
+    end
+  end
+
+  def render_online_only_checkbox
+    online_articles = params.dig("f", "tlevel")&.include?("online_resources")
+    online_catalog = params.dig("f", "availability_facet")&.include?("Online")
+    checked = online_articles || online_catalog
+
+    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()"
   end
 end

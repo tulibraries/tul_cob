@@ -31,3 +31,6 @@ pixima => pixma
 
 & => and
 
+# Added for BL-447
+employment,labor => work
+contingent,precarious

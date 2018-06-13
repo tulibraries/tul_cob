@@ -11,7 +11,7 @@ RSpec.feature "Bento Searches" do
     let (:item) { fixtures.fetch("book_search") }
     scenario "Search Title" do
       visit "/bento"
-      within("div.hero-unit") do
+      within("div.input-group") do
         fill_in "q", with: item["title"]
         click_button
       end
@@ -25,7 +25,7 @@ RSpec.feature "Bento Searches" do
     let (:item) { fixtures.fetch("book_search") }
     scenario "Blacklight results display link to full results " do
       visit "/bento"
-      within("div.hero-unit") do
+      within("div.input-group") do
         fill_in "q", with: item["title"]
         click_button
       end

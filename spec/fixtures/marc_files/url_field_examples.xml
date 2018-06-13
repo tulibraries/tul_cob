@@ -73,6 +73,10 @@
       <subfield code="z">tabLe of Contents</subfield>
       <subfield code="u">http://foobar.com</subfield>
     </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+     <subfield code="z">Archive</subfield>
+     <subfield code="u">http://archive-it.org/collections/4222</subfield>
+   </datafield>
   </record>
   <record>
     <!-- 7. PRT field and 856 field (with exception)  -->
@@ -94,4 +98,250 @@
       <subfield code="u">http://foobar.com</subfield>
     </datafield>
   </record>
+  <record>
+    <!-- 9. ARCHIVE_IT_LINKS aren't included in Online Availability  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">archive</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 10. Only single 856 field (with archive-it exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">Archive</subfield>
+      <subfield code="u">http://archive-it.org/collections/4222</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 11. Links with temple url and scrc map to url_finding_aid_display -->
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="z">Finding aid</subfield>
+      <subfield code="u">http://library.temple.edu/scrc</subfield>
+    </datafield>
+  </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <!-- 12. Indicator 7 does not map to Online  -->
+    <leader>02131cam a2200517 a 4500</leader>
+    <controlfield tag="005">19970702091658.0</controlfield>
+    <controlfield tag="008">970306s1997 dcua b f000 0 eng d</controlfield>
+    <controlfield tag="001">991023809219703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">97152453</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0160541190 :</subfield>
+      <subfield code="c">$25.00</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b23918871-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="037">
+      <subfield code="a">052-071-01228-1</subfield>
+      <subfield code="b">GPO</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DUSS</subfield>
+      <subfield code="d">GPO</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">MvI</subfield>
+      <subfield code="d">MvI</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">lccopycat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="074">
+      <subfield code="a">0996-A</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="074">
+      <subfield code="a">0996-A (online)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="074">
+      <subfield code="a">0996-B (MF)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="086">
+      <subfield code="a">Y 1.1/3:105-2</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="086">
+      <subfield code="a">Y 1.1/3:105-2</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="110">
+      <subfield code="a">United States.</subfield>
+      <subfield code="b">    Commission on Protecting and Reducing Government Secrecy.    </subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">    Report of the Commission on Protecting and Reducing Government Secrecy :    </subfield>
+      <subfield code="b">pursuant to Public Law 236, 103rd Congress.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="4" tag="246">
+      <subfield code="a">Secrecy</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="246">
+      <subfield code="i">Also known as:</subfield>
+      <subfield code="a">Moynihan report</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Washington, DC :</subfield>
+      <subfield code="b">[U.S. G.P.O.] :</subfield>
+      <subfield code="b">For sale by the U.S. G.P.O., Supt. of Docs.,</subfield>
+      <subfield code="c">1997.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">li, 114, [117] p. :</subfield>
+      <subfield code="b">ill. ;</subfield>
+      <subfield code="c">28 cm.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="490">
+      <subfield code="a">S. doc. ;</subfield>
+      <subfield code="v">105-2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Chairman: Daniel Patrick Moynihan.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">    Distributed to some depository libraries in microfiche.    </subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Shipping list no.: 97-0176-P.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="530">
+      <subfield code="a">    Also available via Internet from the GPO web site (PDF file only).    </subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Official secrets</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Security classification (Government documents)</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">National security</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Moynihan, Daniel P.</subfield>
+      <subfield code="q">(Daniel Patrick),</subfield>
+      <subfield code="d">1927-2003.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="710">
+      <subfield code="a">United States.</subfield>
+      <subfield code="b">Congress.</subfield>
+      <subfield code="b">Senate.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">    Senate document (United States. Congress. Senate) ;    </subfield>
+      <subfield code="v">105-2.</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="856">
+      <subfield code="u">http://www.access.gpo.gov/congress/commissions/secrecy/index.html</subfield>
+      <subfield code="2">http</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="856">
+      <subfield code="2">http</subfield>
+      <subfield code="z">    Adobe Acrobat reader required to view individual sections of publication    </subfield>
+      <subfield code="z">    URL accesses contents page of publication, from which link may be made to the individual sections    </subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b23918871</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">161028</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">000930</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">MARCIVE RECON PROJECT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="915">
+      <subfield code="a">50814</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">g</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">jtcas</subfield>
+      <subfield code="a">JK 468 .S4 U48 1997</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">KARDON</subfield>
+      <subfield code="c">p_GovDocs</subfield>
+      <subfield code="h">Y 1.1/3:105-2</subfield>
+      <subfield code="8">22260634650003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="HLD">
+      <subfield code="b">JAPAN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">JK 468 .S4 U48 1997</subfield>
+      <subfield code="8">22260634670003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22260634650003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">p_GovDocs</subfield>
+      <subfield code="e">p_GovDocs</subfield>
+      <subfield code="8">23260634640003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 07:05:27</subfield>
+      <subfield code="i">Y 1.1/3:105-2</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22260634670003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="9">31982070336625</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23260634660003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 07:05:27</subfield>
+      <subfield code="i">JK 468 .S4 U48 1997</subfield>
+      <subfield code="d">JAPAN</subfield>
+      <subfield code="f">JAPAN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 13. ARCHIVE_IT_LINKS aren't included in Online Availability  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">archive</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 14. Indicator1= 4 and indicator2 = NOT 2 maps to Online  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">Adobe Acrobat reader required to view</subfield>
+      <subfield code="u">http://www.access.gpo.gov/congress/commissions/secrecy/index.html</subfield>
+    </datafield>
+  </record>
+  <record>
+  <!-- 15. Finding aid and more links test record  -->
+  <datafield tag="245" ind1="4" ind2="2">
+    <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+    <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+    <subfield code="u">http://library.temple.edu/collections/scrc/camp-kennebec-alumni</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="3">View preserved website versions on Archive-It.</subfield>
+    <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
+  </datafield>
+</record>
 </collection>

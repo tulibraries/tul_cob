@@ -1,4 +1,4 @@
-# frozen_string_literal: false
+# frozen_string_literal: true
 
 require "library_stdnums"
 
@@ -6,8 +6,11 @@ require "library_stdnums"
 module Traject
   module Macros
     module Custom
+      ARCHIVE_IT_LINKS = "archive-it.org/collections/"
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
+      SEPARATOR = "--"
+
       def get_xml
         lambda do |rec, acc|
           acc << MARC::FastXMLWriter.encode(rec)
@@ -78,17 +81,17 @@ module Traject
       def extract_contributor
         lambda do |rec, acc|
           rec.fields("700").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("710").each do |f|
-            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("711").each do |f|
-            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
@@ -115,6 +118,33 @@ module Traject
         end
       end
 
+      def extract_subject_topic_facet
+        lambda do |rec, acc|
+          subjects = []
+          Traject::MarcExtractor.cached("600abcdq:610ab:611a:630a:653a:654ab:647acdg").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).fetch(0, "")
+            subject = subject.split(SEPARATOR)
+            subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }
+          end
+
+          Traject::MarcExtractor.cached("650ax").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            unless subject.nil?
+              field.subfields.each do |s_field|
+                if (s_field.code == "x")
+                  subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}")
+                end
+              end
+              subject = subject.split(SEPARATOR)
+              subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+          end
+          subjects = subjects.flatten
+          acc.replace(subjects)
+          acc.uniq!
+        end
+      end
+
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
@@ -129,8 +159,10 @@ module Traject
           rec.fields("856").each do |f|
             if f.indicator2 != "2"
               label = url_label(f["z"], f["3"], f["y"])
-              unless NOT_FULL_TEXT.match(label)
-                acc << [label, f["u"]].compact.join("|")
+              unless f["u"].nil?
+                unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << [label, f["u"]].compact.join("|")
+                end
               end
             end
           end
@@ -169,8 +201,27 @@ module Traject
         lambda { |rec, acc|
           rec.fields("856").each do |f|
             label = url_label(f["z"], f["3"], f["y"])
-            if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty?
-              acc << [label, f["u"]].compact.join("|")
+            unless f["u"].nil?
+              if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty? || f["u"].include?(ARCHIVE_IT_LINKS)
+                unless f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
+            end
+          end
+        }
+      end
+
+      def extract_url_finding_aid
+        lambda { |rec, acc|
+          rec.fields("856").each do |f|
+            label = url_label(f["z"], f["3"], f["y"])
+            if f.indicator1 == "4" && f.indicator2 == "2"
+              unless f["u"].nil?
+                if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
+                  acc << [label, f["u"]].compact.join("|")
+                end
+              end
             end
           end
         }
@@ -184,8 +235,10 @@ module Traject
           unless acc.include?("Online")
             rec.fields(["856"]).each do |field|
               z3 = [field["z"], field["3"]].join(" ")
-              unless NOT_FULL_TEXT.match(z3) || rec.fields("856").empty?
-                acc << "Online" if field.indicator1 == "4" && field.indicator2 != "2"
+              unless field["u"].nil?
+                unless NOT_FULL_TEXT.match(z3) || rec.fields("856").empty? || field["u"].include?(ARCHIVE_IT_LINKS)
+                  acc << "Online" if field.indicator1 == "4" && field.indicator2 != "2"
+                end
               end
             end
           end
@@ -200,8 +253,10 @@ module Traject
         lambda do |rec, acc|
           MarcExtractor.cached("600v:610v:611v:630v:648v:650v:651v:655av:647v").collect_matching_lines(rec) do |field, spec, extractor|
             genre = extractor.collect_subfields(field, spec).first
-            unless GENRE_STOP_WORDS.match(genre)
-              acc << genre.gsub(/[^[:alnum:])]*$/, "") unless genre.nil?
+            unless genre.nil?
+              unless GENRE_STOP_WORDS.match(genre.force_encoding(Encoding::UTF_8).unicode_normalize)
+                acc << genre.gsub(/[^[:alnum:])]*$/, "")
+              end
             end
             acc.uniq!
           end
@@ -263,7 +318,20 @@ module Traject
         lambda do |rec, acc|
           rec.fields(["HLD"]).each do |field|
             if field["b"] != "RES_SHARE"
-              acc << Traject::TranslationMap.new("locations_map")[field["b"]]
+              acc << Traject::TranslationMap.new("libraries_map")[field["b"]]
+            end
+          end
+        end
+      end
+
+      def extract_library_shelf_call_number
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            if field["b"] != "RES_SHARE"
+              location = Traject::TranslationMap.new("libraries_map")[field["b"]]
+              shelf = Traject::TranslationMap.new("shelf_map")[field["c"]]
+              call_number = field["h"]
+              acc << "#{location} (#{shelf})\n(#{call_number})"
             end
           end
         end
@@ -277,6 +345,21 @@ module Traject
 
           rec.fields(["264"]).each do |field|
             acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          end
+        end
+      end
+
+      def extract_pub_datetime
+        lambda do |rec, acc|
+          rec.fields(["260"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil?
+          end
+
+          rec.fields(["264"]).each do |field|
+            acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          end
+          if !acc.empty?
+            acc.replace [Date.ordinal(acc.first.to_i, 1).strftime("%FT%TZ")]
           end
         end
       end

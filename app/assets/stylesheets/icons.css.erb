@@ -7,27 +7,64 @@
   margin-bottom: 20px;
 }
 
-span.book, a.facet_book {
+span.book,
+span.book_book_chapter,
+span.book_chapter,
+a.facet_book,
+a.facet_books {
   background: transparent url(<%= asset_path 'icons/book.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.conference_proceeding, a.facet_conference_proceeding {
+span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_proceedings {
   background: transparent url(<%= asset_path 'icons/play-circle.png' %>) no-repeat top left;
-  padding-left: 26px; 
+  padding-left: 26px;
 }
-span.journal_periodical, a.facet_journal_periodical {
+span.journal_article,
+span.journal_periodical,
+span.journal,
+span.newspaper_article,
+span.reference_entry,
+span.article,
+span.review,
+span.review_entry,
+span.text_resource,
+span.technical_report,
+span.government_document,
+span.patent,
+span.legal_document,
+a.facet_journal_periodical,
+a.facet_journals,
+a.facet_newspaper_articles,
+a.facet_reference_entrys,
+a.facet_articles,
+a.facet_reviews,
+a.facet_review_entries,
+a.facet_text_resources,
+a.facet_technical_reports,
+a.facet_government_documents,
+a.facet_patents,
+a.facet_patent,
+a.facet_legal_documents,
+a.facet_legal_document
+{
   background: transparent url(<%= asset_path 'icons/document.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.dissertation_thesis, a.facet_dissertation_thesis {
+span.dissertation_thesis,
+span.dissertation_thesis,
+span.dissertation,
+a.facet_dissertation_thesis,
+a.facet_dissertations,
+a.facet_dissertation
+{
   background: transparent url(<%= asset_path 'icons/script.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.score, a.facet_score {
+span.score, a.facet_score, a.facet_scores {
   background: transparent url(<%= asset_path 'icons/musical-note.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.video, a.facet_video {
+span.video, a.facet_video, a.facet_videos {
   background: transparent url(<%= asset_path 'icons/video.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -35,7 +72,7 @@ span.archival_material, a.facet_archival_material {
   background: transparent url(<%= asset_path 'icons/box.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.image, a.facet_image {
+span.image, a.facet_image, a.facet_images {
   background: transparent url(<%= asset_path 'icons/image.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -43,7 +80,10 @@ span.audio, a.facet_audio {
   background: transparent url(<%= asset_path 'icons/headphones.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.object, a.facet_object {
+span.object,
+span.media,
+a.facet_object,
+a.facet_media {
   background: transparent url(<%= asset_path 'icons/media-stop.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -51,19 +91,24 @@ span.computer_file, a.facet_computer_file {
   background: transparent url(<%= asset_path 'icons/folder.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.database, a.facet_database {
+span.database, a.facet_database, a.facet_databases {
   background: transparent url(<%= asset_path 'icons/hard-drive.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.map, a.facet_map {
+span.map, a.facet_map, a.facet_maps {
   background: transparent url(<%= asset_path 'icons/map.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.dataset, a.facet_dataset {
+span.dataset,
+span.research_dataset,
+span.statistical_data_set,
+a.facet_dataset,
+a.facet_research_datasets,
+a.facet_statistical_data_sets {
   background: transparent url(<%= asset_path 'icons/layers.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.website, a.facet_website {
+span.website, a.facet_website, a.facet_websites {
   background: transparent url(<%= asset_path 'icons/monitor.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -71,7 +116,10 @@ span.kit, a.facet_kit {
   background: transparent url(<%= asset_path 'icons/inbox.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.unknown, a.facet_unknown {
+span.unknown,
+span.other,
+a.facet_unknown,
+a.facet_other {
   background: transparent url(<%= asset_path 'icons/question-mark.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -79,4 +127,32 @@ div.thumbnail img.default {
   height: 90px;
   width: 90px;
   opacity: .25;
+}
+span.check {
+  background: transparent url(<%= asset_path 'icons/checkmark.svg' %>) no-repeat top left;
+  padding-left: 20px;
+}
+span.close-icon {
+  background: transparent url(<%= asset_path 'icons/close.svg' %>) no-repeat top left;
+  padding-left: 20px;
+}
+
+span.bento-book {
+  background: transparent url(<%= asset_path 'icons/book.svg' %>) no-repeat top left;
+  padding-left: 20px;
+}
+
+span.bento-article {
+  background: transparent url(<%= asset_path 'icons/document.svg' %>) no-repeat top left;
+  padding-left: 20px;
+}
+
+span.bento-journal {
+  background: transparent url(<%= asset_path 'icons/journal_icon.png' %>) no-repeat bottom left;
+  padding-left: 30px;
+}
+
+span.bento-more {
+  background: transparent url(<%= asset_path 'icons/plus.svg' %>) no-repeat top left;
+  padding-left: 20px;
 }

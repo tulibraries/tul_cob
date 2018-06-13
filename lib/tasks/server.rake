@@ -4,21 +4,17 @@ require "solr_wrapper" unless Rails.env.production?
 
 desc "Run test suite"
 task :ci do
-  if Rails.env.test?
-    run_solr("test", port: "8985") do
-      Rake::Task["fortytu:solr:load_fixtures"].invoke
-      Rake::Task["spec"].invoke
-    end
-  else
-    system("rake ci RAILS_ENV=test")
-  end
+  ENV["DO_INGEST"] = "true"
+  system "bundle exec solr_wrapper clean"
+  Rake::Task["rspec"].invoke
 end
+
 
 desc "Run selected specs (Use with Guard)"
 task :rspec, [:spec_args] do |t, args|
   if Rails.env.test?
     run_solr("test", port: "8985") do
-      Rake::Task["fortytu:solr:load_fixtures"].invoke
+      Rake::Task["fortytu:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
       rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
       system(rspec_cmd)
     end
@@ -30,7 +26,7 @@ end
 desc "Run solr and blacklight for interactive development"
 task :server, [:rails_server_args] do |t, args|
   run_solr("dev", port: "8983") do
-    Rake::Task["fortytu:solr:load_fixtures"].invoke
+    Rake::Task["fortytu:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
     system "bundle exec rails s #{args[:rails_server_args]}"
   end
 end

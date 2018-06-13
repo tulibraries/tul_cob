@@ -1,0 +1,11 @@
+<% unless current_page?(blacklight_advanced_search_engine.advanced_search_path) %>
+  <div class="navbar-form">
+    <%= link_to 'Advanced Catalog Search', blacklight_advanced_search_engine.advanced_search_path(search_state.to_h), class: 'advanced_search'%>
+  </div>
+<% end %>
+
+<% if current_page?(blacklight_advanced_search_engine.advanced_search_path) %>
+  <div class="navbar-form">
+    <%= link_to 'Basic Search', root_path, class: 'advanced_search'%>
+  </div>
+<% end %>

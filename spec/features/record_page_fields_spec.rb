@@ -1098,6 +1098,7 @@ RSpec.feature "RecordPageFields" do
   feature "MARC lccn Fields" do
     let (:item_010) { fixtures.fetch("lccn_010") }
     scenario "User visits a document with lccn" do
+      skip
       visit "catalog/#{item_010['doc_id']}"
       within "dd.blacklight-lccn_display" do
         expect(page).to have_text(item_010["lccn"])
@@ -1157,6 +1158,17 @@ RSpec.feature "RecordPageFields" do
     end
   end
 
+  feature "MARC Finding Aid Field" do
+    let (:item_856_4) { fixtures.fetch("url_856_4") }
+    scenario "User visits a document with url indicator1 value 4 indicator2 value2 and subfield u includes both http://library.temple.edu and scrc" do
+      visit "catalog/#{item_856_4['doc_id']}"
+      within "dd.blacklight-url_finding_aid_display" do
+        expect(page).to have_text(item_856_4["url"])
+        expect(page).to have_link("#{item_856_4['url']}", href: "#{item_856_4['url_href']}")
+      end
+    end
+  end
+
   feature "MARC URL Fields" do
     let (:item_856_2) { fixtures.fetch("url_856_2") }
     scenario "User visits a document with url indicator2 value2" do
@@ -1173,6 +1185,15 @@ RSpec.feature "RecordPageFields" do
       within "dd.blacklight-url_more_links_display" do
         expect(page).to have_text(item_856_more_1["url"])
         expect(page).to have_link("#{item_856_more_1['url']}", href: "#{item_856_more_1['url_href']}")
+      end
+    end
+
+    let (:item_856_more_3) { fixtures.fetch("url_856_more_3") }
+    scenario "User visits a document with url indicator2 value2 with archive-it url in subfield u" do
+      visit "catalog/#{item_856_more_3['doc_id']}"
+      within "dd.blacklight-url_more_links_display" do
+        expect(page).to have_text(item_856_more_3["url"])
+        expect(page).to have_link("#{item_856_more_3['url']}", href: "#{item_856_more_3['url_href']}")
       end
     end
   end

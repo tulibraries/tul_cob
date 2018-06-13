@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 5.0.1"
+gem "rails", "~> 5.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
@@ -49,9 +49,10 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem "blacklight"
-gem "blacklight_advanced_search"
+gem "blacklight",
+  git: "https://github.com/tulibraries/blacklight.git",
+  branch: "backport-safari-bug-fix"
+gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
 
@@ -72,12 +73,10 @@ group :development, :test do
   gem "rubocop"
 end
 
-
-
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
-gem "alma", "~> 0.2.4"
+gem "alma", git: "https://github.com/tulibraries/alma_rb"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
@@ -91,9 +90,10 @@ gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
 gem "skylight"
-
-
-
+gem "webpacker"
+gem "google-analytics-rails", "1.1.1"
+gem "primo", git: "https://github.com/tulibraries/primo"
+gem "bootsnap"
 
 group :production do
   gem "mysql2", "~> 0.4.9"

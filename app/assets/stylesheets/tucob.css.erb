@@ -1,3 +1,7 @@
+#page-wrapper {
+  min-height: calc(100vh - 291px)
+}
+
 #record-view-iframe, #stafflink {
   max-width: 900px;
   margin:auto;
@@ -6,6 +10,7 @@
   padding-top: 10px;
   padding-left: 7px;
 }
+
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
   color: #A50030;
 }
@@ -13,6 +18,7 @@
 h1[itemprop="name"] {
   font-size: 28px;
 }
+
 #search-navbar .container {
   padding-left: 0;
 }
@@ -20,11 +26,14 @@ h1[itemprop="name"] {
 h1.advanced.page-header a {
   display:none;
 }
+
 /* === AEON REQUESTS === */
 
 .aeon-wrapper {
   display: table;
   margin-bottom: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
   width: 100%;
 }
 
@@ -106,25 +115,14 @@ input[type="radio"] + label {
   display: none;
 }
 
-dd.blacklight-availability {
-  display: inline-block;
-  margin-left: 10px;
-  vertical-align: middle;
+.availability-panel-heading {
+  background-color: #A30733 !important;
+  color: #fff !important;
+  padding: 5px;
 }
 
 #availability-heading {
-  margin: 0;
-  padding: 0;
-}
-
-.bl_alma_iframe {
-  border: 0;
-  width: 99.9%;
-}
-
-div.online_resources {
-  border: 1px solid #ccc;
-  padding: 10px;
+  margin-left: 5px;
 }
 
 .collapse-button {
@@ -142,18 +140,104 @@ div.online_resources {
 }
 
 .online-border {
-  border-bottom: 1px solid #ececec;
-  padding-bottom: 10px;
   padding-top: 0;
 }
 
 div.physical-holding-panel {
-  padding-top: 0;
+  padding: 0 !important;
 }
 
 .show_page_records dd {
   margin-bottom: 7px;
 }
+
+.avail-icon {
+  margin-right: 10px;
+}
+
+.spinner {
+  display: none;
+  margin-top: 10px;
+}
+
+.online-panel {
+  margin: 0;
+  padding: 0;
+}
+
+.online-panel-heading {
+  background-color: #F1EFE8;
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  margin: 0;
+  padding: 8px;
+}
+
+.online-panel-body {
+  margin-top: -20px;
+}
+
+.list_elec_links {
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.search_results_table {
+  border: 1px solid #CFC7B0;
+}
+
+.record_page_elec_links {
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.electronic_links  {
+  border-bottom: 1px solid #CFC7B0;
+  display: block;
+  padding: 8px;
+  width: 100%;
+}
+
+/* ALMA DATA TABLE */
+.border-bottom td, .border-bottom th {
+  border-bottom: 1px solid #CFC7B0;
+}
+
+table.border-bottom {
+  border: 1px solid #CFC7B0;
+  padding: 0 !important;
+  margin: 0 !important;
+
+}
+
+.table-heading {
+  background-color: #F1EFE8;
+}
+
+.table-wrapper {
+  display: block;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-right: -10px;
+  margin-bottom: 0 !important;
+
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
 
 /* RECORD NAV TOOLS */
 
@@ -199,10 +283,23 @@ div.physical-holding-panel {
   display:inline-block;
   background-color: #fff;
 }
+#bookmarks-sendto {
+  display:inline-block;
+  background-color: #fff;
+}
 #sendto button {
   border: 0;
   background-color: #f1efe7;
   color: #A50030;
+}
+#bookmarks-sendto button {
+  border: 0;
+  background-color: #f1efe7;
+  color: #A50030;
+  padding: 8px 12px;
+}
+.clear-bookmarks {
+  display: inline-block;
 }
 #sendto-menu {
   background-color: #fff;
@@ -211,6 +308,13 @@ div.physical-holding-panel {
   background-color: #fff;
   width: 111px;
 }
+#bookmarks-sendto .dropdown-menu {
+  background-color: #fff;
+  width: 111px;
+  top:auto;
+  left:auto;
+}
+
 #sendto ul {
   float:none;
   position:relative;
@@ -223,16 +327,20 @@ div.physical-holding-panel {
   width: 100%;
 }
 .sendto-item a {
-  padding-left: 2px!important;
+  /*padding-left: 2px!important;*/
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 2em;
 }
 .sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
   color: #A50030!important;
   background-color: #fff!important;
 }
 #header-navbar .navbar-brand {
-   background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
+   /*background: transparent url(<%= asset_path 'library_logo.jpg' %>) no-repeat top left;*/
    margin-left: 7px;
-  /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
+  background: transparent url(<%= asset_path 'NewCherryLogo.jpg' %>) no-repeat top left;
 }
 div.navbar-form {
   display:inline-block;
@@ -246,6 +354,14 @@ ul.navbar-nav {
 }
 #tools-navbar {
 
+}
+.bookmarks-tools #tools-navbar {
+  display:inline-block;
+  padding-left: 14px;
+}
+.bookmarks-sort-and-per-page {
+  padding: 0;
+  margin-bottom:0;
 }
 #tools-navbar li, #tools-navbar li a {
   display: inline-block;
@@ -333,6 +449,18 @@ ul.navbar-nav {
   }
 }
 @media (max-width: 601px) {
+  .input-group-addon {
+    padding: 0;
+  }
+
+  #search_field  {
+    width: 90% !important;
+  }
+
+  #search-navbar .input-group-addon.for-search-field {
+    width: 15ch;
+  }
+
   #nav-tools {
     margin-top: 14px;
     width: 100%;
@@ -348,6 +476,20 @@ ul.navbar-nav {
     border-radius: 0;
     margin-bottom: 2px;
     padding-left: 10px;
+  }  
+  .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
+    display: block;
+    width: 100%;
+    color: #A50030!important;
+    background-color: transparent!important;
+    border-radius: 0;
+    margin-bottom: 2px;
+    padding-left: 10px;
+  }
+  #bookmarks-sendto .dropdown-menu {
+    position: absolute;
+    top: auto!important;
+    left: auto!important;
   }
   .nav-tools div.toggle_bookmark {
     padding-top: 0;
@@ -456,4 +598,20 @@ textarea#message-body.form-control {
   border-bottom: 2px solid #951936;
   padding-top: 10px;
   margin-bottom: 5px;
+}
+
+form#sms_form {
+  font-size: small;
+}
+
+form#sms_form textarea#title {
+  width: 100%;
+  height: 4em;
+  border: none;
+  resize: none;
+  overflow: hidden;
+}
+
+form#sms_form div.text-this-location label {
+  font-weight: normal;
 }

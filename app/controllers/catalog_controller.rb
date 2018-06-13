@@ -13,14 +13,14 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  #helper BlacklightAlma::HelperBehavior
+  helper_method :browse_creator
 
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "dismax"
+    config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:fields_row_count] = 3
@@ -52,8 +52,9 @@ class CatalogController < ApplicationController
         title_uniform_display
         isbn_display
         lccn_display
+        url_finding_aid_display
       ].join(" "),
-      defType: "dismax",
+      defType: "edismax",
       echoParams: "explicit",
       rows: "10",
       mm: [
@@ -61,6 +62,8 @@ class CatalogController < ApplicationController
         "5<-2",
         URI.escape("6<90%")
           ],
+      "mm.autorelax" => "true",
+      lowercaseOperators: false,
       ps: "3",
       tie: "0.01",
       qf: %w[
@@ -102,6 +105,11 @@ class CatalogController < ApplicationController
         subject_unstem_search^7500
         subject_topic_facet^6250
         subject_t^5000
+        note_toc_unstem_search~0^6000
+        note_summary_unstem_search~0^6000
+        note_toc_unstem_search^1000
+        note_summary_unstem_search^1000
+        creator_unstem_search~2^7500
         creator_unstem_search^2500
         creator_t^1000
         subject_addl_unstem_search^2500
@@ -164,6 +172,7 @@ class CatalogController < ApplicationController
       ].join(" "),
       facet: "true",
       spellcheck: "false",
+      bq: "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -224,7 +233,7 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true
+    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
     config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
     config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
@@ -246,14 +255,15 @@ class CatalogController < ApplicationController
 
     config.add_index_field "imprint_display", label: "Published"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
-    config.add_index_field "format", label: "Resource Type"
-
+    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
 
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement"
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
     config.add_show_field "title_uniform_vern_display", label: "Uniform title"
     config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
@@ -327,7 +337,6 @@ class CatalogController < ApplicationController
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
-    config.add_show_field "lccn_display", label: "LCCN"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
@@ -442,7 +451,6 @@ class CatalogController < ApplicationController
       }
     end
 
-
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
@@ -472,48 +480,55 @@ class CatalogController < ApplicationController
 
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
-
-    # Configuration for text to phone_number
-    config.show.document_actions.delete(:sms)
-    config.add_show_tools_partial(:message, callback: :message_action)
   end
 
-  def message
-    # TODO Is this how catalog controller is supposed to get the current document?
-    @document = SolrDocument.find(params[:id])
-    respond_to do |format|
-      format.html { render layout: false }
-      format.js
-    end
+  def render_sms_action?(_config, _options)
+    # Render if the item can be found at a library
+    _options[:document].response.docs.first[:library_facet]
   end
 
-  def render_message_action?(_config, _options)
-    true
+  def sms_action(documents)
+    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
+    body = text_this_message_body(params)
+    @client.messages.create(
+      body: body,
+      to:   params[:to],
+      from: Rails.configuration.twilio[:phone_number]
+    )
+    logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
   end
 
-  def validate_message_params
+  def validate_sms_params
     if params[:to].blank?
-      flash[:error] = I18n.t("blacklight.message.errors.to.blank")
+      flash[:error] = I18n.t("blacklight.sms.errors.to.blank")
+    elsif params[:location].blank?
+      flash[:error] = I18n.t("blacklight.sms.errors.location.blank")
     elsif params[:to].gsub(/[^\d]/, "").length != 10
-      flash[:error] = I18n.t("blacklight.message.errors.to.invalid", to: params[:to])
+      flash[:error] = I18n.t("blacklight.sms.errors.to.invalid", to: params[:to])
     end
+
     flash[:error].blank?
   end
 
-  # FIXME Does not conform to "Adding new document actions"
-  # https://github.com/projectblacklight/blacklight/wiki/Adding-new-document-actions
-  # - Document actions does not pass documents argument to message_action
-  # - Must manually redirect to solr_document_url. It should be done automatically
-  #   without calling redirect_to
-  # - app/views/message_success does not render
-  def message_action #documents
-    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
-    message = @client.messages.create(
-      body: params[:body],
-      to:   params[:to],
-      from: Rails.configuration.twilio[:phone_number]
-      )
-    logger.info "Text This:\n*****\n\"#{params[:body]}\" \nTO: #{params[:to]}\n*****"
-    redirect_to solr_document_url
+  def text_this_message_body(params)
+    "#{params[:title]}\n" +
+    "#{params[:location]}"
+  end
+
+  def browse_creator(args)
+    creator = args[:document][args[:field]]
+    base_path = helpers.base_path
+    creator.map do |name|
+      linked_subfields = name.split("|").first
+      facet_query = view_context.send(:url_encode, (linked_subfields))
+      newname = view_context.link_to(linked_subfields, base_path + "?f[creator_facet][]=#{facet_query}")
+      plain_text_subfields = name.split("|").second
+      creator = newname
+      if plain_text_subfields.present?
+        plain_text_subfields = plain_text_subfields
+        creator = newname + " " + plain_text_subfields
+      end
+      creator
+    end
   end
 end

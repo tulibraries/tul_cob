@@ -3,12 +3,43 @@
 module AdvancedHelper
   include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
+  def label_tag_default_for(key)
+    unless params[key]
+      if ("f_1" == key)
+        return params["search_field"]
+      elsif ("q_1" == key)
+        return params["q"]
+      end
+    end
+
+    if !params[key].blank?
+      return params[key]
+    elsif params["search_field"] == key
+      return params["q"]
+    else
+      return nil
+    end
+  end
+
   def advanced_key_value
     key_value = []
     search_fields_for_advanced_search.each do |field|
       key_value << [field[1][:label], field[0]]
     end
     key_value
+  end
+
+  # Get default value for operator[] field in advanced_search form.
+  def operator_default(count)
+    if !params["operator"]
+      "contains"
+    else
+      # Always select from last rows count of total values in operator[]
+      # @see BL-334
+      rows = params.select { |k| k.match(/^q_/) }
+      count_rows = rows.to_h.count
+      params["operator"][-count_rows + count - 1]
+    end
   end
 
   def search_fields_for_advanced_search
@@ -118,13 +149,14 @@ module BlacklightAdvancedSearch
   module RenderConstraintsOverride
     # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query
     # We need this in order to render multiple clearable buttons on advanced searches.
+
     def render_constraints_query(my_params = params)
       buttons = guided_search.map { |s|
         label, query, action = s
 
         render_constraint_element(
           label, query,
-          remove: search_catalog_path(remove_guided_keyword_query(action, my_params))
+          remove: search_action_path(remove_guided_keyword_query(action, my_params))
         )
       }.flatten
 
@@ -138,11 +170,23 @@ module BlacklightAdvancedSearch
         .map { |q, v|
 
         position = q.to_s.scan(/_\d+$/)[0]
-        f = "f_#{position}".to_sym
-        op = "op_#{position}".to_sym
-        field = search_field_def_for_key(my_params[f]).to_h
+
+        if position.nil?
+          f = "search_field"
+        else
+          position = position.gsub("_", "").to_i
+          f = "f_#{position}"
+          # position -1 gets us the first op
+          op = "op_#{position - 1}"
+        end
+
+        field = blacklight_config.search_fields[my_params[f]].to_h
         label = field[:label].to_s
-        query = my_params[op].to_s + " " + my_params[q]
+        if position == 1
+          query = my_params[q]
+        else
+          query = my_params[op].to_s + " " + my_params[q]
+        end
         [label, query, [f, q, op]]
       }
     end

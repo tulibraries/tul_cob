@@ -2,25 +2,30 @@
   <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
   <div class="row">
     <div class="col-sm-2">
-    <%= select_tag("f_#{count}", options_for_select(advanced_key_value, search_fields_for_advanced_search), :class=>"form-control") %>
+      <label for=<%= "f_#{count}" %> class="sr-only">Options for advanced search</label>
+      <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), :class=>"form-control") %>
     </div>
 
     <div class="col-sm-2">
-      <%= select_tag("op_row[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, "contains"), :class => "form-control" ) %>
+      <label for="operator[]" class="sr-only">Operator</label>
+      <%= select_tag("operator[]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, operator_default(count)), :class => "form-control", :id =>"operator[]") %>
     </div>
 
     <div class="col-sm-3">
+    <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
     <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
     </div>
   </div>
   <div class="row booleans">
-  <% if count != advanced_search_config[:fields_row_count] %>      
-    <fieldset>
-      <legend class="sr-only">Boolean Search Operators</legend>
-      <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
-      <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
-      <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
-    </fieldset>
+  <% if count != advanced_search_config[:fields_row_count] %>
+    <div class="col-sm-5">
+      <fieldset>
+        <legend class="sr-only">Boolean Search Operators</legend>
+        <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
+        <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
+        <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
+      </fieldset>
+    </div>
   <% end %>
   </div>
   <% end %>

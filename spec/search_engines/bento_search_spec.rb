@@ -24,6 +24,18 @@ RSpec.describe BentoSearch, type: :search_engine do
     it "uses TulStandardDecorator" do
       expect(item.decorator).to eq("TulDecorator")
     end
+  end
 
+  describe "#proc_availability_facet_only" do
+    let(:builder) { SearchBuilder.new(CatalogController.new) }
+
+    it "does not affect builder.proccessor_chain automatically" do
+      expect(builder.processor_chain).to_not include(:availability_facet_only)
+    end
+
+    it "Overrides the builder processor_chain" do
+      _builder = blacklight_se.proc_availability_facet_only[builder]
+      expect(_builder.processor_chain.last).to eq(:availability_facet_only)
+    end
   end
 end

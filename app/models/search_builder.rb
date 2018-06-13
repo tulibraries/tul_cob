@@ -4,6 +4,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
+  include BentoSearchBuilderBehavior
 
   BEGINS_WITH_TAG = "matchbeginswith"
   ENDS_WITH_TAG = "matchendswith"
@@ -77,6 +78,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     value.gsub(/:/, " ")
   end
 
+  def no_books_or_journals(solr_parameters)
+    solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
+  end
+
   private
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.
@@ -110,8 +115,19 @@ class SearchBuilder < Blacklight::SearchBuilder
     # @return [Array] A transformed set of search parameters OR and empty set.
     def params_field_ops(params)
       begin
-        fields = params.to_unsafe_h.compact.select { |k| k.match(/(^q$|^q_)/) }
-        ops = params.to_unsafe_h.fetch("op_row", ["default"])
+        p = params.to_unsafe_h.compact
+
+        fields = p.select { |k| k.match(/(^q$|^q_)/) }
+        ops = p.fetch("operator", ["default"])
+
+        # Always use last rows count of total values in operator[]
+        # @see BL-334
+        rows = p.select { |k| k.match(/^q_/) }
+        rows_count = rows.count
+        if ops.count > rows_count
+          ops = ops[-rows_count..-1]
+        end
+
         ops.zip(fields)
       rescue
         []

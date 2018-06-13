@@ -1,0 +1,6 @@
+<% if has_one_electronic_resource?(item.custom_data) %>
+  <%= link_to "Online", bento_single_link(item.custom_data["electronic_resource_display"]), class:"btn btn-xs bento-avail-btn", title:"This link opens the resource in a new tab.", target:"_blank" %>
+<% elsif has_many_electronic_resources?(item.custom_data) %>
+  <%= link_to "Online", solr_document_url(item.custom_data["id"]), class:"btn btn-xs bento-avail-btn" %>
+<% elsif item.custom_data.has_direct_link? %>
+<% end %>

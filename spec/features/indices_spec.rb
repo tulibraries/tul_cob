@@ -15,14 +15,13 @@ RSpec.feature "Indices" do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit "/"
-        expect(page).to have_text "Try our new beta Library Search"
+        expect(page).to have_text "Try out the Library Search beta"
         within("#facets") do
           expect(page).to have_text "Availability"
           expect(page).to have_text "Library"
           expect(page).to have_text "Resource Type"
         end
       end
-
     end
   end
 
@@ -60,10 +59,9 @@ RSpec.feature "Indices" do
       click_button "search"
       expect(current_url).to eq results_url
       within(".document-position-0 h3") do
-        expect(page).to have_text(:title)
+        expect(page).to have_text(title)
       end
       within(".document-metadata") do
-        expect(page).to have_text :title
         expect(page).to have_text "Resource Type:"
         expect(page).to have_text "Book"
         expect(page).to have_text "Author/Creator:"
@@ -87,7 +85,7 @@ RSpec.feature "Indices" do
       fill_in "q", with: item["title"]
       click_button "search"
       expect(current_url).to eq item["url"]
-      within(".document-position-0") do
+      within(".documentHeader") do
         click_link item["title"]
         expect(current_url).to eq item_url
         within("h3") do

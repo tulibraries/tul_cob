@@ -1,0 +1,35 @@
+<div class="table-wrapper">
+  <table class="table table-responsive border-bottom">
+    <% unless @items.empty? %>
+      <% sort_order_for_holdings(@items).each do |key,items| %>
+        <thead class="table-heading">
+          <tr>
+            <th colspan="6">
+              <%= library_name_from_short_code(key) %>
+            </th>
+          </tr>
+        </thead>
+        <tbody >
+          <% items.each do |item| %>
+            <tr>
+              <td scope="row"><%= location_status(item) %></td>
+              <td scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
+              <td scope="row"><%= description(item) %></td>
+              <td scope="row"><%= physical_material_type(item) %></td>
+              <td scope="row"><%= public_note(item) %></td>
+              <td scope="row"><%= availability_status(item) %></td>
+            <!-- <tr>
+              <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
+            </tr> -->
+          <% end %>
+        </tbody>
+      <% end %>
+      <% else %>
+      <tr>
+        <td>
+          We are unable to find availability information for this record. Please contact the library for more information.
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

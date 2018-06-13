@@ -1,6 +1,31 @@
 GIT
+  remote: https://github.com/tulibraries/alma_rb
+  revision: c29dffc316da1da33e65d34a01a47aa203122f51
+  specs:
+    alma (0.2.5)
+      ezwadl
+      httparty
+      xml-simple
+
+GIT
+  remote: https://github.com/tulibraries/blacklight.git
+  revision: db2f289afe96feeb2446dd4f7565002a6d134f26
+  branch: backport-safari-bug-fix
+  specs:
+    blacklight (6.15.0)
+      bootstrap-sass (~> 3.2)
+      deprecation
+      globalid
+      jbuilder
+      kaminari (>= 0.15)
+      nokogiri (~> 1.6)
+      rails (>= 4.2, < 6)
+      rsolr (>= 1.0.6, < 3)
+      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+
+GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: 5538880d97fb154e06d5522aff6c0490c9344f2e
+  revision: 476f480d6111612fca0d648d6d04438edc4a4f05
   specs:
     blacklight_alma (0.0.1)
       blacklight (~> 6.0)
@@ -8,53 +33,62 @@ GIT
       jwt (= 1.5.6)
       rails (>= 4.2, < 6)
 
+GIT
+  remote: https://github.com/tulibraries/primo
+  revision: a69121ada5095bccc4c9f14b6a8e42c9e0a87031
+  specs:
+    primo (0.1.0)
+      httparty
+
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.0.6)
-      actionpack (= 5.0.6)
-      nio4r (>= 1.2, < 3.0)
-      websocket-driver (~> 0.6.1)
-    actionmailer (5.0.6)
-      actionpack (= 5.0.6)
-      actionview (= 5.0.6)
-      activejob (= 5.0.6)
+    actioncable (5.2.0)
+      actionpack (= 5.2.0)
+      nio4r (~> 2.0)
+      websocket-driver (>= 0.6.1)
+    actionmailer (5.2.0)
+      actionpack (= 5.2.0)
+      actionview (= 5.2.0)
+      activejob (= 5.2.0)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.0.6)
-      actionview (= 5.0.6)
-      activesupport (= 5.0.6)
+    actionpack (5.2.0)
+      actionview (= 5.2.0)
+      activesupport (= 5.2.0)
       rack (~> 2.0)
-      rack-test (~> 0.6.3)
+      rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.6)
-      activesupport (= 5.0.6)
+    actionview (5.2.0)
+      activesupport (= 5.2.0)
       builder (~> 3.1)
-      erubis (~> 2.7.0)
+      erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.0.6)
-      activesupport (= 5.0.6)
+    activejob (5.2.0)
+      activesupport (= 5.2.0)
       globalid (>= 0.3.6)
-    activemodel (5.0.6)
-      activesupport (= 5.0.6)
-    activerecord (5.0.6)
-      activemodel (= 5.0.6)
-      activesupport (= 5.0.6)
-      arel (~> 7.0)
-    activesupport (5.0.6)
+    activemodel (5.2.0)
+      activesupport (= 5.2.0)
+    activerecord (5.2.0)
+      activemodel (= 5.2.0)
+      activesupport (= 5.2.0)
+      arel (>= 9.0)
+    activestorage (5.2.0)
+      actionpack (= 5.2.0)
+      activerecord (= 5.2.0)
+      marcel (~> 0.3.1)
+    activesupport (5.2.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (~> 0.7)
+      i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    alma (0.2.4)
-      ezwadl
-    arel (7.1.4)
-    ast (2.3.0)
-    autoprefixer-rails (7.2.1)
+    arel (9.0.0)
+    ast (2.4.0)
+    autoprefixer-rails (8.5.2)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.11)
@@ -69,16 +103,6 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.12.0)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      globalid
-      jbuilder
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 4.2, < 6)
-      rsolr (>= 1.0.6, < 3)
-      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
     blacklight-marc (6.2.0)
       blacklight (> 6.1, < 8.a)
       library_stdnums
@@ -89,23 +113,25 @@ GEM
     blacklight_advanced_search (6.3.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
-    blacklight_range_limit (6.2.1)
+    blacklight_range_limit (6.3.3)
       blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
+    bootsnap (1.3.0)
+      msgpack (~> 1.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
-    byebug (9.1.0)
-    capybara (2.15.4)
+    byebug (10.0.2)
+    capybara (3.0.2)
       addressable
       mini_mime (>= 0.1.3)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      xpath (~> 2.0)
-    chosen-rails (1.5.2)
+      nokogiri (~> 1.8)
+      rack (>= 1.6.0)
+      rack-test (>= 0.6.3)
+      xpath (~> 3.0)
+    chosen-rails (1.8.3)
       coffee-rails (>= 3.2)
       railties (>= 3.0)
       sass-rails (>= 3.2)
@@ -122,22 +148,22 @@ GEM
       hashie (~> 3.3)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    crass (1.0.3)
-    database_cleaner (1.6.1)
+    crass (1.0.4)
+    database_cleaner (1.7.0)
     deprecation (1.0.0)
       activesupport
-    devise (4.3.0)
+    devise (4.4.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 5.2)
+      railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
     devise-guests (0.6.0)
       devise
     diff-lcs (1.3)
-    docile (1.1.5)
+    docile (1.3.0)
     dot-properties (0.1.3)
-    erubis (2.7.0)
+    erubi (1.7.1)
     execjs (2.7.0)
     ezwadl (0.0.1)
       httparty (~> 0.14)
@@ -147,20 +173,21 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    faker (1.8.4)
-      i18n (~> 0.5)
-    faraday (0.13.1)
+    faker (1.8.7)
+      i18n (>= 0.7)
+    faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.18)
+    ffi (1.9.23)
     foreman (0.84.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    guard (2.14.1)
+    google-analytics-rails (1.1.1)
+    guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
-      lumberjack (~> 1.0)
+      lumberjack (>= 1.0.12, < 2.0)
       nenv (~> 0.1)
       notiffany (~> 0.0)
       pry (>= 0.9.12)
@@ -177,15 +204,15 @@ GEM
     hashdiff (0.3.7)
     hashie (3.4.6)
     htmlentities (4.3.4)
-    httparty (0.15.6)
+    httparty (0.16.2)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (0.9.1)
+    i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    jquery-rails (4.3.1)
+    jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
@@ -210,10 +237,10 @@ GEM
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    loofah (2.1.1)
+    loofah (2.2.2)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.0.12)
+    lumberjack (1.0.13)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
     marc (1.0.2)
@@ -221,22 +248,26 @@ GEM
       unf
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
+    marcel (0.3.2)
+      mimemagic (~> 0.3.2)
     method_source (0.9.0)
-    mini_mime (0.1.4)
+    mimemagic (0.3.2)
+    mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.10.3)
-    multi_json (1.12.2)
+    minitest (5.11.3)
+    msgpack (1.2.4)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.9)
+    mysql2 (0.4.10)
     nenv (0.3.0)
-    nio4r (2.1.0)
-    nokogiri (1.8.1)
+    nio4r (2.3.0)
+    nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    omniauth (1.7.1)
+    omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
     omniauth-shibboleth (1.3.0)
@@ -246,33 +277,36 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.12.1)
-    parser (2.4.0.2)
-      ast (~> 2.3)
-    parslet (1.8.0)
+    parser (2.5.1.0)
+      ast (~> 2.4.0)
+    parslet (1.8.2)
     powerpack (0.1.1)
-    pretender (0.3.1)
+    pretender (0.3.2)
       actionpack
-    pry (0.11.2)
+    pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     pry-rails (0.3.6)
       pry (>= 0.10.4)
-    public_suffix (3.0.0)
-    puma (3.10.0)
-    rack (2.0.3)
-    rack-test (0.6.3)
-      rack (>= 1.0)
-    rails (5.0.6)
-      actioncable (= 5.0.6)
-      actionmailer (= 5.0.6)
-      actionpack (= 5.0.6)
-      actionview (= 5.0.6)
-      activejob (= 5.0.6)
-      activemodel (= 5.0.6)
-      activerecord (= 5.0.6)
-      activesupport (= 5.0.6)
+    public_suffix (3.0.2)
+    puma (3.11.4)
+    rack (2.0.5)
+    rack-proxy (0.6.4)
+      rack
+    rack-test (1.0.0)
+      rack (>= 1.0, < 3)
+    rails (5.2.0)
+      actioncable (= 5.2.0)
+      actionmailer (= 5.2.0)
+      actionpack (= 5.2.0)
+      actionview (= 5.2.0)
+      activejob (= 5.2.0)
+      activemodel (= 5.2.0)
+      activerecord (= 5.2.0)
+      activestorage (= 5.2.0)
+      activesupport (= 5.2.0)
       bundler (>= 1.3.0)
-      railties (= 5.0.6)
+      railties (= 5.2.0)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.2)
       actionpack (~> 5.x, >= 5.0.1)
@@ -281,17 +315,17 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.3)
-      loofah (~> 2.0)
-    railties (5.0.6)
-      actionpack (= 5.0.6)
-      activesupport (= 5.0.6)
+    rails-html-sanitizer (1.0.4)
+      loofah (~> 2.2, >= 2.2.2)
+    railties (5.2.0)
+      actionpack (= 5.2.0)
+      activesupport (= 5.2.0)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rainbow (3.0.0)
-    rake (12.3.0)
-    rb-fsevent (0.10.2)
+    rake (12.3.1)
+    rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     responders (2.4.0)
@@ -304,7 +338,7 @@ GEM
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
-    rspec-core (3.7.0)
+    rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -312,7 +346,7 @@ GEM
     rspec-mocks (3.7.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
-    rspec-rails (3.7.1)
+    rspec-rails (3.7.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
@@ -320,10 +354,10 @@ GEM
       rspec-expectations (~> 3.7.0)
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
-    rspec-support (3.7.0)
-    rubocop (0.52.1)
+    rspec-support (3.7.1)
+    rubocop (0.55.0)
       parallel (~> 1.10)
-      parser (>= 2.4.0.2, < 3.0)
+      parser (>= 2.5)
       powerpack (~> 0.1)
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
@@ -331,12 +365,12 @@ GEM
     ruby-progressbar (1.9.0)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
-    sass (3.5.3)
+    sass (3.5.6)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.6)
+    sass-rails (5.0.7)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -344,15 +378,17 @@ GEM
       tilt (>= 1.1, < 3)
     scrub_rb (1.0.1)
     shellany (0.0.1)
-    simplecov (0.15.1)
-      docile (~> 1.1.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    skylight (1.5.0)
-      activesupport (>= 3.0.0)
+    skylight (2.0.0)
+      skylight-core (= 2.0.0)
+    skylight-core (2.0.0)
+      activesupport (>= 4.2.0)
     slop (3.6.0)
-    solr_wrapper (1.1.0)
+    solr_wrapper (1.2.0)
       faraday
       retriable
       ruby-progressbar
@@ -375,7 +411,7 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    traject (2.3.3)
+    traject (2.3.4)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (~> 3.1)
@@ -384,10 +420,10 @@ GEM
       marc-fastxmlwriter (~> 1.0)
       slop (>= 3.4.5, < 4.0)
       yell
-    turbolinks (5.0.1)
-      turbolinks-source (~> 5)
-    turbolinks-source (5.0.3)
-    twilio-ruby (5.6.0)
+    turbolinks (5.1.1)
+      turbolinks-source (~> 5.1)
+    turbolinks-source (5.1.0)
+    twilio-ruby (5.8.1)
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -395,45 +431,51 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.4)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (3.2.0)
+    uglifier (4.1.10)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.4)
-    unicode-display_width (1.3.0)
-    vcr (3.0.3)
+    unf_ext (0.0.7.5)
+    unicode-display_width (1.3.2)
+    vcr (4.0.0)
     warden (1.2.7)
       rack (>= 1.0)
-    web-console (3.5.1)
+    web-console (3.6.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.1.0)
+    webmock (3.3.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff
-    websocket-driver (0.6.5)
+    webpacker (3.4.3)
+      activesupport (>= 4.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 4.2)
+    websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
-    xpath (2.1.0)
-      nokogiri (~> 1.3)
+    xml-simple (1.1.5)
+    xpath (3.0.0)
+      nokogiri (~> 1.8)
     yell (2.0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  alma (~> 0.2.4)
+  alma!
   awesome_print
   bento_search
-  blacklight
+  blacklight!
   blacklight-marc
-  blacklight_advanced_search
+  blacklight_advanced_search (~> 6.3)
   blacklight_alma!
   blacklight_range_limit
+  bootsnap
   byebug
   capybara
   chosen-rails
@@ -445,6 +487,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   foreman
+  google-analytics-rails (= 1.1.1)
   guard-rspec
   guard-shell
   hashie (~> 3.4.6)
@@ -456,9 +499,10 @@ DEPENDENCIES
   omniauth
   omniauth-shibboleth
   pretender
+  primo!
   pry-rails
   puma (~> 3.0)
-  rails (~> 5.0.1)
+  rails (~> 5.2)
   rails-controller-testing
   rsolr (~> 1.0)
   rspec-rails
@@ -477,6 +521,7 @@ DEPENDENCIES
   vcr
   web-console
   webmock
+  webpacker
 
 BUNDLED WITH
    1.16.1

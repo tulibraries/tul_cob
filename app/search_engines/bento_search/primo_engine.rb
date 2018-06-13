@@ -1,60 +1,30 @@
 # frozen_string_literal: true
 
-require "open-uri"
+module BentoSearch
+  class PrimoEngine < BlacklightEngine
+    delegate :blacklight_config, to: PrimoCentralController
 
-class BentoSearch::PrimoEngine
-  include BentoSearch::SearchEngine
+    def search_implementation(args)
+      query = args.fetch(:query, "")
+      per_page = args.fetch(:per_page)
 
-  @@per_page = 10
+      # Avoid making a costly call for no reason.
+      if query.empty?
+        response = { "docs" => [] }
+      else
+        response = search_results(q: query, per_page: per_page).first
+      end
 
-  attr_accessor :query
-
-  def search_implementation(args)
-    @query = args.fetch(:query, "")
-
-    results = BentoSearch::Results.new
-
-    primo_results = search_primo
-    primo_results["docs"].each do |doc|
-      results << conform_to_bento_result(doc)
+      results(response)
     end
-    results
-  end
 
-  def search_primo
-    puts api_url
-    JSON.parse(open(api_url).read)
-  end
-
-  def api_url
-    params = {
-      q: "any,contains,#{@query}",
-      apikey: configuration.apikey,
-      limit: @@per_page,
-      scope: configuration.scope,
-      vid: configuration.vid
-    }
-    URI::HTTPS.build(host: configuration.api_base_url, path: "/primo/v1/pnxs", query: params.to_query).to_s
-  end
-
-  def conform_to_bento_result(item)
-    BentoSearch::ResultItem.new(title: item.fetch("title", ""),
-      authors: authors(item),
-      publisher: item.fetch("isPartOf", "None found"),
-      link: build_primo_url(item))
-  end
-
-
-  def authors(item)
-    item.values_at("creator", "contributor")
-      .flatten
-      .compact
-      .uniq
-      .map { |creator| BentoSearch::Author.new(display: creator) }
-  end
-
-
-  def build_primo_url(primo_doc)
-    "#{configuration.web_ui_base_url}#{primo_doc['pnxId']}&context=L&vid=#{configuration.vid}&search_scope=default_scope&tab=default_tab&lang=en_US"
+    def conform_to_bento_result(item)
+      BentoSearch::ResultItem.new(
+        title: item["title"],
+        authors: item.fetch("creator", []).map { |author| BentoSearch::Author.new(display: author.tr(";", " ")) },
+        publisher: item.fetch("isPartOf", "None found"),
+        link: Rails.application.routes.url_helpers.primo_central_document_url(item["pnxId"], only_path: true),
+        custom_data: item)
+    end
   end
 end

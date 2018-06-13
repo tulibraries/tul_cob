@@ -22823,6 +22823,7 @@
     <controlfield tag='001'>991012132499760614</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2='0' tag='246'>
+      <subfield code='i'>Subfield I.</subfield>
       <subfield code='a'>Dictionary of American history: 246.</subfield>
       <subfield code='b'>Subfield B.</subfield>
       <subfield code='f'>Subfield F.</subfield>
@@ -22949,6 +22950,7 @@
     <controlfield tag='001'>991012132499760620</controlfield>
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2='0' tag='700'>
+      <subfield code='i'>Subfield I.</subfield>
       <subfield code='a'>Dictionary of American history: 700.</subfield>
       <subfield code='b'>Subfield B.</subfield>
       <subfield code='c'>Subfield C.</subfield>
@@ -25072,6 +25074,18 @@
       <subfield code="a">Kentucky Bar Association (1971- )</subfield>
       <subfield code="v">Periodicals.</subfield>
     </datafield>
+    <datafield tag="610" ind1="2" ind2="0">
+      <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield tag="610" ind1="2" ind2="0">
+      <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+      <subfield code="v">Congrès.</subfield>
+    </datafield>
+    <datafield tag="610" ind1="2" ind2="0">
+      <subfield code="a">Kentucky Bar Association (1971- )</subfield>
+      <subfield code="v">Périodqiue électronique.</subfield>
+    </datafield>
     <datafield tag="650" ind1="" ind2="0">
       <subfield code="a">Bar associations</subfield>
       <subfield code="z">Kentucky</subfield>
@@ -26116,6 +26130,583 @@
       <subfield code="i">BV741 .L588 1966 Littell</subfield>
       <subfield code="d">SCRC</subfield>
       <subfield code="f">SCRC</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag="001">991034281219703811</controlfield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Occupy Philadelphia records</subfield>
+      <subfield code="f">2006-2014 /</subfield>
+      <subfield code="g">(bulk 2011-2012).</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+      <subfield code="u">http://library.temple.edu/scrc/occupy-philadelphia-records</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="3">View preserved website versions on Archive-It.</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>991036440439703811</controlfield>
+    <datafield tag="245" ind1="4" ind2="2">
+      <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+      <subfield code="u">http://library.temple.edu/collections/scrc/camp-kennebec-alumni</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="3">View preserved website versions on Archive-It.</subfield>
+      <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>03545cgm a2200757Ia 4500</leader>
+    <controlfield tag="005">20170825173006.0</controlfield>
+    <controlfield tag="007">vd cvaizq</controlfield>
+    <controlfield tag="008">081016p20081982nyu090 g vleng d</controlfield>
+    <controlfield tag="001">991016705469703811</controlfield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">White dog</subfield>
+      <subfield code="h">[videorecording] /</subfield>
+      <subfield code="c">Paramount Pictures presents an Edgar J. Scherick production ; a Samuel Fuller film ; produced by Jon Davison ; screenplay by Samuel Fuller and Curtis Hanson ; directed by Samuel Fuller.</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="521">
+      <subfield code="a">MPAA rating: PG.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">A German shepherd is adopted by an actress who learns that the dog has been trained to attack only African Americans. Now it's up to an animal trainer to try to change the dog.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn262623833</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="c">110825</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">08/25/11</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">DH</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">DVD 11 843</subfield>
+      <subfield code="8">22318756170003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag="001">991006442049703811</controlfield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Behavioral medicine.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="2" tag="650">
+      <subfield code="a">Stress, Physiological</subfield>
+      <subfield code="x">periodicals.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="780">
+      <subfield code="t">Journal of human stress</subfield>
+      <subfield code="x">0097-840X</subfield>
+      <subfield code="w">(DLC) 75642788</subfield>
+      <subfield code="w">(OCoLC)179946</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">161213</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="902">
+      <subfield code="a">111-238-481</subfield>
+      <subfield code="b">RB4782900/01</subfield>
+      <subfield code="c">TEM-EBSC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b19455100</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="935">
+      <subfield code="a">AAS-6264</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">v.23-24 1997-1998 INC.</subfield>
+      <subfield code="h">39074500123203</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">20-22 1994-1997</subfield>
+      <subfield code="h">39074500457981</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">17-19 1991-1993</subfield>
+      <subfield code="h">39074500963798</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">serials</subfield>
+      <subfield code="u">14-16 1988-1990</subfield>
+      <subfield code="h">39074500963806</subfield>
+      <subfield code="m">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">990605</subfield>
+      <subfield code="d">s</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="HLD">
+      <subfield code="b">GINSBURG</subfield>
+      <subfield code="c">serials</subfield>
+      <subfield code="h">WB 103 .B41</subfield>
+      <subfield code="8">22391529960003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02948ngm a2200721 a 4500</leader>
+    <controlfield tag="005">20170826031103.0</controlfield>
+    <controlfield tag="007">vd bvaizm</controlfield>
+    <controlfield tag="008">060622s2003 cau094 vleng d</controlfield>
+    <controlfield tag="001">991013473489703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">078328344X</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="024">
+      <subfield code="a">025192312120</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="0" tag="028">
+      <subfield code="a">23121</subfield>
+      <subfield code="b">Universal Studios</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b30358577-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CStRLIN)ocn491720327</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">PPTb30358577</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">LAS</subfield>
+      <subfield code="c">LAS</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">PRC</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">VP@</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">CUY</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">PN1997</subfield>
+      <subfield code="b">.S274x 2003</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="130">
+      <subfield code="a">Scarface (Motion picture : 1932)</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Scarface</subfield>
+      <subfield code="h">[videorecording] /</subfield>
+      <subfield code="c">produced by Howard Hughes ; directed by Howard Hawks.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">1932 version.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Universal City, CA :</subfield>
+      <subfield code="b">Universal Studios,</subfield>
+      <subfield code="c">c2003.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 videodisc (94 min.) :</subfield>
+      <subfield code="c">4 3/4 in.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Based on the book: Scarface by Armitage Trail.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Videodisc release of the 1932 motion picture by Universal.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Special feature include original and alternate endings.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">United Artists Picture.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="508">
+      <subfield code="a">Screen story, Ben Hecht ; continuity and dialogue, Seton I. Miller, John Lee Mahin, W.R. Burnett ; photography, Lee Garmes and L.W. O'Connell ; film editor, Edward Curtiss ; musical directors, Adolph Tandler and Gus Arnheim.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="511">
+      <subfield code="a">Paul Muni, Ann Dvorak, George Raft, Boris Karloff.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">"He didn't create crime. He just organized it." Tells the story of organized crime's control of the city of Chicago during prohibition and the ruthless drive of Tony Carmonte to become the city's top gangster.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="538">
+      <subfield code="a">DVD.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">In English with optional subtitles in English, Spanish and French.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Mafia</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Mafia</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Gangsters</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Prohibition</subfield>
+      <subfield code="z">Illinois</subfield>
+      <subfield code="z">Chicago</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Chicago (Ill.)</subfield>
+      <subfield code="x">Social conditions</subfield>
+      <subfield code="y">20th century</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hawks, Howard,</subfield>
+      <subfield code="d">1896-1977.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hughes, Howard,</subfield>
+      <subfield code="d">1905-1976.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Hecht, Ben,</subfield>
+      <subfield code="d">1894-1964.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Miller, Seton I.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Mahin, John Lee,</subfield>
+      <subfield code="d">1902-1984.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Burnett, W. R.</subfield>
+      <subfield code="q">(William Riley),</subfield>
+      <subfield code="d">1899-1982.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Garmes, Lee.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">O'Connell, L.W.,</subfield>
+      <subfield code="d">1890-</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Muni, Paul,</subfield>
+      <subfield code="d">1895-1967.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Dvorak, Ann,</subfield>
+      <subfield code="d">1911-1979.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Raft, George.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Karloff, Boris,</subfield>
+      <subfield code="d">1887-1969.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Trail, Armitage.</subfield>
+      <subfield code="t">Scarface.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Tandler, Adolf.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Arnheim, Gus.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">United Artists Corporation.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Universal Pictures Corporation.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Universal City Studios.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">170224</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b30358577</subfield>
+      <subfield code="b">pmed</subfield>
+      <subfield code="c">g</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pmed</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm53170598</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="c">061011</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">10/11/06</subfield>
+      <subfield code="s">RLIN</subfield>
+      <subfield code="c">MH</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">PN1997</subfield>
+      <subfield code="i">.S274x 2003</subfield>
+      <subfield code="8">22397127340003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag="001">991036796336503811</controlfield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Chemie der Erde</subfield>
+      <subfield code="h">[electronic resource].</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Chimie inorganique</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Pétrologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Géologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Sols</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Pédologie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Géochimie</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="6" tag="650">
+      <subfield code="a">Minéraux</subfield>
+      <subfield code="v">Périodiques.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01077nam a2200313u  4500</leader>
+    <controlfield tag="001">991036817698903811</controlfield>
+    <controlfield tag="005">20170821155937.0</controlfield>
+    <controlfield tag="006">m o d |</controlfield>
+    <controlfield tag="007">cr -n---------</controlfield>
+    <controlfield tag="008">140723t20142014nyua ob 001 0 eng d</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1-63321-369-2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CKB)3710000000186812</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EBL)3024525</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(SSID)ssj0001267542</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBManifestationID)12415673</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBTitleCode)TC0001267542</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBWorkID)11264413</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKB)11117030</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(MiAaPQ)EBC3024525</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EXLCZ)993710000000186812</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">MiAaPQ</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="e">pn</subfield>
+      <subfield code="c">MiAaPQ</subfield>
+      <subfield code="d">MiAaPQ</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="041">
+      <subfield code="a">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="050">
+      <subfield code="a">QD39.3.E46</subfield>
+      <subfield code="b">.C628 2014</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">541.0285</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Bove, Daria.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Computational chemistry :</subfield>
+      <subfield code="b">theories, methods and applications /</subfield>
+      <subfield code="c">Daria Bove, editor.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Nova Publishers,</subfield>
+      <subfield code="c">2014.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="264">
+      <subfield code="c">©2014</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 online resource (217 p.)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">computer</subfield>
+      <subfield code="b">c</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">online resource</subfield>
+      <subfield code="b">cr</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="490">
+      <subfield code="a">Chemistry Research and Applications</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Description based upon print version of record.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">English</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references at the end of each chapters and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="588">
+      <subfield code="a">Description based on print version record.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Chemistry</subfield>
+      <subfield code="x">Data processing.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Cheminformatics.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="655">
+      <subfield code="a">Electronic books.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="776">
+      <subfield code="z">1-63321-354-4</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Bove, Daria,</subfield>
+      <subfield code="e">editor.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Chemistry research and applications series.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="906">
+      <subfield code="a">BOOK</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2017-12-01 10:41:29</subfield>
+      <subfield code="e">(CKB)3710000000186812</subfield>
+      <subfield code="d">PQNKB</subfield>
+      <subfield code="f">20160803134623.0</subfield>
+      <subfield code="a">2014-07-27 09:27:33</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53395029150003811</subfield>
+      <subfield code="e">EBSCOhost</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
+      <subfield code="h">613640000000000029</subfield>
+      <subfield code="8">53395029150003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01510nam  2200361 i 4500</leader>
+    <controlfield tag="001">991036805050403811</controlfield>
+    <controlfield tag="005">20170821164154.0</controlfield>
+    <controlfield tag="006">m     o  d |      </controlfield>
+    <controlfield tag="007">cr -n---------</controlfield>
+    <controlfield tag="008">150220t19701970nju     ob    001 0 eng d</controlfield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Tanzania :</subfield>
+      <subfield code="b">party transformation and economic development /</subfield>
+      <subfield code="c">Henry Bienen.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53395104810003811</subfield>
+      <subfield code="e">EBSCOhost</subfield>
+      <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
+      <subfield code="h">613640000000000029</subfield>
+      <subfield code="8">53395104810003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53424825710003811</subfield>
+      <subfield code="e">Ebook Central</subfield>
+      <subfield code="c">Ebook Central University Press</subfield>
+      <subfield code="h">614330000000000093</subfield>
+      <subfield code="8">53424825710003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53408990450003811</subfield>
+      <subfield code="e">JSTOR</subfield>
+      <subfield code="c">JSTOR Books EBA Pilot</subfield>
+      <subfield code="h">613810000000000259</subfield>
+      <subfield code="8">53408990450003811</subfield>
     </datafield>
   </record>
 </collection>
