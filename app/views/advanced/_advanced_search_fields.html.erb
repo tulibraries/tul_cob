@@ -15,7 +15,7 @@
   </div>
   <div class="row booleans">
   <% if count != advanced_search_config[:fields_row_count] %>
-    <div class="col-sm-5 col-sm-offset-2">
+    <div class="col-sm-5">
     <%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND")) %><label> AND</label>
     <%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %><label> OR</label>
     <%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %><label> NOT</label>
