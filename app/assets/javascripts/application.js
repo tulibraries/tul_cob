@@ -118,6 +118,7 @@ function deselectallchecks() {
 	}
 }
 
+
 function loadArticleIframe(id) {
   var element = $(id)
   var url = element.attr("data-iframe-url")
@@ -129,5 +130,24 @@ function loadArticleIframe(id) {
       "class": "bl_alma_iframe",
       id: 'iframe-' + id,
     }).appendTo(id);
+  }
+}
+
+/**
+ * Find either the article or catalog "Online" link and click on it.
+ */
+function toggleOnlineOnly() {
+  var online_facet = [
+    "facet_online_resources", "remove-facet-availability-online",
+    "facet_online", "remove-facet-online"
+  ]
+  .map(function(class_name) {
+    return document.getElementsByClassName(class_name)[0];
+  }).find(function(element){
+    return element !== undefined;
+  })
+
+  if (online_facet !== undefined) {
+    online_facet.click()
   }
 }

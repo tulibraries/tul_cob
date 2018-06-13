@@ -12,7 +12,7 @@ module BentoSearch
       if query.empty?
         response = { "docs" => [] }
       else
-        response = search_results(q: query, per_page: per_page).first["response"]
+        response = search_results(q: query, per_page: per_page).first
       end
 
       results(response)

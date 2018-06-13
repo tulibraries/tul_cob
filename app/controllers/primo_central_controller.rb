@@ -34,7 +34,10 @@ class PrimoCentralController < CatalogController
     config.add_search_field :any, label: "All Fields"
     config.add_search_field :title
     config.add_search_field :creator, label: "Author/Creator"
-    config.add_search_field :subject
+    config.add_search_field :sub, label: "Subject"
+    config.add_search_field(:description, label: "Description") do |field|
+      field.include_in_simple_select = false
+    end
     config.add_search_field :isbn, label: "ISBN"
     config.add_search_field :issn, label: "ISSN"
 
