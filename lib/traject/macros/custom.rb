@@ -339,12 +339,11 @@ module Traject
 
       def extract_pub_date
         lambda do |rec, acc|
-          rec.fields(["260"]).each do |field|
-            acc << four_digit_year(field["c"]) unless field["c"].nil?
-          end
-
-          rec.fields(["264"]).each do |field|
-            acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          rec.fields(["008"]).each do |field|
+            date_pub_status = Traject::TranslationMap.new("marc_date_type_pub_status")[field.value[6]]
+            date1 = four_digit_year(field.value[7..10])
+            date2 = four_digit_year(field.value[11..14])
+            acc << date1 unless date1.nil?
           end
         end
       end

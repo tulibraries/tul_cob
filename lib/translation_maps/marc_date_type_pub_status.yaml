@@ -1,0 +1,17 @@
+# attempted mapping from 008 byte 06 Type of Date/Publication status
+
+'b': no_date_or_bc
+'c': continuing_currently_published
+'d': continuing_ceased_publication
+'e': detailed
+'i': inclusive_dates
+'k': range_of_years
+'m': multiple
+'n': unknown
+'p': release_and_production
+'q': questionable
+'r': reprint_and_original
+'s': single
+'t': publication_and_copyright
+'u': continuing_resource_status_unknown
+'|': no_code
