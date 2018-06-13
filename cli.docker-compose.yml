@@ -4,7 +4,8 @@ services:
   app:
     build:
       context: .
-      dockerfile: .docker/cli/Dockerfile
+      dockerfile: .docker/app/Dockerfile
+      target: development
     stdin_open: true
     tty: true
     volumes:
