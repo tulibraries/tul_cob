@@ -243,9 +243,9 @@ module ApplicationHelper
 
   def navigational_headers
     if params[:controller] == "catalog" || params[:controller] == "advanced"
-      content_tag(:h2, "Catalog Search", class: "nav-header")
+      content_tag(:h1, "Catalog Search", class: "nav-header")
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      content_tag(:h2, "Articles Search", class: "nav-header")
+      content_tag(:h1, "Articles Search", class: "nav-header")
     end
   end
 
