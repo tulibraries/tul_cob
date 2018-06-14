@@ -2,12 +2,22 @@
 
 #header-navbar {
 	  border-bottom: 0;
-	  padding-bottom: 7px;
-	.navbar-brand {
-	  width: 300px;
-	  height: 67px;
-	  margin: 10px 21px 0px 0px;
-	  padding: 0;
+	  .navbar-header {
+	  	width: 100%;
+	  	min-width: 435px;
+	  	height: 80px;
+	  }
+	.header-logo {
+		padding-left: 7px;
+	  max-width: 77px;
+	  max-height: 77px;
+	}
+	a.header-name {
+		color: #000;
+		font-size: 4rem;
+		font-family: "Crimson Text",serif;
+		vertical-align:bottom;
+		margin-left: 10px;
 	}
 }
 .navbar-default {
