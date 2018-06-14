@@ -1,0 +1,36 @@
+<%-
+  # Compare with render_document_functions_partial helper, and
+  # _document_functions partial. BL actually has two groups
+  # of document-related tools. "document functions" by default
+  # contains Bookmark functionality shown on both results and
+  # item view. While "document tools" contains external export type
+  # functions by default only on detail.
+
+-%>
+
+<% if show_doc_actions? %>
+<% @sendto = {} %>
+      <ul id="tools-navbar">
+        <%= render_show_doc_actions @document do |config, inner| %>
+        
+          <% @sendto[config.key] = inner %>
+          
+        <% end %>
+        <li id="sendto-menu">
+          <div id="bookmarks-sendto">
+            <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <% @sendto.each do |key,value| %>
+                <li class="sendto-item">
+                  <%= value %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </li>
+      </ul>
+<% end %>
+
+<div class="clear-bookmarks">
+  <%= render_results_collection_tools %>
+</div>

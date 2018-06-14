@@ -18,10 +18,13 @@
   </div>
   <div class="row booleans">
   <% if count != advanced_search_config[:fields_row_count] %>
-    <div class="col-sm-5 col-sm-offset-2">
-    <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
-    <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
-    <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
+    <div class="col-sm-5">
+      <fieldset>
+        <legend class="sr-only">Boolean Search Operators</legend>
+        <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
+        <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
+        <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
+      </fieldset>
     </div>
   <% end %>
   </div>

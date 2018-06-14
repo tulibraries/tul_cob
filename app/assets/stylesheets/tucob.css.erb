@@ -1,3 +1,7 @@
+#page-wrapper {
+  min-height: calc(100vh - 291px)
+}
+
 #record-view-iframe, #stafflink {
   max-width: 900px;
   margin:auto;
@@ -62,8 +66,12 @@ input[type="radio"] + label {
   margin-right: 10px;
 }
 
+.advanced-search-fields {
+  line-height: 3.5em;
+}
+
 .booleans {
-  margin-bottom: 15px;
+  padding-left: 4px;
 }
 
 .advanced-search-select {
@@ -117,11 +125,6 @@ input[type="radio"] + label {
   margin-left: 5px;
 }
 
-div.online_resources {
-  border: 1px solid #ccc;
-  padding: 10px;
-}
-
 .collapse-button {
   width: 121px !important;
   white-space: normal;
@@ -137,7 +140,6 @@ div.online_resources {
 }
 
 .online-border {
-  border-bottom: 1px solid #ececec;
   padding-top: 0;
 }
 
@@ -165,14 +167,42 @@ div.physical-holding-panel {
 
 .online-panel-heading {
   background-color: #F1EFE8;
-  border-bottom: 1px solid #CFC7B0;
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  font-size: 14px;
+  font-weight: bold;
   height: 40px;
-  margin: 0 0 15px 0;
-  padding: 10px;
+  margin: 0;
+  padding: 8px;
 }
 
 .online-panel-body {
-  margin: 10px;
+  margin-top: -20px;
+}
+
+.list_elec_links {
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.search_results_table {
+  border: 1px solid #CFC7B0;
+}
+
+.record_page_elec_links {
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  padding: 0;
+  margin-top: 0;
+  width: 100%;
+}
+
+.electronic_links  {
+  border-bottom: 1px solid #CFC7B0;
+  display: block;
+  padding: 8px;
+  width: 100%;
 }
 
 /* ALMA DATA TABLE */
@@ -180,7 +210,7 @@ div.physical-holding-panel {
   border-bottom: 1px solid #CFC7B0;
 }
 
-table {
+table.border-bottom {
   border: 1px solid #CFC7B0;
   padding: 0 !important;
   margin: 0 !important;
@@ -253,10 +283,23 @@ table {
   display:inline-block;
   background-color: #fff;
 }
+#bookmarks-sendto {
+  display:inline-block;
+  background-color: #fff;
+}
 #sendto button {
   border: 0;
   background-color: #f1efe7;
   color: #A50030;
+}
+#bookmarks-sendto button {
+  border: 0;
+  background-color: #f1efe7;
+  color: #A50030;
+  padding: 8px 12px;
+}
+.clear-bookmarks {
+  display: inline-block;
 }
 #sendto-menu {
   background-color: #fff;
@@ -265,6 +308,13 @@ table {
   background-color: #fff;
   width: 111px;
 }
+#bookmarks-sendto .dropdown-menu {
+  background-color: #fff;
+  width: 111px;
+  top:auto;
+  left:auto;
+}
+
 #sendto ul {
   float:none;
   position:relative;
@@ -277,16 +327,15 @@ table {
   width: 100%;
 }
 .sendto-item a {
-  padding-left: 2px!important;
+  /*padding-left: 2px!important;*/
+  padding: 3px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 2em;
 }
 .sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
   color: #A50030!important;
   background-color: #fff!important;
-}
-#header-navbar .navbar-brand {
-   background: transparent url(<%= asset_path 'library_logo.jpg' %>) no-repeat top left;
-   margin-left: 7px;
-  /*background: transparent url(<%= asset_path 'temple-university-logo.png' %>) no-repeat top left;*/
 }
 div.navbar-form {
   display:inline-block;
@@ -301,8 +350,19 @@ ul.navbar-nav {
 #tools-navbar {
 
 }
+.bookmarks-tools #tools-navbar {
+  display:inline-block;
+  padding-left: 14px;
+}
+.bookmarks-sort-and-per-page {
+  padding: 0;
+  margin-bottom:0;
+}
 #tools-navbar li, #tools-navbar li a {
   display: inline-block;
+}
+.blacklight-primo_central.blacklight-primo_central-show li.citation {
+  display:none!important;
 }
 
 /* === MEDIA QUERIES === */
@@ -414,6 +474,20 @@ ul.navbar-nav {
     border-radius: 0;
     margin-bottom: 2px;
     padding-left: 10px;
+  }  
+  .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
+    display: block;
+    width: 100%;
+    color: #A50030!important;
+    background-color: transparent!important;
+    border-radius: 0;
+    margin-bottom: 2px;
+    padding-left: 10px;
+  }
+  #bookmarks-sendto .dropdown-menu {
+    position: absolute;
+    top: auto!important;
+    left: auto!important;
   }
   .nav-tools div.toggle_bookmark {
     padding-top: 0;

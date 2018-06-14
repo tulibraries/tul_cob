@@ -11,7 +11,7 @@ RSpec.feature "Bento Availability" do
     let (:item) { fixtures.fetch("single_online_resource") }
     let (:item_2) { fixtures.fetch("multiple_online_resources") }
     let (:electronic_resource_url) {
-      "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=53395029150003811&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true"
+      /view\/uresolver\/01TULI_INST\/openurl\?Force_direct=true&portfolio_pid=53395029150003811&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true/
     }
     let (:item_url) {
       "#{Capybara.default_host}/catalog/#{item_2['doc_id']}"
@@ -25,7 +25,12 @@ RSpec.feature "Bento Availability" do
       end
       within first("div.bento_item") do
         link_tag = find("a.bento-avail-btn")
-        expect(link_tag[:href]).to eq(electronic_resource_url)
+        expect(link_tag[:href]).to match(electronic_resource_url)
+      end
+
+      within first("div.bento-search-engine") do
+        expect(page).to have_link("View all 1 books")
+        expect(page).to have_link("View all 1 ebooks")
       end
     end
 

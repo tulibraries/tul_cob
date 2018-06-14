@@ -255,10 +255,6 @@ RSpec.describe SearchBuilder , type: :model do
         expect(solr_parameters["facet.field"]).to eq("format")
       end
 
-      it "sets the rows param to 0" do
-        expect(solr_parameters["rows"]).to eq(0)
-      end
-
       it "sets the facets param to true" do
         expect(solr_parameters["facets"]).to be(true)
       end

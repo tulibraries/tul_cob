@@ -1,6 +1,5 @@
-<button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#<%=  document_id %>" >
+<button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#<%= document_id %>" onclick="loadArticleIframe('div#<%= document_id %>');">
   <span class="avail-label" aria-expanded="false">Online</span>
 </button>
-<div id="<%= document_id %>" class="collapse">
-  <%= render("online") %>
+<div id="<%= document_id %>" class="collapse" data-iframe-url="<%= document_link + "&is_new_ui=true" %>">
 </div>

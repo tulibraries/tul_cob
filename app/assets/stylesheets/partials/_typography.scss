@@ -28,6 +28,10 @@ speak: none;
   font-weight: normal !important;
   font-style: normal !important;
 }
+@font-face {
+  font-family: 'Crimson Text';
+  src: font-url('CrimsonText-Regular.ttf') format('truetype');
+}
 
 .bebas {
   font-family: BebasNeueRegular;

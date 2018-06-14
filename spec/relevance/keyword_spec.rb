@@ -23,7 +23,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
 
     context "Cabinet of Caligari" do
       let(:search_term) { "Cabinet of Caligari" }
-      it "has expected results before a less relevant result" do
+      xit "has expected results before a less relevant result" do
         pending("results with just term Caligari not in title do not boost enough")
         expect(response)
           .to include_docs(%w[991020778949703811 991001777289703811 991027229969703811 991001812089703811 991036804904003811])
@@ -75,7 +75,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
     context "Bioinformatics" do
       let(:search_term) { "Bioinformatics" }
 
-      it "returns more recent results before older results" do
+      xit "returns more recent results before older results" do
         pending("Journal Pub Dates are the start of the run, which penalizes many journals")
         expect(response)
           .to include_docs(

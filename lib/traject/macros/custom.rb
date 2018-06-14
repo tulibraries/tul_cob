@@ -81,17 +81,17 @@ module Traject
       def extract_contributor
         lambda do |rec, acc|
           rec.fields("700").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("710").each do |f|
-            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
           rec.fields("711").each do |f|
-            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
+            linked_subfields = [f["i"], f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
             plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
@@ -339,12 +339,13 @@ module Traject
 
       def extract_pub_date
         lambda do |rec, acc|
-          rec.fields(["260"]).each do |field|
-            acc << four_digit_year(field["c"]) unless field["c"].nil?
-          end
-
-          rec.fields(["264"]).each do |field|
-            acc << four_digit_year(field["c"]) unless field["c"].nil? || field.indicator2 == "4"
+          rec.fields(["008"]).each do |field|
+            # [TODO] date_pub_status for future use. How should we display date data depending on value of date_pub_status?
+            date_pub_status = Traject::TranslationMap.new("marc_date_type_pub_status")[field.value[6]]
+            date1 = four_digit_year(field.value[7..10])
+            # [TODO] date2 for future use. How should we display dates if there are a date1 and date2?
+            date2 = four_digit_year(field.value[11..14])
+            acc << date1 unless date1.nil?
           end
         end
       end

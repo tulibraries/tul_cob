@@ -58,13 +58,13 @@ module ApplicationHelper
       else
         electronic_resource_link_builder(field)
       end
-    }.join("<br />").html_safe
+    }.join("").html_safe
   end
 
   def electronic_access_links(field)
     link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
     link_url = field.split("|").last
-    new_link = content_tag(:li, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "list_items")
+    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
     new_link
   end
 
@@ -95,7 +95,7 @@ module ApplicationHelper
   def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
     item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
     item_html = item_parts.compact.join(" - ").html_safe
-    content_tag(:li, item_html , class: "list_items")
+    content_tag(:td, item_html , class: " electronic_links list_items")
   end
 
   def electronic_resource_link_builder(field)
@@ -167,21 +167,66 @@ module ApplicationHelper
     end
   end
 
+  def total_items(results)
+    results.total_items[:query_total] || 0 rescue 0
+  end
+
+  def total_online(results)
+    results.total_items[:online_total] || 0 rescue 0
+  end
+
   # TODO: Is variation here better handled in multiple link templates?
   def bento_link_to_full_results(results)
+    total = number_with_delimiter(total_items results)
     case results.engine_id
     when "blacklight"
-      link_to "View all #{number_with_delimiter(results.total_items)} items", search_catalog_path(q: params[:q]), class: "full-results"
+      url = search_catalog_path(q: params[:q])
+      link_to "View all #{total} items", url, class: "full-results"
     when "journals"
-      link_to "View all #{number_with_delimiter(results.total_items)} journals", search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] }), class: "full-results"
+      url = search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] })
+      link_to "View all #{total} journals", url, class: "full-results"
     when "books"
-      link_to "View all #{number_with_delimiter(results.total_items)} books", search_catalog_path(q: params[:q], f: { format: ["Book"] }), class: "full-results"
+      url = search_catalog_path(q: params[:q], f: { format: ["Book"] })
+      link_to "View all #{total} books", url, class: "full-results"
     when "more"
-      link_to "View all catalog results", search_catalog_path(q: params[:q]), class: "full-results"
+      url = search_catalog_path(q: params[:q])
+      link_to "View all catalog results", url, class: "full-results"
     when "articles"
-      link_to "View all #{number_with_delimiter(results.total_items)} articles", url_for(action: :index, controller: :primo_central, q: params[:q])
+      url = url_for(action: :index, controller: :primo_central, q: params[:q])
+      link_to "View all #{total} articles", url, class: "full-results"
     else
-      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{results.count}" || "?", class: "record-count")
+      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{total}" || "?", class: "record-count")
+    end
+  end
+
+  def bento_link_to_online_results(results)
+    total = number_with_delimiter(total_online results)
+    case results.engine_id
+    when "blacklight"
+      url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
+      link_to "View all #{total} online items", url, class: "full-results"
+    when "journals"
+      url = search_catalog_path(q: params[:q], f: {
+        format: ["Journal/Periodical"],
+        availability_facet: ["Online"]
+      })
+      link_to "View all #{total} online journals", url, class: "full-results"
+    when "books"
+      url = search_catalog_path(q: params[:q], f: {
+        format: ["Book"],
+        availability_facet: ["Online"]
+      })
+      link_to "View all #{total} ebooks", url, class: "full-results"
+    when "more"
+      ""
+    when "articles"
+      url = url_for(
+        action: :index, controller: :primo_central,
+        q: params[:q], f: { availability_facet: ["Online"] }
+      )
+      link_to "View all #{total} online articles", url, class: "full-results"
+    else
+      ""
     end
   end
 
@@ -198,9 +243,9 @@ module ApplicationHelper
 
   def navigational_headers
     if params[:controller] == "catalog" || params[:controller] == "advanced"
-      content_tag(:h2, "Catalog Search", class: "nav-header")
+      content_tag(:h1, "Catalog Search", class: "nav-header")
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      content_tag(:h2, "Articles Search", class: "nav-header")
+      content_tag(:h1, "Articles Search", class: "nav-header")
     end
   end
 
@@ -212,5 +257,13 @@ module ApplicationHelper
         link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
       end
     end
+  end
+
+  def render_online_only_checkbox
+    online_articles = params.dig("f", "tlevel")&.include?("online_resources")
+    online_catalog = params.dig("f", "availability_facet")&.include?("Online")
+    checked = online_articles || online_catalog
+
+    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()"
   end
 end
