@@ -340,8 +340,10 @@ module Traject
       def extract_pub_date
         lambda do |rec, acc|
           rec.fields(["008"]).each do |field|
+            # [TODO] date_pub_status for future use. How should we display date data depending on value of date_pub_status?
             date_pub_status = Traject::TranslationMap.new("marc_date_type_pub_status")[field.value[6]]
             date1 = four_digit_year(field.value[7..10])
+            # [TODO] date2 for future use. How should we display dates if there are a date1 and date2?
             date2 = four_digit_year(field.value[11..14])
             acc << date1 unless date1.nil?
           end
