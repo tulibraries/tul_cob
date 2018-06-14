@@ -12,12 +12,13 @@
 	  max-width: 77px;
 	  max-height: 77px;
 	}
-	a.header-name {
+	a.header-name, a.header-name:hover, a.header-name:focus {
 		color: #000;
 		font-size: 4rem;
 		font-family: "Crimson Text",serif;
 		vertical-align:bottom;
 		margin-left: 10px;
+		text-decoration: none;
 	}
 }
 .navbar-default {
