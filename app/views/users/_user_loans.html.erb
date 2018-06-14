@@ -28,7 +28,7 @@
             <td class="renewal-check">
               <div class="form-check">
                 <label class="form-check-label">
-                <% if is_not_renewable?(loan) %>
+                <% unless loan.renewable? %>
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" title="unable to renew"></span>
                 <% else %>
                   <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
@@ -37,7 +37,7 @@
                 </label>
               </div>
             </td>
-            <td id="<%= loan.loan_id %>" class="overdue"><%= is_overdue(loan.loan_status) %></td>
+            <td id="<%= loan.loan_id %>" class="overdue"><% if loan.overdue? %><%= loan.loan_status %><% end %></td>
           </tr>
         <% end %>
           <tr>

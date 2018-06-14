@@ -3,9 +3,9 @@
 require "rails_helper"
 require "time"
 
-RSpec.describe "users/_user_loans.html.erb", type: :view do
+RSpec.describe "users/_user_loans.html.erb", :focus, type: :view do
   before :each do
-    @loans = Alma::LoanSet.new({})
+    @user = FactoryBot.build(:user)
   end
 
   let(:one_day) { 24 * 3600 }
@@ -18,8 +18,9 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
         due_date: (Time.now + one_day).iso8601, # tomorrow
         item_barcode: "000237055710000121",
         call_number: "AA123",
-        renewable: "true",
-        loan_status: "Active"
+        renewable: true,
+        loan_status: "Active",
+        renewable?: true
       )
     }
 
@@ -30,19 +31,20 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
         due_date: (Time.now + one_day).iso8601, # tomorrow
         item_barcode: "000237055710000121",
         call_number: "AA123",
-        loan_status: "Active"
+        loan_status: "Active",
+        renewable?: true
       )
     }
 
     it "doesn't show exclamation point in renewal column" do
-      allow(@loans).to receive(:list).and_return([renewable_loan])
+      allow(@user).to receive(:loans).and_return([renewable_loan])
 
       render partial: "users/user_loans"
       expect(rendered).to_not have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
     end
 
     it "doesn't show exclamation point in renewal column" do
-      allow(@loans).to receive(:list).and_return([renewable_loan_without_flag])
+      allow(@user).to receive(:loans).and_return([renewable_loan_without_flag])
 
       render partial: "users/user_loans"
       expect(rendered).to_not have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
@@ -57,13 +59,14 @@ RSpec.describe "users/_user_loans.html.erb", type: :view do
         due_date: (Time.now + one_day).iso8601, # tomorrow
         item_barcode: "000237055710000121",
         call_number: "AA123",
-        renewable: "false",
-        loan_status: "Active"
+        renewable: false,
+        loan_status: "Active",
+        renewable?: false
       )
     }
 
     it "shows exclamation point in renewal column" do
-      allow(@loans).to receive(:list).and_return([nonrenewable_loan])
+      allow(@user).to receive(:loans).and_return([nonrenewable_loan])
 
       render partial: "users/user_loans"
       expect(rendered).to have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')

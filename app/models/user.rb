@@ -10,8 +10,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
 
-  delegate :holds, :fines, to: alma
-
   def alma
     @alma ||= Alma::User.find(uid)
   end
@@ -27,6 +25,18 @@ class User < ApplicationRecord
 
   def loans
     @loans ||= alma.loans(limit: 50)
+  end
+
+  def fines
+    @fines ||= alma.fines
+  end
+
+  def holds
+    @holds ||= alma.requests
+  end
+
+  def renew_selected(ids)
+    Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids)
   end
 
 
