@@ -17,7 +17,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     session[:alma_auth_type] = "sso"
     session[:alma_sso_user] = @user.uid
     session[:alma_sso_token] = SecureRandom.hex(10)
-    set_flash_message(:notice, :success, kind: "Temple Single Sign On") if is_navigational_format?
+    set_flash_message(:success, :notice, kind: "Temple Single Sign On") if is_navigational_format?
     redirect_to users_url(@user), action: :account
   end
 
