@@ -148,7 +148,7 @@ module Traject
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
+            selected_subfields = [f["a"], f["c"], f["g"], f["9"]].join("|")
             acc << selected_subfields
           end
           # Short circuit if PRT field present.

@@ -100,8 +100,10 @@ module ApplicationHelper
 
   def electronic_resource_link_builder(field)
     return if field.empty?
-    portfolio_pid, db_name, addl_info = field.split("|")
+    portfolio_pid, db_name, addl_info, availability = field.split("|")
+    return if availability == "Not Available"
     db_name ||= "Find it online"
+    addl_info = nil if addl_info&.empty?
     electronic_resource_list_item(portfolio_pid, db_name, addl_info)
   end
 
