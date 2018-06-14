@@ -282,16 +282,17 @@ RSpec.feature "RecordPageFields" do
   end
 
   feature "MARC Publication Date Fields" do
-    let (:item_260) { fixtures.fetch("pub_date_260") }
+    let (:item_008) { fixtures.fetch("pub_date_008") }
     scenario "User visits a document with publication date" do
-      visit "catalog/#{item_260['doc_id']}"
+      visit "catalog/#{item_008['doc_id']}"
       within "dd.blacklight-pub_date" do
-        expect(page).to have_text(item_260["pub_date"])
+        expect(page).to have_text(item_008["pub_date"])
       end
     end
 
     let (:item_264) { fixtures.fetch("pub_date_264") }
     scenario "User visits a document with publication date" do
+      skip "[TODO] Determine if we will continue to use field 264 for pub date"
       visit "catalog/#{item_264['doc_id']}"
       within "dd.blacklight-pub_date" do
         expect(page).to have_text(item_264["pub_date"])
