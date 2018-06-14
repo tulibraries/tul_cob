@@ -217,7 +217,3 @@ to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", 
 # a=create date, b=update date, c=Suppress from publishing, d=Originating system, e=Originating system ID, f=Originating system version
 to_field "record_creation_date", extract_marc("ADMa")
 to_field "record_update_date", extract_marc("ADMb")
-
-# each_record do |record, context|
-#   puts context
-# end
