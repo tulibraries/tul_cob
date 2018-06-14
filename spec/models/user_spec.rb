@@ -3,7 +3,7 @@
 require "rails_helper"
 require "database_cleaner"
 
-RSpec.describe User, :focus, type: :model do
+RSpec.describe User, type: :model do
   describe "Alma services" do
     before :all do
       DatabaseCleaner.strategy = :truncation

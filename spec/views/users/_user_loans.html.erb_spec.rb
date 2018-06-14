@@ -3,7 +3,7 @@
 require "rails_helper"
 require "time"
 
-RSpec.describe "users/_user_loans.html.erb", :focus, type: :view do
+RSpec.describe "users/_user_loans.html.erb", type: :view do
   before :each do
     @user = FactoryBot.build(:user)
   end
