@@ -4,7 +4,7 @@ en:
     greeting: "Welcome to the Catalog Search"
     html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
     
-    search_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
+    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     search_link: "/bento"
 
@@ -65,7 +65,7 @@ en:
     greeting: "Welcome to the Articles Search"
     html: "<p>The Articles Search includes hundreds of millions of journal articles, e-books, newspapers, and other resources available online.</p>"
     
-    search_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
+    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     search_link: "/bento"
 
