@@ -16,7 +16,7 @@ RSpec.describe PrimoCentralController, type: :controller do
     context "no creator" do
       let(:presenter) { { document: document, field: "creator" } }
       it "returns an empty list if nos creators are available" do
-        expect(controller.browse_creator(presenter)).to eq([])
+        expect(controller.browse_creator(presenter)).to eq(0)
       end
     end
 
