@@ -186,6 +186,7 @@ to_field "url_finding_aid_display", extract_url_finding_aid
 # Availability
 to_field "availability_facet", extract_availability
 to_field "location_display", extract_marc("HLDbc")
+to_field "holdings_with_no_items_display", extract_holdings_with_no_items
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)

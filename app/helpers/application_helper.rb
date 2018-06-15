@@ -52,10 +52,7 @@ module ApplicationHelper
   end
 
   def check_holdings_library_name(document)
-    location_hash = document.fetch("location_display", []).map { |field|
-      field.split() }.to_h
-    lib = location_hash.keys
-    lib
+    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
   end
 
   def check_holdings_call_number(document)
@@ -64,7 +61,7 @@ module ApplicationHelper
 
   def check_holdings_location(document, library)
     locations_array = []
-    locations = document.fetch("location_display", []).select { |location| location.include?(library)}.map { |field| field.split() }
+    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library)}.map { |field| field.split() }
     locations.each { |k, v|
       shelf = Rails.configuration.locations.dig(k, v)
       locations_array << shelf
@@ -184,7 +181,7 @@ module ApplicationHelper
   end
 
   def aeon_request_button(document)
-    if document.fetch("location_display", []).include?("rarestacks") && document["library_facet"].include?("Special Collections Research Center")
+    if document.fetch("location_display", []).include?("SCRC rarestacks") && document["library_facet"].include?("Special Collections Research Center")
       button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request btn btn-primary") +
       content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
     end
