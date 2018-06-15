@@ -369,7 +369,7 @@ RSpec.describe Traject::Macros::Custom do
         context "single PRT field to electronic_resource_display" do
           it "maps a single PRT field" do
             expect(subject.map_record(records[1])).to eq(
-              "electronic_resource_display" => ["foo"]
+              "electronic_resource_display" => ["foo|||"]
             )
           end
         end
@@ -377,7 +377,7 @@ RSpec.describe Traject::Macros::Custom do
         context "multiple PRT fields present" do
           it "maps a multiple PRT fields to electronic_resource_display" do
             expect(subject.map_record(records[2])).to eq(
-              "electronic_resource_display" => ["foo", "bar"]
+              "electronic_resource_display" => ["foo|||Available", "bar|||Not Available"]
             )
           end
         end
@@ -421,14 +421,14 @@ RSpec.describe Traject::Macros::Custom do
         context "856 field has exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[7])).to eq(
-              "electronic_resource_display" => ["foo"]
+              "electronic_resource_display" => ["foo|||"]
             )
           end
         end
         context "856 has no exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[8])).to eq(
-              "electronic_resource_display" => ["foo"]
+              "electronic_resource_display" => ["foo|||"]
             )
           end
         end
@@ -540,7 +540,7 @@ RSpec.describe Traject::Macros::Custom do
       context "multiple PRT fields present" do
         it "reverses the order of multipe PRT fields" do
           expect(subject.map_record(records[2])).to eq(
-            "url_more_links_display" => ["bar", "foo"]
+            "url_more_links_display" => ["bar|||Not Available", "foo|||Available"]
           )
         end
       end

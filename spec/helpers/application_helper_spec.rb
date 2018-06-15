@@ -49,6 +49,13 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(electronic_resource_link_builder(field)).to have_text("Sample Text")
       end
     end
+
+    context "item is not available" do
+      let(:field) { "|||Not Available" }
+      it "skips items that are not available" do
+        expect(electronic_resource_link_builder(field)).to be_nil
+      end
+    end
   end
 
   describe "#check_for_full_http_link(args)" do
