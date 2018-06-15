@@ -3,10 +3,10 @@
 	  <ul>
 	    <li><span>Name:</span> <%= current_user.name %></li>
 	    <li><span>Status:</span> Active </li>
-	    <li><span>Items checked out:</span> <%= total_loans(@loans) %></li>
-	    <li><span>Items requested:</span> <%= total_holds(@holds) %></li>
-	    <li><span>Current balance:</span> 
-	      <span class="balance"><%= number_to_currency(@fines.sum) %></span> </li>
+	    <li><span>Items checked out:</span> <%= @user.loans.total_records %></li>
+	    <li><span>Items requested:</span> <%= @user.holds.total_records %></li>
+	    <li><span>Current balance:</span>
+	      <span class="balance"><%= number_to_currency(@user.fines.sum) %></span> </li>
 	     <li><%= link_to "Update name via TUPortal", "https://tuportal.temple.edu" %></li>
 	  </ul>
 	</div>

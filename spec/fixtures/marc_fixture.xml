@@ -26709,4 +26709,337 @@
       <subfield code="8">53408990450003811</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>02105cam a2200481Ia 4500</leader>
+    <controlfield tag='001'>991059255340248393</controlfield>
+    <controlfield tag='008'>830921s1967    pauab    b    001 0aeng  </controlfield>
+    <datafield ind1=' ' ind2=' ' tag='010'>
+      <subfield code='a'>67015303</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b12506278-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>ocn471185832</subfield>
+      <subfield code='9'>ExL</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>PATG83-B29902</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='040'>
+      <subfield code='c'>OAkU</subfield>
+      <subfield code='d'>*m.c.*</subfield>
+      <subfield code='d'>NNU</subfield>
+      <subfield code='d'>CStRLIN</subfield>
+      <subfield code='d'>PPT</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='043'>
+      <subfield code='a'>n-us-pa</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='079'>
+      <subfield code='a'>ocm00179897</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>F158.44.F55</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='100'>
+      <subfield code='a'>Fisher, Sidney George,</subfield>
+      <subfield code='d'>1809-1871.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='2' tag='245'>
+      <subfield code='a'>A Philadelphia perspective :</subfield>
+      <subfield code='b'>the diary of Sidney George Fisher covering the years, 1834-1871 /</subfield>
+      <subfield code='c'>edited by Nicholas B. Wainwright.</subfield>
+    </datafield>
+    <datafield ind1='3' ind2='0' tag='246'>
+      <subfield code='a'>Diary of Sidney George Fisher covering the years, 1834-1871</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='260'>
+      <subfield code='a'>Philadelphia :</subfield>
+      <subfield code='b'>Historical Society of Pennsylvania,</subfield>
+      <subfield code='c'>1967.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>x, 626 p. :</subfield>
+      <subfield code='b'>ill., 2 maps (on lining papers, 1 col.), ports ;</subfield>
+      <subfield code='c'>27 cm</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>&quot;Printed in the United States of America by the Winchell Company, Philadelphia, in an edition of 1,000 copies.&quot; -- T.p. verso.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='504'>
+      <subfield code='a'>Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='541'>
+      <subfield code='3'>SCRC copy:</subfield>
+      <subfield code='a'>Whiteman, Maxwell ;</subfield>
+      <subfield code='c'>Gift</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='580'>
+      <subfield code='a'>SCRC copy forms part of the Maxwell Whiteman Collection.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='590'>
+      <subfield code='a'>SCRC copy in publisher&apos;s quarter black cloth with marbled boards, gilt on spine, and facsimile of Fisher&apos;s signature on front board in gilt. In original dust jacket and with two copies of addenda pages laid in.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='600'>
+      <subfield code='a'>Fisher, Sidney George,</subfield>
+      <subfield code='d'>1809-1871.</subfield>
+    </datafield>
+    <datafield ind1='3' ind2='0' tag='600'>
+      <subfield code='a'>Fisher family.</subfield>
+    </datafield>
+    <datafield ind1='3' ind2='0' tag='600'>
+      <subfield code='a'>Ingersoll family.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='651'>
+      <subfield code='a'>Philadelphia (Pa.)</subfield>
+      <subfield code='x'>History</subfield>
+      <subfield code='x'>Sources.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='651'>
+      <subfield code='a'>Philadelphia (Pa.)</subfield>
+      <subfield code='x'>Social life and customs.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='700'>
+      <subfield code='a'>Wainwright, Nicholas B.,</subfield>
+      <subfield code='e'>editor.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='700'>
+      <subfield code='a'>Whiteman, Maxwell,</subfield>
+      <subfield code='e'>former owner.</subfield>
+      <subfield code='5'>PPT</subfield>
+    </datafield>
+    <datafield ind1='2' ind2=' ' tag='710'>
+      <subfield code='a'>Winchell Company (Philadelphia, Pa.),</subfield>
+      <subfield code='e'>printer.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='852'>
+      <subfield code='8'>2297286720003811</subfield>
+      <subfield code='b'>SCRC</subfield>
+      <subfield code='c'>rarestacks</subfield>
+      <subfield code='h'>F158.44 .F55 1967 Whiteman</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>2297286740003811</subfield>
+      <subfield code='b'>AMBLER</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>F158.44.F55</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>2297286770003811</subfield>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>F158.44.F55</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>170104</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b12506278</subfield>
+      <subfield code='b'>multi</subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='935'>
+      <subfield code='a'>00267632</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>astk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>srare</subfield>
+      <subfield code='a'>F158.44</subfield>
+      <subfield code='b'>.F55 1967 Whiteman</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>P</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>AMB</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='8' tag='973'>
+      <subfield code='t'>Maxwell Whiteman Collection</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>3</subfield>
+      <subfield code='c'>990101</subfield>
+      <subfield code='d'>m</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>2</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='a'>07/18/84</subfield>
+      <subfield code='t'>c</subfield>
+      <subfield code='s'>9125</subfield>
+      <subfield code='n'>PPT</subfield>
+      <subfield code='w'>NYUG0179897B</subfield>
+      <subfield code='d'>09/21/83</subfield>
+      <subfield code='b'>XXX</subfield>
+      <subfield code='i'>840718</subfield>
+      <subfield code='h'>830921</subfield>
+      <subfield code='l'>PATG</subfield>
+    </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+  </record>
+  <record>
+    <leader>01732nas a2200433u  4500</leader>
+    <controlfield tag='001'>991003094859583155</controlfield>
+    <controlfield tag='008'>050927c    9999dcuur p   d   0   a0eng d</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b29701867-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>ocn491278749</subfield>
+      <subfield code='9'>ExL</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>MRC13137416 </subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='040'>
+      <subfield code='c'>MvI</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='079'>
+      <subfield code='a'>ocm64228130</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>G105</subfield>
+      <subfield code='b'>.U52</subfield>
+    </datafield>
+    <datafield ind1='2' ind2=' ' tag='110'>
+      <subfield code='a'>United States Board on Geographic Names.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='0' tag='245'>
+      <subfield code='a'>Decision list.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='260'>
+      <subfield code='a'>Washington.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>v. in ;</subfield>
+      <subfield code='c'>22-25 cm.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='362'>
+      <subfield code='a'>1892-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Frequency varies.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Decisions prior to 1892 were published in Bulletin no. 1-3 of the Geographic Board and later in the Board&apos;s 1st Report.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Cumulations issued irregularly; cumulated decisions issued also in the 2d-6th Reports of the U. S. Geographic Board.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Issues for Oct. 1, 1930-May 2, 1934 called no. 1-41; July/oCt. 1943-   called no. 4301- .</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='547'>
+      <subfield code='a'>Title varies: 1892-Apr. 1944, Decisions.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='547'>
+      <subfield code='a'>Beginning in 1944, some vol. have title: Cumulative decision list.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='550'>
+      <subfield code='a'>Vols. for 1892-May 2, 1934-May 2, 1934 issued by the Geographic Board (called 1892-  Board on Geographic Names); 1934/35--Apr./July 1947 by the Board on Geographical Names.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Geography</subfield>
+      <subfield code='v'>Dictionaries.</subfield>
+    </datafield>
+    <datafield ind1='2' ind2=' ' tag='710'>
+      <subfield code='a'>United States Board on Geographical Names.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>22227952320003811</subfield>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>remote</subfield>
+      <subfield code='x'>FREQUENCY: a | SCODE3: -</subfield>
+      <subfield code='h'> G105 </subfield>
+      <subfield code='i'> .U52 </subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='866'>
+      <subfield code='8'>22227952320003811.1</subfield>
+      <subfield code='a'>Some volumes are in the Library Depository</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>121019</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>MARCIVE RECON PROJECT</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b29701867</subfield>
+      <subfield code='b'>k    </subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.1932-34 no.19-41</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.1934-43</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.1944-45</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.1946-49</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.no.4410-12</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.no.4501-15,4517</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.no.4601-09</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.no.4708-09</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>kstk </subfield>
+      <subfield code='u'>v.no.5904</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='973'>
+      <subfield code='a'>Decisions.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>7</subfield>
+      <subfield code='c'>051225</subfield>
+      <subfield code='d'>s</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield tag='HLD' >
+    </datafield>
+  </record>
 </collection>

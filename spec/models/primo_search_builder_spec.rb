@@ -61,7 +61,16 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       let(:params) { ActionController::Parameters.new(q_1: "foo") }
 
       it "properly sets a query to be a build query" do
-        expected = [{ "value" => "foo", "field" => nil, "precision" => nil, "operator" => nil }]
+        expected = [{ "value" => "foo", "field" => :any, "precision" => nil, "operator" => nil }]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
+    context "description field is used in advanced setting" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo", f_1: "description") }
+
+      it "properly maps description to desc" do
+        expected = [{ "value" => "foo", "field" => :desc, "precision" => nil, "operator" => nil }]
         expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
       end
     end
@@ -78,7 +87,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       let(:params) { ActionController::Parameters.new(q_1: "foo", q_2: "") }
 
       it "should skip empty advanced queries" do
-        expected = [{ "value" => "foo", "field" => nil, "precision" => nil, "operator" => nil }]
+        expected = [{ "value" => "foo", "field" => :any, "precision" => nil, "operator" => nil }]
         expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
       end
     end

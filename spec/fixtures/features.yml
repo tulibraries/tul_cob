@@ -449,6 +449,12 @@ language_041_g:
 language_041_j:
   doc_id: "991012132499760691"
   language: "Japanese English"
+collection_973_t:
+  doc_id: "991059255340248393"
+  collection: "Maxwell Whiteman Collection"
+collection_973_a:
+  doc_id: "991003094859583155"
+  collection: "Decisions."
 single_online_resource:
   doc_id: "991036817698903811"
   title: "Computational Chemistry Theories, Methods and Applications"

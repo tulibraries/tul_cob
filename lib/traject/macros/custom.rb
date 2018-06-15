@@ -148,7 +148,7 @@ module Traject
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"]].compact.join("|")
+            selected_subfields = [f["a"], f["c"], f["g"], f["9"]].join("|")
             acc << selected_subfields
           end
           # Short circuit if PRT field present.
@@ -342,9 +342,9 @@ module Traject
           rec.fields(["008"]).each do |field|
             # [TODO] date_pub_status for future use. How should we display date data depending on value of date_pub_status?
             date_pub_status = Traject::TranslationMap.new("marc_date_type_pub_status")[field.value[6]]
-            date1 = four_digit_year(field.value[7..10])
+            date1 = field.value[7..10]
             # [TODO] date2 for future use. How should we display dates if there are a date1 and date2?
-            date2 = four_digit_year(field.value[11..14])
+            date2 = field.value[11..14]
             acc << date1 unless date1.nil?
           end
         end

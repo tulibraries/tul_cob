@@ -58,7 +58,7 @@ module Blacklight::PrimoCentral
         build_query = (1..rows_count).map do |count|
           value = blacklight_params["q_#{count}"]
           precision = blacklight_params["operator_#{count}"]
-          field = blacklight_params["f_#{count}"]
+          field = to_primo_field(blacklight_params["f_#{count}"])
           operator = blacklight_params["op_#{count}"]
 
           if !value&.empty? && !value.nil?
@@ -122,6 +122,7 @@ module Blacklight::PrimoCentral
           isbn_t: :isbn,
           issn_t: :issn,
           subject: :sub,
+          description: :desc,
         }
           .with_indifferent_access
           .fetch(field, field) || :any

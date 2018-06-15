@@ -968,6 +968,25 @@ RSpec.feature "RecordPageFields" do
     end
   end
 
+  feature "Local Collection Fields" do
+    let (:item_973a) { fixtures.fetch("collection_973_a") }
+    scenario "User visits a document with collection 973a" do
+      visit "catalog/#{item_973a['doc_id']}"
+      within "dd.blacklight-collection_display" do
+        expect(page).to have_text(item_973a["collection"])
+      end
+    end
+
+    let (:item_973t) { fixtures.fetch("collection_973_t") }
+    scenario "User visits a document with collection 973t" do
+      visit "catalog/#{item_973t['doc_id']}"
+      within "dd.blacklight-collection_display" do
+        expect(page).to have_text(item_973t["collection"])
+      end
+    end
+  end
+
+
   feature "MARC Entry Preced Fields" do
     let (:item_780_00) { fixtures.fetch("entry_preced_780_00") }
     scenario "User visits a document with continues" do
