@@ -14,6 +14,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
 
   helper_method :browse_creator
+  helper_method :display_duration
 
   configure_blacklight do |config|
     # default advanced config values
@@ -281,7 +282,7 @@ class CatalogController < ApplicationController
     config.add_show_field "title_series_display", label: "Series Title"
     config.add_show_field "title_series_vern_display", label: "Series Title"
     config.add_show_field "volume_series_display", label: "Volume"
-    config.add_show_field "duration_display", label: "Duration"
+    config.add_show_field "duration_display", label: "Duration", helper_method: :display_duration
     config.add_show_field "frequency_display", label: "Frequency"
     config.add_show_field "sound_display", label: "Sound characteristics"
     config.add_show_field "digital_file_display", label: "Digital file characteristics"
@@ -531,5 +532,9 @@ class CatalogController < ApplicationController
       end
       creator
     end
+  end
+
+  def display_duration(args)
+    args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 end
