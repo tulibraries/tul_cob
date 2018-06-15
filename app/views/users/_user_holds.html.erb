@@ -6,24 +6,23 @@
       <tr>
         <th width="2%">#</th>
         <th width="40%">Title</th>
-        <th width="15%">Held Until</th>
-        <th width="10%">Barcode</th>
-        <th width="10%">Status</th>
+        <th width="10%">Held Until</th>
+        <th width="15%">Status</th>
+        <th width="28%"></th>
       </tr>
     </thead>
     <tbody>
-        <% @holds.list.each_with_index do |hold, counter| %>
+        <% @user.holds.each_with_index do |hold, counter| %>
         <tr>
           <td><%= counter + 1 %></td>
           <td><%= hold.title %></td>
           <td><%= make_date(hold.expiry_date) %></td>
-          <td>12345678999<%#= hold.barcode %></td>
           <td><%= hold.request_status %></td>
         </tr>
         <tr>
           <td colspan="7">
           <div class="col col-md-12 text-left">
-            For requests from the Special Collections Research Center, see 
+            For requests from the Special Collections Research Center, see
             <%= link_to "SCRC Research Account", "https://temple.aeon.atlas-sys.com/logon" %>.
             </div>
           </td>

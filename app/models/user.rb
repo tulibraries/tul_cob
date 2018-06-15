@@ -10,24 +10,35 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
 
+  def alma
+    @alma ||= Alma::User.find(uid)
+  end
+
+
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.
+
   def to_s
     email
   end
 
-  def get_loans
-    Alma::User.loans(user_id: uid, expand: "renewable")
+  def loans
+    @loans ||= alma.loans(limit: 50)
   end
 
-  def get_holds
-    Alma::User.requests(user_id: uid)
+  def fines
+    @fines ||= alma.fines
   end
 
-  def get_fines
-    Alma::User.fines(user_id: uid)
+  def holds
+    @holds ||= alma.requests
   end
+
+  def renew_selected(ids)
+    Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids)
+  end
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

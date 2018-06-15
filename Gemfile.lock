@@ -1,8 +1,9 @@
 GIT
-  remote: https://github.com/tulibraries/alma_rb
-  revision: c29dffc316da1da33e65d34a01a47aa203122f51
+  remote: https://github.com/tulibraries/alma_rb.git
+  revision: b22df2fa618fb2db487fbb4aee2cfda13b13503a
+  branch: normaize-reponse-and-sets
   specs:
-    alma (0.2.5)
+    alma (0.2.7)
       ezwadl
       httparty
       xml-simple
