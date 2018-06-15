@@ -1,11 +1,12 @@
 <div class="page-header row">
-  <h2 class="col-md-8 page-heading jumbotron-heading"><%= t('blacklight.catalog_greeting') %></h2>
+  <h2 class="col-md-8 page-heading jumbotron-heading"><%= t('blacklight.greeting') %></h2>
 </div>
 
 <div id="getting-started">
-  <p class='section-heading'><%= t('blacklight.catalog_html') %></p>
-  	<%= t('blacklight.catalog_list_1_html', href: link_to(t("blacklight.catalog_href_1"), t("blacklight.catalog_href_1_link"))) %>
-  	<%= t('blacklight.catalog_list_2_html', href: link_to(t("blacklight.catalog_href_2"), t("blacklight.catalog_href_2_link"))) %>
-  	<%= t('blacklight.catalog_list_3_html', href: link_to(t("blacklight.catalog_href_3"), t("blacklight.catalog_href_3_link"))) %>
+  <p class='section-heading'><%= t('blacklight.html') %></p>
+  <p>
+  	<%= t('blacklight.search_html', href: link_to(t("blacklight.search_href"), t("blacklight.search_link"))) %>
+  	<%= t('blacklight.borrow_html', href: link_to(t("blacklight.borrow_href"), t("blacklight.borrow_link"))) %>
+  	<%= t('blacklight.help_html', href: link_to(t("blacklight.help_href"), t("blacklight.help_link"))) %>
   </p>
 </div>

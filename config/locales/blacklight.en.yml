@@ -1,35 +1,20 @@
 en:
   blacklight:
     application_name: "Library Search Beta"
-    catalog_greeting: "Welcome to the Catalog Search"
-    catalog_html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
-    catalog_list_1_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
-    catalog_list_2_html: "<li>If you can't find something, %{href}.</li>"
-    catalog_list_3_html: "<li>For help, %{href}.</li></ul></p>"
-    catalog_href_1: "the Library Search"
-    catalog_href_1_link: "/bento"
-    catalog_href_2: "borrow from another library"
-    catalog_href_2_link: "http://answers.library.temple.edu/faq/195868"
-    catalog_href_3: "Ask a Librarian"
-    catalog_href_3_link: "https://library.temple.edu/asktulibraries"
+    greeting: "Welcome to the Catalog Search"
+    html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
     
-    bento_greeting: "Try out the Library Search beta"
-    bento_introduction: "An enhanced version of the Library Search is currently under development at Temple University Libraries. A beta version was originally released in February 2018  and will be updated on June 25, 2018 with new features."
-    bento_html: "On <strong>August 6th, 2018</strong>, this updated version of the Library Search is scheduled to replace the existing interface. Please refer to our %{href} for more information about work in progress and providing feedback."
-    bento_href: "Library Search Road Map"
-    bento_href_link: "https://library.temple.edu/library-search-faq/roadmap"
+    search_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
+    search_href: "the Library Search"
+    search_link: "/bento"
 
-    articles_greeting: "Welcome to the Articles Search"
-    articles_html: "<p>The Articles Search includes hundreds of millions of journal articles, e-books, newspapers, and other resources available online.</p>"
-    articles_list_1_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
-    articles_list_2_html: "<li>If you can't find something, %{href}.</li>"
-    articles_list_3_html: "<li>For help, %{href}.</li></ul></p>"
-    articles_href_1: "the Library Search"
-    articles_href_1_link: "/bento"
-    articles_href_2: "borrow from another library"
-    articles_href_2_link: "http://answers.library.temple.edu/faq/195868"
-    articles_href_3: "Ask a Librarian"
-    articles_href_3_link: "https://library.temple.edu/asktulibraries"
+    borrow_html: "<li>If you can't find something, %{href}.</li>"
+    borrow_href: "borrow from another library"
+    borrow_link: "http://answers.library.temple.edu/faq/195868"
+
+    help_html: "<li>For help, %{href}.</li></ul></p>"
+    help_href: "Ask a Librarian"
+    help_link: "https://library.temple.edu/asktulibraries"
 
     header_links:
       library_account: "My Library Account"
@@ -66,3 +51,28 @@ en:
     tools:
       sms: 'Text This'
       refworks: Refworks
+
+  bento: 
+    application_name: "Library Bento Search Beta"
+    greeting: "Try out the Library Search beta"
+    introduction: "An enhanced version of the Library Search is currently under development at Temple University Libraries. A beta version was originally released in February 2018  and will be updated on June 25, 2018 with new features."
+    html: "On <strong>August 6th, 2018</strong>, this updated version of the Library Search is scheduled to replace the existing interface. Please refer to our %{href} for more information about work in progress and providing feedback."
+    href: "Library Search Road Map"
+    href_link: "https://library.temple.edu/library-search-faq/roadmap"
+ 
+  articles:
+    application_name: "Library Articles Search"
+    greeting: "Welcome to the Articles Search"
+    html: "<p>The Articles Search includes hundreds of millions of journal articles, e-books, newspapers, and other resources available online.</p>"
+    
+    search_html: "<p><ul><li>To search everything, return to the %{href}.</li>"
+    search_href: "the Library Search"
+    search_link: "/bento"
+
+    borrow_html: "<li>If you can't find something, %{href}.</li>"
+    borrow_href: "borrow from another library"
+    borrow_link: "http://answers.library.temple.edu/faq/195868"
+
+    help_html: "<li>For help, %{href}.</li></ul></p>"
+    help_href: "Ask a Librarian"
+    help_link: "https://library.temple.edu/asktulibraries"
