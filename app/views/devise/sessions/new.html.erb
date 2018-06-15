@@ -1,5 +1,11 @@
-<h2>My Library Account</h2>
+<h1>Log in to My Library Account</h1>
 
+<ul>
 <%- if devise_mapping.omniauthable? %>
-  <%= link_to "Sign in with your AccessNet Username" , omniauth_authorize_path(resource_name, :shibboleth) %><br />
+<li>
+  <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth) %>
+</li>
 <% end -%>
+
+<li>Visitors (Coming Soon)</li>
+</ul>
