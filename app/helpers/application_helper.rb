@@ -61,7 +61,7 @@ module ApplicationHelper
 
   def check_holdings_location(document, library)
     locations_array = []
-    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library)}.map { |field| field.split() }
+    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
     locations.each { |k, v|
       shelf = Rails.configuration.locations.dig(k, v)
       locations_array << shelf
