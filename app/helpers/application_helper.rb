@@ -245,10 +245,11 @@ module ApplicationHelper
 
   def navigational_headers
     if params[:controller] == "catalog" || params[:controller] == "advanced"
-      content_tag(:h1, "Catalog Search", class: "nav-header")
+      label = link_to("Catalog Search", search_catalog_path)
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      content_tag(:h1, "Articles Search", class: "nav-header")
+      label = link_to("Articles Search", search_path)
     end
+    content_tag(:h1, label, class: "nav-header")
   end
 
   def navigational_links
