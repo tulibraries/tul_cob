@@ -12,15 +12,17 @@ end
 
 desc "Run selected specs (Use with Guard)"
 task :rspec, [:spec_args] do |t, args|
+  passed = true
   if Rails.env.test?
     run_solr("test", port: "8985") do
       Rake::Task["fortytu:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
       rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
-      system(rspec_cmd)
+      passed = system(rspec_cmd)
     end
   else
-    system("rake rspec[#{args[:spec_args]}] RAILS_ENV=test")
+    passed = system("rake rspec[#{args[:spec_args]}] RAILS_ENV=test")
   end
+  exit(1) unless passed
 end
 
 desc "Run solr and blacklight for interactive development"
