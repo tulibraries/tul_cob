@@ -396,6 +396,19 @@ module Traject
           string
         end
       end
+
+      def extract_holdings_with_no_items
+        lambda do |rec, acc|
+          holding_ids = rec.fields("HLD").map  { |field| field["8"] }.compact.uniq
+          item_holding_ids = rec.fields("ITM").map { |field| field["r"] }.compact.uniq
+          holding_ids_with_no_items = holding_ids - item_holding_ids
+          holding_ids_with_no_items.each  do |holding_id|
+            rec.fields("HLD").select { |field| field["8"] == holding_id }.each do |field|
+              acc << "#{field['b']} #{field['c']}"
+            end
+          end
+        end
+      end
     end
   end
 end

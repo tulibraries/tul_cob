@@ -42,11 +42,15 @@ class CatalogController < ApplicationController
         id
         score
         availability_facet
+        holdings_with_no_items_display
+        call_number_display
         creator_display
         contributor_display
         electronic_resource_display
         format
         imprint_display
+        library_facet
+        location_display
         pub_date
         title_series_display
         title_statement_display

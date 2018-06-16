@@ -1,0 +1,22 @@
+<% doc_presenter = show_presenter(document) %>
+<% if document["holdings_with_no_items_display"] %>
+<table class="other_libraries table table-responsive border-bottom">
+  <% check_holdings_library_name(document).each do |library| %>
+    <thead class="table-heading">
+      <tr>
+        <th colspan="5" ><%= library_name_from_short_code(library) %> (For Items with Limited Information)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% check_holdings_location(document, library).each do |holding| %>
+        <tr>
+          <td scope="row" width="15%"><%= holding  %></td>
+          <td scope="row" width="15%"><%= check_holdings_call_number(document) %></td>
+          <td scope="row" width="70%">We are unable to find availability information for this item. Please contact the library for more information.</td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>
+<% end %>
