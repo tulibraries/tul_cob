@@ -139,7 +139,7 @@ RSpec.describe MarcFormatClassifier, type: :lib do
     end
     context "Computer File" do
       it "says Computer File" do
-        expect(classifier_for("computer_file.xml").genre).to include("Computer File")
+        expect(classifier_for("computer_file.xml").genre).to include("Computer Media")
       end
     end
     context "Object" do
