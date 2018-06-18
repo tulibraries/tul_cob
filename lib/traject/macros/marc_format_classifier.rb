@@ -62,6 +62,7 @@ module Traject
         end
 
         formats << "Conference Proceeding" if proceeding?
+        formats << "Government Document" if govdoc?
         formats << options[:default] if formats.empty?
 
         return formats
@@ -150,6 +151,12 @@ module Traject
                                 (controlfield_008[29] == "1")
                             end.nil?
                           end
+      end
+
+      # Just checks if 008[28] for "govdoc"
+      def govdoc?
+        controlfield_008 = record.find_all { |f| f.tag == "008" }
+        controlfield_008.any? { |f| "acfilmos".include? f.value[28] }
       end
 
       # downcased version of the gmd, or else empty string
