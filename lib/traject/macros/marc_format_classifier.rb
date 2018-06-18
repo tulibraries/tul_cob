@@ -81,6 +81,7 @@ module Traject
       # Reference: https://tulibdev.atlassian.net/wiki/spaces/SAD/pages/22839300/Data+Mappings+Displays+Facets+Search#DataMappings(Displays,Facets,Search)-ResourceTypeMappings
       def genre
         marc_genre_leader   = Traject::TranslationMap.new("marc_genre_leader").to_hash
+        marc_genre_leader_7 = Traject::TranslationMap.new("marc_genre_leader_7").to_hash
         marc_genre_008_21   = Traject::TranslationMap.new("marc_genre_008_21").to_hash
         marc_genre_008_26   = Traject::TranslationMap.new("marc_genre_008_26").to_hash
         marc_genre_008_33   = Traject::TranslationMap.new("marc_genre_008_33").to_hash
@@ -117,6 +118,9 @@ module Traject
         when "computer_file"
           additional_qualifier = marc_genre_008_26.fetch(cf008.value[26], nil) unless cf008.nil? # Controlfield 008[26]
           additional_qualifier ||= marc_genre_008_26.fetch(cf006.value[9], nil) unless cf006.nil? # Controlfield 006[9]
+          if additional_qualifier == "leader_7" # replace if we must take the additional qualifier from leader_7
+            additional_qualifier = marc_genre_leader_7.fetch(record.leader[7], nil) unless record.leader[7].nil?
+          end
           additional_qualifier ||= "computer_file"
         else # Everything else
         end

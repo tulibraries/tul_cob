@@ -62,6 +62,36 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         expect(classifier_for("data_06m_008-26a.xml").genre).to include("Dataset")
       end
     end
+    context "Leader 06=m; 008[26]=c or 006[09]=c" do
+      it "says Visual Material" do
+        expect(classifier_for("data_06m_008-26c.xml").genre).to include("Visual Material")
+        expect(classifier_for("data_06m_006-9c.xml").genre).to include("Visual Material")
+      end
+    end
+    context "Leader 06=m; 008[26]=d or 006[09]=d; Leader 07=m" do
+      it "says Book" do
+        expect(classifier_for("data_06m_008-26d_7m.xml").genre).to include("Book")
+        expect(classifier_for("data_06m_006-9d_7m.xml").genre).to include("Book")
+      end
+    end
+    context "Leader 06=m; 008[26]=d or 006[09]=d; Leader 07=s" do
+      it "says Book" do
+        expect(classifier_for("data_06m_008-26d_7s.xml").genre).to include("Journal/Periodical")
+        expect(classifier_for("data_06m_006-9d_7s.xml").genre).to include("Journal/Periodical")
+      end
+    end
+    context "Leader 06=m; 008[26]=d or 006[09]=d; Leader 07=i" do
+      it "says Database" do
+        expect(classifier_for("data_06m_008-26d_7i.xml").genre).to include("Database")
+        expect(classifier_for("data_06m_006-9d_7i.xml").genre).to include("Database")
+      end
+    end
+    context "Leader 06=m; 008[26]=d or 006[09]=d; Leader 07=c" do
+      it "says Database" do
+        expect(classifier_for("data_06m_008-26d_7c.xml").genre).to include("Database")
+        expect(classifier_for("data_06m_006-9d_7c.xml").genre).to include("Database")
+      end
+    end
     context "Audio recording" do
       it "says audio" do
         expect(classifier_for("audio.xml").genre).to include("Audio")
@@ -104,7 +134,7 @@ RSpec.describe MarcFormatClassifier, type: :lib do
     end
     context "Visual" do
       it "says image" do
-        expect(classifier_for("visual.xml").genre).to include("Image")
+        expect(classifier_for("visual.xml").genre).to include("Visual Material")
       end
     end
     context "Computer File" do
