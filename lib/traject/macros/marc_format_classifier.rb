@@ -148,7 +148,7 @@ module Traject
                             ! record.find do |field|
                               (field.tag.slice(0) == "6" &&
                                 field.subfields.find { |sf| sf.code == "v" && /^\s*(C|c)ongresses\.?\s*$/.match(sf.value) }) ||
-                                (controlfield_008[29] == "1")
+                              (controlfield_008.any? { |f| f.value[29] == "1" unless f.value[29].nil? })
                             end.nil?
                           end
       end
