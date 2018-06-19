@@ -94,6 +94,8 @@ gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
 gem "primo", git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
+gem "honeybadger"
+
 
 group :production do
   gem "mysql2", "~> 0.4.9"
