@@ -1,0 +1,8 @@
+<div class="panel-body online-panel">
+  <h5 class="online-panel-heading">Online</h5>
+  <table class="record_page_elec_links">
+    <% online_resources.each do |value| %>
+      <tr><td class="list_items"><%= safe_join([value]) %></td></tr>
+    <% end %>
+  </table>
+</div>

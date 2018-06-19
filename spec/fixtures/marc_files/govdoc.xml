@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>02233nam a22004217a 4500</leader>
+  <controlfield tag="005">19990727120652.0</controlfield>
+  <controlfield tag="008">990727s1999    dcub     b   f000 0 eng d</controlfield>
+  <controlfield tag="001">991024547179703811</controlfield>
+  <datafield tag="020" ind1=" " ind2=" ">
+    <subfield code="a">0160585902</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b24080901-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">DGPO</subfield>
+    <subfield code="c">DGPO</subfield>
+    <subfield code="d">DLC</subfield>
+    <subfield code="d">MvI</subfield>
+    <subfield code="d">MvI</subfield>
+  </datafield>
+  <datafield tag="043" ind1=" " ind2=" ">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">1023-A</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">1023-A (online)</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">1023-B (online)</subfield>
+  </datafield>
+  <datafield tag="074" ind1=" " ind2=" ">
+    <subfield code="a">1023-B (MF)</subfield>
+  </datafield>
+  <datafield tag="086" ind1=" " ind2=" ">
+    <subfield code="a">Y 4.R 31/3:106-17</subfield>
+  </datafield>
+  <datafield tag="086" ind1="0" ind2=" ">
+    <subfield code="a">Y 4.R 31/3:106-17</subfield>
+  </datafield>
+  <datafield tag="088" ind1=" " ind2=" ">
+    <subfield code="a">Serial no. 106-17 (United States. Congress. House. Committee on Resources)</subfield>
+  </datafield>
+  <datafield tag="110" ind1="1" ind2=" ">
+    <subfield code="a">United States.</subfield>
+    <subfield code="b">Congress.</subfield>
+    <subfield code="b">House.</subfield>
+    <subfield code="b">Committee on Resources.</subfield>
+    <subfield code="b">Subcommittee on National Parks and Public Lands.</subfield>
+  </datafield>
+  <datafield tag="245" ind1="1" ind2="0">
+    <subfield code="a">Secretarial powers under the Federal Land Policy and Management Act of 1976 :</subfield>
+    <subfield code="b">excessive use of Section 204 withdrawal authority by the Clinton administration : joint oversight hearing before the Subcommittee on National Parks and Public Lands and Subcommittee on Energy and Mineral Resources of the Committee on Resources, House of Representatives, One Hundred Sixth Congress, first session, March 23, 1999, Washington, DC.</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Washington :</subfield>
+    <subfield code="b">U.S. G.P.O. :</subfield>
+    <subfield code="b">For sale by the U.S. G.P.O., Supt. of Docs., Congressional Sales Office,</subfield>
+    <subfield code="c">1999.</subfield>
+  </datafield>
+  <datafield tag="300" ind1=" " ind2=" ">
+    <subfield code="a">v, 174 p. :</subfield>
+    <subfield code="b">maps ;</subfield>
+    <subfield code="c">23 cm.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Distributed to some depository libraries in microfiche.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Shipping list no.: 99-0295-P.</subfield>
+  </datafield>
+  <datafield tag="504" ind1=" " ind2=" ">
+    <subfield code="a">Includes bibliographical references.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">"Serial no. 106-17."</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Also available via Internet from the Resources Committee web site. Address as of 7/26/99: http://commdocs.house.gov/committees/resources/hii56510.000/hii56510%5F0f.htm; current access is available via PURL.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Public lands</subfield>
+    <subfield code="z">United States.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Land use</subfield>
+    <subfield code="x">Government policy</subfield>
+    <subfield code="z">United States.</subfield>
+  </datafield>
+  <datafield tag="650" ind1=" " ind2="0">
+    <subfield code="a">Executive power</subfield>
+    <subfield code="z">United States.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="1" ind2=" ">
+    <subfield code="a">United States.</subfield>
+    <subfield code="b">Congress.</subfield>
+    <subfield code="b">House.</subfield>
+    <subfield code="b">Committee on Resources.</subfield>
+    <subfield code="b">Subcommittee on Energy and Mineral Resources.</subfield>
+  </datafield>
+  <datafield tag="710" ind1="1" ind2=" ">
+    <subfield code="a">United States.</subfield>
+    <subfield code="b">Congress.</subfield>
+    <subfield code="b">House.</subfield>
+    <subfield code="b">Committee on Natural Resources.</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="1">
+    <subfield code="u">http://purl.access.gpo.gov/GPO/LPS3113</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b24080901</subfield>
+    <subfield code="b">g    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">140710</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">000930</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">m</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">MARCIVE RECON PROJECT</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">gmi  </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+</record>
