@@ -3,7 +3,7 @@
 archival:      Archival Material
 audio:         Audio
 book:          Book
-computer_file: Computer File
+computer_file: Computer Media
 data:          Dataset
 database:      Database
 kit:           Kit
@@ -12,7 +12,7 @@ score:         Score
 object:        Object
 serial:        Journal/Periodical
 video:         Video
-visual:        Image
+visual:        Visual Material
 unknown:       Unknown
 website:       Website
 govdoc:        Government Document

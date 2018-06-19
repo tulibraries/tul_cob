@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <leader>01513nmi a2200361   4500</leader>
+  <controlfield tag="006">m    f     u      </controlfield>
+  <controlfield tag="007">cr mn mmmmuuuu</controlfield>
+  <controlfield tag="008">110203s2009    miu    f   d        eng d</controlfield>
+  <controlfield tag="001">991022187209703811</controlfield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(PPT)b50179482-01tuli_inst</subfield>
+  </datafield>
+  <datafield tag="035" ind1=" " ind2=" ">
+    <subfield code="a">(MiAaI)ICPSR24610</subfield>
+  </datafield>
+  <datafield tag="040" ind1=" " ind2=" ">
+    <subfield code="a">MiAaI</subfield>
+    <subfield code="c">MiAaI</subfield>
+  </datafield>
+  <datafield tag="245" ind1="0" ind2="0">
+    <subfield code="a">Affect, Reason, and Decision Making</subfield>
+    <subfield code="h">[electronic resource]</subfield>
+    <subfield code="c">Paul Slovic, Melissa Finucane, Ali Alhakami</subfield>
+  </datafield>
+  <datafield tag="250" ind1=" " ind2=" ">
+    <subfield code="a">2009-09-22</subfield>
+  </datafield>
+  <datafield tag="260" ind1=" " ind2=" ">
+    <subfield code="a">Ann Arbor, Mich.</subfield>
+    <subfield code="b">Inter-university Consortium for Political and Social Research [distributor]</subfield>
+    <subfield code="c">2009</subfield>
+  </datafield>
+  <datafield tag="490" ind1="1" ind2=" ">
+    <subfield code="a">ICPSR</subfield>
+    <subfield code="v">24610</subfield>
+  </datafield>
+  <datafield tag="538" ind1=" " ind2=" ">
+    <subfield code="a">Mode of access: Intranet.</subfield>
+  </datafield>
+  <datafield tag="500" ind1=" " ind2=" ">
+    <subfield code="a">Title from ICPSR DDI metadata of 2011-02-03.</subfield>
+  </datafield>
+  <datafield tag="506" ind1=" " ind2=" ">
+    <subfield code="a">AVAILABLE. This study is freely available to ICPSR member institutions.</subfield>
+  </datafield>
+  <datafield tag="530" ind1=" " ind2=" ">
+    <subfield code="a">Also available as downloadable files.</subfield>
+  </datafield>
+  <datafield tag="520" ind1="3" ind2=" ">
+    <subfield code="a">Cf.: http://dx.doi.org/10.3886/ICPSR24610</subfield>
+  </datafield>
+  <datafield tag="590" ind1=" " ind2=" ">
+    <subfield code="a">Access is available to the Temple Community through use of a networked computer with a Temple IP address.</subfield>
+  </datafield>
+  <datafield tag="653" ind1="0" ind2=" ">
+    <subfield code="a">ICPSR II. Community and Urban Studies</subfield>
+    <subfield code="a">NACJD I. Attitude Surveys</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Slovic, Paul</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Finucane, Melissa</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Alhakami, Ali</subfield>
+  </datafield>
+  <datafield tag="710" ind1="2" ind2=" ">
+    <subfield code="a">Inter-university Consortium for Political and Social Research.</subfield>
+  </datafield>
+  <datafield tag="830" ind1=" " ind2="0">
+    <subfield code="a">ICPSR (Series)</subfield>
+    <subfield code="v">24610</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="z">Access data sets; authentication may be required:</subfield>
+    <subfield code="u">http://libproxy.temple.edu/login?url=http://dx.doi.org/10.3886/ICPSR24610</subfield>
+  </datafield>
+  <datafield tag="907" ind1=" " ind2=" ">
+    <subfield code="a">.b50179482</subfield>
+    <subfield code="b">w    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield tag="902" ind1=" " ind2=" ">
+    <subfield code="a">140122</subfield>
+  </datafield>
+  <datafield tag="998" ind1=" " ind2=" ">
+    <subfield code="b">1</subfield>
+    <subfield code="c">111105</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">m</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield tag="945" ind1=" " ind2=" ">
+    <subfield code="l">w    </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield tag="PRT" ind1=" " ind2=" ">
+    <subfield code="a">53376602570003811</subfield>
+    <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991022187209703811</subfield>
+    <subfield code="f">Access data sets; authentication may be required:</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="8">53376602570003811</subfield>
+  </datafield>
+</record>
