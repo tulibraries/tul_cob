@@ -11,13 +11,21 @@
         </thead>
         <tbody >
           <% items.each do |item| %>
+            <tr class="sr-only">
+              <th scope="col">Item Location</th>
+              <th scope="col">Call Number</th>
+              <th scope="col">Description</th>
+              <th scope="col">Material Type</th>
+              <th scope="col">Public Note</th>
+              <th scope="col">Availability Status</th>
+          </tr>
             <tr>
-              <td scope="row" width="15%"><%= location_status(item) %></td>
-              <td scope="row" width="15%"><%= item.call_number %> <%= alternative_call_number(item) %></td>
-              <td scope="row" width="30%"><%= description(item) %></td>
-              <td scope="row" width="15%"><%= physical_material_type(item) %></td>
-              <td scope="row" width="15%"><%= public_note(item) %></td>
-              <td scope="row" width="10%"><%= availability_status(item) %></td>
+              <td scope="row"><%= location_status(item) %></td>
+              <td><%= item.call_number %> <%= alternative_call_number(item) %></td>
+              <td><%= description(item) %></td>
+              <td><%= physical_material_type(item) %></td>
+              <td><%= public_note(item) %></td>
+              <td><%= availability_status(item) %></td>
             <!-- <tr>
               <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
             </tr> -->
