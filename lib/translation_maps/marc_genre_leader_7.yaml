@@ -1,0 +1,6 @@
+# Mappings from leader byte 7 as qualifier only
+
+'c': database
+'i': database
+'m': book
+'s': serial

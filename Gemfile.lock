@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: b22df2fa618fb2db487fbb4aee2cfda13b13503a
+  revision: 0347413016108b5688a9ffe5a49cb8e357a0065b
   branch: normaize-reponse-and-sets
   specs:
     alma (0.2.7)
@@ -204,6 +204,7 @@ GEM
       guard-compat (~> 1.0)
     hashdiff (0.3.7)
     hashie (3.4.6)
+    honeybadger (3.3.0)
     htmlentities (4.3.4)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
@@ -492,6 +493,7 @@ DEPENDENCIES
   guard-rspec
   guard-shell
   hashie (~> 3.4.6)
+  honeybadger
   jbuilder (~> 2.5)
   jquery-rails
   launchy

@@ -3,10 +3,9 @@ en:
     application_name: "Library Search Beta"
     greeting: "Welcome to the Catalog Search"
     html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
-    
+
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
-    search_link: "/bento"
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
@@ -52,22 +51,21 @@ en:
       sms: 'Text This'
       refworks: Refworks
 
-  bento: 
+  bento:
     application_name: "Library Bento Search Beta"
     greeting: "Try out the Library Search beta"
     introduction: "An enhanced version of the Library Search is currently under development at Temple University Libraries. A beta version was originally released in February 2018  and will be updated on June 25, 2018 with new features."
     html: "On <strong>August 6th, 2018</strong>, this updated version of the Library Search is scheduled to replace the existing interface. Please refer to our %{href} for more information about work in progress and providing feedback."
     href: "Library Search Road Map"
     href_link: "https://library.temple.edu/library-search-faq/roadmap"
- 
+
   articles:
     application_name: "Library Articles Search"
     greeting: "Welcome to the Articles Search"
     html: "<p>The Articles Search includes hundreds of millions of journal articles, e-books, newspapers, and other resources available online.</p>"
-    
+
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
-    search_link: "/bento"
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"

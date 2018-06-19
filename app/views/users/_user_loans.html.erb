@@ -17,14 +17,14 @@
       </tr>
     </thead>
     <tbody>
-      <%= form_tag('/users/renew_selected', method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
+      <%= form_tag(users_renew_selected_path, method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
         <% @user.loans.each_with_index do |loan, counter| %>
           <tr>
             <td><%= counter + 1 %></td>
             <td><%= loan.title %></td>
             <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
-            <td><%= loan.item_barcode %></td>
-            <td><%= loan.call_number %></td>
+            <td><% if loan.respond_to? :barcode %><%= loan.item_barcode %><% end %></td>
+            <td><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
             <td class="renewal-check">
               <div class="form-check">
                 <label class="form-check-label">
