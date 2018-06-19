@@ -1,7 +1,7 @@
 
-  <table class="table table-responsive border-bottom">
     <% unless @items.empty? %>
       <% sort_order_for_holdings(@items).each do |key,items| %>
+      <table class="table table-responsive border-bottom">
         <thead>
           <tr class="sr-only">
               <td></td>
@@ -31,12 +31,15 @@
               <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
             </tr> -->
         </tbody>
+      </table>
       <% end %>
       <% else %>
+      <table class="table table-responsive border-bottom">
       <tr>
         <td>
           We are unable to find availability information for this record. Please contact the library for more information.
         </td>
       </tr>
+    </table>
     <% end %>
-  </table>
+
