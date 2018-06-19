@@ -70,7 +70,7 @@ module ApplicationHelper
   end
 
   def check_for_full_http_link(args)
-    args[:document][args[:field]].map { |field|
+    [args[:document][args[:field]]].flatten.compact.map { |field|
       if field.include?("http")
         electronic_access_links(field)
       else
