@@ -5,7 +5,7 @@
 <div id="getting-started">
   <p class='section-heading'><%= t('articles.html') %></p>
   <p>
-    <%= t('articles.search_html', href: link_to(t("articles.search_href"), t("articles.search_link"))) %>
+    <%= t('articles.search_html', href: link_to(t("articles.search_href"), bento_search_engine_path)) %>
   	<%= t('articles.borrow_html', href: link_to(t("articles.borrow_href"), t("articles.borrow_link"))) %>
   	<%= t('articles.help_html', href: link_to(t("articles.help_href"), t("articles.help_link"))) %>
   </p>
