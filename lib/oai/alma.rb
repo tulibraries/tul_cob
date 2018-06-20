@@ -97,6 +97,7 @@ module Oai
       FileUtils::mkdir_p File.dirname(filename)
       marc_file = File.new(filename, "w")
       marc_file.write(marc_doc.to_xml)
+      marc_file.close()
       marc_file.path
     end
   end

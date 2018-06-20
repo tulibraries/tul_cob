@@ -5,7 +5,7 @@ require "time"
 module Jenkins
   def self.last_build
     if ENV["JOB_URL"]
-      url = "#{ENV["JOB_URL"]}lastBuild/api/json"
+      url = "#{ENV["JOB_URL"]}lastCompletedBuild/api/json"
       user_name = ENV["JENKINS_USER_NAME"]
       api_token = ENV["JENKINS_USER_API_TOKEN"]
       auth = { username: user_name, password: api_token }

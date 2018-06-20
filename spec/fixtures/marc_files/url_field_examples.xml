@@ -21,6 +21,7 @@
       <subfield code="f">Access full text online.</subfield>
       <subfield code="d">MAIN</subfield>
       <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Available</subfield>
     </datafield>
     <datafield tag="PRT" ind1=" " ind2=" ">
       <subfield code="a">bar</subfield>
@@ -28,6 +29,7 @@
       <subfield code="f">Access full text online.</subfield>
       <subfield code="d">MAIN</subfield>
       <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Not Available</subfield>
     </datafield>
   </record>
   <record>

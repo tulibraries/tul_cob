@@ -160,6 +160,10 @@ div.physical-holding-panel {
   margin-top: 10px;
 }
 
+.item-avail {
+  display: none !important;
+}
+
 .online-panel {
   margin: 0;
   padding: 0;
@@ -174,6 +178,13 @@ div.physical-holding-panel {
   height: 40px;
   margin: 0;
   padding: 8px;
+
+  border-collapse: inherit;
+  margin: 0 !important;
+
+}
+
+.other_libraries {
 }
 
 .online-panel-body {
@@ -212,6 +223,7 @@ div.physical-holding-panel {
 
 table.border-bottom {
   border: 1px solid #CFC7B0;
+  border-top: 0;
   padding: 0 !important;
   margin: 0 !important;
 
@@ -225,6 +237,7 @@ table.border-bottom {
   display: block;
   max-height: 300px;
   overflow-y: scroll;
+  overflow-x: hidden;
   margin-right: -10px;
   margin-bottom: 0 !important;
 
@@ -232,6 +245,7 @@ table.border-bottom {
 
 .table-wrapper::-webkit-scrollbar {
   width: 10px;
+  border-left: solid #CFC7B0 1px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
@@ -474,7 +488,7 @@ ul.navbar-nav {
     border-radius: 0;
     margin-bottom: 2px;
     padding-left: 10px;
-  }  
+  }
   .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
     display: block;
     width: 100%;

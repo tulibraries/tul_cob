@@ -76,7 +76,7 @@ end
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
-gem "alma", git: "https://github.com/tulibraries/alma_rb"
+gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "normaize-reponse-and-sets"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
@@ -94,6 +94,8 @@ gem "webpacker"
 gem "google-analytics-rails", "1.1.1"
 gem "primo", git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
+gem "honeybadger"
+
 
 group :production do
   gem "mysql2", "~> 0.4.9"

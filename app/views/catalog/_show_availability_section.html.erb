@@ -7,32 +7,21 @@
   </div>
 
 
-  <% if document.fetch("availability_facet", []).include?("Online") %>
-    <% document_show_fields(document).each do |field_name, field| %>
-    <% if field_name == 'electronic_resource_display' %>
-
-      <div class="panel-body online-panel">
-        <h5 class="online-panel-heading">Online</h5>
-          <table class="record_page_elec_links">
-            <% values = Array.wrap(doc_presenter.field_value field_name) %>
-            <% values.each do |value| %>
-            <tr>
-              <td class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
-            </tr>
-            <% end %>
-          </table>
-      </div>
-      <% end %>
-    <% end %>
-  <% end %>
+  <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
-      <div data-target="show.panel" class="panel-content" >
+      <div class="panel-content" >
         <div data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>
           Loading Availability
         </div>
+        <div class="table-wrapper hidden">
+          <div data-target="show.panel"></div>
+          <div>
+            <%= render "check_holdings", document: document %>
+          </div>
+      </div>
       </div>
   <% end %>
   <% if aeon_request_button(document) %>

@@ -41,20 +41,20 @@ RSpec.describe User, type: :model do
     end
 
     it "shows items borrowed" do
-      allow(patron_account).to receive(:get_loans).and_return(double(list: loans))
-      items = patron_account.get_loans
+      allow(patron_account).to receive(:loans).and_return(double(list: loans))
+      items = patron_account.loans
       expect(items.list.sort).to match(loans.sort)
     end
 
     it "shows items requested" do
-      allow(patron_account).to receive(:get_holds).and_return(double(list: holds))
-      items = patron_account.get_holds
+      allow(patron_account).to receive(:holds).and_return(double(list: holds))
+      items = patron_account.holds
       expect(items.list.sort).to match(holds.sort)
     end
 
     it "shows fines owed" do
-      allow(patron_account).to receive(:get_fines).and_return(double(list: fines))
-      items = patron_account.get_fines
+      allow(patron_account).to receive(:fines).and_return(double(list: fines))
+      items = patron_account.fines
       expect(items.list.sort).to match(fines.sort)
     end
 

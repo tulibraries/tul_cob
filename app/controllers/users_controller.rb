@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :require_admin!, only: [:index]
   before_action :require_non_production!, only: [:index]
 
+
   def require_admin!
     redirect_to root_path unless current_user && current_user.admin
   end
@@ -29,22 +30,7 @@ class UsersController < ApplicationController
   end
 
   def account
-    @user_name = current_user.name
-    @loans = current_user.get_loans
-    @holds = current_user.get_holds
-    @fines = current_user.get_fines
-  end
-
-  def loans
-    @items = current_user.get_loans
-  end
-
-  def holds
-    @items = current_user.get_holds
-  end
-
-  def fines
-    @items = current_user.get_fines
+    @user = current_user
   end
 
   def renew
@@ -62,11 +48,9 @@ class UsersController < ApplicationController
 
   def renew_selected
     if params[:loan_ids].nil?
-      redirect_to("/users/account/") && return
+      redirect_to(users_account_path) && return
     else
-      lib_user = Alma::User.find(user_id: current_user.uid)
-
-      renew_results = lib_user.renew_multiple_loans(params[:loan_ids])
+      renew_results = current_user.renew_selected(params[:loan_ids])
       @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
       logger.info "RENEWAL STATUS:"
       logger.info ap(@renew_responses)
@@ -75,18 +59,6 @@ class UsersController < ApplicationController
       #      format.js
       #    end
     end
-  end
-
-  def renew_all
-    logger.debug "Renew All"
-
-    lib_user = Alma::User.find(user_id: current_user.uid)
-
-    @renew_all_results = lib_user.renew_all_loans
-
-    #    respond_to do |format|
-    #      format.js
-    #    end
   end
 
   def renew_response(result, loan_id)

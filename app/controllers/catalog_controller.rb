@@ -14,6 +14,7 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
 
   helper_method :browse_creator
+  helper_method :display_duration
 
   configure_blacklight do |config|
     # default advanced config values
@@ -41,11 +42,15 @@ class CatalogController < ApplicationController
         id
         score
         availability_facet
+        holdings_with_no_items_display
+        call_number_display
         creator_display
         contributor_display
         electronic_resource_display
         format
         imprint_display
+        library_facet
+        location_display
         pub_date
         title_series_display
         title_statement_display
@@ -233,7 +238,7 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
+    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: true
     config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
     config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
@@ -281,7 +286,7 @@ class CatalogController < ApplicationController
     config.add_show_field "title_series_display", label: "Series Title"
     config.add_show_field "title_series_vern_display", label: "Series Title"
     config.add_show_field "volume_series_display", label: "Volume"
-    config.add_show_field "duration_display", label: "Duration"
+    config.add_show_field "duration_display", label: "Duration", helper_method: :display_duration
     config.add_show_field "frequency_display", label: "Frequency"
     config.add_show_field "sound_display", label: "Sound characteristics"
     config.add_show_field "digital_file_display", label: "Digital file characteristics"
@@ -312,6 +317,7 @@ class CatalogController < ApplicationController
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
     config.add_show_field "subject_display", label: "Subject", helper_method: :list_with_links, multi: true
+    config.add_show_field "collection_display", label: "Collection"
 
     # Preceeding Entry fields
     config.add_show_field "continues_display", label: "Continues"
@@ -480,6 +486,9 @@ class CatalogController < ApplicationController
 
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
+
+    config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
+    config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
   def render_sms_action?(_config, _options)
@@ -530,5 +539,9 @@ class CatalogController < ApplicationController
       end
       creator
     end
+  end
+
+  def display_duration(args)
+    args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 end

@@ -1,22 +1,7 @@
 <div class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >
 </div>
 
-  <% if document.fetch("availability_facet", []).include? "Online" %>
-    <% if has_one_electronic_resource?(document) %>
-      <%= link_to "Online", single_link_builder(document["electronic_resource_display"].first), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank" %>
-    <% elsif has_many_electronic_resources?(document) %>
-    <div class="row button-break"></div>
-      <button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document_counter %>">
-      <span class="avail-label" aria-expanded="false">Online</span>
-    </button>
-      <div id="online-document-<%= document_counter %>" class="collapse online_resources">
-        <table class="list_elec_links search_results_table">
-          <%= check_for_full_http_link({document: document, field: "electronic_resource_display"}) %>
-          <span class="border-bottom"></span>
-        </table>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render_online_availability_button(document, document_counter) %>
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>
@@ -28,6 +13,14 @@
           <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
           Loading Availability
         </div>
-      <div data-target="availability.panel" id="physical-document-<%= document_counter %>" class="collapse panel-content"></div>
+      <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document_counter %>" class="collapse panel-content">
+        <div class="table-wrapper hidden">
+          <div data-target="availability.panel"></div>
+        <div>
+          <%= render "check_holdings", document: document, document_counter: document_counter %>
+        </div>
+
+      </div>
+      </div>
     </div>
   <% end %>

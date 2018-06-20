@@ -96,4 +96,21 @@ module CatalogHelper
       (@response.rows if @response && @response.rows > 0) ||
       params.fetch(:per_page, default_per_page).to_i
   end
+
+  def render_online_availability(doc_presenter)
+    online_resources = [doc_presenter.field_value("electronic_resource_display")]
+      .select { |r| !r.empty? }.compact
+
+    if !online_resources.empty?
+      render "online_availability", online_resources: online_resources
+    end
+  end
+
+  def render_online_availability_button(doc, count)
+    links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
+
+    if !links.empty?
+      render "online_availability_button", document: doc, document_counter: count, links: links
+    end
+  end
 end

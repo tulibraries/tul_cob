@@ -113,11 +113,12 @@ to_field "form_work_display", extract_marc("380a")
 to_field "performance_display", extract_marc("382abdenprst")
 to_field "music_no_display", extract_marc("383abcde")
 to_field "video_file_display", extract_marc("346ab")
-to_field "music_format_display", extract_marc("348ab")
+to_field "music_format_display", extract_marc("348a")
 to_field "music_key_display", extract_marc("384a")
 to_field "audience_display", extract_marc("385am")
 to_field "creator_group_display", extract_marc("386aim")
 to_field "date_period_display", extract_marc("388a")
+to_field "collection_display", extract_marc("973at")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
@@ -184,7 +185,8 @@ to_field "url_finding_aid_display", extract_url_finding_aid
 
 # Availability
 to_field "availability_facet", extract_availability
-to_field "location_display", extract_marc("HLDc")
+to_field "location_display", extract_marc("HLDbc")
+to_field "holdings_with_no_items_display", extract_holdings_with_no_items
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)

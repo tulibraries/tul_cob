@@ -13,7 +13,8 @@ export default class extends Controller {
         .then(html => {
           this.spinnerTarget.remove();
           this.panelTarget.innerHTML = html
-        this.buttonTarget.classList.add("clicked")
+          this.buttonTarget.classList.add("clicked")
+          $(this.panelTarget).parent().removeClass("hidden");
       })
     }
   }
