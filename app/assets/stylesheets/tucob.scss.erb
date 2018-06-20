@@ -219,6 +219,7 @@ div.physical-holding-panel {
 /* ALMA DATA TABLE */
 .border-bottom td, .border-bottom th {
   border-bottom: 1px solid #CFC7B0;
+  /*border: solid red 1px;*/
 }
 
 table.border-bottom {
@@ -227,6 +228,27 @@ table.border-bottom {
   padding: 0 !important;
   margin: 0 !important;
 
+}
+table.border-bottom {
+  th[headers*="location"] {
+    width: 17%;
+  }
+  td[scope*="row"] {
+    width: 10%;
+  }
+  td[headers*="desc"] {
+    width: 25%;
+  }
+  td[headers*="callnum"] {
+    width: 22%;
+  }
+  td[headers*="note"] {
+    width: 7%;
+  }
+  td[headers*="status"] {
+ 
+    width: 20%;
+  }
 }
 
 .table-heading {
