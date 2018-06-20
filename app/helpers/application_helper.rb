@@ -287,4 +287,8 @@ module ApplicationHelper
 
     check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()"
   end
+
+  def login_disabled?
+    Rails.configuration.features.fetch(:login_disabled, false)
+  end
 end

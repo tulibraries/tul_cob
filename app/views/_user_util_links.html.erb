@@ -7,15 +7,7 @@
 
   <% if has_user_authentication_provider? %>
       <ul class="nav navbar-nav">
-        <% if current_user %>
-            <li>
-              <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :method => 'delete' %>
-            </li>
-        <% else %>
-            <li>
-              <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
-            </li>
-        <% end %>
+      <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
       </ul>
   <% end %>
 </div>
