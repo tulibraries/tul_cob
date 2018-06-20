@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ActionMailer::Base.default from: "books@temple.edu"
+
 Rails.application.configure do
 
   config.active_storage.service = :local
