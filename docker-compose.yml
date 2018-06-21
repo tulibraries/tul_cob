@@ -15,7 +15,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.frontend.rule=Host:${ROPER_REPO_BRANCH}.${DOMAIN}"
-      - "traefik.backend=microbot"
+      - "traefik.backend=tul_cob"
       - "traefik.docker.network=reverseproxy_default"
     networks:
       - "default"
