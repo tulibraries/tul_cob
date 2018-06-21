@@ -2,6 +2,7 @@ language: ruby
 sudo: false
 cache:
   directories:
+    - tmp/solr_dl/
 rvm:
 - 2.4.1
 env:
