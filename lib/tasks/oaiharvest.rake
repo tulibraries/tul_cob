@@ -16,7 +16,8 @@ namespace :fortytu do
 
   desc "Remove deleted items from Solr"
   task purge: :environment do
-    solr = RSolr.connect url: Blacklight.connection_config[:url]
+    solr = RSolr.connect url: Blacklight.connection_config[:url],
+      read_timeout: 120
     delete_files_path = File.join(Rails.root, "tmp", "alma", "marc-delete", "*.xml")
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
     ids = []
