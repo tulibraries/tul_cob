@@ -557,6 +557,46 @@ RSpec.describe Traject::Macros::Custom do
   end
 
 
+  describe "#extract_subject_display" do
+    before do
+      subject.instance_eval do
+        to_field "subject_display", extract_subject_display
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a record doesn't have subject topics" do
+      let(:path) { "subject_topic_missing.xml" }
+
+      it "does not map anything to the field" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when a record has subjects" do
+      let(:path) { "subject_display.xml" }
+      it "maps data from 6XX fields in expected way" do
+        expected = [
+          "Kennedy, John F. (John Fitzgerald), 1917-1963 — Pictorial works",
+          "Onassis, Jacqueline Kennedy, 1929- — Pictorial works",
+          "Kennedy, John F. (John Fitzgerald), 1917-1963 — Assassination — Pictorial works",
+          "Presidents — United States — Pictorial works",
+          "Presidents' spouses — United States — Pictorial works",
+          "Photography — Social aspects — United States — History — 20th century",
+          "Mass media — Social aspects — United States — History — 20th century",
+          "Popular culture — United States — History — 20th century",
+          "Art and popular culture — United States — History — 20th century",
+          "United States — Civilization — 1945-"
+        ]
+        expect(subject.map_record(records[0])).to eq(
+          "subject_display" => expected
+        )
+      end
+    end
+  end
+
   describe "#extract_subject_topic_facet" do
     before do
       subject.instance_eval do

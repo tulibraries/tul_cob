@@ -118,6 +118,33 @@ module Traject
         end
       end
 
+      def extract_subject_display
+        lambda do |rec, acc|
+          name_fields = "600abcdefghklmnopqrstu:610abcdefghklmnoprstu:611acdefghjklnpqstu:630adefghklmnoprst:648a:650abcdeg:651aeg:653a:654abce:655abc:656ak:657a:690abcdeg"
+          description_fields = "600vxyz:610vxyz:611vxyz:630vxyz:648xvyz:650vxyz:651vxyz:653:654vyz:655vxyz:656vxyz:657vxyz:690vxyz"
+
+          names = Traject::MarcExtractor.cached(name_fields)
+            .collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).map { |f|
+              Traject::Macros::Marc21.trim_punctuation(f)
+            }
+          end
+
+          descriptions = Traject::MarcExtractor.cached(description_fields, separator: " — ")
+            .collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).map { |f|
+              Traject::Macros::Marc21.trim_punctuation(f)
+            }
+          end
+
+          names.zip(descriptions).each do |item|
+            acc << item.join(" — ")
+          end
+
+          acc
+        end
+      end
+
       def extract_subject_topic_facet
         lambda do |rec, acc|
           subjects = []
