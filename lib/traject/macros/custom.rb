@@ -230,7 +230,9 @@ module Traject
       def extract_availability
         lambda { |rec, acc|
           unless rec.fields("PRT").empty?
-            acc << "Online"
+            rec.fields("PRT").each do |field|
+              acc << "Online" unless field["9"] == "Not Available"
+            end
           end
           unless acc.include?("Online")
             rec.fields(["856"]).each do |field|

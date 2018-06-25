@@ -346,4 +346,13 @@
     <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
   </datafield>
 </record>
+<record>
+<!-- 16. PRT Subfield 9 == "Not Available"  -->
+  <datafield tag="245" ind1="4" ind2="2">
+    <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+  </datafield>
+  <datafield tag="PRT">
+    <subfield code="9">Not Available</subfield>
+  </datafield>
+</record>
 </collection>
