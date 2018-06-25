@@ -24,6 +24,7 @@
     <%= javascript_pack_tag 'application' %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
+    <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="<%= render_body_class %>">
     <div id="page-wrapper">
