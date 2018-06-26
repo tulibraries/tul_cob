@@ -1,0 +1,32 @@
+<%= form_tag request_options_path, :class => 'form-horizontal', :method => :post do  %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <%= label_tag(:pickup_location, "Pickup Location:") %>
+        <%= select_tag(:pickup_location, options_for_select(@pickup_locations), class: "request-form form-control", include_blank: true) %>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col-sm-4">
+        <%= label_tag(:description, "Description:") %>
+        <%= select_tag(:description, options_for_select(@descriptions), class: "request-form form-control", include_blank: true) %>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-sm-6">
+        <%= label_tag(:not_needed, "Not Needed After (optional):") %>
+        <%= select_date Date.today, prefix: :start_date %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <%= label_tag(:comment, "Comment:") %>
+        <%= text_area_tag(:comment, "", class: "request-form form-control") %>
+      </div>
+    </div>
+
+  </div>
+<% end %>

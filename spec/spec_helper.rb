@@ -42,6 +42,22 @@ RSpec.configure do |config|
 
   config.before(:each) do
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
+        to_return(:status => 200,
+        :body => File.open(SPEC_ROOT + '/fixtures/alma_data/bib_items_ambler_only.json'))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/same_campus\/holdings\/.*\/items/).
+        to_return(:status => 200,
+        :body => File.open(SPEC_ROOT + '/fixtures/alma_data/presser_and_paley.json'))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/ambler_presser\/holdings\/.*\/items/).
+        to_return(:status => 200,
+        :body => File.open(SPEC_ROOT + '/fixtures/alma_data/ambler_presser.json'))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/kardon_paley\/holdings\/.*\/items/).
+        to_return(:status => 200,
+        :body => File.open(SPEC_ROOT + '/fixtures/alma_data/kardon_paley.json'))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
         with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
         to_return(status: 200,

@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 0347413016108b5688a9ffe5a49cb8e357a0065b
-  branch: normaize-reponse-and-sets
+  revision: b0d4841ff95a7fc2faab9b4b2ed9569022746ce5
+  branch: master
   specs:
-    alma (0.2.7)
+    alma (0.2.5)
       ezwadl
       httparty
       xml-simple
@@ -264,7 +264,7 @@ GEM
     mysql2 (0.4.10)
     nenv (0.3.0)
     nio4r (2.3.0)
-    nokogiri (1.8.2)
+    nokogiri (1.8.3)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
