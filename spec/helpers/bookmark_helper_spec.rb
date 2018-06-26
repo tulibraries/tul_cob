@@ -25,10 +25,16 @@ RSpec.describe BookmarkHelper, type: :helper do
     end
 
     context "document is ajax ready" do
+      doc = PrimoCentralDocument.new({ "pnxId" => "0", "ajax" => true }, nil)
+
       it "returns string that sets stimulus controller and data attributes" do
-        doc = PrimoCentralDocument.new({ "pnxId" => "0", "ajax" => true }, nil)
         expected = "data-controller=index data-index-url=/articles/0/index_item?document_counter=0"
         expect(helper.index_controller(doc)).to eq(expected)
+      end
+
+      it "correctly sets the document counter if pased" do
+        expected = "data-controller=index data-index-url=/articles/0/index_item?document_counter=1"
+        expect(helper.index_controller(doc, 1)).to eq(expected)
       end
     end
   end
