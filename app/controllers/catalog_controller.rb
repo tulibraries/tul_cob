@@ -544,4 +544,14 @@ class CatalogController < ApplicationController
   def display_duration(args)
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
+
+  ##
+  # Redner one index record (use as an ajax endpoint).
+  # /
+  def index_item
+    (@response, doc_list) = search_results(params)
+    count = (params["document_counter"] || 0 rescue 0).to_i
+    doc = doc_list.first
+    render "_document", layout: false, locals: { document: doc, document_counter: count }
+  end
 end

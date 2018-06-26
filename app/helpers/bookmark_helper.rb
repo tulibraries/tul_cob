@@ -31,4 +31,10 @@ module BookmarkHelper
       :default => "BookmarksController"
     }
   end
+
+  def index_controller(document = {}, count = 0)
+    if (document.ajax? rescue false)
+      "data-controller=#{document.ajax_controller} data-index-url=#{document.ajax_url}"
+    end
+  end
 end

@@ -24,6 +24,15 @@ module Blacklight::PrimoCentral
         else
           raise "FIXME, translation of Solr search for Summon"
         end
+      elsif !blacklight_params[:id].nil?
+        primo_central_parameters[:query] = {
+          limit: 1,
+          offset: 0,
+          q: {
+            value: to_primo_id(blacklight_params[:id]),
+            precision: "contains",
+          }
+        }
       else
         primo_central_parameters[:query] = {
           limit: per_page,
