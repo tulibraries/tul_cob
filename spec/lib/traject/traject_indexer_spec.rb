@@ -199,7 +199,7 @@ RSpec.describe Traject::Macros::Custom do
     end
 
     context "No name available" do
-      xit "does not extract a cretor" do
+      xit "does not extract a creator" do
         expect(subject.map_record(records[0])).to eq({})
       end
     end
@@ -253,28 +253,28 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
-    context "Tag 700contributor with values in all the subfields" do
+    context "Tag 700 contributor with values in all the subfields" do
       it "extracts creator field in an expected way" do
         expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u"] }
         expect(subject.map_record(records[1])).to eq(expected)
       end
     end
 
-    context "Tag 710 ontributor with values in all the subfields" do
+    context "Tag 710 contributor with values in all the subfields" do
       it "extracts creator field idisaplayexpected way" do
         expected = { "contributor_display" => ["a b d c|e l m n o p t"] }
         expect(subject.map_record(records[2])).to eq(expected)
       end
     end
 
-    context "Tag 711 ontributor with values in all the subfields" do
+    context "Tag 711 contributor with values in all the subfields" do
       it "extracts creator field in an expected way" do
         expected = { "contributor_display" => ["a n d c j|e l o p t"] }
         expect(subject.map_record(records[3])).to eq(expected)
       end
     end
 
-    context "All threontributor fields (700, 710, 711) with all values." do
+    context "All three contributor fields (700, 710, 711) with all values." do
       it "extracts creator fields display expected way" do
         expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u",
                                          "a b d c|e l m n o p t",
@@ -341,9 +341,15 @@ RSpec.describe Traject::Macros::Custom do
         end
       end
 
+      context "records with a PRT subfield 9 that equals Not Available are NOT Online" do
+        it "does not map to Online" do
+          expect(subject.map_record(records[16])).to_not eq("availability_facet" => ["Online"])
+        end
+      end
+
       context "Archive-it links are NOT Online" do
         it "does not include ARCHIVE_IT_LINKS in Online records" do
-          expect(subject.map_record(records[9])).to_not eq("Online")
+          expect(subject.map_record(records[9])).to_not eq("availability_facet" => ["Online"])
         end
       end
     end
