@@ -3,14 +3,47 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Details of title you requested:</h4>
+        <h4 id="modal-title">Request Options:</h4>
       </div>
       <div class="modal-body">
-        <% if @request_options.hold_allowed? %>
-          <%= render "request_form" %>
-        <% else %>
-          <p>This item is not currently requestable.</p>
-        <% end %>
+        <div class="panel-group request-group" id="request-accordian">
+          <div class="panel panel-default">
+            <div class="panel-heading request-heading">
+              <h4 class="panel-title">
+                  <a class="hold-request accordian-toggle" data-action="requests#accordian" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne">Request a hold</a>
+              </h4>
+            </div>
+
+            <div id="collapseOne" class="panel-collapse collapse">
+              <div class="panel-body">
+                <% if @request_options.hold_allowed? %>
+                  <h5>Details of title you requested:</h5>
+                  <%= render "hold_request_form" %>
+                <% else %>
+                  <p>This item is not currently requestable.</p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="panel panel-default request-heading">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="digital-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo">Scan a book chapter</a>
+                </h4>
+              </div>
+
+              <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <% if @request_options.digitization_allowed? %>
+                    <p>test</p>
+                  <% else %>
+                    <p>This item is not currently requestable.</p>
+                  <% end %>
+                </div>
+              </div>
+
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
