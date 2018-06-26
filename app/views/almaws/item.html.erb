@@ -1,6 +1,6 @@
 <div data-controller="requests" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations) %>">
   <% if user_signed_in? %>
-    <button class="btn btn-primary" data-action="requests#request">Request</button>
+    <button class="btn btn-primary" data-action="requests#hold">Request</button>
     <div id="stimulus-modal" data-target="requests.modal"></div>
   <% else %>
     <%= link_to(t("blacklight.requests.log_in"), new_user_session_path) %>

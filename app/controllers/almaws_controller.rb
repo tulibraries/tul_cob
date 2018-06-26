@@ -6,7 +6,7 @@ class AlmawsController < ApplicationController
   def item
     @mms_id = params[:mms_id]
     start = Time.now
-    bib_items = Alma::BibItem.find(mms_id, limit: 100)
+    bib_items = Alma::BibItem.find(@mms_id, limit: 100)
     elapsed = Time.now - start
     logger.info JSON.dump(
       type: "bib_items_availability",

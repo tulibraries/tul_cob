@@ -8,7 +8,7 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "modal" ]
 
-  request() {
+  hold() {
     fetch(this.data.get("url"), {
       credentials: "same-origin",
       headers: {
