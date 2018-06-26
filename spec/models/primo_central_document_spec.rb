@@ -40,7 +40,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
       let(:doc) { Hash.new }
 
       it "defaults to false" do
-        expect { subject.ajax? }.to be(false)
+        expect(subject.ajax?).to be(false)
       end
     end
 
