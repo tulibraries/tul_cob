@@ -26265,6 +26265,9 @@
       <subfield code="f">-</subfield>
       <subfield code="g">0</subfield>
     </datafield>
+    <datafield ind1="2" ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
     <datafield ind1="2" ind2=" " tag="HLD">
       <subfield code="b">GINSBURG</subfield>
       <subfield code="c">serials</subfield>
