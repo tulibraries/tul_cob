@@ -35,7 +35,8 @@
               <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
                   <% if @request_options.digitization_allowed? %>
-                    <p>test</p>
+                    <h5>Details of title you requested:</h5>
+                    <%= render "digitization_request_form" %>
                   <% else %>
                     <p>This item is not currently requestable.</p>
                   <% end %>
