@@ -10,14 +10,14 @@
           <div class="panel panel-default">
             <div class="panel-heading request-heading">
               <h4 class="panel-title">
-                  <a class="hold-request accordian-toggle" data-action="requests#accordian" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne">Request a hold</a>
+                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne">Request a hold</a>
               </h4>
             </div>
 
             <div id="collapseOne" class="panel-collapse collapse">
               <div class="panel-body">
                 <% if @request_options.hold_allowed? %>
-                  <h5>Details of title you requested:</h5>
+                  <h5 class="request-header">Details of title you requested:</h5>
                   <%= render "hold_request_form" %>
                 <% else %>
                   <p>This item is not currently requestable.</p>
@@ -35,7 +35,7 @@
               <div id="collapseTwo" class="panel-collapse collapse">
                 <div class="panel-body">
                   <% if @request_options.digitization_allowed? %>
-                    <h5>Details of title you requested:</h5>
+                    <h5 class="request-header">Details of title you requested:</h5>
                     <%= render "digitization_request_form" %>
                   <% else %>
                     <p>This item is not currently requestable.</p>

@@ -1,59 +1,55 @@
-<%= form_tag request_options_path, :class => 'form-horizontal', :method => :post do  %>
+<%= form_with url: request_options_path, class: "form-horizontal", method: :post do |form|  %>
   <div class="container">
     <div class="form-group row">
-      <div class="col-sm-12">
-        <%= label_tag("", "Chapter/Article Title:", class: "col-form-label") %>
-        <%= text_field_tag( class: "request-form form-control") %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <%= label_tag("", "Chapter/Article Author:", class: "col-form-label") %>
-        <%= text_field_tag( class: "request-form form-control") %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <%= label_tag("Start page:") %>
-        <%= text_field_tag( class: "request-form form-control") %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <%= label_tag("End page:") %>
-        <%= text_field_tag( class: "request-form form-control") %>
-      </div>
-    </div>
-
-    <div class="form-group row">
-      <div class="col-sm-12">
-        <%= label_tag(:not_needed, "Not Needed After (optional):") %>
-        <%= select_date Date.today, prefix: :start_date %>
+      <div class="col-sm-6">
+        <%= label("", :chapter_or_article_title, "Chapter/Article Title:", class: "col-form-label") %>
+        <%= form.text_field :chapter_or_article_title, class: "request-form form-control" %>
       </div>
     </div>
 
     <div class="form-group row">
       <div class="col-sm-6">
-        <%= label_tag(:comment, "Comment:") %>
-        <%= text_area_tag(:comment, "", class: "request-form form-control") %>
+        <%= label("", :chapter_or_article_author, "Chapter/Article Author:", class: "col-form-label") %>
+        <%= form.text_field :chapter_or_article_author, class: "request-form form-control" %>
       </div>
     </div>
 
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-      <label class="form-check-label" for="inlineCheckbox1">
-        Partial
-      </label>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <%= label("", :from_page, "Start page:") %>
+        <%= form.text_field :from_page, class: "request-form form-control" %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= label("", :to_page, "End page:") %>
+        <%= form.text_field :to_page, class: "request-form form-control" %>
+      </div>
     </div>
 
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
-      <label class="form-check-label" for="inlineCheckbox2">
-        Full Chapter
-      </label>
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= label("", :last_interest_date, "Not Needed After (optional):") %>
+        <%= select_date Date.today, prefix: :last_interest_date %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= label(:comment, "Notes:") %>
+        <%= form.text_area :comment, class: "request-form form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 form-check form-check-inline">
+        <%= check_box_tag(:partial_digitization) %>
+        <%= label(:partial_digitization, "Partial", class: "form-check-label") %>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <%= check_box_tag(:full_chapter) %>
+        <%= label(:full_chapter, "Full Chapter", class: "form-check-label") %>
+      </div>
     </div>
   </div>
 <% end %>
