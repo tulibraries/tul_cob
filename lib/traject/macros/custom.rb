@@ -138,7 +138,7 @@ module Traject
           end
 
           names.zip(descriptions).each do |item|
-            acc << item.join(" — ")
+            acc << item.compact.join(" — ")
           end
 
           acc

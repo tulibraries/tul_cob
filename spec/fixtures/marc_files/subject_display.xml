@@ -126,6 +126,9 @@
     <subfield code="x">Civilization</subfield>
     <subfield code="y">1945-</subfield>
   </datafield>
+  <datafield ind1="3" ind2="0" tag="600">
+    <subfield code="a">Kennedy family.</subfield>
+  </datafield>
   <datafield ind1=" " ind2=" " tag="901">
     <subfield code="a">BNA</subfield>
   </datafield>

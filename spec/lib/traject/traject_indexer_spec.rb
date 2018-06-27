@@ -588,7 +588,8 @@ RSpec.describe Traject::Macros::Custom do
           "Mass media — Social aspects — United States — History — 20th century",
           "Popular culture — United States — History — 20th century",
           "Art and popular culture — United States — History — 20th century",
-          "United States — Civilization — 1945-"
+          "United States — Civilization — 1945-",
+          "Kennedy family"
         ]
         expect(subject.map_record(records[0])).to eq(
           "subject_display" => expected
