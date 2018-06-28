@@ -15,6 +15,8 @@ class CatalogController < ApplicationController
 
   helper_method :browse_creator
   helper_method :display_duration
+  rescue_from ::BlacklightRangeLimit::InvalidRange,
+    with: :raise_bad_range_limit
 
   configure_blacklight do |config|
     # default advanced config values
@@ -565,5 +567,10 @@ class CatalogController < ApplicationController
         render "errors/not_found"
       end
     end
+  end
+
+  def raise_bad_range_limit(exception)
+    flash[:notice] = exception.message
+    redirect_to request.referrer || root_url
   end
 end
