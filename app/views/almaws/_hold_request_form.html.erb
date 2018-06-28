@@ -2,24 +2,26 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 hold-form">
-        <%= label(:pickup_location, "Pickup Location:") %>
-        <%= select_tag(:pickup_location, options_for_select(@pickup_locations), class: "request-form form-control", include_blank: true) %>
+        <%= label("", :pickup_location, "Pickup Location:") %>
+        <%= select_tag(:pickup_location, options_for_select(@pickup_locations), class: "request-form form-control", include_blank: true, required: true) %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-6">
-        <%= label(:not_needed, "Not Needed After (optional):") %>
+        <%= label("", :not_needed, "Not Needed After (optional):") %>
         <%= select_date Date.today, prefix: :last_interest_date %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-6">
-        <%= label(:comment, "Notes:") %>
+        <%= label("", :comment, "Notes:") %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
     </div>
+
+    <%= form.submit"Request", class:"btn btn-primary" %>
 
   </div>
 <% end %>

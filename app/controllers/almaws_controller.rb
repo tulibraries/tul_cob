@@ -21,7 +21,7 @@ class AlmawsController < ApplicationController
     mms_id = params[:mms_id]
     @pickup_locations = params[:pickup_locations].split(",").map {|location| helpers.library_name_from_short_code(location)}
     #@description = params[:descriptions].split(",").map {|desc| helpers.description(desc)}
-    user_id = current_user.uid
-    @request_options = Alma::RequestOptions.get(mms_id, user_id: user_id)
+    @user_id = current_user.uid
+    @request_options = Alma::RequestOptions.get(mms_id, user_id: @user_id)
   end
 end
