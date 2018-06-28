@@ -37,6 +37,10 @@ module Blacklight::PrimoCentral
           facet_counts: response["facets"].length,
           numFound: response["info"]["total"]
         )
+      else
+        if response.count == 1
+          raise Blacklight::Exceptions::RecordNotFound
+        end
       end
 
       blacklight_config.response_model.new(response, data, response_opts)
