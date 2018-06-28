@@ -554,4 +554,26 @@ class CatalogController < ApplicationController
     doc = doc_list.first
     render "_document", layout: false, locals: { document: doc, document_counter: count }
   end
+
+  ##
+  # Overrides CatalogController.invalid_document_id_error
+  #
+  # Overridden so that we can use our own 404 error handling setup.
+  def invalid_document_id_error(exception)
+    respond_to do |format|
+      format.xml  { render xml: error_info, status: 404 }
+      format.json { render json: error_info, stautus: 404 }
+
+      # default to HTML response, even for other non-HTML formats we don't
+      # neccesarily know about, seems to be consistent with what Rails4 does
+      # by default with uncaught ActiveRecord::RecordNotFound in production
+      format.any do
+        # use standard, possibly locally overridden, 404.html file. Even for
+        # possibly non-html formats, this is consistent with what Rails does
+        # on raising an ActiveRecord::RecordNotFound. Rails.root IS needed
+        # for it to work under testing, without worrying about CWD.
+        render "errors/not_found"
+      end
+    end
+  end
 end
