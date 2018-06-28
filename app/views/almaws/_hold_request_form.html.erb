@@ -9,14 +9,14 @@
 
     <div class="row hold-form">
       <div class="col-sm-6">
-        <%= label("", :not_needed, "Not Needed After (optional):") %>
+        <%= form.label(:not_needed, "Not Needed After (optional):") %>
         <%= select_date Date.today, prefix: :last_interest_date %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-6">
-        <%= label("", :comment, "Notes:") %>
+        <%= form.label(:comment, "Notes: (optional)") %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
     </div>
