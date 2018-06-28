@@ -79,7 +79,7 @@ Rails.application.routes.draw do
 
   get "almaws/item/:mms_id", to:  "almaws#item", as: "item"
   get "almaws/request/:mms_id/:pickup_locations", to: "almaws#request_options", as: "request_options"
-
+  post "almaws/request", to: "almaws#send_digitization_request", as: "digitization_request"
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
   end

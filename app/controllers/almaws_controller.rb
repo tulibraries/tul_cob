@@ -24,4 +24,28 @@ class AlmawsController < ApplicationController
     @user_id = current_user.uid
     @request_options = Alma::RequestOptions.get(mms_id, user_id: @user_id)
   end
+
+  def send_hold_request
+    request_type = "HOLD"
+  end
+
+  def send_digitization_request
+    not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
+    partial = params[:partial_or_full] == "true" ? true : false
+    options = {
+    mms_id: params[:mms_id],
+    user_id: current_user.uid,
+    request_type: "DIGITIZATION",
+    target_destination: { value: "DIGI_DEPT_INST" },
+    partial_digitization: partial,
+    last_interest_date: not_needed_date,
+    comment: params[:comment]
+    }
+    request = Alma::BibRequest.submit(options)
+
+    if request.success?
+      flash[:notice] = "Your request has been submitted."
+    end
+    request
+  end
 end

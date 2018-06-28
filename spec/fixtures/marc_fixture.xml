@@ -27042,5 +27042,846 @@
     <datafield tag='HLD' >
     </datafield>
   </record>
-  <record xmlns='http://www.loc.gov/MARC21/slim'><leader>02386nas a22007450  4500</leader><controlfield tag='005'>20180315121708.0</controlfield><controlfield tag='008'>780103c19789999gw qr6p       0uuua0eng d</controlfield><controlfield tag='001'>991012053719703811</controlfield><datafield ind1=' ' ind2=' ' tag='010'><subfield code='a'>sc 79004616</subfield><subfield code='z'>sn 79001966</subfield></datafield><datafield ind1='0' ind2=' ' tag='022'><subfield code='a'>0343-6993</subfield> </datafield><datafield ind1=' ' ind2=' ' tag='030'><subfield code='a'>MAINDC</subfield></datafield><datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(PPT)b12457905-01tuli_inst</subfield></datafield><datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>ocn471179097</subfield><subfield code='9'>ExL</subfield></datafield><datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>PATG03526661S</subfield></datafield><datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>ocm03526661</subfield></datafield><datafield ind1=' ' ind2=' ' tag='035'><subfield code='a'>(OCLC)ocm03526661</subfield></datafield><datafield ind1=' ' ind2=' ' tag='040'><subfield code='a'>DLC</subfield><subfield code='c'>DLC</subfield><subfield code='d'>MnMULS</subfield><subfield code='d'>DLC</subfield><subfield code='d'>PPT</subfield></datafield><datafield ind1=' ' ind2=' ' tag='042'><subfield code='a'>lc</subfield><subfield code='a'>nsdp</subfield></datafield><datafield ind1=' ' ind2=' ' tag='079'><subfield code='a'>ocm03526661</subfield></datafield><datafield ind1=' ' ind2=' ' tag='090'><subfield code='a'>QA1.M426X</subfield></datafield><datafield ind1='0' ind2='4' tag='222'><subfield code='a'>The Mathematical intelligencer</subfield></datafield><datafield ind1='0' ind2='4' tag='245'><subfield code='a'>The Mathematical intelligencer.</subfield></datafield><datafield ind1=' ' ind2=' ' tag='260'><subfield code='a'>Berlin,</subfield><subfield code='a'>New York,</subfield><subfield code='b'>Springer-Verlag.</subfield></datafield><datafield ind1=' ' ind2=' ' tag='265'><subfield code='a'>Springer-Verlag New York Inc., 175 Fifth Ave., New York, N.Y. 10010</subfield></datafield><datafield ind1=' ' ind2=' ' tag='300'><subfield code='a'>v.</subfield><subfield code='b'>ill.</subfield><subfield code='c'>28 cm.  quarterly.</subfield></datafield><datafield ind1='0' ind2=' ' tag='362'><subfield code='a'>v. 1-     ; 1978-          .</subfield></datafield><datafield ind1=' ' ind2=' ' tag='515'><subfield code='a'>An introductory number called v. 0 was issued Aug. 1977.</subfield></datafield><datafield ind1=' ' ind2=' ' tag='530'><subfield code='a'>Also available online</subfield></datafield><datafield ind1=' ' ind2=' ' tag='907'><subfield code='a'>.b12457905</subfield><subfield code='b'>p    </subfield><subfield code='c'>-</subfield></datafield><datafield ind1=' ' ind2=' ' tag='935'><subfield code='a'>00262349</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.1 (1978-1979)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.2 (1979-1980)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.3 (1980-1981)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.4 (1982)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.5 (1983)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.6 (1984)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.7 (1985) </subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.8 (1986)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.9 (1987)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.10 (1988)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.11 (1989)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.12 (1990)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.13 (1991)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.14 (1992)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.15 (1993)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.16 (1994) </subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.17 (1995)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.18 (1996)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.19 (1997)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.20 (1998)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.21 (1999)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.22 (2000)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.23 (2001)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.24 (2002)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.25 (2003)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.26 (2004)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.27 (2005)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.28 (2006)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.29 (2007)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='945'><subfield code='l'>pstk </subfield><subfield code='u'>v.v.30 (2008)</subfield><subfield code='g'>1</subfield></datafield><datafield ind1=' ' ind2=' ' tag='950'><subfield code='l'>MATH</subfield><subfield code='x'>470</subfield><subfield code='i'>01/01/01 N</subfield></datafield><datafield ind1=' ' ind2=' ' tag='955'><subfield code='c'>-</subfield><subfield code='u'>v=1- y=1978-</subfield></datafield><datafield ind1=' ' ind2=' ' tag='979'><subfield code='a'>ocm03526661</subfield></datafield><datafield ind1=' ' ind2=' ' tag='998'><subfield code='b'>32</subfield><subfield code='c'>990101</subfield><subfield code='d'>s</subfield><subfield code='e'>a</subfield><subfield code='f'>-</subfield><subfield code='g'>4</subfield></datafield><datafield ind1=' ' ind2=' ' tag='998'><subfield code='n'>PPT</subfield><subfield code='s'>9665</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ADM'><subfield code='b'>2018-03-15 16:17:08</subfield><subfield code='e'>b12457905-01tuli_inst</subfield><subfield code='d'>ILS</subfield><subfield code='a'>2017-06-20 05:55:54</subfield><subfield code='c'>false</subfield></datafield><datafield ind1=' ' ind2=' ' tag='HLD'><subfield code='b'>MAIN</subfield><subfield code='c'>serials</subfield><subfield code='x'>NOTE(CHECKIN): Print cancelled, online only vol. 31 2009.  dc 11/08 | NOTE(CHECKIN): Paley Current Periodicals Math.  Changed location 9/06 from Math to Cur Per. | FREQUENCY: q | SCODE3: - | VEN TITLE#: rb474100018554737007</subfield><subfield code='8'>22237992070003811</subfield></datafield><datafield ind1='0' ind2=' ' tag='HLD'><subfield code='b'>MAIN</subfield><subfield code='c'>stacks</subfield><subfield code='h'>QA1.M426X</subfield><subfield code='8'>22237992060003811</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882978</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991770003811</subfield><subfield code='c'>v.23 (2001)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074023052681</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991680003811</subfield><subfield code='c'>v.29 (2007)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882838</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991940003811</subfield><subfield code='c'>v.9 (1987)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882960</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991780003811</subfield><subfield code='c'>v.22 (2000)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882846</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991930003811</subfield><subfield code='c'>v.10 (1988)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882770</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992000003811</subfield><subfield code='c'>v.3 (1980-1981)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882887</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991860003811</subfield><subfield code='c'>v.14 (1992)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882879</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991880003811</subfield><subfield code='c'>v.13 (1991)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882929</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991820003811</subfield><subfield code='c'>v.18 (1996)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882911</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991830003811</subfield><subfield code='c'>v.17 (1995)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882903</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991840003811</subfield><subfield code='c'>v.16 (1994)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882895</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991850003811</subfield><subfield code='c'>v.15 (1993)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882994</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991730003811</subfield><subfield code='c'>v.25 (2003)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882754</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992020003811</subfield><subfield code='c'>v.1 (1978-1979)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882762</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992010003811</subfield><subfield code='c'>v.2 (1979-1980)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017528696</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992030003811</subfield><subfield code='c'>v.27 (2005)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882952</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991790003811</subfield><subfield code='c'>v.21 (1999)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882986</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991750003811</subfield><subfield code='c'>v.24 (2002)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074023015795</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991710003811</subfield><subfield code='c'>v.28 (2006)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074024527012</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992050003811</subfield><subfield code='c'>v.30 (2008)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017528704</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237992040003811</subfield><subfield code='c'>v.26 (2004)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882945</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991800003811</subfield><subfield code='c'>v.20 (1998)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882937</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991810003811</subfield><subfield code='c'>v.19 (1997)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882861</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991890003811</subfield><subfield code='c'>v.12 (1990)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882853</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991900003811</subfield><subfield code='c'>v.11 (1989)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882804</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991970003811</subfield><subfield code='c'>v.6 (1984)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882796</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991980003811</subfield><subfield code='c'>v.5 (1983)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882788</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991990003811</subfield><subfield code='c'>v.4 (1982)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882820</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991950003811</subfield><subfield code='c'>v.8 (1986)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield><datafield ind1=' ' ind2=' ' tag='ITM'><subfield code='r'>22237992060003811</subfield><subfield code='b'>1</subfield><subfield code='h'>0</subfield><subfield code='g'>stacks</subfield><subfield code='t'>ISSUE</subfield><subfield code='9'>39074017882812</subfield><subfield code='e'>stacks</subfield><subfield code='8'>23237991960003811</subfield><subfield code='c'>v.7 (1985)</subfield><subfield code='a'>2</subfield><subfield code='q'>2017-06-20 05:55:54</subfield><subfield code='i'>QA1.M426X</subfield><subfield code='d'>MAIN</subfield><subfield code='f'>MAIN</subfield></datafield></record>
+  <record xmlns='http://www.loc.gov/MARC21/slim'>
+    <leader>02386nas a22007450  4500</leader>
+    <controlfield tag='005'>20180315121708.0</controlfield>
+    <controlfield tag='008'>780103c19789999gw qr6p       0uuua0eng d</controlfield>
+    <controlfield tag='001'>991012053719703811</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='010'>
+      <subfield code='a'>sc 79004616</subfield>
+      <subfield code='z'>sn 79001966</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='022'>
+      <subfield code='a'>0343-6993</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='030'>
+      <subfield code='a'>MAINDC</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b12457905-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>ocn471179097</subfield>
+      <subfield code='9'>ExL</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>PATG03526661S</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>ocm03526661</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(OCLC)ocm03526661</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='040'>
+      <subfield code='a'>DLC</subfield>
+      <subfield code='c'>DLC</subfield>
+      <subfield code='d'>MnMULS</subfield>
+      <subfield code='d'>DLC</subfield>
+      <subfield code='d'>PPT</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='042'>
+      <subfield code='a'>lc</subfield>
+      <subfield code='a'>nsdp</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='079'>
+      <subfield code='a'>ocm03526661</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA1.M426X</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='4' tag='222'>
+      <subfield code='a'>The Mathematical intelligencer</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='4' tag='245'>
+      <subfield code='a'>The Mathematical intelligencer.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='260'>
+      <subfield code='a'>Berlin,</subfield>
+      <subfield code='a'>New York,</subfield>
+      <subfield code='b'>Springer-Verlag.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='265'>
+      <subfield code='a'>Springer-Verlag New York Inc., 175 Fifth Ave., New York, N.Y. 10010</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>v.</subfield>
+      <subfield code='b'>ill.</subfield>
+      <subfield code='c'>28 cm.  quarterly.</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='362'>
+      <subfield code='a'>v. 1-     ; 1978-          .</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='515'>
+      <subfield code='a'>An introductory number called v. 0 was issued Aug. 1977.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='530'>
+      <subfield code='a'>Also available online</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b12457905</subfield>
+      <subfield code='b'>p    </subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='935'>
+      <subfield code='a'>00262349</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.1 (1978-1979)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.2 (1979-1980)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.3 (1980-1981)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.4 (1982)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.5 (1983)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.6 (1984)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.7 (1985) </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.8 (1986)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.9 (1987)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.10 (1988)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.11 (1989)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.12 (1990)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.13 (1991)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.14 (1992)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.15 (1993)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.16 (1994) </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.17 (1995)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.18 (1996)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.19 (1997)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.20 (1998)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.21 (1999)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.22 (2000)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.23 (2001)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.24 (2002)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.25 (2003)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.26 (2004)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.27 (2005)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.28 (2006)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.29 (2007)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='u'>v.v.30 (2008)</subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='950'>
+      <subfield code='l'>MATH</subfield>
+      <subfield code='x'>470</subfield>
+      <subfield code='i'>01/01/01 N</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='955'>
+      <subfield code='c'>-</subfield>
+      <subfield code='u'>v=1- y=1978-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='979'>
+      <subfield code='a'>ocm03526661</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>32</subfield>
+      <subfield code='c'>990101</subfield>
+      <subfield code='d'>s</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>4</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='n'>PPT</subfield>
+      <subfield code='s'>9665</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ADM'>
+      <subfield code='b'>2018-03-15 16:17:08</subfield>
+      <subfield code='e'>b12457905-01tuli_inst</subfield>
+      <subfield code='d'>ILS</subfield>
+      <subfield code='a'>2017-06-20 05:55:54</subfield>
+      <subfield code='c'>false</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='HLD'>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>serials</subfield>
+      <subfield code='x'>NOTE(CHECKIN): Print cancelled, online only vol. 31 2009.  dc 11/08 | NOTE(CHECKIN): Paley Current Periodicals Math.  Changed location 9/06 from Math to Cur Per. | FREQUENCY: q | SCODE3: - | VEN TITLE#: rb474100018554737007</subfield>
+      <subfield code='8'>22237992070003811</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='HLD'>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>QA1.M426X</subfield>
+      <subfield code='8'>22237992060003811</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882978</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991770003811</subfield>
+      <subfield code='c'>v.23 (2001)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074023052681</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991680003811</subfield>
+      <subfield code='c'>v.29 (2007)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882838</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991940003811</subfield>
+      <subfield code='c'>v.9 (1987)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882960</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991780003811</subfield>
+      <subfield code='c'>v.22 (2000)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882846</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991930003811</subfield>
+      <subfield code='c'>v.10 (1988)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882770</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992000003811</subfield>
+      <subfield code='c'>v.3 (1980-1981)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882887</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991860003811</subfield>
+      <subfield code='c'>v.14 (1992)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882879</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991880003811</subfield>
+      <subfield code='c'>v.13 (1991)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882929</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991820003811</subfield>
+      <subfield code='c'>v.18 (1996)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882911</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991830003811</subfield>
+      <subfield code='c'>v.17 (1995)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882903</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991840003811</subfield>
+      <subfield code='c'>v.16 (1994)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882895</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991850003811</subfield>
+      <subfield code='c'>v.15 (1993)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882994</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991730003811</subfield>
+      <subfield code='c'>v.25 (2003)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882754</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992020003811</subfield>
+      <subfield code='c'>v.1 (1978-1979)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882762</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992010003811</subfield>
+      <subfield code='c'>v.2 (1979-1980)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017528696</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992030003811</subfield>
+      <subfield code='c'>v.27 (2005)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882952</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991790003811</subfield>
+      <subfield code='c'>v.21 (1999)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882986</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991750003811</subfield>
+      <subfield code='c'>v.24 (2002)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074023015795</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991710003811</subfield>
+      <subfield code='c'>v.28 (2006)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074024527012</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992050003811</subfield>
+      <subfield code='c'>v.30 (2008)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017528704</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237992040003811</subfield>
+      <subfield code='c'>v.26 (2004)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882945</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991800003811</subfield>
+      <subfield code='c'>v.20 (1998)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882937</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991810003811</subfield>
+      <subfield code='c'>v.19 (1997)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882861</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991890003811</subfield>
+      <subfield code='c'>v.12 (1990)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882853</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991900003811</subfield>
+      <subfield code='c'>v.11 (1989)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882804</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991970003811</subfield>
+      <subfield code='c'>v.6 (1984)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882796</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991980003811</subfield>
+      <subfield code='c'>v.5 (1983)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882788</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991990003811</subfield>
+      <subfield code='c'>v.4 (1982)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882820</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991950003811</subfield>
+      <subfield code='c'>v.8 (1986)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='ITM'>
+      <subfield code='r'>22237992060003811</subfield>
+      <subfield code='b'>1</subfield>
+      <subfield code='h'>0</subfield>
+      <subfield code='g'>stacks</subfield>
+      <subfield code='t'>ISSUE</subfield>
+      <subfield code='9'>39074017882812</subfield>
+      <subfield code='e'>stacks</subfield>
+      <subfield code='8'>23237991960003811</subfield>
+      <subfield code='c'>v.7 (1985)</subfield>
+      <subfield code='a'>2</subfield>
+      <subfield code='q'>2017-06-20 05:55:54</subfield>
+      <subfield code='i'>QA1.M426X</subfield>
+      <subfield code='d'>MAIN</subfield>
+      <subfield code='f'>MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>00381nam a2200145 i 4500</leader>
+    <controlfield tag="005">20180604115752.0</controlfield>
+    <controlfield tag="008">180220s xx 000 0 eng d</controlfield>
+    <controlfield tag="001">991036881498303811</controlfield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">PPT</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">PPT</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">BlacklightTestRecord2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">:</subfield>
+      <subfield code="b">;</subfield>
+      <subfield code="c">cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">TESTRECORD</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-06-20 18:10:38</subfield>
+      <subfield code="e">991036881498403811</subfield>
+      <subfield code="d">01TULI_INST</subfield>
+      <subfield code="a">2018-02-20 17:46:07</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">reserve</subfield>
+      <subfield code="8">22419862390003811</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="8">22426649410003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">123456786546546546464654</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23426669920003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-05-18 15:32:16</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="r">2018-06-20 16:21:16</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">reserve</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025791674</subfield>
+      <subfield code="e">reserve</subfield>
+      <subfield code="8">23413741810003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-02-20 17:51:07</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="r">2018-05-02 19:20:06</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+</record>
 </collection>

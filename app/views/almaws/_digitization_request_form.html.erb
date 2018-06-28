@@ -1,4 +1,4 @@
-<%= form_with url: request_options_path, class: "form-horizontal", method: :post do |form|  %>
+<%= form_with url: digitization_request_path, class: "form-horizontal", method: :post do |form|  %>
 
   <%= form.hidden_field :mms_id, value: params[:mms_id] %>
   <%= form.hidden_field :user_id, value: @user_id %>
@@ -46,12 +46,12 @@
 
     <div class="form-group row">
       <div class="col-sm-2 ">
-        <%= radio_button_tag(:partial_or_full, "Partial", checked: true) %>
+        <%= radio_button_tag(:partial_or_full, "true", checked: true) %>
         <%= form.label(:partial_or_full_Partial, "Partial", class: "form-radio-label") %>
       </div>
 
       <div class="col-sm-2">
-        <%= radio_button_tag(:partial_or_full, "Full Chapter") %>
+        <%= radio_button_tag(:partial_or_full, "false") %>
         <%= form.label(:partial_or_full_Full_Chapter, "Full Chapter", class: "form-radio-label") %>
       </div>
     </div>
