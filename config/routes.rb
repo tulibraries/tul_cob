@@ -68,6 +68,9 @@ Rails.application.routes.draw do
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
   get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
 
+  get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
+  get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
+
 
   #
   # You can have the root of your site routed with "root"

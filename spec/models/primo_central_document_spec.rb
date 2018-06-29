@@ -35,6 +35,66 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  describe "#ajax?" do
+    context "document is empty" do
+      let(:doc) { Hash.new }
+
+      it "defaults to false" do
+        expect(subject.ajax?).to be(false)
+      end
+    end
+
+    context "document sets ajax value to true" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        ajax: true
+      )}
+
+      it "returns true" do
+        expect(subject.ajax?)
+      end
+    end
+
+    context "document sets ajax value to 'true'" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        ajax: "true"
+      )}
+
+      it "returns true" do
+        expect(subject.ajax?)
+      end
+    end
+
+    context "document sets ajax to non true" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        ajax: nil
+      )}
+
+      it "returns false" do
+        expect(subject.ajax?).to be(false)
+      end
+    end
+  end
+
+  describe "#ajax_url" do
+    context "document is empty" do
+      let(:doc) { Hash.new }
+
+      it "fails if no id is defined" do
+        expect { subject.ajax_url }.to raise_error(ActionController::UrlGenerationError)
+      end
+    end
+
+    context "document is empty but has id" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        pnxId: "0"
+      )}
+
+      it "returns a path for ajax endpoint with default counter" do
+        expect(subject.ajax_url).to eq("/articles/0/index_item?document_counter=0")
+      end
+    end
+  end
+
   context "document direct_link contains rft.isbn = ''" do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {

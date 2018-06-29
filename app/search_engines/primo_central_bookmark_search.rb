@@ -20,6 +20,6 @@ class PrimoCentralBookmarkSearch < PrimoCentralController
   private
     def docs_not_found(docs, ids)
       (ids - docs.map { |doc| doc["pnxId"] })
-        .map { |id| PrimoCentralDocument.new("pnxId" => id) }
+        .map { |id| PrimoCentralDocument.new("pnxId" => id, "ajax" => true) }
     end
 end

@@ -43,6 +43,14 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(primo_central_parameters["query"]["offset"]).to eq(0)
       end
     end
+
+    context "param :id is searched" do
+      let(:params) { ActionController::Parameters.new(id: "foo") }
+
+      it "sets query value to quoted :id" do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("'foo'")
+      end
+    end
   end
 
   describe ".process_advanced_search" do
