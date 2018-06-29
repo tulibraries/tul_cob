@@ -113,4 +113,12 @@ module CatalogHelper
       render "online_availability_button", document: doc, document_counter: count, links: links
     end
   end
+
+  ##
+  # Overridden from module Blacklight::BlacklightHelperBehavior.
+  #
+  # Overridden in order to disable rel alternate links added to page headers.
+  def render_link_rel_alternates(document = @document, options = {})
+    ""
+  end
 end
