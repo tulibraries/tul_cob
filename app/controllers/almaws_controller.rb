@@ -44,8 +44,8 @@ class AlmawsController < ApplicationController
     request = Alma::BibRequest.submit(options)
 
     if request.success?
-      flash[:notice] = "Your request has been submitted."
+      flash[:success] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
     end
-    request
   end
 end

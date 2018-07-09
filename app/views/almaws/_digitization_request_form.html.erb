@@ -1,4 +1,4 @@
-<%= form_with url: digitization_request_path, class: "form-horizontal", method: :post do |form|  %>
+<%= form_with url: digitization_request_path, local: true, class: "form-horizontal", method: :post do |form|  %>
 
   <%= form.hidden_field :mms_id, value: params[:mms_id] %>
   <%= form.hidden_field :user_id, value: @user_id %>
