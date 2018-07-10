@@ -38,6 +38,9 @@ en:
         part_of: "Is Part Of: %{value}"
         date: "Date: %{value}"
         doi: "DOI"
+        subject:
+          one: 'Temple University Libraries record: %{title}'
+          other: 'Temple University Libraries records'
     sms:
       form:
         title: "Text This"
