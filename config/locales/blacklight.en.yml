@@ -28,6 +28,19 @@ en:
       librarian_view:
         title: "Staff View"
 
+    email:
+      text:
+        imprint: "Imprint: %{value}"
+        contributor: "Contributor: %{value}"
+        issn: "ISSN: %{value}"
+        isbn: "ISBN: %{value}"
+        alma_mms: "MMS: %{value}"
+        part_of: "Is Part Of: %{value}"
+        date: "Date: %{value}"
+        doi: "DOI"
+        subject:
+          one: 'Temple University Libraries record: %{title}'
+          other: 'Temple University Libraries records'
     sms:
       form:
         title: "Text This"
