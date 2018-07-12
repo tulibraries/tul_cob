@@ -53,5 +53,26 @@ module Alma
       end
       pickup_locations
     end
+
+    def self.descriptions(items_list)
+      descriptions = items_list.map { |item| item["item_data"]["description"] }
+
+      if descriptions.any?
+        descriptions.each do |desc|
+          desc
+        end
+      end
+      descriptions
+    end
+
+    def self.item_holding_id(items_list)
+      holding_id = items_list.map { |item| item["holding_data"]["holding_id"] }
+      holding_id.first
+    end
+
+    def self.item_pid(items_list)
+      item_pid = items_list.map { |item| item["item_data"]["pid"] }
+      item_pid.last
+    end
   end
 end

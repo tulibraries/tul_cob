@@ -15,14 +15,24 @@ class AlmawsController < ApplicationController
       )
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @pickup_locations = Alma::Requests.valid_pickup_locations(@items).join(",")
+    @request_level = has_desc?(@items) ? "item" : "bib"
   end
 
   def request_options
     mms_id = params[:mms_id]
+    @items = Alma::BibItem.find(mms_id, limit: 100)
+    holding_id = Alma::Requests.item_holding_id(@items)
+    item_pid = Alma::Requests.item_pid(@items)
+    @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
+    @description = Alma::Requests.descriptions(@items)
     @pickup_locations = params[:pickup_locations].split(",").map {|location| helpers.library_name_from_short_code(location)}
-    #@description = params[:descriptions].split(",").map {|desc| helpers.description(desc)}
     @user_id = current_user.uid
-    @request_options = Alma::RequestOptions.get(mms_id, user_id: @user_id)
+    @request_level = params[:request_level]
+    if @request_level == "item"
+      @request_options = Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id: @user_id)
+    else
+      @request_options = Alma::RequestOptions.get(mms_id, user_id: @user_id)
+    end
   end
 
   def send_hold_request
@@ -35,6 +45,7 @@ class AlmawsController < ApplicationController
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
+    description: params[:description],
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
     partial_digitization: partial,
@@ -47,5 +58,11 @@ class AlmawsController < ApplicationController
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def has_desc?(items)
+    items = Alma::BibItem.find(@mms_id, limit: 100)
+    item_levels = items.map { |item| item["item_data"]["description"] }
+    item_levels.present?
   end
 end
