@@ -19,6 +19,7 @@ module Blacklight::PrimoCentral
           primo_central_parameters[:query] = {
             limit: per_page,
             offset:  offset,
+            sort: params[:sort],
             q: { value: queries },
           }
         else
@@ -55,9 +56,6 @@ module Blacklight::PrimoCentral
       if  @rows
         primo_central_parameters[:query][:limit] = @rows
       end
-    end
-
-    def set_query_sort_order(primo_central_parameters)
     end
 
     def process_advanced_search(primo_central_parameters)
