@@ -53,18 +53,25 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
+    @request_level = has_desc?(@items) ? "item" : "bib"
     not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
     partial = params[:partial_or_full] == "true" ? true : false
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
+    description: params[:description],
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
     partial_digitization: partial,
     last_interest_date: not_needed_date,
     comment: params[:comment]
     }
-    request = Alma::BibRequest.submit(options)
+
+    if @request_level == "bib"
+      request = Alma::BibRequest.submit(options)
+    else
+      request = Alma::ItemRequest.submit(options)
+    end
 
     if request.success?
       flash[:success] = "Your request has been submitted."

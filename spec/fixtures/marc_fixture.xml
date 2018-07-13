@@ -27883,5 +27883,63 @@
       <subfield code="r">2018-05-02 19:20:06</subfield>
       <subfield code="f">MAIN</subfield>
     </datafield>
-</record>
+  </record>
+  <record>
+    <leader>00381nam a2200145 i 4500</leader>
+    <controlfield tag="005">20180604115752.0</controlfield>
+    <controlfield tag="008">180220s xx 000 0 eng d</controlfield>
+    <controlfield tag="001">991036881498203811</controlfield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">PPT</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">PPT</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">BlacklightTestRecord3</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">:</subfield>
+      <subfield code="b">;</subfield>
+      <subfield code="c">cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">TESTRECORD</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">reserve</subfield>
+      <subfield code="8">22419863800003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">123456786546546546464654</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23413741760003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-05-18 15:32:16</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="r">2018-06-20 16:21:16</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
 </collection>
