@@ -69,6 +69,13 @@ class PrimoCentralController < CatalogController
     config.add_show_field :lccn, label: "LCCN"
     config.add_show_field :doi, label: "DOI"
     config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code
+
+    # Sort fields
+    config.add_sort_field :rel, label: "relevance"
+    config.add_sort_field :title, label: "title (A to Z)"
+    config.add_sort_field :creator, label: "author/creator (A to Z)"
+    config.add_sort_field :date, label: "date (new to old)"
+    config.add_sort_field :date2, label: "date (old to new)"
   end
 
   def render_sms_action?(_config, _options)
