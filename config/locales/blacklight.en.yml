@@ -41,6 +41,7 @@ en:
         subject:
           one: 'Temple University Libraries record: %{title}'
           other: 'Temple University Libraries records'
+
     sms:
       form:
         title: "Text This"
