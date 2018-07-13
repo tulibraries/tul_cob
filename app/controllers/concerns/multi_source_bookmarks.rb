@@ -13,8 +13,9 @@ module MultiSourceBookmarks
     blacklight_config.bookmark_sources = [ :catalog, :primo_central ]
   end
 
-  # Overrides BookmarksController::index in order to run search on multiple apis.
-  def index
+  # Overrides BookmarksController::action_documents in order to get documents from multiple apis.
+  def action_documents
+    fetch([])
     @bookmarks = token_or_current_or_guest_user.bookmarks
     document_list = []
     # This bit should probably be  made concurrent
@@ -41,6 +42,12 @@ module MultiSourceBookmarks
     # Just display all the bookmarks in one page
     @response["rows"] = @bookmarks.count if @response
     @docs = @documents
+    [@response, @documents]
+  end
+
+  # Overrides BookmarksController::index in order to run search on multiple apis.
+  def index
+    action_documents
 
     respond_to do |format|
       format.html {}
