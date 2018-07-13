@@ -121,4 +121,9 @@ module CatalogHelper
   def render_link_rel_alternates(document = @document, options = {})
     ""
   end
+
+  def advanced_catalog_search_path
+    params = @search_state.to_h.select { |k, v| !["page"].include? k }
+    blacklight_advanced_search_engine.advanced_search_path(params)
+  end
 end
