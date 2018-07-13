@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <leader>01813pam a2200481 a 4500</leader>
+  <controlfield tag="005">20180315125413.0</controlfield>
+  <controlfield tag="008">030129s2003    caua     b    001 0deng  </controlfield>
+  <controlfield tag="001">991035574589703811</controlfield>
+  <datafield ind1=" " ind2=" " tag="010">
+    <subfield code="a">2003001856</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="020">
+    <subfield code="a">0520229851</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">(PPT)b26721624-01tuli_inst</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">(DLC)ocn489512181</subfield>
+    <subfield code="9">ExL</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">DLC  2003001856</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">ocm51566368</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="035">
+    <subfield code="a">(OCLC)ocm51566368</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="040">
+    <subfield code="a">DLC</subfield>
+    <subfield code="c">DLC</subfield>
+    <subfield code="d">OrLoB</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="042">
+    <subfield code="a">pcc</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="043">
+    <subfield code="a">n-us---</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="079">
+    <subfield code="a">ocm51566368</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="090">
+    <subfield code="a">E842.1</subfield>
+    <subfield code="b">.L83 2003</subfield>
+  </datafield>
+  <datafield ind1="1" ind2=" " tag="100">
+    <subfield code="a">Lubin, David,</subfield>
+    <subfield code="d">1950-</subfield>
+  </datafield>
+  <datafield ind1="1" ind2="0" tag="245">
+    <subfield code="a">Shooting Kennedy :</subfield>
+    <subfield code="b">JFK and the culture of images /</subfield>
+    <subfield code="c">David M. Lubin.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="260">
+    <subfield code="a">Berkeley ;</subfield>
+    <subfield code="a">London :</subfield>
+    <subfield code="b">University of California Press,</subfield>
+    <subfield code="c">c2003.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="300">
+    <subfield code="a">xiv, 341 p. :</subfield>
+    <subfield code="b">ill. ;</subfield>
+    <subfield code="c">24 cm.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="504">
+    <subfield code="a">Includes bibliographical references (p. 289-322) and index.</subfield>
+  </datafield>
+  <datafield ind1="1" ind2="0" tag="600">
+    <subfield code="a">Kennedy, John F.</subfield>
+    <subfield code="q">(John Fitzgerald),</subfield>
+    <subfield code="d">1917-1963</subfield>
+    <subfield code="v">Pictorial works.</subfield>
+  </datafield>
+  <datafield ind1="1" ind2="0" tag="600">
+    <subfield code="a">Onassis, Jacqueline Kennedy,</subfield>
+    <subfield code="d">1929-</subfield>
+    <subfield code="v">Pictorial works.</subfield>
+  </datafield>
+  <datafield ind1="1" ind2="0" tag="600">
+    <subfield code="a">Kennedy, John F.</subfield>
+    <subfield code="q">(John Fitzgerald),</subfield>
+    <subfield code="d">1917-1963</subfield>
+    <subfield code="x">Assassination</subfield>
+    <subfield code="v">Pictorial works.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Presidents</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Pictorial works.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Presidents' spouses</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="v">Pictorial works.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Photography</subfield>
+    <subfield code="x">Social aspects</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">20th century.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Mass media</subfield>
+    <subfield code="x">Social aspects</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">20th century.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Popular culture</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">20th century.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="650">
+    <subfield code="a">Art and popular culture</subfield>
+    <subfield code="z">United States</subfield>
+    <subfield code="x">History</subfield>
+    <subfield code="y">20th century.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2="0" tag="651">
+    <subfield code="a">United States</subfield>
+    <subfield code="x">Civilization</subfield>
+    <subfield code="y">1945-</subfield>
+  </datafield>
+  <datafield ind1="3" ind2="0" tag="600">
+    <subfield code="a">Kennedy family.</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="901">
+    <subfield code="a">BNA</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="901">
+    <subfield code="a">R9397547</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="902">
+    <subfield code="a">031025AB0701</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="907">
+    <subfield code="a">.b26721624</subfield>
+    <subfield code="b">p    </subfield>
+    <subfield code="c">-</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="945">
+    <subfield code="l">pstk </subfield>
+    <subfield code="g">1</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="979">
+    <subfield code="a">ocm51566368</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="998">
+    <subfield code="b">1</subfield>
+    <subfield code="c">031124</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="998">
+    <subfield code="b">1</subfield>
+    <subfield code="c">031124</subfield>
+    <subfield code="d">m</subfield>
+    <subfield code="e">a</subfield>
+    <subfield code="f">-</subfield>
+    <subfield code="g">0</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="ADM">
+    <subfield code="b">2018-06-21 07:12:13</subfield>
+    <subfield code="e">b26721624-01tuli_inst</subfield>
+    <subfield code="d">ILS</subfield>
+    <subfield code="a">2017-06-20 13:48:53</subfield>
+    <subfield code="c">false</subfield>
+  </datafield>
+  <datafield ind1="0" ind2=" " tag="HLD">
+    <subfield code="b">MAIN</subfield>
+    <subfield code="c">stacks</subfield>
+    <subfield code="h">E842.1</subfield>
+    <subfield code="i">.L83 2003</subfield>
+    <subfield code="8">22327492150003811</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="ITM">
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">stacks</subfield>
+    <subfield code="t">BOOK</subfield>
+    <subfield code="9">39074016325581</subfield>
+    <subfield code="e">stacks</subfield>
+    <subfield code="8">23327492140003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="q">2017-06-20 13:48:53</subfield>
+    <subfield code="i">E842.1 .L83 2003</subfield>
+    <subfield code="d">MAIN</subfield>
+    <subfield code="r">2017-07-02 12:24:53</subfield>
+    <subfield code="f">MAIN</subfield>
+  </datafield>
+</record>
