@@ -28,6 +28,13 @@ en:
       librarian_view:
         title: "Staff View"
 
+    email:
+      text:
+        imprint: "Imprint: %{value}"
+        contributor: "Contributor: %{value}"
+        issn: "ISSN: %{value}"
+        isbn: "ISBN: %{value}"
+        alma_mms: "MMS: %{value}"
     sms:
       form:
         title: "Text This"

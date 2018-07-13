@@ -4,6 +4,17 @@ class SolrDocument
   include Blacklight::Solr::Document
 
   # self.unique_key = 'id'
+  field_semantics.merge!(
+    title: "title_statement_display" ,
+    imprint: "imprint_display",
+    author: "creator_display",
+    contributor: "contributor_display",
+    isbn: "isbn_display",
+    issn: "issn_display",
+    language: "language_display",
+    format: "format",
+    alma_mms: "alma_mms_display",
+  )
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(Blacklight::Document::Email)
