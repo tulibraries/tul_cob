@@ -36,7 +36,20 @@ class AlmawsController < ApplicationController
   end
 
   def send_hold_request
-    request_type = "HOLD"
+    # TODO: Add pickup location information
+    options = {
+    mms_id: params[:mms_id],
+    user_id: current_user.uid,
+    request_type: "HOLD",
+    last_interest_date: not_needed_date,
+    comment: params[:comment]
+    }
+    request = Alma::BibRequest.submit(options)
+
+    if request.success?
+      flash[:success] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def send_digitization_request
@@ -45,7 +58,6 @@ class AlmawsController < ApplicationController
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:description],
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
     partial_digitization: partial,
