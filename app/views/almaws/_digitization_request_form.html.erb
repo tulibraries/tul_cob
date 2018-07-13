@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <% unless @description.blank? %>
+    <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-6">
           <%= form.label(:description, "Description:") %>

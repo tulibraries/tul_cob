@@ -62,7 +62,7 @@ class AlmawsController < ApplicationController
 
   def has_desc?(items)
     items = Alma::BibItem.find(@mms_id, limit: 100)
-    item_levels = items.map { |item| item["item_data"]["description"] }
+    item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
     item_levels.present?
   end
 end
