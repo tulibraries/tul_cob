@@ -25,7 +25,7 @@ class AlmawsController < ApplicationController
     item_pid = Alma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = Alma::Requests.descriptions(@items)
-    @pickup_locations = params[:pickup_locations].split(",").map {|location| helpers.library_name_from_short_code(location)}
+    @pickup_locations = params[:pickup_locations].split(",").map { |location| helpers.library_name_from_short_code(location) }
     @user_id = current_user.uid
     @request_level = params[:request_level]
     if @request_level == "item"

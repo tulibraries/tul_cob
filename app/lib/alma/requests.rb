@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Alma
   module Requests
-
     def self.determine_campus(item)
       case item
       when "MAIN", "LAW", "MEDIA", "PRESSER"
