@@ -6,7 +6,7 @@ import { Controller } from "stimulus"
   }
 
 export default class extends Controller {
-  static targets = [ "modal" ]
+  static targets = [ "modal", "name" ]
 
   hold() {
     fetch(this.data.get("url"), {
@@ -20,5 +20,9 @@ export default class extends Controller {
         this.modalTarget.innerHTML = html
         $('#request').modal({show: true});
     })
+  }
+
+  author() {
+    console.log(this.nameTarget.value);
   }
 }

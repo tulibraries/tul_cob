@@ -1,8 +1,8 @@
-<div class="modal" tabindex="-1" id="request" data-controller="requests">
+<div class="modal" id="request" tabindex="-1" data-controller="requests">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-target="requests.cancel" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 id="modal-title">Request Options:</h4>
       </div>
       <div class="modal-body">
@@ -28,7 +28,7 @@
             <div class="panel panel-default request-heading">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a class="digital-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo">Scan a book chapter</a>
+                    <a class="digital-request accordian-toggle" data-action="requests#author" data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo">Scan a book chapter</a>
                 </h4>
               </div>
 

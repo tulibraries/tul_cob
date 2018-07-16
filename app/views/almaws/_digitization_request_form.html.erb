@@ -14,7 +14,7 @@
     <div class="form-group row">
       <div class="col-sm-6">
         <%= form.label(:chapter_or_article_author, "Chapter/Article Author:", class: "col-form-label") %>
-        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true %>
+        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true, "data-target": "requests.name" %>
       </div>
     </div>
 
