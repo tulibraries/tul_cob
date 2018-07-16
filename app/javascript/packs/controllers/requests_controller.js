@@ -23,6 +23,6 @@ export default class extends Controller {
   }
 
   author() {
-    console.log(this.nameTarget.value);
+    return this.nameTarget.value;
   }
 }
