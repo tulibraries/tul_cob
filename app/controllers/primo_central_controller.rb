@@ -46,6 +46,7 @@ class PrimoCentralController < CatalogController
     config.add_index_field :creator, label: "Author/Creator", multi: true
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
     config.add_index_field :date, label: "Year"
+    config.add_index_field :availability
 
     # Facet fields
     config.add_facet_field :tlevel, label: "Availability", home: true, helper_method: :translate_availability_code
