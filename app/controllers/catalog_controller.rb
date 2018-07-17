@@ -555,6 +555,13 @@ class CatalogController < ApplicationController
     (@response, doc_list) = search_results(params)
     count = (params["document_counter"] || 0 rescue 0).to_i
     doc = doc_list.first
+    if (doc.nil?)
+      # Ajax lookup failed once before already.
+      doc = PrimoCentralDocument.new(
+        "pnxId" => params["id"], "ajax" => false,
+        "title" => params["id"]
+      )
+    end
     render "_document", layout: false, locals: { document: doc, document_counter: count }
   end
 
