@@ -2,7 +2,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" data-action="requests#clear_form" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 id="modal-title">Request Options:</h4>
       </div>
       <div class="modal-body">
@@ -10,11 +10,11 @@
           <div class="panel panel-default">
             <div class="panel-heading request-heading">
               <h4 class="panel-title">
-                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne">Request a hold</a>
+                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne-<%= @mms_id %>">Request a hold</a>
               </h4>
             </div>
 
-            <div id="collapseOne" class="panel-collapse collapse">
+            <div id="collapseOne-<%= @mms_id %>" class="panel-collapse collapse">
               <div class="panel-body">
                 <% if @request_options.hold_allowed? %>
                   <h5 class="request-header">Details of title you requested:</h5>
@@ -28,11 +28,11 @@
             <div class="panel panel-default request-heading">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo">Scan a book chapter</a>
+                    <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo-<%= @mms_id %>">Scan a book chapter</a>
                 </h4>
               </div>
 
-              <div id="collapseTwo" class="panel-collapse collapse">
+              <div id="collapseTwo-<%= @mms_id %>" class="panel-collapse collapse">
                 <div class="panel-body">
                   <% if @request_options.digitization_allowed? %>
                     <h5 class="request-header">Details of title you requested:</h5>
