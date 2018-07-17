@@ -19,8 +19,8 @@ class AlmawsController < ApplicationController
   end
 
   def request_options
-    mms_id = params[:mms_id]
-    @items = Alma::BibItem.find(mms_id, limit: 100)
+    @mms_id = params[:mms_id]
+    @items = Alma::BibItem.find(@mms_id, limit: 100)
     holding_id = Alma::Requests.item_holding_id(@items)
     item_pid = Alma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
@@ -29,9 +29,9 @@ class AlmawsController < ApplicationController
     @user_id = current_user.uid
     @request_level = params[:request_level]
     if @request_level == "item"
-      @request_options = Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id: @user_id)
+      @request_options = Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id)
     else
-      @request_options = Alma::RequestOptions.get(mms_id, user_id: @user_id)
+      @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
     end
   end
 

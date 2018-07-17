@@ -1,4 +1,4 @@
-<%= form_with url: digitization_request_path, local: true, id: "digitization-request-form", class: "form-horizontal", method: :post do |form|  %>
+<%= form_with url: digitization_request_path, local: true, id: "digitization-request-form", data: { target: "requests.form" }, class: "form-horizontal", method: :post do |form|  %>
 
   <%= form.hidden_field :mms_id, value: params[:mms_id] %>
   <%= form.hidden_field :user_id, value: @user_id %>
@@ -14,7 +14,7 @@
     <div class="form-group row">
       <div class="col-sm-6">
         <%= form.label(:chapter_or_article_author, "Chapter/Article Author:", class: "col-form-label") %>
-        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true, "data-target": "requests.name" %>
+        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true %>
       </div>
     </div>
 
