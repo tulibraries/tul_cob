@@ -284,7 +284,6 @@ class CatalogController < ApplicationController
     config.add_show_field "format", label: "Resource Type"
     config.add_show_field "imprint_display", label: "Published"
     config.add_show_field "edition_display", label: "Edition"
-    config.add_show_field "pub_date", label: "Date"
     config.add_show_field "date_copyright_display", label: "Copyright Notice"
     config.add_show_field "phys_desc_display", label: "Physical Description"
     config.add_show_field "title_series_display", label: "Series Title"
