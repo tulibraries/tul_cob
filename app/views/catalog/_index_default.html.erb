@@ -6,5 +6,7 @@
       <%= image_tag default_cover_image(document), :class => "default" %>
     <% end %>
   </div>
-  <%= render "fields", document: document, document_counter: document_counter %>
+  <div class="book_info col-sm-9 col-lg-10">
+    <%= render "fields", document: document, document_counter: document_counter %>
+  </div>
 </div>
