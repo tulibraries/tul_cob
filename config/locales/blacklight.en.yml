@@ -65,6 +65,9 @@ en:
       sms: 'Text This'
       refworks: Refworks
 
+    requests:
+      log_in: "Log in to see request options"
+
   bento:
     application_name: "Library Bento Search Beta"
     greeting: "Try out the Library Search beta"
