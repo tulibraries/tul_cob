@@ -1,6 +1,8 @@
 <%= form_with url: digitization_request_path, local: true, id: "digitization-request-form", class: "form-horizontal", method: :post do |form|  %>
 
   <%= form.hidden_field :mms_id, value: params[:mms_id] %>
+  <%= form.hidden_field :holding_id, value: @holding_id %>
+  <%= form.hidden_field :item_pid, value: @item_pid %>
   <%= form.hidden_field :user_id, value: @user_id %>
   <%= form.hidden_field :request_level, value: @request_level %>
 

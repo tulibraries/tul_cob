@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Alma
+module CobAlma
   module Requests
     def self.determine_campus(item)
       case item

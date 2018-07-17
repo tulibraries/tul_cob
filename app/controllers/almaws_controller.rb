@@ -14,22 +14,22 @@ class AlmawsController < ApplicationController
        took: elapsed
       )
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @pickup_locations = Alma::Requests.valid_pickup_locations(@items).join(",")
+    @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
   end
 
   def request_options
     @mms_id = params[:mms_id]
     @items = Alma::BibItem.find(@mms_id, limit: 100)
-    holding_id = Alma::Requests.item_holding_id(@items)
-    item_pid = Alma::Requests.item_pid(@items)
+    @holding_id = CobAlma::Requests.item_holding_id(@items)
+    @item_pid = CobAlma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
-    @description = Alma::Requests.descriptions(@items)
+    @description = CobAlma::Requests.descriptions(@items)
     @pickup_locations = params[:pickup_locations].split(",").map { |location| helpers.library_name_from_short_code(location) }
     @user_id = current_user.uid
     @request_level = params[:request_level]
     if @request_level == "item"
-      @request_options = Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id)
+      @request_options = Alma::ItemRequestOptions.get(@mms_id, @holding_id, @item_pid, user_id: @user_id)
     else
       @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
     end
@@ -58,6 +58,8 @@ class AlmawsController < ApplicationController
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
+    holding_id: params[:holding_id],
+    item_pid: params[:item_pid],
     description: params[:description],
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
