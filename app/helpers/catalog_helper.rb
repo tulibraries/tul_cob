@@ -126,4 +126,10 @@ module CatalogHelper
     params = @search_state.to_h.select { |k, v| !["page"].include? k }
     blacklight_advanced_search_engine.advanced_search_path(params)
   end
+
+  def render_availability(doc, count)
+    if index_fields(doc).fetch("availability", nil)
+      render "index_availability_section", document: doc, document_counter: count
+    end
+  end
 end

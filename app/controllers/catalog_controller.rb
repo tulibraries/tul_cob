@@ -252,6 +252,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -264,6 +265,7 @@ class CatalogController < ApplicationController
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
+    config.add_index_field "availability"
 
 
     # solr fields to be displayed in the show (single result) view
