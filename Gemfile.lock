@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 0347413016108b5688a9ffe5a49cb8e357a0065b
-  branch: normaize-reponse-and-sets
+  revision: 25cbfea76f4f1f86fccb7d59cda90a2ac2eeaedd
+  branch: master
   specs:
     alma (0.2.7)
       ezwadl
