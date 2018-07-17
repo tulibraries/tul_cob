@@ -12,7 +12,7 @@ module Blacklight::Document::Email
       if !semantics[field.to_sym].blank?
         value = semantics[field.to_sym]
         label = "blacklight.email.text.#{field}"
-        body << I18n.t(label, value: value.join(" "))
+        body << I18n.t(label, value: value.join("; ").gsub("|", "; "))
       end
     end
 

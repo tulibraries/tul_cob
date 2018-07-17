@@ -1,0 +1,54 @@
+<div class="modal" id="request-<%= @mms_id %>" tabindex="-1" data-target="requests.id">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 id="modal-title">Request Options:</h4>
+      </div>
+      <div class="modal-body">
+        <div class="panel-group request-group" id="request-accordian">
+          <div class="panel panel-default">
+            <div class="panel-heading request-heading">
+              <h4 class="panel-title">
+                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne-<%= @mms_id %>">Request a hold</a>
+              </h4>
+            </div>
+
+            <div id="collapseOne-<%= @mms_id %>" class="panel-collapse collapse">
+              <div class="panel-body">
+                <% if @request_options.hold_allowed? %>
+                  <h5 class="request-header">Details of title you requested:</h5>
+                  <%= render "hold_request_form" %>
+                <% else %>
+                  <p>This item is not currently requestable.</p>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="panel panel-default request-heading">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo-<%= @mms_id %>">Scan a book chapter</a>
+                </h4>
+              </div>
+
+              <div id="collapseTwo-<%= @mms_id %>" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <% if @request_options.digitization_allowed? %>
+                    <h5 class="request-header">Details of title you requested:</h5>
+                    <%= render "digitization_request_form" %>
+                  <% else %>
+                    <p>This item is not currently requestable.</p>
+                  <% end %>
+                </div>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,37 +1,35 @@
 <h2>Log in to My Library Account</h2>
 
 <%- if devise_mapping.omniauthable? %>
-<ul>
-<li>
-  <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth) %>
-</li>
-<li>Visitors (Coming Soon)</li>
-</ul>
+  <ul>
+    <li>
+      <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth) %>
+    </li>
+    <li>Visitors (Coming Soon)</li>
+  </ul>
 <% end -%>
 
 <% if Rails.env.development? %>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-</div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
 
-<div class="field">
-  <%= f.label :password %><br />
-  <%= f.password_field :password, autocomplete: "current-password" %>
-</div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
 
-<% if devise_mapping.rememberable? -%>
-<div class="field">
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-</div>
-<% end -%>
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
 
-<div class="actions">
-  <%= f.submit "Log in" %>
-</div>
-<% end %>
-
-
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <% end %>
 <% end %>

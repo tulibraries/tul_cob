@@ -1,0 +1,128 @@
+{
+  "item": [
+    {
+      "bib_data": {
+        "mms_id": "991004101219703811",
+        "title": "Jane Eyre.",
+        "author": "Brontë, Charlotte,",
+        "issn": null,
+        "isbn": null,
+        "complete_edition": "",
+        "network_number": [
+          "(OCLC)ocm02229465",
+          "ocm02229465",
+          "PATG02229465B",
+          "ocn469403178",
+          "(PPT)b1085700x-01tuli_inst"
+        ],
+        "place_of_publication": "New York :",
+        "publisher_const": "Harcourt Brace & World",
+        "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991004101219703811"
+      },
+      "holding_data": {
+        "holding_id": "22247693300003811",
+        "call_number_type": {
+          "value": "0",
+          "desc": "Library of Congress classification"
+        },
+        "call_number": "PR4167.J2 1962",
+        "accession_number": "",
+        "copy_id": "1",
+        "in_temp_location": false,
+        "temp_library": {
+          "value": null,
+          "desc": null
+        },
+        "temp_location": {
+          "value": null,
+          "desc": null
+        },
+        "temp_call_number_type": {
+          "value": "",
+          "desc": null
+        },
+        "temp_call_number": "",
+        "temp_policy": {
+          "value": "",
+          "desc": null
+        },
+        "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991004101219703811/holdings/22247693300003811"
+      },
+      "item_data": {
+        "pid": "23247693290003811",
+        "barcode": "39074003171931",
+        "creation_date": "2017-06-20Z",
+        "modification_date": "2017-06-20Z",
+        "base_status": {
+          "value": "1",
+          "desc": "Item in place"
+        },
+        "physical_material_type": {
+          "value": "BOOK",
+          "desc": "Book"
+        },
+        "policy": {
+          "value": "0",
+          "desc": "Normal Circulation per location"
+        },
+        "provenance": {
+          "value": "",
+          "desc": null
+        },
+        "po_line": "",
+        "is_magnetic": false,
+        "arrival_date": "1999-01-31Z",
+        "year_of_issue": "",
+        "enumeration_a": "",
+        "enumeration_b": "",
+        "enumeration_c": "",
+        "enumeration_d": "",
+        "enumeration_e": "",
+        "enumeration_f": "",
+        "enumeration_g": "",
+        "enumeration_h": "",
+        "chronology_i": "",
+        "chronology_j": "",
+        "chronology_k": "",
+        "chronology_l": "",
+        "chronology_m": "",
+        "description": "",
+        "receiving_operator": "import",
+        "process_type": {
+          "value": "",
+          "desc": null
+        },
+        "library": {
+          "value": "AMBLER",
+          "desc": "Ambler Campus Library"
+        },
+        "location": {
+          "value": "stacks",
+          "desc": "Ambler Stacks"
+        },
+        "alternative_call_number": "",
+        "alternative_call_number_type": {
+          "value": "",
+          "desc": null
+        },
+        "storage_location_id": "",
+        "pages": "",
+        "pieces": "$0.00",
+        "public_note": "",
+        "fulfillment_note": "",
+        "internal_note_1": "",
+        "internal_note_2": "",
+        "internal_note_3": "ITEM LOC: astk",
+        "statistics_note_1": "TOT RENEW: 9",
+        "statistics_note_2": "LYCIRC: 0",
+        "statistics_note_3": "",
+        "requested": null,
+        "edition": null,
+        "imprint": null,
+        "language": null
+      },
+      "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991004101219703811/holdings/22247693300003811/items/23247693290003811"
+    }
+  ],
+  "total_record_count": 1
+}

@@ -1,0 +1,118 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991036889285803811",
+                "title": "BlacklightTestRecord1",
+                "author": null,
+                "issn": null,
+                "isbn": null,
+                "complete_edition": "",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036889285803811"
+            },
+            "holding_data": {
+                "holding_id": "22419863810003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "TEST123 .A567",
+                "accession_number": "",
+                "copy_id": "",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036889285803811/holdings/22419863810003811"
+            },
+            "item_data": {
+                "pid": "23415101580003811",
+                "barcode": "testtesttest",
+                "creation_date": "2018-04-06Z",
+                "modification_date": "2018-05-01Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "915144202",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "KARDON",
+                    "desc": "Remote Storage"
+                },
+                "location": {
+                    "value": "p_remote",
+                    "desc": "Paley Remote Stacks"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "",
+                "statistics_note_1": "",
+                "statistics_note_2": "",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036889285803811/holdings/22419863810003811/items/23415101580003811"
+        }
+    ],
+    "total_record_count": 1
+}

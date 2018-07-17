@@ -1,0 +1,75 @@
+<%= form_with url: digitization_request_path, local: true, id: "digitization-request-form", class: "form-horizontal", method: :post do |form|  %>
+
+  <%= form.hidden_field :mms_id, value: params[:mms_id] %>
+  <%= form.hidden_field :holding_id, value: @holding_id %>
+  <%= form.hidden_field :item_pid, value: @item_pid %>
+  <%= form.hidden_field :user_id, value: @user_id %>
+  <%= form.hidden_field :request_level, value: @request_level %>
+
+
+  <div class="container">
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= form.label(:chapter_or_article_title, "Chapter/Article Title:", class: "col-form-label") %>
+        <%= form.text_field :chapter_or_article_title, class: "request-form form-control", required: true %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= form.label(:chapter_or_article_author, "Chapter/Article Author:", class: "col-form-label") %>
+        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true %>
+      </div>
+    </div>
+
+    <% if @request_level == "item" %>
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <%= form.label(:description, "Description:") %>
+          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true) %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <%= form.label(:from_page, "Start page:") %>
+        <%= form.text_field :from_page, class: "request-form form-control", required: true %>
+      </div>
+
+      <div class="col-sm-3">
+        <%= form.label(:to_page, "End page:") %>
+        <%= form.text_field :to_page, class: "request-form form-control", required: true %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= form.label(:last_interest_date, "Not Needed After (optional):") %>
+        <%= select_date Date.today, prefix: :last_interest_date %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-6">
+        <%= form.label(:comment, "Notes: (optional)") %>
+        <%= form.text_area :comment, class: "request-form form-control" %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2 ">
+        <%= radio_button_tag(:partial_or_full, "true", checked: true) %>
+        <%= form.label(:partial_or_full_Partial, "Partial", class: "form-radio-label") %>
+      </div>
+
+      <div class="col-sm-2">
+        <%= radio_button_tag(:partial_or_full, "false") %>
+        <%= form.label(:partial_or_full_Full_Chapter, "Full Chapter", class: "form-radio-label") %>
+      </div>
+    </div>
+
+    <%= form.submit"Request", class:"btn btn-primary" %>
+
+  </div>
+<% end %>
