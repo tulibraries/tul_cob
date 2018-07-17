@@ -30,11 +30,11 @@ en:
 
     email:
       text:
-        imprint: "Imprint: %{value}"
+        imprint: "Published: %{value}"
         contributor: "Contributor: %{value}"
         issn: "ISSN: %{value}"
         isbn: "ISBN: %{value}"
-        alma_mms: "MMS: %{value}"
+        alma_mms: "Catalog Record ID: %{value}"
         part_of: "Is Part Of: %{value}"
         date: "Date: %{value}"
         doi: "DOI"
