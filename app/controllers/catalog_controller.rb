@@ -549,12 +549,11 @@ class CatalogController < ApplicationController
   end
 
   ##
-  # Redner one index record (use as an ajax endpoint).
+  # Render one index record (use as an ajax endpoint).
   # /
   def index_item
-    (@response, doc_list) = search_results(params)
+    (@response, doc) = fetch(params["id"])
     count = (params["document_counter"] || 0 rescue 0).to_i
-    doc = doc_list.first
     if (doc.nil?)
       # Ajax lookup failed once before already.
       doc = PrimoCentralDocument.new(
