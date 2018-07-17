@@ -15,7 +15,7 @@ class AlmawsController < ApplicationController
       )
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @pickup_locations = Alma::Requests.valid_pickup_locations(@items).join(",")
-    @request_level = has_desc?(@items) ? "item" : "bib"
+    @request_level = has_desc?(bib_items) ? "item" : "bib"
   end
 
   def request_options
@@ -53,7 +53,6 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
-    @request_level = has_desc?(@items) ? "item" : "bib"
     not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
     partial = params[:partial_or_full] == "true" ? true : false
     options = {
@@ -66,7 +65,7 @@ class AlmawsController < ApplicationController
     last_interest_date: not_needed_date,
     comment: params[:comment]
     }
-
+    @request_level = params[:request_level]
     if @request_level == "bib"
       request = Alma::BibRequest.submit(options)
     else
@@ -80,7 +79,6 @@ class AlmawsController < ApplicationController
   end
 
   def has_desc?(items)
-    items = Alma::BibItem.find(@mms_id, limit: 100)
     item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
     item_levels.present?
   end
