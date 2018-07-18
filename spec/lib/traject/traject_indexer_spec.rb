@@ -641,4 +641,40 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
+  describe "#libraries_based_negative_boost" do
+    let(:path) { "libraries.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "libraries_based_boost_t", library_based_boost
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when Presser is the only library" do
+      it "returns negative_boost" do
+        expect(subject.map_record(records[0])).to eq("libraries_based_boost_t" => ["no_boost"])
+      end
+    end
+
+    context "when Presser is not present" do
+      it "returns boost" do
+        expect(subject.map_record(records[1])).to eq({"libraries_based_boost_t" => ["boost"]})
+      end
+    end
+
+    context "when Presser and another library are both present, with presser first" do
+      it "returns boost" do
+        expect(subject.map_record(records[2])).to eq("libraries_based_boost_t" => ["boost"])
+      end
+    end
+
+    context "when Presser and another library are both present, with the other library first" do
+      it "returns boost" do
+        expect(subject.map_record(records[3])).to eq("libraries_based_boost_t" => ["boost"])
+      end
+    end
+  end
 end

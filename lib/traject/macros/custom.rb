@@ -438,6 +438,23 @@ module Traject
           end
         end
       end
+
+
+      # In order to reduce the relevance of certain libraries, we need to boost every other library
+      # Make sure we still boost records what have holdings in less relevant libraries, and another library
+      LIBRARIES_TO_NOT_BOOST = ["PRESSER"]
+      def library_based_boost
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            if  !LIBRARIES_TO_NOT_BOOST.include?(field["b"])
+              return acc.replace(["boost"])
+            else
+              acc << "no_boost"
+            end
+          end
+        end
+      end
     end
   end
 end
+
