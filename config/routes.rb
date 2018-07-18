@@ -81,8 +81,10 @@ Rails.application.routes.draw do
   # root seems to work.
 
   get "almaws/item/:mms_id", to:  "almaws#item", as: "item"
-  get "almaws/request/:mms_id/:pickup_locations/:request_level", to: "almaws#request_options", as: "request_options"
-  post "almaws/request", to: "almaws#send_digitization_request", as: "digitization_request"
+  get "almaws/request/:mms_id/:pickup_location/:request_level", to: "almaws#request_options", as: "request_options"
+  post "almaws/request/digitization", to: "almaws#send_digitization_request", as: "digitization_request"
+  post "almaws/request/hold", to: "almaws#send_hold_request", as: "hold_request"
+
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
   end
