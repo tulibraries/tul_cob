@@ -37,10 +37,8 @@ class AlmawsController < ApplicationController
   def send_hold_request
     not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
     # TODO: Add pickup location information
-    options = {
+    bib_options = {
     mms_id: params[:mms_id],
-    holding_id: params[:holding_id],
-    item_pid: params[:item_pid],
     user_id: current_user.uid,
     description: params[:description],
     pickup_location_library: params[:pickup_location],
@@ -49,12 +47,27 @@ class AlmawsController < ApplicationController
     last_interest_date: not_needed_date,
     comment: params[:comment]
     }
+
+    item_options = {
+      mms_id: params[:mms_id],
+      user_id: current_user.uid,
+      description: params[:description],
+      pickup_location_library: params[:pickup_location],
+      pickup_location_type: "LIBRARY",
+      request_type: "HOLD",
+      last_interest_date: not_needed_date,
+      comment: params[:comment],
+
+      holding_id: params[:holding_id],
+      item_pid: params[:item_pid],
+    }
     @request_level = params[:request_level]
     if @request_level == "bib"
-      request = Alma::BibRequest.submit(options)
+      request = Alma::BibRequest.submit(bib_options)
     else
-      request = Alma::ItemRequest.submit(options)
+      request = Alma::ItemRequest.submit(item_options)
     end
+
     if request.success?
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)

@@ -41,10 +41,18 @@ module CobAlma
       end
     end
 
+    def self.avail_locations(items_list)
+      avail_locations = items_list.map { |k, v|
+        if v.any?(&:in_place?)
+          return k
+        end
+      }
+      avail_locations
+    end
+
     def self.valid_pickup_locations(items_list)
-      #use grouped_by method and Ruby any? instead of iterating over all items
       pickup_locations = self.possible_pickup_locations
-      libraries = items_list.keys
+      libraries = self.avail_locations(items_list).split(",")
 
       if libraries.any?
         libraries.each do |lib|
