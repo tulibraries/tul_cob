@@ -1,7 +1,17 @@
 
     <% if @results %>
+      <div class="row" data-target="explanation.text" data-controller="explanation">
+        <div id="explanatory-text" class="col-md-6 col-md-offset-3 text-center">
+          <p>
+            <%= t('bento.explanation_part_one_html', href: link_to(t("bento.explanation_part_one_href"), root_path)) %>
+            <%= t('bento.explanation_part_two_html', href: link_to(t("bento.explanation_part_two_href"), t("bento.explanation_part_two_link"))) %>
+          </p>
+        </div>
+        <div class="col-md-2">
+          <button class="btn btn-link" data-action="explanation#hide">Hide</button>
+        </div>
+      </div>
       <div class="row bento-results">
-
         <% @results.each_pair do |engine_id, result| %>
           <% unless engine_id == "more" && total_items(result) == 0 %>
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment <%= engine_id %>">
