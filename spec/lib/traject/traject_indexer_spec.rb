@@ -661,7 +661,7 @@ RSpec.describe Traject::Macros::Custom do
 
     context "when Presser is not present" do
       it "returns boost" do
-        expect(subject.map_record(records[1])).to eq({"libraries_based_boost_t" => ["boost"]})
+        expect(subject.map_record(records[1])).to eq("libraries_based_boost_t" => ["boost"])
       end
     end
 

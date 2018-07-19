@@ -6,7 +6,7 @@ RSpec.describe CatalogController, focus: true, type: :controller, relevance: tru
   render_views
 
   describe "a faceted search for Presser Listening Library " do
-    let(:response) { JSON.parse(get(:index, params: { "f" => {"library_facet" => ["Presser Listening Library"]}, per_page: 100 }, format: "json").body) }
+    let(:response) { JSON.parse(get(:index, params: { "f" => { "library_facet" => ["Presser Listening Library"] }, per_page: 100 }, format: "json").body) }
 
 
     it "has results with another library before before results only at presser" do

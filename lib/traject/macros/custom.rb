@@ -457,4 +457,3 @@ module Traject
     end
   end
 end
-
