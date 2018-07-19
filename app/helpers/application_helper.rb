@@ -208,7 +208,7 @@ module ApplicationHelper
     when "books"
       url = search_catalog_path(q: params[:q], f: { format: ["Book"] })
       link_to "View all #{total} books", url, class: "full-results"
-    when "more"
+    when "more", "resource_types"
       url = search_catalog_path(q: params[:q])
       link_to "View all catalog results", url, class: "full-results"
     when "articles"

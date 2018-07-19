@@ -30,6 +30,13 @@ BentoSearch.register_engine("more") do |conf|
   end
 end
 
+BentoSearch.register_engine("resource_types") do |conf|
+  conf.engine = "BentoSearch::MoreEngine"
+  conf.for_display do |display|
+    display.item_partial = "bento_search/more"
+  end
+end
+
 BentoSearch.register_engine("articles") do |conf|
   conf.engine = "BentoSearch::PrimoEngine"
   conf.for_display do |display|

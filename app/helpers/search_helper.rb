@@ -13,10 +13,15 @@ module SearchHelper
   def bento_more_partials(item)
     partials = []
 
-    if item.title
-      partials.append("more_item")
-    else
+    if item.engine_id == "resource_types"
       partials.append("more_facets")
+    else
+      partials.append("more_item")
     end
+  end
+
+  def empty_resource_types?(result)
+    engine_id = result.engine_id
+    (engine_id == "more" || engine_id == "resource_types") && total_items(result) == 0
   end
 end
