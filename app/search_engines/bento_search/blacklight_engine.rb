@@ -48,5 +48,14 @@ module BentoSearch
         link: Rails.application.routes.url_helpers.solr_document_url(item["id"], only_path: true),
         custom_data: SolrDocument.new(item))
     end
+
+    def url(helper)
+      helper.search_catalog_path(q: helper.params[:q])
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all catalog results", url, class: "full-results"
+    end
   end
 end

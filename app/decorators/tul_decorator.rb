@@ -12,9 +12,6 @@ class TulDecorator < BentoSearch::StandardDecorator
       parts << _h.content_tag("span", self.publisher, class: "publisher")
     end
 
-    if text = self.render_citation_details
-    end
-
     return _h.safe_join(parts, "")
   end
 

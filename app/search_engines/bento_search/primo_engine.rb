@@ -26,5 +26,15 @@ module BentoSearch
         link: Rails.application.routes.url_helpers.primo_central_document_url(item["pnxId"], only_path: true),
         custom_data: item)
     end
+
+    def url(helper)
+      params = helper.params
+      helper.url_for(action: :index, controller: :primo_central, q: params[:q])
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all #{total} articles", url, class: "full-results"
+    end
   end
 end
