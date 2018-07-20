@@ -183,6 +183,8 @@
     <fieldType name="text_ws" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.FlattenGraphFilterFactory"/>
       </analyzer>
     </fieldType>
 
@@ -525,6 +527,7 @@
    <dynamicField name="*_facet" type="string" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*_sort" type="alphaOnlySort" indexed="true" stored="false" multiValued="false" />
    <dynamicField name="*_unstem_search" type="text_general" indexed="true" stored="false" multiValued="true" />
+   <dynamicField name="*_ws_search" type="text_ws" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
    <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="false" multiValued="true" />
 
@@ -567,6 +570,23 @@
    <copyField source="subject_topic_facet" dest="subject_topic_unstem_search"/>
    <copyField source="note_toc_display" dest="note_toc_unstem_search"/>
    <copyField source="note_summary_display" dest="note_summary_unstem_search"/>
+
+   <!-- white space delimted fields to catch special characters like #, +, ♯,♭ etc -->
+   <copyField source="title_t" dest="title_ws_search"/>
+   <copyField source="subtitle_t" dest="subtitle_ws_search"/>
+   <copyField source="title_statement_t" dest="title_statement_ws_search"/>
+   <copyField source="title_uniform_t" dest="title_uniform_ws_search"/>
+   <copyField source="title_addl_t" dest="title_addl_ws_search"/>
+   <copyField source="title_added_entry_t" dest="title_added_entry_ws_search"/>
+   <copyField source="title_series_t" dest="title_series_ws_search"/>
+   <copyField source="creator_t" dest="creator_ws_search"/>
+   <!-- <copyField source="author_addl_t" dest="author_addl_ws_search"/> -->
+   <copyField source="subject_t" dest="subject_ws_search"/>
+   <copyField source="subject_addl_t" dest="subject_addl_ws_search"/>
+   <copyField source="subject_topic_facet" dest="subject_topic_ws_search"/>
+   <copyField source="note_toc_display" dest="note_toc_ws_search"/>
+   <copyField source="note_summary_display" dest="note_summary_ws_search"/>
+
 
 
    <!-- sort fields  NOTE: no longer feasible with multiple dates -->
@@ -629,7 +649,7 @@
    <copyField source="subject_t" dest="opensearch_display"/>
    <copyField source="subject_addl_t" dest="opensearch_display"/>
 
-  
+
    <!-- for suggestions -->
    <copyField source="*_t" dest="suggest"/>
    <copyField source="*_facet" dest="suggest"/>

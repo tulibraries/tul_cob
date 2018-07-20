@@ -31,6 +31,25 @@ pixima => pixma
 
 & => and
 
+a♭ => a flat
+b♭ => b flat
+c♭ => c flat
+d♭ => d flat
+e♭ => e flat
+f♭ => f flat
+g♭ => g flat
+
+a#, a♯ => a sharp
+b#, b♯ => b sharp
+c#, c♯ => c sharp
+d#, d♯ => d sharp
+e#, e♯ => e sharp
+f#, f♯ => f sharp
+g#, g♯ => g sharp
+
+min => minor
+maj => major
+
 # Added for BL-447
 employment,labor => work
 contingent,precarious

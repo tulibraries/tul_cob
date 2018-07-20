@@ -99,6 +99,7 @@ class CatalogController < ApplicationController
       ].join(" "),
       pf: %w[
         title_unstem_search^1000000
+        title_ws_search^100000
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
