@@ -115,3 +115,12 @@
 .more .online-only, .resource_types .online-only {
   display: none;
 }
+
+.bento_item .dl-horizontal dd {
+  margin-left: 120px;
+}
+
+.bento_item .dl-horizontal dt {
+  text-align: left;
+  width: 50%;
+}
