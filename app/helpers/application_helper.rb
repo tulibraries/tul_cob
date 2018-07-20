@@ -219,7 +219,7 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} ebooks", url, class: "full-results"
-    when "more"
+    when "more", "resource_types"
       ""
     when "articles"
       url = url_for(
