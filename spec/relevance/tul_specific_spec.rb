@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CatalogController, focus: true, type: :controller, relevance: true do
+RSpec.describe CatalogController, type: :controller, relevance: true do
   render_views
 
   describe "a faceted search for Presser Listening Library " do
