@@ -25,6 +25,8 @@ require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
 
 # Include custom traject macros
+# include unicode normalize for thread safety
+require "unicode_normalize/normalize.rb"
 require "traject/macros/custom"
 extend Traject::Macros::Custom
 
@@ -214,3 +216,9 @@ to_field "absorbed_in_part_by_display", extract_marc("785|05|iabdghkmnopqrstuxyz
 to_field "split_into_display", extract_marc("785|06|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "merged_to_form_display", extract_marc("785|07|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", trim_punctuation: true)
+
+
+# Boost records with holdings from specific libraries
+# we actually want to negative boost specific libraries, but that is not possible
+# so we are going to boost everything except the less relevant libraries
+to_field "library_based_boost_t", library_based_boost

@@ -127,6 +127,23 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       end
     end
 
-
+    context "musical searching" do
+      let(:search_term) { "c# min" }
+      it "returns results about c sharp minor" do
+        expect(response)
+            .to include_docs(
+              %w[991001795629703811 991001879639703811 991022362639703811]
+              )
+            .within_the_first(10)
+      end
+      let(:search_term) { "c sharp min" }
+      it "returns results about c sharp minor" do
+        expect(response)
+          .to include_docs(
+            %w[991001795629703811 991001879639703811 991022362639703811]
+            )
+          .within_the_first(10)
+      end
+    end
   end
 end

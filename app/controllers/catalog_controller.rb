@@ -179,7 +179,10 @@ class CatalogController < ApplicationController
       ].join(" "),
       facet: "true",
       spellcheck: "false",
-      bq: "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
+      sow: "false",
+      bq: [
+          "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
+          "(library_based_boost_t:* -no_boost)^500"],
     }
 
     # solr path which will be added to solr base url before the other solr params.
