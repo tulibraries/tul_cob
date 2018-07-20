@@ -7,7 +7,7 @@
     <%= form.hidden_field :request_level, value: @request_level %>
 
     <div class="row">
-      <div class="col-sm-6 hold-form">
+      <div class="col-sm-4 hold-form">
         <%= label("", :pickup_location, "Pickup Location:") %>
         <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {include_blank: true, required: true}, {class: "request-form form-control"}) %>
       </div>
@@ -15,7 +15,7 @@
 
     <% if @request_level == "item" %>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <%= form.label(:description, "Description:") %>
           <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true) %>
         </div>
@@ -23,14 +23,14 @@
     <% end %>
 
     <div class="row hold-form">
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <%= form.label(:not_needed, "Not Needed After (optional):") %>
         <%= select_date Date.today, prefix: :last_interest_date %>
       </div>
     </div>
 
     <div class="row hold-form">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= form.label(:comment, "Notes: (optional)") %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>

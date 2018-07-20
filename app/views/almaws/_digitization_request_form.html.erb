@@ -9,14 +9,14 @@
 
   <div class="container">
     <div class="form-group row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= form.label(:chapter_or_article_title, "Chapter/Article Title:", class: "col-form-label") %>
         <%= form.text_field :chapter_or_article_title, class: "request-form form-control", required: true %>
       </div>
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= form.label(:chapter_or_article_author, "Chapter/Article Author:", class: "col-form-label") %>
         <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true %>
       </div>
@@ -24,7 +24,7 @@
 
     <% if @request_level == "item" %>
       <div class="form-group row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
           <%= form.label(:description, "Description:") %>
           <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true) %>
         </div>
@@ -32,26 +32,26 @@
     <% end %>
 
     <div class="form-group row">
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <%= form.label(:from_page, "Start page:") %>
         <%= form.text_field :from_page, class: "request-form form-control", required: true %>
       </div>
 
-      <div class="col-sm-3">
+      <div class="col-sm-2">
         <%= form.label(:to_page, "End page:") %>
         <%= form.text_field :to_page, class: "request-form form-control", required: true %>
       </div>
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <%= form.label(:last_interest_date, "Not Needed After (optional):") %>
         <%= select_date Date.today, prefix: :last_interest_date %>
       </div>
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= form.label(:comment, "Notes: (optional)") %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
