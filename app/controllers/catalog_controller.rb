@@ -99,7 +99,6 @@ class CatalogController < ApplicationController
       ].join(" "),
       pf: %w[
         title_unstem_search^1000000
-        title_ws_search^100000
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
@@ -180,6 +179,7 @@ class CatalogController < ApplicationController
       ].join(" "),
       facet: "true",
       spellcheck: "false",
+      sow: "false",
       bq: [
           "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
           "(library_based_boost_t:* -no_boost)^500"],
