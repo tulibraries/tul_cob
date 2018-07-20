@@ -1,6 +1,10 @@
 <h2 class="sr-only top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
-<% @page_title = t('blacklight.search.page_title.title', :constraints => render_search_to_page_title(params), :application_name => application_name) %>
+<% if current_page?(controller: "catalog") %>
+  <% @page_title = t('blacklight.catalog_search_results.title') %>
+<% else %>
+  <% @page_title = t('blacklight.article_search_results.title') %>
+<% end %>
 
 <% content_for(:head) do -%>
   <%= render_opensearch_response_metadata %>
