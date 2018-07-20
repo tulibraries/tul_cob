@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+class ArticleNotFound < RuntimeError
+end
+
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
@@ -39,7 +42,7 @@ module Blacklight::PrimoCentral
         )
       else
         if response.count == 1
-          raise Blacklight::Exceptions::RecordNotFound
+          raise ArticleNotFound
         end
       end
 
