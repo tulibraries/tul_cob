@@ -15,7 +15,7 @@ module SearchHelper
     (engine_id == "more" || engine_id == "resource_types") && total_items(result) == 0
   end
 
-  def bento_titalize(id)
+  def bento_titleize(id)
     engine = BentoSearch.get_engine(id)
     link_to id.titleize , engine.url(self)
   end
