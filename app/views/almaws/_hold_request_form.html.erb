@@ -1,21 +1,36 @@
-<%= form_with url: request_options_path, class: 'form-horizontal request-form', method: :post do |form| %>
+<%= form_with url: hold_request_path, local: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
   <div class="container">
+    <%= form.hidden_field :mms_id, value: params[:mms_id] %>
+    <%= form.hidden_field :holding_id, value: @holding_id %>
+    <%= form.hidden_field :item_pid, value: @item_pid %>
+    <%= form.hidden_field :user_id, value: @user_id %>
+    <%= form.hidden_field :request_level, value: @request_level %>
+
     <div class="row">
-      <div class="col-sm-6 hold-form">
+      <div class="col-sm-4 hold-form">
         <%= label("", :pickup_location, "Pickup Location:") %>
-        <%= select_tag(:pickup_location, options_for_select(@pickup_locations), class: "request-form form-control", include_blank: true, required: true) %>
+        <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {include_blank: true, required: true}, {class: "request-form form-control"}) %>
       </div>
     </div>
 
+    <% if @request_level == "item" %>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <%= form.label(:description, "Description:") %>
+          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true) %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="row hold-form">
-      <div class="col-sm-6">
+      <div class="col-sm-5">
         <%= form.label(:not_needed, "Not Needed After (optional):") %>
         <%= select_date Date.today, prefix: :last_interest_date %>
       </div>
     </div>
 
     <div class="row hold-form">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <%= form.label(:comment, "Notes: (optional)") %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
