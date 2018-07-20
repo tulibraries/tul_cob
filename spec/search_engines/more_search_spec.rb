@@ -30,18 +30,4 @@ RSpec.describe BentoSearch, type: :search_engine do
       expect(response.facet_counts["facet_fields"]).to be_nil
     end
   end
-
-  describe "#proc_minus_books_journals" do
-    let(:builder) { SearchBuilder.new(CatalogController.new) }
-
-    it "does not affect builder.proccessor_chain automatically" do
-      expect(builder.processor_chain).not_to include(:no_books_or_journals)
-    end
-
-    it "Appends :no_books_or_journals processor to processor_chain" do
-      _builder = more_se.proc_minus_books_journals[builder]
-      expect(_builder.processor_chain).to include(:no_books_or_journals)
-    end
-  end
-
 end
