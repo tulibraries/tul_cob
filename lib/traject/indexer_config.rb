@@ -25,6 +25,8 @@ require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
 
 # Include custom traject macros
+# include unicode normalize for thread safety
+require 'unicode_normalize/normalize.rb'
 require "traject/macros/custom"
 extend Traject::Macros::Custom
 
