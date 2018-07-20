@@ -4,6 +4,11 @@ en:
     greeting: "Welcome to the Catalog Search"
     html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
 
+    catalog_search_results:
+      title: "Catalog Search Results"
+    article_search_results:
+      title: "Article Search Results"
+
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
 
