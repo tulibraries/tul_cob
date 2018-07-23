@@ -112,10 +112,15 @@
  	color: white;
 }
 
-.bento-results {
-	margin: 0 5%;
+.more .online-only, .resource_types .online-only {
+  display: none;
 }
 
-.more .online-only {
-  display: none;
+.bento_item .dl-horizontal dd {
+  margin-left: 103px;
+}
+
+.bento_item .dl-horizontal dt {
+  text-align: left;
+  width: 50%;
 }

@@ -10,13 +10,13 @@ module SearchHelper
     search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))
   end
 
-  def bento_more_partials(item)
-    partials = []
+  def empty_resource_types?(result)
+    engine_id = result.engine_id
+    (engine_id == "more" || engine_id == "resource_types") && total_items(result) == 0
+  end
 
-    if item.title
-      partials.append("more_item")
-    else
-      partials.append("more_facets")
-    end
+  def bento_titleize(id)
+    engine = BentoSearch.get_engine(id)
+    link_to id.titleize , engine.url(self)
   end
 end

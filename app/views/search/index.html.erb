@@ -1,11 +1,10 @@
-
     <% if @results %>
       <div class="row bento-results">
 
         <% @results.each_pair do |engine_id, result| %>
-          <% unless engine_id == "more" && total_items(result) == 0 %>
+          <% unless empty_resource_types?(result) %>
           <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment <%= engine_id %>">
-                  <h2><%= bento_icons(engine_id) %><%= engine_id.titleize %> </h2>
+                  <h2><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
                   <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
                       <%= bento_search result %>
                   <% end %>
