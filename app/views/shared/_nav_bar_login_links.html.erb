@@ -4,6 +4,6 @@
     </li>
 <% else %>
     <li>
-      <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+    <%= link_to t('blacklight.header_links.login'), new_user_with_redirect_path(users_account_path) %>
     </li>
 <% end %>
