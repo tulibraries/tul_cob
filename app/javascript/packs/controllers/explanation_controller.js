@@ -1,38 +1,26 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "catalog", "article", "bento" ]
+  static targets = [ "catalog", "primo_central", "bento" ]
 
   catalog() {
-    this.catalogOnce()
+    this.showOnce("catalog")
   }
 
-  article() {
-    this.articleOnce()
+  primo_central() {
+    this.showOnce("primo_central")
   }
 
   bento() {
-    this.bentoOnce()
+    this.showOnce("bento")
   }
 
-  catalogOnce() {
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)catalogOnce\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
-      this.catalogTarget.remove();
-      document.cookie = "catalogOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT;";
-    }
-  }
 
-  articleOnce() {
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)articleOnce\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
-      this.articleTarget.remove();
-      document.cookie = "articleOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT;";
+  showOnce(namespace) {
+    let reg = new RegExp("(?:(?:^|.*;\s*)" + namespace + "Once\s*\=\s*([^;]*).*$)|^.*$")
+    if (document.cookie.replace(reg, "$1") !== "true") {
+        this[namespace + "Target"].remove();
+        document.cookie = namespace + "Once=true; expires=Fri, 31 Dec 9999 23:59:59 GMT;";
+      }
     }
   }
-
-  bentoOnce() {
-    if (document.cookie.replace(/(?:(?:^|.*;\s*)bentoOnce\s*\=\s*([^;]*).*$)|^.*$/, "$1") !== "true") {
-      this.bentoTarget.remove();
-      document.cookie = "bentoOnce=true; expires=Fri, 31 Dec 9999 23:59:59 GMT;";
-    }
-  }
-}

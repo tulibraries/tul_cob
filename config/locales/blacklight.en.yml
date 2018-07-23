@@ -69,7 +69,7 @@ en:
       log_in: "Log in to see request options"
 
     catalog_explanation_html: "<strong>Catalog Search:</strong> books, e-books, journals, videos/DVDs, audio, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
-    article_explanation_html: "<strong>Articles Search:</strong> journal articles, newspaper articles, e-books, book chapters, and other resources available online"
+    primo_central_explanation_html: "<strong>Articles Search:</strong> journal articles, newspaper articles, e-books, book chapters, and other resources available online"
   bento:
     application_name: "Library Bento Search Beta"
     greeting: "Try out the Library Search beta"

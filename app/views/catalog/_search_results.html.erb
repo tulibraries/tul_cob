@@ -2,17 +2,13 @@
 
 <% @page_title = t('blacklight.search.page_title.title', :constraints => render_search_to_page_title(params), :application_name => application_name) %>
 
-<% if !cookies.fetch("catalogOnce", false) && current_page?(controller: "catalog") || !cookies.fetch("articleOnce", false) && current_page?(controller: "primo_central")  %>
-<div class="row" data-target="explanation.catalog explanation.article" data-controller="explanation">
+<% if !cookies.fetch("#{controller_name}Once", false) %>
+<div class="row" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
   <div class="col-md-8 col-md-offset-2 text-center">
-    <% if current_page?(controller: "catalog") %>
-      <p><%= t('blacklight.catalog_explanation_html') %></p>
-    <% else %>
-      <p><%= t('blacklight.article_explanation_html') %></p>
-    <% end %>
+      <p><%= t("blacklight.#{controller_name}_explanation_html") %></p>
   </div>
   <div class="col-md-2">
-    <button class="btn btn-link" data-action="explanation#catalog explanation#article">Hide</button>
+    <button class="btn btn-link" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
   </div>
 </div>
 <% end %>
