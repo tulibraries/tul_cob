@@ -6,6 +6,17 @@
   <% @page_title = t('blacklight.article_search_results.title') %>
 <% end %>
 
+<% if !cookies.fetch("#{controller_name}Once", false) %>
+<div class="row" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
+  <div class="col-md-8 col-md-offset-2 text-center">
+      <p><%= t("blacklight.#{controller_name}_explanation_html") %></p>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-link" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
+  </div>
+</div>
+<% end %>
+
 <% content_for(:head) do -%>
   <%= render_opensearch_response_metadata %>
 <% end %>
