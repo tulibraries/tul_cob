@@ -26,7 +26,12 @@ h1[itemprop="name"] {
 h1.advanced.page-header a {
   display:none;
 }
-
+.page-header.row {
+  margin-top: 7px;
+  @media(max-width:767px) {
+    margin-top: -14px;
+  }
+}
 .btn-link {
   color: #A50030;
 }
@@ -282,7 +287,7 @@ table.border-bottom {
     width: 7%;
   }
   td[headers*="status"] {
-
+    padding-right:4px;
     width: 20%;
   }
 }
