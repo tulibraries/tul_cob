@@ -20,6 +20,14 @@
 		margin-left: 10px;
 		text-decoration: none;
 	}
+	@media (max-width: 645px) {
+		a.header-name {
+			display:inline-block;
+			line-height: .8em;
+			width: 50%!important;
+			vertical-align: top;
+		}
+	}
 }
 .navbar-default {
 	background-color: $tan;
@@ -49,6 +57,10 @@
 			}
 		}
 	}
+	@media(max-width:767px) {
+		clear:left;
+		padding-left: 35px;
+	}
 }
 #user-util-links {
 	background-color:#A50030;
@@ -62,6 +74,17 @@
 		font-size: 165%;
 		float: right;
 		clear: left;
+	}
+	@media (max-width:991px) {
+		float:none!important;
+	}
+	@media (min-width:992) {
+		float:right!important;
+	}
+	.btn-primary {
+		@media(max-width:767px) {
+			margin-top:0px!important;
+		}
 	}
 }
 
@@ -79,11 +102,12 @@
 }
 
 .nav-btn, .nav-btn:visited, .nav-btn:hover, .nav-btn:active {
+	float:left;
 	border: 2px solid white;
 	color: white;
 	font-family: "Helvetica Neue";
 	letter-spacing: 1px;
-	margin-top: 13px;
+	margin-top: 12px;
 	margin-right: 20px;
 	padding: 8px 10px 7px 10px;
 }
