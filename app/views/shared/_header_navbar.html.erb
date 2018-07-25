@@ -9,11 +9,19 @@
 
 <div id="user-util-links" class="row red-navbar ">
   <div class="<%= container_classes %>">
-    <div class="col-sm-12 col-md-4">
-      <%= navigational_headers %>
-    </div>
+    <% unless navigational_links.nil? %>
+      <div class="col-sm-12 col-md-4">
+        <h1 class="nav-header">
+          <%= navigational_headers %>
+        </h1>
+    <% else %>
+      <div class="col-sm-12 col-md-4">
+        <%= navigational_headers %>
+    <% end %>
+      </div>
+
     <div class="col-sm-12 col-md-7 col-lg-8 offset-lg-1" id="user-util-collapse">
-      <div class="navbar-right navbar-nav">
+      <div class="navbar-right ">
         <%= navigational_links %>
         <%= render partial: '/user_util_links' %>
       </div>

@@ -52,37 +52,48 @@
 			a, a:visited, a:hover, a:active {
 				color: $white;
 				background-color: transparent;
-				margin-top: 3px;
+				margin-top: 7px;
 			}
 		}
 	}
 	@media(max-width:767px) {
 		clear:left;
-		padding-left: 35px;
+		padding-left: 14px;
 	}
 }
 #user-util-links {
 	background-color:#A50030;
 	padding:0;
 	margin:0;
-}
-.navbar-right {
-	a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
-		color: $med-grey;
-		display: inline-block;
-		font-size: 165%;
-		float: right;
-		clear: left;
+	.navbar-right {
+		a.librarieslink, a.librarieslink:hover, a.librarieslink:active, a.librarieslink:visited {
+			color: $med-grey;
+			display: inline-block;
+			font-size: 165%;
+			float: right;
+			clear: left;
+		}
+		@media (max-width:991px) {
+			float:none!important;
+		}
+		@media (min-width:992) {
+			float:right!important;
+		}
+		.btn-primary {
+			@media(max-width:767px) {
+				margin-top:0px!important;
+			}
+		}
 	}
-	@media (max-width:991px) {
-		float:none!important;
-	}
-	@media (min-width:992) {
-		float:right!important;
-	}
-	.btn-primary {
-		@media(max-width:767px) {
-			margin-top:0px!important;
+	@media(max-width:485px) {
+	  ul.navbar-nav, ul.navbar-nav li a  {
+	    display: block;
+	    clear: left;
+	    padding: 4px 0 0 7px;
+	  }
+		ul.navbar-nav {
+			margin-top: 3px;
+			margin-bottom: 3px;
 		}
 	}
 }

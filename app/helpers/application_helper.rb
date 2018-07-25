@@ -249,7 +249,7 @@ module ApplicationHelper
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
       label = link_to("Articles Search", search_path)
     end
-    content_tag(:h1, label, class: "nav-header")
+    # content_tag(:h1, label, class: "nav-header")
   end
 
   def navigational_links
