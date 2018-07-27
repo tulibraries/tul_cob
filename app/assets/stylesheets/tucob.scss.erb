@@ -26,7 +26,12 @@ h1[itemprop="name"] {
 h1.advanced.page-header a {
   display:none;
 }
-
+.page-header.row {
+  margin-top: 7px;
+  @media(max-width:767px) {
+    margin-top: -14px;
+  }
+}
 .btn-link {
   color: #A50030;
 }
@@ -282,7 +287,7 @@ table.border-bottom {
     width: 7%;
   }
   td[headers*="status"] {
-
+    padding-right:4px;
     width: 20%;
   }
 }
@@ -607,6 +612,14 @@ ul.navbar-nav {
     display:block;
     background-color: #A50030!important;
     /*border-bottom: solid #fff 2px;*/
+  }
+}
+@media(max-width:485px) {
+  #user-util-links ul.navbar-nav, #user-util-links ul.navbar-nav li a  {
+    display: block;
+    clear: left;
+    /*float: left;*/
+    padding: 4px 0 0 2px;
   }
 }
 
