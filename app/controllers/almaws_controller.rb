@@ -25,6 +25,8 @@ class AlmawsController < ApplicationController
     @item_pid = CobAlma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
+    @booking_location = CobAlma::Requests.booking_location(@items)
+    @material_types = CobAlma::Requests.physical_material_type(@items)
     @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @user_id = current_user.uid
     @request_level = params[:request_level]
@@ -37,7 +39,6 @@ class AlmawsController < ApplicationController
 
   def send_hold_request
     not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
-    # TODO: Add pickup location information
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -59,6 +60,47 @@ class AlmawsController < ApplicationController
       last_interest_date: not_needed_date,
       comment: params[:comment],
 
+      holding_id: params[:holding_id],
+      item_pid: params[:item_pid],
+    }
+    @request_level = params[:request_level]
+    if @request_level == "bib"
+      request = Alma::BibRequest.submit(bib_options)
+    else
+      request = Alma::ItemRequest.submit(item_options)
+    end
+
+    if request.success?
+      flash[:success] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def send_booking_request
+    start_date = DateTime.new(params[:booking_start_date]["year"].to_i, params[:booking_start_date]["month"].to_i, params[:booking_start_date]["day"].to_i)
+    end_date = DateTime.new(params[:booking_end_date]["year"].to_i, params[:booking_end_date]["month"].to_i, params[:booking_end_date]["day"].to_i)
+    bib_options = {
+    mms_id: params[:mms_id],
+    user_id: current_user.uid,
+    pickup_location_library: params[:pickup_location],
+    pickup_location_type: "LIBRARY",
+    material_type: params[:material_type],
+    request_type: "BOOKING",
+    booking_start_date: start_date,
+    booking_end_date: end_date,
+    comment: params[:comment]
+    }
+
+    item_options = {
+      mms_id: params[:mms_id],
+      user_id: current_user.uid,
+      description: params[:description],
+      pickup_location_library: params[:pickup_location],
+      pickup_location_type: "LIBRARY",
+      booking_start_date: start_date,
+      booking_end_date: end_date,
+      request_type: "BOOKING",
+      comment: params[:comment],
       holding_id: params[:holding_id],
       item_pid: params[:item_pid],
     }
@@ -109,18 +151,4 @@ class AlmawsController < ApplicationController
     item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
     item_levels.present?
   end
-
-  # def bib_or_item_request
-  #   @request_level = params[:request_level]
-  #   if @request_level == "bib"
-  #     request = Alma::BibRequest.submit(options)
-  #   else
-  #     request = Alma::ItemRequest.submit(options)
-  #   end
-  #
-  #   if request.success?
-  #     flash[:success] = "Your request has been submitted."
-  #     redirect_back(fallback_location: root_path)
-  #   end
-  # end
 end

@@ -27945,4 +27945,56 @@
       <subfield code="f">MAIN</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>00225nam a2200085Ii 4500</leader>
+    <controlfield tag="008">180719s xx 000 0 eng d</controlfield>
+    <controlfield tag="005">20180719144414.0</controlfield>
+    <controlfield tag="001">991036923209503811</controlfield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Blacklight Test Record for Booking request</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">TESTRECORD</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-07-19 18:44:14</subfield>
+      <subfield code="e">991036923209503811</subfield>
+      <subfield code="d">01TULI_INST</subfield>
+      <subfield code="a">2018-07-19 18:44:14</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">TEST 111</subfield>
+      <subfield code="i">2018</subfield>
+      <subfield code="8">22429779890003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">DVD</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23429779840003811</subfield>
+      <subfield code="q">2018-07-19 18:49:05</subfield>
+      <subfield code="i">TEST 111 2018</subfield>
+      <subfield code="d">MEDIA</subfield>
+      <subfield code="r">2018-07-19 18:49:14</subfield>
+      <subfield code="f">MEDIA</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">BLURAY</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23429779830003811</subfield>
+      <subfield code="q">2018-07-19 18:49:26</subfield>
+      <subfield code="i">TEST 111 2018</subfield>
+      <subfield code="d">MEDIA</subfield>
+      <subfield code="r">2018-07-19 18:49:26</subfield>
+      <subfield code="f">MEDIA</subfield>
+    </datafield>
+  </record>
 </collection>
