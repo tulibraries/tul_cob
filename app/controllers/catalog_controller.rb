@@ -65,9 +65,8 @@ class CatalogController < ApplicationController
       echoParams: "explicit",
       rows: "10",
       mm: [
-        "2<-1",
-        "5<-2",
-        URI.escape("6<90%")
+       "5<-1",
+        URI.escape("8<90%")
           ],
       "mm.autorelax" => "true",
       lowercaseOperators: false,
