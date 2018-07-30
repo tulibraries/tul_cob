@@ -43,10 +43,7 @@ Rails.application.routes.draw do
     post :stop_impersonating, on: :collection
   end
 
-  devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions"
-  }
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # auth
   authenticate do

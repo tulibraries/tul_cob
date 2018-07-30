@@ -42,15 +42,4 @@ class ApplicationController < ActionController::Base
       !response.spelling.nil? &&
       response.spelling.words.any?
   end
-
-  protected
-    def after_sign_in_path_for(resource)
-      sign_in_url = helpers.new_user_with_redirect_path.to_s
-      if request.referer == sign_in_url ||
-          request.referer == request.env["HTTP_ORIGIN"].to_s + sign_in_url
-        super
-      else
-        stored_location_for(resource) || request.referer || root_path
-      end
-    end
 end
