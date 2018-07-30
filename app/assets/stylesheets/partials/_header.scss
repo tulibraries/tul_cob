@@ -82,14 +82,20 @@
 		.btn-primary {
 			@media(max-width:767px) {
 				margin-top:0px!important;
+				float: none;
 			}
 		}
+	}
+	@media(max-width:767px) {
+	  ul.navbar-nav, ul.navbar-nav li a  {
+	    padding: 4px 0 4px 7px!important;
+	  }
 	}
 	@media(max-width:485px) {
 	  ul.navbar-nav, ul.navbar-nav li a  {
 	    display: block;
 	    clear: left;
-	    padding: 4px 0 0 7px;
+	    padding: 4px 0 4px 7px!important;
 	  }
 		ul.navbar-nav {
 			margin-top: 3px;
