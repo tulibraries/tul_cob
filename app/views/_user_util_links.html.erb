@@ -1,13 +1,11 @@
-
-  <ul class="nav navbar-nav">
-    <%= render_nav_actions do |config, action|%>
-        <li><%= action %></li>
+<ul class="nav navbar-nav">
+  <%= render_nav_actions do |config, action|%>
+    <% unless action.blank? %>
+      <li><%= action %></li>
     <% end %>
-  </ul>
-
-  <% if has_user_authentication_provider? %>
-      <ul class="nav navbar-nav">
-      <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
-      </ul>
   <% end %>
 
+  <% if has_user_authentication_provider? %>
+    <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
+  <% end %>
+</ul>
