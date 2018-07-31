@@ -45,7 +45,7 @@ RSpec.describe CatalogController, type: :controller do
 
   describe "using lower case boolen operators in normal search" do
     render_views
-    let(:uppercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action AND higher education n" }, format: :json).body)["response"]["pages"]["total_count"] }
+    let(:uppercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action AND higher education" }, format: :json).body)["response"]["pages"]["total_count"] }
     let(:lowercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action and higher education " }, format: :json).body)["response"]["pages"]["total_count"] }
 
     it "returns more results that using uppercase boolean" do
