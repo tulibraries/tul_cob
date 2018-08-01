@@ -52,4 +52,16 @@ RSpec.describe CatalogController, type: :controller do
       expect(lowercase_and).to be > uppercase_and
     end
   end
+
+  describe "using & or and produce the same results" do
+    render_views
+    let(:letters_and) { JSON.parse(get(:index, params: { q: "pride and prejudice" }, format: :json).body)["response"]["pages"]["total_count"] }
+    let(:ampers_and) { JSON.parse(get(:index, params: { q: "pride & prejudice" }, format: :json).body)["response"]["pages"]["total_count"] }
+
+    it "returns the same number of results" do
+      expect(letters_and).to eql ampers_and
+    end
+  end
+
+
 end

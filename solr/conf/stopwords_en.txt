@@ -22,7 +22,7 @@ stopwordb
 #Standard english stop words taken from Lucene's StopAnalyzer
 a
 an
-#and
+and
 are
 as
 at
@@ -55,4 +55,3 @@ to
 was
 will
 with
-

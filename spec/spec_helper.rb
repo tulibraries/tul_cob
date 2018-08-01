@@ -164,7 +164,7 @@ VCR.configure do |config|
   }
 end
 
-if ENV["RELEVANCE"]
+if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
   RSpec.configure do |config|
     config.before(:suite) do
       require "rake"

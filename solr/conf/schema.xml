@@ -205,6 +205,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.FlattenGraphFilterFactory"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" />
         <filter class="solr.LowerCaseFilterFactory"/>
       </analyzer>
       <analyzer type="query">
@@ -212,6 +213,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" />
       </analyzer>
     </fieldType>
 
@@ -226,6 +228,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
         <filter class="solr.FlattenGraphFilterFactory"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
@@ -236,6 +239,7 @@
         <charFilter class="solr.MappingCharFilterFactory" mapping="char-filter-mapping.txt"/>
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.SynonymGraphFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" />
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
