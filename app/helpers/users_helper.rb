@@ -3,6 +3,10 @@
 module UsersHelper
   require "date"
 
+  def expiry_date(hold)
+    make_date(hold.expiry_date) rescue "N/A"
+  end
+
   def make_date(date)
     DateTime.parse(date).strftime("%m/%d/%Y")
   end
