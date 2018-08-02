@@ -10,9 +10,16 @@ module SearchHelper
     search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))
   end
 
-  def empty_resource_types?(result)
+  def renderable_results
+    @results.select { |engine_id, result| render_search? result }
+  end
+
+  def render_search?(result)
     engine_id = result.engine_id
-    (engine_id == "more" || engine_id == "resource_types") && total_items(result) == 0
+    ! ((engine_id == "more" ||
+        engine_id == "resource_types" ||
+        engine_id == "journals") &&
+       total_items(result) == 0)
   end
 
   def bento_titleize(id)
