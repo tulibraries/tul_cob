@@ -18,7 +18,7 @@ module SearchHelper
     engine_id = result.engine_id
     ! ((engine_id == "more" ||
         engine_id == "resource_types" ||
-        engine_id == "articles") &&
+        engine_id == "journals") &&
        total_items(result) == 0)
   end
 
