@@ -1,3 +1,4 @@
+<div id="login">
 <h2>Log in to My Library Account</h2>
 
 <%- if devise_mapping.omniauthable? %>
@@ -5,7 +6,9 @@
     <li>
       <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth) %>
     </li>
-    <li>Visitors (Coming Soon)</li>
+    <li>
+      <%= link_to "Visitors", alma_social_login_url %>
+    </li>
   </ul>
 <% end -%>
 
@@ -33,3 +36,4 @@
   </div>
   <% end %>
 <% end %>
+</div>
