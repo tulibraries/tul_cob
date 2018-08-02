@@ -14,6 +14,7 @@ class SolrDocument
     language: "language_display",
     format: "format",
     alma_mms: "alma_mms_display",
+    location: "location_display",
   )
 
   # Email uses the semantic field mappings below to generate the body of an email.

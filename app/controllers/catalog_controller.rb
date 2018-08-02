@@ -495,34 +495,6 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
-  def render_sms_action?(_config, _options)
-    # Render if the item can be found at a library
-    _options[:document].response.docs.first[:library_facet]
-  end
-
-  def sms_action(documents)
-    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
-    body = text_this_message_body(params)
-    @client.messages.create(
-      body: body,
-      to:   params[:to],
-      from: Rails.configuration.twilio[:phone_number]
-    )
-    logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
-  end
-
-  def validate_sms_params
-    if params[:to].blank?
-      flash[:error] = I18n.t("blacklight.sms.errors.to.blank")
-    elsif params[:location].blank?
-      flash[:error] = I18n.t("blacklight.sms.errors.location.blank")
-    elsif params[:to].gsub(/[^\d]/, "").length != 10
-      flash[:error] = I18n.t("blacklight.sms.errors.to.invalid", to: params[:to])
-    end
-
-    flash[:error].blank?
-  end
-
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"

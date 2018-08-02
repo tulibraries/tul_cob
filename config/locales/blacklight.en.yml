@@ -57,7 +57,10 @@ en:
       text:
         title: '%{value}'
         author: ' by %{value}'
-        url: 'Link: %{url}'
+        alma_mms: ", Catalog Record ID: %{value}"
+        location: ', Located at: %{value}'
+        url: ' -- Link: %{url}'
+
       success: "Text Sent"
       errors:
         location:
@@ -67,7 +70,7 @@ en:
           blank: "You must enter a recipient's phone number in order to send this message"
 
     tools:
-      sms: 'Text This'
+      sms: "Text"
       refworks: Refworks
 
     requests:
