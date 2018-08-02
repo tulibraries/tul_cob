@@ -247,8 +247,8 @@ class CatalogController < ApplicationController
     # }
 
     config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: true
-    config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
+    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true
+    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
