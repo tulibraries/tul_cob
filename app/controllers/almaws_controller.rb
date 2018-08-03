@@ -16,6 +16,7 @@ class AlmawsController < ApplicationController
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
+    @redirect_to = params[:redirect_to]
   end
 
   def request_options

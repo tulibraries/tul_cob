@@ -33,9 +33,8 @@ module UsersHelper
     end
 
     if redirect_to
-      redirect_path = URI.parse(redirect_to).path
       parsed_backUrl = URI.parse(backUrl)
-      new_query = URI.decode_www_form(parsed_backUrl.query || "") << ["redirect_to", redirect_path]
+      new_query = URI.decode_www_form(parsed_backUrl.query || "") << ["redirect_to", "#{redirect_to}"]
       parsed_backUrl.query = URI.encode_www_form(new_query)
       backUrl = parsed_backUrl.to_s
     end
