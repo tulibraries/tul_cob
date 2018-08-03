@@ -58,8 +58,8 @@ en:
         title: '%{value}'
         author: ' by %{value}'
         alma_mms: ", Catalog Record ID: %{value}"
-        location: ', Located at: %{value}'
-        url: ' -- Link: %{url}'
+        location: 'Located at: %{value}'
+        url: 'Link: %{url}'
 
       success: "Text Sent"
       errors:
