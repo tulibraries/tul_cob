@@ -34,7 +34,7 @@ en:
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer-reviewed only"
-    open_access: "Open Access only (available to non-Temple users)"
+    open_access: "Open Access only"
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
