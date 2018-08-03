@@ -6,7 +6,7 @@ import { Controller } from "stimulus"
   }
 
 export default class extends Controller {
-  static targets = [ "panel", "spinner" ]
+  static targets = [ "panel", "spinner", "request" ]
 
 
 
@@ -22,7 +22,9 @@ export default class extends Controller {
         .then(html => {
           this.spinnerTarget.remove();
           this.panelTarget.innerHTML = html
+          $("#requests-container").remove();
           $(this.panelTarget).parent().removeClass("hidden");
+          this.requestTarget.innerHTML = $("#requests-container");
       })
   }
 }
