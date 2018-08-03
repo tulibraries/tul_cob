@@ -1223,38 +1223,6 @@ RSpec.feature "RecordPageFields" do
         expect(page).to have_text(item_041_a["language"])
       end
     end
-
-    let (:item_041_d) { fixtures.fetch("language_041_d") }
-    scenario "User visits a document with entry languages code specified in field 041" do
-      visit "catalog/#{item_041_d['doc_id']}"
-      within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_d["language"])
-      end
-    end
-
-    let (:item_041_e) { fixtures.fetch("language_041_e") }
-    scenario "User visits a document with entry languages code specified in field 041" do
-      visit "catalog/#{item_041_e['doc_id']}"
-      within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_e["language"])
-      end
-    end
-
-    let (:item_041_g) { fixtures.fetch("language_041_g") }
-    scenario "User visits a document with entry languages code specified in field 041" do
-      visit "catalog/#{item_041_g['doc_id']}"
-      within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_g["language"])
-      end
-    end
-
-    let (:item_041_j) { fixtures.fetch("language_041_j") }
-    scenario "User visits a document with entry languages code specified in field 041" do
-      visit "catalog/#{item_041_j['doc_id']}"
-      within "dd.blacklight-language_display" do
-        expect(page).to have_text(item_041_j["language"])
-      end
-    end
   end
 
   feature "MARC Format Field" do

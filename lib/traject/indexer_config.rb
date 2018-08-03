@@ -44,8 +44,8 @@ end
 to_field "id", extract_marc("001", first: true)
 to_field "marc_display_raw", get_xml
 to_field("text", extract_all_marc_values, &to_single_string)
-to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
-to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
+to_field "language_facet", marc_languages("008[35-37]:041a")
+to_field "language_display", marc_languages("008[35-37]:041a")
 to_field("format", marc_formats, &normalize_format)
 
 # Title fields
