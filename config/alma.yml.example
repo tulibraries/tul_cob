@@ -2,7 +2,7 @@ default: &default
   apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
   institution_code: 01TULI_INST
   delivery_domain: "sandbox01-na.alma.exlibrisgroup.com"
-
+  auth_secret: "SUUUPER SECRET KEYYYYY"
 development:
     <<: *default
 
