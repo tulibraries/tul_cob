@@ -35,10 +35,10 @@ class AlmawsController < ApplicationController
     else
       @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
     end
-    end
+  end
 
   def send_hold_request
-    not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
+    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -64,21 +64,21 @@ class AlmawsController < ApplicationController
       item_pid: params[:item_pid],
     }
     @request_level = params[:request_level]
-    if @request_level == "bib"
-      request = Alma::BibRequest.submit(bib_options)
-    else
-      request = Alma::ItemRequest.submit(item_options)
-    end
+      if @request_level == "bib"
+        request = Alma::BibRequest.submit(bib_options)
+      else
+        request = Alma::ItemRequest.submit(item_options)
+      end
 
-    if request.success?
-      flash[:success] = "Your request has been submitted."
-      redirect_back(fallback_location: root_path)
-    end
+      if request.success?
+        flash[:success] = "Your request has been submitted."
+        redirect_back(fallback_location: root_path)
+      end
   end
 
   def send_booking_request
-    start_date = DateTime.new(params[:booking_start_date]["year"].to_i, params[:booking_start_date]["month"].to_i, params[:booking_start_date]["day"].to_i)
-    end_date = DateTime.new(params[:booking_end_date]["year"].to_i, params[:booking_end_date]["month"].to_i, params[:booking_end_date]["day"].to_i)
+    start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
+    end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -118,29 +118,40 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
-    not_needed_date = DateTime.new(params[:last_interest_date]["year"].to_i, params[:last_interest_date]["month"].to_i, params[:last_interest_date]["day"].to_i)
+    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
     partial = params[:partial_or_full] == "true" ? true : false
-    options = {
+    bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    holding_id: params[:holding_id],
-    item_pid: params[:item_pid],
     chapter_or_article_title: params[:chapter_or_article_title],
     chapter_or_article_author: params[:chapter_or_article_author],
-    description: params[:description],
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
     partial_digitization: partial,
     last_interest_date: not_needed_date,
     comment: params[:comment]
     }
+
+    item_options = {
+      mms_id: params[:mms_id],
+      user_id: current_user.uid,
+      holding_id: params[:holding_id],
+      item_pid: params[:item_pid],
+      chapter_or_article_title: params[:chapter_or_article_title],
+      chapter_or_article_author: params[:chapter_or_article_author],
+      description: params[:description],
+      request_type: "DIGITIZATION",
+      target_destination: { value: "DIGI_DEPT_INST" },
+      partial_digitization: partial,
+      last_interest_date: not_needed_date,
+      comment: params[:comment]
+    }
     @request_level = params[:request_level]
     if @request_level == "bib"
-      request = Alma::BibRequest.submit(options)
+      request = Alma::BibRequest.submit(bib_options)
     else
-      request = Alma::ItemRequest.submit(options)
+      request = Alma::ItemRequest.submit(item_options)
     end
-
     if request.success?
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)

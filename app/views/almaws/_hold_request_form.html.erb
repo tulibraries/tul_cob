@@ -1,5 +1,6 @@
-<%= form_with url: hold_request_path, local: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
-  <div class="container">
+<%= form_with url: hold_request_path, remote: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
+  <div class="container" data-controller="form">
+
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
     <%= form.hidden_field :holding_id, value: @holding_id %>
     <%= form.hidden_field :item_pid, value: @item_pid %>
@@ -9,7 +10,7 @@
     <div class="row">
       <div class="col-sm-4 hold-form">
         <%= label("", :pickup_location, "Pickup Location:") %>
-        <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {include_blank: true, required: true}, {class: "request-form form-control"}) %>
+        <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true }) %>
       </div>
     </div>
 
@@ -25,7 +26,7 @@
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:not_needed, "Not Needed After (optional):") %>
-        <%= select_date Date.today, prefix: :last_interest_date %>
+        <%= date_field_tag :last_interest_date, Date.today() + 10 %>
       </div>
     </div>
 

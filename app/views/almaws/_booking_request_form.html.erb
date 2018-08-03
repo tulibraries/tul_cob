@@ -1,5 +1,5 @@
 <%= form_with url: booking_request_path, local: true, class: 'form-horizontal request-form', method: :post do |form| %>
-  <div class="container">
+  <div class="container" data-controller="form">
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
     <%= form.hidden_field :holding_id, value: @holding_id %>
     <%= form.hidden_field :item_pid, value: @item_pid %>
@@ -9,13 +9,13 @@
     <div class="row">
       <div class="col-sm-4 hold-form">
         <%= label("", :pickup_location, "Pickup Location:") %>
-        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {include_blank: true, required: true}, {class: "request-form form-control"}) %>
+        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true}) %>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4 hold-form">
         <%= label("", :material_type, "Material Type:") %>
-        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, required: true}, {class: "request-form form-control"}) %>
+        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true}) %>
       </div>
     </div>
 
@@ -31,14 +31,14 @@
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:booking_start_date, "Booking Start Date:") %>
-        <%= select_date Date.tomorrow, prefix: :booking_start_date %>
+        <%= date_field_tag :booking_start_date, "", min: Date.tomorrow, required: true %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:booking_end_date, "Booking End Date:") %>
-        <%= select_date Date.tomorrow, prefix: :booking_end_date %>
+        <%= date_field_tag :booking_end_date, "", required: true %>
       </div>
     </div>
 
