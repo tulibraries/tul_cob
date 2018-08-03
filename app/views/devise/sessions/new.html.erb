@@ -4,10 +4,10 @@
 <%- if devise_mapping.omniauthable? %>
   <ul>
     <li>
-      <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth) %>
+      <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to] ) %>
     </li>
     <li>
-      <%= link_to "Visitors", alma_social_login_url %>
+      <%= link_to "Visitors", alma_social_login_url(redirect_to: params[:redirect_to]) %>
     </li>
   </ul>
 <% end -%>
