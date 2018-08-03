@@ -33,8 +33,8 @@ en:
     link_to_resource: "Link to Resource"
   availability_code:
     online_resources: "Online"
-    peer_reviewed: "Peer Reviewed"
-    open_access: "Open Access"
+    peer_reviewed: "Peer-reviewed only"
+    open_access: "Open Access only (available to non-Temple users)"
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
