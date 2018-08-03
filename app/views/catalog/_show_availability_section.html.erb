@@ -10,7 +10,7 @@
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
+    <div data-controller="show" data-show-url="<%= item_url(document.id, redirect_to: request.url) %>" class="physical-holding-panel panel-body">
       <div class="panel-content" >
         <div data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>

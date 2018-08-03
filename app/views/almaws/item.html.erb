@@ -5,7 +5,7 @@
       <button class="btn btn-primary" data-action="requests#hold">Request</button>
       <div id="stimulus-modal" data-target="requests.modal"></div>
     <% else %>
-      <%= link_to(t("blacklight.requests.log_in"), new_user_session_path) %>
+      <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(@redirect_to),  data: {"ajax-modal": "trigger"}) %>
       <%# TODO: Redirect back to this page %>
     <% end %>
   </div>
