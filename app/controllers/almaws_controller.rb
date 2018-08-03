@@ -64,16 +64,16 @@ class AlmawsController < ApplicationController
       item_pid: params[:item_pid],
     }
     @request_level = params[:request_level]
-      if @request_level == "bib"
-        request = Alma::BibRequest.submit(bib_options)
-      else
-        request = Alma::ItemRequest.submit(item_options)
-      end
+    if @request_level == "bib"
+      request = Alma::BibRequest.submit(bib_options)
+    else
+      request = Alma::ItemRequest.submit(item_options)
+    end
 
-      if request.success?
-        flash[:success] = "Your request has been submitted."
-        redirect_back(fallback_location: root_path)
-      end
+    if request.success?
+      flash[:success] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def send_booking_request
