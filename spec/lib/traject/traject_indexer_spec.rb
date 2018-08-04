@@ -3,6 +3,7 @@
 require "rspec"
 require "traject/macros/marc_format_classifier"
 require "traject/macros/custom"
+require "traject/macros/marc21_semantics"
 
 require "traject/indexer"
 require "marc/record"
@@ -124,10 +125,7 @@ end
 
 RSpec.describe Traject::Macros::Custom do
   let(:test_class) do
-    c = Class.new(Traject::Indexer)
-    c.send :extend, Traject::Macros::MarcFormats
-    c.send :extend, Traject::Macros::Custom
-    c
+    Class.new(Traject::Indexer)
   end
 
   let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
@@ -182,6 +180,25 @@ RSpec.describe Traject::Macros::Custom do
                                          "a b d c|e l m n o p t",
                                          "a n d c j|e l o p t"] }
         expect(subject.map_record(records[4])).to eq(expected)
+      end
+    end
+  end
+
+  describe "#normalize_lang" do
+    let(:path) { "normalize_lang.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field("language_facet", extract_marc("008[35-37]:041a:041d:"), &normalize_lang)
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "041a is 6 chars long" do
+      it "only translates first 3 chars" do
+        expect(subject.map_record(records[0])).to eq("language_facet" => ["English"])
       end
     end
   end

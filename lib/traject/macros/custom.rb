@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "library_stdnums"
+require "i18n"
 
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
@@ -340,6 +341,15 @@ module Traject
           acc << orig
           acc.flatten!
           acc.uniq!
+        end
+      end
+
+      def normalize_lang
+        I18n.load_path = Dir["config/locales/*.yml"]
+
+        Proc.new do |rec, acc|
+          acc.map! { |lang| I18n.t("language_code.eng", lang[0..3]) }
+            .uniq!
         end
       end
 
