@@ -348,8 +348,8 @@ module Traject
         I18n.load_path = Dir["config/locales/*.yml"]
 
         Proc.new do |rec, acc|
-          acc.map! { |lang| I18n.t("language_code.eng", lang[0..3]) }
-            .uniq!
+          acc.map! { |lang| I18n.t("language_code.eng", lang[0..2]) unless lang.nil? }
+            &.uniq!
         end
       end
 

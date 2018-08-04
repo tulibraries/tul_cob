@@ -1,107 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
   <record>
-    <leader>00902nam a22002890  4500</leader>
-    <controlfield tag='001'>991012033719703811</controlfield>
-    <controlfield tag='008'>830913s1962    nyu           00000 eng  </controlfield>
-    <datafield ind1=' ' ind2=' ' tag='010'>
-      <subfield code='a'>62005896</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='035'>
-      <subfield code='a'>(PPT)b12497976-01tuli_inst</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='035'>
-      <subfield code='a'>ocn471184859</subfield>
-      <subfield code='9'>ExL</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='035'>
-      <subfield code='a'>PATG83-B28859</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='040'>
-      <subfield code='c'>OOxM</subfield>
-      <subfield code='d'>CtY</subfield>
-      <subfield code='d'>PPT</subfield>
-    </datafield>
+  </record>
+  <record>
     <datafield ind1='1' ind2=' ' tag='041'>
       <subfield code='a'>engspa</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='079'>
-      <subfield code='a'>ocn222492042</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='090'>
-      <subfield code='a'>QA273.B7613</subfield>
-    </datafield>
-    <datafield ind1='1' ind2='0' tag='100'>
-      <subfield code='a'>Borel, Emile,</subfield>
-      <subfield code='d'>1871-1956.</subfield>
-    </datafield>
-    <datafield ind1='1' ind2='0' tag='245'>
-      <subfield code='a'>Probabilities and life.</subfield>
-      <subfield code='c'>Translated from the French by Maurice Baudin.</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='260'>
-      <subfield code='a'>New York,</subfield>
-      <subfield code='b'>Dover Publications</subfield>
-      <subfield code='c'>[1962]</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='300'>
-      <subfield code='a'>87 p.</subfield>
-      <subfield code='b'>tables</subfield>
-      <subfield code='c'>22 cm.</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='500'>
-      <subfield code='a'>&quot;New English translation of the 4th ed. of &quot;Les probabilités et la vie.&quot;</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='504'>
-      <subfield code='a'>Bibliographical footnotes.</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2='0' tag='650'>
-      <subfield code='a'>Probabilities.</subfield>
-    </datafield>
-    <datafield ind1='0' ind2=' ' tag='852'>
-      <subfield code='8'>2292246370003811</subfield>
-      <subfield code='b'>MAIN</subfield>
-      <subfield code='c'>stacks</subfield>
-      <subfield code='h'>QA273.B7613</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='902'>
-      <subfield code='a'>161109</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='907'>
-      <subfield code='a'>.b12497976</subfield>
-      <subfield code='b'>p    </subfield>
-      <subfield code='c'>-</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='935'>
-      <subfield code='a'>00266761</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='945'>
-      <subfield code='l'>pstk </subfield>
-      <subfield code='g'>1</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='950'>
-      <subfield code='l'>P</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='998'>
-      <subfield code='b'>1</subfield>
-      <subfield code='c'>990101</subfield>
-      <subfield code='d'>m</subfield>
-      <subfield code='e'>a</subfield>
-      <subfield code='f'>-</subfield>
-      <subfield code='g'>0</subfield>
-    </datafield>
-    <datafield ind1=' ' ind2=' ' tag='998'>
-      <subfield code='a'>09/13/83</subfield>
-      <subfield code='t'>c</subfield>
-      <subfield code='s'>9125</subfield>
-      <subfield code='n'>PPT</subfield>
-      <subfield code='w'>CTYG0773970B</subfield>
-      <subfield code='d'>09/13/83</subfield>
-      <subfield code='b'>JB</subfield>
-      <subfield code='i'>830913</subfield>
-      <subfield code='l'>PATG</subfield>
-    </datafield>
-    <datafield tag='HLD' >
     </datafield>
   </record>
 </collection>

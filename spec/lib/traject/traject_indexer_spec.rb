@@ -196,11 +196,18 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
-    context "041a is 6 chars long" do
-      it "only translates first 3 chars" do
-        expect(subject.map_record(records[0])).to eq("language_facet" => ["English"])
+    context "no lang (nil)" do
+      it "does not error out" do
+        expect(subject.map_record(records[0])).to eq({})
       end
     end
+
+    context "041a is 6 chars long" do
+      it "only translates first 3 chars" do
+        expect(subject.map_record(records[1])).to eq("language_facet" => ["English"])
+      end
+    end
+
   end
 
   describe "#extract_creator_vern" do
