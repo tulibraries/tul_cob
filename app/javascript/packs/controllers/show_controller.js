@@ -11,20 +11,39 @@ export default class extends Controller {
 
 
   initialize() {
-      $(this.spinnerTarget).show();
-      fetch(this.data.get("url"), {
-        credentials: "same-origin",
-        headers: {
-          "X-CSRF-Token": getMetaValue("csrf-token")
-        },
+    this.availability()
+    this.request()
+  }
+
+  availability() {
+    $(this.spinnerTarget).show();
+    fetch(this.data.get("url"), {
+      credentials: "same-origin",
+      headers: {
+        "X-CSRF-Token": getMetaValue("csrf-token")
+      },
+    })
+      .then(response => response.text())
+      .then(html => {
+        this.spinnerTarget.remove();
+        this.panelTarget.innerHTML = html
+        $("#requests-container").remove();
+        $(this.panelTarget).parent().removeClass("hidden");
       })
-        .then(response => response.text())
-        .then(html => {
-          this.spinnerTarget.remove();
-          this.panelTarget.innerHTML = html
-          $("#requests-container").remove();
-          $(this.panelTarget).parent().removeClass("hidden");
-          this.requestTarget.innerHTML = $("#requests-container");
+  }
+
+  request() {
+    fetch(this.data.get("url"), {
+      credentials: "same-origin",
+      headers: {
+        "X-CSRF-Token": getMetaValue("csrf-token")
+      },
+    })
+      .then(response => response.text())
+      .then(html => {
+        this.requestTarget.innerHTML = html
+        $("#availability-container").remove();
+        $("#error-message").remove();
       })
   }
 }
