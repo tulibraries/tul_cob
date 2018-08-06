@@ -184,11 +184,11 @@ RSpec.describe Traject::Macros::Custom do
     end
   end
 
-  describe "#normalize_lang" do
-    let(:path) { "normalize_lang.xml" }
+  describe "#extract_lang" do
+    let(:path) { "extract_lang.xml" }
     before(:each) do
       subject.instance_eval do
-        to_field("language_facet", extract_marc("008[35-37]:041a:041d:"), &normalize_lang)
+        to_field "language_facet", extract_lang
 
         settings do
           provide "marc_source.type", "xml"
@@ -205,6 +205,12 @@ RSpec.describe Traject::Macros::Custom do
     context "041a is 6 chars long" do
       it "only translates first 3 chars" do
         expect(subject.map_record(records[1])).to eq("language_facet" => ["English"])
+      end
+    end
+
+    context "041d is 6 chars long" do
+      it "translates all codes" do
+        expect(subject.map_record(records[2])).to eq("language_facet" => ["English", "Spanish"])
       end
     end
 

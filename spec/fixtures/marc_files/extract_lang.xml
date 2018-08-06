@@ -7,4 +7,9 @@
       <subfield code='a'>engspa</subfield>
     </datafield>
   </record>
+  <record>
+    <datafield ind1='1' ind2=' ' tag='041'>
+      <subfield code='d'>engspa</subfield>
+    </datafield>
+  </record>
 </collection>

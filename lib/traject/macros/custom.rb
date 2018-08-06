@@ -344,12 +344,39 @@ module Traject
         end
       end
 
-      def normalize_lang
-        I18n.load_path = Dir["config/locales/*.yml"]
+      # Just like marc_languages except it makes a special case for "041a" spec.
+      def extract_lang(spec = "008[35-37]:041a:041d")
+        translation_map = Traject::TranslationMap.new("marc_languages")
 
-        Proc.new do |rec, acc|
-          acc.map! { |lang| I18n.t("language_code.eng", lang[0..2]) unless lang.nil? }
-            &.uniq!
+        extractor = MarcExtractor.new(spec, :separator => nil)
+        spec_041a = Traject::MarcExtractor::Spec.new(tag: "041", subfields: ["a"])
+
+        lambda do |record, accumulator|
+          codes = extractor.collect_matching_lines(record) do |field, spec, extractor|
+            if extractor.control_field?(field)
+              (spec.bytes ? field.value.byteslice(spec.bytes) : field.value)
+            else
+              extractor.collect_subfields(field, spec).collect do |value|
+                # sometimes multiple language codes are jammed together in one subfield, and
+                # we need to separate ourselves. sigh.
+                if spec == spec_041a
+                  value = value[0..2]
+                end
+
+                unless value.length == 3
+                  # split into an array of 3-length substrs; JRuby has problems with regexes
+                  # across threads, which is why we don't use String#scan here.
+                  value = value.chars.each_slice(3).map(&:join)
+                end
+                value
+              end.flatten
+            end
+          end
+          codes = codes.uniq
+
+          translation_map.translate_array!(codes)
+
+          accumulator.concat codes
         end
       end
 
