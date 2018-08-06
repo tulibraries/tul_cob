@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "library_stdnums"
-require "i18n"
 
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
@@ -348,7 +347,7 @@ module Traject
       def extract_lang(spec = "008[35-37]:041a:041d")
         translation_map = Traject::TranslationMap.new("marc_languages")
 
-        extractor = MarcExtractor.new(spec, :separator => nil)
+        extractor = MarcExtractor.new(spec, separator: nil)
         spec_041a = Traject::MarcExtractor::Spec.new(tag: "041", subfields: ["a"])
 
         lambda do |record, accumulator|
