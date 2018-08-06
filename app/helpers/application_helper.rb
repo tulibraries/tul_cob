@@ -7,7 +7,7 @@ module ApplicationHelper
     [ Rails.configuration.libraries[params.first],
       Rails.configuration.locations.dig(*params) ]
       .compact
-      .join
+      .join(" ")
   end
 
   def render_location_show(value)
