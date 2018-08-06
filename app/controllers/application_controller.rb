@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   # We want to make sure user actually gets signed out.
   # @see BL-224
   def after_sign_out_path_for(resource_or_scope)
-    if session[:alma_auth_type] == "sso"
+    if params[:type] == "sso"
       Rails.configuration.devise[:sign_out_redirect_url]
     else
       super
