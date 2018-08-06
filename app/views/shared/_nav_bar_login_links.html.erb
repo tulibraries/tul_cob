@@ -1,6 +1,6 @@
 <% if current_user %>
     <li>
-      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :method => 'delete' %>
+      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path(type: session[:alma_auth_type]), :method => 'delete' %>
     </li>
 <% else %>
     <li>
