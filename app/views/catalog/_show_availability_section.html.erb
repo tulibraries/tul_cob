@@ -1,9 +1,20 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 <div class="col-sm-12">
-<div id="record-view-iframe"  class="panel panel-default">
+<div id="record-view-iframe" class="panel" data-controller="show" data-show-url="<%= item_url(document.id) %>">
   <div class="availability-panel-heading panel-heading">
-    <h4 id="availability-heading">Availability</h4>
+    <h4 id="availability-heading" class="text-left">Availability</h4>
+    <div id="heading-request">
+      <div id="requests-container" class="hidden" data-controller="requests" data-target="show.request, availability.request">
+        <% if user_signed_in? %>
+          <button class="btn btn-primary request-button" data-action="requests#hold">Request</button>
+          <div id="stimulus-modal" data-target="requests.modal"></div>
+        <% else %>
+          <%= link_to(t("blacklight.requests.log_in"), new_user_session_path) %>
+          <%# TODO: Redirect back to this page %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
 
