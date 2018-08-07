@@ -82,6 +82,9 @@
       <% end %>
 
       <% if item.engine_id == "articles" %>
+        <div class="bento_item_body">
+          <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
+        </div>
         <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
       <% end %>
 
