@@ -12,7 +12,7 @@
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title">
-                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne-<%= @mms_id %>">Request a hold</a>
+                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne-<%= @mms_id %>">Request item</a>
               </h4>
             </div>
 
@@ -29,7 +29,7 @@
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title">
-                  <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo-<%= @mms_id %>">Scan a book chapter</a>
+                  <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo-<%= @mms_id %>">Scan an article/book chapter</a>
               </h4>
             </div>
 
@@ -69,6 +69,10 @@
       </div>
 
       <div class="modal-footer">
+        <p class="modal-footer-text text-left">
+          For more request options, see:
+          <%= link_to("How do I request an item that is unavailable at my library?", "http://answers.library.temple.edu/faq/195868") %>
+        </p>
         <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
       </div>
 
