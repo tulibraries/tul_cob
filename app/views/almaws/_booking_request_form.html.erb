@@ -1,8 +1,6 @@
 <%= form_with url: booking_request_path, local: true, class: 'form-horizontal request-form', method: :post do |form| %>
   <div class="container" data-controller="form">
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
-    <%= form.hidden_field :holding_id, value: @holding_id %>
-    <%= form.hidden_field :item_pid, value: @item_pid %>
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
@@ -19,7 +17,7 @@
       </div>
     </div>
 
-    <% if @request_level == "item" %>
+    <% if @description.present? %>
       <div class="form-group row">
         <div class="col-sm-4">
           <%= form.label(:description, "Description:") %>
