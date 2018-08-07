@@ -3,6 +3,7 @@
 require "rspec"
 require "traject/macros/marc_format_classifier"
 require "traject/macros/custom"
+require "traject/macros/marc21_semantics"
 
 require "traject/indexer"
 require "marc/record"
@@ -124,10 +125,7 @@ end
 
 RSpec.describe Traject::Macros::Custom do
   let(:test_class) do
-    c = Class.new(Traject::Indexer)
-    c.send :extend, Traject::Macros::MarcFormats
-    c.send :extend, Traject::Macros::Custom
-    c
+    Class.new(Traject::Indexer)
   end
 
   let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
@@ -184,6 +182,38 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[4])).to eq(expected)
       end
     end
+  end
+
+  describe "#extract_lang" do
+    let(:path) { "extract_lang.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "language_facet", extract_lang
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "no lang (nil)" do
+      it "does not error out" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "041a is 6 chars long" do
+      it "only translates first 3 chars" do
+        expect(subject.map_record(records[1])).to eq("language_facet" => ["English"])
+      end
+    end
+
+    context "041d is 6 chars long" do
+      it "translates all codes" do
+        expect(subject.map_record(records[2])).to eq("language_facet" => ["English", "Spanish"])
+      end
+    end
+
   end
 
   describe "#extract_creator_vern" do

@@ -1289,7 +1289,7 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{language_041_a['doc_id']}"
 
       within "dd.blacklight-language_display" do
-        expect(page).to have_css("li.list_items")
+        expect(page).to have_text(language_041_a["language"])
       end
     end
   end
