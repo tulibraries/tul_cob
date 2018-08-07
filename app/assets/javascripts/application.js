@@ -151,3 +151,13 @@ function toggleOnlineOnly() {
     online_facet.click()
   }
 }
+
+function handleEventClicks(event) {
+  ga('send', 'event', {
+    eventCategory: 'Click Event',
+    eventAction: 'click',
+    eventLabel: event
+  });
+}
+
+
