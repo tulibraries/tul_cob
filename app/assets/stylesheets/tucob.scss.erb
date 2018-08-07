@@ -161,14 +161,31 @@ input[type="radio"] + label {
   display: none;
 }
 
-.availability-panel-heading {
-  background-color: #A30733 !important;
-  color: #fff !important;
-  padding: 5px;
+.controls button  {
+  display: inline;
+}
+
+.search-results-request-btn {
+  display: inline-block;
+}
+
+.panel-default > .availability-panel-heading {
+  background-color: #fff !important;
+  border: none !important;
+  color: #A30733 !important;
 }
 
 #availability-heading {
-  margin-left: 5px;
+  color: #A30733;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#heading-request {
+  display: inline-block;
+  float: right;
+  vertical-align: middle;
+  padding-top: 3px;
 }
 
 .collapse-button {
@@ -224,10 +241,8 @@ div.physical-holding-panel {
   height: 40px;
   margin: 0;
   padding: 8px;
-
   border-collapse: inherit;
   margin: 0 !important;
-
 }
 
 .other_libraries {
@@ -268,13 +283,17 @@ div.physical-holding-panel {
   /*border: solid red 1px;*/
 }
 
+.border-bottom {
+  border-radius: 25px !important;
+}
+
 table.border-bottom {
   border: 1px solid #CFC7B0;
   border-top: 0;
   padding: 0 !important;
   margin: 0 !important;
-
 }
+
 table.border-bottom {
   th[headers*="location"] {
     width: 17%;
@@ -308,7 +327,6 @@ table.border-bottom {
   overflow-x: hidden;
   margin-right: -10px;
   margin-bottom: 0 !important;
-
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -319,7 +337,6 @@ table.border-bottom {
 .table-wrapper::-webkit-scrollbar-thumb {
     background: gray;
 }
-
 
 /* RECORD NAV TOOLS */
 
@@ -706,5 +723,4 @@ form#sms_form div.text-this-location label {
 #login {
   padding: 42px;
   padding-top: 0;
-
 }

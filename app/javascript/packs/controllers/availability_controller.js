@@ -6,7 +6,7 @@ import { Controller } from "stimulus"
     }
 
 export default class extends Controller {
-  static targets = [ "panel", "button", "spinner" ]
+  static targets = [ "panel", "button", "spinner", "request", "container" ]
 
   item() {
     this.buttonTarget.classList.toggle("collapsed");
@@ -25,7 +25,12 @@ export default class extends Controller {
           this.panelTarget.innerHTML = html
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
+          var requests_url = $("#request-url-data").data("requests-url");
+          $(this.requestTarget).attr("data-requests-url", requests_url);
+          $(this.requestTarget).removeClass("hidden");
+          this.requestTarget.classList.add("search-results-request-btn")
       })
+
     }
   }
 }
