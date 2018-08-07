@@ -7,7 +7,7 @@
     <div id="heading-request">
       <div id="requests-container" class="hidden" data-controller="requests" data-target="show.request, availability.request">
         <% if user_signed_in? %>
-          <button class="btn btn-primary request-button" data-action="requests#hold">Request</button>
+          <button id="request-btn" class="btn btn-primary request-button" data-action="requests#hold">Request</button>
           <div id="stimulus-modal" data-target="requests.modal"></div>
         <% else %>
           <%= link_to(t("blacklight.requests.log_in"), new_user_session_path) %>
