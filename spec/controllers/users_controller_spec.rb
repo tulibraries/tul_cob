@@ -44,6 +44,15 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status(:success)
         end
       end
+
+      describe "GET #account" do
+        it "has no-cache headers for account" do
+          get :account
+          expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
+          expect(response.headers["Pragma"]).to eq("no-cache")
+          expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
+        end
+      end
     end
 
     context "User has no transactions" do

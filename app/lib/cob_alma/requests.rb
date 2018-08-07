@@ -87,7 +87,7 @@ module CobAlma
           material
         end
       end
-      material_types
+      material_types.uniq
     end
 
     def self.item_holding_id(items_list)
