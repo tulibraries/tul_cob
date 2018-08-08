@@ -12,10 +12,10 @@
         </button>
         <div id="requests-container-<%=  document.id %>" class="hidden" data-controller="requests" data-target="show.request, availability.request">
           <% if user_signed_in? %>
-            <button class="btn btn-primary request-button" data-action="requests#hold">Request</button>
+            <button id="request-btn-<%=  document_counter %>" class="btn btn-primary request-button" data-action="requests#hold">Request</button>
             <div id="stimulus-modal" data-target="requests.modal"></div>
           <% else %>
-            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>            <%# TODO: Redirect back to this page %>
+            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(@redirect_to),  data: {"ajax-modal": "trigger"}) %>            
           <% end %>
         </div>
       </div>
