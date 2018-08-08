@@ -6,7 +6,7 @@ require "traject/command_line"
 require "yaml"
 require "pry"
 
-RSpec.feature "Indices, :focus" do
+RSpec.feature "Indices" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/features.yml")
   }
