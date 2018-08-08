@@ -46,7 +46,7 @@ $(window).on('resize', function() {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
 	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
+		$('#appliedParams').insertAfter('h2.top-content-title');
 	}
 	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
@@ -61,7 +61,7 @@ $(document).ajaxComplete(function(){
 		$('#appliedParams').insertAfter('#sidebar');
 	}
 	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
+		$('#appliedParams').insertAfter('h2.top-content-title');
 	}
 });
 
