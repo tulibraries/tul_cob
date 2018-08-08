@@ -7,13 +7,13 @@
     <div class="row">
       <div class="col-sm-4 hold-form">
         <%= label("", :pickup_location, "Pickup Location:") %>
-        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true}) %>
+        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4 hold-form">
         <%= label("", :material_type, "Material Type:") %>
-        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true}) %>
+        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
 
@@ -21,7 +21,7 @@
       <div class="form-group row">
         <div class="col-sm-4">
           <%= form.label(:description, "Description:") %>
-          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true) %>
+          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
         </div>
       </div>
     <% end %>
@@ -29,14 +29,14 @@
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:booking_start_date, "Booking Start Date:") %>
-        <%= date_field_tag :booking_start_date, "", min: Date.tomorrow, required: true %>
+        <%= date_field_tag :booking_start_date, "", min: Date.tomorrow, required: true, "aria-required": true %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:booking_end_date, "Booking End Date:") %>
-        <%= date_field_tag :booking_end_date, "", required: true %>
+        <%= date_field_tag :booking_end_date, "", required: true, "aria-required": true %>
       </div>
     </div>
 
