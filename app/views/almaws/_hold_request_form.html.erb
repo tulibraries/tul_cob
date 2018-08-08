@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-sm-4 hold-form">
           <%= label("", :pickup_location, "Pickup Location:") %>
-          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
+          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.library_name, lib.library ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
     <% end %>
