@@ -1,202 +1,48 @@
 $(document).ready(function(){
-	var el;
-	el = document.getElementById("header-logo");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("header-logo", "navigation");
+
+	var tracks = [
+		{id: "header-logo", category: "navigation"},
+		{id: "login", category: "navigation"},
+		{id: "logout", category: "navigation"},
+		{id: "bookmarks", category: "navigation"},
+		{id: "articles-header", category: "navigation"},
+		{id: "articles-button", category: "navigation"},
+		{id: "catalog-header", category: "navigation"},
+		{id: "catalog-button", category: "navigation"},
+		{id: "bento_books", category: "bento-results"},
+		{id: "bento_articles", category: "bento-results"},
+		{id: "bento_more", category: "bento-results"},
+		{id: "bento_journals", category: "bento-results"},
+		{id: "bento_resource_types", category: "bento-results"},
+		{id: "one_online_button", category: "bento-results"},
+		{id: "many_online_button", category: "bento-results"},
+		{id: "advanced_search", category: "search-results"},
+		{id: "basic_search", category: "search-results"},
+		{id: "online_button", category: "search-results"},
+		{id: "bookmarks", category: "search-results"},
+		{id: "direct_link_online", category: "search-results"},
+		{id: "single_link_online", category: "search-results"},
+		{id: "many_links_online", category: "search-results"},
+		{id: "online-only", category: "search-results"},
+		{id: "articles_basic_search", category: "search-results"},
+		{id: "articles_advanced_search", category: "search-results"},
+		{id: "back_to_search", category: "search-results"},
+		{id: "start_over", category: "search-results"},
+		{id: "emailLink", category: "search-results"},
+		{id: "smsLink", category: "search-results"},
+		{id: "refworksLink", category: "search-results"},
+		{id: "citationLink", category: "search-results"},
+		{id: "signin_for_request_options", category: "search-results"},
+		{id: "request", category: "search-results"},
+		{id: "available_button", category: "search-results"}
+	];
+
+	tracks.forEach(function(track) {
+		if (el = document.getElementById(track.id)) {
+			alert(track.id + " " + track.category);
+			el.addEventListener("click", function(){
+		    handleEventClicks(track.id, track.category) })
+			}
 		});	
-	}
-	el = document.getElementById("login");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("login", "navigation");
-		});	
-	}
-	el = document.getElementById("logout");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("logout", "navigation");
-		});	
-	}
-	el = document.getElementById("bookmarks");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bookmarks", "navigation");
-		});	
-	}
-	el = document.getElementById("articles-header");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("articles-header", "navigation");
-		});	
-	}
-	el = document.getElementById("articles-button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("articles-button", "navigation");
-		});	
-	}
-	el = document.getElementById("catalog-header");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("catalog-header", "navigation");
-		});	
-	}
-	el = document.getElementById("catalog-button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("catalog-button", "navigation");
-		});	
-	}
-	el = document.getElementById("bento_books");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bento_books", "bento-results");
-		});	
-	}
-	el = document.getElementById("bento_articles");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bento_articles", "bento-results");
-		});	
-	}
-	el = document.getElementById("bento_more");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bento_more", "bento-results");
-		});	
-	}
-	el = document.getElementById("bento_journals");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bento_journals", "bento-results");
-		});	
-	}
-	el = document.getElementById("bento_resource_types");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("bento_resource_types", "bento-results");
-		});	
-	}
-	el = document.getElementById("one_online_button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("one_online_button", "bento-results");
-		});	
-	}
-	el = document.getElementById("many_online_button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("many_online_button", "bento-results");
-		});	
-	}
-	el = document.getElementById("advanced_search");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("advanced_search", "search-results");
-		});	
-	}
-	el = document.getElementById("basic_search");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("basic_search", "search-results");
-		});	
-	}
-	el = document.getElementById("online_button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("online_button", "search-results");
-		});	
-	}
-	el = document.getElementById("direct_link_online");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("direct_link_online", "search-results");
-		});	
-	}
-	el = document.getElementById("single_link_online");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("single_link_online", "search-results");
-		});	
-	}
-	el = document.getElementById("many_links_online");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("many_links_online", "search-results");
-		});	
-	}
-	el = document.getElementById("online-only");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("online-only", "search-results");
-		});	
-	}
-	el = document.getElementById("articles_basic_search");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("articles_basic_search", "search-results");
-		});	
-	}
-	el = document.getElementById("articles_advanced_search");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("articles_advanced_search", "search-results");
-		});	
-	}
-	el = document.getElementById("back_to_search");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("back_to_search", "search-results");
-		});	
-	}
-	el = document.getElementById("start_over");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("start_over", "search-results");
-		});	
-	}
-	el = document.getElementById("emailLink");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("emailLink", "search-results");
-		});	
-	}
-	el = document.getElementById("smsLink");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("smsLink", "search-results");
-		});	
-	}
-	el = document.getElementById("refworksLink");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("refworksLink", "search-results");
-		});	
-	}
-	el = document.getElementById("citationLink");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("citationLink", "search-results");
-		});
-	}
-	el = document.getElementById("signin_for_request_options");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("signin_for_request_options", "search-results");
-		});	
-	}
-	el = document.getElementById("request");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("request", "search-results");
-		});	
-	}
-	el = document.getElementById("available_button");
-	if(el) {
-		el.addEventListener("click", function(){
-	    handleEventClicks("available_button", "search-results");
-		});	
-	}
 
 });
