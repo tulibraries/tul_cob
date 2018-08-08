@@ -250,9 +250,9 @@ module ApplicationHelper
 
   def navigational_headers
     if params[:controller] == "catalog" || params[:controller] == "advanced"
-      label = link_to("Catalog Search", search_catalog_path)
+      label = link_to("Catalog Search", search_catalog_path, id: "catalog_header")
     elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      label = link_to("Articles Search", search_path)
+      label = link_to("Articles Search", search_path, id: "articles_header")
     end
     # content_tag(:h1, label, class: "nav-header")
   end
@@ -260,9 +260,9 @@ module ApplicationHelper
   def navigational_links
     if navigational_headers.present?
       if navigational_headers.include?("Catalog Search")
-        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn")
+        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn", id: "articles_button")
       elsif navigational_headers.include?("Articles Search")
-        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
+        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn", id: "cataog_button")
       end
     end
   end
@@ -272,7 +272,7 @@ module ApplicationHelper
     online_catalog = params.dig("f", "availability_facet")&.include?("Online")
     checked = online_articles || online_catalog
 
-    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()"
+    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()", id: "online-only"
   end
 
   def login_disabled?

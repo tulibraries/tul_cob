@@ -24,6 +24,6 @@ module SearchHelper
 
   def bento_titleize(id)
     engine = BentoSearch.get_engine(id)
-    link_to id.titleize , engine.url(self)
+    link_to id.titleize , engine.url(self), id: "bento_" + id
   end
 end
