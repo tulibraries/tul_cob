@@ -6,7 +6,7 @@ require "traject/command_line"
 require "yaml"
 require "pry"
 
-RSpec.feature "Indices" do
+RSpec.feature "Indices, :focus" do
   let (:fixtures) {
     YAML.load_file("#{fixture_path}/features.yml")
   }
@@ -100,5 +100,13 @@ RSpec.feature "Indices" do
       expect(current_url).to eq item_url
       expect(page).to have_text(item["title"])
     end
+
+
+    scenario "Login link with proper redirect_to params are on search pages" do
+      pending("The expected href appears in the browser, but not in Capybara, ¯\\_(ツ)_/¯")
+      visit "catalog/#{item['doc_id']}"
+      expect(page).to find(:xpath, "//div[@id='requests-container']/a[contains(@href,'redirect_to')]")
+    end
+
   end
 end
