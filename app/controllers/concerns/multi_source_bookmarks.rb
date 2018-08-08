@@ -48,6 +48,7 @@ module MultiSourceBookmarks
   # Overrides BookmarksController::index in order to run search on multiple apis.
   def index
     action_documents
+    no_cache
 
     respond_to do |format|
       format.html {}
