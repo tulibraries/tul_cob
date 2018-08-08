@@ -1,7 +1,7 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 <div class="col-sm-12">
-<div id="record-view-iframe" class="panel" data-controller="show" data-show-url="<%= item_url(document.id) %>">
+<div id="record-view-iframe" data-availability-id="<%= document.id %>" class="panel" data-controller="show" data-show-url="<%= item_url(document.id) %>">
   <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading" class="text-left">Availability</h4>
     <div id="heading-request">
@@ -20,9 +20,9 @@
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div data-controller="show" data-show-url="<%= item_url(document.id, redirect_to: request.url) %>" class="physical-holding-panel panel-body">
+    <div data-show-url="<%= item_url(document.id, redirect_to: request.url) %>" class="physical-holding-panel panel-body">
       <div class="panel-content" >
-        <div data-target="show.spinner" class="spinner">
+        <div id="avail-spinner" data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>
           Loading Availability
         </div>
