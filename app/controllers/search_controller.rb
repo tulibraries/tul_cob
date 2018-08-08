@@ -5,7 +5,7 @@ class SearchController < CatalogController
   include CatalogConfigReinit
 
   blacklight_config.configure do |config|
-    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet
   end
 

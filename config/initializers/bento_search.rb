@@ -27,6 +27,7 @@ BentoSearch.register_engine("more") do |conf|
   conf.engine = "BentoSearch::MoreEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
+    display.linked_engines = ["resource_types"]
   end
 end
 
