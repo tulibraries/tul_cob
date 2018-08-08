@@ -53,7 +53,6 @@ module CobAlma
     def self.valid_pickup_locations(items_list)
       pickup_locations = self.possible_pickup_locations
       libraries = self.avail_locations(items_list).split(",")
-
       if libraries.any?
         libraries.each do |lib|
           campus = self.determine_campus(lib)
@@ -61,6 +60,15 @@ module CobAlma
         end
       end
       pickup_locations
+    end
+
+    def self.equipment(items_list)
+      equipment = items_list.map { |item| item.circulation_policy }
+
+      if equipment == ["Equipment"]
+        pickup_location = items_list.map { |item| [item.library, item.library_name] }
+      end
+      pickup_location
     end
 
     def self.descriptions(items_list)

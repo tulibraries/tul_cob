@@ -27997,4 +27997,124 @@
       <subfield code="f">MEDIA</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01286nrm a2200301Ii 4500</leader>
+    <controlfield tag="005">20180315124435.0</controlfield>
+    <controlfield tag="008">161206s2014 ja nnn rnzxx d</controlfield>
+    <controlfield tag="001">991028663269703811</controlfield>
+    <datafield ind1="1" ind2="0" tag="024">
+      <subfield code="a">013803237160</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="024">
+      <subfield code="a">082966214073</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b63576466-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">PPT</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">PPT</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Canon EOS Rebel T5 :</subfield>
+      <subfield code="b">digital camera /</subfield>
+      <subfield code="c">designed by Canon ; made in Taiwan ; lens made in Malaysia.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Toyko, Japan :</subfield>
+      <subfield code="b">Canon, Inc.,</subfield>
+      <subfield code="c">2014.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 digital camera :</subfield>
+      <subfield code="b">black ;</subfield>
+      <subfield code="c">13 x 10 x 14 cm +</subfield>
+      <subfield code="e">1 battery, battery charger, 1 SD card, SD reader, USB mini, secondary flash, 3x lenses, mini tripod/mount, remote, 4x lens cover, tripod, software CD.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">other</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">object</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Attached lens is EFS 18-55mm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Full HD 1080 for video recording.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Digital cameras.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Photography</subfield>
+      <subfield code="x">Equipment and supplies.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Kyanon Kabushiki Kaisha.</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="2" tag="856">
+      <subfield code="u">https://www.usa.canon.com/internet/portal/us/home/products/details/cameras/dslr/eos-rebel-t5-ef-s-18-55-is-ii-kit</subfield>
+      <subfield code="z">View complete specifications</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b63576466</subfield>
+      <subfield code="b">pdsc</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pdsc</subfield>
+      <subfield code="a">Canon T5 1</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">r</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">12/6/2016</subfield>
+      <subfield code="s">ORIG</subfield>
+      <subfield code="c">CDC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 16:44:35</subfield>
+      <subfield code="e">b63576466-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 07:11:58</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">DSC</subfield>
+      <subfield code="c">DSC</subfield>
+      <subfield code="h">Canon T5 1</subfield>
+      <subfield code="8">22399305940003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22399305940003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">TRANSIT</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">DSC</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074030351399</subfield>
+      <subfield code="e">DSC</subfield>
+      <subfield code="8">23262594560003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 07:11:58</subfield>
+      <subfield code="i">Canon T5 1</subfield>
+      <subfield code="d">DSC</subfield>
+      <subfield code="f">DSC</subfield>
+    </datafield>
+  </record>
 </collection>

@@ -30,7 +30,6 @@ export default class extends Controller {
           $(this.requestTarget).removeClass("hidden");
           this.requestTarget.classList.add("search-results-request-btn")
       })
-
     }
   }
 }
