@@ -12,16 +12,7 @@
           </div>
         </div>
       <% end %>
-      <div class="row bento-results">
-        <% renderable_results.each_pair do |engine_id, result| %>
-          <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment <%= engine_id %>">
-            <h2><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
-            <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
-              <%= bento_search result %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+      <%= render_bento_results %>
     <% else %>
       <%= render("home_text") %>
     <% end %>
