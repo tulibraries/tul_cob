@@ -28,7 +28,9 @@ export default class extends Controller {
         this.panelTarget.innerHTML = html
         $(this.panelTarget).parent().removeClass("hidden");
         $("#requests-container").removeClass("hidden");
-        var requests_url = $("#request-url-data").data("requests-url");
+        var mms_id = $("#record-view-iframe").data("availability-id");
+        var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
+        console.log(mms_id);
         $("#requests-container").attr("data-requests-url", requests_url);
       })
   }
