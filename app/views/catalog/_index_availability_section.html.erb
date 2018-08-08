@@ -10,7 +10,7 @@
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button" id="available_button-<%=  document_counter %>">
           <span role="spin" aria-expanded="false">Loading...</span>
         </button>
-        <div id="requests-container" class="hidden" data-controller="requests" data-target="show.request, availability.request">
+        <div id="requests-container-<%=  document.id %>" class="hidden" data-controller="requests" data-target="show.request, availability.request">
           <% if user_signed_in? %>
             <button class="btn btn-primary request-button" data-action="requests#hold">Request</button>
             <div id="stimulus-modal" data-target="requests.modal"></div>
