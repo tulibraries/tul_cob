@@ -39,7 +39,6 @@ $(document).ready(function(){
 
 	tracks.forEach(function(track) {
 		if (el = document.getElementById(track.id)) {
-			alert(track.id + " " + track.category);
 			el.addEventListener("click", function(){
 		    handleEventClicks(track.id, track.category) })
 			}
