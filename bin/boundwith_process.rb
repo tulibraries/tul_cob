@@ -11,6 +11,10 @@ parentdoc = File.open(parentmarcfile) { |f| Nokogiri::XML(f) }
 ### this file doesn't contain a namespace, so no xmlns in the xpath queries
 childmarcfile = "alma_bibs_boundwith_children_2018080216_8286523500003811_new.xml"
 childdoc = File.open(childmarcfile) { |f| Nokogiri::XML(f) }
+#childrecordids = childdoc.xpath("//xmlns:datafield[@tag='774']//xmlns:subfield[@code='w']")
+# childrecordids.each do |cr|
+#   puts cr.text
+# end
 
 parentrecords = parentdoc.xpath("//xmlns:record")
 parentrecords.each do |pr|
@@ -26,6 +30,7 @@ parentrecords.each do |pr|
         parentITM = pr.xpath("xmlns:datafield[@tag='ITM']")
         if !parentITM.to_s.empty?
           childrecord.add_child(parentITM[0].clone())
+          childrecord.add_child("<datafield ind1=\" \" ind2=\" \" tag=\"ADF\">\n\      <subfield code=\"a\">#{parentid}</subfield>\n    </datafield>")
         else
           puts "Parent " + parentid.to_s + " does not have an ITM field for its child " + childid.to_s
         end

@@ -231,3 +231,10 @@ to_field "record_update_date", extract_marc("ADMb")
 # each_record do |record, context|
 #   puts context
 # end
+
+# Boost records with holdings from specific libraries
+# we actually want to negative boost specific libraries, but that is not possible
+# so we are going to boost everything except the less relevant libraries
+to_field "library_based_boost_t", library_based_boost
+
+to_field "bound_with_ids", extract_marc("ADFa")
