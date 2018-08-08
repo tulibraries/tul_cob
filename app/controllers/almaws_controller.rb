@@ -125,7 +125,7 @@ class AlmawsController < ApplicationController
     }
 
     @request_level = params[:request_level]
-      request = Alma::BibRequest.submit(bib_options)
+    request = Alma::BibRequest.submit(bib_options)
 
     if request.success?
       flash[:success] = "Your request has been submitted."
