@@ -7,12 +7,24 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
-    <div class="row">
-      <div class="col-sm-4 hold-form">
-        <%= label("", :pickup_location, "Pickup Location:") %>
-        <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true }) %>
+    <% unless @equipment %>
+      <div class="row">
+        <div class="col-sm-4 hold-form">
+          <%= label("", :pickup_location, "Pickup Location:") %>
+          <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true }) %>
+        </div>
       </div>
-    </div>
+    <% end %>
+
+    <% if @equipment %>
+      <div class="row">
+        <div class="col-sm-4 hold-form">
+          <%= label("", :pickup_location, "Pickup Location:") %>
+          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true }) %>
+        </div>
+      </div>
+    <% end %>
+
 
     <% if @request_level == "item" %>
       <div class="form-group row">
