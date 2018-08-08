@@ -63,12 +63,12 @@ module CobAlma
     end
 
     def self.equipment(items_list)
-      equipment = items_list.map { |item| item.circulation_policy }
-
-      if equipment == ["Equipment"]
-        pickup_location = items_list.map { |item| [item.library, item.library_name] }
+      items_list.each do |item|
+        if item.circulation_policy == "Equipment"
+          pickup_locations = [item.library, item.library_name]
+        end
+        pickup_locations
       end
-      pickup_location
     end
 
     def self.descriptions(items_list)

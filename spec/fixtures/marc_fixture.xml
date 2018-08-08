@@ -28372,4 +28372,230 @@
       <subfield code="f">KARDON</subfield>
     </datafield>
     </record>
+    <record>
+    <leader>01303crm a2200361Ii 4500</leader>
+    <controlfield tag="005">20180315121903.0</controlfield>
+    <controlfield tag="008">150520s2014 caunnn rneng d</controlfield>
+    <controlfield tag="001">991012756639703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b58568165-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)909618947</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">IVG</subfield>
+      <subfield code="c">IVG</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="d">OCLCF</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">iPad Air 2 /</subfield>
+      <subfield code="c">designed by Apple in California ; assembled in China.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="3" tag="246">
+      <subfield code="a">Apple iPad Air 2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="264">
+      <subfield code="a">Cupertino, Calif. :</subfield>
+      <subfield code="b">Apple, Inc.,</subfield>
+      <subfield code="c">2014.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="264">
+      <subfield code="c">©2014.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 tablet computer :</subfield>
+      <subfield code="b">black, sd., col. screen ;</subfield>
+      <subfield code="c">24 x 17 x 1 cm. +</subfield>
+      <subfield code="e">lightning to USB cable (3-ft.) + 12W USB power adapter.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">three-dimensional form</subfield>
+      <subfield code="b">tdf</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">object</subfield>
+      <subfield code="b">nr</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Model PGL12LL/A iPAD Air 2 Wi-Fi 16GB Space Gray/ Model A1566</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Supports Wi-Fi and Bluetooth.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">iPad (Computer)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Tablet computers.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Apple Computer, Inc.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b58568165</subfield>
+      <subfield code="b">a</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 1</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 2</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 3</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 4</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 5</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="a">iPad Air 2 : 6</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">r</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">12/1/2015</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">CDC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 16:19:03</subfield>
+      <subfield code="e">b58568165-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 09:21:23</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">iPad Air 2 : 1</subfield>
+      <subfield code="8">22293201420003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOAN</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026854638</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="k">iPad Air 2 : 5</subfield>
+      <subfield code="8">23293201370003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026854745</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="k">iPad Air 2 : 4</subfield>
+      <subfield code="8">23293201380003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026854323</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="k">iPad Air 2 : 2</subfield>
+      <subfield code="8">23293201400003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOAN</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026830604</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23293201410003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026854216</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="k">iPad Air 2 : 3</subfield>
+      <subfield code="8">23293201390003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22293201420003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">OTHER</subfield>
+      <subfield code="9">39074026854521</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="k">iPad Air 2 : 6</subfield>
+      <subfield code="8">23293201360003811</subfield>
+      <subfield code="a">9</subfield>
+      <subfield code="q">2017-06-20 09:21:23</subfield>
+      <subfield code="i">iPad Air 2 : 1</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+  </record>
 </collection>
