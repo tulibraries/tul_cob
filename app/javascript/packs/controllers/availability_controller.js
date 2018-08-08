@@ -26,7 +26,6 @@ export default class extends Controller {
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
           var mms_id = $(this.buttonTarget).data("availability-ids");
-          console.log(mms_id);
           var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
           $(this.requestTarget).attr("data-requests-url", requests_url);
           $(this.requestTarget).removeClass("hidden");
