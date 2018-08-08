@@ -8,7 +8,7 @@
 	  }
 	.header-logo {
 		padding-left: 7px;
-	  max-width: 77px;
+	  max-width: 107px;
 	  max-height: 77px;
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {
@@ -18,14 +18,7 @@
 		vertical-align:bottom;
 		margin-left: 10px;
 		text-decoration: none;
-	}
-	@media (max-width: 645px) {
-		a.header-name {
-			display:inline-block;
-			line-height: .8em;
-			width: 50%!important;
-			vertical-align: top;
-		}
+		white-space: nowrap;
 	}
 }
 .navbar-default {
