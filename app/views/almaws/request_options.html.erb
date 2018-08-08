@@ -1,4 +1,4 @@
-<div class="modal" id="request-<%= @mms_id %>" tabindex="-1" data-target="requests.id">
+<div class="modal" id="request-modal-<%= @mms_id %>" tabindex="-1" data-target="requests.id">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -6,13 +6,13 @@
         <h4 id="modal-title">Request Options:</h4>
       </div>
       <div class="modal-body">
-        <div class="panel-group request-group" id="request-accordian">
+        <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
         <% if @request_options.hold_allowed? %>
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title">
-                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian" href="#collapseOne-<%= @mms_id %>">Request item</a>
+                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>">Request item</a>
               </h4>
             </div>
 
@@ -29,7 +29,7 @@
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title">
-                  <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseTwo-<%= @mms_id %>">Scan an article/book chapter</a>
+                  <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseTwo-<%= @mms_id %>">Scan an article/book chapter</a>
               </h4>
             </div>
 
@@ -46,7 +46,7 @@
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title">
-                  <a class="booking-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian" href="#collapseThree-<%= @mms_id %>">Request booking</a>
+                  <a class="booking-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseThree-<%= @mms_id %>">Request booking</a>
               </h4>
             </div>
 
