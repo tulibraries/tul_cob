@@ -28117,4 +28117,259 @@
       <subfield code="f">DSC</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01269nas a22004210 4500</leader>
+    <controlfield tag="005">20180315121724.0</controlfield>
+    <controlfield tag="008">781110u19369999ii qr p b 0uuua0eng d</controlfield>
+    <controlfield tag="001">991012068409703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b12460989-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn471179374</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">PATG04364356S</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm04364356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm04364356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">PPT</subfield>
+      <subfield code="c">PPT</subfield>
+      <subfield code="d">CStRLIN</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm04364356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">L61.I5</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="4" tag="245">
+      <subfield code="a">The Indian journal of education.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Calcutta [etc]</subfield>
+      <subfield code="b">All-India Federation of Educational Associations.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">v.</subfield>
+      <subfield code="c">25 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="310">
+      <subfield code="a">Quarterly.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="321">
+      <subfield code="a">Twelve issues a year</subfield>
+      <subfield code="b">1936-</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="362">
+      <subfield code="a">v.1- ; 1936- .</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Education</subfield>
+      <subfield code="z">India</subfield>
+      <subfield code="x">Study and teaching.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2="0" tag="710">
+      <subfield code="a">All India Federation of Educational Associations.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b12460989</subfield>
+      <subfield code="b">k</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="935">
+      <subfield code="a">00262734</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.1 (1936)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.2 (1937)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.3 (1938)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.4 (1939)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.5 (1940)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.6 (1941)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="u">v.v.11 (1946)</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="950">
+      <subfield code="l">P</subfield>
+      <subfield code="x">1</subfield>
+      <subfield code="i">01/01/01 N</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="955">
+      <subfield code="c">-</subfield>
+      <subfield code="u">a=lr7810</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm04364356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">990101</subfield>
+      <subfield code="d">s</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">4</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="n">PPT</subfield>
+      <subfield code="s">9665</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 16:17:24</subfield>
+      <subfield code="e">b12460989-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 06:31:09</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">KARDON</subfield>
+      <subfield code="c">p_remote</subfield>
+      <subfield code="h">L61.I5</subfield>
+      <subfield code="x">RETENTION: -</subfield>
+      <subfield code="8">22249326160003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458844</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326130003811</subfield>
+      <subfield code="c">v.3 (1938)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458851</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326120003811</subfield>
+      <subfield code="c">v.4 (1939)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458836</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326140003811</subfield>
+      <subfield code="c">v.2 (1937)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458976</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326110003811</subfield>
+      <subfield code="c">v.5 (1940)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458869</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326150003811</subfield>
+      <subfield code="c">v.1 (1936)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458547</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326100003811</subfield>
+      <subfield code="c">v.6 (1941)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22249326160003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="9">39074018458653</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23249326090003811</subfield>
+      <subfield code="c">v.11 (1946)</subfield>
+      <subfield code="a">2</subfield>
+      <subfield code="q">2017-06-20 06:31:09</subfield>
+      <subfield code="i">L61.I5</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    </record>
 </collection>

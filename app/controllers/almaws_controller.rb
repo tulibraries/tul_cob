@@ -114,6 +114,7 @@ class AlmawsController < ApplicationController
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
+    description: params[:description],
     chapter_or_article_title: params[:chapter_or_article_title],
     chapter_or_article_author: params[:chapter_or_article_author],
     request_type: "DIGITIZATION",
@@ -123,26 +124,9 @@ class AlmawsController < ApplicationController
     comment: params[:comment]
     }
 
-    item_options = {
-      mms_id: params[:mms_id],
-      user_id: current_user.uid,
-      holding_id: params[:holding_id],
-      item_pid: params[:item_pid],
-      chapter_or_article_title: params[:chapter_or_article_title],
-      chapter_or_article_author: params[:chapter_or_article_author],
-      description: params[:description],
-      request_type: "DIGITIZATION",
-      target_destination: { value: "DIGI_DEPT_INST" },
-      partial_digitization: partial,
-      last_interest_date: not_needed_date,
-      comment: params[:comment]
-    }
     @request_level = params[:request_level]
-    if @request_level == "bib"
       request = Alma::BibRequest.submit(bib_options)
-    else
-      request = Alma::ItemRequest.submit(item_options)
-    end
+
     if request.success?
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
