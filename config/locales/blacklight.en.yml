@@ -71,7 +71,7 @@ en:
 
     tools:
       sms: "Text"
-      refworks: Refworks
+      refworks: Download RIS file
 
     requests:
       log_in: "Log in to see request options"
