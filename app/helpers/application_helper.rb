@@ -286,4 +286,12 @@ module ApplicationHelper
   def render_search_history?
     false
   end
+
+  def faq_link
+    link_to("FAQs", "https://library.temple.edu/library-search-faq")
+  end
+
+  def former_search_link
+    link_to("former Library Search", "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&lang=en_US&sortby=rank")
+  end
 end
