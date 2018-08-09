@@ -4,7 +4,6 @@ class AlmawsController < ApplicationController
   layout false
 
   def item
-    
     @mms_id = params[:mms_id]
     start = Time.now
     bib_items = Alma::BibItem.find(@mms_id, limit: 100)

@@ -41,6 +41,12 @@ settings do
   provide "solr_writer.commit_on_close", "false"
 end
 
+each_record do |record, context|
+  if record["245"]["a"].include?("Host bibliographic record for boundwith item barcode")
+    context.skip!("Skipping Boundwith host record")
+  end
+end
+
 to_field "id", extract_marc("001", first: true)
 to_field "marc_display_raw", get_xml
 to_field("text", extract_all_marc_values, &to_single_string)
