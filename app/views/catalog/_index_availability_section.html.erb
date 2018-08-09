@@ -5,7 +5,7 @@
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>
-    <div data-controller="availability" data-availability-url="<%= item_url(document.id, redirect_to: request.url) %>">
+    <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
       <div class="controls">
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button" id="available_button-<%=  document_counter %>">
           <span role="spin" aria-expanded="false">Loading...</span>
@@ -15,7 +15,7 @@
             <button id="request-btn-<%=  document_counter %>" class="btn btn-primary request-button" data-action="requests#hold">Request</button>
             <div id="stimulus-modal" data-target="requests.modal"></div>
           <% else %>
-            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>            
+            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>
           <% end %>
         </div>
       </div>
