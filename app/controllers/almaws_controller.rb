@@ -51,29 +51,15 @@ class AlmawsController < ApplicationController
     last_interest_date: not_needed_date,
     comment: params[:comment]
     }
-
-    item_options = {
-      mms_id: params[:mms_id],
-      user_id: current_user.uid,
-      description: params[:description],
-      pickup_location_library: params[:pickup_location],
-      pickup_location_type: "LIBRARY",
-      request_type: "HOLD",
-      last_interest_date: not_needed_date,
-      comment: params[:comment],
-
-      holding_id: params[:holding_id],
-      item_pid: params[:item_pid],
-    }
     @request_level = params[:request_level]
-    if @request_level == "bib"
-      request = Alma::BibRequest.submit(bib_options)
-    else
-      request = Alma::ItemRequest.submit(item_options)
-    end
+
+    request = Alma::BibRequest.submit(bib_options)
 
     if request.success?
-      flash[:success] = "Your request has been submitted."
+      flash["success"] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+    elsif request.raw_response.dig("errorList", "error")
+      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
   end
@@ -105,6 +91,9 @@ class AlmawsController < ApplicationController
         flash["notice"] = "This item is already booked for those dates."
         redirect_back(fallback_location: root_path)
       end
+    else
+      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -129,6 +118,9 @@ class AlmawsController < ApplicationController
 
     if request.success?
       flash[:success] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+    elsif request.raw_response.dig("errorList", "error")
+      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
   end
