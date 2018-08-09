@@ -41,6 +41,12 @@ settings do
   provide "solr_writer.commit_on_close", "false"
 end
 
+each_record do |record, context|
+  if record.fields("245").any? { |f| f["a"].to_s.downcase.include? "host bibliographic record for boundwith item barcode" }
+    context.skip!("Skipping Boundwith host record")
+  end
+end
+
 to_field "id", extract_marc("001", first: true)
 to_field "marc_display_raw", get_xml
 to_field("text", extract_all_marc_values, &to_single_string)
@@ -222,3 +228,5 @@ to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", 
 # we actually want to negative boost specific libraries, but that is not possible
 # so we are going to boost everything except the less relevant libraries
 to_field "library_based_boost_t", library_based_boost
+
+to_field "bound_with_ids", extract_marc("ADFa")

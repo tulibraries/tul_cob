@@ -60,6 +60,7 @@ class CatalogController < ApplicationController
         isbn_display
         lccn_display
         url_finding_aid_display
+        bound_with_ids
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -356,6 +357,8 @@ class CatalogController < ApplicationController
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
+
+    config.add_show_field "bound_with_ids", display: false
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

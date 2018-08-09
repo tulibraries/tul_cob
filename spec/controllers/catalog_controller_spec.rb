@@ -63,5 +63,14 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  describe "Boundwith Host records should not have been indexed" do
+    render_views
+    let(:bwh) { JSON.parse(get(:index, params: { q: "22293201420003811" }, format: :json).body)["response"]["pages"]["total_count"] }
+
+    it "returns no results" do
+      expect(bwh).to eql 0
+    end
+  end
+
 
 end

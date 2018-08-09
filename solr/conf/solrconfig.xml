@@ -63,9 +63,6 @@
     </autoCommit>
   </updateHandler>
 
-
-
-
   <!-- SearchHandler
 
        http://wiki.apache.org/solr/SearchHandler
@@ -466,6 +463,7 @@
                  initialSize="${filterCacheInitialSize:2048}"
                  autowarmCount="256"/>
 
+
     <queryResultCache class="solr.LRUCache"
                       size="${queryResultCacheSize:2048}"
                       initialSize="${queryResultCacheInitialSize:2048}"
@@ -480,6 +478,6 @@
     <queryResultWindowSize>100</queryResultWindowSize>
     <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
     <slowQueryThresholdMillis>500</slowQueryThresholdMillis>
-</query>
+  </query>
 
 </config>

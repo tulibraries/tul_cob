@@ -28841,5 +28841,12 @@
       <subfield code="d">SCRC</subfield>
       <subfield code="f">SCRC</subfield>
     </datafield>
-    </record>
+  </record>
+  <record>
+    <leader>01303crm a2200361Ii 4500</leader>
+    <controlfield tag="001">9910127566397038232311</controlfield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Host bibliographic record for boundwith item barcode 1234567890</subfield>
+    </datafield>
+  </record>
 </collection>

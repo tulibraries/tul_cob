@@ -274,6 +274,10 @@ module Traject
           unless rec.fields("HLD").empty?
             acc << "At the Library"
           end
+          unless rec.fields("ADF").empty?
+            acc << "At the Library"
+          end
+
           acc.uniq!
         }
       end
