@@ -28599,6 +28599,7 @@
     </datafield>
   </record>
   <record>
+<<<<<<< 2d5d2803ac7ba908918d908356fcd3d287af68bc
     <leader>05101cpcaa2200709Ia 4500</leader>
     <controlfield tag="005">20180315120829.0</controlfield>
     <controlfield tag="008">151116i20062012pau eng d</controlfield>
@@ -28842,4 +28843,12 @@
       <subfield code="f">SCRC</subfield>
     </datafield>
     </record>
+=======
+  <leader>01303crm a2200361Ii 4500</leader>
+    <controlfield tag="001">9910127566397038232311</controlfield>
+    <datafield ind1="0" ind2="0" tag="245">
+     <subfield code="a">Host bibliographic record for boundwith item barcode 1234567890</subfield>
+  </datafield>
+</record>
+>>>>>>> Make the Host record skipping safer
 </collection>

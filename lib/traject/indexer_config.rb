@@ -42,7 +42,7 @@ settings do
 end
 
 each_record do |record, context|
-  if record["245"]["a"].include?("Host bibliographic record for boundwith item barcode")
+  if record.fields("245").any? { |f| f["a"].to_s.downcase.include? "host bibliographic record for boundwith item barcode" }
     context.skip!("Skipping Boundwith host record")
   end
 end
