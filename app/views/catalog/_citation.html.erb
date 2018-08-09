@@ -1,7 +1,11 @@
+<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+
+<div class="alert alert-warning">
+  Remember to check citations for accuracy before including them in your work.
+</div>
 
 <% @documents.each do |document| %>
 <div class="cite-modal">
-	<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
   <h3 class="modal-title"><%= document_heading(document) %></h3>
 
 <% if document.respond_to?(:export_as_mla_citation_txt) %>
