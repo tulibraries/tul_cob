@@ -63,12 +63,13 @@ module CobAlma
     end
 
     def self.equipment(items_list)
+      pickup_locations = []
       items_list.each do |item|
         if item.circulation_policy == "Equipment"
-          pickup_locations = [item.library, item.library_name]
+          pickup_locations << item.item_data.fetch("library")
         end
-        pickup_locations
       end
+      pickup_locations
     end
 
     def self.descriptions(items_list)

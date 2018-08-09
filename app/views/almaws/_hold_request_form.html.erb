@@ -7,7 +7,7 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
-    <% unless @equipment %>
+    <% if @equipment.empty? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
           <%= label("", :pickup_location, "Pickup Location:") %>
@@ -16,11 +16,11 @@
       </div>
     <% end %>
 
-    <% if @equipment %>
+    <% if @equipment.present? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
           <%= label("", :pickup_location, "Pickup Location:") %>
-          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.library_name, lib.library ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
+          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
     <% end %>
