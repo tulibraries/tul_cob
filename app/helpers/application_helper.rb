@@ -171,7 +171,7 @@ module ApplicationHelper
          CallNumber: item.call_number,
          ItemAuthor: item.item.dig("bib_data", "author")
      }
-     
+
     openurl_field_values = form_fields.map { |k, v|
       [k, v.to_s.delete('[]""')] }.to_h
 
