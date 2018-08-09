@@ -2,7 +2,7 @@
 <% #DEPRECATED - using id="previousNextDocument" as a selector is deprecated and will be removed in Blacklight 6.0 %>
 <div id='previousNextDocument' class='pagination-search-widgets'>
   <% if current_search_session %>
-    <div class="search-widgets pull-left"
+    <div class="search-widgets pull-left">
       <%= link_back_to_catalog class: 'btn btn-sm btn-back-to-search', id: 'back_to_search' %>
       <%=link_to t('blacklight.search.start_over'), bento_search_engine_path, id: 'startOverLink', class: 'btn btn-sm', id: 'start_over' %>
     </div>
@@ -20,5 +20,5 @@
     <div id="nav-tools" class="nav-tools">
       <%= render partial: 'show_tools_navbar' %>
     </div>
-</div>
+  </div>
 </div>
