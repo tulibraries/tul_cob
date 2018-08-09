@@ -80,7 +80,7 @@ en:
     primo_central_explanation_html: "<strong>Articles Search:</strong> journal articles, newspaper articles, e-books, book chapters, and other resources available online"
   bento:
     application_name: "Library Bento Search Beta"
-    greeting: "Try out the Library Search beta"
+    greeting: "Welcome to the Library Search"
     explanation_part_one_html: "<strong>Library Search:</strong> results from the %{href} and "
     explanation_part_one_href: "Catalog"
     explanation_part_two_html: "%{href} Search, including books, articles, journals, and more"
