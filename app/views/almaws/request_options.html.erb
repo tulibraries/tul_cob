@@ -59,7 +59,7 @@
           </div>
         <% end %>
 
-        <% if aeon_request_button(@items) %>
+        <% if aeon_request_button(@items).present? %>
           <div class="panel panel-default request-heading">
             <div class="panel-heading">
               <h4 class="panel-title"><%= aeon_request_button(@items) %></h4>
