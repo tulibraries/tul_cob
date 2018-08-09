@@ -67,8 +67,6 @@ module CobAlma
       items_list.each do |item|
         if item.circulation_policy == "Equipment"
           pickup_locations << item.item_data.fetch("library")
-        else
-          pickup_locations = []
         end
       end
       pickup_locations
