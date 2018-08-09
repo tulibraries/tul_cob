@@ -28598,4 +28598,248 @@
       <subfield code="f">AMBLER</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>05101cpcaa2200709Ia 4500</leader>
+    <controlfield tag="005">20180315120829.0</controlfield>
+    <controlfield tag="008">151116i20062012pau eng d</controlfield>
+    <controlfield tag="001">991003128759703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b56183598-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)929466967</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn880298498</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn880298498</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">TEU</subfield>
+      <subfield code="c">TEU</subfield>
+      <subfield code="e">dacs</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">TEU</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="049">
+      <subfield code="a">TEUU</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn880298498</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="099">
+      <subfield code="a">SCRC 40</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="110">
+      <subfield code="a">Occupy Philadelphia (Movement).</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Occupy Philadelphia records,</subfield>
+      <subfield code="f">2006-2014</subfield>
+      <subfield code="g">(bulk 2011-2012).</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">19</subfield>
+      <subfield code="f">linear feet</subfield>
+      <subfield code="a">(11</subfield>
+      <subfield code="f">boxes)</subfield>
+      <subfield code="a">41</subfield>
+      <subfield code="f">gigabytes</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="506">
+      <subfield code="a">This collection is open for research. Correspondence in Series 1 and contact lists in Series 5 are restricted for 10 years.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="506">
+      <subfield code="a">This collection may be housed off-site at the Library Depository, and require up to 48 hours to retrieve. Please contact the Special Collections Research Center in advance of your visit, so that materials may be relocated to the reading room for research.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="506">
+      <subfield code="a">Original audiovisual materials, as well as preservation and duplicating masters, may not be played. Researchers must consult use copies, or if none exist must pay for a use copy. Certain digital files may also be inaccessible. Please contact the Special Collections Research Center for more information.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="520">
+      <subfield code="a">The Occupy Philadelphia collection consists of materials related to the development and operation of Occupy Philadelphia. The bulk of the collection consists of organizational records, fliers and ephemera, journals and newspapers, clippings, and digital materials including photographs and videos, documenting the Occupy Philadelphia movement as well as other Occupy and protest movements. This collection includes preserved versions of the organization's website, availabl through Archive-It.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="584">
+      <subfield code="a">Additions to this collection are expected. Websites are captured using Archive-It periodically, and the latest additions may not yet be included in this finding aid. For information on material--physical and digital, including captured websites--that may have been added since the last finding aid update, please contact the Special Collections Research Center.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="540">
+      <subfield code="a">The Occupy Philadelphia Records are the physical property of the Special Collections Research Center, Temple University Libraries. Temple University holds intellectual property rights only for material donated to the university with such rights specifically assigned. For all other material, IP rights, including copyright, belong to the authors or their legal heirs and assigns. Researchers are responsible for determining the identity of rights holders and obtaining their permission for publication and for other purposes where stated.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="545">
+      <subfield code="a">Occupy Philadelphia is an ongoing movement located in Philadelphia, Pennsylvania, part of the international Occupy movement that in 2011 sprang from the Occupy Wall Street protests in New York City to call attention to economic and income inequality, corporate greed, and other social problems. Best known for its elaborate camp at Dilworth Plaza, adjacent to Philadelphia's City Hall, the movement was largely composed of nonviolent protests, organized marches, and demonstrations. In November 2011, Philadelphia city officials informed Occupy protesters of the impending renovations scheduled to begin at Dilworth Plaza later that the month and asked Occupy Philadelphia to relocate. They refused, and Philadelphia Police evicted them on November 30, 2011.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">Materials in English.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="555">
+      <subfield code="a">Finding aid available in repository and online.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2="0" tag="610">
+      <subfield code="a">Occupy Philadelphia (Movement)</subfield>
+    </datafield>
+    <datafield ind1="2" ind2="0" tag="610">
+      <subfield code="a">Occupy Wall Street (Movement)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Income distribution</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Occupy movement.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Occupy movement</subfield>
+      <subfield code="z">New York (State)</subfield>
+      <subfield code="z">New York.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Occupy movement</subfield>
+      <subfield code="z">Pennsylvania</subfield>
+      <subfield code="z">Philadelphia.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Protest movements</subfield>
+      <subfield code="z">United States.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Philadelphia (Pa.)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Administrative records.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Born digital.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Clippings.</subfield>
+      <subfield code="2">rbgenr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Correspondence.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Ephemera.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">MP3.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Newsletters.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Objects.</subfield>
+      <subfield code="2">gmgpc</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Oral histories.</subfield>
+      <subfield code="2">rbgenr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Pamphlets.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">PDF.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Periodicals.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Photocopies.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Photographs.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Posters.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Sound recordings.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Video recordings.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Web sites.</subfield>
+      <subfield code="2">aat</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="2" tag="856">
+      <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+      <subfield code="u">http://library.temple.edu/scrc/occupy-philadelphia-records</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="0" tag="856">
+      <subfield code="3">View preserved website versions on Archive-It.</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b56183598</subfield>
+      <subfield code="b">s</subfield>
+      <subfield code="c">a</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">scrc</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn880298498</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">140520</subfield>
+      <subfield code="d">c</subfield>
+      <subfield code="e">p</subfield>
+      <subfield code="f">a</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">1/16/14</subfield>
+      <subfield code="s">ORIG</subfield>
+      <subfield code="c">KER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">11/16/2015</subfield>
+      <subfield code="s">revised</subfield>
+      <subfield code="c">KER</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 16:08:29</subfield>
+      <subfield code="e">b56183598-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 07:46:28</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">SCRC</subfield>
+      <subfield code="c">rarestacks</subfield>
+      <subfield code="h">SCRC 40</subfield>
+      <subfield code="8">22272082280003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22272082280003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">rarestacks</subfield>
+      <subfield code="t">MANUSCRIPT</subfield>
+      <subfield code="e">rarestacks</subfield>
+      <subfield code="8">23272082270003811</subfield>
+      <subfield code="a">4</subfield>
+      <subfield code="q">2017-06-20 07:46:28</subfield>
+      <subfield code="i">SCRC 40</subfield>
+      <subfield code="d">SCRC</subfield>
+      <subfield code="f">SCRC</subfield>
+    </datafield>
+    </record>
 </collection>

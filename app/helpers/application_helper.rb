@@ -165,11 +165,11 @@ module ApplicationHelper
 
   def aeon_request_url(item)
     form_fields = {
-         ItemTitle: item.item.dig("bib_data", "title"),
-         ItemPlace: item.item.dig("bib_data", "place_of_publication") + " " + item.item.dig("bib_data", "publisher_const") + " " + item.item.dig("bib_data", "date_of_publication"),
-         ReferenceNumber: item.item.dig("bib_data", "mms_id"),
-         CallNumber: item.call_number,
-         ItemAuthor: item.item.dig("bib_data", "author")
+         ItemTitle: (item.item.dig("bib_data", "title") || ""),
+         ItemPlace: (item.item.dig("bib_data", "place_of_publication") || "") + " " + (item.item.dig("bib_data", "publisher_const") || "") + " " + (item.item.dig("bib_data", "date_of_publication") || ""),
+         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
+         CallNumber: item.call_number || "",
+         ItemAuthor: (item.item.dig("bib_data", "author") || "")
      }
 
     openurl_field_values = form_fields.map { |k, v|
