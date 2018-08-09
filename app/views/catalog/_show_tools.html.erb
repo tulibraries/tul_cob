@@ -11,7 +11,7 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-        <% if [:citation, :bookmark, :refworks ].include? config.key %>
+        <% if config.key == :citation || config.key == :bookmark %>
           <li class="<%= config.key %>">
             <%= inner %>
           </li>
