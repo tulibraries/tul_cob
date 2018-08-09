@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ActionMailer::Base.default from: "books@temple.edu"
+ActionMailer::Base.default from: "asktulibrary@temple.edu"
 
 Rails.application.configure do
 
@@ -74,8 +74,8 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     domain: "temple.edu",
-    user_name: "books@temple.edu",
-    password: ENV["BOOKS_AT_TEMPLE_PASSWORD"],
+    user_name: "asktulib@temple.edu",
+    password: ENV["ASKTULIB_PASSWORD"],
     authentication: :plain,
     enable_starttls_auto: true
   }
