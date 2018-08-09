@@ -59,10 +59,17 @@
           </div>
         <% end %>
 
-        <% if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed?  %>
-          <p>
-            There are no request options available.
-          </p>
+        <% if aeon_request_button(@items) %>
+          <div class="panel panel-default request-heading">
+            <div class="panel-heading">
+              <h4 class="panel-title"><%= aeon_request_button(@items) %></h4>
+              <p class="special-collections">(Special Collections Research Center materials only)</p>
+            </div>
+          </div>
+        <% end %>
+
+        <% if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? && !aeon_request_button(@items)  %>
+          <p>There are no request options available.</p>
         <% end %>
 
         </div>
