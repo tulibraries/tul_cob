@@ -1,4 +1,4 @@
-<%= form_with url: hold_request_path, remote: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
+<%= form_with url: hold_request_path, local: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
   <div class="container" data-controller="form">
 
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
