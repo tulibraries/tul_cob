@@ -25,7 +25,10 @@ module Blacklight::PrimoCentral
       response = Rails.cache.fetch("articles/index/#{data}", expires_in: duration) do
         # We convert to hash because we cannot serialize the Primo response.
         # @see https://github.com/rails/rails/issues/7375
-        Primo.find(data).to_h
+        start = Time.now
+        response = Primo.find(data).to_h
+        LogUtils.json_request_logger(logger, { type: "primo_search", start: start }.merge(data.dup))
+        response
       end
 
       response_opts = {

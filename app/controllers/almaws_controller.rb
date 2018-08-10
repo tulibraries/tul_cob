@@ -7,12 +7,7 @@ class AlmawsController < ApplicationController
     @mms_id = params[:mms_id]
     start = Time.now
     bib_items = Alma::BibItem.find(@mms_id, limit: 100)
-    elapsed = Time.now - start
-    logger.info JSON.dump(
-      type: "bib_items_availability",
-       uri: bib_items.request.uri.to_s,
-       took: elapsed
-      )
+    json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
@@ -32,10 +27,13 @@ class AlmawsController < ApplicationController
     @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @user_id = current_user.uid
     @request_level = params[:request_level]
+    start = Time.now
     if @request_level == "item"
       @request_options = Alma::ItemRequestOptions.get(@mms_id, @holding_id, @item_pid, user_id: @user_id)
+      json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
       @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
+      json_request_logger(type: "bib_request_options", start: start, user: current_user.id)
     end
   end
 
@@ -53,7 +51,9 @@ class AlmawsController < ApplicationController
     }
     @request_level = params[:request_level]
 
+    start = Time.now
     request = Alma::BibRequest.submit(bib_options)
+    json_request_logger({ type: "submit_hold_request", start: start, user: current_user.id }.merge(bib_options))
 
     if request.success?
       flash["success"] = "Your request has been submitted."
@@ -80,7 +80,9 @@ class AlmawsController < ApplicationController
     comment: params[:comment]
     }
 
+    start = Time.now
     request = Alma::BibRequest.submit(bib_options)
+    json_request_logger({ type: "submit_booking_request", start: start, user: current_user.id }.merge(bib_options))
 
     if request.success?
       flash[:success] = "Your request has been submitted."
@@ -114,7 +116,11 @@ class AlmawsController < ApplicationController
     }
 
     @request_level = params[:request_level]
+
+    start = Time.now
     request = Alma::BibRequest.submit(bib_options)
+    json_request_logger({ type: "submit_digitization_request", start: start, user: current_user.id }.merge(bib_options))
+
 
     if request.success?
       flash[:success] = "Your request has been submitted."
