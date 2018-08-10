@@ -13,6 +13,7 @@ Bundler.require(*Rails.groups)
 module Tulcob
   # Rails Application
   class Application < Rails::Application
+    config.library_link = "https://library.temple.edu/"
     config.load_defaults 5.2
     # Settings in config/environments/* take precedence over those specified
     # here. Application configuration should go into files in

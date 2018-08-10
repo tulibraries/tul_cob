@@ -132,4 +132,8 @@ module CatalogHelper
       render "index_availability_section", document: doc, document_counter: count
     end
   end
+
+  def library_link
+    Rails.configuration.library_link
+  end
 end

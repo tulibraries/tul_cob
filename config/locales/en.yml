@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  ask_librarian: "Ask a Librarian"
   bento_search:
     no_results:
       title: "No records found"
