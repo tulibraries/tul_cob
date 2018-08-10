@@ -1,9 +1,5 @@
 <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
 
-<div class="alert alert-warning">
-  Remember to check citations for accuracy before including them in your work.
-</div>
-
 <% @documents.each do |document| %>
 <div class="cite-modal">
   <h3 class="modal-title"><%= document_heading(document) %></h3>
@@ -23,5 +19,9 @@
   <%= document.send(:export_as_chicago_citation_txt).html_safe %>
 <%- end -%>
 </div>
-
 <% end %>
+
+<div class="alert alert-warning">
+  Remember to check citations for accuracy before including them in your work.
+</div>
+
