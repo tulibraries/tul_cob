@@ -153,10 +153,10 @@ module Traject
                           end
       end
 
-      # Just checks if 008[28] for "govdoc"
       def govdoc?
         controlfield_008 = record.find_all { |f| f.tag == "008" }
-        controlfield_008.any? { |f| "acfilmos".include? f.value[28] unless f.value[28].nil? }
+        ("aefgkmort".include? record.leader[06]) &&
+          controlfield_008.any? { |f| "acfilmo".include? f.value[28] unless f.value[28].nil? }
       end
 
       # downcased version of the gmd, or else empty string

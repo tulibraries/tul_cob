@@ -167,12 +167,20 @@ RSpec.describe MarcFormatClassifier, type: :lib do
         it { is_expected.to include("Conference Proceeding") }
       end
     end
-    context "Government Document" do
+    context "Government Document Included" do
       describe "Government Documents" do
         subject { classifier_for("govdoc.xml").formats }
         it { is_expected.to include("Government Document") }
       end
     end
+
+    context "Government Document not Included"  do
+      describe "Missing leader/06 item" do
+        subject { classifier_for("no_govdoc.xml").formats }
+        it { is_expected.to_not include("Government Document") }
+      end
+    end
+
   end
 
 end
