@@ -2,14 +2,30 @@
 
 #header-navbar {
 	  border-bottom: 0;
+	  @media(max-width:485px) {
+	  	.container{
+	  		margin:0;
+	  		padding:0 0 0 7px;
+	  	} 
+	  }
 	  .navbar-header {
 	  	width: 100%;
 	  	height: 80px;
+		  @media(max-width:485px) {
+		  	padding-left:0;
+		  	margin-right: 0;
+		  	margin-left: 0;
+		  }
 	  }
+
 	.header-logo {
 		padding-left: 7px;
-	  max-width: 107px;
+	  max-width: 117px;
 	  max-height: 77px;
+	  @media(max-width:485px) {
+	  	max-width:77px;
+	  	padding-left:0;
+	  }
 	}
 	a.header-name, a.header-name:hover, a.header-name:focus {
 		color: #000;
@@ -19,7 +35,24 @@
 		margin-left: 10px;
 		text-decoration: none;
 		white-space: nowrap;
+		vertical-align:bottom;
+			.logo-text {
+				position:relative;
+				top: 14px;
+			}
+		
+		@media(max-width:485px) {
+			white-space:normal;
+			vertical-align:top;
+			font-size: 3.25rem;
+			margin-left: 0;
+			.logo-text {
+				position:relative;
+				top: 21px;
+			}
+		}
 	}
+
 }
 .navbar-default {
 	background-color: $tan;
