@@ -38,7 +38,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_hold_request
-    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
+    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d") rescue ""
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
