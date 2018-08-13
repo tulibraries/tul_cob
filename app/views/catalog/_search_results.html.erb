@@ -1,6 +1,6 @@
 <h2 class="sr-only top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
-<% if current_page?(controller: "catalog") %>
+<% if params[:controller] == "catalog" %>
   <% @page_title = t('blacklight.catalog_search_results.title') %>
 <% else %>
   <% @page_title = t('blacklight.article_search_results.title') %>
