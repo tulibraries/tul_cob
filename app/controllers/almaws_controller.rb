@@ -3,7 +3,7 @@
 class AlmawsController < ApplicationController
   layout false
 
-  before_action :authenticate_user!, :except => [:item]
+  before_action :authenticate_user!, except: [:item]
 
 
   def item
