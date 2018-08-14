@@ -5,6 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.booking_end_date()
+    this.message()
   }
 
   initialize() {
@@ -29,5 +30,10 @@ export default class extends Controller {
       $('#booking_end_date').prop('min', $('#booking_start_date').val());
       $('#booking_end_date').prop('max', end);
     });
+  }
+
+  message() {
+    document.getElementById('hold_date_field').setCustomValidity("Please write date in YYYY-MM-DD format.");
+    document.getElementById('digitization_date_field').setCustomValidity("Please write date in YYYY-MM-DD format.");
   }
 }

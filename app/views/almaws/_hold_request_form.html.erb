@@ -38,7 +38,7 @@
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:not_needed, "Not Needed After (optional):") %>
-        <%= date_field_tag :last_interest_date, Date.today() + 10 %>
+        <%= date_field_tag :last_interest_date, Date.today() + 10, pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "hold_date_field" %>
       </div>
     </div>
 
