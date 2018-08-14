@@ -33,7 +33,14 @@ export default class extends Controller {
   }
 
   message() {
-    document.getElementById('hold_date_field').setCustomValidity("Please write date in YYYY-MM-DD format.");
-    document.getElementById('digitization_date_field').setCustomValidity("Please write date in YYYY-MM-DD format.");
+    let hold_date_field = document.getElementById('hold_date_field').value;
+    let digitization_date_field = document.getElementById('digitization_date_field').value;
+
+    if (hold_date_field != "") {
+      hold_date_field.setCustomValidity("Please write date in YYYY-MM-DD format.");
+    }
+    if (digitization_date_field != "") {
+      digitization_date_field.setCustomValidity("Please write date in YYYY-MM-DD format.");
+    }
   }
 }
