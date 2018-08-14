@@ -42,6 +42,11 @@ RSpec.configure do |config|
 
   config.before(:each) do
 
+    # JUst so we don't send our request when testing controllers
+    stub_request(:get, /.*almaws\/v1\/bibs\/.*/).to_return(status: 200, body: JSON.dump({}))
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/request-options?.*/).to_return(status: 200)
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/requests?.*/).to_return(status: 200)
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))

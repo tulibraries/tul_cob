@@ -3,6 +3,9 @@
 class AlmawsController < ApplicationController
   layout false
 
+  before_action :authenticate_user!, except: [:item]
+
+
   def item
     @mms_id = params[:mms_id]
     start = Time.now
