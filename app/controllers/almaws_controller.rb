@@ -38,7 +38,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_hold_request
-    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
+    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d") unless params[:last_interest_date] == ""
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -100,7 +100,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
-    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
+    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d") unless params[:last_interest_date] == ""
     partial = params[:partial_or_full] == "true" ? true : false
     bib_options = {
     mms_id: params[:mms_id],
