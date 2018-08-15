@@ -168,4 +168,26 @@ RSpec.describe AlmawsController, type: :controller do
       end
     end
   end
+
+  describe "#date_or_nil" do
+
+    it "returns a formatted date when passed a YYYY-MM-DD string" do
+      expect(controller.send(:date_or_nil, "2018-10-18")).to be_a_kind_of Date
+    end
+
+    it "returns nil when passed a string" do
+      expect(controller.send(:date_or_nil, "string")).to be nil
+    end
+
+    it "returns nil when passed an empty string" do
+      expect(controller.send(:date_or_nil, "")).to be nil
+    end
+
+    it "returns nil when passed nil" do
+      expect(controller.send(:date_or_nil, nil)).to be nil
+    end
+
+
+
+  end
 end

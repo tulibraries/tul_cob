@@ -40,7 +40,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_hold_request
-    date = not_needed_date
+    date = date_or_nil(params[:last_interest_date])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -55,7 +55,7 @@ class AlmawsController < ApplicationController
     start = Time.now
     request = Alma::BibRequest.submit(bib_options)
     json_request_logger({ type: "submit_hold_request", start: start, user: current_user.id }.merge(bib_options))
-    
+
     if request.success?
       flash["success"] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
@@ -66,8 +66,8 @@ class AlmawsController < ApplicationController
   end
 
   def send_booking_request
-    start_date = booking_start_date
-    end_date = booking_end_date
+    start_date = date_or_nil(params[:booking_start_date])
+    end_date = date_or_nil(params[:booking_end_date])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -101,7 +101,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
-    date = not_needed_date
+    date = date_or_nil(params[:last_interest_date])
     partial = params[:partial_or_full] == "true" ? true : false
     bib_options = {
     mms_id: params[:mms_id],
@@ -138,30 +138,12 @@ class AlmawsController < ApplicationController
       item_levels.present?
     end
 
-    def not_needed_date
+    def date_or_nil(param)
       begin
-        last_interest_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
-      rescue ArgumentError
-        last_interest_date = nil
+        date = Date.strptime(param, "%Y-%m-%d")
+      rescue
+        date = nil
       end
-      last_interest_date
-    end
-
-    def booking_start_date
-      begin
-        booking_start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
-      rescue ArgumentError
-        booking_start_date = nil
-      end
-      booking_start_date
-    end
-
-    def booking_end_date
-      begin
-        booking_end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
-      rescue ArgumentError
-        booking_end_date = nil
-      end
-      booking_end_date
+      date
     end
 end
