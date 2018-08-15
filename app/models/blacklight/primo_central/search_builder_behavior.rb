@@ -127,6 +127,7 @@ module Blacklight::PrimoCentral
       def to_primo_field(field)
         {
           all_fields: :any,
+          advanced: :any,
           creator_t: :creator,
           isbn_t: :isbn,
           issn_t: :issn,

@@ -121,6 +121,14 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
+    context "search_field is set to advanced" do
+      let(:params) { ActionController::Parameters.new(search_field: :advanced) }
+
+      it "advanced transforms to :any" do
+        expect(primo_central_parameters["query"]["q"]["field"]).to eq(:any)
+      end
+    end
+
     context "search_field is not tranformable" do
       let(:params) { ActionController::Parameters.new(search_field: "foo") }
 
