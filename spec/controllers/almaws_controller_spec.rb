@@ -32,7 +32,12 @@ RSpec.describe AlmawsController, type: :controller do
 
   describe "GET #request_options action" do
 
-    let(:params) { { params: { mms_id: 123, pickup_location: "some,place" , request_level: "bib" } } }
+    let(:params) { { params: {
+      mms_id: 123,
+      pickup_location: "some,place" ,
+      request_level: "bib",
+
+       } } }
 
     context "anonymous user" do
       it "redirects to login page" do
@@ -71,6 +76,26 @@ RSpec.describe AlmawsController, type: :controller do
         post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
         expect(response).not_to redirect_to new_user_session_url
       end
+
+      it "doesn't raise an exception for empty pickup_location" do
+        post(:send_hold_request, params: { last_interest_date: "", pickup_location: nil, mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for non-empty string for last_interest_date" do
+        post(:send_hold_request, params: { last_interest_date: "string", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for empty string for last_interest_date" do
+        post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for correctly formattted date for last_interest_date" do
+        post(:send_hold_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
     end
   end
 
@@ -90,6 +115,21 @@ RSpec.describe AlmawsController, type: :controller do
       it "does not redirect to the login page" do
         post(:send_digitization_request, params: { last_interest_date: "", mms_id: ""  })
         expect(response).not_to redirect_to new_user_session_url
+      end
+
+      it "doesn't raise an exception for non-empty string for last_interest_date" do
+        post(:send_digitization_request, params: { last_interest_date: "string", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for empty string for last_interest_date" do
+        post(:send_digitization_request, params: { last_interest_date: "", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for correctly formattted date for last_interest_date" do
+        post(:send_digitization_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        expect { response }.not_to raise_error
       end
     end
   end
@@ -111,8 +151,43 @@ RSpec.describe AlmawsController, type: :controller do
         post(:send_booking_request, params: { mms_id: "", booking_start_date: 2.days.ago, booking_end_date: 0.days.ago })
         expect(response).not_to redirect_to new_user_session_url
       end
+
+      it "doesn't raise an exception for non-empty string for booking dates" do
+        post(:send_booking_request, params: { booking_start_date: "string", booking_end_date: "string", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for empty string for booking dates" do
+        post(:send_booking_request, params: { booking_start_date: "", booking_end_date: "", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for correctly formattted date for booking dates" do
+        post(:send_booking_request, params: { booking_start_date: "2018-08-16", booking_end_date: "2018-08-20", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
     end
   end
 
+  describe "#date_or_nil" do
 
+    it "returns a formatted date when passed a YYYY-MM-DD string" do
+      expect(controller.send(:date_or_nil, "2018-10-18")).to be_a_kind_of Date
+    end
+
+    it "returns nil when passed a string" do
+      expect(controller.send(:date_or_nil, "string")).to be nil
+    end
+
+    it "returns nil when passed an empty string" do
+      expect(controller.send(:date_or_nil, "")).to be nil
+    end
+
+    it "returns nil when passed nil" do
+      expect(controller.send(:date_or_nil, nil)).to be nil
+    end
+
+
+
+  end
 end
