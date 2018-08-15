@@ -306,6 +306,6 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), t("help_link")
+    link_to t("ask_librarian"), Rails.configuration.ask_link
   end
 end
