@@ -52,9 +52,7 @@ class AlmawsController < ApplicationController
     comment: params[:comment]
     }
     @request_level = params[:request_level]
-
     start = Time.now
-    request = Alma::BibRequest.submit(bib_options)
     json_request_logger({ type: "submit_hold_request", start: start, user: current_user.id }.merge(bib_options))
 
     if request.success?
@@ -143,7 +141,7 @@ class AlmawsController < ApplicationController
       begin
         last_interest_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
       rescue ArgumentError
-        last_interest_date = ""
+        last_interest_date = nil
       end
       last_interest_date
     end
@@ -152,7 +150,7 @@ class AlmawsController < ApplicationController
       begin
         booking_start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
       rescue ArgumentError
-        booking_start_date = ""
+        booking_start_date = nil
       end
       booking_start_date
     end
@@ -161,7 +159,7 @@ class AlmawsController < ApplicationController
       begin
         booking_end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
       rescue ArgumentError
-        booking_end_date = ""
+        booking_end_date = nil
       end
       booking_end_date
     end
