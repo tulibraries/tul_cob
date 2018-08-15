@@ -53,8 +53,9 @@ class AlmawsController < ApplicationController
     }
     @request_level = params[:request_level]
     start = Time.now
+    request = Alma::BibRequest.submit(bib_options)
     json_request_logger({ type: "submit_hold_request", start: start, user: current_user.id }.merge(bib_options))
-
+    
     if request.success?
       flash["success"] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
