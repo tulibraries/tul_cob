@@ -5,7 +5,6 @@ class AlmawsController < ApplicationController
 
   before_action :authenticate_user!, except: [:item]
 
-
   def item
     @mms_id = params[:mms_id]
     start = Time.now
@@ -41,7 +40,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_hold_request
-    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d") unless params[:last_interest_date] == ""
+    date = not_needed_date
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -49,7 +48,7 @@ class AlmawsController < ApplicationController
     pickup_location_library: params[:pickup_location],
     pickup_location_type: "LIBRARY",
     request_type: "HOLD",
-    last_interest_date: not_needed_date,
+    last_interest_date: date,
     comment: params[:comment]
     }
     @request_level = params[:request_level]
@@ -68,8 +67,8 @@ class AlmawsController < ApplicationController
   end
 
   def send_booking_request
-    start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
-    end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
+    start_date = booking_start_date
+    end_date = booking_end_date
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -103,7 +102,7 @@ class AlmawsController < ApplicationController
   end
 
   def send_digitization_request
-    not_needed_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d") unless params[:last_interest_date] == ""
+    date = not_needed_date
     partial = params[:partial_or_full] == "true" ? true : false
     bib_options = {
     mms_id: params[:mms_id],
@@ -114,7 +113,7 @@ class AlmawsController < ApplicationController
     request_type: "DIGITIZATION",
     target_destination: { value: "DIGI_DEPT_INST" },
     partial_digitization: partial,
-    last_interest_date: not_needed_date,
+    last_interest_date: date,
     comment: params[:comment]
     }
 
@@ -123,7 +122,6 @@ class AlmawsController < ApplicationController
     start = Time.now
     request = Alma::BibRequest.submit(bib_options)
     json_request_logger({ type: "submit_digitization_request", start: start, user: current_user.id }.merge(bib_options))
-
 
     if request.success?
       flash[:success] = "Your request has been submitted."
@@ -134,8 +132,37 @@ class AlmawsController < ApplicationController
     end
   end
 
+  private
+
   def has_desc?(items)
     item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
     item_levels.present?
+  end
+
+  def not_needed_date
+    begin
+      last_interest_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
+    rescue ArgumentError
+      last_interest_date = ""
+    end
+    last_interest_date
+  end
+
+  def booking_start_date
+    begin
+      booking_start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
+    rescue ArgumentError
+      booking_start_date = ""
+    end
+    booking_start_date
+  end
+
+  def booking_end_date
+    begin
+      booking_end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
+    rescue ArgumentError
+      booking_end_date = ""
+    end
+    booking_end_date
   end
 end
