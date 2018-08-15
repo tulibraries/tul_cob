@@ -134,35 +134,35 @@ class AlmawsController < ApplicationController
 
   private
 
-  def has_desc?(items)
-    item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
-    item_levels.present?
-  end
-
-  def not_needed_date
-    begin
-      last_interest_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
-    rescue ArgumentError
-      last_interest_date = ""
+    def has_desc?(items)
+      item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
+      item_levels.present?
     end
-    last_interest_date
-  end
 
-  def booking_start_date
-    begin
-      booking_start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
-    rescue ArgumentError
-      booking_start_date = ""
+    def not_needed_date
+      begin
+        last_interest_date = Date.strptime(params[:last_interest_date], "%Y-%m-%d")
+      rescue ArgumentError
+        last_interest_date = ""
+      end
+      last_interest_date
     end
-    booking_start_date
-  end
 
-  def booking_end_date
-    begin
-      booking_end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
-    rescue ArgumentError
-      booking_end_date = ""
+    def booking_start_date
+      begin
+        booking_start_date = Date.strptime(params[:booking_start_date], "%Y-%m-%d")
+      rescue ArgumentError
+        booking_start_date = ""
+      end
+      booking_start_date
     end
-    booking_end_date
-  end
+
+    def booking_end_date
+      begin
+        booking_end_date = Date.strptime(params[:booking_end_date], "%Y-%m-%d")
+      rescue ArgumentError
+        booking_end_date = ""
+      end
+      booking_end_date
+    end
 end
