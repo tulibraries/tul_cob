@@ -73,7 +73,7 @@ module Blacklight::PrimoCentral::Document
 
 
     def url_query
-      query = URI.parse(@url).query
+      query = (URI.parse(@url).query rescue nil)
       if (query)
         q = CGI.parse(query) || {}
         q.select { |k, v| v && !v.empty? && v != [""] }
