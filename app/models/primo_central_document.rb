@@ -19,4 +19,6 @@ class PrimoCentralDocument
 
   # Email uses the semantic field mappings below to generate the body of an email.
   PrimoCentralDocument.use_extension(Blacklight::Document::ArticleEmail)
+
+  PrimoCentralDocument.use_extension(Blacklight::Document::Sms)
 end
