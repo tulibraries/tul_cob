@@ -122,7 +122,6 @@ module Blacklight::PrimoCentral
           .gsub("-dot-", ".")
           .gsub("-slash-", "/")
           .gsub("-semicolon-", ";")
-          .gsub("-", " ")
           }'"
       end
 
