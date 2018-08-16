@@ -14,6 +14,11 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
+  def truncated_link(document, field, opts = { counter: nil })
+    label = index_presenter(document).label(field, opts).truncate(300).html_safe
+    link_to label, url_for_document(document), document_link_params(document, opts)
+  end
+
   def get_search_params(field, query)
     case field
     when "subject_display"
