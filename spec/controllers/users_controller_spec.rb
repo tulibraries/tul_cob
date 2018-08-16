@@ -46,6 +46,13 @@ RSpec.describe UsersController, type: :controller do
       end
 
       describe "GET #account" do
+        before do
+          DatabaseCleaner.clean
+          DatabaseCleaner.strategy = :truncation
+          user = FactoryBot.create :user
+          sign_in user, scope: :user
+        end
+
         it "has no-cache headers for account" do
           get :account
           expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
