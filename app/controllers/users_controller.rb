@@ -32,6 +32,10 @@ class UsersController < ApplicationController
   def account
     no_cache
     @user = current_user
+    if @user.uid.nil?
+      flash[:error] = "It may take a few days for your library account to be created. If you have questions about this please call 215-204-0744."
+      redirect_to root_path
+    end
   end
 
   def renew
