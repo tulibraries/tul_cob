@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def truncated_link(document, field, opts = { counter: nil })
-    label = index_presenter(document).label(field, opts).truncate(300).html_safe
+    label = index_presenter(document).label(field, opts).truncate(300, separator: " ").html_safe
     link_to label, url_for_document(document), document_link_params(document, opts)
   end
 
