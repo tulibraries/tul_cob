@@ -15,6 +15,7 @@ module Blacklight::PrimoCentral::Document
     # Dots and slahes break links to articles.
     doc["pnxId"] = doc["pnxId"]&.gsub(".", "-dot-")
     doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
+    doc["pnxId"] = doc["pnxId"]&.gsub(";", "-semicolon-")
     doc["type"] = [format]
     doc["format"] = [format]
     doc["link"] = @url
