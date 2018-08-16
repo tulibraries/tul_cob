@@ -24,7 +24,7 @@ class User < ApplicationRecord
   end
 
   def loans
-    @loans ||= alma.loans(limit: 50)
+    @loans ||= alma.loans
   end
 
   def fines

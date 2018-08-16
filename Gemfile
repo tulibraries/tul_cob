@@ -76,7 +76,8 @@ end
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
-gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
+#gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
+gem "alma", path: "/home/chad/projects/alma"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"

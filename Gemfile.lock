@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/tulibraries/alma_rb.git
-  revision: fe5549d8dfec88456d6e57d31a4538794d2e6d23
-  branch: master
-  specs:
-    alma (0.2.8)
-      ezwadl
-      httparty
-      xml-simple
-
-GIT
   remote: https://github.com/tulibraries/blacklight.git
   revision: db2f289afe96feeb2446dd4f7565002a6d134f26
   branch: backport-safari-bug-fix
@@ -40,6 +30,14 @@ GIT
   specs:
     primo (0.1.0)
       httparty
+
+PATH
+  remote: /home/chad/projects/alma
+  specs:
+    alma (0.2.8)
+      ezwadl
+      httparty
+      xml-simple
 
 GEM
   remote: https://rubygems.org/
