@@ -121,7 +121,8 @@ module Blacklight::PrimoCentral
         "'#{value.gsub(/^TN_/, "")
           .gsub("-dot-", ".")
           .gsub("-slash-", "/")
-          .gsub("-", " ")}'"
+          .gsub("-semicolon-", ";")
+          }'"
       end
 
       def to_primo_field(field)

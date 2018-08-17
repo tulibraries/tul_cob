@@ -8,6 +8,7 @@ module Blacklight::PrimoCentral
     def find(id, params = {})
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
+        .gsub("-semicolon-", ";")
       search(query: { id: id })
     end
 
