@@ -24,15 +24,15 @@ class User < ApplicationRecord
   end
 
   def loans
-    @loans ||= alma.loans
+    Alma::Loan.where_user(uid)
   end
 
   def fines
-    @fines ||= alma.fines
+    Alma::Fine.where_user(uid)
   end
 
   def holds
-    @holds ||= alma.requests
+    Alma::UserRequest.where_user(uid)
   end
 
   def renew_selected(ids)

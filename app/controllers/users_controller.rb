@@ -34,6 +34,34 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def holds
+    holds = current_user.holds
+    if holds.success?
+      render partial: "users/holds_details", layout: nil, locals: {holds: holds}
+    else
+      render "Problem!"
+    end
+  end
+
+  def fines
+    fines = current_user.fines
+    if fines.success?
+      render partial: "users/fines_details", layout: nil, locals: {fines: fines}
+    else
+      render "Problem!"
+    end
+  end
+
+
+  def loans
+    loans = current_user.loans
+    if loans.success?
+      render partial: "users/loans_details", layout: nil, locals: {loans: loans}
+    else
+      render "Problem!"
+    end
+  end
+
   def renew
     lib_user = Alma::User.find(user_id: current_user.uid)
 

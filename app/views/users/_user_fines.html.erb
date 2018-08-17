@@ -1,4 +1,4 @@
-<div class="container user-fines">
+<div class="container user-fines" data-controller="fines" data-fines-url=<%= user_fines_path %>>
   <h2 class="user_section_title">My Fines</h2>
   <table class="table table-hover table-responsive" border="0">
     <caption>Table of Current Fines for this user</caption>
@@ -11,24 +11,18 @@
         <th width="28%"></th>
       </tr>
     </thead>
-    <tbody>
-      <% @user.fines.each_with_index do |fine, counter| %>
-        <tr>
-          <td><%= counter + 1 %></td>
-          <td><%= fine.title %></td>
-          <td><%= fine.type['desc'] %></td>
-          <td><%= number_to_currency(fine.balance.to_f) %></td>
-        </tr>
+      <% if browser.ie?("<11") %>
+      <tbody>
+        <%= render partial: "fines_details", locals: {fines: current_user.fines} %>
+      </tbody>
+      <% else %>
+      <tbody data-target="fines.table">
+        <p class="text-center" data-target="fines.spinner">
+          <span class="loading-message glyphicon glyphicon-refresh spinning" >
+          </span><span class="loading-message"> Loading Fines...</span>
+        </p>
+      </tbody>
       <% end %>
-      <tr class="total-fines">
-        <td colspan="4" class="fine-label">
-          Total
-        </td>
-        <td>
-        <%= number_to_currency(@user.fines.sum) %>
-      </td>
-      </tr>
-    </tbody>
   </table>
   <div class="fines-link">
     Fines cannot be paid electronically<br />
