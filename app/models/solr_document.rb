@@ -39,4 +39,9 @@ class SolrDocument
   def alma_availability_mms_ids
     fetch("bound_with_ids", [id])
   end
+
+  def initialize(doc, req = nil)
+    doc[:title_statement_display].map! { |t| t.truncate(300, separator: " ") }
+    super doc, req
+  end
 end
