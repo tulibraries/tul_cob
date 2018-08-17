@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def holds
     holds = current_user.holds
     if holds.success?
-      render partial: "users/holds_details", layout: nil, locals: {holds: holds}
+      render partial: "users/holds_details", layout: nil, locals: { holds: holds }
     else
       render "Problem!"
     end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   def fines
     fines = current_user.fines
     if fines.success?
-      render partial: "users/fines_details", layout: nil, locals: {fines: fines}
+      render partial: "users/fines_details", layout: nil, locals: { fines: fines }
     else
       render "Problem!"
     end
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def loans
     loans = current_user.loans
     if loans.success?
-      render partial: "users/loans_details", layout: nil, locals: {loans: loans}
+      render partial: "users/loans_details", layout: nil, locals: { loans: loans }
     else
       render "Problem!"
     end
