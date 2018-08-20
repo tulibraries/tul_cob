@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 4e3973e9abe70c45137e390a8357f7e877afb4a9
-  branch: all-the-loans
+  revision: 659923571e72e4f5bfad66fd9472c66061d22afa
+  branch: master
   specs:
     alma (0.2.8)
       ezwadl
