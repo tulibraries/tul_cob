@@ -23,7 +23,7 @@ $(document).ready(function(){
 		{id: "direct_link_online", category: "search-results"},
 		{id: "single_link_online", category: "search-results"},
 		{id: "many_links_online", category: "search-results"},
-		{id: "online-only", category: "search-results"},
+		{id: "online_only", category: "search-results"},
 		{id: "articles_basic_search", category: "search-results"},
 		{id: "articles_advanced_search", category: "search-results"},
 		{id: "back_to_search", category: "search-results"},
@@ -42,6 +42,6 @@ $(document).ready(function(){
 			el.addEventListener("click", function(){
 		    handleEventClicks(track.id, track.category) })
 			}
-		});	
+		});
 
 });
