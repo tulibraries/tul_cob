@@ -1,0 +1,16 @@
+<% holds.each_with_index do |hold, counter| %>
+<tr>
+  <td><%= counter + 1 %></td>
+  <td><%= hold.title %></td>
+  <td><%= expiry_date(hold) %></td>
+  <td><%= hold.request_status %></td>
+</tr>
+<% end %>
+<tr>
+  <td colspan="7">
+    <div class="col col-md-12 text-left scrc-link">
+    For requests from the Special Collections Research Center, see
+    <%= link_to "SCRC Research Account", "https://temple.aeon.atlas-sys.com/logon" %>.
+    </div>
+  </td>
+</tr>

@@ -1,0 +1,27 @@
+<% loans.all.each_with_index do |loan, counter| %>
+  <tr>
+    <td><%= counter + 1 %></td>
+    <td><%= loan.title %></td>
+    <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
+    <td><% if loan.respond_to? :barcode %><%= loan.item_barcode %><% end %></td>
+    <td><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
+    <td class="renewal-check">
+      <div class="form-check">
+        <label class="form-check-label">
+        <% unless loan.renewable? %>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" title="unable to renew"></span>
+        <% else %>
+          <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
+          <span class="hide-me">Renew this loan</span>
+        <% end %>
+        </label>
+      </div>
+    </td>
+    <td id="<%= loan.loan_id %>" class="overdue"><% if loan.overdue? %><%= loan.loan_status %><% end %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td class="submit" colspan="7" style="vertical-align:text-bottom;">
+    <div class="col col-md-10 text-left">Items marked with <span class="glyphicon glyphicon-exclamation-sign"></span><span class="sr-only">Unable to renew</span> icon are not eligible for renewal at this time and are disabled.  Please visit your library's Circulation Desk for more information or <a href='http://library.temple.edu/asktulibraries'>Ask a Librarian</a>.</div>
+    <div class="col col-md-2"><%= submit_tag "Renew Selected", class: "btn btn-white", id: "renew_selected" %></div></td>
+    </tr>

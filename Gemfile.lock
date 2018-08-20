@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: c121b69e9369e5a8ffa3734b6d2e1cccc2eb330b
+  revision: 659923571e72e4f5bfad66fd9472c66061d22afa
+
   branch: master
   specs:
     alma (0.2.8)
@@ -123,6 +124,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    browser (2.5.3)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (3.0.2)
@@ -478,6 +480,7 @@ DEPENDENCIES
   blacklight_alma!
   blacklight_range_limit
   bootsnap
+  browser
   byebug
   capybara
   chosen-rails

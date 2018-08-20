@@ -1,4 +1,4 @@
-<div class="container user-holds">
+<div class="container user-holds" data-controller="holds" data-holds-url=<%= user_holds_path %>>
   <h2 class="user_section_title">My Requests</h2>
   <table class="table table-hover table-responsive" border="0">
     <caption>Table of Current Fines for this user</caption>
@@ -11,23 +11,17 @@
         <th width="28%"></th>
       </tr>
     </thead>
+    <% if browser.ie?("<11") %>
     <tbody>
-        <% @user.holds.each_with_index do |hold, counter| %>
-        <tr>
-          <td><%= counter + 1 %></td>
-          <td><%= hold.title %></td>
-          <td><%= expiry_date(hold) %></td>
-          <td><%= hold.request_status %></td>
-        </tr>
-        <% end %>
-        <tr>
-          <td colspan="7">
-          <div class="col col-md-12 text-left scrc-link">
-            For requests from the Special Collections Research Center, see
-            <%= link_to "SCRC Research Account", "https://temple.aeon.atlas-sys.com/logon" %>.
-            </div>
-          </td>
-        </tr>
+      <%= render partial: "holds_details", locals: {holds: current_user.holds} %>
     </tbody>
+    <% else %>
+    <tbody data-target="holds.table">
+      <p class="text-center" data-target="holds.spinner">
+        <span class="loading-message glyphicon glyphicon-refresh spinning" >
+        </span><span class="loading-message"> Loading Holds...</span>
+      </p>
+    </tbody>
+    <% end %>
   </table>
 </div>

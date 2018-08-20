@@ -55,11 +55,11 @@ Rails.application.routes.draw do
 
     get "users/account"
 
-    get "users/fines"
+    get "users/fines", as: "user_fines"
 
-    get "users/holds"
+    get "users/holds", as: "user_holds"
 
-    get "users/loans"
+    get "users/loans", as: "user_loans"
 
     post "users/renew_selected"
 
