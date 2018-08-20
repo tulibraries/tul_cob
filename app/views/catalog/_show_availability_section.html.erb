@@ -1,11 +1,11 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 <div class="col-sm-12">
-<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel">
   <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading" class="text-left">Availability</h4>
     <div id="heading-request">
-      <div id="requests-container" class="hidden" data-controller="requests" data-target="show.request, availability.request">
+      <div id="requests-container" class="hidden" data-controller="requests">
         <% if user_signed_in? %>
           <button id="request-btn" class="btn btn-primary request-button" data-action="requests#hold">Request</button>
           <div id="stimulus-modal" data-target="requests.modal"></div>
@@ -20,7 +20,7 @@
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>" class="physical-holding-panel panel-body">
+    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
       <div class="panel-content" >
         <div id="avail-spinner" data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>

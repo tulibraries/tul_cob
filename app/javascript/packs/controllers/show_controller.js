@@ -8,8 +8,6 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "panel", "spinner", "request" ]
 
-
-
   initialize() {
     this.availability()
   }
@@ -30,7 +28,6 @@ export default class extends Controller {
         $("#requests-container").removeClass("hidden");
         var mms_id = $("#record-view-iframe").data("availability-id");
         var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
-        console.log(mms_id);
         $("#requests-container").attr("data-requests-url", requests_url);
       })
   }
