@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: 659923571e72e4f5bfad66fd9472c66061d22afa
+
   branch: master
   specs:
     alma (0.2.8)
@@ -36,7 +37,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: a69121ada5095bccc4c9f14b6a8e42c9e0a87031
+  revision: 942536e2d729df76fbf4e9dfef47d134e5cbc16f
   specs:
     primo (0.1.0)
       httparty
