@@ -6,7 +6,7 @@ import { Controller } from "stimulus"
     }
 
 export default class extends Controller {
-  static targets = [ "panel", "button", "spinner", "request", "container" ]
+  static targets = [ "panel", "button", "spinner", "request", "container", "href" ]
 
   item() {
     this.buttonTarget.classList.toggle("collapsed");
@@ -27,7 +27,7 @@ export default class extends Controller {
           $(this.panelTarget).parent().removeClass("hidden");
           var mms_id = $(this.buttonTarget).data("availability-ids");
           var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
-          $(this.requestTarget).attr("data-requests-url", requests_url);
+          $(this.hrefTarget).attr("href", requests_url);
           $(this.requestTarget).removeClass("hidden");
           this.requestTarget.classList.add("search-results-request-btn")
       })

@@ -1,88 +1,77 @@
-<div class="modal" id="request-modal-<%= @mms_id %>" tabindex="-1" data-target="requests.id">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 id="modal-title">Request Options:</h4>
+<div class="modal-body">
+  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+
+  <% if @request_options.hold_allowed? %>
+    <div class="panel panel-default request-heading">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>">Request item</a>
+        </h4>
       </div>
-      <div class="modal-body">
-        <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
-        <% if @request_options.hold_allowed? %>
-          <div class="panel panel-default request-heading">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                  <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>">Request item</a>
-              </h4>
-            </div>
-
-            <div id="collapseOne-<%= @mms_id %>" class="panel-collapse collapse">
-              <div class="panel-body">
-                  <h5 class="request-header">Details of title you requested:</h5>
-                  <%= render "hold_request_form" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <% if @request_options.digitization_allowed? %>
-          <div class="panel panel-default request-heading">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                  <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseTwo-<%= @mms_id %>">Scan an article/book chapter</a>
-              </h4>
-            </div>
-
-            <div id="collapseTwo-<%= @mms_id %>" class="panel-collapse collapse">
-              <div class="panel-body">
-                <h5 class="request-header">Details of title you requested:</h5>
-                <%= render "digitization_request_form" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <% if @request_options.booking_allowed? %>
-          <div class="panel panel-default request-heading">
-            <div class="panel-heading">
-              <h4 class="panel-title">
-                  <a class="booking-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseThree-<%= @mms_id %>">Request booking</a>
-              </h4>
-            </div>
-
-            <div id="collapseThree-<%= @mms_id %>" class="panel-collapse collapse">
-              <div class="panel-body">
-                <h5 class="request-header">Details of title you requested:</h5>
-                <%= render "booking_request_form" %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <% if aeon_request_button(@items).present? %>
-          <div class="panel panel-default request-heading">
-            <div class="panel-heading">
-              <h4 class="panel-title"><%= aeon_request_button(@items) %></h4>
-              <p class="special-collections">(Special Collections Research Center materials only)</p>
-            </div>
-          </div>
-        <% end %>
-
-        <% if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? && !aeon_request_button(@items).present?  %>
-          <p>This item cannot be requested from other Temple campuses.</p>
-        <% end %>
-
+      <div id="collapseOne-<%= @mms_id %>" class="panel-collapse collapse">
+        <div class="panel-body">
+            <h5 class="request-header">Details of title you requested:</h5>
+            <%= render "hold_request_form" %>
         </div>
       </div>
+    </div>
+  <% end %>
 
-      <div class="modal-footer">
-        <p class="modal-footer-text text-left">
-          For more request options, see:
-          <%= link_to("How do I request an item that is unavailable at my library?", "http://answers.library.temple.edu/faq/195868") %>
-        </p>
-        <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
+  <% if @request_options.digitization_allowed? %>
+    <div class="panel panel-default request-heading">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="digital-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseTwo-<%= @mms_id %>">Scan an article/book chapter</a>
+        </h4>
       </div>
 
+      <div id="collapseTwo-<%= @mms_id %>" class="panel-collapse collapse">
+        <div class="panel-body">
+          <h5 class="request-header">Details of title you requested:</h5>
+          <%= render "digitization_request_form" %>
+        </div>
+      </div>
     </div>
+  <% end %>
+
+  <% if @request_options.booking_allowed? %>
+    <div class="panel panel-default request-heading">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="booking-request accordian-toggle"  data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseThree-<%= @mms_id %>">Request booking</a>
+        </h4>
+      </div>
+
+      <div id="collapseThree-<%= @mms_id %>" class="panel-collapse collapse">
+        <div class="panel-body">
+          <h5 class="request-header">Details of title you requested:</h5>
+          <%= render "booking_request_form" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if aeon_request_button(@items).present? %>
+    <div class="panel panel-default request-heading">
+      <div class="panel-heading">
+        <h4 class="panel-title"><%= aeon_request_button(@items) %></h4>
+        <p class="special-collections">(Special Collections Research Center materials only)</p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? && !aeon_request_button(@items).present?  %>
+    <p>This item cannot be requested from other Temple campuses.</p>
+  <% end %>
+
   </div>
+</div>
+
+<div class="modal-footer">
+  <p class="modal-footer-text text-left">
+    For more request options, see:
+    <%= link_to("How do I request an item that is unavailable at my library?", "http://answers.library.temple.edu/faq/195868") %>
+  </p>
+  <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
 </div>
