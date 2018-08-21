@@ -1,13 +1,7 @@
 $(document).on('turbolinks:load', function() {
   var queries = [];
   $(".thumbnail").each(function(index, thumbnail) {
-    lccn = $(thumbnail).attr('data-lccn');
     isbn = $(thumbnail).attr('data-isbn');
-    if(lccn) {
-      lccn.split(",").map(function(value){
-        queries.push("LCCN:" + value);
-      })
-    }
 
     if(isbn) {
       isbn.split(",").map(function(value){
