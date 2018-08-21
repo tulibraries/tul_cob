@@ -16,7 +16,7 @@
         <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
-
+    
     <% if @description.present? %>
       <div class="form-group row">
         <div class="col-sm-4">

@@ -80,7 +80,7 @@ module CobAlma
           desc
         end
       end
-      descriptions
+      descriptions unless descriptions == [""]
     end
 
     def self.booking_location(items_list)
