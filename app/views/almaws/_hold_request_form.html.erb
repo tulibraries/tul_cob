@@ -38,8 +38,8 @@
     <div class="row hold-form">
       <div class="col-sm-5">
         <%= form.label(:not_needed, "Not Needed After (optional):") %>
-        <%= date_field_tag :last_interest_date, Date.today() + 10, pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "hold_date_field" %>
-        <div class="invalid-field">Please use YYYY-MM-DD format.</div>
+        <%= date_field_tag :last_interest_date, "MM-DD-YYYY", pattern:"[0-9]{2}-[0-9]{2}-[0-9]{4}", id: "hold_date_field" %>
+        <div class="invalid-field">Please use MM-DD-YYYY format.</div>
       </div>
     </div>
 
