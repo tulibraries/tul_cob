@@ -10,11 +10,11 @@
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button" id="available_button-<%=  document_counter %>">
           <span role="spin" aria-expanded="false">Loading...</span>
         </button>
-        <div id="requests-container-<%= document.id %>" class="hidden" data-controller="requests" data-target="show.request, availability.request">
+        <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-controller="requests" data-target="show.request, availability.request">
           <% if user_signed_in? %>
             <%= request_modal(document.id, document_counter, @pickup_locations, @request_level) %>
           <% else %>
-            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>
+            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}, class: "log-in-link") %>
           <% end %>
         </div>
       </div>
