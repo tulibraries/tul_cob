@@ -23,7 +23,7 @@ class User < ApplicationRecord
   end
 
   def loans
-    Alma::Loan.where_user(uid)
+    Alma::Loan.where_user(uid, order_by: "due_date")
   end
 
   def fines
