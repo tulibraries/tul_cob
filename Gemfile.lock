@@ -36,8 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: d2ed984c70ed1d90fe248f44743f120b35f8a175
-  branch: BL-604-escape-only-when-required
+  revision: a34ff84676721700f7fad08cdc47a5cd7cd97086
   specs:
     primo (0.1.0)
       httparty
