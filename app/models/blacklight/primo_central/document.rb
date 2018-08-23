@@ -11,17 +11,28 @@ module Blacklight::PrimoCentral::Document
   def initialize(doc, req = nil)
     @url = url(doc)
     @url_query = url_query
-    format = doc["@TYPE"] || doc["type"] || "unknown"
+
     # Dots and slahes break links to articles.
+    doc["pnxId"] ||= doc.dig("pnx", "search", "recordid")&.first
     doc["pnxId"] = doc["pnxId"]&.gsub(".", "-dot-")
     doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
     doc["pnxId"] = doc["pnxId"]&.gsub(";", "-semicolon-")
+
+    format = doc["@TYPE"] || doc["type"] ||
+      doc.dig("pnx", "display", "type")&.first || "unknown"
     doc["type"] = [format]
     doc["format"] = [format]
+
+    doc["title"] ||= doc.dig("pnx", "display", "title")&.first
     doc["link"] = @url
     doc["link_label"] = link_label(doc)
-    doc["isbn"] ||= isbn
+    doc["isbn"] ||= doc.dig("pnx", "search", "isbn") || isbn
+    doc["issn"] ||= doc.dig("pnx", "search", "issn") || issn
     doc["lccn"] ||= lccn
+
+    doc["isPartOf"] ||= doc.dig("pnx", "display", "ispartof")&.first
+    doc["creator"] ||= doc.dig("pnx", "search", "creatorcontrib")
+    doc["date"] ||= doc.dig("pnx", "search", "creationdate")
 
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
@@ -89,5 +100,9 @@ module Blacklight::PrimoCentral::Document
 
     def lccn
       @url_query["rft.lccn"]
+    end
+
+    def issn
+      @url_query["rft.issn"]
     end
 end
