@@ -163,29 +163,35 @@ module ApplicationHelper
     end
   end
 
-  def aeon_request_url(document)
+  def aeon_request_url(item)
     form_fields = {
-         ItemTitle: "title_statement_display",
-         ItemPlace: "imprint_display",
-         ReferenceNumber: "alma_mms_display",
-         CallNumber: "call_number_display",
-         ItemAuthor: "creator_display"
+         ItemTitle: item.item.dig("bib_data", "title"),
+         ItemPlace: item.item.dig("bib_data", "place_of_publication") + " " + item.item.dig("bib_data", "publisher_const") + " " + item.item.dig("bib_data", "date_of_publication"),
+         ReferenceNumber: item.item.dig("bib_data", "mms_id"),
+         CallNumber: item.call_number,
+         ItemAuthor: item.item.dig("bib_data", "author")
      }
 
-    openurl_field_values = form_fields.map { |k, k2|
-      [k, document[k2].to_s.delete('[]""')] }.to_h
+    openurl_field_values = form_fields.map { |k, v|
+      [k, v.to_s.delete('[]""')] }.to_h
+
+    openurl_field_values["Action"] = 10
+    openurl_field_values["Form"] = 30
+
 
     URI::HTTPS.build(
       host:  "temple.aeon.atlas-sys.com",
-      path: "/aeon/aeon.dll/OpenURL",
+      path: "/Logon/",
       query: openurl_field_values.to_query).to_s
   end
 
-  def aeon_request_button(document)
-    if document.fetch("location_display", []).include?("SCRC rarestacks") && document["library_facet"].include?("Special Collections Research Center")
-      button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request btn btn-primary") +
-      content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
-    end
+  def aeon_request_button(items)
+    raw items.map { |item|
+      if item.library.include?("SCRC") && item.location.include?("rarestacks")
+        button_to("Request to View in Reading Room", aeon_request_url(item), class: "aeon-request btn btn-sm btn-primary pull-right")
+        #content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
+      end
+    }.join
   end
 
   def total_items(results)

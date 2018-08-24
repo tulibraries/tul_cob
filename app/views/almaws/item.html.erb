@@ -16,7 +16,10 @@
     </thead>
     <tbody >
       <tr class="table-heading">
-        <th id="<%= key %>" scope="colgroup" colspan="7"><%= library_name_from_short_code(key) %></th>
+        <th id="<%= key %>" scope="colgroup" colspan="7">
+          <%= library_name_from_short_code(key) %>
+          <%= aeon_request_button(items) %>
+        </th>
       </tr>
       <% items.each do |item| %>
         <tr>
