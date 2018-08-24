@@ -168,11 +168,11 @@ module ApplicationHelper
     publisher_const = item.item.dig("bib_data", "publisher_const") || ""
     date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
     form_fields = {
-         ItemTitle: item.item.dig("bib_data", "title"),
+         ItemTitle: (item.item.dig("bib_data", "title") || ""),
          ItemPlace: place_of_publication + publisher_const + date_of_publication,
-         ReferenceNumber: item.item.dig("bib_data", "mms_id"),
-         CallNumber: item.call_number,
-         ItemAuthor: item.item.dig("bib_data", "author")
+         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
+         CallNumber: item.call_number || "",
+         ItemAuthor: (item.item.dig("bib_data", "author") || "")
      }
 
     openurl_field_values = form_fields.map { |k, v|
