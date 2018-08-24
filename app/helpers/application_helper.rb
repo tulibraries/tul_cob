@@ -164,9 +164,12 @@ module ApplicationHelper
   end
 
   def aeon_request_url(item)
+    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
+    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
+    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
     form_fields = {
          ItemTitle: item.item.dig("bib_data", "title"),
-         ItemPlace: item.item.dig("bib_data", "place_of_publication") + " " + item.item.dig("bib_data", "publisher_const") + " " + item.item.dig("bib_data", "date_of_publication"),
+         ItemPlace: place_of_publication + publisher_const + date_of_publication,
          ReferenceNumber: item.item.dig("bib_data", "mms_id"),
          CallNumber: item.call_number,
          ItemAuthor: item.item.dig("bib_data", "author")
@@ -188,7 +191,7 @@ module ApplicationHelper
   def aeon_request_button(items)
     raw items.map { |item|
       if item.library.include?("SCRC") && item.location.include?("rarestacks")
-        button_to("Request to View in Reading Room", aeon_request_url(item), class: "aeon-request btn btn-sm btn-primary pull-right")
+        button_to("Request to View in Reading Room", aeon_request_url(item), class: "aeon-request btn btn-sm btn-primary")
         #content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
       end
     }.join

@@ -23,7 +23,7 @@
         <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
         Loading Availability
       </div>
-      <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document_counter %>" class="collapse panel-content avail-container">
+      <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document_counter %>" class="collapse panel-content avail-container index-avail-container">
         <div class="table-wrapper hidden">
           <div data-target="availability.panel"></div>
           <div><%= render "check_holdings", document: document, document_counter: document_counter %></div>
