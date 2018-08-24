@@ -136,11 +136,11 @@ RSpec.describe AlmawsController, type: :controller do
       it "includes page range params in Alma api request" do
         post(:send_digitization_request, params: { from_page: "123", to_page: "129", mms_id: ""  })
         expect(WebMock).to have_requested(:post, /.*request.*/).
-          with(body: hash_including({
+          with(body: hash_including(
             required_pages_range: [{
               from_page: "123", to_page: "129"
               }]
-            })
+            )
           )
       end
     end
