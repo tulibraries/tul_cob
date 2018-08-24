@@ -31,8 +31,8 @@ module Blacklight::PrimoCentral::Document
     doc["lccn"] ||= lccn
 
     doc["isPartOf"] ||= doc.dig("pnx", "display", "ispartof")&.first
-    doc["creator"] ||= doc.dig("pnx", "search", "creatorcontrib")
-    doc["date"] ||= doc.dig("pnx", "search", "creationdate")
+    doc["creator"] ||= doc.dig("pnx", "search", "creatorcontrib") || []
+    doc["date"] ||= doc.dig("pnx", "search", "creationdate") || []
 
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
