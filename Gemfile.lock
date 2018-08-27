@@ -36,8 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: edfa45b09c77c925945120c9b3b45f418206599b
-  branch: BL-605-switch-search-resource
+  revision: 490fea246762b4b5f49bed8b15289215f19eef5e
   specs:
     primo (0.1.0)
       httparty
