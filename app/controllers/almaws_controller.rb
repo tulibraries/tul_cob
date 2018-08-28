@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AlmawsController < ApplicationController
-  layout false
+  layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
 
@@ -14,6 +14,7 @@ class AlmawsController < ApplicationController
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
     @redirect_to = params[:redirect_to]
+    render layout: false
   end
 
   def request_options
