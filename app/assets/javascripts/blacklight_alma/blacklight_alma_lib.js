@@ -42,6 +42,15 @@ var BlacklightAlma = function (options) {
    }
  }
 
+ noHoldingsAvailabilityButton = function(id) {
+   var availButton = $("button[data-availability-ids='" + id + "']");
+
+   $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
+   $(availButton).removeClass("btn-default");
+   $(availButton).addClass("btn-warning collapsed collapse-button");
+   $(availButton).show();
+  }
+
  availabilityInfo = function (holding) {
    var library = holding['library'];
    var availability = holding['availability'];
@@ -155,6 +164,8 @@ var BlacklightAlma = function (options) {
                        return baObj.formatHolding(holding);
                      });
                      return baObj.formatHoldings(formatted);
+                 } else {
+                   noHoldingsAvailabilityButton(id);
                  }
              }
          }).join("<br/>");
