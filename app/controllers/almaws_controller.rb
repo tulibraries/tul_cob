@@ -105,16 +105,19 @@ class AlmawsController < ApplicationController
     date = date_or_nil(params[:last_interest_date])
     partial = params[:partial_or_full] == "true" ? true : false
     bib_options = {
-    mms_id: params[:mms_id],
-    user_id: current_user.uid,
-    description: params[:description],
-    chapter_or_article_title: params[:chapter_or_article_title],
-    chapter_or_article_author: params[:chapter_or_article_author],
-    request_type: "DIGITIZATION",
-    target_destination: { value: "DIGI_DEPT_INST" },
-    partial_digitization: partial,
-    last_interest_date: date,
-    comment: params[:comment]
+      mms_id: params[:mms_id],
+      user_id: current_user.uid,
+      description: params[:description],
+      chapter_or_article_title: params[:chapter_or_article_title],
+      chapter_or_article_author: params[:chapter_or_article_author],
+      request_type: "DIGITIZATION",
+      target_destination: { value: "DIGI_DEPT_INST" },
+      partial_digitization: partial,
+      last_interest_date: date,
+      comment: params[:comment],
+      required_pages_range: [{
+        from_page: params[:from_page], to_page: params[:to_page]
+      }]
     }
 
     @request_level = params[:request_level]

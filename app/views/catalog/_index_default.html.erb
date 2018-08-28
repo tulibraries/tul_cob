@@ -1,6 +1,6 @@
 <div class="row">
 <%# default partial to display solr document fields in catalog index view -%>
-  <div class="book-info-srch <%= thumbnail_classes(document) %>" <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
+  <div class="book-info-srch <%= thumbnail_classes(document) %>" <%= isbn_data_attribute(document) %> >
     <%= link_to document do %>
       <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible"  %>
       <%= image_tag default_cover_image(document), :class => "default" %>

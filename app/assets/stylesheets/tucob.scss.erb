@@ -49,8 +49,17 @@ h1.advanced.page-header a {
 
 /* === AEON REQUESTS === */
 
-.special-collections {
-  padding-top: 5px;
+.aeon-request {
+  float: right;
+  margin-top: -20px;
+}
+
+.index-avail-container .aeon-request {
+  margin-top: -35px;
+}
+
+.aeon-text {
+  display: table-cell;
 }
 
 /* === REQUESTS === */
@@ -283,7 +292,6 @@ div.physical-holding-panel {
 
 /* ALMA DATA TABLE */
 .border-bottom td, .border-bottom th {
-  border-bottom: 1px solid #CFC7B0;
   /*border: solid red 1px;*/
 }
 
@@ -325,6 +333,7 @@ table.border-bottom {
 }
 
 .table-wrapper {
+  border: none;
   display: block;
   max-height: 300px;
   overflow-y: scroll;
@@ -531,6 +540,10 @@ ul.navbar-nav {
     clear: both;
     padding-top: 14px;
     padding-right: 0;
+  }
+  .aeon-request {
+    float: none;
+    margin-top: 0 !important;
   }
 }
 

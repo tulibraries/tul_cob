@@ -14,6 +14,11 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
+  def truncated_link(document, field, opts = { counter: nil })
+    label = index_presenter(document).label(field, opts).truncate(300, separator: " ").html_safe
+    link_to label, url_for_document(document), document_link_params(document, opts)
+  end
+
   def get_search_params(field, query)
     case field
     when "subject_display"
@@ -164,9 +169,12 @@ module ApplicationHelper
   end
 
   def aeon_request_url(item)
+    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
+    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
+    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
     form_fields = {
          ItemTitle: (item.item.dig("bib_data", "title") || ""),
-         ItemPlace: (item.item.dig("bib_data", "place_of_publication") || "") + " " + (item.item.dig("bib_data", "publisher_const") || "") + " " + (item.item.dig("bib_data", "date_of_publication") || ""),
+         ItemPlace: place_of_publication + publisher_const + date_of_publication,
          ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
          CallNumber: item.call_number || "",
          ItemAuthor: (item.item.dig("bib_data", "author") || "")
@@ -188,7 +196,8 @@ module ApplicationHelper
   def aeon_request_button(items)
     raw items.map { |item|
       if item.library.include?("SCRC") && item.location.include?("rarestacks")
-        link_to("Request to View in Reading Room", aeon_request_url(item), class: "accordian-toggle")
+        button_to("Request to View in Reading Room", aeon_request_url(item), class: "aeon-request btn btn-sm btn-primary")
+        #content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
       end
     }.join
   end

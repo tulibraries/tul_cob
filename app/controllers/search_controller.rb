@@ -20,31 +20,6 @@ class SearchController < CatalogController
     end
   end
 
-  def single_search
-    begin
-      @engine = BentoSearch.get_engine(params[:engine])
-    rescue BentoSearch::NoSuchEngine => e
-      render status: 404, text: e.message
-      return
-    end
-
-    if params[:q]
-      args = {}
-      args[:query] = params[:q]
-      args[:page] = params[:page]
-      args[:semantic_search_field] = params[:field]
-      args[:sort] = params[:sort]
-      args[:per_page] = @per_page
-
-      @results = @engine.search(params[:q], args)
-    end
-
-    respond_to do |format|
-      format.html
-      format.atom { render template: "bento_search/atom_results", locals: { atom_results: @results } }
-    end
-  end
-
   # Splits results for the more engine into two bento_boxes.
   def split_more(results)
     unless results["more"].nil? || results["more"].empty?

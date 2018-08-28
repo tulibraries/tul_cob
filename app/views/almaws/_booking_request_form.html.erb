@@ -37,6 +37,7 @@
       <div class="col-sm-5">
         <%= form.label(:booking_end_date, "Booking End Date:") %>
         <%= date_field_tag :booking_end_date, "", required: true, "aria-required": true %>
+        <%= render "format_date_message" %>
       </div>
     </div>
 
