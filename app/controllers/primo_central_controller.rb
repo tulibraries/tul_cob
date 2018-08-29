@@ -3,12 +3,15 @@
 class PrimoCentralController < CatalogController
   include Blacklight::Catalog
   include CatalogConfigReinit
+  include Blacklight::Document::Export
+  include PrimoFieldsConfig
 
   helper_method :browse_creator
   helper_method :tags_strip
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
+  add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
 
@@ -29,47 +32,6 @@ class PrimoCentralController < CatalogController
 
     # Pagination handler
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
-
-    # Search fields
-    config.add_search_field :any, label: "All Fields"
-    config.add_search_field :title
-    config.add_search_field :creator, label: "Author/Creator"
-    config.add_search_field :sub, label: "Subject"
-    config.add_search_field(:description, label: "Description") do |field|
-      field.include_in_simple_select = false
-    end
-    config.add_search_field :isbn, label: "ISBN"
-    config.add_search_field :issn, label: "ISSN"
-
-    # Index fields
-    config.add_index_field :isPartOf, label: "Is Part Of"
-    config.add_index_field :creator, label: "Author/Creator", multi: true
-    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
-    config.add_index_field :date, label: "Year"
-    config.add_index_field :availability
-
-    # Facet fields
-    config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
-    config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
-    config.add_facet_field :creator, label: "Author/Creator"
-    config.add_facet_field :topic, label: "Topic"
-    config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code
-
-    # Show fields
-    config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true
-    config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true
-    config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code
-    config.add_show_field :publisher, label: "Published"
-    config.add_show_field :date, label: "Date"
-    config.add_show_field :isPartOf, label: "Is Part of"
-    config.add_show_field :relation, label: "Related Title", helper_method: "list_with_links"
-    config.add_show_field :description, label: "Note", helper_method: :tags_strip
-    config.add_show_field :subject, helper_method: :list_with_links, multi: true
-    config.add_show_field :isbn, label: "ISBN"
-    config.add_show_field :issn, label: "ISSN"
-    config.add_show_field :lccn, label: "LCCN"
-    config.add_show_field :doi, label: "DOI"
-    config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code
   end
 
   def browse_creator(args)
