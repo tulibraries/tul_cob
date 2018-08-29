@@ -103,7 +103,6 @@ class AlmawsController < ApplicationController
 
   def send_digitization_request
     date = date_or_nil(params[:last_interest_date])
-    partial = params[:partial_or_full] == "true" ? true : false
     bib_options = {
       mms_id: params[:mms_id],
       user_id: current_user.uid,
@@ -112,16 +111,15 @@ class AlmawsController < ApplicationController
       chapter_or_article_author: params[:chapter_or_article_author],
       request_type: "DIGITIZATION",
       target_destination: { value: "DIGI_DEPT_INST" },
-      partial_digitization: partial,
+      partial_digitization: true,
       last_interest_date: date,
-      comment: params[:comment],
+      comment: params[:comment] || "",
       required_pages_range: [{
         from_page: params[:from_page], to_page: params[:to_page]
       }]
     }
 
     @request_level = params[:request_level]
-
     start = Time.now
     request = Alma::BibRequest.submit(bib_options)
     json_request_logger({ type: "submit_digitization_request", start: start, user: current_user.id }.merge(bib_options))
