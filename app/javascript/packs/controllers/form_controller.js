@@ -5,21 +5,13 @@ export default class extends Controller {
 
   connect() {
     this.booking_end_date()
+    this.to_page()
   }
 
-  initialize() {
-    this.required()
-  }
-
-  required() {
-    $("form input:radio").change(function() {
-      if ($("#partial_or_full_true").is(":checked")) {
-        $("#digitization-request-form #comment").attr("required", "required");
-      } else {
-        $("#digitization-request-form #comment").removeAttr("required");
-      }
-    });
-  }
+  to_page() {
+    $('#to_page').change(function() {
+      $('#to_page').prop('min', $('#from_page').val());
+    });  }
 
   booking_end_date() {
     $('#booking_start_date').change(function() {
