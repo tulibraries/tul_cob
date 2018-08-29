@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module Blacklight::PrimoCentral::DocumentExport
-  include Blacklight::Configurable
-
   def self.extended(document)
     document.will_export_as(:refworks, "text/plain")
   end
