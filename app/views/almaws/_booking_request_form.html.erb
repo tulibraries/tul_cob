@@ -6,13 +6,13 @@
 
     <div class="row">
       <div class="col-sm-4 hold-form">
-        <%= label("", :pickup_location, "Pickup Location:") %>
+        <%= label("", :pickup_location, "Pickup Location: *") %>
         <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-4 hold-form">
-        <%= label("", :material_type, "Material Type:") %>
+        <%= label("", :material_type, "Material Type: *") %>
         <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
@@ -20,7 +20,7 @@
     <% if @description.present? %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:description, "Description:") %>
+          <%= form.label(:description, "Description: *") %>
           <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
         </div>
       </div>
@@ -28,15 +28,15 @@
 
     <div class="row hold-form">
       <div class="col-sm-5">
-        <%= form.label(:booking_start_date, "Booking Start Date:") %>
-        <%= date_field_tag :booking_start_date, "", min: Date.tomorrow, required: true, "aria-required": true %>
+        <%= form.label(:booking_start_date, "Booking Start Date: *") %>
+        <%= date_field_tag :booking_start_date, "", min: Date.tomorrow, pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", required: true, "aria-required": true %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-5">
-        <%= form.label(:booking_end_date, "Booking End Date:") %>
-        <%= date_field_tag :booking_end_date, "", required: true, "aria-required": true %>
+        <%= form.label(:booking_end_date, "Booking End Date: *") %>
+        <%= date_field_tag :booking_end_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", required: true, "aria-required": true %>
         <%= render "format_date_message" %>
       </div>
     </div>
