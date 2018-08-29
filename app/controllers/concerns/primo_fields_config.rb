@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Shared bookmark configuration across bookmarks behaviors.
 module PrimoFieldsConfig
   extend ActiveSupport::Concern
