@@ -347,6 +347,12 @@ module Traject
         end
       end
 
+      def truncate(max = 300)
+        Proc.new do |rec, acc|
+          acc.map! { |s| s.length > max ? s[0...max] + " ..." : s }
+        end
+      end
+
       # Just like marc_languages except it makes a special case for "041a" spec.
       def extract_lang(spec = "008[35-37]:041a:041d")
         translation_map = Traject::TranslationMap.new("marc_languages")
