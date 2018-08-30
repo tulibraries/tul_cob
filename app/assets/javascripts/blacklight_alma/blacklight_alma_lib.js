@@ -371,6 +371,7 @@ var BlacklightAlma = function (options) {
      var baObj = this;
      for(key in baObj.availabilityRequestsFinished) {
          if(!baObj.availabilityRequestsFinished[key]) {
+             noHoldingsAvailabilityButton(key);
              setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
              return;
          }
@@ -379,6 +380,6 @@ var BlacklightAlma = function (options) {
      $(".availability-ajax-load").filter(function(index, element) {
          return ! $(element).hasClass("availability-ajax-loaded");
      }).each(function (index, element) {
-         $(element).html("<span style='color: red'>No status available for this item</span>");
+        $(element).html("<span style='color: red'>No status available for this item</span>");
      });
  };
