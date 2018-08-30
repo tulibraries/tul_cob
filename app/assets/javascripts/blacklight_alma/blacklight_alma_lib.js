@@ -380,7 +380,7 @@ if (!String.prototype.includes) {
  }
 }
 
-if (!String.prototype.includes) {
+if (!Array.prototype.includes) {
  Array.prototype.includes = function(value){
    return this.indexOf(value)>-1||!1
  }
