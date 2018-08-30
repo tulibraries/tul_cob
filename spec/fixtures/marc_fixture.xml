@@ -28849,4 +28849,396 @@
       <subfield code="a">Host bibliographic record for boundwith item barcode 1234567890</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>06322cam a2200373 4500</leader>
+    <controlfield tag="005">20180315163713.0</controlfield>
+    <controlfield tag="006">m | j |</controlfield>
+    <controlfield tag="007">cr||n||||||||n</controlfield>
+    <controlfield tag="008">900228s1769 enk|||| s 00| ||eng c</controlfield>
+    <controlfield tag="001">991004250539703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b4359203x-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CU-RivES)T199095</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(Uk-ES)006293668</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">Uk-ES</subfield>
+      <subfield code="c">Uk-ES</subfield>
+      <subfield code="d">CU-RivES</subfield>
+      <subfield code="d">CStRLIN</subfield>
+      <subfield code="d">Cengage Gale</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Maitland, William,</subfield>
+      <subfield code="d">1693?-1757.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="240">
+      <subfield code="a">History of London.</subfield>
+      <subfield code="k">Prospectus</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">By the King's authority. Proposals for printing by subscription, in weekly numbers, price six-pence each, embellished with upwards of one hundred and twenty copper-plates, the third edition, (dedicated to the Right Honourable samuel turner esq; Lord-Mayor the court of aldermsn, and common-council.) The History and survey of London, Westminster, Southwark, and their environs. By William Maitland, F.R.S. and others</subfield>
+      <subfield code="h">[electronic resource] :</subfield>
+      <subfield code="b">Containing, I. The original constitution of London and Westminster the ancient and present state of the several wards, districts, liberties, pariches and churches, and the most curious sepulchral monuments; accounts of all the religious foundations therein before the reformation, and the uses to which they were converted after their dissolution: the names of all the streets, squares, courts, lanes, alleys, rents, rows,. With curious calculations touching the number of inhabitants; whereby it will appear, that the number of inhabitants in London are more than in any one city in the world, and almost equal to those of the cities of Paris, Amsterdam, and Rome together. II. The political, ecclesiastical, civil and military government,in all their branches; and the chartered liberties, privileges and immunities, granted from time to time by the crown, and confirmed to the citizens by act of Parliament. III. Accounts of the several incorporations of mechant-adventurers, public trading companies, and of all arts and mysteries; shewing their original institution, and the constitution of those companies and corporations respectively, and their ancient rights, privileges and franchises. IV. The city courts, and the manner of proceeding in each of them; and the laws enacted both by Common-Council and Parliament, for the citizens conduct at elections, both in the Common-Hall and in wardmotes.V. The present state of learning, colleges,inns of court, and public schools. VI. The public buildings, palaces, public offices, and meeting-houses of every denomination; and full and particular accounts of all the hospitals, almshouses, and other charitable foundations, and bridges. VII. Both Houses of Parliament, the courts of law at Westminster, the British Musŭm, and the ancient and present state and curiosities of the Tower of London and Westminster-Abbey. Improved with a great variety of authentic pieces, relative to the alterations in the political, ecclesiastical, and commercial state, since the first foundation of this metropolis; which, by the surprizing increase of buildings and inhabitants, carries the appearance of a large county. To which will be added, a continuation of the history down to the year 1770; and an accurate survey and description of all the alterations, additions and improvements made, by authority of Parliament, in the buildings, streets, roads, in and about this great metropolis: and so managed, that the purchasers of the former editions of this capital book (which, for its merit, is presented at the city's expence to every new alderman) may be supplied with them separate. to complete their books. In two volumes. Extracted from original recors preserved in the Tower, Rolls, Paper-Office, and Guildball; from acts of Parliament and acts of Common-Council, historians, ancient law-books, and many authentic pieces communicated by the learned in history, antiquities and municipal laws, to the editors of this work only. Conditions. I. This work (a great part of which is already printed) will be comprised in One Hundred and Twenty-three numbers, at Six-pence each, stitched in blue paper. II. That every number shall contain three sheets of letter-press, and one folio or broad-sheet plate, engraven by the best hands. III. That the first number will be published on Saturday the 28th of January, and continued regularly every Saturday till the whole is finished, and delivered at the Houses of Subscribers. Subscriptions are taken in, and proposals delivered, by J. Wilkie, in St. Paul's Church-yard; T. Lowndes, in Fleet-Street; G. Kearsly, in Ludgate-Street; and S. Bladon, in Pater-noster-Row; and by all the news-carriers in town and country. Of whom may be had, this work complete, in two volumes, folio, neatly bound in Calf and letter'd, Price 3l. 10s.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">[London :</subfield>
+      <subfield code="b">s.n.,</subfield>
+      <subfield code="c">1769]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">[2]p. ;</subfield>
+      <subfield code="c">1/2⁰.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Dated at head: London, January 24, 1769.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Subscriptions were "taken in, and proposals delivered, by J. Wilkie; T. Lowndes; G. Kearsly; and S. Bladon".</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="509">
+      <subfield code="a">DNB records a 3rd ed. of 'The history' which was published in 1760 and a 4th ed. which appeared in 1769. An edition of the work "considerably enlarged" by the Rev. John Entick appeared in 1775. Is this the prospectus for the 4th ed. or for the Entick work?</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="533">
+      <subfield code="a">Electronic reproduction.</subfield>
+      <subfield code="b">Farmington Hills, Mich. :</subfield>
+      <subfield code="c">Cengage Gale,</subfield>
+      <subfield code="d">2009.</subfield>
+      <subfield code="n">Available via the World Wide Web.</subfield>
+      <subfield code="n">Access limited by licensing agreements.</subfield>
+      <subfield code="7">s2009 miunns</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="510">
+      <subfield code="a">English Short Title Catalog,</subfield>
+      <subfield code="c">T199095.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Reproduction of original from Bodleian Library (Oxford).</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="590">
+      <subfield code="a">Access is available to the Temple Community through use of a networked computer with a Temple IP address</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">London (England)</subfield>
+      <subfield code="x">History</subfield>
+      <subfield code="v">Early works to 1800.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Prospectuses.</subfield>
+      <subfield code="2">rbgenr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="752">
+      <subfield code="a">Great Britain</subfield>
+      <subfield code="b">England</subfield>
+      <subfield code="d">London.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="773">
+      <subfield code="t">Eighteenth century collections online</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b4359203x</subfield>
+      <subfield code="b">w</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">w</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">100703</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">@</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 20:37:13</subfield>
+      <subfield code="e">b4359203x-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 11:45:18</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53377224580003811</subfield>
+      <subfield code="f">Full text online</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="c">Eighteenth Century collections online</subfield>
+      <subfield code="8">53377224580003811</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01009cam a2200337 a 4500</leader>
+    <controlfield tag="005">20180315125334.0</controlfield>
+    <controlfield tag="008">120423s2009 nyu b 001 0 eng</controlfield>
+    <controlfield tag="001">991034317849703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2012382453</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781439167342 (hardback)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1439167346 (hardback)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b54322911-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn852390260</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">DLC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">BF637.S8</subfield>
+      <subfield code="b">C37 2009</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Carnegie, Dale,</subfield>
+      <subfield code="d">1888-1955.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">How to win friends and influence people /</subfield>
+      <subfield code="c">Dale Carnegie.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Simon and Schuster,</subfield>
+      <subfield code="c">2009.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xxviii, 291 p. ;</subfield>
+      <subfield code="c">22 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Success.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b54322911</subfield>
+      <subfield code="b">p</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pstk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">130627</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">130627</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-26 07:07:06</subfield>
+      <subfield code="e">b54322911-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 12:53:52</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">BF637.S8</subfield>
+      <subfield code="i">C37 2009</subfield>
+      <subfield code="8">22321326150003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22321326150003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">WORK_ORDER_DEPARTMENT</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026556704</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23321326140003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 12:53:52</subfield>
+      <subfield code="i">BF637.S8 C37 2009</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02870cam a2200373 a 4500</leader>
+    <controlfield tag="005">20180315125322.0</controlfield>
+    <controlfield tag="008">981020t19981981nyu b 001 0 eng d</controlfield>
+    <controlfield tag="001">991034282909703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0671027034</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9780671027032</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b38798657-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn492867435</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">ABG</subfield>
+      <subfield code="c">ABG</subfield>
+      <subfield code="d">VET</subfield>
+      <subfield code="d">BAKER</subfield>
+      <subfield code="d">CRH</subfield>
+      <subfield code="d">BTCTA</subfield>
+      <subfield code="d">YDXCP</subfield>
+      <subfield code="d">JED</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">PPT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">BF637.S8</subfield>
+      <subfield code="b">C37 1998</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Carnegie, Dale,</subfield>
+      <subfield code="d">1888-1955.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">How to win friends influence people /</subfield>
+      <subfield code="c">Dale Carnegie ; editorial consultant, Dorothy Carnegie ; editorial assistance, Arthur R. Pell.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2=" " tag="246">
+      <subfield code="a">How to win friends and influence people</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">Rev. ed.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Pocket Books,</subfield>
+      <subfield code="c">1998, c1981.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">260 p. ;</subfield>
+      <subfield code="c">21 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references (p. 251-252) and index.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="505">
+      <subfield code="a">Test</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Reprint. Originally published: New York : Simon  Schuster, 1981.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Success.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b38798657</subfield>
+      <subfield code="b">a</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">astk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">astk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">090707</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">07/07/09</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">RM</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-26 07:08:29</subfield>
+      <subfield code="e">b38798657-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 05:52:12</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">BF637.S8</subfield>
+      <subfield code="i">C37 1998</subfield>
+      <subfield code="8">22237444840003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22237444840003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOST_LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025440991</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23237444820003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 05:52:12</subfield>
+      <subfield code="i">BF637.S8 C37 1998</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+  </record>
 </collection>
