@@ -194,12 +194,9 @@ module ApplicationHelper
   end
 
   def aeon_request_button(items)
-    raw items.map { |item|
-      if item.library.include?("SCRC") && item.location.include?("rarestacks")
-        button_to("Request to View in Reading Room", aeon_request_url(item), class: "aeon-request btn btn-sm btn-primary")
-        #content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
-      end
-    }.join
+    if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
+      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request btn btn-sm btn-primary")
+    end
   end
 
   def total_items(results)
