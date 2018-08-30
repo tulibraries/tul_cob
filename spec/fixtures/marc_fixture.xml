@@ -29241,4 +29241,136 @@
       <subfield code="f">AMBLER</subfield>
     </datafield>
   </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>01888cam a2200313M 4500</leader>
+    <controlfield tag="005">20180529085423.0</controlfield>
+    <controlfield tag="008">171204s2018 onc b 001 0 eng d</controlfield>
+    <controlfield tag="001">991036900553803811</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1551383306</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781551383309</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)1013742223</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">YDX</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">YDX</subfield>
+      <subfield code="d">CDX</subfield>
+      <subfield code="d">NLC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="050">
+      <subfield code="a">LB1033</subfield>
+      <subfield code="b">.Y95 2018</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="4" tag="082">
+      <subfield code="a">371.102/3</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Yuill, Amanda,</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Reaching  teaching them all :</subfield>
+      <subfield code="b">making quick and lasting connections with every student in your classroom /</subfield>
+      <subfield code="c">Amanda Yuill.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2=" " tag="246">
+      <subfield code="a">Reaching and teaching them all</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Markham, Ontario :</subfield>
+      <subfield code="b">Pembroke,</subfield>
+      <subfield code="c">2018.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">119 pages ;</subfield>
+      <subfield code="c">28 cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">"This remarkable book shows you how to connect with students, get to know what makes them tick, and what makes them behave and learn the way they do (or don't!). The conversational styles is supported by well-researched information on students with challenges, and those students who challenge a teacher. This practical book shows you how to use body language, humor, shared experiences, and curriculum to engage students, manage the classroom, and support learning. A comprehensive approach to improving the learning environment in your classroom, the book is full of fresh strategies for connecting with students and offers valuable insights into applying these strategies in classrooms, both with groups and one-on-one."--</subfield>
+      <subfield code="c">Provided by publisher.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Teacher-student relationships.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Effective teaching.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="776">
+      <subfield code="a">Yuill, Amanda, author.</subfield>
+      <subfield code="t">Reaching teaching them all.:</subfield>
+      <subfield code="d">Markham, Ontario : Pembroke, 2018.</subfield>
+      <subfield code="w">(CaOONL)20179080083</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="945">
+      <subfield code="i">39074026623983</subfield>
+      <subfield code="k">MAIN</subfield>
+      <subfield code="l">stacks</subfield>
+      <subfield code="z">090</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)1013742223</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180514152428.0</subfield>
+      <subfield code="c">YL</subfield>
+      <subfield code="d">TEU</subfield>
+      <subfield code="s">CIP</subfield>
+      <subfield code="e">MARCIVE</subfield>
+      <subfield code="e">WCAT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-06-20 18:13:00</subfield>
+      <subfield code="e">991036900553803811</subfield>
+      <subfield code="d">OCLC</subfield>
+      <subfield code="f">20180524100925.0</subfield>
+      <subfield code="a">2018-04-26 14:43:01</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">LB1033</subfield>
+      <subfield code="i">.Y95 2018</subfield>
+      <subfield code="8">22423620830003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22423620830003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOST_LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026623983</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23423620820003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-04-26 14:44:39</subfield>
+      <subfield code="i">LB1033 .Y95 2018</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
 </collection>
