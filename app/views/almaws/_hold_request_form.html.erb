@@ -10,7 +10,7 @@
     <% if @equipment.empty? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, "Pickup Location:") %>
+          <%= label("", :pickup_location, "Pickup Location: *") %>
           <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
@@ -19,7 +19,7 @@
     <% if @equipment.present? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, "Pickup Location:") %>
+          <%= label("", :pickup_location, "Pickup Location: *") %>
           <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
@@ -29,7 +29,7 @@
     <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:description, "Description:") %>
+          <%= form.label(:description, "Description: *") %>
           <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
         </div>
       </div>

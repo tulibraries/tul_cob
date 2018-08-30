@@ -28973,4 +28973,272 @@
       <subfield code="8">53377224580003811</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01009cam a2200337 a 4500</leader>
+    <controlfield tag="005">20180315125334.0</controlfield>
+    <controlfield tag="008">120423s2009 nyu b 001 0 eng</controlfield>
+    <controlfield tag="001">991034317849703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2012382453</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781439167342 (hardback)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1439167346 (hardback)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b54322911-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn852390260</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">DLC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">BF637.S8</subfield>
+      <subfield code="b">C37 2009</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Carnegie, Dale,</subfield>
+      <subfield code="d">1888-1955.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">How to win friends and influence people /</subfield>
+      <subfield code="c">Dale Carnegie.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Simon and Schuster,</subfield>
+      <subfield code="c">2009.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xxviii, 291 p. ;</subfield>
+      <subfield code="c">22 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Success.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b54322911</subfield>
+      <subfield code="b">p</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pstk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn789662356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">130627</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">1</subfield>
+      <subfield code="c">130627</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-26 07:07:06</subfield>
+      <subfield code="e">b54322911-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 12:53:52</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">BF637.S8</subfield>
+      <subfield code="i">C37 2009</subfield>
+      <subfield code="8">22321326150003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22321326150003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">WORK_ORDER_DEPARTMENT</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026556704</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23321326140003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 12:53:52</subfield>
+      <subfield code="i">BF637.S8 C37 2009</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02870cam a2200373 a 4500</leader>
+    <controlfield tag="005">20180315125322.0</controlfield>
+    <controlfield tag="008">981020t19981981nyu b 001 0 eng d</controlfield>
+    <controlfield tag="001">991034282909703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0671027034</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9780671027032</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b38798657-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn492867435</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">ABG</subfield>
+      <subfield code="c">ABG</subfield>
+      <subfield code="d">VET</subfield>
+      <subfield code="d">BAKER</subfield>
+      <subfield code="d">CRH</subfield>
+      <subfield code="d">BTCTA</subfield>
+      <subfield code="d">YDXCP</subfield>
+      <subfield code="d">JED</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">PPT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">BF637.S8</subfield>
+      <subfield code="b">C37 1998</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Carnegie, Dale,</subfield>
+      <subfield code="d">1888-1955.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">How to win friends influence people /</subfield>
+      <subfield code="c">Dale Carnegie ; editorial consultant, Dorothy Carnegie ; editorial assistance, Arthur R. Pell.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2=" " tag="246">
+      <subfield code="a">How to win friends and influence people</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">Rev. ed.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Pocket Books,</subfield>
+      <subfield code="c">1998, c1981.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">260 p. ;</subfield>
+      <subfield code="c">21 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references (p. 251-252) and index.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="505">
+      <subfield code="a">Test</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Reprint. Originally published: New York : Simon  Schuster, 1981.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Success.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b38798657</subfield>
+      <subfield code="b">a</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">astk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">astk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm40137494</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">090707</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">07/07/09</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">RM</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-26 07:08:29</subfield>
+      <subfield code="e">b38798657-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 05:52:12</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">BF637.S8</subfield>
+      <subfield code="i">C37 1998</subfield>
+      <subfield code="8">22237444840003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22237444840003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOST_LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025440991</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23237444820003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 05:52:12</subfield>
+      <subfield code="i">BF637.S8 C37 1998</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+  </record>
 </collection>

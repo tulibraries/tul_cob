@@ -42,6 +42,18 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       it "sets the default offset to zero" do
         expect(primo_central_parameters["query"]["offset"]).to eq(0)
       end
+
+      it "sets a default sort field" do
+        expect(primo_central_parameters["query"]["sort"]).to eq("rank")
+      end
+    end
+
+    context "with sort param override" do
+      let(:params) { ActionController::Parameters.new(q: "foo", sort: "bar") }
+
+      it "overrides the default sort field" do
+        expect(primo_central_parameters["query"]["sort"]).to eq("bar")
+      end
     end
 
     context "param :id is searched" do

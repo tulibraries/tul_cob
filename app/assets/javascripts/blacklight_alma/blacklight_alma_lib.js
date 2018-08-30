@@ -34,13 +34,23 @@ var BlacklightAlma = function (options) {
        $(availButton).show();
      }
      else {
-       $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
-       $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-warning collapsed collapse-button");
-       $(availButton).show();
+       unavailableItems(id);
      }
    }
  }
+
+ noHoldingsAvailabilityButton = function(id) {
+   unavailableItems(id);
+  }
+
+  unavailableItems = function(id) {
+    var availButton = $("button[data-availability-ids='" + id + "']");
+
+    $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
+    $(availButton).removeClass("btn-default");
+    $(availButton).addClass("btn-warning collapsed collapse-button");
+    $(availButton).show();
+  }
 
  availabilityInfo = function (holding) {
    var library = holding['library'];
@@ -155,6 +165,8 @@ var BlacklightAlma = function (options) {
                        return baObj.formatHolding(holding);
                      });
                      return baObj.formatHoldings(formatted);
+                 } else {
+                   noHoldingsAvailabilityButton(id);
                  }
              }
          }).join("<br/>");
@@ -370,3 +382,18 @@ var BlacklightAlma = function (options) {
          $(element).html("<span style='color: red'>No status available for this item</span>");
      });
  };
+
+ /** This is a polyfill to get rid of a console error in Internet Explorer 11
+ that is preventing the availability information from being shown
+ */
+if (!String.prototype.includes) {
+ String.prototype.includes = function(value){
+   return this.indexOf(value)>-1
+ }
+}
+
+if (!Array.prototype.includes) {
+ Array.prototype.includes = function(value){
+   return this.indexOf(value)>-1||!1
+ }
+}

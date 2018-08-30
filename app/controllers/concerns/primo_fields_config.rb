@@ -48,6 +48,12 @@ module PrimoFieldsConfig
       config.add_show_field :lccn, label: "LCCN", refwork_tag: :SN
       config.add_show_field :doi, label: "DOI"
       config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code, refwork_tag: :LA
+
+      # Sort fields
+      config.add_sort_field :rank, label: "relevance"
+      config.add_sort_field :title, label: "title (A to Z)"
+      config.add_sort_field :date, label: "date (new to old)"
+      config.add_sort_field :author, label: "author/creator (A to Z)"
     end
   end
 end
