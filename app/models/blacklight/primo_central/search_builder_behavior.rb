@@ -8,6 +8,7 @@ module Blacklight::PrimoCentral
       per_page = (blacklight_params["per_page"] || blacklight_config.default_per_page).to_i
       page = (blacklight_params["page"] || 1).to_i
       offset = (per_page * page) - per_page
+      sort = blacklight_params["sort"] || "rank"
 
       value = blacklight_params[:q]
       value = "*" if value.nil? || value.empty?
@@ -19,7 +20,7 @@ module Blacklight::PrimoCentral
           primo_central_parameters[:query] = {
             limit: per_page,
             offset:  offset,
-            sort: params[:sort],
+            sort: sort,
             q: { value: queries },
           }
         else
@@ -38,6 +39,7 @@ module Blacklight::PrimoCentral
         primo_central_parameters[:query] = {
           limit: per_page,
           offset:  offset,
+          sort: sort,
           q: { value: value }
         }
       end
