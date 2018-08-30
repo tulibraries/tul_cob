@@ -30,7 +30,7 @@ module Blacklight::PrimoCentral::DocumentExport
         .show_fields.select { |k, v| v[:refwork_tag] }
         .map { |k, v| [k, v[:refwork_tag]] }.to_h
 
-      { "title" => :P1, "pnxId" => :ID }
+      { "title" => :T1, "pnxId" => :ID }
         .merge(config_tags)
     end
 end
