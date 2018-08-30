@@ -56,6 +56,7 @@ class CatalogController < ApplicationController
         pub_date
         title_series_display
         title_statement_display
+        title_truncated_display
         title_uniform_display
         isbn_display
         lccn_display
@@ -207,7 +208,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_statement_truncated"
+    config.index.title_field = "title_truncated_display"
     config.index.display_type_field = "format"
 
     # solr field configuration for document/show views
