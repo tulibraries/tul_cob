@@ -374,10 +374,14 @@ var BlacklightAlma = function (options) {
  /** This is a polyfill to get rid of a console error in Internet Explorer 11
  that is preventing the availability information from being shown
  */
+if (!String.prototype.includes) {
  String.prototype.includes = function(value){
    return this.indexOf(value)>-1
  }
+}
 
+if (!String.prototype.includes) {
  Array.prototype.includes = function(value){
    return this.indexOf(value)>-1||!1
  }
+}
