@@ -29373,4 +29373,413 @@
       <subfield code="f">MAIN</subfield>
     </datafield>
   </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>04171cam a2200493 i 4500</leader>
+    <controlfield tag="005">20180717144339.0</controlfield>
+    <controlfield tag="008">170216t20172017nyua b 001 0 eng</controlfield>
+    <controlfield tag="001">991036865390903811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2016056756</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="019">
+      <subfield code="a">987352267</subfield>
+    <subfield code="a">987353003</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781594205583</subfield>
+      <subfield code="q">(hardcover)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1594205582</subfield>
+      <subfield code="q">(hardcover)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="z">9781101621509</subfield>
+      <subfield code="q">(ebook)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="z">1101621508</subfield>
+      <subfield code="q">(ebook)</subfield>
+    </datafield>
+    <datafield ind1="3" ind2=" " tag="024">
+      <subfield code="a">9781594205583</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="024">
+      <subfield code="a">40027175488</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)973480868</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">OU/DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">OSU</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">VTL</subfield>
+      <subfield code="d">YDX</subfield>
+      <subfield code="d">OQX</subfield>
+      <subfield code="d">ZHB</subfield>
+      <subfield code="d">CLE</subfield>
+      <subfield code="d">IGA</subfield>
+      <subfield code="d">CZA</subfield>
+      <subfield code="d">NDD</subfield>
+      <subfield code="d">AZD</subfield>
+      <subfield code="d">YUS</subfield>
+      <subfield code="d">HRM</subfield>
+      <subfield code="d">IPS</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">RIU</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">U3G</subfield>
+      <subfield code="d">DHA</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="050">
+      <subfield code="a">H61.27</subfield>
+      <subfield code="b">.W47 2017</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">303.44</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">West, Geoffrey B.,</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Scale :</subfield>
+      <subfield code="b">the universal laws of growth, innovation, sustainability, and the pace of life in organisms, cities, economies, and companies /</subfield>
+      <subfield code="c">Geoffrey West.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Penguin Press,</subfield>
+      <subfield code="c">2017.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="264">
+      <subfield code="c">©2017</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">479 pages :</subfield>
+      <subfield code="b">illustrations ;</subfield>
+      <subfield code="c">25 cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references (pages 457-464) and index.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="505">
+      <subfield code="a">The big picture -- The measure of all things: an introduction to scaling -- The simplicity, unity, and complexity of life -- The fourth dimension of life: growth, aging, and death -- From the Anthropocene to the Urbanocene: a planet dominated by cities -- Prelude to a science of cities -- Toward a science of cities -- Consequences and predictions: from mobility and the pace of life to social connectivity, diversity, metabolism, and growth -- Toward a science of companies -- The vision of a grand unified theory of sustainability.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="c">Provided by publisher.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Scaling (Social sciences)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Science</subfield>
+      <subfield code="x">Philosophy.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Evolution (Biology)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Evolution</subfield>
+      <subfield code="x">Molecular aspects.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Urban ecology (Sociology)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Social sciences</subfield>
+      <subfield code="x">Methodology.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Sustainable development.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="776">
+      <subfield code="i">Online version:</subfield>
+      <subfield code="a">West, Geoffrey B.</subfield>
+      <subfield code="t">Scale.</subfield>
+      <subfield code="d">New York : Penguin Press, [2018]</subfield>
+      <subfield code="z">9781101621509</subfield>
+      <subfield code="w">(DLC) 2017008356</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="960">
+      <subfield code="k">MAIN</subfield>
+      <subfield code="g">MONOGRAPH</subfield>
+      <subfield code="l">stacks</subfield>
+      <subfield code="o">1</subfield>
+      <subfield code="q">012518</subfield>
+      <subfield code="s">24.15</subfield>
+      <subfield code="u">1pphf</subfield>
+      <subfield code="v">coutt</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="961">
+      <subfield code="f">acqrat</subfield>
+      <subfield code="i">35585163</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)973480868</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180216</subfield>
+      <subfield code="d">TEU</subfield>
+      <subfield code="c">COUTTS-SR</subfield>
+      <subfield code="e">MARCIVE</subfield>
+      <subfield code="e">WCAT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-23 16:56:29</subfield>
+      <subfield code="e">991036865390903811</subfield>
+      <subfield code="d">OCLC</subfield>
+      <subfield code="f">20180222150107.0</subfield>
+      <subfield code="a">2018-01-25 20:41:16</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">H61.27</subfield>
+      <subfield code="i">.W47 2017</subfield>
+      <subfield code="8">22409387360003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22409387360003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">MISSING</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026732214</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23409387350003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-01-25 20:41:39</subfield>
+      <subfield code="i">H61.27 .W47 2017</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>03136cam a2200505 i 4500</leader>
+    <controlfield tag="005">20180726090201.0</controlfield>
+    <controlfield tag="008">170616t20172017nyua b 001 0 eng</controlfield>
+    <controlfield tag="001">991036915609703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2017028164</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="019">
+      <subfield code="a">993599844</subfield>
+      <subfield code="a">993999278</subfield>
+      <subfield code="a">1009018379</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781454850120</subfield>
+      <subfield code="q">(alk. paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1454850124</subfield>
+      <subfield code="q">(alk. paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)992437087</subfield>
+      <subfield code="z">(OCoLC)993599844</subfield>
+      <subfield code="z">(OCoLC)993999278</subfield>
+      <subfield code="z">(OCoLC)1009018379</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">DLC</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">OCLCF</subfield>
+      <subfield code="d">GZL</subfield>
+      <subfield code="d">CLU</subfield>
+      <subfield code="d">NDL</subfield>
+      <subfield code="d">YDX</subfield>
+      <subfield code="d">TULAW</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="049">
+      <subfield code="a">TULA</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">346.7302/9</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">KF1345.Z9</subfield>
+      <subfield code="b">K6 2017</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Kleinberger, Daniel S.,</subfield>
+      <subfield code="d">1950-</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Agency, partnerships, and LLCs /</subfield>
+      <subfield code="c">Daniel S. Kleinberger, Professor Emeritus - Mitchell Hamline School of Law; Research Director, Joint Editorial Board on Uniform Unincorporated Organization Acts; reporter, Uniform Law Commission Drafting Committee on Uniform Protected Series Act.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2=" " tag="246">
+      <subfield code="a">Agency, partnerships, and limited liability companies</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">Fifth edition.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Wolters Kluwer,</subfield>
+      <subfield code="c">[2017]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="264">
+      <subfield code="c">©2017</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xliii, 707 pages :</subfield>
+      <subfield code="b">illustrations ;</subfield>
+      <subfield code="c">26 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="490">
+      <subfield code="a">Examples explanations</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Agency (Law)</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Outlines, syllabi, etc.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Partnership</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Outlines, syllabi, etc.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Private companies</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Outlines, syllabi, etc.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Agency (Law)</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00800198</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Partnership.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01054190</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Private companies.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01077461</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">United States.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01204155</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Outlines and syllabi.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423836</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Study guides.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423888</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Examples explanations series.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn992437087</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="994">
+      <subfield code="a">C0</subfield>
+      <subfield code="b">TULAW</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180702115518.0</subfield>
+      <subfield code="c">SEY</subfield>
+      <subfield code="d">TULAW</subfield>
+      <subfield code="s">DLC</subfield>
+      <subfield code="e">MARCIVE</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-07-26 13:02:01</subfield>
+      <subfield code="e">ocn992437087</subfield>
+      <subfield code="d">MARCIVE</subfield>
+      <subfield code="f">20180725094507.0</subfield>
+      <subfield code="a">2018-07-02 15:55:37</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">LAW</subfield>
+      <subfield code="c">reserve</subfield>
+      <subfield code="h">KF1345.Z9</subfield>
+      <subfield code="i">K6 2017</subfield>
+      <subfield code="8">22407269680003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22407269680003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">WORK_ORDER_DEPARTMENT</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">reserve</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074803601210</subfield>
+      <subfield code="e">reserve</subfield>
+      <subfield code="8">23407269670003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-01-10 19:26:17</subfield>
+      <subfield code="i">KF1345.Z9 K6 2017</subfield>
+      <subfield code="d">LAW</subfield>
+      <subfield code="p">2018-05-15 15:59:48</subfield>
+      <subfield code="f">LAW</subfield>
+    </datafield>
+  </record>
 </collection>
