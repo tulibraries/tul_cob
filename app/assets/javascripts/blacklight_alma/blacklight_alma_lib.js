@@ -383,18 +383,3 @@ var BlacklightAlma = function (options) {
         $(element).html("<span style='color: red'>No status available for this item</span>");
      });
  };
-
- /** This is a polyfill to get rid of a console error in Internet Explorer 11
- that is preventing the availability information from being shown
- */
-if (!String.prototype.includes) {
- String.prototype.includes = function(value){
-   return this.indexOf(value)>-1
- }
-}
-
-if (!Array.prototype.includes) {
- Array.prototype.includes = function(value){
-   return this.indexOf(value)>-1||!1
- }
-}
