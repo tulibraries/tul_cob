@@ -15,6 +15,7 @@ default: &default
   ROME: "Rome Campus Library"
   SCRC: "Special Collections Research Center"
   EMPTY: "Other"
+  KIOSK: "Laptop Kiosks"
 
 test:
   <<: *default
