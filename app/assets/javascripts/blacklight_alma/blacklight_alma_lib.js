@@ -157,6 +157,7 @@ var BlacklightAlma = function (options) {
          }
          // jquery's map auto-flattens and strips out nulls
          var html = $.map(ids, function(id) {
+
              if (baObj.availability[id]) {
                  var holdings = baObj.availability[id]['holdings'] || [];
                  if (holdings.length > 0) {
@@ -371,7 +372,7 @@ var BlacklightAlma = function (options) {
      var baObj = this;
      for(key in baObj.availabilityRequestsFinished) {
          if(!baObj.availabilityRequestsFinished[key]) {
-             noHoldingsAvailabilityButton(key);
+
              setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
              return;
          }
@@ -380,6 +381,7 @@ var BlacklightAlma = function (options) {
      $(".availability-ajax-load").filter(function(index, element) {
          return ! $(element).hasClass("availability-ajax-loaded");
      }).each(function (index, element) {
+        noHoldingsAvailabilityButton($(element).data("availabilityIds"));
         $(element).html("<span style='color: red'>No status available for this item</span>");
      });
  };
