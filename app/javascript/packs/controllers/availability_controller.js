@@ -25,12 +25,15 @@ export default class extends Controller {
           this.panelTarget.innerHTML = html
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
-          var mms_id = $(this.buttonTarget).data("availability-ids");
-          var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
           $(this.requestTarget).removeClass("hidden");
-          $(this.hrefTarget).attr("href", requests_url);
           this.requestTarget.classList.add("search-results-request-btn")
       })
     }
+  }
+
+  modal() {
+    var mms_id = $(this.buttonTarget).data("availability-ids");
+    var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
+    $(this.hrefTarget).attr("href", requests_url);
   }
 }

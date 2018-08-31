@@ -10,6 +10,11 @@
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document_counter %>, availability.button" id="available_button-<%=  document_counter %>">
           <span role="spin" aria-expanded="false">Loading...</span>
         </button>
+        <div data-target="availability.spinner" class="spinner">
+          <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+          Loading Availability
+        </div>
+
         <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-controller="requests" data-target="show.request, availability.request">
           <% if user_signed_in? %>
             <%= request_modal(document.id, document_counter, @pickup_locations, @request_level) %>
@@ -18,10 +23,7 @@
           <% end %>
         </div>
       </div>
-      <div data-target="availability.spinner" class="spinner">
-        <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
-        Loading Availability
-      </div>
+
       <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document_counter %>" class="collapse panel-content avail-container index-avail-container">
         <div class="table-wrapper hidden">
           <div data-target="availability.panel"></div>
