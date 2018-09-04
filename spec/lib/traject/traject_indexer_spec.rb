@@ -605,8 +605,7 @@ RSpec.describe Traject::Macros::Custom do
 
     context "when a record doesn't have subject topics" do
       let(:path) { "subject_topic_missing.xml" }
-
-      it "does not map anything to the field" do
+      it "does not map a url_more_links_display" do
         expect(subject.map_record(records[0])).to eq({})
       end
     end
@@ -659,7 +658,7 @@ RSpec.describe Traject::Macros::Custom do
       let(:path) { "subject_topic.xml" }
       it "maps data from 650 to the expected field" do
         expect(subject.map_record(records[0])).to eq(
-          "subject_topic_facet" => ["The Queen is Dead--Meat is Murder"]
+          "subject_topic_facet" => ["The Queen is Dead — Meat is Murder"]
         )
       end
 

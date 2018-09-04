@@ -29782,4 +29782,122 @@
       <subfield code="f">LAW</subfield>
     </datafield>
   </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>01204nam a2200289 a 4500</leader>
+    <controlfield tag="005">20180828111331.0</controlfield>
+    <controlfield tag="008">180111s2018 pau |r 000 p eng d</controlfield>
+    <controlfield tag="001">991036860006003811</controlfield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us--</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">PS595.T78</subfield>
+      <subfield code="b">N5 2017</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Not our president /</subfield>
+      <subfield code="c">edited by Moonstone Press.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="1" tag="246">
+      <subfield code="a">Philadelphia says: not our president.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">First edition</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Philadelphia, PA :</subfield>
+      <subfield code="b">Moonstone Press,</subfield>
+      <subfield code="c">2017.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">38 unnumbered pages ;</subfield>
+      <subfield code="c">21 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Cover title: Philadelphia says: not our president</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">A collection of poems by forty authors expressing their disbelief and displeasure over the presidency of Mr. Trump.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">"Cover design layout: Justine Kohn" --Title page verso</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="600">
+      <subfield code="a">Trump, Donald,</subfield>
+      <subfield code="d">1946-</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Political poetry, American.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">United States</subfield>
+      <subfield code="x">Politics and government</subfield>
+      <subfield code="y">21st century</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Opposition (Political science)</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Poetry.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Moonstone Arts Center</subfield>
+      <subfield code="b">Moonstone Press,</subfield>
+      <subfield code="e">editor,</subfield>
+      <subfield code="e">publisher.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180827111650.0</subfield>
+      <subfield code="c">AB</subfield>
+      <subfield code="d">TEU</subfield>
+      <subfield code="s">ORIG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-08-28 15:13:31</subfield>
+      <subfield code="e">991036860006003811</subfield>
+      <subfield code="d">01TULI_INST</subfield>
+      <subfield code="a">2018-01-11 18:02:30</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">BLOCKSON</subfield>
+      <subfield code="c">rarestacks</subfield>
+      <subfield code="h">PS595.T78</subfield>
+      <subfield code="i">N5 2017</subfield>
+      <subfield code="8">22407248670003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22407248670003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">rarestacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025687989</subfield>
+      <subfield code="e">rarestacks</subfield>
+      <subfield code="8">23407248690003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="c">pamphlet</subfield>
+      <subfield code="a">3</subfield>
+      <subfield code="q">2018-01-11 18:03:46</subfield>
+      <subfield code="i">PS595.T78 N5 2017</subfield>
+      <subfield code="d">BLOCKSON</subfield>
+      <subfield code="f">BLOCKSON</subfield>
+    </datafield>
+  </record>
 </collection>
