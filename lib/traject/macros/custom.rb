@@ -37,23 +37,7 @@ module Traject
       def creator_role_trim_punctuation(role)
         role.sub(/ *[ ,.\/;:] *\Z/, "")
       end
-
-      def process_subjects(record, fields)
-        subjects = []
-        Traject::MarcExtractor.cached(fields).collect_matching_lines(record) do |field, spec, extractor|
-          subject = extractor.collect_subfields(field, spec).first
-          unless subject.nil?
-            field.subfields.each do |s_field|
-              subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == "v" || s_field.code == "x" || s_field.code == "y" || s_field.code == "z")
-            end
-            subject = subject.split(SEPARATOR)
-            subject = subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
-            subjects << subject
-          end
-        end
-        subjects
-      end
-
+      
       def extract_creator
         lambda do |rec, acc|
           rec.fields("100").each do |f|
@@ -131,6 +115,24 @@ module Traject
             plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
+        end
+      end
+
+      def extract_subject_display
+        lambda do |rec, acc|
+          subjects = []
+          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            unless subject.nil?
+              field.subfields.each do |s_field|
+                subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == 'v' || s_field.code == 'x' || s_field.code == 'y' || s_field.code == 'z')
+              end
+            subject = subject.split(SEPARATOR)
+            subjects << subject.map{ |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+            subjects
+          end
+          acc.replace(subjects)
         end
       end
 
