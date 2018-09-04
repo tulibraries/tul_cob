@@ -44,11 +44,11 @@ module Traject
           subject = extractor.collect_subfields(field, spec).first
           unless subject.nil?
             field.subfields.each do |s_field|
-              subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == 'v' || s_field.code == 'x' || s_field.code == 'y' || s_field.code == 'z')
+              subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == "v" || s_field.code == "x" || s_field.code == "y" || s_field.code == "z")
             end
-          subject = subject.split(SEPARATOR)
-          subject = subject.map{ |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
-          subjects << subject
+            subject = subject.split(SEPARATOR)
+            subject = subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            subjects << subject
           end
         end
         subjects
