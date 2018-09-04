@@ -9,7 +9,7 @@ module Traject
       ARCHIVE_IT_LINKS = "archive-it.org/collections/"
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
-      SEPARATOR = "--"
+      SEPARATOR = " — "
 
       def get_xml
         lambda do |rec, acc|
@@ -36,6 +36,22 @@ module Traject
 
       def creator_role_trim_punctuation(role)
         role.sub(/ *[ ,.\/;:] *\Z/, "")
+      end
+
+      def process_subjects(record, fields)
+        subjects = []
+        Traject::MarcExtractor.cached(fields).collect_matching_lines(record) do |field, spec, extractor|
+          subject = extractor.collect_subfields(field, spec).first
+          unless subject.nil?
+            field.subfields.each do |s_field|
+              subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == 'v' || s_field.code == 'x' || s_field.code == 'y' || s_field.code == 'z')
+            end
+          subject = subject.split(SEPARATOR)
+          subject = subject.map{ |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+          subjects << subject
+          end
+        end
+        subjects
       end
 
       def extract_creator
@@ -115,33 +131,6 @@ module Traject
             plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
             acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
           end
-        end
-      end
-
-      def extract_subject_display
-        lambda do |rec, acc|
-          name_fields = "600abcdefghklmnopqrstu:610abcdefghklmnoprstu:611acdefghjklnpqstu:630adefghklmnoprst:648a:650abcdeg:651aeg:653a:654abce:655abc:656ak:657a:690abcdeg"
-          description_fields = "600vxyz:610vxyz:611vxyz:630vxyz:648xvyz:650vxyz:651vxyz:653:654vyz:655vxyz:656vxyz:657vxyz:690vxyz"
-
-          names = Traject::MarcExtractor.cached(name_fields)
-            .collect_matching_lines(rec) do |field, spec, extractor|
-            extractor.collect_subfields(field, spec).map { |f|
-              Traject::Macros::Marc21.trim_punctuation(f)
-            }
-          end
-
-          descriptions = Traject::MarcExtractor.cached(description_fields, separator: " — ")
-            .collect_matching_lines(rec) do |field, spec, extractor|
-            extractor.collect_subfields(field, spec).map { |f|
-              Traject::Macros::Marc21.trim_punctuation(f)
-            }
-          end
-
-          names.zip(descriptions).each do |item|
-            acc << item.compact.join(" — ")
-          end
-
-          acc
         end
       end
 
