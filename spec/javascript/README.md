@@ -117,7 +117,7 @@ describe('Math.pow(n, m)', () => {
 });
 ```
 
-[1](https://github.com/jsdom/jsdom)
-[2](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver)
-[3](https://github.com/stimulusjs/stimulus/issues/130#issuecomment-375298389)
-[4](https://github.com/megawac/MutationObserver.js)
+[1]: https://github.com/jsdom/jsdom
+[2]: https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver
+[3]: https://github.com/stimulusjs/stimulus/issues/130#issuecomment-375298389
+[4]: https://github.com/megawac/MutationObserver.js
