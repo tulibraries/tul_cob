@@ -4,7 +4,10 @@ class PrimoCentralDocument
   require "blacklight/primo_central"
 
   include Blacklight::PrimoCentral::Document
+  include Blacklight::Configurable
+  include PrimoFieldsConfig
 
+  # Email uses semantic field mappings below to generate the body of an email.
   self.unique_key = :pnxId
   field_semantics.merge!(
     title: "title" ,
@@ -17,8 +20,7 @@ class PrimoCentralDocument
     doi: "doi",
   )
 
-  # Email uses the semantic field mappings below to generate the body of an email.
-  PrimoCentralDocument.use_extension(Blacklight::Document::ArticleEmail)
-
-  PrimoCentralDocument.use_extension(Blacklight::Document::Sms)
+  use_extension Blacklight::PrimoCentral::DocumentExport
+  use_extension Blacklight::Document::ArticleEmail
+  use_extension Blacklight::Document::Sms
 end

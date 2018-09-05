@@ -4,6 +4,27 @@ require "rails_helper"
 
 RSpec.describe PrimoCentralDocument, type: :model do
   let (:subject) { PrimoCentralDocument.new(doc, nil) }
+  let(:doc) { Hash.new }
+
+  it "is configurable" do
+    expect(subject.blacklight_config).to_not be_nil
+  end
+
+  it "shares field configurations with the primo controller" do
+    doc_config = subject.blacklight_config
+    controller_config = (PrimoCentralController.new).blacklight_config
+
+    expect(doc_config.show_fields).to eql(controller_config.show_fields)
+    expect(doc_config.index_fields).to eql(controller_config.index_fields)
+  end
+
+  describe "#export_as_refworks" do
+    context "simple document" do
+      it "exports a refworks tagged formatted string" do
+        expect(subject.export_as_refworks).to eql("RT unknown")
+      end
+    end
+  end
 
   describe "#has_direct_link?" do
     context "document is completely empty" do
