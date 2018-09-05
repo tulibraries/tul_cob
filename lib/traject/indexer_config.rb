@@ -57,6 +57,7 @@ to_field("format", marc_formats, &normalize_format)
 # Title fields
 
 to_field "title_statement_display", extract_marc("245abcfgknps", alternate_script: false)
+to_field "title_truncated_display", extract_marc("245abcfgknps", alternate_script: false), &truncate(300)
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
 to_field "title_uniform_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: false)
 to_field "title_uniform_vern_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: :only)
