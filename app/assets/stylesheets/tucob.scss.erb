@@ -150,6 +150,11 @@ input[type="radio"] + label {
 .pub-date-separator {
   text-align:center;
   padding-top: 6px;
+  margin-left: 10px;
+}
+
+#range_pub_date_sort_end {
+  margin-left: 10px;
 }
 
 .advanced-search-start-over, .advanced-search-start-over a:hover, .advanced-search-start-over a:focus {
@@ -157,6 +162,11 @@ input[type="radio"] + label {
     color: #A50030 !important;
     border-color: #ccc;
     margin-left: 4px;
+
+}
+
+.submit-buttons {
+  margin-right: 95px;
 }
 
 #stimulus-warning {
@@ -256,9 +266,6 @@ div.physical-holding-panel {
   padding: 8px;
   border-collapse: inherit;
   margin: 0 !important;
-}
-
-.other_libraries {
 }
 
 .online-panel-body {
@@ -660,6 +667,15 @@ ul.navbar-nav {
     background-color: #A50030!important;
     /*border-bottom: solid #fff 2px;*/
   }
+  .pub-date-separator {
+    margin-left: 0;
+  }
+  #range_pub_date_sort_end {
+    margin-left: 0;
+  }
+  .submit-buttons {
+      margin-right: 0;
+  }
 }
 @media(max-width:485px) {
   #user-util-links ul.navbar-nav, #user-util-links ul.navbar-nav li a  {
@@ -667,6 +683,9 @@ ul.navbar-nav {
     clear: left;
     /*float: left;*/
     padding: 4px 0 0 2px;
+  }
+  .submit-buttons {
+      margin-top: 20px;
   }
 }
 

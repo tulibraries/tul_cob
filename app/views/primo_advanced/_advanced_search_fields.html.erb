@@ -11,7 +11,7 @@
       <%= select_tag("operator_#{count}", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator_#{count}") %>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
     <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
     <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false", "data-target": "primo.q#{count}" %>
     </div>
