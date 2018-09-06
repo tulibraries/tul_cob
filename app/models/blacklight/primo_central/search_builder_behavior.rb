@@ -110,17 +110,31 @@ module Blacklight::PrimoCentral
 
       min = params.dig("range", "creationdate", "begin")
       max = params.dig("range", "creationdate", "end")
-      primo_central_parameters[:range] = OpenStruct.new(min: min, max: max)
+      range = YearRange.new(min, max)
+      primo_central_parameters[:range] = range
 
-      if (min && max && !min.empty? && !max.empty?)
-        primo_central_parameters[:query][:q].facet(
-          field: "searchcreationdate",
-          value: "[#{min} TO #{max}]",
-        )
-      end
+      primo_central_parameters[:query][:q].facet(
+        field: "searchcreationdate",
+        value: "#{range}",
+      )
     end
 
     private
+      class YearRange
+        attr_reader :min, :max
+
+        def initialize(min = nil, max = nil)
+          @min = min unless min.blank?
+          @max = max unless max.blank?
+        end
+
+        def to_s
+          min = @min || 0
+          max = @max || 9999
+          "[#{min} TO #{max}]"
+        end
+      end
+
       def to_primo_id_queries(values)
         values.map { |v|
           {

@@ -154,6 +154,9 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   end
 
   describe ".process_date_range_query" do
+    let (:range) { primo_central_parameters[:range] }
+    let (:facets) { primo_central_parameters[:query][:q].include_facets }
+
     before(:example) do
       subject.add_query_to_primo_central(primo_central_parameters)
       subject.set_query_field(primo_central_parameters)
@@ -163,55 +166,42 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
     context "range not provided" do
       it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: nil, max: nil))
+        expect(range.min).to be_nil
+        expect(range.max).to be_nil
       end
 
-      it "does not add a range facet to the search" do
-        expect(primo_central_parameters[:query][:q].include_facets).to be_nil
+      it "adds a default range facet" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[0 TO 9999]")
       end
     end
 
     context "only one range is provided" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: "0" } }
+        range:  { creationdate: { begin: 1 } }
       ) }
 
       it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: nil))
+        expect(range.min).to eq(1)
+        expect(range.max).to be_nil
       end
 
-      it "does not add a range facet to the search" do
-        expect(primo_central_parameters[:query][:q].include_facets).to be_nil
-      end
-    end
-
-    context "a range limit is empty" do
-      let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: "0", end: "" } }
-      ) }
-
-      it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: ""))
-      end
-
-      it "does not add a range facet to the search" do
-        expect(primo_central_parameters[:query][:q].include_facets).to be_nil
+      it "adds a default range facet" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
       end
     end
-
 
     context "both min and max range are provided" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: "0", end: "0" } }
+        range:  { creationdate: { begin: 1, end: 10 } }
       ) }
 
       it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: "0"))
+        expect(range.min).to eq(1)
+        expect(range.max).to eq(10)
       end
 
       it "adds a range facet to the search" do
-        facets = primo_central_parameters[:query][:q].include_facets
-        expect(facets).to eq("facet_searchcreationdate,exact,[0 TO 0]")
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 10]")
       end
     end
   end
