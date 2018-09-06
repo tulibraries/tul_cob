@@ -51,7 +51,7 @@
       </div>
     </div>
   <% end %>
-    
+
    <% if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? %>
       <p>This item cannot be requested from other Temple campuses.</p>
    <% end %>

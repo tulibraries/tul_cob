@@ -53,13 +53,29 @@ module CobAlma
     def self.valid_pickup_locations(items_list)
       pickup_locations = self.possible_pickup_locations
       libraries = self.avail_locations(items_list).split(",")
+
       if libraries.any?
         libraries.each do |lib|
           campus = self.determine_campus(lib)
           pickup_locations -= remove_by_campus(campus)
         end
       end
+      pickup_locations << self.reserve_or_reference(items_list)
       pickup_locations
+    end
+
+    def self.reserve_or_reference(items_list)
+      current_libraries = Hash[items_list.collect { |k,v|
+        v.map { |item|
+          [item.item_data.dig("library", "value"), item.item_data.dig("location", "value")]
+        }.flatten }]
+      locations = current_libraries.map { |k,v| v }
+
+      if locations.any? { |loc| loc == "reserve" || loc == "reference" }
+        pickup_locations = current_libraries.keys
+        no_kardon = pickup_locations.flatten.delete_if { |lib| lib == "KARDON" }
+      end
+      no_kardon
     end
 
     def self.equipment(items_list)

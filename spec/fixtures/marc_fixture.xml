@@ -29900,4 +29900,188 @@
       <subfield code="f">BLOCKSON</subfield>
     </datafield>
   </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>01393cam a2200433 a 4500</leader>
+    <controlfield tag="005">20170825204129.0</controlfield>
+    <controlfield tag="008">081024s2009 nyuab b 001 0 eng</controlfield>
+    <controlfield tag="001">991033204029703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2008046830</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9780205652198</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0205652190</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9780205652228</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0205652220</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b37630465-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn896985556</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)231588912</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn231588912</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn231588912</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">DLC</subfield>
+      <subfield code="d">YDX</subfield>
+      <subfield code="d">BTCTA</subfield>
+      <subfield code="d">BAKER</subfield>
+      <subfield code="d">YDXCP</subfield>
+      <subfield code="d">CDX</subfield>
+      <subfield code="d">DEBBG</subfield>
+      <subfield code="d">BDX</subfield>
+      <subfield code="d">OCLCF</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us---</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn231588912</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">JK276</subfield>
+      <subfield code="b">.A5475 2009</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">O'Connor, Karen,</subfield>
+      <subfield code="d">1952-</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">American government :</subfield>
+      <subfield code="b">roots and reform /</subfield>
+      <subfield code="c">Karen O'Connor, Larry J. Sabato.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">2009 ed.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">New York :</subfield>
+      <subfield code="b">Pearson Longman,</subfield>
+      <subfield code="c">c2009.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xxxvii, 796 p. :</subfield>
+      <subfield code="b">ill. (chiefly col.), maps ;</subfield>
+      <subfield code="c">28 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">United States</subfield>
+      <subfield code="x">Politics and government.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Political science.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01069781</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">United States.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01204155</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Sabato, Larry.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">160803</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b37630465</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pres</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn231588912</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">141106</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">11/06/2014</subfield>
+      <subfield code="s">RETRO</subfield>
+      <subfield code="c">CDC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-06-20 03:52:49</subfield>
+      <subfield code="e">b37630465-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 06:29:01</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">KARDON</subfield>
+      <subfield code="c">p_remote</subfield>
+      <subfield code="h">JK276</subfield>
+      <subfield code="i">.A5475 2009</subfield>
+      <subfield code="8">22248604510003811</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">reserve</subfield>
+      <subfield code="h">JK276</subfield>
+      <subfield code="i">.A5475 2009</subfield>
+      <subfield code="8">22248604530003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22248604510003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025114455</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23248604500003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 06:29:01</subfield>
+      <subfield code="i">JK276 .A5475 2009</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22248604530003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">reserve</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="e">reserve</subfield>
+      <subfield code="8">23248604520003811</subfield>
+      <subfield code="a">8</subfield>
+      <subfield code="q">2017-06-20 06:29:01</subfield>
+      <subfield code="i">JK276 .A5475 2009</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
 </collection>
