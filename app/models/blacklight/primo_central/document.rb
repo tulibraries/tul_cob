@@ -40,7 +40,7 @@ module Blacklight::PrimoCentral::Document
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
     end
 
-    @blacklight_config = options[:blacklight_config]
+    @blacklight_config = options&.dig(:blacklight_config)
     super(doc, options)
   end
 
