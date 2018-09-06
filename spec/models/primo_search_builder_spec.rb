@@ -204,6 +204,20 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 10]")
       end
     end
+
+    context "a range limit is empty" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "1", end: "" } }
+      ) }
+      it "adds a default range" do
+        expect(range.min).to eq("1")
+        expect(range.max).to be_nil
+      end
+
+      it "adds a range facet to the search" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
   end
 
   describe ".previous_and_next_document" do
