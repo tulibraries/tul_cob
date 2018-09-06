@@ -173,11 +173,11 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
     context "only one range is provided" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: 0 } }
+        range:  { creationdate: { begin: "0" } }
       ) }
 
       it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: 0, max: nil))
+        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: nil))
       end
 
       it "does not add a range facet to the search" do
@@ -185,13 +185,28 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
-    context "both min and max range are provided" do
+    context "a range limit is empty" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: 0, end: 0 } }
+        range:  { creationdate: { begin: "0", end: "" } }
       ) }
 
       it "adds a default range" do
-        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: 0, max: 0))
+        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: ""))
+      end
+
+      it "does not add a range facet to the search" do
+        expect(primo_central_parameters[:query][:q].include_facets).to be_nil
+      end
+    end
+
+
+    context "both min and max range are provided" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "0", end: "0" } }
+      ) }
+
+      it "adds a default range" do
+        expect(primo_central_parameters[:range]).to eq(OpenStruct.new(min: "0", max: "0"))
       end
 
       it "adds a range facet to the search" do

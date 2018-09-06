@@ -112,7 +112,7 @@ module Blacklight::PrimoCentral
       max = params.dig("range", "creationdate", "end")
       primo_central_parameters[:range] = OpenStruct.new(min: min, max: max)
 
-      if (min && max)
+      if (min && max && !min.empty? && !max.empty?)
         primo_central_parameters[:query][:q].facet(
           field: "searchcreationdate",
           value: "[#{min} TO #{max}]",
