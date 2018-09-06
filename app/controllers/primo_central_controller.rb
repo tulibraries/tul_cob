@@ -8,12 +8,14 @@ class PrimoCentralController < CatalogController
 
   helper_method :browse_creator
   helper_method :tags_strip
+  helper_method :solr_range_queries_to_a
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
   add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
+
 
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
@@ -45,5 +47,10 @@ class PrimoCentralController < CatalogController
 
   def tags_strip(args)
     args[:value].map { |v| helpers.strip_tags v }
+  end
+
+  # This method is required and used by blacklight_range_limit gem.
+  def solr_range_queries_to_a(solr_field)
+    @response[:stats][:stats_fields][solr_field][:data] || []
   end
 end
