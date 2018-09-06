@@ -15,8 +15,6 @@ class PrimoCentralController < CatalogController
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
 
-  helper_method :solr_range_queries_to_a
-
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -47,9 +45,5 @@ class PrimoCentralController < CatalogController
 
   def tags_strip(args)
     args[:value].map { |v| helpers.strip_tags v }
-  end
-
-  def solr_range_queries_to_a(solr_field)
-    @response[:stats][:stats_fields][solr_field][:data] || []
   end
 end
