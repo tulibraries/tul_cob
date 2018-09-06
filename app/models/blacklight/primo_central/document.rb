@@ -8,7 +8,9 @@ module Blacklight::PrimoCentral::Document
 
   delegate :url_helpers, to: "Rails.application.routes"
 
-  def initialize(doc, req = nil)
+  attr_reader :blacklight_config
+
+  def initialize(doc, options = {})
     @url = url(doc)
     @url_query = url_query
 
@@ -38,7 +40,8 @@ module Blacklight::PrimoCentral::Document
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
     end
 
-    super(doc, req)
+    @blacklight_config = options[:blacklight_config]
+    super(doc, options)
   end
 
   def has_direct_link?
