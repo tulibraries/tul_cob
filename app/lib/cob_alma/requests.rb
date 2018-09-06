@@ -65,11 +65,11 @@ module CobAlma
     end
 
     def self.reserve_or_reference(items_list)
-      current_libraries = Hash[items_list.collect { |k,v|
+      current_libraries = Hash[items_list.collect { |k, v|
         v.map { |item|
           [item.item_data.dig("library", "value"), item.item_data.dig("location", "value")]
         }.flatten }]
-      locations = current_libraries.map { |k,v| v }
+      locations = current_libraries.map { |k, v| v }
 
       if locations.any? { |loc| loc == "reserve" || loc == "reference" }
         pickup_locations = current_libraries.keys
