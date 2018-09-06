@@ -65,17 +65,12 @@ module CobAlma
     end
 
     def self.reserve_or_reference(items_list)
-      current_libraries = Hash[items_list.collect { |k, v|
+      current_libraries = items_list.collect { |k, v|
         v.map { |item|
-          [item.item_data.dig("library", "value"), item.item_data.dig("location", "value")]
-        }.flatten }]
-      locations = current_libraries.map { |k, v| v }
-
-      if locations.any? { |loc| loc == "reserve" || loc == "reference" }
-        pickup_locations = current_libraries.keys
-        no_kardon = pickup_locations.flatten.delete_if { |lib| lib == "KARDON" }
-      end
-      no_kardon
+          [item.item_data.dig("location", "value")]
+        }.flatten }
+      locations = items_list.keys.zip(current_libraries).to_h
+      pickup_locations = locations.each.map {|k,v|k if v.all? {|i| i == "reserve"}}.compact
     end
 
     def self.equipment(items_list)
