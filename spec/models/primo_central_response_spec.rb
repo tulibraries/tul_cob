@@ -9,7 +9,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     {}, {}, { blacklight_config: blacklight_config }
   )}
 
-  describe ".get_rafacets and no range" do
+  describe ".get_range_stats" do
     context "Empty response" do
       let(:stats) { response.get_range_stats([]) }
 
@@ -36,7 +36,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
         OpenStruct.new(facet_fields: { "creationdate" => facet_config })
       }
 
-      it "provides default empty stats" do
+      it "provides stats (empty varient)" do
         expect(stats).to eq(stats_fields: { "creationdate" => { min: 0, max: 0, missing: 0, data: [ { from: 0, to: 1, count: 0 } ] } })
       end
     end
@@ -55,7 +55,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
         OpenStruct.new(facet_fields: { "creationdate" => facet_config })
       }
 
-      it "provides default empty stats" do
+      it "provides expected stats" do
         expected = { "creationdate" => {
           min: 1973,
           max: 2012,
@@ -90,7 +90,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     }
 
     context "segments on outside left of data range" do
-      it "all segments have zero counts" do
+      it "outputs all segments with zero counts" do
         actual_segments = response.facet_segments("creationdate", 0, 4, data)
         expected_segments = [
           { from: 0, to: 1, count: 0 },
@@ -104,7 +104,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     end
 
     context "segments on outside right of data range" do
-      it "all segments have zero counts" do
+      it "outputs all segments with zero counts" do
         actual_segments = response.facet_segments("creationdate", 1990, 1994, data)
         expected_segments = [
           { from: 1990, to: 1991, count: 0 },
@@ -118,7 +118,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     end
 
     context "segments inside subset of data range" do
-      it "all segments have correct count" do
+      it "outputs all segments with expected count" do
         actual_segments = response.facet_segments("creationdate", 1980, 1984, data)
         expected_segments = [
           { from: 1980, to: 1981, count: 1 },
@@ -132,7 +132,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     end
 
     context "segments overlaps data range on both sides" do
-      it "all segments have correct count" do
+      it "outputs all segments with expected count" do
         actual_segments = response.facet_segments("creationdate", 1900, 2000, data)
         expected_segments = [
           { from: 1900, to: 1910, count: 0 },
