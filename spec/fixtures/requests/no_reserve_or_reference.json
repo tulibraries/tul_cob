@@ -1,0 +1,130 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991036865605403811",
+                "title": "A biography of a map in motion : Augustine Herrman's Chesapeake /",
+                "author": "Koot, Christian J.,",
+                "issn": null,
+                "isbn": "9781479837298",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)1008910067"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "[2018]",
+                "publisher_const": "New York University Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036865605403811"
+            },
+            "holding_data": {
+                "holding_id": "22409378050003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "GA408 1673.H55 K66 2018",
+                "accession_number": "",
+                "copy_id": "",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036865605403811/holdings/22409378050003811"
+            },
+            "item_data": {
+                "pid": "23409378040003811",
+                "barcode": "39074026727891",
+                "creation_date": "2018-01-25Z",
+                "modification_date": "2018-08-30Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "POL-13552",
+                "is_magnetic": false,
+                "arrival_date": "2018-02-02Z",
+                "expected_arrival_date": "2018-03-26Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "905801834",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Paley Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Main Stacks"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "",
+                "statistics_note_1": "",
+                "statistics_note_2": "",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036865605403811/holdings/22409378050003811/items/23409378040003811"
+        }
+    ],
+    "total_record_count": 1
+}
