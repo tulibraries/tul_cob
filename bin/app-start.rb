@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "fileutils"
+require "rsolr"
 
 # Map example config files to use in development.
 Dir.glob("config/*")
@@ -22,8 +23,17 @@ exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 
 # Next, provision with test data.
 # (If we do this first it works, but site will be blank until rails app loads).
-`rake fortytu:solr:load_fixtures`
-`rake ingest`
+# But only ingest if solr is empty
+def solr_empty?
+  solr = RSolr.connect url: "http://solr:8983/solr/blacklight"
+  response = solr.get("select", params: { q: "test", rows: 0 })
+  response["response"]["numFound"] == 0
+end
+
+if solr_empty?
+  `rake fortytu:solr:load_fixtures`
+  `rake ingest`
+end
 
 # Wait for rails server to shutdown before stopping the process.
 Process.wait
