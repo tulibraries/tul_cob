@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require "spec_helper"
 require "rails_helper"
 
-RSpec.describe Alma::Requests do
+RSpec.describe CobAlma::Requests do
   describe "picking up at a different campus only" do
-    let(:list_items) { Alma::BibItem.find("item") }
-    let(:same_campus) { Alma::BibItem.find("same_campus") }
-    let(:ambler_presser) { Alma::BibItem.find("ambler_presser") }
+    let(:list_items) { Alma::BibItem.find("item").grouped_by_library }
+    let(:same_campus) { Alma::BibItem.find("same_campus").grouped_by_library }
+    let(:ambler_presser) { Alma::BibItem.find("ambler_presser").grouped_by_library }
 
 
     it "allows a user to request an item, available in the Ambler Campus Library Stacks, for pickup at Paley." do
@@ -23,8 +24,8 @@ RSpec.describe Alma::Requests do
   end
 
   describe "picking up at a different library only" do
-    let(:kardon_only) { Alma::BibItem.find("kardon_only") }
-    let(:kardon_paley) { Alma::BibItem.find("kardon_paley") }
+    let(:kardon_only) { Alma::BibItem.find("kardon_only").grouped_by_library }
+    let(:kardon_paley) { Alma::BibItem.find("kardon_paley").grouped_by_library }
 
     it "allows a user to request a book, available in Remote Storage, for pickup at Paley" do
       expect(described_class.valid_pickup_locations(kardon_only)).to include "MAIN"
@@ -37,5 +38,24 @@ RSpec.describe Alma::Requests do
     it "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
       expect(described_class.valid_pickup_locations(kardon_paley)).not_to include "MAIN"
     end
+  end
+
+  describe "#reserve_or_reference" do
+    let(:only_paley_reserves) { Alma::BibItem.find("only_paley_reserves").grouped_by_library }
+    let(:paley_reserves_and_remote_storage) { Alma::BibItem.find("paley_reserves_and_remote_storage").grouped_by_library }
+
+    it "does not allow a user to request a book, available in Paley reserves, for pickup at Paley" do
+      expect(described_class.reserve_or_reference(only_paley_reserves)).not_to eq "MAIN"
+    end
+
+    it "does allow a user to request a book, available in Paley reserves and Remote Storage, for pickup at Paley" do
+      expect(described_class.reserve_or_reference(paley_reserves_and_remote_storage)).to include "MAIN"
+    end
+
+    it "does not allow a user to request a book, available in Paley reserves and Remote Storage, for pickup at Kardon" do
+      expect(described_class.reserve_or_reference(paley_reserves_and_remote_storage)).not_to include "KARDON"
+    end
+
+
   end
 end

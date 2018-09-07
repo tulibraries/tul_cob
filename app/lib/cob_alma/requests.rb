@@ -72,12 +72,13 @@ module CobAlma
       locations = items_list.keys.zip(current_libraries).to_h
 
       if locations.length > 1
+        pickup_locations = []
         reserve_or_reference = locations.each.map { |k, v|k if v.all? { |i| i == "reserve" || i == "reference" } }.compact
         additional_unreserved_copy = locations.each.map { |k, v|k if v.all? { |i| i != "reserve" || i != "reference" } }.compact
         if reserve_or_reference && additional_unreserved_copy
-          pickup_locations = reserve_or_reference
+          pickup_locations << reserve_or_reference
         end
-        pickup_locations
+        pickup_locations.flatten
       end
     end
 
