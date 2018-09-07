@@ -70,7 +70,15 @@ module CobAlma
           [item.item_data.dig("location", "value")]
         }.flatten }
       locations = items_list.keys.zip(current_libraries).to_h
-      pickup_locations = locations.each.map {|k,v|k if v.all? {|i| i == "reserve"}}.compact
+
+      if locations.length > 1
+        reserve_or_reference = locations.each.map { |k, v|k if v.all? { |i| i == "reserve" || i == "reference" } }.compact
+        additional_unreserved_copy = locations.each.map { |k, v|k if v.all? { |i| i != "reserve" || i != "reference" } }.compact
+        if reserve_or_reference && additional_unreserved_copy
+          pickup_locations = reserve_or_reference
+        end
+        pickup_locations
+      end
     end
 
     def self.equipment(items_list)
