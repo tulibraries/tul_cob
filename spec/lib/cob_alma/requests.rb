@@ -44,6 +44,7 @@ RSpec.describe CobAlma::Requests do
     let(:only_paley_reserves) { Alma::BibItem.find("only_paley_reserves").grouped_by_library }
     let(:paley_reserves_and_remote_storage) { Alma::BibItem.find("paley_reserves_and_remote_storage").grouped_by_library }
     let(:no_reserve_or_reference) { Alma::BibItem.find("no_reserve_or_reference").grouped_by_library }
+    let(:both_reserve) { Alma::BibItem.find("both_reserve").grouped_by_library }
 
     it "does not allow a user to request a book, available in Paley reserves, for pickup at Paley" do
       expect(described_class.reserve_or_reference(only_paley_reserves)).not_to eq "MAIN"
@@ -59,6 +60,10 @@ RSpec.describe CobAlma::Requests do
 
     it "does not allow a user to request a book, available in Paley stacks, for pickup at Paley" do
       expect(described_class.reserve_or_reference(no_reserve_or_reference)).not_to be "MAIN"
+    end
+
+    it "does not allow a user to request a book, available in Paley reserves and Ambler reserves, for pickup at Paley" do
+      expect(described_class.reserve_or_reference(both_reserve)).not_to include "MAIN"
     end
   end
 end

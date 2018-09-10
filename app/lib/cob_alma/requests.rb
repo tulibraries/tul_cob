@@ -73,9 +73,13 @@ module CobAlma
 
       if locations.length > 1
         pickup_locations = []
-        reserve_or_reference = locations.each.map { |k, v|k if v.all? { |i| i == "reserve" || i == "reference" } }.compact
-        additional_unreserved_copy = locations.each.map { |k, v|k if v.all? { |i| i != "reserve" || i != "reference" } }.compact
-        if reserve_or_reference && additional_unreserved_copy
+        reserve_or_reference = locations.map { |k, v|k if v.all? { |i| i == "reserve" || i == "reference" } }.compact
+        unreserved = locations.map { |k, v|k if v.all? { |i| i != "reserve" } }.compact - reserve_or_reference
+        not_reference = locations.map { |k, v|k if v.all? { |i| i != "reference" } }.compact - reserve_or_reference
+
+        if reserve_or_reference.present? && !unreserved.empty?
+          pickup_locations << reserve_or_reference
+        elsif reserve_or_reference.present? && !not_reference.empty?
           pickup_locations << reserve_or_reference
         end
         pickup_locations.flatten
