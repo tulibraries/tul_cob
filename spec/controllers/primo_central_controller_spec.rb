@@ -5,7 +5,8 @@ require "rails_helper"
 
 RSpec.describe PrimoCentralController, type: :controller do
   let(:doc) { Hash.new }
-  let(:document) { PrimoCentralDocument.new(doc) }
+  let(:options) { { blacklight_config: controller.blacklight_config } }
+  let(:document) { PrimoCentralDocument.new(doc, options) }
   let(:helpers) { double("helper", base_path: "/") }
   let(:mock_response) { instance_double(Blacklight::PrimoCentral::Response) }
 

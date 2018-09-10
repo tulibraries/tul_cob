@@ -67,7 +67,10 @@ module Blacklight::PrimoCentral
     end
 
     def documents
-      @documents ||= (@docs || []).collect { |doc| document_model.new(doc.to_h.with_indifferent_access) }
+      @documents ||= (@docs || []).collect { |doc|
+        options = { blacklight_config: blacklight_config }
+        document_model.new(doc.to_h.with_indifferent_access, options)
+      }
     end
 
     def limit_value
