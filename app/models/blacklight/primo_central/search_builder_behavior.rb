@@ -79,7 +79,7 @@ module Blacklight::PrimoCentral
       end
     end
 
-    # This needs to come last as it instantiates the pnxs query.
+    # Query is a Primo::Pnxs::Query instance after this process.
     def add_query_facets(primo_central_parameters)
       if primo_central_parameters[:query][:q][:value].is_a? Array
         op = :build
@@ -105,7 +105,27 @@ module Blacklight::PrimoCentral
       end
     end
 
+    def process_date_range_query(primo_central_parameters)
+      params = blacklight_params
+
+      min = params.dig("range", "creationdate", "begin")
+      max = params.dig("range", "creationdate", "end")
+      range = YearRange.new(min, max)
+      primo_central_parameters[:range] = range
+
+      primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
+    end
+
     private
+      class YearRange
+        attr_reader :min, :max
+
+        def initialize(min = nil, max = nil)
+          @min = min unless min.blank?
+          @max = max unless max.blank?
+        end
+      end
+
       def to_primo_id_queries(values)
         values.map { |v|
           {

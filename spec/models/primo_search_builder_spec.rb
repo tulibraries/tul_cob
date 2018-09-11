@@ -153,6 +153,73 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   describe ".add_query_facets" do
   end
 
+  describe ".process_date_range_query" do
+    let (:range) { primo_central_parameters[:range] }
+    let (:facets) { primo_central_parameters[:query][:q].include_facets }
+
+    before(:example) do
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.set_query_field(primo_central_parameters)
+      subject.add_query_facets(primo_central_parameters)
+      subject.process_date_range_query(primo_central_parameters)
+    end
+
+    context "range not provided" do
+      it "adds a default range" do
+        expect(range.min).to be_nil
+        expect(range.max).to be_nil
+      end
+
+      it "adds a default range facet" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[0 TO 9999]")
+      end
+    end
+
+    context "only one range is provided" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 1 } }
+      ) }
+
+      it "adds a default range" do
+        expect(range.min).to eq(1)
+        expect(range.max).to be_nil
+      end
+
+      it "adds a default range facet" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
+
+    context "both min and max range are provided" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 1, end: 10 } }
+      ) }
+
+      it "adds a default range" do
+        expect(range.min).to eq(1)
+        expect(range.max).to eq(10)
+      end
+
+      it "adds a range facet to the search" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 10]")
+      end
+    end
+
+    context "a range limit is empty" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "1", end: "" } }
+      ) }
+      it "adds a default range" do
+        expect(range.min).to eq("1")
+        expect(range.max).to be_nil
+      end
+
+      it "adds a range facet to the search" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
+  end
+
   describe ".previous_and_next_document" do
     before(:example) do
       subject.instance_variable_set(:@rows, 3) if rows

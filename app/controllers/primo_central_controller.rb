@@ -7,12 +7,14 @@ class PrimoCentralController < CatalogController
 
   helper_method :browse_creator
   helper_method :tags_strip
+  helper_method :solr_range_queries_to_a
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
   add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
+
 
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
@@ -53,6 +55,7 @@ class PrimoCentralController < CatalogController
     # Facet fields
     config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
     config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
+    config.add_facet_field :creationdate, label: "Date", range: true
     config.add_facet_field :creator, label: "Author/Creator"
     config.add_facet_field :topic, label: "Topic"
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code
@@ -93,5 +96,10 @@ class PrimoCentralController < CatalogController
 
   def tags_strip(args)
     args[:value].map { |v| helpers.strip_tags v }
+  end
+
+  # This method is required and used by blacklight_range_limit gem.
+  def solr_range_queries_to_a(solr_field)
+    @response[:stats][:stats_fields][solr_field][:data] || []
   end
 end
