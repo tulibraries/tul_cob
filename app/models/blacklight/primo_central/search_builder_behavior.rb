@@ -113,10 +113,7 @@ module Blacklight::PrimoCentral
       range = YearRange.new(min, max)
       primo_central_parameters[:range] = range
 
-      primo_central_parameters[:query][:q].facet(
-        field: "searchcreationdate",
-        value: "#{range}",
-      )
+      primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
     end
 
     private
@@ -126,12 +123,6 @@ module Blacklight::PrimoCentral
         def initialize(min = nil, max = nil)
           @min = min unless min.blank?
           @max = max unless max.blank?
-        end
-
-        def to_s
-          min = @min || 0
-          max = @max || 9999
-          "[#{min} TO #{max}]"
         end
       end
 
