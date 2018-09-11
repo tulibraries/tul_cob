@@ -22,7 +22,7 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.spinnerTarget.remove();
+        $(this.spinnerTarget).remove();
         this.tableTarget.innerHTML = html
       })
   }

@@ -22,7 +22,7 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.spinnerTarget.remove();
+        $(this.spinnerTarget).remove();
         this.panelTarget.innerHTML = html
         $(this.panelTarget).parent().removeClass("hidden");
         $("#requests-container").removeClass("hidden");
