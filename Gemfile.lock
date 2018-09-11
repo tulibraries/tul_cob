@@ -41,6 +41,13 @@ GIT
     primo (0.1.0)
       httparty
 
+GIT
+  remote: https://github.com/upenn-libraries/blacklight-ris.git
+  revision: 88b4f1defc441c49d2408b3881ee4482b203eb7c
+  specs:
+    blacklight-ris (0.1.0)
+      rails (> 4.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -475,6 +482,7 @@ DEPENDENCIES
   bento_search
   blacklight!
   blacklight-marc
+  blacklight-ris!
   blacklight_advanced_search (~> 6.3)
   blacklight_alma!
   blacklight_range_limit

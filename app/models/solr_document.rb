@@ -3,7 +3,7 @@
 class SolrDocument
   include Blacklight::Solr::Document
 
-  # self.unique_key = 'id'
+  # self.unique_key = "id"
   field_semantics.merge!(
     title: "title_statement_display" ,
     imprint: "imprint_display",
@@ -35,7 +35,7 @@ class SolrDocument
   # returns an array of IDs to query through API to get holdings
   # for this document. This is usually just the alma MMS ID for
   # this bib record, but in the case of boundwith records, we return
-  # the boundwith IDs, because that's where Alma stores the holdings.
+  # the boundwith IDs, because that"s where Alma stores the holdings.
   def alma_availability_mms_ids
     fetch("bound_with_ids", [id])
   end
@@ -45,4 +45,34 @@ class SolrDocument
       &.map { |t| t.truncate(300, separator: " ") }
     super doc, req
   end
+
+  include Blacklight::Solr::Document::RisFields
+  use_extension(Blacklight::Solr::Document::RisExport)
+
+  ris_field_mappings.merge!(
+    :TY => Proc.new {
+      format = fetch("format", [])
+      if format.member?("Book")
+        "BOOK"
+      elsif format.member?("Journal/Periodical")
+        "JOUR"
+      else
+        "GEN"
+      end
+    },
+    :TI => "title_statement_display",
+    :ID => "alma_mms_display",
+    :AU => "creator_display",
+    :A2 => "contributor_display",
+    :PY => "date_copyright_display",
+    :PB => "imprint_display",
+    :ET => "edition_display",
+    :RT => "format",
+    :LA => "language_display",
+    :KW => "subject_display",
+    :SN => "isbn_display",
+    :SN => "issn_display",
+    :SN => "lccn_display",
+    :CN => "call_number_display"
+  )
 end
