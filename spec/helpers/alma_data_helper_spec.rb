@@ -50,6 +50,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
+
+
   end
 
   describe "#unavailable_items(item)" do
@@ -64,6 +66,20 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
       it "displays process type" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>At another institution"
+      end
+    end
+
+    context "item includes process_type not found in mappings" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "0" },
+             "process_type" => { "value" => "Sample" }
+           }
+         )
+      end
+      it "displays default message" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
     end
 

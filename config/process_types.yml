@@ -11,6 +11,7 @@ default: &default
   REQUESTED: Requested
   TECHNICAL: Unavailable - technical issue
   TRANSIT: In transit
+  WORK_ORDER_DEPARTMENT: In process
 
 test:
   <<: *default
