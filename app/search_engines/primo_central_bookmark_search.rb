@@ -5,10 +5,10 @@ class PrimoCentralBookmarkSearch < PrimoCentralController
   include BookmarksConfig
 
   def fetch(primo_doc_ids)
-    # Primo cannot string more than 9 OR queries.
+    # Primo cannot string more than 13 OR queries.
     documents = []
 
-    primo_doc_ids.each_slice(9) do |ids|
+    primo_doc_ids.each_slice(13) do |ids|
       @response, docs = super(ids)
       documents.append(*docs)
       documents.append(*docs_not_found(docs, ids))

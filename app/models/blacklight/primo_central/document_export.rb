@@ -27,10 +27,24 @@ module Blacklight::PrimoCentral::DocumentExport
 
     def refwork_tags
       config_tags = blacklight_config
-        .show_fields.select { |k, v| v[:refwork_tag] }
-        .map { |k, v| [k, v[:refwork_tag]] }.to_h
+        &.show_fields&.select { |k, v| v[:refwork_tag] }
+        &.map { |k, v| [k, v[:refwork_tag]] }.to_h
 
-      { "title" => :T1, "pnxId" => :ID }
-        .merge(config_tags)
+      {
+        "title" => :T1,
+        "pnxId" => :ID,
+        "creator" => :A1,
+        "contributor" => :A2,
+        "type" => :RT,
+        "publisher" => :PB,
+        "date" => :YR,
+        "isPartOf" => :JF,
+        "description" => :AB,
+        "subject" => :K1,
+        "isbn" => :SN,
+        "issn" => :SN,
+        "lccn" => :SN,
+        "languageId" => :LA,
+      }.merge(config_tags)
     end
 end
