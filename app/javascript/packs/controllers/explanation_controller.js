@@ -19,7 +19,7 @@ export default class extends Controller {
   showOnce(namespace) {
     let reg = new RegExp("(?:(?:^|.*;\s*)" + namespace + "Once\s*\=\s*([^;]*).*$)|^.*$")
     if (document.cookie.replace(reg, "$1") !== "true") {
-        this[namespace + "Target"].remove();
+        $(this[namespace + "Target"]).remove();
         document.cookie = namespace + "Once=true; expires=Fri, 31 Dec 9999 23:59:59 GMT;";
       }
     }
