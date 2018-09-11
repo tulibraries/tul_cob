@@ -65,25 +65,24 @@ module CobAlma
     end
 
     def self.reserve_or_reference(items_list)
-      current_libraries = items_list.collect { |k, v|
+      pickup_locations = []
+      current_locations = items_list.collect { |k, v|
         v.map { |item|
           [item.item_data.dig("location", "value")]
         }.flatten }
-      locations = items_list.keys.zip(current_libraries).to_h
+      library_and_locations = items_list.keys.zip(current_locations).to_h
 
-      if locations.length > 1
-        pickup_locations = []
-        reserve_or_reference = locations.map { |k, v|k if v.all? { |i| i == "reserve" || i == "reference" } }.compact
-        unreserved = locations.map { |k, v|k if v.all? { |i| i != "reserve" } }.compact - reserve_or_reference
-        not_reference = locations.map { |k, v|k if v.all? { |i| i != "reference" } }.compact - reserve_or_reference
+      if library_and_locations.length > 1
+        reserve_or_reference = library_and_locations.select{ |k, v| v.all? { |i| i == "reserve" || i == "reference" } }
+        not_reserve_or_reference = library_and_locations
+          .select { |k, v| v.all? { |i| i != "reserve" } }
+          .select { |k, v| v.all? { |i| i != "reference" } }
 
-        if reserve_or_reference.present? && !unreserved.empty?
-          pickup_locations << reserve_or_reference
-        elsif reserve_or_reference.present? && !not_reference.empty?
-          pickup_locations << reserve_or_reference
+        if reserve_or_reference.present? && not_reserve_or_reference.present?
+          pickup_locations << reserve_or_reference.keys
         end
-        pickup_locations.flatten
       end
+      pickup_locations.flatten
     end
 
     def self.equipment(items_list)
