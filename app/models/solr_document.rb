@@ -50,7 +50,7 @@ class SolrDocument
   use_extension(Blacklight::Solr::Document::RisExport)
 
   ris_field_mappings.merge!(
-    :TY => Proc.new {
+    TY: Proc.new {
       format = fetch("format", [])
       if format.member?("Book")
         "BOOK"
@@ -60,19 +60,19 @@ class SolrDocument
         "GEN"
       end
     },
-    :TI => "title_statement_display",
-    :ID => "alma_mms_display",
-    :AU => "creator_display",
-    :A2 => "contributor_display",
-    :PY => "date_copyright_display",
-    :PB => "imprint_display",
-    :ET => "edition_display",
-    :RT => "format",
-    :LA => "language_display",
-    :KW => "subject_display",
-    :SN => "isbn_display",
-    :SN => "issn_display",
-    :SN => "lccn_display",
-    :CN => "call_number_display"
+    TI: "title_statement_display",
+    ID: "alma_mms_display",
+    AU: "creator_display",
+    A2: "contributor_display",
+    PY: "date_copyright_display",
+    PB: "imprint_display",
+    ET: "edition_display",
+    RT: "format",
+    LA: "language_display",
+    KW: "subject_display",
+    SN: "isbn_display",
+    SN: "issn_display",
+    SN: "lccn_display",
+    CN: "call_number_display"
   )
 end
