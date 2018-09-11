@@ -73,7 +73,7 @@ module CobAlma
       library_and_locations = items_list.keys.zip(current_locations).to_h
 
       if library_and_locations.length > 1
-        reserve_or_reference = library_and_locations.select{ |k, v| v.all? { |i| i == "reserve" || i == "reference" } }
+        reserve_or_reference = library_and_locations.select { |k, v| v.all? { |i| i == "reserve" || i == "reference" } }
         not_reserve_or_reference = library_and_locations
           .select { |k, v| v.all? { |i| i != "reserve" } }
           .select { |k, v| v.all? { |i| i != "reference" } }
