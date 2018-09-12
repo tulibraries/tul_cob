@@ -309,4 +309,14 @@ module ApplicationHelper
   def help_link
     link_to t("ask_librarian"), Rails.configuration.ask_link
   end
+
+  def ris_path(opts = {})
+    if controller_name == "bookmarks"
+      bookmarks_path(opts.merge(format: 'ris'))
+    elsif controller_name == "primo_central"
+      primo_central_document_path(opts.merge(format: 'ris'))
+    else
+      solr_document_path(opts.merge(format: 'ris'))
+    end
+  end
 end
