@@ -96,7 +96,7 @@ gem "primo", git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
 gem "honeybadger"
 gem "browser"
-
+gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 
 group :production do
   gem "mysql2", "~> 0.4.9"

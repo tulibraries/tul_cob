@@ -13,6 +13,8 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
+  include Blacklight::Ris::Catalog
+
   helper_method :browse_creator
   helper_method :display_duration
   rescue_from ::BlacklightRangeLimit::InvalidRange,
