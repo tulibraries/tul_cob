@@ -53,13 +53,36 @@ module CobAlma
     def self.valid_pickup_locations(items_list)
       pickup_locations = self.possible_pickup_locations
       libraries = self.avail_locations(items_list).split(",")
+
       if libraries.any?
         libraries.each do |lib|
           campus = self.determine_campus(lib)
           pickup_locations -= remove_by_campus(campus)
         end
       end
+      pickup_locations << self.reserve_or_reference(items_list)
       pickup_locations
+    end
+
+    def self.reserve_or_reference(items_list)
+      pickup_locations = []
+      current_locations = items_list.collect { |k, v|
+        v.map { |item|
+          [item.item_data.dig("location", "value")]
+        }.flatten }
+      library_and_locations = items_list.keys.zip(current_locations).to_h
+
+      if library_and_locations.length > 1
+        reserve_or_reference = library_and_locations.select { |k, v| v.all? { |i| i == "reserve" || i == "reference" } }
+        not_reserve_or_reference = library_and_locations
+          .select { |k, v| v.all? { |i| i != "reserve" } }
+          .select { |k, v| v.all? { |i| i != "reference" } }
+
+        if reserve_or_reference.present? && not_reserve_or_reference.present?
+          pickup_locations << reserve_or_reference.keys
+        end
+      end
+      pickup_locations.flatten
     end
 
     def self.equipment(items_list)

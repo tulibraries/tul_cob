@@ -1,0 +1,261 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991033204029703811",
+                "title": "American government : roots and reform /",
+                "author": "O'Connor, Karen,",
+                "issn": null,
+                "isbn": "0205652220",
+                "complete_edition": "2009 ed.",
+                "network_number": [
+                    "(OCLC)ocn231588912",
+                    "ocn231588912",
+                    "(OCoLC)231588912",
+                    "(OCoLC)ocn896985556",
+                    "(PPT)b37630465-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "c2009.",
+                "publisher_const": "Pearson Longman",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811"
+            },
+            "holding_data": {
+                "holding_id": "22248604530003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "JK276 .A5475 2009",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811/holdings/22248604530003811"
+            },
+            "item_data": {
+                "pid": "23248604520003811",
+                "barcode": "",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "8",
+                    "desc": "2 Hour Reserve"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2009-01-21Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Paley Library"
+                },
+                "location": {
+                    "value": "reserve",
+                    "desc": "Main Reserve"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pres",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811/holdings/22248604530003811/items/23248604520003811"
+        },
+        {
+            "bib_data": {
+                "mms_id": "991033204029703811",
+                "title": "American government : roots and reform /",
+                "author": "O'Connor, Karen,",
+                "issn": null,
+                "isbn": "0205652220",
+                "complete_edition": "2009 ed.",
+                "network_number": [
+                    "(OCLC)ocn231588912",
+                    "ocn231588912",
+                    "(OCoLC)231588912",
+                    "(OCoLC)ocn896985556",
+                    "(PPT)b37630465-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "c2009.",
+                "publisher_const": "Pearson Longman",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811"
+            },
+            "holding_data": {
+                "holding_id": "22248604510003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "JK276 .A5475 2009",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811/holdings/22248604510003811"
+            },
+            "item_data": {
+                "pid": "23248604500003811",
+                "barcode": "39074025114455",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2014-11-06Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "AMBLER",
+                    "desc": "Remote Storage"
+                },
+                "location": {
+                    "value": "reserve",
+                    "desc": "Ambler Reserve"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: kstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991033204029703811/holdings/22248604510003811/items/23248604500003811"
+        }
+    ],
+    "total_record_count": 2
+}

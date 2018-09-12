@@ -63,6 +63,22 @@ RSpec.configure do |config|
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/alma_data/kardon_paley.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/only_paley_reserves\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/only_paley_reserves.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/no_reserve_or_reference\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/both_reserve\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
         with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
         to_return(status: 200,
