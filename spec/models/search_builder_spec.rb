@@ -118,7 +118,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#blacklight_params" do
     it "gets tagged as being processed" do
-      expect(subject.blacklight_params).to eq("processed" => true)
+      expect(subject.blacklight_params["processed"]).to be
     end
 
     it "is idempotent" do
@@ -126,7 +126,7 @@ RSpec.describe SearchBuilder , type: :model do
       subject.blacklight_params
       subject.blacklight_params
       subject.blacklight_params
-      expect(subject.blacklight_params).to eq("processed" => true)
+      expect(subject.blacklight_params).to eq("processed" => true, "q" => nil)
     end
   end
 
@@ -138,7 +138,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#process_params!" do
     let(:params) { ActionController::Parameters.new(
-      "operator" => ["bizz", "buzz", "bazz"],
+      "operator" => { "q_1" => "bizz", "q_2" => "buzz", "q_3" => "bazz" },
       "f_1" => "all_fields", "q_1" => "Hello",
       "f_2" => "all_fields", "q_2" => "Beautiful",
       "f_3" => "all_fields", "q_3" => "World",
@@ -164,53 +164,6 @@ RSpec.describe SearchBuilder , type: :model do
     it "handles the nil procedures gracefully" do
       subject.send(:process_params!, params, nil)
       expect(params["processed"]).to be true
-    end
-  end
-
-  describe "#params_field_ops" do
-    it "handles the nil params case gracefully" do
-      expect(subject.send(:params_field_ops, nil)).to eq([])
-    end
-
-    it "handles the empty params case gracefully" do
-      expect(subject.send(:params_field_ops, {})).to eq([])
-    end
-
-    it "handles a typical advanced search params as expected" do
-      params = ActionController::Parameters.new(
-        "operator" => ["bizz", "buzz", "bazz"],
-        "f_1" => "all_fields", "q_1" => "Hello",
-        "f_2" => "all_fields", "q_2" => "Beautiful",
-        "f_3" => "all_fields", "q_3" => "World",
-        search_field: "advanced")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["bizz", ["q_1", "Hello"]],
-        ["buzz", ["q_2", "Beautiful"]],
-        ["bazz", ["q_3", "World"]]])
-    end
-
-    it "handles a typical regular search params as expected" do
-      params = ActionController::Parameters.new(
-        "field" => "all_fields", "q" => "Hello")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["default", ["q", "Hello"]]])
-    end
-
-    # REF BL-334
-    it "uses the last 3 values in operator not all of it" do
-      params = ActionController::Parameters.new(
-        "operator" => ["foo", "foo", "foo", "bizz", "buzz", "bazz"],
-        "f_1" => "all_fields", "q_1" => "Hello",
-        "f_2" => "all_fields", "q_2" => "Beautiful",
-        "f_3" => "all_fields", "q_3" => "World",
-        search_field: "advanced")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["bizz", ["q_1", "Hello"]],
-        ["buzz", ["q_2", "Beautiful"]],
-        ["bazz", ["q_3", "World"]]])
     end
   end
 
