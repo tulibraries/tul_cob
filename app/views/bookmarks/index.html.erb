@@ -11,7 +11,6 @@
 <% else %>
   <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
   <%= render 'sort_and_per_page' %>
-  <%= render_ris(@document_list) %>
 
   <%= render_document_index %>
   <%= render 'results_pagination' %>
