@@ -460,6 +460,13 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("call_number_t", label: "Call Number") do |field|
+      field.include_in_simple_select = false
+      field.solr_local_parameters = {
+        qf: "call_number_t",
+      }
+    end
+
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {

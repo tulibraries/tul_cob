@@ -611,6 +611,7 @@
    <copyField source="title_addl_display" dest="title_addl_t"/>
    <copyField source="isbn_display" dest="isbn_t"/>
    <copyField source="issn_display" dest="issn_t"/>
+   <copyField source="call_number_display" dest="call_number_t"/>
    <copyField source="alma_mms_display" dest="alma_mms_t"/>
    <copyField source="title_series_display" dest="title_series_t"/>
    <copyField source="note_display" dest="note_t"/>
