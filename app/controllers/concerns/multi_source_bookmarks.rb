@@ -52,6 +52,7 @@ module MultiSourceBookmarks
 
     respond_to do |format|
       format.html {}
+      format.ris
       format.rss { render layout: false }
       format.atom { render layout: false }
       format.json do

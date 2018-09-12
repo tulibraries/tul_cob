@@ -12,17 +12,20 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-        
+
           <% @sendto[config.key] = inner %>
-          
+
         <% end %>
         <li id="sendto-menu">
           <div id="bookmarks-sendto">
             <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu bookmarks-dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <li class="sendto-item">
                   <%= value %>
+                </li>
+                <li>
+                  <%= link_to("Download in RIS Format", ris_path, class: "sendto-item") %>
                 </li>
               <% end %>
             </ul>

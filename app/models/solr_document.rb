@@ -2,6 +2,9 @@
 
 class SolrDocument
   include Blacklight::Solr::Document
+  include Blacklight::Solr::Document::RisFields
+
+  use_extension(Blacklight::Solr::Document::RisExport)
 
   # self.unique_key = "id"
   field_semantics.merge!(
@@ -45,9 +48,6 @@ class SolrDocument
       &.map { |t| t.truncate(300, separator: " ") }
     super doc, req
   end
-
-  include Blacklight::Solr::Document::RisFields
-  use_extension(Blacklight::Solr::Document::RisExport)
 
   ris_field_mappings.merge!(
     TY: Proc.new {
