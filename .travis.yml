@@ -21,7 +21,6 @@ before_script:
 script:
 - bundle exec rubocop
 - RELEVANCE=y bundle exec rake ci
-- yarn test
 notifications:
   slack:
     secure: "VTX5ZONrylHfzfd4B1AGWvCmUrRYNJ87/ZEQccBI/dYeQnTZUgGBB6rFaqHqGFgNZJNTiU31cwPULlFr4hUgXeO6sGBrjF9Q4n4WyJxXbdjp7TjJiAeOUsjGyhRa341SNi6FUVKUIusgSIVS3IwZO+nUMVIpajepGDn+E+ia29IglzC6ZyVCBohBwiHZ3cO24K0uB+gNwoe7Ff/93JUsl7VCv+dtBDSYzron2rjNN7vnp8xJ7EDeHW4QToVUCulOpQnlZcjXEdS91BhZFlEo7QE34I7P+1nmrnvIUGmAdMXwclLjbs7T+yT/2Xcw+UM7R88CJ6LB9EXtsXhYyG9cDMOcOMQsmRZikTJKLAZLY+d4pjwLmMPzrLA/mr/TNBNAQHkUlmfxx6YRvE7D2sndeJSf3GBvb+qd6wkqsUiZL88jdyOpQFgC1T2I61uJkmulx2IriLu/udb91c+zuSDG29gMXCv3eo1bXT4WyrGi/a0+nZvAN6dXx7vqz8ivXE3iAnb+sx/tjdc9rb7U4QCe5bgJbZT2vg2gh8lk/8Q2pNACdw9VWd+0ENxW7jO7pNmKVzM6/qX5jC2OtkPYWfzij4ghOwec2xs+ZL31WLfOfyRKcU+nIAhoq5+6icRh5Z5NG07/I6Qu6Jw6h+XWsiPn8MGxKe9K1ifDuDJJhyGdBHg="
