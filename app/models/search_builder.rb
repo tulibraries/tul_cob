@@ -53,7 +53,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_begins_with(value, op)
-    return if value.nil?
+    return value if !value.is_a? String
 
     if op == "begins_with"
       process_is("#{BEGINS_WITH_TAG} #{value}", "is")
@@ -63,7 +63,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_is(value, op)
-    return value if value.nil? || value.match(/"/)
+    return value if !(value.is_a? String) || value.match(/"/)
 
     if op == "is"
       "\"#{value}\""
@@ -73,7 +73,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_colons(value, _)
-    return value if value.nil?
+    return value if !value.is_a? String
 
     value.gsub(/:/, " ")
   end
