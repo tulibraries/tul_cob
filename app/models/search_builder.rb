@@ -53,17 +53,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_begins_with(value, op)
-    return value if !value.is_a? String
-
     if op == "begins_with"
-      process_is("#{BEGINS_WITH_TAG} #{value}", "is")
+      process_is(("#{BEGINS_WITH_TAG} ") + value, "is") rescue value
     else
       value
     end
   end
 
   def process_is(value, op)
-    return value if !(value.is_a? String) || value.match(/"/)
+    return value if value.match(/"/) rescue true
 
     if op == "is"
       "\"#{value}\""
@@ -73,9 +71,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_colons(value, _)
-    return value if !value.is_a? String
-
-    value.gsub(/:/, " ")
+    value.gsub(/:/, " ") rescue value
   end
 
   def no_books_or_journals(solr_parameters)
