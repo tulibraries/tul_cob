@@ -54,7 +54,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def process_begins_with(value, op)
     if op == "begins_with"
-      process_is(("#{BEGINS_WITH_TAG} ") + value, "is") rescue value
+      process_is("#{BEGINS_WITH_TAG} " + value, "is") rescue value
     else
       value
     end
