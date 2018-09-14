@@ -94,7 +94,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
       # Do not process non query values
       ops = params.fetch("operator", "q" => "default")
-        .select { |key, value| key.match(/^q/) }
+        .select { |key, value| key.match?(/^q/) }
 
       # query_key are like "q_1", "q_2"..., etc.
       # op is like "contains", "begins_with"..., etc.
