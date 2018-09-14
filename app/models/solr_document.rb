@@ -67,12 +67,10 @@ class SolrDocument
     PY: "date_copyright_display",
     PB: "imprint_display",
     ET: "edition_display",
-    RT: "format",
     LA: "language_display",
     KW: "subject_display",
     SN: "isbn_display",
     SN: "issn_display",
-    SN: "lccn_display",
     CN: "call_number_display"
   )
 end
