@@ -32,7 +32,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching title for x AND y" do
       visit "catalog?#{{
-        operator: ["contains", "contains"],
+        operator: { q_1: "contains", q_2: "contains" },
         f_1: "title", q_1: "united", op_1: "AND",
         f_2: "title", q_2: "states",
         search_field: "advanced",
@@ -46,7 +46,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching title for x OR y" do
       visit "catalog?#{{
-        operator: ["contains", "contains"],
+        operator: { q_1: "contains", q_2: "contains" },
         f_1: "title", q_1: "united", op_1: "OR",
         f_2: "title", q_2: "states",
         search_field: "advanced",
@@ -58,7 +58,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching title for x NOT y" do
       visit "catalog?#{{
-        operator: ["contains", "contains"],
+        operator: { q_1: "contains", q_2: "contains" },
         f_1: "title", q_1: "united", op_1: "NOT",
         f_2: "title", q_2: "states",
         search_field: "advanced",
@@ -71,7 +71,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching with begins_with" do
       visit "catalog?#{{
-        operator: ["begins_with"],
+        operator: { q_1: "begins_with" },
         f_1: "title", q_1: "states",
         search_field: "advanced",
       }.to_query}"
@@ -82,7 +82,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching with begins_with x OR begins_with y" do
       visit "catalog?#{{
-        operator: ["begins_with", "begins_with"],
+        operator: { q_1: "begins_with", q_2: "begins_with" },
         f_1: "title", q_1: "states", op_1: "OR",
         f_2: "title", q_2: "introduction",
         search_field: "advanced",
@@ -95,7 +95,7 @@ RSpec.feature "Advanced Search" do
     scenario "searching crazy long title with colon in it" do
       title = "Religious liberty : the positive dimension : an address / by Franklin H. Littell at Doane College on April 26, 1966."
       visit "catalog?#{{
-        operator: ["contains"],
+        operator: { q_1: "contains" },
         f_1: "all_fields", q_1: title,
         search_field: "advanced",
       }.to_query}"
@@ -115,8 +115,7 @@ RSpec.feature "Advanced Search" do
     end
     scenario "searching with is operator" do
       visit "catalog?#{{
-
-        operator: ["is"],
+        operator: { q_1: "is" },
         f_1: "all_fields", q_1: "introduction to immunology",
         search_field: "advanced",
       }.to_query}"
@@ -127,7 +126,7 @@ RSpec.feature "Advanced Search" do
 
     scenario "searching NOT something" do
       visit "catalog?#{{
-        operator: ["contains"],
+        operator: { q_1: "contains" },
         f_1: "all_fields", q_1: 'NOT "introduction to immunology"',
         search_field: "advanced",
       }.to_query}"
