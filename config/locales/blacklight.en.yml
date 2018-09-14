@@ -35,12 +35,15 @@ en:
 
     email:
       text:
+        title: "Title: %{value}"
         imprint: "Published: %{value}"
+        creator: "Creator: %{value}"
         contributor: "Contributor: %{value}"
         issn: "ISSN: %{value}"
         isbn: "ISBN: %{value}"
         alma_mms: "Catalog Record ID: %{value}"
         part_of: "Is Part Of: %{value}"
+        holdings: "Located at: %{value}"
         date: "Date: %{value}"
         doi: "DOI"
         subject:
