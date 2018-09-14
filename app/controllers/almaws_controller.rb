@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# This controller is implemented to get information about a document's
+# availability because the alma api is currently too slow to load this at the
+# document level.
 class AlmawsController < ApplicationController
   layout proc { |controller| false if request.xhr? }
 
