@@ -165,6 +165,16 @@ RSpec.describe SearchBuilder , type: :model do
       subject.send(:process_params!, params, nil)
       expect(params["processed"]).to be true
     end
+
+    context "operator has non query keys" do
+      let(:params) { { "operator" => { "f_1" => "foo" }, "f_1" => "buzz" } }
+
+      it "does not affect non query values" do
+        subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
+        expect(params["f_1"]).to eq("buzz")
+      end
+    end
+
   end
 
   describe BentoSearchBuilderBehavior do
