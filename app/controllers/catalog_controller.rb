@@ -500,7 +500,7 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
-    add_show_tools_partial(:ris, label: 'RIS File', if: :render_ris_action?, modal: false, path: :ris_path)
+    add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
