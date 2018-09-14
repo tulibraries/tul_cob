@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require 'blacklight_advanced_search'
-//= require chosen-jquery
 //= require jquery_ujs
 //= require turbolinks//
 // Required by Blacklight
@@ -26,7 +25,7 @@
 
 //= require_tree .
 
-$(window).load(function(){	
+$(window).load(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
@@ -56,7 +55,7 @@ $(window).on('resize', function() {
 	}
 });
 
-$(document).ajaxComplete(function(){	
+$(document).ajaxComplete(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
@@ -159,5 +158,3 @@ function handleEventClicks(event) {
     eventLabel: event
   });
 }
-
-
