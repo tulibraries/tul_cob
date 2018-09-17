@@ -11,7 +11,8 @@ class PrimoCentralController < CatalogController
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
-  add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
+  # Temporarily disable refworks
+  #add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
 
