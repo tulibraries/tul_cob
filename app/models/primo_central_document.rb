@@ -21,4 +21,33 @@ class PrimoCentralDocument
   use_extension Blacklight::PrimoCentral::DocumentExport
   use_extension Blacklight::Document::ArticleEmail
   use_extension Blacklight::Document::Sms
+
+  include Blacklight::Solr::Document::RisFields
+  use_extension(Blacklight::Solr::Document::RisExport)
+
+  ris_field_mappings.merge!(
+    TY: Proc.new {
+      format = fetch("format", [])
+      if format.member?("Book")
+        "BOOK"
+      elsif format.member?("article")
+        "JOUR"
+      else
+        "GEN"
+      end
+    },
+    TI: "title",
+    ID: "pnxId",
+    A1: "creator",
+    A2: "contributor",
+    PB: "publisher",
+    YR: "date",
+    JF: "isPartOf",
+    AB: "description",
+    DO: "doi",
+    KW: "subject",
+    SN: Proc.new { self["isbn"] || self["issn"] },
+    SN: "issn",
+    LA: "languageId"
+  )
 end

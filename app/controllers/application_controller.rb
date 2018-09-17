@@ -52,7 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_referer
-    flash[:notice] = "“Your search results page had to be reloaded. Please try again.”"
+    flash[:notice] = "Your search results page had to be reloaded. Please try again."
     redirect_to request.referer
   end
 

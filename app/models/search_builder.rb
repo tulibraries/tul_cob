@@ -53,17 +53,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_begins_with(value, op)
-    return if value.nil?
-
     if op == "begins_with"
-      process_is("#{BEGINS_WITH_TAG} #{value}", "is")
+      process_is("#{BEGINS_WITH_TAG} " + value, "is") rescue value
     else
       value
     end
   end
 
   def process_is(value, op)
-    return value if value.nil? || value.match(/"/)
+    return value if value.match(/"/) rescue true
 
     if op == "is"
       "\"#{value}\""
@@ -73,9 +71,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_colons(value, _)
-    return value if value.nil?
-
-    value.gsub(/:/, " ")
+    value.gsub(/:/, " ") rescue value
   end
 
   def no_books_or_journals(solr_parameters)
@@ -96,41 +92,18 @@ class SearchBuilder < Blacklight::SearchBuilder
       procedures ||= []
       params["processed"] = true
 
-      ops = params_field_ops(params)
-      ops.each { |op, f|
-        query_key, query_value = f
+      # Do not process non query values
+      ops = params.fetch("operator", "q" => "default")
+        .select { |key, value| key.match?(/^q/) }
+
+      # query_key are like "q_1", "q_2"..., etc.
+      # op is like "contains", "begins_with"..., etc.
+      ops.each { |query_key, op|
+        query_value = params[query_key]
+
         # Fold the procedures onto the query value.
         params[query_key] = procedures.reduce(query_value) { |v, p| send(p, v, op) }
       }
       params
-    end
-
-    # Helper function that transforms the params in the typical
-    # blacklight_params advanced search format into a list of tuples of the
-    # form [[op, field])] where op is the operator and field is a key value
-    # pair, [query_key, query_value].
-    #
-    # @param [ActionController::Parameters] params Set of search parameters.
-    #
-    # @return [Array] A transformed set of search parameters OR and empty set.
-    def params_field_ops(params)
-      begin
-        p = params.to_unsafe_h.compact
-
-        fields = p.select { |k| k.match(/(^q$|^q_)/) }
-        ops = p.fetch("operator", ["default"])
-
-        # Always use last rows count of total values in operator[]
-        # @see BL-334
-        rows = p.select { |k| k.match(/^q_/) }
-        rows_count = rows.count
-        if ops.count > rows_count
-          ops = ops[-rows_count..-1]
-        end
-
-        ops.zip(fields)
-      rescue
-        []
-      end
     end
 end

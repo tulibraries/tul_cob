@@ -12,21 +12,22 @@
 //
 //= require jquery
 //= require 'blacklight_advanced_search'
-//= require chosen-jquery
 //= require jquery_ujs
 //= require turbolinks//
 // Required by Blacklight
 //= require blacklight/blacklight
 
 //= require blacklight_alma/blacklight_alma
-
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
 
 //= require_tree .
 
-$(window).load(function(){	
+$(window).load(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
@@ -56,7 +57,7 @@ $(window).on('resize', function() {
 	}
 });
 
-$(document).ajaxComplete(function(){	
+$(document).ajaxComplete(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
@@ -65,6 +66,9 @@ $(document).ajaxComplete(function(){
 	}
 });
 
+$(document).on('turbolinks:load', function() {
+   $(window).trigger('load.bs.select.data-api');
+});
 
 $(document).ready(function(){
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);
@@ -159,5 +163,3 @@ function handleEventClicks(event) {
     eventLabel: event
   });
 }
-
-
