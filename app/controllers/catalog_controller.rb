@@ -578,4 +578,36 @@ class CatalogController < ApplicationController
     flash[:notice] = exception.message
     redirect_to request.referrer || root_url
   end
+
+  # Overrides Blackligt::Catalog.sms_action.
+  #
+  # Passes extra chosen book details for sms text.
+  #
+  # SMS action (this will render the appropriate view on GET requests and
+  # process the form and send the email on POST requests)
+  def sms_action(documents)
+    to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
+    documents[0][:sms] = documents[0].book_from_barcode(params[:barcode])
+
+    mail = RecordMailer.sms_record(documents, { to: to }, url_options)
+
+    if mail.respond_to? :deliver_now
+      mail.deliver_now
+    else
+      mail.deliver
+    end
+  end
+
+  # Overrides Blacklight::Catalog.validate_sms_params
+  #
+  # Adds validation of the location selection.
+  def validate_sms_params
+    if params[:barcode].blank?
+      flash[:error] = "You must select a location."
+    elsif !@documents.first.valid_barcode? params[:barcode]
+      # Prevents abuse of feature for harrasment.
+      flash[:error] = "An invalid location was selected."
+    end
+    super
+  end
 end
