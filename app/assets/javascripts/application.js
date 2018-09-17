@@ -18,7 +18,9 @@
 //= require blacklight/blacklight
 
 //= require blacklight_alma/blacklight_alma
-
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
@@ -64,6 +66,9 @@ $(document).ajaxComplete(function(){
 	}
 });
 
+$(document).on('turbolinks:load', function() {
+   $(window).trigger('load.bs.select.data-api');
+});
 
 $(document).ready(function(){
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);
