@@ -35,16 +35,15 @@ module Blacklight::PrimoCentral::DocumentExport
         "pnxId" => :ID,
         "creator" => :A1,
         "contributor" => :A2,
-        "type" => :RT,
         "publisher" => :PB,
         "date" => :YR,
         "isPartOf" => :JF,
         "description" => :AB,
-        "subject" => :K1,
+        "subject" => :KW,
         "isbn" => :SN,
         "issn" => :SN,
-        "lccn" => :SN,
         "languageId" => :LA,
+        "doi" => :DO,
       }.merge(config_tags)
     end
 end
