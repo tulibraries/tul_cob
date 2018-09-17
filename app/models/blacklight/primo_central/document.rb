@@ -20,6 +20,9 @@ module Blacklight::PrimoCentral::Document
     doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
     doc["pnxId"] = doc["pnxId"]&.gsub(";", "-semicolon-")
 
+    doc["description"] ||= doc.dig("pnx", "search", "description")&.first
+    doc["subject"] ||= doc.dig("pnx", "search", "subject")
+
     format = doc["@TYPE"] || doc["type"] ||
       doc.dig("pnx", "display", "type")&.first || "unknown"
     doc["type"] = [format]

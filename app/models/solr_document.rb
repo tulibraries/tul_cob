@@ -69,8 +69,7 @@ class SolrDocument
     ET: "edition_display",
     LA: "language_display",
     KW: "subject_display",
-    SN: "isbn_display",
-    SN: "issn_display",
+    SN: Proc.new { self["isbn_display"] || self["issn_display"] },
     CN: "call_number_display"
   )
 end

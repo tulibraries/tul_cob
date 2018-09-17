@@ -30,7 +30,7 @@ class PrimoCentralDocument
       format = fetch("format", [])
       if format.member?("Book")
         "BOOK"
-      elsif format.member?("Journal/Periodical")
+      elsif format.member?("article")
         "JOUR"
       else
         "GEN"
@@ -40,15 +40,14 @@ class PrimoCentralDocument
     ID: "pnxId",
     A1: "creator",
     A2: "contributor",
-    RT: "type",
     PB: "publisher",
     YR: "date",
     JF: "isPartOf",
     AB: "description",
-    K1: "subject",
-    SN: "isbn",
+    DO: "doi",
+    KW: "subject",
+    SN: Proc.new { self["isbn"] || self["issn"] },
     SN: "issn",
-    SN: "lccn",
     LA: "languageId"
   )
 end
