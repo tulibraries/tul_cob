@@ -37,6 +37,16 @@ $(document).ready(function(){
 		{id: "available_button", category: "search-results"}
 	];
 
+  function handleEventClicks(event) {
+    if (typeof ga != "undefined") {
+      ga('send', 'event', {
+        eventCategory: 'Click Event',
+        eventAction: 'click',
+        eventLabel: event
+      });
+    }
+  }
+
 	tracks.forEach(function(track) {
 		if (el = document.getElementById(track.id)) {
 			el.addEventListener("click", function(){
