@@ -22881,6 +22881,7 @@
       <subfield code='a'>Giovanni, Nikki.</subfield>
       <subfield code='b'>Subfield B.</subfield>
       <subfield code='c'>Subfield C.</subfield>
+      <subfield code='q'>Subfield Q.</subfield>
       <subfield code='d'>Subfield D.</subfield>
       <subfield code='e'>Subfield E.</subfield>
       <subfield code='j'>Subfield J.</subfield>
@@ -22889,7 +22890,6 @@
       <subfield code='n'>Subfield N.</subfield>
       <subfield code='o'>Subfield O.</subfield>
       <subfield code='p'>Subfield P.</subfield>
-      <subfield code='q'>Subfield Q.</subfield>
       <subfield code='r'>Subfield R.</subfield>
       <subfield code='t'>Subfield T.</subfield>
       <subfield code='u'>Subfield U.</subfield>
@@ -22907,8 +22907,8 @@
     <datafield ind1='0' ind2='0' tag='110'>
       <subfield code='a'>Dictionary of American history: 110.</subfield>
       <subfield code='b'>Subfield B.</subfield>
-      <subfield code='c'>Subfield C.</subfield>
       <subfield code='d'>Subfield D.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
       <subfield code='e'>Subfield E.</subfield>
       <subfield code='l'>Subfield L.</subfield>
       <subfield code='m'>Subfield M.</subfield>
@@ -22929,12 +22929,12 @@
     <controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
     <datafield ind1='0' ind2='0' tag='111'>
       <subfield code='a'>Dictionary of American history: 111.</subfield>
-      <subfield code='c'>Subfield C.</subfield>
+      <subfield code='n'>Subfield N.</subfield>
       <subfield code='d'>Subfield D.</subfield>
+      <subfield code='c'>Subfield C.</subfield>
       <subfield code='e'>Subfield E.</subfield>
       <subfield code='j'>Subfield J.</subfield>
       <subfield code='l'>Subfield L.</subfield>
-      <subfield code='n'>Subfield N.</subfield>
       <subfield code='o'>Subfield O.</subfield>
       <subfield code='p'>Subfield P.</subfield>
       <subfield code='t'>Subfield T.</subfield>

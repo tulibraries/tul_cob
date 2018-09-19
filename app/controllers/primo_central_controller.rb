@@ -11,7 +11,8 @@ class PrimoCentralController < CatalogController
 
   # We are not including the default configuration by default until we are sure all features work with Primo.
   add_show_tools_partial(:bookmark, partial: "bookmark_control")
-  add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
+  # Temporarily disable refworks
+  #add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
   add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
   add_results_document_tool(:bookmark, partial: "bookmark_control")
 
@@ -65,16 +66,16 @@ class PrimoCentralController < CatalogController
     # https://www.refworks.com/refworks/help/refworks_tagged_format.htm
     config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true, refwork_tag: :A1
     config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2
-    config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code, refwork_tag: :RT
+    config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code
     config.add_show_field :publisher, label: "Published", refwork_tag: :PB
     config.add_show_field :date, label: "Date", refwork_tag: :YR
     config.add_show_field :isPartOf, label: "Is Part of", refwork_tag: :JF
     config.add_show_field :relation, label: "Related Title", helper_method: "list_with_links"
     config.add_show_field :description, label: "Note", helper_method: :tags_strip, refwork_tag: :AB
-    config.add_show_field :subject, helper_method: :list_with_links, multi: true, refwork_tag: :K1
+    config.add_show_field :subject, helper_method: :list_with_links, multi: true, refwork_tag: :KW
     config.add_show_field :isbn, label: "ISBN", refwork_tag: :SN
     config.add_show_field :issn, label: "ISSN", refwork_tag: :SN
-    config.add_show_field :lccn, label: "LCCN", refwork_tag: :SN
+    config.add_show_field :lccn, label: "LCCN"
     config.add_show_field :doi, label: "DOI"
     config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code, refwork_tag: :LA
 

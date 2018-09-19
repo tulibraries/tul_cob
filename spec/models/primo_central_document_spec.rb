@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe PrimoCentralDocument, type: :model do
   let (:config) { PrimoCentralController.new.blacklight_config }
-  let(:doc) { Hash.new }
+  let(:doc) { { "pnxId" => "foobar" } }
   let (:subject) { PrimoCentralDocument.new(doc, blacklight_config: config) }
 
   it "is configurable" do
@@ -22,7 +22,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
   describe "#export_as_refworks" do
     context "simple document" do
       it "exports a refworks tagged formatted string" do
-        expect(subject.export_as_refworks).to eql("RT unknown")
+        expect(subject.export_as_refworks).to eql("ID foobar")
       end
     end
   end

@@ -67,12 +67,9 @@ class SolrDocument
     PY: "date_copyright_display",
     PB: "imprint_display",
     ET: "edition_display",
-    RT: "format",
     LA: "language_display",
     KW: "subject_display",
-    SN: "isbn_display",
-    SN: "issn_display",
-    SN: "lccn_display",
+    SN: Proc.new { self["isbn_display"] || self["issn_display"] },
     CN: "call_number_display"
   )
 end
