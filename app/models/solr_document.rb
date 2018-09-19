@@ -3,6 +3,7 @@
 class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Solr::Document::RisFields
+  include AlmaDataHelper
 
   use_extension(Blacklight::Solr::Document::RisExport)
 
@@ -46,6 +47,9 @@ class SolrDocument
   def initialize(doc, req = nil)
     doc[:title_truncated_display] ||= doc[:title_statement_display]
       &.map { |t| t.truncate(300, separator: " ") }
+
+    doc[:materials_data] = materials_data
+
     super doc, req
   end
 
@@ -72,4 +76,54 @@ class SolrDocument
     SN: Proc.new { self["isbn_display"] || self["issn_display"] },
     CN: "call_number_display"
   )
+
+  def materials_data
+    Proc.new {
+      @materials_data ||= alma_availability_mms_ids.map { |id|
+        Alma::BibItem.find(id).filter_missing_and_lost
+      }.first
+    }
+  end
+
+  def books
+    @books ||=  materials_data[]
+      .select { |item| item["item_data"].dig("physical_material_type", "value") == "BOOK" }
+      .map { |book|
+      { title: book["bib_data"]["title"],
+        barcode: barcode(book),
+        call_number: book["holding_data"]["call_number"],
+        library: library_name_from_short_code(book.library),
+        location: location_status(book),
+        availability: availability_status(book) }.with_indifferent_access }
+  end
+
+  def book_from_barcode(barcode = nil)
+    books.select { |book| book[:barcode] == barcode }.first
+  end
+
+  def barcodes
+    books.map { |book| book[:barcode] }
+  end
+
+  def valid_barcode?(barcode = nil)
+    barcodes.include? barcode
+  end
+
+  private
+    def barcode(item)
+      item["item_data"]["barcode"]
+    end
+
+    def availability_status(item)
+      if item.in_place? && item.non_circulating?
+        "Library Use Only"
+      elsif item.in_place?
+        "Available"
+      elsif item.has_process_type?
+        Rails.configuration.process_types[item.process_type] ||
+          "Checked out or currently unavailable"
+      else
+        "Checked out or currently unavailable"
+      end
+    end
 end

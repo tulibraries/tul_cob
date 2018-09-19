@@ -79,4 +79,20 @@ module AlmaDataHelper
     end
     sorted_library_hash
   end
+
+  def render_location_selector(document)
+    books = document.books
+
+    if books.count > 1
+      render template: "almaws/_location_selector", locals: { books: books }
+    elsif books.count == 1
+      render template: "almaws/_location_field", locals: { book: books.first }
+    end
+  end
+
+  def render_non_available_status_only(availability = "Not Available")
+    if availability != "Available"
+      render template: "almaws/availability_status", availability: availability
+    end
+  end
 end

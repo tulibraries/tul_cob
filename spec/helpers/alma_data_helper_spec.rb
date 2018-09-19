@@ -483,4 +483,64 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_location_selector" do
+    let(:books) { [] }
+    let(:doc) { SolrDocument.new({}) }
+
+    before(:each) do
+      allow(helper).to receive(:render)
+      allow(doc).to receive(:books) { books }
+      helper.render_location_selector(doc)
+    end
+
+    context "there are no books" do
+      it "should not render a selector" do
+        expect(helper).to_not have_received(:render)
+      end
+    end
+
+    context "there is one book" do
+      let(:books) { ["ONE BOOK"] }
+
+      it "should render the single field selector template" do
+        expect(helper).to have_received(:render)
+          .with(template: "almaws/_location_field", locals: { book: "ONE BOOK" })
+      end
+    end
+
+    context "there is more than one book" do
+      let(:books) { [ "ONE BOOK", "TWO BOOKS" ] }
+
+      it "should render the book selector template" do
+        expect(helper).to have_received(:render)
+          .with(template: "almaws/_location_selector", locals:
+        { books: [ "ONE BOOK", "TWO BOOKS" ] })
+      end
+    end
+  end
+
+  describe "#render_non_available_status_only" do
+    let(:availability) { "Available" }
+
+    before(:each) do
+      allow(helper).to receive(:render) { "" }
+      helper.render_non_available_status_only(availability)
+    end
+
+    context "book is available" do
+      it "does not render _avaiability_status partial" do
+        expect(helper).to_not have_received(:render)
+      end
+    end
+
+    context "book is not available" do
+      let (:availability) { "not available" }
+
+      it "does render the _avaiability_status partial" do
+        expect(helper).to have_received(:render).with(template: "almaws/availability_status", availability: availability)
+      end
+    end
+  end
+
 end
