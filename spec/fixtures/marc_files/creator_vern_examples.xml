@@ -5,26 +5,18 @@
   </record>
 
   <record>
-    <!-- 1. 100 with all values -->
-    <datafield tag="100" ind1=" " ind2=" ">
-      <subfield code="a">a</subfield>
-      <subfield code="b">b</subfield>
-      <subfield code="c">c</subfield>
-      <subfield code="d">d</subfield>
-      <subfield code="e">e</subfield>
-      <subfield code="j">j</subfield>
-      <subfield code="m">m</subfield>
-      <subfield code="n">n</subfield>
-      <subfield code="o">o</subfield>
-      <subfield code="p">p</subfield>
-      <subfield code="q">q</subfield>
+    <!-- 1. 100 -->
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
     </datafield>
   </record>
 
   <record>
     <!-- 2. 110 with all values -->
-    <datafield tag="110" ind1=" " ind2=" ">
-      <subfield code="a">a</subfield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
       <subfield code="b">b</subfield>
       <subfield code="c">c</subfield>
       <subfield code="d">d</subfield>
@@ -40,7 +32,54 @@
 
   <record>
     <!-- 3. 111 with all values -->
-    <datafield tag="111" ind1=" " ind2=" ">
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+      <subfield code="b">b</subfield>
+      <subfield code="c">c</subfield>
+      <subfield code="d">d</subfield>
+      <subfield code="e">e</subfield>
+      <subfield code="l">l</subfield>
+      <subfield code="m">m</subfield>
+      <subfield code="n">n</subfield>
+      <subfield code="o">o</subfield>
+      <subfield code="p">p</subfield>
+      <subfield code="t">t</subfield>
+    </datafield>
+  </record>
+
+  <record>
+    <!-- 4. 100, 110, 111 with all values -->
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+      <subfield code="b">b</subfield>
+      <subfield code="c">c</subfield>
+      <subfield code="d">d</subfield>
+      <subfield code="e">e</subfield>
+      <subfield code="j">j</subfield>
+      <subfield code="m">m</subfield>
+      <subfield code="n">n</subfield>
+      <subfield code="o">o</subfield>
+      <subfield code="p">p</subfield>
+      <subfield code="q">q</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code="a">a</subfield>
+      <subfield code="b">b</subfield>
+      <subfield code="c">c</subfield>
+      <subfield code="d">d</subfield>
+      <subfield code="e">e</subfield>
+      <subfield code="l">l</subfield>
+      <subfield code="m">m</subfield>
+      <subfield code="n">n</subfield>
+      <subfield code="o">o</subfield>
+      <subfield code="p">p</subfield>
+      <subfield code="t">t</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
       <subfield code="a">a</subfield>
       <subfield code="c">c</subfield>
       <subfield code="d">d</subfield>
@@ -53,46 +92,142 @@
       <subfield code="t">t</subfield>
     </datafield>
   </record>
-
   <record>
-    <!-- 4. 100, 110, 111 with all values -->
-    <datafield tag="100" ind1=" " ind2=" ">
-      <subfield code="a">a</subfield>
-      <subfield code="b">b</subfield>
-      <subfield code="c">c</subfield>
-      <subfield code="d">d</subfield>
-      <subfield code="e">e</subfield>
-      <subfield code="j">j</subfield>
-      <subfield code="m">m</subfield>
-      <subfield code="n">n</subfield>
-      <subfield code="o">o</subfield>
-      <subfield code="p">p</subfield>
-      <subfield code="q">q</subfield>
+    <leader>01178cam a2200325Ma 4500</leader>
+    <controlfield tag='001'>991012171319703811</controlfield>
+    <controlfield tag='005'>20160413103916.0</controlfield>
+    <controlfield tag='008'>160325s2016    it a     c    001 0 ita d</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='020'>
+      <subfield code='a'>9788891807762</subfield>
     </datafield>
-    <datafield tag="110" ind1=" " ind2=" ">
-      <subfield code="a">a</subfield>
-      <subfield code="b">b</subfield>
-      <subfield code="c">c</subfield>
-      <subfield code="d">d</subfield>
-      <subfield code="e">e</subfield>
-      <subfield code="l">l</subfield>
-      <subfield code="m">m</subfield>
-      <subfield code="n">n</subfield>
-      <subfield code="o">o</subfield>
-      <subfield code="p">p</subfield>
-      <subfield code="t">t</subfield>
+    <datafield ind1=' ' ind2=' ' tag='020'>
+      <subfield code='a'>8891807761</subfield>
     </datafield>
-    <datafield tag="111" ind1=" " ind2=" ">
-      <subfield code="a">a</subfield>
-      <subfield code="c">c</subfield>
-      <subfield code="d">d</subfield>
-      <subfield code="e">e</subfield>
-      <subfield code="j">j</subfield>
-      <subfield code="l">l</subfield>
-      <subfield code="n">n</subfield>
-      <subfield code="o">o</subfield>
-      <subfield code="p">p</subfield>
-      <subfield code="t">t</subfield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(PPT)b61299650-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='035'>
+      <subfield code='a'>(OCoLC)945767573</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='040'>
+      <subfield code='a'>NARDE</subfield>
+      <subfield code='b'>eng</subfield>
+      <subfield code='c'>NARDE</subfield>
+      <subfield code='d'>OCLCQ</subfield>
+      <subfield code='d'>PPT</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='079'>
+      <subfield code='a'>ocn945767573</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>NA5620.S47</subfield>
+      <subfield code='b'>S26 2016</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='245'>
+      <subfield code='a'>Santa Maria Antiqua tra Roma e Bisanzio /</subfield>
+      <subfield code='c'>ideazione Maria Andalaro; a cura di Maria Andaloro, Giulia Bordi, Giuseppe Morganti.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='1' tag='264'>
+      <subfield code='a'>Milano :</subfield>
+      <subfield code='b'>Electa,</subfield>
+      <subfield code='c'>2016.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='300'>
+      <subfield code='a'>414 p. :</subfield>
+      <subfield code='b'>illustrations ;</subfield>
+      <subfield code='c'>28 cm</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='500'>
+      <subfield code='a'>Includes index.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Art, Early Christian</subfield>
+      <subfield code='v'>Exhibitions.</subfield>
+    </datafield>
+    <datafield ind1='2' ind2='0' tag='610'>
+      <subfield code='a'>Santa Maria Antiqua (Church : Rome, Italy)</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='650'>
+      <subfield code='a'>Christian art and symbolism</subfield>
+      <subfield code='y'>Medieval, 500-1500</subfield>
+      <subfield code='v'>Exhibitions.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='700'>
+      <subfield code='a'>Morganti, Giuseppe,</subfield>
+      <subfield code='e'>editor.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='700'>
+      <subfield code='a'>Bordi, Giulia,</subfield>
+      <subfield code='e'>editor.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='700'>
+      <subfield code='a'>Andaloro, Maria,</subfield>
+      <subfield code='e'>editor.</subfield>
+    </datafield>
+    <datafield ind1='1' ind2=' ' tag='800'>
+      <subfield code='a'>United States.</subfield>
+      <subfield code='b'>Congress.</subfield>
+      <subfield code='c'>Senate.</subfield>
+      <subfield code='d'>Subfield d.</subfield>
+      <subfield code='e'>Subfield e.</subfield>
+      <subfield code='f'>Subfield f.</subfield>
+      <subfield code='g'>Subfield g.</subfield>
+      <subfield code='h'>Subfield h.</subfield>
+      <subfield code='j'>Subfield j.</subfield>
+      <subfield code='k'>Subfield k.</subfield>
+      <subfield code='l'>Subfield l.</subfield>
+      <subfield code='m'>Subfield m.</subfield>
+      <subfield code='n'>Subfield n.</subfield>
+      <subfield code='o'>Subfield o.</subfield>
+      <subfield code='p'>Subfield p.</subfield>
+      <subfield code='q'>Subfield q.</subfield>
+      <subfield code='r'>Subfield r.</subfield>
+      <subfield code='s'>Subfield s.</subfield>
+      <subfield code='t'>Executive report ;</subfield>
+      <subfield code='u'>Subfield u.</subfield>
+      <subfield code='v'>109-5.</subfield>
+    </datafield>
+    <datafield ind1='4' ind2='2' tag='856'>
+      <subfield code='z'>Access table of contents</subfield>
+      <subfield code='u'>http://www.liberdomus.it/liberdomus/nrdcc/abstracts/D0121052122.pdf</subfield>
+    </datafield>
+    <datafield ind1='0' ind2=' ' tag='852'>
+      <subfield code='8'>22116284460003811</subfield>
+      <subfield code='b'>MAIN</subfield>
+      <subfield code='c'>stacks</subfield>
+      <subfield code='h'>NA5620.S47</subfield>
+      <subfield code='i'>S26 2016</subfield>
+    </datafield>
+    <datafield ind1='0' ind2='0' tag='880'>
+      <subfield code='6'>100-01</subfield>
+      <subfield code='a'>مطبوعات المجمع؛.</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='902'>
+      <subfield code='a'>160511</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='907'>
+      <subfield code='a'>.b61299650</subfield>
+      <subfield code='b'>p    </subfield>
+      <subfield code='c'>-</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='945'>
+      <subfield code='l'>pstk </subfield>
+      <subfield code='g'>1</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='b'>0</subfield>
+      <subfield code='c'>160428</subfield>
+      <subfield code='d'>m</subfield>
+      <subfield code='e'>a</subfield>
+      <subfield code='f'>-</subfield>
+      <subfield code='g'>0</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2=' ' tag='998'>
+      <subfield code='a'>4/28/2016</subfield>
+      <subfield code='s'>OCLC</subfield>
+      <subfield code='c'>ac</subfield>
+    </datafield>
+    <datafield tag='PRT' >
     </datafield>
   </record>
 </collection>

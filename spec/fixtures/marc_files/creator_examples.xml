@@ -10,6 +10,7 @@
       <subfield code="a">a</subfield>
       <subfield code="b">b</subfield>
       <subfield code="c">c</subfield>
+      <subfield code="q">q</subfield>
       <subfield code="d">d</subfield>
       <subfield code="e">e</subfield>
       <subfield code="j">j</subfield>
@@ -17,7 +18,6 @@
       <subfield code="n">n</subfield>
       <subfield code="o">o</subfield>
       <subfield code="p">p</subfield>
-      <subfield code="q">q</subfield>
     </datafield>
   </record>
 
@@ -26,8 +26,8 @@
     <datafield tag="110" ind1=" " ind2=" ">
       <subfield code="a">a</subfield>
       <subfield code="b">b</subfield>
-      <subfield code="c">c</subfield>
       <subfield code="d">d</subfield>
+      <subfield code="c">c</subfield>
       <subfield code="e">e</subfield>
       <subfield code="l">l</subfield>
       <subfield code="m">m</subfield>
@@ -42,12 +42,12 @@
     <!-- 3. 111 with all values -->
     <datafield tag="111" ind1=" " ind2=" ">
       <subfield code="a">a</subfield>
-      <subfield code="c">c</subfield>
+      <subfield code="n">n</subfield>
       <subfield code="d">d</subfield>
+      <subfield code="c">c</subfield>
       <subfield code="e">e</subfield>
       <subfield code="j">j</subfield>
       <subfield code="l">l</subfield>
-      <subfield code="n">n</subfield>
       <subfield code="o">o</subfield>
       <subfield code="p">p</subfield>
       <subfield code="t">t</subfield>
@@ -60,6 +60,7 @@
       <subfield code="a">a</subfield>
       <subfield code="b">b</subfield>
       <subfield code="c">c</subfield>
+      <subfield code="q">q</subfield>
       <subfield code="d">d</subfield>
       <subfield code="e">e</subfield>
       <subfield code="j">j</subfield>
@@ -67,13 +68,12 @@
       <subfield code="n">n</subfield>
       <subfield code="o">o</subfield>
       <subfield code="p">p</subfield>
-      <subfield code="q">q</subfield>
     </datafield>
     <datafield tag="110" ind1=" " ind2=" ">
       <subfield code="a">a</subfield>
       <subfield code="b">b</subfield>
-      <subfield code="c">c</subfield>
       <subfield code="d">d</subfield>
+      <subfield code="c">c</subfield>
       <subfield code="e">e</subfield>
       <subfield code="l">l</subfield>
       <subfield code="m">m</subfield>
@@ -84,12 +84,12 @@
     </datafield>
     <datafield tag="111" ind1=" " ind2=" ">
       <subfield code="a">a</subfield>
-      <subfield code="c">c</subfield>
+      <subfield code="n">n</subfield>
       <subfield code="d">d</subfield>
+      <subfield code="c">c</subfield>
       <subfield code="e">e</subfield>
       <subfield code="j">j</subfield>
       <subfield code="l">l</subfield>
-      <subfield code="n">n</subfield>
       <subfield code="o">o</subfield>
       <subfield code="p">p</subfield>
       <subfield code="t">t</subfield>

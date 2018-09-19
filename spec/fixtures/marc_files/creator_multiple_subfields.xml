@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <leader>01630nam a2200469 a 4500</leader>
+    <controlfield tag="005">20170825232219.0</controlfield>
+    <controlfield tag="008">940118s1988 dcu f00010 eng d</controlfield>
+    <controlfield tag="001">991031645249703811</controlfield>
+    <datafield ind1="1" ind2="0" tag="710">
+      <subfield code="a">United States.</subfield>
+      <subfield code="b">Department of Agriculture.</subfield>
+      <subfield code="b">Economic Research Service.</subfield>
+    </datafield>
+  </record>
+  <record>
+    <datafield ind1="1" ind2="0" tag="700">
+      <subfield code="a">Oliveira, Victor J.</subfield>
+      <subfield code="e">Test</subfield>
+      <subfield code="m">Another plain text field</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="700">
+      <subfield code="a">Two</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="700">
+      <subfield code="a">Three.</subfield>
+      <subfield code="e">Test</subfield>
+    </datafield>
+  </record>
+</collection>
