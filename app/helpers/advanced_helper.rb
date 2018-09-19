@@ -34,11 +34,7 @@ module AdvancedHelper
     if !params["operator"]
       "contains"
     else
-      # Always select from last rows count of total values in operator[]
-      # @see BL-334
-      rows = params.select { |k| k.match(/^q_/) }
-      count_rows = rows.to_h.count
-      params["operator"][-count_rows + count - 1]
+      params["operator"]["q_#{count}"]
     end
   end
 
