@@ -1,8 +1,8 @@
 // for Blacklight.onLoad:
 //= require blacklight/core
 
-// Overridden from blacklight_range_limit project in order to fix range limit
-// not working in advanced search.
+// Overrides the same file in the blacklight_range_limit project in order to
+// fix range limit not working in advanced search.
 // @See https://github.com/projectblacklight/blacklight_range_limit/pull/90
 Blacklight.onLoad(function() {
 
