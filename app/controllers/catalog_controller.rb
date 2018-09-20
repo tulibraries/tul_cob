@@ -505,9 +505,6 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:endnote)
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
-
-    # Temporarily disable refworks
-    config.show.document_actions.delete(:refworks)
   end
 
   def text_this_message_body(params)
