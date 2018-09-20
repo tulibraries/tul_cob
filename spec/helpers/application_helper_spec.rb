@@ -101,4 +101,40 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#subject_links(args)" do
+    context "links to exact subject facet string" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+
+      it "includes link to exact subject" do
+        expect(subject_links(args)).to have_link("Middle East", href: "/?f[subject_facet][]=Middle+East")
+      end
+      it "does not link to only part of the subject" do
+        expect(subject_links(args)).to have_no_link("Middle East", href: "/?f[subject_facet][]=Middle")
+      end
+    end
+
+    context "links to subjects with special characters" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries - Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "includes link to whole subject string" do
+        expect(subject_links(args)).to have_link("Regions & Countries - Asia & the Middle East", href: "/?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+      end
+    end
+  end
 end
