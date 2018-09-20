@@ -46,11 +46,9 @@ module ApplicationHelper
   end
 
   def subject_links(args)
-    subject_link = ""
     args[:document][args[:field]].map do |subject|
-      subject_link = link_to(subject, "/?f[subject_facet][]=#{CGI.escape subject}")
+      link_to(subject, "/?f[subject_facet][]=#{CGI.escape subject}")
     end
-    subject_link
   end
 
   def has_one_electronic_resource?(document)
