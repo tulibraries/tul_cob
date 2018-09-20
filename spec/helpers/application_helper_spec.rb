@@ -115,10 +115,10 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "includes link to exact subject" do
-        expect(subject_links(args)).to have_link("Middle East", href: "/?f[subject_facet][]=Middle+East")
+        expect(subject_links(args).first).to have_link("Middle East", href: "/?f[subject_facet][]=Middle+East")
       end
       it "does not link to only part of the subject" do
-        expect(subject_links(args)).to have_no_link("Middle East", href: "/?f[subject_facet][]=Middle")
+        expect(subject_links(args).first).to have_no_link("Middle East", href: "/?f[subject_facet][]=Middle")
       end
     end
 
@@ -133,7 +133,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           }
         }
       it "includes link to whole subject string" do
-        expect(subject_links(args)).to have_link("Regions & Countries - Asia & the Middle East", href: "/?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "/?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
       end
     end
   end
