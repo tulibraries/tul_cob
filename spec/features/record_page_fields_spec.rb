@@ -1280,7 +1280,7 @@ RSpec.feature "RecordPageFields" do
     scenario "Has list of subjects" do
       visit "catalog/#{subject_600['doc_id']}"
       within "dd.blacklight-subject_display" do
-        expect(page).to have_css("li.list_items")
+        expect(page).to have_selector("a")
       end
     end
 

@@ -16,9 +16,6 @@ module ApplicationHelper
 
   def get_search_params(field, query)
     case field
-    when "subject_display"
-
-      { search_field: "subject", q: query.gsub(/>|—/, ""), title: query }
     when "title_uniform_display", "title_addl_display"
       { search_field: "title", q: query }
     when "relation"
@@ -46,6 +43,14 @@ module ApplicationHelper
       creator = plain_text_subfields
     end
     creator
+  end
+
+  def subject_links(args)
+    subject_link = ""
+    args[:document][args[:field]].map do |subject|
+      subject_link = link_to(subject, "/?f[subject_facet][]=#{CGI.escape subject}")
+    end
+    subject_link
   end
 
   def has_one_electronic_resource?(document)

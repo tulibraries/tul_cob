@@ -329,7 +329,7 @@ class CatalogController < ApplicationController
     config.add_show_field "note_related_display", label: "Related Materials"
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
-    config.add_show_field "subject_display", label: "Subject", helper_method: :list_with_links, multi: true
+    config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
     config.add_show_field "collection_display", label: "Collection"
 
     # Preceeding Entry fields
