@@ -48,6 +48,7 @@ class CatalogController < ApplicationController
         availability_facet
         holdings_with_no_items_display
         call_number_display
+        call_number_alt_display
         creator_display
         contributor_display
         electronic_resource_display
