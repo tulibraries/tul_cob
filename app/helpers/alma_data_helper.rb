@@ -81,18 +81,18 @@ module AlmaDataHelper
   end
 
   def render_location_selector(document)
-    books = document.books
+    materials = document.materials
 
-    if books.count > 1
-      render template: "almaws/_location_selector", locals: { books: books }
-    elsif books.count == 1
-      render template: "almaws/_location_field", locals: { book: books.first }
+    if materials.count > 1
+      render template: "almaws/_location_selector", locals: { materials: materials }
+    elsif materials.count == 1
+      render template: "almaws/_location_field", locals: { material: materials.first }
     end
   end
 
   def render_non_available_status_only(availability = "Not Available")
     if availability != "Available"
-      render template: "almaws/availability_status", availability: availability
+      render template: "almaws/_availability_status", locals: { availability: availability }
     end
   end
 end

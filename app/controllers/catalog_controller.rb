@@ -588,7 +588,7 @@ class CatalogController < ApplicationController
   # process the form and send the email on POST requests)
   def sms_action(documents)
     to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
-    documents[0][:sms] = documents[0].book_from_barcode(params[:barcode])
+    documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
 
     mail = RecordMailer.sms_record(documents, { to: to }, url_options)
 
@@ -603,12 +603,18 @@ class CatalogController < ApplicationController
   #
   # Adds validation of the location selection.
   def validate_sms_params
+    # Short circuit the barcode validation.
+    if !params.has_key? :barcode
+      return super
+    end
+
     if params[:barcode].blank?
       flash[:error] = "You must select a location."
     elsif !@documents.first.valid_barcode? params[:barcode]
       # Prevents abuse of feature for harrasment.
       flash[:error] = "An invalid location was selected."
     end
+
     super
   end
 end

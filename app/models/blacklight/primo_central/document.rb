@@ -67,6 +67,15 @@ module Blacklight::PrimoCentral::Document
     url_helpers.articles_index_item_path(@_source["pnxId"], document_counter: count)
   end
 
+  def materials
+    # There are no physical items assoc. to Primo articles.
+    []
+  end
+
+  def material_from_barcode(b = nil)
+    # There are no physical items assoc. to Primo articles.
+  end
+
 
   private
 

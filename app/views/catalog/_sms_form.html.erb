@@ -21,6 +21,8 @@
 
     </div>
     <% @documents.each do |doc| %>
+      <% doc_presenter = show_presenter(doc) %>
+      <h3><div class="title"><%= doc_presenter.heading %></div></h3>
       <%= render_location_selector(doc) %>
       <%= hidden_field_tag "id[]", doc.id %>
     <% end %>
