@@ -67,7 +67,7 @@ class PrimoCentralController < CatalogController
     config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2
     config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code
     config.add_show_field :publisher, label: "Published", refwork_tag: :PB
-    config.add_show_field :date, label: "Date", refwork_tag: :YR
+    config.add_show_field :date, label: "Date", refwork_tag: :Y1
     config.add_show_field :isPartOf, label: "Is Part of", refwork_tag: :JF
     config.add_show_field :relation, label: "Related Title", helper_method: "list_with_links"
     config.add_show_field :description, label: "Note", helper_method: :tags_strip, refwork_tag: :AB
