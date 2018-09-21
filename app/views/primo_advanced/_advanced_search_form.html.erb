@@ -10,13 +10,12 @@
 
   <div id="advanced_search" class="form-group">
     <%= render "advanced_search_fields" %>
-    <%= render "advanced_search_facets" %>
 
     <div class="sort-submit-buttons clearfix col-sm-12">
       <hr>
       <%= render "advanced_search_submit_btns" %>
     </div>
   </div>
-
 <% end %>
 
+<%= render_facet_partials facet_field_names_for_advanced_search %>
