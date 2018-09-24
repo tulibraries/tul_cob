@@ -6,7 +6,7 @@
     <% end %>
     <div class="col-sm-5">
       <%= content_tag(:select, multiple: true,
-        name: "f_inclusive[#{display_facet.name}][]",
+        name: "f[#{display_facet.name}][]",
         id: display_facet.name.parameterize,
         class: "form-control custom-select selectpicker",
         data: { "live-search": "true", placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
