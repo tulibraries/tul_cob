@@ -19,6 +19,13 @@ RSpec.describe PrimoCentralDocument, type: :model do
     expect(doc_config.index_fields).to eql(config.index_fields)
   end
 
+  context "a pnxs object is loaded" do
+    let(:doc) { { "pnxId" => "TN_fizzfuzz" } }
+    it "removes TN_ from beginning of id" do
+      expect(subject.id).to eq("fizzfuzz")
+    end
+  end
+
   describe "#export_as_refworks" do
     context "simple document" do
       it "exports a refworks tagged formatted string" do
