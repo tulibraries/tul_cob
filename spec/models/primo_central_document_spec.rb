@@ -117,6 +117,19 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  describe "#materials" do
+    it "returns a default empty set" do
+      expect(subject.materials).to eq([])
+    end
+  end
+
+  describe "#material_from_barcode" do
+    it "returns nothing" do
+      expect(subject.material_from_barcode).to be_nil
+    end
+  end
+
+
   context "document direct_link contains rft.isbn = ''" do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {

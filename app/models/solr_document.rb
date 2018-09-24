@@ -85,24 +85,25 @@ class SolrDocument
     }
   end
 
-  def books
-    @books ||=  materials_data[]
-      .select { |item| item["item_data"].dig("physical_material_type", "value") == "BOOK" }
-      .map { |book|
-      { title: book["bib_data"]["title"],
-        barcode: barcode(book),
-        call_number: book["holding_data"]["call_number"],
-        library: library_name_from_short_code(book.library),
-        location: location_status(book),
-        availability: availability_status(book) }.with_indifferent_access }
+  # Loads a list of books or other physical materials assoc. to record.
+  # (As apposed to an online only item)
+  def materials
+    @materials ||= materials_data[]
+      .map { |material|
+      { title: material["bib_data"]["title"],
+        barcode: barcode(material),
+        call_number: material["holding_data"]["call_number"],
+        library: library_name_from_short_code(material.library),
+        location: location_status(material),
+        availability: availability_status(material) }.with_indifferent_access }
   end
 
-  def book_from_barcode(barcode = nil)
-    books.select { |book| book[:barcode] == barcode }.first
+  def material_from_barcode(barcode = nil)
+    materials.select { |material| material[:barcode] == barcode }.first
   end
 
   def barcodes
-    books.map { |book| book[:barcode] }
+    materials.map { |material| material[:barcode] }
   end
 
   def valid_barcode?(barcode = nil)

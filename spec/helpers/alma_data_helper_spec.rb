@@ -485,37 +485,37 @@ RSpec.describe AlmaDataHelper, type: :helper do
   end
 
   describe "#render_location_selector" do
-    let(:books) { [] }
+    let(:materials) { [] }
     let(:doc) { SolrDocument.new({}) }
 
     before(:each) do
       allow(helper).to receive(:render)
-      allow(doc).to receive(:books) { books }
+      allow(doc).to receive(:materials) { materials }
       helper.render_location_selector(doc)
     end
 
-    context "there are no books" do
+    context "there are no materials" do
       it "should not render a selector" do
         expect(helper).to_not have_received(:render)
       end
     end
 
-    context "there is one book" do
-      let(:books) { ["ONE BOOK"] }
+    context "there is one material" do
+      let(:materials) { ["ONE material"] }
 
       it "should render the single field selector template" do
         expect(helper).to have_received(:render)
-          .with(template: "almaws/_location_field", locals: { book: "ONE BOOK" })
+          .with(template: "almaws/_location_field", locals: { material: "ONE material" })
       end
     end
 
-    context "there is more than one book" do
-      let(:books) { [ "ONE BOOK", "TWO BOOKS" ] }
+    context "there is more than one material" do
+      let(:materials) { [ "ONE material", "TWO materialS" ] }
 
-      it "should render the book selector template" do
+      it "should render the material selector template" do
         expect(helper).to have_received(:render)
           .with(template: "almaws/_location_selector", locals:
-        { books: [ "ONE BOOK", "TWO BOOKS" ] })
+        { materials: [ "ONE material", "TWO materialS" ] })
       end
     end
   end
@@ -528,17 +528,17 @@ RSpec.describe AlmaDataHelper, type: :helper do
       helper.render_non_available_status_only(availability)
     end
 
-    context "book is available" do
+    context "material is available" do
       it "does not render _avaiability_status partial" do
         expect(helper).to_not have_received(:render)
       end
     end
 
-    context "book is not available" do
+    context "material is not available" do
       let (:availability) { "not available" }
 
       it "does render the _avaiability_status partial" do
-        expect(helper).to have_received(:render).with(template: "almaws/availability_status", availability: availability)
+        expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: availability })
       end
     end
   end

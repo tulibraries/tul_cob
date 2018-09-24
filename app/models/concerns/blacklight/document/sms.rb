@@ -8,15 +8,11 @@ module Blacklight::Document::Sms
   include ApplicationHelper
 
   def to_sms_text
-    body = []
-
-    # self[:sms] gets set by CatalogController.sms_action
     if self[:sms]
-      body << self[:sms][:call_number]
-      body << "#{self[:sms][:library]} (#{self[:sms][:location]})"
-      body << self[:sms][:title]
+      [ :library, :location, :call_number ]
+        .map { |field| self.dig(:sms, field) }
+        .compact
+        .join " "
     end
-
-    return body.join("\n") unless body.empty?
   end
 end

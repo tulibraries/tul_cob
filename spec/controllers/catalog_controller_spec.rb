@@ -76,13 +76,21 @@ RSpec.describe CatalogController, type: :controller do
     let(:doc) { SolrDocument.new(id: "my_fake_doc") }
 
     before do
-      allow(doc).to receive(:book_from_barcode) { "CHOSEN BOOK" }
+      allow(doc).to receive(:material_from_barcode) { "CHOSEN BOOK" }
       allow(controller).to receive(:fetch) { [ mock_response, [doc] ] }
+    end
+
+    context "no selection is present" do
+      it "does not flash an error" do
+        post :sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net" } rescue nil
+
+        expect(request.flash[:error]).to be_nil
+      end
     end
 
     context "no selection is made" do
       it "gives an error when no location is selected" do
-        post :sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net" }
+        post :sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net", barcode: nil }
 
         expect(request.flash[:error]).to eq "You must select a location."
       end

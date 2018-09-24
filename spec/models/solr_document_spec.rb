@@ -19,64 +19,52 @@ RSpec.describe SolrDocument, type: :model do
   let(:item_one) { Alma::BibItem.new(
     "bib_data" => { "title" => "Hello World" },
     "item_data" => {
-      "physical_material_type" => { "value" => "BOOK" },
+      "physical_material_type" => { "value" => "ANY" },
       "barcode" => "FOOBAR",
     },
     "holding_data" => { "calling_number" => "CALL ME" }
   ) }
 
-  let(:item_two) { Alma::BibItem.new(
-    "item_data" => { "physical_material_type" => { "value" => "NOT BOOK" } }
-  ) }
-
-  let(:bib_items) { [ item_one, item_two ] }
+  let(:bib_items) { [ item_one ] }
 
   before(:each) {
     allow(document).to receive(:materials_data) { Proc.new { bib_items } }
   }
 
-  describe "#books" do
+  describe "#materials" do
     context "No items found" do
       let(:bib_items) { [] }
 
-      it "returns an empty set of books" do
-        expect(document.books).to be_empty
+      it "returns an empty set of materials" do
+        expect(document.materials).to be_empty
       end
     end
 
-    context "No book items found" do
-      let(:bib_items) { [ item_two ] }
+    context "A material item is found" do
+      let(:bib_items) { [ item_one ] }
 
-      it "returns an empty set of books" do
-        expect(document.books).to be_empty
-      end
-    end
-
-    context "A book item is found" do
-      let(:bib_items) { [ item_one, item_two ] }
-
-      it "returns a set of books" do
-        expect(document.books.count).to eq(1)
+      it "returns a set of materials" do
+        expect(document.materials.count).to eq(1)
       end
     end
   end
 
-  describe "#books_from_barcode" do
+  describe "#materials_from_barcode" do
     context "no barcode is given" do
-      it "does not return a book" do
-        expect(document.book_from_barcode).to be_nil
+      it "does not return a material" do
+        expect(document.material_from_barcode).to be_nil
       end
     end
 
     context "an incorrect barcode is given" do
-      it "does not return a book" do
-        expect(document.book_from_barcode("FOO")).to be_nil
+      it "does not return a material" do
+        expect(document.material_from_barcode("FOO")).to be_nil
       end
     end
 
     context "a correct barcode is given" do
-      it "return a book" do
-        expect(document.book_from_barcode("FOOBAR")[:title]).to eq("Hello World")
+      it "return a material" do
+        expect(document.material_from_barcode("FOOBAR")[:title]).to eq("Hello World")
       end
     end
   end
@@ -90,16 +78,16 @@ RSpec.describe SolrDocument, type: :model do
       end
     end
 
-    context "non book item found" do
-      let(:bib_items) { [ item_two ] }
+    context "non material item found" do
+      let(:bib_items) { [] }
 
       it "returns and empty set" do
         expect(document.barcodes).to be_empty
       end
     end
 
-    context "a book item was found" do
-      let(:bib_items) { [ item_one, item_two ] }
+    context "a material item was found" do
+      let(:bib_items) { [ item_one ] }
 
       it "returns a set of barcodes" do
         expect(document.barcodes).to eq(["FOOBAR"])
@@ -129,35 +117,51 @@ RSpec.describe SolrDocument, type: :model do
 
   # It's currently private but I'm testing anyway because it's complicated logic.
   describe "#availability_status" do
-    context "book in place and not circulating" do
+    context "material in place and not circulating" do
       it "sets availability to library use only" do
         allow(item_one).to receive(:in_place?) { true }
         allow(item_one).to receive(:non_circulating?) { true }
 
-        expect(document.book_from_barcode("FOOBAR")[:availability]).to eq("Library Use Only")
+        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Library Use Only")
       end
     end
 
-    context "book in place and circulating" do
+    context "material in place and circulating" do
       it "sets availability to available" do
         allow(item_one).to receive(:in_place?) { true }
 
-        expect(document.book_from_barcode("FOOBAR")[:availability]).to eq("Available")
+        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Available")
       end
     end
 
-    context "book is missing" do
+    context "material is missing" do
       it "sets availability to missing" do
         allow(item_one).to receive(:has_process_type?) { true }
         allow(item_one).to receive(:process_type) { "MISSING" }
 
-        expect(document.book_from_barcode("FOOBAR")[:availability]).to eq("Missing")
+        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Missing")
       end
     end
 
     context "unknown" do
       it "sets availability to checked out or currently unavailable" do
-        expect(document.book_from_barcode("FOOBAR")[:availability]).to eq("Checked out or currently unavailable")
+        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Checked out or currently unavailable")
+      end
+    end
+  end
+
+  describe "#to_sms_text" do
+    context "no material items present" do
+      it "does not render catalog location"  do
+        document[:sms] = nil
+        expect(document.to_sms_text).to be_nil
+      end
+    end
+
+    context "a material item is present and selected" do
+      it "renders catalog location" do
+        document[:sms] = { library: "foo", location: "bar", call_number: "call_me" }
+        expect(document.to_sms_text).to eq("foo bar call_me")
       end
     end
   end
