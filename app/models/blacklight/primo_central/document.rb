@@ -28,7 +28,7 @@ module Blacklight::PrimoCentral::Document
     doc["type"] = [format]
     doc["format"] = [format]
 
-    doc["title"] ||= doc.dig("pnx", "display", "title")&.first
+    doc["title"] ||= doc.dig("pnx", "display", "title")&.first.truncate(300)
     doc["link"] = @url
     doc["link_label"] = link_label(doc)
     doc["isbn"] ||= doc.dig("pnx", "search", "isbn") || isbn

@@ -193,7 +193,7 @@ class CatalogController < ApplicationController
           "(library_based_boost_t:* -no_boost)^500"],
       fq: %w[
         -suppress_items_b:*
-      ] 
+      ]
     }
 
     # solr path which will be added to solr base url before the other solr params.
