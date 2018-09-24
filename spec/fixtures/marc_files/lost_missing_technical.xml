@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <!-- 0. Only 1 lost item -->
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22423620830003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOST_LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026623983</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23423620820003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-04-26 14:44:39</subfield>
+      <subfield code="i">LB1033 .Y95 2018</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 1. Only 1 missing item -->
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22426566810003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">MISSING</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026633206</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23426566800003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-05-17 14:48:38</subfield>
+      <subfield code="i">BD175 .M67 2018</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 2. Only 1 technical item -->
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22337125590003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">TECHNICAL</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074012140778</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23337125580003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 15:12:23</subfield>
+      <subfield code="i">DS485.P17 G6</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 3. Multiple items with one lost -->
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22423620830003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOST_LOAN</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026623983</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23423620820003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-04-26 14:44:39</subfield>
+      <subfield code="i">LB1033 .Y95 2018</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22399365310003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074026674705</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="l">0</subfield>
+      <subfield code="8">23399365260003811</subfield>
+      <subfield code="j">0</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-08-11 15:47:40</subfield>
+      <subfield code="i">PS3608.U585 A6 2017</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+</collection>
