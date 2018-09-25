@@ -11,7 +11,7 @@
 <% if show_doc_actions? %>
 <% @sendto = {} %>
       <ul id="tools-navbar">
-        <%= render_show_doc_actions @document do |config, inner| %>
+        <%= render_show_doc_actions @document_list do |config, inner| %>
 
           <% @sendto[config.key] = inner %>
 
@@ -23,10 +23,6 @@
               <% @sendto.each do |key,value| %>
                 <li class="sendto-item">
                   <%= value %>
-                </li>
-                <li>
-                  <% # Temporarily disable ris %>
-                  <% #link_to("RIS File", ris_path, class: "sendto-item") %>
                 </li>
               <% end %>
             </ul>
