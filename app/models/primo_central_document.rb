@@ -41,7 +41,7 @@ class PrimoCentralDocument
     A1: "creator",
     A2: "contributor",
     PB: "publisher",
-    YR: "date",
+    Y1: "date",
     JF: "isPartOf",
     AB: "description",
     DO: "doi",
