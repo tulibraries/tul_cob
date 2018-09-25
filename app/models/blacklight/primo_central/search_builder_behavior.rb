@@ -113,7 +113,10 @@ module Blacklight::PrimoCentral
       range = YearRange.new(min, max)
       primo_central_parameters[:range] = range
 
-      primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
+      # Adding the date range facet prematurely causes search discrepencies.
+      if (min || max)
+        primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
+      end
     end
 
     private

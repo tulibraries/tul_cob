@@ -170,8 +170,8 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(range.max).to be_nil
       end
 
-      it "adds a default range facet" do
-        expect(facets).to eq("facet_searchcreationdate,exact,[0 TO 9999]")
+      it "does not add a default range facet" do
+        expect(facets).to be_nil
       end
     end
 
