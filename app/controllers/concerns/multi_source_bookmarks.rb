@@ -32,7 +32,9 @@ module MultiSourceBookmarks
     end
 
     # Reorder the document list to match the bookmark order.
-    document_map = document_list.map { |d| [d.id, d] }.to_h
+    # Replacing TN_ in ids to add backward compatibility.
+    document_map = document_list
+      .map { |d| [d.id.gsub(/^TN_/, ""), d] }.to_h
     @document_list = @bookmarks.map { |b| document_map[b.document_id] }.compact
 
     # Capture full document list in response for correct current_bookmarks count.
