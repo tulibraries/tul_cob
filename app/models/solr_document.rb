@@ -67,7 +67,7 @@ class SolrDocument
     ID: "alma_mms_display",
     AU: "creator_display",
     A2: "contributor_display",
-    PY: "date_copyright_display",
+    Y1: "date_copyright_display",
     PB: "imprint_display",
     ET: "edition_display",
     LA: "language_display",
