@@ -22,6 +22,6 @@ module Blacklight::Document::Email
 
   def add_holdings_information
     holdings = materials.collect { |material| material["library"] + " - " + material["location"] + " - " + material["call_number"] }
-    return I18n.t("blacklight.email.text.location", value: "\n" + holdings.join("\n")) unless holdings.empty?
+    I18n.t("blacklight.email.text.location", value: "\n" + holdings.join("\n")) unless holdings.empty?
   end
 end
