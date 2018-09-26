@@ -47,7 +47,7 @@ module ApplicationHelper
 
   def subject_links(args)
     args[:document][args[:field]].map do |subject|
-      link_to(subject, "/?f[subject_facet][]=#{CGI.escape subject}")
+      link_to(subject, "#{root_path}?f[subject_facet][]=#{CGI.escape subject}")
     end
   end
 
