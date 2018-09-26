@@ -47,6 +47,14 @@ RSpec.describe SolrDocument, type: :model do
         expect(document.materials.count).to eq(1)
       end
     end
+
+    context "Multiple equivalent items are found" do
+      let(:bib_items) { [ item_one, item_one, item_one ] }
+
+      it "returns a uniq set" do
+        expect(document.materials.count).to eq(1)
+      end
+    end
   end
 
   describe "#materials_from_barcode" do

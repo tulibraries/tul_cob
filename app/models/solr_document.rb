@@ -94,7 +94,9 @@ class SolrDocument
         call_number: material["holding_data"]["call_number"],
         library: library_name_from_short_code(material.library),
         location: location_status(material),
-        availability: availability_status(material) }.with_indifferent_access }
+        availability: availability_status(material) }
+        .with_indifferent_access }
+        .uniq { |material| material.except(:barcode) }
   end
 
   def material_from_barcode(barcode = nil)
