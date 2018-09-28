@@ -11,7 +11,14 @@ class AlmawsController < ApplicationController
   def item
     @mms_id = params[:mms_id]
     start = Time.now
-    bib_items = Alma::BibItem.find(@mms_id, limit: 100)
+    # TODO: refactor to repository/response/search_behavior ala primo/solr.
+    page = (params[:page] || 1).to_i
+    limit = (params[:limit] || 100).to_i
+    offset = (limit * page) - limit
+
+    bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
+    @response = Blacklight::Alma::Response.new(bib_items, params)
+
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
