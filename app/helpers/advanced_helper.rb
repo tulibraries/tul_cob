@@ -59,6 +59,16 @@ module AdvancedHelper
   def advanced_search_config
     blacklight_config.fetch(:advanced_search, {})
   end
+
+  def render_advanced_search_link
+    if !current_page? blacklight_advanced_search_engine.advanced_search_path
+      query = params.except(:controller, :action).to_h
+      url = blacklight_advanced_search_engine.advanced_search_path(query)
+      link_to "Advanced Catalog Search", url, class: "advanced_search", id: "advanced_search"
+    else
+      link_to "Basic Search", root_path, class: "advanced_search", id: "basic_search"
+    end
+  end
 end
 
 module BlacklightAdvancedSearch
