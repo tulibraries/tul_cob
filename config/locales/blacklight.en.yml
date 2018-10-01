@@ -73,6 +73,7 @@ en:
     tools:
       sms: "Text"
       refworks: Refworks
+      cite_html: "Cite"
 
     requests:
       log_in: "Log in to see request options"

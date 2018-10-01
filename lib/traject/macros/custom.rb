@@ -472,6 +472,21 @@ module Traject
         end
       end
 
+      def extract_oclc_number
+        lambda do |rec, acc|
+          rec.fields(["035", "979"]).each do |field|
+            unless field.nil?
+              unless field["a"].nil? || field["9"]&.include?("ExL")
+                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].include?("on") || field["a"].include?("OCLC")
+                  subfield = field["a"].split(//).map { |x| x[/\d+/] }.compact.join("")
+                end
+                acc << subfield
+              end
+            end
+            acc.uniq!
+          end
+        end
+      end
 
       # In order to reduce the relevance of certain libraries, we need to boost every other library
       # Make sure we still boost records what have holdings in less relevant libraries and also in another library

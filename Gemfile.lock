@@ -503,6 +503,7 @@ DEPENDENCIES
   guard-shell
   hashie (~> 3.4.6)
   honeybadger
+  httparty
   jbuilder (~> 2.5)
   jquery-rails
   launchy

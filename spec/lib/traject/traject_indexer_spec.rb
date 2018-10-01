@@ -754,4 +754,65 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
+  describe "#extract_oclc_number" do
+    let(:path) { "oclc.xml" }
+
+    before do
+      subject.instance_eval do
+        to_field "oclc_number_display", extract_oclc_number
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when there is no 035 or 979 field" do
+      it "does not map record" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[1])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[2])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field and 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[3])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes ocn" do
+      it "maps record" do
+        expect(subject.map_record(records[4])).to eq("oclc_number_display" => ["986990990"])
+      end
+    end
+
+    context "when 979 field includes on" do
+      it "maps record" do
+        expect(subject.map_record(records[5])).to eq("oclc_number_display" => ["1012488209"])
+      end
+    end
+
+    context "when 979 field and 035 field have different OCLC numbers" do
+      it "maps record" do
+        expect(subject.map_record(records[6])).to eq("oclc_number_display" => ["938995310", "882543310"])
+      end
+    end
+
+    context "when 035 field includes subfield 9 with ExL" do
+      it "does not map record" do
+        expect(subject.map_record(records[7])).to eq({})
+      end
+    end
+  end
 end

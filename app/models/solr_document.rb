@@ -4,6 +4,7 @@ class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Solr::Document::RisFields
   include AlmaDataHelper
+  include Citable
 
   use_extension(Blacklight::Solr::Document::RisExport)
 

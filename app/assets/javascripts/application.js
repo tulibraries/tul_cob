@@ -20,6 +20,7 @@
 //= require blacklight_alma/blacklight_alma
 //= require bootstrap-select
 //= require bootstrap/alert
+//= require bootstrap/tab
 //= require bootstrap/dropdown
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
