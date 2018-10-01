@@ -20,7 +20,7 @@ RSpec.describe SolrDocument, type: :model do
     "bib_data" => { "title" => "Hello World" },
     "item_data" => {
       "physical_material_type" => { "value" => "ANY" },
-      "barcode" => "FOOBAR",
+      "pid" => "FOOBAR",
     },
     "holding_data" => { "calling_number" => "CALL ME" }
   ) }

@@ -114,7 +114,7 @@ class SolrDocument
 
   private
     def barcode(item)
-      item["item_data"]["barcode"]
+      item["item_data"]["pid"]
     end
 
     def availability_status(item)
