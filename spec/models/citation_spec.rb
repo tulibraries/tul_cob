@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "spec_helper"
+
+module StubOclcResponse
+  def stub_oclc_response(response, opts = {})
+    allow_any_instance_of(Citation).to receive(:field).and_return(opts[:for]) if opts[:for]
+    allow_any_instance_of(Citation).to receive(:response).and_return(response)
+  end
+end
+
+RSpec.configure do |config|
+  config.include StubOclcResponse
+end
 
 RSpec.describe Citation, type: :model do
   subject { described_class.new(document, formats) }
@@ -10,6 +22,7 @@ RSpec.describe Citation, type: :model do
       "<p class='citation_style_APA'>APA Citation</p>"
     ]
   end
+
 
   describe "#citable?" do
     context "when there is no oclc number" do
@@ -42,10 +55,13 @@ RSpec.describe Citation, type: :model do
     context "when all formats are requested" do
       let(:document) { SolrDocument.new(oclc_number_display: "12345") }
       let(:formats) { ["ALL"] }
+      let(:oclc_response) { citations.join }
+      let(:stub_opts) { {} }
+      before { stub_oclc_response(oclc_response, stub_opts) }
 
       it "all formats from the OCLC response are returned" do
-        expect(subject.citations["MLA"]).to match "<p class=\"citation_style_MLA\">Woodson, Thomas. <i>Twentieth Century Interpretations of the Fall of the House of Usher: A Collection of Critical Essays</i>. , 1969. Print. </p>"
-        expect(subject.citations["APA"]).to match "<p class=\"citation_style_APA\">Woodson, T. (1969). <i>Twentieth century interpretations of The fall of the house of Usher: A collection of critical essays</i>. </p>\n"
+        expect(subject.citations["MLA"]).to match %r{^<p class=.*>MLA Citation</p>$}
+        expect(subject.citations["APA"]).to match %r{^<p class=.*>APA Citation</p>$}
       end
     end
   end
