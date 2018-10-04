@@ -43,5 +43,6 @@ BentoSearch.register_engine("articles") do |conf|
   conf.engine = "BentoSearch::PrimoEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
+    display.name = I18n.t("bento.articles.nice_name")
   end
 end

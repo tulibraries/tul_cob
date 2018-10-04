@@ -3,7 +3,7 @@ en:
     blacklight:
       nice_name: 'Blacklight'
     articles:
-      nice_name: "Articles"
+      nice_name: "Articles+"
     journals:
       nice_name: "Journals"
     books:

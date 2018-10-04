@@ -23,7 +23,13 @@ module SearchHelper
 
   def bento_titleize(id)
     engine = BentoSearch.get_engine(id)
-    link_to id.titleize , engine.url(self), id: "bento_" + id
+    name = id.titleize
+
+    if engine.configuration[:for_display][:name]
+      name = engine.configuration[:for_display][:name]
+    end
+
+    link_to name , engine.url(self), id: "bento_" + id
   end
 
   def render_bento_results(results = @results, options = {})
