@@ -8,11 +8,13 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   let(:search_builder) { Blacklight::PrimoCentral::SearchBuilder.new(context) }
   let(:rows) { false }
   let(:start) { false }
+  let(:config)  { PrimoCentralController.blacklight_config }
 
   subject { search_builder }
 
   before(:example) do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
+    allow(search_builder).to receive(:blacklight_config).and_return(config)
   end
 
   let(:primo_central_parameters) { Blacklight::PrimoCentral::Request.new }
@@ -141,11 +143,11 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
-    context "search_field is not tranformable" do
+    context "search_field is set to unknown field" do
       let(:params) { ActionController::Parameters.new(search_field: "foo") }
 
-      it "the field is passed as is" do
-        expect(primo_central_parameters["query"]["q"]["field"]).to eq("foo")
+      it "should always transform unknown search_fields to any" do
+        expect(primo_central_parameters["query"]["q"]["field"]).to eq("any")
       end
     end
   end

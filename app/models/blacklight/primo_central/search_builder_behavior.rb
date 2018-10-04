@@ -47,6 +47,12 @@ module Blacklight::PrimoCentral
 
     def set_query_field(primo_central_parameters)
       field = to_primo_field(blacklight_params[:search_field])
+
+      # blacklight_range_limit can usurp this field for evil.
+      if !blacklight_config.search_fields.keys.include?(field.to_s)
+        field = "any"
+      end
+
       primo_central_parameters[:query][:q][:field] = field
     end
 
