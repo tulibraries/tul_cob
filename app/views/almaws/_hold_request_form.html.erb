@@ -7,11 +7,11 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
-    <% if @equipment.empty? %>
+    <% if @equipment.empty? && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 hold-form">
           <%= label("", :pickup_location, "Pickup Location: *") %>
-          <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
+          <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, { include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
     <% end %>
@@ -30,9 +30,17 @@
       <div class="form-group row">
         <div class="col-sm-4">
           <%= form.label(:description, "Description: *") %>
-          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
+          <%= select_tag(:description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-4 hold-form">
+          <%= label("", :pickup_location, "Pickup Location: *") %>
+          <%= select_tag(:pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+        </div>
+      </div>
+
     <% end %>
 
     <div class="row hold-form">

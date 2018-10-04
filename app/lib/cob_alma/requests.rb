@@ -42,17 +42,13 @@ module CobAlma
     end
 
     def self.avail_locations(items_list)
-      avail_locations = items_list.map { |k, v|
-        if v.any?(&:in_place?)
-          return k
-        end
-      }
-      avail_locations
+      avail_locations = items_list.select { |k, v|
+        v.any?(&:in_place?) }.keys
     end
 
     def self.valid_pickup_locations(items_list)
       pickup_locations = self.possible_pickup_locations
-      libraries = self.avail_locations(items_list).split(",")
+      libraries = self.avail_locations(items_list)
 
       if libraries.any?
         libraries.each do |lib|
@@ -62,6 +58,23 @@ module CobAlma
       end
       pickup_locations << self.reserve_or_reference(items_list)
       pickup_locations
+    end
+
+    def self.item_level_locations(items_list)
+      pickup_locations = self.possible_pickup_locations
+
+      items_list.reduce({}) { |libraries, item|
+        desc = item.description
+        campus = determine_campus(item.library)
+
+        if libraries[desc].present?
+          libraries[desc] -= remove_by_campus(campus)
+        else
+          libraries[desc] = pickup_locations - remove_by_campus(campus)
+        end
+
+        libraries
+      }
     end
 
     def self.reserve_or_reference(items_list)

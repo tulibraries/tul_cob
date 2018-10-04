@@ -66,4 +66,42 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.reserve_or_reference(both_reserve)).not_to include "MAIN"
     end
   end
+
+  describe "#item_level_locations" do
+    let(:items_list) { {} }
+    let(:subject) { described_class.item_level_locations(items_list) }
+
+    context "empty hash" do
+      it "returns an empty hash" do
+        expect(subject).to eq({})
+      end
+    end
+
+    context "one description includes no libraries" do
+      let(:items_list) { Alma::BibItem.find("desc_with_no_libraries") }
+
+      it "returns a hash with all the campuses" do
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "MEDIA", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
+      end
+    end
+
+    context "two descriptions each at one library" do
+      let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
+
+      it "returns a hash with all the campuses" do
+        expect(subject).to eq("v.4 (1976)" => ["AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
+                               "v.5 (1977)" => ["MAIN", "MEDIA", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
+      end
+    end
+
+    context "one description at multiple libraries" do
+      let(:items_list) { Alma::BibItem.find("desc_with_multiple_libraries") }
+
+      it "returns a hash with all the campuses" do
+        expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "PODIATRY", "HARRISBURG"])
+      end
+    end
+
+  end
+
 end
