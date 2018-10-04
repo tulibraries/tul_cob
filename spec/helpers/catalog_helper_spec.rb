@@ -36,4 +36,30 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_marc_view" do
+    let(:doc) { OpenStruct.new(to_marc: "foo") }
+
+    before(:each) {
+      helper.instance_variable_set(:@document, doc)
+      allow(helper).to receive(:render) {}
+      helper.render_marc_view
+    }
+
+    context "document responds to to_marc" do
+      it "renders the marc_view template" do
+        expect(helper).to have_received(:render).with("marc_view")
+      end
+    end
+
+    context "document does not respond to to_marc" do
+      let(:doc) { double }
+
+      it "renders a default no_marc ouput" do
+        expect(helper).to_not have_received(:render)
+        expect(helper.render_marc_view).to eq(helper.t("blacklight.search.librarian_view.empty"))
+      end
+    end
+
+  end
 end
