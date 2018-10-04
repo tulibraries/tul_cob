@@ -44,4 +44,25 @@ RSpec.describe AdvancedHelper, type: :helper do
       expect(helper.label_tag_default_for("f_1")).to eq("First Name")
     end
   end
+
+  describe "#render_advanced_search_link" do
+    before(:each) do
+      allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
+    end
+
+    context "not on advanced page" do
+      it "renders the link to the advanced form" do
+        link = "<a class=\"advanced_search\" id=\"advanced_search\" href=\"/advanced?q=foo\">Advanced Catalog Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+
+    context "on the advanced page" do
+      it "renders a link to the basic search page" do
+        allow(helper).to receive(:current_page?) { true }
+        link = "<a class=\"advanced_search\" id=\"basic_search\" href=\"/\">Basic Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+  end
 end
