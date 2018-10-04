@@ -27,6 +27,7 @@ class AlmawsController < ApplicationController
     @item_pid = CobAlma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
+    @item_level_locations = CobAlma::Requests.item_level_locations(@items)
     @equipment = CobAlma::Requests.equipment(@items)
     @booking_location = CobAlma::Requests.booking_location(@items)
     @material_types = CobAlma::Requests.physical_material_type(@items)
