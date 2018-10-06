@@ -17,6 +17,10 @@ class PrimoCentralBookmarkSearch < PrimoCentralController
     [@response, documents]
   end
 
+  def self.handle_bookmark_search?(document_model)
+    blacklight_config.document_model == document_model
+  end
+
   private
     def docs_not_found(docs, ids)
       if docs.length == ids.length

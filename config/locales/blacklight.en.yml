@@ -1,7 +1,7 @@
 en:
   blacklight:
     application_name: "Library Search"
-    greeting: "Welcome to the Catalog Search"
+    greeting: "Books & More Search"
     html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
 
     catalog_search_results:
