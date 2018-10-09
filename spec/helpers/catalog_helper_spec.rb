@@ -12,6 +12,7 @@ require "rails_helper"
 #     end
 #   end
 # end
+
 RSpec.describe CatalogHelper, type: :helper do
   describe "#isbn_data_attribute" do
     context "document contains an isbn" do
@@ -28,12 +29,22 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-
     context "document contains an isbn" do
       let(:document) { {} }
       it "returns the data-isbn string" do
         expect(isbn_data_attribute(document)).to be_nil
       end
+    end
+  end
+
+  describe "#grouped_citations" do
+    it "sends all the given document citations to the grouped_citations method of the Citation class" do
+      documents = [
+        double("Document", citations: :abc),
+        double("Document", citations: :def)
+      ]
+      expect(Citation).to receive(:grouped_citations).with([:abc, :def])
+      grouped_citations(documents)
     end
   end
 
@@ -60,6 +71,5 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(helper.render_marc_view).to eq(helper.t("blacklight.search.librarian_view.empty"))
       end
     end
-
   end
 end

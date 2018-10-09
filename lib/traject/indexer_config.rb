@@ -206,6 +206,7 @@ to_field "pub_no_display", extract_marc("028ab")
 to_field "sudoc_display", extract_marc("086|0*|a")
 to_field "diamond_id_display", extract_marc("907a")
 to_field "gpo_display", extract_marc("074a")
+to_field "oclc_number_display", extract_oclc_number
 to_field "alma_mms_display", extract_marc("001")
 
 # Preceding Entry fields
