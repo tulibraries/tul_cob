@@ -11,10 +11,6 @@ RSpec.describe SearchBuilder , type: :model do
   subject { search_builder }
 
   describe "#limit_facets" do
-    before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
-    end
-
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
       # I can't figure out the "right" way to add my test facet fields.
@@ -23,6 +19,7 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
       subject.limit_facets(solr_parameters)
     end
 
@@ -62,6 +59,35 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "limits the facet field to an empty set" do
         expect(solr_parameters["facet.field"]).to eq([])
+      end
+    end
+  end
+
+  describe "#tweak_query" do
+    let(:solr_parameters) {
+      sp = Blacklight::Solr::Request.new
+      sp["qf"] = "foo"
+      sp
+    }
+
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      subject.tweak_query(solr_parameters)
+    end
+
+    context "no overriding query parameter is passed" do
+      it "does not override the qf param" do
+        expect(solr_parameters["qf"]).to eq("foo")
+      end
+    end
+
+    context "overriding query parameter is passed" do
+      let(:params) { ActionController::Parameters.new(
+        qf: "bar"
+      ) }
+
+      it "does override the qf param" do
+        expect(solr_parameters["qf"]).to eq("bar")
       end
     end
   end

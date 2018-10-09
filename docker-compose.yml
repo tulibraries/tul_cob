@@ -10,6 +10,7 @@ services:
     ports:
       - "3000"
     environment:
+      SOLR_SEARCH_TWEAK_ENABLE: "on"
       SOLR_URL: "http://solr:8983/solr/blacklight"
       LC_ALL: "C.UTF-8"
     labels:
