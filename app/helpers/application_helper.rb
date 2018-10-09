@@ -322,4 +322,17 @@ module ApplicationHelper
       solr_document_path(opts.merge(format: "ris"))
     end
   end
+
+  def render_nav_link(path, name)
+    url_path = send(path)
+
+    active = current_page?(url_path) ? [ "active" ] : []
+
+    button_class = ([ "nav-btn" ] + active).join(" ")
+    link_class = ([ "nav-link" ] + active).join(" ")
+
+    content_tag :li, class: button_class do
+      link_to(name, send(path, params.except(:controller, :action)), class: link_class)
+    end
+  end
 end
