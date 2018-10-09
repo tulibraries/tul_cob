@@ -47,7 +47,7 @@ RSpec.describe CatalogHelper, type: :helper do
       grouped_citations(documents)
     end
   end
-  
+
   describe "#render_marc_view" do
     let(:doc) { OpenStruct.new(to_marc: "foo") }
 

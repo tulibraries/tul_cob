@@ -140,7 +140,7 @@ module CatalogHelper
   def grouped_citations(documents)
     Citation.grouped_citations(documents.map(&:citations))
   end
-  
+
   def render_marc_view
     if @document.respond_to?(:to_marc)
       render "marc_view"
