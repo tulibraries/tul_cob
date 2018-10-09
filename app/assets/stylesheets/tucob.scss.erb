@@ -1,3 +1,5 @@
+@import "partials/_vars.scss";
+
 #page-wrapper {
   min-height: calc(100vh - 291px)
 }
@@ -12,7 +14,7 @@
 }
 
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
-  color: #A50030;
+  color: $red;
 }
 
 h1[itemprop="name"] {
@@ -33,11 +35,11 @@ h1.advanced.page-header a {
   }
 }
 .btn-link {
-  color: #A50030;
+  color: $red;
 }
 
 .btn-link:hover {
-  color: #A50030;
+  color: $red;
   text-decoration: underline;
 
 }
@@ -164,9 +166,9 @@ input[type="radio"] + label {
 }
 
 .advanced-search-start-over, .advanced-search-start-over a:hover, .advanced-search-start-over a:focus {
-    background-color: #fff !important;
-    color: #A50030 !important;
-    border-color: #ccc;
+    background-color: $white !important;
+    color: $red !important;
+    border-color: $light-grey;
     margin-left: 4px;
 
 }
