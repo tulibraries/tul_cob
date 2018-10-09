@@ -363,7 +363,7 @@ class CatalogController < ApplicationController
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
-    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
+    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
 
     config.add_show_field "bound_with_ids", display: false
 
@@ -465,6 +465,8 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field("call_number_t", label: "Call Number") do |field|
+      # Temporarily disable catalog search
+      field.include_in_advanced_search = false
       field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: "call_number_t",

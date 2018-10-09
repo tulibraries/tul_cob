@@ -79,6 +79,14 @@ RSpec.configure do |config|
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
         with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
         to_return(status: 200,

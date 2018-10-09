@@ -95,4 +95,12 @@ module AlmaDataHelper
       render template: "almaws/_availability_status", locals: { availability: availability }
     end
   end
+
+  def item_level_library_name(location_hash)
+    location_hash.transform_values do |v|
+      v.reduce({}) { |acc, lib|
+        acc.merge!(library_name_from_short_code(lib) => lib)
+      }
+    end
+  end
 end

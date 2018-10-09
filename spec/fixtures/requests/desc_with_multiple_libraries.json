@@ -1,0 +1,258 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991011751099703811",
+                "title": "Glass.",
+                "author": null,
+                "issn": "0147-8427",
+                "isbn": null,
+                "complete_edition": "",
+                "network_number": [
+                    "(OCLC)ocm03232351",
+                    "ocm03232351",
+                    "PATG83-S00785",
+                    "ocn471172590",
+                    "(PPT)b12397386-01tuli_inst"
+                ],
+                "place_of_publication": "[Lake Oswego, Or., etc.,",
+                "publisher_const": "Publication Development inc etc",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811"
+            },
+            "holding_data": {
+                "holding_id": "22243511430003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "NK5100.G534x",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811/holdings/22243511430003811"
+            },
+            "item_data": {
+                "pid": "23243511380003811",
+                "barcode": "39074016860413",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "ISSUE",
+                    "desc": "Issue"
+                },
+                "policy": {
+                    "value": "2",
+                    "desc": "Bound Journal"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2008-10-17Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "v.2 (1974)",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Paley Library"
+                },
+                "location": {
+                    "value": "p_remote",
+                    "desc": "Paley Remote Stacks"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Fri Oct 17 2008 02:44PM: IN TRANSIT from amosher to kstk",
+                "internal_note_1": "Status: o - LIB USE ONLY",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: kstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811/holdings/22243511430003811/items/23243511380003811"
+      },
+      {
+          "bib_data": {
+              "mms_id": "991011751099703811",
+              "title": "Glass.",
+              "author": null,
+              "issn": "0147-8427",
+              "isbn": null,
+              "complete_edition": "",
+              "network_number": [
+                  "(OCLC)ocm03232351",
+                  "ocm03232351",
+                  "PATG83-S00785",
+                  "ocn471172590",
+                  "(PPT)b12397386-01tuli_inst"
+              ],
+              "place_of_publication": "[Lake Oswego, Or., etc.,",
+              "publisher_const": "Publication Development inc etc",
+              "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811"
+          },
+          "holding_data": {
+              "holding_id": "22243511430003811",
+              "call_number_type": {
+                  "value": "0",
+                  "desc": "Library of Congress classification"
+              },
+              "call_number": "NK5100.G534x",
+              "accession_number": "",
+              "copy_id": "1",
+              "in_temp_location": false,
+              "temp_library": {
+                  "value": null,
+                  "desc": null
+              },
+              "temp_location": {
+                  "value": null,
+                  "desc": null
+              },
+              "temp_call_number_type": {
+                  "value": "",
+                  "desc": null
+              },
+              "temp_call_number": "",
+              "temp_policy": {
+                  "value": "",
+                  "desc": null
+              },
+              "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811/holdings/22243511430003811"
+          },
+          "item_data": {
+              "pid": "23243511380003811",
+              "barcode": "39074016860413",
+              "creation_date": "2017-06-20Z",
+              "modification_date": "2017-06-20Z",
+              "base_status": {
+                  "value": "1",
+                  "desc": "Item in place"
+              },
+              "physical_material_type": {
+                  "value": "ISSUE",
+                  "desc": "Issue"
+              },
+              "policy": {
+                  "value": "2",
+                  "desc": "Bound Journal"
+              },
+              "provenance": {
+                  "value": "",
+                  "desc": null
+              },
+              "po_line": "",
+              "is_magnetic": false,
+              "arrival_date": "2008-10-17Z",
+              "year_of_issue": "",
+              "enumeration_a": "",
+              "enumeration_b": "",
+              "enumeration_c": "",
+              "enumeration_d": "",
+              "enumeration_e": "",
+              "enumeration_f": "",
+              "enumeration_g": "",
+              "enumeration_h": "",
+              "chronology_i": "",
+              "chronology_j": "",
+              "chronology_k": "",
+              "chronology_l": "",
+              "chronology_m": "",
+              "description": "v.2 (1974)",
+              "receiving_operator": "import",
+              "process_type": {
+                  "value": "",
+                  "desc": null
+              },
+              "library": {
+                  "value": "AMBLER",
+                  "desc": "Ambler Library"
+              },
+              "location": {
+                  "value": "p_remote",
+                  "desc": "Paley Remote Stacks"
+              },
+              "alternative_call_number": "",
+              "alternative_call_number_type": {
+                  "value": "",
+                  "desc": null
+              },
+              "storage_location_id": "",
+              "pages": "",
+              "pieces": "$0.00",
+              "public_note": "",
+              "fulfillment_note": "MESSAGE(ITEM): Fri Oct 17 2008 02:44PM: IN TRANSIT from amosher to kstk",
+              "internal_note_1": "Status: o - LIB USE ONLY",
+              "internal_note_2": "",
+              "internal_note_3": "ITEM LOC: kstk",
+              "statistics_note_1": "TOT RENEW: 0",
+              "statistics_note_2": "LYCIRC: 0",
+              "statistics_note_3": "",
+              "requested": null,
+              "edition": null,
+              "imprint": null,
+              "language": null,
+              "physical_condition": {
+                  "value": null,
+                  "desc": null
+              }
+          },
+          "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991011751099703811/holdings/22243511430003811/items/23243511380003811"
+    }
+    ]
+  }

@@ -19,7 +19,25 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :books, only: [:index], as: "books", path: "/books", controller: "books" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
+  resource :journals, only: [:index], as: "jornal", path: "/journals", controller: "journals" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
+    concerns :exportable
+  end
+
+  resources :solr_book_documents, only: [:show], path: "/book", controller: "books" do
+    concerns :exportable
+  end
+
+  resources :solr_journal_documents, only: [:show], path: "/journal", controller: "journals" do
     concerns :exportable
   end
 
@@ -36,7 +54,9 @@ Rails.application.routes.draw do
   end
 
   post "catalog/:id/track" => "catalog#track"
-  post "articles/:id/track" => "primo_central#track", as: :track_primo_central
+  post "article/:id/track" => "primo_central#track", as: :track_primo_central
+  post "book/:id/track" => "book#track"
+  post "journal/:id/track" => "journal#track"
 
   resources :users, only: [:index] do
     post :impersonate, on: :member
@@ -69,10 +89,13 @@ Rails.application.routes.draw do
 
   # gets
   get "bento" => "search#index", :as => "multi_search"
+  get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
   get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
+  get "book/:id/index_item", to: "books#index_item", as: "book_item"
+  get "journal/:id/index_item", to: "journals#index_item", as: "journal_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
 
 

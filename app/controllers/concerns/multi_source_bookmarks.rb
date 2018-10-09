@@ -22,7 +22,7 @@ module MultiSourceBookmarks
     blacklight_config.bookmark_sources.each do |source|
       source_class = "#{source}_bookmark_search".classify.constantize
       ids = @bookmarks
-        .select { |b| b.document_type == source_class.blacklight_config.document_model }
+        .select { |b| source_class.handle_bookmark_search?(b.document_type) }
         .collect { |b| b.document_id.to_s }
 
       if !ids.empty?

@@ -14,6 +14,10 @@ class SearchBuilder < Blacklight::SearchBuilder
         add_advanced_search_to_solr
         limit_facets ]
 
+  if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
+    self.default_processor_chain += %i[ tweak_query ]
+  end
+
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
     count = blacklight_params.keys.count
@@ -26,6 +30,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     elsif path == "catalog/range_limit" || path == "catalog/advanced"
       solr_parameters["facet.field"] = []
     end
+  end
+
+  def tweak_query(solr_parameters)
+    solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 
   # Overrides Blacklight::SearchBuilder#blacklight_params

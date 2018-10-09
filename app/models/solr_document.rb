@@ -80,7 +80,8 @@ class SolrDocument
   def materials_data
     Proc.new {
       @materials_data ||= alma_availability_mms_ids.map { |id|
-        Alma::BibItem.find(id).filter_missing_and_lost
+        # return maximum allowed item or lose items.
+        Alma::BibItem.find(id, limit: 100).filter_missing_and_lost
       }.first
     }
   end
@@ -114,7 +115,7 @@ class SolrDocument
 
   private
     def barcode(item)
-      item["item_data"]["barcode"]
+      item["item_data"]["pid"]
     end
 
     def availability_status(item)
