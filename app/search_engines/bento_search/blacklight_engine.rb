@@ -9,9 +9,11 @@ module BentoSearch
 
     def search_implementation(args)
       query = args.fetch(:query, "")
+      per_page = args.fetch(:per_page)
 
-      results = BentoSearch::Results.new
-      response = search_results(q: query, &proc_availability_facet_only).first
+      query = { q: query, per_page: per_page }
+
+      response = search_results(query, &proc_availability_facet_only).first
       results(response)
     end
 
