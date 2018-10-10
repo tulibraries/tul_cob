@@ -1,4 +1,5 @@
 <% # main container for facets/limits menu -%>
+
 <% if has_facet_values?  %>
 <div id="facets" class="facets sidenav">
 
@@ -10,11 +11,17 @@
      <span class="icon-bar"></span>
    </button>
 
+   <div>
+     <%=link_to t('blacklight.search.start_over'), bento_search_engine_path, :class => "catalog_startOverLink btn btn-sm", :id=>"startOverLink" %>
+   </div>
+
    <h2 class='facets-heading'>
      <%= t('blacklight.search.facets.title') %>
    </h2>
-   <%= render "online_only_checkbox" %>
  </div>
+
+ <%= render "constraints" %>
+
 
  <div id="facet-panel-collapse" class="collapse panel-group">
    <%= has_search_parameters? ? render_facet_partials : render_home_facets %>
