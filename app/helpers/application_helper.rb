@@ -253,25 +253,6 @@ module ApplicationHelper
     link_to "direct link", url, remote: true
   end
 
-  def navigational_headers
-    if params[:controller] == "catalog" || params[:controller] == "advanced"
-      label = link_to("Catalog Search", search_catalog_path, id: "catalog_header")
-    elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      label = link_to("Articles Search", search_path, id: "articles_header")
-    end
-    # content_tag(:h1, label, class: "nav-header")
-  end
-
-  def navigational_links
-    if navigational_headers.present?
-      if navigational_headers.include?("Catalog Search")
-        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn", id: "articles_button")
-      elsif navigational_headers.include?("Articles Search")
-        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn", id: "cataog_button")
-      end
-    end
-  end
-
   def login_disabled?
     Rails.configuration.features.fetch(:login_disabled, false)
   end
@@ -312,6 +293,19 @@ module ApplicationHelper
       primo_central_document_path(opts.merge(format: "ris"))
     else
       solr_document_path(opts.merge(format: "ris"))
+    end
+  end
+
+  def render_nav_link(path, name)
+    url_path = send(path)
+
+    active = current_page?(url_path) ? [ "active" ] : []
+
+    button_class = ([ "nav-btn" ] + active).join(" ")
+    link_class = ([ "nav-link" ] + active).join(" ")
+
+    content_tag :li, class: button_class do
+      link_to(name, send(path, params.except(:controller, :action)), class: link_class)
     end
   end
 end

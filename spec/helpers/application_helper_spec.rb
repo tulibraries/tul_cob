@@ -137,4 +137,38 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_nav_link" do
+    let(:params) { {} }
+    let(:current_page?) { false }
+
+    before(:each) do
+      allow(helper).to receive(:params) { params }
+      allow(helper).to receive(:current_page?) { current_page? }
+    end
+
+    context "path not current page" do
+      it "renders a link without the active class" do
+        link = "<li class=\"nav-btn\"><a class=\"nav-link\" href=\"/catalog\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+
+    context "path is current page" do
+      let(:current_page?) { true }
+      it "renders a link with the active class" do
+        link = "<li class=\"nav-btn active\"><a class=\"nav-link active\" href=\"/catalog\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+
+    context "path contains a query" do
+      let(:params) { { q: "foo" } }
+
+      it "gets the query added to the generated link" do
+        link = "<li class=\"nav-btn\"><a class=\"nav-link\" href=\"/catalog?q=foo\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+  end
 end
