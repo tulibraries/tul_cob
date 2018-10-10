@@ -56,7 +56,8 @@
 }
 .navbar-default {
 	background-color: $tan;
-  border-bottom: solid $red;
+  border-bottom: 1px solid $red;
+	padding: 10px;
 }
 
 .navbar-inverse {
@@ -164,10 +165,6 @@ a.advanced_search {
   margin-bottom: 0px;
 }
 
-div.container.navbar-nav {
-  background-color: $white;
-}
-
 a.nav-link {
   color: $black;
 }
@@ -195,4 +192,23 @@ nav ul.navbar li.nav-btn.active a {
 
 .red-navbar a#catalog_header {
   text-decoration: underline;
+}
+
+.path-links {
+	background-color: $white;
+	height: 50px;
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+.nav-header-links {
+	display: inline-block;
+	float: none;
+	font-size: 1.5em;
+}
+
+.navbar-form {
+	margin: 0 25%;
 }
