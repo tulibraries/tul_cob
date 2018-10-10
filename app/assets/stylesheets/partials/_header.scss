@@ -192,3 +192,7 @@ nav ul.navbar li.nav-btn:hover a,
 nav ul.navbar li.nav-btn.active a {
   color: $white;
 }
+
+.red-navbar a#catalog_header {
+  text-decoration: underline;
+}
