@@ -12,7 +12,7 @@ RSpec.feature "Searches", relevance: true do
   feature "Search all fields" do
     let (:item) { fixtures.fetch("book_search") }
     scenario "Search Title" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["title"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -21,7 +21,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search ID" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["doc_id"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -30,7 +30,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search book creator" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["creator"]
       click_button search_element_id
       within("h3", text: item["title"]) do
@@ -39,7 +39,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search imprint" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["imprint"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -49,7 +49,7 @@ RSpec.feature "Searches", relevance: true do
 
     scenario "Search physical description" do
       skip "TBD"
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["physical_description"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -58,7 +58,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search series title" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["series_title"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -68,7 +68,7 @@ RSpec.feature "Searches", relevance: true do
 
     scenario "Search content" do
       skip "TBD"
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["content"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -77,7 +77,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search subject" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["subject"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -86,7 +86,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search ISBN" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["isbn"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -95,7 +95,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search LCCN" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["lccn"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -107,7 +107,7 @@ RSpec.feature "Searches", relevance: true do
   feature "Search all fields in journals" do
     let (:item) { fixtures.fetch("journal_search") }
     scenario "Search Title" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["title"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -116,7 +116,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search ID" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["doc_id"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -125,7 +125,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search journal creator" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["creator"]
       click_button search_element_id
       within "h3", text: item["title"] do
@@ -134,7 +134,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search imprint" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["imprint"]
       click_button search_element_id
       within("h3", text: item["title"]) do
@@ -144,7 +144,7 @@ RSpec.feature "Searches", relevance: true do
 
     scenario "Search physical description" do
       skip "TBD"
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["physical_description"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -153,7 +153,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search subject" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["subject"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -162,7 +162,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search ISSN" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["issn"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -171,7 +171,7 @@ RSpec.feature "Searches", relevance: true do
     end
 
     scenario "Search LCCN" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["lccn"]
       click_button search_element_id
       within first(".document-position-0 h3", text: item["title"]) do
@@ -183,7 +183,7 @@ RSpec.feature "Searches", relevance: true do
   feature "Search for an item with a colon in title" do
     let (:item) { fixtures.fetch("has_a_colon") }
     scenario "using default serch" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["title_statement"]
       click_button search_element_id
       within(".document-position-0 h3") do
