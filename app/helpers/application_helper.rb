@@ -253,14 +253,6 @@ module ApplicationHelper
     link_to "direct link", url, remote: true
   end
 
-  def render_online_only_checkbox
-    online_articles = params.dig("f", "tlevel")&.include?("online_resources")
-    online_catalog = params.dig("f", "availability_facet")&.include?("Online")
-    checked = online_articles || online_catalog
-
-    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()", id: "online-only"
-  end
-
   def login_disabled?
     Rails.configuration.features.fetch(:login_disabled, false)
   end
