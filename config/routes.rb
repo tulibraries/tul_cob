@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  resource :journals, only: [:index], as: "jornal", path: "/journals", controller: "journals" do
+  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
     concerns :searchable
     concerns :range_searchable
   end
