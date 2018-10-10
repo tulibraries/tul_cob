@@ -52,7 +52,19 @@ c++ => cplusplus
 
 min => minor
 maj => major
+maj. => major
 
 # Added for BL-447
 employment,labor => work
 precarious => contingent
+
+# Added for BL-695
+kantate => cantatas
+konzerte => concerto
+messe => mass
+sonaten => sonatas
+sinfonien => symphonies
+etc. => etcetera
+klavier => piano
+sinfonie => symphony
+arr. => arranged
