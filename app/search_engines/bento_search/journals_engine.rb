@@ -2,19 +2,11 @@
 
 module BentoSearch
   class JournalsEngine < BlacklightEngine
-    def search_implementation(args)
-      query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
-
-      query = { q: query, per_page: per_page, f: { format: ["Journal/Periodical"] } }
-
-      response = search_results(query, &proc_availability_facet_only).first
-      results(response)
-    end
+    delegate :blacklight_config, to: JournalsController
 
     def url(helper)
       params = helper.params
-      helper.search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] })
+      helper.search_journals_path(q: params[:q])
     end
 
     def view_link(total = nil, helper)
