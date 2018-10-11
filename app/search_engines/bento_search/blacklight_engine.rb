@@ -8,12 +8,7 @@ module BentoSearch
     delegate :blacklight_config, to: CatalogController
 
     def search_implementation(args)
-      query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
-
-      query = { q: query, per_page: per_page }
-
-      response = search_results(query, &proc_availability_facet_only).first
+      response = search_results(args, &proc_availability_facet_only).first
       results(response)
     end
 
@@ -52,7 +47,7 @@ module BentoSearch
     end
 
     def url(helper)
-      helper.search_catalog_path(q: helper.params[:q])
+      helper.search_catalog_path(helper.params.except(:controller, :action))
     end
 
     def view_link(total = nil, helper)

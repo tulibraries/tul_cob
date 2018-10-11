@@ -3,10 +3,7 @@
 module BentoSearch
   class MoreEngine < BlacklightEngine
     def search_implementation(args)
-      query = args.fetch(:query, "")
-      query = { q: query, per_page: 2 }
-
-      response = search_results(query, &proc_minus_books_journals).first
+      response = search_results(args.merge(per_page: 2), &proc_minus_books_journals).first
 
       item = BentoSearch::ResultItem.new(custom_data: response)
 
