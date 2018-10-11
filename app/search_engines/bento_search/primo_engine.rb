@@ -5,14 +5,11 @@ module BentoSearch
     delegate :blacklight_config, to: PrimoCentralController
 
     def search_implementation(args)
-      query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
-
       # Avoid making a costly call for no reason.
-      if query.empty?
+      if !args.present?
         response = { "docs" => [] }
       else
-        response = search_results(q: query, per_page: per_page).first
+        response = search_results(args).first
       end
 
       results(response)
@@ -28,8 +25,7 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params
-      helper.url_for(action: :index, controller: :primo_central, q: params[:q])
+      helper.search_path(helper.params.except(:controller, :action))
     end
 
     def view_link(total = nil, helper)

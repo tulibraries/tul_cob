@@ -14,7 +14,9 @@ class SearchController < CatalogController
     if params[:q]
       engines = %i( books articles journals more )
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
-      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
+      args = { semantic_search_field: params[:field], per_page: @per_page }
+        .merge(params.except(:controller, :action))
+      searcher.search(args)
       @results = split_more(searcher.results)
       @response = @results["resource_types"]&.first&.custom_data
     end

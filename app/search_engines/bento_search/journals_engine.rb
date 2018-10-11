@@ -5,8 +5,7 @@ module BentoSearch
     delegate :blacklight_config, to: JournalsController
 
     def url(helper)
-      params = helper.params
-      helper.search_journals_path(q: params[:q])
+      helper.search_journals_path(helper.params.except(:controller, :action))
     end
 
     def view_link(total = nil, helper)
