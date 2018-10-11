@@ -308,4 +308,19 @@ module ApplicationHelper
       link_to(name, send(path, params.except(:controller, :action)), class: link_class)
     end
   end
+
+  def breadcrumb_links
+    case controller_name
+    when "books"
+      link_back_to_catalog(label: "Books & More")
+    when "primo_central"
+      link_back_to_catalog(label: "Articles")
+    when "catalog"
+      link_back_to_catalog(label: "More")
+    when "journals"
+      link_back_to_catalog(label: "Journals")
+    else
+      link_back_to_catalog(label: "More")
+    end
+  end
 end
