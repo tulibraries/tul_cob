@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "catalog#index"
+  root to: "search#index"
 
   # concerns
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
