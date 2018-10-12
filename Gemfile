@@ -102,3 +102,6 @@ gem "httparty"
 group :production do
   gem "mysql2", "~> 0.4.9"
 end
+
+# devops
+gem "okcomputer"
