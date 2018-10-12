@@ -27,7 +27,7 @@ module SearchHelper
   end
 
   def render_bento_results(results = @results, options = {})
-    results_class = options[:results_class] || "row bento-results"
+    results_class = options[:results_class] || "row centered-bento bento-results"
     comp_class = options[:comp_class] || "col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment"
     render partial: "bento_results", locals: {
       results_class: results_class,

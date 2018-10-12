@@ -1,7 +1,7 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
-<div class="col-sm-12">
-<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel">
+
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel col-sm-10">
   <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading" class="text-left">Availability</h4>
     <div id="heading-request">
@@ -15,7 +15,6 @@
     </div>
   </div>
 
-
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
@@ -27,12 +26,10 @@
         </div>
         <div class="table-wrapper hidden">
           <div data-target="show.panel"></div>
-          <div>
-            <%= render "check_holdings", document: document %>
-          </div>
+          <div><%= render "check_holdings", document: document %></div>
+        </div>
       </div>
-      </div>
+    </div>
   <% end %>
-  </div>
 
 </div>
