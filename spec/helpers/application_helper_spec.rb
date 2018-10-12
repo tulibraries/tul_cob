@@ -115,10 +115,10 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "includes link to exact subject" do
-        expect(subject_links(args).first).to have_link("Middle East", href: "#{root_path}?f[subject_facet][]=Middle+East")
+        expect(subject_links(args).first).to have_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle+East")
       end
       it "does not link to only part of the subject" do
-        expect(subject_links(args).first).to have_no_link("Middle East", href: "#{root_path}?f[subject_facet][]=Middle")
+        expect(subject_links(args).first).to have_no_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle")
       end
     end
 
@@ -133,7 +133,7 @@ RSpec.describe ApplicationHelper, type: :helper do
           }
         }
       it "includes link to whole subject string" do
-        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{root_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
       end
     end
   end
@@ -168,6 +168,30 @@ RSpec.describe ApplicationHelper, type: :helper do
       it "gets the query added to the generated link" do
         link = "<li class=\"nav-btn\"><a class=\"nav-link\" href=\"/catalog?q=foo\">More</a></li>"
         expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+  end
+
+  describe "#breadcrumb_links" do
+    before(:each) {
+      allow(helper).to receive(:controller_name) { controller_name }
+      allow(helper).to receive(:link_back_to_catalog) {}
+      helper.breadcrumb_links
+    }
+
+    context "user entered page using a catalog search" do
+      let(:controller_name) { "catalog" }
+
+      it "has 'More' breadcrumb leading back to catalog search" do
+        expect(helper).to have_received(:link_back_to_catalog).with(label: "More")
+      end
+    end
+
+    context "user entered page using unknown controller" do
+      let(:controller_name) { "foo" }
+
+      it "has 'More' breadcrumb leading back to catalog search" do
+        expect(helper).to have_received(:link_back_to_catalog).with(label: "More")
       end
     end
   end
