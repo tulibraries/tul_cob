@@ -275,6 +275,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    okcomputer (1.17.3)
     omniauth (1.8.1)
       hashie (>= 3.4.6, < 3.6.0)
       rack (>= 1.6.2, < 3)
@@ -508,6 +509,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   mysql2 (~> 0.4.9)
+  okcomputer
   omniauth
   omniauth-shibboleth
   pretender
