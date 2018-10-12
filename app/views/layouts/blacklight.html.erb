@@ -28,28 +28,22 @@
   </head>
   <body class="<%= render_body_class %>">
     <div id="page-wrapper">
-    <%= render :partial => 'shared/banner' %>
+      <%= render :partial => 'shared/banner' %>
 
-    <% if (defined? true_user) && (current_user != true_user) %>
-      <div class="navbar-masquerade" id="user-masquerade">
-        <div id="masquerade-status">You (<%= true_user.email %>) are signed in as <%= current_user.email %></div>
-        <div id="masquerade-logout"><%= link_to "Back to admin", stop_impersonating_users_path, method: :post %></div>
+      <%= render :partial => 'shared/header_navbar' %>
+
+      <%= render partial: 'shared/ajax_modal' %>
+
+      <div id="main-container" class="<%= container_classes %>">
+
+        <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+
+        <div class="row">
+          <%= yield %>
+        </div>
       </div>
-    <% end %>
-  <%= render :partial => 'shared/header_navbar' %>
 
-  <%= render partial: 'shared/ajax_modal' %>
-
-  <div id="main-container" class="<%= container_classes %>">
-
-    <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
-
-    <div class="row">
-      <%= yield %>
     </div>
-  </div>
-
-</div>
-  <%= render :partial => 'shared/footer' %>
+      <%= render :partial => 'shared/footer' %>
   </body>
 </html>

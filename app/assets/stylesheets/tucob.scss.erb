@@ -1,13 +1,52 @@
 @import "partials/_vars.scss";
 
 #page-wrapper {
-  min-height: calc(100vh - 291px)
+  min-height: calc(100vh - 291px);
+  background-color: #F4F6F5;
+}
+
+#documents {
+  border-radius: 0 0 5px 5px;
+  border-top: 1px solid #CCC;
+  margin-left: 0;
+  margin-top: -10px;
+  background-color: $white;
+  padding: 0 0 0 20px;
+}
+div #documents .document {
+  border-bottom: none !important;
+}
+
+#previousNextDocument {
+  padding: 20px 20px 10px 20px;
+}
+
+#record-page-content {
+  background-color: $white;
+  border-radius: 5px 5px 0 0;
+}
+
+.record-page-wrapper {
+  padding: 40px;
+}
+
+#record-page-content h1 {
+  padding-left: 20px;
+}
+
+#sortAndPerPage {
+  background-color: $white;
+  border-radius: 5px;
+  margin: 0;
+  padding: 20px;
+
 }
 
 #record-view-iframe, #stafflink {
-  max-width: 900px;
-  margin:auto;
+  max-width: 850px;
+  margin-left: 10%;
 }
+
 #stafflink {
   padding-top: 10px;
   padding-left: 7px;
@@ -128,6 +167,12 @@ input[type="radio"] + label {
   margin-right: 10px;
 }
 
+.advanced-search-form {
+  background-color: $white;
+  border-radius: 5px;
+  margin-bottom: 40px;
+}
+
 .advanced-search-fields {
   line-height: 3.5em;
 }
@@ -197,17 +242,18 @@ input[type="radio"] + label {
 
 .search-results-request-btn {
   display: inline-block;
-  color: #fff !important;
+  color: $white!important;
 }
 
 .panel-default > .availability-panel-heading {
-  background-color: #fff !important;
+  background-color: $white!important;
   border: none !important;
   color: #A30733 !important;
 }
 
 #availability-heading {
-  color: #A30733;
+  color: $red;
+  margin-left: -10px;
   display: inline-block;
   vertical-align: middle;
 }
@@ -376,12 +422,10 @@ table.other_libraries td:last-child  {
 .cite-modal {
   padding: 14px;
 }
-.page-links {
 
-}
 #record-page-nav-tools {
   float: right;
-  padding-right: 142px;
+  padding-right: 60px;
 }
 .nav-tools {
   display: inline-block;
@@ -412,11 +456,11 @@ table.other_libraries td:last-child  {
   margin-left: -14px;
   position:absolute;
   display:inline-block;
-  background-color: #fff;
+  background-color: $white;
 }
 #bookmarks-sendto {
   display:inline-block;
-  background-color: #fff;
+  background-color: $white;
 }
 #sendto button {
   border: 0;
@@ -430,19 +474,19 @@ table.other_libraries td:last-child  {
   padding: 8px 12px;
 }
 .clear-bookmarks {
-  color: #fff !important;
+  color: $white!important;
   display: inline-block;
 }
 #sendto-menu {
-  background-color: #fff;
+  background-color: $white;
 }
 
 #sendto .dropdown-menu {
-  background-color: #fff;
+  background-color: $white;
   width: 111px;
 }
 #bookmarks-sendto .dropdown-menu {
-  background-color: #fff;
+  background-color: $white;
   width: 111px;
   top:auto;
   left:auto;
@@ -451,13 +495,13 @@ table.other_libraries td:last-child  {
 #sendto ul {
   float:none;
   position:relative;
-  background-color: #fff;
+  background-color: $white;
 }
 .sendto-item {
   color: #A50030 !important;
   margin-left: 0;
   display:block;
-  background-color: #fff !important;
+  background-color: $white!important;
   width: 100%;
 }
 .sendto-item a {
@@ -502,7 +546,7 @@ ul.navbar-nav {
 .bookmarks-back-btn {
   display: inline-block;
   margin-left: 15px;
-  background-color: #fff;
+  background-color: $white;
   color: #A50030;
   border-color: #ccc;
 }
@@ -652,7 +696,7 @@ ul.navbar-nav {
     min-height: auto;
   }
   .nav-tools div.toggle_bookmark label {
-    color: #fff;
+    color: $white;
     min-width:auto;
   }
   .nav-tools div.toggle_bookmark input.toggle_bookmark {
@@ -674,7 +718,7 @@ ul.navbar-nav {
   #sendto button {
     border: 0;
     background-color: #A50030;
-    color: #fff;
+    color: $white;
   }
   #sendto-menu {
     background-color: #A50030;
@@ -682,7 +726,7 @@ ul.navbar-nav {
   #sendto ul {
     float:none;
     position:relative;
-    background-color: #fff;
+    background-color: $white;
   }
   #sendto .dropdown-menu {
     background-color: #A50030;
@@ -692,7 +736,7 @@ ul.navbar-nav {
     margin-left: 0;
     display:block;
     background-color: #A50030!important;
-    /*border-bottom: solid #fff 2px;*/
+    /*border-bottom: solid $white2px;*/
   }
   .pub-date-separator {
     margin-left: 0;
@@ -772,7 +816,7 @@ textarea#message-body.form-control {
 .beta-tag {
   background: #1060aa;
   border-radius: 5px;
-  color: #fff;
+  color: $white;
   padding: .24em .5em;
   margin: 25px 10px;
 }

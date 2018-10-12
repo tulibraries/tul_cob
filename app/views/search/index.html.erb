@@ -12,7 +12,9 @@
           </div>
         </div>
       <% end %>
-      <%= render_bento_results %>
-    <% else %>
-      <%= render("home_text") %>
-    <% end %>
+      <div class="bento-container">
+          <%= render_bento_results %>
+        <% else %>
+          <%= render("home_text") %>
+        <% end %>
+      </div>
