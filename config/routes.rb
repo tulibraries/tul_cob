@@ -3,6 +3,12 @@
 Rails.application.routes.draw do
   root to: "search#index"
 
+  # advanced forms
+  match "/books/advanced", to: "books_advanced#index", as: "books_advanced_search", via: [:get, :post]
+  match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
+  match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
+  match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
+
   # concerns
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   concern :searchable, Blacklight::Routes::Searchable.new
@@ -91,7 +97,7 @@ Rails.application.routes.draw do
   get "bento" => "search#index", :as => "multi_search"
   get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-  get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
+  get "articles_advanced", to: "primo_advanced#index", as: "legacy_articles_advanced_search"
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
   get "book/:id/index_item", to: "books#index_item", as: "book_item"

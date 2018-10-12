@@ -20,6 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  catalog_advanced_search: "Advanced Catalog Search"
+  books_advanced_search: "Advanced Books Search"
+  journals_advanced_search: "Advanced Journals Search"
+  articles_advanced_search: "Advanced Articles Search"
   ask_librarian: "Ask a Librarian"
   bento_search:
     no_results:

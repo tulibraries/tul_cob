@@ -47,21 +47,130 @@ RSpec.describe AdvancedHelper, type: :helper do
 
   describe "#render_advanced_search_link" do
     before(:each) do
+      allow(helper).to receive(:current_page?).with("/catalog") { false }
+      allow(helper).to receive(:current_page?).with("/books") { false }
+      allow(helper).to receive(:current_page?).with("/journals") { false }
+      allow(helper).to receive(:current_page?).with("/articles") { false }
       allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
     end
 
-    context "not on advanced page" do
+    context "on the catalog search page" do
       it "renders the link to the advanced form" do
-        link = "<a class=\"advanced_search\" id=\"advanced_search\" href=\"/advanced?q=foo\">Advanced Catalog Search</a>"
+        allow(helper).to receive(:current_page?).with("/catalog") { true }
+        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Catalog Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
       end
     end
 
-    context "on the advanced page" do
-      it "renders a link to the basic search page" do
-        allow(helper).to receive(:current_page?) { true }
-        link = "<a class=\"advanced_search\" id=\"basic_search\" href=\"/\">Basic Search</a>"
+    context "on the books search page" do
+      it "renders the link to the advanced books form" do
+        allow(helper).to receive(:current_page?).with("/books") { true }
+        link = "<a class=\"advanced_search\" id=\"books_advanced_search\" href=\"/books/advanced?q=foo\">Advanced Books Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+
+    context "on the journals search page" do
+      it "renders the link to the advanced journals form" do
+        allow(helper).to receive(:current_page?).with("/journals") { true }
+        link = "<a class=\"advanced_search\" id=\"journals_advanced_search\" href=\"/journals/advanced?q=foo\">Advanced Journals Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+
+    context "on the articles serch page" do
+      it "renders the link to the advanced articles form" do
+        allow(helper).to receive(:current_page?).with("/articles") { true }
+        link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+  end
+
+  describe "#basic_search_path" do
+    before(:each) do
+      allow(helper).to receive(:current_page?).with("/catalog/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/books/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
+    end
+
+    context "on the advanced catalog search page" do
+      it "renders the link to the catalog search" do
+        allow(helper).to receive(:current_page?).with("/catalog/advanced") { true }
+        expect(helper.basic_search_path).to eq("/catalog")
+      end
+    end
+
+    context "on the advanced books search page" do
+      it "renders the link to the books search" do
+        allow(helper).to receive(:current_page?).with("/books/advanced") { true }
+        expect(helper.basic_search_path).to eq("/books")
+      end
+    end
+
+    context "on the advanced journals search page" do
+      it "renders the link to the journals search" do
+        allow(helper).to receive(:current_page?).with("/journals/advanced") { true }
+        expect(helper.basic_search_path).to eq("/journals")
+      end
+    end
+
+    context "on the advanced articles page" do
+      it "renders the link to the articles search" do
+        allow(helper).to receive(:current_page?).with("/articles/advanced") { true }
+        expect(helper.basic_search_path).to eq("/articles")
+      end
+    end
+
+    context "on some unknown page" do
+      it "renders the link to the everything search" do
+        allow(helper).to receive(:current_page?).with("/foo/advanced") { true }
+        expect(helper.basic_search_path).to eq("/catalog")
+      end
+    end
+  end
+
+  describe "#advanced_search_form_title" do
+    before(:each) do
+      allow(helper).to receive(:current_page?).with("/catalog/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/books/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
+    end
+
+    context "on the advanced catalog search page" do
+      it "renders the link to the catalog search" do
+        allow(helper).to receive(:current_page?).with("/catalog/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Catalog Search")
+      end
+    end
+
+    context "on the advanced books search page" do
+      it "renders the link to the books search" do
+        allow(helper).to receive(:current_page?).with("/books/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Books Search")
+      end
+    end
+
+    context "on the advanced journals search page" do
+      it "renders the link to the journals search" do
+        allow(helper).to receive(:current_page?).with("/journals/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Journals Search")
+      end
+    end
+
+    context "on the advanced articles page" do
+      it "renders the link to the articles search" do
+        allow(helper).to receive(:current_page?).with("/articles/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Articles Search")
+      end
+    end
+
+    context "on some unknown page" do
+      it "renders the link to the everything search" do
+        allow(helper).to receive(:current_page?).with("/foo/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Catalog Search")
       end
     end
   end
