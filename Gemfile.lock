@@ -125,6 +125,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     bootstrap-select-rails (1.12.4)
+    breadcrumbs_on_rails (3.0.1)
     browser (2.5.3)
     builder (3.2.3)
     byebug (10.0.2)
@@ -478,6 +479,7 @@ DEPENDENCIES
   blacklight_range_limit
   bootsnap
   bootstrap-select-rails
+  breadcrumbs_on_rails
   browser
   byebug
   capybara

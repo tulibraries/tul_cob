@@ -94,6 +94,7 @@ gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "bootstrap-select-rails"
 gem "httparty"
+gem "breadcrumbs_on_rails"
 
 group :production do
   gem "mysql2", "~> 0.4.9"

@@ -38,12 +38,14 @@
 
         <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
 
+        <ol class="breadcrumb">
+          <%= render_breadcrumbs :tag => :li, :separator => "" %>
+        </ol>
         <div class="row">
           <%= yield %>
         </div>
       </div>
-
     </div>
-      <%= render :partial => 'shared/footer' %>
+    <%= render :partial => 'shared/footer' %>
   </body>
 </html>
