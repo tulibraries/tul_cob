@@ -3,7 +3,7 @@
   <% @items.each do |hold| %>
     <li>
       <%= hold.title %><br/>
-      Held until: <%= Time.parse(hold.expiry_date).to_formatted_s(:long) %>.  Status: <%= hold.request_status %>
+      Held until: <%= Time.parse(hold.expiry_date).to_formatted_s(:long) %>.  Status: <%= hold.request_status.tr("_", " ").titlecase %>
     </li>
   <% end %>
 </ul>
