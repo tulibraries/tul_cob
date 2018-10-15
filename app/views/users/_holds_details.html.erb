@@ -3,7 +3,7 @@
   <td><%= counter + 1 %></td>
   <td><%= hold.title %></td>
   <td><%= expiry_date(hold) %></td>
-  <td><%= hold.request_status %></td>
+  <td><%= hold.request_status.tr("_", " ").titlecase %></td>
 </tr>
 <% end %>
 <tr>
