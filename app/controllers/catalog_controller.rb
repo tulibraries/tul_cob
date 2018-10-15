@@ -509,6 +509,7 @@ class CatalogController < ApplicationController
     add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
+    config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
