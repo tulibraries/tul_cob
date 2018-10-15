@@ -11,7 +11,7 @@ RSpec.describe PrimoAdvancedHelper, type: :helper do
 
     context "not on advanced page" do
       it "renders the link to the advanced form" do
-        link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles_advanced?q=foo\">Advanced Articles Search</a>"
+        link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
         expect(helper.articles_advanced_search_link).to eq(link)
       end
     end

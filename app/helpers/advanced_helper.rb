@@ -61,12 +61,50 @@ module AdvancedHelper
   end
 
   def render_advanced_search_link
-    if !current_page? blacklight_advanced_search_engine.advanced_search_path
-      query = params.except(:controller, :action).to_h
-      url = blacklight_advanced_search_engine.advanced_search_path(query)
-      link_to "Advanced Catalog Search", url, class: "advanced_search", id: "advanced_search"
+    query = params.except(:controller, :action).to_h
+
+    if current_page? search_catalog_path
+      id = :catalog_advanced_search
+      url = advanced_search_path(query)
+    elsif current_page? search_books_path
+      id = :books_advanced_search
+      url = books_advanced_search_path(query)
+    elsif current_page? search_journals_path
+      id = :journals_advanced_search
+      url = journals_advanced_search_path(query)
+    elsif current_page? search_path
+      id = :articles_advanced_search
+      url = articles_advanced_search_path(query)
+    end
+
+    link_to(t(id), url, class: "advanced_search", id: id) if id
+  end
+
+  def basic_search_path
+    if current_page? advanced_search_path
+      search_catalog_path
+    elsif current_page? books_advanced_search_path
+      search_books_path
+    elsif current_page? journals_advanced_search_path
+      search_journals_path
+    elsif current_page? articles_advanced_search_path
+      search_path
     else
-      link_to "Basic Search", root_path, class: "advanced_search", id: "basic_search"
+      search_catalog_path
+    end
+  end
+
+  def advanced_search_form_title
+    if current_page? advanced_search_path
+      t(:catalog_advanced_search)
+    elsif current_page? books_advanced_search_path
+      t(:books_advanced_search)
+    elsif current_page? journals_advanced_search_path
+      t(:journals_advanced_search)
+    elsif current_page? articles_advanced_search_path
+      t(:articles_advanced_search)
+    else
+      t(:catalog_advanced_search)
     end
   end
 end

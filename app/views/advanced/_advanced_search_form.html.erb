@@ -1,4 +1,4 @@
-<%= form_tag search_catalog_path, :class => 'advanced form-horizontal', :method => :get do  %>
+<%= form_tag basic_search_path, :class => 'advanced form-horizontal', :method => :get do  %>
 
 
   <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
