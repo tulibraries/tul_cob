@@ -64,11 +64,6 @@ Rails.application.routes.draw do
   post "book/:id/track" => "book#track"
   post "journal/:id/track" => "journal#track"
 
-  resources :users, only: [:index] do
-    post :impersonate, on: :member
-    post :stop_impersonating, on: :collection
-  end
-
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do

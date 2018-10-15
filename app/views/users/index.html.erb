@@ -1,5 +1,0 @@
-<ul>
-  <% @users.each do |user| %>
-    <li>Sign in as <%= link_to user.email, impersonate_user_path(user), method: :post %></li>
-  <% end %>
-</ul>
