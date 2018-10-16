@@ -754,4 +754,240 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
+  describe "#extract_oclc_number" do
+    let(:path) { "oclc.xml" }
+
+    before do
+      subject.instance_eval do
+        to_field "oclc_number_display", extract_oclc_number
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when there is no 035 or 979 field" do
+      it "does not map record" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[1])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[2])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field and 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[3])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes ocn" do
+      it "maps record" do
+        expect(subject.map_record(records[4])).to eq("oclc_number_display" => ["986990990"])
+      end
+    end
+
+    context "when 979 field includes on" do
+      it "maps record" do
+        expect(subject.map_record(records[5])).to eq("oclc_number_display" => ["1012488209"])
+      end
+    end
+
+    context "when 979 field and 035 field have different OCLC numbers" do
+      it "maps record" do
+        expect(subject.map_record(records[6])).to eq("oclc_number_display" => ["938995310", "882543310"])
+      end
+    end
+
+    context "when 035 field includes subfield 9 with ExL" do
+      it "does not map record" do
+        expect(subject.map_record(records[7])).to eq({})
+      end
+    end
+  end
+
+  describe "#extract_work_access_point" do
+    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+    before do
+      subject.instance_eval do
+        to_field "work_access_point", extract_work_access_point
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "All fields available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='130'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps only the 130 field" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d"])
+      end
+    end
+
+    context "Only 130 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 240" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a s"])
+      end
+    end
+
+    context "Only 130 and 100 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 110 . 240" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d . a s"])
+      end
+    end
+
+    context "Only 130 and 240 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a p"])
+      end
+    end
+
+    context "Only 130 and 240 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a p"])
+      end
+    end
+
+    context "130, 240 and 100 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 110 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d . a p"])
+      end
+    end
+
+    context "130, 240, 100, 110 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "skips the map" do
+        expect(subject.map_record(record)).to eq({})
+      end
+    end
+
+  end
 end

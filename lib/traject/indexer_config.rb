@@ -69,6 +69,8 @@ to_field "subtitle_t", extract_marc_with_flank("245b")
 to_field "title_statement_t", extract_marc_with_flank("245abfgknps")
 to_field "title_uniform_t", extract_marc_with_flank("130adfklmnoprs:240adfklmnoprs:730abcdefgklmnopqrst")
 
+to_field "work_access_point", extract_work_access_point
+
 ATOZ = ("a".."z").to_a.join("")
 ATOU = ("a".."u").to_a.join("")
 to_field "title_addl_t",

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "library_stdnums"
+require "active_support/core_ext/object/blank"
 require "pry"
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
@@ -485,6 +486,27 @@ module Traject
               acc << "no_boost"
             end
           end
+        end
+      end
+
+      def extract_work_access_point
+        lambda do |rec, acc|
+          if rec["130"].present?
+            spec = "130adfklmnoprs"
+          elsif rec["240"].present? && rec["100"].present?
+            spec = "100abdcdq:240adfklmnoprs"
+          elsif rec["240"].present? && rec["110"].present?
+            spec = "110abcd:240adfklmnoprs"
+          elsif rec["100"]
+            spec = "100abcdq:245aknp"
+          elsif rec["110"]
+            spec = "110abcd:245aknp"
+          else
+            # Skip because alternative is just the regular title.
+            return acc
+          end
+
+          acc << Traject::MarcExtractor.cached(spec).extract(rec).join(" . ")
         end
       end
     end
