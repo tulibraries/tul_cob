@@ -4,11 +4,11 @@
 
 
 <% unless @items.empty? %>
+  <div class="availability-modal">
+    <div class="modal-only">
+      <%= render :partial => "paginate_compact", :object => @response %>
+    </div>
   <% sort_order_for_holdings(@items).each do |key,items| %>
-    <div class="availability-modal">
-      <div class="modal-only">
-        <%= render :partial => "paginate_compact", :object => @response %>
-      </div>
       <table id="availability-container" class="table table-responsive border-bottom">
         <thead>
           <tr class="sr-only">
@@ -39,10 +39,9 @@
           <% end %>
         </tbody>
       </table>
-      <%= render :partial => "paginate_compact", :object => @response %>
-    </div>
-
-  <% end %>
+    <% end %>
+    <%= render :partial => "paginate_compact", :object => @response %>
+  </div>
   <% else %>
   <table class="table table-responsive border-bottom">
     <tr>
