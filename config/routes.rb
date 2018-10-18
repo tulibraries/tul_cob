@@ -38,11 +38,6 @@ Rails.application.routes.draw do
   post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
 
-  resources :users, only: [:index] do
-    post :impersonate, on: :member
-    post :stop_impersonating, on: :collection
-  end
-
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 
   devise_scope :user do

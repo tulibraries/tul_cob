@@ -31,11 +31,10 @@ module Tulcob
     config.features = Hash.new.with_indifferent_access
     config.exceptions_app = routes
     config.traject_indexer = File.join(Rails.root, "lib/traject/indexer_config.rb")
-    ENV["ALLOW_IMPERSONATOR"] ||= "no"
-
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
 
+    # TODO: do we still need this?
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]
     rescue StandardError => error
