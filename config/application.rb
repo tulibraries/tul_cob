@@ -34,6 +34,9 @@ module Tulcob
     config.traject_indexer = File.join(Rails.root, "lib/traject/indexer_config.rb")
     ENV["ALLOW_IMPERSONATOR"] ||= "no"
 
+    config.time_zone = "Eastern Time (US & Canada)"
+    config.active_record.default_timezone = :local
+
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]
     rescue StandardError => error
