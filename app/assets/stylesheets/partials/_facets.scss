@@ -112,3 +112,50 @@ a.catalog_startOverLink {
 #advanced-search-facets {
   margin-top: 14px;
 }
+
+.facets-heading {
+	margin-left: -15px;
+}
+
+#applied_params_facet {
+	margin-top: -30px;
+}
+
+#sidebar {
+	background-color: #FFF;
+	border-radius: 5px;
+	height: auto;
+}
+
+.document-divider {
+	width: 100%;
+	margin: 0 5% !important;
+	padding: 0 5% !important;
+}
+
+input[value|="Apply"] {
+	color: #fff;
+	background-color: #095780;
+	border-color: #2e6da4;
+	font-weight: 200;
+	letter-spacing: 1px;
+	font-size: 12px;
+	padding: 7px 8px;
+	margin-left: 10px;
+}
+
+input#range_pub_date_sort_begin {
+	margin-right: 2px;
+}
+
+input#range_pub_date_sort_end {
+	margin-left: 2px;
+}
+
+form.range_limit {
+	text-align: center;
+}
+
+#facet-pub_date_sort .panel-body  {
+	padding: 5px 20px;
+}
