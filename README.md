@@ -1,4 +1,4 @@
-# Catalog on Blacklight
+# Catalog on Blacklights
 
 A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
 
