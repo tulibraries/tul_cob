@@ -8,7 +8,7 @@ module UsersHelper
   end
 
   def make_date(date)
-    DateTime.parse(date).strftime("%m/%d/%Y")
+    DateTime.iso8601(date).in_time_zone.strftime("%m/%d/%Y")
   end
 
   def loan_options(loan)
