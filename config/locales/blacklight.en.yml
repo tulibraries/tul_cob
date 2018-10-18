@@ -28,6 +28,9 @@ en:
       saved_searches: 'Saved Searches'
       search_history: 'Search History'
 
+    range_limit:
+      submit_limit: "Apply"
+
     search:
       back: "Back to Main View"
       librarian_view:
