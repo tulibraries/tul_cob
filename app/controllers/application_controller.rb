@@ -19,9 +19,6 @@ class ApplicationController < ActionController::Base
   # behavior until we can define all possible param  in the future.
   ActionController::Parameters.permit_all_parameters = true
 
-
-  impersonates :user unless Rails.env.production?
-
   helper_method :should_show_spellcheck_suggestions?
 
   # Overrides Devise::Controllers::Helpers#after_sign_out_path_for

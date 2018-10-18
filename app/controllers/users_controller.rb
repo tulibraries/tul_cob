@@ -1,34 +1,6 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :require_admin!, only: [:index]
-  before_action :require_non_production!, only: [:index]
-
-
-  def require_admin!
-    redirect_to root_path unless current_user && current_user.admin
-  end
-
-  def require_non_production!
-    redirect_to root_path if Rails.env.production? && ENV["ALLOW_IMPERSONATOR"].downcase != "yes"
-  end
-
-  def index
-    registered_users = User.where.not(guest: true)
-    @users = registered_users.order(:id)
-  end
-
-  def impersonate
-    user = User.find(params[:id])
-    impersonate_user(user)
-    redirect_to root_path
-  end
-
-  def stop_impersonating
-    stop_impersonating_user
-    redirect_to root_path
-  end
-
   def account
     no_cache
     @user = current_user
@@ -55,7 +27,6 @@ class UsersController < ApplicationController
       render "Problem!"
     end
   end
-
 
   def loans
     loans = current_user.loans
