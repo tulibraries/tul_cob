@@ -47,8 +47,12 @@ module BentoSearch
       BentoSearch::ResultItem.new(title: item.fetch("title_truncated_display", []).first,
         authors: item.fetch("creator_display", []).map { |author| BentoSearch::Author.new(display: author.tr("|", " ")) },
         publisher: item.fetch("imprint_display", []).join(" "),
-        link: Rails.application.routes.url_helpers.solr_document_url(item["id"], only_path: true),
+        link: doc_link(item["id"]),
         custom_data: SolrDocument.new(item))
+    end
+
+    def doc_link(id)
+      Rails.application.routes.url_helpers.solr_document_path(id)
     end
 
     def url(helper)

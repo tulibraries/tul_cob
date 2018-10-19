@@ -297,16 +297,31 @@ module ApplicationHelper
   end
 
   def render_nav_link(path, name)
-    url_path = send(path)
-
-    active = current_page?(url_path) ? [ "active" ] : []
-
+    active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-btn" ] + active).join(" ")
     link_class = ([ "nav-link" ] + active).join(" ")
 
     content_tag :li, class: button_class do
-      link_to(name, send(path, params.except(:controller, :action)), class: link_class)
+      link_to(name, send(path, search_params), class: link_class)
     end
+  end
+
+  def search_params
+    # current_search_session is only defined under search context:
+    # Therefore it will not be available in /users/sign_in etc.
+    begin
+      # Sometimes current_search_session will return nil.
+      current_search_session&.query_params&.except(:controller, :action) || {}
+    rescue
+      {}
+    end
+  end
+
+  def is_active?(path)
+    url_path = send(path)
+    root_page = [ :everything_path ]
+    request.original_fullpath.match?(/^#{url_path}/) ||
+      current_page?(root_path) && root_page.include?(path)
   end
 
   def breadcrumb_links
