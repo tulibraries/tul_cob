@@ -9,22 +9,6 @@ GIT
       xml-simple
 
 GIT
-  remote: https://github.com/tulibraries/blacklight.git
-  revision: db2f289afe96feeb2446dd4f7565002a6d134f26
-  branch: backport-safari-bug-fix
-  specs:
-    blacklight (6.15.0)
-      bootstrap-sass (~> 3.2)
-      deprecation
-      globalid
-      jbuilder
-      kaminari (>= 0.15)
-      nokogiri (~> 1.6)
-      rails (>= 4.2, < 6)
-      rsolr (>= 1.0.6, < 3)
-      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
-
-GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
   revision: 476f480d6111612fca0d648d6d04438edc4a4f05
   specs:
@@ -96,7 +80,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.1.4)
+    autoprefixer-rails (9.2.1)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.12)
@@ -111,6 +95,16 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
+    blacklight (6.16.0)
+      bootstrap-sass (~> 3.2)
+      deprecation
+      globalid
+      jbuilder
+      kaminari (>= 0.15)
+      nokogiri (~> 1.6)
+      rails (>= 4.2, < 6)
+      rsolr (>= 1.0.6, < 3)
+      twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
     blacklight-marc (6.2.0)
       blacklight (> 6.1, < 8.a)
       library_stdnums
@@ -212,7 +206,7 @@ GEM
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.1.0)
+    i18n (1.1.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.1)
     jbuilder (2.7.0)
@@ -247,14 +241,14 @@ GEM
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
-    mail (2.7.0)
+    mail (2.7.1)
       mini_mime (>= 0.1.1)
     marc (1.0.2)
       scrub_rb (>= 1.0.1, < 2)
       unf
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
     mimemagic (0.3.2)
@@ -268,7 +262,7 @@ GEM
     mysql2 (0.4.10)
     nenv (0.3.0)
     nio4r (2.3.1)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -371,7 +365,7 @@ GEM
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
     safe_yaml (1.0.4)
-    sass (3.5.7)
+    sass (3.6.0)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -476,7 +470,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight!
+  blacklight (~> 6.0)
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search (~> 6.3)
