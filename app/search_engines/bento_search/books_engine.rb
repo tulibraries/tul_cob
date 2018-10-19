@@ -4,6 +4,10 @@ module BentoSearch
   class BooksEngine < BlacklightEngine
     delegate :blacklight_config, to: BooksController
 
+    def doc_link(id)
+      Rails.application.routes.url_helpers.solr_book_document_path(id)
+    end
+
     def url(helper)
       params = helper.params
       helper.search_books_path(q: params[:q])

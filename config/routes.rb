@@ -39,11 +39,11 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  resources :solr_book_documents, only: [:show], path: "/book", controller: "books" do
+  resources :solr_book_documents, only: [:show], path: "/books", controller: "books" do
     concerns :exportable
   end
 
-  resources :solr_journal_documents, only: [:show], path: "/journal", controller: "journals" do
+  resources :solr_journal_documents, only: [:show], path: "/journals", controller: "journals" do
     concerns :exportable
   end
 
@@ -60,9 +60,9 @@ Rails.application.routes.draw do
   end
 
   post "catalog/:id/track" => "catalog#track"
-  post "article/:id/track" => "primo_central#track", as: :track_primo_central
-  post "book/:id/track" => "book#track"
-  post "journal/:id/track" => "journal#track"
+  post "articles/:id/track" => "primo_central#track", as: :track_primo_central
+  post "books/:id/track" => "book#track"
+  post "journals/:id/track" => "journal#track"
 
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -95,8 +95,8 @@ Rails.application.routes.draw do
   get "articles_advanced", to: "primo_advanced#index", as: "legacy_articles_advanced_search"
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
-  get "book/:id/index_item", to: "books#index_item", as: "book_item"
-  get "journal/:id/index_item", to: "journals#index_item", as: "journal_item"
+  get "books/:id/index_item", to: "books#index_item", as: "book_item"
+  get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
 
 
