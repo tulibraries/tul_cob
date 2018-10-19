@@ -7,7 +7,7 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
-    <% if @equipment.empty? && @request_level == "bib" %>
+    <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 hold-form">
           <%= label("", :pickup_location, "Pickup Location: *") %>
