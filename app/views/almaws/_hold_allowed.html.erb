@@ -1,0 +1,14 @@
+<div class="panel panel-default request-heading">
+  <div class="panel-heading">
+    <h4 class="panel-title">
+        <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>">Request item</a>
+    </h4>
+  </div>
+
+  <div id="collapseOne-<%= @mms_id %>" class="panel-collapse collapse">
+    <div class="panel-body">
+        <h5 class="request-header">Details of title you requested:</h5>
+        <%= render "hold_request_form" %>
+    </div>
+  </div>
+</div>
