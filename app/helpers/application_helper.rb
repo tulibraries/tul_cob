@@ -298,7 +298,7 @@ module ApplicationHelper
 
   def render_nav_link(path, name)
     active = is_active?(path) ? [ "active" ] : []
-    button_class = ([ "nav-btn" ] + active).join(" ")
+    button_class = ([ "nav-btn header-links" ] + active).join(" ")
     link_class = ([ "nav-link" ] + active).join(" ")
 
     content_tag :li, class: button_class do
