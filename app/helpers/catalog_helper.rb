@@ -148,4 +148,20 @@ module CatalogHelper
       t("blacklight.search.librarian_view.empty")
     end
   end
+
+  def back_to_catalog_path
+    search_catalog_path(search_params)
+  end
+
+  def back_to_books_path
+    search_books_path(search_params)
+  end
+
+  def back_to_journals_path
+    search_journals_path(search_params)
+  end
+
+  def back_to_articles_path
+    search_path(search_params)
+  end
 end

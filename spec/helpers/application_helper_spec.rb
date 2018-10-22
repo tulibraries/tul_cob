@@ -208,28 +208,4 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
   end
-
-  describe "#breadcrumb_links" do
-    before(:each) {
-      allow(helper).to receive(:controller_name) { controller_name }
-      allow(helper).to receive(:link_back_to_catalog) {}
-      helper.breadcrumb_links
-    }
-
-    context "user entered page using a catalog search" do
-      let(:controller_name) { "catalog" }
-
-      it "has 'More' breadcrumb leading back to catalog search" do
-        expect(helper).to have_received(:link_back_to_catalog).with(label: "More")
-      end
-    end
-
-    context "user entered page using unknown controller" do
-      let(:controller_name) { "foo" }
-
-      it "has 'More' breadcrumb leading back to catalog search" do
-        expect(helper).to have_received(:link_back_to_catalog).with(label: "More")
-      end
-    end
-  end
 end

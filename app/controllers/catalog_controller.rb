@@ -15,6 +15,12 @@ class CatalogController < ApplicationController
 
   include Blacklight::Ris::Catalog
 
+  add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
+  add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
+  add_breadcrumb "Record", :solr_document_path, only: [ :show ], if: :catalog?
+  add_breadcrumb I18n.t(:catalog_advanced_search), :advanced_search_path,
+    only: [ :index ], if: :advanced_controller?
+
   helper_method :browse_creator
   helper_method :display_duration
   rescue_from ::BlacklightRangeLimit::InvalidRange,
@@ -620,4 +626,13 @@ class CatalogController < ApplicationController
 
     super
   end
+
+  private
+    def catalog?
+      self.class == CatalogController
+    end
+
+    def advanced_controller?
+      self.class == AdvancedController
+    end
 end

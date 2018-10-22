@@ -323,19 +323,4 @@ module ApplicationHelper
     request.original_fullpath.match?(/^#{url_path}/) ||
       current_page?(root_path) && root_page.include?(path)
   end
-
-  def breadcrumb_links
-    case controller_name
-    when "books"
-      link_back_to_catalog(label: "Books & More")
-    when "primo_central"
-      link_back_to_catalog(label: "Articles")
-    when "catalog"
-      link_back_to_catalog(label: "More")
-    when "journals"
-      link_back_to_catalog(label: "Journals")
-    else
-      link_back_to_catalog(label: "More")
-    end
-  end
 end
