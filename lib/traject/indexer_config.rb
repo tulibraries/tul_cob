@@ -159,7 +159,7 @@ to_field "note_accruals_display", extract_marc("584a")
 to_field "note_local_display", extract_marc("590a")
 
 # Subject fields
-to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
+to_field "subject_facet", extract_subject_display
 to_field "subject_display", extract_subject_display
 to_field "subject_topic_facet", extract_subject_topic_facet
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
