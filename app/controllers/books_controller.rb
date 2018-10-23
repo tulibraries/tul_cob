@@ -7,5 +7,7 @@ class BooksController < CatalogController
   configure_blacklight do |config|
     config.search_builder_class = BooksSearchBuilder
     config.document_model = ::SolrBookDocument
+    # Do not allow any further filtering on type.
+    config.facet_fields.delete("format")
   end
 end
