@@ -153,6 +153,21 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   end
 
   describe ".add_query_facets" do
+    let (:facets) { primo_central_parameters[:query][:q].include_facets }
+
+    before(:example) do
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.set_query_field(primo_central_parameters)
+      subject.add_query_facets(primo_central_parameters)
+      subject.process_date_range_query(primo_central_parameters)
+    end
+
+    context "with unknown fields in params" do
+      let(:params) { ActionController::Parameters.new(f: { unknown_field: "foo" }) }
+      it "should not add query facet" do
+        expect(facets).to be_nil
+      end
+    end
   end
 
   describe ".process_date_range_query" do

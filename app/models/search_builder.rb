@@ -86,6 +86,29 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
   end
 
+  ##
+  # Overrides Blacklight::Solr::SearchBuilderBehavior#add_facet_fq_to_solr in
+  # order to skip faceting on unknown fields.
+  #
+  def add_facet_fq_to_solr(solr_parameters)
+    # convert a String value into an Array
+    if solr_parameters[:fq].is_a? String
+      solr_parameters[:fq] = [solr_parameters[:fq]]
+    end
+
+    # :fq, map from :f.
+    if blacklight_params[:f]
+      f_request_params = blacklight_params[:f]
+
+      f_request_params.each_pair do |facet_field, value_list|
+        next unless blacklight_config.facet_fields[facet_field.to_s].present?
+        Array(value_list).reject(&:blank?).each do |value|
+          solr_parameters.append_filter_query facet_value_to_fq_string(facet_field, value)
+        end
+      end
+    end
+  end
+
   private
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.
