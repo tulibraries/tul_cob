@@ -474,6 +474,16 @@ module Traject
       end
 
 
+      def extract_holdings_summary
+        lambda do |rec, acc|
+          rec.fields(["HLD866"]).each do |f|
+            selected_subfields = [f["a"], f["8"]].join("|")
+            acc << selected_subfields
+          end
+          acc
+        end
+      end
+
       # In order to reduce the relevance of certain libraries, we need to boost every other library
       # Make sure we still boost records what have holdings in less relevant libraries and also in another library
       LIBRARIES_TO_NOT_BOOST = [ "PRESSER", "CLAEDTECH" ]

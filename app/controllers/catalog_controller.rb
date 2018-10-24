@@ -57,6 +57,7 @@ class CatalogController < ApplicationController
         library_facet
         location_display
         pub_date
+        holdings_summary_display
         title_series_display
         title_statement_display
         title_truncated_display
@@ -364,7 +365,6 @@ class CatalogController < ApplicationController
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
-
     config.add_show_field "bound_with_ids", display: false
 
     # "fielded" search configuration. Used by pulldown among other places.
