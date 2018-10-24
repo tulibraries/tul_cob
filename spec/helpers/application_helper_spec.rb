@@ -206,6 +206,53 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.is_active?(:search_books_path)).to be_falsey
       end
     end
+  end
 
+  describe "#holdings_summary_information(document)" do
+    context "record has a holdings_summary field" do
+      let(:document) {
+          {
+            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            }
+        }
+      it "displays the field in a human-readable format" do
+        expect(helper.holdings_summary_information(document)).to eq("v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.<br />Related Holding ID: 22318863960003811")
+      end
+    end
+
+    context "record does not have a holdings_summary_display field" do
+      let(:document) {
+          {
+            "subject_display" => ["Test"]
+            }
+        }
+      it "does not display anything" do
+        expect(helper.holdings_summary_information(document)).to be_nil
+      end
+    end
+  end
+
+  describe "#render_holdings_summary_table(document)" do
+    context "document has a holdings_summary field" do
+      let(:document) {
+          {
+            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            }
+        }
+      it "renders the holdings_summary partial" do
+        expect(helper.holdings_summary_information(document)).not_to be_nil
+      end
+    end
+
+    context "document does not have a holdings_summary field" do
+      let(:document) {
+          {
+            "subject_display" => ["Test"]
+            }
+        }
+      it "does not render the holdings_summary partial" do
+        expect(helper.holdings_summary_information(document)).to be_nil
+      end
+    end
   end
 end

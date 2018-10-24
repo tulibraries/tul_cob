@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def check_holdings_call_number(document)
-    document.fetch("call_number_display", []).first
+    document.fetch("holdings_summary_display", []).map(&:split).to_h.keys
   end
 
   def check_holdings_location(document, library)
@@ -92,6 +92,21 @@ module ApplicationHelper
     link_url = field.split("|").last
     new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
     new_link
+  end
+
+  def holdings_summary_information(document)
+    field = document.fetch("holdings_summary_display", [])
+    unless field.empty?
+      summary = field.first.split("|").first
+      related_holding = field.first.split("|").last
+      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
+    end
+  end
+
+  def render_holdings_summary_table(document)
+    if document["holdings_summary_display"].present?
+      render partial: "holdings_summary", locals: { document: document }
+    end
   end
 
   def alma_build_openurl(query)
