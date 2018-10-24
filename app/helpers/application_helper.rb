@@ -60,11 +60,11 @@ module ApplicationHelper
   end
 
   def check_holdings_library_name(document)
-    document.fetch("call_number_display", []).first
+    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
   end
 
   def check_holdings_call_number(document)
-    document.fetch("holdings_summary_display", []).map(&:split).to_h.keys
+    document.fetch("call_number_display", []).first
   end
 
   def check_holdings_location(document, library)
