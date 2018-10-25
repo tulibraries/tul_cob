@@ -28371,8 +28371,8 @@
       <subfield code="d">KARDON</subfield>
       <subfield code="f">KARDON</subfield>
     </datafield>
-    </record>
-    <record>
+  </record>
+  <record>
     <leader>01303crm a2200361Ii 4500</leader>
     <controlfield tag="005">20180315121903.0</controlfield>
     <controlfield tag="008">150520s2014 caunnn rneng d</controlfield>
@@ -29383,7 +29383,7 @@
     </datafield>
     <datafield ind1=" " ind2=" " tag="019">
       <subfield code="a">987352267</subfield>
-    <subfield code="a">987353003</subfield>
+      <subfield code="a">987353003</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="020">
       <subfield code="a">9781594205583</subfield>
@@ -30248,7 +30248,7 @@
     </datafield>
     <datafield ind1=" " ind2=" " tag="945">
       <subfield code="l">pstk</subfield>
-    <subfield code="g">1</subfield>
+      <subfield code="g">1</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="979">
       <subfield code="a">ocn862347462</subfield>
@@ -30298,5 +30298,267 @@
       <subfield code="d">MAIN</subfield>
       <subfield code="f">MAIN</subfield>
     </datafield>
-    </record>
+  </record>
+  <record>
+    <leader>02517cas a2200553 a 4500</leader>
+    <controlfield tag="005">20180315133128.0</controlfield>
+    <controlfield tag="008">820830c19699999paudr ne 0 a0eng c</controlfield>
+    <controlfield tag="001">991012346849703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">sn 85003402</subfield>
+      <subfield code="z">sc 83002128</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="022">
+      <subfield code="a">0885-6613</subfield>
+      <subfield code="l">0885-6613</subfield>
+      <subfield code="2">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="032">
+      <subfield code="a">430000</subfield>
+      <subfield code="b">USPS</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b58467919-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn926268508</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)8733259</subfield>
+      <subfield code="z">(OCoLC)222794168</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocm08733259</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocm08733259</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="037">
+      <subfield code="b">Philadelphia Newspapers, Inc., 400 N. Broad St., PO Box 8263, Philadelphia, PA 19101</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">WAU</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">WAU</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">AIP</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NPH</subfield>
+      <subfield code="d">NSD</subfield>
+      <subfield code="d">NPH</subfield>
+      <subfield code="d">NPA</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NJW</subfield>
+      <subfield code="d">NST</subfield>
+      <subfield code="d">KNP</subfield>
+      <subfield code="d">MGN</subfield>
+      <subfield code="d">CNK</subfield>
+      <subfield code="d">NVF</subfield>
+      <subfield code="d">CVF</subfield>
+      <subfield code="d">NYS</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NYS</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">NYS</subfield>
+      <subfield code="d">NLM</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">WAU</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">DOS</subfield>
+      <subfield code="d">DLC</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">OCLCF</subfield>
+      <subfield code="d">OCLCO</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">nsdp</subfield>
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us-pa</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm08733259</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="099">
+      <subfield code="a">Newspaper</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="130">
+      <subfield code="a">Philadelphia inquirer (Philadelphia, Pa. : 1969)</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="210">
+      <subfield code="a">Phila. inq.</subfield>
+      <subfield code="b">(1969)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="222">
+      <subfield code="a">The Philadelphia inquirer</subfield>
+      <subfield code="b">(1969)</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="4" tag="245">
+      <subfield code="a">The Philadelphia inquirer.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2="0" tag="246">
+      <subfield code="a">Inquirer</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Philadelphia, Pa. :</subfield>
+      <subfield code="b">Triangle Publications,</subfield>
+      <subfield code="c">1969-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">v.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="310">
+      <subfield code="a">Daily</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="362">
+      <subfield code="a">Vol. 281, no. 165 (Dec. 12, 1969)-v. 329, no. 151 (May 31, 1994) ; 166th year, no. 1 (June 1, 1994)-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">On strike, Sept. 9-Oct. 22, 1985.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="515">
+      <subfield code="a">Publication suspended Feb. 9-16, 1977 and Sept. 7-Oct. 22, 1985.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="530">
+      <subfield code="a">Also issued on microfilm from Bell and Howell Information and Learning, and the Library of Congress, Photoduplication Service.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="588">
+      <subfield code="a">Latest issue consulted: 173rd year, no. 163 (Nov. 10, 2001).</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Philadelphia (Pa.)</subfield>
+      <subfield code="v">Newspapers.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="651">
+      <subfield code="a">Philadelphia County (Pa.)</subfield>
+      <subfield code="v">Newspapers.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">Pennsylvania</subfield>
+      <subfield code="z">Philadelphia.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01204170</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">Pennsylvania</subfield>
+      <subfield code="z">Philadelphia County.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01217128</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Newspapers.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423814</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="752">
+      <subfield code="a">United States</subfield>
+      <subfield code="b">Pennsylvania</subfield>
+      <subfield code="c">Philadelphia</subfield>
+      <subfield code="d">Philadelphia.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="776">
+      <subfield code="i">Online version:</subfield>
+      <subfield code="t">Philadelphia inquirer (Philadelphia, Pa. : 1969 : Online)</subfield>
+      <subfield code="x">2165-1728</subfield>
+      <subfield code="w">(DLC) 2011267056</subfield>
+      <subfield code="w">(OCoLC)45211992</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="776">
+      <subfield code="i">Microfilm</subfield>
+      <subfield code="d">UMI</subfield>
+      <subfield code="t">Philadelphia inquirer (Philadelphia, Pa. : 1969)</subfield>
+      <subfield code="x">0885-6613</subfield>
+      <subfield code="w">(OCoLC)14361686</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="780">
+      <subfield code="t">Philadelphia inquirer public ledger</subfield>
+      <subfield code="w">(DLC)sn 86081052</subfield>
+      <subfield code="w">(OCoLC)12755975</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b58467919</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pnwsc</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm08733259</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">8</subfield>
+      <subfield code="c">151014</subfield>
+      <subfield code="d">s</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">4</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">10/14/15</subfield>
+      <subfield code="s">LC</subfield>
+      <subfield code="c">MRTL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-15 17:31:28</subfield>
+      <subfield code="e">b58467919-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 11:30:50</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53367222750003811</subfield>
+      <subfield code="e">ProQuest</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="c">ProQuest Digital Microfilm</subfield>
+      <subfield code="h">613780000000001222</subfield>
+      <subfield code="8">53367222750003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="HLD">
+      <subfield code="b">GINSBURG</subfield>
+      <subfield code="c">serials</subfield>
+      <subfield code="x">NOTE(CHECKIN): Do NOT Checkin | FREQUENCY: d | RETENTION: 7 | SCODE3: n | VEN TITLE#: RB4782900AA689773992</subfield>
+      <subfield code="8">22311845820003811</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">zpaley</subfield>
+      <subfield code="h">Newspaper</subfield>
+      <subfield code="x">NOTE(CHECKIN): Only keep one month in news center, rest in Curr Per (3 months). dc 05/10. | NOTE(CHECKIN): Shelve in Paley News Center. dc 01/10 | NOTE(CHECKIN): Cancelled as of 1/1/09. Sunday only from EBSCO. dc 12/08 | NOTE(CHECKIN): Paley Newspaper Collection. Replaced by microfilm. | FREQUENCY: d | RETENTION: m | VEN TITLE#: rb474100001689774008</subfield>
+      <subfield code="8">22311845790003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="x">NOTE(CHECKIN): Ambler | VEN. NOTE: rb474100006689774008 | FREQUENCY: d | SCODE3: -</subfield>
+      <subfield code="8">22311845800003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="HLD">
+      <subfield code="b">PODIATRY</subfield>
+      <subfield code="c">serials</subfield>
+      <subfield code="h">Newspaper</subfield>
+      <subfield code="x">RETENTION: - | VEN TITLE#: RB474890001689791002</subfield>
+      <subfield code="8">22311845810003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22311845790003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">zpaley</subfield>
+      <subfield code="t">ISSUE</subfield>
+      <subfield code="e">zpaley</subfield>
+      <subfield code="8">23311845780003811</subfield>
+      <subfield code="a">12</subfield>
+      <subfield code="q">2017-06-20 11:30:50</subfield>
+      <subfield code="i">Newspaper</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
 </collection>
