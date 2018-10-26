@@ -178,8 +178,10 @@ to_field "subject_t", extract_marc_with_flank(%W(
 to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvwxyz")
 
 # Location fields
-to_field "call_number_display", extract_marc_with_flank("HLDhi")
-to_field "call_number_alt_display", extract_marc_with_flank("ITMjk")
+to_field "call_number_display", extract_marc("HLDhi")
+to_field "call_number_t", extract_marc_with_flank("HLDhi")
+to_field "call_number_alt_display", extract_marc("ITMjk")
+to_field "call_number_alt_t", extract_marc_with_flank("ITMjk")
 to_field "library_facet", extract_library
 to_field "library_location_display", extract_library_shelf_call_number
 
