@@ -206,7 +206,9 @@ to_field "holdings_summary_display", extract_holdings_summary
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)
+to_field("alt_isbn_display",  extract_marc("020z:776z", separator: nil), &normalize_isbn)
 to_field("issn_display", extract_marc("022a", separator: nil), &normalize_issn)
+to_field("alt_issn_display", extract_marc("022lz:776x", separator: nil), &normalize_issn)
 to_field("lccn_display", extract_marc("010ab", separator: nil), &normalize_lccn)
 to_field "pub_no_display", extract_marc("028ab")
 to_field "sudoc_display", extract_marc("086|0*|a")
