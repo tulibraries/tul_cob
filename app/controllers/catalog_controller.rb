@@ -475,8 +475,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field("call_number_t", label: "Call Number") do |field|
-      # Temporarily disable catalog search
-      field.include_in_advanced_search = false
+      field.include_in_advanced_search = true
       field.include_in_simple_select = false
       field.solr_local_parameters = {
         qf: "call_number_t",
