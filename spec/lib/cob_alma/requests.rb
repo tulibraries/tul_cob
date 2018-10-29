@@ -101,7 +101,32 @@ RSpec.describe CobAlma::Requests do
         expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end
+  end
 
+  describe "#descriptions" do
+    context "record has multiple empty descriptions" do
+      let(:items_list) { Alma::BibItem.find("empty_descriptions") }
+
+      it "returns an empty array" do
+        expect(described_class.descriptions(items_list)).to eq([])
+      end
+    end
+
+    context "record has empty description and description" do
+      let(:items_list) { Alma::BibItem.find("empty_and_description") }
+
+      it "returns an empty array" do
+        expect(described_class.descriptions(items_list)).to eq(["sample"])
+      end
+    end
+
+    context "record has multiple descriptions" do
+      let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
+
+      it "returns an empty array" do
+        expect(described_class.descriptions(items_list)).to eq(["sample", "second"])
+      end
+    end
   end
 
 end

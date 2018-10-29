@@ -116,7 +116,7 @@ module CobAlma
           desc
         end
       end
-      descriptions unless descriptions == [""]
+      descriptions.reject(&:empty?)
     end
 
     def self.booking_location(items_list)
