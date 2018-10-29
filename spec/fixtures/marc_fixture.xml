@@ -29245,7 +29245,7 @@
       <subfield code="f">AMBLER</subfield>
     </datafield>
   </record>
-  <record xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
     <leader>01888cam a2200313M 4500</leader>
     <controlfield tag="005">20180529085423.0</controlfield>
     <controlfield tag="008">171204s2018 onc b 001 0 eng d</controlfield>
@@ -29493,6 +29493,7 @@
       <subfield code="a">The big picture -- The measure of all things: an introduction to scaling -- The simplicity, unity, and complexity of life -- The fourth dimension of life: growth, aging, and death -- From the Anthropocene to the Urbanocene: a planet dominated by cities -- Prelude to a science of cities -- Toward a science of cities -- Consequences and predictions: from mobility and the pace of life to social connectivity, diversity, metabolism, and growth -- Toward a science of companies -- The vision of a grand unified theory of sustainability.</subfield>
     </datafield>
     <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">"From one of the most influential scientists of our time, a dazzling exploration of the hidden laws that govern the life cycle of everything from plants and animals to the cities we live in. The former head of the Sante Fe Institute, visionary physicist Geoffrey West is a pioneer in the field of complexity science, the science of emergent systems and networks. The term "complexity" can be misleading, however, because what makes West's discoveries so beautiful is that he has found an underlying simplicity that unites the seemingly complex and diverse phenomena of living systems, including our bodies, our cities and our businesses. Fascinated by issues of aging and mortality, West applied the rigor of a physicist to the biological question of why we live as long as we do and no longer. The result was astonishing, and changed science, creating a new understanding of energy use and metabolism: West found that despite the riotous diversity in the sizes of mammals, they are all, to a large degree, scaled versions of each other. If you know the size of a mammal, you can use scaling laws to learn everything from how much food it eats per day, what its heart-rate is, how long it will take to mature, its lifespan, and so on. Furthermore, the efficiency of the mammal's circulatory systems scales up precisely based on weight: if you compare a mouse, a human and an elephant on a logarithmic graph, you find with every doubling of average weight, a species gets 25% more efficient--and lives 25% longer. This speaks to everything from how long we can expect to live to how many hours of sleep we need. Fundamentally, he has proven, the issue has to do with the fractal geometry of the networks that supply energy and remove waste from the organism's body"--</subfield>
       <subfield code="c">Provided by publisher.</subfield>
     </datafield>
     <datafield ind1=" " ind2="0" tag="650">
@@ -29568,8 +29569,7 @@
     </datafield>
     <datafield ind1=" " ind2=" " tag="ITM">
       <subfield code="r">22409387360003811</subfield>
-      <subfield code="b">0</subfield>
-      <subfield code="u">MISSING</subfield>
+      <subfield code="b">1</subfield>
       <subfield code="h">0</subfield>
       <subfield code="g">stacks</subfield>
       <subfield code="t">BOOK</subfield>
@@ -29585,7 +29585,7 @@
       <subfield code="f">MAIN</subfield>
     </datafield>
   </record>
-  <record xmlns="http://www.loc.gov/MARC21/slim">
+  <record>
     <leader>03136cam a2200505 i 4500</leader>
     <controlfield tag="005">20180726090201.0</controlfield>
     <controlfield tag="008">170616t20172017nyua b 001 0 eng</controlfield>

@@ -101,7 +101,8 @@ class CatalogController < ApplicationController
         subject_addl_t^50
         title_series_unstem_search^25
         title_series_t^10
-        isbn_t
+        isbn_t^5
+        issn_t^5
         text
       ].join(" "),
       pf: %w[
@@ -358,7 +359,9 @@ class CatalogController < ApplicationController
     #config.add_show_field 'call_number', label: 'Call Number'
     #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field "isbn_display", label: "ISBN"
+    config.add_show_field "alt_isbn_display", label: "Other ISBN"
     config.add_show_field "issn_display", label: "ISSN"
+    config.add_show_field "alt_issn_display", label: "Other ISSN"
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
