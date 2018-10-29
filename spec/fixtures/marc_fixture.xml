@@ -30565,4 +30565,301 @@
       <subfield code="f">MAIN</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>03127cgm a2200745Ki 4500</leader>
+    <controlfield tag="005">20180315133219.0</controlfield>
+    <controlfield tag="007">vd cvaizq</controlfield>
+    <controlfield tag="008">170216s2017 cau138 vleng d</controlfield>
+    <controlfield tag="001">991030207479703811</controlfield>
+    <datafield ind1="1" ind2=" " tag="024">
+      <subfield code="a">032429263520</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="2" tag="028">
+      <subfield code="a">59183768000</subfield>
+      <subfield code="b">Paramount</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b6415337x-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)972884896</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn982129182</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn982129182</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="037">
+      <subfield code="b">Midwest Tape</subfield>
+      <subfield code="n">http://www.midwesttapes.com</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">TEFMT</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">TEFMT</subfield>
+      <subfield code="d">NOG</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">TEF</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="041">
+      <subfield code="a">eng</subfield>
+      <subfield code="j">spa</subfield>
+      <subfield code="j">eng</subfield>
+      <subfield code="j">fre</subfield>
+      <subfield code="h">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="043">
+      <subfield code="a">n-us---</subfield>
+      <subfield code="a">n-us-ny</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="050">
+      <subfield code="a">PN1997.2</subfield>
+      <subfield code="b">.F46 2017</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn982129182</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="099">
+      <subfield code="a">DVD 17 A32</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Fences /</subfield>
+      <subfield code="c">produced by Scott Rudin ; directed by Denzell Washington.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="250">
+      <subfield code="a">[English/Spanish/French subtitled version]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Los Angeles, CA :</subfield>
+      <subfield code="b">Paramount,</subfield>
+      <subfield code="c">[2017]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 videodisc (138 min.) :</subfield>
+      <subfield code="b">sound, color ;</subfield>
+      <subfield code="c">4 3/4 in.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">two-dimensional moving image</subfield>
+      <subfield code="b">tdi</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">video</subfield>
+      <subfield code="b">v</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">videodisc</subfield>
+      <subfield code="b">vd</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="344">
+      <subfield code="a">digital</subfield>
+      <subfield code="b">optical</subfield>
+      <subfield code="g">surround</subfield>
+      <subfield code="h">5.1 Dolby digital</subfield>
+      <subfield code="2">rda</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="347">
+      <subfield code="a">video file</subfield>
+      <subfield code="b">DVD video</subfield>
+      <subfield code="2">rda</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="380">
+      <subfield code="a">Motion picture.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="538">
+      <subfield code="a">DVD, widescreen; 5.1 Dolby digital.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">English dialogue; Spanish, English or French subtitles.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Title from sell sheet.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Based on August Wilson's Pulitzer prize-winning masterpiece.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Originally released as a motion picture in 2016.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Widescreen.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="511">
+      <subfield code="a">Denzel Washington, Viola Davis, Stephen Mckinley Henderson, Jovan Adepo, Russell Hornsby, Mykelti Williamson.</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="521">
+      <subfield code="a">Rating: PG-13; for thematic elements, language and some suggestive references.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">A black garbage collector named Troy Maxson in 1950s Pittsburgh is bitter that baseball's color barrier was only broken after his own heyday in the Negro Leagues, Maxson is prone to taking out his frustrations on his loved ones.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Families, Black</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Families</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Fathers and sons</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Fathers and sons</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Man-woman relationships</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Negro leagues</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Race relations</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">African American theater</subfield>
+      <subfield code="z">New York (State)</subfield>
+      <subfield code="z">New York.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Theater</subfield>
+      <subfield code="z">New York (State)</subfield>
+      <subfield code="z">New York.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Feature films.</subfield>
+      <subfield code="2">lcgft</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Video recordings for the hearing impaired.</subfield>
+      <subfield code="2">lcgft</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Rudin, Scott,</subfield>
+      <subfield code="d">1958-</subfield>
+      <subfield code="e">film producer.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Washington, Denzel,</subfield>
+      <subfield code="d">1954-</subfield>
+      <subfield code="e">film director,</subfield>
+      <subfield code="e">actor.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Davis, Viola,</subfield>
+      <subfield code="d">1965-</subfield>
+      <subfield code="e">actor.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Henderson, Stephen,</subfield>
+      <subfield code="d">1949-</subfield>
+      <subfield code="e">actor.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Adepo, Jovan,</subfield>
+      <subfield code="e">actor.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="i">Motion picture adaptation of (work) :</subfield>
+      <subfield code="a">Wilson, August.</subfield>
+      <subfield code="t">Fences.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Paramount Pictures Corporation,</subfield>
+      <subfield code="e">publisher.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b6415337x</subfield>
+      <subfield code="b">multi</subfield>
+      <subfield code="c">g</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">avid</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pmed</subfield>
+      <subfield code="a">DVD 17 168</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn982129182</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">4</subfield>
+      <subfield code="c">170322</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">03/22/17</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">cep</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-07-15 08:58:57</subfield>
+      <subfield code="e">b6415337x-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 06:51:08</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">DVD 17 168</subfield>
+      <subfield code="8">22255855450003811</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">DVD 17 A32</subfield>
+      <subfield code="8">22255855480003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22255855450003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">DVD</subfield>
+      <subfield code="9">39074030837900</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23255855440003811</subfield>
+      <subfield code="a">5</subfield>
+      <subfield code="q">2017-06-20 06:51:08</subfield>
+      <subfield code="i">DVD 17 168</subfield>
+      <subfield code="d">MEDIA</subfield>
+      <subfield code="p">2017-12-22 20:24:38</subfield>
+      <subfield code="f">MEDIA</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22255855480003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="u">LOAN</subfield>
+      <subfield code="h">8</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">DVD</subfield>
+      <subfield code="9">39074030840144</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23255855460003811</subfield>
+      <subfield code="a">5</subfield>
+      <subfield code="q">2017-06-20 06:51:08</subfield>
+      <subfield code="i">DVD 17 A32</subfield>
+      <subfield code="d">AMBLER</subfield>
+      <subfield code="f">AMBLER</subfield>
+    </datafield>
+  </record>
 </collection>
