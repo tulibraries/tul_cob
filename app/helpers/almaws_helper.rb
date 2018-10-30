@@ -32,4 +32,14 @@ module AlmawsHelper
       resource_sharing_broker_allowed_partial(request_options, books)
     end
   end
+
+  def only_one_option_allowed(request_options)
+    options = []
+    hold_request = "hold" if request_options.hold_allowed?
+    digitization_request = "digitization" if request_options.digitization_allowed?
+    booking_request = "booking" if request_options.booking_allowed?
+    options << hold_request << digitization_request << booking_request
+
+    return true if options.compact.uniq.length == 1
+  end
 end
