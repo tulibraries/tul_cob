@@ -173,4 +173,31 @@ RSpec.describe SolrDocument, type: :model do
       end
     end
   end
+
+  describe "#purchase_order?" do
+    context "with purchase_order false" do
+      let(:document) { SolrDocument.new(purchase_order: false) }
+
+      it "should be false" do
+        expect(document.purchase_order?).to be false
+      end
+    end
+
+    context "with purchase_order true" do
+      let(:document) { SolrDocument.new(purchase_order: true) }
+
+      it "should be true" do
+        expect(document.purchase_order?).to be true
+      end
+    end
+
+    context "with no purchase_order" do
+      let(:document) { SolrDocument.new({}) }
+
+      it "should be false" do
+        expect(document.purchase_order?).to be false
+      end
+
+    end
+  end
 end

@@ -15,6 +15,8 @@ class CatalogController < ApplicationController
 
   include Blacklight::Ris::Catalog
 
+  before_action :authenticate_user!, only: [ :purchase_order, :purchase_order_action ]
+
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
   add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
   add_breadcrumb "Record", :solr_document_path, only: [ :show ], if: :catalog?
@@ -27,6 +29,8 @@ class CatalogController < ApplicationController
     with: :raise_bad_range_limit
 
   configure_blacklight do |config|
+    config.index.document_presenter_class = CatalogIndexPresenter
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
@@ -72,6 +76,7 @@ class CatalogController < ApplicationController
         lccn_display
         url_finding_aid_display
         bound_with_ids
+        purchase_order
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -590,6 +595,26 @@ class CatalogController < ApplicationController
   def raise_bad_range_limit(exception)
     flash[:notice] = exception.message
     redirect_to request.referrer || root_url
+  end
+
+  def purchase_order
+    (@response, @document) = fetch(params["id"])
+    render layout: false
+  end
+
+  def purchase_order_action
+    (_, document) = fetch(params["id"])
+
+    from = current_user&.email || params[:to]
+
+    mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
+    if mail.respond_to? :deliver_now
+      mail.deliver_now
+    else
+      mail.deliver
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
   # Overrides Blackligt::Catalog.sms_action.

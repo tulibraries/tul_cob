@@ -113,6 +113,10 @@ class SolrDocument
     barcodes.include? barcode
   end
 
+  def purchase_order?
+    !!self["purchase_order"]
+  end
+
   private
     def barcode(item)
       item["item_data"]["pid"]

@@ -1018,6 +1018,67 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(record)).to eq({})
       end
     end
+  end
 
+  describe "#extract_purchase_order" do
+    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+    before do
+      subject.instance_eval do
+        to_field "purchase_order", extract_purchase_order
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "with mathing 902a field" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>EBC-POD</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps to true" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [true])
+      end
+    end
+
+    context "without a matching 902a field" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>Buzz</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps to false" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [false])
+      end
+    end
+
+    context "without a 902a field" do
+      let(:record_text) { "
+<record>
+</record>
+                     " }
+
+      it "maps to false" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [false])
+      end
+    end
   end
 end

@@ -72,4 +72,55 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_availability" do
+    let(:doc) { SolrDocument.new(purchase_order: true) }
+    let(:presenter) { CatalogIndexPresenter.new(doc, self) }
+    let(:blacklight_config) { CatalogController.blacklight_config }
+
+    before do
+      allow(presenter).to receive(:purchase_order_button) { "purchase_order_button" }
+      allow(helper).to receive(:render) { "availability_section" }
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config) { blacklight_config }
+      end
+    end
+
+    context "document has purchase order" do
+      it "should render the purchase order button" do
+        expect(helper.render_availability(doc, presenter)).to eq("purchase_order_button")
+      end
+    end
+
+    context "document does not have purchase order button" do
+      let(:doc) { SolrDocument.new(purchase_order: false) }
+      it "should not render the purchase_order_button" do
+        expect(helper.render_availability(doc, presenter)).to eq("availability_section")
+      end
+    end
+  end
+
+  describe "#render_email_form_field" do
+    let(:current_user) { OpenStruct.new(email: nil) }
+
+    before do
+      allow(helper).to receive(:current_user) { current_user }
+      allow(helper).to receive(:render) { "render_email_form_field" }
+    end
+
+    context "user does not have email" do
+      it "renders the email field" do
+        expect(helper.render_email_form_field).to eq("render_email_form_field")
+      end
+    end
+
+    context "user has email" do
+      let(:current_user) { OpenStruct.new(email: "foo") }
+
+      it "does not render the email form field" do
+        expect(helper.render_email_form_field).to be_nil
+      end
+    end
+
+  end
 end

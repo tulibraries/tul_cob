@@ -241,3 +241,4 @@ to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", 
 to_field "library_based_boost_t", library_based_boost
 
 to_field "bound_with_ids", extract_marc("ADFa")
+to_field "purchase_order", extract_purchase_order
