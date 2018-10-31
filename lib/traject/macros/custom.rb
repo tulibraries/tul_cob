@@ -519,6 +519,12 @@ module Traject
           acc << Traject::MarcExtractor.cached(spec).extract(rec).join(" . ")
         end
       end
+
+      def extract_purchase_order
+        lambda do |rec, acc|
+          acc << Traject::MarcExtractor.cached("902a").extract(rec).any? { |s| s.match?(/EBC-POD/) } || false
+        end
+      end
     end
   end
 end

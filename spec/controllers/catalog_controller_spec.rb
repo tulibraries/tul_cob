@@ -20,6 +20,7 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+
   describe "GET index as json" do
     render_views
     before do
@@ -113,6 +114,34 @@ RSpec.describe CatalogController, type: :controller do
 
         expect(request.flash[:error]).to be_nil
         expect(doc[:sms]).to eq("CHOSEN BOOK")
+      end
+    end
+  end
+
+  describe "#purchase_order/#purchase_order_action" do
+    before do
+      allow(controller).to receive(:purchase_order_action) {}
+    end
+
+    context "user is not logged in" do
+      it "does not allow access to purchase order action" do
+        get :purchase_order, params: { id: doc_id }
+        expect(response).not_to be_success
+
+        post :purchase_order_action, params: { id: doc_id }
+        expect(response).not_to be_success
+      end
+    end
+
+    context "user is logged in" do
+      it "allows access to purchase order actioins" do
+        sign_in FactoryBot.create(:user)
+
+        get :purchase_order, params: { id: doc_id }
+        expect(response).to be_success
+
+        post :purchase_order_action, params: { id: doc_id }
+        expect(response).to be_success
       end
     end
   end

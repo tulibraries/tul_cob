@@ -69,6 +69,7 @@ Rails.application.routes.draw do
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
+  get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
 
 
   #

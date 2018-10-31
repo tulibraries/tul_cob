@@ -79,6 +79,11 @@ module Blacklight::PrimoCentral::Document
     # There are no physical items assoc. to Primo articles.
   end
 
+  def purchase_order?
+    # For now, disable all purchase orders for Primo documents.
+    false
+  end
+
 
   private
 

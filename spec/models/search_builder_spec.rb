@@ -7,6 +7,11 @@ RSpec.describe SearchBuilder , type: :model do
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { SearchBuilder.new(context) }
   let(:begins_with_tag) { SearchBuilder::BEGINS_WITH_TAG }
+  let(:user) { FactoryBot.create(:user) }
+
+  before(:each) do
+    allow(context).to receive(:current_user) { user }
+  end
 
   subject { search_builder }
 

@@ -106,11 +106,11 @@ module CatalogHelper
     end
   end
 
-  def render_online_availability_button(doc, count)
+  def render_online_availability_button(doc)
     links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
 
     if !links.empty?
-      render "online_availability_button", document: doc, document_counter: count, links: links
+      render "online_availability_button", document: doc, links: links
     end
   end
 
@@ -127,9 +127,17 @@ module CatalogHelper
     blacklight_advanced_search_engine.advanced_search_path(params)
   end
 
-  def render_availability(doc, count)
-    if index_fields(doc).fetch("availability", nil)
-      render "index_availability_section", document: doc, document_counter: count
+  def render_availability(doc, doc_presenter)
+    if doc.purchase_order?
+      doc_presenter.purchase_order_button
+    elsif index_fields(doc).fetch("availability", nil)
+      render "index_availability_section", document: doc
+    end
+  end
+
+  def render_email_form_field
+    if !current_user&.email
+      render partial: "email_form_field"
     end
   end
 
