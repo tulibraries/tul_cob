@@ -2,7 +2,6 @@
 
 require "library_stdnums"
 require "active_support/core_ext/object/blank"
-require "pry"
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
   module Macros
