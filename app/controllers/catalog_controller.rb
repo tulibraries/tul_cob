@@ -203,7 +203,7 @@ class CatalogController < ApplicationController
       sow: "false",
       bq: [
           "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
-          "(library_based_boost_t:* -no_boost)^500"],
+          "(library_based_boost_t:* -no_boost)^1000"],
       fq: %w[
         -suppress_items_b:*
       ]
