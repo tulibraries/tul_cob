@@ -30862,4 +30862,326 @@
       <subfield code="f">AMBLER</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>03016cam a2200649I 4500</leader>
+    <controlfield tag="005">20180927101138.0</controlfield>
+    <controlfield tag="008">741016s1961 enkac b 000 0 eng</controlfield>
+    <controlfield tag="001">991001926259703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">61065124</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="019">
+      <subfield code="a">966606</subfield>
+      <subfield code="a">676709751</subfield>
+      <subfield code="a">893164198</subfield>
+      <subfield code="a">1008027641</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)1042113</subfield>
+      <subfield code="z">(OCoLC)966606</subfield>
+      <subfield code="z">(OCoLC)676709751</subfield>
+      <subfield code="z">(OCoLC)893164198</subfield>
+      <subfield code="z">(OCoLC)1008027641</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocm01042113</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b10419858-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">VTU</subfield>
+      <subfield code="d">SER</subfield>
+      <subfield code="d">OCL</subfield>
+      <subfield code="d">RIU</subfield>
+      <subfield code="d">UKM</subfield>
+      <subfield code="d">UBA</subfield>
+      <subfield code="d">OCLCG</subfield>
+      <subfield code="d">STF</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">DEBBG</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">OCLCF</subfield>
+      <subfield code="d">P4I</subfield>
+      <subfield code="d">UKMGB</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">S3O</subfield>
+      <subfield code="d">OCLCA</subfield>
+      <subfield code="d">NLC</subfield>
+      <subfield code="d">OCLCQ</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="4" tag="050">
+      <subfield code="a">N5220</subfield>
+      <subfield code="b">.K7</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocm01042113</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="082">
+      <subfield code="a">708.13</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">N5220.K7</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="110">
+      <subfield code="a">Samuel H. Kress Foundation.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Art treasures for America :</subfield>
+      <subfield code="b">an anthology of paintings and sculpture in the Samuel H. Kress Collection /</subfield>
+      <subfield code="c">prefaces by John Walker and Guy Emerson ; 187 illus. : commentary by Charles Seymour, Jr.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">[London] :</subfield>
+      <subfield code="b">Phaidon Press,</subfield>
+      <subfield code="c">1961.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xxi, 217 pages :</subfield>
+      <subfield code="b">illustrations (some color), portraits ;</subfield>
+      <subfield code="c">32 cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">"Book designed by Ludwig Goldscheider; blocks engraved by Schwitter AG, Basle; printed and bound by VSK Printers, Basle"--Title page verso.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="541">
+      <subfield code="3">SCRC copy:</subfield>
+      <subfield code="a">Ellis, Richard W. ;</subfield>
+      <subfield code="c">Purchased with Paley Fund ;</subfield>
+      <subfield code="d">1982</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="563">
+      <subfield code="3">SCRC copy:</subfield>
+      <subfield code="a">In publisher's red cloth with spine and cover title stamped in gilt and top edges stained yellow; in original dust jacket.</subfield>
+      <subfield code="5">PPT</subfield>
+    </datafield>
+    <datafield ind1="2" ind2="0" tag="610">
+      <subfield code="a">Samuel H. Kress Foundation</subfield>
+      <subfield code="v">Catalogs.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Art</subfield>
+      <subfield code="x">Private collections.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Art</subfield>
+      <subfield code="x">Private collections</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00815314</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Catalogs.</subfield>
+      <subfield code="2">rbgenr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Case bindings (Binding)</subfield>
+      <subfield code="2">rbbin</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Dust jackets (Binding)</subfield>
+      <subfield code="2">rbbin</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Stained edges (Binding)</subfield>
+      <subfield code="2">rbbin</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Seymour, Charles,</subfield>
+      <subfield code="c">Jr.,</subfield>
+      <subfield code="d">1912-1977,</subfield>
+      <subfield code="e">writer of supplementary textual content.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Goldscheider, Ludwig,</subfield>
+      <subfield code="d">1896-1973,</subfield>
+      <subfield code="e">book designer.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Phaidon Press,</subfield>
+      <subfield code="e">publisher.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Schwitter AG,</subfield>
+      <subfield code="e">platemaker.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">VSK Printers,</subfield>
+      <subfield code="e">binder,</subfield>
+      <subfield code="e">printer.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Ellis, Richard W.</subfield>
+      <subfield code="q">(Richard Williamson),</subfield>
+      <subfield code="d">1895-1982,</subfield>
+      <subfield code="e">former owner.</subfield>
+      <subfield code="5">PPT</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="776">
+      <subfield code="i">Online version:</subfield>
+      <subfield code="a">Samuel H. Kress Foundation.</subfield>
+      <subfield code="t">Art treasures for America.</subfield>
+      <subfield code="d">[London] Phaidon Press, 1961</subfield>
+      <subfield code="w">(OCoLC)646107282</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="902">
+      <subfield code="a">091125</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b10419858</subfield>
+      <subfield code="b">k</subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="935">
+      <subfield code="a">00044615</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">kstk</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="950">
+      <subfield code="l">P</subfield>
+      <subfield code="i">04/13/94 N</subfield>
+      <subfield code="h">08/17/93 N</subfield>
+      <subfield code="h">01/01/01 N</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="950">
+      <subfield code="l">TUCC</subfield>
+      <subfield code="i">04/13/94 D</subfield>
+      <subfield code="h">08/17/93 N</subfield>
+      <subfield code="h">01/01/01 N</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="950">
+      <subfield code="l">TYL</subfield>
+      <subfield code="i">04/13/94 N</subfield>
+      <subfield code="h">08/17/93 N 855:sl</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="955">
+      <subfield code="l">P</subfield>
+      <subfield code="c">0</subfield>
+      <subfield code="h">08/17/93 C</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="955">
+      <subfield code="l">TUCC</subfield>
+      <subfield code="c">0</subfield>
+      <subfield code="h">08/17/93 C</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="955">
+      <subfield code="l">TYL</subfield>
+      <subfield code="c">0</subfield>
+      <subfield code="h">08/17/93 C</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="974">
+      <subfield code="t">Rare Books</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocm01042113^</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">2</subfield>
+      <subfield code="c">990101</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">04/13/94</subfield>
+      <subfield code="t">c</subfield>
+      <subfield code="s">9665</subfield>
+      <subfield code="n">PPT</subfield>
+      <subfield code="w">MOSA87B1881</subfield>
+      <subfield code="d">05/02/83</subfield>
+      <subfield code="b">MH</subfield>
+      <subfield code="i">940413</subfield>
+      <subfield code="h">930817</subfield>
+      <subfield code="l">PATG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-10-26 11:27:19</subfield>
+      <subfield code="e">b10419858-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="f">20180716092620.0</subfield>
+      <subfield code="a">2017-06-20 06:19:12</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">KARDON</subfield>
+      <subfield code="c">p_remote</subfield>
+      <subfield code="h">N5220.K7</subfield>
+      <subfield code="8">22245366050003811</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">SCRC</subfield>
+      <subfield code="c">rarestacks</subfield>
+      <subfield code="h">N5220</subfield>
+      <subfield code="i">. K7 1961 Ellis</subfield>
+      <subfield code="8">22429039830003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22245366050003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074007259583</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23245366030003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 06:19:12</subfield>
+      <subfield code="i">N5220.K7</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22245366050003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">p_remote</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074005188867</subfield>
+      <subfield code="e">p_remote</subfield>
+      <subfield code="8">23245366040003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 06:19:12</subfield>
+      <subfield code="i">N5220.K7</subfield>
+      <subfield code="d">KARDON</subfield>
+      <subfield code="f">KARDON</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22429039830003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">rarestacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025788944</subfield>
+      <subfield code="e">rarestacks</subfield>
+      <subfield code="8">23429039820003811</subfield>
+      <subfield code="a">4</subfield>
+      <subfield code="q">2018-07-16 13:36:43</subfield>
+      <subfield code="i">N5220 . K7 1961 Ellis</subfield>
+      <subfield code="d">SCRC</subfield>
+      <subfield code="f">SCRC</subfield>
+    </datafield>
+  </record>
 </collection>
