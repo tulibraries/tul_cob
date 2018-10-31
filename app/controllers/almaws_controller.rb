@@ -30,7 +30,7 @@ class AlmawsController < ApplicationController
   def request_options
     @mms_id = params[:mms_id]
     @items = Alma::BibItem.find(@mms_id, limit: 100)
-    @books = @items.items.map { |item| item.item_data.dig("physical_material_type", "value") }.first
+    @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
     @holding_id = CobAlma::Requests.item_holding_id(@items)
     @item_pid = CobAlma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first

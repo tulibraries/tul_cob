@@ -29,14 +29,14 @@ module AlmawsHelper
 
   def no_temple_request_options_available(request_options, books)
     if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed?
-      resource_sharing_broker_allowed_partial(request_options, books)
+      render partial: "no_request_options", locals: { request_options: request_options, books: books }
     end
   end
 
   def only_one_option_allowed(request_options)
     [ request_options.hold_allowed?,
      request_options.digitization_allowed?,
-     request_options.booking_allowed? ]
+     request_options.booking_allowed?, request_options.resource_sharing_broker_allowed? ]
     .select(&:itself).count == 1
   end
 end
