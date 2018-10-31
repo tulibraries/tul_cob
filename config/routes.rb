@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
   match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
   match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
+  match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
 
   # concerns
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
@@ -98,6 +99,7 @@ Rails.application.routes.draw do
   get "books/:id/index_item", to: "books#index_item", as: "book_item"
   get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
+  get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
 
 
   #

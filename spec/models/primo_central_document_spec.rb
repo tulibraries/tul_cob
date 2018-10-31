@@ -158,4 +158,30 @@ RSpec.describe PrimoCentralDocument, type: :model do
       expect(subject["isbn"]).to eq(["a"])
     end
   end
+
+  describe "#purchase_order?" do
+    context "with purchase_order false" do
+      let(:document) { PrimoCentralDocument.new(purchase_order: false) }
+
+      it "should be false" do
+        expect(document.purchase_order?).to be false
+      end
+    end
+
+    context "with purchase_order true" do
+      let(:document) { PrimoCentralDocument.new(purchase_order: true) }
+
+      it "should be false" do
+        expect(document.purchase_order?).to be false
+      end
+    end
+
+    context "with no purchase_order" do
+      let(:document) { PrimoCentralDocument.new({}) }
+
+      it "should be false" do
+        expect(document.purchase_order?).to be false
+      end
+    end
+  end
 end

@@ -7,8 +7,13 @@ RSpec.describe BooksSearchBuilder , type: :model do
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { BooksSearchBuilder.new(context) }
   let(:solr_parameters) { Blacklight::Solr::Request.new(fq: []) }
+  let(:user) { FactoryBot.create(:user) }
 
   subject { search_builder }
+
+  before(:each) do
+    allow(context).to receive(:current_user) { user }
+  end
 
   it "Should include a books_facet search preprocessor" do
     expect(subject.default_processor_chain).to include(:books_facet)

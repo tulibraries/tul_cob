@@ -9,4 +9,8 @@ class PrimoCentralPresenter < Blacklight::IndexPresenter
     title << ": #{document[:subtitle]}" if (document.key?(:subtitle) && document[:subtitle])
     title
   end
+
+  def purchase_order_button
+    # There is no purchase of Primo docs for now.
+  end
 end

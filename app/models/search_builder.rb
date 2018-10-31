@@ -18,6 +18,23 @@ class SearchBuilder < Blacklight::SearchBuilder
     self.default_processor_chain += %i[ tweak_query ]
   end
 
+  def initialize(*args)
+    context = args.last
+
+    # purchase_order items are only avaiable when logged in
+    if !context.current_user
+      self.default_processor_chain += [ :filter_purchase_order ]
+    end
+
+    super(*args)
+  end
+
+  def filter_purchase_order(solr_params)
+    # The negative query will work even when items are not indexed.
+    # We can refactor to use a positive query once indexing occurs.
+    solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
     count = blacklight_params.keys.count
