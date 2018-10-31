@@ -5,12 +5,7 @@ module BentoSearch
     include BentoSearch::SearchEngine
     include Blacklight::SearchHelper
 
-    attr_accessor :current_user
     delegate :blacklight_config, to: CatalogController
-
-    def current_user
-      @current_user
-    end
 
     def search_implementation(args)
       query = args.fetch(:query, "")

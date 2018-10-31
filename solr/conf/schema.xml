@@ -70,7 +70,7 @@
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
 
     <!-- boolean type: "true" or "false" -->
-    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="false"/>
+    <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true" omitNorms="true"/>
     <!--Binary data type. The data should be sent/retrieved in as Base64 encoded Strings -->
     <fieldtype name="binary" class="solr.BinaryField"/>
 
@@ -496,7 +496,7 @@
    <field name="bound_with_ids" type="string" indexed="true" stored="true" multiValued="true"/>
 
    <field name="work_access_point" type="string" indexed="true" stored="true" multiValued="true"/>
-   <field name="purchase_order" type="boolean" indexed="true" stored="true" multiValued="false" default="false" />
+   <field name="purchase_order" type="boolean" indexed="false" stored="true" multiValued="false" default="false" />
 
 
    <!-- Dynamic field definitions.  If a field name is not found, dynamicFields

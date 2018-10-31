@@ -13,17 +13,7 @@ class SearchController < CatalogController
     @per_page = 3
     if params[:q]
       engines = %i( books articles journals more )
-
-      # bento_search does not offer an easy way to pass in current_user
-      # via the concurrent_searcher initializer.
-      searcher = BentoSearch::ConcurrentSearcher.new
-      auto_rescued_exceptions = [StandardError]
-      engines.each do |id|
-        engine = BentoSearch.get_engine(id).tap { |e| e.auto_rescued_exceptions = auto_rescued_exceptions + e.auto_rescued_exceptions }
-        engine.current_user = current_user
-        searcher.add_engine(engine)
-      end
-
+      searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
       @results = split_more(searcher.results)
       @response = @results["resource_types"]&.first&.custom_data
