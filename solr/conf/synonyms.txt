@@ -51,8 +51,6 @@ c++ => cplusplus
 .NET => dotnet
 
 min => minor
-maj => major
-maj. => major
 
 # Added for BL-447
 employment,labor => work
