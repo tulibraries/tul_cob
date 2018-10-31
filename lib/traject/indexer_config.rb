@@ -154,7 +154,7 @@ to_field "note_copyright_display", extract_marc("540a:542|1*|abcdefghijklmnopqr3
 to_field "note_bio_display", extract_marc("545abu")
 to_field "note_finding_aid_display", extract_marc("555abcdu3")
 to_field "note_custodial_display", extract_marc("561a")
-to_field "note_binding_display", extract_marc("563a")
+to_field "note_binding_display", extract_marc("5633a")
 to_field "note_related_display", extract_marc("580a")
 to_field "note_accruals_display", extract_marc("584a")
 to_field "note_local_display", extract_marc("590a")
