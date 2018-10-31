@@ -202,6 +202,23 @@ RSpec.describe AlmawsHelper, type: :helper do
       end
     end
 
+    context "only a booking is allowed" do
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "BOOKING", "desc" => "Booking" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          }]
+        }.to_json
+      }
+      let(:response) { OpenStruct.new(body: json) }
+      let(:request_options) { Alma::RequestOptions.new(response) }
+
+      it "is true" do
+        expect(helper.only_one_option_allowed(request_options)).to be true
+      end
+    end
+
     context "both a hold and a booking are allowed" do
       let(:json) {
         {
@@ -234,7 +251,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       let(:request_options) { Alma::RequestOptions.new(response) }
 
       it "is false" do
-        expect(helper.only_one_option_allowed(request_options)).to be_nil
+        expect(helper.only_one_option_allowed(request_options)).to be false
       end
     end
   end

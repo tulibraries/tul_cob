@@ -34,12 +34,9 @@ module AlmawsHelper
   end
 
   def only_one_option_allowed(request_options)
-    options = []
-    hold_request = "hold" if request_options.hold_allowed?
-    digitization_request = "digitization" if request_options.digitization_allowed?
-    booking_request = "booking" if request_options.booking_allowed?
-    options << hold_request << digitization_request << booking_request
-
-    return true if options.compact.uniq.length == 1
+    [ request_options.hold_allowed?,
+     request_options.digitization_allowed?,
+     request_options.booking_allowed? ]
+    .select(&:itself).count == 1
   end
 end
