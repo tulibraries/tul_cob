@@ -7,11 +7,6 @@ RSpec.describe SearchBuilder , type: :model do
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { SearchBuilder.new(context) }
   let(:begins_with_tag) { SearchBuilder::BEGINS_WITH_TAG }
-  let(:user) { FactoryBot.create(:user) }
-
-  before(:each) do
-    allow(context).to receive(:current_user) { user }
-  end
 
   subject { search_builder }
 
@@ -276,30 +271,4 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
   end
-
-  describe "#filter_purchase_order" do
-    context "user logged in" do
-      it "should add :filter_purchase_order to default_processor_chain" do
-        allow(context).to receive(:current_user) { true }
-        expect(subject.default_processor_chain).not_to include(:filter_purchase_order)
-      end
-    end
-
-    context "user not logged in" do
-      before do
-        allow(context).to receive(:current_user) { false }
-      end
-
-      it "should not add :filter_purchase_order to default_processor_chain" do
-        expect(subject.default_processor_chain).to include(:filter_purchase_order)
-      end
-
-      it "adds a filter query to fq" do
-        solr_parameters = { fq: [] }.with_indifferent_access
-        subject.filter_purchase_order(solr_parameters)
-        expect(solr_parameters[:fq]).to eq(["-purchase_order:true"])
-      end
-    end
-  end
-
 end

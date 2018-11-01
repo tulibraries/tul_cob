@@ -7,10 +7,10 @@
 <%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => 'purchase_order_form', :class => "form-horizontal ajax_form", :method => :post do %>
 
   <div class="modal-body">
-    <p>A purchase order request will be submitted for the item titled: <strong><%= doc_presenter.html_title %></strong>
-    </p>
-
-    <p>Please note that this request is not for an instant purchase. We will contact you when this request gets processed.</p>
+    <p>Please submit this form to request access to this online material:
+    <strong><%= doc_presenter.html_title %></strong>. Access will generally be
+    enabled within 2 business days. An email notification will be sent when the
+    material is available for use.</p>
 
     <p>
     Also, you may add extra instructions for this order in the messages field below if desired.
@@ -33,6 +33,6 @@
   </div>
 
   <div class="modal-footer">
-  <button type="submit" class="btn btn-primary">Purchase Order</button>
+  <button type="submit" class="btn btn-primary">Request</button>
   </div>
 <% end %>

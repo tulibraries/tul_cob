@@ -77,16 +77,28 @@ RSpec.describe CatalogHelper, type: :helper do
     let(:doc) { SolrDocument.new(purchase_order: true) }
     let(:presenter) { CatalogIndexPresenter.new(doc, self) }
     let(:blacklight_config) { CatalogController.blacklight_config }
+    let(:user) { FactoryBot.create(:user) }
 
-    before do
+    before(:each) do
       allow(presenter).to receive(:purchase_order_button) { "purchase_order_button" }
+      allow(helper).to receive(:link_to) { "render_login_link" }
       allow(helper).to receive(:render) { "availability_section" }
+      allow(helper).to receive(:current_user) { user }
+
       without_partial_double_verification do
         allow(helper).to receive(:blacklight_config) { blacklight_config }
       end
     end
 
-    context "document has purchase order" do
+    context "document has purchase order and user is not logged in" do
+      let(:user) { nil }
+
+      it "should render the log in in link" do
+        expect(helper.render_availability(doc, presenter)).to eq("render_login_link")
+      end
+    end
+
+    context "document has purchase order and user is logged in" do
       it "should render the purchase order button" do
         expect(helper.render_availability(doc, presenter)).to eq("purchase_order_button")
       end

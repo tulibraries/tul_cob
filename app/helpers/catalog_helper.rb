@@ -128,7 +128,9 @@ module CatalogHelper
   end
 
   def render_availability(doc, doc_presenter)
-    if doc.purchase_order?
+    if doc.purchase_order? && !current_user
+      link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: { "ajax-modal": "trigger" })
+    elsif doc.purchase_order?
       doc_presenter.purchase_order_button
     elsif index_fields(doc).fetch("availability", nil)
       render "index_availability_section", document: doc

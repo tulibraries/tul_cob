@@ -3,19 +3,9 @@
 require "rails_helper"
 
 RSpec.describe BentoSearch, type: :search_engine do
-  let(:user) { FactoryBot.create(:user) }
+  let(:search_engine)  { BentoSearch.get_engine("blacklight") }
 
-  let(:search_engine)  {
-    se = BentoSearch.get_engine("blacklight")
-    se.current_user = user
-    se
-  }
-
-  let(:search_results) {
-    VCR.use_cassette("bento_search_blacklight") do
-      search_engine.search("james")
-    end
-  }
+  let(:search_results) { VCR.use_cassette("bento_search_blacklight") { search_engine.search("james") } }
 
   let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
@@ -36,10 +26,6 @@ RSpec.describe BentoSearch, type: :search_engine do
   describe "#proc_availability_facet_only" do
     let(:controller) { CatalogController.new }
     let(:builder) { SearchBuilder.new(controller) }
-
-    before(:each) do
-      allow(controller).to receive(:current_user) { user }
-    end
 
     it "does not affect builder.proccessor_chain automatically" do
       expect(builder.processor_chain).to_not include(:availability_facet_only)

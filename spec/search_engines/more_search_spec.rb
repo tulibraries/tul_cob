@@ -4,19 +4,9 @@ require "rails_helper"
 
 RSpec.describe BentoSearch, type: :search_engine do
 
-  let(:user) { FactoryBot.create(:user) }
+  let(:search_engine)  { BentoSearch.get_engine("more") }
 
-  let(:search_engine)  {
-    se = BentoSearch.get_engine("more")
-    se.current_user = user
-    se
-  }
-
-  let(:search_results) {
-    VCR.use_cassette("bento_search_more") do
-      search_engine.search("food")
-    end
-  }
+  let(:search_results) { VCR.use_cassette("bento_search_more") { search_engine.search("food") } }
 
   let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
@@ -43,10 +33,6 @@ RSpec.describe BentoSearch, type: :search_engine do
   describe "#proc_minus_books_journals" do
     let(:controller) { CatalogController.new }
     let(:builder) { SearchBuilder.new(controller) }
-
-    before(:each) do
-      allow(controller).to receive(:current_user) { user }
-    end
 
     it "does not affect builder.proccessor_chain automatically" do
       expect(builder.processor_chain).not_to include(:no_books_or_journals)
