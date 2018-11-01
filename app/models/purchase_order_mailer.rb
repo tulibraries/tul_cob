@@ -9,10 +9,10 @@ class PurchaseOrderMailer < RecordMailer
             end
     subject = "Purchase Order: " + title.first
 
-    @documents      = [document]
+    @document       = document
     @message        = details[:message]
     @url_gen_params = url_gen_params
-    @from_email = details[:from]
+    @from_email     = details[:from]
 
     mail(to: "orders@temple.edu",  subject: subject)
   end
