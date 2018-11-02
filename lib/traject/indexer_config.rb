@@ -103,7 +103,10 @@ to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdej
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
-to_field "imprint_display", extract_marc("260abcefg3:264|*0|abc3:264|*1|abc3:264|*2|abc3:264|*3|abc3", alternate_script: false)
+to_field "imprint_display", extract_marc("260abcefg3:264|*1|abc3", alternate_script: false)
+to_field "imprint_prod_display", extract_marc("264|*0|abc3", alternate_script: false)
+to_field "imprint_dist_display", extract_marc("264|*2|abc3", alternate_script: false)
+to_field "imprint_man_display", extract_marc("264|*3|abc3", alternate_script: false)
 to_field "imprint_vern_display", extract_marc("260abcefg3:264|*1|abc3", alternate_script: :only)
 to_field "edition_display", extract_marc("250a:254a", trim_punctuation: true, alternate_script: false)
 to_field "pub_date", extract_pub_date

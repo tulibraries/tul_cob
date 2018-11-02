@@ -65,7 +65,7 @@ RSpec.feature "Indices" do
         expect(page).to have_text "Resource Type:"
         expect(page).to have_text "Book"
         expect(page).to have_text "Author/Creator:"
-        expect(page).to have_text "Published:"
+        expect(page).to have_text "Publication:"
         has_css?(".avail-button", visible: true)
       end
     end
