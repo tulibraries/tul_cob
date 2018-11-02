@@ -56,6 +56,9 @@ class CatalogController < ApplicationController
         electronic_resource_display
         format
         imprint_display
+        imprint_prod_display
+        imprint_dist_display
+        imprint_man_display
         library_facet
         location_display
         pub_date
@@ -280,7 +283,10 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
 
-    config.add_index_field "imprint_display", label: "Published"
+    config.add_index_field "imprint_display", label: "Publication"
+    config.add_index_field "imprint_prod_display", label: "Production"
+    config.add_index_field "imprint_dist_display", label: "Distribution"
+    config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
@@ -301,7 +307,10 @@ class CatalogController < ApplicationController
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true
     config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "format", label: "Resource Type"
-    config.add_show_field "imprint_display", label: "Published"
+    config.add_show_field "imprint_display", label: "Publication"
+    config.add_show_field "imprint_prod_display", label: "Production"
+    config.add_show_field "imprint_dist_display", label: "Distribution"
+    config.add_show_field "imprint_man_display", label: "Manufacture"
     config.add_show_field "edition_display", label: "Edition"
     config.add_show_field "date_copyright_display", label: "Copyright Notice"
     config.add_show_field "phys_desc_display", label: "Physical Description"

@@ -184,14 +184,6 @@ RSpec.feature "RecordPageFields" do
       end
     end
 
-    let (:item_264_0) { fixtures.fetch("imprint_264_0") }
-    scenario "User visits a document with imprint indicator2 value 0" do
-      visit "catalog/#{item_264_0['doc_id']}"
-      within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_0["imprint"])
-      end
-    end
-
     let (:item_264_1) { fixtures.fetch("imprint_264_1") }
     scenario "User visits a document with imprint indicator2 value 1" do
       visit "catalog/#{item_264_1['doc_id']}"
@@ -199,55 +191,9 @@ RSpec.feature "RecordPageFields" do
         expect(page).to have_text(item_264_1["imprint"])
       end
     end
-
-    let (:item_264_2) { fixtures.fetch("imprint_264_2") }
-    scenario "User visits a document with imprint indicator2 value 2" do
-      visit "catalog/#{item_264_2['doc_id']}"
-      within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_2["imprint"])
-      end
-    end
-
-    let (:item_264_3) { fixtures.fetch("imprint_264_3") }
-    scenario "User visits a document with imprint indicator2 value 3" do
-      visit "catalog/#{item_264_3['doc_id']}"
-      within "dd.blacklight-imprint_display" do
-        expect(page).to have_text(item_264_3["imprint"])
-      end
-    end
-
-    let (:item_264_4) { fixtures.fetch("imprint_264_4") }
-    scenario "User visits a document with imprint indicator2 value 4" do
-      visit "catalog/#{item_264_4['doc_id']}"
-      expect(page).to have_no_text(item_264_4["imprint"])
-    end
   end
 
   feature "MARC Copyright notice date" do
-    let (:item_260_c) { fixtures.fetch("imprint_260_c") }
-    scenario "User visits a document with date_copyright including 'c'" do
-      visit "catalog/#{item_260_c['doc_id']}"
-      within "dd.blacklight-date_copyright_display" do
-        expect(page).to have_text(item_260_c["date_copyright"])
-      end
-    end
-
-    let (:item_260_p) { fixtures.fetch("imprint_260_p") }
-    scenario "User visits a document with date_copyright including 'p'" do
-      visit "catalog/#{item_260_p['doc_id']}"
-      within "dd.blacklight-date_copyright_display" do
-        expect(page).to have_text(item_260_p["date_copyright"])
-      end
-    end
-
-    let (:item_260_copyright) { fixtures.fetch("imprint_260_copyright") }
-    scenario "User visits a document with date_copyright including copyright symbol" do
-      visit "catalog/#{item_260_copyright['doc_id']}"
-      within "dd.blacklight-date_copyright_display" do
-        expect(page).to have_text(item_260_copyright["date_copyright"])
-      end
-    end
-
     let (:item_260_year_only) { fixtures.fetch("imprint_260_year_only") }
     scenario "User visits a document including year only in subfield 'c'" do
       visit "catalog/#{item_260_year_only['doc_id']}"
