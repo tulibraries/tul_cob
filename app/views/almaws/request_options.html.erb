@@ -9,6 +9,7 @@
   <%= hold_allowed_partial(@request_options) %>
   <%= digitization_allowed_partial(@request_options) %>
   <%= booking_allowed_partial(@request_options) %>
+  <%= resource_sharing_broker_allowed_partial(@request_options, @books) %>
   <%= no_temple_request_options_available(@request_options, @books) %>
 
   </div>
