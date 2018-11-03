@@ -2,43 +2,42 @@
 
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
 
-
 <% unless @items.empty? %>
   <div class="availability-modal">
     <div class="modal-only">
       <%= render :partial => "paginate_compact", :object => @response %>
     </div>
-  <% sort_order_for_holdings(@items).each do |key,items| %>
-      <table id="availability-container" class="table table-responsive border-bottom">
-        <thead>
-          <tr class="sr-only">
-              <th scope="col" id="location">Item Location</td>
-              <th scope="col" id="callnum">Call Number</th>
-              <th scope="col" id="desc">Description</th>
-              <th scope="col" id="type">Material Type</th>
-              <th scope="col" id="note">Public Note</th>
-              <th scope="col" id="status">Availability Status</th>
+  <% sort_order_for_holdings(@unsuppressed_items).each do |key,items| %>
+    <table id="availability-container" class="table table-responsive border-bottom">
+      <thead>
+        <tr class="sr-only">
+            <th scope="col" id="location">Item Location</td>
+            <th scope="col" id="callnum">Call Number</th>
+            <th scope="col" id="desc">Description</th>
+            <th scope="col" id="type">Material Type</th>
+            <th scope="col" id="note">Public Note</th>
+            <th scope="col" id="status">Availability Status</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr class="table-heading">
+          <th id="<%= key %>" scope="colgroup" colspan="7">
+            <%= library_name_from_short_code(key) %>
+            <%= aeon_request_button(items) %>
+          </th>
+        </tr>
+        <% items.each do |item| %>
+          <tr>
+            <th id="<%= location_status(item) %>" headers="<%= key %> location" scope="row"><%= location_status(item) %></th>
+            <td headers="<%= key %> callnum" scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
+            <td headers="<%= key %> desc" scope="row"><%= description(item) %></td>
+            <td headers="<%= key %> type" scope="row"><%= physical_material_type(item) %></td>
+            <td headers="<%= key %> note" scope="row"><%= public_note(item) %></td>
+            <td headers="<%= key %> status" scope="row"><%= availability_status(item) %></td>
           </tr>
-        </thead>
-        <tbody >
-          <tr class="table-heading">
-            <th id="<%= key %>" scope="colgroup" colspan="7">
-              <%= library_name_from_short_code(key) %>
-              <%= aeon_request_button(items) %>
-            </th>
-          </tr>
-          <% items.each do |item| %>
-            <tr>
-              <th id="<%= location_status(item) %>" headers="<%= key %> location" scope="row"><%= location_status(item) %></th>
-              <td headers="<%= key %> callnum" scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
-              <td headers="<%= key %> desc" scope="row"><%= description(item) %></td>
-              <td headers="<%= key %> type" scope="row"><%= physical_material_type(item) %></td>
-              <td headers="<%= key %> note" scope="row"><%= public_note(item) %></td>
-              <td headers="<%= key %> status" scope="row"><%= availability_status(item) %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+        <% end %>
+      </tbody>
+    </table>
     <% end %>
     <%= render :partial => "paginate_compact", :object => @response %>
   </div>
@@ -51,4 +50,3 @@
     </tr>
   </table>
 <% end %>
-
