@@ -52,7 +52,8 @@ RSpec.describe AdvancedHelper, type: :helper do
 
     context "not on advanced page" do
       it "renders the link to the advanced form" do
-        link = "<a class=\"advanced_search\" id=\"advanced_search\" href=\"/advanced?q=foo\">Advanced Catalog Search</a>"
+        allow(helper).to receive(:current_page?).with("/catalog") { true }
+        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
       end
     end
