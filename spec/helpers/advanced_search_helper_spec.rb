@@ -57,7 +57,7 @@ RSpec.describe AdvancedHelper, type: :helper do
     context "on the catalog search page" do
       it "renders the link to the advanced form" do
         allow(helper).to receive(:current_page?).with("/catalog") { true }
-        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Catalog Search</a>"
+        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
       end
     end
@@ -78,7 +78,7 @@ RSpec.describe AdvancedHelper, type: :helper do
       end
     end
 
-    context "on the articles serch page" do
+    context "on the articles search page" do
       it "renders the link to the advanced articles form" do
         allow(helper).to receive(:current_page?).with("/articles") { true }
         link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
@@ -142,7 +142,7 @@ RSpec.describe AdvancedHelper, type: :helper do
     context "on the advanced catalog search page" do
       it "renders the link to the catalog search" do
         allow(helper).to receive(:current_page?).with("/catalog/advanced") { true }
-        expect(helper.advanced_search_form_title).to eq("Advanced Catalog Search")
+        expect(helper.advanced_search_form_title).to eq("Advanced Search")
       end
     end
 
@@ -170,7 +170,7 @@ RSpec.describe AdvancedHelper, type: :helper do
     context "on some unknown page" do
       it "renders the link to the everything search" do
         allow(helper).to receive(:current_page?).with("/foo/advanced") { true }
-        expect(helper.advanced_search_form_title).to eq("Advanced Catalog Search")
+        expect(helper.advanced_search_form_title).to eq("Advanced Search")
       end
     end
   end

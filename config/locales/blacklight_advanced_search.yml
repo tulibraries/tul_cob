@@ -4,3 +4,4 @@ en:
     articles_title: "Advanced Articles Search"
     form:
       start_over: "Clear Form"
+      search_context: "Applied Filters"
