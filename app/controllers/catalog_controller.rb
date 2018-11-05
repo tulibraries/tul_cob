@@ -48,7 +48,6 @@ class CatalogController < ApplicationController
         id
         score
         availability_facet
-        holdings_display
         holdings_with_no_items_display
         call_number_display
         call_number_alt_display
