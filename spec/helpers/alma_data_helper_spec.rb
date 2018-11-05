@@ -50,6 +50,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
+
+
   end
 
   describe "#unavailable_items(item)" do
@@ -64,6 +66,20 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
       it "displays process type" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>At another institution"
+      end
+    end
+
+    context "item includes process_type not found in mappings" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "0" },
+             "process_type" => { "value" => "Sample" }
+           }
+         )
+      end
+      it "displays default message" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
     end
 
@@ -467,4 +483,64 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_location_selector" do
+    let(:materials) { [] }
+    let(:doc) { SolrDocument.new({}) }
+
+    before(:each) do
+      allow(helper).to receive(:render)
+      allow(doc).to receive(:materials) { materials }
+      helper.render_location_selector(doc)
+    end
+
+    context "there are no materials" do
+      it "should not render a selector" do
+        expect(helper).to_not have_received(:render)
+      end
+    end
+
+    context "there is one material" do
+      let(:materials) { ["ONE material"] }
+
+      it "should render the single field selector template" do
+        expect(helper).to have_received(:render)
+          .with(template: "almaws/_location_field", locals: { material: "ONE material" })
+      end
+    end
+
+    context "there is more than one material" do
+      let(:materials) { [ "ONE material", "TWO materialS" ] }
+
+      it "should render the material selector template" do
+        expect(helper).to have_received(:render)
+          .with(template: "almaws/_location_selector", locals:
+        { materials: [ "ONE material", "TWO materialS" ] })
+      end
+    end
+  end
+
+  describe "#render_non_available_status_only" do
+    let(:availability) { "Available" }
+
+    before(:each) do
+      allow(helper).to receive(:render) { "" }
+      helper.render_non_available_status_only(availability)
+    end
+
+    context "material is available" do
+      it "does not render _avaiability_status partial" do
+        expect(helper).to_not have_received(:render)
+      end
+    end
+
+    context "material is not available" do
+      let (:availability) { "not available" }
+
+      it "does render the _avaiability_status partial" do
+        expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: availability })
+      end
+    end
+  end
+
 end

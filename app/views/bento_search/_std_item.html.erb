@@ -71,12 +71,20 @@
         </p>
       <% end %>
     </div>
+      <% if item.engine_id == "more" %>
+        <div class="bento_item_body">
+          <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
+        </div>
+      <% end %>
 
       <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
         <%= render :partial => "blacklight_availability", :object => item, :as => 'item' %>
       <% end %>
 
       <% if item.engine_id == "articles" %>
+        <div class="bento_item_body">
+          <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
+        </div>
         <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
       <% end %>
   </div>

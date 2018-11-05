@@ -1,19 +1,21 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
+  # value ex: "MAIN stacks"
   def render_location(value)
-    Rails.configuration.locations[value]
+    params = value.to_s.split
+    [ Rails.configuration.libraries[params.first],
+      Rails.configuration.locations.dig(*params) ]
+      .compact
+      .join(" ")
   end
 
-  def render_location_show(value)  # why do we get the entire solr document in show fields?
+  def render_location_show(value)
     render_location(value[:value].first)
   end
 
   def get_search_params(field, query)
     case field
-    when "subject_display"
-
-      { search_field: "subject", q: query.gsub(/>|—/, ""), title: query }
     when "title_uniform_display", "title_addl_display"
       { search_field: "title", q: query }
     when "relation"
@@ -41,6 +43,12 @@ module ApplicationHelper
       creator = plain_text_subfields
     end
     creator
+  end
+
+  def subject_links(args)
+    args[:document][args[:field]].map do |subject|
+      link_to(subject, "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
+    end
   end
 
   def has_one_electronic_resource?(document)
@@ -84,6 +92,21 @@ module ApplicationHelper
     link_url = field.split("|").last
     new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
     new_link
+  end
+
+  def holdings_summary_information(document)
+    field = document.fetch("holdings_summary_display", [])
+    unless field.empty?
+      summary = field.first.split("|").first
+      related_holding = field.first.split("|").last
+      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
+    end
+  end
+
+  def render_holdings_summary_table(document)
+    if document["holdings_summary_display"].present?
+      render partial: "holdings_summary", locals: { document: document }
+    end
   end
 
   def alma_build_openurl(query)
@@ -158,17 +181,20 @@ module ApplicationHelper
     end
   end
 
-  def aeon_request_url(document)
+  def aeon_request_url(item)
+    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
+    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
+    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
     form_fields = {
-         ItemTitle: "title_statement_display",
-         ItemPlace: "imprint_display",
-         ReferenceNumber: "alma_mms_display",
-         CallNumber: "call_number_display",
-         ItemAuthor: "creator_display"
+         ItemTitle: (item.item.dig("bib_data", "title") || ""),
+         ItemPlace: place_of_publication + publisher_const + date_of_publication,
+         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
+         CallNumber: item.call_number || "",
+         ItemAuthor: (item.item.dig("bib_data", "author") || "")
      }
 
-    openurl_field_values = form_fields.map { |k, k2|
-      [k, document[k2].to_s.delete('[]""')] }.to_h
+    openurl_field_values = form_fields.map { |k, v|
+      [k, v.to_s.delete('[]""')] }.to_h
 
     openurl_field_values["Action"] = 10
     openurl_field_values["Form"] = 30
@@ -180,10 +206,9 @@ module ApplicationHelper
       query: openurl_field_values.to_query).to_s
   end
 
-  def aeon_request_button(document)
-    if document.fetch("location_display", []).include?("SCRC rarestacks") && document["library_facet"].include?("Special Collections Research Center")
-      button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request btn btn-primary") +
-      content_tag(:p, "For materials from the Special Collections Research Center only", class: "aeon-text")
+  def aeon_request_button(items)
+    if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
+      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request btn btn-sm btn-primary")
     end
   end
 
@@ -195,30 +220,12 @@ module ApplicationHelper
     results.total_items[:online_total] || 0 rescue 0
   end
 
-  # TODO: Is variation here better handled in multiple link templates?
   def bento_link_to_full_results(results)
     total = number_with_delimiter(total_items results)
-    case results.engine_id
-    when "blacklight"
-      url = search_catalog_path(q: params[:q])
-      link_to "View all #{total} items", url, class: "full-results"
-    when "journals"
-      url = search_catalog_path(q: params[:q], f: { format: ["Journal/Periodical"] })
-      link_to "View all #{total} journals", url, class: "full-results"
-    when "books"
-      url = search_catalog_path(q: params[:q], f: { format: ["Book"] })
-      link_to "View all #{total} books", url, class: "full-results"
-    when "more"
-      url = search_catalog_path(q: params[:q])
-      link_to "View all catalog results", url, class: "full-results"
-    when "articles"
-      url = url_for(action: :index, controller: :primo_central, q: params[:q])
-      link_to "View all #{total} articles", url, class: "full-results"
-    else
-      content_tag(:p, "Total records from #{bento_engine_nice_name(results.engine_id)}: #{total}" || "?", class: "record-count")
-    end
+    BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
+  # TODO: move to decorator or eninge class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
     case results.engine_id
@@ -237,7 +244,7 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} ebooks", url, class: "full-results"
-    when "more"
+    when "more", "resource_types"
       ""
     when "articles"
       url = url_for(
@@ -261,34 +268,74 @@ module ApplicationHelper
     link_to "direct link", url, remote: true
   end
 
-  def navigational_headers
-    if params[:controller] == "catalog" || params[:controller] == "advanced"
-      label = link_to("Catalog Search", search_catalog_path)
-    elsif params[:controller] == "primo_central" || params[:controller] == "primo_advanced"
-      label = link_to("Articles Search", search_path)
-    end
-    content_tag(:h1, label, class: "nav-header")
-  end
-
-  def navigational_links
-    if navigational_headers.present?
-      if navigational_headers.include?("Catalog Search")
-        link_to("Articles Search", search_path, class: "btn btn-primary nav-btn")
-      elsif navigational_headers.include?("Articles Search")
-        link_to("Catalog Search", search_catalog_path, class: "btn btn-primary nav-btn")
-      end
-    end
-  end
-
-  def render_online_only_checkbox
-    online_articles = params.dig("f", "tlevel")&.include?("online_resources")
-    online_catalog = params.dig("f", "availability_facet")&.include?("Online")
-    checked = online_articles || online_catalog
-
-    check_box_tag "online_only", "yes", checked, onclick: "toggleOnlineOnly()"
-  end
-
   def login_disabled?
     Rails.configuration.features.fetch(:login_disabled, false)
+  end
+
+  def render_saved_searches?
+    false
+  end
+  def render_search_history?
+    false
+  end
+
+  def faq_link(type = :short)
+    label =
+      case type
+      when :short
+        "FAQs"
+      when :long
+        "Frequently Asked Questions"
+      else
+        type
+      end
+
+    link_to(label, "https://library.temple.edu/library-search-faq")
+  end
+
+  def former_search_link
+    link_to("former Library Search", "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&lang=en_US&sortby=rank")
+  end
+
+  def help_link
+    link_to t("ask_librarian"), Rails.configuration.ask_link
+  end
+
+  def ris_path(opts = {})
+    if controller_name == "bookmarks"
+      bookmarks_path(opts.merge(format: "ris"))
+    elsif controller_name == "primo_central"
+      primo_central_document_path(opts.merge(format: "ris"))
+    else
+      solr_document_path(opts.merge(format: "ris"))
+    end
+  end
+
+  def render_nav_link(path, name)
+    active = is_active?(path) ? [ "active" ] : []
+    button_class = ([ "nav-btn header-links" ] + active).join(" ")
+    link_class = ([ "nav-link" ] + active).join(" ")
+
+    content_tag :li, class: button_class do
+      link_to(name, send(path, search_params), class: link_class)
+    end
+  end
+
+  def search_params
+    # current_search_session is only defined under search context:
+    # Therefore it will not be available in /users/sign_in etc.
+    begin
+      # Sometimes current_search_session will return nil.
+      current_search_session&.query_params&.except(:controller, :action) || {}
+    rescue
+      {}
+    end
+  end
+
+  def is_active?(path)
+    url_path = send(path)
+    root_page = [ :everything_path ]
+    request.original_fullpath.match?(/^#{url_path}/) ||
+      current_page?(root_path) && root_page.include?(path)
   end
 end

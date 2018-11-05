@@ -1,9 +1,9 @@
 <% if current_user %>
     <li>
-      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, :method => 'delete' %>
+      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path(type: session[:alma_auth_type]), :method => 'delete', id: "logout" %>
     </li>
 <% else %>
     <li>
-      <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
+      <%= link_to t('blacklight.header_links.login'), new_user_session_with_redirect_path(users_account_path), data: {"ajax-modal": "trigger"}, id: "login" %>
     </li>
 <% end %>

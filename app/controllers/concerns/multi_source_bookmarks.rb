@@ -13,15 +13,16 @@ module MultiSourceBookmarks
     blacklight_config.bookmark_sources = [ :catalog, :primo_central ]
   end
 
-  # Overrides BookmarksController::index in order to run search on multiple apis.
-  def index
+  # Overrides BookmarksController::action_documents in order to get documents from multiple apis.
+  def action_documents
+    fetch([])
     @bookmarks = token_or_current_or_guest_user.bookmarks
     document_list = []
     # This bit should probably be  made concurrent
     blacklight_config.bookmark_sources.each do |source|
       source_class = "#{source}_bookmark_search".classify.constantize
       ids = @bookmarks
-        .select { |b| b.document_type == source_class.blacklight_config.document_model }
+        .select { |b| source_class.handle_bookmark_search?(b.document_type) }
         .collect { |b| b.document_id.to_s }
 
       if !ids.empty?
@@ -31,7 +32,9 @@ module MultiSourceBookmarks
     end
 
     # Reorder the document list to match the bookmark order.
-    document_map = document_list.map { |d| [d.id, d] }.to_h
+    # Replacing TN_ in ids to add backward compatibility.
+    document_map = document_list
+      .map { |d| [d.id.gsub(/^TN_/, ""), d] }.to_h
     @document_list = @bookmarks.map { |b| document_map[b.document_id] }.compact
 
     # Capture full document list in response for correct current_bookmarks count.
@@ -41,9 +44,17 @@ module MultiSourceBookmarks
     # Just display all the bookmarks in one page
     @response["rows"] = @bookmarks.count if @response
     @docs = @documents
+    [@response, @documents]
+  end
+
+  # Overrides BookmarksController::index in order to run search on multiple apis.
+  def index
+    action_documents
+    no_cache
 
     respond_to do |format|
       format.html {}
+      format.ris
       format.rss { render layout: false }
       format.atom { render layout: false }
       format.json do

@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "catalog#index"
+  root to: "search#index"
+
+  # advanced forms
+  match "/books/advanced", to: "books_advanced#index", as: "books_advanced_search", via: [:get, :post]
+  match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
+  match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
+  match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
+  match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
 
   # concerns
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
@@ -19,7 +26,25 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :books, only: [:index], as: "books", path: "/books", controller: "books" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
+  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
+    concerns :exportable
+  end
+
+  resources :solr_book_documents, only: [:show], path: "/books", controller: "books" do
+    concerns :exportable
+  end
+
+  resources :solr_journal_documents, only: [:show], path: "/journals", controller: "journals" do
     concerns :exportable
   end
 
@@ -37,13 +62,14 @@ Rails.application.routes.draw do
 
   post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
+  post "books/:id/track" => "book#track"
+  post "journals/:id/track" => "journal#track"
 
-  resources :users, only: [:index] do
-    post :impersonate, on: :member
-    post :stop_impersonating, on: :collection
+  devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
+
+  devise_scope :user do
+    get "alma/social_login_callback" => "sessions#social_login_callback"
   end
-
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   # auth
   authenticate do
@@ -51,11 +77,11 @@ Rails.application.routes.draw do
 
     get "users/account"
 
-    get "users/fines"
+    get "users/fines", as: "user_fines"
 
-    get "users/holds"
+    get "users/holds", as: "user_holds"
 
-    get "users/loans"
+    get "users/loans", as: "user_loans"
 
     post "users/renew_selected"
 
@@ -65,8 +91,15 @@ Rails.application.routes.draw do
 
   # gets
   get "bento" => "search#index", :as => "multi_search"
+  get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-  get "articles_advanced", to: "primo_advanced#index", as: "articles_advanced_search"
+  get "articles_advanced", to: "primo_advanced#index", as: "legacy_articles_advanced_search"
+
+  get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
+  get "books/:id/index_item", to: "books#index_item", as: "book_item"
+  get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"
+  get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
+  get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
 
 
   #
@@ -78,6 +111,10 @@ Rails.application.routes.draw do
   # root seems to work.
 
   get "almaws/item/:mms_id", to:  "almaws#item", as: "item"
+  get "almaws/request/:mms_id/:pickup_location/:request_level", to: "almaws#request_options", as: "request_options"
+  post "almaws/request/digitization", to: "almaws#send_digitization_request", as: "digitization_request"
+  post "almaws/request/hold", to: "almaws#send_hold_request", as: "hold_request"
+  post "almaws/request/booking", to: "almaws#send_booking_request", as: "booking_request"
 
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"

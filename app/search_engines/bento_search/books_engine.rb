@@ -2,13 +2,20 @@
 
 module BentoSearch
   class BooksEngine < BlacklightEngine
-    def search_implementation(args)
-      query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
-      query = { q: query, per_page: per_page, f: { format: ["Book"] } }
+    delegate :blacklight_config, to: BooksController
 
-      response = search_results(query, &proc_availability_facet_only).first
-      results(response)
+    def doc_link(id)
+      Rails.application.routes.url_helpers.solr_book_document_path(id)
+    end
+
+    def url(helper)
+      params = helper.params
+      helper.search_books_path(q: params[:q])
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all #{total} books", url, class: "full-results"
     end
   end
 end

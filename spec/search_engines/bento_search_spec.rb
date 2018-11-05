@@ -3,17 +3,14 @@
 require "rails_helper"
 
 RSpec.describe BentoSearch, type: :search_engine do
-  blacklight_se = BentoSearch.get_engine("blacklight")
+  let(:search_engine)  { BentoSearch.get_engine("blacklight") }
 
-  blacklight_search_results = VCR.use_cassette("bento_search_blacklight") do
-    blacklight_se.search("james")
-  end
-
+  let(:search_results) { VCR.use_cassette("bento_search_blacklight") { search_engine.search("james") } }
 
   let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
   describe "Bento Blacklight Search Engine" do
-    let (:item) { blacklight_search_results[0] }
+    let (:item) { search_results[0] }
 
     it "has all the expected fields" do
       expected_fields.each do |field|
@@ -27,14 +24,15 @@ RSpec.describe BentoSearch, type: :search_engine do
   end
 
   describe "#proc_availability_facet_only" do
-    let(:builder) { SearchBuilder.new(CatalogController.new) }
+    let(:controller) { CatalogController.new }
+    let(:builder) { SearchBuilder.new(controller) }
 
     it "does not affect builder.proccessor_chain automatically" do
       expect(builder.processor_chain).to_not include(:availability_facet_only)
     end
 
     it "Overrides the builder processor_chain" do
-      _builder = blacklight_se.proc_availability_facet_only[builder]
+      _builder = search_engine.proc_availability_facet_only[builder]
       expect(_builder.processor_chain.last).to eq(:availability_facet_only)
     end
   end

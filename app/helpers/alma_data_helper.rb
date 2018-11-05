@@ -20,7 +20,7 @@ module AlmaDataHelper
 
   def unavailable_items(item)
     if item.has_process_type?
-      process_type = Rails.configuration.process_types[item.process_type]
+      process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
       content_tag(:span, "", class: "close-icon") + process_type
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
@@ -78,5 +78,29 @@ module AlmaDataHelper
       end
     end
     sorted_library_hash
+  end
+
+  def render_location_selector(document)
+    materials = document.materials
+
+    if materials.count > 1
+      render template: "almaws/_location_selector", locals: { materials: materials }
+    elsif materials.count == 1
+      render template: "almaws/_location_field", locals: { material: materials.first }
+    end
+  end
+
+  def render_non_available_status_only(availability = "Not Available")
+    if availability != "Available"
+      render template: "almaws/_availability_status", locals: { availability: availability }
+    end
+  end
+
+  def item_level_library_name(location_hash)
+    location_hash.transform_values do |v|
+      v.reduce({}) { |acc, lib|
+        acc.merge!(library_name_from_short_code(lib) => lib)
+      }
+    end
   end
 end

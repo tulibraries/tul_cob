@@ -13,10 +13,24 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
+  include Blacklight::Ris::Catalog
+
+  before_action :authenticate_user!, only: [ :purchase_order, :purchase_order_action ]
+
+  add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
+  add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
+  add_breadcrumb "Record", :solr_document_path, only: [ :show ], if: :catalog?
+  add_breadcrumb I18n.t(:catalog_advanced_search), :advanced_search_path,
+    only: [ :index ], if: :advanced_controller?
+
   helper_method :browse_creator
   helper_method :display_duration
+  rescue_from ::BlacklightRangeLimit::InvalidRange,
+    with: :raise_bad_range_limit
 
   configure_blacklight do |config|
+    config.index.document_presenter_class = CatalogIndexPresenter
+
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
@@ -44,28 +58,35 @@ class CatalogController < ApplicationController
         availability_facet
         holdings_with_no_items_display
         call_number_display
+        call_number_alt_display
         creator_display
         contributor_display
         electronic_resource_display
         format
         imprint_display
+        imprint_prod_display
+        imprint_dist_display
+        imprint_man_display
         library_facet
         location_display
         pub_date
+        holdings_summary_display
         title_series_display
         title_statement_display
+        title_truncated_display
         title_uniform_display
         isbn_display
         lccn_display
         url_finding_aid_display
+        bound_with_ids
+        purchase_order
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
       rows: "10",
       mm: [
-        "2<-1",
-        "5<-2",
-        URI.escape("6<90%")
+       "5<-1",
+        URI.escape("8<75%")
           ],
       "mm.autorelax" => "true",
       lowercaseOperators: false,
@@ -76,6 +97,8 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^50000
         title_t^25000
         subtitle_t^10000
+        title_statement_unstem_search^15000
+        title_statement_t^5000
         title_uniform_unstem_search^5000
         title_uniform_t^2500
         title_addl_unstem_search^5000
@@ -92,7 +115,8 @@ class CatalogController < ApplicationController
         subject_addl_t^50
         title_series_unstem_search^25
         title_series_t^10
-        isbn_t
+        isbn_t^5
+        issn_t^5
         text
       ].join(" "),
       pf: %w[
@@ -100,6 +124,8 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
+        title_statement_unstem_search^150000
+        title_statement_t^50000
         title_uniform_unstem_search^75000
         title_uniform_t^50000
         title_addl_unstem_search^50000
@@ -177,7 +203,13 @@ class CatalogController < ApplicationController
       ].join(" "),
       facet: "true",
       spellcheck: "false",
-      bq: "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
+      sow: "false",
+      bq: [
+          "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
+          "(library_based_boost_t:* -no_boost)^1000"],
+      fq: %w[
+        -suppress_items_b:*
+      ]
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -198,7 +230,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_statement_display"
+    config.index.title_field = "title_truncated_display"
     config.index.display_type_field = "format"
 
     # solr field configuration for document/show views
@@ -238,9 +270,9 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: true
-    config.add_facet_field "library_facet", label: "Library", limit: true, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: true, show: true, home: true
+    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
+    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true
+    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
@@ -250,6 +282,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -258,10 +291,14 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
 
-    config.add_index_field "imprint_display", label: "Published"
+    config.add_index_field "imprint_display", label: "Publication"
+    config.add_index_field "imprint_prod_display", label: "Production"
+    config.add_index_field "imprint_dist_display", label: "Distribution"
+    config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
+    config.add_index_field "availability"
 
 
     # solr fields to be displayed in the show (single result) view
@@ -278,9 +315,11 @@ class CatalogController < ApplicationController
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true
     config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
     config.add_show_field "format", label: "Resource Type"
-    config.add_show_field "imprint_display", label: "Published"
+    config.add_show_field "imprint_display", label: "Publication"
+    config.add_show_field "imprint_prod_display", label: "Production"
+    config.add_show_field "imprint_dist_display", label: "Distribution"
+    config.add_show_field "imprint_man_display", label: "Manufacture"
     config.add_show_field "edition_display", label: "Edition"
-    config.add_show_field "pub_date", label: "Date"
     config.add_show_field "date_copyright_display", label: "Copyright Notice"
     config.add_show_field "phys_desc_display", label: "Physical Description"
     config.add_show_field "title_series_display", label: "Series Title"
@@ -316,8 +355,9 @@ class CatalogController < ApplicationController
     config.add_show_field "note_related_display", label: "Related Materials"
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
-    config.add_show_field "subject_display", label: "Subject", helper_method: :list_with_links, multi: true
+    config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
     config.add_show_field "collection_display", label: "Collection"
+    config.add_show_field "collection_area_display", label: "SCRC Collecting Area"
 
     # Preceeding Entry fields
     config.add_show_field "continues_display", label: "Continues"
@@ -339,14 +379,17 @@ class CatalogController < ApplicationController
     #config.add_show_field 'call_number', label: 'Call Number'
     #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field "isbn_display", label: "ISBN"
+    config.add_show_field "alt_isbn_display", label: "Other ISBN"
     config.add_show_field "issn_display", label: "ISSN"
+    config.add_show_field "alt_issn_display", label: "Other ISSN"
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
-    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link
+    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
+    config.add_show_field "bound_with_ids", display: false
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -375,13 +418,8 @@ class CatalogController < ApplicationController
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = { 'spellcheck.dictionary': "title" }
-
-      # :solr_local_parameters will be sent using Solr LocalParams
-      # syntax, as eg {! qf=$title_qf }. This is neccesary to use
-      # Solr parameter de-referencing like $title_qf.
-      # See: http://wiki.apache.org/solr/LocalParams
       field.solr_local_parameters = {
-        qf: %w[title title_t title_qf title_uniform_t title_addl_t].join(" "),
+        qf: "$title_qf",
         pf: "$title_pf"
       }
     end
@@ -400,8 +438,8 @@ class CatalogController < ApplicationController
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
       field.solr_parameters = { 'spellcheck.dictionary': "author" }
       field.solr_local_parameters = {
-        qf: "creator_t",
-        pf: "creator_t"
+        qf: "$author_qf",
+        pf: "$author_pf"
       }
     end
 
@@ -450,6 +488,14 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("call_number_t", label: "Call Number") do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+      field.solr_local_parameters = {
+        qf: "call_number_t",
+      }
+    end
+
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false
       field.solr_local_parameters = {
@@ -475,7 +521,7 @@ class CatalogController < ApplicationController
     config.spell_max = 5
 
     # Configuration for autocomplete suggestor
-    config.autocomplete_enabled = true
+    config.autocomplete_enabled = false
     config.autocomplete_path = "suggest"
 
     config.add_nav_action :library_account, partial: "/users/account_link", if: :user_signed_in?
@@ -483,40 +529,12 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
-
+    add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
-
+    config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
-  end
-
-  def render_sms_action?(_config, _options)
-    # Render if the item can be found at a library
-    _options[:document].response.docs.first[:library_facet]
-  end
-
-  def sms_action(documents)
-    @client = Twilio::REST::Client.new(Rails.configuration.twilio[:account_sid], Rails.configuration.twilio[:auth_token])
-    body = text_this_message_body(params)
-    @client.messages.create(
-      body: body,
-      to:   params[:to],
-      from: Rails.configuration.twilio[:phone_number]
-    )
-    logger.info "Text This:\n*****\n\"#{body}\" \nTO: #{params[:to]}\n*****"
-  end
-
-  def validate_sms_params
-    if params[:to].blank?
-      flash[:error] = I18n.t("blacklight.sms.errors.to.blank")
-    elsif params[:location].blank?
-      flash[:error] = I18n.t("blacklight.sms.errors.location.blank")
-    elsif params[:to].gsub(/[^\d]/, "").length != 10
-      flash[:error] = I18n.t("blacklight.sms.errors.to.invalid", to: params[:to])
-    end
-
-    flash[:error].blank?
   end
 
   def text_this_message_body(params)
@@ -544,4 +562,114 @@ class CatalogController < ApplicationController
   def display_duration(args)
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
+
+  ##
+  # Render one index record (use as an ajax endpoint).
+  # /
+  def index_item
+    (@response, doc) = fetch(params["id"])
+    count = (params["document_counter"] || 0 rescue 0).to_i
+    if (doc.nil?)
+      # Ajax lookup failed once before already.
+      doc = PrimoCentralDocument.new(
+        "pnxId" => params["id"], "ajax" => false,
+        "title" => params["id"]
+      )
+    end
+    render "_document", layout: false, locals: { document: doc, document_counter: count }
+  end
+
+  ##
+  # Overrides CatalogController.invalid_document_id_error
+  #
+  # Overridden so that we can use our own 404 error handling setup.
+  def invalid_document_id_error(exception)
+    respond_to do |format|
+      format.xml  { render xml: error_info, status: 404 }
+      format.json { render json: error_info, stautus: 404 }
+
+      # default to HTML response, even for other non-HTML formats we don't
+      # neccesarily know about, seems to be consistent with what Rails4 does
+      # by default with uncaught ActiveRecord::RecordNotFound in production
+      format.any do
+        # use standard, possibly locally overridden, 404.html file. Even for
+        # possibly non-html formats, this is consistent with what Rails does
+        # on raising an ActiveRecord::RecordNotFound. Rails.root IS needed
+        # for it to work under testing, without worrying about CWD.
+        render "errors/not_found"
+      end
+    end
+  end
+
+  def raise_bad_range_limit(exception)
+    flash[:notice] = exception.message
+    redirect_to request.referrer || root_url
+  end
+
+  def purchase_order
+    (@response, @document) = fetch(params["id"])
+    render layout: false
+  end
+
+  def purchase_order_action
+    (_, document) = fetch(params["id"])
+
+    from = current_user&.email || params[:to]
+
+    mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
+    if mail.respond_to? :deliver_now
+      mail.deliver_now
+    else
+      mail.deliver
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
+  # Overrides Blackligt::Catalog.sms_action.
+  #
+  # Passes extra chosen book details for sms text.
+  #
+  # SMS action (this will render the appropriate view on GET requests and
+  # process the form and send the email on POST requests)
+  def sms_action(documents)
+    to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
+    documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
+
+    mail = RecordMailer.sms_record(documents, { to: to }, url_options)
+
+    if mail.respond_to? :deliver_now
+      mail.deliver_now
+    else
+      mail.deliver
+    end
+  end
+
+  # Overrides Blacklight::Catalog.validate_sms_params
+  #
+  # Adds validation of the location selection.
+  def validate_sms_params
+    # Short circuit the barcode validation.
+    if !params.has_key? :barcode
+      return super
+    end
+
+    if params[:barcode].blank?
+      flash[:error] = "You must select a location."
+    elsif !@documents.first.valid_barcode? params[:barcode]
+      # Prevents abuse of feature for harrasment.
+      flash[:error] = "An invalid location was selected."
+    end
+
+    super
+  end
+
+  private
+    def catalog?
+      self.class == CatalogController
+    end
+
+    def advanced_controller?
+      self.class == AdvancedController
+    end
 end

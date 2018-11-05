@@ -1,10 +1,17 @@
+<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
 
-    <% unless @items.empty? %>
-      <% sort_order_for_holdings(@items).each do |key,items| %>
-      <table class="table table-responsive border-bottom">
+<div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
+
+
+<% unless @items.empty? %>
+  <div class="availability-modal">
+    <div class="modal-only">
+      <%= render :partial => "paginate_compact", :object => @response %>
+    </div>
+  <% sort_order_for_holdings(@items).each do |key,items| %>
+      <table id="availability-container" class="table table-responsive border-bottom">
         <thead>
           <tr class="sr-only">
-              <td></td>
               <th scope="col" id="location">Item Location</td>
               <th scope="col" id="callnum">Call Number</th>
               <th scope="col" id="desc">Description</th>
@@ -15,7 +22,10 @@
         </thead>
         <tbody >
           <tr class="table-heading">
-            <th id="<%= key %>" scope="colgroup" colspan="7"><%= library_name_from_short_code(key) %></th>
+            <th id="<%= key %>" scope="colgroup" colspan="7">
+              <%= library_name_from_short_code(key) %>
+              <%= aeon_request_button(items) %>
+            </th>
           </tr>
           <% items.each do |item| %>
             <tr>
@@ -27,19 +37,18 @@
               <td headers="<%= key %> status" scope="row"><%= availability_status(item) %></td>
             </tr>
           <% end %>
-            <!-- <tr>
-              <td scope="row"><strong>Request Options: </strong> <%= select_tag "requests", options_for_select([ "option1", "option2" ]) %></td>
-            </tr> -->
         </tbody>
       </table>
-      <% end %>
-      <% else %>
-      <table class="table table-responsive border-bottom">
-      <tr>
-        <td>
-          We are unable to find availability information for this record. Please contact the library for more information.
-        </td>
-      </tr>
-    </table>
     <% end %>
+    <%= render :partial => "paginate_compact", :object => @response %>
+  </div>
+  <% else %>
+  <table class="table table-responsive border-bottom">
+    <tr>
+      <td id="error-message">
+        We are unable to find availability information for this record. Please contact the library for more information.
+      </td>
+    </tr>
+  </table>
+<% end %>
 

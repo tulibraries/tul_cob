@@ -1,0 +1,13 @@
+default: &default
+  apikey: <%= ENV['OCLC_WS_KEY'] || "ws_key" %>
+  base_url: http://www.worldcat.org/webservices/catalog/content/citations
+  citation_formats: ["all"]
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default

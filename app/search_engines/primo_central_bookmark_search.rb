@@ -5,10 +5,10 @@ class PrimoCentralBookmarkSearch < PrimoCentralController
   include BookmarksConfig
 
   def fetch(primo_doc_ids)
-    # Primo cannot string more than 9 OR queries.
+    # Primo cannot string more than 13 OR queries.
     documents = []
 
-    primo_doc_ids.each_slice(9) do |ids|
+    primo_doc_ids.each_slice(13) do |ids|
       @response, docs = super(ids)
       documents.append(*docs)
       documents.append(*docs_not_found(docs, ids))
@@ -17,9 +17,17 @@ class PrimoCentralBookmarkSearch < PrimoCentralController
     [@response, documents]
   end
 
+  def self.handle_bookmark_search?(document_model)
+    blacklight_config.document_model == document_model
+  end
+
   private
     def docs_not_found(docs, ids)
-      (ids - docs.map { |doc| doc["pnxId"] })
-        .map { |id| PrimoCentralDocument.new("pnxId" => id) }
+      if docs.length == ids.length
+        []
+      else
+        (ids - docs.map { |doc| doc["pnxId"] })
+          .map { |id| PrimoCentralDocument.new("pnxId" => id, "ajax" => true) }
+      end
     end
 end

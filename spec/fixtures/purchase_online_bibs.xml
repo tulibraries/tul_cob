@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <leader>03887nam a22003973i 4500</leader>
+    <controlfield tag="005">20181016121354.0</controlfield>
+    <controlfield tag="006">m     o  d |      </controlfield>
+    <controlfield tag="007">cr cnu||||||||</controlfield>
+    <controlfield tag="008">181016s2018    xx      o     ||||0 eng d</controlfield>
+    <controlfield tag="001">991036931835603811</controlfield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="a">9783030003265</subfield>
+      <subfield code="q">(electronic bk.)</subfield>
+    </datafield>
+    <datafield tag="020" ind1=" " ind2=" ">
+      <subfield code="z">9783030003258</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(MiAaPQ)EBC5521379</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(Au-PeEL)EBL5521379</subfield>
+    </datafield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(OCoLC)1054128988</subfield>
+    </datafield>
+    <datafield tag="040" ind1=" " ind2=" ">
+      <subfield code="a">MiAaPQ</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="e">pn</subfield>
+      <subfield code="c">MiAaPQ</subfield>
+      <subfield code="d">MiAaPQ</subfield>
+    </datafield>
+    <datafield tag="050" ind1=" " ind2="4">
+      <subfield code="a">HN25JF20-2112HD72-HD</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">el-Aswad, El-Sayed.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="4">
+      <subfield code="a">The Quality of Life and Policy Issues among the Middle East and North African Countries.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Cham :</subfield>
+      <subfield code="b">Springer,</subfield>
+      <subfield code="c">2018.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="4">
+      <subfield code="c">©2018.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">1 online resource (162 pages)</subfield>
+    </datafield>
+    <datafield tag="336" ind1=" " ind2=" ">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield tag="337" ind1=" " ind2=" ">
+      <subfield code="a">computer</subfield>
+      <subfield code="b">c</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield tag="338" ind1=" " ind2=" ">
+      <subfield code="a">online resource</subfield>
+      <subfield code="b">cr</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield tag="490" ind1="1" ind2=" ">
+      <subfield code="a">Human Well-Being Research and Policy Making Ser.</subfield>
+    </datafield>
+    <datafield tag="505" ind1="0" ind2=" ">
+      <subfield code="a">Intro -- Preface -- About the Book -- References -- Acknowledgements -- Contents -- About the Author -- Abbreviations and Acronyms -- List of Figures -- List of Tables -- 1 Introduction -- References -- 2 Methodology -- 2.1 Introduction -- 2.2 Framework -- References -- 3 Historical Background -- 3.1 Introduction -- 3.2 The Middle East and North Africa Region -- 3.3 Population -- 3.4 Overall Human Development -- 3.5 Brief History -- 3.5.1 The Quality of Life in the Ancient MENA Region -- 3.5.2 The Quality of Life in the Medieval Era -- 3.5.3 The Quality of Life in Modern History -- 3.6 Well-Being and Challenges Since 1950 -- 3.6.1 External Factors -- 3.6.2 Internal Factors -- 3.6.3 Militarization -- 3.7 Quality of Life: Religion and Ideology -- 3.8 Conclusion -- References -- 4 Indicators of Quality of Life and Well-Being in the Middle East and North African Region: A Comparative Analysis -- 4.1 Introduction -- 4.2 Quality of Life in the Middle East and North Africa -- 4.2.1 Quality of Life in Egypt -- 4.2.2 Quality of Life in the Islamic Republic of Iran -- 4.2.3 Quality of Life in Israel -- 4.2.4 Quality of Life in Tunisia -- 4.2.5 Quality of Life in Turkey -- 4.2.6 Quality of Life in the United Arab Emirates -- 4.3 Comparative Analysis -- 4.3.1 Happiness and Human Development -- 4.3.2 Inequality Issues -- 4.4 Conclusion -- References -- 5 Key Drivers of Well-Being and Policy Issues in the Middle East and North Africa Region -- 5.1 Introduction -- 5.2 Brief History -- 5.3 Key Drivers -- 5.3.1 Key Drivers in Egypt -- 5.3.2 Key Drivers in Iran -- 5.3.3 Key Drivers in Israel -- 5.3.4 Key Drivers in Tunisia -- 5.3.5 Key Drivers in Turkey -- 5.3.6 Key Drivers in the United Arab Emirates (UAE) -- 5.4 Human Rights and Religious Tolerance: A Comparative Analysis.</subfield>
+    </datafield>
+    <datafield tag="505" ind1="8" ind2=" ">
+      <subfield code="a">5.5 Information Communication Technology in the Middle East and North Africa Region: A Comparative Analysis -- 5.6 Social Policies -- 5.7 Conclusion -- References -- 6 Conclusion -- 6.1 Introduction -- 6.1.1 Cross-Cultural and Historical Perspectives -- 6.1.2 Quality of Life and Well-Being -- 6.1.3 Social Policy: Governmental and Non-governmental Agencies -- References -- Index.</subfield>
+    </datafield>
+    <datafield tag="588" ind1=" " ind2=" ">
+      <subfield code="a">Description based on publisher supplied metadata and other sources.</subfield>
+    </datafield>
+    <datafield tag="590" ind1=" " ind2=" ">
+      <subfield code="a">Electronic reproduction. Ann Arbor, Michigan : ProQuest Ebook Central, 2018. Available via World Wide Web. Access may be limited to ProQuest Ebook Central affiliated libraries. </subfield>
+    </datafield>
+    <datafield tag="655" ind1=" " ind2="4">
+      <subfield code="a">Electronic books.</subfield>
+    </datafield>
+    <datafield tag="776" ind1="0" ind2="8">
+      <subfield code="i">Print version:</subfield>
+      <subfield code="a">el-Aswad, El-Sayed</subfield>
+      <subfield code="t">The Quality of Life and Policy Issues among the Middle East and North African Countries</subfield>
+      <subfield code="d">Cham : Springer,c2018</subfield>
+      <subfield code="z">9783030003258</subfield>
+    </datafield>
+    <datafield tag="797" ind1="2" ind2=" ">
+      <subfield code="a">ProQuest (Firm)</subfield>
+    </datafield>
+    <datafield tag="830" ind1=" " ind2="0">
+      <subfield code="a">Human Well-Being Research and Policy Making Ser.</subfield>
+    </datafield>
+    <datafield tag="902" ind1=" " ind2=" ">
+      <subfield code="a">EBC-POD 2018_10 Load</subfield>
+    </datafield>
+    <datafield tag="979" ind1=" " ind2=" ">
+      <subfield code="a">EBC5521379</subfield>
+    </datafield>
+    <datafield tag="ADM" ind1=" " ind2=" ">
+      <subfield code="e">EBC5521379</subfield>
+      <subfield code="b">2018-10-16 19:25:33</subfield>
+      <subfield code="d">OTHER</subfield>
+      <subfield code="f">20181016121354.0</subfield>
+      <subfield code="a">2018-10-16 19:25:37</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+  </record>
+</collection>

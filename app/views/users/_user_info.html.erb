@@ -3,11 +3,14 @@
 	  <ul>
 	    <li><span>Name:</span> <%= current_user.name %></li>
 	    <li><span>Status:</span> Active </li>
-	    <li><span>Items checked out:</span> <%= @user.loans.total_records %></li>
-	    <li><span>Items requested:</span> <%= @user.holds.total_records %></li>
+	    <li><span>Items checked out:</span> <%= @user.alma.total_loans %></li>
+	    <li><span>Items requested:</span> <%= @user.alma.total_requests %></li>
 	    <li><span>Current balance:</span>
-	      <span class="balance"><%= number_to_currency(@user.fines.sum) %></span> </li>
+	      <span class="balance"><%= number_to_currency(@user.alma.total_fines) %></span> </li>
 	     <li><%= link_to "Update name via TUPortal", "https://tuportal.temple.edu" %></li>
 	  </ul>
 	</div>
+</div>
+<div class="user-email-notice">
+	<p>If you prefer not to receive email notices from us owing to privacy concerns, we offer an opt-out option. Please know that if you choose to opt out of receiving email notifications for due dates, late items, etc., you are still fully responsible for any and all related fines and other consequences resulting from late, long overdue or lost/missing items you have borrowed. If interested, please contact a staff member at the circulation desk.</p>
 </div>

@@ -13,6 +13,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       docs = []
       # Take the test queries from the YAML file one at a time...
       test_queries.each do |test_item|
+
         search_string = ""
         # Concatenate the specified search terms into one search string
         test_item["query_type"].each do |query_field|

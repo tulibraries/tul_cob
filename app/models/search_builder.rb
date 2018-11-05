@@ -14,6 +14,16 @@ class SearchBuilder < Blacklight::SearchBuilder
         add_advanced_search_to_solr
         limit_facets ]
 
+  if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
+    self.default_processor_chain += %i[ tweak_query ]
+  end
+
+  def filter_purchase_order(solr_params)
+    # The negative query will work even when items are not indexed.
+    # We can refactor to use a positive query once indexing occurs.
+    solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
     count = blacklight_params.keys.count
@@ -26,6 +36,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     elsif path == "catalog/range_limit" || path == "catalog/advanced"
       solr_parameters["facet.field"] = []
     end
+  end
+
+  def tweak_query(solr_parameters)
+    solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 
   # Overrides Blacklight::SearchBuilder#blacklight_params
@@ -53,17 +67,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_begins_with(value, op)
-    return if value.nil?
-
     if op == "begins_with"
-      process_is("#{BEGINS_WITH_TAG} #{value}", "is")
+      process_is("#{BEGINS_WITH_TAG} " + value, "is") rescue value
     else
       value
     end
   end
 
   def process_is(value, op)
-    return value if value.nil? || value.match(/"/)
+    return value if value.match(/"/) rescue true
 
     if op == "is"
       "\"#{value}\""
@@ -73,13 +85,34 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_colons(value, _)
-    return value if value.nil?
-
-    value.gsub(/:/, " ")
+    value.gsub(/:/, " ") rescue value
   end
 
   def no_books_or_journals(solr_parameters)
     solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
+  end
+
+  ##
+  # Overrides Blacklight::Solr::SearchBuilderBehavior#add_facet_fq_to_solr in
+  # order to skip faceting on unknown fields.
+  #
+  def add_facet_fq_to_solr(solr_parameters)
+    # convert a String value into an Array
+    if solr_parameters[:fq].is_a? String
+      solr_parameters[:fq] = [solr_parameters[:fq]]
+    end
+
+    # :fq, map from :f.
+    if blacklight_params[:f]
+      f_request_params = blacklight_params[:f]
+
+      f_request_params.each_pair do |facet_field, value_list|
+        next unless blacklight_config.facet_fields[facet_field.to_s].present?
+        Array(value_list).reject(&:blank?).each do |value|
+          solr_parameters.append_filter_query facet_value_to_fq_string(facet_field, value)
+        end
+      end
+    end
   end
 
   private
@@ -96,41 +129,18 @@ class SearchBuilder < Blacklight::SearchBuilder
       procedures ||= []
       params["processed"] = true
 
-      ops = params_field_ops(params)
-      ops.each { |op, f|
-        query_key, query_value = f
+      # Do not process non query values
+      ops = params.fetch("operator", "q" => "default")
+        .select { |key, value| key.match?(/^q/) }
+
+      # query_key are like "q_1", "q_2"..., etc.
+      # op is like "contains", "begins_with"..., etc.
+      ops.each { |query_key, op|
+        query_value = params[query_key]
+
         # Fold the procedures onto the query value.
         params[query_key] = procedures.reduce(query_value) { |v, p| send(p, v, op) }
       }
       params
-    end
-
-    # Helper function that transforms the params in the typical
-    # blacklight_params advanced search format into a list of tuples of the
-    # form [[op, field])] where op is the operator and field is a key value
-    # pair, [query_key, query_value].
-    #
-    # @param [ActionController::Parameters] params Set of search parameters.
-    #
-    # @return [Array] A transformed set of search parameters OR and empty set.
-    def params_field_ops(params)
-      begin
-        p = params.to_unsafe_h.compact
-
-        fields = p.select { |k| k.match(/(^q$|^q_)/) }
-        ops = p.fetch("operator", ["default"])
-
-        # Always use last rows count of total values in operator[]
-        # @see BL-334
-        rows = p.select { |k| k.match(/^q_/) }
-        rows_count = rows.count
-        if ops.count > rows_count
-          ops = ops[-rows_count..-1]
-        end
-
-        ops.zip(fields)
-      rescue
-        []
-      end
     end
 end

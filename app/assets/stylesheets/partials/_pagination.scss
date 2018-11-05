@@ -1,4 +1,11 @@
 @import "_vars.scss";
+.modal-only .page_links {
+  display: none;
+}
+
+.modal-dialog .modal-only .page_links {
+  display: block;
+}
 
 .pagination  {
 	li {

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "library_stdnums"
-
+require "active_support/core_ext/object/blank"
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
   module Macros
@@ -9,7 +9,7 @@ module Traject
       ARCHIVE_IT_LINKS = "archive-it.org/collections/"
       NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
-      SEPARATOR = "--"
+      SEPARATOR = " — "
 
       def get_xml
         lambda do |rec, acc|
@@ -31,7 +31,7 @@ module Traject
       end
 
       def creator_name_trim_punctuation(name)
-        name.sub(/ *[ ,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1').sub(/(?<=\))\./ , "")
+        name.sub(/ *[,\/;:] *\Z/, "").sub(/( *[[:word:]]{3,})\. *\Z/, '\1').sub(/(?<=\))\./ , "")
       end
 
       def creator_role_trim_punctuation(role)
@@ -40,81 +40,83 @@ module Traject
 
       def extract_creator
         lambda do |rec, acc|
-          rec.fields("100").each do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt").collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).first
           end
-          rec.fields("110").each do |f|
-            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+
+          grouped_subfields = s_fields.each_slice(2).to_a
+          grouped_subfields.each do |link|
+            name = creator_name_trim_punctuation(link[0]) unless link[0].nil?
+            role = creator_role_trim_punctuation(link[1]) unless link[1].nil?
+            acc << [name, role].compact.join("|")
           end
-          rec.fields("111").each do |f|
-            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
-          end
+          acc
         end
       end
 
       def extract_creator_vern
         lambda do |rec, acc|
-          MarcExtractor.cached("100abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt", alternate_script: :only).collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).first
           end
-          MarcExtractor.cached("110abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+
+          grouped_subfields = s_fields.each_slice(2).to_a
+          grouped_subfields.each do |link|
+            name = creator_name_trim_punctuation(link[0]) unless link[0].nil?
+            role = creator_role_trim_punctuation(link[1]) unless link[1].nil?
+            acc << [name, role].compact.join("|")
           end
-          MarcExtractor.cached("111acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
-          end
+          acc
         end
       end
 
       def extract_contributor
         lambda do |rec, acc|
-          rec.fields("700").each do |f|
-            linked_subfields = [f["i"], f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+          s_fields = Traject::MarcExtractor.cached("700iabcqd:700ejlmnoprtu:710iabdc:710elmnopt:711iandcj:711elopt").collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).first
           end
-          rec.fields("710").each do |f|
-            linked_subfields = [f["i"], f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+
+          grouped_subfields = s_fields.each_slice(2).to_a
+          grouped_subfields.each do |link|
+            name = creator_name_trim_punctuation(link[0]) unless link[0].nil?
+            role = creator_role_trim_punctuation(link[1]) unless link[1].nil?
+            acc << [name, role].compact.join("|")
           end
-          rec.fields("711").each do |f|
-            linked_subfields = [f["i"], f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
-          end
+          acc
         end
       end
 
       def extract_contributor_vern
         lambda do |rec, acc|
-          MarcExtractor.cached("700abcdejlmnopqrtu", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["c"], f["q"], f["d"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["j"], f["l"], f["m"], f["n"], f["o"], f["p"], f["r"], f["t"], f["u"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+          s_fields = Traject::MarcExtractor.cached("700abcqd:700ejlmnoprtu:710abdc:710elmnopt:711andcj:711elopt", alternate_script: :only).collect_matching_lines(rec) do |field, spec, extractor|
+            extractor.collect_subfields(field, spec).first
           end
-          MarcExtractor.cached("710abcdelmnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["b"], f["d"], f["c"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["m"], f["n"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+
+          grouped_subfields = s_fields.each_slice(2).to_a
+          grouped_subfields.each do |link|
+            name = creator_name_trim_punctuation(link[0]) unless link[0].nil?
+            role = creator_role_trim_punctuation(link[1]) unless link[1].nil?
+            acc << [name, role].compact.join("|")
           end
-          MarcExtractor.cached("711acdejlnopt", alternate_script: :only).collect_matching_lines(rec) do |f|
-            linked_subfields = [f["a"], f["n"], f["d"], f["c"], f["j"]].compact.join(" ")
-            plain_text_subfields = [f["e"], f["l"], f["o"], f["p"], f["t"]].compact.join(" ")
-            acc << creator_name_trim_punctuation(linked_subfields) + "|" + creator_role_trim_punctuation(plain_text_subfields)
+          acc
+        end
+      end
+
+      def extract_subject_display
+        lambda do |rec, acc|
+          subjects = []
+          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+            subject = extractor.collect_subfields(field, spec).first
+            unless subject.nil?
+              field.subfields.each do |s_field|
+                subject = subject.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == "v" || s_field.code == "x" || s_field.code == "y" || s_field.code == "z")
+              end
+              subject = subject.split(SEPARATOR)
+              subjects << subject.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+            subjects
           end
+          acc.replace(subjects)
         end
       end
 
@@ -230,7 +232,9 @@ module Traject
       def extract_availability
         lambda { |rec, acc|
           unless rec.fields("PRT").empty?
-            acc << "Online"
+            rec.fields("PRT").each do |field|
+              acc << "Online" unless field["9"] == "Not Available"
+            end
           end
           unless acc.include?("Online")
             rec.fields(["856"]).each do |field|
@@ -245,6 +249,10 @@ module Traject
           unless rec.fields("HLD").empty?
             acc << "At the Library"
           end
+          unless rec.fields("ADF").empty?
+            acc << "At the Library"
+          end
+
           acc.uniq!
         }
       end
@@ -314,6 +322,48 @@ module Traject
         end
       end
 
+      def truncate(max = 300)
+        Proc.new do |rec, acc|
+          acc.map! { |s| s.length > max ? s[0...max] + " ..." : s }
+        end
+      end
+
+      # Just like marc_languages except it makes a special case for "041a" spec.
+      def extract_lang(spec = "008[35-37]:041a:041d")
+        translation_map = Traject::TranslationMap.new("marc_languages")
+
+        extractor = MarcExtractor.new(spec, separator: nil)
+        spec_041a = Traject::MarcExtractor::Spec.new(tag: "041", subfields: ["a"])
+
+        lambda do |record, accumulator|
+          codes = extractor.collect_matching_lines(record) do |field, spec, extractor|
+            if extractor.control_field?(field)
+              (spec.bytes ? field.value.byteslice(spec.bytes) : field.value)
+            else
+              extractor.collect_subfields(field, spec).collect do |value|
+                # sometimes multiple language codes are jammed together in one subfield, and
+                # we need to separate ourselves. sigh.
+                if spec == spec_041a
+                  value = value[0..2]
+                end
+
+                unless value.length == 3
+                  # split into an array of 3-length substrs; JRuby has problems with regexes
+                  # across threads, which is why we don't use String#scan here.
+                  value = value.chars.each_slice(3).map(&:join)
+                end
+                value
+              end.flatten
+            end
+          end
+          codes = codes.uniq
+
+          translation_map.translate_array!(codes)
+
+          accumulator.concat codes
+        end
+      end
+
       def extract_library
         lambda do |rec, acc|
           rec.fields(["HLD"]).each do |field|
@@ -367,11 +417,6 @@ module Traject
 
       def extract_copyright
         lambda do |rec, acc|
-          rec.fields(["260"]).each do |field|
-            unless field["c"].nil?
-              acc << four_digit_year(field["c"]) if field["c"].include?("c") || field["c"].include?("p") || field["c"].include?("\u00A9")
-            end
-          end
           rec.fields(["264"]).each do |field|
             acc << four_digit_year(field["c"]) if field.indicator2 == "4"
           end
@@ -407,6 +452,86 @@ module Traject
               acc << "#{field['b']} #{field['c']}"
             end
           end
+        end
+      end
+
+      def suppress_items
+        lambda do |rec, acc|
+          lost = rec.fields("ITM").select { |field| field["u"] == "LOST_LOAN" }
+          missing = rec.fields("ITM").select { |field| field["u"] == "MISSING" }
+          technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
+          field = rec.fields("ITM").map { |field| field["u"] }.first
+          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty?)
+            acc.replace([true])
+          end
+        end
+      end
+
+      def extract_oclc_number
+        lambda do |rec, acc|
+          rec.fields(["035", "979"]).each do |field|
+            unless field.nil?
+              unless field["a"].nil? || field["9"]&.include?("ExL")
+                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].include?("on") || field["a"].include?("OCLC")
+                  subfield = field["a"].split(//).map { |x| x[/\d+/] }.compact.join("")
+                end
+                acc << subfield
+              end
+            end
+            acc.uniq!
+          end
+        end
+      end
+
+      def extract_holdings_summary
+        lambda do |rec, acc|
+          rec.fields(["HLD866"]).each do |f|
+            selected_subfields = [f["a"], f["8"]].join("|")
+            acc << selected_subfields
+          end
+          acc
+        end
+      end
+
+      # In order to reduce the relevance of certain libraries, we need to boost every other library
+      # Make sure we still boost records what have holdings in less relevant libraries and also in another library
+      LIBRARIES_TO_NOT_BOOST = [ "PRESSER", "CLAEDTECH" ]
+      def library_based_boost
+        lambda do |rec, acc|
+          rec.fields(["HLD"]).each do |field|
+            if  !LIBRARIES_TO_NOT_BOOST.include?(field["b"])
+              return acc.replace(["boost"])
+            else
+              acc << "no_boost"
+            end
+          end
+        end
+      end
+
+      def extract_work_access_point
+        lambda do |rec, acc|
+          if rec["130"].present?
+            spec = "130adfklmnoprs"
+          elsif rec["240"].present? && rec["100"].present?
+            spec = "100abdcdq:240adfklmnoprs"
+          elsif rec["240"].present? && rec["110"].present?
+            spec = "110abcd:240adfklmnoprs"
+          elsif rec["100"]
+            spec = "100abcdq:245aknp"
+          elsif rec["110"]
+            spec = "110abcd:245aknp"
+          else
+            # Skip because alternative is just the regular title.
+            return acc
+          end
+
+          acc << Traject::MarcExtractor.cached(spec).extract(rec).join(" . ")
+        end
+      end
+
+      def extract_purchase_order
+        lambda do |rec, acc|
+          acc << Traject::MarcExtractor.cached("902a").extract(rec).any? { |s| s.match?(/EBC-POD/) } || false
         end
       end
     end

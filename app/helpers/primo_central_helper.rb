@@ -18,18 +18,20 @@ module PrimoCentralHelper
   end
 
   def doc_translate_language_code(presenter)
-    codes = presenter[:document][:languageId]
+    codes = presenter[:document][:languageId] || []
     codes.map { |c| translate_code(c, "language") }
   end
 
   def doc_translate_resource_type_code(presenter)
     codes = presenter[:document][:type]
-    codes.map { |c| translate_code(c, "resource_type") }
+    codes&.map { |c| translate_code(c, "resource_type") }
   end
 
   def index_translate_resource_type_code(presenter)
     codes = doc_translate_resource_type_code(presenter)
-    presenter[:document][:format] = codes
+    if codes
+      presenter[:document][:format] = codes
+    end
     separate_formats(presenter)
   end
 

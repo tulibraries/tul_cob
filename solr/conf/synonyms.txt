@@ -31,6 +31,38 @@ pixima => pixma
 
 & => and
 
+aflat => a flat
+bflat => b flat
+cflat => c flat
+dflat => d flat
+eflat => e flat
+fflat => f flat
+gflat => g flat
+
+asharp => a sharp
+bsharp => b sharp
+csharp => c sharp
+dsharp => d sharp
+esharp => e sharp
+fsharp => f sharp
+gsharp => g sharp
+
+c++ => cplusplus
+.NET => dotnet
+
+min => minor
+
 # Added for BL-447
 employment,labor => work
-contingent,precarious
+precarious => contingent
+
+# Added for BL-695
+kantate => cantatas
+konzerte => concerto
+messe => mass
+sonaten => sonatas
+sinfonien => symphonies
+etc. => etcetera
+klavier => piano
+sinfonie => symphony
+arr. => arranged

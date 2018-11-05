@@ -1,0 +1,19 @@
+
+<label class="heading" for="location">Select a location: </label>
+<div id="locationsList">
+
+	<% materials.each do |material| %>
+
+    <div class="row">
+      <input type="radio" name="barcode" id="<%= material["barcode"] %>" value="<%= material["barcode"] %>">
+
+      <label for="<%= material["barcode"] %>">
+        <%= material["library"] %> (<%= material["location"] %>)<br />
+        <span>(<%= material["call_number"] %>)</span>
+        <%= render_non_available_status_only(material["availability"]) %>
+        <br />
+      </label>
+    </div>
+
+	<% end %>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 id="modal-title">Request Options:</h4>
+</div>
+
+<div class="modal-body">
+  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+
+  <%= hold_allowed_partial(@request_options) %>
+  <%= digitization_allowed_partial(@request_options) %>
+  <%= booking_allowed_partial(@request_options) %>
+  <%= resource_sharing_broker_allowed_partial(@request_options, @books) %>
+  <%= no_temple_request_options_available(@request_options, @books) %>
+
+  </div>
+</div>
+
+<div class="modal-footer">
+  <p class="modal-footer-text text-left">
+    For more request options, see:
+    <%= link_to("How do I request an item that is unavailable at my library?", "http://answers.library.temple.edu/faq/195868") %>
+  </p>
+  <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
+</div>

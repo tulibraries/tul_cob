@@ -9,6 +9,22 @@ RSpec.describe BookmarksController do
     end
   end
 
+  describe "index" do
+    it "does not get cached" do
+      get :index
+
+      expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
+      expect(response.headers["Pragma"]).to eq("no-cache")
+      expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
+    end
+
+    it "gets ris format" do
+      get :index, params: { id: 1, format: "ris" }
+      expect(response).to be_success
+    end
+  end
+
+
   # jquery 1.9 ajax does error callback if 200 returns empty body. so use 204 instead.
   describe "update" do
     it "has a 200 status code when creating a new one" do

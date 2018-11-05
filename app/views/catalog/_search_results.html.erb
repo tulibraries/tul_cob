@@ -1,12 +1,24 @@
 <h2 class="sr-only top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
 
-<% @page_title = t('blacklight.search.page_title.title', :constraints => render_search_to_page_title(params), :application_name => application_name) %>
+<% if params[:controller] == "catalog" %>
+  <% @page_title = t('blacklight.catalog_search_results.title') %>
+<% else %>
+  <% @page_title = t('blacklight.article_search_results.title') %>
+<% end %>
+
+<% if !cookies.fetch("#{controller_name}Once", false) %>
+<div class="row explantion-wrapper" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
+  <div class="col-sm-9 col-lg-10">
+      <p class="explanation"><%= t("blacklight.#{controller_name}_explanation_html") %></p>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-link" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
+  </div>
+</div>
+<% end %>
 
 <% content_for(:head) do -%>
   <%= render_opensearch_response_metadata %>
-  <%= rss_feed_link_tag %>
-  <%= atom_feed_link_tag %>
-  <%= json_api_link_tag %>
 <% end %>
 
 <%= render 'search_header' %>

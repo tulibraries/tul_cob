@@ -1,7 +1,8 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view -%>
+<div class="record-page-wrapper row">
   <div class="record-view <%= thumbnail_classes(document) %> col-sm-2 col-xs-12"
-    <%= lccn_data_attribute(document) %> <%= isbn_data_attribute(document) %> >
+    <%= isbn_data_attribute(document) %> >
     <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible" %>
     <%= image_tag default_cover_image(document), :class => "default" %>
   </div>
@@ -10,7 +11,6 @@
     <dl class="dl-horizontal  dl-invert">
       <% document_show_fields(document).each do |field_name, field| %>
         <% if should_render_show_field? document, field %>
-        <% unless field_name == "electronic_resource_display"  %>
           <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
           <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
                 <% valdir = Array(document[field_name]).first %>
@@ -39,7 +39,6 @@
                   </ul>
                 </dd>
               <% end %>
-            <% end %>
         <% end -%>
       <% end -%>
     </dl>
@@ -47,3 +46,4 @@
 
   <%= render "show_availability_section", :document => @document %>
   <%= render "staff_view_link" %>
+</div>

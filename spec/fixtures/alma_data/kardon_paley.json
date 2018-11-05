@@ -1,0 +1,249 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991025758059703811",
+                "title": "Forging the star : the official modern history of the United States Marshals Service /",
+                "author": "Turk, David S.,",
+                "issn": null,
+                "isbn": "1574416545",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCLC)ocn945571216",
+                    "ocn945571216",
+                    "(OCoLC)945571216",
+                    "(PPT)b62608010-01tuli_inst"
+                ],
+                "place_of_publication": "Denton, Texas :",
+                "publisher_const": "University of North Texas Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811"
+            },
+            "holding_data": {
+                "holding_id": "22249644770003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "HV8144.M37 T87 2016",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811/holdings/22249644770003811"
+            },
+            "item_data": {
+                "pid": "23249644750003811",
+                "barcode": "39074030141055",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2016-08-22Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Paley Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Main Stacks"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811/holdings/22249644770003811/items/23249644750003811"
+        },
+        {
+            "bib_data": {
+                "mms_id": "991025758059703811",
+                "title": "Forging the star : the official modern history of the United States Marshals Service /",
+                "author": "Turk, David S.,",
+                "issn": null,
+                "isbn": "1574416545",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCLC)ocn945571216",
+                    "ocn945571216",
+                    "(OCoLC)945571216",
+                    "(PPT)b62608010-01tuli_inst"
+                ],
+                "place_of_publication": "Denton, Texas :",
+                "publisher_const": "University of North Texas Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811"
+            },
+            "holding_data": {
+                "holding_id": "22249644720003811",
+                "call_number_type": {
+                    "value": "3",
+                    "desc": "Superintendent of Documents classification"
+                },
+                "call_number": "J 25.2:H 62/2",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811/holdings/22249644720003811"
+            },
+            "item_data": {
+                "pid": "23249644700003811",
+                "barcode": "39074029762879",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2016-09-21Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "KARDON",
+                    "desc": "Remote Storage"
+                },
+                "location": {
+                    "value": "p_GovDocs",
+                    "desc": "Paley GovDocs"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: g",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991025758059703811/holdings/22249644720003811/items/23249644700003811"
+        }
+    ],
+    "total_record_count": 2
+}

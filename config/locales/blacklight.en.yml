@@ -1,8 +1,13 @@
 en:
   blacklight:
-    application_name: "Library Search Beta"
-    greeting: "Welcome to the Catalog Search"
+    application_name: "Library Search"
+    greeting: "Books & More Search"
     html: "The Catalog Search includes books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
+
+    catalog_search_results:
+      title: "Catalog Search Results"
+    article_search_results:
+      title: "Article Search Results"
 
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
@@ -23,10 +28,28 @@ en:
       saved_searches: 'Saved Searches'
       search_history: 'Search History'
 
+    range_limit:
+      submit_limit: "Apply"
+
     search:
       back: "Back to Main View"
       librarian_view:
         title: "Staff View"
+
+    email:
+      text:
+        imprint: "Published: %{value}"
+        contributor: "Contributor: %{value}"
+        issn: "ISSN: %{value}"
+        isbn: "ISBN: %{value}"
+        alma_mms: "Catalog Record ID: %{value}"
+        location: "Located at: %{value}"
+        part_of: "Is Part Of: %{value}"
+        date: "Date: %{value}"
+        doi: "DOI"
+        subject:
+          one: 'Temple University Libraries record: %{title}'
+          other: 'Temple University Libraries records'
 
     sms:
       form:
@@ -38,7 +61,10 @@ en:
       text:
         title: '%{value}'
         author: ' by %{value}'
-        url: 'Link: %{url}'
+        alma_mms: ", Catalog Record ID: %{value}"
+        location: 'Located at: %{value}'
+        url: '%{url}'
+
       success: "Text Sent"
       errors:
         location:
@@ -48,12 +74,23 @@ en:
           blank: "You must enter a recipient's phone number in order to send this message"
 
     tools:
-      sms: 'Text This'
+      sms: "Text"
       refworks: Refworks
+      cite_html: "Cite"
 
+    requests:
+      log_in: "Log in to see request options"
+
+    catalog_explanation_html: "<strong>Catalog Search:</strong> books, e-books, journals, videos/DVDs, audio, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc."
+    primo_central_explanation_html: "<strong>Articles Search:</strong> journal articles, newspaper articles, e-books, book chapters, and other resources available online"
   bento:
     application_name: "Library Bento Search Beta"
-    greeting: "Try out the Library Search beta"
+    greeting: "Welcome to the Library Search"
+    explanation_part_one_html: "<strong>Library Search:</strong> results from the %{href} and "
+    explanation_part_one_href: "Catalog"
+    explanation_part_two_html: "%{href} Search, including books, articles, journals, and more"
+    explanation_part_two_href: "Articles"
+    explanation_part_two_link: "/articles"
     introduction: "An enhanced version of the Library Search is currently under development at Temple University Libraries. A beta version was originally released in February 2018  and will be updated on June 25, 2018 with new features."
     html: "On <strong>August 6th, 2018</strong>, this updated version of the Library Search is scheduled to replace the existing interface. Please refer to our %{href} for more information about work in progress and providing feedback."
     href: "Library Search Road Map"

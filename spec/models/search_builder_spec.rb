@@ -11,10 +11,6 @@ RSpec.describe SearchBuilder , type: :model do
   subject { search_builder }
 
   describe "#limit_facets" do
-    before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
-    end
-
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
       # I can't figure out the "right" way to add my test facet fields.
@@ -23,6 +19,7 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
       subject.limit_facets(solr_parameters)
     end
 
@@ -62,6 +59,35 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "limits the facet field to an empty set" do
         expect(solr_parameters["facet.field"]).to eq([])
+      end
+    end
+  end
+
+  describe "#tweak_query" do
+    let(:solr_parameters) {
+      sp = Blacklight::Solr::Request.new
+      sp["qf"] = "foo"
+      sp
+    }
+
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      subject.tweak_query(solr_parameters)
+    end
+
+    context "no overriding query parameter is passed" do
+      it "does not override the qf param" do
+        expect(solr_parameters["qf"]).to eq("foo")
+      end
+    end
+
+    context "overriding query parameter is passed" do
+      let(:params) { ActionController::Parameters.new(
+        qf: "bar"
+      ) }
+
+      it "does override the qf param" do
+        expect(solr_parameters["qf"]).to eq("bar")
       end
     end
   end
@@ -118,7 +144,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#blacklight_params" do
     it "gets tagged as being processed" do
-      expect(subject.blacklight_params).to eq("processed" => true)
+      expect(subject.blacklight_params["processed"]).to be
     end
 
     it "is idempotent" do
@@ -126,7 +152,7 @@ RSpec.describe SearchBuilder , type: :model do
       subject.blacklight_params
       subject.blacklight_params
       subject.blacklight_params
-      expect(subject.blacklight_params).to eq("processed" => true)
+      expect(subject.blacklight_params).to eq("processed" => true, "q" => nil)
     end
   end
 
@@ -138,7 +164,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#process_params!" do
     let(:params) { ActionController::Parameters.new(
-      "operator" => ["bizz", "buzz", "bazz"],
+      "operator" => { "q_1" => "bizz", "q_2" => "buzz", "q_3" => "bazz" },
       "f_1" => "all_fields", "q_1" => "Hello",
       "f_2" => "all_fields", "q_2" => "Beautiful",
       "f_3" => "all_fields", "q_3" => "World",
@@ -165,53 +191,16 @@ RSpec.describe SearchBuilder , type: :model do
       subject.send(:process_params!, params, nil)
       expect(params["processed"]).to be true
     end
-  end
 
-  describe "#params_field_ops" do
-    it "handles the nil params case gracefully" do
-      expect(subject.send(:params_field_ops, nil)).to eq([])
+    context "operator has non query keys" do
+      let(:params) { { "operator" => { "f_1" => "foo" }, "f_1" => "buzz" } }
+
+      it "does not affect non query values" do
+        subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
+        expect(params["f_1"]).to eq("buzz")
+      end
     end
 
-    it "handles the empty params case gracefully" do
-      expect(subject.send(:params_field_ops, {})).to eq([])
-    end
-
-    it "handles a typical advanced search params as expected" do
-      params = ActionController::Parameters.new(
-        "operator" => ["bizz", "buzz", "bazz"],
-        "f_1" => "all_fields", "q_1" => "Hello",
-        "f_2" => "all_fields", "q_2" => "Beautiful",
-        "f_3" => "all_fields", "q_3" => "World",
-        search_field: "advanced")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["bizz", ["q_1", "Hello"]],
-        ["buzz", ["q_2", "Beautiful"]],
-        ["bazz", ["q_3", "World"]]])
-    end
-
-    it "handles a typical regular search params as expected" do
-      params = ActionController::Parameters.new(
-        "field" => "all_fields", "q" => "Hello")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["default", ["q", "Hello"]]])
-    end
-
-    # REF BL-334
-    it "uses the last 3 values in operator not all of it" do
-      params = ActionController::Parameters.new(
-        "operator" => ["foo", "foo", "foo", "bizz", "buzz", "bazz"],
-        "f_1" => "all_fields", "q_1" => "Hello",
-        "f_2" => "all_fields", "q_2" => "Beautiful",
-        "f_3" => "all_fields", "q_3" => "World",
-        search_field: "advanced")
-
-      expect(subject.send(:params_field_ops, params)).to eq([
-        ["bizz", ["q_1", "Hello"]],
-        ["buzz", ["q_2", "Beautiful"]],
-        ["bazz", ["q_3", "World"]]])
-    end
   end
 
   describe BentoSearchBuilderBehavior do
@@ -260,5 +249,26 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
 
+  end
+
+  describe "#add_facet_fq_to_solr" do
+    it "converts a String fq into an Array" do
+      solr_parameters = { fq: "a string" }
+
+      subject.add_facet_fq_to_solr(solr_parameters)
+
+      expect(solr_parameters[:fq]).to be_a_kind_of Array
+    end
+
+    context "facet not defined in config" do
+      let(:single_facet) { { unknown_facet_field: "foo" } }
+      let(:user_params) { { f: single_facet } }
+
+      it "does not add facet to solr_parameters" do
+        solr_parameters = Blacklight::Solr::Request.new
+        subject.add_facet_fq_to_solr(solr_parameters)
+        expect(solr_parameters[:fq]).to be_empty
+      end
+    end
   end
 end

@@ -106,11 +106,72 @@ module CatalogHelper
     end
   end
 
-  def render_online_availability_button(doc, count)
+  def render_online_availability_button(doc)
     links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
 
     if !links.empty?
-      render "online_availability_button", document: doc, document_counter: count, links: links
+      render "online_availability_button", document: doc, links: links
     end
+  end
+
+  ##
+  # Overridden from module Blacklight::BlacklightHelperBehavior.
+  #
+  # Overridden in order to disable rel alternate links added to page headers.
+  def render_link_rel_alternates(document = @document, options = {})
+    ""
+  end
+
+  def advanced_catalog_search_path
+    params = @search_state.to_h.select { |k, v| !["page"].include? k }
+    blacklight_advanced_search_engine.advanced_search_path(params)
+  end
+
+  def render_availability(doc, doc_presenter)
+    if doc.purchase_order? && !current_user
+      link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: { "ajax-modal": "trigger" })
+    elsif doc.purchase_order?
+      doc_presenter.purchase_order_button
+    elsif index_fields(doc).fetch("availability", nil)
+      render "index_availability_section", document: doc
+    end
+  end
+
+  def render_email_form_field
+    if !current_user&.email
+      render partial: "email_form_field"
+    end
+  end
+
+  def library_link
+    Rails.configuration.library_link
+  end
+
+  def grouped_citations(documents)
+    Citation.grouped_citations(documents.map(&:citations))
+  end
+
+  def render_marc_view
+    if @document.respond_to?(:to_marc)
+      render "marc_view"
+    else
+      t("blacklight.search.librarian_view.empty")
+    end
+  end
+
+  def back_to_catalog_path
+    search_catalog_path(search_params)
+  end
+
+  def back_to_books_path
+    search_books_path(search_params)
+  end
+
+  def back_to_journals_path
+    search_journals_path(search_params)
+  end
+
+  def back_to_articles_path
+    search_path(search_params)
   end
 end

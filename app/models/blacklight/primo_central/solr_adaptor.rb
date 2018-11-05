@@ -37,16 +37,11 @@ module Blacklight::PrimoCentral
     private
 
       SOLR_TO_PRIMO_FACETS = {
-        "creator_facet" => "creator",
-        "availability_facet" => "tlevel",
-        "format" => "rtype",
-        "pub_date_sort" => "creationdate",
-        "subject_topic_facet" => "topic",
-        "language_facet" => "lang",
       }
 
       SOLR_TO_PRIMO_KEYS = {
         "title_statement_display" => "title",
+        "title_truncated_display" => "title",
         "creator_display" => "creator",
         "imprint_display" => "publisher",
         "contributor_display" => "contributor",

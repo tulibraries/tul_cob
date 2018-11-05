@@ -1,0 +1,25 @@
+<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTweaks" aria-expanded="false" aria-controls="collapseTweaks">
+  Tweak Solr Query Fields
+</button>
+
+<div class="collapse" id="collapseTweaks">
+  <div class="accordion" id="queryTweakAccordion">
+    <% fields.each do |name, value| %>
+      <div class="car">
+        <div class="card-header" id="heading-<%= "#{name}" %>">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-<%= "#{name}" %>" aria-expanded="false" aria-controls="collapse-<%= "#{name}" %>">
+              <%= "#{titleize_field name}" %>
+            </button>
+          </h5>
+        </div>
+        <div id="collapse-<%= "#{name}" %>" class="collapse" aria-labelledby="heading-<%= "#{name}" %>" data-parent="#queryTweakAccordion">
+          <div class="card-body">
+            <textarea name="<%= "#{name}" %>" cols="27" rows="10" form="catalog-search"><%= "#{value}" %></textarea>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -13,6 +13,8 @@ Bundler.require(*Rails.groups)
 module Tulcob
   # Rails Application
   class Application < Rails::Application
+    config.library_link = "https://library.temple.edu/"
+    config.ask_link = "https://library.temple.edu/asktulibraries"
     config.load_defaults 5.2
     # Settings in config/environments/* take precedence over those specified
     # here. Application configuration should go into files in
@@ -23,14 +25,17 @@ module Tulcob
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
     config.bento = config_for(:bento).with_indifferent_access
+    config.oclc = config_for(:oclc).with_indifferent_access
     config.twilio = config_for(:twilio).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
     config.exceptions_app = routes
     config.traject_indexer = File.join(Rails.root, "lib/traject/indexer_config.rb")
-    ENV["ALLOW_IMPERSONATOR"] ||= "no"
+    config.time_zone = "Eastern Time (US & Canada)"
+    config.active_record.default_timezone = :local
 
+    # TODO: do we still need this?
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]
     rescue StandardError => error

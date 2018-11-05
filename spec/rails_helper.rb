@@ -67,3 +67,15 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
   end
 end
+
+FactoryBot.define do
+  sequence :email do |n|
+    "person#{n}@example.com"
+  end
+end
+
+FactoryBot.modify do
+  factory :user do
+    email { generate(:email) }
+  end
+end

@@ -16,7 +16,8 @@ namespace :fortytu do
 
   desc "Remove deleted items from Solr"
   task purge: :environment do
-    solr = RSolr.connect url: Blacklight.connection_config[:url]
+    solr = RSolr.connect url: Blacklight.connection_config[:url],
+      read_timeout: 120
     delete_files_path = File.join(Rails.root, "tmp", "alma", "marc-delete", "*.xml")
     delete_files = Dir.glob(delete_files_path).select { |fn| File.file?(fn) }
     ids = []
@@ -30,7 +31,6 @@ namespace :fortytu do
     puts "Purging the following IDs:"
     puts ids
     solr.delete_by_id ids
-    solr.update data: "<commit/>"
   end
 
   namespace :oai do
@@ -114,11 +114,6 @@ namespace :fortytu do
       begin
         oai_path = File.join(Rails.root, "tmp", "alma", "marc", "*.xml")
         marc_files = Dir.glob(oai_path).select { |fn| File.file?(fn) }
-        traject_commit = %W[traject -s
-          log.file=#{main_log}
-          log.error_file="#{main_log}.error"
-          -c #{Rails.configuration.traject_indexer}
-          -x commit].join(" ")
         pids = []
         marc_files.each_with_index do |f, i|
           logger.info "Indexing  #{f}"
@@ -140,9 +135,6 @@ namespace :fortytu do
       rescue => e
         logger.fatal("Fatal Error")
         logger.fatal(e)
-      ensure
-        logger.info "Commiting data"
-        system(traject_commit)
       end
     end
   end

@@ -1,0 +1,17 @@
+<div id="documents" class="noresults">
+  <h2 class="no-results-header"><%= t 'blacklight.search.zero_results.title' %></h2>
+  <h3 class="modify-search"><%= t 'blacklight.search.zero_results.modify_search' %></h3>
+  <div class="no-results-tips">
+    <ul>
+      <li><%=t 'blacklight.search.zero_results.use_fewer_keywords' %></li>
+      <li><%=t 'blacklight.search.zero_results.change_filters' %></li>
+
+      <%- if params[:q] and params[:search_field] and params[:search_field] != blacklight_config.default_search_field.try(:key) -%>
+        <li><%= t 'blacklight.search.zero_results.search_fields', :search_fields => search_field_label(params) %> -
+        <%= link_to t('blacklight.search.zero_results.search_everything', field: blacklight_config.default_search_field.label), url_for(search_state.params_for_search(search_field: blacklight_config.default_search_field.key)) %>
+        </li>
+      <%- end %>
+
+    </ul>
+  </div>
+</div>

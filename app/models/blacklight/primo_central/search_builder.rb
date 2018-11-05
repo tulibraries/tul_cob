@@ -8,10 +8,10 @@ module Blacklight::PrimoCentral
     self.default_processor_chain = [
       :add_query_to_primo_central,
       :set_query_field,
-      :set_query_sort_order,
       :process_advanced_search,
       :previous_and_next_document,
       :add_query_facets,
+      :process_date_range_query,
     ]
   end
 end

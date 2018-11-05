@@ -8,26 +8,38 @@ module Blacklight::PrimoCentral
       per_page = (blacklight_params["per_page"] || blacklight_config.default_per_page).to_i
       page = (blacklight_params["page"] || 1).to_i
       offset = (per_page * page) - per_page
+      sort = blacklight_params["sort"] || "rank"
 
       value = blacklight_params[:q]
       value = "*" if value.nil? || value.empty?
 
       if value.is_a? Hash
         if value["pnxId"]&.is_a? Array
-          # limit ids to 9 or API returns 0 results
-          queries = to_primo_id_queries(value["pnxId"][0, 9])
+          # limit ids to 13 or API returns 0 results
+          queries = to_primo_id_queries(value["pnxId"][0, 13])
           primo_central_parameters[:query] = {
             limit: per_page,
             offset:  offset,
+            sort: sort,
             q: { value: queries },
           }
         else
           raise "FIXME, translation of Solr search for Summon"
         end
+      elsif !blacklight_params[:id].nil?
+        primo_central_parameters[:query] = {
+          limit: 1,
+          offset: 0,
+          q: {
+            value: to_primo_id(blacklight_params[:id]),
+            precision: "contains",
+          }
+        }
       else
         primo_central_parameters[:query] = {
           limit: per_page,
           offset:  offset,
+          sort: sort,
           q: { value: value }
         }
       end
@@ -35,6 +47,12 @@ module Blacklight::PrimoCentral
 
     def set_query_field(primo_central_parameters)
       field = to_primo_field(blacklight_params[:search_field])
+
+      # blacklight_range_limit can usurp this field for evil.
+      if !blacklight_config.search_fields.keys.include?(field.to_s)
+        field = "any"
+      end
+
       primo_central_parameters[:query][:q][:field] = field
     end
 
@@ -46,9 +64,6 @@ module Blacklight::PrimoCentral
       if  @rows
         primo_central_parameters[:query][:limit] = @rows
       end
-    end
-
-    def set_query_sort_order(primo_central_parameters)
     end
 
     def process_advanced_search(primo_central_parameters)
@@ -70,7 +85,7 @@ module Blacklight::PrimoCentral
       end
     end
 
-    # This needs to come last as it instantiates the pnxs query.
+    # Query is a Primo::Pnxs::Query instance after this process.
     def add_query_facets(primo_central_parameters)
       if primo_central_parameters[:query][:q][:value].is_a? Array
         op = :build
@@ -87,6 +102,8 @@ module Blacklight::PrimoCentral
       blacklight_params.fetch(:f, {})
         .merge(blacklight_params.fetch(:f_inclusive, {}))
         .each do |field, values|
+        # Only facet known fields
+        next unless blacklight_config.facet_fields[field.to_s].present?
         values.each do |value|
           primo_central_parameters[:query][:q].facet(
             field: solr_to_primo_facet(field),
@@ -96,7 +113,30 @@ module Blacklight::PrimoCentral
       end
     end
 
+    def process_date_range_query(primo_central_parameters)
+      params = blacklight_params
+
+      min = params.dig("range", "creationdate", "begin")
+      max = params.dig("range", "creationdate", "end")
+      range = YearRange.new(min, max)
+      primo_central_parameters[:range] = range
+
+      # Adding the date range facet prematurely causes search discrepencies.
+      if (min || max)
+        primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
+      end
+    end
+
     private
+      class YearRange
+        attr_reader :min, :max
+
+        def initialize(min = nil, max = nil)
+          @min = min unless min.blank?
+          @max = max unless max.blank?
+        end
+      end
+
       def to_primo_id_queries(values)
         values.map { |v|
           {
@@ -112,12 +152,14 @@ module Blacklight::PrimoCentral
         "'#{value.gsub(/^TN_/, "")
           .gsub("-dot-", ".")
           .gsub("-slash-", "/")
-          .gsub("-", " ")}'"
+          .gsub("-semicolon-", ";")
+          }'"
       end
 
       def to_primo_field(field)
         {
           all_fields: :any,
+          advanced: :any,
           creator_t: :creator,
           isbn_t: :isbn,
           issn_t: :issn,

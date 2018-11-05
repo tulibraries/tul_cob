@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+ActionMailer::Base.default from: "asktulibrary@temple.edu"
+
 Rails.application.configure do
-
-
   config.active_storage.service = :local
 
   # Verifies that versions and hashed value of the package contents in the project's package.json
@@ -13,10 +13,10 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = true
+  config.cache_classes = ENV["CACHE_CLASSES"] ? true : false
 
   # Do not eager load code on boot.
-  config.eager_load = true
+  config.eager_load = ENV["CACHE_CLASSES"] ? true : false
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -36,7 +36,16 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "temple.edu",
+    user_name: "asktulib@temple.edu",
+    password: ENV["ASKTULIB_PASSWORD"],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   config.action_mailer.perform_caching = false
 

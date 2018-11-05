@@ -8,11 +8,13 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   let(:search_builder) { Blacklight::PrimoCentral::SearchBuilder.new(context) }
   let(:rows) { false }
   let(:start) { false }
+  let(:config)  { PrimoCentralController.blacklight_config }
 
   subject { search_builder }
 
   before(:example) do
     allow(search_builder).to receive(:blacklight_params).and_return(params)
+    allow(search_builder).to receive(:blacklight_config).and_return(config)
   end
 
   let(:primo_central_parameters) { Blacklight::PrimoCentral::Request.new }
@@ -41,6 +43,26 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       it "sets the default offset to zero" do
         expect(primo_central_parameters["query"]["offset"]).to eq(0)
+      end
+
+      it "sets a default sort field" do
+        expect(primo_central_parameters["query"]["sort"]).to eq("rank")
+      end
+    end
+
+    context "with sort param override" do
+      let(:params) { ActionController::Parameters.new(q: "foo", sort: "bar") }
+
+      it "overrides the default sort field" do
+        expect(primo_central_parameters["query"]["sort"]).to eq("bar")
+      end
+    end
+
+    context "param :id is searched" do
+      let(:params) { ActionController::Parameters.new(id: "foo") }
+
+      it "sets query value to quoted :id" do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("'foo'")
       end
     end
   end
@@ -113,16 +135,106 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
-    context "search_field is not tranformable" do
+    context "search_field is set to advanced" do
+      let(:params) { ActionController::Parameters.new(search_field: :advanced) }
+
+      it "advanced transforms to :any" do
+        expect(primo_central_parameters["query"]["q"]["field"]).to eq(:any)
+      end
+    end
+
+    context "search_field is set to unknown field" do
       let(:params) { ActionController::Parameters.new(search_field: "foo") }
 
-      it "the field is passed as is" do
-        expect(primo_central_parameters["query"]["q"]["field"]).to eq("foo")
+      it "should always transform unknown search_fields to any" do
+        expect(primo_central_parameters["query"]["q"]["field"]).to eq("any")
       end
     end
   end
 
   describe ".add_query_facets" do
+    let (:facets) { primo_central_parameters[:query][:q].include_facets }
+
+    before(:example) do
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.set_query_field(primo_central_parameters)
+      subject.add_query_facets(primo_central_parameters)
+      subject.process_date_range_query(primo_central_parameters)
+    end
+
+    context "with unknown fields in params" do
+      let(:params) { ActionController::Parameters.new(f: { unknown_field: "foo" }) }
+      it "should not add query facet" do
+        expect(facets).to be_nil
+      end
+    end
+  end
+
+  describe ".process_date_range_query" do
+    let (:range) { primo_central_parameters[:range] }
+    let (:facets) { primo_central_parameters[:query][:q].include_facets }
+
+    before(:example) do
+      subject.add_query_to_primo_central(primo_central_parameters)
+      subject.set_query_field(primo_central_parameters)
+      subject.add_query_facets(primo_central_parameters)
+      subject.process_date_range_query(primo_central_parameters)
+    end
+
+    context "range not provided" do
+      it "adds a default range" do
+        expect(range.min).to be_nil
+        expect(range.max).to be_nil
+      end
+
+      it "does not add a default range facet" do
+        expect(facets).to be_nil
+      end
+    end
+
+    context "only one range is provided" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 1 } }
+      ) }
+
+      it "adds a default range" do
+        expect(range.min).to eq(1)
+        expect(range.max).to be_nil
+      end
+
+      it "adds a default range facet" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
+
+    context "both min and max range are provided" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 1, end: 10 } }
+      ) }
+
+      it "adds a default range" do
+        expect(range.min).to eq(1)
+        expect(range.max).to eq(10)
+      end
+
+      it "adds a range facet to the search" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 10]")
+      end
+    end
+
+    context "a range limit is empty" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "1", end: "" } }
+      ) }
+      it "adds a default range" do
+        expect(range.min).to eq("1")
+        expect(range.max).to be_nil
+      end
+
+      it "adds a range facet to the search" do
+        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
   end
 
   describe ".previous_and_next_document" do

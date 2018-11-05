@@ -20,6 +20,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  catalog_advanced_search: "Advanced Catalog Search"
+  books_advanced_search: "Advanced Books Search"
+  journals_advanced_search: "Advanced Journals Search"
+  articles_advanced_search: "Advanced Articles Search"
+  ask_librarian: "Ask a Librarian"
   bento_search:
     no_results:
       title: "No records found"
@@ -33,17 +38,18 @@ en:
     link_to_resource: "Link to Resource"
   availability_code:
     online_resources: "Online"
-    peer_reviewed: "Peer Reviewed"
-    open_access: "Open Access"
+    peer_reviewed: "Peer-reviewed only"
+    open_access: "Open Access only"
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
-    books: "Book/Book Chapter"
     book: "Book"
+    books: "Book"
     audio: "Audio"
     video: "Video"
     mms: "Video"
     book_chapter: "Book Chapter"
+    book_chapters: "Book Chapter"
     conference_proceedings: "Conference Proceeding"
     conference_proceeding: "Conference Proceeding"
     databases: "Database"

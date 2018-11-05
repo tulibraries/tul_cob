@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
+class ArticleNotFound < RuntimeError
+end
+
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     def find(id, params = {})
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
+        .gsub("-semicolon-", ";")
       search(query: { id: id })
     end
 
@@ -22,7 +26,10 @@ module Blacklight::PrimoCentral
       response = Rails.cache.fetch("articles/index/#{data}", expires_in: duration) do
         # We convert to hash because we cannot serialize the Primo response.
         # @see https://github.com/rails/rails/issues/7375
-        Primo.find(data).to_h
+        start = Time.now
+        response = Primo.find(data).to_h
+        LogUtils.json_request_logger(logger, { type: "primo_search", start: start }.merge(data.dup))
+        response
       end
 
       response_opts = {
@@ -37,6 +44,11 @@ module Blacklight::PrimoCentral
           facet_counts: response["facets"].length,
           numFound: response["info"]["total"]
         )
+        data[:range] = params[:range] || {}
+      else
+        if response.count == 1
+          raise ArticleNotFound
+        end
       end
 
       blacklight_config.response_model.new(response, data, response_opts)

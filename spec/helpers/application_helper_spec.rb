@@ -101,4 +101,158 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#subject_links(args)" do
+    context "links to exact subject facet string" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+
+      it "includes link to exact subject" do
+        expect(subject_links(args).first).to have_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle+East")
+      end
+      it "does not link to only part of the subject" do
+        expect(subject_links(args).first).to have_no_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle")
+      end
+    end
+
+    context "links to subjects with special characters" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries - Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "includes link to whole subject string" do
+        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+      end
+    end
+  end
+
+  describe "#render_nav_link" do
+    let(:current_search_session) { OpenStruct.new(query_params: {}) }
+    let(:request) { OpenStruct.new(original_fullpath: "/") }
+
+    before(:each) do
+      allow(helper).to receive(:request) { request }
+      without_partial_double_verification do
+        allow(helper).to receive(:current_search_session) { current_search_session }
+      end
+    end
+
+    context "path not current page" do
+      it "renders a link without the active class" do
+        link = "<li class=\"nav-btn header-links\"><a class=\"nav-link\" href=\"/catalog\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+
+    context "path is current page" do
+      let(:request) { OpenStruct.new(original_fullpath: "/catalog") }
+      it "renders a link with the active class" do
+        link = "<li class=\"nav-btn header-links active\"><a class=\"nav-link active\" href=\"/catalog\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+
+    context "path contains a query" do
+      let(:current_search_session) { OpenStruct.new(query_params: { q: "foo" }) }
+
+      it "gets the query added to the generated link" do
+        link = "<li class=\"nav-btn header-links\"><a class=\"nav-link\" href=\"/catalog?q=foo\">More</a></li>"
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
+      end
+    end
+  end
+
+  describe "#is_active?(path)" do
+    let(:current_page?) { true }
+    let(:request) { OpenStruct.new(original_fullpath: "/") }
+
+    before do
+      allow(helper).to receive(:request) { request }
+      allow(helper).to receive(:current_page?) { current_page? }
+    end
+
+    context "current page is :everything_path path and orig path is /" do
+      it "is active" do
+        expect(helper.is_active?(:everything_path)).to be_truthy
+      end
+    end
+
+    context "current page is :search_books_path and orig path is /books/foobar"  do
+      let(:current_page?) { false }
+      let(:request) { OpenStruct.new(original_fullpath: "/books/foobar") }
+
+      it "is active" do
+        expect(helper.is_active?(:search_books_path)).to be_truthy
+      end
+    end
+
+    context ":search_books_path does not match beginning of current page" do
+      let(:current_page?) { false }
+      let(:request) { OpenStruct.new(original_fullpath: "/articles/foobar") }
+
+      it "is not active" do
+        expect(helper.is_active?(:search_books_path)).to be_falsey
+      end
+    end
+  end
+
+  describe "#holdings_summary_information(document)" do
+    context "record has a holdings_summary field" do
+      let(:document) {
+          {
+            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            }
+        }
+      it "displays the field in a human-readable format" do
+        expect(helper.holdings_summary_information(document)).to eq("v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.<br />Related Holding ID: 22318863960003811")
+      end
+    end
+
+    context "record does not have a holdings_summary_display field" do
+      let(:document) {
+          {
+            "subject_display" => ["Test"]
+            }
+        }
+      it "does not display anything" do
+        expect(helper.holdings_summary_information(document)).to be_nil
+      end
+    end
+  end
+
+  describe "#render_holdings_summary_table(document)" do
+    context "document has a holdings_summary field" do
+      let(:document) {
+          {
+            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            }
+        }
+      it "renders the holdings_summary partial" do
+        expect(helper.holdings_summary_information(document)).not_to be_nil
+      end
+    end
+
+    context "document does not have a holdings_summary field" do
+      let(:document) {
+          {
+            "subject_display" => ["Test"]
+            }
+        }
+      it "does not render the holdings_summary partial" do
+        expect(helper.holdings_summary_information(document)).to be_nil
+      end
+    end
+  end
 end

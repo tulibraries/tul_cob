@@ -29,7 +29,7 @@ module Oai
         loop do
           logger.info("Retrieving #{oai_url}")
           puts "Retrieving #{oai_url}"
-          response = HTTParty.get(oai_url)
+          response = HTTParty.get(oai_url, timeout: 120)
           oai = Nokogiri::XML(response.body)
           tmp_path = File.join(Rails.root, "tmp", "alma", "oai")
           FileUtils::mkdir_p tmp_path
@@ -44,6 +44,7 @@ module Oai
       rescue => e
         logger.fatal("Fatal Error")
         logger.fatal(e)
+        exit(1)
       end
       harvest_files
     end

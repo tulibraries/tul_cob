@@ -44,6 +44,22 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status(:success)
         end
       end
+
+      describe "GET #account" do
+        before do
+          DatabaseCleaner.clean
+          DatabaseCleaner.strategy = :truncation
+          user = FactoryBot.create :user
+          sign_in user, scope: :user
+        end
+
+        it "has no-cache headers for account" do
+          get :account
+          expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
+          expect(response.headers["Pragma"]).to eq("no-cache")
+          expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
+        end
+      end
     end
 
     context "User has no transactions" do
@@ -79,94 +95,4 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe "Impersonate user" do
-    before :each do
-      @original_state = Rails.env
-    end
-
-    after (:each) do
-      Rails.env = @original_state
-    end
-
-    context "Test environment" do
-      before :each do
-        admin = FactoryBot.create :user_admin
-        sign_in :user, admin
-      end
-
-      subject { get :index }
-
-      context "Configured impersonator not allowed" do
-        it "shows users page anyways" do
-          expect(subject).to render_template(:index)
-        end
-      end
-
-      context "Configured impersonator allowed" do
-        it "shows users page" do
-          expect(subject).to render_template("users/index")
-        end
-      end
-    end
-
-    context "Production environment" do
-      before :each do
-        Rails.env = "production"
-      end
-
-      subject { get :index }
-
-      context "User Logged In" do
-        before :each do
-          admin = FactoryBot.create :user_admin
-          sign_in :user, admin
-        end
-
-        context "Configured impersonator not allowed" do
-          before :each do
-            ENV["ALLOW_IMPERSONATOR"] = "no"
-          end
-
-          it "redirects to root" do
-            expect(subject).to redirect_to("http://test.host/")
-          end
-        end
-
-        context "Configured impersonator allowed" do
-          before :each do
-            ENV["ALLOW_IMPERSONATOR"] = "yes"
-          end
-
-          it "shows users page" do
-            expect(subject).to render_template(:index)
-          end
-        end
-      end
-
-      context "No User Logged In" do
-
-        context "Configured impersonator not allowed" do
-          before :each do
-            ENV["ALLOW_IMPERSONATOR"] = "no"
-          end
-
-          it "redirects to root" do
-            expect(subject).to redirect_to("http://test.host/")
-          end
-        end
-
-        context "Configured impersonator allowed" do
-          before :each do
-            ENV["ALLOW_IMPERSONATOR"] = "yes"
-          end
-
-          it "redirects to root" do
-            expect(subject).to redirect_to("http://test.host/")
-          end
-        end
-      end
-    end
-  end
-
 end

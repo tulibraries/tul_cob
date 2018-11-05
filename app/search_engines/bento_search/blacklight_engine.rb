@@ -9,9 +9,11 @@ module BentoSearch
 
     def search_implementation(args)
       query = args.fetch(:query, "")
+      per_page = args.fetch(:per_page)
 
-      results = BentoSearch::Results.new
-      response = search_results(q: query, &proc_availability_facet_only).first
+      query = { q: query, per_page: per_page }
+
+      response = search_results(query, &proc_availability_facet_only).first
       results(response)
     end
 
@@ -42,11 +44,24 @@ module BentoSearch
     end
 
     def conform_to_bento_result(item)
-      BentoSearch::ResultItem.new(title: item.fetch("title_statement_display", []).first,
+      BentoSearch::ResultItem.new(title: item.fetch("title_truncated_display", []).first,
         authors: item.fetch("creator_display", []).map { |author| BentoSearch::Author.new(display: author.tr("|", " ")) },
         publisher: item.fetch("imprint_display", []).join(" "),
-        link: Rails.application.routes.url_helpers.solr_document_url(item["id"], only_path: true),
-        custom_data: item)
+        link: doc_link(item["id"]),
+        custom_data: SolrDocument.new(item))
+    end
+
+    def doc_link(id)
+      Rails.application.routes.url_helpers.solr_document_path(id)
+    end
+
+    def url(helper)
+      helper.search_catalog_path(q: helper.params[:q])
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all catalog results", url, class: "full-results"
     end
   end
 end

@@ -14,7 +14,6 @@ class User < ApplicationRecord
     @alma ||= Alma::User.find(uid)
   end
 
-
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.
@@ -24,27 +23,26 @@ class User < ApplicationRecord
   end
 
   def loans
-    @loans ||= alma.loans(limit: 50)
+    Alma::Loan.where_user(uid, order_by: "due_date")
   end
 
   def fines
-    @fines ||= alma.fines
+    Alma::Fine.where_user(uid)
   end
 
   def holds
-    @holds ||= alma.requests
+    Alma::UserRequest.where_user(uid)
   end
 
   def renew_selected(ids)
     Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids)
   end
 
-
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.uid        = auth.uid
       user.provider   = auth.provider
-      user.email      = auth.info.email
+      user.email      = (auth.info.email || "#{auth.uid}@temple.edu")
       user.name       = auth.info.name
       user.last_name  = auth.info.last_name
       user.first_name = auth.info.first_name

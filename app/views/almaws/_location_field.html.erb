@@ -1,0 +1,5 @@
+<div class="location">
+  <%= material["library"] %> (<%= material["location"] %>) <span>(<%= material["call_number"] %>)</span>
+  <%= render_non_available_status_only(material["availability"]) %>
+  <%= hidden_field_tag "barcode", material[:barcode] %>
+</div>

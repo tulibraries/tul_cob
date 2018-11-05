@@ -49,9 +49,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight",
-  git: "https://github.com/tulibraries/blacklight.git",
-  branch: "backport-safari-bug-fix"
+gem "blacklight", "~> 6.0"
 gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
@@ -67,16 +65,14 @@ group :development, :test do
   gem "launchy"
   gem "foreman"
   gem "vcr"
-  gem "pretender"
   gem "rails-controller-testing"
-  gem "faker"
   gem "rubocop"
 end
 
 gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
-gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "normaize-reponse-and-sets"
+gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
@@ -85,7 +81,6 @@ gem "ezwadl"
 gem "awesome_print"
 gem "capybara"
 gem "webmock"
-gem "chosen-rails"
 gem "bento_search"
 gem "omniauth-shibboleth"
 gem "twilio-ruby"
@@ -95,8 +90,15 @@ gem "google-analytics-rails", "1.1.1"
 gem "primo", git: "https://github.com/tulibraries/primo"
 gem "bootsnap"
 gem "honeybadger"
-
+gem "browser"
+gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
+gem "bootstrap-select-rails"
+gem "httparty"
+gem "breadcrumbs_on_rails"
 
 group :production do
   gem "mysql2", "~> 0.4.9"
 end
+
+# devops
+gem "okcomputer"

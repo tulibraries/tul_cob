@@ -1,38 +1,89 @@
 @import "_vars.scss";
 
 a.facet_select, a.facet_select:active, a.facet_select:visited {
-	color: $black;
-}
-.facet-label span.selected, .facet-values li .selected.facet-count {
 	color: $red;
 }
+
+.facet-label span.selected, .facet-values li .selected.facet-count {
+	color: $red;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.facet-values .facet-label {
+	text-indent: 0;
+}
+
 .panel-default .panel-heading {
 	background-color: $tan;
 }
+
 .facet_limit-active .panel-heading {
 	background-color: $red;
 	color: $white;
 }
+
 .glyphicon.glyphicon-remove a {
 	color: $black;
 }
-#appliedParams {
-	background-color: transparent;
+
+span.constraints{
 	padding: 0;
 	border: 0;
-	btn {
+	.btn {
 		border-radius: 5px;
 	}
 }
-#startOverLink {
+
+span .remove-icon {
+	color: $black !important;
+}
+
+span .remove-constraints {
+	background-color: #b9e5fb;
+	border: 1px solid transparent !important;
+	color: black;
+}
+
+span.constraint-value {
+	background-color: #b9e5fb;
+	border: 1px solid transparent !important;
+	font-weight: bold;
+	padding: 8px 15px;
+	text-align: left;
+	white-space: normal !important;
+}
+
+span.constraints:first-child {
+	margin-top: -40px !important;
+}
+
+span.constraint-value:hover {
+	background-color: #b9e5fb !important;
+	border: 1px solid transparent !important;
+}
+
+a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-constraints:visited, a.btn.remove-constraints:after {
+	background-color: #b9e5fb !important;
+	color: black !important;
+	border-left: none !important;
+	border: 1px solid transparent !important;
+}
+
+#startOverLink, #start_over {
 	color: #fff;
-  background-color: #337ab7;
+  background-color: #095780;
   border-color: #2e6da4;
+	font-weight: 200;
+	letter-spacing: 1px;
+	font-size: 12px;
   margin-right: 4px;
 }
+
 .dl-horizontal dd:after {
 	clear:both;
 }
+
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
 	background-color: $red!important;
 	color: $white!important;
@@ -42,6 +93,7 @@ button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.b
   	font-size: 13px;
   }
 }
+
 button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, input.btn-info:active, input.btn-info:visited {
     color: #fff!important;
     background-color: #337ab7!important;
@@ -51,13 +103,15 @@ button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, inp
     	padding-left: 10px;
     }
 }
+
 a.btn-info, a.btn-info:active, a.btn-info:hover, a.btn-info:focus, a.btn-info:visited {
     color: #fff!important;
     background-color: #337ab7!important;
     border-color: #2e6da4!important;
     font-size: 15px;
     padding:left 3px;
-} 
+}
+
 button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
 	background-color: #3A833A!important;
 	color: $white!important;
@@ -67,12 +121,13 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
   	font-size: 15px;
   }
 }
+
 a.btn-back-to-search, a.btn-back-to-search:focus, a.btn-back-to-search:hover, a.btn-back-to-search:active, a.btn-back-to-search:visited {
 	background-color: #fff!important;
 	color: $red!important;
 	border-color: #ccc;
 }
-                   
+
 button.collapse-button .avail-label:after {
     /* symbol for "opening" panels */
     font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
@@ -80,14 +135,20 @@ button.collapse-button .avail-label:after {
     float: right;        /* adjust as needed */
     color: white;         /* adjust as needed */
 }
+
 button.collapse-button.collapsed .avail-label:after {
     /* symbol for "collapsed" panels */
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
-
 .availability-toggle-details {
   text-align: left;
+}
+
+#startOverLink {
+	margin-left: -15px;
+	width: 100px;
+	padding: 2px 5px;
 }
 
 a.catalog_startOverLink {
@@ -108,4 +169,73 @@ a.catalog_startOverLink {
 	.panel-heading.collapse-toggle.collapsed .panel-title:after {
 		color: white;
 	}
+}
+
+#advanced-search-facets {
+  margin-top: 14px;
+}
+
+.facets-heading {
+	margin-left: -15px;
+}
+
+#applied_params_facet {
+	margin-top: -30px;
+}
+
+#sidebar {
+	background-color: #FFF;
+	border-radius: 5px;
+	height: auto;
+}
+
+.document-divider {
+	width: 100%;
+	margin: 0 5% !important;
+	padding: 0 5% !important;
+}
+
+input[value|="Apply"] {
+	color: #fff;
+	background-color: #095780;
+	border-color: #2e6da4;
+	font-weight: 200;
+	letter-spacing: 1px;
+	font-size: 12px;
+	padding: 7px 8px;
+	margin-left: 10px;
+}
+
+input#range_pub_date_sort_begin {
+	margin-right: 2px;
+}
+
+input#range_pub_date_sort_end {
+	margin-left: 2px;
+}
+
+form.range_limit {
+	text-align: center;
+}
+#facet-pub_date_sort {
+	padding-left: 15px;
+}
+
+#facet-pub_date_sort .panel-body  {
+	padding: 5px 20px;
+}
+
+.appliedFilter {
+	display: flex;
+	padding-bottom: 6px;
+	width: 100%;
+}
+
+#facets .panel-body {
+	padding-left: 5px;
+}
+
+.more_facets_link {
+	padding-left: 15px;
+	font-weight: bold;
 }

@@ -16,7 +16,7 @@
 		background-color: #CECED0;
 		border-radius: 10px 10px 0 0;
 		color: #2B2E34;
-		font-family: "Colfax-Medium";
+		font-family: "PT Sans";
 		font-size: 24px;
 		height: 50px;
 		padding: 12px;
@@ -28,7 +28,7 @@
 }
 
 .blacklight-search {
-	background-color: #F5F5F5;
+	background-color: #F4F6F5;
 }
 
 .bento-search-engine {
@@ -87,6 +87,12 @@
 	font-weight: bold;
 }
 
+.bento-results h2 a,
+.bento-results h2 a:hover,
+.bento-results h2 a:active {
+  color: black;
+}
+
 .total-results a,
 .online-only a,
 .bento_item_title a {
@@ -100,7 +106,7 @@
 }
 
 .bento-avail-btn {
- 	background-color: #095780;
+ 	background-color: #337AB7;
  	color: white;
  	padding: 2px 10px;
  	margin-bottom: 15px;
@@ -112,10 +118,20 @@
  	color: white;
 }
 
-.bento-results {
-	margin: 0 5%;
+.more .online-only, .resource_types .online-only {
+  display: none;
 }
 
-.more .online-only {
-  display: none;
+.bento_item .dl-horizontal dd {
+  margin-left: 103px;
+}
+
+.bento_item .dl-horizontal dt {
+  text-align: left;
+  width: 50%;
+}
+
+.centered-bento {
+	display: flex;
+	justify-content: center;
 }

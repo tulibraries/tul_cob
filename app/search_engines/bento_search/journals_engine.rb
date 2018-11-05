@@ -2,14 +2,20 @@
 
 module BentoSearch
   class JournalsEngine < BlacklightEngine
-    def search_implementation(args)
-      query = args.fetch(:query, "")
-      per_page = args.fetch(:per_page)
+    delegate :blacklight_config, to: JournalsController
 
-      query = { q: query, per_page: per_page, f: { format: ["Journal/Periodical"] } }
+    def doc_link(id)
+      Rails.application.routes.url_helpers.solr_journal_document_path(id)
+    end
 
-      response = search_results(query, &proc_availability_facet_only).first
-      results(response)
+    def url(helper)
+      params = helper.params
+      helper.search_journals_path(q: params[:q])
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all #{total} journals", url, class: "full-results"
     end
   end
 end

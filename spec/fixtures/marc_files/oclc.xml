@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <!-- 0. No OCLC info available -->
+  </record>
+  <record>
+    <!-- 1. 035 includes OCoLC -->
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)on1042418854</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 2. 979 includes OCoLC -->
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)on1042418854</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 3. 979 and 035 fields include OCoLC -->
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)on1042418854</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)on1042418854</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 4. 979 includes ocn -->
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn986990990</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 5. 979 includes on -->
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">on1012488209</subfield>
+    </datafield>
+  </record>
+  <record>
+    <!-- 6. 979 and 035 fields have different numbers -->
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)938995310</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn882543310</subfield>
+    </datafield>
+  </record>
+  <record>
+  <!-- 7. 035 has subfield 9 with ExL -->
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">on1012488209</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+  </record>
+</collection>

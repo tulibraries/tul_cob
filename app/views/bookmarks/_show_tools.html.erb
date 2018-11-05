@@ -11,15 +11,20 @@
 <% if show_doc_actions? %>
 <% @sendto = {} %>
       <ul id="tools-navbar">
-        <%= render_show_doc_actions @document do |config, inner| %>
-        
+        <%= render_show_doc_actions @document_list do |config, inner| %>
           <% @sendto[config.key] = inner %>
-          
         <% end %>
+
+        <% if @documents.any? { |doc| doc.citable? } %>
+        <li>
+          <%= link_to t("blacklight.tools.cite_html"), citation_bookmarks_path(:id => @documents), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation-btn"} %>
+        </li>
+        <% end %>
+
         <li id="sendto-menu">
           <div id="bookmarks-sendto">
             <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu bookmarks-dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <li class="sendto-item">
                   <%= value %>

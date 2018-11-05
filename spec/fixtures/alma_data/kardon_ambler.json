@@ -1,0 +1,245 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991035575529703811",
+                "title": "Civic art : a centennial history of the U.S. Commission of Fine Arts /",
+                "author": "Luebke, Thomas E.",
+                "issn": null,
+                "isbn": "0160897025",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)ocn768168746",
+                    "(PPT)b54727522-01tuli_inst"
+                ],
+                "place_of_publication": "Washington, D.C. :",
+                "publisher_const": "Distributed by Univ of Massachusetts Pr",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811"
+            },
+            "holding_data": {
+                "holding_id": "22273241080003811",
+                "call_number_type": {
+                    "value": "3",
+                    "desc": "Superintendent of Documents classification"
+                },
+                "call_number": "FA 1.2:C 49",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811/holdings/22273241080003811"
+            },
+            "item_data": {
+                "pid": "23273241070003811",
+                "barcode": "39074028581478",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2013-07-12Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "KARDON",
+                    "desc": "Remote Storage"
+                },
+                "location": {
+                    "value": "p_GovDocs",
+                    "desc": "Paley GovDocs"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: g",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811/holdings/22273241080003811/items/23273241070003811"
+        },
+        {
+            "bib_data": {
+                "mms_id": "991035575529703811",
+                "title": "Civic art : a centennial history of the U.S. Commission of Fine Arts /",
+                "author": "Luebke, Thomas E.",
+                "issn": null,
+                "isbn": "0160897025",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)ocn768168746",
+                    "(PPT)b54727522-01tuli_inst"
+                ],
+                "place_of_publication": "Washington, D.C. :",
+                "publisher_const": "Distributed by Univ of Massachusetts Pr",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811"
+            },
+            "holding_data": {
+                "holding_id": "22273241060003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "NA712 .C36 2013",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811/holdings/22273241060003811"
+            },
+            "item_data": {
+                "pid": "23273241050003811",
+                "barcode": "39074028625234",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2017-06-20Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2014-03-18Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "AMBLER",
+                    "desc": "Ambler Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Ambler Stacks"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: astk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991035575529703811/holdings/22273241060003811/items/23273241050003811"
+        }
+    ],
+    "total_record_count": 2
+}

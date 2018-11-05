@@ -14,8 +14,8 @@ RSpec.feature "Indices" do
   feature "Home Page" do
     context "publicly available pages" do
       scenario "User visits home page" do
-        visit "/"
-        expect(page).to have_text "Welcome to the Catalog Search"
+        visit "/catalog"
+        expect(page).to have_text "Books & More Search"
         within("#facets") do
           expect(page).to have_text "Availability"
           expect(page).to have_text "Library"
@@ -40,7 +40,7 @@ RSpec.feature "Indices" do
     }
     context "publicly available pages" do
       scenario "User visits home page" do
-        visit "/"
+        visit "/catalog"
         within("#facets") do
           all("div.panel").each_with_index do |div_panel, i|
             expect(div_panel).to have_text facets[i]
@@ -52,9 +52,9 @@ RSpec.feature "Indices" do
 
   feature "Catalog" do
     let (:title) { "Academic freedom in an age of conformity" }
-    let (:results_url) { "http://www.example.com/?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
+    let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: title
       click_button "search"
       expect(current_url).to eq results_url
@@ -65,7 +65,7 @@ RSpec.feature "Indices" do
         expect(page).to have_text "Resource Type:"
         expect(page).to have_text "Book"
         expect(page).to have_text "Author/Creator:"
-        expect(page).to have_text "Published:"
+        expect(page).to have_text "Publication:"
         has_css?(".avail-button", visible: true)
       end
     end
@@ -81,7 +81,7 @@ RSpec.feature "Indices" do
     }
 
     scenario "Search" do
-      visit "/"
+      visit "/catalog"
       fill_in "q", with: item["title"]
       click_button "search"
       expect(current_url).to eq item["url"]
@@ -100,5 +100,13 @@ RSpec.feature "Indices" do
       expect(current_url).to eq item_url
       expect(page).to have_text(item["title"])
     end
+
+
+    scenario "Login link with proper redirect_to params are on search pages" do
+      pending("The expected href appears in the browser, but not in Capybara, ¯\\_(ツ)_/¯")
+      visit "catalog/#{item['doc_id']}"
+      expect(page).to find(:xpath, "//div[@id='requests-container']/a[contains(@href,'redirect_to')]")
+    end
+
   end
 end

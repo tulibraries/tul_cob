@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+ActionMailer::Base.default from: "asktulibrary@temple.edu"
+
 Rails.application.configure do
 
   config.active_storage.service = :local
@@ -52,7 +54,7 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  config.log_level = :info
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
@@ -72,8 +74,8 @@ Rails.application.configure do
     address: "smtp.gmail.com",
     port: 587,
     domain: "temple.edu",
-    user_name: "books@temple.edu",
-    password: ENV["BOOKS_AT_TEMPLE_PASSWORD"],
+    user_name: "asktulib@temple.edu",
+    password: ENV["ASKTULIB_PASSWORD"],
     authentication: :plain,
     enable_starttls_auto: true
   }

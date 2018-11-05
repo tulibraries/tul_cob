@@ -3,6 +3,7 @@
 require "rspec"
 require "traject/macros/marc_format_classifier"
 require "traject/macros/custom"
+require "traject/macros/marc21_semantics"
 
 require "traject/indexer"
 require "marc/record"
@@ -124,10 +125,7 @@ end
 
 RSpec.describe Traject::Macros::Custom do
   let(:test_class) do
-    c = Class.new(Traject::Indexer)
-    c.send :extend, Traject::Macros::MarcFormats
-    c.send :extend, Traject::Macros::Custom
-    c
+    Class.new(Traject::Indexer)
   end
 
   let(:records) { Traject::MarcReader.new(file, subject.settings).to_a }
@@ -199,37 +197,35 @@ RSpec.describe Traject::Macros::Custom do
     end
 
     context "No name available" do
-      xit "does not extract a cretor" do
+      it "does not extract a creator" do
         expect(subject.map_record(records[0])).to eq({})
       end
     end
 
     context "Tag 100 only with values in all the subfields" do
-      xit "extracts creator field in an expected way" do
-        expected = { "creator_vern_field" => ["a b c q d|e j m n o p"] }
+      it "extracts creator field in an expected way" do
+        expected = { "creator_vern_display" => ["مطبوعات المجمع؛."] }
         expect(subject.map_record(records[1])).to eq(expected)
       end
     end
 
     context "Tag 110 only with values in all the subfields" do
-      xit "extracts creator field in an expected way" do
-        expected = { "creator_vern_field" => ["a b d c|e l m n o p t"] }
+      it "extracts creator field in an expected way" do
+        expected = { "creator_vern_display" => ["مطبوعات المجمع؛. b c d|e l m n o p t"] }
         expect(subject.map_record(records[2])).to eq(expected)
       end
     end
 
     context "Tag 111 only with values in all the subfields" do
-      xit "extracts creator field in an expected way" do
-        expected = { "creator_vern_field" => ["a n d c j|e l o p t"] }
+      it "extracts creator field in an expected way" do
+        expected = { "creator_vern_display" => ["مطبوعات المجمع؛. b c d|e l m n o p t"] }
         expect(subject.map_record(records[3])).to eq(expected)
       end
     end
 
     context "All three creator fields (100, 110, 111) with all values." do
-      xit "extracts creator fields in an expected way" do
-        expected = { "creator_field" => ["a b c q d|e j m n o p",
-                                         "a b d c|e l m n o p t",
-                                         "a n d c j|e l o p t"] }
+      it "extracts creator fields in an expected way" do
+        expected = { "creator_vern_display" => ["مطبوعات المجمع؛. b c d q|e j m n o p", "a b c d|e l m n o p t", "a c d|e j l n o p t"] }
         expect(subject.map_record(records[4])).to eq(expected)
       end
     end
@@ -247,39 +243,84 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
+    context "Contributor fields display multiple subfields" do
+      let(:path) { "creator_multiple_subfields.xml" }
+
+      it "extracts subfields multiple times if multiple subfields are present" do
+        expected = { "contributor_display" => ["United States. Department of Agriculture. Economic Research Service"] }
+        expect(subject.map_record(records[0])).to eq(expected)
+      end
+
+      it "does not change order of subfields if something is nil" do
+        expected = { "contributor_display" => ["Oliveira, Victor J.|Test Another plain text field", "Two", "Three|Test"] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
     context "No contributor info available" do
       it "does not extract a cretor" do
         expect(subject.map_record(records[0])).to eq({})
       end
     end
 
-    context "Tag 700contributor with values in all the subfields" do
+    context "Tag 700 contributor with values in all the subfields" do
       it "extracts creator field in an expected way" do
-        expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u"] }
+        expected = { "contributor_display" => ["a b c d q|e j l m n o p r t u"] }
         expect(subject.map_record(records[1])).to eq(expected)
       end
     end
 
-    context "Tag 710 ontributor with values in all the subfields" do
+    context "Tag 710 contributor with values in all the subfields" do
       it "extracts creator field idisaplayexpected way" do
         expected = { "contributor_display" => ["a b d c|e l m n o p t"] }
         expect(subject.map_record(records[2])).to eq(expected)
       end
     end
 
-    context "Tag 711 ontributor with values in all the subfields" do
+    context "Tag 711 contributor with values in all the subfields" do
       it "extracts creator field in an expected way" do
         expected = { "contributor_display" => ["a n d c j|e l o p t"] }
         expect(subject.map_record(records[3])).to eq(expected)
       end
     end
 
-    context "All threontributor fields (700, 710, 711) with all values." do
+    context "All three contributor fields (700, 710, 711) with all values." do
       it "extracts creator fields display expected way" do
         expected = { "contributor_display" => ["a b c q d|e j l m n o p r t u",
                                          "a b d c|e l m n o p t",
                                          "a n d c j|e l o p t"] }
         expect(subject.map_record(records[4])).to eq(expected)
+      end
+    end
+  end
+
+  describe "#extract_lang" do
+    let(:path) { "extract_lang.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "language_facet", extract_lang
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "no lang (nil)" do
+      it "does not error out" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "041a is 6 chars long" do
+      it "only translates first 3 chars" do
+        expect(subject.map_record(records[1])).to eq("language_facet" => ["English"])
+      end
+    end
+
+    context "041d is 6 chars long" do
+      it "translates all codes" do
+        expect(subject.map_record(records[2])).to eq("language_facet" => ["English", "Spanish"])
       end
     end
   end
@@ -341,9 +382,15 @@ RSpec.describe Traject::Macros::Custom do
         end
       end
 
+      context "records with a PRT subfield 9 that equals Not Available are NOT Online" do
+        it "does not map to Online" do
+          expect(subject.map_record(records[16])).to_not eq("availability_facet" => ["Online"])
+        end
+      end
+
       context "Archive-it links are NOT Online" do
         it "does not include ARCHIVE_IT_LINKS in Online records" do
-          expect(subject.map_record(records[9])).to_not eq("Online")
+          expect(subject.map_record(records[9])).to_not eq("availability_facet" => ["Online"])
         end
       end
     end
@@ -557,6 +604,46 @@ RSpec.describe Traject::Macros::Custom do
   end
 
 
+  describe "#extract_subject_display" do
+    before do
+      subject.instance_eval do
+        to_field "subject_display", extract_subject_display
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a record doesn't have subject topics" do
+      let(:path) { "subject_topic_missing.xml" }
+      it "does not map a subject_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when a record has subjects" do
+      let(:path) { "subject_display.xml" }
+      it "maps data from 6XX fields in expected way" do
+        expected = [
+          "Kennedy, John F. (John Fitzgerald), 1917-1963 — Pictorial works",
+          "Onassis, Jacqueline Kennedy, 1929- — Pictorial works",
+          "Kennedy, John F. (John Fitzgerald), 1917-1963 — Assassination — Pictorial works",
+          "Presidents — United States — Pictorial works",
+          "Presidents' spouses — United States — Pictorial works",
+          "Photography — Social aspects — United States — History — 20th century",
+          "Mass media — Social aspects — United States — History — 20th century",
+          "Popular culture — United States — History — 20th century",
+          "Art and popular culture — United States — History — 20th century",
+          "United States — Civilization — 1945-",
+          "Kennedy family"
+        ]
+        expect(subject.map_record(records[0])).to eq(
+          "subject_display" => expected
+        )
+      end
+    end
+  end
+
   describe "#extract_subject_topic_facet" do
     before do
       subject.instance_eval do
@@ -582,7 +669,7 @@ RSpec.describe Traject::Macros::Custom do
       let(:path) { "subject_topic.xml" }
       it "maps data from 650 to the expected field" do
         expect(subject.map_record(records[0])).to eq(
-          "subject_topic_facet" => ["The Queen is Dead--Meat is Murder"]
+          "subject_topic_facet" => ["The Queen is Dead — Meat is Murder"]
         )
       end
 
@@ -591,6 +678,406 @@ RSpec.describe Traject::Macros::Custom do
           # Note that value is flattened
           "subject_topic_facet" => ["Subject Topic moves on to the year 3000"]
           )
+      end
+    end
+  end
+
+  describe "#libraries_based_negative_boost" do
+    let(:path) { "libraries.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "libraries_based_boost_t", library_based_boost
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when Presser is the only library" do
+      it "returns negative_boost" do
+        expect(subject.map_record(records[0])).to eq("libraries_based_boost_t" => ["no_boost"])
+      end
+    end
+
+    context "when Presser is not present" do
+      it "returns boost" do
+        expect(subject.map_record(records[1])).to eq("libraries_based_boost_t" => ["boost"])
+      end
+    end
+
+    context "when Presser and another library are both present, with presser first" do
+      it "returns boost" do
+        expect(subject.map_record(records[2])).to eq("libraries_based_boost_t" => ["boost"])
+      end
+    end
+
+    context "when Presser and another library are both present, with the other library first" do
+      it "returns boost" do
+        expect(subject.map_record(records[3])).to eq("libraries_based_boost_t" => ["boost"])
+      end
+    end
+  end
+
+  describe "#suppress_items" do
+    let(:path) { "lost_missing_technical.xml" }
+
+    before do
+      subject.instance_eval do
+        to_field "suppress_items_b", suppress_items
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a single item is lost" do
+      it "maps lost record" do
+        expect(subject.map_record(records[0])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when a single item is missing" do
+      it "maps missing record" do
+        expect(subject.map_record(records[1])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when a single item is technical" do
+      it "maps technical record" do
+        expect(subject.map_record(records[2])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when there are multiple items and one of the records is lost" do
+      it "does not map to the field" do
+        expect(subject.map_record(records[3])).to eq({})
+      end
+    end
+  end
+
+  describe "#extract_oclc_number" do
+    let(:path) { "oclc.xml" }
+
+    before do
+      subject.instance_eval do
+        to_field "oclc_number_display", extract_oclc_number
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when there is no 035 or 979 field" do
+      it "does not map record" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[1])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[2])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field and 035 field includes OCoLC" do
+      it "maps record" do
+        expect(subject.map_record(records[3])).to eq("oclc_number_display" => ["1042418854"])
+      end
+    end
+
+    context "when 979 field includes ocn" do
+      it "maps record" do
+        expect(subject.map_record(records[4])).to eq("oclc_number_display" => ["986990990"])
+      end
+    end
+
+    context "when 979 field includes on" do
+      it "maps record" do
+        expect(subject.map_record(records[5])).to eq("oclc_number_display" => ["1012488209"])
+      end
+    end
+
+    context "when 979 field and 035 field have different OCLC numbers" do
+      it "maps record" do
+        expect(subject.map_record(records[6])).to eq("oclc_number_display" => ["938995310", "882543310"])
+      end
+    end
+
+    context "when 035 field includes subfield 9 with ExL" do
+      it "does not map record" do
+        expect(subject.map_record(records[7])).to eq({})
+      end
+    end
+  end
+
+  describe "#extract_holdings_summary" do
+    before do
+      subject.instance_eval do
+        to_field "holdings_summary_display", extract_holdings_summary
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a record doesn't have summary holdings" do
+      let(:path) { "subject_topic_missing.xml" }
+      it "does not map holdings_summary_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when a record has summary holdings" do
+      let(:path) { "holdings_summary.xml" }
+      it "maps data from HLD866 fields in expected way" do
+        expected = [
+          "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"
+        ]
+        expect(subject.map_record(records[0])).to eq(
+          "holdings_summary_display" => expected
+        )
+      end
+    end
+  end
+
+  describe "#extract_work_access_point" do
+    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+    before do
+      subject.instance_eval do
+        to_field "work_access_point", extract_work_access_point
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "All fields available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='130'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps only the 130 field" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d"])
+      end
+    end
+
+    context "Only 130 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 240" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a s"])
+      end
+    end
+
+    context "Only 130 and 100 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='240'>
+    <subfield code='a'>a</subfield>
+    <subfield code='s'>s</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 110 . 240" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d . a s"])
+      end
+    end
+
+    context "Only 130 and 240 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a p"])
+      end
+    end
+
+    context "Only 130 and 240 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>a</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 100 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a q . a p"])
+      end
+    end
+
+    context "130, 240 and 100 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='110'>
+    <subfield code='a'>a</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps 110 . 245" do
+        expect(subject.map_record(record)).to eq("work_access_point" => ["a d . a p"])
+      end
+    end
+
+    context "130, 240, 100, 110 not available" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='245'>
+    <subfield code='a'>a</subfield>
+    <subfield code='p'>p</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "skips the map" do
+        expect(subject.map_record(record)).to eq({})
+      end
+    end
+  end
+
+  describe "#extract_purchase_order" do
+    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+    before do
+      subject.instance_eval do
+        to_field "purchase_order", extract_purchase_order
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "with mathing 902a field" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>EBC-POD</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps to true" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [true])
+      end
+    end
+
+    context "without a matching 902a field" do
+      let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>Buzz</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                     " }
+
+      it "maps to false" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [false])
+      end
+    end
+
+    context "without a 902a field" do
+      let(:record_text) { "
+<record>
+</record>
+                     " }
+
+      it "maps to false" do
+        expect(subject.map_record(record)).to eq("purchase_order" => [false])
       end
     end
   end

@@ -35,8 +35,9 @@ end
 
 def run_solr(environment, solr_params)
   url = "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip"
-  md5sum = "1c8da8ac0992ca40a33c3ebaf0c1c359"
-  solr_params.merge!(url: url, md5sum: md5sum)
+  mirror_url = "http://lib-solr-mirror.princeton.edu/dist/"
+  checksum = "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip.sha1"
+  solr_params.merge!(url: url, checksum: checksum, mirror_url: mirror_url, ignore_checksum: true)
   solr_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr")
   SolrWrapper.wrap(solr_params) do |solr|
     ENV["SOLR_TEST_PORT"] = solr.port

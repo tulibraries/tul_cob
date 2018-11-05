@@ -12,21 +12,23 @@
 //
 //= require jquery
 //= require 'blacklight_advanced_search'
-//= require chosen-jquery
 //= require jquery_ujs
 //= require turbolinks//
 // Required by Blacklight
 //= require blacklight/blacklight
 
 //= require blacklight_alma/blacklight_alma
-
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/tab
+//= require bootstrap/dropdown
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
 
 //= require_tree .
 
-$(window).load(function(){	
+$(window).load(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
@@ -46,7 +48,7 @@ $(window).on('resize', function() {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
 	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
+		$('#appliedParams').insertAfter('h2.top-content-title');
 	}
 	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
@@ -56,15 +58,18 @@ $(window).on('resize', function() {
 	}
 });
 
-$(document).ajaxComplete(function(){	
+$(document).ajaxComplete(function(){
 	if ($(window).width() < 768) {
 		$('#appliedParams').insertAfter('#sidebar');
 	}
 	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
+		$('#appliedParams').insertAfter('h2.top-content-title');
 	}
 });
 
+$(document).on('turbolinks:load', function() {
+   $(window).trigger('load.bs.select.data-api');
+});
 
 $(document).ready(function(){
 	$(this).find(':input[id=renew_selected]').prop('disabled', true);
@@ -130,24 +135,5 @@ function loadArticleIframe(id) {
       "class": "bl_alma_iframe",
       id: 'iframe-' + id,
     }).appendTo(id);
-  }
-}
-
-/**
- * Find either the article or catalog "Online" link and click on it.
- */
-function toggleOnlineOnly() {
-  var online_facet = [
-    "facet_online_resources", "remove-facet-availability-online",
-    "facet_online", "remove-facet-online"
-  ]
-  .map(function(class_name) {
-    return document.getElementsByClassName(class_name)[0];
-  }).find(function(element){
-    return element !== undefined;
-  })
-
-  if (online_facet !== undefined) {
-    online_facet.click()
   }
 }

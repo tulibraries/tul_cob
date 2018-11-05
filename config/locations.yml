@@ -167,6 +167,8 @@ default: &default
   SCRC:
     rarestacks: Reading Room
     UNASSIGNED: Location information not available
+  KIOSK:
+    kiosk: Laptop Kiosks
 
 test:
   <<: *default

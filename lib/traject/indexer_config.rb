@@ -25,6 +25,8 @@ require "traject/macros/marc_format_classifier"
 extend Traject::Macros::MarcFormats
 
 # Include custom traject macros
+# include unicode normalize for thread safety
+require "unicode_normalize/normalize.rb"
 require "traject/macros/custom"
 extend Traject::Macros::Custom
 
@@ -39,16 +41,23 @@ settings do
   provide "solr_writer.commit_on_close", "false"
 end
 
+each_record do |record, context|
+  if record.fields("245").any? { |f| f["a"].to_s.downcase.include? "host bibliographic record for boundwith item barcode" }
+    context.skip!("Skipping Boundwith host record")
+  end
+end
+
 to_field "id", extract_marc("001", first: true)
 to_field "marc_display_raw", get_xml
 to_field("text", extract_all_marc_values, &to_single_string)
-to_field "language_facet", marc_languages("008[35-37]:041a:041d:")
-to_field "language_display", marc_languages("008[35-37]:041a:041d:041e:041g:041j")
+to_field "language_facet", extract_lang("008[35-37]:041a:041d:041e:041g:041j")
+to_field "language_display", extract_lang("008[35-37]:041a:041d:041e:041g:041j")
 to_field("format", marc_formats, &normalize_format)
 
 # Title fields
 
 to_field "title_statement_display", extract_marc("245abcfgknps", alternate_script: false)
+to_field "title_truncated_display", extract_marc("245abcfgknps", alternate_script: false), &truncate(300)
 to_field "title_statement_vern_display", extract_marc("245abcfgknps", alternate_script: :only)
 to_field "title_uniform_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: false)
 to_field "title_uniform_vern_display", extract_marc("130adfklmnoprs:240adfklmnoprs:730ail", alternate_script: :only)
@@ -59,6 +68,8 @@ to_field "title_t", extract_marc_with_flank("245a")
 to_field "subtitle_t", extract_marc_with_flank("245b")
 to_field "title_statement_t", extract_marc_with_flank("245abfgknps")
 to_field "title_uniform_t", extract_marc_with_flank("130adfklmnoprs:240adfklmnoprs:730abcdefgklmnopqrst")
+
+to_field "work_access_point", extract_work_access_point
 
 ATOZ = ("a".."z").to_a.join("")
 ATOU = ("a".."u").to_a.join("")
@@ -92,7 +103,10 @@ to_field "author_sort", extract_marc("100abcdejlmnopqrtu:110abcdelmnopt:111acdej
 
 # Publication fields
 # For the imprint, make sure to take RDA-style 264, second indicator = 1
-to_field "imprint_display", extract_marc("260abcefg3:264|*0|abc3:264|*1|abc3:264|*2|abc3:264|*3|abc3", alternate_script: false)
+to_field "imprint_display", extract_marc("260abcefg3:264|*1|abc3", alternate_script: false)
+to_field "imprint_prod_display", extract_marc("264|*0|abc3", alternate_script: false)
+to_field "imprint_dist_display", extract_marc("264|*2|abc3", alternate_script: false)
+to_field "imprint_man_display", extract_marc("264|*3|abc3", alternate_script: false)
 to_field "imprint_vern_display", extract_marc("260abcefg3:264|*1|abc3", alternate_script: :only)
 to_field "edition_display", extract_marc("250a:254a", trim_punctuation: true, alternate_script: false)
 to_field "pub_date", extract_pub_date
@@ -119,6 +133,7 @@ to_field "audience_display", extract_marc("385am")
 to_field "creator_group_display", extract_marc("386aim")
 to_field "date_period_display", extract_marc("388a")
 to_field "collection_display", extract_marc("973at")
+to_field "collection_area_display", extract_marc("974at")
 
 # Series fields
 to_field "title_series_display", extract_marc("830av:490av:440anpv:800abcdefghjklmnopqrstuv:810abcdeghklmnoprstuv:811acdefghjklnpqstuv", alternate_script: false)
@@ -142,14 +157,14 @@ to_field "note_copyright_display", extract_marc("540a:542|1*|abcdefghijklmnopqr3
 to_field "note_bio_display", extract_marc("545abu")
 to_field "note_finding_aid_display", extract_marc("555abcdu3")
 to_field "note_custodial_display", extract_marc("561a")
-to_field "note_binding_display", extract_marc("563a")
+to_field "note_binding_display", extract_marc("5633a")
 to_field "note_related_display", extract_marc("580a")
 to_field "note_accruals_display", extract_marc("584a")
 to_field "note_local_display", extract_marc("590a")
 
 # Subject fields
-to_field "subject_facet", extract_marc("600abcdefghklmnopqrstuxyz:610abcdefghklmnoprstuvxy:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
-to_field "subject_display", extract_marc("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz", separator: " — ", trim_punctuation: true)
+to_field "subject_facet", extract_subject_display
+to_field "subject_display", extract_subject_display
 to_field "subject_topic_facet", extract_subject_topic_facet
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
 to_field "subject_region_facet", marc_geo_facet
@@ -168,7 +183,9 @@ to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:6
 
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")
+to_field "call_number_t", extract_marc_with_flank("HLDhi")
 to_field "call_number_alt_display", extract_marc("ITMjk")
+to_field "call_number_alt_t", extract_marc_with_flank("ITMjk")
 to_field "library_facet", extract_library
 to_field "library_location_display", extract_library_shelf_call_number
 
@@ -187,15 +204,20 @@ to_field "url_finding_aid_display", extract_url_finding_aid
 to_field "availability_facet", extract_availability
 to_field "location_display", extract_marc("HLDbc")
 to_field "holdings_with_no_items_display", extract_holdings_with_no_items
+to_field "suppress_items_b", suppress_items
+to_field "holdings_summary_display", extract_holdings_summary
 
 # Identifier fields
 to_field("isbn_display",  extract_marc("020a", separator: nil), &normalize_isbn)
+to_field("alt_isbn_display",  extract_marc("020z:776z", separator: nil), &normalize_isbn)
 to_field("issn_display", extract_marc("022a", separator: nil), &normalize_issn)
+to_field("alt_issn_display", extract_marc("022lz:776x", separator: nil), &normalize_issn)
 to_field("lccn_display", extract_marc("010ab", separator: nil), &normalize_lccn)
 to_field "pub_no_display", extract_marc("028ab")
 to_field "sudoc_display", extract_marc("086|0*|a")
 to_field "diamond_id_display", extract_marc("907a")
 to_field "gpo_display", extract_marc("074a")
+to_field "oclc_number_display", extract_oclc_number
 to_field "alma_mms_display", extract_marc("001")
 
 # Preceding Entry fields
@@ -214,6 +236,14 @@ to_field "absorbed_in_part_by_display", extract_marc("785|05|iabdghkmnopqrstuxyz
 to_field "split_into_display", extract_marc("785|06|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "merged_to_form_display", extract_marc("785|07|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", trim_punctuation: true)
+
+# Boost records with holdings from specific libraries
+# we actually want to negative boost specific libraries, but that is not possible
+# so we are going to boost everything except the less relevant libraries
+to_field "library_based_boost_t", library_based_boost
+
+to_field "bound_with_ids", extract_marc("ADFa")
+to_field "purchase_order", extract_purchase_order
 
 # Administrative data enrichment fields
 # a=create date, b=update date, c=Suppress from publishing, d=Originating system, e=Originating system ID, f=Originating system version

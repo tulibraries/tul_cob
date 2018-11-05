@@ -1,52 +1,35 @@
-<div class="container user-loans">
+<div class="container user-loans" data-controller="loans" data-loans-url=<%= user_loans_path %>>
   <h2 class="user_section_title">My Items</h2>
   <div id="renewal-warning" aria-live="assertive"></div>
-  <table class="table table-hover table-responsive" border="0">
-    <caption>Table of Current Loans for this user</caption>
-    <thead>
-      <tr>
-        <th width="2%">#</th>
-        <th width="40%">Title</th>
-        <th width="10%">Due</th>
-        <th width="10%">Barcode</th>
-        <th width="15%">Call Number</th>
-        <th width="9%" class="renew">
-          <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
-        </th>
-        <th width="9%"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= form_tag(users_renew_selected_path, method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
-        <% @user.loans.each_with_index do |loan, counter| %>
-          <tr>
-            <td><%= counter + 1 %></td>
-            <td><%= loan.title %></td>
-            <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
-            <td><% if loan.respond_to? :barcode %><%= loan.item_barcode %><% end %></td>
-            <td><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
-            <td class="renewal-check">
-              <div class="form-check">
-                <label class="form-check-label">
-                <% unless loan.renewable? %>
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" title="unable to renew"></span>
-                <% else %>
-                  <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
-                  <span class="hide-me">Renew this loan</span>
-                <% end %>
-                </label>
-              </div>
-            </td>
-            <td id="<%= loan.loan_id %>" class="overdue"><% if loan.overdue? %><%= loan.loan_status %><% end %></td>
-          </tr>
-        <% end %>
-          <tr>
-            <td class="submit" colspan="7" style="vertical-align:text-bottom;">
-            <div class="col col-md-10 text-left">Items marked with the unable to renew <span class="glyphicon glyphicon-exclamation-sign"></span> icon are not eligible for renewal at this time and are disabled.  Please visit your library's Circulation Desk for more information visit your library's Circulation Desk or <a href='http://library.temple.edu/asktulibraries'>Ask a Librarian</a>.</div>
-            <div class="col col-md-2"><%= submit_tag "Renew Selected", class: "btn btn-white", id: "renew_selected" %></div></td>
-            </tr>
-
+  <%= form_tag(users_renew_selected_path, method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
+    <table class="table table-hover table-responsive" border="0">
+      <caption>Table of Current Loans for this user</caption>
+      <thead>
+        <tr>
+          <th width="2%">#</th>
+          <th width="40%">Title</th>
+          <th width="10%">Due</th>
+          <th width="10%">Barcode</th>
+          <th width="15%">Call Number</th>
+          <th width="9%" class="renew">
+            <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
+          </th>
+          <th width="9%"></th>
+        </tr>
+      </thead>
+      <% if browser.ie?("<11") %>
+      <tbody>
+        <%= render partial: "loans_details", locals: {loans: current_user.loans} %>
+      </tbody>
+      <% else %>
+      <tbody data-target="loans.table">
+        <p class="text-center" data-target="loans.spinner">
+          <span class="loading-message glyphicon glyphicon-refresh spinning" >
+          </span><span class="loading-message"> Loading Items...</span>
+        </p>
+      </tbody>
       <% end %>
-    </tbody>
-  </table>
+    </table>
+
+  <% end %>
 </div>

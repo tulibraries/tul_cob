@@ -1,31 +1,35 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
-<div class="col-sm-12">
-<div id="record-view-iframe"  class="panel panel-default">
-  <div class="availability-panel-heading panel-heading">
-    <h4 id="availability-heading">Availability</h4>
-  </div>
 
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel col-sm-10">
+  <div class="availability-panel-heading panel-heading">
+    <h4 id="availability-heading" class="text-left">Availability</h4>
+    <div id="heading-request">
+      <div id="requests-container" class="hidden">
+        <% if user_signed_in? %>
+          <%= request_modal(document.id, document_counter="0", @pickup_locations, @request_level) %>
+        <% else %>
+          <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div data-controller="show" data-show-url="<%= item_url(document.id) %>" class="physical-holding-panel panel-body">
+    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
       <div class="panel-content" >
-        <div data-target="show.spinner" class="spinner">
-          <span class="glyphicon glyphicon-refresh glyphicon-spin" role="spinbutton"></span>
+        <div id="avail-spinner" data-target="show.spinner" class="spinner">
+          <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>
           Loading Availability
         </div>
         <div class="table-wrapper hidden">
           <div data-target="show.panel"></div>
-          <div>
-            <%= render "check_holdings", document: document %>
-          </div>
+          <div><%= render "check_holdings", document: document %></div>
+        </div>
       </div>
-      </div>
+    </div>
   <% end %>
-  <% if aeon_request_button(document) %>
-    <%= render "aeon_request", :document => document %>
-  <% end %>
-</div>
+
 </div>

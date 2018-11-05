@@ -2,18 +2,18 @@
   <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
   <div class="row">
     <div class="col-sm-2">
-      <label for=<%= "f_#{count}" %> class="sr-only">Options for advanced search</label>
+      <label for="<%= "f_#{count}" %>" class="sr-only">Options for advanced search</label>
       <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), :class=>"form-control") %>
     </div>
 
     <div class="col-sm-2">
-      <label for="<%= "operator_#{count}" %>" class="sr-only">Operator</label>
-      <%= select_tag("operator_#{count}", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator_#{count}") %>
+      <label for="<%= "operator[q_#{count}]" %>" class="sr-only">Operator</label>
+      <%= select_tag("operator[q_#{count}]", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator[q_#{count}}") %>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-sm-4">
     <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
-    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false", "data-target": "primo.q#{count}" %>
     </div>
   </div>
   <div class="row booleans">

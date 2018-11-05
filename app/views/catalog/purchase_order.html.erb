@@ -1,0 +1,38 @@
+<% doc_presenter = show_presenter(@document) %>
+
+<div class="modal-header">
+<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+<h1 class="modal-title">Request Rapid Access</h1>
+  </div>
+<%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => 'purchase_order_form', :class => "form-horizontal ajax_form", :method => :post do %>
+
+  <div class="modal-body">
+    <p>Please submit this form to request access to this online material:
+    <strong><%= doc_presenter.html_title %></strong>. Access will generally be
+    enabled within 2 business days. An email notification will be sent when the
+    material is available for use.</p>
+
+    <p>
+    Also, you may add extra instructions for this order in the messages field below if desired.
+    </p>
+
+    <%= render :partial=>'/flash_msg' %>
+
+    <%= render_email_form_field %>
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="message">
+        <%= t('blacklight.email.form.message') %>
+      </label>
+      <div class="col-sm-10">
+        <%= text_area_tag :message, params[:message], class: 'form-control' %>
+      </div>
+    </div>
+
+    <%=hidden_field_tag "id", @document.id %>
+  </div>
+
+  <div class="modal-footer">
+  <button type="submit" class="btn btn-primary">Request</button>
+  </div>
+<% end %>
