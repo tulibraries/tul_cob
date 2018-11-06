@@ -1,12 +1,12 @@
 <button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
 
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
-<% unless @items.empty? || @unsuppressed_items.values.include?([]) %>
+<% unless @items.values.all?(&:empty?) %>
   <div class="availability-modal">
     <div class="modal-only">
       <%= render :partial => "paginate_compact", :object => @response %>
     </div>
-  <% sort_order_for_holdings(@unsuppressed_items).each do |key,items| %>
+  <% sort_order_for_holdings(@items).each do |key,items| %>
     <table id="availability-container" class="table table-responsive border-bottom">
       <thead>
         <tr class="sr-only">
