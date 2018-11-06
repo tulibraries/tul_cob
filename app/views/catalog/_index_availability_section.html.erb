@@ -25,9 +25,10 @@
       </div>
 
       <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container">
-        <div><%= render_holdings_summary_table(document) %></div>
+
 
         <div class="table-wrapper hidden">
+          <div><%= render_holdings_summary_table(document) %></div>
           <div data-target="availability.panel"></div>
           <div><%= render "check_holdings", document: document, document_counter: document.id %></div>
         </div>
