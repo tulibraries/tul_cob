@@ -34,6 +34,10 @@ module Blacklight::PrimoCentral
       solr_to_primo_keys.invert
     end
 
+    def primo_to_solr_search(field)
+      (PrimoCentralController.blacklight_config.search_fields.dig(field, "catalog_map") || field).to_s
+    end
+
     private
 
       SOLR_TO_PRIMO_FACETS = {
