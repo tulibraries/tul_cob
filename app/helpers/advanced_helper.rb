@@ -74,6 +74,7 @@ end
 module BlacklightAdvancedSearch
   class QueryParser
     include AdvancedHelper
+    include Blacklight::PrimoCentral::SolrAdaptor
 
     def keyword_op
       # NOTs get added to the query. Only AND/OR are operations
@@ -131,6 +132,7 @@ module BlacklightAdvancedSearch
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
+        field = primo_to_solr_search(field)
         queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         queries << ops.shift
       end
