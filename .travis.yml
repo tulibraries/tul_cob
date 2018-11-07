@@ -19,6 +19,8 @@ before_script:
 - RAILS_ENV=test bundle exec rails webpacker:compile
 
 script:
+- bundle exec rake solr:stop
+- bundle exec solr_wrapper clean
 - bundle exec rubocop
 - RELEVANCE=y bundle exec rake ci
 - yarn test
