@@ -20,7 +20,7 @@ before_script:
 
 script:
 - bundle exec solr_wrapper &
-- sleep 300
+- sleep 555
 - bundle exec rubocop
 - java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 -Xmx1024m --stop 
 - bundle exec solr_wrapper clean
