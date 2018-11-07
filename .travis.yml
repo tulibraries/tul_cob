@@ -20,10 +20,10 @@ before_script:
 
 script:
 - bundle exec solr_wrapper &
+- bundle exec rubocop
 - ls tmp/ && ls tmp/solr/ && ls tmp/solr/server/
 - java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 -Xmx1024m --stop 
 - bundle exec solr_wrapper clean
-- bundle exec rubocop
 - RELEVANCE=y bundle exec rake ci
 - yarn test
 notifications:
