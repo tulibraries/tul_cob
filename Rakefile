@@ -15,3 +15,5 @@ else
   Rake::Task[:default].clear
   task default: :ci
 end
+
+require 'solr_wrapper/rake_task'
