@@ -135,3 +135,20 @@
 	display: flex;
 	justify-content: center;
 }
+
+.explanation-div {
+	display: inline-block;
+	margin: -30px auto 20px 25%;
+}
+
+.noresults a {
+	text-decoration: underline;
+}
+
+.noresults li {
+	margin-left: -15px !important;
+}
+
+#documents.noresults {
+	border-top: none;
+}

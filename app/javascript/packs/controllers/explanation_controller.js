@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "catalog", "primo_central", "bento" ]
+  static targets = [ "catalog", "primo_central", "bento", "books", "journals" ]
 
   catalog() {
     this.showOnce("catalog")
@@ -15,6 +15,13 @@ export default class extends Controller {
     this.showOnce("bento")
   }
 
+  books() {
+    this.showOnce("books")
+  }
+
+  journals() {
+    this.showOnce("journals")
+  }
 
   showOnce(namespace) {
     let reg = new RegExp("(?:(?:^|.*;\s*)" + namespace + "Once\s*\=\s*([^;]*).*$)|^.*$")

@@ -53,4 +53,30 @@ RSpec.describe PrimoCentralHelper, type: :helper do
       end
     end
   end
+
+  describe "#empty_article_response?(response)" do
+    context "response has no results" do
+      let(:response) { {
+        "response" => { "numFound" => 0, "start" => 0, "docs" => [] },
+        "facets" => [],
+        "stats" => { "stats_fields" => {} } }
+      }
+
+      it "is true" do
+        expect(empty_article_response?(response)).to be true
+      end
+    end
+
+    context "response has no results" do
+      let(:response) { {
+        "response" => { "numFound" => 3, "start" => 0, "docs" => [] },
+        "facets" => [],
+        "stats" => { "stats_fields" => {} } }
+      }
+
+      it "is true" do
+        expect(empty_article_response?(response)).to be false
+      end
+    end
+  end
 end

@@ -225,7 +225,7 @@ module ApplicationHelper
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
-  # TODO: move to decorator or eninge class.
+  # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
     case results.engine_id
@@ -298,7 +298,22 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
+  end
+
+  def explanation_translations(controller_name)
+    case controller_name
+    when "books"
+      t("#{controller_name}.explanation_html", href: link_to(t("books.explanation_href"), t("books.explanation_link"), target: "_blank"))
+    when "primo_central"
+      t("articles.explanation_html")
+    when "journals"
+      t("#{controller_name}.explanation_html")
+    when "catalog"
+      t("blacklight.explanation_html")
+    else
+      ""
+    end
   end
 
   def ris_path(opts = {})

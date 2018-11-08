@@ -75,4 +75,8 @@ module PrimoCentralHelper
     # Hashing because () characters mess with javacript.
     @document["pnxId"].parameterize
   end
+
+  def empty_article_response?(response)
+    response.dig("response", "numFound") == 0
+  end
 end

@@ -1,0 +1,14 @@
+<h3><%= t("no_results.title", engine: "journal") %></h3>
+<hr />
+
+<div id="documents" class="noresults">
+  <ul>
+    <li><%= t("bento.zero_results.scholarly_journals_html", href: link_to(t("bento.zero_results.scholarly_journals_href"), search_path)) %></li>
+    <li><%= t("no_results.modify_words") %></li>
+    <li><%= t("bento.zero_results.general_keywords") %></li>
+    <li>
+      <%= help_link %>
+      <%= t("no_results.for_help") %>
+    </li>
+  </ul>
+</div>

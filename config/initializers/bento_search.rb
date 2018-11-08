@@ -1,5 +1,3 @@
-
-
 # frozen_string_literal: true
 
 BentoSearch.register_engine("blacklight") do |conf|
@@ -13,6 +11,7 @@ BentoSearch.register_engine("journals") do |conf|
   conf.engine = "BentoSearch::JournalsEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_journal_results"
   end
 end
 
@@ -20,6 +19,7 @@ BentoSearch.register_engine("books") do |conf|
   conf.engine = "BentoSearch::BooksEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_book_results"
   end
 end
 
@@ -43,5 +43,6 @@ BentoSearch.register_engine("articles") do |conf|
   conf.engine = "BentoSearch::PrimoEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_article_results"
   end
 end
