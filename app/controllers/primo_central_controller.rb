@@ -6,7 +6,7 @@ class PrimoCentralController < CatalogController
   include Blacklight::Document::Export
 
   add_breadcrumb "Articles", :back_to_articles_path, only: [ :show ]
-  add_breadcrumb "Article", :primo_central_document_path, only: [ :show ]
+  add_breadcrumb "Record", :primo_central_document_path, only: [ :show ]
 
   helper_method :browse_creator
   helper_method :tags_strip
