@@ -24,6 +24,7 @@ script:
 - bundle exec rubocop
 - java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 -Xmx1024m --stop 
 - bundle exec solr_wrapper clean
+- sleep 555
 - RELEVANCE=y bundle exec rake ci
 - yarn test
 notifications:
