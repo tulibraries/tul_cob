@@ -5,6 +5,7 @@ require "solr_wrapper" unless Rails.env.production?
 desc "Run test suite"
 task :ci do
   ENV["DO_INGEST"] = "true"
+  system "java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 --stop"
   system "bundle exec solr_wrapper clean"
   Rake::Task["rspec"].invoke
 end
