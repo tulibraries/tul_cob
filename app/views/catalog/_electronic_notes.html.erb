@@ -1,0 +1,10 @@
+<div class="electronic-notes">
+  <strong>Notes:</strong>
+  <% collection_notes.values.select(&:present?).each do |note| %>
+    <p><%= note %></p>
+  <% end %>
+
+  <% service_notes.values.select(&:present?).each do |note| %>
+    <p><%= note %></p>
+  <% end %>
+</div>

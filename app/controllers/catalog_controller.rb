@@ -81,6 +81,8 @@ class CatalogController < ApplicationController
         url_finding_aid_display
         bound_with_ids
         purchase_order
+        electronic_collection_id
+        electronic_service_id
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
