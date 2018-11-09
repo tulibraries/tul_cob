@@ -157,6 +157,7 @@
 }
 
 a.advanced_search {
+	display: inline-block;
 	font-weight: bold;
 	letter-spacing: 1px;
 }
@@ -229,4 +230,21 @@ nav ul.navbar li.nav-btn.active a {
     display: box;
     box-pack: center;
     box-align: center;
+}
+
+#catalog-search {
+	height: 25px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-form {
+	height: 25px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: -40px;
+}
+
+#search-navbar {
+	padding-left: 40px;
 }
