@@ -22,7 +22,8 @@ class AlmawsController < CatalogController
 
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    #@items is mutated by unsuppressed_holdings helper method
+    #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
+    helpers.filter_unwanted_locations(@items)
     helpers.unsuppressed_holdings(@items, @document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
