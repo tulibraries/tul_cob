@@ -30958,4 +30958,322 @@
       <subfield code="f">SCRC</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>02254cam a2200373 i 4500</leader>
+    <controlfield tag="005">20180529085415.0</controlfield>
+    <controlfield tag="008">150105s2015 ilu b 001 0 eng</controlfield>
+    <controlfield tag="001">991036904803803811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2014040988</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9780838912997</subfield>
+      <subfield code="q">(paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0838912990</subfield>
+      <subfield code="q">(paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)899738043</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">DLC</subfield>
+      <subfield code="d">IEH</subfield>
+      <subfield code="d">FDA</subfield>
+      <subfield code="d">MEU</subfield>
+      <subfield code="d">KSU</subfield>
+      <subfield code="d">ILC</subfield>
+      <subfield code="d">CDX</subfield>
+      <subfield code="d">C9Y</subfield>
+      <subfield code="d">YDXCP</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">OCLCQ</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">BDX</subfield>
+      <subfield code="d">CHVBK</subfield>
+      <subfield code="d">IHI</subfield>
+      <subfield code="d">OCLCO</subfield>
+      <subfield code="d">OCLCA</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="050">
+      <subfield code="a">Z695.64</subfield>
+      <subfield code="b">.H54 2015</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">025.3/473</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Higgins, Colin,</subfield>
+      <subfield code="d">1979-</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Cataloging and managing film and video collections :</subfield>
+      <subfield code="b">a guide to using RDA and MARC21 /</subfield>
+      <subfield code="c">Colin Higgins.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Chicago :</subfield>
+      <subfield code="b">ALA Editions, an imprint of the American Library Association,</subfield>
+      <subfield code="c">[2015]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="264">
+      <subfield code="c">©2015</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xi, 225 pages ;</subfield>
+      <subfield code="c">23 cm</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="b">n</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="b">nc</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="505">
+      <subfield code="t">A brief history of film and its formats -- Production and distribution, cast and crew -- Contents -- Technical features -- Television -- Older, and unusual, formats -- MARC21 records and AACR2 -- Managing your collection -- Streaming video and the future of the optical disc -- Appendix 1. Sample records -- Appendix 2. Symbols found on DVDs, Blu-ray discs, and their cases.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">Many librarians hesitate to embrace film, and develop film collections half-heartedly. A glance at some of the bibliographic description will show a diversity of inconsistent practice. Higgins addresses these concerns, and aims to offer librarians a primer on comprehending film itself: its formats, its vocabularies, and its participants. He shows how your collection development policies must cover questions of currency of titles and the physical storage of the items. (Source of description not identified).</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">Text in English.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Cataloging of motion pictures.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Cataloging of video recordings.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Libraries</subfield>
+      <subfield code="x">Special collections</subfield>
+      <subfield code="x">Motion pictures.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Libraries</subfield>
+      <subfield code="x">Special collections.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)899738043</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180517095847.0</subfield>
+      <subfield code="c">CDC</subfield>
+      <subfield code="d">TEU</subfield>
+      <subfield code="s">DLC</subfield>
+      <subfield code="e">MARCIVE</subfield>
+      <subfield code="e">WCAT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-06-20 18:13:51</subfield>
+      <subfield code="e">ocn899738043</subfield>
+      <subfield code="d">OCLC</subfield>
+      <subfield code="f">20180524100934.0</subfield>
+      <subfield code="a">2018-05-17 13:59:51</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">techserv</subfield>
+      <subfield code="h">Z695.64</subfield>
+      <subfield code="i">.H54 2015</subfield>
+      <subfield code="8">22426486010003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22426486010003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">techserv</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074025878695</subfield>
+      <subfield code="e">techserv</subfield>
+      <subfield code="8">23426485990003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2018-05-17 14:00:24</subfield>
+      <subfield code="i">Z695.64 .H54 2015</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>02425cam a22004218i 4500</leader>
+    <controlfield tag="005">20180926085015.0</controlfield>
+    <controlfield tag="008">180420s2018 mdu b 001 0 eng</controlfield>
+    <controlfield tag="001">991036930502803811</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">2017060262</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781538100639</subfield>
+      <subfield code="q">(cloth : alk. paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1538100630</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">9781538100646</subfield>
+      <subfield code="q">(pbk. : alk. paper)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1538100649</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)1048014985</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">LBSOR/DLC</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="e">rda</subfield>
+      <subfield code="c">DLC</subfield>
+      <subfield code="d">IAX</subfield>
+      <subfield code="d">OCLCO</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="050">
+      <subfield code="a">Z1033.G73</subfield>
+      <subfield code="b">B66 2018</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">025.5/24</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="096">
+      <subfield code="a">Z1033.G73</subfield>
+      <subfield code="b">B699s 2018</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Bonato, Sarah,</subfield>
+      <subfield code="d">1971-</subfield>
+      <subfield code="e">author.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Searching the grey literature :</subfield>
+      <subfield code="b">a handbook for finding annual reports, working papers, white papers, government documents, and more /</subfield>
+      <subfield code="c">Sarah Bonato.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Lanham, Maryland :</subfield>
+      <subfield code="b">Rowman and Littlefield,</subfield>
+      <subfield code="c">[2018]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">xiii, 263 pages ;</subfield>
+      <subfield code="c">23 cm.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">unmediated</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">volume</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="490">
+      <subfield code="a">Medical Library Association books</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">"Searching the Grey Literature is for librarians interested in learning more about grey literature. This book will help you tackle your search successfully, from start to finish. All types of librarians will find the content of this book useful, particularly those in health or social science"--</subfield>
+      <subfield code="c">Provided by publisher.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="505">
+      <subfield code="a">What is grey literature? -- The value of grey literature -- Databases for grey literature -- Searching for dissertations/thesis -- Searching for unpublished clinical trials -- Repositories for grey lit -- Conference proceedings, papers and posters for grey literature -- Grey literature search checklists and other similar sources -- Google for grey literature -- Developing a grey literature search plan -- Grey literature : keeping current with emerging trends and suggested learning tools.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Grey literature.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Grey literature</subfield>
+      <subfield code="x">Bibliography</subfield>
+      <subfield code="x">Methodology.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Medical libraries</subfield>
+      <subfield code="x">Reference services.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="2" tag="650">
+      <subfield code="a">Libraries, Medical.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="8" tag="776">
+      <subfield code="i">Online version:</subfield>
+      <subfield code="a">Bonato, Sarah, 1971- author.</subfield>
+      <subfield code="t">Searching the grey literature</subfield>
+      <subfield code="d">Lanham, Maryland : Rowman and Littlefield, [2018]</subfield>
+      <subfield code="z">9781538100653</subfield>
+      <subfield code="w">(DLC) 2018037143</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="830">
+      <subfield code="a">Medical Library Association books.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(OCoLC)1048014985</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="997">
+      <subfield code="a">20180829103306.0</subfield>
+      <subfield code="c">CDC</subfield>
+      <subfield code="d">TEU</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="e">MARCIVE</subfield>
+      <subfield code="e">WCAT</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-09-26 12:50:15</subfield>
+      <subfield code="e">on1048014985</subfield>
+      <subfield code="d">OCLC</subfield>
+      <subfield code="f">20180921113239.0</subfield>
+      <subfield code="a">2018-08-29 14:44:10</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="HLD">
+      <subfield code="b">GINSBURG</subfield>
+      <subfield code="c">intref</subfield>
+      <subfield code="h">Z1033.G73</subfield>
+      <subfield code="i">B699s 2018</subfield>
+      <subfield code="8">22431407640003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22431407640003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">2</subfield>
+      <subfield code="g">intref</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074501377360</subfield>
+      <subfield code="e">intref</subfield>
+      <subfield code="8">23431407590003811</subfield>
+      <subfield code="a">3</subfield>
+      <subfield code="q">2018-08-29 14:46:22</subfield>
+      <subfield code="i">Z1033.G73 B699s 2018</subfield>
+      <subfield code="d">GINSBURG</subfield>
+      <subfield code="f">GINSBURG</subfield>
+    </datafield>
+  </record>
 </collection>
