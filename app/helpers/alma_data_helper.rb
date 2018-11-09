@@ -103,6 +103,14 @@ module AlmaDataHelper
     end
   end
 
+  def filter_unwanted_locations(items_list)
+    items_list.each_pair { |library, items|
+      items_list[library] = items.reject { |item|
+        item if item.holding_location.match?(/techserv|UNASSIGNED|intref/)
+      }
+    }
+  end
+
   def unsuppressed_holdings(items_list, document)
     solr_holdings = document.fetch("holdings_display", "")
 
