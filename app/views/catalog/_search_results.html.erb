@@ -19,7 +19,7 @@
 <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
 <h2 class="sr-only"><%= t("blacklight.search.search_results") %></h2>
 
-<%- if @response.empty? || empty_article_response?(@response) %>
+<%- if empty_response?(@response) %>
   <%= render "zero_results" %>
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
