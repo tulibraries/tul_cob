@@ -63,7 +63,7 @@ RSpec.describe PrimoCentralHelper, type: :helper do
       }
 
       it "is true" do
-        expect(empty_article_response?(response)).to be true
+        expect(empty_response?(response)).to be true
       end
     end
 
@@ -75,7 +75,7 @@ RSpec.describe PrimoCentralHelper, type: :helper do
       }
 
       it "is true" do
-        expect(empty_article_response?(response)).to be false
+        expect(empty_response?(response)).to be false
       end
     end
   end
