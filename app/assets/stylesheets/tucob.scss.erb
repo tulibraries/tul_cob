@@ -1,10 +1,5 @@
 @import "partials/_vars.scss";
 
-#page-wrapper {
-  min-height: calc(100vh - 291px);
-  background-color: #F4F6F5;
-}
-
 #documents {
   border-radius: 0 0 5px 5px;
   border-top: 1px solid #CCC;
@@ -81,13 +76,57 @@ h1.advanced.page-header a {
 
 .explanation {
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .form-control:focus {
   border-color: gray;
   box-shadow: inset 0 1px 1px rgba(96, 96, 96, 0.075), 0 0 8px rgba(96, 96, 96, 0.6);
   }
+
+/* === HOME PAGES === */
+#page-wrapper {
+  min-height: calc(100vh - 100px) !important;
+  background-color: #F4F6F5;
+  padding-bottom: 50px;
+}
+
+#getting-started {
+  font-size: 16px;
+}
+
+#getting-started a, .everything-explanation a {
+  text-decoration: underline;
+}
+
+.everything-home-list {
+  list-style-type: disc;
+}
+
+.books-home-text {
+  font-size: 16px;
+  text-align: center !important;
+}
+
+/* === NO RESULTS === */
+.no-results-header {
+  border-top: none;
+  float: none;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.no-results-tips {
+  font-size: 16px;
+}
+
+.noresults {
+  padding-bottom: 20px !important;
+}
+
+.not-at-temple {
+  font-size: 16px;
+}
 
 /* === MY LIBRARY ACCOUNT === */
 .user-email-notice {

@@ -1,0 +1,14 @@
+<div id="documents" class="noresults">
+  <p class="no-results-header"><%= t("journals.zero_results.title_html") %></p>
+  <p class="no-results-header"><strong><%= t("journals.zero_results.scholarly_articles") %></strong></p>
+  <div class="no-results-tips">
+    <ul>
+      <li><%= link_to("Articles Search", search_path) %></li>
+      <li><%= t("journals.zero_results.database_finder_html", href: link_to(t("journals.zero_results.database_finder_href"), t("journals.zero_results.database_finder_link"), target: "_blank")) %></li>
+      <li><%= link_to(t("journals.zero_results.find_articles"), t("journals.zero_results.find_articles_link"), target: "_blank") %></li>
+    </ul>
+  </div>
+
+  <%= render "search_suggestions" %>
+
+</div>

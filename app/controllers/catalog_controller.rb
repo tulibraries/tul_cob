@@ -540,6 +540,13 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
+  # Can be overridden by subclass
+  def show_sidebar?
+    has_search_parameters?
+  end
+
+  helper_method :show_sidebar?
+
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"

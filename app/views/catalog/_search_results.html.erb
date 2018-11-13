@@ -1,15 +1,9 @@
-<h2 class="sr-only top-content-title"><%= t('blacklight.search.search_results_header') %></h2>
-
-<% if params[:controller] == "catalog" %>
-  <% @page_title = t('blacklight.catalog_search_results.title') %>
-<% else %>
-  <% @page_title = t('blacklight.article_search_results.title') %>
-<% end %>
+<h2 class="sr-only top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
 
 <% if !cookies.fetch("#{controller_name}Once", false) %>
 <div class="row explantion-wrapper" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
   <div class="col-sm-9 col-lg-10">
-      <p class="explanation"><%= t("blacklight.#{controller_name}_explanation_html") %></p>
+      <p class="explanation"><%= explanation_translations(controller_name) %></p>
   </div>
   <div class="col-md-2">
     <button class="btn btn-link" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
@@ -21,11 +15,11 @@
   <%= render_opensearch_response_metadata %>
 <% end %>
 
-<%= render 'search_header' %>
+<%= render "search_header" %>
 <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
-<h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
+<h2 class="sr-only"><%= t("blacklight.search.search_results") %></h2>
 
-<%- if @response.empty? %>
+<%- if empty_response?(@response) %>
   <%= render "zero_results" %>
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
@@ -33,4 +27,4 @@
   <%= render_document_index %>
 <%- end %>
 
-<%= render 'results_pagination' %>
+<%= render "results_pagination" %>

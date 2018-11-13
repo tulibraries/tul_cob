@@ -16,7 +16,7 @@ module SearchHelper
 
   def render_search?(result, options = {})
     id = result.engine_id
-    !(["more", "resource_types", "journals"].include?(id) &&
+    !(["more", "resource_types"].include?(id) &&
        total_items(result) == 0) &&
     !(is_child_box?(id) && !options[:render_child_box])
   end
@@ -50,7 +50,6 @@ module SearchHelper
       .map { |id, config| config[:linked_engines] }
       .flatten
   end
-
 
   def engine_display_configurations
     @engine_configurations ||= @results.map   { |engine_id, result|

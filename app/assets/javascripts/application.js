@@ -123,7 +123,6 @@ function deselectallchecks() {
 	}
 }
 
-
 function loadArticleIframe(id) {
   var element = $(id)
   var url = element.attr("data-iframe-url")
@@ -139,7 +138,13 @@ function loadArticleIframe(id) {
 }
 
 $(document).on('turbolinks:load', function() {
+	if ($("span.page_entries").empty()) {
+		$("#sortAndPerPage").remove();
+		$("#documents").css("border", "none");
+	}
+
  	if ($("div.navbar-form").length == 0) {
  		$("#search-navbar").css("padding-left", "15%");
  	}
  });
+
