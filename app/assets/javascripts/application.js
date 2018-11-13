@@ -142,4 +142,9 @@ $(document).on('turbolinks:load', function() {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
 	}
-});
+
+ 	if ($("div.navbar-form").length == 0) {
+ 		$("#search-navbar").css("padding-left", "15%");
+ 	}
+ });
+

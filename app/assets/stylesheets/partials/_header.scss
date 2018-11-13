@@ -157,6 +157,7 @@
 }
 
 a.advanced_search {
+	display: inline-block;
 	font-weight: bold;
 	letter-spacing: 1px;
 }
@@ -192,6 +193,7 @@ nav ul.navbar li.nav-btn.active a {
 }
 
 .red-navbar a#catalog_header {
+	margin-left: -30px;
 	font-family: "PT Sans";
   text-decoration: underline;
 }
@@ -211,6 +213,38 @@ nav ul.navbar li.nav-btn.active a {
 	font-size: 1.5em;
 }
 
-#search-navbar .container {
-	margin: 0 20%;
+#search-form-container, .path-links {
+	width: 100%;
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    /* Safari and Chrome */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    /* W3C */
+    display: box;
+    box-pack: center;
+    box-align: center;
+}
+
+#catalog-search {
+	height: 25px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.navbar-form {
+	height: 25px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: -40px;
+}
+
+#search-navbar {
+	padding-left: 40px;
 }
