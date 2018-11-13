@@ -31,7 +31,7 @@ services:
     build:
       context: .
       dockerfile: .docker/solr/Dockerfile
-    image: solr:6.6.1
+    image: tulibraries/solr:6.6.1
     ports:
       - "8983"
     networks:
