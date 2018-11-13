@@ -174,4 +174,16 @@ module CatalogHelper
   def back_to_articles_path
     search_path(search_params)
   end
+
+  def render_electronic_notes(document)
+    collection_id = document["electronic_collection_id"]
+    service_id = document["electronic_service_id"]
+
+    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
+    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
+
+    if collection_notes.present? || service_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
+    end
+  end
 end

@@ -133,6 +133,54 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(helper.render_email_form_field).to be_nil
       end
     end
+  end
 
+  describe "#render_electronic_notes" do
+    let(:service_notes) {  { "foo" => "bar" } }
+    let(:collection_notes) {  { "bizz" => "buzz" } }
+    let(:config) { OpenStruct.new(
+      electronic_collection_notes: service_notes,
+      electronic_service_notes: collection_notes
+    ) }
+
+    before do
+      allow(helper).to receive(:render) { "rendered note" }
+      allow(Rails).to receive(:configuration) { config }
+    end
+
+    context "with no notes" do
+      let(:doc) { SolrDocument.new({}) }
+
+      it "should not render any notes" do
+        expect(render_electronic_notes(doc)).to be_nil
+      end
+    end
+
+    context "with service notes" do
+      let(:doc) { SolrDocument.new(electronic_service_id: "bizz") }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(doc)).to eq("rendered note")
+      end
+    end
+
+    context "with collection notes" do
+      let(:doc) { SolrDocument.new(electronic_collection_id: "foo") }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(doc)).to eq("rendered note")
+      end
+    end
+
+    context "with both collection and service notes" do
+      let(:doc) { SolrDocument.new(
+        electronic_service_id: "bizz",
+        electronic_collection_id: "foo",
+      ) }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(doc)).to eq("rendered note")
+      end
+    end
   end
 end
