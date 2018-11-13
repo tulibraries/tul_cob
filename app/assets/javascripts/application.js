@@ -137,3 +137,9 @@ function loadArticleIframe(id) {
     }).appendTo(id);
   }
 }
+
+$(document).on('turbolinks:load', function() {
+ 	if ($("div.navbar-form").length == 0) {
+ 		$("#search-navbar").css("padding-left", "15%");
+ 	}
+ });
