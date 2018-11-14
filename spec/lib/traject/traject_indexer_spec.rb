@@ -836,12 +836,7 @@ RSpec.describe Traject::Macros::Custom do
     context "when a record has summary holdings" do
       let(:path) { "holdings_summary.xml" }
       it "maps data from HLD866 fields in expected way" do
-        expected = [
-          "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"
-        ]
-        expect(subject.map_record(records[0])).to eq(
-          "holdings_summary_display" => expected
-        )
+        expect(subject.map_record(records[0])).to eq("holdings_summary_display" => ["1993/94-|22318864040003811", "1971/72- Latest in Paley Ref. Stacks.|22318863960003811", "Latest only.|22318863060003811"])
       end
     end
   end
