@@ -43,7 +43,7 @@
   <table class="table table-responsive border-bottom">
     <tr>
       <% unless @document["holdings_with_no_items_display"] %>
-        <%= display_holdings_summary_without_default_message(@document) %>
+        <%= render_holdings_summary(@document) %>
       <% end %>
     </tr>
   </table>

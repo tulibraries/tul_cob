@@ -12,7 +12,7 @@
         <tr>
           <td scope="row" width="15%"><%= holding  %></td>
           <td scope="row" width="15%"><%= check_holdings_call_number(document) %></td>
-          <td scope="row" width="70%"><%= display_holdings_summary_without_default_message(document) %></td>
+          <td scope="row" width="70%"><%= render_holdings_summary(document) %></td>
         </tr>
       <% end %>
     </tbody>

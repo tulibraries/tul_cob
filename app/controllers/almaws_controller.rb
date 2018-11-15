@@ -22,7 +22,7 @@ class AlmawsController < CatalogController
 
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @holdings_summary = helpers.display_holdings_summary(@items, @document)
+    @holdings_summary = helpers.build_holdings_summary(@items, @document)
     #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
     helpers.filter_unwanted_locations(@items)
     helpers.unsuppressed_holdings(@items, @document)
