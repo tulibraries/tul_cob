@@ -97,16 +97,35 @@ module ApplicationHelper
   def holdings_summary_information(document)
     field = document.fetch("holdings_summary_display", [])
     unless field.empty?
-      summary = field.first.split("|").first
-      related_holding = field.first.split("|").last
-      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
+      field.first.split("|").first
     end
   end
 
-  def render_holdings_summary_table(document)
-    if document["holdings_summary_display"].present?
-      render partial: "holdings_summary", locals: { document: document }
+  def render_holdings_summary(document)
+    if holdings_summary_information(document).present?
+      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
+    else
+      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
     end
+  end
+
+  def build_holdings_summary(items, document)
+    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
+      summary.split("|")
+    }.map { |summary|
+      [summary.last, summary.first]
+    }.to_h
+
+
+    items.map { |item|
+        library = item.first
+        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
+          .uniq.select { |id| holdings_summaries.keys.include?(id) }
+          .map { |holding| holdings_summaries[holding] }
+          .join(", ")
+
+        [ library, summaries ]
+      }.to_h
   end
 
   def alma_build_openurl(query)
