@@ -232,7 +232,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#display_holdings_summary_without_default_message(document)" do
+  describe "#render_holdings_summary(document)" do
     context "record has a holdings_summary field" do
       let(:document) {
           {
@@ -240,7 +240,7 @@ RSpec.describe ApplicationHelper, type: :helper do
             }
         }
       it "returns the field for display" do
-        expect(display_holdings_summary_without_default_message(document)).to eq("<td id=\"holdings-summary\">Description: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.</td>")
+        expect(render_holdings_summary(document)).to eq("<td id=\"holdings-summary\">Description: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.</td>")
       end
     end
 
@@ -251,12 +251,12 @@ RSpec.describe ApplicationHelper, type: :helper do
             }
         }
       it "returns the default message" do
-        expect(helper.display_holdings_summary_without_default_message(document)).to eq("<td id=\"error-message\">We are unable to find availability information for this record. Please contact the library for more information.</td>")
+        expect(render_holdings_summary(document)).to eq("<td id=\"error-message\">We are unable to find availability information for this record. Please contact the library for more information.</td>")
       end
     end
   end
 
-  describe "#display_holdings_summary(items, document)" do
+  describe "#build_holdings_summary(items, document)" do
     context "record has a holdings_summary field" do
       let(:items) do
         { "MAIN" => [Alma::BibItem.new(
@@ -273,7 +273,7 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "returns the summary for the related library" do
-        expect(display_holdings_summary(items, document)).to eq("MAIN" => "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
       end
     end
 
@@ -294,7 +294,7 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "returns the default message" do
-        expect(helper.display_holdings_summary(items, document)).to eq("MAIN" => "")
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "")
       end
     end
   end

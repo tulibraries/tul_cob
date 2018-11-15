@@ -101,7 +101,7 @@ module ApplicationHelper
     end
   end
 
-  def display_holdings_summary_without_default_message(document)
+  def render_holdings_summary(document)
     if holdings_summary_information(document).present?
       content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
     else
@@ -109,7 +109,7 @@ module ApplicationHelper
     end
   end
 
-  def display_holdings_summary(items, document)
+  def build_holdings_summary(items, document)
     holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
       summary.split("|")
     }.map { |summary|
