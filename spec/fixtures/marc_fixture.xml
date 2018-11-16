@@ -31276,4 +31276,168 @@
       <subfield code="f">GINSBURG</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>01013nam 2200265Ia 4500</leader>
+    <controlfield tag="001">991036813497503811</controlfield>
+    <controlfield tag="005">20170817201325.0</controlfield>
+    <controlfield tag="006">m o d |</controlfield>
+    <controlfield tag="007">cr||||||||||||</controlfield>
+    <controlfield tag="008">041122s2005 mau ob 001 0 eng d</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="z">2004060793</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0-674-03901-7</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CKB)1000000000787059</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(StDuBDS)AH23050742</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(SSID)ssj0000487683</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBManifestationID)12191772</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBTitleCode)TC0000487683</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBWorkID)10443019</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKB)11149563</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(SSID)ssj0000252333</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBManifestationID)12077580</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBTitleCode)TC0000252333</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBWorkID)10176793</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKB)11225101</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(MiAaPQ)EBC3300269</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EXLCZ)991000000000787059</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">MiAaPQ</subfield>
+      <subfield code="c">MiAaPQ</subfield>
+      <subfield code="d">MiAaPQ</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="041">
+      <subfield code="a">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="050">
+      <subfield code="a">HV8073</subfield>
+      <subfield code="b">.J23 2005</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="072">
+      <subfield code="a">CRI</subfield>
+      <subfield code="2">eflch</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="072">
+      <subfield code="a">JH</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="4" tag="082">
+      <subfield code="a">363.25097471</subfield>
+      <subfield code="2">22</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Jackall, Robert.</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Street stories</subfield>
+      <subfield code="h">[electronic resource] :</subfield>
+      <subfield code="b">the world of police detectives /</subfield>
+      <subfield code="c">Robert Jackall.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Cambridge, MA :</subfield>
+      <subfield code="b">Harvard University Press,</subfield>
+      <subfield code="c">2005.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 online resource (448 p.)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">computer</subfield>
+      <subfield code="b">c</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">online resource</subfield>
+      <subfield code="b">cr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Originally published: 2005.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">The moral ambiguities of the detectives' world as they move between the streets and a bureaucratic behemoth is examined through their personal stories, in a collection that captures the real-life exploits, investigations, sensibilities, and consciousness of detectives in an urban environment.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="533">
+      <subfield code="a">Electronic reproduction.</subfield>
+      <subfield code="c">Askews and Holts.</subfield>
+      <subfield code="n">Mode of access: World Wide Web.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">English</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="504">
+      <subfield code="a">Includes bibliographical references and index.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Criminal investigation</subfield>
+      <subfield code="z">New York (State)</subfield>
+      <subfield code="z">New York</subfield>
+      <subfield code="v">Case studies.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Detectives</subfield>
+      <subfield code="z">New York (State)</subfield>
+      <subfield code="z">New York.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="655">
+      <subfield code="a">Electronic books.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="776">
+      <subfield code="z">0-674-03232-2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="776">
+      <subfield code="z">0-674-01709-9</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="906">
+      <subfield code="a">BOOK</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2017-11-23 20:17:53</subfield>
+      <subfield code="e">1000000000787059</subfield>
+      <subfield code="d">PQNKB</subfield>
+      <subfield code="f">20160803134623.0</subfield>
+      <subfield code="a">2012-02-25 22:54:23</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="a">53392445530003811</subfield>
+      <subfield code="e">EBSCOhost</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="c">EBSCOhost Academic eBook Collection (North America)</subfield>
+      <subfield code="h">613640000000000029</subfield>
+      <subfield code="8">53392445530003811</subfield>
+    </datafield>
+  </record>
 </collection>

@@ -136,6 +136,21 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
       end
     end
+
+    context "does not display double hyphens" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries — —  Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "displays only one hyphen" do
+        expect(subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
   end
 
   describe "#render_nav_link" do
