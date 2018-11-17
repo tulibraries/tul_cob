@@ -175,18 +175,6 @@ module CatalogHelper
     search_path(search_params)
   end
 
-  def render_electronic_notes(document)
-    collection_id = document["electronic_collection_id"]
-    service_id = document["electronic_service_id"]
-
-    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
-    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
-
-    if collection_notes.present? || service_notes.present?
-      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
-    end
-  end
-
   def get_search_params(field, query)
     case field
     when "title_uniform_display", "title_addl_display"
@@ -229,7 +217,10 @@ module CatalogHelper
   end
 
   def has_many_electronic_resources?(document)
-    document.fetch("electronic_resource_display", []).length > 1
+    electronic_resources = document.fetch("electronic_resource_display", [])
+    electronic_resources.length > 1 ||
+      has_one_electronic_resource?(document) &&
+      render_electronic_notes(electronic_resources.first).present?
   end
 
   def check_holdings_library_name(document)
@@ -252,7 +243,7 @@ module CatalogHelper
 
   def check_for_full_http_link(args)
     [args[:document][args[:field]]].flatten.compact.map { |field|
-      if field.include?("http")
+      if field["url"].present?
         electronic_access_links(field)
       else
         electronic_resource_link_builder(field)
@@ -261,48 +252,37 @@ module CatalogHelper
   end
 
   def electronic_access_links(field)
-    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
-    link_url = field.split("|").last
-    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
-    new_link
+    text = field.fetch("title", "Link to Resource").sub(/ *[ ,.\/;:] *\Z/, "")
+    url = field["url"]
+    content_tag(:td, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
   end
 
-  def holdings_summary_information(document)
-    field = document.fetch("holdings_summary_display", [])
-    unless field.empty?
-      field.first.split("|").first
+  def electronic_resource_link_builder(field)
+    return if field.empty?
+    return if field["availability"] == "Not Available"
+    title = field.fetch("title", "Find it online")
+
+    electronic_notes = render_electronic_notes(field)
+    additional_notes = [ field["subtitle"], electronic_notes ].compact.join(" ")
+
+    electronic_resource_list_item(field["portfolio_id"], title, additional_notes)
+  end
+
+  def render_electronic_notes(field)
+    collection_id = field["collection_id"]
+    service_id = field["service_id"]
+
+    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
+    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
+
+    if collection_notes.present? || service_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
     end
-  end
-
-  def render_holdings_summary(document)
-    if holdings_summary_information(document).present?
-      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
-    else
-      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
-    end
-  end
-
-  def build_holdings_summary(items, document)
-    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
-      summary.split("|")
-    }.map { |summary|
-      [summary.last, summary.first]
-    }.to_h
-
-    new_summary = items.map { |item|
-        library = item.first
-        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
-          .uniq.select { |id| holdings_summaries.keys.include?(id) }
-          .map { |holding| holdings_summaries[holding] }
-          .join(", ")
-
-        [ library, summaries ]
-      }.to_h
   end
 
   def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
     item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
-    item_html = item_parts.compact.join(" - ").html_safe
+    item_html = item_parts.select(&:present?).join(" - ").html_safe
     content_tag(:td, item_html , class: " electronic_links online-list-items")
   end
 
@@ -331,22 +311,44 @@ module CatalogHelper
   end
 
 
-  def electronic_resource_link_builder(field)
-    return if field.empty?
-    portfolio_pid, db_name, addl_info, availability = field.split("|")
-    return if availability == "Not Available"
-    db_name ||= "Find it online"
-    addl_info = nil if addl_info&.empty?
-    electronic_resource_list_item(portfolio_pid, db_name, addl_info)
+  def render_holdings_summary(document)
+    if holdings_summary_information(document).present?
+      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
+    else
+      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
+    end
+  end
+
+  def holdings_summary_information(document)
+    field = document.fetch("holdings_summary_display", [])
+    unless field.empty?
+      field.first.split("|").first
+    end
+  end
+
+  def build_holdings_summary(items, document)
+    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
+      summary.split("|")
+    }.map { |summary|
+      [summary.last, summary.first]
+    }.to_h
+
+    items.map { |item|
+        library = item.first
+        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
+          .uniq.select { |id| holdings_summaries.keys.include?(id) }
+          .map { |holding| holdings_summaries[holding] }
+          .join(", ")
+
+        [ library, summaries ]
+      }.to_h
   end
 
   def single_link_builder(field)
-    if field.include?("http")
-      field.split("|").last
+    if field["url"].present?
+      field["url"]
     else
-      electronic_resource_from_traject = field.split("|")
-      portfolio_pid = electronic_resource_from_traject.first
-      alma_electronic_resource_direct_link(portfolio_pid)
+      alma_electronic_resource_direct_link(field["portfolio_id"])
     end
   end
 end

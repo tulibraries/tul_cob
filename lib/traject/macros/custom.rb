@@ -150,11 +150,20 @@ module Traject
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"], f["9"]].join("|")
+            selected_subfields = {
+              portfolio_id: f["a"],
+              collection_id: f["i"],
+              service_id: f["j"],
+              title: f["c"],
+              subtitle: f["g"],
+              availability: f["9"] }
+              .delete_if { |k, v| v.blank? }
+              .to_json
             acc << selected_subfields
           end
+
           # Short circuit if PRT field present.
-          if !rec.fields("PRT").empty?
+          if rec.fields("PRT").present?
             return acc
           end
 
@@ -163,7 +172,7 @@ module Traject
               label = url_label(f["z"], f["3"], f["y"])
               unless f["u"].nil?
                 unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end
@@ -175,10 +184,10 @@ module Traject
         lambda do |rec, acc, context|
           begin
             acc.sort_by! { |r|
-              subfields = r.split("|")
-              available = /Available from (\d{4})( until (\d{4}))?/.match(r)
-              title = subfields[1]
-              subtitle = subfields[2]
+              subfields = JSON.parse(r)
+              available = /Available from (\d{4})( until (\d{4}))?/.match(subfields["availability"])
+              title = subfields["title"]
+              subtitle = subfields["subtitle"]
               unless available
                 available = []
               end
@@ -206,7 +215,7 @@ module Traject
             unless f["u"].nil?
               if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty? || f["u"].include?(ARCHIVE_IT_LINKS)
                 unless f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end
@@ -221,7 +230,7 @@ module Traject
             if f.indicator1 == "4" && f.indicator2 == "2"
               unless f["u"].nil?
                 if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end

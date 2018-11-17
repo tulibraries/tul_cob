@@ -149,37 +149,34 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with no notes" do
-      let(:doc) { SolrDocument.new({}) }
+      let(:field) { {} }
 
       it "should not render any notes" do
-        expect(render_electronic_notes(doc)).to be_nil
+        expect(render_electronic_notes(field)).to be_nil
       end
     end
 
     context "with service notes" do
-      let(:doc) { SolrDocument.new(electronic_service_id: "bizz") }
+      let(:field) { { "service_id" => "bizz" } }
 
       it "should render the notes" do
-        expect(render_electronic_notes(doc)).to eq("rendered note")
+        expect(render_electronic_notes(field)).to eq("rendered note")
       end
     end
 
     context "with collection notes" do
-      let(:doc) { SolrDocument.new(electronic_collection_id: "foo") }
+      let(:field) { { "collection_id" => "foo" } }
 
       it "should render the notes" do
-        expect(render_electronic_notes(doc)).to eq("rendered note")
+        expect(render_electronic_notes(field)).to eq("rendered note")
       end
     end
 
     context "with both collection and service notes" do
-      let(:doc) { SolrDocument.new(
-        electronic_service_id: "bizz",
-        electronic_collection_id: "foo",
-      ) }
+      let(:field) { { "service_id" => "bizz", "collection_id" => "foo" } }
 
       it "should render the notes" do
-        expect(render_electronic_notes(doc)).to eq("rendered note")
+        expect(render_electronic_notes(field)).to eq("rendered note")
       end
     end
   end
@@ -189,7 +186,7 @@ RSpec.describe CatalogHelper, type: :helper do
     let(:alma_institution_code) { "01TULI_INST" }
 
     context "only a portfolio_pid is present" do
-      let(:field) { "12345" }
+      let(:field) { { "portfolio_id" => "12345" } }
 
       it "has correct link to resource" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Find it online", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=12345&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
@@ -200,8 +197,8 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "two subfields present" do
-      let(:field) { "77777|Sample Name" }
+    context "porfolio_id and title are present" do
+      let(:field) { { "portfolio_id" => "77777", "title" => "Sample Name" } }
 
       it "displays database name if available" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
@@ -212,8 +209,10 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "three subfields present" do
-      let(:field) { "77777|Sample Name|Sample Text" }
+    context "porfolio_id, title, and subtitle are present" do
+      let(:field) { {
+        "portfolio_id" => "77777", "title" => "Sample Name", "subtitle" => "Sample Text"
+      } }
 
       it "displays additional information as plain text" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
@@ -222,7 +221,8 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "item is not available" do
-      let(:field) { "|||Not Available" }
+      let(:field) { { "availability" => "Not Available" } }
+
       it "skips items that are not available" do
         expect(electronic_resource_link_builder(field)).to be_nil
       end
@@ -236,7 +236,10 @@ RSpec.describe CatalogHelper, type: :helper do
         {
           document:
           {
-            electronic_resource_display: ["Access electronic resource. |http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483", "77777|Sample Name"]
+            electronic_resource_display: [
+              { "title" => "Access electronic resource.", "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" },
+              { "portfolio_id" => "77777", "title" => "Sample Name" },
+            ]
           },
           field: :electronic_resource_display
         }
@@ -256,16 +259,16 @@ RSpec.describe CatalogHelper, type: :helper do
   end
 
   describe "#electronic_access_links(field)" do
-    context "only a url is present" do
-      let(:field) { "Link to Resource |http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" }
+    context "with only a url" do
+      let(:field) { { "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" } }
 
       it "has generic message for link" do
         expect(electronic_access_links(field)).to have_link(text: "Link to Resource", href: "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483")
       end
     end
 
-    context "multiple subfields present" do
-      let(:field) { "Access electronic resource. |http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" }
+    context "with title and url" do
+      let(:field) { { "title" => "Access electronic resource.", "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" } }
 
       it "displays z3 subfields if available" do
         expect(electronic_access_links(field)).to have_link(text: "Access electronic resource", href: "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483")

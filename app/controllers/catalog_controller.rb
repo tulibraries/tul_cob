@@ -62,7 +62,6 @@ class CatalogController < ApplicationController
         call_number_alt_display
         creator_display
         contributor_display
-        electronic_resource_display
         format
         imprint_display
         imprint_prod_display
@@ -78,11 +77,11 @@ class CatalogController < ApplicationController
         title_uniform_display
         isbn_display
         lccn_display
-        url_finding_aid_display
         bound_with_ids
         purchase_order
-        electronic_collection_id
-        electronic_service_id
+        url_finding_aid_display:[json]
+        url_more_links_display:[json]
+        electronic_resource_display:[json]
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -233,6 +232,16 @@ class CatalogController < ApplicationController
     #  # rows: 1,
     #  # q: '{!term f=id v=$id}'
     #}
+
+    config.fetch_many_document_params =
+      config.default_document_solr_params = {
+        wt: "json",
+        fl: %w[
+          *
+          url_finding_aid_display:[json]
+          url_more_links_display:[json]
+          electronic_resource_display:[json] ].join(",")
+    }
 
     # solr field configuration for search results/index views
     config.index.title_field = "title_truncated_display"
