@@ -264,3 +264,49 @@ RSpec::Matchers.define :include_docs do |more_relevant_docs|
     (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
   end
 end
+
+# Add new matchers for reviewing search results.
+RSpec::Matchers.define :have_items do |front_items|
+  match do |items|
+    front_items.all? { |item| items.include?(item) }
+  end
+end
+
+RSpec::Matchers.define :come_before do |back_items|
+  match do |items|
+    front_items = @matcher_execution_context.expected
+
+    # Do all the front items come before all the back items?
+    front_items.all? { |front_item|
+      back_items.all? { |back_item|
+        items.index(front_item) < items.index(back_item) rescue false
+      }
+    }
+  end
+
+  failure_message do |actual|
+    front_items = @matcher_execution_context.expected
+    back_items = expected
+
+    "expected that #{front_items} would all come before #{back_items} but #{actual}."
+  end
+
+  failure_message_when_negated do |actual|
+    front_items = @matcher_execution_context.expected
+    back_items = expected
+
+    "expected that #{back_items} would all come before #{front_items} but #{actual}."
+  end
+end
+
+RSpec.describe "have results().come_before()" do
+  it "works with positive assertions" do
+    expect(["a", "b", "c", "d", "e"]).to have_items(["c", "b"])
+      .come_before(["e", "d"])
+  end
+
+  it "works with negative assertions" do
+    expect(["c", "b", "a", "d", "e"]).not_to have_items(["f", "d"])
+      .come_before(["c", "b"])
+  end
+end
