@@ -10,7 +10,7 @@
     <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, "Pickup Location: *") %>
+          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
           <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, { include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
@@ -19,7 +19,7 @@
     <% if @equipment.present? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, "Pickup Location: *") %>
+          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
           <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
@@ -29,14 +29,14 @@
     <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:description, "Description: *") %>
+          <%= form.label(:description, t("requests.form.description_label")) %>
           <%= select_tag(:description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, "Pickup Location: *") %>
+          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
           <%= select_tag(:pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
@@ -45,7 +45,7 @@
 
     <div class="row hold-form">
       <div class="col-sm-5">
-        <%= form.label(:not_needed, "Not Needed After (optional):") %>
+        <%= form.label(:not_needed, t("requests.form.not_needed_after")) %>
         <%= date_field_tag :last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "hold_date_field" %>
         <%= render "format_date_message" %>
       </div>
@@ -53,12 +53,12 @@
 
     <div class="row hold-form">
       <div class="col-sm-4">
-        <%= form.label(:comment, "Notes: (optional)") %>
+        <%= form.label(:comment, t("requests.form.notes_label")) %>
         <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
     </div>
 
-    <%= form.submit"Request", class:"btn btn-primary" %>
+    <%= form.submit t("requests.form.submit"), class:"btn btn-primary" %>
 
   </div>
 <% end %>

@@ -79,8 +79,35 @@ en:
       refworks: Refworks
       cite_html: "Cite"
 
-    requests:
-      log_in: "Log in to see request options"
+  requests:
+    log_in: "Log in to see request options"
+    request_button: "Request"
+    header: "Request Options"
+    footer_html: "For more request options, see: %{href}"
+    footer_href: "How do I request an item that is unavailable at my library?"
+    footer_link: "http://answers.library.temple.edu/faq/195868"
+    cancel: "Cancel"
+    hold_allowed_link: "Request Item"
+    digitization_allowed_link: "Scan an article/book chapter"
+    booking_allowed_link: "Request booking"
+    resource_sharing_broker_allowed_link: "Request item from another library"
+    resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the item from another library using E-ZBorrow. Books generally arrive in 3-5 business days."
+    resource_sharing_broker_link: "Search"
+    no_request_options: "This item cannot be requested from other Temple campuses."
+    form:
+      header: "Details of title you requested:"
+      pickup_locations_label: "Pickup Location: *"
+      description_label: "Description: *"
+      not_needed_after: "Not Needed After (optional):"
+      notes_label: "Notes: (optional)"
+      submit: "Request"
+      title_label: "Chapter/Article Title: *"
+      author_label: "Chapter/Article Author: *"
+      start_page: "Start page: *"
+      end_page: "End page: *"
+      material_type: "Material Type: *"
+      booking_start_date: "Booking Start Date: *"
+      booking_end_date: "Booking End Date: *"
 
   articles:
     application_name: "Library Articles Search"
