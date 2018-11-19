@@ -19,10 +19,7 @@ before_script:
 - RAILS_ENV=test bundle exec rails webpacker:compile
 
 script:
-- bundle exec solr_wrapper &
 - bundle exec rubocop
-- java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 -Xmx1024m --stop 
-- bundle exec solr_wrapper clean
 - RELEVANCE=y bundle exec rake ci
 - yarn test
 notifications:
