@@ -94,21 +94,6 @@ module ApplicationHelper
     new_link
   end
 
-  def holdings_summary_information(document)
-    field = document.fetch("holdings_summary_display", [])
-    unless field.empty?
-      summary = field.first.split("|").first
-      related_holding = field.first.split("|").last
-      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
-    end
-  end
-
-  def render_holdings_summary_table(document)
-    if document["holdings_summary_display"].present?
-      render partial: "holdings_summary", locals: { document: document }
-    end
-  end
-
   def alma_build_openurl(query)
     query_defaults = {
       rfr_id: "info:sid/primo.exlibrisgroup.com",
