@@ -10,7 +10,8 @@ class AlmawsController < CatalogController
 
   def item
     @mms_id = params[:mms_id]
-    _, @document = fetch(@mms_id)
+    _, @document = begin fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
+
     start = Time.now
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
@@ -19,6 +20,7 @@ class AlmawsController < CatalogController
 
     bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
     @response = Blacklight::Alma::Response.new(bib_items, params)
+
 
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library

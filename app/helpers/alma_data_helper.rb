@@ -114,6 +114,8 @@ module AlmaDataHelper
   def unsuppressed_holdings(items_list, document)
     solr_holdings = document.fetch("holdings_display", "")
 
+    return if solr_holdings.blank?
+
     items_list.each_pair { |library, items|
       items_list[library] = items.select { |item|
        solr_holdings.include?(item["holding_data"]["holding_id"])
