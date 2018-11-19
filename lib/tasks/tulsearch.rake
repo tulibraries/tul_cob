@@ -13,6 +13,7 @@ namespace :fortytu do
       end
 
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
+      system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
     end
 
     desc "Delete all items from Solr"
@@ -35,4 +36,5 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   end
 
   `traject -c #{Rails.configuration.traject_indexer} -x commit`
+  system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
 end
