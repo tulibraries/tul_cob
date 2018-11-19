@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller, relevance: true do
-
+  system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
   describe "Query results as JSON" do
     render_views
 
