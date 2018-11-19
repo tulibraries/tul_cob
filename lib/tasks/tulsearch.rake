@@ -10,6 +10,8 @@ namespace :fortytu do
       fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
       Dir.glob(fixtures).sort.reverse.each do |file|
         `traject -c #{Rails.configuration.traject_indexer} #{file}`
+        `traject -c #{Rails.configuration.traject_indexer} -x commit`
+        system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
       end
 
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
@@ -29,9 +31,12 @@ desc "Ingest a single file or all XML files in the sammple_data folder"
 task :ingest, [:filepath] => [:environment] do |t, args|
   if args[:filepath]
     `traject -c #{Rails.configuration.traject_indexer} #{args[:filepath]}`
+    system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |file|
       `traject -c #{Rails.configuration.traject_indexer} #{file}`
+      `traject -c #{Rails.configuration.traject_indexer} -x commit`
+      system 'curl "http://127.0.0.1:8985/solr/blacklight-core-test/select?defType=edismax&indent=on&q=*:*&wt=json&rows=0"'
     end
   end
 
