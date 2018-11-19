@@ -5,7 +5,7 @@
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>
-    <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
+    <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div class="controls">
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>">
           <span role="spin" aria-expanded="false">Loading...</span>

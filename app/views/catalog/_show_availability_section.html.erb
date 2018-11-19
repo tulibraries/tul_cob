@@ -19,7 +19,7 @@
   <%= render_online_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
+    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div class="panel-content" >
         <div id="avail-spinner" data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>
