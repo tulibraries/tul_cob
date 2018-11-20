@@ -14,119 +14,6 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
-  def get_search_params(field, query)
-    case field
-    when "title_uniform_display", "title_addl_display"
-      { search_field: "title", q: query }
-    when "relation"
-      { search_field: "title", q: query["relatedTitle"] }
-    else
-      { search_field: field, q: query }
-    end
-  end
-
-  def fielded_search(query, field)
-    params = get_search_params(field, query)
-    link_url = search_action_path(params)
-    title = params[:title] || params[:q]
-    link_to(title, link_url)
-  end
-
-  def list_with_links(args)
-    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
-  end
-
-  def creator_index_separator(args)
-    creator = args[:document][args[:field]]
-    creator.map do |name|
-      plain_text_subfields = name.gsub("|", " ")
-      creator = plain_text_subfields
-    end
-    creator
-  end
-
-  def subject_links(args)
-    args[:document][args[:field]].map do |subject|
-      link_to(subject.sub("— — ", "— "), "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
-    end
-  end
-
-  def has_one_electronic_resource?(document)
-    document.fetch("electronic_resource_display", []).length == 1
-  end
-
-  def has_many_electronic_resources?(document)
-    document.fetch("electronic_resource_display", []).length > 1
-  end
-
-  def check_holdings_library_name(document)
-    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
-  end
-
-  def check_holdings_call_number(document)
-    document.fetch("call_number_display", []).first
-  end
-
-  def check_holdings_location(document, library)
-    locations_array = []
-    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
-    locations.each { |k, v|
-      shelf = Rails.configuration.locations.dig(k, v)
-      locations_array << shelf
-    }
-    locations_array
-  end
-
-  def check_for_full_http_link(args)
-    [args[:document][args[:field]]].flatten.compact.map { |field|
-      if field.include?("http")
-        electronic_access_links(field)
-      else
-        electronic_resource_link_builder(field)
-      end
-    }.join("").html_safe
-  end
-
-  def electronic_access_links(field)
-    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
-    link_url = field.split("|").last
-    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
-    new_link
-  end
-
-  def holdings_summary_information(document)
-    field = document.fetch("holdings_summary_display", [])
-    unless field.empty?
-      field.first.split("|").first
-    end
-  end
-
-  def render_holdings_summary(document)
-    if holdings_summary_information(document).present?
-      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
-    else
-      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
-    end
-  end
-
-  def build_holdings_summary(items, document)
-    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
-      summary.split("|")
-    }.map { |summary|
-      [summary.last, summary.first]
-    }.to_h
-
-    new_summary = items.map { |item|
-        library = item.first
-        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
-          .uniq.select { |id| holdings_summaries.keys.include?(id) }
-          .map { |holding| holdings_summaries[holding] }
-          .join(", ")
-
-        [ library, summaries ]
-      }.to_h
-  end
-
   def alma_build_openurl(query)
     query_defaults = {
       rfr_id: "info:sid/primo.exlibrisgroup.com",
@@ -149,54 +36,6 @@ module ApplicationHelper
         portfolio_pid: portfolio_pid
     }
     alma_build_openurl(query)
-  end
-
-  def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
-    item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
-    item_html = item_parts.compact.join(" - ").html_safe
-    content_tag(:td, item_html , class: " electronic_links list_items")
-  end
-
-  def electronic_resource_link_builder(field)
-    return if field.empty?
-    portfolio_pid, db_name, addl_info, availability = field.split("|")
-    return if availability == "Not Available"
-    db_name ||= "Find it online"
-    addl_info = nil if addl_info&.empty?
-    electronic_resource_list_item(portfolio_pid, db_name, addl_info)
-  end
-
-  def single_link_builder(field)
-    if field.include?("http")
-      field.split("|").last
-    else
-      electronic_resource_from_traject = field.split("|")
-      portfolio_pid = electronic_resource_from_traject.first
-      alma_electronic_resource_direct_link(portfolio_pid)
-    end
-  end
-
-  def bento_single_link(field)
-    electronic_resource = field.first.split("|")
-    portfolio_pid = electronic_resource.first
-    alma_electronic_resource_direct_link(portfolio_pid)
-  end
-
-  def bento_engine_nice_name(engine_id)
-    I18n.t("bento.#{engine_id}.nice_name")
-  end
-
-  def bento_icons(engine_id)
-    case engine_id
-    when "books"
-      content_tag(:span, "", class: "bento-icon bento-book")
-    when "articles"
-      content_tag(:span, "", class: "bento-icon bento-article")
-    when "journals"
-      content_tag(:span, "", class: "bento-icon bento-journal")
-    when "more"
-      content_tag(:span, "", class: "bento-icon bento-more")
-    end
   end
 
   def aeon_request_url(item)
@@ -236,6 +75,29 @@ module ApplicationHelper
 
   def total_online(results)
     results.total_items[:online_total] || 0 rescue 0
+  end
+
+  def bento_single_link(field)
+    electronic_resource = field.first.split("|")
+    portfolio_pid = electronic_resource.first
+    alma_electronic_resource_direct_link(portfolio_pid)
+  end
+
+  def bento_engine_nice_name(engine_id)
+    I18n.t("bento.#{engine_id}.nice_name")
+  end
+
+  def bento_icons(engine_id)
+    case engine_id
+    when "books"
+      content_tag(:span, "", class: "bento-icon bento-book")
+    when "articles"
+      content_tag(:span, "", class: "bento-icon bento-article")
+    when "journals"
+      content_tag(:span, "", class: "bento-icon bento-journal")
+    when "more"
+      content_tag(:span, "", class: "bento-icon bento-more")
+    end
   end
 
   def bento_link_to_full_results(results)
