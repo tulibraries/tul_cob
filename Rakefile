@@ -16,4 +16,4 @@ else
   task default: :ci
 end
 
-require "solr_wrapper/rake_task"
+require "solr_wrapper/rake_task" unless Rails.env.production?
