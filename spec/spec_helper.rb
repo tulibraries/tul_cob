@@ -216,25 +216,35 @@ if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
 end
 
 require "rspec/expectations"
-RSpec::Matchers.define :include_docs do |more_relevant_docs|
+RSpec::Matchers.define :include_docs do |primary_ids|
   match do |actual|
     ids = ids(actual)
     # Find index of relevant docs in array of actual ids
     # if any of the docs are not in the actual index (which returns nil), throw an exception
-    more_relevant_index_points = more_relevant_docs.map { |d| ids.index(d) }
-    raise ArgumentError.new("At least one of the more relevant docs was not in the results set") unless more_relevant_index_points.none?(&:nil?)
+    more_relevant_index_points =
+      begin
+        primary_ids.map { |id| ids.index(id) }
+      rescue
+        # Regular error handler responds when 20 or less results.
+        if ids.count <= 20
+          @ids = ids
+          return false
+        else
+          raise ArgumentError.new("At least one of the more relevant docs was not in the results set")
+        end
+      end
 
     #grab the largest index
     last_more_relevant_index = more_relevant_index_points.compact.max
 
     # if we used the before chain method
-    if less_relevant_docs
+    if secondary_ids
 
       # Find index of the less relevant docs in array of actual ids and grab the smallest index
       # if none of the docs are in the actual index (which returns nil), set to 1 more than
       # thu number of returned results
       first_less_relevant_index = (
-        less_relevant_docs.map { |d| ids.index(d) }.compact.min ||
+        secondary_ids.map { |d| ids.index(d) }.compact.min ||
         (actual.dig("response", "pages", "total_count") || 100) + 1)
 
       # The last more relevant doc should have a smaller index
@@ -244,69 +254,29 @@ RSpec::Matchers.define :include_docs do |more_relevant_docs|
     #if we used the within_the_first chain method
     elsif within_index
       last_more_relevant_index < within_index
+    else
+      # All is good otherwise more_relevant_index_points throws an error.
+      true
     end
   end
 
-  chain :before, :less_relevant_docs
+  chain :before, :secondary_ids
 
   chain :within_the_first, :within_index
 
   failure_message do |actual|
-    if less_relevant_docs
-      "expected that #{more_relevant_docs} would be appear before #{less_relevant_docs} in #{ids(actual)}"
+    if secondary_ids
+      "expected that #{primary_ids} would be appear before #{secondary_ids} in #{ids(actual)}"
     elsif within_index
-      "expected that #{more_relevant_docs} would appear in the first #{within_index} docs"
+      "expected that #{primary_ids} would appear in the first #{within_index} docs"
+    else
+      not_found_ids = primary_ids.select { |id| !@ids.include?(id) }
+      "expected that all primary_ids (#{primary_ids.pretty_inspect}) would apper in results: #{@ids.pretty_inspect}, but missing #{not_found_ids.pretty_inspect}"
     end
 
   end
 
   def ids(actual)
     (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
-  end
-end
-
-# Add new matchers for reviewing search results.
-RSpec::Matchers.define :have_items do |front_items|
-  match do |items|
-    front_items.all? { |item| items.include?(item) }
-  end
-end
-
-RSpec::Matchers.define :come_before do |back_items|
-  match do |items|
-    front_items = @matcher_execution_context.expected
-
-    # Do all the front items come before all the back items?
-    front_items.all? { |front_item|
-      back_items.all? { |back_item|
-        items.index(front_item) < items.index(back_item) rescue false
-      }
-    }
-  end
-
-  failure_message do |actual|
-    front_items = @matcher_execution_context.expected
-    back_items = expected
-
-    "expected that #{front_items} would all come before #{back_items} but #{actual}."
-  end
-
-  failure_message_when_negated do |actual|
-    front_items = @matcher_execution_context.expected
-    back_items = expected
-
-    "expected that #{back_items} would all come before #{front_items} but #{actual}."
-  end
-end
-
-RSpec.describe "have results().come_before()" do
-  it "works with positive assertions" do
-    expect(["a", "b", "c", "d", "e"]).to have_items(["c", "b"])
-      .come_before(["e", "d"])
-  end
-
-  it "works with negative assertions" do
-    expect(["c", "b", "a", "d", "e"]).not_to have_items(["f", "d"])
-      .come_before(["c", "b"])
   end
 end

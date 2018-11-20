@@ -7,18 +7,13 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
 
   let(:search_term) { search_terms.values.join(" ") }
 
-  let(:search_query) {
-    -> (page) { get(:index, params: { q: search_term, page: page, format: "json" }) }
-  }
+  let(:per_page) { 20 }
 
-  let(:docs) {
-    [1..2]
-      .map { |page| search_query[page.to_s] }
-      .map { |r| JSON.parse(r.body)["response"]["docs"] }
-      .flatten
-  }
+  let(:query) { { q: search_term, per_page: per_page, format: "json" } }
 
-  let(:doc_ids) { docs.map { |doc| doc["id"] } }
+  let(:response) { get(:index, params: query) }
+
+  let(:results) { JSON.parse(response.body) }
 
   describe "Query results as JSON" do
     context "search for title 'peer interaction and second language learning'" do
@@ -28,7 +23,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
         "991022272009703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -37,7 +32,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991024587289703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -53,7 +48,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991002431869703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -67,7 +62,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991024784309703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -78,7 +73,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991026206569703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -89,7 +84,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991011580459703811"] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -102,7 +97,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991006975379703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -111,7 +106,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991003108369703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -120,7 +115,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991008448689703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -129,7 +124,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991034319589703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -140,7 +135,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991022257719703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -148,7 +143,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:search_terms) { { keywords: "Mahlon Howard Hellerich dissertation" } }
       let(:primary_results) { [ "991034105309703811" ] }
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -161,7 +156,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991006975379703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -170,7 +165,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991006700799703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -179,7 +174,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991006700799703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -188,7 +183,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:primary_results) { [ "991036743832103811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -196,7 +191,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
       let(:search_terms) { {  callnum: '"PN1997.2 .S462x 2003"' } }
       let(:primary_results) { [ "991035120939703811" ] }
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -207,7 +202,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991035018259703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -220,8 +215,8 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991036749630103811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
-          .come_before(secondary_reults)
+        expect(results).to include_docs(primary_results)
+          .before(secondary_reults)
       end
     end
 
@@ -232,7 +227,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991026245969703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -246,7 +241,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991028264669703811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
+        expect(results).to include_docs(primary_results)
       end
     end
 
@@ -259,8 +254,8 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991036802592903811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
-          .come_before(secondary_reults)
+        expect(results).to include_docs(primary_results)
+          .before(secondary_reults)
       end
     end
 
@@ -277,8 +272,8 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
           "991036742769003811" ] }
 
       it "returns expected values" do
-        expect(doc_ids).to have_items(primary_results)
-          .come_before(secondary_reults)
+        expect(results).to include_docs(primary_results)
+          .before(secondary_reults)
       end
     end
   end
