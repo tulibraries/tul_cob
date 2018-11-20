@@ -241,7 +241,6 @@ to_field "split_into_display", extract_marc("785|06|iabdghkmnopqrstuxyz3", trim_
 to_field "merged_to_form_display", extract_marc("785|07|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 to_field "changed_back_to_display", extract_marc("785|08|iabdghkmnopqrstuxyz3", trim_punctuation: true)
 
-
 # Boost records with holdings from specific libraries
 # we actually want to negative boost specific libraries, but that is not possible
 # so we are going to boost everything except the less relevant libraries
@@ -249,3 +248,18 @@ to_field "library_based_boost_t", library_based_boost
 
 to_field "bound_with_ids", extract_marc("ADFa")
 to_field "purchase_order", extract_purchase_order
+
+# Administrative data enrichment fields
+# a=create date, b=update date, c=Suppress from publishing, d=Originating system, e=Originating system ID, f=Originating system version
+to_field "record_creation_date", extract_marc("ADMa")
+to_field "record_update_date", extract_marc("ADMb")
+
+# You have to make sure this is at the END of your traject pipeline
+each_record do |record, context|
+  if context.output_hash["record_creation_date"].nil? || context.output_hash["record_creation_date"] == []
+    context.output_hash["record_creation_date"] = ["2001-01-01 01:01:01"]
+  end
+  if context.output_hash["record_update_date"].nil? || context.output_hash["record_update_date"] == []
+    context.output_hash["record_update_date"] = ["2002-02-02 02:02:02"]
+  end
+end

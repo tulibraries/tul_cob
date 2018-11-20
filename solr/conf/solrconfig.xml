@@ -55,12 +55,21 @@
     <defaultQuery>*:*</defaultQuery>
   </admin>
 
+  <initParams path="/update/**">
+   <lst name="defaults">
+     <str name="update.chain">DocCentricVersioningOnDate</str>
+   </lst>
+ </initParams>
+
   <updateHandler class="solr.DirectUpdateHandler2">
     <autoCommit>
       <maxDocs>1000000</maxDocs>
       <maxTime>900000</maxTime>
       <openSearcher>true</openSearcher>
     </autoCommit>
+    <updateLog>
+      <str name="dir">${solr.ulog.dir:}</str>
+    </updateLog>
   </updateHandler>
 
   <!-- SearchHandler
@@ -479,5 +488,20 @@
     <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
     <slowQueryThresholdMillis>500</slowQueryThresholdMillis>
   </query>
+
+  <updateRequestProcessorChain name="DocCentricVersioningOnDate">
+    <processor class="solr.ParseDateFieldUpdateProcessorFactory">
+      <arr name="format">
+        <str>yyyy-MM-dd HH:mm:ss</str>
+      </arr>
+    </processor>
+    <processor class="solr.DocBasedVersionConstraintsProcessorFactory">
+      <str name="versionField">record_update_date</str>
+      <bool name="ignoreOldUpdates">false</bool>
+    </processor>
+    <processor class="solr.DistributedUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+    <processor class="solr.LogUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
 
 </config>
