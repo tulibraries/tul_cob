@@ -1,10 +1,5 @@
 @import "partials/_vars.scss";
 
-#page-wrapper {
-  min-height: calc(100vh - 291px);
-  background-color: #F4F6F5;
-}
-
 #documents {
   border-radius: 0 0 5px 5px;
   border-top: 1px solid #CCC;
@@ -60,10 +55,6 @@ h1[itemprop="name"] {
   font-size: 28px;
 }
 
-#search-navbar .container {
-  padding-left: 0;
-}
-
 h1.advanced.page-header a {
   display:none;
 }
@@ -85,13 +76,57 @@ h1.advanced.page-header a {
 
 .explanation {
   margin-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .form-control:focus {
   border-color: gray;
   box-shadow: inset 0 1px 1px rgba(96, 96, 96, 0.075), 0 0 8px rgba(96, 96, 96, 0.6);
   }
+
+/* === HOME PAGES === */
+#page-wrapper {
+  min-height: calc(100vh - 100px) !important;
+  background-color: #F4F6F5;
+  padding-bottom: 50px;
+}
+
+#getting-started {
+  font-size: 16px;
+}
+
+#getting-started a, .everything-explanation a {
+  text-decoration: underline;
+}
+
+.everything-home-list {
+  list-style-type: disc;
+}
+
+.books-home-text {
+  font-size: 16px;
+  text-align: center !important;
+}
+
+/* === NO RESULTS === */
+.no-results-header {
+  border-top: none;
+  float: none;
+  font-size: 18px;
+  padding-top: 20px;
+}
+
+.no-results-tips {
+  font-size: 16px;
+}
+
+.noresults {
+  padding-bottom: 20px !important;
+}
+
+.not-at-temple {
+  font-size: 16px;
+}
 
 /* === MY LIBRARY ACCOUNT === */
 .user-email-notice {
@@ -350,7 +385,7 @@ div.physical-holding-panel {
 .record_page_elec_links {
   border: 1px solid #CFC7B0;
   border-bottom: none;
-  padding: 0;
+  margin-right: 2px;
   margin-top: 0;
   width: 100%;
 }
@@ -362,20 +397,20 @@ div.physical-holding-panel {
   width: 100%;
 }
 
+#record-page-online {
+  border-left: 1px solid #CFC7B0;
+  border-right: 1px solid #CFC7B0;
+  border-bottom: 0;
+  width: 100%;
+}
+
 /* ALMA DATA TABLE */
-.border-bottom td, .border-bottom th {
-  /*border: solid red 1px;*/
-}
-
-.border-bottom {
-  border-radius: 25px !important;
-}
-
 table.border-bottom {
-  border: 1px solid #CFC7B0;
+  border-bottom: 1px solid #CFC7B0;
   border-top: 0;
   padding: 0 !important;
-  margin: 0 !important;
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
 }
 
 table.border-bottom {
@@ -397,43 +432,38 @@ table.border-bottom {
   td[headers*="status"] {
     padding-right:4px;
     width: 20%;
-    border-right: solid #CFC7B0 1px;
   }
-}
-
-table.other_libraries td:last-child  {
-  border-right: solid #CFC7B0 1px;
 }
 
 .table-heading {
   background-color: #F1EFE8;
 }
 
+.holdings-summary {
+  font-weight: normal;
+}
+
 .table-wrapper {
-  border: none;
+  border: 1px solid #CFC7B0 !important;
   display: block;
   max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-right: -10px;
   margin-bottom: 0 !important;
 }
 
 .table-wrapper::-webkit-scrollbar {
+  border-left: 1px solid #CFC7B0 !important;
   width: 10px;
-  border-left: solid #CFC7B0 1px;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
     background: gray;
 }
 
-.holdings-summary-table {
-  border: solid #CFC7B0 1px !important;
-}
-
-.holdings-summary-table td {
-  border-right: solid #CFC7B0 1px;
+.page_links {
+  margin-top: 0 !important;
+  padding-left: 10px;
 }
 
 /* RECORD NAV TOOLS */
@@ -475,7 +505,6 @@ table.other_libraries td:last-child  {
   margin-left: -14px;
   position:absolute;
   display:inline-block;
-  background-color: $white;
 }
 #bookmarks-sendto {
   display:inline-block;
@@ -537,8 +566,6 @@ table.other_libraries td:last-child  {
 div.navbar-form {
   display:inline-block;
   padding-top: 8px;
-  margin-left: -42px;
-  border: 0;
 }
 
 ul.navbar-nav {
@@ -604,17 +631,8 @@ ul.navbar-nav {
   }
 }
 
-@media (max-width: 1200px) {
-  div.navbar-form {
-    margin-left: -21px;
-  }
-}
-
 @media (max-width: 991px) {
-  div.navbar-form {
-    margin-left: 0px;
-    padding-top: 0px;
-  }
+
   .document dt {
     white-space: normal;
     width: 100px;
@@ -887,4 +905,8 @@ form#sms_form div.text-this-location label {
 @-webkit-keyframes spin2 {
     from { -webkit-transform: rotate(0deg); }
     to { -webkit-transform: rotate(360deg); }
+}
+
+.electronic-notes {
+  padding-top: 10px;
 }

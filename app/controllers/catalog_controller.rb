@@ -56,6 +56,7 @@ class CatalogController < ApplicationController
         id
         score
         availability_facet
+        holdings_display
         holdings_with_no_items_display
         call_number_display
         call_number_alt_display
@@ -80,6 +81,8 @@ class CatalogController < ApplicationController
         url_finding_aid_display
         bound_with_ids
         purchase_order
+        electronic_collection_id
+        electronic_service_id
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -99,8 +102,8 @@ class CatalogController < ApplicationController
         subtitle_t^10000
         title_statement_unstem_search^15000
         title_statement_t^5000
-        title_uniform_unstem_search^5000
-        title_uniform_t^2500
+        title_uniform_unstem_search^15000
+        title_uniform_t^5000
         title_addl_unstem_search^5000
         title_addl_t^2500
         title_added_entry_unstem_search^1500
@@ -126,7 +129,7 @@ class CatalogController < ApplicationController
         subtitle_t^100000
         title_statement_unstem_search^150000
         title_statement_t^50000
-        title_uniform_unstem_search^75000
+        title_uniform_unstem_search^150000
         title_uniform_t^50000
         title_addl_unstem_search^50000
         title_addl_t^25000
@@ -536,6 +539,13 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
+
+  # Can be overridden by subclass
+  def show_sidebar?
+    has_search_parameters?
+  end
+
+  helper_method :show_sidebar?
 
   def text_this_message_body(params)
     "#{params[:title]}\n" +

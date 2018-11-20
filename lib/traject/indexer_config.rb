@@ -203,6 +203,7 @@ to_field "url_finding_aid_display", extract_url_finding_aid
 # Availability
 to_field "availability_facet", extract_availability
 to_field "location_display", extract_marc("HLDbc")
+to_field "holdings_display", extract_marc("HLD8")
 to_field "holdings_with_no_items_display", extract_holdings_with_no_items
 to_field "suppress_items_b", suppress_items
 to_field "holdings_summary_display", extract_holdings_summary
@@ -219,6 +220,9 @@ to_field "diamond_id_display", extract_marc("907a")
 to_field "gpo_display", extract_marc("074a")
 to_field "oclc_number_display", extract_oclc_number
 to_field "alma_mms_display", extract_marc("001")
+to_field "electronic_collection_id", extract_marc("PRTi")
+to_field "electronic_service_id", extract_marc("PRTj")
+
 
 # Preceding Entry fields
 to_field "continues_display", extract_marc("780|00|iabdghkmnopqrstuxyz3:780|02|iabdghkmnopqrstuxyz3", trim_punctuation: true)

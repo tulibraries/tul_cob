@@ -47,7 +47,7 @@ module ApplicationHelper
 
   def subject_links(args)
     args[:document][args[:field]].map do |subject|
-      link_to(subject, "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
+      link_to(subject.sub("— — ", "— "), "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
     end
   end
 
@@ -97,16 +97,35 @@ module ApplicationHelper
   def holdings_summary_information(document)
     field = document.fetch("holdings_summary_display", [])
     unless field.empty?
-      summary = field.first.split("|").first
-      related_holding = field.first.split("|").last
-      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
+      field.first.split("|").first
     end
   end
 
-  def render_holdings_summary_table(document)
-    if document["holdings_summary_display"].present?
-      render partial: "holdings_summary", locals: { document: document }
+  def render_holdings_summary(document)
+    if holdings_summary_information(document).present?
+      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
+    else
+      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
     end
+  end
+
+  def build_holdings_summary(items, document)
+    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
+      summary.split("|")
+    }.map { |summary|
+      [summary.last, summary.first]
+    }.to_h
+
+
+    items.map { |item|
+        library = item.first
+        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
+          .uniq.select { |id| holdings_summaries.keys.include?(id) }
+          .map { |holding| holdings_summaries[holding] }
+          .join(", ")
+
+        [ library, summaries ]
+      }.to_h
   end
 
   def alma_build_openurl(query)
@@ -225,7 +244,7 @@ module ApplicationHelper
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
-  # TODO: move to decorator or eninge class.
+  # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
     case results.engine_id
@@ -298,7 +317,22 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
+  end
+
+  def explanation_translations(controller_name)
+    case controller_name
+    when "books"
+      t("#{controller_name}.explanation_html", href: link_to(t("books.explanation_href"), t("books.explanation_link"), target: "_blank"))
+    when "primo_central"
+      t("articles.explanation_html")
+    when "journals"
+      t("#{controller_name}.explanation_html")
+    when "catalog"
+      t("blacklight.explanation_html")
+    else
+      ""
+    end
   end
 
   def ris_path(opts = {})

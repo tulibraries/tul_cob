@@ -5,7 +5,6 @@ module AlmaDataHelper
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
-
   def availability_status(item)
     if item.in_place?
       if item.non_circulating?
@@ -102,5 +101,25 @@ module AlmaDataHelper
         acc.merge!(library_name_from_short_code(lib) => lib)
       }
     end
+  end
+
+  def filter_unwanted_locations(items_list)
+    items_list.each_pair { |library, items|
+      items_list[library] = items.reject { |item|
+        item if item.holding_location.match?(/techserv|UNASSIGNED|intref/)
+      }
+    }
+  end
+
+  def unsuppressed_holdings(items_list, document)
+    solr_holdings = document.fetch("holdings_display", "")
+
+    return if solr_holdings.blank?
+
+    items_list.each_pair { |library, items|
+      items_list[library] = items.select { |item|
+       solr_holdings.include?(item["holding_data"]["holding_id"])
+     }
+    }
   end
 end

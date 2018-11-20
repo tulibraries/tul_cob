@@ -3,13 +3,15 @@
 # This controller is implemented to get information about a document's
 # availability because the alma api is currently too slow to load this at the
 # document level.
-class AlmawsController < ApplicationController
+class AlmawsController < CatalogController
   layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
 
   def item
     @mms_id = params[:mms_id]
+    _, @document = begin fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
+
     start = Time.now
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
@@ -19,8 +21,13 @@ class AlmawsController < ApplicationController
     bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
+
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
+    @holdings_summary = helpers.build_holdings_summary(@items, @document)
+    #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
+    helpers.filter_unwanted_locations(@items)
+    helpers.unsuppressed_holdings(@items, @document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
     @redirect_to = params[:redirect_to]

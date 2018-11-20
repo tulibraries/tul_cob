@@ -1,13 +1,21 @@
-<div class="page-header row">
-  <h2 class="col-md-8 page-heading jumbotron-heading"><%= t('bento.greeting') %></h2>
-</div>
-
 <div id="getting-started">
-  <p class='section-heading'>The Library Search includes the following collections:</p>
-  <ul>
-    <li> Catalog Search: books, e-books, journals, videos/DVDs, sound recordings, government documents, materials in the Special Collections Research Center (SCRC) and the Charles L. Blockson Afro-American Collection, etc. </li>
+  <p class="section-heading"><%= t("bento.section_heading_html",
+    books: link_to(t("bento.books"), search_books_path),
+    articles: link_to(t("bento.articles"), search_path),
+    journals: link_to(t("bento.journals"), search_journals_path),
+    more: link_to(t("everthing.more"), search_catalog_path)) %></p>
 
-    <li>Articles Search: journal articles, newspaper articles, e-books, book chapters, and other resources available online</li>
+  <p class="section-heading"><strong><%= t("bento.library_search_question") %></strong></p>
+  <p><%= t("bento.library_search_answer") %></p>
+  <ul class="everything-home-list">
+    <li>
+      <%= link_to(t("bento.books"), search_books_path) %>,
+      <%= link_to(t("bento.journals"), search_journals_path) %>, and
+      <%= link_to(t("bento.more"), search_catalog_path) %>
+    </li>
+    <li><%= link_to(t("bento.articles"), search_path) %></li>
   </ul>
-  <p>Please refer to our <%= faq_link(:long) %> for more information. For additional help, <%= help_link %>.</p>
+
+  <p><%= t("bento.need_help") %> <%= help_link %>.</p>
+  <p><%= t("bento.more_information") %><%= faq_link(:long) %>.</p>
 </div>

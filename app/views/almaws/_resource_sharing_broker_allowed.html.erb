@@ -1,14 +1,14 @@
 <div class="panel panel-default request-heading">
   <div class="panel-heading">
     <h4 class="panel-title">
-        <a class="booking-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseFour-<%= @mms_id %>">Request item from another library</a>
+        <a class="booking-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseFour-<%= @mms_id %>"><%= t("requests.resource_sharing_broker_allowed_link") %></a>
     </h4>
   </div>
 </div>
 
 <div id="collapseFour-<%= @mms_id %>" class="panel-collapse collapse <%= 'in' if only_one_option_allowed(request_options)%>">
   <div class="panel-body">
-    <p>For books unavailable from Temple University Libraries, search for and request the item from another library using E-ZBorrow. Books generally arrive in 3-5 business days.</p>
-      <%= link_to "Search", request_options.ez_borrow_link, id: "ez-borrow-button", class: "btn btn-primary request-button search-results-request-btn", target: "_blank" %>
+    <p><%= t("requests.resource_sharing_broker_text") %></p>
+      <%= link_to(t("requests.resource_sharing_broker_link"), request_options.ez_borrow_link, id: "ez-borrow-button", class: "btn btn-primary request-button search-results-request-btn", target: "_blank") %>
   </div>
 </div>

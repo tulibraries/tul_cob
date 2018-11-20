@@ -136,6 +136,21 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
       end
     end
+
+    context "does not display double hyphens" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries — —  Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "displays only one hyphen" do
+        expect(subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
   end
 
   describe "#render_nav_link" do
@@ -216,7 +231,7 @@ RSpec.describe ApplicationHelper, type: :helper do
             }
         }
       it "displays the field in a human-readable format" do
-        expect(helper.holdings_summary_information(document)).to eq("v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.<br />Related Holding ID: 22318863960003811")
+        expect(helper.holdings_summary_information(document)).to eq("v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
       end
     end
 
@@ -232,26 +247,69 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#render_holdings_summary_table(document)" do
-    context "document has a holdings_summary field" do
+  describe "#render_holdings_summary(document)" do
+    context "record has a holdings_summary field" do
       let(:document) {
           {
             "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
             }
         }
-      it "renders the holdings_summary partial" do
-        expect(helper.holdings_summary_information(document)).not_to be_nil
+      it "returns the field for display" do
+        expect(render_holdings_summary(document)).to eq("<td id=\"holdings-summary\">Description: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.</td>")
       end
     end
 
-    context "document does not have a holdings_summary field" do
+    context "record does not have a holdings_summary_display field" do
       let(:document) {
           {
             "subject_display" => ["Test"]
             }
         }
-      it "does not render the holdings_summary partial" do
-        expect(helper.holdings_summary_information(document)).to be_nil
+      it "returns the default message" do
+        expect(render_holdings_summary(document)).to eq("<td id=\"error-message\">We are unable to find availability information for this record. Please contact the library for more information.</td>")
+      end
+    end
+  end
+
+  describe "#build_holdings_summary(items, document)" do
+    context "record has a holdings_summary field" do
+      let(:items) do
+        { "MAIN" => [Alma::BibItem.new(
+          "holding_data" =>
+             { "holding_id" => "22318863960003811"
+           }
+          )]
+        }
+      end
+      let(:document) {
+          {
+            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            }
+        }
+
+      it "returns the summary for the related library" do
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
+      end
+    end
+
+    context "record does not have a holdings_summary_display field" do
+      let(:items) do
+        { "MAIN" => [Alma::BibItem.new(
+          "holding_data" =>
+             { "holding_id" => "22318863650003811"
+           }
+          )]
+        }
+      end
+
+      let(:document) {
+          {
+            "subject_display" => []
+            }
+        }
+
+      it "returns the default message" do
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "")
       end
     end
   end
