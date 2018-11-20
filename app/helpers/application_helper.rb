@@ -116,8 +116,7 @@ module ApplicationHelper
       [summary.last, summary.first]
     }.to_h
 
-
-    items.map { |item|
+    new_summary = items.map { |item|
         library = item.first
         summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
           .uniq.select { |id| holdings_summaries.keys.include?(id) }
@@ -227,7 +226,7 @@ module ApplicationHelper
 
   def aeon_request_button(items)
     if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
-      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request btn btn-sm btn-primary")
+      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request-btn btn btn-sm btn-primary")
     end
   end
 
