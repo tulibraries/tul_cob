@@ -20,27 +20,44 @@ RSpec.feature "Indices" do
     end
   end
 
-  feature "Catalog" do
+  feature "Facets" do
     let (:facets) {
       [ "Availability",
         "Library",
         "Resource Type",
         "Date",
         "Author/creator",
+        "Topic",
+        "Era",
+        "Region",
+        "Genre",
         "Language"]
     }
+    context "searching shows all facets" do
+      scenario "User searches catalog" do
+        visit "/catalog"
+        fill_in "q", with: "*"
+        click_button "search"
+
+        within("#facets") do
+          all("div.panel").each_with_index do |div_panel, i|
+            expect(div_panel).to have_text facets[i]
+          end
+        end
+      end
+    end
+  end
+
+  feature "Catalog" do
+
     let (:title) { "Academic freedom in an age of conformity" }
     let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
       visit "/catalog"
       fill_in "q", with: title
       click_button "search"
-      within("#facets") do
-        all("div.panel").each_with_index do |div_panel, i|
-          expect(div_panel).to have_text facets[i]
-        end
-      end
       expect(current_url).to eq results_url
+      expect(page).to have_css("#facets")
       within(".document-position-0 h3") do
         expect(page).to have_text(title)
       end
