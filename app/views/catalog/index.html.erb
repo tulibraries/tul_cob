@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<div id="content">
+<div id="content" class="<%= main_content_classes if show_sidebar? %>">
   <% unless has_search_parameters? %>
     <%# if there are no input/search related params, display the "home" partial -%>
     <%= render 'home' %>
