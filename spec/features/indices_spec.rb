@@ -15,7 +15,7 @@ RSpec.feature "Indices" do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit "/catalog"
-          expect(page).to_not have_css("#facets")
+        expect(page).to_not have_css("#facets")
       end
     end
   end
