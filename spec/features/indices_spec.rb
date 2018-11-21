@@ -15,36 +15,7 @@ RSpec.feature "Indices" do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit "/catalog"
-        within("#facets") do
-          expect(page).to have_text "Availability"
-          expect(page).to have_text "Library"
-          expect(page).to have_text "Resource Type"
-        end
-      end
-    end
-  end
-
-  feature "Facets" do
-    let (:facets) {
-      [ "Availability",
-        "Library",
-        "Resource Type",
-        "Date",
-        "Author/creator",
-        "Topic",
-        "Era",
-        "Region",
-        "Genre",
-        "Language"]
-    }
-    context "publicly available pages" do
-      scenario "User visits home page" do
-        visit "/catalog"
-        within("#facets") do
-          all("div.panel").each_with_index do |div_panel, i|
-            expect(div_panel).to have_text facets[i]
-          end
-        end
+          expect(page).to_not have_css("#facets")
       end
     end
   end
