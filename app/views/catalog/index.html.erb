@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<div id="content" class="<%= main_content_classes %>">
+<div id="content">
   <% unless has_search_parameters? %>
     <%# if there are no input/search related params, display the "home" partial -%>
     <%= render 'home' %>
