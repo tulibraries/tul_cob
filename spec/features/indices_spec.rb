@@ -21,6 +21,7 @@ RSpec.feature "Indices" do
   end
 
   feature "Catalog" do
+
     let (:title) { "Academic freedom in an age of conformity" }
     let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
@@ -28,6 +29,7 @@ RSpec.feature "Indices" do
       fill_in "q", with: title
       click_button "search"
       expect(current_url).to eq results_url
+      expect(page).to have_css("#facets")
       within(".document-position-0 h3") do
         expect(page).to have_text(title)
       end
