@@ -138,7 +138,7 @@ function loadArticleIframe(id) {
 }
 
 $(document).on('turbolinks:load', function() {
-	if ($("span.page_entries").empty()) {
+	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
 	}
@@ -147,4 +147,3 @@ $(document).on('turbolinks:load', function() {
  		$("#search-navbar").css("padding-left", "15%");
  	}
  });
-
