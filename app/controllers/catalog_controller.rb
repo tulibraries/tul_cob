@@ -100,8 +100,9 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^50000
         title_t^25000
         subtitle_t^10000
-        title_statement_unstem_search^15000
-        title_statement_t^5000
+        work_access_point^10000
+        title_statement_unstem_search^5000
+        title_statement_t^2500
         title_uniform_unstem_search^15000
         title_uniform_t^5000
         title_addl_unstem_search^5000
@@ -127,8 +128,9 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
-        title_statement_unstem_search^150000
-        title_statement_t^50000
+        work_access_point^10000
+        title_statement_unstem_search^50000
+        title_statement_t^25000
         title_uniform_unstem_search^150000
         title_uniform_t^50000
         title_addl_unstem_search^50000
