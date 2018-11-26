@@ -4,7 +4,7 @@ $(document).ready(function(){
 		{id: "header-logo", category: "navigation"},
 		{id: "login", category: "navigation"},
 		{id: "logout", category: "navigation"},
-		{id: "bookmarks", category: "navigation"},
+		{id: "bookmarks_nav", category: "navigation"},
 		{id: "articles-header", category: "navigation"},
 		{id: "articles-button", category: "navigation"},
 		{id: "catalog-header", category: "navigation"},
@@ -19,7 +19,7 @@ $(document).ready(function(){
 		{id: "advanced_search", category: "search-results"},
 		{id: "basic_search", category: "search-results"},
 		{id: "online_button", category: "search-results"},
-		{id: "bookmarks", category: "search-results"},
+		{id: "bookmark_button", category: "search-results"},
 		{id: "direct_link_online", category: "search-results"},
 		{id: "single_link_online", category: "search-results"},
 		{id: "many_links_online", category: "search-results"},
@@ -35,6 +35,17 @@ $(document).ready(function(){
 		{id: "signin_for_request_options", category: "search-results"},
 		{id: "request", category: "search-results"},
 		{id: "available_button", category: "search-results"}
+		{id: "navbar_everything", category: "navigation"}
+		{id: "navbar_books", category: "navigation"}
+		{id: "navbar_articles", category: "navigation"}
+		{id: "navbar_journals", category: "navigation"}
+		{id: "navbar_more", category: "navigation"}
+		{id: "breadcrumbs_book", category: "navigation"}
+		{id: "breadcrumbs_record", category: "navigation"}
+		{id: "breadcrumbs_article", category: "navigation"}
+		{id: "breadcrumbs_journal", category: "navigation"}
+		{id: "request_options", category: "search-results"}
+		{id: "request-btn-0", category: "search-results"}
 	];
 
   function handleEventClicks(event) {

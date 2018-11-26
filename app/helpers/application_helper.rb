@@ -206,13 +206,13 @@ module ApplicationHelper
     end
   end
 
-  def render_nav_link(path, name)
+  def render_nav_link(path, name, analytics_id)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-btn header-links" ] + active).join(" ")
     link_class = ([ "nav-link" ] + active).join(" ")
 
     content_tag :li, class: button_class do
-      link_to(name, send(path, search_params), class: link_class)
+      link_to(name, send(path, search_params), class: link_class, id: analytics_id)
     end
   end
 
