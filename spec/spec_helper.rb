@@ -216,67 +216,51 @@ if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
 end
 
 require "rspec/expectations"
-RSpec::Matchers.define :include_docs do |primary_ids|
-  match do |actual|
-    ids = ids(actual)
-    # Find index of relevant docs in array of actual ids
-    # if any of the docs are not in the actual index (which returns nil), throw an exception
-    more_relevant_index_points =
-      begin
-        primary_ids.map { |id| ids.index(id) }
-      rescue
-        # Regular error handler responds when 20 or less results.
-        if ids.count <= 20
-          @ids = ids
-          return false
-        else
-          raise ArgumentError.new("At least one of the more relevant docs was not in the results set")
-        end
-      end
-
-    #grab the largest index
-    last_more_relevant_index = more_relevant_index_points.compact.max
-
-    # if we used the before chain method
-    if secondary_ids
-
-      # Find index of the less relevant docs in array of actual ids and grab the smallest index
-      # if none of the docs are in the actual index (which returns nil), set to 1 more than
-      # thu number of returned results
-      first_less_relevant_index = (
-        secondary_ids.map { |d| ids.index(d) }.compact.min ||
-        (actual.dig("response", "pages", "total_count") || 100) + 1)
-
-      # The last more relevant doc should have a smaller index
-      # than the firs less relevant doc
-      last_more_relevant_index < first_less_relevant_index
-
-    #if we used the within_the_first chain method
-    elsif within_index
-      last_more_relevant_index < within_index
-    else
-      # All is good otherwise more_relevant_index_points throws an error.
-      true
-    end
-  end
-
-  chain :before, :secondary_ids
-
+RSpec::Matchers.define :include_items do |primary_items|
+  chain :before, :secondary_items
   chain :within_the_first, :within_index
 
-  failure_message do |actual|
-    if secondary_ids
-      "expected that #{primary_ids} would be appear before #{secondary_ids} in #{ids(actual)}"
-    elsif within_index
-      "expected that #{primary_ids} would appear in the first #{within_index} docs"
-    else
-      not_found_ids = primary_ids.select { |id| !@ids.include?(id) }
-      "expected that all primary_ids (#{primary_ids.pretty_inspect}) would apper in results: #{@ids.pretty_inspect}, but missing #{not_found_ids.pretty_inspect}"
-    end
-
+  match do |items|
+    all_present?(primary_items, @within_index) &&
+      all_present?(@secondary_items) &&
+      comes_before?(@secondary_items, primary_items)
   end
 
-  def ids(actual)
-    (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
+  def all_present?(check_items, within_index = nil)
+    # Skip if chained check is not required
+    return true if check_items.nil?
+
+    @within_items = within_index ? @actual.take(within_index.to_i) : @actual
+    check_items.all? { |id| @within_items.include?(id) }
+  end
+
+  def comes_before?(back_items, front_items)
+    # Skip if chained check is not required
+    return true if @secondary_items.nil?
+
+    back_items.all? { |back_item|
+      front_items.all? { |front_item|
+        @actual.index(back_item) > @actual.index(front_item) rescue false
+      }
+    }
+  end
+
+
+  failure_message do |actual|
+    if secondary_items
+      not_found_items = secondary_items.select { |id| !@actual.include? id }
+      if not_found_items.present?
+        "expected that secondary items #{secondary_items.pretty_inspect} would all be present #{within_index}, but missing #{not_found_items.pretty_inspect}"
+      else
+        "expected that #{primary_items} would be appear before #{secondary_items} in #{@actual}"
+      end
+    elsif within_index
+      not_found_items = primary_items.select { |id| !@within_items.include? id }
+
+      "expected that primary items #{primary_items.pretty_inspect} would appear in the first #{within_index} items, but missing #{not_found_items.pretty_inspect}"
+    else
+      not_found_items = primary_items.select { |id| !@actual.include? id }
+      "expected that all primary_items (#{primary_items.pretty_inspect}) would apper in results: #{@actual.pretty_inspect}, but missing #{not_found_items.pretty_inspect}"
+    end
   end
 end
