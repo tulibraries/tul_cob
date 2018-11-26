@@ -147,4 +147,3 @@ $(document).on('turbolinks:load', function() {
  		$("#search-navbar").css("padding-left", "15%");
  	}
  });
-

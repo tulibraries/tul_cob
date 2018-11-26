@@ -1,5 +1,6 @@
 @import "_vars.scss";
 
+/* SIDEBAR STYLES(FACETS AND CONSTRAINTS) */
 a.facet_select, a.facet_select:active, a.facet_select:visited {
 	color: $red;
 }
@@ -27,9 +28,9 @@ a.facet_select, a.facet_select:active, a.facet_select:visited {
 	color: $black;
 }
 
-span.constraints{
-	padding: 0;
+span.constraints {
 	border: 0;
+	padding: 0;
 	.btn {
 		border-radius: 5px;
 	}
@@ -40,13 +41,13 @@ span .remove-icon {
 }
 
 span .remove-constraints {
-	background-color: #b9e5fb;
+	background-color: $light-blue;
 	border: 1px solid transparent !important;
-	color: black;
+	color: $black;
 }
 
 span.constraint-value {
-	background-color: #b9e5fb;
+	background-color: $light-blue;
 	border: 1px solid transparent !important;
 	font-weight: bold;
 	padding: 8px 15px;
@@ -59,24 +60,24 @@ span.constraints:first-child {
 }
 
 span.constraint-value:hover {
-	background-color: #b9e5fb !important;
+	background-color: $light-blue !important;
 	border: 1px solid transparent !important;
 }
 
 a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-constraints:visited, a.btn.remove-constraints:after {
-	background-color: #b9e5fb !important;
-	color: black !important;
+	background-color: $light-blue !important;
 	border-left: none !important;
 	border: 1px solid transparent !important;
+	color: $black !important;
 }
 
 #startOverLink, #start_over {
-	color: #fff;
+	color: $white;
   background-color: #095780;
   border-color: #2e6da4;
+	font-size: 12px;
 	font-weight: 200;
 	letter-spacing: 1px;
-	font-size: 12px;
   margin-right: 4px;
 }
 
@@ -85,9 +86,9 @@ a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-co
 }
 
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
-	background-color: $red!important;
-	color: $white!important;
-	border-color: #d43f3a!important;
+	background-color: $red !important;
+	border-color: #d43f3a !important;
+	color: $white !important;
   span.avail-label.not-available {
   	padding-left: 5px;
   	font-size: 13px;
@@ -95,9 +96,9 @@ button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.b
 }
 
 button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, input.btn-info:active, input.btn-info:visited {
-    color: #fff!important;
-    background-color: #337ab7!important;
-    border-color: #2e6da4!important;
+    color: $white!important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
     span.avail-label {
     	font-size: 15px;
     	padding-left: 10px;
@@ -105,17 +106,17 @@ button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, inp
 }
 
 a.btn-info, a.btn-info:active, a.btn-info:hover, a.btn-info:focus, a.btn-info:visited {
-    color: #fff!important;
-    background-color: #337ab7!important;
-    border-color: #2e6da4!important;
+    color: $white !important;
+    background-color: #337ab7 !important;
+    border-color: #2e6da4 !important;
     font-size: 15px;
-    padding:left 3px;
+    padding-left: 3px;
 }
 
 button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
-	background-color: #3A833A!important;
+	background-color: #3A833A !important;
 	color: $white!important;
-	border-color: #224922!important;
+	border-color: #224922 !important;
   span.avail-label.available {
   	padding-left: 14px;
   	font-size: 15px;
@@ -123,22 +124,22 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
 }
 
 a.btn-back-to-search, a.btn-back-to-search:focus, a.btn-back-to-search:hover, a.btn-back-to-search:active, a.btn-back-to-search:visited {
-	background-color: #fff!important;
-	color: $red!important;
+	background-color: $white !important;
+	color: $red !important;
 	border-color: #ccc;
 }
 
 button.collapse-button .avail-label:after {
-    /* symbol for "opening" panels */
-    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-    float: right;        /* adjust as needed */
-    color: white;         /* adjust as needed */
+	color: $white;         /* adjust as needed */
+	content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+	float: right;        /* adjust as needed */
+	/* symbol for "opening" panels */
+  font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
 }
 
 button.collapse-button.collapsed .avail-label:after {
-    /* symbol for "collapsed" panels */
-    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+  /* symbol for "collapsed" panels */
+  content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
 .availability-toggle-details {
@@ -147,8 +148,8 @@ button.collapse-button.collapsed .avail-label:after {
 
 #startOverLink {
 	margin-left: -15px;
-	width: 100px;
 	padding: 2px 5px;
+	width: 100px;
 }
 
 a.catalog_startOverLink {
@@ -161,13 +162,13 @@ a.catalog_startOverLink {
 
 .facet_limit-active {
 	.panel-heading.collapse-toggle.collapsed .panel-title:after {
-		color: white;
+		color: $white;
 	}
 	.panel-heading.collapse-toggle .panel-title:after {
-		color: white;
+		color: $white;
 	}
 	.panel-heading.collapse-toggle.collapsed .panel-title:after {
-		color: white;
+		color: $white;
 	}
 }
 
@@ -184,26 +185,20 @@ a.catalog_startOverLink {
 }
 
 #sidebar {
-	background-color: #FFF;
+	background-color: $white;
 	border-radius: 5px;
 	height: auto;
 }
 
-.document-divider {
-	width: 100%;
-	margin: 0 5% !important;
-	padding: 0 5% !important;
-}
-
 input[value|="Apply"] {
-	color: #fff;
+	color: $white;
 	background-color: #095780;
 	border-color: #2e6da4;
+	font-size: 12px;
 	font-weight: 200;
 	letter-spacing: 1px;
-	font-size: 12px;
-	padding: 7px 8px;
 	margin-left: 10px;
+	padding: 7px 8px;
 }
 
 input#range_pub_date_sort_begin {
@@ -236,6 +231,6 @@ form.range_limit {
 }
 
 .more_facets_link {
-	padding-left: 15px;
 	font-weight: bold;
+	padding-left: 15px;
 }

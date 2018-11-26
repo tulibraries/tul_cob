@@ -1,10 +1,33 @@
+@import "_vars.scss";
+
+/* === TEXT MESSAGE/EMAILS  === */
+textarea#message-body.form-control {
+  height: 100px;
+}
+
+form#sms_form {
+  font-size: small;
+}
+
+form#sms_form textarea#title {
+  border: none;
+  height: 4em;
+  overflow: hidden;
+  resize: none;
+  width: 100%;
+}
+
+form#sms_form div.text-this-location label {
+  font-weight: normal;
+}
+
 #locationsList {
-    background-color:#eee;
+    background-color: $white;
     border: solid #ccc 1px;
-    padding: 10px;
-    width:85%;
-    margin: 7px;
-    padding-left: 27px;
-    line-height: 1.75em;
     font-size: 95%;
+    line-height: 1.75em;
+    margin: 7px;
+    padding: 10px;
+    padding-left: 27px;
+    width:85%;
 	}
