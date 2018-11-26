@@ -1,0 +1,196 @@
+@import "_vars.scss";
+
+/* === AVAILABILITY === */
+
+/* === INDEX(SEARCH RESULTS) AVAILABILITY === */
+.availability {
+  margin-top: 25px;
+}
+
+.availability button {
+  display: none;
+}
+
+.controls button  {
+  display: inline;
+}
+
+/* === RECORD PAGE AVAILABILITY === */
+.panel-default > .availability-panel-heading {
+  background-color: $white;
+  border: none;
+  color: $red;
+}
+
+#availability-heading {
+  color: $red;
+  display: inline-block;
+  margin-left: -10px;
+  vertical-align: middle;
+}
+
+#heading-request {
+  display: inline-block;
+  float: right;
+  padding-top: 3px;
+  vertical-align: middle;
+}
+
+.collapse-button {
+  white-space: normal;
+  width: 121px !important;
+}
+
+.availability-toggle-details {
+  padding-left: 10px;
+}
+
+.button-break {
+  padding: 3px;
+}
+
+.online-border {
+  padding-top: 0;
+}
+
+div.physical-holding-panel {
+  padding: 0 !important;
+}
+
+.show_page_records dd {
+  margin-bottom: 7px;
+}
+
+.avail-icon {
+  margin-right: 10px;
+}
+
+.spinner {
+  display: none;
+  margin-top: 10px;
+}
+
+.item-avail {
+  display: none !important;
+}
+
+.online-panel {
+  margin: 0;
+  padding: 0;
+}
+
+.online-panel-heading {
+  background-color: #F1EFE8;
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  border-collapse: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  margin: 0 !important;
+  padding: 8px !important;
+}
+
+.online-panel-body {
+  margin-top: -20px;
+}
+
+.list_elec_links {
+  margin-top: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.record_page_elec_links {
+  border: 1px solid #CFC7B0;
+  border-bottom: none;
+  margin-right: 2px;
+  margin-top: 0;
+  width: 100%;
+}
+
+.electronic_links  {
+  border: 1px solid #CFC7B0;
+  display: block;
+  padding: 8px;
+  width: 100%;
+}
+
+#record-page-online {
+  border-left: 1px solid #CFC7B0;
+  border-right: 1px solid #CFC7B0;
+  border-bottom: none;
+  width: 100%;
+}
+
+iframe.bl_alma_iframe, .bl_alma_iframe {
+  max-height: 280px;
+	width: 100%;
+}
+
+iframe.availability-details-iframe {
+	height: 250px;
+}
+
+/* ALMA DATA TABLE */
+
+table.border-bottom {
+  border-bottom: 1px solid #CFC7B0;
+  border-top: 0;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  margin-right: 0 !important;
+}
+
+table.border-bottom {
+  th[headers*="location"] {
+    width: 17%;
+  }
+  td[scope*="row"] {
+    width: 10%;
+  }
+  td[headers*="desc"] {
+    width: 25%;
+  }
+  td[headers*="callnum"] {
+    width: 22%;
+  }
+  td[headers*="note"] {
+    width: 7%;
+  }
+  td[headers*="status"] {
+    padding-right:4px;
+    width: 20%;
+  }
+}
+
+.table-heading {
+  background-color: #F1EFE8;
+}
+
+.holdings-summary {
+  font-weight: normal;
+}
+
+.table-wrapper {
+  border: 1px solid #CFC7B0 !important;
+  display: block;
+  margin-bottom: 0 !important;
+  max-height: 300px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  border-left: 1px solid #CFC7B0 !important;
+  width: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+.page_links {
+  margin-top: 0 !important;
+  padding-left: 10px;
+}

@@ -1,0 +1,51 @@
+@import "_vars.scss";
+
+/* === ADVANCED SEARCH === */
+
+.advanced-search-form {
+  background-color: $white;
+  border-radius: 5px;
+}
+
+.advanced-search-fields {
+  line-height: 3.5em;
+}
+
+.booleans {
+  padding-left: 4px;
+}
+
+.advanced-search-select {
+  margin-left: 10%;
+}
+
+.advanced_search_input {
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+.pub-date {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.pub-date-separator {
+  margin-left: 10px;
+  padding-top: 6px;
+  text-align:center;
+}
+
+#range_pub_date_sort_end {
+  margin-left: 10px;
+}
+
+a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advanced-search-start-over:focus, a.advanced-search-start-over:hover {
+  background-color: $white;
+  border-color: $light-grey;
+  color: $red;
+  margin-left: 4px;
+}
+
+.submit-buttons {
+  margin-right: 85px;
+}
