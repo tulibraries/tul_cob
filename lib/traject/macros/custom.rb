@@ -472,7 +472,7 @@ module Traject
           rec.fields(["035", "979"]).each do |field|
             unless field.nil?
               unless field["a"].nil? || field["9"]&.include?("ExL")
-                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].include?("on") || field["a"].include?("OCLC")
+                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].match(/\bon[0-9]/) || field["a"].include?("OCLC")
                   subfield = field["a"].split(//).map { |x| x[/\d+/] }.compact.join("")
                 end
                 acc << subfield

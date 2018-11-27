@@ -82,4 +82,20 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#citation_labels(format)" do
+    context "citation format is APA" do
+      let(:format) { "APA" }
+      it "displays APA" do
+        expect(citation_labels(format)).to eq("APA (6th)")
+      end
+    end
+
+    context "citation format is CHICAGO" do
+      let(:format) { "CHICAGO" }
+      it "displays APA" do
+        expect(citation_labels(format)).to eq("Chicago Author-Date (15th)")
+      end
+    end
+  end
 end
