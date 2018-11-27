@@ -306,6 +306,31 @@ module CatalogHelper
     content_tag(:td, item_html , class: " electronic_links online-list-items")
   end
 
+  def render_alma_eresource_link(portfolio_pid, db_name)
+    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), title: "Target opens in new window", target: "_blank")
+  end
+
+  def alma_electronic_resource_direct_link(portfolio_pid)
+    query = {
+        "u.ignore_date_coverage": "true",
+        "Force_direct": true,
+        portfolio_pid: portfolio_pid
+    }
+    alma_build_openurl(query)
+  end
+
+  def alma_build_openurl(query)
+    query_defaults = {
+      rfr_id: "info:sid/primo.exlibrisgroup.com",
+    }
+
+    URI::HTTPS.build(
+      host: alma_domain,
+      path: "/view/uresolver/#{alma_institution_code}/openurl",
+      query: query_defaults.merge(query).to_query).to_s
+  end
+
+
   def electronic_resource_link_builder(field)
     return if field.empty?
     portfolio_pid, db_name, addl_info, availability = field.split("|")
