@@ -803,6 +803,12 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
+    context "when 979 field includes on inside a string" do
+      it "does not map record" do
+        expect(subject.map_record(records[8])).to eq({})
+      end
+    end
+
     context "when 979 field and 035 field have different OCLC numbers" do
       it "maps record" do
         expect(subject.map_record(records[6])).to eq("oclc_number_display" => ["938995310", "882543310"])

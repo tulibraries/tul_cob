@@ -52,4 +52,10 @@
       <subfield code="9">ExL</subfield>
     </datafield>
   </record>
+  <record>
+  <!-- 8. on is present only within a string of other letters -->
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">(Production)1012488209</subfield>
+    </datafield>
+  </record>
 </collection>

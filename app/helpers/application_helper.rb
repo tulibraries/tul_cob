@@ -209,4 +209,19 @@ module ApplicationHelper
     request.original_fullpath.match?(/^#{url_path}/) ||
       current_page?(root_path) && root_page.include?(path)
   end
+
+  def citation_labels(format)
+    case format
+    when "APA"
+      format = "APA (6th)"
+    when "MLA"
+      format = "MLA (7th)"
+    when "CHICAGO"
+      format = "Chicago Author-Date (15th)"
+    when "HARVARD"
+      format = "Harvard (18th)"
+    when "TURABIAN"
+      format = "Chicago Notes & Bibliography (15th)/Turabian (6th)"
+    end
+  end
 end
