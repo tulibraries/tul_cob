@@ -163,6 +163,12 @@ a.advanced_search {
 	display: inline-block;
 	font-weight: bold;
 	letter-spacing: 1px;
+	margin-left: 0;
+}
+
+.basic-search-form {
+	height: 25px;
+	margin-right: 0;
 }
 
 .navbar {
@@ -244,7 +250,6 @@ nav ul.navbar li.nav-btn.active a {
 .navbar-form {
 	display: inline-block;
 	height: 25px;
-	margin-left: -40px;
 	vertical-align: middle;
 }
 
