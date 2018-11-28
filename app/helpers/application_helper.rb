@@ -206,7 +206,7 @@ module ApplicationHelper
     end
   end
 
-  def render_nav_link(path, name, analytics_id = "")
+  def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-btn header-links" ] + active).join(" ")
     link_class = ([ "nav-link" ] + active).join(" ")
