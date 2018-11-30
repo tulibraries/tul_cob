@@ -134,14 +134,35 @@ RSpec.describe CatalogController, type: :controller do
     end
 
     context "user is logged in" do
-      it "allows access to purchase order actioins" do
-        sign_in FactoryBot.create(:user)
+      let(:user) { FactoryBot.create(:user) }
+      let(:allow_purchase) { true }
 
-        get :purchase_order, params: { id: doc_id }
-        expect(response).to be_success
+      before do
+        sign_in user
+        allow(controller).to receive(:current_user) { user }
+        allow(user).to receive(:can_purchase_order?) { allow_purchase }
+      end
 
-        post :purchase_order_action, params: { id: doc_id }
-        expect(response).to be_success
+      context "user group is allowed to purchase order" do
+        it "allows access to purchase order action" do
+          get :purchase_order, params: { id: doc_id }
+          expect(response).to be_success
+
+          post :purchase_order_action, params: { id: doc_id }
+          expect(response).to be_success
+        end
+      end
+
+      context "user group is not allowed to purchase order" do
+        let(:allow_purchase) { false }
+
+        it "does not allow access to purchase order action" do
+          get :purchase_order, params: { id: doc_id }
+          expect(response).not_to be_success
+
+          post :purchase_order_action, params: { id: doc_id }
+          expect(response).not_to be_success
+        end
       end
     end
   end

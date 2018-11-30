@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Ris::Catalog
 
-  before_action :authenticate_user!, only: [ :purchase_order, :purchase_order_action ]
+  before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
 
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
   add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
@@ -674,6 +674,14 @@ class CatalogController < ApplicationController
     end
 
     super
+  end
+
+  def authenticate_purchase_order!
+    authenticate_user!
+    message = "You do not have access to purchase order items."
+    to_the_future = { fallback_location: root_path, alert: message }
+
+    redirect_back(to_the_future) unless current_user.can_purchase_order?
   end
 
   private
