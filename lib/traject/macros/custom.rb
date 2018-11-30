@@ -246,11 +246,19 @@ module Traject
               end
             end
           end
+
           unless rec.fields("HLD").empty?
             acc << "At the Library"
           end
+
           unless rec.fields("ADF").empty?
             acc << "At the Library"
+          end
+
+          order = []
+          extract_purchase_order[rec, order]
+          if order == [true]
+            acc << "Purchase on Demand"
           end
 
           acc.uniq!
