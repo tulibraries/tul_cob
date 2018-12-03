@@ -21,7 +21,7 @@
         <tr class="table-heading">
           <th id="<%= key %>" class="library-name" scope="colgroup" colspan="2"><%= library_name_from_short_code(key) %></th>
           <% if @document["holdings_summary_display"] %>
-            <th class="holdings-summary" colspan="7">Description: <%= @holdings_summary[key] %></th>
+            <th class="holdings-summary" colspan="7"><%= @holdings_summary[key] %></th>
           <% end %>
           <th class="aeon-request" colspan="7"><%= aeon_request_button(items) %></th>
 
