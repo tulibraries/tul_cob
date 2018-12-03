@@ -393,6 +393,49 @@ RSpec.describe Traject::Macros::Custom do
           expect(subject.map_record(records[9])).to_not eq("availability_facet" => ["Online"])
         end
       end
+
+      describe "#extract_availability(purchase on demand)" do
+        let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+        before do
+          subject.instance_eval do
+            to_field("availability_facet", extract_availability)
+            settings do
+              provide "marc_source.type", "xml"
+            end
+          end
+        end
+
+        context "with purchase order field true" do
+          let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>EBC-POD</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                         " }
+
+          it "adds a purchase order availability" do
+            expect(subject.map_record(record)["availability_facet"]).to include("Purchase on Demand")
+          end
+        end
+
+        context "with purchase order field false" do
+          let(:record_text) { "
+<record>
+</record>
+                         " }
+
+          it "does not add purchase order availability" do
+            expect(subject.map_record(record)).to eq({})
+          end
+        end
+      end
     end
 
     describe "#extract_electronic_resource" do
@@ -1082,4 +1125,5 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
 end
