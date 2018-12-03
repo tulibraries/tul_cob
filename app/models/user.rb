@@ -65,4 +65,16 @@ class User < ApplicationRecord
       []
     end
   end
+
+  def can_purchase_order?
+    {
+      "Undergraduate" => "2",
+      "Graduate/Professional" => "3",
+      "Faculty/Admin" => "4",
+      "Emeritus Faculty" =>  "6",
+      "Law Faculty" => "16",
+      "Law General" => "17",
+      "Library Staff" => "22",
+    }.values.include? alma.user_group["value"] rescue false
+  end
 end
