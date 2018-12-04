@@ -92,7 +92,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.2.1)
+    autoprefixer-rails (9.3.1)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.12)
@@ -107,7 +107,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (6.16.0)
+    blacklight (6.18.0)
       bootstrap-sass (~> 3.2)
       deprecation
       globalid

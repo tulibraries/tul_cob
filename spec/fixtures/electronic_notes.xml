@@ -148,4 +148,188 @@
       <subfield code="8">53402346110003811</subfield>
     </datafield>
   </record>
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <leader>ZZZZZnasZZ2200457ZiZ4500</leader>
+    <controlfield tag="001">991036938574603811</controlfield>
+    <controlfield tag="005">20181001045256.9</controlfield>
+    <controlfield tag="006">m-----o--d--------</controlfield>
+    <controlfield tag="007">cr-|||||||||||</controlfield>
+    <controlfield tag="008">180927c20189999wiuqr-p-oo----0----0eng-c</controlfield>
+    <datafield ind1=" " ind2=" " tag="010">
+      <subfield code="a">  2018266010</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)1054703778</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CKB)4100000006375090</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CONSER)--2018266010</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EXLCZ)994100000006375090</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="042">
+      <subfield code="a">pcc</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="4" tag="050">
+      <subfield code="a">HQ1180</subfield>
+      <subfield code="b">.F454</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="4" tag="082">
+      <subfield code="a">305.4</subfield>
+      <subfield code="2">23</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="245">
+      <subfield code="a">Resources for gender and women's studies :</subfield>
+      <subfield code="b">a feminist review.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="246">
+      <subfield code="a">Resources for Gender &amp; Women's Studies</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="1" tag="264">
+      <subfield code="a">Madison, WI :</subfield>
+      <subfield code="b">Office of Gender and Women's Studies Librarian,</subfield>
+      <subfield code="c">[2018]-</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 online resource (volumes) :</subfield>
+      <subfield code="b">illustrations</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="310">
+      <subfield code="a">Quarterly</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+      <subfield code="2">rdacontent</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">computer</subfield>
+      <subfield code="b">c</subfield>
+      <subfield code="2">rdamedia</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">online resource</subfield>
+      <subfield code="b">cr</subfield>
+      <subfield code="2">rdacarrier</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="588">
+      <subfield code="a">Description based on print version record.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Women's studies</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="x">Library resources</subfield>
+      <subfield code="v">Reviews</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Feminism</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="x">Library resources</subfield>
+      <subfield code="v">Reviews</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Feminism</subfield>
+      <subfield code="x">Library resources</subfield>
+      <subfield code="v">Reviews</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Gender identity</subfield>
+      <subfield code="z">United States</subfield>
+      <subfield code="x">Library resources</subfield>
+      <subfield code="v">Reviews</subfield>
+      <subfield code="v">Periodicals.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Feminism</subfield>
+      <subfield code="x">Library resources.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst00922690</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Women's studies</subfield>
+      <subfield code="x">Library resources.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01178864</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="651">
+      <subfield code="a">United States.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01204155</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Reviews.</subfield>
+      <subfield code="2">lcgft</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Serial publications.</subfield>
+      <subfield code="2">lcgft</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Periodicals.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01411641</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Reviews.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01423760</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Serial publications.</subfield>
+      <subfield code="2">fast</subfield>
+      <subfield code="0">(OCoLC)fst01919968</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="776">
+      <subfield code="x">2576-0750</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="780">
+      <subfield code="s">Feminist collections (Madison, Wis.)</subfield>
+      <subfield code="x">0742-7441</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">University of Wisconsin System.</subfield>
+      <subfield code="b">Gender &amp; Women's Studies Librarian,</subfield>
+      <subfield code="e">issuing body.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="906">
+      <subfield code="a">JOURNAL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-10-19 08:11:12</subfield>
+      <subfield code="e">(CKB)4100000006375090</subfield>
+      <subfield code="d">CKB</subfield>
+      <subfield code="a">2018-09-01 17:45:54</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="i">61337197730003811</subfield>
+      <subfield code="e">ProQuest</subfield>
+      <subfield code="c">ProQuest Gender Watch</subfield>
+      <subfield code="j">62337197720003811</subfield>
+      <subfield code="a">53434269370003811</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036938574603811</subfield>
+      <subfield code="g"> Available from 1994.</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="h">612550000000000020</subfield>
+      <subfield code="8">53434269370003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="i">61337197100003811</subfield>
+      <subfield code="e">EBSCOhost</subfield>
+      <subfield code="c">EBSCOhost Academic Search Complete</subfield>
+      <subfield code="j">62337197090003811</subfield>
+      <subfield code="a">53433824440003811</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991036938574603811</subfield>
+      <subfield code="g"> Available from 2018.</subfield>
+      <subfield code="9">Available</subfield>
+      <subfield code="h">611000000000001505</subfield>
+      <subfield code="8">53433824440003811</subfield>
+    </datafield>
+  </record>
 </collection>

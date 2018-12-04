@@ -494,7 +494,7 @@ RSpec.describe Traject::Macros::Custom do
         context "single PRT field to electronic_resource_display" do
           it "maps a single PRT field" do
             expect(subject.map_record(records[1])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
@@ -502,7 +502,10 @@ RSpec.describe Traject::Macros::Custom do
         context "multiple PRT fields present" do
           it "maps a multiple PRT fields to electronic_resource_display" do
             expect(subject.map_record(records[2])).to eq(
-              "electronic_resource_display" => ["foo|||Available", "bar|||Not Available"]
+              "electronic_resource_display" => [
+                { portfolio_id: "foo", availability: "Available" }.to_json,
+                { portfolio_id: "bar", availability: "Not Available" }.to_json,
+              ]
             )
           end
         end
@@ -512,7 +515,9 @@ RSpec.describe Traject::Macros::Custom do
         context "single 856 field (ind1 = 4; ind2 = not 2) and no exceptions" do
           it "maps a single 856 field to electronic_resource_display" do
             expect(subject.map_record(records[3])).to eq(
-              "electronic_resource_display" => ["foo|http://foobar.com"]
+              "electronic_resource_display" => [
+                { title: "foo", url: "http://foobar.com" }.to_json,
+              ]
             )
           end
         end
@@ -521,9 +526,9 @@ RSpec.describe Traject::Macros::Custom do
           it "maps multiple 856 fields to electronic_resource_display" do
             expect(subject.map_record(records[4])).to eq(
               "electronic_resource_display" => [
-                "z 3|http://foobar.com",
-                "y|http://foobar.com",
-                "Link to Resource|http://foobar.com"
+                { title: "z 3", url: "http://foobar.com" }.to_json,
+                { title: "y", url: "http://foobar.com" }.to_json,
+                { title: "Link to Resource", url: "http://foobar.com" }.to_json,
               ]
             )
           end
@@ -546,14 +551,14 @@ RSpec.describe Traject::Macros::Custom do
         context "856 field has exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[7])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
         context "856 has no exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[8])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
@@ -594,7 +599,7 @@ RSpec.describe Traject::Macros::Custom do
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with archive-it exception" do
           it "maps a single 856 field to url_more_links_display" do
-            expect(subject.map_record(records[10])).to eq("url_more_links_display" => ["Archive|http://archive-it.org/collections/4222"])
+            expect(subject.map_record(records[10])).to eq("url_more_links_display" => [ { title: "Archive", url: "http://archive-it.org/collections/4222" }.to_json ])
           end
         end
 
@@ -607,7 +612,7 @@ RSpec.describe Traject::Macros::Custom do
         context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
           it "maps a single 856 field to url_more_links_display" do
             expect(subject.map_record(records[5])).to eq(
-              "url_more_links_display" => ["book review|http://foobar.com"],
+              "url_more_links_display" => [ { title: "book review", url: "http://foobar.com" }.to_json ],
             )
           end
         end
@@ -618,14 +623,14 @@ RSpec.describe Traject::Macros::Custom do
         context "856 field has exception" do
           it "only maps the PRT field to url_more_links_display" do
             expect(subject.map_record(records[7])).to eq(
-              "url_more_links_display" => ["BOOK review|http://foobar.com"]
+              "url_more_links_display" => [ { title: "BOOK review", url: "http://foobar.com" }.to_json ]
             )
           end
         end
         context "856 has no exception" do
           it "only maps the PRT field to url_more_links_display" do
             expect(subject.map_record(records[8])).to eq(
-              "url_more_links_display" => ["bar|http://foobar.com"]
+              "url_more_links_display" => [ { title: "bar", url: "http://foobar.com" }.to_json ]
             )
           end
         end
@@ -646,7 +651,7 @@ RSpec.describe Traject::Macros::Custom do
       context "856 field includes temple and scrc" do
         it "it does not map to url_finding_aid_display " do
           expect(subject.map_record(records[11])).to eq(
-            "url_finding_aid_display" => ["Finding aid|http://library.temple.edu/scrc"])
+            "url_finding_aid_display" => [ { title: "Finding aid", url: "http://library.temple.edu/scrc" }.to_json ])
         end
       end
     end
@@ -665,7 +670,10 @@ RSpec.describe Traject::Macros::Custom do
       context "multiple PRT fields present" do
         it "reverses the order of multipe PRT fields" do
           expect(subject.map_record(records[2])).to eq(
-            "url_more_links_display" => ["bar|||Not Available", "foo|||Available"]
+            "url_more_links_display" => [
+                { portfolio_id: "bar", availability: "Not Available" }.to_json,
+                { portfolio_id: "foo", availability: "Available" }.to_json,
+            ]
           )
         end
       end
