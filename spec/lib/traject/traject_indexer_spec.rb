@@ -644,6 +644,37 @@ RSpec.describe Traject::Macros::Custom do
     end
   end
 
+  describe "#extract_genre_display" do
+    before do
+      subject.instance_eval do
+        to_field "genre_display", extract_genre_display
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a record doesn't have genres" do
+      let(:path) { "genre_display.xml" }
+      it "does not map a genre_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when a record has genres" do
+      let(:path) { "genre_display.xml" }
+      it "maps data from 655 fields in expected way" do
+        expected = [
+          "Documentary films",
+          "Foreign language films — Chinese"
+        ]
+        expect(subject.map_record(records[1])).to eq(
+          "genre_display" => expected
+        )
+      end
+    end
+  end
+
   describe "#extract_subject_topic_facet" do
     before do
       subject.instance_eval do

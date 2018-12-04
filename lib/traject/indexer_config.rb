@@ -169,6 +169,10 @@ to_field "subject_topic_facet", extract_subject_topic_facet
 to_field "subject_era_facet", extract_marc("648a:650y:651y:654y:655y:690y:647y", trim_punctuation: true)
 to_field "subject_region_facet", marc_geo_facet
 to_field "genre_facet", extract_genre
+to_field "genre_display", extract_genre_display
+to_field "genre_t", extract_genre_display
+# genre_full_facet is an invisible field that is used to generate the direct links on individual record pages
+to_field "genre_full_facet", extract_genre_display
 
 to_field "subject_t", extract_marc_with_flank(%W(
   600#{ATOU}
@@ -179,7 +183,7 @@ to_field "subject_t", extract_marc_with_flank(%W(
   650abcde
   653a:654abcde
                                    ).join(":"))
-to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvwxyz")
+to_field "subject_addl_t", extract_marc_with_flank("600vwxyz:610vwxyz:611vwxyz:630vwxyz:647vwxyz:648avwxyz:650vwxyz:651aegvwxyz:654vwxyz:656akvxyz:657avxyz:690abcdegvwxyz")
 
 # Location fields
 to_field "call_number_display", extract_marc("HLDhi")
