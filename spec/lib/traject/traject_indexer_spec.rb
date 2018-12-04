@@ -135,6 +135,41 @@ RSpec.describe Traject::Macros::Custom do
 
   subject { test_class.new }
 
+  describe "#extract_title_statement" do
+    let(:path) { "title_statement_examples.xml" }
+
+    before(:each) do
+      subject.instance_eval do
+        to_field "title_statement_display", extract_title_statement
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "245 field incudes subfield h" do
+      it "adds a / before subfield c" do
+        expected = { "title_statement_display" => ["Die dritte generation/produziert von der Tango-Film Berlin ; zusammen mit der Pro-Ject Film-Produktion im Filmverlag der Autoren ; musik, Peer Raben ; ausstattung, Raùl Gimenez ; schnitt, Juliane Lorenz ; ein film von Rainer Werner Fassbinder."] }
+        expect(subject.map_record(records[0])).to eq(expected)
+      end
+    end
+
+    context "245 field does NOT incude subfield h" do
+      it "does not add a / before subfield c" do
+        expected = { "title_statement_display" => ["Printed circuits handbook."] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
+    context "245 field has a slash in multiple fields" do
+      it "does not display double slashes" do
+        expected = { "title_statement_display" => ["Yaju no seishun Youth of the beast / a Janus Films release ; produced by Keinosuke Kubo ; screenplay by Ichoro Ikeda Tadaaki Yamazaki ; directed by Seijun Suzuki."] }
+        expect(subject.map_record(records[2])).to eq(expected)
+      end
+    end
+  end
+
   describe "#extract_creator" do
     let(:path) { "creator_examples.xml" }
     before(:each) do
