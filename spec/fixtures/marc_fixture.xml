@@ -31440,4 +31440,168 @@
       <subfield code="8">53392445530003811</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>02094cgm a2200469Ma 4500</leader>
+    <controlfield tag="005">20180315215121.0</controlfield>
+    <controlfield tag="007">vd cva|zu</controlfield>
+    <controlfield tag="008">071217p20071979xx 104 vleng d</controlfield>
+    <controlfield tag="001">991034785449703811</controlfield>
+    <datafield ind1="4" ind2="2" tag="028">
+      <subfield code="a">ART363DVD</subfield>
+      <subfield code="b">Artificial Eye</subfield>
+    </datafield>
+    <datafield ind1="4" ind2="2" tag="028">
+      <subfield code="a">VFD13588</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PPT)b40526392-01tuli_inst</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)ocn492921003</subfield>
+      <subfield code="9">ExL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)184821301</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">ocn184821301</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCLC)ocn184821301</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">EQO</subfield>
+      <subfield code="c">EQO</subfield>
+      <subfield code="d">OCLCG</subfield>
+      <subfield code="d">MUQ</subfield>
+      <subfield code="d">PPT</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="041">
+      <subfield code="a">ger</subfield>
+      <subfield code="b">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="079">
+      <subfield code="a">ocn184821301</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="090">
+      <subfield code="a">PN1997</subfield>
+      <subfield code="b">.D753x 2007</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="4" tag="245">
+      <subfield code="a">Die dritte generation</subfield>
+      <subfield code="h">[videorecording] /</subfield>
+      <subfield code="c">produziert von der Tango-Film Berlin ; zusammen mit der Pro-Ject Film-Produktion im Filmverlag der Autoren ; musik, Peer Raben ; ausstattung, Raùl Gimenez ; schnitt, Juliane Lorenz ; ein film von Rainer Werner Fassbinder.</subfield>
+    </datafield>
+    <datafield ind1="3" ind2="1" tag="246">
+      <subfield code="a">Third generation [videorecording]</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">[S.l.] :</subfield>
+      <subfield code="b">Artificial Eye,</subfield>
+      <subfield code="c">c2007.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 videodisc (104 min.) :</subfield>
+      <subfield code="b">sd., col. ;</subfield>
+      <subfield code="c">4 3/4 in.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">A DVD release of the motion picture produced in 1979.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Released by Artificial Eye in 2007 as part of the box-set: Rainer Werner Fassbinder, v.2.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">German language with English subtitles.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="511">
+      <subfield code="a">Cast: Volker Spengler, Bulle Ogier, Hanna Schygulla, Harry Baer.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="538">
+      <subfield code="a">System requirements: DVD player or PC with a DVD-ROM drive ; region 2.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="521">
+      <subfield code="a">Cert.15.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">The film is a savage and absurdist satire about a group of incompetent bourgeois terrorists, for whom violent radicalism has become a lifestyle. The group kidnap a well-connected businessman but are soon divided by in-fighting and paranoia.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Terrorists</subfield>
+      <subfield code="z">Germany</subfield>
+      <subfield code="v">Drama.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="655">
+      <subfield code="a">Feature films.</subfield>
+      <subfield code="2">lcgft</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="700">
+      <subfield code="a">Fassbinder, Rainer Werner,</subfield>
+      <subfield code="d">1945-1982.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Tango Film Produktion.</subfield>
+    </datafield>
+    <datafield ind1="2" ind2=" " tag="710">
+      <subfield code="a">Pro-ject Film.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="2" tag="740">
+      <subfield code="a">Rainer Werner Fassbinder; Volume II.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="907">
+      <subfield code="a">.b40526392</subfield>
+      <subfield code="b">pmed</subfield>
+      <subfield code="c">g</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="945">
+      <subfield code="l">pmed</subfield>
+      <subfield code="g">1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="979">
+      <subfield code="a">ocn184821301</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="b">0</subfield>
+      <subfield code="c">090814</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">g</subfield>
+      <subfield code="f">g</subfield>
+      <subfield code="g">4</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="998">
+      <subfield code="a">08/14/09</subfield>
+      <subfield code="s">OCLC</subfield>
+      <subfield code="c">DH</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-03-16 01:51:21</subfield>
+      <subfield code="e">b40526392-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2017-06-20 13:54:17</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">MEDIA</subfield>
+      <subfield code="c">media</subfield>
+      <subfield code="h">PN1997</subfield>
+      <subfield code="i">.D753x 2007</subfield>
+      <subfield code="8">22327985260003811</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22327985260003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">media</subfield>
+      <subfield code="t">DVD</subfield>
+      <subfield code="9">39074024956385</subfield>
+      <subfield code="e">media</subfield>
+      <subfield code="8">23327985250003811</subfield>
+      <subfield code="a">5</subfield>
+      <subfield code="q">2017-06-20 13:54:17</subfield>
+      <subfield code="i">PN1997 .D753x 2007</subfield>
+      <subfield code="d">MEDIA</subfield>
+      <subfield code="p">2018-05-10 14:06:14</subfield>
+      <subfield code="f">MEDIA</subfield>
+    </datafield>
+  </record>
 </collection>

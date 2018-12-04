@@ -42,6 +42,7 @@ module Traject
         lambda do |rec, acc|
           titles = []
           slash = "/"
+
           Traject::MarcExtractor.cached("245abcfgknps", alternate_script: false).collect_matching_lines(rec) do |field, spec, extractor|
             title = extractor.collect_subfields(field, spec).first
             unless title.nil?
