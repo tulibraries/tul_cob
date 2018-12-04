@@ -105,7 +105,7 @@ module Traject
       def extract_subject_display
         lambda do |rec, acc|
           subjects = []
-          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
             subject = extractor.collect_subfields(field, spec).first
             unless subject.nil?
               field.subfields.each do |s_field|
@@ -117,6 +117,24 @@ module Traject
             subjects
           end
           acc.replace(subjects)
+        end
+      end
+
+      def extract_genre_display
+        lambda do |rec, acc|
+          genres = []
+          Traject::MarcExtractor.cached("655abcvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+            genre = extractor.collect_subfields(field, spec).first
+            unless genre.nil?
+              field.subfields.each do |s_field|
+                genre = genre.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == "v" || s_field.code == "x" || s_field.code == "y" || s_field.code == "z")
+              end
+              genre = genre.split(SEPARATOR)
+              genres << genre.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+            genres
+          end
+          acc.replace(genres)
         end
       end
 

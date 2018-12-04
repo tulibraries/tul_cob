@@ -224,6 +224,12 @@ module CatalogHelper
     end
   end
 
+  def genre_links(args)
+    args[:document][args[:field]].map do |genre|
+      link_to(genre, "#{search_catalog_path}?f[genre_full_facet][]=#{CGI.escape genre}")
+    end
+  end
+
   def has_one_electronic_resource?(document)
     document.fetch("electronic_resource_display", []).length == 1
   end
