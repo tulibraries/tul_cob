@@ -38,6 +38,29 @@ module Traject
         role.sub(/ *[ ,.\/;:] *\Z/, "")
       end
 
+      def extract_title_statement
+        lambda do |rec, acc|
+          titles = []
+          slash = "/"
+          Traject::MarcExtractor.cached("245abcfgknps").collect_matching_lines(rec) do |field, spec, extractor|
+            title = extractor.collect_subfields(field, spec).first
+            unless title.nil?
+              rec.fields("245").each do |f|
+                if field["h"].present?
+                  title = title.gsub(" #{field['c']}", "#{slash}#{field['c']}")
+                  title = title.gsub("//", "/")
+                else
+                  title
+                end
+              end
+              title
+            end
+            titles << title
+          end
+          acc.replace(titles)
+        end
+      end
+
       def extract_creator
         lambda do |rec, acc|
           s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt").collect_matching_lines(rec) do |field, spec, extractor|
