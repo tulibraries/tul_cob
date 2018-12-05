@@ -23,7 +23,8 @@ module ApplicationHelper
          ItemPlace: place_of_publication + publisher_const + date_of_publication,
          ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
          CallNumber: item.call_number || "",
-         ItemAuthor: (item.item.dig("bib_data", "author") || "")
+         ItemAuthor: (item.item.dig("bib_data", "author") || ""),
+         CollectionArea: @document["collection_area_display"]
      }
 
     openurl_field_values = form_fields.map { |k, v|
