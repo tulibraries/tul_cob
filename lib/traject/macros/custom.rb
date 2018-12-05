@@ -47,9 +47,9 @@ module Traject
             title = extractor.collect_subfields(field, spec).first
             unless title.nil?
               rec.fields("245").each do |f|
-                if field["h"].present?
-                  title = title.gsub(" #{field['c']}", "#{slash}#{field['c']}")
-                  title = title.gsub("//", "/")
+                if field["h"].present? && field["c"].present?
+                  title = title.gsub(" #{field['c']}", " #{slash} #{field['c']}")
+                  title = title.gsub("/ /", "/")
                 else
                   title
                 end
