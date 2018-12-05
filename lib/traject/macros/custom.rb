@@ -80,7 +80,7 @@ module Traject
 
       def extract_creator_vern
         lambda do |rec, acc|
-          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt").collect_matching_lines(rec) do |field, spec, extractor|
+          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt", alternate_script: :only).collect_matching_lines(rec) do |field, spec, extractor|
             extractor.collect_subfields(field, spec).first
           end
 
