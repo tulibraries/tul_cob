@@ -263,4 +263,8 @@ each_record do |record, context|
   if context.output_hash["record_update_date"].nil? || context.output_hash["record_update_date"] == []
     context.output_hash["record_update_date"] = ["2002-02-02 02:02:02"]
   end
+
+  if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
+    context.output_hash["record_update_date"] = [ Time.now.to_s ]
+  end
 end
