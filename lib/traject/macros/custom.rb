@@ -7,7 +7,7 @@ module Traject
   module Macros
     module Custom
       ARCHIVE_IT_LINKS = "archive-it.org/collections/"
-      NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
+      NOT_FULL_TEXT = /book review|publisher description|sample text|cover image|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
       SEPARATOR = " — "
 
