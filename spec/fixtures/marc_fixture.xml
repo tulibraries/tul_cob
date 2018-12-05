@@ -31604,4 +31604,144 @@
       <subfield code="f">MEDIA</subfield>
     </datafield>
   </record>
+  <record>
+    <leader>02625nam a22005173u 4500</leader>
+    <controlfield tag="001">991036743832103811</controlfield>
+    <controlfield tag="005">20170809165130.0</controlfield>
+    <controlfield tag="006">m d</controlfield>
+    <controlfield tag="007">cr -n---------</controlfield>
+    <controlfield tag="008">130418s2006||||||| s|||||||||||eng|d</controlfield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1-280-90383-X</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">0-19-151372-5</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="020">
+      <subfield code="a">1-4294-7018-6</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(CKB)1000000000413252</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EBL)431023</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(OCoLC)137241436</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(SSID)ssj0000216735</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBManifestationID)11202738</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBTitleCode)TC0000216735</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKBWorkID)10201574</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(PQKB)10558684</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="035">
+      <subfield code="a">(EXLCZ)991000000000413252</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="040">
+      <subfield code="a">AU-PeEL</subfield>
+      <subfield code="b">eng</subfield>
+      <subfield code="c">AU-PeEL</subfield>
+      <subfield code="d">AU-PeEL</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="041">
+      <subfield code="a">eng</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="050">
+      <subfield code="a">QL737.C25K785 2006</subfield>
+    </datafield>
+    <datafield ind1="0" ind2="0" tag="082">
+      <subfield code="a">599.769</subfield>
+    </datafield>
+    <datafield ind1="1" ind2=" " tag="100">
+      <subfield code="a">Kruuk, Hans.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="210">
+      <subfield code="a">OTTERS</subfield>
+    </datafield>
+    <datafield ind1="1" ind2="0" tag="245">
+      <subfield code="a">Otters</subfield>
+      <subfield code="h">[electronic resource] :</subfield>
+      <subfield code="b">Ecology, Behaviour and Conservation</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="260">
+      <subfield code="a">Oxford :</subfield>
+      <subfield code="b">Oxford University Press, UK,</subfield>
+      <subfield code="c">2006.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="300">
+      <subfield code="a">1 online resource (278 p.)</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="336">
+      <subfield code="a">text</subfield>
+      <subfield code="b">txt</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="337">
+      <subfield code="a">computer</subfield>
+      <subfield code="b">c</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="338">
+      <subfield code="a">online resource</subfield>
+      <subfield code="b">cr</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="500">
+      <subfield code="a">Description based upon print version of record.</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="505">
+      <subfield code="a">Contents; 1 Otter ecology and its background; 2 Pen pictures. Thirteen otters of the world: some natural history; 3 Evolutionary relationships, questions and methods of otter ecology; 4 Habitats; 5 Groups and loners: social organization; 6 Scent marking and interactions: social behaviour; 7 Diet; 8 Resources: about fish and other prey; 9 Otters fishing: hunting behaviour and strategies; 10 Thermo-insulation: a limiting factor; 11 Populations, recruitment and competition; 12 Survival and mortality; 13 Syntheses: challenges to otter survival; 14 Otters, people and conservation; References</subfield>
+    </datafield>
+    <datafield ind1="8" ind2=" " tag="505">
+      <subfield code="a">Index</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="520">
+      <subfield code="a">Otters are highly charismatic and popular animals of very considerable concern to conservationists worldwide. There is a real need for an affordable, well illustrated and appealing text that also contains substantial factual information. This book will build on the reputation of Kruuk's landmark monograph of the European Otter (Wild Otters) published by OUP in 1995. Furthermore, its broader scope to include all otter species should lead to a deeper synthesis that will greatly. expand the book's overall relevance and potential readership. - ;Otters are highly charismatic and popular animals of</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="546">
+      <subfield code="a">English</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="4" tag="650">
+      <subfield code="a">Otters.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="655">
+      <subfield code="a">Electronic books.</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="0" tag="650">
+      <subfield code="a">Otters</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Vertebrates</subfield>
+      <subfield code="2">HILCC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Zoology</subfield>
+      <subfield code="2">HILCC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2="7" tag="650">
+      <subfield code="a">Health and Biological Sciences</subfield>
+      <subfield code="2">HILCC</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="776">
+      <subfield code="z">0-19-856586-0</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="906">
+      <subfield code="a">BOOK</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ADM">
+      <subfield code="b">2018-11-05 15:10:01</subfield>
+      <subfield code="e">991000000000413252</subfield>
+      <subfield code="d">NON_SFX</subfield>
+      <subfield code="f">20160817082139.0</subfield>
+      <subfield code="a">2012-02-25 22:59:57</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+  </record>
 </collection>

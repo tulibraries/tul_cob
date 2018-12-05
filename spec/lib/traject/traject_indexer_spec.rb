@@ -150,7 +150,7 @@ RSpec.describe Traject::Macros::Custom do
 
     context "245 field incudes subfield h" do
       it "adds a / before subfield c" do
-        expected = { "title_statement_display" => ["Die dritte generation/produziert von der Tango-Film Berlin ; zusammen mit der Pro-Ject Film-Produktion im Filmverlag der Autoren ; musik, Peer Raben ; ausstattung, Raùl Gimenez ; schnitt, Juliane Lorenz ; ein film von Rainer Werner Fassbinder."] }
+        expected = { "title_statement_display" => ["Die dritte generation / produziert von der Tango-Film Berlin ; zusammen mit der Pro-Ject Film-Produktion im Filmverlag der Autoren ; musik, Peer Raben ; ausstattung, Raùl Gimenez ; schnitt, Juliane Lorenz ; ein film von Rainer Werner Fassbinder."] }
         expect(subject.map_record(records[0])).to eq(expected)
       end
     end
