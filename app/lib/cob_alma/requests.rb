@@ -109,8 +109,7 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      descriptions = items_list.map { |item| item["item_data"]["description"] }
-
+      descriptions = items_list.all.map(&:description)
       if descriptions.any?
         descriptions.each do |desc|
           desc

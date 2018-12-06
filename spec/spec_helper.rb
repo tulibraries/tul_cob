@@ -51,6 +51,11 @@ RSpec.configure do |config|
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: JSON.dump({}))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/same_campus\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/alma_data/presser_and_paley.json"))
