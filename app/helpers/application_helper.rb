@@ -24,7 +24,7 @@ module ApplicationHelper
          ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
          CallNumber: item.call_number || "",
          ItemAuthor: (item.item.dig("bib_data", "author") || ""),
-         CollectionArea: @document["collection_area_display"]
+         "rft.pages": @document["collection_area_display"]
      }
 
     openurl_field_values = form_fields.map { |k, v|
