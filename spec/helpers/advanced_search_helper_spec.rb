@@ -51,6 +51,7 @@ RSpec.describe AdvancedHelper, type: :helper do
       allow(helper).to receive(:current_page?).with("/books") { false }
       allow(helper).to receive(:current_page?).with("/journals") { false }
       allow(helper).to receive(:current_page?).with("/articles") { false }
+      allow(helper).to receive(:current_page?).with("/databases") { false }
       allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
     end
 
@@ -82,6 +83,14 @@ RSpec.describe AdvancedHelper, type: :helper do
       it "renders the link to the advanced articles form" do
         allow(helper).to receive(:current_page?).with("/articles") { true }
         link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+
+    context "on the databases search page" do
+      it "renders the link to the advanced databases form" do
+        allow(helper).to receive(:current_page?).with("/databases") { true }
+        link = "<a class=\"advanced_search\" id=\"databases_advanced_search\" href=\"/databases/advanced?q=foo\">Advanced Databases Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
       end
     end
@@ -137,6 +146,7 @@ RSpec.describe AdvancedHelper, type: :helper do
       allow(helper).to receive(:current_page?).with("/books/advanced") { false }
       allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
       allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/databases/advanced") { false }
     end
 
     context "on the advanced catalog search page" do
@@ -167,11 +177,19 @@ RSpec.describe AdvancedHelper, type: :helper do
       end
     end
 
+    context "on the advanced databases page" do
+      it "renders the link to the databasees search" do
+        allow(helper).to receive(:current_page?).with("/databases/advanced") { true }
+        expect(helper.advanced_search_form_title).to eq("Advanced Databases Search")
+      end
+    end
+
     context "on some unknown page" do
       it "renders the link to the everything search" do
         allow(helper).to receive(:current_page?).with("/foo/advanced") { true }
         expect(helper.advanced_search_form_title).to eq("Advanced Search")
       end
     end
+
   end
 end
