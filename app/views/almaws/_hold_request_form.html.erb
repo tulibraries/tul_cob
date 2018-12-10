@@ -10,8 +10,8 @@
     <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select("", :pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, { include_blank: true, required: true, "aria-required": true }) %>
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {class: "request-form form-control"}, { include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
     <% end %>
@@ -19,8 +19,8 @@
     <% if @equipment.present? %>
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select("", :pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :hold_pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
     <% end %>
@@ -29,15 +29,15 @@
     <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:item_description, t("requests.form.description_label")) %>
-          <%= select_tag(:description, options_for_select(@description), { data: { "action": "form#select" }, id: "item_description", class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+          <%= form.label(:hold_description, t("requests.form.description_label")) %>
+          <%= select_tag(:hold_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-4 hold-form">
-          <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select_tag(:pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
 
@@ -45,16 +45,16 @@
 
     <div class="row hold-form">
       <div class="col-sm-5">
-        <%= form.label(:hold_date_field, t("requests.form.not_needed_after")) %>
-        <%= date_field_tag :last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "hold_date_field" %>
+        <%= form.label(:hold_last_interest_date, t("requests.form.not_needed_after")) %>
+        <%= date_field_tag :hold_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}" %>
         <%= render "format_date_message" %>
       </div>
     </div>
 
     <div class="row hold-form">
       <div class="col-sm-4">
-        <%= form.label(:comment, t("requests.form.notes_label")) %>
-        <%= form.text_area :comment, class: "request-form form-control" %>
+        <%= form.label(:hold_comment, t("requests.form.notes_label")) %>
+        <%= form.text_area :hold_comment, class: "request-form form-control" %>
       </div>
     </div>
 

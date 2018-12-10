@@ -29,7 +29,7 @@ export default class extends Controller {
        window.item_level_pickup_locations = $(this.pickupsTarget).html();
     }
 
-    let description = $("#description option:selected").text();
+    let description = $("#hold_description option:selected").text();
     let date = new Date();
     let emptyOption = $('<option />').attr('value', '');
     let options = $(window.item_level_pickup_locations).filter(`optgroup[label='${description}']`).prepend(emptyOption).html();
