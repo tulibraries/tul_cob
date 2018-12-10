@@ -20,6 +20,7 @@
 	  }
 
 	.header-logo {
+		margin-left: -48px;
 	  max-width: 117px;
 	  max-height: 77px;
 		padding-left: 7px;
@@ -205,6 +206,10 @@ nav ul.navbar li.nav-btn.active a {
 	font-family: "PT Sans";
 	margin-left: -30px;
   text-decoration: underline;
+	@media(max-width:768px) {
+		margin-left: -20px;
+		padding-left: 0;
+	}
 }
 
  .path-links {
