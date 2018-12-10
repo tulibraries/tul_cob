@@ -6,8 +6,8 @@
 
     <div class="row">
       <div class="col-sm-4 hold-form">
-        <%= label("", :booking_pickups, t("requests.form.pickup_locations")) %>
-        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {id: "booking_pickups", class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
+        <%= label("", :pickup_location, t("requests.form.pickup_locations_label")) %>
+        <%= select("", :pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {class: "request-form form-control"}, {include_blank: true, required: true, "aria-required": true }) %>
       </div>
     </div>
     <div class="row">
@@ -43,8 +43,8 @@
 
     <div class="row hold-form">
       <div class="col-sm-4">
-        <%= form.label(:booking_comments, t("requests.form.notes_label")) %>
-        <%= form.text_area :comment, id: "booking_comments", class: "request-form form-control" %>
+        <%= form.label(:comment, t("requests.form.notes_label")) %>
+        <%= form.text_area :comment, class: "request-form form-control" %>
       </div>
     </div>
 

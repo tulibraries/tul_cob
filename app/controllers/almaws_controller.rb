@@ -20,8 +20,6 @@ class AlmawsController < CatalogController
 
     bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
     @response = Blacklight::Alma::Response.new(bib_items, params)
-
-
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @holdings_summary = helpers.build_holdings_summary(@items, @document)

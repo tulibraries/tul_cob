@@ -29,8 +29,8 @@
     <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:item_description, t("requests.form.description_label")) %>
-          <%= select_tag(:description, options_for_select(@description), { data: { "action": "form#select" }, id: "item_description", class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+          <%= form.label(:description, t("requests.form.description_label")) %>
+          <%= select_tag(:description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       </div>
 
@@ -45,8 +45,8 @@
 
     <div class="row hold-form">
       <div class="col-sm-5">
-        <%= form.label(:hold_date_field, t("requests.form.not_needed_after")) %>
-        <%= date_field_tag :last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "hold_date_field" %>
+        <%= form.label(:last_interest_date, t("requests.form.not_needed_after")) %>
+        <%= date_field_tag :last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}" %>
         <%= render "format_date_message" %>
       </div>
     </div>
