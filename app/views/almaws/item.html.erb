@@ -9,7 +9,7 @@
     <table id="availability-container" class="table table-responsive border-bottom">
       <thead>
         <tr class="sr-only">
-            <th scope="col" id="location">Item Location</td>
+            <th scope="col" id="location">Item Location</th>
             <th scope="col" id="callnum">Call Number</th>
             <th scope="col" id="desc">Description</th>
             <th scope="col" id="type">Material Type</th>
@@ -21,9 +21,9 @@
         <tr class="table-heading">
           <th id="<%= key %>" class="library-name" scope="colgroup" colspan="2"><%= library_name_from_short_code(key) %></th>
           <% if @document["holdings_summary_display"] %>
-            <th class="holdings-summary" colspan="7"><%= @holdings_summary[key] %></th>
+            <td class="holdings-summary" colspan="7"><%= @holdings_summary[key] %></td>
           <% end %>
-          <th class="aeon-request" colspan="7"><%= aeon_request_button(items) %></th>
+          <td class="aeon-request" colspan="7"><%= aeon_request_button(items) %></td>
 
         </tr>
         <% items.each do |item| %>
