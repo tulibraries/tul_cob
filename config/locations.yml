@@ -129,6 +129,7 @@ default: &default
     ztyler: deleted location
     zzahn: deleted location
     web: Available Online
+    juvenile: Stacks
   PODIATRY:
     intref: Internal Reference
     media: Media
@@ -151,9 +152,10 @@ default: &default
     l_remote: Remote Storage, Law
     p_govdocmf: Remote Storage, Paley Government Documents
     p_GovDocs: Remote Storage, Paley Government Documents
-    p_media: Location information not available
-    p_micro: Location information not available
+    p_media: Remote Storage, Paley Media
+    p_micro: Remote Storage, Paley Microform
     p_remote: Remote Storage, Paley
+    p_oversize: Remote Storage, Paley
   ROME:
     exhibit: Exhibits
     fiction: Fiction
