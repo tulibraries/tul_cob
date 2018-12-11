@@ -331,11 +331,11 @@ RSpec.describe CatalogHelper, type: :helper do
     context "record has a holdings_summary field" do
       let(:document) {
           {
-            "holdings_summary_display" => ["v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
+            "holdings_summary_display" => ["Summary: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"]
             }
         }
       it "displays the field in a human-readable format" do
-        expect(helper.holdings_summary_information(document)).to eq("v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
+        expect(helper.holdings_summary_information(document)).to eq("Summary: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
       end
     end
 
@@ -392,7 +392,7 @@ RSpec.describe CatalogHelper, type: :helper do
         }
 
       it "returns the summary for the related library" do
-        expect(build_holdings_summary(items, document)).to eq("MAIN" => "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "Summary: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.")
       end
     end
 
@@ -413,7 +413,7 @@ RSpec.describe CatalogHelper, type: :helper do
         }
 
       it "returns the default message" do
-        expect(build_holdings_summary(items, document)).to eq("MAIN" => "")
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "Summary: ")
       end
     end
   end

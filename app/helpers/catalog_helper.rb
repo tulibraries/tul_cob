@@ -346,7 +346,7 @@ module CatalogHelper
           .map { |holding| holdings_summaries[holding] }
           .join(", ")
 
-        [ library, summaries ]
+        [ library, "Summary: #{summaries}" ]
       }.to_h
   end
 
