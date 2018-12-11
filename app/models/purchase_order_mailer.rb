@@ -7,13 +7,13 @@ class PurchaseOrderMailer < RecordMailer
             rescue
               I18n.t("blacklight.email.text.default_title")
             end
-    subject = "Purchase Order: " + title.first
+    subject = "Purchase on Demand: " + title.first
 
     @document       = document
     @message        = details[:message]
     @url_gen_params = url_gen_params
-    @from_email     = details[:from]
+    @from           = details[:from]
 
-    mail(to: "orders@temple.edu",  subject: subject)
+    mail(to: "orders@temple.edu", cc: @from[:email], subject: subject)
   end
 end

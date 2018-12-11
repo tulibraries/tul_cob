@@ -644,7 +644,10 @@ class CatalogController < ApplicationController
   def purchase_order_action
     (_, document) = fetch(params["id"])
 
-    from = current_user&.email || params[:to]
+    email = current_user&.email || params[:to]
+    name = current_user&.name
+
+    from = { email: email, name: name }
 
     mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
     if mail.respond_to? :deliver_now
@@ -653,7 +656,7 @@ class CatalogController < ApplicationController
       mail.deliver
     end
 
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
   end
 
   # Overrides Blackligt::Catalog.sms_action.
