@@ -10,7 +10,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
            { "base_status" =>
              { "value" => "1" },
              "policy" =>
-             { "desc" => "Non-circulating" }
+             { "desc" => "Non-circulating" },
+             "requested" => false,
            }
          )
       end
@@ -20,13 +21,31 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "item base_status is 1 and item is requested" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "1" },
+             "policy" =>
+             { "desc" => "Non-circulating" },
+             "requested" => true,
+           }
+         )
+      end
+
+      it "displays requested" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      end
+    end
+
     context "item base_status is 1" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
            { "base_status" =>
              { "value" => "1" },
              "policy" =>
-             { "desc" => "" }
+             { "desc" => "" },
+             "requested" => false,
            }
          )
       end
@@ -69,6 +88,18 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "item is requested" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "requested" => true }
+         )
+      end
+
+      it "displays requested" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      end
+    end
+
     context "item includes process_type not found in mappings" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
@@ -78,6 +109,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
            }
          )
       end
+
       it "displays default message" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
@@ -91,6 +123,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
            }
          )
       end
+
       it "displays default message" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end

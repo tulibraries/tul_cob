@@ -6,7 +6,7 @@ module AlmaDataHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    if item.in_place?
+    if item.in_place? && item.item_data["requested"] == false
       if item.non_circulating?
         content_tag(:span, "", class: "check") + "Library Use Only"
       else
@@ -18,9 +18,13 @@ module AlmaDataHelper
   end
 
   def unavailable_items(item)
-    if item.has_process_type?
+    if item.item_data["requested"] == true
+      process_type = "Requested"
+      content_tag(:span, "", class: "close-icon") + process_type
+    elsif item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
       content_tag(:span, "", class: "close-icon") + process_type
+
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
     end
