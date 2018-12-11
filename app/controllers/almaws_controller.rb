@@ -60,16 +60,16 @@ class AlmawsController < CatalogController
   end
 
   def send_hold_request
-    date = date_or_nil(params[:last_interest_date])
+    date = date_or_nil(params[:hold_last_interest_date])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:description],
-    pickup_location_library: params[:pickup_location],
+    description: params[:hold_description],
+    pickup_location_library: params[:hold_pickup_location],
     pickup_location_type: "LIBRARY",
     request_type: "HOLD",
     last_interest_date: date,
-    comment: params[:comment]
+    comment: params[:hold_comment]
     }
     @request_level = params[:request_level]
     start = Time.now
@@ -91,14 +91,14 @@ class AlmawsController < CatalogController
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    pickup_location_library: params[:pickup_location],
+    pickup_location_library: params[:booking_pickup_location],
     pickup_location_type: "LIBRARY",
     material_type: params[:material_type],
     request_type: "BOOKING",
     booking_start_date: start_date,
     booking_end_date: end_date,
-    description: params[:description],
-    comment: params[:comment]
+    description: params[:booking_description],
+    comment: params[:booking_comment]
     }
 
     start = Time.now
@@ -121,18 +121,18 @@ class AlmawsController < CatalogController
   end
 
   def send_digitization_request
-    date = date_or_nil(params[:last_interest_date])
+    date = date_or_nil(params[:digitization_last_interest_date])
     bib_options = {
       mms_id: params[:mms_id],
       user_id: current_user.uid,
-      description: params[:description],
+      description: params[:digitization_description],
       chapter_or_article_title: params[:chapter_or_article_title],
       chapter_or_article_author: params[:chapter_or_article_author],
       request_type: "DIGITIZATION",
       target_destination: { value: "DIGI_DEPT_INST" },
       partial_digitization: true,
       last_interest_date: date,
-      comment: params[:comment] || "",
+      comment: params[:digitization_comment] || "",
       required_pages_range: [{
         from_page: params[:from_page], to_page: params[:to_page]
       }]

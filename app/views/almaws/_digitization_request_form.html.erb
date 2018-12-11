@@ -25,8 +25,8 @@
     <% if @request_level == "item" %>
       <div class="form-group row">
         <div class="col-sm-4">
-          <%= form.label(:description, t("requests.form.description_label")) %>
-          <%= select_tag(:description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
+          <%= form.label(:digitization_description, t("requests.form.description_label")) %>
+          <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
         </div>
       </div>
     <% end %>
@@ -45,8 +45,8 @@
 
     <div class="form-group row">
       <div class="col-sm-5">
-        <%= form.label(:digitization_date_field, t("requests.form.not_needed_after")) %>
-        <%= date_field_tag :last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", id: "digitization_date_field" %>
+        <%= form.label(:digitization_last_interest_date, t("requests.form.not_needed_after")) %>
+        <%= date_field_tag :digitization_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}" %>
         <%= render "format_date_message" %>
       </div>
     </div>
@@ -54,7 +54,7 @@
     <div class="form-group row">
       <div class="col-sm-4">
         <%= form.label(:digitization_comment, t("requests.form.notes_label")) %>
-        <%= form.text_area :comment, id: "digitization_comment", class: "request-form form-control" %>
+        <%= form.text_area :digitization_comment, class: "request-form form-control" %>
       </div>
     </div>
 
