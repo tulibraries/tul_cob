@@ -209,6 +209,15 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
+    context "only electronic note and title are present" do
+      let(:field) { { "portfolio_id" => "77777", "title" => "Sample Name" } }
+
+      it "does not contain a separator" do
+        allow(helper).to receive(:render_electronic_notes) { "Hello World" }
+        expect(electronic_resource_link_builder(field)).to_not have_text(" - ")
+      end
+    end
+
     context "porfolio_id, title, and subtitle are present" do
       let(:field) { {
         "portfolio_id" => "77777", "title" => "Sample Name", "subtitle" => "Sample Text"
