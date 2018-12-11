@@ -266,12 +266,16 @@ module CatalogHelper
   def electronic_resource_link_builder(field)
     return if field.empty?
     return if field["availability"] == "Not Available"
+
     title = field.fetch("title", "Find it online")
-
     electronic_notes = render_electronic_notes(field)
-    additional_notes = [ field["subtitle"], electronic_notes ].compact.join(" ")
 
-    electronic_resource_list_item(field["portfolio_id"], title, additional_notes)
+    item_html = [render_alma_eresource_link(field["portfolio_id"], title), field["subtitle"]]
+      .select(&:present?).join(" - ")
+    item_html = [item_html, electronic_notes]
+      .select(&:present?).join(" ").html_safe
+
+    content_tag(:td, item_html , class: " electronic_links online-list-items")
   end
 
   def render_electronic_notes(field)
@@ -284,12 +288,6 @@ module CatalogHelper
     if collection_notes.present? || service_notes.present?
       render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
     end
-  end
-
-  def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
-    item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
-    item_html = item_parts.select(&:present?).join(" - ").html_safe
-    content_tag(:td, item_html , class: " electronic_links online-list-items")
   end
 
   def render_alma_eresource_link(portfolio_pid, db_name)
