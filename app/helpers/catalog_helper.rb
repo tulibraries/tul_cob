@@ -224,6 +224,10 @@ module CatalogHelper
     search_path(search_params)
   end
 
+  def back_to_databases_path
+    search_databases_path(search_params)
+  end
+
   def get_search_params(field, query)
     case field
     when "title_uniform_display", "title_addl_display", "relation"
