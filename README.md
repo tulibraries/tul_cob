@@ -202,3 +202,12 @@ can also provide a path  and filename with the `--save_to` command line flag.
 ```
 
 
+#### Ingest LibGuide AZ documents
+Locally you will need to add 'az-database' core to solr (handled automatically for docker/libqa/production)
+
+Ingest AZ database documents by running
+
+```
+./bin/libguide_cache.rb
+./bin/ingest-libguides.sh
+```

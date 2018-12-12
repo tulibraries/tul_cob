@@ -77,7 +77,7 @@ RSpec.describe CatalogHelper, type: :helper do
     let(:doc) { SolrDocument.new(purchase_order: true) }
     let(:presenter) { CatalogIndexPresenter.new(doc, self) }
     let(:blacklight_config) { CatalogController.blacklight_config }
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.build(:user) }
 
     before(:each) do
       allow(presenter).to receive(:purchase_order_button) { "purchase_order_button" }
