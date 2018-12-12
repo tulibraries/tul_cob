@@ -23,6 +23,14 @@ BentoSearch.register_engine("books") do |conf|
   end
 end
 
+BentoSearch.register_engine("databases") do |conf|
+  conf.engine = "BentoSearch::DatabasesEngine"
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_database_results"
+  end
+end
+
 BentoSearch.register_engine("more") do |conf|
   conf.engine = "BentoSearch::MoreEngine"
   conf.for_display do |display|
