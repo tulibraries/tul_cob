@@ -1,6 +1,11 @@
 @import "partials/_vars.scss";
 
 /* === GENERAL STYLES === */
+
+body {
+  font-size: 14px;
+}
+
 #documents {
   background-color: $white;
   border-radius: 0 0 5px 5px;
@@ -268,9 +273,6 @@ img {
 }
 
 @media (max-width: 768px) {
-  #search-navbar .search-query-form  {
-    margin-left: 7px;
-  }
   .book_format {
     margin-left: 21px;
   }
@@ -294,12 +296,6 @@ img {
 @media (max-width: 601px) {
   .input-group-addon {
     padding: 0;
-  }
-  #search_field  {
-    width: 90% !important;
-  }
-  #search-navbar .input-group-addon.for-search-field {
-    width: 15ch;
   }
   #nav-tools {
     margin-top: 14px;
@@ -389,21 +385,8 @@ img {
 }
 
 @media(max-width:485px) {
-  #user-util-links ul.navbar-nav, #user-util-links ul.navbar-nav li a  {
-    clear: left;
-    display: block;
-    padding: 4px 0 0 2px;
-  }
   .submit-buttons {
     margin-top: 20px;
-  }
-  .nav-header-links {
-    display: grid;
-    font-size:16px;
-  }
-  .path-links {
-  	height: auto;
-    text-align: left;
   }
 }
 
