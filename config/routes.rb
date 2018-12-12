@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # advanced forms
   match "/books/advanced", to: "books_advanced#index", as: "books_advanced_search", via: [:get, :post]
   match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
+  match "databases/advanced", to: "databases_advanced#index", as: "databases_advanced_search", via: [:get, :post]
   match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
   match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
   match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
@@ -36,6 +37,11 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns :exportable
   end
@@ -45,6 +51,10 @@ Rails.application.routes.draw do
   end
 
   resources :solr_journal_documents, only: [:show], path: "/journals", controller: "journals" do
+    concerns :exportable
+  end
+
+  resources :solr_database_documents, only: [:show], path: "/databases", controller: "databases" do
     concerns :exportable
   end
 
@@ -64,6 +74,7 @@ Rails.application.routes.draw do
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
   post "books/:id/track" => "book#track"
   post "journals/:id/track" => "journal#track"
+  post "databases/:id/track" => "databases#track"
 
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -98,6 +109,7 @@ Rails.application.routes.draw do
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
   get "books/:id/index_item", to: "books#index_item", as: "book_item"
   get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"
+  get "databases/:id/index_item", to: "databases#index_item", as: "database_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
   get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
 
