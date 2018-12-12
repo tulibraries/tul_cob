@@ -13,9 +13,9 @@ filename = "spec/fixtures/electronic-collections-ids.csv"
 
 ids = File.readlines(filename)
   .map(&:to_i).select(&:nonzero?)
-  .map { |id| { collection_id: id } }
+  .map { |id| { collection_id: id.to_s } }
 
-batch = Alma::Electronic::BatchProcess.new(ids: ids)
+batch = Alma::Electronic::BatchUtils.new(ids: ids)
 
 batch.get_notes(type: "collection")
   .print_notes

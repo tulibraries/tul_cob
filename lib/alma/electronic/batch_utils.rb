@@ -84,7 +84,7 @@ module Alma
         begin
           item = Alma::Electronic.get(params)
           item["electronic_service"].each { |service|
-            service_id = { service_id: service["id"] }
+            service_id = { service_id: service["id"].to_s }
             log params
               .merge(start: start, tag: tag)
               .merge(service_id)
@@ -164,7 +164,7 @@ module Alma
     end
 
     def make_collection_ids(ids)
-      ids.map { |id| { collection_id: id } }
+      ids.map { |id| { collection_id: id.to_s } }
     end
 
     # Returns JSON parsed list of logged items
