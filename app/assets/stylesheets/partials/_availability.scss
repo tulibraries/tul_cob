@@ -38,7 +38,7 @@
 
 .collapse-button {
   white-space: normal;
-  width: 121px !important;
+  min-width: 121px !important;
 }
 
 .availability-toggle-details {
@@ -193,4 +193,11 @@ table.border-bottom {
 .page_links {
   margin-top: 0 !important;
   padding-left: 10px;
+}
+
+.btn-sm {
+      span.avail-label {
+        font-size: 15px;
+        padding-right: 2px;
+      }
 }

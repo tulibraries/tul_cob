@@ -128,12 +128,34 @@ module CatalogHelper
   end
 
   def render_availability(doc, doc_presenter)
-    if doc.purchase_order? && !current_user
-      link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: { "ajax-modal": "trigger" })
-    elsif doc.purchase_order?
-      doc_presenter.purchase_order_button
-    elsif index_fields(doc).fetch("availability", nil)
+    if index_fields(doc).fetch("availability", nil)
       render "index_availability_section", document: doc
+    end
+  end
+
+  def render_purchase_order_availability(args = { document: @document })
+    return unless args[:document].purchase_order?
+    doc = args[:document]
+
+    if !current_user
+      link = render_purchase_order_show_link(args)
+      render partial: "purchase_order_anonymous_button", locals: { link: link, document: doc }
+    elsif !current_user.can_purchase_order?
+      content_tag :div, t("purchase_order_allowed"), class: "availability"
+    else
+      label = content_tag :span, "Request Rapid Access", class: "avail-label"
+      path = purchase_order_path(id: doc.id)
+      link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "ajax-modal": "trigger" }
+      content_tag :div, link, class: "availability"
+    end
+  end
+
+  def render_purchase_order_show_link(args = { document: @document })
+    return unless args[:document].purchase_order?
+
+    if !current_user
+      redirect_url = new_user_session_with_redirect_path(request.url)
+      link_to("Log in to access request form", redirect_url, data: { "ajax-modal": "trigger" })
     end
   end
 
