@@ -29,8 +29,6 @@ class CatalogController < ApplicationController
     with: :raise_bad_range_limit
 
   configure_blacklight do |config|
-    config.index.document_presenter_class = CatalogIndexPresenter
-
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
@@ -314,6 +312,7 @@ class CatalogController < ApplicationController
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
+    config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability
 
 
     # solr fields to be displayed in the show (single result) view
@@ -392,8 +391,6 @@ class CatalogController < ApplicationController
     config.add_show_field "merged_to_form_display", label: "Merged to form"
     config.add_show_field "changed_back_to_display", label: "Changed back to"
 
-    #config.add_show_field 'call_number', label: 'Call Number'
-    #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field "isbn_display", label: "ISBN"
     config.add_show_field "alt_isbn_display", label: "Other ISBN"
     config.add_show_field "issn_display", label: "ISSN"
@@ -406,6 +403,9 @@ class CatalogController < ApplicationController
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
     config.add_show_field "bound_with_ids", display: false
+
+    config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
+    config.add_show_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields

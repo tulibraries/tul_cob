@@ -5,6 +5,9 @@
   <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading" class="text-left">Availability</h4>
     <div id="heading-request">
+
+      <%= doc_presenter.field_value("po_link") %>
+
       <div id="requests-container" class="hidden">
         <% if user_signed_in? %>
           <%= request_modal(document.id, document_counter="0", @pickup_locations, @request_level) %>
@@ -16,6 +19,7 @@
   </div>
 
   <%= render_online_availability(doc_presenter) %>
+  <%= doc_presenter.field_value("purchase_order_availability") %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
