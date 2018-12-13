@@ -422,7 +422,7 @@ RSpec.describe CatalogHelper, type: :helper do
         }
 
       it "returns the default message" do
-        expect(build_holdings_summary(items, document)).to eq("MAIN" => "Summary: ")
+        expect(build_holdings_summary(items, document)).to eq("MAIN" => "")
       end
     end
   end

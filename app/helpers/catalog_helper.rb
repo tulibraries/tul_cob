@@ -348,7 +348,7 @@ module CatalogHelper
           .map { |holding| holdings_summaries[holding] }
           .join(", ")
 
-        [ library, "Summary: #{summaries}" ]
+        [ library, ("Summary: #{summaries}".sub(/Summary: $/, "") unless summaries.blank?) ]
       }.to_h
   end
 
