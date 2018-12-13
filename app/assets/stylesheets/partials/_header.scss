@@ -156,10 +156,11 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 }
 
 #search-form-container {
-	margin: 0 auto !important;
-	width: 100%;
+	margin-left: 15%;
+	text-align: center;
 	@media(max-width: 991px) {
-		text-align: center;
+		margin-left: 10%;
+		padding-bottom: 5px;
 	}
 	@media(max-width: 485px) {
 		margin-left: 10px;
@@ -183,10 +184,12 @@ div #search-form-container form .search_q {
 }
 
 .navbar-form {
-	margin-left: 0;
-	position: relative;
-	top: 10%;
-	transform: translateY(-50%);
+	margin-left: -100px !important;
+	transform: translateY(-40%);
+	@media(max-width: 991px) {
+		margin: 20px auto -20px auto;
+		transform: translateY(-50%);
+	}
 	@media(max-width: 768px) {
 		margin: 15px auto 0 auto;
 		transform: translateY(-50%);
