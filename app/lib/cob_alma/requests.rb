@@ -63,7 +63,7 @@ module CobAlma
     def self.item_level_locations(items_list)
       pickup_locations = self.possible_pickup_locations
 
-      items_list.reduce({}) { |libraries, item|
+      items_list.all.reduce({}) { |libraries, item|
         desc = item.description
         campus = determine_campus(item.library)
 
