@@ -12,7 +12,7 @@
       <% document_show_fields(document).each do |field_name, field| %>
         <% if should_render_show_field? document, field %>
           <dt class="blacklight-<%= field_name.parameterize %>"><%= render_document_show_field_label document, field: field_name %></dt>
-          <% if document[field_name].length == 1 || !document[field_name].is_a?(Array) %>
+          <% if document[field_name]&.length == 1 || !document[field_name]&.is_a?(Array) %>
                 <% valdir = Array(document[field_name]).first %>
                 <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
                   <% value = doc_presenter.field_value field_name %>

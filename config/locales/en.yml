@@ -1,4 +1,5 @@
 en:
+  purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
   blacklight:
     application_name: "Library Search"
     section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{books} and %{journals}."
