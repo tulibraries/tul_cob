@@ -52,7 +52,7 @@ RSpec.configure do |config|
         body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
+        #with(query: hash_including(offset: "100")).
         to_return(status: 200,
         body: JSON.dump({}))
 
@@ -76,6 +76,12 @@ RSpec.configure do |config|
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
 
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/no_reserve_or_reference\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
@@ -88,21 +94,50 @@ RSpec.configure do |config|
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/empty_descriptions.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/empty_and_description.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_hash\/holdings\/.*\/items/).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
         to_return(status: 200,
         body: File.open(SPEC_ROOT + "/fixtures/requests/multiple_descriptions.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
+        with(query: hash_including(offset: "100")).
+        to_return(status: 200,
+        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
         with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
