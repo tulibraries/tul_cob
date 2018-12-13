@@ -73,41 +73,98 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#render_availability" do
-    let(:doc) { SolrDocument.new(purchase_order: true) }
-    let(:presenter) { CatalogIndexPresenter.new(doc, self) }
-    let(:blacklight_config) { CatalogController.blacklight_config }
-    let(:user) { FactoryBot.create(:user) }
+  describe "#render_purchase_order_availability" do
+    let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
+    let(:user) { FactoryBot.build(:user) }
+    let(:can_purchase_order?) { true }
 
     before(:each) do
-      allow(presenter).to receive(:purchase_order_button) { "purchase_order_button" }
       allow(helper).to receive(:link_to) { "render_login_link" }
-      allow(helper).to receive(:render) { "availability_section" }
       allow(helper).to receive(:current_user) { user }
+      allow(helper).to receive(:content_tag) {}
+      allow(helper).to receive(:render) {}
+      allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
 
       without_partial_double_verification do
         allow(helper).to receive(:blacklight_config) { blacklight_config }
       end
+
+      helper.render_purchase_order_availability(args)
     end
 
     context "document has purchase order and user is not logged in" do
       let(:user) { nil }
 
       it "should render the log in in link" do
-        expect(helper.render_availability(doc, presenter)).to eq("render_login_link")
+        expect(helper).to have_received(:render).with(
+          partial: "purchase_order_anonymous_button",
+          locals: { document: args[:document], link: "render_login_link" }
+        )
       end
     end
 
     context "document has purchase order and user is logged in" do
       it "should render the purchase order button" do
-        expect(helper.render_availability(doc, presenter)).to eq("purchase_order_button")
+        expect(helper).to have_received(:content_tag).with(
+          :div, "render_login_link", class: "availability"
+        )
+      end
+    end
+
+    context "document has purchase order but user cannot purchase order" do
+      let(:can_purchase_order?) { false }
+
+      it "should render purchase allow message" do
+        expect(helper).to have_received(:content_tag).with(
+          :div, t("purchase_order_allowed"), class: "availability"
+        )
       end
     end
 
     context "document does not have purchase order button" do
-      let(:doc) { SolrDocument.new(purchase_order: false) }
+      let(:args) { { document: SolrDocument.new(purchase_order: false) } }
+
       it "should not render the purchase_order_button" do
-        expect(helper.render_availability(doc, presenter)).to eq("availability_section")
+        expect(helper.render_purchase_order_availability(args)).to be_nil
+      end
+    end
+  end
+
+  describe "#render_purchase_order_show_link" do
+    let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
+    let(:user) { FactoryBot.create(:user) }
+    let(:can_purchase_order?) { true }
+
+    before(:each) do
+      allow(helper).to receive(:link_to) { "render_login_link" }
+      allow(helper).to receive(:current_user) { user }
+
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config) { blacklight_config }
+      end
+
+      helper.render_purchase_order_show_link(args)
+    end
+
+    context "document has purchase order and user is not logged in" do
+      let(:user) { nil }
+
+      it "should render the log in in link" do
+        expect(helper.render_purchase_order_show_link(args)).to eq("render_login_link")
+      end
+    end
+
+    context "document does not have purchase order" do
+      let(:args) { { document: SolrDocument.new(purchase_order: false, id: "foo") } }
+
+      it "should not render the log in in link" do
+        expect(helper.render_purchase_order_show_link(args)).to be_nil
+      end
+    end
+
+    context "user is logged in" do
+      it "should not render the log in in link" do
+        expect(helper.render_purchase_order_show_link(args)).to be_nil
       end
     end
   end
