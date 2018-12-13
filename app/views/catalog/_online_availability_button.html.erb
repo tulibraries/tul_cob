@@ -11,6 +11,6 @@
   </div>
 <% elsif has_one_electronic_resource?(document) %>
   <div class="availability">
-    <a href="<%= single_link_builder(document["electronic_resource_display"].first) %>" class="collapse-button btn btn-sm btn-info" title="This link opens the resource in a new tab", target="_blank" id:"single_link_online"><span class="avail-label">Oline<span></a>
+    <a href="<%= single_link_builder(document["electronic_resource_display"].first) %>" class="collapse-button btn btn-sm btn-info" title="This link opens the resource in a new tab", target="_blank" id:"single_link_online"><span class="avail-label">Online<span></a>
   </div>
 <% end %>
