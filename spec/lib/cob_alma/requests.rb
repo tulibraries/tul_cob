@@ -68,7 +68,7 @@ RSpec.describe CobAlma::Requests do
   end
 
   describe "#item_level_locations" do
-    let(:items_list) { {} }
+    let(:items_list) { Alma::BibItem.find("empty_hash") }
     let(:subject) { described_class.item_level_locations(items_list) }
 
     context "empty hash" do
