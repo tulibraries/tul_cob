@@ -199,7 +199,7 @@ div #search-form-container form .search_q {
 		transform: translateY(-50%);
 	}
 	@media(max-width: 485px) {
-		margin: 0 auto -20px auto;
+		margin: 0 auto -10px auto !important;
 		padding-top: 10px;
 		transform: translateY(-10%);
 	}
@@ -209,9 +209,6 @@ a.advanced_search {
 	font-weight: bold;
 	letter-spacing: 1px;
 	text-decoration: underline;
-	@media(max-width: 485px) {
-		margin: 0 auto;
-	}
 }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
