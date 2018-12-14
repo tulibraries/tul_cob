@@ -1,3 +1,10 @@
+<% if !cookies.fetch("#{controller_name}Once", false) %>
+<div class="row explantion-wrapper col-xs-11" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
+  <p class="explanation col-xs-10"><%= explanation_translations(controller_name) %></p>
+  <button class="btn btn-link explantion-btn col-xs-1" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
+</div>
+<% end %>
+
 <% if show_sidebar? %>
   <div id="sidebar" class="<%= sidebar_classes %>">
     <%= render 'search_sidebar' %>
