@@ -17,6 +17,64 @@ RSpec.describe Alma::Electronic::BatchUtils do
     stub_request(:any, /electronic/).and_return(status: "200", body: data.to_json)
   end
 
+  describe "#make_collection_ids" do
+    context "with number ids" do
+      let(:ids) { [1] }
+      it "maps to a hash of string ids" do
+        expect(batch.send(:make_collection_ids, ids)).to eq([{ collection_id: "1" }])
+      end
+    end
+
+    context "with hash ids" do
+      let(:ids) { [ { collection_id: 1 } ] }
+
+      it "does not touch id" do
+        expect(batch.send(:make_collection_ids, ids)).to eq(ids)
+      end
+
+    end
+
+    context "without passing ids" do
+      let(:ids) { [ { collection_id: 1 } ] }
+
+      it "uses the ids passed BatchUtils instance" do
+        expect(batch.send(:make_collection_ids)).to eq(ids)
+      end
+    end
+  end
+
+  describe "#get_service_ids" do
+    before do
+      stub_request(:any, /electronic/).and_return(status: "200", body: { "electronic_service": [
+        { "id" => "foo" },
+        { "id" => "bar" }
+      ] }.to_json)
+    end
+
+    context "with empty ids" do
+      it "returns empty set" do
+        expect(batch.get_service_ids(ids)).to eq([])
+      end
+    end
+
+    context "without passing ids" do
+      it "uses the instance ids" do
+        expect(batch.get_service_ids).to eq([])
+      end
+    end
+
+    context "passing in list of ids" do
+      let(:ids) { [ "bizz" ] }
+
+      it "parses service ids" do
+        expect(batch.get_service_ids(ids)).to eq([
+          { collection_id: "bizz", service_id: "foo" },
+          { collection_id: "bizz", service_id: "bar" }
+        ])
+      end
+    end
+  end
+
   describe "#get_collection_notes" do
     before do
       batch.get_collection_notes
