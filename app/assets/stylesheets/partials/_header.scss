@@ -71,7 +71,6 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
 .red-navbar a#catalog_header {
-	border-bottom: 2px solid $white;
 	color: white;
 	display: inline;
 	float: left;
@@ -252,14 +251,13 @@ nav ul.nav-header-links li.header-links.active a {
 	background-color: $white;
 	border-bottom: 1px solid #ccc;
 	height: 50px;
-	margin-bottom: 20px;
-	padding: 0;
-	@media(max-width: 601px) {
-		height: 41px;
-		margin-bottom: 0;
+	@media(max-width: 600px) {
+		padding: 0;
+		height: 42px;
 	}
 	@media(max-width: 485px) {
 		height: auto;
+		padding-bottom: 25px;
 		width: 100%;
 	}
 }
@@ -267,13 +265,17 @@ nav ul.nav-header-links li.header-links.active a {
 .nav-header-links {
 	display: inline-block;
 	font-size: 1.5em;
-	@media(max-width: 601px) {
+	@media(max-width: 768px) {
+		font-size: 18px;
+		height: 41px;
+	}
+	@media(max-width: 600px) {
 		font-size: 14px;
+		padding: 0;
 	}
 	@media(max-width: 485px) {
-		display: grid;
 		font-size: 16px;
-		margin-right: 50px;
+		margin-right: 20px;
 	}
 }
 
