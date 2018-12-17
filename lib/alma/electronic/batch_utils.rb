@@ -73,27 +73,37 @@ module Alma
       self.class.new(tag: tag, chain: true)
     end
 
-    def get_service_ids(ids, options = {})
+    def get_service_ids(ids = @ids, options = {})
       tag = options.fetch(:tag, @tag)
+      start = Time.now
 
       make_collection_ids(ids)
         .map { |id| id.merge(type: "services") }
         .inject([]) do |service_ids, params|
-        params.merge!(start: Time.now, tag: tag)
+        params.merge!(tag: tag)
 
         begin
           item = Alma::Electronic.get(params)
-          item["electronic_service"].each { |service|
-            service_id = { service_id: service["id"].to_s }
-            log params
-              .merge(start: start, tag: tag)
-              .merge(service_id)
-            service_ids << params.slice(:collection_id)
-              .merge(service_id)
-          }
+
+          if item["errorList"]
+            log params.merge(item["errorList"])
+              .merge(start: start)
+          else
+            item["electronic_service"].each { |service|
+              service_id = { service_id: service["id"].to_s }
+              service_ids << params.slice(:collection_id)
+                .merge(service_id)
+
+              log params.merge(service_id)
+                .merge(start: start)
+            }
+          end
+
         rescue StandardError => e
-          log(params.merge("error" => e.message, start: start, tag: tag))
+          log params.merge("error" => e.message)
+            .merge(start: start)
         end
+
         service_ids
       end
     end
@@ -163,8 +173,10 @@ module Alma
       params[id]
     end
 
-    def make_collection_ids(ids)
-      ids.map { |id| { collection_id: id.to_s } }
+    def make_collection_ids(ids = @ids)
+      ids.map { |id|
+        id.class == Hash ? id : { collection_id: id.to_s }
+      }
     end
 
     # Returns JSON parsed list of logged items
