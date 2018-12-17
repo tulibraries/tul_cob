@@ -3,6 +3,14 @@
     "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
   },
+  "62337197720003811": {
+    "authentication_note": "TESTING SERVICE AUTHENTICATION NOTE",
+    "public_note": ""
+  },
+  "62402467020003811": {
+    "authentication_note": "",
+    "public_note": "Access streaming video via Films on Demand"
+  },
   "62398469980003811": {
     "authentication_note": "",
     "public_note": "Only one person may access this title at a time."
@@ -30,9 +38,5 @@
   "62430494120003811": {
     "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
-  },
-  "62402467020003811": {
-    "authentication_note": "",
-    "public_note": "Access streaming video via Films on Demand"
   }
 }
