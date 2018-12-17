@@ -17,8 +17,10 @@ ids = File.readlines(filename)
 
 batch = Alma::Electronic::BatchUtils.new(ids: ids)
 
-batch.get_notes(type: "collection")
+batch.get_collection_notes
+  .get_collection_notes(ids: batch.build_failed_ids(type: "collection"))
   .print_notes
 
-batch.get_notes(type: "service")
-  .print_notes
+batch.get_service_notes
+  .get_service_notes(ids: batch.build_failed_ids(type: "service"))
+  .print_notes(type: "service")
