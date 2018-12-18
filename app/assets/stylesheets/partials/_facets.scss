@@ -154,7 +154,7 @@ button.collapse-button.collapsed .avail-label:after {
 		font-family: "PT Sans";
 		font-size: 2em;
 		height: 70px;
-		margin: 4px auto auto -5px;
+		margin: 8px auto auto -5px;
 		padding: 12px 0 0 0;
 		width: 70%;
 	}
@@ -205,8 +205,13 @@ a.catalog_startOverLink {
 #sidebar {
 	background-color: $white;
 	border-radius: 5px;
+	@media(max-width: 768px) {
+		margin: 20px auto;
+		width: 95%;
+	}
 	@media(max-width: 485px) {
 		margin: -20px auto 20px auto;
+		width: 100%;
 	}
 }
 
@@ -264,10 +269,10 @@ span.appliedFilter.constraint {
 button.facets-toggle {
 	border: none;
 	float: left;
-	height: 70px;
-	width: 70px;
+	height: 80px;
+	width: 80px;
 	margin-left: -10px;
-	margin-right: 30px;
+	margin-right: 20px;
 }
 
 button.facets-toggle.collapsed .facets-toggle:after {
