@@ -77,6 +77,7 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	font-family: "PT Sans";
 	font-size: 2.5rem;
 	margin-left: -1.2em;
+	margin-top: -7px;
 	@media(max-width: 850px) {
 		margin-left: -5px;
 		padding-left: 0;
@@ -132,6 +133,14 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	text-decoration: underline;
 	@media (max-width: 320px) {
 		padding: 1%;
+	}
+}
+
+#user-util-collapse .navbar-nav li a, a:visited, a:active {
+	background-color: transparent;
+	margin-top: 7px;
+	@media(max-width: 485px) {
+		margin-top: 0;
 	}
 }
 
