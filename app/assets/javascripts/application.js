@@ -146,4 +146,8 @@ $(document).on('turbolinks:load', function() {
  	if ($("div.navbar-form").length == 0) {
  		$("#search-navbar").css("padding-left", "15%");
  	}
+
+	$('#facet-filter-icon').click( function(){
+    $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
+	});
  });
