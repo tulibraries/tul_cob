@@ -96,7 +96,22 @@ RSpec.describe CatalogHelper, type: :helper do
     context "document has purchase order and user is not logged in" do
       let(:user) { nil }
 
-      it "should render the log in in link" do
+      it "should render the log_in link" do
+        expect(helper).to have_received(:render).with(
+          partial: "purchase_order_anonymous_button",
+          locals: { document: args[:document], link: "" }
+        )
+      end
+    end
+
+    context "document has purchase order and user is not logged in and link configured to appear in button" do
+      let(:user) { nil }
+      let(:args) { {
+        document: SolrDocument.new(purchase_order: true, id: "foo"),
+        config: { with_po_link: true },
+      } }
+
+      it "should render the log_in link inside of button" do
         expect(helper).to have_received(:render).with(
           partial: "purchase_order_anonymous_button",
           locals: { document: args[:document], link: "render_login_link" }
@@ -107,7 +122,7 @@ RSpec.describe CatalogHelper, type: :helper do
     context "document has purchase order and user is logged in" do
       it "should render the purchase order button" do
         expect(helper).to have_received(:content_tag).with(
-          :div, "render_login_link", class: "availability"
+          :div, "render_login_link", class: "requests-container"
         )
       end
     end
@@ -139,6 +154,8 @@ RSpec.describe CatalogHelper, type: :helper do
     before(:each) do
       allow(helper).to receive(:link_to) { "render_login_link" }
       allow(helper).to receive(:current_user) { user }
+      allow(helper).to receive(:render_purchase_order_button) { "render_purchase_order_button" }
+      allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
 
       without_partial_double_verification do
         allow(helper).to receive(:blacklight_config) { blacklight_config }
@@ -163,9 +180,17 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "user is logged in" do
+    context "user is logged in and cannot purchase an order" do
+      let(:can_purchase_order?) { false }
+
       it "should not render the log in in link" do
         expect(helper.render_purchase_order_show_link(args)).to be_nil
+      end
+    end
+
+    context "user is logged in and can purchase an order" do
+      it "should not render the log in in link" do
+        expect(helper.render_purchase_order_show_link(args)).to eq("render_purchase_order_button")
       end
     end
   end

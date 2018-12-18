@@ -312,7 +312,7 @@ class CatalogController < ApplicationController
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
-    config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability
+    config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
 
 
     # solr fields to be displayed in the show (single result) view
@@ -405,7 +405,8 @@ class CatalogController < ApplicationController
     config.add_show_field "bound_with_ids", display: false
 
     config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
-    config.add_show_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability
+    config.add_show_field "purchase_order_availability", label: "Request Rapid Access", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_panel: true
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
