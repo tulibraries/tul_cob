@@ -13,6 +13,13 @@
 	width: 46%;
 }
 
+.bento_compartment {
+	@media(max-width: 600px) {
+		margin: 0 auto 20px auto;
+		width: 90%;
+	}
+}
+
 .bento_compartment h2 {
 	background-color: #CECED0;
 	border-radius: 10px 10px 0 0;
@@ -132,7 +139,6 @@
 }
 
 .centered-bento {
-	display: flex;
 	justify-content: center;
 }
 

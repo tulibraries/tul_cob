@@ -198,11 +198,13 @@ table.border-bottom {
 .page_links {
   margin-top: 0 !important;
   padding-left: 10px;
+  @media(max-width: 485px) {
+		padding: 0;
+    margin-bottom: 20px;
+  }
 }
 
-.btn-sm {
-      span.avail-label {
-        font-size: 15px;
-        padding-right: 2px;
-      }
+span.avail-label {
+  font-size: 15px;
+  padding-right: 2px;
 }
