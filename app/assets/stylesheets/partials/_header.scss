@@ -77,6 +77,7 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	font-family: "PT Sans";
 	font-size: 2.5rem;
 	margin-left: -1.2em;
+	margin-top: -7px;
 	@media(max-width: 850px) {
 		margin-left: -5px;
 		padding-left: 0;
@@ -118,7 +119,6 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 
 .navbar-right ul {
   display: inline-block;
-	float: right;
 }
 
 .navbar-right li {
@@ -136,9 +136,8 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	}
 }
 
-#user-util-collapse .navbar-nav li a, a:visited, a:hover, a:active {
+#user-util-collapse .navbar-nav li a, a:visited, a:active {
 	background-color: transparent;
-	margin-top: 7px;
 	@media(max-width: 485px) {
 		margin-top: 0;
 	}
@@ -200,7 +199,7 @@ div #search-form-container form .search_q {
 	@media(max-width: 485px) {
 		margin: 0 auto -10px auto !important;
 		padding-top: 10px;
-		transform: translateY(-10%);
+		transform: translateY(-1%);
 	}
 }
 
@@ -243,6 +242,7 @@ nav ul.nav-header-links li.header-links.active a {
 	letter-spacing: 1px;
 	padding: 8px 10px 7px 10px;
 	@media(max-width: 485px) {
+		border-radius: 5px;
 		float: none;
 	}
 }
@@ -483,6 +483,9 @@ ul.navbar-nav {
   border-radius: 5px;
   margin: 0;
   padding: 20px;
+	@media(max-width: 485px) {
+		text-align: center;
+  }
 }
 
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {

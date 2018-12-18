@@ -36,23 +36,31 @@ span.constraints {
 	}
 }
 
-span .remove-icon {
-	color: $black !important;
-}
-
 span .remove-constraints {
 	background-color: $light-blue;
 	border: 1px solid transparent !important;
 	color: $black;
+	margin-top: 0 !important;
+	padding-top: 10px;
+	width: 20%;
+	@media(max-width: 485px) {
+		padding-top: 15px;
+	}
 }
 
 span.constraint-value {
 	background-color: $light-blue;
 	border: 1px solid transparent !important;
+	font-size: 12px;
 	font-weight: bold;
 	padding: 8px 15px;
 	text-align: left;
+	width: 80%;
 	white-space: normal !important;
+	@media(max-width: 485px) {
+		font-size: 14px;
+		padding-top: 15px;
+  }
 }
 
 span.constraints:first-child {
@@ -71,7 +79,7 @@ a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-co
 	color: $black !important;
 }
 
-#startOverLink, #start_over {
+#startOverLink {
 	color: $white;
   background-color: $dark-blue;
   border-color: #2e6da4;
@@ -80,6 +88,15 @@ a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-co
 	letter-spacing: 1px;
   margin-right: 4px;
 	margin-bottom: 10px;
+}
+
+#start_over {
+	color: $white;
+  background-color: $dark-blue;
+  border-color: #2e6da4;
+	font-size: 12px;
+	font-weight: 200;
+	letter-spacing: 1px;
 }
 
 .dl-horizontal dd:after {
@@ -94,24 +111,6 @@ button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.b
   	padding-left: 5px;
   	font-size: 13px;
   }
-}
-
-button.btn-info, input.btn-info, input.btn-info:focus, input.btn-info:hover, input.btn-info:active, input.btn-info:visited {
-    color: $white!important;
-    background-color: #337ab7 !important;
-    border-color: #2e6da4 !important;
-    span.avail-label {
-    	font-size: 15px;
-    	padding-left: 10px;
-    }
-}
-
-a.btn-info, a.btn-info:active, a.btn-info:hover, a.btn-info:focus, a.btn-info:visited {
-    color: $white !important;
-    background-color: #337ab7 !important;
-    border-color: #2e6da4 !important;
-    font-size: 15px;
-    padding-left: 3px;
 }
 
 button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
@@ -140,7 +139,7 @@ button.collapse-button .avail-label:after {
 
 button.collapse-button.collapsed .avail-label:after {
   /* symbol for "collapsed" panels */
-  content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+	content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
 .availability-toggle-details {
@@ -151,6 +150,17 @@ button.collapse-button.collapsed .avail-label:after {
 	margin-left: -15px;
 	padding: 2px 5px;
 	width: 100px;
+	@media(max-width: 485px) {
+		font-family: "PT Sans";
+		font-size: 2em;
+		height: 70px;
+		margin: 8px auto auto -5px;
+		padding: 12px 0 0 0;
+		width: 70%;
+	}
+	@media(max-width: 320px) {
+		width: 60%;
+	}
 }
 
 a.catalog_startOverLink {
@@ -179,16 +189,30 @@ a.catalog_startOverLink {
 
 .facets-heading {
 	margin-left: -15px;
+	@media(max-width: 485px) {
+		display: none;
+	}
 }
 
 #applied_params_facet {
 	margin-top: -30px;
+	width: 100%;
+	@media(max-width: 320px) {
+		width: 84%;
+	}
 }
 
 #sidebar {
 	background-color: $white;
 	border-radius: 5px;
-	height: auto;
+	@media(max-width: 768px) {
+		margin: 20px auto;
+		width: 95%;
+	}
+	@media(max-width: 485px) {
+		margin: -20px auto 20px auto;
+		width: 100%;
+	}
 }
 
 input[value|="Apply"] {
@@ -221,10 +245,16 @@ form.range_limit {
 	padding: 5px 20px;
 }
 
-.appliedFilter {
+span.appliedFilter.constraint {
 	display: flex;
 	padding-bottom: 6px;
-	width: 100%;
+	width: 100% !important;
+	@media(max-width: 485px) {
+		height: 50px;
+		margin-bottom: 20px;
+		margin-left: 15px;
+		padding: 0;
+  }
 }
 
 #facets .panel-body {
@@ -234,4 +264,37 @@ form.range_limit {
 .more_facets_link {
 	font-weight: bold;
 	padding-left: 15px;
+}
+
+button.facets-toggle {
+	border: none;
+	float: left;
+	height: 80px;
+	width: 80px;
+	margin-left: -10px;
+	margin-right: 20px;
+}
+
+button.facets-toggle.collapsed .facets-toggle:after {
+	margin-left: -20px;
+	margin-right: 20px;
+}
+
+button.facets-toggle:focus, button.facets-toggle:hover, button.facets-toggle:active, button.facets-toggle:visited {
+	outline: none !important;
+	margin-left: 0;
+	margin-right: 20px;
+	padding-left: 0;
+}
+
+div .top-panel-heading {
+	border: none !important;
+	padding-top: 10px;
+	margin: 0 auto;
+}
+
+span.remove-facet-icon, span.open-facet-icon {
+	padding-left: 90px;
+  padding-bottom: 100px;
+  padding-top: 27px;
 }

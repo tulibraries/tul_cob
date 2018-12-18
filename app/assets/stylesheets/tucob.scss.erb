@@ -75,7 +75,7 @@ h1.advanced.page-header a {
 }
 
 .explantion-wrapper {
-  //display: flex;
+  position: inherit;
   justify-content: space-between;
   margin: -30px auto 20px auto;
   padding-left: 8%;
@@ -88,6 +88,10 @@ h1.advanced.page-header a {
 .explantion-btn {
   font-size: 1.1em;
   transform: translateY(-20%);
+  @media(max-width: 485px) {
+    transform: translateY(70%);
+
+  }
 }
 
 .form-control:focus {
