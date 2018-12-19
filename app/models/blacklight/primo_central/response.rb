@@ -56,8 +56,8 @@ module Blacklight::PrimoCentral
       # Now make the boundaries into actual filter.queries.
       0.upto(boundaries.length - 2) do |index|
         first = boundaries[index]
-        last =  boundaries[index + 1]
-        count = values.select { |f| f[:value] >= first && f[:value] < last }
+        last =  boundaries[index + 1].to_i - 1
+        count = values.select { |f| f[:value] >= first && f[:value] <= last }
           .map { |f| f[:count] }
           .reduce(0, &:+)
 
