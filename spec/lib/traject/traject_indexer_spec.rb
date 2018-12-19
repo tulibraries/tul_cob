@@ -456,7 +456,7 @@ RSpec.describe Traject::Macros::Custom do
                          " }
 
           it "adds a purchase order availability" do
-            expect(subject.map_record(record)["availability_facet"]).to include("Purchase on Demand")
+            expect(subject.map_record(record)["availability_facet"]).to include("Request Rapid Access")
           end
         end
 

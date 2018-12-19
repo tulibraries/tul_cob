@@ -309,7 +309,7 @@ module Traject
           order = []
           extract_purchase_order[rec, order]
           if order == [true]
-            acc << "Purchase on Demand"
+            acc << "Request Rapid Access"
           end
 
           acc.uniq!
