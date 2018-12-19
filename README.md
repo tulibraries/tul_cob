@@ -48,6 +48,14 @@ bundle exec rails server
 rake docker:up
 ```
 
+* To open up your local app or solr in the browser
+```bash
+rake docker:open
+
+rake docker:open_solr
+```
+
+
 ### Start the Application with some sample data for Development
 
 If you want to quickly get the application running for development with a minimal
