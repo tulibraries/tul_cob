@@ -44,7 +44,7 @@ span .remove-constraints {
 	padding-top: 10px;
 	width: 20%;
 	@media(max-width: 485px) {
-		padding-top: 15px;
+		padding-top: 10px;
 	}
 }
 
@@ -59,7 +59,7 @@ span.constraint-value {
 	white-space: normal !important;
 	@media(max-width: 485px) {
 		font-size: 14px;
-		padding-top: 15px;
+		padding-top: 10px;
   }
 }
 
@@ -86,8 +86,30 @@ a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-co
 	font-size: 12px;
 	font-weight: 200;
 	letter-spacing: 1px;
+	margin-left: -15px;
   margin-right: 4px;
 	margin-bottom: 10px;
+	padding: 2px 5px;
+	width: 100px;
+	@media(max-width: 768px) {
+		font-size: 2em;
+		height: 60px;
+		margin-top: 20px;
+		padding: 8px 0 0 0;
+		width: 38%;
+	}
+	@media(max-width: 660px) {
+		font-family: "PT Sans";
+		margin: 20px auto auto -5px;
+		width: 40%;
+	}
+	@media(max-width: 485px) {
+		margin-top: 0;
+		width: 65%;
+	}
+	@media(max-width: 320px) {
+		width: 60%;
+	}
 }
 
 #start_over {
@@ -146,23 +168,6 @@ button.collapse-button.collapsed .avail-label:after {
   text-align: left;
 }
 
-#startOverLink {
-	margin-left: -15px;
-	padding: 2px 5px;
-	width: 100px;
-	@media(max-width: 485px) {
-		font-family: "PT Sans";
-		font-size: 2em;
-		height: 70px;
-		margin: 8px auto auto -5px;
-		padding: 12px 0 0 0;
-		width: 70%;
-	}
-	@media(max-width: 320px) {
-		width: 60%;
-	}
-}
-
 a.catalog_startOverLink {
 	color: $red;
 }
@@ -189,6 +194,9 @@ a.catalog_startOverLink {
 
 .facets-heading {
 	margin-left: -15px;
+	@media(max-width: 775px) {
+		display: none;
+	}
 	@media(max-width: 485px) {
 		display: none;
 	}
@@ -197,8 +205,11 @@ a.catalog_startOverLink {
 #applied_params_facet {
 	margin-top: -30px;
 	width: 100%;
-	@media(max-width: 320px) {
-		width: 84%;
+	@media(max-width: 768px) {
+		width: 53%;
+	}
+	@media(max-width: 485px) {
+		width: 78%;
 	}
 }
 
@@ -261,6 +272,12 @@ span.appliedFilter.constraint {
 	padding-left: 5px;
 }
 
+#facets {
+	@media(max-width: 485px) {
+		margin-left: 7%;
+  }
+}
+
 .more_facets_link {
 	font-weight: bold;
 	padding-left: 15px;
@@ -269,22 +286,34 @@ span.appliedFilter.constraint {
 button.facets-toggle {
 	border: none;
 	float: left;
-	height: 80px;
-	width: 80px;
+	height: 60px;
+	width: 60px;
 	margin-left: -10px;
 	margin-right: 20px;
-}
-
-button.facets-toggle.collapsed .facets-toggle:after {
-	margin-left: -20px;
-	margin-right: 20px;
+	@media(max-width: 850px) {
+		height: 50px;
+		margin: 20px 20px 20px -15px;
+		padding: 0;
+  }
+	@media(max-width: 485px) {
+		margin: 0 10px 20px 0;
+		padding: 0;
+	}
 }
 
 button.facets-toggle:focus, button.facets-toggle:hover, button.facets-toggle:active, button.facets-toggle:visited {
 	outline: none !important;
-	margin-left: 0;
-	margin-right: 20px;
+	margin: 8px 10px auto 0;
+	padding-top: 0;
 	padding-left: 0;
+	@media(max-width: 850px) {
+		height: 50px;
+		margin: 20px 20px 20px -15px;
+	}
+	@media(max-width: 485px) {
+		margin: 0 10px 20px 0;
+		padding: 0;
+	}
 }
 
 div .top-panel-heading {
@@ -294,7 +323,11 @@ div .top-panel-heading {
 }
 
 span.remove-facet-icon, span.open-facet-icon {
-	padding-left: 90px;
+	padding-left: 70px;
   padding-bottom: 100px;
-  padding-top: 27px;
+  padding-top: 18px;
+}
+
+#facet-filter-icon {
+	border-radius: 10px;
 }
