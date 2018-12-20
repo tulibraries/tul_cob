@@ -37,7 +37,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
       }
 
       it "provides stats (empty varient)" do
-        expect(stats).to eq(stats_fields: { "creationdate" => { min: 0, max: 0, missing: 0, data: [ { from: 0, to: 1, count: 0 } ] } })
+        expect(stats).to eq(stats_fields: { "creationdate" => { min: 0, max: 0, missing: 0, data: [ { from: 0, to: 0, count: 0 } ] } })
       end
     end
 
@@ -93,11 +93,11 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
       it "outputs all segments with zero counts" do
         actual_segments = response.facet_segments("creationdate", 0, 4, data)
         expected_segments = [
-          { from: 0, to: 1, count: 0 },
-          { from: 1, to: 2, count: 0 },
-          { from: 2, to: 3, count: 0 },
-          { from: 3, to: 4, count: 0 },
-          { from: 4, to: 5, count: 0 },
+          { from: 0, to: 0, count: 0 },
+          { from: 1, to: 1, count: 0 },
+          { from: 2, to: 2, count: 0 },
+          { from: 3, to: 3, count: 0 },
+          { from: 4, to: 4, count: 0 },
         ]
         expect(actual_segments).to eq(expected_segments)
       end
@@ -107,11 +107,11 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
       it "outputs all segments with zero counts" do
         actual_segments = response.facet_segments("creationdate", 1990, 1994, data)
         expected_segments = [
-          { from: 1990, to: 1991, count: 0 },
-          { from: 1991, to: 1992, count: 0 },
-          { from: 1992, to: 1993, count: 0 },
-          { from: 1993, to: 1994, count: 0 },
-          { from: 1994, to: 1995, count: 0 },
+          { from: 1990, to: 1990, count: 0 },
+          { from: 1991, to: 1991, count: 0 },
+          { from: 1992, to: 1992, count: 0 },
+          { from: 1993, to: 1993, count: 0 },
+          { from: 1994, to: 1994, count: 0 },
         ]
         expect(actual_segments).to eq(expected_segments)
       end
@@ -121,11 +121,11 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
       it "outputs all segments with expected count" do
         actual_segments = response.facet_segments("creationdate", 1980, 1984, data)
         expected_segments = [
-          { from: 1980, to: 1981, count: 1 },
-          { from: 1981, to: 1982, count: 1 },
-          { from: 1982, to: 1983, count: 1 },
-          { from: 1983, to: 1984, count: 1 },
-          { from: 1984, to: 1985, count: 1 },
+          { from: 1980, to: 1980, count: 1 },
+          { from: 1981, to: 1981, count: 1 },
+          { from: 1982, to: 1982, count: 1 },
+          { from: 1983, to: 1983, count: 1 },
+          { from: 1984, to: 1984, count: 1 },
         ]
         expect(actual_segments).to eq(expected_segments)
       end
@@ -135,17 +135,17 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
       it "outputs all segments with expected count" do
         actual_segments = response.facet_segments("creationdate", 1900, 2000, data)
         expected_segments = [
-          { from: 1900, to: 1910, count: 0 },
-          { from: 1910, to: 1920, count: 0 },
-          { from: 1920, to: 1930, count: 0 },
-          { from: 1930, to: 1940, count: 0 },
-          { from: 1940, to: 1950, count: 0 },
-          { from: 1950, to: 1960, count: 0 },
-          { from: 1960, to: 1970, count: 0 },
-          { from: 1970, to: 1980, count: 0 },
-          { from: 1980, to: 1990, count: 10 },
-          { from: 1990, to: 2000, count: 0 },
-          { from: 2000, to: 2001, count: 0 }
+          { from: 1900, to: 1909, count: 0 },
+          { from: 1910, to: 1919, count: 0 },
+          { from: 1920, to: 1929, count: 0 },
+          { from: 1930, to: 1939, count: 0 },
+          { from: 1940, to: 1949, count: 0 },
+          { from: 1950, to: 1959, count: 0 },
+          { from: 1960, to: 1969, count: 0 },
+          { from: 1970, to: 1979, count: 0 },
+          { from: 1980, to: 1989, count: 10 },
+          { from: 1990, to: 1999, count: 0 },
+          { from: 2000, to: 2000, count: 0 }
         ]
         expect(actual_segments).to eq(expected_segments)
       end
