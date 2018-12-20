@@ -17,7 +17,7 @@
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
   background-color: $dark-blue;
-  color: $white;
+  color: $white !important;
 }
 
 /* === RECORD PAGE AVAILABILITY === */
