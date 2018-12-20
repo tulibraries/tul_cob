@@ -112,8 +112,12 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 		margin-top: -15px;
 	}
 	@media(max-width: 485px) {
+		float: right;
+ 		left: -50%;
 		margin-top: 0;
 		padding-right: 0;
+		position: relative;
+ 		text-align: left;
 	}
 }
 
@@ -126,7 +130,9 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 		margin-left: 250px;
 	}
 	@media(max-width: 485px) {
+		left: 50%;
 		margin-left: auto;
+		position: relative;
 	}
 }
 
@@ -136,7 +142,7 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 		margin-top: 7px;
 	}
 	@media(max-width: 850px) {
-		margin-top: -15px;
+		margin-top: 5px;
 	}
 }
 
@@ -262,7 +268,7 @@ nav ul.nav-header-links li.header-links.active a {
  .path-links {
 	background-color: $white;
 	border-bottom: 1px solid #ccc;
-	height: 50px;
+	height: 51px;
 	@media(max-width: 600px) {
 		padding: 0;
 		height: 42px;
@@ -279,19 +285,19 @@ nav ul.nav-header-links li.header-links.active a {
 	font-size: 1.5em;
 	@media(max-width: 768px) {
 		font-size: 18px;
-		height: 41px;
 	}
 	@media(max-width: 600px) {
 		font-size: 14px;
 		padding: 0;
 	}
 	@media(max-width: 485px) {
-		font-size: 16px;
+		font-size: 1.6em;
 		margin-right: 20px;
 	}
 }
 
 .header-links {
+	height: 50px;
 	@media(max-width: 601px) {
 		margin-top: 0 !important;
 		padding-top: 10px;
