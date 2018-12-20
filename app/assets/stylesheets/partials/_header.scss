@@ -117,14 +117,26 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	}
 }
 
-.navbar-right ul {
-  display: inline-block;
+.navbar-right ul.navbar-nav  {
+  display: block;
+	@media(max-width: 950px) {
+		margin-left: 300px;
+	}
+	@media(max-width: 750px) {
+		margin-left: 250px;
+	}
+	@media(max-width: 485px) {
+		margin-left: auto;
+	}
 }
 
 .navbar-right li {
-	float: right;
-	@media (max-width: 320px) {
-		float: left;
+	float: left;
+	@media(max-width: 1100px) {
+		margin-top: 7px;
+	}
+	@media(max-width: 850px) {
+		margin-top: -15px;
 	}
 }
 
@@ -132,7 +144,7 @@ a.header-name, a.header-name:hover, a.header-name:focus {
 	color: $white;
 	text-decoration: underline;
 	@media (max-width: 320px) {
-		padding: 1%;
+		padding: 7px;
 	}
 }
 
