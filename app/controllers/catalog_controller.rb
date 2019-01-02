@@ -615,6 +615,11 @@ class CatalogController < ApplicationController
   #
   # Overridden so that we can use our own 404 error handling setup.
   def invalid_document_id_error(exception)
+    error_info = {
+      "status" => "404",
+      "error"  => "#{exception.class}: #{exception.message}"
+    }
+
     respond_to do |format|
       format.xml  { render xml: error_info, status: 404 }
       format.json { render json: error_info, stautus: 404 }
