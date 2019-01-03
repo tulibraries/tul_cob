@@ -18,6 +18,18 @@ class SearchController < CatalogController
       @results = split_more(searcher.results)
       @response = @results["resource_types"]&.first&.custom_data
     end
+
+    respond_to do |format|
+      format.html { store_preferred_view }
+      format.json do
+        @response ||= Blacklight::PrimoCentral::Response.new({})
+        @results ||= []
+        @presenter = Blacklight::JsonPresenter.new(@response,
+                                                   @results,
+                                                   [],
+                                                   blacklight_config)
+      end
+    end
   end
 
   # Splits results for the more engine into two bento_boxes.
