@@ -12,16 +12,15 @@ class AlmawsController < CatalogController
     @mms_id = params[:mms_id]
     _, @document = begin fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
 
-    start = Time.now
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
     limit = (params[:limit] || 100).to_i
     offset = (limit * page) - limit
 
-    bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
+    log = { type: "bib_items_availability" }
+    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset) }
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
-    json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @holdings_summary = helpers.build_holdings_summary(@items, @document)
     #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
@@ -35,7 +34,8 @@ class AlmawsController < CatalogController
 
   def request_options
     @mms_id = params[:mms_id]
-    @items = Alma::BibItem.find(@mms_id, limit: 100)
+    log = { type: "alma_bib_item", mms_id: @mms_id }
+    @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
@@ -46,19 +46,17 @@ class AlmawsController < CatalogController
     @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @user_id = current_user.uid
     @request_level = params[:request_level]
-    start = Time.now
     if @request_level == "item"
+      log = { type: "item_request_options", mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id }
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @request_options = @item_level_holdings.map { |holding_id, item_pid|
-        Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id)
+        json_request_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
         .sort_by { |r| r.raw_response.parsed_response.count }
         .last
-
-      json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
-      @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
-      json_request_logger(type: "bib_request_options", start: start, user: current_user.id)
+      log = { type: "bib_request_options", user: current_user.id }
+      @request_options = do_with_json_logger(log) { Alma::RequestOptions.get(@mms_id, user_id: @user_id) }
     end
   end
 
@@ -75,14 +73,13 @@ class AlmawsController < CatalogController
     comment: params[:hold_comment]
     }
     @request_level = params[:request_level]
-    start = Time.now
-    request = Alma::BibRequest.submit(bib_options)
-    json_request_logger({ type: "submit_hold_request", start: start, user: current_user.id }.merge(bib_options))
+    log = { type: "submit_hold_request", user: current_user.id }.merge(bib_options)
 
-    if request.success?
+    begin
+      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash["success"] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
-    elsif request.raw_response.dig("errorList", "error")
+    rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
@@ -104,20 +101,15 @@ class AlmawsController < CatalogController
     comment: params[:booking_comment]
     }
 
-    start = Time.now
-    request = Alma::BibRequest.submit(bib_options)
-    json_request_logger({ type: "submit_booking_request", start: start, user: current_user.id }.merge(bib_options))
-
-    if request.success?
+    log = { type: "submit_booking_request", user: current_user.id }.merge(bib_options)
+    begin
+      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
-    elsif request.raw_response.dig("errorList", "error")
-      error = request.raw_response.dig("errorList", "error").map { |e| e.values }
-      if error.flatten.include?("401136")
-        flash["notice"] = "This item is already booked for those dates."
-        redirect_back(fallback_location: root_path)
-      end
-    else
+    rescue Alma::BibRequest::ItemAlreadyExists
+      flash["notice"] = "This item is already booked for those dates."
+      redirect_back(fallback_location: root_path)
+    rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
@@ -142,14 +134,13 @@ class AlmawsController < CatalogController
     }
 
     @request_level = params[:request_level]
-    start = Time.now
-    request = Alma::BibRequest.submit(bib_options)
-    json_request_logger({ type: "submit_digitization_request", start: start, user: current_user.id }.merge(bib_options))
 
-    if request.success?
+    log = { type: "submit_digitization_request", user: current_user.id }.merge(bib_options)
+    begin
+      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash[:success] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
-    elsif request.raw_response.dig("errorList", "error")
+    rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end

@@ -5,8 +5,11 @@ class SolrDocument
   include Blacklight::Solr::Document::RisFields
   include AlmaDataHelper
   include Citable
+  include JsonLogger
 
   use_extension(Blacklight::Solr::Document::RisExport)
+
+  attr_accessor :logger
 
   # self.unique_key = "id"
   field_semantics.merge!(
@@ -81,7 +84,8 @@ class SolrDocument
     Proc.new {
       @materials_data ||= alma_availability_mms_ids.map { |id|
         # return maximum allowed item or lose items.
-        Alma::BibItem.find(id, limit: 100).filter_missing_and_lost
+        log = { type: "alma_bib_item", mms_id: id, limit: 100 }
+        do_with_json_logger(log) { Alma::BibItem.find(id, limit: 100).filter_missing_and_lost }
       }.first
     }
   end
@@ -133,5 +137,9 @@ class SolrDocument
       else
         "Checked out or currently unavailable"
       end
+    end
+
+    def logger
+      @logger ||= Blacklight.logger
     end
 end

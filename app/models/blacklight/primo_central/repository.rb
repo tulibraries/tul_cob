@@ -5,6 +5,8 @@ end
 
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
+    include JsonLogger
+
     def find(id, params = {})
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
@@ -24,12 +26,10 @@ module Blacklight::PrimoCentral
         end
 
       response = Rails.cache.fetch("articles/index/#{data}", expires_in: duration) do
+        log = { type: "primo_search" }.merge(data.dup)
         # We convert to hash because we cannot serialize the Primo response.
         # @see https://github.com/rails/rails/issues/7375
-        start = Time.now
-        response = Primo.find(data).to_h
-        LogUtils.json_request_logger(logger, { type: "primo_search", start: start }.merge(data.dup))
-        response
+        (do_with_json_logger(log) { Primo.find(data) }).to_h
       end
 
       response_opts = {
