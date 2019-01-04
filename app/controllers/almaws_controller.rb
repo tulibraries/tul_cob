@@ -132,7 +132,7 @@ class AlmawsController < CatalogController
       target_destination: { value: "DIGI_DEPT_INST" },
       partial_digitization: true,
       last_interest_date: date,
-      comment: params[:digitization_comment] || "",
+      comment: [params[:digitization_comment], params[:digitization_description]].compact.join("\n"),
       required_pages_range: [{
         from_page: params[:from_page], to_page: params[:to_page]
       }]
