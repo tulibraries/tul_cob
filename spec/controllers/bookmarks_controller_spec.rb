@@ -20,7 +20,7 @@ RSpec.describe BookmarksController do
 
     it "gets ris format" do
       get :index, params: { id: 1, format: "ris" }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.describe BookmarksController do
   describe "update" do
     it "has a 200 status code when creating a new one" do
       put :update, xhr: true, params: { id: "2007020969", format: :js }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.code).to eq "200"
       expect(JSON.parse(response.body)["bookmarks"]["count"]).to eq 1
     end
@@ -57,7 +57,7 @@ RSpec.describe BookmarksController do
         format: :js
       }
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.code).to eq "200"
       expect(JSON.parse(response.body)["bookmarks"]["count"]).to eq 3
     end
@@ -71,7 +71,7 @@ RSpec.describe BookmarksController do
 
     it "has a 200 status code when delete is success" do
       delete :destroy, xhr: true, params: { id: "2007020969", format: :js }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.code).to eq "200"
       expect(JSON.parse(response.body)["bookmarks"]["count"]).to eq 0
     end
@@ -87,7 +87,7 @@ RSpec.describe BookmarksController do
         ],
         format: :js
       }
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(response.code).to eq "200"
       expect(JSON.parse(response.body)["bookmarks"]["count"]).to eq 0
     end

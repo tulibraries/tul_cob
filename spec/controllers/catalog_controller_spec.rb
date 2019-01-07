@@ -126,10 +126,10 @@ RSpec.describe CatalogController, type: :controller do
     context "user is not logged in" do
       it "does not allow access to purchase order action" do
         get :purchase_order, params: { id: doc_id }
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
 
         post :purchase_order_action, params: { id: doc_id }
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
@@ -146,10 +146,10 @@ RSpec.describe CatalogController, type: :controller do
       context "user group is allowed to purchase order" do
         it "allows access to purchase order action" do
           get :purchase_order, params: { id: doc_id }
-          expect(response).to be_success
+          expect(response).to be_successful
 
           post :purchase_order_action, params: { id: doc_id }
-          expect(response).to be_success
+          expect(response).to be_successful
         end
       end
 
@@ -158,10 +158,10 @@ RSpec.describe CatalogController, type: :controller do
 
         it "does not allow access to purchase order action" do
           get :purchase_order, params: { id: doc_id }
-          expect(response).not_to be_success
+          expect(response).not_to be_successful
 
           post :purchase_order_action, params: { id: doc_id }
-          expect(response).not_to be_success
+          expect(response).not_to be_successful
         end
       end
     end
