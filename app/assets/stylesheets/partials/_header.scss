@@ -440,6 +440,12 @@ nav ul.nav-header-links li.header-links.active a {
 	padding: 3px 20px;
 }
 
+#refworks-form input[type="submit"] {
+	border: none !important;
+	background-color: $white;
+	margin-left: 8px;
+}
+
 .sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
 	background-color: $white !important;
   color: $red !important;
