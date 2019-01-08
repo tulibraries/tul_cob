@@ -310,6 +310,7 @@ module Traject
           extract_purchase_order[rec, order]
           if order == [true]
             acc << "Request Rapid Access"
+            acc << "Online"
           end
 
           acc.uniq!
