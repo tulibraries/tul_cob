@@ -14,6 +14,6 @@ class PurchaseOrderMailer < RecordMailer
     @url_gen_params = url_gen_params
     @from           = details[:from]
 
-    mail(to: "orders@temple.edu", cc: @from[:email], subject: subject)
+    mail(bcc: "orders@temple.edu", to: @from[:email], subject: subject)
   end
 end
