@@ -30,9 +30,14 @@ def solr_empty?
   response["response"]["numFound"] == 0
 end
 
-if solr_empty?
-  `rake fortytu:solr:load_fixtures`
-  `rake ingest`
+begin
+  if solr_empty?
+    puts `rake fortytu:solr:load_fixtures`
+    puts `rake ingest`
+  end
+rescue => e
+  puts "** Failed to ingest solr documentes **"
+  puts e.message
 end
 
 # Wait for rails server to shutdown before stopping the process.
