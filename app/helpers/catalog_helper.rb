@@ -169,8 +169,8 @@ module CatalogHelper
     return unless args[:document].purchase_order?
 
     if !current_user
-      redirect_url = new_user_session_with_redirect_path(request.url)
-      link_to("Log in to access request form", redirect_url, data: { "ajax-modal": "trigger" })
+      id = args[:document].id
+      link_to("Log in to access request form", doc_redirect_url(id), data: { "ajax-modal": "trigger" })
     elsif current_user.can_purchase_order?
       render_purchase_order_button(args)
     end
@@ -397,5 +397,13 @@ module CatalogHelper
     else
       alma_electronic_resource_direct_link(field["portfolio_id"])
     end
+  end
+
+  def doc_id(id)
+    "doc-#{id}"
+  end
+
+  def doc_redirect_url(id)
+    new_user_session_with_redirect_path("#{request.url}##{doc_id(id)}")
   end
 end
