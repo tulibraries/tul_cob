@@ -50,14 +50,9 @@ class AlmawsController < CatalogController
     start = Time.now
     if @request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      keep_going = true
       @item_level_holdings.each do |k, v|
-        if keep_going
-          @request_options = Alma::ItemRequestOptions.get(@mms_id, k, v, user_id: @user_id)
-          if !@request_options.nil?
-            keep_going = false
-          end
-        end
+        @request_options = Alma::ItemRequestOptions.get(@mms_id, k, v, user_id: @user_id)
+        break if !@request_options.nil?
       end
       json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
