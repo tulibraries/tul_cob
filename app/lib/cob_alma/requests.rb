@@ -134,14 +134,8 @@ module CobAlma
       material_types.uniq
     end
 
-    def self.item_holding_id(items_list)
-      holding_id = items_list.map { |item| item["holding_data"]["holding_id"] }
-      holding_id.first
-    end
-
-    def self.item_pid(items_list)
-      item_pid = items_list.map { |item| item["item_data"]["pid"] }
-      item_pid.last
+    def self.item_holding_ids(items_list)
+      items_list.collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
     end
   end
 end
