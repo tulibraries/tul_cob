@@ -38,8 +38,6 @@ class AlmawsController < CatalogController
     @mms_id = params[:mms_id]
     @items = Alma::BibItem.find(@mms_id, limit: 100)
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
-    @holding_id = CobAlma::Requests.item_holding_id(@items)
-    @item_pid = CobAlma::Requests.item_pid(@items)
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
     @item_level_locations = CobAlma::Requests.item_level_locations(@items)
@@ -51,7 +49,11 @@ class AlmawsController < CatalogController
     @request_level = params[:request_level]
     start = Time.now
     if @request_level == "item"
-      @request_options = Alma::ItemRequestOptions.get(@mms_id, @holding_id, @item_pid, user_id: @user_id)
+      @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
+      @item_level_holdings.each do |k, v|
+        @request_options = Alma::ItemRequestOptions.get(@mms_id, k, v, user_id: @user_id)
+        break if !@request_options.nil?
+      end
       json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
       @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
