@@ -113,7 +113,7 @@ RSpec.describe CatalogController, type: :controller do
         post(:sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net", barcode: "<3", from: "me" }) rescue nil
 
         expect(request.flash[:error]).to be_nil
-        expect(doc.sms).to eq("CHOSEN BOOK")
+        expect(doc[:sms]).to eq("CHOSEN BOOK")
       end
     end
   end
