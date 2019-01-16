@@ -673,7 +673,7 @@ class CatalogController < ApplicationController
   # process the form and send the email on POST requests)
   def sms_action(documents)
     to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
-    documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
+    documents[0].sms = documents[0].material_from_barcode(params[:barcode])
 
     mail = RecordMailer.sms_record(documents, { to: to }, url_options)
 
