@@ -9,9 +9,9 @@
     <dd class="blacklight-<%= field_name.parameterize %>">
     <% end %>
       <% if field[:raw] %>
-        <%= raw doc_presenter.field_value(field_name) %>
+        <%= raw doc_presenter.field_value(field) %>
       <% else %>
-        <%= doc_presenter.field_value(field_name) %>
+        <%= doc_presenter.field_value(field) %>
       <% end -%>
     </dd>
   <% end -%>
