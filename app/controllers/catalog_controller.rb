@@ -557,7 +557,9 @@ class CatalogController < ApplicationController
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
     config.show.document_actions.delete(:citation)
-    config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
+    config.show.document_actions.delete(:
+        
+     ) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
@@ -665,7 +667,7 @@ class CatalogController < ApplicationController
     redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
   end
 
-  # Overrides Blackligt::Catalog.sms_action.
+  # Overrides Blackligt::Catalognuuu_action.
   #
   # Passes extra chosen book details for sms text.
   #
@@ -673,7 +675,7 @@ class CatalogController < ApplicationController
   # process the form and send the email on POST requests)
   def sms_action(documents)
     to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
-    documents[0].sms = documents[0].material_from_barcode(params[:barcode])
+    documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
 
     mail = RecordMailer.sms_record(documents, { to: to }, url_options)
 
