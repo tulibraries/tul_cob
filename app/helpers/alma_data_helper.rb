@@ -53,15 +53,15 @@ module AlmaDataHelper
   end
 
   def location_status(item)
-    Rails.configuration.locations.dig(item.library, item.location)
+    location_name_from_short_code(item)
+  end
+
+  def location_name_from_short_code(item)
+    Rails.configuration.locations.dig(item.library, item.location) || item.location
   end
 
   def library_name_from_short_code(short_code)
     Rails.configuration.libraries[short_code]
-  end
-
-  def location_name_from_short_code(item)
-    Rails.configuration.locations.dig(item.library, item.location)
   end
 
   def alternative_call_number(item)
