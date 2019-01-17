@@ -20,7 +20,7 @@ module Blacklight::PrimoCentral::DocumentExport
 
   private
     def to_refworks
-      self.select { |f, v| refwork_tags.keys.include? f }
+      self.to_h.select { |f, v| refwork_tags.keys.include? f }
         .select { |f, v| !v.nil? && !v.empty? }
         .map { |f, v| [refwork_tags[f], v] }
     end
