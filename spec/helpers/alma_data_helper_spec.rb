@@ -705,6 +705,22 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "holding location is asrs" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "asrs" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
     context "holding location is stacks" do
       let(:items_list) do
         { "MAIN" => [Alma::BibItem.new(
