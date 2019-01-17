@@ -1,101 +1,334 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
-  <record>
-    <!-- 0. Only 1 lost item -->
-    <datafield ind1=" " ind2=" " tag="ITM">
-      <subfield code="r">22423620830003811</subfield>
-      <subfield code="b">0</subfield>
-      <subfield code="u">LOST_LOAN</subfield>
-      <subfield code="h">0</subfield>
-      <subfield code="g">stacks</subfield>
-      <subfield code="t">BOOK</subfield>
-      <subfield code="9">39074026623983</subfield>
-      <subfield code="e">stacks</subfield>
-      <subfield code="l">0</subfield>
-      <subfield code="8">23423620820003811</subfield>
-      <subfield code="j">0</subfield>
-      <subfield code="a">0</subfield>
-      <subfield code="q">2018-04-26 14:44:39</subfield>
-      <subfield code="i">LB1033 .Y95 2018</subfield>
-      <subfield code="d">MAIN</subfield>
-      <subfield code="f">MAIN</subfield>
-    </datafield>
-  </record>
-  <record>
-    <!-- 1. Only 1 missing item -->
-    <datafield ind1=" " ind2=" " tag="ITM">
-      <subfield code="r">22426566810003811</subfield>
-      <subfield code="b">0</subfield>
-      <subfield code="u">MISSING</subfield>
-      <subfield code="h">0</subfield>
-      <subfield code="g">stacks</subfield>
-      <subfield code="t">BOOK</subfield>
-      <subfield code="9">39074026633206</subfield>
-      <subfield code="e">stacks</subfield>
-      <subfield code="l">0</subfield>
-      <subfield code="8">23426566800003811</subfield>
-      <subfield code="a">0</subfield>
-      <subfield code="q">2018-05-17 14:48:38</subfield>
-      <subfield code="i">BD175 .M67 2018</subfield>
-      <subfield code="d">MAIN</subfield>
-      <subfield code="f">MAIN</subfield>
-    </datafield>
-  </record>
-  <record>
-    <!-- 2. Only 1 technical item -->
-    <datafield ind1=" " ind2=" " tag="ITM">
-      <subfield code="r">22337125590003811</subfield>
-      <subfield code="b">0</subfield>
-      <subfield code="u">TECHNICAL</subfield>
-      <subfield code="h">0</subfield>
-      <subfield code="g">p_remote</subfield>
-      <subfield code="t">BOOK</subfield>
-      <subfield code="9">39074012140778</subfield>
-      <subfield code="e">p_remote</subfield>
-      <subfield code="8">23337125580003811</subfield>
-      <subfield code="a">0</subfield>
-      <subfield code="q">2017-06-20 15:12:23</subfield>
-      <subfield code="i">DS485.P17 G6</subfield>
-      <subfield code="d">KARDON</subfield>
-      <subfield code="f">KARDON</subfield>
-    </datafield>
-  </record>
-  <record>
-    <!-- 3. Multiple items with one lost -->
-    <datafield ind1=" " ind2=" " tag="ITM">
-      <subfield code="r">22423620830003811</subfield>
-      <subfield code="b">0</subfield>
-      <subfield code="u">LOST_LOAN</subfield>
-      <subfield code="h">0</subfield>
-      <subfield code="g">stacks</subfield>
-      <subfield code="t">BOOK</subfield>
-      <subfield code="9">39074026623983</subfield>
-      <subfield code="e">stacks</subfield>
-      <subfield code="l">0</subfield>
-      <subfield code="8">23423620820003811</subfield>
-      <subfield code="j">0</subfield>
-      <subfield code="a">0</subfield>
-      <subfield code="q">2018-04-26 14:44:39</subfield>
-      <subfield code="i">LB1033 .Y95 2018</subfield>
-      <subfield code="d">MAIN</subfield>
-      <subfield code="f">MAIN</subfield>
-    </datafield>
-    <datafield ind1=" " ind2=" " tag="ITM">
-      <subfield code="r">22399365310003811</subfield>
-      <subfield code="b">1</subfield>
-      <subfield code="h">0</subfield>
-      <subfield code="g">stacks</subfield>
-      <subfield code="t">BOOK</subfield>
-      <subfield code="9">39074026674705</subfield>
-      <subfield code="e">stacks</subfield>
-      <subfield code="l">0</subfield>
-      <subfield code="8">23399365260003811</subfield>
-      <subfield code="j">0</subfield>
-      <subfield code="a">0</subfield>
-      <subfield code="q">2017-08-11 15:47:40</subfield>
-      <subfield code="i">PS3608.U585 A6 2017</subfield>
-      <subfield code="d">MAIN</subfield>
-      <subfield code="f">MAIN</subfield>
-    </datafield>
-  </record>
+	<record>
+		<!-- 0. Only 1 lost item -->
+    <controlfield tag="001">4</controlfield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22423620830003811</subfield>
+			<subfield code="b">0</subfield>
+			<subfield code="u">LOST_LOAN</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074026623983</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="l">0</subfield>
+			<subfield code="8">23423620820003811</subfield>
+			<subfield code="j">0</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2018-04-26 14:44:39</subfield>
+			<subfield code="i">LB1033 .Y95 2018</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+	</record>
+	<record>
+		<!-- 1. Only 1 missing item -->
+    <controlfield tag="001">1</controlfield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22426566810003811</subfield>
+			<subfield code="b">0</subfield>
+			<subfield code="u">MISSING</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074026633206</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="l">0</subfield>
+			<subfield code="8">23426566800003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2018-05-17 14:48:38</subfield>
+			<subfield code="i">BD175 .M67 2018</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+	</record>
+	<record>
+		<!-- 2. Only 1 technical item -->
+    <controlfield tag="001">2</controlfield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22337125590003811</subfield>
+			<subfield code="b">0</subfield>
+			<subfield code="u">TECHNICAL</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">p_remote</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074012140778</subfield>
+			<subfield code="e">p_remote</subfield>
+			<subfield code="8">23337125580003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 15:12:23</subfield>
+			<subfield code="i">DS485.P17 G6</subfield>
+			<subfield code="d">KARDON</subfield>
+			<subfield code="f">KARDON</subfield>
+		</datafield>
+	</record>
+	<record>
+		<!-- 3. Multiple items with one lost -->
+    <controlfield tag="001">3</controlfield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22423620830003811</subfield>
+			<subfield code="b">0</subfield>
+			<subfield code="u">LOST_LOAN</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074026623983</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="l">0</subfield>
+			<subfield code="8">23423620820003811</subfield>
+			<subfield code="j">0</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2018-04-26 14:44:39</subfield>
+			<subfield code="i">LB1033 .Y95 2018</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22399365310003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074026674705</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="l">0</subfield>
+			<subfield code="8">23399365260003811</subfield>
+			<subfield code="j">0</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-08-11 15:47:40</subfield>
+			<subfield code="i">PS3608.U585 A6 2017</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+	</record>
+	<record>
+		<!-- 4. Multiple items with one asrs -->
+		<controlfield tag="001">991001145209703811</controlfield>
+		<datafield ind1=" " ind2=" " tag="010">
+			<subfield code="a">50021868</subfield>
+		</datafield>
+		<datafield ind1="2" ind2="2" tag="028">
+			<subfield code="a">N1057</subfield>
+			<subfield code="b">C. Fischer</subfield>
+		</datafield>
+		<datafield ind1="3" ind2="0" tag="028">
+			<subfield code="a">O 3473</subfield>
+			<subfield code="b">C. Fischer</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(PPT)b42109103-01tuli_inst</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCoLC)ocn668319851</subfield>
+			<subfield code="9">ExL</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCoLC)1351534</subfield>
+			<subfield code="z">(OCoLC)226254022</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocm01351534</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCLC)ocm01351534</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">DLC</subfield>
+			<subfield code="c">TYC</subfield>
+			<subfield code="d">IUG</subfield>
+			<subfield code="d">ENG</subfield>
+			<subfield code="d">MRY</subfield>
+			<subfield code="d">CPL</subfield>
+			<subfield code="d">OCL</subfield>
+			<subfield code="d">CWS</subfield>
+			<subfield code="d">CLU</subfield>
+			<subfield code="d">MTG</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="045">
+			<subfield code="b">d1741</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="048">
+			<subfield code="b">va01</subfield>
+			<subfield code="b">vc01</subfield>
+			<subfield code="b">vd01</subfield>
+			<subfield code="b">vf01</subfield>
+			<subfield code="a">ca04</subfield>
+			<subfield code="a">ka01</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="079">
+			<subfield code="a">ocm01351534</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="090">
+			<subfield code="a">M2003.H14</subfield>
+			<subfield code="b">M3 1947</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="100">
+			<subfield code="a">Handel, George Frideric,</subfield>
+			<subfield code="d">1685-1759.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="240">
+			<subfield code="a">Messiah.</subfield>
+			<subfield code="s">Vocal score</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Messiah :</subfield>
+			<subfield code="b">an oratorio /</subfield>
+			<subfield code="c">G.F. Handel ; edited from the original sources by J.M. Coopersmith.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="260">
+			<subfield code="a">New York, N.Y. :</subfield>
+			<subfield code="b">Carl Fischer, Inc.,</subfield>
+			<subfield code="c">c1947.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">1 vocal score (xxi, 248 p.) :</subfield>
+			<subfield code="b">facsims. ;</subfield>
+			<subfield code="c">28 cm.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="541">
+			<subfield code="a">Yamron, Janet M. ;</subfield>
+			<subfield code="c">Gift ;</subfield>
+			<subfield code="d">2009</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="500">
+			<subfield code="a">For solo voices (SATB), chorus (SATB), and orchestra; acc. arr. for piano.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="500">
+			<subfield code="a">Libretto compiled from the King James Bible by Charles Jennens; also printed as text on p. xiv-xix.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="500">
+			<subfield code="a">Publisher's no.: O 3473.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="600">
+			<subfield code="a">Jesus Christ</subfield>
+			<subfield code="x">Messiahship</subfield>
+			<subfield code="v">Musical settings</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="630">
+			<subfield code="a">Bible</subfield>
+			<subfield code="x">Prophecies</subfield>
+			<subfield code="v">Musical settings</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="630">
+			<subfield code="a">Bible.</subfield>
+			<subfield code="p">Old Testament</subfield>
+			<subfield code="v">Musical settings</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="630">
+			<subfield code="a">Bible.</subfield>
+			<subfield code="p">New Testament</subfield>
+			<subfield code="v">Musical settings</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Oratorios</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Messiah</subfield>
+			<subfield code="x">Prophecies</subfield>
+			<subfield code="v">Musical settings</subfield>
+			<subfield code="v">Vocal scores with piano.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="700">
+			<subfield code="a">Jennens, Charles,</subfield>
+			<subfield code="d">1700-1773.</subfield>
+			<subfield code="4">lbt</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="700">
+			<subfield code="a">Coopersmith, J. M.</subfield>
+			<subfield code="q">(Jacob Maurice),</subfield>
+			<subfield code="d">1903-1968.</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="710">
+			<subfield code="a">Carl Fischer Music.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">130322</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="907">
+			<subfield code="a">.b42109103</subfield>
+			<subfield code="b">k </subfield>
+			<subfield code="c">-</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">kstk </subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">kstk </subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="979">
+			<subfield code="a">ocm01351534</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="b">0</subfield>
+			<subfield code="c">100224</subfield>
+			<subfield code="d">m</subfield>
+			<subfield code="e">c</subfield>
+			<subfield code="f">-</subfield>
+			<subfield code="g">0</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="a">02/24/10</subfield>
+			<subfield code="s">LC</subfield>
+			<subfield code="c">cep </subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ADM">
+			<subfield code="b">2019-01-04 03:12:41 US/Eastern</subfield>
+			<subfield code="e">b42109103-01tuli_inst</subfield>
+			<subfield code="d">ILS</subfield>
+			<subfield code="a">2017-06-20 05:42:23 US/Eastern</subfield>
+			<subfield code="c">false</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">MAIN</subfield>
+			<subfield code="c">asrs</subfield>
+			<subfield code="h"> M2003.H14 </subfield>
+			<subfield code="i"> M3 1947 </subfield>
+			<subfield code="8">22440819590003811</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">MAIN</subfield>
+			<subfield code="c">stacks</subfield>
+			<subfield code="h"> M2003.H14 </subfield>
+			<subfield code="i"> M3 1947 </subfield>
+			<subfield code="8">22433970790003811</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22440819590003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">asrs</subfield>
+			<subfield code="t">SCORE</subfield>
+			<subfield code="9">39074025113002</subfield>
+			<subfield code="e">asrs</subfield>
+			<subfield code="8">23296389580003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 09:42:23</subfield>
+			<subfield code="i">M2003.H14 M3 1947</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22433970790003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">SCORE</subfield>
+			<subfield code="9">39074027159896</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="8">23296389590003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 09:42:23</subfield>
+			<subfield code="i">M2003.H14 M3 1947</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+	</record>
 </collection>

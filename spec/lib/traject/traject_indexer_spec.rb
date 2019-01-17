@@ -874,6 +874,12 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[3])).to eq({})
       end
     end
+
+    context "when there are multiple items and one of the records is in asrs" do
+      it "does not map to the field" do
+        expect(subject.map_record(records[4])).to eq({})
+      end
+    end
   end
 
   describe "#extract_oclc_number" do
