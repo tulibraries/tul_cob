@@ -665,7 +665,7 @@ class CatalogController < ApplicationController
     redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
   end
 
-  # Overrides Blackligt::Catalog.sms_action.
+  # Overrides Blackligt::Catalognuuu_action.
   #
   # Passes extra chosen book details for sms text.
   #

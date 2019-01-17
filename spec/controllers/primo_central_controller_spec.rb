@@ -39,7 +39,7 @@ RSpec.describe PrimoCentralController, type: :controller do
   describe "show action" do
     it "gets refwork format" do
       get :show, params: { id: 1, format: "refworks" }
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end
