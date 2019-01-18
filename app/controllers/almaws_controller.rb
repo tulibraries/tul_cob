@@ -57,7 +57,7 @@ class AlmawsController < CatalogController
 
       json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
-      @request_options = [Alma::RequestOptions.get(@mms_id, user_id: @user_id)]
+      @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
       json_request_logger(type: "bib_request_options", start: start, user: current_user.id)
     end
   end
