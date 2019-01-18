@@ -49,11 +49,10 @@ class AlmawsController < CatalogController
     start = Time.now
     if @request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      request_responses = @item_level_holdings.map do |holding_id, item_pid|
+      @request_options = @item_level_holdings.map { |holding_id, item_pid|
         Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id)
-      end
-      @request_options = request_responses.each { |request| request.raw_response.parsed_response }
-        .sort_by { |r| r.raw_response.count }
+      }
+        .sort_by { |r| r.raw_response.parsed_response.count }
         .last
 
       json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
