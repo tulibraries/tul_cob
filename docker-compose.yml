@@ -12,7 +12,6 @@ services:
     environment:
       SOLR_SEARCH_TWEAK_ENABLE: "on"
       SOLR_URL: "http://solr:8983/solr/blacklight"
-      SOLR_AZ_URL: "http://solr:8983/solr/az-database"
       LC_ALL: "C.UTF-8"
     labels:
       - "traefik.enable=true"

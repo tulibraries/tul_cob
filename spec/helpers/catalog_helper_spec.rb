@@ -73,7 +73,6 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-
   describe "#render_purchase_order_availability" do
     let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
     let(:user) { FactoryBot.build(:user) }
