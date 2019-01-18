@@ -33709,4 +33709,198 @@
 			<subfield code="f">MAIN</subfield>
 		</datafield>
 	</record>
+	<record>
+		<leader>01037nas a22003730 4500</leader>
+		<controlfield tag="008">751101d nyu u 0 uu 0eng u</controlfield>
+		<controlfield tag="005">20170825173822.0</controlfield>
+		<controlfield tag="001">991012009289703811</controlfield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(PPT)b12448916-01tuli_inst</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocn471178266</subfield>
+			<subfield code="9">ExL</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">PATG01770121S</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocn470569992</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCLC)ocn470569992</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="c">MnMULS</subfield>
+			<subfield code="d">PPT</subfield>
+			<subfield code="d">CStRLIN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="079">
+			<subfield code="a">ocn470569992</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="090">
+			<subfield code="a">NA680.W65</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">World architecture.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="1" tag="260">
+			<subfield code="a">New York [etc.]</subfield>
+			<subfield code="b">Viking Press [etc.]</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">v.</subfield>
+			<subfield code="b">ill.</subfield>
+			<subfield code="c">29 cm. annual.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="362">
+			<subfield code="a">v.1- ; 1964- .</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Architecture, Modern</subfield>
+			<subfield code="y">20th century.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="700">
+			<subfield code="a">Donat, John,</subfield>
+			<subfield code="d">1933-</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">100623</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="907">
+			<subfield code="a">.b12448916</subfield>
+			<subfield code="b">multi</subfield>
+			<subfield code="c">-</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="935">
+			<subfield code="a">00261219</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">kstk</subfield>
+			<subfield code="u">v.v.1</subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">kstk</subfield>
+			<subfield code="u">v.v.2</subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">kstk</subfield>
+			<subfield code="u">v.v.2</subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">pstk</subfield>
+			<subfield code="u">v.v.2</subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="950">
+			<subfield code="l">TECH</subfield>
+			<subfield code="x">770</subfield>
+			<subfield code="i">01/01/01 N</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="955">
+			<subfield code="c">-</subfield>
+			<subfield code="u">v=2 y=1965</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="979">
+			<subfield code="a">ocn470569992</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="b">4</subfield>
+			<subfield code="c">990101</subfield>
+			<subfield code="d">s</subfield>
+			<subfield code="e">a</subfield>
+			<subfield code="f">-</subfield>
+			<subfield code="g">0</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="n">PPT</subfield>
+			<subfield code="s">9665</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ADM">
+			<subfield code="b">2017-08-25 21:38:22</subfield>
+			<subfield code="e">b12448916-01tuli_inst</subfield>
+			<subfield code="d">ILS</subfield>
+			<subfield code="a">2017-06-20 13:03:16</subfield>
+			<subfield code="c">false</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">MAIN</subfield>
+			<subfield code="c">stacks</subfield>
+			<subfield code="h">NA680.W65</subfield>
+			<subfield code="8">22322363150003811</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">KARDON</subfield>
+			<subfield code="c">p_remote</subfield>
+			<subfield code="h">NA680.W65</subfield>
+			<subfield code="8">22322363130003811</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22322363150003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">ISSUE</subfield>
+			<subfield code="9">39074007311285</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="8">23322363140003811</subfield>
+			<subfield code="c">v.2</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 13:03:16</subfield>
+			<subfield code="i">NA680.W65</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22322363130003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">p_remote</subfield>
+			<subfield code="t">ISSUE</subfield>
+			<subfield code="9">39074002240059</subfield>
+			<subfield code="e">p_remote</subfield>
+			<subfield code="8">23322363120003811</subfield>
+			<subfield code="c">v.2</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 13:03:16</subfield>
+			<subfield code="i">NA680.W65</subfield>
+			<subfield code="d">KARDON</subfield>
+			<subfield code="f">KARDON</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22322363130003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">p_remote</subfield>
+			<subfield code="t">ISSUE</subfield>
+			<subfield code="9">39074001490440</subfield>
+			<subfield code="e">p_remote</subfield>
+			<subfield code="8">23322363110003811</subfield>
+			<subfield code="c">v.2</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 13:03:16</subfield>
+			<subfield code="i">NA680.W65</subfield>
+			<subfield code="d">KARDON</subfield>
+			<subfield code="f">KARDON</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22322363130003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">p_remote</subfield>
+			<subfield code="t">ISSUE</subfield>
+			<subfield code="9">39074001490457</subfield>
+			<subfield code="e">p_remote</subfield>
+			<subfield code="8">23322363100003811</subfield>
+			<subfield code="c">v.1</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="q">2017-06-20 13:03:16</subfield>
+			<subfield code="i">NA680.W65</subfield>
+			<subfield code="d">KARDON</subfield>
+			<subfield code="f">KARDON</subfield>
+		</datafield>
+	</record>
 </collection>

@@ -21,7 +21,6 @@ class AlmawsController < CatalogController
     bib_items = Alma::BibItem.find(@mms_id, limit: limit, offset: offset)
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
-
     json_request_logger(type: "bib_items_availability", uri: bib_items.request.uri.to_s, start: start)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @holdings_summary = helpers.build_holdings_summary(@items, @document)
@@ -50,13 +49,15 @@ class AlmawsController < CatalogController
     start = Time.now
     if @request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      @item_level_holdings.each do |k, v|
-        @request_options = Alma::ItemRequestOptions.get(@mms_id, k, v, user_id: @user_id)
-        break if !@request_options.nil?
-      end
+      @request_options = @item_level_holdings.map { |holding_id, item_pid|
+        Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id)
+      }
+        .sort_by { |r| r.raw_response.parsed_response.count }
+        .last
+
       json_request_logger(type: "item_request_options", start: start, mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id)
     else
-      @request_options = Alma::RequestOptions.get(@mms_id, user_id: @user_id)
+      @request_options = [Alma::RequestOptions.get(@mms_id, user_id: @user_id)]
       json_request_logger(type: "bib_request_options", start: start, user: current_user.id)
     end
   end
