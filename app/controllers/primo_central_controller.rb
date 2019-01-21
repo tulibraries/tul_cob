@@ -12,13 +12,6 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
-  # We are not including the default configuration by default until we are sure all features work with Primo.
-  add_show_tools_partial(:bookmark, partial: "bookmark_control")
-  add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
-  add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
-  add_results_document_tool(:bookmark, partial: "bookmark_control")
-
-
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -36,6 +29,11 @@ class PrimoCentralController < CatalogController
 
     # Pagination handler
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
+
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control")
+    config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control")
 
     # Search fields
     config.add_search_field :any, label: "All Fields", catalog_map: :all_fields

@@ -161,7 +161,7 @@ module CatalogHelper
     elsif current_user.can_purchase_order?
       label = content_tag :span, "Request Rapid Access", class: "avail-label"
       path = purchase_order_path(id: doc.id)
-      link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "ajax-modal": "trigger" }
+      link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
       content_tag :div, link, class: "requests-container"
     end
   end
@@ -171,7 +171,7 @@ module CatalogHelper
 
     if !current_user
       id = args[:document].id
-      link_to("Log in to access request form", doc_redirect_url(id), data: { "ajax-modal": "trigger" })
+      link_to("Log in to access request form", doc_redirect_url(id), data: { "blacklight-modal": "trigger" })
     elsif current_user.can_purchase_order?
       render_purchase_order_button(args)
     end
@@ -193,7 +193,7 @@ module CatalogHelper
 
   def render_marc_view
     if @document.respond_to?(:to_marc)
-      render "marc_view"
+      render "marc_view", document: @response.documents.first
     else
       t("blacklight.search.librarian_view.empty")
     end
