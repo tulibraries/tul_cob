@@ -35,11 +35,10 @@
 
       <%= render :partial => "shared/header_navbar" %>
 
-      <%= render partial: "shared/ajax_modal" %>
+      <%= render partial: "shared/modal" %>
 
       <div id="main-container" class="<%= container_classes %>">
 
-        <%= render :partial=>"/flash_msg", layout: "shared/flash_messages" %>
         <div class="breadcrumb-wrapper">
           <ol class="breadcrumb">
             <%= render_breadcrumbs :tag => :li, :separator => "" %>
