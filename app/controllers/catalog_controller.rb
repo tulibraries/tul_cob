@@ -13,7 +13,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  include Blacklight::Ris::Catalog
+  #include Blacklight::Ris::Catalog
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
 
@@ -553,7 +553,7 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
-    add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
+    #config.add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
     config.show.document_actions.delete(:citation)

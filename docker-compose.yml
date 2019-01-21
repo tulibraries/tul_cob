@@ -25,8 +25,8 @@ services:
     depends_on:
       - solr
     entrypoint:
-      - ruby
-      - /app/bin/app-start.rb
+      - 'yes'
+      - 'foo'
 
   solr:
     build:

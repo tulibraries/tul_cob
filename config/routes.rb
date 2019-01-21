@@ -138,7 +138,5 @@ Rails.application.routes.draw do
   match "/500", to: "errors#internal_server_error", via: :all
   match "/articles", to: "primo_central#index", as: "search", via: [:get, :post]
 
-  Blacklight::Marc.add_routes(self)
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

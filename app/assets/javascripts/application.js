@@ -13,15 +13,19 @@
 //= require jquery
 //= require 'blacklight_advanced_search'
 //= require jquery_ujs
-//= require turbolinks//
-// Required by Blacklight
-//= require blacklight/blacklight
-
-//= require blacklight_alma/blacklight_alma
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/tab
 //= require bootstrap/dropdown
+//= require twitter/typeahead
+//= require popper
+//= require bootstrap
+//= require turbolinks//
+
+// Required by Blacklight
+//= require blacklight/blacklight
+//= require blacklight_alma/blacklight_alma
+
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
