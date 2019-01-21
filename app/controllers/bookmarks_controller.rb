@@ -7,6 +7,6 @@ class BookmarksController < CatalogController
   include BookmarksConfig
 
   configure_blacklight do |config|
-    add_show_tools_partial(:ris, label: "RIS File", modal: false, path: :ris_path)
+    config.add_show_tools_partial(:ris, label: "RIS File", modal: false, path: :ris_path)
   end
 end
