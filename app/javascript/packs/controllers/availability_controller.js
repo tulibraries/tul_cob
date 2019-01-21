@@ -34,6 +34,8 @@ export default class extends Controller {
   modal() {
     var mms_id = $(this.buttonTarget).data("availability-ids");
     var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
+    console.log(mms_id)
+    console.log(request_url)
     $(this.hrefTarget).attr("href", requests_url);
   }
 }
