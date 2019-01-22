@@ -557,8 +557,27 @@ class CatalogController < ApplicationController
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
     config.show.document_actions.delete(:citation)
+
+    # Document results tools
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
+
+
+    # Results collection tools
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
+
+    # Show tools
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
+
+
+    # Nav tools
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
+
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
+
   end
 
   # Can be overridden by subclass
