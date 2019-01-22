@@ -10,7 +10,7 @@
 
       <div id="requests-container" class="hidden">
         <% if user_signed_in? %>
-          <%= request_modal(document.id, document_counter="0", @pickup_locations, @request_level) %>
+          <%= request_modal(document.id, @pickup_locations, @request_level) %>
         <% else %>
           <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"blacklight-modal": "trigger"}, id: "request_options") %>
         <% end %>
