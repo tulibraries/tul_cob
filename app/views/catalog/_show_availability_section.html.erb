@@ -19,7 +19,7 @@
   </div>
 
   <%= render_online_availability(doc_presenter) %>
-  <%= doc_presenter.field_value(blacklight_config.show_fields["purchase_order_availability"]) %>
+  <%= render_purchase_order_availability(document: document) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
