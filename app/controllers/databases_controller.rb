@@ -25,19 +25,17 @@ class DatabasesController < CatalogController
     # Facet fields
     config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: true
-    config.add_index_field "availability"
 
     # Index fields
     config.add_index_field "id", label: "AZ ID"
     config.add_index_field "az_vendor_id_display", label: "AZ Vendor ID"
     config.add_index_field "note_display", label: "Note", raw: true, helper_method: :join
+    config.add_index_field "availability"
 
     # Show fields
     config.add_show_field "id", label: "AZ ID"
     config.add_show_field "note_display", label: "Note", raw: true, helper_method: :join
-    config.add_show_field "availability"
-
-    #config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
+    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
 
     # Search fields
     config.add_search_field("title") do |field|
