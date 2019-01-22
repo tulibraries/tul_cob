@@ -21,6 +21,26 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "item is located in reserves" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "" },
+            "location" =>
+              { "value" => "reserve" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      end
+    end
+
     context "item base_status is 1 and item is requested" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
