@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/D1ceWard/bootstrap-select-rails.git
+  revision: 0e40fbc34fc27a1fba9abb7f1d8bc941cbdfe056
+  ref: 0e40fbc34fc27a1fba9abb7f1d8bc941cbdfe056
+  specs:
+    bootstrap-select-rails (1.12.4)
+
+GIT
   remote: https://github.com/projectblacklight/blacklight-marc.git
   revision: 582c68255d73e21926234f2ad5bb1ddf37dc6684
   ref: v7.0.0.rc1
@@ -150,7 +157,6 @@ GEM
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
-    bootstrap-select-rails (1.12.4)
     breadcrumbs_on_rails (3.0.1)
     browser (2.5.3)
     builder (3.2.3)
@@ -535,7 +541,7 @@ DEPENDENCIES
   blacklight_range_limit!
   bootsnap
   bootstrap (~> 4.0)
-  bootstrap-select-rails
+  bootstrap-select-rails!
   breadcrumbs_on_rails
   browser
   byebug
