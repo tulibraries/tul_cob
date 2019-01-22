@@ -13,14 +13,17 @@
 //= require jquery
 //= require 'blacklight_advanced_search'
 //= require jquery_ujs
+//= require popper
+//= require twitter/typeahead
+
+//= require bootstrap
+//= require turbolinks//
+
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/tab
 //= require bootstrap/dropdown
-//= require twitter/typeahead
-//= require popper
-//= require bootstrap
-//= require turbolinks//
+
 
 // Required by Blacklight
 //= require blacklight/blacklight
