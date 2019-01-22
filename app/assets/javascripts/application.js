@@ -151,3 +151,8 @@ $(document).on('turbolinks:load', function() {
     $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
 	});
  });
+
+ $(".header-links").on("click", function(){
+    $(".nav-header-links").find(".active").removeClass("active");
+    $(this).addClass("active");
+ });
