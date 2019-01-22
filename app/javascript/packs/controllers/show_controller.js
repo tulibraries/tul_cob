@@ -28,7 +28,7 @@ export default class extends Controller {
         $("#requests-container").removeClass("hidden");
         var mms_id = $("#record-view-iframe").data("availability-id");
         var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
-        $("#request-btn-0").attr("href", requests_url);
+        $("#request-btn-" + mms_id).attr("href", requests_url);
       })
   }
 }
