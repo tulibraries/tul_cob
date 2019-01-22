@@ -11,20 +11,20 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-        <% if config.key == :bookmark %>
-          <li class="<%= config.key %>" id="bookmark_button">
-            <%= inner %>
-          </li>
-          <% if @document.citable? %>
-          <li>
-            <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation"} %>
-          </li>
+          <% if config.key == :bookmark %>
+            <li class="<%= config.key %>" id="bookmark_button">
+              <%= inner %>
+            </li>
+            <% if @document.citable? %>
+            <li>
+              <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation"} %>
+            </li>
+            <% end %>
+          <% else %>
+
+            <% @sendto[config.key] = inner %>
+
           <% end %>
-        <% else %>
-
-          <% @sendto[config.key] = inner %>
-
-        <% end %>
         <% end %>
         <li id="sendto-menu">
           <div id="sendto">
