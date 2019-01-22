@@ -184,10 +184,9 @@ module ApplicationHelper
   def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-btn header-links" ] + active).join(" ")
-    link_class = ([ "nav-link" ] + active).join(" ")
 
     content_tag :li, class: button_class do
-      link_to(name, send(path, search_params), class: link_class, id: analytics_id)
+      link_to(name, send(path, search_params), id: analytics_id)
     end
   end
 

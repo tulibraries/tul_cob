@@ -26,7 +26,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "path not current page" do
       it "renders a link without the active class" do
-        link = "<li class=\"nav-btn header-links\"><a class=\"nav-link\" href=\"/catalog\">More</a></li>"
+        link = "<li class=\"nav-btn header-links\"><a href=\"/catalog\">More</a></li>"
         expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "path is current page" do
       let(:request) { OpenStruct.new(original_fullpath: "/catalog") }
       it "renders a link with the active class" do
-        link = "<li class=\"nav-btn header-links active\"><a class=\"nav-link active\" href=\"/catalog\">More</a></li>"
+        link = "<li class=\"nav-btn header-links active\"><a href=\"/catalog\">More</a></li>"
         expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:current_search_session) { OpenStruct.new(query_params: { q: "foo" }) }
 
       it "gets the query added to the generated link" do
-        link = "<li class=\"nav-btn header-links\"><a class=\"nav-link\" href=\"/catalog?q=foo\">More</a></li>"
+        link = "<li class=\"nav-btn header-links\"><a href=\"/catalog?q=foo\">More</a></li>"
         expect(helper.render_nav_link(:search_catalog_path, "More")).to eq(link)
       end
     end
