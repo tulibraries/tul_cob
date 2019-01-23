@@ -22,8 +22,6 @@
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/tab
-//= require bootstrap/dropdown
-
 
 // Required by Blacklight
 //= require blacklight/blacklight
