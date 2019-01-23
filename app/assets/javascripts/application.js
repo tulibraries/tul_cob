@@ -153,6 +153,6 @@ $(document).on('turbolinks:load', function() {
  });
 
  $(".header-links").on("click", function(){
-    $(".nav-header-links").find(".active").removeClass("active");
-    $(this).addClass("active");
+	 $(this).siblings().removeClass('active');
+	 $(this).addClass("active");
  });
