@@ -2,7 +2,7 @@
 
 <%= form_tag url_for(:controller => controller_name, :action => "sms"), :id => 'sms_form', :class => "form-horizontal ajax_form", :method => :post do %>
 <div class="modal-body">
-  <%= render :partial=>'/flash_msg' %>
+  <%= render :partial=>'/shared/flash_msg' %>
     <div class="form-group">
       <label class="control-label col-sm-2" for="to">
         <%= t('blacklight.sms.form.to') %>
