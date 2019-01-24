@@ -68,7 +68,7 @@ module Blacklight::PrimoCentral
 
     def process_advanced_search(primo_central_parameters)
       if is_advanced_search?
-        rows_count = @scope.helpers.advanced_search_config[:fields_row_count]
+        rows_count = blacklight_config.advanced_search[:fields_row_count]
 
         build_query = (1..rows_count).map do |count|
           value = blacklight_params["q_#{count}"]
@@ -172,7 +172,7 @@ module Blacklight::PrimoCentral
 
       def is_advanced_search?
         blacklight_params[:controller] == "primo_advanced" ||
-          blacklight_params[:q_1]
+          !(@scope.advanced_query.nil? || @scope.advanced_query.keyword_queries.empty? rescue false)
       end
   end
 end

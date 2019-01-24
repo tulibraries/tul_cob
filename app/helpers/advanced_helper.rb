@@ -202,7 +202,12 @@ module BlacklightAdvancedSearch
     # We need this in order to render multiple clearable buttons on advanced searches.
 
     def render_constraints_query(my_params = params)
-      buttons = guided_search.map { |s|
+      # Short circuit if this is not an advanced query.
+      if advanced_query.nil? || advanced_query.keyword_queries.empty?
+        return super(my_params)
+      end
+
+      buttons = guided_search(my_params).map { |s|
         label, query, action = s
 
         render_constraint_element(
