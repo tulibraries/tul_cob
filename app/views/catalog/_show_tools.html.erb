@@ -17,7 +17,7 @@
             </li>
             <% if @document.citable? %>
             <li>
-              <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation"} %>
+              <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation"} %>
             </li>
             <% end %>
           <% else %>
