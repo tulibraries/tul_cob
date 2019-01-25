@@ -60,8 +60,8 @@ module AdvancedHelper
     blacklight_config.fetch(:advanced_search, {})
   end
 
-  def render_advanced_search_link
-    query = params.except(:controller, :action).to_h
+  def render_advanced_search_link(my_params = params)
+    query = advanced_params(my_params)
 
     if current_page? search_catalog_path
       id = :catalog_advanced_search
@@ -78,6 +78,18 @@ module AdvancedHelper
     end
 
     link_to(t(id), url, class: "advanced_search", id: id) if id
+  end
+
+  def advanced_params(my_params)
+    my_params.except(:controller, :action)
+      .select { |k, v|
+      # Sometimes is_advanced_search? does not return true|false answer.
+      if !(is_advanced_search? == true)
+        !k.match?(/^(q|op|f)_/)
+      else
+        true
+      end
+    }.to_h
   end
 
   def basic_search_path
