@@ -8,6 +8,13 @@ module Blacklight::PrimoCentral::Document
 
   delegate :url_helpers, to: "Rails.application.routes"
 
+  delegate :dig, :[], to: :@_source
+
+  def []=(key, value)
+    @_source = @_source.merge("#{key}": value)
+  end
+
+
   attr_reader :blacklight_config
 
   def initialize(doc, options = {})
