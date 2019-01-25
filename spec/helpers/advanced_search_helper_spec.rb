@@ -53,6 +53,9 @@ RSpec.describe AdvancedHelper, type: :helper do
       allow(helper).to receive(:current_page?).with("/articles") { false }
       allow(helper).to receive(:current_page?).with("/databases") { false }
       allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
+      without_partial_double_verification do
+        allow(helper).to receive(:is_advanced_search?) { true }
+      end
     end
 
     context "on the catalog search page" do
