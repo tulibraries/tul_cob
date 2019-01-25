@@ -5,6 +5,7 @@ class PrimoCentralDocument
 
   include Blacklight::PrimoCentral::Document
   include Citable
+  include Diggable
 
   # Email uses semantic field mappings below to generate the body of an email.
   self.unique_key = :pnxId
