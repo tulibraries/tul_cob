@@ -6,16 +6,13 @@ class SolrDocument
   include AlmaDataHelper
   include Citable
   include JsonLogger
+  include Diggable
 
   use_extension(Blacklight::Solr::Document::RisExport)
 
   attr_accessor :logger
 
-  delegate :dig, :[], to: :@_source
-
-  def []=(key, value)
-    @_source = @_source.merge("#{key}": value)
-  end
+  use_extension(Blacklight::Solr::Document::RisExport)
 
   # self.unique_key = "id"
   field_semantics.merge!(
