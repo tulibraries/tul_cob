@@ -5,15 +5,9 @@ class SolrDocument
   include Blacklight::Solr::Document::RisFields
   include AlmaDataHelper
   include Citable
+  include Diggable
 
   use_extension(Blacklight::Solr::Document::RisExport)
-
-  delegate :dig, :[], to: :@_source
-
-  def []=(key, value)
-    @_source = @_source.merge("#{key}": value)
-  end
-
 
   # self.unique_key = "id"
   field_semantics.merge!(
