@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SearchController < CatalogController
-  include Blacklight::RequestBuilders
   include CatalogConfigReinit
 
   blacklight_config.configure do |config|
