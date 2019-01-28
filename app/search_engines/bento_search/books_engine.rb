@@ -2,7 +2,7 @@
 
 module BentoSearch
   class BooksEngine < BlacklightEngine
-    delegate :blacklight_config, to: BooksController
+    delegate :blacklight_config, :search_service_class,  to: BooksController
 
     def doc_link(id)
       Rails.application.routes.url_helpers.solr_book_document_path(id)
