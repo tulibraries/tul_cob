@@ -3,17 +3,18 @@
 module BentoSearch
   class BlacklightEngine
     include BentoSearch::SearchEngine
-    include Blacklight::SearchHelper
 
-    delegate :blacklight_config, to: CatalogController
+    delegate :blacklight_config, :search_service_class, to: CatalogController
 
     def search_implementation(args)
       query = args.fetch(:query, "")
       per_page = args.fetch(:per_page)
 
-      query = { q: query, per_page: per_page }
+      user_params = { q: query, per_page: per_page }
+      config = blacklight_config
+      search_service = search_service_class.new(config: config, user_params: user_params)
 
-      response = search_results(query, &proc_availability_facet_only).first
+      (response, _) = search_service.search_results(&proc_availability_facet_only)
       results(response)
     end
 
