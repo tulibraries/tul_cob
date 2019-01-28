@@ -25,4 +25,15 @@ module BlacklightMarcHelper
       refworks_export_url(url: solr_journal_document_path(opts[:id], format: :refworks_marc_txt))
     end
   end
+
+  # puts together a collection of documents into one refworks export string
+  def render_refworks_texts(documents)
+    val = ""
+    documents.each do |doc|
+      if doc.exports_as? :refworks_marc_txt
+        val += doc.export_as(:refworks_marc_txt) + "\n"
+      end
+    end
+    val
+  end
 end
