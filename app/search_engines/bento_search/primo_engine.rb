@@ -2,7 +2,7 @@
 
 module BentoSearch
   class PrimoEngine < BlacklightEngine
-    delegate :blacklight_config, to: PrimoCentralController
+    delegate :blacklight_config, :search_service_class, to: PrimoCentralController
 
     def search_implementation(args)
       query = args.fetch(:query, "")
@@ -12,7 +12,11 @@ module BentoSearch
       if query.empty?
         response = { "docs" => [] }
       else
-        response = search_results(q: query, per_page: per_page).first
+        user_params = { q: query, per_page: per_page }
+        config = blacklight_config
+        search_service = search_service_class.new(config: config, user_params: user_params)
+
+        (response, _) = search_service.search_results
       end
 
       results(response)
