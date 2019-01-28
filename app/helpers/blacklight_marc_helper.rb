@@ -28,7 +28,7 @@ module BlacklightMarcHelper
 
   # puts together a collection of documents into one refworks export string
   def render_refworks_texts(documents)
-    val = ''
+    val = ""
     documents.each do |doc|
       if doc.exports_as? :refworks_marc_txt
         val += doc.export_as(:refworks_marc_txt) + "\n"
