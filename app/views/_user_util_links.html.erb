@@ -1,11 +1,13 @@
-<ul class="nav navbar-nav">
+<ul class="d-flex list-unstyled list ml-auto align-items-center">
   <%= render_nav_actions do |config, action|%>
     <% unless action.blank? %>
-      <li><%= action %></li>
+      <li class="user-links p2"><%= action %></li>
     <% end %>
   <% end %>
 
-  <% if has_user_authentication_provider? %>
-    <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
-  <% end %>
+  <li class="user-links"
+    <% if has_user_authentication_provider? %>
+      <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
+    <% end %>
+  </li>
 </ul>
