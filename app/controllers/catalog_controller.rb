@@ -13,8 +13,6 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  #include Blacklight::Ris::Catalog
-
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
 
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
@@ -579,6 +577,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
     config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
     config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:ris, label: "RIS File", modal: false, path: :ris_path)
 
     # Nav tools
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
