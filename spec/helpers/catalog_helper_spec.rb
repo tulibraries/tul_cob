@@ -50,16 +50,18 @@ RSpec.describe CatalogHelper, type: :helper do
 
   describe "#render_marc_view" do
     let(:doc) { OpenStruct.new(to_marc: "foo") }
+    let(:response) { Blacklight::Solr::Response.new(nil, nil) }
 
     before(:each) {
       helper.instance_variable_set(:@document, doc)
+      helper.instance_variable_set(:@response, response)
       allow(helper).to receive(:render) {}
       helper.render_marc_view
     }
 
     context "document responds to to_marc" do
       it "renders the marc_view template" do
-        expect(helper).to have_received(:render).with("marc_view")
+        expect(helper).to have_received(:render).with("marc_view", document: nil)
       end
     end
 
