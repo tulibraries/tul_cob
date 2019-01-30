@@ -1,6 +1,6 @@
 <nav id="logo-navbar" class="navbar navbar-header" role="navigation">
   <%= link_to library_link, class: "header-name d-flex align-items-center" do %>
-    <%= image_tag('temple-logo-t-box.svg', class: "header-logo d-inline-flex", height:"60", alt: "temple-logo") %>
+    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", height:"60", alt: "temple-logo") %>
     <span class="logo-text">University Libraries</span>
   <% end %>
 </nav>
@@ -10,14 +10,14 @@
       <h1 class="">
         <%= link_to("Library Search", everything_path, id: "catalog-header") %>
       </h1>
-      <%= render partial: '/user_util_links' %>
+      <%= render partial: "/user_util_links" %>
   </div>
 </nav>
 
-<div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-  <div id="search-form-container" class="<%= container_classes %>">
+<nav id="search-navbar" class="navbar navbar-default" role="navigation">
+  <div class="container mx-auto">
     <%= render "search_form"  %>
   </div>
-</div>
+</nav>
 
 <%= render "navbar" %>
