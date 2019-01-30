@@ -7,7 +7,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
 
   let(:response) { JSON.parse(get(:index, params: { q: search_term, per_page: 100 }, format: "json").body) }
 
-  let(:ids) { (response.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact }
+  let(:ids) { (response.fetch("data") || {}).map { |doc| doc.fetch("id") }.compact }
   describe "a search for" do
 
 
