@@ -4,9 +4,16 @@ require "rails_helper"
 
 RSpec.describe Blacklight::Alma::Response, type: :model  do
   let (:json) { { bib: [], total_record_count: 101 }.to_json }
-  let (:raw_response) { OpenStruct.new(body: json) }
-  let (:bib_items) { Alma::BibItemSet.new(raw_response) }
+  let (:bib_items) { Alma::BibItem.find("foo") }
   let (:response) { Blacklight::Alma::Response.new(bib_items) }
+
+  before do
+    stub_request(:any, /holdings/).
+      and_return(headers: { "Content-Type" => "application/json" },
+                 body: json,
+                 status: 200)
+  end
+
 
   describe "#limit_value" do
     it "has a default limit value" do

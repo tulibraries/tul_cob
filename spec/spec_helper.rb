@@ -43,107 +43,134 @@ RSpec.configure do |config|
   config.before(:each) do
 
     # JUst so we don't send our request when testing controllers
-    stub_request(:get, /.*almaws\/v1\/bibs\/.*/).to_return(status: 200, body: JSON.dump({}))
-    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/request-options?.*/).to_return(status: 200)
-    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/requests?.*/).to_return(status: 200)
+    stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: JSON.dump({}))
+
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/request-options?.*/).
+      to_return(status: 200)
+
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/requests?.*/)
+      .to_return(status: 200)
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
-        #with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: JSON.dump({}))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: JSON.dump({}))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/same_campus\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/presser_and_paley.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/presser_and_paley.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/ambler_presser\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/ambler_presser.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/ambler_presser.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/kardon_paley\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/kardon_paley.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/kardon_paley.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/only_paley_reserves\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/only_paley_reserves.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/only_paley_reserves.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
 
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/no_reserve_or_reference\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/both_reserve\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_descriptions.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_descriptions.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_and_description.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_and_description.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_hash\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/multiple_descriptions.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/multiple_descriptions.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
-        with(query: hash_including(offset: "100")).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
-        with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
-        to_return(status: 200,
-                  body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
-                  headers: { "content-type" => ["application/xml;charset=UTF-8"] })
+      with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
+      to_return(status: 200,
+                body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
+                headers: { "content-type" => ["application/xml;charset=UTF-8"] })
 
   end
   # rspec-expectations config goes here. You can use an alternate

@@ -5,4 +5,5 @@ Primo.configure do |config|
   config.context = :PC
   config.vid     = "TULI"
   config.scope   = "pci_scope"
+  config.enable_loggable = true
 end
