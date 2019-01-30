@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  include JsonLogger
+
   def account
     no_cache
     @user = current_user
@@ -38,7 +40,8 @@ class UsersController < ApplicationController
   end
 
   def renew
-    lib_user = Alma::User.find(user_id: current_user.uid)
+    log = { type: "alma_user", uid: current_user.uid }
+    lib_user = do_with_json_logger(log) { Alma::User.find(current_user.uid) }
 
     # Pass loan_id and loan status to view
     @loan_id = params[:loan_id]
