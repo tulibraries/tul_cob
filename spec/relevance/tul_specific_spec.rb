@@ -8,7 +8,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
   describe "a faceted search for Presser Listening Library " do
     let(:response) { JSON.parse(get(:index, params: { "f" => { "library_facet" => ["Presser Listening Library"] }, per_page: 100 }, format: "json").body) }
 
-    let(:ids) { (response.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact }
+    let(:ids) { (response.fetch("data") || {}).map { |doc| doc.fetch("id") }.compact }
 
     it "has results with another library before before results only at presser" do
       expect(ids)

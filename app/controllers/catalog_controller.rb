@@ -664,7 +664,7 @@ class CatalogController < ApplicationController
   end
 
   def purchase_order
-    (@response, @document) = fetch(params["id"])
+    (@response, @document) = search_service.fetch(params["id"])
     render layout: false
   end
 
