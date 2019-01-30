@@ -43,13 +43,14 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
-  describe "using lower case boolen operators in normal search" do
+  describe "using lower case boolean operators in normal search" do
     render_views
-    let(:uppercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action AND higher education" }, format: :json).body)["meta"]["pages"]["total_count"] }
-    let(:lowercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action and higher education " }, format: :json).body)["meta"]["pages"]["total_count"] }
-
     it "returns more results that using uppercase boolean" do
-      expect(lowercase_and).to be > uppercase_and
+      config = controller.blacklight_config
+      (response_lower, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home or work" }).search_results
+      (response_upper, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home OR work" }).search_results
+
+      expect(response_upper.total).to be > response_lower.total
     end
   end
 
