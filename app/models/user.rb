@@ -6,12 +6,15 @@ class User < ApplicationRecord
   end
   # Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
+  include JsonLogger
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
 
   def alma
-    @alma ||= Alma::User.find(uid)
+    log = { type: "alma_user", uid: uid }
+    @alma ||= do_with_json_logger(log) { Alma::User.find(uid) }
   end
 
   # Method added by Blacklight; Blacklight uses #to_s on your
@@ -23,19 +26,23 @@ class User < ApplicationRecord
   end
 
   def loans
-    Alma::Loan.where_user(uid, order_by: "due_date")
+    log = { type: "alma_loan", uid: uid, order_by: "due_date" }
+    do_with_json_logger(log) { Alma::Loan.where_user(uid, order_by: "due_date") }
   end
 
   def fines
-    Alma::Fine.where_user(uid)
+    log = { type: "alma_fines", uid: uid }
+    do_with_json_logger(log) { Alma::Fine.where_user(uid) }
   end
 
   def holds
-    Alma::UserRequest.where_user(uid)
+    log = { type: "alma_holds", uid: uid }
+    do_with_json_logger(log) { Alma::UserRequest.where_user(uid) }
   end
 
   def renew_selected(ids)
-    Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids)
+    log = { type: "alma_renewal_requests", uid: uid, loan_ids: ids }
+    do_with_json_logger(log) { Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids) }
   end
 
   def self.from_omniauth(auth)

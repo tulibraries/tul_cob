@@ -3,6 +3,17 @@
 require "rails_helper"
 
 RSpec.describe AlmawsHelper, type: :helper do
+  let(:json) { {}.to_json }
+  let(:request_options) { Alma::RequestOptions.get("foo") }
+
+  before do
+    helper.instance_variable_set(:@equipment, [])
+    stub_request(:any, /request-options/).
+      and_return(headers: { "Content-Type" => "application/json" },
+                 body: json,
+                 status: 200)
+  end
+
   describe "#hold_allowed_partial" do
     let(:json) {
       { request_option:
@@ -12,12 +23,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         }]
       }.to_json
     }
-    let(:response) { OpenStruct.new(body: json) }
-    let(:request_options) { Alma::RequestOptions.new(response) }
-
-    before do
-      helper.instance_variable_set(:@equipment, [])
-    end
 
     context "hold can be placed on an item" do
       it "renders the hold partial" do
@@ -50,8 +55,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         }]
       }.to_json
     }
-    let(:response) { OpenStruct.new(body: json) }
-    let(:request_options) { Alma::RequestOptions.new(response) }
 
     context "An item can be requested to be scanned" do
       it "renders the digitization_allowed partial" do
@@ -84,8 +87,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         }]
       }.to_json
     }
-    let(:response) { OpenStruct.new(body: json) }
-    let(:request_options) { Alma::RequestOptions.new(response) }
 
     context "booking can be placed on an item" do
       it "renders the booking_allowed partial" do
@@ -123,8 +124,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         }]
       }.to_json
     }
-    let(:response) { OpenStruct.new(body: json) }
-    let(:request_options) { Alma::RequestOptions.new(response) }
     let(:books) { "BOOK" }
 
     context "item can be requested through ez-borrow" do
@@ -158,8 +157,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         }]
       }.to_json
     }
-    let(:response) { OpenStruct.new(body: json) }
-    let(:request_options) { Alma::RequestOptions.new(response) }
     let(:books) { "BOOK" }
 
     context "there are no Temple request options available" do
@@ -194,8 +191,6 @@ RSpec.describe AlmawsHelper, type: :helper do
           }]
         }.to_json
       }
-      let(:response) { OpenStruct.new(body: json) }
-      let(:request_options) { Alma::RequestOptions.new(response) }
 
       it "is true" do
         expect(helper.only_one_option_allowed(request_options)).to be true
@@ -211,8 +206,6 @@ RSpec.describe AlmawsHelper, type: :helper do
           }]
         }.to_json
       }
-      let(:response) { OpenStruct.new(body: json) }
-      let(:request_options) { Alma::RequestOptions.new(response) }
 
       it "is true" do
         expect(helper.only_one_option_allowed(request_options)).to be true
@@ -223,32 +216,29 @@ RSpec.describe AlmawsHelper, type: :helper do
       let(:json) {
         {
           "request_option": [
-        {
-            "type": {
+            {
+              "type": {
                 "value": "HOLD",
                 "desc": "Hold"
+              },
+              "request_url": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/915602377/requests/"
             },
-            "request_url": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/915602377/requests/"
-        },
-        {
-            "type": {
+            {
+              "type": {
                 "value": "BOOKING",
                 "desc": "Booking"
+              },
+              "request_url": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/915602377/requests/"
             },
-            "request_url": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/users/915602377/requests/"
-        },
-        {
-            "type": {
+            {
+              "type": {
                 "value": "PURCHASE",
                 "desc": "Purchase"
+              }
             }
-        }
           ]
-      }.to_json
+        }.to_json
       }
-
-      let(:response) { OpenStruct.new(body: json) }
-      let(:request_options) { Alma::RequestOptions.new(response) }
 
       it "is false" do
         expect(helper.only_one_option_allowed(request_options)).to be false
