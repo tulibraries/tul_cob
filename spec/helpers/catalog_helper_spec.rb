@@ -497,11 +497,7 @@ RSpec.describe CatalogHelper, type: :helper do
         }
       end
 
-      let(:document) {
-          {
-            "subject_display" => []
-            }
-          }
+      let(:document) { { "subject_display" => [] } }
 
       it "returns the default message" do
         expect(build_holdings_summary(items, document)).to eq("MAIN" => nil)
