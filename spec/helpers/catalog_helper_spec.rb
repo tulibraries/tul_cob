@@ -73,7 +73,6 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-
   describe "#render_purchase_order_availability" do
     let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
     let(:user) { FactoryBot.build(:user) }
@@ -502,7 +501,7 @@ RSpec.describe CatalogHelper, type: :helper do
           {
             "subject_display" => []
             }
-        }
+          }
 
       it "returns the default message" do
         expect(build_holdings_summary(items, document)).to eq("MAIN" => nil)

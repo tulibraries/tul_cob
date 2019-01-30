@@ -235,9 +235,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
-    jsonpath (0.9.7)
-      multi_json
-      to_regexp (~> 0.2.1)
     jwt (1.5.6)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -435,7 +432,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    to_regexp (0.2.1)
     traject (3.0.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
@@ -447,10 +443,6 @@ GEM
       nokogiri (~> 1.0)
       slop (>= 3.4.5, < 4.0)
       yell
-    traject_plus (0.1.0)
-      activesupport
-      jsonpath
-      traject (~> 3.0)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -550,7 +542,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   sqlite3
   traject (~> 3.0)
-  traject_plus
   turbolinks (~> 5)
   twilio-ruby
   tzinfo-data

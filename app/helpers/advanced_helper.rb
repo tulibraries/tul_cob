@@ -75,9 +75,6 @@ module AdvancedHelper
     elsif current_page? search_path
       id = :articles_advanced_search
       url = articles_advanced_search_path(query)
-    elsif current_page? search_databases_path
-      id = :databases_advanced_search
-      url = databases_advanced_search_path(query)
     end
 
     link_to(t(id), url, class: "advanced_search", id: id) if id
@@ -118,8 +115,6 @@ module AdvancedHelper
       t(:journals_advanced_search)
     elsif current_page? articles_advanced_search_path
       t(:articles_advanced_search)
-    elsif current_page? databases_advanced_search_path
-      t(:databases_advanced_search)
     else
       t(:catalog_advanced_search)
     end
