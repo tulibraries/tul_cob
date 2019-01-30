@@ -98,7 +98,7 @@ module CatalogHelper
   end
 
   def render_online_availability(doc_presenter)
-    field = blacklight_config.show_fields["electronic_resource_display"]
+    field = blacklight_config.index_fields["electronic_resource_display"]
     online_resources = [doc_presenter.field_value(field)]
       .select { |r| !r.empty? }.compact
 
