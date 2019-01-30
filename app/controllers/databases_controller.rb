@@ -35,9 +35,7 @@ class DatabasesController < CatalogController
     # Show fields
     config.add_show_field "id", label: "AZ ID"
     config.add_show_field "note_display", label: "Note", raw: true, helper_method: :join
-    config.add_show_field "availability"
-
-    #config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
+    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
 
     # Search fields
     config.add_search_field("title") do |field|
