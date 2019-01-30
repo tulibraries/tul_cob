@@ -18,48 +18,17 @@ div.site-message {
 	a:hover {
 		text-decoration: none !important;
 	}
- 	// @media(max-width: 768px) {
- 	// 	margin: .2em .2em .5em -1.2em;
-  //  }
- 	// @media(max-width: 601px) {
- 	// 	margin: .2em 0 .3em -1.2em;
-  //  }
-  //  @media(max-width: 485px) {
-  //  	max-width: 4em;
-  //  	padding-left: 1em;
- 	// 	margin: .2em .2em .5em -1.1em;
-  //  }
  }
 
 .logo-text {
 	color: $black;
 	font-family: "Crimson Text", serif;
 	font-size: 2.0rem;
-	margin-left: 0.625rem;
-	//  margin-left:  0.7142857142857143em;
-	//  text-decoration: none;
-	//  vertical-align: bottom;
-	//  white-space: nowrap;
-	//  	.logo-text {
-	//  		position: relative;
-	//
-	//  		margin-left: -.25em;
-	//  	}
-	//  @media(max-width: 601px) {
-	//  font-size: 2.5rem;
-	//  margin-left: .2em;
-	//  }
-	//  @media(max-width:485px) {
-	//  	font-size: 2.4rem;
-	//  	margin-left: 1.2em;
-	//  	vertical-align: top;
-	//  	white-space: normal;
-	//  	.logo-text {
-	//  		position: relative;
-	//  		top: .6em;
-	//  		margin-left: .1em;
-	//  	}
-	//  }
+	margin-left: 0.625rem;	//  text-decoration: none;
+
+	@media(max-width:485px) {
+	 font-size: 1.4rem;
+	}
 }
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
@@ -79,26 +48,20 @@ div.site-message {
 
 #red-navbar a#catalog-header {
 	font-family: "PT Sans";
-	font-size: 1.8rem;
- 	// @media(max-width: 850px) {
- 	// 	margin-left: -5px;
- 	// 	padding-left: 0;
- 	// 	margin-bottom: 10px;
- 	// }
- 	// @media(max-width: 601px) {
- 	// 	margin-left: 10px;
- 	// }
- 	// @media(max-width: 485px) {
- 	// 	float: none;
- 	// 	font-size: .65em;
- 	// 	margin: 0 auto;
- 	// }
+
+	@media(max-width:485px) {
+	 font-size: 1.4rem;
+	}
 }
 
 .user-links {
 	padding: 0.625rem 0.625rem 0;
 	a:hover {
 		text-decoration: underline;
+	}
+
+	@media(max-width:485px) {
+		padding: 0;
 	}
 }
 
@@ -236,109 +199,46 @@ div.site-message {
  }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
- .header-links a {
-   color: $black;
- }
+.path-links .header-links {
+	 color: $black;
+	 display: block;
+	 font-family: "PT Sans";
+	 font-size: 1.4rem;
 
- nav ul.nav-header-links {
-   border-top: none;
- }
+	 @media(max-width: 485px) {
+  		border-radius: 5px;
+  	}
+}
 
- ul.nav-header-links li.header-links {
- 	font-family: "PT Sans";
- 	list-style-type: none;
-   margin: 0px;
- }
-
- nav ul.nav-header-links li.header-links:hover,
- nav ul.nav-header-links li.header-links.active {
+.path-links .header-links:hover,
+.path-links .header-links.active {
    background-color: $red;
    border-color: $red;
+	 color: $white;
  }
 
- nav ul.nav-header-links li.header-links:hover a,
- nav ul.nav-header-links li.header-links.active a {
-   color: $white;
- }
-
- .nav-btn, .nav-btn:visited, .nav-btn:hover, .nav-btn:active {
- 	border: 2px solid white;
- 	color: white;
- 	float:left;
- 	letter-spacing: 1px;
- 	padding: 8px 10px 7px 10px;
- 	@media(max-width: 485px) {
- 		border-radius: 5px;
- 		float: none;
- 	}
- }
-
-  .path-links {
- 	background-color: $white;
- 	border-bottom: 1px solid #ccc;
- 	height: 51px;
- 	@media(max-width: 600px) {
- 		padding: 0;
- 		height: 42px;
- 	}
- 	@media(max-width: 485px) {
- 		height: auto;
- 		padding-bottom: 25px;
- 		width: 100%;
- 	}
- }
-
- .nav-header-links {
- 	display: inline-block;
- 	font-size: 1.5em;
+ .header-links {
  	@media(max-width: 768px) {
  		font-size: 18px;
  	}
  	@media(max-width: 600px) {
  		font-size: 14px;
- 		padding: 0;
+		margin-top: 0 !important;
+		padding-top: 10px;
  	}
  	@media(max-width: 485px) {
+		border: 1px solid $red;
+		margin: 10px auto 0 auto !important;
+		padding-bottom: 10px;
+		padding-top: 10px;
+		text-align: center;
+		width: 300px;
  		font-size: 1.6em;
- 		margin-right: 20px;
  	}
- }
 
- .header-links {
- 	height: 50px;
- 	@media(max-width: 601px) {
- 		margin-top: 0 !important;
- 		padding-top: 10px;
- 	}
- 	@media(max-width: 485px) {
- 		border: 1px solid $red;
- 		margin-top: 10px !important;
- 		padding-bottom: 10px;
- 		padding-top: 10px;
- 		text-align: center;
- 		width: 300px;
- 	}
- 	@media(max-width: 320px) {
+	@media(max-width: 320px) {
  		width: 200px;
  	}
- }
-
-  .path-links {
- 	width: 100%;
-     /* Firefox */
-     display: -moz-box;
-     -moz-box-pack: center;
-     -moz-box-align: center;
-
-     /* Safari and Chrome */
-     display: -webkit-box;
-     -webkit-box-pack: center;
-     -webkit-box-align: center;
-
-     /* W3C */
-     display: box;
-     box-pack: center;
-     box-align: center;
  }
 
 /* RECORD NAV TOOLS */
