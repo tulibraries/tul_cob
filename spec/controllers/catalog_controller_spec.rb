@@ -8,6 +8,7 @@ RSpec.describe CatalogController, type: :controller do
   let(:doc_id) { "991012041239703811" }
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
   let(:mock_document) { instance_double(SolrDocument) }
+  let(:search_service) { instance_double(Blacklight::SearchService) }
 
   describe "show action" do
     it "gets the staff_view_path" do
@@ -75,8 +76,9 @@ RSpec.describe CatalogController, type: :controller do
     let(:doc) { SolrDocument.new(id: "my_fake_doc") }
 
     before do
+      allow(search_service).to receive(:fetch).and_return([mock_response, [doc]])
+      allow(controller).to receive(:search_service).and_return(search_service)
       allow(doc).to receive(:material_from_barcode) { "CHOSEN BOOK" }
-      #allow(controller).to receive(:fetch) { [ mock_response, [doc] ] }
     end
 
     context "no selection is present" do
