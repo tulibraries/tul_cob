@@ -9,10 +9,12 @@ RSpec.describe PrimoCentralController, type: :controller do
   let(:document) { PrimoCentralDocument.new(doc, options) }
   let(:helpers) { double("helper", base_path: "/") }
   let(:mock_response) { instance_double(Blacklight::PrimoCentral::Response) }
+  let(:search_service) { instance_double(Blacklight::SearchService) }
 
   before(:each) do
     allow(controller).to receive(:helpers).and_return(helpers)
-    allow(controller).to receive_messages fetch: [mock_response, document]
+    allow(controller).to receive(:search_service).and_return(search_service)
+    allow(search_service).to receive(:fetch).and_return([mock_response, document])
   end
 
   describe "#browse_creator" do
