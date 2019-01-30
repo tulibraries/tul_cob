@@ -15,7 +15,7 @@ RSpec.describe CatalogController, type: :controller, relevance: true do
 
   let(:results) { JSON.parse(response.body) }
 
-  let(:ids) { (results.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact }
+  let(:ids) { (results.fetch("data") || {}).map { |doc| doc.fetch("id") }.compact }
 
   describe "Query results as JSON" do
     context "search for title 'peer interaction and second language learning'" do

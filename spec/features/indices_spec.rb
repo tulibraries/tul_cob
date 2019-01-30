@@ -61,7 +61,7 @@ RSpec.feature "Indices" do
       within(".document-position-0 h3") do
         expect(page).to have_text(title)
       end
-      within(".document-metadata") do
+      within first(".document-metadata") do
         expect(page).to have_text "Resource Type:"
         expect(page).to have_text "Book"
         expect(page).to have_text "Author/Creator:"
@@ -85,7 +85,7 @@ RSpec.feature "Indices" do
       fill_in "q", with: item["title"]
       click_button "search"
       expect(current_url).to eq item["url"]
-      within(".documentHeader") do
+      within first(".documentHeader") do
         click_link item["title"]
         expect(current_url).to eq item_url
         within("h3") do
