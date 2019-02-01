@@ -1,6 +1,17 @@
 @import "partials/_vars.scss";
 
 /* === GENERAL STYLES === */
+.breadcrumb {
+  background-color: transparent;
+  font-size: 0.875rem;
+}
+
+.breadcrumb > li + li:before {
+    color: #ccc;
+    content: "/";
+    padding: 0 5px;
+}
+
 #documents {
   background-color: $white;
   border-radius: 0 0 5px 5px;
@@ -11,10 +22,6 @@
 }
 div #documents .document {
   border-bottom: none !important;
-}
-
-#previousNextDocument {
-  padding: 20px 20px 10px 20px;
 }
 
 #record-page-content {
@@ -179,10 +186,11 @@ dd ul {
   width: 100px;
 }
 
-img {
-  height: auto;
+img.default {
+  height: 100px;
   max-height: 100%;
   max-width: 100%;
+  opacity: .25;
   width: auto;
 }
 
