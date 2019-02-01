@@ -29,7 +29,7 @@
     <%= content_for(:head) %>
     <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="bg-background-grey <%= render_body_class %>">
     <div id="page-wrapper">
       <%= render :partial => "shared/banner" %>
 
@@ -37,13 +37,7 @@
 
       <%= render partial: "shared/modal" %>
 
-      <div id="main-container" class="<%= container_classes %>">
-
-        <div class="breadcrumb-wrapper">
-          <ol class="breadcrumb">
-            <%= render_breadcrumbs :tag => :li, :separator => "" %>
-          </ol>
-        </div>
+      <div id="main-container" class="<%= container_classes %>"
 
         <div class="row">
           <%= yield %>

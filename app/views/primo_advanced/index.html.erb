@@ -1,5 +1,11 @@
 <div id="stimulus-warning" class="alert alert-danger"></div>
 
+<div class="breadcrumb-wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs :tag => :li, :separator => "" %>
+  </ol>
+</div>
+
 <% @page_title = "Articles Advanced Search - #{application_name}" %>
 
 <div class="advanced-search-form col-sm-12">

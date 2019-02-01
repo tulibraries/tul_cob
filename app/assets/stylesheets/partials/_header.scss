@@ -2,13 +2,12 @@
 
 /* BANNER */
 div.site-message {
-	background: $tan;
 	border-width: 2px !important;
 	font-size: 0.875rem;
   padding: 0.625rem 0.625rem 0 0.625rem;
 
 	@media(max-width: 485px) {
-		padding: auto 10px;
+		padding: auto 0.625rem;
 	}
 }
 
@@ -18,7 +17,11 @@ div.site-message {
 	a:hover {
 		text-decoration: none !important;
 	}
- }
+}
+
+.header-logo {
+	height: 4.375rem;
+}
 
 .logo-text {
 	color: $black;
@@ -33,13 +36,11 @@ div.site-message {
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
 #red-navbar {
-	background-color: $red;
 	padding: 0 1rem;
 }
 
 #red-navbar a {
 	color: $white;
- 	background-color: $red;
  	text-align: center;
  	@media(max-width:485px) {
  		margin-top: -1em;
@@ -48,6 +49,7 @@ div.site-message {
 
 #red-navbar a#catalog-header {
 	font-family: "PT Sans";
+	font-size: 1.6rem;
 
 	@media(max-width:485px) {
 	 font-size: 1.4rem;
@@ -129,15 +131,12 @@ div.site-message {
 #search-navbar {
 	background-color: $tan;
 	border-bottom: 1px solid $red;
- // 	padding-bottom: 5px;
- // 	padding-top: 15px;
 }
 
 #search-navbar .container {
 	margin: 0 auto;
 	padding-left: 10%;
 	padding-right: 10%;
-
 }
 
 .input-group > .custom-select:not(:last-child) {
@@ -192,33 +191,38 @@ div.site-message {
  // 	}
  // }
  //
-	a.advanced_search {
-		color: $red;
-	 	font-weight: bold;
-	 	text-decoration: underline;
- }
+
+a.advanced_search {
+	color: $red;
+	font-weight: bold;
+	text-decoration: underline;
+}
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
-.path-links .header-links {
-	 color: $black;
-	 display: block;
-	 font-family: "PT Sans";
-	 font-size: 1.4rem;
+.path-links {
+	height: 3.125rem;
+}
 
-	 @media(max-width: 485px) {
+.path-links .header-links {
+	color: $black;
+	display: block;
+	font-family: "PT Sans";
+	font-size: 1.4rem;
+
+	@media(max-width: 485px) {
   		border-radius: 5px;
-  	}
+  }
 }
 
 .path-links .header-links:hover,
 .path-links .header-links.active {
-   background-color: $red;
-   border-color: $red;
-	 color: $white;
- }
+	background-color: $red;
+  border-color: $red;
+	color: $white;
+}
 
- .header-links {
- 	@media(max-width: 768px) {
+.header-links {
+	@media(max-width: 768px) {
  		font-size: 18px;
  	}
  	@media(max-width: 600px) {
@@ -238,8 +242,8 @@ div.site-message {
 
 	@media(max-width: 320px) {
  		width: 200px;
- 	}
- }
+	}
+}
 
 /* RECORD NAV TOOLS */
  .cite-modal {
