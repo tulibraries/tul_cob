@@ -35,13 +35,19 @@ div.site-message {
 }
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
-#red-navbar {
-	padding: 0 1rem;
+#red-navbar .container {
+	margin: 0;
+	padding-right: 0 !important;
+
+	@media(max-width:485px) {
+ 		justify-content: center;
+		padding-left: 0;
+ 	}
 }
 
 #red-navbar a {
 	color: $white;
- 	text-align: center;
+
  	@media(max-width:485px) {
  		margin-top: -1em;
  	}
@@ -62,70 +68,10 @@ div.site-message {
 		text-decoration: underline;
 	}
 
-	@media(max-width:485px) {
-		padding: 0;
-	}
+	@media(max-width: 485px) {
+  	padding: 0 0 0 0.625rem ;
+  }
 }
-
- // .navbar-right {
- // 	@media(max-width: 991px) {
- // 		margin-top: -50px;
- // 	}
- // 	@media(max-width: 768px) {
- // 		padding-right: 20px;
- // 	}
- // 	@media(max-width: 601px) {
- // 		margin-top: -15px;
- // 	}
- // 	@media(max-width: 485px) {
- // 		float: right;
- //  		left: -50%;
- // 		margin-top: 0;
- // 		padding-right: 0;
- // 		position: relative;
- //  		text-align: left;
- // 	}
- // }
- //
- // .navbar-right ul.navbar-nav  {
- //   display: block;
- // 	@media(max-width: 950px) {
- // 		margin-left: 300px;
- // 	}
- // 	@media(max-width: 750px) {
- // 		margin-left: 250px;
- // 	}
- // 	@media(max-width: 485px) {
- // 		left: 50%;
- // 		margin-left: auto;
- // 		position: relative;
- // 	}
- // }
- //
- // .navbar-right li {
- // 	float: left;
- // 	@media(max-width: 1100px) {
- // 		margin-top: 7px;
- // 	}
- // 	@media(max-width: 850px) {
- // 		margin-top: 5px;
- // 	}
- // }
- //
- // .navbar-right > .nav > li > a {
- // 	color: $white;
- // 	text-decoration: underline;
- // 	@media (max-width: 320px) {
- // 		padding: 7px;
- // 	}
- // }
- //
- // #user-util-collapse .navbar-nav li a, a:visited, a:active {
- // 	background-color: transparent;
- // 	@media(max-width: 485px) {
- // 		margin-top: 0;
- // 	}
- // }
 
 /* HEADER WITH SEARCH INPUT */
 #search-navbar {
@@ -137,60 +83,16 @@ div.site-message {
 	margin: 0 auto;
 	padding-left: 10%;
 	padding-right: 10%;
+
+	@media(max-width: 485px) {
+  	padding: 0;
+  }
 }
 
 .input-group > .custom-select:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-
- //
- // #search-form-container {
- // 	margin-left: 15%;
- // 	text-align: center;
- // 	@media(max-width: 991px) {
- // 		margin-left: 10%;
- // 		padding-bottom: 5px;
- // 	}
- // 	@media(max-width: 485px) {
- // 		margin-left: 10px;
- // 		padding-bottom: 10px;
- // 		width: 100%;
- // 	}
- // }
- //
- // div #search-form-container form .search_q {
- // 	@media(max-width: 485px) {
- // 		width: 100%;
- // 	}
- // }
- //
- // .form-control:focus {
- // 	box-shadow: 0 0 8px rgba(165, 0, 48, 0.6);
- // }
- //
- // .navbar-form {
- // 	margin-left: -100px !important;
- // 	transform: translateY(-40%);
- // 	@media(max-width: 991px) {
- // 		margin: 20px auto -20px auto;
- // 		transform: translateY(-50%);
- // 	}
- // 	@media(max-width: 768px) {
- // 		margin: 15px auto 0 auto;
- // 		transform: translateY(-50%);
- // 	}
- // 	@media(max-width: 601px) {
- // 		margin: 20px auto -30px auto;
- // 		transform: translateY(-50%);
- // 	}
- // 	@media(max-width: 485px) {
- // 		margin: 0 auto -10px auto !important;
- // 		padding-top: 10px;
- // 		transform: translateY(-1%);
- // 	}
- // }
- //
 
 a.advanced_search {
 	color: $red;
@@ -200,7 +102,11 @@ a.advanced_search {
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
 .path-links {
-	height: 3.125rem;
+
+	@media(max-width: 485px) {
+		padding-bottom: 1.75rem;
+		padding-top: 1.25rem;
+  }
 }
 
 .path-links .header-links {
@@ -210,7 +116,7 @@ a.advanced_search {
 	font-size: 1.4rem;
 
 	@media(max-width: 485px) {
-  		border-radius: 5px;
+  	border-radius: 0.3125rem;
   }
 }
 
@@ -222,26 +128,29 @@ a.advanced_search {
 }
 
 .header-links {
+
 	@media(max-width: 768px) {
- 		font-size: 18px;
+ 		font-size: 1.125rem;
  	}
+
  	@media(max-width: 600px) {
  		font-size: 14px;
 		margin-top: 0 !important;
 		padding-top: 10px;
  	}
+
  	@media(max-width: 485px) {
-		border: 1px solid $red;
-		margin: 10px auto 0 auto !important;
-		padding-bottom: 10px;
-		padding-top: 10px;
+		border: 0.0625rem solid $red;
+		margin: 0.625rem auto 0 auto !important;
+		padding-bottom: 0.625rem;
+		padding-top: 0.625rem;
 		text-align: center;
-		width: 300px;
- 		font-size: 1.6em;
+		width: 18.75rem;
+ 		font-size: 1.6rem;
  	}
 
 	@media(max-width: 320px) {
- 		width: 200px;
+ 		width: 12.5rem;
 	}
 }
 
