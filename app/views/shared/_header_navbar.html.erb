@@ -1,11 +1,11 @@
-<nav id="logo-navbar" class="navbar navbar-header" role="navigation">
+<nav id="logo-navbar" class="navbar navbar-header bg-white" role="navigation">
   <%= link_to library_link, class: "header-name d-flex align-items-center" do %>
-    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", height:"60", alt: "temple-logo") %>
+    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
     <span class="logo-text">University Libraries</span>
   <% end %>
 </nav>
 
-<nav id="red-navbar" class="navbar navbar-header navbar-expand-sm" role="navigation">
+<nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red" role="navigation">
   <div class="container-fluid d-flex align-items-center no-padding ">
       <h1 class="">
         <%= link_to("Library Search", everything_path, id: "catalog-header") %>
