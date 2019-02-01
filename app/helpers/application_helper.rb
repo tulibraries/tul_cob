@@ -145,7 +145,7 @@ module ApplicationHelper
         type
       end
 
-    link_to(label, "https://library.temple.edu/library-search-faq")
+    link_to(label, "https://library.temple.edu/library-search-faq", class: "text-red")
   end
 
   def former_search_link
@@ -153,7 +153,7 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank", class: "text-red"
   end
 
   def explanation_translations(controller_name)
