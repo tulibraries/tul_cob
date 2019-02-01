@@ -6,11 +6,13 @@
 </nav>
 
 <nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red" role="navigation">
-  <div class="container-fluid d-flex align-items-center no-padding ">
-      <h1 class="">
+  <div class="container d-flex text-center align-items-center no-padding">
+      <h1>
         <%= link_to("Library Search", everything_path, id: "catalog-header") %>
       </h1>
-      <%= render partial: "/user_util_links" %>
+      <div>
+        <%= render partial: "/user_util_links" %>
+      </div>
   </div>
 </nav>
 
