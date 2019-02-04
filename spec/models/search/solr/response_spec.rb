@@ -4,12 +4,10 @@ require "rails_helper"
 
 RSpec.describe Search::Solr::Response, type: :model do
 
-  let (:config) { SearchController.blacklight_config }
-  let (:response) { Search::Solr::Response.new(facet_counts, {}, { blacklight_config: config }) }
-  let (:facet) { { name: "foo", value: "bar", hits: 1 } }
-
-
   describe ".merge_facet" do
+    let(:response) { Search::Solr::Response.new(facet_counts, {}, {}) }
+    let(:facet) { { name: "foo", value: "bar", hits: 1 } }
+
     before  do
       response.merge_facet(facet)
     end
@@ -37,13 +35,9 @@ RSpec.describe Search::Solr::Response, type: :model do
         expect(response.aggregations["cat"].items.first.hits).to eq(4)
       end
     end
-  end
 
-  def facet_counts
-    { "facet_counts" =>
-      { "facet_fields" => {
-        "cat" => [ "memory", 3, "card", 2 ],
-        "manu" => [ "belkin", 2, "canon", 2 ] } } }
+    def facet_counts
+      { "facet_counts" => { "facet_fields" => { "cat" => [ "memory", 3, "card", 2 ] } } }
+    end
   end
-
 end
