@@ -47,10 +47,6 @@ div.site-message {
 
 #red-navbar a {
 	color: $white;
-
- 	@media(max-width:485px) {
- 		margin-top: -1em;
- 	}
 }
 
 #red-navbar a#catalog-header {
@@ -69,7 +65,14 @@ div.site-message {
 	}
 
 	@media(max-width: 485px) {
-  	padding: 0 0 0 0.625rem ;
+  	padding: 0 0 0 0.625rem;
+  }
+}
+
+.user-links .nav-link {
+
+	@media(max-width: 485px) {
+  	padding: 0;
   }
 }
 
@@ -155,184 +158,121 @@ a.advanced_search {
 }
 
 /* RECORD NAV TOOLS */
- .cite-modal {
-   padding: 14px;
- }
+#record-page-nav-tools {
+	padding-top: 1.25rem;
+	width: 100% !important;
 
- #record-page-nav-tools {
-   float: right;
-   padding-right: 60px;
- }
+	@media(max-width: 485px) {
+		padding-bottom: 0.3125rem;
+   	text-align: center;
+  }
+}
 
- .nav-tools {
-   display: inline-block;
- }
+.search-widgets {
 
- .nav-tools li {
-   background-color: #f1efe7;
-   border-radius: 4px;
-   margin-right: 4px;
-   padding: 7px 14px;
- }
+	@media(max-width: 485px) {
+		padding-bottom: 1.0rem;
+  }
+}
 
- .nav-tools div.toggle_bookmark {
- 	min-height: auto;
-   padding-top: 0;
- }
+.nav-tools li {
+  background-color: $tan;
+ 	border-radius: 0.25rem;
+ 	display: inline-block;
+ 	margin-right: 0.25rem;
+ 	padding: 0.125rem;
+ 	list-style-type: none;
+}
 
- .nav-tools div.toggle_bookmark label {
-   color: $red;
-   min-width:auto;
- }
+#sendto button {
+ 	background-color: $tan;
+  border: 0;
+  color: $red;
+	font-size: 0.875rem;
 
- .nav-tools div.toggle_bookmark input.toggle_bookmark {
-   visibility: hidden!important;
- }
+	@media(max-width: 601px) {
+		background-color: $red;
+	  border: 0;
+	  color: $white;
+	}
+}
 
- .nav-tools div.toggle_bookmark span {
- 	left:-10px;
-   position:relative;
- }
+.sendto-menu {
+	background-color: $white;
+  border: 0;
+  color: $red;
+	padding: 0;
 
- #sendto {
- 	display:inline-block;
-   margin-top: -14px;
-   margin-left: -14px;
-   position:absolute;
- }
+	@media(max-width: 601px) {
+		background-color: $red;
+	  border: 0;
+	}
+}
 
- #bookmarks-sendto {
-   background-color: $white;
- 	display:inline-block;
- }
+.sendto-item .nav-link {
+	padding-bottom: 0;
+	@media(max-width: 601px) {
+		color: $white;
+	}
+}
 
- #sendto button {
- 	background-color: #f1efe7;
-   border: 0;
-   color: $red;
- }
+#nav-tools {
 
- #bookmarks-sendto button {
- 	background-color: #f1efe7;
-   border: 0;
-   color: $red;
-   padding: 8px 12px;
- }
+	@media (max-width: 601px) {
+    margin-top: 14px;
+	}
+}
 
- .clear-bookmarks {
-   color: $white!important;
-   display: inline-block;
- }
+#tools-navbar {
 
- #sendto-menu {
-   background-color: $white;
- }
+	@media (max-width: 601px) {
+		padding-left: 0;
+	}
+}
 
- #sendto .dropdown-menu {
-   background-color: $white;
-   width: 111px;
- }
+#tools-navbar li, #tools-navbar li a {
+	@media (max-width: 601px) {
+		background-color: $red;
+		color: $white;
+		display: block;
+		margin-bottom: 2px;
+		padding-left: 10px;
+		text-align: left;
+		width: 100%;
+	}
+}
 
- #bookmarks-sendto .dropdown-menu {
-   background-color: $white;
- 	left:auto;
-   top:auto;
- 	width: 111px;
- }
+ // div.navbar-form {
+ //   display:inline-block;
+ //   padding-top: 8px;
+ // }
+ //
+ // ul.navbar-nav {
+ //   margin: auto auto;
+ // }
+ //
+ // .blacklight-primo_central.blacklight-primo_central-show li.citation {
+ //   display:none !important;
+ // }
+ //
+ // .grouped-citations {
+ //   padding: 15px;
+ // }
 
- #sendto ul {
- 	background-color: $white;
-   float:none;
-   position:relative;
- }
+ // #sortAndPerPage {
+ //   background-color: $white;
+ //   border-radius: 5px;
+ //   margin: 0;
+ //   padding: 20px;
+ // 	@media(max-width: 485px) {
+ // 		text-align: center;
+ //   }
+ // }
+ //
+ // #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
+ //   color: $red;
+ // }
 
- .sendto-item {
- 	background-color: $white!important;
-   color: $red !important;
- 	display:block;
-   margin-left: 0;
-   width: 100%;
- }
-
- .sendto-item a {
- 	clear: both;
-   font-weight: normal;
-   line-height: 2em;
- 	padding: 3px 20px;
- }
-
- #refworks-form input[type="submit"] {
- 	border: none !important;
- 	background-color: $white;
- 	margin-left: 8px;
- }
-
- .sendto-item a, .sendto-item a:hover, .sendto-item a:focus {
- 	background-color: $white !important;
-   color: $red !important;
- }
-
- div.navbar-form {
-   display:inline-block;
-   padding-top: 8px;
- }
-
- ul.navbar-nav {
-   margin: auto auto;
- }
-
- .bookmarks-tools #tools-navbar {
-   display:inline-block;
-   padding-left: 14px;
- }
-
- .bookmarks-sort-and-per-page {
- 	margin-bottom: 0;
-   padding: 0;
- }
-
- #tools-navbar li, #tools-navbar li a {
-   display: inline-block;
- }
-
- .blacklight-primo_central.blacklight-primo_central-show li.citation {
-   display:none !important;
- }
-
- .bookmarks-back-btn {
- 	background-color: $white;
- 	border-color: #ccc;
- 	color: $red;
-   display: inline-block;
-   margin-left: 15px;
- }
-
- .bookmarks-back-btn:hover {
-   color: $red;
- }
-
- .grouped-citations {
-   padding: 15px;
- }
-
- .citation-btn {
- 	background-color: #f1efe7;
-   border: 0;
- 	border-radius: 5px;
-   color: $red;
-   padding: 8px 12px;
- }
-
- #sortAndPerPage {
-   background-color: $white;
-   border-radius: 5px;
-   margin: 0;
-   padding: 20px;
- 	@media(max-width: 485px) {
- 		text-align: center;
-   }
- }
-
- #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
-   color: $red;
- }
+ // .cite-modal {
+	//  padding: 14px;
+ // }
