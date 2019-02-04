@@ -42,7 +42,7 @@ class SearchController < CatalogController
       # We only care about cdm results count not bento box.
       cdm_total_items = results["cdm"]&.total_items
 
-      unless false #results["more"].blank? || cdm_total_items.nil?
+      unless results["more"].blank?
         items = results["more"][0...-1]
         items.engine_id = results["more"].engine_id
         items.total_items = results["more"].total_items
@@ -51,10 +51,10 @@ class SearchController < CatalogController
         resource_types = results["more"].last
         resource_types.custom_data.merge_facet(name: "format", value: "cdm", hits: cdm_total_items)
 
+        resource_types.engine_id = "resource_types"
         resource_types = ::BentoSearch::Results.new([resource_types])
         resource_types.engine_id = "resource_types"
-        resource_types.engine_id = "resource_types"
-        resource_types.total_items = 2 #results["more"].total_items
+        resource_types.total_items = results["more"].total_items
         resource_types.display_configuration = BentoSearch.get_engine("resource_types").configuration[:for_display]
 
         results.merge(
