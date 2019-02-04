@@ -1,7 +1,7 @@
 <% #Using the Bootstrap Pagination class  -%>
-<div id="record-page-nav-tools" class="d-flex justify-content-between align-items-start border-bottom border-grey">
+<div id="record-page-nav-tools" class="d-md-flex justify-content-between align-items-start">
   <% if current_search_session %>
-    <div class="search-widgets mr-auto">
+    <div class="search-widgets flex-sm-column flex-md-row">
       <%= link_back_to_catalog class: 'btn btn-sm btn-back-to-search', id: 'back_to_search' %>
       <%= link_to t('blacklight.search.start_over'), bento_search_engine_path, id: 'start_over', class: 'btn btn-sm' %>
     </div>
@@ -19,3 +19,5 @@
     <%= render partial: 'show_tools_navbar' %>
   </div>
 </div>
+
+<hr class="m-0 p-0 border-bottom border-grey" />
