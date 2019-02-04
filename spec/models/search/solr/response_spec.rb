@@ -28,7 +28,7 @@ RSpec.describe Search::Solr::Response, type: :model do
       end
     end
 
-    context "facet exits and field exists" do
+    context "facet exists and field exists" do
       let(:facet) { { name: "cat", value: "memory", hits: 4 } }
 
       it "appends the new field name and value and aggregations uses new value" do
