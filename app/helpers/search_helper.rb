@@ -2,12 +2,16 @@
 
 module SearchHelper
   ##
-  # Links More bento block facet back to catalog.
+  # Links More bento block facet back to catalog or content DM link.
   # @param [Blacklight::Solr::Response::Facets::FacetField] facet_field
   # @param [String] item
   # @return [String]
   def path_for_more_facet(facet_field, item)
-    search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))
+    if item.value == "cdm"
+      "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
+    else
+      search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))
+    end
   end
 
   def renderable_results(results = @results, options = {})
@@ -29,6 +33,7 @@ module SearchHelper
   def render_bento_results(results = @results, options = {})
     results_class = options[:results_class] || "row centered-bento bento-results"
     comp_class = options[:comp_class] || "col-xl-3 col-lg-3 col-md-3 col-sm-8 col-xs-12 bento_compartment"
+
     render partial: "bento_results", locals: {
       results_class: results_class,
       comp_class: comp_class,

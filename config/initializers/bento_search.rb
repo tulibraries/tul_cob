@@ -46,3 +46,11 @@ BentoSearch.register_engine("articles") do |conf|
     display.no_results_partial = "bento_search/no_article_results"
   end
 end
+
+BentoSearch.register_engine("cdm") do |conf|
+  conf.engine = "BentoSearch::CDMEngine"
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_article_results"
+  end
+end

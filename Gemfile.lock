@@ -31,6 +31,15 @@ GIT
       rails (>= 4.2, < 6)
 
 GIT
+  remote: https://github.com/tulibraries/cdm_rb.git
+  revision: d20d9c1adee7c29c3e471a79c63168dba34dbc26
+  branch: master
+  specs:
+    cdm (0.1.0)
+      httparty
+      nokogiri
+
+GIT
   remote: https://github.com/tulibraries/primo
   revision: 06e423aa9573b20cc6c4f5d592c3ef0eef1016b7
   specs:
@@ -505,6 +514,7 @@ DEPENDENCIES
   browser
   byebug
   capybara
+  cdm!
   coffee-rails (~> 4.2)
   database_cleaner
   devise
