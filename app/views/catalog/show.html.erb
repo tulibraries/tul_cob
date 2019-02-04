@@ -1,10 +1,9 @@
-<div id="record-page-content" class="col-12">
+<div class="breadcrumb-wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs :tag => :li, :separator => "" %>
+  </ol>
+</div>
 
-  <div class="breadcrumb-wrapper">
-    <ol class="breadcrumb">
-      <%= render_breadcrumbs :tag => :li, :separator => "" %>
-    </ol>
-  </div>
-  
+<div id="record-page-content" class="col-12">
   <%= render_document_main_content_partial %>
 </div>
