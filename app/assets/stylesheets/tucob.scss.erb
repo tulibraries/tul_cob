@@ -1,33 +1,81 @@
 @import "partials/_vars.scss";
 
 /* === GENERAL STYLES === */
+body {
+  font-size: 0.875rem;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  font-size: 0.875rem;
+}
+
+.breadcrumb > li + li:before {
+    color: #ccc;
+    content: "/";
+    padding: 0 0.3125rem;
+}
+
 #documents {
   background-color: $white;
-  border-radius: 0 0 5px 5px;
+  border-radius: 0 0 0.3125rem 0.3125rem;
   border-top: 1px solid #CCC;
   margin-left: 0;
-  margin-top: -5px;
+  margin-top: -0.3125rem;
   padding: 0 0 0 20px;
 }
 div #documents .document {
   border-bottom: none !important;
 }
 
-#previousNextDocument {
-  padding: 20px 20px 10px 20px;
+.btn-link {
+  color: $red;
 }
 
+.btn-link:hover {
+  color: $red;
+  text-decoration: underline;
+}
+
+/* === INDIVIDUAL RECORD PAGES === */
 #record-page-content {
   background-color: $white;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+
+  @media(max-width: 600px) {
+    text-align: center;
+ 	}
 }
 
 .record-page-wrapper {
-  padding: 40px;
+  padding: 1.25rem;
 }
 
 #record-page-content h1 {
-  padding-left: 20px;
+  font-size: 1.75rem;
+  padding-left: 1.15rem;
+  padding-top: 1.25rem;
+}
+
+.record-page-wrapper .thumbnail {
+
+  @media(max-width: 600px) {
+    padding-bottom: 1.25rem;
+ 	}
+
+}
+
+dl dt.index-label {
+  padding-right: 0;
+  text-align: right;
+
+  @media(max-width: 600px) {
+    text-align: left;
+ 	}
+}
+
+dl dd {
+  text-align: left;
 }
 
 #record-view-iframe, #stafflink {
@@ -35,18 +83,9 @@ div #documents .document {
   max-width: 850px;
 }
 
-hr.document-divider {
-	margin: 0 30px 0 10px;
-	padding: 0;
-}
-
 #stafflink {
   padding-top: 10px;
   padding-left: 7px;
-}
-
-h1[itemprop="name"] {
-  font-size: 28px;
 }
 
 h1.advanced.page-header a {
@@ -60,15 +99,7 @@ h1.advanced.page-header a {
   }
 }
 
-.btn-link {
-  color: $red;
-}
-
-.btn-link:hover {
-  color: $red;
-  text-decoration: underline;
-}
-
+/* === INDEX SEARCH RESULTS=== */
 .explantion-wrapper {
   position: inherit;
   justify-content: space-between;
@@ -109,7 +140,7 @@ h1.advanced.page-header a {
 }
 
 .index-label {
-  color: #595959 !important;
+  color: #595959;
 }
 
 .list_items {
@@ -174,24 +205,15 @@ dd ul {
 /* === BOOK COVER THUMBNAILS  === */
 .thumbnail {
   border: 0;
-  display: block;
   padding: 0;
-  width: 100px;
 }
 
-img {
-  height: auto;
+img.default {
+  height: 100px;
   max-height: 100%;
   max-width: 100%;
+  opacity: .25;
   width: auto;
-}
-
-.record-view.thumbnail {
-  border: 0 !important;
-}
-
-.record-view.thumbnail img {
-  border: 0 !important;
 }
 
 .invisible {
@@ -232,169 +254,86 @@ img {
 }
 
 /* === MEDIA QUERIES === */
-@media (min-width: 992px) {
-  .document dt {
-    margin-left: 90px;
-    text-align: right;
-    white-space: normal;
-    width: 142px;
-    word-break: break-word;
-  }
-  .dl-horizontal dd {
-    margin-left: 240px;
-  }
-  .dl-horizontal dd.blacklight-availability {
-    margin-left: 21px;
-    padding-top: 5px;
-  }
-}
-
-@media (max-width: 991px) {
-  .document dt {
-    float: none;
-    margin-left: 0px;
-    text-align: left;
-    white-space: normal;
-    width: 100px;
-    word-break: break-word;
-  }
-  .dl-horizontal dd {
-    margin-left: 0px;
-    width: 100%;
-  }
-  .book-info-srch {
-    float:none;
-    margin-left: 21px;
-  }
-  #record-page-nav-tools {
-    clear: both;
-    float: left!important;
-    padding-top: 14px;
-    padding-right: 0;
-  }
-  .aeon-request {
-    float: none;
-    margin-top: 0 !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .book_format {
-    margin-left: 21px;
-  }
-  span.book {
-    margin-left: 0;
-  }
-  #appliedParams {
-    padding-left: 7px;
-  }
-  #previousNextDocument {
-    padding-left: 14px;
-  }
-  #document h1 {
-    padding-left: 14px;
-  }
-  .col-xs-12 {
-    float: none;
-  }
-}
-
-@media (max-width: 601px) {
-  .input-group-addon {
-    padding: 0;
-  }
-  #nav-tools {
-    margin-top: 14px;
-    width: 100%;
-  }
-  #tools-navbar {
-    padding-left: 0;
-  }
-  #tools-navbar li, #tools-navbar li a {
-    background-color: $red !important;
-    border-radius: 0;
-    color: $white !important;
-    display: block;
-    margin-bottom: 2px;
-    padding-left: 10px;
-    width: 100%;
-  }
-  .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
-    background-color: transparent !important;
-    border-radius: 0;
-    color: $red !important;
-    display: block;
-    margin-bottom: 2px;
-    padding-left: 10px;
-    width: 100%;
-  }
-  #bookmarks-sendto .dropdown-menu {
-    left: auto !important;
-    position: absolute;
-    top: auto !important;
-  }
-  .nav-tools div.toggle_bookmark {
-    padding-top: 0;
-    min-height: auto;
-  }
-  .nav-tools div.toggle_bookmark label {
-    color: $white;
-    min-width: auto;
-  }
-  .nav-tools div.toggle_bookmark input.toggle_bookmark {
-    visibility: hidden!important;
-  }
-  .nav-tools div.toggle_bookmark span {
-    left:-10px;
-    position:relative;
-  }
-  #sendto {
-    background-color: transparent;
-    display:block;
-    float: none!important;
-    margin-top: auto;
-    margin-left: auto;
-    position:relative;
-    z-index:0;
-  }
-  #sendto button {
-    background-color: $red;
-    border: 0;
-    color: $white;
-  }
-  #sendto-menu {
-    background-color: $red;
-  }
-  #sendto ul {
-    background-color: $white;
-    float:none;
-    position:relative;
-  }
-  #sendto .dropdown-menu {
-    background-color: $red;
-    width: 100%;
-  }
-  .sendto-item {
-    background-color: $red !important;
-    display:block;
-    margin-left: 0;
-  }
-  .pub-date-separator {
-    margin-left: 0;
-  }
-  #range_pub_date_sort_end {
-    margin-left: 0;
-  }
-  .submit-buttons {
-    margin-right: 0;
-  }
-}
-
-@media(max-width:485px) {
-  .submit-buttons {
-    margin-top: 20px;
-  }
-}
+// @media (min-width: 992px) {
+// }
+//
+// @media (max-width: 991px) {
+//   .book-info-srch {
+//     float:none;
+//     margin-left: 21px;
+//   }
+//   #record-page-nav-tools {
+//     clear: both;
+//     float: left!important;
+//     padding-top: 14px;
+//     padding-right: 0;
+//   }
+//   .aeon-request {
+//     float: none;
+//     margin-top: 0 !important;
+//   }
+// }
+//
+// @media (max-width: 768px) {
+//   .book_format {
+//     margin-left: 21px;
+//   }
+//   span.book {
+//     margin-left: 0;
+//   }
+//   #appliedParams {
+//     padding-left: 7px;
+//   }
+//   #previousNextDocument {
+//     padding-left: 14px;
+//   }
+//   #document h1 {
+//     padding-left: 14px;
+//   }
+// }
+//
+// @media (max-width: 601px) {
+//   .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
+//     background-color: transparent !important;
+//     border-radius: 0;
+//     color: $red !important;
+//     display: block;
+//     margin-bottom: 2px;
+//     padding-left: 10px;
+//     width: 100%;
+//   }
+//   .nav-tools div.toggle_bookmark {
+//     padding-top: 0;
+//     min-height: auto;
+//   }
+//   .nav-tools div.toggle_bookmark label {
+//     color: $white;
+//     min-width: auto;
+//   }
+//   .nav-tools div.toggle_bookmark input.toggle_bookmark {
+//     visibility: hidden!important;
+//   }
+//   .nav-tools div.toggle_bookmark span {
+//     left:-10px;
+//     position:relative;
+//   }
+//
+//   .pub-date-separator {
+//     margin-left: 0;
+//   }
+//   #range_pub_date_sort_end {
+//     margin-left: 0;
+//   }
+//   .submit-buttons {
+//     margin-right: 0;
+//   }
+// }
+//
+// @media(max-width:485px) {
+//   .submit-buttons {
+//     margin-top: 20px;
+//   }
+// }
 
 /* === MEDIA QUERIES SHOULD BE AT THE END OF THE FILE === */
 /* === PLEASE PUT NEW CSS STYLES ABOVE LINE 261 OR IN A PARTIAL === */

@@ -19,7 +19,6 @@
  *
 */
 @import "partials/_vars.scss";
-
 @import 'bootstrap';
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
@@ -33,7 +32,9 @@
 @import "partials/_requests.scss";
 @import "partials/_sms_form.scss";
 @import "partials/_typography.scss";
+@import "partials/_bookmarks.scss";
 @import "partials/_users.scss";
 @import "tucob";
+@import "icons";
 
 @import url('https://fonts.googleapis.com/css?family=PT+Sans');
