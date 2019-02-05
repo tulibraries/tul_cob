@@ -4,6 +4,8 @@ module BentoSearch
   class CDMEngine
     include BentoSearch::SearchEngine
 
+    delegate :blacklight_config, to: ::SearchController
+
     def search_implementation(args)
       query = args.fetch(:query, "")
 
