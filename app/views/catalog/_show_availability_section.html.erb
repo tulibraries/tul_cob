@@ -1,11 +1,10 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 
-<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="panel col-sm-10">
-  <div class="availability-panel-heading panel-heading">
-    <h4 id="availability-heading" class="text-left">Availability</h4>
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card mx-auto border-0">
+  <div class="availability-card-heading card-title d-inline-flex justify-content-between align-items-center">
+    <h4 id="availability-heading">Availability</h4>
     <div id="heading-request">
-
       <%= doc_presenter.field_value(blacklight_config.show_fields["po_link"]) %>
 
       <div id="requests-container" class="hidden">
@@ -22,16 +21,14 @@
   <%= render_purchase_order_availability(document: document) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
-      <div class="panel-content" >
-        <div id="avail-spinner" data-target="show.spinner" class="spinner">
-          <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>
-          Loading Availability
-        </div>
-        <div class="table-wrapper hidden">
-          <div data-target="show.panel"></div>
-          <div><%= render "check_holdings", document: document %></div>
-        </div>
+    <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
+      <div id="avail-spinner" data-target="show.spinner" class="spinner">
+        <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>
+        Loading Availability
+      </div>
+      <div class="table-wrapper hidden">
+        <div class="border-right border-tan-border" data-target="show.panel"></div>
+        <div><%= render "check_holdings", document: document %></div>
       </div>
     </div>
   <% end %>
