@@ -5,7 +5,7 @@ module Search::Solr
     def merge_facet(name:, value:, hits: nil)
       if self.dig("facet_counts", "facet_fields", name)
         # We need to sort on merge or facet item always appends to list.
-        sort_proc = blacklight_config.facet_fields[name].sort_proc ||
+        sort_proc = blacklight_config.facet_fields[name]&.sort_proc ||
           -> (f) { (v, _) = f; -v.titleize }
 
         merged = Hash[*facet_fields[name]]

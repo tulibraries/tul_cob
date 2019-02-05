@@ -9,7 +9,7 @@ class SearchController < CatalogController
     config.response_model = Search::Solr::Response
 
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true
-    config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet, helper_method: :translate_resource_type_code, show: true, limit: -1, sort_method: nil
+    config.add_facet_field "format", label: "Resource Type", url_method: :path_for_more_facet, helper_method: :translate_resource_type_code, show: true, limit: -1
   end
 
   def index
