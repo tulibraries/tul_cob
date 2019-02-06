@@ -5,11 +5,11 @@ require "rails_helper"
 RSpec.describe Search::Solr::Response, type: :model do
 
   describe ".merge_facet" do
-    let(:config) { CatalogController.blacklight_config }
+    let(:config) { Blacklight::Configuration.new }
     let(:response) { Search::Solr::Response.new(facet_counts, {}, { blacklight_config: config }) }
     let(:facet) { { name: "foo", value: "bar", hits: 1 } }
 
-    before  do
+    before(:each)  do
       response.merge_facet(facet)
     end
 
@@ -31,9 +31,7 @@ RSpec.describe Search::Solr::Response, type: :model do
       let(:facet) { { name: "cat", value: "memory", hits: 4 } }
 
       it "merges the new field overriding the old value" do
-        expect(response.aggregations["cat"].items.count).to eq(2)
-        expect(response.aggregations["cat"].items.last.value).to eq("memory")
-        expect(response.aggregations["cat"].items.last.hits).to eq(4)
+        expect(response.facet_fields["cat"]).to eq(["card", 2, "memory", 4])
       end
     end
 
@@ -47,6 +45,16 @@ RSpec.describe Search::Solr::Response, type: :model do
 
       it "uses the defining sorting proc to do the sorting" do
         expect(response.facet_fields["cat"]).to eq(["memory", 3, "card", 2, "bar", 1])
+      end
+    end
+
+    context "mutiple merges on same field" do
+      it "uses the last merged values"  do
+        response.merge_facet(name: "cat", value: "bar", hits: 2)
+        response.merge_facet(name: "cat", value: "bar", hits: 3)
+        response.merge_facet(name: "cat", value: "bar", hits: 4)
+
+        expect(response.facet_fields["cat"]).to eq(["bar", 4, "card", 2, "memory", 3])
       end
     end
 
