@@ -216,16 +216,16 @@ a.catalog_startOverLink {
 
 #sidebar {
 	background-color: $white;
-	border-radius: 5px;
-	@media(max-width: 768px) {
-		margin: -20px auto;
-		padding-top: 20px;
-		width: 95%;
-	}
-	@media(max-width: 485px) {
-		margin: -80px auto 20px auto;
-		width: 100%;
-	}
+	// border-radius: 5px;
+	// @media(max-width: 768px) {
+	// 	margin: -20px auto;
+	// 	padding-top: 20px;
+	// 	width: 95%;
+	// }
+	// @media(max-width: 485px) {
+	// 	margin: -80px auto 20px auto;
+	// 	width: 100%;
+	// }
 }
 
 input[value|="Apply"] {
