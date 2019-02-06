@@ -1,7 +1,4 @@
 <% doc_presenter = index_presenter(document) %>
-<div class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >
-</div>
-
   <%= render_online_availability_button(document) %>
   <%= render_purchase_order_availability(document: document) %>
 
