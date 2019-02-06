@@ -26,13 +26,15 @@ body {
 }
 
 #documents {
-  background-color: $white;
-  border-radius: 0 0 0.3125rem 0.3125rem;
-  border-top: 1px solid #CCC;
+  // border-top: 1px solid #CCC;
   margin-left: 0;
-  margin-top: -0.3125rem;
   padding: 0 0 0 1.25rem;
+
+  @media(max-width: 600px) {
+    padding-left: 0.9375rem !important;
+  }
 }
+
 div #documents .document {
   border-bottom: none !important;
 }
@@ -103,28 +105,13 @@ dl dd {
 
 /* === INDEX SEARCH RESULTS=== */
 .explantion-wrapper {
-  position: inherit;
-  justify-content: space-between;
-  margin: 0 auto 20px auto;
-  padding-left: 8%;
   @media(max-width: 600px) {
-    margin: 30px auto 20px auto;
-  }
-  @media(max-width: 600px) {
-    margin: 0 auto 20px auto;
+    padding-left: 0.9375rem !important;
   }
 }
 
 .explanation {
   font-size: 1.1em;
-}
-
-.explantion-btn {
-  font-size: 1.1em;
-  transform: translateY(-20%);
-  @media(max-width: 485px) {
-    transform: translateY(70%);
-  }
 }
 
 .format-concatenator {
