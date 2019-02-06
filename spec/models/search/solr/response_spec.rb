@@ -38,7 +38,7 @@ RSpec.describe Search::Solr::Response, type: :model do
     context "when a sorting procedure is provided" do
       let(:facet) { { name: "cat", value: "bar", hits: 1 } }
       let(:config) {
-        bc = CatalogController.blacklight_config
+        bc = Blacklight::Configuration.new
         bc.add_facet_field "cat", sort_proc: -> (f) { (_, h) = f; -h }
         bc
       }
