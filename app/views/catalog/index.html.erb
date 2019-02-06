@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <div id="content" class="<%= "col-md-8" if show_sidebar? %>">
+  <div id="content" class="<%= "col-md-8 bg-white rounded" if show_sidebar? %> mt-4 ml-4 pr-0 pl-0">
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render 'home' %>
