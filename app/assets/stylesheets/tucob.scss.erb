@@ -114,22 +114,48 @@ dl dd {
   font-size: 1.1em;
 }
 
-.format-concatenator {
-  padding-left:7px;
-  padding-right:14px;
+.document-title-heading {
+  font-size: 0.875rem;
 }
 
-.document-metadata form {
-  margin-top: 14px;
+.book_info dl dd {
+  margin-right: 2.8125rem;
 }
 
-.index-label {
-  color: #595959;
+.book_info .index-label {
+  margin-left: 3.75rem;
 }
 
-.list_items {
-  list-style-type: none;
+.library-dd {
+  margin-right: 2.8125rem;
+  padding-left: 0.9375rem;
 }
+
+// .book_info dl dt {
+//   text-align: right;
+// }
+
+// .book_info dl dt,
+// .book_info dl dd {
+//   display: inline-block;
+// }
+
+// .format-concatenator {
+//   padding-left:7px;
+//   padding-right:14px;
+// }
+//
+// .document-metadata form {
+//   margin-top: 14px;
+// }
+//
+// .index-label {
+//   color: #595959;
+// }
+//
+// .list_items {
+//   list-style-type: none;
+// }
 
 /* === HOME PAGES === */
 div #main-container {
@@ -189,14 +215,16 @@ dd ul {
 /* === BOOK COVER THUMBNAILS  === */
 .thumbnail {
   border: 0;
+  display: block;
+  margin-top: 10px;
   padding: 0;
+  width: 100px;
 }
 
-img.default {
-  height: 100px;
+img {
+  min-height: 100px;
   max-height: 100%;
   max-width: 100%;
-  opacity: .25;
   width: auto;
 }
 
