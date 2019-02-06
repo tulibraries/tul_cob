@@ -242,6 +242,22 @@ a.advanced_search {
 	}
 }
 
+/* SEARCH RESULTS SORT AND PER PAGE */
+.page-links {
+	display: inline-block;
+	padding-top: 0.625rem;
+}
+
+#sort-dropdown .dropdown-item,
+#per-page-dropdown .dropdown-item {
+	color: $black;
+}
+
+#sort-dropdown button, #sort-dropdown button:hover,
+#per_page-dropdown button, #per_page-dropdown button:hover {
+	background-color: $white;
+}
+
  // div.navbar-form {
  //   display:inline-block;
  //   padding-top: 8px;
@@ -259,20 +275,7 @@ a.advanced_search {
  //   padding: 15px;
  // }
 
- // #sortAndPerPage {
- //   background-color: $white;
- //   border-radius: 5px;
- //   margin: 0;
- //   padding: 20px;
- // 	@media(max-width: 485px) {
- // 		text-align: center;
- //   }
- // }
  //
- // #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
- //   color: $red;
- // }
-
  // .cite-modal {
 	//  padding: 14px;
  // }
