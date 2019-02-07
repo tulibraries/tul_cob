@@ -7,7 +7,7 @@ module SearchHelper
   # @param [String] item
   # @return [String]
   def path_for_more_facet(facet_field, item)
-    if item.value == "cdm"
+    if item.value == "digital_collections"
       "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
     else
       search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))

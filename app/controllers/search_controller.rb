@@ -49,7 +49,7 @@ class SearchController < CatalogController
         items.display_configuration = results["more"].display_configuration
 
         resource_types = results["more"].last
-        resource_types.custom_data.merge_facet(name: "format", value: "cdm", hits: cdm_total_items)
+        resource_types.custom_data.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
 
         resource_types.engine_id = "resource_types"
         resource_types = ::BentoSearch::Results.new([resource_types])
