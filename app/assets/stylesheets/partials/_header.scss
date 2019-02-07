@@ -36,8 +36,8 @@ div.site-message {
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
 #red-navbar .container {
-	margin: 0;
-	padding-right: 0 !important;
+	margin-left: 0;
+	padding-right: 0;
 
 	@media(max-width:485px) {
  		justify-content: center;
