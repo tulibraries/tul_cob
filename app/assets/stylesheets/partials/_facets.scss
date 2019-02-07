@@ -126,43 +126,10 @@ a.btn.remove-constraints:hover, a.btn.remove-constraints:active, a.btn.remove-co
 	clear:both;
 }
 
-button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
-	background-color: $red !important;
-	border-color: #d43f3a !important;
-	color: $white !important;
-  span.avail-label.not-available {
-  	padding-left: 5px;
-  	font-size: 13px;
-  }
-}
-
-button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
-	background-color: #3A833A !important;
-	color: $white!important;
-	border-color: #224922 !important;
-  span.avail-label.available {
-  	padding-left: 14px;
-  	font-size: 15px;
-  }
-}
-
 a.btn-back-to-search, a.btn-back-to-search:focus, a.btn-back-to-search:hover, a.btn-back-to-search:active, a.btn-back-to-search:visited {
 	background-color: $white !important;
 	color: $red !important;
 	border-color: #ccc;
-}
-
-button.collapse-button .avail-label:after {
-	color: $white;         /* adjust as needed */
-	content: "\e114";    /* adjust as needed, taken from bootstrap.css */
-	float: right;        /* adjust as needed */
-	/* symbol for "opening" panels */
-  font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
-}
-
-button.collapse-button.collapsed .avail-label:after {
-  /* symbol for "collapsed" panels */
-	content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
 .availability-toggle-details {
