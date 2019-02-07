@@ -6,13 +6,10 @@
     <div class="row button-break"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div class="controls">
-        <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>">
+        <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>" aria-expanded="false" aria-controls="physical-document-<%=  document.id %>">
           <span role="spin" aria-expanded="false">Loading...</span>
+          <i class="fas" aria-hidden="true"></i>
         </button>
-        <div data-target="availability.spinner" class="spinner">
-          <span class="glyphicon glyphicon-refresh spinning"></span>
-          Loading Availability
-        </div>
 
         <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-controller="requests" data-target="show.request, availability.request">
           <% if user_signed_in? %>
@@ -24,6 +21,10 @@
       </div>
 
       <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container">
+        <div data-target="availability.spinner" class="spinner">
+          <span class="glyphicon glyphicon-refresh spinning"></span>
+          Loading Availability
+        </div>
         <div class="table-wrapper hidden">
           <div data-target="availability.panel"></div>
           <div><%= render "check_holdings", document: document, document_counter: document.id %></div>
