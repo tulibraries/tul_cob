@@ -48,6 +48,10 @@ div #documents .document {
   text-decoration: underline;
 }
 
+.hidden {
+  display: none;
+}
+
 /* === INDIVIDUAL RECORD PAGES === */
 #record-page-content {
   background-color: $white;
@@ -106,7 +110,7 @@ dl dd {
 /* === INDEX SEARCH RESULTS=== */
 .explantion-wrapper {
   @media(max-width: 600px) {
-    padding-left: 0.9375rem !important;
+    padding-left: 0.9375rem;
   }
 }
 
@@ -118,12 +122,21 @@ dl dd {
   font-size: 0.875rem;
 }
 
+.book_info {
+  margin-top: 20px;
+}
+
 .book_info dl dd {
   margin-right: 2.8125rem;
 }
 
 .book_info .index-label {
+  color: #595959;
   margin-left: 3.75rem;
+
+  @media(max-width: 600px) {
+    margin-left: 0;
+  }
 }
 
 .library-dd {
@@ -163,11 +176,12 @@ div #main-container {
 }
 
 #getting-started {
-  margin: 30px;
+  font-size: 1rem;
+  margin: 1.875rem;
 }
 
 #getting-started a, .everything-explanation a {
-  text-decoration: underline !important;
+  text-decoration: underline;
 }
 
 .everything-home-list {
@@ -175,29 +189,31 @@ div #main-container {
 }
 
 .books-home-text {
-  font-size: 16px;
-  margin: 30px;
-  text-align: center !important;
+  padding-left: 5rem;
+
+  @media(max-width: 600px) {
+    padding-left: 0;
+ 	}
 }
 
 /* === NO RESULTS === */
 .no-results-header {
   border-top: none;
-  float: none;
-  font-size: 18px;
-  padding-top: 20px;
+  font-size: 1.125rem;
+  padding-top: 1.25rem;
 }
 
 .no-results-tips {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .noresults {
-  padding-bottom: 20px !important;
+  padding-bottom: 1.25rem;
 }
 
 .not-at-temple {
-  font-size: 16px;
+  font-size: 1rem;
+  margin-right: 1.25rem;
 }
 
 /* === LISTS === */
@@ -213,16 +229,23 @@ dd ul {
 }
 
 /* === BOOK COVER THUMBNAILS  === */
-.thumbnail {
+div.thumbnail img.default {
+  height: 5.625rem;
+  width: 5.625rem;
+  opacity: .25;
+}
+
+.thumbnail a > img {
   border: 0;
   display: block;
-  margin-top: 10px;
+  height: auto;
+  margin-top: 1.25rem;
   padding: 0;
-  width: 100px;
+  max-width: 100%;
 }
 
 img {
-  min-height: 100px;
+  height: auto;
   max-height: 100%;
   max-width: 100%;
   width: auto;
