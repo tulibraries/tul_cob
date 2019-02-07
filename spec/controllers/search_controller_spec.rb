@@ -19,7 +19,7 @@ RSpec.describe SearchController, type: :controller do
 
       it "merges content-dm totals with resource types format facets" do
         facets = subject["resource_types"].first.custom_data.facet_fields
-        expect(facets).to eq("format" => [ "cdm", "415" ])
+        expect(facets).to eq("format" => [ "digital_collections", "415" ])
       end
 
     end
