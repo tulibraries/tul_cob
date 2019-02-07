@@ -1,3 +1,20 @@
+button.collapse-button .avail-label:after {
+	color: $white;
+  content:"\f078";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-left: 0.625rem;
+}
+
+button.collapse-button.collapsed .avail-label:after {
+  color: $white;
+  content:"\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-left: 0.625rem;
+}
+
+
 span.book,
 span.book_book_chapter,
 span.book_chapter,
@@ -126,6 +143,7 @@ span.check {
   background: transparent url(<%= asset_path 'icons/checkmark.svg' %>) no-repeat top left;
   padding-left: 20px;
 }
+
 span.close-icon {
   background: transparent url(<%= asset_path 'icons/close.svg' %>) no-repeat top left;
   padding-left: 20px;

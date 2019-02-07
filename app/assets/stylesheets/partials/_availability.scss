@@ -13,7 +13,7 @@
   color: $red;
   display: inline-block;
   font-family: "PT Sans";
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 #heading-request {
@@ -39,14 +39,14 @@
 }
 
 .table-wrapper {
-  max-height: 300px;
+  max-height: 18.75rem;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .table-wrapper::-webkit-scrollbar {
-  border-right: 1px solid $tan-border;
-  width: 10px;
+  border-right: 0.0625rem solid $tan-border;
+  width: 0.625rem;
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
@@ -54,7 +54,7 @@
 }
 
 #record-view-iframe {
-  max-width: 850px;
+  max-width: 53.125rem;
 }
 
 #availability-container {
@@ -74,12 +74,46 @@
     width: 7%;
   }
   td[headers*="status"] {
-    padding-right:4px;
+    padding-right: 0.25rem;
     width: 20%;
   }
 }
+
+/* === AVAILABILITY BUTTONS === */
+button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
+	background-color: $red;
+	border-color: #d43f3a;
+	color: $white;
+  text-align: center;
+  width: 7.5rem;
+  span.avail-label.not-available {
+  	font-size: 0.8125rem;
+		padding: 0.3125rem;
+  }
+}
+
+button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
+	background-color: $green;
+	color: $white;
+	border-color: #224922;
+  text-align: center;
+  width: 7.5rem;
+  span.avail-label.available {
+  	font-size: 0.9375rem;
+  }
+}
+
+/* === INDEX(SEARCH RESULTS) AVAILABILITY === */
+td.electronic_links {
+  border: 1px solid $tan-border;
+  padding: 0.75rem;
+}
+// #availability-container {
 //
-// /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
+//   @media(max-width: 760px) {
+// 		display: block;
+//   }
+// }
 // .availability {
 //   margin-top: 25px;
 // }
@@ -92,11 +126,14 @@
 //   display: inline;
 // }
 //
-// .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
-//   background-color: $dark-blue;
-//   color: $white !important;
-// }
-//
+.online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
+  background-color: $dark-blue;
+  color: $white;
+  font-size: 0.9375rem;
+  margin-bottom: 0.625rem;
+  width: 7.5rem;
+}
+
 
 
 // .show_page_records dd {
@@ -212,7 +249,6 @@
 //
 // span.avail-label {
 //   font-size: 15px;
-//   padding-right: 2px;
 // }
 //
 // .table > tbody > tr > td {
