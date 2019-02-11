@@ -4,7 +4,7 @@ module BentoSearch
   class BlacklightEngine
     include BentoSearch::SearchEngine
 
-    delegate :blacklight_config, :search_service_class, to: CatalogController
+    delegate :blacklight_config, :search_service_class, to: ::SearchController
 
     def search_implementation(args)
       query = args.fetch(:query, "")
