@@ -6,7 +6,7 @@
       <%= render :partial => "paginate_compact", :object => @response %>
     </div>
     <% sort_order_for_holdings(@items).each do |key,items| %>
-    <table id="availability-container" class="table m-0">
+    <table id="availability-container" class="table table-responsive m-0">
       <thead>
         <tr class="sr-only">
             <th scope="col" id="location">Item Location</th>

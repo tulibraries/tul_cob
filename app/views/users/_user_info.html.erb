@@ -1,11 +1,11 @@
 <div class="user-info row row-eq-height">
 	<div class="col col-md-5">
-	  <ul>
-	    <li><span>Name:</span> <%= current_user.name %></li>
-	    <li><span>Status:</span> Active </li>
-	    <li><span>Items checked out:</span> <%= @user.alma.total_loans %></li>
-	    <li><span>Items requested:</span> <%= @user.alma.total_requests %></li>
-	    <li><span>Current balance:</span>
+	  <ul class="user-info-list">
+	    <li><span class="user-info-label">Name:</span> <%= current_user.name %></li>
+	    <li><span class="user-info-label">Status:</span> Active </li>
+	    <li><span class="user-info-label">Items checked out:</span> <%= @user.alma.total_loans %></li>
+	    <li><span class="user-info-label">Items requested:</span> <%= @user.alma.total_requests %></li>
+	    <li><span class="user-info-label">Current balance:</span>
 	      <span class="balance"><%= number_to_currency(@user.alma.total_fines) %></span> </li>
 	     <li><%= link_to "Update name via TUPortal", "https://tuportal.temple.edu" %></li>
 	  </ul>
