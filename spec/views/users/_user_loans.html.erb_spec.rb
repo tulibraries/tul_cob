@@ -66,7 +66,7 @@ RSpec.describe "users/_loans_details.html.erb", type: :view do
     it "shows exclamation point in renewal column" do
       loans = double("Loan Set", all: [nonrenewable_loan])
       render partial: "users/loans_details", locals: { loans: loans }
-      expect(rendered).to have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
+      expect(rendered).to have_css('td.renewal-check i.fa-exclamation-circle[title="unable to renew"]')
     end
   end
 end
