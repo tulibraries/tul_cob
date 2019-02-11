@@ -1,7 +1,7 @@
 <div class="container user-fines" data-controller="fines" data-fines-url=<%= user_fines_path %>>
   <h2 class="user_section_title">My Fines</h2>
-  <table class="table table-hover table-responsive" border="0">
-    <caption>Table of Current Fines for this user</caption>
+  <table class="table user-table table-responsive border-0">
+    <caption class="sr-only">Table of Current Fines for this user</caption>
     <thead>
       <tr>
         <th width="2%">#</th>
@@ -24,7 +24,7 @@
       </tbody>
       <% end %>
   </table>
-  <div class="fines-link">
+  <div class="fines-link text-center">
     Fines cannot be paid electronically<br />
     <%= link_to "Learn more about late fines and replacement charges.", "http://library.temple.edu/services/privileges" %>
   </div>
