@@ -34,14 +34,11 @@
 //= require_tree .
 
 $(window).load(function(){
-	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
-	}
 	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
+		$('#bookmarks-tools').insertAfter('#documents');
+		$('#bookmarks-tools').removeClass('row');
+		$('.clear-bookmarks').insertAfter('#back_to_search');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
@@ -49,26 +46,14 @@ $(window).load(function(){
 });
 
 $(window).on('resize', function() {
-	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h2.top-content-title');
-	}
 	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
+		$('#bookmarks-tools').insertAfter('#documents');
+		$('#bookmarks-tools').removeClass('row');
+		$('.clear-bookmarks').insertAfter('#back_to_search');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
-	}
-});
-
-$(document).ajaxComplete(function(){
-	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h2.top-content-title');
 	}
 });
 
