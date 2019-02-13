@@ -6,6 +6,7 @@
 #
 
 require "httparty"
+require "fileutils"
 
 client_id = ENV["AZ_CLIENT_ID"]
 client_secret = ENV["AZ_CLIENT_SECRET"]
@@ -18,6 +19,7 @@ endpoint = "https://lgapi-us.libapps.com/1.2/az"
 token = cred["access_token"]
 response = HTTParty.get(endpoint, headers: { Authorization: "Bearer #{token}" }, query: { expand: "subjects,icons,friendly_url,az_types,az_props,permitted_uses" })
 
+FileUtils.mkdir_p "tmp/cache"
 File.open "tmp/cache/databases.json", "w+" do |file|
   file.write(response.body)
 end
