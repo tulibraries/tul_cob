@@ -5,8 +5,8 @@ class PrimoCentralController < CatalogController
   include CatalogConfigReinit
   include Blacklight::Document::Export
 
-  add_breadcrumb "Articles", :back_to_articles_path, only: [ :show ]
-  add_breadcrumb "Article", :primo_central_document_path, only: [ :show ]
+  add_breadcrumb "Articles", :back_to_articles_path, options: { id: "breadcrumbs_article" }, only: [ :show ]
+  add_breadcrumb "Record", :primo_central_document_path, only: [ :show ]
 
   helper_method :browse_creator
   helper_method :tags_strip
@@ -38,15 +38,15 @@ class PrimoCentralController < CatalogController
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
     # Search fields
-    config.add_search_field :any, label: "All Fields"
+    config.add_search_field :any, label: "All Fields", catalog_map: :all_fields
     config.add_search_field :title
-    config.add_search_field :creator, label: "Author/Creator"
-    config.add_search_field :sub, label: "Subject"
-    config.add_search_field(:description, label: "Description") do |field|
+    config.add_search_field :creator, label: "Author/Creator", catalog_map: :creator_t
+    config.add_search_field :sub, label: "Subject", catalog_map: :subject
+    config.add_search_field(:description, label: "Description", catalog: :note_t) do |field|
       field.include_in_simple_select = false
     end
-    config.add_search_field :isbn, label: "ISBN"
-    config.add_search_field :issn, label: "ISSN"
+    config.add_search_field :isbn, label: "ISBN", catalog_map: :isbn_t
+    config.add_search_field :issn, label: "ISSN", catalog_map: :issn_t
 
     # Index fields
     config.add_index_field :isPartOf, label: "Is Part Of"

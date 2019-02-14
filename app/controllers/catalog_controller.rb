@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Ris::Catalog
 
-  before_action :authenticate_user!, only: [ :purchase_order, :purchase_order_action ]
+  before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
 
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
   add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
@@ -29,8 +29,6 @@ class CatalogController < ApplicationController
     with: :raise_bad_range_limit
 
   configure_blacklight do |config|
-    config.index.document_presenter_class = CatalogIndexPresenter
-
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     #config.advanced_search[:qt] ||= 'advanced'
@@ -56,12 +54,12 @@ class CatalogController < ApplicationController
         id
         score
         availability_facet
+        holdings_display
         holdings_with_no_items_display
         call_number_display
         call_number_alt_display
         creator_display
         contributor_display
-        electronic_resource_display
         format
         imprint_display
         imprint_prod_display
@@ -77,9 +75,11 @@ class CatalogController < ApplicationController
         title_uniform_display
         isbn_display
         lccn_display
-        url_finding_aid_display
         bound_with_ids
         purchase_order
+        url_finding_aid_display:[json]
+        url_more_links_display:[json]
+        electronic_resource_display:[json]
       ].join(" "),
       defType: "edismax",
       echoParams: "explicit",
@@ -97,10 +97,11 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^50000
         title_t^25000
         subtitle_t^10000
-        title_statement_unstem_search^15000
-        title_statement_t^5000
-        title_uniform_unstem_search^5000
-        title_uniform_t^2500
+        work_access_point^10000
+        title_statement_unstem_search^5000
+        title_statement_t^2500
+        title_uniform_unstem_search^15000
+        title_uniform_t^5000
         title_addl_unstem_search^5000
         title_addl_t^2500
         title_added_entry_unstem_search^1500
@@ -124,9 +125,10 @@ class CatalogController < ApplicationController
         subtitle_unstem_search^500000
         title_t^250000
         subtitle_t^100000
-        title_statement_unstem_search^150000
-        title_statement_t^50000
-        title_uniform_unstem_search^75000
+        work_access_point^10000
+        title_statement_unstem_search^50000
+        title_statement_t^25000
+        title_uniform_unstem_search^150000
         title_uniform_t^50000
         title_addl_unstem_search^50000
         title_addl_t^25000
@@ -229,6 +231,16 @@ class CatalogController < ApplicationController
     #  # q: '{!term f=id v=$id}'
     #}
 
+    config.fetch_many_document_params =
+      config.default_document_solr_params = {
+        wt: "json",
+        fl: %w[
+          *
+          url_finding_aid_display:[json]
+          url_more_links_display:[json]
+          electronic_resource_display:[json] ].join(",")
+    }
+
     # solr field configuration for search results/index views
     config.index.title_field = "title_truncated_display"
     config.index.display_type_field = "format"
@@ -280,6 +292,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
+    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
 
@@ -299,6 +312,7 @@ class CatalogController < ApplicationController
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
+    config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
 
 
     # solr fields to be displayed in the show (single result) view
@@ -343,12 +357,12 @@ class CatalogController < ApplicationController
     config.add_show_field "note_diss_display", label: "Dissertation Note"
     config.add_show_field "note_biblio_display", label: "Bibliography"
     config.add_show_field "note_toc_display", label: "Contents"
-    config.add_show_field "note_restrictions_display", label: "Access and Restrictions"
-    config.add_show_field "note_references_display", label: "Cited in"
-    config.add_show_field "note_summary_display", label: "Summary"
-    config.add_show_field "note_cite_display", label: "Cite as"
-    config.add_show_field "note_copyright_display", label: "Copyright Note"
     config.add_show_field "note_bio_display", label: "Biographical or Historical Note"
+    config.add_show_field "note_summary_display", label: "Summary"
+    config.add_show_field "note_restrictions_display", label: "Access and Restrictions"
+    config.add_show_field "note_copyright_display", label: "Copyright Note"
+    config.add_show_field "note_references_display", label: "Cited in"
+    config.add_show_field "note_cite_display", label: "Cite as"
     config.add_show_field "note_finding_aid_display", label: "Finding Aids"
     config.add_show_field "note_custodial_display", label: "Custodial History"
     config.add_show_field "note_binding_display", label: "Binding Note"
@@ -356,6 +370,7 @@ class CatalogController < ApplicationController
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
+    config.add_show_field "genre_display", label: "Genre", helper_method: :genre_links, multi: true
     config.add_show_field "collection_display", label: "Collection"
     config.add_show_field "collection_area_display", label: "SCRC Collecting Area"
 
@@ -376,8 +391,6 @@ class CatalogController < ApplicationController
     config.add_show_field "merged_to_form_display", label: "Merged to form"
     config.add_show_field "changed_back_to_display", label: "Changed back to"
 
-    #config.add_show_field 'call_number', label: 'Call Number'
-    #config.add_show_field 'call_number_alt', label: 'Alternative Call Number'
     config.add_show_field "isbn_display", label: "ISBN"
     config.add_show_field "alt_isbn_display", label: "Other ISBN"
     config.add_show_field "issn_display", label: "ISSN"
@@ -390,6 +403,10 @@ class CatalogController < ApplicationController
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
     config.add_show_field "bound_with_ids", display: false
+
+    config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
+    config.add_show_field "purchase_order_availability", label: "Request Rapid Access", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_panel: true
+
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -452,6 +469,13 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         qf: "$subject_qf",
         pf: "$subject_pf"
+      }
+    end
+
+    config.add_search_field("genre") do |field|
+      field.include_in_simple_select = false
+      field.solr_local_parameters = {
+        qf: "genre_t",
       }
     end
 
@@ -537,6 +561,13 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
   end
 
+  # Can be overridden by subclass
+  def show_sidebar?
+    has_search_parameters?
+  end
+
+  helper_method :show_sidebar?
+
   def text_this_message_body(params)
     "#{params[:title]}\n" +
     "#{params[:location]}"
@@ -584,6 +615,11 @@ class CatalogController < ApplicationController
   #
   # Overridden so that we can use our own 404 error handling setup.
   def invalid_document_id_error(exception)
+    error_info = {
+      "status" => "404",
+      "error"  => "#{exception.class}: #{exception.message}"
+    }
+
     respond_to do |format|
       format.xml  { render xml: error_info, status: 404 }
       format.json { render json: error_info, stautus: 404 }
@@ -614,7 +650,10 @@ class CatalogController < ApplicationController
   def purchase_order_action
     (_, document) = fetch(params["id"])
 
-    from = current_user&.email || params[:to]
+    email = current_user&.email || params[:to]
+    name = current_user&.name
+
+    from = { email: email, name: name }
 
     mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
     if mail.respond_to? :deliver_now
@@ -623,10 +662,10 @@ class CatalogController < ApplicationController
       mail.deliver
     end
 
-    redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
   end
 
-  # Overrides Blackligt::Catalog.sms_action.
+  # Overrides Blackligt::Catalognuuu_action.
   #
   # Passes extra chosen book details for sms text.
   #
@@ -662,6 +701,14 @@ class CatalogController < ApplicationController
     end
 
     super
+  end
+
+  def authenticate_purchase_order!
+    authenticate_user!
+    message = "You do not have access to purchase order items."
+    to_the_future = { fallback_location: root_path, alert: message }
+
+    redirect_back(to_the_future) unless current_user.can_purchase_order?
   end
 
   private

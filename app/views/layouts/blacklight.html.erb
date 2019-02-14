@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+    <meta name="description" content="Temple Libraries' official online search tool for books, media, journals, databases, government documents and more." />
     <!-- Mobile viewport optimization h5bp.com/ad -->
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -17,35 +17,40 @@
     <![endif]-->
 
     <title><%= render_page_title %></title>
-    <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => 'xml') %>
+    <%= preload_link_tag(font_url('CrimsonText-Regular.ttf')) %>
+    <%= preload_link_tag(font_url('BebasNeue-webfont.woff')) %>
+    <%= preload_link_tag(font_url('droidsans-webfont.woff')) %>
+    <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => "xml") %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
-    <%= javascript_pack_tag 'application' %>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <%= analytics_init if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="<%= render_body_class %>">
     <div id="page-wrapper">
-      <%= render :partial => 'shared/banner' %>
+      <%= render :partial => "shared/banner" %>
 
-      <%= render :partial => 'shared/header_navbar' %>
+      <%= render :partial => "shared/header_navbar" %>
 
-      <%= render partial: 'shared/ajax_modal' %>
+      <%= render partial: "shared/ajax_modal" %>
 
       <div id="main-container" class="<%= container_classes %>">
 
-        <%= render :partial=>'/flash_msg', layout: 'shared/flash_messages' %>
+        <%= render :partial=>"/flash_msg", layout: "shared/flash_messages" %>
+        <div class="breadcrumb-wrapper">
+          <ol class="breadcrumb">
+            <%= render_breadcrumbs :tag => :li, :separator => "" %>
+          </ol>
+        </div>
 
-        <ol class="breadcrumb">
-          <%= render_breadcrumbs :tag => :li, :separator => "" %>
-        </ol>
         <div class="row">
           <%= yield %>
         </div>
       </div>
     </div>
-    <%= render :partial => 'shared/footer' %>
+    <%= render :partial => "shared/footer" %>
   </body>
 </html>

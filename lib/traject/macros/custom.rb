@@ -7,7 +7,7 @@ module Traject
   module Macros
     module Custom
       ARCHIVE_IT_LINKS = "archive-it.org/collections/"
-      NOT_FULL_TEXT = /book review|publisher description|sample text|table of contents/i
+      NOT_FULL_TEXT = /book review|publisher description|sample text|View cover art|Image|cover image|table of contents/i
       GENRE_STOP_WORDS = /CD-ROM|CD-ROMs|Compact discs|Computer network resources|Databases|Electronic book|Electronic books|Electronic government information|Electronic journal|Electronic journals|Electronic newspapers|Electronic reference sources|Electronic resource|Full text|Internet resource|Internet resources|Internet videos|Online databases|Online resources|Periodical|Periodicals|Sound recordings|Streaming audio|Streaming video|Video recording|Videorecording|Web site|Web sites|Périodiques|Congrès|Ressource Internet|Périodqiue électronique/i
       SEPARATOR = " — "
 
@@ -38,9 +38,33 @@ module Traject
         role.sub(/ *[ ,.\/;:] *\Z/, "")
       end
 
+      def extract_title_statement
+        lambda do |rec, acc|
+          titles = []
+          slash = "/"
+
+          Traject::MarcExtractor.cached("245abcfgknps", alternate_script: false).collect_matching_lines(rec) do |field, spec, extractor|
+            title = extractor.collect_subfields(field, spec).first
+            unless title.nil?
+              rec.fields("245").each do |f|
+                if field["h"].present? && field["c"].present?
+                  title = title.gsub(" #{field['c']}", " #{slash} #{field['c']}")
+                  title = title.gsub("/ /", "/")
+                else
+                  title
+                end
+              end
+              title
+            end
+            titles << title
+          end
+          acc.replace(titles)
+        end
+      end
+
       def extract_creator
         lambda do |rec, acc|
-          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt").collect_matching_lines(rec) do |field, spec, extractor|
+          s_fields = Traject::MarcExtractor.cached("100abcqd:100ejlmnoprtu:110abdc:110elmnopt:111andcj:111elopt", alternate_script: false).collect_matching_lines(rec) do |field, spec, extractor|
             extractor.collect_subfields(field, spec).first
           end
 
@@ -72,7 +96,7 @@ module Traject
 
       def extract_contributor
         lambda do |rec, acc|
-          s_fields = Traject::MarcExtractor.cached("700iabcqd:700ejlmnoprtu:710iabdc:710elmnopt:711iandcj:711elopt").collect_matching_lines(rec) do |field, spec, extractor|
+          s_fields = Traject::MarcExtractor.cached("700iabcqd:700ejlmnoprtu:710iabdc:710elmnopt:711iandcj:711elopt", alternate_script: false).collect_matching_lines(rec) do |field, spec, extractor|
             extractor.collect_subfields(field, spec).first
           end
 
@@ -105,7 +129,7 @@ module Traject
       def extract_subject_display
         lambda do |rec, acc|
           subjects = []
-          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:655abcvxyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+          Traject::MarcExtractor.cached("600abcdefghklmnopqrstuvxyz:610abcdefghklmnoprstuvxyz:611acdefghjklnpqstuvxyz:630adefghklmnoprstvxyz:648axvyz:650abcdegvxyz:651aegvxyz:653a:654abcevyz:656akvxyz:657avxyz:690abcdegvxyz").collect_matching_lines(rec) do |field, spec, extractor|
             subject = extractor.collect_subfields(field, spec).first
             unless subject.nil?
               field.subfields.each do |s_field|
@@ -117,6 +141,24 @@ module Traject
             subjects
           end
           acc.replace(subjects)
+        end
+      end
+
+      def extract_genre_display
+        lambda do |rec, acc|
+          genres = []
+          Traject::MarcExtractor.cached("655abcvxyz").collect_matching_lines(rec) do |field, spec, extractor|
+            genre = extractor.collect_subfields(field, spec).first
+            unless genre.nil?
+              field.subfields.each do |s_field|
+                genre = genre.gsub(" #{s_field.value}", "#{SEPARATOR}#{s_field.value}") if (s_field.code == "v" || s_field.code == "x" || s_field.code == "y" || s_field.code == "z")
+              end
+              genre = genre.split(SEPARATOR)
+              genres << genre.map { |s| Traject::Macros::Marc21.trim_punctuation(s) }.join(SEPARATOR)
+            end
+            genres
+          end
+          acc.replace(genres)
         end
       end
 
@@ -150,11 +192,20 @@ module Traject
       def extract_electronic_resource
         lambda do |rec, acc, context|
           rec.fields("PRT").each do |f|
-            selected_subfields = [f["a"], f["c"], f["g"], f["9"]].join("|")
+            selected_subfields = {
+              portfolio_id: f["a"],
+              collection_id: f["i"],
+              service_id: f["j"],
+              title: f["c"],
+              subtitle: f["g"],
+              availability: f["9"] }
+              .delete_if { |k, v| v.blank? }
+              .to_json
             acc << selected_subfields
           end
+
           # Short circuit if PRT field present.
-          if !rec.fields("PRT").empty?
+          if rec.fields("PRT").present?
             return acc
           end
 
@@ -163,7 +214,7 @@ module Traject
               label = url_label(f["z"], f["3"], f["y"])
               unless f["u"].nil?
                 unless NOT_FULL_TEXT.match(label) || f["u"].include?(ARCHIVE_IT_LINKS)
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end
@@ -175,10 +226,10 @@ module Traject
         lambda do |rec, acc, context|
           begin
             acc.sort_by! { |r|
-              subfields = r.split("|")
-              available = /Available from (\d{4})( until (\d{4}))?/.match(r)
-              title = subfields[1]
-              subtitle = subfields[2]
+              subfields = JSON.parse(r)
+              available = /Available from (\d{4})( until (\d{4}))?/.match(subfields["availability"])
+              title = subfields["title"]
+              subtitle = subfields["subtitle"]
               unless available
                 available = []
               end
@@ -206,7 +257,7 @@ module Traject
             unless f["u"].nil?
               if f.indicator2 == "2" || NOT_FULL_TEXT.match(label) || !rec.fields("PRT").empty? || f["u"].include?(ARCHIVE_IT_LINKS)
                 unless f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end
@@ -221,7 +272,7 @@ module Traject
             if f.indicator1 == "4" && f.indicator2 == "2"
               unless f["u"].nil?
                 if f["u"].include?("http://library.temple.edu") && f["u"].include?("scrc")
-                  acc << [label, f["u"]].compact.join("|")
+                  acc << { title: label, url: f["u"] }.to_json
                 end
               end
             end
@@ -246,11 +297,20 @@ module Traject
               end
             end
           end
+
           unless rec.fields("HLD").empty?
             acc << "At the Library"
           end
+
           unless rec.fields("ADF").empty?
             acc << "At the Library"
+          end
+
+          order = []
+          extract_purchase_order[rec, order]
+          if order == [true]
+            acc << "Request Rapid Access"
+            acc << "Online"
           end
 
           acc.uniq!
@@ -457,11 +517,12 @@ module Traject
 
       def suppress_items
         lambda do |rec, acc|
+          asrs = rec.fields("ITM").select { |field| field["g"] == "asrs" }
           lost = rec.fields("ITM").select { |field| field["u"] == "LOST_LOAN" }
           missing = rec.fields("ITM").select { |field| field["u"] == "MISSING" }
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
-          field = rec.fields("ITM").map { |field| field["u"] }.first
-          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty?)
+          #field = rec.fields("ITM").map { |field| field["u"] }.first
+          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?)
             acc.replace([true])
           end
         end
@@ -472,7 +533,7 @@ module Traject
           rec.fields(["035", "979"]).each do |field|
             unless field.nil?
               unless field["a"].nil? || field["9"]&.include?("ExL")
-                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].include?("on") || field["a"].include?("OCLC")
+                if field["a"].include?("OCoLC") || field["a"].include?("ocn") || field["a"].include?("ocm") || field["a"].match(/\bon[0-9]/) || field["a"].include?("OCLC")
                   subfield = field["a"].split(//).map { |x| x[/\d+/] }.compact.join("")
                 end
                 acc << subfield

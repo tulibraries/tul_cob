@@ -1,0 +1,12 @@
+<div class="not-at-temple">
+  <p class="no-results-header"><strong><%= t "no_results.not_at_temple" %></strong></p>
+  <ul>
+    <li><%= t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")) %></li>
+    <li><%= t("no_results.illiad_html", href: link_to(t("no_results.illiad_href"), t("no_results.illiad_link"), target: "_blank")) %></li>
+    <ul>
+      <li><%= t("no_results.ginsburg_illiad_html", href: link_to(t("no_results.ginsburg_illiad_href"), t("no_results.ginsburg_illiad_link"), target: "_blank")) %>
+          <%= t("no_results.podiatry_illiad_html", href: link_to(t("no_results.podiatry_illiad_href"), t("no_results.podiatry_illiad_link"), target: "_blank")) %>
+    </li>
+    </ul>
+  </ul>
+</div>

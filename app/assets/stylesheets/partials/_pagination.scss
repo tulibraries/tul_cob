@@ -1,4 +1,6 @@
 @import "_vars.scss";
+
+/* PAGINATION */
 .modal-only .page_links {
   display: none;
 }
@@ -21,4 +23,16 @@
 
 .pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
 	color: #686868;
+}
+
+.search-widgets {
+  @media(max-width: 485px) {
+    float: none !important;
+  }
+}
+
+.search-widgets button {
+	@media(max-width: 320px) {
+		padding: 6px;
+	}
 }

@@ -1,0 +1,58 @@
+@import "_vars.scss";
+
+/* === AEON REQUESTS === */
+.aeon-request-btn {
+  float: right;
+}
+
+.index-avail-container .aeon-request-btn {
+  margin-top: -10px;
+}
+
+.aeon-text {
+  display: table-cell;
+}
+
+/* === REQUESTS === */
+.request-heading {
+  margin-bottom: 5px;
+}
+
+.request-form {
+  margin-bottom: 10px;
+}
+
+.col-form-label {
+  margin-right: 10px;
+}
+
+.request-header {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+.form-radio-label {
+  margin-left: 5px;
+}
+
+.hold-form {
+  margin-bottom: 15px;
+}
+
+.scrc-link {
+  margin-top: 10px;
+  margin-left: -10px;
+  margin-bottom: -10px;
+}
+
+.requests-container {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#ez-borrow-button {
+  color: $white !important;
+  float: left;
+  margin-right: 25px;
+  margin-top: 10px;
+}

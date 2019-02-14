@@ -14,154 +14,48 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
-  def get_search_params(field, query)
-    case field
-    when "title_uniform_display", "title_addl_display"
-      { search_field: "title", q: query }
-    when "relation"
-      { search_field: "title", q: query["relatedTitle"] }
-    else
-      { search_field: field, q: query }
-    end
-  end
+  def aeon_request_url(item)
+    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
+    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
+    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
+    form_fields = {
+         ItemTitle: (item.item.dig("bib_data", "title") || ""),
+         ItemPlace: place_of_publication + publisher_const + date_of_publication,
+         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
+         CallNumber: item.call_number || "",
+         ItemAuthor: (item.item.dig("bib_data", "author") || ""),
+         "rft.pages": @document["collection_area_display"]
+     }
 
-  def fielded_search(query, field)
-    params = get_search_params(field, query)
-    link_url = search_action_path(params)
-    title = params[:title] || params[:q]
-    link_to(title, link_url)
-  end
+    openurl_field_values = form_fields.map { |k, v|
+      [k, v.to_s.delete('[]""')] }.to_h
 
-  def list_with_links(args)
-    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
-  end
+    openurl_field_values["Action"] = 10
+    openurl_field_values["Form"] = 30
 
-  def creator_index_separator(args)
-    creator = args[:document][args[:field]]
-    creator.map do |name|
-      plain_text_subfields = name.gsub("|", " ")
-      creator = plain_text_subfields
-    end
-    creator
-  end
-
-  def subject_links(args)
-    args[:document][args[:field]].map do |subject|
-      link_to(subject, "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
-    end
-  end
-
-  def has_one_electronic_resource?(document)
-    document.fetch("electronic_resource_display", []).length == 1
-  end
-
-  def has_many_electronic_resources?(document)
-    document.fetch("electronic_resource_display", []).length > 1
-  end
-
-  def check_holdings_library_name(document)
-    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
-  end
-
-  def check_holdings_call_number(document)
-    document.fetch("call_number_display", []).first
-  end
-
-  def check_holdings_location(document, library)
-    locations_array = []
-    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
-    locations.each { |k, v|
-      shelf = Rails.configuration.locations.dig(k, v)
-      locations_array << shelf
-    }
-    locations_array
-  end
-
-  def check_for_full_http_link(args)
-    [args[:document][args[:field]]].flatten.compact.map { |field|
-      if field.include?("http")
-        electronic_access_links(field)
-      else
-        electronic_resource_link_builder(field)
-      end
-    }.join("").html_safe
-  end
-
-  def electronic_access_links(field)
-    link_text = field.split("|").first.sub(/ *[ ,.\/;:] *\Z/, "")
-    link_url = field.split("|").last
-    new_link = content_tag(:td, link_to(link_text, link_url, title: "Target opens in new window", target: "_blank"), class: "electronic_links list_items")
-    new_link
-  end
-
-  def holdings_summary_information(document)
-    field = document.fetch("holdings_summary_display", [])
-    unless field.empty?
-      summary = field.first.split("|").first
-      related_holding = field.first.split("|").last
-      [summary, "Related Holding ID: " + related_holding].join("<br />").html_safe
-    end
-  end
-
-  def render_holdings_summary_table(document)
-    if document["holdings_summary_display"].present?
-      render partial: "holdings_summary", locals: { document: document }
-    end
-  end
-
-  def alma_build_openurl(query)
-    query_defaults = {
-      rfr_id: "info:sid/primo.exlibrisgroup.com",
-    }
 
     URI::HTTPS.build(
-      host: alma_domain,
-      path: "/view/uresolver/#{alma_institution_code}/openurl",
-      query: query_defaults.merge(query).to_query).to_s
+      host:  "temple.aeon.atlas-sys.com",
+      path: "/Logon/",
+      query: openurl_field_values.to_query).to_s
   end
 
-  def render_alma_eresource_link(portfolio_pid, db_name)
-    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), title: "Target opens in new window", target: "_blank")
-  end
-
-  def alma_electronic_resource_direct_link(portfolio_pid)
-    query = {
-        "u.ignore_date_coverage": "true",
-        "Force_direct": true,
-        portfolio_pid: portfolio_pid
-    }
-    alma_build_openurl(query)
-  end
-
-  def electronic_resource_list_item(portfolio_pid, db_name, addl_info)
-    item_parts = [render_alma_eresource_link(portfolio_pid, db_name), addl_info]
-    item_html = item_parts.compact.join(" - ").html_safe
-    content_tag(:td, item_html , class: " electronic_links list_items")
-  end
-
-  def electronic_resource_link_builder(field)
-    return if field.empty?
-    portfolio_pid, db_name, addl_info, availability = field.split("|")
-    return if availability == "Not Available"
-    db_name ||= "Find it online"
-    addl_info = nil if addl_info&.empty?
-    electronic_resource_list_item(portfolio_pid, db_name, addl_info)
-  end
-
-  def single_link_builder(field)
-    if field.include?("http")
-      field.split("|").last
-    else
-      electronic_resource_from_traject = field.split("|")
-      portfolio_pid = electronic_resource_from_traject.first
-      alma_electronic_resource_direct_link(portfolio_pid)
+  def aeon_request_button(items)
+    if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
+      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request-btn btn btn-sm btn-primary")
     end
+  end
+
+  def total_items(results)
+    results.total_items[:query_total] || 0 rescue 0
+  end
+
+  def total_online(results)
+    results.total_items[:online_total] || 0 rescue 0
   end
 
   def bento_single_link(field)
-    electronic_resource = field.first.split("|")
-    portfolio_pid = electronic_resource.first
-    alma_electronic_resource_direct_link(portfolio_pid)
+    alma_electronic_resource_direct_link(field.first["portfolio_id"])
   end
 
   def bento_engine_nice_name(engine_id)
@@ -181,51 +75,12 @@ module ApplicationHelper
     end
   end
 
-  def aeon_request_url(item)
-    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
-    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
-    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
-    form_fields = {
-         ItemTitle: (item.item.dig("bib_data", "title") || ""),
-         ItemPlace: place_of_publication + publisher_const + date_of_publication,
-         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
-         CallNumber: item.call_number || "",
-         ItemAuthor: (item.item.dig("bib_data", "author") || "")
-     }
-
-    openurl_field_values = form_fields.map { |k, v|
-      [k, v.to_s.delete('[]""')] }.to_h
-
-    openurl_field_values["Action"] = 10
-    openurl_field_values["Form"] = 30
-
-
-    URI::HTTPS.build(
-      host:  "temple.aeon.atlas-sys.com",
-      path: "/Logon/",
-      query: openurl_field_values.to_query).to_s
-  end
-
-  def aeon_request_button(items)
-    if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
-      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request btn btn-sm btn-primary")
-    end
-  end
-
-  def total_items(results)
-    results.total_items[:query_total] || 0 rescue 0
-  end
-
-  def total_online(results)
-    results.total_items[:online_total] || 0 rescue 0
-  end
-
   def bento_link_to_full_results(results)
     total = number_with_delimiter(total_items results)
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
-  # TODO: move to decorator or eninge class.
+  # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
     case results.engine_id
@@ -298,7 +153,22 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
+  end
+
+  def explanation_translations(controller_name)
+    case controller_name
+    when "books"
+      t("#{controller_name}.explanation_html", href: link_to(t("books.explanation_href"), t("books.explanation_link"), target: "_blank"))
+    when "primo_central"
+      t("articles.explanation_html")
+    when "journals"
+      t("#{controller_name}.explanation_html")
+    when "catalog"
+      t("blacklight.explanation_html")
+    else
+      ""
+    end
   end
 
   def ris_path(opts = {})
@@ -311,13 +181,12 @@ module ApplicationHelper
     end
   end
 
-  def render_nav_link(path, name)
+  def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-btn header-links" ] + active).join(" ")
-    link_class = ([ "nav-link" ] + active).join(" ")
 
     content_tag :li, class: button_class do
-      link_to(name, send(path, search_params), class: link_class)
+      link_to(name, send(path, search_params), id: analytics_id)
     end
   end
 
@@ -337,5 +206,20 @@ module ApplicationHelper
     root_page = [ :everything_path ]
     request.original_fullpath.match?(/^#{url_path}/) ||
       current_page?(root_path) && root_page.include?(path)
+  end
+
+  def citation_labels(format)
+    case format
+    when "APA"
+      format = "APA (6th)"
+    when "MLA"
+      format = "MLA (7th)"
+    when "CHICAGO"
+      format = "Chicago Author-Date (15th)"
+    when "HARVARD"
+      format = "Harvard (18th)"
+    when "TURABIAN"
+      format = "Chicago Notes & Bibliography (15th)/Turabian (6th)"
+    end
   end
 end

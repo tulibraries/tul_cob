@@ -5,6 +5,7 @@ require_relative "boot"
 require "rails/all"
 require "awesome_print"
 require "dot_properties"
+require "./lib/alma/config_utils"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -24,6 +25,8 @@ module Tulcob
     config.libraries = DotProperties.load(Rails.root + "config/translation_maps/libraries_map.properties")
     config.locations = config_for(:locations).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
+    config.electronic_collection_notes = Alma::ConfigUtils.load_notes(type: "collection")
+    config.electronic_service_notes = Alma::ConfigUtils.load_notes(type: "service")
     config.bento = config_for(:bento).with_indifferent_access
     config.oclc = config_for(:oclc).with_indifferent_access
     config.twilio = config_for(:twilio).with_indifferent_access

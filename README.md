@@ -48,6 +48,14 @@ bundle exec rails server
 rake docker:up
 ```
 
+* To open up your local app or solr in the browser
+```bash
+rake docker:open
+
+rake docker:open_solr
+```
+
+
 ### Start the Application with some sample data for Development
 
 If you want to quickly get the application running for development with a minimal
@@ -90,6 +98,11 @@ You can also pass in their path to a separate file you would like to ingest as a
 bundle exec rake ingest[/some/other/path.xml]
 ```
 
+If you need to ingest a file multiple times locally an not have it rejected by SOLR do to update_date you can set `SOLR_DISABLE_UPDATE_DATE_CHECK=yes`:
+
+```bash
+SOLR_DISABLE_UPDATE_DATE_CHECK=yes rake ingest[spec/fixtures/purchase_online_bibs.xml]
+```
 
 Under the hood, that command uses [traject](https://github.com/traject/traject), with hard coded defaults. If you need to override a default to ingest your data, You can call traject directly:
 
@@ -197,3 +210,12 @@ can also provide a path  and filename with the `--save_to` command line flag.
 ```
 
 
+#### Ingest LibGuide AZ documents
+Locally you will need to add 'az-database' core to solr (handled automatically for docker/libqa/production)
+
+Ingest AZ database documents by running
+
+```
+./bin/libguide_cache.rb
+./bin/ingest-libguides.sh
+```

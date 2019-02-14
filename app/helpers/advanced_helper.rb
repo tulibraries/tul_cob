@@ -60,8 +60,8 @@ module AdvancedHelper
     blacklight_config.fetch(:advanced_search, {})
   end
 
-  def render_advanced_search_link
-    query = params.except(:controller, :action).to_h
+  def render_advanced_search_link(my_params = params)
+    query = advanced_params(my_params)
 
     if current_page? search_catalog_path
       id = :catalog_advanced_search
@@ -75,9 +75,24 @@ module AdvancedHelper
     elsif current_page? search_path
       id = :articles_advanced_search
       url = articles_advanced_search_path(query)
+    elsif current_page? search_databases_path
+      id = :databases_advanced_search
+      url = databases_advanced_search_path(query)
     end
 
     link_to(t(id), url, class: "advanced_search", id: id) if id
+  end
+
+  def advanced_params(my_params)
+    my_params.except(:controller, :action)
+      .select { |k, v|
+      # Sometimes is_advanced_search? does not return true|false answer.
+      if !(is_advanced_search? == true)
+        !k.match?(/^(q|op|f)_/)
+      else
+        true
+      end
+    }.to_h
   end
 
   def basic_search_path
@@ -103,6 +118,8 @@ module AdvancedHelper
       t(:journals_advanced_search)
     elsif current_page? articles_advanced_search_path
       t(:articles_advanced_search)
+    elsif current_page? databases_advanced_search_path
+      t(:databases_advanced_search)
     else
       t(:catalog_advanced_search)
     end
@@ -112,6 +129,7 @@ end
 module BlacklightAdvancedSearch
   class QueryParser
     include AdvancedHelper
+    include Blacklight::PrimoCentral::SolrAdaptor
 
     def keyword_op
       # NOTs get added to the query. Only AND/OR are operations
@@ -169,6 +187,7 @@ module BlacklightAdvancedSearch
       queries = []
       ops = keyword_op
       keyword_queries.each do |field, query|
+        field = primo_to_solr_search(field)
         queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         queries << ops.shift
       end
@@ -195,7 +214,12 @@ module BlacklightAdvancedSearch
     # We need this in order to render multiple clearable buttons on advanced searches.
 
     def render_constraints_query(my_params = params)
-      buttons = guided_search.map { |s|
+      # Short circuit if this is not an advanced query.
+      if advanced_query.nil? || advanced_query.keyword_queries.empty?
+        return super(my_params)
+      end
+
+      buttons = guided_search(my_params).map { |s|
         label, query, action = s
 
         render_constraint_element(

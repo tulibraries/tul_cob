@@ -1,34 +1,40 @@
 @import "_vars.scss";
 
+/* === USERS === */
 .row-eq-height {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
-  display:         flex;
+  display: flex;
 }
+
 .glyphicon.glyphicon-exclamation-sign {
   color: $red;
 }
+
 h1.page-title {
   margin-top: 7px;
   margin-bottom: 21px;
 }
+
 #renewal-warning {
-  display: none;
-  width: 100%;
-  text-align: center;
   background-color: $green;
   border: solid $red 1px;
   border-radius: 7px;
+  color: $black;
+  display: none;
   padding: 14px;
-  color: black;
+  width: 100%;
+  text-align: center;
 }
+
 .renewal-disclaimer {
+  bottom: 0;
   color: $med-grey;
   margin-right: 10%;
   position:absolute;
-  bottom: 0;
 }
+
 .container.user-account {
   background-color: $tan;
   border-radius: 14px;
@@ -37,8 +43,8 @@ h1.page-title {
 
   .btn-white {
     background-color: $white;
-    color: $red;
     border: solid #ccc 1px;
+    color: $red;
   }
   div.user-info {
     .col-md-5 {
@@ -54,24 +60,24 @@ h1.page-title {
           font-weight: 600;
         }
         .balance {
-          font-weight: normal;
           color: $red;
+          font-weight: normal;
         }
       }
     }
   }
   .container.user-loans, .container.user-fines, .container.user-holds {
-    width: 100%;
     padding: 0;
+    width: 100%;
     .user_section_title {
-      margin-top: 0;
       background-color: $red;
+      color: $white;
+      margin-top: 0;
       padding:7px 14px;
-      color: #fff;
     }
     ul {
       li {
-        margin-bottom:14px;
+        margin-bottom: 14px;
       }
     }
     table {
@@ -82,9 +88,9 @@ h1.page-title {
         background-color: #f5f5f5;
       }
       th {
-        text-align: left;
         font-weight: 600;
         height: 21px;
+        text-align: left;
       }
       th.renew {
         text-align: center;
@@ -97,9 +103,9 @@ h1.page-title {
         color: $red;
       }
       td.submit {
-        text-align:right;
         padding-top: 14px;
         padding-right: 8%;
+        text-align: right;
       }
     }
     .table-hover > tbody > tr:hover {
@@ -107,19 +113,19 @@ h1.page-title {
     }
   }
   .total-fines {
-    color: #A50030;
+    color: $red;
     .fine-label {
-      text-align: left;
       font-weight: 600;
+      text-align: left;
     }
   }
   .hide-me {
+    height: 1px;
+    left: -10000px;
+    overflow: hidden;
     position:absolute;
-    left:-10000px;
-    top:auto;
-    width:1px;
-    height:1px;
-    overflow:hidden;
+    top: auto;
+    width: 1px;
   }
   td.renewal-check .form-check {
     text-align: center;
@@ -127,20 +133,22 @@ h1.page-title {
   .renew-selected {
     float: right;
     font-size: 58%;
-    vertical-align: middle;
     padding-right: 7%;
     padding-top: 10px;
+    vertical-align: middle;
   }
   .fines-link {
-    text-align: center;
     padding: 14px;
+    text-align: center;
   }
 }
+
 .col-md-6 {
   display: flex;
   flex-direction: column;
 }
 
 .user-email-notice {
-  margin: 15px;  
+  margin-top: -10px;
+  margin-left: 25px;
 }

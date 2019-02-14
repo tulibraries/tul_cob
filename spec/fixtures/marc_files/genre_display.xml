@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <!-- 0. No genre_display field present -->
+  </record>
+  <record>
+    <!-- 1. genre_display field is present -->
+    <datafield ind1=' ' ind2='0' tag='655'>
+      <subfield code='a'>Documentary films</subfield>
+    </datafield>
+    <datafield ind1=' ' ind2='0' tag='655'>
+      <subfield code='a'>Foreign language films</subfield>
+      <subfield code='x'>Chinese</subfield>
+    </datafield>
+  </record>
+</collection>

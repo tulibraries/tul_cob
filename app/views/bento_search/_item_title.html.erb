@@ -1,0 +1,42 @@
+<%#
+  # Prepare a title in an H4, with formats in parens in a <small> (for
+  # bootstrap), linked, etc.
+  #
+  # Pass in local `item` with BentoSearch::ResultItem (can use :as arg to
+  # Rails render).
+  #
+  # Optionally pass in a local "index" with result set index to display
+  # in front of title. 1. 2. etc.
+  #
+  # If index is passed in, we'll make an 'id' attribute that can be used
+  # for an attribute based on anchor. Using either a passed in 'id_prefix'
+  # or, the engine_id if present. If neither present no go (need a prefix for
+  # uniqueness when more than one bento_results on a page).
+  #
+  # If "indicate_fulltext" is set in display configuration, an "Online"
+  # marker will be output after title, in class .bento_available_online
+  #
+  # %>
+  <h3 class="bento_item_title">
+    <% if local_assigns[:index] %>
+      <% id_attr = item.html_id(local_assigns[:id_prefix], index) %>
+      <%= content_tag("span", :class => "bento_index", :id => (id_attr if id_attr)) do %>
+        <%= index %>.
+      <% end %>
+    <% end %>
+
+    <%= link_to_unless(item.link.blank?, item.complete_title, item.link) %>
+
+    <% if item.display_format.present? || item.display_language.present? %>
+
+      <small class="bento_item_about">
+        <%# sorry, no whitespace so parens are flush %>
+        (<%- if item.display_format.present? -%><span class="bento_format"><%= item.display_format -%></span><%- end -%><%- if item.display_language.present? -%><span class="bento_language"> in <%= item.display_language -%></span><%- end -%>)
+      </small>
+
+    <% end %>
+
+    <% if item.display_configuration.try{|h| h[:indicate_fulltext]} && item.link_is_fulltext? %>
+      <small class="bento_available_online">Online</small>
+    <% end %>
+  </h3>

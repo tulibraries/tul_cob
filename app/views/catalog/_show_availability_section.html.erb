@@ -5,20 +5,24 @@
   <div class="availability-panel-heading panel-heading">
     <h4 id="availability-heading" class="text-left">Availability</h4>
     <div id="heading-request">
+
+      <%= doc_presenter.field_value(blacklight_config.show_fields["po_link"]) %>
+
       <div id="requests-container" class="hidden">
         <% if user_signed_in? %>
           <%= request_modal(document.id, document_counter="0", @pickup_locations, @request_level) %>
         <% else %>
-          <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}) %>
+          <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}, id: "request_options") %>
         <% end %>
       </div>
     </div>
   </div>
 
   <%= render_online_availability(doc_presenter) %>
+  <%= render_purchase_order_availability(document: document) %>
 
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
+    <div class="physical-holding-panel panel-body" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div class="panel-content" >
         <div id="avail-spinner" data-target="show.spinner" class="spinner">
           <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>

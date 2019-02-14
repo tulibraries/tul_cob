@@ -10,7 +10,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
            { "base_status" =>
              { "value" => "1" },
              "policy" =>
-             { "desc" => "Non-circulating" }
+             { "desc" => "Non-circulating" },
+             "requested" => false,
            }
          )
       end
@@ -20,13 +21,51 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "item is located in reserves" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "" },
+            "location" =>
+              { "value" => "reserve" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      end
+    end
+
+    context "item base_status is 1 and item is requested" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "1" },
+             "policy" =>
+             { "desc" => "Non-circulating" },
+             "requested" => true,
+           }
+         )
+      end
+
+      it "displays requested" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      end
+    end
+
     context "item base_status is 1" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
            { "base_status" =>
              { "value" => "1" },
              "policy" =>
-             { "desc" => "" }
+             { "desc" => "" },
+             "requested" => false,
            }
          )
       end
@@ -69,6 +108,18 @@ RSpec.describe AlmaDataHelper, type: :helper do
       end
     end
 
+    context "item is requested" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "requested" => true }
+         )
+      end
+
+      it "displays requested" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      end
+    end
+
     context "item includes process_type not found in mappings" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
@@ -78,6 +129,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
            }
          )
       end
+
       it "displays default message" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
@@ -91,6 +143,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
            }
          )
       end
+
       it "displays default message" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
@@ -543,4 +596,165 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
+  describe "#unsuppressed_holdings(items_list, document)" do
+    context "holding_id is found in solr" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "holding_data" =>
+             { "holding_id" => "22419862390003811"
+          }
+      ), Alma::BibItem.new(
+        "holding_data" =>
+           { "holding_id" => "22426649410003811",
+        }
+      )]
+      }
+      end
+
+      let(:document) {
+          {
+            "holdings_display" => ["22419862390003811"]
+          }
+        }
+
+      it "returns only items found in both api data and document" do
+        unsuppressed_holdings(items_list, document)
+        expect(items_list["MAIN"].count).to eq(1)
+      end
+    end
+
+    context "holding_id is not found in solr" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "holding_data" =>
+             { "holding_id" => "22419862390003811"
+          }
+      ), Alma::BibItem.new(
+        "holding_data" =>
+           { "holding_id" => "123",
+        }
+      )]
+      }
+      end
+
+      let(:document) {
+          {
+            "holdings_display" => ["456"]
+          }
+        }
+
+      it "does not include the item with that holding_id" do
+        unsuppressed_holdings(items_list, document)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
+    context "all holding ids are found in document and api data" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "holding_data" =>
+             { "holding_id" => "456"
+          }
+      ), Alma::BibItem.new(
+        "holding_data" =>
+           { "holding_id" => "123",
+        }
+      )]
+      }
+      end
+
+      let(:document) {
+          {
+            "holdings_display" => ["456", "123"]
+          }
+        }
+
+      it "does not include the item with that holding_id" do
+        unsuppressed_holdings(items_list, document)
+        expect(items_list["MAIN"].count).to eq(2)
+      end
+    end
+  end
+
+  describe "#filter_unwanted_locations(items_list)" do
+    context "holding location is techserv" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "techserv" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
+    context "holding location is UNASSIGNED" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "UNASSIGNED" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
+    context "holding location is itref" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "intref" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
+    context "holding location is asrs" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "asrs" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(0)
+      end
+    end
+
+    context "holding location is stacks" do
+      let(:items_list) do
+        { "MAIN" => [Alma::BibItem.new(
+          "item_data" =>
+             { "location" => { "value" => "stacks" }
+           }
+          )]
+        }
+      end
+
+      it "does not return the item" do
+        filter_unwanted_locations(items_list)
+        expect(items_list["MAIN"].count).to eq(1)
+      end
+    end
+  end
 end

@@ -75,7 +75,9 @@ span.archival_material, a.facet_archival_material {
   background: transparent url(<%= asset_path 'icons/box.png' %>) no-repeat top left;
   padding-left: 26px;
 }
-span.visual_material, a.facet_visual_material, a.facet_visual_materials {
+span.visual_material, a.facet_visual_material, a.facet_visual_materials
+span.digital_collections, a.facet_digital_collections, span.facet_digital_collections
+{
   background: transparent url(<%= asset_path 'icons/visual_material.png' %>) no-repeat top left;
   padding-left: 26px;
 }
@@ -163,4 +165,15 @@ span.bento-more {
 span.remove-icon {
   background: transparent url(<%= asset_path 'icons/remove.svg' %>) no-repeat top left;
   padding-left: 20px;
+}
+
+span.open-facet-icon {
+  background: transparent url(<%= asset_path 'icons/filter_button_open.jpg' %>) no-repeat top left;
+  padding-left: 20px;
+}
+
+span.remove-facet-icon {
+  background: transparent url(<%= asset_path 'icons/filter_button_close.jpg' %>) no-repeat top left;
+  padding-left: 20px;
+
 }

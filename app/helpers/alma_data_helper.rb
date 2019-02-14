@@ -5,10 +5,9 @@ module AlmaDataHelper
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
-
   def availability_status(item)
-    if item.in_place?
-      if item.non_circulating?
+    if item.in_place? && item.item_data["requested"] == false
+      if item.non_circulating? || item.location == "reserve"
         content_tag(:span, "", class: "check") + "Library Use Only"
       else
         content_tag(:span, "", class: "check") + "Available"
@@ -19,9 +18,13 @@ module AlmaDataHelper
   end
 
   def unavailable_items(item)
-    if item.has_process_type?
+    if item.item_data["requested"] == true
+      process_type = "Requested"
+      content_tag(:span, "", class: "close-icon") + process_type
+    elsif item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
       content_tag(:span, "", class: "close-icon") + process_type
+
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
     end
@@ -50,15 +53,15 @@ module AlmaDataHelper
   end
 
   def location_status(item)
-    Rails.configuration.locations.dig(item.library, item.location)
+    location_name_from_short_code(item)
+  end
+
+  def location_name_from_short_code(item)
+    Rails.configuration.locations.dig(item.library, item.location) || item.location
   end
 
   def library_name_from_short_code(short_code)
     Rails.configuration.libraries[short_code]
-  end
-
-  def location_name_from_short_code(item)
-    Rails.configuration.locations.dig(item.library, item.location)
   end
 
   def alternative_call_number(item)
@@ -102,5 +105,25 @@ module AlmaDataHelper
         acc.merge!(library_name_from_short_code(lib) => lib)
       }
     end
+  end
+
+  def filter_unwanted_locations(items_list)
+    items_list.each_pair { |library, items|
+      items_list[library] = items.reject { |item|
+        item if item.holding_location.match?(/techserv|UNASSIGNED|intref|asrs/)
+      }
+    }
+  end
+
+  def unsuppressed_holdings(items_list, document)
+    solr_holdings = document.fetch("holdings_display", "")
+
+    return if solr_holdings.blank?
+
+    items_list.each_pair { |library, items|
+      items_list[library] = items.select { |item|
+       solr_holdings.include?(item["holding_data"]["holding_id"])
+     }
+    }
   end
 end

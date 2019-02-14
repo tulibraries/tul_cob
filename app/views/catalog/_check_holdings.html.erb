@@ -10,10 +10,9 @@
     <tbody>
       <% check_holdings_location(document, library).each do |holding| %>
         <tr>
-          <td scope="row" width="15%"><%= holding  %></td>
-          <td scope="row" width="15%"><%= check_holdings_call_number(document) %></td>
-          <td scope="row" width="70%">We are unable to find availability information for this item. Please contact the library for more information.</td>
-
+          <td scope="row"><%= holding  %></td>
+          <td scope="row"><%= check_holdings_call_number(document) %></td>
+          <td scope="row"><%= render_holdings_summary(document) %></td>
         </tr>
       <% end %>
     </tbody>

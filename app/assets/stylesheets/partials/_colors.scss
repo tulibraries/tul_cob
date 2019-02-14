@@ -1,22 +1,23 @@
 @import "_vars.scss";
 
-body {
-	background-color: $white;
-}
+/* COLORS */
 a, a:hover, a:active, a:visited {
 	color: $red;
 }
+
 .index_title.document-title-heading {
 	a, a:visited, a:hover, a:active {
 		color: $red;
 	}
 }
+
 .btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:active:hover, .btn-primary:active:focus {
 	background-color: $red;
 	border-color: $aged-red;
+	color: $white;
 }
 
-.btn-danger, .btn-danger:hover {
+.btn-danger, .btn-danger:hover, .btn-danger:focus {
 	background-color: $red;
 	border-color: $red;
 }
@@ -26,7 +27,6 @@ a, a:hover, a:active, a:visited {
 	border-color: $dark-grey;
 	color: $grey;
 }
-
 
 div#facets .btn-link {
   color: $dark-grey;

@@ -1,11 +1,13 @@
+<% doc_presenter = index_presenter(document) %>
 <div class="blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" >
 </div>
 
   <%= render_online_availability_button(document) %>
+  <%= render_purchase_order_availability(document: document) %>
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>
-    <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, redirect_to: request.url) %>">
+    <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div class="controls">
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>">
           <span role="spin" aria-expanded="false">Loading...</span>
@@ -19,14 +21,12 @@
           <% if user_signed_in? %>
             <%= request_modal(document.id, document.id, @pickup_locations, @request_level) %>
           <% else %>
-            <%= link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"ajax-modal": "trigger"}, class: "log-in-link") %>
+            <%= link_to(t("requests.log_in"), doc_redirect_url(document.id),  data: {"ajax-modal": "trigger"}, class: "log-in-link") %>
           <% end %>
         </div>
       </div>
 
       <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container">
-        <div><%= render_holdings_summary_table(document) %></div>
-
         <div class="table-wrapper hidden">
           <div data-target="availability.panel"></div>
           <div><%= render "check_holdings", document: document, document_counter: document.id %></div>

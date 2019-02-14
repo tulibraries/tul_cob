@@ -43,67 +43,134 @@ RSpec.configure do |config|
   config.before(:each) do
 
     # JUst so we don't send our request when testing controllers
-    stub_request(:get, /.*almaws\/v1\/bibs\/.*/).to_return(status: 200, body: JSON.dump({}))
-    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/request-options?.*/).to_return(status: 200)
-    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/requests?.*/).to_return(status: 200)
+    stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: JSON.dump({}))
+
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/request-options?.*/).
+      to_return(status: 200)
+
+    stub_request(:post, /.*almaws\/v1\/bibs\/.*\/requests?.*/)
+      .to_return(status: 200)
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/bib_items_ambler_only.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/.*\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: JSON.dump({}))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/same_campus\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/presser_and_paley.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/presser_and_paley.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/ambler_presser\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/ambler_presser.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/ambler_presser.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/kardon_paley\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/alma_data/kardon_paley.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/kardon_paley.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/only_paley_reserves\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/only_paley_reserves.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/only_paley_reserves.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
+
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/no_reserve_or_reference\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/no_reserve_or_reference.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/both_reserve\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/both_reserve.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_no_libraries.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_no_libraries\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/desc_with_multiple_libraries.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/desc_with_multiple_libraries\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_descriptions.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_descriptions.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_descriptions\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/empty_and_description.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_and_description.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_hash\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/empty_and_description\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
-        to_return(status: 200,
-        body: File.open(SPEC_ROOT + "/fixtures/requests/multiple_descriptions.json"))
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/multiple_descriptions.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/multiple_descriptions\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
-        with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
-        to_return(status: 200,
-                  body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
-                  headers: { "content-type" => ["application/xml;charset=UTF-8"] })
+      with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
+      to_return(status: 200,
+                body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
+                headers: { "content-type" => ["application/xml;charset=UTF-8"] })
 
   end
   # rspec-expectations config goes here. You can use an alternate
@@ -127,6 +194,7 @@ RSpec.configure do |config|
     # a real object. This is generally recommended, and will default to
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
+    mocks.allow_message_expectations_on_nil = true
   end
 
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
@@ -216,51 +284,51 @@ if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
 end
 
 require "rspec/expectations"
-RSpec::Matchers.define :include_docs do |more_relevant_docs|
-  match do |actual|
-    ids = ids(actual)
-    # Find index of relevant docs in array of actual ids
-    # if any of the docs are not in the actual index (which returns nil), throw an exception
-    more_relevant_index_points = more_relevant_docs.map { |d| ids.index(d) }
-    raise ArgumentError.new("At least one of the more relevant docs was not in the results set") unless more_relevant_index_points.none?(&:nil?)
-
-    #grab the largest index
-    last_more_relevant_index = more_relevant_index_points.compact.max
-
-    # if we used the before chain method
-    if less_relevant_docs
-
-      # Find index of the less relevant docs in array of actual ids and grab the smallest index
-      # if none of the docs are in the actual index (which returns nil), set to 1 more than
-      # thu number of returned results
-      first_less_relevant_index = (
-        less_relevant_docs.map { |d| ids.index(d) }.compact.min ||
-        (actual.dig("response", "pages", "total_count") || 100) + 1)
-
-      # The last more relevant doc should have a smaller index
-      # than the firs less relevant doc
-      last_more_relevant_index < first_less_relevant_index
-
-    #if we used the within_the_first chain method
-    elsif within_index
-      last_more_relevant_index < within_index
-    end
-  end
-
-  chain :before, :less_relevant_docs
-
+RSpec::Matchers.define :include_items do |primary_items|
+  chain :before, :secondary_items
   chain :within_the_first, :within_index
 
-  failure_message do |actual|
-    if less_relevant_docs
-      "expected that #{more_relevant_docs} would be appear before #{less_relevant_docs} in #{ids(actual)}"
-    elsif within_index
-      "expected that #{more_relevant_docs} would appear in the first #{within_index} docs"
-    end
-
+  match do |items|
+    all_present?(primary_items, @within_index) &&
+      all_present?(@secondary_items) &&
+      comes_before?(@secondary_items, primary_items)
   end
 
-  def ids(actual)
-    (actual.dig("response", "docs") || {}).map { |doc| doc.fetch("id") }.compact
+  def all_present?(check_items, within_index = nil)
+    # Skip if chained check is not required
+    return true if check_items.nil?
+
+    @within_items = within_index ? @actual.take(within_index.to_i) : @actual
+    check_items.all? { |id| @within_items.include?(id) }
+  end
+
+  def comes_before?(back_items, front_items)
+    # Skip if chained check is not required
+    return true if @secondary_items.nil?
+
+    back_items.all? { |back_item|
+      front_items.all? { |front_item|
+        @actual.index(back_item) > @actual.index(front_item) rescue false
+      }
+    }
+  end
+
+
+  failure_message do |actual|
+    if secondary_items
+      not_found_items = secondary_items.select { |id| !@actual.include? id }
+      if not_found_items.present?
+        "expected that secondary items #{secondary_items.pretty_inspect} would all be present #{within_index}, but missing #{not_found_items.pretty_inspect}"
+      else
+        "expected that #{primary_items} would be appear before #{secondary_items} in #{@actual}"
+      end
+    elsif within_index
+      not_found_items = primary_items.select { |id| !@within_items.include? id }
+
+      "expected that primary items #{primary_items.pretty_inspect} would appear in the first #{within_index} items, but missing #{not_found_items.pretty_inspect}"
+    else
+      not_found_items = primary_items.select { |id| !@actual.include? id }
+      "expected that all primary_items (#{primary_items.pretty_inspect}) would apper in results: #{@actual.pretty_inspect}, but missing #{not_found_items.pretty_inspect}"
+    end
   end
 end

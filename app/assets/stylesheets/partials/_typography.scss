@@ -1,3 +1,5 @@
+/* === TYPOGRAPHY  === */
+
 @font-face {
   font-family: 'BebasNeueRegular';
   src: font-url('BebasNeue-webfont.eot');
@@ -15,10 +17,10 @@
 }
 
 @font-face {
-font-family:'Colfax-Medium';
-src:url(/fonts/Colfax-Medium.eot);
-src:url(/fonts/Colfax-Medium.eot?#iefix) format("embedded-opentype"),font-url('Colfax-Medium.otf') format("woff"),font-url('Colfax-Medium.ttf') format("truetype"),font-url('Colfax-Medium.svg#svgFontName') format("svg");
-speak: none;
+  font-family:'Colfax-Medium';
+  src:url(/fonts/Colfax-Medium.eot);
+  src:url(/fonts/Colfax-Medium.eot?#iefix) format("embedded-opentype"),font-url('Colfax-Medium.otf') format("woff"),font-url('Colfax-Medium.ttf') format("truetype"),font-url('Colfax-Medium.svg#svgFontName') format("svg");
+  speak: none;
 }
 
 @font-face {
@@ -28,6 +30,7 @@ speak: none;
   font-weight: normal !important;
   font-style: normal !important;
 }
+
 @font-face {
   font-family: 'Crimson Text';
   src: font-url('CrimsonText-Regular.ttf') format('truetype');

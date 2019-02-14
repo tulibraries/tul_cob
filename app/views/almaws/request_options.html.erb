@@ -1,6 +1,6 @@
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <h4 id="modal-title">Request Options:</h4>
+  <h4 id="modal-title"><%= t("requests.header") %></h4>
 </div>
 
 <div class="modal-body">
@@ -17,8 +17,7 @@
 
 <div class="modal-footer">
   <p class="modal-footer-text text-left">
-    For more request options, see:
-    <%= link_to("How do I request an item that is unavailable at my library?", "http://answers.library.temple.edu/faq/195868") %>
+    <%= t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %>
   </p>
-  <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal">Cancel</button>
+  <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
 </div>

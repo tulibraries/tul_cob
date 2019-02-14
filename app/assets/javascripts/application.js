@@ -123,7 +123,6 @@ function deselectallchecks() {
 	}
 }
 
-
 function loadArticleIframe(id) {
   var element = $(id)
   var url = element.attr("data-iframe-url")
@@ -137,3 +136,23 @@ function loadArticleIframe(id) {
     }).appendTo(id);
   }
 }
+
+$(document).on('turbolinks:load', function() {
+	if ($(".noresults").length >= 1) {
+		$("#sortAndPerPage").remove();
+		$("#documents").css("border", "none");
+	}
+
+ 	if ($("div.navbar-form").length == 0) {
+ 		$("#search-navbar").css("padding-left", "15%");
+ 	}
+
+	$('#facet-filter-icon').click( function(){
+    $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
+	});
+ });
+
+ $(".header-links").on("click", function(){
+	 $(this).siblings().removeClass('active');
+	 $(this).addClass("active");
+ });

@@ -17,7 +17,7 @@
 
         <% if @documents.any? { |doc| doc.citable? } %>
         <li>
-          <%= link_to t("blacklight.tools.cite_html"), citation_bookmarks_path(:id => @documents), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation-btn"} %>
+          <%= link_to t("blacklight.tools.cite_html"), citation_bookmarks_path(:id => @documents), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation-btn btn btn-default"} %>
         </li>
         <% end %>
 
@@ -30,6 +30,9 @@
                   <%= value %>
                 </li>
               <% end %>
+              <li class="sendto-item">
+                <%= render :partial => 'catalog/refworks_form', :locals => {:documents=> @document_list} %>
+              </li>
             </ul>
           </div>
         </li>

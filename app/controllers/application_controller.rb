@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::InvalidAuthenticityToken,
     with: :redirect_to_referer
 
+  skip_after_action :discard_flash_if_xhr
+
   # Rails 5.1 and above requires permitted params to be defined in the Controller
   # BL doesn't do that, but might in the future. This allows us to use the pre 5.1
   # behavior until we can define all possible param  in the future.

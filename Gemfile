@@ -42,16 +42,16 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "web-console"
   gem "listen", "~> 3.0.5"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # spring speeds up development by keeping your application running in the background. read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "blacklight", "~> 6.0"
 gem "blacklight_advanced_search", "~> 6.3"
-gem "blacklight-marc"
+gem "blacklight-marc", git: "https://github.com/tulibraries/blacklight-marc.git", branch: "v6-2-0-unpin-traject"
 gem "blacklight_range_limit"
 
 group :development, :test do
@@ -73,6 +73,7 @@ gem "rsolr", "~> 1.0"
 gem "devise"
 gem "devise-guests", "~> 0.5"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
+gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.4.6"
 gem "omniauth"
@@ -95,6 +96,9 @@ gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.gi
 gem "bootstrap-select-rails"
 gem "httparty"
 gem "breadcrumbs_on_rails"
+
+gem "traject", "~> 3.0"
+gem "traject_plus"
 
 group :production do
   gem "mysql2", "~> 0.4.9"

@@ -1,45 +1,208 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  catalog_advanced_search: "Advanced Catalog Search"
+  purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
+  blacklight:
+    application_name: "Library Search"
+    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{books} and %{journals}."
+    scrc: "Special Collections Research Center"
+    scrc_link: "https://library.temple.edu/scrc"
+    blockson: "Charles L. Blockson Afro-American Collection"
+    blockson_link: "https://library.temple.edu/collections/blockson"
+    explanation_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, archival materials, as well as ebooks, streaming audio and video, and other online resources."
+    zero_results:
+      title_html: "<strong>No results</strong> found for your search."
+    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
+    search_href: "the Library Search"
+
+    borrow_html: "<li>If you can't find something, %{href}.</li>"
+    borrow_href: "borrow from another library"
+    borrow_link: "http://answers.library.temple.edu/faq/195868"
+
+    help_html: "<li>For help, %{href}.</li>"
+    help_href: "Ask a Librarian"
+    help_link: "https://library.temple.edu/asktulibraries"
+
+    header_links:
+      library_account: "My Library Account"
+      login: 'My Library Account'
+      logout: 'Log Out'
+      bookmarks: 'Bookmarks'
+      saved_searches: 'Saved Searches'
+      search_history: 'Search History'
+
+    range_limit:
+      submit_limit: "Apply"
+
+    search:
+      back: "Back to Main View"
+      librarian_view:
+        title: "Staff View"
+      pagination_info:
+        no_items_found: ""
+    email:
+      text:
+        imprint: "Published: %{value}"
+        contributor: "Contributor: %{value}"
+        issn: "ISSN: %{value}"
+        isbn: "ISBN: %{value}"
+        alma_mms: "Catalog Record ID: %{value}"
+        location: "Located at: %{value}"
+        part_of: "Is Part Of: %{value}"
+        date: "Date: %{value}"
+        doi: "DOI"
+        subject:
+          one: 'Temple University Libraries record: %{title}'
+          other: 'Temple University Libraries records'
+
+    sms:
+      form:
+        title: "Text This"
+        title_statement: "Title"
+        location: "Select a Location"
+        to: "Cell Phone Number"
+        submit: "Send Message"
+      text:
+        title: '%{value}'
+        author: ' by %{value}'
+        alma_mms: ", Catalog Record ID: %{value}"
+        location: 'Located at: %{value}'
+        url: '%{url}'
+
+      success: "Text Sent"
+      errors:
+        location:
+          blank: 'You must select a location'
+        to:
+          invalid: 'You must enter a valid 10 digit phone number'
+          blank: "You must enter a recipient's phone number in order to send this message"
+
+    tools:
+      sms: "Text"
+      refworks: Refworks
+      cite_html: "Cite"
+
+  requests:
+    log_in: "Log in to see request options"
+    request_button: "Request"
+    header: "Request Options"
+    footer_html: "For more request options, see: %{href}"
+    footer_href: "How do I request an item that is unavailable at my library?"
+    footer_link: "http://answers.library.temple.edu/faq/195868"
+    cancel: "Cancel"
+    hold_allowed_link: "Request Item"
+    digitization_allowed_link: "Scan an article/book chapter"
+    booking_allowed_link: "Request booking"
+    resource_sharing_broker_allowed_link: "Request item from another library"
+    resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the item from another library using E-ZBorrow. Books generally arrive in 3-5 business days."
+    resource_sharing_broker_link: "Search"
+    no_request_options: "This item cannot be requested from other Temple campuses."
+    form:
+      header: "Details of title you requested:"
+      pickup_locations_label: "Pickup Location: *"
+      description_label: "Description: *"
+      not_needed_after: "Not Needed After (optional):"
+      notes_label: "Notes: (optional)"
+      submit: "Request"
+      title_label: "Chapter/Article Title: *"
+      author_label: "Chapter/Article Author: *"
+      start_page: "Start page: *"
+      end_page: "End page: *"
+      material_type: "Material Type: *"
+      booking_start_date: "Booking Start Date: *"
+      booking_end_date: "Booking End Date: *"
+
+  articles:
+    application_name: "Library Articles Search"
+    greeting: "Welcome to the Articles Search"
+    section_heading_html: "<p><strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources. Search <strong>Articles</strong> for individual articles that appear in collections, like scholarly journals, ebooks, and newspapers.</p>"
+    explanation_html: "<strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
+    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
+    search_href: "the Library Search"
+    zero_results:
+      title_html: "<strong>No article results</strong> found for your search."
+
+  bento:
+    blacklight:
+      nice_name: 'Blacklight'
+    articles:
+      nice_name: "Articles"
+    journals:
+      nice_name: "Journals"
+    books:
+      nice_name: "Books"
+    application_name: "Library Bento Search Beta"
+    explanation_html: "<strong>Library Search:</strong> results from %{books}, %{articles}, %{journals}, and %{more}."
+    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{books}, %{articles}, %{journals}, and %{more}."
+    books: "Books"
+    articles: "Articles"
+    journals: "Journals"
+    more: "More"
+    library_search_question: "What is Library Search?"
+    library_search_answer: "Library search is your gateway to discover library content. Use Library Search to find books, articles, newspapers, archival material, images, streaming media, and much more. Library Search shows results from two collections:"
+    need_help: "Need help using Library Search?"
+    more_information: "Looking for more information on Library Search? Refer to our "
+    zero_results:
+      scholarly_journals_html: "If you’re looking for scholarly journal articles, try searching in %{href}."
+      scholarly_journals_href: "Articles"
+      general_keywords: "Try more general keywords (e.g. ‘business’ or ‘education’) for discipline-based journals."
+  catalog_advanced_search: "Advanced Search"
   books_advanced_search: "Advanced Books Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
+  databases_advanced_search: "Advanced Databases Search"
   ask_librarian: "Ask a Librarian"
-  bento_search:
-    no_results:
-      title: "No records found"
-      modify_search: "Suggestions"
-      add_search_term: "Enter search terms, if previously empty"
-      spell_check: "Make sure that all words are spelled correctly"
-      modify_words: "Try different keywords"
-      ask_librarian: "Ask a Librarian"
-      for_help: "for help"
+
+  no_results:
+    title: "No %{engine} results found"
+    header: "Suggestions"
+    spell_check: "Check your spelling."
+    modify_words: "Try different keywords."
+    fewer_keywords: "Try fewer keywords."
+    fewer_or_general_keywords: "Try fewer, or more general, keywords."
+    adjust_filters: "Adjust your search filters on the left."
+    for_help: "for help."
+    search_suggestions: "Search Suggestions"
+    not_at_temple: "Temple Doesn't Have It?"
+    ez_borrow_html: "To request books that are not available at Temple, use %{href}."
+    ez_borrow_href: "E-ZBorrow"
+    ez_borrow_link: "https://ezb.relaisd2d.com/?LS=TEMPLE"
+    illiad_html: "For books not available through E-ZBorrow, as well as other materials not available at Temple, use %{href}."
+    illiad_href: "ILLiad"
+    illiad_link: "http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/paley/logon.html"
+    ginsburg_illiad_html: "The Health Sciences Libraries patrons should use %{href},"
+    ginsburg_illiad_href: "ILLiad for Ginsburg (HSL) Library"
+    ginsburg_illiad_link: "https://temple.illiad.oclc.org/illiad/HSC/logon.html"
+    podiatry_illiad_html: "and Krausz Library of Podiatric Medicine patrons should use %{href}."
+    podiatry_illiad_href: "ILLiad for Podiatry Library"
+    podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
+
+  books:
+    section_heading_html: "<strong>Books</strong> includes print and electronic books, government documents, archival materials, and more."
+    explanation_html: "<strong>Books</strong> includes print and electronic books, government documents, materials from the %{href}, and more."
+    explanation_href: "Special Collections Research Center"
+    explanation_link: "https://library.temple.edu/scrc"
+    zero_results:
+      title_html: "<strong>No book results</strong> found for your search."
+
   primo_central:
     link_to_resource: "Link to Resource"
+
+  journals:
+    section_heading_html: "<strong>Journals</strong> includes journals, newspapers, trade publications, magazines, and more. Search <strong>Journals</strong> if you know the title of the journal, magazine, or newspaper you want to use. Visit individual journal titles to browse or search for articles within."
+    explanation_html: "Search <strong>Journals</strong> if you know the title of the journal, magazine, or newspaper you want to use. Visit individual journal titles to browse or search for articles within."
+    zero_results:
+      title_html: "<strong>No journal results</strong> found for your search."
+      scholarly_articles: "Are you looking for scholarly journal articles? Try:"
+      database_finder_html: "%{href} (to find databases like Jstor, Science Direct, etc.)"
+      database_finder_href: "Database Finder"
+      database_finder_link: "https://library.temple.edu/database-finder"
+      find_articles: "How do I find articles?"
+      find_articles_link: "http://answers.library.temple.edu/faq/195650"
+
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer-reviewed only"
     open_access: "Open Access only"
+
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
@@ -88,6 +251,7 @@ en:
     text_resource: "Text Resource"
     websites: "Website"
     website: "Website"
+    digital_collections: "Digital Collections"
   language_code:
     ar: "Afar"
     abk: "Abkhaz"

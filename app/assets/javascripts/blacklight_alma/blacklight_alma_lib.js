@@ -126,11 +126,11 @@ var BlacklightAlma = function (options) {
    check = checkHoldings(holdings);
 
    if (available) {
-     html = "<dt >Available at: </dt><dd>" + available + "</dd>";
+     html = "<dt class='index-label' >Available at: </dt><dd>" + available + "</dd>";
    }
 
    if (check) {
-   html += "<dt >Other Libraries: </dt><dd>" + check + "</dd>";
+   html += "<dt class='index-label' >Other Libraries: </dt><dd>" + check + "</dd>";
    }
    return html;
  };

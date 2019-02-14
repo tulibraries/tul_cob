@@ -11,15 +11,15 @@
 
 
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="titles">
+    <div role="tabpanel" class="tab-pane" id="titles">
       <% @documents.each do |document| %>
         <%= render partial: 'catalog/single_citation', locals: { document: document } %>
       <% end %>
     </div>
-    <div role="tabpanel" class="tab-pane" id="biblio">
+    <div role="tabpanel" class="tab-pane active" id="biblio">
       <% grouped_citations(@documents).each do |format, citations| %>
         <% unless format == 'NULL' %>
-          <h4><%= format %></h4>
+          <h4><%= citation_labels(format) %></h4>
 
           <% citations.each do |citation| %>
             <%= citation %>

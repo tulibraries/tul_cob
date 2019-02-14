@@ -1,8 +1,6 @@
-<% if has_one_electronic_resource?(document) %>
-  <%= link_to "Online", single_link_builder(document["electronic_resource_display"].first), class:"collapse-button btn btn-sm btn-info", title:"This link opens the resource in a new tab.", target:"_blank", id: "single_link_online" %>
-<% elsif has_many_electronic_resources?(document) %>
+<% if has_many_electronic_resources?(document) %>
   <div class="row button-break"></div>
-  <button class="btn-block btn btn-sm btn-info collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="many_links_online">
+  <button class="btn btn-sm online-btn collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="many_links_online">
     <span class="avail-label" aria-expanded="false">Online</span>
   </button>
   <div id="online-document-<%= document.id %>" class="collapse online_resources">
@@ -10,5 +8,9 @@
       <%= links %>
       <span class="border-bottom"></span>
     </table>
+  </div>
+<% elsif has_one_electronic_resource?(document) %>
+  <div class="availability">
+    <a href="<%= single_link_builder(document["electronic_resource_display"].first) %>" class="collapse-button btn btn-sm online-btn" title="This link opens the resource in a new tab", target="_blank" id:"single_link_online"><span class="avail-label">Online<span></a>
   </div>
 <% end %>

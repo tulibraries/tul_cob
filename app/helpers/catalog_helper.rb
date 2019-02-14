@@ -98,7 +98,8 @@ module CatalogHelper
   end
 
   def render_online_availability(doc_presenter)
-    online_resources = [doc_presenter.field_value("electronic_resource_display")]
+    field = blacklight_config.show_fields["electronic_resource_display"]
+    online_resources = [doc_presenter.field_value(field)]
       .select { |r| !r.empty? }.compact
 
     if !online_resources.empty?
@@ -128,12 +129,51 @@ module CatalogHelper
   end
 
   def render_availability(doc, doc_presenter)
-    if doc.purchase_order? && !current_user
-      link_to(t("blacklight.requests.log_in"), new_user_session_with_redirect_path(request.url),  data: { "ajax-modal": "trigger" })
-    elsif doc.purchase_order?
-      doc_presenter.purchase_order_button
-    elsif index_fields(doc).fetch("availability", nil)
+    if index_fields(doc).fetch("availability", nil)
       render "index_availability_section", document: doc
+    end
+  end
+
+  def render_purchase_order_availability(args = { document: @document })
+    return unless args[:document].purchase_order?
+
+    if args.dig(:config, :with_panel)
+      label = args.dig(:config, :label)
+      rows = [ t("purchase_order_allowed") ]
+      render partial: "availability_panel", locals: { label: label, rows: rows }
+
+    elsif current_user && !current_user.can_purchase_order?
+      content_tag :div, t("purchase_order_allowed"), class: "availability"
+    else
+      render_purchase_order_button(args)
+    end
+  end
+
+  def render_purchase_order_button(args)
+    return unless args[:document].purchase_order?
+
+    doc = args[:document]
+    with_po_link = args.dig(:config, :with_po_link)
+
+    if !current_user
+      link = with_po_link ? render_purchase_order_show_link(args) : ""
+      render partial: "purchase_order_anonymous_button", locals: { link: link, document: doc }
+    elsif current_user.can_purchase_order?
+      label = content_tag :span, "Request Rapid Access", class: "avail-label"
+      path = purchase_order_path(id: doc.id)
+      link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "ajax-modal": "trigger" }
+      content_tag :div, link, class: "requests-container"
+    end
+  end
+
+  def render_purchase_order_show_link(args = { document: @document })
+    return unless args[:document].purchase_order?
+
+    if !current_user
+      id = args[:document].id
+      link_to("Log in to access request form", doc_redirect_url(id), data: { "ajax-modal": "trigger" })
+    elsif current_user.can_purchase_order?
+      render_purchase_order_button(args)
     end
   end
 
@@ -173,5 +213,198 @@ module CatalogHelper
 
   def back_to_articles_path
     search_path(search_params)
+  end
+
+  def back_to_databases_path
+    search_databases_path(search_params)
+  end
+
+  def get_search_params(field, query)
+    case field
+    when "title_uniform_display", "title_addl_display"
+      { search_field: "title", q: query }
+    when "relation"
+      { search_field: "title", q: query["relatedTitle"] }
+    else
+      { search_field: field, q: query }
+    end
+  end
+
+  def fielded_search(query, field)
+    params = get_search_params(field, query)
+    link_url = search_action_path(params)
+    title = params[:title] || params[:q]
+    link_to(title, link_url)
+  end
+
+  def list_with_links(args)
+    args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
+  end
+
+  def creator_index_separator(args)
+    creator = args[:document][args[:field]]
+    creator.map do |name|
+      plain_text_subfields = name.gsub("|", " ")
+      creator = plain_text_subfields
+    end
+    creator
+  end
+
+  def subject_links(args)
+    args[:document][args[:field]].map do |subject|
+      link_to(subject.sub("— — ", "— "), "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
+    end
+  end
+
+  def genre_links(args)
+    args[:document][args[:field]].map do |genre|
+      link_to(genre, "#{search_catalog_path}?f[genre_full_facet][]=#{CGI.escape genre}")
+    end
+  end
+
+  def has_one_electronic_resource?(document)
+    document.fetch("electronic_resource_display", []).length == 1
+  end
+
+  def has_many_electronic_resources?(document)
+    electronic_resources = document.fetch("electronic_resource_display", [])
+    electronic_resources.length > 1 ||
+      has_one_electronic_resource?(document) &&
+      render_electronic_notes(electronic_resources.first).present?
+  end
+
+  def check_holdings_library_name(document)
+    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
+  end
+
+  def check_holdings_call_number(document)
+    document.fetch("call_number_display", []).first
+  end
+
+  def check_holdings_location(document, library)
+    locations_array = []
+    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
+    locations.each { |k, v|
+      shelf = Rails.configuration.locations.dig(k, v)
+      locations_array << shelf
+    }
+    locations_array
+  end
+
+  def check_for_full_http_link(args)
+    [args[:document][args[:field]]].flatten.compact.map { |field|
+      if field["url"].present?
+        electronic_access_links(field)
+      else
+        electronic_resource_link_builder(field)
+      end
+    }.join("").html_safe
+  end
+
+  def electronic_access_links(field)
+    text = field.fetch("title", "Link to Resource").sub(/ *[ ,.\/;:] *\Z/, "")
+    url = field["url"]
+    content_tag(:td, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
+  end
+
+  def electronic_resource_link_builder(field)
+    return if field.empty?
+    return if field["availability"] == "Not Available"
+
+    title = field.fetch("title", "Find it online")
+    electronic_notes = render_electronic_notes(field)
+
+    item_html = [render_alma_eresource_link(field["portfolio_id"], title), field["subtitle"]]
+      .select(&:present?).join(" - ")
+    item_html = [item_html, electronic_notes]
+      .select(&:present?).join(" ").html_safe
+
+    content_tag(:td, item_html , class: " electronic_links online-list-items")
+  end
+
+  def render_electronic_notes(field)
+    collection_id = field["collection_id"]
+    service_id = field["service_id"]
+
+    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
+    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
+
+    if collection_notes.present? || service_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
+    end
+  end
+
+  def render_alma_eresource_link(portfolio_pid, db_name)
+    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), title: "Target opens in new window", target: "_blank")
+  end
+
+  def alma_electronic_resource_direct_link(portfolio_pid)
+    query = {
+        "u.ignore_date_coverage": "true",
+        "Force_direct": true,
+        portfolio_pid: portfolio_pid
+    }
+    alma_build_openurl(query)
+  end
+
+  def alma_build_openurl(query)
+    query_defaults = {
+      rfr_id: "info:sid/primo.exlibrisgroup.com",
+    }
+
+    URI::HTTPS.build(
+      host: alma_domain,
+      path: "/view/uresolver/#{alma_institution_code}/openurl",
+      query: query_defaults.merge(query).to_query).to_s
+  end
+
+
+  def render_holdings_summary(document)
+    if holdings_summary_information(document).present?
+      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
+    else
+      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
+    end
+  end
+
+  def holdings_summary_information(document)
+    field = document.fetch("holdings_summary_display", [])
+    unless field.empty?
+      field.first.split("|").first
+    end
+  end
+
+  def build_holdings_summary(items, document)
+    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
+      summary.split("|")
+    }.map { |summary|
+      [summary.last, summary.first]
+    }.to_h
+
+    items.map { |item|
+        library = item.first
+        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
+          .uniq.select { |id| holdings_summaries.keys.include?(id) }
+          .map { |holding| holdings_summaries[holding] }
+          .join(", ")
+
+        [ library, ("Summary: #{summaries}".sub(/Summary: $/, "") unless summaries.blank?) ]
+      }.to_h
+  end
+
+  def single_link_builder(field)
+    if field["url"].present?
+      field["url"]
+    else
+      alma_electronic_resource_direct_link(field["portfolio_id"])
+    end
+  end
+
+  def doc_id(id)
+    "doc-#{id}"
+  end
+
+  def doc_redirect_url(id)
+    new_user_session_with_redirect_path("#{request.url}##{doc_id(id)}")
   end
 end

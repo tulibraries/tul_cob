@@ -63,7 +63,7 @@ module CobAlma
     def self.item_level_locations(items_list)
       pickup_locations = self.possible_pickup_locations
 
-      items_list.reduce({}) { |libraries, item|
+      items_list.all.reduce({}) { |libraries, item|
         desc = item.description
         campus = determine_campus(item.library)
 
@@ -109,8 +109,7 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      descriptions = items_list.map { |item| item["item_data"]["description"] }
-
+      descriptions = items_list.all.map(&:description)
       if descriptions.any?
         descriptions.each do |desc|
           desc
@@ -135,14 +134,8 @@ module CobAlma
       material_types.uniq
     end
 
-    def self.item_holding_id(items_list)
-      holding_id = items_list.map { |item| item["holding_data"]["holding_id"] }
-      holding_id.first
-    end
-
-    def self.item_pid(items_list)
-      item_pid = items_list.map { |item| item["item_data"]["pid"] }
-      item_pid.last
+    def self.item_holding_ids(items_list)
+      items_list.collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
     end
   end
 end

@@ -15,7 +15,7 @@ RSpec.feature "Bento Searches" do
         fill_in "q", with: item["title"]
         click_button
       end
-      within first("h4") do
+      within first("h3") do
         expect(page).to have_text item["title"]
       end
     end

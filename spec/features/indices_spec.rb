@@ -15,12 +15,7 @@ RSpec.feature "Indices" do
     context "publicly available pages" do
       scenario "User visits home page" do
         visit "/catalog"
-        expect(page).to have_text "Books & More Search"
-        within("#facets") do
-          expect(page).to have_text "Availability"
-          expect(page).to have_text "Library"
-          expect(page).to have_text "Resource Type"
-        end
+        expect(page).to_not have_css("#facets")
       end
     end
   end
@@ -38,9 +33,12 @@ RSpec.feature "Indices" do
         "Genre",
         "Language"]
     }
-    context "publicly available pages" do
-      scenario "User visits home page" do
+    context "searching shows all facets" do
+      scenario "User searches catalog" do
         visit "/catalog"
+        fill_in "q", with: "*"
+        click_button "search"
+
         within("#facets") do
           all("div.panel").each_with_index do |div_panel, i|
             expect(div_panel).to have_text facets[i]
@@ -51,6 +49,7 @@ RSpec.feature "Indices" do
   end
 
   feature "Catalog" do
+
     let (:title) { "Academic freedom in an age of conformity" }
     let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
@@ -58,6 +57,7 @@ RSpec.feature "Indices" do
       fill_in "q", with: title
       click_button "search"
       expect(current_url).to eq results_url
+      expect(page).to have_css("#facets")
       within(".document-position-0 h3") do
         expect(page).to have_text(title)
       end

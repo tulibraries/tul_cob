@@ -14,6 +14,8 @@ else
 
   Rake::Task[:default].clear
   task default: :ci
+
+  require "solr_wrapper/rake_task" unless Rails.env.production?
 end
 
 require "solr_wrapper/rake_task"

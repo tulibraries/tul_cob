@@ -126,24 +126,82 @@ RSpec.describe CatalogController, type: :controller do
     context "user is not logged in" do
       it "does not allow access to purchase order action" do
         get :purchase_order, params: { id: doc_id }
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
 
         post :purchase_order_action, params: { id: doc_id }
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
     context "user is logged in" do
-      it "allows access to purchase order actioins" do
-        sign_in FactoryBot.create(:user)
+      let(:user) { FactoryBot.create(:user) }
+      let(:allow_purchase) { true }
 
-        get :purchase_order, params: { id: doc_id }
-        expect(response).to be_success
+      before do
+        sign_in user
+        allow(controller).to receive(:current_user) { user }
+        allow(user).to receive(:can_purchase_order?) { allow_purchase }
+      end
 
-        post :purchase_order_action, params: { id: doc_id }
-        expect(response).to be_success
+      context "user group is allowed to purchase order" do
+        it "allows access to purchase order action" do
+          get :purchase_order, params: { id: doc_id }
+          expect(response).to be_successful
+
+          post :purchase_order_action, params: { id: doc_id }
+          expect(response).to be_successful
+        end
+      end
+
+      context "user group is not allowed to purchase order" do
+        let(:allow_purchase) { false }
+
+        it "does not allow access to purchase order action" do
+          get :purchase_order, params: { id: doc_id }
+          expect(response).not_to be_successful
+
+          post :purchase_order_action, params: { id: doc_id }
+          expect(response).not_to be_successful
+        end
       end
     end
   end
 
+  describe "#do_with_json_logger" do
+    before do
+      allow(controller).to receive(:json_request_logger) {}
+      allow(Time).to receive(:now) { "boo" }
+    end
+
+    it "yields the passed in block" do
+      expect(controller.do_with_json_logger({}) { "foo" }).to eq("foo")
+    end
+
+    it "logs the passed in param with start time" do
+      controller.do_with_json_logger(foo: "bar")
+      expect(controller).to have_received(:json_request_logger).with(foo: "bar", start: "boo")
+    end
+
+    context "passed in block throws an error" do
+      it "logs the passed in param plus the error" do
+        controller.do_with_json_logger(foo: "bar") { raise StandardError } rescue nil
+        expect(controller).to have_received(:json_request_logger).with(foo: "bar", error: "StandardError", start: "boo")
+      end
+    end
+
+    context "passed in block return response to loggable" do
+      it "merges loggable with log" do
+        controller.do_with_json_logger(foo: "bar") { OpenStruct.new(loggable: { bizz: "buzz" }) }
+        expect(controller).to have_received(:json_request_logger).with(foo: "bar", bizz: "buzz", start: "boo")
+      end
+    end
+
+    context "raised error message if JSON parsable" do
+      it "parses the error message as json and merges to log" do
+        message = { error: "foo", bizz: "buzz" }.to_json
+        controller.do_with_json_logger(foo: "bar") { raise StandardError.new(message) } rescue nil
+        expect(controller).to have_received(:json_request_logger).with(foo: "bar", "error" => "foo", "bizz" => "buzz", start: "boo")
+      end
+    end
+  end
 end

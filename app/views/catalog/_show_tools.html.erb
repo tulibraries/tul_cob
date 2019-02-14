@@ -12,7 +12,7 @@
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
         <% if config.key == :bookmark %>
-          <li class="<%= config.key %>">
+          <li class="<%= config.key %>" id="bookmark_button">
             <%= inner %>
           </li>
           <% if @document.citable? %>

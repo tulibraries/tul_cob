@@ -135,6 +135,41 @@ RSpec.describe Traject::Macros::Custom do
 
   subject { test_class.new }
 
+  describe "#extract_title_statement" do
+    let(:path) { "title_statement_examples.xml" }
+
+    before(:each) do
+      subject.instance_eval do
+        to_field "title_statement_display", extract_title_statement
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "245 field incudes subfield h" do
+      it "adds a / before subfield c" do
+        expected = { "title_statement_display" => ["Die dritte generation / produziert von der Tango-Film Berlin ; zusammen mit der Pro-Ject Film-Produktion im Filmverlag der Autoren ; musik, Peer Raben ; ausstattung, Raùl Gimenez ; schnitt, Juliane Lorenz ; ein film von Rainer Werner Fassbinder."] }
+        expect(subject.map_record(records[0])).to eq(expected)
+      end
+    end
+
+    context "245 field does NOT incude subfield h" do
+      it "does not add a / before subfield c" do
+        expected = { "title_statement_display" => ["Printed circuits handbook."] }
+        expect(subject.map_record(records[1])).to eq(expected)
+      end
+    end
+
+    context "245 field has a slash in multiple fields" do
+      it "does not display double slashes" do
+        expected = { "title_statement_display" => ["Yaju no seishun Youth of the beast / a Janus Films release ; produced by Keinosuke Kubo ; screenplay by Ichoro Ikeda Tadaaki Yamazaki ; directed by Seijun Suzuki."] }
+        expect(subject.map_record(records[2])).to eq(expected)
+      end
+    end
+  end
+
   describe "#extract_creator" do
     let(:path) { "creator_examples.xml" }
     before(:each) do
@@ -393,6 +428,53 @@ RSpec.describe Traject::Macros::Custom do
           expect(subject.map_record(records[9])).to_not eq("availability_facet" => ["Online"])
         end
       end
+
+      describe "#extract_availability(purchase on demand)" do
+        let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+        before do
+          subject.instance_eval do
+            to_field("availability_facet", extract_availability)
+            settings do
+              provide "marc_source.type", "xml"
+            end
+          end
+        end
+
+        context "with purchase order field true" do
+          let(:record_text) { "
+<record>
+  <datafield ind1='1' ind2=' ' tag='902'>
+    <subfield code='a'>EBC-POD</subfield>
+    <subfield code='d'>d</subfield>
+  </datafield>
+  <datafield ind1='1' ind2=' ' tag='100'>
+    <subfield code='a'>Foo</subfield>
+    <subfield code='q'>q</subfield>
+  </datafield>
+</record>
+                         " }
+
+          it "adds a purchase order availability" do
+            expect(subject.map_record(record)["availability_facet"]).to include("Request Rapid Access")
+          end
+
+          it "also adds an online availability" do
+            expect(subject.map_record(record)["availability_facet"]).to include("Online")
+          end
+        end
+
+        context "with purchase order field false" do
+          let(:record_text) { "
+<record>
+</record>
+                         " }
+
+          it "does not add purchase order availability" do
+            expect(subject.map_record(record)).to eq({})
+          end
+        end
+      end
     end
 
     describe "#extract_electronic_resource" do
@@ -416,7 +498,7 @@ RSpec.describe Traject::Macros::Custom do
         context "single PRT field to electronic_resource_display" do
           it "maps a single PRT field" do
             expect(subject.map_record(records[1])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
@@ -424,7 +506,10 @@ RSpec.describe Traject::Macros::Custom do
         context "multiple PRT fields present" do
           it "maps a multiple PRT fields to electronic_resource_display" do
             expect(subject.map_record(records[2])).to eq(
-              "electronic_resource_display" => ["foo|||Available", "bar|||Not Available"]
+              "electronic_resource_display" => [
+                { portfolio_id: "foo", availability: "Available" }.to_json,
+                { portfolio_id: "bar", availability: "Not Available" }.to_json,
+              ]
             )
           end
         end
@@ -434,7 +519,9 @@ RSpec.describe Traject::Macros::Custom do
         context "single 856 field (ind1 = 4; ind2 = not 2) and no exceptions" do
           it "maps a single 856 field to electronic_resource_display" do
             expect(subject.map_record(records[3])).to eq(
-              "electronic_resource_display" => ["foo|http://foobar.com"]
+              "electronic_resource_display" => [
+                { title: "foo", url: "http://foobar.com" }.to_json,
+              ]
             )
           end
         end
@@ -443,9 +530,9 @@ RSpec.describe Traject::Macros::Custom do
           it "maps multiple 856 fields to electronic_resource_display" do
             expect(subject.map_record(records[4])).to eq(
               "electronic_resource_display" => [
-                "z 3|http://foobar.com",
-                "y|http://foobar.com",
-                "Link to Resource|http://foobar.com"
+                { title: "z 3", url: "http://foobar.com" }.to_json,
+                { title: "y", url: "http://foobar.com" }.to_json,
+                { title: "Link to Resource", url: "http://foobar.com" }.to_json,
               ]
             )
           end
@@ -468,14 +555,14 @@ RSpec.describe Traject::Macros::Custom do
         context "856 field has exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[7])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
         context "856 has no exception" do
           it "only maps the PRT field to electronic_resource_display" do
             expect(subject.map_record(records[8])).to eq(
-              "electronic_resource_display" => ["foo|||"]
+              "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
@@ -516,7 +603,7 @@ RSpec.describe Traject::Macros::Custom do
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with archive-it exception" do
           it "maps a single 856 field to url_more_links_display" do
-            expect(subject.map_record(records[10])).to eq("url_more_links_display" => ["Archive|http://archive-it.org/collections/4222"])
+            expect(subject.map_record(records[10])).to eq("url_more_links_display" => [ { title: "Archive", url: "http://archive-it.org/collections/4222" }.to_json ])
           end
         end
 
@@ -529,7 +616,7 @@ RSpec.describe Traject::Macros::Custom do
         context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
           it "maps a single 856 field to url_more_links_display" do
             expect(subject.map_record(records[5])).to eq(
-              "url_more_links_display" => ["book review|http://foobar.com"],
+              "url_more_links_display" => [ { title: "book review", url: "http://foobar.com" }.to_json ],
             )
           end
         end
@@ -540,14 +627,14 @@ RSpec.describe Traject::Macros::Custom do
         context "856 field has exception" do
           it "only maps the PRT field to url_more_links_display" do
             expect(subject.map_record(records[7])).to eq(
-              "url_more_links_display" => ["BOOK review|http://foobar.com"]
+              "url_more_links_display" => [ { title: "BOOK review", url: "http://foobar.com" }.to_json ]
             )
           end
         end
         context "856 has no exception" do
           it "only maps the PRT field to url_more_links_display" do
             expect(subject.map_record(records[8])).to eq(
-              "url_more_links_display" => ["bar|http://foobar.com"]
+              "url_more_links_display" => [ { title: "bar", url: "http://foobar.com" }.to_json ]
             )
           end
         end
@@ -568,7 +655,7 @@ RSpec.describe Traject::Macros::Custom do
       context "856 field includes temple and scrc" do
         it "it does not map to url_finding_aid_display " do
           expect(subject.map_record(records[11])).to eq(
-            "url_finding_aid_display" => ["Finding aid|http://library.temple.edu/scrc"])
+            "url_finding_aid_display" => [ { title: "Finding aid", url: "http://library.temple.edu/scrc" }.to_json ])
         end
       end
     end
@@ -587,7 +674,10 @@ RSpec.describe Traject::Macros::Custom do
       context "multiple PRT fields present" do
         it "reverses the order of multipe PRT fields" do
           expect(subject.map_record(records[2])).to eq(
-            "url_more_links_display" => ["bar|||Not Available", "foo|||Available"]
+            "url_more_links_display" => [
+                { portfolio_id: "bar", availability: "Not Available" }.to_json,
+                { portfolio_id: "foo", availability: "Available" }.to_json,
+            ]
           )
         end
       end
@@ -639,6 +729,37 @@ RSpec.describe Traject::Macros::Custom do
         ]
         expect(subject.map_record(records[0])).to eq(
           "subject_display" => expected
+        )
+      end
+    end
+  end
+
+  describe "#extract_genre_display" do
+    before do
+      subject.instance_eval do
+        to_field "genre_display", extract_genre_display
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a record doesn't have genres" do
+      let(:path) { "genre_display.xml" }
+      it "does not map a genre_display" do
+        expect(subject.map_record(records[0])).to eq({})
+      end
+    end
+
+    context "when a record has genres" do
+      let(:path) { "genre_display.xml" }
+      it "maps data from 655 fields in expected way" do
+        expected = [
+          "Documentary films",
+          "Foreign language films — Chinese"
+        ]
+        expect(subject.map_record(records[1])).to eq(
+          "genre_display" => expected
         )
       end
     end
@@ -753,6 +874,12 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[3])).to eq({})
       end
     end
+
+    context "when there are multiple items and one of the records is in asrs" do
+      it "does not map to the field" do
+        expect(subject.map_record(records[4])).to eq({})
+      end
+    end
   end
 
   describe "#extract_oclc_number" do
@@ -803,6 +930,12 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
+    context "when 979 field includes on inside a string" do
+      it "does not map record" do
+        expect(subject.map_record(records[8])).to eq({})
+      end
+    end
+
     context "when 979 field and 035 field have different OCLC numbers" do
       it "maps record" do
         expect(subject.map_record(records[6])).to eq("oclc_number_display" => ["938995310", "882543310"])
@@ -836,12 +969,7 @@ RSpec.describe Traject::Macros::Custom do
     context "when a record has summary holdings" do
       let(:path) { "holdings_summary.xml" }
       it "maps data from HLD866 fields in expected way" do
-        expected = [
-          "v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.|22318863960003811"
-        ]
-        expect(subject.map_record(records[0])).to eq(
-          "holdings_summary_display" => expected
-        )
+        expect(subject.map_record(records[0])).to eq("holdings_summary_display" => ["1993/94-|22318864040003811", "1971/72- Latest in Paley Ref. Stacks.|22318863960003811", "Latest only.|22318863060003811"])
       end
     end
   end
@@ -1081,4 +1209,5 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
+
 end
