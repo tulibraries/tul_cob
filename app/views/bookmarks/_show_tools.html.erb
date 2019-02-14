@@ -17,23 +17,23 @@
 
         <% if @documents.any? { |doc| doc.citable? } %>
         <li>
-          <%= link_to t("blacklight.tools.cite_html"), citation_bookmarks_path(:id => @documents), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn btn-default"} %>
+          <%= link_to t("blacklight.tools.cite_html"), citation_bookmarks_path(:id => @documents), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn btn-sm"} %>
         </li>
         <% end %>
 
         <li id="sendto-menu">
           <div id="bookmarks-sendto">
-            <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
-            <ul class="dropdown-menu bookmarks-dropdown-menu">
+            <button class="btn btn-sm dropdown-toggle bookmarks-dropdown" data-toggle="dropdown">Send To <span class="caret"></span></button>
+            <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
-                <li class="sendto-item">
+                <div class="sendto-item dropdown-item">
                   <%= value %>
-                </li>
+                </div>
               <% end %>
-              <li class="sendto-item">
-                <%= render :partial => 'catalog/refworks_form', :locals => {:documents=> @document_list} %>
-              </li>
-            </ul>
+              <div class="sendto-item dropdown-item">
+                <%= render :partial => "catalog/refworks_form", :locals => {:documents=> @document_list} %>
+              </div>
+            </div>
           </div>
         </li>
       </ul>
