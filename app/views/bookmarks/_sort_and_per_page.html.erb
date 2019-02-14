@@ -1,8 +1,8 @@
-<div id="sortAndPerPage" class="clearfix row text-right bookmarks-sort-and-per-page">
-	<div class="pull-left">
-		<%= link_to("Back", :back, class: 'btn btn-sm bookmarks-back-btn', id: 'back_to_search') %>
+<div id="sortAndPerPage" class="d-md-flex justify-content-between align-items-start border-bottom border-light-grey mb-4">
+	<div class="search-widgets flex-sm-column flex-md-row p-3">
+		<%= link_to("Back", :back, class: "btn btn-sm bookmarks-back-btn border-light-grey", id: "back_to_search") %>
 	</div>
-	<div class="bookmarks-tools pull-right">
-  	<%= render :partial => 'show_tools' %>
+	<div id="bookmarks-tools" class="bookmarks-tools nav-tools row p-3">
+  	<%= render :partial => "show_tools" %>
 	</div>
 </div>
