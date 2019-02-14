@@ -491,7 +491,9 @@
 
   <updateRequestProcessorChain name="DocCentricVersioningOnDate">
     <processor class="solr.ParseDateFieldUpdateProcessorFactory">
+      <str name="defaultTimeZone">Etc/UTC</str>
       <arr name="format">
+        <str>yyyy-MM-dd HH:mm:ss Z</str>
         <str>yyyy-MM-dd HH:mm:ss</str>
       </arr>
     </processor>
@@ -499,9 +501,8 @@
       <str name="versionField">record_update_date</str>
       <bool name="ignoreOldUpdates">false</bool>
     </processor>
-    <processor class="solr.DistributedUpdateProcessorFactory" />
-    <processor class="solr.RunUpdateProcessorFactory" />
     <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
   </updateRequestProcessorChain>
 
 </config>
