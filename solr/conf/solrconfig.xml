@@ -466,6 +466,21 @@
       <str>suggest</str>
     </arr>
   </requestHandler>
+
+  <!-- Index Replication distributes complete copies of a leader index to one or more follower servers.
+       The leader server continues to manage updates to the index. All querying is handled by the followers.
+       During updates, replication will be disabled and the followers will continue serving queries.
+       Once updates are done, replication will be re-enabled and the followers will receive updated records. -->
+  <!-- About this xi:include block: -->
+  <!-- If the file solrconfig_leader.xml is present, this server will behave as a leader
+     If not, the file solrconfig_follower.xml MUST be present, and this server will behave as a follower
+     In either case, a new requestHandler will be transcluded here -->
+  <xi:include href="solrconfig_leader.xml" xmlns:xi="http://www.w3.org/2001/XInclude">
+    <xi:fallback>
+      <xi:include href="solrconfig_follower.xml"/>
+    </xi:fallback>
+  </xi:include>
+
   <query>
     <filterCache class="solr.FastLRUCache"
                  size="${filterCacheSize:2048}"

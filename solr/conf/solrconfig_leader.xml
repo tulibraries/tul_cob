@@ -1,0 +1,6 @@
+<requestHandler name="/replication" class="solr.ReplicationHandler">
+  <lst name="master">
+    <str name="replicateAfter">commit</str>
+    <str name="commitReserveDuration">00:00:10</str>
+  </lst>
+</requestHandler>
