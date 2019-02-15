@@ -259,7 +259,7 @@ module CatalogHelper
 
   def subject_links(args)
     args[:document][args[:field]].map do |subject|
-      link_to(subject.sub("— — ", "— "), "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
+      link_to(subject.sub("— — ", "— "), "#{base_path}?f[subject_facet][]=#{CGI.escape subject}")
     end
   end
 
