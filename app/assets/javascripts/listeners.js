@@ -53,7 +53,9 @@ $(document).ready(function(){
       ga('send', 'event', {
         eventCategory: 'Click Event',
         eventAction: 'click',
-        eventLabel: event
+        eventLabel: event,
+        forceSSL: true,
+        anonymizeIp: true
       });
     }
   }
