@@ -17,5 +17,3 @@ else
 
   require "solr_wrapper/rake_task" unless Rails.env.production?
 end
-
-require "solr_wrapper/rake_task"
