@@ -14,8 +14,14 @@ module FacetsHelper
   def render_facet_value(facet_field, item, options = {})
     path = path_for_facet(facet_field, item)
 
+    html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
+
+    if item.value == "digital_collections"
+      html_options.merge!(target: "_blank")
+    end
+
     content_tag(:span, class: "facet-label") do
-      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, class: "facet_select facet_" + item.value.downcase.parameterize.underscore)
+      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
     end + render_facet_count(item.hits)
   end
 
