@@ -69,7 +69,7 @@ group :development, :test do
   gem "rubocop"
 end
 
-gem "rsolr", "~> 1.0"
+gem "rsolr", "~> 2.2"
 gem "devise"
 gem "devise-guests", "~> 0.5"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
