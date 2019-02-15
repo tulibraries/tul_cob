@@ -3,6 +3,7 @@
 require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller, relevance: true do
+
   render_views
 
   let(:search_term) { search_terms.values.join(" ") }
