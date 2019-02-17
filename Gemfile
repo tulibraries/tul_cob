@@ -101,7 +101,7 @@ gem "traject", "~> 3.0"
 gem "traject_plus"
 
 group :production do
-  gem "mysql2", "~> 0.4.9"
+  gem "mysql2", "~> 0.5.2"
 end
 
 # devops
