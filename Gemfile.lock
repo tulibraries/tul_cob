@@ -289,7 +289,7 @@ GEM
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
-    mysql2 (0.4.10)
+    mysql2 (0.5.2)
     nenv (0.3.0)
     nio4r (2.3.1)
     nokogiri (1.10.1)
@@ -533,7 +533,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   listen (~> 3.0.5)
-  mysql2 (~> 0.4.9)
+  mysql2 (~> 0.5.2)
   okcomputer
   omniauth
   omniauth-shibboleth
