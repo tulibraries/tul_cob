@@ -198,8 +198,5 @@ RSpec.describe AlmawsController, type: :controller do
     it "returns nil when passed nil" do
       expect(controller.send(:date_or_nil, nil)).to be nil
     end
-
-
-
   end
 end

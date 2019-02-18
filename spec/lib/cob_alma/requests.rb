@@ -128,5 +128,4 @@ RSpec.describe CobAlma::Requests do
       end
     end
   end
-
 end
