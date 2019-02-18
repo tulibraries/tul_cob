@@ -1,20 +1,20 @@
     <% if @results %>
       <% if !cookies.fetch("bentoOnce", false) %>
-        <div class="row explanation-div" data-target="explanation.bento" data-controller="explanation">
-          <div class="col-xs-12 col-sm-11">
-            <p class="everything-explanation"><%= t("bento.explanation_html",
+        <div class="flex-md-row mx-auto text-center" data-target="explanation.bento" data-controller="explanation">
+          <div class="col-sm-12 col-md-9 mt-4 pl-4">
+            <p class="explanation"><%= t("bento.explanation_html",
               books: link_to(t("bento.books"), search_books_path),
               articles: link_to(t("bento.articles"), search_path),
               journals: link_to(t("bento.journals"), search_journals_path),
               more: link_to(t("bento.more"), search_catalog_path)) %></p>
           </div>
-          <div class="col-xs-12 col-sm-1">
-            <button class="btn btn-link bento-hide-link" data-action="explanation#bento">Hide</button>
+          <div class="">
+            <button class="btn btn-link explantion-btn col-sm-12 col-md-3 mt-3" data-action="explanation#bento">Hide</button>
           </div>
         </div>
       <% end %>
-      
-      <div class="bento-container">
+
+      <div class="bento-container mt-4">
           <%= render_bento_results %>
         <% else %>
           <%= render("home_text") %>
