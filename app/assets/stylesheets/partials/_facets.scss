@@ -18,12 +18,16 @@
 	}
 	@media(max-width: 485px) {
 		margin-left: 1.25rem;
-		margin-top: 0.1875rem;
 	}
 }
 
 #facet-icons {
 	float: left;
+	height: 3.125rem;
+	width: 3.125rem;
+}
+
+#facet-filter-icon {
 	height: 3.125rem;
 	width: 3.125rem;
 }
@@ -152,11 +156,6 @@ span.constraint-value {
 	@media(max-width: 485px) {
 		margin-bottom: 0.75rem;
 	}
-}
-
-#facet-filter-icon {
-	height: 3.125rem;
-	width: 3.125rem;
 }
 
 /* DATE RANGE FACET STYLES */

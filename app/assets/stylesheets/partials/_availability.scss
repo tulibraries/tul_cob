@@ -108,6 +108,11 @@ td.electronic_links {
   border: 1px solid $tan-border;
   padding: 0.75rem;
 }
+
+.spinner {
+  margin-top: 10px;
+}
+
 // #availability-container {
 //
 //   @media(max-width: 760px) {
@@ -144,10 +149,6 @@ td.electronic_links {
 //   margin-right: 10px;
 // }
 //
-// .spinner {
-//   display: none;
-//   margin-top: 10px;
-// }
 //
 // .button-break {
 //   padding: 3px;
