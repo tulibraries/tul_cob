@@ -23,8 +23,8 @@
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
       <div id="avail-spinner" data-target="show.spinner" class="spinner">
-        <span class="glyphicon glyphicon-refresh spinning" role="spinbutton"></span>
-        Loading Availability
+        <i class="fa fa-spinner" role="spinbutton"></i>
+        <span>Loading Availability</span>
       </div>
       <div class="table-wrapper hidden">
         <div class="border-right border-tan-border" data-target="show.panel"></div>
