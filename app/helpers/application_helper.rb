@@ -65,13 +65,13 @@ module ApplicationHelper
   def bento_icons(engine_id)
     case engine_id
     when "books"
-      content_tag(:span, "", class: "bento-icon bento-book")
+      content_tag(:span, "", class: "bento-icon bento-book m-3")
     when "articles"
-      content_tag(:span, "", class: "bento-icon bento-article")
+      content_tag(:span, "", class: "bento-icon bento-article m-3")
     when "journals"
-      content_tag(:span, "", class: "bento-icon bento-journal")
+      content_tag(:span, "", class: "bento-icon bento-journal m-3")
     when "more"
-      content_tag(:span, "", class: "bento-icon bento-more")
+      content_tag(:span, "", class: "bento-icon bento-more m-3")
     end
   end
 
