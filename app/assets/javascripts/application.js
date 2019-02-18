@@ -44,6 +44,9 @@ $(window).load(function(){
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#facet-filter-icon').addClass('hidden');
+		$('#facet-panel-collapse').addClass('show');
+		$('#bookmarks-tools').addClass('row');
 	}
 });
 
@@ -58,6 +61,9 @@ $(window).on('resize', function() {
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#facet-filter-icon').addClass('hidden');
+		$('#facet-panel-collapse').addClass('show');
+		$('#bookmarks-tools').addClass('row');
 	}
 });
 
