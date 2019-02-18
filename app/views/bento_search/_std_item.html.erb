@@ -23,11 +23,11 @@
   <%# for debugging purposes, we'll include the vendor-specific unique_id, if we have
       one, in a data-unique-id attribute. %>
 
-  <div class="bento_item" data-unique-id="<%= item.unique_id %>">
+  <div class="bento_item border-bottom border-bento-border pr-2 pt-4" data-unique-id="<%= item.unique_id %>">
     <%= render :partial => "bento_search/item_title", :object => item, :as => 'item' %>
 
 
-    <div class="bento_item_body">
+    <div class="bento_item_body ml-3">
 
 
 
@@ -72,7 +72,7 @@
       <% end %>
     </div>
       <% if item.engine_id == "more" %>
-        <div class="bento_item_body">
+        <div class="bento_item_body ml-4 pl-2 pb-3">
           <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
         </div>
       <% end %>
@@ -82,7 +82,7 @@
       <% end %>
 
       <% if item.engine_id == "articles" %>
-        <div class="bento_item_body">
+        <div class="bento_item_body ml-4 pl-2 pb-3">
           <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
         </div>
         <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
