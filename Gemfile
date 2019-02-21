@@ -49,7 +49,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 6.0"
+gem "blacklight", "~> 6.19"
 gem "blacklight_advanced_search", "~> 6.3"
 gem "blacklight-marc", git: "https://github.com/tulibraries/blacklight-marc.git", branch: "v6-2-0-unpin-traject"
 gem "blacklight_range_limit"
