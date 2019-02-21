@@ -2,9 +2,10 @@
 
 /* BANNER */
 div.site-message {
-	border-width: 2px !important;
+	border-width: 0.125rem !important;
 	font-size: 0.875rem;
   padding: 0.625rem 0.625rem 0 0.625rem;
+	text-align: center;
 
 	@media(max-width: 485px) {
 		padding: auto 0.625rem;
@@ -35,13 +36,21 @@ div.site-message {
 }
 
 /* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
-#red-navbar .container {
-	margin-left: 0;
-	padding-right: 0;
+#red-navbar  {
+	text-align: center;
+
+	@media(max-width:992px) {
+		justify-content: left;
+	}
+
+	@media(min-width:600px) {
+		text-align: left;
+	}
 
 	@media(max-width:485px) {
- 		justify-content: center;
-		padding-left: 0;
+		justify-content: center;
+		padding: 0;
+		text-align: center;
  	}
 }
 
@@ -58,15 +67,15 @@ div.site-message {
 	}
 }
 
+ul.user-util-list {
+	justify-content: center;
+	padding: 0.625rem 0 0 0;
+}
+
 .user-links {
-	padding: 0.625rem 0.625rem 0;
 	a:hover {
 		text-decoration: underline;
 	}
-
-	@media(max-width: 485px) {
-  	padding: 0 0 0 0.625rem;
-  }
 }
 
 .user-links .nav-link {
@@ -77,11 +86,6 @@ div.site-message {
 }
 
 /* HEADER WITH SEARCH INPUT */
-#search-navbar {
-	background-color: $tan;
-	border-bottom: 1px solid $red;
-}
-
 #search-navbar .container {
 	margin: 0 auto;
 	padding-left: 10%;
@@ -95,6 +99,13 @@ div.site-message {
 .input-group > .custom-select:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.navbar-form {
+
+	@media(max-width: 991px) {
+		padding: 0.3125rem;
+	}
 }
 
 a.advanced_search {
@@ -114,12 +125,22 @@ a.advanced_search {
 
 .path-links .header-links {
 	color: $black;
-	display: block;
+	display: inline-block;
 	font-family: "PT Sans";
 	font-size: 1.4rem;
 
+	@media(max-width: 768px) {
+		font-size: 1.125rem;
+	}
+
+	@media(max-width: 599px) {
+		font-size: 1rem;
+		padding-right: 0.25em;
+	}
+
 	@media(max-width: 485px) {
   	border-radius: 0.3125rem;
+		font-size: 1.4rem;
   }
 }
 
@@ -137,9 +158,9 @@ a.advanced_search {
  	}
 
  	@media(max-width: 600px) {
- 		font-size: 14px;
+ 		font-size: 0.875rem;
 		margin-top: 0 !important;
-		padding-top: 10px;
+		padding-top: 0.625rem;
  	}
 
  	@media(max-width: 485px) {
@@ -158,9 +179,13 @@ a.advanced_search {
 }
 
 /* RECORD NAV TOOLS */
+#start_over,
+#back_to_search {
+	font-size: 0.75rem;
+}
+
 #record-page-nav-tools {
 	padding-top: 1.25rem;
-	width: 100% !important;
 
 	@media(max-width: 485px) {
 		padding-bottom: 0.3125rem;
@@ -190,7 +215,7 @@ a.advanced_search {
   color: $red;
 	font-size: 0.875rem;
 
-	@media(max-width: 601px) {
+	@media(max-width: 768px) {
 		background-color: $red;
 	  border: 0;
 	  color: $white;
@@ -203,7 +228,7 @@ a.advanced_search {
   color: $red;
 	padding: 0;
 
-	@media(max-width: 601px) {
+	@media(max-width: 768px) {
 		background-color: $red;
 	  border: 0;
 	}
@@ -211,35 +236,43 @@ a.advanced_search {
 
 .sendto-item .nav-link {
 	padding-bottom: 0;
-	@media(max-width: 601px) {
+	@media(max-width: 768px) {
 		color: $white;
 	}
 }
 
 #nav-tools {
 
-	@media (max-width: 601px) {
-    margin-top: 14px;
+	@media (max-width: 768px) {
+    margin-top: 0.875rem;
 	}
 }
 
 #tools-navbar {
 
-	@media (max-width: 601px) {
+	@media (max-width: 768px) {
 		padding-left: 0;
 	}
 }
 
 #tools-navbar li, #tools-navbar li a {
-	@media (max-width: 601px) {
+	@media (max-width: 768px) {
 		background-color: $red;
 		color: $white;
 		display: block;
-		margin-bottom: 2px;
-		padding-left: 10px;
+		margin-bottom: 0.125rem;
+		padding-left: 0.625rem;
 		text-align: left;
 		width: 100%;
 	}
+}
+
+#tools-navbar li a:hover {
+	@media (max-width: 768px) {
+		background-color: $white;
+		color: $red;
+	}
+
 }
 
 /* CITATION MODAL */
@@ -263,25 +296,3 @@ a.advanced_search {
 #per_page-dropdown button, #per_page-dropdown button:hover {
 	background-color: $white;
 }
-
- // div.navbar-form {
- //   display:inline-block;
- //   padding-top: 8px;
- // }
- //
- // ul.navbar-nav {
- //   margin: auto auto;
- // }
- //
- // .blacklight-primo_central.blacklight-primo_central-show li.citation {
- //   display:none !important;
- // }
- //
- // .grouped-citations {
- //   padding: 15px;
- // }
-
- //
- // .cite-modal {
-	//  padding: 14px;
- // }

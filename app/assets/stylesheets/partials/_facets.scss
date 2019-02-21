@@ -11,7 +11,7 @@
 	font-weight: 200;
 	letter-spacing: 0.0625rem;
 
-	@media(max-width: 768px) {
+	@media(max-width: 767px) {
 		font-size: 1.6em;
 		height: 3.125rem;
 		padding: 0.625rem;
@@ -46,6 +46,16 @@ span .remove-constraints {
 	border: 0.0625rem solid transparent;
 	color: $black;
 	width: 20%;
+
+	@media(max-width: 992px) {
+		width: 35%;
+	}
+
+	@media(max-width: 768px) {
+		text-align: right;
+		width: 20%;
+	}
+
 }
 
 span.constraint-value {
@@ -73,6 +83,14 @@ span.constraint-value {
 .facet-field-heading a {
 	color: $black;
 	font-size: 1rem;
+
+	@media(max-width: 768px) {
+		font-size: .85rem;
+	}
+
+	@media(max-width: 485px) {
+		font-size: 1rem;
+	}
 }
 
 .facet-field-heading a:hover {
@@ -170,12 +188,14 @@ input[value|="Apply"] {
 	padding: 0.4375rem;
 }
 
-input#range_pub_date_sort_begin {
+input#range_pub_date_sort_begin,
+input#range_creationdate_begin {
 	margin-right: 0.125rem;
 	width: 3.2rem;
 }
 
-input#range_pub_date_sort_end {
+input#range_pub_date_sort_end,
+input#range_creationdate_end {
 	margin-left: 0.125rem;
 	width: 3.2rem;
 }
