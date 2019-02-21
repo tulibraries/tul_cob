@@ -1,11 +1,11 @@
-<ul class="d-flex list-unstyled list ml-auto align-items-center">
+<ul class="d-flex user-util-list list-inline list align-items-center">
   <%= render_nav_actions do |config, action|%>
     <% unless action.blank? %>
-      <li class="user-links"><%= action %></li>
+      <li class="user-links list-inline-item"><%= action %></li>
     <% end %>
   <% end %>
 
-  <li class="user-links">
+  <li class="user-links list-inline-item">
     <% if has_user_authentication_provider? %>
       <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
     <% end %>
