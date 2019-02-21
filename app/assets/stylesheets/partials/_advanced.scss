@@ -6,6 +6,11 @@ h2.advanced {
   font-size: 1.875rem;
 }
 
+.advanced-search-fields .row .col-sm-3,
+.advanced-search-fields .row .col-sm-5 {
+  padding-right: 0 !important;
+}
+
 .constraints h4 {
   font-family: "PT Sans";
   font-size: 1.125rem;
@@ -24,6 +29,10 @@ a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advan
   justify-content: flex-end;
   margin-right: 0.625rem;
 
+  @media(max-width: 992px) {
+    margin-right: 0;
+  }
+
   @media(max-width: 768px) {
 		margin-top: 0.625rem;
 	}
@@ -32,4 +41,15 @@ a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advan
 .advanced-filters .filter-name {
   color: #595959;
   margin-right: 0.125rem;
+}
+
+.advanced-pub-date #range_pub_date_sort_begin,
+.advanced-pub-date #range_pub_date_sort_end {
+  width: 9rem;
+
+  @media(max-width: 485px) {
+    width: 8rem;
+  }
+
+
 }

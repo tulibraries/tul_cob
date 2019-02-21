@@ -34,7 +34,7 @@
 //= require_tree .
 
 $(window).load(function(){
-	if ($(window).width() < 600) {
+	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
 		$('#bookmarks-tools').insertAfter('#documents');
 		$('#bookmarks-tools').removeClass('row');
@@ -44,14 +44,14 @@ $(window).load(function(){
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#bookmarks-tools').addClass('row');
 		$('#facet-filter-icon').addClass('hidden');
 		$('#facet-panel-collapse').addClass('show');
-		$('#bookmarks-tools').addClass('row');
 	}
 });
 
 $(window).on('resize', function() {
-	if ($(window).width() < 600) {
+	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
 		$('#bookmarks-tools').insertAfter('#documents');
 		$('#bookmarks-tools').removeClass('row');
@@ -61,11 +61,12 @@ $(window).on('resize', function() {
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#bookmarks-tools').addClass('row');
 		$('#facet-filter-icon').addClass('hidden');
 		$('#facet-panel-collapse').addClass('show');
-		$('#bookmarks-tools').addClass('row');
 	}
 });
+
 
 $(document).on('turbolinks:load', function() {
    $(window).trigger('load.bs.select.data-api');

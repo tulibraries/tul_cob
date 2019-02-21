@@ -7,6 +7,16 @@ body {
 
 #main-container {
   padding-bottom: 3.125rem;
+
+  @media(min-width: 992px) {
+    max-width: 62.5rem !important;
+    padding-left: 1.5625rem !important;
+  }
+
+  @media(min-width: 768px) {
+    max-width: 56.25rem;
+    padding-left: 1.875rem;
+  }
 }
 
 .breadcrumb {
@@ -26,7 +36,6 @@ body {
 }
 
 #documents {
-  // border-top: 1px solid #CCC;
   margin-left: 0;
   padding: 0 0 0 1.25rem;
 
@@ -92,10 +101,6 @@ dl dd {
   text-align: left;
 }
 
-#stafflink {
-  padding: 1.25rem 0.625rem;
-}
-
 .btn-link:hover {
   color: $red;
   text-decoration: underline;
@@ -136,7 +141,7 @@ dl dt.index-label {
   padding-right: 0;
   text-align: right;
 
-  @media(max-width: 600px) {
+  @media(max-width: 768px) {
     text-align: left;
  	}
 }
@@ -145,8 +150,18 @@ dl dd {
   text-align: left;
 }
 
+.show-page-list {
+  @media(max-width: 768px) {
+    padding-top: 1rem;
+  }
+}
+
 #stafflink {
-  padding: 1.25rem 0.625rem;
+  padding: 1.5rem;
+
+  @media(max-width: 768px) {
+    padding-left: 0;
+  }
 }
 
 /* === INDEX SEARCH RESULTS=== */
@@ -165,19 +180,29 @@ dl dd {
 }
 
 .book_info {
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .book_info dl dd {
   margin-right: 2.8125rem;
+
+  @media(max-width: 768px) {
+    margin-right: 2.0rem;
+  }
+
 }
 
 .book_info .index-label {
   color: #595959;
   margin-left: 3.75rem;
 
-  @media(max-width: 600px) {
+  @media(max-width: 991px) {
+    margin-left: 1.0rem;
+  }
+
+  @media(max-width: 768px) {
     margin-left: 0;
+    text-align: left;
   }
 }
 
@@ -186,31 +211,6 @@ dl dd {
   padding-left: 0.9375rem;
 }
 
-// .book_info dl dt {
-//   text-align: right;
-// }
-
-// .book_info dl dt,
-// .book_info dl dd {
-//   display: inline-block;
-// }
-
-// .format-concatenator {
-//   padding-left:7px;
-//   padding-right:14px;
-// }
-//
-// .document-metadata form {
-//   margin-top: 14px;
-// }
-//
-// .index-label {
-//   color: #595959;
-// }
-//
-// .list_items {
-//   list-style-type: none;
-// }
 
 /* === HOME PAGES === */
 div #main-container {
@@ -299,16 +299,16 @@ img {
 
 /* === MODALS  === */
 .modal-content #login {
-  padding: 42px;
+  padding: 2.625rem;
   padding-top: 0;
 }
 
 .modal-content .availability-modal {
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .loading-message{
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
 .fa-spinner {
@@ -327,90 +327,7 @@ img {
 }
 
 .electronic-notes {
-  padding-top: 10px;
+  padding-top: 0.625rem;
 }
 
-/* === MEDIA QUERIES === */
-// @media (min-width: 992px) {
-// }
-//
-// @media (max-width: 991px) {
-//   .book-info-srch {
-//     float:none;
-//     margin-left: 21px;
-//   }
-//   #record-page-nav-tools {
-//     clear: both;
-//     float: left!important;
-//     padding-top: 14px;
-//     padding-right: 0;
-//   }
-//   .aeon-request {
-//     float: none;
-//     margin-top: 0 !important;
-//   }
-// }
-//
-// @media (max-width: 768px) {
-//   .book_format {
-//     margin-left: 21px;
-//   }
-//   span.book {
-//     margin-left: 0;
-//   }
-//   #appliedParams {
-//     padding-left: 7px;
-//   }
-//   #previousNextDocument {
-//     padding-left: 14px;
-//   }
-//   #document h1 {
-//     padding-left: 14px;
-//   }
-// }
-//
-// @media (max-width: 601px) {
-//   .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
-//     background-color: transparent !important;
-//     border-radius: 0;
-//     color: $red !important;
-//     display: block;
-//     margin-bottom: 2px;
-//     padding-left: 10px;
-//     width: 100%;
-//   }
-//   .nav-tools div.toggle_bookmark {
-//     padding-top: 0;
-//     min-height: auto;
-//   }
-//   .nav-tools div.toggle_bookmark label {
-//     color: $white;
-//     min-width: auto;
-//   }
-//   .nav-tools div.toggle_bookmark input.toggle_bookmark {
-//     visibility: hidden!important;
-//   }
-//   .nav-tools div.toggle_bookmark span {
-//     left:-10px;
-//     position:relative;
-//   }
-//
-//   .pub-date-separator {
-//     margin-left: 0;
-//   }
-//   #range_pub_date_sort_end {
-//     margin-left: 0;
-//   }
-//   .submit-buttons {
-//     margin-right: 0;
-//   }
-// }
-//
-// @media(max-width:485px) {
-//   .submit-buttons {
-//     margin-top: 20px;
-//   }
-// }
-
-/* === MEDIA QUERIES SHOULD BE AT THE END OF THE FILE === */
-/* === PLEASE PUT NEW CSS STYLES ABOVE LINE 261 OR IN A PARTIAL === */
+/* === MEDIA QUERIES SHOULD BE IN EACH CLASS === */
