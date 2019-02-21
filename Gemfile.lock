@@ -217,7 +217,7 @@ GEM
       guard (>= 2.0.0)
       guard-compat (~> 1.0)
     hashdiff (0.3.7)
-    hashie (3.4.6)
+    hashie (3.6.0)
     honeybadger (4.2.1)
     htmlentities (4.3.4)
     http (3.3.0)
@@ -536,7 +536,7 @@ DEPENDENCIES
   google-analytics-rails (= 1.1.1)
   guard-rspec
   guard-shell
-  hashie (~> 3.4.6)
+  hashie (~> 3.6.0)
   honeybadger
   httparty
   jbuilder (~> 2.8)

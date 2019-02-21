@@ -75,7 +75,7 @@ gem "devise-guests", "~> 0.5"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
-gem "hashie", "~>3.4.6"
+gem "hashie", "~>3.6.0"
 gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git"
 gem "ezwadl"
