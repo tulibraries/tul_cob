@@ -36,3 +36,16 @@
 		padding: 6px;
 	}
 }
+
+nav .pagination {
+  margin: 20px auto;
+}
+
+.pagination li.page-item.active .page-link {
+  background-color: $red;
+  border-color: $red;
+}
+
+.pagination li.page-item a {
+  white-space: nowrap;
+}
