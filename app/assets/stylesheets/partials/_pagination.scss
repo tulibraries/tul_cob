@@ -33,12 +33,12 @@
 
 .search-widgets button {
 	@media(max-width: 320px) {
-		padding: 6px;
+		padding: 0.375rem;
 	}
 }
 
 nav .pagination {
-  margin: 20px auto;
+  margin: 1.25rem auto;
 }
 
 .pagination li.page-item.active .page-link {
