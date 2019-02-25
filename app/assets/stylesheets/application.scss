@@ -20,6 +20,7 @@
 */
 @import "partials/_vars.scss";
 @import 'bootstrap';
+@import "blacklight_marc.scss";
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
 @import "partials/_footer.scss";
@@ -34,6 +35,8 @@
 @import "partials/_typography.scss";
 @import "partials/_bookmarks.scss";
 @import "partials/_users.scss";
+@import "partials/_record_pages.scss";
+@import "partials/_index_results.scss";
 @import "tucob";
 @import "icons";
 
