@@ -1,6 +1,6 @@
 @import "_vars.scss";
 
-/* === GENERAl AVAILABILITY === */
+/* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
 #record-page-online td,
@@ -42,11 +42,22 @@
   max-height: 18.75rem;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @media(max-width: 485px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 .table-wrapper::-webkit-scrollbar {
-  border-right: 0.0625rem solid $tan-border;
+  border: 0.0625rem solid $tan-border;
+  height: 0.625rem;
   width: 0.625rem;
+
+  @media(max-width: 485px) {
+    border: none;
+  }
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
@@ -80,6 +91,10 @@
 }
 
 /* === AVAILABILITY BUTTONS === */
+button.online-btn.collapse-button {
+  margin-bottom: 0;
+}
+
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
 	background-color: $red;
 	border-color: #d43f3a;
@@ -119,4 +134,8 @@ td.electronic_links {
   font-size: 0.9375rem;
   margin-bottom: 0.625rem;
   width: 7.5rem;
+}
+
+.bl_alma_iframe {
+  width: 100%;
 }
