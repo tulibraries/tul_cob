@@ -1,11 +1,11 @@
 
-<label class="heading" for="location">Select a location: </label>
+<label class="heading location-heading pl-3" for="location">Select a location: </label>
 <div id="locationsList">
 
 	<% materials.each do |material| %>
 
-    <div class="row">
-      <input type="radio" name="barcode" id="<%= material["barcode"] %>" value="<%= material["barcode"] %>">
+    <div class="row align-items-top">
+      <input class="sms-form-locations" type="radio" name="barcode" id="<%= material["barcode"] %>" value="<%= material["barcode"] %>">
 
       <label for="<%= material["barcode"] %>">
         <%= material["library"] %> (<%= material["location"] %>)<br />

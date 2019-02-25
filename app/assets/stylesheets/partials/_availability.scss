@@ -1,6 +1,6 @@
 @import "_vars.scss";
 
-/* === GENERAl AVAILABILITY === */
+/* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
 #record-page-online td,
@@ -42,11 +42,22 @@
   max-height: 18.75rem;
   overflow-y: auto;
   overflow-x: hidden;
+
+  @media(max-width: 485px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 .table-wrapper::-webkit-scrollbar {
-  border-right: 0.0625rem solid $tan-border;
+  border: 0.0625rem solid $tan-border;
+  height: 0.625rem;
   width: 0.625rem;
+
+  @media(max-width: 485px) {
+    border: none;
+  }
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
@@ -80,6 +91,10 @@
 }
 
 /* === AVAILABILITY BUTTONS === */
+button.online-btn.collapse-button {
+  margin-bottom: 0;
+}
+
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
 	background-color: $red;
 	border-color: #d43f3a;
@@ -105,32 +120,14 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
 
 /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
 td.electronic_links {
-  border: 1px solid $tan-border;
+  border: 0.0625rem solid $tan-border;
   padding: 0.75rem;
 }
 
 .spinner {
-  margin-top: 10px;
+  margin-top: 0.625rem;
 }
 
-// #availability-container {
-//
-//   @media(max-width: 760px) {
-// 		display: block;
-//   }
-// }
-// .availability {
-//   margin-top: 25px;
-// }
-//
-// .availability button {
-//   display: none;
-// }
-//
-// .controls button  {
-//   display: inline;
-// }
-//
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
   background-color: $dark-blue;
   color: $white;
@@ -139,127 +136,6 @@ td.electronic_links {
   width: 7.5rem;
 }
 
-
-
-// .show_page_records dd {
-//   margin-bottom: 7px;
-// }
-//
-// .avail-icon {
-//   margin-right: 10px;
-// }
-//
-//
-// .button-break {
-//   padding: 3px;
-// }
-//
-// .online-border {
-//   padding-top: 0;
-// }
-//
-// .availability-toggle-details {
-//   padding-left: 10px;
-// }
-
-// .collapse-button {
-//   white-space: normal;
-//   min-width: 121px !important;
-// }
-
-//
-// .item-avail {
-//   display: none !important;
-// }
-//
-// .online-panel {
-//   margin: 0;
-//   padding: 0;
-// }
-//
-//
-// .online-panel-body {
-//   margin-top: -20px;
-// }
-//
-// .list_elec_links {
-//   margin-top: 0;
-//   padding: 0;
-//   width: 100%;
-// }
-//
-// .record_page_elec_links {
-//   border: 1px solid #CFC7B0;
-//   border-bottom: none;
-//   margin-right: 2px;
-//   margin-top: 0;
-//   width: 100%;
-// }
-//
-// .electronic_links  {
-//   border: 1px solid #CFC7B0;
-//   display: block;
-//   padding: 8px;
-//   width: 100%;
-// }
-//
-// #record-page-online {
-//   border-left: 1px solid #CFC7B0;
-//   border-right: 1px solid #CFC7B0;
-//   border-bottom: none;
-//   width: 100%;
-// }
-//
-// iframe.bl_alma_iframe, .bl_alma_iframe {
-//   max-height: 280px;
-// 	width: 100%;
-// }
-//
-// iframe.availability-details-iframe {
-// 	height: 250px;
-// }
-//
-// /* ALMA DATA TABLE */
-//
-// table.border-bottom {
-//   border-bottom: 1px solid #CFC7B0;
-//   border-top: 0;
-//   padding: 0 !important;
-//   margin-bottom: 0 !important;
-//   margin-right: 0 !important;
-// }
-//
-//
-// .table-heading {
-//   background-color: #F1EFE8;
-// }
-//
-// .holdings-summary {
-//   font-weight: normal;
-// }
-//
-//
-// .page_links {
-//   margin-top: 0 !important;
-//   padding-left: 10px;
-//   @media(max-width: 485px) {
-// 		padding: 0;
-//     margin-bottom: 20px;
-//   }
-// }
-//
-// span.avail-label {
-//   font-size: 15px;
-// }
-//
-// .table > tbody > tr > td {
-//   border-bottom: 1px solid #CFC7B0
-// }
-//
-// /* ALL TABLES */
-//
-// table {
-//   @media(max-width: 760px) {
-// 		display: block;
-//   }
-// }
+.bl_alma_iframe {
+  width: 100%;
+}

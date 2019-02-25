@@ -1,6 +1,6 @@
-<div class="modal-header">
-  <%= link_to t("blacklight.search.back"), "../#{@document.id}", :class =>"pull-right" %>
-  <h3 class="modal-title"><%= t('blacklight.search.librarian_view.title') %></h3>
+<div class="modal-header d-flex align-items-center">
+  <h3 class="modal-title librarian-header"><%= t('blacklight.search.librarian_view.title') %></h3>
+  <%= link_to t("blacklight.search.back"), "../#{@document.id}"%>
 </div>
 
 <%= render_marc_view %>

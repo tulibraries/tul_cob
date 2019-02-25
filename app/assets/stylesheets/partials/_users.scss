@@ -72,11 +72,11 @@
 
 #renewal-warning {
   background-color: $green;
-  border: solid $red 1px;
-  border-radius: 7px;
+  border: solid $red 0.0625rem;
+  border-radius: 0.4375rem;
   color: $black;
   display: none;
-  padding: 14px;
+  padding: 0.875rem;
   width: 100%;
   text-align: center;
 }
