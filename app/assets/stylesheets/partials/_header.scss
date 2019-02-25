@@ -230,12 +230,21 @@ a.advanced_search {
 	}
 }
 
-.sendto-item .nav-link {
+.sendto-item a.nav-link {
 	padding-bottom: 0;
 	@media(max-width: 768px) {
 		color: $white;
 	}
 }
+
+div.sendto-item a.nav-link:hover,
+div.sendto-item a.nav-link:active,
+.sendto-item.dropdown-item,
+.dropdown-item:active  {
+	background-color: $white;
+}
+
+
 
 #nav-tools {
 

@@ -5,6 +5,12 @@ textarea#message-body.form-control {
   height: 6.25rem;
 }
 
+.modal-title,
+.sms-form-title {
+  font-family: "PT Sans";
+  font-size: 1.5rem;
+}
+
 form#sms_form {
   font-size: small;
 }
@@ -22,12 +28,21 @@ form#sms_form div.text-this-location label {
 }
 
 #locationsList {
-    background-color: $white;
-    border: solid #ccc 0.0625rem;
-    font-size: 95%;
-    line-height: 1.75em;
-    margin: 0.4375rem;
-    padding: 0.625rem;
-    padding-left: 1.6875rem;
-    width:85%;
-	}
+  background-color: $white;
+  border: solid #ccc 0.0625rem;
+  font-size: 95%;
+  line-height: 1.75em;
+  margin-left: 1.0rem;
+  padding: 0.625rem;
+  padding-left: 1.6875rem;
+  width:85%;
+
+  label {
+    margin-top: -0.25rem;
+    padding-left: 0.625rem;
+  }
+}
+
+.location-heading {
+  font-weight: bold;
+}
