@@ -169,13 +169,9 @@ a.advanced_search {
 		padding-bottom: 0.625rem;
 		padding-top: 0.625rem;
 		text-align: center;
-		width: 18.75rem;
+		width: 90%;
  		font-size: 1.6rem;
  	}
-
-	@media(max-width: 320px) {
- 		width: 12.5rem;
-	}
 }
 
 /* RECORD NAV TOOLS */
@@ -234,12 +230,21 @@ a.advanced_search {
 	}
 }
 
-.sendto-item .nav-link {
+.sendto-item a.nav-link {
 	padding-bottom: 0;
 	@media(max-width: 768px) {
 		color: $white;
 	}
 }
+
+div.sendto-item a.nav-link:hover,
+div.sendto-item a.nav-link:active,
+.sendto-item.dropdown-item,
+.dropdown-item:active  {
+	background-color: $white;
+}
+
+
 
 #nav-tools {
 
@@ -272,7 +277,6 @@ a.advanced_search {
 		background-color: $white;
 		color: $red;
 	}
-
 }
 
 /* CITATION MODAL */

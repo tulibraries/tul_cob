@@ -61,156 +61,19 @@ div #documents .document {
   display: none;
 }
 
-/* === INDIVIDUAL RECORD PAGES === */
-#record-page-content {
-  background-color: $white;
-  border-radius: 0.3125rem 0.3125rem 0 0;
-
-  @media(max-width: 600px) {
-    text-align: center;
- 	}
+.electronic-notes {
+  padding-top: 0.625rem;
 }
 
-.record-page-wrapper {
-  padding: 1.25rem;
+/* === LIBRARIAN TEMPLATE === */
+.librarian-header {
+  font-size: 1.5rem;
 }
 
-#record-page-content h1 {
-  font-size: 1.75rem;
-  padding-left: 1.15rem;
-  padding-top: 1.25rem;
+#marc_view  {
+  color: $grey;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
-.record-page-wrapper .thumbnail {
-
-  @media(max-width: 600px) {
-    padding-bottom: 1.25rem;
- 	}
-}
-
-dl dt.index-label {
-  padding-right: 0;
-  text-align: right;
-
-  @media(max-width: 600px) {
-    text-align: left;
- 	}
-}
-
-dl dd {
-  text-align: left;
-}
-
-.btn-link:hover {
-  color: $red;
-  text-decoration: underline;
-}
-
-.hidden {
-  display: none;
-}
-
-/* === INDIVIDUAL RECORD PAGES === */
-#record-page-content {
-  background-color: $white;
-  border-radius: 0.3125rem 0.3125rem 0 0;
-
-  @media(max-width: 600px) {
-    text-align: center;
- 	}
-}
-
-.record-page-wrapper {
-  padding: 1.25rem;
-}
-
-#record-page-content h1 {
-  font-size: 1.75rem;
-  padding-left: 1.15rem;
-  padding-top: 1.25rem;
-}
-
-.record-page-wrapper .thumbnail {
-
-  @media(max-width: 600px) {
-    padding-bottom: 1.25rem;
- 	}
-}
-
-dl dt.index-label {
-  padding-right: 0;
-  text-align: right;
-
-  @media(max-width: 768px) {
-    text-align: left;
- 	}
-}
-
-dl dd {
-  text-align: left;
-}
-
-.show-page-list {
-  @media(max-width: 768px) {
-    padding-top: 1rem;
-  }
-}
-
-#stafflink {
-  padding: 1.5rem;
-
-  @media(max-width: 768px) {
-    padding-left: 0;
-  }
-}
-
-/* === INDEX SEARCH RESULTS=== */
-.explantion-wrapper {
-  @media(max-width: 600px) {
-    padding-left: 0.9375rem;
-  }
-}
-
-.explanation {
-  font-size: 1.1em;
-}
-
-.document-title-heading {
-  font-size: 0.875rem;
-}
-
-.book_info {
-  margin-top: 1.25rem;
-}
-
-.book_info dl dd {
-  margin-right: 2.8125rem;
-
-  @media(max-width: 768px) {
-    margin-right: 2.0rem;
-  }
-
-}
-
-.book_info .index-label {
-  color: #595959;
-  margin-left: 3.75rem;
-
-  @media(max-width: 991px) {
-    margin-left: 1.0rem;
-  }
-
-  @media(max-width: 768px) {
-    margin-left: 0;
-    text-align: left;
-  }
-}
-
-.library-dd {
-  margin-right: 2.8125rem;
-  padding-left: 0.9375rem;
-}
-
 
 /* === HOME PAGES === */
 div #main-container {
@@ -316,6 +179,7 @@ img {
   -webkit-animation: spin2 1s infinite linear;
 }
 
+/* === SPINNER ANIMATIONS  === */
 @keyframes spin {
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
@@ -324,10 +188,6 @@ img {
 @-webkit-keyframes spin2 {
   from { -webkit-transform: rotate(0deg); }
   to { -webkit-transform: rotate(360deg); }
-}
-
-.electronic-notes {
-  padding-top: 0.625rem;
 }
 
 /* === MEDIA QUERIES SHOULD BE IN EACH CLASS === */
