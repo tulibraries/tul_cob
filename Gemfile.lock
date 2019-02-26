@@ -133,7 +133,7 @@ GEM
       blacklight (>= 6.0.2)
       jquery-rails
       rails (>= 3.0)
-    bootsnap (1.4.0)
+    bootsnap (1.4.1)
       msgpack (~> 1.0)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
