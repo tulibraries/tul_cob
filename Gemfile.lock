@@ -204,11 +204,11 @@ GEM
     ezwadl (0.0.1)
       httparty (~> 0.14)
       nokogiri (~> 1.6)
-    factory_bot (5.0.2)
-      activesupport (>= 4.2.0)
-    factory_bot_rails (5.0.1)
-      factory_bot (~> 5.0.0)
-      railties (>= 4.2.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
@@ -566,7 +566,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.5)
   ezwadl
-  factory_bot_rails
+  factory_bot_rails (= 4.11.1)
   foreman
   google-analytics-rails (= 1.1.1)
   guard-rspec

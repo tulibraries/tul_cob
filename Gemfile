@@ -61,7 +61,7 @@ group :development, :test do
   gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
   gem "database_cleaner"
-  gem "factory_bot_rails"
+  gem "factory_bot_rails", "4.11.1"
   gem "simplecov", require: false
   gem "guard-rspec", require: false
   gem "guard-shell"
