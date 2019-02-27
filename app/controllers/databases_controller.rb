@@ -27,17 +27,16 @@ class DatabasesController < CatalogController
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
 
     # Index fields
-    config.add_index_field "id", label: "AZ ID"
-    config.add_index_field "az_vendor_name_display", label: "AZ Vendor ID"
     config.add_index_field "note_display", label: "Description", raw: true, helper_method: :join
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "availability"
 
     # Show fields
-    config.add_show_field "id", label: "Database Record ID"
     config.add_show_field "note_display", label: "Description", raw: true, helper_method: :join
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
+    config.add_show_field "az_vendor_name_display", label: "Database Vendor"
+    config.add_show_field "id", label: "Database Record ID"
 
     # Search fields
     config.add_search_field("title") do |field|
