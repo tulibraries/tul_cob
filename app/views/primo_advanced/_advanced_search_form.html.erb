@@ -1,6 +1,6 @@
 <%= form_tag search_path, :class => "advanced form-horizontal", :method => :get do  %>
   <% unless (search_context_str = render_search_to_s( advanced_search_context)).blank? %>
-    <div class="constraints well search_history">
+    <div class="constraints card card-body bg-light search_history mb-3 advanced-filters">
       <h4><%= t "blacklight_advanced_search.form.search_context" %></h4>
       <%= search_context_str.to_s %>
     </div>
@@ -19,4 +19,3 @@
   </div>
 
 <% end %>
-
