@@ -30,7 +30,9 @@ end
 
 to_field "id", extract_json("$.id")
 to_field "format", ->(rec, acc) {
-  rec["az_types"]&.each { |type| acc << type["name"] } || acc << "Database"
+  types = rec.fetch("az_types", [])
+  types = types << { "name" => "Database" }
+  types.each { |type| acc << type["name"] }
 }
 to_field "title_t", extract_json("$.name")
 to_field "title_statement_display", extract_json("$.name")
