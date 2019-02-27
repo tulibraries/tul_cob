@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:record xmlns:ns0="http://www.loc.gov/MARC21/slim" xmlns:ns2="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <ns2:header>
+    <ns2:identifier>oai:alma.01TULI_INST:991036837603403811</ns2:identifier>
+    <ns2:datestamp>2018-11-09T21:35:34Z</ns2:datestamp>
+    <ns2:setSpec>blacklight</ns2:setSpec>
+    <ns2:setSpec>blacklight_qa</ns2:setSpec>
+  </ns2:header>
+  <ns0:leader>00241npc a2200097 a 4500</ns0:leader>
+  <ns0:controlfield tag="005">20171006132253.0</ns0:controlfield>
+  <ns0:controlfield tag="008">171006i19331982xx                  eng d</ns0:controlfield>
+  <ns0:controlfield tag="001">991036837603403811</ns0:controlfield>
+  <ns0:datafield ind1="1" ind2=" " tag="100">
+    <ns0:subfield code="a">Lifshin, Lyn.</ns0:subfield>
+  </ns0:datafield>
+  <ns0:datafield ind1="1" ind2="0" tag="245">
+    <ns0:subfield code="h">PAPERS. ADDITION, 2016-2017</ns0:subfield>
+  </ns0:datafield>
+  <ns0:datafield ind1=" " ind2=" " tag="300">
+    <ns0:subfield code="f">3 cubic feet</ns0:subfield>
+  </ns0:datafield>
+  <ns0:datafield ind1=" " ind2=" " tag="ADM">
+    <ns0:subfield code="b">2018-11-09 15:33:54</ns0:subfield>
+    <ns0:subfield code="e">991036837603403811</ns0:subfield>
+    <ns0:subfield code="d">01TULI_INST</ns0:subfield>
+    <ns0:subfield code="a">2017-10-06 17:22:23</ns0:subfield>
+    <ns0:subfield code="c">false</ns0:subfield>
+  </ns0:datafield>
+  <ns0:datafield ind1="0" ind2=" " tag="HLD">
+    <ns0:subfield code="b">SCRC</ns0:subfield>
+    <ns0:subfield code="c">rarestacks</ns0:subfield>
+    <ns0:subfield code="8">22401402450003811</ns0:subfield>
+  </ns0:datafield>
+  <ns0:datafield ind1=" " ind2=" " tag="ITM">
+    <ns0:subfield code="r">22401402450003811</ns0:subfield>
+    <ns0:subfield code="b">0</ns0:subfield>
+    <ns0:subfield code="u">TRANSIT</ns0:subfield>
+    <ns0:subfield code="h">0</ns0:subfield>
+    <ns0:subfield code="g">rarestacks</ns0:subfield>
+    <ns0:subfield code="t">EPHEMERA</ns0:subfield>
+    <ns0:subfield code="e">rarestacks</ns0:subfield>
+    <ns0:subfield code="8">23401402140003811</ns0:subfield>
+    <ns0:subfield code="q">2017-10-11 15:23:12</ns0:subfield>
+    <ns0:subfield code="d">SCRC</ns0:subfield>
+    <ns0:subfield code="f">SCRC</ns0:subfield>
+  </ns0:datafield>
+</ns0:record>
