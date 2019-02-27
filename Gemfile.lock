@@ -245,7 +245,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
-    jsonpath (0.9.7)
+    jsonpath (1.0.1)
       multi_json
       to_regexp (~> 0.2.1)
     jwt (1.5.6)
@@ -466,8 +466,9 @@ GEM
       nokogiri (~> 1.0)
       slop (>= 3.4.5, < 4.0)
       yell
-    traject_plus (0.1.0)
+    traject_plus (1.0.0)
       activesupport
+      deprecation
       jsonpath
       traject (~> 3.0)
     turbolinks (5.2.0)
