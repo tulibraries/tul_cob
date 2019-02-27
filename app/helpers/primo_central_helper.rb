@@ -79,4 +79,10 @@ module PrimoCentralHelper
   def empty_response?(response)
     response.dig("response", "numFound") == 0
   end
+
+  def primo_facet_names
+    facet_field_names.reject { |facet_name|
+      facet_name =~ /date|creator|topic/i
+    }
+  end
 end
