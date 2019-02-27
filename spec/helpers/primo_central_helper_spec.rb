@@ -79,4 +79,14 @@ RSpec.describe PrimoCentralHelper, type: :helper do
       end
     end
   end
+
+  describe "#primo_facet_names" do
+    let(:facet_field_names) { ["tlevel", "rtype", "topic", "date", "creator", "language"] }
+
+    context "filters out unwanted facets" do
+      it "does not return the date, topic, or creator facets" do
+        expect(primo_facet_names).to eq(["tlevel", "rtype", "language"])
+      end
+    end
+  end
 end
