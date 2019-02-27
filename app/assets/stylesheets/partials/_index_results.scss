@@ -31,6 +31,7 @@
 
   @media(max-width: 991px) {
     margin-left: 1.0rem;
+    padding-left: 0;
   }
 
   @media(max-width: 768px) {
@@ -39,7 +40,27 @@
   }
 }
 
+dl.blacklight-availability {
+
+  @media(min-width: 992px) {
+    margin-top: 0.6875rem;
+  }
+}
+
+.avail-dt {
+  margin-left: 2.0rem;
+
+  @media(max-width: 768px) {
+    margin-left: 0;
+    text-align: left !important;
+  }
+}
+
 .library-dd {
-  margin-right: 2.8125rem;
-  padding-left: 0.9375rem;
+  padding-left: 10px;
+
+  @media(max-width: 768px) {
+    padding-left: 30px;
+  }
+
 }

@@ -2,7 +2,7 @@
 
 <h1 class="page-heading bookmark-heading p-4"><%= t("blacklight.bookmarks.title") %></h1>
 
-<div id="content" class="col-md-12 bg-white rounded p-0">
+<div id="content" class="bookmarks-page col-md-12 bg-white rounded p-0">
 <% if current_or_guest_user.blank? %>
   <h2 class="section-heading"><%= t("blacklight.bookmarks.need_login") %></h2>
 <% elsif @document_list.blank? %>

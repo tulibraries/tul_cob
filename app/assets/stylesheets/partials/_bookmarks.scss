@@ -62,6 +62,10 @@ a.clear-bookmarks {
   }
 }
 
+#bookmarks-sendto button:hover {
+	color: $red;
+}
+
 .nav-tools div.toggle-bookmark input.toggle-bookmark {
   visibility: hidden !important;
   width: 0;
@@ -70,4 +74,25 @@ a.clear-bookmarks {
 #bookmark_button {
   color: $red;
   padding: 0.25rem 0.3125rem 0.0625rem;
+}
+
+.bookmarks-page .book_info .index-label {
+  margin-left: 1.0rem;
+
+  @media(max-width: 768px) {
+    text-align: left;
+  }
+}
+
+.bookmarks-page dl.blacklight-availability {
+
+  @media(min-width: 992px) {
+    margin-top: 0.3875rem;
+  }
+}
+
+.bookmarks-page .avail-dt {
+  @media(max-width: 768px) {
+    margin-left: 15px;
+  }
 }
