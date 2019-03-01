@@ -204,7 +204,12 @@ class CatalogController < ApplicationController
         subject_addl_t^10
       ].join(" "),
       facet: "true",
-      spellcheck: "false",
+      spellcheck: "true",
+      "spellcheck.extendedResults": "true",
+      "spellcheck.collate": "true",
+      "spellcheck.collateParam.q.op": "AND",
+      "spellcheck.collateParam.mm": "100%",
+      "spellcheck.maxCollations": 3,
       sow: "false",
       bq: [
           "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
