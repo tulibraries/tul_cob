@@ -92,6 +92,29 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#spellcheck" do
+    let(:solr_parameters) {
+      sp = Blacklight::Solr::Request.new
+      sp["qf"] = "foo"
+      sp
+    }
+
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:is_advanced_search?).and_return(is_advanced_search?)
+
+      subject.spellcheck(solr_parameters)
+    end
+
+    context "is advanced search" do
+      let(:is_advanced_search?)  { true }
+
+      it "disables spellcheck" do
+        expect(solr_parameters["spellcheck"]).to eq(false)
+      end
+    end
+  end
+
   describe "#process_begins_with" do
     it "can handle nil gracefully" do
       expect(subject.process_begins_with(nil, nil)).to be_nil

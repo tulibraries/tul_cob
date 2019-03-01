@@ -412,4 +412,10 @@ module CatalogHelper
   def bookmarked?(document)
     current_bookmarks.any? { |x| x.document_id == document.id }
   end
+
+  def suggestions
+    (@response.dig("spellcheck", "collations") || [])
+      .each_slice(2)
+      .map { |_, phrase| link_to_query(phrase) }
+  end
 end

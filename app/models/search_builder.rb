@@ -12,6 +12,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   self.default_processor_chain +=
     %i[ add_advanced_parse_q_to_solr
         add_advanced_search_to_solr
+        spellcheck
         limit_facets ]
 
   if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
@@ -22,6 +23,12 @@ class SearchBuilder < Blacklight::SearchBuilder
     # The negative query will work even when items are not indexed.
     # We can refactor to use a positive query once indexing occurs.
     solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
+  def spellcheck(solr_parameters)
+    if is_advanced_search?
+      solr_parameters["spellcheck"] = false
+    end
   end
 
   def limit_facets(solr_parameters)
