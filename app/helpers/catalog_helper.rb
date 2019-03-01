@@ -404,15 +404,6 @@ module CatalogHelper
     new_user_session_with_redirect_path("#{request.url}##{doc_id(id)}")
   end
 
-  ##
-  # Overrides Blacklight::BlacklightHelperBehavior.boomarked? so that books and
-  # journal items are marked as bookmarked.
-  #
-  # Check if the document is in the user's bookmarks
-  def bookmarked?(document)
-    current_bookmarks.any? { |x| x.document_id == document.id }
-  end
-
   def suggestions
     (@response.dig("spellcheck", "collations") || [])
       .each_slice(2)
