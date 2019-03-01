@@ -44,6 +44,7 @@
     <div class="row hold-form">
       <div class="col-sm-4">
         <%= form.label(:booking_comment, t("requests.form.notes_label")) %>
+        <p><%= t("requests.form.notes_additional_text") %></p>
         <%= form.text_area :booking_comment, class: "request-form form-control" %>
       </div>
     </div>
