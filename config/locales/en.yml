@@ -101,6 +101,7 @@ en:
       description_label: "Description: *"
       not_needed_after: "Not Needed After (optional):"
       notes_label: "Notes: (optional)"
+      notes_additional_text: "For additional information about the description of the item or the request itself"
       submit: "Request"
       title_label: "Chapter/Article Title: *"
       author_label: "Chapter/Article Author: *"
