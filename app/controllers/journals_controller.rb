@@ -7,6 +7,7 @@ class JournalsController < CatalogController
   add_breadcrumb "Record", :solr_journal_document_path, only: [ :show ]
 
   configure_blacklight do |config|
+    config.show.route = { controller: "journals" }
     config.search_builder_class = JournalsSearchBuilder
     config.document_model = SolrJournalDocument
     # Do not allow any further filtering on type.
