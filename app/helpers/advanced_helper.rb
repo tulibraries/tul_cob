@@ -3,6 +3,12 @@
 module AdvancedHelper
   include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
+  def sort_fields
+    active_sort_fields.values.map { |field_config|
+      [sort_field_label(field_config.key), field_config.key]
+    }
+  end
+
   def label_tag_default_for(key)
     unless params[key]
       if ("f_1" == key)

@@ -26,7 +26,6 @@ en:
       login: 'My Library Account'
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
-      saved_searches: 'Saved Searches'
       search_history: 'Search History'
 
     range_limit:

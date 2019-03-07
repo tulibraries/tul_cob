@@ -13,15 +13,20 @@
 //= require jquery
 //= require 'blacklight_advanced_search'
 //= require jquery_ujs
-//= require turbolinks//
-// Required by Blacklight
-//= require blacklight/blacklight
+//= require popper
+//= require twitter/typeahead
 
-//= require blacklight_alma/blacklight_alma
+//= require bootstrap
+//= require turbolinks//
+
 //= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/tab
-//= require bootstrap/dropdown
+
+// Required by Blacklight
+//= require blacklight/blacklight
+//= require blacklight_alma/blacklight_alma
+
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
@@ -30,42 +35,38 @@
 
 $(window).load(function(){
 	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h1.application-heading');
-	}
-	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
+		$('#bookmarks-tools').insertAfter('#documents');
+		$('#bookmarks-tools').removeClass('row');
+		$('.clear-bookmarks').insertAfter('#back_to_search');
+		$('#facet-filter-icon').removeClass('hidden');
+		$('#facet-panel-collapse').removeClass('show');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#bookmarks-tools').addClass('row');
+		$('#facet-filter-icon').addClass('hidden');
+		$('#facet-panel-collapse').addClass('show');
 	}
 });
 
 $(window).on('resize', function() {
 	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h2.top-content-title');
-	}
-	if ($(window).width() < 600) {
 		$('#nav-tools').insertAfter('#document');
+		$('#bookmarks-tools').insertAfter('#documents');
+		$('#bookmarks-tools').removeClass('row');
+		$('.clear-bookmarks').insertAfter('#back_to_search');
+		$('#facet-filter-icon').removeClass('hidden');
+		$('#facet-panel-collapse').removeClass('show');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
+		$('#bookmarks-tools').addClass('row');
+		$('#facet-filter-icon').addClass('hidden');
+		$('#facet-panel-collapse').addClass('show');
 	}
 });
 
-$(document).ajaxComplete(function(){
-	if ($(window).width() < 768) {
-		$('#appliedParams').insertAfter('#sidebar');
-	}
-	else {
-		$('#appliedParams').insertAfter('h2.top-content-title');
-	}
-});
 
 $(document).on('turbolinks:load', function() {
    $(window).trigger('load.bs.select.data-api');

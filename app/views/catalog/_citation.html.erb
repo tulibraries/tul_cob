@@ -1,4 +1,7 @@
-<button type="button" class="ajax-modal-close close" data-dismiss="modal" aria-hidden="true">×</button>
+<button type="button" class="blacklight-modal-close close ml-auto pr-3" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+  <span aria-hidden="true">&times;</span>
+</button>
+
 <% if @documents.one? %>
   <%= render partial: "catalog/single_citation", locals: { document: @documents.first } %>
 <% else %>

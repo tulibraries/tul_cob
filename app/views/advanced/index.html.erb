@@ -1,8 +1,14 @@
 <% @page_title = "#{ advanced_search_form_title } - #{application_name}" %>
 
-<div class="advanced-search-form col-sm-12">
+<div class="breadcrumb-wrapper">
+  <ol class="breadcrumb">
+    <%= render_breadcrumbs :tag => :li, :separator => "" %>
+  </ol>
+</div>
 
-    <h2 class="advanced page-header">
+<div class="advanced-search-form col-sm-12 bg-white rounded p-4">
+
+    <h2 class="advanced page-header mb-3">
         <%= advanced_search_form_title %>
     </h2>
 

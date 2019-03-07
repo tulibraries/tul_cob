@@ -9,6 +9,9 @@ gem "rails", "~> 5.2"
 gem "sqlite3"
 # Use Puma as the app server
 gem "puma", "~> 3.0"
+gem "bootstrap", "~> 4.0"
+gem "popper_js"
+gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5.0"
 # Use Uglifier as compressor for JavaScript assets
@@ -49,10 +52,10 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 6.19"
-gem "blacklight_advanced_search", "~> 6.3"
-gem "blacklight-marc", git: "https://github.com/tulibraries/blacklight-marc.git", branch: "v6-2-0-unpin-traject"
-gem "blacklight_range_limit"
+gem "blacklight", "~> 7.0"
+gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
+gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
+gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
 
 group :development, :test do
   gem "solr_wrapper", ">= 0.3"
@@ -77,7 +80,7 @@ gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.6.0"
 gem "omniauth"
-gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git"
+gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
 gem "capybara", "3.14.0"
@@ -93,7 +96,7 @@ gem "bootsnap"
 gem "honeybadger"
 gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
-gem "bootstrap-select-rails"
+gem "bootstrap-select-rails", git: "https://github.com/D1ceWard/bootstrap-select-rails.git", ref: "0e40fbc34fc27a1fba9abb7f1d8bc941cbdfe056"
 gem "httparty"
 gem "breadcrumbs_on_rails"
 

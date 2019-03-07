@@ -1,15 +1,17 @@
-<% if show_sidebar? %>
-  <div id="sidebar" class="<%= sidebar_classes %>">
-    <%= render 'search_sidebar' %>
-  </div>
-<% end %>
-
-<div id="content" class="<%= main_content_classes if show_sidebar? %>">
-  <% unless has_search_parameters? %>
-    <%# if there are no input/search related params, display the "home" partial -%>
-    <%= render 'home' %>
-    <%= render 'shared/sitelinks_search_box' %>
-  <% else %>
-    <%= render 'search_results' %>
+<div class="row index-container">
+  <% if show_sidebar? %>
+    <div id="sidebar" class="col-md-4 col-lg-3 mt-4 rounded bg-white pt-4">
+      <%= render "search_sidebar" %>
+    </div>
   <% end %>
+
+  <div id="content" class="<%= "col-md-7 col-lg-8 bg-white rounded" if show_sidebar? %> mt-4 ml-md-4 ml-sm-0 pr-0 pl-0">
+    <% unless has_search_parameters? %>
+      <%# if there are no input/search related params, display the "home" partial -%>
+      <%= render "home" %>
+      <%= render "shared/sitelinks_search_box" %>
+    <% else %>
+      <%= render "search_results" %>
+    <% end %>
+  </div>
 </div>

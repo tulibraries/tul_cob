@@ -1,154 +1,74 @@
 @import "_vars.scss";
 
-/* === AVAILABILITY === */
-
-/* === INDEX(SEARCH RESULTS) AVAILABILITY === */
-.availability {
-  margin-top: 25px;
-}
-
-.availability button {
-  display: none;
-}
-
-.controls button  {
-  display: inline;
-}
-
-.online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
-  background-color: $dark-blue;
-  color: $white !important;
-}
+/* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
-.panel-default > .availability-panel-heading {
-  background-color: $white;
-  border: none;
-  color: $red;
+#record-page-online td,
+#availability-container td,
+#availability-container th {
+  border-color: $tan-border;
 }
 
 #availability-heading {
   color: $red;
   display: inline-block;
-  margin-left: -10px;
-  vertical-align: middle;
+  font-family: "PT Sans";
+  font-size: 1.125rem;
 }
 
 #heading-request {
   display: inline-block;
-  float: right;
-  padding-top: 3px;
-  vertical-align: middle;
 }
 
-.collapse-button {
-  white-space: normal;
-  min-width: 121px !important;
-}
-
-.availability-toggle-details {
-  padding-left: 10px;
-}
-
-.button-break {
-  padding: 3px;
-}
-
-.online-border {
-  padding-top: 0;
-}
-
-div.physical-holding-panel {
-  padding: 0 !important;
-  clear: both;
-}
-
-.show_page_records dd {
-  margin-bottom: 7px;
-}
-
-.avail-icon {
-  margin-right: 10px;
-}
-
-.spinner {
-  display: none;
-  margin-top: 10px;
-}
-
-.item-avail {
-  display: none !important;
-}
-
-.online-panel {
-  margin: 0;
-  padding: 0;
-}
-
-.online-panel-heading {
-  background-color: #F1EFE8;
-  border: 1px solid #CFC7B0;
-  border-bottom: none;
-  border-collapse: inherit;
-  font-size: 14px;
-  font-weight: bold;
-  height: 40px;
-  margin: 0 !important;
-  padding: 8px !important;
-}
-
-.online-panel-body {
-  margin-top: -20px;
-}
-
-.list_elec_links {
-  margin-top: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.record_page_elec_links {
-  border: 1px solid #CFC7B0;
-  border-bottom: none;
-  margin-right: 2px;
-  margin-top: 0;
-  width: 100%;
-}
-
-.electronic_links  {
-  border: 1px solid #CFC7B0;
-  display: block;
-  padding: 8px;
-  width: 100%;
+.online-list-items {
+  display: list-item;
+  list-style-type: none;
 }
 
 #record-page-online {
-  border-left: 1px solid #CFC7B0;
-  border-right: 1px solid #CFC7B0;
-  border-bottom: none;
-  width: 100%;
+  text-align: left;
 }
 
-iframe.bl_alma_iframe, .bl_alma_iframe {
-  max-height: 280px;
-	width: 100%;
+.online-card-heading, .table-heading {
+  background-color: $tan;
+  color: $black;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: 2.5rem;
+  padding: 0.75rem;
 }
 
-iframe.availability-details-iframe {
-	height: 250px;
+.table-wrapper {
+  max-height: 18.75rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  @media(max-width: 485px) {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
-/* ALMA DATA TABLE */
+.table-wrapper::-webkit-scrollbar {
+  border: 0.0625rem solid $tan-border;
+  height: 0.625rem;
+  width: 0.625rem;
 
-table.border-bottom {
-  border-bottom: 1px solid #CFC7B0;
-  border-top: 0;
-  padding: 0 !important;
-  margin-bottom: 0 !important;
-  margin-right: 0 !important;
+  @media(max-width: 485px) {
+    border: none;
+  }
 }
 
-table.border-bottom {
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: gray;
+}
+
+#record-view-iframe {
+  max-width: 53.125rem;
+}
+
+#availability-container {
   th[headers*="location"] {
     width: 17%;
   }
@@ -165,59 +85,61 @@ table.border-bottom {
     width: 7%;
   }
   td[headers*="status"] {
-    padding-right:4px;
+    padding-right: 0.25rem;
     width: 20%;
   }
 }
 
-.table-heading {
-  background-color: #F1EFE8;
+/* === AVAILABILITY BUTTONS === */
+button.online-btn.collapse-button {
+  margin-bottom: 0;
 }
 
-.holdings-summary {
-  font-weight: normal;
-}
-
-.table-wrapper {
-  border: 1px solid #CFC7B0 !important;
-  display: block;
-  margin-bottom: 0 !important;
-  max-height: 300px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.table-wrapper::-webkit-scrollbar {
-  border-left: 1px solid #CFC7B0 !important;
-  width: 10px;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb {
-  background: gray;
-}
-
-.page_links {
-  margin-top: 0 !important;
-  padding-left: 10px;
-  @media(max-width: 485px) {
-		padding: 0;
-    margin-bottom: 20px;
+button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
+	background-color: $red;
+	border-color: #d43f3a;
+	color: $white;
+  text-align: center;
+  width: 7.5rem;
+  span.avail-label.not-available {
+  	font-size: 0.8125rem;
+		padding: 0.3125rem;
   }
 }
 
-span.avail-label {
-  font-size: 15px;
-  padding-right: 2px;
-}
-
-.table > tbody > tr > td {
-  border-bottom: 1px solid #CFC7B0
-}
-
-/* ALL TABLES */
-
-table {
-  @media(max-width: 760px) {
-		display: block;
+button.btn-success, button.btn-success:focus, button.btn-success:hover, button.btn-success:active, button.btn-success:visited {
+	background-color: $green;
+	color: $white;
+	border-color: #224922;
+  text-align: center;
+  width: 7.5rem;
+  span.avail-label.available {
+  	font-size: 0.9375rem;
   }
+}
+
+/* === INDEX(SEARCH RESULTS) AVAILABILITY === */
+td.electronic_links {
+  border: 0.0625rem solid $tan-border;
+  padding: 0.75rem;
+}
+
+.spinner {
+  margin-top: 0.625rem;
+}
+
+.online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
+  background-color: $dark-blue;
+  color: $white;
+  font-size: 0.9375rem;
+  margin-bottom: 0.625rem;
+  width: 7.5rem;
+}
+
+.bl_alma_iframe {
+  width: 100%;
+}
+
+.index-label {
+  color: #595959;
 }

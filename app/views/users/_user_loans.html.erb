@@ -1,17 +1,17 @@
 <div class="container user-loans" data-controller="loans" data-loans-url=<%= user_loans_path %>>
   <h2 class="user_section_title">My Items</h2>
-  <div id="renewal-warning" aria-live="assertive"></div>
+  <div id="renewal-warning" class="p-0 m-0" aria-live="assertive"></div>
   <%= form_tag(users_renew_selected_path, method: :post, format: 'ajax', remote: true, id: 'renewals') do %>
-    <table class="table table-hover table-responsive" border="0">
-      <caption>Table of Current Loans for this user</caption>
+    <table class="table user-table table-responsive border-0">
+      <caption class="sr-only">Table of Current Loans for this user</caption>
       <thead>
         <tr>
           <th width="2%">#</th>
-          <th width="40%">Title</th>
+          <th width="35%">Title</th>
           <th width="10%">Due</th>
           <th width="10%">Barcode</th>
           <th width="15%">Call Number</th>
-          <th width="9%" class="renew">
+          <th width="14%" class="renew">
             <label for="Select All">Select All</label><br><input type="checkbox" id="checkall" name="selectall" onClick="selectallchecks();" value="Select All">
           </th>
           <th width="9%"></th>
@@ -24,8 +24,8 @@
       <% else %>
       <tbody data-target="loans.table">
         <p class="text-center" data-target="loans.spinner">
-          <span class="loading-message glyphicon glyphicon-refresh spinning" >
-          </span><span class="loading-message"> Loading Items...</span>
+          <i class="fa fa-spinner" role="spinbutton"></i>
+          <span class="loading-message"> Loading Items...</span>
         </p>
       </tbody>
       <% end %>

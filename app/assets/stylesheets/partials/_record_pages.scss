@@ -1,0 +1,50 @@
+/* === INDIVIDUAL RECORD PAGES === */
+#record-page-content {
+  background-color: $white;
+  border-radius: 0.3125rem 0.3125rem 0 0;
+
+  @media(max-width: 600px) {
+    text-align: center;
+ 	}
+}
+
+.record-page-wrapper {
+  padding: 1.25rem;
+}
+
+#record-page-content h1 {
+  font-family: "PT Sans";
+  font-size: 1.75rem;
+  padding-left: 1.15rem;
+  padding-top: 1.25rem;
+}
+
+.record-page-wrapper .thumbnail {
+
+  @media(max-width: 600px) {
+    padding-bottom: 1.25rem;
+ 	}
+}
+
+.btn-link:hover {
+  color: $red;
+  text-decoration: underline;
+}
+
+.show-page-list {
+  @media(max-width: 768px) {
+    padding-top: 1rem;
+  }
+}
+
+#stafflink {
+  padding: 1.5rem 2.5rem;
+
+  @media(max-width: 992px) {
+    padding-left: 0.25rem;
+  }
+
+  @media(max-width: 768px) {
+    padding-left: 0;
+  }
+}
