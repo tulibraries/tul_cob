@@ -65,13 +65,13 @@ module ApplicationHelper
   def bento_icons(engine_id)
     case engine_id
     when "books"
-      content_tag(:span, "", class: "bento-icon bento-book")
+      content_tag(:span, "", class: "bento-icon bento-book m-3")
     when "articles"
-      content_tag(:span, "", class: "bento-icon bento-article")
+      content_tag(:span, "", class: "bento-icon bento-article m-3")
     when "journals"
-      content_tag(:span, "", class: "bento-icon bento-journal")
+      content_tag(:span, "", class: "bento-icon bento-journal m-3")
     when "more"
-      content_tag(:span, "", class: "bento-icon bento-more")
+      content_tag(:span, "", class: "bento-icon bento-more m-3")
     end
   end
 
@@ -127,9 +127,6 @@ module ApplicationHelper
     Rails.configuration.features.fetch(:login_disabled, false)
   end
 
-  def render_saved_searches?
-    false
-  end
   def render_search_history?
     false
   end
@@ -145,7 +142,7 @@ module ApplicationHelper
         type
       end
 
-    link_to(label, "https://library.temple.edu/library-search-faq")
+    link_to(label, "https://library.temple.edu/library-search-faq", class: "text-red")
   end
 
   def former_search_link
@@ -153,7 +150,7 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank", class: "text-red"
   end
 
   def explanation_translations(controller_name)
@@ -183,11 +180,9 @@ module ApplicationHelper
 
   def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
-    button_class = ([ "nav-btn header-links" ] + active).join(" ")
+    button_class = ([ "nav-item nav-link header-links" ] + active).join(" ")
 
-    content_tag :li, class: button_class do
-      link_to(name, send(path, search_params), id: analytics_id)
-    end
+    link_to(name, send(path, search_params), id: analytics_id, class: button_class)
   end
 
   def search_params

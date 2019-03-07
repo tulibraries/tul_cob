@@ -13,8 +13,6 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  include Blacklight::Ris::Catalog
-
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
 
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
@@ -558,12 +556,35 @@ class CatalogController < ApplicationController
     # marc config
     # Do not show library_view link
     config.show.document_actions.delete(:librarian_view)
-    add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
+    #config.add_show_tools_partial(:ris, label: "RIS File", if: :render_ris_action?, modal: false, path: :ris_path)
     # Do not show endnotes for beta release
     config.show.document_actions.delete(:endnote)
+    config.add_show_tools_partial(:citation)
+    # Need to add citation for side effect only.
     config.show.document_actions.delete(:citation)
+
+    # Document results tools
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
+
+
+    # Results collection tools
+    config.add_results_collection_tool(:sort_widget)
+    config.add_results_collection_tool(:per_page_widget)
+    config.add_results_collection_tool(:view_type_group)
+
+
+    # Show tools
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    config.add_show_tools_partial(:ris, label: "RIS File", modal: false, path: :ris_path)
+
+    # Nav tools
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
+
     config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
+
   end
 
   # Can be overridden by subclass
@@ -648,7 +669,7 @@ class CatalogController < ApplicationController
   end
 
   def purchase_order
-    (@response, @document) = fetch(params["id"])
+    (@response, @document) = search_service.fetch(params["id"])
     render layout: false
   end
 

@@ -8,6 +8,7 @@ RSpec.describe CatalogController, type: :controller do
   let(:doc_id) { "991012041239703811" }
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
   let(:mock_document) { instance_double(SolrDocument) }
+  let(:search_service) { instance_double(Blacklight::SearchService) }
 
   describe "show action" do
     it "gets the staff_view_path" do
@@ -26,13 +27,11 @@ RSpec.describe CatalogController, type: :controller do
     before do
       get(:index, params: { q: "education" }, format: :json)
     end
-    let(:docs) { JSON.parse(response.body)["response"]["docs"] }
+    let(:docs) { JSON.parse(response.body)["data"] }
     # Collect the keys from the document hashes into a single array
-    let(:docs_keys) { docs.collect { |doc| doc.keys }.flatten.uniq }
+    let(:docs_keys) { docs.collect { |doc| doc["attributes"].keys }.flatten.uniq }
     let(:expected_keys) {
-      %w[ id imprint_display creator_display pub_date
-          format isbn_display lccn_display
-        ]
+      %w[ creator_display format ]
     }
 
     context "an individual index result" do
@@ -44,20 +43,21 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
-  describe "using lower case boolen operators in normal search" do
+  describe "using lower case boolean operators in normal search" do
     render_views
-    let(:uppercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action AND higher education" }, format: :json).body)["response"]["pages"]["total_count"] }
-    let(:lowercase_and) { JSON.parse(get(:index, params: { q: "race affirmative action and higher education " }, format: :json).body)["response"]["pages"]["total_count"] }
-
     it "returns more results that using uppercase boolean" do
-      expect(lowercase_and).to be > uppercase_and
+      config = controller.blacklight_config
+      (response_lower, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home or work" }).search_results
+      (response_upper, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home OR work" }).search_results
+
+      expect(response_upper.total).to be > response_lower.total
     end
   end
 
   describe "using & or and produce the same results" do
     render_views
-    let(:letters_and) { JSON.parse(get(:index, params: { q: "pride and prejudice" }, format: :json).body)["response"]["pages"]["total_count"] }
-    let(:ampers_and) { JSON.parse(get(:index, params: { q: "pride & prejudice" }, format: :json).body)["response"]["pages"]["total_count"] }
+    let(:letters_and) { JSON.parse(get(:index, params: { q: "pride and prejudice" }, format: :json).body)["meta"]["pages"]["total_count"] }
+    let(:ampers_and) { JSON.parse(get(:index, params: { q: "pride & prejudice" }, format: :json).body)["meta"]["pages"]["total_count"] }
 
     it "returns the same number of results" do
       expect(letters_and).to eql ampers_and
@@ -66,7 +66,7 @@ RSpec.describe CatalogController, type: :controller do
 
   describe "Boundwith Host records should not have been indexed" do
     render_views
-    let(:bwh) { JSON.parse(get(:index, params: { q: "22293201420003811" }, format: :json).body)["response"]["pages"]["total_count"] }
+    let(:bwh) { JSON.parse(get(:index, params: { q: "22293201420003811" }, format: :json).body)["meta"]["pages"]["total_count"] }
 
     it "returns no results" do
       expect(bwh).to eql 0
@@ -77,8 +77,9 @@ RSpec.describe CatalogController, type: :controller do
     let(:doc) { SolrDocument.new(id: "my_fake_doc") }
 
     before do
+      allow(search_service).to receive(:fetch).and_return([mock_response, [doc]])
+      allow(controller).to receive(:search_service).and_return(search_service)
       allow(doc).to receive(:material_from_barcode) { "CHOSEN BOOK" }
-      allow(controller).to receive(:fetch) { [ mock_response, [doc] ] }
     end
 
     context "no selection is present" do

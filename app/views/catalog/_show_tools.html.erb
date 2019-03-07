@@ -11,31 +11,32 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-        <% if config.key == :bookmark %>
-          <li class="<%= config.key %>" id="bookmark_button">
-            <%= inner %>
-          </li>
-          <% if @document.citable? %>
-          <li>
-            <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:ajax_modal => "trigger"}, :class => "citation"} %>
-          </li>
+          <% if config.key == :bookmark %>
+            <li class="<%= config.key %>" id="bookmark_button">
+              <%= inner %>
+            </li>
+            <% if @document.citable? %>
+            <li>
+              <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn btn-sm"} %>
+            </li>
+            <% end %>
+          <% else %>
+
+            <% @sendto[config.key] = inner %>
+
           <% end %>
-        <% else %>
-
-          <% @sendto[config.key] = inner %>
-
         <% end %>
-        <% end %>
+
         <li id="sendto-menu">
-          <div id="sendto">
-            <button class="sendto btn btn-default dropdown-toggle" data-toggle="dropdown">Send To <span class="caret"></span></button>
-            <ul class="dropdown-menu">
+          <div id="sendto" class="dropdown show">
+            <button class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Send To <span class="caret"></span></button>
+            <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
-                <li class="sendto-item">
+                <div class="sendto-item dropdown-item">
                   <%= value %>
-                </li>
+                </div>
               <% end %>
-            </ul>
+            </div>
           </div>
         </li>
       </ul>

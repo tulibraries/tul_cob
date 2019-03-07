@@ -2,17 +2,17 @@
 
 require "rails_helper"
 
-RSpec.feature "Advanced Search" do
+RSpec.feature "Home Facets" do
 
   describe "Facets rendered" do
-    it "Only a subset of all the facets render on the homepage" do
+    it "does not render facets on hompe pages only on search pages" do
       visit "/catalog"
-      home_facets = page.all(".facet_limit").length
+      home_facets = page.all(".facet-values li").length
 
       visit "/catalog?search_field=all_fields&q=test"
       expect(page).to have_current_path("/catalog?search_field=all_fields&q=test")
 
-      search_facets = page.all(".facet_limit").length
+      search_facets = page.all(".facet-values li").length
       expect(home_facets).to be < search_facets
     end
   end

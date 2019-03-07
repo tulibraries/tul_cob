@@ -1,34 +1,25 @@
-<div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="<%= container_classes %>">
-    <div class="navbar-header">
-    <%= link_to library_link, class: "header-name", id: "header-logo" do %>
-      <%= image_tag('temple-logo-t-box.svg', class: "header-logo", alt: "temple-logo") %>
-      <span class="logo-text">University Libraries</span>
-    <% end %>
-    </div>
-  </div>
-</div>
+<nav id="logo-navbar" class="navbar navbar-header bg-white align-items-center" role="navigation">
+  <%= link_to library_link, class: "header-name d-flex align-items-center" do %>
+    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
+    <span class="logo-text">University Libraries</span>
+  <% end %>
+</nav>
 
-<div id="user-util-links" class="row red-navbar">
-  <div class="<%= container_classes %>">
-    <div class="col-sm-12 col-md-4">
-        <h1 class="nav-header">
-          <%= link_to("Library Search", everything_path, id: "catalog_header") %>
-        </h1>
-    </div>
-
-    <div id="user-util-collapse">
-      <div class="navbar-right">
-        <%= render partial: '/user_util_links' %>
+<nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red pt-0 pb-0" role="navigation">
+  <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap">
+      <h1 class="col-sm-auto">
+        <%= link_to("Library Search", everything_path, id: "catalog-header") %>
+      </h1>
+      <div class="ml-auto col-sm-auto">
+        <%= render partial: "/user_util_links" %>
       </div>
-    </div>
   </div>
-</div>
+</nav>
 
-<div id="search-navbar" class="navbar navbar-default navbar-static-top" role="navigation">
-  <div id="search-form-container" class="<%= container_classes %>">
-    <%= render "search_form"  %>
+<nav id="search-navbar" class="navbar navbar-default bg-tan border-bottom border-red" role="navigation">
+  <div class="container mx-auto">
+    <%= render "search_form" %>
   </div>
-</div>
+</nav>
 
 <%= render "navbar" %>

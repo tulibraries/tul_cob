@@ -1,68 +1,51 @@
 @import "partials/_vars.scss";
 
 /* === GENERAL STYLES === */
-
 body {
-  font-size: 14px;
+  font-size: 0.875rem;
+}
+
+#main-container {
+  padding-bottom: 3.125rem;
+
+  @media(min-width: 992px) {
+    max-width: 62.5rem !important;
+    padding-left: 1.5625rem !important;
+  }
+
+  @media(min-width: 768px) {
+    max-width: 56.25rem;
+    padding-left: 1.875rem;
+  }
+}
+
+.breadcrumb {
+  background-color: transparent;
+  font-size: 0.875rem;
+}
+
+.form-control:focus {
+  border-color: gray;
+  box-shadow: inset 0 0.0625rem 0.0625rem rgba(96, 96, 96, 0.075), 0 0 0.5rem rgba(96, 96, 96, 0.6);
+}
+
+.breadcrumb > li + li:before {
+    color: $med-grey;
+    content: "/";
+    padding: 0 0.3125rem;
 }
 
 #documents {
-  background-color: $white;
-  border-radius: 0 0 5px 5px;
-  border-top: 1px solid #CCC;
   margin-left: 0;
-  margin-top: -5px;
-  padding: 0 0 0 20px;
+  padding: 0 0 0 1.25rem;
+
+  @media(max-width: 600px) {
+    padding-left: 0.9375rem !important;
+  }
 }
+
 div #documents .document {
   border-bottom: none !important;
-}
-
-#previousNextDocument {
-  padding: 20px 20px 10px 20px;
-}
-
-#record-page-content {
-  background-color: $white;
-  border-radius: 5px 5px 0 0;
-}
-
-.record-page-wrapper {
-  padding: 40px;
-}
-
-#record-page-content h1 {
-  padding-left: 20px;
-}
-
-#record-view-iframe, #stafflink {
-  margin-left: 10%;
-  max-width: 850px;
-}
-
-hr.document-divider {
-	margin: 0 30px 0 10px;
-	padding: 0;
-}
-
-#stafflink {
-  padding-top: 10px;
-  padding-left: 7px;
-}
-
-h1[itemprop="name"] {
-  font-size: 28px;
-}
-
-h1.advanced.page-header a {
-  display:none;
-}
-
-.page-header.row {
-  margin-top: 7px;
-  @media(max-width:767px) {
-    margin-top: -14px;
-  }
 }
 
 .btn-link {
@@ -74,70 +57,44 @@ h1.advanced.page-header a {
   text-decoration: underline;
 }
 
-.explantion-wrapper {
-  position: inherit;
-  justify-content: space-between;
-  margin: 0 auto 20px auto;
-  padding-left: 8%;
+.hidden {
+  display: none;
+}
+
+.electronic-notes {
+  padding-top: 0.625rem;
+}
+
+dl dt.index-label {
+  text-align: right;
+
   @media(max-width: 600px) {
-    margin: 30px auto 20px auto;
-  }
-  @media(max-width: 600px) {
-    margin: 0 auto 20px auto;
-  }
+    text-align: left;
+ 	}
 }
 
-.explanation {
-  font-size: 1.1em;
+dl dd {
+  text-align: left;
 }
 
-.explantion-btn {
-  font-size: 1.1em;
-  transform: translateY(-20%);
-  @media(max-width: 485px) {
-    transform: translateY(70%);
-  }
+/* === LIBRARIAN TEMPLATE === */
+.librarian-header {
+  font-size: 1.5rem;
 }
 
-.form-control:focus {
-  border-color: gray;
-  box-shadow: inset 0 1px 1px rgba(96, 96, 96, 0.075), 0 0 8px rgba(96, 96, 96, 0.6);
-}
-
-.site-message {
-  background: #f1efe7;
-  border-bottom: 2px solid $aged-red;
-  padding-top: 10px;
-  margin-bottom: 5px;
-}
-
-.format-concatenator {
-  padding-left:7px;
-  padding-right:14px;
-}
-
-.document-metadata form {
-  margin-top: 14px;
-}
-
-.index-label {
-  color: #595959 !important;
-}
-
-.list_items {
-  list-style-type: none;
+#marc_view  {
+  color: $grey;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* === HOME PAGES === */
-#page-wrapper {
-  background-color: #F4F6F5;
+div #main-container {
   min-height: calc(100vh - 100px) !important;
-  padding-bottom: 50px;
 }
 
 #getting-started {
-  margin: 30px;
-  font-size: 16px;
+  font-size: 1rem;
+  margin: 1.875rem;
 }
 
 #getting-started a, .everything-explanation a {
@@ -149,28 +106,31 @@ h1.advanced.page-header a {
 }
 
 .books-home-text {
-  font-size: 16px;
-  text-align: center !important;
+  padding-left: 5rem;
+
+  @media(max-width: 600px) {
+    padding-left: 0;
+ 	}
 }
 
 /* === NO RESULTS === */
 .no-results-header {
   border-top: none;
-  float: none;
-  font-size: 18px;
-  padding-top: 20px;
+  font-size: 1.125rem;
+  padding-top: 1.25rem;
 }
 
 .no-results-tips {
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .noresults {
-  padding-bottom: 20px !important;
+  padding-bottom: 1.25rem;
 }
 
 .not-at-temple {
-  font-size: 16px;
+  font-size: 1rem;
+  margin-right: 1.25rem;
 }
 
 /* === LISTS === */
@@ -186,11 +146,18 @@ dd ul {
 }
 
 /* === BOOK COVER THUMBNAILS  === */
-.thumbnail {
+div.thumbnail img.default {
+  height: 5.625rem;
+  width: 5.625rem;
+  opacity: .25;
+}
+
+.thumbnail a > img {
   border: 0;
   display: block;
+  height: auto;
   padding: 0;
-  width: 100px;
+  max-width: 100%;
 }
 
 img {
@@ -200,37 +167,30 @@ img {
   width: auto;
 }
 
-.record-view.thumbnail {
-  border: 0 !important;
-}
-
-.record-view.thumbnail img {
-  border: 0 !important;
-}
-
 .invisible {
   display: none !important;
 }
 
 /* === MODALS  === */
 .modal-content #login {
-  padding: 42px;
+  padding: 2.625rem;
   padding-top: 0;
 }
 
 .modal-content .availability-modal {
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .loading-message{
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 
-.glyphicon.spinning {
+.fa-spinner {
   animation: spin 1s infinite linear;
   -webkit-animation: spin2 1s infinite linear;
 }
 
+/* === SPINNER ANIMATIONS  === */
 @keyframes spin {
   from { transform: scale(1) rotate(0deg); }
   to { transform: scale(1) rotate(360deg); }
@@ -241,174 +201,4 @@ img {
   to { -webkit-transform: rotate(360deg); }
 }
 
-.electronic-notes {
-  padding-top: 10px;
-}
-
-/* === MEDIA QUERIES === */
-@media (min-width: 992px) {
-  .document dt {
-    margin-left: 90px;
-    text-align: right;
-    white-space: normal;
-    width: 142px;
-    word-break: break-word;
-  }
-  .dl-horizontal dd {
-    margin-left: 240px;
-  }
-  .dl-horizontal dd.blacklight-availability {
-    margin-left: 21px;
-    padding-top: 5px;
-  }
-}
-
-@media (max-width: 991px) {
-  .document dt {
-    float: none;
-    margin-left: 0px;
-    text-align: left;
-    white-space: normal;
-    width: 100px;
-    word-break: break-word;
-  }
-  .dl-horizontal dd {
-    margin-left: 0px;
-    width: 100%;
-  }
-  .book-info-srch {
-    float:none;
-    margin-left: 21px;
-  }
-  #record-page-nav-tools {
-    clear: both;
-    float: left!important;
-    padding-top: 14px;
-    padding-right: 0;
-  }
-  .aeon-request {
-    float: none;
-    margin-top: 0 !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .book_format {
-    margin-left: 21px;
-  }
-  span.book {
-    margin-left: 0;
-  }
-  #appliedParams {
-    padding-left: 7px;
-  }
-  #previousNextDocument {
-    padding-left: 14px;
-  }
-  #document h1 {
-    padding-left: 14px;
-  }
-  .col-xs-12 {
-    float: none;
-  }
-}
-
-@media (max-width: 601px) {
-  .input-group-addon {
-    padding: 0;
-  }
-  #nav-tools {
-    margin-top: 14px;
-    width: 100%;
-  }
-  #tools-navbar {
-    padding-left: 0;
-  }
-  #tools-navbar li, #tools-navbar li a {
-    background-color: $red !important;
-    border-radius: 0;
-    color: $white !important;
-    display: block;
-    margin-bottom: 2px;
-    padding-left: 10px;
-    width: 100%;
-  }
-  .bookmarks-tools #tools-navbar li, .bookmarks-tools #tools-navbar li a {
-    background-color: transparent !important;
-    border-radius: 0;
-    color: $red !important;
-    display: block;
-    margin-bottom: 2px;
-    padding-left: 10px;
-    width: 100%;
-  }
-  #bookmarks-sendto .dropdown-menu {
-    left: auto !important;
-    position: absolute;
-    top: auto !important;
-  }
-  .nav-tools div.toggle_bookmark {
-    padding-top: 0;
-    min-height: auto;
-  }
-  .nav-tools div.toggle_bookmark label {
-    color: $white;
-    min-width: auto;
-  }
-  .nav-tools div.toggle_bookmark input.toggle_bookmark {
-    visibility: hidden!important;
-  }
-  .nav-tools div.toggle_bookmark span {
-    left:-10px;
-    position:relative;
-  }
-  #sendto {
-    background-color: transparent;
-    display:block;
-    float: none!important;
-    margin-top: auto;
-    margin-left: auto;
-    position:relative;
-    z-index:0;
-  }
-  #sendto button {
-    background-color: $red;
-    border: 0;
-    color: $white;
-  }
-  #sendto-menu {
-    background-color: $red;
-  }
-  #sendto ul {
-    background-color: $white;
-    float:none;
-    position:relative;
-  }
-  #sendto .dropdown-menu {
-    background-color: $red;
-    width: 100%;
-  }
-  .sendto-item {
-    background-color: $red !important;
-    display:block;
-    margin-left: 0;
-  }
-  .pub-date-separator {
-    margin-left: 0;
-  }
-  #range_pub_date_sort_end {
-    margin-left: 0;
-  }
-  .submit-buttons {
-    margin-right: 0;
-  }
-}
-
-@media(max-width:485px) {
-  .submit-buttons {
-    margin-top: 20px;
-  }
-}
-
-/* === MEDIA QUERIES SHOULD BE AT THE END OF THE FILE === */
-/* === PLEASE PUT NEW CSS STYLES ABOVE LINE 261 OR IN A PARTIAL === */
+/* === MEDIA QUERIES SHOULD BE IN EACH CLASS === */

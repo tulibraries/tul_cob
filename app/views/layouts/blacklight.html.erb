@@ -23,29 +23,22 @@
     <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => "xml") %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
     <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="bg-background-grey <%= render_body_class %>">
     <div id="page-wrapper">
       <%= render :partial => "shared/banner" %>
 
       <%= render :partial => "shared/header_navbar" %>
 
-      <%= render partial: "shared/ajax_modal" %>
+      <%= render partial: "shared/modal" %>
 
-      <div id="main-container" class="<%= container_classes %>">
-
-        <%= render :partial=>"/flash_msg", layout: "shared/flash_messages" %>
-        <div class="breadcrumb-wrapper">
-          <ol class="breadcrumb">
-            <%= render_breadcrumbs :tag => :li, :separator => "" %>
-          </ol>
-        </div>
-
+      <div id="main-container" class="col-sm-10 mx-auto"
         <div class="row">
           <%= yield %>
         </div>

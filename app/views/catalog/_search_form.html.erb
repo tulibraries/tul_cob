@@ -1,25 +1,28 @@
-<%= form_tag search_url_picker, method: :get, class: 'search-query-form clearfix', role: 'search', id: "catalog-search" do %>
+<%= form_tag search_action_url, method: :get, class: "search-query-form col-lg-9 col-sm-12", role: "search", id: "catalog-search" do %>
   <%= render_hash_as_hidden_fields(search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8)) %>
-  <div class="input-group basic-search-form">
+
     <% if search_fields.length > 1 %>
-      <span class="input-group-addon for-search-field">
-        <label for="search_field" class="sr-only"><%= t('blacklight.search.form.search_field.label') %></label>
-        <%= select_tag(:search_field, options_for_select(search_fields, h(search_params[:search_field])), title: t('blacklight.search.form.search_field.title'), id: "search_field", class: "search_field") %>
-      </span>
-    <% elsif search_fields.length == 1 %>
-      <%= hidden_field_tag :search_field, search_fields.first.last %>
+      <label for="search_field" class="sr-only"><%= t("blacklight.search.form.search_field.label") %></label>
     <% end %>
 
-    <label for="q" class="sr-only"><%= t('blacklight.search.form.search.label') %></label>
-    <%= text_field_tag :q, search_params[:q], placeholder: t('blacklight.search.form.search.placeholder'), class: "search_q q form-control", id: "q", autofocus: should_autofocus_on_search_box?, data: { autocomplete_enabled: autocomplete_enabled?, autocomplete_path: blacklight.suggest_index_path }  %>
+    <div class="input-group d-flex">
+      <% if search_fields.length > 1 %>
+        <%= select_tag(:search_field, options_for_select(search_fields, h(search_params[:search_field])), title: t("blacklight.search.form.search_field.title"), id: "search_field", class: " custom-select search-field flex-shrink-1") %>
+      <% elsif search_fields.length == 1 %>
+        <%= hidden_field_tag :search_field, search_fields.first.last %>
+      <% end %>
 
-    <span class="input-group-btn">
-      <button type="submit" class="btn btn-primary search-btn" id="search" aria-label="search">
-        <span class="submit-search-text"></span>
-        <span class="glyphicon glyphicon-search"></span>
-      </button>
+    <label for="q" class="sr-only"><%= t("blacklight.search.form.search.label") %></label>
+    <%= text_field_tag :q, search_params[:q], placeholder: t("blacklight.search.form.search.placeholder"), class: "search_q q form-control w-50", id: "q", autofocus: should_autofocus_on_search_box?, data: { autocomplete_enabled: autocomplete_enabled? }  %>
+
+    <span class="input-group-append">
+      <button type="submit" class="btn btn-red search-btn" id="search" aria-label="search">
+        <i class="fa fa-search"></i>
+    </button>
     </span>
   </div>
 <% end %>
 
-<%= render "advanced_search_link" %>
+<div class="mx-auto">
+  <%= render "advanced_search_link" %>
+</div>

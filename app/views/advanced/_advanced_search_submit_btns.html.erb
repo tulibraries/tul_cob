@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <div class="sort-buttons pull-left">
+  <div class="col-md-4">
+    <div class="sort-buttons">
       <%= label_tag(:sort, t('blacklight_advanced_search.form.sort_label'), :class => "control-label") %>
-      <% sort_fields = active_sort_fields.values.map { |field_config| [sort_field_label(field_config.key), field_config.key] } %>
+
       <%= select_tag(:sort, options_for_select(sort_fields, h(current_sort_field && current_sort_field.key)), :class => "form-control sort-select") %>
       <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
     </div>
   </div>
 
-  <div class="col-xs-12 col-sm-6">
-    <div class="submit-buttons pull-right">
+  <div class="col-md-8 d-flex justify-content-sm-end">
+    <div class="submit-buttons">
       <%= submit_tag t('blacklight_advanced_search.form.search_btn'), :class=>'btn btn-primary advanced-search-submit', :id => "advanced-search-submit" %>
 
       <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>"btn btn-default advanced-search-start-over" %>

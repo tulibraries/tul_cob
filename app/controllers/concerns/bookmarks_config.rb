@@ -12,6 +12,9 @@ module BookmarksConfig
       # Disable the per_page configuration
       config.per_page = []
       config.default_per_page = 1000
+
+      config.add_show_tools_partial(:citation)
+      # Need to add citation for side effect only.
       config.show.document_actions.delete(:citation)
     end
   end

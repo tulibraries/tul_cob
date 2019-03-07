@@ -1,29 +1,82 @@
 @import "_vars.scss";
 
 /* === USERS === */
-.row-eq-height {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+.my-account-heading {
+  font-family: "PT Sans";
+  font-size: 2.0rem;
 }
 
-.glyphicon.glyphicon-exclamation-sign {
+/* === USER INFO === */
+.user-info-list {
+  list-style-type: none;
+}
+
+.user-info-list li {
+  padding: 0.3125rem;
+}
+
+.user-info-label {
+  font-weight: bold;
+}
+
+.user-email-notice {
+  margin: 0.3125rem 1.5625rem;
+}
+
+/* === USER LOANS === */
+.user_section_title {
+  background-color: $red;
+  color: $white;
+  font-family: "PT Sans";
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0.625rem 0.875rem;
+}
+
+.container .user-loans,
+.container .user-holds,
+.container .user-fines {
+  padding: 0;
+  width: 100%;
+}
+
+#renewals {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.renew-text {
+  padding-left: 0.4375rem;
+  padding-right: 0.625rem;
+}
+
+#renew_selected {
+  border-color: #777;
   color: $red;
+
+  @media(max-width: 485px) {
+		margin-top: 0.625rem;
+	}
 }
 
-h1.page-title {
-  margin-top: 7px;
-  margin-bottom: 21px;
+/* === USER REQUESTS === */
+.user-table td {
+  border-top: 0;
+}
+
+/* === USER FINES === */
+.table td.fine-label {
+  font-weight: bold;
+  padding-left: 0.9375rem;
 }
 
 #renewal-warning {
   background-color: $green;
-  border: solid $red 1px;
-  border-radius: 7px;
+  border: solid $red 0.0625rem;
+  border-radius: 0.4375rem;
   color: $black;
   display: none;
-  padding: 14px;
+  padding: 0.875rem;
   width: 100%;
   text-align: center;
 }
@@ -33,122 +86,4 @@ h1.page-title {
   color: $med-grey;
   margin-right: 10%;
   position:absolute;
-}
-
-.container.user-account {
-  background-color: $tan;
-  border-radius: 14px;
-  margin-bottom: 28px;
-  padding: 21px 0;
-
-  .btn-white {
-    background-color: $white;
-    border: solid #ccc 1px;
-    color: $red;
-  }
-  div.user-info {
-    .col-md-5 {
-      font-size: 115%;
-    }
-    margin-bottom: 14px;
-    padding-left: 1%;
-    ul {
-      list-style-type: none;
-      li {
-        line-height: 1.85;
-        span {
-          font-weight: 600;
-        }
-        .balance {
-          color: $red;
-          font-weight: normal;
-        }
-      }
-    }
-  }
-  .container.user-loans, .container.user-fines, .container.user-holds {
-    padding: 0;
-    width: 100%;
-    .user_section_title {
-      background-color: $red;
-      color: $white;
-      margin-top: 0;
-      padding:7px 14px;
-    }
-    ul {
-      li {
-        margin-bottom: 14px;
-      }
-    }
-    table {
-      caption {
-        display: none;
-      }
-      tr.total-fines {
-        background-color: #f5f5f5;
-      }
-      th {
-        font-weight: 600;
-        height: 21px;
-        text-align: left;
-      }
-      th.renew {
-        text-align: center;
-      }
-      td {
-        text-align: left;
-        padding: 10px;
-      }
-      td.overdue {
-        color: $red;
-      }
-      td.submit {
-        padding-top: 14px;
-        padding-right: 8%;
-        text-align: right;
-      }
-    }
-    .table-hover > tbody > tr:hover {
-      color: $red;
-    }
-  }
-  .total-fines {
-    color: $red;
-    .fine-label {
-      font-weight: 600;
-      text-align: left;
-    }
-  }
-  .hide-me {
-    height: 1px;
-    left: -10000px;
-    overflow: hidden;
-    position:absolute;
-    top: auto;
-    width: 1px;
-  }
-  td.renewal-check .form-check {
-    text-align: center;
-  }
-  .renew-selected {
-    float: right;
-    font-size: 58%;
-    padding-right: 7%;
-    padding-top: 10px;
-    vertical-align: middle;
-  }
-  .fines-link {
-    padding: 14px;
-    text-align: center;
-  }
-}
-
-.col-md-6 {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-email-notice {
-  margin-top: -10px;
-  margin-left: 25px;
 }

@@ -122,28 +122,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  # Overrides parent:sort using BL-7 definition.
-  #
-  # This can be removed once we officially upgrade to BL-7.
-  # Decode the user provided 'sort' parameter into a sort string that can be
-  # passed to the search.  This sanitizes the input by ensuring only
-  # configured search values are passed through to the search.
-  # @return [String] the field/fields to sort by
-  def sort
-    sort_field =
-      if blacklight_params[:sort].blank?
-        # no sort param provided, use default
-        blacklight_config.default_sort_field
-      else
-        # check for sort field key
-        blacklight_config.sort_fields[blacklight_params[:sort]]
-      end
-    return sort_field.sort if sort_field.present?
-
-    Blacklight.logger.warn "Invalid sort field: '#{blacklight_params[:sort]}' was provided."
-    nil
-  end
-
   private
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.

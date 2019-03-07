@@ -10,7 +10,9 @@
 <span class="btn-group btn-block appliedFilter filter-group constraint <%= options[:classes].join(" ") if options[:classes] %>">
   <span class="constraint-value btn btn-block btn-default btn-disabled">
     <% unless label.blank? %>
-      <span class="filterName"><%= label %></span>
+      <span class="filterName"><%= label %>
+        <i class="fa fa-chevron-right filter-separator"></i>
+      </span>
     <% end %>
     <% unless value.blank? %>
       <%= content_tag :span, value, class: 'filterValue' %>
@@ -27,6 +29,6 @@
     %>
 
     <%= link_to(content_tag(:span, '', class: 'remove-icon') + accessible_remove_label,
-                options[:remove], class: 'btn btn-block remove remove-constraints dropdown-toggle') %>
+                options[:remove], class: 'btn btn-block remove remove-constraints mt-0 pt-2') %>
   <%- end -%>
 </span>

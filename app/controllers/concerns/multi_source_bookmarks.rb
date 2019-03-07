@@ -15,7 +15,7 @@ module MultiSourceBookmarks
 
   # Overrides BookmarksController::action_documents in order to get documents from multiple apis.
   def action_documents
-    fetch([])
+    search_service.fetch([])
     @bookmarks = token_or_current_or_guest_user.bookmarks
     document_list = []
     # This bit should probably be  made concurrent
@@ -26,7 +26,8 @@ module MultiSourceBookmarks
         .collect { |b| b.document_id.to_s }
 
       if !ids.empty?
-        @response, docs = source_class.new(@search_state).fetch(ids)
+        search_service = source_class.new(@search_state).send(:search_service)
+        @response, docs = search_service.fetch(ids)
         document_list.append(*docs)
       end
     end

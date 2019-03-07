@@ -1,10 +1,17 @@
-.book-info-srch {
-  float:right;
-  margin-right:42px;
+button.collapse-button .avail-label:after {
+	color: $white;
+  content:"\f078";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-left: 0.625rem;
 }
 
-.show_page_records dd {
-  margin-bottom: 20px;
+button.collapse-button.collapsed .avail-label:after {
+  color: $white;
+  content:"\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  padding-left: 0.625rem;
 }
 
 span.book,
@@ -137,6 +144,7 @@ span.check {
   background: transparent url(<%= asset_path 'icons/checkmark.svg' %>) no-repeat top left;
   padding-left: 20px;
 }
+
 span.close-icon {
   background: transparent url(<%= asset_path 'icons/close.svg' %>) no-repeat top left;
   padding-left: 20px;
@@ -168,12 +176,12 @@ span.remove-icon {
 }
 
 span.open-facet-icon {
-  background: transparent url(<%= asset_path 'icons/filter_button_open.jpg' %>) no-repeat top left;
+  background: transparent url(<%= asset_path 'icons/filter_button_open.jpg' %>) no-repeat center left;
   padding-left: 20px;
 }
 
 span.remove-facet-icon {
-  background: transparent url(<%= asset_path 'icons/filter_button_close.jpg' %>) no-repeat top left;
+  background: transparent url(<%= asset_path 'icons/filter_button_close.jpg' %>) no-repeat center left;
   padding-left: 20px;
 
 }

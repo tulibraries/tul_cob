@@ -1,0 +1,98 @@
+@import "_vars.scss";
+
+/* BOOKMARKS */
+.bookmark-heading {
+  font-family: "PT Sans";
+  font-size: 2.0rem;
+}
+
+.no-bookmarks-message {
+  font-family: "PT Sans";
+  font-size: 1.5rem;
+}
+
+.refworks-link {
+  color: $red;
+  padding-left: 1rem;
+
+  @media(max-width: 768px) {
+		color: $white;
+	}
+}
+
+.refworks-link:hover {
+  color: $red;
+}
+
+.clear-bookmarks {
+  font-size: 0.875rem;
+  margin-left: 0.625rem;
+  margin-top: -0.125rem;
+  padding: 0.375rem 0.625rem;
+
+  @media(max-width: 601px) {
+    margin-left: 0;
+	}
+}
+
+.clear-bookmarks .search-widgets a,
+a.clear-bookmarks {
+  color: $white;
+}
+
+.bookmark_add,
+.bookmark_remove {
+  background-color: $tan;
+  color: $red;
+
+  @media(max-width: 768px) {
+		background-color: $red;
+	  color: $white;
+	}
+}
+
+.bookmarks-dropdown {
+  background-color: $tan;
+  color: $red;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    color: $white;
+    margin-bottom: 0.125rem;
+  }
+}
+
+#bookmarks-sendto button:hover {
+	color: $red;
+}
+
+.nav-tools div.toggle-bookmark input.toggle-bookmark {
+  visibility: hidden !important;
+  width: 0;
+}
+
+#bookmark_button {
+  color: $red;
+  padding: 0.25rem 0.3125rem 0.0625rem;
+}
+
+.bookmarks-page .book_info .index-label {
+  margin-left: 1.0rem;
+
+  @media(max-width: 768px) {
+    text-align: left;
+  }
+}
+
+.bookmarks-page dl.blacklight-availability {
+
+  @media(min-width: 992px) {
+    margin-top: 0.3875rem;
+  }
+}
+
+.bookmarks-page .avail-dt {
+  @media(max-width: 768px) {
+    margin-left: 0.9375rem;
+  }
+}

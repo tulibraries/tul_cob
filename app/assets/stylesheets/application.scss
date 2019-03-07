@@ -11,8 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
-
  *= require 'blacklight_advanced_search'
  *= require 'bootstrap-select'
  *
@@ -21,14 +19,25 @@
  *
 */
 @import "partials/_vars.scss";
+@import 'bootstrap';
+@import "blacklight_marc.scss";
 @import "partials/_colors.scss";
 @import "partials/_facets.scss";
+@import "partials/_footer.scss";
 @import "partials/_header.scss";
 @import "partials/_pagination.scss";
 @import "partials/_users.scss";
 @import "partials/_advanced.scss";
 @import "partials/_availability.scss";
+@import "partials/_bento.scss";
 @import "partials/_requests.scss";
 @import "partials/_sms_form.scss";
+@import "partials/_typography.scss";
+@import "partials/_bookmarks.scss";
+@import "partials/_users.scss";
+@import "partials/_record_pages.scss";
+@import "partials/_index_results.scss";
+@import "tucob";
+@import "icons";
 
-@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");

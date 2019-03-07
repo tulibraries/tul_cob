@@ -1,6 +1,6 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<div class="modal-header request-options-header justify-space-between">
   <h4 id="modal-title"><%= t("requests.header") %></h4>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 
 <div class="modal-body">
@@ -15,9 +15,9 @@
   </div>
 </div>
 
-<div class="modal-footer">
-  <p class="modal-footer-text text-left">
+<div class="modal-footer justify-content-between">
+  <p class="modal-footer-text">
     <%= t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %>
   </p>
-  <button type="button" class="btn btn-default" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
+  <button type="button" class="btn btn-default border-light-grey" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
 </div>
