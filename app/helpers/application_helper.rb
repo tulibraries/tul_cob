@@ -127,9 +127,6 @@ module ApplicationHelper
     Rails.configuration.features.fetch(:login_disabled, false)
   end
 
-  def render_saved_searches?
-    false
-  end
   def render_search_history?
     false
   end
