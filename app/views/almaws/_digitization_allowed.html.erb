@@ -5,7 +5,7 @@
     </h4>
   </div>
 
-  <div id="collapseTwo-<%= @mms_id %>" class="collapse <%= 'in' if only_one_option_allowed(request_options)%>">
+  <div id="collapseTwo-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options)%>">
     <div class="card-body">
       <h5 class="request-header"><%= t("requests.form.header") %></h5>
       <%= render "digitization_request_form" %>

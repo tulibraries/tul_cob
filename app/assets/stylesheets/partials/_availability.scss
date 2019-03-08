@@ -9,6 +9,10 @@
   border-color: $tan-border;
 }
 
+#availability-container td:last-child {
+  border-right: 1px solid $tan-border;
+}
+
 #availability-heading {
   color: $red;
   display: inline-block;

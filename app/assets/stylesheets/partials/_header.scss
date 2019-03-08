@@ -30,7 +30,7 @@ div.site-message {
 	font-size: 2.0rem;
 	margin-left: 0.625rem;	//  text-decoration: none;
 
-	@media(max-width:485px) {
+	@media(max-width: 485px) {
 	 font-size: 1.4rem;
 	}
 }
@@ -39,7 +39,7 @@ div.site-message {
 #red-navbar  {
 	text-align: center;
 
-	@media(max-width:992px) {
+	@media(max-width: 992px) {
 		justify-content: left;
 	}
 
@@ -47,7 +47,7 @@ div.site-message {
 		text-align: left;
 	}
 
-	@media(max-width:485px) {
+	@media(max-width: 485px) {
 		justify-content: center;
 		padding: 0;
 		text-align: center;
@@ -58,11 +58,20 @@ div.site-message {
 	color: $white;
 }
 
+#red-navbar h1 {
+	padding-left: 0;
+
+	@media(max-width: 768px) {
+		padding-left: 0.9375rem;
+	}
+
+}
+
 #red-navbar a#catalog-header {
 	font-family: "PT Sans";
 	font-size: 1.6rem;
 
-	@media(max-width:485px) {
+	@media(max-width: 485px) {
 	 font-size: 1.4rem;
 	}
 }
