@@ -1,21 +1,19 @@
 <% doc_presenter = show_presenter(document) %>
 <% if document["holdings_with_no_items_display"] %>
-<table class="other_libraries table table-responsive border border-tan-border mb-0">
+<div class="card other_libraries border border-tan-border">
   <% check_holdings_library_name(document).each do |library| %>
-    <thead class="table-heading">
-      <tr>
-        <th colspan="5" ><%= library_name_from_short_code(library) %> (For Items with Limited Information)</th>
-      </tr>
-    </thead>
-    <tbody>
+      <row class="card-title table-heading mb-0">
+        <%= library_name_from_short_code(library) %> (For Items with Limited Information)
+      </row>
+    <div class="card-body check-holdings-body border-top border-bottom border-tan-border">
       <% check_holdings_location(document, library).each do |holding| %>
-        <tr>
-          <td scope="row"><%= holding  %></td>
-          <td scope="row"><%= check_holdings_call_number(document) %></td>
-          <td scope="row"><%= render_holdings_summary(document) %></td>
-        </tr>
+        <div class="row">
+          <div class="check-holdings-col col-sm-3"><%= holding  %></div>
+          <div class="check-holdings-col col-sm-3"><%= check_holdings_call_number(document) %></div>
+          <div class="check-holdings-col col-sm-6"><%= render_holdings_summary(document) %></div>
+        </div>
       <% end %>
-    </tbody>
+    </div>
   <% end %>
-</table>
+</div>
 <% end %>

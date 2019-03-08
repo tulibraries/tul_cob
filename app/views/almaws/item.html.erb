@@ -1,5 +1,6 @@
 <button type="button" class="sr-only ajax-modal-close close" data-dismiss="modal">×</button>
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
+
 <% unless @items.values.all?(&:empty?) %>
   <div class="availability-modal">
     <div class="modal-only">
@@ -42,7 +43,7 @@
     <%= render :partial => "paginate_compact", :object => @response %>
   </div>
   <% else %>
-  <table class="table table-responsive border-bottom">
+  <table class="table table-responsive border-bottom no-holdings">
     <tr>
       <% unless @document["holdings_with_no_items_display"] %>
         <%= render_holdings_summary(@document) %>

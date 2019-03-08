@@ -72,6 +72,18 @@
   max-width: 53.125rem;
 }
 
+.no-holdings {
+  margin-bottom: 0;
+}
+
+.check-holdings-body {
+  padding: 10px;
+}
+
+.check-holdings-col {
+  display: table-cell;
+}
+
 #availability-container {
   th[headers*="location"] {
     width: 17%;
