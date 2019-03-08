@@ -516,14 +516,14 @@ module Traject
       end
 
       def suppress_items
-        lambda do |rec, acc|
+        lambda do |rec, acc, context|
           asrs = rec.fields("ITM").select { |field| field["g"] == "asrs" }
           lost = rec.fields("ITM").select { |field| field["u"] == "LOST_LOAN" }
           missing = rec.fields("ITM").select { |field| field["u"] == "MISSING" }
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
-          #field = rec.fields("ITM").map { |field| field["u"] }.first
+
           if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?)
-            acc.replace([true])
+            context.skip!
           end
         end
       end
