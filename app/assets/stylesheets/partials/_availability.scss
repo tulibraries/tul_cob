@@ -3,13 +3,7 @@
 /* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
-#record-page-online td,
-#availability-container td,
-#availability-container th {
-  border-color: $tan-border;
-}
-
-#availability-container td:last-child {
+#availability-container:last-child {
   border-right: 0.0625rem solid $tan-border;
 }
 
@@ -18,6 +12,10 @@
   display: inline-block;
   font-family: "PT Sans";
   font-size: 1.125rem;
+}
+
+.avail-headers .modal-only {
+  padding: 0;
 }
 
 #heading-request {
@@ -29,12 +27,21 @@
   list-style-type: none;
 }
 
+.table-row {
+  display: table-row;
+}
+
 .online-card {
   padding: 0.625rem;
 }
 
 #record-page-online {
   text-align: left;
+}
+
+.record-page-online-list .online-card,
+.online-list .online-card {
+  border: 1px solid $tan-border;
 }
 
 .library-name {

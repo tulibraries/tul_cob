@@ -304,7 +304,7 @@ module CatalogHelper
   def electronic_access_links(field)
     text = field.fetch("title", "Link to Resource").sub(/ *[ ,.\/;:] *\Z/, "")
     url = field["url"]
-    content_tag(:td, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
+    content_tag(:div, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items online-card")
   end
 
   def electronic_resource_link_builder(field)
@@ -319,7 +319,7 @@ module CatalogHelper
     item_html = [item_html, electronic_notes]
       .select(&:present?).join(" ").html_safe
 
-    content_tag(:td, item_html , class: " electronic_links online-list-items")
+    content_tag(:div, item_html , class: " electronic_links online-list-items online-card")
   end
 
   def render_electronic_notes(field)
@@ -361,9 +361,9 @@ module CatalogHelper
 
   def render_holdings_summary(document)
     if holdings_summary_information(document).present?
-      content_tag(:td, "Description: " + holdings_summary_information(document), id: "holdings-summary")
+      content_tag(:div, "Description: " + holdings_summary_information(document), id: "holdings-summary")
     else
-      content_tag(:td, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
+      content_tag(:div, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
     end
   end
 
