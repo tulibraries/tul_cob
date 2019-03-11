@@ -9,7 +9,7 @@ gem "rails", "~> 5.2"
 gem "sqlite3"
 # Use Puma as the app server
 gem "puma", "~> 3.0"
-gem "bootstrap", "~> 4.0"
+gem "bootstrap", "~> 4.3"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 # Use SCSS for stylesheets
