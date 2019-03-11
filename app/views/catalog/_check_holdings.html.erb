@@ -2,7 +2,7 @@
 <% if document["holdings_with_no_items_display"] %>
 <div class="card other_libraries border border-tan-border">
   <% check_holdings_library_name(document).each do |library| %>
-      <row class="card-title table-heading mb-0">
+      <row class="card-title check-holdings-heading mb-0">
         <%= library_name_from_short_code(library) %> (For Items with Limited Information)
       </row>
     <div class="card-body check-holdings-body border-top border-bottom border-tan-border">

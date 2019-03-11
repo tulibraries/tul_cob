@@ -43,11 +43,12 @@
     <%= render :partial => "paginate_compact", :object => @response %>
   </div>
   <% else %>
-  <table class="table table-responsive border-bottom no-holdings">
-    <tr>
-      <% unless @document["holdings_with_no_items_display"] %>
-        <%= render_holdings_summary(@document) %>
-      <% end %>
-    </tr>
-  </table>
+
+  <% unless @document["holdings_with_no_items_display"] %>
+    <div class="border-bottom no-holdings border border-tan-border">
+      <div class="row no-item-info">
+          <%= render_holdings_summary(@document) %>
+      </div>
+    </div>
+  <% end %>
 <% end %>

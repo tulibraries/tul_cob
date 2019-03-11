@@ -76,12 +76,31 @@
   margin-bottom: 0;
 }
 
+.other_libraries {
+
+  @media(max-width: 485px) {
+    text-align: left;
+  }
+}
+
+.check-holdings-heading {
+  background-color: $tan;
+  color: $black;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.75rem;
+}
+
 .check-holdings-body {
-  padding: 10px;
+  padding: 0.625rem;
 }
 
 .check-holdings-col {
   display: table-cell;
+}
+
+.no-item-info {
+  padding: 0.625rem 1.75rem;
 }
 
 #availability-container {
