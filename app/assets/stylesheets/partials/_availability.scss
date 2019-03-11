@@ -41,7 +41,7 @@
 
 .record-page-online-list .online-card,
 .online-list .online-card {
-  border: 1px solid $tan-border;
+  border: 0.0625rem solid $tan-border;
 }
 
 .library-name {
@@ -126,28 +126,6 @@
   padding: 0.625rem ;
 }
 
-#availability-container {
-  th[headers*="location"] {
-    width: 17%;
-  }
-  td[scope*="row"] {
-    width: 10%;
-  }
-  td[headers*="desc"] {
-    width: 25%;
-  }
-  td[headers*="callnum"] {
-    width: 22%;
-  }
-  td[headers*="note"] {
-    width: 7%;
-  }
-  td[headers*="status"] {
-    padding-right: 0.25rem;
-    width: 20%;
-  }
-}
-
 /* === AVAILABILITY BUTTONS === */
 button.online-btn.collapse-button {
   margin-bottom: 0;
@@ -177,11 +155,6 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
 }
 
 /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
-td.electronic_links {
-  border: 0.0625rem solid $tan-border;
-  padding: 0.75rem;
-}
-
 .spinner {
   margin-top: 0.625rem;
 }
@@ -205,7 +178,7 @@ td.electronic_links {
 /* === AEON BUTTON === */
 .aeon-request-btn {
   white-space: normal;
-  max-width: 200px;
+  max-width: 12.5rem;
 }
 
 .aeon-request {

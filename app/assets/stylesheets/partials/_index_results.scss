@@ -57,10 +57,9 @@ dl.blacklight-availability {
 }
 
 .library-dd {
-  padding-left: 10px;
+  padding-left: 0.625rem;
 
   @media(max-width: 768px) {
-    padding-left: 30px;
+    padding-left: 1.875rem;
   }
-
 }
