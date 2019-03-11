@@ -177,7 +177,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.4)
+    concurrent-ruby (1.1.5)
     confstruct (1.0.2)
       hashie (~> 3.3)
     crack (0.4.3)
@@ -505,7 +505,7 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
-    twitter-typeahead-rails (0.11.1.pre.corejavascript)
+    twitter-typeahead-rails (0.11.1)
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
@@ -602,7 +602,7 @@ DEPENDENCIES
   traject (~> 3.0)
   turbolinks (~> 5)
   twilio-ruby
-  twitter-typeahead-rails (= 0.11.1.pre.corejavascript)
+  twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
   uglifier (>= 1.3.0)
   vcr
