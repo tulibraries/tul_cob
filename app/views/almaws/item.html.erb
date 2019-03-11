@@ -21,23 +21,23 @@
             <div id="status">Availability Status</div>
         </div>
       </div>
-      <div class="row table-heading ml-0 mb-0 border-bottom border-top border-tan-border">
-        <div id="<%= key %>" class="library-name card-title col-sm-3"><%= library_name_from_short_code(key) %></div>
+      <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
+        <div id="<%= key %>" class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>
         <% if @document["holdings_summary_display"] %>
-          <div class="holdings-summary col-sm-6"><%= @holdings_summary[key] %></div>
+          <div class="holdings-summary col-sm-12"><%= @holdings_summary[key] %></div>
         <% end %>
-        <div class="aeon-request col-sm-3"><%= aeon_request_button(items) %></div>
+        <div class="aeon-request"><%= aeon_request_button(items) %></div>
       </div>
       <% items.each do |item| %>
         <div class="row avail-info-rows border-bottom border-tan-border">
-          <div id="<%= location_status(item) %>" class="col-sm-2"><strong><%= location_status(item) %></strong></div>
-          <div class="col-sm-2"><%= item.call_number %> <%= alternative_call_number(item) %></div>
-          <div class="col-sm-5">
+          <div id="<%= location_status(item) %>" class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
+          <div class="col-sm-12 col-md-2"><%= item.call_number %> <%= alternative_call_number(item) %></div>
+          <div class="col-sm-12 col-md-5">
             <%= description(item) %>
             <%= public_note(item) %>
             <%= physical_material_type(item) %>
           </div>
-          <div class="col-sm-3"><%= availability_status(item) %></div>
+          <div class="col-sm-12 col-md-3"><%= availability_status(item) %></div>
         </div>
       <% end %>
     </div>

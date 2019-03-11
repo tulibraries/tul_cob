@@ -29,12 +29,20 @@
   list-style-type: none;
 }
 
+.online-card {
+  padding: 0.625rem;
+}
+
 #record-page-online {
   text-align: left;
 }
 
 .library-name {
-  padding-left: 0.625rem;
+  padding-left: 0;
+
+  @media(max-width: 768px) {
+    padding-left: 0;
+  }
 }
 
 .holdings-summary {
@@ -49,7 +57,7 @@
   color: $black;
   font-size: 0.875rem;
   font-weight: bold;
-  padding-top: 0.625rem;
+  padding: 0.625rem;
 }
 
 .table-wrapper {
@@ -59,7 +67,7 @@
 }
 
 .table-wrapper::-webkit-scrollbar {
-  border: 0.0625rem solid $tan-border;
+  border-right: 0.0625rem solid $tan-border;
   height: 0.625rem;
   width: 0.625rem;
 
@@ -185,4 +193,16 @@ td.electronic_links {
 
 .index-label {
   color: #595959;
+}
+
+/* === AEON BUTTON === */
+.aeon-request-btn {
+  white-space: normal;
+  max-width: 200px;
+}
+
+.aeon-request {
+  @media(max-width: 768px) {
+    padding-left: 0;
+  }
 }
