@@ -1,0 +1,3411 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+<record>
+<leader>07518nas a2202281 4500</leader>
+<controlfield tag="005">20180315122323.0</controlfield>
+<controlfield tag="008">911031c19609999gw ar 0uu1b0ger</controlfield>
+<controlfield tag="001">991020186419703811</controlfield>
+<datafield ind1=" " ind2=" " tag="010">
+<subfield code="a">62038718</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="022">
+<subfield code="a">0075-2800</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">(PPT)b14140433-01tuli_inst</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">ocn471405688</subfield>
+<subfield code="9">ExL</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">PATG91-S02022</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">ocm01782983</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="035">
+<subfield code="a">(OCLC)ocm01782983</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="040">
+<subfield code="d">OCL</subfield>
+<subfield code="d">DLC</subfield>
+<subfield code="d">NjR</subfield>
+<subfield code="d">PPT</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="042">
+<subfield code="a">lc</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="043">
+<subfield code="a">e-gx---</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="079">
+<subfield code="a">ocm01782983</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="090">
+<subfield code="a">HC10</subfield>
+<subfield code="b">.J35</subfield>
+</datafield>
+<datafield ind1="0" ind2="0" tag="245">
+<subfield code="a">Jahrbuch für Wirtschaftsgeschichte.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="260">
+<subfield code="a">Berlin,</subfield>
+<subfield code="b">Akademie-Verlag.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="300">
+<subfield code="a">v.</subfield>
+<subfield code="b">ill.</subfield>
+<subfield code="c">25 cm.</subfield>
+</datafield>
+<datafield ind1="0" ind2=" " tag="362">
+<subfield code="a">1960-</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="515">
+<subfield code="a">Each volume has four parts.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="525">
+<subfield code="a">Has occasional supplements.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="550">
+<subfield code="a">
+Vols. for 1960- issued by the Abteilung Wirtschaftsgeschichte of the Institut für Geschichte of the Akademie der Wissenschaften, Berlin.
+</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="555">
+<subfield code="a">1960-67. 1 v.; 1960-1979. 1 v.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="650">
+<subfield code="a">Economic history</subfield>
+<subfield code="x">Yearbooks.</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="651">
+<subfield code="a">Germany</subfield>
+<subfield code="x">Economic conditions</subfield>
+<subfield code="x">Yearbooks.</subfield>
+</datafield>
+<datafield ind1="2" ind2=" " tag="710">
+<subfield code="a">Deutsche Akademie der Wissenschaften zu Berlin.</subfield>
+<subfield code="b">Institut für Geschichte.</subfield>
+<subfield code="b">Abteilung Wirtschaftsgeschichte.</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="907">
+<subfield code="a">.b14140433</subfield>
+<subfield code="b">p</subfield>
+<subfield code="c">-</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="935">
+<subfield code="a">00446143</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1984 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1987 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1987 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1987 pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1987 pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1988 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1988 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1988 pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1988 pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1989 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1989 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1989 pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1989 pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1990 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1990 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1990 pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1990 pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1991 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1991 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1991 pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1991 pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1992 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1992 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1993 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1993 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1994 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1994 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1995 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1995 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1996 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1996 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1997 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1997 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1998 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1999 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1999 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2000 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2000 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2003 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2004 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2004 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2005 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2005 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1960, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1960, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1961, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1961, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1962, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1962, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1963, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1963, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1964, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1965, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1965, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1965, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1965, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1966, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1966, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1966, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1967, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1967, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1967, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1967, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1968, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1968, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1968, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1968, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1969, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1969, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1969, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1969, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1970, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1970, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1970, pt.3-4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1971, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1971, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1971, pt.3-4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1972, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1972, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1972, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1972, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1973, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1973, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1973, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1973, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1974, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1974, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1974, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1974, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1975, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1975, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1975, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1975, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1976, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1976, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1976, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1976, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1977, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1977, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1977, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1977, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1977; Suppl.</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1978, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1978, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1978, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1978, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1978; Suppl.</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1979, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1979, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1979, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1979, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.Index 1960-1979</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1980, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1980, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1980, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1980, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1981, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1981, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1981, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1981, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1982, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1982, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1982, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1983, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1983, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1983, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1983, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1984, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1984, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1984, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1985, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1985, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1985, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1986, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1986, pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1986, pt.3</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1986, pt.4</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2006 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2006 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2007 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2007 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2008 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2008 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2009 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2009 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2010 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2010 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2011 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2011 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2012 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2012 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2013 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2013 pt.2</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.2014 pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="945">
+<subfield code="l">pstk</subfield>
+<subfield code="u">v.1982, pt.1</subfield>
+<subfield code="g">1</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="950">
+<subfield code="l">P</subfield>
+<subfield code="y">1960-62,1964-</subfield>
+<subfield code="f">use yr. pt.;bind each pt.#563;non-circ.</subfield>
+<subfield code="i">10/31/91 N</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="955">
+<subfield code="l">P</subfield>
+<subfield code="c">0:(1960)</subfield>
+<subfield code="i">10/31/91 C</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="979">
+<subfield code="a">ocm01782983</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="998">
+<subfield code="b">1</subfield>
+<subfield code="c">990101</subfield>
+<subfield code="d">s</subfield>
+<subfield code="e">a</subfield>
+<subfield code="f">-</subfield>
+<subfield code="g">0</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="998">
+<subfield code="a">10/31/91</subfield>
+<subfield code="t">c</subfield>
+<subfield code="s">9110</subfield>
+<subfield code="n">PPT</subfield>
+<subfield code="w">MNUG85S1470</subfield>
+<subfield code="d">10/31/91</subfield>
+<subfield code="c">JU</subfield>
+<subfield code="b">MK</subfield>
+<subfield code="i">911031</subfield>
+<subfield code="l">PATG</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ADM">
+<subfield code="b">2018-10-20 10:39:24</subfield>
+<subfield code="e">b14140433-01tuli_inst</subfield>
+<subfield code="d">ILS</subfield>
+<subfield code="a">2017-06-20 07:11:45</subfield>
+<subfield code="c">false</subfield>
+</datafield>
+<datafield ind1="0" ind2=" " tag="HLD">
+<subfield code="b">MAIN</subfield>
+<subfield code="c">stacks</subfield>
+<subfield code="h">HC10</subfield>
+<subfield code="i">.J35</subfield>
+<subfield code="x">
+INT. NOTE: use yr. pt. bind each pt.#563 non-circ. | NOTE(CHECKIN): Print + Online canceled with EBSCO as of 01/15. dc 11/14 | NOTE(CHECKIN): Paley contin | FREQUENCY: f | SCODE3: - | VEN TITLE#: rb474100002458891025
+</subfield>
+<subfield code="8">22262443180003811</subfield>
+</datafield>
+<datafield ind1=" " ind2="0" tag="HLD866">
+<subfield code="a">1960-62,1964-2014</subfield>
+<subfield code="8">22262443180003811</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960183</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442370003811</subfield>
+<subfield code="c">1978, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959557</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442700003811</subfield>
+<subfield code="c">1970, pt.3-4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960217</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442340003811</subfield>
+<subfield code="c">1978, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960191</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442360003811</subfield>
+<subfield code="c">1978, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959581</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442740003811</subfield>
+<subfield code="c">1970, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959607</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442750003811</subfield>
+<subfield code="c">1969, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017294158</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441400003811</subfield>
+<subfield code="c">2007 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074014752901</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441410003811</subfield>
+<subfield code="c">2003 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959565</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442730003811</subfield>
+<subfield code="c">1970, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959623</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442760003811</subfield>
+<subfield code="c">1969, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959573</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442770003811</subfield>
+<subfield code="c">1969, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960407</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442300003811</subfield>
+<subfield code="c">1979, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959615</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442780003811</subfield>
+<subfield code="c">1969, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960472</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442310003811</subfield>
+<subfield code="c">1979, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960100</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442320003811</subfield>
+<subfield code="c">1979, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960209</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442330003811</subfield>
+<subfield code="c">1978 Suppl.</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007108079</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441830003811</subfield>
+<subfield code="c">1989 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006956114</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441850003811</subfield>
+<subfield code="c">1988 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960597</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442000003811</subfield>
+<subfield code="c">1985, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017298126</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441470003811</subfield>
+<subfield code="c">2006 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007843816</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441810003811</subfield>
+<subfield code="c">1990 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006854525</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441870003811</subfield>
+<subfield code="c">1988 pt.3</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006129860</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441890003811</subfield>
+<subfield code="c">1987 pt.3</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017294414</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441360003811</subfield>
+<subfield code="c">2007 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017307646</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441380003811</subfield>
+<subfield code="c">2012 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017287533</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441430003811</subfield>
+<subfield code="c">2006 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960613</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442020003811</subfield>
+<subfield code="c">1984, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960498</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442040003811</subfield>
+<subfield code="c">1983, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960522</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442060003811</subfield>
+<subfield code="c">1983, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960548</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442080003811</subfield>
+<subfield code="c">1982, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008460826</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441720003811</subfield>
+<subfield code="c">1991 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959722</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442800003811</subfield>
+<subfield code="c">1968, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959706</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442610003811</subfield>
+<subfield code="c">1973, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960266</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442620003811</subfield>
+<subfield code="c">1972, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959698</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442650003811</subfield>
+<subfield code="c">1972, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959672</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442660003811</subfield>
+<subfield code="c">1971, pt.3-4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960464</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442260003811</subfield>
+<subfield code="c">Index 1960-1979</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959482</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442840003811</subfield>
+<subfield code="c">1967, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017308776</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441340003811</subfield>
+<subfield code="c">2013 pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959599</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442690003811</subfield>
+<subfield code="c">1971, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960332</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442430003811</subfield>
+<subfield code="c">1977, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960076</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442400003811</subfield>
+<subfield code="c">1978, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960084</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442440003811</subfield>
+<subfield code="c">1977, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960142</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442470003811</subfield>
+<subfield code="c">1976, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960175</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442480003811</subfield>
+<subfield code="c">1976, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017316449</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443160003811</subfield>
+<subfield code="c">2013 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074010723435</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441570003811</subfield>
+<subfield code="c">1996 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006954879</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441860003811</subfield>
+<subfield code="c">1988 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007463144</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441820003811</subfield>
+<subfield code="c">1989 pt.3</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017283128</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443120003811</subfield>
+<subfield code="c">2005 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074026990648</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441460003811</subfield>
+<subfield code="c">1982, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960555</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442100003811</subfield>
+<subfield code="c">1982, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017337049</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443090003811</subfield>
+<subfield code="c">2010 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960563</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441970003811</subfield>
+<subfield code="c">1986, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074016934929</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441350003811</subfield>
+<subfield code="c">2005 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074016503047</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441390003811</subfield>
+<subfield code="c">2004 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074009847872</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441930003811</subfield>
+<subfield code="c">1994 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959813</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443010003811</subfield>
+<subfield code="c">1963, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959839</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443050003811</subfield>
+<subfield code="c">1961, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074010151025</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441600003811</subfield>
+<subfield code="c">1994 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959797</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442950003811</subfield>
+<subfield code="c">1965, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017345711</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441420003811</subfield>
+<subfield code="c">2012 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959417</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442880003811</subfield>
+<subfield code="c">1967, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074014594188</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441530003811</subfield>
+<subfield code="c">2000 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960480</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442030003811</subfield>
+<subfield code="c">1984, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960514</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442070003811</subfield>
+<subfield code="c">1983, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007843543</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441790003811</subfield>
+<subfield code="c">1990 pt.3</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008579963</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441680003811</subfield>
+<subfield code="c">1991 pt.3</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074010022820</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441640003811</subfield>
+<subfield code="c">1991 pt.4</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960381</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442540003811</subfield>
+<subfield code="c">1974, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960282</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442530003811</subfield>
+<subfield code="c">1975, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960373</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442550003811</subfield>
+<subfield code="c">1974, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959458</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442900003811</subfield>
+<subfield code="c">1966, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959474</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442910003811</subfield>
+<subfield code="c">1966, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960423</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442170003811</subfield>
+<subfield code="c">1981, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960431</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442150003811</subfield>
+<subfield code="c">1981, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960290</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442180003811</subfield>
+<subfield code="c">1980, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960365</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442500003811</subfield>
+<subfield code="c">1975, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960357</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442510003811</subfield>
+<subfield code="c">1975, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960233</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442570003811</subfield>
+<subfield code="c">1974, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959680</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442580003811</subfield>
+<subfield code="c">1973, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960167</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442590003811</subfield>
+<subfield code="c">1973, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960399</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442520003811</subfield>
+<subfield code="c">1975, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960159</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442560003811</subfield>
+<subfield code="c">1974, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017333980</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443150003811</subfield>
+<subfield code="c">2009 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074011015476</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441580003811</subfield>
+<subfield code="c">1996 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017333337</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443170003811</subfield>
+<subfield code="c">2008 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960720</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441960003811</subfield>
+<subfield code="c">1986, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017322165</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443110003811</subfield>
+<subfield code="c">2009 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074016052086</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443130003811</subfield>
+<subfield code="c">1999 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959441</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442890003811</subfield>
+<subfield code="c">1967, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960571</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441980003811</subfield>
+<subfield code="c">1985, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960456</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442110003811</subfield>
+<subfield code="c">1981, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960324</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442200003811</subfield>
+<subfield code="c">1980, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074005767603</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441900003811</subfield>
+<subfield code="c">1987 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959805</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443080003811</subfield>
+<subfield code="c">1960, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074003386992</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441920003811</subfield>
+<subfield code="c">1984 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960704</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441940003811</subfield>
+<subfield code="c">1986, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959714</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443020003811</subfield>
+<subfield code="c">1963, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959847</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443040003811</subfield>
+<subfield code="c">1962, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959987</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443060003811</subfield>
+<subfield code="c">1961, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960449</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442130003811</subfield>
+<subfield code="c">1981, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074014657795</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441520003811</subfield>
+<subfield code="c">2000 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074011684834</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441540003811</subfield>
+<subfield code="c">1998 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959516</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442940003811</subfield>
+<subfield code="c">1965, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959821</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442980003811</subfield>
+<subfield code="c">1964, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959425</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442920003811</subfield>
+<subfield code="c">1966, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074010801033</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441560003811</subfield>
+<subfield code="c">1997 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008580250</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441690003811</subfield>
+<subfield code="c">1989 pt.4</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074010272227</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441610003811</subfield>
+<subfield code="c">1995 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074009124256</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441630003811</subfield>
+<subfield code="c">1993 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008308645</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441650003811</subfield>
+<subfield code="c">1992 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008162067</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441670003811</subfield>
+<subfield code="c">1992 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960092</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442450003811</subfield>
+<subfield code="c">1977, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960134</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442460003811</subfield>
+<subfield code="c">1976, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960530</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442090003811</subfield>
+<subfield code="c">1982, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960258</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442600003811</subfield>
+<subfield code="c">1973, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960274</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442630003811</subfield>
+<subfield code="c">1972, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960241</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442640003811</subfield>
+<subfield code="c">1972, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960308</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442240003811</subfield>
+<subfield code="c">1980, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959508</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442820003811</subfield>
+<subfield code="c">1968, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074023842834</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441330003811</subfield>
+<subfield code="c">2008 pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960316</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442270003811</subfield>
+<subfield code="c">1979, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959490</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442810003811</subfield>
+<subfield code="c">1968, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959433</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442850003811</subfield>
+<subfield code="c">1967, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960415</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442230003811</subfield>
+<subfield code="c">1980, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960225</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442670003811</subfield>
+<subfield code="c">1971, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960126</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442420003811</subfield>
+<subfield code="c">1977, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960340</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442490003811</subfield>
+<subfield code="c">1976, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960118</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442410003811</subfield>
+<subfield code="c">1977 Suppl.</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074011020518</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441590003811</subfield>
+<subfield code="c">1995 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006956064</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441840003811</subfield>
+<subfield code="c">1988 pt.4</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959789</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443070003811</subfield>
+<subfield code="c">1960, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017347477</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441480003811</subfield>
+<subfield code="c">2011 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007971559</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441770003811</subfield>
+<subfield code="c">1990 pt.4</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017315854</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443140003811</subfield>
+<subfield code="c">2014 pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074006350326</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441880003811</subfield>
+<subfield code="c">1987 pt.4</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007843741</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441800003811</subfield>
+<subfield code="c">1990 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960589</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441990003811</subfield>
+<subfield code="c">1985, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959730</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442790003811</subfield>
+<subfield code="c">1968, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074016505703</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441370003811</subfield>
+<subfield code="c">2004 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074004707899</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441910003811</subfield>
+<subfield code="c">1987 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960712</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441950003811</subfield>
+<subfield code="c">1986, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959961</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443030003811</subfield>
+<subfield code="c">1962, pt.2</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074014181036</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441510003811</subfield>
+<subfield code="c">1999 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017344862</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441440003811</subfield>
+<subfield code="c">2011 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959979</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442970003811</subfield>
+<subfield code="c">1965, pt.1</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074017341744</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262443100003811</subfield>
+<subfield code="c">2010 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960506</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442050003811</subfield>
+<subfield code="c">1983, pt.3</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020959466</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442930003811</subfield>
+<subfield code="c">1965, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074011587789</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441550003811</subfield>
+<subfield code="c">1997 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074020960605</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262442010003811</subfield>
+<subfield code="c">1984, pt.4</subfield>
+<subfield code="a">0</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074007971666</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441730003811</subfield>
+<subfield code="c">1991 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074009238924</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441620003811</subfield>
+<subfield code="c">1993 pt.2</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+<datafield ind1=" " ind2=" " tag="ITM">
+<subfield code="r">22262443180003811</subfield>
+<subfield code="b">1</subfield>
+<subfield code="h">0</subfield>
+<subfield code="g">stacks</subfield>
+<subfield code="t">ISSUE</subfield>
+<subfield code="9">39074008138174</subfield>
+<subfield code="e">stacks</subfield>
+<subfield code="8">23262441660003811</subfield>
+<subfield code="c">1989 pt.1</subfield>
+<subfield code="a">12</subfield>
+<subfield code="q">2017-06-20 07:11:45</subfield>
+<subfield code="i">HC10 .J35</subfield>
+<subfield code="d">MAIN</subfield>
+<subfield code="f">MAIN</subfield>
+</datafield>
+</record>
+</collection>

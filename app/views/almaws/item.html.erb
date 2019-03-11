@@ -1,50 +1,52 @@
-<button type="button" class="sr-only ajax-modal-close close" data-dismiss="modal">×</button>
+<button type="button" class="sr-only blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+  <span aria-hidden="true">&times;</span>
+</button>
+
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
 
 <% unless @items.values.all?(&:empty?) %>
   <div class="availability-modal">
-    <div class="modal-only">
+    <div class="modal-only modal-body">
       <%= render :partial => "paginate_compact", :object => @response %>
     </div>
     <% sort_order_for_holdings(@items).each do |key,items| %>
-    <table id="availability-container" class="table m-0">
-      <thead>
-        <tr class="sr-only">
-            <th scope="col" id="location">Item Location</th>
-            <th scope="col" id="callnum">Call Number</th>
-            <th scope="col" id="desc">Description</th>
-            <th scope="col" id="type">Material Type</th>
-            <th scope="col" id="note">Public Note</th>
-            <th scope="col" id="status">Availability Status</th>
-        </tr>
-      </thead>
-      <tbody class="border border-tan-border">
-        <tr class="table-heading mb-0">
-          <th id="<%= key %>" class="library-name card-title" scope="colgroup" colspan="2"><%= library_name_from_short_code(key) %></th>
-          <% if @document["holdings_summary_display"] %>
-            <td class="holdings-summary" colspan="7"><%= @holdings_summary[key] %></td>
-          <% end %>
-          <td class="aeon-request" colspan="7"><%= aeon_request_button(items) %></td>
-
-        </tr>
-        <% items.each do |item| %>
-          <tr>
-            <th id="<%= location_status(item) %>" headers="<%= key %> location" scope="row"><%= location_status(item) %></th>
-            <td headers="<%= key %> callnum" scope="row"><%= item.call_number %> <%= alternative_call_number(item) %></td>
-            <td headers="<%= key %> desc" scope="row"><%= description(item) %></td>
-            <td headers="<%= key %> type" scope="row"><%= physical_material_type(item) %></td>
-            <td headers="<%= key %> note" scope="row"><%= public_note(item) %></td>
-            <td headers="<%= key %> status" scope="row"><%= availability_status(item) %></td>
-          </tr>
+    <div id="availability-container" class="m-0">
+      <div>
+        <div class="row sr-only">
+            <div id="location">Item Location</div>
+            <div id="callnum">Call Number</div>
+            <div id="desc">Description</div>
+            <di id="type">Material Type</div>
+            <div id="note">Public Note</div>
+            <div id="status">Availability Status</div>
+        </div>
+      </div>
+      <div class="row table-heading ml-0 mb-0 border-bottom border-top border-tan-border">
+        <div id="<%= key %>" class="library-name card-title col-sm-3"><%= library_name_from_short_code(key) %></div>
+        <% if @document["holdings_summary_display"] %>
+          <div class="holdings-summary col-sm-6"><%= @holdings_summary[key] %></div>
         <% end %>
-      </tbody>
-    </table>
+        <div class="aeon-request col-sm-3"><%= aeon_request_button(items) %></div>
+      </div>
+      <% items.each do |item| %>
+        <div class="row avail-info-rows border-bottom border-tan-border">
+          <div id="<%= location_status(item) %>" class="col-sm-2"><strong><%= location_status(item) %></strong></div>
+          <div class="col-sm-2"><%= item.call_number %> <%= alternative_call_number(item) %></div>
+          <div class="col-sm-5">
+            <%= description(item) %>
+            <%= public_note(item) %>
+            <%= physical_material_type(item) %>
+          </div>
+          <div class="col-sm-3"><%= availability_status(item) %></div>
+        </div>
+      <% end %>
+    </div>
     <% end %>
     <%= render :partial => "paginate_compact", :object => @response %>
   </div>
   <% else %>
 
-  <% unless @document["holdings_with_no_items_display"] %>
+  <% unless @document["holdings_widiv_no_items_display"] %>
     <div class="border-bottom no-holdings border border-tan-border">
       <div class="row no-item-info">
           <%= render_holdings_summary(@document) %>

@@ -33,25 +33,29 @@
   text-align: left;
 }
 
+.library-name {
+  padding-left: 0.625rem;
+}
+
+.holdings-summary {
+
+  @media(max-width: 485px) {
+    padding-left: 0.625rem;
+  }
+}
+
 .online-card-heading, .table-heading {
   background-color: $tan;
   color: $black;
   font-size: 0.875rem;
   font-weight: bold;
-  height: 2.5rem;
-  padding: 0.75rem;
+  padding-top: 0.625rem;
 }
 
 .table-wrapper {
   max-height: 18.75rem;
   overflow-y: auto;
   overflow-x: hidden;
-
-  @media(max-width: 485px) {
-    display: block;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
 }
 
 .table-wrapper::-webkit-scrollbar {
@@ -88,7 +92,7 @@
   color: $black;
   font-size: 0.875rem;
   font-weight: bold;
-  padding: 0.75rem;
+  padding: 0.625rem;
 }
 
 .check-holdings-body {
@@ -100,7 +104,11 @@
 }
 
 .no-item-info {
-  padding: 0.625rem 1.75rem;
+  padding: 0.625rem;
+}
+
+.avail-info-rows {
+  padding: 0.625rem ;
 }
 
 #availability-container {
