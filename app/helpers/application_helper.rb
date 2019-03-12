@@ -217,4 +217,10 @@ module ApplicationHelper
       format = "Chicago Notes & Bibliography (15th)/Turabian (6th)"
     end
   end
+
+  def presenter_field_value(presenter, field)
+    if blacklight_config.show_fields[field]
+      presenter.field_value(blacklight_config.show_fields[field])
+    end
+  end
 end
