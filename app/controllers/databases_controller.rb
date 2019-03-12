@@ -39,12 +39,14 @@ class DatabasesController < CatalogController
     config.add_show_field "id", label: "Database Record ID"
 
     # Search fields
+    config.add_search_field "all_fields", label: "All Fields"
+
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = { 'spellcheck.dictionary': "title" }
       field.solr_local_parameters = {
-        qf: "$title_qf",
-        pf: "$title_pf"
+        qf: "$title_t_qf $alt_names_t_qf",
+        pf: "$title_t_pf $alt_names_t_pf"
       }
     end
 
@@ -52,10 +54,15 @@ class DatabasesController < CatalogController
       field.solr_parameters = { 'spellcheck.dictionary': "subject" }
       field.qt = "search"
       field.solr_local_parameters = {
-        qf: "$subject_qf",
-        pf: "$subject_pf"
+        qf: "$subject_facet_qf",
+        pf: "$subject_facet_pf"
       }
     end
+
+    # Sort fields.
+    config.add_sort_field "score desc, title_sort asc", label: "relevance"
+    config.add_sort_field "title_sort asc", label: "title (A to Z)"
+    config.add_sort_field "title_sort desc", label: "title (Z to A)"
   end
 
   def join(args)

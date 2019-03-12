@@ -105,6 +105,7 @@ RSpec.describe AdvancedHelper, type: :helper do
       allow(helper).to receive(:current_page?).with("/books/advanced") { false }
       allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
       allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
+      allow(helper).to receive(:current_page?).with("/databases/advanced") { false }
     end
 
     context "on the advanced catalog search page" do
@@ -132,6 +133,13 @@ RSpec.describe AdvancedHelper, type: :helper do
       it "renders the link to the articles search" do
         allow(helper).to receive(:current_page?).with("/articles/advanced") { true }
         expect(helper.basic_search_path).to eq("/articles")
+      end
+    end
+
+    context "on the advanced databases page" do
+      it "renders the link to the databases search" do
+        allow(helper).to receive(:current_page?).with("/databases/advanced") { true }
+        expect(helper.basic_search_path).to eq("/databases")
       end
     end
 
