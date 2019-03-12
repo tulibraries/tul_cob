@@ -111,6 +111,8 @@ module AdvancedHelper
       search_journals_path
     elsif current_page? articles_advanced_search_path
       search_path
+    elsif current_page? databases_advanced_search_path
+      search_databases_path
     else
       search_catalog_path
     end
@@ -129,6 +131,12 @@ module AdvancedHelper
       t(:databases_advanced_search)
     else
       t(:catalog_advanced_search)
+    end
+  end
+
+  def render_pub_date_range
+    if blacklight_config.facet_fields["pub_date_sort"]
+      render "pub_date_sort_facet"
     end
   end
 end

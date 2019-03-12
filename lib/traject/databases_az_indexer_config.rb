@@ -35,6 +35,8 @@ to_field "format", ->(rec, acc) {
   types.each { |type| acc << type["name"] }
 }
 to_field "title_t", extract_json("$.name")
+to_field "title_sort", extract_json("$.name")
+to_field "alt_names_t", extract_json("$.alt_names")
 to_field "title_statement_display", extract_json("$.name")
 to_field "az_vendor_id_display", extract_json("$.az_vendor_id")
 to_field "az_vendor_name_display", extract_json("$.az_vendor_name")
