@@ -1,8 +1,8 @@
-<div class="card online-card rounded-0">
-  <table id="record-page-online" class="table mb-0 border border-tan-border border-top-0">
-    <h5 class="online-card-heading card-title mb-0 border border-tan-border border-bottom-0">Online</h5>
+<div class="card online-card rounded-0 border-0 p-0">
+  <div id="record-page-online" class="mb-0 border border-tan-border ">
+    <h5 class="online-card-heading card-title mb-0 border-bottom border-tan-border">Online</h5>
       <% online_resources.each do |value| %>
-        <tr><%= safe_join([value]) %></tr>
+        <div class="record-page-online-list"><%= safe_join([value]) %></div>
       <% end %>
-  </table>
+  </div>
 </div>

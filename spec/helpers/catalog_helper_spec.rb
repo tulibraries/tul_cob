@@ -452,7 +452,7 @@ RSpec.describe CatalogHelper, type: :helper do
             }
         }
       it "returns the field for display" do
-        expect(render_holdings_summary(document)).to eq("<td id=\"holdings-summary\">Description: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.</td>")
+        expect(render_holdings_summary(document)).to eq("<div id=\"holdings-summary\">Description: v.32,no.12-v.75,no.16 (1962-2005) Some issues missing.</div>")
       end
     end
 
@@ -463,7 +463,7 @@ RSpec.describe CatalogHelper, type: :helper do
             }
         }
       it "returns the default message" do
-        expect(render_holdings_summary(document)).to eq("<td id=\"error-message\">We are unable to find availability information for this record. Please contact the library for more information.</td>")
+        expect(render_holdings_summary(document)).to eq("<div id=\"error-message\">We are unable to find availability information for this record. Please contact the library for more information.</div>")
       end
     end
   end
