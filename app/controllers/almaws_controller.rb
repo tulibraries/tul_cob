@@ -10,7 +10,7 @@ class AlmawsController < CatalogController
 
   def item
     @mms_id = params[:mms_id]
-    _, @document = begin fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
+    _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
 
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
