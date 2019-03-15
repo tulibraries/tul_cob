@@ -6,10 +6,12 @@
     <% end %>
 
     <div class="input-group d-flex">
-      <% if search_fields.length > 1 %>
-        <%= select_tag(:search_field, options_for_select(search_fields, h(search_params[:search_field])), title: t("blacklight.search.form.search_field.title"), id: "search_field", class: " custom-select search-field flex-shrink-1") %>
-      <% elsif search_fields.length == 1 %>
-        <%= hidden_field_tag :search_field, search_fields.first.last %>
+      <% if controller_name != "search" %>
+        <% if search_fields.length > 1 %>
+          <%= select_tag(:search_field, options_for_select(search_fields, h(search_params[:search_field])), title: t("blacklight.search.form.search_field.title"), id: "search_field", class: " custom-select search-field flex-shrink-1") %>
+        <% elsif search_fields.length == 1 %>
+          <%= hidden_field_tag :search_field, search_fields.first.last %>
+        <% end %>
       <% end %>
 
     <label for="q" class="sr-only"><%= t("blacklight.search.form.search.label") %></label>
