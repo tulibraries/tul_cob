@@ -152,11 +152,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#description(item)" do
     context "item includes description" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "description" => "v. 1" }
-         )
-      end
+      let(:item) { { "description" => "v. 1" } }
 
       it "displays description" do
         expect(description(item)).to eq "Description: v. 1"
@@ -164,28 +160,17 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does NOT include description" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "description" => "" }
-         )
-      end
+      let(:item) { {} }
 
       it "displays nothing" do
-        expect(description(item)).to eq nil
+        expect(description(item)).to eq ""
       end
     end
   end
 
   describe "#physical_material_type(item)" do
     context "item includes physical_material_type" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "RECORD",
-                "desc" => "Sound Recording" }
-           }
-         )
-      end
+      let(:item) { { "material_type" => "Sound Recording" } }
 
       it "displays physical_material_type" do
         expect(physical_material_type(item)).to eq "Sound Recording"
@@ -193,13 +178,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does NOT include PHYSICAL_TYPE_EXCLUSIONS" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "BOOK" }
-           }
-         )
-      end
+      let(:item) { { "material_type" => "Book" } }
 
       it "displays nothing" do
         expect(physical_material_type(item)).to eq nil
@@ -207,7 +186,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does not include a physical_material_type" do
-      let(:item) { Alma::BibItem.new("item_data" => {}) }
+      let(:item) { {} }
 
       it "displays nothing" do
         expect(physical_material_type(item)).to eq nil
@@ -231,65 +210,70 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#public_note(item)" do
     context "item includes public note" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "public_note" => "example" }
-         )
-      end
+      let(:item) { { "public_note" => "Sample note" } }
 
       it "displays note" do
-        expect(public_note(item)).to eq "Note: example"
+        expect(public_note(item)).to eq "Note: Sample note"
       end
     end
 
     context "item does NOT include public note" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-         { "public_note" => "" }
-       )
-      end
+      let(:item) { {} }
 
       it "displays nothing" do
-        expect(public_note(item)).to eq nil
+        expect(public_note(item)).to eq ""
       end
     end
   end
 
-  describe "#location_status(item)" do
-    context "item is in temporary location" do
-      let(:item) do
-        Alma::BibItem.new("holding_data" =>
-         { "in_temp_location" => true,
-           "temp_library" => { "value" => "RES_SHARE" },
-           "temp_location" => { "value" => "IN_RS_REQ" },
-           "temp_call_number" => "Temp call number"
-          }
-       )
-      end
+  describe "#library(item)" do
+    context "item is in temporary library" do
+      let(:item) { { "current_library" => "RES_SHARE" } }
 
-      it "displays temporary location and call number" do
-        expect(location_status(item)).to eq "Lending Resource Sharing Requests"
+      it "displays temporary library" do
+        expect(library(item)).to eq "RES_SHARE"
+      end
+    end
+
+    context "item is NOT in temporary library" do
+      let(:item) { { "permanent_library" => "MAIN" } }
+
+      it "displays library" do
+        expect(library(item)).to eq "MAIN"
+      end
+    end
+  end
+
+
+  describe "#location(item)" do
+    context "item is in temporary location" do
+      let(:item) { { "current_location" => "ILL" } }
+
+      it "displays temporary location" do
+        expect(location_status(item)).to eq "ILL"
       end
     end
 
     context "item is NOT in temporary location" do
-      let(:item) do
-        Alma::BibItem.new("holding_data" =>
-         { "in_temp_location" => false,
-           "call_number" => "Perm call number"
-         },
-         "item_data" => {
-           "library" => { "value" => "MAIN" },
-           "location" => { "value" => "stacks" },
-         }
-       )
-      end
+      let(:item) { { "permanent_location" => "rarestacks" } }
 
       it "displays location and call number" do
-        expect(location_status(item)).to eq "Stacks"
+        expect(location_status(item)).to eq "rarestacks"
       end
     end
   end
+
+  describe "#location_name_from_short_code(item)" do
+    context "location codes are converted to names using translation map" do
+      let(:item) { { "permanent_location" => "rarestacks",
+                      "permanent_library" => "SCRC" } }
+
+      it "displays location name" do
+        expect(location_name_from_short_code(item)).to eq "Reading Room"
+      end
+    end
+  end
+
 
   #  describe "#group_and_order_items(item)" do
   #    context "does not display items that are lost" do
@@ -377,16 +361,21 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#alternative_call_number(item)" do
     context "item has an alternate call number" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "alternative_call_number" => "alternate" }
-        )
-      end
+      let(:item) { { "alt_call_number" => "alternate call number" } }
 
       it "displays alternate call number" do
-        expect(alternative_call_number(item)).to eq "(Also found under alternate)"
+        expect(alternative_call_number(item)).to eq "alternate call number"
       end
     end
+
+    context "item does NOT have an alternate call number" do
+      let(:item) { { "call_number" => "regular call number" } }
+
+      it "does NOT display alternate call number" do
+        expect(alternative_call_number(item)).to eq "regular call number"
+      end
+    end
+
   end
 
   describe "#sort_order_for_holdings(items)" do

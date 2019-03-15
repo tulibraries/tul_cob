@@ -239,6 +239,7 @@ class CatalogController < ApplicationController
         wt: "json",
         fl: %w[
           *
+          items_json_display:[json]
           url_finding_aid_display:[json]
           url_more_links_display:[json]
           electronic_resource_display:[json] ].join(",")

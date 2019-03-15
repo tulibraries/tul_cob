@@ -31,43 +31,54 @@ module AlmaDataHelper
   end
 
   def description(item)
-    if item.description.present?
-      return "Description: " + item.description
-    end
+    item["description"] ? "Description: #{item['description']}" : ""
   end
 
   def physical_material_type(item)
-    return  unless item.physical_material_type.present?
+    return unless item["material_type"].present?
 
-    type = item.physical_material_type["value"].to_s
+    type = item["material_type"]
 
     if !type.match(PHYSICAL_TYPE_EXCLUSIONS)
-      return item.physical_material_type["desc"]
+      return item["material_type"]
     end
   end
 
   def public_note(item)
-    if item.public_note.present?
-      return "Note: " + item.public_note
+    item["public_note"] ? "Note: #{item['public_note']}" : ""
+  end
+
+  def library(item)
+    item["current_library"] ? item["current_library"] : item["permanent_library"]
     end
-  end
 
-  def location_status(item)
-    location_name_from_short_code(item)
-  end
-
-  def location_name_from_short_code(item)
-    Rails.configuration.locations.dig(item.library, item.location) || item.location
+  def grouped_by_library(document)
+    group_by(&:library)
   end
 
   def library_name_from_short_code(short_code)
     Rails.configuration.libraries[short_code]
   end
 
-  def alternative_call_number(item)
-    if item.has_alt_call_number?
-      "(Also found under #{item.alt_call_number})"
+  def location(item)
+    item["current_location"] ? item["current_location"] : item["permanent_location"]
     end
+
+  def location_status(item)
+    location_name_from_short_code(item)
+  end
+
+  def location_name_from_short_code(item)
+    Rails.configuration.locations.dig(library(item), location(item)) || location(item)
+  end
+
+
+  def call_number(item)
+    item["temp_call_number"] ? item["temp_call_number"] : item["call_number"]
+  end
+
+  def alternative_call_number(item)
+    item["alt_call_number"] ? item["alt_call_number"] : call_number(item)
   end
 
   def sort_order_for_holdings(grouped_items)
