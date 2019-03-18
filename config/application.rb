@@ -29,7 +29,6 @@ module Tulcob
     config.electronic_service_notes = Alma::ConfigUtils.load_notes(type: "service")
     config.bento = config_for(:bento).with_indifferent_access
     config.oclc = config_for(:oclc).with_indifferent_access
-    config.twilio = config_for(:twilio).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
