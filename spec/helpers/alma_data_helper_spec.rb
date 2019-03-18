@@ -274,82 +274,6 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-
-  #  describe "#group_and_order_items(item)" do
-  #    context "does not display items that are lost" do
-  #      let(:item) do
-  #          Alma::BibItem.new([{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "LOST_LOAN" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "does not display lost item" do
-  #        expect(group_and_order_items(item)).to eq({})
-  #      end
-  #    end
-  #
-  #    context "does not display items that are missing" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "MISSING" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "does not display missing item" do
-  #        expect(group_and_order_items(item)).to eq({})
-  #      end
-  #    end
-  #
-  #
-  #    context "item is in a permanent library" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "location" => { "value" => "" },
-  #             "process_type" => { "value" => "" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "displays library code" do
-  #        expect(group_and_order_items(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" }, "location" => { "value" => "" }, "process_type" => { "value" => "" }
-  # } }]
-  #      end
-  #    end
-  #
-  #    context "item is in a temporary library" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => true,
-  #             "temp_library" => { "value" => "RES_SHARE" },
-  #             "temp_location" => { "value" => "IN_RS_REQ" }
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "displays temporary library code" do
-  #        expect(group_and_order_items(item).keys).to have_text "RES_SHARE"
-  #      end
-  #    end
-  #  end
-
   describe "#library_name_from_short_code(short_code)" do
     context "library codes are converted to names using translation map" do
       let(:short_code) { "MAIN" }
@@ -375,12 +299,41 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(alternative_call_number(item)).to eq "regular call number"
       end
     end
-
   end
 
-  describe "#sort_order_for_holdings(items)" do
+  describe "#document_and_api_merged_results(document, items_list)" do
+    context "item_pid from api matches item_pid in document" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("document_and_api_merged_results") }
+
+      it "merges the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq([{ "item_pid" => "23237957740003811",
+                                                                            "item_policy" => "5",
+                                                                            "permanent_library" => "AMBLER",
+                                                                            "permanent_location" => "media",
+                                                                            "current_library" => "AMBLER",
+                                                                            "current_location" => "media",
+                                                                            "call_number" => "DVD 13 A165",
+                                                                            "holding_id" => "22237957750003811",
+                                                                            "availability" => "<span class=\"check\"></span>Available" }])
+      end
+    end
+  end
+
+  describe "#sort_order_for_holdings(grouped_items)" do
     context "items are sorted by library name with Paley first" do
-      let(:items) do
+      let(:grouped_items) do
         {
         "MAIN" => [Alma::BibItem.new({})],
         "AMBLER" => [Alma::BibItem.new({})]

@@ -52,10 +52,6 @@ module AlmaDataHelper
     item["current_library"] ? item["current_library"] : item["permanent_library"]
     end
 
-  def grouped_by_library(document)
-    group_by(&:library)
-  end
-
   def library_name_from_short_code(short_code)
     Rails.configuration.libraries[short_code]
   end
@@ -72,7 +68,6 @@ module AlmaDataHelper
     Rails.configuration.locations.dig(library(item), location(item)) || location(item)
   end
 
-
   def call_number(item)
     item["temp_call_number"] ? item["temp_call_number"] : item["call_number"]
   end
@@ -81,14 +76,36 @@ module AlmaDataHelper
     item["alt_call_number"] ? item["alt_call_number"] : call_number(item)
   end
 
+  def document_and_api_merged_results(document, items_list)
+    document_items = document.fetch("items_json_display", [])
+    alma_item_pids = items_list.collect { |k, v|
+          v.map { |item| item["item_data"]["pid"] }
+        }.flatten
+    alma_item_availability = items_list.collect { |k, v|
+      v.map { |item| availability_status(item) }
+    }.flatten
+
+    document_items.map { |item|
+        alma_data_array = alma_item_pids.zip(alma_item_availability)
+
+        alma_data_array.map { |avail_item|
+            if item["item_pid"] == avail_item.first
+              item.merge!("availability": avail_item.last)
+            end
+          }.compact
+      }
+      .flatten
+      .group_by { |item| library(item) }
+  end
+
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
-    sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
+    sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_value?("MAIN")
     items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
     sorted_library_hash.each do |lib, items|
       unless items.empty?
-        items.sort_by! { |item| [location_name_from_short_code(item), item.call_number, item.description] }
+        items.sort_by! { |item| [location_name_from_short_code(item), alternative_call_number(item), description(item)] }
       end
     end
     sorted_library_hash
