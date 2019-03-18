@@ -3,7 +3,7 @@
 module BlacklightMarcHelper
   # This method is brought over from the Blacklight Marc gem so that we can include the links for books and journals
   def refworks_export_url(params = {})
-    "http://www.refworks.com/express/expressimport.asp?vendor=#{CGI.escape(params[:vendor] || application_name)}&filter=#{CGI.escape(params[:filter] || "MARC Format")}&encoding=65001" + (("&url=#{CGI.escape(params[:url])}" if params[:url]) || "")
+    "http://www.refworks.com/express/expressimport.asp?vendor=#{CGI.escape(params[:vendor] || application_name)}&filter=#{CGI.escape(params[:filter] || "RIS Format")}&encoding=65001" + (("&url=#{CGI.escape(params[:url])}" if params[:url]) || "")
   end
 
   # Overrides the original method in Blacklight Marc so that we only use this link for catalog items
