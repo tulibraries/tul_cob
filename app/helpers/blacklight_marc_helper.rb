@@ -30,8 +30,8 @@ module BlacklightMarcHelper
   def render_refworks_texts(documents)
     val = ""
     documents.each do |doc|
-      if doc.exports_as? :refworks_marc_txt
-        val += doc.export_as(:refworks_marc_txt) + "\n"
+      if doc.exports_as? :ris
+        val += doc.export_as(:ris) + "\n"
       end
     end
     val
