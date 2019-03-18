@@ -90,7 +90,8 @@ module AdvancedHelper
     my_params.except(:controller, :action)
       .select { |k, v|
       # Sometimes is_advanced_search? does not return true|false answer.
-      if !(is_advanced_search? == true)
+      # And, sometimes is_advanced_search? is not available at all.
+      if begin !(is_advanced_search? == true) rescue false end
         !k.match?(/^(q|op|f)_/)
       else
         true
