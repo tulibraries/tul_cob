@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "twilio-ruby"
-
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
 
