@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "twilio-ruby"
-
 class JournalsController < CatalogController
   add_breadcrumb "Journals", :back_to_journals_path, options: { id: "breadcrumbs_journal" }, only: [ :show ]
   add_breadcrumb "Record", :solr_journal_document_path, only: [ :show ]
