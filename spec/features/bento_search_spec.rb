@@ -34,4 +34,12 @@ RSpec.feature "Bento Searches" do
       end
     end
   end
+
+  feature "Search Field dropdown should not appear in bento view" do
+    it "does not have a search field dropdown menu" do
+      visit "/"
+      expect(page).to_not have_css("#search_field")
+    end
+  end
+
 end
