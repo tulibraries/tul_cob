@@ -90,8 +90,6 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
-
-
   end
 
   describe "#unavailable_items(item)" do
@@ -227,6 +225,41 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
+  describe "#missing_or_lost(item)" do
+    context "an item is missing" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811",
+      "process_type" => "MISSING" }
+    }
+
+      it "correctly identifies missing items" do
+        expect(missing_or_lost?(item)).to be true
+      end
+    end
+
+    context "an item is not missing or lost" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }
+    }
+
+      it "correctly identifies missing items" do
+        expect(missing_or_lost?(item)).to be false
+      end
+    end
+  end
+
   describe "#library(item)" do
     context "item is in temporary library" do
       let(:item) { { "current_library" => "RES_SHARE" } }
@@ -346,6 +379,27 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
 
       it "does not merge the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      end
+    end
+
+    context "does not include missing or lost items" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "process_type" => "MISSING",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "filters out missing or lost items" do
         expect(document_and_api_merged_results(document, items_list)).to eq({})
       end
     end

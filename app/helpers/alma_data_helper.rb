@@ -48,6 +48,11 @@ module AlmaDataHelper
     item["public_note"] ? "Note: #{item['public_note']}" : ""
   end
 
+  def missing_or_lost?(item)
+    process_type = item.fetch("process_type", "")
+    !!process_type.match(/MISSING|LOST_LOAN/)
+  end
+
   def library(item)
     item["current_library"] ? item["current_library"] : item["permanent_library"]
     end
@@ -95,6 +100,7 @@ module AlmaDataHelper
           }.compact
       }
       .flatten
+      .reject { |item| missing_or_lost?(item) }
       .group_by { |item| library(item) }
   end
 
