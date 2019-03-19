@@ -22,10 +22,11 @@ class AlmawsController < CatalogController
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @holdings_summary = helpers.build_holdings_summary(@items, @document)
+    @document_and_api_items = helpers.document_and_api_merged_results(@document, @items)
+    #@holdings_summary = helpers.build_holdings_summary(@items, @document)
     #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
-    helpers.filter_unwanted_locations(@items)
-    helpers.unsuppressed_holdings(@items, @document)
+    #helpers.filter_unwanted_locations(@items)
+    #helpers.unsuppressed_holdings(@items, @document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     @request_level = has_desc?(bib_items) ? "item" : "bib"
     @redirect_to = params[:redirect_to]

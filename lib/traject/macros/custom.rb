@@ -554,6 +554,35 @@ module Traject
         end
       end
 
+      def extract_item_info
+        lambda do |rec, acc, context|
+          rec.fields("ITM").each do |f|
+            selected_subfields = {
+              item_pid: f["8"],
+              item_policy: f["a"],
+              description: f["c"],
+              permanent_library: f["d"],
+              permanent_location: f["e"],
+              current_library: f["f"],
+              current_location: f["g"],
+              call_number_type: f["h"],
+              call_number: f["i"],
+              alt_call_number_type: f["j"],
+              alt_call_number: f["k"],
+              temp_call_number_type: f["l"],
+              temp_call_number: f["m"],
+              public_note: f["o"],
+              due_back_date: f["p"],
+              holding_id: f["r"],
+              material_type: f["t"],
+              process_type: f["u"] }
+              .delete_if { |k, v| v.blank? }
+              .to_json
+            acc << selected_subfields
+          end
+        end
+      end
+
       # In order to reduce the relevance of certain libraries, we need to boost every other library
       # Make sure we still boost records what have holdings in less relevant libraries and also in another library
       LIBRARIES_TO_NOT_BOOST = [ "PRESSER", "CLAEDTECH" ]
