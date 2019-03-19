@@ -16,6 +16,7 @@ class CatalogController < ApplicationController
   include Blacklight::Ris::Catalog
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
+  before_action :set_thread_request
 
   add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
   add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
@@ -718,5 +719,10 @@ class CatalogController < ApplicationController
 
     def advanced_controller?
       self.class == AdvancedController
+    end
+
+    # Allow access to request outside of controller context.
+    def set_thread_request
+      LogUtils.request = request
     end
 end
