@@ -1,0 +1,132 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991000673139703811",
+                "title": "King Solomon's mines",
+                "author": "Markowitz, Russ.",
+                "issn": null,
+                "isbn": null,
+                "complete_edition": "",
+                "network_number": [
+                    "(OCLC)ocm56451984",
+                    "ocm56451984",
+                    "(OCoLC)ocn867826752",
+                    "(PPT)b55352169-01tuli_inst"
+                ],
+                "place_of_publication": "[United States] :",
+                "date_of_publication": "[2004]",
+                "publisher_const": "Distributed by Lions Gate Home Entertainment",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991000673139703811"
+            },
+            "holding_data": {
+                "holding_id": "22237957750003811",
+                "call_number_type": {
+                    "value": "8",
+                    "desc": "Other scheme"
+                },
+                "call_number": "DVD 13 A165",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991000673139703811/holdings/22237957750003811"
+            },
+            "item_data": {
+                "pid": "23237957740003811",
+                "barcode": "39074028545416",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2018-01-23Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "DVD",
+                    "desc": "DVD"
+                },
+                "policy": {
+                    "value": "5",
+                    "desc": "Media"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2013-12-17Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "AMBLER",
+                    "desc": "Ambler Campus Library"
+                },
+                "location": {
+                    "value": "media",
+                    "desc": "Ambler Media"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Check container for DVD.",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: avid",
+                "statistics_note_1": "TOT RENEW: 1",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": false,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991000673139703811/holdings/22237957750003811/items/23237957740003811"
+        }
+    ],
+    "total_record_count": 1
+}

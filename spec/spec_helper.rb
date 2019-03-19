@@ -7,6 +7,7 @@ require "webmock/rspec"
 require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
+require "pry"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -172,6 +173,10 @@ RSpec.configure do |config|
                 body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
                 headers: { "content-type" => ["application/xml;charset=UTF-8"] })
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/merge_document_and_api\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

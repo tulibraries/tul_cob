@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "spec_helper"
 require "rails_helper"
 
 RSpec.describe AlmaDataHelper, type: :helper do
@@ -89,8 +90,6 @@ RSpec.describe AlmaDataHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
-
-
   end
 
   describe "#unavailable_items(item)" do
@@ -152,11 +151,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#description(item)" do
     context "item includes description" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "description" => "v. 1" }
-         )
-      end
+      let(:item) { { "description" => "v. 1" } }
 
       it "displays description" do
         expect(description(item)).to eq "Description: v. 1"
@@ -164,28 +159,17 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does NOT include description" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "description" => "" }
-         )
-      end
+      let(:item) { {} }
 
       it "displays nothing" do
-        expect(description(item)).to eq nil
+        expect(description(item)).to eq ""
       end
     end
   end
 
   describe "#physical_material_type(item)" do
     context "item includes physical_material_type" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "RECORD",
-                "desc" => "Sound Recording" }
-           }
-         )
-      end
+      let(:item) { { "material_type" => "Sound Recording" } }
 
       it "displays physical_material_type" do
         expect(physical_material_type(item)).to eq "Sound Recording"
@@ -193,13 +177,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does NOT include PHYSICAL_TYPE_EXCLUSIONS" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "BOOK" }
-           }
-         )
-      end
+      let(:item) { { "material_type" => "Book" } }
 
       it "displays nothing" do
         expect(physical_material_type(item)).to eq nil
@@ -207,7 +185,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
 
     context "item does not include a physical_material_type" do
-      let(:item) { Alma::BibItem.new("item_data" => {}) }
+      let(:item) { {} }
 
       it "displays nothing" do
         expect(physical_material_type(item)).to eq nil
@@ -231,140 +209,103 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#public_note(item)" do
     context "item includes public note" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "public_note" => "example" }
-         )
-      end
+      let(:item) { { "public_note" => "Sample note" } }
 
       it "displays note" do
-        expect(public_note(item)).to eq "Note: example"
+        expect(public_note(item)).to eq "Note: Sample note"
       end
     end
 
     context "item does NOT include public note" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-         { "public_note" => "" }
-       )
-      end
+      let(:item) { {} }
 
       it "displays nothing" do
-        expect(public_note(item)).to eq nil
+        expect(public_note(item)).to eq ""
       end
     end
   end
 
-  describe "#location_status(item)" do
-    context "item is in temporary location" do
-      let(:item) do
-        Alma::BibItem.new("holding_data" =>
-         { "in_temp_location" => true,
-           "temp_library" => { "value" => "RES_SHARE" },
-           "temp_location" => { "value" => "IN_RS_REQ" },
-           "temp_call_number" => "Temp call number"
-          }
-       )
-      end
+  describe "#missing_or_lost(item)" do
+    context "an item is missing" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811",
+      "process_type" => "MISSING" }
+    }
 
-      it "displays temporary location and call number" do
-        expect(location_status(item)).to eq "Lending Resource Sharing Requests"
+      it "correctly identifies missing items" do
+        expect(missing_or_lost?(item)).to be true
+      end
+    end
+
+    context "an item is not missing or lost" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }
+    }
+
+      it "correctly identifies missing items" do
+        expect(missing_or_lost?(item)).to be false
+      end
+    end
+  end
+
+  describe "#library(item)" do
+    context "item is in temporary library" do
+      let(:item) { { "current_library" => "RES_SHARE" } }
+
+      it "displays temporary library" do
+        expect(library(item)).to eq "RES_SHARE"
+      end
+    end
+
+    context "item is NOT in temporary library" do
+      let(:item) { { "permanent_library" => "MAIN" } }
+
+      it "displays library" do
+        expect(library(item)).to eq "MAIN"
+      end
+    end
+  end
+
+  describe "#location(item)" do
+    context "item is in temporary location" do
+      let(:item) { { "current_location" => "ILL" } }
+
+      it "displays temporary location" do
+        expect(location_status(item)).to eq "ILL"
       end
     end
 
     context "item is NOT in temporary location" do
-      let(:item) do
-        Alma::BibItem.new("holding_data" =>
-         { "in_temp_location" => false,
-           "call_number" => "Perm call number"
-         },
-         "item_data" => {
-           "library" => { "value" => "MAIN" },
-           "location" => { "value" => "stacks" },
-         }
-       )
-      end
+      let(:item) { { "permanent_location" => "rarestacks" } }
 
       it "displays location and call number" do
-        expect(location_status(item)).to eq "Stacks"
+        expect(location_status(item)).to eq "rarestacks"
       end
     end
   end
 
-  #  describe "#group_and_order_items(item)" do
-  #    context "does not display items that are lost" do
-  #      let(:item) do
-  #          Alma::BibItem.new([{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "LOST_LOAN" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "does not display lost item" do
-  #        expect(group_and_order_items(item)).to eq({})
-  #      end
-  #    end
-  #
-  #    context "does not display items that are missing" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "MISSING" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "does not display missing item" do
-  #        expect(group_and_order_items(item)).to eq({})
-  #      end
-  #    end
-  #
-  #
-  #    context "item is in a permanent library" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => false,
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "location" => { "value" => "" },
-  #             "process_type" => { "value" => "" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "displays library code" do
-  #        expect(group_and_order_items(item)).to eq "MAIN" => [{ "holding_data" => { "in_temp_location" => false }, "item_data" => { "library" => { "value" => "MAIN" }, "location" => { "value" => "" }, "process_type" => { "value" => "" }
-  # } }]
-  #      end
-  #    end
-  #
-  #    context "item is in a temporary library" do
-  #      let(:item) do
-  #        [{ "holding_data" =>
-  #           { "in_temp_location" => true,
-  #             "temp_library" => { "value" => "RES_SHARE" },
-  #             "temp_location" => { "value" => "IN_RS_REQ" }
-  #           },
-  #           "item_data" => {
-  #             "library" => { "value" => "MAIN" },
-  #             "process_type" => { "value" => "" }
-  #           }
-  #         }]
-  #      end
-  #
-  #      it "displays temporary library code" do
-  #        expect(group_and_order_items(item).keys).to have_text "RES_SHARE"
-  #      end
-  #    end
-  #  end
+  describe "#location_name_from_short_code(item)" do
+    context "location codes are converted to names using translation map" do
+      let(:item) { { "permanent_location" => "rarestacks",
+                      "permanent_library" => "SCRC" } }
+
+      it "displays location name" do
+        expect(location_name_from_short_code(item)).to eq "Reading Room"
+      end
+    end
+  end
 
   describe "#library_name_from_short_code(short_code)" do
     context "library codes are converted to names using translation map" do
@@ -377,162 +318,284 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
   describe "#alternative_call_number(item)" do
     context "item has an alternate call number" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "alternative_call_number" => "alternate" }
-        )
-      end
+      let(:item) { { "alt_call_number" => "alternate call number" } }
 
       it "displays alternate call number" do
-        expect(alternative_call_number(item)).to eq "(Also found under alternate)"
+        expect(alternative_call_number(item)).to eq "alternate call number"
+      end
+    end
+
+    context "item does NOT have an alternate call number" do
+      let(:item) { { "call_number" => "regular call number" } }
+
+      it "does NOT display alternate call number" do
+        expect(alternative_call_number(item)).to eq "regular call number"
       end
     end
   end
 
-  describe "#sort_order_for_holdings(items)" do
+  describe "#document_and_api_merged_results(document, items_list)" do
+    context "item_pid from api matches item_pid in document" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "merges the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
+                                                                            "item_policy" => "5",
+                                                                            "permanent_library" => "AMBLER",
+                                                                            "permanent_location" => "media",
+                                                                            "current_library" => "AMBLER",
+                                                                            "current_location" => "media",
+                                                                            "call_number" => "DVD 13 A165",
+                                                                            "holding_id" => "22237957750003811",
+                                                                            availability: "<span class=\"check\"></span>Available" }])
+      end
+    end
+
+    context "item_pid from api does not match item_pid in document" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "does not merge the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      end
+    end
+
+    context "does not include missing or lost items" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "process_type" => "MISSING",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "filters out missing or lost items" do
+        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      end
+    end
+  end
+
+  describe "#sort_order_for_holdings(grouped_items)" do
     context "items are sorted by library name with Paley first" do
-      let(:items) do
-        {
-        "MAIN" => [Alma::BibItem.new({})],
-        "AMBLER" => [Alma::BibItem.new({})]
-      }
+      let(:grouped_items) do { "AMBLER" =>
+  [{ "item_pid" => "23239405700003811",
+    "item_policy" => "0",
+    "permanent_library" => "AMBLER",
+    "permanent_location" => "stacks",
+    "current_library" => "AMBLER",
+    "current_location" => "stacks",
+    "call_number_type" => "0",
+    "call_number" => "F159.P7 C66 2003",
+    "holding_id" => "22239405730003811",
+    "availability" => "<span class=\"check\"></span>Available" }],
+ "MAIN" =>
+  [{ "item_pid" => "23239405740003811",
+    "item_policy" => "0",
+    "permanent_library" => "MAIN",
+    "permanent_location" => "stacks",
+    "current_library" => "MAIN",
+    "current_location" => "stacks",
+    "call_number_type" => "0",
+    "call_number" => "F159.P7 C66 2003",
+    "holding_id" => "22239405750003811",
+    "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
       it "returns Paley first, then Ambler" do
-        expect(sort_order_for_holdings(items).keys).to eq(["MAIN", "AMBLER"])
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "AMBLER"])
       end
     end
 
     context "items in Kardon sort by Remote Storage, not KARDON" do
-      let(:items) do
-        {
-          "KARDON" => [Alma::BibItem.new({})],
-          "MEDIA" =>  [Alma::BibItem.new({})]
-        }
+      let(:grouped_items) do {
+      "KARDON" =>
+        [{ "item_pid" => "23243718620003811",
+         "item_policy" => "0",
+         "permanent_library" => "KARDON",
+         "permanent_location" => "p_remote",
+         "current_library" => "KARDON",
+         "current_location" => "p_remote",
+         "call_number_type" => "0",
+         "call_number" => "N6853.S49 A4 2001",
+         "holding_id" => "22243718630003811",
+         "availability" => "<span class=\"check\"></span>Available" }],
+      "MAIN" =>
+         [{ "item_pid" => "23243718640003811",
+         "item_policy" => "0",
+         "permanent_library" => "MAIN",
+         "permanent_location" => "stacks",
+         "current_library" => "MAIN",
+         "current_location" => "stacks",
+         "call_number_type" => "0",
+         "call_number" => "N6853.S49 A4 2001",
+         "holding_id" => "22243718650003811",
+         "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
       it "returns Media before Kardon" do
-        expect(sort_order_for_holdings(items).keys).to eq(["MEDIA", "KARDON"])
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "KARDON"])
       end
     end
 
     context "Items are ordered by location after library name" do
-      let(:items) do
-        { "MAIN" => [ Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "stacks" }
-          }
-        ),  Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "serials" }
-          }
-        ),  Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "reference" }
-            }
-          )]
-        }
+      let(:grouped_items) do
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "1992-94",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "1983-1986",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "reference",
+          "current_library" => "MAIN",
+          "current_location" => "reference",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "1987-89",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "serials",
+          "current_library" => "MAIN",
+          "current_location" => "serials",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by location" do
-
-        sorted_locations = sort_order_for_holdings(items)["MAIN"].map(&:location)
-        expect(sorted_locations).to eq(["serials", "reference", "stacks"])
+        sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
+        expect(sorted_locations).to eq(["Journals", "Paley Reference", "Stacks"])
       end
     end
 
     context "Items are ordered by call number after location" do
-      let(:items) do
-        { "MAIN" => [Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false,
-               "call_number" => "MT655.P45x"
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "stacks" }
-          }
-        ), Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false,
-               "call_number" => "AC1 .G72"
-
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "stacks" }
-          }
-        ), Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false,
-               "call_number" => "HF5006 .I614"
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "stacks" }
-            }
-          )]
-        }
+      let(:grouped_items) do
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "1992-94",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "1983-1986",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "HF5006 .I614",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "1987-89",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "AC1 .G72",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by call number" do
-        sorted_call_numbers = sort_order_for_holdings(items)["MAIN"].map(&:call_number)
+        sorted_call_numbers = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| alternative_call_number(item) }
         expect(sorted_call_numbers).to eq(["AC1 .G72", "HF5006 .I614", "MT655.P45x"])
       end
     end
 
     context "Items are ordered by description after call number" do
-      let(:items) do
-        { "MAIN" => [Alma::BibItem.new(
-          "holding_data" =>
-             { "in_temp_location" => false,
-               "call_number" => "MT655.P45x"
-          },
-          "item_data" => {
-            "library" => { "value" => "MAIN" },
-            "location" => { "value" => "stacks" },
-            "description" => "v.55, no.5 (Nov. 2017)"
-          }
-      ), Alma::BibItem.new(
-        "holding_data" =>
-           { "in_temp_location" => false,
-             "call_number" => "MT655.P45x"
-
-        },
-        "item_data" => {
-          "library" => { "value" => "MAIN" },
-          "location" => { "value" => "stacks" },
-          "description" => "v.42 (2004)"
-        }
-      ), Alma::BibItem.new(
-        "holding_data" =>
-           { "in_temp_location" => false,
-             "call_number" => "MT655.P45x"
-        },
-        "item_data" => {
-          "library" => { "value" => "MAIN" },
-          "location" => { "value" => "stacks" },
-          "description" => "v.53 (2016)"
-          }
-        )]
-      }
+      let(:grouped_items) do
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "v.55, no.5 (Nov. 2017)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "v.53 (2016)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "v.42 (2004)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by description" do
-        sorted_descriptions = sort_order_for_holdings(items)["MAIN"].map(&:description)
-        expect(sorted_descriptions).to eq(["v.42 (2004)", "v.53 (2016)", "v.55, no.5 (Nov. 2017)"])
+        sorted_descriptions = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| description(item) }
+        expect(sorted_descriptions).to eq(["Description: v.42 (2004)", "Description: v.53 (2016)", "Description: v.55, no.5 (Nov. 2017)"])
       end
     end
   end
