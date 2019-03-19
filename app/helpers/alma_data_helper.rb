@@ -100,7 +100,7 @@ module AlmaDataHelper
 
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
-    sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_value?("MAIN")
+    sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
     items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
     sorted_library_hash.each do |lib, items|
