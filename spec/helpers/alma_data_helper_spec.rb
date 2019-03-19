@@ -384,28 +384,28 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
     context "items in Kardon sort by Remote Storage, not KARDON" do
       let(:grouped_items) do {
-      "KARDON"=>
-        [{"item_pid"=>"23243718620003811",
-         "item_policy"=>"0",
-         "permanent_library"=>"KARDON",
-         "permanent_location"=>"p_remote",
-         "current_library"=>"KARDON",
-         "current_location"=>"p_remote",
-         "call_number_type"=>"0",
-         "call_number"=>"N6853.S49 A4 2001",
-         "holding_id"=>"22243718630003811",
-         "availability"=>"<span class=\"check\"></span>Available"}],
-      "MAIN"=>
-         [{"item_pid"=>"23243718640003811",
-         "item_policy"=>"0",
-         "permanent_library"=>"MAIN",
-         "permanent_location"=>"stacks",
-         "current_library"=>"MAIN",
-         "current_location"=>"stacks",
-         "call_number_type"=>"0",
-         "call_number"=>"N6853.S49 A4 2001",
-         "holding_id"=>"22243718650003811",
-         "availability"=>"<span class=\"check\"></span>Available"}]}
+      "KARDON" =>
+        [{ "item_pid" => "23243718620003811",
+         "item_policy" => "0",
+         "permanent_library" => "KARDON",
+         "permanent_location" => "p_remote",
+         "current_library" => "KARDON",
+         "current_location" => "p_remote",
+         "call_number_type" => "0",
+         "call_number" => "N6853.S49 A4 2001",
+         "holding_id" => "22243718630003811",
+         "availability" => "<span class=\"check\"></span>Available" }],
+      "MAIN" =>
+         [{ "item_pid" => "23243718640003811",
+         "item_policy" => "0",
+         "permanent_library" => "MAIN",
+         "permanent_location" => "stacks",
+         "current_library" => "MAIN",
+         "current_location" => "stacks",
+         "call_number_type" => "0",
+         "call_number" => "N6853.S49 A4 2001",
+         "holding_id" => "22243718650003811",
+         "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
       it "returns Media before Kardon" do
@@ -415,132 +415,132 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
     context "Items are ordered by location after library name" do
       let(:grouped_items) do
-        {"MAIN"=>
-          [{"item_pid"=>"23242235660003811",
-          "item_policy"=>"12",
-          "description"=>"1992-94",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"HV696.F6F624",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235720003811",
-          "item_policy"=>"12",
-          "description"=>"1983-1986",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"reference",
-          "current_library"=>"MAIN",
-          "current_location"=>"reference",
-          "call_number_type"=>"0",
-          "call_number"=>"HV696.F6F624",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235710003811",
-          "item_policy"=>"12",
-          "description"=>"1987-89",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"serials",
-          "current_library"=>"MAIN",
-          "current_location"=>"serials",
-          "call_number_type"=>"0",
-          "call_number"=>"HV696.F6F624",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"}]}
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "1992-94",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "1983-1986",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "reference",
+          "current_library" => "MAIN",
+          "current_location" => "reference",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "1987-89",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "serials",
+          "current_library" => "MAIN",
+          "current_location" => "serials",
+          "call_number_type" => "0",
+          "call_number" => "HV696.F6F624",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by location" do
-        sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item)}
+        sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
         expect(sorted_locations).to eq(["Journals", "Paley Reference", "Stacks"])
       end
     end
 
     context "Items are ordered by call number after location" do
       let(:grouped_items) do
-        {"MAIN"=>
-          [{"item_pid"=>"23242235660003811",
-          "item_policy"=>"12",
-          "description"=>"1992-94",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"MT655.P45x",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235720003811",
-          "item_policy"=>"12",
-          "description"=>"1983-1986",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"HF5006 .I614",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235710003811",
-          "item_policy"=>"12",
-          "description"=>"1987-89",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"AC1 .G72",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"}]}
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "1992-94",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "1983-1986",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "HF5006 .I614",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "1987-89",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "AC1 .G72",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by call number" do
-        sorted_call_numbers = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| alternative_call_number(item)}
+        sorted_call_numbers = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| alternative_call_number(item) }
         expect(sorted_call_numbers).to eq(["AC1 .G72", "HF5006 .I614", "MT655.P45x"])
       end
     end
 
     context "Items are ordered by description after call number" do
       let(:grouped_items) do
-        {"MAIN"=>
-          [{"item_pid"=>"23242235660003811",
-          "item_policy"=>"12",
-          "description"=>"v.55, no.5 (Nov. 2017)",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"MT655.P45x",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235720003811",
-          "item_policy"=>"12",
-          "description"=>"v.53 (2016)",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"MT655.P45x",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"},
-         {"item_pid"=>"23242235710003811",
-          "item_policy"=>"12",
-          "description"=>"v.42 (2004)",
-          "permanent_library"=>"MAIN",
-          "permanent_location"=>"stacks",
-          "current_library"=>"MAIN",
-          "current_location"=>"stacks",
-          "call_number_type"=>"0",
-          "call_number"=>"MT655.P45x",
-          "holding_id"=>"22242235730003811",
-          "availability"=>"<span class=\"check\"></span>Library Use Only"}]}
+        { "MAIN" =>
+          [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "v.55, no.5 (Nov. 2017)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "v.53 (2016)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "v.42 (2004)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
       end
 
       it "returns copies for each library by description" do
-        sorted_descriptions = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| description(item)}
+        sorted_descriptions = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| description(item) }
         expect(sorted_descriptions).to eq(["Description: v.42 (2004)", "Description: v.53 (2016)", "Description: v.55, no.5 (Nov. 2017)"])
       end
     end
