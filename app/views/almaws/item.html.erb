@@ -9,7 +9,7 @@
     <% render :partial => "paginate_compact", :object => @response %>
   </div>
 
-  <% sort_order_for_holdings(@merged_response).each do |key, items| %>
+  <% sort_order_for_holdings(@document_and_api_items).each do |key, items| %>
     <div id="availability-container" class="m-0">
       <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
         <div class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>

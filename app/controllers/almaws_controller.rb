@@ -22,7 +22,7 @@ class AlmawsController < CatalogController
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @merged_response = helpers.document_and_api_merged_results(@document, @items)
+    @document_and_api_items = helpers.document_and_api_merged_results(@document, @items)
     #@holdings_summary = helpers.build_holdings_summary(@items, @document)
     #@items is mutated by unsuppressed_holdings and filter_unwanted_locations
     #helpers.filter_unwanted_locations(@items)
