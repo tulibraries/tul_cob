@@ -8,20 +8,14 @@ module BlacklightMarcHelper
 
   # Overrides the original method in Blacklight Marc so that we only use this link for catalog items
   def refworks_solr_document_path(opts = {})
-    if opts[:id] && controller_name == "catalog"
+    return if !opts[:id]
+
+    case controller_name
+    when "catalog"
       refworks_export_url(url: solr_document_url(opts[:id], format: :refworks_marc_txt))
-    end
-  end
-
-  # Replicates the refworks_solr_document_path method for books and journals
-  def refworks_solr_book_document_path(opts = {})
-    if opts[:id] && controller_name == "books"
+    when "books"
       refworks_export_url(url: solr_book_document_path(opts[:id], format: :refworks_marc_txt))
-    end
-  end
-
-  def refworks_solr_journal_document_path(opts = {})
-    if opts[:id] && controller_name == "journals"
+    when "journals"
       refworks_export_url(url: solr_journal_document_path(opts[:id], format: :refworks_marc_txt))
     end
   end
