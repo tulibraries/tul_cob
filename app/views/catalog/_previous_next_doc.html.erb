@@ -1,12 +1,12 @@
 <% #Using the Bootstrap Pagination class  -%>
-<div id="record-page-nav-tools" class="d-flex justify-content-between align-items-start">
+<div id="record-page-nav-tools" class="d-flex align-items-start">
   <% if current_search_session %>
     <div class="search-widgets flex-sm-column flex-md-row">
       <%= link_back_to_catalog class: "btn btn-sm btn-back-to-search border border-light-grey", id: "back_to_search" %>
       <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn btn-sm bg-dark-blue text-white" %>
     </div>
   <% end %>
-  <div class="pagination-search-widgets">
+  <div class="pagination-search-widgets ml-auto">
   <% if @search_context[:prev] || @search_context[:next] %>
     <div class="page-links">
       <%= link_to_previous_document @search_context[:prev] %> |
