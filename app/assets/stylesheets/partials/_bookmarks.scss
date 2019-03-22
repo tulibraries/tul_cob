@@ -71,9 +71,14 @@ a.clear-bookmarks {
   width: 0;
 }
 
+.toggle-bookmark label {
+  margin-bottom: 0;
+}
+
 #bookmark_button {
   color: $red;
-  padding: 0.25rem 0.3125rem 0.0625rem;
+  font-size: 0.875rem;
+  padding: 0.3125rem 0.4375rem;
 }
 
 .bookmarks-page .book_info .index-label {
