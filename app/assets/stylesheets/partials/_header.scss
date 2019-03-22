@@ -198,6 +198,10 @@ a.advanced_search {
   }
 }
 
+.pagination-search-widgets .page-links {
+	padding-top: 0;
+}
+
 .search-widgets {
 
 	@media(max-width: 485px) {
@@ -209,9 +213,8 @@ a.advanced_search {
   background-color: $tan;
  	border-radius: 0.25rem;
  	display: inline-block;
+	list-style-type: none;
  	margin-right: 0.25rem;
- 	padding: 0.125rem;
- 	list-style-type: none;
 }
 
 #sendto button {
@@ -219,11 +222,12 @@ a.advanced_search {
   border: 0;
   color: $red;
 	font-size: 0.875rem;
-
+	margin-top: -0.1875rem;
 	@media(max-width: 768px) {
 		background-color: $red;
 	  border: 0;
 	  color: $white;
+		margin-top: 0;
 	}
 }
 
@@ -253,10 +257,8 @@ div.sendto-item a.nav-link:active,
 	background-color: $white;
 }
 
-
-
 #nav-tools {
-
+	vertical-align: middle;
 	@media (max-width: 768px) {
     margin-top: 0.875rem;
 	}
@@ -290,12 +292,24 @@ div.sendto-item a.nav-link:active,
 
 #citeLink {
 	color: $red;
+	margin-top: -0.1875rem;
+	padding: 0.3125rem 0.4375rem;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+	}
 }
 
 /* CITATION MODAL */
 .citation-title {
 	font-family: "PT Sans";
 	font-size: 2.0rem;
+	padding-bottom: 1.25rem;
+}
+
+.citation-type {
+	font-family: "PT Sans";
+	font-size: 1.25rem;
 }
 
 /* SEARCH RESULTS SORT AND PER PAGE */

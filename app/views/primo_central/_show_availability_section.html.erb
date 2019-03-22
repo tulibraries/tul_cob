@@ -1,14 +1,14 @@
 
 <div class="col-sm-12">
-<div id="record-view-iframe"  class="panel">
-  <div class="availability-panel-heading panel-heading">
+<div id="record-view-iframe"  class="card border-0">
+  <div class="availability-card-heading card-title">
     <h4 id="availability-heading">Availability</h4>
   </div>
 
   <div class="online-border"></div>
-  <div class="availability_iframe physical-holding-panel panel-body">
-    <h5 class="online-panel-heading">Online</h5>
-    <div class="primo-online-panel-body">
+  <div class="availability_iframe physical-holding-panel card-body p-0">
+    <h5 class="online-card-heading mb-0 border border-tan-border">Online</h5>
+    <div class="primo-online-card-body">
       <% availability_link_partials.each do |partial| %>
         <%= render(partial) %>
       <% end %>
