@@ -1,0 +1,6 @@
+<div id="sortAndPerPage" class="sort-pagination d-flex flex-wrap justify-content-sm-center justify-content-lg-between ">
+  <div class="">
+    <%= render partial: "paginate_compact", object: @response if show_pagination? %>
+  </div>
+  <%= render_results_collection_tools wrapping_class: "search-widgets" %>
+</div>

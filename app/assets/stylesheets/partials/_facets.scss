@@ -55,7 +55,6 @@ span .remove-constraints {
 		text-align: right;
 		width: 20%;
 	}
-
 }
 
 span.constraint-value {
@@ -174,6 +173,10 @@ span.constraint-value {
 	@media(max-width: 485px) {
 		margin-bottom: 0.75rem;
 	}
+}
+
+.more_facets {
+	font-weight: bold;
 }
 
 /* DATE RANGE FACET STYLES */

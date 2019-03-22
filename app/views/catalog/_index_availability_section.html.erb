@@ -1,6 +1,5 @@
 <% doc_presenter = index_presenter(document) %>
-
-<dl class="row document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dl>
+  <dl class="row mt-0 pt-0 document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dl>
 
   <%= render_online_availability_button(document) %>
   <%= render_purchase_order_availability(document: document) %>

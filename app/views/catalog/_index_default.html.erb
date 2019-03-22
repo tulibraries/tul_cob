@@ -1,14 +1,14 @@
 <% doc_presenter = index_presenter(document) %>
 
-<div class="">
-<%# default partial to display solr document fields in catalog index view -%>
-  <div class="book-info-srch col-md-2 thumbnail float-md-right" <%= isbn_data_attribute(document) %> >
+<div class="clearfix d-flex-md-reverse align-items-md-end">
+<%# default partial to display solr document fields in catalog index view %>
+  <div class="book-info-srch thumbnail float-md-right pr-1" <%= isbn_data_attribute(document) %> >
     <%= link_to document do %>
       <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible"  %>
       <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
     <% end %>
   </div>
-  <div class="book_info col-sm-12 col-md-10">
+  <div class="book_info col-sm-12">
     <%= render "fields", document: document, document_counter: document_counter %>
   </div>
 </div>
