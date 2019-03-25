@@ -30,8 +30,50 @@ RSpec.describe AlmaDataHelper, type: :helper do
               { "value" => "1" },
             "policy" =>
               { "desc" => "" },
+            "physical_material_type" =>
+              { "desc" => "Book" },
             "location" =>
               { "value" => "reserve" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      end
+    end
+
+    context "item is a bound issue" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "" },
+            "physical_material_type" =>
+              { "desc" => "Bound Issue" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      end
+    end
+
+    context "item circulation policy is music restricted" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "Music Restricted" },
+            "physical_material_type" =>
+              { "desc" => "" },
             "requested" => false,
           }
        )
@@ -67,6 +109,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
              "policy" =>
              { "desc" => "" },
              "requested" => false,
+             "physical_material_type" =>
+               { "desc" => "" },
            }
          )
       end
@@ -167,12 +211,12 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#physical_material_type(item)" do
+  describe "#material_type(item)" do
     context "item includes physical_material_type" do
       let(:item) { { "material_type" => "Sound Recording" } }
 
       it "displays physical_material_type" do
-        expect(physical_material_type(item)).to eq "Sound Recording"
+        expect(material_type(item)).to eq "Sound Recording"
       end
     end
 
@@ -180,7 +224,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) { { "material_type" => "Book" } }
 
       it "displays nothing" do
-        expect(physical_material_type(item)).to eq nil
+        expect(material_type(item)).to eq nil
       end
     end
 
@@ -188,23 +232,9 @@ RSpec.describe AlmaDataHelper, type: :helper do
       let(:item) { {} }
 
       it "displays nothing" do
-        expect(physical_material_type(item)).to eq nil
+        expect(material_type(item)).to eq nil
       end
     end
-
-    context "item contains bad physical_material_type data" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => nil }
-           }
-         )
-      end
-      it "displays nothing" do
-        expect(physical_material_type(item)).to eq nil
-      end
-    end
-
   end
 
   describe "#public_note(item)" do
