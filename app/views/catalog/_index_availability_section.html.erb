@@ -1,3 +1,4 @@
+
 <% doc_presenter = index_presenter(document) %>
   <dl class="row mt-0 pt-0 document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></dl>
 
@@ -25,7 +26,7 @@
       <div  data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container">
         <div class="table-wrapper hidden">
           <div class="border border-tan-border">
-            <%# <%= render "physical_availability_card", document: document, document_availability: @document_availability, document_counter: document.id %> %>
+            <%= render "physical_availability_card", document: document, document_counter: document.id %>
           </div>
         </div>
         <div><%= render "check_holdings", document: document, document_counter: document.id %></div>
