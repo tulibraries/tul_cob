@@ -620,6 +620,9 @@ class CatalogController < ApplicationController
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 
+  @document_availability = helpers.document_availability_info(@document)
+
+
   ##
   # Render one index record (use as an ajax endpoint).
   # /
