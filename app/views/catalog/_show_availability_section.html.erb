@@ -1,8 +1,8 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 
-<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card mx-auto border-0">
-  <div class="availability-card-heading card-title d-inline-flex justify-content-between align-items-center">
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0">
+  <div class="availability-card-heading card-title d-flex justify-content-between align-items-center">
     <h4 id="availability-heading">Availability</h4>
     <div id="heading-request">
       <%= doc_presenter.field_value(blacklight_config.show_fields["po_link"]) %>
@@ -11,27 +11,26 @@
         <% if user_signed_in? %>
           <%= request_modal(document.id, @pickup_locations, @request_level) %>
         <% else %>
-          <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"blacklight-modal": "trigger"}, id: "request_options") %>
+          <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"blacklight-modal": "trigger"}, id: "request_options")  %>
         <% end %>
       </div>
     </div>
   </div>
-
-  <%= render_online_availability(doc_presenter) %>
-  <%= doc_presenter.field_value(blacklight_config.show_fields["purchase_order_availability"]) %>
-
-  <% if document.fetch("availability_facet", []).include?("At the Library") %>
-    <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
-      <div id="avail-spinner" data-target="show.spinner" class="spinner">
-        <i class="fa fa-spinner" role="spinbutton"></i>
-        <span>Loading Availability</span>
-      </div>
-      <div class="table-wrapper hidden border border-tan-border">
-        <div data-target="show.panel"></div>
-      </div>
-    </div>
-    <div><%= render "check_holdings", document: document %></div>
-
-  <% end %>
-
 </div>
+
+<%= render_online_availability(doc_presenter) %>
+<%= render_purchase_order_availability(document: document) %>
+
+<% if document.fetch("availability_facet", []).include?("At the Library") %>
+  <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
+    <div id="avail-spinner" data-target="show.spinner" class="spinner">
+      <i class="fa fa-spinner" role="spinbutton"></i>
+      <span>Loading Availability</span>
+    </div>
+    <div class="table-wrapper hidden border border-tan-border">
+      <div data-target="show.panel"></div>
+    </div>
+  </div>
+  <div><%= render "check_holdings", document: document %></div>
+
+<% end %>
