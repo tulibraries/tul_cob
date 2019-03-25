@@ -7,7 +7,7 @@ module AlmaDataHelper
 
   def availability_status(item)
     if item.in_place? && item.item_data["requested"] == false
-      if item.non_circulating? || item.location == "reserve"
+      if item.non_circulating? || item.location == "reserve" || item.physical_material_type.fetch("desc", "") == "Bound Issue" || item.circulation_policy == "Music Restricted"
         content_tag(:span, "", class: "check") + "Library Use Only"
       else
         content_tag(:span, "", class: "check") + "Available"
@@ -34,7 +34,7 @@ module AlmaDataHelper
     item["description"] ? "Description: #{item['description']}" : ""
   end
 
-  def physical_material_type(item)
+  def material_type(item)
     return unless item["material_type"].present?
 
     type = item["material_type"]
