@@ -4,6 +4,7 @@
 .bookmark-heading {
   font-family: "PT Sans";
   font-size: 2.0rem;
+  margin-left: 2.0rem;
 }
 
 .no-bookmarks-message {
@@ -28,7 +29,7 @@
   font-size: 0.875rem;
   margin-left: 0.625rem;
   margin-top: -0.125rem;
-  padding: 0.375rem 0.625rem;
+  padding: 0.25rem 0.625rem;
 
   @media(max-width: 601px) {
     margin-left: 0;
@@ -71,8 +72,9 @@ a.clear-bookmarks {
   width: 0;
 }
 
-.toggle-bookmark label {
+.bookmarks-page .toggle-bookmark label {
   margin-bottom: 0;
+  margin-left: 2.0rem;
 }
 
 #bookmark_button {
@@ -81,23 +83,6 @@ a.clear-bookmarks {
   padding: 0.3125rem 0.4375rem;
 }
 
-.bookmarks-page .book_info .index-label {
-  margin-left: 1.0rem;
-
-  @media(max-width: 768px) {
-    text-align: left;
-  }
-}
-
-.bookmarks-page dl.blacklight-availability {
-
-  @media(min-width: 992px) {
-    margin-top: 0.3875rem;
-  }
-}
-
-.bookmarks-page .avail-dt {
-  @media(max-width: 768px) {
-    margin-left: 0.9375rem;
-  }
+.bookmarks-back-btn {
+  margin-top: -0.5rem;
 }

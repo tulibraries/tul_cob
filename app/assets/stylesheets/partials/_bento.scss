@@ -34,6 +34,10 @@
 .bento_item_title {
 	font-size: 0.875rem !important;
 	font-weight: bold;
+
+	a {
+		text-decoration: underline;
+	}
 }
 
 .authors {
@@ -56,6 +60,10 @@
 	.bento-search-engine {
 	padding: 0.625rem;
 	}
+}
+
+.full-results {
+	text-decoration: underline;
 }
 
 .total-results,
