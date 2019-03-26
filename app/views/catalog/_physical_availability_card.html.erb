@@ -1,4 +1,5 @@
 <% @document_availability = document_availability_info(document) %>
+
 <% sort_order_for_holdings(@document_availability).each do |key, items| %>
   <div id="availability-container" class="m-0">
     <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
@@ -14,9 +15,14 @@
           <span id="note"><%= public_note(item) %></span>
           <span id="material type"><%= material_type(item) %></span>
         </div>
-        <div id="status" class="col-sm-12 col-md-3"><%= item.fetch("availability", "") %></div>
+        <div data-controller="availability">
+          <div data-target="availability.spinner" class="spinner">
+            <i class="fa fa-spinner" role="spinbutton"></i>
+            <span>Loading Availability</span>
+          </div>
+          <div id="status" class="col-sm-12 col-md-3" data-target="availability.panel"><%= item.fetch("availability", "") %></div>
+        </div>
       </div>
     <% end %>
   </div>
-
 <% end %>

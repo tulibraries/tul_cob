@@ -3,8 +3,8 @@
 </button>
 
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
-  <div class="availability-modal">
-    <div class="modal-only">
-      <% render :partial => "paginate_compact", :object => @response %>
-    </div>
+
+
+    <% render :partial => "paginate_compact", :object => @response %>
   </div>
+</div>
