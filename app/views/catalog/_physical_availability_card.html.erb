@@ -1,4 +1,4 @@
-<%= @document_availability = document_availability_info(document) %>
+<% @document_availability = document_availability_info(document) %>
 <% sort_order_for_holdings(@document_availability).each do |key, items| %>
   <div id="availability-container" class="m-0">
     <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
@@ -16,8 +16,7 @@
         </div>
         <div id="status" class="col-sm-12 col-md-3"><%= item.fetch("availability", "") %></div>
       </div>
+    <% end %>
   </div>
-  <% end %>
-  <%= render :partial => "paginate_compact", :object => @response %>
-</div>
+
 <% end %>
