@@ -320,7 +320,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    okcomputer (1.17.3)
+    okcomputer (1.17.4)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
