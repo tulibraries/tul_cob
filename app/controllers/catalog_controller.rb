@@ -74,6 +74,7 @@ class CatalogController < ApplicationController
         lccn_display
         bound_with_ids
         purchase_order
+        items_json_display:[json]
         url_finding_aid_display:[json]
         url_more_links_display:[json]
         electronic_resource_display:[json]
@@ -316,7 +317,6 @@ class CatalogController < ApplicationController
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
-
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display

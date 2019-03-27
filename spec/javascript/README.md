@@ -20,12 +20,12 @@ yarn
 ## Use and Configuration
 Run the test with the following command:
 ```
-yard test
+yarn test
 ```
 
 To view environment settings and configurations run:
 ```
-yard test --debug
+yarn test --debug
 ```
 
 One of Jests most exalted features is that it requires no setup or
@@ -61,13 +61,13 @@ which is a list of all the files that we want to run before the tests are run:
 
 ## Writing Tests
 
-Jest's API is similar to rspecs so it should be relatively straight forward for most tests.  However there are some considereations.
+Jest's API is similar to rspecs so it should be relatively straight forward for most tests.  However there are some considerations.
 
 
 ### Modules
 Jest seems to be designed primarily for testing of modern JS that is
-encapsuluated within modules.  Thus for are non module code the easiest way to
-test it will be to reafctor it into modules.  Then testing is done the usual
+encapsulated within modules.  Thus for are non module code the easiest way to
+test it will be to refactor it into modules.  Then testing is done the usual
 way.
 ```javascript
 import exported from 'mymodule'
@@ -91,10 +91,10 @@ document.body.innerHTML = `<div id="foo">hello world</div><button id="a"></butto
 $('button#a').click()
 ```
 
-* Then test for an expected outcome. 
+* Then test for an expected outcome.
 
 ### Testing code that requires a bit of time between trigger and expectations:
-Sometimes you may need to add a delay between a trigger and the expecation to give domjs time to resolve. So to do that you can wrap your expectation inside of a promise that execute a timeout.
+Sometimes you may need to add a delay between a trigger and the expectation to give domjs time to resolve. So to do that you can wrap your expectation inside of a promise that execute a timeout.
 ```javascript
 await  new Promise(resolve => {
   setTimeout(() => {
@@ -107,7 +107,7 @@ await  new Promise(resolve => {
 (This procedure can be avoided if you setup and trigger before running the test)
 
 ### Testing regular pure functions
-If you can avoid side effecty stuff than you are golden.  Write your tests and expectations in the usual mannter:
+If you can avoid side effecty stuff, then you are golden.  Write your tests and expectations in the usual manner:
 
 ```javascript
 describe('Math.pow(n, m)', () => {

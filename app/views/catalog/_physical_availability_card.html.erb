@@ -1,8 +1,4 @@
-<button type="button" class="sr-only blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-  <span aria-hidden="true">&times;</span>
-</button>
-
-<div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
+<% @document_availability = document_availability_info(document) %>
 
 <% sort_order_for_holdings(@document_availability).each do |key, items| %>
   <div id="availability-container" class="m-0" data-controller="availability">
@@ -20,10 +16,12 @@
           <span id="material type"><%= material_type(item) %></span>
         </div>
         <div>
-          <div id="status" class="col-sm-12"><%= item.fetch("availability", "") %></div>
+          <div class="spinner">
+            <i class="fa fa-spinner" role="spinbutton"></i>
+            <span>Loading Availability</span>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 <% end %>
-<% render :partial => "paginate_compact", :object => @response %>

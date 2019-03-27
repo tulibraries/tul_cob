@@ -3,7 +3,7 @@
 require "spec_helper"
 require "rails_helper"
 
-RSpec.describe AlmaDataHelper, type: :helper do
+RSpec.describe AvailabilityHelper, type: :helper do
   describe "#availability_status(item)" do
     context "item base_status is 1 and policy is Non-circulating" do
       let(:item) do
@@ -193,6 +193,77 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
+  describe "#document_and_api_merged_results(document, items_list)" do
+    context "item_pid from api matches item_pid in document" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "merges the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
+                                                                            "item_policy" => "5",
+                                                                            "permanent_library" => "AMBLER",
+                                                                            "permanent_location" => "media",
+                                                                            "current_library" => "AMBLER",
+                                                                            "current_location" => "media",
+                                                                            "call_number" => "DVD 13 A165",
+                                                                            "holding_id" => "22237957750003811",
+                                                                            availability: "<span class=\"check\"></span>Available" }])
+      end
+    end
+
+    context "item_pid from api does not match item_pid in document" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "does not merge the availability into the document field" do
+        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      end
+    end
+
+    context "does not include missing or lost items" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "process_type" => "MISSING",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+
+      it "filters out missing or lost items" do
+        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      end
+    end
+  end
+
   describe "#description(item)" do
     context "item includes description" do
       let(:item) { { "description" => "v. 1" } }
@@ -284,8 +355,43 @@ RSpec.describe AlmaDataHelper, type: :helper do
       "holding_id" => "22237957750003811" }
     }
 
-      it "correctly identifies missing items" do
+      it "correctly identifies non-missing items" do
         expect(missing_or_lost?(item)).to be false
+      end
+    end
+  end
+
+  describe "#unwanted(item)" do
+    context "an item is missing" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "techserv",
+      "current_library" => "AMBLER",
+      "current_location" => "techserv",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811",
+      "process_type" => "MISSING" }
+    }
+
+      it "correctly identifies techserv items" do
+        expect(unwanted_locations(item)).to be true
+      end
+    end
+
+    context "an item is not in an unwanted location" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }
+    }
+
+      it "correctly identifies other locations" do
+        expect(unwanted_locations(item)).to be false
       end
     end
   end
@@ -364,36 +470,16 @@ RSpec.describe AlmaDataHelper, type: :helper do
     end
   end
 
-  describe "#document_and_api_merged_results(document, items_list)" do
-    context "item_pid from api matches item_pid in document" do
-      let(:document) { { "items_json_display" =>
-        [{ "item_pid" => "23237957740003811",
-        "item_policy" => "5",
-        "permanent_library" => "AMBLER",
-        "permanent_location" => "media",
-        "current_library" => "AMBLER",
-        "current_location" => "media",
-        "call_number" => "DVD 13 A165",
-        "holding_id" => "22237957750003811" }]
-          }
-        }
+  describe "#document_availability_info(document)" do
+    context "filters out empty items" do
+      let(:document) { {} }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
-
-      it "merges the availability into the document field" do
-        expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
-                                                                            "item_policy" => "5",
-                                                                            "permanent_library" => "AMBLER",
-                                                                            "permanent_location" => "media",
-                                                                            "current_library" => "AMBLER",
-                                                                            "current_location" => "media",
-                                                                            "call_number" => "DVD 13 A165",
-                                                                            "holding_id" => "22237957750003811",
-                                                                            availability: "<span class=\"check\"></span>Available" }])
+      it "returns an empty hash" do
+        expect(document_availability_info(document)).to eq({})
       end
     end
 
-    context "item_pid from api does not match item_pid in document" do
+    context "groups by library" do
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "12345",
         "item_policy" => "5",
@@ -406,10 +492,16 @@ RSpec.describe AlmaDataHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
-
-      it "does not merge the availability into the document field" do
-        expect(document_and_api_merged_results(document, items_list)).to eq({})
+      it "uses the library as a key" do
+        expect(document_availability_info(document)).to eq("AMBLER" =>
+                                                              [{ "call_number" => "DVD 13 A165",
+                                                                "current_library" => "AMBLER",
+                                                                "current_location" => "media",
+                                                                "holding_id" => "22237957750003811",
+                                                                "item_pid" => "12345",
+                                                                "item_policy" => "5",
+                                                                "permanent_library" => "AMBLER",
+                                                                "permanent_location" => "media" }])
       end
     end
 
@@ -427,10 +519,8 @@ RSpec.describe AlmaDataHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
-
       it "filters out missing or lost items" do
-        expect(document_and_api_merged_results(document, items_list)).to eq({})
+        expect(document_availability_info(document)).to eq({})
       end
     end
   end
@@ -597,8 +687,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
           "current_location" => "stacks",
           "call_number_type" => "0",
           "call_number" => "MT655.P45x",
-          "holding_id" => "22242235730003811",
-          "availability" => "<span class=\"check\"></span>Library Use Only" },
+          "holding_id" => "22242235730003811" },
          { "item_pid" => "23242235720003811",
           "item_policy" => "12",
           "description" => "v.53 (2016)",
@@ -608,8 +697,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
           "current_location" => "stacks",
           "call_number_type" => "0",
           "call_number" => "MT655.P45x",
-          "holding_id" => "22242235730003811",
-          "availability" => "<span class=\"check\"></span>Library Use Only" },
+          "holding_id" => "22242235730003811" },
          { "item_pid" => "23242235710003811",
           "item_policy" => "12",
           "description" => "v.42 (2004)",
@@ -619,8 +707,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
           "current_location" => "stacks",
           "call_number_type" => "0",
           "call_number" => "MT655.P45x",
-          "holding_id" => "22242235730003811",
-          "availability" => "<span class=\"check\"></span>Library Use Only" }] }
+          "holding_id" => "22242235730003811" }] }
       end
 
       it "returns copies for each library by description" do
@@ -685,168 +772,6 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
       it "does render the _avaiability_status partial" do
         expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: availability })
-      end
-    end
-  end
-
-  describe "#unsuppressed_holdings(items_list, document)" do
-    context "holding_id is found in solr" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "holding_data" =>
-             { "holding_id" => "22419862390003811"
-          }
-      ), Alma::BibItem.new(
-        "holding_data" =>
-           { "holding_id" => "22426649410003811",
-        }
-      )]
-      }
-      end
-
-      let(:document) {
-          {
-            "holdings_display" => ["22419862390003811"]
-          }
-        }
-
-      it "returns only items found in both api data and document" do
-        unsuppressed_holdings(items_list, document)
-        expect(items_list["MAIN"].count).to eq(1)
-      end
-    end
-
-    context "holding_id is not found in solr" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "holding_data" =>
-             { "holding_id" => "22419862390003811"
-          }
-      ), Alma::BibItem.new(
-        "holding_data" =>
-           { "holding_id" => "123",
-        }
-      )]
-      }
-      end
-
-      let(:document) {
-          {
-            "holdings_display" => ["456"]
-          }
-        }
-
-      it "does not include the item with that holding_id" do
-        unsuppressed_holdings(items_list, document)
-        expect(items_list["MAIN"].count).to eq(0)
-      end
-    end
-
-    context "all holding ids are found in document and api data" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "holding_data" =>
-             { "holding_id" => "456"
-          }
-      ), Alma::BibItem.new(
-        "holding_data" =>
-           { "holding_id" => "123",
-        }
-      )]
-      }
-      end
-
-      let(:document) {
-          {
-            "holdings_display" => ["456", "123"]
-          }
-        }
-
-      it "does not include the item with that holding_id" do
-        unsuppressed_holdings(items_list, document)
-        expect(items_list["MAIN"].count).to eq(2)
-      end
-    end
-  end
-
-  describe "#filter_unwanted_locations(items_list)" do
-    context "holding location is techserv" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "item_data" =>
-             { "location" => { "value" => "techserv" }
-           }
-          )]
-        }
-      end
-
-      it "does not return the item" do
-        filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(0)
-      end
-    end
-
-    context "holding location is UNASSIGNED" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "item_data" =>
-             { "location" => { "value" => "UNASSIGNED" }
-           }
-          )]
-        }
-      end
-
-      it "does not return the item" do
-        filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(0)
-      end
-    end
-
-    context "holding location is itref" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "item_data" =>
-             { "location" => { "value" => "intref" }
-           }
-          )]
-        }
-      end
-
-      it "does not return the item" do
-        filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(0)
-      end
-    end
-
-    context "holding location is asrs" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "item_data" =>
-             { "location" => { "value" => "asrs" }
-           }
-          )]
-        }
-      end
-
-      it "does not return the item" do
-        filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(0)
-      end
-    end
-
-    context "holding location is stacks" do
-      let(:items_list) do
-        { "MAIN" => [Alma::BibItem.new(
-          "item_data" =>
-             { "location" => { "value" => "stacks" }
-           }
-          )]
-        }
-      end
-
-      it "does not return the item" do
-        filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(1)
       end
     end
   end
