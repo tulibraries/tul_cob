@@ -66,7 +66,7 @@ module CatalogHelper
       css_class = format.to_s.parameterize.underscore
       formats << "<span class='#{css_class}'> #{format}</span>"
     end
-    formats.join("<span class='format-concatenator'>and</span>")
+    formats.join("<br />")
   end
 
   # Used to toggle the search bar form path.

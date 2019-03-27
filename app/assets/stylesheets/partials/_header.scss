@@ -222,7 +222,8 @@ a.advanced_search {
   border: 0;
   color: $red;
 	font-size: 0.875rem;
-	margin-top: -0.1875rem;
+	padding: 0.3125rem 0.4375rem 0.4375rem;
+	
 	@media(max-width: 768px) {
 		background-color: $red;
 	  border: 0;
@@ -292,8 +293,7 @@ div.sendto-item a.nav-link:active,
 
 #citeLink {
 	color: $red;
-	margin-top: -0.1875rem;
-	padding: 0.3125rem 0.4375rem;
+	padding: 0.3125rem 0.4375rem 0.4375rem;
 
 	@media (max-width: 768px) {
 		margin-top: 0;
