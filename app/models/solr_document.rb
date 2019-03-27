@@ -3,7 +3,7 @@
 class SolrDocument
   include Blacklight::Solr::Document
   include Blacklight::Solr::Document::RisFields
-  include AlmaDataHelper
+  include AvailabilityHelper
   include Citable
   include JsonLogger
   include Diggable
