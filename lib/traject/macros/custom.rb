@@ -523,8 +523,13 @@ module Traject
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
 
           if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?)
+            acc.replace([true])
+          end
+
+          if acc == [true] && ENV["TRAJECT_FULL_REINDEX"] == "yes"
             context.skip!
           end
+
         end
       end
 
