@@ -43,7 +43,7 @@ module AvailabilityHelper
     }.flatten
 
     document_items.collect { |item|
-      alma_data_array = alma_item_pids.zip(alma_item_availability)
+        alma_data_array = alma_item_pids.zip(alma_item_availability)
         alma_data_array.collect { |avail_item|
           if item["item_pid"] == avail_item.first
             item.merge!("availability": avail_item.last)
