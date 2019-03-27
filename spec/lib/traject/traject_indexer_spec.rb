@@ -842,8 +842,52 @@ RSpec.describe Traject::Macros::Custom do
   describe "#suppress_items" do
     let(:path) { "lost_missing_technical.xml" }
 
+    before do
+      subject.instance_eval do
+        to_field "suppress_items_b", suppress_items
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a single item is lost" do
+      it "maps lost record" do
+        expect(subject.map_record(records[0])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when a single item is missing" do
+      it "maps missing record" do
+        expect(subject.map_record(records[1])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when a single item is technical" do
+      it "maps technical record" do
+        expect(subject.map_record(records[2])).to eq("suppress_items_b" => [true])
+      end
+    end
+
+    context "when there are multiple items and one of the records is lost" do
+      it "does not map to the field" do
+        expect(subject.map_record(records[3])).to eq({})
+      end
+    end
+
+    context "when there are multiple items and one of the records is in asrs" do
+      it "does not map to the field" do
+        expect(subject.map_record(records[4])).to eq({})
+      end
+    end
+  end
+
+  describe "full reindex #suppress_items" do
+    let(:path) { "lost_missing_technical.xml" }
+
 
     before do
+      stub_const("ENV", ENV.to_hash.merge("TRAJECT_FULL_REINDEX" => "yes"))
       @writer = Traject::ArrayWriter.new
       @indexer = Traject::Indexer.new(writer: @writer) do
         to_field "suppress_items_b", suppress_items
