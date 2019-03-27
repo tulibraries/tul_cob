@@ -22,6 +22,7 @@ class AlmawsController < CatalogController
     @response = Blacklight::Alma::Response.new(bib_items, params)
 
     @items = bib_items.filter_missing_and_lost.grouped_by_library
+    @document_and_api_data = helpers.document_and_api_merged_results(@document, @items)
     @document_availability = helpers.document_availability_info(@document)
     #@holdings_summary = helpers.build_holdings_summary(@items, @document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")

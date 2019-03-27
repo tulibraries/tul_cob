@@ -20,11 +20,7 @@
           <span id="material type"><%= material_type(item) %></span>
         </div>
         <div>
-          <div class="spinner">
-            <i class="fa fa-spinner" role="spinbutton"></i>
-            <span>Loading Availability</span>
-          </div>
-          <div id="status" class="col-sm-12 col-md-3"><%= item.fetch("availability", "") %></div>
+          <div id="status" class="col-sm-12"><%= item.fetch("availability", "") %></div>
         </div>
       </div>
     <% end %>

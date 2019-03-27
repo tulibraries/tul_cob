@@ -8,12 +8,11 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "panel", "spinner", "request" ]
 
-  initialize() {
+  connect() {
     this.availability()
   }
 
   availability() {
-    $(this.spinnerTarget).show();
     fetch(this.data.get("url"), {
       credentials: "same-origin",
       headers: {
@@ -22,7 +21,6 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        $(this.spinnerTarget).remove();
         this.panelTarget.innerHTML = html
         $(this.panelTarget).parent().removeClass("hidden");
         $("#requests-container").removeClass("hidden");
