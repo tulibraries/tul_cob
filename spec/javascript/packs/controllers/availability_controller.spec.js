@@ -46,7 +46,7 @@ describe('AvailabilityController', () => {
       await  new Promise(resolve => {
         setTimeout(() => {
           const els = document.getElementsByClassName('spinner')
-          expect(els.length).toEqual(0)
+          expect(els.length).toEqual(1)
           resolve(true);
         }, 10);
       });
