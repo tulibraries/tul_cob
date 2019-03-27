@@ -23,7 +23,7 @@
 
 <% if document.fetch("availability_facet", []).include?("At the Library") %>
   <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
-    <div class="table-wrapper hidden border border-tan-border">
+    <div class="table-wrapper border border-tan-border">
       <div data-target="show.panel">
         <%= render "physical_availability_card", document: document, document_counter: document.id %>
       </div>

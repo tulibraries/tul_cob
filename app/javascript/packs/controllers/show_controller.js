@@ -8,7 +8,7 @@ import { Controller } from "stimulus"
 export default class extends Controller {
   static targets = [ "panel", "spinner", "request" ]
 
-  connect() {
+  initialize() {
     this.availability()
   }
 
@@ -22,7 +22,6 @@ export default class extends Controller {
       .then(response => response.text())
       .then(html => {
         this.panelTarget.innerHTML = html
-        $(this.panelTarget).parent().removeClass("hidden");
         $("#requests-container").removeClass("hidden");
         var mms_id = $("#record-view-iframe").data("availability-id");
         var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
