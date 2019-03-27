@@ -882,6 +882,55 @@ RSpec.describe Traject::Macros::Custom do
     end
   end
 
+  describe "full reindex #suppress_items" do
+    let(:path) { "lost_missing_technical.xml" }
+
+
+    before do
+      stub_const("ENV", ENV.to_hash.merge("TRAJECT_FULL_REINDEX" => "yes"))
+      @writer = Traject::ArrayWriter.new
+      @indexer = Traject::Indexer.new(writer: @writer) do
+        to_field "suppress_items_b", suppress_items
+      end
+
+      subject.instance_eval do
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a single item is lost" do
+      it "maps lost record" do
+        expect(@indexer.process_record(records[0]).skip?).to eq(true)
+      end
+    end
+
+    context "when a single item is missing" do
+      it "maps  record" do
+        expect(@indexer.process_record(records[1]).skip?).to eq(true)
+      end
+    end
+
+    context "when a single item is technical" do
+      it "maps technical record" do
+        expect(@indexer.process_record(records[2]).skip?).to eq(true)
+      end
+    end
+
+    context "when there are multiple items and one of the records is lost" do
+      it "does not map to the field" do
+        expect(@indexer.process_record(records[3]).skip?).to eq(false)
+      end
+    end
+
+    context "when there are multiple items and one of the records is in asrs" do
+      it "does not map to the field" do
+        expect(@indexer.process_record(records[4]).skip?).to eq(false)
+      end
+    end
+  end
+
   describe "#extract_oclc_number" do
     let(:path) { "oclc.xml" }
 
