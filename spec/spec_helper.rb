@@ -177,6 +177,12 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
+    
+    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content-test\/select?/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/web_content/solr_response_no_query.json"))
+
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
