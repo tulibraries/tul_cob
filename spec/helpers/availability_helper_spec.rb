@@ -30,8 +30,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
               { "value" => "1" },
             "policy" =>
               { "desc" => "" },
-            "physical_material_type" =>
-              { "desc" => "Book" },
             "location" =>
               { "value" => "reserve" },
             "requested" => false,
@@ -44,16 +42,14 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
 
-    context "item is a bound issue" do
+    context "item is a bound journal" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
           {
             "base_status" =>
               { "value" => "1" },
             "policy" =>
-              { "desc" => "" },
-            "physical_material_type" =>
-              { "desc" => "Bound Issue" },
+              { "desc" => "Bound Journal" },
             "requested" => false,
           }
        )
@@ -72,8 +68,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
               { "value" => "1" },
             "policy" =>
               { "desc" => "Music Restricted" },
-            "physical_material_type" =>
-              { "desc" => "" },
             "requested" => false,
           }
        )
