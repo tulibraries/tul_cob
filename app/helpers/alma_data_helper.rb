@@ -61,7 +61,12 @@ module AlmaDataHelper
   end
 
   def library_name_from_short_code(short_code)
-    Rails.configuration.libraries[short_code]
+    if !library_name = Rails.configuration.libraries[short_code]
+      Honeybadger.notify("Missing library name configuration for: #{short_code}")
+      library_name = short_code
+    end
+
+    library_name
   end
 
   def alternative_call_number(item)
