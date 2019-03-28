@@ -8,7 +8,7 @@ module AvailabilityHelper
   def availability_status(item)
     if item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
-          item.physical_material_type.fetch("desc", "") == "Bound Issue" ||
+          item.circulation_policy == "Bound Journal" ||
           item.circulation_policy == "Music Restricted"
         content_tag(:span, "", class: "check") + "Library Use Only"
       else
