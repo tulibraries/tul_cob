@@ -2,6 +2,7 @@ default: &default
   MAIN: "Paley Library"
   AMBLER: "Ambler Campus Library"
   BLOCKSON: "Blockson Collection"
+  DSC: "Digital Scholarship Center"
   CLAEDTECH: "CLA Ed Tech Library"
   GINSBURG: "Ginsburg Health Science Library"
   HARRISBURG: "Harrisburg Campus Library"
