@@ -1,3 +1,6 @@
+<%# This template is used for the initial load of availability information in the availability panel %>
+<%# It gets replaced by a similar template in almaws/item.html.erb, so changes need to be in both places %>
+
 <% @document_availability = document_availability_info(document) %>
 
 <% unless @document_availability.all?(&:empty?) %>
