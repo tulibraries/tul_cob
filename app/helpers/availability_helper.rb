@@ -88,15 +88,20 @@ module AvailabilityHelper
 
   def library(item)
     item["current_library"] ? item["current_library"] : item["permanent_library"]
-    end
+  end
 
   def library_name_from_short_code(short_code)
-    Rails.configuration.libraries[short_code]
+    if !library_name = Rails.configuration.libraries[short_code]
+      Honeybadger.notify("Missing library name configuration for: #{short_code}")
+      library_name = short_code
+    end
+
+    library_name
   end
 
   def location(item)
     item["current_location"] ? item["current_location"] : item["permanent_location"]
-    end
+  end
 
   def location_status(item)
     location_name_from_short_code(item)
