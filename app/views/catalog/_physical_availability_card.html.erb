@@ -1,27 +1,34 @@
 <% @document_availability = document_availability_info(document) %>
 
-<% sort_order_for_holdings(@document_availability).each do |key, items| %>
-  <div id="availability-container" class="m-0" data-controller="availability">
-    <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
-      <div class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>
-    </div>
+<% unless @document_availability.all?(&:empty?) %>
 
-    <% items.each do |item| %>
-      <div class="row avail-info-rows border-bottom border-tan-border">
-        <div id="<%= location_name_from_short_code(item) %>" class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
-        <div id="call_num" class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
-        <div class="col-sm-12 col-md-5">
-          <span id="description"><%= description(item) %></span>
-          <span id="note"><%= public_note(item) %></span>
-          <span id="material type"><%= material_type(item) %></span>
-        </div>
-        <div>
-          <div class="spinner">
-            <i class="fa fa-spinner" role="spinbutton"></i>
-            <span>Loading Availability</span>
+  <% sort_order_for_holdings(@document_availability).each do |key, items| %>
+    <div id="availability-container" class="m-0" data-controller="availability">
+      <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
+        <div class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>
+      </div>
+
+      <% items.each do |item| %>
+        <div class="row avail-info-rows border-bottom border-tan-border">
+          <div id="<%= location_name_from_short_code(item) %>" class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
+          <div id="call_num" class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
+          <div class="col-sm-12 col-md-5">
+            <span id="description"><%= description(item) %></span>
+            <span id="note"><%= public_note(item) %></span>
+            <span id="material type"><%= material_type(item) %></span>
+          </div>
+          <div>
+            <div class="spinner">
+              <i class="fa fa-spinner" role="spinbutton"></i>
+              <span>Loading Availability</span>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
+  <% else %>
+    <div class="border-bottom p-1">
+      We are unable to find availability information for this record. Please contact the library for more information.
+    </div>
 <% end %>
