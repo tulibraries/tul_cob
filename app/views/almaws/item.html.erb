@@ -13,6 +13,7 @@
     <div id="availability-container" class="m-0" data-controller="availability">
       <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
         <div class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>
+        <div class="holdings-summary"><%= summary_list(items) %></div>
       </div>
 
       <% items.each do |item| %>
@@ -31,9 +32,12 @@
       <% end %>
       <%= render :partial => "paginate_compact", :object => @response %>
     </div>
+
+    <div class="border-bottom p-1">
+      <% unless @document["holdings_with_no_items_display"] %>
+        <%= render_holdings_summary(items) %>
+      <% end %>
+      We are unable to find availability information for this record. Please contact the library for more information.
+    </div>
   <% end %>
-<% else %>
-  <div class="border-bottom p-1">
-    We are unable to find availability information for this record. Please contact the library for more information.
-  </div>
 <% end %>
