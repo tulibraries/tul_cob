@@ -443,16 +443,16 @@ RSpec.describe Traject::Macros::Custom do
 
         context "with purchase order field true" do
           let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='902'>
-    <subfield code='a'>EBC-POD</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>Foo</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-</record>
+            <record>
+              <datafield ind1='1' ind2=' ' tag='902'>
+                <subfield code='a'>EBC-POD</subfield>
+                <subfield code='d'>d</subfield>
+              </datafield>
+              <datafield ind1='1' ind2=' ' tag='100'>
+                <subfield code='a'>Foo</subfield>
+                <subfield code='q'>q</subfield>
+              </datafield>
+            </record>
                          " }
 
           it "adds a purchase order availability" do
@@ -466,8 +466,8 @@ RSpec.describe Traject::Macros::Custom do
 
         context "with purchase order field false" do
           let(:record_text) { "
-<record>
-</record>
+            <record>
+            </record>
                          " }
 
           it "does not add purchase order availability" do
@@ -692,7 +692,6 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
   end
-
 
   describe "#extract_subject_display" do
     before do
@@ -1012,28 +1011,28 @@ RSpec.describe Traject::Macros::Custom do
 
     context "All fields available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='130'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>a</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='240'>
-    <subfield code='a'>a</subfield>
-    <subfield code='s'>s</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='130'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>a</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='240'>
+            <subfield code='a'>a</subfield>
+            <subfield code='s'>s</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps only the 130 field" do
@@ -1043,24 +1042,24 @@ RSpec.describe Traject::Macros::Custom do
 
     context "Only 130 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>a</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='240'>
-    <subfield code='a'>a</subfield>
-    <subfield code='s'>s</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>a</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='240'>
+            <subfield code='a'>a</subfield>
+            <subfield code='s'>s</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps 100 . 240" do
@@ -1070,20 +1069,20 @@ RSpec.describe Traject::Macros::Custom do
 
     context "Only 130 and 100 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='240'>
-    <subfield code='a'>a</subfield>
-    <subfield code='s'>s</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='240'>
+            <subfield code='a'>a</subfield>
+            <subfield code='s'>s</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps 110 . 240" do
@@ -1093,20 +1092,20 @@ RSpec.describe Traject::Macros::Custom do
 
     context "Only 130 and 240 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>a</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>a</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps 100 . 245" do
@@ -1116,20 +1115,20 @@ RSpec.describe Traject::Macros::Custom do
 
     context "Only 130 and 240 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>a</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>a</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps 100 . 245" do
@@ -1139,16 +1138,16 @@ RSpec.describe Traject::Macros::Custom do
 
     context "130, 240 and 100 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='110'>
-    <subfield code='a'>a</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='110'>
+            <subfield code='a'>a</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps 110 . 245" do
@@ -1158,12 +1157,12 @@ RSpec.describe Traject::Macros::Custom do
 
     context "130, 240, 100, 110 not available" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='245'>
-    <subfield code='a'>a</subfield>
-    <subfield code='p'>p</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='245'>
+            <subfield code='a'>a</subfield>
+            <subfield code='p'>p</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "skips the map" do
@@ -1186,16 +1185,16 @@ RSpec.describe Traject::Macros::Custom do
 
     context "with mathing 902a field" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='902'>
-    <subfield code='a'>EBC-POD</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>Foo</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='902'>
+            <subfield code='a'>EBC-POD</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>Foo</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps to true" do
@@ -1205,16 +1204,16 @@ RSpec.describe Traject::Macros::Custom do
 
     context "without a matching 902a field" do
       let(:record_text) { "
-<record>
-  <datafield ind1='1' ind2=' ' tag='902'>
-    <subfield code='a'>Buzz</subfield>
-    <subfield code='d'>d</subfield>
-  </datafield>
-  <datafield ind1='1' ind2=' ' tag='100'>
-    <subfield code='a'>Foo</subfield>
-    <subfield code='q'>q</subfield>
-  </datafield>
-</record>
+        <record>
+          <datafield ind1='1' ind2=' ' tag='902'>
+            <subfield code='a'>Buzz</subfield>
+            <subfield code='d'>d</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='100'>
+            <subfield code='a'>Foo</subfield>
+            <subfield code='q'>q</subfield>
+          </datafield>
+        </record>
                      " }
 
       it "maps to false" do
@@ -1224,8 +1223,8 @@ RSpec.describe Traject::Macros::Custom do
 
     context "without a 902a field" do
       let(:record_text) { "
-<record>
-</record>
+        <record>
+        </record>
                      " }
 
       it "maps to false" do
@@ -1234,4 +1233,36 @@ RSpec.describe Traject::Macros::Custom do
     end
   end
 
+  describe "#extract_item_info" do
+    let(:path) { "extract_item.xml" }
+    before(:each) do
+      subject.instance_eval do
+        to_field "items_json_display", extract_item_info
+
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "when a single ITM field is present" do
+      it "produces json output for subfield data" do
+        expect(subject.map_record(records[0])).to eq(
+          "items_json_display" => [ { item_pid: "23423620820003811" }.to_json ]
+        )
+      end
+    end
+
+    context "when a single HLD field is present" do
+      it "produces json output for subfield data" do
+        expect(subject.map_record(records[1])).to eq(
+          "items_json_display" => [ { holding_id: "22318864040003811",
+                                      current_library: "AMBLER",
+                                      current_location: "stacks",
+                                      call_number: "HJ2051.A595"
+                                    }.to_json ]
+        )
+      end
+    end
+  end
 end

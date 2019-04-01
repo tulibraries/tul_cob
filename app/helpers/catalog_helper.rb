@@ -273,24 +273,6 @@ module CatalogHelper
       render_electronic_notes(electronic_resources.first).present?
   end
 
-  def check_holdings_library_name(document)
-    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
-  end
-
-  def check_holdings_call_number(document)
-    document.fetch("call_number_display", []).first
-  end
-
-  def check_holdings_location(document, library)
-    locations_array = []
-    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
-    locations.each { |k, v|
-      shelf = Rails.configuration.locations.dig(k, v)
-      locations_array << shelf
-    }
-    locations_array
-  end
-
   def check_for_full_http_link(args)
     [args[:document][args[:field]]].flatten.compact.map { |field|
       if field["url"].present?

@@ -4493,22 +4493,6 @@
 			<subfield code="x">NOTE(CHECKIN): Ambler | VEN. NOTE: 006 is for sunday edition | FREQUENCY: d | SCODE3: -</subfield>
 			<subfield code="8">22315150360003811</subfield>
 		</datafield>
-		<datafield ind1=" " ind2=" " tag="ITM">
-			<subfield code="r">22251927700003811</subfield>
-			<subfield code="b">1</subfield>
-			<subfield code="h">0</subfield>
-			<subfield code="g">stacks</subfield>
-			<subfield code="t">ISSUE</subfield>
-			<subfield code="9">39074017687179</subfield>
-			<subfield code="e">stacks</subfield>
-			<subfield code="8">23251927570003811</subfield>
-			<subfield code="c">v.37-38 (Jul.-Nov. 1967-Mar. 1968)</subfield>
-			<subfield code="a">2</subfield>
-			<subfield code="q">2017-06-20 06:39:09</subfield>
-			<subfield code="i">NA1 .A563</subfield>
-			<subfield code="d">MAIN</subfield>
-			<subfield code="f">MAIN</subfield>
-		</datafield>
 		<datafield ind1=" " ind2="0" tag="HLD866">
 			<subfield code="a">Current two months only.</subfield>
 			<subfield code="8">22315150360003811</subfield>
