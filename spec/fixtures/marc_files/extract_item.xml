@@ -19,4 +19,20 @@
 		</datafield>
   </record>
 
+  <record>
+    <!-- 2. Item with ITM and HLD field -->
+    <controlfield tag="001">5</controlfield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="8">23423620820003811</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">HJ2051</subfield>
+      <subfield code="i">.A595</subfield>
+      <subfield code="8">22318864040003811</subfield>
+    </datafield>
+  </record>
+
+
 </collection>

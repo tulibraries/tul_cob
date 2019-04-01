@@ -1264,5 +1264,19 @@ RSpec.describe Traject::Macros::Custom do
         )
       end
     end
+
+    context "when both ITM and HLD field is present" do
+      it "produces json output for subfield data" do
+        expect(subject.map_record(records[2])).to eq(
+          "items_json_display" => [ { holding_id: "22318864040003811",
+                                      current_library: "AMBLER",
+                                      current_location: "stacks",
+                                      call_number: "HJ2051.A595"
+                                    }.to_json,
+                                    { item_pid: "23423620820003811" }.to_json ]
+        )
+      end
+    end
+
   end
 end
