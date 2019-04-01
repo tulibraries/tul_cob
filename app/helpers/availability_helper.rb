@@ -129,7 +129,8 @@ module AvailabilityHelper
     }.uniq
      .join(", ")
 
-    "Description: #{summary_list}"
+     summary_list.present? ? "Description: #{summary_list}" : ""
+     
   end
 
   def render_holdings_summary(items)
