@@ -998,31 +998,6 @@ RSpec.describe Traject::Macros::Custom do
     end
   end
 
-  describe "#extract_holdings_summary" do
-    before do
-      subject.instance_eval do
-        to_field "holdings_summary_display", extract_holdings_summary
-        settings do
-          provide "marc_source.type", "xml"
-        end
-      end
-    end
-
-    context "when a record doesn't have summary holdings" do
-      let(:path) { "subject_topic_missing.xml" }
-      it "does not map holdings_summary_display" do
-        expect(subject.map_record(records[0])).to eq({})
-      end
-    end
-
-    context "when a record has summary holdings" do
-      let(:path) { "holdings_summary.xml" }
-      it "maps data from HLD866 fields in expected way" do
-        expect(subject.map_record(records[0])).to eq("holdings_summary_display" => ["1993/94-|22318864040003811", "1971/72- Latest in Paley Ref. Stacks.|22318863960003811", "Latest only.|22318863060003811"])
-      end
-    end
-  end
-
   describe "#extract_work_access_point" do
     let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 

@@ -1,14 +1,16 @@
 <% doc_presenter = show_presenter(document) %>
+<% @document_availability = document_availability_info(document) %>
+
 <% if document["holdings_with_no_items_display"] %>
 <div class="card other_libraries border border-tan-border">
-  <% check_holdings_library_name(document).each do |library| %>
+  <% sort_order_for_holdings(@document_availability).each do |key, items| %>
       <row class="card-title check-holdings-heading mb-0">
-        <%= library_name_from_short_code(library) %> (For Items with Limited Information)
+        <%= library_name_from_short_code(key) %> (For Items with Limited Information)
       </row>
     <div class="card-body check-holdings-body border-top border-bottom border-tan-border">
-      <% check_holdings_location(document, library).each do |holding| %>
+      <% items.each do |item| %>
         <div class="row">
-          <div class="check-holdings-col col-sm-3"><%= holding  %></div>
+          <div class="check-holdings-col col-sm-3"><%= location_name_from_short_code(item)  %></div>
           <div class="check-holdings-col col-sm-3"><%= check_holdings_call_number(document) %></div>
           <div class="check-holdings-col col-sm-6"><%# render_holdings_summary(document) %></div>
         </div>

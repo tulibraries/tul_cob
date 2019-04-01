@@ -116,21 +116,7 @@ module AvailabilityHelper
 
   def document_availability_info(document)
     document_items = document.fetch("items_json_display", [])
-
-    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
-        summary.split("|")
-      }.map { |summary|
-      [summary.last, summary.first]
-    }
-
-    document_items.collect { |item|
-      holdings_summaries.collect { |summary|
-        if item["holding_id"] == summary.first
-          item.merge!("summary": summary.last)
-        end
-      }.compact
-    }
-      .flatten
+    document_items.collect { |item| item }
       .reject(&:blank?)
       .reject { |item| missing_or_lost?(item) }
       .reject { |item| unwanted_locations(item) }
@@ -155,7 +141,6 @@ module AvailabilityHelper
       end
     }
   end
-
 
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}

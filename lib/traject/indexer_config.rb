@@ -210,7 +210,6 @@ to_field "location_display", extract_marc("HLDbc")
 to_field "holdings_display", extract_marc("HLD8")
 to_field "holdings_with_no_items_display", extract_holdings_with_no_items
 to_field "suppress_items_b", suppress_items
-to_field "holdings_summary_display", extract_holdings_summary
 to_field "items_json_display", extract_item_info
 
 # Identifier fields
