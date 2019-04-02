@@ -95,7 +95,7 @@ gem "bootsnap"
 gem "honeybadger"
 gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
-gem "bootstrap-select-rails", git: "https://github.com/D1ceWard/bootstrap-select-rails.git", ref: "0e40fbc34fc27a1fba9abb7f1d8bc941cbdfe056"
+gem "bootstrap-select-rails"
 gem "httparty"
 gem "breadcrumbs_on_rails"
 
