@@ -4,6 +4,7 @@ require "traject_plus"
 require "traject_plus/json_reader.rb"
 require "traject_plus/macros"
 require "traject_plus/macros/json"
+require "nokogiri"
 
 extend TrajectPlus::Macros
 extend TrajectPlus::Macros::JSON
@@ -28,16 +29,47 @@ to_field "id", ->(rec, acc) {
 }
 
 to_field "category_facet", extract_json("$.type")
-# Can I do a select from one of multiple json fields?
-to_field "title_display", extract_json("$.attributes.name")
-to_field "title_display", extract_json("$.attributes.title")
-# Can I do a select from one of multiple json fields?
-to_field "description_display", extract_json("$.attributes.job_title")
-to_field "description_display", extract_json("$.attributes.description")
+
+# Seems like Manifold JSON should define a label attribute?
+# https://tulibdev.atlassian.net/browse/MAN-245
+to_field "title_display", ->(rec, acc) {
+  title_field = {
+    "person" => ["attributes", "name"],
+    "building" => ["attributes", "name"],
+    "event" => ["attributes", "title"]
+  }
+
+  type = rec.fetch("type")
+  acc << rec.dig(*title_field[type])
+}
+
+#person specific
+to_field "job_title_display", extract_json("$.attributes.job_title")
+
+to_field "description_display", ->(rec, acc) {
+  if rec.dig("attributes", "description")
+    acc << Nokogiri::HTML(rec.dig("attributes", "description")).text
+  end
+}
 
 to_field "phone_number_display", extract_json("$.attributes.phone_number")
-to_field "photo_display", extract_json("$.attributes.thumbnail_image")
 
+#to_field "photo_display", extract_json("$.attributes.thumbnail_image")
+# Manifold JSONAPI needs standarized name for thumbnails
+# https://tulibdev.atlassian.net/browse/MAN-244
+to_field "photo_display", ->(rec, acc) {
+  title_field = {
+    "person" => ["attributes", "thumbnail_photo"],
+    "building" => ["attributes", "thumbnail_photo"],
+    "event" => ["attributes", "thumbnail_image"]
+  }
+
+  type = rec.fetch("type")
+  acc << rec.dig(*title_field[type])
+}
+
+
+to_field "url_display", extract_json("$.links.self")
 # we need update times from the JSON responses.
 # Ticketed in MAN-242
 each_record do |record, context|

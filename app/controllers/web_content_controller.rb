@@ -17,12 +17,12 @@ class WebContentController < CatalogController
     config.index.title_field = "title_display"
 
     # Facet fields
-    config.add_facet_field "category_facet", label: "Category", limit: true, show: true
+    config.add_facet_field "category_facet", label: "Category", limit: true, collapse: false
 
     # Index fields
-    config.add_index_field "description_display", label: "Description", raw: true
+    config.add_index_field "job_title_display", label: "Job Title"
+    config.add_index_field "description_display", label: "Description"
     config.add_index_field "phone_number_display", label: "Phone Number"
-    config.add_index_field "photo_display", label: "Thumbnail"
 
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
