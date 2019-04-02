@@ -8,6 +8,7 @@ class WebContentController < CatalogController
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:web_content_url]
+    config.track_search_session = false
     config.default_solr_params = {
         wt: "json",
         fl: %w[
