@@ -502,19 +502,6 @@ module Traject
         end
       end
 
-      def extract_holdings_with_no_items
-        lambda do |rec, acc|
-          holding_ids = rec.fields("HLD").map  { |field| field["8"] }.compact.uniq
-          item_holding_ids = rec.fields("ITM").map { |field| field["r"] }.compact.uniq
-          holding_ids_with_no_items = holding_ids - item_holding_ids
-          holding_ids_with_no_items.each  do |holding_id|
-            rec.fields("HLD").select { |field| field["8"] == holding_id }.each do |field|
-              acc << "#{field['b']} #{field['c']}"
-            end
-          end
-        end
-      end
-
       def suppress_items
         lambda do |rec, acc, context|
           asrs = rec.fields("ITM").select { |field| field["g"] == "asrs" }
@@ -549,19 +536,37 @@ module Traject
         end
       end
 
-      def extract_holdings_summary
-        lambda do |rec, acc|
-          rec.fields(["HLD866"]).each do |f|
-            selected_subfields = [f["a"], f["8"]].join("|")
-            acc << selected_subfields
-          end
-          acc
-        end
-      end
-
       def extract_item_info
         lambda do |rec, acc, context|
+          holding_ids = rec.fields("HLD").map  { |field| field["8"] }.compact.uniq
+          item_holding_ids = rec.fields("ITM").map { |field| field["r"] }.compact.uniq
+          holding_ids_with_no_items = holding_ids - item_holding_ids
+
+          holding_ids_with_no_items.each  do |holding_id|
+            rec.fields("HLD").select { |field| field["8"] == holding_id }.each do |field|
+              summary = rec.fields(["HLD866"]).select { |h| h["8"] == field["8"] }
+                .map { |h| h["a"] }
+                .first
+
+              selected_subfields = {
+                  holding_id: field["8"],
+                  current_library: field["b"],
+                  current_location: field["c"],
+                  call_number: field["h"].to_s + field["i"].to_s,
+                  summary: summary }
+                .delete_if { |k, v| v.blank? }
+                .to_json
+
+
+              acc << selected_subfields
+            end
+          end
+
           rec.fields("ITM").each do |f|
+            summary = rec.fields(["HLD866"]).select { |h| h["8"] == f["r"] }
+              .map { |h| h["a"] }
+              .first
+
             selected_subfields = {
               item_pid: f["8"],
               item_policy: f["a"],
@@ -580,9 +585,11 @@ module Traject
               due_back_date: f["p"],
               holding_id: f["r"],
               material_type: f["t"],
+              summary: summary,
               process_type: f["u"] }
               .delete_if { |k, v| v.blank? }
               .to_json
+
             acc << selected_subfields
           end
         end

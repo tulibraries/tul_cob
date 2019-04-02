@@ -273,24 +273,6 @@ module CatalogHelper
       render_electronic_notes(electronic_resources.first).present?
   end
 
-  def check_holdings_library_name(document)
-    document.fetch("holdings_with_no_items_display", []).map(&:split).to_h.keys
-  end
-
-  def check_holdings_call_number(document)
-    document.fetch("call_number_display", []).first
-  end
-
-  def check_holdings_location(document, library)
-    locations_array = []
-    locations = document.fetch("holdings_with_no_items_display", []).select { |location| location.include?(library) }.map { |field| field.split() }
-    locations.each { |k, v|
-      shelf = Rails.configuration.locations.dig(k, v)
-      locations_array << shelf
-    }
-    locations_array
-  end
-
   def check_for_full_http_link(args)
     [args[:document][args[:field]]].flatten.compact.map { |field|
       if field["url"].present?
@@ -356,40 +338,6 @@ module CatalogHelper
       host: alma_domain,
       path: "/view/uresolver/#{alma_institution_code}/openurl",
       query: query_defaults.merge(query).to_query).to_s
-  end
-
-
-  def render_holdings_summary(document)
-    if holdings_summary_information(document).present?
-      content_tag(:div, "Description: " + holdings_summary_information(document), id: "holdings-summary")
-    else
-      content_tag(:div, "We are unable to find availability information for this record. Please contact the library for more information.", id: "error-message")
-    end
-  end
-
-  def holdings_summary_information(document)
-    field = document.fetch("holdings_summary_display", [])
-    unless field.empty?
-      field.first.split("|").first
-    end
-  end
-
-  def build_holdings_summary(items, document)
-    holdings_summaries = document.fetch("holdings_summary_display", []).map { |summary|
-      summary.split("|")
-    }.map { |summary|
-      [summary.last, summary.first]
-    }.to_h
-
-    items.map { |item|
-        library = item.first
-        summaries = item.last.map { |v| v["holding_data"]["holding_id"] }
-          .uniq.select { |id| holdings_summaries.keys.include?(id) }
-          .map { |holding| holdings_summaries[holding] }
-          .join(", ")
-
-        [ library, ("Summary: #{summaries}".sub(/Summary: $/, "") unless summaries.blank?) ]
-      }.to_h
   end
 
   def single_link_builder(field)
