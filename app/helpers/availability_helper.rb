@@ -128,6 +128,25 @@ module AvailabilityHelper
       .group_by { |item| library(item) }
   end
 
+  def summary_list(items)
+    summary_list = items.collect { |item|
+      item.fetch("summary", "")
+    }.uniq
+     .join(", ")
+
+    summary_list.present? ? "Description: #{summary_list}" : ""
+  end
+
+  def render_holdings_summary(items)
+    items.collect { |item|
+      if item["summary"].present?
+        "Description: " + item["summary"]
+      else
+        "We are unable to find availability information for this record. Please contact the library for more information."
+      end
+    }
+  end
+
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
     sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")

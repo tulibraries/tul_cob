@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+	<record>
+		<!-- 0. Item with ITM field -->
+    <controlfield tag="001">4</controlfield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="8">23423620820003811</subfield>
+		</datafield>
+	</record>
+  <record>
+    <!-- 1. Item with HLD field -->
+    <controlfield tag="001">5</controlfield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">AMBLER</subfield>
+			<subfield code="c">stacks</subfield>
+			<subfield code="h">HJ2051</subfield>
+			<subfield code="i">.A595</subfield>
+			<subfield code="8">22318864040003811</subfield>
+		</datafield>
+  </record>
+
+  <record>
+    <!-- 2. Item with ITM and HLD field -->
+    <controlfield tag="001">5</controlfield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="8">23423620820003811</subfield>
+    </datafield>
+    <datafield ind1="0" ind2=" " tag="HLD">
+      <subfield code="b">AMBLER</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">HJ2051</subfield>
+      <subfield code="i">.A595</subfield>
+      <subfield code="8">22318864040003811</subfield>
+    </datafield>
+  </record>
+
+
+</collection>
