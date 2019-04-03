@@ -92,33 +92,6 @@
   max-width: 53.125rem;
 }
 
-.no-holdings {
-  margin-bottom: 0;
-}
-
-.other_libraries {
-
-  @media(max-width: 485px) {
-    text-align: left;
-  }
-}
-
-.check-holdings-heading {
-  background-color: $tan;
-  color: $black;
-  font-size: 0.875rem;
-  font-weight: bold;
-  padding: 0.625rem;
-}
-
-.check-holdings-body {
-  padding: 0.625rem;
-}
-
-.check-holdings-col {
-  display: table-cell;
-}
-
 .no-item-info {
   padding: 0.625rem;
 }

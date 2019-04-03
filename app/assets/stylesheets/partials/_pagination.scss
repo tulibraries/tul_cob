@@ -1,12 +1,21 @@
 @import "_vars.scss";
 
 /* PAGINATION */
-.modal-only .page_links {
+.modal-only {
   display: none;
 }
 
-.modal-dialog .modal-only .page_links {
+.modal-dialog .modal-only {
   display: block;
+}
+
+.modal-dialog #availability-container {
+  border-bottom: 1px solid $tan-border;
+  border-left: 1px solid $tan-border;
+
+  .row {
+    margin: 0;
+  }
 }
 
 .pagination  {

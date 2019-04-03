@@ -3,12 +3,16 @@
 <%# This template has access to @items returned by the alma api, so it has slightly different information that the other template %>
 <%# Any changes related to the alma api should only be made here %>
 
-<button type="button" class="sr-only blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-  <span aria-hidden="true">&times;</span>
-</button>
-
 <div id="request-url-data-<%= @mms_id %>" class="hidden" data-requests-url="<%= request_options_path(@mms_id, @pickup_locations, @request_level) %>"></div>
 <% unless @document_availability.all?(&:empty?) %>
+  <div class="availability-modal">
+    <div class="modal-only">
+      <button type="button" class="blacklight-modal-close close" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
+        <span aria-hidden="true">&times;</span>
+      </button>
+
+      <%= render :partial => "paginate_compact", :object => @response %>
+    </div>
   <% sort_order_for_holdings(@document_availability).each do |key, items| %>
     <div id="availability-container" class="m-0" data-controller="availability">
       <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
@@ -36,4 +40,5 @@
 
   <% else %>
     <div id: "error-message">We are unable to find availability information for this record. Please contact the library for more information.</div>
+</div>
 <% end %>
