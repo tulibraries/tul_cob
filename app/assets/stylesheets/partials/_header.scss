@@ -78,7 +78,8 @@ div.site-message {
 	}
 }
 
-ul.user-util-list {
+ul.user-util-list,
+.faq-link {
 	justify-content: center;
 
 	@media(min-width:600px) {
