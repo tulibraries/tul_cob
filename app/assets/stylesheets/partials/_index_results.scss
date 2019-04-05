@@ -32,27 +32,14 @@
   }
 }
 
-dl.blacklight-availability {
-  margin-top: 0.6875rem;
+dt.index-label {
+  text-align: right;
+
+  @media(max-width: 600px) {
+    text-align: left;
+ 	}
 }
 
-.avail-dt {
-  margin-left: 2.0rem;
-
-  @media(max-width: 992px) {
-    margin-left: 0;
-  }
-
-  @media(max-width: 768px) {
-    margin-left: 0;
-    text-align: left !important;
-  }
-}
-
-.library-dd {
-  padding-left: 0.625rem;
-
-  @media(max-width: 768px) {
-    padding-left: 1.875rem;
-  }
+dd {
+  text-align: left;
 }
