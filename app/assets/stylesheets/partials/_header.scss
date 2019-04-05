@@ -190,6 +190,10 @@ a.advanced_search {
 	font-size: 0.75rem;
 }
 
+#back_to_search:hover {
+	color: $red !important;
+}
+
 #record-page-nav-tools {
 	padding-top: 1.25rem;
 
@@ -234,7 +238,7 @@ a.advanced_search {
 }
 
 .sendto-menu {
-	background-color: $white;
+	background-color: transparent;
   border: 0;
   color: $red;
 	padding: 0;
@@ -250,13 +254,6 @@ a.advanced_search {
 	@media(max-width: 768px) {
 		color: $white;
 	}
-}
-
-div.sendto-item a.nav-link:hover,
-div.sendto-item a.nav-link:active,
-.sendto-item.dropdown-item,
-.dropdown-item:active  {
-	background-color: $white;
 }
 
 #nav-tools {
