@@ -2,10 +2,11 @@
 
 /* BENTO STYLES */
 .bento_compartment {
+	width: 30%;
 
 	@media(max-width: 991px) {
 		margin: 0 auto;
-		width: 40% !important;
+		width: 50% !important;
 	}
 
 	@media(max-width: 768px) {
@@ -17,7 +18,7 @@
 	background-color: #CECED0;
 	color: $bento-header;
 	font-family: "PT Sans";
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	height: 3.125rem;
 	padding: 0.75rem;
 
@@ -32,8 +33,9 @@
 }
 
 .bento_item_title {
-	font-size: 0.875rem !important;
-	font-weight: bold;
+	font-family: "PT Sans";
+	font-size: 0.9375rem !important;
+	font-weight: bolder;
 
 	a {
 		text-decoration: underline;
@@ -41,7 +43,7 @@
 }
 
 .authors {
-	font-weight: bold;
+	font-weight: 600;
 	margin-top: 0;
 }
 
@@ -60,10 +62,6 @@
 	.bento-search-engine {
 	padding: 0.625rem;
 	}
-}
-
-.full-results {
-	text-decoration: underline;
 }
 
 .total-results,
