@@ -53,7 +53,7 @@ module AvailabilityHelper
       .flatten
       .reject(&:blank?)
       .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_locations(item) }
+      .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
   end
 
@@ -81,9 +81,9 @@ module AvailabilityHelper
     !!process_type.match(/MISSING|LOST_LOAN/)
   end
 
-  def unwanted_locations(item)
+  def unwanted_library_locations(item)
     location = item.fetch("current_location", "")
-    !!location.match(/techserv|UNASSIGNED|intref|asrs/)
+    !!location.match(/techserv|UNASSIGNED|intref|asrs/) || library(item) == "EMPTY"
   end
 
   def library(item)
@@ -124,7 +124,7 @@ module AvailabilityHelper
     document_items.collect { |item| item }
       .reject(&:blank?)
       .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_locations(item) }
+      .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
   end
 
