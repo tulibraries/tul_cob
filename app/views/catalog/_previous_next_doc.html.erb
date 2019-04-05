@@ -2,11 +2,11 @@
 <div id="record-page-nav-tools" class="d-flex align-items-start">
   <% if current_search_session %>
     <div class="search-widgets flex-sm-column flex-md-row">
-      <%= link_back_to_catalog class: "btn btn-sm btn-back-to-search border border-light-grey", id: "back_to_search" %>
-      <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn btn-sm bg-dark-blue text-white" %>
+      <%= link_back_to_catalog class: "btn btn-back-to-search border border-light-grey text-red", id: "back_to_search" %>
+      <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn bg-dark-blue text-white" %>
     </div>
   <% end %>
-  <div class="pagination-search-widgets ml-auto">
+  <div class="pagination-search-widgets ml-auto align-self-center pb-3">
   <% if @search_context[:prev] || @search_context[:next] %>
     <div class="page-links">
       <%= link_to_previous_document @search_context[:prev] %> |
@@ -15,7 +15,7 @@
     </div>
   <% end %>
   </div>
-  <div id="nav-tools" class="nav-tools">
+  <div id="nav-tools" class="nav-tools pr-4">
     <%= render partial: "show_tools_navbar" %>
   </div>
 </div>

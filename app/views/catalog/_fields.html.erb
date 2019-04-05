@@ -17,3 +17,7 @@
   <% end -%>
 <% end -%>
 </dl>
+
+<% if controller_name === "catalog" || controller_name === "books" || controller_name === "journals" %>
+  <span class="row document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></span>
+<% end %>
