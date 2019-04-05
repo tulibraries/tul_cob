@@ -52,9 +52,9 @@ module PrimoCentralHelper
 
   def bento_availability(item)
     if item.has_direct_link?
-      link_to "Online", single_link_builder(bento_link(item)), class: "btn btn-sm bento-avail-btn", title: "This link opens the resource in a new tab.", target: "_blank"
+      link_to "Online", single_link_builder(bento_link(item)), class: "btn btn-sm bento-avail-btn mt-1", title: "This link opens the resource in a new tab.", target: "_blank"
     else
-      link_to "Online", primo_central_document_url(item), class: "btn btn-sm bento-avail-btn"
+      link_to "Online", primo_central_document_url(item), class: "btn btn-sm bento-avail-btn mt-1"
     end
   end
 
