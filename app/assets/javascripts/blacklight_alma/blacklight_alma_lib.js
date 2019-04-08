@@ -54,6 +54,10 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = holding['library'];
+   if (library == 'ASRS') {
+     library = "Paley Library";
+   }
+
    var availability = holding['availability'];
 
    if (availability == "available") {
