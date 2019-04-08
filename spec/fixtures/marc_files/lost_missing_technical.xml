@@ -331,4 +331,15 @@
 			<subfield code="f">MAIN</subfield>
 		</datafield>
 	</record>
+
+  <!-- 5. Single holding in EMPTY library -->
+  <record>
+    <controlfield tag="001">991014245629703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="HLD">
+      <subfield code="b">EMPTY</subfield>
+      <subfield code="c">UNASSIGNED</subfield>
+      <subfield code="x">RETENTION: -</subfield>
+      <subfield code="8">22289831490003811</subfield>
+    </datafield>
+  </record>
 </collection>

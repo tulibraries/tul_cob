@@ -369,7 +369,22 @@ RSpec.describe AvailabilityHelper, type: :helper do
     }
 
       it "correctly identifies techserv items" do
-        expect(unwanted_locations(item)).to be true
+        expect(unwanted_library_locations(item)).to be true
+      end
+    end
+
+    context "an item is an unwanted library" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "stacks",
+      "current_library" => "EMPTY",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }
+    }
+
+      it "correctly identifies unwanted library" do
+        expect(unwanted_library_locations(item)).to be true
       end
     end
 
@@ -385,7 +400,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     }
 
       it "correctly identifies other locations" do
-        expect(unwanted_locations(item)).to be false
+        expect(unwanted_library_locations(item)).to be false
       end
     end
   end
