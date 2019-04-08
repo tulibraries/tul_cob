@@ -4,7 +4,7 @@ module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when "MAIN", "LAW", "MEDIA", "PRESSER"
+      when "MAIN", "LAW", "MEDIA", "PRESSER", "ASRS"
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -27,7 +27,7 @@ module CobAlma
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        ["MAIN", "LAW", "MEDIA", "PRESSER"]
+        ["MAIN", "LAW", "MEDIA", "PRESSER", "ASRS"]
       when :AMBLER
         ["AMBLER"]
       when :HSL
