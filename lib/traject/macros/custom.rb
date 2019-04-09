@@ -511,7 +511,7 @@ module Traject
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
           unwanted_library = rec.fields("HLD").select { |field| field["b"] == "EMPTY" || field["c"] == "UNASSIGNED" }
 
-          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?) || !unassigned.empty?
+          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty? || !unassigned.empty?)
             acc.replace([true])
           elsif rec.fields("HLD").length == 1 && !unwanted_library.empty?
             acc.replace([true])
