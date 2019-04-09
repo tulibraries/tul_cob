@@ -880,6 +880,12 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[4])).to eq({})
       end
     end
+
+    context "when single holding is in empty library" do
+      it "maps technical record" do
+        expect(subject.map_record(records[5])).to eq("suppress_items_b" => [true])
+      end
+    end
   end
 
   describe "#extract_oclc_number" do

@@ -521,8 +521,11 @@ module Traject
           lost = rec.fields("ITM").select { |field| field["u"] == "LOST_LOAN" }
           missing = rec.fields("ITM").select { |field| field["u"] == "MISSING" }
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
-          #field = rec.fields("ITM").map { |field| field["u"] }.first
+          unwanted_library = rec.fields("HLD").select { |field| field["b"] == "EMPTY" || field["c"] == "UNASSIGNED" }
+
           if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?)
+            acc.replace([true])
+          elsif rec.fields("HLD").length == 1 && !unwanted_library.empty?
             acc.replace([true])
           end
         end
