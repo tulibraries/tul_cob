@@ -172,7 +172,7 @@ default: &default
   KIOSK:
     kiosk: Laptop Kiosks
   ASRS:
-    ASRS: stacks
+    ASRS: Stacks
     ASRS_TEST: ASRS_TEST
     UNASSIGNED: Location information not available
 
