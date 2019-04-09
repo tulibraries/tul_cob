@@ -187,7 +187,7 @@ a.advanced_search {
 /* RECORD NAV TOOLS */
 #start_over,
 #back_to_search {
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 }
 
 #back_to_search:hover {
@@ -227,7 +227,7 @@ a.advanced_search {
   border: 0;
   color: $red;
 	font-size: 0.875rem;
-	padding: 0.3125rem 0.4375rem 0.4375rem;
+	padding: 0.4725rem 0.625rem;
 
 	@media(max-width: 768px) {
 		background-color: $red;
@@ -238,8 +238,6 @@ a.advanced_search {
 }
 
 .sendto-menu {
-	background-color: transparent;
-  border: 0;
   color: $red;
 	padding: 0;
 
@@ -291,7 +289,7 @@ a.advanced_search {
 
 #citeLink {
 	color: $red;
-	padding: 0.3125rem 0.4375rem 0.4375rem;
+	padding: 0.4725rem 0.625rem;
 
 	@media (max-width: 768px) {
 		margin-top: 0;
