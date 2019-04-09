@@ -6,7 +6,7 @@
 
 	@media(max-width: 991px) {
 		margin: 0 auto;
-		width: 40% !important;
+		width: 45% !important;
 	}
 
 	@media(max-width: 768px) {
@@ -68,6 +68,7 @@
 .total-results,
 .online-only {
 	background-color: white;
+	color: $red;
 	margin-left: 0.5rem;
 	padding: 0.625rem 0.5rem;
 }
