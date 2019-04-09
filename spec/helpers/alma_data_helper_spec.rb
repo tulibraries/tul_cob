@@ -737,7 +737,7 @@ RSpec.describe AlmaDataHelper, type: :helper do
 
       it "does not return the item" do
         filter_unwanted_locations(items_list)
-        expect(items_list["MAIN"].count).to eq(0)
+        expect(items_list["MAIN"].count).to eq(1)
       end
     end
 

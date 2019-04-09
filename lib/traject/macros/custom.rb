@@ -517,13 +517,14 @@ module Traject
 
       def suppress_items
         lambda do |rec, acc|
-          asrs = rec.fields("ITM").select { |field| field["g"] == "asrs" }
+          asrs = rec.fields("ITM").select { |field| field["f"] == "ASRS" && field["g"] == "ASRS_TEST" }
+          unassigned = rec.fields("ITM").select { |field| field["g"] == "UNASSIGNED" }
           lost = rec.fields("ITM").select { |field| field["u"] == "LOST_LOAN" }
           missing = rec.fields("ITM").select { |field| field["u"] == "MISSING" }
           technical = rec.fields("ITM").select { |field| field["u"] == "TECHNICAL" }
           unwanted_library = rec.fields("HLD").select { |field| field["b"] == "EMPTY" || field["c"] == "UNASSIGNED" }
 
-          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty?)
+          if rec.fields("ITM").length == 1 && (!lost.empty? || !missing.empty? || !technical.empty? || !asrs.empty? || !unassigned.empty?)
             acc.replace([true])
           elsif rec.fields("HLD").length == 1 && !unwanted_library.empty?
             acc.replace([true])
