@@ -342,4 +342,35 @@
       <subfield code="8">22289831490003811</subfield>
     </datafield>
   </record>
+
+  <!-- 6. PR #1108 One unassigned -->
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <controlfield tag="001">991026206569703811</controlfield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22311821240003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="g">serials</subfield>
+      <subfield code="9">39074501003446</subfield>
+      <subfield code="e">serials</subfield>
+      <subfield code="8">23311820530003811</subfield>
+      <subfield code="c">315 JL-SE 1986</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 11:30:46</subfield>
+      <subfield code="i">WB 100 .N34</subfield>
+      <subfield code="d">GINSBURG</subfield>
+      <subfield code="f">GINSBURG</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="r">22311838780003811</subfield>
+      <subfield code="b">0</subfield>
+      <subfield code="g">UNASSIGNED</subfield>
+      <subfield code="e">UNASSIGNED</subfield>
+      <subfield code="8">23311838770003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2017-06-20 11:30:46</subfield>
+      <subfield code="i">Shelved by title</subfield>
+      <subfield code="d">EMPTY</subfield>
+      <subfield code="f">EMPTY</subfield>
+    </datafield>
+  </record>
 </collection>

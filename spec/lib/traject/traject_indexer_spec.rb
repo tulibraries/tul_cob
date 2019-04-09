@@ -885,6 +885,12 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(records[5])).to eq("suppress_items_b" => [true])
       end
     end
+
+    context "when multiple item fields but single unassinged" do
+      it "doesn't suppress this file" do
+        expect(subject.map_record(records[6])).to eq({})
+      end
+    end
   end
 
   describe "full reindex #suppress_items" do
