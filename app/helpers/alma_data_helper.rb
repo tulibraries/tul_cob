@@ -117,7 +117,7 @@ module AlmaDataHelper
   def filter_unwanted_locations(items_list)
     items_list.each_pair { |library, items|
       items_list[library] = items.reject { |item|
-        item if item.holding_location.match?(/techserv|UNASSIGNED|intref/) || library == "EMPTY"
+        item if item.holding_location.match?(/techserv|UNASSIGNED|intref|ASRS_TEST/) || library == "EMPTY"
       }
     }
   end
