@@ -83,7 +83,7 @@ module AvailabilityHelper
 
   def unwanted_library_locations(item)
     location = item.fetch("current_location", "")
-    !!location.match(/techserv|UNASSIGNED|intref/) || library(item) == "EMPTY"
+    !!location.match(/techserv|UNASSIGNED|intref|ASRS_TEST/) || library(item) == "EMPTY"
   end
 
   def library(item)
