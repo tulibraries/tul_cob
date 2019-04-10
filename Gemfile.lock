@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 06e423aa9573b20cc6c4f5d592c3ef0eef1016b7
+  revision: a346aebc34038517613c7542bd41febac0861af0
   specs:
     primo (0.1.0)
       httparty
@@ -297,7 +297,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2018.0812)
+    mime-types-data (3.2019.0331)
     mimemagic (0.3.3)
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
