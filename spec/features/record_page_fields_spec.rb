@@ -23,7 +23,7 @@ RSpec.feature "RecordPageFields" do
 
     scenario "link appears one time" do
       visit "catalog/#{item['doc_id']}"
-      expect( all("#purchase_order_button-991036931835603811").count ).to eq(1)
+      expect(all("#purchase_order_button-991036931835603811").count).to eq(1)
     end
   end
 
