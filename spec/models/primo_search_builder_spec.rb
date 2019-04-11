@@ -147,7 +147,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       let(:params) { ActionController::Parameters.new(search_field: "foo") }
 
       it "should always transform unknown search_fields to any" do
-        expect(primo_central_parameters["query"]["q"]["field"]).to eq("any")
+        expect(primo_central_parameters["query"]["q"]["field"]).to eq(:any)
       end
     end
   end
