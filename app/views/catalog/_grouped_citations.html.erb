@@ -12,7 +12,7 @@
   </div>
 
 
-  <div class="tab-content">
+  <div class="tab-content p-4">
     <div role="tabpanel" class="tab-pane" id="titles">
       <% @documents.each do |document| %>
         <%= render partial: "catalog/single_citation", locals: { document: document } %>
