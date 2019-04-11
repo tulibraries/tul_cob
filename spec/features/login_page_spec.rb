@@ -12,7 +12,7 @@ RSpec.feature "Login Page" do
 
   it "does not have the typical login form" do
     visit "/users/sign_in"
-    expect(page).not_to have_button("Log inh")
+    expect(page).not_to have_button("Log in")
   end
 
 
