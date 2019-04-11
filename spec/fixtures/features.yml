@@ -420,11 +420,9 @@ rarestacks:
   doc_id: "991012036369703811"
   library: "Special Collections Research Center"
   location: "rarestacks"
-
-
-
-# Work split between developers (Prevent Git Merge overwrite hack)
-
+purchase_order:
+  doc_id: "991036931835603811"
+  purchase_order_availability: "EBC-POD 2018_10 Load"
 govdoc:
   doc_id: "991012132499760696"
   govdoc: "GA 1.5/2:GAO-05-1031 T"
