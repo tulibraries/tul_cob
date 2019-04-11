@@ -36,15 +36,12 @@ module MultiSourceBookmarks
     # Replacing TN_ in ids to add backward compatibility.
     document_map = document_list
       .map { |d| [d.id.gsub(/^TN_/, ""), d] }.to_h
-    @document_list = @bookmarks.map { |b| document_map[b.document_id] }.compact
-
+    @documents = @bookmarks.map { |b| document_map[b.document_id] }.compact
     # Capture full document list in response for correct current_bookmarks count.
-    @documents = @document_list
-    @response["docs"] = @documents if @response
+    @response.instance_variable_set(:@documents, @documents) if @response
 
     # Just display all the bookmarks in one page
     @response["rows"] = @bookmarks.count if @response
-    @docs = @documents
     [@response, @documents]
   end
 

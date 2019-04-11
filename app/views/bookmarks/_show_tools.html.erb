@@ -11,7 +11,7 @@
 <% if show_doc_actions? %>
 <% @sendto = {} %>
       <ul id="tools-navbar">
-        <%= render_show_doc_actions @document_list do |config, inner| %>
+        <%= render_show_doc_actions @documents do |config, inner| %>
           <% @sendto[config.key] = inner %>
         <% end %>
 
