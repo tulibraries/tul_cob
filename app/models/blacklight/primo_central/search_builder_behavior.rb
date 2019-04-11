@@ -167,7 +167,7 @@ module Blacklight::PrimoCentral
           description: :desc,
         }
           .with_indifferent_access
-          .fetch(field, field) || :any
+          .fetch(field, :any)
       end
 
       def is_advanced_search?
