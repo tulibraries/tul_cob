@@ -45,8 +45,8 @@ class DatabasesController < CatalogController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = { 'spellcheck.dictionary': "title" }
       field.solr_local_parameters = {
-        qf: "$title_t_qf $alt_names_t_qf",
-        pf: "$title_t_pf $alt_names_t_pf"
+        qf: "$title_t_qf,$alt_names_t_qf",
+        pf: "$title_t_pf,$alt_names_t_pf"
       }
     end
 
