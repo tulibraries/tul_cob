@@ -8,7 +8,9 @@ require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
 require "pry"
+require "coveralls"
 
+Coveralls.wear!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__
