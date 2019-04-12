@@ -18,6 +18,6 @@
 <% end -%>
 </dl>
 
-<% if controller_name === "catalog" || controller_name === "books" || controller_name === "journals" %>
+<% if [ "catalog", "books", "journals", "bookmarks" ].include?(controller_name) %>
   <span class="row document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></span>
 <% end %>
