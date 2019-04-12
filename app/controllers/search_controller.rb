@@ -17,8 +17,7 @@ class SearchController < CatalogController
       engines = %i( books articles journals databases more cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
-      @results = split_and_merge(searcher.results)
-      @response = @results["resource_types"]&.first&.custom_data
+      @results = process_results(searcher.results)
     end
 
     respond_to do |format|
@@ -35,8 +34,6 @@ class SearchController < CatalogController
   end
 
   private
-    # Splits results for the more engine into two bento_boxes.
-    # Merges cdm totals with more results.
     def split_and_merge(results)
       # We only care about cdm results count not bento box.
       cdm_total_items = results["cdm"]&.total_items
@@ -47,18 +44,13 @@ class SearchController < CatalogController
         items.total_items = results["more"].total_items
         items.display_configuration = results["more"].display_configuration
 
-        resource_types = results["more"].last
-        resource_types.custom_data.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
-
-        resource_types.engine_id = "resource_types"
-        resource_types = ::BentoSearch::Results.new([resource_types])
-        resource_types.engine_id = "resource_types"
-        resource_types.total_items = results["more"].total_items
-        resource_types.display_configuration = BentoSearch.get_engine("resource_types").configuration[:for_display]
+        # Grabbing and setting @response in order to render facets.
+        # Merges cdm totals into the @response.
+        @response = results["more"].last.custom_data
+        @response.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
 
         results.merge(
           "more" => items,
-          "resource_types" => resource_types,
           ).except("cdm")
       else
         results.except("cdm")
