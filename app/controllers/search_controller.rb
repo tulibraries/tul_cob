@@ -34,7 +34,7 @@ class SearchController < CatalogController
   end
 
   private
-    def split_and_merge(results)
+    def process_results(results)
       # We only care about cdm results count not bento box.
       cdm_total_items = results["cdm"]&.total_items
 
@@ -47,7 +47,9 @@ class SearchController < CatalogController
         # Grabbing and setting @response in order to render facets.
         # Merges cdm totals into the @response.
         @response = results["more"].last.custom_data
-        @response.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
+        @response.merge_facet(name: "format", value: "Digital Collections", hits: cdm_total_items)
+        formats = @response.dig("facet_counts", "facet_fields", "format")
+        @resource_types = formats.each_slice(2).to_h.keys
 
         results.merge(
           "more" => items,

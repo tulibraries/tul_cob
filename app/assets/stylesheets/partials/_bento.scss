@@ -57,18 +57,14 @@
 	padding: 0.125rem 0.625rem;
 }
 
-.resource_types  {
-	width: 100% !important;
-
-	.bento-search-engine {
-	padding: 0.625rem;
-	}
-}
-
 .total-results,
 .online-only {
 	background-color: white;
 	color: $red;
 	margin-left: 0.5rem;
 	padding: 0.625rem 0.5rem;
+}
+
+.bento-resource-types {
+	width: 100% !important;
 }
