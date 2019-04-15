@@ -11,17 +11,14 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
+  # Overrides Blacklight method to allow facet icons to be displayed
   def render_facet_value(facet_field, item, options = {})
   path = path_for_facet(facet_field, item)
 
   html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
 
-  if item.value == "digital_collections"
-    html_options.merge!(target: "_blank")
-  end
-
   content_tag(:span, class: "facet-label") do
-    link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
+    link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path)
   end + render_facet_count(item.hits)
 end
 

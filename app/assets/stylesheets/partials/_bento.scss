@@ -81,4 +81,20 @@
 .bento-resource-list-item {
 	font-family: "PT Sans";
 	font-size: 1.2rem;
+	width: 30%;
+
+	a {
+		color: $black;
+		text-decoration: underline;
+	}
+
+	@media(max-width: 991px) {
+		width: 40%;
+	}
+
+	@media(max-width: 600px) {
+		width: 100%;
+	}
+
+
 }
