@@ -11,6 +11,20 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
+  def render_facet_value(facet_field, item, options = {})
+  path = path_for_facet(facet_field, item)
+
+  html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
+
+  if item.value == "digital_collections"
+    html_options.merge!(target: "_blank")
+  end
+
+  content_tag(:span, class: "facet-label") do
+    link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
+  end + render_facet_count(item.hits)
+end
+
   def render_bento_format_facet_value(item, options = {})
     path = path_for_facet("format", item)
 
@@ -24,6 +38,7 @@ module FacetsHelper
       link_to_unless(options[:suppress_link], facet_display_value("format", item), path, html_options)
     end
   end
+
 
   def render_selected_facet_value(facet_field, item)
     remove_href = search_action_path(search_state.remove_facet_params(facet_field, item))
