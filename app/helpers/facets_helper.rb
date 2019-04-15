@@ -11,8 +11,8 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
-  def render_format_value(facet_field, item, options = {})
-    path = path_for_facet(facet_field, item)
+  def render_bento_format_facet_value(item, options = {})
+    path = path_for_facet("format", item)
 
     html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
 
@@ -21,7 +21,7 @@ module FacetsHelper
     end
 
     content_tag(:span, class: "facet-label") do
-      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
+      link_to_unless(options[:suppress_link], facet_display_value("format", item), path, html_options)
     end
   end
 

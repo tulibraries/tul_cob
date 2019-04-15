@@ -47,7 +47,7 @@ class SearchController < CatalogController
         # Grabbing and setting @response in order to render facets.
         # Merges cdm totals into the @response.
         @response = results["more"].last.custom_data
-        @response.merge_facet(name: "format", value: "Digital Collections", hits: cdm_total_items)
+        @response.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
 
         results.merge(
           "more" => items,

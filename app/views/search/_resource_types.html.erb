@@ -5,7 +5,7 @@
     <h2 class="bento-resource-types pb-3 border-bottom border-red">View other resource types in the catalog</h2>
     <ul class="pt-2 m-0 pl-0 list-inline clearfix">
       <% format_facet.items.each do |item| -%>
-        <li class="bento-resource-list-item list-inline-item col-sm-5 col-md-4 col-lg-3 float-left"><%= render_format_value("format", item) %></li>
+        <li class="bento-resource-list-item list-inline-item col-sm-5 col-md-4 col-lg-3 float-left"><%= render_bento_format_facet_value(item) %></li>
       <% end %>
     </ul>
   </div>
