@@ -66,5 +66,19 @@
 }
 
 .bento-resource-types {
-	width: 100% !important;
+	font-family: "PT Sans";
+	font-size: 1.4rem;
+}
+
+.bento-resource-container {
+	margin: 0 9.375rem;
+
+	@media(max-width: 768px) {
+		margin: 0 1.2rem;
+	}
+}
+
+.bento-resource-list-item {
+	font-family: "PT Sans";
+	font-size: 1.2rem;
 }

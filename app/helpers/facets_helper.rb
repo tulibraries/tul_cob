@@ -11,7 +11,7 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
-  def render_facet_value(facet_field, item, options = {})
+  def render_format_value(facet_field, item, options = {})
     path = path_for_facet(facet_field, item)
 
     html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
@@ -22,7 +22,7 @@ module FacetsHelper
 
     content_tag(:span, class: "facet-label") do
       link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
-    end + render_facet_count(item.hits)
+    end
   end
 
   def render_selected_facet_value(facet_field, item)

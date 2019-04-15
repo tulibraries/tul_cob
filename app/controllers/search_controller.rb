@@ -48,8 +48,6 @@ class SearchController < CatalogController
         # Merges cdm totals into the @response.
         @response = results["more"].last.custom_data
         @response.merge_facet(name: "format", value: "Digital Collections", hits: cdm_total_items)
-        formats = @response.dig("facet_counts", "facet_fields", "format")
-        @resource_types = formats.each_slice(2).to_h.keys
 
         results.merge(
           "more" => items,
