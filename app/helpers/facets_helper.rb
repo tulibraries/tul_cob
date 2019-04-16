@@ -13,14 +13,18 @@ module FacetsHelper
 
   # Overrides Blacklight method to allow facet icons to be displayed
   def render_facet_value(facet_field, item, options = {})
-  path = path_for_facet(facet_field, item)
+    path = path_for_facet(facet_field, item)
 
-  html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
+    html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
 
-  content_tag(:span, class: "facet-label") do
-    link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path)
-  end + render_facet_count(item.hits)
-end
+    if item.value == "digital_collections"
+      html_options.merge!(target: "_blank")
+    end
+
+    content_tag(:span, class: "facet-label") do
+      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path)
+    end + render_facet_count(item.hits, html_options)
+  end
 
   def render_bento_format_facet_value(item, options = {})
     path = path_for_facet("format", item)
