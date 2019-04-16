@@ -2,7 +2,7 @@ en:
   purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
   blacklight:
     application_name: "Library Search"
-    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{books} and %{journals}."
+    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{journals}."
     scrc: "Special Collections Research Center"
     scrc_link: "https://library.temple.edu/scrc"
     blockson: "Charles L. Blockson Afro-American Collection"
@@ -127,12 +127,9 @@ en:
       nice_name: "Articles"
     journals:
       nice_name: "Journals"
-    books:
-      nice_name: "Books"
     application_name: "Library Bento Search Beta"
-    explanation_html: "<strong>Library Search:</strong> results from %{books}, %{articles}, %{journals}, and %{more}."
-    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{books}, %{articles}, %{journals}, and %{more}."
-    books: "Books"
+    explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
+    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{articles}, %{journals}, and %{more}."
     articles: "Articles"
     journals: "Journals"
     more: "More"
@@ -174,14 +171,6 @@ en:
     podiatry_illiad_html: "and Krausz Library of Podiatric Medicine patrons should use %{href}."
     podiatry_illiad_href: "ILLiad for Podiatry Library"
     podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
-
-  books:
-    section_heading_html: "<strong>Books</strong> includes print and electronic books, government documents, archival materials, and more."
-    explanation_html: "<strong>Books</strong> includes print and electronic books, government documents, materials from the %{href}, and more."
-    explanation_href: "Special Collections Research Center"
-    explanation_link: "https://library.temple.edu/scrc"
-    zero_results:
-      title_html: "<strong>No book results</strong> found for your search."
 
   primo_central:
     link_to_resource: "Link to Resource"

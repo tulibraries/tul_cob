@@ -61,8 +61,6 @@ module ApplicationHelper
 
   def bento_icons(engine_id)
     case engine_id
-    when "books"
-      content_tag(:span, "", class: "bento-icon bento-book m-3")
     when "articles"
       content_tag(:span, "", class: "bento-icon bento-article m-3")
     when "journals"
@@ -92,12 +90,6 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} online journals", url, class: "full-results"
-    when "books"
-      url = search_catalog_path(q: params[:q], f: {
-        format: ["Book"],
-        availability_facet: ["Online"]
-      })
-      link_to "View all #{total} ebooks", url, class: "full-results"
     when "more", "resource_types"
       ""
     when "articles"
@@ -154,8 +146,6 @@ module ApplicationHelper
 
   def explanation_translations(controller_name)
     case controller_name
-    when "books"
-      t("#{controller_name}.explanation_html", href: link_to(t("books.explanation_href"), t("books.explanation_link"), target: "_blank"))
     when "primo_central"
       t("articles.explanation_html")
     when "journals"

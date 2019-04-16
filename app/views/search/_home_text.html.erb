@@ -1,6 +1,5 @@
 <div id="getting-started">
   <p class="section-heading"><%= t("bento.section_heading_html",
-    books: link_to(t("bento.books"), search_books_path, class: "text-red"),
     articles: link_to(t("bento.articles"), search_path, class: "text-red"),
     journals: link_to(t("bento.journals"), search_journals_path, class: "text-red"),
     more: link_to(t("bento.more"), search_catalog_path, class: "text-red")) %></p>
@@ -9,7 +8,6 @@
   <p><%= t("bento.library_search_answer") %></p>
   <ul class="everything-home-list">
     <li>
-      <%= link_to(t("bento.books"), search_books_path, class: "text-red") %>,
       <%= link_to(t("bento.journals"), search_journals_path, class: "text-red") %>, and
       <%= link_to(t("bento.more"), search_catalog_path, class: "text-red") %>
     </li>

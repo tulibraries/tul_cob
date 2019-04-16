@@ -18,7 +18,7 @@ module BentoSearch
 
     def proc_minus_books_journals
       Proc.new { |builder|
-        processor_chain = [ :no_books_or_journals ]
+        processor_chain = [ :no_journals ]
         builder.append(*processor_chain)
       }
     end
