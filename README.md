@@ -3,7 +3,7 @@
 A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
 
 [![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
-[![Coverage Status](https://coveralls.io/repos/github/tulibraries/tul_cob/badge.svg?branch=master)]
+[![Coverage Status](https://coveralls.io/repos/github/tulibraries/tul_cob/badge.svg?branch=master)](https://coveralls.io/github/tulibraries/tul_cob?branch=master)
 
 ## Getting started
 
