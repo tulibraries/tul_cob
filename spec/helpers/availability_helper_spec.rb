@@ -278,7 +278,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
   describe "#material_type(item)" do
     context "item includes physical_material_type" do
-      let(:item) { { "material_type" => "Sound Recording" } }
+      let(:item) { { "material_type" => "RECORD" } }
 
       it "displays physical_material_type" do
         expect(material_type(item)).to eq "Sound Recording"
@@ -286,7 +286,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
 
     context "item does NOT include PHYSICAL_TYPE_EXCLUSIONS" do
-      let(:item) { { "material_type" => "Book" } }
+      let(:item) { { "material_type" => "BOOK" } }
 
       it "displays nothing" do
         expect(material_type(item)).to eq nil
