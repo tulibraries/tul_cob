@@ -31,8 +31,8 @@ BentoSearch.register_engine("databases") do |conf|
   end
 end
 
-BentoSearch.register_engine("more") do |conf|
-  conf.engine = "BentoSearch::MoreEngine"
+BentoSearch.register_engine("books_and_media") do |conf|
+  conf.engine = "BentoSearch::BooksAndMediaEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
     display.linked_engines = ["resource_types"]

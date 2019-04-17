@@ -67,7 +67,7 @@ module ApplicationHelper
       content_tag(:span, "", class: "bento-icon bento-journal m-3")
     when "databases"
       content_tag(:span, "", class: "bento-icon bento-database m-3")
-    when "more"
+    when "books_and_media"
       content_tag(:span, "", class: "bento-icon bento-more m-3")
     end
   end
@@ -90,7 +90,7 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} online journals", url, class: "full-results"
-    when "more", "resource_types"
+    when "books_and_media", "resource_types"
       ""
     when "articles"
       url = url_for(

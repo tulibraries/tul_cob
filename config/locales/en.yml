@@ -127,6 +127,7 @@ en:
       nice_name: "Articles"
     journals:
       nice_name: "Journals"
+    resource_types_header: "View all resource types in this search"
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{articles}, %{journals}, and %{more}."

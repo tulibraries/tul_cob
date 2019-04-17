@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module BentoSearch
-  class MoreEngine < BlacklightEngine
+  class BooksAndMediaEngine < BlacklightEngine
     def search_implementation(args)
       query = args.fetch(:query, "")
 
-      user_params = { q: query, per_page: 2 }
+      user_params = { q: query, per_page: 3 }
       config = blacklight_config
       search_service = search_service_class.new(config: config, user_params: user_params)
 

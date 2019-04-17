@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe SearchController, type: :controller do
 
   describe "#process_results" do
-    let(:results) { BentoSearch::ConcurrentSearcher.new(:more, :cdm).search("foo").results }
+    let(:results) { BentoSearch::ConcurrentSearcher.new(:books_and_media, :cdm).search("foo").results }
 
     before {
       stub_request(:get, /contentdm/)

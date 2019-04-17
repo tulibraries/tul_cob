@@ -1,13 +1,13 @@
 <nav class="path-links border-bottom border-light-grey bg-white" role="navigation">
   <div class="d-md-flex justify-content-center text-center">
     <%= render_nav_link(:everything_path, "Everything", "navbar_everything") %>
+    <%= render_nav_link(:search_catalog_path, "Books & Media", "navbar_more") %>
     <%= render_nav_link(:search_path, "Articles", "navbar_articles") %>
     <%= render_nav_link(:search_databases_path, "Databases", "navbar_databases") %>
     <%= render_nav_link(:search_journals_path, "Journals", "navbar_journals") %>
 
     <%# Need to update the path and id when integration work is competed  %>
     <%= render_nav_link(:search_catalog_path, "Website", "navbar_more") %>
-    
-    <%= render_nav_link(:search_catalog_path, "More", "navbar_more") %>
+
   </div>
 </nav>
