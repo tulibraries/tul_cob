@@ -179,6 +179,13 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/merge_document_and_api\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

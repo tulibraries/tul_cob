@@ -35,9 +35,10 @@
           </div>
         </div>
       <% end %>
-      <%= render :partial => "paginate_compact", :object => @response %>
     </div>
   <% end %>
+
+  <%= render :partial => "paginate_compact", :object => @response %>
 
   <% else %>
     <div id: "error-message">We are unable to find availability information for this record. Please contact the library for more information.</div>

@@ -34,12 +34,12 @@ module AvailabilityHelper
 
   def document_and_api_merged_results(document, items_list)
     document_items = document.fetch("items_json_display", [])
-    alma_item_pids = items_list.collect { |k, v|
-          v.map { |item| item["item_data"]["pid"] }
-        }.flatten
+    alma_item_pids = items_list.all.collect { |item|
+      item["item_data"]["pid"]
+    }.flatten
 
-    alma_item_availability = items_list.collect { |k, v|
-      v.collect { |item| availability_status(item) }
+    alma_item_availability = items_list.all.collect { |item|
+      availability_status(item)
     }.flatten
 
     document_items.collect { |item|
@@ -68,7 +68,7 @@ module AvailabilityHelper
     type = item["material_type"]
 
     if !type.match(PHYSICAL_TYPE_EXCLUSIONS)
-      return item["material_type"]
+      return Rails.configuration.material_types[type]
     end
   end
 
