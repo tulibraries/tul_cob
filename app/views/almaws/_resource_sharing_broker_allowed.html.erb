@@ -9,6 +9,6 @@
 <div id="collapseFour-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options)%>">
   <div class="card-body">
     <p><%= t("requests.resource_sharing_broker_text") %></p>
-      <%= link_to(t("requests.resource_sharing_broker_link"), request_options.ez_borrow_link, id: "ez-borrow-button", class: "btn btn-primary request-button search-results-request-btn", target: "_blank") %>
+      <%= link_to(t("requests.resource_sharing_broker_link"), request_options.ez_borrow_link, id: "ez-borrow-button", class: "btn btn-primary request-button search-results-request-btn text-white", target: "_blank") %>
   </div>
 </div>
