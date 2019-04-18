@@ -32,9 +32,11 @@
   </head>
   <body class="bg-background-grey <%= render_body_class %>">
     <div id="page-wrapper">
-      <%= render :partial => "shared/banner" %>
-
       <%= render :partial => "shared/header_navbar" %>
+
+      <div class="p-3">
+        <%= render :partial=>'/shared/flash_msg' %>
+      </div>
 
       <%= render partial: "shared/modal" %>
 

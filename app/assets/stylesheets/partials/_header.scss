@@ -28,7 +28,7 @@ div.site-message {
 	color: $black;
 	font-family: "Crimson Text", serif;
 	font-size: 2.0rem;
-	margin-left: 0.625rem;	//  text-decoration: none;
+	margin-left: 0.625rem;
 
 	@media(max-width: 485px) {
 	 font-size: 1.4rem;
@@ -76,7 +76,8 @@ div.site-message {
 	}
 }
 
-ul.user-util-list {
+ul.user-util-list,
+.faq-link {
 	justify-content: center;
 	padding: 0.625rem 0 0 0;
 }
@@ -186,7 +187,11 @@ a.advanced_search {
 /* RECORD NAV TOOLS */
 #start_over,
 #back_to_search {
-	font-size: 0.75rem;
+	font-size: 0.875rem;
+}
+
+#back_to_search:hover {
+	color: $red !important;
 }
 
 #record-page-nav-tools {
@@ -222,8 +227,8 @@ a.advanced_search {
   border: 0;
   color: $red;
 	font-size: 0.875rem;
-	padding: 0.3125rem 0.4375rem 0.4375rem;
-	
+	padding: 0.4725rem 0.625rem;
+
 	@media(max-width: 768px) {
 		background-color: $red;
 	  border: 0;
@@ -233,8 +238,6 @@ a.advanced_search {
 }
 
 .sendto-menu {
-	background-color: $white;
-  border: 0;
   color: $red;
 	padding: 0;
 
@@ -249,13 +252,6 @@ a.advanced_search {
 	@media(max-width: 768px) {
 		color: $white;
 	}
-}
-
-div.sendto-item a.nav-link:hover,
-div.sendto-item a.nav-link:active,
-.sendto-item.dropdown-item,
-.dropdown-item:active  {
-	background-color: $white;
 }
 
 #nav-tools {
@@ -293,7 +289,7 @@ div.sendto-item a.nav-link:active,
 
 #citeLink {
 	color: $red;
-	padding: 0.3125rem 0.4375rem 0.4375rem;
+	padding: 0.4725rem 0.625rem;
 
 	@media (max-width: 768px) {
 		margin-top: 0;

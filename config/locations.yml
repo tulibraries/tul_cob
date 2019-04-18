@@ -171,6 +171,10 @@ default: &default
     UNASSIGNED: Location information not available
   KIOSK:
     kiosk: Laptop Kiosks
+  ASRS:
+    ASRS: Stacks
+    ASRS_TEST: ASRS_TEST
+    UNASSIGNED: Location information not available
 
 test:
   <<: *default

@@ -6,19 +6,22 @@
 </nav>
 
 <nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red pt-0 pb-0" role="navigation">
-  <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap">
+  <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap align-items-top">
       <h1 class="col-sm-auto">
         <%= link_to("Library Search", everything_path, id: "catalog-header") %>
       </h1>
       <div class="ml-auto col-sm-auto">
         <%= render partial: "/user_util_links" %>
       </div>
+      <div class="col-sm-auto text-white faq-link">
+        <%= faq_link %>
+      </div>
   </div>
 </nav>
 
 <nav id="search-navbar" class="navbar navbar-default bg-tan border-bottom border-red" role="navigation">
   <div class="container mx-auto">
-    <%= render "search_form" %>
+    <%= render_search_bar %>
   </div>
 </nav>
 

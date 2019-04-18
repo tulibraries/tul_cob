@@ -1,12 +1,12 @@
-<div class="panel-body online-panel">
-  <table id="record-page-online" class="table table-responsive border-bottom">
-    <h5 class="online-panel-heading"><%= label %></h5>
-    <tbody>
+<div class="card online-card rounded-0 border-0 p-0">
+  <div id="record-page-online" class="table table-responsive">
+    <h5 class="online-card-heading card-title mb-0 border border-tan-border border-bottom-0"><%= label %></h5>
+    <div class="border border-tan-border">
       <% rows.each do |value| %>
-        <tr class="online-list-items">
-          <td><%= value %></td>
-        </tr>
+        <div class="online-list-items p-2">
+          <div><%= value %></div>
+        </div>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  </div>
 </div>

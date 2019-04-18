@@ -3,6 +3,9 @@
 class UsersController < ApplicationController
   include JsonLogger
 
+  rescue_from ActionView::Template::Error,
+    with: :no_account_found
+
   def account
     no_cache
     @user = current_user
@@ -83,5 +86,15 @@ class UsersController < ApplicationController
       logger.debug "Multi Renewed: #{r.has_error? ? r.error_message : r.message}"
       renew_response(r, loan_id_list[i])
     end
+  end
+
+  def no_account_found(exception)
+    error_code = JSON.parse(exception.message)
+      .dig("errorList", "error")
+      .first.fetch("errorCode", "") rescue nil
+
+    Honeybadger.notify(exception.message) if error_code == "60101"
+    flash[:notice] = "User was not found."
+    render "errors/internal_server_error"
   end
 end

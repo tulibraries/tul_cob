@@ -157,22 +157,27 @@ module Blacklight::PrimoCentral
       end
 
       def to_primo_field(field)
-        {
-          all_fields: :any,
-          advanced: :any,
-          creator_t: :creator,
-          isbn_t: :isbn,
-          issn_t: :issn,
-          subject: :sub,
-          description: :desc,
-        }
+        configed_fields
+          .merge(
+            all_fields: :any,
+            advanced: :any,
+            creator_t: :creator,
+            isbn_t: :isbn,
+            issn_t: :issn,
+            subject: :sub,
+            description: :desc,)
           .with_indifferent_access
-          .fetch(field, field) || :any
+          .fetch(field, :any)
       end
 
       def is_advanced_search?
         blacklight_params[:controller] == "primo_advanced" ||
           !(@scope.advanced_query.nil? || @scope.advanced_query.keyword_queries.empty? rescue false)
+      end
+
+      def configed_fields
+        search_fields = blacklight_config.search_fields.keys.map(&:to_sym)
+        @configed_fields ||= Hash[*search_fields.zip(search_fields).flatten]
       end
   end
 end

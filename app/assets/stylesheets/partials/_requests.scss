@@ -43,16 +43,8 @@
   font-weight: bold;
 }
 
-/* === AEON REQUESTS === */
-// .aeon-request-btn {
-//   float: right;
-// }
-//
-// .index-avail-container .aeon-request-btn {
-//   margin-top: -10px;
-// }
-//
-// .aeon-text {
-//   display: table-cell;
-// }
-//
+#ez-borrow-button:hover,
+#ez-borrow-button:active,
+#ez-borrow-button:visited {
+  color: $white;
+}

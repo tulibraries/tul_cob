@@ -201,7 +201,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
       it "merges the availability into the document field" do
         expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
@@ -229,7 +229,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
       it "does not merge the availability into the document field" do
         expect(document_and_api_merged_results(document, items_list)).to eq({})
@@ -250,7 +250,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api").grouped_by_library }
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
       it "filters out missing or lost items" do
         expect(document_and_api_merged_results(document, items_list)).to eq({})
@@ -278,7 +278,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
   describe "#material_type(item)" do
     context "item includes physical_material_type" do
-      let(:item) { { "material_type" => "Sound Recording" } }
+      let(:item) { { "material_type" => "RECORD" } }
 
       it "displays physical_material_type" do
         expect(material_type(item)).to eq "Sound Recording"
@@ -286,7 +286,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
 
     context "item does NOT include PHYSICAL_TYPE_EXCLUSIONS" do
-      let(:item) { { "material_type" => "Book" } }
+      let(:item) { { "material_type" => "BOOK" } }
 
       it "displays nothing" do
         expect(material_type(item)).to eq nil
@@ -369,7 +369,22 @@ RSpec.describe AvailabilityHelper, type: :helper do
     }
 
       it "correctly identifies techserv items" do
-        expect(unwanted_locations(item)).to be true
+        expect(unwanted_library_locations(item)).to be true
+      end
+    end
+
+    context "an item is an unwanted library" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "stacks",
+      "current_library" => "EMPTY",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }
+    }
+
+      it "correctly identifies unwanted library" do
+        expect(unwanted_library_locations(item)).to be true
       end
     end
 
@@ -385,7 +400,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     }
 
       it "correctly identifies other locations" do
-        expect(unwanted_locations(item)).to be false
+        expect(unwanted_library_locations(item)).to be false
       end
     end
   end

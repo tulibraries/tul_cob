@@ -1,3 +1,8 @@
+<%# Using curent_search_session allows the search information to come when clicking on links from a bento search. %>
+<%# This allows the user to see the back/start over buttons and send to options on record pages %>
+
+<% @search_context ||= current_search_session %>
+
 <div class="breadcrumb-wrapper">
   <ol class="breadcrumb">
     <%= render_breadcrumbs :tag => :li, :separator => "" %>

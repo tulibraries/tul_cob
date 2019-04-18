@@ -14,17 +14,14 @@ module ApplicationHelper
     render_location(value[:value].first)
   end
 
-  def aeon_request_url(item)
-    place_of_publication = item.item.dig("bib_data", "place_of_publication") || ""
-    publisher_const = item.item.dig("bib_data", "publisher_const") || ""
-    date_of_publication = item.item.dig("bib_data", "date_of_publication") || ""
+  def aeon_request_url(document)
     form_fields = {
-         ItemTitle: (item.item.dig("bib_data", "title") || ""),
-         ItemPlace: place_of_publication + publisher_const + date_of_publication,
-         ReferenceNumber: (item.item.dig("bib_data", "mms_id") || ""),
-         CallNumber: item.call_number || "",
-         ItemAuthor: (item.item.dig("bib_data", "author") || ""),
-         "rft.pages": @document["collection_area_display"]
+         ItemTitle: document.fetch("title_statement_display", ""),
+         ItemPlace: document.fetch("imprint_display", ""),
+         ReferenceNumber: document.fetch("mms_id_display", ""),
+         CallNumber: document.fetch("call_number_display", ""),
+         ItemAuthor: document.fetch("creator_display", ""),
+         "rft.pages": document["collection_area_display"]
      }
 
     openurl_field_values = form_fields.map { |k, v|
@@ -40,9 +37,9 @@ module ApplicationHelper
       query: openurl_field_values.to_query).to_s
   end
 
-  def aeon_request_button(items)
-    if items.any? { |item| item.library.include?("SCRC") && item.location.include?("rarestacks") }
-      button_to("Request to View in Reading Room", aeon_request_url(items.first), class: "aeon-request-btn btn btn-sm btn-primary")
+  def aeon_request_button(document)
+    if document.fetch("items_json_display", "").any? { |item| item.fetch("current_library", "").include?("SCRC") && item.fetch("current_location", "").include?("rarestacks") }
+      button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request-btn btn btn-sm btn-primary")
     end
   end
 
@@ -142,7 +139,7 @@ module ApplicationHelper
         type
       end
 
-    link_to(label, "https://library.temple.edu/library-search-faq", class: "text-red")
+    link_to(label, "https://library.temple.edu/library-search-faq")
   end
 
   def former_search_link

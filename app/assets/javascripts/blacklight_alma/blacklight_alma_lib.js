@@ -54,6 +54,10 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = holding['library'];
+   if (library == 'ASRS') {
+     library = "Paley Library";
+   }
+
    var availability = holding['availability'];
 
    if (availability == "available") {
@@ -126,11 +130,11 @@ var BlacklightAlma = function (options) {
    check = checkHoldings(holdings);
 
    if (available) {
-     html = "<dt class='avail-dt index-label col-md-4' >Available at: </dt><dd class='library-dd col-md-5'>" + available + "</dd>";
+     html = "<dt class='index-label col-md-3' >Available at: </dt><dd class='col-md-5 col-lg-7'>" + available + "</dd>";
    }
 
    if (check) {
-   html += "<dt class='avail-dt index-label col-md-4' >Other Libraries: </dt><dd class='library-dd col-md-5'>" + check + "</dd>";
+   html += "<dt class='index-label col-md-3' >Other Libraries: </dt><dd class='col-md-5 col-lg-7'>" + check + "</dd>";
    }
    return html;
  };

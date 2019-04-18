@@ -28,8 +28,8 @@
 .clear-bookmarks {
   font-size: 0.875rem;
   margin-left: 0.625rem;
-  margin-top: -0.125rem;
-  padding: 0.25rem 0.625rem;
+  margin-top: -0.225rem;
+  padding: 0.4725rem 0.625rem 0.4125rem 0.625rem;
 
   @media(max-width: 601px) {
     margin-left: 0;
@@ -55,6 +55,8 @@ a.clear-bookmarks {
 .bookmarks-dropdown {
   background-color: $tan;
   color: $red;
+  font-size: 0.875rem;
+  padding: 0.4725rem 0.625rem;
 
   @media(max-width: 768px) {
     background-color: $red;
@@ -80,7 +82,7 @@ a.clear-bookmarks {
 #bookmark_button {
   color: $red;
   font-size: 0.875rem;
-  padding: 0.3125rem 0.4125rem 0.0625rem;
+  padding: 0.4725rem 0.625rem 0.1rem 0.625rem;
 }
 
 .bookmarks-back-btn {

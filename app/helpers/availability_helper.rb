@@ -34,12 +34,12 @@ module AvailabilityHelper
 
   def document_and_api_merged_results(document, items_list)
     document_items = document.fetch("items_json_display", [])
-    alma_item_pids = items_list.collect { |k, v|
-          v.map { |item| item["item_data"]["pid"] }
-        }.flatten
+    alma_item_pids = items_list.all.collect { |item|
+      item["item_data"]["pid"]
+    }.flatten
 
-    alma_item_availability = items_list.collect { |k, v|
-      v.collect { |item| availability_status(item) }
+    alma_item_availability = items_list.all.collect { |item|
+      availability_status(item)
     }.flatten
 
     document_items.collect { |item|
@@ -53,7 +53,7 @@ module AvailabilityHelper
       .flatten
       .reject(&:blank?)
       .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_locations(item) }
+      .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
   end
 
@@ -68,7 +68,7 @@ module AvailabilityHelper
     type = item["material_type"]
 
     if !type.match(PHYSICAL_TYPE_EXCLUSIONS)
-      return item["material_type"]
+      return Rails.configuration.material_types[type]
     end
   end
 
@@ -81,9 +81,9 @@ module AvailabilityHelper
     !!process_type.match(/MISSING|LOST_LOAN/)
   end
 
-  def unwanted_locations(item)
+  def unwanted_library_locations(item)
     location = item.fetch("current_location", "")
-    !!location.match(/techserv|UNASSIGNED|intref|asrs/)
+    !!location.match(/techserv|UNASSIGNED|intref|ASRS_TEST/) || library(item) == "EMPTY"
   end
 
   def library(item)
@@ -124,7 +124,7 @@ module AvailabilityHelper
     document_items.collect { |item| item }
       .reject(&:blank?)
       .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_locations(item) }
+      .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
   end
 
