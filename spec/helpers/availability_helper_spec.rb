@@ -201,7 +201,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           }
         }
 
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api")}
+      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
       it "merges the availability into the document field" do
         expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
