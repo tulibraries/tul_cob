@@ -1,0 +1,107 @@
+default: &default
+  BOOK: Book
+  ISSUE: Issue
+  DVD: DVD
+  CD: Compact Disc
+  CDROM: CD-ROM
+  DVDRM: DVD-ROM
+  SCORE: Music Score
+  VIDEOCASSETTE: Video cassette
+  AUDIOCASSETTE: Audio cassette
+  MANUSCRIPT: Manuscript
+  FILM: Microfilm
+  FICHE: Microfiche
+  DISK: Computer Disk
+  REALIA: Realia
+  KIT: Kit
+  PICTURE: Picture
+  MAP: Map
+  LRDSC: Laserdisc
+  RECORD: Sound Recording
+  ISSBD: Bound Issue
+  HEAD: Headphones
+  LPTOP: Laptop
+  IPAD: iPad
+  FSADT: Flat Screen Adaptor
+  CHARG: Laptop Charger
+  CALC: Calculator
+  FLIPV: Flip Video Camera
+  ARTORIG: Art Original
+  ARTREPRO: Art Reproduction
+  CHART: Chart
+  DIORAMA: Diorama
+  FILMSTRIP: Filmstrip
+  FLASHCARD: Flash Card
+  GAME: Game
+  GRAPHIC: Graphic
+  MICROSLIDE: Microscope Slide
+  MODEL: Model
+  SLIDE: Slide
+  TECHDRAWING: Techincal Drawing
+  TOY: Toy
+  TRANSPARENCY: Transparency
+  LETTER: Letter
+  PHOTOGRAPH: Photograph
+  THESIS: Thesis
+  MIXED: Mixed material
+  AUDIOBOOK: Audiobook
+  EQUIP: Equipment
+  PAMPHLET: Pamphlet
+  OVERSIZE: Oversize
+  EPHEMERA: Ephemera
+  CASE: Case
+  ROOM: Room
+  VIDEODISC: Video Disk
+  SPECIALTHESIS: Special Degree Thesis
+  PHDTHESIS: PhD Thesis
+  MASTERTHESIS: Master Thesis
+  BACHLORTHESIS: Bachelor Thesis
+  OVERSIZESCORE: Oversize Score
+  MICROFORM: Mocroform
+  VRECORD: Video Recording
+  PLAYAWAY: Playaway
+  ARTICLE: Article
+  ATLAS: Atlas
+  AUDIORECORDER: Audio Recorder
+  BLURAY: Blu-Ray
+  BLURAYDVD: Blu-Ray And DVD
+  CAMERA: Camera
+  CAMRECORDER: Camcorder
+  EREADER: Ereader
+  GOVRECORD: Government Document
+  KEYS: Keys
+  LOOSELEAF: Looseleaf
+  LP: LP
+  MICROCARD: Microcard
+  MOBILEDEVICE: Mobile Device
+  NEWSPAPER: Newspaper
+  PROJECTOR: Projector
+  TABLET: Tablet
+  VIDEOGAME: Video Game
+  MMFILM: 16 mm Film
+  BOX: Box
+  FILMREEL: Film Reel
+  OTHERVM: Other Visual Material
+  FLOPPY_DISK: Floppy Disk
+  ITEM_WITH_FLOPPY_DISK: Item with Floppy Disk
+  ITEM_WITH_CD: Item with CD
+  ITEM_WITH_AUDIO_CASSETTE: Item with Audio Cassette
+  DAT: DAT(Digital Audio Tape)
+  GLOBE: Globe
+  LAPTOPACCESSORY: Laptop Accessory
+  MICROOPAQUE: Microopaque
+  MOTIONPICTURE: Motion Picture
+  PHONODISC: Record(Phonodisc)
+  VRECORD_OTHER: Video Recording(Other)
+  RARE: Rare
+  MICROFICHE_MASTER: Microfiche Master
+  OTHER: Other
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+
+production:
+  <<: *default
