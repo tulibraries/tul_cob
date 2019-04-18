@@ -5,8 +5,8 @@
 <% index_fields(document).each do |field_name, field| -%>
   <% if should_render_index_field? document, field %>
     <% unless field[:no_label] %>
-    <dt class="index-label col-sm-12 col-md-3 blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
-    <dd class="col-sm-12 col-md-7 blacklight-<%= field_name.parameterize %>">
+    <dt class="index-label col-sm-12 col-md-4 col-lg-3 blacklight-<%= field_name.parameterize %>"><%= render_index_field_label document, field: field_name %></dt>
+    <dd class="col-sm-12 col-md-5 col-lg-7 blacklight-<%= field_name.parameterize %>">
     <% end %>
       <% if field[:raw] %>
         <%= raw doc_presenter.field_value(field) %>
