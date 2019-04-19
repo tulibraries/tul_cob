@@ -72,7 +72,7 @@ var BlacklightAlma = function (options) {
        Object.assign(checkItem, {library, availability})
        return checkItem;
      }
-  }
+   }
  }
 
  BlacklightAlma.prototype.formatHolding = function (holding) {
