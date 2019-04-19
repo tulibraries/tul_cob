@@ -44,16 +44,17 @@ class AlmawsController < CatalogController
     @user_id = current_user.uid
     @request_level = params[:request_level]
     if @request_level == "item"
-      log = { type: "item_request_options", mms_id: @mms_id, holding_id: @holding_id, item_pid: @item_pid, user: current_user.id }
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
       @request_options = @item_level_holdings.map { |holding_id, item_pid|
+        log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
         .sort_by { |r| r.raw_response.parsed_response.count }
         .last
-      if @raw_response.nil?
+      if @request_options.nil?
         @request_options = @second_attempt_holdings.map { |holding_id, item_pid|
+          log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
           do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
         }
           .sort_by { |r| r.raw_response.parsed_response.count }
