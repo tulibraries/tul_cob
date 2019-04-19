@@ -1,4 +1,4 @@
-<ul class="d-flex user-util-list list-inline list align-items-center">
+<ul class="d-flex user-util-list list-inline list align-items-center pt-3">
   <%= render_nav_actions do |config, action|%>
     <% unless action.blank? %>
       <li class="user-links list-inline-item"><%= action %></li>
@@ -9,5 +9,9 @@
     <% if has_user_authentication_provider? %>
       <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
     <% end %>
+  </li>
+
+  <li class="user-links list-inline-item pl-3">
+    <%= faq_link %>
   </li>
 </ul>
