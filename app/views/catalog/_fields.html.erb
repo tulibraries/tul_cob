@@ -18,6 +18,4 @@
 <% end -%>
 </dl>
 
-<% if [ "catalog", "books", "journals", "bookmarks" ].include?(controller_name) %>
-  <span class="row document-metadata blacklight-availability availability-ajax-load" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" ></span>
-<% end %>
+<%= render_bound_with_ids(document) %>

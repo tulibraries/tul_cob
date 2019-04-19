@@ -115,6 +115,12 @@ module CatalogHelper
     end
   end
 
+  def render_bound_with_ids(document)
+    if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
+      content_tag :span, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+    end
+  end
+
   ##
   # Overridden from module Blacklight::BlacklightHelperBehavior.
   #

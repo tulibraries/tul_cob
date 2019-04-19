@@ -196,6 +196,39 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#render_bound_with_ids" do
+    let(:doc) { SolrDocument.new(bound_with_ids: ["foo"]) }
+    let(:config) { CatalogController.blacklight_config }
+
+    before do
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config) { config }
+      end
+    end
+
+    context "with boud_with_ids defined" do
+      it "renders the bound_with_ids" do
+        expect(helper.render_bound_with_ids(doc)).not_to be_nil
+      end
+    end
+
+    context "with no bound with ids available" do
+      let(:doc) { SolrDocument.new(bound_with_ids: nil) }
+
+      it "does not render the bound_with_ids" do
+        expect(helper.render_bound_with_ids(doc)).to be_nil
+      end
+    end
+
+    context "without bound_with_ids configured" do
+      let(:config) { PrimoCentralController.blacklight_config }
+
+      it "does not render the bound_with_ids" do
+        expect(helper.render_bound_with_ids(doc)).to be_nil
+      end
+    end
+  end
+
   describe "#render_email_form_field" do
     let(:current_user) { OpenStruct.new(email: nil) }
 
