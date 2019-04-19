@@ -52,7 +52,7 @@ class AlmawsController < CatalogController
       }
         .sort_by { |r| r.raw_response.parsed_response.count }
         .last
-      if @raw_response.nil?
+      if @request_options.nil?
         @request_options = @second_attempt_holdings.map { |holding_id, item_pid|
           do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
         }
