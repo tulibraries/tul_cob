@@ -85,7 +85,7 @@ module Blacklight::PrimoCentral
       end
     end
 
-    # Query is a Primo::Pnxs::Query instance after this process.
+    # Query is a Primo::Search::Query instance after this process.
     def add_query_facets(primo_central_parameters)
       if primo_central_parameters[:query][:q][:value].is_a? Array
         op = :build
@@ -95,7 +95,7 @@ module Blacklight::PrimoCentral
         query = primo_central_parameters[:query][:q]
       end
 
-      pq = Primo::Pnxs::Query.send(op, query)
+      pq = Primo::Search::Query.send(op, query)
 
       primo_central_parameters[:query][:q] = pq
 
