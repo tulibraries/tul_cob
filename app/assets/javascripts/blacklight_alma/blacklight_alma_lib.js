@@ -60,16 +60,18 @@ var BlacklightAlma = function (options) {
 
    var availability = holding['availability'];
 
-   if (availability == "available") {
-     availItem = {};
-     Object.assign(availItem, {library, availability})
-     return availItem;
-   }
+   if (library != "EMPTY") {
+     if (availability == "available") {
+       availItem = {};
+       Object.assign(availItem, {library, availability})
+       return availItem;
+     }
 
-   if (availability == "check_holdings") {
-     checkItem = {};
-     Object.assign(checkItem, {library, availability})
-     return checkItem;
+     if (availability == "check_holdings") {
+       checkItem = {};
+       Object.assign(checkItem, {library, availability})
+       return checkItem;
+     }
    }
  }
 
