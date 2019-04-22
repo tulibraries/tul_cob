@@ -2,7 +2,7 @@ en:
   purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
   blacklight:
     application_name: "Library Search"
-    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{books} and %{journals}."
+    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{journals}."
     scrc: "Special Collections Research Center"
     scrc_link: "https://library.temple.edu/scrc"
     blockson: "Charles L. Blockson Afro-American Collection"
@@ -127,15 +127,13 @@ en:
       nice_name: "Articles"
     journals:
       nice_name: "Journals"
-    books:
-      nice_name: "Books"
+    resource_types_header: "View all resource types in this search"
     application_name: "Library Bento Search Beta"
-    explanation_html: "<strong>Library Search:</strong> results from %{books}, %{articles}, %{journals}, and %{more}."
-    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{books}, %{articles}, %{journals}, and %{more}."
-    books: "Books"
+    explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
+    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{articles}, %{journals}, and %{more}."
     articles: "Articles"
     journals: "Journals"
-    more: "More"
+    books_and_media: "Books & Media"
     library_search_question: "What is Library Search?"
     library_search_answer: "Library search is your gateway to discover library content. Use Library Search to find books, articles, newspapers, archival material, images, streaming media, and much more. Library Search shows results from two collections:"
     need_help: "Need help using Library Search?"
@@ -145,7 +143,6 @@ en:
       scholarly_journals_href: "Articles"
       general_keywords: "Try more general keywords (e.g. ‘business’ or ‘education’) for discipline-based journals."
   catalog_advanced_search: "Advanced Search"
-  books_advanced_search: "Advanced Books Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
   databases_advanced_search: "Advanced Databases Search"
@@ -174,14 +171,6 @@ en:
     podiatry_illiad_html: "and Krausz Library of Podiatric Medicine patrons should use %{href}."
     podiatry_illiad_href: "ILLiad for Podiatry Library"
     podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
-
-  books:
-    section_heading_html: "<strong>Books</strong> includes print and electronic books, government documents, archival materials, and more."
-    explanation_html: "<strong>Books</strong> includes print and electronic books, government documents, materials from the %{href}, and more."
-    explanation_href: "Special Collections Research Center"
-    explanation_link: "https://library.temple.edu/scrc"
-    zero_results:
-      title_html: "<strong>No book results</strong> found for your search."
 
   primo_central:
     link_to_resource: "Link to Resource"
