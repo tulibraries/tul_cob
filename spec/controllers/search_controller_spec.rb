@@ -26,6 +26,14 @@ RSpec.describe SearchController, type: :controller do
         expect(facet_fields).to eq("format" => [ "digital_collections", "415" ])
       end
     end
+
+    context "only cdm results present" do
+      let(:results) { BentoSearch::ConcurrentSearcher.new(:cdm).search("foo").results }
+
+      it "should still remove cdm results from bento results" do
+        expect(results[:cdm]).to be_nil
+      end
+    end
   end
 
   def content_dm_results
