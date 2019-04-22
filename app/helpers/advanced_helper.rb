@@ -72,9 +72,6 @@ module AdvancedHelper
     if current_page? search_catalog_path
       id = :catalog_advanced_search
       url = advanced_search_path(query)
-    elsif current_page? search_books_path
-      id = :books_advanced_search
-      url = books_advanced_search_path(query)
     elsif current_page? search_journals_path
       id = :journals_advanced_search
       url = journals_advanced_search_path(query)
@@ -105,8 +102,6 @@ module AdvancedHelper
   def basic_search_path
     if current_page? advanced_search_path
       search_catalog_path
-    elsif current_page? books_advanced_search_path
-      search_books_path
     elsif current_page? journals_advanced_search_path
       search_journals_path
     elsif current_page? articles_advanced_search_path
@@ -121,8 +116,6 @@ module AdvancedHelper
   def advanced_search_form_title
     if current_page? advanced_search_path
       t(:catalog_advanced_search)
-    elsif current_page? books_advanced_search_path
-      t(:books_advanced_search)
     elsif current_page? journals_advanced_search_path
       t(:journals_advanced_search)
     elsif current_page? articles_advanced_search_path
