@@ -30,7 +30,7 @@ RSpec.describe BentoSearch, type: :search_engine do
     end
   end
 
-  describe "#proc_minus_books_journals" do
+  describe "#proc_minus_journals" do
     let(:controller) { CatalogController.new }
     let(:builder) { SearchBuilder.new(controller) }
 
@@ -39,7 +39,7 @@ RSpec.describe BentoSearch, type: :search_engine do
     end
 
     it "Appends :no_journals processor to processor_chain" do
-      _builder = search_engine.proc_minus_books_journals[builder]
+      _builder = search_engine.proc_minus_journals[builder]
       expect(_builder.processor_chain).to include(:no_journals)
     end
   end

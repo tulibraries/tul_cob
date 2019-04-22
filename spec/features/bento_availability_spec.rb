@@ -29,7 +29,7 @@ RSpec.feature "Bento Availability" do
       end
 
       within first("div.bento-search-engine") do
-        expect(page).to have_link("View all catalog results")
+        expect(page).to have_css(".full-results")
       end
     end
 
