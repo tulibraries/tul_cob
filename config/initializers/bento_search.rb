@@ -15,14 +15,6 @@ BentoSearch.register_engine("journals") do |conf|
   end
 end
 
-BentoSearch.register_engine("books") do |conf|
-  conf.engine = "BentoSearch::BooksEngine"
-  conf.for_display do |display|
-    display.decorator = "TulDecorator"
-    display.no_results_partial = "bento_search/no_book_results"
-  end
-end
-
 BentoSearch.register_engine("databases") do |conf|
   conf.engine = "BentoSearch::DatabasesEngine"
   conf.for_display do |display|
@@ -36,6 +28,7 @@ BentoSearch.register_engine("books_and_media") do |conf|
   conf.for_display do |display|
     display.decorator = "TulDecorator"
     display.linked_engines = ["resource_types"]
+    display.no_results_partial = "bento_search/no_book_results"
   end
 end
 

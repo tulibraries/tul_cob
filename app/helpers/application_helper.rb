@@ -90,7 +90,7 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} online journals", url, class: "full-results"
-    when "books_and_media", "resource_types"
+    when "books_and_media"
       ""
     when "articles"
       url = url_for(
