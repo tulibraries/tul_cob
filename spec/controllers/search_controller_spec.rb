@@ -4,24 +4,35 @@ require "rails_helper"
 
 RSpec.describe SearchController, type: :controller do
 
-  describe "#split_and_merge" do
-    let(:results) { BentoSearch::ConcurrentSearcher.new(:more, :cdm).search("foo").results }
-    let(:subject) { controller.send(:split_and_merge, results) }
+  describe "#process_results" do
+    let(:results) { BentoSearch::ConcurrentSearcher.new(:books_and_media, :cdm).search("foo").results }
 
     before {
       stub_request(:get, /contentdm/)
         .to_return(status: 200,
                   headers: { "Content-Type" => "application/json" },
                   body: JSON.dump(content_dm_results))
+      controller.send(:process_results, results)
     }
 
     context "content dm and regular results are present" do
 
-      it "merges content-dm totals with resource types format facets" do
-        facets = subject["resource_types"].first.custom_data.facet_fields
-        expect(facets).to eq("format" => [ "digital_collections", "415" ])
+      it "defines @reponse instance variable for the controlller" do
+        expect(controller.instance_variable_get(:@response)).not_to be_nil
       end
 
+      it "adds content-dm totals to facet" do
+        facet_fields = controller.instance_variable_get(:@response).facet_fields
+        expect(facet_fields).to eq("format" => [ "digital_collections", "415" ])
+      end
+    end
+
+    context "only cdm results present" do
+      let(:results) { BentoSearch::ConcurrentSearcher.new(:cdm).search("foo").results }
+
+      it "should still remove cdm results from bento results" do
+        expect(results[:cdm]).to be_nil
+      end
     end
   end
 

@@ -48,7 +48,6 @@ RSpec.describe AdvancedHelper, type: :helper do
   describe "#render_advanced_search_link" do
     before(:each) do
       allow(helper).to receive(:current_page?).with("/catalog") { false }
-      allow(helper).to receive(:current_page?).with("/books") { false }
       allow(helper).to receive(:current_page?).with("/journals") { false }
       allow(helper).to receive(:current_page?).with("/articles") { false }
       allow(helper).to receive(:current_page?).with("/databases") { false }
@@ -62,14 +61,6 @@ RSpec.describe AdvancedHelper, type: :helper do
       it "renders the link to the advanced form" do
         allow(helper).to receive(:current_page?).with("/catalog") { true }
         link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the books search page" do
-      it "renders the link to the advanced books form" do
-        allow(helper).to receive(:current_page?).with("/books") { true }
-        link = "<a class=\"advanced_search\" id=\"books_advanced_search\" href=\"/books/advanced?q=foo\">Advanced Books Search</a>"
         expect(helper.render_advanced_search_link).to eq(link)
       end
     end
@@ -102,7 +93,6 @@ RSpec.describe AdvancedHelper, type: :helper do
   describe "#basic_search_path" do
     before(:each) do
       allow(helper).to receive(:current_page?).with("/catalog/advanced") { false }
-      allow(helper).to receive(:current_page?).with("/books/advanced") { false }
       allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
       allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
       allow(helper).to receive(:current_page?).with("/databases/advanced") { false }
@@ -112,13 +102,6 @@ RSpec.describe AdvancedHelper, type: :helper do
       it "renders the link to the catalog search" do
         allow(helper).to receive(:current_page?).with("/catalog/advanced") { true }
         expect(helper.basic_search_path).to eq("/catalog")
-      end
-    end
-
-    context "on the advanced books search page" do
-      it "renders the link to the books search" do
-        allow(helper).to receive(:current_page?).with("/books/advanced") { true }
-        expect(helper.basic_search_path).to eq("/books")
       end
     end
 
@@ -154,7 +137,6 @@ RSpec.describe AdvancedHelper, type: :helper do
   describe "#advanced_search_form_title" do
     before(:each) do
       allow(helper).to receive(:current_page?).with("/catalog/advanced") { false }
-      allow(helper).to receive(:current_page?).with("/books/advanced") { false }
       allow(helper).to receive(:current_page?).with("/journals/advanced") { false }
       allow(helper).to receive(:current_page?).with("/articles/advanced") { false }
       allow(helper).to receive(:current_page?).with("/databases/advanced") { false }
@@ -164,13 +146,6 @@ RSpec.describe AdvancedHelper, type: :helper do
       it "renders the link to the catalog search" do
         allow(helper).to receive(:current_page?).with("/catalog/advanced") { true }
         expect(helper.advanced_search_form_title).to eq("Advanced Search")
-      end
-    end
-
-    context "on the advanced books search page" do
-      it "renders the link to the books search" do
-        allow(helper).to receive(:current_page?).with("/books/advanced") { true }
-        expect(helper.advanced_search_form_title).to eq("Advanced Books Search")
       end
     end
 
