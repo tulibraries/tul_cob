@@ -212,10 +212,6 @@ module CatalogHelper
     search_catalog_path(search_params)
   end
 
-  def back_to_books_path
-    search_books_path(search_params)
-  end
-
   def back_to_journals_path
     search_journals_path(search_params)
   end
