@@ -6,7 +6,7 @@
 
 	@media(max-width: 991px) {
 		margin: 0 auto;
-		width: 50% !important;
+		width: 45% !important;
 	}
 
 	@media(max-width: 768px) {
@@ -20,10 +20,11 @@
 	font-family: "PT Sans";
 	font-size: 1.4rem;
 	height: 3.125rem;
-	padding: 0.75rem;
+	padding: 0.75rem 0;
 
 	a {
 		color: $bento-header;
+		margin-left: -5px;
 	}
 }
 
@@ -56,16 +57,42 @@
 	padding: 0.125rem 0.625rem;
 }
 
-.resource_types  {
-	width: 100% !important;
-
-	.bento-search-engine {
-	padding: 0.625rem;
-	}
-}
-
 .total-results,
 .online-only {
 	background-color: white;
-	padding: 0.625rem;
+	color: $red;
+	margin-left: 0.5rem;
+	padding: 0.625rem 0.5rem;
+}
+
+.bento-resource-types {
+	font-family: "PT Sans";
+	font-size: 1.4rem;
+}
+
+.bento-resource-container {
+	margin: 0 9.375rem;
+
+	@media(max-width: 768px) {
+		margin: 0 1.2rem;
+	}
+}
+
+.bento-resource-list-item {
+	font-family: "PT Sans";
+	font-size: 1.2rem;
+	width: 30%;
+
+	a {
+		color: $black;
+		text-decoration: underline;
+	}
+
+	@media(max-width: 991px) {
+		width: 40%;
+	}
+
+	@media(max-width: 600px) {
+		width: 100%;
+	}
 }

@@ -63,21 +63,21 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
-    context "current page is :search_books_path and orig path is /books/foobar"  do
+    context "current page is :search_journals_path and orig path is /journals/foobar"  do
       let(:current_page?) { false }
-      let(:request) { OpenStruct.new(original_fullpath: "/books/foobar") }
+      let(:request) { OpenStruct.new(original_fullpath: "/journals/foobar") }
 
       it "is active" do
-        expect(helper.is_active?(:search_books_path)).to be_truthy
+        expect(helper.is_active?(:search_journals_path)).to be_truthy
       end
     end
 
-    context ":search_books_path does not match beginning of current page" do
+    context ":search_journals_path does not match beginning of current page" do
       let(:current_page?) { false }
       let(:request) { OpenStruct.new(original_fullpath: "/articles/foobar") }
 
       it "is not active" do
-        expect(helper.is_active?(:search_books_path)).to be_falsey
+        expect(helper.is_active?(:search_journals_path)).to be_falsey
       end
     end
   end
