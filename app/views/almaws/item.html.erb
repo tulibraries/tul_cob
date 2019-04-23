@@ -18,7 +18,7 @@
       <div class="modal-body d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
         <div class="library-name card-title col-sm-12 col-lg-4"><%= library_name_from_short_code(key) %></div>
         <div class="holdings-summary"><%= summary_list(items) %></div>
-        <div class="aeon-request" colspan="7"><%= aeon_request_button(@document) %></div>
+        <div class="aeon-request" colspan="7"><%= aeon_request_button(@document) if key == "SCRC" %></div>
       </div>
 
       <% items.each do |item| %>
