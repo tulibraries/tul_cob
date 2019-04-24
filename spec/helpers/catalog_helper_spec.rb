@@ -77,9 +77,12 @@ RSpec.describe CatalogHelper, type: :helper do
 
 
   describe "#render_purchase_order_availability" do
-    let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
     let(:user) { FactoryBot.build(:user) }
+    let(:doc) { SolrDocument.new(purchase_order: true, id: "foo") }
     let(:can_purchase_order?) { true }
+    let(:config) { CatalogController.blacklight_config }
+    let(:context) { Blacklight::Configuration::Context.new(config) }
+    let(:presenter) { helper.index_presenter(doc) }
 
     before(:each) do
       allow(helper).to receive(:link_to) { "render_login_link" }
@@ -89,10 +92,11 @@ RSpec.describe CatalogHelper, type: :helper do
       allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
 
       without_partial_double_verification do
-        allow(helper).to receive(:blacklight_config) { blacklight_config }
+        allow(helper).to receive(:blacklight_config) { config }
+        allow(helper).to receive(:blacklight_configuration_context) { context }
       end
 
-      helper.render_purchase_order_availability(args)
+      helper.render_purchase_order_availability(presenter)
     end
 
     context "document has purchase order and user is not logged in" do
@@ -101,7 +105,7 @@ RSpec.describe CatalogHelper, type: :helper do
       it "should render the log_in link" do
         expect(helper).to have_received(:render).with(
           partial: "purchase_order_anonymous_button",
-          locals: { document: args[:document], link: "" }
+          locals: { document: doc, link: "render_login_link" }
         )
       end
     end
@@ -140,10 +144,10 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "document does not have purchase order button" do
-      let(:args) { { document: SolrDocument.new(purchase_order: false) } }
+      let(:doc) { SolrDocument.new(purchase_order: false) }
 
       it "should not render the purchase_order_button" do
-        expect(helper.render_purchase_order_availability(args)).to be_nil
+        expect(helper.render_purchase_order_availability(presenter)).to be_nil
       end
     end
   end
