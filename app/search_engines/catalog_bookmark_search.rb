@@ -6,6 +6,6 @@ class CatalogBookmarkSearch < CatalogController
 
   def self.handle_bookmark_search?(document_model)
     blacklight_config.document_model == document_model ||
-      [ SolrBookDocument, SolrJournalDocument ].include?(document_model)
+      [ SolrJournalDocument ].include?(document_model)
   end
 end
