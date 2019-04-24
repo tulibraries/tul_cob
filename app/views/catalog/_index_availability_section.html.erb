@@ -1,6 +1,6 @@
 <% doc_presenter = index_presenter(document) %>
   <%= render_online_availability_button(document) %>
-  <%= doc_presenter.field_value(blacklight_config.index_fields["purchase_order_availability"]) %>
+  <%= render_purchase_order_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break"></div>

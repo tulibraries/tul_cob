@@ -134,24 +134,27 @@ module CatalogHelper
     blacklight_advanced_search_engine.advanced_search_path(params)
   end
 
-  def render_availability(doc, doc_presenter)
+  def render_availability(doc)
     if index_fields(doc).fetch("availability", nil)
       render "index_availability_section", document: doc
     end
   end
 
-  def render_purchase_order_availability(args = { document: @document })
-    return unless args[:document].purchase_order?
+  def render_purchase_order_availability(presenter)
+    doc = presenter.document
+    return unless doc.purchase_order?
 
-    if args.dig(:config, :with_panel)
-      label = args.dig(:config, :label)
+
+    field = presenter.send(:fields)["purchase_order_availability"]
+
+    if field.with_panel
       rows = [ t("purchase_order_allowed") ]
-      render partial: "availability_panel", locals: { label: label, rows: rows }
+      render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
       content_tag :div, t("purchase_order_allowed"), class: "availability border border-tan-border"
     else
-      render_purchase_order_button(args)
+      render_purchase_order_button(document: doc, config: field)
     end
   end
 
