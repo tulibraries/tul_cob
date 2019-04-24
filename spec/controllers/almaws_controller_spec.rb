@@ -199,4 +199,14 @@ RSpec.describe AlmawsController, type: :controller do
       expect(controller.send(:date_or_nil, nil)).to be nil
     end
   end
+
+  describe "handling Alma::BibItemSet::ResponseError exceptions" do
+      let(:params) { { params: { mms_id: "991026719119703811" } } }
+
+      it "renders the html response" do
+        allow(controller).to receive(:item) { raise Alma::BibItemSet::ResponseError.new("test") }
+        get :item, params
+        expect(response.body).to eq("<p class='m-2'>Please contact the library service desk for additional assistance.</p>")
+      end
+    end
 end
