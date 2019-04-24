@@ -1294,6 +1294,7 @@ RSpec.describe Traject::Macros::Custom do
 
   describe "#extract_update_date" do
     let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+    let (:date) { Time.parse("2019-02-02 02:02:02").to_s }
 
     before do
       subject.instance_eval do
@@ -1318,7 +1319,7 @@ RSpec.describe Traject::Macros::Custom do
                      " }
 
       it "finds latest date" do
-        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+        expect(subject.map_record(record)).to eq("record_update_date" => [ date ])
       end
     end
 
@@ -1336,7 +1337,7 @@ RSpec.describe Traject::Macros::Custom do
                      " }
 
       it "finds the latest date" do
-        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+        expect(subject.map_record(record)).to eq("record_update_date" => [ date ])
       end
     end
 
@@ -1362,7 +1363,7 @@ RSpec.describe Traject::Macros::Custom do
                      " }
 
       it "finds the latest date" do
-        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+        expect(subject.map_record(record)).to eq("record_update_date" => [ date ])
       end
     end
 
@@ -1391,7 +1392,7 @@ RSpec.describe Traject::Macros::Custom do
                      " }
 
       it "finds the latest date" do
-        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+        expect(subject.map_record(record)).to eq("record_update_date" => [ date ])
       end
     end
 
