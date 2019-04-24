@@ -1291,4 +1291,109 @@ RSpec.describe Traject::Macros::Custom do
     end
 
   end
+
+  describe "#extract_update_date" do
+    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
+
+    before do
+      subject.instance_eval do
+        to_field "record_update_date", extract_update_date
+        settings do
+          provide "marc_source.type", "xml"
+        end
+      end
+    end
+
+    context "Latest is ADMa" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2019-02-02 02:02:02</subfield>
+            <subfield code='b'>2002-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2002-02-02 02:02:02</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "finds latest date" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+      end
+    end
+
+    context "Latest is ITMq" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2018-02-02 02:02:02</subfield>
+            <subfield code='b'>2002-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2019-02-02 02:02:02</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "finds the latest date" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+      end
+    end
+
+    context "Latest is HLDupdated" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2018-02-02 02:02:02</subfield>
+            <subfield code='b'>2002-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2017-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2019-02-02 02:02:02</subfield>
+            <subfield code='created'>2013-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2013-02-02 02:02:02</subfield>
+            <subfield code='created'>2014-02-02 02:02:02</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "finds the latest date" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+      end
+    end
+
+    context "Latest is PRTcreated" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2018-02-02 02:02:02</subfield>
+            <subfield code='b'>2002-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2017-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2014-02-02 02:02:02</subfield>
+            <subfield code='created'>2013-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2013-02-02 02:02:02</subfield>
+            <subfield code='created'>2014-02-02 02:02:02</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='PRT'>
+            <subfield code='created'>2019-02-02 02:02:02</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "finds the latest date" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 +0000" ])
+      end
+    end
+
+  end
 end

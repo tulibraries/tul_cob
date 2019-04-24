@@ -2,6 +2,8 @@
 
 require "library_stdnums"
 require "active_support/core_ext/object/blank"
+require "time"
+
 # A set of custom traject macros (extractors and normalizers) used by the
 module Traject
   module Macros
@@ -638,6 +640,20 @@ module Traject
       def extract_purchase_order
         lambda do |rec, acc|
           acc << Traject::MarcExtractor.cached("902a").extract(rec).any? { |s| s.match?(/EBC-POD/) } || false
+        end
+      end
+
+      def extract_update_date
+        lambda do |rec, acc|
+          latest_date = [
+            rec.fields("ADM").map { |f| [ f["a"], f["b"] ] },
+            rec.fields("PRT").map { |f| [ f["created"], f["updated"] ] },
+            rec.fields("HLD").map { |f| [ f["created"], f["updated"] ] },
+            rec.fields("ITM").map { |f| f["q"] } ]
+            .flatten.compact.uniq.map { |t| Time.parse(t) }
+            .sort.last.to_s
+
+          acc << latest_date
         end
       end
     end
