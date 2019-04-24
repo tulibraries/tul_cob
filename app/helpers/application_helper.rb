@@ -37,9 +37,11 @@ module ApplicationHelper
       query: openurl_field_values.to_query).to_s
   end
 
-  def aeon_request_button(document)
+  def aeon_request_button(document, key)
     if document.fetch("items_json_display", "").any? { |item| item.fetch("current_library", "").include?("SCRC") && item.fetch("current_location", "").include?("rarestacks") }
-      button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request-btn btn btn-sm btn-primary")
+      if key == "SCRC"
+        button_to("Request to View in Reading Room", aeon_request_url(document), class: "aeon-request-btn btn btn-sm btn-primary mt-1")
+      end
     end
   end
 
