@@ -8,6 +8,9 @@ class AlmawsController < CatalogController
 
   before_action :authenticate_user!, except: [:item]
 
+  rescue_from Alma::BibItemSet::ResponseError,
+    with: :offset_too_large
+
   def item
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
@@ -150,6 +153,10 @@ class AlmawsController < CatalogController
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
+  end
+
+  def offset_too_large
+    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe
   end
 
   private
