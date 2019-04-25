@@ -650,11 +650,11 @@ module Traject
             rec.fields("PRT").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("HLD").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("ITM").map { |f| f["q"] } ]
-            .flatten.compact.uniq.map { |t| Time.parse(t) }
+            .flatten.compact.uniq.map { |t| Time.parse(t).utc }
             .sort.last.to_s
 
           if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
-            latest_date = Time.now.to_s
+            latest_date = Time.now.utc.to_s
           end
 
           acc << latest_date unless latest_date.empty?
