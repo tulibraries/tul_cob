@@ -653,7 +653,11 @@ module Traject
             .flatten.compact.uniq.map { |t| Time.parse(t) }
             .sort.last.to_s
 
-          acc << latest_date
+          if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
+            latest_date = Time.now.to_s
+          end
+
+          acc << latest_date unless latest_date.empty?
         end
       end
     end

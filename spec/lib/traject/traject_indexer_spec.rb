@@ -1298,7 +1298,7 @@ RSpec.describe Traject::Macros::Custom do
 
     before do
       subject.instance_eval do
-        to_field "record_update_date", extract_update_date
+        to_field "record_update_date", extract_update_date, default("2002-02-02 02:02:02 +0000")
         settings do
           provide "marc_source.type", "xml"
         end
@@ -1395,6 +1395,29 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(record)).to eq("record_update_date" => [ date ])
       end
     end
+
+    context "SOLR_DISABLE_UPDATE_DATE_CHECK ENV is set" do
+      let(:record_text) { "
+        <record>
+        </record>
+                     " }
+      it "uses time now as result" do
+        stub_const("ENV", ENV.to_hash.merge("SOLR_DISABLE_UPDATE_DATE_CHECK" => "yes"))
+        expect(subject.map_record(record)).to eq("record_update_date" => [ Time.now.to_s ])
+      end
+    end
+
+    context "Use default date" do
+      let(:record_text) { "
+        <record>
+        </record>
+                     " }
+      it "uses default set" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2002-02-02 02:02:02 +0000" ])
+      end
+    end
+
+
 
   end
 end
