@@ -1341,6 +1341,28 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
+    context "Latest is ITM updated" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2018-02-02 02:02:02 UTC</subfield>
+            <subfield code='b'>2002-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2019-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2013-02-02 02:02:02 UTC</subfield>
+            <subfield code='updated'>2019-02-02 02:02:02 UTC</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "finds the latest date" do
+        expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 UTC" ])
+      end
+    end
+
     context "Latest is HLDupdated" do
       let(:record_text) { "
         <record>

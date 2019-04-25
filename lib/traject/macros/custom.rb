@@ -649,7 +649,7 @@ module Traject
             rec.fields("ADM").map { |f| [ f["a"], f["b"] ] },
             rec.fields("PRT").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("HLD").map { |f| [ f["created"], f["updated"] ] },
-            rec.fields("ITM").map { |f| f["q"] } ]
+            rec.fields("ITM").map { |f| [ f["q"], f["updated"] ] } ]
             .flatten.compact.uniq.map { |t| Time.parse(t).utc }
             .sort.last.to_s
 
