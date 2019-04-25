@@ -1296,6 +1296,7 @@ RSpec.describe Traject::Macros::Custom do
     let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
     before do
+      stub_const("ENV", ENV.to_hash.merge("SOLR_DISABLE_UPDATE_DATE_CHECK" => "false"))
       subject.instance_eval do
         to_field "record_update_date", extract_update_date, default("2002-02-02 02:02:02 UTC")
         settings do
