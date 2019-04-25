@@ -23,6 +23,7 @@ export default class extends Controller {
           this.panelTarget.innerHTML = html
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
+          $('[data-long-list]').longList();
           $(this.requestTarget).removeClass("hidden");
           this.requestTarget.classList.add("search-results-request-btn")
       })
