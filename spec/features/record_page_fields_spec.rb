@@ -28,18 +28,13 @@ RSpec.feature "RecordPageFields" do
     end
   end
 
-  feature "long lists should be truncated", js: true do
-
-    before do
-      Capybara.current_driver = :selenium
-    end
+  feature "long lists should be truncated" do
+    let (:item) { fixtures.fetch("long_list") }
 
     scenario "items with more than 5 locations should be truncated with a more link" do
-      visit  "catalog/991020186419703811"
-    #   click_button "Available"
-    #   expect(page).to_not have_css("span", text: "Description: 1965, pt.4", visible: true)
-    #   click_button "Show All"
-    #   expect(page).to have_css("div", text: "Description: 1965, pt.4", visible: true)
+      visit  "catalog/#{item["doc_id"]}"
+      expect(page).to have_css("div", text: "Description: 1960, pt.1", visible: true)
+      expect(page).to have_css("div", text: "Description: 1965, pt.4", visible: false)
     end
   end
 

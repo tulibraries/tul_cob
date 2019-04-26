@@ -71,8 +71,6 @@ group :development, :test do
   gem "vcr"
   gem "rails-controller-testing"
   gem "rubocop"
-  gem "selenium-webdriver"
-  gem "webdrivers"
 end
 
 gem "rsolr", "~> 2.2"
