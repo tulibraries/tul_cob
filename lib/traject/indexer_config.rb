@@ -3,6 +3,7 @@
 $:.unshift "./config"
 $:.unshift "./lib"
 require "yaml"
+
 solr_config = YAML.load_file("config/blacklight.yml")[(ENV["RAILS_ENV"] || "development")]
 solr_url = ERB.new(solr_config["url"]).result
 # A sample traject configuration, save as say `traject_config.rb`, then
@@ -251,19 +252,5 @@ to_field "purchase_order", extract_purchase_order
 
 # Administrative data enrichment fields
 # a=create date, b=update date, c=Suppress from publishing, d=Originating system, e=Originating system ID, f=Originating system version
-to_field "record_creation_date", extract_marc("ADMa")
-to_field "record_update_date", extract_marc("ADMb")
-
-# You have to make sure this is at the END of your traject pipeline
-each_record do |record, context|
-  if context.output_hash["record_creation_date"].nil? || context.output_hash["record_creation_date"] == []
-    context.output_hash["record_creation_date"] = ["2001-01-01 01:01:01"]
-  end
-  if context.output_hash["record_update_date"].nil? || context.output_hash["record_update_date"] == []
-    context.output_hash["record_update_date"] = ["2002-02-02 02:02:02"]
-  end
-
-  if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
-    context.output_hash["record_update_date"] = [ Time.now.to_s ]
-  end
-end
+to_field "record_creation_date", extract_marc("ADMa"), default("2001-01-01 01:01:01")
+to_field "record_update_date", extract_update_date, default("2002-02-02 02:02:02")
