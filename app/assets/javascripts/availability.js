@@ -8,7 +8,7 @@ $(document).on('turbolinks:load', function() {
 
 	    return this.each(function(){
 	      var $list = $(this),
-	      $children = $list.children().filter(function(i){
+	      $children = $list.children().css("display", "flex").filter(function(i){
 	        return $(this);
 	      }),
 	      type = $list.data("list-type"),
