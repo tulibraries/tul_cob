@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "spec_helper"
 require "yaml"
 include ApplicationHelper
 
@@ -24,6 +25,16 @@ RSpec.feature "RecordPageFields" do
     scenario "link appears one time" do
       visit "catalog/#{item['doc_id']}"
       expect(all("#purchase_order_button-991036931835603811").count).to eq(1)
+    end
+  end
+
+  feature "long lists should be truncated" do
+    let (:item) { fixtures.fetch("long_list") }
+
+    scenario "items with more than 5 locations should be truncated with a more link" do
+      visit  "catalog/#{item["doc_id"]}"
+      expect(page).to have_css("div", text: "Description: 1960, pt.1", visible: true)
+      expect(page).to have_css("div", text: "Description: 1965, pt.4", visible: false)
     end
   end
 

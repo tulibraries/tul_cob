@@ -2,10 +2,10 @@
 <%# partial to display availability details in catalog show view -%>
 
 <div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0">
-  <div class="availability-card-heading card-title d-flex justify-content-between align-items-center">
-    <h4 id="availability-heading">Availability</h4>
-    <div id="heading-request">
-      <%= doc_presenter.field_value(blacklight_config.show_fields["po_link"]) %>
+  <div class="availability-card-heading card-title d-flex align-items-center ml-4 mr-4">
+    <h4 id="availability-heading" class="mr-auto">Availability</h4>
+    <div id="heading-request ml-auto">
+      <%= presenter_field_value(doc_presenter, "po_link") %>
 
       <div id="requests-container" class="hidden">
         <% if user_signed_in? %>
@@ -14,7 +14,6 @@
           <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"blacklight-modal": "trigger"}, id: "request_options")  %>
         <% end %>
       </div>
-    </div>
   </div>
 </div>
 
@@ -22,7 +21,7 @@
 <%= render_purchase_order_availability(doc_presenter) %>
 
 <% if document.fetch("availability_facet", []).include?("At the Library") %>
-  <div class="physical-holding-panel card-body border-0 mt-0 p-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
+  <div class="physical-holding-panel card-body border-0 m-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
     <div class="table-wrapper border border-tan-border">
       <div data-target="show.panel">
         <%= render "physical_availability_card", document: document, document_counter: document.id %>
