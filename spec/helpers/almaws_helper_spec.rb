@@ -120,7 +120,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       { request_option:
         [{
         "type" => { "value" => "RS_BROKER", "desc" => "Resource Sharing Broker" },
-        "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+        "request_url" => "https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=915602377&RK=915602377&rft.stitle=A+thin+bright+line+%2F&rft.pub=The+University+of+Wisconsin+Press%2C&rft.place=Madison%2C+Wisconsin+%3A&rft.isbn=0299309304&rft.btitle=A+thin+bright+line+%2F&rft.genre=book&rft.normalized_isbn=9780299309305&rft.oclcnum=946770187&rft.mms_id=991028550499703811&rft.object_type=BOOK&rft.publisher=The+University+of+Wisconsin+Press%2C&rft.au=Bledsoe%2C+Lucy+Jane%2C+author.&rft.pubdate=%5B2016%5D&rft.title=A+thin+bright+line+%2F"
         }]
       }.to_json
     }
@@ -137,7 +137,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         { request_option:
           [{
           "type" => { "value" => "BOOKING", "desc" => "Booking" },
-          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          "request_url" => "https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=915602377&RK=915602377&rft.stitle=A+thin+bright+line+%2F&rft.pub=The+University+of+Wisconsin+Press%2C&rft.place=Madison%2C+Wisconsin+%3A&rft.isbn=0299309304&rft.btitle=A+thin+bright+line+%2F&rft.genre=book&rft.normalized_isbn=9780299309305&rft.oclcnum=946770187&rft.mms_id=991028550499703811&rft.object_type=BOOK&rft.publisher=The+University+of+Wisconsin+Press%2C&rft.au=Bledsoe%2C+Lucy+Jane%2C+author.&rft.pubdate=%5B2016%5D&rft.title=A+thin+bright+line+%2F"
           }]
         }.to_json
       }
@@ -153,7 +153,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       { request_option:
         [{
         "type" => { "value" => "RS_BROKER", "desc" => "Resource Sharing Broker" },
-        "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+        "request_url" => "https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=915602377&RK=915602377&rft.stitle=A+thin+bright+line+%2F&rft.pub=The+University+of+Wisconsin+Press%2C&rft.place=Madison%2C+Wisconsin+%3A&rft.isbn=0299309304&rft.btitle=A+thin+bright+line+%2F&rft.genre=book&rft.normalized_isbn=9780299309305&rft.oclcnum=946770187&rft.mms_id=991028550499703811&rft.object_type=BOOK&rft.publisher=The+University+of+Wisconsin+Press%2C&rft.au=Bledsoe%2C+Lucy+Jane%2C+author.&rft.pubdate=%5B2016%5D&rft.title=A+thin+bright+line+%2F"
         }]
       }.to_json
     }
