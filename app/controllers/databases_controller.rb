@@ -88,7 +88,7 @@ class DatabasesController < CatalogController
 
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { 'spellcheck.dictionary': "title" }
+      field.solr_parameters = { "spellcheck.dictionary": "title" }
       field.solr_local_parameters = {
         qf: "$title_qf",
         pf: "$title_pf",
@@ -96,7 +96,7 @@ class DatabasesController < CatalogController
     end
 
     config.add_search_field("subject") do |field|
-      field.solr_parameters = { 'spellcheck.dictionary': "subject" }
+      field.solr_parameters = { "spellcheck.dictionary": "subject" }
       field.qt = "search"
       field.solr_local_parameters = {
         qf: "$subjec_qf",

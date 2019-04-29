@@ -12,6 +12,8 @@ namespace :fortytu do
         `traject -c #{Rails.configuration.traject_indexer} #{file}`
       end
 
+      `traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
+
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
     end
 
