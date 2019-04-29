@@ -13,7 +13,7 @@ RSpec.describe DatabasesController, type: :controller do
     expect(url).to eq(az_url)
   end
 
-  describe "searching databases az", order: "defined" do
+  describe "searching databases az", order: :defined do
     render_views
     @@all_ids, @@title_ids, @@subject_ids = nil
 

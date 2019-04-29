@@ -12,9 +12,11 @@ namespace :fortytu do
         `traject -c #{Rails.configuration.traject_indexer} #{file}`
       end
 
-      `traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
+      az_url = Blacklight::Configuration.new.connection_config[:az_url]
+      `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
 
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
+      `SOLR_URL=#{az_url} traject -c #{Rails.configuration.traject_indexer} -x commit`
     end
 
     desc "Delete all items from Solr"
@@ -28,11 +30,16 @@ end
 
 desc "Ingest a single file or all XML files in the sammple_data folder"
 task :ingest, [:filepath] => [:environment] do |t, args|
-  if args[:filepath]
+  file = args[:filepath]
+  if file && file.match?(/databases.json/)
+    az_url = Blacklight::Configuration.new.connection_config[:az_url]
+    `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb #{file}`
+    `SOLR_URL=#{az_url} traject -c #{Rails.configuration.traject_indexer} -x commit`
+  elsif file
     `traject -c #{Rails.configuration.traject_indexer} #{args[:filepath]}`
   else
-    Dir.glob("sample_data/**/*.xml").sort.each do |file|
-      `traject -c #{Rails.configuration.traject_indexer} #{file}`
+    Dir.glob("sample_data/**/*.xml").sort.each do |f|
+      `traject -c #{Rails.configuration.traject_indexer} #{f}`
     end
   end
 
