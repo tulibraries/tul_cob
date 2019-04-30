@@ -24,7 +24,7 @@ class DatabasesController < CatalogController
     # Facet fields
     config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: true
-    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
+    config.add_facet_field "database_type_facet", label: "Database Type", limit: -1, show: true, home: true
 
     # Index fields
     config.add_index_field "note_display", label: "Description", raw: true, helper_method: :join
