@@ -7,6 +7,13 @@
   border-right: 0.0625rem solid $tan-border;
 }
 
+#availability-container {
+  .row {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
+
 #availability-heading {
   color: $red;
   display: inline-block;
@@ -72,16 +79,6 @@
   max-height: 18.75rem;
   overflow-y: auto;
   overflow-x: hidden;
-}
-
-.table-wrapper::-webkit-scrollbar {
-  border-right: 0.0625rem solid $tan-border;
-  height: 0.625rem;
-  width: 0.625rem;
-
-  @media(max-width: 485px) {
-    border: none;
-  }
 }
 
 .table-wrapper::-webkit-scrollbar-thumb {
