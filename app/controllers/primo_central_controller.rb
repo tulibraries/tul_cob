@@ -77,7 +77,7 @@ class PrimoCentralController < CatalogController
     config.add_show_field :issn, label: "ISSN", refwork_tag: :SN
     config.add_show_field :lccn, label: "LCCN"
     config.add_show_field :doi, label: "DOI"
-    config.add_show_field :languageId, label: "Language", multi: true, helper_method: :doc_translate_language_code, refwork_tag: :LA
+    config.add_show_field :language, label: "Language", multi: true, helper_method: :doc_translate_language_code, refwork_tag: :LA
 
     # Sort fields
     config.add_sort_field :rank, label: "relevance"

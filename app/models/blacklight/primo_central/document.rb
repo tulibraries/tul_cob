@@ -39,15 +39,26 @@ module Blacklight::PrimoCentral::Document
     doc["format"] = [format]
 
     doc["title"] ||= doc.dig("pnx", "display", "title")&.first&.truncate(300)
+    doc["contributor"] ||= doc.dig("pnx", "display", "contributor")&.first&.split(";")
+    doc["publisher"] ||= doc.dig("pnx", "display", "publisher") ||
+      doc.dig("pnx", "addata", "pub")
+    doc["relation"] ||= doc.dig("pnx", "display", "relation")
     doc["link"] = @url
     doc["link_label"] = link_label(doc)
     doc["isbn"] ||= doc.dig("pnx", "search", "isbn") || isbn
     doc["issn"] ||= doc.dig("pnx", "search", "issn") || issn
-    doc["lccn"] ||= lccn
+    doc["lccn"] ||= doc.dig("pnx", "addata", "lccn") || lccn
 
     doc["isPartOf"] ||= doc.dig("pnx", "display", "ispartof")&.first
     doc["creator"] ||= doc.dig("pnx", "search", "creatorcontrib") || []
+
     doc["date"] ||= doc.dig("pnx", "search", "creationdate") || []
+
+    doc["language"] = doc.dig("pnx", "search", "language") ||
+      doc.dig("pnx", "display", "language") ||
+      ([ doc["lang3"] ] if doc["lang3"])
+
+    doc["doi"] = doc.dig("pnx", "addata", "doi")
 
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]

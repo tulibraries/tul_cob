@@ -226,10 +226,8 @@ module CatalogHelper
 
   def get_search_params(field, query)
     case field
-    when "title_uniform_display", "title_addl_display"
+    when "title_uniform_display", "title_addl_display", "relation"
       { search_field: "title", q: query }
-    when "relation"
-      { search_field: "title", q: query["relatedTitle"] }
     else
       { search_field: field, q: query }
     end
