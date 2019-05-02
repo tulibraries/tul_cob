@@ -30,10 +30,14 @@ end
 
 to_field "id", extract_json("$.id")
 to_field "format", ->(rec, acc) {
+  acc << "Database"
+}
+
+to_field "database_type_facet", ->(rec, acc) {
   types = rec.fetch("az_types", [])
-  types = types << { "name" => "Database" }
   types.each { |type| acc << type["name"] }
 }
+
 to_field "title_t", extract_json("$.name")
 to_field "title_sort", extract_json("$.name")
 to_field "alt_names_t", extract_json("$.alt_names")
