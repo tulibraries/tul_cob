@@ -26,6 +26,144 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  context "with pnx description " do
+    let(:doc) { { "pnx" => { "search" => { "description" => [ "foo" ] } } } }
+
+    it "maps the description" do
+      expect(subject["description"]).to eq("foo")
+    end
+  end
+
+  context "with pnx subject" do
+    let(:doc) { { "pnx" => { "search" => { "subject" => [ "foo", "bar"] } } } }
+
+    it "maps the subject" do
+      expect(subject["subject"]).to eq([ "foo", "bar" ])
+    end
+  end
+
+  context "with pnx type" do
+    let(:doc) { { "pnx" => { "display" => { "type" => [ "foo" ] } } } }
+
+    it "maps the type and format" do
+      expect(subject["type"]).to eq([ "foo" ])
+      expect(subject["format"]).to eq([ "foo" ])
+    end
+  end
+
+  context "with pnx title" do
+    let(:doc) { { "pnx" => { "display" => { "title" => [ "foo" ] } } } }
+
+    it "maps the title" do
+      expect(subject["title"]).to eq("foo")
+    end
+  end
+
+  context "with pnx contributor" do
+    let(:doc) { { "pnx" => { "display" => { "contributor" => [ "foo;bar" ] } } } }
+
+    it "maps the contributor" do
+      expect(subject["contributor"]).to eq(["foo", "bar"])
+    end
+  end
+
+  context "with pnx dislpay publisher" do
+    let(:doc) { { "pnx" => { "display" => { "publisher" => [ "foo" ] } } } }
+    it "maps the publisher" do
+      expect(subject["publisher"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx addata pub" do
+    let(:doc) { { "pnx" => { "addata" => { "pub" => [ "foo" ] } } } }
+    it "maps the publisher" do
+      expect(subject["publisher"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx display relation" do
+    let(:doc) { { "pnx" => { "display" => { "relation" => [ "foo" ] } } } }
+    it "maps the relation" do
+      expect(subject["relation"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx search isbn" do
+    let(:doc) { { "pnx" => { "search" => { "isbn" => [ "foo" ] } } } }
+    it "maps isbn" do
+      expect(subject["isbn"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx addata lccn" do
+    let(:doc) { { "pnx" => { "addata" => { "lccn" => [ "foo" ] } } } }
+    it "maps lccn" do
+      expect(subject["lccn"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx search issn" do
+    let(:doc) { { "pnx" => { "search" => { "issn" => [ "foo" ] } } } }
+    it "maps issn" do
+      expect(subject["issn"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx display ispartof" do
+    let(:doc) { { "pnx" => { "display" => { "ispartof" => [ "foo" ] } } } }
+    it "maps isPartOf" do
+      expect(subject["isPartOf"]).to eq("foo")
+    end
+  end
+
+  context "with pnx search creatorcontrib" do
+    let(:doc) { { "pnx" => { "search" => { "creatorcontrib" => [ "foo" ] } } } }
+
+    it "maps creator" do
+      expect(subject["creator"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx search creationdate" do
+    let(:doc) { { "pnx" => { "search" => { "creationdate" => [ "foo" ] } } } }
+
+    it "maps date" do
+      expect(subject["date"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx addata doi" do
+    let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+    it "maps doi" do
+      expect(subject["doi"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx search language " do
+    let(:doc) { { "pnx" => { "search" => { "language" => [ "foo" ] } } } }
+
+    it "maps language" do
+      expect(subject["language"]).to eq(["foo"])
+    end
+  end
+
+  context "with pnx display language " do
+    let(:doc) { { "pnx" => { "display" => { "language" => [ "foo" ] } } } }
+
+    it "maps language" do
+      expect(subject["language"]).to eq(["foo"])
+    end
+  end
+
+  context "with lang3" do
+    let(:doc) { { "lang3" => "foo" } }
+
+    it "maps language" do
+      expect(subject["language"]).to eq(["foo"])
+    end
+  end
+
   describe "#export_as_refworks" do
     context "simple document" do
       it "exports a refworks tagged formatted string" do

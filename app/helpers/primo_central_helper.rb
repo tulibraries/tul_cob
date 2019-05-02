@@ -18,7 +18,7 @@ module PrimoCentralHelper
   end
 
   def doc_translate_language_code(presenter)
-    codes = presenter[:document][:languageId] || []
+    codes = presenter[:document][:language] || []
     codes.map { |c| translate_code(c, "language") }
   end
 
