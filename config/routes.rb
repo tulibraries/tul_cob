@@ -21,6 +21,15 @@ Rails.application.routes.draw do
   mount BlacklightAdvancedSearch::Engine => "/"
   mount BentoSearch::Engine => "/bento"
 
+  get "books/:id", to: redirect { |_, req| req.url.sub("books", "catalog") }
+  get "books", to: redirect { |_, req|
+    redirect_path = req.url.sub("books", "catalog")
+
+    redirect_path += "&f[format][]=Book" unless req.params.dig("f", "format")&.include?("Book")
+    redirect_path
+  }
+
+
   # resource and resources
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
