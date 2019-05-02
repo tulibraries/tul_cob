@@ -113,6 +113,15 @@ bundle exec traject -s solr.url=http://somehere/solr -c lib/traject/indexer_conf
 
 If using docker, then ingest using `docker-compose exec app traject -c app/models/traject_indexer.rb sample_data/alma_bibs.xml`.
 
+### Ingesting URLs
+Additionally, you can now use `bin/ingest.rb`. This is a ruby executable that
+works on both files and URLs. So now, if you want to quickly ingest a marc xml
+record from production, you can run something like:
+
+```bash
+bin/ingest.rb http://example.com/catalog/foo.xml
+```
+
 ## Importing from Alma
 
 In order to import from Alma directly execute the following Rake tasks. Harvest may be supplied with
