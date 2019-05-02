@@ -51,9 +51,6 @@ class SolrDocument
   end
 
   def initialize(doc, req = nil)
-    doc[:title_truncated_display] ||= doc[:title_statement_display]
-      &.map { |t| t.truncate(300, separator: " ") }
-
     doc[:materials_data] = materials_data
 
     super doc, req

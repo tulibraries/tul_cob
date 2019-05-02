@@ -2,28 +2,139 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8983/solr/blacklight/select?defType=dismax&f.creator_facet.facet.limit=11&f.subject_facet.facet.limit=11&facet=true&facet.field=language_facet&fl=id%20score%20author_display%20author_vern_display%20creator_display%20format%20imprint_display%20pub_date%20title_series_vern_display%20title_display%20title_vern_display%20title_statement_display%20title_uniform_display&q=james&qf=title_unstem_search%5E100000%20subtitle_unstem_search%5E50000%20title_t%5E25000%20subtitle_t%5E10000%20title_addl_unstem_search%5E5000%20title_addl_t%5E2500%20title_added_entry_unstem_search%5E1500%20title_added_entry_t%5E1250%20subject_topic_unstem_search%5E1000%20subject_unstem_search%5E750%20subject_topic_facet%5E625%20subject_t%5E500%20author_unstem_search%5E250%20author_addl_unstem_search%5E250%20author_t%5E100%20author_addl_t%5E50%20subject_addl_unstem_search%5E250%20subject_addl_t%5E50%20title_series_unstem_search%5E25%20title_series_t%5E10%20text&rows=10&sort=score%20desc,%20pub_date_sort%20desc,%20title_sort%20asc&stats=true&stats.field=pub_date&wt=json
+    uri: http://localhost:8983/solr/blacklight-core-dev/select?author_pf=creator_unstem_search%5E2000%20creator_t%5E200&author_qf=creator_unstem_search%5E200%20creator_t%5E20&bq=(library_based_boost_t:*%20-no_boost)%5E1000&defType=edismax&echoParams=explicit&f.format.facet.limit=-1&facet=true&facet.field=availability_facet&facets=true&fl=id%20score%20availability_facet%20holdings_display%20holdings_with_no_items_display%20call_number_display%20call_number_alt_display%20creator_display%20contributor_display%20format%20imprint_display%20imprint_prod_display%20imprint_dist_display%20imprint_man_display%20library_facet%20location_display%20pub_date%20holdings_summary_display%20title_series_display%20title_statement_display%20title_truncated_display%20title_uniform_display%20isbn_display%20lccn_display%20bound_with_ids%20purchase_order%20items_json_display:%5Bjson%5D%20url_finding_aid_display:%5Bjson%5D%20url_more_links_display:%5Bjson%5D%20electronic_resource_display:%5Bjson%5D&fq=-suppress_items_b:*&lowercaseOperators=false&mm=8%253C75%2525&mm.autorelax=true&pf=title_unstem_search%5E1000000%20subtitle_unstem_search%5E500000%20title_t%5E250000%20subtitle_t%5E100000%20work_access_point%5E10000%20title_statement_unstem_search%5E50000%20title_statement_t%5E25000%20title_uniform_unstem_search%5E150000%20title_uniform_t%5E50000%20title_addl_unstem_search%5E50000%20title_addl_t%5E25000%20title_added_entry_unstem_search%5E15000%20title_added_entry_t%5E12500%20subject_topic_unstem_search%5E10000%20subject_unstem_search%5E7500%20subject_topic_facet%5E6250%20subject_t%5E5000%20note_toc_unstem_search~0%5E6000%20note_summary_unstem_search~0%5E6000%20note_toc_unstem_search%5E1000%20note_summary_unstem_search%5E1000%20creator_unstem_search~2%5E7500%20creator_unstem_search%5E2500%20creator_t%5E1000%20subject_addl_unstem_search%5E2500%20subject_addl_t%5E500%20title_series_unstem_search%5E250%20title_series_t%5E100%20text%5E10&ps=3&q=james&qf=title_unstem_search%5E100000%20subtitle_unstem_search%5E50000%20title_t%5E25000%20subtitle_t%5E10000%20work_access_point%5E10000%20title_statement_unstem_search%5E5000%20title_statement_t%5E2500%20title_uniform_unstem_search%5E15000%20title_uniform_t%5E5000%20title_addl_unstem_search%5E5000%20title_addl_t%5E2500%20title_added_entry_unstem_search%5E1500%20title_added_entry_t%5E1250%20subject_topic_unstem_search%5E1000%20subject_unstem_search%5E750%20subject_topic_facet%5E625%20subject_t%5E500%20creator_unstem_search%5E250%20creator_t%5E100%20subject_addl_unstem_search%5E250%20subject_addl_t%5E50%20title_series_unstem_search%5E25%20title_series_t%5E10%20isbn_t%5E5%20issn_t%5E5%20text&rows=10&sow=false&spellcheck=true&spellcheck.collate=true&spellcheck.collateParam.mm=100%25&spellcheck.collateParam.q.op=AND&spellcheck.extendedResults=true&spellcheck.maxCollations=3&subject_pf=subject_topic_unstem_search%5E2000%20subject_unstem_search%5E1250%20subject_t%5E1000%20subject_topic_facet%5E500%20subject_addl_unstem_search%5E100%20subject_addl_t%5E10&subject_qf=subject_topic_unstem_search%5E200%20subject_unstem_search%5E125%20subject_topic_facet%5E100%20subject_t%5E50%20subject_addl_unstem_search%5E10%20subject_addl_t&tie=0.01&title_pf=title_unstem_search%5E500000%20subtitle_unstem_search%5E250000%20title_uniform_unstem_search%5E150000%20title_addl_unstem_search%5E100000%20title_t%5E50000%20subtitle_t%5E25000%20title_uniform_t%5E1500%20title_addl_t%5E1000%20title_added_entry_unstem_search%5E500%20title_added_entry_t%5E100%20title_series_t%5E50%20title_series_unstem_search%5E10&title_qf=title_unstem_search%5E50000%20subtitle_unstem_search%5E25000%20title_uniform_unstem_search%5E15000%20title_addl_unstem_search%5E10000%20title_t%5E5000%20subtitle_t%5E2500%20title_uniform_t%5E150%20title_addl_t%5E100%20title_added_entry_unstem_search%5E50%20title_added_entry_t%5E10%20title_series_unstem_search%5E5%20title_series_t&wt=json
     body:
       encoding: US-ASCII
       string: ''
-    headers: {}
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
   response:
     status:
       code: 200
       message: OK
     headers:
       Last-Modified:
-      - Wed, 18 Oct 2017 19:15:38 GMT
+      - Wed, 01 May 2019 15:42:27 GMT
       Etag:
-      - '"ZDYwMDAwMDAwMDAwMDAwMFNvbHI="'
+      - '"NDgwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '7327'
+      - '12597'
     body:
-      encoding: ASCII-8BIT
-      string: !binary |-
-        eyJyZXNwb25zZUhlYWRlciI6eyJzdGF0dXMiOjAsIlFUaW1lIjoxMSwicGFyYW1zIjp7ImYuc3ViamVjdF9mYWNldC5mYWNldC5saW1pdCI6IjExIiwiZmFjZXQuZmllbGQiOlsiYXZhaWxhYmlsaXR5X2ZhY2V0IiwibGlicmFyeV9mYWNldCIsImZvcm1hdCIsInB1Yl9kYXRlIiwiY3JlYXRvcl9mYWNldCIsInN1YmplY3RfZmFjZXQiLCJzdWJqZWN0X3RvcGljX2ZhY2V0Iiwic3ViamVjdF9lcmFfZmFjZXQiLCJzdWJqZWN0X3JlZ2lvbl9mYWNldCIsImdlbnJlX2ZhY2V0IiwibGFuZ3VhZ2VfZmFjZXQiXSwiZmwiOiJpZCBzY29yZSBhdXRob3JfZGlzcGxheSBhdXRob3JfdmVybl9kaXNwbGF5IGNyZWF0b3JfZGlzcGxheSBmb3JtYXQgaW1wcmludF9kaXNwbGF5IHB1Yl9kYXRlIHRpdGxlX3Nlcmllc192ZXJuX2Rpc3BsYXkgdGl0bGVfZGlzcGxheSB0aXRsZV92ZXJuX2Rpc3BsYXkgdGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkgdGl0bGVfdW5pZm9ybV9kaXNwbGF5Iiwic29ydCI6InNjb3JlIGRlc2MsIHB1Yl9kYXRlX3NvcnQgZGVzYywgdGl0bGVfc29ydCBhc2MiLCJyb3dzIjoiMTAiLCJmLmNyZWF0b3JfZmFjZXQuZmFjZXQubGltaXQiOiIxMSIsInEiOiJqYW1lcyIsImRlZlR5cGUiOiJkaXNtYXgiLCJxZiI6InRpdGxlX3Vuc3RlbV9zZWFyY2heMTAwMDAwIHN1YnRpdGxlX3Vuc3RlbV9zZWFyY2heNTAwMDAgdGl0bGVfdF4yNTAwMCBzdWJ0aXRsZV90XjEwMDAwIHRpdGxlX2FkZGxfdW5zdGVtX3NlYXJjaF41MDAwIHRpdGxlX2FkZGxfdF4yNTAwIHRpdGxlX2FkZGVkX2VudHJ5X3Vuc3RlbV9zZWFyY2heMTUwMCB0aXRsZV9hZGRlZF9lbnRyeV90XjEyNTAgc3ViamVjdF90b3BpY191bnN0ZW1fc2VhcmNoXjEwMDAgc3ViamVjdF91bnN0ZW1fc2VhcmNoXjc1MCBzdWJqZWN0X3RvcGljX2ZhY2V0XjYyNSBzdWJqZWN0X3ReNTAwIGF1dGhvcl91bnN0ZW1fc2VhcmNoXjI1MCBhdXRob3JfYWRkbF91bnN0ZW1fc2VhcmNoXjI1MCBhdXRob3JfdF4xMDAgYXV0aG9yX2FkZGxfdF41MCBzdWJqZWN0X2FkZGxfdW5zdGVtX3NlYXJjaF4yNTAgc3ViamVjdF9hZGRsX3ReNTAgdGl0bGVfc2VyaWVzX3Vuc3RlbV9zZWFyY2heMjUgdGl0bGVfc2VyaWVzX3ReMTAgdGV4dCIsInN0YXRzIjoidHJ1ZSIsInd0IjoianNvbiIsImZhY2V0IjoidHJ1ZSIsInN0YXRzLmZpZWxkIjoicHViX2RhdGUifX0sInJlc3BvbnNlIjp7Im51bUZvdW5kIjoxMiwic3RhcnQiOjAsIm1heFNjb3JlIjoxLjE2NDY1NDEsImRvY3MiOlt7ImlkIjoiOTkxMDEyMTgxNjk5NzAzODExIiwiZm9ybWF0IjpbIkJvb2siXSwidGl0bGVfZGlzcGxheSI6WyJMaWZlc3R5bGUgZml0bmVzcyBjb2FjaGluZyJdLCJhdXRob3JfZGlzcGxheSI6WyJHYXZpbiwgSmFtZXMsIDE5NDItIl0sInRpdGxlX3N0YXRlbWVudF9kaXNwbGF5IjpbIkxpZmVzdHlsZSBmaXRuZXNzIGNvYWNoaW5nIC8gSmFtZXMgR2F2aW4uIl0sImNyZWF0b3JfZGlzcGxheSI6WyJHYXZpbiwgSmFtZXMsIDE5NDItIl0sImltcHJpbnRfZGlzcGxheSI6WyJDaGFtcGFpZ24sIElMIDogSHVtYW4gS2luZXRpY3MsIGMyMDA1LiJdLCJwdWJfZGF0ZSI6WyIyMDA1Il0sInNjb3JlIjoxLjE2NDY1NDF9LHsiaWQiOiI5OTEwMTIwNDg1Nzk3MDM4MTEiLCJmb3JtYXQiOlsiQm9vayJdLCJ0aXRsZV9kaXNwbGF5IjpbIkFuIGFjdCBhbWVuZGF0b3J5IG9mIHRoZSBDaGFydGVyIG9mIHRoZSBjaXR5IG9mIFdhc2hpbmd0b24iXSwiYXV0aG9yX2Rpc3BsYXkiOlsiV2FzaGluZ3RvbiAoRC5DLikiXSwidGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkiOlsiQW4gYWN0IGFtZW5kYXRvcnkgb2YgdGhlIENoYXJ0ZXIgb2YgdGhlIGNpdHkgb2YgV2FzaGluZ3RvbiA6IGFuIGFjdCBzdXBwbGVtZW50YXJ5IHRvIHRoZSBhY3QgXCJ0byBpbmNvcnBvcmF0ZSB0aGUgaW5oYWJpdGFudHMgb2YgdGhlIGNpdHkgb2YgV2FzaGluZ3RvbixcIiBwYXNzZWQgdGhlIGZpZnRlZW50aCBvZiBNYXksIG9uZSB0aG91c2FuZCBlaWdodCBodW5kcmVkIGFuZCB0d2VudHksIGFuZCBmb3Igb3RoZXIgcHVycG9zZXMuIl0sInRpdGxlX3VuaWZvcm1fZGlzcGxheSI6WyJDaGFydGVyLiJdLCJjcmVhdG9yX2Rpc3BsYXkiOlsiV2FzaGluZ3RvbiAoRC5DLikiLCJNb25yb2UsIEphbWVzLCAxNzU4LTE4MzEiXSwiaW1wcmludF9kaXNwbGF5IjpbIldhc2hpbmd0b24sIERDIDogcy5uLiwgMTgyND8iXSwicHViX2RhdGUiOlsiMTgyNCJdLCJzY29yZSI6MC4wMDQ0Nzc2OTd9LHsiaWQiOiI5OTEwMTIwNTMyOTk3MDM4MTEiLCJmb3JtYXQiOlsiU2NvcmUiXSwidGl0bGVfZGlzcGxheSI6WyJIQiB0byBNQiJdLCJhdXRob3JfZGlzcGxheSI6WyJNYWNNaWxsYW4sIEphbWVzLCAxOTU5LSJdLCJ0aXRsZV9zdGF0ZW1lbnRfZGlzcGxheSI6WyJIQiB0byBNQiA6IGNlbGxvIHNvbG8gLyBKYW1lcyBNYWNNaWxsYW4uIl0sImNyZWF0b3JfZGlzcGxheSI6WyJNYWNNaWxsYW4sIEphbWVzLCAxOTU5LSJdLCJpbXByaW50X2Rpc3BsYXkiOlsiTG9uZG9uIDogQm9vc2V5ICYgSGF3a2VzLCBjMjAwNS4iXSwicHViX2RhdGUiOlsiMjAwNSJdLCJzY29yZSI6MC4wMDQxMjE0MDU1fSx7ImlkIjoiOTkxMDEyMTMyODg5NzAzODExIiwiZm9ybWF0IjpbIkJvb2siXSwidGl0bGVfZGlzcGxheSI6WyJUaGUgc2VsbGluZyBvZiB0aGUgU291dGgiXSwiYXV0aG9yX2Rpc3BsYXkiOlsiQ29iYiwgSmFtZXMgQy4gKEphbWVzIENoYXJsZXMpLCAxOTQ3LSJdLCJ0aXRsZV9zdGF0ZW1lbnRfZGlzcGxheSI6WyJUaGUgc2VsbGluZyBvZiB0aGUgU291dGggOiB0aGUgU291dGhlcm4gY3J1c2FkZSBmb3IgaW5kdXN0cmlhbCBkZXZlbG9wbWVudCwgMTkzNi0xOTgwIC8gSmFtZXMgQy4gQ29iYi4iXSwiY3JlYXRvcl9kaXNwbGF5IjpbIkNvYmIsIEphbWVzIEMuIChKYW1lcyBDaGFybGVzKSwgMTk0Ny0iXSwiaW1wcmludF9kaXNwbGF5IjpbIkJhdG9uIFJvdWdlIDogTG91aXNpYW5hIFN0YXRlIFVuaXZlcnNpdHkgUHJlc3MsIGMxOTgyLiJdLCJwdWJfZGF0ZSI6WyIxOTgyIl0sInNjb3JlIjowLjAwNDA3OTk4NzN9LHsiaWQiOiI5OTEwMTIxNTI3Nzk3MDM4MTEiLCJmb3JtYXQiOlsiQm9vayJdLCJ0aXRsZV9kaXNwbGF5IjpbIkNsdWJmb290Il0sImF1dGhvcl9kaXNwbGF5IjpbIkdhbmxleSwgSmFtZXMgVi4iXSwidGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkiOlsiQ2x1YmZvb3QuIEdhbmxleSwgSmFtZXMgVi4iXSwiY3JlYXRvcl9kaXNwbGF5IjpbIkdhbmxleSwgSmFtZXMgVi4iXSwiaW1wcmludF9kaXNwbGF5IjpbIlBlbm5zeWx2YW5pYSBDb2xsZWdlIG9mIFBvZGlhdHJpYyBNZWRpY2luZSAxOTc0Il0sInB1Yl9kYXRlIjpbIjE5NzQiXSwic2NvcmUiOjAuMDAzMjk3MTQ2Nn0seyJpZCI6Ijk5MTAxMjEwMzk0OTcwMzgxMSIsImZvcm1hdCI6WyJCb29rIl0sInRpdGxlX2Rpc3BsYXkiOlsiTHVtYmFyIGRpc2MgbGVzaW9uczogIHBhdGhvZ2VuZXNpcyBhbmQgdHJlYXRtZW50IG9mIGxvdyBiYWNrIHBhaW4gYW5kIHNjaWF0aWNhIl0sImF1dGhvcl9kaXNwbGF5IjpbIkFybXN0cm9uZywgSmFtZXMgUm93YW4uIl0sInRpdGxlX3N0YXRlbWVudF9kaXNwbGF5IjpbIkx1bWJhciBkaXNjIGxlc2lvbnM6ICBwYXRob2dlbmVzaXMgYW5kIHRyZWF0bWVudCBvZiBsb3cgYmFjayBwYWluIGFuZCBzY2lhdGljYS4gQXJtc3Ryb25nLCBKYW1lcyBSb3dhbiJdLCJjcmVhdG9yX2Rpc3BsYXkiOlsiQXJtc3Ryb25nLCBKYW1lcyBSb3dhbiJdLCJpbXByaW50X2Rpc3BsYXkiOlsiV2lsbGlhbXMgJiBXaWxraW5zIDE5NTIiXSwicHViX2RhdGUiOlsiMTk1MiJdLCJzY29yZSI6MC4wMDMyOTcxMzY0fSx7ImlkIjoiOTkxMDEyMTYwMjg5NzAzODExIiwiZm9ybWF0IjpbIkRpc3NlcnRhdGlvbi9UaGVzaXMiXSwidGl0bGVfZGlzcGxheSI6WyJBIHRoZW9yZXRpY2FsIGZvcm11bGF0aW9uIGFuZCB0ZXN0IG9mIGVmZmVjdHMgb2YgYWNoaWV2ZW1lbnQgYW5kIGluY2VudGl2ZSBtb3RpdmF0aW9uIG9uIGluY2lkZW50YWwgbGVhcm5pbmciXSwiYXV0aG9yX2Rpc3BsYXkiOlsiRHVwdXksIEhhcm9sZCBKYW1lcy4iXSwidGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkiOlsiQSB0aGVvcmV0aWNhbCBmb3JtdWxhdGlvbiBhbmQgdGVzdCBvZiBlZmZlY3RzIG9mIGFjaGlldmVtZW50IGFuZCBpbmNlbnRpdmUgbW90aXZhdGlvbiBvbiBpbmNpZGVudGFsIGxlYXJuaW5nIGJ5IEhhcm9sZCBKYW1lcyBEdXB1eS4iXSwiY3JlYXRvcl9kaXNwbGF5IjpbIkR1cHV5LCBIYXJvbGQgSmFtZXMiXSwiaW1wcmludF9kaXNwbGF5IjpbIltTLmwuIDogcy5uLl0sIDE5NjcuIl0sInB1Yl9kYXRlIjpbIjE5NjciXSwic2NvcmUiOjAuMDAzMjk3MTI2NH0seyJpZCI6Ijk5MTAxMjE3Njk5OTcwMzgxMSIsImZvcm1hdCI6WyJCb29rIl0sInRpdGxlX2Rpc3BsYXkiOlsiVGhlIGdyZWF0IGZlYXIiXSwiYXV0aG9yX2Rpc3BsYXkiOlsiSGFycmlzLCBKYW1lcyBSLiwgMTk2NC0iXSwidGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkiOlsiVGhlIGdyZWF0IGZlYXIgOiBTdGFsaW4ncyB0ZXJyb3Igb2YgdGhlIDE5MzBzIC8gSmFtZXMgSGFycmlzLiJdLCJjcmVhdG9yX2Rpc3BsYXkiOlsiSGFycmlzLCBKYW1lcyBSLiwgMTk2NC0iXSwiaW1wcmludF9kaXNwbGF5IjpbIk94Zm9yZCwgVW5pdGVkIEtpbmdkb20gOiBPeGZvcmQgVW5pdmVyc2l0eSBQcmVzcywgMjAxNi4iXSwicHViX2RhdGUiOlsiMjAxNiJdLCJzY29yZSI6MC4wMDMyOTcxMTF9LHsiaWQiOiI5OTEwMTIwNDU0MDk3MDM4MTEiLCJmb3JtYXQiOlsiQm9vayJdLCJ0aXRsZV9kaXNwbGF5IjpbIkh1bWFuIHdhbGtpbmciXSwidGl0bGVfc3RhdGVtZW50X2Rpc3BsYXkiOlsiSHVtYW4gd2Fsa2luZyAvIGVkaXRlZCBieSBKZXNzaWNhIFJvc2UsIEphbWVzIEcuIEdhbWJsZS4iXSwiY3JlYXRvcl9kaXNwbGF5IjpbIlJvc2UsIEplc3NpY2EiLCJHYW1ibGUsIEphbWVzIEdpYnNvbiJdLCJpbXByaW50X2Rpc3BsYXkiOlsiQmFsdGltb3JlIDogV2lsbGlhbXMgJiBXaWxraW5zLCBjMTk5NC4iXSwicHViX2RhdGUiOlsiMTk5NCJdLCJzY29yZSI6MC4wMDMxMzQ0MTY5fSx7ImlkIjoiOTkxMDEyMDcyMjk5NzAzODExIiwiZm9ybWF0IjpbIlZpZGVvIl0sInRpdGxlX2Rpc3BsYXkiOlsiSW5pdGlhbCBtYW5hZ2VtZW50IG9mIHRoZSBwb2lzb24gcGF0aWVudCJdLCJ0aXRsZV9zdGF0ZW1lbnRfZGlzcGxheSI6WyJJbml0aWFsIG1hbmFnZW1lbnQgb2YgdGhlIHBvaXNvbiBwYXRpZW50IHdpdGggSmFtZXMgVi4gSGlsbG1hbi4iXSwiY3JlYXRvcl9kaXNwbGF5IjpbIkhpbGxtYW4sIEphbWVzIFYuIiwiTmV0d29yayBmb3IgQ29udGludWluZyBNZWRpY2FsIEVkdWNhdGlvbiJdLCJpbXByaW50X2Rpc3BsYXkiOlsiU2VjYXVjdXMsIE4uSi4gOiBOZXR3b3JrIGZvciBDb250aW51aW5nIE1lZGljYWwgRWR1Y2F0aW9uLCBjMTk4OS4iXSwicHViX2RhdGUiOlsiMTk4OSJdLCJzY29yZSI6MC4wMDIyMzg4NjJ9XX0sImZhY2V0X2NvdW50cyI6eyJmYWNldF9xdWVyaWVzIjp7fSwiZmFjZXRfZmllbGRzIjp7ImF2YWlsYWJpbGl0eV9mYWNldCI6W10sImxpYnJhcnlfZmFjZXQiOltdLCJmb3JtYXQiOlsiQm9vayIsOSwiRGlzc2VydGF0aW9uL1RoZXNpcyIsMSwiU2NvcmUiLDEsIlZpZGVvIiwxXSwicHViX2RhdGUiOlsiMjAwNSIsMiwiMTgyNCIsMSwiMTk1MiIsMSwiMTk2NyIsMSwiMTk3NCIsMSwiMTk4MiIsMSwiMTk4MyIsMSwiMTk4OSIsMSwiMTk5NCIsMSwiMTk5NyIsMSwiMjAxNiIsMV0sImNyZWF0b3JfZmFjZXQiOlsiQXJtc3Ryb25nLCBKYW1lcyBSb3dhbiIsMSwiQ29iYiwgSmFtZXMgQy4gKEphbWVzIENoYXJsZXMpLCAxOTQ3LSIsMSwiRGF2aWQsIFBhdWwgVGhlb2RvcmUsIDE5MDYtIiwxLCJEdXB1eSwgSGFyb2xkIEphbWVzIiwxLCJFdmVyc29uLCBEYXZpZCBILiwgMTk0MS0iLDEsIkdhbWJsZSwgSmFtZXMgR2lic29uIiwxLCJHYW5sZXksIEphbWVzIFYuIiwxLCJHYXZpbiwgSmFtZXMsIDE5NDItIiwxLCJIYXJyaXMsIEphbWVzIFIuLCAxOTY0LSIsMSwiSGlsbG1hbiwgSmFtZXMgVi4iLDEsIk1hY01pbGxhbiwgSmFtZXMsIDE5NTktIiwxXSwic3ViamVjdF9mYWNldCI6WyJCYWNrIFBhaW4iLDEsIkJpb21lY2hhbmljcyIsMSwiQ2VsbG8gbXVzaWMiLDEsIkNsdWJmb290LS1TdXJnZXJ5LS1WaWRlb2Nhc3NldHRlcyIsMSwiQ2x1YmZvb3QtLVZpZGVvY2Fzc2V0dGVzIiwxLCJHYWl0IiwxLCJIZWFsdGggcHJvbW90aW9uIiwxLCJJbmR1c3RyaWFsIHByb21vdGlvbiDigJQgU291dGhlcm4gU3RhdGVzIiwxLCJJbnRlcnZlcnRlYnJhbCBEaXNrIERpc3BsYWNlbWVudCIsMSwiTGVhcm5pbmcsIFBzeWNob2xvZ3kgb2YuIiwxLCJMaWZlc3R5bGVzIiwxXSwic3ViamVjdF90b3BpY19mYWNldCI6WyJCYWNrIFBhaW4uIiwxLCJCaW9tZWNoYW5pY3MuIiwxLCJDZWxsbyBtdXNpYy4iLDEsIkNsdWJmb290LS1TdXJnZXJ5LS1WaWRlb2Nhc3NldHRlcy4iLDEsIkNsdWJmb290LS1WaWRlb2Nhc3NldHRlcy4iLDEsIkdhaXQuIiwxLCJIZWFsdGggcHJvbW90aW9uLiIsMSwiSW5kdXN0cmlhbCBwcm9tb3Rpb24iLDEsIkludGVydmVydGVicmFsIERpc2sgRGlzcGxhY2VtZW50LiIsMSwiTGVhcm5pbmcsIFBzeWNob2xvZ3kgb2YuIiwxLCJMaWZlc3R5bGVzLiIsMSwiTG9jb21vdGlvbi4iLDEsIk1vdGl2YXRpb24gaW4gZWR1Y2F0aW9uLiIsMSwiTXVuaWNpcGFsIGNoYXJ0ZXJzIiwxLCJPcnRob3BlZGljcyIsMSwiUGVyc29uYWwgY29hY2hpbmcuIiwxLCJQaHlzaWNhbCBUaGVyYXB5IiwxLCJQaHlzaWNhbCBmaXRuZXNzLiIsMSwiUG9pc29uaW5nIiwxLCJQb2xpdGljYWwgdmlvbGVuY2UiLDEsIlByZXNpZGVudHMiLDEsIlNjaWF0aWNhLiIsMSwiU3BvcnRzIE1lZGljaW5lIiwxLCJXYWxraW5nLiIsMV0sInN1YmplY3RfZXJhX2ZhY2V0IjpbIjE5MTctMTkzNiIsMSwiMTkxOC0iLDEsIjE5MzYtMTk1MyIsMSwiMTk3Ny0xOTgxIiwxLCIxOTgwIiwxXSwic3ViamVjdF9yZWdpb25fZmFjZXQiOlsiU291dGhlcm4gU3RhdGVzIiwxLCJTb3ZpZXQgVW5pb24iLDEsIlVuaXRlZCBTdGF0ZXMiLDEsIldhc2hpbmd0b24gKEQuQy4pIiwxXSwiZ2VucmVfZmFjZXQiOlsiQ2hhcnRlcnMiLDEsInZpZGVvY2Fzc2V0dGVzIiwxXSwibGFuZ3VhZ2VfZmFjZXQiOlsiRW5nbGlzaCIsMTFdfSwiZmFjZXRfcmFuZ2VzIjp7fSwiZmFjZXRfaW50ZXJ2YWxzIjp7fSwiZmFjZXRfaGVhdG1hcHMiOnt9fSwic3RhdHMiOnsic3RhdHNfZmllbGRzIjp7InB1Yl9kYXRlIjp7Im1pbiI6IjE4MjQiLCJtYXgiOiIyMDE2IiwiY291bnQiOjEyLCJtaXNzaW5nIjowfX19LCJzcGVsbGNoZWNrIjp7InN1Z2dlc3Rpb25zIjpbXSwiY29ycmVjdGx5U3BlbGxlZCI6dHJ1ZX19Cg==
+      encoding: UTF-8
+      string: '{"responseHeader":{"status":0,"QTime":39,"params":{"ps":"3","echoParams":"explicit","fl":"id
+        score availability_facet holdings_display holdings_with_no_items_display call_number_display
+        call_number_alt_display creator_display contributor_display format imprint_display
+        imprint_prod_display imprint_dist_display imprint_man_display library_facet
+        location_display pub_date holdings_summary_display title_series_display title_statement_display
+        title_truncated_display title_uniform_display isbn_display lccn_display bound_with_ids
+        purchase_order items_json_display:[json] url_finding_aid_display:[json] url_more_links_display:[json]
+        electronic_resource_display:[json]","subject_qf":"subject_topic_unstem_search^200
+        subject_unstem_search^125 subject_topic_facet^100 subject_t^50 subject_addl_unstem_search^10
+        subject_addl_t","spellcheck.maxCollations":"3","fq":"-suppress_items_b:*","lowercaseOperators":"false","bq":["pub_date_tdt:[NOW/DAY-10YEAR
+        TO NOW/DAY]^3500","(library_based_boost_t:* -no_boost)^1000"],"facets":"true","tie":"0.01","defType":"edismax","spellcheck.collateParam.mm":"100%","qf":"title_unstem_search^100000
+        subtitle_unstem_search^50000 title_t^25000 subtitle_t^10000 work_access_point^10000
+        title_statement_unstem_search^5000 title_statement_t^2500 title_uniform_unstem_search^15000
+        title_uniform_t^5000 title_addl_unstem_search^5000 title_addl_t^2500 title_added_entry_unstem_search^1500
+        title_added_entry_t^1250 subject_topic_unstem_search^1000 subject_unstem_search^750
+        subject_topic_facet^625 subject_t^500 creator_unstem_search^250 creator_t^100
+        subject_addl_unstem_search^250 subject_addl_t^50 title_series_unstem_search^25
+        title_series_t^10 isbn_t^5 issn_t^5 text","title_qf":"title_unstem_search^50000
+        subtitle_unstem_search^25000 title_uniform_unstem_search^15000 title_addl_unstem_search^10000
+        title_t^5000 subtitle_t^2500 title_uniform_t^150 title_addl_t^100 title_added_entry_unstem_search^50
+        title_added_entry_t^10 title_series_unstem_search^5 title_series_t","author_pf":"creator_unstem_search^2000
+        creator_t^200","sow":"false","wt":"json","f.format.facet.limit":"-1","mm":["5<-1","8%3C75%25"],"facet.field":"availability_facet","spellcheck.collateParam.q.op":"AND","subject_pf":"subject_topic_unstem_search^2000
+        subject_unstem_search^1250 subject_t^1000 subject_topic_facet^500 subject_addl_unstem_search^100
+        subject_addl_t^10","rows":"10","spellcheck.extendedResults":"true","q":"james","mm.autorelax":"true","spellcheck":"true","pf":"title_unstem_search^1000000
+        subtitle_unstem_search^500000 title_t^250000 subtitle_t^100000 work_access_point^10000
+        title_statement_unstem_search^50000 title_statement_t^25000 title_uniform_unstem_search^150000
+        title_uniform_t^50000 title_addl_unstem_search^50000 title_addl_t^25000 title_added_entry_unstem_search^15000
+        title_added_entry_t^12500 subject_topic_unstem_search^10000 subject_unstem_search^7500
+        subject_topic_facet^6250 subject_t^5000 note_toc_unstem_search~0^6000 note_summary_unstem_search~0^6000
+        note_toc_unstem_search^1000 note_summary_unstem_search^1000 creator_unstem_search~2^7500
+        creator_unstem_search^2500 creator_t^1000 subject_addl_unstem_search^2500
+        subject_addl_t^500 title_series_unstem_search^250 title_series_t^100 text^10","title_pf":"title_unstem_search^500000
+        subtitle_unstem_search^250000 title_uniform_unstem_search^150000 title_addl_unstem_search^100000
+        title_t^50000 subtitle_t^25000 title_uniform_t^1500 title_addl_t^1000 title_added_entry_unstem_search^500
+        title_added_entry_t^100 title_series_t^50 title_series_unstem_search^10","author_qf":"creator_unstem_search^200
+        creator_t^20","facet":"true","spellcheck.collate":"true"}},"response":{"numFound":363,"start":0,"maxScore":3.8202863,"docs":[{"id":"991016309359703811","format":["Book"],"title_statement_display":["James
+        Rosenquist / Judith Goldman."],"title_truncated_display":["James Rosenquist
+        / Judith Goldman."],"creator_display":["Goldman, Judith"],"contributor_display":["Rosenquist,
+        James, 1933-2017"],"imprint_display":["New York, N.Y. : Viking, 1985."],"pub_date":["1985"],"call_number_display":["ND237.R723G65
+        1985"],"library_facet":["Paley Library"],"availability_facet":["At the Library"],"location_display":["MAIN
+        stacks"],"holdings_display":["22242869490003811"],"isbn_display":["9780670805891","0670805890","0670805890
+        :"],"lccn_display":["84048844"],"purchase_order":false,"score":3.8202863,"items_json_display":[{"item_pid":"23242869480003811","item_policy":"0","permanent_library":"MAIN","permanent_location":"stacks","current_library":"MAIN","current_location":"stacks","call_number_type":"0","call_number":"ND237.R723G65
+        1985","holding_id":"22242869490003811"}]},{"id":"991034769439703811","format":["Book"],"title_statement_display":["James
+        Boswell : the journal of his German and Swiss travels, 1764 / edited by Marlies
+        K. Danziger."],"title_truncated_display":["James Boswell : the journal of
+        his German and Swiss travels, 1764 / edited by Marlies K. Danziger."],"creator_display":["Boswell,
+        James, 1740-1795"],"contributor_display":["Danziger, Marlies K."],"imprint_display":["Edinburgh
+        : Edinburgh University Press ; New Haven : Yale University Press, c2008."],"pub_date":["2008"],"title_series_display":["Boswell''s
+        journals ; v. 1","The Yale editions of the private papers of James Boswell--research
+        edition","Boswell, James, 1740-1795. Boswell''s journals ; v. 1.","Yale editions
+        of the private papers of James Boswell--research edition (Edinburgh, Scotland)"],"call_number_display":["PR3325
+        .A8223 2008"],"library_facet":["Paley Library"],"availability_facet":["At
+        the Library"],"location_display":["MAIN stacks"],"holdings_display":["22241367900003811"],"isbn_display":["9780748618064","0748618066","9780300123609","0300123604","0748618066
+        (Edinburgh)","9780748618064 (Edinburgh)","0300123604 (Yale)","9780300123609
+        (Yale)"],"lccn_display":["2008924506"],"purchase_order":false,"score":3.819317,"items_json_display":[{"item_pid":"23241367890003811","item_policy":"0","permanent_library":"MAIN","permanent_location":"stacks","current_library":"MAIN","current_location":"stacks","call_number_type":"0","call_number":"PR3325
+        .A8223 2008","holding_id":"22241367900003811"}]},{"id":"2806487","format":["Database"],"title_statement_display":["King
+        James Bible"],"purchase_order":false,"score":3.8157816,"electronic_resource_display":[{"title":"King
+        James Bible","url":"http://libproxy.temple.edu/login?url=http://collections.chadwyck.com/home/home_kjb.jsp"}]},{"id":"991036814693803811","format":["Book"],"title_statement_display":["The
+        poetry of James Wright / Andrew Elkins."],"title_truncated_display":["The
+        poetry of James Wright / Andrew Elkins."],"creator_display":["Elkins, Andrew,
+        1950-"],"imprint_display":["Tuscaloosa : University of Alabama Press, c1991."],"pub_date":["1991"],"availability_facet":["Online"],"isbn_display":["9780817304966","0817304967","0-8173-0496-7"],"lccn_display":["90010879","   90010879
+        "],"purchase_order":false,"score":3.3443377,"electronic_resource_display":[{"portfolio_id":"53393064850003811","title":"EBSCOhost
+        Academic eBook Collection (North America)"}]},{"id":"991036815380303811","format":["Book"],"title_statement_display":["Criminal
+        Trials in Scotland from MCCCCLXXXVIII to MDCXXIV Embracing the Entire Reigns
+        of James IV, James V, Mary Queen of Scots and James VI"],"title_truncated_display":["Criminal
+        Trials in Scotland from MCCCCLXXXVIII to MDCXXIV Embracing the Entire Reigns
+        of James IV, James V, Mary Queen of Scots and James VI"],"pub_date":["2005"],"availability_facet":["Online"],"isbn_display":["9781554293247","1554293243","1-55429-324-3"],"purchase_order":false,"score":2.895588,"electronic_resource_display":[{"portfolio_id":"53393641830003811","title":"EBSCOhost
+        Academic eBook Collection (North America)"}]},{"id":"991036740431103811","format":["Book"],"title_statement_display":["James
+        Joyce and the Language of History Dedalus''s Nightmare"],"title_truncated_display":["James
+        Joyce and the Language of History Dedalus''s Nightmare"],"creator_display":["Spoo,
+        Robert"],"imprint_display":["New York : Oxford University Press, 1994."],"pub_date":["1994"],"availability_facet":["Online"],"isbn_display":["9780195087499","0195087496","0-19-508749-6"],"purchase_order":false,"score":2.8663507,"electronic_resource_display":[{"portfolio_id":"53350851630003811","title":"ebrary
+        Academic Complete"},{"portfolio_id":"53392317410003811","title":"EBSCOhost
+        Academic eBook Collection (North America)"}]},{"id":"991027303069703811","format":["Book"],"title_statement_display":["Wales
+        in the reign of James I / G. Dyfnallt Owen."],"title_truncated_display":["Wales
+        in the reign of James I / G. Dyfnallt Owen."],"creator_display":["Owen, Geraint
+        Dyfnallt"],"imprint_display":["[London] : Royal Historical Society ; Wolfeboro,
+        N.H., USA : Boydell Press, 1988."],"pub_date":["1988"],"title_series_display":["Royal
+        Historical Society studies in history, 53","Royal Historical Society studies
+        in history ; no. 53."],"call_number_display":["DA720.O94 1988"],"library_facet":["Remote
+        Storage"],"availability_facet":["At the Library"],"location_display":["KARDON
+        p_remote"],"holdings_display":["22239415280003811"],"isbn_display":["9780861932108","0861932102","0861932102
+        (Boydell Press) :"],"lccn_display":["87032631"],"purchase_order":false,"score":2.865627,"items_json_display":[{"item_pid":"23239415250003811","item_policy":"0","permanent_library":"KARDON","permanent_location":"p_remote","current_library":"KARDON","current_location":"p_remote","call_number_type":"0","call_number":"DA720.O94
+        1988","holding_id":"22239415280003811"}]},{"id":"991017384609703811","format":["Book"],"title_statement_display":["The
+        museum world of Henry James / by Adeline R. Tintner."],"title_truncated_display":["The
+        museum world of Henry James / by Adeline R. Tintner."],"creator_display":["Tintner,
+        Adeline R., 1912-"],"imprint_display":["Ann Arbor, Mich. : UMI Research Press,
+        c1986."],"pub_date":["1986"],"title_series_display":["Studies in modern literature
+        ; no. 56"],"call_number_display":["PS2127.A75T56 1986"],"library_facet":["Paley
+        Library","Ambler Campus Library"],"availability_facet":["At the Library"],"location_display":["MAIN
+        stacks","AMBLER stacks"],"holdings_display":["22237837450003811","22237837400003811"],"isbn_display":["9780835717250","0835717259","0835717259
+        (alk. paper)"],"lccn_display":["85028836"],"purchase_order":false,"score":2.865464,"items_json_display":[{"item_pid":"23237837410003811","item_policy":"0","permanent_library":"MAIN","permanent_location":"stacks","current_library":"MAIN","current_location":"stacks","call_number_type":"0","call_number":"PS2127.A75T56
+        1986","holding_id":"22237837450003811"},{"item_pid":"23237837390003811","item_policy":"0","permanent_library":"AMBLER","permanent_location":"stacks","current_library":"AMBLER","current_location":"stacks","call_number_type":"0","call_number":"PS2127.A75T56
+        1986","holding_id":"22237837400003811"}]},{"id":"991036732269103811","format":["Book"],"title_statement_display":["Complete
+        Letters of Henry James, 1876-1878, Volume 1"],"title_truncated_display":["Complete
+        Letters of Henry James, 1876-1878, Volume 1"],"creator_display":["James, Henry"],"contributor_display":["Zacharias,
+        Greg W.","Walker, Pierre A."],"imprint_display":["Lincoln : UNP - Nebraska,
+        2012."],"pub_date":["2012"],"availability_facet":["Online"],"isbn_display":["9780803240636","0803240635","0-8032-4063-5"],"purchase_order":false,"score":2.3913343,"electronic_resource_display":[{"portfolio_id":"53348929210003811","title":"ebrary
+        University Press Subscription 2015"},{"portfolio_id":"53396685600003811","title":"EBSCOhost
+        eBook Community College Collection"},{"portfolio_id":"53395105230003811","title":"EBSCOhost
+        Academic eBook Collection (North America)"}]},{"id":"991036812946503811","format":["Book"],"title_statement_display":["Here
+        Not There & My Name is Walter James Cross Two plays"],"title_truncated_display":["Here
+        Not There & My Name is Walter James Cross Two plays"],"creator_display":["Dawson,
+        David Laing"],"imprint_display":["Dundas : Bridgeross Communications, 2000."],"pub_date":["2000"],"availability_facet":["Online"],"isbn_display":["9780987824479","0987824473","0-9878244-7-3"],"purchase_order":false,"score":2.3885446,"electronic_resource_display":[{"portfolio_id":"53392076550003811","title":"EBSCOhost
+        Academic eBook Collection (North America)"}]}]},"facet_counts":{"facet_queries":{},"facet_fields":{"availability_facet":["Online",189,"At
+        the Library",182]},"facet_ranges":{},"facet_intervals":{},"facet_heatmaps":{}},"spellcheck":{"suggestions":[],"correctlySpelled":true,"collations":[]}}
+
+'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 19:22:29 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Wed, 01 May 2019 17:53:14 GMT
+recorded_with: VCR 4.0.0
