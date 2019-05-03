@@ -34,6 +34,7 @@ class AlmawsController < CatalogController
 
   def request_options
     @mms_id = params[:mms_id]
+    _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
     log = { type: "alma_bib_item", mms_id: @mms_id }
     @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
