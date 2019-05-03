@@ -95,7 +95,7 @@ class AlmawsController < CatalogController
     end
   end
 
-  def send_bookbot_request
+  def send_asrs_request
     date = date_or_nil(params[:hold_last_interest_date])
     bib_options = {
     mms_id: params[:mms_id],
@@ -108,7 +108,7 @@ class AlmawsController < CatalogController
     comment: params[:hold_comment]
     }
     @request_level = params[:request_level]
-    log = { type: "submit_bookbot_request", user: current_user.id }.merge(bib_options)
+    log = { type: "submit_asrs_request", user: current_user.id }.merge(bib_options)
 
     begin
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }

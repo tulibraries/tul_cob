@@ -4,14 +4,14 @@ module AlmawsHelper
   include Blacklight::CatalogHelperBehavior
 
   def hold_allowed_partial(request_options)
-    if request_options.hold_allowed? && non_bot_items.present?
+    if request_options.hold_allowed? && non_asrs_items.present?
       render partial: "hold_allowed", locals: { request_options: request_options }
     end
   end
 
-  def bookbot_allowed_partial(request_options)
-    if request_options.hold_allowed? && bot_items.present?
-      render partial: "bookbot_allowed", locals: { request_options: request_options }
+  def bookasrs_allowed_partial(request_options)
+    if request_options.hold_allowed? && asrs_items.present?
+      render partial: "bookasrs_allowed", locals: { request_options: request_options }
     end
   end
 
@@ -46,15 +46,15 @@ module AlmawsHelper
     .select(&:itself).count == 1
   end
 
-  def non_bot_items
-    @items.select { |item| !is_bot_item?(item) }
+  def non_asrs_items
+    @items.select { |item| !is_asrs_item?(item) }
   end
 
-  def bot_items
-    @items.select { |item| is_bot_item?(item) }
+  def asrs_items
+    @items.select { |item| is_asrs_item?(item) }
   end
 
-  def is_bot_item?(item)
+  def is_asrs_item?(item)
     item.library == "ASRS"
   end
 end
