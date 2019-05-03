@@ -1,0 +1,65 @@
+<%= form_with url: hold_request_path, local: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
+  <div class="container" data-controller="form">
+
+    <%= form.hidden_field :mms_id, value: params[:mms_id] %>
+    <%= form.hidden_field :holding_id, value: @holding_id %>
+    <%= form.hidden_field :item_pid, value: @item_pid %>
+    <%= form.hidden_field :user_id, value: @user_id %>
+    <%= form.hidden_field :request_level, value: @request_level %>
+
+    <% if @equipment.empty?  && @request_level == "bib" %>
+      <div class="row">
+        <div class="col-sm-4 col-md-6 hold-form form-group">
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @equipment.present? %>
+      <div class="row">
+        <div class="col-sm-4 col-md-6 hold-form form-group">
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :hold_pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if @request_level == "item" %>
+      <div class="row">
+        <div class="col-sm-4 col-md-6 form-group">
+          <%= form.label(:hold_description, t("requests.form.description_label")) %>
+          <%= select_tag(:hold_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4 col-md-6 hold-form form-group">
+          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="row hold-form">
+      <div class="col-sm-5 col-md-6 form-group">
+        <%= form.label(:hold_last_interest_date, t("requests.form.not_needed_after")) %>
+        <%= date_field_tag :hold_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", class: "form-control" %>
+        <%= render "format_date_message" %>
+      </div>
+    </div>
+
+    <div class="row hold-form">
+      <div class="col-sm-4 col-md-6 form-group">
+        <%= form.label(:hold_comment, t("requests.form.notes_label")) %>
+        <p><%= t("requests.form.notes_additional_text") %></p>
+        <%= form.text_area :hold_comment, class: "request-form form-control" %>
+      </div>
+    </div>
+
+    <%= form.submit t("requests.form.submit"), class:"btn btn-primary" %>
+
+  </div>
+<% end %>

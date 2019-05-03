@@ -94,6 +94,32 @@ class AlmawsController < CatalogController
     end
   end
 
+  def send_bookbot_request
+    date = date_or_nil(params[:hold_last_interest_date])
+    bib_options = {
+    mms_id: params[:mms_id],
+    user_id: current_user.uid,
+    description: params[:hold_description],
+    pickup_location_library: params[:hold_pickup_location],
+    pickup_location_type: "LIBRARY",
+    request_type: "HOLD",
+    last_interest_date: date,
+    comment: params[:hold_comment]
+    }
+    @request_level = params[:request_level]
+    log = { type: "submit_bookbot_request", user: current_user.id }.merge(bib_options)
+
+    begin
+      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      flash["success"] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+
+    rescue
+      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
   def send_booking_request
     start_date = date_or_nil(params[:booking_start_date])
     end_date = date_or_nil(params[:booking_end_date])

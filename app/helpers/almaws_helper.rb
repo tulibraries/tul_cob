@@ -4,8 +4,14 @@ module AlmawsHelper
   include Blacklight::CatalogHelperBehavior
 
   def hold_allowed_partial(request_options)
-    if request_options.hold_allowed?
+    if request_options.hold_allowed? && non_bot_items.present?
       render partial: "hold_allowed", locals: { request_options: request_options }
+    end
+  end
+
+  def bookbot_allowed_partial(request_options)
+    if request_options.hold_allowed? && bot_items.present?
+      render partial: "bookbot_allowed", locals: { request_options: request_options }
     end
   end
 
@@ -38,5 +44,17 @@ module AlmawsHelper
      request_options.digitization_allowed?,
      request_options.booking_allowed?, request_options.resource_sharing_broker_allowed? ]
     .select(&:itself).count == 1
+  end
+
+  def non_bot_items
+    @items.select { |item| !is_bot_item?(item) }
+  end
+
+  def bot_items
+    @items.select { |item| is_bot_item?(item) }
+  end
+
+  def is_bot_item?(item)
+    item.library == "ASRS"
   end
 end

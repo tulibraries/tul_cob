@@ -128,6 +128,7 @@ Rails.application.routes.draw do
   get "almaws/request/:mms_id/:pickup_location/:request_level", to: "almaws#request_options", as: "request_options"
   post "almaws/request/digitization", to: "almaws#send_digitization_request", as: "digitization_request"
   post "almaws/request/hold", to: "almaws#send_hold_request", as: "hold_request"
+  post "almaws/request/bookbot", to: "almaws#send_bookbot_request", as: "bookbot_request"
   post "almaws/request/booking", to: "almaws#send_booking_request", as: "booking_request"
 
   scope module: "blacklight_alma" do
