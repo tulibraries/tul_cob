@@ -19,6 +19,18 @@ module AvailabilityHelper
     end
   end
 
+  def availability_status_during_move(item)
+    unavailable_libraries = ["ASRS", "MEDIA", "MAIN", "SCRC", "DSC"]
+
+    if unavailable_libraries.include?(item.library) && item.location == "reserve"
+      availability_status(item)
+    elsif unavailable_libraries.include?(item.library)
+      content_tag(:span, "", class: "close-icon") + "Not available pending move"
+    else
+      availability_status(item)
+    end
+  end
+
   def unavailable_items(item)
     if item.item_data["requested"] == true
       process_type = "Requested"
@@ -39,7 +51,7 @@ module AvailabilityHelper
     }.flatten
 
     alma_item_availability = items_list.all.collect { |item|
-      availability_status(item)
+      availability_status_during_move(item)
     }.flatten
 
     document_items.collect { |item|
