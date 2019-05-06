@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-$:.unshift "./lib" if !$:.include?["./lib"]
+$:.unshift "./lib" if !$:.include?("./lib")
 require "traject_plus"
 require "traject_plus/json_reader.rb"
 require "traject_plus/macros"
