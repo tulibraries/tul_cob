@@ -1,5 +1,5 @@
 default: &default
-  MAIN: "Paley Library"
+  MAIN: "Charles Library"
   AMBLER: "Ambler Campus Library"
   BLOCKSON: "Blockson Collection"
   DSC: "Digital Scholarship Center"
@@ -17,7 +17,7 @@ default: &default
   SCRC: "Special Collections Research Center"
   EMPTY: "Other"
   KIOSK: "Laptop Kiosks"
-  ASRS: "Paley Library"
+  ASRS: "ASRS"
 
 test:
   <<: *default

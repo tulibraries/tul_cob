@@ -17,13 +17,13 @@
         <div class="row avail-info-rows border-bottom border-tan-border">
           <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
           <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
-          <div class="col-sm-12 col-md-5">
+          <div class="col-sm-12 col-md-4">
             <span><%= description(item) %></span>
             <span><%= public_note(item) %></span>
             <span><%= material_type(item) %></span>
           </div>
           <div>
-            <div id="status" class="col-sm-12"><%= item.fetch("availability", "") %></div>
+            <div class="col-sm-12 avail_status"><%= item.fetch("availability", "") %></div>
           </div>
         </div>
       <% end %>

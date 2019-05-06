@@ -187,6 +187,82 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
+  describe "#availability_status_during_move(item)" do
+    context "item is located in ASRS and NOT reserve" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "1" },
+             "policy" =>
+             { "desc" => "Non-circulating" },
+             "requested" => false,
+             "library" => {
+                    "value" => "ASRS",
+                    "desc" => "ASRS"
+              },
+              "location" => {
+                    "value" => "ASRS",
+                    "desc" => "Automated Storage System"
+              },
+           }
+         )
+      end
+
+      it "displays unavailable during move message" do
+        expect(availability_status_during_move(item)).to eq "<span class=\"close-icon\"></span>Not available pending move"
+      end
+    end
+
+    context "item is located in reserves AND ASRS" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "" },
+              "library" => {
+                     "value": "ASRS",
+                     "desc": "ASRS"
+               },
+            "location" =>
+              { "value" => "reserve" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      end
+    end
+
+    context "item is located in a non-Paley location" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+          {
+            "base_status" =>
+              { "value" => "1" },
+            "policy" =>
+              { "desc" => "" },
+              "library" => {
+                     "value": "AMBLER",
+                     "desc": "AMBLER"
+               },
+            "location" =>
+              { "value" => "stacks" },
+            "requested" => false,
+          }
+       )
+      end
+
+      it "displays library use only" do
+        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Available"
+      end
+    end
+
+  end
+
   describe "#document_and_api_merged_results(document, items_list)" do
     context "item_pid from api matches item_pid in document" do
       let(:document) { { "items_json_display" =>
@@ -456,7 +532,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "library codes are converted to names using translation map" do
       let(:short_code) { "MAIN" }
       it "displays library name" do
-        expect(library_name_from_short_code(short_code)).to eq "Paley Library"
+        expect(library_name_from_short_code(short_code)).to eq "Charles Library"
       end
     end
   end

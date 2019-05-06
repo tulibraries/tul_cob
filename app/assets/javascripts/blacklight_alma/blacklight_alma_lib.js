@@ -54,8 +54,8 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = holding['library'];
-   if (library == 'ASRS') {
-     library = "Paley Library";
+   if (library == 'Paley Library') {
+     library = "Charles Library";
    }
 
    var availability = holding['availability'];
@@ -83,9 +83,9 @@ var BlacklightAlma = function (options) {
 
  sortedLibraries = function (holdings) {
    holdings.sort();
-   if (holdings.indexOf('Paley Library') > 0) {
-       holdings.splice(holdings.indexOf('Paley Library'), 1);
-       holdings.unshift('Paley Library');
+   if (holdings.indexOf('Charles Library') > 0) {
+       holdings.splice(holdings.indexOf('Charles Library'), 1);
+       holdings.unshift('Charles Library');
    }
  }
 
