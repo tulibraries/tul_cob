@@ -75,16 +75,6 @@
   padding: 0.625rem;
 }
 
-.table-wrapper {
-  max-height: 18.75rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb {
-  background: gray;
-}
-
 #record-view-iframe {
   max-width: 53.125rem;
 }
