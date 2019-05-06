@@ -874,12 +874,6 @@ RSpec.describe Traject::Macros::Custom do
       end
     end
 
-    context "when there are multiple items and one of the records is in asrs" do
-      it "does not map to the field" do
-        expect(subject.map_record(records[4])).to eq({})
-      end
-    end
-
     context "when single holding is in empty library" do
       it "maps technical record" do
         expect(subject.map_record(records[5])).to eq("suppress_items_b" => [true])
@@ -932,12 +926,6 @@ RSpec.describe Traject::Macros::Custom do
     context "when there are multiple items and one of the records is lost" do
       it "does not map to the field" do
         expect(@indexer.process_record(records[3]).skip?).to eq(false)
-      end
-    end
-
-    context "when there are multiple items and one of the records is in asrs" do
-      it "does not map to the field" do
-        expect(@indexer.process_record(records[4]).skip?).to eq(false)
       end
     end
   end
