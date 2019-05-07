@@ -5,7 +5,7 @@
 
 <% unless @document_availability.all?(&:empty?) %>
   <% sort_order_for_holdings(@document_availability).each do |key, items| %>
-    <div data-long-list id="availability-container" class="m-0" data-controller="availability">
+    <div data-long-list class="m-0" data-controller="availability">
       <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between avail-list">
         <div class="library-name card-title col-sm-12 col-md-4"><%= library_name_from_short_code(key) %></div>
         <div class="holdings-summary col-sm-12 col-md-4"><%= summary_list(items) %></div>
