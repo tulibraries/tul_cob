@@ -202,7 +202,7 @@ class CatalogController < ApplicationController
         subject_addl_t^10
       ].join(" "),
       facet: "true",
-      spellcheck: "true",
+      spellcheck: "false",
       "spellcheck.extendedResults": "true",
       "spellcheck.collate": "true",
       "spellcheck.collateParam.q.op": "AND",
