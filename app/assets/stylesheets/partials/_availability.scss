@@ -3,26 +3,11 @@
 /* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
-#availability-container:last-child {
-  border-right: 0.0625rem solid $tan-border;
-}
-
-#availability-container {
-  .row {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-
 #availability-heading {
   color: $red;
   display: inline-block;
   font-family: "PT Sans";
   font-size: 1.125rem;
-}
-
-.avail-headers .modal-only {
-  padding: 0;
 }
 
 #heading-request {
@@ -73,16 +58,6 @@
   font-size: 0.875rem;
   font-weight: bold;
   padding: 0.625rem;
-}
-
-.table-wrapper {
-  max-height: 18.75rem;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb {
-  background: gray;
 }
 
 #record-view-iframe {
