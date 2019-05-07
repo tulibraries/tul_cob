@@ -3,26 +3,11 @@
 /* === GENERAL AVAILABILITY === */
 
 /* === RECORD PAGE AVAILABILITY === */
-#availability-container:last-child {
-  border-right: 0.0625rem solid $tan-border;
-}
-
-#availability-container {
-  .row {
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-}
-
 #availability-heading {
   color: $red;
   display: inline-block;
   font-family: "PT Sans";
   font-size: 1.125rem;
-}
-
-.avail-headers .modal-only {
-  padding: 0;
 }
 
 #heading-request {
