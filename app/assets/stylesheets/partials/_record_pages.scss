@@ -1,4 +1,8 @@
 /* === INDIVIDUAL RECORD PAGES === */
+#record-page-container {
+  padding: 0 100px;
+}
+
 #record-page-content {
   background-color: $white;
   border-radius: 0.3125rem 0.3125rem 0 0;
