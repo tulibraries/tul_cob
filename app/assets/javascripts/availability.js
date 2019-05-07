@@ -32,7 +32,7 @@ $(document).on('turbolinks:load', function() {
 	            $less.hide();
 	            $more.fadeIn();
 	          });
-            $list.after($more);
+            $list.append($more);
 	          $less.insertAfter($more).hide();
 	        }
 	      }
