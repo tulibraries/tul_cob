@@ -17,4 +17,12 @@ module RequestHelper
       path: uri.path,
       query: URI.encode_www_form(new_params)).to_s
   end
+
+  def temporary_pickup_location_for_move(short_code)
+    if short_code == "MAIN"
+      library_name = "Tuttleman Circulation Desk"
+    else
+      library_name_from_short_code(short_code)
+    end
+  end
 end
