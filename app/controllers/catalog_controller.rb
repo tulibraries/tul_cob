@@ -39,8 +39,9 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:fields_row_count] = 3
 
+    config.track_search_session = true
     config.raw_endpoint.enabled = true
-    
+
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
