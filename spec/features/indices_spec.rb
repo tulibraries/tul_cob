@@ -90,7 +90,7 @@ RSpec.feature "Indices" do
         expect(page).to have_text item["title"]
       end
 
-      within(".documentHeader") do
+      within first(".documentHeader") do
         click_link item["title"]
         expect(current_url).to eq item_url
       end
