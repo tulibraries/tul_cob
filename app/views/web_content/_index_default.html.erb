@@ -1,0 +1,21 @@
+<% doc_presenter = index_presenter(document) %>
+
+<div class="">
+<%# default partial to display solr document fields in catalog index view -%>
+  <div class="book-info-srch col-md-2 thumbnail float-md-right" <%= isbn_data_attribute(document) %> >
+    <%= link_to document do %>
+      <% if document['photo_display'] %>
+        <%= image_tag document['photo_display'].first, :alt => "Image of " + document["title_statement_display"].to_s, :class => "book_cover"  %>
+      <% else %>
+        <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="book_info col-sm-12 col-md-10">
+    <%= render "fields", document: document, document_counter: document_counter %>
+  </div>
+</div>
+
+<%= render_availability(document, doc_presenter) %>
+
+<hr class="document-divider" />
