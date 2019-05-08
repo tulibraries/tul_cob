@@ -45,6 +45,11 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :web_content, only: [:index], as: "web_content", path: "/web_content", controller: "web_content" do
+    concerns :searchable
+    #concerns :range_searchable
+  end
+
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns :exportable
   end
