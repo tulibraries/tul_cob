@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+# ASRS and MAIN were removed from determine_campus and remove_by_campus as a temporary fix during the move.
+# This allows Tutleman to act as a pickup location during the summer
+
 module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when "MAIN", "LAW", "MEDIA", "PRESSER", "ASRS"
+      when  "LAW", "PRESSER"
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -21,13 +24,13 @@ module CobAlma
 
     def self.possible_pickup_locations
       #Make an array on only items that can request items
-      ["MAIN", "MEDIA", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        ["MAIN", "LAW", "MEDIA", "PRESSER", "ASRS"]
+        [ "LAW", "MEDIA", "PRESSER"]
       when :AMBLER
         ["AMBLER"]
       when :HSL
