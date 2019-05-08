@@ -111,6 +111,18 @@ module AvailabilityHelper
     library_name
   end
 
+  def temporary_library_name_for_move(short_code, items)
+    location = items.map do |item|
+      location(item)
+    end
+
+    if short_code == "MAIN" && location.include?("reserve") || short_code == "MEDIA" && location.include?("reserve")
+      library_name = "Tuttleman Circulation Desk"
+    else
+      library_name_from_short_code(short_code)
+    end
+  end
+
   def location(item)
     item["current_location"] ? item["current_location"] : item["permanent_location"]
   end
@@ -162,7 +174,7 @@ module AvailabilityHelper
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
     sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
-    items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
+    items_hash = grouped_items.sort_by { |k, v| temporary_library_name_for_move(k, v) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
     sorted_library_hash.each do |lib, items|
       unless items.empty?

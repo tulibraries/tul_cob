@@ -537,6 +537,45 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
+  describe "#temporary_library_name_for_move(short_code, items)" do
+    context "library name is Tuttleman for reserve items" do
+      let(:short_code) { "MAIN" }
+      let(:items) {
+          [{ "item_pid" => "12345",
+          "item_policy" => "5",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "reserve",
+          "current_library" => "MAIN",
+          "current_location" => "reserve",
+          "call_number" => "DVD 13 A165",
+          "holding_id" => "22237957750003811" }]
+        }
+
+      it "displays Tuttleman Circulation Desk" do
+        expect(temporary_library_name_for_move(short_code, items)).to eq "Tuttleman Circulation Desk"
+      end
+    end
+
+    context "has no reserve items" do
+      let(:short_code) { "MAIN" }
+      let(:items) {
+          [{ "item_pid" => "12345",
+          "item_policy" => "5",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number" => "DVD 13 A165",
+          "holding_id" => "22237957750003811" }]
+        }
+
+      it "displays regular library name" do
+        expect(temporary_library_name_for_move(short_code, items)).to eq "Charles Library"
+      end
+    end
+
+  end
+
   describe "#alternative_call_number(item)" do
     context "item has an alternate call number" do
       let(:item) { { "alt_call_number" => "alternate call number" } }

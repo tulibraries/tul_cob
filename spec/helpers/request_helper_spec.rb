@@ -10,4 +10,14 @@ RSpec.describe RequestHelper, type: :helper do
       expect(ez_borrow_link_with_updated_query(url)).to eq("https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=12345&RK=12345&rft.title=A+thin+bright+line+%2F")
     end
   end
+
+  describe "#temporary_pickup_location_for_move(short_code)" do
+    context "MAIN pickup location displays as Tuttleman" do
+      let(:short_code) { "MAIN" }
+
+      it "displays Tuttleman Circulation Desk" do
+        expect(temporary_pickup_location_for_move(short_code)).to eq "Tuttleman Circulation Desk"
+      end
+    end
+  end
 end
