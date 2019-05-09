@@ -1,6 +1,6 @@
     <% if @results %>
       <% if !cookies.fetch("bentoOnce", false) %>
-        <div class="flex-md-row mx-auto text-center col-sm-12" data-target="explanation.bento" data-controller="explanation">
+        <div class="flex-md-row text-center mx-auto col-sm-12" data-target="explanation.bento" data-controller="explanation">
           <div class="pt-3 m-0">
             <p class="explanation"><%= t("bento.explanation_html",
               books: link_to(t("bento.books"), search_books_path),
@@ -14,7 +14,7 @@
         </div>
       <% end %>
 
-      <div class="bento-container mt-1">
+      <div class="bento-container mt-1 mb-5">
           <%= render_bento_results %>
         <% else %>
           <%= render("home_text") %>
