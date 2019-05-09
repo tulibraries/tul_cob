@@ -2,7 +2,8 @@
 
 /* BENTO STYLES */
 .bento_compartment {
-	width: 30%;
+	margin: 0 auto;
+	width: 30% !important;
 
 	@media(max-width: 991px) {
 		margin: 0 auto;
