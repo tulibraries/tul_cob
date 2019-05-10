@@ -57,6 +57,12 @@ span .remove-constraints {
 	}
 }
 
+.appliedFilter {
+	@media(max-width: 485px) {
+		padding: 0 1rem;
+	}
+}
+
 span.constraint-value {
 	background-color: $light-blue;
 	border: 0.0625rem solid transparent;

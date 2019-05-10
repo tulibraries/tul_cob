@@ -1,6 +1,8 @@
 /* === INDIVIDUAL RECORD PAGES === */
 #record-page-container {
-  padding: 0 100px;
+  @media(min-width: 600px) {
+    padding: 0 100px;
+  }
 }
 
 #record-page-content {

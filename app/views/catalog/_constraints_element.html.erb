@@ -7,7 +7,7 @@
     options ||= {}
 %>
 
-<span class="btn-group btn-block appliedFilter filter-group constraint <%= options[:classes].join(" ") if options[:classes] %>">
+<span class="<%= options[:classes].join(" ") if options[:classes] %> btn-group btn-block appliedFilter filter-group constraint">
   <span class="constraint-value btn btn-block btn-default btn-disabled">
     <% unless label.blank? %>
       <span class="filterName"><%= label %>
