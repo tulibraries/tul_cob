@@ -140,7 +140,7 @@ module AvailabilityHelper
   end
 
   def alternative_call_number(item)
-    item["alt_call_number"] ? item["alt_call_number"] : call_number(item)
+    "#{item["alt_call_number"] ? item["alt_call_number"] : call_number(item)}"
   end
 
   def document_availability_info(document)
