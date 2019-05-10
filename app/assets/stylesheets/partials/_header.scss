@@ -49,6 +49,7 @@ div.site-message {
 	}
 
 	@media(max-width: 485px) {
+		height: auto;
 		justify-content: center;
 		padding: 0;
 		text-align: center;
@@ -79,7 +80,10 @@ div.site-message {
 
 ul.user-util-list {
 	justify-content: center;
-	padding: 0.625rem 0 0 0;
+
+	@media(min-width:600px) {
+		padding: 0.625rem 0 0 0;
+	}
 }
 
 .user-links {
@@ -309,6 +313,13 @@ a.advanced_search {
 }
 
 /* SEARCH RESULTS SORT AND PER PAGE */
+#sortAndPerPage {
+	justify-content: space-between;
+	@media (max-width: 991px) {
+		justify-content: center;
+	}
+}
+
 .page-links {
 	display: inline-block;
 	padding-top: 0.625rem;

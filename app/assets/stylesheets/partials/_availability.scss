@@ -1,6 +1,11 @@
 @import "_vars.scss";
 
 /* === GENERAL AVAILABILITY === */
+.item-info {
+  @media(max-width: 485px) {
+    text-align: left;
+  }
+}
 
 /* === RECORD PAGE AVAILABILITY === */
 #availability-heading {
