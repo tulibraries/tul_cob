@@ -20,17 +20,6 @@ GIT
       parslet
 
 GIT
-  remote: https://github.com/projectblacklight/blacklight_range_limit.git
-  revision: 6826dfb8b73554a79f26ca7ff375b0062e37bb22
-  ref: v7.0.0.rc2
-  specs:
-    blacklight_range_limit (7.0.0.rc2)
-      blacklight
-      jquery-rails
-      rails (>= 3.0)
-      tether-rails
-
-GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: c910d2d6dba7e2e130c0bbfcf24a074709b00041
   branch: master
@@ -144,6 +133,9 @@ GEM
       kaminari (>= 0.15)
       nokogiri (~> 1.6)
       rails (~> 5.1)
+    blacklight_range_limit (7.1.0)
+      blacklight (>= 7.0)
+      rails (>= 3.0)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
@@ -474,8 +466,6 @@ GEM
       json
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    tether-rails (1.4.0)
-      rails (>= 3.1)
     thor (0.19.4)
     thread_safe (0.3.6)
     tilt (2.0.9)
@@ -548,7 +538,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_alma!
-  blacklight_range_limit!
+  blacklight_range_limit
   bootsnap
   bootstrap (~> 4.3)
   bootstrap-select-rails
