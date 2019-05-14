@@ -27,7 +27,8 @@ class AlmawsController < CatalogController
     @document_and_api_data = helpers.document_and_api_merged_results(@document, bib_items)
     @document_availability = helpers.document_availability_info(@document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
-    @request_level = has_desc?(bib_items) ? "item" : "bib"
+    # Defined here as a parameter for the route
+    @request_level = get_request_level(bib_items)
     @redirect_to = params[:redirect_to]
     render layout: false
   end
@@ -48,7 +49,9 @@ class AlmawsController < CatalogController
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.temporary_pickup_location_for_move(lib) } }
     @user_id = current_user.uid
     @request_level = params[:request_level]
-    if @request_level == "item"
+    @asrs_request_level = get_request_level(@items, "asrs")
+
+    if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
       @request_options = @item_level_holdings.map { |holding_id, item_pid|
@@ -97,18 +100,19 @@ class AlmawsController < CatalogController
   end
 
   def send_asrs_request
-    date = date_or_nil(params[:hold_last_interest_date])
+    date = date_or_nil(params[:asrs_last_interest_date])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:hold_description],
-    pickup_location_library: params[:hold_pickup_location],
+    description: params[:asrs_description] || "asrs item",
+    pickup_location_library: params[:asrs_pickup_location],
     pickup_location_type: "LIBRARY",
     request_type: "HOLD",
     last_interest_date: date,
-    comment: params[:hold_comment]
+    comment: params[:asrs_comment]
     }
-    @request_level = params[:request_level]
+
+    @asrs_request_level = params[:asrs_request_level]
     log = { type: "submit_asrs_request", user: current_user.id }.merge(bib_options)
 
     begin
@@ -188,6 +192,18 @@ class AlmawsController < CatalogController
   end
 
   private
+
+    def get_request_level(items, partial = nil)
+      if partial == "asrs"
+        if helpers.asrs_items(items).present? && helpers.non_asrs_items(items).present?
+          "item"
+        else
+          has_desc?(items) ? "item" : "bib"
+        end
+      else
+        has_desc?(items) ? "item" : "bib"
+      end
+    end
 
     def has_desc?(items)
       item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)

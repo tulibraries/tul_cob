@@ -46,12 +46,12 @@ module AlmawsHelper
     .select(&:itself).count == 1
   end
 
-  def non_asrs_items
-    @items.select { |item| !is_asrs_item?(item) }
+  def non_asrs_items(items = @items)
+    items.select { |item| !is_asrs_item?(item) }
   end
 
-  def asrs_items
-    @items.select { |item| is_asrs_item?(item) }
+  def asrs_items(items = @items)
+    items.select { |item| is_asrs_item?(item) }
   end
 
   def is_asrs_item?(item)

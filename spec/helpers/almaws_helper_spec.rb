@@ -247,4 +247,56 @@ RSpec.describe AlmawsHelper, type: :helper do
       end
     end
   end
+
+  describe "#is_asrs_item?(item)" do
+    context "item is located in ASRS" do
+     let(:item) do
+       Alma::BibItem.new("item_data" =>
+          { "base_status" =>
+            { "value" => "1" },
+            "policy" =>
+            { "desc" => "Non-circulating" },
+            "requested" => false,
+            "library" => {
+                   "value" => "ASRS",
+                   "desc" => "ASRS"
+             },
+             "location" => {
+                   "value" => "ASRS",
+                   "desc" => "Automated Storage System"
+             },
+          }
+        )
+     end
+
+     it "returns true" do
+       expect(helper.is_asrs_item?(item)).to be true
+     end
+   end
+
+    context "item is NOT located in ASRS" do
+     let(:item) do
+       Alma::BibItem.new("item_data" =>
+          { "base_status" =>
+            { "value" => "1" },
+            "policy" =>
+            { "desc" => "Non-circulating" },
+            "requested" => false,
+            "library" => {
+                   "value" => "AMBLER",
+                   "desc" => "Ambler"
+             },
+             "location" => {
+                   "value" => "stacks",
+                   "desc" => "Stacks"
+             },
+          }
+        )
+     end
+
+     it "returns true" do
+       expect(helper.is_asrs_item?(item)).to be false
+     end
+   end
+  end
 end
