@@ -9,9 +9,9 @@ module AlmawsHelper
     end
   end
 
-  def bookasrs_allowed_partial(request_options)
+  def asrs_allowed_partial(request_options)
     if request_options.hold_allowed? && asrs_items.present?
-      render partial: "bookasrs_allowed", locals: { request_options: request_options }
+      render partial: "asrs_allowed", locals: { request_options: request_options }
     end
   end
 

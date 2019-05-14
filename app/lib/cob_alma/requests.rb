@@ -27,6 +27,10 @@ module CobAlma
       ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
+    def self.asrs_pickup_locations
+      ["MAIN"]
+    end
+
     def self.remove_by_campus(campus)
       case campus
       when :MAIN

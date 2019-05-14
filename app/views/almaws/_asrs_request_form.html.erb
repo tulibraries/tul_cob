@@ -10,8 +10,8 @@
     <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 col-md-6 hold-form form-group">
-          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+          <%= label("", :asrs_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
         </div>
       </div>
     <% end %>
@@ -36,8 +36,8 @@
 
       <div class="row">
         <div class="col-sm-4 col-md-6 hold-form form-group">
-          <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+          <%= label("", :asrs_pickup_location, t("requests.form.pickup_locations_label")) %>
+          <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
         </div>
       </div>
 
