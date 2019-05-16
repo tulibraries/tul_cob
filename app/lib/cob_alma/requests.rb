@@ -112,7 +112,14 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      descriptions = items_list.all.map(&:description)
+      # Temporary refactor to filter out descriptions in ASRS and MAIN during the move
+      libraries = items_list.all.select { |item| item }
+        .select { |i| i if i.library != "ASRS" }
+        .select { |i| i if i.library != "MAIN" }
+        .compact
+
+      descriptions = libraries.map(&:description)
+
       if descriptions.any?
         descriptions.each do |desc|
           desc
