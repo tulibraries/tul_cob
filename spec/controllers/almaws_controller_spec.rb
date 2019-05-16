@@ -251,6 +251,64 @@ RSpec.describe AlmawsController, type: :controller do
   end
 
   describe "assigning request levels correctly for ASRS and nonASRS items" do
+    let(:items)  { [item1, item2 ]}
 
+    context "default behavior empty list" do
+      let(:items) { [] }
+      it "should be bib" do
+        expect(controller.send(:get_request_level, items)).to eq("bib")
+      end
+    end
+
+    context "asrs items only without descriptions" do
+      let(:item1) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+      }
+
+      let(:item2) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+      }
+
+      it "should be a bib level request" do
+        expect(controller.send(:get_request_level, items)).to eq("bib")
+        expect(controller.send(:get_request_level, items, "asrs")).to eq("bib")
+      end
+    end
+
+    context "mixed asrs and non asrs items without descriptions" do
+      let(:item1) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }})
+      }
+
+      let(:item2) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+      }
+
+      it "should return bib for non asrs hold requests" do
+        expect(controller.send(:get_request_level, items)).to eq("bib")
+      end
+
+      it "should return item for asrs hold requests" do
+        expect(controller.send(:get_request_level, items, "asrs")).to eq("item")
+      end
+    end
+
+    context "mixed asrs with descriptions" do
+      let(:item1) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }, "description" => "v1"})
+      }
+
+      let(:item2) {
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+      }
+
+      it "should return item for non asrs hold requests" do
+        expect(controller.send(:get_request_level, items)).to eq("item")
+      end
+
+      it "should return item for asrs hold requests" do
+        expect(controller.send(:get_request_level, items, "asrs")).to eq("item")
+      end
+    end
   end
 end
