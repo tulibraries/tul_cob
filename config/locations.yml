@@ -172,7 +172,7 @@ default: &default
   KIOSK:
     kiosk: Laptop Kiosks
   ASRS:
-    ASRS: Stacks
+    ASRS: BookBot
     ASRS_TEST: ASRS_TEST
     UNASSIGNED: Location information not available
 

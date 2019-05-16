@@ -19,9 +19,10 @@ var BlacklightAlma = function (options) {
 
 
  availabilityButton = function(id, holding) {
+   var hiddenLibraries = ["Paley Library", "ASRS", "Charles Library"] // Temporary change during the move
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("btn-success")) {
-     if(holding['availability'] == 'available') {
+     if(holding['availability'] == 'available' && hiddenLibraries.includes(holding['library']) == false) {
        $(availButton).html("<span class='avail-label available'>Available</span>");
        $(availButton).removeClass("btn-default");
        $(availButton).addClass("btn-success collapsed collapse-button available");
@@ -61,7 +62,8 @@ var BlacklightAlma = function (options) {
    var availability = holding['availability'];
 
    if (library != "EMPTY") {
-     if (availability == "available") {
+     var hiddenLibraries = ["Paley Library", "ASRS", "Charles Library"] // Temporary change during the move
+     if (availability == "available" && hiddenLibraries.includes(holding['library']) == false)  {
        availItem = {};
        Object.assign(availItem, {library, availability})
        return availItem;
