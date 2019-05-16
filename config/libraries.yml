@@ -17,7 +17,7 @@ default: &default
   SCRC: "Special Collections Research Center"
   EMPTY: "Other"
   KIOSK: "Laptop Kiosks"
-  ASRS: "ASRS"
+  ASRS: "Charles Library"
 
 test:
   <<: *default
