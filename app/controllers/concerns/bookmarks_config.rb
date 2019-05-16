@@ -16,6 +16,9 @@ module BookmarksConfig
       config.add_show_tools_partial(:citation)
       # Need to add citation for side effect only.
       config.show.document_actions.delete(:citation)
+
+      # Tracking bookmarks causes routing error (BL-903)
+      config.track_search_session = false
     end
   end
 end
