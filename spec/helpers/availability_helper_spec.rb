@@ -751,7 +751,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns copies for each library by location" do
         sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
-        expect(sorted_locations).to eq(["Journals", "Paley Reference", "Stacks"])
+        expect(sorted_locations).to eq(["Journals", "Reference", "Stacks"])
       end
     end
 
