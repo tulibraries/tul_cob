@@ -1,20 +1,24 @@
 default: &default
   AMBLER:
-    aarc: Ambler Archives Collection
+    aarc: Archives Collection
     imc: IMC
     intref: Internal Reference
-    aleisure: Ambler Leisure Reading
-    media: Ambler Media
-    micro: Ambler Microform
+    aleisure: Leisure Reading
+    media: Media
+    micro: Microform
     newbooks: New Books Shelf
-    orders: Ambler Library
     oversize: Oversize Stacks
     reference: Reference
     reserve: Reserves
     stacks: Stacks
     UNASSIGNED: Location information not available
+  ASRS:
+    ASRS: BookBot
+    ASRS_TEST: ASRS_TEST
+    media: BookBot
+    reference: BookBot
+    UNASSIGNED: Location information not available
   BLOCKSON:
-    orders: Blockson Afro-American Collection
     rarestacks: Reading Room
     UNASSIGNED: Location information not available
   CLAEDTECH:
@@ -23,13 +27,14 @@ default: &default
     UNASSIGNED: Location information not available
   DSC:
     DSC: Equipment
+    games: Games
+    REF: Reference
     UNASSIGNED: Location information not available
   GINSBURG:
     circ: Circulation Collection
     intref: Internal Reference
     leisure: Leisure Reading
     medhum: Medical Humanities
-    orders: Ginsburg Library
     oversize: Oversize Stacks
     reference: Reference
     reserve: Reserves
@@ -38,18 +43,14 @@ default: &default
     techserv: Technical Services
     UNASSIGNED: Location information not available
   HARRISBURG:
+    harrisburg: Harrisburg Campus Library
     intref: Internal Reference
-    harrisburg: Harrisburg Library
     media: Media
-    orders: Harrisburg Library
     oversize: Oversize Stacks
     reference: Reference
     reserve: Reserves
     stacks: Stacks
     UNASSIGNED: Location information not available
-  RES_SHARE:
-    OUT_RS_REQ: Borrowing Resource Sharing Requests
-    IN_RS_REQ: Lending Resource Sharing Requests
   JAPAN:
     media: Media
     osaka: Osaka Collection
@@ -61,7 +62,6 @@ default: &default
     UNASSIGNED: Location information not available
   LAW:
     closestack: Closed Stacks - Ask At Desk
-    oversize2: Closed Stacks - Ask At Desk
     web: Online Access
     media: Media
     micro: Microform
@@ -73,8 +73,8 @@ default: &default
     open5a: Open Stacks - 5A
     open6a: Open Stacks - 6A
     govdoc: Open Stacks - 7
+    oversize2: Closed Stacks - Ask At Desk
     oversize5a: Open Stacks - Oversize - 5A
-    orders: Law Library
     rarestacks: Remote
     reference: Reference
     reserve: Reserves
@@ -89,51 +89,27 @@ default: &default
     rawle3: Special Collections - Ask At Desk
     stacks: Stacks
     UNASSIGNED: Location information not available
-  MEDIA:
-    dsc: Digital Scholarship Center
-    media: Media
-    reserve: Reserves
-    micro: Microform
-    orders: Media Services
-    msequip: Location information not available
-    zmedia: deleted location
-    zpaley: deleted location
-    UNASSIGNED: Location information not available
   MAIN:
+    ILL: Inter-Library Loan
+    juvenile: Juvenile
+    leisure: Leisure Reading
+    m_reserve: Media Reserves
+    reference: Reference
+    reserve: Reserves
     serials: Journals
+    servicedsk: Service Desk
+    stacks: Stacks
+    techserv: Technical Services
     govdocmicr: Government Doc Microforms
     govdoc: Government Documents
     govweb: Government Doc Web
-    ILL: Inter-Library Loan
-    intref: Internal Reference
-    leisure: Leisure Reading
     micro: Microform
-    orders: Paley Library
     rarestacks: Remote
-    reference: Paley Reference
-    reserve: Reserves
-    stacks: Stacks
-    techserv: Technical Services
-    psof2: Flat Shelving
-    psof3: Flat Shelving
-    zpaley: Paley News Center
-    psov2: Oversize Stacks
-    psov3: Oversize Stacks
     UNASSIGNED: 'Problem: See Library Staff'
-    remote: Location information not available
-    zdelete: Deleted Location
-    zbio: deleted location
-    zchem: deleted location
-    zmath: deleted location
-    zsel: deleted location
-    ztyler: deleted location
-    zzahn: deleted location
-    web: Available Online
-    juvenile: Juvenile
   PODIATRY:
     intref: Internal Reference
+    leisure: Leisure Reading
     media: Media
-    orders: Podiatry Library
     reference: Reference
     reserve: Reserves
     serials: Journals
@@ -143,19 +119,18 @@ default: &default
   PRESSER:
     presser: Learning Center
     plc: Listening Library
-    zpresser: deleted location
     UNASSIGNED: Location information not available
   KARDON:
-    a_rare: Remote Storage, Ambler
-    b_rare: Remote Storage, Blockson
-    g_remote: Remote Storage, Ginsburg
-    l_remote: Remote Storage, Law
-    p_govdocmf: Remote Storage, Paley Government Documents
-    p_GovDocs: Remote Storage, Paley Government Documents
-    p_media: Remote Storage, Paley Media
-    p_micro: Remote Storage, Paley Microform
-    p_remote: Remote Storage, Paley
-    p_oversize: Remote Storage, Paley
+    a_rare: Ambler
+    b_rare: Blockson
+    g_remote: Ginsburg
+    l_remote: Law
+    p_govdocmf: Government Documents
+    p_GovDocs: Government Documents
+    p_media: Media
+    p_micro: Microform
+    p_remote: Charles
+    p_oversize: Charles
   ROME:
     exhibit: Exhibits
     fiction: Fiction
@@ -170,11 +145,10 @@ default: &default
     rarestacks: Reading Room
     UNASSIGNED: Location information not available
   KIOSK:
-    kiosk: Laptop Kiosks
-  ASRS:
-    ASRS: BookBot
-    ASRS_TEST: ASRS_TEST
-    UNASSIGNED: Location information not available
+    kiosk: Kiosk
+  RES_SHARE:
+    OUT_RS_REQ: Interlibrary Loan
+    IN_RS_REQ: Interlibrary Loan
 
 test:
   <<: *default
