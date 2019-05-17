@@ -89,6 +89,16 @@ default: &default
     rawle3: Special Collections - Ask At Desk
     stacks: Stacks
     UNASSIGNED: Location information not available
+  MEDIA:
+    dsc: Digital Scholarship Center
+    media: Media
+    reserve: Reserves
+    micro: Microform
+    orders: Media Services
+    msequip: Location information not available
+    zmedia: deleted location
+    zpaley: deleted location
+    UNASSIGNED: Location information not available
   MAIN:
     ILL: Inter-Library Loan
     juvenile: Juvenile
