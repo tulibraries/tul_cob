@@ -1,10 +1,9 @@
 <% if !cookies.fetch("#{controller_name}Once", false) %>
-<div class="row bg-background-grey rounded">
-  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" data-target="<%= "explanation.#{controller_name}" %>" data-controller="explanation">
+<div class="row bg-background-grey rounded explanation-div" data-controller="explanation" data-target="<%= "explanation.#{controller_name}" %>">
+  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" >
     <p class="explanation"><%= explanation_translations(controller_name) %></p>
   </div>
     <button class="btn btn-link explantion-btn col-sm-12 col-lg-2 pt-0" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
-
 </div>
 <% end %>
 
