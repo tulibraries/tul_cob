@@ -101,10 +101,10 @@ class AlmawsController < CatalogController
 
   def send_asrs_request
     date = date_or_nil(params[:asrs_last_interest_date])
-    bib_options = {
+    options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:asrs_description] || "asrs item",
+    description: params[:asrs_description],
     pickup_location_library: params[:asrs_pickup_location],
     pickup_location_type: "LIBRARY",
     request_type: "HOLD",
@@ -113,10 +113,29 @@ class AlmawsController < CatalogController
     }
 
     @asrs_request_level = params[:asrs_request_level]
-    log = { type: "submit_asrs_request", user: current_user.id }.merge(bib_options)
+    #log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
 
     begin
-      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      if @asrs_request_level == "bib"
+        request = Alma::BibRequest.submit(options)
+      else
+        # TODO: Will update this depending on Justin's decision regarding
+        # multiple requests on same item.
+        params["available_asrs_items"]
+          .select { |item| item["description"] == options[:description] }
+          .each do |item|
+          holding_id = item["holding_id"]
+          item_pid = item["item_pid"]
+
+          request = Alma::ItemRequest.submit(options.merge(
+            holding_id: holding_id,
+            item_pid: item_pid,
+          ))
+
+          break
+        end
+      end
+
       flash["success"] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
 

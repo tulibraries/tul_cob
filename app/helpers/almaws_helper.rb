@@ -57,4 +57,9 @@ module AlmawsHelper
   def is_asrs_item?(item)
     item.library == "ASRS"
   end
+
+  def available_asrs_items(items = @items)
+    # Alma bug: item.item_data["requested"] is true for all items on bib level requests.
+    asrs_items.select { |item| item.in_place?  }
+  end
 end

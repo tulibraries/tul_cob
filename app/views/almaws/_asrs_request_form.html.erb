@@ -2,10 +2,13 @@
   <div class="container" data-controller="form">
 
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
-    <%= form.hidden_field :holding_id, value: @holding_id %>
-    <%= form.hidden_field :item_pid, value: @item_pid %>
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :asrs_request_level, value: @asrs_request_level %>
+    <% available_asrs_items.each do |item| %>
+      <%= form.hidden_field "available_asrs_items[][item_pid]", value: item["item_data"]["pid"] %>
+      <%= form.hidden_field "available_asrs_items[][holding_id]", value: item["holding_data"]["holding_id"] %>
+      <%= form.hidden_field "available_asrs_items[][description]", value: item["item_data"]["description"] %>
+    <% end %>
 
     <% if @equipment.empty?  && @asrs_request_level == "bib" %>
       <div class="row">
@@ -29,7 +32,7 @@
       <div class="row">
         <div class="col-sm-4 col-md-6 form-group">
           <%= form.label(:asrs_description, t("requests.form.description_label")) %>
-          <%= select_tag(:asrs_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+          <%= select_tag(:asrs_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: false, "aria-required": true } ) %>
         </div>
       </div>
 
