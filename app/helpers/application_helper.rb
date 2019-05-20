@@ -169,6 +169,11 @@ module ApplicationHelper
     end
   end
 
+  # Overrides the helper method from the Blacklight RIS gem so that we can use @documents.
+  def render_ris(documents)
+    @documents.map { |x| x.export_as(:ris) }.compact.join("\n")
+  end
+
   def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-item nav-link header-links" ] + active).join(" ")
