@@ -22,8 +22,12 @@ class CatalogController < ApplicationController
 
   helper_method :browse_creator
   helper_method :display_duration
+
   rescue_from ::BlacklightRangeLimit::InvalidRange,
     with: :raise_bad_range_limit
+
+  rescue_from Blacklight::Exceptions::RecordNotFound,
+    with: :invalid_document_id_error
 
   configure_blacklight do |config|
     # default advanced config values
@@ -641,7 +645,6 @@ class CatalogController < ApplicationController
 
   ##
   # Overrides CatalogController.invalid_document_id_error
-  #
   # Overridden so that we can use our own 404 error handling setup.
   def invalid_document_id_error(exception)
     error_info = {
