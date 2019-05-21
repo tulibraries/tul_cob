@@ -23,10 +23,17 @@ en:
 
     header_links:
       library_account: "My Library Account"
-      login: 'My Library Account'
-      logout: 'Log Out'
-      bookmarks: 'Bookmarks'
-      search_history: 'Search History'
+      login: "My Library Account"
+      logout: "Log Out"
+      bookmarks: "Bookmarks"
+      search_history: "Search History"
+      not_found: "The page you were looking for doesn't exist."
+
+    errors:
+      not_found_part_one: "You may have mistyped the address or the page may have moved."
+      not_found_html: "The address may have been mistyped, or the page or record that was here may have been moved, suppressed, or withdrawn. For help, please %{href} or start over with a new search."
+      not_found_href: "Ask a Librarian"
+      not_found_link: "https://library.temple.edu/asktulibraries"
 
     range_limit:
       submit_limit: "Apply"
@@ -49,8 +56,8 @@ en:
         date: "Date: %{value}"
         doi: "DOI"
         subject:
-          one: 'Temple University Libraries record: %{title}'
-          other: 'Temple University Libraries records'
+          one: "Temple University Libraries record: %{title}"
+          other: "Temple University Libraries records"
 
     sms:
       form:
@@ -60,18 +67,18 @@ en:
         to: "Cell Phone Number"
         submit: "Send Message"
       text:
-        title: '%{value}'
-        author: ' by %{value}'
+        title: "%{value}"
+        author: " by %{value}"
         alma_mms: ", Catalog Record ID: %{value}"
-        location: 'Located at: %{value}'
-        url: '%{url}'
+        location: "Located at: %{value}"
+        url: "%{url}"
 
       success: "Text Sent"
       errors:
         location:
-          blank: 'You must select a location'
+          blank: "You must select a location"
         to:
-          invalid: 'You must enter a valid 10 digit phone number'
+          invalid: "You must enter a valid 10 digit phone number"
           blank: "You must enter a recipient's phone number in order to send this message"
 
     tools:
@@ -122,7 +129,7 @@ en:
 
   bento:
     blacklight:
-      nice_name: 'Blacklight'
+      nice_name: "Blacklight"
     articles:
       nice_name: "Articles"
     journals:
