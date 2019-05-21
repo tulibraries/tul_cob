@@ -27,12 +27,11 @@ en:
       logout: "Log Out"
       bookmarks: "Bookmarks"
       search_history: "Search History"
-      not_found: "The page you were looking for doesn't exist."
+      not_found: "We couldn’t find this page!"
 
     errors:
-      not_found_part_one: "You may have mistyped the address or the page may have moved."
-      not_found_html: "The address may have been mistyped, or the page or record that was here may have been moved, suppressed, or withdrawn. For help, please %{href} or start over with a new search."
-      not_found_href: "Ask a Librarian"
+      not_found_html: "For help, please %{href} us or try a"
+      not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/asktulibraries"
 
     range_limit:
