@@ -3,6 +3,8 @@
 </div>
 
 
-<h4 class="error-header">The page you were looking for doesn't exist.</h4>
-<p>You may have mistyped the address or the page may have moved.</p>
-<p>If you are the application owner check the logs for more information.</p>
+<h4 class="error-header not-found py-2 px-5"><%= t("blacklight.header_links.not_found") %></h4>
+<p class="pl-5"><%= t("blacklight.errors.not_found_part_one") %></p>
+<p class="pl-5">
+  <%= t("blacklight.errors.not_found_html", href: link_to(t("blacklight.errors.not_found_href"), "blacklight.errors.not_found_link" )) %>
+</p>
