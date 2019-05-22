@@ -132,6 +132,18 @@ module CobAlma
       descriptions.reject(&:empty?)
     end
 
+    def self.asrs_descriptions(items_list)
+      descriptions = items_list.all
+        .select { |item| item.library == "ASRS"  && item.in_place? }
+        .map(&:description)
+      if descriptions.any?
+        descriptions.each do |desc|
+          desc
+        end
+      end
+      descriptions.reject(&:empty?)
+    end
+
     def self.booking_location(items_list)
       pickup_library = items_list.map { |item| [item.library, item.library_name] }
       pickup_library.uniq

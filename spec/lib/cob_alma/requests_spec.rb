@@ -119,7 +119,7 @@ RSpec.describe CobAlma::Requests do
     context "record has empty description and description" do
       let(:items_list) { Alma::BibItem.find("empty_and_description") }
 
-      it "returns an empty array" do
+      it "returns single description" do
         expect(described_class.descriptions(items_list)).to eq(["sample"])
       end
     end
@@ -127,10 +127,45 @@ RSpec.describe CobAlma::Requests do
     context "record has multiple descriptions" do
       let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
 
-      it "returns an empty array" do
+      it "returns multiple descriptions" do
         expect(described_class.descriptions(items_list)).to eq(["sample", "second"])
       end
     end
+  end
+
+  describe "#asrs_descriptions" do
+    context "record has multiple empty descriptions" do
+      let(:items_list) { Alma::BibItem.find("empty_descriptions") }
+
+      it "returns an empty array" do
+        expect(described_class.asrs_descriptions(items_list)).to eq([])
+      end
+    end
+
+    context "record has empty description and is ASRS and available" do
+      let(:items_list) { Alma::BibItem.find("empty_and_description") }
+
+      it "returns one description" do
+        expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
+      end
+    end
+
+    context "record has empty description and is ASRS and not available" do
+      let(:items_list) { Alma::BibItem.find("empty_and_description_not_in_place") }
+
+      it "returns an empty list" do
+        expect(described_class.asrs_descriptions(items_list)).to eq([])
+      end
+    end
+
+    context "record many description but non are from ASRS" do
+      let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
+
+      it "returns empty list" do
+        expect(described_class.asrs_descriptions(items_list)).to eq([])
+      end
+    end
+
   end
 
   describe "#asrs_pickup_locations" do

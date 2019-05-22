@@ -10,7 +10,7 @@ module AlmawsHelper
   end
 
   def asrs_allowed_partial(request_options)
-    if request_options.hold_allowed? && asrs_items.present?
+    if request_options.hold_allowed? && available_asrs_items.present?
       render partial: "asrs_allowed", locals: { request_options: request_options }
     end
   end
@@ -60,6 +60,6 @@ module AlmawsHelper
 
   def available_asrs_items(items = @items)
     # Alma bug: item.item_data["requested"] is true for all items on bib level requests.
-    asrs_items.select { |item| item.in_place?  }
+    asrs_items(items).select { |item| item.in_place?  }
   end
 end

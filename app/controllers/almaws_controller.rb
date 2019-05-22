@@ -51,6 +51,12 @@ class AlmawsController < CatalogController
     @request_level = params[:request_level]
     @asrs_request_level = get_request_level(@items, "asrs")
 
+    if @asrs_request_level == "item"
+      @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
+    else
+      @asrs_description = @description
+    end
+
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
