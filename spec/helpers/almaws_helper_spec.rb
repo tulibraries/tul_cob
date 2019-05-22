@@ -48,6 +48,63 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
   end
 
+  describe "#asrs_allowed_partial" do
+    let(:json) {
+      { request_option:
+        [{
+        "type" => { "value" => "HOLD", "desc" => "Hold" },
+        "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+        }]
+      }.to_json
+    }
+
+    context "asrs request can be placed on an item" do
+      let(:item) do
+       Alma::BibItem.new(
+         "holding_data" => {
+           "holding_id" => "foo",
+         },
+         "item_data" =>
+         { "base_status" =>
+           { "value" => "1" },
+             "policy" =>
+           { "desc" => "Non-circulating" },
+             "requested" => false,
+             "library" => {
+               "value" => "ASRS",
+               "desc" => "ASRS"
+             },
+             "location" => {
+               "value" => "stacks",
+               "desc" => "Stacks"
+             },
+         }
+        )
+     end
+
+      it "renders the hold partial" do
+        allow(helper).to receive(:available_asrs_items) { [item] }
+        expect(helper.asrs_allowed_partial(request_options)).not_to be_nil
+      end
+    end
+
+    context "asrs request cannot be placed on an item" do
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "HOLD", "desc" => "Hold" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          }]
+        }.to_json
+      }
+
+      it "does not render the hold partial" do
+        allow(helper).to receive(:available_asrs_items) { [] }
+        expect(helper.asrs_allowed_partial(request_options)).to be_nil
+      end
+    end
+  end
+
   describe "#digitization_allowed_partial" do
     let(:json) {
       { request_option:
