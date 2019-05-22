@@ -899,4 +899,44 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
   end
+
+  describe "#availability_alert(document)" do
+    context "document availability contains nil values" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "availability" => nil,
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true"  do
+        expect(availability_alert(document)).to eq true
+      end
+    end
+
+    context "document availability contains nil values" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "availability" => "<span class=\"check\"></span>Library Use Only",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true"  do
+        expect(availability_alert(document)).to eq false
+      end
+    end
+  end
 end
