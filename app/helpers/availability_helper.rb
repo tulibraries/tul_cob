@@ -69,6 +69,11 @@ module AvailabilityHelper
       .group_by { |item| library(item) }
   end
 
+  def availability_alert(document)
+    empty_availability = document["items_json_display"].map { |item|
+      item["availability"].blank?
+    }.any?
+  end
 
   def description(item)
     item["description"] ? "Description: #{item['description']}" : ""

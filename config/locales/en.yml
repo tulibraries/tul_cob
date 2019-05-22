@@ -34,6 +34,7 @@ en:
       not_found_html: "The address may have been mistyped, or the page or record that was here may have been moved, suppressed, or withdrawn. For help, please %{href} or start over with a new search."
       not_found_href: "Ask a Librarian"
       not_found_link: "https://library.temple.edu/asktulibraries"
+      availability_alert_html: "Some availability information can not be loaded. Please contact your library's Circulation Desk for more information or %{href}."
 
     range_limit:
       submit_limit: "Apply"
