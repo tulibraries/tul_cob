@@ -251,7 +251,7 @@ RSpec.describe AlmawsController, type: :controller do
   end
 
   describe "assigning request levels correctly for ASRS and nonASRS items" do
-    let(:items)  { [item1, item2 ]}
+    let(:items)  { [item1, item2 ] }
 
     context "default behavior empty list" do
       let(:items) { [] }
@@ -262,11 +262,11 @@ RSpec.describe AlmawsController, type: :controller do
 
     context "asrs items only without descriptions" do
       let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
       }
 
       let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
       }
 
       it "should be a bib level request" do
@@ -277,11 +277,11 @@ RSpec.describe AlmawsController, type: :controller do
 
     context "mixed asrs and non asrs items without descriptions" do
       let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" } })
       }
 
       let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
       }
 
       it "should return bib for non asrs hold requests" do
@@ -295,11 +295,11 @@ RSpec.describe AlmawsController, type: :controller do
 
     context "mixed asrs with descriptions" do
       let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }, "description" => "v1"})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }, "description" => "v1" })
       }
 
       let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" }})
+        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
       }
 
       it "should return item for non asrs hold requests" do

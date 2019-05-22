@@ -127,10 +127,10 @@ class AlmawsController < CatalogController
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          request = Alma::ItemRequest.submit(options.merge(
-            holding_id: holding_id,
-            item_pid: item_pid,
-          ))
+          request = Alma::ItemRequest.submit(
+            options.merge(
+              holding_id: holding_id,
+              item_pid: item_pid))
 
           break
         end
