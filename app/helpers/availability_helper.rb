@@ -70,7 +70,7 @@ module AvailabilityHelper
   end
 
   def availability_alert(document)
-    empty_availability = document["items_json_display"].map { |item|
+    document["items_json_display"].map { |item|
       item["availability"].blank?
     }.any?
   end
