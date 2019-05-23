@@ -3,11 +3,11 @@
 /* BENTO STYLES */
 .bento_compartment {
 	margin: 0 auto;
-	width: 30% !important;
+	width: 33.3% !important;
 
-	@media(max-width: 991px) {
+	@media(min-width: 992px) {
 		margin: 0 auto;
-		width: 45% !important;
+		width: 33.3% !important;
 	}
 
 	@media(max-width: 768px) {
@@ -32,6 +32,14 @@
 .bento_compartment h3 {
 	font-size: 1.25rem;
 	padding-left: 0.9375rem;
+}
+
+.masonry {
+
+	@media(min-width: 600px) {
+	 	flex-direction: column;
+	 	max-height: 800px;
+	}
 }
 
 .bento_item_title {
