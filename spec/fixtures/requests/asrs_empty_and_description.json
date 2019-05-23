@@ -221,8 +221,8 @@
                     "desc": null
                 },
                 "library": {
-                    "value": "MEDIA",
-                    "desc": "Media Services"
+                    "value": "ASRS",
+                    "desc": "ASRS"
                 },
                 "location": {
                     "value": "media",

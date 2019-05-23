@@ -182,8 +182,8 @@
                 "creation_date": "2017-06-20Z",
                 "modification_date": "2018-08-06Z",
                 "base_status": {
-                    "value": "1",
-                    "desc": "Item in place"
+                    "value": "0",
+                    "desc": "Item not in place"
                 },
                 "physical_material_type": {
                     "value": "DVD",
@@ -221,8 +221,8 @@
                     "desc": null
                 },
                 "library": {
-                    "value": "MEDIA",
-                    "desc": "Media Services"
+                    "value": "ASRS",
+                    "desc": "ASRS"
                 },
                 "location": {
                     "value": "media",

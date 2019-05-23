@@ -143,7 +143,7 @@ RSpec.describe CobAlma::Requests do
     end
 
     context "record has empty description and is ASRS and available" do
-      let(:items_list) { Alma::BibItem.find("empty_and_description") }
+      let(:items_list) { Alma::BibItem.find("asrs_empty_and_description") }
 
       it "returns one description" do
         expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
