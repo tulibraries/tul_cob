@@ -27,13 +27,15 @@ class AlmawsController < CatalogController
     @document_and_api_data = helpers.document_and_api_merged_results(@document, bib_items)
     @document_availability = helpers.document_availability_info(@document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
-    @request_level = has_desc?(bib_items) ? "item" : "bib"
+    # Defined here as a parameter for the route
+    @request_level = get_request_level(bib_items)
     @redirect_to = params[:redirect_to]
     render layout: false
   end
 
   def request_options
     @mms_id = params[:mms_id]
+    _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
     log = { type: "alma_bib_item", mms_id: @mms_id }
     @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
@@ -44,9 +46,18 @@ class AlmawsController < CatalogController
     @booking_location = CobAlma::Requests.booking_location(@items)
     @material_types = CobAlma::Requests.physical_material_type(@items)
     @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.temporary_pickup_location_for_move(lib) } }
+    @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.temporary_pickup_location_for_move(lib) } }
     @user_id = current_user.uid
     @request_level = params[:request_level]
-    if @request_level == "item"
+    @asrs_request_level = get_request_level(@items, "asrs")
+
+    if @asrs_request_level == "item"
+      @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
+    else
+      @asrs_description = @description
+    end
+
+    if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
       @request_options = @item_level_holdings.map { |holding_id, item_pid|
@@ -88,6 +99,52 @@ class AlmawsController < CatalogController
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash["success"] = "Your request has been submitted."
       redirect_back(fallback_location: root_path)
+    rescue
+      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def send_asrs_request
+    date = date_or_nil(params[:asrs_last_interest_date])
+    options = {
+    mms_id: params[:mms_id],
+    user_id: current_user.uid,
+    description: params[:asrs_description],
+    pickup_location_library: params[:asrs_pickup_location],
+    pickup_location_type: "LIBRARY",
+    request_type: "HOLD",
+    last_interest_date: date,
+    comment: params[:asrs_comment]
+    }
+
+    @asrs_request_level = params[:asrs_request_level]
+    #log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
+
+    begin
+      if @asrs_request_level == "bib"
+        request = Alma::BibRequest.submit(options)
+      else
+        # TODO: Will update this depending on Justin's decision regarding
+        # multiple requests on same item.
+        params["available_asrs_items"]
+          .select { |item| item["description"] == options[:description] }
+          .each do |item|
+          holding_id = item["holding_id"]
+          item_pid = item["item_pid"]
+
+          request = Alma::ItemRequest.submit(
+            options.merge(
+              holding_id: holding_id,
+              item_pid: item_pid))
+
+          break
+        end
+      end
+
+      flash["success"] = "Your request has been submitted."
+      redirect_back(fallback_location: root_path)
+
     rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
@@ -160,6 +217,18 @@ class AlmawsController < CatalogController
   end
 
   private
+
+    def get_request_level(items, partial = nil)
+      if partial == "asrs"
+        if helpers.asrs_items(items).present? && helpers.non_asrs_items(items).present?
+          "item"
+        else
+          has_desc?(items) ? "item" : "bib"
+        end
+      else
+        has_desc?(items) ? "item" : "bib"
+      end
+    end
 
     def has_desc?(items)
       item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)

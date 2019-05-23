@@ -27,6 +27,10 @@ module CobAlma
       ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
+    def self.asrs_pickup_locations
+      ["MAIN"]
+    end
+
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
@@ -126,6 +130,12 @@ module CobAlma
         end
       end
       descriptions.reject(&:empty?)
+    end
+
+    def self.asrs_descriptions(items_list)
+      items_list.all
+        .select { |item| item.library == "ASRS" && item.in_place? && item.description.present? }
+        .map(&:description)
     end
 
     def self.booking_location(items_list)
