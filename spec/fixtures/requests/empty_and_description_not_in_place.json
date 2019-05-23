@@ -1,0 +1,260 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991030207479703811",
+                "title": "Fences /",
+                "author": "Rudin, Scott,",
+                "issn": null,
+                "isbn": null,
+                "complete_edition": "[English/Spanish/French subtitled version]",
+                "network_number": [
+                    "(OCLC)ocn982129182",
+                    "ocn982129182",
+                    "(OCoLC)972884896",
+                    "(PPT)b6415337x-01tuli_inst"
+                ],
+                "place_of_publication": "Los Angeles, CA :",
+                "date_of_publication": "[2017]",
+                "publisher_const": "Paramount",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811"
+            },
+            "holding_data": {
+                "holding_id": "22255855480003811",
+                "call_number_type": {
+                    "value": "8",
+                    "desc": "Other scheme"
+                },
+                "call_number": "DVD 17 A32",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811/holdings/22255855480003811"
+            },
+            "item_data": {
+                "pid": "23255855460003811",
+                "barcode": "39074030840144",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2018-10-06Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "physical_material_type": {
+                    "value": "DVD",
+                    "desc": "DVD"
+                },
+                "policy": {
+                    "value": "5",
+                    "desc": "Media"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2017-03-22Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "AMBLER",
+                    "desc": "Ambler Campus Library"
+                },
+                "location": {
+                    "value": "media",
+                    "desc": "Ambler Media"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Check container for DVD.",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: avid",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811/holdings/22255855480003811/items/23255855460003811"
+        },
+        {
+            "bib_data": {
+                "mms_id": "991030207479703811",
+                "title": "Fences /",
+                "author": "Rudin, Scott,",
+                "issn": null,
+                "isbn": null,
+                "complete_edition": "[English/Spanish/French subtitled version]",
+                "network_number": [
+                    "(OCLC)ocn982129182",
+                    "ocn982129182",
+                    "(OCoLC)972884896",
+                    "(PPT)b6415337x-01tuli_inst"
+                ],
+                "place_of_publication": "Los Angeles, CA :",
+                "date_of_publication": "[2017]",
+                "publisher_const": "Paramount",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811"
+            },
+            "holding_data": {
+                "holding_id": "22255855450003811",
+                "call_number_type": {
+                    "value": "8",
+                    "desc": "Other scheme"
+                },
+                "call_number": "DVD 17 168",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": "MEDIA",
+                    "desc": "Media Services"
+                },
+                "temp_location": {
+                    "value": "reserve",
+                    "desc": "Main Media Reserve"
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "due_back_date": "2017-12-22Z",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811/holdings/22255855450003811"
+            },
+            "item_data": {
+                "pid": "23255855440003811",
+                "barcode": "39074030837900",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2018-08-06Z",
+                "base_status": {
+                    "value": "0",
+                    "desc": "Item not in place"
+                },
+                "physical_material_type": {
+                    "value": "DVD",
+                    "desc": "DVD"
+                },
+                "policy": {
+                    "value": "5",
+                    "desc": "Media"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2017-04-06Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "sample",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "library": {
+                    "value": "ASRS",
+                    "desc": "ASRS"
+                },
+                "location": {
+                    "value": "media",
+                    "desc": "Main Media"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Check container for DVD.",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pmed",
+                "statistics_note_1": "TOT RENEW: 1",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": null,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991030207479703811/holdings/22255855450003811/items/23255855440003811"
+        }
+    ],
+    "total_record_count": 2
+}
