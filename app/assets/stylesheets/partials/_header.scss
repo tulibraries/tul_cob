@@ -148,8 +148,12 @@ a.advanced_search {
 		font-size: 1.125rem;
 	}
 
-	@media(max-width: 599px) {
-		font-size: 1rem;
+	@media(max-width: 700px) {
+		font-size: 1.0rem;
+	}
+
+	@media(max-width: 620px) {
+		font-size: 0.75rem;
 		padding-right: 0.25em;
 	}
 
