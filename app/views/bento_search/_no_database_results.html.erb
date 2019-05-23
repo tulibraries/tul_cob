@@ -1,4 +1,11 @@
-<h3><%= t("no_results.title", engine: "database") %></h3>
+<h3 class="pt-2"><%= t("no_results.title", engine: "database") %></h3>
 <hr />
 
-TBD
+<div class="p-1">
+  <ul class="">
+    <li>
+      <%= t("bento.zero_results.databases_html", href: link_to(t("bento.zero_results.databases_href"), t("bento.zero_results.databases_link"))) %>
+      <%= link_to(t("bento.zero_results.databases_two"), t("bento.zero_results.databases_link")) %>
+    </li>
+  </ul>
+</div>
