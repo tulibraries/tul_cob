@@ -5,9 +5,11 @@ require "rails_helper"
 RSpec.describe AlmawsHelper, type: :helper do
   let(:json) { {}.to_json }
   let(:request_options) { Alma::RequestOptions.get("foo") }
+  let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
   before do
     helper.instance_variable_set(:@equipment, [])
+    helper.instance_variable_set("@items", items_list)
     stub_request(:any, /request-options/).
       and_return(headers: { "Content-Type" => "application/json" },
                  body: json,
@@ -42,6 +44,63 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "does not render the hold partial" do
         expect(helper.hold_allowed_partial(request_options)).to be_nil
+      end
+    end
+  end
+
+  describe "#asrs_allowed_partial" do
+    let(:json) {
+      { request_option:
+        [{
+        "type" => { "value" => "HOLD", "desc" => "Hold" },
+        "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+        }]
+      }.to_json
+    }
+
+    context "asrs request can be placed on an item" do
+      let(:item) do
+       Alma::BibItem.new(
+         "holding_data" => {
+           "holding_id" => "foo",
+         },
+         "item_data" =>
+         { "base_status" =>
+           { "value" => "1" },
+             "policy" =>
+           { "desc" => "Non-circulating" },
+             "requested" => false,
+             "library" => {
+               "value" => "ASRS",
+               "desc" => "ASRS"
+             },
+             "location" => {
+               "value" => "stacks",
+               "desc" => "Stacks"
+             },
+         }
+        )
+     end
+
+      it "renders the hold partial" do
+        allow(helper).to receive(:available_asrs_items) { [item] }
+        expect(helper.asrs_allowed_partial(request_options)).not_to be_nil
+      end
+    end
+
+    context "asrs request cannot be placed on an item" do
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "HOLD", "desc" => "Hold" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          }]
+        }.to_json
+      }
+
+      it "does not render the hold partial" do
+        allow(helper).to receive(:available_asrs_items) { [] }
+        expect(helper.asrs_allowed_partial(request_options)).to be_nil
       end
     end
   end
@@ -244,5 +303,57 @@ RSpec.describe AlmawsHelper, type: :helper do
         expect(helper.only_one_option_allowed(request_options)).to be false
       end
     end
+  end
+
+  describe "#is_asrs_item?(item)" do
+    context "item is located in ASRS" do
+     let(:item) do
+       Alma::BibItem.new("item_data" =>
+          { "base_status" =>
+            { "value" => "1" },
+            "policy" =>
+            { "desc" => "Non-circulating" },
+            "requested" => false,
+            "library" => {
+                   "value" => "ASRS",
+                   "desc" => "ASRS"
+             },
+             "location" => {
+                   "value" => "ASRS",
+                   "desc" => "Automated Storage System"
+             },
+          }
+        )
+     end
+
+     it "returns true" do
+       expect(helper.is_asrs_item?(item)).to be true
+     end
+   end
+
+    context "item is NOT located in ASRS" do
+     let(:item) do
+       Alma::BibItem.new("item_data" =>
+          { "base_status" =>
+            { "value" => "1" },
+            "policy" =>
+            { "desc" => "Non-circulating" },
+            "requested" => false,
+            "library" => {
+                   "value" => "AMBLER",
+                   "desc" => "Ambler"
+             },
+             "location" => {
+                   "value" => "stacks",
+                   "desc" => "Stacks"
+             },
+          }
+        )
+     end
+
+     it "returns true" do
+       expect(helper.is_asrs_item?(item)).to be false
+     end
+   end
   end
 end
