@@ -4,8 +4,14 @@ module AlmawsHelper
   include Blacklight::CatalogHelperBehavior
 
   def hold_allowed_partial(request_options)
-    if request_options.hold_allowed?
+    if request_options.hold_allowed? && non_asrs_items.present?
       render partial: "hold_allowed", locals: { request_options: request_options }
+    end
+  end
+
+  def asrs_allowed_partial(request_options)
+    if request_options.hold_allowed? && available_asrs_items.present?
+      render partial: "asrs_allowed", locals: { request_options: request_options }
     end
   end
 
@@ -38,5 +44,22 @@ module AlmawsHelper
      request_options.digitization_allowed?,
      request_options.booking_allowed?, request_options.resource_sharing_broker_allowed? ]
     .select(&:itself).count == 1
+  end
+
+  def non_asrs_items(items = @items)
+    items.select { |item| !is_asrs_item?(item) }
+  end
+
+  def asrs_items(items = @items)
+    items.select { |item| is_asrs_item?(item) }
+  end
+
+  def is_asrs_item?(item)
+    item.library == "ASRS"
+  end
+
+  def available_asrs_items(items = @items)
+    # Alma bug: item.item_data["requested"] is true for all items on bib level requests.
+    asrs_items(items).select { |item| item.in_place?  }
   end
 end
