@@ -134,7 +134,7 @@ module CobAlma
 
     def self.asrs_descriptions(items_list)
       items_list.all
-        .select { |item| item.library == "ASRS"  && item.in_place? && item.description.present? }
+        .select { |item| item.library == "ASRS" && item.in_place? && item.description.present? }
         .map(&:description)
     end
 
