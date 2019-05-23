@@ -1,0 +1,14 @@
+<div class="card p-0 request-card">
+  <div class="request-heading bg-tan">
+    <h4 class="card-title">
+        <a class="asrs-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseASRS-<%= @mms_id %>"><%= t("requests.asrs_allowed_link") %></a>
+    </h4>
+  </div>
+
+  <div id="collapseASRS-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options)%>">
+    <div class="card-body">
+        <h5 class="request-header"><%= t("requests.form.header") %></h5>
+        <%= render "asrs_request_form" %>
+    </div>
+  </div>
+</div>

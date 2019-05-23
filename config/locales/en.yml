@@ -95,6 +95,7 @@ en:
     footer_link: "http://answers.library.temple.edu/faq/195868"
     cancel: "Cancel"
     hold_allowed_link: "Request Item"
+    asrs_allowed_link: "Request Item from ASRS (Charles Library only)"
     digitization_allowed_link: "Scan an article/book chapter"
     booking_allowed_link: "Request booking"
     resource_sharing_broker_allowed_link: "Request item from another library"
