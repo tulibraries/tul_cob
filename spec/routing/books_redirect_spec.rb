@@ -29,4 +29,8 @@ RSpec.describe "books redirect", type: :request do
     expect(response).to redirect_to("http://www.example.com/catalog?q=hello&f[format][]=Book")
   end
 
+  it "should not form malformed url when q is not set" do
+    get "/books"
+    expect(response).to redirect_to("http://www.example.com/catalog?f[format][]=Book")
+  end
 end
