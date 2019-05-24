@@ -675,7 +675,7 @@ class CatalogController < ApplicationController
   end
 
   def purchase_order_action
-    (_, document) = fetch(params["id"])
+    (_, document) = search_service.fetch(params["id"])
 
     email = current_user&.email || params[:to]
     name = current_user&.name
