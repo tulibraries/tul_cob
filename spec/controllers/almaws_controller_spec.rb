@@ -93,8 +93,13 @@ RSpec.describe AlmawsController, type: :controller do
         expect { response }.not_to raise_error
       end
 
-      it "doesn't raise an exception for correctly formattted date for last_interest_date" do
+      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
         post(:send_hold_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for correctly formatted material type" do
+        post(:send_hold_request, params: { material_type: { value: "BOOK", mms_id: ""  } })
         expect { response }.not_to raise_error
       end
     end
@@ -133,8 +138,13 @@ RSpec.describe AlmawsController, type: :controller do
         expect { response }.not_to raise_error
       end
 
-      it "doesn't raise an exception for correctly formattted date for last_interest_date" do
+      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
         post(:send_hold_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        expect { response }.not_to raise_error
+      end
+
+      it "doesn't raise an exception for correctly formatted material type" do
+        post(:send_hold_request, params: { material_type: { value: "BOOK", mms_id: ""  } })
         expect { response }.not_to raise_error
       end
     end
@@ -168,7 +178,7 @@ RSpec.describe AlmawsController, type: :controller do
         expect { response }.not_to raise_error
       end
 
-      it "doesn't raise an exception for correctly formattted date for last_interest_date" do
+      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
         post(:send_digitization_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
         expect { response }.not_to raise_error
       end
@@ -214,7 +224,7 @@ RSpec.describe AlmawsController, type: :controller do
         expect { response }.not_to raise_error
       end
 
-      it "doesn't raise an exception for correctly formattted date for booking dates" do
+      it "doesn't raise an exception for correctly formatted date for booking dates" do
         post(:send_booking_request, params: { booking_start_date: "2018-08-16", booking_end_date: "2018-08-20", mms_id: ""  })
         expect { response }.not_to raise_error
       end
