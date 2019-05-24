@@ -30,7 +30,7 @@ en:
       not_found: "We couldn’t find this page!"
 
     errors:
-      not_found_html: "For help, please %{href} us or try a"
+      not_found_html: "For help, please %{href} or try a"
       not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/asktulibraries"
       availability_alert_html: "Some availability information can not be loaded. Please contact your library's Circulation Desk for more information or %{href}."
