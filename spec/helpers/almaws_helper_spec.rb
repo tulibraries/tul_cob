@@ -9,6 +9,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
   before do
     helper.instance_variable_set(:@equipment, [])
+    helper.instance_variable_set(:@material_types, [])
     helper.instance_variable_set("@items", items_list)
     stub_request(:any, /request-options/).
       and_return(headers: { "Content-Type" => "application/json" },
@@ -77,6 +78,10 @@ RSpec.describe AlmawsHelper, type: :helper do
              "location" => {
                "value" => "stacks",
                "desc" => "Stacks"
+             },
+             "physical_material_type" => {
+               "value" => "BOOK",
+               "desc" => "book"
              },
          }
         )
@@ -321,6 +326,10 @@ RSpec.describe AlmawsHelper, type: :helper do
              "location" => {
                    "value" => "ASRS",
                    "desc" => "Automated Storage System"
+             },
+             "physical_material_type" => {
+               "value" => "BOOK",
+               "desc" => "book"
              },
           }
         )
