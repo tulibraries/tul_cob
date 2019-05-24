@@ -25,7 +25,6 @@
       </div>
     <% end %>
 
-
     <% if @request_level == "item" %>
       <div class="row">
         <div class="col-sm-4 col-md-6 form-group">
@@ -40,8 +39,14 @@
           <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
-
     <% end %>
+
+    <div class="row">
+      <div class="col-sm-4 col-md-6 hold-form form-group">
+        <%= label("", :material_type, t("requests.form.material_type")) %>
+        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+      </div>
+    </div>
 
     <div class="row hold-form">
       <div class="col-sm-5 col-md-6 form-group">
