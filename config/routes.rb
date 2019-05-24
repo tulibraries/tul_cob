@@ -24,7 +24,12 @@ Rails.application.routes.draw do
   get "books", to: redirect { |_, req|
     redirect_path = req.url.sub("books", "catalog")
 
-    redirect_path += "&f[format][]=Book" unless req.params.dig("f", "format")&.include?("Book")
+    if req.params.empty?
+      redirect_path += "?f[format][]=Book"
+    elsif !req.params.dig("f", "format")&.include?("Book")
+      redirect_path += "&f[format][]=Book"
+    end
+
     redirect_path
   }
 
