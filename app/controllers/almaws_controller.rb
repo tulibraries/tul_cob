@@ -88,6 +88,7 @@ class AlmawsController < CatalogController
     description: params[:hold_description],
     pickup_location_library: params[:hold_pickup_location],
     pickup_location_type: "LIBRARY",
+    material_type: { value: params[:material_type] },
     request_type: "HOLD",
     last_interest_date: date,
     comment: params[:hold_comment]
@@ -113,6 +114,7 @@ class AlmawsController < CatalogController
     description: params[:asrs_description],
     pickup_location_library: params[:asrs_pickup_location],
     pickup_location_type: "LIBRARY",
+    material_type: { value: params[:material_type] },
     request_type: "HOLD",
     last_interest_date: date,
     comment: params[:asrs_comment]
@@ -159,7 +161,7 @@ class AlmawsController < CatalogController
     user_id: current_user.uid,
     pickup_location_library: params[:booking_pickup_location],
     pickup_location_type: "LIBRARY",
-    material_type: params[:material_type],
+    material_type: { value: params[:material_type] },
     request_type: "BOOKING",
     booking_start_date: start_date,
     booking_end_date: end_date,
