@@ -1,4 +1,9 @@
 /* === INDEX SEARCH RESULTS=== */
+h3.document-title-heading {
+  font-family: "PT Sans";
+  font-size: 1.1rem;
+}
+
 .explantion-wrapper {
   @media(max-width: 600px) {
     padding-left: 0.9375rem;
@@ -42,4 +47,10 @@ dt.index-label {
 
 dd {
   text-align: left;
+}
+
+/* === DATABASE RESULTS=== */
+.database-browse-link {
+  color: $black !important;
+  text-decoration: underline;
 }

@@ -1,11 +1,19 @@
 <div class="row pl-5 pt-3 pb-5">
+
   <% if show_sidebar? %>
-    <div id="sidebar" class="col-md-4 col-lg-3 mt-4 rounded bg-white pt-4">
-      <%= render "search_sidebar" %>
+    <div id="sidebar" class="col-md-4 col-lg-3">
+      <% if controller_name == "databases" %>
+        <div class="mb-3 text-center">
+          <%= link_to(t("databases.link_text"), t("databases.link_href"), class: "database-browse-link") %>
+        </div>
+      <% end %>
+      <div class="rounded bg-white p-2">
+        <%= render "search_sidebar" %>
+      </div>
     </div>
   <% end %>
 
-  <div id="content" class="<%= "col-md-7 col-lg-8 bg-white rounded" if show_sidebar? %> mt-4 ml-md-4 ml-sm-0 pr-0 pl-0">
+  <div id="content" class="<%= "col-md-7 col-lg-8 bg-white rounded" if show_sidebar? %>ml-md-4 ml-sm-0 pr-0 pl-0">
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render "home" %>
@@ -14,4 +22,5 @@
       <%= render "search_results" %>
     <% end %>
   </div>
+
 </div>

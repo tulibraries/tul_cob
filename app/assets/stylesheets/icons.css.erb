@@ -20,7 +20,8 @@ span.book_chapter,
 a.facet_book_chapter,
 a.facet_book_chapters,
 a.facet_book,
-a.facet_books {
+a.facet_books,
+a.facet_ebooks {
   background: transparent url(<%= asset_path "noun_book.svg" %>) no-repeat center left;
   padding-left: 2.0rem;
 	padding-top: .25rem;
@@ -42,6 +43,7 @@ span.government_document,
 span.patent,
 span.legal_document,
 a.facet_newspaper_articles,
+a.facet_newspapers,
 a.facet_reference_entrys,
 a.facet_articles,
 a.facet_reviews,
@@ -85,7 +87,10 @@ span.score, a.facet_score, a.facet_scores {
   padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-span.video, a.facet_video, a.facet_videos {
+span.video,
+a.facet_video,
+a.facet_streaming_video,
+a.facet_videos {
   background: transparent url(<%= asset_path "noun_video.svg" %>) no-repeat center left;
   padding-left: 2.0rem;
 	padding-top: .25rem;
@@ -95,14 +100,20 @@ span.archival_material, a.facet_archival_material {
   padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-span.visual_material, a.facet_visual_material, a.facet_visual_materials
-span.digital_collections, a.facet_digital_collections, span.facet_digital_collections
-{
+span.visual_material,
+a.facet_visual_material,
+a.facet_visual_materials,
+a.facet_images,
+span.digital_collections,
+a.facet_digital_collections,
+span.facet_digital_collections {
   background: transparent url(<%= asset_path "noun_visual_material.svg" %>) no-repeat center left;
 	padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-span.audio, a.facet_audio {
+span.audio,
+a.facet_streaming_audio,
+a.facet_audio {
   background: transparent url(<%= asset_path "noun_audio.svg" %>) no-repeat center left;
   padding-left: 2.0rem;
 	padding-top: .25rem;
@@ -125,7 +136,10 @@ span.database, a.facet_database, a.facet_databases {
   padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-span.map, a.facet_map, a.facet_maps {
+span.map,
+a.facet_map,
+a.facet_maps_mapping_tools,
+a.facet_maps {
   background: transparent url(<%= asset_path "noun_map.svg" %>) no-repeat center left;
   padding-left: 2.0rem;
 	padding-top: .25rem;
@@ -134,6 +148,7 @@ span.dataset,
 span.research_dataset,
 span.statistical_data_set,
 a.facet_dataset,
+a.facet_datasets,
 a.facet_research_datasets,
 a.facet_statistical_data_sets {
   background: transparent url(<%= asset_path "noun_data_set.svg" %>) no-repeat center left;
@@ -147,6 +162,16 @@ span.website, a.facet_website, a.facet_websites {
 }
 span.kit, a.facet_kit {
   background: transparent url(<%= asset_path "noun_kit.svg" %>) no-repeat center left;
+	padding-left: 2.0rem;
+	padding-top: .25rem;
+}
+.facet_law_regulations {
+  background: transparent url(<%= asset_path "noun_law.svg" %>) no-repeat center left;
+	padding-left: 2.0rem;
+	padding-top: .25rem;
+}
+.facet_reference {
+  background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
 	padding-left: 2.0rem;
 	padding-top: .25rem;
 }

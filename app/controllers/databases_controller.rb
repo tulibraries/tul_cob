@@ -9,6 +9,8 @@ class DatabasesController < CatalogController
   add_breadcrumb "Record", :solr_database_document_path, only: [ :show ]
 
   configure_blacklight do |config|
+    config.advanced_search[:fields_row_count] = 2
+    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
@@ -63,17 +65,18 @@ class DatabasesController < CatalogController
       ps: "3",
       tie: "0.01",
       facet: "true",
+      # spellcheck: "false",
       sow: "false",
     }
 
     # Facet fields
-    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
-    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: true
-    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
+    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: true, collapse: false
+    config.add_facet_field "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false
+    config.add_facet_field "availability_facet", label: "Access", home: true
 
     # Index fields
+    config.add_index_field "format", label: "Database Type", raw: true, helper_method: :separate_formats
     config.add_index_field "note_display", label: "Description", raw: true, helper_method: :join
-    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "availability"
 
     # Show fields
