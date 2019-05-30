@@ -265,6 +265,12 @@ module CatalogHelper
     end
   end
 
+  def database_type_links(args)
+    args[:document][args[:field]].map do |type|
+      link_to(type.sub("— — ", "— "), "#{base_path}?f[format][]=#{CGI.escape type}")
+    end
+  end
+
   def has_one_electronic_resource?(document)
     document.fetch("electronic_resource_display", []).length == 1
   end
