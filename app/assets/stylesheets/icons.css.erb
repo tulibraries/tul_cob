@@ -15,6 +15,7 @@ button.collapse-button.collapsed .avail-label:after {
 }
 
 span.book,
+span.ebooks,
 span.book_book_chapter,
 span.book_chapter,
 a.facet_book_chapter,
@@ -33,6 +34,7 @@ span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_pr
 	padding-top: .25rem;
 }
 span.newspaper_article,
+span.newspapers,
 span.reference_entry,
 span.article,
 span.review,
@@ -88,6 +90,7 @@ span.score, a.facet_score, a.facet_scores {
 	padding-top: .25rem;
 }
 span.video,
+span.streaming_video,
 a.facet_video,
 a.facet_streaming_video,
 a.facet_videos {
@@ -101,6 +104,7 @@ span.archival_material, a.facet_archival_material {
 	padding-top: .25rem;
 }
 span.visual_material,
+span.images,
 a.facet_visual_material,
 a.facet_visual_materials,
 a.facet_images,
@@ -112,6 +116,7 @@ span.facet_digital_collections {
 	padding-top: .25rem;
 }
 span.audio,
+span.streaming_audio,
 a.facet_streaming_audio,
 a.facet_audio {
   background: transparent url(<%= asset_path "noun_audio.svg" %>) no-repeat center left;
@@ -137,6 +142,7 @@ span.database, a.facet_database, a.facet_databases {
 	padding-top: .25rem;
 }
 span.map,
+span.maps_amp_mapping_tools,
 a.facet_map,
 a.facet_maps_mapping_tools,
 a.facet_maps {
@@ -145,6 +151,7 @@ a.facet_maps {
 	padding-top: .25rem;
 }
 span.dataset,
+span.datasets,
 span.research_dataset,
 span.statistical_data_set,
 a.facet_dataset,
@@ -165,12 +172,14 @@ span.kit, a.facet_kit {
 	padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-.facet_law_regulations {
+span.law_amp_regulations,
+a.facet_law_regulations {
   background: transparent url(<%= asset_path "noun_law.svg" %>) no-repeat center left;
 	padding-left: 2.0rem;
 	padding-top: .25rem;
 }
-.facet_reference {
+span.reference,
+#facet-format a.facet_reference {
   background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
 	padding-left: 2.0rem;
 	padding-top: .25rem;
