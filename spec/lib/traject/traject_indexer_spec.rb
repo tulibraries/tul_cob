@@ -1405,6 +1405,36 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 UTC" ])
       end
     end
+    
+    context "Update date is missing" do
+      let(:record_text) { "
+        <record>
+          <datafield ind1=' ' ind2=' ' tag='ADM'>
+            <subfield code='a'>2018-02-02 02:02:02 UTC</subfield>
+            <subfield code='b'>2002-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='ITM'>
+            <subfield code='q'>2017-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2014-02-02 02:02:02 UTC</subfield>
+            <subfield code='created'>2013-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='HLD'>
+            <subfield code='updated'>2013-02-02 02:02:02 UTC</subfield>
+            <subfield code='created'>2014-02-02 02:02:02 UTC</subfield>
+          </datafield>
+          <datafield ind1='1' ind2=' ' tag='PRT'>
+            <subfield code='created'>2019-02-02 02:02:02 UTC</subfield>
+          </datafield>
+        </record>
+                     " }
+
+      it "adds an updated date" do
+        stub_const("ENV", ENV.to_hash.merge("ALMAOAI_LAST_HARVEST_FROM_DATE" => "2019-03-03 03:03:03"))
+        expect(subject.map_record(record)).to eq("record_update_date" => [ Time.now.utc.to_s ])
+      end
+    end
 
     context "SOLR_DISABLE_UPDATE_DATE_CHECK ENV is set" do
       let(:record_text) { "
