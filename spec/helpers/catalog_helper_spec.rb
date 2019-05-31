@@ -462,4 +462,28 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#database_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
+    context "links to database type facet" do
+      let(:args) {
+          {
+            document:
+            {
+              format: ["eBooks"]
+            },
+            field: :format
+          }
+        }
+
+      it "includes link to database type" do
+        expect(database_type_links(args).first).to have_link("eBooks", href: "#{base_path}?f[format][]=eBooks")
+      end
+    end
+  end
 end

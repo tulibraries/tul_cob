@@ -80,6 +80,7 @@ class DatabasesController < CatalogController
     config.add_show_field "note_display", label: "Description", raw: true, helper_method: :join
     config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
+    config.add_show_field "format", label: "Database Type", helper_method: :database_type_links, multi: true
     config.add_show_field "az_vendor_name_display", label: "Database Vendor"
     config.add_show_field "id", label: "Database Record ID"
 
