@@ -656,7 +656,11 @@ module Traject
           if not harvest_date.nil?
             harvest_date = Time.parse(harvest_date).utc
             if latest_date < harvest_date
-              puts "Suspected record with un-dated deleted fields: #{latest_date.to_s} less than #{harvest_date.to_s}, setting date to Time.now: #{rec.fields(["001"])[0].value.to_s}\n"
+              record_id = ""
+              if not rec.fields(["001"]).nil? and not rec.fields(["001"])[0].nil?
+                record_id = rec.fields(["001"])[0].value.to_s
+              end
+              puts "Suspected record with un-dated deleted fields: #{latest_date.to_s} less than #{harvest_date.to_s}, setting date to Time.now: #{record_id}\n"
               latest_date = Time.now.utc
             end
           end
