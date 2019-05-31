@@ -650,13 +650,22 @@ module Traject
             rec.fields("HLD").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("ITM").map { |f| [ f["q"], f["updated"] ] } ]
             .flatten.compact.uniq.map { |t| Time.parse(t).utc }
-            .sort.last.to_s
+            .sort.last
 
-          if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
-            latest_date = Time.now.utc.to_s
+          harvest_date = ENV["ALMAOAI_LAST_HARVEST_FROM_DATE"]
+          if not harvest_date.nil?
+            harvest_date = Time.parse(harvest_date).utc
+            if latest_date < harvest_date
+              puts "Suspected record with un-dated deleted fields: #{latest_date.to_s} less than #{harvest_date.to_s}, setting date to Time.now: #{rec.fields(["001"])[0].value.to_s}\n"
+              latest_date = Time.now.utc
+            end
           end
 
-          acc << latest_date unless latest_date.empty?
+          if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
+            latest_date = Time.now.utc
+          end
+
+          acc << latest_date.to_s unless latest_date.to_s.empty?
         end
       end
     end
