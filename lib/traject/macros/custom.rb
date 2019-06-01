@@ -644,32 +644,28 @@ module Traject
 
       def extract_update_date
         lambda do |rec, acc|
+          harvest_date = Time.parse(ENV["ALMAOAI_LAST_HARVEST_FROM_DATE"]).utc.to_s rescue nil
           latest_date = [
+            [ harvest_date ],
             rec.fields("ADM").map { |f| [ f["a"], f["b"] ] },
             rec.fields("PRT").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("HLD").map { |f| [ f["created"], f["updated"] ] },
             rec.fields("ITM").map { |f| [ f["q"], f["updated"] ] } ]
             .flatten.compact.uniq.map { |t| Time.parse(t).utc }
-            .sort.last
+            .sort.last.to_s
 
-          harvest_date = ENV["ALMAOAI_LAST_HARVEST_FROM_DATE"]
-          if not harvest_date.nil?
-            harvest_date = Time.parse(harvest_date).utc
-            if latest_date < harvest_date
-              record_id = ""
-              if not rec.fields(["001"]).nil? and not rec.fields(["001"])[0].nil?
-                record_id = rec.fields(["001"])[0].value.to_s
-              end
-              puts "Suspected record with un-dated deleted fields: #{latest_date.to_s} less than #{harvest_date.to_s}, setting date to Time.now: #{record_id}\n"
-              latest_date = Time.now.utc
-            end
+          if latest_date == harvest_date
+            record_id = rec.fields("001").first
+            puts "Suspected record with un-dated deleted fields: #{latest_date} less than #{harvest_date}, setting date to Time.now: #{record_id}\n"
+
+            latest_date = Time.now.utc.to_s
           end
 
           if ENV["SOLR_DISABLE_UPDATE_DATE_CHECK"] == "yes"
-            latest_date = Time.now.utc
+            latest_date = Time.now.utc.to_s
           end
 
-          acc << latest_date.to_s unless latest_date.to_s.empty?
+          acc << latest_date unless latest_date.empty?
         end
       end
     end

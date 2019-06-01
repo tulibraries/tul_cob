@@ -1405,7 +1405,7 @@ RSpec.describe Traject::Macros::Custom do
         expect(subject.map_record(record)).to eq("record_update_date" => [ "2019-02-02 02:02:02 UTC" ])
       end
     end
-    
+
     context "Update date is missing" do
       let(:record_text) { "
         <record>
