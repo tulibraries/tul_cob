@@ -131,16 +131,16 @@ default: &default
     plc: Listening Library
     UNASSIGNED: Location information not available
   KARDON:
-    a_rare: Ambler
-    b_rare: Blockson
-    g_remote: Ginsburg
-    l_remote: Law
+    a_rare: Remote Storage - Ambler
+    b_rare: Remote Storage - Blockson
+    g_remote: Remote Storage - Ginsburg
+    l_remote: Remote Storage - Law
     p_govdocmf: Government Documents
     p_GovDocs: Government Documents
     p_media: Media
     p_micro: Microform
-    p_remote: Charles
-    p_oversize: Charles
+    p_remote: Remote Storage - Charles
+    p_oversize: Remote Storage - Charles
   ROME:
     exhibit: Exhibits
     fiction: Fiction
