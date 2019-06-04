@@ -22,7 +22,7 @@ module AvailabilityHelper
   def availability_status_during_move(item)
     unavailable_libraries = ["ASRS", "MEDIA", "MAIN", "SCRC", "DSC"]
 
-    if unavailable_libraries.include?(item.library) && item.location == "reserve"
+    if unavailable_libraries.include?(item.library) && item.location == "reserve" || unavailable_libraries.include?(item.library) && item.location == "m_reserve"
       availability_status(item)
     elsif unavailable_libraries.include?(item.library)
       content_tag(:span, "", class: "close-icon") + "Not available pending move"
