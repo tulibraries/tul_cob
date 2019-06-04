@@ -11,7 +11,7 @@
     <% unless bookmarked? document %>
 
       <%= form_tag( bookmark_path(document),
-        :method => :delete,
+        :method => :put,
         :class => "bookmark-toggle",
         data: {
          "doc-id" => document.id,
@@ -19,12 +19,30 @@
          absent: t("blacklight.search.bookmarks.absent"),
          inprogress: t("blacklight.search.bookmarks.inprogress")
       }) do %>
-      <%= hidden_field_tag("bookmarks[][document_id]", document.id)%>
-      <%= hidden_field_tag("bookmarks[][document_type]", document.class)%>
-        <%= submit_tag(t("blacklight.bookmarks.remove.button"),
-          :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_remove btn btn-sm btn-outline-secondary") %>
-      <% end %>
+        <%= hidden_field_tag("bookmarks[][document_id]", document.id)%>
+        <%= hidden_field_tag("bookmarks[][document_type]", document.class)%>
+          <%= submit_tag(t("blacklight.bookmarks.add.button"),
+            :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_add btn btn-sm btn-outline-secondary") %>
+        <% end %>
+
+    <% else %>
+
+        <%= form_tag( bookmark_path(document),
+          :method => :delete,
+          :class => "bookmark-toggle",
+          data: {
+           "doc-id" => document.id,
+           present: t("blacklight.search.bookmarks.present"),
+           absent: t("blacklight.search.bookmarks.absent"),
+           inprogress: t("blacklight.search.bookmarks.inprogress")
+        }) do %>
+        <%= hidden_field_tag("bookmarks[][document_id]", document.id)%>
+        <%= hidden_field_tag("bookmarks[][document_type]", document.class)%>
+          <%= submit_tag(t("blacklight.bookmarks.remove.button"),
+            :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_remove btn btn-sm btn-outline-secondary") %>
+        <% end %>
+    <% end %>
+  <% else %>
+    &nbsp;
   <% end %>
-<% else %>
-  &nbsp;
 <% end %>

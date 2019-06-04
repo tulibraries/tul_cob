@@ -82,6 +82,15 @@ button.online-btn.collapse-button {
   margin-bottom: 0;
 }
 
+.databases-btn,
+.databases-btn:focus,
+.databases-btn:hover,
+.databases-btn:active,
+.databases-btn:visited {
+  background-color: $dark-blue;
+  color: $white;
+}
+
 button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
 	background-color: $red;
 	border-color: #d43f3a;
