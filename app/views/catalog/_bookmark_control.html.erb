@@ -5,7 +5,6 @@
 
   # the data-doc-id attribute is used by our JS that converts to a checkbox/label.
   -%>
-  <% unless bookmarked? document %>
 
   <!-- Temporarily remove bookmark feature for articles (BL-912) -->
   <% unless controller_name == "databases" || controller_name == "primo_central" %>
@@ -25,7 +24,8 @@
         <%= submit_tag(t("blacklight.bookmarks.remove.button"),
           :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_remove btn btn-sm btn-outline-secondary") %>
       <% end %>
+    <% end %>
+  <% else %>
+    &nbsp;
   <% end %>
-<% else %>
-  &nbsp;
 <% end %>
