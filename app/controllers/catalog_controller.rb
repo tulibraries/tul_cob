@@ -40,7 +40,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:fields_row_count] = 3
 
     config.raw_endpoint.enabled = true
-    
+
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
