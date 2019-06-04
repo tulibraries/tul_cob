@@ -656,7 +656,7 @@ module Traject
 
           if latest_date == harvest_date
             record_id = rec.fields("001").first
-            puts "Suspected record with un-dated deleted fields: #{latest_date} less than #{harvest_date}, setting date to Time.now: #{record_id}\n"
+            puts "Suspected record with un-dated deleted fields: latest_date less than #{harvest_date}, setting date to Time.now: #{record_id}\n"
 
             latest_date = Time.now.utc.to_s
           end
