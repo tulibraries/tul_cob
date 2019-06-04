@@ -154,6 +154,8 @@ module ApplicationHelper
       t("#{controller_name}.explanation_html")
     when "catalog"
       t("blacklight.explanation_html")
+    when "databases"
+      t("databases.home_html")
     else
       ""
     end

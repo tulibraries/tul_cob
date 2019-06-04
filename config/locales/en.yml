@@ -200,6 +200,15 @@ en:
       find_articles: "How do I find articles?"
       find_articles_link: "http://answers.library.temple.edu/faq/195650"
 
+  databases:
+    link_text: "Browse all databases by subject"
+    link_href: "https://library.temple.edu/database-finder"
+    find_articles: "How do I find articles?"
+    find_articles_href: "http://answers.library.temple.edu/faq/195650"
+    home_html: "<strong>Databases</strong> includes links to searchable subscription and open-access databases containing a variety of source types."
+    home_question_html: "<strong>Not sure which database to start with?</strong>"
+    subject_browse_html: "Try browsing by %{href} or "
+
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer-reviewed only"
