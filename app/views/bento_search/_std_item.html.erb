@@ -29,8 +29,6 @@
 
     <div class="bento_item_body ml-3">
 
-
-
       <% if item.any_present?(:authors, :display_date) %>
         <p class="bento_item_row first_about mb-0">
 
@@ -71,7 +69,7 @@
         </p>
       <% end %>
     </div>
-      <% if item.engine_id == "more" %>
+      <% if item.engine_id == "books_and_media" %>
         <div class="bento_item_body ml-4 pl-2 pb-2">
           <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
         </div>
