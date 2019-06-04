@@ -41,23 +41,28 @@ def run_solr(environment, solr_params)
   solr_params.merge!(url: url, checksum: checksum, mirror_url: mirror_url, ignore_checksum: true)
   solr_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr")
   solr_az_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr_az")
+  solr_web_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr_web")
+
   SolrWrapper.wrap(solr_params) do |solr|
     ENV["SOLR_TEST_PORT"] = solr.port
 
     # additional solr configuration
     solr.with_collection(name: "blacklight-core-#{environment}", dir: File.join(solr_dir, "conf")) do
       solr.with_collection(name: "az-database", dir: File.join(solr_az_dir, "conf")) do
-        puts "\n#{environment.titlecase} solr server running:
-        catalog: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}
-        az-database: http://localhost:#{solr.port}/solr/#/az-database"
-
-        puts "\n^C to stop"
-        puts " "
-        begin
-          yield
-        rescue Interrupt
-          puts "Shutting down..."
-          raise Interrupt
+        solr.with_collection(name: "web-content", dir: File.join(solr_web_dir, "conf")) do
+          puts "\n#{environment.titlecase} solr server running:
+          catalog: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}
+          az-database: http://localhost:#{solr.port}/solr/#/az-database
+          web-content: http://localhost:#{solr.port}/solr/#/web-content"
+          
+          puts "\n^C to stop"
+          puts " "
+          begin
+            yield
+          rescue Interrupt
+            puts "Shutting down..."
+            raise Interrupt
+          end
         end
       end
     end
