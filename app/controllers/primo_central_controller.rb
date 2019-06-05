@@ -115,5 +115,4 @@ class PrimoCentralController < CatalogController
     flash[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
     super
   end
-
 end
