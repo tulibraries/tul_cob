@@ -6,7 +6,8 @@
   # the data-doc-id attribute is used by our JS that converts to a checkbox/label.
   -%>
 
-  <% unless controller_name == "databases" %>
+  <!-- Temporarily remove bookmark feature for articles (BL-912) -->
+  <% unless controller_name == "databases" || controller_name == "primo_central" %>
     <% unless bookmarked? document %>
 
       <%= form_tag( bookmark_path(document),
