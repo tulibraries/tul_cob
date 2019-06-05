@@ -11,7 +11,8 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
-          <% if config.key == :bookmark %>
+            <!-- Temporarily remove bookmark feature for articles (BL-912) -->
+          <% if config.key == :bookmark  && @document.class != PrimoCentralDocument %>
             <li class="<%= config.key %>" id="bookmark_button">
               <%= inner %>
             </li>
@@ -22,7 +23,8 @@
             <% end %>
           <% else %>
 
-            <% @sendto[config.key] = inner %>
+            <!-- Temporarily remove bookmark feature for articles (BL-912) -->
+            <% @sendto[config.key] = inner unless (config.key == :bookmark && @document.class == PrimoCentralDocument) %>
 
           <% end %>
         <% end %>
