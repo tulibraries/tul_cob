@@ -50,9 +50,11 @@ class DatabasesController < CatalogController
         title_t^10000
       ].join(" "),
       subject_qf: %w[
+        subject_t^1000000
         subject_facet^1000000
       ].join(" "),
       subject_pf: %w[
+        subject_t^1000000
         subject_facet^1000000
       ].join(" "),
       defType: "edismax",
@@ -67,7 +69,7 @@ class DatabasesController < CatalogController
       ps: "3",
       tie: "0.01",
       facet: "true",
-      # spellcheck: "false",
+      spellcheck: "false",
       sow: "false",
     }
 
