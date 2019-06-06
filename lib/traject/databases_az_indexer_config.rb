@@ -32,11 +32,21 @@ each_record do |record, context|
 end
 
 to_field "id", extract_json("$.id")
+
 to_field "format", ->(rec, acc) {
   types = rec.fetch("az_types", [])
-  types = types << { "name" => "Database" }
-  types.each { |type| acc << type["name"] }
+  types.each { |type| acc << type["name"] unless type["name"] == "Database" }
 }
+to_field "format_t", ->(rec, acc) {
+  types = rec.fetch("az_types", [])
+  types.each { |type| acc << type["name"] unless type["name"] == "Database" }
+}
+to_field "database_display", ->(rec, acc) {
+  types = rec.fetch("az_types", [])
+  types = types << { "name" => "Database" }
+  types.each { |type| acc << type["name"] if type["name"] == "Database" }
+}
+
 to_field "title_t", extract_json("$.name")
 to_field "title_sort", extract_json("$.name")
 to_field "alt_names_t", extract_json("$.alt_names")

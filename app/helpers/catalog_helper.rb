@@ -267,7 +267,7 @@ module CatalogHelper
 
   def database_type_links(args)
     args[:document][args[:field]].map do |type|
-      link_to(type.sub("— — ", "— "), "#{base_path}?f[format][]=#{CGI.escape type}")
+      link_to(type.sub("— — ", "— "), "#{base_path}?f[format][]=#{CGI.escape type}", class: "p-2")
     end
   end
 

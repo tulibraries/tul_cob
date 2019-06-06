@@ -26,6 +26,7 @@ class DatabasesController < CatalogController
         title_t^10000
         subject_facet^1000
         format^200
+        format_t^200
         note_t^100
         availability_facet^50
         text^25
@@ -35,6 +36,7 @@ class DatabasesController < CatalogController
         title_t^10000
         subject_facet^1000
         format^200
+        format_t^200
         note_t^100
         availability_facet^50
         text^25
@@ -86,6 +88,7 @@ class DatabasesController < CatalogController
     config.add_show_field "format", label: "Database Type", helper_method: :database_type_links, multi: true
     config.add_show_field "az_vendor_name_display", label: "Database Vendor"
     config.add_show_field "id", label: "Database Record ID"
+    config.add_show_field "database_display", show: false
 
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
@@ -103,7 +106,7 @@ class DatabasesController < CatalogController
       field.solr_parameters = { "spellcheck.dictionary": "subject" }
       field.qt = "search"
       field.solr_local_parameters = {
-        qf: "$subjec_qf",
+        qf: "$subject_qf",
         pf: "$subject_pf"
       }
     end
