@@ -106,13 +106,13 @@ class PrimoCentralController < CatalogController
 
   def index
     # Temporary override to add notice for BL-912
-    flash[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
+    flash.now[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
     super
   end
 
   def show
     # Temporary override to add notice for BL-912
-    flash[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
+    flash.now[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
     super
   end
 end
