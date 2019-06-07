@@ -22,8 +22,12 @@ class CatalogController < ApplicationController
 
   helper_method :browse_creator
   helper_method :display_duration
+
   rescue_from ::BlacklightRangeLimit::InvalidRange,
     with: :raise_bad_range_limit
+
+  rescue_from Blacklight::Exceptions::RecordNotFound,
+    with: :invalid_document_id_error
 
   configure_blacklight do |config|
     # default advanced config values
@@ -34,6 +38,9 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:fields_row_count] = 3
+
+    config.raw_endpoint.enabled = true
+
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -639,7 +646,6 @@ class CatalogController < ApplicationController
 
   ##
   # Overrides CatalogController.invalid_document_id_error
-  #
   # Overridden so that we can use our own 404 error handling setup.
   def invalid_document_id_error(exception)
     error_info = {

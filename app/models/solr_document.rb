@@ -8,8 +8,6 @@ class SolrDocument
   include JsonLogger
   include Diggable
 
-  use_extension(Blacklight::Solr::Document::RisExport)
-
   attr_accessor :logger
 
   use_extension(Blacklight::Solr::Document::RisExport)

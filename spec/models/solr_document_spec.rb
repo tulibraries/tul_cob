@@ -8,6 +8,7 @@ RSpec.describe SolrDocument, type: :model do
   it "handles Email" do
     expect(document).to respond_to(:to_email_text)
   end
+
   it "handles SMS" do
     expect(document).to respond_to(:to_sms_text)
   end
@@ -197,7 +198,52 @@ RSpec.describe SolrDocument, type: :model do
       it "should be false" do
         expect(document.purchase_order?).to be false
       end
-
     end
   end
+
+  describe "#export_as_ris" do
+      subject { SolrDocument.new(properties).export_as_ris }
+
+      context "For a standard MARC Record" do
+          let(:properties) do
+            {
+              "id" => "9618072",
+              "title_statement_display" => ["Book Title"],
+              "pub_date_display" => [
+                "2018"
+              ],
+              "date_copyright_display" => 2018,
+              "format" => [
+                "Book"
+              ],
+              "language_display" => [
+                "Korean"
+              ],
+              "call_number_display": [
+                "BQ2043.K6 T757 2008"
+              ]
+            }
+          end
+
+          it "Starts with a valid RIS Format" do
+            expect(subject).to match("TY  - BOOK\nTI  - Book Title\nY1  - 2018\nLA  - Korean\nCN  - BQ2043.K6 T757 2008\nER")
+          end
+
+          it "Contains title citation information" do
+            expect(subject).to include("TI  - Book Title")
+          end
+
+          it "Contains publication date information" do
+            expect(subject).to include("Y1  - 2018")
+          end
+
+          it "Contains language information" do
+            expect(subject).to include("LA  - Korean")
+          end
+
+          it "Contains call number information" do
+            expect(subject).to include("CN  - BQ2043.K6 T757 2008")
+          end
+        end
+    end
 end

@@ -1,8 +1,12 @@
 <div class="p-3">
-  <%= render :partial=>'/shared/flash_msg' %>
+  <%= render :partial=>"/shared/flash_msg" %>
 </div>
 
 
-<h4 class="error-header">The page you were looking for doesn't exist.</h4>
-<p>You may have mistyped the address or the page may have moved.</p>
-<p>If you are the application owner check the logs for more information.</p>
+<h4 class="error-header not-found py-2 text-center">
+  <%= t("blacklight.header_links.not_found") %>
+</h4>
+<p class="text-center">
+  <%= t("blacklight.errors.not_found_html", href: link_to(t("blacklight.errors.not_found_href"), t("blacklight.errors.not_found_link"))) %>
+  <%= link_to("new search", root_path) %>.
+</p>
