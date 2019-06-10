@@ -19,11 +19,38 @@ before_script:
 - RAILS_ENV=production bundle exec rake assets:precompile
 - RAILS_ENV=test bundle exec yarn
 - RAILS_ENV=test bundle exec rails webpacker:compile
-
 script:
 - bundle exec rubocop
 - RELEVANCE=y bundle exec rake ci
 - yarn test
+after_success:
+- true
+before_deploy:
+- pip install pipenv
+- pipenv install
+- openssl aes-256-cbc -K $encrypted_ffb341899730_key -iv $encrypted_ffb341899730_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
+- unzip .travis/deploy.zip -d .travis
+- mv .travis/.gritty_travis ~/.ssh/.gritty_travis
+- mv .travis/.conan_the_deployer ~/.ssh/.conan_the_deployer
+- eval "$(ssh-agent -s)"
+- chmod 600 ~/.ssh/.gritty_travis
+- chmod 600 ~/.ssh/.conan_the_deployer
+- echo -e "Host $QA_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
+- echo -e "Host $STAGE_DB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
+- echo -e "Host $STAGE_WEB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
+- echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly yes\n" >> ~/.ssh/config
+- ssh-add ~/.ssh/.gritty_travis
+- ssh-add ~/.ssh/.conan_the_deployer
+deploy:
+- provider: script
+  script: bash .travis/deploy-qa.sh
+  on:
+    branch: qa
+- provider: script
+  script: bash .travis/deploy-stage.sh
+  on:
+    branch: master
+
 notifications:
   slack:
     secure: "VTX5ZONrylHfzfd4B1AGWvCmUrRYNJ87/ZEQccBI/dYeQnTZUgGBB6rFaqHqGFgNZJNTiU31cwPULlFr4hUgXeO6sGBrjF9Q4n4WyJxXbdjp7TjJiAeOUsjGyhRa341SNi6FUVKUIusgSIVS3IwZO+nUMVIpajepGDn+E+ia29IglzC6ZyVCBohBwiHZ3cO24K0uB+gNwoe7Ff/93JUsl7VCv+dtBDSYzron2rjNN7vnp8xJ7EDeHW4QToVUCulOpQnlZcjXEdS91BhZFlEo7QE34I7P+1nmrnvIUGmAdMXwclLjbs7T+yT/2Xcw+UM7R88CJ6LB9EXtsXhYyG9cDMOcOMQsmRZikTJKLAZLY+d4pjwLmMPzrLA/mr/TNBNAQHkUlmfxx6YRvE7D2sndeJSf3GBvb+qd6wkqsUiZL88jdyOpQFgC1T2I61uJkmulx2IriLu/udb91c+zuSDG29gMXCv3eo1bXT4WyrGi/a0+nZvAN6dXx7vqz8ivXE3iAnb+sx/tjdc9rb7U4QCe5bgJbZT2vg2gh8lk/8Q2pNACdw9VWd+0ENxW7jO7pNmKVzM6/qX5jC2OtkPYWfzij4ghOwec2xs+ZL31WLfOfyRKcU+nIAhoq5+6icRh5Z5NG07/I6Qu6Jw6h+XWsiPn8MGxKe9K1ifDuDJJhyGdBHg="
