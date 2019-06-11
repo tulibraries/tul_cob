@@ -74,9 +74,9 @@ class DatabasesController < CatalogController
     }
 
     # Facet fields
-    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: true, collapse: false
-    config.add_facet_field "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false
-    config.add_facet_field "availability_facet", label: "Access", home: true
+    config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
+    config.add_facet_field "az_format", field: "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false
+    config.add_facet_field "az_availability_facet", field: "availability_facet", label: "Access", home: true
 
     # Index fields
     config.add_index_field "format", label: "Database Type", raw: true, helper_method: :separate_formats
