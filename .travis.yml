@@ -26,10 +26,10 @@ script:
 after_success:
 - true
 before_deploy:
-- pip install --upgrade pip
+- pyenv local 3.6.3
 - pip install pipenv
 - pipenv install
-- openssl aes-256-cbc -K $encrypted_ffb341899730_key -iv $encrypted_ffb341899730_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
+- openssl aes-256-cbc -K $encrypted_b2400a7690e2_key -iv $encrypted_b2400a7690e2_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
 - unzip .travis/deploy.zip -d .travis
 - mv .travis/.gritty_travis ~/.ssh/.gritty_travis
 - mv .travis/.conan_the_deployer ~/.ssh/.conan_the_deployer
