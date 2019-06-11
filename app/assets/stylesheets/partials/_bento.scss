@@ -32,7 +32,7 @@
 
 	a {
 		color: $bento-header;
-		margin-left: -5px;
+		margin-left: -0.3125rem;
 	}
 }
 
@@ -45,7 +45,7 @@
 
 	@media(min-width: 768px) {
 	 	flex-direction: column;
-	 	max-height: 800px;
+	 	max-height: 43.75rem;
 	}
 }
 
