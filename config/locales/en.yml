@@ -136,7 +136,7 @@ en:
       nice_name: "Journals"
     more: "Books & Media"
     databases: "Databases"
-    resource_types_header: "View all resource types in this search"
+    resource_types_header: "View additional resource types"
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, and %{journals}."
