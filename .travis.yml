@@ -5,10 +5,10 @@ cache:
     - tmp/solr_dl/
 rvm:
 - 2.4.1
+dist: xenial
 env:
 - TZ=America/New_York
-jdk:
-- oraclejdk8
+jdk: openjdk11
 before_script:
 - cp config/secrets.yml.example config/secrets.yml
 - cp config/alma.yml.example config/alma.yml
@@ -26,7 +26,10 @@ script:
 after_success:
 - true
 before_deploy:
-- pyenv local 3.6.3
+- rm -fR $PYENV_ROOT
+- curl https://pyenv.run | bash
+- pyenv install 3.7.5
+- pyenv local 3.7.5
 - pip install pipenv
 - pipenv install
 - openssl aes-256-cbc -K $encrypted_b2400a7690e2_key -iv $encrypted_b2400a7690e2_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
@@ -40,6 +43,7 @@ before_deploy:
 - echo -e "Host $STAGE_DB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
 - echo -e "Host $STAGE_WEB_SERVER\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/.conan_the_deployer\n" >> ~/.ssh/config
 - echo -e "HOST gitserv\n\tHostname remote.server.com\n\tIdentityFile ~/.ssh/.gritty_travis\n\tIdentitiesOnly yes\n" >> ~/.ssh/config
+- echo -e "HOST github.com\n\tIdentityFile ~/.ssh/.gritty_travis\n" >> ~/.ssh/config
 - ssh-add ~/.ssh/.gritty_travis
 - ssh-add ~/.ssh/.conan_the_deployer
 deploy:
