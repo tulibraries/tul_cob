@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "type": "exhibition",
+    "attributes": {
+      "label": "A Long Separation",
+      "updated_at": "2019-05-15T11:36:30.000-04:00",
+      "title": "A Long Separation",
+      "description": "People divided from family in North Korea since the Korean War",
+      "start_date": "2019-01-07",
+      "end_date": "2019-01-25",
+      "promoted_to_events": false
+    }
+  },
+  {
+    "id": "2",
+    "type": "exhibition",
+    "attributes": {
+      "label": "Test exhibit 2",
+      "updated_at": "2019-01-23T08:24:42.570-05:00",
+      "title": "Test exhibit 2",
+      "description": "SLkdjf",
+      "start_date": "2019-02-01",
+      "end_date": "2019-02-28",
+      "promoted_to_events": null
+    }
+  }
+]

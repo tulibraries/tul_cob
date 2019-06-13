@@ -1,0 +1,15 @@
+[
+  {
+    "id": "1",
+    "type": "blog",
+    "attributes": {
+      "label": "Library news",
+      "updated_at": "2019-05-16T12:31:53.405-04:00",
+      "title": "Library news",
+      "base_url": "https://sites.temple.edu/librarynews/",
+      "feed_path": "feed",
+      "last_sync_date": "2019-05-16T12:31:53.404-04:00",
+      "public_status": true
+    }
+  }
+]
