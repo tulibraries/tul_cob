@@ -5,10 +5,9 @@ cache:
     - tmp/solr_dl/
 rvm:
 - 2.4.1
-dist: xenial
 env:
 - TZ=America/New_York
-jdk: openjdk11
+jdk: oraclejdk8
 before_script:
 - cp config/secrets.yml.example config/secrets.yml
 - cp config/alma.yml.example config/alma.yml
