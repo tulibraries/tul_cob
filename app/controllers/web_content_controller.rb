@@ -23,7 +23,14 @@ class WebContentController < CatalogController
     # Index fields
     config.add_index_field "web_job_title_display", label: "Job Title"
     config.add_index_field "web_description_display", label: "Description"
+    config.add_index_field "web_email_address_display", label: "Email Address"
     config.add_index_field "web_phone_number_display", label: "Phone Number"
+    config.add_index_field "web_specialties_display", label: "Specialties"
+    config.add_index_field "web_subject_display", label: "Subject"
+    config.add_index_field "web_group_type_display", label: "Group Type"
+    config.add_index_field "web_blurb_display", label: "Blurb"
+    config.add_index_field "web_tags_display", label: "Tags"
+    config.add_index_field "web_link_display", label: "Link"
 
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"

@@ -35,10 +35,21 @@ to_field "id", ->(rec, acc) {
 
 to_field "web_category_facet", extract_json("$.type")
 to_field "web_title_display", extract_json("$.attributes.label")
-to_field "web_phone_number_display", extract_json("$.attributes.phone_number")
-to_field "web_photo_display", extract_json("$.attributes.thumbnail_image")
-to_field "web_url_display", extract_json("$.links.self")
 
+# Same issue as descriptions.  Should only appear for people, not buildings.
+to_field "web_phone_number_display", extract_json("$.attributes.phone_number")
+
+to_field "web_photo_display", extract_json("$.attributes.thumbnail_image")
+to_field "web_subject_display", extract_json("$.attributes.subject")
+
+# This doesn't seem to work.  Using the web_base_url_display is currently working
+# Not sure if the links were changed in Manifold
+# Which solution is the one we want to use?
+to_field "web_url_display", extract_json("$.links.self")
+to_field "web_base_url_display", extract_json("$.attributes.base_url")
+
+# This attribute isn't displayed for every entity that contains it
+# What is the best way to suppress this for entities that don't use it?
 to_field "web_description_display", ->(rec, acc) {
   if rec.dig("attributes", "description")
     acc << Nokogiri::HTML(rec.dig("attributes", "description")).text
@@ -47,6 +58,16 @@ to_field "web_description_display", ->(rec, acc) {
 
 #person specific
 to_field "web_job_title_display", extract_json("$.attributes.job_title")
+to_field "web_email_address_display", extract_json("$.attributes.email_address")
+to_field "web_specialties_display", extract_json("$.attributes.specialties")
+
+#group specific
+to_field "web_group_type_display", extract_json("$.attributes.group_type")
+
+#highlight specific
+to_field "web_blurb_display", extract_json("$.attributes.blurb")
+to_field "web_tags_display", extract_json("$.attributes.tags")
+to_field "web_link_display", extract_json("$.attributes.link")
 
 # we need update times from the JSON responses.
 # Ticketed in MAN-242
