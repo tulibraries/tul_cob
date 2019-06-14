@@ -15,13 +15,18 @@ class WebContentController < CatalogController
           * ].join(",")
     }
 
-    config.index.title_field = "title_display"
+    config.index.title_field = "web_title_display"
 
     # Facet fields
-    config.add_facet_field "web_category_facet", label: "Category", limit: true, collapse: false
+    config.add_facet_field "web_type_pivot_facet",
+      label: "Content Type",
+      collapse: false,
+      helper_method: :pluralize_types,
+      pivot: ["web_type_pivot_facet", "web_content_type_facet"]
 
     # Index fields
     config.add_index_field "web_job_title_display", label: "Job Title"
+    config.add_index_field "web_base_url_display", label: "Link"
     config.add_index_field "web_description_display", label: "Description"
     config.add_index_field "web_email_address_display", label: "Email Address"
     config.add_index_field "web_phone_number_display", label: "Phone Number"

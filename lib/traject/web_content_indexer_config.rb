@@ -29,11 +29,52 @@ settings do
   provide "solr_writer.max_skipped", -1
 end
 
+WEBSITE_TYPES = /building|space|service|policy|collection/i
+
 to_field "id", ->(rec, acc) {
   acc << "#{rec['type']}_#{rec['id']}"
 }
 
-to_field "web_category_facet", extract_json("$.type")
+to_field "web_type_pivot_facet", ->(rec, acc) {
+  if rec.fetch("type").match(WEBSITE_TYPES)
+    acc << "Website"
+  end
+
+  if rec.fetch("type") == "person"
+    acc << "People/Staff Directory"
+  end
+
+  if rec.fetch("type") == "event" || rec.fetch("type") == "exhibition"
+    acc << "Events and Exhibits"
+  end
+
+  if rec.fetch("type") == "finding_aid"
+    acc << "Finding Aids"
+  end
+}
+
+# Pivots are working properly when we are just listing the Type
+# Specialties and Subjects are coming in as arrays, so still need to work on those
+# Should we pluralize types?  How to do that for only types and not other info in facet?
+to_field "web_content_type_facet", ->(rec, acc) {
+  if rec.fetch("type").match(WEBSITE_TYPES)
+    acc << rec.fetch("type")
+  end
+
+  # if rec.fetch("type") == "person"
+  #   specialties = rec.dig("attributes", "specialties")
+  #   acc << specialties.reject(&:empty?).map { |specialty| specialty }.uniq.join(", ") unless specialties.nil?
+  # end
+  #
+  if rec.fetch("type") == "event" || rec.fetch("type") == "exhibition"
+    acc << rec.fetch("type")
+  end
+
+  # if rec.fetch("type") == "finding_aid"
+  #   acc << rec.dig("attributes", "subject")
+  # end
+}
+
 to_field "web_title_display", extract_json("$.attributes.label")
 
 # Same issue as descriptions.  Should only appear for people, not buildings.

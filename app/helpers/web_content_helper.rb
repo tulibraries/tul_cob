@@ -9,4 +9,8 @@ module WebContentHelper
   def html_safe(options = {})
     options[:value].join("").html_safe
   end
+
+  def pluralize_types(type)
+    type.titlecase
+  end
 end
