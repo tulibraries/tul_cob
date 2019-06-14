@@ -8,6 +8,7 @@ rvm:
 env:
 - TZ=America/New_York
 jdk: oraclejdk8
+
 before_script:
 - cp config/secrets.yml.example config/secrets.yml
 - cp config/alma.yml.example config/alma.yml
@@ -27,8 +28,9 @@ after_success:
 before_deploy:
 - rm -fR $PYENV_ROOT
 - curl https://pyenv.run | bash
-- pyenv install 3.7.5
-- pyenv local 3.7.5
+- sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+- pyenv install -v 3.6.6
+- pyenv local 3.6.6
 - pip install pipenv
 - pipenv install
 - openssl aes-256-cbc -K $encrypted_b2400a7690e2_key -iv $encrypted_b2400a7690e2_iv -in .travis/deploy.zip.enc -out .travis/deploy.zip -d
