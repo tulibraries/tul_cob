@@ -14,9 +14,9 @@ module BlacklightMarcHelper
     when "catalog"
       refworks_export_url(url: solr_document_url(opts[:id], format: :refworks_marc_txt))
     when "books"
-      refworks_export_url(url: solr_book_document_path(opts[:id], format: :refworks_marc_txt))
+      refworks_export_url(url: solr_book_document_url(opts[:id], format: :refworks_marc_txt))
     when "journals"
-      refworks_export_url(url: solr_journal_document_path(opts[:id], format: :refworks_marc_txt))
+      refworks_export_url(url: solr_journal_document_url(opts[:id], format: :refworks_marc_txt))
     end
   end
 
