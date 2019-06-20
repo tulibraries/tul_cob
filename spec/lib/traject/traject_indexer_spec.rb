@@ -132,6 +132,7 @@ RSpec.describe Traject::Macros::Custom do
 
   let(:file) { File.new("spec/fixtures/marc_files/#{path}") }
 
+  let(:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
   subject { test_class.new }
 
@@ -386,8 +387,6 @@ RSpec.describe Traject::Macros::Custom do
   end
 
   context "electronic resource macros" do
-    let(:path) { "url_field_examples.xml" }
-
     describe "#extract_availability" do
       before(:each) do
         subject.instance_eval do
@@ -400,37 +399,87 @@ RSpec.describe Traject::Macros::Custom do
       end
 
       context "856 fields with an indicator 1 = 7 are NOT Online" do
+        let(:record_text) { '
+  <record xmlns="http://www.loc.gov/MARC21/slim">
+    <!-- 12. Indicator 7 does not map to Online  -->
+    <datafield ind1="7" ind2=" " tag="856">
+      <subfield code="u">http://www.access.gpo.gov/congress/commissions/secrecy/index.html</subfield>
+      <subfield code="2">http</subfield>
+    </datafield>
+    <datafield ind1="7" ind2=" " tag="856">
+      <subfield code="2">http</subfield>
+      <subfield code="z">    Adobe Acrobat reader required to view individual sections of publication    </subfield>
+      <subfield code="z">    URL accesses contents page of publication, from which link may be made to the individual sections    </subfield>
+    </datafield>
+  </record>
+                            ' }
         it "only indicator1 value 4 are included in Online records" do
-          expect(subject.map_record(records[12])).to_not eq("Online")
+          expect(subject.map_record(record)).to_not eq("Online")
         end
       end
 
       context "856 fields with an indicator 1 = 4 with no subfield u" do
+        let(:record_text) { '
+  <record>
+    <!-- 13. ARCHIVE_IT_LINKS arent included in Online Availability  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">archive</subfield>
+    </datafield>
+  </record>
+                            ' }
         it "does not throw error with nil subfield u" do
-          expect(subject.map_record(records[13])).to_not eq("Online")
+          expect(subject.map_record(record)).to_not eq("Online")
         end
       end
 
       context "856 fields with correct indactors are Online" do
+        let(:record_text) { '
+  <record>
+    <!-- 14. Indicator1= 4 and indicator2 = NOT 2 maps to Online  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">Adobe Acrobat reader required to view</subfield>
+      <subfield code="u">http://www.access.gpo.gov/congress/commissions/secrecy/index.html</subfield>
+    </datafield>
+  </record>
+                            ' }
         it "indicator1 = 4 and indicator2 = NOT 2 maps to Online" do
-          expect(subject.map_record(records[14])).to eq("availability_facet" => ["Online"])
+          expect(subject.map_record(record)).to eq("availability_facet" => ["Online"])
         end
       end
 
       context "records with a PRT subfield 9 that equals Not Available are NOT Online" do
+        let(:record_text) { '
+<record>
+<!-- 16. PRT Subfield 9 == "Not Available"  -->
+  <datafield tag="245" ind1="4" ind2="2">
+    <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+  </datafield>
+  <datafield tag="PRT">
+    <subfield code="9">Not Available</subfield>
+  </datafield>
+</record>
+                            ' }
         it "does not map to Online" do
-          expect(subject.map_record(records[16])).to_not eq("availability_facet" => ["Online"])
+          expect(subject.map_record(record)).to_not eq("availability_facet" => ["Online"])
         end
       end
 
       context "Archive-it links are NOT Online" do
+        let(:record_text) { '
+  <record>
+    <!-- 9. ARCHIVE_IT_LINKS arent included in Online Availability  -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">archive</subfield>
+      <subfield code="u">https://archive-it.org/collections/4487</subfield>
+    </datafield>
+  </record>
+                            ' }
         it "does not include ARCHIVE_IT_LINKS in Online records" do
-          expect(subject.map_record(records[9])).to_not eq("availability_facet" => ["Online"])
+          expect(subject.map_record(record)).to_not eq("availability_facet" => ["Online"])
         end
       end
 
       describe "#extract_availability(purchase on demand)" do
-        let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
         before do
           subject.instance_eval do
@@ -478,6 +527,7 @@ RSpec.describe Traject::Macros::Custom do
     end
 
     describe "#extract_electronic_resource" do
+
       before(:each) do
         subject.instance_eval do
           to_field "electronic_resource_display", extract_electronic_resource
@@ -489,23 +539,58 @@ RSpec.describe Traject::Macros::Custom do
       end
 
       context "Neither PRT nor 856 fields are present" do
+        let(:record_text) { "<record></record>" }
+
         it "does not map a field to electronic_resource_display" do
-          expect(subject.map_record(records[0])).to eq({})
+          expect(subject.map_record(record)).to eq({})
         end
       end
 
       context "Only PRT fields are present" do
         context "single PRT field to electronic_resource_display" do
+          let(:record_text) { '
+  <record>
+    <!-- 1. Only singele PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+    </datafield>
+  </record>
+          ' }
           it "maps a single PRT field" do
-            expect(subject.map_record(records[1])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
 
         context "multiple PRT fields present" do
+          let(:record_text) { '
+  <record>
+    <!-- 2. Only multiple PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">bar</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+  </record>
+          ' }
           it "maps a multiple PRT fields to electronic_resource_display" do
-            expect(subject.map_record(records[2])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [
                 { portfolio_id: "foo", availability: "Available" }.to_json,
                 { portfolio_id: "bar", availability: "Not Available" }.to_json,
@@ -517,8 +602,17 @@ RSpec.describe Traject::Macros::Custom do
 
       context "Only 856 fields are present" do
         context "single 856 field (ind1 = 4; ind2 = not 2) and no exceptions" do
+          let(:record_text) { '
+  <record>
+    <!-- 3. Only single 856 field (no exception) -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">foo</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+          ' }
           it "maps a single 856 field to electronic_resource_display" do
-            expect(subject.map_record(records[3])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [
                 { title: "foo", url: "http://foobar.com" }.to_json,
               ]
@@ -527,8 +621,25 @@ RSpec.describe Traject::Macros::Custom do
         end
 
         context "multiple 856 fields (ind1=4; ind2 not 2) and no exceptions" do
+          let(:record_text) { '
+  <record>
+    <!-- 4. Only multiple 856 fields (no exceptions) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">z</subfield>
+      <subfield code="3">3</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="y">y</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
           it "maps multiple 856 fields to electronic_resource_display" do
-            expect(subject.map_record(records[4])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [
                 { title: "z 3", url: "http://foobar.com" }.to_json,
                 { title: "y", url: "http://foobar.com" }.to_json,
@@ -539,29 +650,78 @@ RSpec.describe Traject::Macros::Custom do
         end
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with exception" do
+          let(:record_text) { '
+  <record>
+    <!-- 5. Only single 856 field (with exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">book review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
           it "does not map a field to electronic_resource_display" do
-            expect(subject.map_record(records[5])).to eq({})
+            expect(subject.map_record(record)).to eq({})
           end
         end
 
         context "multiple 856 fields (ind1 = 4; ind2 = not 2) with exceptions" do
+          let(:record_text) { '
+  <record>
+  <!-- 15. Finding aid and more links test record  -->
+  <datafield tag="245" ind1="4" ind2="2">
+    <subfield code="a">Camp Kennebec Alumni Collection, 1910-2016</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="2">
+    <subfield code="3">View a description and list of collection contents in the online finding aid.</subfield>
+    <subfield code="u">http://library.temple.edu/collections/scrc/camp-kennebec-alumni</subfield>
+  </datafield>
+  <datafield tag="856" ind1="4" ind2="0">
+    <subfield code="3">View preserved website versions on Archive-It.</subfield>
+    <subfield code="u">https://www.archive-it.org/collections/4280</subfield>
+  </datafield>
+</record>
+                             '}
           it "does not map a field to electronic_resource_display" do
-            expect(subject.map_record(records[15])).to eq({})
+            expect(subject.map_record(record)).to eq({})
           end
         end
       end
 
       context "Both PRT and 856 fields are present" do
+        let(:record_text) { '
+  <record>
+    <!-- 7. PRT field and 856 field (with exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">BOOK review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                            ' }
         context "856 field has exception" do
           it "only maps the PRT field to electronic_resource_display" do
-            expect(subject.map_record(records[7])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
         end
         context "856 has no exception" do
+          let(:record_text) { '
+  <record>
+    <!-- 8. PRT field and 856 field (no exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">bar</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
           it "only maps the PRT field to electronic_resource_display" do
-            expect(subject.map_record(records[8])).to eq(
+            expect(subject.map_record(record)).to eq(
               "electronic_resource_display" => [ { portfolio_id: "foo" }.to_json ]
             )
           end
@@ -570,6 +730,7 @@ RSpec.describe Traject::Macros::Custom do
     end
 
     describe "#extract_url_more_links" do
+
       before(:each) do
         subject.instance_eval do
           to_field "url_more_links_display", extract_url_more_links
@@ -581,41 +742,92 @@ RSpec.describe Traject::Macros::Custom do
       end
 
       context "Neither PRT nor 856 fields are present" do
+        let(:record_text) { "<record></record>" }
+
         it "it does not map a url_more_links_display" do
-          expect(subject.map_record(records[0])).to eq({})
+          expect(subject.map_record(record)).to eq({})
         end
       end
 
       context "Only a PRT field is present" do
         context "single PRT field" do
+          let(:record_text) { '
+  <record>
+    <!-- 1. Only single PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+    </datafield>
+  </record>
+          ' }
           it "does not map a field to url_more_links_display" do
-            expect(subject.map_record(records[1])).to eq({})
+            expect(subject.map_record(record)).to eq({})
           end
         end
       end
 
       context "Only 856 field is present" do
         context "single 856 field (ind1 = 4; ind2 = not 2) with no exceptions" do
+          let(:record_text) { '
+  <record>
+    <!-- 3. Only single 856 field (no exception) -->
+    <datafield tag="856" ind1="4" ind2="0">
+      <subfield code="z">foo</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+          ' }
           it "maps a single 856 field to url_more_links_display" do
-            expect(subject.map_record(records[3])).to eq({})
+            expect(subject.map_record(record)).to eq({})
           end
         end
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with archive-it exception" do
+          let(:record_text) { '
+  <record>
+    <!-- 10. Only single 856 field (with archive-it exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">Archive</subfield>
+      <subfield code="u">http://archive-it.org/collections/4222</subfield>
+    </datafield>
+  </record>
+  <record>
+                              ' }
           it "maps a single 856 field to url_more_links_display" do
-            expect(subject.map_record(records[10])).to eq("url_more_links_display" => [ { title: "Archive", url: "http://archive-it.org/collections/4222" }.to_json ])
+            expect(subject.map_record(record)).to eq("url_more_links_display" => [ { title: "Archive", url: "http://archive-it.org/collections/4222" }.to_json ])
           end
         end
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with temple and scrc should not map to more_links" do
+          let(:record_text) { '
+  <record>
+    <!-- 11. Links with temple url and scrc map to url_finding_aid_display -->
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="z">Finding aid</subfield>
+      <subfield code="u">http://library.temple.edu/scrc</subfield>
+    </datafield>
+  </record>
+                              ' }
           it "does not include Temple SCRC resources in url_more_links_display" do
-            expect(subject.map_record(records[11])).to eq({})
+            expect(subject.map_record(record)).to eq({})
           end
         end
 
         context "single 856 field (ind1 = 4; ind2 = not 2) with exceptions" do
+          let(:record_text) { '
+  <record>
+    <!-- 5. Only single 856 field (with exception) -->
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">book review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
           it "maps a single 856 field to url_more_links_display" do
-            expect(subject.map_record(records[5])).to eq(
+            expect(subject.map_record(record)).to eq(
               "url_more_links_display" => [ { title: "book review", url: "http://foobar.com" }.to_json ],
             )
           end
@@ -625,23 +837,44 @@ RSpec.describe Traject::Macros::Custom do
 
       context "Both PRT and 856 fields are present" do
         context "856 field has exception" do
-          it "only maps the PRT field to url_more_links_display" do
-            expect(subject.map_record(records[7])).to eq(
-              "url_more_links_display" => [ { title: "BOOK review", url: "http://foobar.com" }.to_json ]
-            )
+          let(:record_text) { '
+  <record>
+    <!-- 7. PRT field and 856 field (with exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">BOOK review</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
+          it "does not map either field" do
+            expect(subject.map_record(record)).to eq({})
           end
         end
         context "856 has no exception" do
-          it "only maps the PRT field to url_more_links_display" do
-            expect(subject.map_record(records[8])).to eq(
-              "url_more_links_display" => [ { title: "bar", url: "http://foobar.com" }.to_json ]
-            )
+          let(:record_text) { '
+  <record>
+    <!-- 8. PRT field and 856 field (no exception)  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+    </datafield>
+    <datafield tag="856" ind1="4" ind2="1">
+      <subfield code="z">bar</subfield>
+      <subfield code="u">http://foobar.com</subfield>
+    </datafield>
+  </record>
+                              ' }
+          it "does not map either the PRT or the 856 field (link will be captured by )" do
+            expect(subject.map_record(record)).to eq({})
           end
         end
       end
     end
 
     describe "#extract_url_finding_aid" do
+
       before(:each) do
         subject.instance_eval do
           to_field "url_finding_aid_display", extract_url_finding_aid
@@ -653,12 +886,23 @@ RSpec.describe Traject::Macros::Custom do
       end
 
       context "856 field includes temple and scrc" do
+        let(:record_text) { '
+  <record>
+    <!-- 11. Links with temple url and scrc map to url_finding_aid_display -->
+    <datafield tag="856" ind1="4" ind2="2">
+      <subfield code="z">Finding aid</subfield>
+      <subfield code="u">http://library.temple.edu/scrc</subfield>
+    </datafield>
+  </record>
+                            ' }
+
         it "it does not map to url_finding_aid_display " do
-          expect(subject.map_record(records[11])).to eq(
+          expect(subject.map_record(record)).to eq(
             "url_finding_aid_display" => [ { title: "Finding aid", url: "http://library.temple.edu/scrc" }.to_json ])
         end
       end
     end
+
 
     describe "#sort_electronic_resource" do
       before(:each) do
@@ -672,8 +916,30 @@ RSpec.describe Traject::Macros::Custom do
       end
 
       context "multiple PRT fields present" do
+        let(:record_text) { '
+  <record>
+    <!-- 2. Only multiple PRT field  -->
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">foo</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield tag="PRT" ind1=" " ind2=" ">
+      <subfield code="a">bar</subfield>
+      <subfield code="b">https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?u.ignore_date_coverage=true&amp;rft.mms_id=991026913959703811</subfield>
+      <subfield code="f">Access full text online.</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="8">53377910870003811</subfield>
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+  </record>
+                            ' }
+
         it "reverses the order of multipe PRT fields" do
-          expect(subject.map_record(records[2])).to eq(
+          expect(subject.map_record(record)).to eq(
             "url_more_links_display" => [
                 { portfolio_id: "bar", availability: "Not Available" }.to_json,
                 { portfolio_id: "foo", availability: "Available" }.to_json,
@@ -998,7 +1264,6 @@ RSpec.describe Traject::Macros::Custom do
   end
 
   describe "#extract_work_access_point" do
-    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
     before do
       subject.instance_eval do
@@ -1172,7 +1437,6 @@ RSpec.describe Traject::Macros::Custom do
   end
 
   describe "#extract_purchase_order" do
-    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
     before do
       subject.instance_eval do
@@ -1281,7 +1545,6 @@ RSpec.describe Traject::Macros::Custom do
   end
 
   describe "#extract_update_date" do
-    let (:record) { MARC::XMLReader.new(StringIO.new(record_text)).first }
 
     before do
       stub_const("ENV", ENV.to_hash.merge("SOLR_DISABLE_UPDATE_DATE_CHECK" => "false"))

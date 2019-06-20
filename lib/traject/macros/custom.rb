@@ -254,6 +254,11 @@ module Traject
 
       def extract_url_more_links
         lambda { |rec, acc|
+          # Short circuit if PRT field present.
+          if rec.fields("PRT").present?
+            return acc
+          end
+
           rec.fields("856").each do |f|
             label = url_label(f["z"], f["3"], f["y"])
             unless f["u"].nil?
