@@ -30,6 +30,7 @@ class DatabasesController < CatalogController
         note_t^100
         availability_facet^50
         text^25
+        id
       ].join(" "),
       pf: %w[
         alt_names_t^100000
@@ -90,7 +91,7 @@ class DatabasesController < CatalogController
     config.add_show_field "format", label: "Database Type", helper_method: :database_type_links, multi: true
     config.add_show_field "az_vendor_name_display", label: "Database Vendor"
     config.add_show_field "id", label: "Database Record ID"
-    config.add_show_field "database_display", show: false
+    config.add_show_field "database_display", if: false
 
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
@@ -117,6 +118,10 @@ class DatabasesController < CatalogController
     config.add_sort_field "score desc, title_sort asc", label: "relevance"
     config.add_sort_field "title_sort asc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc", label: "title (Z to A)"
+
+    # Remove show doc actions.
+    config.show.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
+
   end
 
   def join(args)

@@ -7,7 +7,7 @@
   -%>
 
   <!-- Temporarily remove bookmark feature for articles (BL-912) -->
-  <% unless controller_name == "databases" || controller_name == "primo_central" %>
+  <% unless controller_name == "primo_central" %>
     <% unless bookmarked? document %>
 
       <%= form_tag( bookmark_path(document),
