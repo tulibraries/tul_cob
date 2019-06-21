@@ -61,18 +61,20 @@ to_field "web_content_type_facet", ->(rec, acc) {
     acc << rec.fetch("type")
   end
 
-  # if rec.fetch("type") == "person"
-  #   specialties = rec.dig("attributes", "specialties")
-  #   acc << specialties.reject(&:empty?).map { |specialty| specialty }.uniq.join(", ") unless specialties.nil?
-  # end
-  #
+  if rec.fetch("type") == "person"
+    specialties = rec.dig("attributes", "specialties")
+    acc.replace(specialties.reject(&:empty?).map { |specialty| specialty }) unless specialties.nil?
+  end
+
   if rec.fetch("type") == "event" || rec.fetch("type") == "exhibition"
     acc << rec.fetch("type")
   end
 
-  # if rec.fetch("type") == "finding_aid"
-  #   acc << rec.dig("attributes", "subject")
-  # end
+  if rec.fetch("type") == "finding_aid"
+    subjects = rec.dig("attributes", "subject")
+    acc.replace(subjects.reject(&:empty?).map { |subject| subject }) unless subjects.nil?
+
+  end
 }
 
 to_field "web_title_display", extract_json("$.attributes.label")
