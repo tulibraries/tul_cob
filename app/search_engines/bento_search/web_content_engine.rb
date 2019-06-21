@@ -16,7 +16,6 @@ module BentoSearch
     def url(helper)
       params = helper.params
       helper.search_web_content_path(q: params[:q])
-
     end
 
     def view_link(total = nil, helper)

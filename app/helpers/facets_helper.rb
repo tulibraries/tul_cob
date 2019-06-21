@@ -57,15 +57,15 @@ module FacetsHelper
   end
 
   def pivot_facet_in_params?(field, item)
-    if item and item.respond_to? :field
+    if item && item.respond_to?(:field)
       field = item.field
     end
 
-	  value = facet_value_for_facet_item(item)
+    value = facet_value_for_facet_item(item)
 
-    pivot_in_params = true if params[:f] and params[:f][field] and params[:f][field].include?(value)
+    pivot_in_params = true if params[:f] && params[:f][field] && params[:f][field].include?(value)
     if !item.items.blank?
-      item.items.each {|pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item)}
+      item.items.each { |pivot_item| pivot_in_params = true if pivot_facet_in_params?(pivot_item.field, pivot_item) }
     end
     pivot_in_params
   end
@@ -76,7 +76,7 @@ module FacetsHelper
 
   def pivot_facet_field_in_params?(pivot)
     in_params = false
-    pivot.each { |field| in_params = true if params[:f] and params[:f][field] }
+    pivot.each { |field| in_params = true if params[:f] && params[:f][field] }
     return in_params
   end
 end

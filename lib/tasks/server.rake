@@ -54,7 +54,7 @@ def run_solr(environment, solr_params)
           catalog: http://localhost:#{solr.port}/solr/#/blacklight-core-#{environment}
           az-database: http://localhost:#{solr.port}/solr/#/az-database
           web-content: http://localhost:#{solr.port}/solr/#/web-content"
-          
+
           puts "\n^C to stop"
           puts " "
           begin

@@ -19,7 +19,7 @@ class WebContentController < CatalogController
 
     # Facet fields
     config.add_facet_field "web_type_pivot_facet", show: false
-    config.add_facet_field "web_content_type_facet", show: false  
+    config.add_facet_field "web_content_type_facet", show: false
     config.add_facet_field "content_pivot_field",
       label: "Content Type",
       collapse: false,
