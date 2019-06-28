@@ -631,6 +631,9 @@ class CatalogController < ApplicationController
 
   ##
   # Render one index record (use as an ajax endpoint).
+  #
+  # Note: The reason this method is defined here and not in PrimoCentralController
+  # is that it actually gets called from bookmarks.
   # /
   def index_item
     count = (params["document_counter"] || 0 rescue 0).to_i
@@ -644,7 +647,7 @@ class CatalogController < ApplicationController
       doc = PrimoCentralDocument.new(
         "pnxId" => params["id"], "ajax" => false,
         "title" => params["id"],
-        "description" => "This article could not be found."
+        "error" => "This article could not be found."
 
       )
 

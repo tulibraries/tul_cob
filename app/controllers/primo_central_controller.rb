@@ -52,6 +52,8 @@ class PrimoCentralController < CatalogController
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
     config.add_index_field :date, label: "Year"
     config.add_index_field :availability
+    config.add_index_field :status
+    config.add_index_field :error
 
     # Facet fields
     config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code

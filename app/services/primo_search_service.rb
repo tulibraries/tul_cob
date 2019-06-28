@@ -25,7 +25,7 @@ class PrimoSearchService < Blacklight::SearchService
         []
       else
         (ids - docs.map { |doc| doc["pnxId"] })
-          .map { |id| PrimoCentralDocument.new("pnxId" => id, "ajax" => true) }
+          .map { |id| PrimoCentralDocument.new("pnxId" => id, "ajax" => true, "status" => "Attempting to reload...") }
       end
     end
 end
