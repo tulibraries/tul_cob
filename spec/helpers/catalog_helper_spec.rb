@@ -486,4 +486,47 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  # TODO: Remove if BL get upgraded, see details in helper method doc.
+  describe "#presenter" do
+    let(:document) { double }
+
+    before do
+      allow(helper).to receive(:index_presenter).and_return(:index_presenter)
+      allow(helper).to receive(:show_presenter).and_return(:show_presenter)
+      allow(helper).to receive(:action_name).and_return(action_name)
+    end
+
+    context "action is show" do
+      let(:action_name) { "show" }
+
+      it "uses the show presenter" do
+        expect(helper.presenter(document)).to eq(:show_presenter)
+      end
+    end
+
+    context "action is citation" do
+      let(:action_name) { "citation" }
+
+      it "uses the show presenter" do
+        expect(helper.presenter(document)).to eq(:show_presenter)
+      end
+    end
+
+    context "action is index" do
+      let(:action_name) { "index" }
+
+      it "uses the index presenter" do
+        expect(helper.presenter(document)).to eq(:index_presenter)
+      end
+    end
+
+    context "action is foo" do
+      let(:action_name) { "foo" }
+
+      it "uses the index presenter (by default)" do
+        expect(helper.presenter(document)).to eq(:index_presenter)
+      end
+    end
+  end
 end

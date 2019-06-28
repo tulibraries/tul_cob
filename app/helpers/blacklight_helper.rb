@@ -19,4 +19,20 @@ module BlacklightHelper
     raise "Unable to find #{controller_tracking_method} route helper. " \
     "Did you add `concerns :searchable` routing mixin to your `config/routes.rb`?"
   end
+
+  ##
+  # Overrides same method in Blacklight::BlacklightHelperBehavior.
+  #
+  # Makes index_presenter the default presenter.
+  #
+  # TODO: remove if when following PR gets merged.
+  # https://github.com/projectblacklight/blacklight/pull/2117
+  def presenter(document)
+    case action_name
+    when "show", "citation"
+      show_presenter(document)
+    else
+      index_presenter(document)
+    end
+  end
 end
