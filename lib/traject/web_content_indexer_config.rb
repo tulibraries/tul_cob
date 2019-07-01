@@ -1,23 +1,20 @@
 # frozen_string_literal: true
 
+$:.unshift "./lib" if !$:.include?("./lib")
 require "traject_plus"
 require "traject_plus/json_reader.rb"
 require "traject_plus/macros"
 require "traject_plus/macros/json"
+require "traject/macros/custom"
 require "nokogiri"
 
 extend TrajectPlus::Macros
 extend TrajectPlus::Macros::JSON
+extend Traject::Macros::Custom
 
 solr_config = YAML.load_file("config/blacklight.yml")[(ENV["RAILS_ENV"] || "development")]
 
 solr_url = ERB.new(solr_config["web_content_url"]).result
-
-def truncate(max = 300)
-  Proc.new do |rec, acc|
-    acc.map! { |s| s.length > max ? s[0...max] + " ..." : s unless s.nil? }
-  end
-end
 
 settings do
   provide "reader_class_name", "TrajectPlus::JsonReader"
@@ -53,8 +50,6 @@ to_field "web_type_pivot_facet", ->(rec, acc) {
   end
 }
 
-# Pivots are working properly when we are just listing the Type
-# Specialties and Subjects are coming in as arrays, so still need to work on those
 # Should we pluralize types?  How to do that for only types and not other info in facet?
 to_field "web_content_type_facet", ->(rec, acc) {
   if rec.fetch("type").match(WEBSITE_TYPES)
@@ -84,11 +79,6 @@ to_field "web_phone_number_display", extract_json("$.attributes.phone_number")
 
 to_field "web_photo_display", extract_json("$.attributes.thumbnail_image")
 to_field "web_subject_display", extract_json("$.attributes.subject")
-
-# This doesn't seem to work.  Using the web_base_url_display is currently working
-# Not sure if the links were changed in Manifold
-# Which solution is the one we want to use?
-to_field "web_url_display", extract_json("$.links.self")
 to_field "web_base_url_display", extract_json("$.attributes.base_url")
 
 # This attribute isn't displayed for every entity that contains it

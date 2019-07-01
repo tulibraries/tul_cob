@@ -18,12 +18,12 @@ class WebContentController < CatalogController
     config.index.title_field = "web_title_display"
 
     # Facet fields
-    config.add_facet_field "web_type_pivot_facet", show: false
-    config.add_facet_field "web_content_type_facet", show: false
+    config.add_facet_field "web_type_pivot_facet", label: "Content Type", show: false
+    config.add_facet_field "web_content_type_facet", label: "Categories", show: false
     config.add_facet_field "content_pivot_field",
       label: "Content Type",
       collapse: false,
-      helper_method: :pluralize_types,
+      helper_method: :capitalize_types,
       pivot: ["web_type_pivot_facet", "web_content_type_facet"]
 
     # Index fields

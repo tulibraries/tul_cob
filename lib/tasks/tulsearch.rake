@@ -7,17 +7,17 @@ namespace :fortytu do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
-      # fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
-      # Dir.glob(fixtures).sort.reverse.each do |file|
-      #   `traject -c #{Rails.configuration.traject_indexer} #{file}`
-      # end
-      # `traject -c #{Rails.configuration.traject_indexer} -x commit`
-      #
-      # az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      # `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
-      #
-      # `traject -c #{Rails.configuration.traject_indexer} -x commit`
-      # `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb -x commit`
+      fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
+      Dir.glob(fixtures).sort.reverse.each do |file|
+        `traject -c #{Rails.configuration.traject_indexer} #{file}`
+      end
+      `traject -c #{Rails.configuration.traject_indexer} -x commit`
+
+      az_url = Blacklight::Configuration.new.connection_config[:az_url]
+      `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
+
+      `traject -c #{Rails.configuration.traject_indexer} -x commit`
+      `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb -x commit`
 
       web_content_url = Blacklight::Configuration.new.connection_config[:web_content_url]
       fixtures = args.fetch(:filepath, "spec/fixtures/web_content_data/*.json")
