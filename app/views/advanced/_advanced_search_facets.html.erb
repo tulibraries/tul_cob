@@ -2,7 +2,7 @@
 <% facets_from_request(facet_field_names).each do |display_facet| %>
   <div class="form-group advanced-search-facet row align-items-center">
     <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
-      <%= facet_field_label(display_facet.name) %>
+      <%= facet_configuration_for_field(display_facet.name).label %>
     <% end %>
     <div class="col-sm-8">
       <%= content_tag(:select, multiple: true,
