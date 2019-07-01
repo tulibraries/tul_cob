@@ -1,0 +1,16 @@
+[
+  {
+    "id": "2",
+    "type": "space",
+    "attributes": {
+      "label": "Ginsburg Information Desk",
+      "updated_at": "2018-09-21T16:25:35.530-04:00",
+      "name": "Ginsburg Information Desk",
+      "description": "<p><span>The Information Desk provides access to all Ginsburg Library’s resources. Study rooms, books, technology and media can be checked out at the Information Desk.  IT and reference services are available as well</span></p>",
+      "hours": null,
+      "accessibility": "Anyone entering the Medical Education and Research Building must present ID at the main security desk before moving on to the library.  Alumni, guests and those in need of health-related information are welcome to use the Libraries, but must adhere to the visitor policy.  \r\n",
+      "phone_number": "2157072665",
+      "email": "hsccirc@temple.edu"
+    }
+  }
+]

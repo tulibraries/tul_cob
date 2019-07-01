@@ -1,0 +1,340 @@
+[
+  {
+    "id": "1",
+    "type": "group",
+    "attributes": {
+      "label": "Learning & Research Services (LRS)",
+      "updated_at": "2019-01-15T11:28:42.669-05:00",
+      "name": "Learning & Research Services (LRS)",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "2",
+    "type": "group",
+    "attributes": {
+      "label": "Library Administration",
+      "updated_at": "2018-10-17T12:59:17.283-04:00",
+      "name": "Library Administration",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "3",
+    "type": "group",
+    "attributes": {
+      "label": "Special Collections Research Center",
+      "updated_at": "2019-01-15T14:09:36.293-05:00",
+      "name": "Special Collections Research Center",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "4",
+    "type": "group",
+    "attributes": {
+      "label": "Library Technology Development",
+      "updated_at": "2018-10-22T16:16:19.693-04:00",
+      "name": "Library Technology Development",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "5",
+    "type": "group",
+    "attributes": {
+      "label": "Library Technology Services",
+      "updated_at": "2018-10-23T10:18:00.309-04:00",
+      "name": "Library Technology Services",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "7",
+    "type": "group",
+    "attributes": {
+      "label": "Access & Media Services",
+      "updated_at": "2018-10-23T10:43:14.374-04:00",
+      "name": "Access & Media Services",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "8",
+    "type": "group",
+    "attributes": {
+      "label": "Acquisitions & Collection Management",
+      "updated_at": "2018-10-23T11:11:33.357-04:00",
+      "name": "Acquisitions & Collection Management",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "9",
+    "type": "group",
+    "attributes": {
+      "label": "Ambler Campus Library Staff",
+      "updated_at": "2018-10-23T11:27:23.379-04:00",
+      "name": "Ambler Campus Library Staff",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "10",
+    "type": "group",
+    "attributes": {
+      "label": "Blockson Collection Staff",
+      "updated_at": "2018-10-23T15:44:10.177-04:00",
+      "name": "Blockson Collection Staff",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "11",
+    "type": "group",
+    "attributes": {
+      "label": "Health Sciences Library Staff",
+      "updated_at": "2018-10-23T16:07:37.575-04:00",
+      "name": "Health Sciences Library Staff",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "12",
+    "type": "group",
+    "attributes": {
+      "label": "LRS - Arts, Humanities & Media",
+      "updated_at": "2019-01-30T15:14:53.124-05:00",
+      "name": "LRS - Arts, Humanities & Media",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "13",
+    "type": "group",
+    "attributes": {
+      "label": "LRS - Business, Social Sciences & Education",
+      "updated_at": "2019-01-30T15:15:08.086-05:00",
+      "name": "LRS - Business, Social Sciences & Education",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "14",
+    "type": "group",
+    "attributes": {
+      "label": "LRS - Science, Technology, Engineering & Biomedical",
+      "updated_at": "2019-01-30T15:15:23.398-05:00",
+      "name": "LRS - Science, Technology, Engineering & Biomedical",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "15",
+    "type": "group",
+    "attributes": {
+      "label": "Metadata & Digitization Services",
+      "updated_at": "2019-01-03T08:30:17.153-05:00",
+      "name": "Metadata & Digitization Services",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "16",
+    "type": "group",
+    "attributes": {
+      "label": "Temple University Press",
+      "updated_at": "2019-01-07T09:10:47.769-05:00",
+      "name": "Temple University Press",
+      "description": "<p>Founded in 1969, Temple University Press chose as its inspiration Russell Conwell's vision of the university as a place of educational opportunity for the urban working class.</p>\r\n<p>The Press is perhaps best known as a publisher of books in the social sciences and the humanities, as well as books about Philadelphia and the Delaware Valley region. Temple was an early publisher of books in urban studies, housing and labor studies, organizational reform, social service reform, public religion, health care, and cultural studies. It became one of the first university presses to publish in what later became the fields of women's studies, ethnic studies—including Asian American and Latino studies, as well as African American Studies. Today, it continues in those fields and in newer ones such as disability studies, animal rights, criminology, gender and sexual identity, and sport and society. Temple's regional list encompasses scholarly books, coffee table books, and books about art, culture, birding, fishing, hiking, sports teams, and the urban and suburban environments.</p>",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "17",
+    "type": "group",
+    "attributes": {
+      "label": "Digital Scholarship Center Staff",
+      "updated_at": "2019-01-30T15:14:39.884-05:00",
+      "name": "Digital Scholarship Center Staff",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "18",
+    "type": "group",
+    "attributes": {
+      "label": "Collections Strategic Steering Team",
+      "updated_at": "2019-01-08T10:50:46.716-05:00",
+      "name": "Collections Strategic Steering Team",
+      "description": "<h2>Charge:</h2>\r\n<p>The Collections Strategy Steering Team (CSST) is a cross-functional group guiding Temple University Libraries (TUL) in its mission as a research library to build and maintain “collections and resources that support study, instruction, inquiry, and scholarship.”[1]</p>\r\n<p>CSST’s scope encompasses strategic guidance of collection building and stewardship activities, as well as relevant elements of discovery and access.</p>\r\n<p>To ensure the Libraries adapt to changing global and local trends in collecting, CSST will use evidence-based methods to assess current needs, anticipate future conditions, identify goals and priorities, and develop appropriate policies.</p>\r\n<p>CSST will solicit input from and facilitate conversations among stakeholders--promoting a deeper understanding of the collections context, and fostering informed, consistent decision-making by all involved.</p>\r\n<p><strong>_</strong><strong>_</strong><strong>_</strong><strong>_</strong><strong>_</strong><strong>_</strong>_</p>\r\n<p>[1] Strategic Guidance Principles, revised September 2017</p>",
+      "group_type": "Strategic Steering Team",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "19",
+    "type": "group",
+    "attributes": {
+      "label": "Outreach & Communication Strategy Steering Team",
+      "updated_at": "2019-01-08T10:38:02.108-05:00",
+      "name": "Outreach & Communication Strategy Steering Team",
+      "description": "<h2><strong>Charge:</strong></h2>\r\n<h3><strong>Team Purpose</strong></h3>\r\n<p>The Outreach and Communications SST is responsible for reviewing and assessing internal and external communications, overseeing the planning and execution of a wide range of intellectual and creative programming, and promoting library resources and services.</p>\r\n<p>We are committed to fostering communications within and beyond TULUP, supporting transparency between departments and administration, enhancing outreach and academic integration, and cultivating the TULUP’s role as a campus and community intellectual center.</p>\r\n<h3><strong>Supporting Strategic Actions</strong></h3>\r\n<p>The Outreach and Communications SST is a cross-functional group of library staff. As a team, we aim to support the following TULUP strategic actions:</p>\r\n<ul>\r\n<li>Enriching the environment for learning and student success;</li>\r\n<li>Developing programs, services, and resources to enhance intellectual productivity, scholarly infrastructure, new modes of research, and clinical care services;</li>\r\n<li>Seeking partners in innovation and experimentation to add value to library programs and to identify new avenues for economic support;</li>\r\n<li>Serving as a center of intellectual and cultural life;</li>\r\n<li>Sharing the vision, making connections, broadening support.</li>\r\n</ul>",
+      "group_type": "Strategic Steering Team",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "20",
+    "type": "group",
+    "attributes": {
+      "label": "Library Outreach and Communications",
+      "updated_at": "2019-01-08T10:41:10.669-05:00",
+      "name": "Library Outreach and Communications",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "21",
+    "type": "group",
+    "attributes": {
+      "label": "Research Data Services Strategic Steering Team",
+      "updated_at": "2019-01-08T10:46:54.211-05:00",
+      "name": "Research Data Services Strategic Steering Team",
+      "description": "<h2>Charge: </h2>\r\n<p>Temple University Libraries facilitates the discovery, use, dissemination, and preservation of data for intellectual pursuits by coordinating efforts within the library system and collaborating with other units across campus.</p>\r\n<p>The Research Data Services Strategic Steering Team (RDS SST) is charged with establishing goals and objectives related to research data needs in the Temple community. The team creates an overall strategy and a prioritized action plan to develop research data services at the Temple University Libraries. RDS SST oversees the implementation of its recommendations by collaborating with partners in the Libraries and across campus. The team proposes both methodological and technological solutions. RDS SST strives to develop and maintain a  comprehensive awareness of existing data needs and services around campus. Data considered include datasets generated by or used in the research process and datasets used for pedagogical purposes. RDS SST facilitates services across the entire data life cycle, including user education, support for grant requirements and data publication. RDS SST fosters an environment that values data literacy and data skills among TU Libraries staff. Recognizing the dynamic nature of this domain, the overall strategy, action plan and implementation methods will be regularly reviewed by the RDS SST and are expected to evolve over time.</p>",
+      "group_type": "Strategic Steering Team",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "22",
+    "type": "group",
+    "attributes": {
+      "label": "Scholarly Communication Strategic Steering Team",
+      "updated_at": "2019-01-08T10:49:56.664-05:00",
+      "name": "Scholarly Communication Strategic Steering Team",
+      "description": "<h2>Charge:</h2>\r\n<h3>Principles</h3>\r\n<p>Scholarly communication describes the ways that faculty and students produce and share their research and creative works, engaging with a wider community in order to advance knowledge and the broader exchange of ideas.</p>\r\n<p>The introduction of new technologies has made sharing scholarly materials easier. However, due to the rising costs of academic publications, researchers and the public are often unable to access content locked behind paywalls, limiting those who can actively engage in scholarly discourses. Over the long term, these rising costs are also unsustainable for academic libraries.</p>\r\n<p>Temple University Libraries believe that scholarship should be open, transparent, and reproducible and that authors should have control over the works they produce. We support the idea that everyone benefits when knowledge flows freely and that access to information is needed for a fully-functioning democratic society.</p>\r\n<p>We are committed to not only making content more accessible but also empowering researchers at Temple University to better navigate the changing world of scholarship.</p>\r\n<h3>Team Purpose</h3>\r\n<p>The Scholarly Communication Strategic Steering Team is a cross-functional group of library staff who support Temple University with the production and distribution of research and creative works in both traditional and emerging information landscapes. As a team, we aim to advance open scholarship, facilitate discourse within diverse communities, and establish the Libraries as a leading authority on changes in scholarly communication within Temple University.</p>\r\n<p>The responsibilities of this steering team are as follows:</p>\r\n<ul>\r\n<li>\n<strong>Facilitation</strong>: We will develop a holistic understanding of scholarly communication activities within the Libraries and the university more broadly in order to make connections for faculty, students, and researchers, improve communication, and reduce duplication of effort.</li>\r\n<li>\n<strong>Coordination</strong>: We will provide support to the Libraries’ working groups, helping them to identify goals, develop policies, measure success, and collaborate with others in the scholarly communication sphere.</li>\r\n<li>\n<strong>Education</strong>: We will foster education and outreach on scholarly communication topics for Temple University.</li>\r\n<li>\n<strong>Strategic Planning</strong>: We will identify areas of need and anticipated future growth within the evolving scholarly communications landscape at Temple.</li>\r\n</ul>",
+      "group_type": "Strategic Steering Team",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "23",
+    "type": "group",
+    "attributes": {
+      "label": "Academic Assembly of Librarians",
+      "updated_at": "2019-01-08T15:03:06.714-05:00",
+      "name": "Academic Assembly of Librarians",
+      "description": "<h2>About the Academic Assembly of Librarians</h2>\r\n<blockquote>\r\n<p class=\"rteindent2\"><em>“The Academic Assembly of Librarians is organized to foster the professional development and academic growth of librarians and to provide a means for broader professional staff participation in the development of the Temple University Libraries. By committee work, debate and resolution, it will express views on broad policy of library administration.”</em></p>\r\n<p class=\"rteindent2\">—<a class=\"external-link\" href=\"https://sites.temple.edu/bylaws-aal\">Bylaws, 2002</a></p>\r\n</blockquote>\r\n<p> </p>\r\n<p>All professional librarians employed by Temple University are members of the Academic Assembly of Librarians.</p>\r\n<p>Assembly members’ activities include serving on committees to select and appoint candidates to open positions in the Libraries; holding continuing education workshops for librarians and staff; evaluating the promotion and regular appointment applications of their peers; and meeting regularly with the Dean of University Libraries.</p>\r\n<p>General Assembly meetings are held every two months during the academic year.</p>",
+      "group_type": "Assembly",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "24",
+    "type": "group",
+    "attributes": {
+      "label": "Law Library Staff",
+      "updated_at": "2019-01-10T09:49:12.376-05:00",
+      "name": "Law Library Staff",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "26",
+    "type": "group",
+    "attributes": {
+      "label": "Student Library Advisory Board",
+      "updated_at": "2019-03-24T14:35:56.642-04:00",
+      "name": "Student Library Advisory Board",
+      "description": "<p class=\"p1\">The Temple Libraries Student Advisory Board is comprised of a diverse group of undergraduate and graduate students who represent the various opinions and concerns of the entire student body regarding the libraries. The Board provides a forum for students to make suggestions to library administrators and for library administrators to solicit advice from students about library programs and services.</p>",
+      "group_type": "Committee",
+      "external": true,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "27",
+    "type": "group",
+    "attributes": {
+      "label": "Subject Specialists",
+      "updated_at": "2019-04-29T16:18:43.057-04:00",
+      "name": "Subject Specialists",
+      "description": "<p>Librarians are available by appointment for further consultation on many topics, including general research, subject-specific research, questions about data, scholarly communication tools and publishing, digital scholarship and more. <a href=\"https://answers.library.temple.edu/faq/33232\">Librarians</a> are available for scheduled consultations both in-person and online.</p>\r\n<p> </p>\r\n<p>If you need personalized research support, Temple University <a href=\"https://answers.library.temple.edu/faq/33232\">subject librarians</a> are available for scheduled consultations <a href=\"https://guides.temple.edu/librarian_in_person_appointments\">in-person</a> and <a href=\"https://guides.temple.edu/online_appointments\">online</a> .</p>\r\n<p> </p>\r\n<p>You can <a href=\"https://paleystudy.temple.edu/appointments/\">request a consultation</a> using our self-service scheduling system.</p>\r\n<p> </p>\r\n<p>You can also <a href=\"https://library.temple.edu/services/library-instruction/specialists\">contact a librarian</a> by phone or email to schedule an appointment.</p>",
+      "group_type": "Functional Team",
+      "external": false,
+      "add_to_footer": false
+    }
+  },
+  {
+    "id": "28",
+    "type": "group",
+    "attributes": {
+      "label": "CLIR Postdoctoral Fellows",
+      "updated_at": "2019-04-16T14:37:21.885-04:00",
+      "name": "CLIR Postdoctoral Fellows",
+      "description": "<p><span>The Council of Library and Information Resources has sponsored four fellows at the Digital Scholarship Center. For more information on the CLIR fellowship, see here:  </span><a href=\"https://www.clir.org/fellowships/postdoc/\">https://www.clir.org/fellowships/postdoc/</a></p>",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    }
+  }
+]
