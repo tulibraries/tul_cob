@@ -16,6 +16,8 @@ module Blacklight::PrimoCentral
       if value.is_a? Hash
         if value["pnxId"]&.is_a? Array
           # limit ids to 10 or API returns 0 results
+          # (This is just a fail safe:)
+          # (@see "./app/search_engines/primo_central_bookmark_search)
           queries = to_primo_id_queries(value["pnxId"][0, 10])
           primo_central_parameters[:query] = {
             limit: per_page,

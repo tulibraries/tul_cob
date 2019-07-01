@@ -26,21 +26,26 @@ module MultiSourceBookmarks
         .collect { |b| b.document_id.to_s }
 
       if !ids.empty?
-        search_service = source_class.new(@search_state).send(:search_service)
+        search_service = source_class.new(@search_state).search_service
         @response, docs = search_service.fetch(ids)
         document_list.append(*docs)
       end
     end
 
     # Reorder the document list to match the bookmark order.
-    # Replacing TN_ in ids to add backward compatibility.
     document_map = document_list
-      .map { |d| [d.id.gsub(/^TN_/, ""), d] }.to_h
-    @documents = @bookmarks.map { |b| document_map[b.document_id] }.compact
+      .map { |d| [d.id, d] }.to_h
+
+    # Replacing ^TN_ in ids to add backward compatibility.
+    @documents = @bookmarks
+      .map { |b| document_map[b.document_id.gsub(/^TN_/, "")] }
+      .compact
+
     # Capture full document list in response for correct current_bookmarks count.
     @response.instance_variable_set(:@documents, @documents) if @response
 
     # Just display all the bookmarks in one page
+    #
     @response["rows"] = @bookmarks.count if @response
     [@response, @documents]
   end
