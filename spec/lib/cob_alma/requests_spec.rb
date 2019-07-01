@@ -170,7 +170,7 @@ RSpec.describe CobAlma::Requests do
 
   describe "#asrs_pickup_locations" do
     it "displays MAIN as the pickup_location" do
-      expect(described_class.asrs_pickup_locations).to eq(["MAIN"])
+      expect(described_class.asrs_pickup_locations).to eq(["Ambler Campus Library", "Charles Library (Main campus)", "Ginsburg Health Science Library", "Podiatry Library", "Harrisburg Campus Library"])
     end
   end
 end

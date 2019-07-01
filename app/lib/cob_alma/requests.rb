@@ -28,7 +28,7 @@ module CobAlma
     end
 
     def self.asrs_pickup_locations
-      ["MAIN"]
+      ["Ambler Campus Library", "Charles Library (Main campus)", "Ginsburg Health Science Library", "Podiatry Library", "Harrisburg Campus Library"]
     end
 
     def self.remove_by_campus(campus)
