@@ -265,9 +265,16 @@ module CatalogHelper
     end
   end
 
+  def database_subject_links(args)
+    args[:document][args[:field]].map do |subject|
+      link_to(subject.sub("— — ", "— "), "#{base_path}?f[az_subject_facet][]=#{CGI.escape subject}")
+    end
+  end
+
+
   def database_type_links(args)
     args[:document][args[:field]].map do |type|
-      link_to(type.sub("— — ", "— "), "#{base_path}?f[format][]=#{CGI.escape type}", class: "p-2")
+      link_to(type.sub("— — ", "— "), "#{base_path}?f[az_format][]=#{CGI.escape type}", class: "p-2")
     end
   end
 
