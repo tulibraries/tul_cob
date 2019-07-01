@@ -463,6 +463,63 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#az_subject_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
+    context "links to exact az_subject facet string" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+
+      it "includes link to exact az_subject" do
+        expect(az_subject_links(args).first).to have_link("Middle East", href: "#{base_path}?f[az_subject_facet][]=Middle+East")
+      end
+      it "does not link to only part of the az_subject" do
+        expect(az_subject_links(args).first).to have_no_link("Middle East", href: "#{base_path}?f[az_subject_facet][]=Middle")
+      end
+    end
+
+    context "links to az_subjects with special characters" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries - Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "includes link to whole az_subject string" do
+        expect(az_subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{base_path}?f[az_subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+      end
+    end
+
+    context "does not display double hyphens" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: ["Regions & Countries — —  Asia & the Middle East"]
+            },
+            field: :subject_display
+          }
+        }
+      it "displays only one hyphen" do
+        expect(az_subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
+  end
+
   describe "#database_links(args)" do
     let(:base_path) { "foo" }
 

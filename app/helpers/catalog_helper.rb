@@ -259,6 +259,12 @@ module CatalogHelper
     end
   end
 
+  def az_subject_links(args)
+    args[:document][args[:field]].map do |subject|
+      link_to(subject.sub("— — ", "— "), "#{base_path}?f[az_subject_facet][]=#{CGI.escape subject}")
+    end
+  end
+
   def genre_links(args)
     args[:document][args[:field]].map do |genre|
       link_to(genre, "#{search_catalog_path}?f[genre_full_facet][]=#{CGI.escape genre}")
