@@ -3,6 +3,8 @@
     "id": "45",
     "type": "person",
     "attributes": {
+      "label": "Matthew Ainslie",
+      "updated_at": "2019-01-15T12:12:57.926-05:00",
       "name": "Matthew Ainslie",
       "first_name": "Matthew",
       "last_name": "Ainslie",
@@ -11,9 +13,7 @@
       "phone_number": "2152048213",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5124af3da2f53d452f6b89fc27c9b281ed1f726e/ainslie_m.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5124af3da2f53d452f6b89fc27c9b281ed1f726e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/ainslie_m.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -41,15 +41,15 @@
     "id": "81",
     "type": "person",
     "attributes": {
+      "label": "Serkaddis Alemayehu",
+      "updated_at": "2018-11-02T16:06:36.060-04:00",
       "name": "Serkaddis Alemayehu",
       "first_name": "Serkaddis",
       "last_name": "Alemayehu",
       "job_title": "Public History Coordinator and Digital Archives Specialist",
       "email_address": "serkaddis.alemayehu@temple.edu",
       "phone_number": "2152044590",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a85cf5489bd8782d86771160b499816983ca69ca/s_alemayehu.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a85cf5489bd8782d86771160b499816983ca69ca/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_alemayehu.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -81,6 +81,8 @@
     "id": "132",
     "type": "person",
     "attributes": {
+      "label": "Ann-Marie Anderson",
+      "updated_at": "2018-11-17T15:45:17.725-05:00",
       "name": "Ann-Marie Anderson",
       "first_name": "Ann-Marie",
       "last_name": "Anderson",
@@ -115,15 +117,15 @@
     "id": "33",
     "type": "person",
     "attributes": {
+      "label": "Jennifer Anton",
+      "updated_at": "2018-11-02T15:47:09.172-04:00",
       "name": "Jennifer Anton",
       "first_name": "Jennifer",
       "last_name": "Anton",
       "job_title": "Library Applications Developer",
       "email_address": "jennifer.anton@temple.edu",
       "phone_number": "2152042578",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2255791002e8c608171fc616f3a9c7c36e3ff850/anton_j.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2255791002e8c608171fc616f3a9c7c36e3ff850/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/anton_j.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -151,6 +153,8 @@
     "id": "119",
     "type": "person",
     "attributes": {
+      "label": "Rachel Appel",
+      "updated_at": "2019-02-11T11:29:45.411-05:00",
       "name": "Rachel Appel",
       "first_name": "Rachel",
       "last_name": "Appel",
@@ -159,9 +163,7 @@
       "phone_number": "2152044983",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYk09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e4c4f5bd39a22fa2c4b51380a1273be0fab12ee/r_appel.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYk09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3e4c4f5bd39a22fa2c4b51380a1273be0fab12ee/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/r_appel.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -197,15 +199,15 @@
     "id": "46",
     "type": "person",
     "attributes": {
+      "label": "Sarah Araujo",
+      "updated_at": "2018-11-02T15:52:12.965-04:00",
       "name": "Sarah Araujo",
       "first_name": "Sarah",
       "last_name": "Araujo",
       "job_title": "Part-time Virtual Reference Librarian",
       "email_address": "sarah.araujo@temple.edu",
       "phone_number": "2152048231",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dff7dcb44a8147c59ec681d39e79faafd110503/s_araujo-3.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9dff7dcb44a8147c59ec681d39e79faafd110503/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_araujo-3.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -233,15 +235,15 @@
     "id": "20",
     "type": "person",
     "attributes": {
+      "label": "Casey  Babcock",
+      "updated_at": "2018-11-02T15:43:39.196-04:00",
       "name": "Casey  Babcock",
       "first_name": "Casey ",
       "last_name": "Babcock",
       "job_title": "Project Archivist",
       "email_address": "casey.babcock@temple.edu",
       "phone_number": "2152043235",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--950726efbe1917acb7e29d98a9ccd1a26f176a7d/babcock_c.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--950726efbe1917acb7e29d98a9ccd1a26f176a7d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/babcock_c.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -269,6 +271,8 @@
     "id": "133",
     "type": "person",
     "attributes": {
+      "label": "Karen Baker",
+      "updated_at": "2018-11-17T15:45:57.476-05:00",
       "name": "Karen Baker",
       "first_name": "Karen",
       "last_name": "Baker",
@@ -303,6 +307,8 @@
     "id": "3",
     "type": "person",
     "attributes": {
+      "label": "Steven Bell",
+      "updated_at": "2019-01-15T12:28:15.197-05:00",
       "name": "Steven Bell",
       "first_name": "Steven",
       "last_name": "Bell",
@@ -311,9 +317,7 @@
       "phone_number": "2152045023",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--437aa78f23226bfabd216b8afd93fd387b0074f0/s_bell.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--437aa78f23226bfabd216b8afd93fd387b0074f0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_bell.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -345,6 +349,8 @@
     "id": "82",
     "type": "person",
     "attributes": {
+      "label": "Aslaku Berhanu",
+      "updated_at": "2019-01-15T12:28:30.989-05:00",
       "name": "Aslaku Berhanu",
       "first_name": "Aslaku",
       "last_name": "Berhanu",
@@ -353,9 +359,7 @@
       "phone_number": "2152044723",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c17530d632faf456f236cfb23fcdf68d1319d25/a_berhanu.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c17530d632faf456f236cfb23fcdf68d1319d25/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_berhanu.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -387,15 +391,15 @@
     "id": "34",
     "type": "person",
     "attributes": {
+      "label": "Tim Bieniosek",
+      "updated_at": "2018-11-02T15:47:24.535-04:00",
       "name": "Tim Bieniosek",
       "first_name": "Tim",
       "last_name": "Bieniosek",
       "job_title": "Senior Digital Library Applications Developer",
       "email_address": "timothy.bieniosek@temple.edu",
       "phone_number": "2152042821",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55958b62c9003e9aaaa350ad8d2e990d302da54f/t_bieniosek.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--55958b62c9003e9aaaa350ad8d2e990d302da54f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/t_bieniosek.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -423,15 +427,15 @@
     "id": "83",
     "type": "person",
     "attributes": {
+      "label": "Charles L.  Blockson",
+      "updated_at": "2018-11-02T16:07:05.085-04:00",
       "name": "Charles L.  Blockson",
       "first_name": "Charles L. ",
       "last_name": "Blockson",
       "job_title": "Curator Emeritus",
       "email_address": "ddturner@temple.edu",
       "phone_number": "2152046632",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c373ca022c5235c369cf484609ec89dc3f4255f/c_blockson.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0c373ca022c5235c369cf484609ec89dc3f4255f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_blockson.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -459,6 +463,8 @@
     "id": "51",
     "type": "person",
     "attributes": {
+      "label": "Brian Boling",
+      "updated_at": "2018-12-05T14:00:00.028-05:00",
       "name": "Brian Boling",
       "first_name": "Brian",
       "last_name": "Boling",
@@ -468,9 +474,7 @@
       "specialties": [
         "",
         "FIlm & Media Arts"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37708739715208b543dd7fe54655dee131db53b7/b_boling.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--37708739715208b543dd7fe54655dee131db53b7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/b_boling.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -510,6 +514,8 @@
     "id": "64",
     "type": "person",
     "attributes": {
+      "label": "Robert Bookbinder",
+      "updated_at": "2018-10-23T11:12:52.475-04:00",
       "name": "Robert Bookbinder",
       "first_name": "Robert",
       "last_name": "Bookbinder",
@@ -544,6 +550,8 @@
     "id": "65",
     "type": "person",
     "attributes": {
+      "label": "Lori Bradley",
+      "updated_at": "2018-10-23T11:13:34.119-04:00",
       "name": "Lori Bradley",
       "first_name": "Lori",
       "last_name": "Bradley",
@@ -578,6 +586,8 @@
     "id": "86",
     "type": "person",
     "attributes": {
+      "label": "Linda Brick",
+      "updated_at": "2018-10-23T15:52:45.222-04:00",
       "name": "Linda Brick",
       "first_name": "Linda",
       "last_name": "Brick",
@@ -612,6 +622,8 @@
     "id": "87",
     "type": "person",
     "attributes": {
+      "label": "Karen  Burstein",
+      "updated_at": "2018-12-05T14:06:14.722-05:00",
       "name": "Karen  Burstein",
       "first_name": "Karen ",
       "last_name": "Burstein",
@@ -622,9 +634,7 @@
         "",
         "Communication Sciences & Disorders",
         "Nursing"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c3a65e6ec0632da86edecbd635d4fbb8765d37b/k_burstein.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c3a65e6ec0632da86edecbd635d4fbb8765d37b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_burstein.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -660,6 +670,8 @@
     "id": "120",
     "type": "person",
     "attributes": {
+      "label": "Michael Carroll",
+      "updated_at": "2019-02-11T11:27:12.838-05:00",
       "name": "Michael Carroll",
       "first_name": "Michael",
       "last_name": "Carroll",
@@ -668,9 +680,7 @@
       "phone_number": "2152041860",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTQ9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc873d3d898d418f6e5144ed70cdbc4bfc885a8a/m_carroll.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTQ9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fc873d3d898d418f6e5144ed70cdbc4bfc885a8a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/m_carroll.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -698,6 +708,8 @@
     "id": "109",
     "type": "person",
     "attributes": {
+      "label": "Olivia  Castello",
+      "updated_at": "2019-02-11T11:28:50.781-05:00",
       "name": "Olivia  Castello",
       "first_name": "Olivia ",
       "last_name": "Castello",
@@ -707,31 +719,13 @@
       "specialties": [
         "",
         "Social Work"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--924c6ba3637c4279f075942ac96bcbebd565c0ce/o_castello.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--924c6ba3637c4279f075942ac96bcbebd565c0ce/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/o_castello.jpg"
+      ]
     },
     "relationships": {
       "groups": {
         "data": [
           {
-            "id": "13",
-            "type": "group"
-          },
-          {
-            "id": "18",
-            "type": "group"
-          },
-          {
             "id": "1",
-            "type": "group"
-          },
-          {
-            "id": "23",
-            "type": "group"
-          },
-          {
-            "id": "27",
             "type": "group"
           }
         ]
@@ -753,6 +747,8 @@
     "id": "4",
     "type": "person",
     "attributes": {
+      "label": "Jasmine Clark",
+      "updated_at": "2019-01-15T12:29:46.247-05:00",
       "name": "Jasmine Clark",
       "first_name": "Jasmine",
       "last_name": "Clark",
@@ -761,9 +757,7 @@
       "phone_number": "2152048274",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1540a232d622dc4e604074622a2d69e2751950d6/j_clark.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1540a232d622dc4e604074622a2d69e2751950d6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_clark.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -795,6 +789,8 @@
     "id": "88",
     "type": "person",
     "attributes": {
+      "label": "Jean Cottle",
+      "updated_at": "2018-10-23T16:03:06.269-04:00",
       "name": "Jean Cottle",
       "first_name": "Jean",
       "last_name": "Cottle",
@@ -829,15 +825,15 @@
     "id": "35",
     "type": "person",
     "attributes": {
+      "label": "Rachel  Cox",
+      "updated_at": "2018-11-02T15:47:43.402-04:00",
       "name": "Rachel  Cox",
       "first_name": "Rachel ",
       "last_name": "Cox",
       "job_title": "Graphic/Web Designer",
       "email_address": "rachel.cox@temple.edu",
       "phone_number": "2152048225",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24b0004da5c56639a856cc8d12b0b060b3d1e550/r_cox.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--24b0004da5c56639a856cc8d12b0b060b3d1e550/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/r_cox.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -869,6 +865,8 @@
     "id": "121",
     "type": "person",
     "attributes": {
+      "label": "Carla Davis Cunningham",
+      "updated_at": "2019-01-15T12:30:14.149-05:00",
       "name": "Carla Davis Cunningham",
       "first_name": "Carla Davis",
       "last_name": "Cunningham",
@@ -909,6 +907,8 @@
     "id": "149",
     "type": "person",
     "attributes": {
+      "label": "Sara Curnow Wilson",
+      "updated_at": "2019-02-11T11:34:07.990-05:00",
       "name": "Sara Curnow Wilson",
       "first_name": "Sara",
       "last_name": "Curnow Wilson",
@@ -917,9 +917,7 @@
       "phone_number": "2152042828",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYms9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68c53ba8831f073e0519b666f1892ebc7bc0e1b3/wilson_s.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYms9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--68c53ba8831f073e0519b666f1892ebc7bc0e1b3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/wilson_s.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -951,6 +949,8 @@
     "id": "122",
     "type": "person",
     "attributes": {
+      "label": "Philip D'Andrea",
+      "updated_at": "2019-02-11T11:29:22.817-05:00",
       "name": "Philip D'Andrea",
       "first_name": "Philip",
       "last_name": "D'Andrea",
@@ -959,9 +959,7 @@
       "phone_number": "2152045519",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3479734decccb5b7e0c03ddb1e89bc9b6a78c39f/p_dandrea.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3479734decccb5b7e0c03ddb1e89bc9b6a78c39f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/p_dandrea.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -989,6 +987,8 @@
     "id": "6",
     "type": "person",
     "attributes": {
+      "label": "Beckie Dashiell",
+      "updated_at": "2019-01-08T10:41:39.510-05:00",
       "name": "Beckie Dashiell",
       "first_name": "Beckie",
       "last_name": "Dashiell",
@@ -997,9 +997,7 @@
       "phone_number": "2152046006",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3af4d5853ac953ef7fd0c9629fca580f68139d82/b_dashiell.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3af4d5853ac953ef7fd0c9629fca580f68139d82/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/b_dashiell.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1027,6 +1025,8 @@
     "id": "21",
     "type": "person",
     "attributes": {
+      "label": "Theresa  Davis",
+      "updated_at": "2019-02-11T11:04:54.230-05:00",
       "name": "Theresa  Davis",
       "first_name": "Theresa ",
       "last_name": "Davis",
@@ -1063,15 +1063,15 @@
     "id": "66",
     "type": "person",
     "attributes": {
+      "label": "Tom Davis",
+      "updated_at": "2018-11-02T16:00:37.956-04:00",
       "name": "Tom Davis",
       "first_name": "Tom",
       "last_name": "Davis",
       "job_title": "Bibliographic Assistant II",
       "email_address": "tombeat@temple.edu",
       "phone_number": "2152048208",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7d3d6743e29c5c7d237d8b8c72dbcbead18c244/t_davis.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c7d3d6743e29c5c7d237d8b8c72dbcbead18c244/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/t_davis.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -1099,6 +1099,8 @@
     "id": "2",
     "type": "person",
     "attributes": {
+      "label": "Kristina DeVoe",
+      "updated_at": "2018-12-05T13:56:55.544-05:00",
       "name": "Kristina DeVoe",
       "first_name": "Kristina",
       "last_name": "DeVoe",
@@ -1115,9 +1117,7 @@
         "Journalism",
         "Media Studies & Production",
         "Public Relations"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51811f0cac34782ceb9a0a726d413aa48254aa9a/k_devoe.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--51811f0cac34782ceb9a0a726d413aa48254aa9a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_devoe.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1161,6 +1161,8 @@
     "id": "89",
     "type": "person",
     "attributes": {
+      "label": "Will  Dean",
+      "updated_at": "2018-12-05T14:08:01.571-05:00",
       "name": "Will  Dean",
       "first_name": "Will ",
       "last_name": "Dean",
@@ -1206,6 +1208,8 @@
     "id": "52",
     "type": "person",
     "attributes": {
+      "label": "Stefan Del Cotto",
+      "updated_at": "2018-10-23T10:48:06.777-04:00",
       "name": "Stefan Del Cotto",
       "first_name": "Stefan",
       "last_name": "Del Cotto",
@@ -1240,15 +1244,15 @@
     "id": "42",
     "type": "person",
     "attributes": {
+      "label": "Christopher Denison",
+      "updated_at": "2018-11-02T15:50:51.957-04:00",
       "name": "Christopher Denison",
       "first_name": "Christopher",
       "last_name": "Denison",
       "job_title": "Technical Support Specialist",
       "email_address": "christopher.denison@temple.edu",
       "phone_number": "2157074664",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1de30f5d877a5bce36e35eac52858fd34b12d892/c_dennison.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1de30f5d877a5bce36e35eac52858fd34b12d892/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_dennison.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -1276,6 +1280,8 @@
     "id": "47",
     "type": "person",
     "attributes": {
+      "label": "Andrew Diamond",
+      "updated_at": "2019-01-15T12:30:55.383-05:00",
       "name": "Andrew Diamond",
       "first_name": "Andrew",
       "last_name": "Diamond",
@@ -1284,9 +1290,7 @@
       "phone_number": "2152048213",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5359d6dfe0e6fb99ebf9a687cc2439b0c38b0b5/a_diamond_0.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f5359d6dfe0e6fb99ebf9a687cc2439b0c38b0b5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_diamond_0.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1318,6 +1322,8 @@
     "id": "110",
     "type": "person",
     "attributes": {
+      "label": "David Dillard",
+      "updated_at": "2018-12-05T13:52:14.450-05:00",
       "name": "David Dillard",
       "first_name": "David",
       "last_name": "Dillard",
@@ -1369,15 +1375,15 @@
     "id": "36",
     "type": "person",
     "attributes": {
+      "label": "Christopher Doyle",
+      "updated_at": "2018-11-02T15:48:01.155-04:00",
       "name": "Christopher Doyle",
       "first_name": "Christopher",
       "last_name": "Doyle",
       "job_title": "Web Developer",
       "email_address": "cdoyle@temple.edu",
       "phone_number": "2152043836",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa1254e7d955e3ca612a7be9e3c29163e58311e/c_doyle.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7aa1254e7d955e3ca612a7be9e3c29163e58311e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_doyle.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -1405,6 +1411,8 @@
     "id": "123",
     "type": "person",
     "attributes": {
+      "label": "Matthew Ducmanas",
+      "updated_at": "2019-01-15T12:31:33.263-05:00",
       "name": "Matthew Ducmanas",
       "first_name": "Matthew",
       "last_name": "Ducmanas",
@@ -1445,6 +1453,8 @@
     "id": "90",
     "type": "person",
     "attributes": {
+      "label": "Tiffany Ellis",
+      "updated_at": "2018-10-23T16:04:55.645-04:00",
       "name": "Tiffany Ellis",
       "first_name": "Tiffany",
       "last_name": "Ellis",
@@ -1479,6 +1489,8 @@
     "id": "111",
     "type": "person",
     "attributes": {
+      "label": "Lauri Fennell",
+      "updated_at": "2019-02-11T11:26:00.235-05:00",
       "name": "Lauri Fennell",
       "first_name": "Lauri",
       "last_name": "Fennell",
@@ -1488,9 +1500,7 @@
       "specialties": [
         "",
         "Public Health"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773ff9f6af734e9cc9d3d467ec810d7c1f5bc923/l_fennell.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--773ff9f6af734e9cc9d3d467ec810d7c1f5bc923/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/l_fennell.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1534,6 +1544,8 @@
     "id": "67",
     "type": "person",
     "attributes": {
+      "label": "Erin Finnerty",
+      "updated_at": "2019-01-15T12:32:05.835-05:00",
       "name": "Erin Finnerty",
       "first_name": "Erin",
       "last_name": "Finnerty",
@@ -1542,9 +1554,7 @@
       "phone_number": "2152043275",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81a01b3d1f426e089a5540d480a4e7e4ced2e1a6/e_finnerty.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--81a01b3d1f426e089a5540d480a4e7e4ced2e1a6/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_finnerty.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1576,6 +1586,8 @@
     "id": "124",
     "type": "person",
     "attributes": {
+      "label": "Leanne Finnigan",
+      "updated_at": "2019-01-15T12:32:20.652-05:00",
       "name": "Leanne Finnigan",
       "first_name": "Leanne",
       "last_name": "Finnigan",
@@ -1616,6 +1628,8 @@
     "id": "37",
     "type": "person",
     "attributes": {
+      "label": "Gabe Galeson",
+      "updated_at": "2019-01-15T12:32:35.110-05:00",
       "name": "Gabe Galeson",
       "first_name": "Gabe",
       "last_name": "Galeson",
@@ -1624,9 +1638,7 @@
       "phone_number": "2152046491",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ecb8b5ed1be046290a5e11401e8cff83d815c14/g_galson.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6ecb8b5ed1be046290a5e11401e8cff83d815c14/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/g_galson.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1658,6 +1670,8 @@
     "id": "22",
     "type": "person",
     "attributes": {
+      "label": "Brenda Galloway-Wright",
+      "updated_at": "2018-10-17T14:32:30.905-04:00",
       "name": "Brenda Galloway-Wright",
       "first_name": "Brenda",
       "last_name": "Galloway-Wright",
@@ -1692,15 +1706,15 @@
     "id": "76",
     "type": "person",
     "attributes": {
+      "label": "Andrea Goldstein",
+      "updated_at": "2018-11-02T16:04:11.998-04:00",
       "name": "Andrea Goldstein",
       "first_name": "Andrea",
       "last_name": "Goldstein",
       "job_title": "Librarian",
       "email_address": "andrea@temple.edu",
       "phone_number": "2674688647",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fbfc161aff4b96a796f93218e9019632d060d9/a_goldstein.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fbfc161aff4b96a796f93218e9019632d060d9/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_goldstein.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -1732,6 +1746,8 @@
     "id": "68",
     "type": "person",
     "attributes": {
+      "label": "David Gonsalves",
+      "updated_at": "2018-10-23T11:15:54.579-04:00",
       "name": "David Gonsalves",
       "first_name": "David",
       "last_name": "Gonsalves",
@@ -1766,6 +1782,8 @@
     "id": "23",
     "type": "person",
     "attributes": {
+      "label": "Rosa Grier",
+      "updated_at": "2018-10-17T14:33:13.470-04:00",
       "name": "Rosa Grier",
       "first_name": "Rosa",
       "last_name": "Grier",
@@ -1800,6 +1818,8 @@
     "id": "144",
     "type": "person",
     "attributes": {
+      "label": "Jordan Hample",
+      "updated_at": "2019-02-11T11:16:44.898-05:00",
       "name": "Jordan Hample",
       "first_name": "Jordan",
       "last_name": "Hample",
@@ -1808,9 +1828,7 @@
       "phone_number": "2152043467",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c4b762dd64d95b7d66ffbd6ed1acc118df04f7b/j_hample.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1c4b762dd64d95b7d66ffbd6ed1acc118df04f7b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_hample.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1838,6 +1856,8 @@
     "id": "104",
     "type": "person",
     "attributes": {
+      "label": "Anne Harlow",
+      "updated_at": "2019-02-11T11:07:24.815-05:00",
       "name": "Anne Harlow",
       "first_name": "Anne",
       "last_name": "Harlow",
@@ -1851,9 +1871,7 @@
         "Music Education",
         "Music Therapy",
         "Theater"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09053f7629bc32f059a41c424c6966121adfa0e2/a_harlow.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--09053f7629bc32f059a41c424c6966121adfa0e2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_harlow.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -1893,6 +1911,8 @@
     "id": "150",
     "type": "person",
     "attributes": {
+      "label": "Daniel  Henderson",
+      "updated_at": "2019-01-10T09:48:42.349-05:00",
       "name": "Daniel  Henderson",
       "first_name": "Daniel ",
       "last_name": "Henderson",
@@ -1933,6 +1953,8 @@
     "id": "91",
     "type": "person",
     "attributes": {
+      "label": "Justin Hercules",
+      "updated_at": "2018-10-23T16:05:35.926-04:00",
       "name": "Justin Hercules",
       "first_name": "Justin",
       "last_name": "Hercules",
@@ -1967,6 +1989,8 @@
     "id": "50",
     "type": "person",
     "attributes": {
+      "label": "Justin Hill",
+      "updated_at": "2019-01-15T12:33:36.985-05:00",
       "name": "Justin Hill",
       "first_name": "Justin",
       "last_name": "Hill",
@@ -1975,9 +1999,7 @@
       "phone_number": "2152040750",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cf7f6f3098d2be3578c0bb2a410f7dd191a083f5/j_hill.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--cf7f6f3098d2be3578c0bb2a410f7dd191a083f5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_hill.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2017,6 +2039,8 @@
     "id": "24",
     "type": "person",
     "attributes": {
+      "label": "Jessica Hoffman",
+      "updated_at": "2018-10-17T14:33:59.395-04:00",
       "name": "Jessica Hoffman",
       "first_name": "Jessica",
       "last_name": "Hoffman",
@@ -2051,6 +2075,8 @@
     "id": "5",
     "type": "person",
     "attributes": {
+      "label": "Richie Holland",
+      "updated_at": "2018-10-17T12:58:34.945-04:00",
       "name": "Richie Holland",
       "first_name": "Richie",
       "last_name": "Holland",
@@ -2085,6 +2111,8 @@
     "id": "125",
     "type": "person",
     "attributes": {
+      "label": "Myra Hom",
+      "updated_at": "2018-11-17T15:29:21.721-05:00",
       "name": "Myra Hom",
       "first_name": "Myra",
       "last_name": "Hom",
@@ -2119,6 +2147,8 @@
     "id": "92",
     "type": "person",
     "attributes": {
+      "label": "Erica Howell",
+      "updated_at": "2018-10-23T16:06:12.427-04:00",
       "name": "Erica Howell",
       "first_name": "Erica",
       "last_name": "Howell",
@@ -2153,6 +2183,8 @@
     "id": "25",
     "type": "person",
     "attributes": {
+      "label": "Josue Hurtado",
+      "updated_at": "2019-01-15T12:33:53.550-05:00",
       "name": "Josue Hurtado",
       "first_name": "Josue",
       "last_name": "Hurtado",
@@ -2193,15 +2225,15 @@
     "id": "53",
     "type": "person",
     "attributes": {
+      "label": "Carly Hustedt",
+      "updated_at": "2018-11-02T15:55:04.905-04:00",
       "name": "Carly Hustedt",
       "first_name": "Carly",
       "last_name": "Hustedt",
       "job_title": "Bibliographic Assistant II",
       "email_address": "carly.hustedt@temple.edu",
       "phone_number": "2152040747",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5142ba9590ab51cc3dea0fa998699595259f37db/c_hustedt.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5142ba9590ab51cc3dea0fa998699595259f37db/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_hustedt.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -2229,15 +2261,15 @@
     "id": "54",
     "type": "person",
     "attributes": {
+      "label": "Joe Idell",
+      "updated_at": "2018-11-02T15:55:21.262-04:00",
       "name": "Joe Idell",
       "first_name": "Joe",
       "last_name": "Idell",
       "job_title": "Bibliographic Assistant II",
       "email_address": "joeidell@temple.edu",
       "phone_number": "2152040754",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a797c4f0529d78ecda3214bf5c1c9977b3a65d8/j_idell.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7a797c4f0529d78ecda3214bf5c1c9977b3a65d8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_idell.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -2265,6 +2297,8 @@
     "id": "134",
     "type": "person",
     "attributes": {
+      "label": "Irene Imperio-Kull",
+      "updated_at": "2018-11-17T15:46:57.162-05:00",
       "name": "Irene Imperio-Kull",
       "first_name": "Irene",
       "last_name": "Imperio-Kull",
@@ -2299,6 +2333,8 @@
     "id": "105",
     "type": "person",
     "attributes": {
+      "label": "Tom Ipri",
+      "updated_at": "2019-02-11T11:16:07.575-05:00",
       "name": "Tom Ipri",
       "first_name": "Tom",
       "last_name": "Ipri",
@@ -2307,9 +2343,7 @@
       "phone_number": "2152048246",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eadc74a7d12aacbbd6fd8013316e4614c586e76a/ipri_t.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eadc74a7d12aacbbd6fd8013316e4614c586e76a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/ipri_t.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2345,6 +2379,8 @@
     "id": "151",
     "type": "person",
     "attributes": {
+      "label": "David Isom",
+      "updated_at": "2019-01-10T09:50:07.294-05:00",
       "name": "David Isom",
       "first_name": "David",
       "last_name": "Isom",
@@ -2385,6 +2421,8 @@
     "id": "135",
     "type": "person",
     "attributes": {
+      "label": "Aaron Javsicas",
+      "updated_at": "2018-11-17T15:47:45.407-05:00",
       "name": "Aaron Javsicas",
       "first_name": "Aaron",
       "last_name": "Javsicas",
@@ -2419,6 +2457,8 @@
     "id": "112",
     "type": "person",
     "attributes": {
+      "label": "Latanya Jenkins",
+      "updated_at": "2019-02-11T11:26:27.572-05:00",
       "name": "Latanya Jenkins",
       "first_name": "Latanya",
       "last_name": "Jenkins",
@@ -2429,9 +2469,7 @@
         "",
         "Africology & African-American Studies",
         "Government Information"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5af9c5e0b8707642a0499c9db5ff5a9e02d6fb5/l_jenkins.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b5af9c5e0b8707642a0499c9db5ff5a9e02d6fb5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/l_jenkins.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2471,6 +2509,8 @@
     "id": "136",
     "type": "person",
     "attributes": {
+      "label": "Annie K.  Johnson",
+      "updated_at": "2019-02-11T11:07:44.922-05:00",
       "name": "Annie K.  Johnson",
       "first_name": "Annie K. ",
       "last_name": "Johnson",
@@ -2479,9 +2519,7 @@
       "phone_number": "2152046511",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjQ9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d400a3d7ce2b26ec122f595d0a883918d20527eb/a_johnson.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjQ9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d400a3d7ce2b26ec122f595d0a883918d20527eb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_johnson.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2513,15 +2551,15 @@
     "id": "7",
     "type": "person",
     "attributes": {
+      "label": "Christine  Jones",
+      "updated_at": "2018-11-02T15:39:18.011-04:00",
       "name": "Christine  Jones",
       "first_name": "Christine ",
       "last_name": "Jones",
       "job_title": "Finance Manager",
       "email_address": "christine.jones@temple.edu",
       "phone_number": "2152043183",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--623f6776e0de5e7704311342b59dc208e649cc67/c_jones.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--623f6776e0de5e7704311342b59dc208e649cc67/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_jones.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -2549,6 +2587,8 @@
     "id": "116",
     "type": "person",
     "attributes": {
+      "label": "Sarah Jones",
+      "updated_at": "2019-02-11T11:32:22.805-05:00",
       "name": "Sarah Jones",
       "first_name": "Sarah",
       "last_name": "Jones",
@@ -2562,9 +2602,7 @@
         "Chemistry",
         "Physics",
         "Postbaccalaureate Pre-Health"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYmM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c44dffbaa2620df3328c00accfcd9d68dda1c7ff/s_jones.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYmM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c44dffbaa2620df3328c00accfcd9d68dda1c7ff/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_jones.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2604,6 +2642,8 @@
     "id": "152",
     "type": "person",
     "attributes": {
+      "label": "Noa Kaumeheiwa",
+      "updated_at": "2019-02-11T11:28:03.188-05:00",
       "name": "Noa Kaumeheiwa",
       "first_name": "Noa",
       "last_name": "Kaumeheiwa",
@@ -2612,9 +2652,7 @@
       "phone_number": "2152045865",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ef982b104d22b52fabe5c3e720220c21a8da62f/n_%20kaumeheiwa.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYkE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8ef982b104d22b52fabe5c3e720220c21a8da62f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/n_%20kaumeheiwa.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2650,15 +2688,15 @@
     "id": "43",
     "type": "person",
     "attributes": {
+      "label": "Chin Kim",
+      "updated_at": "2018-11-02T15:51:10.825-04:00",
       "name": "Chin Kim",
       "first_name": "Chin",
       "last_name": "Kim",
       "job_title": "Systems Administrator",
       "email_address": "chin.kim@temple.edu",
       "phone_number": "2152048494",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--097c55e548f9d3f4b8e9f99f493ce90c8b50a4e9/c_kim.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--097c55e548f9d3f4b8e9f99f493ce90c8b50a4e9/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_kim.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -2686,6 +2724,8 @@
     "id": "69",
     "type": "person",
     "attributes": {
+      "label": "Deborah King",
+      "updated_at": "2018-10-23T11:16:32.587-04:00",
       "name": "Deborah King",
       "first_name": "Deborah",
       "last_name": "King",
@@ -2720,6 +2760,8 @@
     "id": "38",
     "type": "person",
     "attributes": {
+      "label": "David Kinzer",
+      "updated_at": "2018-10-22T16:21:02.990-04:00",
       "name": "David Kinzer",
       "first_name": "David",
       "last_name": "Kinzer",
@@ -2754,6 +2796,8 @@
     "id": "70",
     "type": "person",
     "attributes": {
+      "label": "Karen Kohn",
+      "updated_at": "2019-01-15T12:35:35.884-05:00",
       "name": "Karen Kohn",
       "first_name": "Karen",
       "last_name": "Kohn",
@@ -2762,9 +2806,7 @@
       "phone_number": "2152044428",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abf3ab4f823aacb4f83d8503795351e43c7bd4c2/k_kohn.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--abf3ab4f823aacb4f83d8503795351e43c7bd4c2/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_kohn.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2800,6 +2842,8 @@
     "id": "137",
     "type": "person",
     "attributes": {
+      "label": "Gary Kramer",
+      "updated_at": "2018-11-17T15:49:11.043-05:00",
       "name": "Gary Kramer",
       "first_name": "Gary",
       "last_name": "Kramer",
@@ -2834,6 +2878,8 @@
     "id": "93",
     "type": "person",
     "attributes": {
+      "label": "Barbara Kuchan",
+      "updated_at": "2019-01-15T12:35:52.124-05:00",
       "name": "Barbara Kuchan",
       "first_name": "Barbara",
       "last_name": "Kuchan",
@@ -2842,9 +2888,7 @@
       "phone_number": "2157072402",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d25b1cf6db5bdc17b03e08e330fa9a2d2150b0b7/b_kuchan.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d25b1cf6db5bdc17b03e08e330fa9a2d2150b0b7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/b_kuchan.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2880,15 +2924,15 @@
     "id": "8",
     "type": "person",
     "attributes": {
+      "label": "David  Lacy",
+      "updated_at": "2018-11-02T15:40:24.744-04:00",
       "name": "David  Lacy",
       "first_name": "David ",
       "last_name": "Lacy",
       "job_title": "Director of Library Technology and Knowledge Management",
       "email_address": "david.lacy@temple.edu",
       "phone_number": "2152040749",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce60421d863ee60322b0a50a09f3faaeeec14ce5/d_lacy.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ce60421d863ee60322b0a50a09f3faaeeec14ce5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/d_lacy.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -2920,6 +2964,8 @@
     "id": "126",
     "type": "person",
     "attributes": {
+      "label": "Evelyn Lane",
+      "updated_at": "2019-02-11T11:12:24.108-05:00",
       "name": "Evelyn Lane",
       "first_name": "Evelyn",
       "last_name": "Lane",
@@ -2928,9 +2974,7 @@
       "phone_number": "2152041038",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d19222158a1d0a099b669d97794cc39bc50281a/e_lane.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6d19222158a1d0a099b669d97794cc39bc50281a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_lane.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -2958,6 +3002,8 @@
     "id": "127",
     "type": "person",
     "attributes": {
+      "label": "Molly Larkin",
+      "updated_at": "2019-01-15T12:36:15.548-05:00",
       "name": "Molly Larkin",
       "first_name": "Molly",
       "last_name": "Larkin",
@@ -2998,6 +3044,8 @@
     "id": "94",
     "type": "person",
     "attributes": {
+      "label": "Gregory Laynor",
+      "updated_at": "2018-12-05T14:06:42.026-05:00",
       "name": "Gregory Laynor",
       "first_name": "Gregory",
       "last_name": "Laynor",
@@ -3008,9 +3056,7 @@
         "",
         "Pharmacy",
         "Podiatric Medicine"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eee46fa4a191c5761fd1b7857c4743c434b5d73b/laynor_g.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--eee46fa4a191c5761fd1b7857c4743c434b5d73b/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/laynor_g.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3046,6 +3092,8 @@
     "id": "55",
     "type": "person",
     "attributes": {
+      "label": "Kathy Lehman",
+      "updated_at": "2018-10-23T10:56:23.192-04:00",
       "name": "Kathy Lehman",
       "first_name": "Kathy",
       "last_name": "Lehman",
@@ -3084,6 +3132,8 @@
     "id": "113",
     "type": "person",
     "attributes": {
+      "label": "Rick Lezenby",
+      "updated_at": "2019-02-11T11:30:12.313-05:00",
       "name": "Rick Lezenby",
       "first_name": "Rick",
       "last_name": "Lezenby",
@@ -3096,9 +3146,7 @@
         "Political Science",
         "Psychology",
         "Public Policy"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--efd129a10094aa259f4b1efcd5dae33afc02b8fc/r_lezenby.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--efd129a10094aa259f4b1efcd5dae33afc02b8fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/r_lezenby.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3138,6 +3186,8 @@
     "id": "128",
     "type": "person",
     "attributes": {
+      "label": "Yelena Lidskaya",
+      "updated_at": "2018-11-17T15:39:54.597-05:00",
       "name": "Yelena Lidskaya",
       "first_name": "Yelena",
       "last_name": "Lidskaya",
@@ -3172,6 +3222,8 @@
     "id": "106",
     "type": "person",
     "attributes": {
+      "label": "Rebecca Lloyd",
+      "updated_at": "2019-02-11T11:30:29.132-05:00",
       "name": "Rebecca Lloyd",
       "first_name": "Rebecca",
       "last_name": "Lloyd",
@@ -3184,9 +3236,7 @@
         "Latin American Studies",
         "Portuguese",
         "Spanish"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4b9a43ccc9610f70f61a5df7234259940ddd9a1/r_lloyd.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c4b9a43ccc9610f70f61a5df7234259940ddd9a1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/r_lloyd.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3230,6 +3280,8 @@
     "id": "9",
     "type": "person",
     "attributes": {
+      "label": "Joe Lucia",
+      "updated_at": "2019-01-15T12:37:24.635-05:00",
       "name": "Joe Lucia",
       "first_name": "Joe",
       "last_name": "Lucia",
@@ -3238,9 +3290,7 @@
       "phone_number": "2152048231",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb70c686b14f8bc2d64787357dd9b8d28b3f696c/j_lucia.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--fb70c686b14f8bc2d64787357dd9b8d28b3f696c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_lucia.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3272,6 +3322,8 @@
     "id": "107",
     "type": "person",
     "attributes": {
+      "label": "Jill E.  Luedke",
+      "updated_at": "2019-02-11T11:20:49.775-05:00",
       "name": "Jill E.  Luedke",
       "first_name": "Jill E. ",
       "last_name": "Luedke",
@@ -3286,9 +3338,7 @@
         "Art History",
         "German",
         "Planning & Community Development"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWs9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e65a46f906d580cdcdc9b614795981334ed0179/j_luedke.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYWs9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e65a46f906d580cdcdc9b614795981334ed0179/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_luedke.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3328,6 +3378,8 @@
     "id": "26",
     "type": "person",
     "attributes": {
+      "label": "Jessica Lydon",
+      "updated_at": "2019-01-15T12:38:00.221-05:00",
       "name": "Jessica Lydon",
       "first_name": "Jessica",
       "last_name": "Lydon",
@@ -3368,6 +3420,8 @@
     "id": "95",
     "type": "person",
     "attributes": {
+      "label": "Patrick Lyons",
+      "updated_at": "2019-01-15T12:38:16.928-05:00",
       "name": "Patrick Lyons",
       "first_name": "Patrick",
       "last_name": "Lyons",
@@ -3408,6 +3462,8 @@
     "id": "96",
     "type": "person",
     "attributes": {
+      "label": "Mark Marchino",
+      "updated_at": "2018-10-23T16:10:27.731-04:00",
       "name": "Mark Marchino",
       "first_name": "Mark",
       "last_name": "Marchino",
@@ -3442,15 +3498,15 @@
     "id": "56",
     "type": "person",
     "attributes": {
+      "label": "Jessica Martin",
+      "updated_at": "2018-11-02T15:57:50.327-04:00",
       "name": "Jessica Martin",
       "first_name": "Jessica",
       "last_name": "Martin",
       "job_title": "Bibliographic Assistant II",
       "email_address": "tue80557@temple.edu",
       "phone_number": "2152048209",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d189b717d7e1cd219217354728fc7935f1695094/j_martin.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d189b717d7e1cd219217354728fc7935f1695094/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_martin.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -3478,6 +3534,8 @@
     "id": "77",
     "type": "person",
     "attributes": {
+      "label": "Frank  Marzullo",
+      "updated_at": "2018-10-23T11:33:50.013-04:00",
       "name": "Frank  Marzullo",
       "first_name": "Frank ",
       "last_name": "Marzullo",
@@ -3512,6 +3570,8 @@
     "id": "114",
     "type": "person",
     "attributes": {
+      "label": "Gregory McKinney",
+      "updated_at": "2019-02-11T11:15:06.655-05:00",
       "name": "Gregory McKinney",
       "first_name": "Gregory",
       "last_name": "McKinney",
@@ -3527,9 +3587,7 @@
         "Geography & Urban Studies",
         "Global Studies",
         "Sociology"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--611b2d17e1e332d1051d15557521a7ce0e59b1cd/g_mckinney.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--611b2d17e1e332d1051d15557521a7ce0e59b1cd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/g_mckinney.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -3569,6 +3627,8 @@
     "id": "10",
     "type": "person",
     "attributes": {
+      "label": "Marianne Moll",
+      "updated_at": "2018-10-17T14:06:24.401-04:00",
       "name": "Marianne Moll",
       "first_name": "Marianne",
       "last_name": "Moll",
@@ -3603,6 +3663,8 @@
     "id": "57",
     "type": "person",
     "attributes": {
+      "label": "Katerina Montaniel",
+      "updated_at": "2018-10-23T10:57:54.266-04:00",
       "name": "Katerina Montaniel",
       "first_name": "Katerina",
       "last_name": "Montaniel",
@@ -3637,6 +3699,8 @@
     "id": "27",
     "type": "person",
     "attributes": {
+      "label": "Ann Mosher",
+      "updated_at": "2018-10-17T14:36:16.805-04:00",
       "name": "Ann Mosher",
       "first_name": "Ann",
       "last_name": "Mosher",
@@ -3671,6 +3735,8 @@
     "id": "138",
     "type": "person",
     "attributes": {
+      "label": "Mary Rose Muccie",
+      "updated_at": "2018-11-17T15:50:02.714-05:00",
       "name": "Mary Rose Muccie",
       "first_name": "Mary Rose",
       "last_name": "Muccie",
@@ -3705,6 +3771,8 @@
     "id": "139",
     "type": "person",
     "attributes": {
+      "label": "Ryan Mulligan",
+      "updated_at": "2018-11-17T15:51:05.158-05:00",
       "name": "Ryan Mulligan",
       "first_name": "Ryan",
       "last_name": "Mulligan",
@@ -3739,6 +3807,8 @@
     "id": "58",
     "type": "person",
     "attributes": {
+      "label": "Judith Murphy",
+      "updated_at": "2018-10-23T10:58:38.222-04:00",
       "name": "Judith Murphy",
       "first_name": "Judith",
       "last_name": "Murphy",
@@ -3773,15 +3843,15 @@
     "id": "11",
     "type": "person",
     "attributes": {
+      "label": "Kimberly Nazaruk",
+      "updated_at": "2018-11-02T15:41:25.845-04:00",
       "name": "Kimberly Nazaruk",
       "first_name": "Kimberly",
       "last_name": "Nazaruk",
       "job_title": "Lead Administrative Specialist",
       "email_address": "kimberly.nazaruk@temple.edu",
       "phone_number": "2152044768",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7531cd58769fca0f4ae4ee518738b7e4511b50d1/nazaruk_k.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7531cd58769fca0f4ae4ee518738b7e4511b50d1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/nazaruk_k.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -3809,15 +3879,15 @@
     "id": "39",
     "type": "person",
     "attributes": {
+      "label": "Chad Nelson",
+      "updated_at": "2018-11-02T15:49:07.782-04:00",
       "name": "Chad Nelson",
       "first_name": "Chad",
       "last_name": "Nelson",
       "job_title": "Lead Technology Developer",
       "email_address": "chad.nelson@temple.edu",
       "phone_number": "2152043835",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d633b9ccfcffcf21cc647127af8c3d1037439d90/c_nelson.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d633b9ccfcffcf21cc647127af8c3d1037439d90/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_nelson.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -3845,15 +3915,15 @@
     "id": "40",
     "type": "person",
     "attributes": {
+      "label": "Steven  Ng",
+      "updated_at": "2018-11-02T15:50:12.495-04:00",
       "name": "Steven  Ng",
       "first_name": "Steven ",
       "last_name": "Ng",
       "job_title": "Senior Digital Library Applications Developer",
       "email_address": "steven.ng@temple.edu",
       "phone_number": "2152048232",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52f1c3bfbb0643c31d3cf4ac8a33aa5ce7c80ca5/s_ng.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--52f1c3bfbb0643c31d3cf4ac8a33aa5ce7c80ca5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_ng.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -3881,6 +3951,8 @@
     "id": "140",
     "type": "person",
     "attributes": {
+      "label": "Kate Nichols",
+      "updated_at": "2018-11-17T15:51:48.590-05:00",
       "name": "Kate Nichols",
       "first_name": "Kate",
       "last_name": "Nichols",
@@ -3915,15 +3987,15 @@
     "id": "12",
     "type": "person",
     "attributes": {
+      "label": "Urooj Nizami",
+      "updated_at": "2018-11-02T15:42:02.149-04:00",
       "name": "Urooj Nizami",
       "first_name": "Urooj",
       "last_name": "Nizami",
       "job_title": "Resident Librarian",
       "email_address": "urooj.nizami@temple.edu",
       "phone_number": "2152048205",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df4fb564d4dffb9f776b81f4daebc3c89dcb6f7c/u_nizami.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df4fb564d4dffb9f776b81f4daebc3c89dcb6f7c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/u_nizami.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -3955,6 +4027,8 @@
     "id": "59",
     "type": "person",
     "attributes": {
+      "label": "John Oram",
+      "updated_at": "2018-10-23T10:59:16.128-04:00",
       "name": "John Oram",
       "first_name": "John",
       "last_name": "Oram",
@@ -3989,6 +4063,8 @@
     "id": "98",
     "type": "person",
     "attributes": {
+      "label": "Alberto  Pagan Ramirez",
+      "updated_at": "2018-10-23T16:12:11.131-04:00",
       "name": "Alberto  Pagan Ramirez",
       "first_name": "Alberto ",
       "last_name": "Pagan Ramirez",
@@ -4023,6 +4099,8 @@
     "id": "71",
     "type": "person",
     "attributes": {
+      "label": "John Colby Parker",
+      "updated_at": "2019-02-11T11:21:21.826-05:00",
       "name": "John Colby Parker",
       "first_name": "John Colby",
       "last_name": "Parker",
@@ -4031,9 +4109,7 @@
       "phone_number": "2152048588",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYW89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17bfb399743a05ffe126ae18739ca8f0470d59e1/j_parker.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYW89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--17bfb399743a05ffe126ae18739ca8f0470d59e1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_parker.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4061,6 +4137,8 @@
     "id": "153",
     "type": "person",
     "attributes": {
+      "label": "Stephen Pavlo",
+      "updated_at": "2019-02-11T11:32:58.847-05:00",
       "name": "Stephen Pavlo",
       "first_name": "Stephen",
       "last_name": "Pavlo",
@@ -4069,9 +4147,7 @@
       "phone_number": "2152042291",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYmc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9f123ec5fae52cb7c3b32021ed0a9ae4031f5c3/s_pavlo.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYmc9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a9f123ec5fae52cb7c3b32021ed0a9ae4031f5c3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_pavlo.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4099,6 +4175,8 @@
     "id": "141",
     "type": "person",
     "attributes": {
+      "label": "Ashely Petrucci",
+      "updated_at": "2018-11-17T15:52:55.468-05:00",
       "name": "Ashely Petrucci",
       "first_name": "Ashely",
       "last_name": "Petrucci",
@@ -4133,15 +4211,15 @@
     "id": "28",
     "type": "person",
     "attributes": {
+      "label": "John Pettit",
+      "updated_at": "2018-11-02T15:44:43.867-04:00",
       "name": "John Pettit",
       "first_name": "John",
       "last_name": "Pettit",
       "job_title": "Assistant Archivist",
       "email_address": "jpettit@temple.edu",
       "phone_number": "2152043224",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e5c4570418ede2182afe3c68c773e245c13d0dc/j_pettit.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e5c4570418ede2182afe3c68c773e245c13d0dc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_pettit.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4169,6 +4247,8 @@
     "id": "129",
     "type": "person",
     "attributes": {
+      "label": "Celio Pichardo",
+      "updated_at": "2018-11-17T15:40:39.640-05:00",
       "name": "Celio Pichardo",
       "first_name": "Celio",
       "last_name": "Pichardo",
@@ -4203,6 +4283,8 @@
     "id": "97",
     "type": "person",
     "attributes": {
+      "label": "Jenny Pierce",
+      "updated_at": "2018-12-05T14:04:04.016-05:00",
       "name": "Jenny Pierce",
       "first_name": "Jenny",
       "last_name": "Pierce",
@@ -4215,9 +4297,7 @@
         "Physical Therapy",
         "Postbaccalaureate Pre-Med",
         "Rehabilitation Sciences"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--281212b578d02f8ea5f12cb2e41c4780e2cdb05f/j_pierce.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBTdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--281212b578d02f8ea5f12cb2e41c4780e2cdb05f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_pierce.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4253,6 +4333,8 @@
     "id": "117",
     "type": "person",
     "attributes": {
+      "label": "Jenny  Pierce",
+      "updated_at": "2018-12-05T14:04:36.181-05:00",
       "name": "Jenny  Pierce",
       "first_name": "Jenny ",
       "last_name": "Pierce",
@@ -4301,6 +4383,8 @@
     "id": "148",
     "type": "person",
     "attributes": {
+      "label": "John Pyle",
+      "updated_at": "2019-02-11T11:24:16.295-05:00",
       "name": "John Pyle",
       "first_name": "John",
       "last_name": "Pyle",
@@ -4309,9 +4393,7 @@
       "phone_number": "2152048363",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4f734ccb9682d911e350796009439c697e78c6a8/j_pyle.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYXM9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4f734ccb9682d911e350796009439c697e78c6a8/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_pyle.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4339,15 +4421,15 @@
     "id": "72",
     "type": "person",
     "attributes": {
+      "label": "John Rambo",
+      "updated_at": "2018-11-02T16:02:25.123-04:00",
       "name": "John Rambo",
       "first_name": "John",
       "last_name": "Rambo",
       "job_title": "Serials Supervisor",
       "email_address": "john.rambo@temple.edu",
       "phone_number": "2152041359",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a405eaf401b6632ece7485253598636405ed20e/j_rambo.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--3a405eaf401b6632ece7485253598636405ed20e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_rambo.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4375,6 +4457,8 @@
     "id": "130",
     "type": "person",
     "attributes": {
+      "label": "Stefanie Ramsay",
+      "updated_at": "2019-02-11T11:31:29.374-05:00",
       "name": "Stefanie Ramsay",
       "first_name": "Stefanie",
       "last_name": "Ramsay",
@@ -4383,9 +4467,7 @@
       "phone_number": "2152044942",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2afc5c8337e427874d01262134c468e479cf1d3/ramsay_s.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYlk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b2afc5c8337e427874d01262134c468e479cf1d3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/ramsay_s.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4413,6 +4495,8 @@
     "id": "154",
     "type": "person",
     "attributes": {
+      "label": "Julie Randolph",
+      "updated_at": "2019-01-10T09:53:00.160-05:00",
       "name": "Julie Randolph",
       "first_name": "Julie",
       "last_name": "Randolph",
@@ -4449,15 +4533,15 @@
     "id": "29",
     "type": "person",
     "attributes": {
+      "label": "Katy Rawdon",
+      "updated_at": "2018-11-02T15:45:12.229-04:00",
       "name": "Katy Rawdon",
       "first_name": "Katy",
       "last_name": "Rawdon",
       "job_title": "Librarian and Coordinator of Technical Services",
       "email_address": "krawdon@temple.edu",
       "phone_number": "2152045250",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af591922e94007cbc31698033ba0c35f4ba76ce3/k_rawdon.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--af591922e94007cbc31698033ba0c35f4ba76ce3/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_rawdon.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4485,15 +4569,15 @@
     "id": "78",
     "type": "person",
     "attributes": {
+      "label": "Joanne Rempfer",
+      "updated_at": "2018-11-02T16:04:53.642-04:00",
       "name": "Joanne Rempfer",
       "first_name": "Joanne",
       "last_name": "Rempfer",
       "job_title": "Bibliographic Assistant II",
       "email_address": "jrempfer@temple.edu",
       "phone_number": "2674688644",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba4756036a982dfc6bb71f7ee025744bb5ead98e/j_rempfer.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ba4756036a982dfc6bb71f7ee025744bb5ead98e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_rempfer.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4521,6 +4605,8 @@
     "id": "60",
     "type": "person",
     "attributes": {
+      "label": "Nick Reynolds",
+      "updated_at": "2018-10-23T10:59:56.900-04:00",
       "name": "Nick Reynolds",
       "first_name": "Nick",
       "last_name": "Reynolds",
@@ -4555,6 +4641,8 @@
     "id": "145",
     "type": "person",
     "attributes": {
+      "label": "David Ross",
+      "updated_at": "2019-01-03T09:45:04.912-05:00",
       "name": "David Ross",
       "first_name": "David",
       "last_name": "Ross",
@@ -4591,6 +4679,8 @@
     "id": "99",
     "type": "person",
     "attributes": {
+      "label": "Stephanie Roth",
+      "updated_at": "2018-12-05T14:05:32.994-05:00",
       "name": "Stephanie Roth",
       "first_name": "Stephanie",
       "last_name": "Roth",
@@ -4602,9 +4692,7 @@
         "Dentistry",
         "Kinesiology",
         "Urban Bioethics"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d84856fe4e2c58cfeb7792c33ade1a27ad0cb371/s_roth.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d84856fe4e2c58cfeb7792c33ade1a27ad0cb371/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_roth.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4640,6 +4728,8 @@
     "id": "108",
     "type": "person",
     "attributes": {
+      "label": "Fred Rowland",
+      "updated_at": "2019-02-11T11:13:31.096-05:00",
       "name": "Fred Rowland",
       "first_name": "Fred",
       "last_name": "Rowland",
@@ -4653,9 +4743,7 @@
         "Jewish Studies",
         "Philosophy",
         "Religion"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYU09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cd0c4a322bc49d1210414470282e3452220b349/f_rowland.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYU09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--4cd0c4a322bc49d1210414470282e3452220b349/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/f_rowland.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4691,6 +4779,8 @@
     "id": "100",
     "type": "person",
     "attributes": {
+      "label": "Derrick D.  Russell",
+      "updated_at": "2019-02-11T11:11:28.923-05:00",
       "name": "Derrick D.  Russell",
       "first_name": "Derrick D. ",
       "last_name": "Russell",
@@ -4699,9 +4789,7 @@
       "phone_number": "2157072665",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7894e7b8f1f4f6566359e29628114e4597352891/d_russell.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7894e7b8f1f4f6566359e29628114e4597352891/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/d_russell.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4729,6 +4817,8 @@
     "id": "155",
     "type": "person",
     "attributes": {
+      "label": "Iris Sanders",
+      "updated_at": "2019-01-10T09:59:28.795-05:00",
       "name": "Iris Sanders",
       "first_name": "Iris",
       "last_name": "Sanders",
@@ -4765,15 +4855,15 @@
     "id": "79",
     "type": "person",
     "attributes": {
+      "label": "Darryl Sanford",
+      "updated_at": "2018-11-02T16:06:06.382-04:00",
       "name": "Darryl Sanford",
       "first_name": "Darryl",
       "last_name": "Sanford",
       "job_title": "Bibliographic Assistant",
       "email_address": "dlsanfor@temple.edu",
       "phone_number": "2674688646",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df48c54d27ba746ab674eb7ee7f0fb63bbd4192e/d_sanford.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--df48c54d27ba746ab674eb7ee7f0fb63bbd4192e/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/d_sanford.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4801,15 +4891,15 @@
     "id": "101",
     "type": "person",
     "attributes": {
+      "label": "Royce Sargeant",
+      "updated_at": "2018-11-02T16:10:52.524-04:00",
       "name": "Royce Sargeant",
       "first_name": "Royce",
       "last_name": "Sargeant",
       "job_title": "Assistant Director",
       "email_address": "rsargean@temple.edu",
       "phone_number": "2157072379",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--113d1b0defd86839d168fcf3a9cb78af10a933c1/r_sargeant.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--113d1b0defd86839d168fcf3a9cb78af10a933c1/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/r_sargeant.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4837,15 +4927,15 @@
     "id": "61",
     "type": "person",
     "attributes": {
+      "label": "Emily Schiller",
+      "updated_at": "2018-11-02T15:59:21.190-04:00",
       "name": "Emily Schiller",
       "first_name": "Emily",
       "last_name": "Schiller",
       "job_title": "Bibliographic Assistant II",
       "email_address": "eschiller@temple.edu",
       "phone_number": "2152047828",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22d9bfce2447f5497a31de6bc5b47e1bd3445fa5/e_schiller.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--22d9bfce2447f5497a31de6bc5b47e1bd3445fa5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_schiller.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4873,15 +4963,15 @@
     "id": "73",
     "type": "person",
     "attributes": {
+      "label": "J. Brian Schoolar",
+      "updated_at": "2018-11-02T16:02:51.766-04:00",
       "name": "J. Brian Schoolar",
       "first_name": "J. Brian",
       "last_name": "Schoolar",
       "job_title": "Head, Acquisitions & Collection Development",
       "email_address": "jbrian@temple.edu",
       "phone_number": "2152043258",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--35ba219887cacc9fadb2e1a5ad426a9616ae2d21/20120730_Schoolar_003_homepage.JPG",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--35ba219887cacc9fadb2e1a5ad426a9616ae2d21/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/20120730_Schoolar_003_homepage.JPG"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -4913,15 +5003,19 @@
     "id": "1",
     "type": "person",
     "attributes": {
+      "label": "Cynthia Schwarz",
+      "updated_at": "2019-06-12T12:30:18.419-04:00",
       "name": "Cynthia Schwarz",
       "first_name": "Cynthia",
       "last_name": "Schwarz",
       "job_title": "Lead Technology Coordinator",
       "email_address": "cynthiag@temple.edu",
       "phone_number": "2152048384",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--561b485d36dc975306111a7030c182a784262a49/c_gingrich.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--561b485d36dc975306111a7030c182a784262a49/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_gingrich.jpg"
+      "specialties": [
+        ""
+      ],
+      "image": "http://li656-65.members.linode.com/people/1/image/large",
+      "thumbnail_image": "http://li656-65.members.linode.com/people/1/image/thumbnail"
     },
     "relationships": {
       "groups": {
@@ -4941,10 +5035,6 @@
           {
             "id": "10",
             "type": "space"
-          },
-          {
-            "id": "17",
-            "type": "space"
           }
         ]
       }
@@ -4957,6 +5047,8 @@
     "id": "13",
     "type": "person",
     "attributes": {
+      "label": "Kaitlyn Semborksi",
+      "updated_at": "2019-01-08T10:42:01.742-05:00",
       "name": "Kaitlyn Semborksi",
       "first_name": "Kaitlyn",
       "last_name": "Semborksi",
@@ -4965,9 +5057,7 @@
       "phone_number": "2152048260",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9124eb80801328e5cc04d2a2beed6e40a2991e5/k_semborski.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f9124eb80801328e5cc04d2a2beed6e40a2991e5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_semborski.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -4995,6 +5085,8 @@
     "id": "115",
     "type": "person",
     "attributes": {
+      "label": "Adam Shambaugh",
+      "updated_at": "2019-02-11T11:08:05.322-05:00",
       "name": "Adam Shambaugh",
       "first_name": "Adam",
       "last_name": "Shambaugh",
@@ -5005,9 +5097,7 @@
         "",
         "Advertising",
         "Business"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f0bacc826ed8a836cffca786608473afac155534/a_shambaugh.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBWjg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f0bacc826ed8a836cffca786608473afac155534/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_shambaugh.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5039,6 +5129,8 @@
     "id": "48",
     "type": "person",
     "attributes": {
+      "label": "Caitlin Shanley",
+      "updated_at": "2018-12-05T15:13:17.880-05:00",
       "name": "Caitlin Shanley",
       "first_name": "Caitlin",
       "last_name": "Shanley",
@@ -5048,9 +5140,7 @@
       "specialties": [
         "",
         "American Studies"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14101ca96d9701275c788cb09e6f902384a67273/Caitlin3.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--14101ca96d9701275c788cb09e6f902384a67273/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/Caitlin3.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5086,6 +5176,8 @@
     "id": "146",
     "type": "person",
     "attributes": {
+      "label": "Matthew Shoemaker",
+      "updated_at": "2019-02-11T11:27:34.246-05:00",
       "name": "Matthew Shoemaker",
       "first_name": "Matthew",
       "last_name": "Shoemaker",
@@ -5094,9 +5186,7 @@
       "phone_number": "2152043435",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c451c3f591f70e74b50e9fcd6db2d97f1875214/m_shoemaker.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYTg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6c451c3f591f70e74b50e9fcd6db2d97f1875214/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/m_shoemaker.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5128,6 +5218,8 @@
     "id": "14",
     "type": "person",
     "attributes": {
+      "label": "Jackie Sipes",
+      "updated_at": "2018-12-05T13:55:01.684-05:00",
       "name": "Jackie Sipes",
       "first_name": "Jackie",
       "last_name": "Sipes",
@@ -5137,9 +5229,7 @@
       "specialties": [
         "",
         "Education"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b994d4417f2d9ea146c6af4bd59db672499890ae/j_sipes.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBHdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b994d4417f2d9ea146c6af4bd59db672499890ae/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_sipes.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5167,6 +5257,8 @@
     "id": "74",
     "type": "person",
     "attributes": {
+      "label": "Darina Skuba",
+      "updated_at": "2018-10-23T11:20:08.841-04:00",
       "name": "Darina Skuba",
       "first_name": "Darina",
       "last_name": "Skuba",
@@ -5201,15 +5293,15 @@
     "id": "15",
     "type": "person",
     "attributes": {
+      "label": "Margery N.  Sly",
+      "updated_at": "2018-11-02T15:43:00.391-04:00",
       "name": "Margery N.  Sly",
       "first_name": "Margery N. ",
       "last_name": "Sly",
       "job_title": "Director of Special Collections Research Center",
       "email_address": "msly@temple.edu",
       "phone_number": "2152041455",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7ce9279de0da71e522f22da4f66296c4072448/m_sly.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c7ce9279de0da71e522f22da4f66296c4072448/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/m_sly.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5249,6 +5341,8 @@
     "id": "16",
     "type": "person",
     "attributes": {
+      "label": "Sheryl Smack",
+      "updated_at": "2018-10-17T14:15:03.418-04:00",
       "name": "Sheryl Smack",
       "first_name": "Sheryl",
       "last_name": "Smack",
@@ -5283,15 +5377,15 @@
     "id": "44",
     "type": "person",
     "attributes": {
+      "label": "Cody Smallwood",
+      "updated_at": "2018-11-02T15:51:27.163-04:00",
       "name": "Cody Smallwood",
       "first_name": "Cody",
       "last_name": "Smallwood",
       "job_title": "Technical Support Specialist",
       "email_address": "csmallwo@temple.edu",
       "phone_number": "2152042820",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c399e099404e4f919851602798a14c41153f204d/c_smallwood.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBMQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c399e099404e4f919851602798a14c41153f204d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/c_smallwood.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5319,6 +5413,8 @@
     "id": "30",
     "type": "person",
     "attributes": {
+      "label": "Courtney Smerz",
+      "updated_at": "2018-10-17T14:38:27.931-04:00",
       "name": "Courtney Smerz",
       "first_name": "Courtney",
       "last_name": "Smerz",
@@ -5353,6 +5449,8 @@
     "id": "118",
     "type": "person",
     "attributes": {
+      "label": "Gretchen Sneff",
+      "updated_at": "2019-02-11T11:15:24.601-05:00",
       "name": "Gretchen Sneff",
       "first_name": "Gretchen",
       "last_name": "Sneff",
@@ -5365,9 +5463,7 @@
         "Electrical & Computer Engineering",
         "Mathematics",
         "Mechanical Engineering"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--98a1e426a6e476d66820fe0a1db5e6137474081c/g_sneff.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--98a1e426a6e476d66820fe0a1db5e6137474081c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/g_sneff.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5407,6 +5503,8 @@
     "id": "17",
     "type": "person",
     "attributes": {
+      "label": "Curtis  Starks",
+      "updated_at": "2018-10-17T14:16:01.324-04:00",
       "name": "Curtis  Starks",
       "first_name": "Curtis ",
       "last_name": "Starks",
@@ -5441,6 +5539,8 @@
     "id": "102",
     "type": "person",
     "attributes": {
+      "label": "Natalie Tagge",
+      "updated_at": "2018-12-05T14:05:03.917-05:00",
       "name": "Natalie Tagge",
       "first_name": "Natalie",
       "last_name": "Tagge",
@@ -5451,9 +5551,7 @@
         "",
         "Physician Assistant",
         "Podiatric Medicine"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6542758b672af24582b2d9e1e97e0a80877d6e58/n_tagge.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBUZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6542758b672af24582b2d9e1e97e0a80877d6e58/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/n_tagge.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5485,6 +5583,8 @@
     "id": "80",
     "type": "person",
     "attributes": {
+      "label": "Sandi Thompson",
+      "updated_at": "2018-12-05T13:55:49.069-05:00",
       "name": "Sandi Thompson",
       "first_name": "Sandi",
       "last_name": "Thompson",
@@ -5495,9 +5595,7 @@
         "",
         "Horticulture",
         "Landscape Architecture"
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45f6ebcd8bed15b97ebca43c65fe725f3e31c50f/s_thompson.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBRZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--45f6ebcd8bed15b97ebca43c65fe725f3e31c50f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/s_thompson.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5529,6 +5627,8 @@
     "id": "131",
     "type": "person",
     "attributes": {
+      "label": "Holly Tomren",
+      "updated_at": "2019-02-11T11:15:41.662-05:00",
       "name": "Holly Tomren",
       "first_name": "Holly",
       "last_name": "Tomren",
@@ -5537,9 +5637,7 @@
       "phone_number": "2152041040",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b41d552da53d4e8b18b3427d148093c468530d80/h_tomren.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYVk9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b41d552da53d4e8b18b3427d148093c468530d80/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/h_tomren.jpg"
+      ]
     },
     "relationships": {
       "groups": {
@@ -5571,15 +5669,15 @@
     "id": "41",
     "type": "person",
     "attributes": {
+      "label": "Emily Toner",
+      "updated_at": "2018-11-02T15:50:31.508-04:00",
       "name": "Emily Toner",
       "first_name": "Emily",
       "last_name": "Toner",
       "job_title": "Technology Projects Librarian",
       "email_address": "emily.toner@temple.edu",
       "phone_number": "2152042364",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ea640303ab0538f8353d0bcbbdaf0498e654fa5/e_toner.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBLUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5ea640303ab0538f8353d0bcbbdaf0498e654fa5/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_toner.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5611,15 +5709,15 @@
     "id": "49",
     "type": "person",
     "attributes": {
+      "label": "Evan Towle",
+      "updated_at": "2018-11-02T15:53:27.786-04:00",
       "name": "Evan Towle",
       "first_name": "Evan",
       "last_name": "Towle",
       "job_title": "Part-Time Librarian",
       "email_address": "towle@temple.edu",
       "phone_number": "2152048213",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--93a28fe9eed508498d9ef01346830586289b3c71/e_towle.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBNUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--93a28fe9eed508498d9ef01346830586289b3c71/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_towle.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5647,15 +5745,15 @@
     "id": "31",
     "type": "person",
     "attributes": {
+      "label": "Kimberly Tullly",
+      "updated_at": "2018-11-02T15:46:19.339-04:00",
       "name": "Kimberly Tullly",
       "first_name": "Kimberly",
       "last_name": "Tullly",
       "job_title": "Librarian and Curator of Rare Books",
       "email_address": "kimberly.tully@temple.edu",
       "phone_number": "2152044995",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f461630dc53f06bd9a3a55b974b91a83e0f19ce0/k_tully.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f461630dc53f06bd9a3a55b974b91a83e0f19ce0/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/k_tully.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5687,15 +5785,15 @@
     "id": "84",
     "type": "person",
     "attributes": {
+      "label": "Diane D.  Turner",
+      "updated_at": "2018-11-02T16:07:21.654-04:00",
       "name": "Diane D.  Turner",
       "first_name": "Diane D. ",
       "last_name": "Turner",
       "job_title": "Curator",
       "email_address": "ddturner@temple.edu",
       "phone_number": "2152046849",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13b12af1276f983403721884ef8adbd53249b4fc/d_turner.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--13b12af1276f983403721884ef8adbd53249b4fc/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/d_turner.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5723,15 +5821,15 @@
     "id": "18",
     "type": "person",
     "attributes": {
+      "label": "Nancy Turner",
+      "updated_at": "2018-11-02T15:43:23.002-04:00",
       "name": "Nancy Turner",
       "first_name": "Nancy",
       "last_name": "Turner",
       "job_title": "Associate Director for Organizational Research and Strategy Alignment",
       "email_address": "nancy.turner@temple.edu",
       "phone_number": "2152043260",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--679e9644a55601908e348ba7627fc41f585e691a/n_turner.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBIUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--679e9644a55601908e348ba7627fc41f585e691a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/n_turner.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5759,6 +5857,8 @@
     "id": "142",
     "type": "person",
     "attributes": {
+      "label": "Joan Vidal",
+      "updated_at": "2018-11-17T15:53:52.386-05:00",
       "name": "Joan Vidal",
       "first_name": "Joan",
       "last_name": "Vidal",
@@ -5793,6 +5893,8 @@
     "id": "19",
     "type": "person",
     "attributes": {
+      "label": "David Washington",
+      "updated_at": "2018-10-17T14:17:52.610-04:00",
       "name": "David Washington",
       "first_name": "David",
       "last_name": "Washington",
@@ -5827,15 +5929,15 @@
     "id": "62",
     "type": "person",
     "attributes": {
+      "label": "Evan Weinstein",
+      "updated_at": "2018-11-02T15:59:37.186-04:00",
       "name": "Evan Weinstein",
       "first_name": "Evan",
       "last_name": "Weinstein",
       "job_title": "Building Supervisor/Department Coordinator",
       "email_address": "evanw@temple.edu",
       "phone_number": "2152040910",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f108e7ad1a14ed940363694e9ed236aa8b3f38f/e_weinstein.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBPQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--7f108e7ad1a14ed940363694e9ed236aa8b3f38f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/e_weinstein.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5863,6 +5965,8 @@
     "id": "147",
     "type": "person",
     "attributes": {
+      "label": "H. Alex Werner-Colan",
+      "updated_at": "2019-04-16T14:38:37.208-04:00",
       "name": "H. Alex Werner-Colan",
       "first_name": "H. Alex",
       "last_name": "Werner-Colan",
@@ -5871,15 +5975,17 @@
       "phone_number": "2152043475",
       "specialties": [
         ""
-      ],
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b4d9cb3835410d429276cccee692d07b916d09a/a_werner.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYUE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1b4d9cb3835410d429276cccee692d07b916d09a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/a_werner.jpg"
+      ]
     },
     "relationships": {
       "groups": {
         "data": [
           {
             "id": "17",
+            "type": "group"
+          },
+          {
+            "id": "28",
             "type": "group"
           }
         ]
@@ -5901,6 +6007,8 @@
     "id": "63",
     "type": "person",
     "attributes": {
+      "label": "Katie Westbrook",
+      "updated_at": "2018-10-23T11:01:59.456-04:00",
       "name": "Katie Westbrook",
       "first_name": "Katie",
       "last_name": "Westbrook",
@@ -5935,15 +6043,15 @@
     "id": "75",
     "type": "person",
     "attributes": {
+      "label": "Joan Williams",
+      "updated_at": "2018-11-02T16:03:47.251-04:00",
       "name": "Joan Williams",
       "first_name": "Joan",
       "last_name": "Williams",
       "job_title": "Bibliographic Assistant I",
       "email_address": "jwill@temple.edu",
       "phone_number": "2152044572",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c66a9055ea12fe9126aa6bb56955e8f4247f0dd/j_williams.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBQZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9c66a9055ea12fe9126aa6bb56955e8f4247f0dd/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/j_williams.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -5971,15 +6079,15 @@
     "id": "85",
     "type": "person",
     "attributes": {
+      "label": "Leslie Willis-Lowry",
+      "updated_at": "2018-11-02T16:07:55.566-04:00",
       "name": "Leslie Willis-Lowry",
       "first_name": "Leslie",
       "last_name": "Willis-Lowry",
       "job_title": "Associate Archivist",
       "email_address": "lwillis@temple.edu",
       "phone_number": "2152045379",
-      "specialties": null,
-      "photo": "http://li656-65.members.linode.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a54373925994a0571b924391161231b6cff95129/l_lowry.jpg",
-      "thumbnail_photo": "http://li656-65.members.linode.com/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBSdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a54373925994a0571b924391161231b6cff95129/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTVRBd2VERXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--f121b07523f6eae468f4a4bafd9dddc9318cad3a/l_lowry.jpg"
+      "specialties": null
     },
     "relationships": {
       "groups": {
@@ -6007,6 +6115,8 @@
     "id": "143",
     "type": "person",
     "attributes": {
+      "label": "David Wilson",
+      "updated_at": "2018-11-17T15:54:42.915-05:00",
       "name": "David Wilson",
       "first_name": "David",
       "last_name": "Wilson",
@@ -6041,6 +6151,8 @@
     "id": "32",
     "type": "person",
     "attributes": {
+      "label": "Holly Wilson",
+      "updated_at": "2018-10-17T14:40:20.605-04:00",
       "name": "Holly Wilson",
       "first_name": "Holly",
       "last_name": "Wilson",
@@ -6075,6 +6187,8 @@
     "id": "156",
     "type": "person",
     "attributes": {
+      "label": "Sarah Yerger",
+      "updated_at": "2019-01-10T10:00:06.441-05:00",
       "name": "Sarah Yerger",
       "first_name": "Sarah",
       "last_name": "Yerger",
