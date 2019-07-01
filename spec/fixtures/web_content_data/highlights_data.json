@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "type": "highlight",
+    "attributes": {
+      "label": "Test Highlight",
+      "updated_at": "2018-11-26T15:01:57.012-05:00",
+      "title": "Test Highlight",
+      "blurb": "This is a test higlight",
+      "link": "http://nytimes.com",
+      "type_of_highlight": "Featured Resource",
+      "tags": "",
+      "promoted": true,
+      "link_label": null
+    }
+  },
+  {
+    "id": "2",
+    "type": "highlight",
+    "attributes": {
+      "label": "City Hall Holiday Tree",
+      "updated_at": "2019-01-03T10:56:27.358-05:00",
+      "title": "City Hall Holiday Tree",
+      "blurb": "Go see the holiday tree at city hall. It has a cool base that shows all the neighborhoods around philadelphia",
+      "link": "https://www.visitphilly.com/articles/philadelphia/guide-to-tree-lighting-celebrations-in-philadelphia-and-the-countryside/",
+      "type_of_highlight": "Featured Location",
+      "tags": "HSL, DSC",
+      "promoted": true,
+      "link_label": ""
+    }
+  },
+  {
+    "id": "3",
+    "type": "highlight",
+    "attributes": {
+      "label": "test",
+      "updated_at": "2018-12-20T09:19:04.855-05:00",
+      "title": "test",
+      "blurb": "tetet ewqwet qwe ewrqw",
+      "link": "http://google.com",
+      "type_of_highlight": "Program/Event",
+      "tags": "",
+      "promoted": false,
+      "link_label": ""
+    }
+  },
+  {
+    "id": "4",
+    "type": "highlight",
+    "attributes": {
+      "label": "test",
+      "updated_at": "2018-11-26T15:09:04.904-05:00",
+      "title": "test",
+      "blurb": "tetet ewqwet qwe ewrqw",
+      "link": "http://google.com",
+      "type_of_highlight": "Program/Event",
+      "tags": "",
+      "promoted": true,
+      "link_label": null
+    }
+  },
+  {
+    "id": "5",
+    "type": "highlight",
+    "attributes": {
+      "label": "Livingstone Undergraduate Research Awards",
+      "updated_at": "2018-12-20T09:18:34.274-05:00",
+      "title": "Livingstone Undergraduate Research Awards",
+      "blurb": "We are now accepting applications for the Livingstone Undergraduate Research Awards. The application deadline for the 2019 Livingstone Awards is Monday, February 18th.",
+      "link": "http://guides.temple.edu/livingstone#",
+      "type_of_highlight": "Program/Event",
+      "tags": "",
+      "promoted": true,
+      "link_label": "Livingstone Undergraduate Research Awards"
+    }
+  }
+]

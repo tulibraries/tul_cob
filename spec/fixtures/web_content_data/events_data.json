@@ -1,0 +1,33 @@
+[
+  {
+    "id": "87",
+    "type": "event",
+    "attributes": {
+      "label": "Celebrate Juneteenth with Charles L. Blockson",
+      "updated_at": "2019-05-09T09:15:31.980-04:00",
+      "title": "Celebrate Juneteenth with Charles L. Blockson",
+      "description": "<p>Join us to celebrate Juneteenth with Charles L. Blockson, curator emeritus of the Blockson Collection and author of <em>Black Genealogy </em>(among many other publications). We will also celebrate the 150th Anniversary of the Still Family Reunion and commemorate the 400th anniversary of the first documented arrival of captive Africans to the English North American colony of Virginia in 1619.</p>\n<p>Juneteenth is an annual holiday which occurs on June 19th and is one of the oldest celebrations of the abolition of slavery in the world. From its Galveston, Texas origin in 1865, the observance of June 19th as the African American Emancipation Day has spread across the United States and beyond. Today, Juneteenth commemorates African American freedom and emphasizes education and achievement.</p>\n<p><a href=\"https://www.eventbrite.com/e/celebrate-juneteenth-with-charles-l-blockson-tickets-61298493444\">Registration requested.</a></p>\n<p><em>Programs offered by Temple University Libraries are accessible to people with disabilities. Please contact Richie Holland, Director of Library Administration, at <a href=\"mailto:richieh@temple.edu\">richieh@temple.edu</a> or 215-204-3455 for more information, to request an accommodation, or with questions/concerns.</em></p>",
+      "start_time": "2019-06-19T14:00:00.000-04:00",
+      "end_time": "2019-06-19T14:00:00.000-04:00",
+      "cancelled": false,
+      "registration_status": true,
+      "registration_link": null,
+      "content_hash": "f3fd91507d147d20405edd02b754b4b679e7872d",
+      "alt_text": "book cover of Black Geneology by Charles L. Blockson",
+      "ensemble_identifier": null,
+      "tags": "Charles L. Blockson Collection",
+      "all_day": false,
+      "space": "Blockson Collection",
+      "address1": "1330 W. Polett Walk",
+      "address2": "Philadelphia, Philadelphia  19122",
+      "contact_name": "Leslie Willis-Lowry",
+      "contact_email": "lwillis@temple.edu",
+      "contact_phone": "2152045379",
+      "image": "http://li656-65.members.linode.com/events/87/image/large",
+      "thumbnail_image": "http://li656-65.members.linode.com/events/87/image/thumbnail"
+    },
+    "links": {
+      "self": "http://li656-65.members.linode.com/events/87"
+    }
+  }
+]
