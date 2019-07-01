@@ -475,17 +475,42 @@ RSpec.describe CatalogHelper, type: :helper do
           {
             document:
             {
-              format: ["eBooks"]
+              az_format: ["eBooks"]
             },
-            field: :format
+            field: :az_format
           }
         }
 
       it "includes link to database type" do
-        expect(database_type_links(args).first).to have_link("eBooks", href: "#{base_path}?f[format][]=eBooks")
+        expect(database_type_links(args).first).to have_link("eBooks", href: "#{base_path}?f[az_format][]=eBooks")
       end
     end
   end
+
+  describe "#database_subject_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
+    context "links to database type facet" do
+      let(:args) {
+          {
+            document:
+            {
+              az_subject_facet: ["art"]
+            },
+            field: :az_subject_facet
+          }
+        }
+
+      it "includes link to database type" do
+        expect(database_subject_links(args).first).to have_link("art", href: "#{base_path}?f[az_subject_facet][]=art")
+      end
+    end
+  end
+
 
   # TODO: Remove if BL get upgraded, see details in helper method doc.
   describe "#presenter" do
