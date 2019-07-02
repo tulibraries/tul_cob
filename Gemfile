@@ -8,7 +8,7 @@ gem "rails", "~> 5.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3"
 # Use Puma as the app server
-gem "puma", "~> 3.12"
+gem "puma", "~> 4.0"
 gem "bootstrap", "~> 4.3"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1"
