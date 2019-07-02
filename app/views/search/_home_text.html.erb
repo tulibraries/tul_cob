@@ -2,8 +2,8 @@
   <p class="section-heading"><%= t("bento.section_heading_html",
     articles: link_to(t("bento.articles"), search_path, class: "text-red"),
     journals: link_to(t("bento.journals"), search_journals_path, class: "text-red"),
-    databases: link_to(t("bento.databases"), search_journals_path, class: "text-red"),
-    more: link_to(t("bento.more"), search_databases_path, class: "text-red")) %></p>
+    databases: link_to(t("bento.databases"), search_databases_path, class: "text-red"),
+    more: link_to(t("bento.more"), search_catalog_path , class: "text-red")) %></p>
 
   <p class="section-heading"><strong><%= t("bento.library_search_question") %></strong></p>
   <p><%= t("bento.library_search_answer") %></p>
