@@ -114,7 +114,7 @@ en:
       author_label: "Chapter/Article Author: *"
       start_page: "Start page: *"
       end_page: "End page: *"
-      material_type: "Material Type: *"
+      material_type: "Material Type: (optional)"
       booking_start_date: "Booking Start Date: *"
       booking_end_date: "Booking End Date: *"
 
