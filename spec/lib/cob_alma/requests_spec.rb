@@ -165,12 +165,29 @@ RSpec.describe CobAlma::Requests do
         expect(described_class.asrs_descriptions(items_list)).to eq([])
       end
     end
-
   end
 
   describe "#asrs_pickup_locations" do
     it "displays MAIN as the pickup_location" do
       expect(described_class.asrs_pickup_locations).to eq(["Ambler Campus Library", "Charles Library (Main campus)", "Ginsburg Health Science Library", "Podiatry Library", "Harrisburg Campus Library"])
+    end
+  end
+
+  describe "#physical_material_type(items_list)" do
+    let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
+
+    context "record contains the same material type multiple times" do
+      it "returns each material type hash once" do
+        expect(described_class.physical_material_type(items_list)).to eq([{ "desc" => "DVD", "value" => "DVD" }])
+      end
+    end
+
+    context "record contains the same material type multiple times" do
+      let(:items_list) { Alma::BibItem.find("blank_material_type") }
+
+      it "returns each material type hash once" do
+        expect(described_class.physical_material_type(items_list)).to eq([])
+      end
     end
   end
 end

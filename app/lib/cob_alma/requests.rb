@@ -144,14 +144,14 @@ module CobAlma
     end
 
     def self.physical_material_type(items_list)
-      material_types = items_list.map { |item| item["item_data"]["physical_material_type"] }
+      material_types = items_list.map { |item| item["item_data"]["physical_material_type"] unless item["item_data"]["physical_material_type"]["value"] == "" }
 
       if material_types.any?
         material_types.each do |material|
           material
         end
       end
-      material_types.uniq
+      material_types.uniq.compact
     end
 
     def self.item_holding_ids(items_list)
