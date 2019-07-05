@@ -1,0 +1,12 @@
+<% format_facet = @response.aggregations["format"] %>
+
+<div class="bg-white p-4">
+  <div class="bento-resource-container">
+    <h2 class="bento-resource-types pb-3 border-bottom border-red"><%= t("bento.resource_types_header") %></h2>
+    <ul class="pt-2 m-0 pl-0 list-inline d-flex flex-wrap justify-content-start">
+      <% format_facet.items.each do |item| -%>
+        <li class="bento-resource-list-item list-inline-item pb-1"><%= render_bento_format_facet_value(item) %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

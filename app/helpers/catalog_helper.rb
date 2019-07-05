@@ -212,16 +212,16 @@ module CatalogHelper
     search_catalog_path(search_params)
   end
 
-  def back_to_books_path
-    search_books_path(search_params)
-  end
-
   def back_to_journals_path
     search_journals_path(search_params)
   end
 
   def back_to_articles_path
     search_path(search_params)
+  end
+
+  def back_to_databases_path
+    search_databases_path(search_params)
   end
 
   def get_search_params(field, query)
@@ -255,13 +255,26 @@ module CatalogHelper
 
   def subject_links(args)
     args[:document][args[:field]].map do |subject|
-      link_to(subject.sub("— — ", "— "), "#{search_catalog_path}?f[subject_facet][]=#{CGI.escape subject}")
+      link_to(subject.sub("— — ", "— "), "#{base_path}?f[subject_facet][]=#{CGI.escape subject}")
     end
   end
 
   def genre_links(args)
     args[:document][args[:field]].map do |genre|
       link_to(genre, "#{search_catalog_path}?f[genre_full_facet][]=#{CGI.escape genre}")
+    end
+  end
+
+  def database_subject_links(args)
+    args[:document][args[:field]].map do |subject|
+      link_to(subject.sub("— — ", "— "), "#{base_path}?f[az_subject_facet][]=#{CGI.escape subject}")
+    end
+  end
+
+
+  def database_type_links(args)
+    args[:document][args[:field]].map do |type|
+      link_to(type.sub("— — ", "— "), "#{base_path}?f[az_format][]=#{CGI.escape type}", class: "p-2")
     end
   end
 

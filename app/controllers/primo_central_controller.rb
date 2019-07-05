@@ -30,10 +30,10 @@ class PrimoCentralController < CatalogController
     # Pagination handler
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
-    #config.add_show_tools_partial(:bookmark, partial: "bookmark_control")
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control")
     config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
-    #config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
-    #config.add_results_document_tool(:bookmark, partial: "bookmark_control")
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control")
 
     # Search fields
     config.add_search_field :any, label: "All Fields", catalog_map: :all_fields
@@ -52,6 +52,8 @@ class PrimoCentralController < CatalogController
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
     config.add_index_field :date, label: "Year"
     config.add_index_field :availability
+    config.add_index_field :status
+    config.add_index_field :error
 
     # Facet fields
     config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
@@ -102,17 +104,5 @@ class PrimoCentralController < CatalogController
   # This method is required and used by blacklight_range_limit gem.
   def solr_range_queries_to_a(solr_field)
     @response[:stats][:stats_fields][solr_field][:data] || []
-  end
-
-  def index
-    # Temporary override to add notice for BL-912
-    flash.now[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
-    super
-  end
-
-  def show
-    # Temporary override to add notice for BL-912
-    flash.now[:notice] = "The bookmark feature for articles is temporarily disabled due to system errors"
-    super
   end
 end

@@ -95,8 +95,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     value.gsub(/:/, " ") rescue value
   end
 
-  def no_books_or_journals(solr_parameters)
-    solr_parameters["fq"] = ["!format:Book", "!format:Journal/Periodical"]
+  def no_journals(solr_parameters)
+    solr_parameters["fq"] = ["!format:Journal/Periodical"]
   end
 
   ##

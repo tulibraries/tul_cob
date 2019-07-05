@@ -2,12 +2,12 @@ en:
   purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
   blacklight:
     application_name: "Library Search"
-    section_heading_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, materials  in the %{scrc} (SCRC) and the %{blockson}, etc., as well as ebooks, streaming audio and video, and other online resources. It includes items also found in %{books} and %{journals}."
+    section_heading_html: "<strong>Books & Media</strong> includes print and ebooks, streaming audio and video, DVDs, government documents, materials in our special and digital collections, and other online resources."
     scrc: "Special Collections Research Center"
     scrc_link: "https://library.temple.edu/scrc"
     blockson: "Charles L. Blockson Afro-American Collection"
     blockson_link: "https://library.temple.edu/collections/blockson"
-    explanation_html: "<strong>More</strong> includes print books and journals, DVDs, government documents, archival materials, as well as ebooks, streaming audio and video, and other online resources."
+    explanation_html: "<strong>Library Search:</strong> results from Books &amp; Media, Articles, Journals, Databases, and the Library Website."
     zero_results:
       title_html: "<strong>No results</strong> found for your search."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
@@ -134,27 +134,35 @@ en:
       nice_name: "Articles"
     journals:
       nice_name: "Journals"
-    books:
-      nice_name: "Books"
+    more: "Books & Media"
+    databases: "Databases"
+    resource_types_header: "View additional resource types"
     application_name: "Library Bento Search Beta"
-    explanation_html: "<strong>Library Search:</strong> results from %{books}, %{articles}, %{journals}, and %{more}."
-    section_heading_html: "Search <strong>Everything</strong> to discover results from across Temple Libraries collections in %{books}, %{articles}, %{journals}, and %{more}."
-    books: "Books"
+    explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
+    section_heading_html: "Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, and %{journals}."
     articles: "Articles"
     journals: "Journals"
-    more: "More"
+    books_and_media: "Books & Media"
     library_search_question: "What is Library Search?"
-    library_search_answer: "Library search is your gateway to discover library content. Use Library Search to find books, articles, newspapers, archival material, images, streaming media, and much more. Library Search shows results from two collections:"
-    need_help: "Need help using Library Search?"
-    more_information: "Looking for more information on Library Search? Refer to our "
+    library_search_answer: "Library search makes it easier to discover all that Temple Libraries has to offer. Use Library Search to find books, scholarly articles, databases, newspapers, archival material, images, streaming media, and much more."
+    need_help_html: "<strong>Need help using Library Search?</strong>"
+    library_help_html: "Try our %{href} service."
+    more_information_html: "<strong>Want more information on Library Search?</strong>"
+    more_information_answer_html: "Refer to our %{href}"
+    more_information_answer_href: "Frequently Asked Questions."
     zero_results:
       scholarly_journals_html: "If you’re looking for scholarly journal articles, try searching in %{href}."
       scholarly_journals_href: "Articles"
       general_keywords: "Try more general keywords (e.g. ‘business’ or ‘education’) for discipline-based journals."
+      databases_html: "Try browsing our databases by %{href} or"
+      databases_href: "subject"
+      databases_link: "https://library.temple.edu/database-finder"
+      databases_two: "alphabetically."
+      databases_two_link: "https://guides.temple.edu/az.php"
   catalog_advanced_search: "Advanced Search"
-  books_advanced_search: "Advanced Books Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
+  databases_advanced_search: "Advanced Databases Search"
   ask_librarian: "Ask a Librarian"
 
   no_results:
@@ -181,14 +189,6 @@ en:
     podiatry_illiad_href: "ILLiad for Podiatry Library"
     podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
 
-  books:
-    section_heading_html: "<strong>Books</strong> includes print and electronic books, government documents, archival materials, and more."
-    explanation_html: "<strong>Books</strong> includes print and electronic books, government documents, materials from the %{href}, and more."
-    explanation_href: "Special Collections Research Center"
-    explanation_link: "https://library.temple.edu/scrc"
-    zero_results:
-      title_html: "<strong>No book results</strong> found for your search."
-
   primo_central:
     link_to_resource: "Link to Resource"
 
@@ -203,6 +203,15 @@ en:
       database_finder_link: "https://library.temple.edu/database-finder"
       find_articles: "How do I find articles?"
       find_articles_link: "http://answers.library.temple.edu/faq/195650"
+
+  databases:
+    link_text: "Browse all databases by subject"
+    link_href: "https://library.temple.edu/database-finder"
+    find_articles: "How do I find articles?"
+    find_articles_href: "http://answers.library.temple.edu/faq/195650"
+    home_html: "<strong>Databases</strong> includes links to searchable subscription and open-access databases containing a variety of source types."
+    home_question_html: "<strong>Not sure which database to start with?</strong>"
+    subject_browse_html: "Try browsing by %{href} or "
 
   availability_code:
     online_resources: "Online"

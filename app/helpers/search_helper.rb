@@ -6,7 +6,7 @@ module SearchHelper
   # @param [Blacklight::Solr::Response::Facets::FacetField] facet_field
   # @param [String] item
   # @return [String]
-  def path_for_more_facet(facet_field, item)
+  def path_for_books_and_media_facet(facet_field, item)
     if item.value == "digital_collections"
       "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
     else
@@ -27,12 +27,16 @@ module SearchHelper
 
   def bento_titleize(id)
     engine = BentoSearch.get_engine(id)
-    link_to id.titleize , engine.url(self), id: "bento_" + id
+    if id == "books_and_media"
+      link_to "Books & Media", engine.url(self), id: "bento_" + id
+    else
+      link_to id.titleize , engine.url(self), id: "bento_" + id
+    end
   end
 
   def render_bento_results(results = @results, options = {})
     results_class = options[:results_class] || "d-md-flex flex-wrap"
-    comp_class = options[:comp_class] || "bento_compartment w-25 p-2"
+    comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 mr-4"
 
     render partial: "bento_results", locals: {
       results_class: results_class,

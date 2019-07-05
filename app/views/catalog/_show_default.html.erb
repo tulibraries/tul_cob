@@ -1,11 +1,13 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view %>
 <div class="record-page-wrapper d-md-flex flex-sm-column flex-md-row">
-  <div class="record-view thumbnail col-sm-12 col-md-2"
-    <%= isbn_data_attribute(document) %> >
-    <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible" %>
-    <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
-  </div>
+  <% unless controller_name == "databases" %>
+    <div class="record-view thumbnail col-sm-12 col-md-2"
+      <%= isbn_data_attribute(document) %> >
+      <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible" %>
+      <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
+    </div>
+  <% end %>
 
   <div class="show_page_records">
     <dl class="row document-metadata mb-0 show-page-list">

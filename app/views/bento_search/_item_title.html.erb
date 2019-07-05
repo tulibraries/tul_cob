@@ -25,7 +25,7 @@
       <% end %>
     <% end %>
 
-    <%= link_to_unless(item.link.blank?, item.complete_title, item.link) %>
+    <%= link_to_unless(item.link.blank?, item.complete_title.truncate(130), item.link) %>
 
     <% if item.display_format.present? || item.display_language.present? %>
 

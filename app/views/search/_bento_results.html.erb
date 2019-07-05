@@ -1,6 +1,6 @@
-<div class="<%= results_class %>">
+<div class="<%= results_class %> masonry px-3">
   <% renderable_results(results, options).each_pair do |engine_id, result| %>
-    <div class="mx-auto <%= comp_class %> <%= engine_id %>">
+    <div class="mx-auto test <%= comp_class %> <%= engine_id %>">
       <h2 class="rounded-top m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
       <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
         <%= bento_search result %>

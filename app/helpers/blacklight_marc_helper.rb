@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BlacklightMarcHelper
-  # This method is brought over from the Blacklight Marc gem so that we can include the links for books and journals
+  # This method is brought over from the Blacklight Marc gem so that we can include the links for journals
   def refworks_export_url(params = {})
     "http://www.refworks.com/express/expressimport.asp?vendor=#{CGI.escape(params[:vendor] || application_name)}&filter=#{CGI.escape(params[:filter] || "MARC Format")}&encoding=65001" + (("&url=#{CGI.escape(params[:url])}" if params[:url]) || "")
   end
@@ -13,8 +13,6 @@ module BlacklightMarcHelper
     case controller_name
     when "catalog"
       refworks_export_url(url: solr_document_url(opts[:id], format: :refworks_marc_txt))
-    when "books"
-      refworks_export_url(url: solr_book_document_url(opts[:id], format: :refworks_marc_txt))
     when "journals"
       refworks_export_url(url: solr_journal_document_url(opts[:id], format: :refworks_marc_txt))
     end

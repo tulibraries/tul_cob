@@ -53,7 +53,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 7.0"
+gem "blacklight", "~> 7.1.0.alpha"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
 gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
@@ -84,7 +84,7 @@ gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
-gem "capybara", "3.22.0"
+gem "capybara", "3.25.0"
 gem "webmock"
 gem "bento_search"
 gem "omniauth-shibboleth"

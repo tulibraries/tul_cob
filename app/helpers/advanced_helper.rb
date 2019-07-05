@@ -72,15 +72,15 @@ module AdvancedHelper
     if current_page? search_catalog_path
       id = :catalog_advanced_search
       url = advanced_search_path(query)
-    elsif current_page? search_books_path
-      id = :books_advanced_search
-      url = books_advanced_search_path(query)
     elsif current_page? search_journals_path
       id = :journals_advanced_search
       url = journals_advanced_search_path(query)
     elsif current_page? search_path
       id = :articles_advanced_search
       url = articles_advanced_search_path(query)
+    elsif current_page? search_databases_path
+      id = :databases_advanced_search
+      url = databases_advanced_search_path(query)
     end
 
     link_to(t(id), url, class: "advanced_search", id: id) if id
@@ -102,12 +102,12 @@ module AdvancedHelper
   def basic_search_path
     if current_page? advanced_search_path
       search_catalog_path
-    elsif current_page? books_advanced_search_path
-      search_books_path
     elsif current_page? journals_advanced_search_path
       search_journals_path
     elsif current_page? articles_advanced_search_path
       search_path
+    elsif current_page? databases_advanced_search_path
+      search_databases_path
     else
       search_catalog_path
     end
@@ -116,14 +116,20 @@ module AdvancedHelper
   def advanced_search_form_title
     if current_page? advanced_search_path
       t(:catalog_advanced_search)
-    elsif current_page? books_advanced_search_path
-      t(:books_advanced_search)
     elsif current_page? journals_advanced_search_path
       t(:journals_advanced_search)
     elsif current_page? articles_advanced_search_path
       t(:articles_advanced_search)
+    elsif current_page? databases_advanced_search_path
+      t(:databases_advanced_search)
     else
       t(:catalog_advanced_search)
+    end
+  end
+
+  def render_pub_date_range
+    if blacklight_config.facet_fields["pub_date_sort"]
+      render "pub_date_sort_facet"
     end
   end
 end

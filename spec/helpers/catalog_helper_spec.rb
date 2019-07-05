@@ -407,6 +407,12 @@ RSpec.describe CatalogHelper, type: :helper do
   end
 
   describe "#subject_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
     context "links to exact subject facet string" do
       let(:args) {
           {
@@ -419,10 +425,10 @@ RSpec.describe CatalogHelper, type: :helper do
         }
 
       it "includes link to exact subject" do
-        expect(subject_links(args).first).to have_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle+East")
+        expect(subject_links(args).first).to have_link("Middle East", href: "#{base_path}?f[subject_facet][]=Middle+East")
       end
       it "does not link to only part of the subject" do
-        expect(subject_links(args).first).to have_no_link("Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Middle")
+        expect(subject_links(args).first).to have_no_link("Middle East", href: "#{base_path}?f[subject_facet][]=Middle")
       end
     end
 
@@ -437,7 +443,7 @@ RSpec.describe CatalogHelper, type: :helper do
           }
         }
       it "includes link to whole subject string" do
-        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{search_catalog_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
+        expect(subject_links(args).first).to have_link("Regions & Countries - Asia & the Middle East", href: "#{base_path}?f[subject_facet][]=Regions+%26+Countries+-+Asia+%26+the+Middle+East")
       end
     end
 
@@ -453,6 +459,98 @@ RSpec.describe CatalogHelper, type: :helper do
         }
       it "displays only one hyphen" do
         expect(subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
+  end
+
+  describe "#database_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
+    context "links to database type facet" do
+      let(:args) {
+          {
+            document:
+            {
+              az_format: ["eBooks"]
+            },
+            field: :az_format
+          }
+        }
+
+      it "includes link to database type" do
+        expect(database_type_links(args).first).to have_link("eBooks", href: "#{base_path}?f[az_format][]=eBooks")
+      end
+    end
+  end
+
+  describe "#database_subject_links(args)" do
+    let(:base_path) { "foo" }
+
+    before do
+      allow(helper).to receive(:base_path) { base_path }
+    end
+
+    context "links to database type facet" do
+      let(:args) {
+          {
+            document:
+            {
+              az_subject_facet: ["art"]
+            },
+            field: :az_subject_facet
+          }
+        }
+
+      it "includes link to database type" do
+        expect(database_subject_links(args).first).to have_link("art", href: "#{base_path}?f[az_subject_facet][]=art")
+      end
+    end
+  end
+
+
+  # TODO: Remove if BL get upgraded, see details in helper method doc.
+  describe "#presenter" do
+    let(:document) { double }
+
+    before do
+      allow(helper).to receive(:index_presenter).and_return(:index_presenter)
+      allow(helper).to receive(:show_presenter).and_return(:show_presenter)
+      allow(helper).to receive(:action_name).and_return(action_name)
+    end
+
+    context "action is show" do
+      let(:action_name) { "show" }
+
+      it "uses the show presenter" do
+        expect(helper.presenter(document)).to eq(:show_presenter)
+      end
+    end
+
+    context "action is citation" do
+      let(:action_name) { "citation" }
+
+      it "uses the show presenter" do
+        expect(helper.presenter(document)).to eq(:show_presenter)
+      end
+    end
+
+    context "action is index" do
+      let(:action_name) { "index" }
+
+      it "uses the index presenter" do
+        expect(helper.presenter(document)).to eq(:index_presenter)
+      end
+    end
+
+    context "action is foo" do
+      let(:action_name) { "foo" }
+
+      it "uses the index presenter (by default)" do
+        expect(helper.presenter(document)).to eq(:index_presenter)
       end
     end
   end
