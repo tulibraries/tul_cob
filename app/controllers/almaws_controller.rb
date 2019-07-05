@@ -38,13 +38,13 @@ class AlmawsController < CatalogController
     _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
     log = { type: "alma_bib_item", mms_id: @mms_id }
     @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }
-    @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK")  }.compact
+    @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK") }.compact
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
     @item_level_locations = CobAlma::Requests.item_level_locations(@items)
     @equipment = CobAlma::Requests.equipment(@items)
     @booking_location = CobAlma::Requests.booking_location(@items)
-    @material_types = CobAlma::Requests.physical_material_type(@items)
+    @material_types = CobAlma::Requests.physical_material_type(@items).compact if CobAlma::Requests.physical_material_type(@items).count > 1
     @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.temporary_pickup_location_for_move(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations
     @user_id = current_user.uid
