@@ -22,7 +22,7 @@ namespace :fortytu do
       web_content_url = Blacklight::Configuration.new.connection_config[:web_content_url]
       fixtures = args.fetch(:filepath, "spec/fixtures/web_content_data/*.json")
       Dir.glob(fixtures).sort.reverse.each do |file|
-        `SOLR_URL=#{web_content_url} traject -c lib/traject/web_content_indexer_config.rb #{fixtures}`
+        `SOLR_URL=#{web_content_url} traject -c lib/traject/web_content_indexer_config.rb #{file}`
       end
 
       `SOLR_URL=#{web_content_url} traject -c lib/traject/web_content_indexer_config.rb -x commit`
