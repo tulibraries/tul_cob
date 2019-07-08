@@ -19,7 +19,7 @@ test: &test
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8985}/solr/blacklight-core-test" %>
   az_url: <%= ENV['SOLR_AZ_URL'] || "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8985}/solr/az-database" %>
-  web_content_url: <%= ENV['SOLR_WEB_CONTENT_URL'] || "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8985}/solr/web-content-test" %>
+  web_content_url: <%= ENV['SOLR_WEB_CONTENT_URL'] || "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8985}/solr/web-content" %>
 production:
   adapter: solr
   az_url: <%= ENV['SOLR_AZ_URL'] || "http://127.0.0.1:8983/solr/az-database" %>
