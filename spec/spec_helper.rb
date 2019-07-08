@@ -197,7 +197,7 @@ RSpec.configure do |config|
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
 
-    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content-test\/select?/).
+    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content\/select?/).
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/web_content/solr_response_no_query.json"))
