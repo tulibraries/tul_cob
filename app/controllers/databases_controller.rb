@@ -119,7 +119,8 @@ class DatabasesController < CatalogController
     config.add_sort_field "title_sort asc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc", label: "title (Z to A)"
 
-    # Remove show doc actions.
+    # Remove show and index doc actions.
+    config.index.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
     config.show.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
 
   end
