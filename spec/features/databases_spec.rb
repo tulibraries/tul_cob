@@ -13,6 +13,9 @@ RSpec.feature "Databases AZ" do
       end
 
       expect(page).to have_text "Mental Measurements Yearbook with Tests in Print"
+
+      expect(page).not_to have_button("Bookmark")
+      expect(page).not_to have_button("Remove bookmark")
     end
   end
 end
