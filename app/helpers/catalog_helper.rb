@@ -33,7 +33,7 @@ module CatalogHelper
   def default_cover_image(document)
     formats = document.fetch(:format, [])
     # In case we fetched the default value, or the format value was ""
-    formats << "unknown" if formats.empty?
+    formats << "unknown" if formats.empty? 
     format = formats.first.to_s.parameterize.underscore
     image = Rails.application.config.assets.default_cover_image
       .merge(
