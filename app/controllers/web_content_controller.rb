@@ -3,8 +3,10 @@
 class WebContentController < CatalogController
   include CatalogConfigReinit
 
-
   configure_blacklight do |config|
+    # Remove show and index doc actions.
+    config.index.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
+
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:web_content_url]

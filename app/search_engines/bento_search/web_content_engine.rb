@@ -7,7 +7,7 @@ module BentoSearch
     def conform_to_bento_result(item)
       BentoSearch::ResultItem.new(
         title: item["web_title_display"].first,
-        link: solr_web_content_document_path(item, options = {}).first.gsub(/\http:/, "")
+        link: solr_web_content_document_path(item, options = {}).first
       )
     end
 
@@ -15,10 +15,6 @@ module BentoSearch
       # web_link_display is used for highlights
       item["web_url_display"] || item["web_base_url_display"] || item.fetch("web_link_display", "#")
     end
-
-    # def doc_link(item)
-    #   solr_web_content_document_path(item)
-    # end
 
     def url(helper)
       params = helper.params
