@@ -102,6 +102,7 @@ gem "breadcrumbs_on_rails"
 
 gem "traject", "~> 3.1"
 gem "traject_plus"
+gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git"
 
 group :production do
   gem "mysql2", "~> 0.5.2"
