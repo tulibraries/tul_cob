@@ -14,10 +14,7 @@ namespace :fortytu do
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
 
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb spec/fixtures/databases.json`
-
-      `traject -c #{Rails.configuration.traject_indexer} -x commit`
-      `SOLR_URL=#{az_url} traject -c lib/traject/databases_az_indexer_config.rb -x commit`
+      `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures`
 
       web_content_url = Blacklight::Configuration.new.connection_config[:web_content_url]
       fixtures = args.fetch(:filepath, "spec/fixtures/web_content_data/*.json")
