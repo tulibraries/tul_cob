@@ -6,7 +6,7 @@ RSpec.describe BentoSearch, type: :search_engine do
 
   let(:search_engine)  { BentoSearch.get_engine("books_and_media") }
 
-  let(:search_results) { VCR.use_cassette("bento_search_more") { search_engine.search("food") } }
+  let(:search_results) { search_engine.search("food") }
 
   let(:expected_fields) { RSpec.configuration.bento_expected_fields }
 
@@ -14,7 +14,7 @@ RSpec.describe BentoSearch, type: :search_engine do
     let (:item) { search_results[0] }
 
     it "sets custom_data to a Blackligh::Solr::Response" do
-      expect(item.custom_data).to be_a(Blacklight::Solr::Response)
+      expect(item.custom_data).to be_a(SolrDocument)
     end
   end
 
