@@ -62,8 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 829d67078b7da2a6b71fd674026f0f48e6ffa53e
-  branch: allow-ingesting-spec-fixtures
+  revision: a9ee4a3e6a6e1cc842982c3e3c1a8634da972c14
   specs:
     cob_az_index (0.1.0)
       gli (= 2.18.0)
