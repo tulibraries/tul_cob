@@ -19,18 +19,6 @@ module AvailabilityHelper
     end
   end
 
-  def availability_status_during_move(item)
-    unavailable_libraries = ["ASRS", "MEDIA", "MAIN", "SCRC", "DSC"]
-
-    if unavailable_libraries.include?(item.library) && item.location == "reserve" || unavailable_libraries.include?(item.library) && item.location == "m_reserve"
-      availability_status(item)
-    elsif unavailable_libraries.include?(item.library)
-      content_tag(:span, "", class: "close-icon") + "Not available pending move"
-    else
-      availability_status(item)
-    end
-  end
-
   def unavailable_items(item)
     if item.item_data["requested"] == true
       process_type = "Requested"
@@ -51,7 +39,7 @@ module AvailabilityHelper
     }.flatten
 
     alma_item_availability = items_list.all.collect { |item|
-      availability_status_during_move(item)
+      availability_status(item)
     }.flatten
 
     document_items.collect { |item|
@@ -116,18 +104,6 @@ module AvailabilityHelper
     library_name
   end
 
-  def temporary_library_name_for_move(short_code, items)
-    location = items.map do |item|
-      location(item)
-    end
-
-    if short_code == "MAIN" && location.include?("reserve") || short_code == "MEDIA" && location.include?("reserve")
-      library_name = "Tuttleman Circulation Desk"
-    else
-      library_name_from_short_code(short_code)
-    end
-  end
-
   def location(item)
     item["current_location"] ? item["current_location"] : item["permanent_location"]
   end
@@ -179,7 +155,7 @@ module AvailabilityHelper
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
     sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
-    items_hash = grouped_items.sort_by { |k, v| temporary_library_name_for_move(k, v) }.to_h
+    items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
     sorted_library_hash.each do |lib, items|
       unless items.empty?

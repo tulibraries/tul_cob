@@ -187,82 +187,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
-  describe "#availability_status_during_move(item)" do
-    context "item is located in ASRS and NOT reserve" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "base_status" =>
-             { "value" => "1" },
-             "policy" =>
-             { "desc" => "Non-circulating" },
-             "requested" => false,
-             "library" => {
-                    "value" => "ASRS",
-                    "desc" => "ASRS"
-              },
-              "location" => {
-                    "value" => "ASRS",
-                    "desc" => "Automated Storage System"
-              },
-           }
-         )
-      end
-
-      it "displays unavailable during move message" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"close-icon\"></span>Not available pending move"
-      end
-    end
-
-    context "item is located in reserves AND ASRS" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-          {
-            "base_status" =>
-              { "value" => "1" },
-            "policy" =>
-              { "desc" => "" },
-              "library" => {
-                     "value": "ASRS",
-                     "desc": "ASRS"
-               },
-            "location" =>
-              { "value" => "reserve" },
-            "requested" => false,
-          }
-       )
-      end
-
-      it "displays library use only" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Library Use Only"
-      end
-    end
-
-    context "item is located in a non-Paley location" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-          {
-            "base_status" =>
-              { "value" => "1" },
-            "policy" =>
-              { "desc" => "" },
-              "library" => {
-                     "value": "AMBLER",
-                     "desc": "AMBLER"
-               },
-            "location" =>
-              { "value" => "stacks" },
-            "requested" => false,
-          }
-       )
-      end
-
-      it "displays library use only" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Available"
-      end
-    end
-
-  end
-
   describe "#document_and_api_merged_results(document, items_list)" do
     context "item_pid from api matches item_pid in document" do
       let(:document) { { "items_json_display" =>
@@ -535,45 +459,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(library_name_from_short_code(short_code)).to eq "Charles Library"
       end
     end
-  end
-
-  describe "#temporary_library_name_for_move(short_code, items)" do
-    context "library name is Tuttleman for reserve items" do
-      let(:short_code) { "MAIN" }
-      let(:items) {
-          [{ "item_pid" => "12345",
-          "item_policy" => "5",
-          "permanent_library" => "MAIN",
-          "permanent_location" => "reserve",
-          "current_library" => "MAIN",
-          "current_location" => "reserve",
-          "call_number" => "DVD 13 A165",
-          "holding_id" => "22237957750003811" }]
-        }
-
-      it "displays Tuttleman Circulation Desk" do
-        expect(temporary_library_name_for_move(short_code, items)).to eq "Tuttleman Circulation Desk"
-      end
-    end
-
-    context "has no reserve items" do
-      let(:short_code) { "MAIN" }
-      let(:items) {
-          [{ "item_pid" => "12345",
-          "item_policy" => "5",
-          "permanent_library" => "MAIN",
-          "permanent_location" => "stacks",
-          "current_library" => "MAIN",
-          "current_location" => "stacks",
-          "call_number" => "DVD 13 A165",
-          "holding_id" => "22237957750003811" }]
-        }
-
-      it "displays regular library name" do
-        expect(temporary_library_name_for_move(short_code, items)).to eq "Charles Library"
-      end
-    end
-
   end
 
   describe "#alternative_call_number(item)" do

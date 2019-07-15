@@ -7,7 +7,7 @@ module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when  "LAW", "PRESSER"
+      when  "LAW", "PRESSER", "MAIN", "ASRS"
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -34,7 +34,7 @@ module CobAlma
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        [ "LAW", "MEDIA", "PRESSER"]
+        [ "LAW", "MEDIA", "PRESSER", "MAIN", "ASRS"]
       when :AMBLER
         ["AMBLER"]
       when :HSL
@@ -116,13 +116,7 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      # Temporary refactor to filter out descriptions in ASRS and MAIN during the move
-      libraries = items_list.all.select { |item| item }
-        .select { |i| i if i.library != "ASRS" }
-        .select { |i| i if i.library != "MAIN" }
-        .compact
-
-      descriptions = libraries.map(&:description)
+      descriptions = items_list.all.map(&:description)
 
       if descriptions.any?
         descriptions.each do |desc|
