@@ -45,7 +45,7 @@ class AlmawsController < CatalogController
     @equipment = CobAlma::Requests.equipment(@items)
     @booking_location = CobAlma::Requests.booking_location(@items)
     @material_types = CobAlma::Requests.physical_material_type(@items).compact if CobAlma::Requests.physical_material_type(@items).count > 1
-    @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.temporary_pickup_location_for_move(lib) } }
+    @pickup_locations = params[:pickup_location].split(",").collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations
     @user_id = current_user.uid
     @request_level = params[:request_level]
