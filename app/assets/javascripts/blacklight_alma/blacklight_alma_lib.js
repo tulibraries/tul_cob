@@ -54,7 +54,7 @@ var BlacklightAlma = function (options) {
 
  availabilityInfo = function (holding) {
    var library = holding['library'];
-   if (library == 'Paley Library') {
+   if (library == 'ASRS' || library == 'Paley Library') {
      library = "Charles Library";
    }
 
