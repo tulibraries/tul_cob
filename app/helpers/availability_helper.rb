@@ -184,8 +184,7 @@ module AvailabilityHelper
   def item_level_library_name(location_hash)
     location_hash.transform_values do |v|
       v.reduce({}) { |acc, lib|
-        #this will need to be changed back to library_name_from_short_code after the move
-        acc.merge!(temporary_pickup_location_for_move(lib) => lib)
+        acc.merge!(library_name_from_short_code(lib) => lib)
       }
     end
   end
