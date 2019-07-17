@@ -152,7 +152,7 @@ module CatalogHelper
       render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order_allowed"), class: "availability border border-tan-border"
+      content_tag :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
     else
       render_purchase_order_button(document: doc, config: field)
     end

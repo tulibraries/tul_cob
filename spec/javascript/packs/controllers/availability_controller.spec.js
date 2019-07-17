@@ -11,8 +11,8 @@ describe('AvailabilityController', () => {
   	        return $(this);
   	      }),
   	      type = $list.data("list-type"),
-  	      $more = $('<button class="btn btn-sm bg-tan text-red border border-tan-border m-2 show-all">Show All<span class="sr-only"> at ' + type + '</span></button>'),
-  	      $less = $('<button class="btn btn-sm bg-tan text-red border border-tan-border m-2 show-less">Show Less<span class="sr-only"> at ' + type + '</span></button>');
+  	      $more = $('<button class="btn btn-sm bg-tan text-red border border-header-grey m-2 show-all">Show All<span class="sr-only"> at ' + type + '</span></button>'),
+  	      $less = $('<button class="btn btn-sm bg-tan text-red border border-header-grey m-2 show-less">Show Less<span class="sr-only"> at ' + type + '</span></button>');
 
   	      init();
 
@@ -39,7 +39,7 @@ describe('AvailabilityController', () => {
   	  };
 
   	})(jQuery);
-    
+
   const controller = `
     <div data-controller="availability" data-availability-url="http://localhost:32770/almaws/item/991030169919703811?redirect_to=http%3A%2F%2Flocalhost%3A32770%2F%3Ff%255Bavailability_facet%255D%255B%255D%3DAt%2Bthe%2BLibrary">
       <div class="controls">

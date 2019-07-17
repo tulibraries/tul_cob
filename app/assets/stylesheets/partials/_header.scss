@@ -60,24 +60,6 @@ div.site-message {
 	color: $white;
 }
 
-#red-navbar h1 {
-	padding-left: 0;
-
-	@media(max-width: 768px) {
-		padding-left: 0.9375rem;
-	}
-
-}
-
-#red-navbar a#catalog-header {
-	font-family: "PT Sans";
-	font-size: 1.6rem;
-
-	@media(max-width: 485px) {
-	 font-size: 1.4rem;
-	}
-}
-
 ul.user-util-list,
 .faq-link {
 	justify-content: center;
@@ -101,32 +83,19 @@ ul.user-util-list,
 }
 
 /* HEADER WITH SEARCH INPUT */
-#search-navbar .container {
-	margin: 0 auto;
-	padding-left: 10%;
-	padding-right: 10%;
+#catalog-header {
+	font-family: "PT Sans";
+	font-size: 1.7rem;
+	font-weight: bold;
+	color: $black;
 
 	@media(max-width: 485px) {
-  	padding: 0;
-  }
-}
-
-.input-group > .custom-select:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.navbar-form {
-
-	@media(max-width: 991px) {
-		padding: 0.3125rem;
+	 font-size: 1.4rem;
 	}
 }
 
 a.advanced_search {
-	color: $red;
-	font-weight: bold;
-	text-decoration: underline;
+	color: $black;
 }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */

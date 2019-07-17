@@ -12,8 +12,8 @@ $(document).on('turbolinks:load', function() {
 	        return $(this);
 	      }),
 	      type = $list.data("list-type"),
-	      $more = $('<button class="btn btn-sm bg-tan text-red border border-tan-border m-2 show-all">Show All<span class="sr-only"> at ' + type + '</span></button>'),
-	      $less = $('<button class="btn btn-sm bg-tan text-red border border-tan-border m-2 show-less">Show Less<span class="sr-only"> at ' + type + '</span></button>');
+	      $more = $('<button class="btn btn-sm bg-tan text-red border border-header-grey m-2 show-all">Show All<span class="sr-only"> at ' + type + '</span></button>'),
+	      $less = $('<button class="btn btn-sm bg-tan text-red border border-header-grey m-2 show-less">Show Less<span class="sr-only"> at ' + type + '</span></button>');
 
 	      init();
 
