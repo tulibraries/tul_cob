@@ -94,8 +94,18 @@ ul.user-util-list,
 	}
 }
 
+.navbar-form {
+	width: 10rem;
+	text-align: center;
+
+}
+
 a.advanced_search {
 	color: $black;
+}
+
+.search-bar-container {
+	width: 60%;
 }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
