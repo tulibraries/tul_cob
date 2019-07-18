@@ -8,9 +8,9 @@ RSpec.feature "Basic Page Elements" do
   feature "Check the home page for nav elements when anonymous" do
     scenario "Go to the home page" do
       visit "/"
-      within("#red-navbar") do
-        expect(page).to have_text "Bookmarks"
-        expect(page).to have_text "My Library Account"
+      within("#website-navbar") do
+        expect(page).to have_text "About"
+        expect(page).to have_text "My Account"
       end
     end
 
@@ -29,9 +29,9 @@ RSpec.feature "Basic Page Elements" do
 
     scenario "Go to the home page" do
       visit "/"
-      within("#red-navbar") do
-        expect(page).to have_text "My Library Account"
-        expect(page).to have_text "Log Out"
+      within("#website-navbar") do
+        expect(page).to have_text "My Account"
+        # expect(page).to have_text "Log Out"
       end
     end
 

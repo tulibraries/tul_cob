@@ -6,7 +6,7 @@ RSpec.feature "Login Page" do
 
   it "has a My Library Account link" do
     visit "/"
-    expect(page).to have_link("My Library Account")
+    expect(page).to have_link("My Account")
   end
 
 
