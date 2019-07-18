@@ -221,4 +221,10 @@ module ApplicationHelper
       presenter.field_value(blacklight_config.show_fields[field])
     end
   end
+
+  def border_radius_class
+    if search_fields.length == 1
+      "rounded"
+    end
+  end
 end

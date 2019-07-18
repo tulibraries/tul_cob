@@ -35,98 +35,87 @@ div.site-message {
 	}
 }
 
-/* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
-#red-navbar  {
-	height: 3.125rem;
-	text-align: center;
-
-	@media(max-width: 992px) {
-		justify-content: left;
+/* WEBSITE HEADER */
+#main-menu {
+	ul {
+		li {
+			padding: 0 1.3125rem;
+			display: inline-block;
+			height: 100%;
+				a {
+					color: $white;
+					font-size: 1.3rem;
+					font-weight: 600;
+					@media screen and (max-width: 1039px) {
+						font-size:1.25rem;
+					}
+				}
+			}
+			li.nav-right {
+				@media screen and (min-width: 1040px) {
+					float: right;
+				}
+				padding-left: 3.0625rem;
+				border-color: $seagreen;
+				padding-right: 1rem;
+			}
+			li.nav-right.hours-nav {
+				background-image:asset-data-url('hours.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 2.625rem 2.625rem;
+			}
+			li.nav-right.chat-nav {
+			background-image:asset-data-url('chat.png');
+			background-position: 0.4375rem center;
+			background-repeat: no-repeat;
+			background-size: 3.0625rem 3.6875rem;
+			}
+			li.nav-right.account-nav {
+			background-image:asset-data-url('person.png');
+			background-position: 0.4375rem center;
+			background-repeat: no-repeat;
+			background-size: 2.625rem 2.625rem;
+			}
+		}
 	}
 
-	@media(min-width:600px) {
-		text-align: left;
-	}
-
-	@media(max-width: 485px) {
-		height: auto;
-		justify-content: center;
-		padding: 0;
-		text-align: center;
- 	}
-}
-
-#red-navbar a {
-	color: $white;
-}
-
-#red-navbar h1 {
-	padding-left: 0;
-
-	@media(max-width: 768px) {
-		padding-left: 0.9375rem;
-	}
-
-}
-
-#red-navbar a#catalog-header {
+/* HEADER WITH SEARCH INPUT */
+#catalog-header {
 	font-family: "PT Sans";
-	font-size: 1.6rem;
+	font-size: 1.7rem;
+	font-weight: bold;
+	color: $black;
 
 	@media(max-width: 485px) {
 	 font-size: 1.4rem;
 	}
 }
 
-ul.user-util-list,
-.faq-link {
-	justify-content: center;
+.navbar-form,
+#bookmarks_nav {
+	font-size: 1rem;
+	width: 12rem;
+	text-align: center;
 
-	@media(min-width:600px) {
-		padding: 0.625rem 0 0 0;
+	@media(max-width: 990px) {
+		padding: 1rem;
+		width: auto;
 	}
+
 }
 
-.user-links {
-	a:hover {
-		text-decoration: underline;
-	}
+a.advanced_search,
+a#bookmarks_nav {
+	color: $black;
 }
 
-.user-links .nav-link {
+.basic-search-group{
+	width: 28.125rem;
 
 	@media(max-width: 485px) {
-  	padding: 0;
-  }
-}
-
-/* HEADER WITH SEARCH INPUT */
-#search-navbar .container {
-	margin: 0 auto;
-	padding-left: 10%;
-	padding-right: 10%;
-
-	@media(max-width: 485px) {
-  	padding: 0;
-  }
-}
-
-.input-group > .custom-select:not(:last-child) {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.navbar-form {
-
-	@media(max-width: 991px) {
-		padding: 0.3125rem;
+		width: 20rem;
 	}
-}
-
-a.advanced_search {
-	color: $red;
-	font-weight: bold;
-	text-decoration: underline;
 }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */

@@ -5,7 +5,7 @@
 
 <% if availability_alert(@document) %>
   <div id="availability-alert" class="alert alert-info mb-0" role="alert">
-      <p>  <%= t("blacklight.errors.availability_alert_html", href: link_to(t("blacklight.errors.not_found_href"), t("blacklight.errors.not_found_link"))) %></p>
+      <p><%= t("blacklight.errors.availability_alert_html", href: link_to(t("blacklight.errors.not_found_href"), t("blacklight.errors.not_found_link"))) %></p>
   </div>
 <% end %>
 
@@ -13,14 +13,21 @@
 <% unless @document_availability.all?(&:empty?) %>
   <% sort_order_for_holdings(@document_availability).each do |key, items| %>
     <div data-long-list id="availability-container" class="m-0" data-controller="availability">
-      <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-tan-border justify-content-lg-between">
+      <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-header-grey justify-content-lg-between bg-header-grey">
         <div class="library-name card-title col-sm-12 col-md-4"><%= library_name_from_short_code(key) %></div>
         <div class="holdings-summary col-sm-12 col-md-4"><%= summary_list(items) %></div>
         <div class="aeon-request col-sm-12 col-md-4"><%= aeon_request_button(@document, key) %></div>
       </div>
 
+      <% if key == "ASRS" %>
+        <div id="bookbot-instructions" class="alert alert-info justify-content-center rounded-0" role="alert">
+          <p class="mb-0"><%= t("requests.bookbot_instructions") %></p>
+        </div>
+      <% end %>
+
+
       <% items.each do |item| %>
-        <div class="item-info row avail-info-rows border-bottom border-tan-border m-0">
+        <div class="item-info row avail-info-rows border-bottom border-header-grey m-0">
           <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
           <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
           <div class="col-sm-12 col-md-4">

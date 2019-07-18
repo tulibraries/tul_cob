@@ -14,15 +14,15 @@
 }
 
 .bento_compartment h2 {
-	background-color: #CECED0;
-	color: $bento-header;
+	background-color: $header-grey;
+	color: $bento-header-text;
 	font-family: "PT Sans";
 	font-size: 1.4rem;
 	height: 3.125rem;
 	padding: 0.75rem 0;
 
 	a {
-		color: $bento-header;
+		color: $bento-header-text;
 		margin-left: -0.3125rem;
 	}
 }
