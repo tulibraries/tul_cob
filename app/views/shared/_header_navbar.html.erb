@@ -16,24 +16,28 @@
 <nav id="website-navbar" class="navbar navbar-header bg-seagreen">
   <div class="d-inline-block w-100 mx-auto" id="main-menu">
     <ul class="list-unstyled p-0 m-0">
-      <li class="first"><%= link_to "About", "#" %></li>
-      <li><%= link_to "Visit & Study", "#" %></li>
-      <li><%= link_to "Research Services", "#" %></li>
-      <li class="last"><%= link_to "Contact Us", "#" %></li>
-      <li class="nav-right hours-nav"><%= link_to "Hours", "#" %></li>
+      <!-- These links go to the QA site.  They will need to be updated when the site goes into production -->
+      <li class="first"><%= link_to "About", "https://web.qa.tul-infra.page/about" %></li>
+      <li><%= link_to "Visit & Study", "https://web.qa.tul-infra.page/visit-study" %></li>
+      <li><%= link_to "Research Services", "https://web.qa.tul-infra.page/research-services" %></li>
+      <li class="last"><%= link_to "Contact Us", "https://web.qa.tul-infra.page/contact-us" %></li>
+      <li class="nav-right hours-nav"><%= link_to "Hours", "https://web.qa.tul-infra.page/hours" %></li>
       <li class="nav-right chat-nav"><%= link_to "Chat", "#" %></li>
       <li class="nav-right account-nav"><%= link_to "My Account", users_account_path %></li>
     </ul>
   </div>
 </nav>
 
-<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red" role="navigation">
-  <div class="search-bar-container d-lg-inline-flex align-items-center mx-auto">
-    <h1 class="col-sm-auto">
+<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red py-3" role="navigation">
+  <div class="d-lg-inline-flex align-items-center mx-auto">
+    <h1 class="text-center pr-4">
       <%= link_to("Library Search", everything_path, id: "catalog-header") %>
     </h1>
 
     <%= render_search_bar %>
+    <div class="text-center">
+      <%= render_bookmark_partial %>
+    </div>
   </div>
 </nav>
 

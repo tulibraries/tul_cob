@@ -14,9 +14,14 @@ RSpec.feature "Basic Page Elements" do
       end
     end
 
+    scenario "Search bar elements are present" do
+      visit "/"
+      within("#search-navbar") do
+        expect(page).to have_text "Library Search"
+        expect(page).to have_text "Bookmarks"
+      end
+    end
   end
-
-
 
   feature "Check for home page features when logged in" do
 

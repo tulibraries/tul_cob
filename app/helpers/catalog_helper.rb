@@ -377,4 +377,12 @@ module CatalogHelper
       .each_slice(2)
       .map { |_, phrase| link_to_query(phrase) }
   end
+
+  def render_bookmark_partial(options = {}, &block)
+    bookmark_partial = blacklight_config.navbar.partials
+    .select { |name| name == :bookmark }
+    .each { |name, partial| partial.if = true }
+
+    render_filtered_partials(bookmark_partial, &block)
+  end
 end
