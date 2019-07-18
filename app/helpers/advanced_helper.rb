@@ -84,6 +84,9 @@ module AdvancedHelper
     elsif current_page? everything_path
       id = :catalog_advanced_search
       url = advanced_search_path(query)
+    elsif current_page? root_path
+      id = :catalog_advanced_search
+      url = advanced_search_path(query)
     end
 
     link_to(t(id), url, class: "advanced_search", id: id) if id

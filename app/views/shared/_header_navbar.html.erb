@@ -5,11 +5,25 @@
   <% end %>
 </nav>
 
-<nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red py-0" role="navigation">
+<!-- <nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red py-0" role="navigation">
   <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap align-items-center">
     <div class="ml-auto col-sm-auto py-md-1">
       <%= render partial: "/user_util_links" %>
     </div>
+  </div>
+</nav> -->
+
+<nav id="website-navbar" class="navbar navbar-header bg-seagreen">
+  <div class="d-inline-block w-100 mx-auto" id="main-menu">
+    <ul class="list-unstyled p-0 m-0">
+      <li class="first"><%= link_to "About", "#" %></li>
+      <li><%= link_to "Visit & Study", "#" %></li>
+      <li><%= link_to "Research Services", "#" %></li>
+      <li class="last"><%= link_to "Contact Us", "#" %></li>
+      <li class="nav-right hours-nav"><%= link_to "Hours", "#" %></li>
+      <li class="nav-right chat-nav"><%= link_to "Chat", "#" %></li>
+      <li class="nav-right account-nav"><%= link_to "My Account", users_account_path %></li>
+    </ul>
   </div>
 </nav>
 
