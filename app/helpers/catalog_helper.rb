@@ -317,7 +317,7 @@ module CatalogHelper
     item_html = [item_html, electronic_notes]
       .select(&:present?).join(" ").html_safe
 
-    content_tag(:div, item_html , class: " electronic_links online-list-items online-card")
+    content_tag(:div, item_html , class: " electronic_links online-list-items online-card border-top-0")
   end
 
   def render_electronic_notes(field)
