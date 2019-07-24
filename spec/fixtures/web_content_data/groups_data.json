@@ -10,6 +10,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/1"
     }
   },
   {
@@ -23,6 +26,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/2"
     }
   },
   {
@@ -36,6 +42,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/3"
     }
   },
   {
@@ -49,6 +58,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/4"
     }
   },
   {
@@ -62,6 +74,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/5"
     }
   },
   {
@@ -75,6 +90,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/7"
     }
   },
   {
@@ -88,6 +106,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/8"
     }
   },
   {
@@ -101,6 +122,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/9"
     }
   },
   {
@@ -114,6 +138,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/10"
     }
   },
   {
@@ -127,6 +154,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/11"
     }
   },
   {
@@ -140,6 +170,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/12"
     }
   },
   {
@@ -153,6 +186,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/13"
     }
   },
   {
@@ -166,6 +202,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/14"
     }
   },
   {
@@ -179,6 +218,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/15"
     }
   },
   {
@@ -192,6 +234,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/16"
     }
   },
   {
@@ -205,6 +250,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/17"
     }
   },
   {
@@ -218,6 +266,9 @@
       "group_type": "Strategic Steering Team",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/18"
     }
   },
   {
@@ -231,6 +282,9 @@
       "group_type": "Strategic Steering Team",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/19"
     }
   },
   {
@@ -244,6 +298,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/20"
     }
   },
   {
@@ -257,6 +314,9 @@
       "group_type": "Strategic Steering Team",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/21"
     }
   },
   {
@@ -270,6 +330,9 @@
       "group_type": "Strategic Steering Team",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/22"
     }
   },
   {
@@ -283,6 +346,9 @@
       "group_type": "Assembly",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/23"
     }
   },
   {
@@ -296,6 +362,9 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/24"
     }
   },
   {
@@ -309,6 +378,9 @@
       "group_type": "Committee",
       "external": true,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/26"
     }
   },
   {
@@ -322,6 +394,9 @@
       "group_type": "Functional Team",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/27"
     }
   },
   {
@@ -335,6 +410,25 @@
       "group_type": "Department",
       "external": false,
       "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/28"
+    }
+  },
+  {
+    "id": "29",
+    "type": "group",
+    "attributes": {
+      "label": "LRS - Learning and Student Success",
+      "updated_at": "2019-06-26T16:17:26.708-04:00",
+      "name": "LRS - Learning and Student Success",
+      "description": "",
+      "group_type": "Department",
+      "external": false,
+      "add_to_footer": false
+    },
+    "links": {
+      "self": "https://web.qa.tul-infra.page/groups/29"
     }
   }
 ]

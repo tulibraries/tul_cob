@@ -40,7 +40,6 @@ class WebContentController < CatalogController
     config.add_index_field "web_blurb_display", label: "Blurb"
     config.add_index_field "web_tags_display", label: "Tags"
     config.add_index_field "web_link_display", label: "Link"
-    config.add_index_field "web_photo_display", label: ""
 
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
