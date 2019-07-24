@@ -13,20 +13,15 @@ namespace :fortytu do
       end
       `traject -c #{Rails.configuration.traject_indexer} -x commit`
 
-      # Short circuit if filpath is set because that's only safe for
+      # Short circuit if filepath is set because that's only safe for
       # ingesting marc files.
       next if args[:filepath]
 
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
       `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures`
 
-      web_content_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-      fixtures = "spec/fixtures/web_content_data/*.json"
-      Dir.glob(fixtures).sort.reverse.each do |file|
-        `SOLR_URL=#{web_content_url} traject -c lib/traject/web_content_indexer_config.rb #{file}`
-      end
-
-      `SOLR_URL=#{web_content_url} traject -c lib/traject/web_content_indexer_config.rb -x commit`
+      web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
+      `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures`
     end
 
     desc "Delete all items from Solr"
