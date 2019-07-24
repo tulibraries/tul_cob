@@ -2,7 +2,7 @@
 
 require "rsolr"
 
-namespace :fortytu do
+namespace :tul_cob do
   namespace :solr do
 
     desc "Posts fixtures to Solr"

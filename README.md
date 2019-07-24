@@ -124,14 +124,14 @@ bin/ingest.rb http://example.com/catalog/foo.xml
 
 ### Ingest AZ Database data
 AZ Database fixture data is loaded automatically when you run
-`bundle exec rake fortytu:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_az_index ingest $path_to_file_or_url`.
+`bundle exec rake tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_az_index ingest $path_to_file_or_url`.
 
 Note: If you make an update to cob_az_index, you will need to run `bundle update cob_az_index` locally.
 
 
 ### Ingest web content data
 Web content fixture data is loaded automatically when you run
-`bundle exec rake fortytu:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_web_index ingest $path_to_file_or_url`.
+`bundle exec rake tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_web_index ingest $path_to_file_or_url`.
 
 Note: If you make an update to cob_web_index, you will need to run `bundle update cob_web_index` locally.
 
@@ -142,9 +142,9 @@ an optional date/time ranges in ISO8901 format and enclosed in brackets. You may
 date/times. You may not provide only a `to` date/time
 
 ```bash
-bundle exec rake fortytu:oai:harvest[from,to]
-bundle exec rake fortytu:oai:conform_all
-bundle exec rake fortytu:oai:ingest_all
+bundle exec rake tul_cob:oai:harvest[from,to]
+bundle exec rake tul_cob:oai:conform_all
+bundle exec rake tul_cob:oai:ingest_all
 ```
 
 ## Running the Tests

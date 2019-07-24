@@ -11,7 +11,7 @@ module Oai
     # Params
     # +time_range+:: Optinoal hash containing +:from+ (start) and +:to+ (end) time in ISO8601.
     def self.harvest(time_range)
-      log_path = File.join(Rails.root, "log/fortytu.log")
+      log_path = File.join(Rails.root, "log/oai_alma.log")
       logger = Logger.new("| tee #{log_path}", 10, 1024000)
 
       from_time = time_range.fetch(:from) { "" }
@@ -50,7 +50,7 @@ module Oai
     end
 
     def self.conform(harvest_filename)
-      log_path = File.join(Rails.root, "log/fortytu.log")
+      log_path = File.join(Rails.root, "log/tul_cob.log")
       logger = Logger.new("| tee #{log_path}", 10, 1024000)
       begin
         oai = Nokogiri::XML(File.open(harvest_filename))

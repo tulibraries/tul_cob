@@ -6,7 +6,7 @@ require "tempfile"
 require "oai/alma"
 require "time"
 
-namespace :fortytu do
+namespace :tul_cob do
 
   desc "Posts fixtures to Solr"
   task :ingest, [:marc_file] => :environment do |t, args|
@@ -45,20 +45,20 @@ namespace :fortytu do
       if !args[:use_cache]
         # Delete the previous build's marc_xml_files.
         Dir.glob("tmp/alma/**/*.xml").each { |file| File.delete file }
-        Rake::Task["fortytu:oai:harvest"].invoke(from, to)
-        Rake::Task["fortytu:oai:conform_all"].invoke()
+        Rake::Task["tul_cob:oai:harvest"].invoke(from, to)
+        Rake::Task["tul_cob:oai:conform_all"].invoke()
       end
 
-      Rake::Task["fortytu:oai:ingest_all"].invoke()
-      Rake::Task["fortytu:purge"].invoke()
+      Rake::Task["tul_cob:oai:ingest_all"].invoke()
+      Rake::Task["tul_cob:purge"].invoke()
 
       # Check the build for errors.
-      if File.file? "log/fortytu.log.error"
+      if File.file? "log/tul_cob.log.error"
 
         # Print and archive the Error logs
         # TODO: DRY up log file determination
         main_logdir = File.join(Rails.root, "log/")
-        main_log = File.join(main_logdir, "fortytu.log")
+        main_log = File.join(main_logdir, "tul_cob.log")
         error_log = "#{main_log}.error"
 
         puts "Errors:"
@@ -86,7 +86,7 @@ namespace :fortytu do
 
     desc "Conforms all raw OAI MARC records to traject readable MARC records"
     task conform_all: :environment do
-      log_path = File.join(Rails.root, "log/fortytu.log")
+      log_path = File.join(Rails.root, "log/tul_cob.log")
       logger = Logger.new("| tee #{log_path}", 10, 4096000)
       begin
         oai_path = File.join(Rails.root, "tmp", "alma", "oai", "*.xml")
@@ -104,7 +104,7 @@ namespace :fortytu do
     desc "Ingest all readable MARC records"
     task ingest_all: :environment do
       main_logdir = File.join(Rails.root, "log/")
-      main_log = File.join(main_logdir, "fortytu.log")
+      main_log = File.join(main_logdir, "tul_cob.log")
       logger = Logger.new("| tee #{main_log}", 10, 1024000)
 
       ingest_logdir = File.join(main_logdir, "ingest/")

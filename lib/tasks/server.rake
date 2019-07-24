@@ -16,7 +16,7 @@ task :rspec, [:spec_args] do |t, args|
     system "java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 --stop"
     system "bundle exec solr_wrapper clean"
     run_solr("test", port: "8985") do
-      Rake::Task["fortytu:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
+      Rake::Task["tul_cob:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
       rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
       passed = system(rspec_cmd)
     end
@@ -29,7 +29,7 @@ end
 desc "Run solr and blacklight for interactive development"
 task :server, [:rails_server_args] do |t, args|
   run_solr("dev", port: "8983") do
-    Rake::Task["fortytu:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
+    Rake::Task["tul_cob:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
     system "bundle exec rails s #{args[:rails_server_args]}"
   end
 end
