@@ -72,6 +72,16 @@ GIT
       traject_plus (~> 1.1)
 
 GIT
+  remote: https://github.com/tulibraries/cob_web_index.git
+  revision: 1cebfc7ec22d13faa230f5f16a68148c328b90b1
+  specs:
+    cob_web_index (0.1.0)
+      gli (= 2.18.0)
+      httparty
+      traject (~> 3.1)
+      traject_plus (~> 1.1)
+
+GIT
   remote: https://github.com/tulibraries/primo
   revision: 695440062044db24a1d01c4fd873c4767e28dff6
   specs:
@@ -567,6 +577,7 @@ DEPENDENCIES
   capybara (= 3.26.0)
   cdm!
   cob_az_index!
+  cob_web_index!
   coffee-rails (~> 5.0)
   coveralls
   database_cleaner
