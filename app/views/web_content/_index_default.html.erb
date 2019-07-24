@@ -6,8 +6,6 @@
     <%= link_to document do %>
       <% if document['web_photo_display'] %>
         <%= image_tag document['web_photo_display'].first, :alt => "Image of " + document["title_statement_display"].to_s, :class => "staff_thumbnail"  %>
-      <% else %>
-        <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
       <% end %>
     <% end %>
   </div>
