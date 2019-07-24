@@ -7,7 +7,7 @@ rvm:
 - 2.4.1
 env:
 - TZ=America/New_York
-jdk: oraclejdk8
+jdk: oraclejdk9
 
 before_script:
 - cp config/secrets.yml.example config/secrets.yml
