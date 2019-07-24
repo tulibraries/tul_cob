@@ -5,16 +5,8 @@
   <% end %>
 </nav>
 
-<!-- <nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red py-0" role="navigation">
-  <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap align-items-center">
-    <div class="ml-auto col-sm-auto py-md-1">
-      <%= render partial: "/user_util_links" %>
-    </div>
-  </div>
-</nav> -->
-
-<nav id="website-navbar" class="navbar navbar-header bg-seagreen">
-  <div class="d-inline-block w-100 mx-auto" id="main-menu">
+<nav id="website-navbar" class="navbar navbar-header bg-seagreen px-0">
+  <div class="row d-none d-sm-none d-md-none d-lg-block w-100 mx-auto" id="main-menu">
     <ul class="list-unstyled p-0 m-0">
       <!-- These links go to the QA site.  They will need to be updated when the site goes into production -->
       <li class="first"><%= link_to "About", "https://web.qa.tul-infra.page/about" %></li>
@@ -25,6 +17,10 @@
       <li class="nav-right chat-nav"><%= link_to "Chat", "#" %></li>
       <li class="nav-right account-nav"><%= link_to "My Account", users_account_path %></li>
     </ul>
+  </div>
+
+  <div class="row d-block d-sm-block d-md-block d-lg-none" id="mobile-nav">
+    <%= render "mobile_nav" %>
   </div>
 </nav>
 

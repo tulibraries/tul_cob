@@ -53,26 +53,26 @@ div.site-message {
 			}
 			li.nav-right {
 				@media screen and (min-width: 1040px) {
-					float: right;
+					float: right !important;
 				}
 				padding-left: 3.0625rem;
 				border-color: $seagreen;
 				padding-right: 1rem;
 			}
 			li.nav-right.hours-nav {
-				background-image:asset-data-url('hours.png');
+				background-image: asset-data-url('hours.png');
 				background-position: 0.4375rem center;
 				background-repeat: no-repeat;
 				background-size: 2.625rem 2.625rem;
 			}
 			li.nav-right.chat-nav {
-			background-image:asset-data-url('chat.png');
+			background-image: asset-data-url('chat.png');
 			background-position: 0.4375rem center;
 			background-repeat: no-repeat;
 			background-size: 3.0625rem 3.6875rem;
 			}
 			li.nav-right.account-nav {
-			background-image:asset-data-url('person.png');
+			background-image: asset-data-url('person.png');
 			background-position: 0.4375rem center;
 			background-repeat: no-repeat;
 			background-size: 2.625rem 2.625rem;
