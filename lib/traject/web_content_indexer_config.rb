@@ -80,6 +80,7 @@ to_field "web_phone_number_display", extract_json("$.attributes.phone_number")
 to_field "web_photo_display", extract_json("$.attributes.thumbnail_image")
 to_field "web_subject_display", extract_json("$.attributes.subject")
 to_field "web_base_url_display", extract_json("$.attributes.base_url")
+to_field "web_url_display", extract_json("$.links.self")
 
 # This attribute isn't displayed for every entity that contains it
 # What is the best way to suppress this for entities that don't use it?

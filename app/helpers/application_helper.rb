@@ -71,6 +71,8 @@ module ApplicationHelper
       content_tag(:span, "", class: "bento-icon bento-database m-3")
     when "books_and_media"
       content_tag(:span, "", class: "bento-icon bento-book m-3")
+    when "website"
+      content_tag(:span, "", class: "bento-icon bento-website m-3")
     end
   end
 

@@ -4,6 +4,13 @@ require "rails_helper"
 
 RSpec.describe WebContentHelper, type: :helper do
   describe "#solr_web_content_document_path(document, options = {})" do
+    context "document has a web_url_display field" do
+      let(:document) { { "web_url_display" => ["https://library.temple.edu/about/staff?f%5B0%5D=taxonomy_vocabulary_2%3A1038"] } }
+
+      it "links to the url" do
+        expect(helper.solr_web_content_document_path(document, options = {})).to eq(["https://library.temple.edu/about/staff?f%5B0%5D=taxonomy_vocabulary_2%3A1038"])
+      end
+    end
     context "document has a web_base_url_display field" do
       let(:document) { { "web_base_url_display" => ["https://sites.temple.edu/librarynews/"] } }
 
