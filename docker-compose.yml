@@ -21,7 +21,6 @@ services:
       - "traefik.docker.network=reverseproxy_default"
     networks:
       - "default"
-      - "reverseproxy_default"
     depends_on:
       - solr
     entrypoint:
@@ -44,8 +43,3 @@ services:
       - /opt/solr/conf
       - "-Xms256m"
       - "-Xmx512m"
-
-networks:
-  reverseproxy_default:
-    external:
-      name: reverseproxy_default
