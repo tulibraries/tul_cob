@@ -385,4 +385,13 @@ module CatalogHelper
 
     render_filtered_partials(bookmark_partial, &block)
   end
+
+  def document_show_primary_fields(document)
+    document_show_fields(document).select { |field_name, field|
+      field[:type] == :primary }
+  end
+
+  def document_show_secondary_fields(document)
+    document_show_fields(document).select { |field_name, field| field[:type] != :primary }
+  end
 end

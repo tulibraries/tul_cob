@@ -9,6 +9,12 @@
     </div>
   <% end %>
 
+  <%= render "show_primary_fields", :document => @document %>
+
+
+  <%= render "show_availability_section", :document => @document %>
+
+
   <div class="show_page_records">
     <dl class="row document-metadata mb-0 show-page-list">
       <% document_show_fields(document).each do |field_name, field| %>
@@ -46,5 +52,4 @@
     </dl>
   </div>
 </div>
-  <%= render "show_availability_section", :document => @document %>
   <%= render "staff_view_link" %>
