@@ -24,14 +24,14 @@
   </div>
 </nav>
 
-<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red py-3" role="navigation">
+<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red py-md-3" role="navigation">
   <div class="d-lg-inline-flex align-items-center mx-auto">
-    <h1 class="text-center pr-4">
+    <h1 class="text-center pr-md-4">
       <%= link_to("Library Search", everything_path, id: "catalog-header") %>
     </h1>
 
     <%= render_search_bar %>
-    <div class="text-center">
+    <div class="text-md-center">
       <%= render_bookmark_partial %>
     </div>
   </div>

@@ -92,17 +92,35 @@ div.site-message {
 	}
 }
 
+#search-navbar {
+	@media(max-width: 485px) {
+		padding: 0;
+	}
+
+}
+
 .navbar-form,
 #bookmarks_nav {
 	font-size: 1rem;
 	width: 12rem;
-	text-align: center;
+	// text-align: center;
 
 	@media(max-width: 990px) {
 		padding: 1rem;
 		width: auto;
 	}
 
+	@media(max-width: 485px) {
+		padding: .3rem;
+		text-align: right;
+	}
+}
+
+div #bookmarks_nav {
+	@media(max-width: 485px) {
+		float: right;
+		padding: .3rem;
+	}
 }
 
 a.advanced_search,
@@ -122,8 +140,8 @@ a#bookmarks_nav {
 .path-links {
 
 	@media(max-width: 485px) {
-		padding-bottom: 1.75rem;
-		padding-top: 1.25rem;
+		padding-bottom: .875rem;
+		padding-top: .3rem;
   }
 }
 
@@ -143,12 +161,11 @@ a#bookmarks_nav {
 
 	@media(max-width: 620px) {
 		font-size: 0.75rem;
-		padding-right: 0.25em;
 	}
 
 	@media(max-width: 485px) {
   	border-radius: 0.3125rem;
-		font-size: 1.4rem;
+		font-size: 1.0rem;
   }
 }
 
@@ -177,8 +194,8 @@ a#bookmarks_nav {
 		padding-bottom: 0.625rem;
 		padding-top: 0.625rem;
 		text-align: center;
-		width: 90%;
- 		font-size: 1.6rem;
+		display: flex;
+ 		font-size: 1.0rem;
  	}
 }
 
