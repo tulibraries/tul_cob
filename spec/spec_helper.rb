@@ -323,7 +323,7 @@ if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
     config.before(:suite) do
       require "rake"
       Rails.application.load_tasks
-      Rake::Task["fortytu:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
+      Rake::Task["tul_cob:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
     end
   end
 end
