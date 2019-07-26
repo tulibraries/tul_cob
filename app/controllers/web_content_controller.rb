@@ -20,23 +20,21 @@ class WebContentController < CatalogController
     config.index.title_field = "web_title_display"
 
     # Facet fields
-    config.add_facet_field "web_type_pivot_facet", label: "Content Type", show: false
-    config.add_facet_field "web_content_type_facet", label: "Categories", show: false
-    config.add_facet_field "content_pivot_field",
-      label: "Content Type",
+    config.add_facet_field "web_content_type_facet",
+      label: "Library Website",
+      limit: true,
       collapse: false,
-      helper_method: :capitalize_types,
-      pivot: ["web_type_pivot_facet", "web_content_type_facet"]
+      helper_method: :format_types
 
     # Index fields
+    config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type
     config.add_index_field "web_job_title_display", label: "Job Title"
     config.add_index_field "web_base_url_display", label: "Link"
     config.add_index_field "web_description_display", label: "Description"
     config.add_index_field "web_email_address_display", label: "Email Address"
-    config.add_index_field "web_phone_number_display", label: "Phone Number"
-    config.add_index_field "web_specialties_display", label: "Specialties"
-    config.add_index_field "web_subject_display", label: "Subject"
-    config.add_index_field "web_group_type_display", label: "Group Type"
+    config.add_index_field "web_phone_number_display", label: "Phone Number", helper_method: :format_phone_number
+    config.add_index_field "web_specialties_display", label: "Specialties", helper_method: :website_list
+    config.add_index_field "web_subject_display", label: "Subjects", helper_method: :website_list
     config.add_index_field "web_blurb_display", label: "Blurb"
     config.add_index_field "web_tags_display", label: "Tags"
     config.add_index_field "web_link_display", label: "Link"

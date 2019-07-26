@@ -29,11 +29,39 @@ RSpec.describe WebContentHelper, type: :helper do
     end
   end
 
-  describe "#capitalize_types(type)" do
-    let(:type) { "person" }
+  describe "#format_types(type)" do
+    let(:type) { "service" }
+
+    it "renders the plural form of the type" do
+      expect(helper.format_types(type)).to eq("Services")
+    end
 
     it "renders the type with a capital letter" do
-      expect(helper.capitalize_types(type)).to eq("Person")
+      expect(helper.format_types(type)).to eq("Services")
+    end
+  end
+
+  describe "#capitalize_type(document)" do
+    let(:document) { { :value => ["service"] } }
+
+    it "renders the type with a capital letter" do
+      expect(helper.capitalize_type(document)).to eq("Service")
+    end
+  end
+
+  describe "#format_phone_number(document)" do
+    let(:document) { { :value => ["2152048384"] } }
+
+    it "renders the type with a capital letter" do
+      expect(helper.format_phone_number(document)).to eq("215-204-8384")
+    end
+  end
+
+  describe "#website_list(document)" do
+    let(:document) { { :value => ["[Immigrant-Ethnic Communities, Politics and Protest, Women]"] } }
+
+    it "displays results as a list of items" do
+      expect(helper.website_list(document)).to eq("<li class=\"list_items\">Immigrant-Ethnic Communities</li><li class=\"list_items\"> Politics and Protest</li><li class=\"list_items\"> Women</li>")
     end
   end
 end

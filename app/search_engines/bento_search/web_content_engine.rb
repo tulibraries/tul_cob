@@ -7,6 +7,7 @@ module BentoSearch
     def conform_to_bento_result(item)
       BentoSearch::ResultItem.new(
         title: item["web_title_display"].first,
+        publisher: content_type(item),
         link: solr_web_content_document_path(item, options = {}).first
       )
     end
@@ -19,6 +20,10 @@ module BentoSearch
     def url(helper)
       params = helper.params
       helper.search_web_content_path(q: params[:q])
+    end
+
+    def content_type(item)
+      "Type: " + item["web_content_type_t"].first
     end
 
     def view_link(total = nil, helper)
