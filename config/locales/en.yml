@@ -215,6 +215,11 @@ en:
     home_question_html: "<strong>Not sure which database to start with?</strong>"
     subject_browse_html: "Try browsing by %{href} or "
 
+  web_content:
+    explanation_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
+    zero_results:
+      title_html: "<strong>No website results</strong> found for your search."
+
   availability_code:
     online_resources: "Online"
     peer_reviewed: "Peer-reviewed only"
