@@ -80,6 +80,8 @@ a.clear-bookmarks {
 }
 
 #bookmark_button {
+  background-color: $white;
+  border: 1px solid $header-grey;
   color: $red;
   font-size: 0.875rem;
   padding: 0.4725rem 0.625rem 0.1rem 0.625rem;

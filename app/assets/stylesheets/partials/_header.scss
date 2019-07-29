@@ -238,8 +238,8 @@ a#bookmarks_nav {
 }
 
 #sendto button {
- 	background-color: $tan;
-  border: 0;
+ 	background-color: $white;
+  border: 1px solid $header-grey;
   color: $red;
 	font-size: 0.875rem;
 	padding: 0.4725rem 0.625rem;
@@ -303,6 +303,8 @@ a#bookmarks_nav {
 }
 
 #citeLink {
+	background-color: $white;
+	border: 1px solid $header-grey;
 	color: $red;
 	padding: 0.4725rem 0.625rem;
 
