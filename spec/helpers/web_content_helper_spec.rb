@@ -42,7 +42,7 @@ RSpec.describe WebContentHelper, type: :helper do
   end
 
   describe "#capitalize_type(document)" do
-    let(:document) { { :value => ["service"] } }
+    let(:document) { { value: ["service"] } }
 
     it "renders the type with a capital letter" do
       expect(helper.capitalize_type(document)).to eq("Service")
@@ -50,7 +50,7 @@ RSpec.describe WebContentHelper, type: :helper do
   end
 
   describe "#format_phone_number(document)" do
-    let(:document) { { :value => ["2152048384"] } }
+    let(:document) { { value: ["2152048384"] } }
 
     it "renders the type with a capital letter" do
       expect(helper.format_phone_number(document)).to eq("215-204-8384")
@@ -58,7 +58,7 @@ RSpec.describe WebContentHelper, type: :helper do
   end
 
   describe "#website_list(document)" do
-    let(:document) { { :value => ["[Immigrant-Ethnic Communities, Politics and Protest, Women]"] } }
+    let(:document) { { value: ["[Immigrant-Ethnic Communities, Politics and Protest, Women]"] } }
 
     it "displays results as a list of items" do
       expect(helper.website_list(document)).to eq("<li class=\"list_items\">Immigrant-Ethnic Communities</li><li class=\"list_items\"> Politics and Protest</li><li class=\"list_items\"> Women</li>")
