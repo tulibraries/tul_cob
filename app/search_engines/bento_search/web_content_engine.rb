@@ -23,7 +23,9 @@ module BentoSearch
     end
 
     def content_type(item)
-      "Type: " + item["web_content_type_t"].first
+      unless item["web_content_type_t"].nil?
+        "Type: " + item["web_content_type_t"].first
+      end
     end
 
     def view_link(total = nil, helper)
