@@ -203,6 +203,10 @@ a#bookmarks_nav {
 #start_over,
 #back_to_search {
 	font-size: 0.875rem;
+
+	@media(max-width: 485px) {
+		margin-bottom: 1rem;
+	}
 }
 
 #back_to_search:hover {
@@ -214,6 +218,7 @@ a#bookmarks_nav {
 
 	@media(max-width: 485px) {
 		padding-bottom: 0.3125rem;
+		padding-top: 0;
    	text-align: center;
   }
 }
@@ -230,7 +235,7 @@ a#bookmarks_nav {
 }
 
 .nav-tools li {
-  background-color: $tan;
+  background-color: $white;
  	border-radius: 0.25rem;
  	display: inline-block;
 	list-style-type: none;
@@ -239,7 +244,7 @@ a#bookmarks_nav {
 
 #sendto button {
  	background-color: $white;
-  border: 1px solid $header-grey;
+  border: 0.0625rem solid $header-grey;
   color: $red;
 	font-size: 0.875rem;
 	padding: 0.4725rem 0.625rem;
@@ -304,11 +309,13 @@ a#bookmarks_nav {
 
 #citeLink {
 	background-color: $white;
-	border: 1px solid $header-grey;
+	border: 0.0625rem solid $header-grey;
 	color: $red;
 	padding: 0.4725rem 0.625rem;
 
 	@media (max-width: 768px) {
+		background-color: $red;
+		border: 0;
 		margin-top: 0;
 	}
 }

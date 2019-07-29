@@ -10,7 +10,7 @@
   border-radius: 0.3125rem 0.3125rem 0 0;
 
   @media(max-width: 600px) {
-    text-align: center;
+    text-align: left;
  	}
 }
 
@@ -51,6 +51,18 @@
   padding: 0;
 }
 
+.online-card {
+  padding-left: 1rem;
+}
+
 .list_items {
   list-style-type: none;
+}
+
+.secondary-fields-header {
+  font-family: "PT Sans";
+
+  hr {
+    border-bottom: 0.0625rem solid $red;
+  }
 }

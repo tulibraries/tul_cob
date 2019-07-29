@@ -1,7 +1,12 @@
 <% doc_presenter = show_presenter(document) %>
 
+<div class="offset-md-2 no-gutters pl-1 secondary-fields-header">
+  <h5>Description</h5>
+  <hr />
+</div>
+
 <dl class="row document-metadata mb-0 show-page-list offset-md-2 no-gutters pl-1">
-  <% document_show_fields(document).each do |field_name, field| %>
+  <% document_show_secondary_fields(document).each do |field_name, field| %>
     <% if should_render_show_field? document, field %>
       <dt class="blacklight-<%= field_name.parameterize %>col-xs-12 col-sm-3 col-md-3"><%= render_document_show_field_label document, field: field_name %></dt>
       <% if document[field_name]&.length == 1 || !document[field_name]&.is_a?(Array) %>

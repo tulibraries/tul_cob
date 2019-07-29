@@ -65,6 +65,12 @@ a.clear-bookmarks {
   }
 }
 
+#bookmarks-sendto button {
+  background-color: $white;
+  border: 0.0625rem solid $header-grey;
+}
+
+
 #bookmarks-sendto button:hover {
 	color: $red;
 }
@@ -81,10 +87,21 @@ a.clear-bookmarks {
 
 #bookmark_button {
   background-color: $white;
-  border: 1px solid $header-grey;
+  border: 0.0625rem solid $header-grey;
   color: $red;
   font-size: 0.875rem;
   padding: 0.4725rem 0.625rem 0.1rem 0.625rem;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    color: $white;
+    margin-bottom: 0.125rem;
+  }
+}
+
+#bookmarks-sendto button {
+  background-color: $white;
+  border: 0.0625rem solid $header-grey;
 }
 
 .bookmarks-back-btn {
@@ -93,7 +110,7 @@ a.clear-bookmarks {
 
 form.bookmark-toggle {
   @media(max-width: 485px) {
-    float: right;
+    padding-bottom: .5rem;
     padding-right: 1.3rem;
 
     label {
