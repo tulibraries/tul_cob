@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div id="menu-button" onclick="toggle('main')">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" id="main-toggler-icon">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </span>
+    <span class="navbar-brand" id="main-navbar-brand">Main Menu</span>
+  </button>
+</div>
+  <div class="collapse navbar-collapse" id="mobile-menu">
+    <!-- <div class="padding"></div> -->
+    <div class="navbar-nav">
+      <div class="row">
+        <div class="col">
+          <%= link_to "About", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "Visit & Study", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "Research Services", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= link_to "Contact Us", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= image_tag "person.png", class: "person-icon" %>
+          <%= link_to "My Account", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= image_tag "chat.png", class: "chat-icon" %>
+          <%= link_to "Chat", "" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <%= image_tag "hours.png", class: "hours-icon" %>
+          <%= link_to "Hours", ""%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>

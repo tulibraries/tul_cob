@@ -53,26 +53,26 @@ div.site-message {
 			}
 			li.nav-right {
 				@media screen and (min-width: 1040px) {
-					float: right;
+					float: right !important;
 				}
 				padding-left: 3.0625rem;
 				border-color: $seagreen;
 				padding-right: 1rem;
 			}
 			li.nav-right.hours-nav {
-				background-image:asset-data-url('hours.png');
+				background-image: asset-data-url('hours.png');
 				background-position: 0.4375rem center;
 				background-repeat: no-repeat;
 				background-size: 2.625rem 2.625rem;
 			}
 			li.nav-right.chat-nav {
-			background-image:asset-data-url('chat.png');
+			background-image: asset-data-url('chat.png');
 			background-position: 0.4375rem center;
 			background-repeat: no-repeat;
 			background-size: 3.0625rem 3.6875rem;
 			}
 			li.nav-right.account-nav {
-			background-image:asset-data-url('person.png');
+			background-image: asset-data-url('person.png');
 			background-position: 0.4375rem center;
 			background-repeat: no-repeat;
 			background-size: 2.625rem 2.625rem;
@@ -92,17 +92,35 @@ div.site-message {
 	}
 }
 
+#search-navbar {
+	@media(max-width: 485px) {
+		padding: 0;
+	}
+
+}
+
 .navbar-form,
 #bookmarks_nav {
 	font-size: 1rem;
 	width: 12rem;
-	text-align: center;
+	// text-align: center;
 
 	@media(max-width: 990px) {
 		padding: 1rem;
 		width: auto;
 	}
 
+	@media(max-width: 485px) {
+		padding: .3rem;
+		text-align: right;
+	}
+}
+
+div #bookmarks_nav {
+	@media(max-width: 485px) {
+		float: right;
+		padding: .3rem;
+	}
 }
 
 a.advanced_search,
@@ -122,8 +140,8 @@ a#bookmarks_nav {
 .path-links {
 
 	@media(max-width: 485px) {
-		padding-bottom: 1.75rem;
-		padding-top: 1.25rem;
+		padding-bottom: .875rem;
+		padding-top: .3rem;
   }
 }
 
@@ -143,12 +161,11 @@ a#bookmarks_nav {
 
 	@media(max-width: 620px) {
 		font-size: 0.75rem;
-		padding-right: 0.25em;
 	}
 
 	@media(max-width: 485px) {
   	border-radius: 0.3125rem;
-		font-size: 1.4rem;
+		font-size: 1.0rem;
   }
 }
 
@@ -177,8 +194,8 @@ a#bookmarks_nav {
 		padding-bottom: 0.625rem;
 		padding-top: 0.625rem;
 		text-align: center;
-		width: 90%;
- 		font-size: 1.6rem;
+		display: flex;
+ 		font-size: 1.0rem;
  	}
 }
 
@@ -186,6 +203,10 @@ a#bookmarks_nav {
 #start_over,
 #back_to_search {
 	font-size: 0.875rem;
+
+	@media(max-width: 485px) {
+		margin-bottom: 1rem;
+	}
 }
 
 #back_to_search:hover {
@@ -197,6 +218,7 @@ a#bookmarks_nav {
 
 	@media(max-width: 485px) {
 		padding-bottom: 0.3125rem;
+		padding-top: 0;
    	text-align: center;
   }
 }
@@ -213,7 +235,7 @@ a#bookmarks_nav {
 }
 
 .nav-tools li {
-  background-color: $tan;
+  background-color: $white;
  	border-radius: 0.25rem;
  	display: inline-block;
 	list-style-type: none;
@@ -221,8 +243,8 @@ a#bookmarks_nav {
 }
 
 #sendto button {
- 	background-color: $tan;
-  border: 0;
+ 	background-color: $white;
+  border: 0.0625rem solid $header-grey;
   color: $red;
 	font-size: 0.875rem;
 	padding: 0.4725rem 0.625rem;
@@ -286,10 +308,14 @@ a#bookmarks_nav {
 }
 
 #citeLink {
+	background-color: $white;
+	border: 0.0625rem solid $header-grey;
 	color: $red;
 	padding: 0.4725rem 0.625rem;
 
 	@media (max-width: 768px) {
+		background-color: $red;
+		border: 0;
 		margin-top: 0;
 	}
 }

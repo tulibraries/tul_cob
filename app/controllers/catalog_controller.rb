@@ -330,24 +330,24 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
-    config.add_show_field "title_statement_vern_display", label: "Title Statement"
-    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
-    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links
-    config.add_show_field "title_uniform_vern_display", label: "Uniform title"
-    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links
-    config.add_show_field "title_addl_vern_display", label: "Additional titles"
-    config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true
-    config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator
-    config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true
-    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator
-    config.add_show_field "format", label: "Resource Type"
-    config.add_show_field "imprint_display", label: "Publication"
-    config.add_show_field "imprint_prod_display", label: "Production"
-    config.add_show_field "imprint_dist_display", label: "Distribution"
-    config.add_show_field "imprint_man_display", label: "Manufacture"
-    config.add_show_field "edition_display", label: "Edition"
-    config.add_show_field "date_copyright_display", label: "Copyright Notice"
-    config.add_show_field "phys_desc_display", label: "Physical Description"
+    config.add_show_field "title_statement_vern_display", label: "Title Statement", type: :primary
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
+    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links, type: :primary
+    config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
+    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links, type: :primary
+    config.add_show_field "title_addl_vern_display", label: "Additional titles", type: :primary
+    config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true, type: :primary
+    config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator, type: :primary
+    config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true, type: :primary
+    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator, type: :primary
+    config.add_show_field "format", label: "Resource Type", type: :primary
+    config.add_show_field "imprint_display", label: "Publication", type: :primary
+    config.add_show_field "imprint_prod_display", label: "Production", type: :primary
+    config.add_show_field "imprint_dist_display", label: "Distribution", type: :primary
+    config.add_show_field "imprint_man_display", label: "Manufacture", type: :primary
+    config.add_show_field "edition_display", label: "Edition", type: :primary
+    config.add_show_field "date_copyright_display", label: "Copyright Notice", type: :primary
+    config.add_show_field "phys_desc_display", label: "Physical Description", type: :primary
     config.add_show_field "title_series_display", label: "Series Title"
     config.add_show_field "title_series_vern_display", label: "Series Title"
     config.add_show_field "volume_series_display", label: "Volume"

@@ -1,4 +1,4 @@
-<div class="row pl-5 pt-3 pb-5">
+<div class="row pl-sm-5 pt-3 pb-5">
 
   <% if show_sidebar? %>
     <div id="sidebar" class="col-md-4 col-lg-3">
@@ -7,7 +7,7 @@
           <%= link_to(t("databases.link_text"), t("databases.link_href"), class: "database-browse-link") %>
         </div>
       <% end %>
-      <div class="rounded bg-white p-2">
+      <div class="rounded bg-white">
         <%= render "search_sidebar" %>
       </div>
     </div>

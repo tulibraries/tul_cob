@@ -12,12 +12,8 @@
 	letter-spacing: 0.0625rem;
 
 	@media(max-width: 767px) {
-		font-size: 1.6em;
-		height: 3.125rem;
-		padding: 0.625rem;
-	}
-	@media(max-width: 485px) {
-		margin-left: 1.25rem;
+		font-size: 1.0em;
+		margin: auto;
 	}
 }
 
@@ -40,6 +36,23 @@
 		display: none;
 	}
 }
+
+.limit-search {
+	@media(max-width: 775px) {
+		background-color: $header-grey;
+	}
+}
+
+.small-limit-search-heading {
+	font-family: "PT Sans";
+	font-size: 1.3rem;
+	font-weight: bolder;
+
+	@media(min-width: 776px) {
+		display: none;
+	}
+}
+
 
 span .remove-constraints {
 	background-color: $light-blue;

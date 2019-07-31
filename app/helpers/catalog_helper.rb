@@ -317,7 +317,7 @@ module CatalogHelper
     item_html = [item_html, electronic_notes]
       .select(&:present?).join(" ").html_safe
 
-    content_tag(:div, item_html , class: " electronic_links online-list-items online-card")
+    content_tag(:div, item_html , class: " electronic_links online-list-items online-card border-top-0")
   end
 
   def render_electronic_notes(field)
@@ -384,5 +384,14 @@ module CatalogHelper
     .each { |name, partial| partial.if = true }
 
     render_filtered_partials(bookmark_partial, &block)
+  end
+
+  def document_show_primary_fields(document)
+    document_show_fields(document).select { |field_name, field|
+      field[:type] == :primary }
+  end
+
+  def document_show_secondary_fields(document)
+    document_show_fields(document).select { |field_name, field| field[:type] != :primary }
   end
 end

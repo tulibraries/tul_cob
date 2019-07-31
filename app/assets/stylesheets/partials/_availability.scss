@@ -44,9 +44,9 @@
   text-align: left;
 }
 
-.record-page-online-list .online-card,
+.online-card,
 .online-list .online-card {
-  border: 0.0625rem solid $header-grey;
+  border: 0.0625rem solid $dark-blue;
 }
 
 .library-name {
@@ -65,9 +65,17 @@
   }
 }
 
-.online-card-heading, .table-heading {
+.table-heading {
   background-color: $tan;
   color: $black;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.625rem;
+}
+
+.online-card-heading {
+  background-color: $dark-blue;
+  color: $white;
   font-size: 0.875rem;
   font-weight: bold;
   padding: 0.625rem;
