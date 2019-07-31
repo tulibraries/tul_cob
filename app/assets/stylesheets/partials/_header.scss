@@ -1,17 +1,5 @@
 @import "_vars.scss";
 
-/* BANNER */
-div.site-message {
-	border-width: 0.125rem !important;
-	font-size: 0.875rem;
-  padding: 0.625rem 0.625rem 0 0.625rem;
-	text-align: center;
-
-	@media(max-width: 485px) {
-		padding: auto 0.625rem;
-	}
-}
-
 /* HEADER WITH LOGO */
 #logo-navbar {
 	padding-left: 2rem;
@@ -26,7 +14,7 @@ div.site-message {
 
 .logo-text {
 	color: $black;
-	font-family: "Crimson Text", serif;
+	font-family: "Faustina", serif;
 	font-size: 2.0rem;
 	margin-left: 0.625rem;
 
@@ -56,7 +44,7 @@ div.site-message {
 					float: right !important;
 				}
 				padding-left: 3.0625rem;
-				border-color: $seagreen;
+				border-color: $red;
 				padding-right: 1rem;
 			}
 			li.nav-right.hours-nav {
@@ -102,8 +90,8 @@ div.site-message {
 .navbar-form,
 #bookmarks_nav {
 	font-size: 1rem;
-	width: 12rem;
-	// text-align: center;
+	padding-left: 2rem;
+	width: 10rem;
 
 	@media(max-width: 990px) {
 		padding: 1rem;
@@ -125,7 +113,7 @@ div #bookmarks_nav {
 
 a.advanced_search,
 a#bookmarks_nav {
-	color: $black;
+	color: $red;
 }
 
 .basic-search-group{

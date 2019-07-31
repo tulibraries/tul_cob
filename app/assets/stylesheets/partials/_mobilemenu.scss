@@ -49,7 +49,7 @@
 		}
 	}
 	.navbar {
-		background-color: $seagreen;
+		background-color: $red;
 		justify-content: flex-start;
 		padding: .25rem 0;
 		.navbar-toggler {
@@ -61,10 +61,10 @@
 		}
 		.show .padding {
 			height: 0.625rem;
-			background-color: $seagreen;
+			background-color: $red;
 		}
 		.navbar-toggler:hover {
-			background-color: $seagreen;
+			background-color: $red;
 		}
 		.navbar-toggler:focus {
 			outline: none;
@@ -80,7 +80,7 @@
 		}
 		.row {
 			margin-top: 0.125rem;
-			background-color: $seagreen;
+			background-color: $red;
 	    height: 2.8125rem !important;
 	    max-height: 2.8125rem !important;
 	    max-width: 100%;
@@ -105,7 +105,6 @@
 	position: relative;
 	margin: 0;
 	.navbar {
-		// background-color: $seagreen-dark;
 		justify-content: flex-start;
 		padding: .25rem 0;
 		width: 100%;
@@ -113,9 +112,6 @@
 	.navbar-toggler {
 		border: 0;
 		padding: 0;
-	}
-	.navbar-toggler:hover {
-		// background-color: $seagreen-dark;
 	}
 	.navbar-toggler:focus {
 		outline: none;
