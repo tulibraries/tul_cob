@@ -6,7 +6,6 @@
   <%= form.hidden_field :user_id, value: @user_id %>
   <%= form.hidden_field :request_level, value: @request_level %>
 
-
   <div class="container" data-controller="form">
     <div class="form-group row">
       <div class="col-sm-4 col-md-6">
@@ -22,13 +21,16 @@
       </div>
     </div>
 
-    <% if @request_level == "item" %>
+    <% if @request_level == "item" && @description.count > 1 %>
       <div class="form-group row">
         <div class="col-sm-4 col-md-6">
           <%= form.label(:digitization_description, t("requests.form.description_label")) %>
-          <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
+          <p><%= t("requests.form.description_additional_text") %></p>
+          <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
         </div>
       </div>
+    <% else %>
+      <%= form.hidden_field :digitization_description, value: @description %>
     <% end %>
 
     <div class="form-group row">

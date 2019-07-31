@@ -124,11 +124,19 @@ RSpec.describe CobAlma::Requests do
       end
     end
 
-    context "record has multiple descriptions" do
+    context "record has multiple descriptions that are different" do
       let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
 
       it "returns multiple descriptions" do
         expect(described_class.descriptions(items_list)).to eq(["sample", "second"])
+      end
+    end
+
+    context "record has multiple descriptions that are the same" do
+      let(:items_list) { Alma::BibItem.find("repeated_descriptions") }
+
+      it "returns unique descriptions" do
+        expect(described_class.descriptions(items_list)).to eq(["sample"])
       end
     end
   end
@@ -163,6 +171,14 @@ RSpec.describe CobAlma::Requests do
 
       it "returns empty list" do
         expect(described_class.asrs_descriptions(items_list)).to eq([])
+      end
+    end
+
+    context "record has multiple descriptions that are the same" do
+      let(:items_list) { Alma::BibItem.find("asrs_repeated_descriptions") }
+
+      it "returns unique descriptions" do
+        expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
       end
     end
   end

@@ -106,10 +106,11 @@ en:
     form:
       header: "Details of title you requested:"
       pickup_locations_label: "Pickup Location: *"
-      description_label: "Description: *"
+      description_label: "Description (optional): "
       not_needed_after: "Not Needed After (optional):"
       notes_label: "Notes (optional):"
       notes_additional_text: "For additional information about the description of the item or the request itself"
+      description_additional_text: "Select volume/issue or additional item details, if applicable"
       submit: "Request"
       title_label: "Chapter/Article Title: *"
       author_label: "Chapter/Article Author: *"

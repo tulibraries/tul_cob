@@ -7,11 +7,16 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
+    <% if @description.count == 1 %>
+      <%= form.hidden_field :hold_description, value: @description %>
+    <% end %>
+
+
     <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 col-md-6 hold-form form-group">
           <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-          <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+          <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { include_blank: true }, {class: "request-form form-control"}) %>
         </div>
       </div>
     <% end %>
@@ -26,12 +31,17 @@
     <% end %>
 
     <% if @request_level == "item" %>
-      <div class="row">
-        <div class="col-sm-4 col-md-6 form-group">
-          <%= form.label(:hold_description, t("requests.form.description_label")) %>
-          <%= select_tag(:hold_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+      <% if @description.count > 1 %>
+        <div class="row">
+          <div class="col-sm-4 col-md-6 form-group">
+            <%= form.label(:hold_description, t("requests.form.description_label")) %>
+            <p><%= t("requests.form.description_additional_text") %></p>
+            <%= select_tag(:hold_description, options_for_select(@description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+          </div>
         </div>
-      </div>
+      <% else %>
+        <%= form.hidden_field :digitization_description, value: @description %>
+      <% end %>
 
       <div class="row">
         <div class="col-sm-4 col-md-6 hold-form form-group">
