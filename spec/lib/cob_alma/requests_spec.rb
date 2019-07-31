@@ -111,16 +111,16 @@ RSpec.describe CobAlma::Requests do
     context "record has multiple empty descriptions" do
       let(:items_list) { Alma::BibItem.find("empty_descriptions") }
 
-      it "returns an empty array" do
-        expect(described_class.descriptions(items_list)).to eq([])
+      it "returns an array with empty string" do
+        expect(described_class.descriptions(items_list)).to eq([""])
       end
     end
 
     context "record has empty description and description" do
       let(:items_list) { Alma::BibItem.find("empty_and_description") }
 
-      it "returns single description" do
-        expect(described_class.descriptions(items_list)).to eq(["sample"])
+      it "returns single description and empty string" do
+        expect(described_class.descriptions(items_list)).to eq(["", "sample"])
       end
     end
 
@@ -143,10 +143,10 @@ RSpec.describe CobAlma::Requests do
 
   describe "#asrs_descriptions" do
     context "record has multiple empty descriptions" do
-      let(:items_list) { Alma::BibItem.find("empty_descriptions") }
+      let(:items_list) { Alma::BibItem.find("asrs_empty_descriptions") }
 
       it "returns an empty array" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([])
+        expect(described_class.asrs_descriptions(items_list)).to eq([""])
       end
     end
 
@@ -154,7 +154,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("asrs_empty_and_description") }
 
       it "returns one description" do
-        expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
+        expect(described_class.asrs_descriptions(items_list)).to eq(["", "sample"])
       end
     end
 
