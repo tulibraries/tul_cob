@@ -8,6 +8,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
 
   before do
+    helper.instance_variable_set(:@description, [])
     helper.instance_variable_set(:@equipment, [])
     helper.instance_variable_set(:@material_types, [])
     helper.instance_variable_set("@items", items_list)
