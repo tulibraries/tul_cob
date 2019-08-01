@@ -43,7 +43,7 @@ a.clear-bookmarks {
 
 .bookmark_add,
 .bookmark_remove {
-  background-color: $tan;
+  background-color: $header-grey;
   color: $red;
 
   @media(max-width: 768px) {
@@ -53,7 +53,7 @@ a.clear-bookmarks {
 }
 
 .bookmarks-dropdown {
-  background-color: $tan;
+  background-color: $header-grey;
   color: $red;
   font-size: 0.875rem;
   padding: 0.4725rem 0.625rem;

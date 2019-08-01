@@ -28,7 +28,7 @@ module CobAlma
     end
 
     def self.asrs_pickup_locations
-      ["Charles Library (Main campus)", "Ambler Campus Library", "Ginsburg Health Science Library", "Podiatry Library", "Harrisburg Campus Library"]
+      ["Charles Library (wait time: up to 1 hour)", "Ambler Campus Library (wait time: 2-3 days)", "Ginsburg Health Science Library (wait time: 2-3 days)", "Podiatry Library (wait time: 2-3 days)", "Harrisburg Campus Library (wait time: 2-3 days)"]
     end
 
     def self.remove_by_campus(campus)
