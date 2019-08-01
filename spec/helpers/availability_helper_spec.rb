@@ -91,7 +91,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays requested" do
-        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Requested"
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Available (Pending Request)"
       end
     end
 
@@ -148,12 +148,15 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "item is requested" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
-           { "requested" => true }
+           { "requested" => true ,
+             "base_status" => { "value" => "0" },
+             "process_type" => { "value" => "TRANSIT" }
+           }
          )
       end
 
-      it "displays requested" do
-        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      it "displays process_type" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>In transit"
       end
     end
 
