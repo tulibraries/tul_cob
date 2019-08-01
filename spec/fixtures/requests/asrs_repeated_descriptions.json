@@ -86,7 +86,7 @@
                 "chronology_k": "",
                 "chronology_l": "",
                 "chronology_m": "",
-                "description": "",
+                "description": "sample",
                 "receiving_operator": "import",
                 "process_type": {
                     "value": "",
@@ -98,7 +98,7 @@
                 },
                 "location": {
                     "value": "media",
-                    "desc": "Ambler Media"
+                    "desc": "Media"
                 },
                 "alternative_call_number": "",
                 "alternative_call_number_type": {

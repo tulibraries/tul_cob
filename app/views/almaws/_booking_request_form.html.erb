@@ -20,13 +20,16 @@
       </div>
     <% end %>
 
-    <% if @description.present? %>
+    <% if @description.count > 1 %>
       <div class="form-group row">
         <div class="col-sm-4 col-md-6 form-group">
           <%= form.label(:booking_description, t("requests.form.description_label")) %>
-          <%= select_tag(:booking_description, options_for_select(@description), class: "request-form form-control", include_blank: true, required: true, "aria-required": true) %>
+          <p><%= t("requests.form.description_additional_text") %></p>
+          <%= select_tag(:booking_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
         </div>
       </div>
+    <% else %>
+        <%= form.hidden_field :booking_description, value: @description %>
     <% end %>
 
     <div class="row hold-form">
