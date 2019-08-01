@@ -123,13 +123,14 @@ module CobAlma
           desc
         end
       end
-      descriptions.reject(&:empty?)
+      descriptions.uniq
     end
 
     def self.asrs_descriptions(items_list)
       items_list.all
-        .select { |item| item.library == "ASRS" && item.in_place? && item.description.present? }
+        .select { |item| item.library == "ASRS" && item.in_place? }
         .map(&:description)
+        .uniq
     end
 
     def self.booking_location(items_list)

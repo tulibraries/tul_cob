@@ -86,15 +86,15 @@
                 "chronology_k": "",
                 "chronology_l": "",
                 "chronology_m": "",
-                "description": "",
+                "description": "sample",
                 "receiving_operator": "import",
                 "process_type": {
                     "value": "",
                     "desc": null
                 },
                 "library": {
-                    "value": "ASRS",
-                    "desc": "ASRS"
+                    "value": "AMBLER",
+                    "desc": "Ambler Campus Library"
                 },
                 "location": {
                     "value": "media",
@@ -221,8 +221,8 @@
                     "desc": null
                 },
                 "library": {
-                    "value": "ASRS",
-                    "desc": "ASRS"
+                    "value": "MEDIA",
+                    "desc": "Media Services"
                 },
                 "location": {
                     "value": "media",
