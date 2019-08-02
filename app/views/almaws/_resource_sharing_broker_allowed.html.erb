@@ -1,5 +1,5 @@
 <div class="card p-0 request-card">
-  <div class="request-heading bg-tan">
+  <div class="request-heading bg-header-grey">
     <h4 class="card-title">
         <a class="booking-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseFour-<%= @mms_id %>"><%= t("requests.resource_sharing_broker_allowed_link") %></a>
     </h4>
@@ -7,7 +7,7 @@
 </div>
 
 <div id="collapseFour-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options)%>">
-  <div class="card-body">
+  <div class="card-body pb-0">
     <p><%= t("requests.resource_sharing_broker_text") %></p>
       <%= link_to(t("requests.resource_sharing_broker_link"), ez_borrow_link_with_updated_query(request_options.ez_borrow_link), id: "ez-borrow-button", class: "btn btn-primary request-button search-results-request-btn text-white", target: "_blank") %>
   </div>
