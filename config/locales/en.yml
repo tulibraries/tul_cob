@@ -104,6 +104,8 @@ en:
     resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the item from another library using E-ZBorrow. Books generally arrive in 3-5 business days."
     resource_sharing_broker_link: "Search"
     no_request_options: "This item cannot be requested from other Temple campuses."
+    success_message_html: "Your request has been submitted. You will receive an email notification when an item is ready for pickup. See %{href} for status information about your request."
+    success_message_href: "My Account"
     form:
       header: "Details of title you requested:"
       pickup_locations_label: "Pickup Location: *"
