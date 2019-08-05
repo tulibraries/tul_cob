@@ -2,14 +2,17 @@
 
 /* HEADER WITH LOGO */
 #logo-navbar {
-	padding-left: 2rem;
+	padding-left: 3.75rem;
 	a:hover {
 		text-decoration: none !important;
 	}
 }
 
 .header-logo {
-	height: 4.375rem;
+	max-width: 5.625rem;
+  max-height: 4.8125rem;
+  min-width: 5.625rem;
+  min-height: 4.8125rem;
 }
 
 .logo-text {
@@ -26,6 +29,7 @@
 /* WEBSITE HEADER */
 #main-menu {
 	ul {
+		font-family: "Roboto Condensed";
 		li {
 			padding: 0 1.3125rem;
 			display: inline-block;
@@ -41,7 +45,6 @@
 			}
 			li.nav-right {
 				@media screen and (min-width: 1040px) {
-					float: right !important;
 				}
 				padding-left: 3.0625rem;
 				border-color: $red;
@@ -70,7 +73,7 @@
 
 /* HEADER WITH SEARCH INPUT */
 #catalog-header {
-	font-family: "PT Sans";
+	font-family: "Roboto Condensed";
 	font-size: 1.7rem;
 	font-weight: bold;
 	color: $black;
@@ -136,7 +139,7 @@ a#bookmarks_nav {
 .path-links .header-links {
 	color: $black;
 	display: inline-block;
-	font-family: "PT Sans";
+	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
 
 	@media(max-width: 768px) {

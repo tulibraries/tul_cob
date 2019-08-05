@@ -36,6 +36,16 @@
   src: font-url('CrimsonText-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Faustina';
+  src: font-url('faustina.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  src: font-url('roboto-condensed.woff2') format('woff2');
+}
+
 .bebas {
   font-family: BebasNeueRegular;
 }

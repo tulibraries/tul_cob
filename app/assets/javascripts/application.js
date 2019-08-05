@@ -157,3 +157,15 @@ $(document).on('turbolinks:load', function() {
 	 $(this).siblings().removeClass('active');
 	 $(this).addClass("active");
  });
+
+ function toggle(x) {
+	if (x == "secondary") {
+	 document.getElementById("sub-toggler-icon").classList.toggle("change");
+	}
+	else if (x == "search") {
+	 document.getElementById("search-toggler-icon").classList.toggle("change");
+	}
+	else {
+		document.getElementById("main-toggler-icon").classList.toggle("change");
+	}
+}
