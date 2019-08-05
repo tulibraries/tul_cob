@@ -19,8 +19,8 @@ en:
     borrow_link: "http://answers.library.temple.edu/faq/195868"
 
     help_html: "<li>For help, %{href}.</li>"
-    help_href: "Ask a Librarian"
-    help_link: "https://library.temple.edu/asktulibraries"
+    help_href: "Contact the libraries"
+    help_link: "https://library.temple.edu/contact-us"
 
     header_links:
       library_account: "My Library Account"
@@ -162,14 +162,14 @@ en:
       general_keywords: "Try more general keywords (e.g. ‘business’ or ‘education’) for discipline-based journals."
       databases_html: "Try browsing our databases by %{href} or"
       databases_href: "subject"
-      databases_link: "https://library.temple.edu/database-finder"
+      databases_link: "https://library.temple.edu/pages/16"
       databases_two: "alphabetically."
       databases_two_link: "https://guides.temple.edu/az.php"
   catalog_advanced_search: "Advanced Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
   databases_advanced_search: "Advanced Databases Search"
-  ask_librarian: "Ask a Librarian"
+  ask_librarian: "Contact the libraries"
 
   no_results:
     title: "No %{engine} results found"
@@ -206,13 +206,13 @@ en:
       scholarly_articles: "Are you looking for scholarly journal articles? Try:"
       database_finder_html: "%{href} (to find databases like Jstor, Science Direct, etc.)"
       database_finder_href: "Database Finder"
-      database_finder_link: "https://library.temple.edu/database-finder"
+      database_finder_link: "https://library.temple.edu/pages/16"
       find_articles: "How do I find articles?"
       find_articles_link: "http://answers.library.temple.edu/faq/195650"
 
   databases:
     link_text: "Browse all databases by subject"
-    link_href: "https://library.temple.edu/database-finder"
+    link_href: "https://library.temple.edu/pages/16"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
     home_html: "<strong>Databases</strong> includes links to searchable subscription and open-access databases containing a variety of source types."
