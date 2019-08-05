@@ -7,7 +7,7 @@ en:
     scrc_link: "https://library.temple.edu/scrc"
     blockson: "Charles L. Blockson Afro-American Collection"
     blockson_link: "https://library.temple.edu/collections/blockson"
-    explanation_html: "<strong>Books &amp; Media</strong> includes print and ebooks, streaming audio and video, DVDs, government documents, materials in our special and digital collections, and other online resources"
+    explanation_html: "<strong>Books &amp; Media</strong> includes print books and ebooks, streaming audio and video, DVDs, musical scores, government documents, materials in our special and digital collections, and other online resources."
     zero_results:
       title_html: "<strong>No results</strong> found for your search."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
