@@ -10,4 +10,11 @@ RSpec.describe RequestHelper, type: :helper do
       expect(ez_borrow_link_with_updated_query(url)).to eq("https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=12345&RK=12345&rft.title=A+thin+bright+line+%2F")
     end
   end
+
+  describe "#successful_request_message" do
+    it "renders the error message text correctly" do
+      expect(successful_request_message).to eq("Your request has been submitted. You will receive an email notification when an item is ready for pickup. See <a href=\"/users/account\">My Account</a> for status information about your request.")
+    end
+
+  end
 end

@@ -66,6 +66,7 @@ class AlmawsController < CatalogController
       }
         .sort_by { |r| r.raw_response.parsed_response.count }
         .last
+
       if @request_options.nil?
         @request_options = @second_attempt_holdings.map { |holding_id, item_pid|
           log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
@@ -98,7 +99,7 @@ class AlmawsController < CatalogController
 
     begin
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash["success"] = "Your request has been submitted."
+      flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
     rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
@@ -139,12 +140,11 @@ class AlmawsController < CatalogController
             options.merge(
               holding_id: holding_id,
               item_pid: item_pid))
-
           break
         end
       end
 
-      flash["success"] = "Your request has been submitted."
+      flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
 
     rescue
@@ -172,7 +172,7 @@ class AlmawsController < CatalogController
     log = { type: "submit_booking_request", user: current_user.id }.merge(bib_options)
     begin
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash[:success] = "Your request has been submitted."
+      flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
     rescue Alma::BibRequest::ItemAlreadyExists
       flash["notice"] = "This item is already booked for those dates."
@@ -206,7 +206,7 @@ class AlmawsController < CatalogController
     log = { type: "submit_digitization_request", user: current_user.id }.merge(bib_options)
     begin
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash[:success] = "Your request has been submitted."
+      flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
     rescue
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
