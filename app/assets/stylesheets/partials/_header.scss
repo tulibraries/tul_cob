@@ -36,7 +36,7 @@
 			height: 100%;
 				a {
 					color: $white;
-					font-size: 1.5rem;
+					font-size: 1.3rem;
 					font-weight: 600;
 					@media screen and (max-width: 1039px) {
 						font-size:1.25rem;
@@ -45,7 +45,6 @@
 			}
 			li.nav-right {
 				@media screen and (min-width: 1040px) {
-					float: right !important;
 				}
 				padding-left: 3.0625rem;
 				border-color: $red;
@@ -74,7 +73,7 @@
 
 /* HEADER WITH SEARCH INPUT */
 #catalog-header {
-	font-family: "PT Sans";
+	font-family: "Roboto Condensed";
 	font-size: 1.7rem;
 	font-weight: bold;
 	color: $black;
@@ -140,7 +139,7 @@ a#bookmarks_nav {
 .path-links .header-links {
 	color: $black;
 	display: inline-block;
-	font-family: "PT Sans";
+	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
 
 	@media(max-width: 768px) {

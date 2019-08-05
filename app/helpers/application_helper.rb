@@ -228,7 +228,7 @@ module ApplicationHelper
 
   def border_radius_class
     if search_fields.length == 1
-      "rounded"
+      "rounded-left"
     end
   end
 end
