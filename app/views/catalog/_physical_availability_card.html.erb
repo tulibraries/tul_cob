@@ -23,13 +23,13 @@
           <!-- <div class="d-flex flex-sm-column no-gutters"> -->
             <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
             <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
-            <div class="col-sm-12 col-md-5">
+            <div class="col-sm-12 col-md-4">
               <span><%= description(item) %></span>
               <span><%= public_note(item) %></span>
               <span><%= material_type(item) %></span>
             </div>
           <!-- </div> -->
-          <div class="d-sm-flex flex-sm-column align-self-center pl-md-4 pl-sm-0">
+          <div class="d-sm-flex flex-sm-column align-self-center pl-md-4 pl-sm-0 avail-spinner-container">
             <div class="spinner">
               <span class="fa fa-spinner" role="spinbutton"></span>
               <span>Loading Availability</span>
