@@ -538,7 +538,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
   end
 
   describe "#sort_order_for_holdings(grouped_items)" do
-    context "items are sorted by library name with Paley first" do
+    context "items are sorted by library name with Charles first" do
       let(:grouped_items) do { "AMBLER" =>
         [{ "item_pid" => "23239405700003811",
           "item_policy" => "0",
@@ -574,7 +574,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
-      it "returns Paley first, then Ambler" do
+      it "returns Charles first, then Ambler" do
         expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "ASRS", "AMBLER"])
       end
 
