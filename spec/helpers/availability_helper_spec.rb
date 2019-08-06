@@ -538,33 +538,48 @@ RSpec.describe AvailabilityHelper, type: :helper do
   end
 
   describe "#sort_order_for_holdings(grouped_items)" do
-    context "items are sorted by library name with Paley first" do
+    context "items are sorted by library name with Charles first" do
       let(:grouped_items) do { "AMBLER" =>
-  [{ "item_pid" => "23239405700003811",
-    "item_policy" => "0",
-    "permanent_library" => "AMBLER",
-    "permanent_location" => "stacks",
-    "current_library" => "AMBLER",
-    "current_location" => "stacks",
-    "call_number_type" => "0",
-    "call_number" => "F159.P7 C66 2003",
-    "holding_id" => "22239405730003811",
-    "availability" => "<span class=\"check\"></span>Available" }],
- "MAIN" =>
-  [{ "item_pid" => "23239405740003811",
-    "item_policy" => "0",
-    "permanent_library" => "MAIN",
-    "permanent_location" => "stacks",
-    "current_library" => "MAIN",
-    "current_location" => "stacks",
-    "call_number_type" => "0",
-    "call_number" => "F159.P7 C66 2003",
-    "holding_id" => "22239405750003811",
-    "availability" => "<span class=\"check\"></span>Available" }] }
+        [{ "item_pid" => "23239405700003811",
+          "item_policy" => "0",
+          "permanent_library" => "AMBLER",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405730003811",
+          "availability" => "<span class=\"check\"></span>Available" }],
+        "ASRS" =>
+            [{ "item_pid" => "23239405700003811",
+              "item_policy" => "0",
+              "permanent_library" => "ASRS",
+              "permanent_location" => "bookbot",
+              "current_library" => "ASRS",
+              "current_location" => "bookbot",
+              "call_number_type" => "0",
+              "call_number" => "F159.P7 C66 2003",
+              "holding_id" => "22239405730003811",
+              "availability" => "<span class=\"check\"></span>Available" }],
+       "MAIN" =>
+        [{ "item_pid" => "23239405740003811",
+          "item_policy" => "0",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405750003811",
+          "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
-      it "returns Paley first, then Ambler" do
-        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "AMBLER"])
+      it "returns Charles first, then Ambler" do
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "ASRS", "AMBLER"])
+      end
+
+      it "returns ASRS second" do
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "ASRS", "AMBLER"])
       end
     end
 
