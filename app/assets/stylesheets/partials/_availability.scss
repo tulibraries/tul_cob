@@ -15,6 +15,13 @@
   padding: 0.5rem;
 }
 
+.avail_status-container,
+.avail-spinner-container {
+  @media(max-width: 485px) {
+    margin-left: auto !important;
+  }
+}
+
 /* === RECORD PAGE AVAILABILITY === */
 #availability-heading {
   color: $red;
