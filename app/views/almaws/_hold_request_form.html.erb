@@ -7,11 +7,6 @@
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
 
-    <% if @description.count == 1 %>
-      <%= form.hidden_field :hold_description, value: @description %>
-    <% end %>
-
-
     <% if @equipment.empty?  && @request_level == "bib" %>
       <div class="row">
         <div class="col-sm-4 col-md-6 hold-form form-group">
@@ -30,6 +25,17 @@
       </div>
     <% end %>
 
+    <% if @material_types.present? && @material_types.count > 1 %>
+      <div class="row">
+        <div class="col-sm-4 col-md-6 hold-form form-group">
+          <%= label("", :material_type, t("requests.form.material_type")) %>
+          <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        </div>
+      </div>
+    <% else %>
+      <%= form.hidden_field :material_type, value: @material_types %>
+    <% end %>
+
     <% if @request_level == "item" %>
       <% if @description.count > 1 %>
         <div class="row">
@@ -40,7 +46,7 @@
           </div>
         </div>
       <% else %>
-        <%= form.hidden_field :digitization_description, value: @description %>
+        <%= form.hidden_field :hold_description, value: @description %>
       <% end %>
 
       <div class="row">
@@ -49,17 +55,6 @@
           <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
         </div>
       </div>
-    <% end %>
-
-    <% if @material_types.present? && @material_types.count > 1 %>
-      <div class="row">
-        <div class="col-sm-4 col-md-6 hold-form form-group">
-          <%= label("", :material_type, t("requests.form.material_type")) %>
-          <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control"}) %>
-        </div>
-      </div>
-    <% else %>
-      <%= form.hidden_field :material_type, value: @material_types %>
     <% end %>
 
     <div class="row hold-form">

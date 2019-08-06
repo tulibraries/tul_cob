@@ -36,7 +36,7 @@ export default class extends Controller {
     if(options) {
       $(this.pickupsTarget).html(options);
     } else {
-      $(this.pickupsTarget).empty();
+      $(this.pickupsTarget);
     }
   }
 }
