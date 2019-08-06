@@ -1,6 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view %>
-<div class="record-page-wrapper">
+<div class="record-page-wrapper clearfix">
   <% unless controller_name == "databases" %>
     <div class="record-view thumbnail float-md-left col-md-2"
       <%= isbn_data_attribute(document) %> >
@@ -9,11 +9,13 @@
     </div>
   <% end %>
 
-  <div class="ml-3">
+  <div class="float-md-right col-md-9">
     <%= render "show_primary_fields", :document => @document %>
     <%= render "show_availability_section", :document => @document %>
     <%= render "show_secondary_fields", :document => @document %>
+  </div>
 
+  <div class="float-md-right col-md-9 ml-0">
     <%= render "staff_view_link" %>
   </div>
 </div>

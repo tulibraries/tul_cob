@@ -1,6 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
 
-<dl class="row document-metadata mb-0 show-page-list">
+<dl class="row document-metadata mb-0 show-page-list mb-3">
   <% document_show_primary_fields(document).each do |field_name, field| %>
     <% if should_render_show_field? document, field %>
       <dt class="blacklight-<%= field_name.parameterize %>col-xs-12 col-sm-3 col-md-3"><%= render_document_show_field_label document, field: field_name %></dt>
