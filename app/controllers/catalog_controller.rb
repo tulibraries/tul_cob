@@ -14,12 +14,6 @@ class CatalogController < ApplicationController
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
 
-  add_breadcrumb "More", :back_to_catalog_path, only: [ :show ], if: :catalog?
-  add_breadcrumb "More", :back_to_catalog_path, if: :advanced_controller?
-  add_breadcrumb "Record", :solr_document_path, only: [ :show ], if: :catalog?
-  add_breadcrumb I18n.t(:catalog_advanced_search), :advanced_search_path,
-    only: [ :index ], if: :advanced_controller?
-
   helper_method :browse_creator
   helper_method :display_duration
 
