@@ -46,11 +46,15 @@
 #ez-borrow-button:hover,
 #ez-borrow-button:active,
 #ez-borrow-button:visited {
-  color: $white;
+  color: $white !important;
 }
 
 /* === REQUEST BUTTON === */
 .request-button {
   font-size: 1.1rem;
   font-weight: bold;
+}
+
+#ez-borrow-button {
+  font-weight: normal;
 }
