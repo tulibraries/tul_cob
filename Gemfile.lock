@@ -171,7 +171,6 @@ GEM
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     bootstrap-select-rails (1.13.8)
-    breadcrumbs_on_rails (3.0.1)
     browser (2.6.1)
     builder (3.2.3)
     byebug (11.0.1)
@@ -571,7 +570,6 @@ DEPENDENCIES
   bootsnap
   bootstrap (~> 4.3)
   bootstrap-select-rails
-  breadcrumbs_on_rails
   browser
   byebug
   capybara (= 3.28.0)
