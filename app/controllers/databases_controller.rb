@@ -5,9 +5,6 @@ class DatabasesController < CatalogController
 
   helper_method :join
 
-  add_breadcrumb "Databases", :back_to_databases_path, options: { id: "breadcrumbs_database" }, only: [ :show ]
-  add_breadcrumb "Record", :solr_database_document_path, only: [ :show ]
-
   configure_blacklight do |config|
     config.advanced_search[:fields_row_count] = 2
     config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)

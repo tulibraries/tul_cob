@@ -8,10 +8,6 @@ class DatabasesAdvancedController < AdvancedController
     config.add_facet_field "az_format", field: "format", label: "Database Type"
   end
 
-  add_breadcrumb "Databases", :back_to_databases_path, options: { id: "breadcrumbs_databases" }
-  add_breadcrumb I18n.t(:databases_advanced_search), :databases_advanced_search_path,
-    only: [ :index ]
-
   protected
     def search_action_url(options = {})
       databases_advanced_search_path(options.merge(action: "index"))
