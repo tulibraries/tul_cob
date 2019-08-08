@@ -12,8 +12,11 @@
 	letter-spacing: 0.0625rem;
 
 	@media(max-width: 767px) {
-		font-size: 1.0em;
+		font-size: 1.1em;
 		margin: auto;
+	}
+	@media(max-width: 485px) {
+		padding: 0.125rem 0.9375rem;
 	}
 }
 
@@ -39,7 +42,7 @@
 
 .limit-search {
 	@media(max-width: 775px) {
-		background-color: $header-grey;
+		background-color: $facet-limit;
 	}
 }
 
@@ -79,8 +82,7 @@ span .remove-constraints {
 span.constraint-value {
 	background-color: $light-blue;
 	border: 0.0625rem solid transparent;
-	font-size: 0.75rem;
-	font-weight: bold;
+	font-size: 1rem;
 	padding: 0.5rem 0.9375rem;
 	text-align: left;
 	width: 80%;
