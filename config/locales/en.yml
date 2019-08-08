@@ -127,6 +127,9 @@ en:
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
 
+  website:
+    section_heading_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
+
   bento:
     blacklight:
       nice_name: "Blacklight"
@@ -135,11 +138,12 @@ en:
     journals:
       nice_name: "Journals"
     more: "Books & Media"
+    website: "Website"
     databases: "Databases"
     resource_types_header: "View additional resource types"
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
-    section_heading_html: "Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, and %{journals}."
+    section_heading_html: "Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
     articles: "Articles"
     journals: "Journals"
     books_and_media: "Books & Media"
