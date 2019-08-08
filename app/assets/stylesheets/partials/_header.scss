@@ -165,7 +165,7 @@ a#bookmarks_nav {
 
 	@media(max-width: 485px) {
   	border-radius: 0.3125rem;
-		font-size: 1.0rem;
+		font-size: 1.2rem;
   }
 }
 
@@ -191,11 +191,10 @@ a#bookmarks_nav {
  	@media(max-width: 485px) {
 		border: 0.0625rem solid $red;
 		margin: 0.625rem auto 0 auto !important;
-		padding-bottom: 0.625rem;
-		padding-top: 0.625rem;
+		padding-bottom: 0.1875rem;
+		padding-top: 0.1875rem;
 		text-align: center;
 		display: flex;
- 		font-size: 1.0rem;
  	}
 }
 
