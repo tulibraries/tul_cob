@@ -5,7 +5,7 @@
   <% end %>
 </nav>
 
-<nav id="website-navbar" class="navbar navbar-header bg-red px-0">
+<nav id="website-navbar" class="navbar navbar-header bg-red p-0">
   <div class="row d-none d-sm-none d-md-none d-lg-block w-100 mx-auto" id="main-menu">
     <ul class="list-unstyled px-5 m-0">
       <!-- These links go to the QA site.  They will need to be updated when the site goes into production -->
@@ -24,16 +24,12 @@
   </div>
 </nav>
 
-<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red py-md-3" role="navigation">
+<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red pt-3" role="navigation">
   <div class="d-lg-inline-flex align-items-center mx-auto">
-    <h1 class="text-center pr-md-4">
+    <h1 class="text-center pr-md-4 d-none d-md-block">
       <%= link_to("Library Search", everything_path, id: "catalog-header") %>
     </h1>
-
     <%= render_search_bar %>
-    <div class="text-md-center">
-      <%= render_bookmark_partial %>
-    </div>
   </div>
 </nav>
 

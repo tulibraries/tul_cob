@@ -3,6 +3,11 @@
 /* HEADER WITH LOGO */
 #logo-navbar {
 	padding-left: 3.75rem;
+
+	@media(max-width: 485px) {
+		padding-left: 0;
+	}
+
 	a:hover {
 		text-decoration: none !important;
 	}
@@ -22,7 +27,8 @@
 	margin-left: 0.625rem;
 
 	@media(max-width: 485px) {
-	 font-size: 1.4rem;
+		font-size: 2.2rem;
+	 line-height: 2.4rem;
 	}
 }
 
@@ -57,16 +63,16 @@
 				background-size: 2.625rem 2.625rem;
 			}
 			li.nav-right.chat-nav {
-			background-image: asset-data-url('chat.png');
-			background-position: 0.4375rem center;
-			background-repeat: no-repeat;
-			background-size: 3.0625rem 3.6875rem;
+				background-image: asset-data-url('chat.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 3.0625rem 3.6875rem;
 			}
 			li.nav-right.account-nav {
-			background-image: asset-data-url('person.png');
-			background-position: 0.4375rem center;
-			background-repeat: no-repeat;
-			background-size: 2.625rem 2.625rem;
+				background-image: asset-data-url('person.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 2.625rem 2.625rem;
 			}
 		}
 	}
@@ -87,7 +93,6 @@
 	@media(max-width: 485px) {
 		padding: 0;
 	}
-
 }
 
 .navbar-form,
@@ -103,13 +108,11 @@
 
 	@media(max-width: 485px) {
 		padding: .3rem;
-		text-align: right;
 	}
 }
 
 div #bookmarks_nav {
 	@media(max-width: 485px) {
-		float: right;
 		padding: .3rem;
 	}
 }
@@ -124,6 +127,12 @@ a#bookmarks_nav {
 
 	@media(max-width: 485px) {
 		width: 20rem;
+	}
+}
+
+.search-right-links {
+	@media(max-width: 485px) {
+		width: 100%;
 	}
 }
 
@@ -156,7 +165,7 @@ a#bookmarks_nav {
 
 	@media(max-width: 485px) {
   	border-radius: 0.3125rem;
-		font-size: 1.0rem;
+		font-size: 1.2rem;
   }
 }
 
@@ -182,11 +191,10 @@ a#bookmarks_nav {
  	@media(max-width: 485px) {
 		border: 0.0625rem solid $red;
 		margin: 0.625rem auto 0 auto !important;
-		padding-bottom: 0.625rem;
-		padding-top: 0.625rem;
+		padding-bottom: 0.1875rem;
+		padding-top: 0.1875rem;
 		text-align: center;
 		display: flex;
- 		font-size: 1.0rem;
  	}
 }
 
