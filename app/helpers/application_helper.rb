@@ -137,7 +137,7 @@ module ApplicationHelper
         type
       end
 
-    link_to(label, "https://library.temple.edu/library-search-faq")
+    link_to(label, "https://library.temple.edu/pages/42")
   end
 
   def former_search_link
