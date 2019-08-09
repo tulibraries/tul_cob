@@ -19,7 +19,7 @@
         </div>
       </div>
     <% else %>
-      <%= form.hidden_field :material_type, value: @material_types %>
+      <%= form.hidden_field :material_type, value: @material_types.collect { |mat| [ mat.values.first ] }  %>
     <% end %>
 
     <% if @description.count > 1 %>
