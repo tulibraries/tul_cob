@@ -110,6 +110,7 @@ a.clear-bookmarks {
 
 form.bookmark-toggle {
   @media(max-width: 485px) {
+    float: right;
     padding-bottom: .5rem;
     padding-right: 1.3rem;
 
