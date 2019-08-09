@@ -56,12 +56,12 @@ div.site-message {
  	}
 }
 
-#red-navbar a {
-	color: $white;
-}
-
-#red-navbar h1 {
-	padding-left: 0;
+.navbar-form,
+#bookmarks_nav,
+.user-logout {
+	font-size: 1rem;
+	padding-left: 2rem;
+	width: 10rem;
 
 	@media(max-width: 768px) {
 		padding-left: 0.9375rem;

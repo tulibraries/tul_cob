@@ -23,6 +23,11 @@
   </div>
 <% end %>
 
-<div class="mx-auto">
+<div class="d-inline-flex justify-content-around search-right-links align-items-center">
   <%= render "advanced_search_link" %>
+  <%= render_bookmark_partial %>
+
+  <% if has_user_authentication_provider? %>
+    <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
+  <% end %>
 </div>
