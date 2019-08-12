@@ -12,6 +12,10 @@
   @media(max-width: 600px) {
     text-align: left;
  	}
+
+  form.bookmark-toggle {
+    float: none;
+  }
 }
 
 .record-page-wrapper {
