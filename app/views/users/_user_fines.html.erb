@@ -25,7 +25,8 @@
       <% end %>
   </table>
   <div class="fines-link text-center">
-    Fines cannot be paid electronically<br />
-    <%= link_to "Learn more about late fines and replacement charges.", "http://library.temple.edu/services/privileges" %>
+    <%= t("account.fines_not_electronic") %>
+    <br />
+    <%= link_to(t("account.fines_text"), t("account.fines_link")) %>
   </div>
 </div>

@@ -233,6 +233,13 @@ en:
     peer_reviewed: "Peer-reviewed only"
     open_access: "Open Access only"
 
+  account:
+    renew_text_html: "Items marked with <i class='fas fa-exclamation-circle text-red'></i><span class='sr-only'>Unable to renew</span> icon are not eligible for renewal.  Please %{href} for more information."
+    renew_text_href: "contact us"
+    fines_not_electronic: "Fines cannot be paid electronically."
+    fines_text: "Learn more about late fines and replacement charges."
+    fines_link: "https://library.temple.edu/services/12"
+
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
