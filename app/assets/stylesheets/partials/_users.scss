@@ -8,11 +8,12 @@
 
 /* === USER INFO === */
 .user-info-list {
+  font-size: 1rem;
   list-style-type: none;
+  padding-left: 0;
 }
 
 .user-info-list li {
-  padding: 0.3125rem;
 }
 
 .user-info-label {
@@ -20,14 +21,15 @@
 }
 
 .user-email-notice {
-  margin: 0.3125rem 1.5625rem;
+  font-size: 1rem;
+  padding-left: 0;
 }
 
 /* === USER LOANS === */
 .user_section_title {
   background-color: $red;
   color: $white;
-  font-family: "PT Sans";
+  font-family: "Roboto Condensed";
   font-size: 1.5rem;
   margin: 0;
   padding: 0.625rem 0.875rem;
@@ -36,6 +38,7 @@
 .container .user-loans,
 .container .user-holds,
 .container .user-fines {
+  font-size: 1rem;
   padding: 0;
   width: 100%;
 }
@@ -46,22 +49,20 @@
 }
 
 .renew-text {
-  padding-left: 0.4375rem;
+  padding-left: 0;
   padding-right: 0.625rem;
 }
 
 #renew_selected {
   border-color: #777;
   color: $red;
-
-  @media(max-width: 485px) {
-		margin-top: 0.625rem;
-	}
+  margin-top: 0.625rem;
 }
 
 /* === USER REQUESTS === */
 .user-table td {
   border-top: 0;
+  padding-left: 1.25rem;
 }
 
 /* === USER FINES === */
