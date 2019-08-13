@@ -19,19 +19,6 @@
  *
 */
 
-$grid-breakpoints: (
-  xs: 0,
-  sm: 650px,
-  md: 950px,
-  lg: 1040px
-);
-
-$container-max-widths: (
-  sm: 750px,
-  md: 1040px,
-  lg: 1200px
-);
-
 @import "partials/_vars.scss";
 @import 'bootstrap';
 @import "blacklight_marc.scss";

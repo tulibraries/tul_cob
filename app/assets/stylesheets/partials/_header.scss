@@ -136,7 +136,7 @@ a#bookmarks_nav {
 
 .search-right-links {
 	@media(max-width: 485px) {
-		width: 100%;
+		width: 95%;
 	}
 }
 
@@ -245,6 +245,7 @@ a#bookmarks_nav {
 		align-items: center;
 		background-color: $facet-limit;
 		padding: 0.625rem;
+		text-align: center;
 		width: 100%;
   }
 }
@@ -356,9 +357,6 @@ a#bookmarks_nav {
 /* SEARCH RESULTS SORT AND PER PAGE */
 #sortAndPerPage {
 	justify-content: space-between;
-	@media (max-width: 990.0625rem) {
-		justify-content: center;
-	}
 }
 
 .page-links {
