@@ -34,10 +34,12 @@
 
 /* WEBSITE HEADER */
 #main-menu {
+	padding-left: 3.75rem;
+	width: 100%;
 	ul {
 		font-family: "Roboto Condensed";
 		li {
-			padding: 0.625rem 1.3125rem;
+			padding: 0.5rem 1.3125rem;
 			display: inline-block;
 			height: 100%;
 				a {
@@ -51,6 +53,7 @@
 			}
 			li.nav-right {
 				@media screen and (min-width: 1040px) {
+					float: right;
 				}
 				padding-left: 3.0625rem;
 				border-color: $red;
