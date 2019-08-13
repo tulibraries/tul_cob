@@ -34,7 +34,6 @@
 //= require_tree .
 
 $(window).on('turbolinks:load', function() {
-	console.log("test window size " + $(window).width());
 
 	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
