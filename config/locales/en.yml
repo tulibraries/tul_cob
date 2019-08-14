@@ -12,6 +12,7 @@ en:
       title_html: "<strong>No results</strong> found for your search."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
+    back_to_search: "< Back to Results"
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
@@ -90,7 +91,7 @@ en:
     log_in: "Log in to see request options"
     request_button: "Request"
     header: "Request Options"
-    bookbot_instructions: "*To retrieve this item from the BookBot, use the request button above.*"
+    bookbot_instructions: "*To have this item retrieved from the BookBot, use the request button*"
     footer_html: "For more request options, see: %{href}"
     footer_href: "How do I request an item that is unavailable at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"

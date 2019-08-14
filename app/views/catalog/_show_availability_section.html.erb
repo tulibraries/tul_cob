@@ -1,9 +1,8 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 
-<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0">
-  <div class="availability-card-heading card-title d-flex align-items-center ml-4 mr-4">
-    <h4 id="availability-heading" class="mr-auto">Availability</h4>
+<div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0 pl-md-3">
+  <div class="availability-card-heading float-right">
     <div id="heading-request ml-auto">
       <%= presenter_field_value(doc_presenter, "po_link") %>
 
@@ -18,9 +17,6 @@
   </div>
 </div>
 
-<%= render_online_availability(doc_presenter) %>
-<%= render_purchase_order_availability(doc_presenter) %>
-
 <% if document.fetch("availability_facet", []).include?("At the Library") %>
   <div class="physical-holding-panel border-0 mt-2" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
     <div class="border border-header-grey mb-3">
@@ -30,3 +26,6 @@
     </div>
   </div>
 <% end %>
+
+<%= render_online_availability(doc_presenter) %>
+<%= render_purchase_order_availability(doc_presenter) %>

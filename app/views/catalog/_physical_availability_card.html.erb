@@ -19,17 +19,21 @@
       <% end %>
 
       <% items.each do |item| %>
-        <div class="item-info row avail-info-rows border-bottom border-header-grey m-0">
-          <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
-          <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
-          <div class="col-sm-12 col-md-5">
-            <span><%= description(item) %></span>
-            <span><%= public_note(item) %></span>
-            <span><%= material_type(item) %></span>
-          </div>
-          <div class="spinner">
-            <span class="fa fa-spinner" role="spinbutton"></span>
-            <span>Loading Availability</span>
+        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0">
+          <!-- <div class="d-flex flex-sm-column no-gutters"> -->
+            <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
+            <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
+            <div class="col-sm-12 col-md-5">
+              <span><%= description(item) %></span>
+              <span><%= public_note(item) %></span>
+              <span><%= material_type(item) %></span>
+            </div>
+          <!-- </div> -->
+          <div class="d-sm-flex flex-sm-column align-self-center pl-md-4 pl-sm-0">
+            <div class="spinner">
+              <span class="fa fa-spinner" role="spinbutton"></span>
+              <span>Loading Availability</span>
+            </div>
           </div>
         </div>
       <% end %>
