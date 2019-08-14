@@ -1,0 +1,221 @@
+@import "_vars.scss";
+
+#mobile-menu {
+	.col {
+    border-top: 0.125rem solid $white;
+		display: table;
+    padding: 0;
+		a {
+			vertical-align: middle;
+			padding-left: 0!important;
+		}
+	}
+	li {
+		display: block!important;
+		padding-left: 0.875rem;
+		font-size: 1.5rem;
+		padding-bottom: 0.4375rem;
+		a {
+			color: white;
+		}
+		@media screen and (max-width: 1040px) {
+			width: 100%;
+			background-color: $grey;
+			border: 0;
+		}
+	}
+	.hours-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.chat-icon {
+		width: 2.875rem;
+		height: 2.875rem;
+	}
+	.person-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+}
+
+
+#mobile-nav {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	.navbar-nav {
+		.row {
+			width: 100%; /* Firefox fix */
+		}
+	}
+	.navbar {
+		background-color: $red;
+		justify-content: flex-start;
+		padding: .25rem 0;
+		.navbar-toggler {
+			border: 0;
+			padding: 0;
+		}
+		.collapse .padding {
+			height: 0;
+		}
+		.show .padding {
+			height: 0.625rem;
+			background-color: $red;
+		}
+		.navbar-toggler:hover {
+			background-color: $red;
+		}
+		.navbar-toggler:focus {
+			outline: none;
+		}
+		.navbar-toggler-icon {
+			margin-left: 0.625rem;
+			margin-top: -0.1875rem;
+			background-image: none;
+		}
+		.navbar-brand {
+			display: inline-block;
+			font-family: "PT Sans";
+		}
+		.row {
+			margin-top: 0.125rem;
+			background-color: $red;
+	    height: 2.8125rem !important;
+	    max-height: 2.8125rem !important;
+	    max-width: 100%;
+	    display: table;
+	    margin-left: 0;
+			.col {
+		    display: table-cell;
+		    vertical-align: middle;
+		    width: 100%;
+		    text-align: center;
+				a {
+					width: 100%;
+					color: $white;
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}
+
+#policies-mobile-nav {
+	position: relative;
+	margin: 0;
+	.navbar {
+		justify-content: flex-start;
+		padding: .25rem 0;
+		width: 100%;
+	}
+	.navbar-toggler {
+		border: 0;
+		padding: 0;
+	}
+	.navbar-toggler:focus {
+		outline: none;
+	}
+	.navbar-toggler-icon {
+		margin-left: 0.625rem !important;
+		margin-top: -0.1875rem;
+		background-image: none;
+	}
+
+}
+
+
+#burger {
+	float: right;
+	right: 100%;
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+	margin-top: 1.75rem;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 1.5625rem;
+  height: 0.125rem;
+  background-color: $white;
+  margin: 0.375rem 0;
+  transition: 0.4s;
+}
+
+#mobile-search-button {
+	.bar1, .bar2, .bar3 {
+	  width: 2.5rem;
+	  height: 0.375rem;
+	  background-color: $white;
+	  margin: 0.375rem 0;
+	  transition: 0.4s;
+	  opacity: 0;
+	}
+	.navbar-toggler-icon {
+		margin:0;
+		padding-left: 0;
+		float: left;
+		height: 2.625rem;
+		width: 3.0625rem;
+		// background-color: $white;
+		// background-image:asset-data-url('chat.png');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 2.625rem 2.625rem;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+		@media screen and (min-width: 0px) and (max-width: 1039px) {
+			position: relative;
+			top: 0;
+			float: none;
+			border-radius: 0;
+			margin-right: 0.875rem;
+			height: 3.0625rem;
+			width: 3.25rem;
+		}
+	}
+	.navbar-toggler-icon.change {
+		background-image: none;
+		padding-top: .7rem;
+		padding-left: .275rem;
+	}
+	.navbar-toggler-icon:focus {
+		outline: none;
+	}
+	.navbar-toggler-icon:hover {
+		/*background-color: transparent;*/
+	}
+	.navbar-toggler {
+		background-color: transparent;
+		.change .bar1 {
+			  opacity: 1;
+		  -webkit-transform: rotate(-45deg) translate(-1px, 5px) ;
+		  transform: rotate(-45deg) translate(-1px, 5px) ;
+		}
+		.change .bar2 {
+		  opacity: 0;
+		}
+		.change .bar3 {
+			  opacity: 1;
+		  -webkit-transform: rotate(45deg) translate(-12px, -15px) ;
+		  transform: rotate(45deg) translate(-12px, -15px) ;
+		}
+	}
+	.navbar-toggler:focus {
+		outline: none;
+	}
+}
+
+.change .bar1 {
+	  opacity: 1;
+  -webkit-transform: rotate(-45deg) translate(-3px, 6px) ;
+  transform: rotate(-45deg) translate(-3px, 6px) ;
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+	  opacity: 1;
+  -webkit-transform: rotate(45deg) translate(-5px, -8px) ;
+  transform: rotate(45deg) translate(-5px, -8px) ;
+}
