@@ -23,7 +23,7 @@
   <%# for debugging purposes, we'll include the vendor-specific unique_id, if we have
       one, in a data-unique-id attribute. %>
 
-  <div class="bento_item border-bottom border-bento-border pr-2 pt-3" data-unique-id="<%= item.unique_id %>">
+  <div class="bento_item border-bottom border-header-grey pr-2 pt-3" data-unique-id="<%= item.unique_id %>">
     <%= render :partial => "bento_search/item_title", :object => item, :as => 'item' %>
 
 
