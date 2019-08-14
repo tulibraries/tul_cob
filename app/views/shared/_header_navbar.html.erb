@@ -5,9 +5,24 @@
   <% end %>
 </nav>
 
-<nav id="red-navbar" class="navbar navbar-header navbar-expand-sm bg-red py-0" role="navigation">
-  <div class="d-inline-flex pl-md-3 pr-md-1 w-100 flex-wrap align-items-center">
-    <h1 class="col-sm-auto py-md-1">
+<nav id="website-navbar" class="navbar navbar-header bg-red px-0">
+  <div class="row d-none d-sm-none d-md-none d-lg-block w-100 mx-auto" id="main-menu">
+    <ul class="list-unstyled p-0 m-0">
+      <!-- These links go to the QA site.  They will need to be updated when the site goes into production -->
+      <li class="first"><%= link_to "About", "https://library.temple.edu/about" %></li>
+      <li><%= link_to "Visit & Study", "https://library.temple.edu/visit-study" %></li>
+      <li><%= link_to "Research Services", "https://library.temple.edu/research-services" %></li>
+      <li class="last"><%= link_to "Contact Us", "https://library.temple.edu/contact-us" %></li>
+      <li class="nav-right hours-nav"><%= link_to "Hours", "https://library.temple.edu/hours" %></li>
+      <li class="nav-right chat-nav"><%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %></li>
+      <li class="nav-right account-nav"><%= link_to "My Account", users_account_path %></li>
+    </ul>
+  </div>
+</nav>
+
+<nav id="search-navbar" class="navbar navbar-default bg-website-grey border-bottom border-red py-3" role="navigation">
+  <div class="d-lg-inline-flex align-items-center mx-auto">
+    <h1 class="text-center pr-4">
       <%= link_to("Library Search", everything_path, id: "catalog-header") %>
     </h1>
     <div class="ml-auto col-sm-auto py-md-1">
