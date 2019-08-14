@@ -32,14 +32,6 @@
 	padding-left: 0.9375rem;
 }
 
-.masonry {
-
-	@media(min-width: 768px) {
-	 	flex-direction: column;
-	 	max-height: 50rem;
-	}
-}
-
 .bento_item_title {
 	font-family: "PT Sans";
 	font-size: 0.9375rem !important;
