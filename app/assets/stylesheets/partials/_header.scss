@@ -35,10 +35,51 @@ div.site-message {
 	}
 }
 
-/* RED HEADER WITH LIBRARYSEARCH AND USER LINKS */
-#red-navbar  {
-	height: 3.125rem;
-	text-align: center;
+/* WEBSITE HEADER */
+#main-menu {
+	ul {
+		font-family: "Roboto Condensed";
+		li {
+			padding: 0.625rem 1.3125rem;
+			display: inline-block;
+			height: 100%;
+				a {
+					color: $white;
+					font-size: 1.3rem;
+					font-weight: 600;
+					@media screen and (max-width: 1039px) {
+						font-size:1.25rem;
+					}
+				}
+			}
+			li.nav-right {
+				@media screen and (min-width: 1040px) {
+					float: right;
+				}
+				padding-left: 3.0625rem;
+				border-color: $red;
+				padding-right: 1rem;
+			}
+			li.nav-right.hours-nav {
+				background-image:asset-data-url('hours.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 2.625rem 2.625rem;
+			}
+			li.nav-right.chat-nav {
+				background-image: asset-data-url('chat.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 3.0625rem 3.6875rem;
+			}
+			li.nav-right.account-nav {
+				background-image: asset-data-url('person.png');
+				background-position: 0.4375rem center;
+				background-repeat: no-repeat;
+				background-size: 2.625rem 2.625rem;
+			}
+		}
+	}
 
 	@media(max-width: 992px) {
 		justify-content: left;
@@ -196,7 +237,17 @@ a.advanced_search {
 /* RECORD NAV TOOLS */
 #start_over,
 #back_to_search {
-	font-size: 0.875rem;
+	margin-right: 0.625rem;
+
+	@media(max-width: 485px) {
+		font-size: 1.1rem;
+		padding: 0.3125rem 1.25rem;
+	}
+}
+
+#back_to_search {
+	background-color: $white;
+	border: 0.0625rem solid $dark-grey;
 }
 
 #back_to_search:hover {
@@ -207,19 +258,26 @@ a.advanced_search {
 	padding-top: 1.25rem;
 
 	@media(max-width: 485px) {
-		padding-bottom: 0.3125rem;
+		padding: 0 0.3125rem;
    	text-align: center;
   }
 }
 
 .pagination-search-widgets .page-links {
 	padding-top: 0;
+
+	@media(max-width: 485px) {
+		padding-top: 0.5rem;
+	}
 }
 
 .search-widgets {
 
 	@media(max-width: 485px) {
-		padding-bottom: 1.0rem;
+		align-items: center;
+		background-color: $facet-limit;
+		padding: 0.625rem;
+		width: 100%;
   }
 }
 
@@ -296,6 +354,12 @@ a.advanced_search {
 	}
 }
 
+.nav-tools li {
+	@media (max-width: 768px) {
+		margin-left: 0.625rem;
+	}
+}
+
 #citeLink {
 	color: $red;
 	padding: 0.4725rem 0.625rem;
@@ -320,7 +384,7 @@ a.advanced_search {
 /* SEARCH RESULTS SORT AND PER PAGE */
 #sortAndPerPage {
 	justify-content: space-between;
-	@media (max-width: 991px) {
+	@media (max-width: 990.0625rem) {
 		justify-content: center;
 	}
 }
