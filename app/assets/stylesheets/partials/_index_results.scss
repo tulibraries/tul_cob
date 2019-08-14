@@ -1,4 +1,8 @@
 /* === INDEX SEARCH RESULTS=== */
+.documents-list {
+  margin-top: 1rem;
+}
+
 h3.document-title-heading {
   font-family: "PT Sans";
   font-size: 1.1rem;
@@ -47,6 +51,10 @@ dt.index-label {
 
 dd {
   text-align: left;
+
+  @media(max-width: 485px) {
+    width: 75% !important;
+  }
 }
 
 .page-links {
