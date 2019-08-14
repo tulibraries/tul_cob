@@ -12,12 +12,11 @@
 	letter-spacing: 0.0625rem;
 
 	@media(max-width: 767px) {
-		font-size: 1.6em;
-		height: 3.125rem;
-		padding: 0.625rem;
+		font-size: 1.1em;
+		margin: auto;
 	}
 	@media(max-width: 485px) {
-		margin-left: 1.25rem;
+		padding: 0.125rem 0.9375rem;
 	}
 }
 
@@ -37,6 +36,22 @@
 	font-size: 1.3rem;
 
 	@media(max-width: 775px) {
+		display: none;
+	}
+}
+
+.limit-search {
+	@media(max-width: 775px) {
+		background-color: $facet-limit;
+	}
+}
+
+.small-limit-search-heading {
+	font-family: "PT Sans";
+	font-size: 1.3rem;
+	font-weight: bolder;
+
+	@media(min-width: 776px) {
 		display: none;
 	}
 }
@@ -66,8 +81,7 @@ span .remove-constraints {
 span.constraint-value {
 	background-color: $light-blue;
 	border: 0.0625rem solid transparent;
-	font-size: 0.75rem;
-	font-weight: bold;
+	font-size: 1rem;
 	padding: 0.5rem 0.9375rem;
 	text-align: left;
 	width: 80%;

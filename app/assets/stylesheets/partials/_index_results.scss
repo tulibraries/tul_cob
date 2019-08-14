@@ -18,8 +18,8 @@ h3.document-title-heading {
   font-size: 0.875rem;
 }
 
-.book_info {
-  margin-top: 1.25rem;
+.index_title {
+  margin-bottom: 0;
 }
 
 .book_info .index-label {
@@ -47,6 +47,14 @@ dt.index-label {
 
 dd {
   text-align: left;
+}
+
+.page-links {
+  @media(max-width: 485px) {
+    padding-bottom: 0.5rem;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 /* === DATABASE RESULTS=== */
