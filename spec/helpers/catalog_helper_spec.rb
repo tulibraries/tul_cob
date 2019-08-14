@@ -137,7 +137,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
       it "should render purchase allow message" do
         expect(helper).to have_received(:content_tag).with(
-          :div, t("purchase_order_allowed"), class: "availability border border-tan-border"
+          :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
         )
       end
     end

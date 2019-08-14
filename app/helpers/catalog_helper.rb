@@ -152,7 +152,7 @@ module CatalogHelper
       render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order_allowed"), class: "availability border border-tan-border"
+      content_tag :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
     else
       render_purchase_order_button(document: doc, config: field)
     end
@@ -376,5 +376,13 @@ module CatalogHelper
     (@response.dig("spellcheck", "collations") || [])
       .each_slice(2)
       .map { |_, phrase| link_to_query(phrase) }
+  end
+
+  def render_bookmark_partial(options = {}, &block)
+    bookmark_partial = blacklight_config.navbar.partials
+    .select { |name| name == :bookmark }
+    .each { |name, partial| partial.if = true }
+
+    render_filtered_partials(bookmark_partial, &block)
   end
 end

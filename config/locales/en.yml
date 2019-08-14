@@ -90,6 +90,7 @@ en:
     log_in: "Log in to see request options"
     request_button: "Request"
     header: "Request Options"
+    bookbot_instructions: "*To retrieve this item from the BookBot, use the request button above.*"
     footer_html: "For more request options, see: %{href}"
     footer_href: "How do I request an item that is unavailable at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
