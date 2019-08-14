@@ -51,7 +51,7 @@
 	.navbar {
 		background-color: $red;
 		justify-content: flex-start;
-		padding: .25rem 0;
+		padding: 0.25rem 0;
 		.navbar-toggler {
 			border: 0;
 			padding: 0;
@@ -77,6 +77,11 @@
 		.navbar-brand {
 			display: inline-block;
 			font-family: "Roboto Condensed";
+
+			@media(max-width: 485px) {
+			 font-size: 1.25rem;
+			}
+
 		}
 		.row {
 			margin-top: 0.125rem;
