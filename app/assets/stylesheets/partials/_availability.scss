@@ -36,17 +36,13 @@
   display: table-row;
 }
 
-.online-card {
-  padding: 0.625rem;
-}
-
 #record-page-online {
   text-align: left;
 }
 
-.online-card,
-.online-list .online-card {
+.online-card {
   border: 0.0625rem solid $dark-blue;
+  padding-left: 0;
 }
 
 .library-name {

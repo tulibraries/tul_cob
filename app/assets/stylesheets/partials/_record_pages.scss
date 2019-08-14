@@ -48,15 +48,12 @@
 }
 
 #stafflink {
-  padding: 1.5rem 0.25rem;
+  margin-left: 0 !important;
+  padding-top: 1.0rem;
 }
 
 .blacklight-url_more_links_display .online-card {
   padding: 0;
-}
-
-.online-card {
-  padding-left: 1rem;
 }
 
 .list_items {
@@ -69,4 +66,8 @@
   hr {
     border-bottom: 0.0625rem solid $red;
   }
+}
+
+dd.blacklight-format {
+  padding-left: 15px;
 }
