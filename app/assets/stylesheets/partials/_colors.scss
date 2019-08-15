@@ -12,9 +12,9 @@ a, a:hover, a:active, a:visited {
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:active:hover, .btn-primary:active:focus {
-	background-color: $red;
-	border-color: $aged-red;
-	color: $white;
+	background-color: $red !important;
+	border-color: $aged-red !important;
+	color: $white !important;
 }
 
 .btn-danger, .btn-danger:hover, .btn-danger:focus {

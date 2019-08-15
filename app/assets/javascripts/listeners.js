@@ -40,10 +40,6 @@ $(document).ready(function(){
 		{id: "navbar_articles", category: "navigation"},
 		{id: "navbar_journals", category: "navigation"},
 		{id: "navbar_more", category: "navigation"},
-		{id: "breadcrumbs_book", category: "navigation"},
-		{id: "breadcrumbs_record", category: "navigation"},
-		{id: "breadcrumbs_article", category: "navigation"},
-		{id: "breadcrumbs_journal", category: "navigation"},
 		{id: "request_options", category: "search-results"},
 		{id: "request-btn-0", category: "search-results"}
 	];

@@ -71,6 +71,8 @@ module ApplicationHelper
       content_tag(:span, "", class: "bento-icon bento-database m-3")
     when "books_and_media"
       content_tag(:span, "", class: "bento-icon bento-book m-3")
+    when "website"
+      content_tag(:span, "", class: "bento-icon bento-website m-3")
     end
   end
 
@@ -135,7 +137,7 @@ module ApplicationHelper
         type
       end
 
-    link_to(label, "https://library.temple.edu/library-search-faq")
+    link_to(label, "https://library.temple.edu/pages/42")
   end
 
   def former_search_link
@@ -156,6 +158,8 @@ module ApplicationHelper
       t("blacklight.explanation_html")
     when "databases"
       t("databases.home_html")
+    when "web_content"
+      t("web_content.explanation_html")
     else
       ""
     end
@@ -219,6 +223,12 @@ module ApplicationHelper
   def presenter_field_value(presenter, field)
     if blacklight_config.show_fields[field]
       presenter.field_value(blacklight_config.show_fields[field])
+    end
+  end
+
+  def border_radius_class
+    if search_fields.length == 1
+      "rounded-left"
     end
   end
 end

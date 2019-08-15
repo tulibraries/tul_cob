@@ -3,7 +3,7 @@
   <%= render_purchase_order_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
-    <div class="row button-break"></div>
+    <div class="row button-break pt-md-3"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
         <div class="controls">
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>" aria-expanded="false" aria-controls="physical-document-<%= document.id %>">
@@ -15,13 +15,13 @@
             <% if user_signed_in? %>
               <%= request_modal(document.id, @pickup_locations, @request_level) %>
             <% else %>
-              <%= link_to(t("requests.log_in"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "log-in-link") %>
+              <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-sm btn-primary request-button search-results-request-btn") %>
             <% end %>
           </div>
         </div>
 
         <div data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container">
-            <div class="border border-tan-border" data-target="availability.panel">
+            <div class="border border-header-grey mt-0" data-target="availability.panel">
               <%= render "physical_availability_card", document: document, document_counter: document.id %>
             </div>
         </div>

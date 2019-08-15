@@ -84,7 +84,7 @@ gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
-gem "capybara", "3.25.0"
+gem "capybara", "3.28.0"
 gem "webmock"
 gem "bento_search"
 gem "omniauth-shibboleth"
@@ -98,10 +98,13 @@ gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "bootstrap-select-rails"
 gem "httparty"
-gem "breadcrumbs_on_rails"
 
 gem "traject", "~> 3.1"
 gem "traject_plus"
+gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
+  branch: "qa"
+gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git"
+
 
 group :production do
   gem "mysql2", "~> 0.5.2"

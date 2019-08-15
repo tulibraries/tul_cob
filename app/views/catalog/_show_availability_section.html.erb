@@ -11,7 +11,7 @@
         <% if user_signed_in? %>
           <%= request_modal(document.id, @pickup_locations, @request_level) %>
         <% else %>
-          <%= link_to(t("requests.log_in"), new_user_session_with_redirect_path(request.url),  data: {"blacklight-modal": "trigger"}, id: "request_options")  %>
+        <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-primary request-button search-results-request-btn float-right") %>
         <% end %>
       </div>
     </div>
@@ -22,8 +22,8 @@
 <%= render_purchase_order_availability(doc_presenter) %>
 
 <% if document.fetch("availability_facet", []).include?("At the Library") %>
-  <div class="physical-holding-panel border-0 m-0" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
-    <div class="border border-tan-border">
+  <div class="physical-holding-panel border-0 mt-2" data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
+    <div class="border border-header-grey mb-3">
       <div data-target="show.panel">
         <%= render "physical_availability_card", document: document, document_counter: document.id %>
       </div>

@@ -181,12 +181,16 @@ RSpec.configure do |config|
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
 
+    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content\/select?/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/web_content/solr_response_no_query.json"))
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/merge_document_and_api\/holdings\/.*\/items/).
       with(query: hash_including(offset: "100")).
       to_return(status: 200,
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
-
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -273,6 +277,10 @@ RSpec.configure do |config|
   config.add_setting :bento_expected_fields,
     default: [ :title, :authors, :publisher, :link ]
 
+  config.add_setting :web_expected_fields,
+    default: [ :title, :link ]
+
+
   # So we can test logged in users.
   require "warden"
   config.include Warden::Test::Helpers
@@ -293,7 +301,7 @@ if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
     config.before(:suite) do
       require "rake"
       Rails.application.load_tasks
-      Rake::Task["fortytu:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
+      Rake::Task["tul_cob:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
     end
   end
 end

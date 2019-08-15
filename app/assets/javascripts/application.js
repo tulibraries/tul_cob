@@ -33,7 +33,8 @@
 
 //= require_tree .
 
-$(window).load(function(){
+$(window).on('turbolinks:load', function() {
+
 	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
 		$('#bookmarks-tools').insertAfter('#documents');
@@ -157,3 +158,15 @@ $(document).on('turbolinks:load', function() {
 	 $(this).siblings().removeClass('active');
 	 $(this).addClass("active");
  });
+
+ function toggle(x) {
+	if (x == "secondary") {
+	 document.getElementById("sub-toggler-icon").classList.toggle("change");
+	}
+	else if (x == "search") {
+	 document.getElementById("search-toggler-icon").classList.toggle("change");
+	}
+	else {
+		document.getElementById("main-toggler-icon").classList.toggle("change");
+	}
+}

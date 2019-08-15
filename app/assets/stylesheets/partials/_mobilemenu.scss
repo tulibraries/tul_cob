@@ -1,0 +1,134 @@
+@import "_vars.scss";
+
+#mobile-menu {
+	background-color: $white;
+	.col {
+		display: table;
+		a {
+			vertical-align: middle;
+			padding-left: 0 !important;
+		}
+	}
+	li {
+		display: block !important;
+		padding-left: 0.875rem;
+		font-size: 1.5rem;
+		padding-bottom: 0.4375rem;
+		a {
+			color: white;
+		}
+		@media screen and (max-width: 1040px) {
+			width: 100%;
+			background-color: $grey;
+			border: 0;
+		}
+	}
+	.hours-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+	.chat-icon {
+		width: 2.875rem;
+		height: 2.875rem;
+	}
+	.person-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+	}
+}
+
+
+#mobile-nav {
+	position: relative;
+	width: 100%;
+	margin: 0;
+	.navbar-nav {
+		.row {
+			width: 100%; /* Firefox fix */
+		}
+		a {
+			font-family: "Roboto Condensed" !important;
+		}
+	}
+	.navbar {
+		background-color: $red;
+		justify-content: flex-start;
+		padding: 0.25rem 0;
+		.navbar-toggler {
+			border: 0;
+			padding: 0;
+		}
+		.collapse .padding {
+			height: 0;
+		}
+		.show .padding {
+			height: 0.625rem;
+			background-color: $red;
+		}
+		.navbar-toggler:hover {
+			background-color: $red;
+		}
+		.navbar-toggler:focus {
+			outline: none;
+		}
+		.navbar-toggler-icon {
+			margin-left: 0.625rem;
+			margin-top: -0.1875rem;
+			background-image: none;
+		}
+		.navbar-brand {
+			font-family: "Roboto Condensed";
+		}
+		.row {
+			margin-top: 0.125rem;
+			background-color: $red;
+	    height: 2.8125rem !important;
+	    max-height: 2.8125rem !important;
+	    max-width: 100%;
+	    display: table;
+	    margin-left: 0;
+			.col {
+		    display: table-cell;
+		    vertical-align: middle;
+		    width: 100%;
+		    text-align: center;
+				a {
+					width: 100%;
+					color: $white;
+					font-size: 1.5rem;
+				}
+			}
+		}
+	}
+}
+
+#burger {
+	float: right;
+	right: 100%;
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+	margin-top: 1.75rem;
+}
+
+.bar1, .bar2, .bar3 {
+  width: 1.5625rem;
+  height: 0.125rem;
+  background-color: $white;
+  margin: 0.375rem 0;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+	  opacity: 1;
+  -webkit-transform: rotate(-45deg) translate(-3px, 6px) ;
+  transform: rotate(-45deg) translate(-3px, 6px) ;
+}
+.change .bar2 {
+  opacity: 0;
+}
+.change .bar3 {
+	  opacity: 1;
+  -webkit-transform: rotate(45deg) translate(-5px, -8px) ;
+  transform: rotate(45deg) translate(-5px, -8px) ;
+}

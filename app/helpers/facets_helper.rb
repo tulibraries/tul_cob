@@ -36,7 +36,6 @@ module FacetsHelper
     end + " (#{item.hits})"
   end
 
-
   def render_selected_facet_value(facet_field, item)
     remove_href = search_action_path(search_state.remove_facet_params(facet_field, item))
     content_tag(:span, class: "facet-label") do

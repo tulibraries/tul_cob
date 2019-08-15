@@ -1,0 +1,8 @@
+# This filter creates org.apache.lucene.analysis.MappingCharFilter, which can be used for
+# changing one string to another (for example, for normalizing é to e.).
+
+"#" => "sharp"
+"♯" => "sharp"
+"♭" => "flat"
+"+" => "plus"
+"&" => "and"

@@ -14,15 +14,15 @@
 }
 
 .bento_compartment h2 {
-	background-color: #CECED0;
-	color: $bento-header;
-	font-family: "PT Sans";
+	background-color: $header-grey;
+	color: $bento-header-text;
+	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
 	height: 3.125rem;
 	padding: 0.75rem 0;
 
 	a {
-		color: $bento-header;
+		color: $bento-header-text;
 		margin-left: -0.3125rem;
 	}
 }
@@ -56,16 +56,22 @@
 	padding: 0.125rem 0.625rem;
 }
 
+.search-results {
+	border: 1px solid $header-grey;
+}
+
 .total-results,
 .online-only {
 	background-color: white;
+	border-bottom: 1px solid $header-grey;
+	border-left: 1px solid $header-grey;
+	border-right: 1px solid $header-grey;
 	color: $red;
-	margin-left: 0.5rem;
 	padding: 0.625rem 0.5rem;
 }
 
 .bento-resource-types {
-	font-family: "PT Sans";
+	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
 }
 

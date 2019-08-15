@@ -88,3 +88,15 @@ a.clear-bookmarks {
 .bookmarks-back-btn {
   margin-top: -0.5rem;
 }
+
+form.bookmark-toggle {
+  @media(max-width: 485px) {
+    float: right;
+    padding-bottom: .5rem;
+    padding-right: 1.3rem;
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+}

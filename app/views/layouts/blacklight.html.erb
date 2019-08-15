@@ -30,7 +30,7 @@
     <%= content_for(:head) %>
     <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
-  <body class="bg-background-grey <%= render_body_class %>">
+  <body class="bg-white <%= render_body_class %>">
     <div id="page-wrapper">
       <%= render :partial => "shared/header_navbar" %>
 

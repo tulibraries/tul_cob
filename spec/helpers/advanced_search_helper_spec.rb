@@ -51,11 +51,21 @@ RSpec.describe AdvancedHelper, type: :helper do
       allow(helper).to receive(:current_page?).with("/journals") { false }
       allow(helper).to receive(:current_page?).with("/articles") { false }
       allow(helper).to receive(:current_page?).with("/databases") { false }
+      allow(helper).to receive(:current_page?).with("/everything") { false }
       allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
       without_partial_double_verification do
         allow(helper).to receive(:is_advanced_search?) { true }
       end
     end
+
+    context "on the bento search page" do
+      it "renders the link to the advanced form" do
+        allow(helper).to receive(:current_page?).with("/everything") { true }
+        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
+        expect(helper.render_advanced_search_link).to eq(link)
+      end
+    end
+
 
     context "on the catalog search page" do
       it "renders the link to the advanced form" do

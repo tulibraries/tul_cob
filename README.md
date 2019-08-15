@@ -122,6 +122,19 @@ record from production, you can run something like:
 bin/ingest.rb http://example.com/catalog/foo.xml
 ```
 
+### Ingest AZ Database data
+AZ Database fixture data is loaded automatically when you run
+`bundle exec rake tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_az_index ingest $path_to_file_or_url`.
+
+Note: If you make an update to cob_az_index, you will need to run `bundle update cob_az_index` locally.
+
+
+### Ingest web content data
+Web content fixture data is loaded automatically when you run
+`bundle exec rake tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_web_index ingest $path_to_file_or_url`.
+
+Note: If you make an update to cob_web_index, you will need to run `bundle update cob_web_index` locally.
+
 ## Importing from Alma
 
 In order to import from Alma directly execute the following Rake tasks. Harvest may be supplied with
@@ -129,9 +142,9 @@ an optional date/time ranges in ISO8901 format and enclosed in brackets. You may
 date/times. You may not provide only a `to` date/time
 
 ```bash
-bundle exec rake fortytu:oai:harvest[from,to]
-bundle exec rake fortytu:oai:conform_all
-bundle exec rake fortytu:oai:ingest_all
+bundle exec rake tul_cob:oai:harvest[from,to]
+bundle exec rake tul_cob:oai:conform_all
+bundle exec rake tul_cob:oai:ingest_all
 ```
 
 ## Running the Tests
@@ -159,7 +172,7 @@ for example:
 `RELEVANCE=y bundle exec rake ci`
 
 This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
-and will run all `describe`/`context` blocks that have the `relevance: true` option. 
+and will run all `describe`/`context` blocks that have the `relevance: true` option.
 
 #### Creating new relevance tests
 By convention,these tests exist in (`spec/relevance/`)[https://github.com/tulibraries/tul_cob/tree/master/spec/relevance].
@@ -198,7 +211,7 @@ it "has expected results before a less relevant result" do
 end
 ```
 
-`within_the_first(integer)` - the included docs should appear before this number in the results array index 
+`within_the_first(integer)` - the included docs should appear before this number in the results array index
 ```
 it "has expected results within the first 20 results" do
   expect(response)
@@ -215,7 +228,7 @@ and adds them all to a file. By default, it saves to `marc_from_query.xml` local
 can also provide a path  and filename with the `--save_to` command line flag.
 
 ```
-./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" \ 
+./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" \
 --save_to=spec/relevance/fixtures/contingent+labor.xml
 ```
 
