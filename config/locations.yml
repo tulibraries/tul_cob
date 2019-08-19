@@ -104,7 +104,7 @@ default: &default
     juvenile: Juvenile
     leisure: Leisure Reading
     m_reserve: Media Reserves
-    reference: Reference
+    reference: LRS Consultation - Ask at Desk
     reserve: Reserves
     serials: Journals
     servicedsk: Service Desk
