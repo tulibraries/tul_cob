@@ -64,7 +64,7 @@ class PrimoCentralController < CatalogController
     # See for refwork tag definitions:
     # https://www.refworks.com/refworks/help/refworks_tagged_format.htm
     config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true, refwork_tag: :A1, type: :primary
-    config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2
+    config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2, type: :primary
     config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code, type: :primary
     config.add_show_field :publisher, label: "Published", refwork_tag: :PB, type: :primary
     config.add_show_field :date, label: "Date", refwork_tag: :Y1, type: :primary
