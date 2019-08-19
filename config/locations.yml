@@ -90,7 +90,7 @@ default: &default
     stacks: Stacks
     UNASSIGNED: Location information not available
   MEDIA:
-    dsc: Digital Scholarship Center
+    dsc: Duckworth Scholars Studio
     media: Media
     reserve: Reserves
     micro: Microform
