@@ -52,6 +52,12 @@
   padding-left: 0;
 }
 
+div.online-list-item,
+.online-list-items {
+  border-bottom: 0.0625rem solid $dark-blue;
+  padding: .5rem;
+}
+
 .library-name {
   padding-left: 0;
 
