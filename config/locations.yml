@@ -101,14 +101,14 @@ default: &default
     UNASSIGNED: Location information not available
   MAIN:
     ILL: Inter-Library Loan
-    juvenile: Juvenile
+    juvenile: Remote Storage
     leisure: Leisure Reading
     m_reserve: Media Reserves
     reference: LRS Consultation - Ask at Desk
     reserve: Reserves
     serials: Journals
     servicedsk: Service Desk
-    stacks: Stacks
+    stacks: Remote Storage
     techserv: Technical Services
     govdocmicr: Government Doc Microforms
     govdoc: Government Documents
