@@ -10,6 +10,9 @@
         <% else %>
           <% value = document[field_name] %>
         <% end %>
+
+        <% value = raw value if field[:raw] %>
+
         <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"><%= safe_join(Array.wrap(value)) %></dd>
 
         <% else %>
