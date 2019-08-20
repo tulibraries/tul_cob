@@ -6,7 +6,12 @@ module AvailabilityHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    if item.in_place? && item.item_data["requested"] == false
+    unavailable_libraries = ["SCRC"]
+    # Temporary change to display SCRC items as unavailable until it opens
+
+    if unavailable_libraries.include?(item.library)
+      content_tag(:span, "", class: "close-icon") + "Not available pending move"
+    elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal" ||
           item.circulation_policy == "Music Restricted"
