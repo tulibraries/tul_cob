@@ -7,10 +7,14 @@ module AvailabilityHelper
 
   def availability_status(item)
     unavailable_libraries = ["SCRC"]
-    # Temporary change to display SCRC items as unavailable until it opens
+    unavailable_locations = ["storage"]
 
+    # Temporary change to display SCRC items as unavailable until it opens
     if unavailable_libraries.include?(item.library)
       content_tag(:span, "", class: "close-icon") + "Not available pending move"
+    # Temporary change for items that don't currently fit in the ASRS bins
+    elsif unavailable_locations.include?(item.location)
+      content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal" ||
