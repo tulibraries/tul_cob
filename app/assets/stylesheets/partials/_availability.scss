@@ -39,6 +39,11 @@
   list-style-type: none;
 }
 
+dd .online-list-items {
+  border-bottom: none;
+  padding: 0;
+}
+
 .table-row {
   display: table-row;
 }
@@ -52,8 +57,7 @@
   padding-left: 0;
 }
 
-div.online-list-item,
-.online-list-items {
+.record-page-online-list .online-list-items {
   border-bottom: 0.0625rem solid $dark-blue;
   padding: .5rem;
 }
