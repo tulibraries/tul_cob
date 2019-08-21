@@ -116,6 +116,7 @@ default: &default
     micro: Microform
     rarestacks: Remote
     UNASSIGNED: 'Problem: See Library Staff'
+    storage: "Main Storage"
   PODIATRY:
     intref: Internal Reference
     leisure: Leisure Reading
