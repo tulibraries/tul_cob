@@ -33,7 +33,7 @@
         <%= form.number_field :from_page, class: "request-form form-control", required: true, "aria-required": true, min: "1" %>
       </div>
 
-      <div class="col-sm-2 col-md-4">
+      <div class="col-sm-2 col-md-4 pl-0">
         <%= form.label(:to_page, t("requests.form.end_page")) %>
         <%= form.number_field :to_page, class: "request-form form-control", required: true, "aria-required": true, min: "#{:from_page}.value" %>
       </div>
