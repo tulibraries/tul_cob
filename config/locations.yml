@@ -117,6 +117,7 @@ default: &default
     rarestacks: Remote
     UNASSIGNED: 'Problem: See Library Staff'
     storage: Storage
+    tempref: First Floor Reference
   PODIATRY:
     intref: Internal Reference
     leisure: Leisure Reading
