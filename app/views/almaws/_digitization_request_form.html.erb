@@ -8,33 +8,27 @@
 
   <div class="container" data-controller="form">
     <div class="form-group row">
-      <div class="col-sm-4 col-md-6">
-        <%= form.label(:chapter_or_article_title, t("requests.form.title_label"), class: "col-form-label") %>
-        <%= form.text_field :chapter_or_article_title, class: "request-form form-control", required: true, "aria-required": true, pattern: ".*[^ ].*" %>
-      </div>
+      <%= form.label(:chapter_or_article_title, t("requests.form.title_label"), class: "col-form-label") %>
+      <%= form.text_field :chapter_or_article_title, class: "request-form form-control", required: true, "aria-required": true, pattern: ".*[^ ].*" %>
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-4 col-md-6">
-        <%= form.label(:chapter_or_article_author, t("requests.form.author_label"), class: "col-form-label") %>
-        <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true, "aria-required": true, pattern: ".*[^ ].*" %>
-      </div>
+      <%= form.label(:chapter_or_article_author, t("requests.form.author_label"), class: "col-form-label") %>
+      <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true, "aria-required": true, pattern: ".*[^ ].*" %>
     </div>
 
     <% if @request_level == "item" && @description.count > 1 %>
       <div class="form-group row">
-        <div class="col-sm-4 col-md-6">
-          <%= form.label(:digitization_description, t("requests.form.description_label")) %>
-          <p><%= t("requests.form.description_additional_text") %></p>
-          <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
-        </div>
+        <%= form.label(:digitization_description, t("requests.form.description_label_html")) %>
+        <p><%= t("requests.form.description_additional_text") %></p>
+        <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
       </div>
     <% else %>
       <%= form.hidden_field :digitization_description, value: @description %>
     <% end %>
 
     <div class="form-group row">
-      <div class="col-sm-2 col-md-4">
+      <div class="col-sm-2 col-md-4 pl-0">
         <%= form.label(:from_page, t("requests.form.start_page")) %>
         <%= form.number_field :from_page, class: "request-form form-control", required: true, "aria-required": true, min: "1" %>
       </div>
@@ -46,22 +40,19 @@
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-5 col-md-6">
-        <%= form.label(:digitization_last_interest_date, t("requests.form.not_needed_after")) %>
-        <%= date_field_tag :digitization_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", class: "form-control" %>
-        <%= render "format_date_message" %>
-      </div>
+      <%= form.label(:digitization_last_interest_date, t("requests.form.not_needed_after_html")) %>
+      <%= date_field_tag :digitization_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", class: "form-control" %>
+      <%= render "format_date_message" %>
     </div>
 
     <div class="form-group row">
-      <div class="col-sm-4 col-md-6">
-        <%= form.label(:digitization_comment, t("requests.form.notes_label")) %>
-        <p><%= t("requests.form.notes_additional_text") %></p>
-        <%= form.text_area :digitization_comment, class: "request-form form-control" %>
-      </div>
+      <%= form.label(:digitization_comment, t("requests.form.notes_label_html")) %>
+      <p><%= t("requests.form.notes_additional_text") %></p>
+      <%= form.text_area :digitization_comment, class: "request-form form-control" %>
     </div>
 
-    <%= form.submit t("requests.form.submit"), class:"btn btn-primary" %>
-
+    <div class="form-group row">
+      <%= form.submit t("requests.form.submit"), class:"btn btn-primary" %>
+    </div>
   </div>
 <% end %>
