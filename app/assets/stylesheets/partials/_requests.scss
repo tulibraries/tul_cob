@@ -34,19 +34,21 @@
 }
 
 /* === REQUEST FORMS === */
-.request-header {
-  font-family: "Roboto Condensed";
-  font-size: 1.2rem;
-}
-
-.form-group label {
+.form-group label,
+.col-form-label label {
   font-weight: bold;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 #ez-borrow-button:hover,
 #ez-borrow-button:active,
 #ez-borrow-button:visited {
   color: $white !important;
+}
+
+.request-form .form-control {
+  margin-bottom: 1rem;
 }
 
 /* === REQUEST BUTTON === */
