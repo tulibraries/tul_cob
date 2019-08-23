@@ -18,11 +18,7 @@ module RequestHelper
       query: URI.encode_www_form(new_params)).to_s
   end
 
-  def temporary_pickup_location_for_move(short_code)
-    if short_code == "MAIN"
-      library_name = "Tuttleman Circulation Desk"
-    else
-      library_name_from_short_code(short_code)
-    end
+  def successful_request_message
+    t("requests.success_message_html", href: link_to(t("requests.success_message_href"), users_account_path))
   end
 end

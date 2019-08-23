@@ -11,7 +11,7 @@
           <span>Loading...</span>
         </button>
 
-        <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-controller="requests" data-target="show.request, availability.request">
+        <div id="requests-container-<%= document.id %>" class="hidden requests-container float-right" data-controller="requests" data-target="show.request, availability.request">
             <% if user_signed_in? %>
               <%= request_modal(document.id, @pickup_locations, @request_level) %>
             <% else %>

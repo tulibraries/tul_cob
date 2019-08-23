@@ -7,29 +7,33 @@
   <% sort_order_for_holdings(@document_availability).each do |key, items| %>
     <div data-long-list class="m-0" data-controller="availability">
       <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-header-grey bg-header-grey justify-content-lg-between avail-list">
-        <div class="library-name card-title col-sm-12 col-md-4"><%= temporary_library_name_for_move(key, items) %></div>
+        <div class="library-name card-title col-sm-12 col-md-4"><%= library_name_from_short_code(key) %></div>
         <div class="holdings-summary col-sm-12 col-md-4"><%= summary_list(items) %></div>
         <div class="aeon-request col-sm-12 col-md-4"><%= aeon_request_button(document, key) %></div>
       </div>
 
       <% if key == "ASRS" %>
-        <div id="bookbot-instructions" class="alert alert-info justify-content-center rounded-0" role="alert">
+        <div id="bookbot-instructions" class="alert alert-info rounded-0 pl-3" role="alert">
           <p class="mb-0"><%= t("requests.bookbot_instructions") %></p>
         </div>
       <% end %>
 
       <% items.each do |item| %>
-        <div class="item-info row avail-info-rows border-bottom border-header-grey m-0">
-          <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
-          <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
-          <div class="col-sm-12 col-md-5">
-            <span><%= description(item) %></span>
-            <span><%= public_note(item) %></span>
-            <span><%= material_type(item) %></span>
-          </div>
-          <div class="spinner">
-            <span class="fa fa-spinner" role="spinbutton"></span>
-            <span>Loading Availability</span>
+        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0">
+          <!-- <div class="d-flex flex-sm-column no-gutters"> -->
+            <div class="col-sm-12 col-md-2"><strong><%= location_status(item) %></strong></div>
+            <div class="col-sm-12 col-md-2"><%= alternative_call_number(item) %></div>
+            <div class="col-sm-12 col-md-4">
+              <span><%= description(item) %></span>
+              <span><%= public_note(item) %></span>
+              <span><%= material_type(item) %></span>
+            </div>
+          <!-- </div> -->
+          <div class="d-sm-flex flex-sm-column align-self-center pl-md-4 pl-sm-0 avail-spinner-container">
+            <div class="spinner">
+              <span class="fa fa-spinner" role="spinbutton"></span>
+              <span>Loading Availability</span>
+            </div>
           </div>
         </div>
       <% end %>

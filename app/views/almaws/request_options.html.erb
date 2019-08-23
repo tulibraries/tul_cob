@@ -6,6 +6,7 @@
 <div class="modal-body">
   <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
+  <%= asrs_allowed_partial(@request_options) %>
   <%= hold_allowed_partial(@request_options) %>
   <%= digitization_allowed_partial(@request_options) %>
   <%= booking_allowed_partial(@request_options) %>

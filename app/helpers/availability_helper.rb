@@ -6,7 +6,16 @@ module AvailabilityHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    if item.in_place? && item.item_data["requested"] == false
+    unavailable_libraries = ["SCRC"]
+    unavailable_locations = ["storage"]
+
+    # Temporary change to display SCRC items as unavailable until it opens
+    if unavailable_libraries.include?(item.library)
+      content_tag(:span, "", class: "close-icon") + "Not available pending move"
+    # Temporary change for items that don't currently fit in the ASRS bins
+    elsif unavailable_locations.include?(item.location)
+      content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
+    elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal" ||
           item.circulation_policy == "Music Restricted"
@@ -14,31 +23,17 @@ module AvailabilityHelper
       else
         content_tag(:span, "", class: "check") + "Available"
       end
+    elsif item.in_place? && item.item_data["requested"] == true
+      content_tag(:span, "", class: "check") + "Available (Pending Request)"
     else
       unavailable_items(item)
     end
   end
 
-  def availability_status_during_move(item)
-    unavailable_libraries = ["ASRS", "MEDIA", "MAIN", "SCRC", "DSC"]
-
-    if unavailable_libraries.include?(item.library) && item.location == "reserve" || unavailable_libraries.include?(item.library) && item.location == "m_reserve"
-      availability_status(item)
-    elsif unavailable_libraries.include?(item.library)
-      content_tag(:span, "", class: "close-icon") + "Not available pending move"
-    else
-      availability_status(item)
-    end
-  end
-
   def unavailable_items(item)
-    if item.item_data["requested"] == true
-      process_type = "Requested"
-      content_tag(:span, "", class: "close-icon") + process_type
-    elsif item.has_process_type?
+    if item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
       content_tag(:span, "", class: "close-icon") + process_type
-
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
     end
@@ -51,7 +46,7 @@ module AvailabilityHelper
     }.flatten
 
     alma_item_availability = items_list.all.collect { |item|
-      availability_status_during_move(item)
+      availability_status(item)
     }.flatten
 
     document_items.collect { |item|
@@ -116,18 +111,6 @@ module AvailabilityHelper
     library_name
   end
 
-  def temporary_library_name_for_move(short_code, items)
-    location = items.map do |item|
-      location(item)
-    end
-
-    if short_code == "MAIN" && location.include?("reserve") || short_code == "MEDIA" && location.include?("reserve")
-      library_name = "Tuttleman Circulation Desk"
-    else
-      library_name_from_short_code(short_code)
-    end
-  end
-
   def location(item)
     item["current_location"] ? item["current_location"] : item["permanent_location"]
   end
@@ -179,7 +162,8 @@ module AvailabilityHelper
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
     sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
-    items_hash = grouped_items.sort_by { |k, v| temporary_library_name_for_move(k, v) }.to_h
+    sorted_library_hash.merge!("ASRS" => grouped_items.delete("ASRS")) if grouped_items.has_key?("ASRS")
+    items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
     sorted_library_hash.each do |lib, items|
       unless items.empty?
@@ -208,8 +192,7 @@ module AvailabilityHelper
   def item_level_library_name(location_hash)
     location_hash.transform_values do |v|
       v.reduce({}) { |acc, lib|
-        #this will need to be changed back to library_name_from_short_code after the move
-        acc.merge!(temporary_pickup_location_for_move(lib) => lib)
+        acc.merge!(library_name_from_short_code(lib) => lib)
       }
     end
   end

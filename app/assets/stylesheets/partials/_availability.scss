@@ -15,6 +15,13 @@
   padding: 0.5rem;
 }
 
+.avail_status-container,
+.avail-spinner-container {
+  @media(max-width: 485px) {
+    margin-left: auto !important;
+  }
+}
+
 /* === RECORD PAGE AVAILABILITY === */
 #availability-heading {
   color: $red;
@@ -32,21 +39,27 @@
   list-style-type: none;
 }
 
-.table-row {
-  display: table-row;
+dd .online-list-items {
+  border-bottom: none;
+  padding: 0;
 }
 
-.online-card {
-  padding: 0.625rem;
+.table-row {
+  display: table-row;
 }
 
 #record-page-online {
   text-align: left;
 }
 
-.record-page-online-list .online-card,
-.online-list .online-card {
-  border: 0.0625rem solid $header-grey;
+.online-card {
+  border: 0.0625rem solid $dark-blue;
+  padding-left: 0;
+}
+
+.online-list-items, .online-list-item {
+  border-bottom: 0.0625rem solid $dark-blue;
+  padding: .5rem;
 }
 
 .library-name {
@@ -65,9 +78,17 @@
   }
 }
 
-.online-card-heading, .table-heading {
-  background-color: $tan;
+.table-heading {
+  background-color: $header-grey;
   color: $black;
+  font-size: 0.875rem;
+  font-weight: bold;
+  padding: 0.625rem;
+}
+
+.online-card-heading {
+  background-color: $dark-blue;
+  color: $white;
   font-size: 0.875rem;
   font-weight: bold;
   padding: 0.625rem;

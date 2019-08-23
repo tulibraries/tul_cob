@@ -171,7 +171,7 @@ module CatalogHelper
       label = content_tag :span, "Request Rapid Access", class: "avail-label"
       path = purchase_order_path(id: doc.id)
       link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
-      content_tag :div, link, class: "requests-container"
+      content_tag :div, link, class: "requests-container mb-2 ml-0"
     end
   end
 
@@ -302,7 +302,7 @@ module CatalogHelper
   def electronic_access_links(field)
     text = field.fetch("title", "Link to Resource").sub(/ *[ ,.\/;:] *\Z/, "")
     url = field["url"]
-    content_tag(:div, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items online-card")
+    content_tag(:div, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
   end
 
   def electronic_resource_link_builder(field)
@@ -317,7 +317,7 @@ module CatalogHelper
     item_html = [item_html, electronic_notes]
       .select(&:present?).join(" ").html_safe
 
-    content_tag(:div, item_html , class: " electronic_links online-list-items online-card")
+    content_tag(:div, item_html , class: " electronic_links online-list-item")
   end
 
   def render_electronic_notes(field)
@@ -384,5 +384,14 @@ module CatalogHelper
     .each { |name, partial| partial.if = true }
 
     render_filtered_partials(bookmark_partial, &block)
+  end
+
+  def document_show_primary_fields(document)
+    document_show_fields(document).select { |field_name, field|
+      field[:type] == :primary }
+  end
+
+  def document_show_secondary_fields(document)
+    document_show_fields(document).select { |field_name, field| field[:type] != :primary }
   end
 end

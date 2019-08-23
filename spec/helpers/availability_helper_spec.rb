@@ -91,7 +91,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays requested" do
-        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Requested"
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Available (Pending Request)"
       end
     end
 
@@ -148,12 +148,15 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "item is requested" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
-           { "requested" => true }
+           { "requested" => true ,
+             "base_status" => { "value" => "0" },
+             "process_type" => { "value" => "TRANSIT" }
+           }
          )
       end
 
-      it "displays requested" do
-        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Requested"
+      it "displays process_type" do
+        expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>In transit"
       end
     end
 
@@ -185,82 +188,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
       end
     end
-  end
-
-  describe "#availability_status_during_move(item)" do
-    context "item is located in ASRS and NOT reserve" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "base_status" =>
-             { "value" => "1" },
-             "policy" =>
-             { "desc" => "Non-circulating" },
-             "requested" => false,
-             "library" => {
-                    "value" => "ASRS",
-                    "desc" => "ASRS"
-              },
-              "location" => {
-                    "value" => "ASRS",
-                    "desc" => "Automated Storage System"
-              },
-           }
-         )
-      end
-
-      it "displays unavailable during move message" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"close-icon\"></span>Not available pending move"
-      end
-    end
-
-    context "item is located in reserves AND ASRS" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-          {
-            "base_status" =>
-              { "value" => "1" },
-            "policy" =>
-              { "desc" => "" },
-              "library" => {
-                     "value": "ASRS",
-                     "desc": "ASRS"
-               },
-            "location" =>
-              { "value" => "reserve" },
-            "requested" => false,
-          }
-       )
-      end
-
-      it "displays library use only" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Library Use Only"
-      end
-    end
-
-    context "item is located in a non-Paley location" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-          {
-            "base_status" =>
-              { "value" => "1" },
-            "policy" =>
-              { "desc" => "" },
-              "library" => {
-                     "value": "AMBLER",
-                     "desc": "AMBLER"
-               },
-            "location" =>
-              { "value" => "stacks" },
-            "requested" => false,
-          }
-       )
-      end
-
-      it "displays library use only" do
-        expect(availability_status_during_move(item)).to eq "<span class=\"check\"></span>Available"
-      end
-    end
-
   end
 
   describe "#document_and_api_merged_results(document, items_list)" do
@@ -537,45 +464,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
-  describe "#temporary_library_name_for_move(short_code, items)" do
-    context "library name is Tuttleman for reserve items" do
-      let(:short_code) { "MAIN" }
-      let(:items) {
-          [{ "item_pid" => "12345",
-          "item_policy" => "5",
-          "permanent_library" => "MAIN",
-          "permanent_location" => "reserve",
-          "current_library" => "MAIN",
-          "current_location" => "reserve",
-          "call_number" => "DVD 13 A165",
-          "holding_id" => "22237957750003811" }]
-        }
-
-      it "displays Tuttleman Circulation Desk" do
-        expect(temporary_library_name_for_move(short_code, items)).to eq "Tuttleman Circulation Desk"
-      end
-    end
-
-    context "has no reserve items" do
-      let(:short_code) { "MAIN" }
-      let(:items) {
-          [{ "item_pid" => "12345",
-          "item_policy" => "5",
-          "permanent_library" => "MAIN",
-          "permanent_location" => "stacks",
-          "current_library" => "MAIN",
-          "current_location" => "stacks",
-          "call_number" => "DVD 13 A165",
-          "holding_id" => "22237957750003811" }]
-        }
-
-      it "displays regular library name" do
-        expect(temporary_library_name_for_move(short_code, items)).to eq "Charles Library"
-      end
-    end
-
-  end
-
   describe "#alternative_call_number(item)" do
     context "item has an alternate call number" do
       let(:item) { { "alt_call_number" => "alternate call number" } }
@@ -650,33 +538,48 @@ RSpec.describe AvailabilityHelper, type: :helper do
   end
 
   describe "#sort_order_for_holdings(grouped_items)" do
-    context "items are sorted by library name with Paley first" do
+    context "items are sorted by library name with Charles first" do
       let(:grouped_items) do { "AMBLER" =>
-  [{ "item_pid" => "23239405700003811",
-    "item_policy" => "0",
-    "permanent_library" => "AMBLER",
-    "permanent_location" => "stacks",
-    "current_library" => "AMBLER",
-    "current_location" => "stacks",
-    "call_number_type" => "0",
-    "call_number" => "F159.P7 C66 2003",
-    "holding_id" => "22239405730003811",
-    "availability" => "<span class=\"check\"></span>Available" }],
- "MAIN" =>
-  [{ "item_pid" => "23239405740003811",
-    "item_policy" => "0",
-    "permanent_library" => "MAIN",
-    "permanent_location" => "stacks",
-    "current_library" => "MAIN",
-    "current_location" => "stacks",
-    "call_number_type" => "0",
-    "call_number" => "F159.P7 C66 2003",
-    "holding_id" => "22239405750003811",
-    "availability" => "<span class=\"check\"></span>Available" }] }
+        [{ "item_pid" => "23239405700003811",
+          "item_policy" => "0",
+          "permanent_library" => "AMBLER",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405730003811",
+          "availability" => "<span class=\"check\"></span>Available" }],
+        "ASRS" =>
+            [{ "item_pid" => "23239405700003811",
+              "item_policy" => "0",
+              "permanent_library" => "ASRS",
+              "permanent_location" => "bookbot",
+              "current_library" => "ASRS",
+              "current_location" => "bookbot",
+              "call_number_type" => "0",
+              "call_number" => "F159.P7 C66 2003",
+              "holding_id" => "22239405730003811",
+              "availability" => "<span class=\"check\"></span>Available" }],
+       "MAIN" =>
+        [{ "item_pid" => "23239405740003811",
+          "item_policy" => "0",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405750003811",
+          "availability" => "<span class=\"check\"></span>Available" }] }
       end
 
-      it "returns Paley first, then Ambler" do
-        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "AMBLER"])
+      it "returns Charles first, then Ambler" do
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "ASRS", "AMBLER"])
+      end
+
+      it "returns ASRS second" do
+        expect(sort_order_for_holdings(grouped_items).keys).to eq(["MAIN", "ASRS", "AMBLER"])
       end
     end
 
@@ -751,7 +654,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns copies for each library by location" do
         sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
-        expect(sorted_locations).to eq(["Journals", "Reference", "Stacks"])
+        expect(sorted_locations).to eq(["Journals", "LRS Consultation - Ask at Desk", "Storage"])
       end
     end
 

@@ -7,7 +7,7 @@ module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when  "LAW", "PRESSER"
+      when  "LAW", "PRESSER", "ASRS" #MAIN was temporarily removed from this list until the 4th floor opens
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -27,10 +27,14 @@ module CobAlma
       ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
+    def self.asrs_pickup_locations
+      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+    end
+
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        [ "LAW", "MEDIA", "PRESSER"]
+        [ "LAW", "MEDIA", "PRESSER", "ASRS"] #MAIN was temporarily removed from this list until the 4th floor opens
       when :AMBLER
         ["AMBLER"]
       when :HSL
@@ -112,20 +116,21 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      # Temporary refactor to filter out descriptions in ASRS and MAIN during the move
-      libraries = items_list.all.select { |item| item }
-        .select { |i| i if i.library != "ASRS" }
-        .select { |i| i if i.library != "MAIN" }
-        .compact
-
-      descriptions = libraries.map(&:description)
+      descriptions = items_list.all.map(&:description)
 
       if descriptions.any?
         descriptions.each do |desc|
           desc
         end
       end
-      descriptions.reject(&:empty?)
+      descriptions.uniq
+    end
+
+    def self.asrs_descriptions(items_list)
+      items_list.all
+        .select { |item| item.library == "ASRS" && item.in_place? }
+        .map(&:description)
+        .uniq
     end
 
     def self.booking_location(items_list)
@@ -134,14 +139,14 @@ module CobAlma
     end
 
     def self.physical_material_type(items_list)
-      material_types = items_list.map { |item| item["item_data"]["physical_material_type"] }
+      material_types = items_list.map { |item| item["item_data"]["physical_material_type"] unless item["item_data"]["physical_material_type"]["value"] == "" }
 
       if material_types.any?
         material_types.each do |material|
           material
         end
       end
-      material_types.uniq
+      material_types.uniq.compact
     end
 
     def self.item_holding_ids(items_list)

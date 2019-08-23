@@ -10,7 +10,7 @@
   border-radius: 0.3125rem 0.3125rem 0 0;
 
   @media(max-width: 600px) {
-    text-align: center;
+    text-align: left;
  	}
 
   form.bookmark-toggle {
@@ -48,7 +48,8 @@
 }
 
 #stafflink {
-  padding: 1.5rem 0.25rem;
+  margin-left: 0 !important;
+  padding-top: 1.0rem;
 }
 
 .blacklight-url_more_links_display .online-card {
@@ -57,4 +58,16 @@
 
 .list_items {
   list-style-type: none;
+}
+
+.secondary-fields-header {
+  font-family: "PT Sans";
+
+  hr {
+    border-bottom: 0.0625rem solid $red;
+  }
+}
+
+dd.blacklight-format {
+  padding-left: 15px;
 }

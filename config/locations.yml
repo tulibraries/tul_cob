@@ -90,7 +90,7 @@ default: &default
     stacks: Stacks
     UNASSIGNED: Location information not available
   MEDIA:
-    dsc: Digital Scholarship Center
+    dsc: Duckworth Scholars Studio
     media: Media
     reserve: Reserves
     micro: Microform
@@ -101,14 +101,14 @@ default: &default
     UNASSIGNED: Location information not available
   MAIN:
     ILL: Inter-Library Loan
-    juvenile: Juvenile
+    juvenile: Storage
     leisure: Leisure Reading
     m_reserve: Media Reserves
-    reference: Reference
+    reference: LRS Consultation - Ask at Desk
     reserve: Reserves
     serials: Journals
     servicedsk: Service Desk
-    stacks: Stacks
+    stacks: Storage
     techserv: Technical Services
     govdocmicr: Government Doc Microforms
     govdoc: Government Documents
@@ -116,6 +116,8 @@ default: &default
     micro: Microform
     rarestacks: Remote
     UNASSIGNED: 'Problem: See Library Staff'
+    storage: Storage
+    tempref: First Floor Reference
   PODIATRY:
     intref: Internal Reference
     leisure: Leisure Reading

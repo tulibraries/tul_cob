@@ -11,13 +11,10 @@ RSpec.describe RequestHelper, type: :helper do
     end
   end
 
-  describe "#temporary_pickup_location_for_move(short_code)" do
-    context "MAIN pickup location displays as Tuttleman" do
-      let(:short_code) { "MAIN" }
-
-      it "displays Tuttleman Circulation Desk" do
-        expect(temporary_pickup_location_for_move(short_code)).to eq "Tuttleman Circulation Desk"
-      end
+  describe "#successful_request_message" do
+    it "renders the error message text correctly" do
+      expect(successful_request_message).to eq("Your request has been submitted. You will receive an email notification when an item is ready for pickup. See <a href=\"/users/account\">My Account</a> for status information about your request.")
     end
+
   end
 end
