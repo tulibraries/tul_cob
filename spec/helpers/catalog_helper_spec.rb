@@ -200,7 +200,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#render_bound_with_ids" do
+  describe "#render_alma_availability(document)" do
     let(:doc) { SolrDocument.new(bound_with_ids: ["foo"]) }
     let(:config) { CatalogController.blacklight_config }
 
@@ -210,9 +210,9 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "with boud_with_ids defined" do
+    context "with bound_with_ids defined" do
       it "renders the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).not_to be_nil
+        expect(helper.render_alma_availability(doc)).not_to be_nil
       end
     end
 
@@ -220,7 +220,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:doc) { SolrDocument.new(bound_with_ids: nil) }
 
       it "does not render the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).to be_nil
+        expect(helper.render_alma_availability(doc)).to be_nil
       end
     end
 
@@ -228,7 +228,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:config) { PrimoCentralController.blacklight_config }
 
       it "does not render the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).to be_nil
+        expect(helper.render_alma_availability(doc)).to be_nil
       end
     end
   end

@@ -115,9 +115,11 @@ module CatalogHelper
     end
   end
 
-  def render_bound_with_ids(document)
-    if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :span, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+  def render_alma_availability(document)
+    # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
+    # We do not want this to render if the item is from Primo, etc.
+    if index_fields["bound_with_ids"] &&  document.alma_availability_mms_ids.present?
+      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
     end
   end
 
