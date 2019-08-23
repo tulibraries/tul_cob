@@ -1,6 +1,6 @@
 <% if has_many_electronic_resources?(document) %>
   <div class="row button-break"></div>
-  <button class="btn btn-sm online-btn collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="many_links_online">
+  <button class="btn btn-sm online-btn collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="online-<%=  document.id %>">
     <span class="avail-label" aria-expanded="false">Online</span>
   </button>
   <div id="online-document-<%= document.id %>" class="collapse online_resources online-list">

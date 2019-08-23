@@ -17,8 +17,8 @@
          absent: t("blacklight.search.bookmarks.absent"),
          inprogress: t("blacklight.search.bookmarks.inprogress")
       }) do %>
-        <%= hidden_field_tag("bookmarks[][document_id]", document.id)%>
-        <%= hidden_field_tag("bookmarks[][document_type]", document.class)%>
+        <%= hidden_field_tag("bookmarks[][document_id]", document.id, id: "bookmark_id_#{document.id.to_s.parameterize}]" )%>
+        <%= hidden_field_tag("bookmarks[][document_type]", document.class, id: "bookmark_class_#{document.id.to_s.parameterize}]")%>
           <%= submit_tag(t("blacklight.bookmarks.add.button"),
             :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_add btn btn-sm btn-outline-secondary") %>
         <% end %>
@@ -34,8 +34,8 @@
            absent: t("blacklight.search.bookmarks.absent"),
            inprogress: t("blacklight.search.bookmarks.inprogress")
         }) do %>
-        <%= hidden_field_tag("bookmarks[][document_id]", document.id)%>
-        <%= hidden_field_tag("bookmarks[][document_type]", document.class)%>
+        <%= hidden_field_tag("bookmarks[][document_id]", document.id, id: "bookmark_id_#{document.id.to_s.parameterize}]")%>
+        <%= hidden_field_tag("bookmarks[][document_type]", document.class, id: "bookmark_class_#{document.id.to_s.parameterize}]")%>
           <%= submit_tag(t("blacklight.bookmarks.remove.button"),
             :id => "bookmark_toggle_#{document.id.to_s.parameterize}", :class => "bookmark_remove btn btn-sm btn-outline-secondary") %>
         <% end %>
