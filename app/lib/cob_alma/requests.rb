@@ -7,7 +7,7 @@ module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when  "LAW", "PRESSER", "ASRS" #MAIN was temporarily removed from this list until the 4th floor opens
+      when  "LAW", "PRESSER", "MAIN", "ASRS"
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -34,7 +34,7 @@ module CobAlma
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        [ "LAW", "MEDIA", "PRESSER", "ASRS"] #MAIN was temporarily removed from this list until the 4th floor opens
+        [ "LAW", "MEDIA", "PRESSER", "MAIN", "ASRS"]
       when :AMBLER
         ["AMBLER"]
       when :HSL
