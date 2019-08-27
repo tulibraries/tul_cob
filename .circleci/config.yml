@@ -38,6 +38,10 @@ workflows:
                 - master
       - request-prod-deploy:
           type: approval
+            filters:
+              branches:
+                only:
+                  - master
       - prod_deploy:
           requires:
             - request-prod-deploy
