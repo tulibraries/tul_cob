@@ -1,0 +1,105 @@
+version: 2
+
+workflows:
+  version: 2
+  run_tests:
+    jobs:
+      - run_tests
+  qa_deploy:
+   jobs:
+     - run_tests:
+         filters:
+           branches:
+             only:
+               - qa
+     - qa_deploy:
+         filters:
+           branches:
+             only:
+               - qa
+  stage_deploy:
+    jobs:
+      - run_tests:
+          filters:
+            branches:
+              only:
+                - master
+      - stage_deploy:
+          filters:
+            branches:
+              only:
+                - master
+  prod_deploy:
+    jobs:
+      - run_tests:
+          filters:
+            branches:
+              only:
+                - master
+      - request-prod-deploy:
+          type: approval
+      - prod_deploy:
+          requires:
+            - request-prod-deploy
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
+
+jobs:
+  run_tests:
+    docker:
+      - image: circleci/ruby:2.4.1-node-browsers
+
+    steps:
+      - checkout
+      - run:
+          command: bash .circleci/test.sh
+      - run:
+          command: |
+            bundle exec rubocop
+            RELEVANCE=y bundle exec rake ci
+            yarn test
+
+  qa_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+      - run:
+          command: bash .circleci/deploy-qa.sh
+
+  stage_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+      - run:
+          command: bash .circleci/deploy-stage.sh
+
+  prod_deploy:
+    docker:
+      - image: circleci/python:3.6.6
+        environment:
+          PIPENV_VENV_IN_PROJECT: true
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
+            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+      - run:
+          command: bash .circleci/deploy-prod.sh
