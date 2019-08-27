@@ -7,11 +7,6 @@ workflows:
       - run_tests
   qa_deploy:
    jobs:
-     - run_tests:
-         filters:
-           branches:
-             only:
-               - qa
      - qa_deploy:
          filters:
            branches:
@@ -19,11 +14,6 @@ workflows:
                - qa
   stage_deploy:
     jobs:
-      - run_tests:
-          filters:
-            branches:
-              only:
-                - master
       - stage_deploy:
           filters:
             branches:
@@ -31,11 +21,6 @@ workflows:
                 - master
   prod_deploy:
     jobs:
-      - run_tests:
-          filters:
-            branches:
-              only:
-                - master
       - request-prod-deploy:
           type: approval
           filters:
