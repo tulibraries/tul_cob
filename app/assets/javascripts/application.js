@@ -51,17 +51,6 @@ $(window).on('turbolinks:load', function() {
 	}
 });
 
-$( document ).load(function() {
-	if ($(window).width() < 768) {
-		$('#facet-filter-icon').removeClass('hidden');
-		$('#facet-panel-collapse').removeClass('show');
-	}
-	else {
-		$('#facet-filter-icon').addClass('hidden');
-		$('#facet-panel-collapse').addClass('show');
-	}
-});
-
 $(window).on('resize', function() {
 	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
