@@ -47,27 +47,39 @@ $(window).on('turbolinks:load', function() {
 		$('#nav-tools').insertAfter('#page-links');
 		$('#bookmarks-tools').addClass('row');
 		$('#facet-filter-icon').addClass('hidden');
-		$('#facet-panel-collapse').addClass('show');
 	}
 });
 
-$(window).on('resize', function() {
-	if ($(window).width() < 768) {
-		$('#nav-tools').insertAfter('#document');
-		$('#bookmarks-tools').insertAfter('#documents');
-		$('#bookmarks-tools').removeClass('row');
-		$('.clear-bookmarks').insertAfter('#back_to_search');
-		$('#facet-filter-icon').removeClass('hidden');
-		$('#facet-panel-collapse').removeClass('show');
-	}
-	else {
-		$('#nav-tools').insertAfter('#page-links');
-		$('#bookmarks-tools').addClass('row');
-		$('#facet-filter-icon').addClass('hidden');
-		$('#facet-panel-collapse').addClass('show');
-	}
-});
+$(document).ready(function() {
 
+	// This is necessary because iOS is triggering the resize event when an element is clicked.
+	// More information about this solution can be found here: https://stackoverflow.com/a/24212316/256854
+
+  var origWindowWidth = $(window).width();
+  $(window).on('resize', function() {
+    var windowWidth = $(window).width();
+
+    // ShortCircuit if this is not a real resize.
+    if (windowWidth == origWindowWidth) {
+      return;
+    }
+
+    if (windowWidth < 768) {
+      $('#nav-tools').insertAfter('#document');
+      $('#bookmarks-tools').insertAfter('#documents');
+      $('#bookmarks-tools').removeClass('row');
+      $('.clear-bookmarks').insertAfter('#back_to_search');
+      $('#facet-filter-icon').removeClass('hidden');
+      $('#facet-panel-collapse').removeClass('show');
+    }
+    else {
+      $('#nav-tools').insertAfter('#page-links');
+      $('#bookmarks-tools').addClass('row');
+      $('#facet-filter-icon').addClass('hidden');
+      $('#facet-panel-collapse').addClass('show');
+    }
+	});
+});
 
 $(document).on('turbolinks:load', function() {
    $(window).trigger('load.bs.select.data-api');

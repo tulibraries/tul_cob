@@ -24,7 +24,7 @@
 
    <%= render "constraints" %>
 
-   <div id="facet-panel-collapse" class="facets-collapse collapse">
+   <div id="facet-panel-collapse" class="facets-collapse collapse show">
      <%= has_search_parameters? ? render_facet_partials : render_home_facets %>
    </div>
    <%= render_solr_search_tweaks %>
