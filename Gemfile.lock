@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 7e4aee41597e0f61484523fd275165031921c8fa
+  revision: 75b4a9e27acf4ef05740cfbb73f3a0243ebc36f6
   branch: master
   specs:
     alma (0.2.8)
@@ -72,8 +72,19 @@ GIT
       traject_plus (~> 1.1)
 
 GIT
+  remote: https://github.com/tulibraries/cob_index.git
+  revision: 75f83b9d4fdb86ccc74cddc16196b170a343179d
+  branch: qa
+  specs:
+    cob_index (0.1.0)
+      gli (~> 2.18)
+      library_stdnums (~> 1.6)
+      traject (~> 3.1)
+
+GIT
   remote: https://github.com/tulibraries/cob_web_index.git
   revision: a995b84a644a73d419d420366c0701175b81f889
+  branch: master
   specs:
     cob_web_index (0.1.0)
       gli (~> 2.18)
@@ -565,6 +576,7 @@ DEPENDENCIES
   capybara (= 3.29.0)
   cdm!
   cob_az_index!
+  cob_index!
   cob_web_index!
   coffee-rails (~> 5.0)
   coveralls
