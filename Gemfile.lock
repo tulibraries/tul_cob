@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: e5c4d69168985698db4465d31caee47fc993d3cf
+  revision: aa0a36388f0209d57612ee838c4f40f9b3836c52
   specs:
     cob_web_index (0.1.0)
       gli (= 2.18.0)
