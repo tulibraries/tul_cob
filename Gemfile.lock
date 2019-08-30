@@ -13,7 +13,7 @@ GIT
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: 9c23f0e9aad6a789ec912336766289927ea0729b
+  revision: edfdfa01f8b3fdf4ea0edb013099cdfd9bd57079
   specs:
     blacklight_advanced_search (7.0.0.alpha)
       blacklight (~> 7.0)
@@ -333,7 +333,7 @@ GEM
     multipart-post (2.0.0)
     mysql2 (0.5.2)
     nenv (0.3.0)
-    nio4r (2.3.1)
+    nio4r (2.5.1)
     nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
