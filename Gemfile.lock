@@ -73,10 +73,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: aa0a36388f0209d57612ee838c4f40f9b3836c52
+  revision: a995b84a644a73d419d420366c0701175b81f889
   specs:
     cob_web_index (0.1.0)
-      gli (= 2.18.0)
+      gli (~> 2.18)
       httparty
       traject (~> 3.1)
       traject_plus (~> 1.1)
