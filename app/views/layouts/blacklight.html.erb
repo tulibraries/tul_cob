@@ -31,6 +31,11 @@
     <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="bg-white <%= render_body_class %>">
+
+    <div id="skip-link">
+      <%= link_to "Skip to main content", "#main-container", :class => "skip-main", :tabindex => "1" %>
+    </div>
+
     <div id="page-wrapper">
       <%= render :partial => "shared/header_navbar" %>
 
