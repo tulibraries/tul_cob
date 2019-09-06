@@ -126,11 +126,15 @@ en:
     application_name: "Library Articles Search"
     greeting: "Welcome to the Articles Search"
     section_heading_html: "<p><strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources. Search <strong>Articles</strong> for individual articles that appear in collections, like scholarly journals, ebooks, and newspapers.</p>"
+    citation_html: "<strong>Have specific citation information?</strong> Try our %{href} tool."
+    citation_href: "Find by Citation"
+    citation_link: "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
     explanation_html: "<strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
+    scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
 
   website:
     section_heading_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
