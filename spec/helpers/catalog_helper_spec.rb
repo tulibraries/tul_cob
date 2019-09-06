@@ -406,6 +406,24 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#genre_links" do
+    context "duplicate genres" do
+      let(:args) {
+          {
+            document:
+            {
+              genre_display: [ "foo", "foo", "bar" ]
+            },
+            field: :genre_display
+          }
+        }
+
+      it "filters out duplicate genres" do
+        expect(genre_links(args).count).to eq(2)
+      end
+    end
+  end
+
   describe "#subject_links(args)" do
     let(:base_path) { "foo" }
 
@@ -459,6 +477,25 @@ RSpec.describe CatalogHelper, type: :helper do
         }
       it "displays only one hyphen" do
         expect(subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
+
+    context "duplicate entry" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: [
+                "Regions & Countries — —  Asia & the Middle East",
+                "Regions & Countries — —  Asia & the Middle East",
+              ]
+            },
+            field: :subject_display
+          }
+        }
+
+      it "filters out duplicates" do
+        expect(subject_links(args).count).to eq(1)
       end
     end
   end
