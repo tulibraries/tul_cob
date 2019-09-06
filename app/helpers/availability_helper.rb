@@ -6,14 +6,12 @@ module AvailabilityHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    unavailable_libraries = ["SCRC"]
+    unavailable_libraries = []
+    # Temporary change for items that don't currently fit in the ASRS bins
     unavailable_locations = ["storage"]
 
-    # Temporary change to display SCRC items as unavailable until it opens
-    if unavailable_libraries.include?(item.library)
-      content_tag(:span, "", class: "close-icon") + "Not available pending move"
-    # Temporary change for items that don't currently fit in the ASRS bins
-    elsif unavailable_locations.include?(item.location)
+    if unavailable_libraries.include?(item.library) ||
+        unavailable_locations.include?(item.location)
       content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
