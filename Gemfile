@@ -101,10 +101,16 @@ gem "httparty"
 
 gem "traject", "~> 3.1"
 gem "traject_plus"
+
+gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
+  branch: "master"
+
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
   branch: "qa"
-gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git"
 
+gem "cob_index",
+  git: "https://github.com/tulibraries/cob_index.git",
+  branch: "qa"
 
 group :production do
   gem "mysql2", "~> 0.5.2"
