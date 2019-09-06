@@ -73,8 +73,8 @@ RSpec.describe AvailabilityHelper, type: :helper do
        )
       end
 
-      it "displays library use only" do
-        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+      it "displays as available" do
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Available"
       end
     end
 
