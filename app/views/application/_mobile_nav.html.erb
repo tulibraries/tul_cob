@@ -2,9 +2,9 @@
   <div id="menu-button" onclick="toggle('main')">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" id="main-toggler-icon">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
+      <span class="bar1"></span>
+      <span class="bar2"></span>
+      <span class="bar3"></span>
     </span>
     <span class="navbar-brand" id="main-navbar-brand">Main Menu</span>
   </button>
@@ -34,19 +34,19 @@
       </div>
       <div class="row">
         <div class="col">
-          <%= image_tag "person.png", class: "person-icon" %>
+          <%= image_tag "person.png", class: "person-icon decorative" %>
           <%= link_to "My Account", users_account_path %>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <%= image_tag "chat.png", class: "chat-icon" %>
+          <%= image_tag "chat.png", class: "chat-icon decorative" %>
           <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <%= image_tag "hours.png", class: "hours-icon" %>
+          <%= image_tag "hours.png", class: "hours-icon decorative" %>
           <%= link_to "Hours", "https://library.temple.edu/hours" %>
         </div>
       </div>

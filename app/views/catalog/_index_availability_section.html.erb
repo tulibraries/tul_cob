@@ -7,7 +7,7 @@
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
         <div class="controls">
         <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>, availability.button" id="available_button-<%=  document.id %>" aria-expanded="false" aria-controls="physical-document-<%= document.id %>">
-          <i class="fa fa-spinner" role="spinbutton"></i>
+          <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
           <span>Loading...</span>
         </button>
 

@@ -52,6 +52,10 @@ $(window).on('turbolinks:load', function() {
 
 $(document).ready(function() {
 
+	$('.decorative').each(function() {
+    $(this).attr('alt', "");
+  });
+
 	// This is necessary because iOS is triggering the resize event when an element is clicked.
 	// More information about this solution can be found here: https://stackoverflow.com/a/24212316/256854
 

@@ -112,6 +112,7 @@
 }
 
 .bar1, .bar2, .bar3 {
+	display: block;
   width: 1.5625rem;
   height: 0.125rem;
   background-color: $white;

@@ -31,6 +31,11 @@
     <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="bg-white <%= render_body_class %>">
+
+    <div id="skip-link">
+      <%= link_to "Skip to main content", "#main-container", :class => "skip-main", :tabindex => "1" %>
+    </div>
+
     <div id="page-wrapper">
       <%= render :partial => "shared/header_navbar" %>
 
@@ -40,7 +45,7 @@
 
       <%= render partial: "shared/modal" %>
 
-      <div id="main-container" class="col-sm-10 col-md-12 mx-auto p-0 m-0">
+      <div id="main-container" class="col-sm-10 col-md-12 mx-auto p-0 m-0" role="main">
         <div class="pb-5">
           <%= yield %>
         </div>
