@@ -652,11 +652,12 @@
    <copyField source="subject_addl_t" dest="opensearch_display"/>
 
 
-   <!-- for suggestions -->
+   <!-- for suggestions
+   Suggestions are not used, and are breaking on immense fields
    <copyField source="*_t" dest="suggest"/>
    <copyField source="*_facet" dest="suggest"/>
-
-   <!-- Above, multiple source fields are copied to the [text] field.
+   -->
+     <!-- Above, multiple source fields are copied to the [text] field.
 	  Another way to map multiple source fields to the same
 	  destination field is to use the dynamic field syntax.
 	  copyField also supports a maxChars to copy setting.  -->
