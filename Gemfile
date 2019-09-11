@@ -99,7 +99,7 @@ gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.gi
 gem "bootstrap-select-rails"
 gem "httparty"
 
-gem "traject", "~> 3.1"
+gem "traject", "~> 3.2"
 gem "traject_plus"
 
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
