@@ -169,7 +169,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.1.0.alpha)
+    blacklight (7.1.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
@@ -562,7 +562,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.1.0.alpha)
+  blacklight (~> 7.1.0)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
