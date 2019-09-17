@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: c006781932acc2330d8eb8b75d37239b512df4ca
+  revision: 4c12a5504e068e3640cdd23f466875ca3a149cad
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -500,7 +500,7 @@ GEM
     tilt (2.0.9)
     tins (1.20.2)
     to_regexp (0.2.1)
-    traject (3.1.0)
+    traject (3.2.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (~> 3.1)

@@ -21,7 +21,7 @@ namespace :tul_cob do
       end
 
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures`
+      `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
 
       web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
       `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures`
@@ -43,7 +43,7 @@ task :ingest, [:filepath] => [:environment] do |t, args|
 
   if file && file.match?(/databases.json/)
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
-    `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures`
+    `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
   elsif file
     `SOLR_URL=#{solr_url} cob_index ingest #{args[:filepath]}`
   else
