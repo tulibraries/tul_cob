@@ -1,0 +1,35 @@
+<% doc_presenter = show_presenter(document) %>
+
+<% if should_render_show_field? document, field %>
+  <dt class="blacklight-<%= field_name.parameterize %>col-xs-12 col-sm-3 col-md-3"><%= render_document_show_field_label document, field: field_name %></dt>
+  <% if document[field_name]&.length == 1 || !document[field_name]&.is_a?(Array) %>
+
+    <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+      <% value = doc_presenter.field_value field %>
+    <% else %>
+      <% value = document[field_name] %>
+    <% end %>
+
+    <% value = raw value if field[:raw] %>
+    <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"><%= safe_join(Array.wrap(value)) %></dd>
+
+    <% else %>
+      <% document[field_name].each do |value| %>
+         <% value %>
+    <% end %>
+
+    <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9">
+      <ul>
+        <% if doc_presenter.configuration.show_fields.fetch(field_name)[:helper_method] %>
+          <% values = Array.wrap(doc_presenter.field_value field) %>
+        <% else %>
+          <% values = document[field_name] %>
+        <% end %>
+        <% values.each do |value| %>
+          <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+        <% end %>
+      </ul>
+    </dd>
+
+  <% end %>
+<% end -%>
