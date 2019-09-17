@@ -32,6 +32,6 @@
   </div>
 
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary"> <%= t('blacklight.sms.form.submit') %></button>
+    <%= button_tag t('blacklight.sms.form.submit'), type: "submit", class:"btn btn-primary", data: { disable_with: "Sending text..." } %>
   </div>
 <% end %>
