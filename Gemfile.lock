@@ -229,6 +229,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     dot-properties (0.1.3)
+    dotenv (2.7.5)
     erubi (1.8.0)
     execjs (2.7.0)
     ezwadl (0.0.1)
@@ -583,6 +584,7 @@ DEPENDENCIES
   database_cleaner
   devise
   devise-guests (~> 0.7)
+  dotenv
   ezwadl
   factory_bot_rails
   foreman
