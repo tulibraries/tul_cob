@@ -1,8 +1,8 @@
 <div class="card p-0 request-card">
   <div class="request-heading bg-header-grey">
-    <h4 class="card-title">
+    <h2 class="card-title mb-2">
         <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>"><%= t("requests.hold_allowed_link") %></a>
-    </h4>
+    </h2>
   </div>
 
   <div id="collapseOne-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options)%>">
