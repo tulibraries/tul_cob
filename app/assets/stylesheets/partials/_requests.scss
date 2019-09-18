@@ -12,15 +12,23 @@
 }
 
 .request-options-header {
-  font-family: "Roboto Condensed";
-  font-size: 2.0rem;
   padding-bottom: 0;
+  padding-top: 1rem;
+
+  h1 {
+    font-family: "Roboto Condensed";
+    font-size: 1.5rem;
+  }
 }
 
 .request-heading {
-  font-family: "Roboto Condensed";
   padding-left: 0.625rem;
   padding-top: 0.3125rem;
+
+  h2 {
+    font-family: "Roboto Condensed";
+    font-size: 1.5rem;
+  }
 }
 
 .request-heading a {
