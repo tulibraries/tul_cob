@@ -101,6 +101,7 @@ gem "httparty"
 
 gem "traject", "~> 3.1"
 gem "traject_plus"
+gem "dotenv"
 
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "master"
