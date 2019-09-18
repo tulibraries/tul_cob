@@ -54,7 +54,7 @@ class AlmawsController < CatalogController
     if @asrs_request_level == "item"
       @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
     else
-      @asrs_description = @description
+      @asrs_description = @description || @asrs_description = ""
     end
 
     if @request_level == "item" || @asrs_request_level == "item"
@@ -64,7 +64,7 @@ class AlmawsController < CatalogController
         log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
-        .sort_by { |r| r.raw_response.parsed_response.count }
+        .sort_by { |r| r.request_options.count }
         .last
 
       if @request_options.nil?
@@ -72,7 +72,7 @@ class AlmawsController < CatalogController
           log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
           do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
         }
-          .sort_by { |r| r.raw_response.parsed_response.count }
+          .sort_by { |r| r.request_options.count }
           .last
       end
     else
