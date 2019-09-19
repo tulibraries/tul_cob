@@ -520,7 +520,7 @@ GEM
       deprecation
       jsonpath
       traject (~> 3.0)
-    turbolinks (5.2.0)
+    turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
     twitter-typeahead-rails (0.11.1)
