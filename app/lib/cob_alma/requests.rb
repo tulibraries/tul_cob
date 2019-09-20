@@ -131,6 +131,7 @@ module CobAlma
         .select { |item| item.library == "ASRS" && item.in_place? }
         .map(&:description)
         .uniq
+        .sort
     end
 
     def self.booking_location(items_list)

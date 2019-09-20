@@ -115,26 +115,37 @@ class AlmawsController < CatalogController
     #log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
 
     begin
+      requests_made = 0
       if @asrs_request_level == "bib"
-        request = Alma::BibRequest.submit(options)
+        Alma::BibRequest.submit(options)
+        requests_made += 1
       else
         # TODO: Will update this depending on Justin's decision regarding
         # multiple requests on same item.
         params["available_asrs_items"]
           .select { |item| item["description"] == options[:description] }
           .each do |item|
+
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          request = Alma::ItemRequest.submit(
+          Alma::ItemRequest.submit(
             options.merge(
               holding_id: holding_id,
               item_pid: item_pid))
+
+          requests_made += 1
           break
         end
       end
 
-      flash["notice"] = helpers.successful_request_message
+      if requests_made > 0
+        flash["notice"] = helpers.successful_request_message
+      else
+        flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      end
+
+
       redirect_back(fallback_location: root_path)
 
     rescue
