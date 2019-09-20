@@ -14,7 +14,7 @@ $(document).ready(function(){
 			{id: "navbar_journals", category: "navigation"},
 			{id: "navbar_website", category: "navigation"},
 			{id: "startOverLink", category: "search-results"},
-			{id: "start_over", category: "search-results"},
+			{id: "start_over", category: "record-page"},
 			{id: "back_to_search", category: "search-results"},
 			{id: "advanced-search-submit", category: "search-results"},
 			{id: "articles_advanced_search", category: "search-results"},
@@ -43,7 +43,7 @@ $(document).ready(function(){
 	  const handleEventClicks = (label, category) => {
 	    if (typeof ga != "undefined") {
 	      ga("send", "event", {
-	        eventCategory: "category",
+	        eventCategory: category,
 	        eventAction: "click",
 	        eventLabel: label,
 	        forceSSL: true,
@@ -62,9 +62,8 @@ $(document).ready(function(){
 			} else {
 				let elements = [... document.getElementsByClassName(track.class)]
 				elements.forEach((el) => {
-					console.log(track.class)
 					el.addEventListener("click", () => {
-			    handleEventClicks(track.id, track.category)
+			    handleEventClicks(track.class, track.category)
 					});
 				});
 			};
