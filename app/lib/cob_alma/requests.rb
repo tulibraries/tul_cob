@@ -123,7 +123,7 @@ module CobAlma
           desc
         end
       end
-      descriptions.uniq
+      descriptions.uniq.sort
     end
 
     def self.asrs_descriptions(items_list)
