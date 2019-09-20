@@ -15,9 +15,9 @@
       <li class="nav-right hours-nav"><%= link_to "Hours", "https://library.temple.edu/hours" %></li>
       <li class="nav-right chat-nav"><%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flocalhost%3A3000%2Fhsl&referer_title=Temple%20University%20Libraries" %></li>
       <% if current_user %>
-        <li class="nav-right account-nav"><%= link_to "My Account", users_account_path %></li>
+        <li class="nav-right account-nav"><%= link_to "My Account", users_account_path, id: "my-account" %></li>
       <% else %>
-        <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path %></li>
+        <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path, id: "login" %></li>
       <% end %>
     </ul>
   </div>

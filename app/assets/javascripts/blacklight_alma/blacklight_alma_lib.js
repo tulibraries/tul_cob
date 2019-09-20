@@ -24,13 +24,13 @@ var BlacklightAlma = function (options) {
      if(holding['availability'] == 'available') {
        $(availButton).html("<span class='avail-label available'>Available</span>");
        $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-success collapsed collapse-button available");
+       $(availButton).addClass("btn-success collapsed collapse-button available availability-btn");
        $(availButton).show();
      }
      else if(holding['availability'] == 'check_holdings') {
        $(availButton).html("<span class='avail-label available'>Available</span>");
        $(availButton).removeClass("btn-default");
-       $(availButton).addClass("btn-success collapsed collapse-button available");
+       $(availButton).addClass("btn-success collapsed collapse-button available availability-btn");
        $(availButton).show();
      }
      else {
@@ -48,7 +48,7 @@ var BlacklightAlma = function (options) {
 
     $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
     $(availButton).removeClass("btn-default");
-    $(availButton).addClass("btn-warning collapsed collapse-button");
+    $(availButton).addClass("btn-warning collapsed collapse-button availability-btn");
     $(availButton).show();
   }
 
