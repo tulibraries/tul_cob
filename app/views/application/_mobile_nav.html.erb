@@ -35,7 +35,11 @@
       <div class="row">
         <div class="col">
           <%= image_tag "person.png", class: "person-icon decorative" %>
-          <%= link_to "My Account", users_account_path %>
+          <% if current_user %>
+            <%= link_to "My Account", users_account_path, id: "my-account" %>
+          <% else %>
+            <%= link_to "My Account", new_user_session_path, id: "login" %>
+          <% end %>
         </div>
       </div>
       <div class="row">

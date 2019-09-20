@@ -17,6 +17,7 @@
     <![endif]-->
 
     <title><%= render_page_title %></title>
+    <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
     <%= preload_link_tag(font_url('CrimsonText-Regular.ttf')) %>
     <%= preload_link_tag(font_url('BebasNeue-webfont.woff')) %>
     <%= preload_link_tag(font_url('droidsans-webfont.woff')) %>
@@ -28,7 +29,6 @@
     <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
-    <%= analytics_init({anonymize: true}) if GoogleAnalytics.valid_tracker? %>
   </head>
   <body class="bg-white <%= render_body_class %>">
 

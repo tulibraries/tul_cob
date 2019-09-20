@@ -1,66 +1,73 @@
 $(document).ready(function(){
+	setTimeout(function(){
 
-	var tracks = [
-		{id: "header-logo", category: "navigation"},
-		{id: "login", category: "navigation"},
-		{id: "logout", category: "navigation"},
-		{id: "bookmarks_nav", category: "navigation"},
-		{id: "articles-header", category: "navigation"},
-		{id: "articles-button", category: "navigation"},
-		{id: "catalog-header", category: "navigation"},
-		{id: "catalog-button", category: "navigation"},
-		{id: "bento_books", category: "bento-results"},
-		{id: "bento_articles", category: "bento-results"},
-		{id: "bento_more", category: "bento-results"},
-		{id: "bento_journals", category: "bento-results"},
-		{id: "bento_resource_types", category: "bento-results"},
-		{id: "one_online_button", category: "bento-results"},
-		{id: "many_online_button", category: "bento-results"},
-		{id: "advanced_search", category: "search-results"},
-		{id: "basic_search", category: "search-results"},
-		{id: "online_button", category: "search-results"},
-		{id: "bookmark_button", category: "search-results"},
-		{id: "direct_link_online", category: "search-results"},
-		{id: "single_link_online", category: "search-results"},
-		{id: "many_links_online", category: "search-results"},
-		{id: "online_only", category: "search-results"},
-		{id: "articles_basic_search", category: "search-results"},
-		{id: "articles_advanced_search", category: "search-results"},
-		{id: "back_to_search", category: "search-results"},
-		{id: "start_over", category: "search-results"},
-		{id: "emailLink", category: "search-results"},
-		{id: "smsLink", category: "search-results"},
-		{id: "refworksLink", category: "search-results"},
-		{id: "citationLink", category: "search-results"},
-		{id: "signin_for_request_options", category: "search-results"},
-		{id: "request", category: "search-results"},
-		{id: "available_button", category: "search-results"},
-		{id: "navbar_everything", category: "navigation"},
-		{id: "navbar_books", category: "navigation"},
-		{id: "navbar_articles", category: "navigation"},
-		{id: "navbar_journals", category: "navigation"},
-		{id: "navbar_more", category: "navigation"},
-		{id: "request_options", category: "search-results"},
-		{id: "request-btn-0", category: "search-results"}
-	];
+		const tracks = [
+			{id: "logo-navbar", category: "navigation"},
+			{id: "my-account", category: "navigation"},
+			{id: "login", category: "navigation"},
+			{id: "logout", category: "navigation"},
+			{id: "bookmarks_nav", category: "navigation"},
+			{id: "navbar_everything", category: "navigation"},
+			{id: "navbar_more", category: "navigation"},
+			{id: "navbar_articles", category: "navigation"},
+			{id: "navbar_databases", category: "navigation"},
+			{id: "navbar_journals", category: "navigation"},
+			{id: "navbar_website", category: "navigation"},
+			{id: "startOverLink", category: "search-results"},
+			{id: "start_over", category: "record-page"},
+			{id: "back_to_search", category: "search-results"},
+			{id: "advanced-search-submit", category: "search-results"},
+			{id: "articles_advanced_search", category: "search-results"},
+			{id: "databases_advanced_search", category: "search-results"},
+			{id: "journals_advanced_search", category: "search-results"},
+			{id: "catalog_advanced_search", category: "search-results"},
+			{id: "search", category: "search-results"},
+			{id: "bento_books_and_media", category: "bento-results"},
+			{id: "bento_articles", category: "bento-results"},
+			{id: "bento_databases", category: "bento-results"},
+			{id: "bento_website", category: "bento-results"},
+			{id: "bento_journals", category: "bento-results"},
+			{id: "bento_resource_types", category: "bento-results"},
+			{id: "emailLink", category: "record-page"},
+			{id: "smsLink", category: "record-page"},
+			{id: "refworksLink", category: "record-page"},
+			{id: "citationLink", category: "record-page"},
+			{id: "risLink", category: "record-page"},
+			{id: "bookmark_button", category: "record-page"},
+			{class: "bento-online", category: "bento-results"},
+			{class: "online-btn", category: "search-results"},
+			{class: "request-button", category: "search-results"},
+			{class: "availability-btn", category: "search-results"},
+		];
 
-  function handleEventClicks(event) {
-    if (typeof ga != "undefined") {
-      ga('send', 'event', {
-        eventCategory: 'Click Event',
-        eventAction: 'click',
-        eventLabel: event,
-        forceSSL: true,
-        anonymizeIp: true
-      });
-    }
-  }
+	  const handleEventClicks = (label, category) => {
+	    if (typeof ga != "undefined") {
+	      ga("send", "event", {
+	        eventCategory: category,
+	        eventAction: "click",
+	        eventLabel: label,
+	        forceSSL: true,
+	        anonymizeIp: true
+	      });
+	    };
+	  };
 
-	tracks.forEach(function(track) {
-		if (el = document.getElementById(track.id)) {
-			el.addEventListener("click", function(){
-		    handleEventClicks(track.id, track.category) })
-			}
+		tracks.forEach((track) => {
+			if(track.id) {
+				if (el = document.getElementById(track.id)) {
+					el.addEventListener("click", () => {
+				    handleEventClicks(track.id, track.category)
+					});
+				};
+			} else {
+				let elements = [... document.getElementsByClassName(track.class)]
+				elements.forEach((el) => {
+					el.addEventListener("click", () => {
+			    handleEventClicks(track.class, track.category)
+					});
+				});
+			};
 		});
 
+	},2000);
 });
