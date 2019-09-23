@@ -93,6 +93,10 @@ RSpec.configure do |config|
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/paley_reserves_and_remote_storage.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/booking_locations\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/booking_locations.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/paley_reserves_and_remote_storage\/holdings\/.*\/items/).
       with(query: hash_including(offset: "100")).

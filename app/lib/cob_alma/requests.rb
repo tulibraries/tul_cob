@@ -135,7 +135,17 @@ module CobAlma
     end
 
     def self.booking_location(items_list)
-      pickup_library = items_list.map { |item| [item.library, item.library_name] }
+      pickup_library = items_list.map { |item|
+        if item.library == "ASRS"
+          library_name = "Charles Library"
+          [item.library, library_name]
+        else
+          library_name = item.library_name
+        end
+
+        [item.library, library_name]
+      }
+
       pickup_library.uniq
     end
 
