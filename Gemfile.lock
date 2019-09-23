@@ -515,7 +515,7 @@ GEM
       nokogiri (~> 1.9)
       slop (>= 3.4.5, < 4.0)
       yell
-    traject_plus (1.1.1)
+    traject_plus (1.2.0)
       activesupport
       deprecation
       jsonpath
