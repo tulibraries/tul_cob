@@ -165,6 +165,11 @@ $(document).on('turbolinks:load', function() {
  		$("#search-navbar").css("padding-left", "15%");
  	}
 
+	$(".modal").on("show.bs.modal", function() {
+		$(".search-results-request-btn").find("span").remove();
+	})
+
+
 	$('#facet-filter-icon').click( function(){
     $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
 	});
