@@ -330,7 +330,7 @@ class CatalogController < ApplicationController
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator, type: :primary
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true, type: :primary
     config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator, type: :primary
-    config.add_show_field "format", label: "Resource Type", type: :primary
+    config.add_show_field "format", label: "Resource Type", type: :primary, raw: true, helper_method: :separate_formats
     config.add_show_field "imprint_display", label: "Publication", type: :primary
     config.add_show_field "imprint_prod_display", label: "Production", type: :primary
     config.add_show_field "imprint_dist_display", label: "Distribution", type: :primary
