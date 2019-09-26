@@ -4,6 +4,7 @@ $(document).ready(function(){
 		const tracks = [
 			{id: "logo-navbar", category: "navigation"},
 			{id: "my-account", category: "navigation"},
+			{id: "my-account-mobile", category: "navigation"},
 			{id: "login", category: "navigation"},
 			{id: "logout", category: "navigation"},
 			{id: "bookmarks_nav", category: "navigation"},
