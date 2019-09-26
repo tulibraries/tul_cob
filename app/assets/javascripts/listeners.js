@@ -36,7 +36,8 @@ $(document).ready(function(){
 			{id: "bookmark_button", category: "record-page"},
 			{class: "bento-online", category: "bento-results"},
 			{class: "online-btn", category: "search-results"},
-			{class: "request-button", category: "search-results"},
+			{class: "search-results-request-btn", category: "search-results"},
+			{class: "record-page-request-btn", category: "record-page"},
 			{class: "availability-btn", category: "search-results"},
 		];
 
