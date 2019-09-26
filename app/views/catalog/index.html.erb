@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div id="content" class="<%= "col-md-7 col-lg-8 bg-white rounded" if show_sidebar? %>ml-md-4 ml-sm-0 pr-0 pl-0 search-results">
+  <div id="content" class="<%= "col-md-7 col-lg-8 bg-white rounded" if show_sidebar? %>ml-md-4 ml-sm-0 pr-0 pl-0 search-results-display">
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render "home" %>
