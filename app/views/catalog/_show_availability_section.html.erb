@@ -1,6 +1,8 @@
 <% doc_presenter = show_presenter(document) %>
 <%# partial to display availability details in catalog show view -%>
 
+<h2 class="sr-only availability-section"><%= "Availability" %></h2>
+
 <div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0">
   <div class="availability-card-heading float-right">
     <div id="heading-request ml-auto">
