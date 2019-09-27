@@ -40,6 +40,8 @@ module Blacklight::PrimoCentral
 
         min = (range.min || values&.first&.fetch(:value, 0)).to_i
         max = (range.max || values&.last&.fetch(:value, 9999)).to_i
+        raise BlacklightRangeLimit::InvalidRange, "The min date must be before the max date" if min > max
+
         data = facet_segments(field["name"], min, max, values)
         stat = { min: min, max: max, missing: 0, data: data }
         [field["name"], stat]
