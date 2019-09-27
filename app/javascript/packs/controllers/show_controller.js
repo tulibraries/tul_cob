@@ -6,7 +6,7 @@ import { Controller } from "stimulus"
   }
 
 export default class extends Controller {
-  static targets = [ "panel", "spinner", "request" ]
+  static targets = [ "panel", "spinner", "request", "href" ]
 
   initialize() {
     this.availability()
@@ -28,5 +28,9 @@ export default class extends Controller {
         var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
         $("#request-btn-" + mms_id).attr("href", requests_url);
       })
+  }
+
+  loading() {
+    $(this.hrefTarget).append("<span class='fa fa-spinner ml-1' aria-busy='true' aria-live='polite'></span>")
   }
 }
