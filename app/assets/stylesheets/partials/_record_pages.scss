@@ -60,8 +60,9 @@
   list-style-type: none;
 }
 
-.secondary-fields-header {
+.secondary-fields-header h2 {
   font-family: "PT Sans";
+  font-size: 1.25rem;
 
   hr {
     border-bottom: 0.0625rem solid $red;

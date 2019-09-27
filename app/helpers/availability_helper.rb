@@ -15,8 +15,7 @@ module AvailabilityHelper
       content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
-          item.circulation_policy == "Bound Journal" ||
-          item.circulation_policy == "Music Restricted"
+          item.circulation_policy == "Bound Journal"
         content_tag(:span, "", class: "check") + "Library Use Only"
       else
         content_tag(:span, "", class: "check") + "Available"

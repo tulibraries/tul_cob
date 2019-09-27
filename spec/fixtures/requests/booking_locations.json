@@ -1,0 +1,267 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "mms_id": "991036140539703811",
+                "title": "Peter Schaffer's Amadeus director's cut /",
+                "author": "Forman, Miloš.",
+                "issn": null,
+                "isbn": "0790765152",
+                "complete_edition": "Two-disc special edition.",
+                "network_number": [
+                    "(OCLC)ocm60174461",
+                    "ocm60174461",
+                    "PPTb26892029",
+                    "(CStRLIN)ocn489536215",
+                    "(PPT)b26892029-01tuli_inst"
+                ],
+                "place_of_publication": "Burbank, Calif. :",
+                "date_of_publication": "[2002]",
+                "publisher_const": "Warner Home Video",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811"
+            },
+            "holding_data": {
+                "holding_id": "22240098440003811",
+                "call_number_type": {
+                    "value": "8",
+                    "desc": "Other scheme"
+                },
+                "call_number": "DVD 12 A163",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811/holdings/22240098440003811"
+            },
+            "item_data": {
+                "pid": "23240098430003811",
+                "barcode": "39074028150704",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2018-01-23Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "DVD",
+                    "desc": "DVD"
+                },
+                "policy": {
+                    "value": "5",
+                    "desc": "Media"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2012-04-11Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "library": {
+                    "value": "AMBLER",
+                    "desc": "Ambler Campus Library"
+                },
+                "location": {
+                    "value": "media",
+                    "desc": "Ambler Media"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Check container for 2 DVDs.",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: avid",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": false,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811/holdings/22240098440003811/items/23240098430003811"
+        },
+        {
+            "bib_data": {
+                "mms_id": "991036140539703811",
+                "title": "Peter Schaffer's Amadeus director's cut /",
+                "author": "Forman, Miloš.",
+                "issn": null,
+                "isbn": "0790765152",
+                "complete_edition": "Two-disc special edition.",
+                "network_number": [
+                    "(OCLC)ocm60174461",
+                    "ocm60174461",
+                    "PPTb26892029",
+                    "(CStRLIN)ocn489536215",
+                    "(PPT)b26892029-01tuli_inst"
+                ],
+                "place_of_publication": "Burbank, Calif. :",
+                "date_of_publication": "[2002]",
+                "publisher_const": "Warner Home Video",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811"
+            },
+            "holding_data": {
+                "holding_id": "22467083470003811",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "PN1997 .A34x 2002",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_location": {
+                    "value": null,
+                    "desc": null
+                },
+                "temp_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "temp_call_number": "",
+                "temp_policy": {
+                    "value": "",
+                    "desc": null
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811/holdings/22467083470003811"
+            },
+            "item_data": {
+                "pid": "23240098410003811",
+                "barcode": "39074015676919",
+                "creation_date": "2017-06-20Z",
+                "modification_date": "2019-05-14Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "DVD",
+                    "desc": "DVD"
+                },
+                "policy": {
+                    "value": "5",
+                    "desc": "Media"
+                },
+                "provenance": {
+                    "value": "",
+                    "desc": null
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2004-03-10Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "description": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "library": {
+                    "value": "ASRS",
+                    "desc": "ASRS"
+                },
+                "location": {
+                    "value": "media",
+                    "desc": "ASRS Media"
+                },
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": "",
+                    "desc": null
+                },
+                "storage_location_id": "",
+                "pages": "",
+                "pieces": "$0.00",
+                "public_note": "",
+                "fulfillment_note": "MESSAGE(ITEM): Check container for 2 DVDs.",
+                "internal_note_1": "INT NOTE: Both discs cleaned (deep) on 01/15/2013 - JPyle | INT NOTE: Transferred from Paley circulation desk to Media Services 2/09",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pmed",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "requested": false,
+                "edition": null,
+                "imprint": null,
+                "language": null,
+                "physical_condition": {
+                    "value": null,
+                    "desc": null
+                }
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991036140539703811/holdings/22467083470003811/items/23240098410003811"
+        }
+    ],
+    "total_record_count": 2
+}

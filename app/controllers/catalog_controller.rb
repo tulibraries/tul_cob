@@ -2,13 +2,10 @@
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
-
   include BlacklightRangeLimit::ControllerOverride
-
   include Blacklight::Catalog
 
   include BlacklightAlma::Availability
-
   include Blacklight::Marc::Catalog
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
@@ -17,8 +14,9 @@ class CatalogController < ApplicationController
   helper_method :browse_creator
   helper_method :display_duration
 
-  rescue_from ::BlacklightRangeLimit::InvalidRange,
-    with: :raise_bad_range_limit
+  rescue_from BlacklightRangeLimit::InvalidRange do
+    redirect_back(fallback_location: root_path, notice: "The start year must be before the end year.")
+  end
 
   rescue_from Blacklight::Exceptions::RecordNotFound,
     with: :invalid_document_id_error
@@ -26,7 +24,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    #config.advanced_search[:qt] ||= 'advanced'
+    #config.advanced_search[:qt] ||= "advanced"
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
@@ -35,7 +33,6 @@ class CatalogController < ApplicationController
 
     config.track_search_session = true
     config.raw_endpoint.enabled = true
-
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
@@ -301,7 +298,6 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true
 
-
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -334,7 +330,7 @@ class CatalogController < ApplicationController
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator, type: :primary
     config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true, type: :primary
     config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator, type: :primary
-    config.add_show_field "format", label: "Resource Type", type: :primary
+    config.add_show_field "format", label: "Resource Type", type: :primary, raw: true, helper_method: :separate_formats
     config.add_show_field "imprint_display", label: "Publication", type: :primary
     config.add_show_field "imprint_prod_display", label: "Production", type: :primary
     config.add_show_field "imprint_dist_display", label: "Distribution", type: :primary
@@ -412,7 +408,6 @@ class CatalogController < ApplicationController
 
     config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
     config.add_show_field "purchase_order_availability", label: "Request Rapid Access", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_panel: true
-
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -569,12 +564,10 @@ class CatalogController < ApplicationController
     # Document results tools
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
 
-
     # Results collection tools
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
     config.add_results_collection_tool(:view_type_group)
-
 
     # Show tools
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
@@ -623,12 +616,10 @@ class CatalogController < ApplicationController
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 
-  ##
   # Render one index record (use as an ajax endpoint).
-  #
   # Note: The reason this method is defined here and not in PrimoCentralController
   # is that it actually gets called from bookmarks.
-  # /
+
   def index_item
     count = (params["document_counter"] || 0 rescue 0).to_i
     begin
@@ -651,7 +642,6 @@ class CatalogController < ApplicationController
     render "_document", layout: false, locals: { document: doc, document_counter: count }
   end
 
-  ##
   # Overrides CatalogController.invalid_document_id_error
   # Overridden so that we can use our own 404 error handling setup.
   def invalid_document_id_error(exception)

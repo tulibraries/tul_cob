@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "catalog", "primo_central", "bento", "books", "journals" ]
+  static targets = [ "catalog", "primo_central", "bento", "books", "journals", "web_content" ]
 
   catalog() {
     this.showOnce("catalog")
@@ -21,6 +21,10 @@ export default class extends Controller {
 
   journals() {
     this.showOnce("journals")
+  }
+
+  web_content() {
+    this.showOnce("web_content")
   }
 
   showOnce(namespace) {

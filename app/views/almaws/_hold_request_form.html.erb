@@ -60,7 +60,7 @@
     </div>
 
     <div class="row hold-form">
-      <%= form.submit t("requests.form.submit"), class:"btn btn-primary" %>
+      <%= form.submit t("requests.form.submit"), class:"btn btn-primary", data: { disable_with: "Sending request..." } %>
     </div>
   </div>
 <% end %>

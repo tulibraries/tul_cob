@@ -54,26 +54,16 @@ class AlmawsController < CatalogController
     if @asrs_request_level == "item"
       @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
     else
-      @asrs_description = @description
+      @asrs_description = @description || @asrs_description = ""
     end
 
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
-      @request_options = @item_level_holdings.map { |holding_id, item_pid|
-        log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
-        do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
-      }
-        .sort_by { |r| r.raw_response.parsed_response.count }
-        .last
+      @request_options = get_largest_request_options_set(@item_level_holdings)
 
       if @request_options.nil?
-        @request_options = @second_attempt_holdings.map { |holding_id, item_pid|
-          log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
-          do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
-        }
-          .sort_by { |r| r.raw_response.parsed_response.count }
-          .last
+        @request_options = get_largest_request_options_set(@second_attempt_holdings)
       end
     else
       log = { type: "bib_request_options", user: current_user.id }
@@ -125,26 +115,37 @@ class AlmawsController < CatalogController
     #log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
 
     begin
+      requests_made = 0
       if @asrs_request_level == "bib"
-        request = Alma::BibRequest.submit(options)
+        Alma::BibRequest.submit(options)
+        requests_made += 1
       else
         # TODO: Will update this depending on Justin's decision regarding
         # multiple requests on same item.
         params["available_asrs_items"]
           .select { |item| item["description"] == options[:description] }
           .each do |item|
+
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          request = Alma::ItemRequest.submit(
+          Alma::ItemRequest.submit(
             options.merge(
               holding_id: holding_id,
               item_pid: item_pid))
+
+          requests_made += 1
           break
         end
       end
 
-      flash["notice"] = helpers.successful_request_message
+      if requests_made > 0
+        flash["notice"] = helpers.successful_request_message
+      else
+        flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      end
+
+
       redirect_back(fallback_location: root_path)
 
     rescue
@@ -230,6 +231,15 @@ class AlmawsController < CatalogController
       else
         has_desc?(items) ? "item" : "bib"
       end
+    end
+
+    def get_largest_request_options_set(items)
+      items.map { |holding_id, item_pid|
+        log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
+        do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
+      }
+        .sort_by { |r| r.request_options&.count || 0 }
+        .last
     end
 
     def has_desc?(items)

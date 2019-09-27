@@ -22,7 +22,7 @@ module Tulcob
     # config/initializers: All .rb files in that directory are automatically
     # loaded.
     config.process_types = config_for(:process_types).with_indifferent_access
-    config.libraries = DotProperties.load(Rails.root + "config/translation_maps/libraries_map.properties")
+    config.libraries = CobIndex::DotProperties.load("libraries_map")
     config.locations = config_for(:locations).with_indifferent_access
     config.material_types = config_for(:material_types).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access

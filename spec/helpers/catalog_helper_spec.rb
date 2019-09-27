@@ -200,7 +200,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#render_bound_with_ids" do
+  describe "#render_alma_availability(document)" do
     let(:doc) { SolrDocument.new(bound_with_ids: ["foo"]) }
     let(:config) { CatalogController.blacklight_config }
 
@@ -210,9 +210,9 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "with boud_with_ids defined" do
+    context "with bound_with_ids defined" do
       it "renders the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).not_to be_nil
+        expect(helper.render_alma_availability(doc)).not_to be_nil
       end
     end
 
@@ -220,7 +220,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:doc) { SolrDocument.new(bound_with_ids: nil) }
 
       it "does not render the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).to be_nil
+        expect(helper.render_alma_availability(doc)).to be_nil
       end
     end
 
@@ -228,7 +228,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:config) { PrimoCentralController.blacklight_config }
 
       it "does not render the bound_with_ids" do
-        expect(helper.render_bound_with_ids(doc)).to be_nil
+        expect(helper.render_alma_availability(doc)).to be_nil
       end
     end
   end
@@ -406,6 +406,24 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#genre_links" do
+    context "duplicate genres" do
+      let(:args) {
+          {
+            document:
+            {
+              genre_display: [ "foo", "foo", "bar" ]
+            },
+            field: :genre_display
+          }
+        }
+
+      it "filters out duplicate genres" do
+        expect(genre_links(args).count).to eq(2)
+      end
+    end
+  end
+
   describe "#subject_links(args)" do
     let(:base_path) { "foo" }
 
@@ -459,6 +477,25 @@ RSpec.describe CatalogHelper, type: :helper do
         }
       it "displays only one hyphen" do
         expect(subject_links(args).first).to have_text("Regions & Countries —  Asia & the Middle East")
+      end
+    end
+
+    context "duplicate entry" do
+      let(:args) {
+          {
+            document:
+            {
+              subject_display: [
+                "Regions & Countries — —  Asia & the Middle East",
+                "Regions & Countries — —  Asia & the Middle East",
+              ]
+            },
+            field: :subject_display
+          }
+        }
+
+      it "filters out duplicates" do
+        expect(subject_links(args).count).to eq(1)
       end
     end
   end
