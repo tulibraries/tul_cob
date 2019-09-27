@@ -42,6 +42,7 @@ $(window).on('turbolinks:load', function() {
 		$('.clear-bookmarks').insertAfter('#back_to_search');
 		$('#facet-filter-icon').removeClass('hidden');
 		$('#facet-panel-collapse').removeClass('show');
+		$('.small-limit-search-heading').removeClass('d-none');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
@@ -75,6 +76,8 @@ $(document).ready(function() {
       $('.clear-bookmarks').insertAfter('#back_to_search');
       $('#facet-filter-icon').removeClass('hidden');
       $('#facet-panel-collapse').removeClass('show');
+			$('.small-limit-search-heading').removeClass('d-none');
+			$('.limit-search-heading').addClass('d-none');
     }
     else {
       $('#nav-tools').insertAfter('#page-links');

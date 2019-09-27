@@ -4,6 +4,7 @@ $(document).ready(function(){
 		const tracks = [
 			{id: "logo-navbar", category: "navigation"},
 			{id: "my-account", category: "navigation"},
+			{id: "my-account-mobile", category: "navigation"},
 			{id: "login", category: "navigation"},
 			{id: "logout", category: "navigation"},
 			{id: "bookmarks_nav", category: "navigation"},
@@ -36,7 +37,8 @@ $(document).ready(function(){
 			{id: "bookmark_button", category: "record-page"},
 			{class: "bento-online", category: "bento-results"},
 			{class: "online-btn", category: "search-results"},
-			{class: "request-button", category: "search-results"},
+			{class: "search-results-request-btn", category: "search-results"},
+			{class: "record-page-request-btn", category: "record-page"},
 			{class: "availability-btn", category: "search-results"},
 		];
 
