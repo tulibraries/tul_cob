@@ -4,7 +4,7 @@ module RequestHelper
   include Blacklight::CatalogHelperBehavior
 
   def request_modal(mms_id, pickup_locations, request_level)
-    link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn btn-sm btn-primary request-button search-results-request-btn float-right", data: { "blacklight-modal": "trigger", "action": "availability#modal", "target": "availability.href" })
+    link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn btn-sm btn-primary request-button search-results-request-btn float-right", data: { "blacklight-modal": "trigger", "action": "availability#modal show#loading", "target": "availability.href show.href" })
   end
 
   def ez_borrow_link_with_updated_query(url)

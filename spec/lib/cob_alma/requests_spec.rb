@@ -189,6 +189,21 @@ RSpec.describe CobAlma::Requests do
     end
   end
 
+  describe "#booking_location" do
+    context "libraries include ASRS and another location" do
+      let(:items_list) { Alma::BibItem.find("booking_locations") }
+
+      it "returns Charles Library as the name for ASRS" do
+        expect(described_class.booking_location(items_list)).to include(["ASRS", "Charles Library"])
+      end
+
+      it "returns other libraries with their assigned name" do
+        expect(described_class.booking_location(items_list)).to include(["AMBLER", "Ambler Campus Library"])
+      end
+
+    end
+  end
+
   describe "#physical_material_type(items_list)" do
     let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
 

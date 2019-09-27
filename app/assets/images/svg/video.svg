@@ -1,3 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
-  <path d="M.5 0c-.28 0-.5.23-.5.5v4c0 .28.23.5.5.5h5c.28 0 .5-.22.5-.5v-1.5l1 1h1v-3h-1l-1 1v-1.5c0-.28-.22-.5-.5-.5h-5z" transform="translate(0 1)" />
-</svg>
+<svg height='100px' width='100px'  fill="#000000" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 30 30" x="0px" y="0px"><title>video-record-moive-clip</title><path d="M28.526,8.149a1,1,0,0,0-.973-.044L21,11.382V9a3,3,0,0,0-3-3H4A3,3,0,0,0,1,9V21a3,3,0,0,0,3,3H18a3,3,0,0,0,3-3V18.618L27.553,21.9A1,1,0,0,0,29,21V9A1,1,0,0,0,28.526,8.149ZM19,21a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V9A1,1,0,0,1,4,8H18a1,1,0,0,1,1,1V21Zm8-1.618-6-3V13.618l6-3Z"></path><path d="M11,11a4,4,0,1,0,4,4A4,4,0,0,0,11,11Zm0,6a2,2,0,1,1,2-2A2,2,0,0,1,11,17Z"></path></svg>

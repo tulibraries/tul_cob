@@ -1,3 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8">
-  <path d="M8 0c-5 0-6 1-6 1v4.09c-.15-.05-.33-.09-.5-.09-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5v-3.97c.73-.23 1.99-.44 4-.5v2.06c-.15-.05-.33-.09-.5-.09-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5v-5.5z" />
-</svg>
+<svg height='100px' width='100px'  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" version="1.1" style="shape-rendering:geometricPrecision;text-rendering:geometricPrecision;image-rendering:optimizeQuality;" viewBox="0 0 223 191" x="0px" y="0px" fill-rule="evenodd" clip-rule="evenodd"><defs><style type="text/css">
+   
+    .fil0 {fill:#000000}
+   
+  </style></defs><g><path class="fil0" d="M38 140c9,0 16,1 23,5l0 -94 0 -51 15 0 131 0 16 0 0 51 0 114c0,14 -17,26 -38,26 -21,0 -38,-12 -38,-26 0,-14 17,-25 38,-25 8,0 16,1 22,5l0 -94 -131 0 0 114c0,14 -17,26 -38,26 -21,0 -38,-12 -38,-26 0,-14 17,-25 38,-25z"></path></g></svg>

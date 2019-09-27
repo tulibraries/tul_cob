@@ -13,7 +13,7 @@ gem "bootstrap", "~> 4.3"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1"
 # Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 6.0"
 # Use Uglifier as compressor for JavaScript assets
 gem "uglifier", ">= 1.3.0"
 # Use CoffeeScript for .coffee assets and views
@@ -53,7 +53,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 7.1.0.alpha"
+gem "blacklight", "~> 7.1.0"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
 gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
@@ -84,7 +84,7 @@ gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
-gem "capybara", "3.28.0"
+gem "capybara", "3.29.0"
 gem "webmock"
 gem "bento_search"
 gem "omniauth-shibboleth"
@@ -101,10 +101,17 @@ gem "httparty"
 
 gem "traject", "~> 3.1"
 gem "traject_plus"
+gem "dotenv-rails"
+
+gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
+  branch: "master"
+
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
   branch: "qa"
-gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git"
 
+gem "cob_index",
+  git: "https://github.com/tulibraries/cob_index.git",
+  branch: "qa"
 
 group :production do
   gem "mysql2", "~> 0.5.2"

@@ -40,19 +40,19 @@ module CatalogHelper
         "article" => "journal_periodical",
         "dissertation" => "script",
         "dissertation_thesis" => "script",
-        "government_document" => "journal_periodical",
+        "government_document" => "legal",
         "journal" => "journal_periodical",
-        "legal_document" => "journal_periodical",
-        "newspaper_article" => "journal_periodical",
+        "legal_document" => "legal",
+        "newspaper_article" => "legal",
         "other" => "unknown",
-        "patent" => "journal_periodical",
-        "reference_entry" => "journal_periodical",
+        "patent" => "legal",
+        "reference_entry" => "legal",
         "research_dataset" => "dataset",
-        "review" => "journal_periodical",
+        "review" => "legal",
         "statistical_data_set" => "dataset",
-        "technical_report" => "journal_periodical",
+        "technical_report" => "legal",
         "book_chapter" => "book",
-        "text_resource" => "journal_periodical",
+        "text_resource" => "legal",
     ).fetch(format, "unknown")
 
     "svg/" + image + ".svg"
@@ -66,7 +66,7 @@ module CatalogHelper
       css_class = format.to_s.parameterize.underscore
       formats << "<span class='#{css_class}'> #{format}</span>"
     end
-    formats.join("<br />")
+    formats.join("<br />").html_safe
   end
 
   # Used to toggle the search bar form path.
@@ -115,9 +115,11 @@ module CatalogHelper
     end
   end
 
-  def render_bound_with_ids(document)
+  def render_alma_availability(document)
+    # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
+    # We do not want this to render if the item is from Primo, etc.
     if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :span, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
     end
   end
 
@@ -254,13 +256,13 @@ module CatalogHelper
   end
 
   def subject_links(args)
-    args[:document][args[:field]].map do |subject|
+    args[:document][args[:field]].uniq.map do |subject|
       link_to(subject.sub("— — ", "— "), "#{base_path}?f[subject_facet][]=#{CGI.escape subject}")
     end
   end
 
   def genre_links(args)
-    args[:document][args[:field]].map do |genre|
+    args[:document][args[:field]].uniq.map do |genre|
       link_to(genre, "#{search_catalog_path}?f[genre_full_facet][]=#{CGI.escape genre}")
     end
   end

@@ -123,7 +123,7 @@ module CobAlma
           desc
         end
       end
-      descriptions.uniq
+      descriptions.uniq.sort
     end
 
     def self.asrs_descriptions(items_list)
@@ -131,10 +131,21 @@ module CobAlma
         .select { |item| item.library == "ASRS" && item.in_place? }
         .map(&:description)
         .uniq
+        .sort
     end
 
     def self.booking_location(items_list)
-      pickup_library = items_list.map { |item| [item.library, item.library_name] }
+      pickup_library = items_list.map { |item|
+        if item.library == "ASRS"
+          library_name = "Charles Library"
+          [item.library, library_name]
+        else
+          library_name = item.library_name
+        end
+
+        [item.library, library_name]
+      }
+
       pickup_library.uniq
     end
 

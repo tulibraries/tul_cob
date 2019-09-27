@@ -42,6 +42,7 @@ $(window).on('turbolinks:load', function() {
 		$('.clear-bookmarks').insertAfter('#back_to_search');
 		$('#facet-filter-icon').removeClass('hidden');
 		$('#facet-panel-collapse').removeClass('show');
+		$('.small-limit-search-heading').removeClass('d-none');
 	}
 	else {
 		$('#nav-tools').insertAfter('#page-links');
@@ -51,6 +52,10 @@ $(window).on('turbolinks:load', function() {
 });
 
 $(document).ready(function() {
+
+	$('.decorative').each(function() {
+    $(this).attr('alt', "");
+  });
 
 	// This is necessary because iOS is triggering the resize event when an element is clicked.
 	// More information about this solution can be found here: https://stackoverflow.com/a/24212316/256854
@@ -71,6 +76,8 @@ $(document).ready(function() {
       $('.clear-bookmarks').insertAfter('#back_to_search');
       $('#facet-filter-icon').removeClass('hidden');
       $('#facet-panel-collapse').removeClass('show');
+			$('.small-limit-search-heading').removeClass('d-none');
+			$('.limit-search-heading').addClass('d-none');
     }
     else {
       $('#nav-tools').insertAfter('#page-links');
@@ -160,6 +167,11 @@ $(document).on('turbolinks:load', function() {
  	if ($("div.navbar-form").length == 0) {
  		$("#search-navbar").css("padding-left", "15%");
  	}
+
+	$(".modal").on("show.bs.modal", function() {
+		$(".search-results-request-btn").find("span").remove();
+	})
+
 
 	$('#facet-filter-icon').click( function(){
     $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
