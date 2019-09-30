@@ -863,7 +863,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
         }
 
       it "returns nil"  do
-        expect(availability_alert(document)).to eq nil
+        expect(availability_alert(document)).to eq false
       end
     end
   end
