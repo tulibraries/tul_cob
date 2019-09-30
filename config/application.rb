@@ -34,7 +34,6 @@ module Tulcob
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
     config.exceptions_app = routes
-    config.traject_indexer = File.join(Rails.root, "lib/traject/indexer_config.rb")
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
 
