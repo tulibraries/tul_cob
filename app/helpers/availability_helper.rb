@@ -62,9 +62,11 @@ module AvailabilityHelper
   end
 
   def availability_alert(document)
-    document["items_json_display"].map { |item|
-      item["availability"].blank?
-    }.any?
+    unless document["electronic_resource_display"]
+      document["items_json_display"].map { |item|
+        item["availability"].blank?
+      }.any?
+    end
   end
 
   def description(item)

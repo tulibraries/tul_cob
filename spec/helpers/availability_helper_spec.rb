@@ -841,5 +841,30 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(availability_alert(document)).to eq false
       end
     end
+
+    context "document is an electronic resouce" do
+      let(:document) { { "items_json_display" =>
+        [{
+          "item_pid" => "23237957740003811",
+            "item_policy" => "5",
+            "permanent_library" => "AMBLER",
+            "permanent_location" => "media",
+            "current_library" => "AMBLER",
+            "current_location" => "media",
+            "call_number" => "DVD 13 A165",
+            "availability" => "<span class=\"check\"></span>Library Use Only",
+            "holding_id" => "22237957750003811" }],
+          "electronic_resource_display" =>
+          [
+            { "title" => "Access electronic resource.", "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" },
+            { "portfolio_id" => "77777", "title" => "Sample Name" },
+          ]
+          }
+        }
+
+      it "returns nil"  do
+        expect(availability_alert(document)).to eq nil
+      end
+    end
   end
 end
