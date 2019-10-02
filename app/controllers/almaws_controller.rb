@@ -62,7 +62,7 @@ class AlmawsController < CatalogController
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
       @request_options = get_largest_request_options_set(@item_level_holdings)
 
-      if @request_options.nil?
+      if @request_options&.request_options.nil?
         @request_options = get_largest_request_options_set(@second_attempt_holdings)
       end
     else
