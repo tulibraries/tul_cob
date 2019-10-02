@@ -98,9 +98,6 @@ gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "bootstrap-select-rails"
 gem "httparty"
-
-gem "traject", "~> 3.1"
-gem "traject_plus"
 gem "dotenv-rails"
 
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",

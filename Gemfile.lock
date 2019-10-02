@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 75b4a9e27acf4ef05740cfbb73f3a0243ebc36f6
+  revision: 60b5597413e742756c25c67d5bea2651525f2c9f
   branch: master
   specs:
     alma (0.2.8)
@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: e0f29e7747005c2e57d58ad9f09678ef00aecfb9
+  revision: 14038248efb45c82c7970093130c202247ffd84d
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: f3b8d97ff6934d368a76088bd6486305831084eb
+  revision: ecfa95ae2585011bcf8d08e624e34f9dac991e52
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -83,7 +83,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 8e6c80bab3cb0bc77f10e26009348545f57d4da9
+  revision: 57e9b678e07486bfa6ce9273584f853a3ee764e2
   branch: master
   specs:
     cob_web_index (0.1.0)
@@ -341,7 +341,7 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.12.0)
+    minitest (5.12.2)
     msgpack (1.3.1)
     multi_json (1.13.1)
     multi_xml (0.6.0)
@@ -452,7 +452,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
-    rubyzip (1.2.2)
+    rubyzip (2.0.0)
     safe_yaml (1.0.5)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -543,7 +543,7 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webmock (3.7.5)
+    webmock (3.7.6)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -621,8 +621,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
-  traject (~> 3.1)
-  traject_plus
   turbolinks (~> 5)
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
