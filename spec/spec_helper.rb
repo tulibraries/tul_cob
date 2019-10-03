@@ -232,6 +232,12 @@ RSpec.configure do |config|
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/blank_material_type.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/temp_storage\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/temp_storage.json"))
+
+
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
