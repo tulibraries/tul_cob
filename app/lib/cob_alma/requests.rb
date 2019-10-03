@@ -161,7 +161,9 @@ module CobAlma
     end
 
     def self.item_holding_ids(items_list)
-      items_list.collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
+      items_list
+      .select { |item| item["holding_data"]["temp_location"]["value"] != "storage" }
+      .collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
     end
 
     def self.second_attempt_item_holding_ids(items_list)
