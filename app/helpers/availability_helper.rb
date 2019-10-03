@@ -62,10 +62,11 @@ module AvailabilityHelper
   end
 
   def availability_alert(document)
-    document["electronic_resource_display"].blank? &&
-      document["items_json_display"].map { |item|
-        item["availability"].blank?
-      }.any?
+    # nil is returned in cases where document has no items_json_display field.
+    # Use double bang to force coerce nils to false.
+    !!document["items_json_display"]&.map { |item|
+      item["availability"].blank?
+    }&.any?
   end
 
   def description(item)
