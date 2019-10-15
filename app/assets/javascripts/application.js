@@ -34,6 +34,11 @@
 //= require_tree .
 
 $(window).on('turbolinks:load', function() {
+	window.onload= function(){
+		if(location.hash == undefined) {
+			parent.window.scrollTo(0,0);
+		}
+	}
 
 	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
