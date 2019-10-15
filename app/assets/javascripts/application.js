@@ -35,6 +35,7 @@
 
 $(window).on('turbolinks:load', function() {
 	window.onload= function(){
+		// This fixes a bug where the pages are loading at the bottom in Chrome
 		if(location.hash == undefined) {
 			parent.window.scrollTo(0,0);
 		}
