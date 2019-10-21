@@ -3,7 +3,6 @@
     <td><%= counter + 1 %></td>
     <td><%= loan.title %></td>
     <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
-    <td><% if loan.respond_to? :barcode %><%= loan.item_barcode %><% end %></td>
     <td><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
     <td class="renewal-check">
       <div class="form-check item-select-form-check">
