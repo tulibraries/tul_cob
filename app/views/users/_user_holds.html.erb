@@ -1,14 +1,13 @@
 <div class="container user-holds" data-controller="holds" data-holds-url=<%= user_holds_path %>>
   <h2 class="user_section_title">My Requests</h2>
-  <table class="table user-table table-responsive border-0">
+  <table class="table user-table table-responsive border-0 px-2">
     <caption class="sr-only">Table of Current Fines for this user</caption>
     <thead>
       <tr>
-        <th width="2%">#</th>
-        <th width="40%">Title</th>
-        <th width="10%">Held Until</th>
-        <th width="15%">Status</th>
-        <th width="28%"></th>
+        <th class="hold-number">#</th>
+        <th class="hold-title">Title</th>
+        <th class="hold-until">Held Until</th>
+        <th class="hold-status">Status</th>
       </tr>
     </thead>
     <% if browser.ie?("<11") %>
@@ -17,10 +16,12 @@
     </tbody>
     <% else %>
     <tbody data-target="holds.table">
-      <p class="text-center" data-target="holds.spinner">
-        <i class="fa fa-spinner" role="spinbutton"></i>
-        <span class="loading-message"> Loading Holds...</span>
-      </p>
+      <tr>
+        <td colspan="4" class="text-center" data-target="holds.spinner">
+          <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
+          <span class="loading-message"> Loading Holds...</span>
+        </td>
+      </tr>
     </tbody>
     <% end %>
   </table>

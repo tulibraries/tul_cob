@@ -4,11 +4,10 @@
     <caption class="sr-only">Table of Current Fines for this user</caption>
     <thead>
       <tr>
-        <th width="2%">#</th>
-        <th width="40%">Title</th>
-        <th width="10%">Fee Type</th>
-        <th width="10%">Fine</th>
-        <th width="28%"></th>
+        <th class="fines-number">#</th>
+        <th class="fines-title">Title</th>
+        <th class="fines-fee-type">Fee Type</th>
+        <th class="fines-amount">Fine</th>
       </tr>
     </thead>
       <% if browser.ie?("<11") %>
@@ -17,10 +16,12 @@
       </tbody>
       <% else %>
       <tbody data-target="fines.table">
-        <p class="text-center" data-target="fines.spinner">
-          <i class="fa fa-spinner" role="spinbutton"></i>
-          <span class="loading-message"> Loading Fines...</span>
-        </p>
+        <tr>
+          <td class="text-center" data-target="fines.spinner">
+            <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
+            <span class="loading-message"> Loading Fines...</span>
+          </td>
+        </tr>
       </tbody>
       <% end %>
   </table>

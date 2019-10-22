@@ -6,11 +6,12 @@
     <td><%= number_to_currency(fine.balance.to_f) %></td>
   </tr>
 <% end %>
+
 <tr class="total-fines bg-tan text-red">
-  <td colspan="4" class="fine-label">
+  <td colspan="3"  class="fine-label">
     Total
   </td>
-  <td>
+  <td colspan="1">
     <%= number_to_currency(fines.sum) %>
   </td>
 </tr>

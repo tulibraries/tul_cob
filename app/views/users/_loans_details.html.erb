@@ -1,16 +1,18 @@
 <% loans.all.each_with_index do |loan, counter| %>
   <tr>
-    <td><%= counter + 1 %></td>
-    <td><%= loan.title %></td>
-    <td class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
-    <td><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
-    <td class="renewal-check">
+    <td colspan="1"><%= counter + 1 %></td>
+    <td colspan="3"><%= loan.title %></td>
+    <td colspan="1" class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
+    <td colspan="1"><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
+    <td colspan="1" class="renewal-check">
       <div class="form-check item-select-form-check">
         <label class="form-check-label">
         <% unless loan.renewable? %>
-            <i class="fas fa-exclamation-circle text-red" aria-hidden="true" title="unable to renew"></i>
+            <i class="fas fa-exclamation-circle text-red" aria-hidden="true" title="unable to renew">
+              <span class="sr-only">Unable to renew</span>
+            </i>
         <% else %>
-          <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
+          <%= check_box_tag "loan-#{loan.loan_id}", loan.loan_id, false, loan_options(loan) %>
           <span class="hide-me">Renew this loan</span>
         <% end %>
         </label>
@@ -19,11 +21,13 @@
     <td id="<%= loan.loan_id %>" class="overdue"><% if loan.overdue? %><%= loan.loan_status %><% end %></td>
   </tr>
 <% end %>
+<% if loans.present? %>
   <tr>
-    <td class="submit" colspan="7" style="vertical-align:text-bottom;">
-    <div class="d-md-flex justify-content-between">
-      <div class="renew-text"><%= t("account.renew_text_html", href: link_to(t("account.renew_text_href"), t("blacklight.help_link"))) %></div>
-      <div><%= submit_tag "Renew Selected", class: "btn btn-sm p-2", id: "renew_selected" %></div>
-    </div>
+    <td class="submit" colspan="7">
+      <div class="d-md-flex justify-content-between align-items-center">
+        <div class="renew-text"><%= t("account.renew_text_html", href: link_to(t("account.renew_text_href"), t("blacklight.help_link"))) %></div>
+        <div><%= submit_tag "Renew Selected", class: "btn btn-sm p-2", id: "renew_selected" %></div>
+      </div>
     </td>
-    </tr>
+  </tr>
+<% end %>
