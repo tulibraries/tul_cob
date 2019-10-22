@@ -17,4 +17,13 @@ RSpec.describe RequestHelper, type: :helper do
     end
 
   end
+
+  describe "#request_redirect_url" do
+
+    it "generates expected url" do
+      helper.extend(UsersHelper)
+      expected_url = "/users/sign_in?redirect_to=http%3A%2F%2Ftest.host%2Falmaws%2Frequest%2Ffoo"
+      expect(helper.request_redirect_url("foo")).to eq(expected_url)
+    end
+  end
 end

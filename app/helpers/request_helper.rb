@@ -7,6 +7,11 @@ module RequestHelper
     link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn btn-sm btn-primary request-button search-results-request-btn float-right", data: { "blacklight-modal": "trigger", "action": "availability#modal show#loading", "target": "availability.href show.href" })
   end
 
+  def request_redirect_url(mms_id)
+    url = direct_request_options_url(mms_id: mms_id)
+    new_user_session_with_redirect_path(url)
+  end
+
   def ez_borrow_link_with_updated_query(url)
     uri = URI.parse(url)
     params = CGI.parse(uri.query)

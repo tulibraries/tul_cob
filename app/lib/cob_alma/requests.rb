@@ -49,8 +49,10 @@ module CobAlma
     end
 
     def self.avail_locations(items_list)
-      avail_locations = items_list.select { |k, v|
-        v.any?(&:in_place?) }.keys
+      items_list = items_list.filter_missing_and_lost.grouped_by_library rescue items_list
+
+      items_list.select { |key, val|
+        val.any?(&:in_place?) }.keys
     end
 
     def self.valid_pickup_locations(items_list)
@@ -86,6 +88,8 @@ module CobAlma
 
     def self.reserve_or_reference(items_list)
       pickup_locations = []
+      items_list = items_list.filter_missing_and_lost.grouped_by_library rescue items_list
+
       current_locations = items_list.collect { |k, v|
         v.map { |item|
           [item.item_data.dig("location", "value")]
