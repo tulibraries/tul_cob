@@ -6,12 +6,13 @@
 <div class="modal-body">
   <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
-  <%= asrs_allowed_partial(@request_options) %>
-  <%= hold_allowed_partial(@request_options) %>
-  <%= digitization_allowed_partial(@request_options) %>
-  <%= booking_allowed_partial(@request_options) %>
-  <%= resource_sharing_broker_allowed_partial(@request_options, @books) %>
-  <%= no_temple_request_options_available(@request_options, @books) %>
+  <%= asrs_allowed_partial(@request_options, @document) %>
+  <%= hold_allowed_partial(@request_options, @document) %>
+  <%= digitization_allowed_partial(@request_options, @document) %>
+  <%= booking_allowed_partial(@request_options, @document) %>
+  <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
+  <%= aeon_request_partial(@request_options, @document) %>
+  <%= no_temple_request_options_available(@request_options, @books, @document) %>
 
   </div>
 </div>
