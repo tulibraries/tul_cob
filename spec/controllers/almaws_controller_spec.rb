@@ -40,6 +40,12 @@ RSpec.describe AlmawsController, type: :controller do
 
        } } }
 
+    before(:each) do
+      allow(controller).to receive(:current_user) { @user }
+      allow(controller).to receive(:params) { params }
+      controller.request_options
+    end
+
     context "anonymous user" do
       it "redirects to login page" do
         get(:request_options, params)
@@ -57,6 +63,24 @@ RSpec.describe AlmawsController, type: :controller do
         expect(response).not_to redirect_to new_user_session_url
       end
 
+    end
+
+    context "params :pickup_locations && :request_level not set" do
+      let(:params) { {} }
+
+      it "sets @make_modal_link to true since we are not coming via modal" do
+        make_modal_link = controller.instance_variable_get("@make_modal_link")
+        expect(make_modal_link).to eq(true)
+      end
+    end
+
+    context "params :pickup_locations && :request_level are set" do
+      let(:params) { { pickup_location: "someplace" , request_level: "bib" } }
+
+      it "sets @make_modal_link to false since we are coming via modal" do
+        make_modal_link = controller.instance_variable_get("@make_modal_link")
+        expect(make_modal_link).to eq(false)
+      end
     end
   end
 

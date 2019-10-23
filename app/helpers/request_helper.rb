@@ -26,4 +26,14 @@ module RequestHelper
   def successful_request_message
     t("requests.success_message_html", href: link_to(t("requests.success_message_href"), users_account_path))
   end
+
+  def modal_exit_button_name(make_modal_link)
+    name = raw("&times;")
+
+    if make_modal_link
+      render_nav_link(:search_catalog_path, name)
+    else
+      name
+    end
+  end
 end

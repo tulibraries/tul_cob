@@ -26,4 +26,19 @@ RSpec.describe RequestHelper, type: :helper do
       expect(helper.request_redirect_url("foo")).to eq(expected_url)
     end
   end
+
+  describe "#modal_exit_button_name" do
+
+    context "make_modal_link is false" do
+      it "does not render the name as a link" do
+        expect(helper.modal_exit_button_name(false)).to eq("&times;")
+      end
+    end
+
+    context "make_modal_link is true" do
+      it "renders the name as a link" do
+        expect(helper.modal_exit_button_name(true)).to eq("<a class=\"nav-item nav-link header-links\" href=\"/catalog\">&times;</a>")
+      end
+    end
+  end
 end

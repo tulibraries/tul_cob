@@ -46,7 +46,7 @@ class AlmawsController < CatalogController
     @booking_location = CobAlma::Requests.booking_location(@items)
     @material_types = CobAlma::Requests.physical_material_type(@items).compact
     pickup_locations = params[:pickup_location]&.split(",") ||
-      CobAlma::Requests.valid_pickup_locations(@items)
+      CobAlma::Requests.valid_pickup_locations(@items.grouped_by_library)
 
     @pickup_locations = pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
@@ -74,6 +74,10 @@ class AlmawsController < CatalogController
       log = { type: "bib_request_options", user: current_user.id }
       @request_options = do_with_json_logger(log) { Alma::RequestOptions.get(@mms_id, user_id: @user_id) }
     end
+
+    # Define when we want modal exit button to be a link.
+    @make_modal_link = params[:pickup_locations].blank? &&
+      params[:request_level].blank?
   end
 
   def send_hold_request

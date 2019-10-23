@@ -32,7 +32,6 @@ RSpec.describe CobAlma::Requests do
     end
 
     it "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
-      # Temporarily skipping this test as MAIN is a vaid pickup location during the move
       expect(described_class.valid_pickup_locations(kardon_paley)).not_to include "MAIN"
     end
   end
@@ -86,7 +85,6 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
 
       it "returns a hash with all the campuses" do
-        # Temporarily skipping this test as MAIN is a vaid pickup location during the move
         expect(subject).to eq("v.4 (1976)" => ["AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
                               "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
@@ -96,7 +94,6 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_multiple_libraries") }
 
       it "returns a hash with all the campuses" do
-        # Temporarily skipping this test as MAIN is a vaid pickup location during the move
         expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end
