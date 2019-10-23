@@ -3,47 +3,58 @@
 module AlmawsHelper
   include Blacklight::CatalogHelperBehavior
 
-  def hold_allowed_partial(request_options)
+  def hold_allowed_partial(request_options, document)
     if request_options.hold_allowed? && non_asrs_items.present?
-      render partial: "hold_allowed", locals: { request_options: request_options }
+      render partial: "hold_allowed", locals: { request_options: request_options, document: document }
     end
   end
 
-  def asrs_allowed_partial(request_options)
+  def asrs_allowed_partial(request_options, document)
     if request_options.hold_allowed? && available_asrs_items.present?
-      render partial: "asrs_allowed", locals: { request_options: request_options }
+      render partial: "asrs_allowed", locals: { request_options: request_options, document: document }
     end
   end
 
-  def digitization_allowed_partial(request_options)
+  def digitization_allowed_partial(request_options, document)
     if request_options.digitization_allowed?
-      render partial: "digitization_allowed", locals: { request_options: request_options }
+      render partial: "digitization_allowed", locals: { request_options: request_options, document: document }
     end
   end
 
-  def booking_allowed_partial(request_options)
+  def booking_allowed_partial(request_options, document)
     if request_options.booking_allowed?
-      render partial: "booking_allowed", locals: { request_options: request_options }
+      render partial: "booking_allowed", locals: { request_options: request_options, document: document }
     end
   end
 
-  def resource_sharing_broker_allowed_partial(request_options, books)
+  def resource_sharing_broker_allowed_partial(request_options, books, document)
     if request_options.resource_sharing_broker_allowed? && books.present?
-      render partial: "resource_sharing_broker_allowed", locals: { request_options: request_options, books: books }
+      render partial: "resource_sharing_broker_allowed", locals: { request_options: request_options, books: books, document: document }
     end
   end
 
-  def no_temple_request_options_available(request_options, books)
-    if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed?
-      render partial: "no_request_options", locals: { request_options: request_options, books: books } unless @request_options.resource_sharing_broker_allowed?
+  def aeon_request_partial(request_options, document)
+    if aeon_request_allowed(document).present?
+      render partial: "aeon_allowed", locals: { request_options: request_options, document: document }
     end
   end
 
-  def only_one_option_allowed(request_options)
+  def no_temple_request_options_available(request_options, books, document)
+    if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? && !aeon_request_allowed(document)
+      render partial: "no_request_options", locals: { request_options: request_options, books: books, document: document } unless @request_options.resource_sharing_broker_allowed?
+    end
+  end
+
+  def relevant_request_options(request_options, document)
     [ request_options.hold_allowed?,
-     request_options.digitization_allowed?,
-     request_options.booking_allowed?, request_options.resource_sharing_broker_allowed? ]
-    .select(&:itself).count == 1
+      request_options.digitization_allowed?,
+      request_options.booking_allowed?,
+      request_options.resource_sharing_broker_allowed?,
+      aeon_request_allowed(document)]
+  end
+
+  def only_one_option_allowed(request_options, document)
+    relevant_request_options(request_options, document).select(&:itself).count == 1
   end
 
   def non_asrs_items(items = @items)

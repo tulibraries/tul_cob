@@ -7,16 +7,12 @@
   <% sort_order_for_holdings(@document_availability).each do |key, items| %>
     <div data-long-list class="m-0" data-controller="availability">
       <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-header-grey bg-header-grey justify-content-lg-between avail-list">
-        <div class="library-name card-title col-sm-12 col-md-4"><%= library_name_from_short_code(key) %></div>
+        <div class="library-name card-title col-sm-12 col-md-8"><%= library_name_from_short_code(key) %></div>
         <div class="holdings-summary col-sm-12 col-md-4"><%= summary_list(items) %></div>
-        <div class="aeon-request col-sm-12 col-md-4"><%= aeon_request_button(document, key) %></div>
       </div>
 
-      <% if key == "ASRS" %>
-        <div id="bookbot-instructions" class="alert alert-info rounded-0 pl-3" role="alert">
-          <p class="mb-0"><%= t("requests.bookbot_instructions") %></p>
-        </div>
-      <% end %>
+      <%= render "asrs_instructions", key: key %>
+      <%= render "scrc_instructions", key: key, document: document %>
 
       <% items.each do |item| %>
         <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0">

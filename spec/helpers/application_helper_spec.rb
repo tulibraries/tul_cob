@@ -2,16 +2,6 @@
 
 require "rails_helper"
 
-# Specs in this file have access to a helper object that includes
-# the ApplicationHelper. For example:
-#
-# describe ApplicationHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe ApplicationHelper, type: :helper do
   describe "#render_nav_link" do
     let(:current_search_session) { OpenStruct.new(query_params: {}) }
@@ -98,9 +88,46 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#aeon_request_button(document, key)" do
+  describe "#aeon_request_allowed(document)" do
     context "item is at SCRC" do
-      let(:key) { "SCRC" }
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "SCRC",
+        "permanent_location" => "rarestacks",
+        "current_library" => "SCRC",
+        "current_location" => "rarestacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true" do
+        expect(helper.aeon_request_allowed(document)).to be true
+      end
+    end
+
+    context "item is at SCRC" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "stacks",
+        "current_library" => "MAIN",
+        "current_location" => "rarestacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true" do
+        expect(helper.aeon_request_allowed(document)).to be false
+      end
+    end
+  end
+
+  describe "#aeon_request_button(document)" do
+    context "item is at SCRC" do
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -114,12 +141,11 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "display the aeon request button" do
-        expect(helper.aeon_request_button(document, key)).to have_button("Request to View in Reading Room")
+        expect(helper.aeon_request_button(document)).to have_button("Go to SCRC Researcher Account")
       end
     end
 
     context "item is NOT at SCRC" do
-      let(:key) { "MAIN" }
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -133,7 +159,7 @@ RSpec.describe ApplicationHelper, type: :helper do
         }
 
       it "display the aeon request button" do
-        expect(helper.aeon_request_button(document, key)).to_not have_button("Request to View in Reading Room")
+        expect(helper.aeon_request_button(document)).to_not have_button("Go to SCRC Researcher Account")
       end
     end
   end

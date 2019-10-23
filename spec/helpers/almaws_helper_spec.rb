@@ -19,6 +19,16 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#hold_allowed_partial" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -30,11 +40,21 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "hold can be placed on an item" do
       it "renders the hold partial" do
-        expect(helper.hold_allowed_partial(request_options)).not_to be_nil
+        expect(helper.hold_allowed_partial(request_options, document)).not_to be_nil
       end
     end
 
     context "hold cannot be placed on an item" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -45,12 +65,22 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "does not render the hold partial" do
-        expect(helper.hold_allowed_partial(request_options)).to be_nil
+        expect(helper.hold_allowed_partial(request_options, document)).to be_nil
       end
     end
   end
 
   describe "#asrs_allowed_partial" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -90,11 +120,21 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "renders the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [item] }
-        expect(helper.asrs_allowed_partial(request_options)).not_to be_nil
+        expect(helper.asrs_allowed_partial(request_options, document)).not_to be_nil
       end
     end
 
     context "asrs request cannot be placed on an item" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -106,12 +146,22 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "does not render the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [] }
-        expect(helper.asrs_allowed_partial(request_options)).to be_nil
+        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
       end
     end
   end
 
   describe "#digitization_allowed_partial" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -123,11 +173,21 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "An item can be requested to be scanned" do
       it "renders the digitization_allowed partial" do
-        expect(helper.digitization_allowed_partial(request_options)).not_to be_nil
+        expect(helper.digitization_allowed_partial(request_options, document)).not_to be_nil
       end
     end
 
     context "An item cannot be requested to be scanned" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -138,12 +198,22 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "does not render the digitization_allowed partial" do
-        expect(helper.digitization_allowed_partial(request_options)).to be_nil
+        expect(helper.digitization_allowed_partial(request_options, document)).to be_nil
       end
     end
   end
 
   describe "#booking_allowed_partial" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -155,7 +225,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "booking can be placed on an item" do
       it "renders the booking_allowed partial" do
-        expect(helper.booking_allowed_partial(request_options)).not_to be_nil
+        expect(helper.booking_allowed_partial(request_options, document)).not_to be_nil
       end
     end
 
@@ -165,6 +235,16 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "booking cannot be placed on an item" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -175,12 +255,22 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "does not render the booking_allowed partial" do
-        expect(helper.booking_allowed_partial(request_options)).to be_nil
+        expect(helper.booking_allowed_partial(request_options, document)).to be_nil
       end
     end
   end
 
   describe "#resource_sharing_broker_allowed_partial" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -193,11 +283,21 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "item can be requested through ez-borrow" do
       it "renders the resource_sharing_broker partial" do
-        expect(helper.resource_sharing_broker_allowed_partial(request_options, books)).not_to be_nil
+        expect(helper.resource_sharing_broker_allowed_partial(request_options, books, document)).not_to be_nil
       end
     end
 
     context "item cannot be requested through ez-borrow" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -208,12 +308,22 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "does not render the hold partial" do
-        expect(helper.resource_sharing_broker_allowed_partial(request_options, books)).to be_nil
+        expect(helper.resource_sharing_broker_allowed_partial(request_options, books, document)).to be_nil
       end
     end
   end
 
   describe "#no_temple_request_options_available" do
+    let(:document) { { "items_json_display" =>
+      [{ "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811" }]
+        } }
     let(:json) {
       { request_option:
         [{
@@ -226,11 +336,21 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "there are no Temple request options available" do
       it "renders the resource_sharing_broker partial" do
-        expect(helper.resource_sharing_broker_allowed_partial(request_options, books)).not_to be_nil
+        expect(helper.resource_sharing_broker_allowed_partial(request_options, books, document)).not_to be_nil
       end
     end
 
     context "Temple request options are available" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -241,13 +361,23 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "does not render the hold partial" do
-        expect(helper.resource_sharing_broker_allowed_partial(request_options, books)).to be_nil
+        expect(helper.resource_sharing_broker_allowed_partial(request_options, books, document)).to be_nil
       end
     end
   end
 
   describe "#only_one_option_allowed(request_options)" do
     context "only a hold is allowed" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -258,11 +388,46 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options)).to be true
+        expect(helper.only_one_option_allowed(request_options, document)).to be true
+      end
+    end
+
+    context "only an aeon request is allowed" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "SCRC",
+        "permanent_location" => "media",
+        "current_library" => "SCRC",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "Purchase", "desc" => "Purchase" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          }]
+        }.to_json
+      }
+
+      it "is true" do
+        expect(helper.only_one_option_allowed(request_options, document)).to be true
       end
     end
 
     context "only a booking is allowed" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         { request_option:
           [{
@@ -273,11 +438,21 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options)).to be true
+        expect(helper.only_one_option_allowed(request_options, document)).to be true
       end
     end
 
     context "both a hold and a booking are allowed" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
       let(:json) {
         {
           "request_option": [
@@ -306,7 +481,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is false" do
-        expect(helper.only_one_option_allowed(request_options)).to be false
+        expect(helper.only_one_option_allowed(request_options, document)).to be false
       end
     end
   end
