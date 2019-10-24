@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 docker pull solr:$SOLR_VERSION
 docker run -p 8983:8983 \
-  -v ~/project/solr/conf:/opt/solr/server/solr/configsets/default/conf \
+  -v ~/project/solr/conf:/opt/solr/server/solr/configsets/_default \
   -d solr:$SOLR_VERSION bash \
   -c "precreate-core az-database; precreate-core blacklight-core-dev; precreate-core web-content; exec solr -f"
 
