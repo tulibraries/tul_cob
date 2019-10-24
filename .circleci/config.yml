@@ -43,8 +43,13 @@ jobs:
       - image: circleci/ruby:2.6.4-node-browsers
 
     steps:
+      - setup_remote_docker
       - checkout
       - run:
+          name: Set up local Solr.
+          command: SOLR_VERSION=6.6.1 bash .circleci/setup_solr.sh
+      - run:
+          name: Run tests
           command: bash .circleci/test.sh
       - run:
           command: |
