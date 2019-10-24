@@ -257,7 +257,7 @@ a#bookmarks_nav {
  	margin-right: 0.25rem;
 }
 
-#sendto button {
+#sendto-menu a.dropdown-toggle{
  	background-color: $white;
   border: 0.0625rem solid $header-grey;
   color: $red;

@@ -7,6 +7,8 @@ $(document).on('turbolinks:load', function() {
       isbn.split(",").map(function(value){
         queries.push("ISBN:" + value);
       })
+    } else {
+      $("#book-cover-image").remove();
     }
   });
 

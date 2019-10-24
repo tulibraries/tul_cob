@@ -2,9 +2,10 @@
 <%# default partial to display solr document fields in catalog show view %>
 <div class="record-page-wrapper clearfix">
   <% unless controller_name == "databases" %>
-    <div class="record-view thumbnail float-md-left col-md-2"
-      <%= isbn_data_attribute(document) %> >
-      <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible" %>
+    <div class="record-view thumbnail float-md-left col-md-2" <%= isbn_data_attribute(document) %> >
+
+      <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
+      <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible", :id => "book-cover-image" %>
       <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
     </div>
   <% end %>
