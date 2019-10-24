@@ -6,4 +6,7 @@ docker run -p 8983:8983 \
   -c "precreate-core az-database; precreate-core blacklight-core-dev; precreate-core web-content; exec solr -f"
 
 # Health Check the Solr Server
-wget --retry-connrefused --waitretry=5 --read-timeout=20 --timeout=15 -t 5 -O - http://localhost:8983/solr/blacklight-core-dev/admin/ping
+wget --retry-connrefused --waitretry=5 \
+  --retry-on-http-error=503 \
+  --read-timeout=20 --timeout=15 -t 5 -O - \
+  http://localhost:8983/solr/blacklight-core-dev/admin/ping
