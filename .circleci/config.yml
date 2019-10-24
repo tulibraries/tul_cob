@@ -39,15 +39,17 @@ workflows:
 
 jobs:
   run_tests:
-    docker:
-      - image: circleci/ruby:2.6.4-node-browsers
-
+    machine: true
     steps:
-      - setup_remote_docker
       - checkout
       - run:
           name: Set up local Solr.
           command: SOLR_VERSION=6.6.1 bash .circleci/setup_solr.sh
+      - run:
+        name: Set ruby version to 2.6.4
+        command: |
+          rvm install 2.3.4
+          echo . $(rvm 2.3.4 do rvm env --path) >> $BASH_ENV
       - run:
           name: Run tests
           command: bash .circleci/test.sh
