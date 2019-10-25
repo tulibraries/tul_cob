@@ -11,5 +11,5 @@ cp .circleci/.vault ~/.vault # setup vault password retrieval from travis envvar
 chmod +x ~/.vault  # setup vault password retrieval from travis envvar
 
 # deploy to qa using ansible-playbook
-pipenv run ansible-playbook -i inventory/qa/hosts playbook.yml --vault-password-file=~/.vault -e 'ansible_ssh_port=9229' --private-key=~/.ssh/.conan_the_deployer --skip-tags "solr"
+pipenv run ansible-playbook -i inventory/qa playbook.yml --vault-password-file=~/.vault -e 'ansible_ssh_port=9229' --private-key=~/.ssh/.conan_the_deployer --skip-tags "solr"
 echo "BE AWARE THAT SOLR CONFIG CHANGES WERE NOT DEPLOYED AS PART OF THIS BUILD"
