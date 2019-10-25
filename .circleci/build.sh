@@ -1,7 +1,9 @@
 #!/bin/bash
 set -e
 
-sudo apt-get install libmysqlclient-dev -y
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y libmysqlclient-dev nodejs
+
 cp config/secrets.yml.example config/secrets.yml
 cp config/alma.yml.example config/alma.yml
 cp config/bento.yml.example config/bento.yml
