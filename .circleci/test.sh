@@ -1,13 +1,9 @@
-#!/bin/bash
-set -e
+#!/usr/bin/env bash
 
-cp config/secrets.yml.example config/secrets.yml
-cp config/alma.yml.example config/alma.yml
-cp config/bento.yml.example config/bento.yml
-RAILS_ENV=test bundle install
-RAILS_ENV=test bundle exec rake db:migrate
-RAILS_ENV=test bundle exec rake db:seed
-EDITOR='vim -c wqa' bundle exec rails credentials:edit 2> /dev/null
-RAILS_ENV=production bundle exec rake assets:precompile
-RAILS_ENV=test bundle exec yarn
-RAILS_ENV=test bundle exec rails webpacker:compile
+# Not sure why yarn is not accessible here after adding to build step.
+curl -o- -L https://yarnpkg.com/install.sh | bash
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+bundle exec rubocop
+RELEVANCE=y bundle exec rake ci
+yarn test

@@ -39,18 +39,23 @@ workflows:
 
 jobs:
   run_tests:
-    docker:
-      - image: circleci/ruby:2.4.1-node-browsers
-
+    machine: true
     steps:
       - checkout
       - run:
-          command: bash .circleci/test.sh
+          name: Set up local Solr.
+          command: SOLR_VERSION=6.6.1 bash .circleci/setup_solr.sh
       - run:
+          name: Set ruby version to 2.6.4
           command: |
-            bundle exec rubocop
-            RELEVANCE=y bundle exec rake ci
-            yarn test
+            rvm install 2.6.4
+            echo . $(rvm 2.6.4 do rvm env --path) >> $BASH_ENV
+      - run:
+          name: Build app
+          command: NODE_VERSION=v12.13.0 bash .circleci/build.sh
+      - run:
+          name: Run tests
+          command: bash .circleci/test.sh
 
   qa_deploy:
     docker:
