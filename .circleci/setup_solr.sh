@@ -7,7 +7,7 @@ docker run -p 8983:8983 \
   -c "precreate-core az-database; precreate-core blacklight-core-dev; precreate-core web-content; exec solr -f"
 
 # Health Check the Solr Server
-sleep 5
+sleep 10
 
 STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8983/solr/blacklight-core-dev/admin/ping)
 
@@ -16,5 +16,13 @@ while [[ "$STATUS" != "200" ]]; do
   echo "currenlty: $STATUS"
   sleep 5
 
-  STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8983/solr/blacklight-core-dev/admin/ping)
+  if [ "$STATU" == "500" ]; then
+    RESP=$(curl -s http://localhost:8983/solr/blacklight-core-dev/admin/ping)
+    echo $RESP
+    exit 1
+  fi
+
+  # Add TimeStamp to avoid possible caching layer issues.
+  TIMESTAMP=$(date +"%d_%m_%Y_%H_%M_%S")
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8983/solr/blacklight-core-dev/admin/ping?timestamp=$TIMESTAMP)
 done
