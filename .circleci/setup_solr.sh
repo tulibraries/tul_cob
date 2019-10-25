@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+
+# wget is old so we need to update it.
+bash ~/project/.circleci/update-wget.sh
+
 docker pull solr:$SOLR_VERSION
 docker run -p 8983:8983 \
   -v ~/project/solr/conf:/opt/solr/server/solr/configsets/_default \
