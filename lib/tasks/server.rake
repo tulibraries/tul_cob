@@ -3,7 +3,7 @@
 require "solr_wrapper" unless Rails.env.production?
 
 desc "Run test suite"
-task :ci do
+task :ci, [:spec_args] do |_, args|
   ENV["DO_INGEST"] = "true"
   Rake::Task["tul_cob:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
   rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
