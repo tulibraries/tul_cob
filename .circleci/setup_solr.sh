@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# wget is old so we need to update it.
-bash ~/project/.circleci/update-wget.sh
-
 docker pull solr:$SOLR_VERSION
 docker run -p 8983:8983 \
   -v ~/project/solr/conf:/opt/solr/server/solr/configsets/_default \
@@ -10,7 +7,12 @@ docker run -p 8983:8983 \
   -c "precreate-core az-database; precreate-core blacklight-core-dev; precreate-core web-content; exec solr -f"
 
 # Health Check the Solr Server
-wget --retry-connrefused --waitretry=5 \
-  --retry-on-http-error=503 \
-  --read-timeout=20 --timeout=15 -t 5 -O - \
-  http://localhost:8983/solr/blacklight-core-dev/admin/ping
+STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8983/solr/blacklight-core-dev/admin/ping)
+
+while [[ "$STATUS" != "200" ]]; do
+  echo waiting for solr setup to complete or equal 200.
+  echo "currenlty: $STATUS"
+  sleep 2
+
+  STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8983/solr/blacklight-core-dev/admin/ping)
+done
