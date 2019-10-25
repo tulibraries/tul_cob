@@ -1,13 +1,18 @@
 #!/bin/bash
 set -e
 
+# Make sure ruby version we want is set.
+rvm install $RUBY_VERSION
+echo . $(rvm $RUB_VERSION do rvm env --path) >> $BASH_ENV
+ruby -v
+
 # Add mysql deps so bundle install doesn't fail.
 sudo apt-get install -y libmysqlclient-dev
 
 # Update node version so yarn build doesn't fail.
 export NVM_DIR="/opt/circleci/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-nvm install v12.13.0 && nvm use v12.13.0 && nvm alias default v12.13.0
+nvm install $NODE_VERSION && nvm use $NODE_VERSION && nvm alias default $NODE_VERSION
 node -v
 
 # Yarn is not available by default in machine executor
