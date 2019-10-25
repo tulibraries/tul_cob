@@ -16,7 +16,7 @@ while [[ "$STATUS" != "200" ]]; do
   echo "currenlty: $STATUS"
   sleep 5
 
-  if [ "$STATU" == "500" ]; then
+  if [ "$STATUS" == "500" ]; then
     RESP=$(curl -s http://localhost:8983/solr/blacklight-core-dev/admin/ping)
     echo $RESP
     exit 1
