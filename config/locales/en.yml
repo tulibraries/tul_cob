@@ -197,7 +197,7 @@ en:
     ez_borrow_html: "To request books that are not available at Temple, use %{href}."
     ez_borrow_href: "E-ZBorrow"
     ez_borrow_link: "https://ezb.relaisd2d.com/?LS=TEMPLE"
-    illiad_html: "For books not available through E-ZBorrow, as well as other materials not available at Temple, use %{href}."
+    illiad_html: "For <strong>journal articles, books not available through E-ZBorrow, and other</strong> materials not available at Temple, use %{href}."
     illiad_href: "ILLiad"
     illiad_link: "http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/charles/logon.html"
     ginsburg_illiad_html: "The Health Sciences Libraries patrons should use %{href},"
