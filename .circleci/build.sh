@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e
 
-# Make sure ruby version we want is set.
-rvm install $RUBY_VERSION
-echo . $(rvm $RUB_VERSION do rvm env --path) >> $BASH_ENV
-ruby -v
-
 # Add mysql deps so bundle install doesn't fail.
 sudo apt-get install -y libmysqlclient-dev
 
