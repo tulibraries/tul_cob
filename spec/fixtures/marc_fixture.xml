@@ -37307,4 +37307,679 @@
 			<subfield code="f">MAIN</subfield>
 		</datafield>
 	</record>
+	<record>
+		<leader>06392pam a22006854a 4500</leader>
+		<controlfield tag="005">20190716045044.0</controlfield>
+		<controlfield tag="008">071217s2008 enka b 001 0 eng </controlfield>
+		<controlfield tag="001">991032238599703811</controlfield>
+		<datafield ind1=" " ind2=" " tag="010">
+			<subfield code="a">2007051680</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9780415396363</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">0415396360</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9780415396370</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">0415396379</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(PPT)b36542751-01tuli_inst</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCoLC)ocn492533155</subfield>
+			<subfield code="9">ExL</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCoLC)185095506</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocn185095506</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCLC)ocn185095506</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">DLC</subfield>
+			<subfield code="b">eng</subfield>
+			<subfield code="c">DLC</subfield>
+			<subfield code="d">BAKER</subfield>
+			<subfield code="d">BTCTA</subfield>
+			<subfield code="d">BWK</subfield>
+			<subfield code="d">NLGGC</subfield>
+			<subfield code="d">C#P</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="043">
+			<subfield code="a">e-uk---</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="079">
+			<subfield code="a">ocn185095506</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="090">
+			<subfield code="a">LC225.33.G7</subfield>
+			<subfield code="b">F45 2008</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="100">
+			<subfield code="a">Feinstein, L.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/nb97040043</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Education and the family :</subfield>
+			<subfield code="b">passing success across the generations /</subfield>
+			<subfield code="c">Leon Feinstein, Kathryn Duckworth and Ricardo Sabates.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="1" tag="264">
+			<subfield code="a">London ;</subfield>
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">Routledge,</subfield>
+			<subfield code="c">2008.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">xvii, 222 pages :</subfield>
+			<subfield code="b">illustrations ;</subfield>
+			<subfield code="c">22 cm.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="336">
+			<subfield code="a">text</subfield>
+			<subfield code="b">txt</subfield>
+			<subfield code="2">rdacontent</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="337">
+			<subfield code="a">unmediated</subfield>
+			<subfield code="b">n</subfield>
+			<subfield code="2">rdamedia</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="338">
+			<subfield code="a">volume</subfield>
+			<subfield code="b">nc</subfield>
+			<subfield code="2">rdacarrier</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="490">
+			<subfield code="a">Foundations and futures of education</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="504">
+			<subfield code="a">Includes bibliographical references (pages [187]-213) and index.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="520">
+			<subfield code="a">The Foundations and Futures of Education series focuses on key emerging issues in education as well as continuing debates within the field. The series is interdisciplinary, and includes historical, philosophical, sociological, psychological and comparative perspectives on three major themes: the purposes and nature of education; increasing interdisciplinarity within the subject; and the theory-practice divide.</subfield>
+		</datafield>
+		<datafield ind1="8" ind2="0" tag="520">
+			<subfield code="a">Why it is that success, deprivation or disadvantage are so often passed down intergenerationally? What part does education play?</subfield>
+		</datafield>
+		<datafield ind1="8" ind2="0" tag="520">
+			<subfield code="a">The educational achievement of parents is often reflected in that of their children and there are many underlying causes for such a relationship. Education and the Family argues that government policy has an important role to play in addressing this inequality even though many of the causes lie within the home. Although each child should be supported to achieve his or her objectives, differences in the willingness or capabilities of families to take advantage of educational opportunities exacerbate social class differences and limit actual equality of opportunity for many. Understanding the causes of this transmission is key to tackling both social class inequality and to expanding the skill base of the economy.</subfield>
+		</datafield>
+		<datafield ind1="8" ind2="0" tag="520">
+			<subfield code="a">By providing an overview of academic and policy thinking in relation to the role of the family, this book explores the educational success of children. It focuses on the education of the parents but also considers how the family - compared to wider, external influences such as schools - is a driver of differences in educational outcomes. It concludes with a consideration of what policy-makers are attempting to do about this key issue and why, and how this will impact on schools and teachers.</subfield>
+		</datafield>
+		<datafield ind1="8" ind2="0" tag="520">
+			<subfield code="a">This book will interest researchers and academics in education and social policy, as well as teachers and other education and social policy practitioners.</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="505">
+			<subfield code="a">Understanding and conceptualising the importance of education -- Understanding the importance of parents' education -- Defining education -- Measuring education -- Parental education and the attainment gap -- Correlation does not imply causation! -- But is the effect of education causal? -- Conceptualising the influence of parents' education: a framework for analysis -- The ecological model of human development -- A conceptual model of the intergenerational transmission of educational success -- Interdisciplinary perspectives, complementarities and alternative approaches -- The wider context -- The influence of parents' education: a review of the evidence -- The importance of what goes on in the family -- Parenting style -- Educational behaviours -- Internal features of the family environment -- Parental cognitions -- Parental mental health and well-being -- Distal family factors -- Family structure -- Family size -- Teenage motherhood -- Income and poverty -- Maternal employment -- The importance of other developmental contexts -- Pre-schools -- Schools -- Neighbourhoods -- Policy and the wider responsibilities of education: early preventive action -- A framework for supporting resilience in childhood -- Preventive action to enhance equality of opportunity and of outcomes -- Methods and research resources -- The prediction data and outcomes -- Results -- Implications of the ecological model of home-school interaction for policy development -- Summary: the key channels for education effects -- Future research -- Themes for policy -- Concluding discussion and three key themes.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Home and school</subfield>
+			<subfield code="z">Great Britain.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh2008121811</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Parents</subfield>
+			<subfield code="x">Education</subfield>
+			<subfield code="z">Great Britain.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh85098016</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh99005758</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n79023147</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="650">
+			<subfield code="a">Parents</subfield>
+			<subfield code="x">Education.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1053465</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Parental influences</subfield>
+			<subfield code="z">Great Britain.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh90001779</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n79023147</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="650">
+			<subfield code="a">Parental influences.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1053367</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Success</subfield>
+			<subfield code="z">Great Britain.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh85129587</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n79023147</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="650">
+			<subfield code="a">Success.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1137041</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Educational sociology</subfield>
+			<subfield code="z">Great Britain.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh2008102690</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="700">
+			<subfield code="a">Duckworth, Kathryn.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/nr2004025056</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="700">
+			<subfield code="a">Sabates, Ricardo.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/nr2004025057</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="830">
+			<subfield code="a">Foundations and futures of education</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/no2006109089</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="901">
+			<subfield code="a">BNA</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="901">
+			<subfield code="a">R6738391</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">120229</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">081022AB0701</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">MARCIVE-BF 20190703</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="903">
+			<subfield code="a">MARCIVE-TOC201904</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="904">
+			<subfield code="a">MARCIVE 20190703</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="905">
+			<subfield code="a">Foundations and futures of education</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="907">
+			<subfield code="a">.b36542751</subfield>
+			<subfield code="b">p </subfield>
+			<subfield code="c">-</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">pstk </subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="979">
+			<subfield code="a">ocn185095506</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="b">1</subfield>
+			<subfield code="c">081029</subfield>
+			<subfield code="d">m</subfield>
+			<subfield code="e">a</subfield>
+			<subfield code="f">-</subfield>
+			<subfield code="g">0</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ADM">
+			<subfield code="b">2019-07-16 08:50:45</subfield>
+			<subfield code="e">b36542751-01tuli_inst</subfield>
+			<subfield code="d">MARCIVE</subfield>
+			<subfield code="f">20190607195056.0</subfield>
+			<subfield code="a">2017-06-20 06:03:50</subfield>
+			<subfield code="c">false</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">ASRS</subfield>
+			<subfield code="c">ASRS</subfield>
+			<subfield code="h"> LC225.33.G7 </subfield>
+			<subfield code="i"> F45 2008 </subfield>
+			<subfield code="8">22461203200003811</subfield>
+			<subfield code="updated">2019-08-11 09:09:36</subfield>
+			<subfield code="created">2017-06-20 06:03:50</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22461203200003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">ASRS</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074025269416</subfield>
+			<subfield code="e">ASRS</subfield>
+			<subfield code="8">23240660400003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="i">LC225.33.G7 F45 2008</subfield>
+			<subfield code="updated">2019-04-26 20:31:14</subfield>
+			<subfield code="q">2017-06-20 06:03:50</subfield>
+			<subfield code="d">ASRS</subfield>
+			<subfield code="f">ASRS</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>01576ngm a2200457Ki 4500</leader>
+		<controlfield tag="005">20180927105817.0</controlfield>
+		<controlfield tag="007">vd cvaizu</controlfield>
+		<controlfield tag="008">160201s2014 097 vleng d</controlfield>
+		<controlfield tag="001">991019830779703811</controlfield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(PPT)b60716435-01tuli_inst</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocn940663664</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCLC)ocn940663664</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">PPT</subfield>
+			<subfield code="b">eng</subfield>
+			<subfield code="e">rda</subfield>
+			<subfield code="c">PPT</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="041">
+			<subfield code="a">chieng</subfield>
+			<subfield code="j">engchi</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="079">
+			<subfield code="a">ocn940663664</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="099">
+			<subfield code="a">MFA THES 2014</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="100">
+			<subfield code="a">Guo, Haitao</subfield>
+			<subfield code="c">(Filmmaker),</subfield>
+			<subfield code="e">filmmaker.</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="2" tag="245">
+			<subfield code="a">A Peking Opera master in New York.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="264">
+			<subfield code="a">[Place of production not identified] :</subfield>
+			<subfield code="b">Haitao Guo,</subfield>
+			<subfield code="c">2014.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">1 videodisc (97 minutes) :</subfield>
+			<subfield code="b">sound, color ;</subfield>
+			<subfield code="c">4 3/4 inches. </subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="336">
+			<subfield code="a">two-dimensional moving image</subfield>
+			<subfield code="b">tdi</subfield>
+			<subfield code="2">rdacontent</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="337">
+			<subfield code="a">video</subfield>
+			<subfield code="b">v</subfield>
+			<subfield code="2">rdamedia</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="338">
+			<subfield code="a">videodisc</subfield>
+			<subfield code="b">vd</subfield>
+			<subfield code="2">rdacarrier</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="340">
+			<subfield code="a">DVD video</subfield>
+			<subfield code="b">4 3/4 in.</subfield>
+			<subfield code="2">rda</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="344">
+			<subfield code="a">digital</subfield>
+			<subfield code="b">optical</subfield>
+			<subfield code="2">rda</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="502">
+			<subfield code="b">M.F.A.,</subfield>
+			<subfield code="c">Temple University,</subfield>
+			<subfield code="d">2014.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="538">
+			<subfield code="a">DVD.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="546">
+			<subfield code="a">In Chinese and English, with English and Chinese subtitles.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="590">
+			<subfield code="a">Library lacks the accompanying production notebook.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Documentary films.</subfield>
+			<subfield code="2">lcgft</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Foreign language films</subfield>
+			<subfield code="x">Chinese.</subfield>
+			<subfield code="2">local</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="690">
+			<subfield code="a">Film and Media Arts</subfield>
+			<subfield code="x">Temple University Theses.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="690">
+			<subfield code="a">Temple University</subfield>
+			<subfield code="x">Theses.</subfield>
+		</datafield>
+		<datafield ind1="2" ind2=" " tag="710">
+			<subfield code="a">Temple University,</subfield>
+			<subfield code="e">degree granting institution.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">160224</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="907">
+			<subfield code="a">.b60716435</subfield>
+			<subfield code="b">s </subfield>
+			<subfield code="c">g</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">scrc </subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="8" tag="974">
+			<subfield code="t">SCRC General Books</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="979">
+			<subfield code="a">ocn940663664</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="b">0</subfield>
+			<subfield code="c">160202</subfield>
+			<subfield code="d">m</subfield>
+			<subfield code="e">g</subfield>
+			<subfield code="f">g</subfield>
+			<subfield code="g">2</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="a">2/1/2016</subfield>
+			<subfield code="s">DISS</subfield>
+			<subfield code="c">CDC</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ADM">
+			<subfield code="b">2018-09-27 14:58:17</subfield>
+			<subfield code="e">b60716435-01tuli_inst</subfield>
+			<subfield code="d">ILS</subfield>
+			<subfield code="a">2017-06-20 05:58:16</subfield>
+			<subfield code="c">false</subfield>
+		</datafield>
+		<datafield ind1="8" ind2=" " tag="HLD">
+			<subfield code="b">SCRC</subfield>
+			<subfield code="c">rarestacks</subfield>
+			<subfield code="h">MFA THES 2014</subfield>
+			<subfield code="8">22238625970003811</subfield>
+			<subfield code="updated">2019-08-11 08:14:19</subfield>
+			<subfield code="created">2017-06-20 05:58:16</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22238625970003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">8</subfield>
+			<subfield code="g">rarestacks</subfield>
+			<subfield code="t">OTHER</subfield>
+			<subfield code="9">39074026909150</subfield>
+			<subfield code="e">rarestacks</subfield>
+			<subfield code="8">23238625950003811</subfield>
+			<subfield code="a">4</subfield>
+			<subfield code="i">MFA THES 2014</subfield>
+			<subfield code="updated">2018-09-24 18:44:51</subfield>
+			<subfield code="q">2017-06-20 05:58:16</subfield>
+			<subfield code="d">SCRC</subfield>
+			<subfield code="f">SCRC</subfield>
+		</datafield>
+	</record>
+	<record>
+		<leader>03556cam a2200577Ii 4500</leader>
+		<controlfield tag="005">20190716035954.0</controlfield>
+		<controlfield tag="008">160504t20172017nyu 000 f eng d</controlfield>
+		<controlfield tag="001">991030159019703811</controlfield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9781101947371</subfield>
+			<subfield code="q">(hardcover)</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">1101947373</subfield>
+			<subfield code="q">(hardcover)</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="z">9781101947388</subfield>
+			<subfield code="q">(ebook)</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">9781524711030</subfield>
+			<subfield code="q">(open market ;)</subfield>
+			<subfield code="q">(paperback)</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="020">
+			<subfield code="a">1524711039</subfield>
+			<subfield code="q">(open market ;)</subfield>
+			<subfield code="q">(paperback)</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(PPT)b64143697-01tuli_inst</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCoLC)948734278</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">ocn948734278</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="035">
+			<subfield code="a">(OCLC)ocn948734278</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="040">
+			<subfield code="a">YDXCP</subfield>
+			<subfield code="b">eng</subfield>
+			<subfield code="e">rda</subfield>
+			<subfield code="e">rda</subfield>
+			<subfield code="c">YDXCP</subfield>
+			<subfield code="d">BTCTA</subfield>
+			<subfield code="d">BDX</subfield>
+			<subfield code="d">WIM</subfield>
+			<subfield code="d">OCLCQ</subfield>
+			<subfield code="d">HQD</subfield>
+			<subfield code="d">ZQP</subfield>
+			<subfield code="d">OCLCO</subfield>
+			<subfield code="d">IEP</subfield>
+			<subfield code="d">WIM</subfield>
+			<subfield code="d">JAI</subfield>
+			<subfield code="d">VP@</subfield>
+			<subfield code="d">A7U</subfield>
+			<subfield code="d">IGA</subfield>
+			<subfield code="d">ATPTT</subfield>
+			<subfield code="d">GZN</subfield>
+			<subfield code="d">T7R</subfield>
+			<subfield code="d">TXMAL</subfield>
+			<subfield code="d">OCLCF</subfield>
+			<subfield code="d">UAB</subfield>
+			<subfield code="d">ZYU</subfield>
+			<subfield code="d">OCL</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="043">
+			<subfield code="a">a-tu---</subfield>
+			<subfield code="a">a-sy---</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="079">
+			<subfield code="a">ocn948734278</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="090">
+			<subfield code="a">PS3601.C5456</subfield>
+			<subfield code="b">D37 2017</subfield>
+		</datafield>
+		<datafield ind1="1" ind2=" " tag="100">
+			<subfield code="a">Ackerman, Elliot</subfield>
+			<subfield code="e">author.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n2014051917</subfield>
+		</datafield>
+		<datafield ind1="1" ind2="0" tag="245">
+			<subfield code="a">Dark at the crossing /</subfield>
+			<subfield code="c">Elliot Ackerman.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="250">
+			<subfield code="a">First Edition.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="1" tag="264">
+			<subfield code="a">New York :</subfield>
+			<subfield code="b">Alfred A. Knopf,</subfield>
+			<subfield code="c">2017.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="4" tag="264">
+			<subfield code="c">©2017</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="300">
+			<subfield code="a">237 pages ;</subfield>
+			<subfield code="c">25 cm</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="336">
+			<subfield code="a">text</subfield>
+			<subfield code="b">txt</subfield>
+			<subfield code="2">rdacontent</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="337">
+			<subfield code="a">unmediated</subfield>
+			<subfield code="b">n</subfield>
+			<subfield code="2">rdamedia</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="338">
+			<subfield code="a">volume</subfield>
+			<subfield code="b">nc</subfield>
+			<subfield code="2">rdacarrier</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="500">
+			<subfield code="a">"This is a Borzoi book."--Title page verso.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="520">
+			<subfield code="a">"A timely new novel of stunning humanity and tension: a contemporary love story set on the Turkish border with Syria. Haris Abadi is a man in search of a cause. An Arab American with a conflicted past, he is now in Turkey, attempting to cross into Syria and join the fight against Bashar al-Assad's regime. But he is robbed before he can make it, and is taken in by Amir, a charismatic Syrian refugee and former revolutionary, and Amir's wife, Daphne, a sophisticated beauty haunted by grief. As it becomes clear that Daphne is also desperate to return to Syria, Haris's choices become ever more wrenching: Whose side is he really on? Is he a true radical or simply an idealist? And will he be able to bring meaning to a life of increasing frustration and helplessness? Told with compassion and a deft hand, Dark at the Crossing is an exploration of loss, of second chances, and of why we choose to believe-a trenchantly observed novel of raw urgency and power."-Provided by publisher.</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Arab Americans</subfield>
+			<subfield code="z">Turkey</subfield>
+			<subfield code="v">Fiction.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh85006277</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n80070818</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh99001562</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="650">
+			<subfield code="a">Arab Americans.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/812200</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="650">
+			<subfield code="a">Refugees</subfield>
+			<subfield code="z">Syria</subfield>
+			<subfield code="v">Fiction.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh85112299</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/names/n80061798</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh99001562</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="650">
+			<subfield code="a">Refugees.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1092797</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="0" tag="651">
+			<subfield code="a">Turkey</subfield>
+			<subfield code="v">Fiction.</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/subjects/sh2008113023</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="651">
+			<subfield code="a">Turkey.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1208963</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="651">
+			<subfield code="a">Syria.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1208757</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Fiction.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1423787</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Romance fiction.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1921732</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Novels.</subfield>
+			<subfield code="2">lcgft</subfield>
+			<subfield code="0">http://id.loc.gov/authorities/genreForms/gf2015026020</subfield>
+		</datafield>
+		<datafield ind1=" " ind2="7" tag="655">
+			<subfield code="a">Novels.</subfield>
+			<subfield code="2">fast</subfield>
+			<subfield code="0">http://id.worldcat.org/fast/1921742</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">170406</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="902">
+			<subfield code="a">MARCIVE-BF 20190703</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="904">
+			<subfield code="a">MARCIVE 20190703</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="907">
+			<subfield code="a">.b64143697</subfield>
+			<subfield code="b">p </subfield>
+			<subfield code="c">-</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="945">
+			<subfield code="l">pstk </subfield>
+			<subfield code="g">1</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="979">
+			<subfield code="a">ocn948734278</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="b">1</subfield>
+			<subfield code="c">170307</subfield>
+			<subfield code="d">m</subfield>
+			<subfield code="e">a</subfield>
+			<subfield code="f">-</subfield>
+			<subfield code="g">0</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="998">
+			<subfield code="a">03/07/2017</subfield>
+			<subfield code="s">OCLC</subfield>
+			<subfield code="c">lks</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ADM">
+			<subfield code="b">2019-07-16 07:59:55</subfield>
+			<subfield code="e">b64143697-01tuli_inst</subfield>
+			<subfield code="d">MARCIVE</subfield>
+			<subfield code="f">20190607195201.0</subfield>
+			<subfield code="a">2017-06-20 06:12:25</subfield>
+			<subfield code="c">false</subfield>
+		</datafield>
+		<datafield ind1="0" ind2=" " tag="HLD">
+			<subfield code="b">MAIN</subfield>
+			<subfield code="c">stacks</subfield>
+			<subfield code="h">PS3601.C5456</subfield>
+			<subfield code="i">D37 2017</subfield>
+			<subfield code="8">22243113010003811</subfield>
+			<subfield code="updated">2019-08-11 09:52:54</subfield>
+			<subfield code="created">2017-06-20 06:12:25</subfield>
+		</datafield>
+		<datafield ind1=" " ind2=" " tag="ITM">
+			<subfield code="r">22243113010003811</subfield>
+			<subfield code="b">1</subfield>
+			<subfield code="h">0</subfield>
+			<subfield code="g">stacks</subfield>
+			<subfield code="t">BOOK</subfield>
+			<subfield code="9">39074030196414</subfield>
+			<subfield code="e">stacks</subfield>
+			<subfield code="8">23243112990003811</subfield>
+			<subfield code="a">0</subfield>
+			<subfield code="i">PS3601.C5456 D37 2017</subfield>
+			<subfield code="updated">2017-06-20 06:13:01</subfield>
+			<subfield code="q">2017-06-20 06:12:25</subfield>
+			<subfield code="d">MAIN</subfield>
+			<subfield code="f">MAIN</subfield>
+		</datafield>
+	</record>
 </collection>

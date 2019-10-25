@@ -69,6 +69,17 @@ module AvailabilityHelper
     }&.any?
   end
 
+  def library_specific_instructions(key, document)
+    case key
+    when "ASRS"
+      render partial: "asrs_instructions", locals: { key: key }
+    when "SCRC"
+      render partial: "scrc_instructions", locals: { key: key, document: document }
+    when "MAIN"
+      render partial: "main_open_shelving_instructions", locals: { key: key }
+    end
+  end
+
   def description(item)
     item["description"] ? "Description: #{item['description']}" : ""
   end
