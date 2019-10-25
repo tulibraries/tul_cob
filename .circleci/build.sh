@@ -10,6 +10,10 @@ export NVM_DIR="/opt/circleci/.nvm"
 nvm install $NODE_VERSION && nvm use $NODE_VERSION && nvm alias default $NODE_VERSION
 node -v
 
+# Yarn is not available by default in machine executor
+curl -o- -L https://yarnpkg.com/install.sh | bash
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
 cp config/secrets.yml.example config/secrets.yml
 cp config/alma.yml.example config/alma.yml
 cp config/bento.yml.example config/bento.yml

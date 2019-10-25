@@ -51,20 +51,11 @@ jobs:
             rvm install 2.6.4
             echo . $(rvm 2.6.4 do rvm env --path) >> $BASH_ENV
       - run:
-          name: Install yarn
-          command: |
-            # Yarn is not available by default in machine executor
-            curl -o- -L https://yarnpkg.com/install.sh | bash
-            export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-      - run:
           name: Build app
           command: NODE_VERSION=v12.13.0 bash .circleci/build.sh
       - run:
           name: Run tests
-          command: |
-            bundle exec rubocop
-            RELEVANCE=y bundle exec rake ci
-            yarn test
+          command: bash .circleci/test.sh
 
   qa_deploy:
     docker:
