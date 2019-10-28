@@ -326,11 +326,12 @@ module CatalogHelper
     collection_id = field["collection_id"]
     service_id = field["service_id"]
 
+    public_notes = field["public_note"]
     collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
     service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
 
-    if collection_notes.present? || service_notes.present?
-      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
+    if collection_notes.present? || service_notes.present? || public_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes, public_notes: public_notes }
     end
   end
 

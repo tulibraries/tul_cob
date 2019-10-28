@@ -259,6 +259,7 @@ RSpec.describe CatalogHelper, type: :helper do
   describe "#render_electronic_notes" do
     let(:service_notes) {  { "foo" => "bar" } }
     let(:collection_notes) {  { "bizz" => "buzz" } }
+    let(:public_notes) { "public note" }
     let(:config) { OpenStruct.new(
       electronic_collection_notes: service_notes,
       electronic_service_notes: collection_notes
@@ -274,6 +275,14 @@ RSpec.describe CatalogHelper, type: :helper do
 
       it "should not render any notes" do
         expect(render_electronic_notes(field)).to be_nil
+      end
+    end
+
+    context "with public notes" do
+      let(:field) { { "public_note" => "public note" } }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(field)).to eq("rendered note")
       end
     end
 
