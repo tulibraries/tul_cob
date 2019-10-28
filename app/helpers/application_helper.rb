@@ -176,7 +176,7 @@ module ApplicationHelper
     if controller_name == "bookmarks"
       bookmarks_path(opts.merge(format: "ris"))
     elsif controller_name == "primo_central"
-      primo_central_document_path(opts.merge(format: "ris"))
+      article_document_path(opts.merge(format: "ris"))
     else
       solr_document_path(opts.merge(format: "ris"))
     end

@@ -9,8 +9,8 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params
-      helper.search_journals_path(q: params[:q])
+      params = helper.params.except(:action, :controller)
+      helper.search_journals_path(params)
     end
 
     def view_link(total = nil, helper)
