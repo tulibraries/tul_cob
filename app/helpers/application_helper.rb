@@ -48,7 +48,7 @@ module ApplicationHelper
     libraries = document_items.collect { |item| library(item) }
 
     if libraries.include?("SCRC")
-      button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary request-button")
+      button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary")
     end
   end
 
