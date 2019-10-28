@@ -105,7 +105,7 @@ default: &default
     leisure: Leisure Reading (1st floor)
     m_reserve: Media Reserves - Ask at One Stop Assistance Desk
     newbooks: New Books (1st floor)
-    reference: LRS Consultation - Ask at One Stop Assistance Desk
+    reference: Reference - Ask at One Stop Assistance Desk
     reserve: Reserves - Ask at One Stop Assistance Desk
     serials: Journals (3rd floor)
     servicedsk: One Stop Assistance Desk
