@@ -2,8 +2,8 @@
   <tr>
     <td colspan="1"><%= counter + 1 %></td>
     <td colspan="3"><%= loan.title %></td>
-    <td colspan="1" class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
     <td colspan="1"><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
+    <td colspan="1" class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
     <td colspan="1" class="renewal-check">
       <div class="form-check item-select-form-check">
         <label class="form-check-label">
@@ -12,7 +12,7 @@
               <span class="sr-only">Unable to renew</span>
             </i>
         <% else %>
-          <%= check_box_tag "loan-#{loan.loan_id}", loan.loan_id, false, loan_options(loan) %>
+          <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
           <span class="hide-me">Renew this loan</span>
         <% end %>
         </label>
