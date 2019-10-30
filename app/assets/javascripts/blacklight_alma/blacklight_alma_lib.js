@@ -224,7 +224,7 @@ var BlacklightAlma = function (options) {
      if(idList.length > 0) {
          var url = $('#alma_availability_url').data('url') + "?id_list=" + encodeURIComponent(idList);
          console.log(url);
-         $.ajax(url, {
+         return $.ajax(url, {
              success: function(data, textStatus, jqXHR) {
                  if(!data.error) {
                      console.log(data);
@@ -363,11 +363,44 @@ var BlacklightAlma = function (options) {
      idArrays.forEach(function(idArray) {
          var idArrayStr = idArray.join(",");
          baObj.availabilityRequestsFinished[idArrayStr] = false;
-         baObj.loadAvailabilityAjax(idArrayStr, 1);
+         baObj.loadAvailabilityAjax(idArrayStr, 1)
+         .then(_ => { return baObj.clickLocationButton(); })
+         .then(id =>{ return baObj.checkElementById("request-btn-" + id) })
+         .then(asyncPromise => { asyncPromise.then(elem => { elem.click(); }) })
      });
 
      baObj.checkAndPopulateMissing();
  };
+
+   /**
+    * Looks for #doc-<doc-id> in the URL tries to click associated availability
+    *
+    * and returns doc-id or null if none was found.
+    */
+   BlacklightAlma.prototype.clickLocationButton = function() {
+     let  hash = window.location.hash
+
+     if (hash && hash.match(/^#doc-([0-9]{18})/)) {
+       let matches = hash.match(/^#doc-([0-9]{18})/);
+       let id = matches[1];
+       let elem = document.getElementById("available_button-" + id)
+       if (elem) {
+         elem.click();
+       }
+       return id;
+     }
+   }
+
+   /**
+    * Async function that continuously checks if an element exists.
+    * and resolves by returning said element.
+    */
+   BlacklightAlma.prototype.checkElementById = async id => {
+     while ( document.getElementById(id) === null) {
+       await new Promise( resolve =>  requestAnimationFrame(resolve) )
+     }
+     return document.getElementById(id);
+   };
 
  /**
   * Periodically checks for all AJAX availability requests to finish, then displays
