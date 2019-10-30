@@ -397,4 +397,10 @@ module CatalogHelper
   def document_show_secondary_fields(document)
     document_show_fields(document).select { |field_name, field| field[:type] != :primary }
   end
+
+  def ez_borrow_list_item(controller_name)
+    if controller_name == "catalog"
+      content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")))
+    end
+  end
 end
