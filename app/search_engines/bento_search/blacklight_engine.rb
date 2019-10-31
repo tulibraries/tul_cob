@@ -57,7 +57,8 @@ module BentoSearch
     end
 
     def url(helper)
-      helper.search_catalog_path(q: helper.params[:q])
+      params = helper.params.except(:action, :controller)
+      helper.search_catalog_path(params)
     end
 
     def view_link(total = nil, helper)

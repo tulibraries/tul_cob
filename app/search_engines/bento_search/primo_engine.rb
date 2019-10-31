@@ -32,12 +32,12 @@ module BentoSearch
     end
 
     def doc_link(id)
-      Rails.application.routes.url_helpers.primo_central_document_path(id)
+      Rails.application.routes.url_helpers.article_document_path(id)
     end
 
     def url(helper)
-      params = helper.params
-      helper.url_for(action: :index, controller: :primo_central, q: params[:q])
+      params = helper.params.except(:action, :controller)
+      helper.articles_path(params)
     end
 
     def view_link(total = nil, helper)
