@@ -169,12 +169,12 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.2.0)
+    blacklight (7.3.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
-      rails (~> 5.1)
+      rails (>= 5.1, < 7)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
@@ -565,7 +565,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.2.0)
+  blacklight (~> 7.3.0)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
