@@ -365,8 +365,8 @@ var BlacklightAlma = function (options) {
          baObj.availabilityRequestsFinished[idArrayStr] = false;
          baObj.loadAvailabilityAjax(idArrayStr, 1)
          .then(_ => { return baObj.clickLocationButton(); })
-         .then(id =>{ return baObj.checkElementById("request-btn-" + id) })
-         .then(asyncPromise => { asyncPromise.then(elem => { elem.click(); }) })
+         .then(id =>{ return baObj.waitForElementById("request-btn-" + id) })
+         .then(elem => { elem.click() })
      });
 
      baObj.checkAndPopulateMissing();
@@ -392,12 +392,13 @@ var BlacklightAlma = function (options) {
    }
 
    /**
-    * Async function that continuously checks if an element exists.
+    * Continuously checks if an element exists.
     * and resolves by returning said element.
     */
-   BlacklightAlma.prototype.checkElementById = async id => {
+   BlacklightAlma.prototype.waitForElementById = id => {
      while ( document.getElementById(id) === null) {
-       await new Promise( resolve =>  requestAnimationFrame(resolve) )
+       // Hack for adding a little bit of wait time.
+       requestAnimationFrame()
      }
      return document.getElementById(id);
    };
