@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  resources :article_documents, only: [:show], path: "/articles", controller: "catalog" do
+  resources :article_documents, only: [:show], path: "/articles", controller: "primo_central" do
     concerns :exportable
   end
 
