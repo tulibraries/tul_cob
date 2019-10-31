@@ -6,7 +6,7 @@
 
       <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
       <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible", :id => "book-cover-image" %>
-      <%= image_tag default_cover_image(document), :class => "default", :alt => "default cover image" %>
+      <%= image_tag default_cover_image(document), :class => "default", :alt => "Default icon for " + document["title_statement_display"].to_s %>
     </div>
   <% end %>
 
