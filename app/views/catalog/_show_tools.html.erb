@@ -9,8 +9,11 @@
 
 <% if show_doc_actions? %>
 <% @sendto = {} %>
-  <ul id="tools-navbar">
-    
+  <ul id="tools-navbar list-group-horizontal ">
+    <li class=" pt-1 pr-2">
+      <%= render(:partial => 'catalog/bookmark_control', :locals => {:document=> @document}) %>
+    </li>
+
     <% if @document.citable? %>
       <li>
         <%= link_to t("blacklight.tools.cite_html"), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn btn-sm"} %>
