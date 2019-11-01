@@ -18,7 +18,7 @@ var BlacklightAlma = function (options) {
  */
 
 
- availabilityButton = function(id, holding) {
+var availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("btn-success")) {
      if(holding['availability'] == 'available') {
@@ -39,11 +39,11 @@ var BlacklightAlma = function (options) {
    }
  }
 
- noHoldingsAvailabilityButton = function(id) {
+  var noHoldingsAvailabilityButton = function(id) {
    unavailableItems(id);
   }
 
-  unavailableItems = function(id) {
+    var unavailableItems = function(id) {
     var availButton = $("button[data-availability-ids='" + id + "']");
 
     $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
@@ -52,7 +52,7 @@ var BlacklightAlma = function (options) {
     $(availButton).show();
   }
 
- availabilityInfo = function (holding) {
+ var availabilityInfo = function (holding) {
    var library = holding['library'];
    if (library == 'ASRS' || library == 'Paley Library') {
      library = "Charles Library";
@@ -62,7 +62,7 @@ var BlacklightAlma = function (options) {
 
    if (library != "EMPTY") {
      if (availability == "available")  {
-       availItem = {};
+       var availItem = {};
        Object.assign(availItem, {library, availability})
        return availItem;
      }
@@ -81,7 +81,7 @@ var BlacklightAlma = function (options) {
    }
  };
 
- sortedLibraries = function (holdings) {
+ var sortedLibraries = function (holdings) {
    holdings.sort();
    if (holdings.indexOf('Charles Library') > 0) {
        holdings.splice(holdings.indexOf('Charles Library'), 1);
@@ -89,8 +89,8 @@ var BlacklightAlma = function (options) {
    }
  }
 
- availableHoldings = function (holdings) {
-   availHoldings = [];
+ var availableHoldings = function (holdings) {
+   let availHoldings = [];
    holdings.forEach(function(item) {
      if (item.availability == "available") {
        availHoldings.push(item.library);
@@ -105,8 +105,8 @@ var BlacklightAlma = function (options) {
    return list.join("<br/>");
  }
 
- checkHoldings = function (holdings) {
-   check = [];
+ var checkHoldings = function (holdings) {
+   let check = [];
    holdings.forEach(function(item) {
      if (item.availability == "check_holdings") {
        check.push(item.library);
@@ -127,9 +127,9 @@ var BlacklightAlma = function (options) {
   * @returns {string}
   */
  BlacklightAlma.prototype.formatHoldings = function (holdings) {
-   html = ""
-   available = availableHoldings(holdings);
-   check = checkHoldings(holdings);
+   let html = ""
+   let available = availableHoldings(holdings);
+   let check = checkHoldings(holdings);
 
    if (available) {
      html = "<dt class='index-label col-md-3' >Available at: </dt><dd class='col-md-5 col-lg-7'>" + available + "</dd>";
@@ -412,6 +412,8 @@ var BlacklightAlma = function (options) {
        // https://stackoverflow.com/a/47776379/256854
        await new Promise( resolve =>  requestAnimationFrame(resolve) )
      }
+
+     return id
    };
 
    /**
@@ -435,7 +437,7 @@ var BlacklightAlma = function (options) {
  BlacklightAlma.prototype.checkAndPopulateMissing = function() {
 
      var baObj = this;
-     for(key in baObj.availabilityRequestsFinished) {
+     for(let key in baObj.availabilityRequestsFinished) {
          if(!baObj.availabilityRequestsFinished[key]) {
 
              setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
@@ -450,3 +452,5 @@ var BlacklightAlma = function (options) {
         $(element).html("<span style='color: red'>No status available for this item</span>");
      });
  };
+
+ export { BlacklightAlma }
