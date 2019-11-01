@@ -11,8 +11,7 @@
         <div class="holdings-summary row-sm col-md"><%= summary_list(items) %></div>
       </div>
 
-      <%= render "asrs_instructions", key: key %>
-      <%= render "scrc_instructions", key: key, document: document %>
+      <%= library_specific_instructions(key, document) %>
 
       <% items.each do |item| %>
         <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0">

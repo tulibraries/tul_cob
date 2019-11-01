@@ -326,11 +326,12 @@ module CatalogHelper
     collection_id = field["collection_id"]
     service_id = field["service_id"]
 
+    public_notes = field["public_note"]
     collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
     service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
 
-    if collection_notes.present? || service_notes.present?
-      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes }
+    if collection_notes.present? || service_notes.present? || public_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes, public_notes: public_notes }
     end
   end
 
@@ -395,5 +396,11 @@ module CatalogHelper
 
   def document_show_secondary_fields(document)
     document_show_fields(document).select { |field_name, field| field[:type] != :primary }
+  end
+
+  def ez_borrow_list_item(controller_name)
+    if controller_name == "catalog"
+      content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")))
+    end
   end
 end

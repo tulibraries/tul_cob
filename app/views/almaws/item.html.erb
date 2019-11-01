@@ -18,18 +18,19 @@
         <div class="holdings-summary row-sm col-md"><%= summary_list(items) %></div>
       </div>
 
-      <%= render "asrs_instructions", key: key %>
-      <%= render "scrc_instructions", key: key, document: @document %>
+      <%= library_specific_instructions(key, @document) %>
 
       <% items.each do |item| %>
         <div class="item-info row avail-info-rows border-bottom border-header-grey m-0">
           <div class="row-sm col-md p-0 pr-2"><strong><%= location_status(item) %></strong></div>
           <div class="row-sm col-md p-0"><%= alternative_call_number(item) %></div>
           <div class="row-sm col-md p-0">
+
             <span><%= description(item) %></span>
             <span><%= public_note(item) %></span>
             <span><%= material_type(item) %></span>
           </div>
+          
           <div class="d-flex flex-md-column align-self-center avail_status-container p-0">
             <div class="avail_status"><%= item.fetch("availability", "") %></div>
           </div>

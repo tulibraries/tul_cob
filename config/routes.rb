@@ -40,9 +40,8 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
+  resources :articles, only: [:index], as: "articles", path: "/articles", controller: "primo_central" do
     concerns :searchable
-    concerns :range_searchable
   end
 
   resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
@@ -50,20 +49,33 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
   resource :web_content, only: [:index], as: "web_content", path: "/web_content", controller: "web_content" do
     concerns :searchable
-    #concerns :range_searchable
   end
+
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns :exportable
   end
 
-  resources :solr_journal_documents, only: [:show], path: "/journals", controller: "journals" do
+  resources :article_documents, only: [:show], path: "/articles", controller: "primo_central" do
+    concerns :exportable
+  end
+
+  resources :primo_central_documents, only: [:show], path: "/articles", controller: "primo_central" do
     concerns :exportable
   end
 
   resources :solr_database_documents, only: [:show], path: "/databases", controller: "databases" do
+    concerns :exportable
+  end
+
+  resources :solr_journal_documents, only: [:show], path: "/journals", controller: "journals" do
     concerns :exportable
   end
 
@@ -73,10 +85,6 @@ Rails.application.routes.draw do
     collection do
       delete "clear"
     end
-  end
-
-  resources :primo_central_documents, only: [:show], path: "/articles", controller: "primo_central" do
-    concerns :exportable
   end
 
   post "catalog/:id/track" => "catalog#track"
@@ -131,6 +139,9 @@ Rails.application.routes.draw do
 
   get "almaws/item/:mms_id", to:  "almaws#item", as: "item"
   get "almaws/request/:mms_id/:pickup_location/:request_level", to: "almaws#request_options", as: "request_options"
+  get "almaws/request/:mms_id", to: "almaws#request_options", as: "direct_request_options"
+  get "almaws/request/:mms_id/index", to: "almaws#index"
+  get "almaws/request/:mms_id/:pickup_location/:request_level/index", to: "almaws#index"
   post "almaws/request/digitization", to: "almaws#send_digitization_request", as: "digitization_request"
   post "almaws/request/hold", to: "almaws#send_hold_request", as: "hold_request"
   post "almaws/request/asrs", to: "almaws#send_asrs_request", as: "asrs_request"

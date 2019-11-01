@@ -259,6 +259,7 @@ RSpec.describe CatalogHelper, type: :helper do
   describe "#render_electronic_notes" do
     let(:service_notes) {  { "foo" => "bar" } }
     let(:collection_notes) {  { "bizz" => "buzz" } }
+    let(:public_notes) { "public note" }
     let(:config) { OpenStruct.new(
       electronic_collection_notes: service_notes,
       electronic_service_notes: collection_notes
@@ -274,6 +275,14 @@ RSpec.describe CatalogHelper, type: :helper do
 
       it "should not render any notes" do
         expect(render_electronic_notes(field)).to be_nil
+      end
+    end
+
+    context "with public notes" do
+      let(:field) { { "public_note" => "public note" } }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(field)).to eq("rendered note")
       end
     end
 
@@ -548,46 +557,18 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-
-  # TODO: Remove if BL get upgraded, see details in helper method doc.
-  describe "#presenter" do
-    let(:document) { double }
-
-    before do
-      allow(helper).to receive(:index_presenter).and_return(:index_presenter)
-      allow(helper).to receive(:show_presenter).and_return(:show_presenter)
-      allow(helper).to receive(:action_name).and_return(action_name)
-    end
-
-    context "action is show" do
-      let(:action_name) { "show" }
-
-      it "uses the show presenter" do
-        expect(helper.presenter(document)).to eq(:show_presenter)
+  describe "#ez_borrow_list_item(controller_name)" do
+    context "catalog controller" do
+      let(:controller_name) { "catalog" }
+      it "adds an ez_borrow list item" do
+        expect(ez_borrow_list_item(controller_name)).to eql "<li>To request books that are not available at Temple, use <a target=\"_blank\" href=\"https://ezb.relaisd2d.com/?LS=TEMPLE\">E-ZBorrow</a>.</li>"
       end
     end
 
-    context "action is citation" do
-      let(:action_name) { "citation" }
-
-      it "uses the show presenter" do
-        expect(helper.presenter(document)).to eq(:show_presenter)
-      end
-    end
-
-    context "action is index" do
-      let(:action_name) { "index" }
-
-      it "uses the index presenter" do
-        expect(helper.presenter(document)).to eq(:index_presenter)
-      end
-    end
-
-    context "action is foo" do
-      let(:action_name) { "foo" }
-
-      it "uses the index presenter (by default)" do
-        expect(helper.presenter(document)).to eq(:index_presenter)
+    context "journal controller" do
+      let(:controller_name) { "journal" }
+      it "does not add an ez_borrow list item" do
+        expect(ez_borrow_list_item(controller_name)).to be_nil
       end
     end
   end

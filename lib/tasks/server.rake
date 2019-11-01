@@ -3,26 +3,11 @@
 require "solr_wrapper" unless Rails.env.production?
 
 desc "Run test suite"
-task :ci do
+task :ci, [:spec_args] do |_, args|
   ENV["DO_INGEST"] = "true"
-  Rake::Task["rspec"].invoke
-end
-
-
-desc "Run selected specs (Use with Guard)"
-task :rspec, [:spec_args] do |t, args|
-  passed = true
-  if Rails.env.test?
-    system "java -jar tmp/solr/server/start.jar -DSTOP.PORT=7983 -DSTOP.KEY=solrrocks -DSTOP.HOST=127.0.0.1 --stop"
-    system "bundle exec solr_wrapper clean"
-    run_solr("test", port: "8985") do
-      Rake::Task["tul_cob:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
-      rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
-      passed = system(rspec_cmd)
-    end
-  else
-    passed = system("rake rspec[#{args[:spec_args]}] RAILS_ENV=test")
-  end
+  Rake::Task["tul_cob:solr:load_fixtures"].invoke if ENV["DO_INGEST"]
+  rspec_cmd = ["rspec", args[:spec_args]].compact.join(" ")
+  passed = system(rspec_cmd)
   exit(1) unless passed
 end
 

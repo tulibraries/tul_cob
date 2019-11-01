@@ -48,7 +48,7 @@ module ApplicationHelper
     libraries = document_items.collect { |item| library(item) }
 
     if libraries.include?("SCRC")
-      button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary request-button")
+      button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary")
     end
   end
 
@@ -176,7 +176,7 @@ module ApplicationHelper
     if controller_name == "bookmarks"
       bookmarks_path(opts.merge(format: "ris"))
     elsif controller_name == "primo_central"
-      primo_central_document_path(opts.merge(format: "ris"))
+      article_document_path(opts.merge(format: "ris"))
     else
       solr_document_path(opts.merge(format: "ris"))
     end

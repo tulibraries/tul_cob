@@ -7,4 +7,6 @@
   <% service_notes.values.select(&:present?).each do |note| %>
     <p><%= raw note %></p>
   <% end %>
+
+  <p><%= public_notes %></p>
 </div>
