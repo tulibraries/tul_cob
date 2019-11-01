@@ -17,9 +17,14 @@
 
 .avail_status-container,
 .avail-spinner-container {
-  @media(max-width: 485px) {
+  @media(max-width: 768px) {
     margin-left: auto !important;
   }
+}
+
+.library-name {
+  font-size: 0.875rem;
+  font-weight: bold;
 }
 
 /* === RECORD PAGE AVAILABILITY === */
