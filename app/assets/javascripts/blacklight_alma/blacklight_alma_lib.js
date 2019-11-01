@@ -277,6 +277,8 @@ var BlacklightAlma = function (options) {
              }
          });
      }
+     // We want to be able to use this in a promise even in show view.
+     return Promise.resolve(null)
  };
 
  /**
@@ -364,9 +366,9 @@ var BlacklightAlma = function (options) {
          var idArrayStr = idArray.join(",");
          baObj.availabilityRequestsFinished[idArrayStr] = false;
          baObj.loadAvailabilityAjax(idArrayStr, 1)
-         .then(_ => { return baObj.clickLocationButton(); })
-         .then(id =>{ return baObj.waitForElementById("request-btn-" + id) })
-         .then(elem => { elem.click() })
+         .then(_ => { return clickLocationButton() })
+         .then(id =>{ waitForRequestUrlData(id)
+         .then(id => { clickRequestButton(id) })})
      });
 
      baObj.checkAndPopulateMissing();
@@ -377,7 +379,7 @@ var BlacklightAlma = function (options) {
     *
     * and returns doc-id or null if none was found.
     */
-   BlacklightAlma.prototype.clickLocationButton = function() {
+   function  clickLocationButton() {
      let  hash = window.location.hash
 
      if (hash && hash.match(/^#doc-([0-9]{18})/)) {
@@ -392,16 +394,39 @@ var BlacklightAlma = function (options) {
    }
 
    /**
-    * Continuously checks if an element exists.
-    * and resolves by returning said element.
+    * Waits for element with id #request-url-data-<id> to appear.
+    *
+    * Returns a promise for the id passed in.
     */
-   BlacklightAlma.prototype.waitForElementById = id => {
-     while ( document.getElementById(id) === null) {
-       // Hack for adding a little bit of wait time.
-       requestAnimationFrame()
+   function waitForRequestUrlData(id) {
+     return waitForElementById("request-url-data-" + id)
+     .then(_ => { return id })
+   }
+
+   /**
+    * Continuously checks if an element exists then resolves.
+    */
+   async function waitForElementById(id) {
+     while(!document.getElementById(id)) {
+       // Hack that is supposedly better than SetTimeout
+       // https://stackoverflow.com/a/47776379/256854
+       await new Promise( resolve =>  requestAnimationFrame(resolve) )
      }
-     return document.getElementById(id);
    };
+
+   /**
+    * Clicks the request button associated with id.
+    *
+    * Returns the id passed in.
+    */
+   function clickRequestButton(id) {
+     let elem = document.getElementById("request-btn-" + id)
+
+     if (elem) {
+       elem.click();
+     }
+     return id;
+   }
 
  /**
   * Periodically checks for all AJAX availability requests to finish, then displays
