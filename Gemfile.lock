@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: c52d57786edde47f79dfadcc9af2243a7b33dab8
+  revision: cdef63c0e301cf18de3ba84433e3efbd2678f8d4
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -348,7 +348,7 @@ GEM
     mysql2 (0.5.2)
     nenv (0.3.0)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
