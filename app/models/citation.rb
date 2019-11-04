@@ -65,7 +65,13 @@ class Citation
 
     def response
       @response ||= begin
-        HTTParty.get(api_url)
+        resp = HTTParty.get(api_url)
+        if resp["diagnostics"]
+          Honeybadger.notify("Citation responding with non-html for #{api_url}")
+          ""
+        else
+          resp
+        end
         rescue HTTParty::Error::ConnectionFailed, HTTParty::TimeoutError => e
           Rails.logger.warn("HTTP GET for #{api_url} failed with #{e}")
           ""
