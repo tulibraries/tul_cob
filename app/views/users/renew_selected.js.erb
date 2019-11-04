@@ -3,9 +3,9 @@
 	<% message = response[:renewed] ? "Renewed" : "Not Renewed" %>
 	<% if message === "Renewed" %>
 		$('.<%= response[:loan_id] %>').html("<%= make_date(response[:due_date]) %>");
-		$('.<%= response[:loan_id] %>').css("color", "#00b700");
+		$('.<%= response[:loan_id] %>').css("color", "#3A833A");
 		$('#<%= response[:loan_id] %>').html(" <%= message %> ");
-		$('#<%= response[:loan_id] %>').css("color", "#00b700");
+		$('#<%= response[:loan_id] %>').css("color", "#3A833A");
 		$('#renewal-warning').html("Your renewal request is successful. If you have any questions, please visit your library's Circulation Desk or <a href='https://library.temple.edu/contact-us'>Ask a Librarian</a>.");
 		$('#renewal-warning').css("background-color", "#ffffff");
 		$('#renewal-warning').css("display", "block");

@@ -12,7 +12,7 @@
               <span class="sr-only">Unable to renew</span>
             </i>
         <% else %>
-          <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan) %>
+          <%= check_box_tag "loan_ids[]", loan.loan_id, false, loan_options(loan).merge(id: "loan_id_#{loan.loan_id}") %>
           <span class="hide-me">Renew this loan</span>
         <% end %>
         </label>
