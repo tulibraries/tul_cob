@@ -341,6 +341,14 @@ a#bookmarks_nav {
 	}
 }
 
+#citeLink:hover,
+#sendto a:hover {
+	@media (max-width: 768px) {
+		background-color: $red !important;
+		color: $white !important;
+	}
+}
+
 /* CITATION MODAL */
 .citation-title {
 	font-family: "PT Sans";
