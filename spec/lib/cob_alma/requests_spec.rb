@@ -14,14 +14,9 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.valid_pickup_locations(list_items)).to include "MAIN"
     end
 
-    xit "does not allow a user to request an item available in the Presser Listening Library, for pickup at Paley." do
-      # Temporarily skipping this test as MAIN is a vaid pickup location during the move
+    it "does not allow a user to request an item available in the Presser Listening Library, for pickup at Paley." do
       expect(described_class.valid_pickup_locations(same_campus)).not_to include "MAIN"
     end
-
-    # it "allows a user to request an item, available in the Presser Listening Library and Ambler Campus Library Stacks, for pickup at Paley" do
-    #   expect(described_class.valid_pickup_locations(ambler_presser)).to include "MAIN"
-    # end
   end
 
   describe "picking up at a different library only" do
@@ -36,8 +31,7 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.valid_pickup_locations(kardon_only)).to include "MAIN"
     end
 
-    xit "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
-      # Temporarily skipping this test as MAIN is a vaid pickup location during the move
+    it "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
       expect(described_class.valid_pickup_locations(kardon_paley)).not_to include "MAIN"
     end
   end
@@ -90,8 +84,7 @@ RSpec.describe CobAlma::Requests do
     context "two descriptions each at one library" do
       let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
 
-      xit "returns a hash with all the campuses" do
-        # Temporarily skipping this test as MAIN is a vaid pickup location during the move
+      it "returns a hash with all the campuses" do
         expect(subject).to eq("v.4 (1976)" => ["AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
                               "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
@@ -100,8 +93,7 @@ RSpec.describe CobAlma::Requests do
     context "one description at multiple libraries" do
       let(:items_list) { Alma::BibItem.find("desc_with_multiple_libraries") }
 
-      xit "returns a hash with all the campuses" do
-        # Temporarily skipping this test as MAIN is a vaid pickup location during the move
+      it "returns a hash with all the campuses" do
         expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end

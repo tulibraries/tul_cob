@@ -12,7 +12,12 @@ module AvailabilityHelper
 
     if unavailable_libraries.include?(item.library) ||
         unavailable_locations.include?(item.location)
-      content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
+
+      library_link = "#{Rails.configuration.library_link}forms/storage-request"
+
+      label = "In temporary storage — " + link_to("Recall item now", library_link)
+
+      content_tag(:span, "", class: "close-icon") + raw(label)
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal"
@@ -67,6 +72,17 @@ module AvailabilityHelper
     !!document["items_json_display"]&.map { |item|
       item["availability"].blank?
     }&.any?
+  end
+
+  def library_specific_instructions(key, document)
+    case key
+    when "ASRS"
+      render partial: "asrs_instructions", locals: { key: key }
+    when "SCRC"
+      render partial: "scrc_instructions", locals: { key: key, document: document }
+    when "MAIN"
+      render partial: "main_open_shelving_instructions", locals: { key: key }
+    end
   end
 
   def description(item)

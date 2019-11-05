@@ -5,6 +5,19 @@ require "rails_helper"
 
 RSpec.describe AvailabilityHelper, type: :helper do
   describe "#availability_status(item)" do
+
+    context "item is in storage" do
+      let(:item) do
+        Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
+      end
+
+      it "links to new outside form" do
+        label = "<span class=\"close-icon\"></span>In temporary storage — <a href=\"https://library.temple.edu/forms/storage-request\">Recall item now</a>"
+
+        expect(availability_status(item)).to eq(label)
+      end
+    end
+
     context "item base_status is 1 and policy is Non-circulating" do
       let(:item) do
         Alma::BibItem.new("item_data" =>
@@ -654,7 +667,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns copies for each library by location" do
         sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
-        expect(sorted_locations).to eq(["Journals", "LRS Consultation - Ask at Desk", "Stacks"])
+        expect(sorted_locations).to eq(["Journals (3rd floor)", "Reference - Ask at One Stop Assistance Desk", "Stacks (4th floor)"])
       end
     end
 

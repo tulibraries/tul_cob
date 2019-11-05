@@ -13,9 +13,6 @@
   padding-left: 0;
 }
 
-.user-info-list li {
-}
-
 .user-info-label {
   font-weight: bold;
 }
@@ -59,10 +56,29 @@
   margin-top: 0.625rem;
 }
 
-/* === USER REQUESTS === */
+/* === USER HOLDS === */
 .user-table td {
   border-top: 0;
-  padding-left: 1.25rem;
+}
+
+.user-holds-table thead {
+  width: 100% !important;
+}
+
+.hold-number {
+  width: 2%;
+}
+
+.hold-title {
+  width: 59%;
+}
+
+.hold-until {
+  width: 10%;
+}
+
+.hold-status {
+  width: 10%;
 }
 
 /* === USER FINES === */
@@ -87,6 +103,22 @@
   color: $med-grey;
   margin-right: 10%;
   position:absolute;
+}
+
+.fines-number {
+  width: 2%;
+}
+
+.fines-title {
+  width: 75%;
+}
+
+.fines-fee-type {
+  width: 15%;
+}
+
+.fines-amount {
+  width: 10%;
 }
 
 /* === LOG IN MODAL === */

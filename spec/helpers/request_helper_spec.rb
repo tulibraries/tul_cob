@@ -17,4 +17,28 @@ RSpec.describe RequestHelper, type: :helper do
     end
 
   end
+
+  describe "#request_redirect_url" do
+
+    it "generates expected url" do
+      helper.extend(UsersHelper)
+      expected_url = "/users/sign_in?redirect_to=http%3A%2F%2Ftest.host%2Falmaws%2Frequest%2Ffoo"
+      expect(helper.request_redirect_url("foo")).to eq(expected_url)
+    end
+  end
+
+  describe "#modal_exit_button_name" do
+
+    context "make_modal_link is false" do
+      it "does not render the name as a link" do
+        expect(helper.modal_exit_button_name(false)).to eq("&times;")
+      end
+    end
+
+    context "make_modal_link is true" do
+      it "renders the name as a link" do
+        expect(helper.modal_exit_button_name(true)).to eq("<a class=\"nav-item nav-link header-links\" href=\"/catalog\">&times;</a>")
+      end
+    end
+  end
 end

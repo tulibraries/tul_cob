@@ -47,8 +47,8 @@ RSpec.describe CatalogController, type: :controller do
     render_views
     it "returns more results that using uppercase boolean" do
       config = controller.blacklight_config
-      (response_lower, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home or work" }).search_results
-      (response_upper, _)  = Blacklight::SearchService.new(config: config, user_params: { q: "home OR work" }).search_results
+      (response_lower, _) = Blacklight::SearchService.new(config: config, user_params: { q: "home or work" }).search_results
+      (response_upper, _) = Blacklight::SearchService.new(config: config, user_params: { q: "home OR work" }).search_results
 
       expect(response_upper.total).to be > response_lower.total
     end

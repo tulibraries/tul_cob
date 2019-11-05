@@ -101,15 +101,15 @@ default: &default
     UNASSIGNED: Location information not available
   MAIN:
     ILL: Inter-Library Loan
-    juvenile: Juvenile
-    leisure: Leisure Reading
-    m_reserve: Media Reserves
-    newbooks: New Books
-    reference: LRS Consultation - Ask at Desk
-    reserve: Reserves
-    serials: Journals
-    servicedsk: Service Desk
-    stacks: Stacks
+    juvenile: Juvenile (4th floor)
+    leisure: Leisure Reading (1st floor)
+    m_reserve: Media Reserves - Ask at One Stop Assistance Desk
+    newbooks: New Books (1st floor)
+    reference: Reference - Ask at One Stop Assistance Desk
+    reserve: Reserves - Ask at One Stop Assistance Desk
+    serials: Journals (3rd floor)
+    servicedsk: One Stop Assistance Desk
+    stacks: Stacks (4th floor)
     techserv: Technical Services
     govdocmicr: Government Doc Microforms
     govdoc: Government Documents

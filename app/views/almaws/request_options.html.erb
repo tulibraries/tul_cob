@@ -1,17 +1,18 @@
 <div class="modal-header request-options-header justify-space-between">
   <h1 id="modal-title"><%= t("requests.header") %></h1>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><%= modal_exit_button_name(@make_modal_link) %></span></button>
 </div>
 
 <div class="modal-body">
   <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
-  <%= asrs_allowed_partial(@request_options) %>
-  <%= hold_allowed_partial(@request_options) %>
-  <%= digitization_allowed_partial(@request_options) %>
-  <%= booking_allowed_partial(@request_options) %>
-  <%= resource_sharing_broker_allowed_partial(@request_options, @books) %>
-  <%= no_temple_request_options_available(@request_options, @books) %>
+  <%= asrs_allowed_partial(@request_options, @document) %>
+  <%= hold_allowed_partial(@request_options, @document) %>
+  <%= digitization_allowed_partial(@request_options, @document) %>
+  <%= booking_allowed_partial(@request_options, @document) %>
+  <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
+  <%= aeon_request_partial(@request_options, @document) %>
+  <%= no_temple_request_options_available(@request_options, @books, @document) %>
 
   </div>
 </div>

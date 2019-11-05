@@ -6,7 +6,7 @@ RSpec.describe BentoSearch, type: :search_engine do
 
   let(:search_engine)  { BentoSearch.get_engine("website") }
 
-  let(:search_results) { VCR.use_cassette("bento_search_website") { search_engine.search("art") } }
+  let(:search_results) { search_engine.search("art") }
 
   let(:expected_fields) { RSpec.configuration.web_expected_fields }
 

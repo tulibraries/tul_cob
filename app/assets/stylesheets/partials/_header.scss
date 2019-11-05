@@ -257,7 +257,7 @@ a#bookmarks_nav {
  	margin-right: 0.25rem;
 }
 
-#sendto button {
+#sendto-menu a.dropdown-toggle{
  	background-color: $white;
   border: 0.0625rem solid $header-grey;
   color: $red;
@@ -338,6 +338,14 @@ a#bookmarks_nav {
 		background-color: $red;
 		border: 0;
 		margin-top: 0;
+	}
+}
+
+#citeLink:hover,
+#sendto a:hover {
+	@media (max-width: 768px) {
+		background-color: $red !important;
+		color: $white !important;
 	}
 }
 
