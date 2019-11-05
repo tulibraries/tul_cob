@@ -21,7 +21,7 @@
       <%= library_specific_instructions(key, @document) %>
 
       <% items.each do |item| %>
-        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0">
+        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0 align-items-center pb-md-2">
           <div class="row-md col-lg-3 "><strong><%= location_status(item) %></strong></div>
           <div class="row-md col-lg"><%= alternative_call_number(item) %></div>
           <div class="row-md col-lg">
