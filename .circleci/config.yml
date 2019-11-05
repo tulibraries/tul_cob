@@ -46,10 +46,10 @@ jobs:
           name: Set up local Solr.
           command: SOLR_VERSION=6.6.1 bash .circleci/setup_solr.sh
       - run:
-          name: Set ruby version to 2.6.4
+          name: Set ruby version to 2.6.5
           command: |
-            rvm install 2.6.4
-            echo . $(rvm 2.6.4 do rvm env --path) >> $BASH_ENV
+            rvm install 2.6.5
+            echo . $(rvm 2.6.5 do rvm env --path) >> $BASH_ENV
       - run:
           name: Build app
           command: NODE_VERSION=v12.13.0 bash .circleci/build.sh
