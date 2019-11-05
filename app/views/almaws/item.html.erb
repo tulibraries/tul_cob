@@ -21,7 +21,7 @@
       <%= library_specific_instructions(key, @document) %>
 
       <% items.each do |item| %>
-        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0 align-items-center pb-md-2">
+        <div class="item-info row avail-info-rows border-bottom border-header-grey p-sm-0 m-0 p-md-2">
           <div class="row-md col-lg-3 "><strong><%= location_status(item) %></strong></div>
           <div class="row-md col-lg"><%= alternative_call_number(item) %></div>
           <div class="row-md col-lg">
@@ -30,7 +30,7 @@
             <span><%= material_type(item) %></span>
           </div>
 
-          <div class="d-flex flex-md-row col-lg-3 avail_status-container">
+          <div class="d-sm-flex flex-md-column avail_status-container w-25">
             <div class="avail_status"><%= item.fetch("availability", "") %></div>
           </div>
         </div>
