@@ -11,6 +11,15 @@ GIT
       rails (>= 5.1, < 7)
 
 GIT
+  remote: https://github.com/dkinzer/blacklight_advanced_search.git
+  revision: badde44ddf51e19df7ed765fa51cfb1db1c9111e
+  branch: fix-local-param-hash-fails
+  specs:
+    blacklight_advanced_search (7.0.0.alpha)
+      blacklight (~> 7.0)
+      parslet
+
+GIT
   remote: https://github.com/projectblacklight/blacklight-marc.git
   revision: 582c68255d73e21926234f2ad5bb1ddf37dc6684
   ref: v7.0.0.rc1
@@ -22,14 +31,6 @@ GIT
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-
-GIT
-  remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: ae7e3b7242337dceaabb23d212466e7504dedb0e
-  specs:
-    blacklight_advanced_search (7.0.0.alpha)
-      blacklight (~> 7.0)
-      parslet
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_range_limit.git
