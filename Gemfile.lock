@@ -25,7 +25,7 @@ GIT
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: ae7e3b7242337dceaabb23d212466e7504dedb0e
+  revision: 4e2ba68f30cb0bccf345be46bc8299c71cb59c5a
   specs:
     blacklight_advanced_search (7.0.0.alpha)
       blacklight (~> 7.0)
