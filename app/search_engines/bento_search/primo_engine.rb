@@ -36,8 +36,9 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params.except(:action, :controller)
-      helper.articles_path(params)
+      params = helper.params
+        .merge(action: :index, controller: :primo_central)
+      helper.url_for(params)
     end
 
     def view_link(total = nil, helper)
