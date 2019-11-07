@@ -40,11 +40,11 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  resources :articles, only: [:index], as: "articles", path: "/articles", controller: "primo_central" do
+  resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
     concerns :searchable
   end
 
-  resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
+  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
     concerns :searchable
     concerns :range_searchable
   end
