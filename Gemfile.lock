@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/dkinzer/blacklight.git
-  revision: b0ca2ed280c7028243266ab1a1b3f3b8a0161630
-  branch: 92-fix-backwards-incompatible-breaking-change
-  specs:
-    blacklight (7.3.0)
-      deprecation
-      globalid
-      jbuilder (~> 2.7)
-      kaminari (>= 0.15)
-      rails (>= 5.1, < 7)
-
-GIT
   remote: https://github.com/projectblacklight/blacklight-marc.git
   revision: 582c68255d73e21926234f2ad5bb1ddf37dc6684
   ref: v7.0.0.rc1
@@ -22,6 +10,17 @@ GIT
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
+
+GIT
+  remote: https://github.com/projectblacklight/blacklight.git
+  revision: 4da23bab0bc1c4d9fffbb37b289fd0bbcc4f19b2
+  specs:
+    blacklight (7.4.0)
+      deprecation
+      globalid
+      jbuilder (~> 2.7)
+      kaminari (>= 0.15)
+      rails (>= 5.1, < 7)
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git

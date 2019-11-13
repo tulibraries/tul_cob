@@ -55,7 +55,9 @@ end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #gem "blacklight", "~> 7.3.0"
 # TODO: revert once https://github.com/projectblacklight/blacklight/pull/2193 is released.
-gem "blacklight", git: "https://github.com/dkinzer/blacklight.git", branch: "92-fix-backwards-incompatible-breaking-change"
+gem "blacklight",
+  git: "https://github.com/projectblacklight/blacklight.git"
+  #git: "https://github.com/dkinzer/blacklight.git", branch: "92-fix-backwards-incompatible-breaking-change"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
 gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
