@@ -121,12 +121,12 @@ class AlmawsController < CatalogController
     }
 
     @asrs_request_level = params[:asrs_request_level]
-    #log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
+    log = { type: "submit_asrs_request", user: current_user.id }.merge(options)
 
     begin
       requests_made = 0
       if @asrs_request_level == "bib"
-        Alma::BibRequest.submit(options)
+        do_with_json_logger(log) { Alma::BibRequest.submit(options) }
         requests_made += 1
       else
         # TODO: Will update this depending on Justin's decision regarding
@@ -138,10 +138,11 @@ class AlmawsController < CatalogController
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          Alma::ItemRequest.submit(
-            options.merge(
-              holding_id: holding_id,
-              item_pid: item_pid))
+          item_options = { holding_id: holding_id, item_pid: item_pid }
+
+          do_with_json_logger(log.merge(item_options)) {
+            Alma::ItemRequest.submit(options.merge(item_options))
+          }
 
           requests_made += 1
           break
