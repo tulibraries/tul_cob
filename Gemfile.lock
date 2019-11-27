@@ -32,17 +32,6 @@ GIT
       parslet
 
 GIT
-  remote: https://github.com/projectblacklight/blacklight_range_limit.git
-  revision: 6826dfb8b73554a79f26ca7ff375b0062e37bb22
-  ref: v7.0.0.rc2
-  specs:
-    blacklight_range_limit (7.0.0.rc2)
-      blacklight
-      jquery-rails
-      rails (>= 3.0)
-      tether-rails
-
-GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: 11bd3b1cb948ab01adc0c5f1f5d3efc4c96f657a
   branch: master
@@ -181,6 +170,8 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
+    blacklight_range_limit (7.3.1)
+      blacklight (>= 7.0)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
@@ -326,7 +317,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-    loofah (2.3.1)
+    loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
@@ -415,7 +406,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.0)
+    rake (13.0.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -502,8 +493,6 @@ GEM
       json
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    tether-rails (1.4.0)
-      rails (>= 3.1)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -576,7 +565,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_alma!
-  blacklight_range_limit!
+  blacklight_range_limit
   bootsnap
   bootstrap (~> 4.3)
   bootstrap-select-rails
