@@ -12,10 +12,7 @@ RSpec.feature "Databases AZ" do
         click_button
       end
 
-      # TODO: reset test once we use correct solr config.
-      # Note this test fails because we are using wrong solr config.
-      #expect(page).to have_text "Mental Measurements Yearbook with Tests in Print"
-      expect(page).to have_text "2806622"
+      expect(page).to have_text "Mental Measurements Yearbook with Tests in Print"
 
       expect(page).not_to have_button("Bookmark")
       expect(page).not_to have_button("Remove bookmark")

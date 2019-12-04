@@ -24,7 +24,7 @@ namespace :tul_cob do
       `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
 
       web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-      `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures`
+      `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
     end
 
     desc "Delete all items from Solr"

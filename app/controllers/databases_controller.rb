@@ -11,9 +11,11 @@ class DatabasesController < CatalogController
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
+    config.document_solr_path = "document"
 
     # Do not inherit default solr configs from the catalog.
-    config.default_solr_params = {}
+    config.default_solr_params =
+      config.default_document_solr_params = config.fetch_many_document_params = {}
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
@@ -65,7 +67,6 @@ class DatabasesController < CatalogController
         pf: "$subject_pf",
       }
     end
-
 
 
     # Sort fields.
