@@ -166,7 +166,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.4.10.2)
+    autoprefixer-rails (9.7.3)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.13)
@@ -183,7 +183,7 @@ GEM
     bindex (0.5.0)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap (4.3.1)
+    bootstrap (4.4.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -251,7 +251,7 @@ GEM
       railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.1)
+    ffi (1.11.3)
     foreman (0.86.0)
     formatador (0.2.5)
     gli (2.19.0)
@@ -578,7 +578,7 @@ DEPENDENCIES
   blacklight_alma!
   blacklight_range_limit!
   bootsnap
-  bootstrap (~> 4.3)
+  bootstrap (~> 4.4)
   bootstrap-select-rails
   browser
   byebug
