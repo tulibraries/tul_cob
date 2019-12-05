@@ -11,26 +11,6 @@ class WebContentController < CatalogController
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:web_content_url]
     config.track_search_session = false
-    config.default_solr_params = {
-        defType: "edismax",
-        wt: "json",
-        fl: %w[
-          * ].join(","),
-        qf: %w[
-          web_title_display^3
-          web_specialties_display^2
-          web_full_description_t^2
-          text
-        ],
-        pf: %w[
-          web_title_display^3
-          web_specialties_display^2
-          web_full_description_t^2
-          text
-        ],
-        spellcheck: "false",
-    }
-
     config.index.title_field = "web_title_display"
 
     # Facet fields
