@@ -113,7 +113,7 @@ gem "cob_index",
   branch: "qa"
 
 group :production do
-  gem "mysql2", "~> 0.5.2"
+  gem "mysql2", "~> 0.5.3"
 end
 
 # devops
