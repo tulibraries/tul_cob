@@ -5,7 +5,7 @@
     </h2>
   </div>
 
-  <div id="collapseASRS-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options, document)%>">
+  <div id="collapseASRS-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options, @books, document)%>">
     <div class="card-body">
         <%= render "asrs_request_form" %>
     </div>

@@ -341,6 +341,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "Temple request options are available" do
+      let(:books) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -368,6 +369,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
   describe "#only_one_option_allowed(request_options)" do
     context "only a hold is allowed" do
+      let(:books) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -388,11 +390,12 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
       end
     end
 
     context "only an aeon request is allowed" do
+      let(:books) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -413,11 +416,12 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
       end
     end
 
     context "only a booking is allowed" do
+      let(:books) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -438,11 +442,12 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
       end
     end
 
     context "both a hold and a booking are allowed" do
+      let(:books) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -481,7 +486,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is false" do
-        expect(helper.only_one_option_allowed(request_options, document)).to be false
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be false
       end
     end
   end
