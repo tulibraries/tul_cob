@@ -446,6 +446,59 @@ RSpec.describe AlmawsHelper, type: :helper do
       end
     end
 
+    context "only an EZ Borrow request is allowed for a book" do
+      let(:books) { "BOOK" }
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "RS_BROKER", "desc" => "Resource Sharing Broker" },
+          "request_url" => "https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=915602377&RK=915602377&rft.stitle=A+thin+bright+line+%2F&rft.pub=The+University+of+Wisconsin+Press%2C&rft.place=Madison%2C+Wisconsin+%3A&rft.isbn=0299309304&rft.btitle=A+thin+bright+line+%2F&rft.genre=book&rft.normalized_isbn=9780299309305&rft.oclcnum=946770187&rft.mms_id=991028550499703811&rft.object_type=BOOK&rft.publisher=The+University+of+Wisconsin+Press%2C&rft.au=Bledsoe%2C+Lucy+Jane%2C+author.&rft.pubdate=%5B2016%5D&rft.title=A+thin+bright+line+%2F"
+          }]
+        }.to_json
+      }
+
+      it "is true" do
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
+      end
+    end
+
+    context "only an EZ Borrow request is allowed for a DVD" do
+      let(:books) {}
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          } }
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "RS_BROKER", "desc" => "Resource Sharing Broker" },
+          "request_url" => "https://e-zborrow.relais-host.com/user/login.html?group=patron&LS=TEMPLE&dest=discovery&PI=915602377&RK=915602377&rft.stitle=A+thin+bright+line+%2F&rft.pub=The+University+of+Wisconsin+Press%2C&rft.place=Madison%2C+Wisconsin+%3A&rft.isbn=0299309304&rft.btitle=A+thin+bright+line+%2F&rft.genre=book&rft.normalized_isbn=9780299309305&rft.oclcnum=946770187&rft.mms_id=991028550499703811&rft.object_type=BOOK&rft.publisher=The+University+of+Wisconsin+Press%2C&rft.au=Bledsoe%2C+Lucy+Jane%2C+author.&rft.pubdate=%5B2016%5D&rft.title=A+thin+bright+line+%2F"
+          }]
+        }.to_json
+      }
+
+      it "is false" do
+        expect(helper.only_one_option_allowed(request_options, books, document)).to be false
+      end
+    end
+
+
     context "both a hold and a booking are allowed" do
       let(:books) {}
       let(:document) { { "items_json_display" =>
