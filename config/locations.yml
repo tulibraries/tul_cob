@@ -101,6 +101,7 @@ default: &default
     UNASSIGNED: Location information not available
   MAIN:
     ILL: Inter-Library Loan
+    hirsch: Juvenile (Hirsch Collection, 4th floor)
     juvenile: Juvenile (4th floor)
     leisure: Leisure Reading (1st floor)
     m_reserve: Media Reserves - Ask at One Stop Assistance Desk

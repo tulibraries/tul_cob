@@ -9,7 +9,7 @@ gem "rails", "~> 5.2"
 gem "sqlite3"
 # Use Puma as the app server
 gem "puma", "~> 3.12"
-gem "bootstrap", "~> 4.3"
+gem "bootstrap", "~> 4.4"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1"
 # Use SCSS for stylesheets
@@ -45,7 +45,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem "web-console"
-  gem "listen", "~> 3.1.5"
+  gem "listen", "~> 3.2.1"
   # spring speeds up development by keeping your application running in the background. read more: https://github.com/rails/spring
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -113,7 +113,7 @@ gem "cob_index",
   branch: "qa"
 
 group :production do
-  gem "mysql2", "~> 0.5.2"
+  gem "mysql2", "~> 0.5.3"
 end
 
 # devops
