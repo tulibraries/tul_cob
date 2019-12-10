@@ -95,7 +95,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: b77a395f148667e3902187928b6674344c834ae5
+  revision: ea1497178743ffeb17cfcc5f83133a9cb446dd2e
   branch: master
   specs:
     cob_web_index (0.1.0)
@@ -252,6 +252,9 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.3)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     foreman (0.86.0)
     formatador (0.2.5)
     gli (2.19.0)
@@ -279,15 +282,16 @@ GEM
     hashie (3.6.0)
     honeybadger (4.5.4)
     htmlentities (4.3.4)
-    http (3.3.0)
+    http (4.2.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.0)
-      http_parser.rb (~> 0.6.0)
+      http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.1.1)
-    http_parser.rb (0.6.0)
+    http-parser (1.2.1)
+      ffi-compiler (>= 1.0, < 2.0)
     httparty (0.17.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -507,11 +511,11 @@ GEM
     tilt (2.0.10)
     tins (1.20.2)
     to_regexp (0.2.1)
-    traject (3.2.0)
+    traject (3.3.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
-      hashie (~> 3.1)
-      http (~> 3.0)
+      hashie (>= 3.1, < 5)
+      http (>= 3.0, < 5)
       httpclient (~> 2.5)
       marc (~> 1.0)
       marc-fastxmlwriter (~> 1.0)
@@ -634,4 +638,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
