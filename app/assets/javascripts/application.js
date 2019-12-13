@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery3
 //= require 'blacklight_advanced_search'
-//= require jquery_ujs
+//= require rails-ujs
 //= require popper
 //= require twitter/typeahead
 
