@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/dkinzer/blacklight.git
-  revision: b0ca2ed280c7028243266ab1a1b3f3b8a0161630
-  branch: 92-fix-backwards-incompatible-breaking-change
-  specs:
-    blacklight (7.3.0)
-      deprecation
-      globalid
-      jbuilder (~> 2.7)
-      kaminari (>= 0.15)
-      rails (>= 5.1, < 7)
-
-GIT
   remote: https://github.com/projectblacklight/blacklight-marc.git
   revision: 582c68255d73e21926234f2ad5bb1ddf37dc6684
   ref: v7.0.0.rc1
@@ -181,6 +169,12 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
+    blacklight (7.4.2)
+      deprecation
+      globalid
+      jbuilder (~> 2.7)
+      kaminari (>= 0.15)
+      rails (>= 5.1, < 7)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     bootstrap (4.4.1)
@@ -189,7 +183,7 @@ GEM
       sassc-rails (>= 2.0.0)
     bootstrap-select-rails (1.13.8)
     browser (2.7.1)
-    builder (3.2.3)
+    builder (3.2.4)
     byebug (11.0.1)
     capybara (3.29.0)
       addressable
@@ -573,7 +567,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight!
+  blacklight (~> 7.4.2)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
