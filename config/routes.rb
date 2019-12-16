@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   # mounts
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
-  mount BentoSearch::Engine => "/bento"
+  mount BentoSearch::Engine => "/everything"
 
   get "books/:id", to: redirect { |_, req| req.url.sub("books", "catalog") }
   get "books", to: redirect { |_, req|
