@@ -11,65 +11,6 @@ class DatabasesController < CatalogController
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
-    config.default_solr_params = {
-        wt: "json",
-        fl: %w[
-          *
-          url_finding_aid_display:[json]
-          url_more_links_display:[json]
-          electronic_resource_display:[json] ].join(","),
-      qf: %w[
-        alt_names_t^100000
-        title_t^10000
-        subject_facet^1000
-        format^200
-        format_t^200
-        note_t^100
-        availability_facet^50
-        text^25
-        id
-      ].join(" "),
-      pf: %w[
-        alt_names_t^100000
-        title_t^10000
-        subject_facet^1000
-        format^200
-        format_t^200
-        note_t^100
-        availability_facet^50
-        text^25
-      ].join(" "),
-      title_qf: %w[
-        alt_names_t^100000
-        title_t^10000
-      ].join(" "),
-      title_pf: %w[
-        alt_names_t^100000
-        title_t^10000
-      ].join(" "),
-      subject_qf: %w[
-        subject_t^1000000
-        subject_facet^1000000
-      ].join(" "),
-      subject_pf: %w[
-        subject_t^1000000
-        subject_facet^1000000
-      ].join(" "),
-      defType: "edismax",
-      echoParams: "explicit",
-      rows: "10",
-      mm: [
-       "5<-1",
-        URI.escape("8<75%")
-          ],
-      "mm.autorelax" => "true",
-      lowercaseOperators: false,
-      ps: "3",
-      tie: "0.01",
-      facet: "true",
-      spellcheck: "false",
-      sow: "false",
-    }
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
