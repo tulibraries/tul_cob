@@ -12,6 +12,9 @@ class DatabasesController < CatalogController
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
 
+    # Do not inherit default solr configs from the catalog.
+    config.default_solr_params = {}
+
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
     config.add_facet_field "az_format", field: "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false
