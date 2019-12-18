@@ -37,14 +37,36 @@ class DatabasesController < CatalogController
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
 
+
     config.add_search_field("title") do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { "qt": "title_search" }
+      field.solr_parameters = {
+        qt: "search",
+        qf: "${title_qf}",
+        pf: "${title_pf}",
+        "spellcheck.dictionary": "title",
+      }
+
+      field.solr_adv_parameters = {
+        qf: "$title_qf",
+        pf: "$title_pf",
+      }
     end
 
     config.add_search_field("subject") do |field|
-      field.solr_parameters = { "qt": "subject_search" }
+      field.solr_parameters = {
+        qt: "search",
+        qf: "${subject_qf}",
+        pf: "${subject_pf}",
+        "spellcheck.dictionary": "subject",
+      }
+
+      field.solr_adv_parameters = {
+        qf: "$subject_qf",
+        pf: "$subject_pf",
+      }
     end
+
+
 
     # Sort fields.
     config.add_sort_field "score desc, title_sort asc", label: "relevance"
