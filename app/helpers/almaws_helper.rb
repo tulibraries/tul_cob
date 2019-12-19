@@ -45,16 +45,17 @@ module AlmawsHelper
     end
   end
 
-  def relevant_request_options(request_options, document)
-    [ request_options.hold_allowed?,
+  def relevant_request_options(request_options, books, document)
+    [ request_options.hold_allowed? && non_asrs_items.present?,
+      request_options.hold_allowed? && available_asrs_items.present?,
       request_options.digitization_allowed?,
       request_options.booking_allowed?,
-      request_options.resource_sharing_broker_allowed?,
+      request_options.resource_sharing_broker_allowed? && books.present?,
       aeon_request_allowed(document)]
   end
 
-  def only_one_option_allowed(request_options, document)
-    relevant_request_options(request_options, document).select(&:itself).count == 1
+  def only_one_option_allowed(request_options, books, document)
+    relevant_request_options(request_options, books, document).select(&:itself).count == 1
   end
 
   def non_asrs_items(items = @items)

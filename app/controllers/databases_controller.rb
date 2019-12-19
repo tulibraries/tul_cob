@@ -11,65 +11,9 @@ class DatabasesController < CatalogController
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
-    config.default_solr_params = {
-        wt: "json",
-        fl: %w[
-          *
-          url_finding_aid_display:[json]
-          url_more_links_display:[json]
-          electronic_resource_display:[json] ].join(","),
-      qf: %w[
-        alt_names_t^100000
-        title_t^10000
-        subject_facet^1000
-        format^200
-        format_t^200
-        note_t^100
-        availability_facet^50
-        text^25
-        id
-      ].join(" "),
-      pf: %w[
-        alt_names_t^100000
-        title_t^10000
-        subject_facet^1000
-        format^200
-        format_t^200
-        note_t^100
-        availability_facet^50
-        text^25
-      ].join(" "),
-      title_qf: %w[
-        alt_names_t^100000
-        title_t^10000
-      ].join(" "),
-      title_pf: %w[
-        alt_names_t^100000
-        title_t^10000
-      ].join(" "),
-      subject_qf: %w[
-        subject_t^1000000
-        subject_facet^1000000
-      ].join(" "),
-      subject_pf: %w[
-        subject_t^1000000
-        subject_facet^1000000
-      ].join(" "),
-      defType: "edismax",
-      echoParams: "explicit",
-      rows: "10",
-      mm: [
-       "5<-1",
-        URI.escape("8<75%")
-          ],
-      "mm.autorelax" => "true",
-      lowercaseOperators: false,
-      ps: "3",
-      tie: "0.01",
-      facet: "true",
-      spellcheck: "false",
-      sow: "false",
-    }
+
+    # Do not inherit default solr configs from the catalog.
+    config.default_solr_params = {}
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
@@ -93,23 +37,36 @@ class DatabasesController < CatalogController
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
 
+
     config.add_search_field("title") do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { "spellcheck.dictionary": "title" }
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qt: "search",
+        qf: "${title_qf}",
+        pf: "${title_pf}",
+        "spellcheck.dictionary": "title",
+      }
+
+      field.solr_adv_parameters = {
         qf: "$title_qf",
         pf: "$title_pf",
       }
     end
 
     config.add_search_field("subject") do |field|
-      field.solr_parameters = { "spellcheck.dictionary": "subject" }
-      field.qt = "search"
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qt: "search",
+        qf: "${subject_qf}",
+        pf: "${subject_pf}",
+        "spellcheck.dictionary": "subject",
+      }
+
+      field.solr_adv_parameters = {
         qf: "$subject_qf",
-        pf: "$subject_pf"
+        pf: "$subject_pf",
       }
     end
+
+
 
     # Sort fields.
     config.add_sort_field "score desc, title_sort asc", label: "relevance"
