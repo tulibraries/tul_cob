@@ -493,7 +493,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.1)
+    sqlite3 (1.4.2)
     summon (2.0.5)
       json
     term-ansicolor (1.7.1)
