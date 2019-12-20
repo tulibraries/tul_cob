@@ -37,11 +37,10 @@ class WebContentController < CatalogController
     config.add_search_field "all_fields", label: "All Fields"
 
     config.add_search_field("title") do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { 'spellcheck.dictionary': "title" }
-      field.solr_local_parameters = {
-        qf: "$title_t_qf $alt_names_t_qf",
-        pf: "$title_t_pf $alt_names_t_pf"
+      field.solr_parameters = {
+        'spellcheck.dictionary': "title",
+        qf: "${title_qf}",
+        pf: "${title_pf}",
       }
     end
 
