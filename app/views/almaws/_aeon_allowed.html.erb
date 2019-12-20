@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div id="collapseFive-<%= @mms_id %>" class="collapse <%= "show" if only_one_option_allowed(request_options, document) %>">
+<div id="collapseFive-<%= @mms_id %>" class="collapse <%= "show" if only_one_option_allowed(request_options, @books, document) %>">
   <div class="card-body pb-0">
     <p><%= t("requests.aeon_request_allowed_body") %></p>
     <div><%= aeon_request_button(@document) %></div>
