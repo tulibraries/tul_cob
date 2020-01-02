@@ -7,6 +7,4 @@ if [ -z "$(which yarn)" ]; then
   curl -o- -L https://yarnpkg.com/install.sh | bash
 fi
 
-bundle exec rubocop
-RELEVANCE=y bundle exec rake ci
 yarn test
