@@ -43,7 +43,7 @@ Layout/EmptyLinesAroundMethodBody:
 Layout/EmptyLinesAroundModuleBody:
   Enabled: true
 
-Layout/IndentFirstArgumentIndentation:
+Layout/FirstArgumentIndentation:
   Enabled: true
 
 # Use Ruby >= 1.9 syntax for hashes. Prefer { a: :b } over { :a => :b }.
@@ -135,5 +135,7 @@ Layout/EndAlignment:
 Lint/RequireParentheses:
   Enabled: true
 
-Rails:
-  Enabled: true
+# TODO: Fix rubocop-rails not getting used see BL-1072
+#require: rubocop-rails
+#Rails:
+  #Enabled: true
