@@ -11,7 +11,7 @@ namespace :tul_cob do
 
       Dir.glob(fixtures).sort.reverse.each do |file|
         solr_url = Blacklight::Configuration.new.connection_config[:url]
-        `SOLR_URL=#{solr_url} cob_index ingest #{file}`
+        `SOLR_URL=#{solr_url} cob_index ingest --commit #{file}`
       end
 
       if args[:filepath]
@@ -45,10 +45,10 @@ task :ingest, [:filepath] => [:environment] do |t, args|
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
     `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
   elsif file
-    `SOLR_URL=#{solr_url} cob_index ingest #{args[:filepath]}`
+    `SOLR_URL=#{solr_url} cob_index ingest --commit #{args[:filepath]}`
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |f|
-      `SOLR_URL=#{solr_url} cob_index ingest #{f}`
+      `SOLR_URL=#{solr_url} cob_index ingest --commit #{f}`
     end
   end
 end
