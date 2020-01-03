@@ -54,7 +54,13 @@ jobs:
           name: Build app
           command: NODE_VERSION=v12.13.0 bash .circleci/build.sh
       - run:
-          name: Run tests
+          name: Run linter
+          command: bundle exec rubocop
+      - run:
+          name: Run ruby tests
+          command: RELEVANCE=y bundle exec rake ci
+      - run:
+          name: Run javascript tests
           command: bash .circleci/test.sh
 
   qa_deploy:
