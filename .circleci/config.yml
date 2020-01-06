@@ -50,7 +50,10 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: Build app
-          command: rake docker:up
+          command: |
+            git submodule init
+            git submodule update
+            rake docker:up
       - run:
           name: Run linter
           command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop 
