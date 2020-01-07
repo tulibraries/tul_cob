@@ -63,10 +63,16 @@
 
   <updateHandler class="solr.DirectUpdateHandler2">
     <autoCommit>
-      <maxDocs>1000000</maxDocs>
-      <maxTime>900000</maxTime>
-      <openSearcher>true</openSearcher>
+       <maxDocs>1000000</maxDocs>
+       <maxTime>900000</maxTime>
+       <openSearcher>false</openSearcher>
     </autoCommit>
+    <autoSoftCommit>
+      <maxTime>9000000</maxTime>
+    </autoSoftCommit>
+    <commitWithin>
+      <softCommit>false</softCommit>
+    </commitWithin>
     <updateLog>
       <str name="dir">${solr.ulog.dir:}</str>
     </updateLog>
@@ -81,17 +87,68 @@
        of SearchComponents (see below) and supports distributed
        queries across multiple shards
     -->
-  <requestHandler name="search" class="solr.SearchHandler" default="true">
+    <requestHandler name="/search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
          will be overridden by parameters in the request
       -->
      <lst name="defaults">
-       <str name="defType">dismax</str>
+       <str name="df">text</str>
+       <str name="defType">edismax</str>
        <str name="echoParams">explicit</str>
        <int name="rows">10</int>
-
+       <bool name="sow">false</bool>
        <str name="q.alt">*:*</str>
-       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+       <str name="mm">5&lt;-1</str>
+       <str name="mm">8&lt;75%</str>
+       <!-- Note that relaxing mm may cause undesired side effects,
+       hurting the precision of the search,
+       depending on the nature of your index content. -->
+       <bool name="mm.autoRelax">true</bool>
+       <str name="wt">json</str>
+
+       <bool name="lowercaseOperators">false</bool>
+       <int name="ps">3</int>
+       <float name="tie">0.01</float>
+
+       <str name="bq">pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500.0</str>
+       <str name="bq">(library_based_boost_t:boost)^10000.0</str>
+       <str name="bq">(library_based_boost_t:no_boost)^0.001</str>
+       <str name="fq">-suppress_items_b:true</str>
+
+       <!-- NOT using marc_display because it is large and will slow things down for search results -->
+       <str name="fl">
+         id,
+         availability_facet,
+         bound_with_ids,
+         call_number_alt_display,
+         call_number_display,
+         contributor_display,
+         creator_display,
+         format,
+         holdings_display,
+         holdings_summary_display,
+         holdings_with_no_items_display,
+         imprint_display,
+         imprint_dist_display,
+         imprint_man_display,
+         imprint_prod_display,
+         isbn_display,
+         isbn_display,
+         lccn_display,
+         library_facet,
+         location_display,
+         pub_date,
+         purchase_order,
+         score,
+         title_series_display,
+         title_statement_display,
+         title_truncated_display,
+         title_uniform_display,
+         items_json_display:[json],
+         url_finding_aid_display:[json],
+         url_more_links_display:[json],
+         electronic_resource_display:[json]
+       </str>
 
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
@@ -102,193 +159,134 @@
        -->
 
        <str name="qf">
-         title_unstem_search^100000
-         subtitle_unstem_search^50000
-         title_t^25000
-         subtitle_t^10000
-         title_addl_unstem_search^5000
-         title_addl_t^2500
-         title_added_entry_unstem_search^1500
-         title_added_entry_t^1250
-         subject_topic_unstem_search^1000
-         subject_unstem_search^750
-         subject_topic_facet^625
-         subject_t^500
-         author_unstem_search^250
-         author_addl_unstem_search^250
-         author_t^100
-         author_addl_t^50
-         subject_addl_unstem_search^250
-         subject_addl_t^50
-         title_series_unstem_search^25
-         title_series_t^10
-         isbn_t
+         title_unstem_search^100000.0
+         subtitle_unstem_search^50000.0
+         title_t^25000.0
+         subtitle_t^10000.0
+         work_access_point^10000.0
+         title_statement_unstem_search^5000.0
+         title_statement_t^2500.0
+         title_uniform_unstem_search^15000.0
+         title_uniform_t^5000.0
+         title_addl_unstem_search^5000.0
+         title_addl_t^2500.0
+         title_added_entry_unstem_search^1500.0
+         title_added_entry_t^1250.0
+         subject_topic_unstem_search^1000.0
+         subject_unstem_search^750.0
+         subject_topic_facet^625.0
+         subject_t^500.0
+         creator_unstem_search^250.0
+         creator_t^100.0
+         subject_addl_unstem_search^250.0
+         subject_addl_t^50.0
+         title_series_unstem_search^25.0
+         title_series_t^10.0
+         isbn_t^5.0
+         issn_t^5.0
          text
        </str>
        <str name="pf">
-         title_unstem_search^1000000
-         subtitle_unstem_search^500000
-         title_t^250000
-         subtitle_t^100000
-         title_addl_unstem_search^50000
-         title_addl_t^25000
-         title_added_entry_unstem_search^15000
-         title_added_entry_t^12500
-         subject_topic_unstem_search^10000
-         subject_unstem_search^7500
-         subject_topic_facet^6250
-         subject_t^5000
-         author_unstem_search^2500
-         author_addl_unstem_search^2500
-         author_t^1000
-         author_addl_t^500
-         subject_addl_unstem_search^2500
-         subject_addl_t^500
-         title_series_unstem_search^250
-         title_series_t^100
-         text^10
+         title_unstem_search^1000000.0
+         subtitle_unstem_search^500000.0
+         title_t^250000.0
+         subtitle_t^100000.0
+         work_access_point^10000.0
+         title_statement_unstem_search^50000.0
+         title_statement_t^25000.0
+         title_uniform_unstem_search^150000.0
+         title_uniform_t^50000.0
+         title_addl_unstem_search^50000.0
+         title_addl_t^25000.0
+         title_added_entry_unstem_search^15000.0
+         title_added_entry_t^12500.0
+         subject_topic_unstem_search^10000.0
+         subject_unstem_search^7500.0
+         subject_topic_facet^6250.0
+         subject_t^5000.0
+         note_toc_unstem_search~0^6000.0
+         note_summary_unstem_search~0^6000.0
+         note_toc_unstem_search^1000.0
+         note_summary_unstem_search^1000.0
+         creator_unstem_search~2^7500.0
+         creator_unstem_search^2500.0
+         creator_t^1000.0
+         subject_addl_unstem_search^2500.0
+         subject_addl_t^500.0
+         title_series_unstem_search^250.0
+         title_series_t^100.0
+         text^10.0
        </str>
        <str name="author_qf">
-         author_unstem_search^200
-         author_addl_unstem_search^50
-         author_t^20
-         author_addl_t
+         creator_unstem_search^200.0
+         creator_t^20.0
        </str>
        <str name="author_pf">
-         author_unstem_search^2000
-         author_addl_unstem_search^500
-         author_t^200
-         author_addl_t^10
+         creator_unstem_search^2000.0
+         creator_t^200.0
        </str>
        <str name="title_qf">
-         title_unstem_search^50000
-         subtitle_unstem_search^25000
-         title_addl_unstem_search^10000
-         title_t^5000
-         subtitle_t^2500
-         title_addl_t^100
-         title_added_entry_unstem_search^50
-         title_added_entry_t^10
-         title_series_unstem_search^5
+         title_unstem_search^50000.0
+         subtitle_unstem_search^25000.0
+         title_uniform_unstem_search^15000.0
+         title_addl_unstem_search^10000.0
+         title_t^5000.0
+         subtitle_t^2500.0
+         title_uniform_t^150.0
+         title_addl_t^100.0
+         title_added_entry_unstem_search^50.0
+         title_added_entry_t^10.0
+         title_series_unstem_search^5.0
          title_series_t
        </str>
        <str name="title_pf">
-         title_unstem_search^500000
-         subtitle_unstem_search^250000
-         title_addl_unstem_search^100000
-         title_t^50000
-         subtitle_t^25000
-         title_addl_t^1000
-         title_added_entry_unstem_search^500
-         title_added_entry_t^100
-         title_series_t^50
-         title_series_unstem_search^10
+         title_unstem_search^500000.0
+         subtitle_unstem_search^250000.0
+         title_uniform_unstem_search^150000.0
+         title_addl_unstem_search^100000.0
+         title_t^50000.0
+         subtitle_t^25000.0
+         title_uniform_t^1500.0
+         title_addl_t^1000.0
+         title_added_entry_unstem_search^500.0
+         title_added_entry_t^100.0
+         title_series_t^50.0
+         title_series_unstem_search^10.0
        </str>
        <str name="subject_qf">
-         subject_topic_unstem_search^200
-         subject_unstem_search^125
-         subject_topic_facet^100
-         subject_t^50
-         subject_addl_unstem_search^10
+         subject_topic_unstem_search^200.0
+         subject_unstem_search^125.0
+         subject_topic_facet^100.0
+         subject_t^50.0
+         subject_addl_unstem_search^10.0
          subject_addl_t
        </str>
        <str name="subject_pf">
-         subject_topic_unstem_search^2000
-         subject_unstem_search^1250
-         subject_t^1000
-         subject_topic_facet^500
-         subject_addl_unstem_search^100
-         subject_addl_t^10
-       </str>
-
-       <int name="ps">3</int>
-       <float name="tie">0.01</float>
-
-       <!-- NOT using marc_display because it is large and will slow things down for search results -->
-       <str name="fl">
-         id,
-         score,
-         author_display,
-         author_vern_display,
-         format,
-         isbn_t,
-         language_facet,
-         lc_callnum_display,
-         material_type_display,
-         published_display,
-         published_vern_display,
-         pub_date,
-         title_display,
-         title_vern_display,
-         subject_topic_facet,
-         subject_geo_facet,
-         subject_era_facet,
-         subtitle_display,
-         subtitle_vern_display,
-         url_fulltext_display,
-         url_suppl_display,
-         title_statement,
-         title,
-         subtitle,
-         title_uniform,
-         title_addl,
-         creator,
-         imprint,
-         edition,
-         pub_date,
-         pub_date_sort,
-         pub_location,
-         publisher,
-         phys_desc,
-         title_series,
-         volume,
-         note,
-         note_with,
-         note_biblio,
-         note_toc,
-         note_restrictions,
-         note_references,
-         note_summary,
-         note_cite,
-         note_terms,
-         note_bio,
-         note_finding_aid,
-         note_custodial,
-         note_binding,
-         note_related,
-         note_accruals,
-         note_local,
-         subject,
-         subject_topic,
-         subject_era,
-         subject_region,
-         genre,
-         call_number,
-         library,
-         url,
-         isbn,
-         issn,
-         govdoc,
-         language
+         subject_topic_unstem_search^2000.0
+         subject_unstem_search^1250.0
+         subject_t^1000.0
+         subject_topic_facet^500.0
+         subject_addl_unstem_search^100.0
+         subject_addl_t^10.0
        </str>
 
        <str name="facet">true</str>
        <str name="facet.mincount">1</str>
        <str name="facet.field">format</str>
-       <str name="facet.field">lc_1letter_facet</str>
-       <str name="facet.field">lc_alpha_facet</str>
-       <str name="facet.field">lc_b4cutter_facet</str>
        <str name="facet.field">language_facet</str>
        <str name="facet.field">pub_date</str>
        <str name="facet.field">subject_era_facet</str>
        <str name="facet.field">subject_geo_facet</str>
        <str name="facet.field">subject_topic_facet</str>
 
-       <str name="spellcheck">true</str>
+       <str name="spellcheck">false</str>
+       <str name="spellcheck.extendedResults">true</str>
+       <str name="spellcheck.collate">true</str>
+       <str name="spellcheck.collateParam.q.op">AND</str>
+       <str name="spellcheck.collateParam.mm">100%</str>
+       <int name="spellcheck.maxCollations">3</int>
        <str name="spellcheck.dictionary">default</str>
        <str name="spellcheck.onlyMorePopular">true</str>
-       <str name="spellcheck.extendedResults">true</str>
-       <str name="spellcheck.collate">false</str>
        <str name="spellcheck.count">5</str>
 
      </lst>
@@ -351,10 +349,18 @@
   </requestHandler>
 
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
-  <requestHandler name="document" class="solr.SearchHandler" >
+  <requestHandler name="/document" class="solr.SearchHandler" >
     <lst name="defaults">
+      <str name="df">text</str>
+      <str name="wt">json</str>
       <str name="echoParams">all</str>
-      <str name="fl">*</str>
+      <str name="fl">
+        *
+        items_json_display:[json],
+        url_finding_aid_display:[json],
+        url_more_links_display:[json],
+        electronic_resource_display:[json]
+      </str>
       <str name="rows">1</str>
       <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
@@ -449,8 +455,8 @@
   <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
-      <str name="lookupImpl">FreeTextLookupFactory</str>
-      <str name="suggestFreeTextAnalyzerFieldType">textSuggest</str>
+      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <str name="suggestAnalyzerFieldType">textSuggest</str>
       <str name="buildOnCommit">true</str>
       <str name="field">suggest</str>
     </lst>
@@ -488,6 +494,7 @@
     <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
     <slowQueryThresholdMillis>500</slowQueryThresholdMillis>
   </query>
+
 
   <updateRequestProcessorChain name="DocCentricVersioningOnDate">
     <processor class="solr.ParseDateFieldUpdateProcessorFactory">
