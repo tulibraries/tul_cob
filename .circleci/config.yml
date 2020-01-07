@@ -56,7 +56,7 @@ jobs:
             rake docker:up
       - run:
           name: Run linter
-          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop 
+          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop
       - run:
           name: Run ruby tests
           command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec -e RELEVANCE=y app rake ci
