@@ -43,25 +43,26 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set up local Solr.
-          command: SOLR_VERSION=6.6.1 bash .circleci/setup_solr.sh
-      - run:
-          name: Set ruby version to 2.6.5
+          name: Install Docker Compose
           command: |
-            rvm install 2.6.5
-            echo . $(rvm 2.6.5 do rvm env --path) >> $BASH_ENV
+            curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: Build app
-          command: NODE_VERSION=v12.13.0 bash .circleci/build.sh
+          command: |
+            git submodule init
+            git submodule update
+            rake docker:up
       - run:
           name: Run linter
-          command: bundle exec rubocop
+          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop
       - run:
           name: Run ruby tests
-          command: RELEVANCE=y bundle exec rake ci
+          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec -e RELEVANCE=y app rake ci
       - run:
           name: Run javascript tests
-          command: bash .circleci/test.sh
+          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app yarn test
 
   qa_deploy:
     docker:
