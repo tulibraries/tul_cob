@@ -25,52 +25,40 @@ cp config.alma.yml.example config/alma.yml
 cp config/bento.yml.example config/bento.yml
 ```
 
-Then edit them adding in the apikeys for our application specified in our Ex Libris Developer Network.
+Then edit them adding in the API keys for our application specified in our Ex Libris Developer Network.
 
 ```bash
 bundle exec rails db:migrate
 ```
-
 
 ### Start the Application
 
 We need to run two commands in separate terminal windows in order to start the application.
 * In the first terminal window, start solr with run
 ```bash
-bundle exec solr_wrapper
+bundle exec rake server
 ```
-* In the second terminal window, start Puma, the rails application server
-```bash
-bundle exec rails server
-```
-
-* Alternatively, use docker if it is available locally.
-```bash
-rake docker:up
-```
-
-* To open up your local app or solr in the browser
-```bash
-rake docker:open
-
-rake docker:open_solr
-```
-
 
 ### Start the Application with some sample data for Development
 
-If you want to quickly get the application running for development with a minimal
-set of example data, you can run
-
-`bundle exec rake server`
-
-It will start up solr_wrapper and start the rails server.
-
 You can also have it ingest a few thousand sample records by setting the
-`DO_INGEST` environment variable to any value. For example:
+`DO_INGEST` environment variable to yes. For example:
 
-`DO_INGEST="true" bundle exec rake server`
+`DO_INGEST="yes" bundle exec rake server`
 
+### Start the Application using Docker as an alternative
+
+If Docker is available, we defined a Makefile with many useful commands.
+
+* To start the dockerized app, run ```make up```
+* To stop the dockerized app, run ```make down```
+* To restart the app, run ```make restart```
+* To enter into the app container, run ```make tty-app```
+* To enter into the solr container, run ```make tty-solr```
+* To run the linter, run ```make lint```
+* To run the Ruby tests, run ```make test```
+* To run Javascript tests, run ```make test-js```
+* To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
 
 ### Preparing Alma Data
 

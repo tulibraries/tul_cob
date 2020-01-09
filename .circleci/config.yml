@@ -50,19 +50,16 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
           name: Build app
-          command: |
-            git submodule init
-            git submodule update
-            rake docker:up
+          command: make up
       - run:
           name: Run linter
-          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop
+          command: make lint
       - run:
           name: Run ruby tests
-          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec -e RELEVANCE=y app rake ci
+          command: make test
       - run:
           name: Run javascript tests
-          command: docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app yarn test
+          command: make test-js
 
   qa_deploy:
     docker:
