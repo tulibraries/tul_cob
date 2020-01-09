@@ -169,7 +169,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.4.2)
+    blacklight (7.5.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
@@ -290,7 +290,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.7.0)
+    i18n (1.8.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
     jbuilder (2.9.1)
@@ -528,7 +528,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -567,7 +567,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.4.2)
+  blacklight (~> 7.5.0)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
