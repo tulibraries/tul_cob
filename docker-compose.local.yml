@@ -18,6 +18,7 @@ services:
   solr:
     image: solr:8.3.0
     volumes:
+      - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
       - $PWD/solr/configs/:/opt/solr/configs
     ports:
       - "8993:8983"
