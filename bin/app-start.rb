@@ -16,6 +16,9 @@ end
 server_pid = "tmp/pids/server.pid"
 File.delete server_pid if File.exist? server_pid
 
+# Run bundle install
+`bundle install`
+
 # Start rails app but do not block the rest of the script.
 `rails db:migrate`
 `yarn`
