@@ -18,3 +18,5 @@ test-js:
 	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app yarn test
 load-data:
 	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rake ingest
+reload-configs:
+	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec solr /opt/solr/configs/reset.sh

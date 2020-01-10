@@ -59,6 +59,7 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To run the Ruby tests, run ```make test```
 * To run Javascript tests, run ```make test-js```
 * To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
+* To reload solr configs, run ```make reload-configs```
 
 ### Preparing Alma Data
 
