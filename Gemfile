@@ -75,7 +75,7 @@ group :development, :test do
   #gem "rubocop-rails"
 end
 
-gem "rsolr", "~> 2.2"
+gem "rsolr", "~> 2.3"
 gem "devise"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
