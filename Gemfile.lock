@@ -13,9 +13,9 @@ GIT
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: 4e2ba68f30cb0bccf345be46bc8299c71cb59c5a
+  revision: d9d985acb6b87c896b8725cfc13933a85a12afcb
   specs:
-    blacklight_advanced_search (7.0.0.alpha)
+    blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
       parslet
 
@@ -212,7 +212,7 @@ GEM
       tins (~> 1.6)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    crass (1.0.5)
+    crass (1.0.6)
     database_cleaner (1.7.0)
     deprecation (1.0.0)
       activesupport
@@ -378,7 +378,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.1)
     puma (3.12.2)
-    rack (2.0.8)
+    rack (2.1.1)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
