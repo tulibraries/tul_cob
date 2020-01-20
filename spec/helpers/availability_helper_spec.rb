@@ -880,4 +880,51 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
   end
+
+  describe "#main_stacks_message(key, document)" do
+    context "an item is located on open shelving" do
+      let(:key) { "MAIN" }
+      let(:document) { { "items_json_display" =>
+        [{
+          "item_pid" => "23243112990003811",
+          "item_policy" => "0",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "PS3601.C5456 D37 2017",
+          "holding_id" => "22243113010003811",
+          "material_type" => "BOOK"
+        }]
+      } }
+
+      it "returns true" do
+        expect(main_stacks_message(key, document)).to eq true
+      end
+    end
+
+    context "an item is located on closed shelving" do
+      let(:key) { "MAIN" }
+      let(:document) { { "items_json_display" =>
+        [{
+          "item_pid" => "23303480160003811",
+          "item_policy" => "0",
+          "description" => "1954",
+          "permanent_library" => "ASRS",
+          "permanent_location" => "ASRS",
+          "current_library" => "MAIN",
+          "current_location" => "storage",
+          "call_number_type" => "0",
+          "call_number" => "L341 .A3",
+          "holding_id" => "22454243690003811",
+          "material_type" => "ISSUE"
+        }]
+      } }
+
+      it "returns false" do
+        expect(main_stacks_message(key, document)).to eq false
+      end
+    end
+  end
 end

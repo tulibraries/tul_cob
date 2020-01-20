@@ -74,6 +74,13 @@ module AvailabilityHelper
     }&.any?
   end
 
+  def main_stacks_message(key, document)
+    open_shelf_locations = /hirsch|juvenile|leisure|newbooks|stacks/i
+    current_locations = document["items_json_display"]&.collect { |item| open_shelf_locations.match(item["current_location"]) }
+
+    key == "MAIN" && current_locations.any?
+  end
+
   def library_specific_instructions(key, document)
     case key
     when "ASRS"
@@ -81,7 +88,9 @@ module AvailabilityHelper
     when "SCRC"
       render partial: "scrc_instructions", locals: { key: key, document: document }
     when "MAIN"
-      render partial: "main_open_shelving_instructions", locals: { key: key }
+      if main_stacks_message(key, document) == true
+        render partial: "main_open_shelving_instructions", locals: { key: key, document: document }
+      end
     end
   end
 
