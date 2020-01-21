@@ -88,7 +88,7 @@ module AvailabilityHelper
     when "SCRC"
       render partial: "scrc_instructions", locals: { key: key, document: document }
     when "MAIN"
-      if main_stacks_message(key, document) == true
+      if main_stacks_message(key, document)
         render partial: "main_open_shelving_instructions", locals: { key: key, document: document }
       end
     end
