@@ -45,9 +45,7 @@ RSpec.feature "Availability displays" do
 
     scenario "Items in MAIN closed shelving do not display retrieval instructions" do
       visit "/catalog/#{item['doc_id']}"
-      within first("div.physical-holding-panel") do
         expect(page).to_not have_css("#open-shelving-instructions")
-      end
     end
   end
 end
