@@ -36,7 +36,7 @@ class SearchController < CatalogController
   private
     def process_results(results)
       # We only care about cdm results count not bento box.
-      cdm_total_items = results["cdm"]&.total_items
+      cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
 
       unless results["books_and_media"].blank?
         items = results["books_and_media"][0...-1]
