@@ -7,7 +7,7 @@ RSpec.describe SearchHelper, type: :helper do
     context "search query is empty" do
       let(:item) {  OpenStruct.new(value: "digital_collections") }
       let(:facet_field) { "" }
-      let(:params) { {"q": "" } }
+      let(:params) { { "q": "" } }
       expected_url = "https://digital.library.temple.edu/digital/search"
 
       it "has links to search page" do
@@ -18,7 +18,7 @@ RSpec.describe SearchHelper, type: :helper do
     context "search term is used" do
       let(:item) {  OpenStruct.new(value: "digital_collections") }
       let(:facet_field) { "" }
-      let(:params) { {"q": "japan" } }
+      let(:params) { { "q": "japan" } }
 
       it "has link to order/nosort" do
         expected_url = "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
