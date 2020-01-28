@@ -8,7 +8,11 @@ module SearchHelper
   # @return [String]
   def path_for_books_and_media_facet(facet_field, item)
     if item.value == "digital_collections"
-      "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
+      if params[:q].blank?
+        "https://digital.library.temple.edu/digital/search"
+      else
+        "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
+      end
     else
       search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))
     end
