@@ -86,18 +86,19 @@ module Alma
     end
 
     # Catch all Electronic API.
-    class Default < ElectronicAPI
-      def initialize(params = {})
-        raise ElectronicError.new "No Electronic API found to process given parameters."
-      end
+    # By default returns all collections
+    class Collections < ElectronicAPI
+      REQUIRED_PARAMS = []
+      RESOURCE = "/almaws/v1/electronic/e-collections"
 
       def self.can_process?(params = {})
         true
       end
     end
 
+
     # Order matters because parameters can repeat.
-    REGISTERED_APIs = [Portfolio, Service, Services, Collection, Default]
+    REGISTERED_APIs = [Portfolio, Service, Services, Collection, Collections]
 
     def self.get_api(params)
       REGISTERED_APIs

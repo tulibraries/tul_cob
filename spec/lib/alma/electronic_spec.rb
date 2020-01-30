@@ -69,8 +69,8 @@ RSpec.describe Alma::Electronic do
     end
 
     context "with no params" do
-      it "throws an error" do
-        expect { response }.to raise_error(Alma::Electronic::ElectronicError)
+      it "should user the Collections API (returns all collections)" do
+        expect(response.class).to eq(Alma::Electronic::Collections)
       end
     end
   end
