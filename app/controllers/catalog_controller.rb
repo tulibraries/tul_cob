@@ -253,31 +253,32 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
+
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { 'spellcheck.dictionary': "title" }
-      field.solr_local_parameters = {
-        qf: "$title_qf",
-        pf: "$title_pf"
+      field.solr_parameters = {
+        # Curly brackets are required for solr_parameters.
+        qf: "${title_qf}",
+        pf: "${title_pf}",
       }
-    end
 
-    # Are we using this anywhere?
-    config.add_search_field("author") do |field|
-      field.include_in_simple_select = false
-      field.include_in_advanced_search = false
-      field.solr_parameters = { 'spellcheck.dictionary': "author" }
-      field.solr_local_parameters = {
-        qf: "$author_qf",
-        pf: "$author_pf"
+      field.solr_adv_parameters = {
+        # Curly brackets break solr_adv_parameters.
+        qf: "$title_qf",
+        pf: "$title_pf",
       }
     end
 
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
       field.solr_parameters = { 'spellcheck.dictionary': "author" }
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: "${author_qf}",
+        pf: "${author_pf}"
+      }
+
+      field.solr_adv_parameters = {
         qf: "$author_qf",
-        pf: "$author_pf"
+        pf: "$author_pf",
       }
     end
 
@@ -286,48 +287,53 @@ class CatalogController < ApplicationController
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field("subject") do |field|
       field.solr_parameters = { 'spellcheck.dictionary': "subject" }
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: "${subject_qf}",
+        pf: "${subject_pf}"
+      }
+
+      field.solr_adv_parameters = {
         qf: "$subject_qf",
-        pf: "$subject_pf"
+        pf: "$subject_pf",
       }
     end
 
     config.add_search_field("genre") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "genre_t",
       }
     end
 
     config.add_search_field("publisher_t", label: "Publisher") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "publisher_t",
       }
     end
 
     config.add_search_field("title_series_t", label: "Series Title") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "title_series_t",
       }
     end
 
     config.add_search_field("note_t", label: "Description") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t note_restrictions_t note_references_t note_summary_t note_cite_t note_copyright_t note_bio_t note_finding_aid_t note_custodial_t note_binding_t note_related_t note_accruals_t note_local_t].join(" ")
       }
     end
 
     config.add_search_field("isbn_t", label: "ISBN") do |field|
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "isbn_t",
       }
     end
 
     config.add_search_field("issn_t", label: "ISSN") do |field|
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "issn_t",
       }
     end
@@ -335,14 +341,14 @@ class CatalogController < ApplicationController
     config.add_search_field("call_number_t", label: "Call Number") do |field|
       field.include_in_advanced_search = true
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "call_number_t",
       }
     end
 
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "alma_mms_t",
       }
     end

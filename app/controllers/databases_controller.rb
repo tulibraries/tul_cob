@@ -39,7 +39,6 @@ class DatabasesController < CatalogController
     # Search fields
     config.add_search_field "all_fields", label: "All Fields"
 
-
     config.add_search_field("title") do |field|
       field.solr_parameters = {
         qt: "search",
