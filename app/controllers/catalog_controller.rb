@@ -260,25 +260,28 @@ class CatalogController < ApplicationController
         # Curly brackets are required for solr_parameters.
         qf: "${title_qf}",
         pf: "${title_pf}",
+        'spellcheck.dictionary': "title",
       }
 
       field.solr_adv_parameters = {
         # Curly brackets break solr_adv_parameters.
         qf: "$title_qf",
         pf: "$title_pf",
+        'spellcheck.dictionary': "title",
       }
     end
 
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
-      field.solr_parameters = { 'spellcheck.dictionary': "author" }
       field.solr_parameters = {
         qf: "${author_qf}",
-        pf: "${author_pf}"
+        pf: "${author_pf}",
+        'spellcheck.dictionary': "author",
       }
 
       field.solr_adv_parameters = {
         qf: "$author_qf",
         pf: "$author_pf",
+        'spellcheck.dictionary': "author",
       }
     end
 
@@ -286,15 +289,16 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field("subject") do |field|
-      field.solr_parameters = { 'spellcheck.dictionary': "subject" }
       field.solr_parameters = {
         qf: "${subject_qf}",
-        pf: "${subject_pf}"
+        pf: "${subject_pf}",
+        'spellcheck.dictionary': "subject",
       }
 
       field.solr_adv_parameters = {
         qf: "$subject_qf",
         pf: "$subject_pf",
+        'spellcheck.dictionary': "subject",
       }
     end
 
