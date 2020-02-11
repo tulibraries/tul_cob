@@ -29,6 +29,7 @@ default: &default
     DSC: Equipment
     games: Games
     REF: Reference
+    dss_reserv: Reserves
     UNASSIGNED: Location information not available
   GINSBURG:
     circ: Circulation Collection
