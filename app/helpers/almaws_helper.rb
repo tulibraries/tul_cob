@@ -72,6 +72,13 @@ module AlmawsHelper
 
   def available_asrs_items(items = @items.all)
     # Alma bug: item.item_data["requested"] is true for all items on bib level requests.
-    asrs_items(items).select { |item| item.in_place?  }
+    dvds =
+    asrs_items.select { |item|
+      if item.physical_material_type["value"] == "DVD"
+        item
+      else
+        item.in_place?
+      end
+    }
   end
 end
