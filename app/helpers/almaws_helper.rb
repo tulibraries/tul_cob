@@ -71,7 +71,7 @@ module AlmawsHelper
   end
 
   def available_asrs_items(items = @items.all)
-    asrs_items.select { |item|
+    asrs_items(items).select { |item|
       if item.physical_material_type["value"] == "DVD"
         item
       else
