@@ -169,7 +169,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.5.0)
+    blacklight (7.5.1)
       deprecation
       globalid
       jbuilder (~> 2.7)
@@ -304,18 +304,18 @@ GEM
       multi_json
       to_regexp (~> 0.2.1)
     jwt (1.5.6)
-    kaminari (1.1.1)
+    kaminari (1.2.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.1.1)
-      kaminari-activerecord (= 1.1.1)
-      kaminari-core (= 1.1.1)
-    kaminari-actionview (1.1.1)
+      kaminari-actionview (= 1.2.0)
+      kaminari-activerecord (= 1.2.0)
+      kaminari-core (= 1.2.0)
+    kaminari-actionview (1.2.0)
       actionview
-      kaminari-core (= 1.1.1)
-    kaminari-activerecord (1.1.1)
+      kaminari-core (= 1.2.0)
+    kaminari-activerecord (1.2.0)
       activerecord
-      kaminari-core (= 1.1.1)
-    kaminari-core (1.1.1)
+      kaminari-core (= 1.2.0)
+    kaminari-core (1.2.0)
     language_list (1.2.1)
     launchy (2.4.3)
       addressable (~> 2.3)
@@ -340,7 +340,7 @@ GEM
     mime-types (3.3)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.1009)
-    mimemagic (0.3.3)
+    mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.0)
@@ -378,7 +378,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.3)
     puma (3.12.2)
-    rack (2.1.1)
+    rack (2.1.2)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -567,7 +567,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.5.0)
+  blacklight (~> 7.5.1)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
