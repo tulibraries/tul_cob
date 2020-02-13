@@ -90,7 +90,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       }.to_json
     }
 
-    context "asrs request can be placed on an item" do
+    context "asrs request can be placed on an book that is in_place" do
       let(:item) do
        Alma::BibItem.new(
          "holding_data" => {
@@ -113,6 +113,40 @@ RSpec.describe AlmawsHelper, type: :helper do
              "physical_material_type" => {
                "value" => "BOOK",
                "desc" => "book"
+             },
+         }
+        )
+     end
+
+      it "renders the hold partial" do
+        allow(helper).to receive(:available_asrs_items) { [item] }
+        expect(helper.asrs_allowed_partial(request_options, document)).not_to be_nil
+      end
+    end
+
+    context "asrs request can be placed on a dvd that is checked out" do
+      let(:item) do
+       Alma::BibItem.new(
+         "holding_data" => {
+           "holding_id" => "foo",
+         },
+         "item_data" =>
+         { "base_status" =>
+           { "value" => "0" },
+             "policy" =>
+           { "desc" => "Non-circulating" },
+             "requested" => false,
+             "library" => {
+               "value" => "ASRS",
+               "desc" => "ASRS"
+             },
+             "location" => {
+               "value" => "media",
+               "desc" => "media"
+             },
+             "physical_material_type" => {
+               "value" => "DVD",
+               "desc" => "DVD"
              },
          }
         )
