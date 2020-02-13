@@ -222,7 +222,7 @@ en:
       find_articles_link: "http://answers.library.temple.edu/faq/195650"
 
   databases:
-    link_text: "Browse all databases by subject or alphabetically."
+    link_text: "Browse all databases by subject or alphabetically"
     link_href: "https://guides.temple.edu/az.php"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
