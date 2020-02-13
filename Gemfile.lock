@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 380149ac6348c5833a927883824d9643cfc286ba
+  revision: fcf3bef298fc4755aca142eefb5934f9b00fcaad
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -201,7 +201,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     confstruct (1.0.2)
       hashie (~> 3.3)
     coveralls (0.8.23)
@@ -245,7 +245,7 @@ GEM
       railties (>= 4.2.0)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.11.3)
+    ffi (1.12.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -276,14 +276,14 @@ GEM
     hashie (3.6.0)
     honeybadger (4.5.6)
     htmlentities (4.3.4)
-    http (4.2.0)
+    http (4.3.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.0)
+      http-form_data (~> 2.2)
       http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.1.1)
+    http-form_data (2.2.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
     httparty (0.17.3)
@@ -351,7 +351,7 @@ GEM
     mysql2 (0.5.3)
     nenv (0.3.0)
     nio4r (2.5.2)
-    nokogiri (1.10.7)
+    nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -558,7 +558,7 @@ GEM
     xml-simple (1.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yell (2.2.0)
+    yell (2.2.1)
 
 PLATFORMS
   ruby
