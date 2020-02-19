@@ -453,7 +453,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
     ruby-progressbar (1.10.1)
-    rubyzip (2.0.0)
+    rubyzip (2.2.0)
     safe_yaml (1.0.5)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -477,7 +477,7 @@ GEM
     skylight-core (4.2.1)
       activesupport (>= 4.2.0)
     slop (3.6.0)
-    solr_wrapper (2.1.0)
+    solr_wrapper (2.2.0)
       faraday
       retriable
       ruby-progressbar
