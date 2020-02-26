@@ -13,6 +13,8 @@ services:
       SOLR_SEARCH_TWEAK_ENABLE: "on"
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/az-database"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
+      DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
     labels:
       - "traefik.enable=true"
@@ -21,25 +23,6 @@ services:
       - "traefik.docker.network=reverseproxy_default"
     networks:
       - "default"
-    depends_on:
-      - solr
     entrypoint:
       - ruby
       - /app/bin/app-start.rb
-
-  solr:
-    build:
-      context: .
-      dockerfile: .docker/solr/Dockerfile
-    image: tulibraries/solr:6.6.1
-    ports:
-      - "8983"
-    networks:
-      - "default"
-    entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - blacklight
-      - /opt/solr/conf
-      - "-Xms256m"
-      - "-Xmx512m"

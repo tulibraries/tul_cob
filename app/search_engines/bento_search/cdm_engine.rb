@@ -8,14 +8,7 @@ module BentoSearch
 
     def search_implementation(args)
       query = args.fetch(:query, "")
-
-      # Avoid making a costly call for no reason.
-      if query.empty?
-        response = { "docs" => [] }
-      else
-        response = CDM::find(query)
-      end
-
+      response = CDM::find(query)
       results = BentoSearch::Results.new
       results.total_items = response.dig("results", "pager", "total") || 0
       results << BentoSearch::ResultItem.new(custom_data: response)

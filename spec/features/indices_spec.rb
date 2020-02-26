@@ -58,7 +58,7 @@ RSpec.feature "Indices" do
       click_button "search"
       expect(current_url).to eq results_url
       expect(page).to have_css("#facets")
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3") do
         expect(page).to have_text(title)
       end
       within first(".document-metadata") do

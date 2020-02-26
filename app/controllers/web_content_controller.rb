@@ -11,27 +11,9 @@ class WebContentController < CatalogController
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:web_content_url]
     config.track_search_session = false
-    config.default_solr_params = {
-        defType: "edismax",
-        wt: "json",
-        fl: %w[
-          * ].join(","),
-        qf: %w[
-          web_title_display^3
-          web_specialties_display^2
-          web_full_description_t^2
-          text
-        ],
-        pf: %w[
-          web_title_display^3
-          web_specialties_display^2
-          web_full_description_t^2
-          text
-        ],
-        spellcheck: "false",
-    }
-
     config.index.title_field = "web_title_display"
+    # Do not inherit default solr configs from the catalog.
+    config.default_solr_params = {}
 
     # Facet fields
     config.add_facet_field "web_content_type_facet",
@@ -57,11 +39,10 @@ class WebContentController < CatalogController
     config.add_search_field "all_fields", label: "All Fields"
 
     config.add_search_field("title") do |field|
-      # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { 'spellcheck.dictionary': "title" }
-      field.solr_local_parameters = {
-        qf: "$title_t_qf $alt_names_t_qf",
-        pf: "$title_t_pf $alt_names_t_pf"
+      field.solr_parameters = {
+        'spellcheck.dictionary': "title",
+        qf: "${title_qf}",
+        pf: "${title_pf}",
       }
     end
 

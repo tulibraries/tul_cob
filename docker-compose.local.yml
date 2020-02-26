@@ -1,0 +1,33 @@
+version: "3.4"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+      target: development
+    stdin_open: true
+    tty: true
+    ports:
+      - "4000:3000"
+    depends_on:
+      - solr
+    volumes:
+      - .:/app
+
+  solr:
+    image: solr:8.3.0
+    volumes:
+      - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
+      - $PWD/solr/configs/:/opt/solr/configs
+    ports:
+      - "8993:8983"
+    networks:
+      - "default"
+    entrypoint:
+      - bash
+      - "-c"
+      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr; \
+  precreate-core az-database /opt/solr/configs/tul_cob-az-solr; \
+  precreate-core web-content /opt/solr/configs/tul_cob-web-solr; \
+  exec solr -f -a '-Xms256m -Xmx512m'"

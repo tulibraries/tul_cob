@@ -16,6 +16,9 @@ end
 server_pid = "tmp/pids/server.pid"
 File.delete server_pid if File.exist? server_pid
 
+# Run bundle install
+`bundle install`
+
 # Start rails app but do not block the rest of the script.
 `rails db:migrate`
 `yarn`
@@ -31,9 +34,8 @@ def solr_empty?
 end
 
 begin
-  if solr_empty?
-    puts `rake fortytu:solr:load_fixtures`
-    puts `rake ingest`
+  if solr_empty? && ENV["DO_INGEST"] == "yes"
+    puts `rake tul_cob:solr:load_fixtures`
   end
 rescue => e
   puts "** Failed to ingest solr documentes **"

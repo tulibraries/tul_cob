@@ -1,4 +1,4 @@
-FROM ruby:2.4.1 as production
+FROM ruby:2.6.5-stretch as production
 RUN \
       wget -qO- https://deb.nodesource.com/setup_9.x | bash - && \
       wget -qO- https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \

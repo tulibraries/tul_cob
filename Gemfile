@@ -26,7 +26,7 @@ gem "jquery-rails"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.9"
+gem "jbuilder", "~> 2.10"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -53,7 +53,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 7.4.2"
+gem "blacklight", "~> 7.5.1"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
 gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
@@ -71,9 +71,11 @@ group :development, :test do
   gem "vcr"
   gem "rails-controller-testing"
   gem "rubocop"
+  # TODO: see BL-1072
+  #gem "rubocop-rails"
 end
 
-gem "rsolr", "~> 2.2"
+gem "rsolr", "~> 2.3"
 gem "devise"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "master"
@@ -84,7 +86,7 @@ gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
-gem "capybara", "3.29.0"
+gem "capybara", "3.31.0"
 gem "webmock"
 gem "bento_search"
 gem "omniauth-shibboleth"

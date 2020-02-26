@@ -186,7 +186,7 @@ RSpec.feature "Searches", relevance: true do
       visit "/catalog"
       fill_in "q", with: item["title_statement"]
       click_button search_element_id
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3") do
         expect(page).to have_text item["exact_title"]
       end
     end
@@ -194,7 +194,7 @@ RSpec.feature "Searches", relevance: true do
       visit "/advanced"
       fill_in "q_1", with: item["title_statement"]
       click_button "advanced-search-submit"
-      within(".document-position-0 h3") do
+      within first(".document-position-0 h3") do
         expect(page).to have_text item["exact_title"]
       end
     end

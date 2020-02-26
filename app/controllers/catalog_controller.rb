@@ -24,7 +24,6 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
-    #config.advanced_search[:qt] ||= "advanced"
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
@@ -44,184 +43,16 @@ class CatalogController < ApplicationController
     # config.response_model = Blacklight::Solr::Response
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
-    config.default_solr_params = {
-      wt: "json",
-      fl: %w[
-        id
-        score
-        availability_facet
-        holdings_display
-        holdings_with_no_items_display
-        call_number_display
-        call_number_alt_display
-        creator_display
-        contributor_display
-        format
-        imprint_display
-        imprint_prod_display
-        imprint_dist_display
-        imprint_man_display
-        library_facet
-        location_display
-        pub_date
-        holdings_summary_display
-        title_series_display
-        title_statement_display
-        title_truncated_display
-        title_uniform_display
-        isbn_display
-        lccn_display
-        bound_with_ids
-        purchase_order
-        items_json_display:[json]
-        url_finding_aid_display:[json]
-        url_more_links_display:[json]
-        electronic_resource_display:[json]
-      ].join(" "),
-      defType: "edismax",
-      echoParams: "explicit",
-      rows: "10",
-      mm: [
-       "5<-1",
-        URI.escape("8<75%")
-          ],
-      "mm.autorelax" => "true",
-      lowercaseOperators: false,
-      ps: "3",
-      tie: "0.01",
-      qf: %w[
-        title_unstem_search^100000
-        subtitle_unstem_search^50000
-        title_t^25000
-        subtitle_t^10000
-        work_access_point^10000
-        title_statement_unstem_search^5000
-        title_statement_t^2500
-        title_uniform_unstem_search^15000
-        title_uniform_t^5000
-        title_addl_unstem_search^5000
-        title_addl_t^2500
-        title_added_entry_unstem_search^1500
-        title_added_entry_t^1250
-        subject_topic_unstem_search^1000
-        subject_unstem_search^750
-        subject_topic_facet^625
-        subject_t^500
-        creator_unstem_search^250
-        creator_t^100
-        subject_addl_unstem_search^250
-        subject_addl_t^50
-        title_series_unstem_search^25
-        title_series_t^10
-        isbn_t^5
-        issn_t^5
-        text
-      ].join(" "),
-      pf: %w[
-        title_unstem_search^1000000
-        subtitle_unstem_search^500000
-        title_t^250000
-        subtitle_t^100000
-        work_access_point^10000
-        title_statement_unstem_search^50000
-        title_statement_t^25000
-        title_uniform_unstem_search^150000
-        title_uniform_t^50000
-        title_addl_unstem_search^50000
-        title_addl_t^25000
-        title_added_entry_unstem_search^15000
-        title_added_entry_t^12500
-        subject_topic_unstem_search^10000
-        subject_unstem_search^7500
-        subject_topic_facet^6250
-        subject_t^5000
-        note_toc_unstem_search~0^6000
-        note_summary_unstem_search~0^6000
-        note_toc_unstem_search^1000
-        note_summary_unstem_search^1000
-        creator_unstem_search~2^7500
-        creator_unstem_search^2500
-        creator_t^1000
-        subject_addl_unstem_search^2500
-        subject_addl_t^500
-        title_series_unstem_search^250
-        title_series_t^100
-        text^10
-      ].join(" "),
-      author_qf: %w[
-        creator_unstem_search^200
-        creator_t^20
-      ].join(" "),
-      author_pf: %w[
-        creator_unstem_search^2000
-        creator_t^200
-      ].join(" "),
-      title_qf: %w[
-        title_unstem_search^50000
-        subtitle_unstem_search^25000
-        title_uniform_unstem_search^15000
-        title_addl_unstem_search^10000
-        title_t^5000
-        subtitle_t^2500
-        title_uniform_t^150
-        title_addl_t^100
-        title_added_entry_unstem_search^50
-        title_added_entry_t^10
-        title_series_unstem_search^5
-        title_series_t
-      ].join(" "),
-      title_pf: %w[
-        title_unstem_search^500000
-        subtitle_unstem_search^250000
-        title_uniform_unstem_search^150000
-        title_addl_unstem_search^100000
-        title_t^50000
-        subtitle_t^25000
-        title_uniform_t^1500
-        title_addl_t^1000
-        title_added_entry_unstem_search^500
-        title_added_entry_t^100
-        title_series_t^50
-        title_series_unstem_search^10
-      ].join(" "),
-      subject_qf: %w[
-        subject_topic_unstem_search^200
-        subject_unstem_search^125
-        subject_topic_facet^100
-        subject_t^50
-        subject_addl_unstem_search^10
-        subject_addl_t
-      ].join(" "),
-      subject_pf: %w[
-        subject_topic_unstem_search^2000
-        subject_unstem_search^1250
-        subject_t^1000
-        subject_topic_facet^500
-        subject_addl_unstem_search^100
-        subject_addl_t^10
-      ].join(" "),
-      facet: "true",
-      spellcheck: "false",
-      "spellcheck.extendedResults": "true",
-      "spellcheck.collate": "true",
-      "spellcheck.collateParam.q.op": "AND",
-      "spellcheck.collateParam.mm": "100%",
-      "spellcheck.maxCollations": 3,
-      sow: "false",
-      bq: [
-          "pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500",
-          "(library_based_boost_t:* -no_boost)^1000"],
-      fq: %w[
-        -suppress_items_b:*
-      ]
-    }
+    # config.default_solr_params = {}
 
     # solr path which will be added to solr base url before the other solr params.
-    #config.solr_path = 'select'
+    config.document_solr_path = "document"
+    config.solr_path = "search"
 
     # items to show per page, each number in the array represent another option to choose from.
     #config.per_page = [10,20,50,100]
 
+    # Set document specific solr request handler.
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
     ## parameters included in the Blacklight-jetty document requestHandler.
     #
@@ -232,17 +63,6 @@ class CatalogController < ApplicationController
     #  # rows: 1,
     #  # q: '{!term f=id v=$id}'
     #}
-
-    config.fetch_many_document_params =
-      config.default_document_solr_params = {
-        wt: "json",
-        fl: %w[
-          *
-          items_json_display:[json]
-          url_finding_aid_display:[json]
-          url_more_links_display:[json]
-          electronic_resource_display:[json] ].join(",")
-    }
 
     # solr field configuration for search results/index views
     config.index.title_field = "title_truncated_display"
@@ -433,31 +253,35 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
+
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
-      field.solr_parameters = { 'spellcheck.dictionary': "title" }
-      field.solr_local_parameters = {
-        qf: "$title_qf",
-        pf: "$title_pf"
+      field.solr_parameters = {
+        # Curly brackets are required for solr_parameters.
+        qf: "${title_qf}",
+        pf: "${title_pf}",
+        'spellcheck.dictionary': "title",
       }
-    end
 
-    # Are we using this anywhere?
-    config.add_search_field("author") do |field|
-      field.include_in_simple_select = false
-      field.include_in_advanced_search = false
-      field.solr_parameters = { 'spellcheck.dictionary': "author" }
-      field.solr_local_parameters = {
-        qf: "$author_qf",
-        pf: "$author_pf"
+      field.solr_adv_parameters = {
+        # Curly brackets break solr_adv_parameters.
+        qf: "$title_qf",
+        pf: "$title_pf",
+        'spellcheck.dictionary': "title",
       }
     end
 
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
-      field.solr_parameters = { 'spellcheck.dictionary': "author" }
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: "${author_qf}",
+        pf: "${author_pf}",
+        'spellcheck.dictionary': "author",
+      }
+
+      field.solr_adv_parameters = {
         qf: "$author_qf",
-        pf: "$author_pf"
+        pf: "$author_pf",
+        'spellcheck.dictionary': "author",
       }
     end
 
@@ -465,50 +289,55 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field("subject") do |field|
-      field.solr_parameters = { 'spellcheck.dictionary': "subject" }
-      field.qt = "search"
-      field.solr_local_parameters = {
+      field.solr_parameters = {
+        qf: "${subject_qf}",
+        pf: "${subject_pf}",
+        'spellcheck.dictionary': "subject",
+      }
+
+      field.solr_adv_parameters = {
         qf: "$subject_qf",
-        pf: "$subject_pf"
+        pf: "$subject_pf",
+        'spellcheck.dictionary': "subject",
       }
     end
 
     config.add_search_field("genre") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "genre_t",
       }
     end
 
     config.add_search_field("publisher_t", label: "Publisher") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "publisher_t",
       }
     end
 
     config.add_search_field("title_series_t", label: "Series Title") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "title_series_t",
       }
     end
 
     config.add_search_field("note_t", label: "Description") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: %w[note_t note_with_t note_diss_t note_biblio_t note_toc_t note_restrictions_t note_references_t note_summary_t note_cite_t note_copyright_t note_bio_t note_finding_aid_t note_custodial_t note_binding_t note_related_t note_accruals_t note_local_t].join(" ")
       }
     end
 
     config.add_search_field("isbn_t", label: "ISBN") do |field|
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "isbn_t",
       }
     end
 
     config.add_search_field("issn_t", label: "ISSN") do |field|
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "issn_t",
       }
     end
@@ -516,14 +345,14 @@ class CatalogController < ApplicationController
     config.add_search_field("call_number_t", label: "Call Number") do |field|
       field.include_in_advanced_search = true
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "call_number_t",
       }
     end
 
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false
-      field.solr_local_parameters = {
+      field.solr_parameters = {
         qf: "alma_mms_t",
       }
     end
