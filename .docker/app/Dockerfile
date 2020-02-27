@@ -7,5 +7,4 @@ RUN bundle install
 CMD ["bash"]
 
 FROM production as development
-RUN apk --update add vim ctags tmux \
-      && cd; wget -qO - https://raw.github.com/dkinzer/.vim/master/deploy.sh | bash
+RUN apk --update add vim
