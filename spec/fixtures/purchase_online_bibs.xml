@@ -103,6 +103,8 @@
     <datafield tag="979" ind1=" " ind2=" ">
       <subfield code="a">EBC5521379</subfield>
     </datafield>
+    <datafield tag="HLD" ind1=" " ind2=" ">
+    </datafield>
     <datafield tag="ADM" ind1=" " ind2=" ">
       <subfield code="e">EBC5521379</subfield>
       <subfield code="b">2018-10-16 19:25:33</subfield>
