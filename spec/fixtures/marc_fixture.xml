@@ -31743,6 +31743,7 @@
 			<subfield code="a">2012-02-25 22:59:57</subfield>
 			<subfield code="c">false</subfield>
 		</datafield>
+		<datafield ind1=" " ind2=" " tag="HLD"></datafield>
 	</record>
 	<record>
 		<leader>05575nas a22013570 4500</leader>
