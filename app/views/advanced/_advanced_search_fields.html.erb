@@ -3,12 +3,12 @@
   <div class="row">
     <div class="col-sm-3 form-group">
       <label for="<%= "f_#{count}" %>" class="sr-only">Options for advanced search</label>
-      <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), { data: { "action": "advanced#select", "count": "#{count}", "target": "advanced.options" }, :class=>"form-control advanced-search-options" })  %>
+      <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), { data: { "action": "advanced#select", "count": "#{count}" }, :class=>"form-control advanced-search-options" })  %>
     </div>
 
     <div class="col-sm-3 form-group">
       <label for="<%= "operator[q_#{count}]" %>" class="sr-only">Operator</label>
-      <%= select_tag("operator[q_#{count}]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, operator_default(count)), :class => "form-control", :id =>"operator[q_#{count}]", data: { "target": "advanced.operator" }) %>
+      <%= select_tag("operator[q_#{count}]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, operator_default(count)), :class => "form-control", :id =>"operator[q_#{count}]") %>
     </div>
 
     <div class="col-sm-5 form-group">
