@@ -21,8 +21,10 @@ export default class extends Controller {
 
     if(select_id.includes(count)) {
       if(begins_with_options.includes(search_options)) {
+        $(begins_with).children("option[value='begins_with']").text("begins with");
         $(begins_with).children("option[value='begins_with']").show();
       } else {
+        $(begins_with).children("option[value='begins_with']").text("");
         $(begins_with).children("option[value='begins_with']").hide();
       }
     }
