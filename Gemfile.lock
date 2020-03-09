@@ -83,7 +83,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 95641316f46ff9efd3f66d279408ee87797b227a
+  revision: fd34b19946a09a2c11ea123392d58018b96b820a
   branch: master
   specs:
     cob_web_index (0.1.0)
@@ -283,7 +283,7 @@ GEM
       http-parser (~> 1.2.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.2.0)
+    http-form_data (2.3.0)
     http-parser (1.2.1)
       ffi-compiler (>= 1.0, < 2.0)
     httparty (0.18.0)
