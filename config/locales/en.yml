@@ -14,10 +14,9 @@ en:
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
 
-    banner_part_one_html: "Many library resource vendors have extended %{href} through the end of the spring 2020 semester."
+    banner_part_one_html: "Charles Library will close to all users on Thursday, March 19, at 6pm. Many library resource vendors have extended %{href} through the end of the spring 2020 semester."
     banner_part_one_href: "complimentary access to additional online resources"
     banner_part_one_link: "https://guides.temple.edu/az.php?q=covid"
-    banner_part_two_html: "Our hours and services are limited at this time. %{href}"
     banner_part_two_href: "Click here to see full details."
     banner_part_two_link: "https://library.temple.edu/categories/faq-library-resources-for-the-remainder-of-the-semester"
 
