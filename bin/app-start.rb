@@ -20,6 +20,7 @@ File.delete server_pid if File.exist? server_pid
 `bundle install`
 
 # Start rails app but do not block the rest of the script.
+`rails webpacker:compile`
 `rails db:migrate`
 `yarn`
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
