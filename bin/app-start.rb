@@ -20,9 +20,9 @@ File.delete server_pid if File.exist? server_pid
 `bundle install`
 
 # Start rails app but do not block the rest of the script.
-`rails webpacker:compile`
-`rails db:migrate`
-`yarn`
+system("rails db:migrate") || raise("Failed rails db:migrate commad")
+system("yarn") || raise("Failed yarn command")
+system("rails webpacker:compile") || raise("Failed rails webpacker:compile command")
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 
 # Next, provision with test data.
@@ -36,7 +36,7 @@ end
 
 begin
   if solr_empty? && ENV["DO_INGEST"] == "yes"
-    puts `rake tul_cob:solr:load_fixtures`
+    system("rake tul_cob:solr:load_fixtures") || raise("Failed to load fixtures")
   end
 rescue => e
   puts "** Failed to ingest solr documentes **"
