@@ -21,7 +21,6 @@ File.delete server_pid if File.exist? server_pid
 
 # Start rails app but do not block the rest of the script.
 `rails db:migrate`
-`rails assets:precompile`
 `yarn`
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 
