@@ -14,6 +14,13 @@ en:
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
 
+    banner_part_one_html: "Many library resource vendors have extended %{href}."
+    banner_part_one_href: "complimentary access to additional online resources"
+    banner_part_one_link: "https://guides.temple.edu/az.php?q=covid"
+    banner_part_two_html: "Charles Library is closed and our services are limited at this time. %{href}"
+    banner_part_two_href: "Click here to see full details."
+    banner_part_two_link: "https://library.temple.edu/categories/faq-library-resources-for-the-remainder-of-the-semester"
+
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
     borrow_link: "http://answers.library.temple.edu/faq/195868"
