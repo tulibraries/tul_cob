@@ -1,12 +1,4 @@
 {
-  "61369069920003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61369069940003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61369070880003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -39,25 +31,13 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61369689660003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61369689670003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61369689680003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
   "61369700010003811": {
     "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61369700020003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
+    "public_note": "Access electronic resource"
   },
   "61369700030003811": {
     "authentication_note": "",
@@ -75,10 +55,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61369719990003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61369743370003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -92,10 +68,6 @@
     "public_note": "Access electronic resource"
   },
   "61369804430003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61369844450003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -147,10 +119,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61370693260003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61370693270003811": {
     "authentication_note": "",
     "public_note": "Connect to AccessPharmacy"
@@ -183,23 +151,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61371021920003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371021960003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371236550003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61371236580003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371278320003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -263,23 +215,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61371690450003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371690460003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371690470003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61371733960003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61371757880003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -323,10 +259,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource (Use AccessNet Login/Password)"
   },
-  "61372282290003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61372366640003811": {
     "authentication_note": "",
     "public_note": "Electronic resource (Click \"log-in\" button near upper right-hand corner of HCD Online homepage)."
@@ -334,10 +266,6 @@
   "61372366700003811": {
     "authentication_note": "",
     "public_note": "Electronic resource."
-  },
-  "61372366790003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource. Click on \"Enter Databases\" and then click \"Go\" beside the appropriate database"
   },
   "61373652310003811": {
     "authentication_note": "",
@@ -348,14 +276,6 @@
     "public_note": "Access electronic resource."
   },
   "61373844730003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61373844830003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61374113060003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -379,10 +299,6 @@
     "authentication_note": "",
     "public_note": "Access full text online."
   },
-  "61378077130003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61378164450003811": {
     "authentication_note": "",
     "public_note": "Access full text online."
@@ -399,37 +315,13 @@
     "authentication_note": "",
     "public_note": "Access full text online."
   },
-  "61378243510003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61378243520003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61378370030003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61378663140003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61378663160003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61378823900003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
   "61378901840003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
-  },
-  "61379551030003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
   },
   "61381939830003811": {
     "authentication_note": "",
@@ -439,31 +331,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61381952200003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61384568450003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384568460003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384568470003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384568480003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384568490003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384568500003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
@@ -519,10 +387,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
-  "61384587600003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
   "61384587610003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -530,90 +394,6 @@
   "61384587620003811": {
     "authentication_note": "",
     "public_note": "Access full text online through FirstSearch"
-  },
-  "61384587630003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587640003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587650003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587660003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587670003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587680003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587690003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587700003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587710003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587720003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587730003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587740003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587750003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587760003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587770003811": {
-    "authentication_note": "",
-    "public_note": "Access to electronic resource"
-  },
-  "61384587790003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384587800003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384587810003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384587820003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384587830003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384587840003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
   },
   "61384617230003811": {
     "authentication_note": "",
@@ -651,19 +431,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
-  "61384617790003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384617830003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
   "61384617870003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61384617910003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
@@ -683,10 +451,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61384787460003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61384787470003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -695,23 +459,11 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61384787490003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61384787500003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
   "61384787510003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384787520003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61384787530003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -743,21 +495,9 @@
     "authentication_note": "",
     "public_note": "Access eletronic resource (Requires free registration)."
   },
-  "61386236300003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61386236310003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61386251990003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
-  },
-  "61386252000003811": {
-    "authentication_note": "",
-    "public_note": "Access Author index:"
   },
   "61388315690003811": {
     "authentication_note": "",
@@ -779,27 +519,15 @@
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
-  "61388315770003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61388315780003811": {
     "authentication_note": "",
     "public_note": "Access full text online."
-  },
-  "61388315790003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
   },
   "61388320020003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
   "61388320090003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388320180003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -831,47 +559,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61388337890003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61388337920003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388337930003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388337950003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388337960003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388337980003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388337990003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388338020003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388338030003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388338050003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388338060003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -895,10 +583,6 @@
     "authentication_note": "",
     "public_note": "Access full text online through FirstSearch"
   },
-  "61388348230003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource online."
-  },
   "61388369840003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -906,18 +590,6 @@
   "61388369850003811": {
     "authentication_note": "",
     "public_note": "Access full text via American Periodical Series Online (Search by publication title)."
-  },
-  "61388369860003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388369880003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388369890003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
   },
   "61388621240003811": {
     "authentication_note": "",
@@ -927,17 +599,9 @@
     "authentication_note": "",
     "public_note": "Access eletronic resource."
   },
-  "61388621590003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61388639170003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource (Click the \"Log in\" link to enter the database)."
-  },
-  "61388651740003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
   },
   "61388651780003811": {
     "authentication_note": "",
@@ -967,14 +631,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
-  "61388780600003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource. Click on \"Proceed\" button for General Business File ASAP"
-  },
-  "61388836140003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
   "61388846190003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
@@ -984,10 +640,6 @@
     "public_note": "Access electronic resource."
   },
   "61388846220003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61388846230003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource"
   },
@@ -1006,10 +658,6 @@
   "61388847570003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource "
-  },
-  "61388847670003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
   },
   "61388847710003811": {
     "authentication_note": "",
@@ -1035,23 +683,11 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61388877590003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
   "61388877600003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61388877610003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61388908910003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388908920003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -1107,43 +743,7 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61388922590003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388922640003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388922680003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388922720003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388922760003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61388922830003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388922870003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388923010003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388923080003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61388923150003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -1152,26 +752,6 @@
     "public_note": "Access electronic resource."
   },
   "61389017120003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389017130003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource (Parts 1-9)."
-  },
-  "61389017150003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389017160003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389017170003811": {
-    "authentication_note": "",
-    "public_note": "Access electroni resource."
-  },
-  "61389017180003811": {
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
@@ -1271,18 +851,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61389061840003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389061910003811": {
-    "authentication_note": "",
-    "public_note": "Access to electronic resource"
-  },
-  "61389061990003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
   "61389103910003811": {
     "authentication_note": "",
     "public_note": "Access NASW clinical register"
@@ -1323,50 +891,6 @@
     "authentication_note": "",
     "public_note": "Access electronic resource."
   },
-  "61389104210003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389104220003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389104230003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389104240003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389104250003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389104260003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389104280003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389104290003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource"
-  },
-  "61389136220003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389224300003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
-  "61389245840003811": {
-    "authentication_note": "",
-    "public_note": "Access electronic resource."
-  },
   "61389245850003811": {
     "authentication_note": "",
     "public_note": "Access electronic resources."
@@ -1375,8 +899,8 @@
     "authentication_note": "",
     "public_note": "Access database via Temple database explanatory page."
   },
-  "61427015460003811": {
-    "authentication_note": "",
-    "public_note": "Lexis Advance login and password required"
+  "61442348700003811": {
+    "authentication_note": "Oxford University Press journals collection  o21339417  was cancelled because material type was incorrect. This Pol 31931 replaces that record. SP",
+    "public_note": ""
   }
 }

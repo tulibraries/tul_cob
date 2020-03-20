@@ -11,6 +11,26 @@ module Alma
       get_api params
     end
 
+    def self.get_totals
+      @totals ||= get(limit: "0").data["total_record_count"]
+    end
+
+    def self.get_ids
+      total = get_totals()
+      limit = 100
+      offset = 0
+      groups = Array.new(total / limit, limit) + [ total % limit ]
+      @ids ||= groups.map { |limit|
+        prev_offset = offset
+        offset += limit
+        { offset: prev_offset, limit: limit }
+      }
+        .map { |params|  Thread.new { self.get(params) } }
+        .map(&:value).map(&:data)
+        .map { |data| data["electronic_collection"].map { |coll| coll["id"] } }
+        .flatten
+    end
+
   private
     class ElectronicAPI
       include HTTParty
@@ -40,7 +60,7 @@ module Alma
           value = param.last
 
           if key && value
-            path.gsub(/:#{key}/, value)
+            path.gsub(/:#{key}/, value.to_s)
           else
             path
           end
@@ -86,10 +106,10 @@ module Alma
     end
 
     # Catch all Electronic API.
-    class Default < ElectronicAPI
-      def initialize(params = {})
-        raise ElectronicError.new "No Electronic API found to process given parameters."
-      end
+    # By default returns all collections
+    class Collections < ElectronicAPI
+      REQUIRED_PARAMS = []
+      RESOURCE = "/almaws/v1/electronic/e-collections"
 
       def self.can_process?(params = {})
         true
@@ -97,7 +117,7 @@ module Alma
     end
 
     # Order matters because parameters can repeat.
-    REGISTERED_APIs = [Portfolio, Service, Services, Collection, Default]
+    REGISTERED_APIs = [Portfolio, Service, Services, Collection, Collections]
 
     def self.get_api(params)
       REGISTERED_APIs
