@@ -47,6 +47,7 @@ module Alma
       options ||= {}
       chain = options.fetch(:chain, @chain)
       ids = options[:ids] || (chain ? build_ids(options) : @ids)
+
       type = options.fetch(:type, @type)
       tag = options.fetch(:tag, @tag)
       @notes = ids.inject({}) do |notes, params|
