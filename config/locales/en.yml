@@ -17,7 +17,7 @@ en:
     banner_part_one_html: "Many library resource vendors have extended %{href}."
     banner_part_one_href: "complimentary access to additional online resources"
     banner_part_one_link: "https://guides.temple.edu/az.php?q=covid"
-    banner_part_two_html: "Charles Library is closed and our services are limited at this time. %{href}"
+    banner_part_two_html: "All Temple Libraries locations are closed to users until further notice. %{href}"
     banner_part_two_href: "Click here to see full details."
     banner_part_two_link: "https://library.temple.edu/categories/faq-library-resources-for-the-remainder-of-the-semester"
 
