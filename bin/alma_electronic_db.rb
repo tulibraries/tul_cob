@@ -14,7 +14,7 @@ ids =  Alma::Electronic.get_ids
 
 batch = Alma::Electronic::BatchUtils.new(ids: ids)
 
-batch.get_collection_notes(ids)
+batch.get_collection_notes
   .print_notes
 
 batch.get_service_notes
