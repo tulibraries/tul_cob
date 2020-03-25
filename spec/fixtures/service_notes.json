@@ -55,10 +55,6 @@
     "authentication_note": "<b>Complimentary access to MIT Press Direct has been made available by MIT University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
   },
-  "62497287010003811": {
-    "authentication_note": "<b>COMING SOON.  Complimentary access to Feature Films for Education has been made available by Films on Demand through 5/13/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
-  },
   "62497601170003811": {
     "authentication_note": "<b>Complimentary access to Bloomsbury Cultural History has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
@@ -167,12 +163,20 @@
     "authentication_note": "<b>Complimentary access to Behavioral and Mental Health Online has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
   },
+  "62500209570003811": {
+    "authentication_note": "<b>Complimentary access to Elements has been made available by Cambridge University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
   "62500209900003811": {
     "authentication_note": "<b>Complimentary access to University of Michigan Press Ebook Collection has been made available through 4/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
   },
   "62500308790003811": {
     "authentication_note": "<b>Complimentary access to Loeb Classical Library has been made available by Harvard University through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62500579770003811": {
+    "authentication_note": "<b>Complimentary access to ScienceDirect Textbooks has been made available by Elsevier through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
   },
   "62500579890003811": {
@@ -241,6 +245,30 @@
   },
   "62502263000003811": {
     "authentication_note": "<b>Complimentary access to Business Source Ultimate has been made available by EBSCO through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62502264950003811": {
+    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62503359910003811": {
+    "authentication_note": "<b>Complimentary access to Research Methods Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62503359960003811": {
+    "authentication_note": "<b>Complimentary access to Sage Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62503359990003811": {
+    "authentication_note": "<b>Complimentary access to additional Taylor & Francis eBooks has been made available by Taylor & Francis through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62504593670003811": {
+    "authentication_note": "<b>Complimentary access to World Scientific journals has been made available by World Scientific through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
+    "public_note": ""
+  },
+  "62504679350003811": {
+    "authentication_note": "<b>Complimentary access to Harvard Business eBooks has been made available by EBSCO through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
     "public_note": ""
   }
 }
