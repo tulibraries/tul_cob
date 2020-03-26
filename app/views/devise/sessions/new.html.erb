@@ -1,4 +1,4 @@
-<div id="login" class="pl-5">
+<div id="login" class="pl-5 pt-3">
 <h2 class="pb-3">Log in to My Library Account</h2>
 
 <%- if devise_mapping.omniauthable? %>
@@ -15,12 +15,12 @@
 <% if Rails.env.development? %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row form-group pl-5">
-    <%= f.label :email, class: "col-1" %>
+    <%= f.label :email, class: "mr-2" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="row form-group pl-5">
-    <%= f.label :password, class: "col-1" %>
+    <%= f.label :password, class: "mr-2" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
