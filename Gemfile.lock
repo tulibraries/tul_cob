@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: bb5661cb2d87c765080abf0d78d336fb53d8544c
+  revision: 80eb95ff957dfd611628a96478e888b4ce7cebd6
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -276,7 +276,7 @@ GEM
     hashie (3.6.0)
     honeybadger (4.6.0)
     htmlentities (4.3.4)
-    http (4.3.0)
+    http (4.4.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
