@@ -21,6 +21,15 @@ module CatalogHelper
     "data-isbn=#{values}" if !values.empty?
   end
 
+  def oclc_data_attribute(document)
+    values = document.fetch(:oclc_number_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-oclc=#{values}" if !values.empty?
+  end
+
   def lccn_data_attribute(document)
     values = document.fetch(:lccn_display, [])
     values = [values].flatten.map { |value|
@@ -28,6 +37,10 @@ module CatalogHelper
     }.compact.join(",")
 
     "data-lccn=#{values}" if !values.empty?
+  end
+
+  def render_google_books_data_attribute(document)
+    isbn_data_attribute(document) || lccn_data_attribute(document) || oclc_data_attribute(document)
   end
 
   def default_cover_image(document)
