@@ -51,3 +51,16 @@ def run_solr(environment, solr_params)
     end
   end
 end
+
+
+desc "Reloads the Alma Electronic Notes"
+task :reload_electronic_notes do
+
+  puts "Reloading the electronic collection notes..."
+  Rails.configuration.electronic_collection_notes =
+    Alma::ConfigUtils.load_notes(type: "collection")
+
+  puts "Reloading the electronic service notes..."
+  Rails.configuration.electronic_service_notes =
+    Alma::ConfigUtils.load_notes(type: "service")
+end
