@@ -73,7 +73,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 80eb95ff957dfd611628a96478e888b4ce7cebd6
+  revision: 8c2d94b8b3fca6648c8ddfbf8e44db0c6d0c3c75
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -276,7 +276,7 @@ GEM
     hashie (3.6.0)
     honeybadger (4.6.0)
     htmlentities (4.3.4)
-    http (4.4.0)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -536,7 +536,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
+    unf_ext (0.0.7.7)
     unicode-display_width (1.6.1)
     vcr (5.1.0)
     warden (1.2.8)
