@@ -9,13 +9,13 @@ RSpec.describe Alma::ConfigUtils do
   describe "subject.filename" do
     context "default" do
       it "returns fixtures service_notes" do
-        expect(subject.filename).to eq("spec/fixtures/service_notes.json")
+        expect(subject.filename_or_default).to eq("spec/fixtures/service_notes.json")
       end
     end
 
     context "pass type" do
       it "returns fixtures #type_notes" do
-        expect(subject.filename("collection")).to eq("spec/fixtures/collection_notes.json")
+        expect(subject.filename_or_default("collection")).to eq("spec/fixtures/collection_notes.json")
       end
     end
 
@@ -29,7 +29,7 @@ RSpec.describe Alma::ConfigUtils do
       end
 
       it "returns tmp filename" do
-        expect(subject.filename).to eq("tmp/service_notes.json")
+        expect(subject.filename_or_default).to eq("tmp/service_notes.json")
       end
     end
   end
