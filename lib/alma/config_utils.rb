@@ -7,18 +7,24 @@ module Alma
     def self.load_notes(options = {})
       options ||= {}
       type = options.fetch(:type, @type) || "service"
-      file = File.read(filename(type))
+      path = options.fetch(:path, "tmp")
+      file = File.read(filename_or_default(type, path))
       JSON.parse(file)
     end
 
-    def self.filename(type = "service")
-      tmp_file = "tmp/#{type}_notes.json"
-      fixture_file = "spec/fixtures/#{type}_notes.json"
+    def self.fixture_filename(type = "service")
+      "spec/fixtures/#{type}_notes.json"
+    end
 
-      if File.exist? tmp_file
-        tmp_file
+    def self.filename(type, path)
+      "#{path}/#{type}_notes.json"
+    end
+
+    def self.filename_or_default(type = "service", path = "tmp")
+      if File.exist? filename(type, path)
+        filename(type, path)
       else
-        fixture_file
+        fixture_filename(type)
       end
     end
   end

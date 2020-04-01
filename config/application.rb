@@ -26,8 +26,8 @@ module Tulcob
     config.locations = config_for(:locations).with_indifferent_access
     config.material_types = config_for(:material_types).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
-    config.electronic_collection_notes = Alma::ConfigUtils.load_notes(type: "collection")
-    config.electronic_service_notes = Alma::ConfigUtils.load_notes(type: "service")
+    config.electronic_collection_notes = Alma::ConfigUtils.load_notes(type: "collection", path: "/tmp")
+    config.electronic_service_notes = Alma::ConfigUtils.load_notes(type: "service", path: "/tmp")
     config.bento = config_for(:bento).with_indifferent_access
     config.oclc = config_for(:oclc).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access

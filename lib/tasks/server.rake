@@ -54,13 +54,16 @@ end
 
 
 desc "Reloads the Alma Electronic Notes"
-task :reload_electronic_notes do
+task :reload_electronic_notes, [:path] do |_, args|
 
-  puts "Reloading the electronic collection notes..."
-  Rails.configuration.electronic_collection_notes =
-    Alma::ConfigUtils.load_notes(type: "collection")
+  args.with_defaults(path: "/tmp")
 
-  puts "Reloading the electronic service notes..."
-  Rails.configuration.electronic_service_notes =
-    Alma::ConfigUtils.load_notes(type: "service")
+  ["collection", "service"].each do |type|
+    filename = Alma::ConfigUtils.filename(type, args[:path])
+    abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
+
+    puts "Reloading the electronic #{type} notes..."
+    Rails.configuration.electronic_collection_notes =
+      Alma::ConfigUtils.load_notes(type: type)
+  end
 end
