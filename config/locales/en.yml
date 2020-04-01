@@ -14,12 +14,12 @@ en:
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
 
-    banner_part_one_html: "Many library resource vendors have extended %{href}."
-    banner_part_one_href: "complimentary access to additional online resources"
-    banner_part_one_link: "https://guides.temple.edu/az.php?q=covid"
-    banner_part_two_html: "All Temple Libraries locations are closed to users until further notice. %{href}"
-    banner_part_two_href: "Click here to see full details."
-    banner_part_two_link: "https://library.temple.edu/categories/faq-library-resources-for-the-remainder-of-the-semester"
+    banner_part_one_html: "As of March 19, all Temple University Libraries %{href} All library spaces are closed."
+    banner_part_one_href: "services and resources are online."
+    banner_part_one_link: "https://library.temple.edu/webpages/remote-learner-support"
+    banner_part_two_html: "Many library resource vendors have extended %{href}."
+    banner_part_two_href: "complimentary access to additional online resources"
+    banner_part_two_link: "https://guides.temple.edu/az.php?t=41140"
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
