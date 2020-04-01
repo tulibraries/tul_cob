@@ -146,7 +146,8 @@ span.computer_media, a.facet_computer_media {
 	padding-left: 1.9rem;
 	padding-top: .25rem;
 }
-span.database, a.facet_database, a.facet_databases {
+span.database, a.facet_database, a.facet_databases,
+#facet-az_format a.facet_temporary_access {
   background: transparent url(<%= asset_path "noun_database.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
 	padding-top: .25rem;
@@ -190,6 +191,12 @@ a.facet_law_regulations {
 }
 span.reference,
 #facet-format a.facet_reference {
+  background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
+	padding-left: 1.9rem;
+	padding-top: .25rem;
+}
+span.reference,
+#facet-az_format a.facet_reference {
   background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
 	padding-left: 1.9rem;
 	padding-top: .25rem;
