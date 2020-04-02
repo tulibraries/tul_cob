@@ -13,7 +13,7 @@ RSpec.feature "Availability displays" do
     scenario "Items in ASRS have retrieval instructions" do
       visit "/catalog/#{item['doc_id']}"
       within first("div.physical-holding-panel") do
-        expect(page).to have_css("#bookbot-instructions")
+        expect(page).not_to have_css("#bookbot-instructions")
       end
     end
   end
