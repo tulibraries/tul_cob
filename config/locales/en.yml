@@ -38,6 +38,7 @@ en:
       not_found: "We couldn’t find this page!"
 
     errors:
+      deep_paging: "Sorry, LibrarySearch does not serve more than 250 pages for any query."
       not_found_html: "For help, please %{href} or try a"
       not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/contact-us"

@@ -108,6 +108,12 @@ RSpec.feature "Indices" do
       visit "catalog/#{item['doc_id']}"
       expect(page).to find(:xpath, "//div[@id='requests-container']/a[contains(@href,'redirect_to')]")
     end
+  end
 
+  feature "Pagination" do
+    scenario "User tries to access page past 250" do
+      visit "/catalog?page=400&q=japan&search_field=all_fields"
+      expect(page).to have_text("Sorry, LibrarySearch does not serve more than 250 pages for any query.")
+    end
   end
 end
