@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 7344d651cdbf401b53fff0608463c9bf2904c4b2
+  revision: c42b01abe2a3f2d177e1502e84d934a1e2eca5e1
   branch: master
   specs:
     alma (0.3.0)
@@ -531,7 +531,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
