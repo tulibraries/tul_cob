@@ -655,9 +655,8 @@ RSpec.describe CatalogHelper, type: :helper do
       it "maps the expected parameters" do
         expect(constructed_url).to include("rft.title=title")
         expect(constructed_url).to include("rft.date=2020")
-        expect(constructed_url).to include("rft.volume=v3")
         expect(constructed_url).to include("edition=1st+edition")
-        expect(constructed_url).to include("rft.id=bestIDever")
+        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
         expect(constructed_url).to include("rft.isbn=12345678")
         expect(constructed_url).to include("rft.issn=4567890123%2C+9087654321")
         expect(constructed_url).to include("rft.oclcnum=98765432")

@@ -169,16 +169,18 @@ module CatalogHelper
     {
       "rft.title" => solr_field_to_s(document, "title_statement_display"),
       "rft.date" => solr_field_to_s(document, "pub_date"),
-      "rft.volume" => solr_field_to_s(document, "volume_display"),
       "edition" => solr_field_to_s(document, "edition_display"),
-      "rft.id" => solr_field_to_s(document, "id"),
       "rft.isbn" => solr_field_to_s(document, "isbn_display"),
       "rft.issn" => solr_field_to_s(document, "issn_display"),
       "rft.oclcnum" => solr_field_to_s(document, "oclc_display"),
-    }.select { |k, v| v.present? }
-    .to_query
+    }
+    sid = solr_field_to_s(document, "id")
+    if sid.present?
+      doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
+    end
+    doc_params.select! { |k, v| v.present? }
     url = URI::HTTPS.build(host: "temple.libwizard.com",
-      path: "/f/LibrarySearchRequest", query: doc_params).to_s
+      path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
   end
 
   def render_temporary_electronic_request_help_form_button(document)
