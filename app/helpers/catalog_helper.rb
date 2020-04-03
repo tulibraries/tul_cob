@@ -155,6 +155,45 @@ module CatalogHelper
     end
   end
 
+  # Safely converts a single or multi-value solr field
+  # to a string. Mult values are concatenated with a ', ' by default
+  # @param document - A solr document object
+  # @param field - the name of a solr field
+  # @param joiner - the string to use to concatenate multivalue fields
+  def solr_field_to_s(document, field, joiner = ", ")
+    Array.wrap(document.fetch(field, [])).join(joiner)
+  end
+
+  def _build_libwizard_url(document)
+    doc_params =
+    {
+      "rft.title" => solr_field_to_s(document, "title_statement_display"),
+      "rft.date" => solr_field_to_s(document, "pub_date"),
+      "rft.volume" => solr_field_to_s(document, "volume_display"),
+      "edition" => solr_field_to_s(document, "edition_display"),
+      "rft.id" => solr_field_to_s(document, "id"),
+      "rft.isbn" => solr_field_to_s(document, "isbn_display"),
+      "rft.issn" => solr_field_to_s(document, "issn_display"),
+      "rft.oclcnum" => solr_field_to_s(document, "oclc_display"),
+    }.select { |k, v| v.present? }
+    .to_query
+    url = URI::HTTPS.build(host: "temple.libwizard.com",
+      path: "/f/LibrarySearchRequest", query: doc_params).to_s
+  end
+
+  def render_temporary_electronic_request_help_form_button(document)
+    if document.fetch("availability_facet", []).include? "At the Library"
+      url = _build_libwizard_url(document)
+      label = t("requests.temporary_electronic_request_help_form")
+      link_to(
+        content_tag(:button, label, class: "btn btn-sm temp-help-btn"),
+        url, target: "_blank", class: "float-right"
+      )
+    end
+  end
+
+
+
   def render_purchase_order_availability(presenter)
     doc = presenter.document
     return unless doc.purchase_order?

@@ -84,7 +84,7 @@ module AvailabilityHelper
   def library_specific_instructions(key, document)
     case key
     when "ASRS"
-      render partial: "asrs_instructions", locals: { key: key }
+      #render partial: "asrs_instructions", locals: { key: key }
     when "SCRC"
       render partial: "scrc_instructions", locals: { key: key, document: document }
     when "MAIN"
