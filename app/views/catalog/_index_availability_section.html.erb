@@ -14,13 +14,13 @@
           <%= render_temporary_electronic_request_help_form_button(document) %>
 
 
-          <!--<div id="requests-container-<%= document.id %>" class="hidden requests-container float-right" data-controller="requests" data-target="show.request, availability.request">
+          <div id="requests-container-<%= document.id %>" class="hidden requests-container float-right" data-controller="requests" data-target="show.request, availability.request">
             <% if user_signed_in? %>
               <%= request_modal(document.id, @pickup_locations, @request_level) %>
             <% else %>
               <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-sm btn-primary request-button search-results-request-btn") %>
             <% end %>
-          </div>-->
+          </div>
         </div> 
 
         <div data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container mt-1">

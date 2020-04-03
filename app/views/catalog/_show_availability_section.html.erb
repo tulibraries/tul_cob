@@ -11,13 +11,13 @@
 
         <%= render_temporary_electronic_request_help_form_button(document) %>
 
-        <!--<div id="requests-container" class="hidden">
+        <div id="requests-container" class="hidden">
           <% if user_signed_in? %>
             <%= request_modal(document.id, @pickup_locations, @request_level) %>
           <% else %>
           <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-primary request-button record-page-request-btn search-results-request-btn float-right") %>
           <% end %>
-        </div>-->
+        </div>
       </div>
     </div>
   </div>
