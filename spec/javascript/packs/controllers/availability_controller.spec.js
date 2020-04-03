@@ -104,14 +104,14 @@ describe('AvailabilityController', () => {
       let hidden = $('div[data-target="availability.panel"]')
       .parent().hasClass("hidden")
 
-      expect(hidden).toEqual(false)
+      expect(hidden).toEqual(true)
     });
 
     test('request target is unhidden', () => {
       let hidden = $('#requests-container-991030169919703811')
       .hasClass("hidden")
 
-      expect(hidden).toEqual(false)
+      expect(hidden).toEqual(true)
     });
 
     test('request target gets tagged with search-results-request-btn', () => {
