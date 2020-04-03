@@ -24,8 +24,9 @@ export default class extends Controller {
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
           $('[data-long-list]').longList();
-          $(this.requestTarget).removeClass("hidden");
-          this.requestTarget.classList.add("search-results-request-btn")
+          // REMOVED WHILE LIBRARIES CLOSED
+          //$(this.requestTarget).removeClass("hidden");
+          //this.requestTarget.classList.add("search-results-request-btn")
       })
     }
   }
