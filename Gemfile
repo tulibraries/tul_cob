@@ -114,6 +114,8 @@ gem "cob_index",
 
 group :production do
   gem "mysql2", "~> 0.5.3"
+  # required for using memcached
+  gem "dalli"
 end
 
 # devops

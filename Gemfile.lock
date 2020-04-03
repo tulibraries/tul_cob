@@ -214,6 +214,7 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
+    dalli (2.7.10)
     database_cleaner (1.8.3)
     deprecation (1.0.0)
       activesupport
@@ -588,6 +589,7 @@ DEPENDENCIES
   cob_web_index!
   coffee-rails (~> 5.0)
   coveralls
+  dalli
   database_cleaner
   devise
   devise-guests (~> 0.7)
