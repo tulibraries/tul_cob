@@ -63,6 +63,11 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
+  resource :articles, only: [:index], as: "article_search", path: "/articles", controller: "primo_central" do
+    concerns :searchable
+    concerns :range_searchable
+  end
+
   resources :primo_central_documents, only: [:show], path: "/articles", controller: "primo_central" do
     concerns :exportable
   end
