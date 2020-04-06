@@ -186,10 +186,11 @@ module CatalogHelper
   def render_temporary_electronic_request_help_form_button(document)
     if document.fetch("availability_facet", []).include? "At the Library"
       url = _build_libwizard_url(document)
-      label = t("requests.temporary_electronic_request_help_form")
+      translation = (browser.mobile?) ? "requests.short_temporary_electronic_request_help_form" : "requests.temporary_electronic_request_help_form"
+      label = t(translation)
       link_to(
-        content_tag(:button, label, class: "btn btn-sm temp-help-btn"),
-        url, target: "_blank", class: "float-right"
+        content_tag(:button, label, class: "btn mt-sm-1 mt-md-0 btn-sm temp-help-btn"),
+        url, target: "_blank", class: "float-md-right"
       )
     end
   end
