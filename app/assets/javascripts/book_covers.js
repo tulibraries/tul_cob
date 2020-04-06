@@ -30,20 +30,37 @@ $(document).on('turbolinks:load', function() {
     }
   ).done(
     function(response) {
-      for (var bib in response) {
-        b = response[bib];
-        if(b.hasOwnProperty("thumbnail_url")) {
-          type = b.bib_key.split(":")[0];
-          identifier = b.bib_key.split(":")[1];
-          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image");
-          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .default').remove();
-        }
-        if(b.hasOwnProperty("preview_url")) {
-          type = b.bib_key.split(":")[0];
-          identifier = b.bib_key.split(":")[1];
-          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
-        }
-      }
+      getBookCoverImages(response);
+      getBookPreviews(response);
     }
   )
 })
+
+function getBookCoverImages(response) {
+  for (var bib in response) {
+    b = response[bib];
+    if(b.hasOwnProperty("thumbnail_url")) {
+      type = b.bib_key.split(":")[0];
+      identifier = b.bib_key.split(":")[1];
+      $('[data-' + type.toLowerCase() + '*=' + identifier + '] .book_cover').attr("src" , b.thumbnail_url).removeClass("invisible").addClass("google-image");
+      $('[data-' + type.toLowerCase() + '*=' + identifier + '] .default').remove();
+    }
+  }
+}
+
+function getBookPreviews(response) {
+  for (var bib in response) {
+    b = response[bib];
+    if(b.hasOwnProperty("preview_url")) {
+      if(b.preview == "full" || b.preview == "partial") {
+        type = b.bib_key.split(":")[0];
+        identifier = b.bib_key.split(":")[1];
+        $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
+        break;
+      }
+      type = b.bib_key.split(":")[0];
+      identifier = b.bib_key.split(":")[1];
+      $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
+    }
+  }
+}
