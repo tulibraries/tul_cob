@@ -20,7 +20,7 @@ test:
 test-js:
 	$(DOCKER) exec app yarn test
 load-data:
-	e.local.yml exec app rake ingest
+	$(DOCKER) exec app rake ingest
 reload-configs:
 	$(DOCKER) exec solr solr-configs-reset
 ps:
