@@ -56,8 +56,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "blacklight", "~> 7.5.1"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
-gem "blacklight_range_limit"
-
+gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
 group :development, :test do
   gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
