@@ -206,7 +206,7 @@ GEM
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
     dalli (2.7.10)
-    database_cleaner (1.8.3)
+    database_cleaner (1.8.4)
     deprecation (1.0.0)
       activesupport
     devise (4.7.1)
