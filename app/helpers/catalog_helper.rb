@@ -189,7 +189,7 @@ module CatalogHelper
       translation = (browser.mobile?) ? "requests.short_temporary_electronic_request_help_form" : "requests.temporary_electronic_request_help_form"
       label = t(translation)
       link_to(
-        content_tag(:button, label, class: "btn mt-sm-1 mt-md-0 btn-sm temp-help-btn"),
+        content_tag(:button, label, class: "btn  btn-sm temp-help-btn"),
         url, target: "_blank", class: "float-md-right"
       )
     end
