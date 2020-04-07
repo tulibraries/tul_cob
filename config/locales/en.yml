@@ -135,8 +135,7 @@ en:
       material_type_html: "Material Type <i>(optional): </i>"
       booking_start_date: "Booking Start Date:"
       booking_end_date: "Booking End Date:"
-    short_temporary_electronic_request_help_form: "Get help finding a digital copy"
-    temporary_electronic_request_help_form: "Request help locating an electronic version"
+    temporary_electronic_request_help_form: "Get help finding a digital copy"
 
 
   articles:
