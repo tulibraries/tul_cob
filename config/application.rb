@@ -37,6 +37,10 @@ module Tulcob
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
 
+    # To use Browser gem alias
+    require "browser/aliases"
+    Browser::Base.include(Browser::Aliases)
+
     # TODO: do we still need this?
     begin
       config.relative_url_root = config_for(:deploy_to)["path"]
