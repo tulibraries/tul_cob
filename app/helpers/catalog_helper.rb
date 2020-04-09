@@ -184,7 +184,14 @@ module CatalogHelper
   end
 
   def render_temporary_electronic_request_help_form_button(document)
-    if document.fetch("availability_facet", []).include? "At the Library"
+    renderable = (
+      document.fetch("availability_facet", [])
+        .include?("At the Library") &&
+      document.fetch("format", [])
+        .exclude?("Archival Material")
+    )
+
+    if renderable
       url = _build_libwizard_url(document)
 
       label = t("requests.temporary_electronic_request_help_form")
