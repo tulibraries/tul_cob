@@ -256,46 +256,13 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#get_unavailable_notes" do
-    let(:service_notes) {  { "foo" => { "value" => "foo" } } }
-    let(:config) { OpenStruct.new(
-      electronic_service_notes: service_notes
-    ) }
-
-    before do
-      allow(Rails).to receive(:configuration) { config }
-    end
-
-    context "with no unavailable notes" do
-      it "should not return any unavailability notes" do
-        expect(helper.get_unavailable_notes("bizz")).to eq([])
-      end
-    end
-
-    context "with unavailable notes" do
-      let(:service_notes) {  { "bizz" => {
-        "key" => "foo",
-        "service_temporarily_unavailable" => "foo",
-        "service_unavailable_reason" => "bar",
-        "service_unavailable_date" => "buzz",
-      } } }
-
-      it "should not return any unavailability notes" do
-        expect(helper.get_unavailable_notes("bizz")).to eq([{
-          "Service Unavailable Date" => "buzz",
-          "Service Unavailable Reason" => "bar",
-        }])
-      end
-    end
-  end
-
   describe "#render_electronic_notes" do
-    let(:service_notes) {  { "foo" => { "value" => "foo" } } }
-    let(:collection_notes) {  { "bizz" => { "value" => "bar" } } }
+    let(:service_notes) {  { "foo" => "bar" } }
+    let(:collection_notes) {  { "bizz" => "buzz" } }
     let(:public_notes) { "public note" }
     let(:config) { OpenStruct.new(
-      electronic_collection_notes: collection_notes,
-      electronic_service_notes: service_notes
+      electronic_collection_notes: service_notes,
+      electronic_service_notes: collection_notes
     ) }
 
     before do
@@ -320,7 +287,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with service notes" do
-      let(:field) { { "service_id" => "foo" } }
+      let(:field) { { "service_id" => "bizz" } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")
@@ -328,7 +295,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with collection notes" do
-      let(:field) { { "collection_id" => "bizz" } }
+      let(:field) { { "collection_id" => "foo" } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")
@@ -336,20 +303,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with both collection and service notes" do
-      let(:field) { { "service_id" => "foo", "collection_id" => "bizz" } }
-
-      it "should render the notes" do
-        expect(render_electronic_notes(field)).to eq("rendered note")
-      end
-    end
-
-    context "with unavailable notes" do
-      let(:field) { { "service_id" => "buzz", "collection_id" => "bizz" } }
-      let(:service_notes) { { "foo" => {
-        "service_temporarily_unavailable" => "foo",
-        "service_unavailable_date" => "bar",
-        "service_unavailable_reason" => "buzz"
-      } } }
+      let(:field) { { "service_id" => "bizz", "collection_id" => "foo" } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")

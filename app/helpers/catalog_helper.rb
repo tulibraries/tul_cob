@@ -377,51 +377,16 @@ module CatalogHelper
     content_tag(:div, item_html , class: " electronic_links online-list-item")
   end
 
-  def service_unavailable_fields
-    [ "service_temporarily_unavailable", "service_unavailable_date", "service_unavailable_reason" ]
-  end
-
-  def get_collection_notes(id)
-    (Rails.configuration.electronic_collection_notes[id] || {})
-      .except(*service_unavailable_fields)
-      .values.select(&:present?)
-  end
-
-  def get_service_notes(id)
-    (Rails.configuration.electronic_service_notes[id] || {})
-      .except(*service_unavailable_fields)
-      .values.select(&:present?)
-  end
-
-  def get_unavailable_notes(id)
-    [(Rails.configuration.electronic_service_notes[id] || {})
-      .slice(*service_unavailable_fields)
-      .except("service_temporarily_unavailable")
-      .select { |k, v| v.present? }
-      .map { |k, v| [k.titleize, v] }.to_h]
-      .select(&:present?)
-  end
-
   def render_electronic_notes(field)
     collection_id = field["collection_id"]
     service_id = field["service_id"]
 
     public_notes = field["public_note"]
-    collection_notes = get_collection_notes(collection_id)
-    service_notes = get_service_notes(service_id)
-    unavailable_notes = get_unavailable_notes(service_id)
+    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
+    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
 
-    if collection_notes.present? ||
-        service_notes.present? ||
-        public_notes.present? ||
-        unavailable_notes.present?
-
-      render partial: "electronic_notes", locals: {
-        collection_notes: collection_notes,
-        service_notes: service_notes,
-        public_notes: public_notes,
-        unavailable_notes: unavailable_notes,
-      }
+    if collection_notes.present? || service_notes.present? || public_notes.present?
+      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes, public_notes: public_notes }
     end
   end
 
