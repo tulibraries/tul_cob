@@ -1,10 +1,21 @@
 <div class="electronic-notes">
   <strong>Notes:</strong>
-  <% collection_notes.values.select(&:present?).each do |note| %>
+
+  <% unavailable_notes.each do |note| %>
+    <div class="alert alert-danger">
+      <p>This service is temporarily unavailable<p>
+
+      <% note.each do |label, value| %>
+        <p> <%= "#{label}" %>: <%= "#{value}" %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% collection_notes.each do |note| %>
     <p><%= raw note %></p>
   <% end %>
 
-  <% service_notes.values.select(&:present?).each do |note| %>
+  <% service_notes.each do |note| %>
     <p><%= raw note %></p>
   <% end %>
 
