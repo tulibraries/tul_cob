@@ -156,6 +156,15 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
   width: 7.5rem;
 }
 
+.temp-help-btn, .temp-help-btn:visited, .temp-help-btn:hover, .temp-help-btn:active {
+  background-color: $dark-blue;
+  color: $white;
+  margin-bottom: 0;
+  @media(max-width: 350px) {
+    margin-top: 5px;
+  }
+}
+
 .bl_alma_iframe {
   width: 100%;
 }

@@ -21,6 +21,15 @@ module CatalogHelper
     "data-isbn=#{values}" if !values.empty?
   end
 
+  def oclc_data_attribute(document)
+    values = document.fetch(:oclc_number_display, [])
+    values = [values].flatten.map { |value|
+      value.gsub(/\D/, "") if value
+    }.compact.join(",")
+
+    "data-oclc=#{values}" if !values.empty?
+  end
+
   def lccn_data_attribute(document)
     values = document.fetch(:lccn_display, [])
     values = [values].flatten.map { |value|
@@ -28,6 +37,10 @@ module CatalogHelper
     }.compact.join(",")
 
     "data-lccn=#{values}" if !values.empty?
+  end
+
+  def render_google_books_data_attribute(document)
+    isbn_data_attribute(document) || lccn_data_attribute(document) || oclc_data_attribute(document)
   end
 
   def default_cover_image(document)
@@ -141,6 +154,55 @@ module CatalogHelper
       render "index_availability_section", document: doc
     end
   end
+
+  # Safely converts a single or multi-value solr field
+  # to a string. Mult values are concatenated with a ', ' by default
+  # @param document - A solr document object
+  # @param field - the name of a solr field
+  # @param joiner - the string to use to concatenate multivalue fields
+  def solr_field_to_s(document, field, joiner = ", ")
+    Array.wrap(document.fetch(field, [])).join(joiner)
+  end
+
+  def _build_libwizard_url(document)
+    doc_params =
+    {
+      "rft.title" => solr_field_to_s(document, "title_statement_display"),
+      "rft.date" => solr_field_to_s(document, "pub_date"),
+      "edition" => solr_field_to_s(document, "edition_display"),
+      "rft.isbn" => solr_field_to_s(document, "isbn_display"),
+      "rft.issn" => solr_field_to_s(document, "issn_display"),
+      "rft.oclcnum" => solr_field_to_s(document, "oclc_display"),
+    }
+    sid = solr_field_to_s(document, "id")
+    if sid.present?
+      doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
+    end
+    doc_params.select! { |k, v| v.present? }
+    url = URI::HTTPS.build(host: "temple.libwizard.com",
+      path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
+  end
+
+  def render_temporary_electronic_request_help_form_button(document)
+    renderable = (
+      document.fetch("availability_facet", [])
+        .include?("At the Library") &&
+      document.fetch("format", [])
+        .exclude?("Archival Material")
+    )
+
+    if renderable
+      url = _build_libwizard_url(document)
+
+      label = t("requests.temporary_electronic_request_help_form")
+      link_to(
+        content_tag(:button, label, class: "btn  btn-sm temp-help-btn"),
+        url, target: "_blank", class: "float-md-right"
+      )
+    end
+  end
+
+
 
   def render_purchase_order_availability(presenter)
     doc = presenter.document
@@ -322,16 +384,51 @@ module CatalogHelper
     content_tag(:div, item_html , class: " electronic_links online-list-item")
   end
 
+  def service_unavailable_fields
+    [ "service_temporarily_unavailable", "service_unavailable_date", "service_unavailable_reason" ]
+  end
+
+  def get_collection_notes(id)
+    (Rails.configuration.electronic_collection_notes[id] || {})
+      .except(*service_unavailable_fields)
+      .values.select(&:present?)
+  end
+
+  def get_service_notes(id)
+    (Rails.configuration.electronic_service_notes[id] || {})
+      .except(*service_unavailable_fields)
+      .values.select(&:present?)
+  end
+
+  def get_unavailable_notes(id)
+    [(Rails.configuration.electronic_service_notes[id] || {})
+      .slice(*service_unavailable_fields)
+      .except("service_temporarily_unavailable")
+      .select { |k, v| v.present? }
+      .map { |k, v| [k.titleize, v] }.to_h]
+      .select(&:present?)
+  end
+
   def render_electronic_notes(field)
     collection_id = field["collection_id"]
     service_id = field["service_id"]
 
     public_notes = field["public_note"]
-    collection_notes = Rails.configuration.electronic_collection_notes[collection_id] || {}
-    service_notes = Rails.configuration.electronic_service_notes[service_id] || {}
+    collection_notes = get_collection_notes(collection_id)
+    service_notes = get_service_notes(service_id)
+    unavailable_notes = get_unavailable_notes(service_id)
 
-    if collection_notes.present? || service_notes.present? || public_notes.present?
-      render partial: "electronic_notes", locals: { collection_notes: collection_notes, service_notes: service_notes, public_notes: public_notes }
+    if collection_notes.present? ||
+        service_notes.present? ||
+        public_notes.present? ||
+        unavailable_notes.present?
+
+      render partial: "electronic_notes", locals: {
+        collection_notes: collection_notes,
+        service_notes: service_notes,
+        public_notes: public_notes,
+        unavailable_notes: unavailable_notes,
+      }
     end
   end
 

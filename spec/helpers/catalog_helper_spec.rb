@@ -256,13 +256,46 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#get_unavailable_notes" do
+    let(:service_notes) {  { "foo" => { "value" => "foo" } } }
+    let(:config) { OpenStruct.new(
+      electronic_service_notes: service_notes
+    ) }
+
+    before do
+      allow(Rails).to receive(:configuration) { config }
+    end
+
+    context "with no unavailable notes" do
+      it "should not return any unavailability notes" do
+        expect(helper.get_unavailable_notes("bizz")).to eq([])
+      end
+    end
+
+    context "with unavailable notes" do
+      let(:service_notes) {  { "bizz" => {
+        "key" => "foo",
+        "service_temporarily_unavailable" => "foo",
+        "service_unavailable_reason" => "bar",
+        "service_unavailable_date" => "buzz",
+      } } }
+
+      it "should not return any unavailability notes" do
+        expect(helper.get_unavailable_notes("bizz")).to eq([{
+          "Service Unavailable Date" => "buzz",
+          "Service Unavailable Reason" => "bar",
+        }])
+      end
+    end
+  end
+
   describe "#render_electronic_notes" do
-    let(:service_notes) {  { "foo" => "bar" } }
-    let(:collection_notes) {  { "bizz" => "buzz" } }
+    let(:service_notes) {  { "foo" => { "value" => "foo" } } }
+    let(:collection_notes) {  { "bizz" => { "value" => "bar" } } }
     let(:public_notes) { "public note" }
     let(:config) { OpenStruct.new(
-      electronic_collection_notes: service_notes,
-      electronic_service_notes: collection_notes
+      electronic_collection_notes: collection_notes,
+      electronic_service_notes: service_notes
     ) }
 
     before do
@@ -287,7 +320,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with service notes" do
-      let(:field) { { "service_id" => "bizz" } }
+      let(:field) { { "service_id" => "foo" } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")
@@ -295,7 +328,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with collection notes" do
-      let(:field) { { "collection_id" => "foo" } }
+      let(:field) { { "collection_id" => "bizz" } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")
@@ -303,7 +336,20 @@ RSpec.describe CatalogHelper, type: :helper do
     end
 
     context "with both collection and service notes" do
-      let(:field) { { "service_id" => "bizz", "collection_id" => "foo" } }
+      let(:field) { { "service_id" => "foo", "collection_id" => "bizz" } }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(field)).to eq("rendered note")
+      end
+    end
+
+    context "with unavailable notes" do
+      let(:field) { { "service_id" => "buzz", "collection_id" => "bizz" } }
+      let(:service_notes) { { "foo" => {
+        "service_temporarily_unavailable" => "foo",
+        "service_unavailable_date" => "bar",
+        "service_unavailable_reason" => "buzz"
+      } } }
 
       it "should render the notes" do
         expect(render_electronic_notes(field)).to eq("rendered note")
@@ -569,6 +615,113 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:controller_name) { "journal" }
       it "does not add an ez_borrow list item" do
         expect(ez_borrow_list_item(controller_name)).to be_nil
+      end
+    end
+  end
+
+  describe "solr_field_to_s(document, field)" do
+    let(:string) { helper.solr_field_to_s(document, field) }
+    let(:field) { "test" }
+    let(:document) {  { "#{field}" => value } }
+    context "the field value is empty" do
+      let(:value) { "" }
+      it "returns an empty string" do
+        expect(string).to eql ""
+      end
+    end
+    context "the field value is nil" do
+      let(:value) { nil }
+      it "returns an empty string" do
+        expect(string).to eql ""
+      end
+    end
+    context "the field value is non empty string value" do
+      let(:value) { "an id" }
+      it "returns an empty string" do
+        expect(string).to eql "an id"
+      end
+    end
+
+    context "the field value is an empty array" do
+      let(:value) { [] }
+      it "returns an empty string" do
+        expect(string).to eql ""
+      end
+    end
+
+    context "the field value is an array with a single string value" do
+      let(:value) { ["one value"] }
+      it "returns an empty string" do
+        expect(string).to eql "one value"
+      end
+    end
+
+    context "the field value is an array with a single integer value" do
+      let(:value) { [3] }
+      it "returns an empty string" do
+        expect(string).to eql "3"
+      end
+    end
+    context "the field value is an array with a single integer value" do
+      let(:value) { [3] }
+      it "returns an empty string" do
+        expect(string).to eql "3"
+      end
+    end
+    context "the field value is an array multiple string values" do
+      let(:value) { ["one", "two"] }
+      it "returns an empty string" do
+        expect(string).to eql "one, two"
+      end
+    end
+  end
+
+  describe "#_build_libwizard_url(document)" do
+    let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
+    let(:constructed_url) { helper._build_libwizard_url(document) }
+    context "document is missign all data" do
+      let(:document) { {} }
+      it "returns a url with no params" do
+        expect(constructed_url).to eq base_url
+      end
+    end
+    context "when mappable fields are present" do
+      let(:document) {
+        {
+        "title_statement_display" => ["title"],
+        "pub_date" => ["2020"],
+        "volume_display" => ["v3"],
+        "edition_display" => ["1st edition"],
+        "id" => "bestIDever",
+        "isbn_display" => ["12345678"],
+        "issn_display" => ["4567890123", "9087654321"],
+        "oclc_display" => ["98765432"]
+        }
+      }
+      it "maps the expected parameters" do
+        expect(constructed_url).to include("rft.title=title")
+        expect(constructed_url).to include("rft.date=2020")
+        expect(constructed_url).to include("edition=1st+edition")
+        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
+        expect(constructed_url).to include("rft.isbn=12345678")
+        expect(constructed_url).to include("rft.issn=4567890123%2C+9087654321")
+        expect(constructed_url).to include("rft.oclcnum=98765432")
+      end
+    end
+  end
+
+  describe "#render_temporary_electronic_request_help_form_button(document)" do
+    let(:button) { helper.render_temporary_electronic_request_help_form_button(document) }
+    context "is not a physical item" do
+      let(:document) { { "availability_facet" => "Online" } }
+      it "returns nil" do
+        expect(button).to be nil
+      end
+    end
+    context "is a physical item" do
+      let(:document) { { "availability_facet" => "At the Library" } }
+      it "returns a button" do
+        expect(button).to include("button>")
       end
     end
   end

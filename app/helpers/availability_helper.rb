@@ -84,13 +84,15 @@ module AvailabilityHelper
   def library_specific_instructions(key, document)
     case key
     when "ASRS"
-      render partial: "asrs_instructions", locals: { key: key }
+      # REMOVED WHILE LIBRARIES CLOSED
+      #render partial: "asrs_instructions", locals: { key: key }
     when "SCRC"
       render partial: "scrc_instructions", locals: { key: key, document: document }
     when "MAIN"
-      if main_stacks_message(key, document)
-        render partial: "main_open_shelving_instructions", locals: { key: key, document: document }
-      end
+      # REMOVED WHILE LIBRARIES CLOSED
+      # if main_stacks_message(key, document)
+      #   render partial: "main_open_shelving_instructions", locals: { key: key, document: document }
+      # end
     end
   end
 

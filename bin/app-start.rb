@@ -20,7 +20,9 @@ File.delete server_pid if File.exist? server_pid
 `bundle install`
 
 # Start rails app but do not block the rest of the script.
-system("rails db:migrate") || raise("Failed rails db:migrate commad")
+if ENV["RAILS_ENV"] != "production"
+  system("rails db:migrate") || raise("Failed rails db:migrate commad")
+end
 system("yarn") || raise("Failed yarn command")
 system("rails webpacker:compile") || raise("Failed rails webpacker:compile command")
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
@@ -28,6 +30,9 @@ exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 # Next, provision with test data.
 # (If we do this first it works, but site will be blank until rails app loads).
 # But only ingest if solr is empty
+#
+# Note:
+# This will not work outside of the docker-compose environment.
 def solr_empty?
   solr = RSolr.connect url: "http://solr:8983/solr/blacklight"
   response = solr.get("select", params: { q: "test", rows: 0 })

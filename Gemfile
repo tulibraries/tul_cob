@@ -57,7 +57,6 @@ gem "blacklight", "~> 7.5.1"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc", git: "https://github.com/projectblacklight/blacklight-marc.git", ref: "v7.0.0.rc1"
 gem "blacklight_range_limit", git: "https://github.com/projectblacklight/blacklight_range_limit.git", ref: "v7.0.0.rc2"
-
 group :development, :test do
   gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
@@ -86,7 +85,7 @@ gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
-gem "capybara", "3.31.0"
+gem "capybara", "3.32.1"
 gem "webmock"
 gem "bento_search"
 gem "omniauth-shibboleth"
@@ -114,6 +113,8 @@ gem "cob_index",
 
 group :production do
   gem "mysql2", "~> 0.5.3"
+  # required for using memcached
+  gem "dalli"
 end
 
 # devops

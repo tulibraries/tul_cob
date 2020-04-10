@@ -32,10 +32,11 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 11bd3b1cb948ab01adc0c5f1f5d3efc4c96f657a
+  revision: 73f9df5c1e378f7ed63547055ce628a0cd66ae73
   branch: master
   specs:
-    alma (0.2.8)
+    alma (0.3.0)
+      activesupport
       ezwadl
       httparty
       xml-simple
@@ -73,7 +74,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 80eb95ff957dfd611628a96478e888b4ce7cebd6
+  revision: 48cae996bd2b1287c1e72daa8585d926f13362f4
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -94,7 +95,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 695440062044db24a1d01c4fd873c4767e28dff6
+  revision: 06e4d643d52b2f5fb7235c23bf369e29f13c530c
   specs:
     primo (0.1.0)
       httparty
@@ -185,7 +186,7 @@ GEM
     browser (4.0.0)
     builder (3.2.4)
     byebug (11.1.1)
-    capybara (3.31.0)
+    capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -213,7 +214,8 @@ GEM
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
     crass (1.0.6)
-    database_cleaner (1.8.3)
+    dalli (2.7.10)
+    database_cleaner (1.8.4)
     deprecation (1.0.0)
       activesupport
     devise (4.7.1)
@@ -249,7 +251,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    foreman (0.87.0)
+    foreman (0.87.1)
     formatador (0.2.5)
     gli (2.19.0)
     globalid (0.4.2)
@@ -276,7 +278,7 @@ GEM
     hashie (3.6.0)
     honeybadger (4.6.0)
     htmlentities (4.3.4)
-    http (4.4.0)
+    http (4.4.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -367,7 +369,7 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.19.1)
-    parser (2.7.0.4)
+    parser (2.7.0.5)
       ast (~> 2.4.0)
     parslet (1.8.2)
     popper_js (1.16.0)
@@ -376,7 +378,7 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     puma (3.12.4)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -416,7 +418,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    regexp_parser (1.6.0)
+    regexp_parser (1.7.0)
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
@@ -446,14 +448,14 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    rubocop (0.80.1)
+    rubocop (0.81.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)
       rexml
       ruby-progressbar (~> 1.7)
-      unicode-display_width (>= 1.4.0, < 1.7)
+      unicode-display_width (>= 1.4.0, < 2.0)
     ruby-progressbar (1.10.1)
     rubyzip (2.2.0)
     safe_yaml (1.0.5)
@@ -530,14 +532,14 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.6)
+    tzinfo (1.2.7)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.6)
-    unicode-display_width (1.6.1)
+    unf_ext (0.0.7.7)
+    unicode-display_width (1.7.0)
     vcr (5.1.0)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -580,13 +582,14 @@ DEPENDENCIES
   bootstrap-select-rails
   browser
   byebug
-  capybara (= 3.31.0)
+  capybara (= 3.32.1)
   cdm!
   cob_az_index!
   cob_index!
   cob_web_index!
   coffee-rails (~> 5.0)
   coveralls
+  dalli
   database_cleaner
   devise
   devise-guests (~> 0.7)

@@ -198,6 +198,24 @@ img {
   -webkit-animation: spin2 1s infinite linear;
 }
 
+/* === CHAT WIDGET === */
+.lcs_slide_out-r {top: 30% !important;}
+
+#lcs_slide_out_button-15559 {
+  text-align:left;
+  width: 6.125rem;
+  background-image: url(<%= asset_path "chat.png" %>);
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 2.625rem 3.0625rem;
+  font-size: 125%;
+}
+@media (max-device-width: 767px) {
+  #lcs_slide_out_button-15559 {
+    display: none !important;
+  }
+}
+
 /* === SPINNER ANIMATIONS  === */
 @keyframes spin {
   from { transform: scale(1) rotate(0deg); }

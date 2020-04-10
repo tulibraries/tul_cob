@@ -51,3 +51,19 @@ def run_solr(environment, solr_params)
     end
   end
 end
+
+
+desc "Reloads the Alma Electronic Notes"
+task :reload_electronic_notes, [:path] do |_, args|
+
+  args.with_defaults(path: "/tmp")
+
+  ["collection", "service"].each do |type|
+    filename = Alma::ConfigUtils.filename(type, args[:path])
+    abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
+
+    puts "Reloading the electronic #{type} notes..."
+    Rails.configuration.electronic_collection_notes =
+      Alma::ConfigUtils.load_notes(type: type)
+  end
+end

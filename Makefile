@@ -1,22 +1,36 @@
+DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
+
 up:
 	git submodule init
 	git submodule update
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml up -d
+	$(DOCKER) up -d
 down:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml down
+	$(DOCKER) down
 restart:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml restart
+	$(DOCKER) exec app bundle install
+	$(DOCKER) exec app bundle exec rails restart
 tty-app:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app bash
+	$(DOCKER) exec app bash
 tty-solr:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec solr bash
+	$(DOCKER) exec solr bash
 lint:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rubocop
+	$(DOCKER) exec app rubocop
 test:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec -e RELEVANCE=y app rake ci
+	$(DOCKER) exec -e RELEVANCE=y app rake ci
 test-js:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app yarn test
+	$(DOCKER) exec app yarn test
 load-data:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec app rake ingest
+	$(DOCKER) exec app rake ingest
 reload-configs:
-	docker-compose -f docker-compose.yml -f docker-compose.local.yml exec solr solr-configs-reset
+	$(DOCKER) exec solr solr-configs-reset
+ps:
+	$(DOCKER) ps
+attach:
+	# Used for debugging the app.
+	@echo
+	@echo '*********************************'
+	@echo '*** Attaching to app container. *'
+	@echo '*** Detach with CTRL-p CTRL-q   *'
+	@echo '*********************************'
+	@echo
+	@bin/attach.sh tul_cob_app

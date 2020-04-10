@@ -38,6 +38,7 @@ en:
       not_found: "We couldn’t find this page!"
 
     errors:
+      deep_paging: "Sorry, LibrarySearch does not serve more than 250 pages for any query."
       not_found_html: "For help, please %{href} or try a"
       not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/contact-us"
@@ -134,6 +135,8 @@ en:
       material_type_html: "Material Type <i>(optional): </i>"
       booking_start_date: "Booking Start Date:"
       booking_end_date: "Booking End Date:"
+    temporary_electronic_request_help_form: "Get help finding a digital copy"
+
 
   articles:
     application_name: "Library Articles Search"
