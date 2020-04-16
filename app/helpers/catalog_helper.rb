@@ -212,16 +212,7 @@ module CatalogHelper
   end
 
   def render_hathitrust_link(document)
-    url = build_hathitrust_url(document)
-
-    content_tag(:div,
-      link_to(
-        "HathiTrust Digital Library",
-        url,
-        target: "_blank"
-      ),
-      class: "online-list-item"
-    )
+    render "hathitrust_link", document: document
   end
 
   def render_hathitrust_display(document)
