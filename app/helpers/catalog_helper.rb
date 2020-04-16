@@ -202,7 +202,37 @@ module CatalogHelper
     end
   end
 
+  def build_hathitrust_url(document)
+    record_id = document.fetch("hathi_trust_bib_key_display", nil)
+    return if record_id.nil?
+    URI::HTTPS.build(host: "catalog.hathitrust.org",
+      path: "/Record/#{record_id.first}",
+      query: "signon=swle:https://fim.temple.edu/idp/shibboleth"
+    ).to_s
+  end
 
+  def render_hathitrust_link(document)
+    render "hathitrust_link", document: document
+  end
+
+  def render_hathitrust_display(document)
+    field = document.fetch("hathi_trust_bib_key_display", "")
+    online_resources = []
+    online_resources << render_hathitrust_link(document)
+
+    if field.present?
+      render "online_availability", online_resources: online_resources
+    end
+  end
+
+  def render_hathitrust_button(document)
+    field = document.fetch("hathi_trust_bib_key_display", "")
+    link = render_hathitrust_link(document)
+
+    if field.present?
+      render "hathitrust_button", document: document, links: link
+    end
+  end
 
   def render_purchase_order_availability(presenter)
     doc = presenter.document
