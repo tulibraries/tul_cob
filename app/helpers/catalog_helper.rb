@@ -188,7 +188,9 @@ module CatalogHelper
       document.fetch("availability_facet", [])
         .include?("At the Library") &&
       document.fetch("format", [])
-        .exclude?("Archival Material")
+        .exclude?("Archival Material") &&
+      !document["electronic_resource_display"] &&
+      !document["hathi_trust_bib_key_display"]
     )
 
     if renderable

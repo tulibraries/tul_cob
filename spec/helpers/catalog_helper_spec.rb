@@ -724,6 +724,24 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(button).to include("button>")
       end
     end
+    context "is a physical item and an online item" do
+      let(:document) { {
+        "availability_facet" => "At the Library",
+        "electronic_resource_display" => "foo"
+         } }
+      it "returns nil" do
+        expect(button).to be nil
+      end
+    end
+    context "is a physical item with hathitrust link" do
+      let(:document) { {
+        "availability_facet" => "At the Library",
+        "hathi_trust_bib_key_display" => "foo"
+         } }
+      it "returns nil" do
+        expect(button).to be nil
+      end
+    end
   end
 
   describe "#build_hathitrust_url(document)" do
