@@ -68,5 +68,5 @@ task :reload_electronic_notes, [:path] do |_, args|
   end
 
   # Clear the Rails cache in case an e-note was cached
-  Rails.cache.clear
+  Rails.cache&.clear
 end
