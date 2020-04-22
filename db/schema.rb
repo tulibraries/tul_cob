@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_020027) do
   create_table "electronic_notes_bags", force: :cascade do |t|
     t.string "note_type"
     t.json "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["note_type"], name: "index_electronic_notes_bags_on_note_type", unique: true
   end
 
