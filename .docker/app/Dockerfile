@@ -4,6 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY . .
 RUN bundle install
+RUN yarn
 CMD ["bash"]
 
 FROM production as development

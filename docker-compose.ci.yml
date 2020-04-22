@@ -1,0 +1,33 @@
+version: "3.4"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/ci-app/Dockerfile
+    ports:
+      - "3000"
+    environment:
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      SOLR_AZ_URL: "http://solr:8983/solr/az-database"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
+      DO_INGEST: "${DO_INGEST}"
+      LC_ALL: "C.UTF-8"
+    entrypoint:
+      - "tail"
+      - "-f"
+      - /dev/null
+  
+  solr: 
+    build:
+      context: .
+      dockerfile: .docker/solr/Dockerfile
+    ports: 
+      - "8993:8983"
+    command:
+      - bash
+      - "-c"
+      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
+         precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
+         precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
+         solr-foreground"

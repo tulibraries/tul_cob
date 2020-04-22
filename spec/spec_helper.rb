@@ -367,16 +367,6 @@ VCR.configure do |config|
   }
 end
 
-if ENV["RELEVANCE"] && ENV["RELEVANCE"] != "test_only"
-  RSpec.configure do |config|
-    config.before(:suite) do
-      require "rake"
-      Rails.application.load_tasks
-      Rake::Task["tul_cob:solr:load_fixtures"].invoke("#{SPEC_ROOT}/relevance/fixtures/*.xml")
-    end
-  end
-end
-
 require "rspec/expectations"
 RSpec::Matchers.define :include_items do |primary_items|
   chain :before, :secondary_items
