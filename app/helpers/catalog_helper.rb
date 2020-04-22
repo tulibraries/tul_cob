@@ -420,20 +420,26 @@ module CatalogHelper
     [ "service_temporarily_unavailable", "service_unavailable_date", "service_unavailable_reason" ]
   end
 
+  def electronic_notes(type)
+    Rails.cache.fetch("#{type}_notes") do
+      ElectronicNotesBag.find_by(note_type: type)&.value || {}
+    end
+  end
+
   def get_collection_notes(id)
-    (Rails.configuration.electronic_collection_notes[id] || {})
+    (electronic_notes("collection")[id] || {})
       .except(*service_unavailable_fields)
       .values.select(&:present?)
   end
 
   def get_service_notes(id)
-    (Rails.configuration.electronic_service_notes[id] || {})
+    (electronic_notes("service")[id] || {})
       .except(*service_unavailable_fields)
       .values.select(&:present?)
   end
 
   def get_unavailable_notes(id)
-    [(Rails.configuration.electronic_service_notes[id] || {})
+    [(electronic_notes("service")[id] || {})
       .slice(*service_unavailable_fields)
       .except("service_temporarily_unavailable")
       .select { |k, v| v.present? }
@@ -449,6 +455,7 @@ module CatalogHelper
     collection_notes = get_collection_notes(collection_id)
     service_notes = get_service_notes(service_id)
     unavailable_notes = get_unavailable_notes(service_id)
+    require "pry"; binding.pry
 
     if collection_notes.present? ||
         service_notes.present? ||

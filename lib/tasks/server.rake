@@ -54,7 +54,7 @@ end
 
 
 desc "Reloads the Alma Electronic Notes"
-task :reload_electronic_notes, [:path] do |_, args|
+task :reload_electronic_notes, [:path] => :environment do |_, args|
 
   args.with_defaults(path: "/tmp")
 
@@ -63,10 +63,12 @@ task :reload_electronic_notes, [:path] do |_, args|
     abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
 
     puts "Reloading the electronic #{type} notes..."
-    Rails.configuration.send("electronic_#{type}_notes=",
-                             Alma::ConfigUtils.load_notes(type: type))
+    notes = Alma::ConfigUtils.load_notes(type: type)
+    bag = ElectronicNotesBag.find_or_initialize_by(note_type: type)
+    bag.value = notes
+    bag.save
+
+    Rails.cache.delete("#{type}_notes")
   end
 
-  # Clear the Rails cache in case an e-note was cached
-  Rails.cache&.clear
 end
