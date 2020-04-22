@@ -41,3 +41,4 @@ spec/examples.txt
 yarn-debug.log*
 .yarn-integrity
 yarn-error.log
+yarn.lock
