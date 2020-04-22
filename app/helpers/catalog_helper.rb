@@ -455,7 +455,6 @@ module CatalogHelper
     collection_notes = get_collection_notes(collection_id)
     service_notes = get_service_notes(service_id)
     unavailable_notes = get_unavailable_notes(service_id)
-    require "pry"; binding.pry
 
     if collection_notes.present? ||
         service_notes.present? ||

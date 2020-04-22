@@ -55,6 +55,7 @@ end
 
 desc "Reloads the Alma Electronic Notes"
 task :reload_electronic_notes, [:path] => :environment do |_, args|
+  puts "Running in #{Rails.env} environment."
 
   args.with_defaults(path: "/tmp")
 
@@ -62,13 +63,21 @@ task :reload_electronic_notes, [:path] => :environment do |_, args|
     filename = Alma::ConfigUtils.filename(type, args[:path])
     abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
 
-    puts "Reloading the electronic #{type} notes..."
-    notes = Alma::ConfigUtils.load_notes(type: type)
+    puts
+    puts "Reloading the electronic #{type} notes from #{filename}..."
+    notes = Alma::ConfigUtils.load_notes(type: type, path: filename)
+
+    puts "Number of #{type} notes to be loaded: #{notes&.count.to_i}"
+
+    puts "Reloading the electronic #{type} notes from #{filename}..."
     bag = ElectronicNotesBag.find_or_initialize_by(note_type: type)
+    puts "Current number of #{type} notes: #{bag.value&.count.to_i}"
     bag.value = notes
-    bag.save
 
+    abort("Failed to reload #{type} notes") unless bag.save
+
+    puts "Delete the #{type}_notes cache..."
     Rails.cache.delete("#{type}_notes")
+    puts
   end
-
 end
