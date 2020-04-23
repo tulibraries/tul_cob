@@ -15,21 +15,21 @@ RSpec.describe Alma::ConfigUtils do
 
     context "pass type" do
       it "returns fixtures #type_notes" do
-        expect(subject.filename_or_default("collection")).to eq("spec/fixtures/collection_notes.json")
+        expect(subject.filename_or_default("collection", "spec/fixtures")).to eq("spec/fixtures/collection_notes.json")
       end
     end
 
-    context "tmp/service_notes.json is present" do
+    context "/tmp/service_notes.json is present" do
       before do
-        File.write("tmp/service_notes.json", "")
+        File.write("/tmp/service_notes.json", "")
       end
 
       after do
-        File.delete("tmp/service_notes.json")
+        File.delete("/tmp/service_notes.json")
       end
 
       it "returns tmp filename" do
-        expect(subject.filename_or_default).to eq("tmp/service_notes.json")
+        expect(subject.filename_or_default).to eq("/tmp/service_notes.json")
       end
     end
   end
