@@ -1,306 +1,313 @@
 {
+  "62337184170003811": {
+    "service_temporarily_unavailable": {
+      "value": "1",
+      "desc": "Yes"
+    },
+    "service_unavailable_date": "2020-04-10Z",
+    "service_unavailable_reason": "TESTING SERVICE UNAVAILABLE NOTES 20200410ef"
+  },
   "62337184620003811": {
-    "authentication_note": "",
     "public_note": "<b>Note</b>: If you receive an 'Error 400' message, please try clearing cookies or browser. The issue seems to occur in Chrome."
   },
   "62337197720003811": {
     "authentication_note": "TESTING  AUTHENTICATION NOTE",
-    "public_note": ""
+    "service_temporarily_unavailable": {
+      "value": "1",
+      "desc": "Yes"
+    },
+    "service_unavailable_date": "2020-01-29Z",
+    "service_unavailable_reason": "TESTING SERVICE NOTE"
   },
   "62398469980003811": {
-    "authentication_note": "",
     "public_note": "Only one person may access this title at a time."
   },
   "62413743610003811": {
-    "authentication_note": "",
     "public_note": "<b>Note:</b> Some publications are not available for patrons located outside of North America."
   },
   "62415156200003811": {
-    "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
   },
   "62419848220003811": {
-    "authentication_note": "Videos in this collection are not immediately available.  They may be requested for purchase consideration.",
-    "public_note": ""
+    "authentication_note": "Videos in this collection are not immediately available.  They may be requested for purchase consideration."
   },
   "62419889160003811": {
-    "authentication_note": "",
     "public_note": "<strong>Unlimited Users</strong>"
   },
   "62428041520003811": {
-    "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
   },
   "62430494120003811": {
-    "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
   },
   "62434069980003811": {
-    "authentication_note": "",
     "public_note": "Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article"
   },
   "62465644840003811": {
-    "authentication_note": "To access this resource patrons need to select 'Not Listed?' from the 'Select your institution' dropdown, and then enter an @temple.edu email address.",
-    "public_note": ""
+    "authentication_note": "To access this resource patrons need to select 'Not Listed?' from the 'Select your institution' dropdown, and then enter an @temple.edu email address."
   },
   "62474798030003811": {
-    "authentication_note": "",
     "public_note": "<strong>Articles available via CCC Get It Now can be ordered for email delivery after first locating a specific article within Library Search and then clicking on the \"CCC Get It Now\" link in the Library Search record for the article.</strong>"
   },
   "62497286420003811": {
-    "authentication_note": "<b>Complimentary access to Textbooks has been made available by Cambridge University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Textbooks has been made available by Cambridge University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62497286450003811": {
-    "authentication_note": "<b>Complimentary access to MIT Press Direct has been made available by MIT University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to MIT Press Direct has been made available by MIT University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62497601170003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Cultural History has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Cultural History has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62497602510003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Architecture Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Architecture Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62497619880003811": {
-    "authentication_note": "<b>Complimentary access to ProQuest Central has been made available by ProQuest through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to ProQuest Central has been made available by ProQuest through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498093680003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Applied Visual Arts has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Applied Visual Arts has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498108440003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Collections has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Collections has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498320700003811": {
-    "authentication_note": "",
     "public_note": "<b>Complimentary access to Bloomsbury Design Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498330500003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Popular Music has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Popular Music has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498333270003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Food Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Food Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498337580003811": {
-    "authentication_note": "",
     "public_note": "<b>Complimentary access to Bloomsbury Fashion Central has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498341870003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498346520003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498351110003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498351610003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498352350003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498352490003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498355830003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498372930003811": {
-    "authentication_note": "<b>Complimentary access to Screen Studies has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Screen Studies has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498373970003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498374110003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498374660003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498374770003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498379820003811": {
-    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Bloomsbury Drama Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62498452270003811": {
-    "authentication_note": "<b>SpringerNature has added complimentary access to the SpringerLink ebook archive (content <2005) through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>SpringerNature has added complimentary access to the SpringerLink ebook archive (content <2005) through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500189730003811": {
-    "authentication_note": "<b>Complimentary access to Ethnographic Video, Vol. IV has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Ethnographic Video, Vol. IV has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500189750003811": {
-    "authentication_note": "<b>Complimentary access to Ethnographic Video, Vol. III has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Ethnographic Video, Vol. III has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500189790003811": {
-    "authentication_note": "<b>Complimentary access to Nursing and Mental Health has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Nursing and Mental Health has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500189810003811": {
-    "authentication_note": "<b>Complimentary access to Behavioral and Mental Health Online has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Behavioral and Mental Health Online has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500209570003811": {
-    "authentication_note": "<b>Complimentary access to Elements has been made available by Cambridge University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Elements has been made available by Cambridge University Press through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500209900003811": {
-    "authentication_note": "<b>Complimentary access to University of Michigan Press Ebook Collection has been made available through 4/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to University of Michigan Press Ebook Collection has been made available through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500308790003811": {
-    "authentication_note": "<b>Complimentary access to Loeb Classical Library has been made available by Harvard University through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Loeb Classical Library has been made available by Harvard University through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579770003811": {
-    "authentication_note": "<b>Complimentary access to ScienceDirect Textbooks has been made available by Elsevier through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to ScienceDirect Textbooks has been made available by Elsevier through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579890003811": {
-    "authentication_note": "<b>Complimentary access to Volumes 3 & 4 of Classical Scores Library has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Volumes 3 & 4 of Classical Scores Library has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579910003811": {
-    "authentication_note": "<b>Complimentary access to Theater in Performance has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Theater in Performance has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579930003811": {
-    "authentication_note": "<b>Complimentary access to Nursing Education in Video has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Nursing Education in Video has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579950003811": {
-    "authentication_note": "<b>Complimentary access to National Theater Collection has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to National Theater Collection has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579970003811": {
-    "authentication_note": "<b>Complimentary access to Ethnographic Video Royal Anthropological Institute has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Ethnographic Video Royal Anthropological Institute has been made available by Alexander Street Press through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62500579990003811": {
-    "authentication_note": "<b>Complimentary access to Oxford Handbooks Online has been made available by OUP through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak. </b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Oxford Handbooks Online has been made available by OUP through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak. </b>"
   },
   "62500621540003811": {
-    "authentication_note": "",
     "public_note": "<b>Complimentary access to UPSO has been made available by Oxford University Press through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62501602270003811": {
-    "authentication_note": "<b>Complimentary access to Very Short Introductions has been made available by Oxford University Press through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Very Short Introductions has been made available by Oxford University Press through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502180380003811": {
-    "authentication_note": "<b>Complimentary access to JSTOR A&S XII has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to JSTOR A&S XII has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502203570003811": {
-    "authentication_note": "<b>Complimentary access to JSTOR A&S XIII has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to JSTOR A&S XIII has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502223460003811": {
-    "authentication_note": "",
     "public_note": "<b>Complimentary access to JSTOR A&S XV has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502228460003811": {
-    "authentication_note": "<b>Complimentary access to JSTOR A&S XIV has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to JSTOR A&S XIV has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502234750003811": {
-    "authentication_note": "<b>Complimentary access to JSTOR Lives of Literature has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to JSTOR Lives of Literature has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502236740003811": {
-    "authentication_note": "<b>Complimentary access to JSTOR Lives of Literature has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to JSTOR Lives of Literature has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502253570003811": {
-    "authentication_note": "<b>Complimentary access to Academic Search Ultimate has been made available by EBSCO through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Academic Search Ultimate has been made available by EBSCO through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502255040003811": {
-    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502263000003811": {
-    "authentication_note": "<b>Complimentary access to Business Source Ultimate has been made available by EBSCO through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Business Source Ultimate has been made available by EBSCO through 6/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62502264950003811": {
-    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62503359910003811": {
-    "authentication_note": "<b>Complimentary access to Research Methods Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Research Methods Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62503359960003811": {
-    "authentication_note": "<b>Complimentary access to Sage Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Sage Video has been made available by SAGE through 6/21/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62503359990003811": {
-    "authentication_note": "<b>Complimentary access to additional Taylor & Francis eBooks has been made available by Taylor & Francis through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to additional Taylor & Francis eBooks has been made available by Taylor & Francis through 5/20/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62504593670003811": {
-    "authentication_note": "<b>Complimentary access to World Scientific journals has been made available by World Scientific through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to World Scientific journals has been made available by World Scientific through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62504659460003811": {
-    "authentication_note": "<b>Complimentary access to MedOne has been made available by Thieme through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to MedOne has been made available by Thieme through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62504659920003811": {
-    "authentication_note": "<b>Complimentary access to select ElgarOnline content has been made available by Elgar through 8/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to select ElgarOnline content has been made available by Elgar through 8/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62504659940003811": {
-    "authentication_note": "<b>Project Muse is continuing to add temporary, complimentary access to various publisher content in an effort to support increased online learning during the COVID-19 outbreak. <a href=\"https://about.muse.jhu.edu/resources/freeresourcescovid19/\">Full details here</a>.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Project Muse is continuing to add temporary, complimentary access to various publisher content in an effort to support increased online learning during the COVID-19 outbreak. <a href=\"https://about.muse.jhu.edu/resources/freeresourcescovid19/\">Full details here</a>.</b>"
   },
   "62504679350003811": {
-    "authentication_note": "<b>Complimentary access to Harvard Business eBooks has been made available by EBSCO through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Harvard Business eBooks has been made available by EBSCO through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62504709990003811": {
-    "authentication_note": "<b>Complimentary access to Business & Management Collection has been made available by Henry Stewart Talks through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Business & Management Collection has been made available by Henry Stewart Talks through 5/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62505473010003811": {
-    "authentication_note": "<b>Complimentary access to Berghan Journals has been made available by Berghan through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Berghan Journals has been made available by Berghan through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62505504310003811": {
-    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to LWW Health Library has been made available by Wolters Kluwer through 5/19/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62505556950003811": {
-    "authentication_note": "<b>Complimentary access to Emerald eBooks has been made available by Emerald through 5/16/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Emerald eBooks has been made available by Emerald through 5/16/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   },
   "62505597700003811": {
-    "authentication_note": "<b>Complimentary access to Emerald eBooks has been made available by Emerald through 5/16/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>",
-    "public_note": ""
+    "authentication_note": "<b>Complimentary access to Emerald eBooks has been made available by Emerald through 5/16/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505658990003811": {
+    "authentication_note": "<b>Complimentary access to Emerald eBooks has been made available by Emerald through 5/16/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505869860003811": {
+    "authentication_note": "<b>Complimentary access to Geo Science World eBooks has been made available by GeoScienceWorld through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505869990003811": {
+    "authentication_note": "<b>Complimentary access to Springer Textbooks has been made available by SpringerNature through 7/31/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505888510003811": {
+    "authentication_note": "<b>Complimentary access to Arte Publico has been made available by EBSCO through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929820003811": {
+    "authentication_note": "<b>Complimentary access to De Gruyter eBooks has been made available by DeGruyter through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929840003811": {
+    "authentication_note": "<b>Complimentary access to manchesterhive has been made available by Manchester University Press through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929860003811": {
+    "authentication_note": "<b>Complimentary access to Theology & Religion Online has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929880003811": {
+    "authentication_note": "<b>Complimentary access to Human Kinetics Library has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929900003811": {
+    "authentication_note": "<b>Complimentary access to Medieval Studies has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505929920003811": {
+    "authentication_note": "<b>Complimentary access to Education and Childhood Studies has been made available by Bloomsbury Digital through 5/15/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62505962650003811": {
+    "authentication_note": "<b>Complimentary access to Arte Publico has been made available by EBSCO through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62506040500003811": {
+    "authentication_note": "<b>Complimentary access to Historical Serials has been made available by EBSCO through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62506305290003811": {
+    "authentication_note": "<b>Complimentary access to ATLA Historical Monographs has been made available by EBSCO through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62506747520003811": {
+    "authentication_note": "<b>Complimentary access to ATLA Historical Monographs has been made available by EBSCO through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62508680380003811": {
+    "authentication_note": "<b>Complimentary access to Guilford Press journals has been made available by Guilford through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62508709270003811": {
+    "authentication_note": "<b>Complimentary access to IET Digital Library has been made available by IET through 6/7/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513289030003811": {
+    "authentication_note": "<b>Complimentary access to UK Periodicals has been made available by Gale through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513294210003811": {
+    "authentication_note": "<b>Complimentary access to US Newspapers has been made available by Gale through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513298130003811": {
+    "authentication_note": "<b>Complimentary access to UK Periodicals has been made available by Gale through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513299210003811": {
+    "authentication_note": "<b>Complimentary access to JSTOR Public Health has been made available by JSTOR through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513759990003811": {
+    "authentication_note": "<b>Complimentary access to IGI Global has been made available by IGI through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513903250003811": {
+    "authentication_note": "<b>Complimentary access to IGI Global has been made available by IGI through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
+  },
+  "62513909990003811": {
+    "authentication_note": "<b>Complimentary access to IGI Global has been made available by IGI through 6/30/20 in an effort to support increased online learning during the COVID-19 outbreak.</b>"
   }
 }
