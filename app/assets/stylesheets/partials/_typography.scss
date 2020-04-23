@@ -1,55 +1,21 @@
 /* === TYPOGRAPHY  === */
 
 @font-face {
-  font-family: 'BebasNeueRegular';
-  src: font-url('BebasNeue-webfont.eot');
-  src: font-url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),font-url('BebasNeue-webfont.woff') format('woff'),font-url('BebasNeue-webfont.ttf') format('truetype'),font-url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-
-@font-face {
-  font-family: 'Droid';
-  src: font-url('droidsans-webfont.eot');
-  src: font-url('droidsans-webfont.eot?#iefix') format('embedded-opentype'),font-url('droidsans-webfont.woff') format('woff'),font-url('droidsans-webfont.ttf') format('truetype'),font-url('droidsans-webfont.svg#Droid') format('svg');
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-
-@font-face {
-  font-family:'Colfax-Medium';
-  src:url(/fonts/Colfax-Medium.eot);
-  src:url(/fonts/Colfax-Medium.eot?#iefix) format("embedded-opentype"),font-url('Colfax-Medium.otf') format("woff"),font-url('Colfax-Medium.ttf') format("truetype"),font-url('Colfax-Medium.svg#svgFontName') format("svg");
-  speak: none;
-}
-
-@font-face {
-  font-family: 'DroidBld';
-  src: font-url('droidsans-bold-webfont.eot');
-  src: font-url('droidsans-bold-webfont.eot?#iefix') format('embedded-opentype'),font-url('droidsans-bold-webfont.woff') format('woff'),font-url('droidsans-bold-webfont.ttf') format('truetype'),font-url('droidsans-bold-webfont.svg#DroidBld') format('svg');
-  font-weight: normal !important;
-  font-style: normal !important;
-}
-
-@font-face {
-  font-family: 'Crimson Text';
-  src: font-url('CrimsonText-Regular.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'Faustina';
   src: font-url('faustina.woff2') format('woff2');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Roboto Condensed';
   src: font-url('roboto-condensed.woff2') format('woff2');
+  font-display: swap;
 }
 
-.bebas {
-  font-family: BebasNeueRegular;
+.roboto {
+  font-family: Roboto Condensed;
 }
 
-.droid {
-  font-family: Droid;
+.faustina {
+  font-family: Faustina;
 }

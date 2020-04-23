@@ -63,7 +63,10 @@ task :reload_electronic_notes, [:path] do |_, args|
     abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
 
     puts "Reloading the electronic #{type} notes..."
-    Rails.configuration.electronic_collection_notes =
-      Alma::ConfigUtils.load_notes(type: type)
+    Rails.configuration.send("electronic_#{type}_notes=",
+                             Alma::ConfigUtils.load_notes(type: type))
   end
+
+  # Clear the Rails cache in case an e-note was cached
+  Rails.cache&.clear
 end

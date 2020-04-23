@@ -679,7 +679,7 @@ RSpec.describe CatalogHelper, type: :helper do
   describe "#_build_libwizard_url(document)" do
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
     let(:constructed_url) { helper._build_libwizard_url(document) }
-    context "document is missign all data" do
+    context "document is missing all data" do
       let(:document) { {} }
       it "returns a url with no params" do
         expect(constructed_url).to eq base_url
@@ -722,6 +722,44 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:document) { { "availability_facet" => "At the Library" } }
       it "returns a button" do
         expect(button).to include("button>")
+      end
+    end
+    context "is a physical item and an online item" do
+      let(:document) { {
+        "availability_facet" => "At the Library",
+        "electronic_resource_display" => "foo"
+         } }
+      it "returns nil" do
+        expect(button).to be nil
+      end
+    end
+    context "is a physical item with hathitrust link" do
+      let(:document) { {
+        "availability_facet" => "At the Library",
+        "hathi_trust_bib_key_display" => "foo"
+         } }
+      it "returns nil" do
+        expect(button).to be nil
+      end
+    end
+  end
+
+  describe "#build_hathitrust_url(document)" do
+    let(:document) { { "hathi_trust_bib_key_display" => ["000005117"] } }
+    let(:base_url) { "https://catalog.hathitrust.org/Record/000005117?signon=swle:https://fim.temple.edu/idp/shibboleth" }
+    let(:constructed_url) { helper.build_hathitrust_url(document) }
+
+    it "returns a correctly formed url" do
+      expect(constructed_url).to eq base_url
+    end
+  end
+
+  describe "#render_hathitrust_display(document)" do
+    context "record has a hathi_trust_bib_key_display field" do
+      let(:document) { { "hathi_trust_bib_key_display" => ["000005117"] } }
+
+      it "renders the online partial" do
+        expect(helper.render_hathitrust_display(document)).not_to be_nil
       end
     end
   end

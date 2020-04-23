@@ -1,7 +1,8 @@
 <% doc_presenter = index_presenter(document) %>
   <%= render_online_availability_button(document) %>
+  <%= render_hathitrust_button(document) %>
   <%= render_purchase_order_availability(doc_presenter) %>
-  
+
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break pt-md-3"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
@@ -21,7 +22,7 @@
               <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-sm btn-primary request-button search-results-request-btn") %>
             <% end %>
           </div>
-        </div> 
+        </div>
 
         <div data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container mt-1">
             <div class="border border-header-grey mt-0" data-target="availability.panel">

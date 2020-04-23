@@ -32,7 +32,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 73f9df5c1e378f7ed63547055ce628a0cd66ae73
+  revision: 87891ba946bf748af10f1d51a71533359dfd13c9
   branch: master
   specs:
     alma (0.3.0)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 48cae996bd2b1287c1e72daa8585d926f13362f4
+  revision: 893debab43bf1768d75a3f47405ce8435072d6d7
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -185,7 +185,7 @@ GEM
     bootstrap-select-rails (1.13.8)
     browser (4.0.0)
     builder (3.2.4)
-    byebug (11.1.1)
+    byebug (11.1.2)
     capybara (3.32.1)
       addressable
       mini_mime (>= 0.1.3)
@@ -369,7 +369,7 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.19.1)
-    parser (2.7.0.5)
+    parser (2.7.1.1)
       ast (~> 2.4.0)
     parslet (1.8.2)
     popper_js (1.16.0)
@@ -448,7 +448,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    rubocop (0.81.0)
+    rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
@@ -476,9 +476,9 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    skylight (4.2.3)
-      skylight-core (= 4.2.3)
-    skylight-core (4.2.3)
+    skylight (4.3.0)
+      skylight-core (= 4.3.0)
+    skylight-core (4.3.0)
       activesupport (>= 4.2.0)
     slop (3.6.0)
     solr_wrapper (2.2.0)
