@@ -65,13 +65,13 @@ task :reload_electronic_notes, [:path] => :environment do |_, args|
 
     puts
     puts "Reloading the electronic #{type} notes from #{filename}..."
-    notes = Alma::ConfigUtils.load_notes(type: type, path: filename)
 
+    notes = Alma::ConfigUtils.load_notes(type: type, path: filename)
     puts "Number of #{type} notes to be loaded: #{notes&.count.to_i}"
 
-    puts "Reloading the electronic #{type} notes from #{filename}..."
     store = JsonStore.find_or_initialize_by(name: "#{type}_notes")
     puts "Current number of #{type} notes: #{store.value&.count.to_i}"
+
     store.value = notes
 
     abort("Failed to reload #{type} notes") unless store.save
