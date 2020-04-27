@@ -421,8 +421,10 @@ module CatalogHelper
   end
 
   def electronic_notes(type)
-    Rails.cache.fetch("#{type}_notes") do
-      ElectronicNotesBag.find_by(note_type: type)&.value || {}
+    name = "#{type}_notes"
+
+    Rails.cache.fetch(name) do
+      JsonStore.find_by(name: name)&.value || {}
     end
   end
 

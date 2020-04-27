@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 2020_04_22_020027) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "electronic_notes_bags", force: :cascade do |t|
-    t.string "note_type"
+  create_table "json_stores", force: :cascade do |t|
+    t.string "name"
     t.json "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["note_type"], name: "index_electronic_notes_bags_on_note_type", unique: true
+    t.index ["name"], name: "index_json_stores_on_name", unique: true
   end
 
   create_table "searches", force: :cascade do |t|

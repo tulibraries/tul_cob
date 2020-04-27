@@ -70,11 +70,11 @@ task :reload_electronic_notes, [:path] => :environment do |_, args|
     puts "Number of #{type} notes to be loaded: #{notes&.count.to_i}"
 
     puts "Reloading the electronic #{type} notes from #{filename}..."
-    bag = ElectronicNotesBag.find_or_initialize_by(note_type: type)
-    puts "Current number of #{type} notes: #{bag.value&.count.to_i}"
-    bag.value = notes
+    store = JsonStore.find_or_initialize_by(name: "#{type}_notes")
+    puts "Current number of #{type} notes: #{store.value&.count.to_i}"
+    store.value = notes
 
-    abort("Failed to reload #{type} notes") unless bag.save
+    abort("Failed to reload #{type} notes") unless store.save
 
     puts "Delete the #{type}_notes cache..."
     Rails.cache.delete("#{type}_notes")
