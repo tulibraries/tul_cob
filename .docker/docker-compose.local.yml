@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: .docker/app/Dockerfile
+      dockerfile: app/Dockerfile
       target: development
     stdin_open: true
     tty: true

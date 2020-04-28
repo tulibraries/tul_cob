@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: .docker/sp/Dockerfile
+      dockerfile: sp/Dockerfile
     entrypoint:
       - httpd-foreground
     ports:
