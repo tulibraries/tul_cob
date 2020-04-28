@@ -97,7 +97,7 @@ div #main-container {
 
 #getting-started {
   font-size: 1rem;
-  margin: 1.875rem;
+  margin: 1.875rem 6.25rem;
 }
 
 #getting-started a, .everything-explanation a {
@@ -199,21 +199,37 @@ img {
 }
 
 /* === CHAT WIDGET === */
-.lcs_slide_out-r {top: 30% !important;}
-
-#lcs_slide_out_button-15559 {
-  text-align:left;
-  width: 6.125rem;
+.lcs_slide_out {
+  position: fixed;
+  right: 0;
+  z-index: 1000;
+  transform: rotate(90deg) !important;
+  @media (max-device-width: 767px) {
+    display: none !important;
+  }
+}
+.lcs_slide_out a, .lcs_slide_out a:hover {
+  display:block;
+  text-align: left;
+  padding: 0.125rem 0 0 0.75rem;
+  position: absolute;
   background-image: url(<%= asset_path "chat.png" %>);
   background-position: right center;
   background-repeat: no-repeat;
   background-size: 2.625rem 3.0625rem;
-  font-size: 125%;
-}
-@media (max-device-width: 767px) {
-  #lcs_slide_out_button-15559 {
-    display: none !important;
-  }
+  font-size: 1.55rem;
+  font-family: "Faustina";
+  width: 6.875rem;
+  height: 3.125rem;
+  color: $white !important;
+  background-color: rgb(47, 40, 126);
+  box-shadow: rgb(204, 204, 204) 0px 0px 0.3125rem;
+  border: solid $white 0.25rem;
+  border-width: 0 0.25rem 0.25rem !important;
+  border-radius: 0 0 0.25rem 0.25rem !important;
+  border-color: $white !important;
+  cursor: hand;
+  text-decoration: none;
 }
 
 /* === SPINNER ANIMATIONS  === */
