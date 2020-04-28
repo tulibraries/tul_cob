@@ -32,10 +32,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 87891ba946bf748af10f1d51a71533359dfd13c9
+  revision: 35cb23932152f9e611571e000488551ab2254952
   branch: master
   specs:
-    alma (0.3.0)
+    alma (0.3.1)
       activesupport
       ezwadl
       httparty
@@ -341,7 +341,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2019.1009)
+    mime-types-data (3.2020.0425)
     mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
