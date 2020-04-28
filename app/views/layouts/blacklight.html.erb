@@ -45,6 +45,10 @@
     <div id="page-wrapper">
       <%= render :partial => "shared/header_navbar" %>
 
+      <div class="lcs_slide_out">
+        <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=http%3A%2F%2Flibrary.temple.edu%2Fhsl&referer_title=Temple%20University%20Libraries", target: "_blank" %>
+      </div>
+
       <div class="p-md-3">
         <%= render :partial=>'/shared/flash_msg' %>
       </div>
@@ -52,6 +56,8 @@
       <%= render partial: "shared/modal" %>
 
       <div id="main-container" class="col-sm-10 col-md-12 mx-auto p-0 m-0" role="main">
+
+
         <div class="pb-5">
           <%= yield %>
         </div>
@@ -59,8 +65,5 @@
 
       <%= render :partial => "shared/footer" %>
     </div>
-
-    <!-- <div id="libchat_30f080f880d8c45b12979ec4e41b0c6e"></div> -->
-    <script type="text/javascript" src="https://v2.libanswers.com/load_chat.php?hash=30f080f880d8c45b12979ec4e41b0c6e"></script>
   </body>
 </html>
