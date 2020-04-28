@@ -1,5 +1,5 @@
-DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
-CI-DOCKER := docker-compose -p tul_cob -f docker-compose.ci.yml
+DOCKER := docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.local.yml
+CI-DOCKER := docker-compose -p tul_cob -f .docker/docker-compose.ci.yml
 
 ci-up:
 	git submodule init
