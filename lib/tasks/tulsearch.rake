@@ -7,12 +7,17 @@ namespace :tul_cob do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
-      fixtures = args.fetch(:filepath, "spec/fixtures/*.xml")
-
-      Dir.glob(fixtures).sort.reverse.each do |file|
-        solr_url = Blacklight::Configuration.new.connection_config[:url]
-        `SOLR_URL=#{solr_url} cob_index ingest --commit #{file}`
+      fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
+      if ENV["RELEVANCE"]
+        fixtures += Dir.glob("spec/relevance/fixtures/*.xml")
       end
+
+      solr_url = Blacklight::Configuration.new.connection_config[:url]
+      fixtures.sort.reverse.each  do |file|
+        `SOLR_URL=#{solr_url} cob_index ingest #{file}`
+      end
+      solr = RSolr.connect url: solr_url
+      solr.commit
 
       if args[:filepath]
         # Short circuit if filepath is set because that's only safe for

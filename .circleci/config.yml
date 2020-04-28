@@ -39,27 +39,68 @@ workflows:
 
 jobs:
   run_tests:
-    machine: true
+    docker:
+      - image: cimg/base:2020.01
     steps:
       - checkout
-      - run:
-          name: Install Docker Compose
-          command: |
-            curl -L https://github.com/docker/compose/releases/download/1.24.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
-            chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+
+      - restore_cache:
+          keys:
+            - gem-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v2-{{ arch }}-{{ .Branch }}
+            - gem-cache-v2-{{ arch }}
+            - yarn-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+
+      
+      - setup_remote_docker:
+          docker_layer_caching: false
+
       - run:
           name: Build app
-          command: make up
+          command: make ci-up
+
+      - run:
+          name: Copy local bundler files to app container
+          command: make ci-copy-bundle-files
+
+      - run:
+          name: Copy local node_modules to app container
+          command: make ci-copy-node-modules
+
+      - run:
+          name: Run bundler on the app container
+          command: make ci-bundle-install
+
+      - run:
+          name: Run yarn install on the app container
+          command: make ci-yarn-install
+
+      - run:
+          name: Copy the vendor/bundle frome the container to local
+          command: make ci-copy-bundle-files-to-local
+      
+      - run:
+          name: Copy the node_modules from the container to local
+          command: make ci-copy-node-modules-to-local
+      
+      - save_cache:
+          key: gem-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+              - vendor/bundle
+      - save_cache:    
+          key: yarn-cache-v2-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          paths:
+              - node_modules
+
       - run:
           name: Run linter
-          command: make lint
+          command: make ci-lint
       - run:
           name: Run ruby tests
-          command: make test
+          command: make ci-test
       - run:
           name: Run javascript tests
-          command: make test-js
+          command: make ci-test-js
 
   qa_deploy:
     docker:
