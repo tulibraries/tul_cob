@@ -258,12 +258,9 @@ RSpec.describe CatalogHelper, type: :helper do
 
   describe "#get_unavailable_notes" do
     let(:service_notes) {  { "foo" => { "value" => "foo" } } }
-    let(:config) { OpenStruct.new(
-      electronic_service_notes: service_notes
-    ) }
 
     before do
-      allow(Rails).to receive(:configuration) { config }
+      allow(helper).to receive(:electronic_notes).with("service") { service_notes }
     end
 
     context "with no unavailable notes" do
@@ -293,14 +290,11 @@ RSpec.describe CatalogHelper, type: :helper do
     let(:service_notes) {  { "foo" => { "value" => "foo" } } }
     let(:collection_notes) {  { "bizz" => { "value" => "bar" } } }
     let(:public_notes) { "public note" }
-    let(:config) { OpenStruct.new(
-      electronic_collection_notes: collection_notes,
-      electronic_service_notes: service_notes
-    ) }
 
     before do
       allow(helper).to receive(:render) { "rendered note" }
-      allow(Rails).to receive(:configuration) { config }
+      allow(Rails.cache).to receive(:fetch).with("collection_notes") { collection_notes }
+      allow(Rails.cache).to receive(:fetch).with("service_notes") { service_notes }
     end
 
     context "with no notes" do

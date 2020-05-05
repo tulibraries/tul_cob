@@ -420,20 +420,28 @@ module CatalogHelper
     [ "service_temporarily_unavailable", "service_unavailable_date", "service_unavailable_reason" ]
   end
 
+  def electronic_notes(type)
+    name = "#{type}_notes"
+
+    Rails.cache.fetch(name) do
+      JsonStore.find_by(name: name)&.value || {}
+    end
+  end
+
   def get_collection_notes(id)
-    (Rails.configuration.electronic_collection_notes[id] || {})
+    (electronic_notes("collection")[id] || {})
       .except(*service_unavailable_fields)
       .values.select(&:present?)
   end
 
   def get_service_notes(id)
-    (Rails.configuration.electronic_service_notes[id] || {})
+    (electronic_notes("service")[id] || {})
       .except(*service_unavailable_fields)
       .values.select(&:present?)
   end
 
   def get_unavailable_notes(id)
-    [(Rails.configuration.electronic_service_notes[id] || {})
+    [(electronic_notes("service")[id] || {})
       .slice(*service_unavailable_fields)
       .except("service_temporarily_unavailable")
       .select { |k, v| v.present? }
