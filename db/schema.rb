@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_04_22_020027) do
 
   create_table "json_stores", force: :cascade do |t|
     t.string "name"
-    t.json "value"
+    t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_json_stores_on_name", unique: true
