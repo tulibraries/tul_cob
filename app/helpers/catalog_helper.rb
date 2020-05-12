@@ -441,12 +441,10 @@ module CatalogHelper
   end
 
   def get_unavailable_notes(id)
-    [(electronic_notes("service")[id] || {})
-      .slice(*service_unavailable_fields)
-      .except("service_temporarily_unavailable")
-      .select { |k, v| v.present? }
-      .map { |k, v| [k.titleize, v] }.to_h]
-      .select(&:present?)
+    (electronic_notes("service")[id] || {})
+      .slice("service_unavailable_reason")
+      .select { |k, v| v.present? }.values
+      .map { |reason| "This service is temporarily unavailable due to: #{reason}." }
   end
 
   def render_electronic_notes(field)

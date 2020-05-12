@@ -2,13 +2,7 @@
   <strong>Notes:</strong>
 
   <% unavailable_notes.each do |note| %>
-    <div class="alert alert-danger">
-      <p>This service is temporarily unavailable<p>
-
-      <% note.each do |label, value| %>
-        <p> <%= "#{label}" %>: <%= "#{value}" %></p>
-      <% end %>
-    </div>
+    <div class="alert alert-danger"><p><%= raw note %></p></div>
   <% end %>
 
   <% collection_notes.each do |note| %>
