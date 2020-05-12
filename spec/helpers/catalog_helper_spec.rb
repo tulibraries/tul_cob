@@ -278,10 +278,7 @@ RSpec.describe CatalogHelper, type: :helper do
       } } }
 
       it "should not return any unavailability notes" do
-        expect(helper.get_unavailable_notes("bizz")).to eq([{
-          "Service Unavailable Date" => "buzz",
-          "Service Unavailable Reason" => "bar",
-        }])
+        expect(helper.get_unavailable_notes("bizz")).to eq(["This service is temporarily unavailable due to: bar."])
       end
     end
   end
