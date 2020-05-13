@@ -49,7 +49,7 @@ jobs:
             - gem-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - gem-cache-v4-{{ arch }}-{{ .Branch }}
             - gem-cache-v4-{{ arch }}
-            - yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+            - yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       
       - setup_remote_docker:
@@ -88,7 +88,7 @@ jobs:
           paths:
               - vendor/bundle
       - save_cache:    
-          key: yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "package-lock.json" }}
+          key: yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
