@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 46e7765d1ad4643a12f2cc85d9c7251e2b5b6c98
+  revision: c14eb1dda2868cacf37892a6f28ee1dac30b34be
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 639eab3113ba898ff5c0c705f505a68aff83fa91
+  revision: 0aed9febc9af07e5cc2488e707dbf5ca64304381
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -294,7 +294,6 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    jaro_winkler (1.5.4)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.3.5)
@@ -341,7 +340,7 @@ GEM
     method_source (0.9.2)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2020.0425)
+    mime-types-data (3.2020.0512)
     mimemagic (0.3.4)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -369,7 +368,7 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     parallel (1.19.1)
-    parser (2.7.1.1)
+    parser (2.7.1.2)
       ast (~> 2.4.0)
     parslet (1.8.2)
     popper_js (1.16.0)
@@ -378,7 +377,7 @@ GEM
       method_source (~> 0.9.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.4)
+    public_suffix (4.0.5)
     puma (3.12.4)
     rack (2.2.2)
     rack-proxy (0.6.5)
@@ -448,8 +447,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    rubocop (0.82.0)
-      jaro_winkler (~> 1.5.1)
+    rubocop (0.83.0)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
       rainbow (>= 2.2.2, < 4.0)

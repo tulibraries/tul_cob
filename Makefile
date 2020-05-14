@@ -7,16 +7,16 @@ ci-up:
 	$(CI-DOCKER) up -d
 
 ci-copy-bundle-files:
-	if [ -d vendor/bundle ]; then docker cp vendor/bundle tul_cob_app_1:/app/vendor/bundle; fi
+	if [ -d vendor/bundle ]; then docker cp vendor/bundle tul_cob_app_1:/app/vendor/; fi
 
 ci-copy-bundle-files-to-local:
-	docker cp tul_cob_app_1:/app/vendor/bundle vendor/bundle
+	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
 
 ci-copy-node-modules:
-	if [ -d node_modules ]; then  docker cp node_modules tul_cob_app_1:/app/node_modules; fi
+	if [ -d node_modules ]; then  docker cp node_modules tul_cob_app_1:/app/; fi
 
 ci-copy-node-modules-to-local:
-	docker cp tul_cob_app_1:/app/node_modules node_modules 
+	docker cp tul_cob_app_1:/app/node_modules .
 
 ci-bundle-install:
 	$(CI-DOCKER) exec app bundle install --path vendor/bundle
