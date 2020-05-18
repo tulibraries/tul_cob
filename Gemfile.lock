@@ -170,7 +170,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.5.1)
+    blacklight (7.7.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
@@ -341,7 +341,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.4)
+    mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
@@ -569,7 +569,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.5.1)
+  blacklight (~> 7.7.0)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
