@@ -170,12 +170,13 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.5.1)
+    blacklight (7.8.0)
       deprecation
       globalid
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       rails (>= 5.1, < 7)
+      view_component
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     bootstrap (4.4.1)
@@ -341,7 +342,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2020.0512)
-    mimemagic (0.3.4)
+    mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
@@ -542,6 +543,8 @@ GEM
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
     vcr (5.1.0)
+    view_component (2.7.0)
+      activesupport (>= 5.0.0, < 7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -572,7 +575,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.5.1)
+  blacklight (~> 7.8.0)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
