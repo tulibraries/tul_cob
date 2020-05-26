@@ -246,8 +246,8 @@ module BlacklightAdvancedSearch
     end
 
     def guided_search(my_params = params)
-      my_params.select { |p| p.match(/^q/) }
-        .to_unsafe_h.with_indifferent_access
+      my_params.to_h
+        .with_indifferent_access.select { |p| p.match(/^q/) }
         .select { |q, v| ! my_params[q].blank? }
         .map { |q, v|
 
