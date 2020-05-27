@@ -17,6 +17,7 @@ module Blacklight::PrimoCentral
     # Execute a search against Primo PNXS API.
     def search(params = {})
       data = params[:query]
+      data["searchCDI"] = true
 
       duration =
         if data[:id]
