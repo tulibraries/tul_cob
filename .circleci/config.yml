@@ -11,14 +11,15 @@ workflows:
          filters:
            branches:
              only:
-               - qa
+               - master
   stage_deploy:
     jobs:
       - stage_deploy:
           filters:
             branches:
-              only:
-                - master
+              ignore: /.*/
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*$/
   prod_deploy:
     jobs:
       - request-prod-deploy:
