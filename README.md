@@ -1,6 +1,16 @@
-# Library Search (i.e. "Catalog on Blacklight")
+# Library Search
 
-A minimal Blacklight Application for exploring Temple University MARC data in preparation for migration to Alma.
+Library Search is a [Blacklight](https://projectblacklight.org/) project at Temple University Libraries for the discovery of library resources. See https://librarysearch.temple.edu/ for our production site.
+
+The first phase of this project (i.e. TUL "Catalog on Blacklight") focused on search for our catalog records and fulfillment integration with our ILS, Alma. It now also includes discovery for: Primo Central Index article records, Springshare A-Z database records, and [library website content](https://github.com/tulibraries/manifold). 
+
+The following repositories are also critical components for Solr indexing and other integrations in the Library Search: 
+* Processing pipeline: https://github.com/tulibraries/cob_datapipeline
+* Catalog: https://github.com/tulibraries/cob_index, https://github.com/tulibraries/tul_cob-catalog-solr 
+* A-Z databases: https://github.com/tulibraries/cob_az_index, https://github.com/tulibraries/tul_cob-az-solr
+* Web content: https://github.com/tulibraries/cob_web_index, https://github.com/tulibraries/tul_cob-web-solr
+* Article index: https://github.com/tulibraries/primo
+
 
 [![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
 [![Coverage Status](https://coveralls.io/repos/github/tulibraries/tul_cob/badge.svg?branch=master)](https://coveralls.io/github/tulibraries/tul_cob?branch=master)
