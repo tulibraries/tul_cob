@@ -74,7 +74,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 39f752cc6d53860530939167be6e6f24c71ab538
+  revision: 37c6cced92eb0d74443c11038a83d695f37c5395
   branch: qa
   specs:
     cob_index (0.1.0)
@@ -248,13 +248,13 @@ GEM
       railties (>= 4.2.0)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.12.2)
+    ffi (1.13.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
     foreman (0.87.1)
     formatador (0.2.5)
-    gli (2.19.0)
+    gli (2.19.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
