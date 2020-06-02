@@ -170,7 +170,7 @@ GEM
       rails (>= 3.2.3, < 6)
       summon
     bindex (0.5.0)
-    blacklight (7.8.0)
+    blacklight (7.8.1)
       deprecation
       globalid
       jbuilder (~> 2.7)
@@ -560,7 +560,7 @@ GEM
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
-    websocket-driver (0.7.1)
+    websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
     xml-simple (1.1.5)
@@ -575,7 +575,7 @@ DEPENDENCIES
   alma!
   awesome_print
   bento_search
-  blacklight (~> 7.8.0)
+  blacklight (~> 7.8.1)
   blacklight-marc!
   blacklight-ris!
   blacklight_advanced_search!
