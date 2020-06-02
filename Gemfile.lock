@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 1bedc9950019f9e521fe0aa3d305317da71c5acd
+  revision: 22e154f8c4a31a43ef9572f4258c72d4a5b82947
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -248,13 +248,13 @@ GEM
       railties (>= 4.2.0)
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.12.2)
+    ffi (1.13.0)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
     foreman (0.87.1)
     formatador (0.2.5)
-    gli (2.19.0)
+    gli (2.19.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
