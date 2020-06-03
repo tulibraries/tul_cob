@@ -13,9 +13,10 @@ module AvailabilityHelper
     if unavailable_libraries.include?(item.library) ||
         unavailable_locations.include?(item.location)
 
-      library_link = "#{Rails.configuration.library_link}forms/storage-request"
+      # library_link = "#{Rails.configuration.library_link}forms/storage-request"
 
-      label = "In temporary storage — " + link_to("Recall item now", library_link)
+      label = "In temporary storage"
+      # + link_to("Recall item now", library_link)
 
       content_tag(:span, "", class: "close-icon") + raw(label)
     elsif item.in_place? && item.item_data["requested"] == false
