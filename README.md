@@ -31,7 +31,7 @@ cp config/secrets.yml.example config/secrets.yml
 We also need to configure the application with our Alma and Primo apikey for development work on the Bento box or User account. Start by copying the example alma and bento config files.
 
 ```bash
-cp config.alma.yml.example config/alma.yml
+cp config/alma.yml.example config/alma.yml
 cp config/bento.yml.example config/bento.yml
 ```
 
