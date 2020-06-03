@@ -12,7 +12,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "links to new outside form" do
-        label = "<span class=\"close-icon\"></span>In temporary storage — <a href=\"https://library.temple.edu/forms/storage-request\">Recall item now</a>"
+        label = "<span class=\"close-icon\"></span>In temporary storage"
 
         expect(availability_status(item)).to eq(label)
       end
