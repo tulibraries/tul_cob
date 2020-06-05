@@ -2,7 +2,11 @@
   <div class="container">
     <%= render_bento_results %>
   </div>
+
+  <%= render :partial => "digital_collections" %>
+  <%= render :partial => "research_guides_faq" %>
   <%= render :partial => "resource_types" %>
+
 <% else %>
   <div class="bento-container">
     <%= render("home_text") %>

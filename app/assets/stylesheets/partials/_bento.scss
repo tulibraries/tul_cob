@@ -73,14 +73,20 @@
 .bento-resource-types {
 	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
+	padding: 1rem 9.375rem;
 }
 
 .bento-resource-container {
-	margin: 0 9.375rem;
+	// margin: 0 9.375rem;
 
 	@media(max-width: 768px) {
 		margin: 0 1.2rem;
 	}
+}
+
+.bento-resource-types-list {
+	color: $red;
+	padding: 0 9.375rem;
 }
 
 .bento-resource-list-item {
@@ -89,8 +95,11 @@
 	width: 30%;
 
 	a {
-		color: $black !important;
 		text-decoration: underline;
+	}
+
+	a:hover, a:visited, a:active {
+		color: $red !important;
 	}
 
 	@media(max-width: 991px) {
