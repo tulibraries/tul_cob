@@ -146,5 +146,5 @@ jobs:
           command: bash .circleci/deploy-prod.sh
 
       - run:
-          name: Update Airflow On Deployment
+          name: Set Production Airflow Variable "CATALOG_PRODUCTION_SOLR_COLLECTION" to match value in .env
           command: bash .circleci/update-airflow.sh
