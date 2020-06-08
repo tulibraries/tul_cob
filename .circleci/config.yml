@@ -144,3 +144,7 @@ jobs:
             - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
       - run:
           command: bash .circleci/deploy-prod.sh
+
+      - run:
+          name: Set Production Airflow Variable "CATALOG_PRODUCTION_SOLR_COLLECTION" to match value in .env
+          command: bash .circleci/update-airflow.sh
