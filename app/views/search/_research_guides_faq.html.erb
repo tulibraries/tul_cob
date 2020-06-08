@@ -1,0 +1,13 @@
+<div class="bento-resource-container w-100">
+  <h2 class="bento-resource-types bg-website-grey"><%= t("bento.research_guides_header") %></h2>
+  <ul class=" py-3 bento-resource-types-list pt-2 m-0 list-inline d-flex flex-wrap justify-content-start">
+    <li class="bento-resource-list-item list-inline-item pb-1">
+      <%= tag.span class: "research_guides-icon" %>
+      <%= link_to(t("bento.research_guides_html"), t("bento.research_guides_link"), class: "text-red bento-resource-list-item", target: "_blank") %>
+    </li>
+    <li class="bento-resource-list-item list-inline-item pb-1">
+      <%= content_tag(:span, "", class: "faq-icon") %>
+      <%= link_to(t("bento.faq_html"), t("bento.faq_link"), class: "text-red bento-resource-list-item", target: "_blank") %>
+    </li>
+  </ul>
+</div>
