@@ -173,6 +173,12 @@ module CatalogHelper
       "rft.isbn" => solr_field_to_s(document, "isbn_display"),
       "rft.issn" => solr_field_to_s(document, "issn_display"),
       "rft.oclcnum" => solr_field_to_s(document, "oclc_display"),
+      "rft.pub" => [
+        solr_field_to_s(document, "imprint_display"),
+        solr_field_to_s(document, "imprint_prod_display"),
+        solr_field_to_s(document, "imprint_dist_display"),
+        solr_field_to_s(document, "imprint_man_display"),
+      ].select(&:present?).join(", "),
     }
     sid = solr_field_to_s(document, "id")
     if sid.present?

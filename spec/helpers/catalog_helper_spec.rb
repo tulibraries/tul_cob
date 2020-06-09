@@ -686,7 +686,11 @@ RSpec.describe CatalogHelper, type: :helper do
         "id" => "bestIDever",
         "isbn_display" => ["12345678"],
         "issn_display" => ["4567890123", "9087654321"],
-        "oclc_display" => ["98765432"]
+        "oclc_display" => ["98765432"],
+        "imprint_display" => ["imprint_display_1", "imprint_display_2"],
+        "imprint_prod_display" => ["imprint_prod_display"],
+        "imprint_dist_display" => ["imprint_dist_display"],
+        "imprint_man_display" => ["imprint_man_display"],
         }
       }
       it "maps the expected parameters" do
@@ -697,6 +701,7 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(constructed_url).to include("rft.isbn=12345678")
         expect(constructed_url).to include("rft.issn=4567890123%2C+9087654321")
         expect(constructed_url).to include("rft.oclcnum=98765432")
+        expect(constructed_url).to include("rft.pub=imprint_display_1%2C+imprint_display_2%2C+imprint_prod_display%2C+imprint_dist_display%2C+imprint_man_display")
       end
     end
   end
