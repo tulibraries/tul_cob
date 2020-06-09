@@ -1,3 +1,5 @@
+// This file configures the Google Analytics Tracking service.
+
 $(document).ready(function(){
 	setTimeout(function(){
 
@@ -40,6 +42,9 @@ $(document).ready(function(){
 			{class: "search-results-request-btn", category: "search-results"},
 			{class: "record-page-request-btn", category: "record-page"},
 			{class: "availability-btn", category: "search-results"},
+      {class: "temp-help-btn", category: "search-results"},
+      {class: "google-preview", category: "record-page"},
+      {class: "hathytrust-link", category: "search-results"},
 		];
 
 	  const handleEventClicks = (label, category) => {
