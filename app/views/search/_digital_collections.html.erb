@@ -1,7 +1,7 @@
 <% format_facet = @response.aggregations["format"] %>
 
   <div class="bento-resource-container w-100">
-    <h2 class="bento-resource-types bg-website-grey"><%= t("bento.resource_types_header") %></h2>
+    <h2 class="bento-resource-types bg-website-grey"><%= t("bento.digital_collections_header") %></h2>
     <ul class=" py-3 bento-resource-types-list pt-2 m-0 list-inline d-flex flex-wrap justify-content-start">
       <% format_facet.items.select do |item| -%>
         <% if item.value == "digital_collections" %>
