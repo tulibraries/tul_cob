@@ -65,6 +65,15 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(primo_central_parameters["query"]["q"]["value"]).to eq("'foo'")
       end
     end
+
+    context "with searchCDI param" do
+      let(:params) { ActionController::Parameters.new(q: "foo", searchCDI: "true") }
+
+      it "supports Primo's searchCDI field" do
+        expect(primo_central_parameters["query"]["searchCDI"]).to eq(true)
+      end
+    end
+
   end
 
   describe ".process_advanced_search" do
