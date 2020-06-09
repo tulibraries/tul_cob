@@ -45,6 +45,8 @@ module Blacklight::PrimoCentral
           q: { value: value }
         }
       end
+
+      primo_central_parameters[:query].merge!({ searchCDI: true }) if blacklight_params["searchCDI"] == "true"
     end
 
     def set_query_field(primo_central_parameters)
