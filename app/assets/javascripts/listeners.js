@@ -44,7 +44,7 @@ $(document).ready(function(){
 			{class: "availability-btn", category: "search-results"},
       {class: "temp-help-btn", category: "search-results"},
       {class: "google-preview", category: "record-page"},
-      {class: "hathytrust-link", category: "search-results"},
+      {class: "hathitrust-link", category: "search-results"},
 		];
 
 	  const handleEventClicks = (label, category) => {
