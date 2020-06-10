@@ -1,5 +1,5 @@
 button.collapse-button .avail-label:after {
-	color: $white;
+  color: $white;
   content:"\f078";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -25,13 +25,13 @@ a.facet_books,
 a.facet_ebooks {
   background: transparent url(<%= asset_path "noun_book.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 
 }
 span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_proceedings {
   background: transparent url(<%= asset_path "noun_conference.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.newspaper_article,
 span.newspapers,
@@ -49,6 +49,8 @@ a.facet_newspapers,
 a.facet_reference_entrys,
 a.facet_reviews,
 a.facet_review_entries,
+a.facet_reports,
+a.facet_standards,
 a.facet_text_resources,
 a.facet_technical_reports,
 a.facet_government_document,
@@ -60,7 +62,7 @@ a.facet_legal_document
 {
   background: transparent url(<%= asset_path "noun_article.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.journal_article,
 span.journal_periodical,
@@ -71,7 +73,7 @@ a.facet_articles
 {
   background: transparent url(<%= asset_path "noun_journal.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.dissertation_thesis,
 span.dissertation_thesis,
@@ -82,12 +84,12 @@ a.facet_dissertation
 {
   background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.score, a.facet_score, a.facet_scores {
   background: transparent url(<%= asset_path "noun_music.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.video,
 span.streaming_video,
@@ -96,21 +98,23 @@ a.facet_streaming_video,
 a.facet_videos {
   background: transparent url(<%= asset_path "noun_video.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
-span.archival_material, a.facet_archival_material {
+span.archival_material,
+a.facet_archival_material,
+a.facet_archival_material_manuscripts {
   background: transparent url(<%= asset_path "noun_archive.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.primary_sources_history,
 span.primary_sources_literature,
 a.facet_primary_sources_history,
 a.facet_primary_sources_literature {
   background: transparent url(<%= asset_path "noun_primary_sources.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-bottom: .25rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-bottom: .25rem;
+  padding-top: .25rem;
 }
 
 span.visual_material,
@@ -122,16 +126,17 @@ span.digital_collections,
 a.facet_digital_collections,
 span.facet_digital_collections {
   background: transparent url(<%= asset_path "noun_visual_material.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.audio,
 span.streaming_audio,
 a.facet_streaming_audio,
+a.facet_audios,
 a.facet_audio {
   background: transparent url(<%= asset_path "noun_audio.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.object,
 span.media,
@@ -139,18 +144,20 @@ a.facet_object,
 a.facet_media {
   background: transparent url(<%= asset_path "noun_object.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
-span.computer_media, a.facet_computer_media {
+span.computer_media,
+a.facet_computer_files,
+a.facet_computer_media {
   background: transparent url(<%= asset_path "noun_computer_media.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.database, a.facet_database, a.facet_databases,
 #facet-az_format a.facet_temporary_access, span.temporary_access {
   background: transparent url(<%= asset_path "noun_database.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.map,
 span.maps_amp_mapping_tools,
@@ -159,7 +166,7 @@ a.facet_maps_mapping_tools,
 a.facet_maps {
   background: transparent url(<%= asset_path "noun_map.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 span.dataset,
 span.datasets,
@@ -167,39 +174,40 @@ span.research_dataset,
 span.statistical_data_set,
 a.facet_dataset,
 a.facet_datasets,
+a.facet_market_researchs,
 a.facet_research_datasets,
 a.facet_statistical_data_sets {
   background: transparent url(<%= asset_path "noun_data_set.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
-span.website, a.facet_website, a.facet_websites {
+span.website, a.facet_website, a.facet_websites, a.facet_web_resources {
   background: transparent url(<%= asset_path "noun_website.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+        padding-top: .25rem;
 }
 span.kit, a.facet_kit {
   background: transparent url(<%= asset_path "noun_kit.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.law_amp_regulations,
 a.facet_law_regulations {
   background: transparent url(<%= asset_path "noun_law.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.reference,
 #facet-format a.facet_reference {
   background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.reference,
 #facet-az_format a.facet_reference {
   background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
-	padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
 }
 span.unknown,
 span.other,
@@ -207,7 +215,7 @@ a.facet_unknown,
 a.facet_other {
   background: transparent url(<%= asset_path "noun_question_mark.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 }
 div.thumbnail img.default {
   height: 5.625rem;
@@ -217,49 +225,49 @@ div.thumbnail img.default {
 span.check {
   background: transparent url(<%= asset_path "icons/checkmark.svg" %>) no-repeat top left;
   padding-left: 1.75rem;
-	padding-top: .25rem;
+  padding-top: .25rem;
 
 }
 
 span.close-icon {
   background: transparent url(<%= asset_path "icons/close.svg" %>) no-repeat top left;
-	padding-left: 1.75rem;
-	padding-top: .25rem;
+  padding-left: 1.75rem;
+  padding-top: .25rem;
 }
 
 span.bento-book {
   background: transparent url(<%= asset_path "bento_header_book.svg" %>) no-repeat center left;
-	margin-left:0.3125rem !important;
-	padding-left:2.1875rem;
-	padding-top: .25rem;
+  margin-left:0.3125rem !important;
+  padding-left:2.1875rem;
+  padding-top: .25rem;
 }
 
 span.bento-article {
   background: transparent url(<%= asset_path "bento_header_article.svg" %>) no-repeat center left;
-	margin-left: 0.625rem !important;
-	padding-left: 2.4rem;
-	padding-top: .45rem;
+  margin-left: 0.625rem !important;
+  padding-left: 2.4rem;
+  padding-top: .45rem;
 }
 
 span.bento-database {
   background: transparent url(<%= asset_path "bento_header_database.svg" %>) no-repeat center left;
-	margin-left: 0.625rem !important;
-	padding-left: 2.5875rem;
-	padding-top: .25rem;
+  margin-left: 0.625rem !important;
+  padding-left: 2.5875rem;
+  padding-top: .25rem;
 }
 
 span.bento-journal {
   background: transparent url(<%= asset_path "bento_header_journal.svg" %>) no-repeat center left;
-	margin-left:0.3125rem !important;
-	padding-left: 2.5125rem;
-	padding-top: .25rem;
+  margin-left:0.3125rem !important;
+  padding-left: 2.5125rem;
+  padding-top: .25rem;
 }
 
 span.bento-website {
   background: transparent url(<%= asset_path "bento_header_website.svg" %>) no-repeat center left;
-	margin-left:0.3125rem !important;
-	padding-left: 2.5125rem;
-	padding-top: .25rem;
+  margin-left:0.3125rem !important;
+  padding-left: 2.5125rem;
+  padding-top: .25rem;
 }
 
 span.remove-icon {
@@ -274,7 +282,7 @@ span.plus-icon {
 
 span.open-facet-icon {
   background: transparent url(<%= asset_path "icons/filter_button_open.png" %>) no-repeat center center;
-	padding-left: 1.25rem;
+  padding-left: 1.25rem;
 }
 
 span.remove-facet-icon {
