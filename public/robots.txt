@@ -3,3 +3,22 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 User-agent: *
 Disallow: /
+
+# Allow these cagents to crawl catalog
+ User-agent: Googlebot
+ User-agent: Googlebot-Image
+ User-agent: bingbot
+ User-agent: Slurp
+ Crawl-delay: 30
+ Allow: /$
+ Disallow: /
+ Allow: /catalog$
+ Allow: /articles$
+ Allow: /databases$
+ Allow: /journals$
+ Allow: /web_content$
+ Allow: /catalog/advanced$
+ Allow: /articles/advanced$
+ Allow: /databases/advanced$
+ Allow: /journals/advanced$
+ Allow: /users/sign_in$
