@@ -63,7 +63,7 @@ default: &default
     UNASSIGNED: Location information not available
   LAW:
     closestack: Closed Stacks - Ask At Desk
-    director: Library Director Office
+    director: Closed Stacks - Ask At Desk
     web: Online Access
     media: Media
     micro: Microform
