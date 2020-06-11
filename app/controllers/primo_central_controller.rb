@@ -83,6 +83,13 @@ class PrimoCentralController < CatalogController
     config.add_sort_field :date, label: "date (new to old)"
     config.add_sort_field :author, label: "author/creator (A to Z)"
     config.add_sort_field :title, label: "title (A to Z)"
+
+    def show
+      if params["searchCDI"] == "true"
+        params["id"] = params["id"].sub(/^proquest(\d*)/, 'cdi_proquest_journals_\1')
+      end
+      super
+    end
   end
 
   def browse_creator(args)

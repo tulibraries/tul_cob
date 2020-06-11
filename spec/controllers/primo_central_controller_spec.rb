@@ -43,5 +43,10 @@ RSpec.describe PrimoCentralController, type: :controller do
       get :show, params: { id: 1, format: "refworks" }
       expect(response).to be_successful
     end
+
+    it "rewrites the id when searchCDI param is present" do
+      expect(controller.search_service).to receive(:fetch).with("cdi_proquest_journals_1234")
+      get :show, params: { id: "proquest1234", searchCDI: "true" }
+    end
   end
 end
