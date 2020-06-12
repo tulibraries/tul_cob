@@ -9,6 +9,8 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  rescue_from Primo::Search::ArticleNotFound, with: :invalid_document_id_error
+
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
@@ -101,5 +103,17 @@ class PrimoCentralController < CatalogController
   # This method is required and used by blacklight_range_limit gem.
   def solr_range_queries_to_a(solr_field)
     @response[:stats][:stats_fields][solr_field][:data] || []
+  end
+
+  #Override Blacklight::Catalog::show
+  def show
+    deprecated_response, @document = search_service.fetch(params[:id], params.reject { |k, v| k != "searchCDI" })
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
+
+    respond_to do |format|
+      format.html { @search_context = setup_next_and_previous_documents }
+      format.json
+      additional_export_formats(@document, format)
+    end
   end
 end

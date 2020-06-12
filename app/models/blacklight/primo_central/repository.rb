@@ -11,7 +11,7 @@ module Blacklight::PrimoCentral
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
         .gsub("-semicolon-", ";")
-      search(query: { id: id })
+      search(query: { id: id }.merge(params))
     end
 
     # Execute a search against Primo PNXS API.
