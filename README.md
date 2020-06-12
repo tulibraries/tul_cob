@@ -70,6 +70,7 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To run Javascript tests, run ```make test-js```
 * To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
 * To reload solr configs, run ```make reload-configs```
+* To attatch to the running app container (good for debugging) ```make attach``
 
 ### Preparing Alma Data
 
