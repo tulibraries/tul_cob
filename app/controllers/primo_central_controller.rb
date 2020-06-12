@@ -9,6 +9,8 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  rescue_from Primo::Search::ArticleNotFound, with: :invalid_document_id_error
+
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
     config.repository_class = Blacklight::PrimoCentral::Repository
