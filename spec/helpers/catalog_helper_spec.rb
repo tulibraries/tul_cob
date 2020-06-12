@@ -29,10 +29,19 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "document contains an isbn" do
+    context "document does not contain an isbn" do
       let(:document) { {} }
-      it "returns the data-isbn string" do
+      it "does not return the data-isbn string" do
         expect(isbn_data_attribute(document)).to be_nil
+      end
+    end
+  end
+
+  describe "#lccn_data_attribute" do
+    context "document contains an lccn" do
+      let(:document) { { lccn_display: ["sn#00061556"] } }
+      it "returns the data-lccn string" do
+        expect(lccn_data_attribute(document)).to eql "data-lccn=sn#00061556"
       end
     end
   end

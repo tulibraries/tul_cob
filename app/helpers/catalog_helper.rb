@@ -31,10 +31,7 @@ module CatalogHelper
   end
 
   def lccn_data_attribute(document)
-    values = document.fetch(:lccn_display, [])
-    values = [values].flatten.map { |value|
-      value.gsub(/\D/, "") if value
-    }.compact.join(",")
+    values = document.fetch(:lccn_display, []).compact.join(",")
 
     "data-lccn=#{values}" if !values.empty?
   end
