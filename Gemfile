@@ -109,7 +109,7 @@ gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
 
 gem "cob_index",
   git: "https://github.com/tulibraries/cob_index.git",
-  branch: "qa"
+  branch: "main"
 
 group :production do
   gem "mysql2", "~> 0.5.3"
