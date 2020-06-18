@@ -10,7 +10,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   ENDS_WITH_TAG = "matchendswith"
 
   self.default_processor_chain +=
-    %i[ add_advanced_parse_q_to_solr
+    %i[ strip_trailing_backslash
+        add_advanced_parse_q_to_solr
         add_advanced_search_to_solr
         spellcheck
         limit_facets ]
@@ -23,6 +24,12 @@ class SearchBuilder < Blacklight::SearchBuilder
     # The negative query will work even when items are not indexed.
     # We can refactor to use a positive query once indexing occurs.
     solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
+  def strip_trailing_backslash(solr_params)
+    # See: https://app.honeybadger.io/projects/56250/faults/64881431
+    # This should probably be filed as a BL bug and be emoved
+    solr_params["q"].sub!(/\\+$/, "")
   end
 
   def spellcheck(solr_parameters)
