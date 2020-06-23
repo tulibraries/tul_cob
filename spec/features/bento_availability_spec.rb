@@ -21,7 +21,9 @@ RSpec.feature "Bento Availability" do
       visit "/bento"
       within("div.input-group") do
         fill_in "q", with: item["doc_id"]
-        click_button
+        VCR.use_cassette("bento_availability_item_1", record: :none, match_requests_on: [:host, :path]) {
+          click_button
+        }
       end
       within first("div.bento_item") do
         link_tag = find("a.bento-avail-btn")
@@ -37,7 +39,9 @@ RSpec.feature "Bento Availability" do
       visit "/bento"
       within("div.input-group") do
         fill_in "q", with: item_2["doc_id"]
-        click_button
+        VCR.use_cassette("bento_availability_item_2", record: :none, match_requests_on: [:host, :path]) {
+          click_button
+        }
       end
       within first("div.bento_item") do
         link_tag = find("a.bento-avail-btn")
