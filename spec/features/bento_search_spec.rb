@@ -13,7 +13,9 @@ RSpec.feature "Bento Searches" do
       visit "/bento"
       within("div.input-group") do
         fill_in "q", with: item["title"]
-        click_button
+        VCR.use_cassette("bento_search_features", record: :none, match_requests_on: [:host, :path]) {
+          click_button
+        }
       end
       within first("h3") do
         expect(page).to have_text item["title"]
@@ -27,7 +29,9 @@ RSpec.feature "Bento Searches" do
       visit "/bento"
       within("div.input-group") do
         fill_in "q", with: item["title"]
-        click_button
+        VCR.use_cassette("bento_search_features", record: :none, match_requests_on: [:host, :path]) {
+          click_button
+        }
       end
       within first("div.bento-search-engine") do
         expect(page).to have_css("a.full-results")

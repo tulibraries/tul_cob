@@ -261,7 +261,6 @@ RSpec.configure do |config|
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/temp_storage.json"))
 
-
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -359,7 +358,8 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
+  config.ignore_hosts "127.0.0.1", "localhost", "solr"
+  config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.default_cassette_options = {

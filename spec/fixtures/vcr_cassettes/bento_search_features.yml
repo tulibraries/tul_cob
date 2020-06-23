@@ -1,0 +1,279 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://server16002.contentdm.oclc.org/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL%5EGoogle%5Eall/dmrecord/dmrecord/1/1/1/0/0/0/0/0/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Jun 2020 17:47:43 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '600'
+      Content-Type:
+      - text/xml;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <results>
+        <pager>
+          <start>1</start>
+          <maxrecs>1</maxrecs>
+          <total>522</total>
+        </pager>
+        <records>
+        <record>
+          <collection><![CDATA[/p245801coll10]]></collection>
+          <pointer><![CDATA[296184]]></pointer>
+          <filetype><![CDATA[cpd]]></filetype>
+          <parentobject><![CDATA[-1]]></parentobject>
+          <dmrecord><![CDATA[]]></dmrecord>
+          <find><![CDATA[298059.cpd]]></find>
+        </record>
+        </records>
+        <searchquery>/!/search?query=+%28ft%3AGoogle%29 and (za:f3 or za:&quot;69.204.158.178&quot;)&amp;group=$group.pa.cp&lt;ITEM&gt;&lt;DB&gt;$pa&lt;/DB&gt;&lt;KEY&gt;$cp&lt;/KEY&gt;&lt;SORT&gt;$sort-$max.ft.$d&lt;/SORT&gt;&lt;/ITEM&gt;&amp;collection=/p16002-p16002coll9/,/p16002-p16002coll19/,/p16002-p15037coll5/,/p16002-p16002coll26/,/p16002-p16002coll14/,/p16002-p15037coll7/,/p16002-p15037coll3/,/p16002-p245801coll13/,/p16002-p15037coll4/,/p16002-p16002coll31/,/p16002-p15037coll17/,/p16002-p15037coll9/,/p16002-p16002coll28/,/p16002-p15037coll10/,/p16002-p16002coll17/,/p16002-p15037coll6/,/p16002-p15037coll15/,/p16002-p15037coll18/,/p16002-p16002coll16/,/p16002-p245801coll0/,/p16002-p15037coll1/,/p16002-p15037coll12/,/p16002-p245801coll10/,/p16002-p245801coll12/,/p16002-p16002coll30/,/p16002-p16002coll24/,/p16002-p16002coll7/,/p16002-p16002coll4/,/p16002-p16002coll5/,/p16002-p16002coll3/,/p16002-p16002coll1/,/p16002-p16002coll6/,/p16002-p15037coll2/,/p16002-p15037coll19/,/p16002-p15037coll14/,/p16002-p16002coll2/,/p16002-p16002coll11/&amp;suggest=0&amp;rankboost=&amp;proximity=strict&amp;priority=normal&amp;unanchoredphrases=1&amp;maxres=1&amp;firstres=0&amp;rform=/!/null.htm</searchquery></results>
+  recorded_at: Tue, 23 Jun 2020 17:47:43 GMT
+- request:
+    method: get
+    uri: https://api-na.hosted.exlibrisgroup.com/primo/v1/search?apikey=SECRET&limit=3&offset=0&pcAvailability=false&q=any,contains,Google,AND&scope=pci_scope&sort=rank&vid=TULI
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 23 Jun 2020 17:47:44 GMT
+      Vary:
+      - Accept-encoding
+      - accept-encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET,POST,DELETE,PUT,OPTIONS
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Authorization
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 23 Jun 2020 17:47:43 GMT
+      Server:
+      - CA-API-Gateway/9.0
+    body:
+      encoding: ASCII-8BIT
+      string: '{"highlights":{"creator":["google"],"contributor":["google"],"subject":["Google"],"vertitle":["Google","google","Google''s"],"description":["Google","Google\u2019s","Google''s"],"termsUnion":["Google","Google\u2019s","google","Google''s"],"title":["Google","google","Google''s"]},"docs":[{"enrichment":{"virtualBrowseObject":{"callNumber":"","isVirtualBrowseEnabled":false,"callNumberBrowseField":"browse_callnumber"}},"delivery":{"availabilityLinks":["detailsGetit1"],"physicalItemTextCodes":"","displayLocation":false,"availabilityLinksUrl":[""],"link":[{"displayLabel":"openurl","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-gvrl_ref&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=&rft.btitle=&rft.aulast=Bjerke&rft.auinit=R.&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Bjerke,%20A.%20R.&rft.aucorp=&rft.date=2012&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=478&rft.epage=479&rft.pages=478-479&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=978-1-4129-9789-8&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft_dat=%3Cgvrl_ref%3ECX1958900278%3C/gvrl_ref%3E%3Cgrp_id%3E-8443850126581823561%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=&rft_id=info:pmid/&rft_galeid=CX1958900278&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurl","@id":"_:0"},{"displayLabel":"openurlfulltext","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-gvrl_ref&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=&rft.btitle=&rft.aulast=Bjerke&rft.auinit=R.&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Bjerke,%20A.%20R.&rft.aucorp=&rft.date=2012&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=478&rft.epage=479&rft.pages=478-479&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=978-1-4129-9789-8&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&svc_val_fmt=info:ofi/fmt:kev:mtx:sch_svc&svc.fulltext=yes&rft_dat=%3Cgvrl_ref%3ECX1958900278%3C/gvrl_ref%3E%3Cgrp_id%3E-8443850126581823561%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=&rft_id=info:pmid/&rft_galeid=CX1958900278&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurlfulltext","@id":"_:1"},{"displayLabel":"thumbnail","linkURL":"no_cover","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:2"}],"availability":["fulltext"],"additionalLocations":false,"displayedAvailability":"fulltext","holding":[],"deliveryCategory":["Remote
+        Search Resource"],"serviceMode":["activate"],"feDisplayOtherLocations":false,"GetIt1":[{"links":[{"isLinktoOnline":true,"displayText":"Almaviewit_remote","hyperlinkText":"","getItTabText":"alma_tab1_full","link":"https://temple.userservices.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2020-06-23T12%3A47%3A44IST&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-gvrl_ref&req_id=&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=&rft.btitle=&rft.aulast=Bjerke&rft.auinit=R.&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Bjerke,%20A.%20R.&rft.aucorp=&rft.date=2012&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=478&rft.epage=479&rft.pages=478-479&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=978-1-4129-9789-8&rft.sici=&rft.coden=&rft_id=info:doi/&rft.object_id=&rft.eisbn=&rft.edition=&rft.pub=&rft.place=&rft.series=&rft.stitle=&rft.bici=&rft_id=info:bibcode/&rft_id=info:hdl/&rft_id=info:lccn/&rft_id=info:oclcnum/&rft_id=info:pmid/&rft_id=info:eric/((addata/eric}}&rft_dat=%3Cgvrl_ref%3ECX1958900278%3C/gvrl_ref%3E%3Curl%3E%3C/url%3E,language=eng,view=TULI&svc_dat=viewit&rft.local_attribute=&rft.kind=&rft_pqid=&rft_galeid=CX1958900278&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","@id":"_:0"}],"category":"Remote
+        Search Resource"}]},"context":"PC","adaptor":"primo_central_multiple_fe","pnx":{"delivery":{"fulltext":["fulltext"],"delcategory":["Remote
+        Search Resource"]},"search":{"lsr40":["2012, pp.478-479"],"sourceid":["gvrl_ref"],"lsr50":["reference"],"creatorcontrib":["Bjerke,
+        A. R."],"creationdate":["2012"],"citation":["pf 478 pt 479"],"subject":["Cultural
+        Identity","Religion and Politics","Brin, Sergey","Search Engines","Pornography","China","Page,
+        Larry","Censorship"],"isbn":["978-1-4129-9789-8","9781412997898"],"rsrctype":["reference_entry"],"title":["Google"],"startdate":["20120101"],"recordid":["gvrl_refCX1958900278"],"general":["English","Gale
+        Virtual Reference Library (GVRL)"],"enddate":["20121231"],"alttitle":["Encyclopedia
+        of Global Religion"],"scope":["gvrl_ref","gale_gvrl"]},"display":{"identifier":["<b>ISBN:
+        </b>978-1-4129-9789-8"],"creator":["Bjerke, A. R."],"subject":["Cultural Identity
+        ; Religion and Politics ; Brin, Sergey ; Search Engines ; Pornography ; China
+        ; Page, Larry ; Censorship"],"ispartof":["Encyclopedia of Global Religion"],"language":["eng"],"source":["Gale
+        Virtual Reference Library (GVRL)"],"title":["Google"],"type":["reference_entry"]},"links":{"openurl":["$$Topenurl_article"],"openurlfulltext":["$$Topenurlfull_article"]},"control":{"recordid":["TN_gvrl_refCX1958900278"],"sourceid":["gvrl_ref"],"galeid":["CX1958900278"],"sourcerecordid":["CX1958900278"],"sourcesystem":["PC"]},"addata":{"date":["2012"],"aulast":["Bjerke"],"isbn":["978-1-4129-9789-8"],"ristype":["GEN"],"format":["journal"],"spage":["478"],"auinit":["R."],"atitle":["Google"],"aufirst":["A."],"pages":["478-479"],"au":["Bjerke,
+        A. R."],"epage":["479"],"genre":["article"],"risdate":["2012"]},"sort":{"creationdate":["20120000"],"author":["Bjerke,
+        A. R."],"title":["Google"],"lso01":["20120000"]},"facets":{"frbrtype":["6"],"creatorcontrib":["Bjerke,
+        A. R."],"creationdate":["2012"],"frbrgroupid":["-8443850126581823561"],"rsrctype":["reference_entrys"],"topic":["Cultural
+        Identity","Religion and Politics","Brin, Sergey","Search Engines","Pornography","China","Page,
+        Larry","Censorship"],"language":["eng"],"collection":["Gale Virtual Reference
+        Library (GVRL)"],"prefilter":["reference_entrys"]}},"@id":"http://temple-primo.hosted.exlibrisgroup.com/primo_library/libweb/webservices/rest/primo-explore/v1/pnxs/PC/TN_gvrl_refCX1958900278"},{"enrichment":{"virtualBrowseObject":{"callNumber":"","isVirtualBrowseEnabled":false,"callNumberBrowseField":"browse_callnumber"}},"delivery":{"availabilityLinks":["detailsGetit1"],"physicalItemTextCodes":"","displayLocation":false,"availabilityLinksUrl":[""],"link":[{"displayLabel":"openurl","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-informaworld_s&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=New%20Political%20Economy&rft.btitle=&rft.aulast=Dai&rft.auinit=X&rft.auinit1=X&rft.auinitm=&rft.ausuffix=&rft.au=Dai,%20Xiudian&rft.aucorp=&rft.date=2007-09-01&rft.volume=12&rft.issue=3&rft.part=&rft.quarter=&rft.ssn=&rft.spage=433&rft.epage=442&rft.pages=433-442&rft.artnum=&rft.issn=1356-3467&rft.eissn=1469-9923&rft.isbn=&rft.sici=&rft.coden=&rft_id=info:doi/10.1080/13563460701485706&rft.object_id=&rft_dat=%3Cinformaworld_s%3E10_1080_13563460701485706%3C/informaworld_s%3E%3Cgrp_id%3E3145013066287860292%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3Ehttp://www.tandfonline.com/doi/abs/10.1080/13563460701485706%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=216991571&rft_id=info:pmid/&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurl","@id":"_:0"},{"displayLabel":"$$EView_record_in_Taylor_&_Francis","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://libproxy.temple.edu/login?url=http://www.tandfonline.com/doi/abs/10.1080/13563460701485706","linkType":"http://purl.org/pnx/linkType/linktorsrc","@id":"_:1"},{"displayLabel":"openurlfulltext","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-informaworld_s&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=New%20Political%20Economy&rft.btitle=&rft.aulast=Dai&rft.auinit=X&rft.auinit1=X&rft.auinitm=&rft.ausuffix=&rft.au=Dai,%20Xiudian&rft.aucorp=&rft.date=2007-09-01&rft.volume=12&rft.issue=3&rft.part=&rft.quarter=&rft.ssn=&rft.spage=433&rft.epage=442&rft.pages=433-442&rft.artnum=&rft.issn=1356-3467&rft.eissn=1469-9923&rft.isbn=&rft.sici=&rft.coden=&rft_id=info:doi/10.1080/13563460701485706&rft.object_id=&svc_val_fmt=info:ofi/fmt:kev:mtx:sch_svc&svc.fulltext=yes&rft_dat=%3Cinformaworld_s%3E10_1080_13563460701485706%3C/informaworld_s%3E%3Cgrp_id%3E3145013066287860292%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3Ehttp://www.tandfonline.com/doi/abs/10.1080/13563460701485706%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=216991571&rft_id=info:pmid/&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurlfulltext","@id":"_:2"},{"displayLabel":"thumbnail","linkURL":"no_cover","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:3"}],"availability":["fulltext"],"additionalLocations":false,"displayedAvailability":"fulltext","holding":[],"deliveryCategory":["Remote
+        Search Resource"],"serviceMode":["activate"],"feDisplayOtherLocations":false,"GetIt1":[{"links":[{"isLinktoOnline":true,"displayText":"Almaviewit_remote","hyperlinkText":"","getItTabText":"alma_tab1_full","link":"https://temple.userservices.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2020-06-23T12%3A47%3A44IST&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-informaworld_s&req_id=&rft_val_fmt=info:ofi/fmt:kev:mtx:journal&rft.genre=article&rft.atitle=Google&rft.jtitle=New%20Political%20Economy&rft.btitle=&rft.aulast=Dai&rft.auinit=X&rft.auinit1=X&rft.auinitm=&rft.ausuffix=&rft.au=Dai,%20Xiudian&rft.aucorp=&rft.date=2007-09-01&rft.volume=12&rft.issue=3&rft.part=&rft.quarter=&rft.ssn=&rft.spage=433&rft.epage=442&rft.pages=433-442&rft.artnum=&rft.issn=1356-3467&rft.eissn=1469-9923&rft.isbn=&rft.sici=&rft.coden=&rft_id=info:doi/10.1080/13563460701485706&rft.object_id=&rft.eisbn=&rft.edition=&rft.pub=Routledge&rft.place=&rft.series=&rft.stitle=&rft.bici=&rft_id=info:bibcode/&rft_id=info:hdl/&rft_id=info:lccn/&rft_id=info:oclcnum/&rft_id=info:pmid/&rft_id=info:eric/((addata/eric}}&rft_dat=%3Cinformaworld_s%3E10_1080_13563460701485706%3C/informaworld_s%3E%3Curl%3Ehttp://www.tandfonline.com/doi/abs/10.1080/13563460701485706%3C/url%3E,language=eng,view=TULI&svc_dat=viewit&rft.local_attribute=&rft.kind=New%20Political%20Economy&rft_pqid=216991571&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","@id":"_:0"}],"category":"Remote
+        Search Resource"}]},"context":"PC","adaptor":"primo_central_multiple_fe","pnx":{"delivery":{"fulltext":["fulltext"],"delcategory":["Remote
+        Search Resource"]},"search":{"lsr40":["New Political Economy, 01 September
+        2007, Vol.12 (3), pp.433-442"],"sourceid":["informaworld_s"],"lsr50":["overview1word2000"],"creatorcontrib":["Dai,
+        Xiudian"],"creationdate":["2007"],"citation":["pf 433 pt 442 vol 12 issue
+        3"],"subject":["Economics"],"rsrctype":["article"],"lsr45":["$$EView_record_in_Taylor_&_Francis"],"title":["Google"],"startdate":["20070901"],"addtitle":["New
+        Political Economy"],"lsr30":["VSR-Enriched:[pqid, description]"],"recordid":["informaworld_s10_1080_13563460701485706"],"general":["English","Routledge","10.1080/13563460701485706","Taylor
+        & Francis Online - Journals","Taylor & Francis (Taylor & Francis Group)"],"enddate":["20070901"],"issn":["1356-3467","13563467","1469-9923","14699923"],"scope":["informaworld_full","informaworld2"]},"display":{"identifier":["<b>ISSN:
+        </b>1356-3467 ; <b>E-ISSN: </b>1469-9923 ; <b>DOI: </b>10.1080/13563460701485706"],"creator":["Dai,
+        Xiudian"],"subject":["Economics"],"ispartof":["New Political Economy, 01 September
+        2007, Vol.12(3), pp.433-442"],"lds50":["peer_reviewed"],"description":["Search
+        engine Google''s power of finding any- & everything on the Internet prompted
+        a New York Times columnist to ask \"Is Google God?\" In fact, some do think
+        Google & other Internet giants might be too powerful, arguing that politics
+        & economy are intertwined with media & communications in establishing distribution
+        & production networks within & among nations. This essay discusses the growth
+        of Google & its implications for the study of the global political economy,
+        focusing on the relationship between the company & the nation-state. A review
+        of Google''s origins & development into a global leader is followed by a discussion
+        on the ''Googlization '' of the world of information & its impact on the authority
+        & autonomy of the nation-state in three case studies of France, the US, &
+        China. It is concluded that Google is a significant global actor & is intrinsically
+        linked to the control of information in cyberspace. J. Stanton"],"language":["eng"],"source":[""],"title":["Google"],"type":["article"],"version":["4"]},"links":{"openurl":["$$Topenurl_article"],"linktorsrc":["$$Uhttp://www.tandfonline.com/doi/abs/10.1080/13563460701485706$$EView_record_in_Taylor_&_Francis"],"openurlfulltext":["$$Topenurlfull_article"]},"control":{"recordid":["TN_informaworld_s10_1080_13563460701485706"],"sourceid":["informaworld_s"],"pqid":["216991571"],"sourcerecordid":["10_1080_13563460701485706"],"sourcesystem":["PC"]},"addata":{"date":["2007-09-01"],"aulast":["Dai"],"issue":["3"],"ristype":["JOUR"],"format":["journal"],"spage":["433"],"eissn":["1469-9923"],"auinit":["X"],"atitle":["Google"],"aufirst":["Xiudian"],"url":["http://www.tandfonline.com/doi/abs/10.1080/13563460701485706"],"lad01":["New
+        Political Economy"],"volume":["12"],"auinit1":["X"],"pages":["433-442"],"au":["Dai,
+        Xiudian"],"issn":["1356-3467"],"epage":["442"],"genre":["article"],"jtitle":["New
+        Political Economy"],"risdate":["20070901"],"pub":["Routledge"],"doi":["10.1080/13563460701485706"]},"sort":{"creationdate":["20070901"],"author":["Dai,
+        Xiudian"],"title":["Google"],"lso01":["20070901"]},"facets":{"frbrtype":["5"],"creatorcontrib":["Dai,
+        Xiudian"],"creationdate":["2007"],"toplevel":["peer_reviewed"],"newrecords":["20180206"],"frbrgroupid":["3145013066287860292"],"rsrctype":["articles"],"topic":["Economics"],"language":["eng"],"collection":["Taylor
+        & Francis Online - Journals"],"jtitle":["New Political Economy"],"prefilter":["articles"]}},"@id":"http://temple-primo.hosted.exlibrisgroup.com/primo_library/libweb/webservices/rest/primo-explore/v1/pnxs/PC/TN_informaworld_s10_1080_13563460701485706"},{"enrichment":{"virtualBrowseObject":{"callNumber":"","isVirtualBrowseEnabled":false,"callNumberBrowseField":"browse_callnumber"}},"delivery":{"availabilityLinks":["detailsGetit1"],"physicalItemTextCodes":"","displayLocation":false,"availabilityLinksUrl":[""],"link":[{"displayLabel":"openurl","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-igiglobal&rft_val_fmt=info:ofi/fmt:kev:mtx:bookitem&rft.genre=bookitem&rft.atitle=Google&rft.jtitle=&rft.btitle=Online%20Consumer%20Protection&rft.aulast=Pauxtis&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Pauxtis,%20Andrew&rft.aucorp=&rft.date=2009&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=1&rft.epage=15&rft.pages=&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=9781605660127&rft.sici=&rft.coden=&rft_id=info:doi/10.4018/978-1-60566-012-7.ch001&rft.object_id=&rft_dat=%3Cigiglobal%3E10.4018/978-1-60566-012-7.ch001%3C/igiglobal%3E%3Cgrp_id%3E-116461971%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=&rft_id=info:pmid/&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurl","@id":"_:0"},{"displayLabel":"thumbnail","hyperlinkText":"","inst4opac":"01TULI","linkURL":"","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:1"},{"displayLabel":"thumbnail","hyperlinkText":"","inst4opac":"01TULI","linkURL":"https://proxy-na.hosted.exlibrisgroup.com/exl_rewrite/books.google.com/books?bibkeys=ISBN:9781605660127,OCLC:,LCCN:&jscmd=viewapi&callback=updateGBSCover","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:2"},{"displayLabel":"openurlfulltext","hyperlinkText":"","inst4opac":"01TULI","linkURL":"http://1.1.1.1?ctx_ver=Z39.88-2004&ctx_enc=info:ofi/enc:UTF-8&ctx_tim=2020-06-23T12%3A47%3A44IST&url_ver=Z39.88-2004&url_ctx_fmt=infofi/fmt:kev:mtx:ctx&rfr_id=info:sid/primo.exlibrisgroup.com:primo3-Article-igiglobal&rft_val_fmt=info:ofi/fmt:kev:mtx:bookitem&rft.genre=bookitem&rft.atitle=Google&rft.jtitle=&rft.btitle=Online%20Consumer%20Protection&rft.aulast=Pauxtis&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Pauxtis,%20Andrew&rft.aucorp=&rft.date=2009&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=1&rft.epage=15&rft.pages=&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=9781605660127&rft.sici=&rft.coden=&rft_id=info:doi/10.4018/978-1-60566-012-7.ch001&rft.object_id=&svc_val_fmt=info:ofi/fmt:kev:mtx:sch_svc&svc.fulltext=yes&rft_dat=%3Cigiglobal%3E10.4018/978-1-60566-012-7.ch001%3C/igiglobal%3E%3Cgrp_id%3E-116461971%3C/grp_id%3E%3Coa%3E%3C/oa%3E%3Curl%3E%3C/url%3E&rft.eisbn=&rft_id=info:oai/&rft_pqid=&rft_id=info:pmid/&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","linkType":"http://purl.org/pnx/linkType/openurlfulltext","@id":"_:3"},{"displayLabel":"thumbnail","linkURL":"https://proxy-na.hosted.exlibrisgroup.com/exl_rewrite/syndetics.com/index.aspx?isbn=9781605660127/SC.JPG&client=primo","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:4"},{"displayLabel":"thumbnail","linkURL":"https://proxy-na.hosted.exlibrisgroup.com/exl_rewrite/books.google.com/books?bibkeys=ISBN:9781605660127,OCLC:,LCCN:&jscmd=viewapi&callback=updateGBSCover","linkType":"http://purl.org/pnx/linkType/thumbnail","@id":"_:5"}],"availability":["fulltext"],"additionalLocations":false,"displayedAvailability":"fulltext","holding":[],"deliveryCategory":["Remote
+        Search Resource"],"serviceMode":["activate"],"feDisplayOtherLocations":false,"GetIt1":[{"links":[{"isLinktoOnline":true,"displayText":"Almaviewit_remote","hyperlinkText":"","getItTabText":"alma_tab1_full","link":"https://temple.userservices.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2020-06-23T12%3A47%3A44IST&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-igiglobal&req_id=&rft_val_fmt=info:ofi/fmt:kev:mtx:bookitem&rft.genre=bookitem&rft.atitle=Google&rft.jtitle=&rft.btitle=Online%20Consumer%20Protection&rft.aulast=Pauxtis&rft.auinit=&rft.auinit1=&rft.auinitm=&rft.ausuffix=&rft.au=Pauxtis,%20Andrew&rft.aucorp=&rft.date=2009&rft.volume=&rft.issue=&rft.part=&rft.quarter=&rft.ssn=&rft.spage=1&rft.epage=15&rft.pages=&rft.artnum=&rft.issn=&rft.eissn=&rft.isbn=9781605660127&rft.sici=&rft.coden=&rft_id=info:doi/10.4018/978-1-60566-012-7.ch001&rft.object_id=&rft.eisbn=&rft.edition=&rft.pub=&rft.place=&rft.series=&rft.stitle=&rft.bici=&rft_id=info:bibcode/&rft_id=info:hdl/&rft_id=info:lccn/&rft_id=info:oclcnum/&rft_id=info:pmid/&rft_id=info:eric/((addata/eric}}&rft_dat=%3Cigiglobal%3E10.4018/978-1-60566-012-7.ch001%3C/igiglobal%3E%3Curl%3E%3C/url%3E,language=eng,view=TULI&svc_dat=viewit&rft.local_attribute=&rft.kind=&rft_pqid=&rft_galeid=&rft_cupid=&rft_eruid=&rft_nurid=&rft_ingid=","@id":"_:0"}],"category":"Remote
+        Search Resource"}]},"context":"PC","adaptor":"primo_central_multiple_fe","pnx":{"delivery":{"fulltext":["fulltext"],"delcategory":["Remote
+        Search Resource"]},"search":{"sourceid":["igiglobal"],"lsr50":["overview1word2000"],"creatorcontrib":["Pauxtis,
+        Andrew"],"creationdate":["2009"],"subject":["Internet privacy","Internet Security","Online
+        Privacy","online data collection","online security","Google","Yahoo!","Content
+        Delivery","Web 2.0","pagerank","PageRank Algorithm","PPC","Search Engine Privacy","Google
+        Privacy","Consumer Privacy Online","AdWords","Data Collection Uses","Target
+        Advertising","YouTube","Google Earth","AdSense","Google Docs","Web Spiders","Indexing
+        Webpages","Gmail","Content-Targeted","SEO","Online Protection"],"isbn":["9781605660127"],"rsrctype":["book_chapter"],"description":["What
+        began as simple homepages that listed favorite Web sites in the early 1990\u2019s
+        have grown into some of the most sophisticated, enormous collections of searchable,
+        organized data in history. These Web sites are search engines\u2014the golden
+        gateways to the Internet\u2014and they are used by virtually everyone. Search
+        engines, particularly Google, log and stamp each and every search made by
+        end-users and use that collected data for their own purposes. The data is
+        used for an assortment of business advantages, some which the general population
+        is not privy too, and most of which the casual end-user is typically unfamiliar
+        with. In a world where technology gives users many conveniences, one must
+        weigh the benefits of those conveniences against the potential intrusions
+        of personal privacy. Google\u2019s main stream of revenue is their content-targeted
+        \u201CAdWords\u201D program. AdWords\u2014while not a direct instance of personal
+        privacy breach\u2014marks a growing trend in invading personal space in order
+        to deliver personalized content. Gmail, Google\u2019s free Web-based e-mail
+        service, marked a new evolution in these procedures, scanning personal e-mail
+        messages to deliver targeted advertisements. Google has an appetite for data,
+        and their hundreds of millions of users deliver that every week. With their
+        eyes on moving into radio, television, print, establishing an Internet service
+        provider, furthering yet the technology of AdWords, as well as creating and
+        furthering technology in many other ventures, one must back up and examine
+        the potential privacy and intrusion risks associated with the technological
+        conveniences being provided."],"title":["Google"],"addtitle":["Online Consumer
+        Protection"],"recordid":["igiglobal10.4018/978-1-60566-012-7.ch001"],"general":["10.4018/978-1-60566-012-7.ch001,
+        IGI Global"],"scope":["igiglobal","IGI Global"],"recordtype":["book_chapter"]},"display":{"identifier":["<b>ISBN:
+        </b>9781605660127 ; <b>DOI: </b>10.4018/978-1-60566-012-7.ch001"],"creator":["Pauxtis,
+        Andrew"],"creationdate":["2009"],"subject":["Internet Privacy; Internet Security;
+        Online Privacy; Online Data Collection; Online Security; Google; Yahoo!; Content
+        Delivery; Web 2.0; Pagerank; Pagerank Algorithm; Ppc; Search Engine Privacy;
+        Google Privacy; Consumer Privacy Online; Adwords; Data Collection Uses; Target
+        Advertising; Youtube; Google Earth; Adsense; Google Docs; Web Spiders; Indexing
+        Webpages; Gmail; Content-targeted; Seo; Online Protection"],"ispartof":["Online
+        Consumer Protection, Chapter 1, pp.1-15"],"description":["What began as simple
+        homepages that listed favorite Web sites in the early 1990\u2019s have grown
+        into some of the most sophisticated, enormous collections of searchable, organized
+        data in history. These Web sites are search engines\u2014the golden gateways
+        to the Internet\u2014and they are used by virtually everyone. Search engines,
+        particularly Google, log and stamp each and every search made by end-users
+        and use that collected data for their own purposes. The data is used for an
+        assortment of business advantages, some which the general population is not
+        privy too, and most of which the casual end-user is typically unfamiliar with.
+        In a world where technology gives users many conveniences, one must weigh
+        the benefits of those conveniences against the potential intrusions of personal
+        privacy. Google\u2019s main stream of revenue is their content-targeted \u201CAdWords\u201D
+        program. AdWords\u2014while not a direct instance of personal privacy breach\u2014marks
+        a growing trend in invading personal space in order to deliver personalized
+        content. Gmail, Google\u2019s free Web-based e-mail service, marked a new
+        evolution in these procedures, scanning personal e-mail messages to deliver
+        targeted advertisements. Google has an appetite for data, and their hundreds
+        of millions of users deliver that every week. With their eyes on moving into
+        radio, television, print, establishing an Internet service provider, furthering
+        yet the technology of AdWords, as well as creating and furthering technology
+        in many other ventures, one must back up and examine the potential privacy
+        and intrusion risks associated with the technological conveniences being provided."],"source":["IGI
+        Global"],"title":["Google"],"type":["book_chapter"]},"links":{"openurl":["$$Topenurl_article"],"thumbnail":["$$TPCamazon_thumb","$$TPCgoogle_thumb"],"openurlfulltext":["$$Topenurlfull_article"]},"ranking":{"pcgtype":["publisher"],"booster2":["1"],"booster1":["1"]},"control":{"recordid":["TN_igiglobal10.4018/978-1-60566-012-7.ch001"],"sourceid":["igiglobal"],"sourcerecordid":["10.4018/978-1-60566-012-7.ch001"],"sourcesystem":["PC"]},"addata":{"date":["2009"],"aulast":["Pauxtis"],"isbn":["9781605660127"],"ristype":["BOOK"],"format":["bookitem"],"spage":["1"],"abstract":["What
+        began as simple homepages that listed favorite Web sites in the early 1990\u2019s
+        have grown into some of the most sophisticated, enormous collections of searchable,
+        organized data in history. These Web sites are search engines\u2014the golden
+        gateways to the Internet\u2014and they are used by virtually everyone. Search
+        engines, particularly Google, log and stamp each and every search made by
+        end-users and use that collected data for their own purposes. The data is
+        used for an assortment of business advantages, some which the general population
+        is not privy too, and most of which the casual end-user is typically unfamiliar
+        with. In a world where technology gives users many conveniences, one must
+        weigh the benefits of those conveniences against the potential intrusions
+        of personal privacy. Google\u2019s main stream of revenue is their content-targeted
+        \u201CAdWords\u201D program. AdWords\u2014while not a direct instance of personal
+        privacy breach\u2014marks a growing trend in invading personal space in order
+        to deliver personalized content. Gmail, Google\u2019s free Web-based e-mail
+        service, marked a new evolution in these procedures, scanning personal e-mail
+        messages to deliver targeted advertisements. Google has an appetite for data,
+        and their hundreds of millions of users deliver that every week. With their
+        eyes on moving into radio, television, print, establishing an Internet service
+        provider, furthering yet the technology of AdWords, as well as creating and
+        furthering technology in many other ventures, one must back up and examine
+        the potential privacy and intrusion risks associated with the technological
+        conveniences being provided."],"atitle":["Google"],"aufirst":["Andrew"],"au":["Pauxtis,
+        Andrew"],"epage":["15"],"genre":["bookitem"],"btitle":["Online Consumer Protection"],"risdate":["2009"],"doi":["10.4018/978-1-60566-012-7.ch001"]},"sort":{"creationdate":["20090000"],"author":["Pauxtis,
+        Andrew"],"title":["Google"]},"frbr":{"t":[99]},"facets":{"frbrtype":["6"],"creatorcontrib":["Pauxtis,
+        Andrew"],"creationdate":["2009"],"frbrgroupid":["-116461971"],"rsrctype":["books"],"topic":["Internet
+        privacy","Internet Security","Online Privacy","online data collection","online
+        security","Google","Yahoo!","Content Delivery","Web 2.0","pagerank","PageRank
+        Algorithm","PPC","Search Engine Privacy","Google Privacy","Consumer Privacy
+        Online","AdWords","Data Collection Uses","Target Advertising","YouTube","Google
+        Earth","AdSense","Google Docs","Web Spiders","Indexing Webpages","Gmail","Content-Targeted","SEO","Online
+        Protection"],"collection":["IGI Global"],"prefilter":["books"]}},"@id":"http://temple-primo.hosted.exlibrisgroup.com/primo_library/libweb/webservices/rest/primo-explore/v1/pnxs/PC/TN_igiglobal10.4018/978-1-60566-012-7.ch001"}],"timelog":{"BriefSearchDeltaTime":966,"DoSearchPrimoResultDeltaTime":876,"StartBriefSearch":1592934463662,"retrieveHighLightsDeltaTime":90,"retrieveDidUMeanDeltaTime":90,"GetSearchStatusDeltaTime":876,"StartTranslationTime":1592934464538,"AddSearchStatusDeltaTime":0,"FullEndDMDataDeltaTime":89,"retrieveFacetsDeltaTime":90},"lang3":"eng","info":{"total":2546206,"last":"3","maxTotal":0,"first":"1"},"facets":[{"values":[{"count":22,"value":"Li,
+        Xiaojiang"},{"count":14,"value":"George, Daniel R"},{"count":20,"value":"Ghezzi,
+        Pietro"},{"count":82469,"value":"Anonymous"},{"count":45,"value":"Orduna-Malea,
+        Enrique"},{"count":50,"value":"Samuelson, Pamela"},{"count":31,"value":"Santillana,
+        Mauricio"},{"count":24,"value":"Mavragani, Amaryllis"},{"count":6,"value":"Berger,
+        Uwe"},{"count":5,"value":"Banerjee, Subhash"},{"count":62,"value":"Slefo,
+        George"},{"count":8,"value":"Bohannon, John"},{"count":22,"value":"Ratti,
+        Carlo"},{"count":55,"value":"Shepelyansky, Dima L"},{"count":18,"value":"Bousquet,
+        Jean"},{"count":71,"value":"Shepelyansky, Dima"},{"count":64,"value":"Wilson,
+        Nick"},{"count":43,"value":"Butler, Declan"},{"count":44,"value":"Gibney,
+        Elizabeth"},{"count":19,"value":"Ermann, Leonardo"}],"name":"creator"},{"values":[{"count":195,"value":"hun"},{"count":232,"value":"dut"},{"count":1,"value":"heb"},{"count":14,"value":"fin"},{"count":9,"value":"ice"},{"count":2,"value":"ben"},{"count":252,"value":"rum"},{"count":459,"value":"pol"},{"count":1,"value":"hin"},{"count":1,"value":"mac"},{"count":457,"value":"cze"},{"count":159,"value":"kor"},{"count":608,"value":"tur"},{"count":410,"value":"nor"},{"count":36,"value":"dan"},{"count":350,"value":"rus"},{"count":289,"value":"ara"},{"count":5615,"value":"por"},{"count":1,"value":"vie"},{"count":2,"value":"baq"},{"count":7691,"value":"ger"},{"count":99,"value":"lit"},{"count":702,"value":"ita"},{"count":16603,"value":"fre"},{"count":6,"value":"mal"},{"count":2,"value":"mao"},{"count":9,"value":"gre"},{"count":431,"value":"per"},{"count":50,"value":"ukr"},{"count":2480831,"value":"eng"},{"count":1,"value":"wel"},{"count":14,"value":"scr"},{"count":39,"value":"may"},{"count":20770,"value":"spa"},{"count":1218,"value":"chi"},{"count":509,"value":"jpn"},{"count":5,"value":"tha"},{"count":100,"value":"slo"}],"name":"lang"},{"values":[{"count":4,"value":"databases"},{"count":775,"value":"other"},{"count":350,"value":"images"},{"count":11699,"value":"reference_entrys"},{"count":804,"value":"maps"},{"count":190,"value":"technical_reports"},{"count":548,"value":"media"},{"count":3,"value":"journals"},{"count":1740680,"value":"newspaper_articles"},{"count":7099,"value":"book_chapters"},{"count":3881,"value":"books"},{"count":15930,"value":"reviews"},{"count":22967,"value":"text_resources"},{"count":42514,"value":"dissertations"},{"count":36551,"value":"conference_proceedings"},{"count":513,"value":"websites"},{"count":132,"value":"statistical_data_sets"},{"count":649336,"value":"articles"},{"count":1913,"value":"research_datasets"}],"name":"rtype"},{"values":[{"count":423,"value":"Google
+        Trends"},{"count":11206,"value":"Geography"},{"count":14217,"value":"Google"},{"count":28051,"value":"Public
+        Health"},{"count":44954,"value":"Search Engines"},{"count":58462,"value":"Humans"},{"count":8370,"value":"Big
+        Data"},{"count":52800,"value":"Information Services"},{"count":48090,"value":"Medicine"},{"count":33815,"value":"Engineering"},{"count":42260,"value":"Education"},{"count":246,"value":"Google
+        Earth Engine"},{"count":9288,"value":"Sciences (General)"},{"count":41748,"value":"Computer
+        Science"},{"count":1207,"value":"Search Engine"},{"count":71411,"value":"Internet"},{"count":401684,"value":"Google
+        Inc."}],"name":"topic"},{"values":[{"count":99694,"value":"open_access"},{"count":2546206,"value":"online_resources"},{"count":314759,"value":"peer_reviewed"}],"name":"tlevel"},{"values":[{"count":4,"value":"databases"},{"count":350,"value":"images"},{"count":11699,"value":"reference_entrys"},{"count":804,"value":"maps"},{"count":3,"value":"journals"},{"count":1754331,"value":"newspaper_articles"},{"count":15027,"value":"books"},{"count":45251,"value":"reviews"},{"count":42514,"value":"dissertations"},{"count":41542,"value":"conference_proceedings"},{"count":513,"value":"websites"},{"count":134,"value":"statistical_data_sets"},{"count":663870,"value":"articles"},{"count":548,"value":"audio_video"},{"count":1913,"value":"research_datasets"}],"name":"pfilter"},{"values":[{"count":93,"value":"1976"},{"count":68,"value":"1975"},{"count":172,"value":"1930"},{"count":69,"value":"1974"},{"count":61,"value":"1973"},{"count":49,"value":"1972"},{"count":61,"value":"1971"},{"count":86,"value":"1970"},{"count":41,"value":"1979"},{"count":17,"value":"1978"},{"count":142,"value":"1977"},{"count":2810,"value":"2001"},{"count":45,"value":"1990"},{"count":1518,"value":"2000"},{"count":20,"value":"1987"},{"count":58,"value":"1700"},{"count":23,"value":"1986"},{"count":22,"value":"1985"},{"count":12,"value":"1500"},{"count":245,"value":"1940"},{"count":19,"value":"1984"},{"count":15,"value":"1983"},{"count":25,"value":"1982"},{"count":38,"value":"1981"},{"count":36,"value":"1980"},{"count":35,"value":"1989"},{"count":346,"value":"1900"},{"count":76,"value":"1988"},{"count":161010,"value":"2012"},{"count":129403,"value":"2011"},{"count":123619,"value":"2010"},{"count":107,"value":"1910"},{"count":429,"value":"1998"},{"count":99248,"value":"2009"},{"count":10,"value":"1954"},{"count":302,"value":"1997"},{"count":74372,"value":"2008"},{"count":6,"value":"1953"},{"count":422,"value":"1996"},{"count":61130,"value":"2007"},{"count":3,"value":"1952"},{"count":423,"value":"1995"},{"count":54839,"value":"2006"},{"count":4,"value":"1951"},{"count":321,"value":"1994"},{"count":32886,"value":"2005"},{"count":71,"value":"1950"},{"count":220,"value":"1993"},{"count":20304,"value":"2004"},{"count":35,"value":"1992"},{"count":8915,"value":"2003"},{"count":5069,"value":"2002"},{"count":31,"value":"1991"},{"count":316,"value":"1959"},{"count":36,"value":"1958"},{"count":8,"value":"1957"},{"count":53,"value":"1956"},{"count":481,"value":"1999"},{"count":34,"value":"1955"},{"count":5,"value":"2021"},{"count":88579,"value":"2020"},{"count":10,"value":"1965"},{"count":6,"value":"1800"},{"count":247194,"value":"2019"},{"count":184,"value":"1920"},{"count":9,"value":"1964"},{"count":259538,"value":"2018"},{"count":29,"value":"1963"},{"count":1,"value":"1600"},{"count":255600,"value":"2017"},{"count":38,"value":"1962"},{"count":243141,"value":"2016"},{"count":9,"value":"1961"},{"count":237908,"value":"2015"},{"count":204,"value":"1960"},{"count":240239,"value":"2014"},{"count":189918,"value":"2013"},{"count":66,"value":"1969"},{"count":21,"value":"1968"},{"count":33,"value":"1967"},{"count":11,"value":"1966"}],"name":"creationdate"},{"values":[{"count":924182,"value":"Business
+        Premium Collection"},{"count":196078,"value":"Social Science Premium Collection"},{"count":201700,"value":"ABI/INFORM
+        Global"},{"count":360549,"value":"Technology Collection"},{"count":103071,"value":"MEDLINE/PubMed
+        (NLM)"},{"count":153163,"value":"ProQuest Hospital Collection"},{"count":125074,"value":"Biological
+        Science Database"},{"count":70624,"value":"Directory of Open Access Journals
+        (DOAJ)"},{"count":284665,"value":"ProQuest Pharma Collection"},{"count":1010127,"value":"OneFile
+        (GALE)"},{"count":1421091,"value":"ProQuest Central (new)"},{"count":845189,"value":"ABI/INFORM
+        Complete"},{"count":95048,"value":"Accounting, Tax & Banking Collection"},{"count":115036,"value":"ProQuest
+        Health & Medical Complete"},{"count":194806,"value":"Health Research Premium
+        Collection"},{"count":8339,"value":"ScienceDirect (Elsevier)"},{"count":153120,"value":"Natural
+        Science Collection"},{"count":254692,"value":"ABI/INFORM Trade & Industry"},{"count":236728,"value":"ProQuest
+        Research Library"},{"count":69152,"value":"Agricultural & Environmental Science
+        Database"}],"name":"domain"},{"values":[{"count":1156,"value":"Nature"},{"count":33,"value":"American
+        Journal of Preventive Medicine"},{"count":1020,"value":"Association for Computing
+        Machinery. Communications of the ACM"},{"count":2061,"value":"Library Journal"},{"count":1079,"value":"RemoteSensing"},{"count":89,"value":"Science"},{"count":1406,"value":"Remote
+        Sensing"},{"count":3221,"value":"Advertising Age"},{"count":4445,"value":"Plos
+        One"},{"count":22957,"value":"Investor''s Business Daily"},{"count":1281,"value":"Communications
+        of the ACM"},{"count":136,"value":"IEEE Access"},{"count":600,"value":"Scientometrics"},{"count":194,"value":"Nature
+        Biotechnology"},{"count":1352,"value":"Remote sensing (Basel, Switzerland)"},{"count":119,"value":"Journal
+        of the American Society for Information Science and Technology"},{"count":39,"value":"Journal
+        of Academic Librarianship"},{"count":15,"value":"Journal of Chemical Education"}],"name":"jtitle"},{"values":[{"count":267,"value":"07
+        days back"},{"count":23354,"value":"30 days back"},{"count":56944,"value":"90
+        days back"}],"name":"newrecords"}],"beaconO22":"981"}'
+  recorded_at: Tue, 23 Jun 2020 17:47:44 GMT
+recorded_with: VCR 6.0.0

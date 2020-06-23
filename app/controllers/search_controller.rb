@@ -35,6 +35,9 @@ class SearchController < CatalogController
 
   private
     def process_results(results)
+      results.each_value do |result|
+        raise result.error[:exception] if result.failed?
+      end
       # We only care about cdm results count not bento box.
       cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
 

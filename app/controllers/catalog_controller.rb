@@ -27,6 +27,11 @@ class CatalogController < ApplicationController
   rescue_from Blacklight::Exceptions::RecordNotFound,
     with: :invalid_document_id_error
 
+  rescue_from Blacklight::Exceptions::InvalidRequest do |exception|
+    Honeybadger.notify(exception.message)
+    render "errors/unsupported_query"
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
