@@ -17,7 +17,7 @@ RSpec.describe SearchController, type: :controller do
 
     context "content dm and regular results are present" do
 
-      it "defines @reponse instance variable for the controlller" do
+      it "defines @reponse instance variable for the controller" do
         expect(controller.instance_variable_get(:@response)).not_to be_nil
       end
 
@@ -32,6 +32,25 @@ RSpec.describe SearchController, type: :controller do
 
       it "should still remove cdm results from bento results" do
         expect(results[:cdm]).to be_nil
+      end
+    end
+
+    context "one or more concurrent searches fails" do
+
+      it "should raise an error when a search has failed" do
+        Object.const_set("BadService", Class.new {
+                           include BentoSearch::SearchEngine
+                           def search_implementation(args)
+                             raise HTTPClient::TimeoutError.new
+                           end
+                         })
+
+        BentoSearch.register_engine("bad_service") do |conf|
+          conf.engine = "BadService"
+        end
+
+        results = BentoSearch::ConcurrentSearcher.new(:books_and_media, :cdm, :bad_service).search("foo").results
+        expect { controller.send(:process_results, results) }.to raise_error(HTTPClient::TimeoutError)
       end
     end
   end

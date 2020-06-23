@@ -40,6 +40,7 @@ en:
       bookmarks: "Bookmarks"
       search_history: "Search History"
       not_found: "We couldn’t find this page!"
+      bad_query: "Unsupported Query Format"
 
     errors:
       deep_paging: "Sorry, LibrarySearch does not serve more than 250 pages for any query."
@@ -47,6 +48,7 @@ en:
       not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/contact-us"
       availability_alert_html: "Some availability information can not be loaded. Please visit your library's Circulation Desk for more information or %{href}."
+      unsupported_query_format: "Your search could not be executed. Please check the format of your query."
 
     range_limit:
       submit_limit: "Apply"
