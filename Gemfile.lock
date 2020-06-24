@@ -20,14 +20,6 @@ GIT
       parslet
 
 GIT
-  remote: https://github.com/projectblacklight/blacklight_range_limit.git
-  revision: 44bfecba9d3c123fa01d6874288b0dc452fdb2a6
-  ref: v7.8.0
-  specs:
-    blacklight_range_limit (7.8.0)
-      blacklight (>= 7.0)
-
-GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: 35cb23932152f9e611571e000488551ab2254952
   branch: master
@@ -175,6 +167,8 @@ GEM
       kaminari (>= 0.15)
       rails (>= 5.1, < 7)
       view_component
+    blacklight_range_limit (7.8.1)
+      blacklight (>= 7.0)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     bootstrap (4.4.1)
@@ -323,7 +317,7 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.5.0)
+    loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.13)
@@ -491,7 +485,7 @@ GEM
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
       spring (>= 1.2, < 3.0)
-    sprockets (4.0.0)
+    sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -540,7 +534,7 @@ GEM
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
     vcr (6.0.0)
-    view_component (2.7.0)
+    view_component (2.11.1)
       activesupport (>= 5.0.0, < 7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -557,7 +551,7 @@ GEM
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
       railties (>= 4.2)
-    websocket-driver (0.7.1)
+    websocket-driver (0.7.2)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xml-simple (1.1.5)
@@ -577,7 +571,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_alma!
-  blacklight_range_limit!
+  blacklight_range_limit
   bootsnap
   bootstrap (~> 4.4)
   bootstrap-select-rails
