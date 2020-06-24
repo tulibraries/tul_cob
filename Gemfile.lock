@@ -21,14 +21,11 @@ GIT
 
 GIT
   remote: https://github.com/projectblacklight/blacklight_range_limit.git
-  revision: 6826dfb8b73554a79f26ca7ff375b0062e37bb22
-  ref: v7.0.0.rc2
+  revision: 44bfecba9d3c123fa01d6874288b0dc452fdb2a6
+  ref: v7.8.0
   specs:
-    blacklight_range_limit (7.0.0.rc2)
-      blacklight
-      jquery-rails
-      rails (>= 3.0)
-      tether-rails
+    blacklight_range_limit (7.8.0)
+      blacklight (>= 7.0)
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
@@ -506,8 +503,6 @@ GEM
       json
     term-ansicolor (1.7.1)
       tins (~> 1.0)
-    tether-rails (1.4.0)
-      rails (>= 3.1)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
