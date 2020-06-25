@@ -1,0 +1,184 @@
+Dataflow Docw
+===
+
+_The following is a rough template to use to help capture helpful documentation on this application, in particular, dataflow decisions that will effect upcoming infrastructure work. Eventually informs & is informed by data infrastructure documented here: https://github.com/tulibraries/grittyOps ._
+
+### Domain: Current Alma to Solr Indexing (Partial Updates)
+
+- **End Goal(s) of Process (in terms of systems or users, not technology selection)**:
+  - ...
+- **Extract / Harvest**:
+  - *Source data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a harvest alone and how?*:
+  - *Infrastructure resources this is run on*:
+  - *Harvest library or mechanism used*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Transforms**:
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a transform alone and how?*
+  - *Can transforms handle full CRUD actions?*
+  - *Infrastructure resources this is run on*:
+  - *Mappings or relevant configurations*:
+  - *Is there an internal data model or representation for the transform?*: 
+  - *Transformation library used*: 
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Loading**: 
+  - *End result data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-load & how?*
+  - *Can one re-queue a load alone and how?*
+  - *Loading library or mechanism used (with any restraints?)*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Process Orchestration & Provisioning Questions**:
+  - *How are changes to the ETL library reviewed?*:
+  - *How are changes to the ETL library released?*:
+  - *How are changes to the ETL library deployed (and where)?*:
+  - *How are changes to the application using the ETL reviewed?*:
+  - *How are changes to the application using the ETL released?*:
+  - *How are changes to the application using the ETL deployed (and where)?*:
+  - *How are changes to the Source=>Solr mappings using the ETL reviewed?*:
+  - *How are changes to the Source=>Solr mappings using the ETL released?*:
+  - *How are changes to the Source=>Solr mappings using the ETL deployed (and where)?*:
+
+### Domain: Current Alma to Solr Indexing (Full Reindex)
+
+- **End Goal(s) of Process (in terms of systems or users, not technology selection)**:
+  - ...
+- **Extract / Harvest**:
+  - *Source data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a harvest alone and how?*:
+  - *Infrastructure resources this is run on*:
+  - *Harvest library or mechanism used*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Transforms**:
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a transform alone and how?*
+  - *Can transforms handle full CRUD actions?*
+  - *Infrastructure resources this is run on*:
+  - *Mappings or relevant configurations*:
+  - *Is there an internal data model or representation for the transform?*: 
+  - *Transformation library used*: 
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Loading**: 
+  - *End result data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-load & how?*
+  - *Can one re-queue a load alone and how?*
+  - *Loading library or mechanism used (with any restraints?)*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Process Orchestration & Provisioning Questions**:
+  - *How are changes to the ETL library reviewed?*:
+  - *How are changes to the ETL library released?*:
+  - *How are changes to the ETL library deployed (and where)?*:
+  - *How are changes to the application using the ETL reviewed?*:
+  - *How are changes to the application using the ETL released?*:
+  - *How are changes to the application using the ETL deployed (and where)?*:
+  - *How are changes to the Source=>Solr mappings using the ETL reviewed?*:
+  - *How are changes to the Source=>Solr mappings using the ETL released?*:
+  - *How are changes to the Source=>Solr mappings using the ETL deployed (and where)?*:
+
+### Domain: Current AZ Databases Indexing (Partial Updates)
+
+- **End Goal(s) of Process (in terms of systems or users, not technology selection)**:
+  - ...
+- **Extract / Harvest**:
+  - *Source data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a harvest alone and how?*:
+  - *Infrastructure resources this is run on*:
+  - *Harvest library or mechanism used*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Transforms**:
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a transform alone and how?*
+  - *Can transforms handle full CRUD actions?*
+  - *Infrastructure resources this is run on*:
+  - *Mappings or relevant configurations*:
+  - *Is there an internal data model or representation for the transform?*: 
+  - *Transformation library used*: 
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Loading**: 
+  - *End result data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-load & how?*
+  - *Can one re-queue a load alone and how?*
+  - *Loading library or mechanism used (with any restraints?)*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Process Orchestration & Provisioning Questions**:
+  - *How are changes to the ETL library reviewed?*:
+  - *How are changes to the ETL library released?*:
+  - *How are changes to the ETL library deployed (and where)?*:
+  - *How are changes to the application using the ETL reviewed?*:
+  - *How are changes to the application using the ETL released?*:
+  - *How are changes to the application using the ETL deployed (and where)?*:
+  - *How are changes to the Source=>Solr mappings using the ETL reviewed?*:
+  - *How are changes to the Source=>Solr mappings using the ETL released?*:
+  - *How are changes to the Source=>Solr mappings using the ETL deployed (and where)?*:
+
+### Domain: Current AZ Databases Indexing (Full Reindex)
+
+- **End Goal(s) of Process (in terms of systems or users, not technology selection)**:
+  - ...
+- **Extract / Harvest**:
+  - *Source data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a harvest alone and how?*:
+  - *Infrastructure resources this is run on*:
+  - *Harvest library or mechanism used*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Transforms**:
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-harvest & how?*
+  - *Can one re-queue a transform alone and how?*
+  - *Can transforms handle full CRUD actions?*
+  - *Infrastructure resources this is run on*:
+  - *Mappings or relevant configurations*:
+  - *Is there an internal data model or representation for the transform?*: 
+  - *Transformation library used*: 
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Loading**: 
+  - *End result data system(s), harvesting protocol, originating models, harvested format*:
+    -  ...
+  - *Batch or Real-time (or both)*: 
+  - *If batch, who can manually trigger a re-load & how?*
+  - *Can one re-queue a load alone and how?*
+  - *Loading library or mechanism used (with any restraints?)*:
+  - *Parallelization / Concurrency?*:
+  - *Job, Task, or Threads Queuing or Orchestration system(s)*:
+- **Process Orchestration & Provisioning Questions**:
+  - *How are changes to the ETL library reviewed?*:
+  - *How are changes to the ETL library released?*:
+  - *How are changes to the ETL library deployed (and where)?*:
+  - *How are changes to the application using the ETL reviewed?*:
+  - *How are changes to the application using the ETL released?*:
+  - *How are changes to the application using the ETL deployed (and where)?*:
+  - *How are changes to the Source=>Solr mappings using the ETL reviewed?*:
+  - *How are changes to the Source=>Solr mappings using the ETL released?*:
+  - *How are changes to the Source=>Solr mappings using the ETL deployed (and where)?*:
