@@ -7,7 +7,7 @@ However there are several scenarios that have to be considered.
 
 ## Release is based on HEAD of main branch
 
-This the easiest of all scenarios and only requires for us to generated a release based on the main branch. 
+This is the easiest of all the scenarios and only requires us to generate a new release based on the main branch. 
 
 
 ## Release is based on a commit hash that is on the main branch
