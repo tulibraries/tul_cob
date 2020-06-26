@@ -36,6 +36,7 @@ Once the release branch is created and pushed up you may proceed with the releas
 ### Creating a release candidate branch based on a commit.
 Assuming that the currently deployed release is `v1.7.0` and we are setting up `v1.7.1` and we want to deploy some changes referenced by `<commit-hash-1>` and `<commit-hash-2>`
 
+* `git fetch origin main`
 * `git fetch origin --tags`
 * `git checkout -b release-v1.7.1 v1.7.0`
 * `git cherry-pick <commit-hash-1>`
