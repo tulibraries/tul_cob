@@ -14,7 +14,7 @@ This is the easiest of all the scenarios and only requires us to generate a new 
 
 This scenario is when we can point to a commit hash on the main branch and basically reference that as the tagged release.
 
-If the commit hash is a recent commit then [when creating a new release](new-release-process.md) instead of choosing the main branch as the target, click on the recent commits tab and find click on recent commit.
+If the commit hash is a recent commit then [when creating a new release](new-release-process.md) instead of choosing the main branch as the target, click on the recent commits tab and find and click on the recent commit.
 
 Otherwise you will need to create a new branch that you push up and choose that branch.
 
