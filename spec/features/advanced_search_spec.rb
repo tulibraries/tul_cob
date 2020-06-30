@@ -10,17 +10,18 @@ RSpec.feature "Advanced Search" do
   }
 
   let (:facets) {
-    [ "Library",
+    [ "Availability",
+      "Library",
       "Resource Type",
-      "Availability",
-      "Languages",
+      "Language",
       "Publication Year"]}
 
   describe "page displays facets" do
     scenario "User visits advanced search page" do
       visit "/advanced"
       within("form.advanced") do
-        all("div.limit-input").each_with_index do |div_panel, i|
+        expect(current_scope).to have_selector("div.advanced-search-facet")
+        all("div.advanced-search-facet").each_with_index do |div_panel, i|
           expect(div_panel).to have_text facets[i]
         end
       end
