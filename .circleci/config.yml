@@ -11,7 +11,7 @@ workflows:
          filters:
            branches:
              only:
-               - master
+               - main
   stage_deploy:
     jobs:
       - stage_deploy:
