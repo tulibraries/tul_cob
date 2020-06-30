@@ -3,7 +3,7 @@ QA, Stage and Production Deployments
 
 ### QA Deployments
 * Deployments to the QA environment are triggered automatically by the CI service
-  whenever a PR is merged to the master branch.
+  whenever a PR is merged to the main branch.
 
 ### Stage Deployments
 * Stage deployments are triggered automatically by the CI service [when a new release
@@ -17,7 +17,7 @@ QA, Stage and Production Deployments
 ## Production Deployment Checklist
 Deployments to the production environment MUST adhere to the following checklist.
 
-- [ ] Verify that all required updates have been made to tul_cob_playbook/master
+- [ ] Verify that all required updates have been made to tul_cob_playbook/main
 - [ ] Before confirming a production for deployment check that the stage
   version is up and that you have confirmation that it is ready to be deployed.
 - [ ] Announce on the #blacklight_project channel that deployment is about to take place.
