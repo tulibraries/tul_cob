@@ -102,7 +102,7 @@ gem "httparty"
 gem "dotenv-rails"
 
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
-  branch: "master"
+  branch: "main"
 
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
   branch: "qa"
