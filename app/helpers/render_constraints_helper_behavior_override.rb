@@ -27,8 +27,8 @@ module RenderConstraintsHelperBehaviorOverride
   def render_constraints_filters(my_params = params)
     content = super(my_params)
     # add a constraint for ranges?
-    if my_params[:range].present? && my_params[:range].respond_to?(:each_pair)
-      my_params[:range].each_pair do |solr_field, hash|
+    if my_params.to_h[:range].present? && my_params.to_h[:range].respond_to?(:each_pair)
+      my_params.to_h[:range].each_pair do |solr_field, hash|
 
         next unless hash["missing"] || (!hash["begin"].blank?) || (!hash["end"].blank?)
         content << render_constraint_element(

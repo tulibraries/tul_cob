@@ -1,12 +1,11 @@
 <% doc_presenter = show_presenter(document) %>
-
 <div class="no-gutters pl-1 secondary-fields-header mt-4">
   <h2>Details</h2>
   <hr />
 </div>
 
 <dl class="row document-metadata mb-0 show-page-list no-gutters pl-1">
-  <% document_show_secondary_fields(document).each do |field_name, field| %>
-    <%= render "show_fields", document: document, field: field, field_name: field_name %>
+  <% doc_presenter.each_secondary_field do |field_name, field, field_presenter| %>
+    <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
   <% end -%>
 </dl>

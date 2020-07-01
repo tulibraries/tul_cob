@@ -10,7 +10,7 @@
 <h2 class="sr-only top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
 
 <% content_for(:head) do -%>
-  <%= render_opensearch_response_metadata %>
+  <%= render partial: 'catalog/opensearch_response_metadata', locals: { response: @response } %>
 <% end %>
 
 <%= render "search_header" %>

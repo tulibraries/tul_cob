@@ -1,6 +1,6 @@
 <% # main container for facets/limits menu -%>
 
-<% if has_facet_values? || has_search_parameters? %>
+<% if has_facet_values?(facet_field_names, @response) || has_search_parameters? %>
 
 <div id="facets" class="facets w-100">
   <div class="d-flex p-0 align-items-center limit-search ">
@@ -25,7 +25,7 @@
    <%= render "constraints" %>
 
    <div id="facet-panel-collapse" class="facets-collapse collapse show">
-     <%= has_search_parameters? ? render_facet_partials : render_home_facets %>
+     <%= has_search_parameters? ? render_facet_partials(facet_field_names, :response => @response) : render_home_facets %>
    </div>
    <%= render_solr_search_tweaks %>
 </div>
