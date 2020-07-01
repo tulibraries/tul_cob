@@ -63,7 +63,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 3e19815cd77ce36d5e45fdd06a3bb662ca34f63f
+  revision: e143e07132896d46c913223f9042ea9592255a9e
   branch: main
   specs:
     cob_index (0.1.0)
@@ -246,7 +246,7 @@ GEM
       rake
     foreman (0.87.1)
     formatador (0.2.5)
-    gli (2.19.1)
+    gli (2.19.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     google-analytics-rails (1.1.1)
