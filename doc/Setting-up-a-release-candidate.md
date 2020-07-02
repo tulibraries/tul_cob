@@ -7,14 +7,14 @@ However there are several scenarios that have to be considered.
 
 ## Release is based on HEAD of main branch
 
-This the easiest of all scenarios and only requires for us to generated a release based on the main branch. 
+This is the easiest of all the scenarios and only requires us to generate a new release based on the main branch. 
 
 
 ## Release is based on a commit hash that is on the main branch
 
 This scenario is when we can point to a commit hash on the main branch and basically reference that as the tagged release.
 
-If the commit hash is a recent commit then [when creating a new release](new-release-process.md) instead of choosing the main branch as the target, click on the recent commits tab and find click on recent commit.
+If the commit hash is a recent commit then [when creating a new release](new-release-process.md) instead of choosing the main branch as the target, click on the recent commits tab and find and click on the recent commit.
 
 Otherwise you will need to create a new branch that you push up and choose that branch.
 
@@ -36,6 +36,7 @@ Once the release branch is created and pushed up you may proceed with the releas
 ### Creating a release candidate branch based on a commit.
 Assuming that the currently deployed release is `v1.7.0` and we are setting up `v1.7.1` and we want to deploy some changes referenced by `<commit-hash-1>` and `<commit-hash-2>`
 
+* `git fetch origin main`
 * `git fetch origin --tags`
 * `git checkout -b release-v1.7.1 v1.7.0`
 * `git cherry-pick <commit-hash-1>`
