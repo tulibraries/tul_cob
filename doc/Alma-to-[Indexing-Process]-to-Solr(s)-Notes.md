@@ -5,4 +5,4 @@ For local indexing purposes running `make load-data` will ingest a set of record
 The ingesting processes on qa/prod/stage environments are now handled via airflow dags.
 
 Further documentation can be found at:
-* [Full Re-index Process Steps](https://github.com/tulibraries/cob_datapipeline/blob/master/doc/full-reindex-process.md)
+* [Full Re-index Process Steps](https://github.com/tulibraries/cob_datapipeline/blob/main/doc/full-reindex-process.md)
