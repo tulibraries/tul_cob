@@ -1,8 +1,9 @@
 <div class="container" id="advanced-search-facets" style="margin-top: 14px;">
-<% facets_from_request(primo_facet_names).each do |display_facet| %>
+<% facets_from_request(primo_facet_names, @response).each do |display_facet| %>
+  <% facet_config = facet_configuration_for_field(display_facet.name) %>
   <div class="form-group advanced-search-facet row">
     <%= label_tag display_facet.name.parameterize, class: "col-sm-2 control-label" do %>
-      <%= facet_field_label(display_facet.name) %>
+      <%= facet_config.label %>
     <% end %>
     <div class="col-sm-8">
       <%= content_tag(:select, multiple: true,
@@ -11,8 +12,9 @@
         class: "form-control custom-select selectpicker",
         data: { "live-search": "true", placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
         <% display_facet.items.each do |facet_item| %>
+          <% facet_item_presenter = facet_item_presenter(facet_config, facet_item, display_facet) %>
           <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
-            <%= facet_display_value(display_facet.name, facet_item.label) %>
+            <%= facet_item_presenter.label %>
           <% end %>
         <% end %>
       <% end %>
