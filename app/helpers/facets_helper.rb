@@ -11,18 +11,6 @@ module FacetsHelper
     blacklight_config.facet_fields.select { |_, v| v[:home] }.keys
   end
 
-  # Overrides Blacklight method to allow facet icons to be displayed
-  def render_facet_value(facet_field, item, options = {})
-    facet_config = facet_configuration_for_field(facet_field)
-    path = facet_item_presenter(facet_config, item, facet_field).href(options)
-
-    html_options = { class: "facet_select facet_" + item.value.downcase.parameterize.underscore }
-
-    content_tag(:span, class: "facet-label") do
-      link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, html_options)
-    end + render_facet_count(item.hits, html_options)
-  end
-
   def render_bento_format_facet_value(item, options = {})
     facet_config = facet_configuration_for_field("format")
     facet_item_presenter = facet_item_presenter(facet_config, item, "format")
