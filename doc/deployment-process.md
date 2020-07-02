@@ -9,6 +9,8 @@ QA, Stage and Production Deployments
 * Stage deployments are triggered automatically by the CI service [when a new release
   is tagged](new-release-process.md).
 
+(More details can be found at [Setting Up A Release Candidate](Setting-up-a-release-candidate))
+
 ### Production Deployments
 * Production deployments are triggered on confirmation. The deployment
   confirmation is queued [when a new release is
