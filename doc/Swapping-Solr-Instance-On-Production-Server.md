@@ -2,7 +2,7 @@
 
 Which solr collection is being used per environment is managed entirely by the `CATALOG_COLLECTION` environment variable set in the [.env](../.env) file.
 
-Thus to progress an `CATALOG_COLLECTION` update across our various environments we must first merge a PR with the `CATALOG_COLLECTION` updated (this would deploy the change to our `qa` environment).
+To progress a `CATALOG_COLLECTION` update across our various environments we must first merge a PR with the `CATALOG_COLLECTION` updated (this would deploy the change to our `qa` environment).
 
 And to deploy the same change to our stage environment we would tag a release with the same change.
 
