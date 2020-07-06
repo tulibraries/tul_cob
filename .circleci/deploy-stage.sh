@@ -10,5 +10,5 @@ pipenv run ansible-galaxy install -r requirements.yml # install playbook role re
 echo $ANSIBLE_VAULT_PASSWORD > ~/.vault
 
 # deploy to qa using ansible-playbook
-pipenv run ansible-playbook -i inventory/stage playbook.yml --vault-password-file=~/.vault -e 'ansible_ssh_port=9229' --private-key=~/.ssh/.conan_the_deployer --limit=app -e rails_app_git_branch=$CIRCLE_TAG -vv
+pipenv run ansible-playbook -i inventory/stage playbook.yml --vault-password-file=~/.vault -e 'ansible_ssh_port=9229' --private-key=~/.ssh/.conan_the_deployer -e rails_app_git_branch=$CIRCLE_TAG -vv
 echo "BE AWARE THAT SOLR CONFIG CHANGES WERE NOT DEPLOYED AS PART OF THIS BUILD"
