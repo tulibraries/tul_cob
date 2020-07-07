@@ -20,7 +20,8 @@ class WebContentController < CatalogController
       label: "Library Website",
       limit: true,
       collapse: false,
-      helper_method: :format_types
+      helper_method: :format_types,
+      component: true
 
     # Index fields
     config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type

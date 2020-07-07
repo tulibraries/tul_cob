@@ -117,18 +117,18 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
-    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, item_component: FacetItemComponent
-    config.add_facet_field "pub_date_sort", label: "Date", range: true
-    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
-    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
-    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true
-    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
-    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
-    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
-    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
+    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false, component: true
+    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true, component: true
+    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
+    config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
+    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
+    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
+    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
+    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
+    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
+    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
+    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
