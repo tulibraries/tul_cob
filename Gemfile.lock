@@ -52,7 +52,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 31ab254b4e027b16dd41d99c467d9afd07777da6
+  revision: 9bbad14208bb133dfef16be099ab5eee3ee4d09a
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -345,7 +345,7 @@ GEM
     mysql2 (0.5.3)
     nenv (0.3.0)
     nio4r (2.5.2)
-    nokogiri (1.10.9)
+    nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -502,7 +502,7 @@ GEM
     tilt (2.0.10)
     tins (1.20.2)
     to_regexp (0.2.1)
-    traject (3.3.0)
+    traject (3.4.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 5)
