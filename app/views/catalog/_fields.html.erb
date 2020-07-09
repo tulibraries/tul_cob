@@ -4,7 +4,7 @@
 <dl class="row document-metadata mb-0">
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
   <% if field_presenter.render_field? %>
-    <% if field_presenter.label %>
+    <% unless field_config[:no_label] %>
     <dt class="index-label col-sm-12 col-md-4 col-lg-3 blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>: </dt>
     <dd class="col-sm-12 col-md-5 col-lg-7 blacklight-<%= field_name.parameterize %>">
     <% end %>
