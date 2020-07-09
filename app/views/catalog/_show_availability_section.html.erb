@@ -9,8 +9,6 @@
 
 <h2 class="sr-only availability-section"><%= "Availability" %></h2>
 
-        <%= render_temporary_electronic_request_help_form_button(document) %>
-
         <div id="requests-container" class="hidden">
           <% if user_signed_in? %>
             <%= request_modal(document.id, @pickup_locations, @request_level) %>

@@ -22,12 +22,12 @@ export default class extends Controller {
       .then(response => response.text())
       .then(html => {
         this.panelTarget.innerHTML = html
-        // REMOVED WHILE LIBRARIES CLOSED
-        //$("#requests-container").removeClass("hidden");
-        //$('[data-long-list]').longList();
-        //var mms_id = $("#record-view-iframe").data("availability-id");
-        //var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
-        //$("#request-btn-" + mms_id).attr("href", requests_url);
+        // LINES 26-30 CAN BE COMMENTED OUT WHEN LIBRARIES ARE CLOSED
+        $("#requests-container").removeClass("hidden");
+        $('[data-long-list]').longList();
+        var mms_id = $("#record-view-iframe").data("availability-id");
+        var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
+        $("#request-btn-" + mms_id).attr("href", requests_url);
       })
   }
 
