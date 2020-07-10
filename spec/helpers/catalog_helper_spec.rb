@@ -715,18 +715,17 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#render_temporary_electronic_request_help_form_button(document)" do
-    let(:button) { helper.render_temporary_electronic_request_help_form_button(document) }
+  describe "#digital_help_allowed?(document)" do
     context "is not a physical item" do
       let(:document) { { "availability_facet" => "Online" } }
-      it "returns nil" do
-        expect(button).to be nil
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
       end
     end
     context "is a physical item" do
       let(:document) { { "availability_facet" => "At the Library" } }
-      it "returns a button" do
-        expect(button).to include("button>")
+      it "returns true" do
+        expect(digital_help_allowed?(document)).to be true
       end
     end
     context "is a physical item and an online item" do
@@ -734,8 +733,8 @@ RSpec.describe CatalogHelper, type: :helper do
         "availability_facet" => "At the Library",
         "electronic_resource_display" => "foo"
          } }
-      it "returns nil" do
-        expect(button).to be nil
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
       end
     end
     context "is a physical item with hathitrust link" do
@@ -744,7 +743,7 @@ RSpec.describe CatalogHelper, type: :helper do
         "hathi_trust_bib_key_display" => "foo"
          } }
       it "returns nil" do
-        expect(button).to be nil
+        expect(digital_help_allowed?(document)).to be false
       end
     end
   end

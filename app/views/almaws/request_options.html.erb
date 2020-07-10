@@ -4,6 +4,11 @@
 </div>
 
 <div class="modal-body">
+  <div class="faq-text-box border border-red p-2 rounded mb-2">
+    <p class="mb-0"><%= t("requests.text_box_html", href: link_to(t("requests.text_box_href"), t("requests.text_box_link"), target: "_blank")) %></p>
+
+  </div>
+
   <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
 
   <%= asrs_allowed_partial(@request_options, @document) %>
@@ -11,6 +16,7 @@
   <%= digitization_allowed_partial(@request_options, @document) %>
   <%= booking_allowed_partial(@request_options, @document) %>
   <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
+  <%= digital_copy_partial(@request_options, @books, @document) %>
   <%= aeon_request_partial(@request_options, @document) %>
   <%= no_temple_request_options_available(@request_options, @books, @document) %>
 

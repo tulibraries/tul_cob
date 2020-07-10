@@ -1,1 +1,15 @@
-<%= render_temporary_electronic_request_help_form_button(document) %>
+<div class="card p-0 request-card">
+  <div class="request-heading bg-header-grey">
+    <h2 class="card-title mb-2">
+        <a class="booking-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseDigitalHelp-<%= @mms_id %>"><%= t("requests.digital_copy_link") %></a>
+    </h2>
+  </div>
+</div>
+
+<div id="collapseDigitalHelp-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options, books, document)%>">
+  <div class="card-body pb-0">
+    <p><%= t("requests.digital_help_text_one") %></p>
+    <p><%= t("requests.digital_help_text_two_html", href: link_to(t("requests.digital_help_text_two_href"), _build_libwizard_url(document), target: "_blank")) %></p>
+    <p><%= t("requests.digital_help_text_three_html", href: link_to(t("requests.digital_help_text_three_href"),  t("requests.digital_help_text_three_link"), target: "_blank")) %></p>
+  </div>
+</div>
