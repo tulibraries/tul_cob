@@ -100,21 +100,21 @@ describe('AvailabilityController', () => {
       expect(clicked).toEqual(true)
     });
 
-    test.skip('panel target unhidden', () => {
+    test('panel target unhidden', () => {
       let hidden = $('div[data-target="availability.panel"]')
       .parent().hasClass("hidden")
 
-      expect(hidden).toEqual(true)
+      expect(hidden).toEqual(false)
     });
 
     test('request target is unhidden', () => {
       let hidden = $('#requests-container-991030169919703811')
       .hasClass("hidden")
 
-      expect(hidden).toEqual(true)
+      expect(hidden).toEqual(false)
     });
 
-    test.skip('request target gets tagged with search-results-request-btn', () => {
+    test('request target gets tagged with search-results-request-btn', () => {
       let tagged = $('#requests-container-991030169919703811')
       .hasClass('search-results-request-btn')
 
