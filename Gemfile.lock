@@ -33,7 +33,7 @@ GIT
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: 35cb23932152f9e611571e000488551ab2254952
-  branch: master
+  branch: main
   specs:
     alma (0.3.1)
       activesupport
@@ -95,8 +95,8 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 725fac6bdb0ae44e3f7f33af5db62efe3884c8a1
-  branch: master
+  revision: 90d827bea5f85cfebc4e43004deadf232116568a
+  branch: main
   specs:
     primo (0.1.0)
       httparty
