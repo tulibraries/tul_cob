@@ -121,7 +121,7 @@ en:
   requests:
     log_in: "Log in to see request options"
     request_button: "Get this item"
-    header: "Request Options"
+    header: "How to get it"
     bookbot_instructions: "To get this item from the BookBot, use the request button."
     scrc_instructions_html: "To request materials from the Special Collections Research Center, go to %{href}"
     scrc_instructions_href: "SCRC Researcher Account"
