@@ -31,4 +31,12 @@ module FacetsHelper
       link_to_unless(options[:suppress_link], facet_item_presenter.label, path, html_options)
     end + " (#{item.hits})"
   end
+
+  # Can be removed when blacklight is upgraded to include this commit:
+  # https://github.com/projectblacklight/blacklight/commit/2d80c91dbc6e728b61839bae7d3e6d33a6ca542e
+  def render_facet_limit(display_facet, options = {})
+    field_config = facet_configuration_for_field(display_facet.name)
+    return if field_config.component && !should_render_field?(field_config, display_facet)
+    super(display_facet, options)
+  end
 end
