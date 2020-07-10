@@ -31,9 +31,14 @@
   }
 }
 
+
+
 .request-heading a {
   color: $black;
   font-size: 1.1rem;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .request-heading a:hover {
