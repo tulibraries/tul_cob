@@ -45,8 +45,19 @@ module AlmawsHelper
     end
   end
 
+  def open_shelves_partial(request_options, books, document)
+    if open_shelves_allowed?(document)
+      render partial: "open_shelves", locals: { request_options: request_options, books: books, document: document }
+    end
+  end
+
   def no_temple_request_options_available(request_options, books, document)
-    if !@request_options.hold_allowed? && !@request_options.digitization_allowed? && !@request_options.booking_allowed? && !aeon_request_allowed(document) && !digital_copy_partial(request_options, books, document)
+    if !@request_options.hold_allowed? &&
+      !@request_options.digitization_allowed? &&
+      !@request_options.booking_allowed? &&
+      !aeon_request_allowed(document) &&
+      !digital_copy_partial(request_options, books, document) &&
+      !open_shelves_partial(request_options, books, document)
       render partial: "no_request_options", locals: { request_options: request_options, books: books, document: document } unless @request_options.resource_sharing_broker_allowed?
     end
   end
@@ -58,7 +69,8 @@ module AlmawsHelper
       request_options.booking_allowed?,
       request_options.resource_sharing_broker_allowed? && books.present?,
       aeon_request_allowed(document),
-      digital_help_allowed?(document)]
+      digital_help_allowed?(document),
+      open_shelves_allowed?(document)]
   end
 
   def only_one_option_allowed(request_options, books, document)

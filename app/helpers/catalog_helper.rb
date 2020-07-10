@@ -195,6 +195,15 @@ module CatalogHelper
     !document["hathi_trust_bib_key_display"]
   end
 
+  def open_shelves_allowed?(document)
+    relevant_locations = ["hirsh", "juvenile", "leisure", "stacks", "newbooks"]
+
+    document.fetch("items_json_display", []).any? { |item|
+      item["current_library"].include?("MAIN") } &&
+    document.fetch("items_json_display", []).any? { |item|
+      relevant_locations.include?(item["current_location"]) }
+  end
+
   def build_hathitrust_url(document)
     record_id = document.fetch("hathi_trust_bib_key_display", nil)
     return if record_id.nil?

@@ -10,7 +10,7 @@
   </div>
 
   <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
-
+  <%= open_shelves_partial(@request_options, @books, @document) %>
   <%= asrs_allowed_partial(@request_options, @document) %>
   <%= hold_allowed_partial(@request_options, @document) %>
   <%= digitization_allowed_partial(@request_options, @document) %>

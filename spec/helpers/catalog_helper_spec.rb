@@ -748,6 +748,56 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#open_shelves_allowed?(document)" do
+    context "is not in a relevant library" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns false" do
+        expect(open_shelves_allowed?(document)).to be false
+      end
+    end
+
+    context "is in a relevant location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "juvenile",
+        "current_library" => "MAIN",
+        "current_location" => "juvenile" }]
+          }
+        }
+      it "returns true" do
+        expect(open_shelves_allowed?(document)).to be true
+      end
+    end
+
+    context "is in a relevant library, but not location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "Reference",
+        "current_library" => "MAIN",
+        "current_location" => "reference" }]
+          }
+        }
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
+      end
+    end
+  end
+
   describe "#build_hathitrust_url(document)" do
     let(:document) { { "hathi_trust_bib_key_display" => ["000005117"] } }
     let(:base_url) { "https://catalog.hathitrust.org/Record/000005117?signon=swle:https://fim.temple.edu/idp/shibboleth" }
