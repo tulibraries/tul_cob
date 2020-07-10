@@ -129,7 +129,7 @@ en:
     text_box_html: "For information about borrowing as we reopen our facilities, visit our %{href}."
     text_box_href: "return to campus FAQ"
     text_box_link: ""
-    footer_html: "For more information about request options, see:  %{href}"
+    footer_html: "For more information about request options, see:  %{href}<span class='request-options-external-link-icon'></span>"
     footer_href: "How do I request an item at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
     cancel: "Cancel"

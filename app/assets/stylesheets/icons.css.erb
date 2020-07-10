@@ -14,6 +14,19 @@ button.collapse-button.collapsed .avail-label:after {
   padding-left: 0.625rem;
 }
 
+a.booking-request:after {
+  color: $red;
+  content:"\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  float: right;
+  padding-right: 0.625rem;
+}
+
+a.booking-request[aria-expanded="true"]::after {
+  content:"\f078";
+}
+
 span.book,
 span.ebooks,
 span.book_book_chapter,
@@ -314,6 +327,6 @@ span.external-link-icon {
 }
 
 span.request-options-external-link-icon {
-  background: transparent url(<%= asset_path "black_external_link.svg" %>) no-repeat center center;
+  background: transparent url(<%= asset_path "noun_external_link.svg" %>) no-repeat center center;
   padding-right: 2rem;
 }
