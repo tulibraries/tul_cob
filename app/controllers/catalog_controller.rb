@@ -32,6 +32,11 @@ class CatalogController < ApplicationController
     render "errors/unsupported_query"
   end
 
+  rescue_from NoMethodError do |exception|
+    Honeybadger.notify(exception.message)
+    render "errors/internal_server_error"
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new

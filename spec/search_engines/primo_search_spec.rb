@@ -22,6 +22,15 @@ RSpec.describe BentoSearch, type: :search_engine do
     it "uses TulStandardDecorator" do
       expect(item.decorator).to eq("TulDecorator")
     end
+
+    it "doesn't bother sending an empty query to Primo" do
+      empty_search_results = VCR.use_cassette("bento_search_primo") do
+        primo_se.search("")
+      end
+
+      expect(empty_search_results).to be_a(BentoSearch::Results)
+      expect(empty_search_results.none?).to be true
+    end
   end
 
 end
