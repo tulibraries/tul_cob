@@ -522,7 +522,6 @@ module CatalogHelper
   def render_bookmark_partial(options = {}, &block)
     bookmark_partial = blacklight_config.navbar.partials
     .select { |name| name == :bookmark }
-    .each { |name, partial| partial.if = true }
 
     render_filtered_partials(bookmark_partial, &block)
   end
