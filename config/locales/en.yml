@@ -40,9 +40,11 @@ en:
     borrow_href: "borrow from another library"
     borrow_link: "http://answers.library.temple.edu/faq/195868"
 
-    hathitrust_text_html: "Notes: <br /> Access to HathiTrust digital materials has been made available through HathiTrust’s %{href} in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will renew automatically at the end of that hour, unless another user requests the book."
-    hathitrust_href: "Emergency Temporary Access Service"
-    hathitrust_link: "https://www.hathitrust.org/ETAS-User-Information"
+    hathitrust_text_html: >-
+          Access to HathiTrust digital materials is available through HathiTrust’s 
+          <a href="https://www.hathitrust.org/ETAS-User-Information">Emergency Temporary Access Service</a> <strong>until 08/02/2020</strong>, 
+          in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will 
+          renew automatically at the end of that hour, unless another user requests the book.
 
     help_html: "<li>For help, %{href}.</li>"
     help_href: "Contact the libraries"
