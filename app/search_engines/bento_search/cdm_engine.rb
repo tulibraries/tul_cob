@@ -7,7 +7,7 @@ module BentoSearch
     delegate :blacklight_config, to: ::SearchController
 
     def search_implementation(args)
-      query = args.fetch(:query, "")
+      query = CGI.escape(CGI.unescape(args.fetch(:query, "")))
       response = CDM::find(query)
       results = BentoSearch::Results.new
       results.total_items = response.dig("results", "pager", "total") || 0
