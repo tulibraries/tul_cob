@@ -13,13 +13,10 @@ en:
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
-
-    banner_part_one_html: "As of March 19, all Temple University Libraries %{href} All library spaces are closed."
-    banner_part_one_href: "services and resources are online."
-    banner_part_one_link: "https://library.temple.edu/webpages/remote-learner-support"
-    banner_part_two_html: "Many library resource vendors have extended %{href}."
-    banner_part_two_href: "complimentary access to additional online resources"
-    banner_part_two_link: "https://guides.temple.edu/az.php?t=41140"
+    
+    banner_html: >-
+      <p>Our services and resources are online only, but we're preparing for the return to campus. 
+      <a href="https://library.temple.edu/categories/47">Click here to see full details</a>.</p>
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
