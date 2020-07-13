@@ -18,6 +18,24 @@ en:
       <p>Our services and resources are online only, but we're preparing for the return to campus. 
       <a href="https://library.temple.edu/categories/47">Click here to see full details</a>.</p>
 
+    bookmarks:
+      sunset_message_html: >-
+          <p>
+            We are phasing out the bookmarks feature <strong>for articles</strong>. Your bookmarks for books, journals, 
+            and other materials won’t be affected by this change. You can keep those and continue to add 
+            new ones.
+          </p>
+          <p>
+            As of <strong>August 3rd, 2020</strong>, you will no longer be able to add new bookmarks for 
+            articles. We recommend that you download any article bookmarks now in preparation for the full 
+            phase-out of the article bookmarks. Use the "Send to" button to email a copy of your bookmarks 
+            to yourself or download an RIS file for upload to 
+            <a href="https://guides.temple.edu/overviewcitations">a citation manager</a>.
+          </p>
+          <p>
+            <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions.
+          </p>
+
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
     borrow_link: "http://answers.library.temple.edu/faq/195868"
