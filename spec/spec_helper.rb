@@ -45,6 +45,7 @@ end
 RSpec.configure do |config|
 
   config.before(:each) do
+    Honeybadger::Backend::Test.notifications[:notices] = []
 
     # JUst so we don't send our request when testing controllers
     stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
