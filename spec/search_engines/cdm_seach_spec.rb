@@ -26,4 +26,14 @@ RSpec.describe "cdm search engine", type: :search_engine do
       expect(search_results.total_items).to eq("415")
     end
   end
+
+  context "when an error gets thrown while processing CDM" do
+    let(:query) { "query/" }
+
+    it "defaults to 0 finds" do
+      allow(CDM).to receive(:find).with("query%20") { raise StandardError.new("Boo!") }
+      allow(Honeybadger).to receive(:notify).with("Ran into error while try to process CDM: Boo!")
+      expect(search_results.total_items).to eq(0)
+    end
+  end
 end

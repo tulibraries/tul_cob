@@ -26,5 +26,17 @@ RSpec.describe SearchHelper, type: :helper do
         expect(path_for_books_and_media_facet(facet_field, item)).to eq(expected_url)
       end
     end
+
+    context "search term has a forward slash in it"  do
+      let(:item) {  OpenStruct.new(value: "digital_collections") }
+      let(:facet_field) { "" }
+      let(:params) { { "q": "japan/" } }
+
+      it "removes forward slash form query" do
+        expected_url = "https://digital.library.temple.edu/digital/search/searchterm/japan /order/nosort"
+
+        expect(path_for_books_and_media_facet(facet_field, item)).to eq(expected_url)
+      end
+    end
   end
 end
