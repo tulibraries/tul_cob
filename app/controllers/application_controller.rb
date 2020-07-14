@@ -54,6 +54,11 @@ class ApplicationController < ActionController::Base
     redirect_to request.referer
   end
 
+  def campus_closed?
+    ::FeatureFlags.campus_closed?(params)
+  end
+  helper_method :campus_closed?
+
   protected
 
     def no_cache
