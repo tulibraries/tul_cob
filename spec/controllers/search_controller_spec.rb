@@ -37,7 +37,7 @@ RSpec.describe SearchController, type: :controller do
 
     context "one or more concurrent searches fails" do
 
-      it "should raise an error when a search has failed" do
+      it "should not raise the error when a search has failed, just tell HoneyBadger" do
         Object.const_set("BadService", Class.new {
                            include BentoSearch::SearchEngine
                            def search_implementation(args)
@@ -50,7 +50,11 @@ RSpec.describe SearchController, type: :controller do
         end
 
         results = BentoSearch::ConcurrentSearcher.new(:books_and_media, :cdm, :bad_service).search("foo").results
-        expect { controller.send(:process_results, results) }.to raise_error(HTTPClient::TimeoutError)
+        expect {
+          expect { controller.send(:process_results, results) }.to_not raise_error
+          Honeybadger.flush
+        }.to change(Honeybadger::Backend::Test.notifications[:notices], :size).by(1)
+        expect(Honeybadger::Backend::Test.notifications[:notices].first.error_message).to eq("HTTPClient::TimeoutError: HTTPClient::TimeoutError")
       end
     end
   end
