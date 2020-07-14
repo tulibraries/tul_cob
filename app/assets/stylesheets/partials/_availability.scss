@@ -67,6 +67,17 @@ dd .online-list-items {
   padding: .5rem;
 }
 
+.online-list-item.direct-link {
+  border-bottom: 0;
+  border-style: inset!important;
+  border-width: 2px;
+  padding: 1rem;
+  a {
+    font-weight: 600;
+    color: #2c85d4;
+  }
+}
+
 .library-name {
   padding-left: 0;
 

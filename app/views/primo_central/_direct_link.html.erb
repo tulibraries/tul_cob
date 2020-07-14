@@ -1,8 +1,7 @@
-<table class="record_page_elec_links">
-  <tr>
-    <td>
-      <%= link_to document_link_label, document_link, class: "electronic_links"  %>
-    </td>
-  </tr>
-
-</table>
+<div class="record-page-direct-link">
+  <div class="online-list-item direct-link">
+    <%= link_to document_link_label, document_link, class: "electronic_links", 
+                target: "_blank", title: "Open in a New Window" %>
+    <span class="external-link-icon-blue"></span>
+  </div>
+</div>
