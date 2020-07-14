@@ -24,9 +24,10 @@ export default class extends Controller {
           this.buttonTarget.classList.add("clicked")
           $(this.panelTarget).parent().removeClass("hidden");
           $('[data-long-list]').longList();
-          // LINES 28-29 CAN BE COMMENTED OUT WHEN LIBRARIES ARE CLOSED
-          $(this.requestTarget).removeClass("hidden");
-          this.requestTarget.classList.add("search-results-request-btn")
+          if (!window.campus_closed) {
+            $(this.requestTarget).removeClass("hidden");
+            this.requestTarget.classList.add("search-results-request-btn")
+          }
       })
     }
   }

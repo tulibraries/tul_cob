@@ -25,8 +25,10 @@
 
 <div class="modal-footer justify-content-between">
   <!-- The text/icon in the footer needs to be hidden when the libraries are closed -->
+  <% unless campus_closed? %>
   <p class="modal-footer-text">
     <span class="request-options-footer-text"><%= t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %></span>
   </p>
+  <% end %>
   <button type="button" class="btn btn-default border-light-grey" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
 </div>
