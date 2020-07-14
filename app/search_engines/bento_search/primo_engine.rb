@@ -10,7 +10,7 @@ module BentoSearch
 
       # Avoid making a costly call for no reason.
       if query.empty?
-        response = Blacklight::PrimoCentral::Response.new({ "docs" => [], "numFound" => 0 })
+        response = Blacklight::PrimoCentral::Response.new({ "docs" => [] }, {}, numFound: 0)
       else
         user_params = { q: query, per_page: per_page }
         config = blacklight_config
@@ -18,7 +18,6 @@ module BentoSearch
 
         (response, _) = search_service.search_results
       end
-
       results(response)
     end
 
