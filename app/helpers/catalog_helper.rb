@@ -63,6 +63,12 @@ module CatalogHelper
         "technical_report" => "legal",
         "book_chapter" => "book",
         "text_resource" => "legal",
+        "web_resource" => "website",
+        "report" => "legal",
+        "image" => "visual_material",
+        "computer_file" => "computer_media",
+        "market_research" => "dataset",
+        "standard" => "legal",
     ).fetch(format, "unknown")
 
     "svg/" + image + ".svg"
