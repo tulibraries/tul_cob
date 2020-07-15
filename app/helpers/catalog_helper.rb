@@ -47,28 +47,32 @@ module CatalogHelper
     format = formats.first.to_s.parameterize.underscore
     image = Rails.application.config.assets.default_cover_image
       .merge(
+        "archival_material_manuscript" => "archival_material",
         "article" => "journal_periodical",
+        "book_chapter" => "book",
+        "book_review" => "legal",
+        "computer_file" => "computer_media",
         "dissertation" => "script",
         "dissertation_thesis" => "script",
         "government_document" => "legal",
+        "image" => "visual_material",
         "journal" => "journal_periodical",
         "legal_document" => "legal",
+        "market_research" => "dataset",
+        "microform" => "legal",
+        "newspaper" => "legal",
         "newspaper_article" => "legal",
         "other" => "unknown",
         "patent" => "legal",
         "reference_entry" => "legal",
+        "report" => "legal",
         "research_dataset" => "dataset",
         "review" => "legal",
+        "standard" => "legal",
         "statistical_data_set" => "dataset",
         "technical_report" => "legal",
-        "book_chapter" => "book",
         "text_resource" => "legal",
         "web_resource" => "website",
-        "report" => "legal",
-        "image" => "visual_material",
-        "computer_file" => "computer_media",
-        "market_research" => "dataset",
-        "standard" => "legal",
     ).fetch(format, "unknown")
 
     "svg/" + image + ".svg"
