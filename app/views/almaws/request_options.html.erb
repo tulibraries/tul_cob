@@ -4,22 +4,31 @@
 </div>
 
 <div class="modal-body">
-  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+  <div class="faq-text-box border border-red p-2 rounded mb-2">
+    <p class="mb-0"><%= t("requests.text_box_html", href: link_to(t("requests.text_box_href"), t("requests.text_box_link"), target: "_blank")) %></p>
 
+  </div>
+
+  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+  <%= open_shelves_partial(@request_options, @books, @document) %>
   <%= asrs_allowed_partial(@request_options, @document) %>
   <%= hold_allowed_partial(@request_options, @document) %>
   <%= digitization_allowed_partial(@request_options, @document) %>
   <%= booking_allowed_partial(@request_options, @document) %>
   <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
+  <%= digital_copy_partial(@request_options, @books, @document) %>
   <%= aeon_request_partial(@request_options, @document) %>
   <%= no_temple_request_options_available(@request_options, @books, @document) %>
 
   </div>
 </div>
 
-<!-- <div class="modal-footer justify-content-between">
-  <p class="modal-footer-text"> -->
-    <% t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %>
-  <!-- </p>
+<div class="modal-footer justify-content-between">
+  <!-- The text/icon in the footer needs to be hidden when the libraries are closed -->
+  <% unless campus_closed? %>
+  <p class="modal-footer-text">
+    <span class="request-options-footer-text"><%= t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %></span>
+  </p>
+  <% end %>
   <button type="button" class="btn btn-default border-light-grey" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
-</div> -->
+</div>

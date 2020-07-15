@@ -186,25 +186,22 @@ module CatalogHelper
       path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
   end
 
-  def render_temporary_electronic_request_help_form_button(document)
-    renderable = (
-      document.fetch("availability_facet", [])
-        .include?("At the Library") &&
-      document.fetch("format", [])
-        .exclude?("Archival Material") &&
-      !document["electronic_resource_display"] &&
-      !document["hathi_trust_bib_key_display"]
-    )
+  def digital_help_allowed?(document)
+    document.fetch("availability_facet", [])
+      .include?("At the Library") &&
+    document.fetch("format", [])
+      .exclude?("Archival Material") &&
+    !document["electronic_resource_display"] &&
+    !document["hathi_trust_bib_key_display"]
+  end
 
-    if renderable
-      url = _build_libwizard_url(document)
+  def open_shelves_allowed?(document)
+    relevant_locations = ["hirsh", "juvenile", "leisure", "stacks", "newbooks"]
 
-      label = t("requests.temporary_electronic_request_help_form")
-      link_to(
-        content_tag(:button, label, class: "btn  btn-sm temp-help-btn"),
-        url, target: "_blank", class: "float-md-right"
-      )
-    end
+    document.fetch("items_json_display", []).any? { |item|
+      item["current_library"].include?("MAIN") } &&
+    document.fetch("items_json_display", []).any? { |item|
+      relevant_locations.include?(item["current_location"]) }
   end
 
   def build_hathitrust_url(document)
