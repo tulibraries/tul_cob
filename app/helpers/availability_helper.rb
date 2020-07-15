@@ -36,6 +36,13 @@ module AvailabilityHelper
   def unavailable_items(item)
     if item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
+      if (item.process_type == "LOAN")
+        due_date_time = item["item_data"].fetch("due_date", nil)
+        unless (due_date_time.nil?)
+          due_date = due_date_time.match(/([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)/)
+          process_type += sprintf(", due %i/%i/%i", due_date[2].to_i, due_date[3].to_i, due_date[1].to_i)
+        end
+      end
       content_tag(:span, "", class: "close-icon") + process_type
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"

@@ -141,6 +141,22 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
+
+    context "item is on loan" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "0" },
+             "process_type" => { "value" => "LOAN" },
+             "due_date" => "2020-09-01T20:00:00Z"
+           }
+         )
+      end
+
+      it "displays unavailable" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Checked out, due 9/1/2020"
+      end
+    end
   end
 
   describe "#unavailable_items(item)" do

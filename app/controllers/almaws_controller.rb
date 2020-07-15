@@ -21,7 +21,7 @@ class AlmawsController < CatalogController
     offset = (limit * page) - limit
 
     log = { type: "bib_items_availability" }
-    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset) }
+    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset, expand: "due_date") }
     @response = Blacklight::Alma::Response.new(bib_items, params)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
     @document_and_api_data = helpers.document_and_api_merged_results(@document, bib_items)
