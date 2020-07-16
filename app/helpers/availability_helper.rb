@@ -2,6 +2,7 @@
 
 module AvailabilityHelper
   include Blacklight::CatalogHelperBehavior
+  include UsersHelper
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
@@ -36,6 +37,12 @@ module AvailabilityHelper
   def unavailable_items(item)
     if item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
+      if (item.process_type == "LOAN")
+        due_date_time = item["item_data"].fetch("due_date", nil)
+        unless (due_date_time.nil?)
+          process_type += ", due " + make_date(due_date_time)
+        end
+      end
       content_tag(:span, "", class: "close-icon") + process_type
     else
       content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
