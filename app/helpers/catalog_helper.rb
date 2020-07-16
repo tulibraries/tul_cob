@@ -548,4 +548,8 @@ module CatalogHelper
       content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")))
     end
   end
+
+  def campus_closed?
+    ::FeatureFlags.campus_closed?(params)
+  end
 end
