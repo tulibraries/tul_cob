@@ -5,14 +5,33 @@ require "rails_helper"
 
 RSpec.describe AvailabilityHelper, type: :helper do
   describe "#availability_status(item)" do
+    let(:campus_closed?) { true }
 
-    context "item is in storage" do
+    before do
+      allow(helper).to receive(:campus_closed?) { campus_closed? }
+    end
+
+    context "item is in storage and campus is closed" do
       let(:item) do
         Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
       end
 
       it "links to new outside form" do
         label = "<span class=\"close-icon\"></span>In temporary storage"
+
+        expect(availability_status(item)).to eq(label)
+      end
+    end
+
+    context "item is in storage and campus is opened" do
+      let(:item) do
+        Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
+      end
+
+      let(:campus_closed?)  { false }
+
+      it "links to new outside form" do
+        label = "<span class=\"close-icon\"></span>In temporary storage — <a href=\"https://library.temple.edu/forms/storage-request\">Recall item now</a>"
 
         expect(availability_status(item)).to eq(label)
       end

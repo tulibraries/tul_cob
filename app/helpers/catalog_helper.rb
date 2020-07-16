@@ -192,7 +192,7 @@ module CatalogHelper
       doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
     end
     doc_params.select! { |k, v| v.present? }
-    url = URI::HTTPS.build(host: "temple.libwizard.com",
+    URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
   end
 
