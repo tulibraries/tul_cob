@@ -2,6 +2,7 @@
 
 module AvailabilityHelper
   include Blacklight::CatalogHelperBehavior
+  include UsersHelper
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
@@ -39,8 +40,7 @@ module AvailabilityHelper
       if (item.process_type == "LOAN")
         due_date_time = item["item_data"].fetch("due_date", nil)
         unless (due_date_time.nil?)
-          due_date = due_date_time.match(/([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)/)
-          process_type += sprintf(", due %i/%i/%i", due_date[2].to_i, due_date[3].to_i, due_date[1].to_i)
+          process_type += ", due " + make_date(due_date_time)
         end
       end
       content_tag(:span, "", class: "close-icon") + process_type

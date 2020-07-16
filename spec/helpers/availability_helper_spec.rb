@@ -154,7 +154,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays unavailable" do
-        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Checked out, due 9/1/2020"
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Checked out, due 09/01/2020"
       end
     end
   end
