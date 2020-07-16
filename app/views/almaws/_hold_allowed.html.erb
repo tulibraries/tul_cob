@@ -1,7 +1,7 @@
 <div class="card p-0 request-card">
   <div class="request-heading bg-header-grey">
     <h2 class="card-title mb-2">
-        <a class="hold-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>"><%= t("requests.hold_allowed_link") %></a>
+        <a class="hold-request accordian-toggle" aria-expanded="<%= only_one_option_allowed(request_options, @books, document) %>" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseOne-<%= @mms_id %>"><%= t("requests.hold_allowed_link") %></a>
     </h2>
   </div>
 
