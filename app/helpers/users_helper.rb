@@ -4,10 +4,16 @@ module UsersHelper
   require "date"
 
   def expiry_date(hold)
-    # Correct improper ISO8601 date from Alma - Trailing 'Z'
-    hold.expiry_date.chop! if hold.expiry_date.last == "Z"
-
-    make_date(hold.expiry_date) rescue "N/A"
+    begin
+      make_date(hold.expiry_date)
+    rescue
+      # Correct improper ISO8601 date from Alma - Trailing 'Z'
+      if hold.expiry_date.last == "Z"
+        make_date(hold.expiry_date.chop) rescue "N/A"
+      else
+        "N/A"
+      end
+    end
   end
 
   def make_date(date)
