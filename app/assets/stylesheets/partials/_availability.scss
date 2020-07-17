@@ -15,13 +15,6 @@
   padding: 0.5rem;
 }
 
-.avail_status,
-.avail-spinner-container {
-  @media(max-width: 768px) {
-    margin-left: auto !important;
-  }
-}
-
 .library-name {
   font-size: 0.875rem;
   font-weight: bold;
@@ -186,5 +179,14 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
 .aeon-request {
   @media(max-width: 768px) {
     padding-left: 0;
+  }
+}
+
+.avail_status-container, .avail-spinner-container {
+  width: 25%;
+  @media (max-width: 991px) {
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 7px;
   }
 }
