@@ -16,6 +16,8 @@ RSpec.describe RenderConstraintsHelper, type: :helper do
     before do
       without_partial_double_verification do
         allow(helper).to receive(:blacklight_config).and_return(config)
+        allow(helper).to receive(:search_state).and_return(Blacklight::SearchState.new({}, config, helper))
+        allow(helper).to receive(:search_action_path)
       end
     end
 

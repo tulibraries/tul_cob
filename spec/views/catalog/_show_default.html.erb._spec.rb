@@ -10,6 +10,7 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
   before(:each) do
     allow(controller).to receive(:action_name).and_return("show")
     @config = Blacklight::Configuration.new {}
+    @config.show.document_presenter_class = ShowPresenter
     @context = Blacklight::Configuration::Context.new(controller)
     @document = SolrDocument.new(id: 1)
     @document[:format] = []

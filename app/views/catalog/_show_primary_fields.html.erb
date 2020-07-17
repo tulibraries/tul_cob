@@ -1,7 +1,6 @@
 <% doc_presenter = show_presenter(document) %>
-
 <dl class="row document-metadata mb-0 show-page-list mb-3">
-  <% document_show_primary_fields(document).each do |field_name, field| %>
-    <%= render "show_fields", document: document, field: field, field_name: field_name %>
+  <% doc_presenter.each_primary_field do |field_name, field, field_presenter| %>
+    <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
   <% end -%>
 </dl>

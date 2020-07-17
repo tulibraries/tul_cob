@@ -97,12 +97,8 @@ module CatalogHelper
 
   # Overridden because we want to use our merged @response["docs"] with docs
   # from solr and primo together.
-  def current_bookmarks(response = nil)
-    response ||= @response
-    @current_bookmarks ||=
-      current_or_guest_user
-      .bookmarks_for_documents(@response["docs"] ||
-    response.documents).to_a
+  def bookmarked?(document)
+    current_bookmarks(document.response["docs"]).any? { |doc| doc.document_id == document.id && doc.document_type == document.class }
   end
 
   ##
@@ -532,15 +528,6 @@ module CatalogHelper
     .each { |name, partial| partial.if = true }
 
     render_filtered_partials(bookmark_partial, &block)
-  end
-
-  def document_show_primary_fields(document)
-    document_show_fields(document).select { |field_name, field|
-      field[:type] == :primary }
-  end
-
-  def document_show_secondary_fields(document)
-    document_show_fields(document).select { |field_name, field| field[:type] != :primary }
   end
 
   def ez_borrow_list_item(controller_name)
