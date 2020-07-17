@@ -160,7 +160,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
     context "item is on loan" do
       let(:item) do
-        Alma::BibItem.new("item_data" => { "awaiting_reshelving" => true } )
+        Alma::BibItem.new("item_data" => { "awaiting_reshelving" => true })
       end
 
       it "displays 'Awaiting Reshelving' status" do
