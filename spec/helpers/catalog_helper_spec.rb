@@ -817,4 +817,34 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#campus_closed?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params campus_closed is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(campus_closed?).to be(false)
+      end
+    end
+
+    context "params campus_closed is true" do
+      let(:params) { { "campus_closed" => "true" } }
+
+      it "returns true when campus_closed param is not 'false'" do
+        expect(campus_closed?).to be(true)
+      end
+    end
+
+    context "params campus_closed is false" do
+      let(:params) { { "campus_closed" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(campus_closed?).to be(false)
+      end
+    end
+  end
 end
