@@ -1,7 +1,7 @@
 <div class="card p-0 request-card">
   <div class="request-heading bg-header-grey">
-    <h2 class="card-title mb-2">
-        <a class="booking-request accordian-toggle" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseFive-<%= @mms_id %>"><%= t("requests.aeon_request_allowed_header") %></a>
+    <h2 class="card-title mb-0">
+      <a class="booking-request accordian-toggle" aria-expanded="<%= only_one_option_allowed(request_options, @books, document) %>" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseFive-<%= @mms_id %>"><%= t("requests.aeon_request_allowed_header") %></a>
     </h2>
   </div>
 </div>
