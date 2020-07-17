@@ -4,6 +4,9 @@ module UsersHelper
   require "date"
 
   def expiry_date(hold)
+    # Correct improper ISO8601 date from Alma - Trailing 'Z'
+    hold.expiry_date.chop! if hold.expiry_date.last == "Z"
+
     make_date(hold.expiry_date) rescue "N/A"
   end
 
