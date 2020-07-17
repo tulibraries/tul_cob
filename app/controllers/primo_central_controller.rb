@@ -29,10 +29,10 @@ class PrimoCentralController < CatalogController
     # Pagination handler
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
-    config.add_show_tools_partial(:bookmark, partial: "bookmark_control")
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: false)
     config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
-    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
-    config.add_results_document_tool(:bookmark, partial: "bookmark_control")
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: false)
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: false)
 
     # Search fields
     config.add_search_field :any, label: "All Fields", catalog_map: :all_fields
