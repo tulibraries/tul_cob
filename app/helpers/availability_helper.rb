@@ -20,6 +20,8 @@ module AvailabilityHelper
       # + link_to("Recall item now", library_link)
 
       content_tag(:span, "", class: "close-icon") + raw(label)
+    elsif item.item_data["awaiting_reshelving"]
+      content_tag(:span, "", class: "close-icon") + "Awaiting Reshelving"
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal"

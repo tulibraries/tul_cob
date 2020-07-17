@@ -157,6 +157,16 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Checked out, due 09/01/2020"
       end
     end
+
+    context "item is on loan" do
+      let(:item) do
+        Alma::BibItem.new("item_data" => { "awaiting_reshelving" => true })
+      end
+
+      it "displays 'Awaiting Reshelving' status" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Awaiting Reshelving"
+      end
+    end
   end
 
   describe "#unavailable_items(item)" do
