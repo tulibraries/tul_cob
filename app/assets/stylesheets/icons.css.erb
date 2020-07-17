@@ -14,7 +14,10 @@ button.collapse-button.collapsed .avail-label:after {
   padding-left: 0.625rem;
 }
 
-a.booking-request:after {
+a.booking-request:after, 
+a.hold-request:after, 
+a.digital-request:after, 
+a.asrs-request:after {
   color: $red;
   content:"\f054";
   font-family: "Font Awesome 5 Free";
@@ -23,7 +26,10 @@ a.booking-request:after {
   padding-right: 0.625rem;
 }
 
-a.booking-request[aria-expanded="true"]::after {
+a.booking-request[aria-expanded="true"]::after,
+a.hold-request[aria-expanded="true"]::after,
+a.digital-request[aria-expanded="true"]::after,
+a.asrs-request[aria-expanded="true"]::after {
   content:"\f078";
 }
 
