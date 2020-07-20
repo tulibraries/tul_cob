@@ -5,7 +5,7 @@
 <% else %>
   <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9">
     <ul>
-    <% field_presenter.values.each do |value| %>
+    <% Array.wrap(field_presenter.render).each do |value| %>
       <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
     <% end %>
     </ul>
