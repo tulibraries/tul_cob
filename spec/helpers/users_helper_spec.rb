@@ -16,6 +16,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("2020-09-01")
 
       it "returns a valid time" do
+        expect(Honeybadger).to_not receive(:notify)
         expect(expiry_date(hold)).to eq "08/31/2020"
       end
     end
@@ -25,6 +26,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("2020-09-01Z")
 
       it "returns a valid time anyway" do
+        expect(Honeybadger).to_not receive(:notify)
         expect(expiry_date(hold)).to eq "08/31/2020"
       end
     end
@@ -34,6 +36,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("2018-10-16T02:00:00Z")
 
       it "returns N/A" do
+        expect(Honeybadger).to_not receive(:notify)
         expect(expiry_date(hold)).to eq "10/15/2018"
       end
     end
@@ -43,6 +46,17 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("")
 
       it "returns N/A" do
+        expect(Honeybadger).to receive(:notify)
+        expect(expiry_date(hold)).to eq "N/A"
+      end
+    end
+
+    context "No expiry date" do
+      Hold = Struct.new(:expiry_date)
+      hold = Hold.new(nil)
+
+      it "returns N/A" do
+        expect(Honeybadger).to receive(:notify)
         expect(expiry_date(hold)).to eq "N/A"
       end
     end
@@ -52,6 +66,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("XYZ")
 
       it "returns N/A" do
+        expect(Honeybadger).to receive(:notify)
         expect(expiry_date(hold)).to eq "N/A"
       end
     end

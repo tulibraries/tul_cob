@@ -5,14 +5,10 @@ module UsersHelper
 
   def expiry_date(hold)
     begin
-      make_date(hold.expiry_date)
-    rescue
-      # Correct improper ISO8601 date from Alma - Trailing 'Z'
-      if hold.expiry_date.last == "Z"
-        make_date(hold.expiry_date.chop) rescue "N/A"
-      else
-        "N/A"
-      end
+      make_date(DateTime.parse(hold.expiry_date).to_s)
+    rescue => exception
+      Honeybadger.notify("On Hold Expiry Date error: #{exception.message}")
+      "N/A"
     end
   end
 
