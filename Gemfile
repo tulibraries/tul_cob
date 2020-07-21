@@ -70,8 +70,7 @@ group :development, :test do
   gem "vcr"
   gem "rails-controller-testing"
   gem "rubocop"
-  # TODO: see BL-1072
-  #gem "rubocop-rails"
+  gem "rubocop-rails"
 end
 
 gem "rsolr", "~> 2.3"

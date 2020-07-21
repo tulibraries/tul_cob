@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 AllCops:
   TargetRubyVersion: 2.6
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
@@ -129,7 +132,3 @@ Layout/EndAlignment:
 Lint/RequireParentheses:
   Enabled: true
 
-# TODO: Fix rubocop-rails not getting used see BL-1072
-#require: rubocop-rails
-#Rails:
-  #Enabled: true
