@@ -4,7 +4,12 @@ module UsersHelper
   require "date"
 
   def expiry_date(hold)
-    make_date(hold.expiry_date) rescue "N/A"
+    begin
+      make_date(DateTime.parse(hold.expiry_date).to_s)
+    rescue => exception
+      Honeybadger.notify("On Hold Expiry Date error: #{exception.message}") unless hold.expiry_date.blank?
+      "N/A"
+    end
   end
 
   def make_date(date)
