@@ -46,7 +46,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new("")
 
       it "returns N/A" do
-        expect(Honeybadger).to receive(:notify)
+        expect(Honeybadger).to_not receive(:notify)
         expect(expiry_date(hold)).to eq "N/A"
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe UsersHelper, type: :helper do
       hold = Hold.new(nil)
 
       it "returns N/A" do
-        expect(Honeybadger).to receive(:notify)
+        expect(Honeybadger).to_not receive(:notify)
         expect(expiry_date(hold)).to eq "N/A"
       end
     end
