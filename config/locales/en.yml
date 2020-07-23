@@ -128,7 +128,7 @@ en:
     open_shelving_instructions: "To get this item on main campus, find it on our open shelves; to pick up at another Temple campus, use the request button."
     text_box_html: "For information about borrowing as we reopen our facilities, visit our %{href}."
     text_box_href: "return to campus FAQ"
-    text_box_link: ""
+    text_box_link: "https://library.temple.edu/categories/47"
     footer_html: "For more information about request options, see:  %{href}<span class='request-options-external-link-icon'></span>"
     footer_href: "How do I request an item at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
