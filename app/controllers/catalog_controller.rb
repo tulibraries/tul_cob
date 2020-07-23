@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-
 class CatalogController < ApplicationController
+  include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog

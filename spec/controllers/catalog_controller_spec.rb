@@ -205,4 +205,12 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
   end
+
+  describe "general param handling" do
+    it "should remove duplicate facet param values" do
+      expect(controller).to be_a_kind_of(ApplicationController)
+      get :index , params: { f: { foo: [:bar, :bar] } }
+      expect(controller.params["f"]["foo"].size).to eq(1)
+    end
+  end
 end
