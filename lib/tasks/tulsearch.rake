@@ -34,7 +34,7 @@ namespace :tul_cob do
 
     desc "Delete all items from Solr"
     task :clean do
-      solr = RSolr.connect url: Blacklight.connection_config[:url]
+      solr = RSolr.connect url: Blacklight.connection_config[:url], update_format: :xml
       solr.update data: "<delete><query>*:*</query></delete>"
       solr.update data: "<commit/>"
     end
