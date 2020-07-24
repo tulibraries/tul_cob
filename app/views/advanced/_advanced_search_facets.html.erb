@@ -1,25 +1,27 @@
 <div class="container" id="advanced-search-facets" style="margin-top: 14px;">
 <% facets_from_request(facet_field_names, @response).each do |display_facet| %>
-  <% facet_config = facet_configuration_for_field(display_facet.name) %>
-  <div class="form-group advanced-search-facet row align-items-center">
-    <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
-      <%= facet_config.label %>
-    <% end %>
-    <div class="col-sm-8">
-      <%= content_tag(:select, multiple: true,
-        name: "f_inclusive[#{display_facet.name}][]",
-        id: display_facet.name.parameterize,
-        class: "form-control custom-select selectpicker",
-        data: { "live-search": "true", placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
-        <% display_facet.items.each do |facet_item| %>
-          <% facet_item_presenter = facet_item_presenter(facet_config, facet_item, display_facet) %>
-          <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
-            <%= facet_item_presenter.label %>
-          <% end %>
+  <% if should_render_facet?(display_facet) %>
+    <% facet_config = facet_configuration_for_field(display_facet.name) %>
+      <div class="form-group advanced-search-facet row align-items-center">
+        <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
+          <%= facet_config.label %>
         <% end %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+        <div class="col-sm-8">
+          <%= content_tag(:select, multiple: true,
+            name: "f_inclusive[#{display_facet.name}][]",
+            id: display_facet.name.parameterize,
+            class: "form-control custom-select selectpicker",
+            data: { "live-search": "true", placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
+            <% display_facet.items.each do |facet_item| %>
+              <% facet_item_presenter = facet_item_presenter(facet_config, facet_item, display_facet) %>
+              <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
+                <%= facet_item_presenter.label %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end%>
 </div>
 <%= render_pub_date_range %>

@@ -210,34 +210,36 @@ module CatalogHelper
       relevant_locations.include?(item["current_location"]) }
   end
 
-  def build_hathitrust_url(document)
-    record_id = document.fetch("hathi_trust_bib_key_display", nil)
+  def build_hathitrust_url(field)
+    record_id = field.fetch("bib_key", nil)
     return if record_id.nil?
     URI::HTTPS.build(host: "catalog.hathitrust.org",
-      path: "/Record/#{record_id.first}",
+      path: "/Record/#{record_id}",
       query: "signon=swle:https://fim.temple.edu/idp/shibboleth"
     ).to_s
   end
 
-  def render_hathitrust_link(document)
-    render "hathitrust_link", document: document
+  def render_hathitrust_link(ht_bib_key_field)
+    render "hathitrust_link", ht_bib_key_field: ht_bib_key_field
   end
 
   def render_hathitrust_display(document)
-    field = document.fetch("hathi_trust_bib_key_display", "")
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    return if ht_bib_key_field.nil?
     online_resources = []
-    online_resources << render_hathitrust_link(document)
+    online_resources << render_hathitrust_link(ht_bib_key_field)
 
-    if field.present?
+    if (campus_closed? || ht_bib_key_field.fetch("access", "deny") == "allow")
       render "online_availability", online_resources: online_resources
     end
   end
 
   def render_hathitrust_button(document)
-    field = document.fetch("hathi_trust_bib_key_display", "")
-    link = render_hathitrust_link(document)
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    return if ht_bib_key_field.nil?
+    link = render_hathitrust_link(ht_bib_key_field)
 
-    if field.present?
+    if (campus_closed? || ht_bib_key_field.fetch("access", "deny") == "allow")
       render "hathitrust_button", document: document, links: link
     end
   end
