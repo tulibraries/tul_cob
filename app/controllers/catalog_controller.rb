@@ -125,25 +125,25 @@ class CatalogController < ApplicationController
     # In order to decide at query time if we want to include ETAS records considered "Online"
     # we define two availability facets and decide which one to show based on the `config.campus_closed` lambda
     # which can evaluate the URL param as well as the env var set feature flag.
-    # The `if:` and `unless:` params are the only part evaluated at query time. 
-    config.campus_closed = lambda { |context,_,__| ::FeatureFlags.campus_closed?(context.params) }
-    config.add_facet_field "availability_facet_etas", 
+    # The `if:` and `unless:` params are the only part evaluated at query time.
+    config.campus_closed = lambda { |context, _, __| ::FeatureFlags.campus_closed?(context.params) }
+    config.add_facet_field "availability_facet_etas",
       label: "Availability", collapse: false, show: true, home: true, component: true,
       sort: :count,
       query: {
-        "At the Library" => {label: "At the Library", fq: 'availability_facet:"At the Library"' },
-        "Online" =>  {label: "Online", fq: 'availability_facet:(Online OR "ETAS")'},
-        "Rapid Request Access" => {label: "Request Rapid Access",  fq: 'availability_facet:"Request Rapid Access"'}
-      }, 
+        "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
+        "Online" =>  { label: "Online", fq: 'availability_facet:(Online OR "ETAS")' },
+        "Rapid Request Access" => { label: "Request Rapid Access",  fq: 'availability_facet:"Request Rapid Access"' }
+      },
       if: config.campus_closed
-    config.add_facet_field "availability_facet", 
-      label: "Availability", collapse: false, show: true, home: true, component: true, 
+    config.add_facet_field "availability_facet",
+      label: "Availability", collapse: false, show: true, home: true, component: true,
       sort: :count,
       query: {
-        "At the Library" => {label: "At the Library", fq: 'availability_facet:"At the Library"' },
-        "Online" =>  {label: "Online", fq: 'availability_facet:"Online"' },
-        "Rapid Request Access" => {label: "Request Rapid Access", fq: 'availability_facet:"Request Rapid Access"'}
-      }, 
+        "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
+        "Online" =>  { label: "Online", fq: 'availability_facet:"Online"' },
+        "Rapid Request Access" => { label: "Request Rapid Access", fq: 'availability_facet:"Request Rapid Access"' }
+      },
       unless: config.campus_closed
 
     config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true, component: true
@@ -158,7 +158,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
 
-    
+
 
 
 
