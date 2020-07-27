@@ -11,7 +11,7 @@ class FacetItemComponent < Blacklight::FacetItemComponent
 
   def render_selected_facet_value
     content_tag(:span, class: "facet-label") do
-        content_tag(:span, @label, class: "selected") +
+        content_tag(:span, @label, class: "selected #{@facet_item.facet_item.value.downcase.parameterize.underscore}") +
           # remove link
           link_to(@href, class: "remove") do
             content_tag(:span, "", class: "remove-icon") +
