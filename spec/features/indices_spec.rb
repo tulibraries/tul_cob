@@ -31,18 +31,18 @@ RSpec.feature "Indices" do
         "Era",
         "Region",
         "Genre",
-        "Language"]
+        "Language",
+        "LC Call Number" ]
     }
     context "searching shows all facets" do
       scenario "User searches catalog" do
         visit "/catalog"
         fill_in "q", with: "*"
         click_button "search"
-
-        within("#facets") do
-          all("div.panel").each_with_index do |div_panel, i|
-            expect(div_panel).to have_text facets[i]
-          end
+        facet_headings = page.all(".facet-field-heading")
+        expect(facet_headings.size).to eq facets.size
+        facets.each_with_index do |facet, i|
+          expect(facet_headings[i]).to have_text facet
         end
       end
     end
@@ -85,7 +85,6 @@ RSpec.feature "Indices" do
       fill_in "q", with: item["title"]
       click_button "search"
       expect(current_url).to eq item["url"]
-
       within first(".documentHeader h3") do
         expect(page).to have_text item["title"]
       end

@@ -283,14 +283,25 @@ RSpec.describe SearchBuilder , type: :model do
       expect(solr_parameters[:fq]).to be_a_kind_of Array
     end
 
-    context "facet not defined in config" do
-      let(:single_facet) { { unknown_facet_field: "foo" } }
-      let(:user_params) { { f: single_facet } }
-
-      it "does not add facet to solr_parameters" do
+    context "unknown facet, basic facet, and pivot facet" do
+      let(:solr_parameters) {
         solr_parameters = Blacklight::Solr::Request.new
-        subject.add_facet_fq_to_solr(solr_parameters)
-        expect(solr_parameters[:fq]).to be_empty
+        params = ActionController::Parameters.new(
+          f: {
+            unknown_facet_field: "foo",
+            format: "bar",
+            lc_outer_facet: "hat"
+          })
+        subject.with(params).add_facet_fq_to_solr(solr_parameters)
+        solr_parameters
+      }
+
+      it "does not add unkown facets to solr_parameters" do
+        expect(solr_parameters[:fq] - ["{!term f=format}bar", "{!term f=lc_outer_facet}hat"]).to be_empty
+      end
+
+      it "does add the other two" do
+        expect(solr_parameters[:fq].size).to eq 2
       end
     end
   end
