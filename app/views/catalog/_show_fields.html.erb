@@ -1,11 +1,11 @@
-<dt class="blacklight-<%= field_name.parameterize %>col-xs-12 col-sm-3 col-md-3"><%= render_document_show_field_label document, field: field_name %></dt>
-<% if field_presenter.values.length == 1 %>
-  <% value = field_presenter.render.tap { |value| field[:raw] ? raw(value) : value } %>
-  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"><%= safe_join(Array.wrap(value)) %></dd>
-<% else %>
-  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9">
+<dt class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-3 col-md-3"><%= render_document_show_field_label document, field: field_name %></dt>
+<% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
+<% if rendered.length == 1 %>
+  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"><%= safe_join(Array.wrap(rendered)) %></dd>
+<% elsif rendered.length > 1 %>
+  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"
     <ul>
-    <% field_presenter.values.each do |value| %>
+    <% rendered.each do |value| %>
       <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
     <% end %>
     </ul>
