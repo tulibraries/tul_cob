@@ -2,6 +2,7 @@
 <% facets_from_request(facet_field_names, @response).each do |display_facet| %>
   <% if should_render_facet?(display_facet) %>
     <% facet_config = facet_configuration_for_field(display_facet.name) %>
+      <% next if facet_config.pivot %> <!--turn off until BL-1164 is accepted -->
       <div class="form-group advanced-search-facet row align-items-center">
         <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
           <%= facet_config.label %>

@@ -14,7 +14,8 @@ class SearchBuilder < Blacklight::SearchBuilder
         add_advanced_search_to_solr
         spellcheck
         filter_suppressed
-        limit_facets ]
+        limit_facets
+        sorting_preferences ]
 
   if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
     self.default_processor_chain += %i[ tweak_query ]
@@ -53,6 +54,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def sorting_preferences(solr_parameters)
+    solr_parameters["f.lc_outer_facet.facet.sort"] = "index"
+    solr_parameters["f.lc_inner_facet.facet.sort"] = "index"
+  end
+
   def tweak_query(solr_parameters)
     solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
@@ -60,7 +66,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # Overrides Blacklight::SearchBuilder#blacklight_params
   #
   # We need to do this because so much of what advanced_search is doing depends
-  # on it and currenlty there isn't a cleaner way beyond overriding it.
+  # on it and currently there isn't a cleaner way beyond overriding it.
   #
   # @see projectblacklight/blacklight_advanced_search#82
   def blacklight_params
@@ -116,13 +122,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     if solr_parameters[:fq].is_a? String
       solr_parameters[:fq] = [solr_parameters[:fq]]
     end
-
     # :fq, map from :f.
     if blacklight_params[:f]
-      f_request_params = blacklight_params[:f]
-
-      f_request_params.each_pair do |facet_field, value_list|
-        next unless blacklight_config.facet_fields[facet_field.to_s].present?
+      blacklight_params[:f].each_pair do |facet_field, value_list|
+        next unless blacklight_config.facet_fields.map { |k, v|
+          v.pivot ? v.pivot : k }.flatten.include? facet_field.to_s
         Array(value_list).reject(&:blank?).each do |value|
           solr_parameters.append_filter_query facet_value_to_fq_string(facet_field, value)
         end
