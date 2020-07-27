@@ -141,7 +141,7 @@ en:
     aeon_request_allowed_body: "Researcher registration and requests to use Special Collections Research Center materials are made using a SCRC Researcher Account."
     aeon_button_text: "Go to SCRC Researcher Account"
     open_shelves_header: "Find item on the shelves"
-    open_shelves_text: "Use the availability information, including location and call number, to find this item."
+    open_shelves_text: "Close this window to view the location and call number, then find the item using this information."
     digital_copy_header: "Get help finding a digital copy"
     digital_help_text_one: "Our library staff will assist you by trying to find a digital copy of a physical item in the library’s collection."
     digital_help_text_two_html: "Once you %{href}, a library staff member will respond within 24-48 hours."
