@@ -36,7 +36,7 @@
 
     <% if @asrs_request_level == "item" %>
       <% if @asrs_description.count > 1 %>
-        <div class="form-group row">
+        <div class="form-group hold-form">
           <%= form.label(:asrs_description, t("requests.form.description_label_html")) %>
           <p><%= t("requests.form.description_additional_text") %></p>
           <%= select_tag(:asrs_description, options_for_select(@asrs_description), { data: { "action": "form#select" }, class: "request-form form-control", include_blank: true }) %>
