@@ -115,4 +115,22 @@ RSpec.feature "Indices" do
       expect(page).to have_text("Sorry, LibrarySearch does not serve more than 250 pages for any query.")
     end
   end
+
+  feature "Sorting" do
+    scenario "User requests results sorted by LC call number" do
+      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+asc%2C+pub_date_sort+desc"
+      expect(page.all(".documents-list .document").size).to eq 13
+      (1..13).each do |i|
+        expect(page.find(".document-position-#{i - 1} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+      end
+    end
+
+    scenario "User requests results reverse sorted by LC call number" do
+      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+desc%2C+pub_date_sort+desc"
+      expect(page.all(".documents-list .document").size).to eq 13
+      (1..13).each do |i|
+        expect(page.find(".document-position-#{13 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+      end
+    end
+  end
 end
