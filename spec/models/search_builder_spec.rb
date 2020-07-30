@@ -92,6 +92,21 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#filter_suppressed" do
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      subject.filter_suppressed(solr_parameters)
+    end
+
+    context "default" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+
+      it "adds suppression to fq" do
+        expect(solr_parameters["fq"]).to eq(["-suppress_items_b:true"])
+      end
+    end
+  end
+
   describe "#spellcheck" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
