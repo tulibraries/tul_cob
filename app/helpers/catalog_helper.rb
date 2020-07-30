@@ -202,12 +202,18 @@ module CatalogHelper
   end
 
   def open_shelves_allowed?(document)
-    relevant_locations = ["hirsh", "juvenile", "leisure", "stacks", "newbooks"]
+    {
+      "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
+      "AMBLER"   => ["aleisure", "imc", "newbooks", "oversize", "reference", "stacks"],
+      "POD"      =>  ["stacks"]
+    }.any? { |library_code, locations| check_open_shelves(document, library_code, locations) }
+  end
 
+  def check_open_shelves(document, library_code, locations)
     document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?("MAIN") } &&
+      item["current_library"].include?(library_code) } &&
     document.fetch("items_json_display", []).any? { |item|
-      relevant_locations.include?(item["current_location"]) }
+      locations.include?(item["current_location"]) }
   end
 
   def build_hathitrust_url(field)
