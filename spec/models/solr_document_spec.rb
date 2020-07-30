@@ -246,4 +246,14 @@ RSpec.describe SolrDocument, type: :model do
           end
         end
     end
+
+  describe "#is_suppressed?" do
+    it "returns false when the document does not have the suppress_items_b field" do
+      expect(document.is_suppressed?).to be false
+    end
+
+    it "returns true when the document has suppress_items_b as true" do
+      expect(SolrDocument.new(id: "1", suppress_items_b: true).is_suppressed?).to be true
+    end
+  end
 end

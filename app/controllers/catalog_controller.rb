@@ -614,6 +614,24 @@ class CatalogController < ApplicationController
     redirect_back(to_the_future) unless current_user.can_purchase_order?
   end
 
+  # Override the show method so we can suppress some items that solr doesn't want to filter out
+  # get a single document from the index
+  # to add responses for formats other than html or json see _Blacklight::Document::Export_
+  def show
+    deprecated_response, @document = search_service.fetch(params[:id])
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
+
+    # Our override that can be removed if we can figure out how to do a negatove filter query in the document/get handler
+    # without breaking results that shouldn't be filtered.
+    raise Blacklight::Exceptions::RecordNotFound if @document.is_suppressed?
+
+    respond_to do |format|
+      format.html { @search_context = setup_next_and_previous_documents }
+      format.json
+      additional_export_formats(@document, format)
+    end
+  end
+
   private
     def catalog?
       self.class == CatalogController

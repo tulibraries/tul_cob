@@ -19,6 +19,17 @@ RSpec.describe CatalogController, type: :controller do
     it "is properly routed for staff_view" do
       expect(get: "/catalog/:id/staff_view").to route_to(controller: "catalog", action: "librarian_view", id: ":id")
     end
+
+    context "when the record is suppressed" do
+      let(:document) { SolrDocument.new(id: doc_id, suppress_items_b: true) }
+      it "raises a record not found error if the record is suppressed" do
+        allow(search_service).to receive(:fetch).with(doc_id).and_return([mock_response, document])
+        allow(controller).to receive(:search_service).and_return(search_service)
+
+        get :show, params: { id: doc_id }
+        expect(response).to render_template("errors/not_found")
+      end
+    end
   end
 
 

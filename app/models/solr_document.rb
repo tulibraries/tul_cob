@@ -119,6 +119,10 @@ class SolrDocument
     !!self["purchase_order"]
   end
 
+  def is_suppressed?
+    fetch("suppress_items_b", false)
+  end
+
   private
     def barcode(item)
       item["item_data"]["pid"]
