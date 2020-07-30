@@ -753,10 +753,10 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
-        "permanent_library" => "AMBLER",
-        "permanent_location" => "media",
-        "current_library" => "AMBLER",
-        "current_location" => "media",
+        "permanent_library" => "LAW",
+        "permanent_location" => "reference",
+        "current_library" => "LAW",
+        "current_location" => "reference",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
           }
@@ -767,7 +767,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "is in a relevant location" do
+    context "is in a relevant Charles location" do
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -775,6 +775,21 @@ RSpec.describe CatalogHelper, type: :helper do
         "permanent_location" => "juvenile",
         "current_library" => "MAIN",
         "current_location" => "juvenile" }]
+          }
+        }
+      it "returns true" do
+        expect(open_shelves_allowed?(document)).to be true
+      end
+    end
+
+    context "is in a relevant Ambler location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "stacks",
+        "current_library" => "AMBLER",
+        "current_location" => "stacks" }]
           }
         }
       it "returns true" do
@@ -793,7 +808,7 @@ RSpec.describe CatalogHelper, type: :helper do
           }
         }
       it "returns false" do
-        expect(digital_help_allowed?(document)).to be false
+        expect(open_shelves_allowed?(document)).to be false
       end
     end
   end

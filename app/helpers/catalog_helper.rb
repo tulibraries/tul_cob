@@ -214,26 +214,8 @@ module CatalogHelper
     document.fetch("items_json_display", []).any? { |item|
       item["current_library"].include?(library_code) } &&
     document.fetch("items_json_display", []).any? { |item|
-      locations.include?(item["current_location"])
-  end 
-
-  def charles_open_shelves?(document)
-    relevant_locations = 
-
-    document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?("MAIN") } &&
-    document.fetch("items_json_display", []).any? { |item|
-      relevant_locations.include?(item["current_location"])
+      locations.include?(item["current_location"]) }
   end
-
-  def ambler_open_shelves?(document)
-    relevant_locations = 
-
-    document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?("MAIN") } &&
-    document.fetch("items_json_display", []).any? { |item|
-      relevant_locations.include?(item["current_location"]) }
-  end 
 
   def build_hathitrust_url(field)
     record_id = field.fetch("bib_key", nil)
