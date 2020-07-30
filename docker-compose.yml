@@ -15,6 +15,7 @@ services:
       SOLR_AZ_URL: "http://solr:8983/solr/az-database"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
       DO_INGEST: "${DO_INGEST}"
+      BUNDLE_PATH: /app/vendor/bundle
       LC_ALL: "C.UTF-8"
     labels:
       - "traefik.enable=true"

@@ -6,14 +6,8 @@ ci-up:
 	git submodule update
 	$(CI-DOCKER) up -d
 
-ci-copy-bundle-files:
-	if [ -d vendor/bundle ]; then docker cp vendor/bundle tul_cob_app_1:/app/vendor/; fi
-
 ci-copy-bundle-files-to-local:
 	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
-
-ci-copy-node-modules:
-	if [ -d node_modules ]; then  docker cp node_modules tul_cob_app_1:/app/; fi
 
 ci-copy-node-modules-to-local:
 	docker cp tul_cob_app_1:/app/node_modules .
