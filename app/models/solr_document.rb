@@ -120,7 +120,7 @@ class SolrDocument
   end
 
   def is_suppressed?
-    (response.documents.first || {}).fetch("suppress_items_b", false)
+    fetch("suppress_items_b", false)
   end
 
   private
