@@ -13,6 +13,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     %i[ add_advanced_parse_q_to_solr
         add_advanced_search_to_solr
         spellcheck
+        filter_suppressed
         limit_facets ]
 
   if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
@@ -23,6 +24,13 @@ class SearchBuilder < Blacklight::SearchBuilder
     # The negative query will work even when items are not indexed.
     # We can refactor to use a positive query once indexing occurs.
     solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
+  # Remove this once we update and use new tul_cob-catalog-solr config
+  def filter_suppressed(solr_params)
+    if !solr_params["fq"].include?("-suppress_items_b:true")
+      solr_params["fq"] = solr_params["fq"].push("-suppress_items_b:true")
+    end
   end
 
   def spellcheck(solr_parameters)
