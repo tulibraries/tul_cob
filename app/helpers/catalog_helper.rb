@@ -206,8 +206,7 @@ module CatalogHelper
       "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
       "AMBLER"   => ["aleisure", "imc", "newbooks", "oversize", "reference", "stacks"],
       "POD"      =>  ["stacks"]
-    }.any? { |library_code, locations| check_open_shelves(document, library_code, locations)}
-
+    }.any? { |library_code, locations| check_open_shelves(document, library_code, locations) }
   end
 
   def check_open_shelves(document, library_code, locations)
