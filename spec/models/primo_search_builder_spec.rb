@@ -203,16 +203,16 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
     context "only one range is provided" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: 1 } }
+        range:  { creationdate: { begin: 1000 } }
       ) }
 
       it "adds a default range" do
-        expect(range.min).to eq(1)
+        expect(range.min).to eq(1000)
         expect(range.max).to be_nil
       end
 
       it "adds a default range facet" do
-        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+        expect(facets).to eq("facet_searchcreationdate,exact,[1000 TO 9999]")
       end
     end
 
@@ -228,30 +228,40 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
     context "both min and max range are provided" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: 1, end: 10 } }
+        range:  { creationdate: { begin: 1000, end: 1001 } }
       ) }
 
       it "adds a default range" do
-        expect(range.min).to eq(1)
-        expect(range.max).to eq(10)
+        expect(range.min).to eq(1000)
+        expect(range.max).to eq(1001)
       end
 
       it "adds a range facet to the search" do
-        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 10]")
+        expect(facets).to eq("facet_searchcreationdate,exact,[1000 TO 1001]")
       end
     end
 
     context "a range limit is empty" do
       let(:params) { ActionController::Parameters.new(
-        range:  { creationdate: { begin: "1", end: "" } }
+        range:  { creationdate: { begin: "1000", end: "" } }
       ) }
       it "adds a default range" do
-        expect(range.min).to eq("1")
+        expect(range.min).to eq("1000")
         expect(range.max).to be_nil
       end
 
       it "adds a range facet to the search" do
-        expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+        expect(facets).to eq("facet_searchcreationdate,exact,[1000 TO 9999]")
+      end
+    end
+
+    context "range min is less than 1000" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 999, end: 2020 } }
+      ) }
+
+      it "sets the range floor to 1000 so primo won't die" do
+        expect(range.min).to eq(1000)
       end
     end
   end
