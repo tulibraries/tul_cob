@@ -18,11 +18,6 @@ module Blacklight::PrimoCentral
     def search(params = {})
       data = params[:query]
 
-      # TODO: Fix this in Primo gem
-      unless data[:id].present?
-        data = data.merge(limit: 100)
-      end
-
       duration =
         if data[:id]
           duration_for(:article_record_cache_life)
