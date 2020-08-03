@@ -126,7 +126,7 @@ module Blacklight::PrimoCentral
       primo_central_parameters[:range] = range
 
       # Adding the date range facet prematurely causes search discrepencies.
-      if (min || max)
+      if (min.present? || max.present?)
         primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
       end
     end
