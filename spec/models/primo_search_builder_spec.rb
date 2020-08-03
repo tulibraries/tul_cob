@@ -216,6 +216,16 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
+    context "range is empty string" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "", end: "" } }
+      ) }
+
+      it "does not add a default range facet" do
+        expect(facets).to be_nil
+      end
+    end
+
     context "both min and max range are provided" do
       let(:params) { ActionController::Parameters.new(
         range:  { creationdate: { begin: 1, end: 10 } }
