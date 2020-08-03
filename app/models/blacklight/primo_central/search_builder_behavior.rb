@@ -123,6 +123,9 @@ module Blacklight::PrimoCentral
       min = params.dig("range", "creationdate", "begin")
       max = params.dig("range", "creationdate", "end")
       min = 1000 if min.to_s.match(/^\d+$/) && min.to_i < 1000
+      if max.to_s.match(/^\d+$/) && max.to_i < min.to_i
+        max = min
+      end
       range = YearRange.new(min, max)
       primo_central_parameters[:range] = range
 

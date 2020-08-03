@@ -264,6 +264,16 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(range.min).to eq(1000)
       end
     end
+
+    context "range min is higher than max" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: 1000, end: 999 } }
+      ) }
+
+      it "sets the max to equal the min" do
+        expect(range.max).to eq(1000)
+      end
+    end
   end
 
   describe ".previous_and_next_document" do
