@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
 
   include BlacklightAlma::Availability
   include Blacklight::Marc::Catalog
+  include ServerErrors
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
@@ -20,23 +21,6 @@ class CatalogController < ApplicationController
 
   helper_method :browse_creator
   helper_method :display_duration
-
-  rescue_from BlacklightRangeLimit::InvalidRange do
-    redirect_back(fallback_location: root_path, notice: "The start year must be before the end year.")
-  end
-
-  rescue_from Blacklight::Exceptions::RecordNotFound,
-    with: :invalid_document_id_error
-
-  rescue_from Blacklight::Exceptions::InvalidRequest do |exception|
-    Honeybadger.notify(exception.message)
-    render "errors/unsupported_query"
-  end
-
-  rescue_from NoMethodError do |exception|
-    Honeybadger.notify(exception.message)
-    render "errors/internal_server_error"
-  end
 
   configure_blacklight do |config|
     # default advanced config values
