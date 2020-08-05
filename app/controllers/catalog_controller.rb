@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
@@ -157,6 +158,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
+    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true
 
 
 
@@ -413,6 +415,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
     config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
+    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "call number (A to Z)"
+    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "call number (Z to A)"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
