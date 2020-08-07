@@ -7,6 +7,7 @@ class AlmawsController < CatalogController
   layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
+  before_action :xhr!, only: [:item]
 
   rescue_from Alma::BibItemSet::ResponseError,
     with: :offset_too_large

@@ -4,6 +4,7 @@ require "spec_helper"
 require "rails_helper"
 
 RSpec.describe AlmawsController, type: :controller do
+
   before(:all) do
     DatabaseCleaner.clean
     DatabaseCleaner.strategy = :truncation
@@ -78,6 +79,18 @@ RSpec.describe AlmawsController, type: :controller do
       it "does not redirect to login page" do
         get(:item, params)
         expect(response).not_to redirect_to new_user_session_url
+      end
+    end
+
+    context "logged in user" do
+      before(:each) do
+        sign_in @user, scope: :user
+      end
+
+      it "doesn't render the layout, even when there's an error" do
+        allow(Alma::BibItem).to receive(:find).and_raise("oof")
+        get :item, params
+        expect(response).not_to render_template("layouts/blacklight")
       end
     end
   end
