@@ -169,7 +169,7 @@ GEM
       view_component
     blacklight_range_limit (7.9.0)
       blacklight (~> 7.0)
-    bootsnap (1.4.7)
+    bootsnap (1.4.8)
       msgpack (~> 1.0)
     bootstrap (4.4.1)
       autoprefixer-rails (>= 9.1.0)
