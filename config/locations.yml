@@ -109,7 +109,7 @@ default: &default
     m_reserve: Media Reserves - Ask at One Stop Assistance Desk
     newbooks: New Books (1st floor)
     reference: Reference - Ask at One Stop Assistance Desk
-    reserve: Reserves - Ask at One Stop Assistance Desk
+    reserve: Reserves
     serials: Journals (3rd floor)
     servicedsk: One Stop Assistance Desk
     stacks: Stacks (4th floor)
