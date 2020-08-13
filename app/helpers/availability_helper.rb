@@ -11,6 +11,10 @@ module AvailabilityHelper
     # Temporary change for items that don't currently fit in the ASRS bins
     unavailable_locations = ["storage"]
 
+    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
+      return unavailable_items(item)
+    end
+
     if unavailable_libraries.include?(item.library) ||
         unavailable_locations.include?(item.location)
 
@@ -47,35 +51,14 @@ module AvailabilityHelper
           process_type += ", due " + make_date(due_date_time)
         end
       end
-      content_tag(:span, "", class: "close-icon") + process_type
-    else
-      content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
+      return content_tag(:span, "", class: "close-icon") + process_type
     end
-  end
 
-  def document_and_api_merged_results(document, items_list)
-    document_items = document.fetch("items_json_display", [])
-    alma_item_pids = items_list.all.collect { |item|
-      item["item_data"]["pid"]
-    }.flatten
+    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
+      return content_tag(:span, "", class: "close-icon") + "Not Available"
+    end
 
-    alma_item_availability = items_list.all.collect { |item|
-      availability_status(item)
-    }.flatten
-
-    document_items.collect { |item|
-        alma_data_array = alma_item_pids.zip(alma_item_availability)
-        alma_data_array.collect { |avail_item|
-          if item["item_pid"] == avail_item.first
-            item.merge!("availability": avail_item.last)
-          end
-        }.compact
-      }
-      .flatten
-      .reject(&:blank?)
-      .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_library_locations(item) }
-      .group_by { |item| library(item) }
+    return content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
   end
 
   def availability_alert(document)

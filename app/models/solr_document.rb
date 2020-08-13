@@ -123,6 +123,13 @@ class SolrDocument
     fetch("suppress_items_b", false)
   end
 
+  def merge_item_data!(additional_item_data)
+    fetch("items_json_display", []).each do |item|
+      next unless additional_item_data.has_key? item["item_pid"]
+      item.merge!(additional_item_data[item["item_pid"]])
+    end
+  end
+
   private
     def barcode(item)
       item["item_data"]["pid"]
