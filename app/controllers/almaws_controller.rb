@@ -14,7 +14,6 @@ class AlmawsController < CatalogController
   def item
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
-
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
     limit = (params[:limit] || 100).to_i
@@ -24,7 +23,10 @@ class AlmawsController < CatalogController
     bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset, expand: "due_date") }
     @response = Blacklight::Alma::Response.new(bib_items, params)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @document_and_api_data = helpers.document_and_api_merged_results(@document, bib_items)
+    availability = bib_items.group_by { |item| item["item_data"]["pid"] }.
+                     transform_values { |item|
+      { availability: helpers.availability_status(item.first) } }
+    @document.merge_item_data!(availability)
     @document_availability = helpers.document_availability_info(@document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     # Defined here as a parameter for the route

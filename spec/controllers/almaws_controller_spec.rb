@@ -22,6 +22,57 @@ RSpec.describe AlmawsController, type: :controller do
   describe "GET #item action" do
 
     let(:params) { { params: { mms_id: 123 } } }
+    let(:search_service) { instance_double(Blacklight::SearchService) }
+    let(:document) { SolrDocument.new(
+      id: "12345",
+      items_json_display: [
+        {
+          item_pid: "23237957740003811"
+        }
+      ]) }
+
+    it "mutates the solr document with availability status" do
+      # ideally once: see Alma::BibItemSet::all
+      expect(HTTParty).to receive(:get).at_most(:twice).and_call_original
+      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      allow(controller).to receive(:search_service).and_return(search_service)
+      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      expect(document["items_json_display"][0]["availability"]).to eq "<span class=\"check\"></span>Available"
+    end
+
+    it "does nothing if the pids don't match" do
+      document["items_json_display"][0]["item_pid"] = "8675309"
+      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      allow(controller).to receive(:search_service).and_return(search_service)
+      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      expect(document["items_json_display"][0]["availability"]).to be_nil
+    end
+
+    it "determines the availability based on the mutated document" do
+      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      allow(controller).to receive(:search_service).and_return(search_service)
+      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      availability = controller.instance_variable_get(:@document_availability)
+      expect(availability.values.flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
+    end
+
+    it "does not include missing or lost items" do
+      document["items_json_display"][0]["process_type"] = "MISSING"
+      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      allow(controller).to receive(:search_service).and_return(search_service)
+      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      availability = controller.instance_variable_get(:@document_availability)
+      expect(availability).to be_empty
+    end
+
+    it "determines AMBLER and MAIN reserves item NOT AVAILABLE" do
+      document["items_json_display"][0]["item_pid"] = "23495709760003811"
+      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      allow(controller).to receive(:search_service).and_return(search_service)
+      get(:item, { params: { mms_id: "temp_location_reserves", doc_id: 456 } })
+      availability = controller.instance_variable_get(:@document_availability)
+      expect(availability.values.flatten.first["availability"]).to eq("<span class=\"close-icon\"></span>Not Available")
+    end
 
     context "anonymous user" do
       it "does not redirect to login page" do
