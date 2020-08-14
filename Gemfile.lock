@@ -52,7 +52,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 1336e408226b95a118fbe8854837146a5f2212d0
+  revision: cd046ad86aaac664a99304748365be99f3a55047
   branch: qa
   specs:
     cob_az_index (0.1.0)
@@ -195,7 +195,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     confstruct (1.0.2)
       hashie (~> 3.3)
     coveralls (0.8.23)
