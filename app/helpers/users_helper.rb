@@ -5,7 +5,7 @@ module UsersHelper
 
   def expiry_date(hold)
     begin
-      make_date(DateTime.parse(hold.expiry_date).to_s)
+      make_date(DateTime.parse(hold.expiry_date).to_s) if hold.respond_to? :expiry_date
     rescue => exception
       Honeybadger.notify("On Hold Expiry Date error: #{exception.message}") unless hold.expiry_date.blank?
       "N/A"
