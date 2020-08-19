@@ -7,7 +7,7 @@ class AlmawsController < CatalogController
   layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
-  before_action :xhr!, only: [:item]
+  before_action :xhr!, only: [:item, :request_options]
 
   rescue_from Alma::BibItemSet::ResponseError,
     with: :offset_too_large
@@ -39,8 +39,10 @@ class AlmawsController < CatalogController
   def request_options
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
+
     log = { type: "alma_bib_item", mms_id: @mms_id }
     @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }.filter_missing_and_lost
+
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK") }.compact
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
     @description = CobAlma::Requests.descriptions(@items)
@@ -53,6 +55,7 @@ class AlmawsController < CatalogController
 
     @pickup_locations = pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+
     @user_id = current_user.uid
     @request_level = params[:request_level] ||
       get_request_level(@items)
@@ -229,7 +232,7 @@ class AlmawsController < CatalogController
   end
 
   def offset_too_large
-    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe
+    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe, status: :bad_gateway
   end
 
   private

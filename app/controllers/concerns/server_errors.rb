@@ -31,5 +31,10 @@ module ServerErrors
       Honeybadger.notify(message)
       render "errors/internal_server_error", status: :bad_gateway
     end
+
+    rescue_from Alma::RequestOptions::ResponseError do |exception|
+      Honeybadger.notify(exception.message)
+      render "errors/alma_request_error", status: :bad_gateway
+    end
   end
 end
