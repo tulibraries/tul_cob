@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/projectblacklight/blacklight-marc.git
-  revision: 582c68255d73e21926234f2ad5bb1ddf37dc6684
-  ref: v7.0.0.rc1
-  specs:
-    blacklight-marc (7.0.0.rc1)
-      blacklight (> 7.0.0.a, < 8.a)
-      library_stdnums
-      marc (>= 0.4.3, < 1.1)
-      marc-fastxmlwriter
-      rails
-      traject (~> 3.0)
-
-GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
   revision: d9d985acb6b87c896b8725cfc13933a85a12afcb
   specs:
@@ -167,6 +154,13 @@ GEM
       kaminari (>= 0.15)
       rails (>= 5.1, < 7)
       view_component
+    blacklight-marc (7.0.0)
+      blacklight (~> 7.0)
+      library_stdnums
+      marc (>= 0.4.3, < 1.1)
+      marc-fastxmlwriter
+      rails
+      traject (~> 3.0)
     blacklight_range_limit (7.9.0)
       blacklight (~> 7.0)
     bootsnap (1.4.8)
@@ -195,7 +189,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     confstruct (1.0.2)
       hashie (~> 3.3)
     coveralls (0.8.23)
@@ -538,7 +532,7 @@ GEM
     unf_ext (0.0.7.7)
     unicode-display_width (1.7.0)
     vcr (6.0.0)
-    view_component (2.14.1)
+    view_component (2.18.0)
       activesupport (>= 5.0.0, < 7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -571,7 +565,7 @@ DEPENDENCIES
   awesome_print
   bento_search
   blacklight (~> 7.10.0)
-  blacklight-marc!
+  blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_alma!
