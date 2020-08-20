@@ -512,8 +512,8 @@ class CatalogController < ApplicationController
     }
 
     respond_to do |format|
-      format.xml  { render xml: error_info, status: 404 }
-      format.json { render json: error_info, stautus: 404 }
+      format.xml  { render xml: error_info, status: :not_found }
+      format.json { render json: error_info, status: :not_found }
 
       # default to HTML response, even for other non-HTML formats we don't
       # neccesarily know about, seems to be consistent with what Rails4 does
@@ -523,7 +523,7 @@ class CatalogController < ApplicationController
         # possibly non-html formats, this is consistent with what Rails does
         # on raising an ActiveRecord::RecordNotFound. Rails.root IS needed
         # for it to work under testing, without worrying about CWD.
-        render "errors/not_found"
+        render "errors/not_found", status: :not_found
       end
     end
   end

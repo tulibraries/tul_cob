@@ -39,9 +39,18 @@ RSpec.describe PrimoCentralController, type: :controller do
   end
 
   describe "show action" do
+    render_views
+
     it "gets refwork format" do
       get :show, params: { id: 1, format: "refworks" }
       expect(response).to be_successful
+    end
+
+    it "handles a record not found exception" do
+      allow(search_service).to receive(:fetch).and_raise(Primo::Search::ArticleNotFound, "glub glub glub")
+      get :show, params: { id: 1 }
+      expect(response.code).to eq "404"
+      expect(response.body).to include "error-header not-found"
     end
   end
 end
