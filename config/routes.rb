@@ -160,3 +160,11 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
+OkComputer::Engine.routes.draw do
+  match "/solr/#{ENV["CATALOG_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-catalog"
+
+  match "/solr/#{ENV["AZ_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-az"
+
+  match "/solr/#{ENV["WEB_CONTENT_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-web-content"
+end
