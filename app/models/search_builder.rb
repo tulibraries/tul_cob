@@ -96,6 +96,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_is(value, op)
+    return nil if value.nil?
     return value if value.match(/"/) rescue true
 
     if op == "is"
