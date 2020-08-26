@@ -8,8 +8,13 @@ namespace :tul_cob do
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
       fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
+
       if ENV["RELEVANCE"]
         fixtures += Dir.glob("spec/relevance/fixtures/*.xml")
+      end
+
+      if ENV["DO_INGEST"]
+        fixtures += Dir.glob("sample_data/**/*.xml").sort
       end
 
       solr_url = Blacklight::Configuration.new.connection_config[:url]
@@ -49,11 +54,16 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   if file && file.match?(/databases.json/)
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
     `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
+  elsif file && file.match(/\/web_content/)
+    web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
+    `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
   elsif file
     `SOLR_URL=#{solr_url} cob_index ingest --commit #{args[:filepath]}`
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |f|
-      `SOLR_URL=#{solr_url} cob_index ingest --commit #{f}`
+      `SOLR_URL=#{solr_url} cob_index ingest #{f}`
     end
+
+    `SOLR_URL=#{solr_url} cob_index commit`
   end
 end
