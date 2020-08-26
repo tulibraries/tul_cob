@@ -7,18 +7,22 @@ namespace :tul_cob do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
+      puts "Prepping spec fixtures for ingest..."
       fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
 
       if ENV["RELEVANCE"]
+        puts "Adding relevance fixtures to ingest prep..."
         fixtures += Dir.glob("spec/relevance/fixtures/*.xml")
       end
 
       if ENV["DO_INGEST"]
+        puts "Adding sample data to ingest prep..."
         fixtures += Dir.glob("sample_data/**/*.xml").sort
       end
 
       solr_url = Blacklight::Configuration.new.connection_config[:url]
       fixtures.sort.reverse.each  do |file|
+        puts "Ingesting #{file}"
         `SOLR_URL=#{solr_url} cob_index ingest #{file}`
       end
       solr = RSolr.connect url: solr_url
