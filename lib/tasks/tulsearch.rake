@@ -10,12 +10,12 @@ namespace :tul_cob do
       puts "Prepping spec fixtures for ingest..."
       fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
 
-      if ENV["RELEVANCE"]
+      if ENV["RELEVANCE"].present?
         puts "Adding relevance fixtures to ingest prep..."
         fixtures += Dir.glob("spec/relevance/fixtures/*.xml")
       end
 
-      if ENV["DO_INGEST"]
+      if ENV["DO_INGEST"].present?
         puts "Adding sample data to ingest prep..."
         fixtures += Dir.glob("sample_data/**/*.xml").sort
       end
