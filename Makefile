@@ -49,7 +49,7 @@ test:
 test-js:
 	$(DOCKER) exec app yarn test
 load-data:
-	$(DOCKER) exec app rake ingest
+	$(DOCKER) exec -e DO_INGEST=y app rake load_fixtures
 reload-configs:
 	$(DOCKER) exec solr solr-configs-reset
 ps:
