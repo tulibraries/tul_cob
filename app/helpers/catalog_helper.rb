@@ -213,9 +213,9 @@ module CatalogHelper
 
   def check_open_shelves(document, library_code, locations)
     document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?(library_code) } &&
-    document.fetch("items_json_display", []).any? { |item|
-      locations.include?(item["current_location"]) }
+      item["current_library"].include?(library_code) &&
+      locations.include?(item["current_location"])
+    }
   end
 
   def build_hathitrust_url(field)

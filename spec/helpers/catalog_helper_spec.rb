@@ -817,6 +817,27 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(open_shelves_allowed?(document)).to be false
       end
     end
+
+    context "is in a relevant location, but not library" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23433968230003811",
+        "item_policy" => "0",
+        "permanent_library" => "JAPAN",
+        "permanent_location" => "stacks",
+        "current_library" => "JAPAN",
+        "current_location" => "stacks" },
+        { "item_pid" => "23311482710003811",
+        "item_policy" => "2",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "serials",
+        "current_library" => "MAIN",
+        "current_location" => "serials" }]
+          }
+        }
+      it "returns false" do
+        expect(open_shelves_allowed?(document)).to be false
+      end
+    end
   end
 
   describe "#build_hathitrust_url(field)" do
