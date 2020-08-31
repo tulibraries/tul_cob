@@ -211,7 +211,7 @@ module CatalogHelper
 
   def check_open_shelves(document, library_code, locations)
     document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?(library_code)  &&
+      item["current_library"].include?(library_code) &&
       locations.include?(item["current_location"])
     }
   end
