@@ -7,6 +7,12 @@ namespace :tul_cob do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
+      solr_url = Blacklight::Configuration.new.connection_config[:url]
+
+      if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
+        abort "Cannot run :load_fixtures task on production server"
+      end
+
       puts "Prepping spec fixtures for ingest..."
       fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
 
@@ -54,6 +60,10 @@ desc "Ingest a single file or all XML files in the sammple_data folder"
 task :ingest, [:filepath] => [:environment] do |t, args|
   file = args[:filepath]
   solr_url = Blacklight::Configuration.new.connection_config[:url]
+
+  if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
+    abort "Cannot run :ingest task on production server"
+  end
 
   if file && file.match?(/databases.json/)
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
