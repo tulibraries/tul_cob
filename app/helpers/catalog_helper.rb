@@ -197,6 +197,8 @@ module CatalogHelper
       .include?("At the Library") &&
     document.fetch("format", [])
       .exclude?("Archival Material") &&
+    document.fetch("format", [])
+      .exclude?("Object") &&
     !document["electronic_resource_display"] &&
     !document["hathi_trust_bib_key_display"]
   end
