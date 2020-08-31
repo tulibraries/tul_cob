@@ -728,6 +728,12 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(digital_help_allowed?(document)).to be true
       end
     end
+    context "is an object" do
+      let(:document) { { "format" => "Object" } }
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
+      end
+    end
     context "is a physical item and an online item" do
       let(:document) { {
         "availability_facet" => "At the Library",
