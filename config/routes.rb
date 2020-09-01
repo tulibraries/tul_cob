@@ -88,6 +88,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lib_guides, only: :index
+
   post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
   post "journals/:id/track" => "journal#track"
