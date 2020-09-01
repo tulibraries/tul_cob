@@ -11,6 +11,8 @@
 <% if show_doc_actions? %>
 <% @sendto = {} %>
       <ul id="tools-navbar">
+        <%= render_article_bookmark_export_button(@documents) %>
+
         <%= render_show_doc_actions @documents do |config, inner| %>
           <% @sendto[config.key] = inner %>
         <% end %>

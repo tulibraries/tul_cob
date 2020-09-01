@@ -37,5 +37,34 @@ RSpec.describe BookmarkHelper, type: :helper do
         expect(helper.index_controller(doc, 1)).to eq(expected)
       end
     end
+
+    describe "#render_article_bookmark_export_button" do
+      context "no documents" do
+        it "returns nil" do
+          expect(helper.render_article_bookmark_export_button([])).to be_nil
+        end
+      end
+
+      context "no article documents" do
+        doc = SolrDocument.new(id: "foo")
+        docs = [doc]
+
+        it "returns nil" do
+          expect(helper.render_article_bookmark_export_button(docs)).to be_nil
+        end
+      end
+
+      context "article documents present" do
+        doc_a = SolrDocument.new(id: "foo")
+        doc_b = PrimoCentralDocument.new({})
+        docs = [doc_a, doc_b]
+
+        it "returns an html button wrapped in list item tag" do
+          link = "<li><a id=\"exportArticleBookmarks\" class=\"clear-bookmarks btn btn-sm btn-danger\" href=\"/bookmarks/export/articles\">Export Article Bookmarks</a></li>"
+
+          expect(helper.render_article_bookmark_export_button(docs)).to eq(link)
+        end
+      end
+    end
   end
 end
