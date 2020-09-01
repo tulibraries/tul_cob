@@ -36,6 +36,9 @@ en:
           <p>
             <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions or any issues accessing/exporting your article bookmarks.
           </p>
+          <p>
+            Please note that only Item URLs will be exported. You can use Item URL to locate the item in the catalog and download the bibliographic information
+          </p>
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
