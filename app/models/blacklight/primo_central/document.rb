@@ -31,6 +31,7 @@ module Blacklight::PrimoCentral::Document
     doc["pnxId"] = doc["pnxId"]&.gsub(/^TN_/, "")
 
     doc["description"] ||= doc.dig("pnx", "search", "description")&.first
+    doc["subject"] ||= doc.dig("pnx", "facets", "topic")
     doc["subject"] ||= doc.dig("pnx", "search", "subject")
 
     format = doc["@TYPE"] || doc["type"] ||
