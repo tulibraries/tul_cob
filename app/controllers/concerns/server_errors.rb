@@ -4,6 +4,8 @@ module ServerErrors
   extend ActiveSupport::Concern
 
   included do
+    next if Rails.env == "development"
+
     # We handle all unknown and unplanned exceptions here
     # If an exception arises that could benefit from more
     # detailed notification to end user or Honeybadger
