@@ -50,7 +50,7 @@ class LibGuidesApi
           "[]"
         end
       end
-    rescue HTTParty::ConnectionFailed => e
+    rescue => e
       Honeybadger.notify("Parsing LibGuides JSON response at #{url} failed with #{e}")
       "[]"
     end
