@@ -322,4 +322,22 @@ RSpec.describe PrimoCentralDocument, type: :model do
       end
     end
   end
+
+  describe "mapping subject / topic facets" do
+    let(:primo_hash) { { "pnx" => {
+                           "facets" => { "topic" => [ "foo", "bar" ] },
+                           "search" => { "subject" => ["bar", "foo"] }
+                         } } }
+
+    it "uses the path pnx.facets.topic to get subject values" do
+      doc = PrimoCentralDocument.new(primo_hash)
+      expect(doc["subject"]).to eq(["foo", "bar"])
+    end
+
+    it "uses the path pnx.search.subject when pnx.facets.topic is not available" do
+      primo_hash["pnx"]["facets"].delete("topic")
+      doc = PrimoCentralDocument.new(primo_hash)
+      expect(doc["subject"]).to eq(["bar", "foo"])
+    end
+  end
 end
