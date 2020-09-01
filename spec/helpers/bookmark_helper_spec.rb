@@ -59,7 +59,7 @@ RSpec.describe BookmarkHelper, type: :helper do
         doc_b = PrimoCentralDocument.new({})
         docs = [doc_a, doc_b]
 
-        it "returns nil" do
+        it "returns an html button wrapped in list item tag" do
           link = "<li><a id=\"exportArticleBookmarks\" class=\"clear-bookmarks btn btn-sm btn-danger\" href=\"/bookmarks/export/articles\">Export Article Bookmarks</a></li>"
 
           expect(helper.render_article_bookmark_export_button(docs)).to eq(link)
