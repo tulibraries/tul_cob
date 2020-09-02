@@ -165,18 +165,23 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
-  describe "#substitute_colons" do
+  describe "#substitute_special_chars" do
     it "can handle nil case with grace" do
-      expect(subject.substitute_colons(nil, nil)).to be_nil
-      expect(subject.substitute_colons("foo", nil)).to eq("foo")
+      expect(subject.substitute_special_chars(nil, nil)).to be_nil
+      expect(subject.substitute_special_chars("foo", nil)).to eq("foo")
     end
 
     it "substitutes colons from values no matter what op is" do
-      expect(subject.substitute_colons("foo:bar", nil)).to eq("foo bar")
+      expect(subject.substitute_special_chars("foo:bar", nil)).to eq("foo bar")
     end
 
     it "substitutes all the colons from values" do
-      expect(subject.substitute_colons("foo:bar:bum", nil)).to eq("foo bar bum")
+      expect(subject.substitute_special_chars("foo:bar:bum", nil)).to eq("foo bar bum")
+    end
+
+    it "substitute ? marks" do
+      # @see BL-1301 for ref.  Basically Solr treats ? as a special character.
+      expect(subject.substitute_special_chars("foo bar?", nil)).to eq("foo bar ")
     end
   end
 
