@@ -84,7 +84,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # These named procedures MUST take a value, and an operator as arguments
     # and return a value that can be processed by the next procedure on the
     # list.
-    [ :process_begins_with, :process_is, :substitute_colons ]
+    [ :process_begins_with, :process_is, :substitute_special_chars]
   end
 
   def process_begins_with(value, op)
@@ -105,8 +105,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def substitute_colons(value, _)
-    value.gsub(/:/, " ") rescue value
+  def substitute_special_chars(value, _)
+    value.gsub(/[:?]/, " ") rescue value
   end
 
   def no_journals(solr_parameters)
