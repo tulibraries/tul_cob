@@ -64,7 +64,7 @@ class LibGuidesApi
       }
 
       URI::HTTPS.build(
-        host: "example.com",
+        host: "lgapi-us.libapps.com",
         path: "/1.1/guides",
         query: query_terms.to_query
       ).to_s
