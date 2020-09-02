@@ -1,6 +1,5 @@
 default: &default
   api_key: <%= ENV["LIB_GUIDES_API_KEY"] %>
-  base_url: https://example.com/1.1/guides
   site_id: <%= ENV["LIB_GUIDES_SITE_ID"] %>
 
 development:
