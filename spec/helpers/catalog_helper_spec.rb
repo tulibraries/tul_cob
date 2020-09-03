@@ -162,7 +162,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
   describe "#render_purchase_order_show_link" do
     let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.build_stubbed(:user) }
     let(:can_purchase_order?) { true }
 
     before(:each) do

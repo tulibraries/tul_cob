@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "spec_helper"
 require "yaml"
 include ApplicationHelper
 
@@ -14,7 +13,7 @@ RSpec.feature "RecordPageFields" do
     before do
       DatabaseCleaner.clean
       DatabaseCleaner.strategy = :truncation
-      user = FactoryBot.create :user
+      user = FactoryBot.build_stubbed :user
       allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
       login_as user, scope: :user
     end
@@ -1069,17 +1068,6 @@ RSpec.feature "RecordPageFields" do
       visit "catalog/#{item_022['doc_id']}"
       within "dd.blacklight-issn_display" do
         expect(page).to have_text(item_022["issn"])
-      end
-    end
-  end
-
-  feature "MARC lccn Fields" do
-    let (:item_010) { fixtures.fetch("lccn_010") }
-    scenario "User visits a document with lccn" do
-      skip
-      visit "catalog/#{item_010['doc_id']}"
-      within "dd.blacklight-lccn_display" do
-        expect(page).to have_text(item_010["lccn"])
       end
     end
   end
