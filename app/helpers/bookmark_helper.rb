@@ -37,14 +37,4 @@ module BookmarkHelper
       "data-controller=#{document.ajax_controller} data-index-url=#{document.ajax_url(count)}"
     end
   end
-
-  def render_article_bookmark_export_button(documents)
-    if documents.any? { |doc| doc.class == PrimoCentralDocument }
-      link = link_to("Export Article Bookmarks",
-                        export_article_bookmarks_path(),
-                        { id: "exportArticleBookmarks", class: "clear-bookmarks btn btn-sm btn-danger" })
-
-      content_tag(:li, link)
-    end
-  end
 end
