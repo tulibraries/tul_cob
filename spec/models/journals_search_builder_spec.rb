@@ -7,7 +7,7 @@ RSpec.describe JournalsSearchBuilder , type: :model do
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { JournalsSearchBuilder.new(context) }
   let(:solr_parameters) { Blacklight::Solr::Request.new(fq: []) }
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.build_stubbed(:user) }
 
   before(:each) do
     allow(context).to receive(:current_user) { user }

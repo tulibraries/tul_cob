@@ -2,7 +2,6 @@
 
 require "rails_helper"
 
-
 RSpec.feature "Basic Page Elements" do
 
   feature "Check the home page for nav elements when anonymous" do
@@ -27,7 +26,7 @@ RSpec.feature "Basic Page Elements" do
 
     before do
       DatabaseCleaner.clean
-      user = FactoryBot.create(:user)
+      user = FactoryBot.build_stubbed(:user)
       login_as(user, scope: :user)
 
     end
