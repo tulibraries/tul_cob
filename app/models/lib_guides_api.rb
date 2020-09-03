@@ -11,12 +11,12 @@ class LibGuidesApi
     @query = query
   end
 
-  def base_url
-    config["base_url"]
-  end
-
   def api_key
     config["api_key"]
+  end
+
+  def site_id
+    config["site_id"]
   end
 
   def config
@@ -56,6 +56,17 @@ class LibGuidesApi
     end
 
     def url
-      # TBD
+      query_terms = {
+        site_id: site_id,
+        key: api_key,
+        sort_by: "relevance",
+        search_terms: "#{query}"
+      }
+
+      URI::HTTPS.build(
+        host: "lgapi-us.libapps.com",
+        path: "/1.1/guides",
+        query: query_terms.to_query
+      ).to_s
     end
 end
