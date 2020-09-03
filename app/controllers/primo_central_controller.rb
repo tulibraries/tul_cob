@@ -31,8 +31,8 @@ class PrimoCentralController < CatalogController
 
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: false)
     config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
-    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: false)
-    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: false)
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: true)
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_articles_bookmark_control?)
 
     # Search fields
     config.add_search_field :any, label: "All Fields", catalog_map: :all_fields
@@ -115,5 +115,10 @@ class PrimoCentralController < CatalogController
       format.json
       additional_export_formats(@document, format)
     end
+  end
+
+  def render_articles_bookmark_control?
+    # TODO: Remove once article bookmarks are no longer supported.
+    params["action"] == "index_item"
   end
 end

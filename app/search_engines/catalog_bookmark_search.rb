@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: Remove once we no longer support article bookmarks.
 class CatalogBookmarkSearch < CatalogController
   include Searcher
   include BookmarksConfig

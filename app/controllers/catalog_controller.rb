@@ -485,6 +485,8 @@ class CatalogController < ApplicationController
     count = (params["document_counter"] || 0 rescue 0).to_i
     begin
       (@response, doc) = search_service.fetch(params["id"])
+      # In bookmark context we'll want to make sure doc.id is the same as what we fetched.
+      doc["pnxId"] = params["id"]
     rescue Primo::Search::ArticleNotFound => _
       Honeybadger.notify("The article with id #{params["id"]} could not be found.
                          This happens when the primo id is no longer valid.")
