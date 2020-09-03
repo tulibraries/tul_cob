@@ -26,18 +26,10 @@ en:
             new ones.
           </p>
           <p>
-            As of August 3rd, 2020, you will no longer be able to add new bookmarks for
-            articles. Existing article bookmarks will no longer be available beginning <strong>Monday, December 21, 2020</strong>.
-            We recommend that you download any article bookmarks now in preparation for the full
-            phase-out of the article bookmarks. Use the "Send to" button to email a copy of your bookmarks
-            to yourself or download an RIS file for upload to
-            <a href="https://guides.temple.edu/overviewcitations">a citation manager</a>.
+          Starting on December 21, 2020, you will no longer be able to access your existing article bookmarks. We recommend that you download any article bookmarks now in preparation for this phase-out. If you have under 100 bookmarks, use the "Send to" button to email a copy of your bookmarks to yourself or download an RIS file for upload to <a href='https://guides.temple.edu/overviewcitations'>a citation manager</a>. If you have over 100 bookmarks, <a href='/bookmarks/export/articles'>download the article record URL’s as a text file</a>.
           </p>
           <p>
             <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions or any issues accessing/exporting your article bookmarks.
-          </p>
-          <p>
-            Please note that only Item URLs will be exported. You can use Item URL to locate the item in the catalog and download the bibliographic information.
           </p>
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
