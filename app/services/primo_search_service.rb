@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: Remove once we no longer support article bookmarks.
 class PrimoSearchService < Blacklight::SearchService
   def fetch(primo_doc_ids)
     # Primo cannot string more than 10 OR queries.
@@ -24,7 +25,7 @@ class PrimoSearchService < Blacklight::SearchService
       if docs.length == ids.length
         []
       else
-        (ids - docs.map { |doc| doc["pnxId"] })
+        (ids - docs.map(&:id))
           .map { |id| PrimoCentralDocument.new("pnxId" => id, "ajax" => true, "status" => "Attempting to reload...") }
       end
     end

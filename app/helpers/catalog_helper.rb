@@ -97,8 +97,14 @@ module CatalogHelper
 
   # Overridden because we want to use our merged @response["docs"] with docs
   # from solr and primo together.
-  def bookmarked?(document)
-    current_bookmarks(document.response["docs"]).any? { |doc| doc.document_id == document.id && doc.document_type == document.class }
+  #
+  # TODO: Remove this override once we no longer support article bookmarks.
+  def current_bookmarks(response = nil)
+    response ||= @response
+    @current_bookmarks ||=
+      current_or_guest_user
+      .bookmarks_for_documents(@response["docs"] ||
+    response.documents).to_a
   end
 
   ##

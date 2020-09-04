@@ -10,7 +10,7 @@ export default class extends Controller {
     .then(response => response.text())
     .then(html => {
       this.element.innerHTML = html
-      Blacklight.do_bookmark_toggle_behavior();
+      Blacklight.doBookmarkToggleBehavior();
     })
   }
 }
