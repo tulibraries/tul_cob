@@ -26,7 +26,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
   end
 
-  # Remove this once we update and use new tul_cob-catalog-solr config
+  # TODO: Remove this once we update and use new tul_cob-catalog-solr config
   def filter_suppressed(solr_params)
     if !solr_params["fq"].include?("-suppress_items_b:true")
       solr_params["fq"] = solr_params["fq"].push("-suppress_items_b:true")
