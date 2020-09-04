@@ -18,7 +18,8 @@ module BentoSearch
 
     def proc_minus_journals
       Proc.new { |builder|
-        processor_chain = [ :no_journals ]
+        # TODO: Remove filter_suppressed once we update to do in solr config.
+        processor_chain = [ :no_journals, :filter_suppressed ]
         builder.append(*processor_chain)
       }
     end
