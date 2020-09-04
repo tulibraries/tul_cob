@@ -14,8 +14,12 @@ module Blacklight::PrimoCentral
       search(query: { id: id }.merge(params))
     end
 
-    # Execute a search against Primo PNXS API.
+    # Execute a search against Primo API
     def search(params = {})
+      if params[:skip_search?]
+        return blacklight_config.response_model.new({ "docs" => [] }, {}, numFound: 0)
+      end
+
       data = params[:query]
 
       duration =

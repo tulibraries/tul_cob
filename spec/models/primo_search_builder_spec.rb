@@ -288,4 +288,40 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
   end
+
+  describe ".skip_search?" do
+    before(:example) do
+      subject.skip_search?(primo_central_parameters)
+    end
+
+    context "no query" do
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "empty query" do
+      let(:params) { ActionController::Parameters.new(q: "") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "* query" do
+      let(:params) { ActionController::Parameters.new(q: "*") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "basic query" do
+      let(:params) { ActionController::Parameters.new(q: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+  end
 end
