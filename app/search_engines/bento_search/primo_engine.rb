@@ -8,16 +8,11 @@ module BentoSearch
       query = args.fetch(:query, "")
       per_page = args.fetch(:per_page)
 
-      # Avoid making a costly call for no reason.
-      if query.empty?
-        response = Blacklight::PrimoCentral::Response.new({ "docs" => [] }, {}, numFound: 0)
-      else
-        user_params = { q: query, per_page: per_page }
-        config = blacklight_config
-        search_service = search_service_class.new(config: config, user_params: user_params)
+      user_params = { q: query, per_page: per_page }.with_indifferent_access
+      config = blacklight_config
+      search_service = search_service_class.new(config: config, user_params: user_params)
 
-        (response, _) = search_service.search_results
-      end
+      (response, _) = search_service.search_results
       results(response)
     end
 

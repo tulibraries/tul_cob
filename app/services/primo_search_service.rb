@@ -2,7 +2,7 @@
 
 # TODO: Remove once we no longer support article bookmarks.
 class PrimoSearchService < Blacklight::SearchService
-  def fetch(primo_doc_ids)
+  def fetch(primo_doc_ids, params = {})
     # Primo cannot string more than 10 OR queries.
     documents = []
 
