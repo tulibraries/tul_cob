@@ -906,4 +906,15 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#derived_libguides_search_term" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+    let(:params) { { "q" => "thing" } }
+
+    it "returns the origial search term as term to search in libguides" do
+      expect(derived_libguides_search_term).to eq("thing")
+    end
+  end
 end

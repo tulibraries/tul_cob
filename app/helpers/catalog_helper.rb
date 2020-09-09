@@ -554,4 +554,8 @@ module CatalogHelper
   def campus_closed?
     ::FeatureFlags.campus_closed?(params)
   end
+
+  def derived_libguides_search_term
+    params.fetch("q", "")
+  end
 end
