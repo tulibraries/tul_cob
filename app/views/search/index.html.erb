@@ -1,12 +1,6 @@
 <% if @results %>
-<div class="d-flex justify-content-between bento-main-container">
-  <div class="w-50">
-    <%= render_bento_results %>
-  </div>
-
-  <div class="w-50 px-3">
-    <%= render :partial => "lib_guide_recommender_bento" %>
-  </div>
+<div class="d-flex justify-content-between bento-main-container container">
+  <%= render_bento_results %>
 </div>
 
   <%= render :partial => "digital_collections" %>

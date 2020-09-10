@@ -60,6 +60,7 @@ class LibGuidesApi
         site_id: site_id,
         key: api_key,
         sort_by: "relevance",
+        expand: "owner",
         search_terms: "#{query}"
       }
 

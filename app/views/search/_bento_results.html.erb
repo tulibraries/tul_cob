@@ -1,5 +1,9 @@
 <div class="card-columns">
   <% renderable_results(results, options).each_pair do |engine_id, result| %>
+  <% if engine_id == 'journals' %>
+    <%= render :partial => "lib_guide_recommender_bento" %>
+  <% end %>
+
     <div class="card mx-auto bento_compartment border-0 <%= engine_id %>">
       <h2 class="rounded-top m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
       <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
