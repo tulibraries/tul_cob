@@ -175,7 +175,7 @@ module CobAlma
     def self.physical_material_type_and_descriptions(items_list)
       types_and_descriptions = items_list.all.map { |item|
         Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
-      }.uniq
+      }.uniq.compact
 
       types_and_descriptions.reduce({}) do |acc, rec|
         key, value = rec.to_a.flatten
