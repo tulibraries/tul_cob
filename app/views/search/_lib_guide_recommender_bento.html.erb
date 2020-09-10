@@ -1,14 +1,22 @@
-<div class="lib-guides-recommender-bento border" data-lib-guides-api-url="<%= lib_guides_path(q: params[:q]) %>">
-  <div class="lib-guides-recommender-bento-body">
-    <h4 class="lib-guides-recommender-bento-heading text-white bg-red p-2 mb-0">Help &amp; Guides</h4>
+<div class="card lib-guides-recommender-bento border" data-lib-guides-api-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+
+    <h2 class="lib-guides-recommender-bento-heading text-white bg-red p-2 mb-0 rounded-top">Help &amp; Guides</h4>
     <div>
-      <div class="lib-guides-recommender-librarians border p-2">
+      <div class="lib-guides-recommender-librarians border p-2" data-target="lib-guides.librarian">
         <h5 class="lib-guides-recommender-bento-heading">Subject Librarians</h5>
       </div>
 
-      <div class="lib-guides-recommender-guides border p-2">
+      <div class="lib-guides-recommender-guides border p-2" data-target="lib-guides.guides">
         <h5 class="lib-guides-recommender-bento-heading">Research Guides</h5>
       </div>
     </div>
-  </div>
+
 </div>
+
+<template id="lib-guides-list">
+  <ul>
+    <li>guide 1</li>
+    <li>guide 2</li>
+    <li>guide 3</li>
+  </ul>
+</template>
