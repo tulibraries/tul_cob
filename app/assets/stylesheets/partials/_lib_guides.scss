@@ -6,6 +6,14 @@
   padding: 0.75rem 0;
 }
 
+.lib-guides-recommender-catalog-body,
+.lib-guides-recommender-bento {
+
+  a {
+    text-decoration: underline;
+  }
+}
+
 h2.lib-guides-recommender-bento-heading {
   font-size: 1.4rem;
 }
