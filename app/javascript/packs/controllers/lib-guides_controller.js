@@ -21,9 +21,11 @@ export default class extends Controller {
 		let ownerLink = document.createElement('a');
 		ownerLink.href = "http://example.com"
 		ownerLink.textContent = owner.first_name + " " + owner.last_name;
-		$this.librarianTarget.appendChild(ownerLink);
+		let ownerP = document.createElement('p');
+		ownerP.appendChild(ownerLink);
+		$this.librarianTarget.appendChild(ownerP);
 		['title', 'email'].forEach(function(property) {
-		    if (owner.hasOwnProperty(property)) {
+		    if (owner.hasOwnProperty(property) && owner[property]) {
 			$this.librarianTarget.appendChild(
 			    $this.simpleParagraph(owner[property]));
 		    }
@@ -35,7 +37,7 @@ export default class extends Controller {
 		    li[i].textContent = "";
 		    let link = document.createElement('a');
 		    link.href = item.url;
-		    link.textContent = item.description;
+		    link.textContent = item.name;
 		    li[i].appendChild(link);
 		});
 		$this.guidesTarget.appendChild(list);

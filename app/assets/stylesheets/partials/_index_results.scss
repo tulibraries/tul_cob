@@ -46,7 +46,7 @@ dt.index-label {
 
   @media(max-width: 600px) {
     text-align: left;
- 	}
+	}
 }
 
 dd {
@@ -73,4 +73,95 @@ dd {
 
 dd.blacklight-format {
   padding-left: 0.4375rem !important;
+}
+
+/* === LIB GUIDES RECOMMENDER ===*/
+.lib-guides-recommender-catalog {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+
+.lib-guides-recommender-catalog-body {
+  background-color: #dddddd;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+  a {
+    text-decoration: underline;
+  }
+
+  li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+  }
+
+  h4 {
+    font-weight: 800;
+    @media(max-width: 485px) {
+      padding: 1rem !important;
+      background-color: $red;
+      color: $white !important;
+      border-top-right-radius: 0.25rem !important;
+      border-top-left-radius: 0.25rem !important;
+    }
+  }
+
+  @media(max-width: 485px) {
+    background-color: #ebebe9;
+    padding: 0;
+    border-bottom-right-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+
+    div {
+      align-items: left;
+      flex-direction: column;
+      display: inline-flex;
+    }
+  }
+
+}
+
+.lib-guides-recommender-librarians,
+.lib-guides-recommender-guides {
+  background-color: #ebebe9;
+
+  h5 {
+    font-weight: 800;
+  }
+
+  @media(max-width: 485px) {
+    padding: 1rem !important;
+  }
+}
+
+.lib-guides-recommender-librarians {
+  margin-right: 1rem;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  @media(max-width: 485px) {
+    margin-right: 0;
+    border-bottom: 0.0625rem solid $red;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+.lib-guides-recommender-guides {
+  margin-left: 1rem;
+
+  ul {
+    padding-inline-start: 0px;
+  }
+
+  @media(max-width: 485px) {
+    margin-left: 0;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
 }

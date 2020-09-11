@@ -17,4 +17,8 @@
 
 <%= render_availability(document) %>
 
-<hr class="document-divider" />
+<% if document_counter == 2 %>
+  <%= render "lib_guide_recommender_catalog" %>
+<% else %>
+  <hr class="document-divider" />
+<% end %>
