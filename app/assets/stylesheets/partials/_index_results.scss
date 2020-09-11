@@ -76,27 +76,8 @@ dd.blacklight-format {
 }
 
 /* === LIB GUIDES RECOMMENDER ===*/
-.lib-guides-recommender-catalog {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-}
-
-
 .lib-guides-recommender-catalog-body {
   background-color: #dddddd;
-  padding-left: 1rem;
-  padding-right: 2rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
-
-  a {
-    text-decoration: underline;
-  }
-
-  li {
-    list-style-type: none;
-    margin-bottom: 0.5rem;
-  }
 
   h4 {
     font-weight: 800;
@@ -121,7 +102,6 @@ dd.blacklight-format {
       display: inline-flex;
     }
   }
-
 }
 
 .lib-guides-recommender-librarians,
@@ -138,7 +118,6 @@ dd.blacklight-format {
 }
 
 .lib-guides-recommender-librarians {
-  margin-right: 1rem;
 
   p {
     margin-bottom: 0.5rem;
@@ -153,7 +132,6 @@ dd.blacklight-format {
 }
 
 .lib-guides-recommender-guides {
-  margin-left: 1rem;
 
   ul {
     padding-inline-start: 0px;
