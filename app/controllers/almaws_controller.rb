@@ -45,7 +45,7 @@ class AlmawsController < CatalogController
 
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK") }.compact
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
-    @description = CobAlma::Requests.descriptions(@items)
+    @description = CobAlma::Requests.physical_material_type_and_descriptions(@items)
     @item_level_locations = CobAlma::Requests.item_level_locations(@items)
     @equipment = CobAlma::Requests.equipment(@items)
     @booking_location = CobAlma::Requests.booking_location(@items)
@@ -63,7 +63,7 @@ class AlmawsController < CatalogController
     @asrs_request_level = get_request_level(@items, "asrs")
 
     if @asrs_request_level == "item"
-      @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
+      @asrs_description =  CobAlma::Requests.material_type_and_asrs_descriptions(@items)
     else
       @asrs_description = @description || @asrs_description = ""
     end

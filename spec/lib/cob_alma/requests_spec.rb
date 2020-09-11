@@ -132,20 +132,20 @@ RSpec.describe CobAlma::Requests do
     end
   end
 
-  describe "#asrs_descriptions" do
+  describe "#material_type_and_asrs_descriptions(items_list)" do
     context "record has multiple empty descriptions" do
       let(:items_list) { Alma::BibItem.find("asrs_empty_descriptions") }
 
       it "returns an empty array" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([""])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", [""]]])
       end
     end
 
     context "record has empty description and is ASRS and available" do
       let(:items_list) { Alma::BibItem.find("asrs_empty_and_description") }
 
-      it "returns one description" do
-        expect(described_class.asrs_descriptions(items_list)).to eq(["", "sample"])
+      it "returns one description and one empty string" do
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", ["", "sample"]]])
       end
     end
 
@@ -153,15 +153,15 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("empty_and_description_not_in_place") }
 
       it "returns an empty list" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([])
       end
     end
 
-    context "record many description but non are from ASRS" do
+    context "record many description but none are from ASRS" do
       let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
 
       it "returns empty list" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([])
       end
     end
 
@@ -169,7 +169,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("asrs_repeated_descriptions") }
 
       it "returns unique descriptions" do
-        expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", ["sample"]]])
       end
     end
   end
@@ -209,6 +209,23 @@ RSpec.describe CobAlma::Requests do
 
       it "returns each material type hash once" do
         expect(described_class.physical_material_type(items_list)).to eq([])
+      end
+    end
+  end
+
+  describe "#physical_material_type_and_descriptions(items_list)" do
+
+    context "material type and description" do
+      let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
+      it "returns an array of hashes with materials types and descriptions" do
+        expect(described_class.physical_material_type_and_descriptions(items_list)).to eq([["DVD", ["sample", "second"]]])
+      end
+    end
+
+    context "material type with empty description" do
+      let(:items_list) { Alma::BibItem.find("empty_descriptions") }
+      it "returns an array of hashes with materials types and blank strings for description" do
+        expect(described_class.physical_material_type_and_descriptions(items_list)).to eq([["DVD", [""]]])
       end
     end
   end

@@ -127,12 +127,23 @@ module CobAlma
       descriptions.uniq.sort
     end
 
-    def self.asrs_descriptions(items_list)
-      items_list.all
+    def self.material_type_and_asrs_descriptions(items_list)
+      types_and_descriptions = items_list.all
         .select { |item| item.library == "ASRS" && item.in_place? }
-        .map(&:description)
-        .uniq
-        .sort
+        .map { |item|
+          Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
+        }
+
+      types_and_descriptions.reduce({}) do |acc, rec|
+        key, value = rec.to_a.flatten
+        if acc[key]
+          acc[key] << value
+          acc[key].uniq!
+        else
+          acc[key] = [value]
+        end
+        acc
+      end.to_a
     end
 
     def self.booking_location(items_list)
@@ -160,6 +171,24 @@ module CobAlma
       end
       material_types.uniq.compact
     end
+
+    def self.physical_material_type_and_descriptions(items_list)
+      types_and_descriptions = items_list.all.map { |item|
+        Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
+      }.uniq.compact
+
+      types_and_descriptions.reduce({}) do |acc, rec|
+        key, value = rec.to_a.flatten
+        if acc[key]
+          acc[key] << value
+          acc[key].uniq!
+        else
+          acc[key] = [value]
+        end
+        acc
+      end.to_a
+    end
+
 
     def self.item_holding_ids(items_list)
       items_list
