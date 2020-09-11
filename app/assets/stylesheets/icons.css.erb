@@ -14,9 +14,17 @@ button.collapse-button.collapsed .avail-label:after {
   padding-left: 0.625rem;
 }
 
-a.booking-request:after, 
-a.hold-request:after, 
-a.digital-request:after, 
+[data-toggle="collapse"] i:before{
+    content: "\f078";
+}
+
+[data-toggle="collapse"].collapsed i:before{
+    content: "\f054";
+}
+
+a.booking-request:after,
+a.hold-request:after,
+a.digital-request:after,
 a.asrs-request:after {
   color: $red;
   content:"\f054";
@@ -220,7 +228,7 @@ a.facet_law_regulations {
   padding-left: 1.9rem;
   padding-top: .25rem;
 }
-span.reference, 
+span.reference,
 #facet-format a.facet_reference {
   background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
