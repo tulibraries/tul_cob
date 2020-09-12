@@ -131,7 +131,9 @@ class CatalogController < ApplicationController
       },
       unless: config.campus_closed
 
-    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true, component: true
+    config.add_facet_field "library_pivot_facet", label: "Library",
+      pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
+      component: true, pre_process: :pre_process_library_facet
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
