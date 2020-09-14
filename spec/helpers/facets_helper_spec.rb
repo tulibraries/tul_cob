@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe FacetsHelper, type: :helper do
-
   describe "#render_facet_limit" do
     let(:component_class) do
       Class.new(Blacklight::FacetFieldListComponent) do
@@ -44,4 +43,67 @@ RSpec.describe FacetsHelper, type: :helper do
 
     end
   end
+
+  describe  "#render_facet_item" do
+    context "field is library_pivot_facet" do
+      it "calls #pre_preprocess_library_facet!" do
+        allow(helper).to receive(:pre_process_library_facet!)
+        helper.render_facet_item("library_pivot_facet", nil) rescue nil
+
+        expect(helper).to have_received(:pre_process_library_facet!)
+      end
+    end
+  end
+
+  describe "#locations_map" do
+    it "maps locations coldes to labels" do
+      expect(locations_map["ASRS"]).to eq("BookBot")
+    end
+  end
+
+  describe "#pre_process_library_facet!" do
+    before do
+      helper.pre_process_library_facet!(item)
+    end
+
+    context "no sub items" do
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: []) }
+
+      it "doesn't alter the input" do
+        expected = Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [])
+        expect(item).to eq(expected)
+      end
+    end
+
+    context "sub items do not belong to the same library" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar", hits: 5, items: []) }
+      let(:sub_item_b) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "booz - bar ", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a, sub_item_b ]) }
+
+      it "filters out items that do no match the library" do
+        expect(item.items).to eq([sub_item_a])
+      end
+    end
+
+    context "sub item cannot be translated" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
+
+      it "makes a label using sub item value but does not translate it" do
+        label = item.items.first.label
+        expect(label).to eq("bar")
+      end
+    end
+
+    context "sub item can be translated" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - ASRS", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
+
+      it "makes a label using sub item value and translates it" do
+        label = item.items.first.label
+        expect(label).to eq("BookBot")
+      end
+    end
+  end
+
 end

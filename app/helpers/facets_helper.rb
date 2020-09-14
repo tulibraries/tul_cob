@@ -38,10 +38,32 @@ module FacetsHelper
     super(facet_config, display_facet)
   end
 
+
+  def locations_map
+    @locations_map ||= Rails.configuration.locations.values.inject(&:merge)
+  end
+
+  def pre_process_library_facet!(item)
+    # Filter out secondary facets that do not match library
+    item.items.select! { |i| i.value.match?(/#{item.value}/) }
+
+    # Add propper secondary facet labels
+    item.items.each { |i|
+      label = i.value.split(" - ").last
+      i.label = locations_map[label] || label
+    }
+  end
+
+
   ##
-  # Allows pivot sub fields to be rendered in 'selected' state
+  # Overridden to allow pivot sub fields to be rendered in 'selected' state
+  # and pre process the "library_pivot_facet" field.
   #
   def render_facet_item(facet_field, item)
+    if facet_field == "library_pivot_facet"
+      pre_process_library_facet!(item)
+    end
+
     facet_config = facet_configuration_for_field(facet_field)
     if facet_config.pivot
       facet_config.pivot.find { |pivot_facet_field|
