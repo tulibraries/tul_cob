@@ -139,7 +139,7 @@ RSpec.feature "Indices" do
         expect(page).to_not have_css(".lib-guides-recommender-catalog")
       end
 
-      scenario "Bookmarks page" do
+      scenario "Catalog page" do
         visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan"
         expect(page).to have_css(".lib-guides-recommender-catalog")
       end
