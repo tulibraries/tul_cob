@@ -43,15 +43,40 @@ module FacetsHelper
     @locations_map ||= Rails.configuration.locations.values.inject(&:merge)
   end
 
+  def library_location_label(value, include_library = false)
+    library, label = value.split(" - ")
+    label = locations_map[label] || label
+
+    if include_library
+      [library, label].join(" - ")
+    else
+      label
+    end
+  end
+
   def pre_process_library_facet!(item)
     # Filter out secondary facets that do not match library
     item.items.select! { |i| i.value.match?(/#{item.value}/) }
 
     # Add propper secondary facet labels
-    item.items.each { |i|
-      label = i.value.split(" - ").last
-      i.label = locations_map[label] || label
+    item.items.each { |i| i.label = library_location_label(i.value) }
+  end
+
+  def with_library_locations_labels(params)
+    location_labels = params.dig(:f, :location_facet)&.map { |value|
+      library_location_label(value, include_library = true)
     }
+
+    if location_labels
+      # Hide library if it's already represented by specific location
+      library_facet = params.dig(:f, :library_facet)&.reject { |library|
+        location_labels.any? { |label| label.match?(/#{library}/) }
+      } || []
+
+      ActionController::Parameters.new(params.to_h.with_indifferent_access.deep_merge({ f: { location_facet: location_labels, library_facet: library_facet } }))
+    else
+      params
+    end
   end
 
   ##
