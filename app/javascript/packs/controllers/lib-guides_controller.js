@@ -19,7 +19,7 @@ export default class extends Controller {
 		// librarian section
 		let owner = data[0].owner;
 		let ownerLink = document.createElement('a');
-		ownerLink.href = "http://example.com"
+		ownerLink.href = "https://guides.temple.edu/prf.php?account_id=" + owner.id
 		ownerLink.textContent = owner.first_name + " " + owner.last_name;
 		let ownerP = document.createElement('p');
 		ownerP.appendChild(ownerLink);
