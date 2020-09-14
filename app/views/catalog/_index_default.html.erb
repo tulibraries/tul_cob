@@ -17,7 +17,7 @@
 
 <%= render_availability(document) %>
 
-<% if document_counter == 2 %>
+<% if document_counter == 2 && controller_name == "catalog" %>
   <%= render "lib_guide_recommender_catalog" %>
 <% else %>
   <hr class="document-divider" />
