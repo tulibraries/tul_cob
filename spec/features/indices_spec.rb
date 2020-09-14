@@ -132,5 +132,17 @@ RSpec.feature "Indices" do
         expect(page.find(".document-position-#{13 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
       end
     end
+
+    feature "Lib Guides section" do
+      scenario "Bookmarks page" do
+        visit "/bookmarks"
+        expect(page).to_not have_css(".lib-guides-recommender-catalog")
+      end
+
+      scenario "Bookmarks page" do
+        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan"
+        expect(page).to have_css(".lib-guides-recommender-catalog")
+      end
+    end
   end
 end
