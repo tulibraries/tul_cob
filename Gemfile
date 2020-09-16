@@ -103,6 +103,7 @@ gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.gi
 gem "bootstrap-select-rails"
 gem "httparty"
 gem "dotenv-rails"
+gem "sidekiq"
 
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"

@@ -36,7 +36,8 @@ module Tulcob
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
-
+    config.active_job.queue_adapter = :sidekiq
+  
     config.generators do |g|
       g.test_framework :rspec, spec: true
       g.fixture_replacement :factory_bot
