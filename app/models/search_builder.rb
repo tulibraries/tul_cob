@@ -106,7 +106,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_special_chars(value, _)
-    value.gsub(/[:?]/, " ") rescue value
+    value.gsub(/([:?]|\(\))/, " ") rescue value
   end
 
   def no_journals(solr_parameters)

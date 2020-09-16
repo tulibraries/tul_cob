@@ -183,6 +183,14 @@ RSpec.describe SearchBuilder , type: :model do
       # @see BL-1301 for ref.  Basically Solr treats ? as a special character.
       expect(subject.substitute_special_chars("foo bar?", nil)).to eq("foo bar ")
     end
+
+    it "substitutes empty parens '()' " do
+      expect(subject.substitute_special_chars("foo () bar", nil)).to eq("foo   bar")
+    end
+
+    it "does not substitutes parens containing values " do
+      expect(subject.substitute_special_chars("foo (bar) baz", nil)).to eq("foo (bar) baz")
+    end
   end
 
   describe "#blacklight_params" do
