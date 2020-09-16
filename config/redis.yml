@@ -1,0 +1,11 @@
+default: &default
+
+development:
+  host: "localhost"
+  port: "6379"
+test:
+  host: "localhost"
+  port: "6379"
+production:
+  host: "TBD"
+  port: "6379"
