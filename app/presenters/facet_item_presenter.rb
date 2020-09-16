@@ -27,7 +27,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     @keep_in_params
   end
 
-  def href
+  def href(path_options = {})
     if selected? && keep_in_params?
       view_context.search_action_path(search_state)
     else
