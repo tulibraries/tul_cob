@@ -43,12 +43,13 @@ group :development, :test do
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem "web-console"
+  gem "flamegraph"
   gem "listen", "~> 3.2.1"
-  # spring speeds up development by keeping your application running in the background. read more: https://github.com/rails/spring
+  gem "ruby-prof"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
+  gem "stackprof"
+  gem "web-console"
 end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -57,6 +58,7 @@ gem "blacklight", "~> 7.10.0"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
+
 group :development, :test do
   gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
@@ -68,6 +70,7 @@ group :development, :test do
   gem "launchy"
   gem "foreman"
   gem "vcr"
+  gem "rack-mini-profiler"
   gem "rails-controller-testing"
   gem "rubocop"
   gem "rubocop-rails"

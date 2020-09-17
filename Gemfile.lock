@@ -238,6 +238,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    flamegraph (0.9.5)
     foreman (0.87.2)
     formatador (0.2.5)
     gli (2.19.2)
@@ -369,6 +370,8 @@ GEM
     public_suffix (4.0.6)
     puma (3.12.6)
     rack (2.2.3)
+    rack-mini-profiler (2.0.4)
+      rack (>= 1.2.0)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -456,6 +459,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 0.87.0)
+    ruby-prof (1.4.1)
     ruby-progressbar (1.10.1)
     rubyzip (2.3.0)
     safe_yaml (1.0.5)
@@ -498,6 +502,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
+    stackprof (0.2.15)
     summon (2.0.5)
       json
     sync (0.5.0)
@@ -599,6 +604,7 @@ DEPENDENCIES
   dotenv-rails
   ezwadl
   factory_bot_rails
+  flamegraph
   foreman
   google-analytics-rails (= 1.1.1)
   guard-rspec
@@ -618,12 +624,14 @@ DEPENDENCIES
   primo!
   pry-rails
   puma (~> 3.12)
+  rack-mini-profiler
   rails (~> 5.2)
   rails-controller-testing
   rsolr (~> 2.3)
   rspec-rails
   rubocop
   rubocop-rails
+  ruby-prof
   sass-rails (~> 6.0)
   simplecov
   skylight
@@ -631,6 +639,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
+  stackprof
   turbolinks (~> 5)
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
