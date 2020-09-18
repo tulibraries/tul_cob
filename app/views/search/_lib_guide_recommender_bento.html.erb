@@ -1,4 +1,4 @@
-<div class="card lib-guides-recommender-bento border bg-header-grey" data-lib-guides-api-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+<div class="card lib-guides-recommender-bento border bg-header-grey">
   <button class="d-lg-none collapsed w-100 p-0 border-0 m-0" data-toggle="collapse" data-target="#lib-guide-collapse">
     <h2 class="text-left pl-3 lib-guides-recommender-bento-heading text-white bg-red mb-0 rounded-top">Help &amp; Guides
       <i class="fa float-right pr-3" aria-hidden="true"></i>
@@ -6,22 +6,13 @@
     </h2>
   </button>
     <h2 class="lib-guides-recommender-bento-heading text-white bg-red pl-3 mb-0 rounded-top d-sm-none d-lg-block">Help &amp; Guides</h2>
-    <div id="lib-guide-collapse" class="collapse d-lg-block">
-      <div class="lib-guides-recommender-librarians border p-3" data-target="lib-guides.librarian">
+    <div id="lib-guide-collapse" class="collapse d-lg-block" data-target="lib-guides.card">
+      <div class="lib-guides-recommender-librarians border p-3">
         <h3 class="lib-guides-recommender-bento-heading">Subject Librarians</h3>
       </div>
 
-      <div class="lib-guides-recommender-guides border-top border-red p-3" data-target="lib-guides.guides">
+      <div class="lib-guides-recommender-guides border-top border-red p-3">
         <h3 class="lib-guides-recommender-bento-heading">Research Guides</h3>
       </div>
     </div>
-
 </div>
-
-<template id="lib-guides-list">
-  <ul class="list-unstyled">
-    <li class="pb-2">guide 1</li>
-    <li class="pb-2">guide 2</li>
-    <li class="pb-2">guide 3</li>
-  </ul>
-</template>

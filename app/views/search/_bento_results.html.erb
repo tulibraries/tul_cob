@@ -1,7 +1,9 @@
 <div class="card-columns">
   <% renderable_results(results, options).each_pair do |engine_id, result| %>
   <% if engine_id == 'journals' %>
-    <%= render :partial => "lib_guide_recommender_bento" %>
+    <div data-lib-guides-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+      <%= render :partial => "lib_guide_recommender_bento" %>
+    </div>
   <% end %>
 
     <div class="card mx-auto bento_compartment border-0 <%= engine_id %>">
