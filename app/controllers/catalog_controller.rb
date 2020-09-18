@@ -401,8 +401,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
     config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
-    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "call number (A to Z)"
-    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "call number (Z to A)"
+    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
+    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
