@@ -30,7 +30,15 @@ class LibGuidesApi
   private
 
     def guides
-      json.take(3)
+      ranked_by_type.take(3)
+    end
+
+    def ranked_by_type
+      # The Libguides API has no way to express preference for certain types of guides, the equivalent
+      # of a solr boost (^10 ), so we take the original response, sort it by guide type, then do
+      # a secondary sort by original order. That way the most relevant subject guides appear at the top
+      ranker = { "Subject Guide" => 1, "Topic Guide" => 2, "General Purpose Guide" => 3, "Course Guide" => 4 }
+      json.sort_by { |o| [ranker[o["type_label"]], json.index(o) ] }
     end
 
     def json

@@ -1,4 +1,4 @@
-<div class="card lib-guides-recommender-bento border bg-header-grey" data-lib-guides-api-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+<div class="card lib-guides-recommender-bento border bg-header-grey" data-lib-guides-api-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides">
   <button class="d-lg-none collapsed w-100 p-0 border-0 m-0" data-toggle="collapse" data-target="#lib-guide-collapse">
     <h2 class="text-left pl-3 lib-guides-recommender-bento-heading text-white bg-red mb-0 rounded-top">Help &amp; Guides
       <i class="fa float-right pr-3" aria-hidden="true"></i>
