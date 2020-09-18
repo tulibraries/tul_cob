@@ -52,5 +52,16 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       expect(CGI.unescape(presenter.href)).to include "[pet][]=cat"
       expect(CGI.unescape(presenter.href)).not_to include "[job][]=vet"
     end
+
+    it "doesn't tweak the actual search state" do
+      hide_me = Blacklight::Solr::Response::Facets::FacetItem.new(value: "vet", hits: 100, field: "job")
+      expect(search_state[:f].keys.sort).to eq %w(pet job num).sort
+      presenter.hide_facet_param(hide_me)
+      presenter.href
+      expect(search_state[:f].keys.sort).to eq %w(pet job num).sort
+      presenter.keep_in_params!
+      presenter.href
+      expect(search_state[:f].keys.sort).to eq %w(pet job num).sort
+    end
   end
 end

@@ -23,16 +23,12 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     @keep_in_params
   end
 
-  def href(path_options = {})
-    if selected? && keep_in_params?
-      search_path(search_state.to_h)
-    else
-      super
-    end
-  end
-
   def remove_href(path = search_state)
-    search_path(path.remove_facet_params(facet_config.key, facet_item))
+    if keep_in_params?
+      search_path(path.remove_facet_params(nil, nil))
+    else
+      search_path(path.remove_facet_params(facet_config.key, facet_item))
+    end
   end
 
   def add_href(path_options = {})
