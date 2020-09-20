@@ -4,7 +4,7 @@ module ServerErrors
   extend ActiveSupport::Concern
 
   included do
-    next if Rails.env == "development"
+    next if ["development", "test"].include?(Rails.env)
 
     # We handle all unknown and unplanned exceptions here
     # If an exception arises that could benefit from more
