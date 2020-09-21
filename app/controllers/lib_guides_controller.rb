@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class LibGuidesController < ApplicationController
+class LibGuidesController < CatalogController
   def index
-    render json: LibGuidesApi.fetch(params[:q])
+    @guides = LibGuidesApi.fetch(params[:q]).as_json
+    render layout: false
   end
 end

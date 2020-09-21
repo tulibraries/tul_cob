@@ -1,50 +1,36 @@
 import { Controller } from "stimulus"
 
+function getMetaValue(name) {
+  const element = document.head.querySelector(`meta[name="${name}"]`)
+  return element.getAttribute("content")
+}
+
 export default class extends Controller {
-    static targets = [ "librarian", "guides" ];
+  static targets = [ "card", "flex", "heading", "noresults", "panel" ];
 
-    simpleParagraph(text) {
-	var p = document.createElement('p');
-	p.textContent = text;
-	return p;
-    }
+  initialize() {
+    fetch(this.data.get("url"), {
+      credentials: "same-origin",
+      headers: {
+        "X-CSRF-Token": getMetaValue("csrf-token")
+      },
+    })
+      .then(response => response.text())
+      .then(html => {
+        this.cardTarget.innerHTML = html
 
-    load() {
-	var url = this.data.get('api-url');
-	var $this = this;
-	var listTemplate = document.querySelector('#lib-guides-list');
-	fetch(url)
-	    .then(response => response.json())
-	    .then(function(data) {
-		// librarian section
-		let owner = data[0].owner;
-		let ownerLink = document.createElement('a');
-		ownerLink.href = "https://guides.temple.edu/prf.php?account_id=" + owner.id
-		ownerLink.textContent = owner.first_name + " " + owner.last_name;
-		let ownerP = document.createElement('p');
-		ownerP.appendChild(ownerLink);
-		$this.librarianTarget.appendChild(ownerP);
-		['title', 'email'].forEach(function(property) {
-		    if (owner.hasOwnProperty(property) && owner[property]) {
-			$this.librarianTarget.appendChild(
-			    $this.simpleParagraph(owner[property]));
-		    }
-		});
-		// guides list section
-		var list = listTemplate.content.cloneNode(true);
-		var li = list.querySelectorAll("li");
-		data.forEach(function(item, i) {
-		    li[i].textContent = "";
-		    let link = document.createElement('a');
-		    link.href = item.url;
-		    link.textContent = item.name;
-		    li[i].appendChild(link);
-		});
-		$this.guidesTarget.appendChild(list);
-	    });
-    }
+        if (this.hasNoresultsTarget) {
+          this.panelTarget.classList.add("hidden");
+        }
 
-    connect() {
-	this.load();
-    }
+        if (this.cardTarget.classList.contains("catalog-guides")) {
+          this.flexTargets.forEach((t) => t.classList.add("flex-fill", "p-4", "rounded", "mx-md-3"));
+          this.flexTargets.forEach((t) => t.classList.remove("border-top", "border-red", "p-3"));
+        }
+
+        if (this.cardTarget.classList.contains("bento-guides")) {
+          this.headingTargets.forEach((t) => t.classList.add("lib-guides-recommender-bento-heading"));
+        }
+    });
+  }
 }

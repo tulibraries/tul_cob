@@ -1,22 +1,14 @@
-<div class="lib-guides-recommender-catalog w-100 my-3" data-lib-guides-api-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides">
+<div class="lib-guides-recommender-catalog w-100 my-3" data-target="lib-guides.panel">
   <div class="lib-guides-recommender-catalog-body rounded-top">
-    <h4 class="lib-guides-recommender-catalog-heading text-red px-4 mb-0">Help &amp; Guides</h4>
-    <div class="d-flex justify-content-between pt-md-1 pb-md-4 px-md-4">
-      <div class="lib-guides-recommender-librarians flex-fill p-4 rounded" data-target="lib-guides.librarian">
-        <h5 class="lib-guides-recommender-catalog-heading">Subject Librarians</h5>
+    <h2 class="lib-guides-recommender-catalog-heading text-red px-4 mb-0">Help &amp; Guides</h2>
+    <div class="d-flex justify-content-between pt-md-1 pb-md-4 px-md-4 catalog-guides" data-target="lib-guides.card">
+      <div class="lib-guides-recommender-librarians flex-fill p-4 rounded" data-target="lib-guides.flex">
+        <h3 class="lib-guides-recommender-catalog-heading">Subject Librarians</h3>
       </div>
 
-      <div class="lib-guides-recommender-guides flex-fill p-4 rounded ml-md-4" data-target="lib-guides.guides">
-        <h5 class="lib-guides-recommender-catalog-heading">Research Guides</h5>
+      <div class="lib-guides-recommender-guides flex-fill p-4 rounded ml-md-4" data-target="lib-guides.flex">
+        <h5 class="lib-guides-recommender-heading">Research Guides</h5>
       </div>
     </div>
   </div>
 </div>
-
-<template id="lib-guides-list">
-  <ul class="list-unstyled">
-    <li class="pb-2">guide 1</li>
-    <li class="pb-2">guide 2</li>
-    <li class="pb-2">guide 3</li>
-  </ul>
-</template>

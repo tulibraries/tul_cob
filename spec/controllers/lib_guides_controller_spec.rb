@@ -10,7 +10,7 @@ RSpec.describe LibGuidesController do
     end
   end
 
-  describe "GET index" do
+  describe "index" do
     it "renders the json returned by the LibGuidesApi class" do
       expect(LibGuidesApi).to receive(:fetch).with("query terms").and_return(
         [{ name: "Guide 1", url: "https://example.com/1" }, { name: "Guide 2", url: "https://example.com/2" }]
@@ -19,8 +19,7 @@ RSpec.describe LibGuidesController do
       get :index, params: { q: "query terms" }
 
       expect(response).to be_success
-      response_json = JSON.parse(response.body)
-      expect(response_json).to eq([
+      expect(controller.instance_variable_get(:@guides)).to eq([
         { "name" => "Guide 1", "url" => "https://example.com/1" },
         { "name" => "Guide 2", "url" => "https://example.com/2" }
       ])
