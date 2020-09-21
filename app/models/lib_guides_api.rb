@@ -69,6 +69,8 @@ class LibGuidesApi
         key: api_key,
         sort_by: "relevance",
         expand: "owner",
+        guide_types: "1,2,3,4", # we don't want internal guides or templates
+        status: 1, # we only want published guides
         search_terms: "#{query}"
       }
 

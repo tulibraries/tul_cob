@@ -33,6 +33,14 @@ RSpec.describe LibGuidesApi do
         expect(api.as_json.map { |o| o["id"] }).to eq([1, 5, 3])
       end
     end
+
+    context "when there are no results" do
+      it "returns an empty array" do
+        allow(HTTParty).to receive(:get).and_return(
+          double(success?: true, body: [].to_json))
+        expect(api.as_json.map { |o| o["id"] }).to eq([])
+      end
+    end
   end
 
   context "when the API fails to respond successfully" do
