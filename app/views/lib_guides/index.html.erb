@@ -2,6 +2,7 @@
     <h3 class="lib-guides-recommender-heading" data-target="lib-guides.heading">Subject Librarians</h3>
     <% if @guides.present? %>
       <%= link_to(@guides[0]["owner"]["first_name"] + " " + @guides[0]["owner"]["last_name"], "https://guides.temple.edu/prf.php?account_id=" + @guides[0]["owner"]["id"]) %>
+      <p class="pt-2"><%= @guides[0]["owner"]["email"] %></p>
     <% else %>
       <div data-target="lib-guides.noresults">
         <p>Need research help?</p>
