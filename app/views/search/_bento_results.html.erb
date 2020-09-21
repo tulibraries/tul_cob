@@ -1,7 +1,7 @@
 <div class="card-columns">
   <% renderable_results(results, options).each_pair do |engine_id, result| %>
   <% if engine_id == 'journals' %>
-    <div data-lib-guides-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+    <div data-lib-guides-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides">
       <%= render :partial => "lib_guide_recommender_bento" %>
     </div>
   <% end %>
