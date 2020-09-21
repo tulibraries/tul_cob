@@ -18,7 +18,11 @@
 <%= render_availability(document) %>
 
 <% if document_counter == 2 && controller_name == "catalog" %>
-  <%= render "lib_guide_recommender_catalog" %>
+  <div data-lib-guides-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+    <%= render :partial => "lib_guide_recommender_catalog" %>
+  </div>
+  <hr class="document-divider" />
+
 <% else %>
   <hr class="document-divider" />
 <% end %>

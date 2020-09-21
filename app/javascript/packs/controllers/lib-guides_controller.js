@@ -6,7 +6,7 @@ function getMetaValue(name) {
 }
 
 export default class extends Controller {
-  static targets = [ "card" ];
+  static targets = [ "card", "flex", "heading", "noresults", "panel" ];
 
   initialize() {
     fetch(this.data.get("url"), {
@@ -18,6 +18,19 @@ export default class extends Controller {
       .then(response => response.text())
       .then(html => {
         this.cardTarget.innerHTML = html
+
+        if (this.hasNoresultsTarget) {
+          this.panelTarget.classList.add("hidden");
+        }
+
+        if (this.cardTarget.classList.contains("catalog-guides")) {
+          this.flexTargets.forEach((t) => t.classList.add("flex-fill", "p-4", "rounded", "mx-md-3"));
+          this.flexTargets.forEach((t) => t.classList.remove("border-top", "border-red", "p-3"));
+        }
+
+        if (this.cardTarget.classList.contains("bento-guides")) {
+          this.headingTargets.forEach((t) => t.classList.add("lib-guides-recommender-bento-heading"));
+        }
     });
   }
 }

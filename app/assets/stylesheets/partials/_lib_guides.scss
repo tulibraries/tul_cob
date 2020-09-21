@@ -1,5 +1,6 @@
-.lib-guides-recommender-catalog-heading,
-.lib-guides-recommender-bento-heading {
+.lib-guides-recommender-heading,
+.lib-guides-recommender-bento-heading,
+.lib-guides-recommender-catalog-heading {
   font-family: "Roboto Condensed";
   font-weight: bold;
   height: 3.125rem;
@@ -14,10 +15,19 @@
   }
 }
 
-h2.lib-guides-recommender-bento-heading {
+h2.lib-guides-recommender-heading,
+h2.lib-guides-recommender-bento-heading{
   font-size: 1.4rem;
 }
 
-h3.lib-guides-recommender-bento-heading {
+h3.lib-guides-recommender-heading {
   font-size: 1.2rem;
+}
+
+h2.lib-guides-recommender-catalog-heading {
+  font-size: 1.5rem;
+}
+
+h3.lib-guides-recommender-heading {
+  font-size: 1.25rem;
 }
