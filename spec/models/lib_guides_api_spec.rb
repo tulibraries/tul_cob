@@ -19,6 +19,20 @@ RSpec.describe LibGuidesApi do
       allow(HTTParty).to receive(:get).and_return(double(success?: true, body: json))
       expect(api.as_json.length).to be 3
     end
+
+    context "when there are many results" do
+      it "sorts Subject -> Topic -> General Purpose -> Course, then by original order" do
+        allow(HTTParty).to receive(:get).and_return(
+          double(success?: true, body: [
+            { id: 1, "type_label" => "Subject Guide" },
+            { id: 2, "type_label" => "General Purpose Guide" },
+            { id: 3, "type_label" => "Topic Guide" },
+            { id: 4, "type_label" => "Course Guide" },
+            { id: 5, "type_label" => "Subject Guide" },
+          ].to_json))
+        expect(api.as_json.map { |o| o["id"] }).to eq([1, 5, 3])
+      end
+    end
   end
 
   context "when the API fails to respond successfully" do

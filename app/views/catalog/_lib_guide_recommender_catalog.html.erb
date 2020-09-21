@@ -1,4 +1,4 @@
-<div class="lib-guides-recommender-catalog w-100 my-3" data-lib-guides-api-url="<%= lib_guides_path(q: params[:q]) %>" data-controller="lib-guides">
+<div class="lib-guides-recommender-catalog w-100 my-3" data-lib-guides-api-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides">
   <div class="lib-guides-recommender-catalog-body rounded-top">
     <h4 class="lib-guides-recommender-catalog-heading text-red px-4 mb-0">Help &amp; Guides</h4>
     <div class="d-flex justify-content-between pt-md-1 pb-md-4 px-md-4">

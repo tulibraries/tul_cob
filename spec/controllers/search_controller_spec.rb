@@ -23,7 +23,7 @@ RSpec.describe SearchController, type: :controller do
 
       it "adds content-dm totals to facet" do
         facet_fields = controller.instance_variable_get(:@response).facet_fields
-        expect(facet_fields).to eq("format" => [ "digital_collections", "415" ])
+        expect(facet_fields).to include("format" => [ "digital_collections", "415" ])
       end
     end
 
