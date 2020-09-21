@@ -11,12 +11,8 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     @hidden_facet_params << facet_item
   end
 
-  def search_state
-    @hidden_facet_params ||= []
-    Blacklight::SearchState.new(
-      @hidden_facet_params.reduce(super) { |_search_state, facet_item| _search_state.remove_facet_params(facet_item.field, facet_item) },
-      view_context.blacklight_config
-    );
+  def hidden_facet_params
+    @hidden_facet_params || []
   end
 
   def keep_in_params!
@@ -27,11 +23,26 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     @keep_in_params
   end
 
-  def href(path_options = {})
-    if selected? && keep_in_params?
-      view_context.search_action_path(search_state)
+  def remove_href(path = search_state)
+    if keep_in_params?
+      search_path(path.remove_facet_params(nil, nil))
     else
-      super
+      search_path(path.remove_facet_params(facet_config.key, facet_item))
     end
+  end
+
+  def add_href(path_options = {})
+    if facet_config.url_method
+      view_context.public_send(facet_config.url_method, facet_config.key, facet_item)
+    else
+      search_path(search_state.add_facet_params_and_redirect(facet_config.key, facet_item).merge(path_options))
+    end
+  end
+
+  def search_path(path)
+    hidden_facet_params.each do |hidden_facet_param|
+      path["f"]&.delete(hidden_facet_param.field)
+    end
+    view_context.search_action_path(path)
   end
 end

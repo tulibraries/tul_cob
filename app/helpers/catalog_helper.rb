@@ -555,7 +555,18 @@ module CatalogHelper
     ::FeatureFlags.campus_closed?(params)
   end
 
-  def derived_libguides_search_term
-    params.fetch("q", "")
+  def derived_lib_guides_search_term(solr_response)
+    query =  [params.fetch("q", "")]
+    query += _subject_topic_facet_terms(solr_response)
+    query.map { |s| "(#{s})" }.join(" OR ")
+  end
+
+  def _subject_topic_facet_terms(response)
+    return [] if (response.nil? || !response.respond_to?(:facet_fields))
+    (response.facet_fields || {})
+    .fetch("subject_topic_facet", [])
+      .to_a
+      .each_slice(2)
+      .map(&:first)
   end
 end

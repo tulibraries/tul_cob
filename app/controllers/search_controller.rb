@@ -9,6 +9,7 @@ class SearchController < CatalogController
 
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_books_and_media_facet, helper_method: :translate_resource_type_code, show: true, limit: -1
+    config.add_facet_field "subject_topic_facet", limit: true
   end
 
   def index

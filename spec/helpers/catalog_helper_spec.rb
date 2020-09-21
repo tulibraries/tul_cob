@@ -907,14 +907,58 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#derived_libguides_search_term" do
+  describe "#derived_lib_guides_search_term(solr_response)" do
     before do
       allow(helper).to receive(:params) { params }
+      allow(self).to receive(:_subject_topic_facet_terms).and_return(["wu tang", "clan aint"])
     end
     let(:params) { { "q" => "thing" } }
 
-    it "returns the origial search term as term to search in libguides" do
-      expect(derived_libguides_search_term).to eq("thing")
+    it "returns the origial search term and subject topics in parenthesis and combined with OR " do
+      expect(derived_lib_guides_search_term(nil)).to eq("(thing) OR (wu tang) OR (clan aint)")
+    end
+  end
+
+  describe "#_subject_topic_facet_terms(response)" do
+    let(:subject) { _subject_topic_facet_terms(response) }
+    let(:solr_response) { Blacklight::Solr::Response.new({ responseHeader: {}, facet_counts: { facet_fields: [facet_field] } }, {}) }
+    let(:facet_field) { ["wrong", []] }
+
+    context "nil response" do
+      let(:response) { nil }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "empty solr response" do
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "solr_response without subject_topic_facet" do
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "solr_response with subject_topic_facet" do
+      let(:facet_field) { ["subject_topic_facet", ["foo", 1]] }
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq(["foo"])
+      end
+    end
+
+    context "solr_response with subject_topic_facet multiple values" do
+      let(:facet_field) { ["subject_topic_facet", ["foo", 1, "boo", 2]] }
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq(["foo", "boo"])
+      end
     end
   end
 end

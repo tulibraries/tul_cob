@@ -62,22 +62,6 @@ module FacetsHelper
     item.items.each { |i| i.label = library_location_label(i.value) }
   end
 
-  def with_library_locations_labels(params)
-    location_labels = params.dig(:f, :location_facet)&.map { |value|
-      library_location_label(value, include_library = true)
-    }
-
-    if location_labels
-      # Hide library if it's already represented by specific location
-      library_facet = params.dig(:f, :library_facet)&.reject { |library|
-        location_labels.any? { |label| label.match?(/#{library}/) }
-      } || []
-
-      ActionController::Parameters.new(params.to_h.with_indifferent_access.deep_merge({ f: { location_facet: location_labels, library_facet: library_facet } }))
-    else
-      params
-    end
-  end
 
   ##
   # Overridden to allow pivot sub fields to be rendered in 'selected' state
