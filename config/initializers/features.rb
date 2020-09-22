@@ -6,3 +6,5 @@ Rails.application.config.features[:sms_document_action_disabled] = ENV["SMS_DOCU
 
 # Deaults to false. If env var is set, will only evaluate to false if the value is "false". All others values evaluate to true
 Rails.configuration.features[:campus_closed] = (ENV.fetch("CAMPUS_CLOSED", "false") == "false") ? false : true
+Rails.configuration.features[:with_libguides] = (ENV.fetch("WITH_LIBGUIDES", "false") == "false") ? false : true
+Rails.configuration.features[:with_call_number_facet] = (ENV.fetch("WITH_CALL_NUMBER_FACET", "false") == "false") ? false : true

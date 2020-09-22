@@ -555,6 +555,14 @@ module CatalogHelper
     ::FeatureFlags.campus_closed?(params)
   end
 
+  def with_libguides?
+    ::FeatureFlags.with_libguides?(params)
+  end
+
+  def with_call_number_facet?
+    ::FeatureFlags.with_call_number_facet?(params)
+  end
+
   def derived_lib_guides_search_term(solr_response)
     query =  [params.fetch("q", "")]
     query += _subject_topic_facet_terms(solr_response)
