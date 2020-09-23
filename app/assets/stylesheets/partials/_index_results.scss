@@ -79,14 +79,16 @@ dd.blacklight-format {
 .lib-guides-recommender-catalog-body {
   background-color: #dddddd;
 
-  h4 {
+  h2 {
     font-weight: 800;
+    padding-left: 2.5rem;
+
     @media(max-width: 485px) {
       padding: 1rem !important;
       background-color: $red;
       color: $white !important;
-      border-top-right-radius: 0.25rem !important;
-      border-top-left-radius: 0.25rem !important;
+      border-top-right-radius: 0.25rem;
+      border-top-left-radius: 0.25rem;
     }
   }
 
@@ -108,7 +110,7 @@ dd.blacklight-format {
 .lib-guides-recommender-guides {
   background-color: #ebebe9;
 
-  h5 {
+  h3 {
     font-weight: 800;
   }
 
@@ -125,7 +127,7 @@ dd.blacklight-format {
 
   @media(max-width: 485px) {
     margin-right: 0;
-    border-bottom: 0.0625rem solid $red;
+    border-bottom: 0.0625rem solid $red !important;
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }

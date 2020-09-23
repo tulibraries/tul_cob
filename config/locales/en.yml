@@ -297,6 +297,13 @@ en:
     update_name_href: "https://tuportal.temple.edu"
     email_notice: "If you prefer not to receive email notices from us owing to privacy concerns, we offer an opt-out option. Please know that if you choose to opt out of receiving email notifications for due dates, late items, etc., you are still fully responsible for any and all related fines and other consequences resulting from late, long overdue or lost/missing items you have borrowed. If interested, please contact a staff member at the circulation desk."
 
+  lib_guides:
+    librarian_no_results: "Need research help?"
+    librarian_no_results_text: "Talk to a librarian or subject matter expert"
+    librarian_no_results_link: "https://library.temple.edu/services/sme"
+    guides_no_results_text: "Browse our research guides by subject"
+    guides_no_results_link: "https://guides.temple.edu/?b=s"
+
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
