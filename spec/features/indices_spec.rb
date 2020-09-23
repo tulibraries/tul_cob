@@ -36,7 +36,7 @@ RSpec.feature "Indices" do
     }
     context "searching shows all facets" do
       scenario "User searches catalog" do
-        visit "/catalog"
+        visit "/catalog?with_libguides=true&with_call_number_facet=true"
         fill_in "q", with: "*"
         click_button "search"
         facet_headings = page.all(".facet-field-heading")
@@ -139,9 +139,14 @@ RSpec.feature "Indices" do
         expect(page).to_not have_css(".lib-guides-recommender-catalog")
       end
 
-      scenario "Catalog page" do
-        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan"
+      scenario "Catalog page with_libguides=true" do
+        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan&with_libguides=true"
         expect(page).to have_css(".lib-guides-recommender-catalog")
+      end
+
+      scenario "Catalog page with_libguides=false" do
+        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan&with_libguides=false"
+        expect(page).to_not have_css(".lib-guides-recommender-catalog")
       end
     end
   end
