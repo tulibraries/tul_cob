@@ -20,7 +20,7 @@ module RenderConstraintsHelper
       # Hide library_facet if matching location facet already selected.
       hidden_class = []
       if facet == "library_facet" &&
-          search_state.dig(:f, :location_facet)&.any? { |l| l.match?(/#{val}/) }
+        search_state.dig(:f, :location_facet)&.any? { |l| l.match?(/#{val}/) }
         hidden_class << "hidden"
       end
 
@@ -35,7 +35,7 @@ module RenderConstraintsHelper
   # Overridden from module RenderConstraintsHelperBehavior.
   #
   # Overridden in order to disable rendering unknown facet fields.
-  # And, to handle library_pivot_facet contraints/filter elemens.
+  # And, to handle library_pivot_facet contraints/filter elements.
   #
   # Render a single facet's constraint
   # @param [String] facet field
