@@ -16,14 +16,4 @@
 </div>
 
 <%= render_availability(document) %>
-
-<% if document_counter == 2 && controller_name == "catalog" %>
-  <hr class="document-divider" />
-  <div data-lib-guides-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides">
-    <%= render :partial => "lib_guide_recommender_catalog" %>
-  </div>
-  <hr class="document-divider" />
-
-<% else %>
-  <hr class="document-divider" />
-<% end %>
+<hr class="document-divider" />

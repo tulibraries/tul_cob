@@ -6,7 +6,7 @@ function getMetaValue(name) {
 }
 
 export default class extends Controller {
-  static targets = [ "card", "flex", "heading", "noresults", "panel" ];
+  static targets = [ "card", "flex", "heading", "noresults", "panel", "divider" ];
 
   initialize() {
     fetch(this.data.get("url"), {
@@ -17,9 +17,19 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.cardTarget.innerHTML = html
+        let documents = $('#documents');
+        if (this.hasPanelTarget) {
+          let afterThird = documents.find('.document-position-2').after(this.panelTarget);
 
-        if (this.hasNoresultsTarget) {
+          // If there is no third document, just append to the end of #documents
+          if (afterThird.length === 0) {
+            documents.append(this.panelTarget);
+          }
+          this.panelTarget.classList.remove("hidden");
+        }
+
+        this.cardTarget.innerHTML = html
+        if (this.hasNoresultsTarget && this.cardTarget.classList.contains("catalog-guides")) {
           this.panelTarget.classList.add("hidden");
         }
 

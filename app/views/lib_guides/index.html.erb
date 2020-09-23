@@ -1,12 +1,12 @@
   <div class="lib-guides-recommender-librarians border p-3" data-target="lib-guides.flex">
     <h3 class="lib-guides-recommender-heading" data-target="lib-guides.heading">Subject Librarians</h3>
     <% if @guides.present? %>
-      <%= link_to(@guides[0]["owner"]["first_name"] + " " + @guides[0]["owner"]["last_name"], "https://guides.temple.edu/prf.php?account_id=" + @guides[0]["owner"]["id"]) %>
-      <p class="pt-2"><%= @guides[0]["owner"]["email"] %></p>
+      <%= link_to(@guides.first.dig("owner", "first_name") + " " + @guides.first.dig("owner", "last_name"), "https://guides.temple.edu/prf.php?account_id=" + @guides.first.dig("owner", "id")) %>
+      <p class="pt-2"><%= @guides.first.dig("owner", "email") %></p>
     <% else %>
       <div data-target="lib-guides.noresults">
-        <p>Need research help?</p>
-        <%= link_to("Talk to a librarian or subject matter expert", "https://library.temple.edu/services/sme") %>
+        <p><%= t("lib_guides.librarian_no_results") %></p>
+        <%= link_to(t("lib_guides.librarian_no_results_text"), t("lib_guides.librarian_no_results_href")) %>
       </div>
     <% end %>
   </div>
@@ -23,7 +23,7 @@
     <% else %>
       <div data-target="lib-guides.noresults">
         <li class="pb-2">
-          <%= link_to("Browse our research guides by subject", "https://guides.temple.edu/?b=s") %>
+          <%= link_to(t("lib_guides.guides_no_results_text"), t("lib_guides.guides_no_results_link")) %>
         </li>
       </div>
     <% end %>
