@@ -144,7 +144,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true
+    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, if: Proc.new { |context| ::FeatureFlags.with_call_number_facet?(context.params) }
 
 
 
