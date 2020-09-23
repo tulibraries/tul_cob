@@ -907,6 +907,66 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#with_libguides?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params with_libguides is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(with_libguides?).to be(false)
+      end
+    end
+
+    context "params with_libguides is true" do
+      let(:params) { { "with_libguides" => "true" } }
+
+      it "returns true when with_libguides param is not 'false'" do
+        expect(with_libguides?).to be(true)
+      end
+    end
+
+    context "params with_libguides is false" do
+      let(:params) { { "with_libguides" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(with_libguides?).to be(false)
+      end
+    end
+  end
+
+  describe "#with_call_number_facet?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params with_call_number_facet is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(with_call_number_facet?).to be(false)
+      end
+    end
+
+    context "params with_call_number_facet is true" do
+      let(:params) { { "with_call_number_facet" => "true" } }
+
+      it "returns true when with_call_number_facet param is not 'false'" do
+        expect(with_call_number_facet?).to be(true)
+      end
+    end
+
+    context "params with_call_number_facet is false" do
+      let(:params) { { "with_call_number_facet" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(with_call_number_facet?).to be(false)
+      end
+    end
+  end
+
   describe "#derived_lib_guides_search_term(solr_response)" do
     before do
       allow(helper).to receive(:params) { params }
