@@ -1,6 +1,6 @@
 <% if controller_name == "catalog" %>
   <div class="hidden" data-lib-guides-url="<%= lib_guides_path(q: derived_lib_guides_search_term(@response)) %>" data-controller="lib-guides" data-target="lib-guides.panel">
-
     <%= render :partial => "lib_guide_recommender_catalog" %>
+    <hr class="document-divider" />
   </div>
 <% end %>
