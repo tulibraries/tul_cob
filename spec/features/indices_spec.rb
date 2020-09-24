@@ -118,7 +118,7 @@ RSpec.feature "Indices" do
 
   feature "Sorting" do
     scenario "User requests results sorted by LC call number" do
-      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+asc%2C+pub_date_sort+desc"
+      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+asc%2C+pub_date_sort+desc&with_call_number_facet=true"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
         expect(page.find(".document-position-#{i - 1} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
@@ -126,7 +126,7 @@ RSpec.feature "Indices" do
     end
 
     scenario "User requests results reverse sorted by LC call number" do
-      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+desc%2C+pub_date_sort+desc"
+      visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+desc%2C+pub_date_sort+desc&with_call_number_facet=true"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
         expect(page.find(".document-position-#{13 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
