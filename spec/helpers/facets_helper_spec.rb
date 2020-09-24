@@ -55,12 +55,6 @@ RSpec.describe FacetsHelper, type: :helper do
     end
   end
 
-  describe "#locations_map" do
-    it "maps locations coldes to labels" do
-      expect(locations_map["ASRS"]).to eq("BookBot")
-    end
-  end
-
   describe "#pre_process_library_facet!" do
     before do
       helper.pre_process_library_facet!(item)
@@ -85,23 +79,23 @@ RSpec.describe FacetsHelper, type: :helper do
       end
     end
 
-    context "sub item cannot be translated" do
+    context "sub item has 'foo - bar' value" do
       let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar", hits: 5, items: []) }
       let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
 
-      it "makes a label using sub item value but does not translate it" do
+      it "transforms label to just be 'bar'" do
         label = item.items.first.label
         expect(label).to eq("bar")
       end
     end
 
-    context "sub item can be translated" do
-      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - ASRS", hits: 5, items: []) }
+    context "sub item has 'foo - bar - buzz' value" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar - buzz", hits: 5, items: []) }
       let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
 
-      it "makes a label using sub item value and translates it" do
+      it "transforms label to just be 'bar - buzz'" do
         label = item.items.first.label
-        expect(label).to eq("BookBot")
+        expect(label).to eq("bar - buzz")
       end
     end
   end

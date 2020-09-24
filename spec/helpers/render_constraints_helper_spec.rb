@@ -41,15 +41,6 @@ RSpec.describe RenderConstraintsHelper, type: :helper do
       end
     end
 
-    context "is field location_facet" do
-      let(:facet) { "location_facet" }
-      let(:values) { "foo - ASRS" }
-
-      it "maps the location facet to the location label" do
-        expect(subject).to match(/foo - BookBot/)
-      end
-    end
-
     context "library_facet field and matching library_location" do
       let(:facet) { "library_facet" }
       let(:params) { ActionController::Parameters.new({ f: { location_facet: [ "foo - ASRS"] } }) }

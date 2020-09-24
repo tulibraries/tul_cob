@@ -11,12 +11,6 @@ module RenderConstraintsHelper
 
       presenter = facet_item_presenter(facet_config, val, facet)
 
-      # Map location label
-      label = presenter.label
-      if facet == "location_facet"
-        label = library_location_label(label, include_library = true)
-      end
-
       # Hide library_facet if matching location facet already selected.
       hidden_class = []
       if facet == "library_facet" &&
@@ -25,9 +19,9 @@ module RenderConstraintsHelper
       end
 
       acc << { facet_field_label: facet_field_label(facet_config.key),
-        label: label,
-        remove: presenter.remove_href(search_state),
-        classes: ["filter", "filter-" + facet.parameterize] + hidden_class }
+               label: presenter.label,
+               remove: presenter.remove_href(search_state),
+               classes: ["filter", "filter-" + facet.parameterize] + hidden_class }
     end
   end
 
