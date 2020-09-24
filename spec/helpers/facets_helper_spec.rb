@@ -44,12 +44,6 @@ RSpec.describe FacetsHelper, type: :helper do
     end
   end
 
-  describe "#locations_map" do
-    it "maps locations coldes to labels" do
-      expect(locations_map["ASRS"]).to eq("BookBot")
-    end
-  end
-
   describe "#pre_process_library_facet!" do
     before do
       helper.pre_process_library_facet!(item)

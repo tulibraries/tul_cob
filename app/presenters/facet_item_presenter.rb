@@ -5,7 +5,6 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     items = super
     if facet_field == "library_pivot_facet"
       return items.select { |i| i.value.match?(/#{facet_value}/) }
-               .map { |i| i.label = view_context.library_location_label(i.value); i }
     end
     return items
   end
