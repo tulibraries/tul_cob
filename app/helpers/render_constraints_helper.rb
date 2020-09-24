@@ -8,8 +8,18 @@ module RenderConstraintsHelper
 
     Array(values).reduce([]) do |acc, val|
       next acc if val.blank? # skip empty string
+      next acc if facet == "lc_outer_facet" && search_state.filter_params["lc_inner_facet"]
 
       presenter = facet_item_presenter(facet_config, val, facet)
+
+      if facet == "lc_inner_facet" && search_state.filter_params["lc_outer_facet"]
+        label = "#{search_state.filter_params['lc_outer_facet'][0]} | #{label}"
+        presenter.parent = OpenStruct.new(field: "lc_outer_facet", value: search_state.filter_params["lc_outer_facet"][0])
+      end
+
+      if facet == "location_facet" && search_state.filter_params["library_facet"]
+        presenter.parent = OpenStruct.new(field: "library_facet", value: search_state.filter_params["library_facet"][0])
+      end
 
       # Hide library_facet if matching location facet already selected.
       hidden_class = []
