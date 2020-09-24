@@ -44,17 +44,6 @@ RSpec.describe FacetsHelper, type: :helper do
     end
   end
 
-  describe  "#render_facet_item" do
-    context "field is library_pivot_facet" do
-      it "calls #pre_preprocess_library_facet!" do
-        allow(helper).to receive(:pre_process_library_facet!)
-        helper.render_facet_item("library_pivot_facet", nil) rescue nil
-
-        expect(helper).to have_received(:pre_process_library_facet!)
-      end
-    end
-  end
-
   describe "#locations_map" do
     it "maps locations coldes to labels" do
       expect(locations_map["ASRS"]).to eq("BookBot")

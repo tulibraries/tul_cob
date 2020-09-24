@@ -22,6 +22,11 @@ class CatalogController < ApplicationController
   helper_method :browse_creator
   helper_method :display_duration
 
+  # TODO: remove once this is no longer a flag
+  def self.with_call_number_facet?
+    Proc.new { |context| ::FeatureFlags.with_call_number_facet?(context.params) }
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -133,7 +138,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field "library_pivot_facet", label: "Library",
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
-      component: true, pre_process: :pre_process_library_facet
+      component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
@@ -144,8 +149,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true
-
+    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }, if: with_call_number_facet?
 
 
 
@@ -401,8 +405,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
     config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
-    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
-    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
+    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)", if: with_call_number_facet?
+    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)", if: with_call_number_facet?
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
