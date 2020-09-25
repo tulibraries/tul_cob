@@ -29,6 +29,6 @@ class FacetItemComponent < Blacklight::FacetItemComponent
     return super unless options[:indefinite_facet_count]
 
     classes = (options[:classes] || []) << "facet-count"
-    content_tag("span", "+", class: classes)
+    content_tag("span", " ", class: classes)
   end
 end
