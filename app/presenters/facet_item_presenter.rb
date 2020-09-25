@@ -3,7 +3,7 @@
 class FacetItemPresenter < Blacklight::FacetItemPresenter
   def items
     items = super
-    if facet_field == "library_pivot_facet"
+    if facet_field == "library_facet"
       # Filter out secondary facets that do not match library
       items = items.select { |i| i.value.match?(/#{facet_value}/) }
       # Add proper secondary facet labels
