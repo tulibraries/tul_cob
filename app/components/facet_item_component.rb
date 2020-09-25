@@ -7,7 +7,7 @@ class FacetItemComponent < Blacklight::FacetItemComponent
 
   # Overrides Blacklight method to allow facet icons to be displayed
   def render_facet_value(options = {})
-    options[:indefinite_facet_count] = true if @facet_item.has_selected_child?
+    options[:indefinite_facet_count] = @facet_item.has_selected_child?
     content_tag(:span, class: "facet-label") do
       link_to_unless(@suppress_link, @label, @href, class: "facet_select facet_#{@facet_item.facet_item.value.downcase.parameterize.underscore}")
     end + render_facet_count(options)
