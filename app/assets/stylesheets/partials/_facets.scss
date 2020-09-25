@@ -1,6 +1,34 @@
 @import "_vars.scss";
 
 /* SIDEBAR STYLES(FACETS AND CONSTRAINTS) */
+.blacklight-lc_facet, .blacklight-library_pivot_facet {
+
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+
+    > ul > li {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .pivot-facet-spacer-cell {
+      display: table-cell;
+      width: 1.25rem;
+    }
+
+    .pivot-facet-spacer-row:not(:last-child) {
+      display: table-row;
+
+      span {
+        display: table-cell;
+        border-top: 1.25px solid #e5e5e5;
+        width: 100%;
+        height: 0.3rem;
+      }
+    }
+  }
+}
 
 /* APPLIED FILTERS AND PARAMETERS */
 #startOverLink {
@@ -256,17 +284,17 @@ ul.missing li span.facet-count {
   @extend .list-unstyled;
   @extend .py-1;
   @extend .px-4;
+  padding-right: 0 !important;
 }
 
 .facet-leaf-node {
-  margin-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.25rem;
   margin-top: -1.5rem;
 }
 
 .facet-toggle-handle {
   margin: 0;
-  margin-left: -5px;
+  margin-left: -8px;
   padding: 0;
 
   &.collapsed {

@@ -138,7 +138,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field "library_pivot_facet", label: "Library",
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
-      component: true, pre_process: :pre_process_library_facet
+      component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
     config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
@@ -149,8 +149,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "LC Call Number", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, if: with_call_number_facet?
-
+    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }, if: with_call_number_facet?
 
 
 
