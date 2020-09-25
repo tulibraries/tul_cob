@@ -12,6 +12,11 @@ module RenderConstraintsHelper
 
       presenter = facet_item_presenter(facet_config, val, facet)
 
+      # This is preventing behavior where, if you click to cancel the restraint "Bookbot", the restraint for
+      # "Charles Library" will take its place. The presenter tacks the "parent" on when it is building the
+      # "remove_href" value. Because we are in the constraint pipeline though, we don't have actual objects for
+      # "parent" facets like we do when rendering facets.erb. But the struct looks enough like a FacetItem object
+      # for the presenter to build the link.
       if facet == "lc_inner_facet" && search_state.filter_params["lc_outer_facet"]
         label = "#{search_state.filter_params['lc_outer_facet'][0]} | #{label}"
         presenter.parent = OpenStruct.new(field: "lc_outer_facet", value: search_state.filter_params["lc_outer_facet"][0])

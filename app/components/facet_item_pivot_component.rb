@@ -6,14 +6,7 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
   # We want to "uncollapse" when the search state already includes a subfacet,
   # so that we can show the selected facet in the side panel
   def uncollapse?
-    return false unless params["f"]
-    if @facet_item.facet_item.field == "library_facet"
-      return @facet_item.items.any? { |i|
-        params["f"][i.field] && params["f"][i.field].include?(i.value) && i.value.match?(/#{@facet_item.facet_item.value}/)
-      }
-    end
-    return false unless @facet_item.items.size == 1 && params["f"][@facet_item.items[0].field]
-    return params["f"][@facet_item.items[0].field].include?(@facet_item.items[0].value)
+    @facet_item.has_selected_child?
   end
 
   def call

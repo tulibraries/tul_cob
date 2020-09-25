@@ -7,14 +7,14 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
       # Filter out secondary facets that do not match library
       items = items.select { |i| i.value.match?(/#{facet_value}/) }
       # Add proper secondary facet labels
-      items.each { |i| i.label = i.value.split(" - ", 2).reject { |j| j.blank? }.last }
+      items.each { |i| i.label = i.value.split(" - ", 2).last }
     end
     return items
   end
 
   def has_selected_child?
     return false if facet_item.is_a?(String) || @parent_facet_item || facet_config.pivot.nil?
-    items && items.size == 1 && search_state.filter_params[items[0].field] && search_state.filter_params[items[0].field].include?(items[0].value)
+    items && items.size > 0 && items.any? { |item| search_state.filter_params[item.field] && search_state.filter_params[item.field].include?(item.value) }
   end
 
   def remove_href(path = search_state)
