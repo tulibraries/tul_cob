@@ -93,4 +93,15 @@ module FacetsHelper
   def facet_item_presenter(facet_config, facet_item, facet_field)
     FacetItemPresenter.new(facet_item, facet_config, self, facet_field)
   end
+
+  def each_advanced_search_facet(facet_field_names, response)
+    facets_from_request(facet_field_names, response).each do |display_facet|
+      config = facet_configuration_for_field(display_facet.name)
+      if config.pivot && config.pivot.size > 0
+        yield display_facet, config.pivot.first
+      else
+        yield display_facet, display_facet.name
+      end
+    end
+  end
 end
