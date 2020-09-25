@@ -61,4 +61,51 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       expect(search_state.filter_params.values.flatten.sort).to eq %w(cat two vet)
     end
   end
+
+  describe "items" do
+
+    context "no sub items" do
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: []) }
+
+      it "doesn't alter the input" do
+        presenter = described_class.new(item, facet_config, view_context, facet_field, search_state)
+        presenter.items
+        expected = Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [])
+        expect(item).to eq(expected)
+      end
+    end
+
+    context "sub items do not belong to the same library" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar", hits: 5, items: []) }
+      let(:sub_item_b) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "booz - bar ", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a, sub_item_b ]) }
+
+      it "filters out items that do no match the library" do
+        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        expect(presenter.items).to eq([sub_item_a])
+      end
+    end
+
+    context "sub item has 'foo - bar' value" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
+
+      it "transforms label to just be 'bar'" do
+        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        label = presenter.items.first.label
+        expect(label).to eq("bar")
+      end
+    end
+
+    context "sub item has 'foo - bar - buzz' value" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo - bar - buzz", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
+
+      it "transforms label to just be 'bar - buzz'" do
+        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        label = presenter.items.first.label
+        expect(label).to eq("bar - buzz")
+      end
+    end
+  end
 end

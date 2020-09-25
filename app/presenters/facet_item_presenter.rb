@@ -4,7 +4,8 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
   def items
     items = super
     if facet_field == "library_pivot_facet"
-      return items.select { |i| i.value.match?(/#{facet_value}/) }
+      items = items.select { |i| i.value.match?(/#{facet_value}/) }
+      items.each { |i| i.label = i.value.split(" - ", 2).reject { |j| j.blank? }.last }
     end
     return items
   end

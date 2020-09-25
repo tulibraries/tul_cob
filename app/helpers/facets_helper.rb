@@ -42,14 +42,6 @@ module FacetsHelper
     super(facet_config, display_facet)
   end
 
-  def pre_process_library_facet!(item)
-    # Filter out secondary facets that do not match library
-    item.items.select! { |i| i.value.match?(/#{item.value}/) }
-
-    # Add proper secondary facet labels
-    item.items.each { |i| i.label = i.value.split(" - ", 2).last }
-  end
-
   def facet_item_presenter(facet_config, facet_item, facet_field)
     FacetItemPresenter.new(facet_item, facet_config, self, facet_field)
   end
