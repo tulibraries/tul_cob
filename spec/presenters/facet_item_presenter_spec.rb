@@ -81,7 +81,7 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a, sub_item_b ]) }
 
       it "filters out items that do no match the library" do
-        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        presenter = described_class.new(item, facet_config, view_context, "library_facet", search_state)
         expect(presenter.items).to eq([sub_item_a])
       end
     end
@@ -91,7 +91,7 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
 
       it "transforms label to just be 'bar'" do
-        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        presenter = described_class.new(item, facet_config, view_context, "library_facet", search_state)
         label = presenter.items.first.label
         expect(label).to eq("bar")
       end
@@ -102,7 +102,7 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
 
       it "transforms label to just be 'bar - buzz'" do
-        presenter = described_class.new(item, facet_config, view_context, "library_pivot_facet", search_state)
+        presenter = described_class.new(item, facet_config, view_context, "library_facet", search_state)
         label = presenter.items.first.label
         expect(label).to eq("bar - buzz")
       end

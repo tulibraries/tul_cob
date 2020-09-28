@@ -136,7 +136,7 @@ class CatalogController < ApplicationController
       },
       unless: config.campus_closed
 
-    config.add_facet_field "library_pivot_facet", label: "Library",
+    config.add_facet_field "library_facet", label: "Library",
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
       component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
