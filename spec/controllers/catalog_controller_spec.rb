@@ -226,10 +226,19 @@ RSpec.describe CatalogController, type: :controller do
   end
 
   describe "advanced search" do
-    it "doesn't error on empty search fields" do
+    it "doesn't error on empty search fields (example 1)" do
       expect {
         get :index, params: { search_field: "advanced", f_1: "all_fields", f_2: "all_fields", f_3: "all_fields",
                               op_1: "AND", operator: { q_1: "contains", q_2: "contains", q_3: "is" } }
+        expect(response.code).to eq "200"
+      }.to_not raise_error
+    end
+
+    it "doesn't error on empty search fields (example 2)" do
+      expect {
+        get :index, params: { search_field: "advanced", f_1: "all_fields", f_2: "creator_t", f_3: "all_fields",
+                              op_1: "AND", op_2: "AND", operator: { q_1: "contains", q_2: "contains", q_3: "is" },
+                              q_1: ". Research methods in psychology", q_2: "Morling", q_3: "" }
         expect(response.code).to eq "200"
       }.to_not raise_error
     end
