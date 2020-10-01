@@ -24,7 +24,7 @@ ci-lint:
 	$(CI-DOCKER) exec app ./bin/rubocop
 
 ci-test:
-	$(CI-DOCKER) exec -e RELEVANCE=y app ./bin/rake ci
+	$(CI-DOCKER) exec app ./bin/rake ci
 
 ci-test-js:
 	$(CI-DOCKER) exec app yarn test
@@ -45,7 +45,7 @@ tty-solr:
 lint:
 	$(DOCKER) exec app rubocop
 test:
-	$(DOCKER) exec -e RELEVANCE=y app rake ci
+	$(DOCKER) exec app rake ci
 test-js:
 	$(DOCKER) exec app yarn test
 load-data:
