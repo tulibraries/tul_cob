@@ -107,7 +107,7 @@ gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"
 
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
-  branch: "qa"
+  branch: "main"
 
 gem "cob_index",
   git: "https://github.com/tulibraries/cob_index.git",
