@@ -12,6 +12,7 @@ AllCops:
     - '**/vendor/**/*'
     - 'actionpack/lib/action_dispatch/journey/parser.rb'
     - 'bin/*'
+    - 'solr/**/*'
 
 # Prefer &&/|| over and/or.
 Style/AndOr:
