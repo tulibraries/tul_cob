@@ -323,5 +323,37 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(primo_central_parameters["skip_search?"]).to eq(false)
       end
     end
+
+    context "query is advanced q_1" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_2" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_3" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_1 empty" do
+      let(:params) { ActionController::Parameters.new(q_1: "") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
   end
 end

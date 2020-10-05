@@ -17,7 +17,10 @@ module Blacklight::PrimoCentral
 
     def skip_search?(params)
       # Skip useless searches
-      params[:skip_search?] = ["*", "", nil].include?(blacklight_params["q"])
+      params[:skip_search?] =  [ "q", "q_1", "q_2", "q_3"].all? do |key|
+        next true if blacklight_params[key].nil?
+        ["*", "", nil].include?(blacklight_params[key])
+      end
     end
   end
 end
