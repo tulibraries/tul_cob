@@ -42,7 +42,7 @@
           <%= select_tag(:asrs_description, grouped_options_for_select(@asrs_description), { data: { "action": "form#select", "target": "form.descriptions" }, class: "request-form form-control", include_blank: true }) %>
         </div>
       <% else %>
-        <%= form.hidden_field :asrs_description, value: @asrs_description %>
+        <%= form.hidden_field :asrs_description, value: @asrs_description.flatten.last%>
       <% end %>
 
       <div class="hold-form form-group row">
