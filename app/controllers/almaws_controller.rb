@@ -106,7 +106,8 @@ class AlmawsController < CatalogController
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
-    rescue
+    rescue => e
+      Honeybadger.notify(e.message + " " + log.to_s)
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
@@ -164,7 +165,8 @@ class AlmawsController < CatalogController
 
       redirect_back(fallback_location: root_path)
 
-    rescue
+    rescue => e
+      Honeybadger.notify(e.message + " " + log.to_s)
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
