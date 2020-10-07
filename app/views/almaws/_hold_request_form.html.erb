@@ -31,14 +31,14 @@
     <% end %>
 
     <% if @request_level == "item" %>
-      <% if @description.count > 1 %>
+      <% if @description.to_h.values.flatten.count > 1 %>
         <div class="hold-form form-group">
           <%= form.label(:hold_description, t("requests.form.description_label_html")) %>
           <p><%= t("requests.form.description_additional_text") %></p>
           <%= select_tag(:hold_description, grouped_options_for_select(@description), { data: { "action": "form#select", "target": "form.descriptions" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       <% else %>
-        <%= form.hidden_field :hold_description, value: @description %>
+        <%= form.hidden_field :hold_description, value: @description.flatten.last %>
       <% end %>
 
       <div class="row hold-form form-group">
