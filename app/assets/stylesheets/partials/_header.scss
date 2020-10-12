@@ -231,6 +231,10 @@ a#bookmarks_nav {
   }
 }
 
+.pagination-search-widgets {
+	border-bottom: none !important;
+}
+
 .pagination-search-widgets .page-links {
 	padding-top: 0;
 
@@ -364,6 +368,9 @@ a#bookmarks_nav {
 /* SEARCH RESULTS SORT AND PER PAGE */
 #sortAndPerPage {
 	justify-content: space-between;
+	border-bottom: none !important;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 
 .page-links {
