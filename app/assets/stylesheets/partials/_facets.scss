@@ -62,10 +62,6 @@
 .limit-search-heading {
 	font-family: "PT Sans";
 	font-size: 1.3rem;
-
-	@media(max-width: 775px) {
-		display: none;
-	}
 }
 
 .limit-search {
@@ -83,7 +79,6 @@
 		display: none;
 	}
 }
-
 
 span .remove-constraints {
 	background-color: $light-blue;
@@ -146,9 +141,16 @@ span.constraint-value {
 	color: $red;
 }
 
-.facet-limit-active .facet-field-heading {
-	background-color: $red;
+.facet-limit {
+  margin-bottom: 0;
+}
 
+.facet-limit-active {
+  border: 1px solid $header-grey !important;
+}
+
+.facet-limit-active .facet-field-heading {
+	background-color: $red !important;
 	a {
 		color: $white;
 	}
@@ -159,6 +161,11 @@ span.constraint-value {
 	color: $white !important;
 }
 
+.facet-leaf-node {
+  padding-left: 0.3125rem !important;
+
+}
+
 .facet-values {
   display: table;
   table-layout: fixed;
@@ -167,6 +174,10 @@ span.constraint-value {
 
   li {
     display: table-row;
+
+    .selected {
+      color: $black !important;
+    }
   }
 
   .facet-label {
@@ -174,7 +185,7 @@ span.constraint-value {
 		padding-bottom: $spacer / 2;
 
 		.selected {
-			color: $red;
+			color: $red !important;
 			font-weight: bold;
 			text-decoration: underline;
 		}
