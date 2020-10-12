@@ -37,13 +37,6 @@ module Tulcob
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
 
-    # TODO: do we still need this?
-    begin
-      config.relative_url_root = config_for(:deploy_to)["path"]
-    rescue StandardError => error
-      error
-    end
-
     config.generators do |g|
       g.test_framework :rspec, spec: true
       g.fixture_replacement :factory_bot
