@@ -22,10 +22,11 @@ namespace :tul_cob do
         fixtures += Dir.glob("sample_data/**/*.xml").sort
       end
 
+      puts "Loading catalog fixtures..."
       solr_url = Blacklight::Configuration.new.connection_config[:url]
       fixtures.sort.reverse.each  do |file|
         puts "Ingesting #{file}"
-        `SOLR_URL=#{solr_url} cob_index ingest #{file}`
+        system("SOLR_URL=#{solr_url} cob_index ingest #{file}")
       end
       solr = RSolr.connect url: solr_url
       solr.commit
@@ -36,11 +37,14 @@ namespace :tul_cob do
         next
       end
 
+      puts "Loading cob_az_index fixtures..."
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
+      system("SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete")
 
+
+      puts "Loading cob_web_index fixtures..."
       web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-      `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
+      system("SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete")
     end
 
     desc "Delete all items from Solr"
