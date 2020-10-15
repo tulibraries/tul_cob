@@ -1,33 +1,12 @@
-DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
-CI-DOCKER := docker-compose -p tul_cob -f docker-compose.ci.yml
-
-ci-up:
-	git submodule init
-	git submodule update
-	$(CI-DOCKER) up -d
-
-ci-copy-bundle-files-to-local:
-	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
-
-ci-copy-node-modules-to-local:
-	docker cp tul_cob_app_1:/app/node_modules .
-
-ci-bundle-install:
-	$(CI-DOCKER) exec app bundle install --path vendor/bundle
-	$(CI-DOCKER) exec app bundle binstubs --all
-	$(CI-DOCKER) exec app bundle binstubs bundler --force
-
-ci-yarn-install:
-	$(CI-DOCKER) exec app yarn install --frozen-lockfile
-
-ci-lint:
-	$(CI-DOCKER) exec app ./bin/rubocop
-
-ci-test:
-	$(CI-DOCKER) exec app ./bin/rake ci
-
-ci-test-js:
-	$(CI-DOCKER) exec app yarn test
+ifeq ($(CI), true)
+	DOCKER := docker-compose -p tul_cob -f docker-compose.ci.yml
+	LINT_CMD := ./bin/rubocop
+	TEST_CMD := ./bin/rake ci
+else
+	DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
+	LINT_CMD := rubocop
+	TEST_CMD := rake ci
+endif
 
 up:
 	git submodule init
@@ -43,9 +22,9 @@ tty-app:
 tty-solr:
 	$(DOCKER) exec solr bash
 lint:
-	$(DOCKER) exec app rubocop
+	$(DOCKER) exec app $(LINT_CMD)
 test:
-	$(DOCKER) exec app rake ci
+	$(DOCKER) exec app $(TEST_CMD)
 test-js:
 	$(DOCKER) exec app yarn test
 load-data:
@@ -63,3 +42,18 @@ attach:
 	@echo '*********************************'
 	@echo
 	@bin/attach.sh tul_cob_app
+
+# CI Specific Targets
+ci-copy-bundle-files-to-local:
+	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
+
+ci-copy-node-modules-to-local:
+	docker cp tul_cob_app_1:/app/node_modules .
+
+ci-bundle-install:
+	$(DOCKER) exec app bundle install --path vendor/bundle
+	$(DOCKER) exec app bundle binstubs --all
+	$(DOCKER) exec app bundle binstubs bundler --force
+
+ci-yarn-install:
+	$(DOCKER) exec app yarn install --frozen-lockfile
