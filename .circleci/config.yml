@@ -58,7 +58,7 @@ jobs:
 
       - run:
           name: Build app
-          command: make ci-up
+          command: make up
 
       - run:
           name: Run bundler on the app container
@@ -87,13 +87,13 @@ jobs:
 
       - run:
           name: Run linter
-          command: make ci-lint
+          command: make lint
       - run:
           name: Run ruby tests
-          command: make ci-test
+          command: make test
       - run:
           name: Run javascript tests
-          command: make ci-test-js
+          command: make test-js
 
   qa_deploy:
     docker:
