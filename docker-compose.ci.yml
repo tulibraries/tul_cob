@@ -13,6 +13,7 @@ services:
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
+      BUNDLE_PATH: /app/vendor/bundle
     entrypoint:
       - "tail"
       - "-f"
