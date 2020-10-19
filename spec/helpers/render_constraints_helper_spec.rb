@@ -58,5 +58,19 @@ RSpec.describe RenderConstraintsHelper, type: :helper do
         expect(subject).not_to match(/class=.*hidden/)
       end
     end
+
+    context "lc_inner_facet field" do
+      let(:config) do
+        Blacklight::Configuration.new do |config|
+          config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"]
+        end
+      end
+      let(:facet) { "lc_inner_facet" }
+      let(:params) { ActionController::Parameters.new({ f: { lc_outer_facet: [ "A - Bar"] } }) }
+
+      it "uses the long label" do
+        expect(subject).to match(/A - Bar - foo/)
+      end
+    end
   end
 end
