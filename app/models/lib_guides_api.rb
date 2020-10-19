@@ -37,7 +37,7 @@ class LibGuidesApi
       # The Libguides API has no way to express preference for certain types of guides, the equivalent
       # of a solr boost (^10 ), so we take the original response, sort it by guide type, then do
       # a secondary sort by original order. That way the most relevant subject guides appear at the top
-      ranker = { "Subject Guide" => 1, "Topic Guide" => 2, "General Purpose Guide" => 3, "Course Guide" => 4 }
+      ranker = { "Subject Guide" => 1, "Topic Guide" => 1, "General Purpose Guide" => 1, "Course Guide" => 2 }
       json.sort_by { |o| [ranker[o["type_label"]], json.index(o) ] }
     end
 
