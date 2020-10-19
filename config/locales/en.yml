@@ -252,6 +252,9 @@ en:
     podiatry_illiad_html: "and Krausz Library of Podiatric Medicine patrons should use %{href}."
     podiatry_illiad_href: "ILLiad for Podiatry Library"
     podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
+    additional_options_html: "For additional options to obtain this material, please consult the %{href}."
+    additional_options_href: "library website"
+    additional_options_link: "https://library.temple.edu/services/11"
 
   primo_central:
     link_to_resource: "Link to Resource"
