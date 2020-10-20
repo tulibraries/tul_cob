@@ -9,6 +9,7 @@ require "spec_helper"
 require "rspec/rails"
 require "capybara/rspec"
 require "capybara/rails"
+require "view_component/test_case"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 Capybara.default_max_wait_time = 5
@@ -66,6 +67,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
+
+  config.include ViewComponent::TestHelpers, type: :component
 end
 
 FactoryBot.define do
