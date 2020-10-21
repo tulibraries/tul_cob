@@ -1,12 +1,10 @@
-<div class="container">
-<div class="row">
-
-    <div class="col col-sm-3 control-label">
-      <%= label_tag "range_pub_date_sort_begin" do %>
-        Publication Year
-      <% end %>
+<div class="form-group advanced-search-facet row align-items-center">
+  <div class="col col-sm-3 control-label">
+    <%= label_tag "range_pub_date_sort_begin" do %>
+      Publication Year
+    <% end %>
     </div>
-    <div class="col-sm-8 d-flex justify-content-between">
+  <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
       <span class="sr-only">Publication date range (starting year)</span>
       <%= render_range_input("pub_date_sort", :begin) %>
@@ -21,5 +19,4 @@
       <%= render_range_input("pub_date_sort", :end) %>
     </div>
   </div>
-</div>
 </div>

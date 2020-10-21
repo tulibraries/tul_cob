@@ -70,6 +70,13 @@ GIT
       traject_plus (~> 1.1)
 
 GIT
+  remote: https://github.com/tulibraries/lc_solr_sortable
+  revision: 82d6d74ec3c3c9e3fa5652c3c1701748db37c6ed
+  branch: main
+  specs:
+    lc_solr_sortable (0.1.0)
+
+GIT
   remote: https://github.com/tulibraries/primo
   revision: 34ef36211c7eac3b0478c5d9598317ded49efc11
   branch: main
@@ -614,6 +621,7 @@ DEPENDENCIES
   jbuilder (~> 2.10)
   jquery-rails
   launchy
+  lc_solr_sortable!
   listen (~> 3.2.1)
   mysql2 (~> 0.5.3)
   okcomputer

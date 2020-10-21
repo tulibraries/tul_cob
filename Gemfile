@@ -81,6 +81,7 @@ gem "devise"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
+gem "lc_solr_sortable", git: "https://github.com/tulibraries/lc_solr_sortable", branch: "main"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.6.0"
 gem "omniauth"

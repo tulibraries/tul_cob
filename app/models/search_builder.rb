@@ -12,6 +12,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   self.default_processor_chain +=
     %i[ add_advanced_parse_q_to_solr
         add_advanced_search_to_solr
+        add_lc_range_search_to_solr
         spellcheck
         filter_suppressed
         limit_facets
@@ -132,6 +133,14 @@ class SearchBuilder < Blacklight::SearchBuilder
         end
       end
     end
+  end
+
+  def add_lc_range_search_to_solr(solr_params)
+    return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
+    lc_range = blacklight_params["range"]["lc_classification"]
+    _begin = lc_range["begin"].blank? ? "*" : LcSolrSortable.convert(lc_range["begin"])
+    _end = lc_range["end"].blank? ? "*" : LcSolrSortable.convert(lc_range["end"])
+    solr_params[:fq] << "lc_call_number_sort: [#{_begin} TO #{_end}]"
   end
 
   private

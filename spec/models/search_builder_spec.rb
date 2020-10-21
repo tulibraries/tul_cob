@@ -333,4 +333,28 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
   end
+
+  describe "range queries" do
+    it "converts 'range' object to correct solr range fields" do
+      params = ActionController::Parameters.new(
+        f: {
+          unknown_facet_field: "foo",
+          format: "bar",
+          lc_outer_facet: "hat"
+        },
+        range: {
+          lc_classification: {
+            begin: "A",
+            end: "K"
+          },
+          pub_date_sort: {
+            begin: "1900",
+            end: "1950"
+          }
+        })
+      builder = subject.with(params)
+      expect(subject.to_h["fq"]).to include("pub_date_sort: [1900 TO 1950]")
+      expect(subject.to_h["fq"]).to include("lc_call_number_sort: [Zaaaaaaaaa TO Zkaaaaaaaa]")
+    end
+  end
 end
