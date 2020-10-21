@@ -115,6 +115,16 @@ $(document).ready(function(){
 	    }
 	    else $(document).find(':input[id=renew_selected]').prop('disabled', true);
 	});
+
+  //link highlighting of hierarchy
+  $(".search-subject, .search-name-title").hover(
+    function() {
+      $(this).prevAll().addClass("field-hierarchy");
+    },
+    function() {
+      $(this).prevAll().removeClass("field-hierarchy");
+    }
+  );
 });
 
 

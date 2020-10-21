@@ -1021,4 +1021,23 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#subject_links" do
+    let(:args) { {
+      document: SolrDocument.new(id: "foo", subject_display: subject),
+      field: "subject_display"
+    } }
+
+    before do
+      allow(helper).to receive(:base_path) { "foo/bar" }
+    end
+
+    context "subjet is hierarchical string" do
+      let(:subject) { ["Foo — Bar"] }
+
+      it "splits the subject into a hierarchical list of links" do
+        expect(helper.subject_links(args).first).to match(/<a.*href=".*Foo".*>Foo<\/a>.*href=".*Foo\+%E2%80%94\+Bar.*>Bar<\/a>/)
+      end
+    end
+  end
 end

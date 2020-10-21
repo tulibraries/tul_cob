@@ -371,10 +371,33 @@ module CatalogHelper
     creator
   end
 
+  # [a, b, c] => [[a], [a, b], [a, b, c]]
+  def hierarchies(array)
+    count = 0
+    array.reduce([]) { |acc, value| acc << array.slice(0, count += 1) }
+  end
+
+  def subject_link(subject, label = nil)
+    label ||= subject
+    link_to(label, "#{base_path}?f[subject_facet][]=#{CGI.escape subject}", class: "search-subject", title: subject)
+  end
+
+  # A hierarchical_subject is just a string array.
+  def hierarchical_subject_link(hierarchical_subject)
+    label = hierarchical_subject.last
+    subject = hierarchical_subject.join(" — ")
+
+    subject_link(subject, label)
+  end
+
   def subject_links(args)
-    args[:document][args[:field]].uniq.map do |subject|
-      link_to(subject.sub("— — ", "— "), "#{base_path}?f[subject_facet][]=#{CGI.escape subject}")
-    end
+    separator = content_tag(:span, content_tag(:span, " — ", class: ""), class: "subject-level")
+
+    args[:document][args[:field]].uniq
+      .map { |subj| subj.sub("— — ", "— ") } # TODO: Do we still need this step?
+      .map { |subj| subj.split(" — ") }
+      .map(&method(:hierarchies))
+      .map { |h_subjs| h_subjs.map(&method(:hierarchical_subject_link)).join(separator).html_safe }
   end
 
   def genre_links(args)
