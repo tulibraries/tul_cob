@@ -1,0 +1,22 @@
+<div class="form-group advanced-search-facet row align-items-center">
+  <div class="col col-sm-3 control-label">
+    <%= label_tag "range_lc_classification_begin" do %>
+      LC classification range
+    <% end %>
+  </div>
+  <div class="col-sm-8 d-flex justify-content-between">
+    <div class="advanced-pub-date">
+      <span class="sr-only">LC classification range (start)</span>
+      <%= render_range_input("lc_classification", :begin) %>
+    </div>
+    <div class="pub-date-separator align-self-center">
+      <%= label_tag "range_lc_classification_end" do %>
+	to
+      <% end %>
+    </div>
+    <div class="advanced-pub-date">
+      <span class="sr-only">LC classification range (end)</span>
+      <%= render_range_input("lc_classification", :end) %>
+    </div>
+  </div>
+</div>
