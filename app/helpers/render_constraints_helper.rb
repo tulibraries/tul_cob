@@ -20,8 +20,9 @@ module RenderConstraintsHelper
       # "parent" facets like we do when rendering facets.erb. But the struct looks enough like a FacetItem object
       # for the presenter to build the link.
       if facet == "lc_inner_facet" && search_state.filter_params["lc_outer_facet"]
-        label = "#{search_state.filter_params['lc_outer_facet'][0]} - #{label}"
-        presenter.parent = OpenStruct.new(field: "lc_outer_facet", value: search_state.filter_params["lc_outer_facet"][0])
+        value = search_state.filter_params["lc_outer_facet"][0]
+        label = "#{value} | #{label}"
+        presenter.parent = OpenStruct.new(field: "lc_outer_facet", value: value)
       end
 
       if facet == "location_facet" && search_state.filter_params["library_facet"]
