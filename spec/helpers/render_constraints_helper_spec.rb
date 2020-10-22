@@ -69,7 +69,7 @@ RSpec.describe RenderConstraintsHelper, type: :helper do
       let(:params) { ActionController::Parameters.new({ f: { lc_outer_facet: [ "A - Bar"] } }) }
 
       it "uses the long label" do
-        expect(subject).to match(/A - Bar - foo/)
+        expect(subject).to match(/A - Bar \| foo/)
       end
     end
   end
