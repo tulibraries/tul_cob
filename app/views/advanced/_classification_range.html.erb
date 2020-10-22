@@ -7,7 +7,7 @@
   <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
       <span class="sr-only">LC classification range (start)</span>
-      <%= render_range_input("lc_classification", :begin) %>
+      <%= render_range_input("lc_classification", :begin, nil, 20) %>
     </div>
     <div class="pub-date-separator align-self-center">
       <%= label_tag "range_lc_classification_end" do %>
@@ -16,7 +16,7 @@
     </div>
     <div class="advanced-pub-date">
       <span class="sr-only">LC classification range (end)</span>
-      <%= render_range_input("lc_classification", :end) %>
+      <%= render_range_input("lc_classification", :end, nil, 20) %>
     </div>
   </div>
 </div>
