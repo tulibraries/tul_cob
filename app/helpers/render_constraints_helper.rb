@@ -25,7 +25,8 @@ module RenderConstraintsHelper
       end
 
       if facet == "location_facet" && search_state.filter_params["library_facet"]
-        presenter.parent = OpenStruct.new(field: "library_facet", value: search_state.filter_params["library_facet"][0])
+        value = search_state.filter_params["location_facet"].first.split(" - ").first
+        presenter.parent = OpenStruct.new(field: "library_facet", value: value)
       end
 
       # Hide library_facet if matching location facet already selected.
