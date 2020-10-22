@@ -25,7 +25,7 @@ module RenderConstraintsHelper
       end
 
       if facet == "location_facet" && search_state.filter_params["library_facet"]
-        value = search_state.filter_params["location_facet"].first.split(" - ").first
+        value = val.split(" - ").first
         presenter.parent = OpenStruct.new(field: "library_facet", value: value)
       end
 
