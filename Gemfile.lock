@@ -508,7 +508,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.2)
-    stackprof (0.2.15)
+    stackprof (0.2.16)
     summon (2.0.5)
       json
     sync (0.5.0)
