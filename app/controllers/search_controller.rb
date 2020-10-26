@@ -24,12 +24,7 @@ class SearchController < CatalogController
     respond_to do |format|
       format.html { store_preferred_view }
       format.json do
-        @response ||= Blacklight::PrimoCentral::Response.new({})
-        @results ||= []
-        @presenter = Blacklight::JsonPresenter.new(@response,
-                                                   @results,
-                                                   [],
-                                                   blacklight_config)
+        render plain: @results.to_json, status: 200, content_type: "application/json"
       end
     end
   end
