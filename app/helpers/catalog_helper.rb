@@ -381,7 +381,7 @@ module CatalogHelper
 
   def subject_link(subject, label = nil)
     label ||= subject
-    link_to(label, "#{base_path}?f[subject_facet][]=#{CGI.escape subject}", class: "search-subject", title: subject)
+    link_to(label, "#{base_path}?f[subject_facet][]=#{CGI.escape subject}", class: "search-subject", title: "Search: #{subject}")
   end
 
   # A hierarchical_subject is just a string array.

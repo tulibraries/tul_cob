@@ -117,7 +117,7 @@ $(document).ready(function(){
 	});
 
   //link highlighting of hierarchy
-  $(".search-subject, .search-name-title").hover(
+  $(".search-subject").hover(
     function() {
       $(this).prevAll().addClass("field-hierarchy");
     },
