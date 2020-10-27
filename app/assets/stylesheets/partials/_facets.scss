@@ -121,7 +121,8 @@ span.constraint-value {
 .facet-field-heading {
 	background-color: $header-grey;
 	cursor: pointer;
-	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem;
+  font-size: 1.75rem !important;
+	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem !important;
 }
 
 .facet-field-heading a {
