@@ -245,7 +245,7 @@ en:
     ez_borrow_link: "https://ezb.relaisd2d.com/?LS=TEMPLE"
     illiad_html: "For <strong>journal articles, books not available through E-ZBorrow, and other</strong> materials not available at Temple, use %{href}."
     illiad_href: "ILLiad"
-    illiad_link: "http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/charles/logon.html"
+    illiad_link: "https://temple.illiad.oclc.org/illiad/charles/logon.html"
     ginsburg_illiad_html: "The Health Sciences Libraries patrons should use %{href},"
     ginsburg_illiad_href: "ILLiad for Ginsburg (HSL) Library"
     ginsburg_illiad_link: "https://temple.illiad.oclc.org/illiad/HSC/logon.html"
