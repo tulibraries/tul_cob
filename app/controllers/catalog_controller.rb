@@ -646,8 +646,4 @@ class CatalogController < ApplicationController
     def set_thread_request
       LogUtils.request = request
     end
-
-    def lc_sort_selected?
-      params["sort"]&.include?("lc_call_number_sort")
-    end
 end
