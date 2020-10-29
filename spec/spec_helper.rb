@@ -43,6 +43,8 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.filter_run_excluding lib_guides_relevance: true
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:each) do
     Honeybadger::Backend::Test.notifications[:notices] = []
@@ -368,7 +370,7 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.ignore_hosts "127.0.0.1", "localhost", "solr"
+  config.ignore_hosts "127.0.0.1", "localhost", "solr", "lgapi-us.libapps.com", ENV["SOLRCLOUD_HOST"]
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock

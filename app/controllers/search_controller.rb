@@ -18,18 +18,17 @@ class SearchController < CatalogController
       engines = %i(books_and_media articles journals databases website cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
+
       @results = process_results(searcher.results)
+      @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
     end
 
     respond_to do |format|
       format.html { store_preferred_view }
       format.json do
-        @response ||= Blacklight::PrimoCentral::Response.new({})
-        @results ||= []
-        @presenter = Blacklight::JsonPresenter.new(@response,
-                                                   @results,
-                                                   [],
-                                                   blacklight_config)
+        @results["lib_guides_query_term"] = @lib_guides_query_term
+
+        render plain: @results.to_json, status: 200, content_type: "application/json"
       end
     end
   end

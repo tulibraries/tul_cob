@@ -967,10 +967,10 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#derived_lib_guides_search_term(solr_response)" do
+  describe "LibGuidesApi#derived_lib_guides_search_term(solr_response)" do
     before do
       allow(helper).to receive(:params) { params }
-      allow(self).to receive(:_subject_topic_facet_terms).and_return(["wu tang", "clan aint"])
+      allow(LibGuidesApi).to receive(:_subject_topic_facet_terms).and_return(["wu tang", "clan aint"])
     end
     let(:params) { { "q" => "thing" } }
 
@@ -980,7 +980,7 @@ RSpec.describe CatalogHelper, type: :helper do
   end
 
   describe "#_subject_topic_facet_terms(response)" do
-    let(:subject) { _subject_topic_facet_terms(response) }
+    let(:subject) { LibGuidesApi.send(:_subject_topic_facet_terms, response) }
     let(:solr_response) { Blacklight::Solr::Response.new({ responseHeader: {}, facet_counts: { facet_fields: [facet_field] } }, {}) }
     let(:facet_field) { ["wrong", []] }
 
