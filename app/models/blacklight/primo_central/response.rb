@@ -108,7 +108,7 @@ module Blacklight::PrimoCentral
     end
 
     def method_missing(meth, *args)
-      $stderr.puts("Call to Response##{meth}")
+      $stderr.puts("Call to Response##{meth} from Blacklight::PrimoCentral::Response")
       super if respond_to? :super
     end
   end
