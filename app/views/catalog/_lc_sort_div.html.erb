@@ -1,0 +1,10 @@
+<% if params["sort"]&.include?("lc_call_number_sort") %>
+<div class="row bg-background-grey rounded explanation-div mx-1" data-controller="explanation" data-target="<%= "explanation.#{controller_name}" %>">
+  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" >
+    <p class="explanation">Items sorted by Library of Congress Classification.</p>
+  </div>
+    <button class="btn btn-link explantion-btn col-sm-12 col-lg-2 pt-0">
+      <%= link_to("X", request.params.merge( sort: "relevance" )) %>
+    </button>
+</div>
+<% end %>

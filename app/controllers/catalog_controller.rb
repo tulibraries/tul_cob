@@ -168,6 +168,7 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "lc_call_number_display", label: "LC Classification", if: :lc_sort_selected?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
@@ -483,6 +484,10 @@ class CatalogController < ApplicationController
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 
+  def lc_sort_selected?
+    params["sort"]&.include?("lc_call_number_sort asc") || params["sort"]&.include?("lc_call_number_sort desc")
+  end
+
   # Render one index record (use as an ajax endpoint).
   # Note: The reason this method is defined here and not in PrimoCentralController
   # is that it actually gets called from bookmarks.
@@ -640,5 +645,9 @@ class CatalogController < ApplicationController
     # Allow access to request outside of controller context.
     def set_thread_request
       LogUtils.request = request
+    end
+
+    def lc_sort_selected?
+      params["sort"]&.include?("lc_call_number_sort")
     end
 end
