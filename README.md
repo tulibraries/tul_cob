@@ -162,75 +162,14 @@ example to [use a seed to determine order](https://relishapp.com/rspec/rspec-cor
 
 ### Relevance Tests
 
-#### Running relevance tests
+#### Running Lib Guides relevance tests
 
-Relevance tests are run separate from other tests, to avoid loading tens of thousands of
-MARC records every time test run. To run relevance tests along with regular tests
-just preface any test running command with `RELEVANCE=y`.(y or any other character)
-for example:
+Do to the the fact that we are effectively testing an outside service for the
+LibGuides relevance tests, we do not run these tests on the CI.  To run
+locally export appropriate values for the `$LIB_GUIDES_API_KEY`  `$LIB_GUIDES_SITE_ID`
+environment variables and point `$SOLR_URL` to the production solr.
 
-`RELEVANCE=y bundle exec rake ci`
-
-This will cause all xml fixture files in `spec/relevance/fixtures/` to be ingested via traject,
-and will run all `describe`/`context` blocks that have the `relevance: true` option.
-
-#### Creating new relevance tests
-By convention,these tests exist in (`spec/relevance/`)[https://github.com/tulibraries/tul_cob/tree/main/spec/relevance].
-
-When creating a new test, be sure to pass the `relevance: true` option to the wrapping `describe`, as in
-
-```ruby
-RSpec.describe CatalogController, type: :controller, relevance: true do
-#lots of expectations
-...
-end
-```
-
-You can also tak advantage of some custom Rspec matchers to make checking for documents easier.
-
-`include_docs(array_of_doc_ids)` - Check that the expected ids are in the first set of results
-
-```
-# fetch the json solr response from Blacklight index and parse it
-let(:response) { JSON.parse(get(:index, params: { q: "SEARC TERM", per_page: 100 }, format: "json").body) }
-
-it "has expected results " do
-  expect(response)
-    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
-end
-```
-
-You can also chain extra matchers onto `include_docs` for more precision:
-
-`before([other_array_doc_ids])` - second array of IDs that should come after set you expect included
-```
-it "has expected results before a less relevant result" do
-  expect(response)
-    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
-    .before(["991036813237303811"])
-end
-```
-
-`within_the_first(integer)` - the included docs should appear before this number in the results array index
-```
-it "has expected results within the first 20 results" do
-  expect(response)
-    .to include_docs(%w[991024847639703811 991024847639703811 991033452769703811])
-    .within_the_first(20)
-end
-```
-
-#### Getting relevance tests examples
-
-A utility has been added to fetch records for example queries. It takes the URL from a known
-search in an existing blacklight (probably libqa), downloads the marcxml for each record
-and adds them all to a file. By default, it saves to `marc_from_query.xml` locally, but you
-can also provide a path  and filename with the `--save_to` command line flag.
-
-```
-./bin/get_records from  "https://libqa.library.temple.edu/catalog/?q=Contingent+labor" \
---save_to=spec/relevance/fixtures/contingent+labor.xml
-```
+Then run `make test-libguides-relevance`
 
 
 #### Ingest LibGuide AZ documents

@@ -27,6 +27,13 @@ class LibGuidesApi
     guides
   end
 
+  def self.derived_lib_guides_search_term(solr_response, term = "")
+    query =  [term]
+    query += _subject_topic_facet_terms(solr_response)
+    query.map { |s| "(#{s})" }.join(" OR ")
+  end
+
+
   private
 
     def guides
@@ -79,5 +86,14 @@ class LibGuidesApi
         path: "/1.1/guides",
         query: query_terms.to_query
       ).to_s
+    end
+
+    def self._subject_topic_facet_terms(response)
+      return [] if (response.nil? || !response.respond_to?(:facet_fields))
+      (response.facet_fields || {})
+      .fetch("subject_topic_facet", [])
+        .to_a
+        .each_slice(2)
+        .map(&:first)
     end
 end
