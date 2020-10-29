@@ -1,12 +1,12 @@
 <div class="form-group advanced-search-facet row align-items-center">
   <div class="col col-sm-3 control-label">
     <%= label_tag "range_lc_classification_begin" do %>
-      LC classification range
+    Library of Congress Classification Range
     <% end %>
   </div>
   <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
-      <span class="sr-only">LC classification range (start)</span>
+      <span class="sr-only">Library of Congress Classification Range (start)</span>
       <%= render_range_input("lc_classification", :begin, nil, 20) %>
     </div>
     <div class="pub-date-separator align-self-center">
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="advanced-pub-date">
-      <span class="sr-only">LC classification range (end)</span>
+      <span class="sr-only">Library of Congress Classification Range (end)</span>
       <%= render_range_input("lc_classification", :end, nil, 20) %>
     </div>
   </div>

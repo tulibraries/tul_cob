@@ -44,9 +44,10 @@ a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advan
 }
 
 .advanced-pub-date #range_pub_date_sort_begin,
-.advanced-pub-date #range_pub_date_sort_end {
-  width: 9rem;
-
+.advanced-pub-date #range_pub_date_sort_end,
+#range_lc_classification_begin,
+#range_lc_classification_end {
+  width: 12rem;
   @media(max-width: 485px) {
     width: 8rem;
   }
