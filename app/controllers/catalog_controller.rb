@@ -257,6 +257,7 @@ class CatalogController < ApplicationController
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
+    config.add_show_field "lc_call_number_display", label: "LC Classification"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
