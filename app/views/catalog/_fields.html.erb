@@ -1,9 +1,9 @@
 
 <% doc_presenter = index_presenter(document) %>
 
-<dl class="row document-metadata mb-0">
+<dl class="row document-metadata mb-0 mr-5">
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
-  <% if field_presenter.render_field? %>
+  <% if field_presenter.render_field? && field_name != "lc_call_number_display" %>
     <% unless field_config[:no_label] %>
     <dt class="index-label col-sm-12 col-md-4 col-lg-3 blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>: </dt>
     <dd class="col-sm-12 col-md-5 col-lg-7 blacklight-<%= field_name.parameterize %>">
@@ -19,3 +19,8 @@
 </dl>
 
 <%= render_alma_availability(document) %>
+<% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
+  <% if field_name == "lc_call_number_display" %>
+    <%= render_lc_display_field(doc_presenter, field_config) %>
+  <% end -%>
+<% end -%>

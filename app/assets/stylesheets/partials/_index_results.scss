@@ -51,10 +51,14 @@ dt.index-label {
 
 dd {
   text-align: left;
-
+  
   @media(max-width: 485px) {
     width: 75% !important;
   }
+}
+
+dl.blacklight-lc_call_number_display {
+  background-color: $light-grey;
 }
 
 .page-links {
