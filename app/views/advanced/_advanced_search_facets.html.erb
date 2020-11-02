@@ -1,6 +1,6 @@
 <div class="container" id="advanced-search-facets" style="margin-top: 14px;">
 <% facets_from_request(facet_field_names, @response).each do |display_facet| %>
-  <% if should_render_facet?(display_facet) %>
+  <% if should_render_facet?(display_facet) && display_facet.name != 'lc_facet' %>
     <% facet_config = facet_configuration_for_field(display_facet.name) %>
       <div class="form-group advanced-search-facet row align-items-center">
         <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
