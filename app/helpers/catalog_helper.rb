@@ -143,7 +143,7 @@ module CatalogHelper
     # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
     # We do not want this to render if the item is from Primo, etc.
     if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load mb-0", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load my-0 mr-5", "data-availability-ids": document.alma_availability_mms_ids.join(",")
     end
   end
 
@@ -151,7 +151,7 @@ module CatalogHelper
     if (params["sort"]&.include?("lc_call_number_sort") || params["f"]&.include?("lc_outer_facet") || params["range"]&.include?("lc_classification"))
       content_tag :dl, nil, class: "row document-metadata my-0 mr-5 blacklight-lc_call_number_display" do
         html = content_tag :dt, "LC Classification:", class: "index-label col-sm-12 col-md-4 col-lg-3 blacklight-lc_call_number_display"
-        html += content_tag :dd, doc_presenter.field_value(field_config), class: "col-sm-12 col-md-5 col-lg-7 blacklight-lc_call_number_display"
+        html += content_tag :dd, doc_presenter.field_value(field_config), class: "col-sm-12 col-md-5 col-lg-4 blacklight-lc_call_number_display mb-0"
       end
     end
   end
