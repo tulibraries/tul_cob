@@ -186,13 +186,13 @@ RSpec.describe ::FeatureFlags do
     let(:cc_with_param) { described_class.with_call_number_facet?(params) }
 
     context "when the Rails.config.features[:with_call_number_facet] is default value"  do
-      it "returns false" do
-        expect(described_class.with_call_number_facet?).to be(false)
+      it "returns true" do
+        expect(described_class.with_call_number_facet?).to be(true)
       end
       context "when request_params parameter is passed" do
         context "that does not include a with_call_number_facet param" do
-          it "returns false" do
-            (expect(cc_with_param).to be(false))
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
           end
         end
         context "that includes a with_call_number_facet param of 'true'" do

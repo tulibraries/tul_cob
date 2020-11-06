@@ -946,7 +946,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:params) { {} }
 
       it "returns false with an empty params object method" do
-        expect(with_call_number_facet?).to be(false)
+        expect(with_call_number_facet?).to be(true)
       end
     end
 
