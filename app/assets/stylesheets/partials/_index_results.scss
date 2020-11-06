@@ -59,9 +59,20 @@ dd {
 
 dl.blacklight-lc_call_number_display > dd,
 dl.blacklight-lc_call_number_display > dt {
-  background-color: $light-grey;
+  background-color: $header-grey;
   width: 100%;
 }
+
+dl.blacklight-lc_call_number_display > dt {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+dl.blacklight-lc_call_number_display > dd {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
 
 .page-links {
   @media(max-width: 485px) {
