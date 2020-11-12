@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller do
 
-
   let(:doc_id) { "991012041239703811" }
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
   let(:mock_document) { instance_double(SolrDocument) }
@@ -241,6 +240,18 @@ RSpec.describe CatalogController, type: :controller do
                               q_1: ". Research methods in psychology", q_2: "Morling", q_3: "" }
         expect(response.code).to eq "200"
       }.to_not raise_error
+    end
+  end
+
+  describe "index page with no user params" do
+    render_views
+
+    it "does not send :search_results to the search_service" do
+      allow(controller).to receive(:search_service).and_return(search_service)
+      expect(search_service).to_not receive(:search_results)
+      get :index
+      expect(response).to render_template("catalog/_home")
+      expect(response).not_to render_template("catalog/_search_results")
     end
   end
 end

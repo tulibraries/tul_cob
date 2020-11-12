@@ -630,6 +630,18 @@ class CatalogController < ApplicationController
     end
   end
 
+  # Override index because we don't show any results at /catalog when
+  # there are no parameters, and so we don't need to bother solr
+  def index
+    if has_search_parameters? || advanced_controller?
+      super
+    else
+      respond_to do |format|
+        format.html { store_preferred_view }
+      end
+    end
+  end
+
   private
     def catalog?
       self.class == CatalogController
