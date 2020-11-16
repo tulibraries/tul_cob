@@ -100,6 +100,11 @@ module Blacklight::PrimoCentral
       end
 
       pq = Primo::Search::Query.send(op, query)
+      pq.facet({
+          field: "rtype",
+          value: "books",
+          operation: :exclude
+        })
 
       primo_central_parameters[:query][:q] = pq
 
