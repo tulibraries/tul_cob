@@ -24,7 +24,7 @@ module CobAlma
 
     def self.possible_pickup_locations
       #Make an array on only items that can request items
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"]
     end
 
     def self.asrs_pickup_locations
