@@ -28,7 +28,7 @@ module CobAlma
     end
 
     def self.asrs_pickup_locations
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"]
     end
 
     def self.remove_by_campus(campus)
@@ -188,7 +188,6 @@ module CobAlma
         acc
       end.to_a
     end
-
 
     def self.item_holding_ids(items_list)
       items_list
