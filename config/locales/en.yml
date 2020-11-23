@@ -129,7 +129,7 @@ en:
     footer_href: "How do I request an item at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
     cancel: "Close"
-    hold_allowed_link: "Request item from another Temple campus or remote storage"
+    hold_allowed_link: "Request item for pickup"
     asrs_allowed_link: "Request item from Charles Library BookBot"
     digitization_allowed_link: "Request a scan of an article or book chapter"
     booking_allowed_link: "Request booking"
