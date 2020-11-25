@@ -5,6 +5,7 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
+  include LibrarySearch::Catalog
 
   include BlacklightAlma::Availability
   include Blacklight::Marc::Catalog
@@ -556,13 +557,7 @@ class CatalogController < ApplicationController
 
     from = { email: email, name: name }
 
-    mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
-    if mail.respond_to? :deliver_now
-      mail.deliver_now
-    else
-      mail.deliver
-    end
-
+    PurchaseOrderEmailJob.perform_later(document, { from: from, message: params[:message] }, url_options)
     redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
   end
 
@@ -575,14 +570,7 @@ class CatalogController < ApplicationController
   def sms_action(documents)
     to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
     documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
-
-    mail = RecordMailer.sms_record(documents, { to: to }, url_options)
-
-    if mail.respond_to? :deliver_now
-      mail.deliver_now
-    else
-      mail.deliver
-    end
+    RecordTextJob.perform_later(documents, { to: to }, url_options)
   end
 
   # Overrides Blacklight::Catalog.validate_sms_params
