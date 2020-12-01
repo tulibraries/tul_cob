@@ -58,13 +58,17 @@ module CobAlma
       libraries = self.avail_locations(items_list)
 
       if libraries.any?
+        removals = []
         libraries.each do |lib|
           campus = self.determine_campus(lib)
-          pickup_locations -= remove_by_campus(campus)
+          next if lib == "MAIN"
+          next if [lib, campus] == ["ASRS", :MAIN]
+          removals << lib if remove_by_campus(campus).include?(lib)
         end
+        pickup_locations -= removals
       end
       pickup_locations << self.reserve_or_reference(items_list)
-      pickup_locations
+      pickup_locations.flatten
     end
 
     def self.item_level_locations(items_list)
