@@ -8,7 +8,6 @@ RSpec.describe CobAlma::Requests do
     let(:same_campus) { Alma::BibItem.find("same_campus").grouped_by_library }
     let(:ambler_presser) { Alma::BibItem.find("ambler_presser").grouped_by_library }
 
-
     it "allows a user to request an item, available in the Ambler Campus Library Stacks, for pickup at Paley." do
       expect(described_class.valid_pickup_locations(list_items)).to include "MAIN"
     end
@@ -30,8 +29,8 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.valid_pickup_locations(kardon_only)).to include "MAIN"
     end
 
-    it "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
-      expect(described_class.valid_pickup_locations(kardon_paley)).not_to include "MAIN"
+    it "does allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
+      expect(described_class.valid_pickup_locations(kardon_paley)).to include "MAIN"
     end
   end
 

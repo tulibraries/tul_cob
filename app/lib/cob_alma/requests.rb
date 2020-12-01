@@ -60,6 +60,8 @@ module CobAlma
       if libraries.any?
         libraries.each do |lib|
           campus = self.determine_campus(lib)
+          next if lib == "MAIN"
+          next if [lib, campus] == ["ASRS", :MAIN]
           pickup_locations -= remove_by_campus(campus)
         end
       end
