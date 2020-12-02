@@ -2,6 +2,7 @@ ifeq ($(CI), true)
 	DOCKER := docker-compose -p tul_cob -f docker-compose.ci.yml
 	LINT_CMD := ./bin/rubocop
 	TEST_CMD := ./bin/rake ci
+	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
 else
 	DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
@@ -11,6 +12,7 @@ endif
 up:
 	git submodule init
 	git submodule update
+	@$(DOCKERHUB_LOGIN)
 	$(DOCKER) up -d
 down:
 	$(DOCKER) down

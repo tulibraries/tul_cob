@@ -42,6 +42,9 @@ jobs:
   run_tests:
     docker:
       - image: cimg/base:2020.01
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
     steps:
       - checkout
 
@@ -98,6 +101,9 @@ jobs:
   qa_deploy:
     docker:
       - image: circleci/python:3.6.6
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
         environment:
           PIPENV_VENV_IN_PROJECT: true
     steps:
@@ -112,6 +118,9 @@ jobs:
   stage_deploy:
     docker:
       - image: circleci/python:3.6.6
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
         environment:
           PIPENV_VENV_IN_PROJECT: true
     steps:
@@ -126,6 +135,9 @@ jobs:
   prod_deploy:
     docker:
       - image: circleci/python:3.6.6
+        auth:
+          username: $DOCKERHUB_USER
+          password: $DOCKERHUB_PASSWORD
         environment:
           PIPENV_VENV_IN_PROJECT: true
     steps:
