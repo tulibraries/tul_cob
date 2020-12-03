@@ -163,6 +163,7 @@ Rails.application.routes.draw do
   match "/articles", to: "primo_central#index", as: "search", via: [:get, :post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "*anything", to: "errors#not_found"
 end
 
 OkComputer::Engine.routes.draw do

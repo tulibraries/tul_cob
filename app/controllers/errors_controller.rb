@@ -11,6 +11,6 @@ class ErrorsController < ApplicationController
 
   private
     def layout(options)
-      request.env["REQUEST_PATH"].match?(/^\/almaws/) ? options.merge(layout: false) : options
+      request.env["REQUEST_PATH"]&.match?(/^\/almaws/) ? options.merge(layout: false) : options
     end
 end
