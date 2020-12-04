@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: d9d985acb6b87c896b8725cfc13933a85a12afcb
+  revision: 4173fefd668fbedf299c5ae93ae7532ffa3c0763
   specs:
     blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 9379549e9ec21a44b989ce2951653cca623213fc
+  revision: 992169dcaac2147f4272da11deb1ed194f9aac4b
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 18fd7f27b29ba9783080f1c04e89406f4ccc24e6
+  revision: f4d33e557cfc29bb6884ca8af6c3ed5bb856f821
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -139,7 +139,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.1)
-    autoprefixer-rails (10.0.1.3)
+    autoprefixer-rails (10.0.3.0)
       execjs
     awesome_print (1.8.0)
     bcrypt (3.1.16)
@@ -228,7 +228,7 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    erubi (1.9.0)
+    erubi (1.10.0)
     execjs (2.7.0)
     ezwadl (0.0.1)
       httparty (~> 0.14)
@@ -238,8 +238,9 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.0.1)
+    faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.13.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -318,7 +319,7 @@ GEM
     listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.7.0)
+    loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
@@ -429,18 +430,18 @@ GEM
     rsolr (2.3.0)
       builder (>= 2.1.2)
       faraday (>= 0.9.0)
-    rspec (3.9.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-    rspec-core (3.9.2)
-      rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec (3.10.0)
+      rspec-core (~> 3.10.0)
+      rspec-expectations (~> 3.10.0)
+      rspec-mocks (~> 3.10.0)
+    rspec-core (3.10.0)
+      rspec-support (~> 3.10.0)
+    rspec-expectations (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
+      rspec-support (~> 3.10.0)
+    rspec-mocks (3.10.0)
       diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
+      rspec-support (~> 3.10.0)
     rspec-rails (4.0.1)
       actionpack (>= 4.2)
       activesupport (>= 4.2)
@@ -449,17 +450,17 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.3)
-    rubocop (1.4.2)
+    rspec-support (3.10.0)
+    rubocop (1.5.2)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 1.8)
+      regexp_parser (>= 1.8, < 3.0)
       rexml
-      rubocop-ast (>= 1.1.1)
+      rubocop-ast (>= 1.2.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (1.2.0)
+    rubocop-ast (1.3.0)
       parser (>= 2.7.1.5)
     rubocop-rails (2.8.1)
       activesupport (>= 4.2.0)
@@ -467,6 +468,7 @@ GEM
       rubocop (>= 0.87.0)
     ruby-prof (1.4.2)
     ruby-progressbar (1.10.1)
+    ruby2_keywords (0.0.2)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -479,7 +481,7 @@ GEM
       sprockets-rails
       tilt
     scrub_rb (1.0.1)
-    semantic_range (2.3.0)
+    semantic_range (2.3.1)
     shellany (0.0.1)
     simplecov (0.20.0)
       docile (~> 1.1)
@@ -518,7 +520,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tins (1.25.0)
+    tins (1.26.0)
       sync
     traject (3.4.0)
       concurrent-ruby (>= 0.8.0)
@@ -657,4 +659,4 @@ DEPENDENCIES
   webpacker
 
 BUNDLED WITH
-   1.17.3
+   2.1.4
