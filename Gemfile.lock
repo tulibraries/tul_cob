@@ -587,6 +587,7 @@ PLATFORMS
 
 DEPENDENCIES
   alma!
+  autoprefixer-rails
   awesome_print
   bento_search
   blacklight (~> 7.13.2)
@@ -612,6 +613,7 @@ DEPENDENCIES
   devise
   devise-guests (~> 0.7)
   dotenv-rails
+  execjs
   ezwadl
   factory_bot_rails
   flamegraph

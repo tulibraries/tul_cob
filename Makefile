@@ -1,10 +1,11 @@
+DOCKER_FLAGS := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
 ifeq ($(CI), true)
-	DOCKER := docker-compose -p tul_cob -f docker-compose.ci.yml
+	DOCKER := $(DOCKER_FLAGS) docker-compose -p tul_cob -f docker-compose.ci.yml
 	LINT_CMD := ./bin/rubocop
 	TEST_CMD := ./bin/rake ci
 	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
 else
-	DOCKER := docker-compose -f docker-compose.yml -f docker-compose.local.yml
+	DOCKER := $(DOCKER_FLAGS) docker-compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
 	TEST_CMD := rake ci
 endif
@@ -61,3 +62,41 @@ ci-bundle-install:
 
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
+
+run:
+	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
+		-e "RAILS_ENV=production" \
+		-e "RAILS_SERVE_STATIC_FILES=yes" \
+		-e "EXECJS_RUNTIME=Disabled" \
+		-e "AZ_CLIENT_SECRET=$(AZ_CLIENT_SECRET)" \
+		-e "AZ_CLIENT_ID=$(AZ_CLIENT_ID)" \
+		-e "ALMA_API_KEY=$(ALMA_API_KEY)" \
+		-e "ALMA_INSTITUTION_CODE=$(ALMA_INSTITUTION_CODE)" \
+		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_AUTH_SECRET)" \
+		-e "ALMA_AUTH_SECRET=$(ALMA_AUTH_SECRET)" \
+		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_DELIVERY_DOMAIN)" \
+		-e "OCLC_WS_KEY=$(OCLC_WS_KEY)" \
+		-e "SOLR_AUTH_USER=$(SOLR_AUTH_USER)" \
+		-e "SOLR_AUTH_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
+		-e "SOLRCLOUD_HOST=$(SOLRCLOUD_HOST)" \
+		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
+		-e "SOLRCLOUD_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
+		-e "SOLR_IP=$(SOLR_IP)" \
+		-e "LIB_GUIDES_API_KEY=$(LIB_GUIDES_API_KEY)" \
+		-e "LIB_GUIDES_SITE_ID=$(LIB_GUIDES_SITE_ID)" \
+		-e "SECRET_KEY_BASE=$(SECRET_KEY_BASE)" \
+		-e "COB_DB_USER=$(COB_DB_USER)" \
+		-e "COB_DB_PASSWORD=$(COB_DB_PASSWORD)" \
+		-e "COB_DB_NAME=$(COB_DB_NAME)" \
+		-e "COB_DB_HOST=$(COB_DB_HOST)" \
+		-v `pwd`/config/alma.yml:/app/config/alma.yml \
+		-v `pwd`/config/bento.yml:/app/config/bento.yml \
+		--rm -it \
+		harbor.k8s.temple.edu/tulibraries/tul_cob:latest
+
+build:
+	@docker build --build-arg RAILS_ENV=production \
+		--tag harbor.k8s.temple.edu/tulibraries/tul_cob:latest \
+		--tag cob:latest \
+		--file .docker/app/Dockerfile.prod \
+		--no-cache .
