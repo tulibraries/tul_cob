@@ -2,11 +2,11 @@
 
 class ErrorsController < ApplicationController
   def not_found
-    render(layout(status: 404))
+    render(layout(status: 404, formats: :html))
   end
 
   def internal_server_error
-    render(layout(status: 500))
+    render(layout(status: 500, formats: :html))
   end
 
   private
