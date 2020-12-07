@@ -254,4 +254,28 @@ RSpec.describe CatalogController, type: :controller do
       expect(response).not_to render_template("catalog/_search_results")
     end
   end
+
+  describe "deciding to render or not to render lc classification fields on index" do
+    render_views
+
+    it "does not show the lc classification field by default" do
+      get :index, params: { q: "art" }
+      expect(response.body).not_to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc range param is present" do
+      get :index, params: { q: "art" , range: { lc_classification: { begin: "A", end: "Z" } } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc facet param is present" do
+      get :index, params: { q: "art" , f: { lc_outer_facet: ["N - Fine Arts"] } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc sort param is present" do
+      get :index, params: { q: "art" , sort: { lc_call_number_sort: true } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
+    end
+  end
 end
