@@ -9,6 +9,7 @@ class CatalogController < ApplicationController
   include BlacklightAlma::Availability
   include Blacklight::Marc::Catalog
   include ServerErrors
+  include LCClassifications
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
@@ -73,6 +74,7 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = "title_truncated_display"
     config.index.display_type_field = "format"
+    config.index.document_presenter_class = IndexPresenter
 
     # solr field configuration for document/show views
     config.show.title_field = "title_statement_display"
@@ -168,7 +170,7 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
-    config.add_index_field "lc_call_number_display"
+    config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
