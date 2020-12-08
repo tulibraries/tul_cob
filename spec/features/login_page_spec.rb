@@ -18,6 +18,6 @@ RSpec.feature "Login Page" do
 
   it "has a link to shibboleth" do
     visit "/users/sign_in"
-    expect(page).to have_link("Students, Faculty, and Staff")
+    expect(page).to have_link("Students, faculty, staff and registered alumni.")
   end
 end
