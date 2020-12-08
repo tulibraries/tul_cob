@@ -743,15 +743,6 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(digital_help_allowed?(document)).to be false
       end
     end
-    context "is a physical item with hathitrust link" do
-      let(:document) { {
-        "availability_facet" => "At the Library",
-        "hathi_trust_bib_key_display" => "foo"
-         } }
-      it "returns nil" do
-        expect(digital_help_allowed?(document)).to be false
-      end
-    end
   end
 
   describe "#open_shelves_allowed?(document)" do

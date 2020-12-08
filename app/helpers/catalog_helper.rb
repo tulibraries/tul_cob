@@ -214,8 +214,7 @@ module CatalogHelper
       .exclude?("Archival Material") &&
     document.fetch("format", [])
       .exclude?("Object") &&
-    !document["electronic_resource_display"] &&
-    !document["hathi_trust_bib_key_display"]
+    !document["electronic_resource_display"]
   end
 
   def open_shelves_allowed?(document)
