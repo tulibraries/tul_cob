@@ -47,7 +47,7 @@ RSpec.describe PrimoCentralController, type: :controller do
       expect(response).to be_successful
     end
 
-    it "handles a record not found exception" do
+    it "handles a record not found exception", with_rescue: true do
       allow(search_service).to receive(:fetch).and_raise(Primo::Search::ArticleNotFound, "glub glub glub")
       get :show, params: { id: 1 }
       expect(response.code).to eq "404"

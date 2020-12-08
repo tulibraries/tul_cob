@@ -367,6 +367,11 @@ RSpec.configure do |config|
   require "warden"
   config.include Warden::Test::Helpers
 
+  config.before :each do |example|
+    if example.metadata[:type] == :controller
+      bypass_rescue unless example.metadata[:with_rescue]
+    end
+  end
 end
 
 VCR.configure do |config|

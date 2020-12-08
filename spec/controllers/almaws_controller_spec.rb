@@ -86,7 +86,7 @@ RSpec.describe AlmawsController, type: :controller do
         sign_in @user, scope: :user
       end
 
-      it "doesn't render the layout, even when there's an error" do
+      it "doesn't render the layout, even when there's an error", with_rescue: true do
         allow(Alma::BibItem).to receive(:find).and_raise("oof")
         get :item, params
         expect(response).not_to render_template("layouts/blacklight")
@@ -177,13 +177,13 @@ RSpec.describe AlmawsController, type: :controller do
         get(:request_options, params)
       end
 
-      it "sends a 502 error with a layout-less error message in the body" do
+      it "sends a 502 error with a layout-less error message in the body", with_rescue: true do
         expect(response).to have_http_status 502
         expect(response.body).to include "The item request service did not respond or encountered a problem"
         expect(response).not_to render_template("layouts/blacklight")
       end
 
-      it "forwards the alma error to honeybadger" do
+      it "forwards the alma error to honeybadger", with_rescue: true do
         expect(Honeybadger::Backend::Test.notifications[:notices].last.error_message).to eq(JSON.dump({ error: "phhhht" }))
       end
     end
@@ -383,7 +383,7 @@ RSpec.describe AlmawsController, type: :controller do
   describe "handling Alma::BibItemSet::ResponseError exceptions" do
     let(:params) { { params: { mms_id: "991026719119703811" } } }
 
-    it "renders the html response" do
+    it "renders the html response", with_rescue: true do
       allow(controller).to receive(:item) { raise Alma::BibItemSet::ResponseError.new("test") }
       get :item, params
       expect(response.body).to eq("<p class='m-2'>Please contact the library service desk for additional assistance.</p>")

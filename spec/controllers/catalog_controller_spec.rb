@@ -21,7 +21,7 @@ RSpec.describe CatalogController, type: :controller do
 
     context "when the record is suppressed" do
       let(:document) { SolrDocument.new(id: doc_id, suppress_items_b: true) }
-      it "raises a record not found error if the record is suppressed" do
+      it "raises a record not found error if the record is suppressed", with_rescue: true do
         allow(search_service).to receive(:fetch).with(doc_id).and_return([mock_response, document])
         allow(controller).to receive(:search_service).and_return(search_service)
 
