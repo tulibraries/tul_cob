@@ -22,13 +22,13 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
-  it "handles its own errors gracefully" do
+  it "handles its own errors gracefully", with_rescue: true do
     get :test_basic_exception
     expect(response).to have_http_status 500
     expect(response.body).to include "We're sorry, but something went wrong"
   end
 
-  it "handles primo's errors  gracefully" do
+  it "handles primo's errors  gracefully", with_rescue: true do
     get :test_primo_error
     expect(response).to have_http_status 502
     expect(response.body).to include "We're sorry, but something went wrong"
