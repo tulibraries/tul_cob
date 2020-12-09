@@ -190,7 +190,8 @@ module CatalogHelper
       .exclude?("Archival Material") &&
     document.fetch("format", [])
       .exclude?("Object") &&
-    !document["electronic_resource_display"]
+    !document["electronic_resource_display"] &&
+    !hathitrust_link_allowed?(document)
   end
 
   def open_shelves_allowed?(document)
@@ -221,13 +222,18 @@ module CatalogHelper
     render "hathitrust_link", ht_bib_key_field: ht_bib_key_field
   end
 
+  def hathitrust_link_allowed?(document)
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    ht_bib_key_field.fetch("access", "deny") == "allow" rescue nil
+  end
+
   def render_hathitrust_display(document)
     ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
     return if ht_bib_key_field.nil?
     online_resources = []
     online_resources << render_hathitrust_link(ht_bib_key_field)
 
-    if (campus_closed? || ht_bib_key_field.fetch("access", "deny") == "allow")
+    if (campus_closed? || hathitrust_link_allowed?(document))
       render "online_availability", online_resources: online_resources
     end
   end
@@ -237,7 +243,7 @@ module CatalogHelper
     return if ht_bib_key_field.nil?
     link = render_hathitrust_link(ht_bib_key_field)
 
-    if (campus_closed? || ht_bib_key_field.fetch("access", "deny") == "allow")
+    if (campus_closed? || hathitrust_link_allowed?(document))
       render "hathitrust_button", document: document, links: link
     end
   end
