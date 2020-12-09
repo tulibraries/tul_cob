@@ -728,12 +728,27 @@ RSpec.describe CatalogHelper, type: :helper do
         expect(digital_help_allowed?(document)).to be true
       end
     end
+    context "is a physical item with hathitrust access denied" do
+      let(:document) { {
+         "availability_facet" => "At the Library",
+         "hathi_trust_bib_key_display" => "foo"
+          } }
+      it "returns true" do
+        expect(digital_help_allowed?(document)).to be true
+      end
+    end
     context "is an object" do
       let(:document) { { "format" => "Object" } }
       it "returns false" do
         expect(digital_help_allowed?(document)).to be false
       end
     end
+    context "has a hathitrust link" do
+      let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ].first } }
+       it "returns false" do
+         expect(digital_help_allowed?(document)).to be false
+       end
+     end
     context "is a physical item and an online item" do
       let(:document) { {
         "availability_facet" => "At the Library",
@@ -838,6 +853,26 @@ RSpec.describe CatalogHelper, type: :helper do
 
     it "returns a correctly formed url" do
       expect(constructed_url).to eq base_url
+    end
+  end
+
+  describe "#hathitrust_link_allowed?(document))" do
+    context "record has a hathi_trust_bib_key_display field" do
+      context "with allow access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ] } }
+
+        it "returns true" do
+          expect(hathitrust_link_allowed?(document)).to be(true)
+        end
+      end
+
+      context "with deny access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "deny" }] } }
+
+        it "does not render the online partial" do
+          expect(hathitrust_link_allowed?(document)).to be(false)
+        end
+      end
     end
   end
 
