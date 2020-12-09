@@ -8,6 +8,6 @@ module LCClassifications
       params.dig("range", "lc_classification", "end").present? ||
       params.dig("f", "lc_outer_facet").present? ||
       params.dig("f", "lc_inner_facet").present? ||
-      !!(params.dig("sort").&include?("lc_call_number_sort"))
+      !!(params.dig("sort")&.include?("lc_call_number_sort"))
   end
 end
