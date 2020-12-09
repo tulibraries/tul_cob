@@ -95,30 +95,6 @@ module CatalogHelper
     current_page?("/advanced") ? search_catalog_url : search_action_url
   end
 
-  # Overridden because we want to use our merged @response["docs"] with docs
-  # from solr and primo together.
-  #
-  # TODO: Remove this override once we no longer support article bookmarks.
-  def current_bookmarks(response = nil)
-    response ||= @response
-    @current_bookmarks ||=
-      current_or_guest_user
-      .bookmarks_for_documents(@response["docs"] ||
-    response.documents).to_a
-  end
-
-  ##
-  # Overridden so that we can controll the number of pages from the controller.
-  #
-  # Look up the current per page value, or the default if none if set
-  #
-  # @return [Integer]
-  def current_per_page
-    (@response["rows"] if @response["rows"] && @response["rows"] > 0) ||
-      (@response.rows if @response && @response.rows > 0) ||
-      params.fetch(:per_page, default_per_page).to_i
-  end
-
   def render_online_availability(doc_presenter)
     field = blacklight_config.show_fields["electronic_resource_display"]
     return if field.nil?
