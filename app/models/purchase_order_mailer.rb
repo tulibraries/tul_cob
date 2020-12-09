@@ -13,7 +13,7 @@ class PurchaseOrderMailer < RecordMailer
     @message        = details[:message]
     @url_gen_params = url_gen_params
     @from           = details[:from]
-
-    mail(bcc: "orders@temple.edu", to: @from[:email], subject: subject)
+    @bcc            = Rails.configuration.email_groups["RAPID_REQUEST"]
+    mail(bcc: @bcc, to: @from[:email], subject: subject)
   end
 end
