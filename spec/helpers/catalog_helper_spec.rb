@@ -744,7 +744,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
     context "has a hathitrust link" do
-      let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ].first } }
+       let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ].first } }
        it "returns false" do
          expect(digital_help_allowed?(document)).to be false
        end
