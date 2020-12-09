@@ -487,33 +487,6 @@ class CatalogController < ApplicationController
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 
-  # Render one index record (use as an ajax endpoint).
-  # Note: The reason this method is defined here and not in PrimoCentralController
-  # is that it actually gets called from bookmarks.
-
-  def index_item
-    count = (params["document_counter"] || 0 rescue 0).to_i
-    begin
-      (@response, doc) = search_service.fetch(params["id"])
-      # In bookmark context we'll want to make sure doc.id is the same as what we fetched.
-      doc["pnxId"] = params["id"]
-    rescue Primo::Search::ArticleNotFound => _
-      Honeybadger.notify("The article with id #{params["id"]} could not be found.
-                         This happens when the primo id is no longer valid.")
-
-      # Ajax lookup failed once before already.
-      doc = PrimoCentralDocument.new(
-        "pnxId" => params["id"], "ajax" => false,
-        "title" => params["id"],
-        "error" => "This article could not be found."
-
-      )
-
-      # Required by bl-7
-      @response = Blacklight::PrimoCentral::Response.new(doc)
-    end
-    render "_document", layout: false, locals: { document: doc, document_counter: count }
-  end
 
   # Overrides CatalogController.invalid_document_id_error
   # Overridden so that we can use our own 404 error handling setup.

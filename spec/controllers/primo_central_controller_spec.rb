@@ -9,7 +9,7 @@ RSpec.describe PrimoCentralController, type: :controller do
   let(:document) { PrimoCentralDocument.new(doc, options) }
   let(:helpers) { double("helper", base_path: "/") }
   let(:mock_response) { instance_double(Blacklight::PrimoCentral::Response) }
-  let(:search_service) { instance_double(PrimoSearchService) }
+  let(:search_service) { instance_double(Blacklight::SearchService) }
 
   before(:each) do
     allow(controller).to receive(:helpers).and_return(helpers)
