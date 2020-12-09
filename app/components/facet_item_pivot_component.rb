@@ -16,7 +16,7 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
 
     li_tag = content_tag @wrapping_element, role: "treeitem" do
       concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
-      concat(content_tag(:div, class: "pivot-facet-content-cell") do
+      concat(content_tag(:div, class: "pivot-facet-content-cell #{@facet_item.nested? ? 'pivot-facet-inner' : 'pivot-facet-outer'}") do
         concat facet_toggle_button(id) if has_items? && @collapsing
         concat content_tag("span", render_component(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
 
@@ -44,7 +44,7 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
   end
 
   def facet_toggle_button(id)
-    content_tag "button", class: "btn facet-toggle-handle #{'collapsed' unless uncollapse?}",
+    content_tag "button", class: "btn pivot-top-level-expand facet-toggle-handle #{'collapsed' unless uncollapse?}",
                 data: { toggle: "collapse", target: "##{id}" },
                 aria: { expanded: uncollapse?, controls: id, describedby: "#{id}_label" } do
       concat toggle_icon(:show)
