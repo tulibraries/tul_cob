@@ -72,4 +72,8 @@ class User < ApplicationRecord
       "Library Staff" => "22",
     }.values.include? alma.user_group["value"] rescue false
   end
+
+  def bookmarks
+    super.where(document_type: "SolrDocument")
+  end
 end
