@@ -13,7 +13,6 @@ README.md
 /Dockerfile
 /log
 
-## Needed on CirlceCI
 /solr
 /sample_data
 /rspec
