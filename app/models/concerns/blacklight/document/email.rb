@@ -16,7 +16,11 @@ module Blacklight::Document::Email
         body << I18n.t(label, value: value.join("; ").gsub("|", "; "))
       end
     end
-    body << add_holdings_information
+    begin
+      body << add_holdings_information
+    rescue Alma::BibItemSet::ResponseError => exception
+      Honeybadger.notify(exception.message)
+    end
     return body.join("\n") unless body.empty?
   end
 

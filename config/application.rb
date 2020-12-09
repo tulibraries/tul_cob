@@ -28,6 +28,7 @@ module Tulcob
     config.material_types = config_for(:material_types).with_indifferent_access
     config.alma = config_for(:alma).with_indifferent_access
     config.bento = config_for(:bento).with_indifferent_access
+    config.email_groups = config_for(:email_groups).with_indifferent_access
     config.oclc = config_for(:oclc).with_indifferent_access
     config.lib_guides = config_for(:lib_guides).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
