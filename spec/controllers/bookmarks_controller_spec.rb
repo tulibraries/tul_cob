@@ -15,8 +15,9 @@ RSpec.describe BookmarksController do
 
   describe "export_articles" do
     it "exports urls" do
-      @controller.send(:current_or_guest_user).bookmarks.create! document_id: "foo", document_type: "PrimoCentralDocument"
-      @controller.send(:current_or_guest_user).bookmarks.create! document_id: "bar", document_type: "PrimoCentralDocument"
+      current_user = @controller.send(:current_or_guest_user)
+      current_user.bookmarks.create! document_id: "foo", document_type: "PrimoCentralDocument"
+      current_user.bookmarks.create! document_id: "bar", document_type: "PrimoCentralDocument"
 
       get :export_articles
       # We successfully export test file
@@ -34,7 +35,7 @@ RSpec.describe BookmarksController do
       expect(response.body).to eq(urls.strip)
 
       # We keep track of exports
-      title_update = @controller.send(:current_or_guest_user).bookmarks.first.title
+      title_update = Bookmark.where(user_id: current_user.id, document_type: "PrimoCentralDocument").first.title
       expect(title_update).to eq("exported")
     end
   end
