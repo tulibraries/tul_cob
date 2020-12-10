@@ -572,10 +572,6 @@ module CatalogHelper
     ::FeatureFlags.with_libguides?(params)
   end
 
-  def with_call_number_facet?
-    ::FeatureFlags.with_call_number_facet?(params)
-  end
-
   def derived_lib_guides_search_term(response)
     LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
   end
