@@ -25,10 +25,10 @@
   color: $red;
 }
 
-.clear-bookmarks {
-  font-size: 0.875rem;
+a.clear-bookmarks {
+  //font-size: 0.875rem;
   margin-left: 0.625rem;
-  margin-top: -0.225rem;
+  //margin-top: -0.225rem;
   padding: 0.4725rem 0.625rem 0.4125rem 0.625rem;
 
   @media(max-width: 601px) {
