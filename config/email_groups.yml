@@ -13,4 +13,4 @@ production:
   <<: *default
   RAPID_REQUEST:
     - orders@temple.edu
-    - brian@temple.edu
+    - jbrian@temple.edu
