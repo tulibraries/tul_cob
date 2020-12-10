@@ -69,7 +69,14 @@ $(document).ready(function(){
 				    handleEventClicks(track.id, track.category)
 					});
 				};
-			} else {
+      } else if (track.selector) {
+        let elements = [... document.querySelectorAll(track.selector)]
+        elements.forEach((el) => {
+          el.addEventListener("click", () => {
+            handleEventClicks(track.label, track.category)
+          });
+        });
+      } else {
 				let elements = [... document.getElementsByClassName(track.class)]
 				elements.forEach((el) => {
 					el.addEventListener("click", () => {
