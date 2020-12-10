@@ -4,11 +4,10 @@ module LCClassifications
   extend ActiveSupport::Concern
 
   def render_lc_call_number_on_index?
-    return true unless params.dig("range", "lc_classification", "begin").blank?
-    return true unless params.dig("range", "lc_classification", "end").blank?
-    return true unless params.dig("f", "lc_outer_facet").blank?
-    return true unless params.dig("f", "lc_inner_facet").blank?
-    return true if params.dig("sort").present? && params["sort"].include?("lc_call_number_sort")
-    false
+    params.dig("range", "lc_classification", "begin").present? ||
+      params.dig("range", "lc_classification", "end").present? ||
+      params.dig("f", "lc_outer_facet").present? ||
+      params.dig("f", "lc_inner_facet").present? ||
+      !!(params.dig("sort")&.include?("lc_call_number_sort"))
   end
 end
