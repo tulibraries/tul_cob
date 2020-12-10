@@ -67,6 +67,26 @@ a.clear-bookmarks {
 #bookmarks-sendto button {
   background-color: $white;
   border: 0.0625rem solid $header-grey;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    border: none;
+    color: $white;
+	}
+}
+
+.sendto-menu,
+.sendto-item {
+
+  @media(max-width: 768px) {
+    background-color: $white !important;
+    color: $black !important;
+
+    .nav-link {
+      background-color: $white !important;
+      color: $red !important;
+    }
+	}
 }
 
 .toggle-bookmark {
@@ -79,5 +99,5 @@ a.clear-bookmarks {
   }
   a {
     text-decoration: underline;
-  }  
+  }
 }
