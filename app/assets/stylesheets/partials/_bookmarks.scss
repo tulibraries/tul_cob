@@ -25,10 +25,10 @@
   color: $red;
 }
 
-.clear-bookmarks {
-  font-size: 0.875rem;
+a.clear-bookmarks {
+  //font-size: 0.875rem;
   margin-left: 0.625rem;
-  margin-top: -0.225rem;
+  //margin-top: -0.225rem;
   padding: 0.4725rem 0.625rem 0.4125rem 0.625rem;
 
   @media(max-width: 601px) {
@@ -36,7 +36,6 @@
 	}
 }
 
-.clear-bookmarks .search-widgets a,
 a.clear-bookmarks {
   color: $white!important;
 }
@@ -68,6 +67,26 @@ a.clear-bookmarks {
 #bookmarks-sendto button {
   background-color: $white;
   border: 0.0625rem solid $header-grey;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    border: none;
+    color: $white;
+	}
+}
+
+.sendto-menu,
+.sendto-item {
+
+  @media(max-width: 768px) {
+    background-color: $white !important;
+    color: $black !important;
+
+    .nav-link {
+      background-color: $white !important;
+      color: $red !important;
+    }
+	}
 }
 
 .toggle-bookmark {
@@ -80,5 +99,5 @@ a.clear-bookmarks {
   }
   a {
     text-decoration: underline;
-  }  
+  }
 }

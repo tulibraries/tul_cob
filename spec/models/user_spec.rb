@@ -60,6 +60,32 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "current_user.bookmarks" do
+    before :all do
+      DatabaseCleaner.strategy = :truncation
+    end
+
+    after :all do
+      DatabaseCleaner.clean
+    end
+
+    let(:current_user) { FactoryBot.build(:user) }
+
+    it "limits bookmarks to where document_type == 'SolrDocument'" do
+
+      current_user.save!
+
+      b1 = Bookmark.new(document_id: "foo", document_type: SolrDocument.to_s)
+      b2 = Bookmark.new(document_id: "bar", document_type: PrimoCentralDocument.to_s)
+
+      b1.user = b2.user = current_user
+      b1.save!
+      b2.save!
+
+      expect(current_user.bookmarks.count).to eq(1)
+    end
+  end
+
   describe "Authentication services", :skip do
     let(:new_user) { FactoryBot.build(:user) }
     let(:authorized_user) { User.from_omniauth(new_user) }
