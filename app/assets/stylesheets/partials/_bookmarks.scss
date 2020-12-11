@@ -54,8 +54,8 @@ a.clear-bookmarks {
 .bookmarks-dropdown {
   background-color: $header-grey;
   color: $red;
-  font-size: 0.875rem;
-  padding: 0.4725rem 0.625rem;
+  //font-size: 0.875rem;
+  //padding: 0.4725rem 0.625rem;
 
   @media(max-width: 768px) {
     background-color: $red;
