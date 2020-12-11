@@ -21,15 +21,13 @@ en:
     bookmarks:
       sunset_message_html: >-
           <p>
-            We are phasing out the bookmarks feature <strong>for articles</strong>. Your bookmarks for books, journals,
-            and other materials won’t be affected by this change. You can keep those and continue to add
-            new ones.
+            As of December 21, 2020, you can no longer add or view article bookmarks using Library Search. Your bookmarks for books, journals, and other materials will not be affected by this change.
           </p>
           <p>
-          Starting on December 21, 2020, you will no longer be able to access your existing article bookmarks. We recommend that you download any article bookmarks now in preparation for this phase-out. If you have under 100 bookmarks, use the "Send to" button to email a copy of your bookmarks to yourself or download an RIS file for upload to <a href='https://guides.temple.edu/overviewcitations'>a citation manager</a>. If you have over 100 bookmarks, <a href='/bookmarks/export/articles'>download the article record URL’s as a text file</a>.
+          To retrieve any existing article bookmarks, you can <a href='/bookmarks/export/articles'>download the article record URL’s as a text file</a>.
           </p>
           <p>
-            <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions or any issues accessing/exporting your article bookmarks.
+            <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions about exporting your article bookmarks.
           </p>
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
