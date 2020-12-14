@@ -751,7 +751,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "should render the single field selector template" do
         expect(helper).to have_received(:render)
-          .with(template: "almaws/_location_field", locals: { material: "ONE material" })
+          .with(template: "almaws/_location_field", locals: { item: "", material: "ONE material" })
       end
     end
 
