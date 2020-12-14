@@ -96,8 +96,8 @@ class SolrDocument
       { title: material["bib_data"]["title"],
         barcode: barcode(material),
         call_number: material["holding_data"]["call_number"],
-        library: library_name_from_short_code(material.library),
-        location: location_status(material),
+        library: material.library,
+        location: material["item_data"]["location"]["value"],
         availability: availability_status(material) }
         .with_indifferent_access }
         .uniq { |material| material.except(:barcode) }
