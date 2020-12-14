@@ -12,7 +12,7 @@
 <% @sendto = {} %>
       <ul id="tools-navbar">
 
-        <%= render_show_doc_actions @documents do |config, inner| %>
+        <%= render_show_doc_actions @response.documents do |config, inner| %>
           <% @sendto[config.key] = inner %>
         <% end %>
 
@@ -25,7 +25,10 @@
 
         <li id="sendto-menu">
           <div id="bookmarks-sendto">
-            <button class="btn dropdown-toggle bookmarks-dropdown" data-toggle="dropdown">Send To <span class="caret"></span></button>
+            <button class="btn dropdown-toggle bookmarks-dropdown" data-toggle="dropdown">
+              <%= t("blacklight.tools.sendto", current_range: current_entries_info(@response).html_safe)%>
+              <span class="caret"></span>
+            </button>
             <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <div class="sendto-item dropdown-item">
