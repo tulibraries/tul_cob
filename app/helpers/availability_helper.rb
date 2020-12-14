@@ -194,13 +194,18 @@ module AvailabilityHelper
     sorted_library_hash
   end
 
+  def materials_location(material)
+    Rails.configuration.locations.dig(material["library"], material["location"])
+  end
+
   def render_location_selector(document)
     materials = document.materials
+    items = document.fetch("items_json_display", "")
 
     if materials.count > 1
       render template: "almaws/_location_selector", locals: { materials: materials }
     elsif materials.count == 1
-      render template: "almaws/_location_field", locals: { material: materials.first }
+      render template: "almaws/_location_field", locals: { material: materials.first, item: items.first  }
     end
   end
 

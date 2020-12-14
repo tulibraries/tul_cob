@@ -1,19 +1,18 @@
-
 <label class="heading location-heading pl-3" for="location">Select a location: </label>
 <div id="locationsList">
 
 	<% materials.each do |material| %>
-
     <div class="row align-items-top">
       <input class="sms-form-locations" type="radio" name="barcode" id="<%= material["barcode"] %>" value="<%= material["barcode"] %>">
 
       <label for="<%= material["barcode"] %>">
-        <%= material["library"] %> (<%= material["location"] %>)<br />
-        <span>(<%= material["call_number"] %>)</span>
+        <span><%= library_name_from_short_code(material["library"]) %> - </span>
+					<span><%= materials_location(material) %></span>
+				<br />
+        <span><%=  alternative_call_number(material) %></span>
         <%= render_non_available_status_only(material["availability"]) %>
         <br />
       </label>
     </div>
-
 	<% end %>
 </div>
