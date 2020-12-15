@@ -96,7 +96,8 @@ class SolrDocument
       { title: material["bib_data"]["title"],
         barcode: barcode(material),
         call_number: material["holding_data"]["call_number"],
-        library: material.library,
+        library: library_name_from_short_code(material.library),
+        raw_library: material["item_data"]["library"]["value"],
         location: material["item_data"]["location"]["value"],
         availability: availability_status(material) }
         .with_indifferent_access }

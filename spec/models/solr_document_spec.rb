@@ -22,6 +22,7 @@ RSpec.describe SolrDocument, type: :model do
     "item_data" => {
       "physical_material_type" => { "value" => "ANY" },
       "pid" => "FOOBAR",
+      "library" => { "value" => "MAIN" },
       "location" => { "value" => "stacks" },
     },
     "holding_data" => { "calling_number" => "CALL ME" }

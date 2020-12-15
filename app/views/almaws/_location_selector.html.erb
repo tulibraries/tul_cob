@@ -6,7 +6,7 @@
       <input class="sms-form-locations" type="radio" name="barcode" id="<%= material["barcode"] %>" value="<%= material["barcode"] %>">
 
       <label for="<%= material["barcode"] %>">
-        <span><%= library_name_from_short_code(material["library"]) %> - </span>
+        <span><%= material["library"] %> - </span>
 					<span><%= materials_location(material) %></span>
 				<br />
         <span><%=  alternative_call_number(material) %></span>
