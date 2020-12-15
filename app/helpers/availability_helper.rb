@@ -195,7 +195,7 @@ module AvailabilityHelper
   end
 
   def materials_location(material)
-    Rails.configuration.locations.dig(material["library"], material["location"])
+    Rails.configuration.locations.dig(material["raw_library"], material["location"])
   end
 
   def render_location_selector(document)
