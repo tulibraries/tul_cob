@@ -23,6 +23,11 @@ class CatalogController < ApplicationController
   helper_method :browse_creator
   helper_method :display_duration
 
+  # TODO: remove once with_libkey? is no longer a flag
+  def self.with_libkey?
+    Proc.new { |context| ::FeatureFlags.with_libkey?(context.params) }
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new

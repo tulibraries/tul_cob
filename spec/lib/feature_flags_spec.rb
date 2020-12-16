@@ -175,6 +175,95 @@ RSpec.describe ::FeatureFlags do
           end
         end
       end
+
+    end
+  end
+
+  describe "#with_libkey?" do
+
+    let(:params_hash) { {} }
+    let(:params) { ActionController::Parameters.new(params_hash) }
+    let(:cc_with_param) { described_class.with_libkey?(params) }
+
+    context "when the Rails.config.features[:with_libkey] is default value"  do
+      it "returns false" do
+        expect(described_class.with_libkey?).to be(false)
+      end
+      context "when request_params parameter is passed" do
+        context "that does not include a with_libkey param" do
+          it "returns false" do
+            (expect(cc_with_param).to be(false))
+          end
+        end
+        context "that includes a with_libkey param of 'true'" do
+          let(:params_hash) { { with_libkey: "true" } }
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+        context "that includes a with_libkey param of 'yes'" do
+          let(:params_hash) { { with_libkey: "yes" } }
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+        context "that includes a with_libkey param of 'false'" do
+          let(:params_hash) { { with_libkey: "false" } }
+          it "returns false" do
+            (expect(cc_with_param).to be(false))
+          end
+        end
+        context "that includes a with_libkey param of '0'" do
+          let(:params_hash) { { with_libkey: "0" } }
+          it "returns false" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+      end
+    end
+    context "when Rails.config.features[:with_libkey] has been set" do
+      before(:each) do
+        allow(Rails.configuration.features)
+          .to receive(:fetch)
+          .with(:with_libkey, false)
+          .and_return("true")
+      end
+
+      it "returns true" do
+        expect(described_class.with_libkey?).to be(true)
+      end
+      context "when request_params parameter is passed" do
+        context "that does not include a with_libkey param" do
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+        context "that includes a with_libkey param of 'true'" do
+          let(:params_hash) { { with_libkey: "true" } }
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+        context "that includes a with_libkey param of 'yes'" do
+          let(:params_hash) { { with_libkey: "yes" } }
+          it "returns true" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+        context "that includes a with_libkey param of 'false'" do
+          let(:params_hash) { { with_libkey: "false" } }
+          it "returns false" do
+            (expect(cc_with_param).to be(false))
+          end
+        end
+        context "that includes a with_libkey param of '0'" do
+          let(:params_hash) { { with_libkey: "0" } }
+          it "returns false" do
+            (expect(cc_with_param).to be(true))
+          end
+        end
+      end
+
     end
   end
 end
