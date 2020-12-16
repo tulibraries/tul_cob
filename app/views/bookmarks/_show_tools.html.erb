@@ -11,15 +11,14 @@
 <% if show_doc_actions? %>
 <% @sendto = {} %>
       <ul id="tools-navbar">
-
-        <%= render_show_doc_actions @response.documents do |config, inner| %>
+        <%= render_show_doc_actions @response.documents, document: nil, document_list: @response.documents, url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h) do |config, inner| %>
           <% @sendto[config.key] = inner %>
         <% end %>
 
         <% if @response.documents.any? { |doc| doc.citable? } %>
         <li>
 
-          <%= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path(:id => @response.documents), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn btn-sm"} %>
+        <%= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path( { id: @response.documents }.merge(params)), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn btn-sm"} %>
         </li>
         <% end %>
 

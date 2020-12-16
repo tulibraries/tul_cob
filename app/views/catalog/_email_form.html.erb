@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <% @documents.each do |doc| %>
+    <% @response.documents.each do |doc| %>
       <%=hidden_field_tag "id[]", doc.id %>
     <% end %>
     <%- if params[:sort] -%>
@@ -32,6 +32,9 @@
     <%- end -%>
     <%- if params[:per_page] -%>
       <%= hidden_field_tag "per_page", params[:per_page] %>
+    <%- end -%>
+    <%- if params[:page] -%>
+      <%= hidden_field_tag "page", params[:page] %>
     <%- end -%>
   </div>
   <div class="modal-footer">
