@@ -1,3 +1,1 @@
-<button class="btn btn-sm online-btn libkey-btn">
-  <span class="avail-label" aria-expanded="false"><%= t("articles.libkey_button_html", href: link_to(t("articles.libkey_button_href"), t("articles.libkey_button_link"), target: "_blank")) %></span>
-</button>
+<%= link_to t("articles.libkey_button_html"), t("articles.libkey_button_link"), class: "btn btn-sm online-btn libkey-btn", target: "_blank" %>
