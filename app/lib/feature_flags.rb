@@ -15,4 +15,11 @@ module FeatureFlags
     end
     !!Rails.configuration.features.fetch(:with_libguides, false)
   end
+
+  def self.with_libkey?(params = nil)
+    if !params.nil? && params.has_key?("with_libkey")
+      return (params["with_libkey"] == "false") ? false : true
+    end
+    !!Rails.configuration.features.fetch(:with_libkey, false)
+  end
 end

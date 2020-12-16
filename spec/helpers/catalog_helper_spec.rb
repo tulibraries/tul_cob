@@ -963,6 +963,36 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#with_libkey?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params with_libkey is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(with_libkey?).to be(false)
+      end
+    end
+
+    context "params with_libkey is true" do
+      let(:params) { { "with_libkey" => "true" } }
+
+      it "returns true when with_libkey param is not 'false'" do
+        expect(with_libkey?).to be(true)
+      end
+    end
+
+    context "params with_libkey is false" do
+      let(:params) { { "with_libkey" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(with_libkey?).to be(false)
+      end
+    end
+  end
+
   describe "LibGuidesApi#derived_lib_guides_search_term(solr_response)" do
     before do
       allow(helper).to receive(:params) { params }
