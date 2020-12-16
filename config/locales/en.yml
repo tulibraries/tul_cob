@@ -180,7 +180,7 @@ en:
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
-
+    libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
   website:
     section_heading_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
 
