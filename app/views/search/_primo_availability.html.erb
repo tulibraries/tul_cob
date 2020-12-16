@@ -1,3 +1,5 @@
 <%= bento_availability(item.custom_data) %>
 
-<%= link_to t("articles.libkey_button_html"), t("articles.libkey_button_link"), class: "btn btn-sm bento-avail-btn bento-libkey", target: "_blank" %>
+<% if with_libkey? %>
+  <%= link_to t("articles.libkey_button_html"), t("articles.libkey_button_link"), class: "btn btn-sm bento-avail-btn bento-libkey", target: "_blank" %>
+<% end %>
