@@ -1,3 +1,3 @@
-<% if with_libkey? %>
-  <%= link_to t("articles.libkey_button_html"), t("articles.libkey_button_link"), class: "btn btn-sm online-btn libkey-btn", target: "_blank" %>
+<% if with_libkey? && document["doi"].present? %>
+  <%= link_to t("articles.libkey_button_html"), article_doi_path(article_doi: document["doi"].first), class: "btn btn-sm online-btn libkey-btn", target: "_blank" %>
 <% end %>
