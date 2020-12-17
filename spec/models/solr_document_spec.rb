@@ -171,8 +171,8 @@ RSpec.describe SolrDocument, type: :model do
 
     context "a material item is present and selected" do
       it "renders catalog location" do
-        document[:sms] = { library: "foo", location: "bar", call_number: "call_me" }
-        expect(document.to_sms_text).to eq("foo bar call_me")
+        document[:sms] = { library: "Charles Library", location: "Stacks", raw_library: "MAIN", raw_location: "stacks", call_number: "call_me" }
+        expect(document.to_sms_text).to eq("Charles Library Stacks (4th floor) call_me")
       end
     end
   end
