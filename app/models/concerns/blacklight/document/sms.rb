@@ -14,7 +14,7 @@ module Blacklight::Document::Sms
           if field == :location
             materials_location(self[:sms])
           else
-          self.dig(:sms, field)
+            self.dig(:sms, field)
           end
         }
         .compact
