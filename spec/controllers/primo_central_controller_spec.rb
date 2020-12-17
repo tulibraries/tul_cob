@@ -60,7 +60,7 @@ RSpec.describe PrimoCentralController, type: :controller do
       stub_request(:get, /articles/)
         .to_return(status: 200,
                   headers: { "Content-Type" => "application/json" },
-                  body: JSON.dump(data: { browzineWebLink: "https://www.google.com" }))
+                  body: JSON.dump(data: { fullTextFile: "https://www.google.com" }))
 
       get "article_doi", params: { artile_doi: "foo" }
 
