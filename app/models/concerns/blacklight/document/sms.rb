@@ -10,7 +10,13 @@ module Blacklight::Document::Sms
   def to_sms_text
     if self[:sms]
       [ :library, :location, :call_number ]
-        .map { |field| self.dig(:sms, field) }
+        .map { |field|
+          if field == :location
+            materials_location(self[:sms])
+          else
+          self.dig(:sms, field)
+          end
+        }
         .compact
         .join " "
     end
