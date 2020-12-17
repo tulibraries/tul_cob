@@ -74,6 +74,6 @@ class User < ApplicationRecord
   end
 
   def bookmarks
-    super.where(document_type: "SolrDocument")
+    (b = super).where!(document_type: "SolrDocument") and b
   end
 end
