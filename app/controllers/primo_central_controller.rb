@@ -116,4 +116,15 @@ class PrimoCentralController < CatalogController
       additional_export_formats(@document, format)
     end
   end
+
+  def article_doi
+    article_doi = params["article_doi"]
+    access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+    libkey_url = "https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/#{article_doi}?access_token=#{access_token}"
+
+    resp = HTTParty.get(libkey_url)
+    redirect_url = resp&.dig("data", "browzineWebLink")
+
+    redirect_to redirect_url
+  end
 end

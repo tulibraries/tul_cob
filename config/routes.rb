@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
   match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
   match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
+  match "articles/doi", to: "primo_central#article_doi", as: "article_doi", via: [:post, :get]
 
   # concerns
   concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
