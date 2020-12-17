@@ -84,6 +84,18 @@ RSpec.describe User, type: :model do
 
       expect(current_user.bookmarks.count).to eq(1)
     end
+
+    it "can handle new books added to it via << operator" do
+      current_user.save!
+
+      b1 = Bookmark.new(document_id: "foo", document_type: SolrDocument.to_s)
+      b2 = Bookmark.new(document_id: "bar", document_type: PrimoCentralDocument.to_s)
+
+      current_user.bookmarks << b1
+      current_user.bookmarks << b2
+
+      expect(current_user.bookmarks.count).to eq(1)
+    end
   end
 
   describe "Authentication services", :skip do
