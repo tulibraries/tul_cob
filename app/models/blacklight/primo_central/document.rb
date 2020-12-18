@@ -6,8 +6,6 @@ module Blacklight::PrimoCentral::Document
   include Blacklight::Document::ActiveModelShim
   include Blacklight::PrimoCentral::SolrAdaptor
 
-  delegate :url_helpers, to: "Rails.application.routes"
-
   delegate :dig, :[], to: :@_source
 
   def []=(key, value)
@@ -72,21 +70,6 @@ module Blacklight::PrimoCentral::Document
   def has_direct_link?
     availability = @_source.dig("delivery", "availability") || []
     availability == ["fulltext_linktorsrc"]
-  end
-
-  def ajax?
-    (!!@_source["ajax"] || @_source["ajax"] == "true") rescue false
-  end
-
-
-  # Stimulus controller used for controlling ajax endpoint.
-  def ajax_controller
-    "index"
-  end
-
-  # Ajax endpoint for rendering this document.
-  def ajax_url(count = 0)
-    url_helpers.articles_index_item_path(@_source["pnxId"], document_counter: count)
   end
 
   def materials
