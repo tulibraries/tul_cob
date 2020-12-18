@@ -280,4 +280,43 @@ RSpec.describe PrimoCentralDocument, type: :model do
       expect(doc["subject"]).to eq(["bar", "foo"])
     end
   end
+
+  describe "libkey_url" do
+    context "doi not present" do
+      let(:doc) { {} }
+
+      it "returns a nil" do
+        expect(subject.libkey_url).to be_nil
+      end
+    end
+
+    context "fullTextFile present" do
+      let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+      it "returns the fullTextFile URL string" do
+        stub_request(:get, /articles/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: {
+                      fullTextFile: "https://www.google.com",
+                      contentLocation: "https//www.temple.edu"
+                    }))
+
+        expect(subject.libkey_url).to eq("https://www.google.com")
+      end
+    end
+
+    context "contentLocation present" do
+      let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+      it "returns the contentLocation URL string" do
+        stub_request(:get, /articles/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: { contentLocation: "https://www.temple.edu" }))
+
+        expect(subject.libkey_url).to eq("https://www.temple.edu")
+      end
+    end
+  end
 end

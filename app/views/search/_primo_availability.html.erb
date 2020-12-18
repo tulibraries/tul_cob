@@ -1,5 +1,7 @@
 <%= bento_availability(item.custom_data) %>
 
-<% if with_libkey? && item.custom_data["doi"].present? %>
-  <%= link_to t("articles.libkey_button_html"), article_doi_path(article_doi: item.custom_data["doi"].first), class: "btn btn-sm bento-avail-btn bento-libkey", target: "_blank" %>
+<% document = item.custom_data %>
+
+<% if with_libkey? && document.libkey_url.present? %>
+  <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn btn-sm bento-avail-btn bento-libkey", target: "_blank" %>
 <% end %>
