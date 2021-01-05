@@ -39,7 +39,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 6e141539574986beb4e3c2e716533c53c3059b48
+  revision: c5ca55a6da2c83827ef7d1b95627866631964287
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -288,7 +288,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.8.5)
+    i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
@@ -297,7 +297,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.3.1)
-    jsonpath (1.0.7)
+    jsonpath (1.1.0)
       multi_json
     jwt (1.5.6)
     kaminari (1.2.1)
