@@ -50,7 +50,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 257bda117e8009d1d2c4f0609c7831f93db62318
+  revision: 9045cc1776ff98e530656114769e2272c470793b
   branch: main
   specs:
     cob_index (0.1.0)
@@ -282,8 +282,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    http-parser (1.2.2)
-      ffi-compiler
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
@@ -348,7 +348,7 @@ GEM
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (2.5.4)
-    nokogiri (1.11.0)
+    nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     notiffany (0.1.3)
