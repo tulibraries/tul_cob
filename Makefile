@@ -113,13 +113,14 @@ shell:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 CI ?= false
+
 secure:
 	@if [ $(CI) == false ]; \
 		then \
 			trivy $(HARBOR)/$(IMAGE):$(VERSION); \
 		fi
 
-deploy: secure, login
+deploy: secure
 	@docker push $(HARBOR)/$(IMAGE):$(VERSION) \
 	# This "if" statement needs to be a one liner or it will fail.
 	# Do not edit indentation
