@@ -63,6 +63,10 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
+IMAGE ?= tulibraries/tul_cob
+VERSION ?= latest
+HARBOR ?= harbor.k8s.temple.edu
+
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
 		-e "RAILS_ENV=production" \
@@ -89,14 +93,36 @@ run:
 		-e "COB_DB_PASSWORD=$(COB_DB_PASSWORD)" \
 		-e "COB_DB_NAME=$(COB_DB_NAME)" \
 		-e "COB_DB_HOST=$(COB_DB_HOST)" \
+		-e "K8=yes" \
 		-v `pwd`/config/alma.yml:/app/config/alma.yml \
 		-v `pwd`/config/bento.yml:/app/config/bento.yml \
 		--rm -it \
-		harbor.k8s.temple.edu/tulibraries/tul_cob:latest
+		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
 	@docker build --build-arg RAILS_ENV=production \
-		--tag harbor.k8s.temple.edu/tulibraries/tul_cob:latest \
+		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
+		--tag $(HARBOR)/$(IMAGE):latest \
 		--tag cob:latest \
 		--file .docker/app/Dockerfile.prod \
 		--no-cache .
+
+shell:
+	@docker run --rm -it \
+		--entrypoint=sh --user=root \
+		$(HARBOR)/$(IMAGE):$(VERSION)
+
+secure:
+	@if [ $(CI) == false ]; \
+		then \
+			trivy $(HARBOR)/$(IMAGE):$(VERSION); \
+		fi
+
+deploy: secure, login
+	@docker push $(HARBOR)/$(IMAGE):$(VERSION) \
+	# This "if" statement needs to be a one liner or it will fail.
+	# Do not edit indentation
+	@if [ $(VERSION) != latest ]; \
+		then \
+			docker push $(HARBOR)/$(IMAGE):latest; \
+		fi
