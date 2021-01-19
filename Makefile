@@ -64,7 +64,7 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 IMAGE ?= tulibraries/tul_cob
-VERSION ?= latest
+VERSION ?= 1.0.1
 HARBOR ?= harbor.k8s.temple.edu
 
 run:
@@ -112,6 +112,7 @@ shell:
 		--entrypoint=sh --user=root \
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
+CI ?= false
 secure:
 	@if [ $(CI) == false ]; \
 		then \
