@@ -73,7 +73,7 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To attatch to the running app container (good for debugging) ```make attach```
 * To build prod image: ```make build```
 * To deploy prod image: ```make deploy VERSION=x```  VERSION=latest by default
-* To run security check on image: ```make secure``` depends on trivy (brew install trivy)
+* To run security check on image: ```make secure``` depends on trivy (brew install aquasecurity/trivy/trivy)
 * To run a shell with image: ```make shell```
 
 
