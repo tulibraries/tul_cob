@@ -67,6 +67,7 @@ IMAGE ?= tulibraries/tul_cob
 VERSION ?= 1.0.5
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
+ASSETS_PRECOMPILE=no
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -101,6 +102,9 @@ run:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
+	@ if [ $(ASSETS_PRECOMPILE) == yes ]; then \
+			RAILS_ENV=production COB_DB_HOST=localhost bundle exec rails assets:precompile; \
+		fi
 	@docker build --build-arg RAILS_ENV=production \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
