@@ -106,8 +106,7 @@ build:
 		--tag $(HARBOR)/$(IMAGE):latest \
 		--tag cob:latest \
 		--file .docker/app/Dockerfile.prod \
-		.
-		#--no-cache .
+		--no-cache .
 
 shell:
 	@docker run --rm -it \
