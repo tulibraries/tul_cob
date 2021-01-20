@@ -64,7 +64,7 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 IMAGE ?= tulibraries/tul_cob
-VERSION ?= 1.0.5
+VERSION ?= 1.0.14
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 
