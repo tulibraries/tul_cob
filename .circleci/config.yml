@@ -79,6 +79,11 @@ jobs:
       - run:
           name: Copy the node_modules from the container to local
           command: make ci-copy-node-modules-to-local
+
+      - run:
+          name: Run webpacker precompile step
+          # @see https://github.com/rails/webpacker/issues/2674
+          command: bundle exec rails webpacker:compile
       
       - save_cache:
           key: gem-cache-v5-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
