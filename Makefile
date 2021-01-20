@@ -64,8 +64,9 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 IMAGE ?= tulibraries/tul_cob
-VERSION ?= 1.0.1
+VERSION ?= 1.0.5
 HARBOR ?= harbor.k8s.temple.edu
+CLEAR_CACHES=no
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -105,7 +106,8 @@ build:
 		--tag $(HARBOR)/$(IMAGE):latest \
 		--tag cob:latest \
 		--file .docker/app/Dockerfile.prod \
-		--no-cache .
+		.
+		#--no-cache .
 
 shell:
 	@docker run --rm -it \
@@ -115,6 +117,10 @@ shell:
 CI ?= false
 
 secure:
+	@if [ $(CLEAR_CACHES) == yes ]; \
+		then \
+			trivy image -c $(HARBOR)/$(IMAGE):$(VERSION); \
+		fi
 	@if [ $(CI) == false ]; \
 		then \
 			trivy $(HARBOR)/$(IMAGE):$(VERSION); \

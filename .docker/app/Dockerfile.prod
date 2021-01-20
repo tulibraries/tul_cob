@@ -12,6 +12,7 @@ RUN apk add --no-cache bash tzdata libxslt-dev mysql-dev && \
       bundle config build.nokogiri --use-system-libraries && \
       bundle install --jobs=8 --without=development test && \
       find $GEM_HOME -name Gemfile.lock -exec rm '{}' \; && \
+      find $GEM_HOME -name yarn.lock -exec rm '{}' \; && \
       apk del build-dependencies && \
       chown nobody -R /app/tmp
 
