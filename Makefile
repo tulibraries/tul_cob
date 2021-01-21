@@ -63,7 +63,7 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 	# @see https://github.com/rails/webpacker/issues/2674
-	RAILS_ENV=test $(DOCKER) exec app bundle exec rails webpacker:compile
+	$(DOCKER) exec app RAILS_ENV=test bundle exec rails webpacker:compile
 
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= 1.0.14
