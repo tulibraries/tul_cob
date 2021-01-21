@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "5.2.1",
+    "@rails/webpacker": "5.1.1",
     "@stimulus/polyfills": "^1.1.0",
     "axios": "0.21.1",
     "babel-preset-es2015": "^6.24.1",
