@@ -660,7 +660,7 @@ DEPENDENCIES
   vcr
   web-console
   webmock
-  webpacker (~> 6.x)
+  webpacker (= 6.0.0.pre.2)
 
 BUNDLED WITH
    2.1.4

@@ -92,7 +92,7 @@ gem "awesome_print"
 gem "bento_search"
 gem "omniauth-shibboleth"
 gem "skylight"
-gem 'webpacker', '~> 6.x'
+gem "webpacker", "6.0.0.pre.2"
 gem "google-analytics-rails", "1.1.1"
 gem "primo", git: "https://github.com/tulibraries/primo", branch: "main"
 gem "bootsnap"
