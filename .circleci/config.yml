@@ -50,14 +50,15 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v4-{{ arch }}-{{ .Branch }}
-            - gem-cache-v4-{{ arch }}
-            - yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v6-{{ arch }}-{{ .Branch }}
+            - gem-cache-v6-{{ arch }}
+            - yarn-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       
       - setup_remote_docker:
           docker_layer_caching: false
+          version: 19.03.13
 
       - run:
           name: Build app
@@ -78,13 +79,13 @@ jobs:
       - run:
           name: Copy the node_modules from the container to local
           command: make ci-copy-node-modules-to-local
-      
+
       - save_cache:
-          key: gem-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
       - save_cache:    
-          key: yarn-cache-v4-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 

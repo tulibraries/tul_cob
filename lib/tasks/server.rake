@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "solr_wrapper" unless Rails.env.production?
-
 desc "Run test suite"
 task :ci, [:spec_args] do |_, args|
   Rake::Task["tul_cob:solr:load_fixtures"].invoke
