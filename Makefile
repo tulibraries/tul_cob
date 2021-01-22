@@ -64,7 +64,7 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 IMAGE ?= tulibraries/tul_cob
-VERSION ?= 1.0.14
+VERSION ?= 2.0.0
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 ASSETS_PRECOMPILE=no
@@ -119,7 +119,7 @@ shell:
 
 CI ?= false
 
-secure:
+scan:
 	@if [ $(CLEAR_CACHES) == yes ]; \
 		then \
 			trivy image -c $(HARBOR)/$(IMAGE):$(VERSION); \
@@ -129,7 +129,7 @@ secure:
 			trivy $(HARBOR)/$(IMAGE):$(VERSION); \
 		fi
 
-deploy: secure
+deploy: scan
 	@docker push $(HARBOR)/$(IMAGE):$(VERSION) \
 	# This "if" statement needs to be a one liner or it will fail.
 	# Do not edit indentation
