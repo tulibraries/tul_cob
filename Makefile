@@ -96,7 +96,7 @@ run:
 		-e "COB_DB_NAME=$(COB_DB_NAME)" \
 		-e "COB_DB_HOST=$(COB_DB_HOST)" \
 		-e "K8=yes" \
-		-v `pwd`/config/alma.yml:/app/config/alma.yml \
+		-v `pwd`/config/alma.yml.local:/app/config/alma.yml \
 		-v `pwd`/config/bento.yml:/app/config/bento.yml \
 		--rm -it \
 		$(HARBOR)/$(IMAGE):$(VERSION)
