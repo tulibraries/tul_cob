@@ -5,7 +5,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     items = super
     if facet_field == "library_facet"
       # Filter out secondary facets that do not match library
-      items = items.select { |i| i.value.match?(/#{facet_value}/) }
+      items = items.select { |i| i.value.match?(/#{value}/) }
       # Add proper secondary facet labels
       items.each { |i| i.label = i.value.split(" - ", 2).last }
     end
@@ -49,7 +49,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     return true if super
     if facet_config.pivot
       field = facet_item.respond_to?(:field) ? facet_item.field : facet_field
-      return search_state.has_facet? view_context.facet_configuration_for_field(field), value: facet_value
+      return search_state.has_facet? view_context.facet_configuration_for_field(field), value: value
     end
     return false
   end
