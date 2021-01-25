@@ -78,7 +78,7 @@ gem "cob_index",
   branch: "main"
 
 gem "rsolr", "~> 2.3"
-gem "devise"
+gem "devise", github: "heartcombo/devise", branch: "ca-omniauth-2"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
