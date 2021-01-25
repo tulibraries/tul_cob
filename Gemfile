@@ -78,6 +78,8 @@ gem "cob_index",
   branch: "main"
 
 gem "rsolr", "~> 2.3"
+# Pinned to branch to work with omniauth v2.
+# We will want to remove the branch once devise has been updated.
 gem "devise", github: "heartcombo/devise", branch: "ca-omniauth-2"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
