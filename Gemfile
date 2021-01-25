@@ -59,7 +59,7 @@ group :development, :test do
   gem "launchy"
   gem "foreman"
   gem "vcr"
-  gem "rack-mini-profiler"
+  gem "rack-mini-profiler", require: false
   gem "rails-controller-testing"
   gem "rubocop"
   gem "rubocop-rails"
