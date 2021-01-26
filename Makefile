@@ -71,33 +71,31 @@ ASSETS_PRECOMPILE=no
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
-		-e "RAILS_ENV=production" \
-		-e "RAILS_SERVE_STATIC_FILES=yes" \
-		-e "EXECJS_RUNTIME=Disabled" \
-		-e "AZ_CLIENT_SECRET=$(AZ_CLIENT_SECRET)" \
-		-e "AZ_CLIENT_ID=$(AZ_CLIENT_ID)" \
 		-e "ALMA_API_KEY=$(ALMA_API_KEY)" \
-		-e "ALMA_INSTITUTION_CODE=$(ALMA_INSTITUTION_CODE)" \
-		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_AUTH_SECRET)" \
 		-e "ALMA_AUTH_SECRET=$(ALMA_AUTH_SECRET)" \
+		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_AUTH_SECRET)" \
 		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_DELIVERY_DOMAIN)" \
-		-e "OCLC_WS_KEY=$(OCLC_WS_KEY)" \
-		-e "SOLR_AUTH_USER=$(SOLR_AUTH_USER)" \
-		-e "SOLR_AUTH_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
-		-e "SOLRCLOUD_HOST=$(SOLRCLOUD_HOST)" \
-		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
-		-e "SOLRCLOUD_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
-		-e "SOLR_IP=$(SOLR_IP)" \
+		-e "ALMA_INSTITUTION_CODE=$(ALMA_INSTITUTION_CODE)" \
+		-e "AZ_CLIENT_ID=$(AZ_CLIENT_ID)" \
+		-e "AZ_CLIENT_SECRET=$(AZ_CLIENT_SECRET)" \
+		-e "COB_DB_HOST=$(COB_DB_HOST)" \
+		-e "COB_DB_NAME=$(COB_DB_NAME)" \
+		-e "COB_DB_PASSWORD=$(COB_DB_PASSWORD)" \
+		-e "COB_DB_USER=$(COB_DB_USER)" \
+		-e "EXECJS_RUNTIME=Disabled" \
 		-e "LIB_GUIDES_API_KEY=$(LIB_GUIDES_API_KEY)" \
 		-e "LIB_GUIDES_SITE_ID=$(LIB_GUIDES_SITE_ID)" \
+		-e "OCLC_WS_KEY=$(OCLC_WS_KEY)" \
+		-e "RAILS_ENV=production" \
+		-e "RAILS_SERVE_STATIC_FILES=yes" \
 		-e "SECRET_KEY_BASE=$(SECRET_KEY_BASE)" \
-		-e "COB_DB_USER=$(COB_DB_USER)" \
-		-e "COB_DB_PASSWORD=$(COB_DB_PASSWORD)" \
-		-e "COB_DB_NAME=$(COB_DB_NAME)" \
-		-e "COB_DB_HOST=$(COB_DB_HOST)" \
+		-e "SOLRCLOUD_HOST=$(SOLRCLOUD_HOST)" \
+		-e "SOLRCLOUD_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
+		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
 		-e "K8=yes" \
 		-v `pwd`/config/alma.yml.local:/app/config/alma.yml \
 		-v `pwd`/config/bento.yml:/app/config/bento.yml \
+		-v `pwd`/config/secrets.yml:/app/config/secrets.yml \
 		--rm -it \
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
