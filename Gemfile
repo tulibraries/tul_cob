@@ -69,7 +69,7 @@ group :development, :test do
   gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
     branch: "main"
 
-  gem "capybara", "3.34.0"
+  gem "capybara", "3.35.0"
   gem "webmock"
 end
 
