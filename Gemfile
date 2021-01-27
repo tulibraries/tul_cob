@@ -40,7 +40,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 7.13.2"
+gem "blacklight", "~> 7.15.0"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc"
 gem "blacklight_range_limit"
@@ -69,7 +69,7 @@ group :development, :test do
   gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
     branch: "main"
 
-  gem "capybara", "3.34.0"
+  gem "capybara", "3.35.0"
   gem "webmock"
 end
 
