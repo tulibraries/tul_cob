@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 1d138dd40cdc291a427b89027d16a869818a5c19
+  revision: e16d60d0fedc5f5e6f541b2b9e901a2d53f8ceda
   branch: ca-omniauth-2
   specs:
     devise (4.7.3)
