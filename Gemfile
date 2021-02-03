@@ -17,7 +17,7 @@ gem "coffee-rails", "~> 5.0"
 gem "autoprefixer-rails"
 gem "execjs"
 gem "bootstrap-select-rails"
-gem "bootstrap", "~> 4.5"
+gem "bootstrap", "~> 4.6"
 
 # Use jquery as the JavaScript library
 gem "jquery-rails"
