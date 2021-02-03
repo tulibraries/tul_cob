@@ -301,7 +301,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.8.8)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.11.1)
+    jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jquery-rails (4.4.0)
       rails-dom-testing (>= 1, < 3)
@@ -639,7 +639,7 @@ DEPENDENCIES
   hashie (~> 3.6.0)
   honeybadger (= 4.7.2)
   httparty
-  jbuilder (~> 2.10)
+  jbuilder (~> 2.11)
   jquery-rails
   launchy
   lc_solr_sortable!
