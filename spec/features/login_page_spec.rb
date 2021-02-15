@@ -20,4 +20,9 @@ RSpec.feature "Login Page" do
     visit "/users/sign_in"
     expect(page).to have_link("Students, faculty, staff and registered alumni")
   end
+
+  it "does not error out if we try to follow shibboleth path" do
+    visit "/users/auth/shibboleth"
+    expect(status_code).to be 200
+  end
 end
