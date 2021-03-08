@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: 4173fefd668fbedf299c5ae93ae7532ffa3c0763
+  revision: 0a2ca7b6ef9483139b1bbe2d499eefbb0cf7ada7
   specs:
     blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
@@ -357,7 +357,7 @@ GEM
     mysql2 (0.5.3)
     nenv (0.3.0)
     netrc (0.11.0)
-    nio4r (2.5.5)
+    nio4r (2.5.7)
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
@@ -567,7 +567,7 @@ GEM
     unf_ext (0.0.7.7)
     unicode-display_width (2.0.0)
     vcr (6.0.0)
-    view_component (2.25.1)
+    view_component (2.26.1)
       activesupport (>= 5.0.0, < 7.0)
     warden (1.2.9)
       rack (>= 2.0.9)
