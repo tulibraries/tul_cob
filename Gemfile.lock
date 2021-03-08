@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/heartcombo/devise.git
-  revision: e16d60d0fedc5f5e6f541b2b9e901a2d53f8ceda
-  branch: ca-omniauth-2
-  specs:
-    devise (4.7.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-
-GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
   revision: 4173fefd668fbedf299c5ae93ae7532ffa3c0763
   specs:
@@ -231,6 +219,12 @@ GEM
     database_cleaner-core (2.0.1)
     deprecation (1.1.0)
       activesupport
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     devise-guests (0.7.0)
       devise
     diff-lcs (1.4.4)
@@ -371,10 +365,9 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     okcomputer (1.18.4)
-    omniauth (2.0.3)
+    omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-      rack-protection
     omniauth-shibboleth (1.3.0)
       omniauth (>= 1.0.0)
     openurl (1.0.0)
@@ -399,8 +392,6 @@ GEM
     rack (2.2.3)
     rack-mini-profiler (2.3.1)
       rack (>= 1.2.0)
-    rack-protection (2.1.0)
-      rack
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
@@ -630,7 +621,7 @@ DEPENDENCIES
   coveralls
   dalli
   database_cleaner
-  devise!
+  devise
   devise-guests (~> 0.7)
   dotenv-rails
   execjs
