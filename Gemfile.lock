@@ -153,7 +153,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.2.4.0)
       execjs
-    awesome_print (1.8.0)
+    awesome_print (1.9.2)
     bcrypt (3.1.16)
     bento_search (1.7.0)
       confstruct (~> 1.0)
