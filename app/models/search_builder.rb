@@ -137,7 +137,11 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def add_lc_range_search_to_solr(solr_params)
     return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
+
     lc_range = blacklight_params["range"]["lc_classification"]
+
+    return if lc_range["begin"].blank? && lc_range["end"].blank?
+
     _begin = lc_range["begin"].blank? ? "*" : LcSolrSortable.convert(lc_range["begin"])
     _end = lc_range["end"].blank? ? "*" : LcSolrSortable.convert(lc_range["end"])
     solr_params[:fq] << "lc_call_number_sort: [#{_begin} TO #{_end}]"
