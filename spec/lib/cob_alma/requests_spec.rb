@@ -83,7 +83,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.4 (1976)" => ["AMBLER", "GINSBURG", "HARRISBURG"],
+        expect(subject).to eq("v.4 (1976)" => ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"],
                               "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"])
       end
     end
@@ -92,7 +92,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_multiple_libraries") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "HARRISBURG"])
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "GINSBURG", "HARRISBURG"])
       end
     end
   end
