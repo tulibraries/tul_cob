@@ -1,0 +1,17 @@
+*/tmp*
+tags
+
+node_modules
+!/log/.keep
+!/tmp/.keep
+
+.gitignore
+
+.git
+.gitignore
+.DS_Store
+README.md
+/Dockerfile
+/log
+
+/solr

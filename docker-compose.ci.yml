@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: .docker/ci-app/Dockerfile
+      dockerfile: .docker/ci-app/Dockerfile.ci
     ports:
       - "3000"
     environment:
@@ -22,7 +22,7 @@ services:
   solr: 
     build:
       context: .
-      dockerfile: .docker/solr/Dockerfile
+      dockerfile: .docker/solr/Dockerfile.solr
     ports: 
       - "8993:8983"
     command:

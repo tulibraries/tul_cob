@@ -177,6 +177,14 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(facets).to be_nil
       end
     end
+
+    context "rtype field with value books" do
+      let (:facets) { primo_central_parameters[:query][:q].exclude_facets }
+      let(:params) { ActionController::Parameters.new(f: { rtype: ["books"] }) }
+      it "should exclude facet" do
+        expect(facets).to eq("facet_rtype,exact,books")
+      end
+    end
   end
 
   describe ".process_date_range_query" do
