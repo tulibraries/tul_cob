@@ -51,16 +51,18 @@ function getBookCoverImages(response) {
 function getBookPreviews(response) {
   for (var bib in response) {
     b = response[bib];
-    if(b.hasOwnProperty("preview_url")) {
-      if(b.preview == "full" || b.preview == "partial") {
+    if(b.preview != "noview") {
+      if(b.hasOwnProperty("preview_url")) {
+        if(b.preview == "full" || b.preview == "partial") {
+          type = b.bib_key.split(":")[0];
+          identifier = b.bib_key.split(":")[1];
+          $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
+          break;
+        }
         type = b.bib_key.split(":")[0];
         identifier = b.bib_key.split(":")[1];
         $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
-        break;
       }
-      type = b.bib_key.split(":")[0];
-      identifier = b.bib_key.split(":")[1];
-      $('[data-' + type.toLowerCase() + '*=' + identifier + '] .preview').attr("href", b.preview_url).removeClass("invisible").addClass("google-preview");
     }
   }
 }
