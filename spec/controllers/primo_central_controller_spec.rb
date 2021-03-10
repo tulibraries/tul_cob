@@ -54,35 +54,4 @@ RSpec.describe PrimoCentralController, type: :controller do
       expect(response.body).to include "error-header not-found"
     end
   end
-
-  describe "artile_doi action" do
-    context "fullTextFile present" do
-      it "redirects you" do
-        stub_request(:get, /articles/)
-          .to_return(status: 200,
-                    headers: { "Content-Type" => "application/json" },
-                    body: JSON.dump(data: {
-                      fullTextFile: "https://www.google.com",
-                      contentLocation: "https//www.temple.edu"
-                    }))
-
-        get "article_doi", params: { artile_doi: "foo" }
-
-        expect(response).to redirect_to("https://www.google.com")
-      end
-    end
-
-    context "contentLocation present" do
-      it "redirects you" do
-        stub_request(:get, /articles/)
-          .to_return(status: 200,
-                    headers: { "Content-Type" => "application/json" },
-                    body: JSON.dump(data: { contentLocation: "https://www.temple.edu" }))
-
-        get "article_doi", params: { artile_doi: "foo" }
-
-        expect(response).to redirect_to("https://www.temple.edu")
-      end
-    end
-  end
 end

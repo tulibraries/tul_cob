@@ -59,6 +59,10 @@ module Blacklight::PrimoCentral::Document
 
     doc["doi"] = doc.dig("pnx", "addata", "doi")
 
+    @doi = doc["doi"]&.first
+
+    @libkey_url_thread = libkey_url_thread
+
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
     end
@@ -86,6 +90,10 @@ module Blacklight::PrimoCentral::Document
     false
   end
 
+  def libkey_url
+    @libkey_url_thread.value
+  end
+
 
   private
 
@@ -108,7 +116,6 @@ module Blacklight::PrimoCentral::Document
       doc.dig("delivery", "GetIt1", 0, "links", 0) || {}
     end
 
-
     def url_query
       query = (URI.parse(@url).query rescue nil)
       if (query)
@@ -129,5 +136,18 @@ module Blacklight::PrimoCentral::Document
 
     def issn
       @url_query["rft.issn"]
+    end
+
+    def libkey_url_thread
+      return Thread.new {} if @doi.blank?
+
+      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+      libkey_url = "https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/#{@doi}?access_token=#{access_token}"
+
+      Thread.new {
+        (HTTParty.get(libkey_url, timeout: 2) rescue {})["data"]
+          &.slice("fullTextFile", "contentLocation")
+          &.values&.find(&:present?)
+      }
     end
 end
