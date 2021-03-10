@@ -72,16 +72,20 @@ module CobAlma
     end
 
     def self.item_level_locations(items_list)
+      #Refactored to temporarily allow items to be picked up at Charles
       pickup_locations = self.possible_pickup_locations
 
       items_list.all.reduce({}) { |libraries, item|
         desc = item.description
-        campus = determine_campus(item.library)
+        campus = self.determine_campus(item.library)
+        removals = []
 
         if libraries[desc].present?
-          libraries[desc] -= remove_by_campus(campus)
+          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+          libraries[desc] -= removals
         else
-          libraries[desc] = pickup_locations - remove_by_campus(campus)
+          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+          libraries[desc] = pickup_locations - removals
         end
 
         libraries
