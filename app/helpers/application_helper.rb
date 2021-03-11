@@ -91,8 +91,9 @@ module ApplicationHelper
   # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
+
     case results.engine_id
-    when "blacklight"
+    when "blacklight", "books_and_media"
       url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
       link_to "View all #{total} online items", url, class: "full-results"
     when "journals"
@@ -101,8 +102,6 @@ module ApplicationHelper
         availability_facet: ["Online"]
       })
       link_to "View all #{total} online journals", url, class: "full-results"
-    when "books_and_media"
-      ""
     when "articles"
       url = url_for(
         action: :index, controller: :primo_central,
