@@ -138,6 +138,12 @@ module AdvancedHelper
       render "pub_date_sort_facet"
     end
   end
+
+  def render_classification_range
+    if blacklight_config.facet_fields["lc_facet"]
+      render "classification_range"
+    end
+  end
 end
 
 module BlacklightAdvancedSearch
