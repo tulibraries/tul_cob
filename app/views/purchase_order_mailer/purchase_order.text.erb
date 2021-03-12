@@ -1,4 +1,4 @@
-We have received your request for the following title. Access will generally be enabled within 2 business days. An email notification will be sent when the material is available for use.
+We have received your request for the following title. Access is generally granted within 2 business days. You will receive an email notification when the title is available for use.
 
 Requested by <%= "#{@from[:name]}" %>
 Email: <%= "#{@from[:email]}" %>
@@ -6,4 +6,3 @@ Email: <%= "#{@from[:email]}" %>
 <%= @document.to_email_text %>
 <%= t('blacklight.email.text.url', :url =>polymorphic_url(@document, @url_gen_params)) %>
 <%= t('blacklight.email.text.message', :message => @message) %>
-
