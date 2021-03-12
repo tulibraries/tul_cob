@@ -104,7 +104,9 @@ a.clear-bookmarks {
 }
 
 .toggle-bookmark {
-  text-align: right !important;
+  @media(min-width: 768px) {
+    text-align: right;
+	}
 }
 
 .bookmark-sunset {
