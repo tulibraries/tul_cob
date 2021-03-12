@@ -70,6 +70,8 @@ class User < ApplicationRecord
       "Law Faculty" => "16",
       "Law General" => "17",
       "Library Staff" => "22",
+      "Faculty/Admin-Japan" => "21",
+      "HSL Student" => "19",
     }.values.include? alma.user_group["value"] rescue false
   end
 
