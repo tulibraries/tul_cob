@@ -3,5 +3,5 @@
 <% document = item.custom_data %>
 
 <% if with_libkey? && document.libkey_url.present? %>
-  <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn btn-sm bento-avail-btn bento-libkey", target: "_blank" %>
+    <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn btn-sm bento-avail-btn bento-libkey mx-auto pr-0", target: "_blank" %>
 <% end %>
