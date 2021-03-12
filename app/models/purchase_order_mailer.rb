@@ -7,7 +7,7 @@ class PurchaseOrderMailer < RecordMailer
             rescue
               I18n.t("blacklight.email.text.default_title")
             end
-    subject = "Purchase on Demand: " + title.first
+    subject = "Request Rapid Access: " + title.first
 
     @document       = document
     @message        = details[:message]
