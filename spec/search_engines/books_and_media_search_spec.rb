@@ -48,6 +48,11 @@ RSpec.describe BentoSearch, type: :search_engine do
       expect(_builder.processor_chain).to include(:availability_facet_only)
     end
 
+    it "Appends :with_format_facet to proccessor_chain" do
+      _builder = search_engine.proc_minus_journals[builder]
+      expect(_builder.processor_chain).to include(:with_format_facet)
+    end
+
   end
 
 end
