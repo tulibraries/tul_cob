@@ -107,6 +107,24 @@ a.clear-bookmarks {
   @media(min-width: 768px) {
     text-align: right;
 	}
+  @media(max-width: 768px) {
+    display: block;
+
+    input {
+      position: absolute;
+      left: -9999px;
+    }
+	}
+}
+
+#bookmark_button {
+  font-size: 1rem;
+  padding-bottom: 0.125rem;
+  padding-top: 0.25rem;
+
+  @media(min-width: 768px) {
+    text-align: right;
+	}
 }
 
 .bookmark-sunset {
