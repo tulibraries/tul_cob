@@ -97,10 +97,7 @@ module ApplicationHelper
       url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
       link_to "View all #{total} online items", url, class: "full-results"
     when "journals"
-      url = search_catalog_path(q: params[:q], f: {
-        format: ["Journal/Periodical"],
-        availability_facet: ["Online"]
-      })
+      url = search_journals_path(q: params[:q], f: { availability_facet: ["Online"] })
       link_to "View all #{total} online journals", url, class: "full-results"
     when "articles"
       url = url_for(
