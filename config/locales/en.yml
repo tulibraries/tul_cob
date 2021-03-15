@@ -1,5 +1,9 @@
 en:
-  purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
+  purchase_order:
+    purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
+    purchase_order_text_1: "Please submit this form to request access to the following ebook:"
+    purchase_order_text_2: "Access is generally granted within 2 business days. You will receive an email notification when the title is available for use."
+    purchase_order_extra_instructions: "You may add extra instructions in the message field below if desired."
   blacklight:
     application_name: "Library Search"
     section_heading_html: "<strong>Books & Media</strong> includes print books and ebooks, streaming audio and video, DVDs, musical scores, government documents, materials in our special and digital collections, and other online resources."
