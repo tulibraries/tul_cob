@@ -14,8 +14,8 @@ class SearchBuilder < Blacklight::SearchBuilder
         add_advanced_search_to_solr
         add_lc_range_search_to_solr
         spellcheck
-        filter_suppressed
         limit_facets
+        filter_suppressed
         sorting_preferences ]
 
   if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
@@ -108,10 +108,6 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def substitute_special_chars(value, _)
     value.gsub(/([:?]|\(\))/, " ") rescue value
-  end
-
-  def no_journals(solr_parameters)
-    solr_parameters["fq"] = ["!format:Journal/Periodical"]
   end
 
   ##
