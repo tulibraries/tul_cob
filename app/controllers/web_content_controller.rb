@@ -12,6 +12,7 @@ class WebContentController < CatalogController
     config.connection_config[:url] = config.connection_config[:web_content_url]
     config.track_search_session = false
     config.index.title_field = "web_title_display"
+    config.search_builder_class = ::SearchBuilder
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params = {}
 
