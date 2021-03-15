@@ -45,6 +45,7 @@ $(document).ready(function(){
       {class: "temp-help-btn", category: "search-results"},
       {class: "google-preview", category: "record-page"},
       {class: "hathitrust-link", category: "search-results"},
+			{class: "libkey-btn", category: "search-results"},
 			{class: "pivot-top-level-expand", category: "search-results"},
 			{class: "pivot-facet-outer", category: "search-results"},
 			{class: "pivot-facet-inner", category: "search-results"},
