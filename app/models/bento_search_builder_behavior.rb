@@ -19,7 +19,14 @@ module BentoSearchBuilderBehavior
 
   def availability_facet_only(solr_params)
     # Facet on one field and return no result rows.
-    solr_params["facet.field"] = "availability_facet"
+    solr_params["facet.field"] = [ "availability_facet" ]
     solr_params["facets"] = true
+  end
+
+  def with_format_facet(solr_params)
+    if solr_params["facet.field"].exclude?("format")
+      solr_params["facet.field"].push("format")
+      solr_params["facets"] = true
+    end
   end
 end
