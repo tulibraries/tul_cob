@@ -676,6 +676,31 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#_build_guest_login_libwizard_url(document)" do
+    let(:base_url) { "https://temple.libwizard.com/f/ContinueAsGuest?" }
+    let(:constructed_url) { helper._build_guest_login_libwizard_url(document) }
+    context "document is missing all data" do
+      let(:document) { {} }
+      it "returns a url with no params" do
+        expect(constructed_url).to eq base_url
+      end
+    end
+    context "when mappable fields are present" do
+      let(:document) {
+        {
+        "title_statement_display" => ["title"],
+        "pub_date" => ["2020"],
+        "edition_display" => ["1st edition"],
+        }
+      }
+      it "maps the expected parameters" do
+        expect(constructed_url).to include("rft.title=title")
+        expect(constructed_url).to include("rft.date=2020")
+        expect(constructed_url).to include("edition=1st+edition")
+      end
+    end
+  end
+
   describe "#_build_libwizard_url(document)" do
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
     let(:constructed_url) { helper._build_libwizard_url(document) }
