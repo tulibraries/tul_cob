@@ -256,11 +256,11 @@ module CatalogHelper
     field = presenter.send(:fields)["purchase_order_availability"]
 
     if field.with_panel
-      rows = [ t("purchase_order_allowed") ]
+      rows = [ t("purchase_order.purchase_order_allowed") ]
       render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
+      content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability border border-header-grey"
     else
       render_purchase_order_button(document: doc, config: field)
     end
