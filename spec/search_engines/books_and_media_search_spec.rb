@@ -34,14 +34,16 @@ RSpec.describe BentoSearch, type: :search_engine do
     let(:controller) { CatalogController.new }
     let(:builder) { SearchBuilder.new(controller) }
 
-    it "does not affect builder.proccessor_chain automatically" do
-      expect(builder.processor_chain).not_to include(:no_journals)
+    it "Appends :availability_facet_only to proccessor_chain" do
+      _builder = search_engine.proc_minus_journals[builder]
+      expect(_builder.processor_chain).to include(:availability_facet_only)
     end
 
-    it "Appends :no_journals processor to processor_chain" do
+    it "Appends :with_format_facet to proccessor_chain" do
       _builder = search_engine.proc_minus_journals[builder]
-      expect(_builder.processor_chain).to include(:no_journals)
+      expect(_builder.processor_chain).to include(:with_format_facet)
     end
+
   end
 
 end

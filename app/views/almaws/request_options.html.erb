@@ -1,25 +1,34 @@
 <div class="modal-header request-options-header justify-space-between">
   <h1 id="modal-title"><%= t("requests.header") %></h1>
-  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><%= modal_exit_button_name(@make_modal_link) %></span></button>
 </div>
 
 <div class="modal-body">
-  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+  <div class="faq-text-box border border-red rounded mb-2">
+    <p class="mb-0"><%= t("requests.text_box_html", href: link_to(t("requests.text_box_href"), t("requests.text_box_link"), target: "_blank")) %></p>
+  </div>
 
+  <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
+  <% if @items.any?(&:in_place?) %>
+    <%= open_shelves_partial(@request_options, @books, @document) %>
+  <% end %>
   <%= asrs_allowed_partial(@request_options, @document) %>
   <%= hold_allowed_partial(@request_options, @document) %>
   <%= digitization_allowed_partial(@request_options, @document) %>
   <%= booking_allowed_partial(@request_options, @document) %>
   <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
   <%= aeon_request_partial(@request_options, @document) %>
+  <%= digital_copy_partial(@request_options, @books, @document) %>
   <%= no_temple_request_options_available(@request_options, @books, @document) %>
 
   </div>
 </div>
 
-<!-- <div class="modal-footer justify-content-between">
-  <p class="modal-footer-text"> -->
-    <% t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %>
-  <!-- </p>
+<div class="modal-footer justify-content-between">
+  <!-- The text/icon in the footer needs to be hidden when the libraries are closed -->
+  <% unless campus_closed? %>
+  <p class="modal-footer-text">
+    <span class="request-options-footer-text"><%= t("requests.footer_html", href: link_to(t("requests.footer_href"), t("requests.footer_link"), target: "_blank")) %></span>
+  </p>
+  <% end %>
   <button type="button" class="btn btn-default border-light-grey" data-target="cancel" data-dismiss="modal"><%= t("requests.cancel") %></button>
-</div> -->
+</div>

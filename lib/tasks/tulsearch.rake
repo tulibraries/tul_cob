@@ -7,14 +7,26 @@ namespace :tul_cob do
 
     desc "Posts fixtures to Solr"
     task :load_fixtures, [:filepath] do |t, args|
-      fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
-      if ENV["RELEVANCE"]
-        fixtures += Dir.glob("spec/relevance/fixtures/*.xml")
+      solr_url = Blacklight::Configuration.new.connection_config[:url]
+
+      if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
+        abort "Cannot run :load_fixtures task on production server"
       end
 
+      puts "Prepping spec fixtures for ingest..."
+      fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
+
+
+      if ENV["DO_INGEST"].present?
+        puts "Adding sample data to ingest prep..."
+        fixtures += Dir.glob("sample_data/**/*.xml").sort
+      end
+
+      puts "Loading catalog fixtures..."
       solr_url = Blacklight::Configuration.new.connection_config[:url]
       fixtures.sort.reverse.each  do |file|
-        `SOLR_URL=#{solr_url} cob_index ingest #{file}`
+        puts "Ingesting #{file}"
+        system("SOLR_URL=#{solr_url} cob_index ingest #{file}")
       end
       solr = RSolr.connect url: solr_url
       solr.commit
@@ -25,16 +37,19 @@ namespace :tul_cob do
         next
       end
 
+      puts "Loading cob_az_index fixtures..."
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
+      system("SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete")
 
+
+      puts "Loading cob_web_index fixtures..."
       web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-      `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
+      system("SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete")
     end
 
     desc "Delete all items from Solr"
     task :clean do
-      solr = RSolr.connect url: Blacklight.connection_config[:url]
+      solr = RSolr.connect url: Blacklight.connection_config[:url], update_format: :xml
       solr.update data: "<delete><query>*:*</query></delete>"
       solr.update data: "<commit/>"
     end
@@ -46,14 +61,23 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   file = args[:filepath]
   solr_url = Blacklight::Configuration.new.connection_config[:url]
 
+  if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
+    abort "Cannot run :ingest task on production server"
+  end
+
   if file && file.match?(/databases.json/)
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
     `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
+  elsif file && file.match(/\/web_content/)
+    web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
+    `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
   elsif file
     `SOLR_URL=#{solr_url} cob_index ingest --commit #{args[:filepath]}`
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |f|
-      `SOLR_URL=#{solr_url} cob_index ingest --commit #{f}`
+      `SOLR_URL=#{solr_url} cob_index ingest #{f}`
     end
+
+    `SOLR_URL=#{solr_url} cob_index commit`
   end
 end

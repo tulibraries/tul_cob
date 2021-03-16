@@ -1,5 +1,9 @@
-<div class="location">
-  <%= material["library"] %> (<%= material["location"] %>) <span>(<%= material["call_number"] %>)</span>
+<div class="location text-this-location">
+  <p>Library location:
+    <span class="sms-library"><%= library_name_from_short_code(item["current_library"]) %> - </span>
+    <span><%= location_status(item) %> - </span>
+    <span><%= alternative_call_number(item) %></span>
+  </p>
   <%= render_non_available_status_only(material["availability"]) %>
   <%= hidden_field_tag "barcode", material[:barcode] %>
 </div>

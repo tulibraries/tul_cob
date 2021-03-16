@@ -15,13 +15,6 @@
   padding: 0.5rem;
 }
 
-.avail_status,
-.avail-spinner-container {
-  @media(max-width: 768px) {
-    margin-left: auto !important;
-  }
-}
-
 .library-name {
   font-size: 0.875rem;
   font-weight: bold;
@@ -65,6 +58,10 @@ dd .online-list-items {
 .online-list-items, .online-list-item {
   border-bottom: 0.0625rem solid $dark-blue;
   padding: .5rem;
+}
+
+.direct-link {
+  border-top: 0!important;
 }
 
 .library-name {
@@ -183,4 +180,26 @@ button.btn-success, button.btn-success:focus, button.btn-success:hover, button.b
   @media(max-width: 768px) {
     padding-left: 0;
   }
+}
+
+.avail_status-container, .avail-spinner-container {
+  width: 25%;
+  @media (max-width: 991px) {
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 7px;
+  }
+}
+
+/* === LIBKEY BUTTON STYLES === */
+.libkey-btn,
+.libkey-btn:hover,
+.libkey-btn:active,
+.libkey-btn:visited {
+  font-size: 0.9375rem;
+  margin-top: 0.6rem;
+  padding: 0.28rem 0.5rem;
+  width: 10.5rem;
+
+
 }

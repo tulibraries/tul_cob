@@ -17,14 +17,14 @@
       <%= form.text_field :chapter_or_article_author, class: "request-form form-control", value: @author, required: true, "aria-required": true, pattern: ".*[^ ].*" %>
     </div>
 
-    <% if @request_level == "item" && @description.count > 1 %>
-      <div class="form-group row">
+    <% if @request_level == "item" && @description.to_h.values.flatten.count > 1 %>
+      <div class="form-group hold-form">
         <%= form.label(:digitization_description, t("requests.form.description_label_html")) %>
         <p><%= t("requests.form.description_additional_text") %></p>
-        <%= select_tag(:digitization_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
+        <%= select_tag(:digitization_description, grouped_options_for_select(@description), class: "request-form form-control", include_blank: true) %>
       </div>
     <% else %>
-      <%= form.hidden_field :digitization_description, value: @description %>
+      <%= form.hidden_field :digitization_description, value: @description.flatten.last %>
     <% end %>
 
     <div class="form-group row">
@@ -45,7 +45,7 @@
       <%= render "format_date_message" %>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group hold-form">
       <%= form.label(:digitization_comment, t("requests.form.notes_label_html")) %>
       <p><%= t("requests.form.notes_additional_text") %></p>
       <%= form.text_area :digitization_comment, class: "request-form form-control" %>

@@ -14,6 +14,33 @@ button.collapse-button.collapsed .avail-label:after {
   padding-left: 0.625rem;
 }
 
+.lib-guides-recommender-bento [data-toggle="collapse"] i:before{
+    content: "\f078";
+}
+
+.lib-guides-recommender-bento [data-toggle="collapse"].collapsed i:before{
+    content: "\f054";
+}
+
+a.booking-request:after,
+a.hold-request:after,
+a.digital-request:after,
+a.asrs-request:after {
+  color: $red;
+  content:"\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  float: right;
+  padding-right: 0.625rem;
+}
+
+a.booking-request[aria-expanded="true"]::after,
+a.hold-request[aria-expanded="true"]::after,
+a.digital-request[aria-expanded="true"]::after,
+a.asrs-request[aria-expanded="true"]::after {
+  content:"\f078";
+}
+
 span.book,
 span.ebooks,
 span.book_book_chapter,
@@ -35,6 +62,7 @@ span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_pr
 }
 span.newspaper_article,
 span.newspapers,
+span.newspaper,
 span.reference_entry,
 span.article,
 span.review,
@@ -101,6 +129,7 @@ a.facet_videos {
   padding-top: .25rem;
 }
 span.archival_material,
+span.archival_material_manuscript,
 a.facet_archival_material,
 a.facet_archival_material_manuscripts {
   background: transparent url(<%= asset_path "noun_archive.svg" %>) no-repeat center left;
@@ -146,6 +175,7 @@ a.facet_media {
   padding-left: 1.9rem;
   padding-top: .25rem;
 }
+span.computer_file,
 span.computer_media,
 a.facet_computer_files,
 a.facet_computer_media {
@@ -170,6 +200,7 @@ a.facet_maps {
 }
 span.dataset,
 span.datasets,
+span.market_research,
 span.research_dataset,
 span.statistical_data_set,
 a.facet_dataset,
@@ -204,11 +235,18 @@ span.reference,
   padding-top: .25rem;
 }
 span.reference,
-#facet-az_format a.facet_reference {
+#facet-az_format a.facet_reference,
+#facet-az_format span.reference {
   background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 }
+#facet-az_subject_facet a.reference {
+  background: none;
+  padding-left: initial;
+  padding-top: initial;
+}
+
 span.unknown,
 span.other,
 a.facet_unknown,
@@ -275,6 +313,10 @@ span.remove-icon {
   padding-left: 1.25rem;
 }
 
+.range_limit span.remove-icon {
+  display: none;
+}
+
 span.plus-icon {
   background: transparent url(<%= asset_path "icons/plus.svg" %>) no-repeat top left;
   padding-left: 1.25rem;
@@ -303,4 +345,26 @@ span.faq-icon {
 span.external-link-icon {
   background: transparent url(<%= asset_path "noun_external_link.svg" %>) no-repeat center center;
   padding-right: 4rem;
+}
+
+span.request-options-external-link-icon {
+  background: transparent url(<%= asset_path "noun_external_link.svg" %>) no-repeat center center;
+  padding-right: 2rem;
+}
+
+span.libkey-external-link-icon {
+  background: transparent url(<%= asset_path "libkey_external_link.svg" %>) no-repeat center center;
+  padding-right: 1.25rem;
+}
+
+ul.facet-values span.show {
+  background: transparent url(<%= asset_path "icons/catalog_plus_icon.png" %>) no-repeat top left;
+  padding-left: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+ul.facet-values span.hide {
+  background: transparent url(<%= asset_path "icons/catalog_minus_icon.png" %>) no-repeat top left;
+  padding-left: 1.25rem;
+  padding-top: 1.25rem;
 }

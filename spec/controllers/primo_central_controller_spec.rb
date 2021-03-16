@@ -15,6 +15,7 @@ RSpec.describe PrimoCentralController, type: :controller do
     allow(controller).to receive(:helpers).and_return(helpers)
     allow(controller).to receive(:search_service).and_return(search_service)
     allow(search_service).to receive(:fetch).and_return([mock_response, document])
+    allow(search_service).to receive(:search_results).and_return([mock_response, document])
   end
 
   describe "#browse_creator" do
@@ -39,9 +40,18 @@ RSpec.describe PrimoCentralController, type: :controller do
   end
 
   describe "show action" do
+    render_views
+
     it "gets refwork format" do
       get :show, params: { id: 1, format: "refworks" }
       expect(response).to be_successful
+    end
+
+    it "handles a record not found exception", with_rescue: true do
+      allow(search_service).to receive(:fetch).and_raise(Primo::Search::ArticleNotFound, "glub glub glub")
+      get :show, params: { id: 1 }
+      expect(response.code).to eq "404"
+      expect(response.body).to include "error-header not-found"
     end
   end
 end

@@ -12,20 +12,20 @@
     <% if @material_types.present? && @material_types.count > 1 %>
       <div class="row hold-form form-group">
         <%= label("", :material_type, t("requests.form.material_type_html")) %>
-        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        <%= select("", :material_type,@material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control", data: { "action": "form#typeSelect" }}) %>
       </div>
     <% else %>
       <%= form.hidden_field :material_type, value: @material_types.collect { |mat| [ mat.values.first ] }  %>
     <% end %>
 
-    <% if @description.count > 1 %>
-      <div class="row form-group">
+    <% if @description.to_h.values.flatten.count > 1 %>
+      <div class="hold-form form-group">
         <%= form.label(:booking_description, t("requests.form.description_label_html")) %>
         <p><%= t("requests.form.description_additional_text") %></p>
-        <%= select_tag(:booking_description, options_for_select(@description), class: "request-form form-control", include_blank: true) %>
+        <%= select_tag(:booking_description,  grouped_options_for_select(@description), data: { "target": "form.descriptions" }, class: "request-form form-control", include_blank: true) %>
       </div>
     <% else %>
-        <%= form.hidden_field :booking_description, value: @description %>
+        <%= form.hidden_field :booking_description, value: @description.flatten.last %>
     <% end %>
 
     <div class="row hold-form form-group">
@@ -39,7 +39,7 @@
       <%= render "format_date_message" %>
     </div>
 
-    <div class="row hold-form form-group">
+    <div class="hold-form form-group">
       <%= form.label(:booking_comment, t("requests.form.notes_label_html")) %>
       <p><%= t("requests.form.notes_additional_text") %></p>
       <%= form.text_area :booking_comment, class: "request-form form-control" %>

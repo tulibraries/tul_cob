@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: .docker/app/Dockerfile
       target: production
-    container_name: "$ROPER_REPO_BRANCH"
     ports:
       - "3000"
     environment:
@@ -16,11 +15,6 @@ services:
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:${ROPER_REPO_BRANCH}.${DOMAIN}"
-      - "traefik.backend=microbot"
-      - "traefik.docker.network=reverseproxy_default"
     networks:
       - "default"
     entrypoint:

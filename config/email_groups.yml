@@ -1,0 +1,16 @@
+default: &default
+
+test:
+  <<: *default
+
+development:
+  <<: *default
+  RAPID_REQUEST:
+    - librarystaff1@mailinator.com
+    - librarystaff2@mailinator.com
+
+production:
+  <<: *default
+  RAPID_REQUEST:
+    - orders@temple.edu
+    - jbrian@temple.edu

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "spec_helper"
 require "yaml"
 include ApplicationHelper
 
@@ -14,7 +13,7 @@ RSpec.feature "RecordPageFields" do
     before do
       DatabaseCleaner.clean
       DatabaseCleaner.strategy = :truncation
-      user = FactoryBot.create :user
+      user = FactoryBot.build_stubbed :user
       allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
       login_as user, scope: :user
     end
@@ -1073,17 +1072,6 @@ RSpec.feature "RecordPageFields" do
     end
   end
 
-  feature "MARC lccn Fields" do
-    let (:item_010) { fixtures.fetch("lccn_010") }
-    scenario "User visits a document with lccn" do
-      skip
-      visit "catalog/#{item_010['doc_id']}"
-      within "dd.blacklight-lccn_display" do
-        expect(page).to have_text(item_010["lccn"])
-      end
-    end
-  end
-
   feature "MARC gpo Fields" do
     let (:item_074) { fixtures.fetch("gpo_074") }
     scenario "User visits a document with gpo" do
@@ -1282,6 +1270,16 @@ RSpec.feature "RecordPageFields" do
     scenario "Has link to subject" do
       visit "catalog/#{item_600['doc_id']}"
       expect(page).to have_link("#{item_600['subject_display']}")
+    end
+  end
+
+  feature "Multiple facet links" do
+    scenario "Has multiple values in faceted show field" do
+      visit "catalog/991012171319703811"
+      within "dd.blacklight-subject_display" do
+        href = page.find("li[2] a")["href"]
+        expect(href).to eq("/catalog?f[subject_facet][]=Santa+Maria+Antiqua+%28Church+%3A+Rome%2C+Italy%29")
+      end
     end
   end
 end

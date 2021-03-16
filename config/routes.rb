@@ -88,6 +88,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :lib_guides, only: :index
+
   post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
   post "journals/:id/track" => "journal#track"
@@ -148,6 +150,8 @@ Rails.application.routes.draw do
   post "almaws/request/asrs", to: "almaws#send_asrs_request", as: "asrs_request"
   post "almaws/request/booking", to: "almaws#send_booking_request", as: "booking_request"
 
+  get "bookmarks/export/articles", to: "bookmarks#export_articles", as: "export_article_bookmarks"
+
   scope module: "blacklight_alma" do
     get "alma/availability" => "alma#availability"
   end
@@ -159,4 +163,13 @@ Rails.application.routes.draw do
   match "/articles", to: "primo_central#index", as: "search", via: [:get, :post]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "*anything", to: "errors#not_found"
+end
+
+OkComputer::Engine.routes.draw do
+  match "/solr/#{ENV["CATALOG_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-catalog"
+
+  match "/solr/#{ENV["AZ_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-az"
+
+  match "/solr/#{ENV["WEB_CONTENT_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-web-content"
 end

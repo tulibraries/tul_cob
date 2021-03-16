@@ -7,6 +7,7 @@ class AlmawsController < CatalogController
   layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
+  before_action :xhr!, only: [:item, :request_options]
 
   rescue_from Alma::BibItemSet::ResponseError,
     with: :offset_too_large
@@ -14,17 +15,19 @@ class AlmawsController < CatalogController
   def item
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
-
     # TODO: refactor to repository/response/search_behavior ala primo/solr.
     page = (params[:page] || 1).to_i
     limit = (params[:limit] || 100).to_i
     offset = (limit * page) - limit
 
     log = { type: "bib_items_availability" }
-    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset) }
+    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset, expand: "due_date") }
     @response = Blacklight::Alma::Response.new(bib_items, params)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    @document_and_api_data = helpers.document_and_api_merged_results(@document, bib_items)
+    availability = bib_items.group_by { |item| item["item_data"]["pid"] }.
+                     transform_values { |item|
+      { availability: helpers.availability_status(item.first) } }
+    @document.merge_item_data!(availability)
     @document_availability = helpers.document_availability_info(@document)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
     # Defined here as a parameter for the route
@@ -36,11 +39,13 @@ class AlmawsController < CatalogController
   def request_options
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
+
     log = { type: "alma_bib_item", mms_id: @mms_id }
     @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }.filter_missing_and_lost
+
     @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK") }.compact
     @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
-    @description = CobAlma::Requests.descriptions(@items)
+    @description = CobAlma::Requests.physical_material_type_and_descriptions(@items)
     @item_level_locations = CobAlma::Requests.item_level_locations(@items)
     @equipment = CobAlma::Requests.equipment(@items)
     @booking_location = CobAlma::Requests.booking_location(@items)
@@ -50,6 +55,7 @@ class AlmawsController < CatalogController
 
     @pickup_locations = pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+
     @user_id = current_user.uid
     @request_level = params[:request_level] ||
       get_request_level(@items)
@@ -57,7 +63,7 @@ class AlmawsController < CatalogController
     @asrs_request_level = get_request_level(@items, "asrs")
 
     if @asrs_request_level == "item"
-      @asrs_description =  CobAlma::Requests.asrs_descriptions(@items)
+      @asrs_description =  CobAlma::Requests.material_type_and_asrs_descriptions(@items)
     else
       @asrs_description = @description || @asrs_description = ""
     end
@@ -100,7 +106,8 @@ class AlmawsController < CatalogController
       do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
       flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
-    rescue
+    rescue => e
+      Honeybadger.notify(e.message + " " + log.to_s)
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
@@ -158,7 +165,8 @@ class AlmawsController < CatalogController
 
       redirect_back(fallback_location: root_path)
 
-    rescue
+    rescue => e
+      Honeybadger.notify(e.message + " " + log.to_s)
       flash["notice"] = "There was an error processing your request. Contact a librarian for help."
       redirect_back(fallback_location: root_path)
     end
@@ -226,7 +234,7 @@ class AlmawsController < CatalogController
   end
 
   def offset_too_large
-    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe
+    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe, status: :bad_gateway
   end
 
   private

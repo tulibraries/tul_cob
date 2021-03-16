@@ -2,31 +2,31 @@
 
 <div class="modal-header">
   <h1 class="modal-title">Request Rapid Access</h1>
-  <button type="button" class="ajax-modal-close close ml-auto" data-dismiss="modal" aria-hidden="true">×X</button>
+  <button type="button" class="ajax-modal-close close ml-auto" data-dismiss="modal" aria-hidden="true">×</button>
 </div>
 
-<%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => 'purchase_order_form', :class => "form-horizontal ajax_form", :method => :post do %>
+<%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => "purchase_order_form", :class => "form-horizontal ajax_form", :method => :post do %>
 
   <div class="modal-body">
-    <p>Please submit this form to request access to this online material:
-    <strong><%= doc_presenter.html_title %></strong>. Access will generally be
-    enabled within 2 business days. An email notification will be sent when the
-    material is available for use.</p>
-
-    <p>
-    Also, you may add extra instructions for this order in the messages field below if desired.
+    <p class="mx-3">
+      <%= t("purchase_order.purchase_order_text_1") %>
+      <strong><%= doc_presenter.html_title %></strong>.
+      <%= t("purchase_order.purchase_order_text_2") %>
     </p>
 
-    <%= render :partial=>'/shared/flash_msg' %>
+    <p class="mx-3">
+      <%= t("purchase_order.purchase_order_extra_instructions") %>
+    </p>
 
+    <%= render :partial=>"/shared/flash_msg" %>
     <%= render_email_form_field %>
 
     <div class="form-group">
       <label class="control-label col-sm-2" for="message">
-        <%= t('blacklight.email.form.message') %>
+        <%= t("blacklight.email.form.message") %>
       </label>
-      <div class="col-sm-10">
-        <%= text_area_tag :message, params[:message], class: 'form-control' %>
+      <div class="col-sm-10 col-md-12">
+        <%= text_area_tag :message, params[:message], class: "form-control" %>
       </div>
     </div>
 

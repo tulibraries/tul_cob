@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://server16002.contentdm.oclc.org/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL%5E991036805050403811%5Eall/dmrecord/dmrecord/1/1/1/0/0/0/0/0/xml
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 23 Jun 2020 18:34:46 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '500'
+      Content-Type:
+      - text/xml;charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <results>
+        <pager>
+          <start>1</start>
+          <maxrecs>1</maxrecs>
+          <total>0</total>
+        </pager>
+        <records>
+        </records>
+        <searchquery>/!/search?query=+%28ft%3A991036805050403811%29 and (za:f3 or za:&quot;69.204.158.178&quot;)&amp;group=$group.pa.cp&lt;ITEM&gt;&lt;DB&gt;$pa&lt;/DB&gt;&lt;KEY&gt;$cp&lt;/KEY&gt;&lt;SORT&gt;$sort-$max.ft.$d&lt;/SORT&gt;&lt;/ITEM&gt;&amp;collection=/p16002-p16002coll9/,/p16002-p16002coll19/,/p16002-p15037coll5/,/p16002-p16002coll26/,/p16002-p16002coll14/,/p16002-p15037coll7/,/p16002-p15037coll3/,/p16002-p245801coll13/,/p16002-p15037coll4/,/p16002-p16002coll31/,/p16002-p15037coll17/,/p16002-p15037coll9/,/p16002-p16002coll28/,/p16002-p15037coll10/,/p16002-p16002coll17/,/p16002-p15037coll6/,/p16002-p15037coll15/,/p16002-p15037coll18/,/p16002-p16002coll16/,/p16002-p245801coll0/,/p16002-p15037coll1/,/p16002-p15037coll12/,/p16002-p245801coll10/,/p16002-p245801coll12/,/p16002-p16002coll30/,/p16002-p16002coll24/,/p16002-p16002coll7/,/p16002-p16002coll4/,/p16002-p16002coll5/,/p16002-p16002coll3/,/p16002-p16002coll1/,/p16002-p16002coll6/,/p16002-p15037coll2/,/p16002-p15037coll19/,/p16002-p15037coll14/,/p16002-p16002coll2/,/p16002-p16002coll11/&amp;suggest=0&amp;rankboost=&amp;proximity=strict&amp;priority=normal&amp;unanchoredphrases=1&amp;maxres=1&amp;firstres=0&amp;rform=/!/null.htm</searchquery></results>
+  recorded_at: Tue, 23 Jun 2020 18:34:47 GMT
+- request:
+    method: get
+    uri: https://api-na.hosted.exlibrisgroup.com/primo/v1/search?apikey=SECRET&offset=0&pcAvailability=false&q=any,contains,991036805050403811,AND&scope=pci_scope&sort=rank&vid=TULI
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Tue, 23 Jun 2020 18:34:47 GMT
+      Vary:
+      - Accept-encoding
+      - accept-encoding
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET,POST,DELETE,PUT,OPTIONS
+      Access-Control-Allow-Headers:
+      - Origin, X-Requested-With, Content-Type, Accept, Authorization
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 23 Jun 2020 18:34:46 GMT
+      Server:
+      - CA-API-Gateway/9.0
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: '{"highlights":{},"docs":[],"timelog":{"BriefSearchDeltaTime":183,"DoSearchPrimoResultDeltaTime":174,"StartBriefSearch":1592937286839,"retrieveHighLightsDeltaTime":9,"retrieveDidUMeanDeltaTime":9,"GetSearchStatusDeltaTime":174,"StartTranslationTime":1592937287013,"AddSearchStatusDeltaTime":0,"FullEndDMDataDeltaTime":9,"retrieveFacetsDeltaTime":9},"lang3":"eng","info":{"total":0,"last":"3","maxTotal":0,"first":"1"},"facets":[],"beaconO22":"196"}'
+  recorded_at: Tue, 23 Jun 2020 18:34:47 GMT
+recorded_with: VCR 6.0.0

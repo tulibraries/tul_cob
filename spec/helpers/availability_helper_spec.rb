@@ -1,18 +1,36 @@
 # frozen_string_literal: true
 
-require "spec_helper"
 require "rails_helper"
 
 RSpec.describe AvailabilityHelper, type: :helper do
   describe "#availability_status(item)" do
+    let(:campus_closed?) { true }
 
-    context "item is in storage" do
+    before do
+      allow(helper).to receive(:campus_closed?) { campus_closed? }
+    end
+
+    context "item is in storage and campus is closed" do
       let(:item) do
         Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
       end
 
       it "links to new outside form" do
         label = "<span class=\"close-icon\"></span>In temporary storage"
+
+        expect(availability_status(item)).to eq(label)
+      end
+    end
+
+    context "item is in storage and campus is opened" do
+      let(:item) do
+        Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
+      end
+
+      let(:campus_closed?)  { false }
+
+      it "links to new outside form" do
+        label = "<span class=\"close-icon\"></span>In temporary storage — <a href=\"https://library.temple.edu/forms/storage-request\">Recall item now</a>"
 
         expect(availability_status(item)).to eq(label)
       end
@@ -141,6 +159,32 @@ RSpec.describe AvailabilityHelper, type: :helper do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>At another institution"
       end
     end
+
+    context "item is on loan" do
+      let(:item) do
+        Alma::BibItem.new("item_data" =>
+           { "base_status" =>
+             { "value" => "0" },
+             "process_type" => { "value" => "LOAN" },
+             "due_date" => "2020-09-01T20:00:00Z"
+           }
+         )
+      end
+
+      it "displays unavailable" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Checked out, due 09/01/2020"
+      end
+    end
+
+    context "item is on loan" do
+      let(:item) do
+        Alma::BibItem.new("item_data" => { "awaiting_reshelving" => true })
+      end
+
+      it "displays 'Awaiting Reshelving' status" do
+        expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Awaiting Reshelving"
+      end
+    end
   end
 
   describe "#unavailable_items(item)" do
@@ -199,77 +243,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "displays default message" do
         expect(unavailable_items(item)).to eq "<span class=\"close-icon\"></span>Checked out or currently unavailable"
-      end
-    end
-  end
-
-  describe "#document_and_api_merged_results(document, items_list)" do
-    context "item_pid from api matches item_pid in document" do
-      let(:document) { { "items_json_display" =>
-        [{ "item_pid" => "23237957740003811",
-        "item_policy" => "5",
-        "permanent_library" => "AMBLER",
-        "permanent_location" => "media",
-        "current_library" => "AMBLER",
-        "current_location" => "media",
-        "call_number" => "DVD 13 A165",
-        "holding_id" => "22237957750003811" }]
-          }
-        }
-
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
-
-      it "merges the availability into the document field" do
-        expect(document_and_api_merged_results(document, items_list)).to eq("AMBLER" => [{ "item_pid" => "23237957740003811",
-                                                                            "item_policy" => "5",
-                                                                            "permanent_library" => "AMBLER",
-                                                                            "permanent_location" => "media",
-                                                                            "current_library" => "AMBLER",
-                                                                            "current_location" => "media",
-                                                                            "call_number" => "DVD 13 A165",
-                                                                            "holding_id" => "22237957750003811",
-                                                                            availability: "<span class=\"check\"></span>Available" }])
-      end
-    end
-
-    context "item_pid from api does not match item_pid in document" do
-      let(:document) { { "items_json_display" =>
-        [{ "item_pid" => "12345",
-        "item_policy" => "5",
-        "permanent_library" => "AMBLER",
-        "permanent_location" => "media",
-        "current_library" => "AMBLER",
-        "current_location" => "media",
-        "call_number" => "DVD 13 A165",
-        "holding_id" => "22237957750003811" }]
-          }
-        }
-
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
-
-      it "does not merge the availability into the document field" do
-        expect(document_and_api_merged_results(document, items_list)).to eq({})
-      end
-    end
-
-    context "does not include missing or lost items" do
-      let(:document) { { "items_json_display" =>
-        [{ "item_pid" => "12345",
-        "item_policy" => "5",
-        "permanent_library" => "AMBLER",
-        "permanent_location" => "media",
-        "current_library" => "AMBLER",
-        "current_location" => "media",
-        "call_number" => "DVD 13 A165",
-        "process_type" => "MISSING",
-        "holding_id" => "22237957750003811" }]
-          }
-        }
-
-      let(:items_list) { Alma::BibItem.find("merge_document_and_api") }
-
-      it "filters out missing or lost items" do
-        expect(document_and_api_merged_results(document, items_list)).to eq({})
       end
     end
   end
@@ -667,7 +640,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns copies for each library by location" do
         sorted_locations = sort_order_for_holdings(grouped_items)["MAIN"].map { |item| location_name_from_short_code(item) }
-        expect(sorted_locations).to eq(["Journals (3rd floor)", "Reference - Ask at One Stop Assistance Desk", "Stacks (4th floor)"])
+        expect(sorted_locations).to eq(["Journals (3rd floor)", "Reference – Ask at One Stop Assistance Desk", "Stacks (4th floor)"])
       end
     end
 
@@ -778,7 +751,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "should render the single field selector template" do
         expect(helper).to have_received(:render)
-          .with(template: "almaws/_location_field", locals: { material: "ONE material" })
+          .with(template: "almaws/_location_field", locals: { item: "", material: "ONE material" })
       end
     end
 

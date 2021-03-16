@@ -138,6 +138,12 @@ module AdvancedHelper
       render "pub_date_sort_facet"
     end
   end
+
+  def render_classification_range
+    if blacklight_config.facet_fields["lc_facet"]
+      render "classification_range"
+    end
+  end
 end
 
 module BlacklightAdvancedSearch
@@ -213,7 +219,7 @@ end
 module BlacklightAdvancedSearch
   module CatalogHelperOverride
     def remove_guided_keyword_query(fields, my_params = params)
-      my_params = Blacklight::SearchState.new(my_params, blacklight_config).to_h
+      my_params = Blacklight::SearchState.new(my_params.to_h, blacklight_config).to_h
       fields.each do |guided_field|
         my_params.delete(guided_field)
       end
@@ -241,14 +247,13 @@ module BlacklightAdvancedSearch
           remove: search_action_path(remove_guided_keyword_query(action, my_params))
         )
       }.flatten
-
       safe_join(buttons, "\n")
     end
 
     def guided_search(my_params = params)
       my_params.to_h
         .with_indifferent_access.select { |p| p.match(/^q/) }
-        .select { |q, v| ! my_params[q].blank? }
+        .select { |q, v| ! my_params.to_h[q].blank? }
         .map { |q, v|
 
         position = q.to_s.scan(/_\d+$/)[0]
@@ -262,12 +267,12 @@ module BlacklightAdvancedSearch
           op = "op_#{position - 1}"
         end
 
-        field = blacklight_config.search_fields[my_params[f]].to_h
+        field = blacklight_config.search_fields[my_params.to_h[f]].to_h
         label = field[:label].to_s
         if position == 1
-          query = my_params[q]
+          query = my_params.to_h[q]
         else
-          query = my_params[op].to_s + " " + my_params[q]
+          query = my_params.to_h[op].to_s + " " + my_params.to_h[q]
         end
         [label, query, [f, q, op]]
       }

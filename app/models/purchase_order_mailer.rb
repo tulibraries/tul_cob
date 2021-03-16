@@ -7,13 +7,13 @@ class PurchaseOrderMailer < RecordMailer
             rescue
               I18n.t("blacklight.email.text.default_title")
             end
-    subject = "Purchase on Demand: " + title.first
+    subject = "Request Rapid Access: " + title.first
 
     @document       = document
     @message        = details[:message]
     @url_gen_params = url_gen_params
     @from           = details[:from]
-
-    mail(bcc: "orders@temple.edu", to: @from[:email], subject: subject)
+    @bcc            = Rails.configuration.email_groups["RAPID_REQUEST"]
+    mail(bcc: @bcc, to: @from[:email], subject: subject)
   end
 end

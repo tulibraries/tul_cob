@@ -202,66 +202,6 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
-  describe "#ajax?" do
-    context "document is empty" do
-      let(:doc) { Hash.new }
-
-      it "defaults to false" do
-        expect(subject.ajax?).to be(false)
-      end
-    end
-
-    context "document sets ajax value to true" do
-      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-        ajax: true
-      )}
-
-      it "returns true" do
-        expect(subject.ajax?)
-      end
-    end
-
-    context "document sets ajax value to 'true'" do
-      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-        ajax: "true"
-      )}
-
-      it "returns true" do
-        expect(subject.ajax?)
-      end
-    end
-
-    context "document sets ajax to non true" do
-      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-        ajax: nil
-      )}
-
-      it "returns false" do
-        expect(subject.ajax?).to be(false)
-      end
-    end
-  end
-
-  describe "#ajax_url" do
-    context "document is empty" do
-      let(:doc) { Hash.new }
-
-      it "fails if no id is defined" do
-        expect { subject.ajax_url }.to raise_error(ActionController::UrlGenerationError)
-      end
-    end
-
-    context "document is empty but has id" do
-      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-        pnxId: "0"
-      )}
-
-      it "returns a path for ajax endpoint with default counter" do
-        expect(subject.ajax_url).to eq("/articles/0/index_item?document_counter=0")
-      end
-    end
-  end
-
   describe "#materials" do
     it "returns a default empty set" do
       expect(subject.materials).to eq([])
@@ -319,6 +259,63 @@ RSpec.describe PrimoCentralDocument, type: :model do
 
       it "should be false" do
         expect(document.purchase_order?).to be false
+      end
+    end
+  end
+
+  describe "mapping subject / topic facets" do
+    let(:primo_hash) { { "pnx" => {
+                           "facets" => { "topic" => [ "foo", "bar" ] },
+                           "search" => { "subject" => ["bar", "foo"] }
+                         } } }
+
+    it "uses the path pnx.facets.topic to get subject values" do
+      doc = PrimoCentralDocument.new(primo_hash)
+      expect(doc["subject"]).to eq(["foo", "bar"])
+    end
+
+    it "uses the path pnx.search.subject when pnx.facets.topic is not available" do
+      primo_hash["pnx"]["facets"].delete("topic")
+      doc = PrimoCentralDocument.new(primo_hash)
+      expect(doc["subject"]).to eq(["bar", "foo"])
+    end
+  end
+
+  describe "libkey_url" do
+    context "doi not present" do
+      let(:doc) { {} }
+
+      it "returns a nil" do
+        expect(subject.libkey_url).to be_nil
+      end
+    end
+
+    context "fullTextFile present" do
+      let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+      it "returns the fullTextFile URL string" do
+        stub_request(:get, /articles/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: {
+                      fullTextFile: "https://www.google.com",
+                      contentLocation: "https//www.temple.edu"
+                    }))
+
+        expect(subject.libkey_url).to eq("https://www.google.com")
+      end
+    end
+
+    context "contentLocation present" do
+      let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+      it "returns the contentLocation URL string" do
+        stub_request(:get, /articles/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: { contentLocation: "https://www.temple.edu" }))
+
+        expect(subject.libkey_url).to eq("https://www.temple.edu")
       end
     end
   end

@@ -9,5 +9,8 @@
       <%= help_link %>
       <%= t("no_results.for_help") %>
     </li>
+    <li>
+      <%= t("no_results.additional_options_html", href: link_to(t("no_results.additional_options_href"), t("no_results.additional_options_link"), target:"_blank")) %>
+    </li>
   </ul>
 </div>

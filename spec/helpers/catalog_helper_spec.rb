@@ -146,7 +146,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
       it "should render purchase allow message" do
         expect(helper).to have_received(:content_tag).with(
-          :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
+          :div, t("purchase_order.purchase_order_allowed"), class: "availability border border-header-grey"
         )
       end
     end
@@ -162,7 +162,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
   describe "#render_purchase_order_show_link" do
     let(:args) { { document: SolrDocument.new(purchase_order: true, id: "foo") } }
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.build_stubbed(:user) }
     let(:can_purchase_order?) { true }
 
     before(:each) do
@@ -676,6 +676,31 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#_build_guest_login_libwizard_url(document)" do
+    let(:base_url) { "https://temple.libwizard.com/f/ContinueAsGuest?" }
+    let(:constructed_url) { helper._build_guest_login_libwizard_url(document) }
+    context "document is missing all data" do
+      let(:document) { {} }
+      it "returns a url with no params" do
+        expect(constructed_url).to eq base_url
+      end
+    end
+    context "when mappable fields are present" do
+      let(:document) {
+        {
+        "title_statement_display" => ["title"],
+        "pub_date" => ["2020"],
+        "edition_display" => ["1st edition"],
+        }
+      }
+      it "maps the expected parameters" do
+        expect(constructed_url).to include("rft.title=title")
+        expect(constructed_url).to include("rft.date=2020")
+        expect(constructed_url).to include("edition=1st+edition")
+      end
+    end
+  end
+
   describe "#_build_libwizard_url(document)" do
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
     let(:constructed_url) { helper._build_libwizard_url(document) }
@@ -715,56 +740,354 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#render_temporary_electronic_request_help_form_button(document)" do
-    let(:button) { helper.render_temporary_electronic_request_help_form_button(document) }
+  describe "#digital_help_allowed?(document)" do
     context "is not a physical item" do
       let(:document) { { "availability_facet" => "Online" } }
-      it "returns nil" do
-        expect(button).to be nil
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
       end
     end
     context "is a physical item" do
       let(:document) { { "availability_facet" => "At the Library" } }
-      it "returns a button" do
-        expect(button).to include("button>")
+      it "returns true" do
+        expect(digital_help_allowed?(document)).to be true
       end
     end
+    context "is a physical item with hathitrust access denied" do
+      let(:document) { {
+         "availability_facet" => "At the Library",
+         "hathi_trust_bib_key_display" => "foo"
+          } }
+      it "returns true" do
+        expect(digital_help_allowed?(document)).to be true
+      end
+    end
+    context "is an object" do
+      let(:document) { { "format" => "Object" } }
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
+      end
+    end
+    context "has a hathitrust link" do
+       let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ].first } }
+       it "returns false" do
+         expect(digital_help_allowed?(document)).to be false
+       end
+     end
     context "is a physical item and an online item" do
       let(:document) { {
         "availability_facet" => "At the Library",
         "electronic_resource_display" => "foo"
          } }
-      it "returns nil" do
-        expect(button).to be nil
-      end
-    end
-    context "is a physical item with hathitrust link" do
-      let(:document) { {
-        "availability_facet" => "At the Library",
-        "hathi_trust_bib_key_display" => "foo"
-         } }
-      it "returns nil" do
-        expect(button).to be nil
+      it "returns false" do
+        expect(digital_help_allowed?(document)).to be false
       end
     end
   end
 
-  describe "#build_hathitrust_url(document)" do
-    let(:document) { { "hathi_trust_bib_key_display" => ["000005117"] } }
+  describe "#open_shelves_allowed?(document)" do
+    context "is not in a relevant library" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "LAW",
+        "permanent_location" => "reference",
+        "current_library" => "LAW",
+        "current_location" => "reference",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns false" do
+        expect(open_shelves_allowed?(document)).to be false
+      end
+    end
+
+    context "is in a relevant Charles location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "juvenile",
+        "current_library" => "MAIN",
+        "current_location" => "juvenile" }]
+          }
+        }
+      it "returns true" do
+        expect(open_shelves_allowed?(document)).to be true
+      end
+    end
+
+    context "is in a relevant Ambler location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "stacks",
+        "current_library" => "AMBLER",
+        "current_location" => "stacks" }]
+          }
+        }
+      it "returns true" do
+        expect(open_shelves_allowed?(document)).to be true
+      end
+    end
+
+    context "is in a relevant library, but not location" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "Reference",
+        "current_library" => "MAIN",
+        "current_location" => "reference" }]
+          }
+        }
+      it "returns false" do
+        expect(open_shelves_allowed?(document)).to be false
+      end
+    end
+
+    context "is in a relevant location, but not library" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23433968230003811",
+        "item_policy" => "0",
+        "permanent_library" => "JAPAN",
+        "permanent_location" => "stacks",
+        "current_library" => "JAPAN",
+        "current_location" => "stacks" },
+        { "item_pid" => "23311482710003811",
+        "item_policy" => "2",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "serials",
+        "current_library" => "MAIN",
+        "current_location" => "serials" }]
+          }
+        }
+      it "returns false" do
+        expect(open_shelves_allowed?(document)).to be false
+      end
+    end
+  end
+
+  describe "#build_hathitrust_url(field)" do
+    let(:field) { { "bib_key" => "000005117", "access" => "allow" } }
     let(:base_url) { "https://catalog.hathitrust.org/Record/000005117?signon=swle:https://fim.temple.edu/idp/shibboleth" }
-    let(:constructed_url) { helper.build_hathitrust_url(document) }
+    let(:constructed_url) { helper.build_hathitrust_url(field) }
 
     it "returns a correctly formed url" do
       expect(constructed_url).to eq base_url
     end
   end
 
+  describe "#hathitrust_link_allowed?(document))" do
+    context "record has a hathi_trust_bib_key_display field" do
+      context "with allow access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ] } }
+
+        it "returns true" do
+          expect(hathitrust_link_allowed?(document)).to be(true)
+        end
+      end
+
+      context "with deny access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "deny" }] } }
+
+        it "does not render the online partial" do
+          expect(hathitrust_link_allowed?(document)).to be(false)
+        end
+      end
+    end
+  end
+
   describe "#render_hathitrust_display(document)" do
     context "record has a hathi_trust_bib_key_display field" do
-      let(:document) { { "hathi_trust_bib_key_display" => ["000005117"] } }
+      context "with allow access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "allow" } ] } }
 
-      it "renders the online partial" do
-        expect(helper.render_hathitrust_display(document)).not_to be_nil
+        it "renders the online partial" do
+          expect(helper.render_hathitrust_display(document)).not_to be_nil
+        end
+      end
+
+      context "with deny access" do
+        let(:document) { { "hathi_trust_bib_key_display" => [ { "bib_key" => "000005117", "access" => "deny" }] } }
+
+        it "does not render the online partial" do
+          expect(helper.render_hathitrust_display(document)).to be_nil
+        end
+
+        context "when campus closed flag is true" do
+          it "renders the online partial" do
+            allow(helper).to receive(:campus_closed?).and_return("true")
+            expect(helper.render_hathitrust_display(document)).not_to be_nil
+          end
+        end
+      end
+    end
+  end
+
+  describe "#campus_closed?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params campus_closed is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(campus_closed?).to be(false)
+      end
+    end
+
+    context "params campus_closed is true" do
+      let(:params) { { "campus_closed" => "true" } }
+
+      it "returns true when campus_closed param is not 'false'" do
+        expect(campus_closed?).to be(true)
+      end
+    end
+
+    context "params campus_closed is false" do
+      let(:params) { { "campus_closed" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(campus_closed?).to be(false)
+      end
+    end
+  end
+
+  describe "#with_libguides?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params with_libguides is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(with_libguides?).to be(false)
+      end
+    end
+
+    context "params with_libguides is true" do
+      let(:params) { { "with_libguides" => "true" } }
+
+      it "returns true when with_libguides param is not 'false'" do
+        expect(with_libguides?).to be(true)
+      end
+    end
+
+    context "params with_libguides is false" do
+      let(:params) { { "with_libguides" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(with_libguides?).to be(false)
+      end
+    end
+  end
+
+  describe "#with_libkey?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params with_libkey is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(with_libkey?).to be(false)
+      end
+    end
+
+    context "params with_libkey is true" do
+      let(:params) { { "with_libkey" => "true" } }
+
+      it "returns true when with_libkey param is not 'false'" do
+        expect(with_libkey?).to be(true)
+      end
+    end
+
+    context "params with_libkey is false" do
+      let(:params) { { "with_libkey" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(with_libkey?).to be(false)
+      end
+    end
+  end
+
+  describe "LibGuidesApi#derived_lib_guides_search_term(solr_response)" do
+    before do
+      allow(helper).to receive(:params) { params }
+      allow(LibGuidesApi).to receive(:_subject_topic_facet_terms).and_return(["wu tang", "clan aint"])
+    end
+    let(:params) { { "q" => "thing" } }
+
+    it "returns the origial search term and subject topics in parenthesis and combined with OR " do
+      expect(derived_lib_guides_search_term(nil)).to eq("(thing) OR (wu tang) OR (clan aint)")
+    end
+  end
+
+  describe "#_subject_topic_facet_terms(response)" do
+    let(:subject) { LibGuidesApi.send(:_subject_topic_facet_terms, response) }
+    let(:solr_response) { Blacklight::Solr::Response.new({ responseHeader: {}, facet_counts: { facet_fields: [facet_field] } }, {}) }
+    let(:facet_field) { ["wrong", []] }
+
+    context "nil response" do
+      let(:response) { nil }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "empty solr response" do
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "solr_response without subject_topic_facet" do
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq([])
+      end
+    end
+
+    context "solr_response with subject_topic_facet" do
+      let(:facet_field) { ["subject_topic_facet", ["foo", 1]] }
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq(["foo"])
+      end
+    end
+
+    context "solr_response with subject_topic_facet multiple values" do
+      let(:facet_field) { ["subject_topic_facet", ["foo", 1, "boo", 2]] }
+      let(:response) { solr_response }
+      it "returns an empty array" do
+        expect(subject).to eq(["foo", "boo"])
+      end
+    end
+  end
+
+  describe "#subject_links" do
+    let(:args) { {
+      document: SolrDocument.new(id: "foo", subject_display: subject),
+      field: "subject_display"
+    } }
+
+    before do
+      allow(helper).to receive(:base_path) { "foo/bar" }
+    end
+
+    context "subjet is hierarchical string" do
+      let(:subject) { ["Foo — Bar"] }
+
+      it "splits the subject into a hierarchical list of links" do
+        expect(helper.subject_links(args).first).to match(/<a.*href=".*Foo".*>Foo<\/a>.*href=".*Foo\+%E2%80%94\+Bar.*>Bar<\/a>/)
       end
     end
   end

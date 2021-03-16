@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 
   include BlacklightAlma::Availability
   include Blacklight::Marc::Catalog
+  include ServerErrors
+  include LCClassifications
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
@@ -20,12 +23,10 @@ class CatalogController < ApplicationController
   helper_method :browse_creator
   helper_method :display_duration
 
-  rescue_from BlacklightRangeLimit::InvalidRange do
-    redirect_back(fallback_location: root_path, notice: "The start year must be before the end year.")
+  # TODO: remove once with_libkey? is no longer a flag
+  def self.with_libkey?
+    Proc.new { |context| ::FeatureFlags.with_libkey?(context.params) }
   end
-
-  rescue_from Blacklight::Exceptions::RecordNotFound,
-    with: :invalid_document_id_error
 
   configure_blacklight do |config|
     # default advanced config values
@@ -43,7 +44,7 @@ class CatalogController < ApplicationController
     # config.repository_class = Blacklight::Solr::Repository
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
-    # config.search_builder_class = ::SearchBuilder
+    config.search_builder_class = ::BooksSearchBuilder
     #
     ## Model that maps search index responses to the blacklight response model
     # config.response_model = Blacklight::Solr::Response
@@ -73,10 +74,12 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = "title_truncated_display"
     config.index.display_type_field = "format"
+    config.index.document_presenter_class = IndexPresenter
 
     # solr field configuration for document/show views
     config.show.title_field = "title_statement_display"
     #config.show.display_type_field = 'format'
+    config.show.document_presenter_class = ShowPresenter
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -111,18 +114,47 @@ class CatalogController < ApplicationController
     #    :years_25 => { label: 'within 25 Years', fq: "pub_date:[#{Time.zone.now.year - 25 } TO *]" }
     # }
 
-    config.add_facet_field "availability_facet", label: "Availability", home: true, collapse: false
-    config.add_facet_field "library_facet", label: "Library", limit: -1, show: true, home: true
-    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true
-    config.add_facet_field "pub_date_sort", label: "Date", range: true
-    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
-    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
-    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true
-    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
-    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
-    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
-    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
+    # In order to decide at query time if we want to include ETAS records considered "Online"
+    # we define two availability facets and decide which one to show based on the `config.campus_closed` lambda
+    # which can evaluate the URL param as well as the env var set feature flag.
+    # The `if:` and `unless:` params are the only part evaluated at query time.
+    config.campus_closed = lambda { |context, _, __| ::FeatureFlags.campus_closed?(context.params) }
+    config.add_facet_field "availability_facet_etas",
+      label: "Availability", collapse: false, show: true, home: true, component: true,
+      sort: :count,
+      query: {
+        "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
+        "Online" =>  { label: "Online", fq: 'availability_facet:(Online OR "ETAS")' },
+        "Rapid Request Access" => { label: "Request Rapid Access",  fq: 'availability_facet:"Request Rapid Access"' }
+      },
+      if: config.campus_closed
+    config.add_facet_field "availability_facet",
+      label: "Availability", collapse: false, show: true, home: true, component: true,
+      sort: :count,
+      query: {
+        "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
+        "Online" =>  { label: "Online", fq: 'availability_facet:"Online"' },
+        "Rapid Request Access" => { label: "Request Rapid Access", fq: 'availability_facet:"Request Rapid Access"' }
+      },
+      unless: config.campus_closed
+
+    config.add_facet_field "library_facet", label: "Library",
+      pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
+      component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
+    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
+    config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
+    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
+    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
+    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
+    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
+    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
+    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
+    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
+    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }
+
+
+
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -138,6 +170,7 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
@@ -226,6 +259,7 @@ class CatalogController < ApplicationController
     config.add_show_field "pub_no_display", label: "Publication Number"
     config.add_show_field "gpo_display", label: "GPO Item Number"
     config.add_show_field "sudoc_display", label: "SuDOC"
+    config.add_show_field "lc_call_number_display", label: "LC Classification"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
@@ -375,6 +409,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "author_sort desc, title_sort asc", label: "author/creator (Z to A)"
     config.add_sort_field "title_sort asc, pub_date_sort desc", label: "title (A to Z)"
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
+    config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
+    config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
@@ -455,31 +491,6 @@ class CatalogController < ApplicationController
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
 
-  # Render one index record (use as an ajax endpoint).
-  # Note: The reason this method is defined here and not in PrimoCentralController
-  # is that it actually gets called from bookmarks.
-
-  def index_item
-    count = (params["document_counter"] || 0 rescue 0).to_i
-    begin
-      (@response, doc) = search_service.fetch(params["id"])
-    rescue Primo::Search::ArticleNotFound => _
-      Honeybadger.notify("The article with id #{params["id"]} could not be found.
-                         This happens when the primo id is no longer valid.")
-
-      # Ajax lookup failed once before already.
-      doc = PrimoCentralDocument.new(
-        "pnxId" => params["id"], "ajax" => false,
-        "title" => params["id"],
-        "error" => "This article could not be found."
-
-      )
-
-      # Required by bl-7
-      @response = Blacklight::PrimoCentral::Response.new(doc)
-    end
-    render "_document", layout: false, locals: { document: doc, document_counter: count }
-  end
 
   # Overrides CatalogController.invalid_document_id_error
   # Overridden so that we can use our own 404 error handling setup.
@@ -490,8 +501,8 @@ class CatalogController < ApplicationController
     }
 
     respond_to do |format|
-      format.xml  { render xml: error_info, status: 404 }
-      format.json { render json: error_info, stautus: 404 }
+      format.xml  { render xml: error_info, status: :not_found }
+      format.json { render json: error_info, status: :not_found }
 
       # default to HTML response, even for other non-HTML formats we don't
       # neccesarily know about, seems to be consistent with what Rails4 does
@@ -501,7 +512,7 @@ class CatalogController < ApplicationController
         # possibly non-html formats, this is consistent with what Rails does
         # on raising an ActiveRecord::RecordNotFound. Rails.root IS needed
         # for it to work under testing, without worrying about CWD.
-        render "errors/not_found"
+        render "errors/not_found", status: :not_found
       end
     end
   end
@@ -578,6 +589,36 @@ class CatalogController < ApplicationController
     to_the_future = { fallback_location: root_path, alert: message }
 
     redirect_back(to_the_future) unless current_user.can_purchase_order?
+  end
+
+  # Override the show method so we can suppress some items that solr doesn't want to filter out
+  # get a single document from the index
+  # to add responses for formats other than html or json see _Blacklight::Document::Export_
+  def show
+    deprecated_response, @document = search_service.fetch(params[:id])
+    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
+
+    # Our override that can be removed if we can figure out how to do a negatove filter query in the document/get handler
+    # without breaking results that shouldn't be filtered.
+    raise Blacklight::Exceptions::RecordNotFound if @document.is_suppressed?
+
+    respond_to do |format|
+      format.html { @search_context = setup_next_and_previous_documents }
+      format.json
+      additional_export_formats(@document, format)
+    end
+  end
+
+  # Override index because we don't show any results at /catalog when
+  # there are no parameters, and so we don't need to bother solr
+  def index
+    if has_search_parameters? || advanced_controller?
+      super
+    else
+      respond_to do |format|
+        format.html { store_preferred_view }
+      end
+    end
   end
 
   private

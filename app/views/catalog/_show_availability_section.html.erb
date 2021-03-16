@@ -1,15 +1,19 @@
+
 <% doc_presenter = show_presenter(document) %>
+
 <%# partial to display availability details in catalog show view -%>
 
-<div data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, doc_id: document.id, redirect_to: request.url) %>">
+<% if document.alma_availability_mms_ids.present? %>
+<div data-controller="show" data-show-url="<%= item_url(document.alma_availability_mms_ids.first, params.merge(doc_id: document.id, redirect_to: request.url)) %>">
+<% else %>
+<div>
+<% end %>
   <div id="record-view-iframe" data-availability-id="<%= document.alma_availability_mms_ids.first %>" class="card availability-card d-flex mx-auto border-0">
     <div class="availability-card-heading float-right">
       <div id="heading-request ml-auto">
         <%= presenter_field_value(doc_presenter, "po_link") %>
 
 <h2 class="sr-only availability-section"><%= "Availability" %></h2>
-
-        <%= render_temporary_electronic_request_help_form_button(document) %>
 
         <div id="requests-container" class="hidden">
           <% if user_signed_in? %>

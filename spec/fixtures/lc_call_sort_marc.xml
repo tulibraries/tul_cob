@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
+  <record>
+    <controlfield tag='001'>LCSORT_1ST</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>Q383.12</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST Q383.12</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_2ND</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA70.5</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA70.5</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_3RD</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_4TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.B5</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.B5</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_5TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E3</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E3</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_6TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E35</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E35</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_7TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_8TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359.E3</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359.E3</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_9TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359.E35</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359.E35</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_10TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359.E359</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359.E359</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_11TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359.E359v.1</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359.E359v.1</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_12TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.E359.E359v.2</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.E359.E359v.2</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+  <record>
+    <controlfield tag='001'>LCSORT_13TH</controlfield>
+    <datafield ind1=' ' ind2=' ' tag='090'>
+      <subfield code='a'>QA71.1.E35</subfield>
+    </datafield>
+    <datafield ind1='1' ind2='4' tag='245'>
+      <subfield code='a'>LCSORT</subfield>
+      <subfield code='c'>TEST QA71.1.E35</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Not Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="PRT">
+      <subfield code="9">Available</subfield>
+    </datafield>
+    <datafield ind1=" " ind2=" " tag="ITM">
+      <subfield code="u">LCSORT</subfield>
+    </datafield>
+  </record>
+</collection>

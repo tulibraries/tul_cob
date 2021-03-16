@@ -4,10 +4,17 @@
 <%- if devise_mapping.omniauthable? %>
   <ul class="pb-3">
     <li>
-      <%= link_to "Students, Faculty, and Staff" , omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to] ) %>
+      <%= link_to t("devise.sessions.new.temple_users") , omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to] ) %>
     </li>
     <li>
-      <%= link_to "Visitors", alma_social_login_url(redirect_to: params[:redirect_to]) %>
+      <%= link_to t("devise.sessions.new.pa_users"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
+    </li>
+    <li>
+      <% if params[:redirect_to] %>
+        <%= link_to t("devise.sessions.new.guests"), _build_guest_login_libwizard_url(@document),target: "_blank" %>
+      <% else %>
+        <%= link_to t("devise.sessions.new.guests"), t("devise.sessions.new.guest_link"),target: "_blank" %>
+      <% end -%>
     </li>
   </ul>
 <% end -%>

@@ -12,8 +12,11 @@ class SearchBuilder < Blacklight::SearchBuilder
   self.default_processor_chain +=
     %i[ add_advanced_parse_q_to_solr
         add_advanced_search_to_solr
+        add_lc_range_search_to_solr
         spellcheck
-        limit_facets ]
+        limit_facets
+        filter_suppressed
+        sorting_preferences ]
 
   if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
     self.default_processor_chain += %i[ tweak_query ]
@@ -23,6 +26,13 @@ class SearchBuilder < Blacklight::SearchBuilder
     # The negative query will work even when items are not indexed.
     # We can refactor to use a positive query once indexing occurs.
     solr_params["fq"] = solr_params["fq"].push("-purchase_order:true")
+  end
+
+  # TODO: Remove this once we update and use new tul_cob-catalog-solr config
+  def filter_suppressed(solr_params)
+    if !solr_params["fq"].include?("-suppress_items_b:true")
+      solr_params["fq"] = solr_params["fq"].push("-suppress_items_b:true")
+    end
   end
 
   def spellcheck(solr_parameters)
@@ -45,6 +55,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def sorting_preferences(solr_parameters)
+    solr_parameters["f.lc_outer_facet.facet.sort"] = "index"
+    solr_parameters["f.lc_inner_facet.facet.sort"] = "index"
+  end
+
   def tweak_query(solr_parameters)
     solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
@@ -52,7 +67,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # Overrides Blacklight::SearchBuilder#blacklight_params
   #
   # We need to do this because so much of what advanced_search is doing depends
-  # on it and currenlty there isn't a cleaner way beyond overriding it.
+  # on it and currently there isn't a cleaner way beyond overriding it.
   #
   # @see projectblacklight/blacklight_advanced_search#82
   def blacklight_params
@@ -70,7 +85,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # These named procedures MUST take a value, and an operator as arguments
     # and return a value that can be processed by the next procedure on the
     # list.
-    [ :process_begins_with, :process_is, :substitute_colons ]
+    [ :process_begins_with, :process_is, :substitute_special_chars]
   end
 
   def process_begins_with(value, op)
@@ -82,8 +97,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_is(value, op)
+    return if value.blank?
     return value if value.match(/"/) rescue true
-
     if op == "is"
       "\"#{value}\""
     else
@@ -91,12 +106,8 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def substitute_colons(value, _)
-    value.gsub(/:/, " ") rescue value
-  end
-
-  def no_journals(solr_parameters)
-    solr_parameters["fq"] = ["!format:Journal/Periodical"]
+  def substitute_special_chars(value, _)
+    value.gsub(/([:?]|\(\))/, " ") rescue value
   end
 
   ##
@@ -108,18 +119,28 @@ class SearchBuilder < Blacklight::SearchBuilder
     if solr_parameters[:fq].is_a? String
       solr_parameters[:fq] = [solr_parameters[:fq]]
     end
-
     # :fq, map from :f.
     if blacklight_params[:f]
-      f_request_params = blacklight_params[:f]
-
-      f_request_params.each_pair do |facet_field, value_list|
-        next unless blacklight_config.facet_fields[facet_field.to_s].present?
+      blacklight_params[:f].each_pair do |facet_field, value_list|
+        next unless blacklight_config.facet_fields.map { |k, v|
+          v.pivot ? v.pivot : k }.flatten.include? facet_field.to_s
         Array(value_list).reject(&:blank?).each do |value|
           solr_parameters.append_filter_query facet_value_to_fq_string(facet_field, value)
         end
       end
     end
+  end
+
+  def add_lc_range_search_to_solr(solr_params)
+    return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
+
+    lc_range = blacklight_params["range"]["lc_classification"]
+
+    return if lc_range["begin"].blank? && lc_range["end"].blank?
+
+    _begin = lc_range["begin"].blank? ? "*" : LcSolrSortable.convert(lc_range["begin"])
+    _end = lc_range["end"].blank? ? "*" : LcSolrSortable.convert(lc_range["end"])
+    solr_params[:fq] << "lc_call_number_sort: [#{_begin} TO #{_end}]"
   end
 
   private

@@ -49,7 +49,6 @@ class PrimoCentralDocument
     DO: "doi",
     KW: "subject",
     SN: Proc.new { self["isbn"] || self["issn"] },
-    SN: "issn",
     LA: "languageId"
   )
 end

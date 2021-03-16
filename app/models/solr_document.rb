@@ -97,7 +97,9 @@ class SolrDocument
         barcode: barcode(material),
         call_number: material["holding_data"]["call_number"],
         library: library_name_from_short_code(material.library),
-        location: location_status(material),
+        location: materials_location(material),
+        raw_library: material["item_data"]["library"]["value"],
+        raw_location: material["item_data"]["location"]["value"],
         availability: availability_status(material) }
         .with_indifferent_access }
         .uniq { |material| material.except(:barcode) }
@@ -117,6 +119,17 @@ class SolrDocument
 
   def purchase_order?
     !!self["purchase_order"]
+  end
+
+  def is_suppressed?
+    fetch("suppress_items_b", false)
+  end
+
+  def merge_item_data!(additional_item_data)
+    fetch("items_json_display", []).each do |item|
+      next unless additional_item_data.has_key? item["item_pid"]
+      item.merge!(additional_item_data[item["item_pid"]])
+    end
   end
 
   private

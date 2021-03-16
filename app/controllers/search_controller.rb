@@ -9,32 +9,35 @@ class SearchController < CatalogController
 
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_books_and_media_facet, helper_method: :translate_resource_type_code, show: true, limit: -1
+    config.add_facet_field "subject_topic_facet", limit: true
   end
 
   def index
     @per_page = 3
     if params[:q]
-      engines = %i(books_and_media articles databases journals website cdm)
+      engines = %i(books_and_media articles journals databases website cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
+
       @results = process_results(searcher.results)
+      @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
     end
 
     respond_to do |format|
       format.html { store_preferred_view }
       format.json do
-        @response ||= Blacklight::PrimoCentral::Response.new({})
-        @results ||= []
-        @presenter = Blacklight::JsonPresenter.new(@response,
-                                                   @results,
-                                                   [],
-                                                   blacklight_config)
+        @results["lib_guides_query_term"] = @lib_guides_query_term
+
+        render plain: @results.to_json, status: 200, content_type: "application/json"
       end
     end
   end
 
   private
     def process_results(results)
+      results.each_value do |result|
+        Honeybadger.notify(result.error[:exception]) if result.failed?
+      end
       # We only care about cdm results count not bento box.
       cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
 

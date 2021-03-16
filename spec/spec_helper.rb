@@ -43,8 +43,11 @@ end
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  config.filter_run_excluding lib_guides_relevance: true
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:each) do
+    Honeybadger::Backend::Test.notifications[:notices] = []
 
     # JUst so we don't send our request when testing controllers
     stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
@@ -240,16 +243,27 @@ RSpec.configure do |config|
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/alma_data/merge_document_and_api.json"))
 
-    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content\/select?/).
-      to_return(status: 200,
-                headers: { "Content-Type" => "application/json" },
-                body: File.open(SPEC_ROOT + "/fixtures/web_content/solr_response_no_query.json"))
-
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/merge_document_and_api\/holdings\/.*\/items/).
       with(query: hash_including(offset: "100")).
       to_return(status: 200,
                 headers: { "content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/temp_location_reserves\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/alma_data/temp_location_reserves.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/temp_location_reserves\/holdings\/.*\/items/).
+      with(query: hash_including(offset: "100")).
+      to_return(status: 200,
+                headers: { "content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
+
+    stub_request(:get, /.*127.0.0.1\:8983\/solr\/web-content\/select?/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/web_content/solr_response_no_query.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/blank_material_type\/holdings\/.*\/items/).
       to_return(status: 200,
@@ -260,8 +274,6 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/temp_storage.json"))
-
-
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -304,7 +316,6 @@ RSpec.configure do |config|
   # metadata: `fit`, `fdescribe` and `fcontext`, respectively.
   config.filter_run_when_matching :focus
 
-  config.filter_run_excluding relevance: true unless ENV["RELEVANCE"]
 
   # Allows RSpec to persist some state between runs in order to support
   # the `--only-failures` and `--next-failure` CLI options. We recommend
@@ -356,63 +367,19 @@ RSpec.configure do |config|
   require "warden"
   config.include Warden::Test::Helpers
 
+  config.before :each do |example|
+    if example.metadata[:type] == :controller
+      bypass_rescue unless example.metadata[:with_rescue]
+    end
+  end
 end
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
+  config.ignore_hosts "127.0.0.1", "localhost", "solr", "lgapi-us.libapps.com", ENV["SOLRCLOUD_HOST"]
+  config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.default_cassette_options = {
     match_requests_on: [:method]
   }
-end
-
-require "rspec/expectations"
-RSpec::Matchers.define :include_items do |primary_items|
-  chain :before, :secondary_items
-  chain :within_the_first, :within_index
-
-  match do |items|
-    all_present?(primary_items, @within_index) &&
-      all_present?(@secondary_items) &&
-      comes_before?(@secondary_items, primary_items)
-  end
-
-  def all_present?(check_items, within_index = nil)
-    # Skip if chained check is not required
-    return true if check_items.nil?
-
-    @within_items = within_index ? @actual.take(within_index.to_i) : @actual
-    check_items.all? { |id| @within_items.include?(id) }
-  end
-
-  def comes_before?(back_items, front_items)
-    # Skip if chained check is not required
-    return true if @secondary_items.nil?
-
-    back_items.all? { |back_item|
-      front_items.all? { |front_item|
-        @actual.index(back_item) > @actual.index(front_item) rescue false
-      }
-    }
-  end
-
-
-  failure_message do |actual|
-    if secondary_items
-      not_found_items = secondary_items.select { |id| !@actual.include? id }
-      if not_found_items.present?
-        "expected that secondary items #{secondary_items.pretty_inspect} would all be present #{within_index}, but missing #{not_found_items.pretty_inspect}"
-      else
-        "expected that #{primary_items} would be appear before #{secondary_items} in #{@actual}"
-      end
-    elsif within_index
-      not_found_items = primary_items.select { |id| !@within_items.include? id }
-
-      "expected that primary items #{primary_items.pretty_inspect} would appear in the first #{within_index} items, but missing #{not_found_items.pretty_inspect}"
-    else
-      not_found_items = primary_items.select { |id| !@actual.include? id }
-      "expected that all primary_items (#{primary_items.pretty_inspect}) would apper in results: #{@actual.pretty_inspect}, but missing #{not_found_items.pretty_inspect}"
-    end
-  end
 end

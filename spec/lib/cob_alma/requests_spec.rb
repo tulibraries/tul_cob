@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "spec_helper"
 require "rails_helper"
 
 RSpec.describe CobAlma::Requests do
@@ -9,13 +8,12 @@ RSpec.describe CobAlma::Requests do
     let(:same_campus) { Alma::BibItem.find("same_campus").grouped_by_library }
     let(:ambler_presser) { Alma::BibItem.find("ambler_presser").grouped_by_library }
 
-
     it "allows a user to request an item, available in the Ambler Campus Library Stacks, for pickup at Paley." do
       expect(described_class.valid_pickup_locations(list_items)).to include "MAIN"
     end
 
-    it "does not allow a user to request an item available in the Presser Listening Library, for pickup at Paley." do
-      expect(described_class.valid_pickup_locations(same_campus)).not_to include "MAIN"
+    it "does allow a user to request an item available in both the Presser Listening Library and MAIN, for pickup at MAIN." do
+      expect(described_class.valid_pickup_locations(same_campus)).to include "MAIN"
     end
   end
 
@@ -31,8 +29,8 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.valid_pickup_locations(kardon_only)).to include "MAIN"
     end
 
-    it "does not allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
-      expect(described_class.valid_pickup_locations(kardon_paley)).not_to include "MAIN"
+    it "does allow a user to request a book, available in Remote Storage and Paley Library Stacks, for pickup at Paley" do
+      expect(described_class.valid_pickup_locations(kardon_paley)).to include "MAIN"
     end
   end
 
@@ -77,7 +75,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_no_libraries") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.2 (1974)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"])
       end
     end
 
@@ -85,8 +83,8 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.4 (1976)" => ["AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
-                              "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
+        expect(subject).to eq("v.4 (1976)" => ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"],
+                              "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"])
       end
     end
 
@@ -94,7 +92,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_multiple_libraries") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.2 (1974)" => ["GINSBURG", "PODIATRY", "HARRISBURG"])
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "GINSBURG", "HARRISBURG"])
       end
     end
   end
@@ -133,20 +131,20 @@ RSpec.describe CobAlma::Requests do
     end
   end
 
-  describe "#asrs_descriptions" do
+  describe "#material_type_and_asrs_descriptions(items_list)" do
     context "record has multiple empty descriptions" do
       let(:items_list) { Alma::BibItem.find("asrs_empty_descriptions") }
 
       it "returns an empty array" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([""])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", [""]]])
       end
     end
 
     context "record has empty description and is ASRS and available" do
       let(:items_list) { Alma::BibItem.find("asrs_empty_and_description") }
 
-      it "returns one description" do
-        expect(described_class.asrs_descriptions(items_list)).to eq(["", "sample"])
+      it "returns one description and one empty string" do
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", ["", "sample"]]])
       end
     end
 
@@ -154,15 +152,15 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("empty_and_description_not_in_place") }
 
       it "returns an empty list" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([])
       end
     end
 
-    context "record many description but non are from ASRS" do
+    context "record many description but none are from ASRS" do
       let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
 
       it "returns empty list" do
-        expect(described_class.asrs_descriptions(items_list)).to eq([])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([])
       end
     end
 
@@ -170,14 +168,14 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("asrs_repeated_descriptions") }
 
       it "returns unique descriptions" do
-        expect(described_class.asrs_descriptions(items_list)).to eq(["sample"])
+        expect(described_class.material_type_and_asrs_descriptions(items_list)).to eq([["DVD", ["sample"]]])
       end
     end
   end
 
   describe "#asrs_pickup_locations" do
     it "displays MAIN as the pickup_location" do
-      expect(described_class.asrs_pickup_locations).to eq(["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
+      expect(described_class.asrs_pickup_locations).to eq(["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"])
     end
   end
 
@@ -210,6 +208,23 @@ RSpec.describe CobAlma::Requests do
 
       it "returns each material type hash once" do
         expect(described_class.physical_material_type(items_list)).to eq([])
+      end
+    end
+  end
+
+  describe "#physical_material_type_and_descriptions(items_list)" do
+
+    context "material type and description" do
+      let(:items_list) { Alma::BibItem.find("multiple_descriptions") }
+      it "returns an array of hashes with materials types and descriptions" do
+        expect(described_class.physical_material_type_and_descriptions(items_list)).to eq([["DVD", ["sample", "second"]]])
+      end
+    end
+
+    context "material type with empty description" do
+      let(:items_list) { Alma::BibItem.find("empty_descriptions") }
+      it "returns an array of hashes with materials types and blank strings for description" do
+        expect(described_class.physical_material_type_and_descriptions(items_list)).to eq([["DVD", [""]]])
       end
     end
   end

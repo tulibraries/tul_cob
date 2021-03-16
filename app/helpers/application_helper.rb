@@ -91,18 +91,14 @@ module ApplicationHelper
   # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
+
     case results.engine_id
-    when "blacklight"
+    when "blacklight", "books_and_media"
       url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
       link_to "View all #{total} online items", url, class: "full-results"
     when "journals"
-      url = search_catalog_path(q: params[:q], f: {
-        format: ["Journal/Periodical"],
-        availability_facet: ["Online"]
-      })
+      url = search_journals_path(q: params[:q], f: { availability_facet: ["Online"] })
       link_to "View all #{total} online journals", url, class: "full-results"
-    when "books_and_media"
-      ""
     when "articles"
       url = url_for(
         action: :index, controller: :primo_central,
@@ -180,11 +176,6 @@ module ApplicationHelper
     else
       solr_document_path(opts.merge(format: "ris"))
     end
-  end
-
-  # Overrides the helper method from the Blacklight RIS gem so that we can use @documents.
-  def render_ris(documents)
-    @documents.map { |x| x.export_as(:ris) }.compact.join("\n")
   end
 
   def render_nav_link(path, name, analytics_id = nil)

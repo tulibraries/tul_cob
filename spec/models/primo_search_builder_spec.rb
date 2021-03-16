@@ -177,6 +177,14 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
         expect(facets).to be_nil
       end
     end
+
+    context "rtype field with value books" do
+      let (:facets) { primo_central_parameters[:query][:q].exclude_facets }
+      let(:params) { ActionController::Parameters.new(f: { rtype: ["books"] }) }
+      it "should exclude facet" do
+        expect(facets).to eq("facet_rtype,exact,books")
+      end
+    end
   end
 
   describe ".process_date_range_query" do
@@ -213,6 +221,16 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       it "adds a default range facet" do
         expect(facets).to eq("facet_searchcreationdate,exact,[1 TO 9999]")
+      end
+    end
+
+    context "range is empty string" do
+      let(:params) { ActionController::Parameters.new(
+        range:  { creationdate: { begin: "", end: "" } }
+      ) }
+
+      it "does not add a default range facet" do
+        expect(facets).to be_nil
       end
     end
 
@@ -275,6 +293,74 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       let(:start) { true }
       it "it sets the offset param equal to @start" do
         expect(primo_central_parameters["query"]["offset"]).to eq(5)
+      end
+    end
+  end
+
+  describe ".skip_search?" do
+    before(:example) do
+      subject.skip_search?(primo_central_parameters)
+    end
+
+    context "no query" do
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "empty query" do
+      let(:params) { ActionController::Parameters.new(q: "") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "* query" do
+      let(:params) { ActionController::Parameters.new(q: "*") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "basic query" do
+      let(:params) { ActionController::Parameters.new(q: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_1" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_2" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_3" do
+      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
+      end
+    end
+
+    context "query is advanced q_1 empty" do
+      let(:params) { ActionController::Parameters.new(q_1: "") }
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
       end
     end
   end

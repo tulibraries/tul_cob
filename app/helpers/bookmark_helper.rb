@@ -1,40 +1,33 @@
 # frozen_string_literal: true
 
 module BookmarkHelper
-  def toggle_document_context(document = nil)
-    # Only toggle the lookup_context for Bookmark items.
-    if @_controller.class == BookmarksController
-      blacklight_reconfig(document)
-      reset_lookup_context(document)
-    end
-  end
-
-  def blacklight_reconfig(document = nil)
-    type = document&.class&.to_s || :default
-    @document_config_map ||= {}
-    @document_config_map[:default] ||= blacklight_config.deep_copy
-    @document_config_map["SolrDocument"] ||= CatalogController.blacklight_config.deep_copy
-    @document_config_map["PrimoCentralDocument"] ||= PrimoCentralController.blacklight_config.deep_copy
-    @blacklight_config = @document_config_map[type]
-  end
-
-  def reset_lookup_context(document = nil)
-    type = document&.class&.to_s || :default
-    lookup_context.prefixes = document_controller_map.fetch(type, :default)
-      .constantize.new.lookup_context.prefixes
-  end
-
-  def document_controller_map
-    {
-      "SolrDocument" => "CatalogController",
-      "PrimoCentralDocument" => "PrimoCentralController",
-      :default => "BookmarksController"
-    }
-  end
-
   def index_controller(document = {}, count = 0)
     if (document.ajax? rescue false)
       "data-controller=#{document.ajax_controller} data-index-url=#{document.ajax_url(count)}"
     end
+  end
+
+  def current_entries_info(collection, options = {})
+    end_num =
+      if collection.respond_to?(:groups) && render_grouped_response?(collection)
+        collection.groups.length
+      else
+        collection.limit_value
+      end
+
+    end_num =
+      if collection.offset_value + end_num <= collection.total_count
+        collection.offset_value + end_num
+      else
+        collection.total_count
+      end
+
+    begin_num =
+      if collection.total_count == 0
+        0
+      else
+        collection.offset_value + 1
+      end
+    "#{begin_num} - #{end_num}"
   end
 end

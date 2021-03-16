@@ -32,7 +32,8 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
+    <%= render partial: "shared/campus_closed" %>
+    <%= javascript_packs_with_chunks_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>

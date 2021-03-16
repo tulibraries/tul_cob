@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "pickups" ]
+  static targets = [ "pickups", "descriptions" ]
 
   connect() {
     this.booking_end_date()
@@ -37,6 +37,21 @@ export default class extends Controller {
       $(this.pickupsTarget).html(options);
     } else {
       $(this.pickupsTarget);
+    }
+  }
+
+  typeSelect() {
+    // We need this variable to be global so that it doesn't mutate in multiple uses
+    if (typeof window.item_level_descriptions == "undefined") {
+       window.item_level_descriptions = $(this.descriptionsTarget).html();
+    }
+    let material_type = $("#material_type option").filter(":selected").text();
+    let emptyOption = $('<option />').attr('value', '');
+    let options = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`).prepend(emptyOption).html();
+    if(options) {
+      $(this.descriptionsTarget).html(options);
+    } else {
+      $(this.descriptionsTarget);
     }
   }
 }

@@ -4,12 +4,12 @@
 .bookmark-heading {
   font-family: "PT Sans";
   font-size: 2.0rem;
-  margin-left: 2.0rem;
 }
 
 .no-bookmarks-message {
   font-family: "PT Sans";
   font-size: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .refworks-link {
@@ -25,10 +25,10 @@
   color: $red;
 }
 
-.clear-bookmarks {
-  font-size: 0.875rem;
+a.clear-bookmarks {
+  //font-size: 0.875rem;
   margin-left: 0.625rem;
-  margin-top: -0.225rem;
+  //margin-top: -0.225rem;
   padding: 0.4725rem 0.625rem 0.4125rem 0.625rem;
 
   @media(max-width: 601px) {
@@ -36,9 +36,8 @@
 	}
 }
 
-.clear-bookmarks .search-widgets a,
 a.clear-bookmarks {
-  color: $white;
+  color: $white!important;
 }
 
 .bookmark_add,
@@ -55,8 +54,8 @@ a.clear-bookmarks {
 .bookmarks-dropdown {
   background-color: $header-grey;
   color: $red;
-  font-size: 0.875rem;
-  padding: 0.4725rem 0.625rem;
+  //font-size: 0.875rem;
+  //padding: 0.4725rem 0.625rem;
 
   @media(max-width: 768px) {
     background-color: $red;
@@ -67,9 +66,72 @@ a.clear-bookmarks {
 
 #bookmarks-sendto button {
   background-color: $white;
-  border: 0.0625rem solid $header-grey;
+  border: 0.0625rem solid $dark-grey;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    border: none;
+    color: $white;
+	}
 }
 
-.toggle-bookmark {
-  text-align: right !important;
+.bookmarks-back-btn {
+  border: 1px solid $dark-grey !important;
+  font-size: 1rem;
+  padding: 0.375rem 0.75rem;
+
+  @media(min-width: 600px) {
+    margin-top: -8px;
+  }
+
+  @media(max-width: 768px) {
+    margin-top: 0;
+  }
+}
+
+.sendto-menu,
+.sendto-item {
+
+  @media(max-width: 768px) {
+    background-color: $white !important;
+    color: $black !important;
+
+    .nav-link {
+      background-color: $white !important;
+      color: $red !important;
+    }
+	}
+}
+
+#record-page-container .toggle-bookmark {
+  @media(min-width: 768px) {
+    text-align: right;
+	}
+  @media(max-width: 768px) {
+    display: block;
+
+    input {
+      position: absolute;
+      left: -9999px;
+    }
+	}
+}
+
+#bookmark_button {
+  font-size: 1rem;
+  padding-bottom: 0.125rem;
+  padding-top: 0.25rem;
+
+  @media(min-width: 768px) {
+    text-align: right;
+	}
+}
+
+.bookmark-sunset {
+  p {
+    font-size: 1rem;
+  }
+  a {
+    text-decoration: underline;
+  }
 }

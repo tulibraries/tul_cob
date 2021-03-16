@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PrimoCentralPresenter < Blacklight::IndexPresenter
+class PrimoCentralPresenter < IndexPresenter
   def label(field, opts = {})
     with_subtitle(document[:title]).html_safe
   end

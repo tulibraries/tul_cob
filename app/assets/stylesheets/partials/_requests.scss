@@ -22,8 +22,7 @@
 }
 
 .request-heading {
-  padding-left: 0.625rem;
-  padding-top: 0.3125rem;
+  padding: 0.625rem;
 
   h2 {
     font-family: "Roboto Condensed";
@@ -34,6 +33,9 @@
 .request-heading a {
   color: $black;
   font-size: 1.1rem;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .request-heading a:hover {
@@ -59,10 +61,13 @@
   margin-bottom: 1rem;
 }
 
+.hold-form {
+  margin-left: -15px !important;
+}
+
 /* === REQUEST BUTTON === */
 .request-button {
-  font-size: 1.1rem;
-  font-weight: bold;
+  font-size: 0.9375rem;
 }
 
 #ez-borrow-button {

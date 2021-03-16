@@ -11,7 +11,8 @@ module SearchHelper
       if params[:q].blank?
         "https://digital.library.temple.edu/digital/search"
       else
-        "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort"
+        query = "#{params[:q]}".gsub("/", " ")
+        "https://digital.library.temple.edu/digital/search/searchterm/#{query}/order/nosort"
       end
     else
       search_catalog_url(search_state.add_facet_params_and_redirect(facet_field, item))

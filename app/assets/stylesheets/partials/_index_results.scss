@@ -5,7 +5,7 @@
 
 h3.document-title-heading {
   font-family: "PT Sans";
-  font-size: 1.1rem;
+  font-size: 1.1rem !important;
 }
 
 .explantion-wrapper {
@@ -46,7 +46,7 @@ dt.index-label {
 
   @media(max-width: 600px) {
     text-align: left;
- 	}
+	}
 }
 
 dd {
@@ -56,6 +56,23 @@ dd {
     width: 75% !important;
   }
 }
+
+dl.blacklight-lc_call_number_display > dd,
+dl.blacklight-lc_call_number_display > dt {
+  background-color: $header-grey;
+  width: 100%;
+}
+
+dl.blacklight-lc_call_number_display > dt {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+dl.blacklight-lc_call_number_display > dd {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
 
 .page-links {
   @media(max-width: 485px) {
@@ -73,4 +90,75 @@ dd {
 
 dd.blacklight-format {
   padding-left: 0.4375rem !important;
+}
+
+/* === LIB GUIDES RECOMMENDER ===*/
+.lib-guides-recommender-catalog-body {
+  background-color: #dddddd;
+
+  h2 {
+    font-weight: 800;
+    padding-left: 2.5rem;
+
+    @media(max-width: 485px) {
+      padding: 1rem !important;
+      background-color: $red;
+      color: $white !important;
+      border-top-right-radius: 0.25rem;
+      border-top-left-radius: 0.25rem;
+    }
+  }
+
+  @media(max-width: 485px) {
+    background-color: #ebebe9;
+    padding: 0;
+    border-bottom-right-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+
+    div {
+      align-items: left;
+      flex-direction: column;
+      display: inline-flex;
+    }
+  }
+}
+
+.lib-guides-recommender-librarians,
+.lib-guides-recommender-guides {
+  background-color: #ebebe9;
+
+  h3 {
+    font-weight: 800;
+  }
+
+  @media(max-width: 485px) {
+    padding: 1rem !important;
+  }
+}
+
+.lib-guides-recommender-librarians {
+
+  p {
+    margin-bottom: 0.5rem;
+  }
+
+  @media(max-width: 485px) {
+    margin-right: 0;
+    border-bottom: 0.0625rem solid $red !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+.lib-guides-recommender-guides {
+
+  ul {
+    padding-inline-start: 0px;
+  }
+
+  @media(max-width: 485px) {
+    margin-left: 0;
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
 }

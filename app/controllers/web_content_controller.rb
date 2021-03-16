@@ -12,6 +12,7 @@ class WebContentController < CatalogController
     config.connection_config[:url] = config.connection_config[:web_content_url]
     config.track_search_session = false
     config.index.title_field = "web_title_display"
+    config.search_builder_class = ::SearchBuilder
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params = {}
 
@@ -20,7 +21,8 @@ class WebContentController < CatalogController
       label: "Library Website",
       limit: true,
       collapse: false,
-      helper_method: :format_types
+      helper_method: :format_types,
+      component: true
 
     # Index fields
     config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type

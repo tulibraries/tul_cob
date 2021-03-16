@@ -6,8 +6,6 @@ module Blacklight::PrimoCentral::Document
   include Blacklight::Document::ActiveModelShim
   include Blacklight::PrimoCentral::SolrAdaptor
 
-  delegate :url_helpers, to: "Rails.application.routes"
-
   delegate :dig, :[], to: :@_source
 
   def []=(key, value)
@@ -31,6 +29,7 @@ module Blacklight::PrimoCentral::Document
     doc["pnxId"] = doc["pnxId"]&.gsub(/^TN_/, "")
 
     doc["description"] ||= doc.dig("pnx", "search", "description")&.first
+    doc["subject"] ||= doc.dig("pnx", "facets", "topic")
     doc["subject"] ||= doc.dig("pnx", "search", "subject")
 
     format = doc["@TYPE"] || doc["type"] ||
@@ -60,6 +59,10 @@ module Blacklight::PrimoCentral::Document
 
     doc["doi"] = doc.dig("pnx", "addata", "doi")
 
+    @doi = doc["doi"]&.first
+
+    @libkey_url_thread = libkey_url_thread
+
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
     end
@@ -71,21 +74,6 @@ module Blacklight::PrimoCentral::Document
   def has_direct_link?
     availability = @_source.dig("delivery", "availability") || []
     availability == ["fulltext_linktorsrc"]
-  end
-
-  def ajax?
-    (!!@_source["ajax"] || @_source["ajax"] == "true") rescue false
-  end
-
-
-  # Stimulus controller used for controlling ajax endpoint.
-  def ajax_controller
-    "index"
-  end
-
-  # Ajax endpoint for rendering this document.
-  def ajax_url(count = 0)
-    url_helpers.articles_index_item_path(@_source["pnxId"], document_counter: count)
   end
 
   def materials
@@ -100,6 +88,10 @@ module Blacklight::PrimoCentral::Document
   def purchase_order?
     # For now, disable all purchase orders for Primo documents.
     false
+  end
+
+  def libkey_url
+    @libkey_url_thread.value
   end
 
 
@@ -124,7 +116,6 @@ module Blacklight::PrimoCentral::Document
       doc.dig("delivery", "GetIt1", 0, "links", 0) || {}
     end
 
-
     def url_query
       query = (URI.parse(@url).query rescue nil)
       if (query)
@@ -145,5 +136,18 @@ module Blacklight::PrimoCentral::Document
 
     def issn
       @url_query["rft.issn"]
+    end
+
+    def libkey_url_thread
+      return Thread.new {} if @doi.blank?
+
+      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+      libkey_url = "https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/#{@doi}?access_token=#{access_token}"
+
+      Thread.new {
+        (HTTParty.get(libkey_url, timeout: 2) rescue {})["data"]
+          &.slice("fullTextFile", "contentLocation")
+          &.values&.find(&:present?)
+      }
     end
 end

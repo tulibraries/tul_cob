@@ -7,7 +7,7 @@ module CobAlma
   module Requests
     def self.determine_campus(item)
       case item
-      when  "LAW", "PRESSER", "MAIN", "ASRS"
+      when "PRESSER", "MAIN", "ASRS"
         :MAIN
       when "AMBLER"
         :AMBLER
@@ -24,17 +24,17 @@ module CobAlma
 
     def self.possible_pickup_locations
       #Make an array on only items that can request items
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"]
     end
 
     def self.asrs_pickup_locations
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      ["MAIN", "AMBLER", "GINSBURG", "HARRISBURG"]
     end
 
     def self.remove_by_campus(campus)
       case campus
       when :MAIN
-        [ "LAW", "MEDIA", "PRESSER", "MAIN", "ASRS"]
+        ["MEDIA", "PRESSER", "MAIN", "ASRS"]
       when :AMBLER
         ["AMBLER"]
       when :HSL
@@ -58,26 +58,34 @@ module CobAlma
       libraries = self.avail_locations(items_list)
 
       if libraries.any?
+        removals = []
         libraries.each do |lib|
           campus = self.determine_campus(lib)
-          pickup_locations -= remove_by_campus(campus)
+          next if lib == "MAIN"
+          next if [lib, campus] == ["ASRS", :MAIN]
+          removals << lib if remove_by_campus(campus).include?(lib)
         end
+        pickup_locations -= removals
       end
       pickup_locations << self.reserve_or_reference(items_list)
-      pickup_locations
+      pickup_locations.flatten
     end
 
     def self.item_level_locations(items_list)
+      #Refactored to temporarily allow items to be picked up at Charles
       pickup_locations = self.possible_pickup_locations
 
       items_list.all.reduce({}) { |libraries, item|
         desc = item.description
-        campus = determine_campus(item.library)
+        campus = self.determine_campus(item.library)
+        removals = []
 
         if libraries[desc].present?
-          libraries[desc] -= remove_by_campus(campus)
+          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+          libraries[desc] -= removals
         else
-          libraries[desc] = pickup_locations - remove_by_campus(campus)
+          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+          libraries[desc] = pickup_locations - removals
         end
 
         libraries
@@ -127,12 +135,23 @@ module CobAlma
       descriptions.uniq.sort
     end
 
-    def self.asrs_descriptions(items_list)
-      items_list.all
+    def self.material_type_and_asrs_descriptions(items_list)
+      types_and_descriptions = items_list.all
         .select { |item| item.library == "ASRS" && item.in_place? }
-        .map(&:description)
-        .uniq
-        .sort
+        .map { |item|
+          Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
+        }
+
+      types_and_descriptions.reduce({}) do |acc, rec|
+        key, value = rec.to_a.flatten
+        if acc[key]
+          acc[key] << value
+          acc[key].uniq!
+        else
+          acc[key] = [value]
+        end
+        acc
+      end.to_a
     end
 
     def self.booking_location(items_list)
@@ -159,6 +178,23 @@ module CobAlma
         end
       end
       material_types.uniq.compact
+    end
+
+    def self.physical_material_type_and_descriptions(items_list)
+      types_and_descriptions = items_list.all.map { |item|
+        Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
+      }.uniq.compact
+
+      types_and_descriptions.reduce({}) do |acc, rec|
+        key, value = rec.to_a.flatten
+        if acc[key]
+          acc[key] << value
+          acc[key].uniq!
+        else
+          acc[key] = [value]
+        end
+        acc
+      end.to_a
     end
 
     def self.item_holding_ids(items_list)

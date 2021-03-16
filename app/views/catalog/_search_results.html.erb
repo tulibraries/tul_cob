@@ -1,16 +1,9 @@
-<% if !cookies.fetch("#{controller_name}Once", false) %>
-<div class="row bg-background-grey rounded explanation-div mx-1" data-controller="explanation" data-target="<%= "explanation.#{controller_name}" %>">
-  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" >
-    <p class="explanation"><%= explanation_translations(controller_name) %></p>
-  </div>
-    <button class="btn btn-link explantion-btn col-sm-12 col-lg-2 pt-0" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
-</div>
-<% end %>
+<%= render partial: "explanation_div" %>
 
 <h2 class="sr-only top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
 
 <% content_for(:head) do -%>
-  <%= render_opensearch_response_metadata %>
+  <%= render partial: "catalog/opensearch_response_metadata", locals: { response: @response } %>
 <% end %>
 
 <%= render "search_header" %>
@@ -23,4 +16,5 @@
 <%- else %>
   <%= render_document_index %>
 <%- end %>
+
 <%= render "results_pagination" %>

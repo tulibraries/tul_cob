@@ -29,10 +29,10 @@ class PrimoCentralController < CatalogController
     # Pagination handler
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
-    config.add_show_tools_partial(:bookmark, partial: "bookmark_control")
+    config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: false)
     config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
-    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark")
-    config.add_results_document_tool(:bookmark, partial: "bookmark_control")
+    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: true)
+    config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: false)
 
     # Search fields
     config.add_search_field :any, label: "All Fields", catalog_map: :all_fields
@@ -55,12 +55,12 @@ class PrimoCentralController < CatalogController
     config.add_index_field :error
 
     # Facet fields
-    config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
-    config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code
-    config.add_facet_field :creationdate, label: "Date", range: true
-    config.add_facet_field :creator, label: "Author/Creator"
-    config.add_facet_field :topic, label: "Topic"
-    config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code
+    config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code, component: true
+    config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code, component: true
+    config.add_facet_field :creationdate, label: "Date", range: true, component: RangeFacetFieldListComponent
+    config.add_facet_field :creator, label: "Author/Creator", component: true
+    config.add_facet_field :topic, label: "Topic", component: true
+    config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true
 
     # Show fields
     # See for refwork tag definitions:

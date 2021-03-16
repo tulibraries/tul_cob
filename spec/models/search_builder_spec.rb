@@ -92,6 +92,21 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#filter_suppressed" do
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      subject.filter_suppressed(solr_parameters)
+    end
+
+    context "default" do
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+
+      it "adds suppression to fq" do
+        expect(solr_parameters["fq"]).to eq(["-suppress_items_b:true"])
+      end
+    end
+  end
+
   describe "#spellcheck" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
@@ -150,18 +165,31 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
-  describe "#substitute_colons" do
+  describe "#substitute_special_chars" do
     it "can handle nil case with grace" do
-      expect(subject.substitute_colons(nil, nil)).to be_nil
-      expect(subject.substitute_colons("foo", nil)).to eq("foo")
+      expect(subject.substitute_special_chars(nil, nil)).to be_nil
+      expect(subject.substitute_special_chars("foo", nil)).to eq("foo")
     end
 
     it "substitutes colons from values no matter what op is" do
-      expect(subject.substitute_colons("foo:bar", nil)).to eq("foo bar")
+      expect(subject.substitute_special_chars("foo:bar", nil)).to eq("foo bar")
     end
 
     it "substitutes all the colons from values" do
-      expect(subject.substitute_colons("foo:bar:bum", nil)).to eq("foo bar bum")
+      expect(subject.substitute_special_chars("foo:bar:bum", nil)).to eq("foo bar bum")
+    end
+
+    it "substitute ? marks" do
+      # @see BL-1301 for ref.  Basically Solr treats ? as a special character.
+      expect(subject.substitute_special_chars("foo bar?", nil)).to eq("foo bar ")
+    end
+
+    it "substitutes empty parens '()' " do
+      expect(subject.substitute_special_chars("foo () bar", nil)).to eq("foo   bar")
+    end
+
+    it "does not substitutes parens containing values " do
+      expect(subject.substitute_special_chars("foo (bar) baz", nil)).to eq("foo (bar) baz")
     end
   end
 
@@ -283,15 +311,75 @@ RSpec.describe SearchBuilder , type: :model do
       expect(solr_parameters[:fq]).to be_a_kind_of Array
     end
 
-    context "facet not defined in config" do
-      let(:single_facet) { { unknown_facet_field: "foo" } }
-      let(:user_params) { { f: single_facet } }
-
-      it "does not add facet to solr_parameters" do
+    context "unknown facet, basic facet, and pivot facet" do
+      let(:solr_parameters) {
         solr_parameters = Blacklight::Solr::Request.new
-        subject.add_facet_fq_to_solr(solr_parameters)
-        expect(solr_parameters[:fq]).to be_empty
+        params = ActionController::Parameters.new(
+          f: {
+            unknown_facet_field: "foo",
+            format: "bar",
+            lc_outer_facet: "hat"
+          })
+        subject.with(params).add_facet_fq_to_solr(solr_parameters)
+        solr_parameters
+      }
+
+      it "does not add unkown facets to solr_parameters" do
+        expect(solr_parameters[:fq] - ["{!term f=format}bar", "{!term f=lc_outer_facet}hat"]).to be_empty
+      end
+
+      it "does add the other two" do
+        expect(solr_parameters[:fq].size).to eq 2
       end
     end
   end
+
+  describe "range queries" do
+    it "converts 'range' object to correct solr range fields" do
+      params = ActionController::Parameters.new(
+        f: {
+          unknown_facet_field: "foo",
+          format: "bar",
+          lc_outer_facet: "hat"
+        },
+        range: {
+          lc_classification: {
+            begin: "A",
+            end: "K"
+          },
+          pub_date_sort: {
+            begin: "1900",
+            end: "1950"
+          }
+        })
+      builder = subject.with(params)
+      expect(subject.to_h["fq"]).to include("pub_date_sort: [1900 TO 1950]")
+      expect(subject.to_h["fq"]).to include("lc_call_number_sort: [Zaaaaaaaaa TO Zkaaaaaaaa]")
+    end
+
+    it "skips when empty lc classification range" do
+      params = ActionController::Parameters.new(
+        f: {
+          unknown_facet_field: "foo",
+          format: "bar",
+          lc_outer_facet: ""
+        },
+        range: {
+          lc_classification: {
+            begin: "",
+            end: ""
+          },
+          pub_date_sort: {
+            begin: "1900",
+            end: "1950"
+          }
+        })
+      builder = subject.with(params)
+      has_lc_call_number_sort_field = subject.to_h["fq"].any? { |f| f.match(/lc_call_number_sort/) }
+      expect(has_lc_call_number_sort_field).to be(false)
+    end
+  end
+
+
+
 end

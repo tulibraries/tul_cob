@@ -1,0 +1,12 @@
+default: &default
+  api_key: <%= ENV["LIB_GUIDES_API_KEY"] %>
+  site_id: <%= ENV["LIB_GUIDES_SITE_ID"] %>
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default

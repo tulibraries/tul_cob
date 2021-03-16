@@ -61,15 +61,6 @@ class User < ApplicationRecord
     end
   end
 
-  # Overridden because we do not want to limit bookmark selection to one document type.
-  def bookmarks_for_documents(documents = [])
-    if documents.any?
-      bookmarks.where(document_id: documents.map(&:id))
-    else
-      []
-    end
-  end
-
   def can_purchase_order?
     {
       "Undergraduate" => "2",
@@ -79,6 +70,12 @@ class User < ApplicationRecord
       "Law Faculty" => "16",
       "Law General" => "17",
       "Library Staff" => "22",
+      "Faculty/Admin-Japan" => "21",
+      "HSL Student" => "19",
     }.values.include? alma.user_group["value"] rescue false
+  end
+
+  def bookmarks
+    (b = super).where!(document_type: "SolrDocument") and b
   end
 end

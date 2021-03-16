@@ -27,6 +27,10 @@ form#sms_form div.text-this-location label {
   font-weight: normal;
 }
 
+.text-this-location {
+  padding-left: 45px;
+}
+
 #locationsList {
   background-color: $white;
   border: solid #ccc 0.0625rem;
@@ -45,4 +49,8 @@ form#sms_form div.text-this-location label {
 
 .location-heading {
   font-weight: bold;
+}
+
+.sms-library {
+  font-weight: 600;
 }

@@ -4,7 +4,6 @@ require "rails_helper"
 
 RSpec.describe CatalogController, type: :controller do
 
-
   let(:doc_id) { "991012041239703811" }
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
   let(:mock_document) { instance_double(SolrDocument) }
@@ -18,6 +17,17 @@ RSpec.describe CatalogController, type: :controller do
 
     it "is properly routed for staff_view" do
       expect(get: "/catalog/:id/staff_view").to route_to(controller: "catalog", action: "librarian_view", id: ":id")
+    end
+
+    context "when the record is suppressed" do
+      let(:document) { SolrDocument.new(id: doc_id, suppress_items_b: true) }
+      it "raises a record not found error if the record is suppressed", with_rescue: true do
+        allow(search_service).to receive(:fetch).with(doc_id).and_return([mock_response, document])
+        allow(controller).to receive(:search_service).and_return(search_service)
+
+        get :show, params: { id: doc_id }
+        expect(response).to render_template("errors/not_found")
+      end
     end
   end
 
@@ -203,6 +213,69 @@ RSpec.describe CatalogController, type: :controller do
         controller.do_with_json_logger(foo: "bar") { raise StandardError.new(message) } rescue nil
         expect(controller).to have_received(:json_request_logger).with(foo: "bar", "error" => "foo", "bizz" => "buzz", start: "boo")
       end
+    end
+  end
+
+  describe "general param handling" do
+    it "should remove duplicate facet param values" do
+      expect(controller).to be_a_kind_of(ApplicationController)
+      get :index , params: { f: { foo: [:bar, :bar] } }
+      expect(controller.params["f"]["foo"].size).to eq(1)
+    end
+  end
+
+  describe "advanced search" do
+    it "doesn't error on empty search fields (example 1)" do
+      expect {
+        get :index, params: { search_field: "advanced", f_1: "all_fields", f_2: "all_fields", f_3: "all_fields",
+                              op_1: "AND", operator: { q_1: "contains", q_2: "contains", q_3: "is" } }
+        expect(response.code).to eq "200"
+      }.to_not raise_error
+    end
+
+    it "doesn't error on empty search fields (example 2)" do
+      expect {
+        get :index, params: { search_field: "advanced", f_1: "all_fields", f_2: "creator_t", f_3: "all_fields",
+                              op_1: "AND", op_2: "AND", operator: { q_1: "contains", q_2: "contains", q_3: "is" },
+                              q_1: ". Research methods in psychology", q_2: "Morling", q_3: "" }
+        expect(response.code).to eq "200"
+      }.to_not raise_error
+    end
+  end
+
+  describe "index page with no user params" do
+    render_views
+
+    it "does not send :search_results to the search_service" do
+      allow(controller).to receive(:search_service).and_return(search_service)
+      expect(search_service).to_not receive(:search_results)
+      get :index
+      expect(response).to render_template("catalog/_home")
+      expect(response).not_to render_template("catalog/_search_results")
+    end
+  end
+
+  describe "deciding to render or not to render lc classification fields on index" do
+    render_views
+
+    it "does not show the lc classification field by default" do
+      get :index, params: { q: "art" }
+      expect(response.body).not_to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc range param is present" do
+      get :index, params: { q: "art" , range: { lc_classification: { begin: "A", end: "Z" } } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc facet param is present" do
+      get :index, params: { q: "art" , f: { lc_outer_facet: ["N - Fine Arts"] } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
+    end
+
+    it "shows the lc classification field when the lc sort param is present" do
+      get :index, params: { q: "art" , sort: { lc_call_number_sort: true } }
+      expect(response.body).to include "blacklight-lc_call_number_display"
     end
   end
 end

@@ -1,6 +1,34 @@
 @import "_vars.scss";
 
 /* SIDEBAR STYLES(FACETS AND CONSTRAINTS) */
+.blacklight-lc_facet, .blacklight-library_facet {
+
+  .card-body {
+    padding-left: 0;
+    padding-right: 0;
+
+    > ul > li {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .pivot-facet-spacer-cell {
+      display: table-cell;
+      width: 1.25rem;
+    }
+
+    .pivot-facet-spacer-row:not(:last-child) {
+      display: table-row;
+
+      span {
+        display: table-cell;
+        border-top: 1.25px solid #e5e5e5;
+        width: 100%;
+        height: 0.3rem;
+      }
+    }
+  }
+}
 
 /* APPLIED FILTERS AND PARAMETERS */
 #startOverLink {
@@ -34,10 +62,6 @@
 .limit-search-heading {
 	font-family: "PT Sans";
 	font-size: 1.3rem;
-
-	@media(max-width: 775px) {
-		display: none;
-	}
 }
 
 .limit-search {
@@ -55,7 +79,6 @@
 		display: none;
 	}
 }
-
 
 span .remove-constraints {
 	background-color: $light-blue;
@@ -98,7 +121,8 @@ span.constraint-value {
 .facet-field-heading {
 	background-color: $header-grey;
 	cursor: pointer;
-	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem;
+  font-size: 1.75rem !important;
+	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem !important;
 }
 
 .facet-field-heading a {
@@ -118,9 +142,16 @@ span.constraint-value {
 	color: $red;
 }
 
-.facet-limit-active .facet-field-heading {
-	background-color: $red;
+.facet-limit {
+  margin-bottom: 0;
+}
 
+.facet-limit-active {
+  border: 1px solid $header-grey !important;
+}
+
+.facet-limit-active .facet-field-heading {
+	background-color: $red !important;
 	a {
 		color: $white;
 	}
@@ -131,6 +162,11 @@ span.constraint-value {
 	color: $white !important;
 }
 
+.facet-leaf-node {
+  padding-left: 0.3125rem !important;
+
+}
+
 .facet-values {
   display: table;
   table-layout: fixed;
@@ -139,6 +175,10 @@ span.constraint-value {
 
   li {
     display: table-row;
+
+    .selected {
+      color: $black !important;
+    }
   }
 
   .facet-label {
@@ -146,7 +186,7 @@ span.constraint-value {
 		padding-bottom: $spacer / 2;
 
 		.selected {
-			color: $red;
+			color: $red !important;
 			font-weight: bold;
 			text-decoration: underline;
 		}
@@ -248,4 +288,32 @@ form.range_limit .form-control {
 
 ul.missing li span.facet-count {
 	width: 3rem !important;
+}
+
+/* style for pivot facet's nested list */
+
+.pivot-facet {
+  @extend .list-unstyled;
+  @extend .py-1;
+  @extend .px-4;
+  padding-right: 0 !important;
+}
+
+.facet-leaf-node {
+  padding-left: 1.25rem;
+  margin-top: -1.5rem;
+}
+
+.facet-toggle-handle {
+  margin: 0;
+  margin-left: -8px;
+  padding: 0;
+
+  &.collapsed {
+    .show { display: block; }
+    .hide { display: none; }
+  }
+
+  .show { display: none; }
+  .hide { display: block; }
 }

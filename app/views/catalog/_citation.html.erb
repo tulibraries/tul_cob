@@ -2,8 +2,8 @@
   <span aria-hidden="true">&times;</span>
 </button>
 
-<% if @documents.one? %>
-  <%= render partial: "catalog/single_citation", locals: { document: @documents.first } %>
+<% if @response.documents.one? %>
+  <%= render partial: "catalog/single_citation", locals: { document: @response.documents.first } %>
 <% else %>
   <%= render "catalog/grouped_citations" %>
 <% end %>

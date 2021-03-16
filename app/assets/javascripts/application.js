@@ -115,6 +115,16 @@ $(document).ready(function(){
 	    }
 	    else $(document).find(':input[id=renew_selected]').prop('disabled', true);
 	});
+
+  //link highlighting of hierarchy
+  $(".search-subject").hover(
+    function() {
+      $(this).prevAll().addClass("field-hierarchy");
+    },
+    function() {
+      $(this).prevAll().removeClass("field-hierarchy");
+    }
+  );
 });
 
 
@@ -200,3 +210,9 @@ $(document).on('turbolinks:load', function() {
 		document.getElementById("main-toggler-icon").classList.toggle("change");
 	}
 }
+
+// This hack helps with a race condition bug in blacklight_range_limit gem.
+// REF: BL-1171 and project_blacklight/blacklight_range_limit#111
+window.addEventListener('load', function(event) {
+   $("#facet-pub_date_sort").trigger("shown.bs.collapse");
+});

@@ -2,6 +2,7 @@
 
 module AvailabilityHelper
   include Blacklight::CatalogHelperBehavior
+  include UsersHelper
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
@@ -10,15 +11,23 @@ module AvailabilityHelper
     # Temporary change for items that don't currently fit in the ASRS bins
     unavailable_locations = ["storage"]
 
+    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
+      return unavailable_items(item)
+    end
+
     if unavailable_libraries.include?(item.library) ||
         unavailable_locations.include?(item.location)
 
-      # library_link = "#{Rails.configuration.library_link}forms/storage-request"
-
       label = "In temporary storage"
-      # + link_to("Recall item now", library_link)
+
+      if !campus_closed?
+        library_link = "#{Rails.configuration.library_link}forms/storage-request"
+        label += " — #{link_to("Recall item now", library_link)}"
+      end
 
       content_tag(:span, "", class: "close-icon") + raw(label)
+    elsif item.item_data["awaiting_reshelving"]
+      content_tag(:span, "", class: "close-icon") + "Awaiting Reshelving"
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal"
@@ -36,35 +45,20 @@ module AvailabilityHelper
   def unavailable_items(item)
     if item.has_process_type?
       process_type = Rails.configuration.process_types[item.process_type] || "Checked out or currently unavailable"
-      content_tag(:span, "", class: "close-icon") + process_type
-    else
-      content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
+      if (item.process_type == "LOAN")
+        due_date_time = item["item_data"].fetch("due_date", nil)
+        unless (due_date_time.nil?)
+          process_type += ", due " + make_date(due_date_time)
+        end
+      end
+      return content_tag(:span, "", class: "close-icon") + process_type
     end
-  end
 
-  def document_and_api_merged_results(document, items_list)
-    document_items = document.fetch("items_json_display", [])
-    alma_item_pids = items_list.all.collect { |item|
-      item["item_data"]["pid"]
-    }.flatten
+    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
+      return content_tag(:span, "", class: "close-icon") + "Not Available"
+    end
 
-    alma_item_availability = items_list.all.collect { |item|
-      availability_status(item)
-    }.flatten
-
-    document_items.collect { |item|
-        alma_data_array = alma_item_pids.zip(alma_item_availability)
-        alma_data_array.collect { |avail_item|
-          if item["item_pid"] == avail_item.first
-            item.merge!("availability": avail_item.last)
-          end
-        }.compact
-      }
-      .flatten
-      .reject(&:blank?)
-      .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_library_locations(item) }
-      .group_by { |item| library(item) }
+    return content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
   end
 
   def availability_alert(document)
@@ -200,13 +194,18 @@ module AvailabilityHelper
     sorted_library_hash
   end
 
+  def materials_location(material)
+    Rails.configuration.locations.dig(material["raw_library"], material["raw_location"])
+  end
+
   def render_location_selector(document)
     materials = document.materials
+    items = document.fetch("items_json_display", "")
 
     if materials.count > 1
       render template: "almaws/_location_selector", locals: { materials: materials }
     elsif materials.count == 1
-      render template: "almaws/_location_field", locals: { material: materials.first }
+      render template: "almaws/_location_field", locals: { material: materials.first, item: items.first  }
     end
   end
 

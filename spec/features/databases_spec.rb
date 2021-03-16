@@ -18,4 +18,14 @@ RSpec.feature "Databases AZ" do
       expect(page).not_to have_button("Remove bookmark")
     end
   end
+
+  feature "Databases Advanced Search Form" do
+
+    scenario "visit page" do
+      visit "/databases/advanced"
+
+
+      expect(page).to have_no_content "Library of Congress Classification Range"
+    end
+  end
 end

@@ -61,4 +61,9 @@ class ApplicationController < ActionController::Base
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
     end
+
+    # ensure that rails treats request as xhr
+    def xhr!
+      request.headers["HTTP_X_REQUESTED_WITH"] = "XMLHttpRequest"
+    end
 end

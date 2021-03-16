@@ -1,5 +1,9 @@
 en:
-  purchase_order_allowed: "This online material is available for purchase on demand. The option to request rapid access is limited to Temple University students, faculty, and staff. Once requested, access will generally be enabled within 2 business days."
+  purchase_order:
+    purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
+    purchase_order_text_1: "Please submit this form to request access to the following ebook:"
+    purchase_order_text_2: "Access is generally granted within 2 business days. You will receive an email notification when the title is available for use."
+    purchase_order_extra_instructions: "You may add extra instructions in the message field below if desired."
   blacklight:
     application_name: "Library Search"
     section_heading_html: "<strong>Books & Media</strong> includes print books and ebooks, streaming audio and video, DVDs, musical scores, government documents, materials in our special and digital collections, and other online resources."
@@ -14,20 +18,31 @@ en:
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
 
-    banner_part_one_html: "As of March 19, all Temple University Libraries %{href} All library spaces are closed."
-    banner_part_one_href: "services and resources are online."
-    banner_part_one_link: "https://library.temple.edu/webpages/remote-learner-support"
-    banner_part_two_html: "Many library resource vendors have extended %{href}."
-    banner_part_two_href: "complimentary access to additional online resources"
-    banner_part_two_link: "https://guides.temple.edu/az.php?t=41140"
+    banner_html: >-
+      <p>Our services and resources are online only, but we're preparing for the return to campus.
+      <a href="https://library.temple.edu/categories/47">Click here to see full details</a>.</p>
+
+    bookmarks:
+      sunset_message_html: >-
+          <p>
+            As of December 21, 2020, you can no longer add or view article bookmarks using Library Search. Your bookmarks for books, journals, and other materials will not be affected by this change.
+          </p>
+          <p>
+          To retrieve any existing article bookmarks, you can <a href='/bookmarks/export/articles'>download the article record URL’s as a text file</a>.
+          </p>
+          <p>
+            <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions about exporting your article bookmarks.
+          </p>
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
     borrow_link: "http://answers.library.temple.edu/faq/195868"
 
-    hathitrust_text_html: "Notes: <br /> Access to HathiTrust digital materials has been made available through HathiTrust’s %{href} in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will renew automatically at the end of that hour, unless another user requests the book."
-    hathitrust_href: "Emergency Temporary Access Service"
-    hathitrust_link: "https://www.hathitrust.org/ETAS-User-Information"
+    hathitrust_text_html: >-
+          Access to HathiTrust digital materials is available through HathiTrust’s
+          <a href="https://www.hathitrust.org/ETAS-User-Information">Emergency Temporary Access Service</a>,
+          in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will
+          renew automatically at the end of that hour, unless another user requests the book.
 
     help_html: "<li>For help, %{href}.</li>"
     help_href: "Contact the libraries"
@@ -40,6 +55,7 @@ en:
       bookmarks: "Bookmarks"
       search_history: "Search History"
       not_found: "We couldn’t find this page!"
+      bad_query: "Unsupported Query Format"
 
     errors:
       deep_paging: "Sorry, LibrarySearch does not serve more than 250 pages for any query."
@@ -47,6 +63,7 @@ en:
       not_found_href: "contact us"
       not_found_link: "https://library.temple.edu/contact-us"
       availability_alert_html: "Some availability information can not be loaded. Please visit your library's Circulation Desk for more information or %{href}."
+      unsupported_query_format: "Your search could not be executed. Please check the format of your query."
 
     range_limit:
       submit_limit: "Apply"
@@ -97,27 +114,39 @@ en:
     tools:
       sms: "Text"
       refworks: Refworks
-      cite_html: "Cite"
-
+      cite_html: "Cite %{current_range}"
+      sendto: "Send To %{current_range}"
   requests:
     log_in: "Log in to see request options"
-    request_button: "Request"
-    header: "Request Options"
+    request_button: "How to get this"
+    header: "How to get this"
     bookbot_instructions: "To get this item from the BookBot, use the request button."
     scrc_instructions_html: "To request materials from the Special Collections Research Center, go to %{href}"
     scrc_instructions_href: "SCRC Researcher Account"
     open_shelving_instructions: "To get this item on main campus, find it on our open shelves; to pick up at another Temple campus, use the request button."
-    footer_html: "For more information about request options, see:  %{href}"
+    text_box_html: "For information about borrowing as we reopen our facilities, visit our %{href}."
+    text_box_href: "return to campus FAQ"
+    text_box_link: "https://library.temple.edu/categories/47"
+    footer_html: "For more information about request options, see:  %{href}<span class='request-options-external-link-icon'></span>"
     footer_href: "How do I request an item at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
-    cancel: "Cancel"
-    hold_allowed_link: "Request item from another Temple campus or remote storage"
+    cancel: "Close"
+    hold_allowed_link: "Request item for pickup"
     asrs_allowed_link: "Request item from Charles Library BookBot"
     digitization_allowed_link: "Request a scan of an article or book chapter"
     booking_allowed_link: "Request booking"
     aeon_request_allowed_header: "Request materials to view in Special Collections Research Center"
     aeon_request_allowed_body: "Researcher registration and requests to use Special Collections Research Center materials are made using a SCRC Researcher Account."
     aeon_button_text: "Go to SCRC Researcher Account"
+    open_shelves_header: "Find item on the shelves"
+    open_shelves_text: "Close this window to view the location and call number, then find the item using this information."
+    digital_copy_header: "Get help finding a digital copy"
+    digital_help_text_one: "Our library staff will assist you by trying to find a digital copy of a physical item in the library’s collection."
+    digital_help_text_two_html: "Once you %{href}, a library staff member will respond within 24-48 hours."
+    digital_help_text_two_href: "submit this form"
+    digital_help_text_three_html: "You can also search for ebooks in our many %{href} and online."
+    digital_help_text_three_href: "ebook collections"
+    digital_help_text_three_link: "https://guides.temple.edu/c.php?g=1014652&p=7349176"
     resource_sharing_broker_allowed_link: "Request item that is not available at Temple"
     resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the book through EZBorrow. Books typically arrive in 3-5 business days."
     resource_sharing_broker_link: "Go to EZBorrow"
@@ -155,7 +184,7 @@ en:
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
-
+    libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
   website:
     section_heading_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
 
@@ -218,13 +247,16 @@ en:
     ez_borrow_link: "https://ezb.relaisd2d.com/?LS=TEMPLE"
     illiad_html: "For <strong>journal articles, books not available through E-ZBorrow, and other</strong> materials not available at Temple, use %{href}."
     illiad_href: "ILLiad"
-    illiad_link: "http://libproxy.temple.edu/login?url=https://temple.illiad.oclc.org/illiad/charles/logon.html"
+    illiad_link: "https://temple.illiad.oclc.org/illiad/charles/logon.html"
     ginsburg_illiad_html: "The Health Sciences Libraries patrons should use %{href},"
     ginsburg_illiad_href: "ILLiad for Ginsburg (HSL) Library"
     ginsburg_illiad_link: "https://temple.illiad.oclc.org/illiad/HSC/logon.html"
     podiatry_illiad_html: "and Krausz Library of Podiatric Medicine patrons should use %{href}."
     podiatry_illiad_href: "ILLiad for Podiatry Library"
     podiatry_illiad_link: "https://temple.illiad.oclc.org/illiad/PODIAT/logon.html"
+    additional_options_html: "For additional options to obtain this material, please consult the %{href}."
+    additional_options_href: "library website"
+    additional_options_link: "https://library.temple.edu/services/11"
 
   primo_central:
     link_to_resource: "Link to Resource"
@@ -270,9 +302,17 @@ en:
     update_name_href: "https://tuportal.temple.edu"
     email_notice: "If you prefer not to receive email notices from us owing to privacy concerns, we offer an opt-out option. Please know that if you choose to opt out of receiving email notifications for due dates, late items, etc., you are still fully responsible for any and all related fines and other consequences resulting from late, long overdue or lost/missing items you have borrowed. If interested, please contact a staff member at the circulation desk."
 
+  lib_guides:
+    librarian_no_results: "Need research help?"
+    librarian_no_results_text: "Talk to a librarian or subject matter expert"
+    librarian_no_results_link: "https://library.temple.edu/services/sme"
+    guides_no_results_text: "Browse our research guides by subject"
+    guides_no_results_link: "https://guides.temple.edu/?b=s"
+
   resource_type_code:
     articles: "Journal Article"
     article: "Journal Article"
+    archival_material_manuscript: "Archival Material/Manuscript"
     archival_material_manuscripts: "Archival Material/Manuscript"
     book: "Book"
     books: "Book"
@@ -283,11 +323,13 @@ en:
     mms: "Video"
     book_chapter: "Book Chapter"
     book_chapters: "Book Chapter"
+    computer_file: "Computer File"
     computer_files: "Computer File"
     conference_proceedings: "Conference Proceeding"
     conference_proceeding: "Conference Proceeding"
     databases: "Database"
     database: "Database"
+    dataset: "Dataset"
     datasets: "Dataset"
     dissertations: "Dissertation/Thesis"
     dissertation: "Dissertation/Thesis"
@@ -301,10 +343,13 @@ en:
     legal_document: "Legal Document"
     maps: "Map"
     map: "Map"
+    market_research: "Market Research"
     market_researchs: "Market Research"
     media: "Media"
     newspaper_articles: "Newspaper Article"
     newspaper_article: "Newspaper Article"
+    newspaper: "Newspaper"
+    newspapers: "Newspaper"
     other: "Other"
     patents: "Patent"
     patent: "Patent"
@@ -312,6 +357,7 @@ en:
     reference_entry: "Reference Entry"
     research_datasets: "Research Dataset"
     research_dataset: "Research Dataset"
+    report: "Report"
     reports: "Report"
     reviews: "Review"
     review: "Review"
@@ -319,11 +365,13 @@ en:
     statistical_data_set: "Statistical Dataset"
     score: "Score"
     scores: "Score"
+    standard: "Standard"
     standards: "Standard"
     technical_reports: "Technical Report"
     technical_report: "Technical Report"
     text_resources: "Text Resource"
     text_resource: "Text Resource"
+    web_resource: "Website"
     web_resources: "Website"
     websites: "Website"
     website: "Website"

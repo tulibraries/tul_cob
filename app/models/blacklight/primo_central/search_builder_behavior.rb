@@ -100,6 +100,11 @@ module Blacklight::PrimoCentral
       end
 
       pq = Primo::Search::Query.send(op, query)
+      pq.facet({
+          field: "rtype",
+          value: "books",
+          operation: :exclude
+        })
 
       primo_central_parameters[:query][:q] = pq
 
@@ -126,7 +131,7 @@ module Blacklight::PrimoCentral
       primo_central_parameters[:range] = range
 
       # Adding the date range facet prematurely causes search discrepencies.
-      if (min || max)
+      if (min.present? || max.present?)
         primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
       end
     end

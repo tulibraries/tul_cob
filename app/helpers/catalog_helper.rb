@@ -47,22 +47,32 @@ module CatalogHelper
     format = formats.first.to_s.parameterize.underscore
     image = Rails.application.config.assets.default_cover_image
       .merge(
+        "archival_material_manuscript" => "archival_material",
         "article" => "journal_periodical",
+        "book_chapter" => "book",
+        "book_review" => "legal",
+        "computer_file" => "computer_media",
         "dissertation" => "script",
         "dissertation_thesis" => "script",
         "government_document" => "legal",
+        "image" => "visual_material",
         "journal" => "journal_periodical",
         "legal_document" => "legal",
+        "market_research" => "dataset",
+        "microform" => "legal",
+        "newspaper" => "legal",
         "newspaper_article" => "legal",
         "other" => "unknown",
         "patent" => "legal",
         "reference_entry" => "legal",
+        "report" => "legal",
         "research_dataset" => "dataset",
         "review" => "legal",
+        "standard" => "legal",
         "statistical_data_set" => "dataset",
         "technical_report" => "legal",
-        "book_chapter" => "book",
         "text_resource" => "legal",
+        "web_resource" => "website",
     ).fetch(format, "unknown")
 
     "svg/" + image + ".svg"
@@ -85,30 +95,10 @@ module CatalogHelper
     current_page?("/advanced") ? search_catalog_url : search_action_url
   end
 
-  # Overridden because we want to use our merged @response["docs"] with docs
-  # from solr and primo together.
-  def current_bookmarks(response = nil)
-    response ||= @response
-    @current_bookmarks ||=
-      current_or_guest_user
-      .bookmarks_for_documents(@response["docs"] ||
-    response.documents).to_a
-  end
-
-  ##
-  # Overridden so that we can controll the number of pages from the controller.
-  #
-  # Look up the current per page value, or the default if none if set
-  #
-  # @return [Integer]
-  def current_per_page
-    (@response["rows"] if @response["rows"] && @response["rows"] > 0) ||
-      (@response.rows if @response && @response.rows > 0) ||
-      params.fetch(:per_page, default_per_page).to_i
-  end
-
   def render_online_availability(doc_presenter)
     field = blacklight_config.show_fields["electronic_resource_display"]
+    return if field.nil?
+
     online_resources = [doc_presenter.field_value(field)]
       .select { |r| !r.empty? }.compact
 
@@ -129,7 +119,14 @@ module CatalogHelper
     # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
     # We do not want this to render if the item is from Primo, etc.
     if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load my-0 mr-5", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+    end
+  end
+
+  def render_lc_display_field(field_presenter)
+    content_tag :dl, nil, class: "row document-metadata my-0 mr-5 blacklight-lc_call_number_display" do
+      html = content_tag :dt, "LC Classification:", class: "py-2 index-label col-sm-12 col-md-4 col-lg-3 blacklight-lc_call_number_display"
+      html += content_tag :dd, field_presenter.render, class: "py-2 col-sm-12 col-md-5 col-lg-4 blacklight-lc_call_number_display mb-0"
     end
   end
 
@@ -161,6 +158,23 @@ module CatalogHelper
     Array.wrap(document.fetch(field, [])).join(joiner)
   end
 
+  def _build_guest_login_libwizard_url(document)
+    doc_params =
+    {
+      "rft.title" => solr_field_to_s(document, "title_statement_display"),
+      "rft.date" => solr_field_to_s(document, "pub_date"),
+      "edition" => solr_field_to_s(document, "edition_display"),
+      # "volume" => solr_field_to_s(document, "edition_display"),
+    }
+    sid = solr_field_to_s(document, "id")
+    if sid.present?
+      doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
+    end
+    doc_params.select! { |k, v| v.present? }
+    URI::HTTPS.build(host: "temple.libwizard.com",
+      path: "/f/ContinueAsGuest", query: doc_params.to_query).to_s
+  end
+
   def _build_libwizard_url(document)
     doc_params =
     {
@@ -182,59 +196,71 @@ module CatalogHelper
       doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
     end
     doc_params.select! { |k, v| v.present? }
-    url = URI::HTTPS.build(host: "temple.libwizard.com",
+    URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
   end
 
-  def render_temporary_electronic_request_help_form_button(document)
-    renderable = (
-      document.fetch("availability_facet", [])
-        .include?("At the Library") &&
-      document.fetch("format", [])
-        .exclude?("Archival Material") &&
-      !document["electronic_resource_display"] &&
-      !document["hathi_trust_bib_key_display"]
-    )
-
-    if renderable
-      url = _build_libwizard_url(document)
-
-      label = t("requests.temporary_electronic_request_help_form")
-      link_to(
-        content_tag(:button, label, class: "btn  btn-sm temp-help-btn"),
-        url, target: "_blank", class: "float-md-right"
-      )
-    end
+  def digital_help_allowed?(document)
+    document.fetch("availability_facet", [])
+      .include?("At the Library") &&
+    document.fetch("format", [])
+      .exclude?("Archival Material") &&
+    document.fetch("format", [])
+      .exclude?("Object") &&
+    !document["electronic_resource_display"] &&
+    !hathitrust_link_allowed?(document)
   end
 
-  def build_hathitrust_url(document)
-    record_id = document.fetch("hathi_trust_bib_key_display", nil)
+  def open_shelves_allowed?(document)
+    {
+      "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
+      "AMBLER"   => ["aleisure", "imc", "newbooks", "oversize", "reference", "stacks"],
+      "POD"      =>  ["stacks"]
+    }.any? { |library_code, locations| check_open_shelves(document, library_code, locations) }
+  end
+
+  def check_open_shelves(document, library_code, locations)
+    document.fetch("items_json_display", []).any? { |item|
+      item["current_library"].include?(library_code) &&
+      locations.include?(item["current_location"])
+    }
+  end
+
+  def build_hathitrust_url(field)
+    record_id = field.fetch("bib_key", nil)
     return if record_id.nil?
     URI::HTTPS.build(host: "catalog.hathitrust.org",
-      path: "/Record/#{record_id.first}",
+      path: "/Record/#{record_id}",
       query: "signon=swle:https://fim.temple.edu/idp/shibboleth"
     ).to_s
   end
 
-  def render_hathitrust_link(document)
-    render "hathitrust_link", document: document
+  def render_hathitrust_link(ht_bib_key_field)
+    render "hathitrust_link", ht_bib_key_field: ht_bib_key_field
+  end
+
+  def hathitrust_link_allowed?(document)
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    ht_bib_key_field.fetch("access", "deny") == "allow" rescue nil
   end
 
   def render_hathitrust_display(document)
-    field = document.fetch("hathi_trust_bib_key_display", "")
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    return if ht_bib_key_field.nil?
     online_resources = []
-    online_resources << render_hathitrust_link(document)
+    online_resources << render_hathitrust_link(ht_bib_key_field)
 
-    if field.present?
+    if (campus_closed? || hathitrust_link_allowed?(document))
       render "online_availability", online_resources: online_resources
     end
   end
 
   def render_hathitrust_button(document)
-    field = document.fetch("hathi_trust_bib_key_display", "")
-    link = render_hathitrust_link(document)
+    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
+    return if ht_bib_key_field.nil?
+    link = render_hathitrust_link(ht_bib_key_field)
 
-    if field.present?
+    if (campus_closed? || hathitrust_link_allowed?(document))
       render "hathitrust_button", document: document, links: link
     end
   end
@@ -247,11 +273,11 @@ module CatalogHelper
     field = presenter.send(:fields)["purchase_order_availability"]
 
     if field.with_panel
-      rows = [ t("purchase_order_allowed") ]
+      rows = [ t("purchase_order.purchase_order_allowed") ]
       render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order_allowed"), class: "availability border border-header-grey"
+      content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability border border-header-grey"
     else
       render_purchase_order_button(document: doc, config: field)
     end
@@ -352,10 +378,33 @@ module CatalogHelper
     creator
   end
 
+  # [a, b, c] => [[a], [a, b], [a, b, c]]
+  def hierarchies(array)
+    count = 0
+    array.reduce([]) { |acc, value| acc << array.slice(0, count += 1) }
+  end
+
+  def subject_link(subject, label = nil)
+    label ||= subject
+    link_to(label, "#{base_path}?f[subject_facet][]=#{CGI.escape subject}", class: "search-subject", title: "Search: #{subject}")
+  end
+
+  # A hierarchical_subject is just a string array.
+  def hierarchical_subject_link(hierarchical_subject)
+    label = hierarchical_subject.last
+    subject = hierarchical_subject.join(" — ")
+
+    subject_link(subject, label)
+  end
+
   def subject_links(args)
-    args[:document][args[:field]].uniq.map do |subject|
-      link_to(subject.sub("— — ", "— "), "#{base_path}?f[subject_facet][]=#{CGI.escape subject}")
-    end
+    separator = content_tag(:span, content_tag(:span, " — ", class: ""), class: "subject-level")
+
+    args[:document][args[:field]].uniq
+      .map { |subj| subj.sub("— — ", "— ") } # TODO: Do we still need this step?
+      .map { |subj| subj.split(" — ") }
+      .map(&method(:hierarchies))
+      .map { |h_subjs| h_subjs.map(&method(:hierarchical_subject_link)).join(separator).html_safe }
   end
 
   def genre_links(args)
@@ -522,23 +571,29 @@ module CatalogHelper
   def render_bookmark_partial(options = {}, &block)
     bookmark_partial = blacklight_config.navbar.partials
     .select { |name| name == :bookmark }
-    .each { |name, partial| partial.if = true }
 
     render_filtered_partials(bookmark_partial, &block)
-  end
-
-  def document_show_primary_fields(document)
-    document_show_fields(document).select { |field_name, field|
-      field[:type] == :primary }
-  end
-
-  def document_show_secondary_fields(document)
-    document_show_fields(document).select { |field_name, field| field[:type] != :primary }
   end
 
   def ez_borrow_list_item(controller_name)
     if controller_name == "catalog"
       content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")))
     end
+  end
+
+  def campus_closed?
+    ::FeatureFlags.campus_closed?(params)
+  end
+
+  def with_libguides?
+    ::FeatureFlags.with_libguides?(params)
+  end
+
+  def with_libkey?
+    ::FeatureFlags.with_libkey?(params)
+  end
+
+  def derived_lib_guides_search_term(response)
+    LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
   end
 end
