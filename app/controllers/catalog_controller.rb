@@ -469,14 +469,14 @@ class CatalogController < ApplicationController
   def browse_creator(args)
     creator = args[:document][args[:field]]
     base_path = helpers.base_path
-    creator.map do |name_data|
+    creator.map do |creator_data|
       begin
-        name_data = JSON.parse(name_data)
-        linked_subfields = name_data['name']
-        plain_text_subfields = name_data['role_or_title']
-        relation_to_work_prefix = name_data['relation']
+        creator_data = JSON.parse(creator_data)
+        linked_subfields = creator_data["name"]
+        plain_text_subfields = creator_data["role"]
+        relation_to_work_prefix = creator_data["relation"]
       rescue JSON::ParserError
-        linked_subfields, plain_text_subfields = name_data.split("|")
+        linked_subfields, plain_text_subfields = creator_data.split("|")
         relation_to_work_prefix = nil
       end
       facet_query = view_context.send(:url_encode, (linked_subfields))
