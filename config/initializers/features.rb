@@ -8,3 +8,4 @@ Rails.application.config.features[:sms_document_action_disabled] = ENV["SMS_DOCU
 Rails.configuration.features[:campus_closed] = (ENV.fetch("CAMPUS_CLOSED", "false") == "false") ? false : true
 Rails.configuration.features[:with_libguides] = (ENV.fetch("WITH_LIBGUIDES", "false") == "false") ? false : true
 Rails.configuration.features[:with_libkey] = (ENV.fetch("WITH_LIBKEY", "false") == "false") ? false : true
+Rails.configuration.features[:libwizard_tutorial] = (ENV.fetch("LIBWIZARD_TUTORIAL", "false") == "false") ? false : true
