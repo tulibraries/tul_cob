@@ -28,6 +28,11 @@ class CatalogController < ApplicationController
     Proc.new { |context| ::FeatureFlags.with_libkey?(context.params) }
   end
 
+  # TODO: remove once libwizard_tutorial? is no longer a flag
+  def self.libwizard_tutorial?
+    Proc.new { |context| ::FeatureFlags.libwizard_tutorial?(context.params) }
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new

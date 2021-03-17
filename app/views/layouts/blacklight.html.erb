@@ -67,4 +67,8 @@
       <%= render :partial => "shared/footer" %>
     </div>
   </body>
+
+  <% if libwizard_tutorial? %>
+    <script type="text/javascript" src="https://temple.libwizard.com/lwz_load_tutorial.php?id=f000bc5937fea3ef1bafbb124876025a&type=embed&noheader=0"></script>
+  <% end %>
 </html>

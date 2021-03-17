@@ -988,6 +988,36 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#libwizard_tutorial?" do
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "params libwizard_tutorial is not set" do
+      let(:params) { {} }
+
+      it "returns false with an empty params object method" do
+        expect(libwizard_tutorial?).to be(false)
+      end
+    end
+
+    context "params libwizard_tutorial? is true" do
+      let(:params) { { "libwizard_tutorial" => "true" } }
+
+      it "returns true when libwizard_tutorial? param is not 'false'" do
+        expect(libwizard_tutorial?).to be(true)
+      end
+    end
+
+    context "params libwizard_tutorial is false" do
+      let(:params) { { "libwizard_tutorial" => "false" } }
+
+      it "returns false with an empty params object method" do
+        expect(libwizard_tutorial?).to be(false)
+      end
+    end
+  end
+
   describe "#with_libkey?" do
     before do
       allow(helper).to receive(:params) { params }

@@ -22,4 +22,11 @@ module FeatureFlags
     end
     !!Rails.configuration.features.fetch(:with_libkey, false)
   end
+
+  def self.libwizard_tutorial?(params = nil)
+    if !params.nil? && params.has_key?("libwizard_tutorial")
+      return (params["libwizard_tutorial"] == "false") ? false : true
+    end
+    !!Rails.configuration.features.fetch(:libwizard_tutorial, false)
+   end
 end
