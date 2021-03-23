@@ -163,4 +163,12 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#emergency_alert_message" do
+    context "for_header is false" do
+      it "does return the scroll_text" do
+        expect(helper.emergency_alert_message).to eq("Test banner message")
+      end
+    end
+  end
 end

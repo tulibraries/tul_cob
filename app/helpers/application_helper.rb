@@ -229,4 +229,15 @@ module ApplicationHelper
       "rounded-left"
     end
   end
+
+  def manifold_alerts
+    alert_url = "https://library.temple.edu/alerts.json"
+    alert = HTTParty.get(alert_url, timeout: 2)
+
+    alert["data"].select { |a| a if a.dig("attributes", "for_header") == false }
+  end
+
+  def emergency_alert_message
+    manifold_alerts.map { |a| a.dig("attributes", "scroll_text") }.first
+  end
 end
