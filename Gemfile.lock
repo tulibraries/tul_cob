@@ -172,7 +172,7 @@ GEM
       traject (~> 3.0)
     blacklight_range_limit (8.0.0)
       blacklight (~> 7.0)
-    bootsnap (1.7.2)
+    bootsnap (1.7.3)
       msgpack (~> 1.0)
     bootstrap (4.6.0)
       autoprefixer-rails (>= 9.1.0)
