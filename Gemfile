@@ -29,7 +29,7 @@ gem "jbuilder", "~> 2.11"
 
 group :development do
   gem "flamegraph"
-  gem "listen", "~> 3.5.0"
+  gem "listen", "~> 3.4.1"
   gem "ruby-prof"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -78,18 +78,21 @@ gem "cob_index",
   branch: "main"
 
 gem "rsolr", "~> 2.3"
-gem "devise"
+# Pinned to branch to work with omniauth v2.
+# We will want to remove the branch once devise has been updated.
+gem "devise", github: "heartcombo/devise", branch: "ca-omniauth-2"
 gem "devise-guests", "~> 0.7"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 gem "lc_solr_sortable", git: "https://github.com/tulibraries/lc_solr_sortable", branch: "main"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>3.6.0"
-gem "omniauth"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
 gem "ezwadl"
 gem "awesome_print"
 gem "bento_search"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection"
 gem "omniauth-shibboleth"
 gem "skylight"
 gem "webpacker", "6.0.0.pre.2"
