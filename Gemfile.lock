@@ -326,7 +326,7 @@ GEM
     launchy (2.5.0)
       addressable (~> 2.7)
     library_stdnums (1.6.0)
-    listen (3.4.1)
+    listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
@@ -637,7 +637,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   lc_solr_sortable!
-  listen (~> 3.4.1)
+  listen (~> 3.5.0)
   mysql2 (~> 0.5.3)
   okcomputer
   omniauth
