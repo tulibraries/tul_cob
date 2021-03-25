@@ -332,7 +332,7 @@ GEM
     launchy (2.5.0)
       addressable (~> 2.7)
     library_stdnums (1.6.0)
-    listen (3.4.1)
+    listen (3.5.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.9.0)
@@ -352,7 +352,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.5)
+    mimemagic (0.3.6)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
@@ -649,7 +649,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   lc_solr_sortable!
-  listen (~> 3.4.1)
+  listen (~> 3.5.0)
   mysql2 (~> 0.5.3)
   okcomputer
   omniauth
