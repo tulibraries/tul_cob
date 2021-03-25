@@ -1,5 +1,5 @@
 FROM ruby:2.7.2-alpine3.11
-RUN apk --update add nodejs yarn git build-base bash  mysql-dev sqlite-dev tzdata
+RUN apk --update add nodejs yarn git build-base bash  mysql-dev sqlite-dev tzdata shared-mime-info
 RUN mkdir /app
 WORKDIR /app
 COPY . .
