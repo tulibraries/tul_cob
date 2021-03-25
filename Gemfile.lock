@@ -62,7 +62,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 07de5032fe62bcb027c4801c9f8ddeb5b3502e93
+  revision: bad7d92237c4b1a176d75e3bc2e87302bd033fa2
   branch: main
   specs:
     cob_index (0.1.0)
@@ -352,7 +352,7 @@ GEM
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2021.0225)
-    mimemagic (0.3.5)
+    mimemagic (0.3.6)
     mini_mime (1.0.2)
     mini_portile2 (2.5.0)
     minitest (5.14.4)
