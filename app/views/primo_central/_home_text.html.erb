@@ -1,4 +1,9 @@
 <div id="getting-started">
   <p class="section-heading"><%= t("articles.section_heading_html") %></p>
-  <p class="section-heading"><%= t("articles.citation_html", href: link_to(t("articles.citation_href"), t("articles.citation_link"), target: "_blank")) %></p>
+  <p>
+    <%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %><%= t("blacklight.more_information_articles") %>
+  </p>
+  <p class="section-heading">
+    <p><%= t("articles.citation_heading_html") %></p>
+    <%= t("articles.citation_html", href: link_to(t("articles.citation_href"), t("articles.citation_link"), target: "_blank")) %>
 </div>

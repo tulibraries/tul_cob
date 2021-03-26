@@ -162,7 +162,7 @@ module ApplicationHelper
     when "databases"
       t("databases.home_html")
     when "web_content"
-      t("web_content.explanation_html")
+      t("website.explanation_html")
     else
       ""
     end
