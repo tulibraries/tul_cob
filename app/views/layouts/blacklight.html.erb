@@ -39,9 +39,11 @@
   </head>
   <body class="bg-white <%= render_body_class %>">
 
-    <div id="skip-link">
-      <%= link_to "Skip to main content", "#main-container", :class => "skip-main", :tabindex => "1" %>
-    </div>
+    <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links') %>">
+       <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+       <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
+       <%= content_for(:skip_links) %>
+    </nav>
 
     <div id="page-wrapper">
       <%= render :partial => "shared/header_navbar" %>
@@ -56,15 +58,19 @@
 
       <%= render partial: "shared/modal" %>
 
-      <div id="main-container" class="col-sm-10 col-md-12 mx-auto p-0 m-0" role="main">
+      <main id="main-container" class="col-sm-10 col-md-12 mx-auto p-0 m-0" role="main">
 
 
         <div class="pb-5">
           <%= yield %>
         </div>
-      </div>
+      </main>
 
       <%= render :partial => "shared/footer" %>
     </div>
   </body>
+
+  <% if libwizard_tutorial? %>
+    <script type="text/javascript" src="https://temple.libwizard.com/lwz_load_tutorial.php?id=f000bc5937fea3ef1bafbb124876025a&type=embed&noheader=0"></script>
+  <% end %>
 </html>

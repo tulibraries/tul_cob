@@ -23,9 +23,9 @@ class CatalogController < ApplicationController
   helper_method :browse_creator
   helper_method :display_duration
 
-  # TODO: remove once with_libkey? is no longer a flag
-  def self.with_libkey?
-    Proc.new { |context| ::FeatureFlags.with_libkey?(context.params) }
+  # TODO: remove once libwizard_tutorial? is no longer a flag
+  def self.libwizard_tutorial?
+    Proc.new { |context| ::FeatureFlags.libwizard_tutorial?(context.params) }
   end
 
   configure_blacklight do |config|

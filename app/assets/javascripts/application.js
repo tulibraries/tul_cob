@@ -211,6 +211,15 @@ $(document).on('turbolinks:load', function() {
 	}
 }
 
+var lwz_options_f000bc5937fea3ef1bafbb124876025a = {"title" :
+																										"Library Search Basics",
+																										"fg": "#000000",
+																										"bg": "#f7941d",
+																										"pos": "50%",
+																										"side": "left",
+																										"button": "Display Help",
+																										"launch": false,}
+
 // This hack helps with a race condition bug in blacklight_range_limit gem.
 // REF: BL-1171 and project_blacklight/blacklight_range_limit#111
 window.addEventListener('load', function(event) {

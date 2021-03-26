@@ -17,6 +17,11 @@ en:
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
+    more_information_books: ", including search tips for Books & Media."
+    more_information_articles: ", including search tips for Articles."
+    more_information_databases: ", including search tips for Databases."
+    more_information_journals: ", including search tips for Journals."
+    more_information_website: ", including search tips for Website content."
 
     banner_html: >-
       <p>Our services and resources are online only, but we're preparing for the return to campus.
@@ -174,8 +179,9 @@ en:
   articles:
     application_name: "Library Articles Search"
     greeting: "Welcome to the Articles Search"
-    section_heading_html: "<p><strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources. Search <strong>Articles</strong> for individual articles that appear in collections, like scholarly journals, ebooks, and newspapers.</p>"
-    citation_html: "<strong>Have specific citation information?</strong> Try our %{href} tool."
+    section_heading_html: "<p><strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
+    citation_heading_html: "<strong>Have specific citation information?</strong>"
+    citation_html: "Try our %{href} tool."
     citation_href: "Find by Citation"
     citation_link: "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
     explanation_html: "<strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
@@ -186,7 +192,8 @@ en:
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
     libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
   website:
-    section_heading_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
+    section_heading_html: "<strong>Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
+    explanation_html: "<strong>Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
 
   bento:
     blacklight:
@@ -207,17 +214,14 @@ en:
     digital_collections_header: "Search our Digitized Collections for unique materials held by Temple"
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
-    section_heading_html: "Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
+    section_heading_html: "Library Search is your gateway to discover library content. Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
     articles: "Articles"
     journals: "Journals"
     books_and_media: "Books & Media"
-    library_search_question: "What is Library Search?"
-    library_search_answer: "Library search makes it easier to discover all that Temple Libraries has to offer. Use Library Search to find books, scholarly articles, databases, newspapers, archival material, images, streaming media, and much more."
     need_help_html: "<strong>Need help using Library Search?</strong>"
-    library_help_html: "Try our %{href} service."
-    more_information_html: "<strong>Want more information on Library Search?</strong>"
-    more_information_answer_html: "Refer to our %{href}"
-    more_information_answer_href: "Frequently Asked Questions."
+    library_help_html: "Contact us via chat, email, or text"
+    more_information_html: "Learn more about Library Search"
+    more_information_link: "https://library.temple.edu/pages/42"
     zero_results:
       scholarly_journals_html: "If you’re looking for scholarly journal articles, try searching in %{href}."
       scholarly_journals_href: "Articles"
@@ -262,8 +266,8 @@ en:
     link_to_resource: "Link to Resource"
 
   journals:
-    section_heading_html: "<strong>Journals</strong> includes journals, newspapers, trade publications, magazines, and more. Search <strong>Journals</strong> if you know the title of the journal, magazine, or newspaper you want to use. Visit individual journal titles to browse or search for articles within."
-    explanation_html: "Search <strong>Journals</strong> if you know the title of the journal, magazine, or newspaper you want to use. Visit individual journal titles to browse or search for articles within."
+    section_heading_html: "<strong>Journals</strong> includes subscription-based and open access journals, newspapers, trade publications, magazines, and more.<br><br>Visit individual journal titles to browse or search for articles within."
+    explanation_html: "<strong>Journals</strong> includes subscription-based and open access journals, newspapers, trade publications, magazines, and more."
     zero_results:
       title_html: "<strong>No journal results</strong> found for your search."
       scholarly_articles: "Are you looking for scholarly journal articles? Try:"
@@ -272,18 +276,21 @@ en:
       database_finder_link: "https://library.temple.edu/pages/16"
       find_articles: "How do I find articles?"
       find_articles_link: "http://answers.library.temple.edu/faq/195650"
+    citation_html: >-
+          Search in
+          <a href="https://librarysearch.temple.edu/articles">Articles</a>
+          or try our <a href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI">Find by Citation</a> tool (previously “Journal Finder”).
 
   databases:
     link_text: "Browse all databases by subject or alphabetically"
     link_href: "https://guides.temple.edu/az.php"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
-    home_html: "<strong>Databases</strong> includes links to searchable subscription and open-access databases containing a variety of source types."
+    home_html: "<strong>Databases</strong> includes links to subscription-based and open access databases. These are search engines containing a variety of source types and often related to a subject or discipline."
     home_question_html: "<strong>Not sure which database to start with?</strong>"
     subject_browse_html: "Try browsing by %{href} or "
 
   web_content:
-    explanation_html: "<strong>Website</strong> includes information from the libraries’ website such as spaces, people, events, blogs, finding aids and services."
     zero_results:
       title_html: "<strong>No website results</strong> found for your search."
 
