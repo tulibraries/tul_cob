@@ -1,10 +1,12 @@
-<div class="site-message">
-  <div class="container container-medium">
-   <div class="row">
-      <div class="col">
-        <%= image_tag "information.png", class: "decorative", alt: "" %>
-        <%= raw t("blacklight.banner_html") %>
+<% if manifold_alerts.present? %>
+  <div class="site-message">
+    <div class="container container-medium">
+     <div class="row">
+        <div class="col">
+          <%= image_tag "information.png", class: "decorative", alt: "" %>
+          <p class="pt3"><%= emergency_alert_message %> <%= emergency_alert_link %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

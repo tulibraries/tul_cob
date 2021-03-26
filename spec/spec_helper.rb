@@ -274,6 +274,11 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/temp_storage.json"))
+
+    stub_request(:get, /.*library.temple.edu\/alerts/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/emergency_alert.json"))
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
