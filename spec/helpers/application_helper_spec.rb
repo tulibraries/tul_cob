@@ -171,4 +171,12 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#emergency_alert_link" do
+    context "link field is present" do
+      it "does return the link" do
+        expect(helper.emergency_alert_link).to have_text("Click here to see full details.")
+      end
+    end
+  end
 end

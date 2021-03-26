@@ -18,9 +18,7 @@ en:
     search_href: "the Library Search"
     back_to_search: "< Back to Results"
 
-    banner_html: >-
-      <p>Our services and resources are online only, but we're preparing for the return to campus.
-      <a href="https://library.temple.edu/categories/47">Click here to see full details</a>.</p>
+    banner_link: "Click here to see full details."
 
     bookmarks:
       sunset_message_html: >-

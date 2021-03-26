@@ -240,4 +240,11 @@ module ApplicationHelper
   def emergency_alert_message
     manifold_alerts.map { |a| a.dig("attributes", "scroll_text") }.first
   end
+
+  def emergency_alert_link
+    link =  manifold_alerts.map { |a| a.dig("attributes", "link") }.first
+    if !link.blank?
+      link_to(t("blacklight.banner_link"), link)
+    end
+  end
 end
