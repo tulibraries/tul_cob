@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/dkinzer/blacklight_range_limit.git
+  revision: 202a837311fa7f33b3fe64512a486453fc92232d
+  branch: issue-168-use-blackligh-config-for-constraints
+  specs:
+    blacklight_range_limit (8.0.0)
+      blacklight (~> 7.0)
+
+GIT
   remote: https://github.com/heartcombo/devise.git
   revision: e16d60d0fedc5f5e6f541b2b9e901a2d53f8ceda
   branch: ca-omniauth-2
@@ -182,8 +190,6 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    blacklight_range_limit (8.0.0)
-      blacklight (~> 7.0)
     bootsnap (1.7.3)
       msgpack (~> 1.0)
     bootstrap (4.6.0)
@@ -304,7 +310,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
@@ -614,7 +620,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_alma!
-  blacklight_range_limit
+  blacklight_range_limit!
   bootsnap
   bootstrap (~> 4.6)
   bootstrap-select-rails
