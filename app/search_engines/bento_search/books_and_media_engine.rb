@@ -18,7 +18,9 @@ module BentoSearch
 
     def proc_minus_journals
       Proc.new { |builder|
-        processor_chain = [ :availability_facet_only, :with_format_facet ]
+        processor_chain = [ :availability_facet_only,
+                            :no_journals, :filter_suppressed,
+                            :with_format_facet ]
         builder.append(*processor_chain)
       }
     end
