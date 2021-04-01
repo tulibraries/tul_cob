@@ -231,10 +231,8 @@ module ApplicationHelper
   end
 
   def manifold_alerts
-    alert_url = "https://library.temple.edu/alerts.json"
-    alert = HTTParty.get(alert_url, timeout: 2)
-
-    alert["data"].select { |a| a if a.dig("attributes", "for_header") == false }
+    # @manifold_alerts_thread is set in the application controller via a before_action.
+    @manifold_alerts_thread.value.select { |a| a if a.dig("attributes", "for_header") == false }
   end
 
   def emergency_alert_message

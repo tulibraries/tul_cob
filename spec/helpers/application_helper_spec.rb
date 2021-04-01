@@ -167,6 +167,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#emergency_alert_message" do
     context "for_header is false" do
       it "does return the scroll_text" do
+        helper.instance_variable_set("@manifold_alerts_thread", get_manifold_alerts)
         expect(helper.emergency_alert_message).to eq("Test banner message")
       end
     end
@@ -175,8 +176,31 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#emergency_alert_link" do
     context "link field is present" do
       it "does return the link" do
+        helper.instance_variable_set("@manifold_alerts_thread", get_manifold_alerts)
         expect(helper.emergency_alert_link).to have_text("Click here to see full details.")
       end
     end
+  end
+
+  describe "#manifold_alerts" do
+    context "[] value" do
+      it "returns empty array []" do
+        helper.instance_variable_set("@manifold_alerts_thread", Thread.new { [] })
+        expect(helper.manifold_alerts).to eq([])
+      end
+    end
+
+    context "spec/fixtures/emergency_alert.json" do
+      it "filters out for_header alerts" do
+        helper.instance_variable_set("@manifold_alerts_thread", get_manifold_alerts)
+
+        expect(helper.manifold_alerts.count).to eq(1)
+        expect(helper.manifold_alerts.first.dig("attributes", "for_header")).to eq(false)
+      end
+    end
+  end
+
+  def get_manifold_alerts
+    ApplicationController.new.get_manifold_alerts
   end
 end

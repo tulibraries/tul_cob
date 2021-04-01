@@ -87,7 +87,15 @@ RSpec.describe UsersController, type: :controller do
           expect(response.headers["Pragma"]).to eq("no-cache")
           expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
         end
+
+        describe "before_action get_manifold_alerts" do
+          it "sets @manifold_alerts_thread" do
+            get :account
+            expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+          end
+        end
       end
+
     end
 
     context "User has no transactions" do
@@ -123,4 +131,5 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+
 end

@@ -278,4 +278,20 @@ RSpec.describe CatalogController, type: :controller do
       expect(response.body).to include "blacklight-lc_call_number_display"
     end
   end
+
+  describe "before_action get_manifold_alerts" do
+    context ":show action" do
+      it "sets @manifold_alerts_thread" do
+        get :show, params: { id: doc_id }
+        expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+      end
+    end
+
+    context ":index action" do
+      it "sets @manifold_alerts_thread" do
+        get :index, params: { q: "art" }
+        expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+      end
+    end
+  end
 end
