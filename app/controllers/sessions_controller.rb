@@ -3,6 +3,8 @@
 class SessionsController < Devise::SessionsController
   include Sessions::SocialLogin
 
+  before_action :get_manifold_alerts, only: [ :new ]
+
   layout proc { |controller| false if request.xhr? }
 
   # Overrides Devise::SessionsController#new.

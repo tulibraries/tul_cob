@@ -25,4 +25,13 @@ RSpec.describe SessionsController, type: :controller do
       expect(response.headers["Pragma"]).to be_nil
     end
   end
+
+  describe "before_action get_manifold_alerts" do
+    context ":new action" do
+      it "sets @manifold_alerts_thread" do
+        get :new
+        expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+      end
+    end
+  end
 end

@@ -16,6 +16,8 @@ RSpec.describe CatalogController, type: :controller do
   end
 
   before :each do
+    controller.get_manifold_alerts
+
     routes.draw do
       get "test_basic_exception" => "catalog#test_basic_exception"
       get "test_primo_error" => "catalog#test_primo_error"

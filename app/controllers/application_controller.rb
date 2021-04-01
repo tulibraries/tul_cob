@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  before_action :get_manifold_alerts, only: [ :index, :show, :not_found, :internal_server_error, :account ]
+
   rescue_from ActionController::InvalidAuthenticityToken,
     with: :redirect_to_referer
 
@@ -52,6 +54,16 @@ class ApplicationController < ActionController::Base
   def redirect_to_referer
     flash[:notice] = "Your search results page had to be reloaded. Please try again."
     redirect_to request.referer
+  end
+
+  def get_manifold_alerts
+    alert_url = "https://library.temple.edu/alerts.json"
+
+    @manifold_alerts_thread ||= Thread.new {
+      Rails.cache.fetch("manifold_alerts", expires_in: 5.minutes) do
+        (HTTParty.get(alert_url, timeout: 1) rescue {})["data"] || []
+      end
+    }
   end
 
   protected
