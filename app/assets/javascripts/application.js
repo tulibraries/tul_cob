@@ -19,6 +19,7 @@
 //= require bootstrap
 //= require turbolinks//
 
+//= require bootstrap-select
 //= require bootstrap/alert
 //= require bootstrap/tab
 

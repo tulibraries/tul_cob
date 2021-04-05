@@ -4,7 +4,7 @@
     "@stimulus/polyfills": "^1.1.0",
     "axios": "0.21.1",
     "babel-preset-es2015": "^6.24.1",
-    "bootstrap-select": "^1.13.2",
+    "bootstrap-select": "^1.13.18",
     "js-yaml": "3.13.1",
     "mem": "4.0.0",
     "node-fetch": "2.6.1",
