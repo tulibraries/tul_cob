@@ -39,7 +39,7 @@ end
 
 # windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem "blacklight", "~> 7.15.2"
+gem "blacklight", "~> 7.16.0"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc"
 gem "blacklight_range_limit", git: "https://github.com/dkinzer/blacklight_range_limit.git", branch: "issue-168-use-blackligh-config-for-constraints"
