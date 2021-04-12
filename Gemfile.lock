@@ -520,7 +520,7 @@ GEM
     skylight (5.0.1)
       activesupport (>= 5.2.0)
     slop (4.8.2)
-    solr_wrapper (3.1.1)
+    solr_wrapper (3.1.2)
       http
       retriable
       ruby-progressbar
