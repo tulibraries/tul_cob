@@ -1,3 +1,7 @@
+#Defaults
+include .env
+export #exports the .env variables
+
 DOCKER_FLAGS := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
 ifeq ($(CI), true)
 	DOCKER := $(DOCKER_FLAGS) docker-compose -p tul_cob -f docker-compose.ci.yml
@@ -64,10 +68,10 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 IMAGE ?= tulibraries/tul_cob
-VERSION ?= 2.0.0
+VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
-ASSETS_PRECOMPILE=no
+CI ?= false
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -100,13 +104,9 @@ run:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
-	@ if [ $(ASSETS_PRECOMPILE) == yes ]; then \
-			RAILS_ENV=production COB_DB_HOST=localhost bundle exec rails assets:precompile; \
-		fi
-	@docker build --build-arg RAILS_ENV=production \
+	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
-		--tag cob:latest \
 		--file .docker/app/Dockerfile.prod \
 		--no-cache .
 
@@ -115,7 +115,11 @@ shell:
 		--entrypoint=sh --user=root \
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
-CI ?= false
+gitlab-lint:
+	@if [ $(CI) == false ]; \
+		then \
+			hadolint .docker/app/Dockerfile.prod; \
+		fi
 
 scan:
 	@if [ $(CLEAR_CACHES) == yes ]; \
@@ -127,7 +131,7 @@ scan:
 			trivy $(HARBOR)/$(IMAGE):$(VERSION); \
 		fi
 
-deploy: scan
+deploy: scan gitlab-lint
 	@docker push $(HARBOR)/$(IMAGE):$(VERSION) \
 	# This "if" statement needs to be a one liner or it will fail.
 	# Do not edit indentation
