@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 4106a5196c40f4b02f2f77555f3e2304ce15e9b5
+  revision: 4b5d7ebb2d5bd88d14a71028e45c34bfc58e3a88
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -367,7 +367,7 @@ GEM
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (2.5.7)
-    nokogiri (1.11.2)
+    nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     notiffany (0.1.3)
