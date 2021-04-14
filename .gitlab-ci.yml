@@ -1,0 +1,54 @@
+include:
+  - project: "infrastructure-engineering-shared/gitlab-ci-templates"
+    file:
+      - "lint_docker.yaml"
+      - "build_docker.yaml"
+      - "security_scan.yaml"
+      - "kubectl_commands.yaml"
+
+variables:
+  IMAGE: "tulibraries/tul_cob"
+
+.export_variables: &export_variables
+  - source .env
+  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
+
+before_script:
+  - *export_variables
+
+stages:
+  - lint
+  - build
+  - scan
+  - tag
+  - deploy
+
+lint:
+  extends: .lint_docker
+  variables:
+    DF: ".docker/app/Dockerfile.prod"
+
+build:
+  stage: build
+  extends: .build_image
+  variables:
+    DF: ".docker/app/Dockerfile.prod --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE --no-cache"
+
+scan:
+  stage: scan
+  extends: .scanimage_high
+  variables:
+    THRESHOLD: 10
+
+tag:
+  stage: tag
+  extends: .tag_image
+
+deploy:
+  variables:
+    IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
+  stage: deploy
+  extends: .kubectl_setup
+  script:
+    - *export_variables
+    - kubectl --namespace=cob set image deployment/cob cob=$IMAGE:$VERSION --record
