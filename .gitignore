@@ -27,6 +27,7 @@ Vagrantfile
 ansible
 config/secrets.yml
 public/assets/
+public/uploads
 vendor/bundle/
 coverage
 
