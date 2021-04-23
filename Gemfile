@@ -47,7 +47,7 @@ gem "blacklight_range_limit", git: "https://github.com/dkinzer/blacklight_range_
 group :development, :test do
   gem "byebug", platform: :mri
   gem "pry-rails"
-  gem "simplecov", require: false
+  gem "simplecov"
   gem "simplecov-lcov"
   gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
