@@ -105,7 +105,7 @@ jobs:
           command: make test-js
 
       - coveralls/upload:
-          path_to_lcov: /app/coverage/lcov/app.lcov
+          path_to_lcov: /app/coverage/lcov/tul_cob.lcov
 
   qa_deploy:
     docker:
