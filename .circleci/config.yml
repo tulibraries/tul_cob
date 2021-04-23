@@ -99,14 +99,16 @@ jobs:
           command: make lint
       - run:
           name: Run ruby tests
-          command: make test
+          command: |
+            make test
+            docker cp tul_cob_app_1:/app/coverage/lcov/app.lcov ./app.lcov
+
       - run:
           name: Run javascript tests
           command: make test-js
 
       - coveralls/upload:
-          path_to_lcov: /app/coverage
-          verbose: true
+          path_to_lcov: ./app.lcov
 
   qa_deploy:
     docker:
