@@ -1,16 +1,20 @@
 # frozen_string_literal: true
 
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "simplecov"
 require "alma"
 require "webmock/rspec"
 require "vcr"
 require "database_cleaner"
 require "capybara/rspec"
 require "pry"
-require "coveralls"
+require "simplecov"
+require "simplecov-lcov"
+SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+SimpleCov.start do
+  add_filter "/spec/"
+end
 
-Coveralls.wear!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 SPEC_ROOT = File.dirname __FILE__
