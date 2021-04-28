@@ -273,11 +273,11 @@ Devise.setup do |config|
     request_attributes: {},
     name_identifier_format:  "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
     attribute_statements: {
-      uid: "employeeNumber",
-      email: "mail",
-      name: "cn",
-      last_name: "sn",
-      first_name: "givenName" },
+      nickname:    ["urn:oid:0.9.2342.19200300.100.1.1"],
+      email:       ["urn:oid:0.9.2342.19200300.100.1.3"],
+      first_name:  ["urn:oid:1.3.6.1.4.1.44987.1.1.2.1.24"],
+      last_name:   ["urn:oid:1.3.6.1.4.1.44987.1.1.2.1.25"]
+    },
     security: {
       authn_requests_signed: true,
       want_assertions_signed: true,
