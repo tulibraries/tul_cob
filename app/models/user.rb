@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth]
+  devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth, :saml]
 
   def alma
     log = { type: "alma_user", uid: uid }

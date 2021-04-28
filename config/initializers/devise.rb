@@ -260,6 +260,33 @@ Devise.setup do |config|
       last_name: "sn",
       first_name: "givenName"
     }
+
+  idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+  #idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://dev-05875531.okta.com/app/exkmbvdlqPh57AiYU5d6/sso/saml/metadata")
+  idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://np-fim.temple.edu/idp/shibboleth")
+
+  config.omniauth :saml, idp_metadata.merge(
+    certificate: Rails.configuration.devise["saml_certificate"],
+    private_key: Rails.configuration.devise["saml_private_key"],
+    issuer: Rails.configuration.devise["saml_issuer"],
+    request_attributes: {},
+    name_identifier_format:  "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+    attribute_statements: {
+      uid: "employeeNumber",
+      email: "mail",
+      name: "cn",
+      last_name: "sn",
+      first_name: "givenName" },
+    security: {
+      authn_requests_signed: true,
+      want_assertions_signed: true,
+      want_assertions_encrypted: true,
+      metadata_signed: true,
+      embed_sign: false,
+      digest_method: XMLSecurity::Document::SHA1,
+      signature_method: XMLSecurity::Document::RSA_SHA1 }
+  )
+
   OmniAuth.config.logger = Rails.logger
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

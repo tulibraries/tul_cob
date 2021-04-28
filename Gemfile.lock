@@ -373,6 +373,9 @@ GEM
     omniauth-rails_csrf_protection (1.0.0)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
+    omniauth-saml (2.0.0)
+      omniauth (~> 2.0)
+      ruby-saml (~> 1.9)
     omniauth-shibboleth (1.3.0)
       omniauth (>= 1.0.0)
     openurl (1.0.0)
@@ -483,6 +486,9 @@ GEM
       rubocop (>= 0.90.0, < 2.0)
     ruby-prof (1.4.3)
     ruby-progressbar (1.11.0)
+    ruby-saml (1.12.2)
+      nokogiri (>= 1.10.5)
+      rexml
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -640,6 +646,7 @@ DEPENDENCIES
   okcomputer
   omniauth
   omniauth-rails_csrf_protection
+  omniauth-saml
   omniauth-shibboleth
   popper_js
   primo!
