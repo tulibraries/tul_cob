@@ -283,6 +283,11 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/emergency_alert.json"))
+
+    stub_request(:get, "https://np-fim.temple.edu/idp/shibboleth").
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/idp_metadata.xml"))
   end
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
@@ -384,7 +389,7 @@ RSpec.configure do |config|
 end
 
 VCR.configure do |config|
-  config.ignore_hosts "127.0.0.1", "localhost", "solr", "lgapi-us.libapps.com", ENV["SOLRCLOUD_HOST"]
+  config.ignore_hosts "127.0.0.1", "localhost", "solr", "lgapi-us.libapps.com", "np-fim.temple.edu", ENV["SOLRCLOUD_HOST"]
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
