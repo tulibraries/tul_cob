@@ -268,6 +268,7 @@ Devise.setup do |config|
   config.omniauth :saml, idp_metadata.merge(
     certificate: Rails.configuration.devise["saml_certificate"],
     private_key: Rails.configuration.devise["saml_private_key"],
+    assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
     issuer: Rails.configuration.devise["saml_issuer"],
     request_attributes: {},
     name_identifier_format:  "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
