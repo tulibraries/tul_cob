@@ -9,6 +9,8 @@ default: &default
 
 development:
   <<: *default
+  saml_issuer: "catalog-search-local-212c43b2ba0f5c0e3d4d60ec67a7397947dc7808"
+  assertion_consumer_service_url: "http://localhost:3000/users/auth/saml/callback"
   #saml_idp_metadata_url:"https://dev-05875531.okta.com/app/exkmbvdlqPh57AiYU5d6/sso/saml/metadata")
 
 test:
