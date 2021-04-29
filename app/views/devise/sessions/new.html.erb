@@ -7,7 +7,7 @@
       <%= link_to t("devise.sessions.new.temple_users") , omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to]), method: :post %>
     </li>
     <li>
-      <% if Rails.configuration.devise["saml_certificate"] %>
+      <% if Rails.configuration.devise["saml_certificate"].present? %>
         <%= button_to "Omniauth-SAML", omniauth_authorize_path(resource_name, :saml, target: params[:redirect_to]) %>
       <% end -%>
     </li>

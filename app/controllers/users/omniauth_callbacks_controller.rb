@@ -22,11 +22,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def saml
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-
+    auth = request.env["omniauth.auth"]
+    auth.uid = auth.extra.raw_info["urn:oid:2.16.840.1.113730.3.1.3"]
+    @user = User.from_omniauth(auth)
     sign_in(:user, @user)
 
-    binding.pry
     session[:alma_auth_type] = "sso"
     session[:alma_sso_user] = @user.uid
     session[:alma_sso_token] = SecureRandom.hex(10)
