@@ -282,10 +282,11 @@ Devise.setup do |config|
       authn_requests_signed: true,
       want_assertions_signed: true,
       want_assertions_encrypted: true,
-      metadata_signed: true,
-      embed_sign: false,
-      digest_method: XMLSecurity::Document::SHA1,
-      signature_method: XMLSecurity::Document::RSA_SHA1 }
+      metadata_signed: false,
+      embed_sign: true,
+      digest_method: "http://www.w3.org/2001/04/xmlenc#sha256",
+      signature_method: "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
+    }
   )
 
   OmniAuth.config.logger = Rails.logger
