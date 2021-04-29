@@ -262,13 +262,13 @@ Devise.setup do |config|
     }
 
   idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
-  #idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://dev-05875531.okta.com/app/exkmbvdlqPh57AiYU5d6/sso/saml/metadata")
-  idp_metadata = idp_metadata_parser.parse_remote_to_hash("https://np-fim.temple.edu/idp/shibboleth")
+  idp_metadata = idp_metadata_parser.parse_remote_to_hash(Rails.configuration.devise["saml_idp_metadata_url"])
 
   config.omniauth :saml, idp_metadata.merge(
     certificate: Rails.configuration.devise["saml_certificate"],
     private_key: Rails.configuration.devise["saml_private_key"],
     assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
+    idp_sso_service_url: "https://np-fim.temple.edu/idp/profile/SAML2/Redirect/SSO",
     issuer: Rails.configuration.devise["saml_issuer"],
     request_attributes: {},
     name_identifier_format:  "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",

@@ -2,13 +2,14 @@ default: &default
   sign_out_redirect_url: <%= ENV["IDP_REDIRECT_URL"] || "/Shibboleth.sso/Logout?return=https://fim.temple.edu/idp/profile/Logout" %>
   saml_certificate: |- <%= ENV["COB_SP_CERT"] %>
   saml_private_key: |- <%= ENV["COB_SP_KEY"] %>
-  saml_issuer: "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata"
-    #saml_issuer: "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata"
-  assertion_consumer_service_url: "https://librarysearch.k8s.temple.edu/users/auth/saml/callback"
-    #assertion_consumer_service_url: "https://librarysearch.k8s.temple.edu/users/auth/saml/callback"
+  saml_issuer: <%= ENV["COB_SAML_ISSUER"] || "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata" %>
+  assertion_consumer_service_url: <%= ENV["COB_SAML_ASSERTION_CONSUMER_SERVICE_URL"] || "https://librarysearch.k8s.temple.edu/users/auth/saml/callback" %>
+  saml_idp_metadata_url: <%= ENV["COB_SAML_IDP_METADATA_URL"] || "https://np-fim.temple.edu/idp/shibboleth" %>
+
 
 development:
   <<: *default
+  #saml_idp_metadata_url:"https://dev-05875531.okta.com/app/exkmbvdlqPh57AiYU5d6/sso/saml/metadata")
 
 test:
   <<: *default
