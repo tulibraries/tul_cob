@@ -23,6 +23,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def saml
     auth = request.env["omniauth.auth"]
+
+    # Debugging code
+    # TODO: Remove once we fix k8 authentication
+    doc = Nokogiri::XML auth.extra.response_object.response
+    logger.info(doc.to_xml.pretty_inspect)
+
     auth.uid = auth.extra.raw_info["urn:oid:2.16.840.1.113730.3.1.3"]
     @user = User.from_omniauth(auth)
     sign_in(:user, @user)
