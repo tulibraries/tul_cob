@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: a01d04cea8283348802c3c33b9c8c07b7dde6dcf
+  revision: 98f064fbef0a4593926ed8c8ddbd5c3e1d7405cc
   branch: main
   specs:
     alma (0.3.1)
@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 57e181c33525bdd08922d502a2c973df5ce31f26
+  revision: 1771a9c66c3e74ffdd41d09194f2338bff708eab
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 101b1f2fce37aeaa70b21de0f93c71d71f3c2bda
+  revision: f45cd7576b652a0e8cd7328939f5669cc47903da
   branch: main
   specs:
     primo (0.1.0)
