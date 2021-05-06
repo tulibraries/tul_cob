@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 1771a9c66c3e74ffdd41d09194f2338bff708eab
+  revision: d11cc4b6d052d7d1d4a973b0e6bae6c830ecee33
   branch: main
   specs:
     cob_web_index (0.1.0)
