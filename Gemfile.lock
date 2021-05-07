@@ -28,10 +28,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 98f064fbef0a4593926ed8c8ddbd5c3e1d7405cc
+  revision: f1da690b683799bc2c7f57f7b39ea82bd300c2ba
   branch: main
   specs:
-    alma (0.3.1)
+    alma (0.3.2)
       activesupport
       ezwadl
       httparty
