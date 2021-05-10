@@ -75,7 +75,7 @@ RSpec.feature "RecordPageFields" do
       scenario "User visits a document with field 730 only" do
         visit "catalog/#{item_730['doc_id']}"
         within "dd.blacklight-title_uniform_display" do
-          expect(page).to have_text(item_730["title_uniform"])
+          expect(page).to have_text("Subfield I.")
           expect(page).to have_link(item_730["title_uniform"])
         end
       end
@@ -103,7 +103,7 @@ RSpec.feature "RecordPageFields" do
     scenario "User visits a document with additional title " do
       visit "catalog/#{item_246['doc_id']}"
       within "dd.blacklight-title_addl_display" do
-        expect(page).to have_text(item_246["title_addl"])
+        expect(page).to have_text("Subfield I")
         expect(page).to have_link(item_246["title_addl"])
       end
     end
