@@ -7,5 +7,9 @@ class JournalsSearchBuilder < SearchBuilder
     if !solr_params["fq"].include? "{!term f=format}Journal/Periodical"
       solr_params["fq"] = solr_params["fq"].push("{!term f=format}Journal/Periodical")
     end
+
+    if solr_params["fq"].include? "!format:Journal/Periodical"
+      solr_params["fq"].delete("!format:Journal/Periodical")
+    end
   end
 end
