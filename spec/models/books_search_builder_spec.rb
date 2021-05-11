@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe BooksSearchBuilder , type: :model do
   let(:context) { CatalogController.new }
-  let(:params) { ActionController::Parameters.new }
+  let(:params) { ActionController::Parameters.new(with_no_journals: true) }
   let(:search_builder) { BooksSearchBuilder.new(context) }
 
   subject { search_builder }
@@ -28,6 +28,15 @@ RSpec.describe BooksSearchBuilder , type: :model do
 
       it "adds suppression to fq" do
         expect(solr_parameters["fq"]).to eq(["foo", "!format:Journal/Periodical"])
+      end
+    end
+
+    context "when params do not include with_no_journals feature" do
+      let(:params) { ActionController::Parameters.new }
+      let(:solr_parameters) { Blacklight::Solr::Request.new }
+
+      it "adds suppression to fq" do
+        expect(solr_parameters["fq"]).to eq([])
       end
     end
   end
