@@ -70,7 +70,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 3328f7d45c2b4412a8267cb2c73eb5f0b7cb266e
+  revision: 9f041e16228381399152982fe92edfdd5e413ed2
   branch: main
   specs:
     cob_index (0.1.0)
@@ -679,4 +679,4 @@ DEPENDENCIES
   webpacker (= 6.0.0.pre.2)
 
 BUNDLED WITH
-   2.1.4
+   2.2.17

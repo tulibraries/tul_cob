@@ -181,9 +181,9 @@ class CatalogController < ApplicationController
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement", type: :primary
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
-    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :list_with_links, type: :primary
+    config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
-    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :list_with_links, type: :primary
+    config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_addl_vern_display", label: "Additional titles", type: :primary
     config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true, type: :primary
     config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator, type: :primary

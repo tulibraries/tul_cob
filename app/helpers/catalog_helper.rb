@@ -369,6 +369,27 @@ module CatalogHelper
     args[:document][args[:field]].map { |field| content_tag(:li,  fielded_search(field, args[:field]), class: "list_items") }.join("").html_safe
   end
 
+  def additional_title_link(args)
+    title = args[:document][args[:field]]
+
+    title.map do |title_data|
+      begin
+        title_data = JSON.parse(title_data)
+        linked_subfields = title_data["title"]
+        relation_to_work_prefix = title_data["relation"]
+      end
+      link = fielded_search(linked_subfields, args[:field])
+
+      content_tag(:li, class: "list_items") do
+        if relation_to_work_prefix.present?
+          link.prepend("#{relation_to_work_prefix} ")
+        else
+          link
+        end
+      end
+    end
+  end
+
   def creator_index_separator(args)
     creator = args[:document][args[:field]]
     creator.map do |name|
