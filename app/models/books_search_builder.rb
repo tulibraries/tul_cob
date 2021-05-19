@@ -5,8 +5,6 @@ class BooksSearchBuilder < SearchBuilder
 
 
   def no_journals(solr_parameters)
-    return unless ["yes", true, "true"].include? blacklight_params["with_no_journals"]
-
     if solr_parameters["fq"].blank?
       solr_parameters["fq"] = ["!format:Journal/Periodical"]
     else
