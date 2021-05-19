@@ -4,13 +4,8 @@
 <%- if devise_mapping.omniauthable? %>
   <ul class="pb-3">
     <li>
-      <%= link_to t("devise.sessions.new.temple_users") , omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to]), method: :post %>
+      <%= link_to t("devise.sessions.new.temple_users") , student_faculty_login_uri, method: :post %>
     </li>
-    <% if Rails.configuration.devise["saml_certificate"].present? %>
-    <li>
-        <%= button_to "Omniauth-SAML", omniauth_authorize_path(resource_name, :saml, target: params[:redirect_to]) %>
-    </li>
-    <% end -%>
     <li>
       <%= link_to t("devise.sessions.new.pa_users"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
     </li>
