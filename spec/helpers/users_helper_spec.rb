@@ -71,4 +71,25 @@ RSpec.describe UsersHelper, type: :helper do
       end
     end
   end
+
+  describe "student_faculty_login_uri" do
+    before(:each) do
+      without_partial_double_verification do
+        allow(helper).to receive(:resource_name) { "user" }
+      end
+    end
+
+    context "not configured for SAML auth" do
+      it "uses the shibboleth login by default" do
+        expect(helper.student_faculty_login_uri).to eq("/users/auth/shibboleth")
+      end
+    end
+
+    context "SAML auth configured" do
+      it "uses the saml login" do
+        allow(Rails.configuration).to receive(:devise) { { "saml_certificate" => "foo" } }
+        expect(helper.student_faculty_login_uri).to eq("/users/auth/saml")
+      end
+    end
+  end
 end
