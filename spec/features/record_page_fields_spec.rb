@@ -919,7 +919,7 @@ RSpec.feature "RecordPageFields" do
     let (:item_655) { fixtures.fetch("genre_655") }
     scenario "User visits a document with genre" do
       visit "catalog/#{item_655['doc_id']}"
-      within "dd.blacklight-genre_display" do
+      within "dd.blacklight-genre_ms" do
         expect(page).to have_text(item_655["genre"])
       end
     end

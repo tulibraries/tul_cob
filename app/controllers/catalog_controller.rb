@@ -145,11 +145,12 @@ class CatalogController < ApplicationController
     config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
+    config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
+
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
-    config.add_facet_field "genre_full_facet", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
     config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }
 
@@ -231,7 +232,7 @@ class CatalogController < ApplicationController
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
-    config.add_show_field "genre_display", label: "Genre", helper_method: :genre_links, multi: true
+    config.add_show_field "genre_ms", label: "Genre", helper_method: :genre_links, multi: true
     config.add_show_field "collection_display", label: "Collection"
     config.add_show_field "collection_area_display", label: "SCRC Collecting Area"
 
