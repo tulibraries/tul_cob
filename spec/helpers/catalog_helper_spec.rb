@@ -467,9 +467,9 @@ RSpec.describe CatalogHelper, type: :helper do
           {
             document:
             {
-              genre_display: [ "foo", "foo", "bar" ]
+              genre_ms: [ "foo", "foo", "bar" ]
             },
-            field: :genre_display
+            field: :genre_ms
           }
         }
 
