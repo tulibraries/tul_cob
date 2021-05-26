@@ -9,13 +9,12 @@ namespace :tul_cob do
     task :load_fixtures, [:filepath] do |t, args|
       solr_url = Blacklight::Configuration.new.connection_config[:url]
 
-      if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
+      if solr_url.match("solrcloud.tul-infra.page")
         abort "Cannot run :load_fixtures task on production server"
       end
 
       puts "Prepping spec fixtures for ingest..."
       fixtures = Dir.glob(args.fetch(:filepath, "spec/fixtures/*_marc.xml"))
-
 
       if ENV["DO_INGEST"].present?
         puts "Adding sample data to ingest prep..."
@@ -61,8 +60,8 @@ task :ingest, [:filepath] => [:environment] do |t, args|
   file = args[:filepath]
   solr_url = Blacklight::Configuration.new.connection_config[:url]
 
-  if ENV["SOLRCLOUD"].present? && solr_url.match(/#{ENV["SOLRCLOUD"]}/)
-    abort "Cannot run :ingest task on production server"
+  if solr_url.match("solrcloud.tul-infra.page")
+    abort "Cannot run :load_fixtures task on production server"
   end
 
   if file && file.match?(/databases.json/)
