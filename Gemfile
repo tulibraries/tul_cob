@@ -42,7 +42,7 @@ gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "blacklight", "~> 7.15.2"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git"
 gem "blacklight-marc"
-gem "blacklight_range_limit", git: "https://github.com/dkinzer/blacklight_range_limit.git", branch: "issue-168-use-blackligh-config-for-constraints"
+gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
 
 group :development, :test do
   gem "byebug", platform: :mri
