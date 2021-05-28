@@ -154,8 +154,10 @@ class CatalogController < ApplicationController
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
     config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }
 
-
-
+    # Added due to BL pivot field bug. Remove once projectblacklight/blacklight#2463 is fixed.
+    config.add_facet_field "location_facet", show: false
+    config.add_facet_field "lc_inner_facet", show: false
+    config.add_facet_field "lc_outer_facet", show: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
