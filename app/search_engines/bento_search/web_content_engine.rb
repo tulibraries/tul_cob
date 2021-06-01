@@ -24,7 +24,7 @@ module BentoSearch
 
     def content_type(item)
       unless item["web_content_type_t"].nil?
-        "Type: " + item["web_content_type_t"].first
+        "Type: " + item["web_content_type_t"]
       end
     end
 
