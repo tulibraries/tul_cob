@@ -54,7 +54,6 @@ Rails.application.routes.draw do
     concerns :searchable
   end
 
-
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns :exportable
   end
@@ -130,6 +129,7 @@ Rails.application.routes.draw do
   get "databases/:id/index_item", to: "databases#index_item", as: "database_item"
   get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
   get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
+  get "query_lists" => "query_lists#index"
 
 
   #
@@ -149,7 +149,8 @@ Rails.application.routes.draw do
   post "almaws/request/hold", to: "almaws#send_hold_request", as: "hold_request"
   post "almaws/request/asrs", to: "almaws#send_asrs_request", as: "asrs_request"
   post "almaws/request/booking", to: "almaws#send_booking_request", as: "booking_request"
-
+  post "query_lists", to: "query_lists#index"
+  
   get "bookmarks/export/articles", to: "bookmarks#export_articles", as: "export_article_bookmarks"
 
   scope module: "blacklight_alma" do

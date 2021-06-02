@@ -1,4 +1,21 @@
 <% if @results %>
+
+<%= turbo_frame_tag "query_lists" do %>
+  <div id="query_list_1" class="border p-5 m-5">
+    <p>
+      <form action="/query_lists/index.turbo_stream">
+        <input type="submit" value="Submit">
+      </form>
+    </p>
+  </div>
+
+  <div id="query_list_2" class="border p-5 m-5">
+    <p>
+      test 2
+    </p>
+  </div>
+<% end %>
+
 <div class="d-flex justify-content-between bento-main-container container">
   <%= render_bento_results %>
 </div>
