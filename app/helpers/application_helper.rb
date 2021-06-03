@@ -245,4 +245,8 @@ module ApplicationHelper
       link_to(t("blacklight.banner_link"), link)
     end
   end
+
+  def query_list(title, query)
+    render partial: "query_list/results", locals: { query: query, title: title }
+  end
 end

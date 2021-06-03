@@ -40,6 +40,8 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
+  resource :query_list, controller: "query_list"
+
   resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
     concerns :searchable
     concerns :range_searchable
