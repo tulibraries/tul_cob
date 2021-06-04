@@ -59,14 +59,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 80d6773e88e8be68a922dce6931c089afa6a2701
+  revision: 057211528bd79362d80b93bbcd962da38274986b
   branch: main
   specs:
     cob_az_index (0.1.0)
       gli (~> 2.18)
       httparty
       traject (~> 3.1)
-      traject_plus (~> 1.1)
+      traject_plus (>= 1.1, < 3.0)
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
@@ -550,7 +550,7 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    traject_plus (1.3.0)
+    traject_plus (2.0.0)
       activesupport
       deprecation
       jsonpath
