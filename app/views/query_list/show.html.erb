@@ -1,0 +1,14 @@
+<div class="d-flex flex-row flex-nowrap overflow-auto">
+  <% @docs.each do |doc| %>
+    <div class="card query-list">
+      <div class="card-body query-list">
+        <%= link_to(doc["title_statement_display"].first.truncate(50), solr_document_path(doc["id"]), class: "bento-item-title") %>
+        <p><%= doc["format"].first %></p>
+        <p><%= doc["library_facet"].join("<br />").html_safe if doc["library_facet"].present? %></p>
+      </div>
+      <div class="card-footer query-list">
+        <p><%= doc["lc_call_number_display"]&.first || "Online" %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
