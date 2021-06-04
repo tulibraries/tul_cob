@@ -1,6 +1,4 @@
-<% Rails.configuration.query_list.each do |query| %>
-  <%= query_list(title=query["title"], query=query["query"]) %>
-<% end %>
+<%= render :partial => "query_list" %>
 
 
 <% if @results %>
