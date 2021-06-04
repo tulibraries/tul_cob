@@ -59,14 +59,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 80d6773e88e8be68a922dce6931c089afa6a2701
+  revision: 057211528bd79362d80b93bbcd962da38274986b
   branch: main
   specs:
     cob_az_index (0.1.0)
       gli (~> 2.18)
       httparty
       traject (~> 3.1)
-      traject_plus (~> 1.1)
+      traject_plus (>= 1.1, < 3.0)
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: d58ee662e9fdcd1d9c944d948f13195ad0ee1899
+  revision: 794924768b271e57bfb2841e7c3987507cc7b569
   branch: main
   specs:
     primo (0.1.0)
@@ -242,7 +242,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
-    execjs (2.7.0)
+    execjs (2.8.1)
     ezwadl (0.0.1)
       httparty (~> 0.14)
       nokogiri (~> 1.6)
@@ -550,7 +550,7 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    traject_plus (1.3.0)
+    traject_plus (2.0.0)
       activesupport
       deprecation
       jsonpath
