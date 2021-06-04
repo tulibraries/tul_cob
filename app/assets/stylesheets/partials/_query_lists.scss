@@ -6,7 +6,8 @@ h2.query-lists {
 	padding: 0.25rem 0;
 }
 
-.card {
+.query-list.card,
+.query-list-preload {
   min-height: 200px;
   min-width: 200px;
   margin-right: 5px;
