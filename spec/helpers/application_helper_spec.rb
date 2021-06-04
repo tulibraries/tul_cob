@@ -203,4 +203,25 @@ RSpec.describe ApplicationHelper, type: :helper do
   def get_manifold_alerts
     ApplicationController.new.get_manifold_alerts
   end
+
+  describe "#query_list" do
+    context "title and query provided" do
+      it "sets data-controller=\"query-list\" div" do
+        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*>/)
+      end
+
+      it "sets data-query-list-url" do
+        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar".*>/)
+      end
+
+      it "sets tile to 'foo'" do
+        expect(helper.query_list("foo", "q=bar")).to match(/<h.*>foo<\/h.*>/)
+      end
+
+      it "sets a target div called data-target=\"query-list.results\"" do
+        expect(helper.query_list("foo", "q=bar")).to match(/<div.*data-target="query-list\.results".*>/)
+      end
+
+    end
+  end
 end
