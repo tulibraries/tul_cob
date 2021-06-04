@@ -34,6 +34,7 @@ module Tulcob
     config.devise = config_for(:devise).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
+    config.query_list = config_for(:query_list).map(&:with_indifferent_access)
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
