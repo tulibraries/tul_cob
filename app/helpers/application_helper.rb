@@ -247,6 +247,7 @@ module ApplicationHelper
   end
 
   def query_list(title, query)
+    return unless ["true", true].include? params["query_list"]
     render partial: "query_list/results", locals: { query: query, title: title }
   end
 end
