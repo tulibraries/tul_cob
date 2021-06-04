@@ -242,7 +242,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.10.0)
-    execjs (2.7.0)
+    execjs (2.8.1)
     ezwadl (0.0.1)
       httparty (~> 0.14)
       nokogiri (~> 1.6)
