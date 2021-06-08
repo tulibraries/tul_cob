@@ -20,7 +20,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: f1da690b683799bc2c7f57f7b39ea82bd300c2ba
+  revision: b84e769535efc1a8064264d2c12b839d6bd133f9
   branch: main
   specs:
     alma (0.3.2)
@@ -215,7 +215,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.9)
     confstruct (1.0.2)
       hashie (~> 3.3)
     crack (0.4.5)
