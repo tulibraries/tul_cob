@@ -127,7 +127,12 @@ module Blacklight::PrimoCentral
 
       min = params.dig("range", "creationdate", "begin")
       max = params.dig("range", "creationdate", "end")
-      range = YearRange.new(min, max)
+
+      min = (min.blank? || (min.to_s.match(/^\d+$/) && min.to_i >= 1000)) ? min : 1000
+      max = (max.blank? || (max.to_s.match(/^\d+$/) && max.to_i >= 1000)) ? max : 1000
+
+      min_max = min.blank? || max.blank? || min.to_i < max.to_i ? [min, max] : [max, min]
+      range = YearRange.new(*min_max)
       primo_central_parameters[:range] = range
 
       # Adding the date range facet prematurely causes search discrepencies.
