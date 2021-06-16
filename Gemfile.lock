@@ -70,7 +70,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 8a7d7b252d0a5a83dc794cdb1c4d05cc2e82ab4f
+  revision: 0214d2c01e439457730c63f585d3fab11f9c2ef6
   branch: main
   specs:
     cob_index (0.1.0)
@@ -256,7 +256,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
