@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: d5e4551eb80bf7022692f9117b41234a0724cdfc
+  revision: 7c6242fc2db75bb7fc534237d4ea653ddea2517d
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -256,7 +256,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -469,7 +469,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.16.1)
+    rubocop (1.17.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
