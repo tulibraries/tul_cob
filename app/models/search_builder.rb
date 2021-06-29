@@ -30,8 +30,8 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   # TODO: Remove this once we update and use new tul_cob-catalog-solr config
   def filter_suppressed(solr_params)
-    if !solr_params["fq"].include?("-suppress_items_b:true")
-      solr_params["fq"] = solr_params["fq"].push("-suppress_items_b:true")
+    if !solr_params["fq"]&.include?("-suppress_items_b:true")
+      solr_params["fq"] = (solr_params["fq"] || []).push("-suppress_items_b:true")
     end
   end
 
@@ -144,7 +144,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     _begin = lc_range["begin"].blank? ? "*" : LcSolrSortable.convert(lc_range["begin"])
     _end = lc_range["end"].blank? ? "*" : LcSolrSortable.convert(lc_range["end"])
-    solr_params[:fq] << "lc_call_number_sort: [#{_begin} TO #{_end}]"
+    (solr_params[:fq] || []) << "lc_call_number_sort: [#{_begin} TO #{_end}]"
   end
 
   private
