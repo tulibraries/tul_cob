@@ -192,9 +192,9 @@ GEM
       traject (~> 3.0)
     bootsnap (1.7.5)
       msgpack (~> 1.0)
-    bootstrap (4.6.0)
+    bootstrap (5.0.1)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
+      popper_js (>= 2.9.2, < 3)
       sassc-rails (>= 2.0.0)
     browser (5.3.1)
     builder (3.2.4)
@@ -256,7 +256,7 @@ GEM
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     faraday-net_http (1.0.1)
-    ffi (1.15.1)
+    ffi (1.15.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -387,7 +387,7 @@ GEM
     parser (3.0.1.1)
       ast (~> 2.4.1)
     parslet (2.0.0)
-    popper_js (1.16.0)
+    popper_js (2.9.2)
     pry (0.14.0)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -612,7 +612,7 @@ DEPENDENCIES
   blacklight_alma!
   blacklight_range_limit!
   bootsnap
-  bootstrap (~> 4.6)
+  bootstrap (~> 5.0)
   browser
   byebug
   capybara (= 3.35.3)
