@@ -286,7 +286,7 @@ GEM
       guard-compat (~> 1.0)
     hashdiff (1.0.1)
     hashie (3.6.0)
-    honeybadger (4.8.0)
+    honeybadger (4.9.0)
     htmlentities (4.3.4)
     http (4.4.1)
       addressable (~> 2.3)
@@ -469,7 +469,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.10.2)
-    rubocop (1.17.0)
+    rubocop (1.18.1)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
       rainbow (>= 2.2.2, < 4.0)
@@ -635,7 +635,7 @@ DEPENDENCIES
   guard-rspec
   guard-shell
   hashie (~> 3.6.0)
-  honeybadger (= 4.8.0)
+  honeybadger (= 4.9.0)
   httparty
   jbuilder (~> 2.11)
   jquery-rails
