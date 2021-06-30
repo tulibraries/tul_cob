@@ -183,10 +183,10 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7)
       view_component (>= 2.28.0)
-    blacklight-marc (7.0.0)
+    blacklight-marc (7.0.1)
       blacklight (~> 7.0)
       library_stdnums
-      marc (>= 0.4.3, < 1.1)
+      marc (>= 0.4.3, < 2.0)
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
@@ -340,7 +340,8 @@ GEM
     lumberjack (1.2.8)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    marc (1.0.4)
+    marc (1.1.1)
+      rexml
       scrub_rb (>= 1.0.1, < 2)
       unf
     marc-fastxmlwriter (1.0.0)
