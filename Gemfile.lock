@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 55a53f6059fbbdfa8eb55b6a6f9411fe4db769ce
+  revision: fe15d6e729205554e0f6490d3410743e163f2854
   branch: main
   specs:
     primo (0.1.0)
@@ -350,7 +350,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0225)
+    mime-types-data (3.2021.0704)
     mini_mime (1.1.0)
     mini_portile2 (2.5.3)
     minitest (5.14.4)
