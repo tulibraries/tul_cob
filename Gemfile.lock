@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: ffca89b721c7f71822af592d145c89742ea26636
+  revision: 51746d324a1725e150d9545c4b9ed0890f236220
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -437,7 +437,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.4)
+    rake (13.0.6)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
