@@ -91,14 +91,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: f957d5c00ba16fa247640d631310a8d67cc519a4
+  revision: ba5f258acf452055af31679083c2079cc925f9b2
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 55a53f6059fbbdfa8eb55b6a6f9411fe4db769ce
+  revision: 139ef6b3331199043bb0cf7cdd5ec41b0c388425
   branch: main
   specs:
     primo (0.1.0)
