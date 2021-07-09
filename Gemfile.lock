@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: e41e4547b545509be84b0fe3bf8fd3feb8283d69
+  revision: 27293c5a0ae4e62dd8559253195cf352050c4150
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -437,7 +437,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    rake (13.0.4)
+    rake (13.0.6)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
