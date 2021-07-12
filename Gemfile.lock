@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: ffca89b721c7f71822af592d145c89742ea26636
+  revision: a82daa0de9a10751d6c503a2059f57a48089c0eb
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 55a53f6059fbbdfa8eb55b6a6f9411fe4db769ce
+  revision: 139ef6b3331199043bb0cf7cdd5ec41b0c388425
   branch: main
   specs:
     primo (0.1.0)
