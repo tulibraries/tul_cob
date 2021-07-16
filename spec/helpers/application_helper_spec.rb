@@ -217,7 +217,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
 
       it "sets data-query-list-url" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar".*>/)
+        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
       end
 
       it "sets tile to 'foo'" do
@@ -239,6 +239,11 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#creator_query_list(document)" do
+    let(:params) { ActionController::Parameters.new query_list: "true" }
+
+    before do
+      allow(helper).to receive(:params) { params }
+    end
 
     context "single creator provided" do
       let(:document) { { "creator_display" => ["Caroli, Sergio"] } }
@@ -279,6 +284,11 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#call_number_query_list(document)" do
+    let(:params) { ActionController::Parameters.new query_list: "true" }
+
+    before do
+      allow(helper).to receive(:params) { params }
+    end
 
     context "single call_number provided" do
       let(:document) { { "lc_call_number_display" => ["DS891.2 .H39 2013"] } }
