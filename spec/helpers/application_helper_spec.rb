@@ -217,7 +217,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
 
       it "sets data-query-list-url" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar".*>/)
+        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
       end
 
       it "sets tile to 'foo'" do
@@ -234,6 +234,88 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "does not render the query list" do
         expect(helper.query_list("foo", "q=bar")).to be_nil
+      end
+    end
+  end
+
+  describe "#creator_query_list(document)" do
+    let(:params) { ActionController::Parameters.new query_list: "true" }
+
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "single creator provided" do
+      let(:document) { { "creator_display" => ["Caroli, Sergio"] } }
+
+      it "generates a query_list for the listed creator" do
+        expect(helper.creator_query_list(document)).to include("query_list?f[creator_facet][]=Caroli, Sergio")
+      end
+    end
+
+    context "single creator provided with additional piped information" do
+      let(:document) { { "creator_display" => ["Hayes, Declan|author"] } }
+
+      it "generates a query_list for the listed creator without info after pipe" do
+        expect(helper.creator_query_list(document)).to include("query_list?f[creator_facet][]=Hayes, Declan")
+        expect(helper.creator_query_list(document)).to_not include("query_list?f[creator_facet][]=author")
+      end
+    end
+
+    context "multiple creators provided" do
+      let(:document) { { "creator_display" => [
+        "Caroli, Sergio",
+        "Mackay, Alan L. (Alan Lindsay), 1926-"
+        ] } }
+
+      it "generates a query_list for only the first listed creator" do
+        expect(helper.creator_query_list(document)).to include("query_list?f[creator_facet][]=Caroli, Sergio")
+        expect(helper.creator_query_list(document)).to_not include("query_list?f[creator_facet][]=Mackay, Alan L")
+      end
+    end
+
+    context "no creator provided" do
+      let(:document) { { "creator_display" => [""] } }
+
+      it "does not genearte a query list" do
+        expect(helper.creator_query_list(document)).to be_nil
+      end
+    end
+  end
+
+  describe "#call_number_query_list(document)" do
+    let(:params) { ActionController::Parameters.new query_list: "true" }
+
+    before do
+      allow(helper).to receive(:params) { params }
+    end
+
+    context "single call_number provided" do
+      let(:document) { { "lc_call_number_display" => ["DS891.2 .H39 2013"] } }
+
+      it "generates a query_list for the call number in ascending order" do
+        expect(helper.call_number_query_list(document)).to include("DS891.2 .H39 2013")
+        expect(helper.call_number_query_list(document)).to include("lc_call_number_sort+asc")
+        expect(helper.call_number_query_list(document)).to include("range%5Blc_classification%5D%5Bbegin")
+      end
+    end
+
+    context "single call_number provided with desc order variable passed in" do
+      let(:document) { { "lc_call_number_display" => ["DS835 .J37 2015"] } }
+      let(:order) { "desc" }
+
+      it "generates a query_list for the call number in descending order" do
+        expect(helper.call_number_query_list(document, order)).to include("DS835 .J37 2015")
+        expect(helper.call_number_query_list(document, order)).to include("lc_call_number_sort+desc")
+        expect(helper.call_number_query_list(document, order)).to include("range%5Blc_classification%5D%5Bend")
+      end
+    end
+
+    context "no call number provided" do
+      let(:document) { { "lc_call_number_display" => [""] } }
+
+      it "does not genearte a query list" do
+        expect(helper.call_number_query_list(document)).to be_nil
       end
     end
   end
