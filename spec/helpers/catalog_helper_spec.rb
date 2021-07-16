@@ -1091,4 +1091,49 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
   end
+
+  describe "#additional_title_link" do
+    let(:args) { {
+      document: SolrDocument.new(id: "foo", title_addl_display: title),
+      field: "title_addl_display"
+    } }
+
+    before do
+      without_partial_double_verification do
+        allow(helper).to receive(:search_action_path) { "/catalog" }
+      end
+    end
+
+    context "additional title and relation present" do
+      let(:title) { [
+        "{\"relation\":\"Foo\",\"title\":\"Bar\"}",
+      ] }
+
+      it "appends relation to a title link" do
+        expect(helper.additional_title_link(args).first).to eq('<li class="list_items">Foo <a href="/catalog">Bar</a></li>')
+        expect(helper.additional_title_link(args).count).to eq(1)
+      end
+    end
+
+    context "only title present" do
+      let(:title) { [
+        "{\"title\":\"Bar\"}",
+      ] }
+
+      it "generates a title link" do
+        expect(helper.additional_title_link(args).first).to eq('<li class="list_items"><a href="/catalog">Bar</a></li>')
+        expect(helper.additional_title_link(args).count).to eq(1)
+      end
+    end
+
+    context "only relation present" do
+      let(:title) { [
+        "{\"relation\":\"Bar\"}",
+      ] }
+
+      it "does not generate a link" do
+        expect(helper.additional_title_link(args)).to eq([nil])
+      end
+    end
+  end
 end
