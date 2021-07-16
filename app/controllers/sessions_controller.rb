@@ -9,7 +9,7 @@ class SessionsController < Devise::SessionsController
 
   # Overrides Devise::SessionsController#new.
   def new
-    @document = SolrDocument.find(params[:redirect_to].rpartition("doc-").last) rescue [ nil, SolrDocument.new({}) ]
+    @document = SolrDocument.find(params[:redirect_to].rpartition("doc-")) rescue SolrDocument.new({})
     no_cache unless request.xhr?.nil?
     super
   end

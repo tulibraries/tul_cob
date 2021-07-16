@@ -24,6 +24,11 @@ RSpec.describe SessionsController, type: :controller do
       get :new
       expect(response.headers["Pragma"]).to be_nil
     end
+
+    it "should generate a @document.class SolrDocument" do
+      get :new
+      expect(controller.instance_variable_get("@document").class).to eq(SolrDocument)
+    end
   end
 
   describe "before_action get_manifold_alerts" do
