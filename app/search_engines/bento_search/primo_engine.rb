@@ -30,7 +30,7 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params
+      params = helper.params.slice(:q)
         .merge(action: :index, controller: :primo_central)
       helper.url_for(params)
     end

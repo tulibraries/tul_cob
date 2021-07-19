@@ -18,7 +18,7 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params.except(:action, :controller)
+      params = helper.params.except(:q)
       helper.search_web_content_path(params)
     end
 
