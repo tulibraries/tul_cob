@@ -147,6 +147,13 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
 
+    config.add_facet_field "date_added_facet", label: "Newly Added", query: {
+          week_1: { label: "Last Week", fq: "date_added_facet:[#{(Date.current - 1.week).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_1: { label: "Last Month", fq: "date_added_facet:[#{(Date.current - 1.month).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_3: { label: "Last Three Months", fq: "date_added_facet:[#{(Date.current - 3.months).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_12: { label: "Last Year", fq: "date_added_facet:[#{(Date.current - 1.year).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" }
+        }
+
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
@@ -414,6 +421,7 @@ class CatalogController < ApplicationController
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
     config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
     config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
+    config.add_sort_field "date_added_facet desc", label: "Newly Added"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
