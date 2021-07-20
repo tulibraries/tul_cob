@@ -9,7 +9,7 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params.except(:action, :controller)
+      params = helper.params.slice(:q)
       helper.search_databases_path(params)
     end
 
