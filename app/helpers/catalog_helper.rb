@@ -370,14 +370,13 @@ module CatalogHelper
   end
 
   def additional_title_link(args)
-    title = args[:document][args[:field]]
+    args[:document][args[:field]].map do |title_data|
+      title_data = JSON.parse(title_data)
 
-    title.map do |title_data|
-      begin
-        title_data = JSON.parse(title_data)
-        linked_subfields = title_data["title"]
-        relation_to_work_prefix = title_data["relation"]
-      end
+      linked_subfields = title_data["title"]
+      relation_to_work_prefix = title_data["relation"]
+      next if linked_subfields.blank?
+
       link = fielded_search(linked_subfields, args[:field])
 
       content_tag(:li, class: "list_items") do
