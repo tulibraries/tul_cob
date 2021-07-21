@@ -22,4 +22,16 @@ RSpec.feature "Query List" do
       expect(page).to have_text("Call Number Desc")
     end
   end
+
+  feature "Home Page query lists" do
+    scenario "displays query lists for bento home page" do
+      visit "?query_list=true"
+      expect(page).to have_text("New Musical Scores")
+    end
+
+    scenario "displays query lists for catalog home page" do
+      visit "catalog/?query_list=true"
+      expect(page).to have_text("New Archival Materials")
+    end
+  end
 end
