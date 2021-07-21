@@ -142,24 +142,22 @@ class CatalogController < ApplicationController
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
       component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
-    config.add_facet_field "pub_date_sort", label: "Date", range: true, component: RangeFacetFieldListComponent
+    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, component: RangeFacetFieldListComponent
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
-
-    config.add_facet_field "date_added_facet", label: "Newly Added", query: {
-          week_1: { label: "Last Week", fq: "date_added_facet:[#{(Date.current - 1.week).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
-          months_1: { label: "Last Month", fq: "date_added_facet:[#{(Date.current - 1.month).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
-          months_3: { label: "Last Three Months", fq: "date_added_facet:[#{(Date.current - 3.months).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" },
-          months_12: { label: "Last Year", fq: "date_added_facet:[#{(Date.current - 1.year).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" }
-        }
-
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
     config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }
+    config.add_facet_field "date_added_facet", label: "Newly Added", query: {
+          week_1: { label: "Within Last Week", fq: "date_added_facet:[#{(Date.current - 1.week).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_1: { label: "Within Last Month", fq: "date_added_facet:[#{(Date.current - 1.month).strftime('%Y%m%d').to_i} TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_3: { label: "Within Last Three Months", fq: "date_added_facet:[#{(Date.current - 3.months).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" },
+          months_12: { label: "Within Last Year", fq: "date_added_facet:[#{(Date.current - 1.year).strftime('%Y%m%d').to_i } TO #{Date.current.strftime('%Y%m%d').to_i}]" }
+        }
 
     # Added due to BL pivot field bug. Remove once projectblacklight/blacklight#2463 is fixed.
     config.add_facet_field "location_facet", show: false
@@ -421,7 +419,7 @@ class CatalogController < ApplicationController
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
     config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
     config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
-    config.add_sort_field "date_added_facet desc", label: "Newly Added"
+    config.add_sort_field "date_added_facet desc", label: "newly added"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
