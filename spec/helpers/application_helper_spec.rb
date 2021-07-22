@@ -319,4 +319,40 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#libraries_query_display(document)" do
+    context "document found in 3 or more libraries" do
+      let(:document) { { "library_facet" => ["Charles", "Ambler", "Japan"] } }
+
+      it "Displays the first library and the text more locations" do
+        expect(helper.libraries_query_display(document)).to include("More Locations")
+      end
+    end
+
+    context "document found in 1 or 2 libraries" do
+      let(:document) { { "library_facet" => ["Charles", "Ambler"] } }
+
+      it "Displays the first library and the text more locations" do
+        expect(helper.libraries_query_display(document)).to eq("<p class=\"font-weight-bold\">Charles<br />Ambler</p>")
+      end
+    end
+  end
+
+  describe "#format_classes_for_icons(document)" do
+    context "Format type includes a space" do
+      let(:document) { { "format" => ["Archival Material"] } }
+
+      it "replaces whitespace with underscore and downcases the string" do
+        expect(helper.format_classes_for_icons(document)).to eq("archival_material")
+      end
+    end
+
+    context "Format type includes a slash" do
+      let(:document) { { "format" => ["Journal/Periodical"] } }
+
+      it "replaces slash with underscore and downcases the string" do
+        expect(helper.format_classes_for_icons(document)).to eq("journal_periodical")
+      end
+    end
+  end
 end

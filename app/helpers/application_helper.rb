@@ -247,13 +247,13 @@ module ApplicationHelper
   end
 
   def query_list(title, query)
-    return unless ["true", true].include? params["query_list"]
+    # return unless ["true", true].include? params["query_list"]
     render partial: "query_list/results", locals: { query: query + "&per_page=5", title: title }
   end
 
   def creator_query_list(document)
     creator = document["creator_display"]&.first&.split("|")&.first
-    query_list(title = "Author/Creator", query = "f[creator_facet][]=#{creator}&sort=title_sort asc, pub_date_sort desc") unless creator.blank?
+    query_list(title = "Author/Creator", query = "f[creator_facet][]=#{creator}&sort=title_sort asc, pub_date_sort desc&fq=NOT") unless creator.blank?
   end
 
   def call_number_query_list(document, order = "asc")
@@ -264,5 +264,21 @@ module ApplicationHelper
     position = order == "asc" ? "begin" : "end"
 
     query_list(title = "Call Number #{order.titlecase}.", query = "https://librarysearch.temple.edu/catalog?f_1=all_fields&f_2=all_fields&f_3=all_fields&op_1=AND&op_2=AND&operator%5Bq_1%5D=contains&operator%5Bq_2%5D=contains&operator%5Bq_3%5D=contains&q_1=&q_2=&q_3=&range%5Blc_classification%5D%5B#{position}%5D=#{lc_call_number}&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&search_field=advanced&sort=lc_call_number_sort+#{order}%2C+pub_date_sort+desc") unless lc_call_number.blank?
+  end
+
+  def libraries_query_display(document)
+    libraries = document["library_facet"]
+    unless libraries.nil?
+      if libraries.count > 2
+        html = content_tag(:p, libraries.first, class: "mb-0 pb-0 font-weight-bold")
+        html += content_tag(:p, "More Locations", class: "mb-0 pb-0 font-italic")
+      else
+        content_tag(:p, libraries.join("<br />").html_safe, class: "font-weight-bold")
+      end
+    end
+  end
+
+  def format_classes_for_icons(document)
+    document["format"].first.downcase.gsub(" ", "_").gsub("/", "_")
   end
 end
