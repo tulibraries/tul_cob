@@ -9,17 +9,17 @@ module BentoSearch
       config = blacklight_config
       search_service = search_service_class.new(config: config, user_params: user_params)
 
-      (response, _) = search_service.search_results(&proc_minus_journals)
+      (response, _) = search_service.search_results(&processor_chain)
 
       item = BentoSearch::ResultItem.new(custom_data: response)
 
       results(response).append(item)
     end
 
-    def proc_minus_journals
+    def processor_chain
       Proc.new { |builder|
         processor_chain = [ :availability_facet_only,
-                            :no_journals, :filter_suppressed,
+                            :filter_suppressed,
                             :with_format_facet ]
         builder.append(*processor_chain)
       }
