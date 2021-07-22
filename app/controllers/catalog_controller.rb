@@ -420,7 +420,7 @@ class CatalogController < ApplicationController
     config.add_sort_field "title_sort desc, pub_date_sort desc", label: "title (Z to A)"
     config.add_sort_field "lc_call_number_sort asc, pub_date_sort desc", label: "lc classification (A to Z)"
     config.add_sort_field "lc_call_number_sort desc, pub_date_sort desc", label: "lc classification (Z to A)"
-    config.add_sort_field "date_added_facet desc", label: "newly added"
+    config.add_sort_field "date_added_facet desc, title_sort asc", label: "newly added"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
