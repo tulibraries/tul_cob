@@ -15,6 +15,7 @@ class SearchBuilder < Blacklight::SearchBuilder
         add_lc_range_search_to_solr
         spellcheck
         filter_suppressed
+        filter_id
         limit_facets
         sorting_preferences ]
 
@@ -32,6 +33,14 @@ class SearchBuilder < Blacklight::SearchBuilder
   def filter_suppressed(solr_params)
     if !solr_params["fq"]&.include?("-suppress_items_b:true")
       solr_params["fq"] = (solr_params["fq"] || []).push("-suppress_items_b:true")
+    end
+  end
+
+  def filter_id(solr_params)
+    id = blacklight_params["filter_id"]
+
+    if id.present? && !solr_params["fq"]&.include?("-id:#{id}")
+      solr_params["fq"] = (solr_params["fq"] || []).push("-id:#{id}")
     end
   end
 

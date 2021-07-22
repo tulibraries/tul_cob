@@ -236,6 +236,20 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.query_list("foo", "q=bar")).to be_nil
       end
     end
+
+    context "@document.id is available" do
+      # This only happens in a record view context.
+      it "adds the filer_id query param" do
+        helper.instance_variable_set("@document", SolrDocument.new(id: "fizz"))
+        expect(helper.query_list("foo", "q=bar")).to match(/filter_id=fizz/)
+      end
+    end
+
+    context "@document.id is NOT available" do
+      it "does NOT add the filer_id query param" do
+        expect(helper.query_list("foo", "q=bar")).not_to match(/filter_id=fizz/)
+      end
+    end
   end
 
   describe "#creator_query_list(document)" do

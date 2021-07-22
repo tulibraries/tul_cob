@@ -107,6 +107,31 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#filter_id" do
+    let(:solr_parameters) { Blacklight::Solr::Request.new }
+
+    before(:example) do
+      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      subject.filter_id(solr_parameters)
+    end
+
+    context "with filter_id param present" do
+      let(:params) { ActionController::Parameters.new(
+        filter_id: "fizz"
+      ) }
+
+      it "adds id suppression to fq" do
+        expect(solr_parameters["fq"]).to eq(["-id:fizz"])
+      end
+    end
+
+    context "without filter_id param present" do
+      it "does not add id suppression to f" do
+        expect(solr_parameters["fq"]).to be_nil
+      end
+    end
+  end
+
   describe "#spellcheck" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
