@@ -47,12 +47,6 @@
       </div>
     <% end %>
 
-    <div class="row hold-form form-group">
-      <%= form.label(:hold_last_interest_date, t("requests.form.not_needed_after_html")) %>
-      <%= date_field_tag :hold_last_interest_date, "", pattern:"[0-9]{4}-[0-9]{2}-[0-9]{2}", class: "form-control" %>
-      <%= render "format_date_message" %>
-    </div>
-
     <div class="hold-form form-group">
       <%= form.label(:hold_comment, t("requests.form.notes_label_html")) %>
       <p><%= t("requests.form.notes_additional_text") %></p>

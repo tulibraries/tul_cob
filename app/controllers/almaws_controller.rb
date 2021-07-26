@@ -87,7 +87,6 @@ class AlmawsController < CatalogController
   end
 
   def send_hold_request
-    date = date_or_nil(params[:hold_last_interest_date])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -96,7 +95,6 @@ class AlmawsController < CatalogController
     pickup_location_type: "LIBRARY",
     material_type: { value: params[:material_type] },
     request_type: "HOLD",
-    last_interest_date: date,
     comment: params[:hold_comment]
     }
     @request_level = params[:request_level]
@@ -114,7 +112,6 @@ class AlmawsController < CatalogController
   end
 
   def send_asrs_request
-    date = date_or_nil(params[:asrs_last_interest_date])
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -123,7 +120,6 @@ class AlmawsController < CatalogController
     pickup_location_type: "LIBRARY",
     material_type: { value: params[:material_type] },
     request_type: "HOLD",
-    last_interest_date: date,
     comment: params[:asrs_comment]
     }
 
@@ -203,7 +199,6 @@ class AlmawsController < CatalogController
   end
 
   def send_digitization_request
-    date = date_or_nil(params[:digitization_last_interest_date])
     bib_options = {
       mms_id: params[:mms_id],
       user_id: current_user.uid,
@@ -213,7 +208,6 @@ class AlmawsController < CatalogController
       request_type: "DIGITIZATION",
       target_destination: { value: "DIGI_DEPT_INST" },
       partial_digitization: true,
-      last_interest_date: date,
       comment: [params[:digitization_comment], "Title: #{params[:chapter_or_article_title]}", "Author: #{params[:chapter_or_article_author]}", "From page: #{params[:from_page]}", "To page: #{params[:to_page]}"].compact.join("\n"),
       required_pages_range: [{
         from_page: params[:from_page], to_page: params[:to_page]
