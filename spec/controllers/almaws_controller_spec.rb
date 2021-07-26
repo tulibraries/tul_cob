@@ -204,27 +204,12 @@ RSpec.describe AlmawsController, type: :controller do
       end
 
       it "does not redirect to the login page" do
-        post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
+        post(:send_hold_request, params: { mms_id: ""  })
         expect(response).not_to redirect_to new_user_session_url
       end
 
       it "doesn't raise an exception for empty pickup_location" do
-        post(:send_hold_request, params: { last_interest_date: "", pickup_location: nil, mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for non-empty string for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "string", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for empty string for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        post(:send_hold_request, params: { pickup_location: nil, mms_id: ""  })
         expect { response }.not_to raise_error
       end
 
@@ -249,27 +234,12 @@ RSpec.describe AlmawsController, type: :controller do
       end
 
       it "does not redirect to the login page" do
-        post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
+        post(:send_hold_request, params: { mms_id: ""  })
         expect(response).not_to redirect_to new_user_session_url
       end
 
       it "doesn't raise an exception for empty pickup_location" do
-        post(:send_hold_request, params: { last_interest_date: "", pickup_location: nil, mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for non-empty string for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "string", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for empty string for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
-        post(:send_hold_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
+        post(:send_hold_request, params: { pickup_location: nil, mms_id: ""  })
         expect { response }.not_to raise_error
       end
 
@@ -294,23 +264,8 @@ RSpec.describe AlmawsController, type: :controller do
       end
 
       it "does not redirect to the login page" do
-        post(:send_digitization_request, params: { last_interest_date: "", mms_id: ""  })
+        post(:send_digitization_request, params: { mms_id: ""  })
         expect(response).not_to redirect_to new_user_session_url
-      end
-
-      it "doesn't raise an exception for non-empty string for last_interest_date" do
-        post(:send_digitization_request, params: { last_interest_date: "string", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for empty string for last_interest_date" do
-        post(:send_digitization_request, params: { last_interest_date: "", mms_id: ""  })
-        expect { response }.not_to raise_error
-      end
-
-      it "doesn't raise an exception for correctly formatted date for last_interest_date" do
-        post(:send_digitization_request, params: { last_interest_date: "2018-08-15", mms_id: ""  })
-        expect { response }.not_to raise_error
       end
 
       it "includes page range params in Alma api request" do
