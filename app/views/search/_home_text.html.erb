@@ -6,9 +6,7 @@
     website: link_to(t("bento.website"), search_web_content_path, class: "text-red"),
     more: link_to(t("bento.more"), search_catalog_path , class: "text-red")) %></p>
   <p><%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %></p>
-
-  <%= render "query_list" %>
-
   <p><%= t("bento.need_help_html") %></p>
   <p><%= link_to(t("bento.library_help_html"), t("blacklight.help_link"), target: "_blank") %></p>
+  <%= render "query_list" %>
 </div>
