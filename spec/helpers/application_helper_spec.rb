@@ -305,10 +305,10 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
 
     context "single call_number provided" do
-      let(:document) { { "lc_call_number_display" => ["DS891.2 .H39 2013"] } }
+      let(:document) { { "lc_call_number_display" => ["DS891.2.H392013"] } }
 
       it "generates a query_list for the call number in ascending order" do
-        expect(helper.call_number_query_list(document)).to include("DS891.2 .H39 2013")
+        expect(helper.call_number_query_list(document)).to include("DS891.2.H392013")
         expect(helper.call_number_query_list(document)).to include("lc_call_number_sort+asc")
         expect(helper.call_number_query_list(document)).to include("range%5Blc_classification%5D%5Bbegin")
       end
@@ -319,7 +319,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:order) { "desc" }
 
       it "generates a query_list for the call number in descending order" do
-        expect(helper.call_number_query_list(document, order)).to include("DS835 .J37 2015")
+        expect(helper.call_number_query_list(document, order)).to include("DS835.J372015")
         expect(helper.call_number_query_list(document, order)).to include("lc_call_number_sort+desc")
         expect(helper.call_number_query_list(document, order)).to include("range%5Blc_classification%5D%5Bend")
       end
