@@ -262,7 +262,7 @@ module ApplicationHelper
   end
 
   def call_number_query_list(document, order = "asc")
-    lc_call_number = document["lc_call_number_display"]&.first.gsub(/\s+/, "")
+    lc_call_number = document["lc_call_number_display"]&.first&.gsub(/\s+/, "")
     # This is built this way due to a possible bug with desc lc_call_number sorts
     # We may need to refactor this when that bug is fixed
     # We think the bug is in the add_lc_range_search_to_solr method
