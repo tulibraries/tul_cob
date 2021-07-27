@@ -13,7 +13,7 @@
         <% end %>
       </div>
       <div class="card-footer query-card-footer query-list border-dark bg-white">
-        <p id="footer-query-tag" class="mb-0"><%= doc["lc_call_number_display"]&.first || "Online" %></p>
+        <p id="footer-query-tag" class="mb-0"><%= query_list_footer_value(doc, @footer_field) %></p>
       </div>
     </div>
   <% end %>
