@@ -258,7 +258,7 @@ module ApplicationHelper
 
   def creator_query_list(document)
     creator = document["creator_display"]&.first&.split("|")&.first
-    query_list(title = "Author/Creator", query = "f[creator_facet][]=#{creator}&sort=pub_date_sort desc&fq=NOT") unless creator.blank?
+    query_list(title = "Author/Creator", query = "f[creator_facet][]=#{creator}&sort=pub_date_sort+desc%2C+title_sort+asc&fq=NOT") unless creator.blank?
   end
 
   def call_number_query_list(document, order = "asc")
