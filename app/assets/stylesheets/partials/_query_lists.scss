@@ -8,13 +8,14 @@ h2.query-lists {
 
 .query-list.card,
 .query-list-preload {
-  min-height: 12.5rem;
+  min-height: 16rem;
   min-width: 12.5rem;
   margin-right: 0.3125rem;
   overflow: hidden;
+  flex: 1 1 15rem;
 
   .query-card-footer {
-    height: 3.4375rem;
+    height: 2.7rem;
   }
 }
 
