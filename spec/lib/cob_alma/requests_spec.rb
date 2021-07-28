@@ -75,7 +75,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_no_libraries") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.2 (1974)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", HARRISBURG"])
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end
 
