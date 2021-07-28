@@ -7,8 +7,8 @@
     </div>
 
     <div class="col-sm-3 form-group">
-      <label for="<%= "operator[q_#{count}]" %>" class="sr-only">Operator</label>
-      <%= select_tag("operator[q_#{count}]", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator[q_#{count}}") %>
+      <label for="<%= "operator-q_#{count}" %>" class="sr-only">Operator</label>
+      <%= select_tag("operator-q_#{count}", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator-q_#{count}") %>
     </div>
 
     <div class="col-sm-5 form-group">
