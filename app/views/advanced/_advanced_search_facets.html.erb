@@ -11,7 +11,8 @@
             name: "f[#{display_facet.name}][]",
             id: display_facet.name.parameterize,
             class: "form-control custom-select selectpicker",
-            data: { "live-search": "true", placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}"}) do %>
+            title: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}",
+            data: { "live-search": "true"}) do %>
             <% display_facet.items.each do |facet_item| %>
               <% facet_item_presenter = facet_item_presenter(facet_config, facet_item, display_facet) %>
               <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
