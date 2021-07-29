@@ -65,15 +65,6 @@ RSpec.describe AlmawsController, type: :controller do
       expect(availability).to be_empty
     end
 
-    it "determines AMBLER and MAIN reserves item NOT AVAILABLE" do
-      document["items_json_display"][0]["item_pid"] = "23495709760003811"
-      expect(search_service).to receive(:fetch).and_return([:foo, document])
-      allow(controller).to receive(:search_service).and_return(search_service)
-      get(:item, { params: { mms_id: "temp_location_reserves", doc_id: 456 } })
-      availability = controller.instance_variable_get(:@document_availability)
-      expect(availability.values.flatten.first["availability"]).to eq("<span class=\"close-icon\"></span>Not Available")
-    end
-
     context "anonymous user" do
       it "does not redirect to login page" do
         get(:item, params)

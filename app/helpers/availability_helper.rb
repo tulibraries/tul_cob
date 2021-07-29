@@ -11,10 +11,6 @@ module AvailabilityHelper
     # Temporary change for items that don't currently fit in the ASRS bins
     unavailable_locations = ["storage"]
 
-    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
-      return unavailable_items(item)
-    end
-
     if unavailable_libraries.include?(item.library) ||
         unavailable_locations.include?(item.location)
 
@@ -52,10 +48,6 @@ module AvailabilityHelper
         end
       end
       return content_tag(:span, "", class: "close-icon") + process_type
-    end
-
-    if item.location == "reserve" && %w(MAIN AMBLER).include?(item.library)
-      return content_tag(:span, "", class: "close-icon") + "Not Available"
     end
 
     return content_tag(:span, "", class: "close-icon") + "Checked out or currently unavailable"
