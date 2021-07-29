@@ -477,23 +477,24 @@ class CatalogController < ApplicationController
   end
 
   def browse_creator(args)
-    creator = args[:document][args[:field]]
+    creator = args[:document][args[:field]] || []
     base_path = helpers.base_path
     creator.map do |creator_data|
       begin
         creator_data = JSON.parse(creator_data)
-        linked_subfields = creator_data["name"]
-        plain_text_subfields = creator_data["role"]
-        relation_to_work_prefix = creator_data["relation"]
+        relation = creator_data["relation"]
+        name = creator_data["name"]
+        role = creator_data["role"]
       rescue JSON::ParserError
-        linked_subfields, plain_text_subfields = creator_data.split("|")
-        relation_to_work_prefix = nil
+        name, role = creator_data.split("|")
       end
-      facet_query = view_context.send(:url_encode, (linked_subfields))
-      facet_query_link = view_context.link_to(linked_subfields, base_path + "?f[creator_facet][]=#{facet_query}")
-      facet_query_link.prepend("#{relation_to_work_prefix} ") if relation_to_work_prefix.present?
-      facet_query_link += (" #{plain_text_subfields}") if plain_text_subfields.present?
-      facet_query_link
+
+      facet_query = view_context.send(:url_encode, name)
+      name_link = view_context.link_to(name, base_path + "?f[creator_facet][]=#{facet_query}") if name.present?
+
+      ActiveSupport::SafeBuffer.new([ relation,
+        name_link,
+        role ].select(&:present?).join(" "))
     end
   end
 
