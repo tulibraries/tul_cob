@@ -8,14 +8,14 @@ h2.query-lists {
 
 .query-list.card,
 .query-list-preload {
-  min-height: 16rem;
-  min-width: 12.5rem;
+  height: 16rem;
+  min-width: 12rem;
   margin-right: 0.3125rem;
   overflow: hidden;
-  flex: 1 1 15rem;
+  flex: 0 1 14rem;
 
   .query-card-footer {
-    height: 2.7rem;
+    height: 3.4375rem;
   }
 }
 
@@ -27,12 +27,14 @@ h3.query-item-title {
 	a {
 		text-decoration: underline;
 	}
+
 }
 
 .query-card-body,
 .query-card-footer {
   font-family: "PT Sans";
 	font-size: 0.9375rem !important;
+
 }
 
 .query-format {
