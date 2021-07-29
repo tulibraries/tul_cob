@@ -8,6 +8,9 @@ RSpec.describe CatalogController, type: :controller do
   let(:mock_response) { instance_double(Blacklight::Solr::Response) }
   let(:mock_document) { instance_double(SolrDocument) }
   let(:search_service) { instance_double(Blacklight::SearchService) }
+  let(:doc) { Hash.new }
+  let(:options) { { blacklight_config: controller.blacklight_config } }
+  let(:document) { SolrDocument.new(doc, options) }
 
   describe "show action" do
     it "gets the staff_view_path" do
@@ -291,6 +294,88 @@ RSpec.describe CatalogController, type: :controller do
       it "sets @manifold_alerts_thread" do
         get :index, params: { q: "art" }
         expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+      end
+    end
+  end
+
+  describe "#browse_creator" do
+    before do
+      allow(controller).to receive(:helpers).and_return(OpenStruct.new(base_path: "/"))
+    end
+
+    context "no creator" do
+      let(:presenter) { { document: document, field: "creator" } }
+      it "returns an empty list if nos creators are available" do
+        expect(controller.browse_creator(presenter)).to eq([])
+      end
+    end
+
+    context "a creator" do
+      let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+        creator: ["Hello, World"],
+      )}
+      let(:presenter) { { document: document, field: "creator" } }
+
+      it "returns a list of links to creator search for each creator" do
+        expect(controller.browse_creator(presenter)).to eq([
+          "<a href=\"/?f[creator_facet][]=Hello%2C%20World\">Hello, World</a>"
+        ])
+      end
+
+      context "creator is empty json" do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{}.to_json]) }
+
+        it "returns an empty string list" do
+          expect(controller.browse_creator(presenter)).to eq([""])
+        end
+      end
+
+      context "creator is json with role only " do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{ role: "MyRole" }.to_json]) }
+
+        it "returns role in a list" do
+          expect(controller.browse_creator(presenter)).to eq(["MyRole"])
+        end
+      end
+
+      context "creator is json with relation only " do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{ relation: "MyRelation" }.to_json]) }
+
+        it "returns role in a list" do
+          expect(controller.browse_creator(presenter)).to eq(["MyRelation"])
+        end
+      end
+
+      context "creator is json with name only" do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{ name: "MyName" }.to_json]) }
+
+        it "returns name as a link to query" do
+          expect(controller.browse_creator(presenter)).to eq([
+            "<a href=\"/?f[creator_facet][]=MyName\">MyName</a>"
+          ])
+        end
+      end
+
+      context "creator is json with name and role" do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{ name: "MyName", role: "MyRole" }.to_json]) }
+
+        it "returns name as a link to query + plus role appended" do
+          expect(controller.browse_creator(presenter)).to eq([
+            "<a href=\"/?f[creator_facet][]=MyName\">MyName</a> MyRole"
+          ])
+        end
+      end
+
+      context "creator is json with name and role and relation" do
+        let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(creator: [{
+          name: "MyName", role: "MyRole", relation: "MyRelation"
+        }.to_json]) }
+
+        it "returns name as a link to query + plus role appended + relation prepended" do
+          expect(controller.browse_creator(presenter)).to eq([
+            "MyRelation <a href=\"/?f[creator_facet][]=MyName\">MyName</a> MyRole"
+          ])
+        end
       end
     end
   end
