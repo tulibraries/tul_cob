@@ -5,7 +5,7 @@ source "https://rubygems.org"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "~> 5.2"
 # Use Puma as the app server
-gem "puma", "~> 5.3"
+gem "puma", "~> 5.4"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1"
 # Use SCSS for stylesheets
