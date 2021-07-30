@@ -1,4 +1,8 @@
 <div class="d-flex flex-row flex-nowrap overflow-auto list-parent">
+  <% if @docs.count == 0 %>
+    <p class="query-no-results"><%= t("query_list.no_results") %></p>
+  <% end %>
+
   <% @docs.each do |doc| %>
     <div class="card query-list border-dark" ">
       <div class="card-body query-card-body query-list pb-1">
