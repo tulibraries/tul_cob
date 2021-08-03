@@ -26,6 +26,9 @@ module WebContentHelper
 
   def website_list(document)
     field_content = document[:value].first.gsub(/\[|\]/) { |match| }.split(",")
-    field_content.map { |list_item| content_tag(:li,  list_item, class: "list_items") }.join("").html_safe
+
+    content_tag(:ul) do
+      field_content.map { |list_item| content_tag(:li,  list_item, class: "list_items") }.join("").html_safe
+    end
   end
 end
