@@ -1,4 +1,7 @@
 en:
+  query_list:
+    no_results: "No additional results found"
+
   purchase_order:
     purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
     purchase_order_text_1: "Please submit this form to request access to the following ebook:"
