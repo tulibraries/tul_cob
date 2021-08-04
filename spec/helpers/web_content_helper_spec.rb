@@ -61,7 +61,7 @@ RSpec.describe WebContentHelper, type: :helper do
     let(:document) { { value: ["[Immigrant-Ethnic Communities, Politics and Protest, Women]"] } }
 
     it "displays results as a list of items" do
-      expect(helper.website_list(document)).to eq("<li class=\"list_items\">Immigrant-Ethnic Communities</li><li class=\"list_items\"> Politics and Protest</li><li class=\"list_items\"> Women</li>")
+      expect(helper.website_list(document)).to eq("<ul><li class=\"list_items\">Immigrant-Ethnic Communities</li><li class=\"list_items\"> Politics and Protest</li><li class=\"list_items\"> Women</li></ul>")
     end
   end
 end
