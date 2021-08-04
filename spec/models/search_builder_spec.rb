@@ -377,7 +377,7 @@ RSpec.describe SearchBuilder , type: :model do
             end: "1950"
           }
         })
-      builder = subject.with(params)
+      subject.with(params)
       expect(subject.to_h["fq"]).to include("pub_date_sort: [1900 TO 1950]")
       expect(subject.to_h["fq"]).to include("lc_call_number_sort: [Zaaaaaaaaa TO Zkaaaaaaaa]")
     end
@@ -399,9 +399,14 @@ RSpec.describe SearchBuilder , type: :model do
             end: "1950"
           }
         })
-      builder = subject.with(params)
+      subject.with(params)
       has_lc_call_number_sort_field = subject.to_h["fq"].any? { |f| f.match(/lc_call_number_sort/) }
       expect(has_lc_call_number_sort_field).to be(false)
+    end
+
+    it "removes lc_classification from solr_params[facet.field]" do
+      subject.with({})
+      expect(subject["facet.field"]).not_to include("lc_classification")
     end
   end
 

@@ -163,6 +163,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "location_facet", show: false
     config.add_facet_field "lc_inner_facet", show: false
     config.add_facet_field "lc_outer_facet", show: false
+    config.add_facet_field "lc_classification", show: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

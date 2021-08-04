@@ -145,6 +145,9 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def add_lc_range_search_to_solr(solr_params)
+    # Solr throws exceptions when trying to facet unnknown fields.
+    solr_params["facet.field"].delete("lc_classification")
+
     return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
 
     lc_range = blacklight_params["range"]["lc_classification"]
