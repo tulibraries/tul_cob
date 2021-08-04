@@ -6,12 +6,10 @@ h2.query-lists {
 	padding: 0.25rem 0;
 }
 
-.query-list.card,
-.query-list-preload {
+.query-list.card {
   height: 16rem;
   min-width: 12rem;
   margin-right: 0.3125rem;
-  overflow: hidden;
   flex: 0 1 14rem;
 
   .query-card-footer {
@@ -27,7 +25,6 @@ h3.query-item-title {
 	a {
 		text-decoration: underline;
 	}
-
 }
 
 .query-card-body,
