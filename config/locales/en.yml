@@ -2,6 +2,15 @@ en:
   query_list:
     no_results: "No additional results found"
 
+  tooltip:
+    new_books: "You are viewing new books in Temple University Libraries collections. This is sorted by the most recently added."
+    new_videos: "You are viewing new videos in Temple University Libraries collections. This is sorted by the most recently added."
+    new_musical_scores: "You are viewing new musical scores in Temple University Libraries collections. This is sorted by the most recently added."
+    new_archival_materials: "You are viewing new archival materials in Temple University Libraries collections. This is sorted by the most recently added."
+    call_number_asc: "You are viewing related items by Library of Congress call number. This classification scheme is used to determine the shelf order of the books in our buildings and display similar items by topic here. The ordering (A-Z) shows items that appear after the original item."
+    call_number_desc: "You are viewing related items by Library of Congress call number. This classification scheme is used to determine the shelf order of the books in our buildings and display similar items by topic here. The ordering (Z-A) shows items that appear before the original item."
+    creator: "You are viewing related items by the first author/creator listed in this record. This is sorted by the most recently published items."
+
   purchase_order:
     purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
     purchase_order_text_1: "Please submit this form to request access to the following ebook:"

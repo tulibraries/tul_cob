@@ -17,27 +17,6 @@ h2.secondary-query-header {
   margin-top: 0;
 }
 
-.question_mark-icon {
-  position: relative;
-}
-
-.question_mark-icon:hover .speech {
-  display: block;
-  color: red;
-}
-
-.speech {
-
-}
-
-speech:before {
-
-}
-
-.speech:after {
-
-}
-
 .query-list.card {
   height: 16rem;
   min-width: 12rem;
@@ -63,7 +42,6 @@ h3.query-item-title {
 .query-card-footer {
   font-family: "PT Sans";
 	font-size: 0.9375rem !important;
-
 }
 
 .query-format {
@@ -73,4 +51,18 @@ h3.query-item-title {
 .query-no-results {
 	font-family: "PT Sans";
   font-size: 0.9375rem !important;
+}
+
+.tooltip-inner {
+  background-color: #EBEBE9;
+  color: $black;
+  max-width: 400px !important;
+
+  @media(max-width: 500px) {
+    max-width: 300px !important;
+	}
+}
+
+.bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+  border-bottom-color: #EBEBE9 !important;
 }
