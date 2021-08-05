@@ -247,7 +247,7 @@ module ApplicationHelper
   end
 
   def query_list(title, query, footer_field = nil)
-    return unless ["true", true].include? params["query_list"]
+    # return unless ["true", true].include? params["query_list"]
 
     if @document&.id
       query += "&filter_id=#{@document.id}"
@@ -304,6 +304,14 @@ module ApplicationHelper
         content_tag(:p, libraries.join("<br />").html_safe, class: "font-weight-bold")
       end
     end
+  end
+
+  def query_list_view_more_links(document)
+    lc_call_number = document["lc_call_number_display"]&.first&.gsub(/\s+/, "")
+    order = "asc"
+    position = order == "asc" ? "begin" : "end"
+    url = "http://localhost:3000/catalog?f_1=all_fields&f_2=all_fields&f_3=all_fields&op_1=AND&op_2=AND&operator%5Bq_1%5D=contains&operator%5Bq_2%5D=contains&operator%5Bq_3%5D=contains&q_1=&q_2=&q_3=&range%5Blc_classification%5D%5B#{position}%5D=#{lc_call_number}&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&search_field=advanced&sort=lc_call_number_sort+#{order}%2C+pub_date_sort+desc"
+    link_to "View More", url, class: "full-results"
   end
 
   def format_classes_for_icons(document)
