@@ -1,9 +1,41 @@
 /* === QUERY LIST RESULTS=== */
 
-h2.query-lists {
-  font-family: "Roboto Condensed";
-	font-size: 1.4rem;
-	padding: 0.25rem 0;
+.query-heading {
+  font-family: "PT Sans";
+	font-size: 1.75rem;
+	padding-left: 2.2rem;
+}
+
+h2.secondary-query-header {
+  font-family: "PT Sans";
+	font-size: 1.25rem;
+  margin-left: -15px;
+}
+
+.query-hr {
+  margin-left: -15px;
+  margin-top: 0;
+}
+
+.question_mark-icon {
+  position: relative;
+}
+
+.question_mark-icon:hover .speech {
+  display: block;
+  color: red;
+}
+
+.speech {
+
+}
+
+speech:before {
+
+}
+
+.speech:after {
+
 }
 
 .query-list.card {

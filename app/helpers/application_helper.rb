@@ -247,7 +247,7 @@ module ApplicationHelper
   end
 
   def query_list(title, query, footer_field = nil)
-    return unless ["true", true].include? params["query_list"]
+    # return unless ["true", true].include? params["query_list"]
 
     if @document&.id
       query += "&filter_id=#{@document.id}"
@@ -279,7 +279,7 @@ module ApplicationHelper
   def creator_query_list(document)
     field = "creator_display"
     creator = document[field]&.first&.split("|")&.first
-    query_list(title = "Author/Creator", query = "f[creator_facet][]=#{creator}&sort=pub_date_sort+desc,+title_sort+asc", footer_field = "pub_date") unless creator.blank?
+    query_list(title = "By author/creator", query = "f[creator_facet][]=#{creator}&sort=pub_date_sort+desc,+title_sort+asc", footer_field = "pub_date") unless creator.blank?
   end
 
   def call_number_query_list(document, order = "asc")
@@ -290,8 +290,9 @@ module ApplicationHelper
     # We may need to refactor this when that bug is fixed
     # We think the bug is in the add_lc_range_search_to_solr method
     position = order == "asc" ? "begin" : "end"
+    call_number_title = order == "asc" ? "By call number (a-z)" : "By call number (z-a)"
 
-    query_list(title = "Call Number #{order.titlecase}.", query = "f_1=all_fields&f_2=all_fields&f_3=all_fields&op_1=AND&op_2=AND&operator%5Bq_1%5D=contains&operator%5Bq_2%5D=contains&operator%5Bq_3%5D=contains&q_1=&q_2=&q_3=&range%5Blc_classification%5D%5B#{position}%5D=#{lc_call_number}&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&search_field=advanced&sort=lc_call_number_sort+#{order}%2C+pub_date_sort+desc", footer_field = field) unless lc_call_number.blank?
+    query_list(title = call_number_title, query = "f_1=all_fields&f_2=all_fields&f_3=all_fields&op_1=AND&op_2=AND&operator%5Bq_1%5D=contains&operator%5Bq_2%5D=contains&operator%5Bq_3%5D=contains&q_1=&q_2=&q_3=&range%5Blc_classification%5D%5B#{position}%5D=#{lc_call_number}&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&search_field=advanced&sort=lc_call_number_sort+#{order}%2C+pub_date_sort+desc", footer_field = field) unless lc_call_number.blank?
   end
 
   def libraries_query_display(document)
