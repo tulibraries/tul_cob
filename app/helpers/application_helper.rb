@@ -257,6 +257,8 @@ module ApplicationHelper
       query += "&footer_field=#{footer_field}"
     end
 
+    title = link_to title, search_catalog_path + "?#{query}"
+
     render partial: "query_list/results", locals: { query: query + "&per_page=5", title: title }
   end
 
@@ -307,7 +309,7 @@ module ApplicationHelper
   end
 
   def query_list_view_more_links(query_params)
-    link_to "View More", search_catalog_path(query_params), class: "full-results query-link"
+    link_to "View More", search_catalog_path(query_params.except(:per_page)), class: "full-results query-link"
   end
 
   def format_classes_for_icons(document)

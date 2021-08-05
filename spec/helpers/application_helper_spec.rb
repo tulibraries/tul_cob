@@ -220,8 +220,8 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
       end
 
-      it "sets tile to 'foo'" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<h.*>foo<\/h.*>/)
+      it "sets tile to link 'foo' that links back to the query" do
+        expect(helper.query_list("foo", "q=bar")).to match(/<h.*><a href="\/catalog\?q=bar">foo<\/a><\/h.*>/)
       end
 
       it "sets a target div called data-target=\"query-list.results\"" do
@@ -447,7 +447,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params) { {} }
 
       it "should return a View More link to an empty search" do
-        expect(subject).to eq("<a class=\"full-results\" href=\"/catalog\">View More</a>")
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog">View More<\/a>/)
       end
     end
 
@@ -455,7 +455,15 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params)  { { foo: "bar" } }
 
       it "should return View More link with params added as url query params" do
-        expect(subject).to eq("<a class=\"full-results\" href=\"/catalog?foo=bar\">View More</a>")
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+      end
+    end
+
+    context "with per_page param supplied" do
+      let(:params)  { { foo: "bar", per_page: 3 } }
+
+      it "should return View More link with params added execept :per_page as url query params" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
       end
     end
   end
