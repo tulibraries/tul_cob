@@ -7,13 +7,19 @@ h2.query-lists {
 }
 
 .query-list.card {
+  flex: 1 0;
   height: 16rem;
   min-width: 12rem;
+  max-width: 14.5rem;
   margin-right: 0.3125rem;
-  flex: 0 1 14rem;
+  }
 
   .query-card-footer {
     height: 3.4375rem;
+  }
+
+  @media(max-width: 600px) {
+    max-width: 95%;
   }
 }
 
