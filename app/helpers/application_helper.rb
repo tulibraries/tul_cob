@@ -247,7 +247,7 @@ module ApplicationHelper
   end
 
   def query_list(title, query, footer_field = nil)
-    # return unless ["true", true].include? params["query_list"]
+    return unless ["true", true].include? params["query_list"]
 
     if @document&.id
       query += "&filter_id=#{@document.id}"
@@ -307,7 +307,7 @@ module ApplicationHelper
   end
 
   def query_list_view_more_links(query_params)
-    link_to "View More", search_catalog_path(query_params), class: "full-results"
+    link_to "View More", search_catalog_path(query_params), class: "full-results query-link"
   end
 
   def format_classes_for_icons(document)

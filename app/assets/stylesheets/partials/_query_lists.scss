@@ -42,3 +42,12 @@ h3.query-item-title {
 	font-family: "PT Sans";
   font-size: 0.9375rem !important;
 }
+
+.query-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  font-weight: bold;
+  text-decoration: underline;
+}
