@@ -16,5 +16,14 @@ RSpec.feature "Call Number Facet" do
         expect(page.all(".filter .constraint-value .filterValue").last).to have_text("G - Geography, Anthropology, Recreation | GF - Human Ecology, Anthropogeography")
       end
     end
+
+    context "Advanced Search Library Of Congress Classification Range search." do
+      let(:path) { "http://localhost:3000/catalog?utf8=%E2%9C%93&f_1=all_fields&operator%5Bq_1%5D=contains&q_1=test&op_1=AND&f_2=all_fields&operator%5Bq_2%5D=contains&q_2=&op_2=AND&f_3=all_fields&operator%5Bq_3%5D=contains&q_3=&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&range%5Blc_classification%5D%5Bbegin%5D=NA&range%5Blc_classification%5D%5Bend%5D=NB&sort=score+desc%2C+pub_date_sort+desc%2C+title_sort+asc&search_field=advanced&commit=Search" }
+
+      it "should add the lc classification constraints" do
+        expect(page).to have_css(".constraint-value", text: "Library of Congress Classification")
+        expect(page).to have_css(".constraint-value", text: "NA to NB")
+      end
+    end
   end
 end
