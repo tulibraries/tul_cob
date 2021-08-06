@@ -229,14 +229,6 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
-    context "query_list disabled" do
-      let(:params) { ActionController::Parameters.new }
-
-      it "does not render the query list" do
-        expect(helper.query_list("foo", "tooltip", "q=bar")).to be_nil
-      end
-    end
-
     context "@document.id is available" do
       # This only happens in a record view context.
       it "adds the filer_id query param" do
