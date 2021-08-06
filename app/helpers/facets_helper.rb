@@ -33,15 +33,6 @@ module FacetsHelper
     end + " (#{item.hits})"
   end
 
-  ##
-  # Overrides Blacklight::FacetsHelperBehavior.facet_field_presenter.
-  #
-  # Overridden to use PivotFacetFieldPresenter for pivot fields.
-  def facet_field_presenter(facet_config, display_facet)
-    return PivotFacetFieldPresenter.new(facet_config, display_facet, self) if facet_config.pivot
-    super(facet_config, display_facet)
-  end
-
   def facet_item_presenter(facet_config, facet_item, facet_field)
     FacetItemPresenter.new(facet_item, facet_config, self, facet_field)
   end

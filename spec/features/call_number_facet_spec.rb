@@ -24,6 +24,12 @@ RSpec.feature "Call Number Facet" do
         expect(page).to have_css(".constraint-value", text: "Library of Congress Classification")
         expect(page).to have_css(".constraint-value", text: "NA to NB")
       end
+
+      it "make lc_facet visible when lc range is present" do
+        within(".blacklight-lc_facet") do
+          expect(page).to have_selector(".card-body", visible: true)
+        end
+      end
     end
   end
 end
