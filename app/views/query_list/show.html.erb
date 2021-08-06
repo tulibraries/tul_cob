@@ -21,4 +21,15 @@
       </div>
     </div>
   <% end %>
+
+  <% if @docs.count == 0 %>
+    <p class="query-no-results"><%= t("query_list.no_results") %></p>
+  <% else %>
+    <div class="card query-list border-dark my-1">
+      <div class="card-body query-card-body query-list pb-1 text-center">
+        <p class="pt-5 pb-4"><%= query_list_view_more_links(params) %></p>
+        <span class="view-more-arrow"></span>
+      </div>
+    </div>
+  <% end %>
 </div>

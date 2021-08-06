@@ -314,6 +314,10 @@ module ApplicationHelper
     end
   end
 
+  def query_list_view_more_links(query_params)
+    link_to "View More", search_catalog_path(query_params.except(:per_page)), class: "full-results query-link"
+  end
+
   def format_classes_for_icons(document)
     document["format"].first.downcase.gsub(" ", "_").gsub("/", "_")
   end

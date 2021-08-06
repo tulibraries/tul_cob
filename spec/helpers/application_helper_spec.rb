@@ -439,4 +439,32 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#query_list_view_more_links" do
+    let(:subject) { helper.query_list_view_more_links(params) }
+
+    context "empty params supplied" do
+      let(:params) { {} }
+
+      it "should return a View More link to an empty search" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog">View More<\/a>/)
+      end
+    end
+
+    context "with params supplied" do
+      let(:params)  { { foo: "bar" } }
+
+      it "should return View More link with params added as url query params" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+      end
+    end
+
+    context "with per_page param supplied" do
+      let(:params)  { { foo: "bar", per_page: 3 } }
+
+      it "should return View More link with params added execept :per_page as url query params" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+      end
+    end
+  end
 end
