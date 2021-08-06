@@ -220,8 +220,8 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
       end
 
-      it "sets tile to 'foo'" do
-        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<h.*>foo<\/h.*>/)
+      it "sets tile to link 'foo' that links back to the query" do
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<h.*><a href="\/catalog\?q=bar">foo<\/a><\/h.*>/)
       end
 
       it "sets a target div called data-target=\"query-list.results\"" do
