@@ -32,8 +32,7 @@ RSpec.feature "Indices" do
         "Region",
         "Genre",
         "Language",
-        "Library of Congress Classification",
-        "Newly Added"]
+        "Library of Congress Classification"]
     }
     context "searching shows all facets" do
       scenario "User searches catalog" do
