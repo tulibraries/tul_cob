@@ -247,8 +247,6 @@ module ApplicationHelper
   end
 
   def query_list(title, tooltip, query, footer_field = nil)
-    return unless ["true", true].include? params["query_list"]
-
     if @document&.id
       query += "&filter_id=#{@document.id}"
     end
