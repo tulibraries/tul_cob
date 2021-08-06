@@ -16,6 +16,8 @@ import { Controller } from "stimulus"
       .then(response => response.text())
       .then(html => {
         this.resultsTarget.innerHTML = html
+        $(".query-heading").removeClass("hidden");
+        $(".query-feedback").removeClass("hidden");
       })
   }
 }
