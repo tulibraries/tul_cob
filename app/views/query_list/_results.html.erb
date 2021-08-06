@@ -1,5 +1,10 @@
 <div data-controller="query-list" data-query-list-url="/query_list?<%= query %>" class="p-1 ml-5">
-  <h2 class="query-lists"><%= title %></h2>
+  <div class="d-flex">
+    <h2 class="secondary-query-header"><%= title %></h2>
+    <span class="question_mark-icon ml-2" data-toggle="tooltip" data-placement="bottom" data-container="body" title="<%= tooltip %>" tabindex="0"></span>
+  </div>
+
+  <hr class="query-hr" />
   <div class="query-list-preload" data-target="query-list.results">
     <span class="fa fa-spinner" aria-busy="true" aria-live="polite"></span>
     <span>Loading...</span>

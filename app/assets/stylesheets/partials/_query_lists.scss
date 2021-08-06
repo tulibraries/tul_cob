@@ -1,9 +1,20 @@
 /* === QUERY LIST RESULTS=== */
 
-h2.query-lists {
-  font-family: "Roboto Condensed";
-	font-size: 1.4rem;
-	padding: 0.25rem 0;
+.query-heading {
+  font-family: "PT Sans";
+	font-size: 1.75rem;
+	padding-left: 2.2rem;
+}
+
+h2.secondary-query-header {
+  font-family: "PT Sans";
+	font-size: 1.25rem;
+  margin-left: -15px;
+}
+
+.query-hr {
+  margin-left: -15px;
+  margin-top: 0;
 }
 
 .query-list.card {
@@ -31,7 +42,6 @@ h3.query-item-title {
 .query-card-footer {
   font-family: "PT Sans";
 	font-size: 0.9375rem !important;
-
 }
 
 .query-format {
@@ -41,4 +51,18 @@ h3.query-item-title {
 .query-no-results {
 	font-family: "PT Sans";
   font-size: 0.9375rem !important;
+}
+
+.tooltip-inner {
+  background-color: #EBEBE9;
+  color: $black;
+  max-width: 400px !important;
+
+  @media(max-width: 500px) {
+    max-width: 300px !important;
+	}
+}
+
+.bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
+  border-bottom-color: #EBEBE9 !important;
 }

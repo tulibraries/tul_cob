@@ -213,19 +213,19 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "title and query provided" do
       it "sets data-controller=\"query-list\" div" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*>/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.* data-controller="query-list".*>/)
       end
 
       it "sets data-query-list-url" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.* data-controller="query-list".*data-query-list-url="\/query_list\?q=bar&amp;per_page=5".*>/)
       end
 
       it "sets tile to 'foo'" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<h.*>foo<\/h.*>/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<h.*>foo<\/h.*>/)
       end
 
       it "sets a target div called data-target=\"query-list.results\"" do
-        expect(helper.query_list("foo", "q=bar")).to match(/<div.*data-target="query-list\.results".*>/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.*data-target="query-list\.results".*>/)
       end
     end
 
@@ -233,7 +233,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params) { ActionController::Parameters.new }
 
       it "does not render the query list" do
-        expect(helper.query_list("foo", "q=bar")).to be_nil
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to be_nil
       end
     end
 
@@ -241,19 +241,19 @@ RSpec.describe ApplicationHelper, type: :helper do
       # This only happens in a record view context.
       it "adds the filer_id query param" do
         helper.instance_variable_set("@document", SolrDocument.new(id: "fizz"))
-        expect(helper.query_list("foo", "q=bar")).to match(/filter_id=fizz/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/filter_id=fizz/)
       end
     end
 
     context "@document.id is NOT available" do
       it "does NOT add the filer_id query param" do
-        expect(helper.query_list("foo", "q=bar")).not_to match(/filter_id=fizz/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).not_to match(/filter_id=fizz/)
       end
     end
 
     context "footer_field is passed" do
       it "adds a footer_field query param" do
-        expect(helper.query_list("foo", query = "q=bar", footer_field = "buzz")).to match(/footer_field=buzz/)
+        expect(helper.query_list("foo", "tooltip", query = "q=bar", footer_field = "buzz")).to match(/footer_field=buzz/)
       end
     end
   end
@@ -436,6 +436,34 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "replaces slash with underscore and downcases the string" do
         expect(helper.format_classes_for_icons(document)).to eq("journal_periodical")
+      end
+    end
+  end
+
+  describe "#query_list_view_more_links" do
+    let(:subject) { helper.query_list_view_more_links(params) }
+
+    context "empty params supplied" do
+      let(:params) { {} }
+
+      it "should return a View More link to an empty search" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog">View More<\/a>/)
+      end
+    end
+
+    context "with params supplied" do
+      let(:params)  { { foo: "bar" } }
+
+      it "should return View More link with params added as url query params" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+      end
+    end
+
+    context "with per_page param supplied" do
+      let(:params)  { { foo: "bar", per_page: 3 } }
+
+      it "should return View More link with params added execept :per_page as url query params" do
+        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
       end
     end
   end
