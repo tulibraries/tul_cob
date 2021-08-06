@@ -20,22 +20,7 @@ RSpec.describe ClassificationFieldPresenter, type: :presenter do
     allow(view_context).to receive(:facet_limit_for).and_return(20)
   end
 
-  describe "#collapsed?" do
-    it "is collapsed by default" do
-      facet_field.collapse = true
-      expect(presenter.collapsed?).to be true
-    end
-
-    it "does not be collapse if the configuration says so" do
-      facet_field.collapse = false
-      expect(presenter.collapsed?).to eq(false)
-    end
-
-    it "does not be collapsed if it is in the params" do
-      controller.params[:f] = ActiveSupport::HashWithIndifferentAccess.new(key: [1])
-      expect(presenter.collapsed?).to be false
-    end
-
+  describe "#active?" do
     context "range lc_classification begin present" do
       it "is active" do
         controller.params[:range] = ActiveSupport::HashWithIndifferentAccess.new(lc_classification: { begin: "NB" })
@@ -51,14 +36,19 @@ RSpec.describe ClassificationFieldPresenter, type: :presenter do
     end
   end
 
-  describe "#active?" do
-    it "checks if any value is selected for a given facet" do
-      controller.params[:f] = ActiveSupport::HashWithIndifferentAccess.new(key: [1])
-      expect(presenter.active?).to eq true
+  describe "#collapsed?" do
+    context "range lc_classification begin present" do
+      it "is expanded" do
+        controller.params[:range] = ActiveSupport::HashWithIndifferentAccess.new(lc_classification: { begin: "NB" })
+        expect(presenter.collapsed?).to eq(false)
+      end
     end
 
-    it "is false if no value for facet is selected" do
-      expect(presenter.active?).to eq false
+    context "range lc_classification end present" do
+      it "is expanded" do
+        controller.params[:range] = ActiveSupport::HashWithIndifferentAccess.new(lc_classification: { end: "NB" })
+        expect(presenter.collapsed?).to eq(false)
+      end
     end
   end
 end

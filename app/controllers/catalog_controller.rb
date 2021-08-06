@@ -147,7 +147,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, presenter: ClassificationFieldPresenter, icons: { show: "", hide: "" }
+    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, presenter: ClassificationFieldPresenter, component: true, collapsing: true, icons: { show: "", hide: "" }
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
