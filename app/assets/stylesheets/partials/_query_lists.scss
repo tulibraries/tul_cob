@@ -18,14 +18,21 @@ h2.secondary-query-header {
 }
 
 .query-list.card {
-  height: 16rem;
-  min-width: 12rem;
+  flex: 1 0;
+  height: 17rem;
+  min-width: 11.25rem;
+  max-width: 12.5rem;
   margin-right: 0.3125rem;
-  flex: 0 1 14rem;
 
   .query-card-footer {
     height: 3.4375rem;
   }
+
+  @media(max-width: 768px) {
+    max-width: 85%;
+
+  }
+
 }
 
 h3.query-item-title {
