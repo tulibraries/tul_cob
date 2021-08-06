@@ -138,7 +138,7 @@ class CatalogController < ApplicationController
       },
       unless: config.campus_closed
 
-    config.add_facet_field "library_facet", label: "Library",
+    config.add_facet_field "library_facet", label: "Library", presenter: PivotFacetFieldPresenter,
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
       component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
@@ -146,12 +146,12 @@ class CatalogController < ApplicationController
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
+    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, presenter: ClassificationFieldPresenter, icons: { show: "", hide: "" }
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, component: true, collapsing: true, icons: { show: "", hide: "" }
     config.add_facet_field "date_added_facet", label: "Newly Added", query: {
           week_1: { label: "Within Last Week", fq: "date_added_facet:[#{(Date.current - 2.weeks).strftime('%Y%m%d').to_i} TO #{(Date.current - 1.week).strftime('%Y%m%d').to_i}]" },
           months_1: { label: "Within Last Month", fq: "date_added_facet:[#{(Date.current - 1.month).strftime('%Y%m%d').to_i} TO #{(Date.current - 1.week).strftime('%Y%m%d').to_i}]" },

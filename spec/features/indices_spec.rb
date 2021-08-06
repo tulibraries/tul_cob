@@ -27,12 +27,13 @@ RSpec.feature "Indices" do
         "Resource Type",
         "Date",
         "Author/creator",
+        "Language",
+        "Library of Congress Classification",
         "Topic",
         "Era",
         "Region",
         "Genre",
-        "Language",
-        "Library of Congress Classification"]
+        ]
     }
     context "searching shows all facets" do
       scenario "User searches catalog" do
