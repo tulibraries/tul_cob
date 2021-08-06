@@ -257,6 +257,8 @@ module ApplicationHelper
       query += "&footer_field=#{footer_field}"
     end
 
+    title = link_to title, search_catalog_path + "?#{query}"
+
     render partial: "query_list/results", locals: { query: query + "&per_page=5", title: title, tooltip: tooltip }
   end
 

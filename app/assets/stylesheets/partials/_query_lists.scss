@@ -6,7 +6,7 @@
 	padding-left: 2.2rem;
 }
 
-h2.secondary-query-header {
+h4.secondary-query-header {
   font-family: "PT Sans";
 	font-size: 1.25rem;
   margin-left: -15px;
@@ -30,12 +30,10 @@ h2.secondary-query-header {
 
   @media(max-width: 768px) {
     max-width: 85%;
-
   }
-
 }
 
-h3.query-item-title {
+h5.query-item-title {
 	font-family: "PT Sans";
 	font-size: 0.9375rem !important;
 	font-weight: bold;
@@ -70,6 +68,19 @@ h3.query-item-title {
 	}
 }
 
+.tooltip.show {
+    opacity: 1 !important;
+}
+
 .bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
   border-bottom-color: #EBEBE9 !important;
+}
+
+.query-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  font-weight: bold;
+  text-decoration: underline;
 }
