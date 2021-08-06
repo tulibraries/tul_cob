@@ -11,26 +11,26 @@ RSpec.feature "Query List" do
     let (:item) { fixtures.fetch("simple_search") }
 
     scenario "displays query lists for catalog" do
-      visit "catalog/#{item['doc_id']}?query_list=true"
+      visit "catalog/#{item['doc_id']}"
       expect(page).to have_text("By call number (a-z)")
     end
 
     let (:item) { fixtures.fetch("url_856_0") }
 
     scenario "displays query lists for journals" do
-      visit "catalog/#{item['doc_id']}?query_list=true"
+      visit "catalog/#{item['doc_id']}"
       expect(page).to have_text("By call number (z-a)")
     end
   end
 
   feature "Home Page query lists" do
     scenario "displays query lists for bento home page" do
-      visit "?query_list=true"
+      visit "?"
       expect(page).to have_text("New Musical Scores")
     end
 
     scenario "displays query lists for catalog home page" do
-      visit "catalog/?query_list=true"
+      visit "catalog/"
       expect(page).to have_text("New Archival Materials")
     end
   end
