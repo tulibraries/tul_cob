@@ -12,14 +12,14 @@ RSpec.feature "Query List" do
 
     scenario "displays query lists for catalog" do
       visit "catalog/#{item['doc_id']}?query_list=true"
-      expect(page).to have_text("Call Number Asc")
+      expect(page).to have_text("By call number (a-z)")
     end
 
     let (:item) { fixtures.fetch("url_856_0") }
 
     scenario "displays query lists for journals" do
       visit "catalog/#{item['doc_id']}?query_list=true"
-      expect(page).to have_text("Call Number Desc")
+      expect(page).to have_text("By call number (z-a)")
     end
   end
 
