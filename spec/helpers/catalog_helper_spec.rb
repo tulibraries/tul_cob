@@ -90,7 +90,7 @@ RSpec.describe CatalogHelper, type: :helper do
     let(:can_purchase_order?) { true }
     let(:config) { CatalogController.blacklight_config }
     let(:context) { Blacklight::Configuration::Context.new(config) }
-    let(:presenter) { helper.index_presenter(doc) }
+    let(:presenter) { helper.document_presenter(doc) }
 
     before(:each) do
       allow(helper).to receive(:link_to) { "render_login_link" }
