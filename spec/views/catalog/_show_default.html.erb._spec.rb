@@ -24,7 +24,7 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
     @rendered = view.render_document_partial @document, :show
   end
 
-  it "Creates the expected tStaff View link" do
+  it "Creates the expected Staff View link" do
     expect(@rendered).to match(/Staff View/)
   end
 
