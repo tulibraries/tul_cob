@@ -48,26 +48,26 @@ module Blacklight
 
     private
 
-    def presenter
-      @presenter ||= presenter_class.new(controller, blacklight_config)
-    end
-
-    def presenter_class
-      blacklight_config.view_config(action_name: :index).search_bar_presenter_class
-    end
-
-    def blacklight_config
-      @view_context.blacklight_config
-    end
-
-    def render_hash_as_hidden_fields(*args)
-      Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
-        @view_context.render_hash_as_hidden_fields(*args)
+      def presenter
+        @presenter ||= presenter_class.new(controller, blacklight_config)
       end
-    end
 
-    def scoped_t(key, **args)
-      t(key, default: t(key, scope: "blacklight.search.form"), **@i18n, **args)
-    end
+      def presenter_class
+        blacklight_config.view_config(action_name: :index).search_bar_presenter_class
+      end
+
+      def blacklight_config
+        @view_context.blacklight_config
+      end
+
+      def render_hash_as_hidden_fields(*args)
+        Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
+          @view_context.render_hash_as_hidden_fields(*args)
+        end
+      end
+
+      def scoped_t(key, **args)
+        t(key, default: t(key, scope: "blacklight.search.form"), **@i18n, **args)
+      end
   end
 end
