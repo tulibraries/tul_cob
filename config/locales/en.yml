@@ -261,7 +261,7 @@ en:
     not_at_temple: "Temple Doesn't Have It?"
     ez_borrow_html: "To request books that are not available at Temple, use %{href}."
     ez_borrow_href: "E-ZBorrow"
-    ez_borrow_link: "https://ezb.relaisd2d.com/?LS=TEMPLE"
+    ez_borrow_link: " https://ezborrow.reshare.indexdata.com/"
     illiad_html: "For <strong>journal articles, books not available through E-ZBorrow, and other</strong> materials not available at Temple, use %{href}."
     illiad_href: "ILLiad"
     illiad_link: "https://temple.illiad.oclc.org/illiad/charles/logon.html"
