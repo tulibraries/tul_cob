@@ -607,7 +607,7 @@ RSpec.describe CatalogHelper, type: :helper do
     context "catalog controller" do
       let(:controller_name) { "catalog" }
       it "adds an ez_borrow list item" do
-        expect(ez_borrow_list_item(controller_name)).to eql "<li>To request books that are not available at Temple, use <a target=\"_blank\" href=\"https://ezb.relaisd2d.com/?LS=TEMPLE\">E-ZBorrow</a>.</li>"
+        expect(ez_borrow_list_item(controller_name)).to eql "<li>To request books that are not available at Temple, use <a target=\"_blank\" href=\"https://ezborrow.reshare.indexdata.com/\">E-ZBorrow</a>.</li>"
       end
     end
 
