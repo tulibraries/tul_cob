@@ -25,6 +25,6 @@ module BlacklightHelper
               field_or_opts
     end
 
-    link_to label, url_for_document(doc), document_link_params(doc, opts)
+    link_to label, search_state.url_for_document(doc), document_link_params(doc, opts)
   end
 end
