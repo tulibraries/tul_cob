@@ -23,7 +23,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
       path_hash["f"]&.delete(items[0].field)
       search_path(path_hash)
     else
-      path_hash = path.remove_facet_params(facet_config.key, facet_item)
+      path_hash = path.filter(facet_config.key).remove(facet_item)
       if @parent_facet_item && path_hash.dig("f", @parent_facet_item.field)
         path_hash["f"][@parent_facet_item.field] = path_hash["f"][@parent_facet_item.field].reject { |value|
           value == @parent_facet_item.value
