@@ -10,7 +10,6 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
   before(:each) do
     allow(controller).to receive(:action_name).and_return("show")
     @config = Blacklight::Configuration.new {}
-    @config.show.document_presenter_class = ShowPresenter
     @context = Blacklight::Configuration::Context.new(controller)
     @document = SolrDocument.new(id: 1)
     @document[:format] = []
@@ -20,6 +19,8 @@ RSpec.describe "catalog/_show_default.html.erb", type: :view do
       allow(view).to receive(:staff_view_path).and_return("/catalog/1/staff_view")
     end
     stub_template "catalog/_show_availability_section.html.erb" => ""
+    stub_template "catalog/_show_primary_fields.html.erb" => ""
+    stub_template "catalog/_show_secondary_fields.html.erb" => ""
     stub_template "catalog/_aeon_request.html.erb" => ""
     @rendered = view.render_document_partial @document, :show
   end

@@ -6,15 +6,9 @@
       <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn bg-dark-blue text-white" %>
     </div>
   <% end %>
-  <div class="pagination-search-widgets ml-auto align-self-center pb-md-3">
-  <% if @search_context[:prev] || @search_context[:next] %>
-    <div class="page-links">
-      <%= link_to_previous_document @search_context[:prev] %> |
-      <%= item_page_entry_info %> |
-      <%= link_to_next_document @search_context[:next] %>
-    </div>
-  <% end %>
-  </div>
+  
+  <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
+
   <div id="nav-tools" class="nav-tools pr-4">
     <%= render partial: "show_tools_navbar" %>
   </div>

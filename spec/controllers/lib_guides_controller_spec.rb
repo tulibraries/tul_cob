@@ -18,7 +18,7 @@ RSpec.describe LibGuidesController do
 
       get :index, params: { q: "query terms" }
 
-      expect(response).to be_success
+      expect(response).to be_successful
       expect(controller.instance_variable_get(:@guides)).to eq([
         { "name" => "Guide 1", "url" => "https://example.com/1" },
         { "name" => "Guide 2", "url" => "https://example.com/2" }
