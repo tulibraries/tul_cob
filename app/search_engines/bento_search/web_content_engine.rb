@@ -18,7 +18,7 @@ module BentoSearch
     end
 
     def url(helper)
-      params = helper.params.except(:q)
+      params = helper.params.slice(:q)
       helper.search_web_content_path(params)
     end
 
