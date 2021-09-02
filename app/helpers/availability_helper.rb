@@ -7,12 +7,15 @@ module AvailabilityHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    unavailable_libraries = []
+    # Temporary change for Ambler items
+    unavailable_libraries = ["AMBLER"]
     # Temporary change for items that don't currently fit in the ASRS bins
     unavailable_locations = ["storage"]
 
-    if unavailable_libraries.include?(item.library) ||
-        unavailable_locations.include?(item.location)
+    if unavailable_libraries.include?(item.library)
+      content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
+
+    elsif unavailable_locations.include?(item.location)
 
       label = "In temporary storage"
 
