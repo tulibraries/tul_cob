@@ -39,21 +39,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  ##
-  # Overrides Blacklight::BlacklightHelperBehavior::should_show_spellcheck_suggestions?.
-  #
-  # Overridden because the spelling field is not always available.
-  #
-  # @see: https://github.com/projectblacklight/blacklight/pull/1845
-  #
-  # @param [Blacklight::Solr::Response] response
-  # @return [Boolean]
-  def should_show_spellcheck_suggestions?(response)
-    response.total <= spell_check_max &&
-      !response.spelling.nil? &&
-      response.spelling.words.any?
-  end
-
   def redirect_to_referer
     flash[:notice] = "Your search results page had to be reloaded. Please try again."
     redirect_to request.referer

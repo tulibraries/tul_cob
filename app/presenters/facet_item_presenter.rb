@@ -14,7 +14,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
 
   def has_selected_child?
     return false if facet_item.is_a?(String) || @parent_facet_item || facet_config.pivot.nil?
-    items && items.size > 0 && items.any? { |item| search_state.filter_params[item.field] && search_state.filter_params[item.field].include?(item.value) }
+    items && items.size > 0 && items.any? { |item| search_state.filter([item.field]) && search_state&.filter(item.field).include?(item.value) }
   end
 
   def remove_href(path = search_state)
@@ -23,7 +23,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
       path_hash["f"]&.delete(items[0].field)
       search_path(path_hash)
     else
-      path_hash = path.remove_facet_params(facet_config.key, facet_item)
+      path_hash = path.filter(facet_config.key).remove(facet_item)
       if @parent_facet_item && path_hash.dig("f", @parent_facet_item.field)
         path_hash["f"][@parent_facet_item.field] = path_hash["f"][@parent_facet_item.field].reject { |value|
           value == @parent_facet_item.value
@@ -49,7 +49,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
     return true if super
     if facet_config.pivot
       field = facet_item.respond_to?(:field) ? facet_item.field : facet_field
-      return search_state.has_facet? view_context.facet_configuration_for_field(field), value: value
+      return search_state&.filter(field).include?(value)
     end
     return false
   end
