@@ -33,7 +33,7 @@ module RenderConstraintsHelper
       # Hide library_facet if matching location facet already selected.
       hidden_class = []
       if facet == "library_facet" &&
-          search_state.dig(:f, :location_facet)&.any? { |l| l.match?(/#{val}/) }
+          search_state.to_h.dig(:f, :location_facet)&.any? { |l| l.match?(/#{val}/) }
         hidden_class << "hidden"
       end
 

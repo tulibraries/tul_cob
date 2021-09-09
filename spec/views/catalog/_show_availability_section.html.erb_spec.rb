@@ -8,16 +8,16 @@ RSpec.describe "catalog/_show_availability_section.html.erb", type: :view do
   include CatalogHelper
 
   let(:user_signed_in?) { false }
-  let(:config) { Blacklight::Configuration.new }
 
   before(:each) do
-    config.show.document_presenter_class = ShowPresenter
+    allow(controller).to receive(:action_name).and_return("show")
+    @config = Blacklight::Configuration.new {}
 
     allow(view).to receive(:user_signed_in?) { user_signed_in? }
     allow(view).to receive(:item_url).and_return "https://example.com/foo"
 
     without_partial_double_verification do
-      allow(view).to receive(:blacklight_config).and_return config
+      allow(view).to receive(:blacklight_config).and_return(@config)
     end
   end
 
