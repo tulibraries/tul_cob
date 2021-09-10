@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: c02429e1b3b4768bc28e5a7f017d8f0106b7a45a
+  revision: fc7e8423a25d3efcf740a585027bacff2d6bd2fb
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -350,7 +350,7 @@ GEM
     method_source (1.0.0)
     mime-types (3.3.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0704)
+    mime-types-data (3.2021.0901)
     mini_mime (1.1.0)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
