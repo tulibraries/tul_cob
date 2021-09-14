@@ -1,6 +1,6 @@
 <%= render(Blacklight::SearchBarComponent.new(
       url: search_action_url,
-      params: search_state.params_for_search.except(:q, :search_field, :qt, :page, :utf8, :q_1, :q_2, :q_3, :f_1, :f_2, :f_3, :operator, :op_1, :op_2),
+      params: search_state.params_for_search.except(:qt),
       search_fields: Deprecation.silence(Blacklight::ConfigurationHelperBehavior) { search_fields },
       presenter: presenter)) %>
 
