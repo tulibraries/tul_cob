@@ -1,0 +1,31 @@
+<%= form_tag @url, method: @method, class: "d-flex #{@classes.join(" ")}", id: "catalog-search", role: "search", "aria-label" => scoped_t("submit") do %>
+  <%= render_hash_as_hidden_fields(@params) %>
+
+  <% if @search_fields.length > 1 %>
+    <label for="search_field" class="sr-only visually-hidden"><%= scoped_t("search_field.label") %></label>
+  <% end %>
+
+  <div class="input-group basic-search-group">
+    <%= prepend %>
+
+    <% if @search_fields.length > 1 %>
+        <%= select_tag(:search_field,
+                       options_for_select(@search_fields, h(@search_field)),
+                       title: scoped_t("search_field.title"),
+                       id: "search_field_dropdown",
+                       class: "custom-select search-field flex-shrink-1 border-dark-blue border-right-0 w-25") %>
+    <% elsif @search_fields.length == 1 %>
+      <%= hidden_field_tag :search_field, @search_fields.first.last %>
+    <% end %>
+
+    <label for="<%= @prefix %><%= @query_param %>" class="sr-only visually-hidden"><%= scoped_t("search.label") %></label>
+    <%= text_field_tag @query_param, @q, placeholder: scoped_t("search.placeholder"), class: "search-q q form-control border-dark-blue w-50 rounded-#{@search_fields.length > 1 ? '0' : 'left'}", id: "q", autocomplete: autocomplete_path.present? ? "off" : "", autofocus: @autofocus, data: { autocomplete_enabled: false }  %>
+
+    <span class="input-group-append">
+      <button type="submit" class="btn btn-dark-blue search-btn border-dark-blue" id="search" aria-label="search">
+        <span class="submit-search-text"></span>
+        <i class="fa fa-search"></i>
+      </button>
+    </span>
+  </div>
+<% end %>
