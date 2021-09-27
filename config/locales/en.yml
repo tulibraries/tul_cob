@@ -131,7 +131,7 @@ en:
 
     tools:
       sms: "Text"
-      refworks: Refworks
+      refworks: "Refworks (until 12/31/21)"
       cite_html: "Cite %{current_range}"
       sendto: "Send To %{current_range}"
   requests:

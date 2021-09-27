@@ -292,8 +292,14 @@ a#bookmarks_nav {
 	}
 }
 
+.sendto-item.dropdown-item {
+	padding-left: 0;
+	padding-right: 0.25rem;
+}
+
 .sendto-item a.nav-link {
-	padding-bottom: 0;
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
 	@media(max-width: 768px) {
 		color: $white;
 	}
