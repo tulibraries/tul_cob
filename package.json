@@ -18,13 +18,16 @@
     "yargs-parser": "18.1.2"
   },
   "resolutions": {
+    "ansi-regex": "5.0.1",
     "braces": "2.3.1 ",
     "glob-parent": "5.1.2",
     "mem": "4.0.0",
     "node-fetch": "2.6.1",
     "node-notifier": " 8.0.1",
     "serialize-javascript": "3.1.0 ",
+    "set-value": "4.0.1",
     "ssri": "8.0.1",
+    "webpack": "5.32.0",
     "yargs-parser": "18.1.2"
   },
   "devDependencies": {
