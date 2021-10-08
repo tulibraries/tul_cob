@@ -1,19 +1,20 @@
 <div class="d-flex row list-parent mb-4">
   <% @docs.each do |doc| %>
-    <div class="card query-list border-dark my-1">
-      <div class="card-body query-card-body query-list pb-1">
-        <h5 class="query-item-title mb-0 pb-2"><%= link_to(doc["title_statement_display"].first.truncate(100), solr_document_path(doc["id"])) %></h5>
+    <div class="card query-list border-dark my-1 mr-2">
+      <div class="card-body query-card-body query-list d-flex flex-column px-3">
+        <h5 class="query-item-title mb-0 mb-2"><%= link_to(doc["title_statement_display"].first.truncate(85), solr_document_path(doc["id"])) %></h5>
         <span class="<%= format_classes_for_icons(doc) %> query-format"><%= doc["format"].first %></span>
-        <p><%= libraries_query_display(doc)%></p>
-
-        <% if has_one_electronic_resource?(doc) %>
-          <%= link_to "Online", bento_single_link(doc["electronic_resource_display"]), class:"bento-online btn btn-sm bento-avail-btn ml-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
-        <% elsif has_many_electronic_resources?(doc) %>
-          <%= link_to "Online", solr_document_url(doc["id"]), class:"bento-online btn btn-sm bento-avail-btn ml-0" %>
-        <% end %>
+        <div class="query-item-availability mt-auto">
+          <%= libraries_query_display(doc)%>
+          <% if has_one_electronic_resource?(doc) %>
+            <%= link_to "Online", bento_single_link(doc["electronic_resource_display"]), class:"bento-online btn btn-sm bento-avail-btn m-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
+          <% elsif has_many_electronic_resources?(doc) %>
+            <%= link_to "Online", solr_document_url(doc["id"]), class:"bento-online btn btn-sm bento-avail-btn m-0" %>
+          <% end %>
+        </div>
       </div>
-      <div class="card-footer query-card-footer query-list border-dark bg-white">
-        <p id="footer-query-tag" class="mb-0"><%= query_list_footer_value(doc, @footer_field) %></p>
+      <div class="card-footer query-card-footer query-list border-dark bg-white px-3">
+        <p id="footer-query-tag" class="mb-0 text-truncate"><%= query_list_footer_value(doc, @footer_field) %></p>
       </div>
     </div>
   <% end %>

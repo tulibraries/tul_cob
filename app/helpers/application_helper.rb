@@ -306,10 +306,12 @@ module ApplicationHelper
     libraries = document["library_facet"]
     unless libraries.nil?
       if libraries.count > 2
-        html = content_tag(:p, libraries.first, class: "mb-0 pb-0 font-weight-bold")
+        html = content_tag(:p, libraries.first, class: "mb-0 pb-0 font-weight-bold text-truncate")
         html += content_tag(:p, "More Locations", class: "mb-0 pb-0 font-italic")
+      elsif libraries.count === 2
+        content_tag(:p, libraries.join("<br />").html_safe, class: "mb-0 pb-0 font-weight-bold text-truncate")
       else
-        content_tag(:p, libraries.join("<br />").html_safe, class: "font-weight-bold")
+        content_tag(:p, libraries.join("<br />").html_safe, class: "mb-0 pb-0 font-weight-bold")
       end
     end
   end

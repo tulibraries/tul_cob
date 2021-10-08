@@ -26,14 +26,10 @@ h4.secondary-query-header {
 
 .query-list.card {
   flex: 1 0;
-  height: 17rem;
-  min-width: 11.25rem;
-  max-width: 12.5rem;
+  height: 15rem;
+  min-width: 11rem;
+  max-width: 12rem;
   margin-right: 0.3125rem;
-
-  .query-card-footer {
-    height: 3.4375rem;
-  }
 
   @media(max-width: 768px) {
     max-width: 85%;
