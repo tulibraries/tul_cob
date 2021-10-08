@@ -408,8 +408,8 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "document found in 1 or 2 libraries" do
       let(:document) { { "library_facet" => ["Charles", "Ambler"] } }
 
-      it "Displays the first library and the text more locations" do
-        expect(helper.libraries_query_display(document)).to eq("<p class=\"font-weight-bold\">Charles<br />Ambler</p>")
+      it "Displays the first and second libraries" do
+        expect(helper.libraries_query_display(document)).to eq("<p class=\"mb-0 pb-0 font-weight-bold text-truncate\">Charles<br />Ambler</p>")
       end
     end
   end
