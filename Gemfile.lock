@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: c9f06d9465cc443cc6122ce9ca1a352f1eb75c10
+  revision: 59e608764b34e9f514554b7e289ca95ad913a858
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -288,7 +288,7 @@ GEM
     hashie (4.1.0)
     honeybadger (4.9.0)
     htmlentities (4.3.4)
-    http (5.0.2)
+    http (5.0.4)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
