@@ -95,6 +95,10 @@
 	padding-right: 0.25rem;
 }
 
+.sendto-item.dropdown-item:active {
+	background-color: #e9ecef; 
+}
+
 .sendto-item a.nav-link {
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
