@@ -28,14 +28,12 @@
               <%= t("blacklight.tools.sendto", current_range: current_entries_info(@response).html_safe)%>
               <span class="caret"></span>
             </button>
-            <div class="sendto-menu dropdown-menu">
+            <div class="sendto-menu dropdown-menu bg-white border border-light-grey">
               <% @sendto.each do |key,value| %>
                 <div class="sendto-item dropdown-item">
                   <%= value %>
                 </div>
               <% end %>
-              <div class="sendto-item dropdown-item">
-              </div>
             </div>
           </div>
         </li>

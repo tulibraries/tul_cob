@@ -1,6 +1,7 @@
 @import "_vars.scss";
 
 /* BOOKMARKS */
+
 .bookmark-heading {
   font-family: "PT Sans";
   font-size: 2.0rem;
@@ -10,19 +11,6 @@
   font-family: "PT Sans";
   font-size: 1.5rem;
   margin-top: 2.5rem;
-}
-
-.refworks-link {
-  color: $red;
-  padding-left: 1rem;
-
-  @media(max-width: 768px) {
-		color: $white;
-	}
-}
-
-.refworks-link:hover {
-  color: $red;
 }
 
 a.clear-bookmarks {
@@ -51,30 +39,6 @@ a.clear-bookmarks {
 	}
 }
 
-.bookmarks-dropdown {
-  background-color: $header-grey;
-  color: $red;
-  //font-size: 0.875rem;
-  //padding: 0.4725rem 0.625rem;
-
-  @media(max-width: 768px) {
-    background-color: $red;
-    color: $white;
-    margin-bottom: 0.125rem;
-  }
-}
-
-#bookmarks-sendto button {
-  background-color: $white;
-  border: 0.0625rem solid $dark-grey;
-
-  @media(max-width: 768px) {
-    background-color: $red;
-    border: none;
-    color: $white;
-	}
-}
-
 .bookmarks-back-btn {
   border: 1px solid $dark-grey !important;
   font-size: 1rem;
@@ -87,20 +51,6 @@ a.clear-bookmarks {
   @media(max-width: 768px) {
     margin-top: 0;
   }
-}
-
-.sendto-menu,
-.sendto-item {
-
-  @media(max-width: 768px) {
-    background-color: $white !important;
-    color: $black !important;
-
-    .nav-link {
-      background-color: $white !important;
-      color: $red !important;
-    }
-	}
 }
 
 #record-page-container .toggle-bookmark {
@@ -124,6 +74,17 @@ a.clear-bookmarks {
 
   @media(min-width: 768px) {
     text-align: right;
+	}
+}
+
+#bookmarks-sendto button {
+  background-color: $white;
+  border: 0.0625rem solid $dark-grey;
+
+  @media(max-width: 768px) {
+    background-color: $red;
+    border: none;
+    color: $white;
 	}
 }
 
