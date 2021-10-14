@@ -1,0 +1,105 @@
+@import "_vars.scss";
+
+// GENERAL TOOLS STYLING
+
+#nav-tools {
+	vertical-align: middle;
+	@media (max-width: 768px) {
+		margin-top: 0.875rem;
+	}
+}
+
+#tools-navbar {
+	@media (max-width: 768px) {
+		padding-left: 0;
+	}
+}
+
+#tools-navbar li {
+	@media (max-width: 768px) {
+		background-color: $red;
+		color: $white;
+		display: block;
+		margin-bottom: 0.125rem;
+		padding-left: 0.625rem;
+		text-align: left;
+		width: 100%;
+	}
+}
+
+.nav-tools li {
+	background-color: $white;
+	border-radius: 0.25rem;
+	display: inline-block;
+	list-style-type: none;
+	margin-right: 0.25rem;
+
+	@media (max-width: 768px) {
+		margin-left: 0.625rem;
+	}
+}
+
+// CITATION BUTTON
+
+#citeLink {
+	background-color: $white;
+	border: 0.0625rem solid #6c757d;
+	color: $red;
+	font-size: 1rem;
+	padding: 0.375rem 0.75rem;
+
+	@media (max-width: 768px) {
+		background-color: $red;
+		border: 0;
+		color: $white;
+		margin-top: 0;
+		padding: 0.375rem 0.75rem;
+	}
+}
+
+//SEND-TO BUTTON AND MENU ITEMS
+
+#sendto-menu a.dropdown-toggle, #sendto-menu button.dropdown-toggle{
+	background-color: $white;
+	border: 0.0625rem solid $dark-grey;
+	color: $red;
+	font-size: 1rem;
+	padding: 0.3725rem 0.75rem;
+
+	@media(max-width: 768px) {
+		background-color: $red;
+		border: 0;
+		color: $white;
+		margin-top: 0;
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		-khtml-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+}
+
+.sendto-menu {
+	color: $red;
+	padding: 0;
+
+	@media(max-width: 768px) {
+		background-color: $red;
+		border: 0;
+	}
+}
+
+.sendto-item.dropdown-item {
+	padding-left: 0;
+	padding-right: 0.25rem;
+}
+
+.sendto-item.dropdown-item:active {
+	background-color: #e9ecef;
+}
+
+.sendto-item a.nav-link {
+	padding-top: 0.25rem;
+	padding-bottom: 0.25rem;
+}
