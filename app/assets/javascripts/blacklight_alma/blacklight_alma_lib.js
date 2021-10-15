@@ -21,8 +21,7 @@ var BlacklightAlma = function (options) {
  availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("btn-success")) {
-
-     if (holding['library_code'] == 'AMBLER') {
+     if (holding['library_code'] == 'AMBLER' || holding['location_code'] == 'ambler' || holding['location_code'] == 'amb_media') {
        unavailableItems(id);
      }
      else if (holding['availability'] == 'available') {

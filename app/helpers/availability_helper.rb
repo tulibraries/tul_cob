@@ -9,22 +9,21 @@ module AvailabilityHelper
   def availability_status(item)
     # Temporary change for Ambler items
     unavailable_libraries = ["AMBLER"]
-    # Temporary change for items that don't currently fit in the ASRS bins
-    unavailable_locations = ["storage"]
+    unavailable_locations = ["ambler", "amb_media"]
 
-    if unavailable_libraries.include?(item.library)
+    if unavailable_libraries.include?(item.library) ||
+      unavailable_locations.include?(item.location)
       content_tag(:span, "", class: "close-icon") + "Temporarily unavailable"
 
-    elsif unavailable_locations.include?(item.location)
-
+    # Temporary change for items that don't currently fit in the ASRS bins
+    elsif item.location == "storage"
       label = "In temporary storage"
-
       if !campus_closed?
         library_link = "#{Rails.configuration.library_link}forms/storage-request"
         label += " — #{link_to("Recall item now", library_link)}"
       end
-
       content_tag(:span, "", class: "close-icon") + raw(label)
+
     elsif item.item_data["awaiting_reshelving"]
       content_tag(:span, "", class: "close-icon") + "Awaiting Reshelving"
     elsif item.in_place? && item.item_data["requested"] == false
