@@ -63,7 +63,7 @@ var BlacklightAlma = function (options) {
 
    var availability = holding['availability'];
 
-   if (library != "EMPTY") {
+   if (library != "EMPTY" && library != "Ambler Campus Library" && holding["location_code"] != "ambler" && holding["location_code"] != "amb_media") {
      if (availability == "available")  {
        availItem = {};
        Object.assign(availItem, {library, availability})
