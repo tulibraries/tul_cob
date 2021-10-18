@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record xmlns="http://www.loc.gov/MARC21/slim">
+  <leader>00206nam a2200085Ii 4500</leader>
+  <controlfield tag="008">211015s xx 000 0 eng d</controlfield>
+  <controlfield tag="005">20211015160452.0</controlfield>
+  <controlfield tag="001">991037928537703811</controlfield>
+  <datafield ind1="0" ind2="0" tag="245">
+    <subfield code="a">Ambler ASRS Test Record</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="902">
+    <subfield code="a">TESTRECORD</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="ADM">
+    <subfield code="b">2021-10-15 20:04:53</subfield>
+    <subfield code="e">991037928537703811</subfield>
+    <subfield code="d">01TULI_INST</subfield>
+    <subfield code="a">2021-10-15 20:04:52</subfield>
+    <subfield code="c">false</subfield>
+  </datafield>
+  <datafield ind1="0" ind2=" " tag="HLD">
+    <subfield code="b">ASRS</subfield>
+    <subfield code="c">amb_media</subfield>
+    <subfield code="h">test</subfield>
+    <subfield code="8">22572274340003811</subfield>
+    <subfield code="updated">2021-10-15 20:06:33</subfield>
+    <subfield code="created">2021-10-15 20:06:24</subfield>
+  </datafield>
+  <datafield ind1="0" ind2=" " tag="HLD">
+    <subfield code="b">ASRS</subfield>
+    <subfield code="c">ambler</subfield>
+    <subfield code="h">test</subfield>
+    <subfield code="8">22572274370003811</subfield>
+    <subfield code="updated">2021-10-15 20:05:40</subfield>
+    <subfield code="created">2021-10-15 20:05:27</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="ITM">
+    <subfield code="r">22572274340003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">amb_media</subfield>
+    <subfield code="t">DVD</subfield>
+    <subfield code="e">amb_media</subfield>
+    <subfield code="8">23572274330003811</subfield>
+    <subfield code="a">5</subfield>
+    <subfield code="i">test</subfield>
+    <subfield code="updated">2021-10-15 20:06:42</subfield>
+    <subfield code="c">test</subfield>
+    <subfield code="q">2021-10-15 20:06:42</subfield>
+    <subfield code="d">ASRS</subfield>
+    <subfield code="f">ASRS</subfield>
+  </datafield>
+  <datafield ind1=" " ind2=" " tag="ITM">
+    <subfield code="r">22572274370003811</subfield>
+    <subfield code="b">1</subfield>
+    <subfield code="h">0</subfield>
+    <subfield code="g">ambler</subfield>
+    <subfield code="t">BOOK</subfield>
+    <subfield code="e">ambler</subfield>
+    <subfield code="8">23572274350003811</subfield>
+    <subfield code="a">0</subfield>
+    <subfield code="i">test</subfield>
+    <subfield code="updated">2021-10-15 20:05:53</subfield>
+    <subfield code="c">test</subfield>
+    <subfield code="q">2021-10-15 20:05:53</subfield>
+    <subfield code="d">ASRS</subfield>
+    <subfield code="f">ASRS</subfield>
+  </datafield>
+</record>
