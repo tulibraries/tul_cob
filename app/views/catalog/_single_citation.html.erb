@@ -1,8 +1,8 @@
-<div class="cite-modal p-2">
-  <h3 class="modal-title citation-title"><%= document_heading(document) %></h3>
+<div>
   <% document.citations.each do |format, citation| %>
+  <h2 class="citation-heading"><%= document_heading(document) %></h2>
     <% unless format == "NULL" %>
-      <h4 class="citation-type"><%= citation_labels(format) %></h4>
+      <h3 class="citation-heading"><%= citation_labels(format) %></h3>
     <% end %>
     <%= citation %>
   <% end %>
