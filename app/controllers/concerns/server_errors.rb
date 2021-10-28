@@ -11,8 +11,7 @@ module ServerErrors
     # detailed notification to end user or Honeybadger
     # consider writing a custom handler below.
     rescue_from Exception do |exception|
-      message = "#{exception.message} \n #{exception.backtrace[0]}"
-      Honeybadger.notify(message)
+      Honeybadger.notify(exception)
       render "errors/internal_server_error", status: :internal_server_error
     end
 
@@ -29,13 +28,12 @@ module ServerErrors
     end
 
     rescue_from Primo::Search::SearchError do |exception|
-      message = exception.message
-      Honeybadger.notify(message)
+      Honeybadger.notify(exception)
       render "errors/internal_server_error", status: :bad_gateway
     end
 
     rescue_from Alma::RequestOptions::ResponseError do |exception|
-      Honeybadger.notify(exception.message)
+      Honeybadger.notify(exception)
       render "errors/alma_request_error", status: :bad_gateway
     end
   end
