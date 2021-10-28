@@ -21,14 +21,13 @@
     <div role="tabpanel" class="tab-pane active" id="biblio">
       <% grouped_citations(@response.documents).each do |format, citations| %>
         <% unless format == "NULL" %>
-          <h4 class="citation-type"><%= citation_labels(format) %></h4>
-
+          <h2 class="citation-heading"><%= citation_labels(format)%></h2>
           <% citations.each do |citation| %>
             <%= citation %>
           <% end %>
         <% end %>
         <% if format == "NULL" %>
-          <p class="p-4">No format citations are available.</p>
+          <p>Format citations are not available for some records. See "By title" for details.</p>
         <% end %>
       <% end %>
     </div>

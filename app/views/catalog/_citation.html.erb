@@ -1,6 +1,5 @@
-<button type="button" class="blacklight-modal-close close ml-auto pr-3" data-dismiss="modal" aria-label="<%= t('blacklight.modal.close') %>">
-  <span aria-hidden="true">&times;</span>
-</button>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+<% component.title { t('blacklight.tools.citation') } %>
 
 <% if @response.documents.one? %>
   <%= render partial: "catalog/single_citation", locals: { document: @response.documents.first } %>
@@ -8,6 +7,8 @@
   <%= render "catalog/grouped_citations" %>
 <% end %>
 
-<div class="alert alert-warning">
-  Remember to check citations for accuracy before including them in your work.
+<div class="modal-footer justify-content-start pl-0">
+  <p>Remember to check citations for accuracy before including them in your work.</p>
 </div>
+
+<% end %>
