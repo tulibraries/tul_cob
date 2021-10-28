@@ -5,6 +5,7 @@ default: &default
   ILL: At another institution
   LOAN: Checked out
   LOST_LOAN: Lost
+  LOST_LOAN_AND_PAID: Lost
   MISSING: Missing
   NOPROCESS: On shelf
   OVERDUE: Checked out - overdue

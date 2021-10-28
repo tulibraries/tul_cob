@@ -105,7 +105,7 @@ module AvailabilityHelper
 
   def missing_or_lost?(item)
     process_type = item.fetch("process_type", "")
-    !!process_type.match(/MISSING|LOST_LOAN/)
+    !!process_type.match(/MISSING|LOST_LOAN|LOST_LOAN_AND_PAID/)
   end
 
   def unwanted_library_locations(item)

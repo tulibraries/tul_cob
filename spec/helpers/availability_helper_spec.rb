@@ -347,6 +347,23 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
 
+    context "an item is lost" do
+      let(:item) { { "item_pid" => "23237957740003811",
+      "item_policy" => "5",
+      "permanent_library" => "AMBLER",
+      "permanent_location" => "media",
+      "current_library" => "AMBLER",
+      "current_location" => "media",
+      "call_number" => "DVD 13 A165",
+      "holding_id" => "22237957750003811",
+      "process_type" => "LOST_LOAN_AND_PAID" }
+    }
+
+      it "correctly identifies missing items" do
+        expect(missing_or_lost?(item)).to be true
+      end
+    end
+
     context "an item is not missing or lost" do
       let(:item) { { "item_pid" => "23237957740003811",
       "item_policy" => "5",
