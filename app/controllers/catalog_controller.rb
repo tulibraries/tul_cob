@@ -548,10 +548,11 @@ class CatalogController < ApplicationController
     from = { email: email, name: name }
 
     mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
+    log = { type: "purchase_order", user: current_user.id, mms_id: document.id }
     if mail.respond_to? :deliver_now
-      mail.deliver_now
+      do_with_json_logger(log) { mail.deliver_now }
     else
-      mail.deliver
+      do_with_json_logger(log) { mail.deliver }
     end
 
     redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
