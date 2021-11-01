@@ -295,7 +295,7 @@ module CatalogHelper
     elsif current_user.can_purchase_order?
       label = content_tag :span, "Request Rapid Access", class: "avail-label"
       path = purchase_order_path(id: doc.id)
-      link = link_to label, path, class: "btn btn-sm btn-danger", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
+      link = link_to label, path, class: "btn btn-sm btn-primary", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
       content_tag :div, link, class: "requests-container mb-2 ml-0"
     end
   end
