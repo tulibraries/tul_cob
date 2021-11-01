@@ -40,18 +40,6 @@ en:
 
     banner_link: "Click here to see full details."
 
-    bookmarks:
-      sunset_message_html: >-
-          <p>
-            As of December 21, 2020, you can no longer add or view article bookmarks using Library Search. Your bookmarks for books, journals, and other materials will not be affected by this change.
-          </p>
-          <p>
-          To retrieve any existing article bookmarks, you can <a href='/bookmarks/export/articles'>download the article record URL’s as a text file</a>.
-          </p>
-          <p>
-            <a href="https://library.temple.edu/contact-us">Contact us</a> if you have questions about exporting your article bookmarks.
-          </p>
-
     borrow_html: "<li>If you can't find something, %{href}.</li>"
     borrow_href: "borrow from another library"
     borrow_link: "http://answers.library.temple.edu/faq/195868"

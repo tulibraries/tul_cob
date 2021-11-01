@@ -2,11 +2,6 @@
 
 <div class="container">
   <h1 class="page-heading bookmark-heading pb-4"><%= t("blacklight.bookmarks.title") %></h1>
-
-  <div class="bookmark-sunset">
-    <%= t("blacklight.bookmarks.sunset_message_html") %>
-  </div>
-
   <div id="content" class="bookmarks-page bg-white rounded p-0 mx-auto">
     <% if current_or_guest_user.blank? %>
       <h2 class="section-heading"><%= t("blacklight.bookmarks.need_login") %></h2>
