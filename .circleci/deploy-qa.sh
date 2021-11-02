@@ -2,7 +2,7 @@
 set -e
 
 cd ..
-git clone --single-branch --branch qa git@github.com:tulibraries/tul_cob_playbook.git # clone deployment playbook
+git clone --single-branch --branch qa https://github.com/tulibraries/tul_cob_playbook.git # clone deployment playbook
 cd tul_cob_playbook
 sudo pip install pipenv # install playbook requirements
 pipenv install # install playbook requirements
