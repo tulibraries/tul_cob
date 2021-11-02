@@ -29,10 +29,10 @@ RSpec.feature "Indices" do
         "Author/creator",
         "Language",
         "Library of Congress Classification",
+        "Genre",
         "Topic",
         "Era",
         "Region",
-        "Genre",
         ]
     }
     context "searching shows all facets" do
