@@ -20,7 +20,6 @@ class PrimoCentralDocument
     doi: "doi",
   )
 
-  use_extension Blacklight::PrimoCentral::DocumentExport
   use_extension Blacklight::Document::ArticleEmail
   use_extension Blacklight::Document::Sms
 
