@@ -4,7 +4,7 @@
   <hr />
 </div>
 
-<dl class="row document-metadata mb-0 show-page-list no-gutters pl-1">
+<dl class="row document-metadata mb-0 show-page-list no-gutters pl-1 secondary-dl">
   <% doc_presenter.each_secondary_field do |field_name, field, field_presenter| %>
     <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
   <% end -%>
