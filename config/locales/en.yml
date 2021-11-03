@@ -36,7 +36,7 @@ en:
     more_information_articles: ", including search tips for Articles."
     more_information_databases: ", including search tips for Databases."
     more_information_journals: ", including search tips for Journals."
-    more_information_website: ", including search tips for Website content."
+    more_information_website: ", including search tips for Library Website content."
 
     banner_link: "Click here to see full details."
 
@@ -193,8 +193,8 @@ en:
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
     libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
   website:
-    section_heading_html: "<strong>Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
-    explanation_html: "<strong>Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
+    section_heading_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
+    explanation_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
 
   bento:
     blacklight:
@@ -204,7 +204,7 @@ en:
     journals:
       nice_name: "Journals"
     more: "Books & Media"
-    website: "Website"
+    website: "Library Website"
     databases: "Databases"
     research_guides_html: "Research Guides<span class='external-link-icon'></span>"
     research_guides_link: "https://guides.temple.edu/?b=s"

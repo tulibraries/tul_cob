@@ -30,7 +30,7 @@ module BentoSearch
 
     def view_link(total = nil, helper)
       url = url(helper)
-      helper.link_to "View all website results", url, class: "full-results"
+      helper.link_to "View all library website results", url, class: "full-results"
     end
   end
 end
