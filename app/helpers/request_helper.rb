@@ -15,11 +15,13 @@ module RequestHelper
   def ez_borrow_link_with_updated_query(url)
     uri = URI.parse(url)
     params = CGI.parse(uri.query)
-    new_params = params.select { |key, value| ["group", "LS", "dest", "PI", "RK", "rft.title"].include? key }
+    new_params = params.select { |key, value| ["rft.title"].include? key }
+    new_params["lookfor"] = new_params.delete("rft.title")
+    new_params["type"] = "Title"
 
     URI::HTTPS.build(
       host: uri.host,
-      path: uri.path,
+      path: "/Search/Results",
       query: URI.encode_www_form(new_params)).to_s
   end
 
