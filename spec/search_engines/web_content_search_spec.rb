@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe BentoSearch, type: :search_engine do
 
-  let(:search_engine)  { BentoSearch.get_engine("website") }
+  let(:search_engine)  { BentoSearch.get_engine("library_website") }
 
   let(:search_results) { search_engine.search("art") }
 

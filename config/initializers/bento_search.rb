@@ -23,7 +23,7 @@ BentoSearch.register_engine("databases") do |conf|
   end
 end
 
-BentoSearch.register_engine("website") do |conf|
+BentoSearch.register_engine("library_website") do |conf|
   conf.engine = "BentoSearch::WebContentEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
