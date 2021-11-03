@@ -164,14 +164,6 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
-  describe "#export_as_refworks" do
-    context "simple document" do
-      it "exports a refworks tagged formatted string" do
-        expect(subject.export_as_refworks).to eql("ID foobar")
-      end
-    end
-  end
-
   describe "#has_direct_link?" do
     context "document is completely empty" do
       let(:doc) { Hash.new }
@@ -213,7 +205,6 @@ RSpec.describe PrimoCentralDocument, type: :model do
       expect(subject.material_from_barcode).to be_nil
     end
   end
-
 
   context "document direct_link contains rft.isbn = ''" do
     let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(

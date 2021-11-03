@@ -442,6 +442,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:citation)
     # Need to add citation for side effect only.
     config.show.document_actions.delete(:citation)
+    config.show.document_actions.delete(:refworks)
 
     # Document results tools
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)

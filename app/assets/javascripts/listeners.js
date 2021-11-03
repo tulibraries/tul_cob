@@ -33,7 +33,6 @@ $(document).ready(function(){
 			{id: "bento_resource_types", category: "bento-results"},
 			{id: "emailLink", category: "record-page"},
 			{id: "smsLink", category: "record-page"},
-			{id: "refworksLink", category: "record-page"},
 			{id: "citationLink", category: "record-page"},
 			{id: "risLink", category: "record-page"},
 			{id: "bookmark_button", category: "record-page"},

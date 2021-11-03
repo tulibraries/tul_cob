@@ -30,7 +30,6 @@ class PrimoCentralController < CatalogController
     config.facet_paginator_class = Blacklight::PrimoCentral::FacetPaginator
 
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: false)
-    config.add_show_tools_partial(:refworks, partial: "tagged_refworks", modal: false)
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: true)
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: false)
 
@@ -63,8 +62,6 @@ class PrimoCentralController < CatalogController
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true
 
     # Show fields
-    # See for refwork tag definitions:
-    # https://www.refworks.com/refworks/help/refworks_tagged_format.htm
     config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true, refwork_tag: :A1, type: :primary
     config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2, type: :primary
     config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code, type: :primary
