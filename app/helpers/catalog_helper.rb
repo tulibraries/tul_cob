@@ -60,6 +60,7 @@ module CatalogHelper
         "legal_document" => "legal",
         "market_research" => "dataset",
         "microform" => "legal",
+        "newsletterarticle" => "legal",
         "newspaper" => "legal",
         "newspaper_article" => "legal",
         "other" => "unknown",
