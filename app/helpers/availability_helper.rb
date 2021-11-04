@@ -8,7 +8,7 @@ module AvailabilityHelper
 
   def availability_status(item)
     # Temporary change for Ambler items
-    unavailable_libraries = ["AMBLER"]
+    unavailable_libraries = []
     unavailable_locations = ["ambler", "amb_media"]
 
     if unavailable_libraries.include?(item.library) ||
