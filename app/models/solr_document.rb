@@ -16,6 +16,9 @@ class SolrDocument
   field_semantics.merge!(
     title: "title_statement_display" ,
     imprint: "imprint_display",
+    production: "imprint_prod_display",
+    distribution: "imprint_dist_display",
+    manufacture: "imprint_man_display",
     author: "creator_display",
     contributor: "contributor_display",
     isbn: "isbn_display",

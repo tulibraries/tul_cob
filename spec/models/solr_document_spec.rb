@@ -25,7 +25,7 @@ RSpec.describe SolrDocument, type: :model do
       "library" => { "value" => "MAIN" },
       "location" => { "value" => "stacks" },
     },
-    "holding_data" => { "calling_number" => "CALL ME" }
+    "holding_data" => { "call_number" => "CALL ME" }
   ) }
 
   let(:bib_items) { [ item_one ] }

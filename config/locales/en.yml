@@ -83,6 +83,9 @@ en:
     email:
       text:
         imprint: "Published: %{value}"
+        distribution: "Distribution: %{value}"
+        production: "Production: %{value}"
+        manufacture: "Manufacture: %{value}"
         contributor: "Contributor: %{value}"
         issn: "ISSN: %{value}"
         isbn: "ISBN: %{value}"

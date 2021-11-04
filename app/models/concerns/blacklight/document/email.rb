@@ -8,12 +8,21 @@ module Blacklight::Document::Email
   def to_email_text
     semantics = to_semantic_values
     body = []
-    [ "title", "imprint", "author",
-      "contributor", "isbn", "issn", "alma_mms" ].each do |field|
+    ["title", "imprint", "author", "contributor",
+    "isbn", "issn", "production", "distribution", "manufacture"].each do |field|
       if !semantics[field.to_sym].blank?
-        value = semantics[field.to_sym]
-        label = "blacklight.email.text.#{field}"
-        body << I18n.t(label, value: value.join("; ").gsub("|", "; "))
+        if field == "contributor"
+          contributor = semantics[:contributor].map { |c|
+            JSON.parse(c)
+          }
+          value = contributor.map { |c| c["name"] }
+          label = "blacklight.email.text.#{field}"
+          body << I18n.t(label, value: value.join("; ").gsub("|", "; "))
+        else
+          value = semantics[field.to_sym]
+          label = "blacklight.email.text.#{field}"
+          body << I18n.t(label, value: value.join("; ").gsub("|", "; "))
+        end
       end
     end
     begin
@@ -25,7 +34,8 @@ module Blacklight::Document::Email
   end
 
   def add_holdings_information
-    holdings = materials.collect { |material| material["library"].to_s + " - " + material["location"].to_s + " - " + material["call_number"].to_s }
+    holdings = materials.collect { |material| material["library"].to_s + " - " + materials_location(material).to_s + " - " + material["call_number"].to_s }
+
     return I18n.t("blacklight.email.text.location", value: "\n" + holdings.join("\n")) unless holdings.empty?
   end
 end
