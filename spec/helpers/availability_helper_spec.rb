@@ -10,17 +10,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       allow(helper).to receive(:campus_closed?) { campus_closed? }
     end
 
-    context "item is in Ambler" do
-      let(:item) do
-        Alma::BibItem.new("item_data" => { "current_library" => "AMBLER" })
-      end
-
-      it "displays Temporarily unavailable" do
-        label = "<span class=\"close-icon\"></span>Temporarily unavailable"
-      end
-    end
-
-    context "item is in ASRS ambler location" do
+    context "item is in temporary ASRS ambler location" do
       let(:item) do
         Alma::BibItem.new("item_data" => { "current_location" => "ambler" })
       end
