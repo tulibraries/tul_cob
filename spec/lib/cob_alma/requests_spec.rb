@@ -75,7 +75,7 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("desc_with_no_libraries") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.2 (1974)" => ["MAIN", "GINSBURG", "PODIATRY", "HARRISBURG"])
+        expect(subject).to eq("v.2 (1974)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end
 
@@ -83,8 +83,8 @@ RSpec.describe CobAlma::Requests do
       let(:items_list) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
 
       it "returns a hash with all the campuses" do
-        expect(subject).to eq("v.4 (1976)" => ["MAIN", "GINSBURG", "PODIATRY", "HARRISBURG"],
-                              "v.5 (1977)" => ["MAIN", "GINSBURG", "PODIATRY", "HARRISBURG"])
+        expect(subject).to eq("v.4 (1976)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
+                              "v.5 (1977)" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
     end
 
@@ -175,7 +175,7 @@ RSpec.describe CobAlma::Requests do
 
   describe "#asrs_pickup_locations" do
     it "displays MAIN as the pickup_location" do
-      expect(described_class.asrs_pickup_locations).to eq(["MAIN", "GINSBURG", "PODIATRY", "HARRISBURG"])
+      expect(described_class.asrs_pickup_locations).to eq(["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"])
     end
   end
 
