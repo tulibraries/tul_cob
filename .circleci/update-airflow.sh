@@ -6,7 +6,7 @@ source ./.env
 
 # Get Airflow Deployment Scripts.
 cd ..
-git clone --single-branch --branch main git@github.com:tulibraries/ansible-playbook-airflow.git
+git clone --single-branch --branch main https://github.com/tulibraries/ansible-playbook-airflow.git
 cd ansible-playbook-airflow
 
 # Install requirements
