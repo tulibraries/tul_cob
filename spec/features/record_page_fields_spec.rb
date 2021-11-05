@@ -1287,7 +1287,7 @@ RSpec.feature "RecordPageFields" do
     let (:item_541) { fixtures.fetch("donor_info_541") }
     scenario "User visits a document with field 541" do
       visit "catalog/#{item_541['doc_id']}"
-      within "dd.blacklight-donor_info_display" do
+      within "dd.blacklight-donor_info_ms" do
         expect(page).to have_text(item_541["donor_name"])
         expect(page).to have_link(item_541["donor_name"])
       end
