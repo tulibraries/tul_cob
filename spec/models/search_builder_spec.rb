@@ -61,6 +61,28 @@ RSpec.describe SearchBuilder , type: :model do
         expect(solr_parameters["facet.field"]).to eq([])
       end
     end
+
+    context "when doing a query_list query" do
+      let(:params) { ActionController::Parameters.new(
+        controller: "catalog",
+        action: "query_list",
+      ) }
+
+      it "disables faceting" do
+        expect(solr_parameters["facet"]).to eq("off")
+      end
+    end
+
+    context "when doing a opensearch query" do
+      let(:params) { ActionController::Parameters.new(
+        controller: "catalog",
+        action: "opensearch",
+      ) }
+
+      it "disables faceting" do
+        expect(solr_parameters["facet"]).to eq("off")
+      end
+    end
   end
 
   describe "#tweak_query" do

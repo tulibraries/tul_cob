@@ -61,6 +61,9 @@ class SearchBuilder < Blacklight::SearchBuilder
       solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
     elsif path == "catalog/range_limit" || path == "catalog/advanced"
       solr_parameters["facet.field"] = []
+    elsif path.match?(/\/opensearch/) || path.match?(/\/query_list/)
+      solr_parameters["facet"] = "off"
+      solr_parameters["facet.field"] = []
     end
   end
 
