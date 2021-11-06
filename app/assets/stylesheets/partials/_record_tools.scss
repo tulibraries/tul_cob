@@ -91,8 +91,9 @@
 }
 
 .sendto-item.dropdown-item {
+	width: 11rem;
 	padding-left: 0;
-	padding-right: 0.25rem;
+	padding-right: 0;
 }
 
 .sendto-item.dropdown-item:active {
@@ -102,4 +103,7 @@
 .sendto-item a.nav-link {
 	padding-top: 0.25rem;
 	padding-bottom: 0.25rem;
+	padding-right: 0.25rem;
+	word-wrap: break-word;
+	white-space: normal;
 }
