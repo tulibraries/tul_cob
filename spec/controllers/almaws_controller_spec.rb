@@ -175,7 +175,8 @@ RSpec.describe AlmawsController, type: :controller do
       end
 
       it "forwards the alma error to honeybadger", with_rescue: true do
-        expect(Honeybadger::Backend::Test.notifications[:notices].last.error_message).to eq(JSON.dump({ error: "phhhht" }))
+        error = "Alma::RequestOptions::ResponseError: {\"error\":\"phhhht\"}"
+        expect(Honeybadger::Backend::Test.notifications[:notices].last.error_message).to eq(error)
       end
     end
 
