@@ -80,12 +80,3 @@ dd.blacklight-format {
 a.search-subject:visited  {
   text-decoration: none
 }
-
-.pagination-search-widgets {
-  align-self: center;
-  margin-left: auto;
-
-  @media(max-width: 768px) {
-    padding-bottom: 1rem;
-  }
-}
