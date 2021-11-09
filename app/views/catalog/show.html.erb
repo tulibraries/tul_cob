@@ -2,9 +2,9 @@
 <%# This allows the user to see the back/start over buttons and send to options on record pages %>
 
 <% @search_context ||= current_search_session %>
-
 <div id="record-page-container">
   <div id="record-page-content" class="col-12 px-0">
+    <%= render 'previous_next_doc' %>
     <%= render_document_main_content_partial %>
   </div>
 </div>

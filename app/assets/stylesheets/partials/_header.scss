@@ -223,24 +223,11 @@ a#bookmarks_nav {
 }
 
 #record-page-nav-tools {
-	padding-top: 1.25rem;
 
 	@media(max-width: 485px) {
 		padding: 0 0.3125rem;
    	text-align: center;
   }
-}
-
-.pagination-search-widgets {
-	border-bottom: none !important;
-}
-
-.pagination-search-widgets .page-links {
-	padding-top: 0;
-
-	@media(max-width: 485px) {
-		padding-top: 0.5rem;
-	}
 }
 
 .search-widgets {
@@ -263,7 +250,6 @@ a#bookmarks_nav {
 
 .page-links {
 	display: inline-block;
-	padding-top: 0.625rem;
 }
 
 #sort-dropdown .dropdown-item,

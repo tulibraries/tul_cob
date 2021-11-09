@@ -1,17 +1,21 @@
 <% #Using the Bootstrap Pagination class  -%>
 <div id="record-page-nav-tools" class="d-md-flex align-items-start">
+
   <% if current_search_session %>
     <div class="search-widgets d-flex">
       <%= link_back_to_catalog class: "btn btn-back-to-search text-red", id: "back_to_search" %>
       <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn bg-dark-blue text-white" %>
     </div>
   <% end %>
-  
+
+  <% if @search_context && search_session['document_id'] == @document.id %>
   <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
+  <% end %>
 
   <div id="nav-tools" class="nav-tools pr-4">
     <%= render partial: "show_tools_navbar" %>
   </div>
+
 </div>
 
 <hr class="m-0 p-0 border-bottom border-grey" />
