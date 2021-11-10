@@ -17,11 +17,16 @@
   <div class="float-md-left col-md-12 ml-0">
     <%= render "show_secondary_fields", :document => document %>
     <%= render "staff_view_link" %>
+    <div class="no-gutters query-heading hidden">
+      <h2>Related items</h2>
+      <hr/>
+    </div>
+    <div class="query-feedback pt-1 hidden">
+      <p><%= t("query_list.query_feedback_html", href: link_to(t("query_list.query_feedback_href"), t("query_list.query_feedback_link"), target: "_blank")) %></p>
+    </div>
+    <%= render "record_page_query_lists", :document => document %>
   </div>
-</div>
 
-<h3 class="query-heading hidden">Related items</h3>
-<div class="query-feedback pt-1 hidden">
-  <p><%= t("query_list.query_feedback_html", href: link_to(t("query_list.query_feedback_href"), t("query_list.query_feedback_link"), target: "_blank")) %></p>
+
+
 </div>
-<%= render "record_page_query_lists", :document => document %>

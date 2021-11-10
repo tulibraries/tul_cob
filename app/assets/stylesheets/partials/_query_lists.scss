@@ -1,26 +1,17 @@
 /* === QUERY LIST RESULTS=== */
 
-.query-heading {
-  font-family: "PT Sans";
-	font-size: 1.75rem;
-	padding-left: 2.2rem;
-}
-
 .query-feedback {
   font-family: "PT Sans";
   font-size: 0.9375rem !important;
   font-weight: bold;
-  padding-left: 2.2rem;
 }
 
-h4.secondary-query-header {
+h3.secondary-query-header {
   font-family: "PT Sans";
 	font-size: 1.25rem;
-  margin-left: -15px;
 }
 
 .query-hr {
-  margin-left: -15px;
   margin-top: 0;
 }
 
@@ -36,7 +27,7 @@ h4.secondary-query-header {
   }
 }
 
-h5.query-item-title {
+h4.query-item-title {
 	font-family: "PT Sans";
 	font-size: 0.9375rem !important;
 	font-weight: bold;
