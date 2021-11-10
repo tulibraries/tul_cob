@@ -47,11 +47,6 @@
   }
 }
 
-#stafflink {
-  margin-left: 0 !important;
-  padding-top: 1.0rem;
-}
-
 .blacklight-url_more_links_display .online-card {
   padding: 0;
 }
@@ -60,9 +55,10 @@
   list-style-type: none;
 }
 
-.secondary-fields-header h2 {
+.secondary-fields-header h2, .query-heading h2 {
   font-family: "PT Sans";
-  font-size: 1.25rem;
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
 
   hr {
     border-bottom: 0.0625rem solid $red;
