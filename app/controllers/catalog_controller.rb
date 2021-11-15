@@ -356,7 +356,7 @@ class CatalogController < ApplicationController
     config.add_search_field("genre") do |field|
       field.include_in_simple_select = false
       field.solr_parameters = {
-        qf: "genre_t",
+        qf: "genre_ms",
       }
     end
 
