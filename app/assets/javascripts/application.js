@@ -178,7 +178,7 @@ $(document).on('turbolinks:load', function() {
 	$(function () {
 	  $('[data-toggle="tooltip"]').tooltip()
 	})
-	
+
 	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
@@ -202,6 +202,13 @@ $(document).on('turbolinks:load', function() {
 	 $(this).siblings().removeClass('active');
 	 $(this).addClass("active");
  });
+
+ $("#related-items-link").click(function (e) {
+    e.preventDefault();
+		document.querySelector(this.getAttribute("href")).scrollIntoView({
+		  behavior: "smooth"
+		});
+	});
 
  function toggle(x) {
 	if (x == "secondary") {

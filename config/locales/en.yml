@@ -4,7 +4,7 @@ en:
     query_feedback_html: "Help us improve this new feature in development! %{href}."
     query_feedback_href: "Tell us what you think of the related items shown below"
     query_feedback_link: "https://temple.libwizard.com/f/Library_search_feedback"
-
+    browse_link: "Browse related items"
   tooltip:
     new_books: "You are viewing new books in Temple University Libraries collections. This is sorted by the most recently added."
     new_videos: "You are viewing new videos in Temple University Libraries collections. This is sorted by the most recently added."
