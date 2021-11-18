@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 6d0cacb9c93899d9395c3e669d885c5d778b4bee
+  revision: 77dae2ed50a7c1fdeb97a52b6fcfde61e4b06ae7
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -350,9 +350,9 @@ GEM
     marcel (1.0.1)
     matrix (0.4.2)
     method_source (1.0.0)
-    mime-types (3.3.1)
+    mime-types (3.4.1)
       mime-types-data (~> 3.2015)
-    mime-types-data (3.2021.0901)
+    mime-types-data (3.2021.1115)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
