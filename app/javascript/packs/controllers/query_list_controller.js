@@ -18,6 +18,7 @@ import { Controller } from "stimulus"
         this.resultsTarget.innerHTML = html
         $(".query-heading").removeClass("hidden");
         $(".query-feedback").removeClass("hidden");
+        $("#related-items-link").removeClass("hidden");
       })
   }
 }
