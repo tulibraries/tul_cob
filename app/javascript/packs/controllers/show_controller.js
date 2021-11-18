@@ -12,11 +12,6 @@ export default class extends Controller {
     this.availability()
   }
 
-  connect() {
-    $(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
-    $(".secondary-dl").children("dd").addClass("pl-md-3");
-  }
-
   availability() {
     fetch(this.data.get("url"), {
       credentials: "same-origin",
