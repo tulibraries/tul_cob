@@ -2,7 +2,7 @@
 
 #config/coverband.rb
 Coverband.configure do |config|
-	# TODO: Use redis or memcached store.
+  # TODO: Use redis or memcached store.
   config.store = Coverband::Adapters::FileStore.new("log/coverband.log")
   config.logger = Rails.logger
 

@@ -166,7 +166,7 @@ Rails.application.routes.draw do
   get "*anything", to: "errors#not_found"
 
   authenticate :user, lambda { |u| u.admin? } do
-    mount Coverband::Reporters::Web.new, at: '/coverage'
+    mount Coverband::Reporters::Web.new, at: "/coverage"
   end
 end
 
