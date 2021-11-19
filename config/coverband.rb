@@ -3,6 +3,7 @@
 #config/coverband.rb
 Coverband.configure do |config|
   # TODO: Use redis or memcached store.
+  # A Redis will allow us to also track views.
   config.store = Coverband::Adapters::FileStore.new("log/coverband.log")
   config.logger = Rails.logger
 
@@ -18,5 +19,6 @@ Coverband.configure do |config|
   # default false. Experimental support for tracking view layer tracking.
   # Does not track line-level usage, only indicates if an entire file
   # is used or not.
-  config.track_views = true
+  config.track_views = false
+
 end
