@@ -219,6 +219,8 @@ GEM
     concurrent-ruby (1.1.9)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
+    coverband (5.1.1)
+      redis
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -445,6 +447,7 @@ GEM
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    redis (4.5.1)
     regexp_parser (2.1.1)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -629,6 +632,7 @@ DEPENDENCIES
   cob_index!
   cob_web_index!
   coffee-rails (~> 5.0)
+  coverband
   dalli
   database_cleaner
   devise!
@@ -687,4 +691,4 @@ DEPENDENCIES
   webpacker (= 6.0.0.rc.6)
 
 BUNDLED WITH
-   2.2.17
+   2.2.30
