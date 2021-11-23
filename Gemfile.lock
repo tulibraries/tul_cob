@@ -183,7 +183,7 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7)
       view_component (>= 2.28.0)
-    blacklight-marc (7.1.0)
+    blacklight-marc (7.1.1)
       blacklight (~> 7.0)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
@@ -349,7 +349,7 @@ GEM
       unf
     marc-fastxmlwriter (1.0.0)
       marc (~> 1.0)
-    marcel (1.0.1)
+    marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
     mime-types (3.4.1)
@@ -390,7 +390,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.4.0)
+    ostruct (0.5.0)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
@@ -580,7 +580,7 @@ GEM
     unf_ext (0.0.8)
     unicode-display_width (2.1.0)
     vcr (6.0.0)
-    view_component (2.40.0)
+    view_component (2.41.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
