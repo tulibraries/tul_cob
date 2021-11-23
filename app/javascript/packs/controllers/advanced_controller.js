@@ -1,4 +1,4 @@
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 
   function getMetaValue(name) {
       const element = document.head.querySelector(`meta[name="${name}"]`)
