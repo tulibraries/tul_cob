@@ -1,4 +1,4 @@
-import { Application } from 'stimulus';
+import { Application } from '@hotwired/stimulus';
 import AvailabilityController from 'controllers/availability_controller'
 
 describe('AvailabilityController', () => {

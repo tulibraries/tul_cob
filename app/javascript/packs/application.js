@@ -8,7 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 import "@stimulus/polyfills"
 import "whatwg-fetch"
-import { Application } from "stimulus"
+import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
 const application = Application.start()
