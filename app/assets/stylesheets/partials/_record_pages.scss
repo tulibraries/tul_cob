@@ -24,9 +24,9 @@
 
 #record-page-content h1 {
   font-family: "PT Sans";
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   padding-left: 1.15rem;
-  padding-top: 1.25rem;
+  padding-top: 2rem;
 }
 
 .record-page-wrapper .thumbnail {
@@ -47,6 +47,10 @@
   }
 }
 
+.show-page-list .show-page-label {
+  font-weight: 600;
+}
+
 .blacklight-url_more_links_display .online-card {
   padding: 0;
 }
@@ -58,7 +62,7 @@
 .secondary-fields-header h2, .query-heading h2 {
   font-family: "PT Sans";
   font-size: 1.4rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 
   hr {
     border-bottom: 0.0625rem solid $red;
