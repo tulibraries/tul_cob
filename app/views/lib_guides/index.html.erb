@@ -1,18 +1,18 @@
-  <div class="lib-guides-recommender-librarians border p-3" data-target="lib-guides.flex">
-    <h3 class="lib-guides-recommender-heading" data-target="lib-guides.heading">Subject Librarians</h3>
+  <div class="lib-guides-recommender-librarians border p-3" data-lib-guides-target="flex">
+    <h3 class="lib-guides-recommender-heading" data-libg-guides-target="heading">Subject Librarians</h3>
     <% if @guides.present? %>
       <%= link_to(@guides.first.dig("owner", "first_name") + " " + @guides.first.dig("owner", "last_name"), "https://guides.temple.edu/prf.php?account_id=" + @guides.first.dig("owner", "id")) %>
       <p class="pt-2"><%= @guides.first.dig("owner", "email") %></p>
     <% else %>
-      <div data-target="lib-guides.noresults">
+      <div data-lib-guides-target="noresults">
         <p><%= t("lib_guides.librarian_no_results") %></p>
         <%= link_to(t("lib_guides.librarian_no_results_text"), t("lib_guides.librarian_no_results_link")) %>
       </div>
     <% end %>
   </div>
 
-  <div class="lib-guides-recommender-guides border-top border-red p-3" data-target="lib-guides.flex">
-    <h3 class="lib-guides-recommender-heading" data-target="lib-guides.heading">Research Guides</h3>
+  <div class="lib-guides-recommender-guides border-top border-red p-3" data-lib-guides-target="flex">
+    <h3 class="lib-guides-recommender-heading" data-lib-guides-target="heading">Research Guides</h3>
     <ul class="list-unstyled">
     <% if @guides.present? %>
       <% @guides.each do |guide| %>
@@ -21,7 +21,7 @@
         </li>
       <% end %>
     <% else %>
-      <div data-target="lib-guides.noresults">
+      <div data-lib-guides-target="noresults">
         <li class="pb-2">
           <%= link_to(t("lib_guides.guides_no_results_text"), t("lib_guides.guides_no_results_link")) %>
         </li>

@@ -15,9 +15,9 @@
       <%= render partial: "holds_details", locals: {holds: current_user.holds} %>
     </tbody>
     <% else %>
-    <tbody data-target="holds.table">
+    <tbody data-holds-target="table">
       <tr>
-        <td colspan="4" class="text-center" data-target="holds.spinner">
+        <td colspan="4" class="text-center" data-holds-target="spinner">
           <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
           <span class="loading-message"> Loading Holds...</span>
         </td>
