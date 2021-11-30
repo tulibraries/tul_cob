@@ -104,7 +104,6 @@ gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "httparty"
 gem "dotenv-rails"
-gem "coverband"
 
 group :production do
   gem "mysql2", "~> 0.5.3"
