@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.0
+  ruby: circleci/ruby@1.2
   coveralls: coveralls/coveralls@1.0.6
 
 workflows:
@@ -112,7 +112,7 @@ jobs:
 
   qa_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.6
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -129,7 +129,7 @@ jobs:
 
   stage_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.6
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -146,7 +146,7 @@ jobs:
 
   prod_deploy:
     docker:
-      - image: circleci/python:3.6.6
+      - image: cimg/python:3.6
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
