@@ -4,7 +4,6 @@ set -e
 cd ..
 git clone --single-branch --branch main https://github.com/tulibraries/tul_cob_playbook.git # clone deployment playbook
 cd tul_cob_playbook
-sudo pip install pipenv # install playbook requirements
 pipenv install # install playbook requirements
 pipenv run ansible-galaxy install -r requirements.yml # install playbook role requirements
 echo $ANSIBLE_VAULT_PASSWORD > ~/.vault
