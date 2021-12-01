@@ -207,7 +207,7 @@ $(document).on('turbolinks:load', function() {
 	 $(this).addClass("active");
  });
 
- $("#related-items-link").click(function (e) {
+ $("#related-items-link a").click(function (e) {
     e.preventDefault();
 		document.querySelector(this.getAttribute("href")).scrollIntoView({
 		  behavior: "smooth"
