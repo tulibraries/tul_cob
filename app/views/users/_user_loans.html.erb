@@ -20,9 +20,9 @@
         <%= render partial: "loans_details", locals: {loans: current_user.loans} %>
       </tbody>
       <% else %>
-      <tbody data-target="loans.table">
+      <tbody data-loans-target="table">
         <tr>
-          <td colspan="9" data-target="loans.spinner">
+          <td colspan="9" data-loans-target="spinner">
             <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
             <span class="loading-message"> Loading Items...</span>
           </td>

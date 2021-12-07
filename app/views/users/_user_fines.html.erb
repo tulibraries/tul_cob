@@ -15,9 +15,9 @@
         <%= render partial: "fines_details", locals: {fines: current_user.fines} %>
       </tbody>
       <% else %>
-      <tbody data-target="fines.table">
+      <tbody data-fines-target="table">
         <tr>
-          <td class="text-center" data-target="fines.spinner">
+          <td class="text-center" data-fines-target="spinner">
             <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
             <span class="loading-message"> Loading Fines...</span>
           </td>

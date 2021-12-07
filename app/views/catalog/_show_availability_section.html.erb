@@ -29,7 +29,7 @@
   <% if document.fetch("availability_facet", []).include?("At the Library") %>
     <div class="physical-holding-panel border-0 mt-2">
       <div class="border border-header-grey mb-3">
-        <div data-target="show.panel">
+        <div data-show-target="panel">
           <%= render "physical_availability_card", document: document, document_counter: document.id %>
         </div>
       </div>

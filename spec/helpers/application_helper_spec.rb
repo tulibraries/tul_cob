@@ -225,7 +225,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
 
       it "sets a target div called data-target=\"query-list.results\"" do
-        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.*data-target="query-list\.results".*>/)
+        expect(helper.query_list("foo", "tooltip", "q=bar")).to match(/<div.*data-query-list-target="results".*>/)
       end
     end
 
