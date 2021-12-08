@@ -1,6 +1,8 @@
 <% #Using the Bootstrap Pagination class  -%>
 <div id="record-page-nav-tools" class="d-md-flex align-items-start">
 
+<% if @search_context && search_session['document_id'] == @document.id %>
+
   <% if current_search_session %>
     <div class="search-widgets d-flex pl-3">
       <%= link_back_to_catalog class: "btn btn-back-to-search text-red", id: "back_to_search" %>
@@ -8,14 +10,13 @@
     </div>
   <% end %>
 
-  <% if @search_context && search_session['document_id'] == @document.id %>
   <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
-  <% end %>
+
+<% end %>
 
   <div id="nav-tools" class="nav-tools pr-3">
     <%= render partial: "show_tools_navbar" %>
   </div>
-
 </div>
 
 <% if current_search_session || show_doc_actions? %>
