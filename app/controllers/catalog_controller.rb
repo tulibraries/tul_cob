@@ -492,8 +492,8 @@ class CatalogController < ApplicationController
         name, role = creator_data.split("|")
       end
 
-      facet_query = view_context.send(:url_encode, name)
-      name_link = view_context.link_to(name, base_path + "?f[creator_facet][]=#{facet_query}") if name.present?
+      creator_query = view_context.send(:url_encode, name)
+      name_link = view_context.link_to(name, base_path + "?f[creator_t][]=#{creator_query}") if name.present?
 
       ActiveSupport::SafeBuffer.new([ relation,
         name_link,
