@@ -16,9 +16,15 @@ import { Controller } from "@hotwired/stimulus"
       .then(response => response.text())
       .then(html => {
         this.resultsTarget.innerHTML = html
+        $("#related-items-link").removeClass("hidden");
+        $("#related-items-link a").click(function (e) {
+           e.preventDefault();
+           document.querySelector(this.getAttribute("href")).scrollIntoView({
+             behavior: "smooth"
+           });
+         });
         $(".query-heading").removeClass("hidden");
         $(".query-feedback").removeClass("hidden");
-        $("#related-items-link").removeClass("hidden");
       })
   }
 }
