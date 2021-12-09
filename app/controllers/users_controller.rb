@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   rescue_from ActionView::Template::Error,
     with: :no_account_found
 
+  before_action :authenticate_user!, only: [ :pay ]
+
   def account
     no_cache
     @user = current_user
@@ -13,6 +15,38 @@ class UsersController < ApplicationController
       flash[:error] = "It may take a few days for your library account to be created. If you have questions about this please call 215-204-0744."
       redirect_to root_path
     end
+  end
+
+  def pay
+    log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
+
+    type, message = do_with_json_logger(log) {
+      case params["transActionStatus"]
+      when "1"
+        alma_user = Alma::User.find(current_user.uid);
+        if alma_user.fines.send_payment
+          type = :info
+          message = "Thank you!"
+        else
+          type = :error
+          message = "Something went wrong."
+        end
+      when "2"
+        type =  :error
+        message = "Rejected credit card payment/refund (declined)"
+      when "3"
+        type = :error
+        message = "Error credit card payment/refund (error)"
+      when "4"
+        type = :error
+        message = "Unknown credit card payment/refund (unknown)"
+      end
+
+      [type, message]
+    }
+
+
+    redirect_to users_account_path, flash: { type => message }
   end
 
   def holds
