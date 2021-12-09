@@ -207,13 +207,6 @@ $(document).on('turbolinks:load', function() {
 	 $(this).addClass("active");
  });
 
- $("#related-items-link a").click(function (e) {
-    e.preventDefault();
-		document.querySelector(this.getAttribute("href")).scrollIntoView({
-		  behavior: "smooth"
-		});
-	});
-
  function toggle(x) {
 	if (x == "secondary") {
 	 document.getElementById("sub-toggler-icon").classList.toggle("change");
