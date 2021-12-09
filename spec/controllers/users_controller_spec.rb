@@ -157,7 +157,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "transActionStatus = 1 and no error happened"  do
-        it "sets flas error" do
+        it "sets flash info" do
           resp = OpenStruct.new(total_sum: 0.0)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
@@ -168,7 +168,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "transActionStatus = 1 and something went wrong"  do
-        it "sets flas error" do
+        it "sets flash error" do
           resp = OpenStruct.new(total_sum: 0.1)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
@@ -179,7 +179,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "transActionStatus = 2" do
-        it "sets flas error" do
+        it "sets flash error" do
           get :pay, params: { transActionStatus: "2" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Rejected credit card payment/refund (declined)");
@@ -187,7 +187,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "transActionStatus = 3" do
-        it "sets flas error" do
+        it "sets flash error" do
           get :pay, params: { transActionStatus: "3" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Error credit card payment/refund (error)");
@@ -195,14 +195,12 @@ RSpec.describe UsersController, type: :controller do
       end
 
       context "transActionStatus = 4" do
-        it "sets flas error" do
+        it "sets flash error" do
           get :pay, params: { transActionStatus: "4" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Unknown credit card payment/refund (unknown)")
         end
       end
     end
-
   end
-
 end
