@@ -1,7 +1,7 @@
 <% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view %>
 <div class="record-page-wrapper clearfix">
-  <% unless controller_name == "databases" %>
+  <% unless controller_name == "databases" || controller_name == "primo_central" %>
     <div class="record-view thumbnail float-md-right col-md-2 col-4" <%= render_google_books_data_attribute(document) %> >
       <%= image_tag "", :alt => "Book cover for " + document["title_statement_display"].to_s, :class => "book_cover invisible pb-2", :id => "book-cover-image" %>
       <%= image_tag default_cover_image(document), :class => "default", :alt => "Default icon for " + document["title_statement_display"].to_s %>
