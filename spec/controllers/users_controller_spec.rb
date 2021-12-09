@@ -132,4 +132,76 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "GET #pay" do
+    context "user is not logged in" do
+      it "redirects you to login page" do
+        get :pay
+        expect(response.status).to redirect_to new_user_session_path
+
+        post :pay
+        expect(response.status).to redirect_to new_user_session_path
+      end
+    end
+
+    context "user is logged in" do
+      before do
+        DatabaseCleaner.clean
+        DatabaseCleaner.strategy = :truncation
+        user = FactoryBot.create(:user)
+        sign_in user, scope: :user
+      end
+
+      it "redirects to users account paths" do
+
+        get :pay
+        expect(response).to redirect_to users_account_path
+      end
+
+      context "transActionStatus = 1 and no error happened"  do
+        it "sets flas error" do
+          alma_user = OpenStruct.new(fines: OpenStruct.new(send_payment: true))
+          allow(Alma::User).to receive(:find) { alma_user }
+          get :pay, params: { transActionStatus: "1" }
+          expect(response).to redirect_to users_account_path
+          expect(flash[:info]).to eq("Thank you!");
+        end
+      end
+
+      context "transActionStatus = 1 and something went wrong"  do
+        it "sets flas error" do
+          alma_user = OpenStruct.new(fines: OpenStruct.new(send_payment: false))
+          allow(Alma::User).to receive(:find) { alma_user }
+          get :pay, params: { transActionStatus: "1" }
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("Something went wrong.");
+        end
+      end
+
+      context "transActionStatus = 2" do
+        it "sets flas error" do
+          get :pay, params: { transActionStatus: "2" }
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("Rejected credit card payment/refund (declined)");
+        end
+      end
+
+      context "transActionStatus = 3" do
+        it "sets flas error" do
+          get :pay, params: { transActionStatus: "3" }
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("Error credit card payment/refund (error)");
+        end
+      end
+
+      context "transActionStatus = 4" do
+        it "sets flas error" do
+          get :pay, params: { transActionStatus: "4" }
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("Unknown credit card payment/refund (unknown)")
+        end
+      end
+    end
+
+  end
+
 end
