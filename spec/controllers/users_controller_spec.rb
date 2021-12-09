@@ -152,28 +152,29 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it "redirects to users account paths" do
-
         get :pay
         expect(response).to redirect_to users_account_path
       end
 
       context "transActionStatus = 1 and no error happened"  do
         it "sets flas error" do
-          alma_user = OpenStruct.new(fines: OpenStruct.new(send_payment: true))
-          allow(Alma::User).to receive(:find) { alma_user }
+          resp = OpenStruct.new(total_sum: 0.0)
+          balance = Alma::PaymentResponse.new(resp)
+          allow(Alma::User).to receive(:send_payment) { balance }
           get :pay, params: { transActionStatus: "1" }
           expect(response).to redirect_to users_account_path
-          expect(flash[:info]).to eq("Thank you!");
+          expect(flash[:info]).to eq("Your balance has been paid.");
         end
       end
 
       context "transActionStatus = 1 and something went wrong"  do
         it "sets flas error" do
-          alma_user = OpenStruct.new(fines: OpenStruct.new(send_payment: false))
-          allow(Alma::User).to receive(:find) { alma_user }
+          resp = OpenStruct.new(total_sum: 0.1)
+          balance = Alma::PaymentResponse.new(resp)
+          allow(Alma::User).to receive(:send_payment) { balance }
           get :pay, params: { transActionStatus: "1" }
           expect(response).to redirect_to users_account_path
-          expect(flash[:error]).to eq("Something went wrong.");
+          expect(flash[:error]).to eq("There was a problem processing your payment. Please contact the library for assistance.");
         end
       end
 

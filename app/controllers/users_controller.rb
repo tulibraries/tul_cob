@@ -23,14 +23,14 @@ class UsersController < ApplicationController
     type, message = do_with_json_logger(log) {
       case params["transActionStatus"]
       when "1"
-        alma_user = Alma::User.find(current_user.uid);
-        if alma_user.fines.send_payment
+        balance = Alma::User.send_payment(user_id: current_user.uid);
+        if balance.paid?
           type = :info
-          message = "Thank you!"
         else
           type = :error
-          message = "Something went wrong."
         end
+
+        message = balance.payment_message
       when "2"
         type =  :error
         message = "Rejected credit card payment/refund (declined)"
