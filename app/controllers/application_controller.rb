@@ -49,7 +49,13 @@ class ApplicationController < ActionController::Base
 
     @manifold_alerts_thread ||= Thread.new {
       Rails.cache.fetch("manifold_alerts", expires_in: 5.minutes) do
-        (HTTParty.get(alert_url, timeout: 1) rescue {})["data"] || []
+        resp = begin
+                 HTTParty.get(alert_url, timeout: 1)
+               rescue => e
+                 Honeybadger.notify(e)
+                 {}
+               end
+        resp["data"] || []
       end
     }
   end
