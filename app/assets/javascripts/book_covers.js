@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() {
       })
     } else if(oclc) {
       oclc.split(",").map(function(value){
-        queries.push("ISBN:" + value);
+        queries.push("OCLC:" + value);
       })
     } else {
       $("#book-cover-image").remove();
