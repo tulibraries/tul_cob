@@ -2,6 +2,7 @@
 
 class UsersController < ApplicationController
   include JsonLogger
+  include QuikPay
 
   rescue_from ActionView::Template::Error,
     with: :no_account_found

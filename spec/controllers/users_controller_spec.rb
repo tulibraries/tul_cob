@@ -132,4 +132,29 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "quik_pay_hash" do
+
+    context "with no arguments" do
+      it "returns SHA256 of empty string" do
+        hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        expect(controller.quik_pay_hash).to eq(hash)
+      end
+    end
+
+    context "params values and no secret" do
+      it "returns SHA256 of concatenated string values" do
+        hash = Digest::SHA256.hexdigest "foobar"
+        expect(controller.quik_pay_hash(["foo", "bar"])).to eq(hash)
+      end
+    end
+
+    context "params values and secret" do
+      it "returns SHA256 of concatenated string values and secret" do
+        hash = Digest::SHA256.hexdigest "foobarbuzz"
+        expect(controller.quik_pay_hash(["foo", "bar"], "buzz")).to eq(hash)
+      end
+    end
+
+  end
+
 end
