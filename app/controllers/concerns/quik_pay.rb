@@ -45,14 +45,11 @@ module QuikPay
   end
 
   def quik_pay_url(params = {}, secret = "")
-    #TODO
-    # * get actual quickpay URL path
-    # * get actual orderType cc for credit card, but is that exactly it.
-
+    # Avoid mutating the params value
     qp_params = params.dup
 
     qp_params.merge!(
-      orderType: "cc",
+      orderType: "Temple Library",
       timeStamp: Time.now.getutc.to_i,
       redirectUrl: "https://librarysearch.temple.edu/users/pay",
       redirectUrlParameters: "transactionStatus,transactionTotalAmount",
@@ -62,7 +59,7 @@ module QuikPay
 
     # I'm not using .to_query because .to_query breaks the param order by sorting.
     # We need to preserve the param order for hashing to work properly.
-    qp_params.reduce("https://quikpay.com/temple2?") do |url, param|
+    qp_params.reduce("https://uatquikpay.com/temple2/temple/library/guest_payer.do?") do |url, param|
       key, value = param
       url += "&#{key}=#{value}"
     end
