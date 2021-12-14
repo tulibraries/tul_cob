@@ -157,6 +157,28 @@ RSpec.describe UsersController, type: :controller do
 
   end
 
+  describe "quik_pay_url" do
+    context "no arguments" do
+      it "generates a url with only default params" do
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      end
+    end
+
+    context "with param as args" do
+      it "generates a url with params + default params" do
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      end
+    end
+
+    context "with param as args + secret" do
+      it "generates a url with params + default params" do
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      end
+    end
+
+
+  end
+
   describe "GET #pay" do
     context "user is not logged in" do
       it "redirects you to login page" do
