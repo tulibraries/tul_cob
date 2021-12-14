@@ -3,6 +3,43 @@
 module QuikPay
   extend ActiveSupport::Concern
 
+  included do
+    before_action :authenticate_user!, only: [ :pay ]
+  end
+
+  def pay
+    log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
+
+    type, message = do_with_json_logger(log) {
+      case params["transActionStatus"]
+      when "1"
+        balance = Alma::User.send_payment(user_id: current_user.uid);
+        if balance.paid?
+          type = :info
+        else
+          type = :error
+        end
+
+        message = balance.payment_message
+      when "2"
+        type =  :error
+        message = "Rejected credit card payment/refund (declined)"
+      when "3"
+        type = :error
+        message = "Error credit card payment/refund (error)"
+      when "4"
+        type = :error
+        message = "Unknown credit card payment/refund (unknown)"
+      end
+
+      [type, message]
+    }
+
+
+    redirect_to users_account_path, flash: { type => message }
+  end
+
+
   def quik_pay_hash(values = [], secret = "")
     Digest::SHA256.hexdigest(values.join("") + secret)
   end
@@ -30,5 +67,4 @@ module QuikPay
       url += "&#{key}=#{value}"
     end
   end
-
 end
