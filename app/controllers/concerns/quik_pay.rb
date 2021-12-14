@@ -30,4 +30,5 @@ module QuikPay
       url += "&#{key}=#{value}"
     end
   end
+
 end
