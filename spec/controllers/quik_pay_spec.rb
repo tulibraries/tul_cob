@@ -32,30 +32,30 @@ RSpec.describe UsersController, type: "controller"  do
   describe "quik_pay_url" do
     context "no arguments" do
       it "generates a url with only default params" do
-        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
 
     context "with param as args" do
       it "generates a url with params + default params" do
-        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
 
     context "with param as args + secret" do
       it "generates a url with params + default params" do
-        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=cc&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
   end
 
-  describe "GET #pay" do
+  describe "GET #quik_pay_callback" do
     context "user is not logged in" do
       it "redirects you to login page" do
-        get :pay
+        get :quik_pay_callback
         expect(response.status).to redirect_to new_user_session_path
 
-        post :pay
+        post :quik_pay_callback
         expect(response.status).to redirect_to new_user_session_path
       end
     end
@@ -69,7 +69,7 @@ RSpec.describe UsersController, type: "controller"  do
       end
 
       it "redirects to users account paths" do
-        get :pay
+        get :quik_pay_callback
         expect(response).to redirect_to users_account_path
       end
 
@@ -78,7 +78,7 @@ RSpec.describe UsersController, type: "controller"  do
           resp = OpenStruct.new(total_sum: 0.0)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :pay, params: { transActionStatus: "1" }
+          get :quik_pay_callback, params: { transActionStatus: "1" }
           expect(response).to redirect_to users_account_path
           expect(flash[:info]).to eq("Your balance has been paid.");
         end
@@ -89,7 +89,7 @@ RSpec.describe UsersController, type: "controller"  do
           resp = OpenStruct.new(total_sum: 0.1)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :pay, params: { transActionStatus: "1" }
+          get :quik_pay_callback, params: { transActionStatus: "1" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem processing your payment. Please contact the library for assistance.");
         end
@@ -97,7 +97,7 @@ RSpec.describe UsersController, type: "controller"  do
 
       context "transActionStatus = 2" do
         it "sets flash error" do
-          get :pay, params: { transActionStatus: "2" }
+          get :quik_pay_callback, params: { transActionStatus: "2" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Rejected credit card payment/refund (declined)");
         end
@@ -105,7 +105,7 @@ RSpec.describe UsersController, type: "controller"  do
 
       context "transActionStatus = 3" do
         it "sets flash error" do
-          get :pay, params: { transActionStatus: "3" }
+          get :quik_pay_callback, params: { transActionStatus: "3" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Error credit card payment/refund (error)");
         end
@@ -113,7 +113,7 @@ RSpec.describe UsersController, type: "controller"  do
 
       context "transActionStatus = 4" do
         it "sets flash error" do
-          get :pay, params: { transActionStatus: "4" }
+          get :quik_pay_callback, params: { transActionStatus: "4" }
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Unknown credit card payment/refund (unknown)")
         end

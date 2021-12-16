@@ -4,10 +4,11 @@ module QuikPay
   extend ActiveSupport::Concern
 
   included do
-    before_action :authenticate_user!, only: [ :pay ]
+    before_action :authenticate_user!, only: [ :quik_pay_callback ]
   end
 
-  def pay
+  # Callback for processing user after they are returned from quikpay service.
+  def quik_pay_callback
     log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
 
     type, message = do_with_json_logger(log) {
@@ -61,6 +62,8 @@ module QuikPay
     # We need to preserve the param order for hashing to work properly.
     qp_params.reduce("https://uatquikpay.com/temple2/temple/library/guest_payer.do?") do |url, param|
       key, value = param
+
+      value = ERB::Util.url_encode(value)
       url += "&#{key}=#{value}"
     end
   end
