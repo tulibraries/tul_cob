@@ -10,7 +10,6 @@ git clone --single-branch --branch main https://github.com/tulibraries/ansible-p
 cd ansible-playbook-airflow
 
 # Install requirements
-sudo pip install pipenv
 pipenv install
 pipenv run ansible-galaxy install -r requirements.yml # install playbook role requirements
 echo $ANSIBLE_VAULT_PASSWORD > ~/.vault
