@@ -14,8 +14,9 @@ class UsersController < ApplicationController
       flash[:error] = "It may take a few days for your library account to be created. If you have questions about this please call 215-204-0744."
       redirect_to root_path
     else
-      #Add total fines to session so that we do not need to make extra call to Alma.
+      # Add total fines and other info to session so that we do not need to make extra call to Alma.
       session["total_fines"] = current_user.alma.total_fines
+      session["can_pay_online?"] = current_user.can_pay_online?
     end
   end
 

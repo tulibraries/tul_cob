@@ -41,7 +41,7 @@ module QuikPay
 
   # Redirects user to the quikpay service
   def quik_pay
-    params = { amountDue: session[:total_fees] }
+    params = { amountDue: session[:total_fines] }
     redirect_to quik_pay_url(params)
   end
 

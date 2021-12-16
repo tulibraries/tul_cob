@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   get "users/quik_pay_callback"
-  get "users/quik_pay"
+  get "users/quik_pay", as: "quik_pay"
   root to: "search#index"
 
   # advanced forms

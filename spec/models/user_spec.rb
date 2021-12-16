@@ -115,4 +115,43 @@ RSpec.describe User, type: :model do
     end
   end
 
+
+  describe "#can_pay_online?" do
+    let(:user) { FactoryBot.build(:user) }
+
+    before do
+      allow(user).to receive(:alma) { alma }
+    end
+
+    context "the user doesn't have any fines" do
+      let(:alma) { OpenStruct.new(total_fines: 0.0) }
+
+      it "does not allow pay online" do
+        expect(user.can_pay_online?).to eq(false)
+      end
+    end
+
+    context "the user hass a fine but is not allowed group" do
+      let(:alma) { OpenStruct.new(
+        total_fines: 1.0,
+        user_group: { "value" => "99" }
+      ) }
+
+      it "does not allow pay online" do
+        expect(user.can_pay_online?).to eq(false)
+      end
+    end
+
+    context "the user hass a fine but and is in an allowed group" do
+      let(:alma) { OpenStruct.new(
+        total_fines: 1.0,
+        user_group: { "value" => "2" }
+      ) }
+
+      it "allows pay online" do
+        expect(user.can_pay_online?).to eq(true)
+      end
+    end
+  end
+
 end
