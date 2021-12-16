@@ -79,6 +79,8 @@ RSpec.describe UsersController, type: :controller do
           DatabaseCleaner.strategy = :truncation
           user = FactoryBot.create :user
           sign_in user, scope: :user
+          allow(user).to receive(:alma) { OpenStruct.new(total_fines: 1.0) }
+          allow(controller).to receive(:current_user) { user }
         end
 
         it "has no-cache headers for account" do
@@ -86,6 +88,11 @@ RSpec.describe UsersController, type: :controller do
           expect(response.headers["Cache-Control"]).to eq("no-cache, no-store")
           expect(response.headers["Pragma"]).to eq("no-cache")
           expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
+        end
+
+        it "sets session['total_fines']" do
+          get :account
+          expect(session["total_fines"]).to eq(1.0)
         end
 
         describe "before_action get_manifold_alerts" do

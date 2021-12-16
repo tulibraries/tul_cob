@@ -4,7 +4,7 @@ module QuikPay
   extend ActiveSupport::Concern
 
   included do
-    before_action :authenticate_user!, only: [ :quik_pay_callback ]
+    before_action :authenticate_user!, only: [ :quik_pay_callback, :quik_pay ]
   end
 
   # Callback for processing user after they are returned from quikpay service.
@@ -36,8 +36,13 @@ module QuikPay
       [type, message]
     }
 
-
     redirect_to users_account_path, flash: { type => message }
+  end
+
+  # Redirects user to the quikpay service
+  def quik_pay
+    params = { amountDue: session[:total_fees] }
+    redirect_to quik_pay_url(params)
   end
 
 

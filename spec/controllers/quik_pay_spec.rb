@@ -120,4 +120,30 @@ RSpec.describe UsersController, type: "controller"  do
       end
     end
   end
+
+  describe "GET #quik_pay" do
+    context "user is not logged in" do
+      it "redirects you to login page" do
+        get :quik_pay
+        expect(response.status).to redirect_to new_user_session_path
+
+        post :quik_pay
+        expect(response.status).to redirect_to new_user_session_path
+      end
+    end
+
+    context "user is logged in" do
+      before do
+        DatabaseCleaner.clean
+        DatabaseCleaner.strategy = :truncation
+        user = FactoryBot.create(:user)
+        sign_in user, scope: :user
+      end
+
+      it "redirects to users account paths" do
+        get :quik_pay
+        expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      end
+    end
+  end
 end
