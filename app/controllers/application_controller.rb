@@ -53,6 +53,7 @@ class ApplicationController < ActionController::Base
                  HTTParty.get(alert_url, timeout: 1)
                rescue => e
                  Honeybadger.notify(e)
+                 Thread.new { sleep 0.25; Rails.cache.delete("manifold_alerts") }
                  {}
                end
         resp["data"] || []
