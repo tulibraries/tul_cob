@@ -6,7 +6,7 @@ include ApplicationHelper
 
 RSpec.feature "Online Payments" do
 
-  let(:user) { FactoryBot.c}
+  let(:user) { FactoryBot.c }
 
   before do
     DatabaseCleaner.clean
