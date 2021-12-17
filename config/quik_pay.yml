@@ -1,0 +1,12 @@
+default: &default
+  secret: "MyQuikPaySecret"
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default
+    secret: <%= ENV["QUIK_PAY_SECRET"] %>

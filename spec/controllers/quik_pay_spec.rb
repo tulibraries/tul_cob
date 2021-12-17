@@ -50,6 +50,8 @@ RSpec.describe UsersController, type: "controller"  do
   end
 
   describe "GET #quik_pay_callback" do
+    let (:params) { with_validation_params }
+
     context "user is not logged in" do
       it "redirects you to login page" do
         get :quik_pay_callback
@@ -69,55 +71,92 @@ RSpec.describe UsersController, type: "controller"  do
       end
 
       it "redirects to users account paths" do
-        get :quik_pay_callback
+        get :quik_pay_callback, params: params
         expect(response).to redirect_to users_account_path
       end
 
       context "transActionStatus = 1 and no error happened"  do
+        let (:params) { with_validation_params(transActionStatus: "1") }
+
         it "sets flash info" do
           resp = OpenStruct.new(total_sum: 0.0)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :quik_pay_callback, params: { transActionStatus: "1" }
+          get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
           expect(flash[:info]).to eq("Your balance has been paid.");
         end
       end
 
       context "transActionStatus = 1 and something went wrong"  do
+        let (:params) { with_validation_params(transActionStatus: "1") }
+
         it "sets flash error" do
           resp = OpenStruct.new(total_sum: 0.1)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :quik_pay_callback, params: { transActionStatus: "1" }
+          get :quik_pay_callback, params:  params
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem processing your payment. Please contact the library for assistance.");
         end
       end
 
       context "transActionStatus = 2" do
+        let (:params) { with_validation_params(transActionStatus: "2") }
+
         it "sets flash error" do
-          get :quik_pay_callback, params: { transActionStatus: "2" }
+          get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Rejected credit card payment/refund (declined)");
         end
       end
 
       context "transActionStatus = 3" do
+        let (:params) { with_validation_params(transActionStatus: "3") }
+
         it "sets flash error" do
-          get :quik_pay_callback, params: { transActionStatus: "3" }
+          get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Error credit card payment/refund (error)");
         end
       end
 
       context "transActionStatus = 4" do
+        let (:params) { with_validation_params(transActionStatus: "4") }
+
         it "sets flash error" do
-          get :quik_pay_callback, params: { transActionStatus: "4" }
+          get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("Unknown credit card payment/refund (unknown)")
         end
       end
+
+      context "no hash provided" do
+        let (:params) { with_validation_params.except(:hash) }
+
+        it "should error out" do
+          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidHash
+        end
+      end
+
+      context "invalid hash provided" do
+        # The has will be invalid because it wont account for the foo param.
+        let (:params) { with_validation_params.merge("foo" => "bar") }
+
+        it "should error out" do
+          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidHash
+        end
+      end
+
+      context "with invalid timeStamp provided" do
+        # The has will be invalid because it wont account for the foo param.
+        let (:params) { with_validation_params(timeStamp: 1) }
+
+        it "should error out" do
+          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidTime
+        end
+      end
+
     end
   end
 
@@ -145,5 +184,19 @@ RSpec.describe UsersController, type: "controller"  do
         expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
+  end
+
+  def with_validation_params(params = {})
+    # Order shouldn't matter but in this test context .to_query gets
+    # used somewhere and thus params are not in order of hash so we need to
+    # control for that.
+    params_dup = params.dup
+    time_now = Time.now.getutc.to_i
+
+    params_dup.merge!(timeStamp: time_now) if params_dup[:timeStamp].nil?
+
+    hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.quik_pay["secret"])
+
+    params_dup.merge(hash: hash)
   end
 end

@@ -10,12 +10,15 @@ module QuikPay
   # Redirects user to the quikpay service
   def quik_pay
     params = { amountDue: session[:total_fines] }
-    redirect_to quik_pay_url(params)
+    redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])
   end
 
   # Callback for processing user after they are returned from quikpay service.
   def quik_pay_callback
     log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
+
+    validate_quik_pay_hash(params.except(:controller, :action))
+    validate_quik_pay_timestamp(params["timeStamp"])
 
     type, message = do_with_json_logger(log) {
       case params["transActionStatus"]
@@ -71,4 +74,29 @@ module QuikPay
   def quik_pay_hash(values = [], secret = "")
     Digest::SHA256.hexdigest(values.join("") + secret)
   end
+
+  private
+
+    class InvalidHash < StandardError
+    end
+
+    class InvalidTime < StandardError
+    end
+
+    def validate_quik_pay_timestamp(timeStamp)
+      raise InvalidTime.new("A timeStamp is required. This probably means this is an invalid attempt at using quikpay.") if timeStamp.nil?
+
+      time_now = Time.now.getutc.to_i
+
+      raise InvalidTime.new("The transaction attempt is coming later than 5 minutes. That's fishy since it should basically be instantaneous.  We are bailing out of precaution.") if time_now - timeStamp.to_i > 300
+    end
+
+    def validate_quik_pay_hash(params)
+      hash = params["hash"]
+      valid_hash = quik_pay_hash(params.except("hash").values, Rails.configuration.quik_pay["secret"])
+
+      raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?
+
+      raise InvalidHash.new("The hash is invalid because it does not match our calculated version of it.") if hash != valid_hash
+    end
 end
