@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get "users/quik_pay_callback"
+  get "users/quik_pay_callback", as: "quik_pay_callback"
   get "users/quik_pay", as: "quik_pay"
   root to: "search#index"
 
