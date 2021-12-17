@@ -171,7 +171,7 @@ RSpec.describe UsersController, type: "controller"  do
       end
     end
 
-    context "user is logged in" do
+    describe "user is logged in" do
       before do
         DatabaseCleaner.clean
         DatabaseCleaner.strategy = :truncation
@@ -179,9 +179,19 @@ RSpec.describe UsersController, type: "controller"  do
         sign_in user, scope: :user
       end
 
-      it "redirects to users account paths" do
-        get :quik_pay
-        expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      context "user can pay online" do
+        it "redirects to users account paths" do
+          session["can_pay_online?"] = true;
+          get :quik_pay
+          expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        end
+      end
+
+      context "user cannot pay online" do
+        it "raises an exception" do
+          session["can_pay_online?"] = false;
+          expect { get :quik_pay }.to raise_error QuikPay::AccessDenied
+        end
       end
     end
   end

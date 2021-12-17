@@ -9,16 +9,18 @@ module QuikPay
 
   # Redirects user to the quikpay service
   def quik_pay
+    raise AccessDenied.new("This user does not have access to this feature.") unless session["can_pay_online?"]
+
     params = { amountDue: session[:total_fines] }
     redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])
   end
 
   # Callback for processing user after they are returned from quikpay service.
   def quik_pay_callback
-    log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
-
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timeStamp"])
+
+    log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
 
     type, message = do_with_json_logger(log) {
       case params["transActionStatus"]
@@ -81,6 +83,9 @@ module QuikPay
     end
 
     class InvalidTime < StandardError
+    end
+
+    class AccessDenied < StandardError
     end
 
     def validate_quik_pay_timestamp(timeStamp)
