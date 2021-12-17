@@ -76,7 +76,7 @@ gem "cob_index",
   git: "https://github.com/tulibraries/cob_index.git",
   branch: "main"
 
-gem "rsolr", "~> 2.3"
+gem "rsolr", "~> 2.4"
 # Pinned to branch to work with omniauth v2.
 # We will want to remove the branch once devise has been updated.
 gem "devise", github: "heartcombo/devise", branch: "ca-omniauth-2"
