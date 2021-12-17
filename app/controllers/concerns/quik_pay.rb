@@ -7,6 +7,12 @@ module QuikPay
     before_action :authenticate_user!, only: [ :quik_pay_callback, :quik_pay ]
   end
 
+  # Redirects user to the quikpay service
+  def quik_pay
+    params = { amountDue: session[:total_fines] }
+    redirect_to quik_pay_url(params)
+  end
+
   # Callback for processing user after they are returned from quikpay service.
   def quik_pay_callback
     log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
@@ -39,17 +45,6 @@ module QuikPay
     redirect_to users_account_path, flash: { type => message }
   end
 
-  # Redirects user to the quikpay service
-  def quik_pay
-    params = { amountDue: session[:total_fines] }
-    redirect_to quik_pay_url(params)
-  end
-
-
-  def quik_pay_hash(values = [], secret = "")
-    Digest::SHA256.hexdigest(values.join("") + secret)
-  end
-
   def quik_pay_url(params = {}, secret = "")
     # Avoid mutating the params value
     qp_params = params.dup
@@ -71,5 +66,9 @@ module QuikPay
       value = ERB::Util.url_encode(value)
       url += "&#{key}=#{value}"
     end
+  end
+
+  def quik_pay_hash(values = [], secret = "")
+    Digest::SHA256.hexdigest(values.join("") + secret)
   end
 end
