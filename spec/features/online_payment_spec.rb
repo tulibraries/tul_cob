@@ -6,13 +6,15 @@ include ApplicationHelper
 
 RSpec.feature "Online Payments" do
 
-  let(:user) { FactoryBot.c }
+  let(:user) { FactoryBot.create(:user) }
 
   before do
-    DatabaseCleaner.clean
-    user = FactoryBot.create(:user)
     allow(user).to receive(:alma) { alma }
     login_as(user, scope: :user)
+  end
+
+  after do
+    logout
   end
 
   context "User does not have any fines" do

@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.feature "Login Page" do
-
   it "has a My Library Account link" do
     visit "/"
     expect(page).to have_link("My Account")
@@ -23,6 +22,17 @@ RSpec.feature "Login Page" do
 
   it "does not error out if we try to follow shibboleth path" do
     visit "/users/sign_in"
+
+    # TODO: Figure out what is leaving behind a signed in user
+    # and remove this otherwise unnecessary stub.
+    stub_request(:get, /.*almaws\/v1\/users\/.*/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: JSON.dump({
+                  fees: { value: 0.0 },
+                  user_group: { value: "2" }
+                }))
+
     click_link("Students, faculty, staff and registered alumni")
     expect(status_code).to be 200
   end

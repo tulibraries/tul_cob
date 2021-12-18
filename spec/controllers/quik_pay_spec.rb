@@ -4,6 +4,8 @@ require "rails_helper"
 
 RSpec.describe UsersController, type: "controller"  do
 
+  let(:user) { FactoryBot.create(:user) }
+
   describe "quik_pay_hash" do
 
     context "with no arguments" do
@@ -64,10 +66,11 @@ RSpec.describe UsersController, type: "controller"  do
 
     context "user is logged in" do
       before do
-        DatabaseCleaner.clean
-        DatabaseCleaner.strategy = :truncation
-        user = FactoryBot.create(:user)
         sign_in user, scope: :user
+      end
+
+      after do
+        sign_out user
       end
 
       it "redirects to users account paths" do
@@ -173,10 +176,11 @@ RSpec.describe UsersController, type: "controller"  do
 
     describe "user is logged in" do
       before do
-        DatabaseCleaner.clean
-        DatabaseCleaner.strategy = :truncation
-        user = FactoryBot.create(:user)
         sign_in user, scope: :user
+      end
+
+      after do
+        sign_out user
       end
 
       context "user can pay online" do
