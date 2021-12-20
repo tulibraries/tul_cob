@@ -11,7 +11,7 @@ module QuikPay
   def quik_pay
     raise AccessDenied.new("This user does not have access to this feature.") unless session["can_pay_online?"]
 
-    params = { amountDue: session[:total_fines] }
+    params = { amountDue: session[:total_fines],  userID: session[:alma_sso_user] }
     redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])
   end
 
