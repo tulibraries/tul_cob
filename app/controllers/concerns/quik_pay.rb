@@ -57,7 +57,7 @@ module QuikPay
     qp_params.merge!(
       orderType: "Temple Library",
       timeStamp: Time.now.getutc.to_i,
-      redirectUrl: "https://librarysearch.temple.edu/users/pay",
+      redirectUrl: Rails.configuration.quik_pay["redirect_url"],
       redirectUrlParameters: "transactionStatus,transactionTotalAmount",
     )
 
