@@ -62,4 +62,8 @@ module UsersHelper
       omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to])
     end
   end
+
+  def quik_pay_button
+    render "quik_pay_button" if current_user.can_pay_online?
+  end
 end

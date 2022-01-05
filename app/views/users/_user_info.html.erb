@@ -10,6 +10,10 @@
 				<span class="user-info-label">Current balance:</span>
 	    	<span class="balance"><%= number_to_currency(@user.alma.total_fines) %></span>
 			</li>
+
+      <li>
+        <%= quik_pay_button %>
+      </li>
 	  </ul>
 	</div>
 </div>

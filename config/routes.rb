@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get "users/quik_pay_callback", as: "quik_pay_callback"
+  get "users/quik_pay", as: "quik_pay"
   root to: "search#index"
 
   # advanced forms
@@ -167,6 +169,8 @@ Rails.application.routes.draw do
 end
 
 OkComputer::Engine.routes.draw do
+  get "users/quik_pay_callback"
+  get "users/quik_pay"
   match "/solr/#{ENV["CATALOG_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-catalog"
 
   match "/solr/#{ENV["AZ_COLLECTION"]}", to: "ok_computer#show", via: [:get, :options], check: "solr-az"

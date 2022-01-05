@@ -34,9 +34,11 @@ module Tulcob
     config.devise = config_for(:devise).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
+    config.quik_pay = config_for(:quik_pay).with_indifferent_access
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
+
 
     config.generators do |g|
       g.test_framework :rspec, spec: true
