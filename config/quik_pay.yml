@@ -1,6 +1,6 @@
 default: &default
-  secret: "MyQuikPaySecret"
-  redirect_url: <%= ENV["QUIK_PAY_REDIRECT_URL"] || "http://localhost:3000/users/quick_pay_callback" %>
+  secret: <%= ENV["QUIK_PAY_SECRET"] || "MyQuikPaySecret" %>
+  redirect_url: <%= ENV["QUIK_PAY_REDIRECT_URL"] || "http://localhost:3000/users/quik_pay_callback" %>
 
 development:
     <<: *default
@@ -10,4 +10,3 @@ test:
 
 production:
     <<: *default
-    secret: <%= ENV["QUIK_PAY_SECRET"] %>
