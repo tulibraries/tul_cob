@@ -18,7 +18,7 @@ module QuikPay
   # Callback for processing user after they are returned from quikpay service.
   def quik_pay_callback
     validate_quik_pay_hash(params.except(:controller, :action))
-    validate_quik_pay_timestamp(params["timeStamp"])
+    validate_quik_pay_timestamp(params["timestamp"])
 
     log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
 
@@ -56,7 +56,7 @@ module QuikPay
 
     qp_params.merge!(
       orderType: "Temple Library",
-      timeStamp: Time.now.getutc.to_i,
+      timestamp: Time.now.getutc.to_i,
       redirectUrl: Rails.configuration.quik_pay["redirect_url"],
       redirectUrlParameters: "transactionStatus,transactionTotalAmount",
     )
@@ -88,12 +88,12 @@ module QuikPay
     class AccessDenied < StandardError
     end
 
-    def validate_quik_pay_timestamp(timeStamp)
-      raise InvalidTime.new("A timeStamp is required. This probably means this is an invalid attempt at using quikpay.") if timeStamp.nil?
+    def validate_quik_pay_timestamp(timestamp)
+      raise InvalidTime.new("A timestamp is required. This probably means this is an invalid attempt at using quikpay.") if timestamp.nil?
 
       time_now = Time.now.getutc.to_i
 
-      raise InvalidTime.new("The transaction attempt is coming later than 5 minutes. That's fishy since it should basically be instantaneous.  We are bailing out of precaution.") if time_now - timeStamp.to_i > 300
+      raise InvalidTime.new("The transaction attempt is coming later than 5 minutes. That's fishy since it should basically be instantaneous.  We are bailing out of precaution.") if time_now - timestamp.to_i > 300
     end
 
     def validate_quik_pay_hash(params)
