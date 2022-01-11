@@ -205,7 +205,7 @@ RSpec.describe UsersController, type: "controller"  do
     # used somewhere and thus params are not in order of hash so we need to
     # control for that.
     params_dup = params.dup
-    time_now = Time.now.getutc.to_i
+    time_now = DateTime.now.strftime("%Q").to_i
 
     params_dup.merge!(timestamp: time_now) if params_dup[:timestamp].nil?
 
