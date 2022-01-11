@@ -56,7 +56,7 @@ module QuikPay
 
     qp_params.merge!(
       orderType: "Temple Library",
-      timestamp: Time.now.getutc.to_i,
+      timestamp: DateTime.now.strftime("%Q").to_i,
       redirectUrl: Rails.configuration.quik_pay["redirect_url"],
       redirectUrlParameters: "transactionStatus,transactionTotalAmount",
     )
@@ -91,9 +91,9 @@ module QuikPay
     def validate_quik_pay_timestamp(timestamp)
       raise InvalidTime.new("A timestamp is required. This probably means this is an invalid attempt at using quikpay.") if timestamp.nil?
 
-      time_now = Time.now.getutc.to_i
+      time_now = DateTime.now.strftime("%Q").to_i
 
-      raise InvalidTime.new("The transaction attempt is coming later than 5 minutes. That's fishy since it should basically be instantaneous.  We are bailing out of precaution.") if time_now - timestamp.to_i > 300
+      raise InvalidTime.new("The transaction attempt is coming later than 5 minutes. That's fishy since it should basically be instantaneous.  We are bailing out of precaution.") if time_now - timestamp.to_i > 300000
     end
 
     def validate_quik_pay_hash(params)
