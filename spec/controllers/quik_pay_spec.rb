@@ -9,22 +9,22 @@ RSpec.describe UsersController, type: "controller"  do
   describe "quik_pay_hash" do
 
     context "with no arguments" do
-      it "returns SHA256 of empty string" do
-        hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      it "returns MD5 of empty string" do
+        hash = "d41d8cd98f00b204e9800998ecf8427e"
         expect(controller.quik_pay_hash).to eq(hash)
       end
     end
 
     context "params values and no secret" do
-      it "returns SHA256 of concatenated string values" do
-        hash = Digest::SHA256.hexdigest "foobar"
+      it "returns MD5 of concatenated string values" do
+        hash = Digest::MD5.hexdigest "foobar"
         expect(controller.quik_pay_hash(["foo", "bar"])).to eq(hash)
       end
     end
 
     context "params values and secret" do
-      it "returns SHA256 of concatenated string values and secret" do
-        hash = Digest::SHA256.hexdigest "foobarbuzz"
+      it "returns MD5 of concatenated string values and secret" do
+        hash = Digest::MD5.hexdigest "foobarbuzz"
         expect(controller.quik_pay_hash(["foo", "bar"], "buzz")).to eq(hash)
       end
     end
@@ -34,19 +34,19 @@ RSpec.describe UsersController, type: "controller"  do
   describe "quik_pay_url" do
     context "no arguments" do
       it "generates a url with only default params" do
-        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
       end
     end
 
     context "with param as args" do
-      it "generates a url with params + default params" do
-        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      it "does not diviate from the order URL contrat" do
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
       end
     end
 
     context "with param as args + secret" do
-      it "generates a url with params + default params" do
-        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+      it "generates a url with params" do
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
       end
     end
   end
@@ -78,8 +78,8 @@ RSpec.describe UsersController, type: "controller"  do
         expect(response).to redirect_to users_account_path
       end
 
-      context "transActionStatus = 1 and no error happened"  do
-        let (:params) { with_validation_params(transActionStatus: "1") }
+      context "transactionStatus = 1 and no error happened"  do
+        let (:params) { with_validation_params(transactionStatus: "1") }
 
         it "sets flash info" do
           resp = OpenStruct.new(total_sum: 0.0)
@@ -91,8 +91,8 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
-      context "transActionStatus = 1 and something went wrong"  do
-        let (:params) { with_validation_params(transActionStatus: "1") }
+      context "transactionStatus = 1 and something went wrong"  do
+        let (:params) { with_validation_params(transactionStatus: "1") }
 
         it "sets flash error" do
           resp = OpenStruct.new(total_sum: 0.1)
@@ -104,8 +104,8 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
-      context "transActionStatus = 2" do
-        let (:params) { with_validation_params(transActionStatus: "2") }
+      context "transactionStatus = 2" do
+        let (:params) { with_validation_params(transactionStatus: "2") }
 
         it "sets flash error" do
           get :quik_pay_callback, params: params
@@ -114,8 +114,8 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
-      context "transActionStatus = 3" do
-        let (:params) { with_validation_params(transActionStatus: "3") }
+      context "transactionStatus = 3" do
+        let (:params) { with_validation_params(transactionStatus: "3") }
 
         it "sets flash error" do
           get :quik_pay_callback, params: params
@@ -124,8 +124,8 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
-      context "transActionStatus = 4" do
-        let (:params) { with_validation_params(transActionStatus: "4") }
+      context "transactionStatus = 4" do
+        let (:params) { with_validation_params(transactionStatus: "4") }
 
         it "sets flash error" do
           get :quik_pay_callback, params: params
@@ -187,7 +187,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "redirects to users account paths" do
           session["can_pay_online?"] = true;
           get :quik_pay
-          expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
         end
       end
 

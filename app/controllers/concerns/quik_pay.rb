@@ -11,7 +11,10 @@ module QuikPay
   def quik_pay
     raise AccessDenied.new("This user does not have access to this feature.") unless session["can_pay_online?"]
 
-    params = { amountDue: session[:total_fines],  userID: session[:alma_sso_user] }
+    # Fines needs to be converted to cents
+    total_fines_cents = 100 * session[:total_fines].to_i
+
+    params = { amountDue: total_fines_cents,  orderNumber: session[:alma_sso_user] }
     redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])
   end
 
@@ -20,12 +23,14 @@ module QuikPay
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timestamp"])
 
-    log = { type: "alma_pay", user: current_user.id, transActionStatus: params["transActionStatus"] }
+    log = { type: "alma_pay", user: current_user.id, transactionStatus: params["transActionStatus"] }
 
     type, message = do_with_json_logger(log) {
-      case params["transActionStatus"]
+
+      case params["transactionStatus"]
       when "1"
         balance = Alma::User.send_payment(user_id: current_user.uid);
+
         if balance.paid?
           type = :info
         else
@@ -61,11 +66,19 @@ module QuikPay
       redirectUrlParameters: "transactionStatus,transactionTotalAmount",
     )
 
-    qp_params[:hash] = quik_pay_hash(qp_params.values, secret)
+    # Use fixed params and order. This order MUST NOT be ammended or feature will stop working.
+    fixed_order = [ :orderNumber, :orderType, :amountDue, :redirectUrl, :redirectUrlParameters, :timestamp ]
+
+    ordered_params = fixed_order.reduce({}) do |params, key|
+      params[key] = qp_params[key]
+      params
+    end
+
+    ordered_params[:hash] = quik_pay_hash(ordered_params.values, secret)
 
     # I'm not using .to_query because .to_query breaks the param order by sorting.
     # We need to preserve the param order for hashing to work properly.
-    qp_params.reduce("https://uatquikpayasp.com/temple2/library/guest.do?") do |url, param|
+    ordered_params.reduce("https://uatquikpayasp.com/temple2/library/guest.do?") do |url, param|
       key, value = param
 
       value = ERB::Util.url_encode(value)
@@ -74,7 +87,7 @@ module QuikPay
   end
 
   def quik_pay_hash(values = [], secret = "")
-    Digest::SHA256.hexdigest(values.join("") + secret)
+    Digest::MD5.hexdigest(values.join("") + secret)
   end
 
   private
@@ -98,6 +111,7 @@ module QuikPay
 
     def validate_quik_pay_hash(params)
       hash = params["hash"]
+
       valid_hash = quik_pay_hash(params.except("hash").values, Rails.configuration.quik_pay["secret"])
 
       raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?

@@ -16,6 +16,8 @@ The `quik_pay` action redirects a valid and authenticated user to the online pay
 
 The approach of using this redirection technique is to avoid creating timeStamps that become stale if a user lingers on a page where a URL to the online payment service is already predefined.
 
+It is important to note that the quikpay service URL that users are redirected to is a contract in terms of the parameters that are sent and the order that they appear in the URL. Any deviation from this contract breaks the application because the validation hash generated at the service end depends on these known parameters with their known order.
+
 ### quik_pay_callback
 When a user is done paying via the online payment service they will be redirected back to the `quik_pay_callback` route on our app where this action will validate that the callback is both valid and then will wipe the user's fines from their alma records before redirecting them back to the user account page.
 
