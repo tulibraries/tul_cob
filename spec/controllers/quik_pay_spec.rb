@@ -34,19 +34,19 @@ RSpec.describe UsersController, type: "controller"  do
   describe "quik_pay_url" do
     context "no arguments" do
       it "generates a url with only default params" do
-        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
 
     context "with param as args" do
       it "generates a url with params + default params" do
-        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
 
     context "with param as args + secret" do
       it "generates a url with params + default params" do
-        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?foo=bar&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
       end
     end
   end
@@ -151,9 +151,9 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
-      context "with invalid timeStamp provided" do
+      context "with invalid timestamp provided" do
         # The has will be invalid because it wont account for the foo param.
-        let (:params) { with_validation_params(timeStamp: 1) }
+        let (:params) { with_validation_params(timestamp: 1) }
 
         it "should error out" do
           expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidTime
@@ -187,7 +187,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "redirects to users account paths" do
           session["can_pay_online?"] = true;
           get :quik_pay
-          expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timeStamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
+          expect(response.location).to match(/quikpay.*?amountDue=.*&orderType=Temple%20Library&timestamp=.*&redirectUrl=.*&redirectUrlParameters=.*&hash=.*$/)
         end
       end
 
@@ -207,7 +207,7 @@ RSpec.describe UsersController, type: "controller"  do
     params_dup = params.dup
     time_now = Time.now.getutc.to_i
 
-    params_dup.merge!(timeStamp: time_now) if params_dup[:timeStamp].nil?
+    params_dup.merge!(timestamp: time_now) if params_dup[:timestamp].nil?
 
     hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.quik_pay["secret"])
 
