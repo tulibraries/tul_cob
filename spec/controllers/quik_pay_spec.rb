@@ -87,7 +87,7 @@ RSpec.describe UsersController, type: "controller"  do
           allow(Alma::User).to receive(:send_payment) { balance }
           get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
-          expect(flash[:info]).to eq("Your balance has been paid.");
+          expect(flash[:success]).to eq("Your balance has been paid.");
         end
       end
 

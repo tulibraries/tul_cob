@@ -32,7 +32,7 @@ module QuikPay
         balance = Alma::User.send_payment(user_id: current_user.uid);
 
         if balance.paid?
-          type = :info
+          type = :success
         else
           type = :error
         end
