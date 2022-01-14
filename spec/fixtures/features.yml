@@ -250,12 +250,15 @@ note_copyright_540:
   note_copyright: "Dictionary of American history: 540."
 note_copyright_542:
   doc_id: "991012132499760710"
+  title: "note_copyright_542 title"
   note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
 note_copyright_542_0:
   doc_id: "991012132499760711"
+  title: "note_copyright_542_0 title"
   note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
 note_copyright_542_1:
   doc_id: "991012132499760712"
+  title: "note_copyright_542_1 title"
   note_copyright: "Dictionary of American history: 542. Subfield B. Subfield C. Subfield D. Subfield E. Subfield F. Subfield G. Subfield H. Subfield I. Subfield J. Subfield K. Subfield L. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield 3."
 note_bio_545:
   doc_id: "991012132499760663"
@@ -355,42 +358,55 @@ entry_preced_780_07:
   separated_from: "Dictionary of American history: 780. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Annales scientifiques de l'Université de Besançon$w(OCoLC)6179013 Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_00:
   doc_id: "991012132499760690"
+  title: "785_00 title"
   continued_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_03:
   doc_id: "991012132499760704"
+  title: "785_03 title"
   continued_in_part_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_04:
   doc_id: "991012132499760705"
+  title: "785_04 title"
   absorbed_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_05:
   doc_id: "991012132499760706"
+  title: "785_05 title"
   absorbed_in_part_by: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_06:
   doc_id: "991012132499760707"
+  title: "785_06 title"
   split_into: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_07:
   doc_id: "991012132499760708"
+  title: "785_07 title"
   merged_to_form: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 entry_succeed_785_08:
   doc_id: "991012132499760709"
+  title: "785_08 title"
   changed_back_to: "Dictionary of American history: 785. Subfield I. Subfield B. Subfield D. Subfield G. Subfield H. Subfield K. Subfield M. Subfield N. Subfield O. Subfield P. Subfield Q. Subfield R. Subfield S. Subfield T. Subfield U. Subfield X. Subfield Y. Subfield Z. Subfield 3."
 lccn_010:
   doc_id: "991012132499760713"
+  title: "lccn_010 title"
   lccn: "lccn number Subfield B"
 gpo_074:
   doc_id: "991012132499760714"
+  title: "gpo_074 title"
   gpo: "gpo number"
 alma_mms_001:
   doc_id: "991012132499760715"
+  title: "alma_mms_001 title"
   alma_mms: "991012132499760715"
 sudoc_086:
   doc_id: "991012132499760718"
+  title: "sudoc_086 title"
   sudoc: "test"
 sudoc_086_0:
   doc_id: "991012132499760716"
+  title: "sudoc_086_0 title"
   sudoc: "Y 4.C 73/7:S.HRG.109-174"
 sudoc_086_1:
   doc_id: "991012132499760717"
+  title: "sudoc_086_1 title"
   sudoc: "test"
 url_856_0:
   doc_id: "991012065429703811"
