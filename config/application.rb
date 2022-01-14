@@ -12,15 +12,13 @@ require "./lib/alma/config_utils"
 Bundler.require(*Rails.groups)
 
 module Tulcob
-  # Rails Application
   class Application < Rails::Application
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults 5.2
+
+    # Configuration for the application, engines, and railties goes here.
     config.library_link = "https://library.temple.edu/"
     config.ask_link = "https://library.temple.edu/contact-us"
-    config.load_defaults 5.2
-    # Settings in config/environments/* take precedence over those specified
-    # here. Application configuration should go into files in
-    # config/initializers: All .rb files in that directory are automatically
-    # loaded.
     config.process_types = config_for(:process_types).with_indifferent_access
     config.libraries = CobIndex::DotProperties.load("libraries_map")
     cob_index_path = Gem::Specification.find_by_name("cob_index").gem_dir
@@ -60,5 +58,11 @@ Honeybadger.configure do |config|
     secrets.each do |secret_name, secret_value|
       notice.error_message.gsub!(secret_value, "[:#{secret_name}]") unless secret_value.blank?
     end
+
+    # These settings can be overridden in specific environments using the files
+    # in config/environments, which are processed later.
+    #
+    # config.time_zone = "Central Time (US & Canada)"
+    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
