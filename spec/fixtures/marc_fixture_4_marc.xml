@@ -4087,6 +4087,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760690</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_00 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4247,6 +4250,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760704</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_03 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4279,6 +4285,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760705</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_04 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4311,6 +4320,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760706</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_05 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4343,6 +4355,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760707</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_06 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4375,6 +4390,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760708</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_07 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4407,6 +4425,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760709</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">785_08 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4439,6 +4460,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760710</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">note_copyright_542 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4470,6 +4494,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760711</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">note_copyright_542_0 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4501,6 +4528,9 @@
 		<leader>01120cam a22003610  4500</leader>
 		<controlfield tag='001'>991012132499760712</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">note_copyright_542_1 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4536,6 +4566,9 @@
 			<subfield code='a'>lccn number</subfield>
 			<subfield code='b'>Subfield B</subfield>
 		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">lccn_010 title</subfield>
+		</datafield>
 		<datafield ind1='0' ind2='0' tag='264'>
 			<subfield code='c'>2017.</subfield>
 		</datafield>
@@ -4549,6 +4582,9 @@
 		<datafield ind1=' ' ind2=' ' tag='074'>
 			<subfield code='a'>gpo number</subfield>
 		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">gpo_074 title</subfield>
+		</datafield>
 		<datafield tag='HLD' >
 		</datafield>
 	</record>
@@ -4557,6 +4593,9 @@
 		<controlfield tag='001'>991012132499760715</controlfield>
 		<controlfield tag='001'>991012132499760715</controlfield>
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">alma_mms_001 title</subfield>
+		</datafield>
 		<datafield tag='HLD'>
 		</datafield>
 	</record>
@@ -4566,6 +4605,9 @@
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
 		<datafield ind1='0' ind2=' ' tag='086'>
 			<subfield code='a'>Y 4.C 73/7:S.HRG.109-174</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">sudoc_086_0</subfield>
 		</datafield>
 		<datafield tag='HLD' >
 		</datafield>
@@ -4577,6 +4619,9 @@
 		<datafield ind1='1' ind2=' ' tag='086'>
 			<subfield code='a'>test</subfield>
 		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">sudoc_086_1 title</subfield>
+		</datafield>
 		<datafield tag='HLD' >
 		</datafield>
 	</record>
@@ -4586,6 +4631,9 @@
 		<controlfield tag='008'>831003s1983    nyu      d    00010deng  </controlfield>
 		<datafield ind1=' ' ind2=' ' tag='086'>
 			<subfield code='a'>test</subfield>
+		</datafield>
+		<datafield ind1="0" ind2="0" tag="245">
+			<subfield code="a">sudoc_086 title</subfield>
 		</datafield>
 		<datafield tag='HLD' >
 		</datafield>
