@@ -80,11 +80,6 @@ class User < ApplicationRecord
   end
 
   def can_pay_online?
-    # TODO: verify who can pay online
-    alma.total_fines > 0 && ({
-      "Undergraduate" => "2",
-      "Graduate/Professional" => "3",
-      "Faculty/Admin" => "4",
-    }.values.include? alma.user_group["value"] rescue false)
+    alma.total_fines > 0
   end
 end

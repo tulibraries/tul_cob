@@ -305,7 +305,6 @@ en:
   account:
     renew_text_html: "Items marked with <i class='fas fa-exclamation-circle text-red'></i><span class='sr-only'>Unable to renew</span> icon are not eligible for renewal.  Please %{href} for more information."
     renew_text_href: "contact us"
-    fines_not_electronic: "Fines cannot be paid electronically."
     fines_text: "Learn more about late fines and replacement charges."
     fines_link: "https://library.temple.edu/services/12"
     update_name: "Update your preferred name via TUPortal"
