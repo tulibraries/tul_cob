@@ -27,16 +27,16 @@ RSpec.feature "Online Payments" do
     end
   end
 
-  context "User has fines but is not part proper group" do
+  context "User has fine and is in some random unknown group" do
     let(:alma) { OpenStruct.new(
       total_fines: 1.0,
-      user_group: { "value" => "99" }
+      user_group: { "value" => "foobar" }
     ) }
 
     scenario "user goes to account page" do
       visit users_account_path
 
-      expect(page).to_not have_link "Pay Online"
+      expect(page).to have_link "Pay Online"
     end
   end
 
