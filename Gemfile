@@ -28,7 +28,7 @@ gem "jbuilder", "~> 2.11"
 
 group :development do
   gem "flamegraph"
-  gem "listen", "~> 3.7.0"
+  gem "listen", "~> 3.7.1"
   gem "ruby-prof"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
