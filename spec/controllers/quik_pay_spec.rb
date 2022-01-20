@@ -87,7 +87,7 @@ RSpec.describe UsersController, type: "controller"  do
           allow(Alma::User).to receive(:send_payment) { balance }
           get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
-          expect(flash[:success]).to eq("Your balance has been paid.");
+          expect(flash[:info]).to include("Your fees have been paid.");
         end
       end
 
@@ -100,7 +100,7 @@ RSpec.describe UsersController, type: "controller"  do
           allow(Alma::User).to receive(:send_payment) { balance }
           get :quik_pay_callback, params:  params
           expect(response).to redirect_to users_account_path
-          expect(flash[:error]).to eq("There was a problem processing your payment. Please contact the library for assistance.");
+          expect(flash[:error]).to eq("There was a problem with your transaction, please call 215-204-8212");
         end
       end
 
@@ -110,7 +110,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "sets flash error" do
           get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
-          expect(flash[:error]).to eq("Rejected credit card payment/refund (declined)");
+          expect(flash[:error]).to eq("There was a problem with your transaction, please call 215-204-8212");
         end
       end
 
@@ -120,7 +120,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "sets flash error" do
           get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
-          expect(flash[:error]).to eq("Error credit card payment/refund (error)");
+          expect(flash[:error]).to eq("There was a problem with your transaction, please call 215-204-8212");
         end
       end
 
@@ -130,7 +130,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "sets flash error" do
           get :quik_pay_callback, params: params
           expect(response).to redirect_to users_account_path
-          expect(flash[:error]).to eq("Unknown credit card payment/refund (unknown)")
+          expect(flash[:error]).to eq("There was a problem with your transaction, please call 215-204-8212")
         end
       end
 

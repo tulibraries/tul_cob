@@ -66,4 +66,10 @@ module UsersHelper
   def quik_pay_button
     render "quik_pay_button" if current_user.can_pay_online?
   end
+
+  def successful_payment_message
+    icon = content_tag :span, "", class: "payment_checkmark"
+    message = content_tag :span, t("account.successful_payment_html"), class: "d-inline-block"
+    content_tag :div, icon + message, class: "px-4 d-flex"
+  end
 end

@@ -305,11 +305,16 @@ en:
   account:
     renew_text_html: "Items marked with <i class='fas fa-exclamation-circle text-red'></i><span class='sr-only'>Unable to renew</span> icon are not eligible for renewal.  Please %{href} for more information."
     renew_text_href: "contact us"
-    fines_text: "Learn more about late fines and replacement charges."
-    fines_link: "https://library.temple.edu/services/12"
+    fines_text_1: "Fees can be paid online with a credit card."
+    fines_text_2_html: "For questions about your fee balance, call <strong> 215-204-8212 </strong> or visit the %{href} at Charles Library."
+    fines_text_2_href: "One Stop Assistance Desk"
+    fines_text_2_link: "https://library.temple.edu/spaces/one-stop-assistance-desk"
+    fines_info: "Learn more about late fines and replacement charges."
+    fines_info_link: "https://library.temple.edu/services/12"
     update_name: "Update your preferred name via TUPortal"
     update_name_href: "https://tuportal.temple.edu"
     email_notice: "If you prefer not to receive email notices from us owing to privacy concerns, we offer an opt-out option. Please know that if you choose to opt out of receiving email notifications for due dates, late items, etc., you are still fully responsible for any and all related fines and other consequences resulting from late, long overdue or lost/missing items you have borrowed. If interested, please contact a staff member at the circulation desk."
+    successful_payment_html: "<strong>Success!</strong> Your fees have been paid.<br /> Holds on student accounts will be removed in 24-48 hours. If you need <strong>a hold removed immediately,</strong> please call the One Stop Assistance desk at 215-204-8212."
 
   lib_guides:
     librarian_no_results: "Need research help?"

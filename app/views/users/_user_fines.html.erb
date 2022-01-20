@@ -25,9 +25,17 @@
       </tbody>
       <% end %>
   </table>
-  <div class="fines-link text-center">
-    <%= quik_pay_button %>
-    <br />
-    <%= link_to(t("account.fines_text"), t("account.fines_link")) %>
+
+  <div class="d-flex fee-info">
+    <div>
+      <p><%= t("account.fines_text_1") %></p>
+      <br />
+      <p class="mb-0"><%= t("account.fines_text_2_html", href: link_to(t("account.fines_text_2_href"), t("account.fines_text_2_link"), target: "_blank")) %></p>
+      <p><%= link_to(t("account.fines_info"), t("account.fines_info_link")) %></p>
+    </div>
+
+    <div class="d-flex w-25 justify-content-end align-self-start">
+      <%= quik_pay_button %>
+    </div>
   </div>
 </div>

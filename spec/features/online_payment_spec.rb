@@ -23,7 +23,7 @@ RSpec.feature "Online Payments" do
     scenario "user goes to account page" do
       visit users_account_path
 
-      expect(page).to_not have_link "Pay Online"
+      expect(page).to_not have_link "Pay now"
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.feature "Online Payments" do
     scenario "user goes to account page" do
       visit users_account_path
 
-      expect(page).to have_link "Pay Online"
+      expect(page).to have_link "Pay now"
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.feature "Online Payments" do
     scenario "user goes to account page" do
       visit users_account_path
 
-      expect(page).to have_link "Pay Online"
+      expect(page).to have_link "Pay now"
     end
   end
 end

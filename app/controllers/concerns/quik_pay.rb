@@ -27,26 +27,20 @@ module QuikPay
 
     type, message = do_with_json_logger(log) {
 
-      case params["transactionStatus"]
-      when "1"
+      if params["transactionStatus"] == "1"
         balance = Alma::User.send_payment(user_id: current_user.uid);
 
         if balance.paid?
-          type = :success
+          type = :info
+          message = helpers.successful_payment_message
         else
           type = :error
+          message = "There was a problem with your transaction, please call 215-204-8212"
         end
 
-        message = balance.payment_message
-      when "2"
-        type =  :error
-        message = "Rejected credit card payment/refund (declined)"
-      when "3"
+      else
         type = :error
-        message = "Error credit card payment/refund (error)"
-      when "4"
-        type = :error
-        message = "Unknown credit card payment/refund (unknown)"
+        message = "There was a problem with your transaction, please call 215-204-8212"
       end
 
       [type, message]
