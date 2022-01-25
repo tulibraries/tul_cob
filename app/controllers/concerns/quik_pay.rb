@@ -12,7 +12,7 @@ module QuikPay
     raise AccessDenied.new("This user does not have access to this feature.") unless session["can_pay_online?"]
 
     # Fines needs to be converted to cents
-    total_fines_cents = 100 * session[:total_fines].to_i
+    total_fines_cents = (100 * session[:total_fines].to_f).to_i
 
     params = { amountDue: total_fines_cents,  orderNumber: session[:alma_sso_user] }
     redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])

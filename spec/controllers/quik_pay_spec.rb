@@ -191,6 +191,16 @@ RSpec.describe UsersController, type: "controller"  do
         end
       end
 
+      context "the fine has cent amounts" do
+        it "does not lose precision when coverting total_fines to cents" do
+          session["can_pay_online?"] = true;
+          session["total_fines"] = "25.11"
+
+          get :quik_pay
+          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+        end
+      end
+
       context "user cannot pay online" do
         it "raises an exception" do
           session["can_pay_online?"] = false;
