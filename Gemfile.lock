@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 30bce4bd42cb01f19981f5a0dc2eee5167505a89
+  revision: 20dcb49da079d289ec360a0967ab8d1c55493b84
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -279,7 +279,7 @@ GEM
     flamegraph (0.9.5)
     foreman (0.87.2)
     formatador (0.2.5)
-    gli (2.20.1)
+    gli (2.21.0)
     globalid (0.5.2)
       activesupport (>= 5.0)
     google-analytics-rails (1.1.1)
@@ -316,7 +316,7 @@ GEM
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.8.11)
+    i18n (1.9.0)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.3)
       activesupport (>= 5.0.0)
