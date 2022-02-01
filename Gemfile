@@ -105,6 +105,7 @@ gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.gi
 gem "httparty"
 gem "dotenv-rails"
 gem "faraday", "1.8.0"
+gem "nokogiri", "1.13.1"
 
 group :production do
   gem "mysql2", "~> 0.5.3"
