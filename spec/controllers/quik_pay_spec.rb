@@ -197,7 +197,7 @@ RSpec.describe UsersController, type: "controller"  do
           session["total_fines"] = "25.11"
 
           get :quik_pay
-          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+          expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
         end
       end
 

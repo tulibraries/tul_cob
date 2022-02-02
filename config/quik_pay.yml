@@ -1,6 +1,7 @@
 default: &default
   secret: <%= ENV["QUIK_PAY_SECRET"] || "MyQuikPaySecret" %>
   redirect_url: <%= ENV["QUIK_PAY_REDIRECT_URL"] || "http://localhost:3000/users/quik_pay_callback" %>
+  url: <%= ENV["QUIK_PAY_URL"] || "https://uatquikpayasp.com/temple2/library/guest.do?" %>
 
 development:
     <<: *default

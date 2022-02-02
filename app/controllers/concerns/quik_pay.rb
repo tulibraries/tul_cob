@@ -72,7 +72,8 @@ module QuikPay
 
     # I'm not using .to_query because .to_query breaks the param order by sorting.
     # We need to preserve the param order for hashing to work properly.
-    ordered_params.reduce("https://uatquikpayasp.com/temple2/library/guest.do?") do |url, param|
+    qurl = Rails.configuration.quik_pay["url"]
+    ordered_params.reduce(qurl) do |url, param|
       key, value = param
 
       value = ERB::Util.url_encode(value)
