@@ -505,7 +505,7 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
     ruby-prof (1.4.3)
     ruby-progressbar (1.11.0)
-    ruby-saml (1.13.0)
+    ruby-saml (1.12.2)
       nokogiri (>= 1.10.5)
       rexml
     ruby2_keywords (0.0.5)
@@ -683,6 +683,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   ruby-prof
+  ruby-saml (= 1.12.2)
   sass-rails (~> 6.0)
   simplecov
   simplecov-lcov
