@@ -314,7 +314,7 @@ en:
     update_name: "Update your preferred name via TUPortal"
     update_name_href: "https://tuportal.temple.edu"
     email_notice: "If you prefer not to receive email notices from us owing to privacy concerns, we offer an opt-out option. Please know that if you choose to opt out of receiving email notifications for due dates, late items, etc., you are still fully responsible for any and all related fines and other consequences resulting from late, long overdue or lost/missing items you have borrowed. If interested, please contact a staff member at the circulation desk."
-    successful_payment_html: "<strong>Success!</strong> Your fees have been paid.<br /> Holds on student accounts will be removed in 24-48 hours. If you need <strong>a hold removed immediately,</strong> please call the One Stop Assistance desk at 215-204-8212."
+    successful_payment_html: "<strong>Success!</strong> Your fees have been paid.<br /> Holds on student accounts will be removed in 24-48 hours. If you need <strong>a hold removed immediately,</strong> please call the One Stop Assistance Desk at 215-204-8212."
 
   lib_guides:
     librarian_no_results: "Need research help?"
