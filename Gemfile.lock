@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: b4c10809e51a792ab64da4e21ed3f0c565e70ff2
+  revision: 46393e511dd96f5e8552fde8c39b72376d3021cf
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -389,7 +389,7 @@ GEM
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
       rack-protection
-    omniauth-rails_csrf_protection (1.0.0)
+    omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     omniauth-saml (2.0.0)
