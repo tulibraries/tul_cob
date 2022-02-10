@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 20dcb49da079d289ec360a0967ab8d1c55493b84
+  revision: 6e44fd1feec23556a46e9b560fa9d48e9fbfd9df
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -90,7 +90,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: 73db577e435d6cbc6068b192d1ce10078faad084
+  revision: 07cc457759d3e4a9fdf2189a7af89a70b7bee4b3
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -558,10 +558,10 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    traject (3.6.0)
+    traject (3.7.0)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
-      hashie (>= 3.1, < 5)
+      hashie (>= 3.1, < 6)
       http (>= 3.0, < 6)
       httpclient (~> 2.5)
       marc (~> 1.0)
