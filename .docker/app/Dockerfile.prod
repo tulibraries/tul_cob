@@ -30,6 +30,7 @@ RUN apk add -U --no-cache \
     touch config/alma.yml && \
     touch config/bento.yml && \
     RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE bundle exec rails assets:precompile && \
+    rm -rf /usr/local/lib/ruby/gems/2.7.0/specifications/default && \
     rm -rf node_modules && \
     rm -rf tmp/* && \
     apk del build-dependencies && \
