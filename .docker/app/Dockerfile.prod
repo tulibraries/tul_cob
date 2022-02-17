@@ -26,7 +26,6 @@ RUN apk add -U --no-cache \
     bundle config build.nokogiri --use-system-libraries && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
-    find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     touch config/alma.yml && \
     touch config/bento.yml && \
