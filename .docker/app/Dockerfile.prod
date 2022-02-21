@@ -8,8 +8,27 @@ USER root
 
 ARG SECRET_KEY_BASE
 
+# Security fixes.
+# This can be removed in the next ruby upgrade.
+RUN cd `ruby -e 'puts Gem.default_specifications_dir'`; \
+      GEM_DEFAULT_DIR=`ruby -e 'puts Gem.default_dir'`; \
+      mv -t ../ bundler*.gemspec \
+      cgi*.gemspec \
+      rdoc*.gemspec \
+      rexml*.gemspec; \
+      \
+      gem uninstall -aIx -i $GEM_DEFAULT_DIR bundler; \
+      gem uninstall -aIx -i $GEM_DEFAULT_DIR cgi; \
+      gem uninstall -aIx -i $GEM_DEFAULT_DIR rdoc; \
+      gem uninstall -aIx -i $GEM_DEFAULT_DIR rexml; \
+      \
+      gem install bundler -i $GEM_DEFAULT_DIR -v 2.3.7 --default; \
+      gem install cgi -i $GEM_DEFAULT_DIR -v 0.3.1 --default; \
+      gem install rexml -i $GEM_DEFAULT_DIR -v 3.2.5 --default; \
+      cd -
+
 RUN apk add -U --no-cache \
-      bash=5.1.8-r0 \
+      bash=5.1.16-r0 \
       tzdata=2021e-r0 \
       mariadb-connector-c=3.1.13-r2 \
       libxslt=1.1.34-r1 \
@@ -21,8 +40,6 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.34-r1 \
       nodejs=16.14.0-r0 \
       yarn=1.22.17-r0 && \
-    rm -rf /usr/local/lib/ruby/gems/2.7.0/specifications/default && \
-    gem install bundler:2.2.33 && \
     bundle config build.nokogiri --use-system-libraries && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
@@ -30,7 +47,6 @@ RUN apk add -U --no-cache \
     touch config/alma.yml && \
     touch config/bento.yml && \
     RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE bundle exec rails assets:precompile && \
-    rm -rf /usr/local/lib/ruby/gems/2.7.0/specifications/default && \
     rm -rf node_modules && \
     rm -rf tmp/* && \
     apk del build-dependencies && \
