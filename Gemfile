@@ -3,8 +3,8 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "~> 6.0"
-gem "railties", "6.0.1.rc1"
+gem "rails", "6.1.5"
+gem "railties"
 # Use Puma as the app server
 gem "puma", "5.6.4"
 gem "popper_js"
