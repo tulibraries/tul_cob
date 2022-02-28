@@ -45,7 +45,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:2.7.2-node
+      - image: cimg/ruby:2.7.5-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
