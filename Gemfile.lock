@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: fbc55e71b100ec500841a8c112f940cdd5bc8bab
+  revision: 274e7fef65e65bd7f012fd30ddc68e5609d8d62d
   branch: main
   specs:
     primo (0.1.0)
@@ -589,7 +589,7 @@ GEM
       unf_ext
     unf_ext (0.0.8)
     unicode-display_width (2.1.0)
-    vcr (6.0.0)
+    vcr (6.1.0)
     view_component (2.49.1)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
