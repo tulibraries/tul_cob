@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: fb7043a2a6ff12451d680e6037c8f303dca472a1
+  revision: 631a8fea39ad5f4083a648ad246040f4ec319012
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -587,7 +587,7 @@ GEM
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.8)
+    unf_ext (0.0.8.1)
     unicode-display_width (2.1.0)
     vcr (6.1.0)
     view_component (2.49.1)
