@@ -19,7 +19,7 @@
           <% if user_signed_in? %>
             <%= request_modal(document.id, @pickup_locations, @request_level) %>
           <% else %>
-          <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-primary request-button record-page-request-btn request-btn float-right") %>
+          <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-primary record-page-request-btn request-btn float-right") %>
           <% end %>
         </div>
       </div>
