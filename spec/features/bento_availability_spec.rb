@@ -31,7 +31,7 @@ RSpec.feature "Bento Availability" do
       end
 
       within first("div.bento-search-engine") do
-        expect(page).to have_css(".full-results")
+        expect(page).to have_css(".bento-full-results")
       end
     end
 

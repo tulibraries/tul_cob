@@ -26,7 +26,7 @@ export default class extends Controller {
           $('[data-long-list]').longList();
           if (!window.campus_closed) {
             $(this.requestTarget).removeClass("hidden");
-            this.requestTarget.classList.add("search-results-request-btn")
+            this.requestTarget.classList.add("request-btn")
           }
       })
     }

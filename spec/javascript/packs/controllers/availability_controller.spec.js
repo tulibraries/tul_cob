@@ -114,9 +114,9 @@ describe('AvailabilityController', () => {
       expect(hidden).toEqual(false)
     });
 
-    test('request target gets tagged with search-results-request-btn', () => {
+    test('request target gets tagged with request-btn', () => {
       let tagged = $('#requests-container-991030169919703811')
-      .hasClass('search-results-request-btn')
+      .hasClass('request-btn')
 
       expect(tagged).toEqual(true)
     });
