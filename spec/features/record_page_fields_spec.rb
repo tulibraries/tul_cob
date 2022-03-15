@@ -624,14 +624,6 @@ RSpec.feature "RecordPageFields" do
         expect(page).to have_text(item_586["note"])
       end
     end
-
-    let (:item_588) { fixtures.fetch("note_588") }
-    scenario "User visits a document with note" do
-      visit "catalog/#{item_588['doc_id']}"
-      within "dd.blacklight-note_display" do
-        expect(page).to have_text(item_588["note"])
-      end
-    end
   end
 
   feature "MARC Note With Fields" do
