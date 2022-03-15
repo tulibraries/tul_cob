@@ -50,7 +50,9 @@ tag:
 
 deploy:
   variables:
-    IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
+    IMAGE: harbor.k8s.temple.edu/tulibraries/tupress
+    RANCHER: rancher-np
+    CLUSTER: dev-library
   stage: deploy
   extends: .kubectl_setup
   script:
