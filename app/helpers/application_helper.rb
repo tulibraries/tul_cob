@@ -95,16 +95,16 @@ module ApplicationHelper
     case results.engine_id
     when "blacklight", "books_and_media"
       url = search_catalog_path(q: params[:q], f: { availability_facet: ["Online"] })
-      link_to "View all #{total} online items", url, class: "bento-full-results"
+      link_to "View all #{total} online items", url, class: "bento-online-results"
     when "journals"
       url = search_journals_path(q: params[:q], f: { availability_facet: ["Online"] })
-      link_to "View all #{total} online journals", url, class: "bento-full-results"
+      link_to "View all #{total} online journals", url, class: "bento-online-results"
     when "articles"
       url = url_for(
         action: :index, controller: :primo_central,
         q: params[:q], f: { availability_facet: ["Online"] }
       )
-      link_to "View all #{total} online articles", url, class: "bento-full-results"
+      link_to "View all #{total} online articles", url, class: "bento-online-results"
     else
       ""
     end
