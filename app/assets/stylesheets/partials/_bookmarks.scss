@@ -54,10 +54,10 @@ a.clear-bookmarks {
 }
 
 #record-page-container .toggle-bookmark {
-  @media(min-width: 768px) {
+  @media(min-width: 991px) {
     text-align: right;
 	}
-  @media(max-width: 768px) {
+  @media(max-width: 991px) {
     display: block;
 
     input {
