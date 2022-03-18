@@ -33,9 +33,9 @@ module SearchHelper
   def bento_titleize(id)
     engine = BentoSearch.get_engine(id)
     if id == "books_and_media"
-      link_to "Books & Media", engine.url(self), id: "bento_" + id
+      link_to "Books & Media", engine.url(self), id: "bento_" + id + "_header"
     else
-      link_to id.titleize , engine.url(self), id: "bento_" + id
+      link_to id.titleize , engine.url(self), id: "bento_" + id + "_header"
     end
   end
 

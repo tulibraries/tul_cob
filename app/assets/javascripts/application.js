@@ -193,7 +193,7 @@ $(document).on('turbolinks:load', function() {
  	}
 
 	$(".modal").on("show.bs.modal", function() {
-		$(".search-results-request-btn").find("span").remove();
+		$(".request-btn").find("span").remove();
 	})
 
 

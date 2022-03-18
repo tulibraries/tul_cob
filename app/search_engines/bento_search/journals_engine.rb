@@ -15,7 +15,7 @@ module BentoSearch
 
     def view_link(total = nil, helper)
       url = url(helper)
-      helper.link_to "View all #{total} journals", url, class: "full-results"
+      helper.link_to "View all #{total} journals", url, class: "bento-full-results"
     end
   end
 end

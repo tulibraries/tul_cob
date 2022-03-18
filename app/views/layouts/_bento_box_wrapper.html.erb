@@ -14,13 +14,13 @@
   </div>
 
   <% unless total_items(results) == 0 %>
-    <div class="total-results">
+    <div class="bento-full-results">
       <%= bento_link_to_full_results(results) %> &gt;
     </div>
   <% end %>
 
   <% unless total_online(results) == 0 %>
-    <div class="online-only">
+    <div class="bento-online-results">
       <%= bento_link_to_online_results(results) %> &gt;
     </div>
   <% end %>

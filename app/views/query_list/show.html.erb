@@ -2,14 +2,14 @@
   <% @docs.each do |doc| %>
     <div class="card query-list border-dark my-1 mr-2">
       <div class="card-body query-card-body query-list d-flex flex-column px-3">
-        <h4 class="query-item-title mb-0 mb-2"><%= link_to(doc["title_statement_display"].first.truncate(85), solr_document_path(doc["id"])) %></h4>
+        <h4 class="query-item-title mb-0 mb-2"><%= link_to(doc["title_statement_display"].first.truncate(85), solr_document_path(doc["id"]), class:"query-list-title-link") %></h4>
         <span class="<%= format_classes_for_icons(doc) %> query-format"><%= doc["format"].first %></span>
         <div class="query-item-availability mt-auto">
           <%= libraries_query_display(doc)%>
           <% if has_one_electronic_resource?(doc) %>
-            <%= link_to "Online", bento_single_link(doc["electronic_resource_display"]), class:"bento-online btn btn-sm bento-avail-btn m-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
+            <%= link_to "Online", bento_single_link(doc["electronic_resource_display"]), class:"query-list-online btn btn-sm bento-avail-btn m-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
           <% elsif has_many_electronic_resources?(doc) %>
-            <%= link_to "Online", solr_document_url(doc["id"]), class:"bento-online btn btn-sm bento-avail-btn m-0" %>
+            <%= link_to "Online", solr_document_url(doc["id"]), class:"query-list-online btn btn-sm bento-avail-btn m-0" %>
           <% end %>
         </div>
       </div>

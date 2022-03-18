@@ -439,7 +439,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params) { {} }
 
       it "should return a View More link to an empty search" do
-        expect(subject).to match(/<a class="full-results.*" href="\/catalog">View More<\/a>/)
+        expect(subject).to match(/<a class="query-list-view-more.*" href="\/catalog">View More<\/a>/)
       end
     end
 
@@ -447,7 +447,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params)  { { foo: "bar" } }
 
       it "should return View More link with params added as url query params" do
-        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+        expect(subject).to match(/<a class="query-list-view-more.*" href="\/catalog\?foo=bar">View More<\/a>/)
       end
     end
 
@@ -455,7 +455,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:params)  { { foo: "bar", per_page: 3 } }
 
       it "should return View More link with params added execept :per_page as url query params" do
-        expect(subject).to match(/<a class="full-results.*" href="\/catalog\?foo=bar">View More<\/a>/)
+        expect(subject).to match(/<a class="query-list-view-more.*" href="\/catalog\?foo=bar">View More<\/a>/)
       end
     end
   end
