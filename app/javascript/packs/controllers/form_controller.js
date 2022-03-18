@@ -46,12 +46,12 @@ export default class extends Controller {
        window.item_level_descriptions = $(this.descriptionsTarget).html();
     }
     let material_type = $("#material_type option").filter(":selected").text();
-    let emptyOption = $('<option />').attr('value', '');
+    let emptyOption = $("<option />").attr("value", "");
     let options = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`).prepend(emptyOption).html();
     if(options) {
       $(this.descriptionsTarget).html(options);
     } else {
-      $(this.descriptionsTarget);
+      $(this.descriptionsTarget).prop("selectedIndex", 0);
     }
   }
 }
