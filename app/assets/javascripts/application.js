@@ -42,17 +42,11 @@ $(window).on('turbolinks:load', function() {
 	}
 
 	if ($(window).width() < 768) {
-		$('#nav-tools').insertAfter('#document');
-		$('#bookmarks-tools').insertAfter('#documents');
-		$('#bookmarks-tools').removeClass('row');
-		$('.clear-bookmarks').insertAfter('#back_to_search');
 		$('#facet-filter-icon').removeClass('hidden');
 		$('#facet-panel-collapse').removeClass('show');
 		$('.small-limit-search-heading').removeClass('d-none');
 	}
 	else {
-		$('#nav-tools').insertAfter('#page-links');
-		$('#bookmarks-tools').addClass('row');
 		$('#facet-filter-icon').addClass('hidden');
 	}
 });
@@ -80,18 +74,12 @@ $(document).ready(function() {
     }
 
     if (windowWidth < 768) {
-      $('#nav-tools').insertAfter('#document');
-      $('#bookmarks-tools').insertAfter('#documents');
-      $('#bookmarks-tools').removeClass('row');
-      $('.clear-bookmarks').insertAfter('#back_to_search');
       $('#facet-filter-icon').removeClass('hidden');
       $('#facet-panel-collapse').removeClass('show');
 			$('.small-limit-search-heading').removeClass('d-none');
 			$('.limit-search-heading').addClass('d-none');
     }
     else {
-      $('#nav-tools').insertAfter('#page-links');
-      $('#bookmarks-tools').addClass('row');
       $('#facet-filter-icon').addClass('hidden');
       $('#facet-panel-collapse').addClass('show');
     }

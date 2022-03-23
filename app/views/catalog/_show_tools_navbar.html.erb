@@ -1,5 +1,7 @@
-<%= render :partial => 'show_tools' %>
-  
+<div class="row d-none d-sm-none d-md-none d-lg-block d-xl-block">
+  <%= render :partial => 'show_tools' %>
+</div>
+
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default">
     <div class="panel-heading">More Like This</div>

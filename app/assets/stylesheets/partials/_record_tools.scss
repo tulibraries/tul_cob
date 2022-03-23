@@ -6,19 +6,19 @@
 	vertical-align: middle;
 	margin-left: auto;
 
-	@media (max-width: 768px) {
+	@media (max-width: 991px) {
 		margin-top: 0.875rem;
 	}
 }
 
 #tools-navbar {
-	@media (max-width: 768px) {
+	@media (max-width: 991px) {
 		padding-left: 0;
 	}
 }
 
 #tools-navbar li {
-	@media (max-width: 768px) {
+	@media (max-width: 991px) {
 		background-color: $red;
 		color: $white;
 		display: block;
@@ -36,7 +36,7 @@
 	list-style-type: none;
 	margin-right: 0.25rem;
 
-	@media (max-width: 768px) {
+	@media (max-width: 991px) {
 		margin-left: 0.625rem;
 	}
 }
@@ -50,7 +50,7 @@
 	font-size: 1rem;
 	padding: 0.375rem 0.75rem;
 
-	@media (max-width: 768px) {
+	@media (max-width: 991px) {
 		background-color: $red;
 		border: 0;
 		color: $white;
@@ -68,7 +68,7 @@
 	font-size: 1rem;
 	padding: 0.3725rem 0.75rem;
 
-	@media(max-width: 768px) {
+	@media(max-width: 991px) {
 		background-color: $red;
 		border: 0;
 		color: $white;
@@ -86,7 +86,7 @@
 	color: $red;
 	padding: 0;
 
-	@media(max-width: 768px) {
+	@media(max-width: 991px) {
 		background-color: $red;
 		border: 0;
 	}
