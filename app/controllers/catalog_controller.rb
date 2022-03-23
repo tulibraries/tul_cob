@@ -153,6 +153,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
     config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
+    config.add_facet_field "collection_ms", label: "Collection Name"
     config.add_facet_field "date_added_facet", label: "Newly Added", query: {
           week_1: { label: "Within Last Week", fq: "date_added_facet:[#{(Date.current - 2.weeks).strftime('%Y%m%d').to_i} TO #{(Date.current - 1.week).strftime('%Y%m%d').to_i}]" },
           months_1: { label: "Within Last Month", fq: "date_added_facet:[#{(Date.current - 1.month).strftime('%Y%m%d').to_i} TO #{(Date.current - 1.week).strftime('%Y%m%d').to_i}]" },
@@ -243,7 +244,7 @@ class CatalogController < ApplicationController
     config.add_show_field "donor_info_ms", label: "Donor bookplate", helper_method: :donor_links, multi: true
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
     config.add_show_field "genre_ms", label: "Genre", helper_method: :genre_links, multi: true
-    config.add_show_field "collection_display", label: "Collection"
+    config.add_show_field "collection_ms", label: "Collection"
     config.add_show_field "collection_area_display", label: "SCRC Collecting Area"
 
     # Preceeding Entry fields
