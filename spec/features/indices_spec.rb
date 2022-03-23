@@ -33,6 +33,7 @@ RSpec.feature "Indices" do
         "Topic",
         "Era",
         "Region",
+        "Collection Name"
         ]
     }
     context "searching shows all facets" do

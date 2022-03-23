@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: f28d962c2c635607e7cb935719b7b76544e987aa
+  revision: d7b316867de727259e988cf394ead055f907c54b
   branch: main
   specs:
     cob_index (0.1.0)
@@ -215,7 +215,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.9)
+    concurrent-ruby (1.1.10)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     crack (0.4.5)
