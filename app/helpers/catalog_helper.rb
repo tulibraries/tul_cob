@@ -428,12 +428,6 @@ module CatalogHelper
       .map { |h_subjs| h_subjs.map(&method(:hierarchical_subject_link)).join(separator).html_safe }
   end
 
-  def genre_links(args)
-    args[:document][args[:field]].uniq.map do |genre|
-      link_to(genre, "#{search_catalog_path}?f[genre_ms][]=#{CGI.escape genre}")
-    end
-  end
-
   def record_page_ms_links(args)
     linked_field = [args[:field]].first
     args[:document][args[:field]].uniq.map do |field|
