@@ -208,6 +208,7 @@ class CatalogController < ApplicationController
     config.add_show_field "edition_display", label: "Edition", type: :primary
     config.add_show_field "date_copyright_display", label: "Copyright Notice", type: :primary
     config.add_show_field "phys_desc_display", label: "Physical Description", type: :primary
+    config.add_show_field "collection_ms", label: "Collection", type: :primary, helper_method: :record_page_ms_links, multi: true
     config.add_show_field "title_series_display", label: "Series Title"
     config.add_show_field "title_series_vern_display", label: "Series Title"
     config.add_show_field "volume_series_display", label: "Volume"
@@ -241,10 +242,9 @@ class CatalogController < ApplicationController
     config.add_show_field "note_related_display", label: "Related Materials"
     config.add_show_field "note_accruals_display", label: "Additions to Collection"
     config.add_show_field "note_local_display", label: "Local Note"
-    config.add_show_field "donor_info_ms", label: "Donor bookplate", helper_method: :donor_links, multi: true
+    config.add_show_field "donor_info_ms", label: "Donor bookplate", helper_method: :record_page_ms_links, multi: true
     config.add_show_field "subject_display", label: "Subject", helper_method: :subject_links, multi: true
-    config.add_show_field "genre_ms", label: "Genre", helper_method: :genre_links, multi: true
-    config.add_show_field "collection_ms", label: "Collection"
+    config.add_show_field "genre_ms", label: "Genre", helper_method: :record_page_ms_links, multi: true
     config.add_show_field "collection_area_display", label: "SCRC Collecting Area"
 
     # Preceeding Entry fields
