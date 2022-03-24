@@ -461,23 +461,55 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#genre_links" do
-    context "duplicate genres" do
-      let(:args) {
+  describe "#record_page_ms_links" do
+  context "duplicate genres" do
+    let(:args) {
+        {
+          document:
           {
-            document:
-            {
-              genre_ms: [ "foo", "foo", "bar" ]
-            },
-            field: :genre_ms
-          }
+            genre_ms: [ "foo", "foo", "bar" ]
+          },
+          field: :genre_ms
         }
+      }
 
-      it "filters out duplicate genres" do
-        expect(genre_links(args).count).to eq(2)
-      end
+    it "filters out duplicate genres" do
+      expect(record_page_ms_links(args).count).to eq(2)
     end
   end
+
+  context "donor_info_ms" do
+    let(:args) {
+        {
+          document:
+          {
+            donor_info_ms: ["Lois G. Brodsky"]
+          },
+          field: :donor_info_ms
+        }
+      }
+
+    it "displays donor link" do
+      expect(record_page_ms_links(args)).to have_text("Lois G. Brodsky")
+    end
+  end
+
+  context "collection_ms" do
+    let(:args) {
+        {
+          document:
+          {
+            collection_ms: ["Russell Conwell Book Collection"]
+          },
+          field: :collection_ms
+        }
+      }
+
+    it "displays donor link" do
+      expect(record_page_ms_links(args)).to have_text("Russell Conwell Book Collection")
+    end
+  end
+end
 
   describe "#subject_links(args)" do
     let(:base_path) { "foo" }

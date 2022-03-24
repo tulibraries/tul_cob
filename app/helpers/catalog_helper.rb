@@ -434,9 +434,10 @@ module CatalogHelper
     end
   end
 
-  def donor_links(args)
-    args[:document][args[:field]].uniq.map do |donor|
-      link_to(donor, "#{search_catalog_path}?f[donor_info_ms][]=#{CGI.escape donor}")
+  def record_page_ms_links(args)
+    linked_field = [args[:field]].first
+    args[:document][args[:field]].uniq.map do |field|
+      link_to(field, "#{search_catalog_path}?f[#{linked_field}][]=#{CGI.escape field}")
     end
   end
 
