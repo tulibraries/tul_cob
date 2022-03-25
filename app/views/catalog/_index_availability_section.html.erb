@@ -6,17 +6,17 @@
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
     <div class="row button-break pt-md-3"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, params.merge(doc_id: document.id, redirect_to: request.url).except(:page)) %>">
-        <div class="controls">
+        <div class="controls d-inline-flex">
           <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>" data-availability-target="button" id="available_button-<%=  document.id %>" aria-expanded="false" aria-controls="physical-document-<%= document.id %>">
             <i class="fa fa-spinner" aria-busy="true" aria-live="polite"></i>
             <span>Loading...</span>
           </button>
 
-          <div id="requests-container-<%= document.id %>" class="hidden requests-container float-right" data-controller="requests" data-target="show.request" data-availability-target="request">
+          <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-availability-target="request">
             <% if user_signed_in? %>
               <%= request_modal(document.id, @pickup_locations, @request_level) %>
             <% else %>
-              <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-sm btn-primary search-results-request-btn request-btn") %>
+              <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn btn-sm btn-primary search-results-request-btn") %>
             <% end %>
           </div>
         </div>
