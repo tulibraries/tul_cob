@@ -117,10 +117,10 @@ module AvailabilityHelper
     item["current_library"] ? item["current_library"] : item["permanent_library"]
   end
 
-  def library_name_from_short_code(short_code)
-    if !library_name = Rails.configuration.libraries[short_code]
-      Honeybadger.notify("Missing library name configuration for: #{short_code}")
-      library_name = short_code
+  def library_name_from_short_code(library_code)
+    if !library_name = Rails.configuration.libraries[library_code]
+      Honeybadger.notify("Missing library name configuration for: #{library_code}")
+      library_name = library_code
     end
 
     library_name
@@ -131,11 +131,11 @@ module AvailabilityHelper
   end
 
   def location_status(item)
-    location_name_from_short_code(item)
+    Rails.configuration.locations.dig(library(item), location(item)) || location(item)
   end
 
-  def location_name_from_short_code(item)
-    Rails.configuration.locations.dig(library(item), location(item)) || location(item)
+  def location_name_from_short_code(library_code, location_code)
+    Rails.configuration.locations.dig(library_code, location_code) || location_code
   end
 
   def call_number(item)
@@ -153,6 +153,7 @@ module AvailabilityHelper
       .reject { |item| missing_or_lost?(item) }
       .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
+      .transform_values { |v| v.group_by{ |item| location(item) }.sort.to_h }
   end
 
   def summary_list(items)
@@ -180,9 +181,13 @@ module AvailabilityHelper
     sorted_library_hash.merge!("ASRS" => grouped_items.delete("ASRS")) if grouped_items.has_key?("ASRS")
     items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
     sorted_library_hash = sorted_library_hash.merge!(items_hash)
-    sorted_library_hash.each do |lib, items|
-      unless items.empty?
-        items.sort_by! { |item| [location_name_from_short_code(item), alternative_call_number(item), description(item)] }
+    sorted_library_hash.each do |library, locations|
+      unless locations.empty?
+        locations.each do |location, items|
+          unless items.empty?
+            items.sort_by! { |item| [alternative_call_number(item), description(item)] }
+          end
+        end
       end
     end
     sorted_library_hash
