@@ -27,7 +27,11 @@ RSpec.describe AlmawsController, type: :controller do
       id: "12345",
       items_json_display: [
         {
-          item_pid: "23237957740003811"
+          item_pid: "23237957740003811",
+          permanent_library: "AMBLER",
+          permanent_location: "media",
+          current_library: "AMBLER",
+          current_location: "media",
         }
       ]) }
 
@@ -53,7 +57,7 @@ RSpec.describe AlmawsController, type: :controller do
       allow(controller).to receive(:search_service).and_return(search_service)
       get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
-      expect(availability.values.flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
+      expect(availability.dig("AMBLER", "media").flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
     end
 
     it "does not include missing or lost items" do
