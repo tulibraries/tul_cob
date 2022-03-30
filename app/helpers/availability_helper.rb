@@ -153,7 +153,7 @@ module AvailabilityHelper
       .reject { |item| missing_or_lost?(item) }
       .reject { |item| unwanted_library_locations(item) }
       .group_by { |item| library(item) }
-      .transform_values { |v| v.group_by{ |item| location(item) }.sort.to_h }
+      .transform_values { |v| v.group_by { |item| location(item) }.sort.to_h }
   end
 
   def summary_list(items)

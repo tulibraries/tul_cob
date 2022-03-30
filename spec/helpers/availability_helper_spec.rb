@@ -460,10 +460,10 @@ RSpec.describe AvailabilityHelper, type: :helper do
   describe "#location_name_from_short_code(library_code,location_code)" do
     context "location codes are converted to names using translation map" do
       let(:library_code) { "SCRC" }
-      let(:location_code) {"rarestacks"}
+      let(:location_code) { "rarestacks" }
 
       it "displays location name" do
-        expect(location_name_from_short_code(library_code,location_code)).to eq "Reading Room"
+        expect(location_name_from_short_code(library_code, location_code)).to eq "Reading Room"
       end
     end
   end
@@ -519,7 +519,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "uses the library as a key" do
         expect(document_availability_info(document)).to eq("AMBLER" =>
-                                                              {"media" =>
+                                                              { "media" =>
                                                               [{ "call_number" => "DVD 13 A165",
                                                                 "current_library" => "AMBLER",
                                                                 "current_location" => "media",
@@ -527,134 +527,134 @@ RSpec.describe AvailabilityHelper, type: :helper do
                                                                 "item_pid" => "12345",
                                                                 "item_policy" => "5",
                                                                 "permanent_library" => "AMBLER",
-                                                                "permanent_location" => "media" }]})
+                                                                "permanent_location" => "media" }] })
       end
     end
 
     context "groups by location" do
       let(:document) { { "items_json_display" =>
-        [{"item_pid"=>"23245366030003811",
-          "item_policy"=>"0",
-          "permanent_library"=>"KARDON",
-          "permanent_location"=>"p_remote",
-          "current_library"=>"KARDON",
-          "current_location"=>"p_remote",
-          "call_number_type"=>"0",
-          "call_number"=>"N5220.K7",
-          "holding_id"=>"22245366050003811",
-          "material_type"=>"BOOK"},
-         {"item_pid"=>"23245366040003811",
-          "item_policy"=>"0",
-          "permanent_library"=>"KARDON",
-          "permanent_location"=>"p_remote",
-          "current_library"=>"KARDON",
-          "current_location"=>"p_remote",
-          "call_number_type"=>"0",
-          "call_number"=>"N5220.K7",
-          "holding_id"=>"22245366050003811",
-          "material_type"=>"BOOK"}]}
+        [{ "item_pid" => "23245366030003811",
+          "item_policy" => "0",
+          "permanent_library" => "KARDON",
+          "permanent_location" => "p_remote",
+          "current_library" => "KARDON",
+          "current_location" => "p_remote",
+          "call_number_type" => "0",
+          "call_number" => "N5220.K7",
+          "holding_id" => "22245366050003811",
+          "material_type" => "BOOK" },
+         { "item_pid" => "23245366040003811",
+          "item_policy" => "0",
+          "permanent_library" => "KARDON",
+          "permanent_location" => "p_remote",
+          "current_library" => "KARDON",
+          "current_location" => "p_remote",
+          "call_number_type" => "0",
+          "call_number" => "N5220.K7",
+          "holding_id" => "22245366050003811",
+          "material_type" => "BOOK" }] }
         }
 
       it "uses the location as a key" do
         expect(document_availability_info(document)).to eq("KARDON" =>
-          {"p_remote"=>
-            [{"call_number"=>"N5220.K7",
-              "call_number_type"=>"0",
-              "current_library"=>"KARDON",
-              "current_location"=>"p_remote",
-              "holding_id"=>"22245366050003811",
-              "item_pid"=>"23245366030003811",
-              "item_policy"=>"0",
-              "material_type"=>"BOOK",
-              "permanent_library"=>"KARDON",
-              "permanent_location"=>"p_remote"},
-              {"call_number"=>"N5220.K7",
-              "call_number_type"=>"0",
-              "current_library"=>"KARDON",
-              "current_location"=>"p_remote",
-              "holding_id"=>"22245366050003811",
-              "item_pid"=>"23245366040003811",
-              "item_policy"=>"0",
-              "material_type"=>"BOOK",
-              "permanent_library"=>"KARDON",
-              "permanent_location"=>"p_remote"}]})
+          { "p_remote" =>
+            [{ "call_number" => "N5220.K7",
+              "call_number_type" => "0",
+              "current_library" => "KARDON",
+              "current_location" => "p_remote",
+              "holding_id" => "22245366050003811",
+              "item_pid" => "23245366030003811",
+              "item_policy" => "0",
+              "material_type" => "BOOK",
+              "permanent_library" => "KARDON",
+              "permanent_location" => "p_remote" },
+              { "call_number" => "N5220.K7",
+              "call_number_type" => "0",
+              "current_library" => "KARDON",
+              "current_location" => "p_remote",
+              "holding_id" => "22245366050003811",
+              "item_pid" => "23245366040003811",
+              "item_policy" => "0",
+              "material_type" => "BOOK",
+              "permanent_library" => "KARDON",
+              "permanent_location" => "p_remote" }] })
       end
     end
 
     context "groups by multiple locations" do
       let(:document) { { "items_json_display" =>
-        [{"item_pid"=>"23280623450003811",
-        "item_policy"=>"0",
-        "description"=>"2014",
-        "permanent_library"=>"GINSBURG",
-        "permanent_location"=>"stacks",
-        "current_library"=>"GINSBURG",
-        "current_location"=>"stacks",
-        "call_number_type"=>"2",
-        "call_number"=>"WB 39 W319",
-        "holding_id"=>"22280623590003811",
-        "material_type"=>"ISSUE"},
-        {"item_pid"=>"23280623530003811",
-        "item_policy"=>"0",
-        "description"=>"2001",
-        "permanent_library"=>"GINSBURG",
-        "permanent_location"=>"stacks",
-        "current_library"=>"GINSBURG",
-        "current_location"=>"stacks",
-        "call_number_type"=>"2",
-        "call_number"=>"WB 39 W319",
-        "holding_id"=>"22280623590003811",
-        "material_type"=>"ISSUE"},
-        {"item_pid"=>"23468827100003811",
-        "item_policy"=>"16",
-        "description"=>"2020",
-        "permanent_library"=>"GINSBURG",
-        "permanent_location"=>"reserve",
-        "current_library"=>"GINSBURG",
-        "current_location"=>"reserve",
-        "call_number_type"=>"2",
-        "call_number"=>"WB 39 W319",
-        "holding_id"=>"22280623440003811",
-        "material_type"=>"BOOK"}]}
+        [{ "item_pid" => "23280623450003811",
+        "item_policy" => "0",
+        "description" => "2014",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "stacks",
+        "current_library" => "GINSBURG",
+        "current_location" => "stacks",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623590003811",
+        "material_type" => "ISSUE" },
+        { "item_pid" => "23280623530003811",
+        "item_policy" => "0",
+        "description" => "2001",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "stacks",
+        "current_library" => "GINSBURG",
+        "current_location" => "stacks",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623590003811",
+        "material_type" => "ISSUE" },
+        { "item_pid" => "23468827100003811",
+        "item_policy" => "16",
+        "description" => "2020",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "reserve",
+        "current_library" => "GINSBURG",
+        "current_location" => "reserve",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623440003811",
+        "material_type" => "BOOK" }] }
       }
 
       it "uses the location as a key" do
         expect(document_availability_info(document)).to eq("GINSBURG" =>
-          {"reserve"=>
-            [{"call_number"=>"WB 39 W319",
-              "call_number_type"=>"2",
-              "current_library"=>"GINSBURG",
-              "current_location"=>"reserve",
-              "description"=>"2020",
-              "holding_id"=>"22280623440003811",
-              "item_pid"=>"23468827100003811",
-              "item_policy"=>"16",
-              "material_type"=>"BOOK",
-              "permanent_library"=>"GINSBURG",
-              "permanent_location"=>"reserve"}],
-            "stacks"=>
-              [{"call_number"=>"WB 39 W319",
-              "call_number_type"=>"2",
-              "current_library"=>"GINSBURG",
-              "current_location"=>"stacks",
-              "description"=>"2014",
-              "holding_id"=>"22280623590003811",
-              "item_pid"=>"23280623450003811",
-              "item_policy"=>"0",
-              "material_type"=>"ISSUE",
-              "permanent_library"=>"GINSBURG",
-              "permanent_location"=>"stacks"},
-              {"call_number"=>"WB 39 W319",
-              "call_number_type"=>"2",
-              "current_library"=>"GINSBURG",
-              "current_location"=>"stacks",
-              "description"=>"2001",
-              "holding_id"=>"22280623590003811",
-              "item_pid"=>"23280623530003811",
-              "item_policy"=>"0",
-              "material_type"=>"ISSUE",
-              "permanent_library"=>"GINSBURG",
-              "permanent_location"=>"stacks"}]})
+          { "reserve" =>
+            [{ "call_number" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "reserve",
+              "description" => "2020",
+              "holding_id" => "22280623440003811",
+              "item_pid" => "23468827100003811",
+              "item_policy" => "16",
+              "material_type" => "BOOK",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "reserve" }],
+            "stacks" =>
+              [{ "call_number" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "stacks",
+              "description" => "2014",
+              "holding_id" => "22280623590003811",
+              "item_pid" => "23280623450003811",
+              "item_policy" => "0",
+              "material_type" => "ISSUE",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "stacks" },
+              { "call_number" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "stacks",
+              "description" => "2001",
+              "holding_id" => "22280623590003811",
+              "item_pid" => "23280623530003811",
+              "item_policy" => "0",
+              "material_type" => "ISSUE",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "stacks" }] })
       end
 
       it "sorts location alphabetically by default" do
@@ -687,7 +687,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
   describe "#sort_order_for_holdings(grouped_items)" do
     context "items are sorted by library name with Charles first" do
       let(:grouped_items) do { "AMBLER" =>
-        {"stacks" =>
+        { "stacks" =>
         [{ "item_pid" => "23239405700003811",
           "item_policy" => "0",
           "permanent_library" => "AMBLER",
@@ -700,7 +700,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
           "availability" => "<span class=\"check\"></span>Available" }]
         },
         "ASRS" =>
-        {"bookbot" =>
+        { "bookbot" =>
             [{ "item_pid" => "23239405700003811",
               "item_policy" => "0",
               "permanent_library" => "ASRS",
@@ -713,7 +713,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
               "availability" => "<span class=\"check\"></span>Available" }]
         },
        "MAIN" =>
-       {"stacks" =>
+       { "stacks" =>
         [{ "item_pid" => "23239405740003811",
           "item_policy" => "0",
           "permanent_library" => "MAIN",
@@ -740,7 +740,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "items in Kardon sort by Remote Storage, not KARDON" do
       let(:grouped_items) do {
       "KARDON" =>
-      {"p_remote" =>
+      { "p_remote" =>
         [{ "item_pid" => "23243718620003811",
          "item_policy" => "0",
          "permanent_library" => "KARDON",
@@ -753,7 +753,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
          "availability" => "<span class=\"check\"></span>Available" }]
       },
       "MAIN" =>
-      {"stacks" =>
+      { "stacks" =>
          [{ "item_pid" => "23243718640003811",
          "item_policy" => "0",
          "permanent_library" => "MAIN",
@@ -776,7 +776,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "Items are ordered by call number after location" do
       let(:grouped_items) do
         { "MAIN" =>
-          {"stacks" =>
+          { "stacks" =>
           [{ "item_pid" => "23242235660003811",
           "item_policy" => "12",
           "description" => "1992-94",
@@ -823,7 +823,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
     context "Items are ordered by description after call number" do
       let(:grouped_items) do
         { "MAIN" =>
-          {"stacks" =>
+          { "stacks" =>
           [{ "item_pid" => "23242235660003811",
           "item_policy" => "12",
           "description" => "v.55, no.5 (Nov. 2017)",
