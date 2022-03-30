@@ -457,13 +457,13 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
-  describe "#location_name_from_short_code(library_code,location_code)" do
+  describe "#location_name_from_short_codes(library_code,location_code)" do
     context "location codes are converted to names using translation map" do
       let(:library_code) { "SCRC" }
       let(:location_code) { "rarestacks" }
 
       it "displays location name" do
-        expect(location_name_from_short_code(library_code, location_code)).to eq "Reading Room"
+        expect(location_name_from_short_codes(library_code, location_code)).to eq "Reading Room"
       end
     end
   end

@@ -15,7 +15,7 @@
   <% locations.each do |location, items| %>
     <div data-long-list class="m-0" data-controller="availability">
       <div class="d-lg-flex table-heading ml-0 mb-0 border-bottom border-top border-header-grey bg-header-grey justify-content-lg-between avail-list">
-        <h3 class="library-name card-title row-sm col-md"><%= library_name_from_short_code(key) %> - <%= location_name_from_short_code(key, location) %></h3>
+        <h3 class="library-name card-title row-sm col-md"><%= library_name_from_short_code(key) %> - <%= location_name_from_short_codes(key, location) %></h3>
         <div class="holdings-summary row-sm col-md"><%= summary_list(items) %></div>
       </div>
 
