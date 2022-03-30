@@ -134,7 +134,7 @@ module AvailabilityHelper
     Rails.configuration.locations.dig(library(item), location(item)) || location(item)
   end
 
-  def location_name_from_short_codes(library_code, location_code)
+  def location_name_from_short_codes(location_code, library_code = nil)
     Rails.configuration.locations.dig(library_code, location_code) || location_code
   end
 
