@@ -20,6 +20,41 @@
   font-weight: bold;
 }
 
+.availability-table {
+  width: 100%;
+}
+
+.call-number-col, .description-col {
+  width: 30%;
+}
+
+.material-type-col {
+  width: 15%;
+}
+
+.availability-col {
+  width: 25%;
+}
+
+.availability-table thead {
+  @media(max-width: 768px) {
+  display: none;
+  }
+}
+
+.availability-table td {
+  @media(max-width: 768px) {
+  display: block;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: 0;
+
+  :last-child {
+    padding-bottom: 1rem;
+  }
+  }
+}
+
 /* === RECORD PAGE AVAILABILITY === */
 #availability-heading {
   color: $red;

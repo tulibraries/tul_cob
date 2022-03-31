@@ -32,8 +32,8 @@ RSpec.feature "RecordPageFields" do
 
     scenario "items with more than 5 locations should be truncated with a more link" do
       visit  "catalog/#{item["doc_id"]}"
-      expect(page).to have_css("div", text: "Description: 1960, pt.1", visible: true)
-      expect(page).to have_css("div", text: "Description: 1965, pt.4", visible: false)
+      expect(page).to have_css("td", text: "1960, pt.1", visible: true)
+      expect(page).to have_css("td", text: "1965, pt.4", visible: false)
     end
   end
 

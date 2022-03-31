@@ -86,7 +86,7 @@ module AvailabilityHelper
   end
 
   def description(item)
-    item["description"] ? "Description: #{item['description']}" : ""
+    item["description"] ? "#{item['description']}" : ""
   end
 
   def material_type(item)
@@ -100,6 +100,7 @@ module AvailabilityHelper
   end
 
   def public_note(item)
+    item["description"] ? "; " : ""
     item["public_note"] ? "Note: #{item['public_note']}" : ""
   end
 
@@ -162,13 +163,13 @@ module AvailabilityHelper
     }.uniq
      .join(", ")
 
-    summary_list.present? ? "Description: #{summary_list}" : ""
+    summary_list.present? ? "Summary: #{summary_list}" : ""
   end
 
   def render_holdings_summary(items)
     items.collect { |item|
       if item["summary"].present?
-        "Description: " + item["summary"]
+        "Summary: " + item["summary"]
       else
         "We are unable to find availability information for this record. Please contact the library for more information."
       end
