@@ -7,7 +7,7 @@ describe('AvailabilityController', () => {
 
   	    return this.each(function(){
   	      var $list = $(this),
-  	      $children = $list.children().css("display", "flex").filter(function(i){
+  	      $children = $list.children().filter(function(i){
   	        return $(this);
   	      }),
   	      type = $list.data("list-type"),

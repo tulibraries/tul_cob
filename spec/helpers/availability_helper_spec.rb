@@ -262,7 +262,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       let(:item) { { "description" => "v. 1" } }
 
       it "displays description" do
-        expect(description(item)).to eq "Description: v. 1"
+        expect(description(item)).to eq "v. 1"
       end
     end
 
@@ -860,7 +860,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns copies for each library by description" do
         sorted_descriptions = sort_order_for_holdings(grouped_items)["MAIN"]["stacks"].map { |item| description(item) }
-        expect(sorted_descriptions).to eq(["Description: v.42 (2004)", "Description: v.53 (2016)", "Description: v.55, no.5 (Nov. 2017)"])
+        expect(sorted_descriptions).to eq(["v.42 (2004)", "v.53 (2016)", "v.55, no.5 (Nov. 2017)"])
       end
     end
   end
