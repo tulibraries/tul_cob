@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails", "5.2.6.3"
 gem "railties", "5.2.6.3"
 # Use Puma as the app server
-gem "puma", "5.6.2"
+gem "puma", "5.6.4"
 gem "popper_js"
 gem "twitter-typeahead-rails", "0.11.1"
 # Use SCSS for stylesheets
