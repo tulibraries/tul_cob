@@ -15,9 +15,18 @@
   padding: 0.5rem;
 }
 
-.library-name {
-  font-size: 0.875rem;
-  font-weight: bold;
+.holding-name {
+  font-family: "Roboto";
+  font-size: 1.1rem;
+  margin: 0;
+
+  .library-name {
+    font-weight: normal;
+  }
+
+  .location-name {
+    font-weight: lighter;
+  }
 }
 
 .availability-table {
@@ -91,7 +100,7 @@ dd .online-list-items {
 }
 
 .online-list-items, .online-list-item {
-  border-bottom: 0.0625rem solid $dark-blue;
+  border-bottom: 0.0625rem solid $gray-300;
   padding: .5rem;
 }
 
@@ -99,16 +108,22 @@ dd .online-list-items {
   border-top: 0!important;
 }
 
-.library-name {
-  padding-left: 0;
-
-  @media(max-width: 768px) {
-    padding-left: 0;
-  }
-}
-
-.holdings-summary {
+.holding-summary {
   font-weight: normal;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+
+  .summary-label {
+    border-style: solid;
+    border-width: 0.1rem;
+    border-radius: 0.8rem;
+    font-size: 85%;
+    font-weight: normal;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
 
   @media(max-width: 485px) {
     padding-left: 0.625rem;
@@ -116,19 +131,18 @@ dd .online-list-items {
 }
 
 .table-heading {
-  background-color: $header-grey;
-  color: $black;
-  font-size: 0.875rem;
-  font-weight: bold;
-  padding: 0.625rem;
+  background-color: $royal-blue;
+  color: $white;
+  padding: 1rem;
 }
 
 .online-card-heading {
-  background-color: $dark-blue;
+  background-color: $royal-blue;
   color: $white;
-  font-size: 0.875rem;
-  font-weight: bold;
-  padding: 0.625rem;
+  font-family: "Roboto";
+  font-size: 1.1rem;
+  padding: 1rem;
+  margin: 0;
 }
 
 .no-item-info {

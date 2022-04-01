@@ -14,9 +14,11 @@
 <% sort_order_for_holdings(@document_availability).each do |key, locations| %>
   <% locations.each do |location, items| %>
     <div class="m-0" data-controller="availability">
-      <div class="table-heading ml-0 mb-0 border-bottom border-top border-header-grey bg-header-grey">
-        <h3 class="library-name card-title"><%= library_name_from_short_code(key) %> - <%= location_name_from_short_codes(location, key) %></h3>
-        <div class="holdings-summary"><p><%= summary_list(items) %></p></div>
+      <div class="table-heading ml-0 mb-0 border-bottom border-top">
+        <h3 class="holding-name"><span class="library-name"><%= library_name_from_short_code(key) %></span><span class="location-name"> - <%= location_name_from_short_codes(location, key) %></span></h3>
+        <% if summary_list(items).present? %>
+          <div class="holding-summary"><p><%= summary_list(items) %></p></div>
+        <% end %>
       </div>
 
       <%= library_specific_instructions(key, @document) %>

@@ -163,7 +163,7 @@ module AvailabilityHelper
     }.uniq
      .join(", ")
 
-    summary_list.present? ? "Summary: #{summary_list}" : ""
+    summary_list.present? ? content_tag(:span, "Summary", class: "summary-label badge") + " #{summary_list}" : ""
   end
 
   def render_holdings_summary(items)
