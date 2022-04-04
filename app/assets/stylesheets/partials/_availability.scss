@@ -158,35 +158,45 @@ button.online-btn.collapse-button {
   margin-bottom: 0;
 }
 
+button.available,
+button.available:focus,
+button.available:hover,
+button.available:active,
+button.available:visited,
+.purchase-order,
+.online-btn,
+.online-btn:visited,
+.online-btn:hover,
+.online-btn:active,
 .databases-btn,
 .databases-btn:focus,
 .databases-btn:hover,
 .databases-btn:active,
 .databases-btn:visited {
-  background-color: $dark-blue;
-  color: $white;
+  background-color: $crystal-blue;
+  color: $midnight-blue;
+  border-radius: 0;
+  padding: 0.375rem 0.5rem;
 }
 
-button.btn-warning, button.btn-warning:focus, button.btn-warning:hover, button.btn-warning:active, button.btn-warning:visited {
-	background-color: $red;
-	border-color: #d43f3a;
-	color: $white;
+button.btn-warning,
+button.btn-warning:focus,
+button.btn-warning:hover,
+button.btn-warning:active,
+button.btn-warning:visited {
+	background-color: $red !important;
+	border-color: #d43f3a !important;
+	color: $white !important;
   text-align: center;
-  width: 7.5rem;
+  width: 10rem;
+  border-radius: 0;
+  padding: 0.375rem 0.5rem; 
   span.avail-label.not-available {
-  	font-size: 0.8125rem;
+  	font-size: 0.9375rem;
   }
 }
 
-button.available,
-a.purchase-order {
-  background-color: $crystal-blue;
-  color: $midnight-blue;
-}
-
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
-	border: none;
-  border-radius: 0;
   text-align: center;
   width: 10rem;
   span.avail-label.available {
@@ -200,8 +210,6 @@ button.available, button.available:focus, button.available:hover, button.availab
 }
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
-  background-color: $crystal-blue;
-  color: $midnight-blue;
   font-size: 0.9375rem;
   margin-bottom: 0.625rem;
   width: 10rem;
