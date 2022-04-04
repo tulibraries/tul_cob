@@ -66,10 +66,15 @@
 }
 
 /* === REQUEST BUTTON === */
-.request-btn {
+.search-results-request-btn, .record-page-request-btn {
   background-color: $crystal-blue;
   color: $midnight-blue;
   font-size: 0.9375rem;
+  border-radius: 0;
+}
+
+.search-results-request-btn a, .record-page-request-btn {
+  padding: 0.375rem 0.5rem;
 }
 
 #ez-borrow-button {
