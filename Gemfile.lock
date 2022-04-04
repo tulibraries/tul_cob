@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: d7b316867de727259e988cf394ead055f907c54b
+  revision: 2904a97b2a70265abca712b5ed94c5dd467713fd
   branch: main
   specs:
     cob_index (0.1.0)
@@ -534,7 +534,7 @@ GEM
       skylight-core (= 4.3.2)
     skylight-core (4.3.2)
       activesupport (>= 4.2.0)
-    slop (4.9.1)
+    slop (4.9.2)
     solr_wrapper (3.1.3)
       http
       retriable
