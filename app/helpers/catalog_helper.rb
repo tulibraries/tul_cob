@@ -278,7 +278,7 @@ module CatalogHelper
       render partial: "availability_panel", locals: { label: field.label, rows: rows }
 
     elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability border border-header-grey"
+      content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability"
     else
       render_purchase_order_button(document: doc, config: field)
     end
@@ -481,8 +481,14 @@ module CatalogHelper
     title = field.fetch("title", "Find it online")
     electronic_notes = render_electronic_notes(field)
 
-    item_html = [render_alma_eresource_link(field["portfolio_id"], title), field["subtitle"]]
-      .select(&:present?).join(" - ")
+    item_html =
+      if field["subtitle"].present?
+        [render_alma_eresource_link(field["portfolio_id"], field["subtitle"]), title]
+          .select(&:present?).join(" - ")
+      else
+        [render_alma_eresource_link(field["portfolio_id"], title), field["subtitle"]]
+          .select(&:present?).join(" - ")
+      end
     item_html = [item_html, electronic_notes]
       .select(&:present?).join(" ").html_safe
 

@@ -146,7 +146,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
       it "should render purchase allow message" do
         expect(helper).to have_received(:content_tag).with(
-          :div, t("purchase_order.purchase_order_allowed"), class: "availability border border-header-grey"
+          :div, t("purchase_order.purchase_order_allowed"), class: "availability"
         )
       end
     end
@@ -400,8 +400,18 @@ RSpec.describe CatalogHelper, type: :helper do
       } }
 
       it "displays additional information as plain text" do
+        expect(electronic_resource_link_builder(field)).to have_link(text: "Sample Text", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
+        expect(electronic_resource_link_builder(field)).to have_text("Sample Name")
+      end
+    end
+
+    context "porfolio_id, title, and subtitle is not present present" do
+      let(:field) { {
+        "portfolio_id" => "77777", "title" => "Sample Name"
+      } }
+
+      it "displays additional information as plain text" do
         expect(electronic_resource_link_builder(field)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
-        expect(electronic_resource_link_builder(field)).to have_text("Sample Text")
       end
     end
 
