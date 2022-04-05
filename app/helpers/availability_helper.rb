@@ -29,7 +29,11 @@ module AvailabilityHelper
     elsif item.in_place? && item.item_data["requested"] == false
       if item.non_circulating? || item.location == "reserve" ||
           item.circulation_policy == "Bound Journal"
-        content_tag(:span, "", class: "check") + "Library Use Only"
+        content_tag(:span, "", class: "check") + "Available" +
+        content_tag(:p, "", class: "mt-1") +
+        content_tag(:div, data: { toggle: "tooltip", placement: "bottom", container: "body" }, title: "#{t('tooltip.online_only')}", tabindex: "0", class: "info-tooltip") do
+          content_tag(:span, "", class: "information-icon") + "Onsite only"
+        end
       else
         content_tag(:span, "", class: "check") + "Available"
       end

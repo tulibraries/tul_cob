@@ -13,7 +13,7 @@ en:
     call_number_asc: "You are viewing related items by Library of Congress call number. This classification scheme is used to determine the shelf order of the books in our buildings and display similar items by topic here. The ordering (A-Z) shows items that appear after the original item."
     call_number_desc: "You are viewing related items by Library of Congress call number. This classification scheme is used to determine the shelf order of the books in our buildings and display similar items by topic here. The ordering (Z-A) shows items that appear before the original item."
     creator: "You are viewing related items by the first author/creator listed in this record. This is sorted by the most recently published items."
-
+    online_only: "Library use only items cannot be taken out of the library. These items must be used in the building."
   purchase_order:
     purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
     purchase_order_text_1: "Please submit this form to request access to the following ebook:"
