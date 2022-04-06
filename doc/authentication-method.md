@@ -32,7 +32,7 @@ Devise and Omniauth specific configuration are added to the User model. The User
 Access to the SP metadata for the Ruby SAML authentication method is via the /user/auth/saml/metadata path. The XML file defined at this endpoint is what is required to set up an SP identity in the IDP. If changes happen to this metadata the record on the IDP must be updated. And this update needs to happen via the Office of Identity Access since they manage the IDP server.
 
 ## Shibboleth SAML:
-The Ruby method requires both an understanding of application-level code as well as outside processes. Thus, compared to Ruby-SAML it is by far more complicated. Fortunately, some of this complication is managed via an ansible role that takes care of the configuring and running the SP dependencies.
+The Shibboleth method requires both an understanding of application-level code as well as outside processes. Thus, compared to Ruby-SAML it is by far more complicated. Fortunately, some of this complication is managed via an ansible role that takes care of the configuring and running the SP dependencies.
 
 ### Shibd:
 Shibd is a program that runs on a server and provides the role of the SP. It is a separate process from the Ruby application or from the server application (Apache). But it is configured to work with both applications to deliver the authentication feature.
