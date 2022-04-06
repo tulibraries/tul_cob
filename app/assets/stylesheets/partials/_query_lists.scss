@@ -47,8 +47,8 @@ h4.query-item-title {
 }
 
 .tooltip-inner {
-  background-color: #EBEBE9;
-  color: $black;
+  background-color: $royal-blue;
+  color: $white;
   max-width: 400px !important;
 
   @media(max-width: 500px) {
@@ -58,10 +58,6 @@ h4.query-item-title {
 
 .tooltip.show {
     opacity: 1 !important;
-}
-
-.bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
-  border-bottom-color: #EBEBE9 !important;
 }
 
 .query-link {
