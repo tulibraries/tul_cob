@@ -95,7 +95,7 @@ dd .online-list-items {
 }
 
 .online-card {
-  border: 0.0625rem solid $dark-blue;
+  border: 0.0625rem solid $royal-blue;
   padding-left: 0;
 }
 
@@ -215,15 +215,6 @@ button.available, button.available:focus, button.available:hover, button.availab
   width: 10rem;
 }
 
-.temp-help-btn, .temp-help-btn:visited, .temp-help-btn:hover, .temp-help-btn:active {
-  background-color: $dark-blue;
-  color: $white;
-  margin-bottom: 0;
-  @media(max-width: 350px) {
-    margin-top: 5px;
-  }
-}
-
 .bl_alma_iframe {
   border: 0;
   width: 100%;
@@ -259,6 +250,10 @@ button.available, button.available:focus, button.available:hover, button.availab
   margin-top: 0.6rem;
   padding: 0.28rem 0.5rem;
   width: 10.5rem;
+}
 
-
+/* === AVAILABILITY SPECIAL INSTRUCTIONS === */
+.alert-info {
+  background-color: $crystal-blue !important;
+  color: $midnight-blue !important;
 }

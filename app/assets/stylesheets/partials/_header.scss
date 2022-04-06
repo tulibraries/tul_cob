@@ -205,6 +205,7 @@ a#bookmarks_nav {
 /* RECORD NAV TOOLS */
 #start_over,
 #back_to_search {
+	background-color: $royal-blue;
 	margin-right: 0.625rem;
 
 	@media(max-width: 485px) {
