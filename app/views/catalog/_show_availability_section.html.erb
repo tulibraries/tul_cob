@@ -12,9 +12,7 @@
     <div class="availability-card-heading float-right">
       <div id="heading-request ml-auto">
         <%= presenter_field_value(doc_presenter, "po_link") %>
-
-<h2 class="sr-only availability-section"><%= "Availability" %></h2>
-
+        <h2 class="sr-only availability-section"><%= "Availability" %></h2>
         <div id="requests-container" class="hidden">
           <% if user_signed_in? %>
             <%= request_modal(document.id, @pickup_locations, @request_level) %>
