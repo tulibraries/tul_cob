@@ -23,11 +23,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def saml
     auth = request.env["omniauth.auth"]
-
-    # Debugging code
-    # TODO: Remove once we fix k8 authentication
-    doc = Nokogiri::XML auth.extra.response_object.response
-    logger.info(doc.to_xml.pretty_inspect)
+    omniauth_params = request.env["omniauth.params"]
 
     auth.uid = auth.extra.raw_info["urn:oid:2.16.840.1.113730.3.1.3"]
     @user = User.from_omniauth(auth)
@@ -37,7 +33,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     session[:alma_sso_user] = @user.uid
     session[:alma_sso_token] = SecureRandom.hex(10)
     set_flash_message(:success, :success, kind: "Temple Single Sign On") if is_navigational_format?
-    redirect_to params[:target] || helpers.users_account_path
+    redirect_to omniauth_params["target"] || helpers.users_account_path
   end
 
   def failure
