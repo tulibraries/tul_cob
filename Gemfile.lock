@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 5acb7e8476d672688f94cba77079a8f42dca30b7
+  revision: 04e2f9f9c599a3bb02767ad55f93007c5bc5f130
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -402,7 +402,7 @@ GEM
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
     ostruct (0.5.3)
-    parallel (1.22.0)
+    parallel (1.22.1)
     parser (3.1.1.0)
       ast (~> 2.4.1)
     parslet (2.0.0)
@@ -488,7 +488,7 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
-    rubocop (1.26.1)
+    rubocop (1.27.0)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
       rainbow (>= 2.2.2, < 4.0)
