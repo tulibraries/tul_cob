@@ -52,6 +52,9 @@ $(window).on('turbolinks:load', function() {
 });
 
 $(document).ready(function() {
+	$("body").tooltip({
+    selector: '[data-toggle="tooltip"]'
+});
 
 	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
 	$(".secondary-dl").children("dd").addClass("pl-md-3");
@@ -167,10 +170,6 @@ function loadArticleIframe(id) {
 }
 
 $(document).on('turbolinks:load', function() {
-	$(function () {
-	  $('[data-toggle="tooltip"]').tooltip()
-	})
-
 	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");

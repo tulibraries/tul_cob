@@ -59,7 +59,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays library use only" do
-        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+        expect(availability_status(item)).to include("<span class=\"information-icon\"></span>Onsite only")
       end
     end
 
@@ -79,7 +79,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays library use only" do
-        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+        expect(availability_status(item)).to include("<span class=\"information-icon\"></span>Onsite only")
       end
     end
 
@@ -97,7 +97,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays library use only" do
-        expect(availability_status(item)).to eq "<span class=\"check\"></span>Library Use Only"
+        expect(availability_status(item)).to include("<span class=\"information-icon\"></span>Onsite only")
       end
     end
 

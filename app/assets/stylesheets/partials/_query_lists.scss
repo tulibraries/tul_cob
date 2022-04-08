@@ -47,8 +47,8 @@ h4.query-item-title {
 }
 
 .tooltip-inner {
-  background-color: #EBEBE9;
-  color: $black;
+  background-color: $royal-blue;
+  color: $white;
   max-width: 400px !important;
 
   @media(max-width: 500px) {
@@ -60,9 +60,21 @@ h4.query-item-title {
     opacity: 1 !important;
 }
 
-.bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
-  border-bottom-color: #EBEBE9 !important;
-}
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-start .tooltip-arrow::before {
+    border-left-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: $royal-blue;
+  }
 
 .query-link {
   position: absolute;
