@@ -60,6 +60,22 @@ h4.query-item-title {
     opacity: 1 !important;
 }
 
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+    border-top-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+    border-bottom-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-start .tooltip-arrow::before {
+    border-left-color: $royal-blue;
+  }
+
+  .tooltip.bs-tooltip-end .tooltip-arrow::before {
+    border-right-color: $royal-blue;
+  }
+
 .query-link {
   position: absolute;
   width: 100%;
