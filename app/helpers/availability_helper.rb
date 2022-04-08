@@ -27,13 +27,10 @@ module AvailabilityHelper
     elsif item.item_data["awaiting_reshelving"]
       content_tag(:span, "", class: "close-icon") + "Awaiting Reshelving"
     elsif item.in_place? && item.item_data["requested"] == false
-      if item.non_circulating? || item.location == "reserve" ||
-          item.circulation_policy == "Bound Journal"
+      if non_circulating_items(item)
         content_tag(:span, "", class: "check") + "Available" +
         content_tag(:p, "", class: "mt-1") +
-        content_tag(:div, data: { toggle: "tooltip", placement: "bottom", container: "body" }, title: "#{t('tooltip.online_only')}", tabindex: "0", class: "info-tooltip") do
-          content_tag(:span, "", class: "information-icon") + "Onsite only"
-        end
+        content_tag(:span, "", data: { toggle: "tooltip", placement: "bottom", container: "body" }, title: "#{t('tooltip.online_only')}", tabindex: "0", class: "information-icon") + "Onsite only"
       else
         content_tag(:span, "", class: "check") + "Available"
       end
@@ -42,6 +39,14 @@ module AvailabilityHelper
     else
       unavailable_items(item)
     end
+  end
+
+  def non_circulating_items(item)
+    item.non_circulating? ||
+    item.location == "reserve" ||
+    item.circulation_policy == "Bound Journal" ||
+    item.circulation_policy == "Music Restricted" ||
+    item.physical_material_type["desc"] == "Issue" && item.holding_library == "KARDON"
   end
 
   def unavailable_items(item)
