@@ -106,7 +106,7 @@ gem "browser"
 gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "httparty"
 gem "dotenv-rails"
-gem "faraday", "1.8.0"
+gem "faraday", "2.2.0"
 gem "nokogiri", "1.13.4"
 
 group :production do
