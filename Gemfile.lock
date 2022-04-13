@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: df2dd95efbce0be580ef0c4dab044f2cd3e57efd
+  revision: 72589a110eb1bb4e43b22a8203cfcf3bd5851c3b
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -412,7 +412,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.6)
+    public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
