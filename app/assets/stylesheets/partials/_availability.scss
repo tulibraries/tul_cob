@@ -46,6 +46,11 @@
 }
 
 .availability-table thead {
+  th {
+    padding: 0.625rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+
   @media(max-width: 768px) {
   display: none;
   }
@@ -254,6 +259,7 @@ button.available, button.available:focus, button.available:hover, button.availab
 
 /* === AVAILABILITY SPECIAL INSTRUCTIONS === */
 .alert-info {
-  background-color: $crystal-blue !important;
-  color: $midnight-blue !important;
+  background-color: #F0F0F0;
+  border: 1px solid #F0F0F0;
+  color: $midnight-blue;
 }
