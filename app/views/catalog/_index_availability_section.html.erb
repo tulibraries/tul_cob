@@ -22,7 +22,7 @@
         </div>
 
         <div data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" id="physical-document-<%= document.id %>" class="collapse panel-content avail-container index-avail-container mt-1">
-            <div class="border border-header-grey mt-0" data-availability-target="panel">
+            <div class="mt-0" data-availability-target="panel">
               <%= render "physical_availability_card", document: document, document_counter: document.id %>
             </div>
         </div>
