@@ -44,9 +44,7 @@ module AvailabilityHelper
   def non_circulating_items(item)
     item.non_circulating? ||
     item.location == "reserve" ||
-    item.circulation_policy == "Bound Journal" ||
-    item.circulation_policy == "Music Restricted" ||
-    item.physical_material_type["desc"] == "Issue" && item.holding_library == "KARDON"
+    item.circulation_policy == "Bound Journal"
   end
 
   def unavailable_items(item)
