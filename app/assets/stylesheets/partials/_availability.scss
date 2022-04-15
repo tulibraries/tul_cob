@@ -159,10 +159,8 @@ dd .online-list-items {
 }
 
 /* === AVAILABILITY BUTTONS === */
-button.online-btn.collapse-button {
-  @media(min-width: 768px) {
+button.online-btn.collapse-button, a.online-btn.collapse-button {
   margin-bottom: 0;
-  }
 }
 
 button.available,
