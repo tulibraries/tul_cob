@@ -482,11 +482,11 @@ module CatalogHelper
     electronic_notes = render_electronic_notes(field)
 
     item_html =
-      if field["subtitle"].present?
-        [render_alma_eresource_link(field["portfolio_id"], field["subtitle"]), title]
+      if field["coverage_statement"].present?
+        [render_alma_eresource_link(field["portfolio_id"], field["coverage_statement"]), title]
           .select(&:present?).join(" - ")
       else
-        [render_alma_eresource_link(field["portfolio_id"], title), field["subtitle"]]
+        [render_alma_eresource_link(field["portfolio_id"], title), field["coverage_statement"]]
           .select(&:present?).join(" - ")
       end
     item_html = [item_html, electronic_notes]
