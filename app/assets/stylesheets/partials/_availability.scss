@@ -160,7 +160,9 @@ dd .online-list-items {
 
 /* === AVAILABILITY BUTTONS === */
 button.online-btn.collapse-button {
+  @media(min-width: 768px) {
   margin-bottom: 0;
+  }
 }
 
 button.available,
@@ -204,9 +206,7 @@ button.btn-warning:visited {
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
   text-align: center;
   width: 10rem;
-  span.avail-label.available {
-  	font-size: 0.9375rem;
-  }
+  font-size: 0.9375rem;
 }
 
 /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
