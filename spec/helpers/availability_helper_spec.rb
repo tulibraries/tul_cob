@@ -115,7 +115,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
 
       it "displays as available" do
-        expect(availability_status(item)).to include("Onsite only")
+        expect(availability_status(item)).to eq "<span class=\"check\"></span>Available"
       end
     end
 
@@ -193,38 +193,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "displays 'Awaiting Reshelving' status" do
         expect(availability_status(item)).to eq "<span class=\"close-icon\"></span>Awaiting Reshelving"
-      end
-    end
-  end
-
-  describe "#non_circulating_items(item)" do
-    context "item is an issue in KARDON" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "ISSUE", "desc" => "Issue" },
-             "library" =>
-             { "value" => "KARDON", "desc" => "Remote Storage" }
-           }
-         )
-      end
-      it "returns true" do
-        expect(non_circulating_items(item)).to eq true
-      end
-    end
-
-    context "item is an issue in MAIN" do
-      let(:item) do
-        Alma::BibItem.new("item_data" =>
-           { "physical_material_type" =>
-             { "value" => "ISSUE", "desc" => "Issue" },
-             "library" =>
-             { "value" => "MAIN", "desc" => "Charles Library" }
-           }
-         )
-      end
-      it "returns true" do
-        expect(non_circulating_items(item)).to eq false
       end
     end
   end
