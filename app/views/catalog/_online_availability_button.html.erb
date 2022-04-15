@@ -1,5 +1,5 @@
 <% if has_many_electronic_resources?(document) %>
-  <div class="row button-break pt-md-3"></div>
+  <div class="row button-break pt-3"></div>
   <button class="btn online-btn collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="online-<%=  document.id %>">
     <span class="avail-label" aria-expanded="false">Available online</span>
   </button>
@@ -11,7 +11,7 @@
     </div>
   </div>
 <% elsif has_one_electronic_resource?(document) %>
-  <div class="row button-break pt-md-3"></div>
+  <div class="row button-break pt-3"></div>
   <div class="availability">
     <% if controller_name == "databases" %>
       <a href="<%= single_link_builder(document["electronic_resource_display"].first) %>" class="collapse-button btn databases-btn" title="This link opens the resource in a new tab" target="_blank"><span class="avail-label">Go to Database</span></a>

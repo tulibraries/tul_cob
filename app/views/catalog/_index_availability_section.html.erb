@@ -4,7 +4,7 @@
   <%= render_purchase_order_availability(doc_presenter) %>
 
   <% if document.fetch("availability_facet", []).include? "At the Library" %>
-    <div class="row button-break pt-md-3"></div>
+    <div class="row button-break pt-3"></div>
     <div data-controller="availability" data-availability-url="<%= item_url(document.alma_availability_mms_ids.first, params.merge(doc_id: document.id, redirect_to: request.url).except(:page)) %>">
         <div class="controls d-inline-flex">
           <button data-action="availability#item" data-availability-ids="<%= document.alma_availability_mms_ids.join(',') %>" class="btn btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-<%=  document.id %>" data-availability-target="button" id="available_button-<%=  document.id %>" aria-expanded="false" aria-controls="physical-document-<%= document.id %>">
