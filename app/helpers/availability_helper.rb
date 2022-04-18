@@ -29,7 +29,7 @@ module AvailabilityHelper
     elsif item.in_place? && item.item_data["requested"] == false
       if non_circulating_items(item)
         content_tag(:span, "", class: "check") + "Available" +
-        content_tag(:p, "", class: "mt-1") +
+        content_tag(:p, "", class: "m-2") +
         content_tag(:span, "", data: { toggle: "tooltip", placement: "bottom", container: "body" }, title: "#{t('tooltip.online_only')}", tabindex: "0", class: "information-icon") + "Onsite only"
       else
         content_tag(:span, "", class: "check") + "Available"
