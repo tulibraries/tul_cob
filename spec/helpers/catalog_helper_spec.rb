@@ -373,7 +373,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "porfolio_id and title are present" do
+    context "porfolio_id and collection name are present" do
       let(:field) { { "portfolio_id" => "77777", "title" => "Sample Name" } }
 
       it "displays database name if available" do
@@ -385,7 +385,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "only electronic note and title are present" do
+    context "only electronic note and collection name are present" do
       let(:field) { { "portfolio_id" => "77777", "title" => "Sample Name" } }
 
       it "does not contain a separator" do
@@ -394,9 +394,9 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "porfolio_id, title, and subtitle are present" do
+    context "porfolio_id, collection name, and coverage statement are present" do
       let(:field) { {
-        "portfolio_id" => "77777", "title" => "Sample Name", "subtitle" => "Sample Text"
+        "portfolio_id" => "77777", "title" => "Sample Name", "coverage_statement" => "Sample Text"
       } }
 
       it "displays additional information as plain text" do
@@ -405,7 +405,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "porfolio_id, title, and subtitle is not present present" do
+    context "porfolio_id, collection name, and coverage statement is not present present" do
       let(:field) { {
         "portfolio_id" => "77777", "title" => "Sample Name"
       } }
@@ -462,7 +462,7 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
-    context "with title and url" do
+    context "with collection name and url" do
       let(:field) { { "title" => "Access electronic resource.", "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" } }
 
       it "displays z3 subfields if available" do
