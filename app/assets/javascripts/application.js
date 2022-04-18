@@ -170,6 +170,10 @@ function loadArticleIframe(id) {
 }
 
 $(document).on('turbolinks:load', function() {
+	$(function () {
+ 	  $('[data-toggle="tooltip"]').tooltip()
+ 	})
+
 	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
