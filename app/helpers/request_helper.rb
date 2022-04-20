@@ -3,8 +3,8 @@
 module RequestHelper
   include Blacklight::CatalogHelperBehavior
 
-  def request_modal(mms_id, pickup_locations, request_level)
-    link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn request-btn record-page-request-btn", data: { "blacklight-modal": "trigger", "action": "availability#modal show#loading", "availability-target": "href", "show-target": "href" })
+  def request_modal(mms_id, pickup_locations, request_level, request_page_type)
+    link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn request-btn #{request_page_type}-request-btn", data: { "blacklight-modal": "trigger", "action": "availability#modal show#loading", "availability-target": "href", "show-target": "href" })
   end
 
   def request_redirect_url(mms_id)

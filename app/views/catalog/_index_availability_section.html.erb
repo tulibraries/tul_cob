@@ -14,7 +14,7 @@
 
           <div id="requests-container-<%= document.id %>" class="hidden requests-container" data-availability-target="request">
             <% if user_signed_in? %>
-              <%= request_modal(document.id, @pickup_locations, @request_level) %>
+              <%= request_modal(document.id, @pickup_locations, @request_level, "search-results") %>
             <% else %>
               <%= link_to(t("requests.request_button"), doc_redirect_url(document.id),  data: {"blacklight-modal": "trigger"}, class: "btn search-results-request-btn") %>
             <% end %>
