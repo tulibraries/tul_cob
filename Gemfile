@@ -29,7 +29,6 @@ gem "jbuilder", "~> 2.11"
 
 group :development do
   gem "flamegraph"
-  gem "listen", "~> 3.7.1"
   gem "ruby-prof"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -54,8 +53,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_bot_rails"
-  gem "guard-rspec", require: false
-  gem "guard-shell"
   gem "launchy"
   gem "foreman"
   gem "vcr"
