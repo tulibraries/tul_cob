@@ -96,10 +96,6 @@ jobs:
               - node_modules
 
       - run:
-          name: Remove database
-          command: rm -f db/*.sqlite3
-
-      - run:
           name: Set up DB
           command: make ci-setup-db
 

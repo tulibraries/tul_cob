@@ -68,8 +68,7 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 ci-setup-db:
-	$(DOCKER) exec app bundle exec rails db:create
-	$(DOCKER) exec app RAILS_ENV=development bundle exec rake db:migrate
+	$(DOCKER) exec app env RAILS_ENV=test bundle exec rake db:migrate
 
 BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:2.7-alpine
 IMAGE ?= tulibraries/tul_cob
