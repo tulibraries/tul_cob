@@ -96,6 +96,10 @@ jobs:
               - node_modules
 
       - run:
+          name: Set up DB
+          command: make ci-setup-db
+
+      - run:
           name: Run linter
           command: make lint
 
