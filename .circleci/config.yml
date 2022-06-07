@@ -85,11 +85,6 @@ jobs:
           name: Copy the node_modules from the container to local
           command: make ci-copy-node-modules-to-local
 
-      - run:
-          name: Set up DB
-          command: |
-            bundle exec rails db:migrate RAILS_ENV=test
-
       - save_cache:
           key: gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
@@ -98,6 +93,10 @@ jobs:
           key: yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
+
+      - run:
+          name: Set up DB
+          command: bundle exec rails db:migrate RAILS_ENV=test
 
       - run:
           name: Run linter
