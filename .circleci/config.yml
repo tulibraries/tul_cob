@@ -89,18 +89,16 @@ jobs:
           key: gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
+              
       - save_cache:
           key: yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
       - run:
-          name: Set up DB
-          command: make ci-setup-db
-
-      - run:
           name: Run linter
           command: make lint
+
       - run:
           name: Run ruby tests
           command: |
