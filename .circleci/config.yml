@@ -89,11 +89,15 @@ jobs:
           key: gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
-              
+
       - save_cache:
           key: yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
+
+      - run:
+          name: Remove database
+          command: rm -f db/*.sqlite3
 
       - run:
           name: Set up DB
