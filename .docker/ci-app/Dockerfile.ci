@@ -2,6 +2,7 @@ FROM ruby:2.7.5-alpine3.15
 RUN apk --update add nodejs yarn git build-base bash  mysql-dev sqlite-dev tzdata shared-mime-info
 RUN mkdir /app
 WORKDIR /app
+ENV RAILS_ENV='test'
 COPY . .
 RUN gem install bundler:2.3.7
 RUN ls config/*example | xargs -I{} echo {} |  cut -d '.' -f-2 | xargs -I{} cp {}.example {}
