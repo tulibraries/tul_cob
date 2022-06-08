@@ -53,7 +53,6 @@ SPEC_ROOT = File.dirname __FILE__
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.filter_run_excluding lib_guides_relevance: true
-  config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:each) do
     Honeybadger::Backend::Test.notifications[:notices] = []

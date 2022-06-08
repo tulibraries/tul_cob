@@ -34,7 +34,8 @@
     <h1 class="text-center pr-md-4 d-none d-md-block">
       <%= link_to("Library Search", everything_path, id: "catalog-header") %>
     </h1>
-    <%= render_search_bar %>
+    <%# Change this back to render_search_bar method when upgrading Blacklight %>
+    <%= render :partial => 'catalog/search_form' %>
   </div>
 </nav>
 
