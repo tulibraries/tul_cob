@@ -49,6 +49,9 @@ We need to run two commands in separate terminal windows in order to start the a
 bundle exec rake server
 ```
 
+#### Platform Considerations
+If building a docker image on m1/arm64 chip set PLATFORM env to PLATFORM=arm64 so that docker pulls an arm64 image compatible with your system.
+
 ### Start the Application with some sample data for Development
 
 You can also have it ingest a few thousand sample records by setting the

@@ -67,11 +67,13 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
+BASE_IMAGE ?= "ruby:2.7-alpine"
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 CI ?= false
+PLATFORM ?= x86_64
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -104,6 +106,8 @@ run:
 
 build:
 	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
+    --build-arg BASE_IMAGE=$(BASE_IMAGE) \
+		--platform $(PLATFORM) \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
 		--file .docker/app/Dockerfile.prod \
