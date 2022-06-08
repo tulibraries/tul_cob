@@ -1,4 +1,4 @@
 ---
+api_key: 'foobar'
 test:
   backend: test
-  api_key: 'foobar'
