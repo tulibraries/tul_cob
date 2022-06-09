@@ -20,11 +20,6 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "new session not over ajax" do
-    it "should not set no-cache headers" do
-      get :new
-      expect(response.headers["Pragma"]).to be_nil
-    end
-
     it "should generate a @document.class SolrDocument" do
       get :new
       expect(controller.instance_variable_get("@document").class).to eq(SolrDocument)
