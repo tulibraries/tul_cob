@@ -67,7 +67,7 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
-BASE_IMAGE ?= "ruby:2.7-alpine"
+BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.1.0-alpine
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
