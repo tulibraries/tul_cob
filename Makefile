@@ -67,16 +67,17 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
-BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.1.0-alpine
+BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:2.7-alpine
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 CI ?= false
-PLATFORM ?= x86_64
+PLATFORM ?= linux/aarch64
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
+		--platform $(PLATFORM) \
 		-e "ALMA_API_KEY=$(ALMA_API_KEY)" \
 		-e "ALMA_AUTH_SECRET=$(ALMA_AUTH_SECRET)" \
 		-e "ALMA_DELIVERY_DOMAIN=$(ALMA_DELIVERY_DOMAIN)" \
