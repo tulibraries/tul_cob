@@ -272,6 +272,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     ffi (1.15.5)
+    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -619,7 +620,10 @@ GEM
     yell (2.2.2)
 
 PLATFORMS
+  aarch64-linux
+  arm64-darwin
   ruby
+  unknown
 
 DEPENDENCIES
   alma!
@@ -704,4 +708,4 @@ DEPENDENCIES
   webpacker (= 6.0.0.rc.6)
 
 BUNDLED WITH
-   2.3.7
+   2.3.9

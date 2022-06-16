@@ -49,6 +49,9 @@ We need to run two commands in separate terminal windows in order to start the a
 bundle exec rake server
 ```
 
+#### Platform Considerations
+If building a docker image on m1/arm64 chip set PLATFORM env to PLATFORM=arm64 so that docker pulls an arm64 image compatible with your system.
+
 ### Start the Application with some sample data for Development
 
 You can also have it ingest a few thousand sample records by setting the
@@ -71,8 +74,10 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
 * To reload solr configs, run ```make reload-configs```
 * To attatch to the running app container (good for debugging) ```make attach```
-* To build prod image: ```make build ASSETS_PRECOMPILE=yes```
+* To build prod image: ```make build ASSETS_PRECOMPILE=yes PLATFORM=arm64 BUILD_IMAGE=ruby:3.1.0-alpine```
   * `ASSETS_PRECOMPILE=no` by default
+  * `PLATFORM=x86_64` by default
+  * `BASE_IMAGE=harbor.k8s.temple.edu/library/ruby:3.1.0-alpine` by default
 * To deploy prod image: ```make deploy VERSION=x```  VERSION=latest by default
 * To run security check on image: ```make secure``` depends on trivy (brew install aquasecurity/trivy/trivy)
 * To run a shell with image: ```make shell```
