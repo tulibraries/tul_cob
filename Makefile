@@ -67,6 +67,9 @@ ci-bundle-install:
 ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
+ci-setup-db:
+	$(DOCKER) exec app bundle exec rake db:migrate
+
 BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:2.7-alpine
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)

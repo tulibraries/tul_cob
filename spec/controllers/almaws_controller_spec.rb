@@ -180,10 +180,10 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "forwards the alma error to honeybadger", with_rescue: true do
         error = "Alma::RequestOptions::ResponseError: {\"error\":\"phhhht\"}"
+        Honeybadger.flush
         expect(Honeybadger::Backend::Test.notifications[:notices].last.error_message).to eq(error)
       end
     end
-
   end
 
   describe "POST #send_hold_request action" do

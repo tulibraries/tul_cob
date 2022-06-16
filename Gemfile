@@ -3,8 +3,8 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "5.2.7.1"
-gem "railties", "5.2.7.1"
+gem "rails", "6.1.5"
+gem "railties"
 # Use Puma as the app server
 gem "puma", "5.6.4"
 gem "popper_js"
@@ -29,7 +29,6 @@ gem "jbuilder", "~> 2.11"
 
 group :development do
   gem "flamegraph"
-  gem "listen", "~> 3.7.1"
   gem "ruby-prof"
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
@@ -54,8 +53,6 @@ group :development, :test do
   gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_bot_rails"
-  gem "guard-rspec", require: false
-  gem "guard-shell"
   gem "launchy"
   gem "foreman"
   gem "vcr"
@@ -87,10 +84,10 @@ gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 gem "lc_solr_sortable", git: "https://github.com/tulibraries/lc_solr_sortable", branch: "main"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
 gem "hashie", "~>4.1.0"
-gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "update-blacklight"
+gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "main"
 gem "ezwadl"
 gem "awesome_print"
-gem "bento_search"
+gem "bento_search", git: "https://github.com/tulibraries/bento_search.git", branch: "allow-rails-6"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-shibboleth"

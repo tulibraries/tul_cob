@@ -29,15 +29,31 @@ GIT
       xml-simple
 
 GIT
+  remote: https://github.com/tulibraries/bento_search.git
+  revision: 27eb872141705b03a3aced16e371a4a9dbf70a49
+  branch: allow-rails-6
+  specs:
+    bento_search (1.8.0)
+      confstruct (~> 1.0)
+      htmlentities
+      httpclient (>= 2.2.5, < 3.0.0)
+      language_list (~> 1.0)
+      multi_json (>= 1.0.4, < 2.0)
+      nokogiri
+      openurl (>= 0.3.1, < 1.1)
+      rails (>= 3.2.3, < 7)
+      summon
+
+GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: dbf7c2b931f10b4d04f0b1c72cbee9b2c4ef8556
-  branch: update-blacklight
+  revision: 2c45022e573e1f461dcfa8549fe5a1c5b186ae29
+  branch: main
   specs:
     blacklight_alma (0.0.1)
       blacklight (~> 7.0)
       ezwadl (= 0.0.1)
       jwt (= 1.5.6)
-      rails (>= 4.2, < 6)
+      rails (>= 5.2, < 7)
 
 GIT
   remote: https://github.com/tulibraries/blacklight_range_limit.git
@@ -113,65 +129,72 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.2.7.1)
-      actionpack (= 5.2.7.1)
+    actioncable (6.1.5)
+      actionpack (= 6.1.5)
+      activesupport (= 6.1.5)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
-    actionmailer (5.2.7.1)
-      actionpack (= 5.2.7.1)
-      actionview (= 5.2.7.1)
-      activejob (= 5.2.7.1)
+    actionmailbox (6.1.5)
+      actionpack (= 6.1.5)
+      activejob (= 6.1.5)
+      activerecord (= 6.1.5)
+      activestorage (= 6.1.5)
+      activesupport (= 6.1.5)
+      mail (>= 2.7.1)
+    actionmailer (6.1.5)
+      actionpack (= 6.1.5)
+      actionview (= 6.1.5)
+      activejob (= 6.1.5)
+      activesupport (= 6.1.5)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.2.7.1)
-      actionview (= 5.2.7.1)
-      activesupport (= 5.2.7.1)
-      rack (~> 2.0, >= 2.0.8)
+    actionpack (6.1.5)
+      actionview (= 6.1.5)
+      activesupport (= 6.1.5)
+      rack (~> 2.0, >= 2.0.9)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.2.7.1)
-      activesupport (= 5.2.7.1)
+      rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actiontext (6.1.5)
+      actionpack (= 6.1.5)
+      activerecord (= 6.1.5)
+      activestorage (= 6.1.5)
+      activesupport (= 6.1.5)
+      nokogiri (>= 1.8.5)
+    actionview (6.1.5)
+      activesupport (= 6.1.5)
       builder (~> 3.1)
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
-      rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    activejob (5.2.7.1)
-      activesupport (= 5.2.7.1)
+      rails-html-sanitizer (~> 1.1, >= 1.2.0)
+    activejob (6.1.5)
+      activesupport (= 6.1.5)
       globalid (>= 0.3.6)
-    activemodel (5.2.7.1)
-      activesupport (= 5.2.7.1)
-    activerecord (5.2.7.1)
-      activemodel (= 5.2.7.1)
-      activesupport (= 5.2.7.1)
-      arel (>= 9.0)
-    activestorage (5.2.7.1)
-      actionpack (= 5.2.7.1)
-      activerecord (= 5.2.7.1)
-      marcel (~> 1.0.0)
-    activesupport (5.2.7.1)
+    activemodel (6.1.5)
+      activesupport (= 6.1.5)
+    activerecord (6.1.5)
+      activemodel (= 6.1.5)
+      activesupport (= 6.1.5)
+    activestorage (6.1.5)
+      actionpack (= 6.1.5)
+      activejob (= 6.1.5)
+      activerecord (= 6.1.5)
+      activesupport (= 6.1.5)
+      marcel (~> 1.0)
+      mini_mime (>= 1.1.0)
+    activesupport (6.1.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      i18n (>= 0.7, < 2)
-      minitest (~> 5.1)
-      tzinfo (~> 1.1)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+      zeitwerk (~> 2.3)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
-    arel (9.0.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.2.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    bcrypt (3.1.16)
-    bento_search (1.7.0)
-      confstruct (~> 1.0)
-      htmlentities
-      httpclient (>= 2.2.5, < 3.0.0)
-      language_list (~> 1.0)
-      multi_json (>= 1.0.4, < 2.0)
-      nokogiri
-      openurl (>= 0.3.1, < 1.1)
-      rails (>= 3.2.3, < 6)
-      summon
+    bcrypt (3.1.17)
     bindex (0.8.1)
     blacklight (7.19.2)
       deprecation
@@ -247,7 +270,7 @@ GEM
     ezwadl (0.0.1)
       httparty (~> 0.14)
       nokogiri (~> 1.6)
-    factory_bot (6.2.0)
+    factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
@@ -278,28 +301,10 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.87.2)
-    formatador (1.1.0)
     gli (2.21.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     google-analytics-rails (1.1.1)
-    guard (2.18.0)
-      formatador (>= 0.2.4)
-      listen (>= 2.7, < 4.0)
-      lumberjack (>= 1.0.12, < 2.0)
-      nenv (~> 0.1)
-      notiffany (~> 0.0)
-      pry (>= 0.13.0)
-      shellany (~> 0.0)
-      thor (>= 0.18.1)
-    guard-compat (1.2.1)
-    guard-rspec (4.7.3)
-      guard (~> 2.1)
-      guard-compat (~> 1.1)
-      rspec (>= 2.99.0, < 4.0)
-    guard-shell (0.7.2)
-      guard (>= 2.0.0)
-      guard-compat (~> 1.0)
     hashdiff (1.0.1)
     hashie (4.1.0)
     honeybadger (4.12.1)
@@ -354,7 +359,6 @@ GEM
     loofah (2.17.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.2.8)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marc (1.1.1)
@@ -372,19 +376,15 @@ GEM
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
     minitest (5.15.0)
-    msgpack (1.4.5)
+    msgpack (1.5.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.5.3)
-    nenv (0.3.0)
     nio4r (2.5.8)
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    notiffany (0.1.3)
-      nenv (~> 0.1)
-      shellany (~> 0.0)
     okcomputer (1.18.4)
     omniauth (2.0.4)
       hashie (>= 3.4.6)
@@ -402,7 +402,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.5.3)
+    ostruct (0.5.5)
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
@@ -426,18 +426,20 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rails (5.2.7.1)
-      actioncable (= 5.2.7.1)
-      actionmailer (= 5.2.7.1)
-      actionpack (= 5.2.7.1)
-      actionview (= 5.2.7.1)
-      activejob (= 5.2.7.1)
-      activemodel (= 5.2.7.1)
-      activerecord (= 5.2.7.1)
-      activestorage (= 5.2.7.1)
-      activesupport (= 5.2.7.1)
-      bundler (>= 1.3.0)
-      railties (= 5.2.7.1)
+    rails (6.1.5)
+      actioncable (= 6.1.5)
+      actionmailbox (= 6.1.5)
+      actionmailer (= 6.1.5)
+      actionpack (= 6.1.5)
+      actiontext (= 6.1.5)
+      actionview (= 6.1.5)
+      activejob (= 6.1.5)
+      activemodel (= 6.1.5)
+      activerecord (= 6.1.5)
+      activestorage (= 6.1.5)
+      activesupport (= 6.1.5)
+      bundler (>= 1.15.0)
+      railties (= 6.1.5)
       sprockets-rails (>= 2.0.0)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
@@ -448,12 +450,12 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
-    railties (5.2.7.1)
-      actionpack (= 5.2.7.1)
-      activesupport (= 5.2.7.1)
+    railties (6.1.5)
+      actionpack (= 6.1.5)
+      activesupport (= 6.1.5)
       method_source
-      rake (>= 0.8.7)
-      thor (>= 0.19.0, < 2.0)
+      rake (>= 12.2)
+      thor (~> 1.0)
     rainbow (3.1.1)
     rake (13.0.6)
     rb-fsevent (0.11.1)
@@ -468,10 +470,6 @@ GEM
     rsolr (2.5.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
-    rspec (3.11.0)
-      rspec-core (~> 3.11.0)
-      rspec-expectations (~> 3.11.0)
-      rspec-mocks (~> 3.11.0)
     rspec-core (3.11.0)
       rspec-support (~> 3.11.0)
     rspec-expectations (3.11.0)
@@ -523,7 +521,6 @@ GEM
       tilt
     scrub_rb (1.0.1)
     semantic_range (3.0.0)
-    shellany (0.0.1)
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -557,7 +554,6 @@ GEM
     summon (2.0.5)
       json
     thor (1.2.1)
-    thread_safe (0.3.6)
     tilt (2.0.10)
     traject (3.7.0)
       concurrent-ruby (>= 0.8.0)
@@ -582,8 +578,8 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.9)
-      thread_safe (~> 0.1)
+    tzinfo (2.0.4)
+      concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
@@ -591,16 +587,16 @@ GEM
     unf_ext (0.0.8.1)
     unicode-display_width (2.1.0)
     vcr (6.1.0)
-    view_component (2.49.1)
+    view_component (2.52.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (3.7.0)
-      actionview (>= 5.0)
-      activemodel (>= 5.0)
+    web-console (4.2.0)
+      actionview (>= 6.0.0)
+      activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
-      railties (>= 5.0)
+      railties (>= 6.0.0)
     webmock (3.14.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -618,6 +614,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
+    zeitwerk (2.5.4)
 
 PLATFORMS
   aarch64-linux
@@ -629,7 +626,7 @@ DEPENDENCIES
   alma!
   autoprefixer-rails
   awesome_print
-  bento_search
+  bento_search!
   blacklight (~> 7.19.2)
   blacklight-marc
   blacklight-ris!
@@ -658,8 +655,6 @@ DEPENDENCIES
   flamegraph
   foreman
   google-analytics-rails (= 1.1.1)
-  guard-rspec
-  guard-shell
   hashie (~> 4.1.0)
   honeybadger (= 4.12.1)
   httparty
@@ -667,7 +662,6 @@ DEPENDENCIES
   jquery-rails
   launchy
   lc_solr_sortable!
-  listen (~> 3.7.1)
   mysql2 (~> 0.5.3)
   nokogiri (= 1.13.6)
   okcomputer
@@ -680,9 +674,9 @@ DEPENDENCIES
   pry-rails
   puma (= 5.6.4)
   rack-mini-profiler
-  rails (= 5.2.7.1)
+  rails (= 6.1.5)
   rails-controller-testing
-  railties (= 5.2.7.1)
+  railties
   rsolr (~> 2.4)
   rspec-rails
   rubocop

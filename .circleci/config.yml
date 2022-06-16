@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.2
+  ruby: circleci/ruby@1.8
   coveralls: coveralls/coveralls@1.0.6
 
 workflows:
@@ -45,7 +45,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:2.7.2-node
+      - image: cimg/ruby:2.7.5-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -54,14 +54,14 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v6-{{ arch }}-{{ .Branch }}
-            - gem-cache-v6-{{ arch }}
-            - yarn-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v7-{{ arch }}-{{ .Branch }}
+            - gem-cache-v7-{{ arch }}
+            - yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
-          version: 19.03.13
+          version: 20.10.11
 
       - run: if [ -e /var/run/docker.sock ]; then sudo chown circleci:circleci /var/run/docker.sock; fi
 
@@ -86,17 +86,23 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - save_cache:
-          key: gem-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
+
       - save_cache:
-          key: yarn-cache-v6-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
       - run:
+          name: Set up DB
+          command: make ci-setup-db
+
+      - run:
           name: Run linter
           command: make lint
+
       - run:
           name: Run ruby tests
           command: |
