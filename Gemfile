@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "6.1.5"
+gem "rails", "6.1.6"
 gem "railties"
 # Use Puma as the app server
 gem "puma", "5.6.4"
@@ -87,7 +87,7 @@ gem "hashie", "~>4.1.0"
 gem "blacklight_alma", git: "https://github.com/tulibraries/blacklight_alma.git", branch: "main"
 gem "ezwadl"
 gem "awesome_print"
-gem "bento_search", git: "https://github.com/tulibraries/bento_search.git", branch: "allow-rails-6"
+gem "bento_search"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "omniauth-shibboleth"

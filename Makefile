@@ -76,7 +76,7 @@ VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 CI ?= false
-PLATFORM ?= linux/aarch64
+PLATFORM ?= linux/x86_64
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
