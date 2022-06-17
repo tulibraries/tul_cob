@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 586cc28e8b19a0e221f70a0190d938907db12f47
+  revision: 0ec4429334ce7ae6c8353b51beda973ff4f9043d
   branch: main
   specs:
     cob_index (0.1.0)
@@ -290,7 +290,6 @@ GEM
     faraday-rack (1.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
-    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -304,12 +303,12 @@ GEM
     hashie (4.1.0)
     honeybadger (4.12.1)
     htmlentities (4.3.4)
-    http (5.0.4)
+    http (5.1.0)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.4.0)
-    http-cookie (1.0.4)
+    http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httparty (0.20.0)
@@ -360,7 +359,7 @@ GEM
       rexml
       scrub_rb (>= 1.0.1, < 2)
       unf
-    marc-fastxmlwriter (1.0.0)
+    marc-fastxmlwriter (1.1.0)
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
