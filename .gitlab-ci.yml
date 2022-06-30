@@ -48,6 +48,21 @@ tag:
   stage: tag
   extends: .tag_image
 
+qa_deploy:
+  variables:
+    IMAGE: harbor.k8s.temple.edu/tulibraries/tupress
+    RANCHER: rancher-np
+    CLUSTER: dev-library
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - main
+  script:
+    - *export_variables
+    - helm repo add tulibraries https://$HARBOR/chartrepo/tulibraries
+    - helm pull tulibraries/cob --untar
+    - helm upgrade cob ./cob --history-max=5 --namespace=cob-qa --set image.repository=$IMAGE:$VERSION
+
 deploy:
   variables:
     IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
