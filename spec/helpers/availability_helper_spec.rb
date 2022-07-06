@@ -20,29 +20,13 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
 
-    context "item is in storage and campus is closed" do
+    context "item is in temporary MAIN storage" do
       let(:item) do
-        Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
+        Alma::BibItem.new("item_data" => { "current_location" => "storage" })
       end
 
-      it "links to new outside form" do
-        label = "<span class=\"close-icon\"></span>In temporary storage"
-
-        expect(availability_status(item)).to eq(label)
-      end
-    end
-
-    context "item is in storage and campus is opened" do
-      let(:item) do
-        Alma::BibItem.new("item_data" => { "location" => { "value" => "storage" } })
-      end
-
-      let(:campus_closed?)  { false }
-
-      it "links to new outside form" do
-        label = "<span class=\"close-icon\"></span>In temporary storage — <a href=\"https://library.temple.edu/forms/storage-request\">Recall item now</a>"
-
-        expect(availability_status(item)).to eq(label)
+      it "displays Temporarily unavailable" do
+        label = "<span class=\"close-icon\"></span>Temporarily unavailable"
       end
     end
 
