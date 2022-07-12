@@ -53,6 +53,7 @@ coverage
 config/alma.yml
 config/bento.yml
 config/deploy_to.yml
+config/master.key
 
 spec/examples.txt
 /public/packs-test
