@@ -60,8 +60,8 @@ qa_deploy:
   script:
     - *export_variables
     - helm repo add tulibraries https://$HARBOR/chartrepo/tulibraries
-    - helm pull tulibraries/cob --untar
-    - helm upgrade cob ./cob --history-max=5 --namespace=cob-qa --set image.repository=$IMAGE:$VERSION
+    - helm pull tulibraries/librarysearch --untar
+    - helm upgrade librarysearch ./librarysearch --history-max=5 --namespace=librarysearch-qa --set image.repository=$IMAGE:$VERSION
 
 deploy:
   variables:
