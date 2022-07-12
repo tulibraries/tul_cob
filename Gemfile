@@ -31,7 +31,6 @@ group :development do
   gem "flamegraph"
   gem "ruby-prof"
   gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "stackprof"
   gem "web-console"
   gem "sqlite3"
