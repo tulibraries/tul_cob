@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "6.1.6"
+gem "rails", "6.1.6.1"
 gem "railties"
 # Use Puma as the app server
 gem "puma", "5.6.4"
