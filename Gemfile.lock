@@ -190,15 +190,16 @@ GEM
       rails (>= 5.2, < 7)
       summon
     bindex (0.8.1)
-    blacklight (7.19.2)
+    blacklight (7.28.0)
       deprecation
       globalid
+      hashdiff
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7)
-      view_component (>= 2.28.0)
+      rails (>= 5.1, < 7.1)
+      view_component (~> 2.43)
     blacklight-marc (7.1.1)
       blacklight (~> 7.0)
       library_stdnums
@@ -575,7 +576,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.1.0)
     vcr (6.1.0)
-    view_component (2.52.0)
+    view_component (2.61.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
@@ -615,7 +616,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bento_search
-  blacklight (~> 7.19.2)
+  blacklight (~> 7.28.0)
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
