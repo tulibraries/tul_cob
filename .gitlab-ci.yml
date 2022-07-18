@@ -50,7 +50,7 @@ tag:
 
 qa_deploy:
   variables:
-    IMAGE: harbor.k8s.temple.edu/tulibraries/tupress
+    IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
     RANCHER: rancher-np
     CLUSTER: dev-library
   stage: deploy
