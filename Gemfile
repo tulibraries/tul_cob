@@ -17,7 +17,7 @@ gem "uglifier", ">= 1.3.0"
 gem "coffee-rails", "~> 5.0"
 gem "autoprefixer-rails"
 gem "execjs"
-gem "bootstrap", "~> 4.6"
+gem "bootstrap", "~> 5.1"
 
 # Use jquery as the JavaScript library
 gem "jquery-rails"
