@@ -228,7 +228,7 @@ class AlmawsController < CatalogController
   end
 
   def offset_too_large
-    render html: "<p class='m-2'>Please contact the library service desk for additional assistance.</p>".html_safe, status: :bad_gateway
+    render html: "<p class='m-2'>Availability information can not be loaded. Contact a librarian for help.</p>".html_safe, status: :bad_gateway
   end
 
   private
