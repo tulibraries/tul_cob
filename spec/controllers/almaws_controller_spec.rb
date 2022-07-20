@@ -337,7 +337,7 @@ RSpec.describe AlmawsController, type: :controller do
     it "renders the html response", with_rescue: true do
       allow(controller).to receive(:item) { raise Alma::BibItemSet::ResponseError.new("test") }
       get :item, params
-      expect(response.body).to eq("<p class='m-2'>Please contact the library service desk for additional assistance.</p>")
+      expect(response.body).to eq("<p class='m-2'>Availability information can not be loaded. Contact a librarian for help.</p>")
       expect(response.code).to eq "502"
     end
   end
