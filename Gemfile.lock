@@ -90,7 +90,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: e3d151337cbf76e78cecf4cf4ecd98f63f72df44
+  revision: 95b800284b6807909bda05b97472bd6e49e53d2a
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -291,6 +291,7 @@ GEM
     faraday-rack (1.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
+    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
