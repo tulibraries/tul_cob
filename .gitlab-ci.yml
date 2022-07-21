@@ -61,7 +61,8 @@ qa_deploy:
     - main
   script:
     - *export_variables
-    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.1.*" --history-max=5 --namespace=librarysearch-qa --values values.yaml
+    -  helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.1.*" --untar
+    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.1.*" --history-max=5 --namespace=librarysearch-qa --values librarysearch/values.yaml
 
 deploy:
   variables:
