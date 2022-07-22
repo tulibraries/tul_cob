@@ -1,3 +1,7 @@
 <% if document.libkey_url.present? %>
-  <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn online-btn libkey-btn", target: "_blank" %>
+  <% if document.libkey_url_retracted? %>
+    <%= link_to t("articles.retracted_button_html"), document.libkey_url, class: "btn online-btn libkey-btn", target: "_blank" %>
+  <% else %>
+    <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn online-btn libkey-btn", target: "_blank" %>
+  <% end %>
 <% end %>

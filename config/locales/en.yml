@@ -194,6 +194,7 @@ en:
       title_html: "<strong>No article results</strong> found for your search."
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
     libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
+    retracted_button_html: "Retracted article <span class='libkey-external-link-icon'></span>"
   website:
     section_heading_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
     explanation_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."

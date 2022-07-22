@@ -278,6 +278,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
 
       it "returns a nil" do
         expect(subject.libkey_url).to be_nil
+        expect(subject.libkey_url_retracted?).to be_nil
       end
     end
 
@@ -294,6 +295,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
                     }))
 
         expect(subject.libkey_url).to eq("https://www.google.com")
+        expect(subject.libkey_url_retracted?).to be false
       end
     end
 
@@ -307,7 +309,27 @@ RSpec.describe PrimoCentralDocument, type: :model do
                     body: JSON.dump(data: { contentLocation: "https://www.temple.edu" }))
 
         expect(subject.libkey_url).to eq("https://www.temple.edu")
+        expect(subject.libkey_url_retracted?).to be false
       end
     end
+
+    context "retractionNoticeUrl present" do
+      let(:doc) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+
+      it "returns the fullTextFile URL string" do
+        stub_request(:get, /articles/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: {
+                      fullTextFile: "https://www.google.com",
+                      contentLocation: "https://www.temple.edu",
+                      retractionNoticeUrl: "https://librarysearch.temple.edu"
+                    }))
+
+        expect(subject.libkey_url).to eq("https://librarysearch.temple.edu")
+        expect(subject.libkey_url_retracted?).to be true
+      end
+    end
+
   end
 end

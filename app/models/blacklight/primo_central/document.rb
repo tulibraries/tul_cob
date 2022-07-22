@@ -91,7 +91,11 @@ module Blacklight::PrimoCentral::Document
   end
 
   def libkey_url
-    @libkey_url_thread.value
+    @libkey_url_thread.value&.values&.find(&:present?)
+  end
+
+  def libkey_url_retracted?
+    @libkey_url_thread.value&.has_key?("retractionNoticeUrl")
   end
 
 
@@ -146,8 +150,7 @@ module Blacklight::PrimoCentral::Document
 
       Thread.new {
         (HTTParty.get(libkey_url, timeout: 2) rescue {})["data"]
-          &.slice("fullTextFile", "contentLocation")
-          &.values&.find(&:present?)
+          &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
       }
     end
 end
