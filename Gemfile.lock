@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 9fbca4113cf0b6586d13f5e4d9c42369fe470a5a
+  revision: f1ae82e7ff9d52ba898f9fcbcdaaf921ef0eedc0
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -90,7 +90,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: e3d151337cbf76e78cecf4cf4ecd98f63f72df44
+  revision: 95b800284b6807909bda05b97472bd6e49e53d2a
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -565,7 +565,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (2.0.4)
+    tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
