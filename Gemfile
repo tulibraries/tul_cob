@@ -106,7 +106,7 @@ gem "faraday", "1.8.0"
 gem "nokogiri", "1.13.6"
 
 group :production do
-  gem "mysql2", "~> 0.5.3"
+  gem "mysql2", "~> 0.5.4"
   # required for using memcached
   gem "dalli"
 end
