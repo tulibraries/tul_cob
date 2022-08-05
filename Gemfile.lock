@@ -538,7 +538,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.4)
-    stackprof (0.2.19)
+    stackprof (0.2.20)
     summon (2.0.5)
       json
     thor (1.2.1)
