@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   before_action :get_manifold_alerts, only: [
     :index, :show, :not_found, :internal_server_error,
-    :account, :librarian_view, :citation, :email, :sms
+    :account, :librarian_view, :citation, :email, :sms, :facet
   ]
 
   rescue_from ActionController::InvalidAuthenticityToken,
