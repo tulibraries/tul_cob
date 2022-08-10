@@ -379,9 +379,9 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     okcomputer (1.18.4)
-    omniauth (2.0.4)
+    omniauth (2.1.0)
       hashie (>= 3.4.6)
-      rack (>= 1.6.2, < 3)
+      rack (>= 2.2.3)
       rack-protection
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
@@ -413,7 +413,7 @@ GEM
     rack (2.2.4)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
-    rack-protection (2.2.0)
+    rack-protection (2.2.2)
       rack
     rack-proxy (0.7.2)
       rack
@@ -585,7 +585,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.14.0)
+    webmock (3.17.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
