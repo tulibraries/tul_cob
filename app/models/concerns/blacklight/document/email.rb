@@ -5,7 +5,7 @@ module Blacklight::Document::Email
   include ApplicationHelper
   # Return a text string that will be the body of the email
   # Overridden in order to add our own custom fields to email text.
-  def to_email_text
+  def to_email_text(config = nil)
     semantics = to_semantic_values
     body = []
     ["title", "imprint", "author", "contributor",

@@ -7,7 +7,7 @@ module Blacklight::Document::Sms
   # Return a text string that will be the body of the email
   include ApplicationHelper
 
-  def to_sms_text
+  def to_sms_text(config = nil)
     if self[:sms]
       [ :library, :location, :call_number ]
         .map { |field|
