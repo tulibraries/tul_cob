@@ -379,9 +379,9 @@ GEM
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     okcomputer (1.18.4)
-    omniauth (2.1.0)
+    omniauth (2.0.4)
       hashie (>= 3.4.6)
-      rack (>= 2.2.3)
+      rack (>= 1.6.2, < 3)
       rack-protection
     omniauth-rails_csrf_protection (1.0.1)
       actionpack (>= 4.2)
@@ -413,7 +413,7 @@ GEM
     rack (2.2.4)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
-    rack-protection (2.2.2)
+    rack-protection (2.2.0)
       rack
     rack-proxy (0.7.2)
       rack
