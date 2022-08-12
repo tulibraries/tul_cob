@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 78c4b733d4db9f528111591598fc58a3e10f43a3
+  revision: a53138b27bab5edb67c610244a70cb0fb36a38c5
   branch: main
   specs:
     primo (0.1.0)
@@ -397,7 +397,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.5.5)
     parallel (1.22.1)
-    parser (3.1.2.0)
+    parser (3.1.2.1)
       ast (~> 2.4.1)
     parslet (2.0.0)
     popper_js (1.16.0)
@@ -477,14 +477,14 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
-    rubocop (1.33.0)
+    rubocop (1.34.1)
       json (~> 2.3)
       parallel (~> 1.10)
-      parser (>= 3.1.0.0)
+      parser (>= 3.1.2.1)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 1.8, < 3.0)
       rexml (>= 3.2.5, < 4.0)
-      rubocop-ast (>= 1.19.1, < 2.0)
+      rubocop-ast (>= 1.20.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.21.0)
