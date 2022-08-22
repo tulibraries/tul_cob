@@ -6,9 +6,10 @@
 }
 
 #site-footer {
-	background-color:#222222;
+	background-color:#F0F0F0;
 	border-top: solid #303030 1.4rem;
-	color: $white;
+	border-bottom: solid $new-gold 2.1875rem;
+	color: $black;
 	font-family: Faustina, sans;
 	height: 100%;
 	width: 100%;
@@ -117,6 +118,21 @@
 					color: $white;
 				}
 			}
+		}
+	}
+
+	.social-footer {
+		width: 2.625rem;
+		height: 2.625rem;
+		max-width: 2.625rem;
+		max-height: 2.625rem;
+	}
+
+	.social-media-list {
+		list-style-type: none;
+		li {
+			display: inline;
+			padding-inline-start: 2.5rem;
 		}
 	}
 }
