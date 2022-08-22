@@ -457,13 +457,11 @@ class CatalogController < ApplicationController
     # Show tools
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
     config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
-    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
     config.add_show_tools_partial(:ris, label: "RIS file (for Zotero, Mendeley, Endnote)", modal: false, path: :ris_path)
 
     # Nav tools
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
 
-    config.show.document_actions.delete(:sms) if Rails.configuration.features[:sms_document_action_disabled]
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
 
   end
@@ -559,44 +557,6 @@ class CatalogController < ApplicationController
     end
 
     redirect_back(fallback_location: root_path, success: "Your request has been submitted.")
-  end
-
-  # Overrides Blackligt::Catalognuuu_action.
-  #
-  # Passes extra chosen book details for sms text.
-  #
-  # SMS action (this will render the appropriate view on GET requests and
-  # process the form and send the email on POST requests)
-  def sms_action(documents)
-    to = "#{params[:to].gsub(/[^\d]/, '')}@#{params[:carrier]}"
-    documents[0][:sms] = documents[0].material_from_barcode(params[:barcode])
-
-    mail = RecordMailer.sms_record(documents, { to: to }, url_options)
-
-    if mail.respond_to? :deliver_now
-      mail.deliver_now
-    else
-      mail.deliver
-    end
-  end
-
-  # Overrides Blacklight::Catalog.validate_sms_params
-  #
-  # Adds validation of the location selection.
-  def validate_sms_params
-    # Short circuit the barcode validation.
-    if !params.has_key? :barcode
-      return super
-    end
-
-    if params[:barcode].blank?
-      flash[:error] = "You must select a location."
-    elsif !@documents.first.valid_barcode? params[:barcode]
-      # Prevents abuse of feature for harrasment.
-      flash[:error] = "An invalid location was selected."
-    end
-
-    super
   end
 
   def authenticate_purchase_order!

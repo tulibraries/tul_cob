@@ -86,52 +86,6 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
-  describe "sms" do
-    let(:doc) { SolrDocument.new(id: "my_fake_doc") }
-
-    before do
-      allow(search_service).to receive(:fetch).and_return([mock_response, [doc]])
-      allow(controller).to receive(:search_service).and_return(search_service)
-      allow(doc).to receive(:material_from_barcode) { "CHOSEN BOOK" }
-    end
-
-    context "no selection is present" do
-      it "does not flash an error" do
-        post :sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net" } rescue nil
-
-        expect(request.flash[:error]).to be_nil
-      end
-    end
-
-    context "no selection is made" do
-      it "gives an error when no location is selected" do
-        post :sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net", barcode: nil }
-
-        expect(request.flash[:error]).to eq "You must select a location."
-      end
-    end
-
-    context "An invalid location is selected" do
-      it "gives and error when invalid location is attempted" do
-        post :sms, params: {
-          id: doc_id, to: "5555555555",
-          carrier: "txt.att.net", barcode: "<3 <3 <3" }
-
-        expect(request.flash[:error]).to eq "An invalid location was selected."
-      end
-    end
-
-    context "A valid location is used" do
-      it "does not flash an error and sets the chosen book" do
-        allow(doc).to receive(:valid_barcode?) { true }
-        post(:sms, params: { id: doc_id, to: "5555555555", carrier: "txt.att.net", barcode: "<3", from: "me" }) rescue nil
-
-        expect(request.flash[:error]).to be_nil
-        expect(doc[:sms]).to eq("CHOSEN BOOK")
-      end
-    end
-  end
-
   describe "#purchase_order/#purchase_order_action" do
     before do
       allow(controller).to receive(:purchase_order_action) {}
