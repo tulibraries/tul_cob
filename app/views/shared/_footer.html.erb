@@ -1,55 +1,56 @@
-<div id="footer" role="contentinfo">
-  <div id="site-footer">
+<div id="site-footer" role="contentinfo">
+  <div class="footer-header">
+    <div class="d-md-inline-flex justify-content-around align-items-start w-100">
+      <a type="button" class="donate btn btn-link" href="https://library.temple.edu/categories/support-the-libraries">Support the Libraries</a>
+      <ul class="social-media-list">
+        <li><%= link_to image_tag("IG_red_round.png", class: "social-footer", alt: "Instagram Icon"), "http://instagram.com/tulibraries" %></li>
+        <li><%= link_to image_tag("FB_red_round.png", class: "social-footer", alt: "Facebook Icon"), "https://www.facebook.com/templelibraries/" %></li>
+        <li><%= link_to image_tag("Twitter_red_round.png", class: "social-footer", alt: "Twitter Icon"), "https://twitter.com/TempleLibraries" %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tu-links pt-2 container">
     <div class="row">
-      <div class="col">
+      <h2><%= t("footer.quick_links") %></h2>
+    </div>
 
-        <div class="postscript">
+    <div class="d-flex flex-md-row flex-column justify-content-between mt-3">
+      <div>
+        <ul class="list-unstyled">
+          <li><%= link_to(t("footer.ezborrow_html"), t("footer.ezborrow_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.illiad_html"), t("footer.illiad_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.find_by_citation_html"), t("footer.find_by_citation_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.patron_forms_html"), t("footer.patron_forms_link"), target: "_blank") %></li>
+        </ul>
+      </div>
 
-          <div class="region region-postscript-first">
-            <div class="dept-address">
-              <address><span class="place-title roboto">Temple University</span><br /><span class="place-location">University Libraries</span><br />1900 N. 13th Street<br />Philadelphia, PA 19122</address>
-            </div>
-           </div>
+      <div>
+        <ul class="list-unstyled">
+          <li><%= link_to(t("footer.standards_html"), t("footer.standards_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.diversity_html"), t("footer.diversity_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.accessibility_html"), t("footer.accessibility_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.emplyment_html"), t("footer.employment_link"), target: "_blank") %></li>
+        </ul>
+      </div>
 
-          <div class="region region-postscript-second">
-            <div>
-              <ul>
-                <li><%= link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank") %></li>
-                <li><%= link_to(t("no_results.illiad_href"), t("no_results.illiad_link"), target: "_blank") %></li>
-                <li><a href="https://directory.temple.edu/">Cherry and White Directory</a></li>
-                <li><a href="https://library.temple.edu/libraries/2">Maps and Directions</a></li>
-                <li><a href="https://library.temple.edu/contact-us">Contact</a></li>
-              </ul>
-            </div>
-          </div>
+      <div>
+        <ul class="list-unstyled">
+          <li><%= link_to(t("footer.privacy_html"), t("footer.privacy_link"), target: "_blank") %></li>
+          <li><%= link_to(t("footer.tu_homepage_html"), t("footer.tu_homepage_link"), target: "_blank") %></li>
+        </ul>
+      </div>
 
-          <div class="region region-postscript-third">
-            <div>
-              <ul>
-                <li style="display:inline;margin-right:14px;"><%= link_to image_tag('fb.png', class: 'social-icon', alt: 'Facebook Icon', :style => 'width:32px;height:32px;'), 'https://www.facebook.com/templelibraries/' %></li>
-                <li style="display:inline;margin-right:14px;"><%= link_to image_tag('twitter.png', class: 'social-icon', alt: 'Twitter Icon', :style => 'width:36px;height:36px;margin-top:2px;'), 'https://twitter.com/TempleLibraries' %></li>
-                <li style="display:inline"><%= link_to image_tag('instagram.png', class: 'social-icon', alt: 'Instagram Icon', :style => 'width:34px;height:34px;'), 'http://instagram.com/tulibraries' %></li>
-              </ul>
-              <br /><br />
-            </div>
-          </div>
-        </div>
-
-        <div class="tu-links">
-          <div class="region region-footer">
-            <div>
-              <ul>
-                <li><a class="faustina" href="http://tuportal.temple.edu/">TUportal</a></li>
-                <li><a class="faustina" href="http://tumail.temple.edu/">TUmail</a></li>
-                <li><a class="faustina" href="http://temple.edu/about/temple-university-accessibility-statement/">Accessibility</a></li>
-                <li><a class="faustina" href="http://policies.temple.edu/">Policies</a></li>
-                <li><a class="faustina" href="http://temple.edu/hr/departments/employment/jobs_within.htm">Careers at Temple</a></li>
-                <li><small>Copyright <%= Time.current.year %> Temple University | All Rights Reserved</small></li>
-              </ul>
-            </div>
-          </div>
+      <div>
+        <div class="address">
+          <p class="street-address"><%= t("footer.charles_address").html_safe %></p>
+          <p><%= link_to(t("footer.numbers_html"), t("footer.numbers_link"), target: "_blank") %></p>
+          <p><%= link_to(t("footer.staff_directory_html"), t("footer.staff_directory_link"), target: "_blank") %></p>
+          <p><%= link_to(t("footer.org_charts_html"), t("footer.org_charts_link"), target: "_blank") %></p>
+          <p><%= link_to(t("footer.staff_forms_html"), t("footer.staff_forms_link"), target: "_blank") %></p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
