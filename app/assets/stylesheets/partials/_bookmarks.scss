@@ -30,11 +30,11 @@ a.clear-bookmarks {
 
 .bookmark_add,
 .bookmark_remove {
-  background-color: $header-grey;
-  color: $red;
+  background-color: $lighter-grey;
+  color: $cherry-red;
 
   @media(max-width: 768px) {
-		background-color: $red;
+		background-color: $cherry-red;
 	  color: $white;
 	}
 }
@@ -82,7 +82,7 @@ a.clear-bookmarks {
   border: 0.0625rem solid $dark-grey;
 
   @media(max-width: 768px) {
-    background-color: $red;
+    background-color: $cherry-red;
     border: none;
     color: $white;
 	}

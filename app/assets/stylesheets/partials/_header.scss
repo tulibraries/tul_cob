@@ -56,7 +56,7 @@
 					float: right;
 				}
 				padding-left: 3.0625rem;
-				border-color: $red;
+				border-color: $cherry-red;
 				padding-right: 1rem;
 			}
 			li.nav-right.hours-nav {
@@ -123,7 +123,7 @@ div #bookmarks_nav {
 
 a.advanced_search,
 a#bookmarks_nav {
-	color: $red;
+	color: $cherry-red;
 }
 
 .basic-search-group{
@@ -175,8 +175,8 @@ a#bookmarks_nav {
 
 .path-links .header-links:hover,
 .path-links .header-links.active {
-	background-color: $red;
-  border-color: $red;
+	background-color: $cherry-red;
+  border-color: $cherry-red;
 	color: $white;
 }
 
@@ -193,7 +193,7 @@ a#bookmarks_nav {
  	}
 
  	@media(max-width: 485px) {
-		border: 0.0625rem solid $red;
+		border: 0.0625rem solid $cherry-red;
 		margin: 0.625rem auto 0 auto !important;
 		padding-bottom: 0.1875rem;
 		padding-top: 0.1875rem;
@@ -220,7 +220,7 @@ a#bookmarks_nav {
 }
 
 #back_to_search:hover {
-	color: $red !important;
+	color: $cherry-red !important;
 }
 
 #record-page-nav-tools {
@@ -260,8 +260,8 @@ a#bookmarks_nav {
 
 #sort-dropdown button, #sort-dropdown button:hover,
 #per_page-dropdown button, #per_page-dropdown button:hover {
-	background-color: $white;
-	color: $red;
+	background-color: $royal-blue;
+	color: $white;
 }
 
 .site-message {

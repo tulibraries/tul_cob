@@ -335,7 +335,7 @@ en:
     open_access: "Open Access only"
 
   account:
-    renew_text_html: "Items marked with <i class='fas fa-exclamation-circle text-red'></i><span class='sr-only'>Unable to renew</span> icon are not eligible for renewal.  Please %{href} for more information."
+    renew_text_html: "Items marked with <i class='fas fa-exclamation-circle text-cherry-red'></i><span class='sr-only'>Unable to renew</span> icon are not eligible for renewal.  Please %{href} for more information."
     renew_text_href: "contact us"
     fines_text_1: "Fees can be paid online with a credit card."
     fines_text_2_html: "For questions about your fee balance, call <strong> 215-204-8212 </strong> or visit the %{href} at Charles Library."

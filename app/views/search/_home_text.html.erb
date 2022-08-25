@@ -1,10 +1,10 @@
 <div id="getting-started">
   <p class="section-heading"><%= t("bento.section_heading_html",
-    articles: link_to(t("bento.articles"), search_path, class: "text-red"),
-    journals: link_to(t("bento.journals"), search_journals_path, class: "text-red"),
-    databases: link_to(t("bento.databases"), search_databases_path, class: "text-red"),
-    website: link_to(t("bento.website"), search_web_content_path, class: "text-red"),
-    more: link_to(t("bento.more"), search_catalog_path , class: "text-red")) %></p>
+    articles: link_to(t("bento.articles"), search_path),
+    journals: link_to(t("bento.journals"), search_journals_path),
+    databases: link_to(t("bento.databases"), search_databases_path),
+    website: link_to(t("bento.website"), search_web_content_path),
+    more: link_to(t("bento.more"), search_catalog_path)) %></p>
   <p><%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %></p>
   <p><%= t("bento.need_help_html") %></p>
   <p><%= link_to(t("bento.library_help_html"), t("blacklight.help_link"), target: "_blank") %></p>

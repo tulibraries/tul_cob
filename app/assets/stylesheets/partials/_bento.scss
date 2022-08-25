@@ -21,15 +21,15 @@
 }
 
 .bento_compartment h2 {
-	background-color: $header-grey;
-	color: $bento-header-text;
+	background-color: $lighter-grey;
+	color: $midnight-blue;
 	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
 	height: 3.125rem;
 	padding: 0.75rem 0;
 
 	a {
-		color: $bento-header-text;
+		color: $midnight-blue;
 		margin-left: -0.3125rem;
 	}
 }
@@ -66,16 +66,16 @@
 }
 
 .search-results {
-	border: 1px solid $header-grey;
+	border: 1px solid $lighter-grey;
 }
 
 .total-items,
 .bento-online-results {
 	background-color: white;
-	border-bottom: 1px solid $header-grey;
-	border-left: 1px solid $header-grey;
-	border-right: 1px solid $header-grey;
-	color: $red;
+	border-bottom: 1px solid $lighter-grey;
+	border-left: 1px solid $lighter-grey;
+	border-right: 1px solid $lighter-grey;
+	color: $cherry-red;
 	padding: 0.625rem 0.5rem;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .bento-resource-types-list {
-	color: $red;
+	color: $cherry-red;
 	padding: 0 9.375rem;
 
 	@media(max-width: 768px) {
@@ -108,7 +108,7 @@
 	}
 
 	a:hover, a:visited, a:active {
-		color: $red !important;
+		color: $cherry-red !important;
 	}
 
 	@media(max-width: 991px) {

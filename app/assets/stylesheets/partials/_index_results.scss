@@ -60,7 +60,7 @@ dd {
 
 dl.blacklight-lc_call_number_display > dd,
 dl.blacklight-lc_call_number_display > dt {
-  background-color: $header-grey;
+  background-color: $lighter-grey;
   width: 100%;
 }
 
@@ -103,7 +103,7 @@ dd.blacklight-format {
 
     @media(max-width: 485px) {
       padding: 1rem !important;
-      background-color: $red;
+      background-color: $cherry-red;
       color: $white !important;
       border-top-right-radius: 0.25rem;
       border-top-left-radius: 0.25rem;
@@ -145,7 +145,7 @@ dd.blacklight-format {
 
   @media(max-width: 485px) {
     margin-right: 0;
-    border-bottom: 0.0625rem solid $red !important;
+    border-bottom: 0.0625rem solid $cherry-red !important;
     border-bottom-right-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
