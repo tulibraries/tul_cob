@@ -148,7 +148,7 @@ module ApplicationHelper
   end
 
   def help_link
-    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank", class: "text-red"
+    link_to t("ask_librarian"), Rails.configuration.ask_link, target: "_blank"
   end
 
   def explanation_translations(controller_name)

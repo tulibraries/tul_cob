@@ -35,7 +35,7 @@ export default class extends Controller {
 
         if (this.cardTarget.classList.contains("catalog-guides")) {
           this.flexTargets.forEach((t) => t.classList.add("flex-fill", "p-4", "rounded", "mx-md-3"));
-          this.flexTargets.forEach((t) => t.classList.remove("border-top", "border-red", "p-3"));
+          this.flexTargets.forEach((t) => t.classList.remove("border-top", "border-cherry-red", "p-3"));
         }
 
         if (this.cardTarget.classList.contains("bento-guides")) {

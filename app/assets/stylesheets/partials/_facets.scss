@@ -66,7 +66,7 @@
 
 .limit-search {
 	@media(max-width: 775px) {
-		background-color: $facet-limit;
+		background-color: $lighter-grey;
 	}
 }
 
@@ -119,7 +119,7 @@ span.constraint-value {
 
 /* FACETS */
 .facet-field-heading {
-	background-color: $header-grey;
+	background-color: $lighter-grey;
 	cursor: pointer;
   font-size: 1.75rem !important;
 	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem !important;
@@ -139,7 +139,7 @@ span.constraint-value {
 }
 
 .facet-field-heading a:hover {
-	color: $red;
+	color: $cherry-red;
 }
 
 .facet-limit {
@@ -147,11 +147,11 @@ span.constraint-value {
 }
 
 .facet-limit-active {
-  border: 1px solid $header-grey !important;
+  border: 1px solid $lighter-grey !important;
 }
 
 .facet-limit-active .facet-field-heading {
-	background-color: $red !important;
+	background-color: $cherry-red !important;
 	a {
 		color: $white;
 	}
@@ -186,7 +186,7 @@ span.constraint-value {
 		padding-bottom: $spacer / 2;
 
 		.selected {
-			color: $red !important;
+			color: $cherry-red !important;
 			font-weight: bold;
 			text-decoration: underline;
 		}

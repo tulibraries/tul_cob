@@ -10,8 +10,8 @@
 }
 
 .modal-dialog #availability-container {
-  border-bottom: 0.0625rem solid $header-grey;
-  border-left: 0.0625rem solid $header-grey;
+  border-bottom: 0.0625rem solid $lighter-grey;
+  border-left: 0.0625rem solid $lighter-grey;
 
   .row {
     margin: 0;
@@ -21,12 +21,12 @@
 .pagination  {
 	li {
 		a, a:active, a:hover, a:visited {
-			color: $red;
+			color: $cherry-red;
 		}
 	}
 	.active span {
-		background-color: $red;
-		border-color: $red;
+		background-color: $cherry-red;
+		border-color: $cherry-red;
 	}
 
   @media(max-width: 485px) {
@@ -57,8 +57,8 @@ nav .pagination {
 }
 
 .pagination li.page-item.active .page-link {
-  background-color: $red;
-  border-color: $red;
+  background-color: $cherry-red;
+  border-color: $cherry-red;
 }
 
 .pagination li.page-item a {

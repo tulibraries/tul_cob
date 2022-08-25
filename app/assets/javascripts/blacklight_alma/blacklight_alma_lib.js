@@ -450,6 +450,6 @@ var BlacklightAlma = function (options) {
          return ! $(element).hasClass("availability-ajax-loaded");
      }).each(function (index, element) {
         noHoldingsAvailabilityButton($(element).data("availabilityIds"));
-        $(element).html("<span style='color: red'>No status available for this item</span>");
+        $(element).html("<span style='color: #A41E35'>No status available for this item</span>");
      });
  };
