@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 815f2763085bedfa5e2fbe79ae1f64eddf2f9d12
+  revision: b0330647b7eee5d3c089e06ba12fd5bed336b8ce
   branch: main
   specs:
     cob_index (0.1.0)
@@ -172,8 +172,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.0)
-      public_suffix (>= 2.0.2, < 5.0)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
@@ -291,7 +291,6 @@ GEM
     faraday-rack (1.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
-    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -406,7 +405,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (4.0.7)
+    public_suffix (5.0.0)
     puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
