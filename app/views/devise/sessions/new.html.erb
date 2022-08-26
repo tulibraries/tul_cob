@@ -1,44 +1,37 @@
-<div id="login" class="pl-5 pt-3">
-<h2 class="pb-3">Log in to My Library Account</h2>
+<div id="login" class="p-0 pt-3">
+<h2 class="py-2">Log in to My Library Account</h2>
 
 <%- if devise_mapping.omniauthable? %>
-  <ul class="pb-3">
-    <li>
-      <%= link_to t("devise.sessions.new.temple_users") , student_faculty_login_uri, method: :post %>
-    </li>
-    <li>
-      <%= link_to t("devise.sessions.new.pa_users"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
-    </li>
-    <li>
-      <% if params[:redirect_to] %>
-        <%= link_to t("devise.sessions.new.guests"), _build_guest_login_libwizard_url(@document),target: "_blank" %>
-      <% else %>
-        <%= link_to t("devise.sessions.new.guests"), t("devise.sessions.new.guest_link"),target: "_blank" %>
-      <% end -%>
-    </li>
-  </ul>
+<div class="login-options p-0 m-0 mb-5">
+  <p class="pt-3 pb-2 info">To see the options for getting this item, please login</p>
+  <div class="">
+    <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, method: :post %>
+    <%= link_to t("devise.sessions.new.pa_users_html"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
+    <% if params[:redirect_to] %>
+      <%= link_to t("devise.sessions.new.guests_html"), _build_guest_login_libwizard_url(@document), {class: "guest-link", target: "_blank"} %>
+    <% else %>
+      <%= link_to t("devise.sessions.new.guests_html"), t("devise.sessions.new.guest_link"), {class: "guest-link", target: "_blank"} %>
+    <% end -%>
+  </div>
+</div>
 <% end -%>
 
-<% if Rails.env.development? %>
+<% unless Rails.env.development? %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="row form-group pl-5">
-    <%= f.label :email, class: "mr-2" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="row form-group pl-5">
-    <%= f.label :password, class: "mr-2" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="mb-3">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", class: "mr-4" %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: "password" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="row form-group">
+    <div class="mb-3">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
 
-  <div class="actions">
+  <div class="mb-3">
     <%= f.submit "Log in", class: "btn btn-primary py-1" %>
   </div>
   <% end %>
