@@ -5,7 +5,7 @@
 <div class="login-options p-0 m-0 mb-5">
   <p class="pt-3 pb-2 info">To see the options for getting this item, please login</p>
   <div class="">
-    <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, method: :post %>
+    <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, class: "temple-user-link", method: :post %>
     <%= link_to t("devise.sessions.new.pa_users_html"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
     <% if params[:redirect_to] %>
       <%= link_to t("devise.sessions.new.guests_html"), _build_guest_login_libwizard_url(@document), {class: "guest-link", target: "_blank"} %>
