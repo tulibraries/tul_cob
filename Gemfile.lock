@@ -529,7 +529,7 @@ GEM
       retriable
       ruby-progressbar
       rubyzip
-    spring (2.1.1)
+    spring (4.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
