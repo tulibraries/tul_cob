@@ -135,13 +135,49 @@
 /* === LOG IN MODAL === */
 #login {
 
+  color: $midnight-blue;
+  text-align: center;
+
   h2 {
-  font-family: "Roboto Condensed";
-  font-size: 2.0rem;
+    font-family: "Roboto Light";
+    font-size: 2.25rem;
+    font-weight: 100;
+  }
+  h2::before {
+    content: asset-url('person-black.png');
+    position: relative;
+    top: 10px;
+    padding-right: 14px;
   }
 
-  .actions {
-    padding-top: 0.5rem;
-    padding-left: 3.0rem;
+  .login-options {
+    border-top: solid #ccc 1px;
+    margin-bottom: 21px;
+    .info {
+      font-size: 1.15rem;
+    }
+    a {
+      display: block;
+      text-align: left;
+      width: 65%;
+      margin: auto;
+      color: $midnight-blue;
+      background-color: $crystal-blue;
+      padding: 14px 21px;
+      margin-bottom: 21px;
+      font-size: 1.05rem;
+      .big {
+        font-size: 1.35rem;
+      }
+    }
+    a:hover {
+      text-decoration: none;
+      outline: solid $midnight-blue 1px;
+    }
+    a.guest-link {
+      border: solid $grey 1px;
+      background-color: $white;
+      color: $midnight-blue;
+    }
   }
 }

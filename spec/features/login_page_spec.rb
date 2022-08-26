@@ -17,7 +17,7 @@ RSpec.feature "Login Page" do
 
   it "has a link to shibboleth" do
     visit "/users/sign_in"
-    expect(page).to have_link("Students, faculty, staff and registered alumni")
+    expect(find_link(class: "temple-user-link")).to be
   end
 
   it "does not error out if we try to follow shibboleth path" do
@@ -33,7 +33,7 @@ RSpec.feature "Login Page" do
                   user_group: { value: "2" }
                 }))
 
-    click_link("Students, faculty, staff and registered alumni")
+    click_on(class: "temple-user-link")
     expect(status_code).to be 200
   end
 end
