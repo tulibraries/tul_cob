@@ -7,6 +7,7 @@
 
 #logo-navbar {
   background-color: $cherry-red;
+  padding-bottom: 21px;
 
 	@media(max-width: 485px) {
 		padding-left: 0;
@@ -49,15 +50,14 @@
 	padding-left: 1.75rem;
 	width: 100%;
 	ul {
-		font-family: "Roboto Condensed";
+		font-family: "Roboto";
 		li {
 			padding: 0.5rem 1.3125rem;
 			display: inline-block;
 			height: 100%;
 				a {
 					color: $white;
-					font-size: 1.3rem;
-					font-weight: 600;
+					font-size: 1.25rem;
 					@media screen and (max-width: 1039px) {
 						font-size:1.25rem;
 					}
@@ -73,21 +73,21 @@
 			}
 			li.nav-right.hours-nav {
 				background-image: asset-data-url('hours.png');
-				background-position: 0.4375rem center;
+				background-position: 0.8rem center;
 				background-repeat: no-repeat;
-				background-size: 2.625rem 2.625rem;
+				background-size: 1.625rem 1.625rem;
 			}
 			li.nav-right.chat-nav {
 				background-image: asset-data-url('chat.png');
-				background-position: 0.4375rem center;
+				background-position: 0.8rem center;
 				background-repeat: no-repeat;
-				background-size: 3.0625rem 3.6875rem;
+				background-size: 1.625rem 1.625rem;
 			}
 			li.nav-right.account-nav {
 				background-image: asset-data-url('person.png');
-				background-position: 0.4375rem center;
+				background-position: 0.8rem center;
 				background-repeat: no-repeat;
-				background-size: 2.625rem 2.625rem;
+				background-size: 1.625rem 1.625rem;
 			}
 		}
 	}
