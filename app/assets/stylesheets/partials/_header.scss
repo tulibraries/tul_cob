@@ -1,8 +1,12 @@
 @import "_vars.scss";
 
 /* HEADER WITH LOGO */
+#header-wrapper {
+  background-color: $cherry-red;
+}
+
 #logo-navbar {
-	padding-left: 3.75rem;
+  background-color: $cherry-red;
 
 	@media(max-width: 485px) {
 		padding-left: 0;
@@ -21,7 +25,7 @@
 }
 
 .logo-text {
-	color: $black;
+	color: $white;
 	font-family: "Faustina", serif;
 	font-size: 2.0rem;
 	margin-left: 0.625rem;
@@ -33,8 +37,16 @@
 }
 
 /* WEBSITE HEADER */
+#website-navbar-container {
+  background-color: $dark-cherry-red;
+}
+#search-navbar-container {
+  background-color: $lighter-grey;
+}
+
 #main-menu {
-	padding-left: 3.75rem;
+  background-color: #910C22;
+	padding-left: 1.75rem;
 	width: 100%;
 	ul {
 		font-family: "Roboto Condensed";
