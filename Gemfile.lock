@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 78c4b733d4db9f528111591598fc58a3e10f43a3
+  revision: af09c04a644f13491b53320d61aa4f847fe23a06
   branch: main
   specs:
     primo (0.1.0)
@@ -538,7 +538,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.4)
-    stackprof (0.2.20)
+    stackprof (0.2.21)
     summon (2.0.5)
       json
     thor (1.2.1)
