@@ -1,42 +1,55 @@
-<nav id="logo-navbar" class="navbar navbar-header bg-white" role="banner">
-  <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
-    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
-    <span class="logo-text">University Libraries</span>
-  <% end %>
-</nav>
-
-<%= render :partial => 'shared/banner' %>
-
-<nav id="website-navbar" class="navbar navbar-header bg-cherry-red p-0" aria-labelledby="main-menu">
-  <div class="row d-none d-sm-none d-md-none d-lg-none d-xl-block" id="main-menu">
-    <ul class="list-unstyled pr-5 m-0">
-      <li class="first"><%= link_to "About", "https://library.temple.edu/about" %></li>
-      <li><%= link_to "Visit & Study", "https://library.temple.edu/visit-study" %></li>
-      <li><%= link_to "Research Services", "https://library.temple.edu/research-services" %></li>
-      <li class="last"><%= link_to "Contact Us", "https://library.temple.edu/contact-us" %></li>
-      <li class="nav-right hours-nav"><%= link_to "Hours", "https://library.temple.edu/hours" %></li>
-      <li class="nav-right chat-nav"><%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=https%3A%2F%2Flibrarysearch.temple.edu&referer_title=Temple%20University%20Libraries", target: "_blank" %></li>
-      <% if current_user %>
-        <li class="nav-right account-nav"><%= link_to "My Account", users_account_path, id: "my-account" %></li>
-      <% else %>
-        <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path, id: "login" %></li>
+<div class="row" id="header-wrapper">
+  <div class="container-xl">
+    <nav id="logo-navbar" class="navbar navbar-header" role="banner">
+      <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
+        <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
+        <span class="logo-text">University Libraries</span>
       <% end %>
-    </ul>
-  </div>
+    </nav>
 
-  <div class="row d-block d-sm-block d-md-block d-lg-block d-xl-none" id="mobile-nav" aria-labelledby="mobile-nav">
-    <%= render "mobile_nav" %>
-  </div>
-</nav>
+    <%= render :partial => 'shared/banner' %>
 
-<nav id="search-navbar" class="navbar navbar-default bg-lighter-grey border-bottom border-red pt-3">
-  <div class="d-lg-inline-flex align-items-center mx-auto">
-    <h1 class="text-center pr-md-4 d-none d-md-block">
-      <%= link_to("Library Search", everything_path, id: "catalog-header") %>
-    </h1>
-    <%# Change this back to render_search_bar method when upgrading Blacklight %>
-    <%= render :partial => 'catalog/search_form' %>
   </div>
-</nav>
+</div>
+
+<div class="row" id="website-navbar-container">
+  <div class="container-xl pr-0">
+    <nav id="website-navbar" class="navbar navbar-header p-0" aria-labelledby="main-menu">
+      <div class="row d-none d-xl-block" id="main-menu">
+        <ul class="list-unstyled pr-5 m-0">
+          <li class="first"><%= link_to "About", "https://library.temple.edu/about" %></li>
+          <li><%= link_to "Visit & Study", "https://library.temple.edu/visit-study" %></li>
+          <li><%= link_to "Research Services", "https://library.temple.edu/research-services" %></li>
+          <li class="last"><%= link_to "Contact Us", "https://library.temple.edu/contact-us" %></li>
+          <li class="nav-right hours-nav"><%= link_to "Hours", "https://library.temple.edu/hours" %></li>
+          <li class="nav-right chat-nav"><%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=62e4dcbf0881db4f1514b077fbfd45b7&referer=https%3A%2F%2Flibrarysearch.temple.edu&referer_title=Temple%20University%20Libraries", target: "_blank" %></li>
+          <% if current_user %>
+            <li class="nav-right account-nav"><%= link_to "My Account", users_account_path, id: "my-account" %></li>
+          <% else %>
+            <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path, id: "login" %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="row d-block d-xl-none" id="mobile-nav" aria-labelledby="mobile-nav">
+        <%= render "mobile_nav" %>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="row" id="search-navbar-container">
+  <div class="container">
+    <nav id="search-navbar" class="navbar navbar-default bg-lighter-grey border-bottom border-red pt-3">
+      <div class="d-lg-inline-flex align-items-center mx-auto">
+        <h1 class="text-center pr-md-4 d-none d-md-block">
+          <%= link_to("Library Search", everything_path, id: "catalog-header") %>
+        </h1>
+        <%# Change this back to render_search_bar method when upgrading Blacklight %>
+        <%= render :partial => 'catalog/search_form' %>
+      </div>
+    </nav>
+  </div>
+</div>
 
 <%= render "navbar" %>
