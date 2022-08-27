@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 9d98bde4784967119333582a17d01c21211e91e2
+  revision: bfb525a79b66a94db7bd4349b61619c04c800c9c
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -291,6 +291,7 @@ GEM
     faraday-rack (1.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
+    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -302,7 +303,7 @@ GEM
     google-analytics-rails (1.1.1)
     hashdiff (1.0.1)
     hashie (4.1.0)
-    honeybadger (4.12.1)
+    honeybadger (4.12.2)
     htmlentities (4.3.4)
     http (5.1.0)
       addressable (~> 2.8)
@@ -367,7 +368,7 @@ GEM
     mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.2)
+    minitest (5.16.3)
     msgpack (1.5.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -643,7 +644,7 @@ DEPENDENCIES
   foreman
   google-analytics-rails (= 1.1.1)
   hashie (~> 4.1.0)
-  honeybadger (= 4.12.1)
+  honeybadger (= 4.12.2)
   httparty
   jbuilder (~> 2.11)
   jquery-rails
