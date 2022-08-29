@@ -35,6 +35,10 @@
   }
 }
 
+.document-metadata {
+  margin-left: 2%;
+}
+
 h3.document-title-heading {
   font-family: "PT Sans";
   font-size: 1.1rem !important;
@@ -61,7 +65,7 @@ h3.document-title-heading {
 .book_info .index-label {
   color: #595959;
   font-weight: 600;
-  margin-left: 3.75rem;
+  font-size: 1rem;
 
   @media(max-width: 991px) {
     margin-left: 1.75rem;
@@ -72,6 +76,14 @@ h3.document-title-heading {
     margin-left: 0;
     text-align: left;
   }
+}
+
+.availability-locations {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding-left: 0;
+  position: relative;
+  left: -1.875rem;
 }
 
 dt.index-label {

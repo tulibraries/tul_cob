@@ -1,19 +1,21 @@
 <% doc_presenter = document_presenter(document) %>
 
-<dl class="row document-metadata mb-0 mr-5">
+<div class="row document-metadata mb-0" style="line-height: 2rem;font-size: 1rem;">
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
+  <div class="col-12 pl-2">
     <% unless field_config[:no_label] %>
-    <dt class="index-label col-sm-12 col-md-4 col-lg-3 blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>: </dt>
-    <dd class="col-sm-12 col-md-5 col-lg-7 blacklight-<%= field_name.parameterize %>">
+    <div class="blacklight-<%= field_name.parameterize %>"> 
+      <span class="index-label"><%= field_presenter.label %></span>: 
     <% end %>
-      <% if field_config.raw %>
-        <%= raw doc_presenter.field_value(field_config) %>
-      <% else %>
-        <%= doc_presenter.field_value(field_config) %>
-      <% end -%>
-    </dd>
-  <% end -%>
-</dl>
+    <% if field_config.raw %>
+      <%= raw doc_presenter.field_value(field_config) %>
+    <% else %>
+      <%= doc_presenter.field_value(field_config) %>
+    <% end -%>
+    </div>
+  </div>
+<% end -%>
+</div>
 
 <%= render_alma_availability(document) %>
 

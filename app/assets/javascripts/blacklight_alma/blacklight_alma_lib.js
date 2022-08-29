@@ -25,13 +25,13 @@ var BlacklightAlma = function (options) {
        unavailableItems(id);
      }
      else if (holding['availability'] == 'available') {
-       $(availButton).html("<span class='avail-label available'>Available</span>");
+       $(availButton).html("<span class='avail-label available'>Check&nbsp;Availability</span>");
        $(availButton).removeClass("btn-default");
        $(availButton).addClass("collapsed collapse-button available availability-btn");
        $(availButton).show();
      }
      else if (holding['availability'] == 'check_holdings') {
-       $(availButton).html("<span class='avail-label available'>Available</span>");
+       $(availButton).html("<span class='avail-label available'>Check&nbsp;Availability</span>");
        $(availButton).removeClass("btn-default");
        $(availButton).addClass("collapsed collapse-button available availability-btn");
        $(availButton).show();
@@ -135,7 +135,7 @@ var BlacklightAlma = function (options) {
    check = checkHoldings(holdings);
 
    if (available) {
-     html = "<dt class='index-label col-md-3' >Available at: </dt><dd class='col-md-5 col-lg-7'>" + available + "</dd>";
+     html = "<div class='col-2 pl-2 mt-2 pr-0'><span class='index-label' >Available at: </span></div><div class='col-10 mt-2 mb-3 availability-locations'>" + available + "</div>";
    }
 
    if (check) {

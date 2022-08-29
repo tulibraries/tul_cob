@@ -105,8 +105,13 @@ dd .online-list-items {
 }
 
 .online-list-items, .online-list-item {
+  border-bottom: 0.0625rem solid $gray-300;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.list_elec_links.search_results_table {
   border-top: 0.0625rem solid $gray-300;
-  padding: .5rem;
 }
 
 .direct-link {
