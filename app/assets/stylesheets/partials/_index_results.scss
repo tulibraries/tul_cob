@@ -8,10 +8,18 @@
     width: 4%;
     font-weight: 600;
   }
-  h3 {
-    display: inline-block;
-    padding-bottom: 0;
-    width: 80%;
+  .document-header-container {
+    width:96%;
+    .document-actions-container {
+      display:inline-block;
+      border-bottom: solid #ccc 1px;
+      width: 100%;
+      h3 {
+        display: inline-block;
+        padding-bottom: 0;
+        width: 80%;
+      }
+    }
   }
   .index-document-functions {
     display: inline;
