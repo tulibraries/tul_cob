@@ -190,7 +190,7 @@ GEM
       rails (>= 5.2, < 7)
       summon
     bindex (0.8.1)
-    blacklight (7.28.0)
+    blacklight (7.29.0)
       deprecation
       globalid
       hashdiff
@@ -559,8 +559,9 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.2.0)
     vcr (6.1.0)
-    view_component (2.61.0)
+    view_component (2.70.0)
       activesupport (>= 5.0.0, < 8.0)
+      concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -599,7 +600,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bento_search
-  blacklight (~> 7.28.0)
+  blacklight (~> 7.29.0)
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
