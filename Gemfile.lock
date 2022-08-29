@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: b0330647b7eee5d3c089e06ba12fd5bed336b8ce
+  revision: 4166b98ab6ff545250b386648b4a33f18ead2451
   branch: main
   specs:
     cob_index (0.1.0)
@@ -200,8 +200,8 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.1)
       view_component (~> 2.43)
-    blacklight-marc (7.1.1)
-      blacklight (~> 7.0)
+    blacklight-marc (8.0.0)
+      blacklight (>= 7.11, < 9)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
       marc-fastxmlwriter
@@ -291,7 +291,6 @@ GEM
     faraday-rack (1.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
-    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -575,7 +574,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.2.0)
     vcr (6.1.0)
-    view_component (2.61.0)
+    view_component (2.61.1)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
