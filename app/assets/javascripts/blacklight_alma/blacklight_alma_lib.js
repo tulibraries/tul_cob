@@ -139,7 +139,7 @@ var BlacklightAlma = function (options) {
    }
 
    if (check) {
-   html += "<dt class='index-label col-md-3' >Other Libraries: </dt><dd class='col-md-5 col-lg-7'>" + check + "</dd>";
+   html += "<div class='col-2 pl-2 mt-2 pr-0'><span class='index-label' >Other Libraries: </span></div><div class='col-10 mt-2 mb-3 availability-locations'>" + check + "</div>";
    }
    return html;
  };
