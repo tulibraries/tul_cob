@@ -41,7 +41,6 @@ class WebContentController < CatalogController
 
     config.add_search_field("title") do |field|
       field.solr_parameters = {
-        'spellcheck.dictionary': "title",
         qf: "${title_qf}",
         pf: "${title_pf}",
       }
