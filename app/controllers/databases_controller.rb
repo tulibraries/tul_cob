@@ -43,8 +43,7 @@ class DatabasesController < CatalogController
       field.solr_parameters = {
         qt: "search",
         qf: "${title_qf}",
-        pf: "${title_pf}",
-        "spellcheck.dictionary": "title",
+        pf: "${title_pf}"
       }
 
       field.solr_adv_parameters = {
@@ -57,8 +56,7 @@ class DatabasesController < CatalogController
       field.solr_parameters = {
         qt: "search",
         qf: "${subject_qf}",
-        pf: "${subject_pf}",
-        "spellcheck.dictionary": "subject",
+        pf: "${subject_pf}"
       }
 
       field.solr_adv_parameters = {
