@@ -22,7 +22,7 @@ RSpec.feature "Articles Search" do
     expect(current_url).to eq "http://www.example.com/articles?utf8=%E2%9C%93&search_field=any&q=foo"
     expect(page).to have_css("#facets")
     within(".document-position-0 h3") do
-      expect(page).to have_text("1. Test")
+      expect(page).to have_text("Test")
     end
     within first(".document-metadata") do
       expect(page).to have_text "Is Part Of:"
