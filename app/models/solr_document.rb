@@ -35,7 +35,7 @@ class SolrDocument
   SolrDocument.use_extension(Blacklight::Document::Sms)
 
   # Add Blacklight-Marc extension:
-  SolrDocument.use_extension(Blacklight::Solr::Document::Marc) do |doc|
+  SolrDocument.use_extension(Blacklight::Marc::DocumentExtension) do |doc|
     doc.has_field? "marc_display_raw"
   end
   SolrDocument.extension_parameters[:marc_source_field] = "marc_display_raw"

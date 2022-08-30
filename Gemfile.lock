@@ -200,8 +200,8 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 5.1, < 7.1)
       view_component (~> 2.43)
-    blacklight-marc (7.1.1)
-      blacklight (~> 7.0)
+    blacklight-marc (8.0.0)
+      blacklight (>= 7.11, < 9)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
       marc-fastxmlwriter
