@@ -59,10 +59,10 @@
 	width: 3.125rem;
 }
 
-.limit-search-heading {
-	font-family: "PT Sans";
-	font-size: 1.3rem;
-}
+// .limit-search-heading {
+// 	font-family: "PT Sans";
+// 	font-size: 1.3rem;
+// }
 
 .limit-search {
 	@media(max-width: 775px) {
@@ -71,9 +71,6 @@
 }
 
 .small-limit-search-heading {
-	font-family: "PT Sans";
-	font-size: 1.3rem;
-	font-weight: bolder;
 
 	@media(min-width: 776px) {
 		display: none;
@@ -121,6 +118,7 @@ span.constraint-value {
 .facet-field-heading {
 	background-color: $lighter-grey;
 	cursor: pointer;
+  font-family: "Roboto Light";
   font-size: 1.75rem !important;
 	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem !important;
 }

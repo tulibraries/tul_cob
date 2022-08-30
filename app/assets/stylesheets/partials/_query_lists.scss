@@ -4,8 +4,7 @@
   font-weight: 600;
 }
 
-h3.secondary-query-header {
-  font-family: "PT Sans";
+.secondary-query-header {
 	font-size: 1.2rem;
 }
 
@@ -25,25 +24,13 @@ h3.secondary-query-header {
   }
 }
 
-h4.query-item-title {
-	font-family: "PT Sans";
-	font-size: 0.9375rem !important;
+.query-item-title {
 	font-weight: bold;
-}
-
-.query-card-body,
-.query-card-footer {
-  font-family: "PT Sans";
-	font-size: 0.9375rem !important;
+  font-size: 0.875rem;
 }
 
 .query-format {
   margin-left: -0.4375rem;
-}
-
-.query-no-results {
-	font-family: "PT Sans";
-  font-size: 0.9375rem !important;
 }
 
 .tooltip-inner {
