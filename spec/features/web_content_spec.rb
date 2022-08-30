@@ -15,6 +15,13 @@ RSpec.feature "Web Content" do
         expect(page).to_not have_css("#facets")
       end
     end
+
+    context "json access" do
+      scenario "User visits web content home page" do
+        visit "/web_content?q=*&format=json"
+        expect(page.status_code).to be(200)
+      end
+    end
   end
 
   feature "Facets" do
