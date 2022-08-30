@@ -84,6 +84,10 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
+  resources :solr_web_content_documents, only: [:show], path: "/web_content", controller: "journals" do
+  end
+
+
   resources :bookmarks do
     concerns :exportable
 
