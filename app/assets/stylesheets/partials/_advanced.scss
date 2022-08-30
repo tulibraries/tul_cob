@@ -1,20 +1,10 @@
 @import "_vars.scss";
 
 /* === ADVANCED SEARCH === */
-h2.advanced {
-  font-family: "PT Sans";
-  font-size: 1.875rem;
-}
 
 .advanced-search-fields .row .col-sm-3,
 .advanced-search-fields .row .col-sm-5 {
   padding-right: 0 !important;
-}
-
-.constraints h4 {
-  font-family: "PT Sans";
-  font-size: 1.125rem;
-  font-weight: bold;
 }
 
 .control-label {

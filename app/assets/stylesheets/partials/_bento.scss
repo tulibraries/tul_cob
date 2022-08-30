@@ -23,8 +23,7 @@
 .bento_compartment h2 {
 	background-color: $lighter-grey;
 	color: $midnight-blue;
-	font-family: "Roboto Condensed";
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	height: 3.125rem;
 	padding: 0.75rem 0;
 
@@ -32,17 +31,13 @@
 		color: $midnight-blue;
 		margin-left: -0.3125rem;
 	}
-}
 
-.bento_compartment h3 {
-	font-size: 1.25rem;
-	padding-left: 0.9375rem;
 }
 
 .bento_item_title {
-	font-family: "PT Sans";
-	font-size: 0.9375rem !important;
-	font-weight: bolder;
+	font-weight: bold;
+  font-size: 0.875rem;
+	padding-left: 0.9375rem
 }
 
 .authors {
@@ -52,7 +47,7 @@
 
 .bento-avail-btn {
 	background-color: $crystal-blue;
-	color: $midnight-blue !important;
+	color: $midnight-blue;
 	font-size: 0.75rem;
  	margin-bottom: 0.9375rem;
  	margin-left: 0.9375rem;
@@ -80,8 +75,7 @@
 }
 
 .bento-resource-types {
-	font-family: "Roboto Condensed";
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	padding: 1rem 9.375rem;
 
 	@media(max-width: 768px) {
@@ -99,7 +93,7 @@
 }
 
 .bento-resource-list-item {
-	font-family: "PT Sans";
+	font-family: "Roboto Light";
 	font-size: 1.2rem;
 	width: 30%;
 

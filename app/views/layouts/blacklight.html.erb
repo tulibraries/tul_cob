@@ -22,7 +22,6 @@
     <%# Preload links for improved performance %>
     <%= preload_link_tag(font_url('faustina.woff2')) %>
     <%= preload_link_tag(font_url('roboto-condensed.woff2')) %>
-    <%= preload_link_tag("https://fonts.googleapis.com/css?family=PT+Sans", as:"style") %>
 
     <link href="https://books.google.com" rel="preconnect" crossorigin>
     <link href="https://use.fontawesome.com" rel="preconnect" crossorigin>
@@ -69,7 +68,7 @@
     </div>
 
     <%= render :partial => "shared/footer" %>
-    
+
   </body>
 
   <% if libwizard_tutorial? %>
