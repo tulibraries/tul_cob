@@ -2,18 +2,18 @@
 
 /* FOOTER */
 #site-footer {
-	background-color: $lighter-grey;
-	border-bottom: solid $new-gold 2.1875rem;
-	color: $black;
-	font-family: "roboto light";
-	width: 100%;
+  background-color: $lighter-grey;
+  border-bottom: solid $new-gold 2.1875rem;
+  color: $black;
+  font-family: "roboto light";
+  width: 100%;
 
-	a {
-		color: $black;
+  a {
+    color: $black;
   }
 
   @media (max-width: 768px) {
-	  padding-left: 2.8125rem;
+    padding-left: 2.8125rem;
   }
 }
 
@@ -26,102 +26,102 @@
   position: relative;
   left: -0.875rem;
 
-	h2 {
+  h2 {
     font-family: "roboto";
     font-size: 1.5625rem;
     margin-bottom: 0.875rem;
     margin-top: 0.875rem;
     padding-inline-start: 0.9375rem;
-	}
+  }
 
-	ul {
-		margin-bottom: 0;
-		li {
-			color: $black;
-		  	padding-left: 0;
-		  	text-decoration: none;
+  ul {
+    margin-bottom: 0;
+    li {
+      color: $black;
+      padding-left: 0;
+      text-decoration: none;
 
-		  	a {
-				color: $black;
-		  }
-		}
-	}
+      a {
+        color: $black;
+      }
+    }
+  }
 
-	.address {
-		line-height: 3rem;
-		.street-address {
-		  font-family: "roboto";
-		  font-weight: 600;
-		  line-height: 2rem;
-		  letter-spacing: 1.25px;
-		}
-		
-		@media (max-width: 768px) {
-		  border-top: solid $white 0.063rem;
-		  padding-top: 0.875rem;
-		}
-	}
+  .address {
+    line-height: 3rem;
+    .street-address {
+      font-family: "roboto";
+      font-weight: 600;
+      line-height: 2rem;
+      letter-spacing: 1.25px;
+    }
+
+    @media (max-width: 768px) {
+      border-top: solid $white 0.063rem;
+      padding-top: 0.875rem;
+    }
+  }
 }
 
 a.donate {
-	background-color: $crystal-blue;
-	box-shadow: 0px 2px 5px #ccc;
-	color: $royal-blue !important;
-	font-family: "faustina bold";
-	font-size: 1.25rem;
-	font-weight: 600;
-	height: 2.625rem;
-	padding-inline-start: 0;
-	padding: 0.3125rem 0.625rem;
-	vertical-align: middle;
+  background-color: $crystal-blue;
+  box-shadow: 0px 2px 5px #ccc;
+  color: $royal-blue !important;
+  font-family: "faustina bold";
+  font-size: 1.25rem;
+  font-weight: 600;
+  height: 2.625rem;
+  padding-inline-start: 0;
+  padding: 0.3125rem 0.625rem;
+  vertical-align: middle;
 }
-	
+
 .social-footer {
-	width: 2.625rem;
-	height: 2.625rem;
-	max-width: 2.625rem;
-	max-height: 2.625rem;
+  width: 2.625rem;
+  height: 2.625rem;
+  max-width: 2.625rem;
+  max-height: 2.625rem;
 }
 
 .social-media-list {
-	list-style-type: none;
-	li {
-		display: inline;
-		padding: 0.375rem 0.875rem;
+  list-style-type: none;
+  li {
+    display: inline;
+    padding: 0.375rem 0.875rem;
 
-		@media (max-width: 768px) {
-			padding-inline-start: 0;
-			padding-right: 2.5rem;
-		}
-	}
+    @media (max-width: 768px) {
+      padding-inline-start: 0;
+      padding-right: 2.5rem;
+    }
+  }
 
-	@media (max-width: 768px) {
-		padding-inline-start: 0;
-		padding-top: 0.875rem;
-	}
+  @media (max-width: 768px) {
+    padding-inline-start: 0;
+    padding-top: 0.875rem;
+  }
 }
 
 .footer-header {
-	a.donate:hover {
-		color: $royal-blue;
-		text-decoration: none;
-	}
+  a.donate:hover {
+    color: $royal-blue;
+    text-decoration: none;
+  }
 }
 
 .diagonal {
-	background-color: $lighter-grey;
-	margin-bottom: 0;
-	#diagonal-line {
-	  background-color: $lighter-grey;
-	  position: relative;
-	  top: -35px;
-	  height: 91px;
-	  transform: skewY(-2.5deg);
-	  @media screen and (min-width: 1599px) {
-		top: -55px;
-		height: 121px;
-	  }
-	}
+  background-color: $lighter-grey;
+  margin-bottom: 0;
+  #diagonal-line {
+    background-color: $lighter-grey;
+    position: relative;
+    top: -35px;
+    height: 91px;
+    transform: skewY(-2.5deg);
+    @media screen and (min-width: 1599px) {
+      top: -55px;
+      height: 121px;
+    }
+  }
 }
 
 .diagonal.footer-diagonal {
