@@ -3,7 +3,15 @@
 <% if has_facet_values?(facet_field_names, @response) || has_search_parameters? %>
 
 <div id="facets" class="facets w-100">
-  <div class="d-flex p-0 align-items-center limit-search ">
+  <div class="navbar p-0 mt-4 mb-0">
+    <h2 class="limit-search-heading">
+      <%= t("blacklight.search.facets.title") %>
+    </h2>
+  </div>
+
+   <%= render "constraints" %>
+
+  <div class="d-flex p-0 mb-3 align-items-center limit-search ">
     <button id="facet-filter-icon" type="button" class="hidden facets-toggler p-0 border-0 mx-2" data-toggle="collapse" data-target="#facet-panel-collapse" aria-controls="facet-panel-collapse" aria-expanded="false" aria-label="Toggle facets">
       <span class="sr-only">Toggle facets</span>
       <span id="facet-icons" class="rounded open-facet-icon"></span>
@@ -13,16 +21,8 @@
       <%= t("blacklight.search.facets.title") %>
     </h2>
 
-    <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, :class => "catalog_startOverLink btn btn-sm", :id=>"startOverLink" %>
+    <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, :class => "catalog_startOverLink btn", :id=>"startOverLink" %>
   </div>
-
-  <div class="navbar p-0 mt-4 mb-0">
-    <h2 class="limit-search-heading">
-      <%= t("blacklight.search.facets.title") %>
-    </h2>
-  </div>
-
-   <%= render "constraints" %>
 
    <div id="facet-panel-collapse" class="facets-collapse collapse show">
      <%= has_search_parameters? ? render_facet_partials(facet_field_names, :response => @response) : render_home_facets %>
