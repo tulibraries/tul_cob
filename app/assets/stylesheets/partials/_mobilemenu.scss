@@ -15,7 +15,7 @@
 		font-size: 1.5rem;
 		padding-bottom: 0.4375rem;
 		a {
-			color: white;
+			color: $white;
 		}
 		@media screen and (max-width: 1040px) {
 			width: 100%;
@@ -23,18 +23,12 @@
 			border: 0;
 		}
 	}
-	.hours-icon {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
-	.chat-icon {
-		width: 2.875rem;
-		height: 2.875rem;
-	}
-	.person-icon {
-		width: 2.5rem;
-		height: 2.5rem;
-	}
+  img {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-right: 0.625rem;
+  }
 }
 
 
