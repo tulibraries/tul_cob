@@ -34,18 +34,6 @@
 #startOverLink {
 	color: $white;
   background-color: $royal-blue;
-	font-family: "PT Sans";
-	font-size: 0.75rem;
-	font-weight: 200;
-	letter-spacing: 0.0625rem;
-
-	@media(max-width: 767px) {
-		font-size: 1.1em;
-		margin: auto;
-	}
-	@media(max-width: 485px) {
-		padding: 0.125rem 0.9375rem;
-	}
 }
 
 #facet-icons {
@@ -65,13 +53,6 @@
 	}
 }
 
-.small-limit-search-heading {
-
-	@media(min-width: 776px) {
-		display: none;
-	}
-}
-
 span .remove-constraints {
 	background-color: $light-blue;
 	border: 0.0625rem solid transparent;
@@ -85,12 +66,6 @@ span .remove-constraints {
 	@media(max-width: 768px) {
 		text-align: right;
 		width: 20%;
-	}
-}
-
-.appliedFilter {
-	@media(max-width: 485px) {
-		padding: 0 1rem;
 	}
 }
 
