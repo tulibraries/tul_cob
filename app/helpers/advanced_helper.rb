@@ -202,15 +202,15 @@ module BlacklightAdvancedSearch
     private
 
       # Remove stray quotation mark if there is an odd number
-        # @param query the query
-        # @return the query with an even number of quotation marks
-        def odd_quotes(query)
-          if query&.count('"')&.odd?
-            query.sub(/"/, "")
-          else
-            query
-          end
+      # @param query the query
+      # @return the query with an even number of quotation marks
+      def odd_quotes(query)
+        if query&.count('"')&.odd?
+          query.sub(/"/, "")
+        else
+          query
         end
+      end
   end
 end
 
