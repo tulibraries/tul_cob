@@ -53,13 +53,6 @@
 	}
 }
 
-.small-limit-search-heading {
-
-	@media(min-width: 776px) {
-		display: none;
-	}
-}
-
 span .remove-constraints {
 	background-color: $light-blue;
 	border: 0.0625rem solid transparent;
@@ -73,12 +66,6 @@ span .remove-constraints {
 	@media(max-width: 768px) {
 		text-align: right;
 		width: 20%;
-	}
-}
-
-.appliedFilter {
-	@media(max-width: 485px) {
-		padding: 0 1rem;
 	}
 }
 

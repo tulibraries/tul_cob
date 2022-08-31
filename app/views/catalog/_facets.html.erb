@@ -4,25 +4,25 @@
 
 <div id="facets" class="facets w-100">
   <div class="navbar p-0 mt-4 mb-0">
-    <h2 class="limit-search-heading">
+    <h2 class="d-none d-md-block limit-search-heading">
       <%= t("blacklight.search.facets.title") %>
     </h2>
   </div>
+
+  <button id="" type="button" class="border-0 facets-toggler w-100 mb-3 d-md-none" data-toggle="collapse" data-target="#facet-panel-collapse" aria-controls="facet-panel-collapse" aria-expanded="false" aria-label="Toggle facets">
+    <div class="d-flex p-0 align-items-center limit-search ">      
+      <span class="sr-only">Toggle facets</span>
+      <span id="facet-icons" class="rounded open-facet-icon"></span>
+
+      <h2 class="pt-2">
+        <%= t("blacklight.search.facets.title") %>
+      </h2>
+    </div>
+  </button>
 
    <%= render "constraints" %>
 
-  <div class="d-flex p-0 mb-3 align-items-center limit-search ">
-    <button id="facet-filter-icon" type="button" class="hidden facets-toggler p-0 border-0 mx-2" data-toggle="collapse" data-target="#facet-panel-collapse" aria-controls="facet-panel-collapse" aria-expanded="false" aria-label="Toggle facets">
-      <span class="sr-only">Toggle facets</span>
-      <span id="facet-icons" class="rounded open-facet-icon"></span>
-    </button>
-
-    <h2 class="small-limit-search-heading pt-2">
-      <%= t("blacklight.search.facets.title") %>
-    </h2>
-
-    <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, :class => "catalog_startOverLink btn", :id=>"startOverLink" %>
-  </div>
+  <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, :class => "catalog_startOverLink btn mb-3", :id=>"startOverLink" %>
 
    <div id="facet-panel-collapse" class="facets-collapse collapse show">
      <%= has_search_parameters? ? render_facet_partials(facet_field_names, :response => @response) : render_home_facets %>
