@@ -6,7 +6,6 @@
 	border-bottom: solid $new-gold 2.1875rem;
 	color: $black;
 	font-family: "roboto light";
-	height: 100%;
 	width: 100%;
 
 	a {
@@ -14,21 +13,23 @@
   }
 
   @media (max-width: 768px) {
-	padding-left: 2.8125rem;
+	  padding-left: 2.8125rem;
   }
 }
 
 .tu-links {
-	border-top: solid $grey 1px;
+	border-top: solid $grey 0.063rem;
 	color: $black;
 	font-size: 1.25rem;
 	margin-top: 1.3125rem;
-	padding: 0.875rem 0px 3.5rem 0.4375rem;
+	padding: 0.875rem auto 3.5rem 0.4375rem;
+  position: relative;
+  left: -0.875rem;
 
 	h2 {
 		font-family: "roboto";
-      	font-size: 1.5625rem;
-      	margin-bottom: 0.875rem;
+    font-size: 1.5625rem;
+    margin-bottom: 0.875rem;
 		margin-top: 0.875rem;
 		padding-inline-start: 0.9375rem;
 	}
@@ -56,10 +57,10 @@
 		}
 		
 		@media (max-width: 768px) {
-		  border-top: solid $white 1px;
+		  border-top: solid $white 0.063rem;
 		  padding-top: 0.875rem;
 		}
-	  }
+	}
 }
 
 a.donate {
@@ -91,13 +92,13 @@ a.donate {
 		@media (max-width: 768px) {
 			padding-inline-start: 0;
 			padding-right: 2.5rem;
-		  }
+		}
 	}
 
 	@media (max-width: 768px) {
 		padding-inline-start: 0;
 		padding-top: 0.875rem;
-	  }
+	}
 }
 
 .footer-header {
@@ -121,8 +122,8 @@ a.donate {
 		height: 121px;
 	  }
 	}
-  }
-  .diagonal.footer-diagonal {
-	margin-top: 10rem;
-  }
+}
 
+.diagonal.footer-diagonal {
+  margin-top: 10rem;
+}
