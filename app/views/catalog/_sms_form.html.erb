@@ -1,6 +1,11 @@
 <% # Overridden from BL in order to add location selctor. %>
 
-<%= form_tag url_for(:controller => controller_name, :action => "sms"), :id => 'sms_form', :class => "form-horizontal ajax_form", :method => :post do %>
+<%= form_tag url_for(controller: controller_name, action: "sms"),
+             data: { blacklight_modal: 'trigger' },
+             id: 'sms_form',
+             class: "modal_form",
+             method: :post do %>
+
   <div class="modal-body">
   <%= render :partial=>'/shared/flash_msg' %>
     <div class="form-group row">
@@ -22,9 +27,10 @@
     </div>
 
     <div class="location-wrapper">
-      <% @documents.each do |doc| %>
+      <% @response.documents.each do |doc| %>
         <% doc_presenter = show_presenter(doc) %>
         <%= render_location_selector(doc) %>
+
         <%= hidden_field_tag "id[]", doc.id %>
       <% end %>
     </div>
