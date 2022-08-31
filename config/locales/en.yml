@@ -29,7 +29,7 @@ en:
     org_charts_html: "Library Organizational Charts"
     org_charts_link: "https://library.temple.edu/org-charts"
     staff_forms_html: "Staff Forms"
-    staff_forms_link: "https://library.temple.edu/staff-forms"
+    staff_forms_link: "https://tuprd.sharepoint.com/sites/TEST210/Shared Documents/Forms/AllItems.aspx?csf=1&web=1&e=r5syZ1&CT=1661953954909&OR=OWA-NT&CID=53f47613-2244-fb60-9885-581af13cadab&RootFolder=/sites/TEST210/Shared Documents/General/Staff Forms&FolderCTID=0x01200081FA46A030E6164CA7BBFC4785C94E27"
   query_list:
     no_results: "No additional results found"
     query_feedback_html: "Help us improve this new feature in development! %{href}."
