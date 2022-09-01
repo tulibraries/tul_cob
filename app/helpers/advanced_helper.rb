@@ -169,9 +169,9 @@ module BlacklightAdvancedSearch
 
         return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
-        q1 = @params[:q_1]
-        q2 = @params[:q_2]
-        q3 = @params[:q_3]
+        q1 = odd_quotes(@params[:q_1])
+        q2 = odd_quotes(@params[:q_2])
+        q3 = odd_quotes(@params[:q_3])
 
         been_combined = false
         @keyword_queries[@params[:f_1]] = q1 unless @params[:q_1].blank?
@@ -198,6 +198,19 @@ module BlacklightAdvancedSearch
       end
       @keyword_queries
     end
+
+    private
+
+      # Remove stray quotation mark if there is an odd number
+      # @param query the query
+      # @return the query with an even number of quotation marks
+      def odd_quotes(query)
+        if query&.count('"')&.odd?
+          query.sub(/"/, "")
+        else
+          query
+        end
+      end
   end
 end
 

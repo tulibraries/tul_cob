@@ -3,6 +3,51 @@
   margin-top: 1rem;
 }
 
+.documentHeader {
+  .document-counter {
+    width: 4%;
+    font-weight: 600;
+  }
+  .document-header-container {
+    width:96%;
+    .document-actions-container {
+      display:inline-block;
+      border-bottom: solid #ccc 1px;
+      width: 100%;
+      h3 {
+        display: inline-block;
+        padding-bottom: 0;
+        width: 80%;
+      }
+    }
+  }
+  .index-document-functions {
+    display: inline;
+    label.toggle-bookmark {
+      text-align: right;
+      font-size: 1rem;
+    }
+  }
+  .bookmark-toggle {
+    display: inline;
+      float: right;
+    text-align: right;
+    position: relative;
+    right: -4%;
+    .toggle-bookmark {
+      margin-bottom: 0;
+      display: inline;
+    }
+
+  }
+}
+
+.document-metadata {
+  margin-left: 2%;
+  line-height: 2rem;
+  font-size: 1rem;
+}
+
 h3.document-title-heading {
   font-family: "PT Sans";
   font-size: 1.1rem !important;
@@ -29,7 +74,7 @@ h3.document-title-heading {
 .book_info .index-label {
   color: #595959;
   font-weight: 600;
-  margin-left: 3.75rem;
+  font-size: 1rem;
 
   @media(max-width: 991px) {
     margin-left: 1.75rem;
@@ -40,6 +85,14 @@ h3.document-title-heading {
     margin-left: 0;
     text-align: left;
   }
+}
+
+.availability-locations {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  padding-left: 0;
+  position: relative;
+  left: -1.875rem;
 }
 
 dt.index-label {
