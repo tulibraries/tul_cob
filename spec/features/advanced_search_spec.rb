@@ -78,7 +78,7 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector, minimum: 3)
-      expect(first(results_selector).text).to match(/^1. [Ss]tate/)
+      expect(first(results_selector).text).to match(/^[Ss]tate/)
     end
 
     scenario "searching with begins_with x OR begins_with y" do
@@ -90,7 +90,7 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector)
-      expect(first(results_selector).text).to match(/^1. ([Ss]tates|[Ii]ntroduction) /)
+      expect(first(results_selector).text).to match(/^([Ss]tates|[Ii]ntroduction) /)
     end
 
     scenario "searching crazy long title with colon in it" do
@@ -102,7 +102,7 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector, minimum: 1)
-      expect(first(results_selector).text).to eq("1. #{title}")
+      expect(first(results_selector).text).to eq("#{title}")
     end
 
     scenario "searching crazy long title with colon in it (regular search)" do
@@ -112,7 +112,7 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector, minimum: 1)
-      expect(first(results_selector).text).to eq("1. #{title}")
+      expect(first(results_selector).text).to eq("#{title}")
     end
     scenario "searching with is operator" do
       visit "catalog?#{{
@@ -122,7 +122,7 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector, minimum: 1)
-      expect(first(results_selector).text).to match(/1. Introduction to immunology/)
+      expect(first(results_selector).text).to match(/Introduction to immunology/)
     end
 
     scenario "searching NOT something" do
