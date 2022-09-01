@@ -1,5 +1,5 @@
 <% if !cookies.fetch("#{controller_name}Once", false) %>
-<div class="row bg-background-grey rounded explanation-div mx-1" data-controller="explanation" data-explanation-target="<%= controller_name %>">
+<div class="row rounded explanation-div mx-1" data-controller="explanation" data-explanation-target="<%= controller_name %>">
   <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" >
     <p class="explanation">
       <%= explanation_translations(controller_name) %>
