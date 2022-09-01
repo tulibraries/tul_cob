@@ -118,11 +118,10 @@
 .user-logout {
 	font-size: 1rem;
 	padding-left: 2rem;
-	width: 10rem;
+	width: auto;
 
 	@media(max-width: 990px) {
 		padding: 1rem;
-		width: auto;
 	}
 
 	@media(max-width: 485px) {

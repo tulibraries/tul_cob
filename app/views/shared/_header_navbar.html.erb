@@ -1,9 +1,13 @@
-<nav id="logo-navbar" class="navbar navbar-header" role="banner">
-  <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
-    <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
-    <span class="logo-text">University Libraries</span>
-  <% end %>
-</nav>
+<div class="" id="header-wrapper">
+  <div class="container-xl">
+    <nav id="logo-navbar" class="navbar navbar-header" role="banner">
+      <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
+        <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", alt: "temple-logo") %>
+        <span class="logo-text">University Libraries</span>
+      <% end %>
+    </nav>
+  </div>
+</div>
 
 <%= render :partial => 'shared/banner' %>
 
