@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 90463c9c750e450ffac87fa10f0abf994f9d5bfb
+  revision: 2ca7c56411a9852bda7cf1ce368342e3f2662707
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -276,7 +276,6 @@ GEM
     faraday-net_http (3.0.0)
     ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
-    ffi (1.15.5-x64-unknown)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
