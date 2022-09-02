@@ -2,7 +2,6 @@
 
 require "rails_helper"
 
-
 RSpec.describe PrimoCentralController, type: :controller do
   let(:doc) { Hash.new }
   let(:options) { { blacklight_config: controller.blacklight_config } }
@@ -48,5 +47,30 @@ RSpec.describe PrimoCentralController, type: :controller do
       expect(response.code).to eq "404"
       expect(response.body).to include "error-header not-found"
     end
+  end
+
+  describe "net_read_timeout_rescue", with_rescue: true do
+    before do
+      allow(controller).to receive(:index) { raise Net::ReadTimeout }
+    end
+
+    context "when timeout happens but no deep pagination" do
+      it "rescues from Net::ReadTimeout with a friendly error" do
+        get :index
+
+        expect(response).to redirect_to "/articles"
+        expect(flash[:error]).to eq("The search timed out.")
+      end
+    end
+
+    context "when timeout happens and deep pagination is present" do
+      it "rescues from Net::ReadTimeout with a friendly error" do
+        get :index, params: { page: 50 }
+
+        expect(response).to redirect_to "/articles"
+        expect(flash[:error]).to eq("The search timed out. This feature does not support deep pagination.")
+      end
+    end
+
   end
 end
