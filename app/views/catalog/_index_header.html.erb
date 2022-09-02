@@ -13,13 +13,11 @@
               <%= t('blacklight.search.documents.counter', counter: counter) %>
             </div>
           <% end %>
-            <div class="px-0 align-top document-header-container">
-              <div class="document-actions-container">
-              <%= render_index_doc_actions document, tag: :div, wrapping_class: "index-document-functions float-right" %>
-              <h3 class="index_title document-title-heading">
+            <div class="px-0 document-header-container">
+              <h3 class="index_title">
                 <%= link_to_document document, counter: counter %>
               </h3>
-              </div>
+              <%= render_index_doc_actions document, tag: :div, wrapping_class: "index-document-functions float-right" %>
             </div>
       </header>
 
