@@ -333,6 +333,16 @@ class CatalogController < ApplicationController
       }
     end
 
+    # Hidden search field used to configure more localized search.
+    config.add_search_field("creator", label: "Author/Creator")  do |field|
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+      field.solr_parameters = {
+        qf: "creator_t",
+      }
+    end
+
+
     # Specifying a :qt only to show it's possible, and so our internal automated
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
@@ -488,7 +498,7 @@ class CatalogController < ApplicationController
       end
 
       creator_query = view_context.send(:url_encode, name)
-      name_link = view_context.link_to(name, base_path + "?utf8=✓&search_field=creator_t&q=#{creator_query}") if name.present?
+      name_link = view_context.link_to(name, base_path + "?utf8=✓&search_field=creator&q=#{creator_query}") if name.present?
 
       ActiveSupport::SafeBuffer.new([ relation,
         name_link,

@@ -318,7 +318,7 @@ RSpec.describe CatalogController, type: :controller do
 
       it "returns a list of links to creator search for each creator" do
         expect(controller.browse_creator(presenter)).to eq([
-          "<a href=\"/?utf8=✓&amp;search_field=creator_t&amp;q=Hello%2C%20World\">Hello, World</a>"
+          "<a href=\"/?utf8=✓&amp;search_field=creator&amp;q=Hello%2C%20World\">Hello, World</a>"
         ])
       end
 
@@ -351,7 +351,7 @@ RSpec.describe CatalogController, type: :controller do
 
         it "returns name as a link to query" do
           expect(controller.browse_creator(presenter)).to eq([
-            "<a href=\"/?utf8=✓&amp;search_field=creator_t&amp;q=MyName\">MyName</a>"
+            "<a href=\"/?utf8=✓&amp;search_field=creator&amp;q=MyName\">MyName</a>"
           ])
         end
       end
@@ -361,7 +361,7 @@ RSpec.describe CatalogController, type: :controller do
 
         it "returns name as a link to query + plus role appended" do
           expect(controller.browse_creator(presenter)).to eq([
-            "<a href=\"/?utf8=✓&amp;search_field=creator_t&amp;q=MyName\">MyName</a> MyRole"
+            "<a href=\"/?utf8=✓&amp;search_field=creator&amp;q=MyName\">MyName</a> MyRole"
           ])
         end
       end
@@ -373,7 +373,7 @@ RSpec.describe CatalogController, type: :controller do
 
         it "returns name as a link to query + plus role appended + relation prepended" do
           expect(controller.browse_creator(presenter)).to eq([
-            "MyRelation <a href=\"/?utf8=✓&amp;search_field=creator_t&amp;q=MyName\">MyName</a> MyRole"
+            "MyRelation <a href=\"/?utf8=✓&amp;search_field=creator&amp;q=MyName\">MyName</a> MyRole"
           ])
         end
       end
