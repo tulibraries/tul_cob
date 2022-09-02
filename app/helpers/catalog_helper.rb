@@ -353,7 +353,7 @@ module CatalogHelper
   def get_search_params(field, query)
     case field
     when "title_uniform_display", "title_addl_display", "relation"
-      { search_field: "title", q: query }
+      { search_field: "title", q: %Q("#{query}") }
     else
       { search_field: field, q: query }
     end
@@ -362,7 +362,7 @@ module CatalogHelper
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
-    title = params[:title] || params[:q]
+    title = params[:title] || query
     link_to(title, link_url)
   end
 

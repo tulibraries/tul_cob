@@ -292,6 +292,27 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#get_search_params" do
+    context "with title_uniform_display field" do
+      let(:field) { "title_uniform_display" }
+      let(:query) { "Beethoven, Symphony no. 5" }
+
+      it "should add quotes to the query and use title search" do
+        expect(get_search_params(field, query)).to eq({ search_field: "title",
+          q: "\"Beethoven, Symphony no. 5\"" })
+      end
+    end
+
+    context "with title_statement_vern_display field" do
+      let(:field) { "title_statement_vern_display" }
+      let(:query) { "Beethoven, Symphony no. 5" }
+
+      it "should not add quotes to the query or use title search" do
+        expect(get_search_params(field, query)).to eq({ q: "Beethoven, Symphony no. 5", search_field: "title_statement_vern_display" })
+      end
+    end
+  end
+
   describe "#render_electronic_notes" do
     let(:service_notes) {  { "foo" => { "value" => "foo" } } }
     let(:collection_notes) {  { "bizz" => { "value" => "bar" } } }
