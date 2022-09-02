@@ -1,5 +1,6 @@
 <% # Overridden from BL in order to add location selctor. %>
 
+
 <%= form_tag url_for(controller: controller_name, action: "sms"),
              data: { blacklight_modal: 'trigger' },
              id: 'sms_form',
@@ -7,6 +8,11 @@
              method: :post do %>
 
   <div class="modal-body">
+
+  <div class="faq-text-box border border-cherry-red rounded mb-2">
+    <p class="mb-0"> We are phasing the Send To Text option in December 2022. This service may not work currently with some cellphone providers. <a href="https://library.temple.edu/contact-us">Contact us</a> if you have any questions.</p>
+  </div>
+
   <%= render :partial=>'/shared/flash_msg' %>
     <div class="form-group row">
       <label class="control-label col-sm-3 text-right" for="to">
