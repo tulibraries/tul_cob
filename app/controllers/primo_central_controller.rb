@@ -115,7 +115,9 @@ class PrimoCentralController < CatalogController
     end
   end
 
-  def net_read_timeout_rescue
+  def net_read_timeout_rescue(exception)
+    Honeybadger.notify(exception)
+
     flash[:error] = "The search timed out."
     flash[:error] += " This feature does not support deep pagination." if params[:page].to_i >= 50
 
