@@ -14,7 +14,7 @@ Disallow: /catalog/facet
 Disallow: /catalog/range_limit
 Disallow: /bookmarks
 Disallow: /users
-Disallow: /query_listecho
+Disallow: /query_list
 
 # Allow these cagents to crawl catalog
  User-agent: Googlebot
