@@ -3,9 +3,6 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  # adds comments as to which partial is generating code
-  config.action_view.annotate_rendered_view_with_filenames = true
-
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded any time
