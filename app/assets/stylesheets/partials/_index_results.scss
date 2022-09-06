@@ -1,56 +1,34 @@
 /* === INDEX SEARCH RESULTS=== */
+
 .documents-list {
   margin-top: 1rem;
-}
+  margin-left: 0;
 
-.documentHeader {
-  .document-counter {
-    width: 4%;
-    font-weight: 600;
-  }
-  .document-header-container {
-    width:96%;
-    .document-actions-container {
-      display:inline-block;
+  .documentHeader {
+    .document-counter {
+      width: 4%;
+      font-size: 0.95rem;
+    }
+
+    .document-header-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 96%;
       border-bottom: solid #ccc 1px;
-      width: 100%;
-      h3 {
-        display: inline-block;
+
+      .index_title {
+        flex: 1 80%;
+        font-size: 1.1rem;
         padding-bottom: 0;
-        width: 80%;
       }
-    }
-  }
-  .index-document-functions {
-    display: inline;
-    label.toggle-bookmark {
-      text-align: right;
-      font-size: 1rem;
-    }
-  }
-  .bookmark-toggle {
-    display: inline;
-      float: right;
-    text-align: right;
-    position: relative;
-    right: -4%;
-    .toggle-bookmark {
-      margin-bottom: 0;
-      display: inline;
-    }
+      .index-document-functions {
+        display: inline-block;
+        label.toggle-bookmark {
+          text-align: right;
+        }
 
+      }
   }
-}
-
-.document-metadata {
-  margin-left: 2%;
-  line-height: 2rem;
-  font-size: 1rem;
-}
-
-h3.document-title-heading {
-  font-family: "PT Sans";
-  font-size: 1.1rem !important;
 }
 
 .explantion-wrapper {
@@ -67,52 +45,24 @@ h3.document-title-heading {
   font-size: 1.1em;
 }
 
-.document-title-heading {
-  font-size: 0.875rem;
-}
+.book_info {
+  .document-metadata {
+    padding-left: 1.5rem;
 
-.index_title {
-  margin-bottom: 0;
-}
-
-.book_info .index-label {
-  color: #595959;
-  font-weight: 600;
-  font-size: 1rem;
-
-  @media(max-width: 991px) {
-    margin-left: 1.75rem;
-    padding-left: 1rem;
-  }
-
-  @media(max-width: 768px) {
-    margin-left: 0;
-    text-align: left;
+    @media(max-width: 768px) {
+      margin-left: 0;
+      padding-left: 0;
+      text-align: left;
+    }
+    .index-label {
+      line-height: 2rem;
+      font-weight: 500;
+    }
+    .availability-locations {
+      line-height: 2rem;
+    }
   }
 }
-
-.availability-locations {
-  line-height: 1.5rem;
-  font-size: 1rem;
-  padding-left: 0;
-  position: relative;
-  left: -1.875rem;
-}
-
-dt.index-label {
-  text-align: right;
-
-  @media(max-width: 600px) {
-    text-align: left;
-	}
-}
-
-dd {
-  text-align: left;
-
-  @media(max-width: 485px) {
-    width: 75% !important;
-  }
 }
 
 dl.blacklight-lc_call_number_display > dd,
