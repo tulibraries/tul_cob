@@ -118,8 +118,8 @@ class PrimoCentralController < CatalogController
   def net_read_timeout_rescue(exception)
     Honeybadger.notify(exception)
 
-    flash[:error] = "The search timed out."
-    flash[:error] += " This feature does not support deep pagination." if params[:page].to_i >= 50
+    flash[:error] = "Your search query has timed out."
+    flash[:error] += " You may have exceeded the maximum number of pages allowed for an Articles search query in Library Search." if params[:page].to_i >= 50
 
     redirect_to "/articles"
   end
