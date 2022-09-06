@@ -47,15 +47,17 @@ en:
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
       new:
+        title: Log in to My Library Account
+        intro: To see the options for getting this item, please log in.
         temple_users_html: >- 
                               <span class="big">Students, faculty, staff, registered alumni</span>
-                              <br />Temple University AccessNet Account
+                              <br />Temple University AccessNet account
         pa_users_html: >-
                         <span class="big">Registered Pennsylvania (PA) residents</span>
                         <br />PA borrower account
         guests_html: >-
                         <span class="big">Unregistered visitors & guests</span>
-                        <br />Items held for onsite use only
+                        <br />Request items for onsite use only
         guest_link: "https://temple.libwizard.com/f/ContinueAsGuest"
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."

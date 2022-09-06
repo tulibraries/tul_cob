@@ -1,10 +1,10 @@
-<div id="login" class="p-0 pt-3">
-<h2 class="py-2">Log in to My Library Account</h2>
+<div id="login" class="container p-0 pt-3">
+<h2 class="py-2"><%= t("devise.sessions.new.title")%></h2>
 
 <%- if devise_mapping.omniauthable? %>
 <div class="login-options p-0 m-0 mb-5">
-  <p class="pt-3 pb-2 info">To see the options for getting this item, please login</p>
-  <div class="">
+  <p class="pt-3 pb-2 info"><%= t("devise.sessions.new.intro")%></p>
+  <div>
     <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, class: "temple-user-link", method: :post %>
     <%= link_to t("devise.sessions.new.pa_users_html"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
     <% if params[:redirect_to] %>
