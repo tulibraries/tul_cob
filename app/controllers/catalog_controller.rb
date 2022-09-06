@@ -488,7 +488,7 @@ class CatalogController < ApplicationController
       end
 
       creator_query = view_context.send(:url_encode, name)
-      name_link = view_context.link_to(name, base_path + "?utf8=✓&search_field=creator_t&q=#{creator_query}") if name.present?
+      name_link = view_context.link_to(name, base_path + "?f[creator_t][]=#{creator_query}") if name.present?
 
       ActiveSupport::SafeBuffer.new([ relation,
         name_link,
