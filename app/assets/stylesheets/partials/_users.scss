@@ -136,19 +136,20 @@
   text-align: center;
 
   h2 {
-    font-family: "Roboto Light";
+    font-family: "Roboto";
     font-size: 2.25rem;
     font-weight: 100;
+    padding-bottom: 14px;
+    border-bottom: solid $light-grey 1px;
   }
   h2::before {
     content: asset-url('person-black.png');
     position: relative;
-    top: 10px;
+    top: 7px;
     padding-right: 14px;
   }
 
   .login-options {
-    border-top: solid #ccc 1px;
     margin-bottom: 21px;
     .info {
       font-size: 1.15rem;
