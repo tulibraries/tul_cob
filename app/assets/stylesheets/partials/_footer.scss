@@ -6,6 +6,7 @@
   border-bottom: solid $new-gold 2.1875rem;
   color: $black;
   font-family: "roboto light";
+  height: 100%;
   width: 100%;
 
   a {
@@ -23,8 +24,6 @@
   font-size: 1.25rem;
   margin-top: 1.3125rem;
   padding: 0.875rem auto 3.5rem 0.4375rem;
-  position: relative;
-  left: -0.875rem;
 
   h2 {
     font-family: "roboto";
