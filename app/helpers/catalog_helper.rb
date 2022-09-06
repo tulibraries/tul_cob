@@ -120,7 +120,7 @@ module CatalogHelper
     # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
     # We do not want this to render if the item is from Primo, etc.
     if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :dl, nil, class: "row document-metadata blacklight-availability availability-ajax-load my-0 mr-5", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+      content_tag :dl, nil, class: "d-flex flex-row document-metadata blacklight-availability availability-ajax-load my-0", "data-availability-ids": document.alma_availability_mms_ids.join(",")
     end
   end
 
@@ -353,7 +353,7 @@ module CatalogHelper
   def get_search_params(field, query)
     case field
     when "title_uniform_display", "title_addl_display", "relation"
-      { search_field: "title", q: query }
+      { search_field: "title", q: %Q("#{query}") }
     else
       { search_field: field, q: query }
     end
@@ -362,7 +362,7 @@ module CatalogHelper
   def fielded_search(query, field)
     params = get_search_params(field, query)
     link_url = search_action_path(params)
-    title = params[:title] || params[:q]
+    title = params[:title] || query
     link_to(title, link_url)
   end
 

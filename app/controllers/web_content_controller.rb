@@ -44,6 +44,12 @@ class WebContentController < CatalogController
         qf: "${title_qf}",
         pf: "${title_pf}",
       }
+
+      field.solr_adv_parameters = {
+        # Added to avoid solr errors when users switch between searches
+        qf: "$title_qf",
+        pf: "$title_pf"
+      }
     end
 
     # Sort fields.

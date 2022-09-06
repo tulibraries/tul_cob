@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 90463c9c750e450ffac87fa10f0abf994f9d5bfb
+  revision: 4a705301effa958e8159576a1c20077579826897
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 4166b98ab6ff545250b386648b4a33f18ead2451
+  revision: 1fffebe4686a8c2be12549eea61221ae7901e790
   branch: main
   specs:
     cob_index (0.1.0)
@@ -79,7 +79,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: bfb525a79b66a94db7bd4349b61619c04c800c9c
+  revision: bbac01f014e539e9a272ff48550fdeee678dd666
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -90,14 +90,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: b8c998408993fd1b979a7276739a476454bc477c
+  revision: e9eb81985d1f678a56d470435adf92a46ff317b6
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: af09c04a644f13491b53320d61aa4f847fe23a06
+  revision: 53ec1945e10dc8854166895168ce13b05f76e9ac
   branch: main
   specs:
     primo (0.1.0)

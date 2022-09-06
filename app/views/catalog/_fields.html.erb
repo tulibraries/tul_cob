@@ -2,10 +2,10 @@
 
 <div class="row document-metadata mb-0">
   <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
-    <div class="col-12 pl-2">
-      <div class="blacklight-<%= field_name.parameterize %>"> 
+    <div class="col-12 pl-0">
+      <div class="blacklight-<%= field_name.parameterize %>">
       <% unless field_config[:no_label] %>
-        <span class="index-label"><%= field_presenter.label %></span>: 
+        <span class="index-label"><%= field_presenter.label %></span>:
       <% end %>
         <% if field_config.raw %>
           <%= raw doc_presenter.field_value(field_config) %>
