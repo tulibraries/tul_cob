@@ -1,8 +1,8 @@
-<div id="login" class="container p-0 pt-3">
-<h2 class="py-2"><%= t("devise.sessions.new.title")%></h2>
+<div id="login" class="p-0 pt-3">
+<h2 class="pt-2"><%= t("devise.sessions.new.title")%></h2>
 
 <%- if devise_mapping.omniauthable? %>
-<div class="login-options p-0 m-0 mb-5">
+<div class="login-options container">
   <p class="pt-3 pb-2 info"><%= t("devise.sessions.new.intro")%></p>
   <div>
     <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, class: "temple-user-link", method: :post %>
