@@ -51,3 +51,6 @@ yarn-debug.log*
 .yarn-integrity
 
 /config/master.key
+
+.DS_Store
+**/.DS_Store
