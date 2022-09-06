@@ -1,4 +1,4 @@
-<div class="row" id="header-wrapper">
+<div class="" id="header-wrapper">
   <div class="container-xl">
     <nav id="logo-navbar" class="navbar navbar-header" role="banner">
       <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
@@ -6,14 +6,13 @@
         <span class="logo-text">University Libraries</span>
       <% end %>
     </nav>
-
-    <%= render :partial => 'shared/banner' %>
-
   </div>
 </div>
 
-<div class="row" id="website-navbar-container">
-  <div class="container-xl pr-0">
+<%= render :partial => 'shared/banner' %>
+
+<div class="" id="website-navbar-container">
+  <div class="container-xl">
     <nav id="website-navbar" class="navbar navbar-header p-0" aria-labelledby="main-menu">
       <div class="row d-none d-xl-block" id="main-menu">
         <ul class="list-unstyled pr-5 m-0">
@@ -38,7 +37,7 @@
   </div>
 </div>
 
-<div class="row" id="search-navbar-container">
+<div id="search-navbar-container">
   <div class="container">
     <nav id="search-navbar" class="navbar navbar-default bg-lighter-grey border-bottom border-red pt-3">
       <div class="d-lg-inline-flex align-items-center mx-auto">

@@ -3,11 +3,12 @@
 /* HEADER WITH LOGO */
 #header-wrapper {
   background-color: $cherry-red;
+  margin-right: 0;
 }
 
 #logo-navbar {
   background-color: $cherry-red;
-  padding-bottom: 21px;
+  padding-bottom: 1.313rem;
 
 	@media(max-width: 485px) {
 		padding-left: 0;
@@ -31,66 +32,68 @@
 	font-size: 2.0rem;
 	margin-left: 0.625rem;
 
-	@media(max-width: 485px) {
-		font-size: 2.2rem;
-	 line-height: 2.4rem;
-	}
+  @media(max-width: 485px) {
+    font-size: 2.2rem;
+    line-height: 2.4rem;
+  }
 }
 
 /* WEBSITE HEADER */
 #website-navbar-container {
   background-color: $dark-cherry-red;
+  margin-right: 0;
 }
 #search-navbar-container {
   background-color: $lighter-grey;
+  margin-right: 0;
 }
 
 #main-menu {
   background-color: #910C22;
-	padding-left: 1.75rem;
-	width: 100%;
-	ul {
-		font-family: "Roboto";
-		li {
-			padding: 0.5rem 1.3125rem;
-			display: inline-block;
-			height: 100%;
-				a {
-					color: $white;
-					font-size: 1.25rem;
-					@media screen and (max-width: 1039px) {
-						font-size:1.25rem;
-					}
-				}
-			}
-			li.nav-right {
-				@media screen and (min-width: 1040px) {
-					float: right;
-				}
-				padding-left: 3.0625rem;
-				border-color: $cherry-red;
-				padding-right: 1rem;
-			}
-			li.nav-right.hours-nav {
-				background-image: asset-data-url('hours.png');
-				background-position: 0.8rem center;
-				background-repeat: no-repeat;
-				background-size: 1.625rem 1.625rem;
-			}
-			li.nav-right.chat-nav {
-				background-image: asset-data-url('chat.png');
-				background-position: 0.8rem center;
-				background-repeat: no-repeat;
-				background-size: 1.625rem 1.625rem;
-			}
-			li.nav-right.account-nav {
-				background-image: asset-data-url('person.png');
-				background-position: 0.8rem center;
-				background-repeat: no-repeat;
-				background-size: 1.625rem 1.625rem;
-			}
-		}
-	}
+  padding-left: 1.75rem;
+  width: 100%;
+  ul {
+    font-family: "Roboto";
+    li {
+      padding: 0.5rem 1.3125rem;
+      display: inline-block;
+      height: 100%;
+      a {
+        color: $white;
+        font-size: 1.25rem;
+        @media screen and (max-width: 1039px) {
+          font-size:1.25rem;
+        }
+      }
+    }
+    li.nav-right {
+      @media screen and (min-width: 1040px) {
+        float: right;
+      }
+      padding-left: 3.0625rem;
+      border-color: $cherry-red;
+      padding-right: 1rem;
+    }
+    li.nav-right.hours-nav {
+      background-image: asset-data-url('hours.png');
+      background-position: 0.8rem center;
+      background-repeat: no-repeat;
+      background-size: 1.625rem 1.625rem;
+    }
+    li.nav-right.chat-nav {
+      background-image: asset-data-url('chat.png');
+      background-position: 0.8rem center;
+      background-repeat: no-repeat;
+      background-size: 1.625rem 1.625rem;
+    }
+    li.nav-right.account-nav {
+      background-image: asset-data-url('person.png');
+      background-position: 0.8rem center;
+      background-repeat: no-repeat;
+      background-size: 1.625rem 1.625rem;
+    }
+  }
+}
 
 /* HEADER WITH SEARCH INPUT */
 #catalog-header {
@@ -100,7 +103,7 @@
 	color: $black;
 
 	@media(max-width: 485px) {
-	 font-size: 1.4rem;
+	  font-size: 1.4rem;
 	}
 }
 
@@ -115,11 +118,10 @@
 .user-logout {
 	font-size: 1rem;
 	padding-left: 2rem;
-	width: 10rem;
+	width: auto;
 
 	@media(max-width: 990px) {
 		padding: 1rem;
-		width: auto;
 	}
 
 	@media(max-width: 485px) {
@@ -281,19 +283,19 @@ a#bookmarks_nav {
   height: auto;
   vertical-align: middle;
   font-size: 1.25rem;
-  padding: 7px;
+  padding: 0.438rem;
   font-family: "Roboto";
   p {
-	 margin-bottom: 0;
-	 margin-top: 6px;
-	 a {
-	   text-decoration: underline;
+	  margin-bottom: 0;
+	  margin-top: 6px;
+	  a {
+	    text-decoration: underline;
 	  }
   }
   img {
 	  display: inline-block;
-	  height: 42px;
+	  height: 2.625rem;
 	  float: left;
-	  margin-right: 10px;
+	  margin-right: 0.625rem;
   }
 }

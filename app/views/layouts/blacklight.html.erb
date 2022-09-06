@@ -46,27 +46,30 @@
 
     <%= render :partial => "shared/header_navbar" %>
 
-    <div id="page-wrapper">
+    <div class="container-xl">
+      <div id="page-wrapper" class="w-100">
 
-      <div class="lcs_slide_out">
-        <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=6af1e63c96b3b7ee77f712a13babdc61&referer=https%3A%2F%2Flibrarysearch.temple.edu&referer_title=Temple%20University%20Libraries", target: "_blank" %>
-      </div>
-
-      <div class="p-md-2">
-        <%= render :partial=>'/shared/flash_msg' %>
-      </div>
-
-      <%= render partial: "shared/modal" %>
-
-      <main id="main-container" class="col-sm-12 mx-auto p-lg-0" role="main">
-
-
-        <div class="pb-5">
-          <%= yield %>
+        <div class="lcs_slide_out">
+          <%= link_to "Chat", "https://v2.libanswers.com/chati.php?hash=6af1e63c96b3b7ee77f712a13babdc61&referer=https%3A%2F%2Flibrarysearch.temple.edu&referer_title=Temple%20University%20Libraries", target: "_blank" %>
         </div>
-      </main>
-    </div>
 
+        <div class="p-md-2">
+          <%= render :partial=>'/shared/flash_msg' %>
+        </div>
+
+        <%= render partial: "shared/modal" %>
+
+        <main id="main-container" class="col-12 col-md-11 m-0 p-lg-0" role="main">
+
+          <div class="pb-5">
+            <%= yield %>
+          </div>
+
+        </main>
+        
+      </div>
+    </div>
+    
     <%= render :partial => "shared/footer" %>
 
   </body>
