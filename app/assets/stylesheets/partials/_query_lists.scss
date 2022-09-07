@@ -24,9 +24,12 @@
   }
 }
 
-.query-item-title {
-	font-weight: bold;
+.query-card-body, .query-card-footer {
   font-size: 0.875rem;
+
+  .query-title, .query-item-availability {
+    font-weight: bold; 
+  }
 }
 
 .query-format {
