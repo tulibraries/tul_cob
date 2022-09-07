@@ -107,6 +107,10 @@ a.donate {
     color: $royal-blue;
     text-decoration: none;
   }
+
+  @media (max-width: 768px) {
+    padding-left: 0;
+  }
 }
 
 .diagonal {
