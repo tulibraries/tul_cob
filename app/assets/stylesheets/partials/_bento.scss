@@ -16,10 +16,6 @@
 	}
 }
 
-.bento-main-container {
-//	padding: 0 50px;
-}
-
 .bento_compartment h2 {
 	background-color: $lighter-grey;
 	color: $midnight-blue;
@@ -32,6 +28,11 @@
 		margin-left: -0.3125rem;
 	}
 
+}
+
+.bento_search_no_results h3, .noresults{
+	padding-left: 0.9375rem;
+	padding-right: 0.9375rem !important;
 }
 
 .bento_item_title {
@@ -93,7 +94,7 @@
 }
 
 .bento-resource-list-item {
-	font-family: "Roboto Light";
+	font-family: "Roboto";
 	font-size: 1.2rem;
 	width: 30%;
 
