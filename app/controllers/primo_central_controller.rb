@@ -10,6 +10,7 @@ class PrimoCentralController < CatalogController
   helper_method :solr_range_queries_to_a
 
   rescue_from Primo::Search::ArticleNotFound, with: :invalid_document_id_error
+  rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index
@@ -112,5 +113,14 @@ class PrimoCentralController < CatalogController
       format.json
       additional_export_formats(@document, format)
     end
+  end
+
+  def net_read_timeout_rescue(exception)
+    Honeybadger.notify(exception)
+
+    flash[:error] = "Your search query has timed out."
+    flash[:error] += " You may have exceeded the maximum number of pages allowed for an Articles search query in Library Search." if params[:page].to_i >= 50
+
+    redirect_to "/articles"
   end
 end
