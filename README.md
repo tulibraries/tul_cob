@@ -70,6 +70,8 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To enter into the solr container, run ```make tty-solr```
 * To run the linter, run ```make lint```
 * To run the Ruby tests, run ```make test```
+  * Some tests require chromium driver to be installed on system.
+    * On macs, run: `brew install chromiumdriver`
 * To run Javascript tests, run ```make test-js```
 * To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
 * To reload solr configs, run ```make reload-configs```
