@@ -110,8 +110,13 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def process_is(value, op)
     return if value.blank?
-    return value if value.match(/"/) rescue true
-    if op == "is"
+    
+    if value&.scan(/"/).size == 1
+      updated_value = value.sub(/"/, "")
+      "\"#{updated_value}\""
+    elsif value&.scan(/"/).size > 1
+      value
+    elsif op == "is"
       "\"#{value}\""
     else
       value
