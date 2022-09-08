@@ -56,7 +56,7 @@
 span .remove-constraints {
 	background-color: $crystal-blue;
 	border: 0.0625rem solid transparent;
-	color: $black;
+	color: $midnight-blue;
 	width: 20%;
 
 	@media(max-width: 992px) {
@@ -94,7 +94,7 @@ span.constraint-value {
 }
 
 .facet-field-heading a {
-	color: $black;
+	color: $midnight-blue;
 	font-size: 1rem;
 
 	@media(max-width: 768px) {
@@ -145,7 +145,7 @@ span.constraint-value {
     display: table-row;
 
     .selected {
-      color: $black !important;
+      color: $midnight-blue !important;
     }
   }
 
