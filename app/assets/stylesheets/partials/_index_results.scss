@@ -4,7 +4,17 @@
   margin-top: 1rem;
   margin-left: 0;
 
+  .btn:not(.search-results-request-btn) {
+    margin-left: 1.5rem;
+
+    @media(max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+
   .documentHeader {
+    margin-right: 0;
+
     .document-counter {
       width: 4%;
       font-size: 0.95rem;
@@ -26,19 +36,8 @@
         label.toggle-bookmark {
           text-align: right;
         }
-
       }
   }
-}
-
-.explantion-wrapper {
-  @media(max-width: 600px) {
-    padding-left: 0.9375rem;
-  }
-}
-
-.explanation {
-  font-size: 1.1em;
 }
 
 .book_info {
@@ -59,6 +58,16 @@
     }
   }
 }
+}
+
+.explantion-wrapper {
+  @media(max-width: 600px) {
+    padding-left: 0.9375rem;
+  }
+}
+
+.explanation {
+  font-size: 1.1em;
 }
 
 dl.blacklight-lc_call_number_display > dd,
@@ -88,7 +97,7 @@ dl.blacklight-lc_call_number_display > dd {
 
 /* === DATABASE RESULTS=== */
 .database-browse-link {
-  color: $black !important;
+  color: $midnight-blue !important;
   text-decoration: underline;
 }
 
