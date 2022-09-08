@@ -100,7 +100,7 @@
 	font-family: "Roboto Condensed";
 	font-size: 1.7rem;
 	font-weight: 200;
-	color: $black;
+	color: $midnight-blue;
 
 	@media(max-width: 485px) {
 	  font-size: 1.4rem;
@@ -164,7 +164,7 @@ a#bookmarks_nav {
 }
 
 .path-links .header-links {
-	color: $black;
+	color: $midnight-blue;
 	display: inline-block;
 	font-family: "Roboto Condensed";
 	font-size: 1.4rem;
@@ -269,7 +269,7 @@ a#bookmarks_nav {
 
 #sort-dropdown .dropdown-item,
 #per-page-dropdown .dropdown-item {
-	color: $black;
+	color: $midnight-blue;
 }
 
 #sort-dropdown button, #sort-dropdown button:hover,

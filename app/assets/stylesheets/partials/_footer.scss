@@ -4,13 +4,13 @@
 #site-footer {
   background-color: $lighter-grey;
   border-bottom: solid $new-gold 2.1875rem;
-  color: $black;
+  color: $midnight-blue;
   font-family: "roboto light";
   height: 100%;
   width: 100%;
 
   a {
-    color: $black;
+    color: $midnight-blue;
   }
 
   @media (max-width: 768px) {
@@ -20,7 +20,7 @@
 
 .tu-links {
   border-top: solid $grey 0.063rem;
-  color: $black;
+  color: $midnight-blue;
   font-size: 1.25rem;
   margin-top: 1.3125rem;
   padding-top: 0.875rem;
@@ -38,12 +38,12 @@
   ul {
     margin-bottom: 0;
     li {
-      color: $black;
+      color: $midnight-blue;
       padding-left: 0;
       text-decoration: none;
 
       a {
-        color: $black;
+        color: $midnight-blue;
       }
     }
   }
