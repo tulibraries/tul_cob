@@ -35,7 +35,12 @@
         display: inline-block;
         label.toggle-bookmark {
           text-align: right;
+
+          @media(max-width: 768px) {
+            text-align: left;
+          }
         }
+
 
       }
   }
@@ -70,6 +75,9 @@
       line-height: 2rem;
     }
   }
+  .document-metadata.blacklight-lc_call_number_display, .document-metadata.blacklight-lc_call_number_display .index-label {
+    font-weight: bold;
+  }
 }
 }
 
@@ -82,23 +90,6 @@
 .explanation {
   font-size: 1.1em;
 }
-
-dl.blacklight-lc_call_number_display > dd,
-dl.blacklight-lc_call_number_display > dt {
-  background-color: $lighter-grey;
-  width: 100%;
-}
-
-dl.blacklight-lc_call_number_display > dt {
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-dl.blacklight-lc_call_number_display > dd {
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
-
 
 .page-links {
   @media(max-width: 485px) {
