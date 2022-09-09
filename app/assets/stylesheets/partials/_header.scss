@@ -115,22 +115,24 @@
 .navbar-form,
 #bookmarks_nav,
 .user-logout {
-	font-size: 1rem;
-	padding-left: 2rem;
-	width: auto;
+  font-size: 1rem;
+  width: auto;
 
-	@media(max-width: 990px) {
-		padding: 1rem;
-	}
-
-	@media(max-width: 485px) {
-		padding: .3rem;
-	}
+  @media(min-width: 1044px) {
+    padding-left: 2rem;
+  }
+  @media(max-width: 1043px) {
+    padding-left: .5rem;
+  }
+  @media(max-width: 991px) {
+    padding-top: 10px;
+    padding-left: 1.5rem;
+  }
 }
 
 div #bookmarks_nav {
 	@media(max-width: 485px) {
-		padding: .3rem;
+		padding-left: .3rem;
 	}
 }
 

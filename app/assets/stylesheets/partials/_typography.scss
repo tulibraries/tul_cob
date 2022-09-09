@@ -27,6 +27,11 @@
   src: font-url('Roboto-Light.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Roboto Bold';
+  src: font-url('Roboto-Bold.ttf') format('truetype');
+}
+
 .roboto {
   font-family: Roboto Condensed;
 }
