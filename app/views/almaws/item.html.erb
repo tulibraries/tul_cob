@@ -5,7 +5,7 @@
 
 <% if availability_alert(@document) %>
   <div id="availability-alert" class="alert alert-info mb-0" role="alert">
-      <p><%= t("blacklight.errors.availability_alert_html", href: link_to(t("blacklight.errors.not_found_href"), t("blacklight.errors.not_found_link"))) %></p>
+      <p><%= t("blacklight.errors.availability_alert_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %></p>
   </div>
 <% end %>
 
