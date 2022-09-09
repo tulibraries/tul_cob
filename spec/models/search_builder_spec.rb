@@ -207,6 +207,10 @@ RSpec.describe SearchBuilder , type: :model do
       expect(subject.process_is("foo", "is")).to eq("\"foo\"")
     end
 
+    it "removes a single quote and then adds quotes to value" do
+      expect(subject.process_is("\"bar", "is")).to eq("\"bar\"")
+    end
+
     it "avoids escape hell by ignoring values with quotes" do
       expect(subject.process_is("foo\"bar\"", "is")).to eq("foo\"bar\"")
     end
