@@ -48,7 +48,7 @@ en:
       already_signed_out: "Signed out successfully."
       new:
         title: Log in to My Library Account
-        intro: To see the options for getting this item, please log in.
+        intro: To see request options, please log in.
         temple_users_html: >- 
                               <span class="big">Students, faculty, staff, registered alumni</span>
                               <br />Temple University AccessNet account
