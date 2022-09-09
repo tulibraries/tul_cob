@@ -1,6 +1,9 @@
-<div class="pt-3">
-  <%= render :partial=>'/shared/flash_msg' %>
+<div class="p-3">
+  <%= render :partial=>"/shared/flash_msg" %>
 </div>
 
-<h4 class="error-header">We're sorry, but something went wrong.</h4>
-<p>If you are the application owner check the logs for more information.</p>
+
+<h1 class="error-header text-center">We're sorry, but something went wrong.</h1>
+<p class="text-center">
+  <%= t("blacklight.errors.general_error_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %>
+</p>
