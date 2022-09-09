@@ -36,8 +36,8 @@ RSpec.feature "Bento Searches" do
       within first("div.bento-search-engine") do
         expect(page).to have_css("a.bento-full-results")
 
-        within first("div.document-metadata") do
-          expect(page).not_to have_css("span.index-label")
+        within first("dl.document-metadata") do
+          expect(page).not_to have_css("dt.index-label")
         end
       end
 

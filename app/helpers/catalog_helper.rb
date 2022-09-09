@@ -125,9 +125,9 @@ module CatalogHelper
   end
 
   def render_lc_display_field(field_presenter)
-    content_tag :dl, nil, class: "row document-metadata my-0 mr-5 blacklight-lc_call_number_display" do
-      html = content_tag :dt, "LC Classification:", class: "py-2 index-label col-sm-12 col-md-4 col-lg-3 blacklight-lc_call_number_display"
-      html += content_tag :dd, field_presenter.render, class: "py-2 col-sm-12 col-md-5 col-lg-4 blacklight-lc_call_number_display mb-0"
+    content_tag :dl, nil, class: "dl-horizontal document-metadata blacklight-lc_call_number_display  mb-0" do
+      html = content_tag :dt, "LC Classification:", class: "index-label blacklight-lc_call_number_display"
+      html += content_tag :dd, field_presenter.render, class: "blacklight-lc_call_number_display"
     end
   end
 
