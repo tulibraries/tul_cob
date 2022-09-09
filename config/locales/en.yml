@@ -91,16 +91,18 @@ en:
       logout: "Log Out"
       bookmarks: "Bookmarks"
       search_history: "Search History"
-      not_found: "We couldn’t find this page!"
-      bad_query: "Unsupported Query Format"
-    
+      general_error: "We're sorry, but something went wrong."
+      not_found: "We couldn't find this page!"
+      bad_query: "Unsupported Search Query"
+
     errors:
-      deep_paging: "Sorry, LibrarySearch does not serve more than 250 pages for any query."
+      deep_paging: "Sorry, Library Search does not serve more than 250 pages for any query."
+      general_error_html: "For help, please %{href}."
       not_found_html: "For help, please %{href} or try a"
-      not_found_href: "contact us"
-      not_found_link: "https://library.temple.edu/contact-us"
+      error_help_href: "contact us"
+      error_help_link: "https://library.temple.edu/contact-us"
       availability_alert_html: "Some availability information can not be loaded. Please visit your library's Circulation Desk for more information or %{href}."
-      unsupported_query_format: "Your search could not be executed. Please check the format of your query."
+      unsupported_query_format: "Your search query could not be executed due to a formatting issue. "
 
     range_limit:
       submit_limit: "Apply"

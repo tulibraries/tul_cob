@@ -3,10 +3,10 @@
 </div>
 
 
-<h4 class="error-header not-found py-2 text-center">
+<h1 class="error-header not-found text-center">
   <%= t("blacklight.header_links.not_found") %>
-</h4>
+</h1>
 <p class="text-center">
-  <%= t("blacklight.errors.not_found_html", href: link_to(t("blacklight.errors.not_found_href"), t("blacklight.errors.not_found_link"))) %>
+  <%= t("blacklight.errors.not_found_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %>
   <%= link_to("new search", root_path) %>.
 </p>
