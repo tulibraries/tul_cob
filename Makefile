@@ -53,6 +53,10 @@ attach:
 	@bin/attach.sh tul_cob_app
 
 # CI Specific Targets
+add-testing-deps:
+	$(DOCKER) exec app apk add -U --no-cache chromium chromium-chromedriver
+
+
 ci-copy-bundle-files-to-local:
 	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
 

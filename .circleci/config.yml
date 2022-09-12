@@ -78,6 +78,10 @@ jobs:
           command: make ci-yarn-install
 
       - run:
+          name: Add headless browser testing dependencies
+          command: make add-testing-deps
+
+      - run:
           name: Copy the vendor/bundle from the container to local
           command: make ci-copy-bundle-files-to-local
 

@@ -65,7 +65,8 @@ group :development, :test do
   gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
     branch: "main"
 
-  gem "capybara", "3.37.1"
+  gem "capybara", "~> 3"
+  gem "selenium-webdriver"
   gem "webmock"
 end
 
