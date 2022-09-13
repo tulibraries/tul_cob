@@ -1,7 +1,7 @@
 <div class="container user-loans" data-controller="loans" data-loans-url=<%= user_loans_path %>>
   <h2 class="user_section_title">My Items</h2>
   <div id="renewal-warning" class="p-0 m-0" aria-live="assertive"></div>
-  <%= form_with url: users_renew_selected_path, id: 'renewals' do %>
+  <%= form_for :user_loans, url: users_renew_selected_path(format: :js), id: 'renewals', remote: true do %>
     <table class="table user-table user-holds-table table-responsive border-0 px-2">
       <caption class="sr-only">Table of Current Loans for this user</caption>
       <thead>
