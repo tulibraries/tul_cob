@@ -69,10 +69,6 @@ class UsersController < ApplicationController
       @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
       logger.info "RENEWAL STATUS:"
       logger.info ap(@renew_responses)
-
-      #    respond_to do |format|
-      #      format.js
-      #    end
     end
   end
 
