@@ -261,6 +261,10 @@ module ApplicationHelper
   end
 
   def query_list_footer_value(document, field)
+    if document[field]&.include?(0)
+      document[field].delete(0)
+    end
+
     value = document[field]&.first
 
     case field

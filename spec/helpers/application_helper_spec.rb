@@ -280,6 +280,15 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
+    context "field is date_added_facet containing a 0 in the array" do
+      let(:footer_field) { "date_added_facet" }
+      let(:document) { SolrDocument.new({ "date_added_facet" => [0, 20220914] }) }
+
+      it "removes the 0 from the array and parses date"  do
+        expect(value).to eq("2022-09-14")
+      end
+    end
+
     context "field is date_added_facet but date cannot be parsed" do
       let(:footer_field) { "date_added_facet" }
       let(:document) { SolrDocument.new({ "date_added_facet" => [20211905] }) }
