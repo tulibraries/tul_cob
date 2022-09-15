@@ -1,5 +1,5 @@
 default: &default
-  sign_out_redirect_url: <%= ENV["IDP_REDIRECT_URL"] || "/Shibboleth.sso/Logout?return=https://fim.temple.edu/idp/profile/Logout" %>
+  sign_out_redirect_url: <%= ENV["IDP_REDIRECT_URL"] || "/" %>
   saml_certificate: |- <%= ENV["COB_SP_CERT"] %>
   saml_private_key: |- <%= ENV["COB_SP_KEY"] %>
   saml_issuer: <%= ENV["COB_SAML_ISSUER"] || "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata" %>
