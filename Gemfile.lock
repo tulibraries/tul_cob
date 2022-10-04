@@ -190,7 +190,7 @@ GEM
       rails (>= 5.2, < 7)
       summon
     bindex (0.8.1)
-    blacklight (7.29.0)
+    blacklight (7.30.0)
       deprecation
       globalid
       hashdiff
@@ -335,7 +335,7 @@ GEM
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    loofah (2.18.0)
+    loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -566,7 +566,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.3.0)
     vcr (6.1.0)
-    view_component (2.70.0)
+    view_component (2.74.0)
       activesupport (>= 5.0.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -595,7 +595,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.0)
+    zeitwerk (2.6.1)
 
 PLATFORMS
   aarch64-linux
@@ -608,7 +608,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bento_search
-  blacklight (~> 7.29.0)
+  blacklight (~> 7.30.0)
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
