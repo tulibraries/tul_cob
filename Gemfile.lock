@@ -359,12 +359,12 @@ GEM
     multi_xml (0.6.0)
     mysql2 (0.5.4)
     nio4r (2.5.8)
-    nokogiri (1.13.8)
+    nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.8-aarch64-linux)
+    nokogiri (1.13.9-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.13.8-arm64-darwin)
+    nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
     okcomputer (1.18.4)
     omniauth (2.1.0)
@@ -649,7 +649,7 @@ DEPENDENCIES
   launchy
   lc_solr_sortable!
   mysql2 (~> 0.5.4)
-  nokogiri (= 1.13.8)
+  nokogiri (= 1.13.9)
   okcomputer
   omniauth
   omniauth-rails_csrf_protection
