@@ -22,9 +22,9 @@ RUN apk add -U --no-cache \
       tzdata=2022c-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.36.2-r0 \
+      git=2.36.3-r0 \
       libxslt-dev=1.1.35-r0 \
-      mariadb-dev=10.6.9-r0 \
+      mariadb-dev=10.6.10-r0 \
       nodejs=16.17.1-r0 \
       yarn=1.22.19-r0 && \
     bundle config set --local without "development test" && \
