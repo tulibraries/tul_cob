@@ -287,7 +287,7 @@ GEM
     google-analytics-rails (1.1.1)
     hashdiff (1.0.1)
     hashie (4.1.0)
-    honeybadger (4.12.2)
+    honeybadger (5.0.1)
     htmlentities (4.3.4)
     http (5.1.0)
       addressable (~> 2.8)
@@ -641,7 +641,7 @@ DEPENDENCIES
   foreman
   google-analytics-rails (= 1.1.1)
   hashie (~> 4.1.0)
-  honeybadger (= 4.12.2)
+  honeybadger (= 5.0.1)
   httparty
   jbuilder (~> 2.11)
   jquery-rails
