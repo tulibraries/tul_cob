@@ -1,25 +1,14 @@
 @import "_vars.scss";
 
 /* COLORS */
-a, a:hover, a:active, a:visited {
+a, a:hover, a:active {
 	color: $cherry-red;
 }
 
 .index_title {
-	a, a:visited, a:hover, a:active {
+	a, a:hover, a:active {
 		color: $cherry-red;
 	}
-}
-
-.btn-primary, .btn-primary:focus, .btn-primary:hover, .btn-primary:active, .btn-primary:active:hover, .btn-primary:active:focus {
-	background-color: $cherry-red !important;
-	border-color: $cherry-red !important;
-	color: $white !important;
-}
-
-.btn-danger, .btn-danger:hover, .btn-danger:focus {
-	background-color: $cherry-red;
-	border-color: $cherry-red;
 }
 
 div#facets .btn-link {
