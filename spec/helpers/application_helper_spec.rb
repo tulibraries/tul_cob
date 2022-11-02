@@ -468,4 +468,35 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#skip_links" do
+    let(:subject) { helper.skip_links }
+
+    before do
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config) { config }
+        allow(helper).to receive(:blacklight_configuration_context) { context }
+      end
+    end
+
+    context "only 1 search field" do
+      let(:config) { SearchController.blacklight_config }
+      let(:context) { Blacklight::Configuration::Context.new(config) }
+      let(:search_fields)  {  [["All Fields", "all_fields"]] }
+
+      it "should link to the element with search_field id" do
+        expect(subject).to have_link("Skip to search", href: "#search_field")
+      end
+    end
+
+    context "multiple search fields" do
+      let(:config) { CatalogController.blacklight_config }
+      let(:context) { Blacklight::Configuration::Context.new(config) }
+      let(:search_fields)  {  [["All Fields", "all_fields"], ["Title", "title"], ["Author/creator/contributor", "creator_t"]] }
+
+      it "should link to the element with search_field_dropdown id" do
+        expect(subject).to have_link("Skip to search", href: "#search_field_dropdown")
+      end
+    end
+  end
 end

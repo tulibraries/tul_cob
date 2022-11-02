@@ -327,4 +327,12 @@ module ApplicationHelper
   def format_classes_for_icons(document)
     document["format"].first.downcase.gsub(" ", "_").gsub("/", "_")
   end
+
+  def skip_links
+    if search_fields.length == 1
+      link_to t("blacklight.skip_links.search_field"), "#search_field", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+    else
+      link_to t("blacklight.skip_links.search_field"), "#search_field_dropdown", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+    end
+  end
 end
