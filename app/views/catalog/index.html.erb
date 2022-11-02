@@ -1,19 +1,6 @@
 <div class="row pt-md-3 pb-5 no-gutters">
 
-  <% if show_sidebar? %>
-    <div id="sidebar" class="col-md-4 col-lg-3 pl-lg-4" role="complementary">
-      <% if controller_name == "databases" %>
-        <div class="mb-3 text-center">
-          <%= link_to(t("databases.link_text"), t("databases.link_href"), target: "_blank", class: "database-browse-link") %>
-        </div>
-      <% end %>
-      <div class="rounded bg-white">
-        <%= render "search_sidebar" %>
-      </div>
-    </div>
-  <% end %>
-
-  <div id="content" class="<%= "col-md-8 col-lg-9 bg-white rounded" if show_sidebar? %> ml-sm-0 pl-md-4 pr-3 pr-lg-5 search-results-display">
+  <section id="content" class="<%= "col-md-8 col-lg-9 bg-white rounded order-last" if show_sidebar? %> ml-sm-0 pl-md-4 pr-3 pr-lg-5 search-results-display">
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render "home" %>
@@ -22,6 +9,19 @@
       <%= render "search_results" %>
       <%= render :partial => "lib_guide_section" %>
     <% end %>
-  </div>
+  </section>
+
+  <% if show_sidebar? %>
+    <section id="sidebar" class="col-md-4 col-lg-3 pl-lg-4 order-first" role="complementary">
+      <% if controller_name == "databases" %>
+        <div class="mb-3 text-center">
+          <%= link_to(t("databases.link_text"), t("databases.link_href"), target: "_blank", class: "database-browse-link") %>
+        </div>
+      <% end %>
+      <div class="rounded bg-white">
+        <%= render "search_sidebar" %>
+      </div>
+    </section>
+  <% end %>
 
 </div>
