@@ -13,17 +13,6 @@
 	}
 }
 
-.bookmarks-back-btn {
-
-  @media(min-width: 600px) {
-    margin-top: -8px;
-  }
-
-  @media(max-width: 768px) {
-    margin-top: 0;
-  }
-}
-
 #record-page-container .toggle-bookmark {
 
   label {
@@ -61,4 +50,11 @@
     border: none;
     color: $white;
 	}
+}
+
+.bookmarks-back-btn {
+  @media(max-width: 768px) {
+    margin-bottom: 1rem
+  }
+
 }
