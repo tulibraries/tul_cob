@@ -70,7 +70,15 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       let(:params) { ActionController::Parameters.new(q: "foo", searchCDI: "true") }
 
       it "supports Primo's searchCDI field" do
-        expect(primo_central_parameters["query"]["searchCDI"]).to eq(true)
+        expect(primo_central_parameters["query"]["searchCDI"]).to eq("true")
+      end
+    end
+
+    context "with  pcAvailability param"  do
+      let(:params) { ActionController::Parameters.new(q: "foo", pcAvailability: "true") }
+
+      it "supports Primo's pcAvailability field" do
+        expect(primo_central_parameters["query"]["pcAvailability"]).to eq("true")
       end
     end
 
