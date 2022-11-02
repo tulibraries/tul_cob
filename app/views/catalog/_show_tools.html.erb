@@ -17,7 +17,7 @@
 
             <% if @document.citable? %>
               <li>
-                <%= link_to t("blacklight.tools.cite_html", current_range: ""), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn btn-sm"} %>
+                <%= link_to t("blacklight.tools.cite_html", current_range: ""), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn"} %>
               </li>
             <% end %>
           <% else %>
@@ -27,8 +27,8 @@
 
         <li id="sendto-menu">
           <div id="sendto" class="dropdown show">
-            <a class="btn btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Send To <span class="caret"></span></a>
-            <div class="sendto-menu dropdown-menu bg-white border border-light-grey">
+            <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Send To <span class="caret"></span></a>
+            <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <div class="sendto-item dropdown-item">
                   <%= value %>

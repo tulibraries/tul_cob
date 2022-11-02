@@ -220,8 +220,7 @@ a#bookmarks_nav {
 /* RECORD NAV TOOLS */
 #start_over,
 #back_to_search {
-	background-color: $royal-blue;
-	margin-right: 0.625rem;
+  margin-right: 0.625rem;
 
 	@media(max-width: 485px) {
 		font-size: 1.1rem;
@@ -229,8 +228,14 @@ a#bookmarks_nav {
 	}
 }
 
+#start_over {
+  background-color: $royal-blue;
+  color: $white;
+}
+
 #back_to_search {
 	background-color: $white;
+  color: $cherry-red;
 	border: 0.0625rem solid $dark-grey;
 }
 

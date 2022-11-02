@@ -31,7 +31,6 @@
 
 .nav-tools li {
 	background-color: $white;
-	border-radius: 0.25rem;
 	display: inline-block;
 	list-style-type: none;
 	margin-right: 0.25rem;
@@ -45,10 +44,8 @@
 
 #citeLink {
 	background-color: $white;
-	border: 0.0625rem solid #6c757d;
 	color: $cherry-red;
-	font-size: 1rem;
-	padding: 0.375rem 0.75rem;
+	border: 0.0625rem solid $dark-grey;
 
 	@media (max-width: 991px) {
 		background-color: $cherry-red;
@@ -65,7 +62,6 @@
 	background-color: $white;
 	border: 0.0625rem solid $dark-grey;
 	color: $cherry-red;
-	font-size: 1rem;
 	padding: 0.3725rem 0.75rem;
 
 	@media(max-width: 991px) {

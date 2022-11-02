@@ -51,12 +51,6 @@
   padding-bottom: 0;
 }
 
-#ez-borrow-button:hover,
-#ez-borrow-button:active,
-#ez-borrow-button:visited {
-  color: $white !important;
-}
-
 .request-form .form-control {
   margin-bottom: 1rem;
 }
@@ -69,15 +63,15 @@
 .search-results-request-btn, .record-page-request-btn {
   background-color: $crystal-blue;
   color: $midnight-blue;
-  font-size: 0.9375rem;
-  border-radius: 0;
 }
+//
+// #ez-borrow-button {
+//   font-size: 1rem;
+//   font-weight: normal;
+// }
 
-.search-results-request-btn a, .record-page-request-btn {
-  padding: 0.375rem 0.5rem;
-}
-
-#ez-borrow-button {
-  font-size: 1rem;
-  font-weight: normal;
-}
+// #ez-borrow-button:hover,
+// #ez-borrow-button:active,
+// #ez-borrow-button:visited {
+//   color: $white !important;
+// }

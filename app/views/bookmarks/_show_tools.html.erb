@@ -18,7 +18,7 @@
         <% if @response.documents.any? { |doc| doc.citable? } %>
         <li>
 
-        <%= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path( { id: @response.documents }.merge(params)), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn btn-sm"} %>
+        <%= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path( { id: @response.documents }.merge(params)), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn"} %>
         </li>
         <% end %>
 

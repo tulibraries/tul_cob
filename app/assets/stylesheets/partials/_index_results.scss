@@ -4,7 +4,7 @@
   margin-top: 1rem;
   margin-left: 0;
 
-  .btn:not(.search-results-request-btn), .avail-container, .online_resources, .bl_alma_iframe {
+  .btn:not(.search-results-request-btn, .libkey-btn), .avail-container, .online_resources, .bl_alma_iframe {
     margin-left: 1.5rem;
 
     @media(max-width: 768px) {
