@@ -177,7 +177,7 @@ module BlacklightAdvancedSearch
         @keyword_queries[@params[:f_1]] = q1 unless @params[:q_1].blank?
         unless @params[:q_2].blank?
           if @keyword_queries.key?(@params[:f_2])
-            @keyword_queries[@params[:f_2]] = "(#{@keyword_queries[@params[:f_2]]}) " + @params[:op_1] + " (#{q2})"
+            @keyword_queries[@params[:f_2]] = "(#{@keyword_queries[@params[:f_2]]}) " + @params[:op_1].to_s + " (#{q2})"
             been_combined = true
           elsif @params[:op_1] == "NOT"
             @keyword_queries[@params[:f_2]] = "NOT " + q2
@@ -188,7 +188,7 @@ module BlacklightAdvancedSearch
         unless @params[:q_3].blank?
           if @keyword_queries.key?(@params[:f_3])
             @keyword_queries[@params[:f_3]] = "(#{@keyword_queries[@params[:f_3]]})" unless been_combined
-            @keyword_queries[@params[:f_3]] = "#{@keyword_queries[@params[:f_3]]} " + @params[:op_2] + " (#{q3})"
+            @keyword_queries[@params[:f_3]] = "#{@keyword_queries[@params[:f_3]]} " + @params[:op_2].to_s + " (#{q3})"
           elsif @params[:op_2] == "NOT"
             @keyword_queries[@params[:f_3]] = "NOT " + q3
           else
