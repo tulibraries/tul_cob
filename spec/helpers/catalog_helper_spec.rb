@@ -739,9 +739,9 @@ end
     end
   end
 
-  describe "#_build_guest_login_libwizard_url(document)" do
+  describe "#build_guest_login_libwizard_url(document)" do
     let(:base_url) { "https://temple.libwizard.com/f/ContinueAsGuest?" }
-    let(:constructed_url) { helper._build_guest_login_libwizard_url(document) }
+    let(:constructed_url) { helper.build_guest_login_libwizard_url(document) }
     context "document is missing all data" do
       let(:document) { {} }
       it "returns a url with no params" do
@@ -754,19 +754,48 @@ end
         "title_statement_display" => ["title"],
         "pub_date" => ["2020"],
         "edition_display" => ["1st edition"],
+        "id" => "bestIDever",
+        "unexpected_field" => ["do not include"],
         }
       }
       it "maps the expected parameters" do
         expect(constructed_url).to include("rft.title=title")
         expect(constructed_url).to include("rft.date=2020")
         expect(constructed_url).to include("edition=1st+edition")
+        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
       end
     end
   end
 
-  describe "#_build_libwizard_url(document)" do
+  describe "#build_error_libwizard_url(document)" do
+    let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchError?" }
+    let(:constructed_url) { helper.build_error_libwizard_url(document) }
+    context "document is missing all data" do
+      let(:document) { {} }
+      it "returns a url with no params" do
+        expect(constructed_url).to eq base_url
+      end
+    end
+    context "when mappable fields are present" do
+      let(:document) {
+        {
+        "title_statement_display" => ["title"],
+        "pub_date" => ["2020"],
+        "id" => "bestIDever",
+        "unexpected_field" => ["do not include"],
+        }
+      }
+      it "maps the expected parameters" do
+        expect(constructed_url).to include("rft.title=title")
+        expect(constructed_url).to include("rft.date=2020")
+        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
+      end
+    end
+  end
+
+  describe "#build_libwizard_url(document)" do
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
-    let(:constructed_url) { helper._build_libwizard_url(document) }
+    let(:constructed_url) { helper.build_libwizard_url(document) }
     context "document is missing all data" do
       let(:document) { {} }
       it "returns a url with no params" do

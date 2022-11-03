@@ -37,5 +37,9 @@
             </div>
           </div>
         </li>
+
+        <li id="report-problem">
+          <%= link_to t("blacklight.tools.error"), build_error_libwizard_url(@document), target: "_blank", :id => "errorLink", :class => "btn" %>
+        </li>
       </ul>
 <% end %>

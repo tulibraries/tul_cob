@@ -8,7 +8,7 @@
     <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, class: "temple-user-link", method: :post %>
     <%= link_to t("devise.sessions.new.pa_users_html"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
     <% if params[:redirect_to] %>
-      <%= link_to t("devise.sessions.new.guests_html"), _build_guest_login_libwizard_url(@document), {class: "guest-link", target: "_blank"} %>
+      <%= link_to t("devise.sessions.new.guests_html"), build_guest_login_libwizard_url(@document), {class: "guest-link", target: "_blank"} %>
     <% else %>
       <%= link_to t("devise.sessions.new.guests_html"), t("devise.sessions.new.guest_link"), {class: "guest-link", target: "_blank"} %>
     <% end -%>

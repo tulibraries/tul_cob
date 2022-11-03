@@ -9,7 +9,7 @@
 <div id="collapseDigitalHelp-<%= @mms_id %>" class="collapse <%= 'show' if only_one_option_allowed(request_options, books, document)%>">
   <div class="card-body pb-0">
     <p><%= t("requests.digital_help_text_one") %></p>
-    <p><%= t("requests.digital_help_text_two_html", href: link_to(t("requests.digital_help_text_two_href"), _build_libwizard_url(document), target: "_blank")) %></p>
+    <p><%= t("requests.digital_help_text_two_html", href: link_to(t("requests.digital_help_text_two_href"), build_libwizard_url(document), target: "_blank")) %></p>
     <p><%= t("requests.digital_help_text_three_html", href: link_to(t("requests.digital_help_text_three_href"),  t("requests.digital_help_text_three_link"), target: "_blank")) %></p>
   </div>
 </div>
