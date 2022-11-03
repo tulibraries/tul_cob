@@ -270,6 +270,8 @@ Devise.setup do |config|
     assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
     idp_sso_service_url: "https://np-fim.temple.edu/idp/profile/SAML2/Redirect/SSO",
     issuer: Rails.configuration.devise["saml_issuer"],
+    idp_slo_service_binding: :redirect,
+    idp_sso_service_binding: :post,
     request_attributes: {},
     name_identifier_format:  "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
     attribute_statements: {
@@ -284,7 +286,6 @@ Devise.setup do |config|
       want_assertions_signed: true,
       want_assertions_encrypted: true,
       metadata_signed: false,
-      embed_sign: true,
       digest_method: "http://www.w3.org/2001/04/xmlenc#sha256",
       signature_method: "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
     }
