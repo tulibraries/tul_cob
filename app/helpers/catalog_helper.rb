@@ -159,24 +159,25 @@ module CatalogHelper
     Array.wrap(document.fetch(field, [])).join(joiner)
   end
 
-  def _build_guest_login_libwizard_url(document)
-    doc_params =
-    {
-      "rft.title" => solr_field_to_s(document, "title_statement_display"),
-      "rft.date" => solr_field_to_s(document, "pub_date"),
-      "edition" => solr_field_to_s(document, "edition_display"),
-      # "volume" => solr_field_to_s(document, "edition_display"),
-    }
-    sid = solr_field_to_s(document, "id")
-    if sid.present?
-      doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
-    end
-    doc_params.select! { |k, v| v.present? }
+  def build_libwizard_url(document)
+    doc_params = openurl_libwizard_params(document)
+    URI::HTTPS.build(host: "temple.libwizard.com",
+      path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
+  end
+
+  def build_guest_login_libwizard_url(document)
+    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "edition", "rft_id")
     URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/ContinueAsGuest", query: doc_params.to_query).to_s
   end
 
-  def _build_libwizard_url(document)
+  def build_error_libwizard_url(document)
+    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "rft_id")
+    URI::HTTPS.build(host: "temple.libwizard.com",
+      path: "/f/LibrarySearchError", query: doc_params.to_query).to_s
+  end
+
+  def openurl_libwizard_params(document)
     doc_params =
     {
       "rft.title" => solr_field_to_s(document, "title_statement_display"),
@@ -197,8 +198,7 @@ module CatalogHelper
       doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
     end
     doc_params.select! { |k, v| v.present? }
-    URI::HTTPS.build(host: "temple.libwizard.com",
-      path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
+    return doc_params
   end
 
   def digital_help_allowed?(document)

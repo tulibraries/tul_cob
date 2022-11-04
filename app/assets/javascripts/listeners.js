@@ -36,6 +36,7 @@ $(document).ready(function(){
       {id: "citationLink", category: "record-management"},
       {id: "risLink", category: "record-management"},
       {class: "toggle-bookmark", category: "record-management"},
+      {id: "errorLink", category: "record-management"},
       {class: "query-list-title-link", category: "query-list"},
       {class: "query-list-view-more", category: "query-list"},
       {class: "query-list-online", category: "fulfillment"},
