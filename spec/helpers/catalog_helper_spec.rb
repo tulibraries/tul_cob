@@ -755,7 +755,7 @@ end
         "pub_date" => ["2020"],
         "edition_display" => ["1st edition"],
         "id" => "bestIDever",
-        "unexpected_field" => ["do not include"],
+        "imprint_man_display" => ["do not include"],
         }
       }
       it "maps the expected parameters" do
@@ -782,7 +782,7 @@ end
         "title_statement_display" => ["title"],
         "pub_date" => ["2020"],
         "id" => "bestIDever",
-        "unexpected_field" => ["do not include"],
+        "imprint_man_display" => ["do not include"],
         }
       }
       it "maps the expected parameters" do

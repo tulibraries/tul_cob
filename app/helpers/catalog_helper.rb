@@ -160,24 +160,24 @@ module CatalogHelper
   end
 
   def build_libwizard_url(document)
-    doc_params = openurl_libwizard(document)
+    doc_params = openurl_libwizard_params(document)
     URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
   end
 
   def build_guest_login_libwizard_url(document)
-    doc_params = openurl_libwizard(document).slice("rft.title", "rft.date", "edition", "rft_id")
+    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "edition", "rft_id")
     URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/ContinueAsGuest", query: doc_params.to_query).to_s
   end
 
   def build_error_libwizard_url(document)
-    doc_params = openurl_libwizard(document).slice("rft.title", "rft.date", "rft_id")
+    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "rft_id")
     URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/LibrarySearchError", query: doc_params.to_query).to_s
   end
 
-  def openurl_libwizard(document)
+  def openurl_libwizard_params(document)
     doc_params =
     {
       "rft.title" => solr_field_to_s(document, "title_statement_display"),
