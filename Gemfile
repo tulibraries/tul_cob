@@ -79,7 +79,7 @@ gem "rsolr", "~> 2.4"
 # We will want to remove the branch once devise has been updated.
 gem "devise", github: "heartcombo/devise"
 gem "devise-guests", "~> 0.7"
-gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "BL-1717-fix-fetch-bug-for-new-api"
+gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "BL-1720-fix-mil-error-for-bib-item-find"
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 gem "lc_solr_sortable", git: "https://github.com/tulibraries/lc_solr_sortable", branch: "main"
 # 1/31/17 - Hashie 3.5.0 breaks omniauth, so peg to previous
