@@ -19,8 +19,8 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: f1ce07e9298a0be6fcb0862bdc7b4dddc6be6ab2
-  branch: main
+  revision: 19fd2de3e2f567646f112b05d48a8896109f2e76
+  branch: BL-1717-fix-fetch-bug-for-new-api
   specs:
     alma (0.3.3)
       activesupport
