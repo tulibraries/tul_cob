@@ -2,9 +2,9 @@
   "name": "app",
   "private": true,
   "dependencies": {
-    "babel-preset-es2015": "^6.24.1",    
     "@rails/webpacker": "^6.0.0-rc.6",
     "@stimulus/polyfills": "^2.0.0",
+    "babel-preset-es2015": "^6.24.1",
     "bootstrap-select": "^1.13.18",
     "follow-redirects": "1.14.8",
     "jquery": "^3.6.0",
