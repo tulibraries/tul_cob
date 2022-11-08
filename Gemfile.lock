@@ -19,7 +19,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 94d37dd8ec05213d4a993e623d81fd60463d3287
+  revision: 81fa98c771d7adf09c2f7fef6160ce483be442be
   branch: main
   specs:
     alma (0.3.3)
