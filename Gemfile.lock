@@ -19,10 +19,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 81fa98c771d7adf09c2f7fef6160ce483be442be
+  revision: 60c14f57cecde7c9d1ecc59661bba838afd07934
   branch: main
   specs:
-    alma (0.3.3)
+    alma (0.4.0)
       activesupport
       ezwadl
       httparty
@@ -599,7 +599,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.5)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   aarch64-linux
