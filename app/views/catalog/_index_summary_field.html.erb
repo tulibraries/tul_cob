@@ -1,0 +1,17 @@
+<% doc_presenter = document_presenter(document) %>
+<div class="row document-metadata show-page-list summary-preview-container pt-2">
+  <% doc_presenter.each_summary_field do |field_name, field, field_presenter| %>
+    <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
+      <% if rendered.length == 1 %>
+        <div class="blacklight-<%= field_name.parameterize %> summary-previews px-3"><%= safe_join(Array.wrap(rendered)) %></div>
+      <% elsif rendered.length > 1 %>
+        <div class="blacklight-<%= field_name.parameterize %> summary-previews"
+          <ul>
+          <% rendered.each do |value| %>
+            <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
+          <% end %>
+          </ul
+        </div>
+      <% end -%>
+  <% end -%>
+</div>

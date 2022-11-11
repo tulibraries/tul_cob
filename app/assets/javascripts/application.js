@@ -187,7 +187,6 @@ $(document).on('turbolinks:load', function() {
 		$(".request-btn").find("span").remove();
 	})
 
-
 	$('#facet-filter-icon').click( function(){
     $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
 	});
@@ -224,3 +223,21 @@ var lwz_options_f000bc5937fea3ef1bafbb124876025a = {"title" :
 window.addEventListener('load', function(event) {
    $("#facet-pub_date_sort").trigger("shown.bs.collapse");
 });
+
+$(window).on('turbolinks:load', function() {
+	$(".summary-previews").each(function () {
+		console.log($(".summary-previews").height());
+		if ($(".summary-previews").height() > 40) {
+				let readMore = $('<a class="read-more">read more</a>');
+				$(this).css("display", "-webkit-box").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
+				$(readMore).insertAfter($(this));
+		}
+	});
+
+	$(".read-more").on("click", function () {
+		$(this).hide();
+		$(this).prev("div").removeAttr("style");
+		$(this).prev("div").css("margin-bottom", "20px");
+	});
+});
+

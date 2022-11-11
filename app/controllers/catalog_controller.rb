@@ -174,7 +174,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-
+    config.add_index_field "note_summary_display", helper_method: :join, type: :summary
     config.add_index_field "imprint_display", label: "Publication"
     config.add_index_field "imprint_prod_display", label: "Production"
     config.add_index_field "imprint_dist_display", label: "Distribution"

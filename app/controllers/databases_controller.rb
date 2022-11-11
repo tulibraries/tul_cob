@@ -23,8 +23,8 @@ class DatabasesController < CatalogController
     config.add_facet_field "az_availability_facet", field: "availability_facet", label: "Access", home: true, component: true
 
     # Index fields
+    config.add_index_field "note_display", raw: true, helper_method: :join, type: :summary
     config.add_index_field "format", label: "Database Type", raw: true, helper_method: :separate_formats
-    config.add_index_field "note_display", label: "Description", raw: true, helper_method: :join
     config.add_index_field "availability"
 
     # Show fields

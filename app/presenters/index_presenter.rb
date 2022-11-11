@@ -13,4 +13,11 @@ class IndexPresenter < Blacklight::IndexPresenter
     field_presenter = field_presenter(fields["lc_call_number_display"])
     yield "lc_call_number_display", fields["lc_call_number_display"], field_presenter if field_presenter.render_field?
   end
+
+  def each_summary_field
+    fields_to_render do |field_name, field_config, field_presenter|
+      field_presenter.except_operations << Blacklight::Rendering::Join
+      yield field_name, field_config, field_presenter if field_config[:type] == :summary
+    end
+  end
 end
