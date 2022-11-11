@@ -40,8 +40,6 @@
             text-align: left;
           }
         }
-
-
       }
   }
 }
@@ -98,6 +96,24 @@
     width: 100%;
   }
 }
+
+/* === SUMMARY PREVIEWS=== */
+
+.summary-previews {
+  display: -webkit-box;
+  overflow: hidden;
+}
+
+.summary-preview-container {
+  background-color: $lighter-grey;
+  margin-left: .5rem;
+}
+
+.read-more {
+  margin-bottom: 20px;
+  padding-left: 1.1rem;
+}
+
 
 /* === DATABASE RESULTS=== */
 .database-browse-link {

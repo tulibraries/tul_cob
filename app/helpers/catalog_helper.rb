@@ -623,4 +623,8 @@ module CatalogHelper
   def derived_lib_guides_search_term(response)
     LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
   end
+
+  def join(args)
+    return args[:value].join("\n")
+  end
 end

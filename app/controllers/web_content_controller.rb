@@ -24,10 +24,10 @@ class WebContentController < CatalogController
       component: true
 
     # Index fields
+    config.add_index_field "web_description_display", type: :summary
     config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type
     config.add_index_field "web_job_title_display", label: "Job Title"
     config.add_index_field "web_base_url_display", label: "Link"
-    config.add_index_field "web_description_display", label: "Description"
     config.add_index_field "web_email_address_display", label: "Email Address"
     config.add_index_field "web_phone_number_display", label: "Phone Number", helper_method: :format_phone_number
     config.add_index_field "web_specialties_display", label: "Specialties", helper_method: :website_list
