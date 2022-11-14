@@ -275,11 +275,11 @@ class CatalogController < ApplicationController
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
     config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
-    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
+    config.add_show_field "electronic_resource_display", label: "Availability", if: false
     config.add_show_field "bound_with_ids", display: false
 
-    config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
-    config.add_show_field "purchase_order_availability", label: "Request Rapid Access", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_panel: true
+    config.add_show_field "po_link", field: "purchase_order", if: false
+    config.add_show_field "purchase_order_availability", label: "Request Rapid Access", field: "purchase_order", if: false, with_panel: true
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
