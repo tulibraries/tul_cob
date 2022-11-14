@@ -68,13 +68,14 @@ class AlmawsController < CatalogController
       @asrs_description = @description || @asrs_description = ""
     end
 
+    # TODO: Document why there sometimes needs to be item level request_options requests made.
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
       @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
-      @request_options = get_largest_request_options_set(@item_level_holdings)
+      @request_options = get_request_options_set(@item_level_holdings)
 
       if @request_options&.request_options.nil?
-        @request_options = get_largest_request_options_set(@second_attempt_holdings)
+        @request_options = get_request_options_set(@second_attempt_holdings)
       end
     else
       log = { type: "bib_request_options", user: current_user.id }
@@ -245,13 +246,20 @@ class AlmawsController < CatalogController
       end
     end
 
-    def get_largest_request_options_set(items)
+    # Makes an ItemsRequestOption request per item and collapses
+    # all the results into one request option set.
+    def get_request_options_set(items)
       items.map { |holding_id, item_pid|
         log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
-        .sort_by { |r| r.request_options&.count || 0 }
-        .last
+        .reduce do |acc, request|
+          options = acc.request_options || []
+          next_options = request.request_options || []
+
+          acc.request_options = options + next_options
+          acc
+        end
     end
 
     def has_desc?(items)
