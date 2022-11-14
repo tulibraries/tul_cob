@@ -445,7 +445,7 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
-  describe "#check_for_full_http_link(args)" do
+  describe "#build_availability(args)" do
     let(:alma_domain) { "sandbox01-na.alma.exlibrisgroup.com" }
     let(:alma_institution_code) { "01TULI_INST" }
     let(:args) {
@@ -463,13 +463,13 @@ RSpec.describe CatalogHelper, type: :helper do
 
     context "marc field links with http should use the electronic_access_links helper method" do
       it "directs an http link through the electronic_access_links method" do
-        expect(check_for_full_http_link(args)).to have_link(text: "Access electronic resource", href: "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483")
+        expect(build_availability(args)).to have_link(text: "Access electronic resource", href: "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483")
       end
     end
 
     context "alma api links go through electronic_resource_display method" do
       it "directs an http link through the electronic_access_links method" do
-        expect(check_for_full_http_link(args)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
+        expect(build_availability(args)).to have_link(text: "Sample Name", href: "https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=77777&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
       end
     end
   end

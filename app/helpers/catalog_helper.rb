@@ -109,7 +109,7 @@ module CatalogHelper
   end
 
   def render_online_availability_button(doc)
-    links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
+    links = build_availability(document: doc, field: "electronic_resource_display")
 
     if !links.empty?
       render "online_availability_button", document: doc, links: links
@@ -458,7 +458,7 @@ module CatalogHelper
       render_electronic_notes(electronic_resources.first).present?
   end
 
-  def check_for_full_http_link(args)
+  def build_availability(args)
     [args[:document][args[:field]]].flatten.compact.map { |field|
       if field["url"].present?
         electronic_access_links(field)

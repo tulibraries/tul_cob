@@ -182,7 +182,7 @@ class CatalogController < ApplicationController
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
     config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
-    config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
+    config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :build_availability
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
     config.add_index_field "bound_with_ids", if: false
@@ -191,7 +191,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_statement_vern_display", label: "Title Statement", type: :primary
-    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
+    config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :build_availability, type: :primary
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
     config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :additional_title_link, type: :primary
@@ -274,8 +274,8 @@ class CatalogController < ApplicationController
     config.add_show_field "lc_call_number_display", label: "LC Classification"
     config.add_show_field "alma_mms_display", label: "Catalog Record ID"
     config.add_show_field "language_display", label: "Language"
-    config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :check_for_full_http_link
-    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :check_for_full_http_link, if: false
+    config.add_show_field "url_more_links_display", label: "Other Links", helper_method: :build_availability
+    config.add_show_field "electronic_resource_display", label: "Availability", helper_method: :build_availability, if: false
     config.add_show_field "bound_with_ids", display: false
 
     config.add_show_field "po_link", field: "purchase_order", if: false, helper_method: :render_purchase_order_show_link
