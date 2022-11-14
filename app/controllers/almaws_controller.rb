@@ -254,7 +254,10 @@ class AlmawsController < CatalogController
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
         .reduce do |acc, request|
-          acc.request_options + (request.request_options || [])
+          options = acc.request_options || []
+          next_options = request.request_options || []
+
+          acc.request_options = options + next_options
           acc
         end
     end
