@@ -4,50 +4,54 @@
   margin-top: 1rem;
   margin-left: 0;
 
-  .btn:not(.search-results-request-btn, .libkey-btn), .avail-container, .online_resources, .bl_alma_iframe {
-    margin-left: 1.5rem;
+  .document-counter {
+    padding-top: 1rem;
+  }
 
-    @media(max-width: 768px) {
-      margin-left: 0;
-    }
+  .documentHeader, .document-metadata-sections {
+    margin-left: 1.75rem;
+    margin-right: 0;
   }
 
   .documentHeader {
-    margin-right: 0;
-
-    .document-counter {
-      width: 4%;
-      font-size: 0.95rem;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $royal-blue;
+    padding: 1rem;
 
     .document-header-container {
-      display: flex;
-      flex-wrap: wrap;
-      width: 96%;
-      border-bottom: solid #ccc 1px;
+      flex: 1 80%;
+      padding-bottom: 0;
 
-      .index_title {
-        flex: 1 80%;
+      a, a:hover, a:active {
         font-size: 1.1rem;
-        padding-bottom: 0;
+        color: $white;
       }
-      .index-document-functions {
-        display: inline-block;
-        label.toggle-bookmark {
-          text-align: right;
+    }
 
-          @media(max-width: 768px) {
-            text-align: left;
-          }
+    .blacklight-format {
+      color: $white;
+    }
+
+    .index-document-functions {
+      display: inline-block;
+      label.toggle-bookmark {
+        text-align: right;
+        color: $white;
+
+        @media(max-width: 768px) {
+          text-align: left;
         }
       }
-  }
+    }
+
+
 }
 
-.book_info {
-  .document-metadata {
-    padding-left: 1.5rem;
+.document-metadata-sections {
+  padding: 0 1rem 1rem 1rem;
 
+  .document-metadata {
     @media(max-width: 768px) {
       margin-left: 0;
       padding-left: 0;
@@ -73,11 +77,14 @@
       line-height: 2rem;
     }
   }
-  .document-metadata.blacklight-lc_call_number_display, .document-metadata.blacklight-lc_call_number_display .index-label {
-    font-weight: bold;
   }
+
 }
+
+.document-metadata.blacklight-lc_call_number_display, .document-metadata.blacklight-lc_call_number_display .index-label {
+  font-weight: bold;
 }
+
 
 .explantion-wrapper {
   @media(max-width: 600px) {
@@ -106,12 +113,12 @@
 
 .summary-preview-container {
   background-color: $lighter-grey;
-  margin-left: .5rem;
+  margin-bottom: 1rem;
 }
 
 .read-more {
   margin-bottom: 20px;
-  padding-left: 1.1rem;
+  padding-left: 1rem;
 }
 
 

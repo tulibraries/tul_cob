@@ -1,15 +1,15 @@
+<div class="document-metadata-sections clearfix flex-row-reverse">
 <%= render "index_summary_field", :document => document, document_counter: document_counter %>
 
-<div class="pt-2">
 <%# default partial to display solr document fields in catalog index view -%>
-  <div class="book-info-srch col-md-2 thumbnail float-md-right" <%= isbn_data_attribute(document) %> >
+  <div class="thumbnail float-right" <%= isbn_data_attribute(document) %> >
     <% if document['web_photo_display'] %>
       <%= link_to document do %>
         <%= image_tag document['web_photo_display'].first, :alt => "Image of " + document["title_statement_display"].to_s, :class => "staff_thumbnail"  %>
       <% end %>
     <% end %>
   </div>
-  <div class="book_info col-sm-12 col-md-10">
-    <%= render "fields", document: document, document_counter: document_counter %>
-  </div>
+
+  <%= render "fields", document: document, document_counter: document_counter %>
+
 </div>

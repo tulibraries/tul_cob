@@ -1,0 +1,10 @@
+<% doc_presenter = document_presenter(document) %>
+  <% doc_presenter.format_field_to_render do |field_name, field_config, field_presenter| -%>
+  <div class="blacklight-<%= field_name.parameterize %>">
+    <% if field_config.raw %>
+      <%= raw doc_presenter.field_value(field_config) %>
+    <% else %>
+      <%= doc_presenter.field_value(field_config) %>
+    <% end -%>
+  </div>
+  <% end -%>

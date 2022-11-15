@@ -60,12 +60,11 @@ RSpec.feature "Indices" do
       click_button "search"
       expect(current_url).to eq results_url
       expect(page).to have_css("#facets")
-      within first(".document-position-0 h3") do
+      within first(".documentHeader") do
         expect(page).to have_text(title)
+        expect(page).to have_text "Book"
       end
       within first(".document-metadata") do
-        expect(page).to have_text "Resource Type:"
-        expect(page).to have_text "Book"
         expect(page).to have_text "Author/Creator:"
         expect(page).to have_text "Publication:"
         has_css?(".avail-button", visible: true)
