@@ -29,6 +29,54 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+
+    config.default_solr_params = {
+      fl: %w[
+         id,
+         availability_facet,
+         bound_with_ids,
+         call_number_alt_display,
+         call_number_display,
+         contributor_display,
+         creator_display,
+         date_added_facet,
+         format,
+         holdings_display,
+         holdings_summary_display,
+         holdings_with_no_items_display,
+         imprint_display,
+         imprint_dist_display,
+         imprint_man_display,
+         imprint_prod_display,
+         imprint_date_display,
+         imprint_prod_date_display,
+         imprint_dist_date_display,
+         imprint_man_date_display,
+         isbn_display,
+         issn_display,
+         lc_call_number_display,
+         lccn_display,
+         library_facet,
+         location_display,
+         note_summary_display,
+         oclc_number_display,
+         pub_date,
+         purchase_order,
+         responsibility_display,
+         responsibility_truncated_display,
+         score,
+         title_series_display,
+         title_statement_display,
+         title_truncated_display,
+         title_with_subtitle_display,
+         title_with_subtitle_truncated_display,
+         title_uniform_display,
+         electronic_resource_display:[json],
+         hathi_trust_bib_key_display:[json],
+         items_json_display:[json],
+         url_finding_aid_display:[json],
+         url_more_links_display:[json] ].join(" ")
+    }
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= "advanced"
