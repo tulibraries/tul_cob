@@ -2,7 +2,7 @@
 
 <dl class="dl-horizontal document-metadata mb-0">
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
-<% unless field_config[:type] == :summary %>
+<% unless field_config[:type] == :summary || field_config[:type] == :format %>
     <% unless field_config[:no_label] %>
       <dt class="index-label blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>:</dt>
       <dd class="blacklight-<%= field_name.parameterize %>">

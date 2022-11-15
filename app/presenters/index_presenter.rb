@@ -4,14 +4,8 @@ class IndexPresenter < Blacklight::IndexPresenter
   def fields_to_render
     return super unless block_given?
     super do |field_name, field_config, field_presenter|
-      yield field_name, field_config, field_presenter unless field_name == "lc_call_number_display" || field_name == "format"
+      yield field_name, field_config, field_presenter unless field_name == "lc_call_number_display"
     end
-  end
-
-  def format_field_to_render
-    return unless fields["format"] && block_given?
-    field_presenter = field_presenter(fields["format"])
-    yield "format", fields["format"], field_presenter if field_presenter.render_field?
   end
 
   def lc_call_number_field_to_render
@@ -20,10 +14,18 @@ class IndexPresenter < Blacklight::IndexPresenter
     yield "lc_call_number_display", fields["lc_call_number_display"], field_presenter if field_presenter.render_field?
   end
 
+  def each_format_field
+    fields_to_render do |field_name, field_config, field_presenter|
+      field_presenter.except_operations << Blacklight::Rendering::Join
+      yield field_name, field_config, field_presenter if field_config[:type] == :format
+    end
+  end
+
   def each_summary_field
     fields_to_render do |field_name, field_config, field_presenter|
       field_presenter.except_operations << Blacklight::Rendering::Join
       yield field_name, field_config, field_presenter if field_config[:type] == :summary
     end
   end
+
 end

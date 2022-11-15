@@ -49,7 +49,7 @@ class PrimoCentralController < CatalogController
     config.add_index_field :description, type: :summary
     config.add_index_field :isPartOf, label: "Is Part Of"
     config.add_index_field :creator, label: "Author/Creator", multi: true
-    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code
+    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
     config.add_index_field :date, label: "Year"
     config.add_index_field :availability
     config.add_index_field :status

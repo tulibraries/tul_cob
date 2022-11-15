@@ -180,7 +180,7 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_dist_display", label: "Distribution"
     config.add_index_field "imprint_man_display", label: "Manufacture"
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
-    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats, type: :format
     config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
