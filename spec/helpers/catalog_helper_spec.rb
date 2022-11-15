@@ -340,6 +340,23 @@ RSpec.describe CatalogHelper, type: :helper do
       end
     end
 
+    context "with authentication notes" do
+      let(:field) { { "authentication_note" => "authentication note" } }
+
+      it "should render the notes" do
+        expect(render_electronic_notes(field)).to eq("rendered note")
+      end
+
+      it "should parse the authenticated notes" do
+        allow(helper).to receive(:render) do |arg|
+          expect(arg.dig(:locals, :authentication_notes)).to eq("authentication note")
+          ""
+        end
+
+        render_electronic_notes(field)
+      end
+    end
+
     context "with service notes" do
       let(:field) { { "service_id" => "foo" } }
 

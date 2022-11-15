@@ -531,6 +531,7 @@ module CatalogHelper
     service_id = field["service_id"]
 
     public_notes = field["public_note"]
+    authentication_notes = field["authentication_note"]
     collection_notes = get_collection_notes(collection_id)
     service_notes = get_service_notes(service_id)
     unavailable_notes = get_unavailable_notes(service_id)
@@ -538,12 +539,14 @@ module CatalogHelper
     if collection_notes.present? ||
         service_notes.present? ||
         public_notes.present? ||
+        authentication_notes.present? ||
         unavailable_notes.present?
 
       render partial: "electronic_notes", locals: {
         collection_notes: collection_notes,
         service_notes: service_notes,
         public_notes: public_notes,
+        authentication_notes: authentication_notes,
         unavailable_notes: unavailable_notes,
       }
     end
