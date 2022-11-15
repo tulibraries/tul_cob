@@ -6,19 +6,20 @@
   -%>
 
     <% document_actions = capture do %>
-      <% # bookmark functions for items/docs -%>
-      <header class="documentHeader row">
-          <% if counter = document_counter_with_offset(document_counter) %>
-            <div class="document-counter pr-0">
-              <%= t('blacklight.search.documents.counter', counter: counter) %>
-            </div>
-          <% end %>
-            <div class="px-0 document-header-container">
-              <h3 class="index_title">
-                <%= link_to_document document, counter: counter %>
-              </h3>
-              <%= render_index_doc_actions document, wrapping_class: "index-document-functions float-right" %>
-            </div>
+      <% if counter = document_counter_with_offset(document_counter) %>
+        <span class="document-counter float-left">
+          <%= t('blacklight.search.documents.counter', counter: counter) %>
+        </span>
+      <% end %>
+
+      <header class="documentHeader">
+        <div class="document-header-container">
+          <h3 class="index_title">
+            <%= link_to_document document, counter: counter %>
+          </h3>
+          <%= render "index_format_field", :document => document %>
+        </div>
+        <%= render_index_doc_actions document, wrapping_class: "index-document-functions" %>
       </header>
 
     <% end %>

@@ -40,12 +40,6 @@
   text-decoration: underline;
 }
 
-.show-page-list {
-  @media(max-width: 768px) {
-    padding-top: 1rem;
-  }
-}
-
 .show-page-list .show-page-label {
   font-weight: 600;
 }

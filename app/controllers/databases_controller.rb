@@ -24,7 +24,7 @@ class DatabasesController < CatalogController
 
     # Index fields
     config.add_index_field "note_display", raw: true, helper_method: :join, type: :summary
-    config.add_index_field "format", label: "Database Type", raw: true, helper_method: :separate_formats
+    config.add_index_field "format", label: "Database Type", raw: true, helper_method: :separate_formats, type: :format
     config.add_index_field "availability"
 
     # Show fields

@@ -1,0 +1,13 @@
+<% doc_presenter = document_presenter(document) %>
+  <% doc_presenter.each_format_field do |field_name, field_config, field_presenter| -%>
+  <% rendered = Array.wrap(field_presenter.render).reject { |value| value.blank? }.map { |rendered| field_presenter.field_config[:raw] ? raw(rendered) : rendered } %>
+  <% if rendered.length == 1 %>
+    <div class="blacklight-<%= field_name.parameterize %>"><%= safe_join(Array.wrap(rendered)) %></div>
+  <% elsif rendered.length > 1 %>
+    <div class="blacklight-<%= field_name.parameterize %>">
+      <% rendered.each do |value| %>
+        <%= safe_join(Array.wrap(value)) %>
+      <% end %>
+    </div>
+  <% end -%>
+  <% end -%>

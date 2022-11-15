@@ -44,7 +44,7 @@ RSpec.describe CatalogController, type: :controller do
     # Collect the keys from the document hashes into a single array
     let(:docs_keys) { docs.collect { |doc| doc["attributes"].keys }.flatten.uniq }
     let(:expected_keys) {
-      %w[ creator_display format ]
+      %w[ creator_display imprint_display ]
     }
 
     context "an individual index result" do

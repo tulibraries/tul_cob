@@ -25,7 +25,7 @@ class WebContentController < CatalogController
 
     # Index fields
     config.add_index_field "web_description_display", type: :summary
-    config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type
+    config.add_index_field "web_content_type_t", label: "Content Type", helper_method: :capitalize_type, type: :format
     config.add_index_field "web_job_title_display", label: "Job Title"
     config.add_index_field "web_base_url_display", label: "Link"
     config.add_index_field "web_email_address_display", label: "Email Address"
