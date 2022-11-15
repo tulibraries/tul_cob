@@ -27,5 +27,4 @@ class IndexPresenter < Blacklight::IndexPresenter
       yield field_name, field_config, field_presenter if field_config[:type] == :summary
     end
   end
-
 end
