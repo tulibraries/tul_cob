@@ -6,10 +6,6 @@
 
   .btn:not(.search-results-request-btn, .libkey-btn), .avail-container, .online_resources, .bl_alma_iframe {
   margin-left: 1.75rem;
-
-    @media(max-width: 768px) {
-      margin-left: 0;
-    }
   }
 
   .document-counter {
