@@ -16,16 +16,12 @@
 }
 
 .holding-name {
-  font-family: "Roboto Condensed";
+  font-family: "Roboto";
   font-size: 1.1rem;
   margin: 0;
 
-  .library-name {
-    font-weight: normal;
-  }
-
   .location-name {
-    font-weight: lighter;
+    font-family: "Roboto Light";
   }
 }
 
@@ -101,7 +97,6 @@ dd .online-list-items {
 .online-list-items, .online-list-item {
   border-bottom: 0.0625rem solid $gray-300;
   padding: 1rem;
-  font-size: 1rem;
 }
 
 .list_elec_links.search_results_table {
@@ -115,7 +110,6 @@ dd .online-list-items {
 .holding-summary {
   font-weight: normal;
   padding-top: 0.5rem;
-  padding-left: 0.5rem;
 
   .summary-label {
     border-style: solid;
@@ -143,7 +137,7 @@ dd .online-list-items {
 .online-card-heading {
   background-color: $royal-blue;
   color: $white;
-  font-family: "Roboto Condensed";
+  font-family: "Roboto";
   font-size: 1.1rem;
   padding: 1rem;
   margin: 0;
