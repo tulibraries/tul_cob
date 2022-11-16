@@ -17,9 +17,9 @@
           <h3 class="index_title">
             <%= link_to_document document, counter: counter %>
           </h3>
-          <%= render "index_format_field", :document => document %>
+          <%= render "index_format_date_fields", :document => document %>
         </div>
-        <%= render_index_doc_actions document, wrapping_class: "index-document-functions" %>
+        <%= render_index_doc_actions document, wrapping_class: "index-document-functions mt-auto" %>
       </header>
 
     <% end %>

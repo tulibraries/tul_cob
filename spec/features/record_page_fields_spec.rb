@@ -41,13 +41,13 @@ RSpec.feature "RecordPageFields" do
     let (:item) { fixtures.fetch("title_statement") }
     scenario "User visits a document with full title statement" do
       visit "catalog/#{item['doc_id']}"
-      expect(page).to have_text(item["title_statement"])
+      expect(page).to have_text(item["title_with_subtitle"])
     end
 
     scenario "User visits a document with title statement vernacular" do
       visit "catalog/#{item['doc_id']}"
-      within "dd.blacklight-title_statement_vern_display" do
-        expect(page).to have_text(item["title_statement_vern"])
+      within "dd.blacklight-title_with_subtitle_vern_display" do
+        expect(page).to have_text(item["title_with_subtitle_vern"])
       end
     end
   end

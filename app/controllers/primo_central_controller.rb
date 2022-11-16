@@ -24,7 +24,6 @@ class PrimoCentralController < CatalogController
 
     # Model that maps search index responses to the blacklight response model
     config.response_model = Blacklight::PrimoCentral::Response
-
     config.index.document_presenter_class = PrimoCentralPresenter
 
     # Pagination handler
@@ -47,10 +46,10 @@ class PrimoCentralController < CatalogController
 
     # Index fields
     config.add_index_field :description, type: :summary
+    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
+    config.add_index_field :date, label: "Year", type: :date
     config.add_index_field :isPartOf, label: "Is Part Of"
     config.add_index_field :creator, label: "Author/Creator", multi: true
-    config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
-    config.add_index_field :date, label: "Year"
     config.add_index_field :availability
     config.add_index_field :status
     config.add_index_field :error

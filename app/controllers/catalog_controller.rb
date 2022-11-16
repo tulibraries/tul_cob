@@ -120,12 +120,12 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_truncated_display"
+    config.index.title_field = "title_with_subtitle_truncated_display"
     config.index.display_type_field = "format"
     config.index.document_presenter_class = IndexPresenter
 
     # solr field configuration for document/show views
-    config.show.title_field = "title_statement_display"
+    config.show.title_field = "title_with_subtitle_truncated_display"
     #config.show.display_type_field = 'format'
     config.show.document_presenter_class = ShowPresenter
 
@@ -222,13 +222,15 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
+    config.add_index_field "format", raw: true, helper_method: :separate_formats, type: :format
+    config.add_index_field "imprint_date_display", type: :date
     config.add_index_field "note_summary_display", helper_method: :join, type: :summary
+    config.add_index_field "responsibility_truncated_display", label: "Responsibility"
+    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
     config.add_index_field "imprint_display", label: "Publication"
     config.add_index_field "imprint_prod_display", label: "Production"
     config.add_index_field "imprint_dist_display", label: "Distribution"
     config.add_index_field "imprint_man_display", label: "Manufacture"
-    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
-    config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :separate_formats, type: :format
     config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
@@ -238,7 +240,9 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
 
-    config.add_show_field "title_statement_vern_display", label: "Title Statement", type: :primary
+    config.add_show_field "title_with_subtitle_vern_display", label: "Title Statement", type: :primary
+    config.add_show_field "responsibility_display", label: "Responsibility", type: :primary
+    config.add_show_field "responsibility_vern_display", label: "Responsibility", type: :primary
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary

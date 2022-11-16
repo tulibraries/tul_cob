@@ -44,6 +44,8 @@ module Blacklight::PrimoCentral
       }
 
       SOLR_TO_PRIMO_KEYS = {
+        "title_with_subtitle_display" => "title",
+        "title_with_subtitle_truncated_display" => "title",
         "title_statement_display" => "title",
         "title_truncated_display" => "title",
         "creator_display" => "creator",

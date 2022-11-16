@@ -12,6 +12,7 @@ class DatabasesController < CatalogController
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:az_url]
     config.document_solr_path = "document"
+    config.index.title_field = "title_statement_display"
 
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params =

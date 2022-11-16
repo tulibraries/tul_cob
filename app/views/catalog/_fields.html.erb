@@ -2,9 +2,14 @@
 
 <dl class="dl-horizontal document-metadata mb-0">
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
-<% unless field_config[:type] == :summary || field_config[:type] == :format %>
+<% unless field_config[:type] == :summary || field_config[:type] == :format || field_config[:type] == :date %>
     <% unless field_config[:no_label] %>
-      <dt class="index-label blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>:</dt>
+      <% if field_name == "responsibility_truncated_display"%>
+        <dt class="index-label blacklight-<%= field_name.parameterize %> sr-only">
+      <% else %>
+        <dt class="index-label blacklight-<%= field_name.parameterize %>">
+      <% end -%>
+      <%= field_presenter.label %>:</dt>
       <dd class="blacklight-<%= field_name.parameterize %>">
       <% end %>
         <% if field_config.raw %>
@@ -16,8 +21,6 @@
     <% end -%>
   <% end -%>
 </dl>
-
-
 
 <%= render_alma_availability(document) %>
 
