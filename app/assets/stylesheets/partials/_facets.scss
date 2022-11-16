@@ -72,7 +72,9 @@ span .remove-constraints {
 span.constraint-value {
 	background-color: $crystal-blue;
 	border: 0.0625rem solid transparent;
+  font-family: "Roboto";
 	font-size: 1rem;
+  font-weight: normal;
 	padding: 0.5rem 0.9375rem;
 	text-align: left;
 	width: 80%;

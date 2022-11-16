@@ -36,20 +36,18 @@
 }
 
 .bento_item_title {
-	font-weight: bold;
-  font-size: 0.9rem;
+	font-size: 0.95rem;
+	line-height: 1.5rem;
 	padding-left: 0.9375rem
 }
 
 .authors {
-	font-weight: 600;
 	margin-top: 0;
 }
 
 .bento-avail-btn {
 	background-color: $crystal-blue;
 	color: $midnight-blue;
-	font-size: 0.9rem;
  	margin-bottom: 0.9375rem;
  	margin-left: 0.9375rem;
 	padding: 0.125rem 0.625rem;
@@ -72,7 +70,7 @@
 	border-left: 1px solid $lighter-grey;
 	border-right: 1px solid $lighter-grey;
 	color: $cherry-red;
-	padding: 0.625rem 0.5rem;
+	padding: 0.625rem 0.9375rem;
 }
 
 .bento-resource-types {

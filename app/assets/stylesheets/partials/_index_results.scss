@@ -32,7 +32,6 @@
       }
 
       a, a:hover, a:active {
-        font-size: 1.1rem;
         color: $white;
       }
     }
@@ -76,6 +75,9 @@
     }
 
     dt {
+      font-weight: 600;
+      padding-right: 0.5rem;
+
       @media(min-width: 768px) {
         float: left;
         clear: left;
@@ -86,10 +88,6 @@
       margin-bottom: 0.6rem;
     }
 
-    .index-label {
-      font-weight: 600;
-      padding-right: 0.5rem;
-    }
     .availability-locations {
       line-height: 2rem;
     }
