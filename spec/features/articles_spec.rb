@@ -27,7 +27,6 @@ RSpec.feature "Articles Search" do
     within first(".document-metadata") do
       expect(page).to have_text "Is Part Of:"
       expect(page).to have_text "Author/Creator"
-      expect(page).to have_text "Year"
       has_css?(".avail-button", visible: true)
     end
   end

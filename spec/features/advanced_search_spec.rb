@@ -94,7 +94,7 @@ RSpec.feature "Advanced Search" do
     end
 
     scenario "searching crazy long title with colon in it" do
-      title = "Religious liberty : the positive dimension : an address / by Franklin H. Littell at Doane College on April 26, 1966."
+      title = "Religious liberty : the positive dimension : an address"
       visit "catalog?#{{
         operator: { q_1: "contains" },
         f_1: "all_fields", q_1: title,
@@ -106,7 +106,7 @@ RSpec.feature "Advanced Search" do
     end
 
     scenario "searching crazy long title with colon in it (regular search)" do
-      title = "Religious liberty : the positive dimension : an address / by Franklin H. Littell at Doane College on April 26, 1966."
+      title = "Religious liberty : the positive dimension : an address"
       visit "catalog?#{{
         search_field: "all_fields", q: title,
       }.to_query}"

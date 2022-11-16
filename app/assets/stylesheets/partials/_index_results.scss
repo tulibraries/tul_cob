@@ -4,11 +4,19 @@
   margin-top: 1rem;
   margin-left: 0;
 
+  .btn:not(.search-results-request-btn, .libkey-btn), .avail-container, .online_resources, .bl_alma_iframe {
+  margin-left: 1.75rem;
+
+    @media(max-width: 768px) {
+      margin-left: 0;
+    }
+  }
+
   .document-counter {
     padding-top: 1rem;
   }
 
-  .documentHeader, .document-metadata-sections {
+  .documentHeader, .document-info-container {
     margin-left: 1.75rem;
     margin-right: 0;
   }
@@ -23,6 +31,10 @@
       flex: 1 80%;
       padding-bottom: 0;
 
+      @media(max-width: 1000px) {
+        flex: 1 100%;
+      }
+
       a, a:hover, a:active {
         font-size: 1.1rem;
         color: $white;
@@ -31,25 +43,34 @@
 
     .blacklight-format, .blacklight-type {
       color: $crystal-blue;
+      padding-right: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .blacklight-date {
+      color: $crystal-blue;
+      border-left: 1px solid $crystal-blue;
+      padding-left: 0.5rem;
     }
 
     .index-document-functions {
       display: inline-block;
-      label.toggle-bookmark {
-        text-align: right;
-        color: $white;
+      margin-bottom: 0;
 
-        @media(max-width: 768px) {
+      label.toggle-bookmark {
+        color: $crystal-blue;
+        margin-bottom: 0;
+        text-align: right;
+
+        @media(max-width: 1000px) {
           text-align: left;
         }
       }
     }
-
-
 }
 
-.document-metadata-sections {
-  padding: 0 1rem 1rem 1rem;
+.document-info-container {
+  padding: 0 1rem;
 
   .document-metadata {
     @media(max-width: 768px) {
@@ -77,7 +98,7 @@
       line-height: 2rem;
     }
   }
-  }
+}
 
 }
 

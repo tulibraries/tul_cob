@@ -1,6 +1,6 @@
 <% doc_presenter = document_presenter(document) %>
 
-<div class="document-metadata-sections clearfix flex-row-reverse">
+<div class="document-info-container clearfix flex-row-reverse">
 <%= render "index_summary_field", :document => document %>
 
 <%# default partial to display solr document fields in catalog index view %>
@@ -10,8 +10,7 @@
       <%= image_tag default_cover_image(document), :class => "default mr-3", :alt => "" %>
     </div>
   <% end %>
-
   <%= render "fields", document: document, document_counter: document_counter %>
-
-  <%= render_availability(document) %>
 </div>
+
+<%= render_availability(document) %>
