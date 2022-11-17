@@ -278,6 +278,7 @@ class CatalogController < ApplicationController
     config.add_show_field "creator_group_display", label: "Creator/Contributor characteristics"
     config.add_show_field "date_period_display", label: "Time Period"
     config.add_show_field "note_display", label: "Note"
+    config.add_show_field "note_award", field: "note_award_display", label: "Awards Note"
     config.add_show_field "note_with_display", label: "With"
     config.add_show_field "note_diss_display", label: "Dissertation Note"
     config.add_show_field "note_biblio_display", label: "Bibliography"
