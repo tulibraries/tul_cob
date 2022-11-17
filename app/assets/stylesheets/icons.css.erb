@@ -52,11 +52,18 @@ a.facet_ebooks {
   padding-left: 1.9rem;
   padding-top: .25rem;
 
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_book_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_proceedings {
   background: transparent url(<%= asset_path "noun_conference.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_conference_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.newsletter_article,
 span.newspaper_article,
@@ -92,6 +99,10 @@ a.facet_legal_document
   background: transparent url(<%= asset_path "noun_article.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_article_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.journal_article,
 span.journal_periodical,
@@ -103,6 +114,10 @@ a.facet_articles
   background: transparent url(<%= asset_path "noun_journal.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_journal_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.dissertation_thesis,
 span.dissertation_thesis,
@@ -114,11 +129,19 @@ a.facet_dissertation
   background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_thesis_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.score, a.facet_score, a.facet_scores {
   background: transparent url(<%= asset_path "noun_music.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_music_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.video,
 span.streaming_video,
@@ -128,6 +151,10 @@ a.facet_videos {
   background: transparent url(<%= asset_path "noun_video.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_video_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.archival_material,
 span.archival_material_manuscript,
@@ -136,6 +163,10 @@ a.facet_archival_material_manuscripts {
   background: transparent url(<%= asset_path "noun_archive.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_archive_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.primary_sources_history,
 span.primary_sources_literature,
@@ -145,6 +176,10 @@ a.facet_primary_sources_literature {
   padding-left: 1.9rem;
   padding-bottom: .25rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_primary_sources_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 
 span.visual_material,
@@ -158,6 +193,10 @@ span.facet_digital_collections {
   background: transparent url(<%= asset_path "noun_visual_material.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_visual_material_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.audio,
 span.streaming_audio,
@@ -167,6 +206,10 @@ a.facet_audio {
   background: transparent url(<%= asset_path "noun_audio.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_audio_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.object,
 span.media,
@@ -175,6 +218,10 @@ a.facet_media {
   background: transparent url(<%= asset_path "noun_object.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_object_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.computer_file,
 span.computer_media,
@@ -183,12 +230,20 @@ a.facet_computer_media {
   background: transparent url(<%= asset_path "noun_computer_media.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_computer_media_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.database, a.facet_database, a.facet_databases,
 #facet-az_format a.facet_temporary_access, span.temporary_access {
   background: transparent url(<%= asset_path "noun_database.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_database_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.map,
 span.maps_amp_mapping_tools,
@@ -198,6 +253,10 @@ a.facet_maps {
   background: transparent url(<%= asset_path "noun_map.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_map_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.dataset,
 span.datasets,
@@ -212,22 +271,38 @@ a.facet_statistical_data_sets {
   background: transparent url(<%= asset_path "noun_data_set.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_data_set_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.website, a.facet_website, a.facet_websites, a.facet_web_resources {
   background: transparent url(<%= asset_path "noun_website.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
-        padding-top: .25rem;
+  padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_website_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.kit, a.facet_kit {
   background: transparent url(<%= asset_path "noun_kit.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_kit_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.law_amp_regulations,
 a.facet_law_regulations {
   background: transparent url(<%= asset_path "noun_law.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_law_crystalblue.svg" %>) no-repeat center left;
+  }
 }
 span.reference,
 #facet-format a.facet_reference {
