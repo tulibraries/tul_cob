@@ -57,6 +57,7 @@ module CatalogHelper
         "government_document" => "legal",
         "image" => "visual_material",
         "journal" => "journal_periodical",
+        "journal_article" => "journal_periodical",
         "legal_document" => "legal",
         "market_research" => "dataset",
         "microform" => "legal",
