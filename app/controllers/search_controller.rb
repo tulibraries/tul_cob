@@ -26,7 +26,8 @@ class SearchController < CatalogController
     respond_to do |format|
       format.html { store_preferred_view }
       format.json do
-        @results["lib_guides_query_term"] = @lib_guides_query_term
+
+        @results["lib_guides_query_term"] = @lib_guides_query_term unless @results.nil?
 
         render plain: @results.to_json, status: 200, content_type: "application/json"
       end
