@@ -1,7 +1,8 @@
 <% doc_presenter = document_presenter(document) %>
 
-<div class="document-info-container clearfix flex-row-reverse">
 <%= render "index_summary_field", :document => document %>
+
+<div class="document-info-container clearfix flex-row-reverse">
 
 <%# default partial to display solr document fields in catalog index view %>
   <% unless controller_name == "databases" %>
