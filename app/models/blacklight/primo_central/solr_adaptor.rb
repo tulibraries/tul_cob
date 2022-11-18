@@ -40,8 +40,7 @@ module Blacklight::PrimoCentral
 
     private
 
-      SOLR_TO_PRIMO_FACETS = {
-      }
+      SOLR_TO_PRIMO_FACETS = {}
 
       SOLR_TO_PRIMO_KEYS = {
         "title_with_subtitle_display" => "title",
