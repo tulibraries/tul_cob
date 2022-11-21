@@ -699,8 +699,8 @@ end
     end
   end
 
-  describe "solr_field_to_s(document, field)" do
-    let(:string) { helper.solr_field_to_s(document, field) }
+  describe "doc_field_joiner(document, field)" do
+    let(:string) { helper.doc_field_joiner(document, field) }
     let(:field) { "test" }
     let(:document) {  { "#{field}" => value } }
     context "the field value is empty" do
@@ -757,71 +757,84 @@ end
   end
 
   describe "#build_guest_login_libwizard_url(document)" do
+    let(:controller_name) { "catalog" }
     let(:base_url) { "https://temple.libwizard.com/f/ContinueAsGuest?" }
     let(:constructed_url) { helper.build_guest_login_libwizard_url(document) }
+    before do
+      allow(helper).to receive(:controller_name) { controller_name }
+    end
     context "document is missing all data" do
-      let(:document) { {} }
+      let(:document) { SolrDocument.new({}) }
       it "returns a url with no params" do
         expect(constructed_url).to eq base_url
       end
     end
     context "when mappable fields are present" do
       let(:document) {
-        {
+        SolrDocument.new({
         "title_statement_display" => ["title"],
         "pub_date" => ["2020"],
         "edition_display" => ["1st edition"],
         "id" => "bestIDever",
         "imprint_man_display" => ["do not include"],
-        }
+        })
       }
       it "maps the expected parameters" do
         expect(constructed_url).to include("rft.title=title")
         expect(constructed_url).to include("rft.date=2020")
         expect(constructed_url).to include("edition=1st+edition")
-        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
+        expected_rft_id = "rft_id=#{CGI.escape(url_for([document, only_path: false]))}"
+        expect(constructed_url).to include(expected_rft_id)
       end
     end
   end
 
   describe "#build_error_libwizard_url(document)" do
+    let(:controller_name) { "catalog" }
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchError?" }
     let(:constructed_url) { helper.build_error_libwizard_url(document) }
+    before do
+      allow(helper).to receive(:controller_name) { controller_name }
+    end
     context "document is missing all data" do
-      let(:document) { {} }
+      let(:document) { SolrDocument.new({}) }
       it "returns a url with no params" do
         expect(constructed_url).to eq base_url
       end
     end
     context "when mappable fields are present" do
       let(:document) {
-        {
+        SolrDocument.new({
         "title_statement_display" => ["title"],
         "pub_date" => ["2020"],
         "id" => "bestIDever",
-        "imprint_man_display" => ["do not include"],
-        }
+        })
       }
       it "maps the expected parameters" do
         expect(constructed_url).to include("rft.title=title")
         expect(constructed_url).to include("rft.date=2020")
-        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
+        expected_rft_id = "rft_id=#{CGI.escape(url_for([document, only_path: false]))}"
+        expect(constructed_url).to include(expected_rft_id)
       end
     end
   end
 
   describe "#build_libwizard_url(document)" do
+    let(:controller_name) { "catalog" }
     let(:base_url) { "https://temple.libwizard.com/f/LibrarySearchRequest?" }
     let(:constructed_url) { helper.build_libwizard_url(document) }
+    before do
+      allow(helper).to receive(:controller_name) { controller_name }
+    end
     context "document is missing all data" do
-      let(:document) { {} }
+      let(:document) { SolrDocument.new({}) }
       it "returns a url with no params" do
         expect(constructed_url).to eq base_url
       end
     end
     context "when mappable fields are present" do
       let(:document) {
-        {
+        SolrDocument.new({
         "title_statement_display" => ["title"],
         "pub_date" => ["2020"],
         "volume_display" => ["v3"],
@@ -834,13 +847,14 @@ end
         "imprint_prod_display" => ["imprint_prod_display"],
         "imprint_dist_display" => ["imprint_dist_display"],
         "imprint_man_display" => ["imprint_man_display"],
-        }
+        })
       }
       it "maps the expected parameters" do
         expect(constructed_url).to include("rft.title=title")
         expect(constructed_url).to include("rft.date=2020")
         expect(constructed_url).to include("edition=1st+edition")
-        expect(constructed_url).to include("rft_id=https%3A%2F%2Flibrarysearch.temple.edu%2Fcatalog%2FbestIDever")
+        expected_rft_id = "rft_id=#{CGI.escape(url_for([document, only_path: false]))}"
+        expect(constructed_url).to include(expected_rft_id)
         expect(constructed_url).to include("rft.isbn=12345678")
         expect(constructed_url).to include("rft.issn=4567890123%2C+9087654321")
         expect(constructed_url).to include("rft.oclcnum=98765432")

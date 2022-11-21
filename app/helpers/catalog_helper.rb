@@ -156,7 +156,7 @@ module CatalogHelper
   # @param document - A solr document object
   # @param field - the name of a solr field
   # @param joiner - the string to use to concatenate multivalue fields
-  def solr_field_to_s(document, field, joiner = ", ")
+  def doc_field_joiner(document, field, joiner = ", ")
     Array.wrap(document.fetch(field, [])).join(joiner)
   end
 
@@ -173,7 +173,7 @@ module CatalogHelper
   end
 
   def build_error_libwizard_url(document)
-    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "rft_id")
+    doc_params = openurl_libwizard_params(document)
     URI::HTTPS.build(host: "temple.libwizard.com",
       path: "/f/LibrarySearchError", query: doc_params.to_query).to_s
   end
@@ -181,25 +181,23 @@ module CatalogHelper
   def openurl_libwizard_params(document)
     doc_params =
     {
-      "rft.title" => solr_field_to_s(document, "title_statement_display"),
-      "rft.date" => solr_field_to_s(document, "pub_date"),
-      "edition" => solr_field_to_s(document, "edition_display"),
-      "rft.isbn" => solr_field_to_s(document, "isbn_display"),
-      "rft.issn" => solr_field_to_s(document, "issn_display"),
-      "rft.oclcnum" => solr_field_to_s(document, "oclc_display"),
+      "rft.title" => doc_field_joiner(document, :title_statement_display),
+      "rft.date" => doc_field_joiner(document, :pub_date),
+      "edition" => doc_field_joiner(document, :edition_display),
+      "rft.isbn" => doc_field_joiner(document, :isbn_display),
+      "rft.issn" => doc_field_joiner(document, :issn_display),
+      "rft.oclcnum" => doc_field_joiner(document, :oclc_display),
       "rft.pub" => [
-        solr_field_to_s(document, "imprint_display"),
-        solr_field_to_s(document, "imprint_prod_display"),
-        solr_field_to_s(document, "imprint_dist_display"),
-        solr_field_to_s(document, "imprint_man_display"),
+        doc_field_joiner(document, :imprint_display),
+        doc_field_joiner(document, :imprint_prod_display),
+        doc_field_joiner(document, :imprint_dist_display),
+        doc_field_joiner(document, :imprint_man_display),
       ].select(&:present?).join(", "),
     }
-    sid = solr_field_to_s(document, "id")
-    if sid.present?
-      doc_params["rft_id"] = "https://librarysearch.temple.edu/catalog/#{sid}"
+    if document.id.present?
+      doc_params["rft_id"] = url_for([document, only_path: false])
     end
-    doc_params.select! { |k, v| v.present? }
-    return doc_params
+    doc_params.select { |k, v| v.present? }
   end
 
   def digital_help_allowed?(document)
