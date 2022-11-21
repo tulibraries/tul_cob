@@ -9,6 +9,7 @@ require "capybara/rspec"
 require "pry"
 require "simplecov"
 require "simplecov-lcov"
+require "axe-rspec"
 
 SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
 SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
