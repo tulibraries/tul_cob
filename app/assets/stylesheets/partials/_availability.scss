@@ -176,12 +176,12 @@ button.available:visited,
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
-  width: 10rem;
+  width: 10.25rem;
 }
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
   margin-bottom: 0.625rem;
-  width: 10rem;
+  width: 10.25rem;
 }
 
 button.btn-warning,
@@ -192,7 +192,7 @@ button.btn-warning:visited {
 	background-color: $cherry-red;
 	border-color: #d43f3a;
 	color: $white;
-  width: 10rem;
+  width: 10.25rem;
 }
 
 /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
