@@ -157,7 +157,7 @@ en:
       sms: "Text"
       cite_html: "Cite %{current_range}"
       sendto: "Send To %{current_range}"
-      error: "Report a Problem"
+      error_html: "Report a Problem  <span class='error-external-link-icon'></span>"
   requests:
     log_in: "Log in to see request options"
     request_button: "How to get this"
