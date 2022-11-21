@@ -48,7 +48,6 @@ group :development, :test do
   gem "pry-rails"
   gem "simplecov"
   gem "simplecov-lcov"
-  gem "solr_wrapper", ">= 0.3"
   gem "rspec-rails"
   gem "database_cleaner"
   gem "factory_bot_rails"
