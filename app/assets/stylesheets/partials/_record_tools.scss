@@ -47,9 +47,8 @@
 // CITATION AND REPORT A PROBLMEM BUTTONS
 
 #citeLink, #errorLink {
-	background-color: $white;
-	color: $cherry-red;
-	border: 0.0625rem solid $dark-grey;
+	background-color: $royal-blue;
+	color: $white;
 
 	@media (max-width: 991px) {
 		background-color: $cherry-red;
@@ -63,9 +62,8 @@
 //SEND-TO BUTTON AND MENU ITEMS
 
 #sendto-menu a.dropdown-toggle, #sendto-menu button.dropdown-toggle{
-	background-color: $white;
-	border: 0.0625rem solid $dark-grey;
-	color: $cherry-red;
+	background-color: $royal-blue;
+	color: $white;
 	padding: 0.3725rem 0.75rem;
 
 	@media(max-width: 991px) {

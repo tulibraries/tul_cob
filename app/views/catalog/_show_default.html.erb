@@ -1,5 +1,6 @@
 <% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view %>
+<hr class="record-page-divider"/>
 <div class="record-page-wrapper clearfix">
   <% unless [ "databases", "primo_central"].include?(controller_name) %>
     <div class="record-view thumbnail float-md-right col-md-2 col-4" <%= render_google_books_data_attribute(document) %> >
