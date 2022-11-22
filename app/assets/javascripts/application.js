@@ -232,7 +232,6 @@ $(window).on('turbolinks:load', function() {
 		let readMore = $('<a class="read-more">read more</a>');
 	
 		if ($(this).text().length > 300) {
-			console.log($(this).text().length);
 				$(this).css("display", "-webkit-box").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
 				$(readMore).insertAfter($(this));
 				$(readLess).insertAfter($(this)).hide();
@@ -240,7 +239,6 @@ $(window).on('turbolinks:load', function() {
 
 		$(readMore).on("click", function () {
 			$(this).hide();
-			console.log($(this).prev("div"));
 			$(this).siblings("div.summary-previews").removeAttr("style");
 			$(readLess).show();
 		});
