@@ -97,7 +97,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 73dbc4b6ba588cd5d61f0a69949d951b1b963276
+  revision: a521d1490d4f436758a0c2f19144de248daf2ebc
   branch: main
   specs:
     primo (0.1.0)
@@ -379,6 +379,10 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.9-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.13.9-arm64-darwin)
+      racc (~> 1.4)
     okcomputer (1.18.4)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
@@ -539,6 +543,8 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.4)
       mini_portile2 (~> 2.8.0)
+    sqlite3 (1.5.4-aarch64-linux)
+    sqlite3 (1.5.4-arm64-darwin)
     stackprof (0.2.22)
     summon (2.0.5)
       json
