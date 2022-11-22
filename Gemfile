@@ -28,6 +28,7 @@ gem "jbuilder", "~> 2.11"
 
 
 group :development do
+  gem "axe-core-rspec"
   gem "flamegraph"
   gem "ruby-prof"
   gem "spring"
