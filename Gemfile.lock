@@ -90,7 +90,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: adf370b897645e036b9a1adcd0e114cb32786725
+  revision: a7935a813dee150bfb213427b80f291de651ac35
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -379,6 +379,10 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
+    nokogiri (1.13.9-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.13.9-arm64-darwin)
+      racc (~> 1.4)
     okcomputer (1.18.4)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
@@ -539,6 +543,8 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.4)
       mini_portile2 (~> 2.8.0)
+    sqlite3 (1.5.4-aarch64-linux)
+    sqlite3 (1.5.4-arm64-darwin)
     stackprof (0.2.22)
     summon (2.0.5)
       json
