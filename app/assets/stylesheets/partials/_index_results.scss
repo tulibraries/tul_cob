@@ -25,11 +25,11 @@
     padding: 1rem;
 
     .document-header-container {
-      flex: 1 80%;
+      flex: 1 0 75%;
       padding-bottom: 0;
 
-      @media(max-width: 1000px) {
-        flex: 1 100%;
+      @media(max-width: 768px) {
+        flex: 1 0 100%;
       }
 
       a, a:hover, a:active {
@@ -130,14 +130,17 @@
 .summary-preview-container {
   background-color: $lighter-grey;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
-}
 
-.read-more,
-.read-less {
-  padding-left: 1rem;
-}
+  :only-child {
+    padding-bottom: 0.5rem;
+  }
 
+  .read-more,
+  .read-less {
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+  }
+}
 
 /* === DATABASE RESULTS=== */
 .database-browse-link {
