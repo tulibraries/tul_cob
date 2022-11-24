@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 451ff6d49c71e543962d2b29d77f2e744b2d47e1
+  revision: 6d32d2447cc0f3739d9732246b5a5bde98d9e032
   specs:
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -189,7 +189,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.17)
+    bcrypt (3.1.18)
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
       htmlentities
