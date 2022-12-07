@@ -544,7 +544,7 @@ GEM
       mini_portile2 (~> 2.8.0)
     sqlite3 (1.5.4-aarch64-linux)
     sqlite3 (1.5.4-arm64-darwin)
-    stackprof (0.2.22)
+    stackprof (0.2.23)
     summon (2.0.5)
       json
     thor (1.2.1)
