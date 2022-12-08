@@ -1,5 +1,6 @@
-<div class="document-metadata-sections clearfix flex-row-reverse">
 <%= render "index_summary_field", :document => document, document_counter: document_counter %>
+
+<div class="document-info-container clearfix flex-row-reverse">
 
 <%# default partial to display solr document fields in catalog index view -%>
   <div class="thumbnail float-right" <%= isbn_data_attribute(document) %> >
