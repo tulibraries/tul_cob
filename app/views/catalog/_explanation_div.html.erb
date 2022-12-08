@@ -1,6 +1,6 @@
 <% if !cookies.fetch("#{controller_name}Once", false) %>
 <div class="row rounded explanation-div bg-lighter-grey mx-1" data-controller="explanation" data-explanation-target="<%= controller_name %>">
-  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-4 pl-5 pr-5 mx-auto" >
+  <div class="explantion-wrapper col-sm-12 col-lg-10 mt-3 pl-5 pr-5 mx-auto" >
     <p class="explanation">
       <%= explanation_translations(controller_name) %>
       <%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %>
