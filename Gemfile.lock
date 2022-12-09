@@ -58,7 +58,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: d4155ed0cc8fca42f23f74bcc6747cf6006944ee
+  revision: 51e50f74dd3d9f5b08e2f88c9428bb0b27b53e39
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -410,7 +410,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.1)
@@ -550,7 +550,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    traject (3.7.0)
+    traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
