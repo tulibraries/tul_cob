@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 1e84cd699e37deb6893b21342aa2731330672aed
+  revision: ba1ea56272ea2169fbea9e8aadfa4c605a8762e4
   branch: main
   specs:
     cob_index (0.1.0)
@@ -304,7 +304,7 @@ GEM
     hashie (4.1.0)
     honeybadger (4.12.2)
     htmlentities (4.3.4)
-    http (5.1.0)
+    http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -409,7 +409,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.1)
@@ -548,7 +548,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    traject (3.7.0)
+    traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
