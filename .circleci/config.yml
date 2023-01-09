@@ -132,8 +132,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-qa.sh
 
@@ -149,8 +148,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-stage.sh
 
@@ -166,8 +164,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "2f:37:66:17:11:ae:f9:0f:9e:52:98:41:fe:d0:0c:78"
-            - "59:d3:45:4c:e5:31:4e:cd:64:c0:e3:2a:73:a3:55:94"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-prod.sh
 
