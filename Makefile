@@ -7,7 +7,7 @@ ifeq ($(CI), true)
 	DOCKER := $(DOCKER_FLAGS) docker-compose -p tul_cob -f docker-compose.ci.yml
 	LINT_CMD := ./bin/rubocop
 	TEST_CMD := bundle exec rails ci
-	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASSWORD}
+	DOCKERHUB_LOGIN := docker login -u "${DOCKERHUB_USER}" -p "${DOCKERHUB_PASSWORD}"
 else
 	DOCKER := $(DOCKER_FLAGS) docker-compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
