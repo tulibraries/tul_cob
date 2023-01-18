@@ -297,7 +297,7 @@ GEM
     flamegraph (0.9.5)
     foreman (0.87.2)
     gli (2.21.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     google-analytics-rails (1.1.1)
     hashdiff (1.0.1)
