@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 451ff6d49c71e543962d2b29d77f2e744b2d47e1
+  revision: cddba289459d922d40eabf6c8475008995a78783
   specs:
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -189,7 +189,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    bcrypt (3.1.17)
+    bcrypt (3.1.18)
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
       htmlentities
@@ -246,7 +246,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     crack (0.4.5)
@@ -454,7 +454,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (6.1.7.1)
       actionpack (= 6.1.7.1)
@@ -582,7 +582,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (2.0.5)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
