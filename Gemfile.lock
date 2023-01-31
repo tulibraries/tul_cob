@@ -69,7 +69,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 1e84cd699e37deb6893b21342aa2731330672aed
+  revision: 81e5a443791bd1d410074dae8877f96c3ccc17ea
   branch: main
   specs:
     cob_index (0.1.0)
@@ -246,7 +246,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.10)
+    concurrent-ruby (1.2.0)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     crack (0.4.5)
@@ -305,7 +305,7 @@ GEM
     hashie (4.1.0)
     honeybadger (4.12.2)
     htmlentities (4.3.4)
-    http (5.1.0)
+    http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -559,7 +559,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timeout (0.3.1)
-    traject (3.7.0)
+    traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
