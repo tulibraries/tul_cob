@@ -1,14 +1,21 @@
 # frozen_string_literal: true
 
 class SolrDocument
-  include Blacklight::Solr::Document
+  include Blacklight::Document::Extensions
+  include Blacklight::Document::SemanticFields
   include Blacklight::Solr::Document::RisFields
   include AvailabilityHelper
   include Citable
   include JsonLogger
   include Diggable
+  include Blacklight::Solr::Document
 
   attr_accessor :logger
+
+  def initialize(doc, req = nil)
+    doc[:materials_data] = materials_data
+    super
+  end
 
   use_extension(Blacklight::Solr::Document::RisExport)
 
@@ -29,10 +36,10 @@ class SolrDocument
   )
 
   # Email uses the semantic field mappings below to generate the body of an email.
-  SolrDocument.use_extension(Blacklight::Document::Email)
+  SolrDocument.use_extension(LibrarySearch::Document::Email)
 
   # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension(Blacklight::Document::Sms)
+  SolrDocument.use_extension(LibrarySearch::Document::Sms)
 
   # Add Blacklight-Marc extension:
   SolrDocument.use_extension(Blacklight::Marc::DocumentExtension) do |doc|
@@ -49,12 +56,6 @@ class SolrDocument
   # the boundwith IDs, because that"s where Alma stores the holdings.
   def alma_availability_mms_ids
     fetch("bound_with_ids", [id])
-  end
-
-  def initialize(doc, req = nil)
-    doc[:materials_data] = materials_data
-
-    super doc, req
   end
 
   ris_field_mappings.merge!(

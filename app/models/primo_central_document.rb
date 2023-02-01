@@ -4,6 +4,8 @@ class PrimoCentralDocument
   require "blacklight/primo_central"
 
   include Blacklight::PrimoCentral::Document
+  include Blacklight::Document::Extensions
+  include Blacklight::Document::SemanticFields
   include Citable
   include Diggable
 
@@ -20,8 +22,8 @@ class PrimoCentralDocument
     doi: "doi",
   )
 
-  use_extension Blacklight::Document::ArticleEmail
-  use_extension Blacklight::Document::Sms
+  use_extension LibrarySearch::Document::ArticleEmail
+  use_extension LibrarySearch::Document::Sms
 
   include Blacklight::Solr::Document::RisFields
   use_extension(Blacklight::Solr::Document::RisExport)

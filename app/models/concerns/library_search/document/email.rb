@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 # This module provides the body of an email export based on the document's semantic values
-module Blacklight::Document::Email
+module LibrarySearch::Document::Email
+  include Blacklight::Document::Email
   include ApplicationHelper
+
   # Return a text string that will be the body of the email
   # Overridden in order to add our own custom fields to email text.
   def to_email_text(config = nil)

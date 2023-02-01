@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.8
+  ruby: circleci/ruby@2.0.0
   coveralls: coveralls/coveralls@1.0.6
 
 workflows:
@@ -45,7 +45,7 @@ workflows:
 jobs:
   run_tests:
     docker:
-      - image: cimg/ruby:2.7.5-node
+      - image: cimg/ruby:3.1-node
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
@@ -54,10 +54,10 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v7-{{ arch }}-{{ .Branch }}
-            - gem-cache-v7-{{ arch }}
-            - yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v8-{{ arch }}-{{ .Branch }}
+            - gem-cache-v8-{{ arch }}
+            - yarn-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
@@ -90,12 +90,12 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - save_cache:
-          key: gem-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
 
       - save_cache:
-          key: yarn-cache-v7-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
@@ -111,7 +111,7 @@ jobs:
           name: Run ruby tests
           command: |
             make test
-            docker cp tul_cob_app_1:/app/coverage/lcov/app.lcov ./app.lcov
+            docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
       - run:
           name: Run javascript tests
@@ -132,7 +132,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-qa.sh
 
@@ -148,7 +148,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-stage.sh
 
@@ -164,7 +164,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "96:52:81:94:2a:1f:32:82:cd:b5:2d:e3:e3:9e:9d:08"
+            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
       - run:
           command: bash .circleci/deploy-prod.sh
 

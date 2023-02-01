@@ -41,10 +41,10 @@ class SearchController < CatalogController
       end
       # We only care about cdm results count not bento box.
       cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
-
       unless results["books_and_media"].blank?
-        items = results["books_and_media"][0...-1]
+        items = BentoSearch::Results.new(results["books_and_media"][0...-1])
         items.engine_id = results["books_and_media"].engine_id
+
         items.total_items = results["books_and_media"].total_items
         items.display_configuration = results["books_and_media"].display_configuration
 

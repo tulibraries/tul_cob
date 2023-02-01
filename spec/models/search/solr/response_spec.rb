@@ -10,7 +10,7 @@ RSpec.describe Search::Solr::Response, type: :model do
     let(:facet) { { name: "foo", value: "bar", hits: 1 } }
 
     before(:each)  do
-      response.merge_facet(facet)
+      response.merge_facet(**facet)
     end
 
     context "facet does not already exist" do
@@ -50,9 +50,9 @@ RSpec.describe Search::Solr::Response, type: :model do
 
     context "mutiple merges on same field" do
       it "uses the last merged values"  do
-        response.merge_facet(name: "cat", value: "bar", hits: 2)
-        response.merge_facet(name: "cat", value: "bar", hits: 3)
-        response.merge_facet(name: "cat", value: "bar", hits: 4)
+        response.merge_facet(**{ name: "cat", value: "bar", hits: 2 })
+        response.merge_facet(**{ name: "cat", value: "bar", hits: 3 })
+        response.merge_facet(**{ name: "cat", value: "bar", hits: 4 })
 
         expect(response.facet_fields["cat"]).to eq(["bar", 4, "card", 2, "memory", 3])
       end

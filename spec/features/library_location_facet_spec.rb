@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.feature "Library Location Facet" do
   before(:each) do
-    visit URI.encode(path)
+    visit path
   end
 
   describe "constraints" do

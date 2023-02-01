@@ -19,7 +19,7 @@ RSpec.feature "Articles Search" do
     visit "/articles"
     fill_in "q", with: "foo"
     click_button "search"
-    expect(current_url).to eq "http://www.example.com/articles?utf8=%E2%9C%93&search_field=any&q=foo"
+    expect(current_url).to eq "http://www.example.com/articles?search_field=any&q=foo"
     expect(page).to have_css("#facets")
     within(".document-position-0 h3") do
       expect(page).to have_text("Test")

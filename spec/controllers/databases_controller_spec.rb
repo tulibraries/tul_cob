@@ -15,7 +15,7 @@ RSpec.describe DatabasesController, type: :controller do
 
   describe "searching databases az", order: :defined do
     render_views
-    @@all_ids, @@title_ids, @@subject_ids = nil
+    @all_ids, @title_ids, @subject_ids = nil
 
     let(:all_params) { { q: "medicine", search_field: "all_fields", format: "json" } }
     let(:title_params) { { q: "medicine", search_field: "title", format: "json" } }
@@ -30,23 +30,23 @@ RSpec.describe DatabasesController, type: :controller do
     ## Rspec only allows one request per assertion.
     it "collects ids for all search" do
       expect(all_ids.count).not_to eq(0)
-      @@all_ids = all_ids
+      @all_ids = all_ids
     end
 
     it "collects ids for title search" do
       expect(title_ids.count).not_to eq(0)
-      @@title_ids = title_ids
+      @title_ids = title_ids
     end
 
     it "collects ids for subject search" do
       expect(subject_ids.count).not_to eq(0)
-      @@subject_ids = subject_ids
+      @subject_ids = subject_ids
     end
 
     it "has different search results for title vs subject vs all."  do
-      expect(@@all_ids).not_to match_array(@@title_ids)
-      expect(@@all_ids).not_to match_array(@@subject_ids)
-      expect(@@title_ids).not_to match_array(@@subject_ids)
+      expect(@all_ids).not_to match_array(@title_ids)
+      expect(@all_ids).not_to match_array(@subject_ids)
+      expect(@title_ids).not_to match_array(@subject_ids)
     end
 
   end
