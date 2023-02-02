@@ -74,7 +74,7 @@ ci-yarn-install:
 ci-setup-db:
 	$(DOCKER) exec app bundle exec rake db:migrate
 
-BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:2.7-alpine
+BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.1-alpine
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
