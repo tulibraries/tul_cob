@@ -3,9 +3,10 @@
 # This module provides the body of an sms export based on availability and user
 # selection.
 
-module Blacklight::Document::Sms
+module LibrarySearch::Document::Sms
   # Return a text string that will be the body of the email
   include ApplicationHelper
+  include Blacklight::Document::Sms
 
   def to_sms_text(config = nil)
     if self[:sms]

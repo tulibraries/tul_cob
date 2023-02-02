@@ -58,10 +58,10 @@ add-testing-deps:
 
 
 ci-copy-bundle-files-to-local:
-	docker cp tul_cob_app_1:/app/vendor/bundle vendor/
+	docker cp tul_cob-app-1:/app/vendor/bundle vendor/
 
 ci-copy-node-modules-to-local:
-	docker cp tul_cob_app_1:/app/node_modules .
+	docker cp tul_cob-app-1:/app/node_modules .
 
 ci-bundle-install:
 	$(DOCKER) exec app bundle install --path vendor/bundle

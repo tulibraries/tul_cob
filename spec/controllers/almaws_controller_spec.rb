@@ -40,7 +40,7 @@ RSpec.describe AlmawsController, type: :controller do
       expect(HTTParty).to receive(:get).at_most(:twice).and_call_original
       expect(search_service).to receive(:fetch).and_return([:foo, document])
       allow(controller).to receive(:search_service).and_return(search_service)
-      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       expect(document["items_json_display"][0]["availability"]).to eq "<span class=\"check\"></span>Available"
     end
 
@@ -48,14 +48,14 @@ RSpec.describe AlmawsController, type: :controller do
       document["items_json_display"][0]["item_pid"] = "8675309"
       expect(search_service).to receive(:fetch).and_return([:foo, document])
       allow(controller).to receive(:search_service).and_return(search_service)
-      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       expect(document["items_json_display"][0]["availability"]).to be_nil
     end
 
     it "determines the availability based on the mutated document" do
       expect(search_service).to receive(:fetch).and_return([:foo, document])
       allow(controller).to receive(:search_service).and_return(search_service)
-      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
       expect(availability.dig("AMBLER", "media").flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
     end
@@ -64,14 +64,14 @@ RSpec.describe AlmawsController, type: :controller do
       document["items_json_display"][0]["process_type"] = "MISSING"
       expect(search_service).to receive(:fetch).and_return([:foo, document])
       allow(controller).to receive(:search_service).and_return(search_service)
-      get(:item, { params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+      get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
       expect(availability).to be_empty
     end
 
     context "anonymous user" do
       it "does not redirect to login page" do
-        get(:item, params)
+        get(:item, **params)
         expect(response).not_to redirect_to new_user_session_url
       end
     end
@@ -83,7 +83,7 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "doesn't render the layout, even when there's an error", with_rescue: true do
         allow(Alma::BibItem).to receive(:find).and_raise("oof")
-        get :item, params
+        get :item, **params
         expect(response).not_to render_template("layouts/blacklight")
       end
     end
@@ -111,7 +111,7 @@ RSpec.describe AlmawsController, type: :controller do
 
     context "anonymous user" do
       it "redirects to login page" do
-        get(:request_options, params)
+        get(:request_options, **params)
         expect(response).to redirect_to new_user_session_url
       end
     end
@@ -122,7 +122,7 @@ RSpec.describe AlmawsController, type: :controller do
       end
 
       it "does not redirect to the login page" do
-        get(:request_options, params)
+        get(:request_options, **params)
         expect(response).not_to redirect_to new_user_session_url
       end
 
@@ -133,7 +133,7 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "sets @make_modal_link to true since we are not coming via modal" do
         sign_in @user, scope: :user
-        get(:request_options, params)
+        get(:request_options, **params)
         make_modal_link = controller.instance_variable_get("@make_modal_link")
         expect(make_modal_link).to eq(true)
       end
@@ -144,7 +144,7 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "sets @make_modal_link to false since we are coming via modal" do
         sign_in @user, scope: :user
-        get(:request_options, params)
+        get(:request_options, **params)
         make_modal_link = controller.instance_variable_get("@make_modal_link")
         expect(make_modal_link).to eq(false)
       end
@@ -169,7 +169,7 @@ RSpec.describe AlmawsController, type: :controller do
         allow(cob_alma_requests).to receive(:asrs_pickup_locations).and_return([])
         allow(Alma::RequestOptions).to receive(:get).and_raise(Alma::RequestOptions::ResponseError, "phhhht")
         sign_in @user, scope: :user
-        get(:request_options, params)
+        get(:request_options, **params)
       end
 
       it "sends a 502 error with a layout-less error message in the body", with_rescue: true do
@@ -336,7 +336,7 @@ RSpec.describe AlmawsController, type: :controller do
 
     it "renders the html response", with_rescue: true do
       allow(controller).to receive(:item) { raise Alma::BibItemSet::ResponseError.new("test") }
-      get :item, params
+      get :item, **params
       expect(response.body).to eq("<p class='m-2'>Availability information can not be loaded. Contact a librarian for help.</p>")
       expect(response.code).to eq "502"
     end

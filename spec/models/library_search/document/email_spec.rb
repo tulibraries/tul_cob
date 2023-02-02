@@ -2,12 +2,12 @@
 
 require "rails_helper"
 
-RSpec.describe "Blacklight::Document::Email" do
+RSpec.describe "LibrarySearch::Document::Email" do
   let(:document) { SolrDocument.new(id: "1234", marc_display_raw: "foobar") }
   let(:bib_items) { [ item_one ] }
 
   before(:all) do
-    SolrDocument.use_extension(Blacklight::Document::Email)
+    SolrDocument.use_extension(LibrarySearch::Document::Email)
   end
 
   it "only returns values that are available in the field semantics" do

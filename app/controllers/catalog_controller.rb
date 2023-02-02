@@ -603,7 +603,7 @@ class CatalogController < ApplicationController
     message = "You do not have access to purchase order items."
     to_the_future = { fallback_location: root_path, alert: message }
 
-    redirect_back(to_the_future) unless current_user.can_purchase_order?
+    redirect_back(**to_the_future) unless current_user.can_purchase_order?
   end
 
   # Override the show method so we can suppress some items that solr doesn't want to filter out

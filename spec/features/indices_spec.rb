@@ -53,7 +53,7 @@ RSpec.feature "Indices" do
   feature "Catalog" do
 
     let (:title) { "Academic freedom in an age of conformity" }
-    let (:results_url) { "http://www.example.com/catalog?utf8=%E2%9C%93&search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
+    let (:results_url) { "http://www.example.com/catalog?search_field=all_fields&q=Academic+freedom+in+an+age+of+conformity" }
     scenario "Search" do
       visit "/catalog"
       fill_in "q", with: title
@@ -141,12 +141,12 @@ RSpec.feature "Indices" do
       end
 
       scenario "Catalog page with_libguides=true" do
-        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan&with_libguides=true"
+        visit "/catalog?search_field=all_fields&q=japan&with_libguides=true"
         expect(page).to have_css(".lib-guides-recommender-catalog")
       end
 
       scenario "Catalog page with_libguides=false" do
-        visit "/catalog?utf8=%E2%9C%93&search_field=all_fields&q=japan&with_libguides=false"
+        visit "/catalog?search_field=all_fields&q=japan&with_libguides=false"
         expect(page).to_not have_css(".lib-guides-recommender-catalog")
       end
     end
