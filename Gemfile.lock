@@ -107,7 +107,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 1577e3d5a59111ac617e1d14ab04a92d30a729af
+  revision: 2d4bbd876915390b19cddac9c74f0592b52c3081
   branch: main
   specs:
     primo (0.2.0)
@@ -394,6 +394,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
+      racc (~> 1.4)
     okcomputer (1.18.4)
     omniauth (2.1.0)
       hashie (>= 3.4.6)
@@ -553,6 +555,7 @@ GEM
       sprockets (>= 3.0.0)
     sqlite3 (1.5.4-arm64-darwin)
     sqlite3 (1.5.4-x86_64-darwin)
+    sqlite3 (1.5.4-x86_64-linux)
     stackprof (0.2.23)
     summon (2.0.5)
       json
@@ -630,6 +633,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   alma!
