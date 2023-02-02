@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class SolrDocument
-  include Blacklight::Document::Extensions
-  include Blacklight::Document::SemanticFields
   include Blacklight::Solr::Document::RisFields
   include AvailabilityHelper
   include Citable

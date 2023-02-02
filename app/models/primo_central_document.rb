@@ -4,8 +4,6 @@ class PrimoCentralDocument
   require "blacklight/primo_central"
 
   include Blacklight::PrimoCentral::Document
-  include Blacklight::Document::Extensions
-  include Blacklight::Document::SemanticFields
   include Citable
   include Diggable
 
