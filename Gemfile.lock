@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: 6d32d2447cc0f3739d9732246b5a5bde98d9e032
+  revision: d0f0853c75defb10d83f4b2576b8df9e4cbb3695
   specs:
     devise (4.8.1)
       bcrypt (~> 3.0)
@@ -470,9 +470,9 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     regexp_parser (2.6.1)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
+    responders (3.1.0)
+      actionpack (>= 5.2)
+      railties (>= 5.2)
     rexml (3.2.5)
     rsolr (2.5.0)
       builder (>= 2.1.2)
