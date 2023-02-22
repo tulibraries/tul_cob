@@ -80,7 +80,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 3d67f28d8ebea8adf2b8b1d0e68df789ea89e665
+  revision: 2d34102e7e745b697ea9462af34459b16203d0c2
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -544,7 +544,7 @@ GEM
       skylight-core (= 4.3.2)
     skylight-core (4.3.2)
       activesupport (>= 4.2.0)
-    slop (4.9.3)
+    slop (4.10.0)
     spring (4.1.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
