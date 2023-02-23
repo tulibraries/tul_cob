@@ -31,13 +31,13 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/blacklight_alma.git
-  revision: f9a279239cbd43d140f3740d7721da0936433e7a
+  revision: de5aecf4855015fc45494482f80f8386d2098d8a
   branch: main
   specs:
     blacklight_alma (0.0.1)
       blacklight (~> 7.0)
       ezwadl
-      jwt (= 1.5.6)
+      jwt
       rails (>= 5.2, < 7)
 
 GIT
@@ -211,7 +211,7 @@ GEM
       rails (>= 5.2, < 7)
       summon
     bindex (0.8.1)
-    blacklight (7.33.0)
+    blacklight (7.33.1)
       deprecation
       globalid
       hashdiff
@@ -337,7 +337,7 @@ GEM
     json (2.6.3)
     jsonpath (1.1.2)
       multi_json
-    jwt (1.5.6)
+    jwt (2.7.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -360,7 +360,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -562,7 +562,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.11)
-    timeout (0.3.1)
+    timeout (0.3.2)
     traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
