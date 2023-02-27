@@ -36,9 +36,6 @@ class SolrDocument
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(LibrarySearch::Document::Email)
 
-  # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension(LibrarySearch::Document::Sms)
-
   # Add Blacklight-Marc extension:
   SolrDocument.use_extension(Blacklight::Marc::DocumentExtension) do |doc|
     doc.has_field? "marc_display_raw"

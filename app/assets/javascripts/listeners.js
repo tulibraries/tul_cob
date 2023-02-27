@@ -32,7 +32,6 @@ $(document).ready(function(){
       {id: "bento_library_website_header", category: "bento-results"},
       {id: "bento_journals_header", category: "bento-results"},
       {id: "emailLink", category: "record-management"},
-      {id: "smsLink", category: "record-management"},
       {id: "citationLink", category: "record-management"},
       {id: "risLink", category: "record-management"},
       {class: "toggle-bookmark", category: "record-management"},
