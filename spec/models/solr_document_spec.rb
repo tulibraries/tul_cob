@@ -9,10 +9,6 @@ RSpec.describe SolrDocument, type: :model do
     expect(document).to respond_to(:to_email_text)
   end
 
-  it "handles SMS" do
-    expect(document).to respond_to(:to_sms_text)
-  end
-
   it "handles to Marc messages" do
     expect(document).to respond_to(:to_marc)
   end
@@ -161,21 +157,6 @@ RSpec.describe SolrDocument, type: :model do
     end
   end
 
-  describe "#to_sms_text" do
-    context "no material items present" do
-      it "does not render catalog location"  do
-        document[:sms] = nil
-        expect(document.to_sms_text).to be_nil
-      end
-    end
-
-    context "a material item is present and selected" do
-      it "renders catalog location" do
-        document[:sms] = { library: "Charles Library", location: "Stacks", raw_library: "MAIN", raw_location: "stacks", call_number: "call_me" }
-        expect(document.to_sms_text).to eq("Charles Library Stacks (4th floor) call_me")
-      end
-    end
-  end
 
   describe "#purchase_order?" do
     context "with purchase_order false" do

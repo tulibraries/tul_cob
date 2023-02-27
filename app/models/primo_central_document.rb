@@ -21,7 +21,6 @@ class PrimoCentralDocument
   )
 
   use_extension LibrarySearch::Document::ArticleEmail
-  use_extension LibrarySearch::Document::Sms
 
   include Blacklight::Solr::Document::RisFields
   use_extension(Blacklight::Solr::Document::RisExport)
