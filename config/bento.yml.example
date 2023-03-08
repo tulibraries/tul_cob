@@ -11,7 +11,7 @@ default: &default
   libkey:
     apikey: "API KEY HERE"
     base_url: "https://public-api.thirdiron.com/public/v1/libraries"
-    library_id: "LIBRARY ID HERE"
+    library_id: "130"
 
 
 development:
