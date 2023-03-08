@@ -1,0 +1,3 @@
+<% if document.libkey_journals_url_enabled? and document.libkey_journals_url.present? %>
+    <%= link_to t("journals.libkey_button_html"), document.libkey_journals_url, class: "btn online-btn libkey-btn", target: "_blank" %>
+<% end %>

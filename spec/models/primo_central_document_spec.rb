@@ -272,13 +272,13 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
-  describe "libkey_url" do
+  describe "libkey_articles_url" do
     context "doi not present" do
       let(:doc) { {} }
 
       it "returns a nil" do
-        expect(subject.libkey_url).to be_nil
-        expect(subject.libkey_url_retracted?).to be_nil
+        expect(subject.libkey_articles_url).to be_nil
+        expect(subject.libkey_articles_url_retracted?).to be_nil
       end
     end
 
@@ -294,8 +294,8 @@ RSpec.describe PrimoCentralDocument, type: :model do
                       contentLocation: "https//www.temple.edu"
                     }))
 
-        expect(subject.libkey_url).to eq("https://www.google.com")
-        expect(subject.libkey_url_retracted?).to be false
+        expect(subject.libkey_articles_url).to eq("https://www.google.com")
+        expect(subject.libkey_articles_url_retracted?).to be false
       end
     end
 
@@ -308,8 +308,8 @@ RSpec.describe PrimoCentralDocument, type: :model do
                     headers: { "Content-Type" => "application/json" },
                     body: JSON.dump(data: { contentLocation: "https://www.temple.edu" }))
 
-        expect(subject.libkey_url).to eq("https://www.temple.edu")
-        expect(subject.libkey_url_retracted?).to be false
+        expect(subject.libkey_articles_url).to eq("https://www.temple.edu")
+        expect(subject.libkey_articles_url_retracted?).to be false
       end
     end
 
@@ -326,8 +326,8 @@ RSpec.describe PrimoCentralDocument, type: :model do
                       retractionNoticeUrl: "https://librarysearch.temple.edu"
                     }))
 
-        expect(subject.libkey_url).to eq("https://librarysearch.temple.edu")
-        expect(subject.libkey_url_retracted?).to be true
+        expect(subject.libkey_articles_url).to eq("https://librarysearch.temple.edu")
+        expect(subject.libkey_articles_url_retracted?).to be true
       end
     end
 

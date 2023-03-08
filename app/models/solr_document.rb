@@ -12,6 +12,7 @@ class SolrDocument
 
   def initialize(doc, req = nil)
     doc[:materials_data] = materials_data
+    @libkey_journals_url_thread = libkey_journals_url_thread(doc)
     super
   end
 
@@ -134,6 +135,14 @@ class SolrDocument
     end
   end
 
+  def libkey_journals_url
+    @libkey_journals_url_thread.value&.fetch("browzineWebLink", nil)
+  end
+
+  def libkey_journals_url_enabled?
+    @libkey_journals_url_thread.value&.fetch("browzineEnabled", nil) == true
+  end
+
   private
     def barcode(item)
       item["item_data"]["pid"]
@@ -150,6 +159,20 @@ class SolrDocument
       else
         "Checked out or currently unavailable"
       end
+    end
+
+    def libkey_journals_url_thread(doc)
+      issn = doc.fetch("issn_display", []).map { |x| x.delete("-") }.uniq.join(",")
+      return Thread.new {} if issn.empty?
+
+      base_url = Rails.configuration.bento&.dig(:libkey, :base_url)
+      library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
+      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+      libkey_journals_url = "#{base_url}/#{library_id}/search?issns=#{issn}&access_token=#{access_token}"
+      Thread.new {
+        (HTTParty.get(libkey_journals_url, timeout: 2) rescue {})["data"]&.first
+          &.slice("browzineEnabled", "browzineWebLink")
+      }
     end
 
     def logger
