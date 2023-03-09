@@ -335,4 +335,28 @@ module ApplicationHelper
       link_to t("blacklight.skip_links.search_field"), "#search_field_dropdown", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
     end
   end
+
+  def creator_links(args)
+    creator = args[:document][args[:field]] || []
+    creator.map do |creator_data|
+      begin
+        creator_data = JSON.parse(creator_data)
+        relation = creator_data["relation"]
+        name = creator_data["name"]
+        role = creator_data["role"]
+      rescue JSON::ParserError
+        name, role = creator_data.split("|")
+      end
+
+      if controller_name == "primo_central"
+        name_link = link_to(name, search_article_search_url + "?search_field=creator&q=#{name}") if name.present?
+      else
+        name_link = link_to(name, search_catalog_path + "?f[creator_facet][]=#{CGI.escape name}") if name.present?
+      end
+
+      ActiveSupport::SafeBuffer.new([ relation,
+        name_link,
+        role ].join(" ").strip)
+    end
+  end
 end

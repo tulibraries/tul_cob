@@ -20,7 +20,6 @@ class CatalogController < ApplicationController
     end
   end
 
-  helper_method :browse_creator
   helper_method :display_duration
 
   # TODO: remove once libwizard_tutorial? is no longer a flag
@@ -177,8 +176,7 @@ class CatalogController < ApplicationController
     config.add_index_field "format", raw: true, helper_method: :separate_formats, type: :format
     config.add_index_field "imprint_date_display", type: :date
     config.add_index_field "note_summary_display", helper_method: :join, type: :summary
-    config.add_index_field "responsibility_truncated_display", label: "Responsibility"
-    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_index_separator
+    config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_links
     config.add_index_field "imprint_display", label: "Publication"
     config.add_index_field "imprint_prod_display", label: "Production"
     config.add_index_field "imprint_dist_display", label: "Distribution"
@@ -193,17 +191,15 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_with_subtitle_vern_display", label: "Title Statement", type: :primary
-    config.add_show_field "responsibility_display", label: "Responsibility", type: :primary
-    config.add_show_field "responsibility_vern_display", label: "Responsibility", type: :primary
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
     config.add_show_field "title_addl_display", label: "Additional titles", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_addl_vern_display", label: "Additional titles", type: :primary
-    config.add_show_field "creator_display", label: "Author/Creator", helper_method: :browse_creator, multi: true, type: :primary
-    config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :browse_creator, type: :primary
-    config.add_show_field "contributor_display", label: "Contributor", helper_method: :browse_creator, multi: true, type: :primary
-    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :browse_creator, type: :primary
+    config.add_show_field "creator_display", label: "Author/Creator", helper_method: :creator_links, multi: true, type: :primary
+    config.add_show_field "creator_vern_display", label: "Author/Creator", helper_method: :creator_links, type: :primary
+    config.add_show_field "contributor_display", label: "Contributor", helper_method: :creator_links, multi: true, type: :primary
+    config.add_show_field "contributor_vern_display", label: "Contributor", helper_method: :creator_links, type: :primary
     config.add_show_field "format", label: "Resource Type", type: :primary, raw: true, helper_method: :separate_formats
     config.add_show_field "imprint_display", label: "Publication", type: :primary
     config.add_show_field "imprint_prod_display", label: "Production", type: :primary
@@ -477,7 +473,7 @@ class CatalogController < ApplicationController
     "#{params[:location]}"
   end
 
-  def browse_creator(args)
+  def creator_links(args)
     creator = args[:document][args[:field]] || []
     base_path = helpers.base_path
     creator.map do |creator_data|
@@ -502,7 +498,6 @@ class CatalogController < ApplicationController
   def display_duration(args)
     args[:value]&.map { |v| v.scan(/([0-9]{2})/).join(":") }
   end
-
 
   # Overrides CatalogController.invalid_document_id_error
   # Overridden so that we can use our own 404 error handling setup.

@@ -389,15 +389,6 @@ module CatalogHelper
     end
   end
 
-  def creator_index_separator(args)
-    creator = args[:document][args[:field]]
-    creator.map do |name|
-      plain_text_subfields = name.gsub("|", " ")
-      creator = plain_text_subfields
-    end
-    creator
-  end
-
   # [a, b, c] => [[a], [a, b], [a, b, c]]
   def hierarchies(array)
     count = 0

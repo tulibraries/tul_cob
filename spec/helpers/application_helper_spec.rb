@@ -499,4 +499,120 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe "#creator_links(args)" do
+    let(:search_article_search_path) { "article" }
+    let(:search_catalog_path) { "catalog" }
+
+    before do
+      allow(helper).to receive(:search_article_search_path) { search_article_search_path }
+      allow(helper).to receive(:search_catalog_path) { search_catalog_path }
+    end
+
+    context "no article creator" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator: [""] }, field: :creator } }
+
+      it "returns an empty list if no creators are available" do
+        expect(creator_links(args)).to eq([""])
+      end
+    end
+
+    context "an article creator" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator: ["Louisa May Alcott"] }, field: :creator } }
+
+      it "returns a list of links to creator search for each creator" do
+        expect(creator_links(args)).to eq([
+          "<a href=\"http://test.host/articles?search_field=creator&amp;q=Louisa May Alcott\">Louisa May Alcott</a>"
+        ])
+      end
+    end
+
+    context "no catalog creator" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator_facet: [""] }, field: :creator_facet } }
+
+      it "returns an empty list if no creators are available" do
+        expect(creator_links(args)).to eq([ "" ])
+      end
+    end
+
+    context "a catalog creator" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator_facet: ["Louise Penny"] }, field: :creator_facet } }
+
+      it "returns a list of links to creator search for each creator" do
+        expect(creator_links(args)).to eq([
+          "<a href=\"http://test.host/articles?search_field=creator&amp;q=Louise Penny\">Louise Penny</a>"
+        ])
+      end
+    end
+
+    context "catalog creator is empty json" do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"\",\"name\":\"\",\"role\":\"\"}"] },
+      field: :creator_display } }
+
+      it "returns an empty string list" do
+        expect(creator_links(args)).to eq([""])
+      end
+    end
+
+    context "catalog creator is json with role only " do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"\",\"name\":\"\",\"role\":\"MyRole\"}"] },
+      field: :creator_display } }
+
+      it "returns role in a list" do
+        expect(creator_links(args)).to eq(["MyRole"])
+      end
+    end
+
+    context "catalog creator is json with relation only " do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"MyRelation\",\"name\":\"\",\"role\":\"\"}"] },
+      field: :creator_display } }
+
+      it "returns role in a list" do
+        expect(creator_links(args)).to eq(["MyRelation"])
+      end
+    end
+
+    context "catalog creator is json with name only" do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"\",\"name\":\"MyName\",\"role\":\"\"}"] },
+      field: :creator_display } }
+
+      it "returns name as a link to query" do
+        expect(creator_links(args)).to eq([
+          "<a href=\"catalog?f[creator_facet][]=MyName\">MyName</a>"
+        ])
+      end
+    end
+
+    context "catalog creator is json with name and role" do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"\",\"name\":\"MyName\",\"role\":\"MyRole\"}"] },
+      field: :creator_display } }
+
+      it "returns name as a link to query + plus role appended" do
+        expect(creator_links(args)).to eq([
+          "<a href=\"catalog?f[creator_facet][]=MyName\">MyName</a> MyRole"
+        ])
+      end
+    end
+
+    context "catalog creator is json with name and role and relation" do
+      let(:controller_name) { "catalog" }
+      let(:args) { { document: { creator_display: ["{\"relation\":\"MyRelation\",\"name\":\"MyName\",\"role\":\"MyRole\"}"] },
+      field: :creator_display } }
+
+      it "returns name as a link to query + plus role appended + relation prepended" do
+        expect(creator_links(args)).to eq([
+          "MyRelation <a href=\"catalog?f[creator_facet][]=MyName\">MyName</a> MyRole"
+        ])
+      end
+    end
+  end
 end

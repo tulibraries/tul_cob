@@ -49,7 +49,7 @@ class PrimoCentralController < CatalogController
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
     config.add_index_field :date, label: "Year", type: :date
     config.add_index_field :isPartOf, label: "Is Part Of"
-    config.add_index_field :creator, label: "Author/Creator", multi: true
+    config.add_index_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true
     config.add_index_field :availability
     config.add_index_field :status
     config.add_index_field :error
@@ -63,7 +63,7 @@ class PrimoCentralController < CatalogController
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true
 
     # Show fields
-    config.add_show_field :creator, label: "Author/Creator", helper_method: :browse_creator, multi: true, refwork_tag: :A1, type: :primary
+    config.add_show_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true, refwork_tag: :A1, type: :primary
     config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2, type: :primary
     config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code, type: :primary
     config.add_show_field :publisher, label: "Published", refwork_tag: :PB, type: :primary
@@ -83,15 +83,6 @@ class PrimoCentralController < CatalogController
     config.add_sort_field :date, label: "date (new to old)"
     config.add_sort_field :author, label: "author/creator (A to Z)"
     config.add_sort_field :title, label: "title (A to Z)"
-  end
-
-  def browse_creator(args)
-    creator = args[:document][args[:field]] || []
-    base_path = helpers.base_path
-    creator.map do |name|
-      query = view_context.send(:url_encode, (name))
-      view_context.link_to(name, base_path + "?search_field=creator&q=#{query}")
-    end
   end
 
   def tags_strip(args)
