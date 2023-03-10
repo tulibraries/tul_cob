@@ -168,18 +168,21 @@ button.online-btn.collapse-button, a.online-btn.collapse-button {
 .databases-btn:visited {
   background-color: $crystal-blue;
   color: $midnight-blue;
+  letter-spacing: 0.3px;
   font-weight: bold; 
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
   background-color: $green; 
   color: $white;
-  width: 10.25rem;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  width: 10.3rem;
 }
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
   margin-bottom: 0.625rem;
-  width: 10.25rem;
+  width: 10.3rem;
 }
 
 button.btn-warning,
@@ -190,7 +193,9 @@ button.btn-warning:visited {
 	background-color: $cherry-red;
 	border-color: #d43f3a;
 	color: $white;
-  width: 10.25rem;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  width: 10.3rem;
 }
 
 /* === INDEX(SEARCH RESULTS) AVAILABILITY === */
