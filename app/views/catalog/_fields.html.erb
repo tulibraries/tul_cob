@@ -10,7 +10,7 @@
         <% if field_config.raw %>
           <%= raw doc_presenter.field_value(field_config) %>
         <% else %>
-          <%= doc_presenter.field_value(field_config) %>
+          <%= safe_join(Array.wrap(doc_presenter.field_value(field_config))) %>
         <% end -%>
       </dd>
     <% end -%>
