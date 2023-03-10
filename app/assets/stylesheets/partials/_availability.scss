@@ -156,11 +156,6 @@ button.online-btn.collapse-button, a.online-btn.collapse-button {
   margin-bottom: 0;
 }
 
-button.available,
-button.available:focus,
-button.available:hover,
-button.available:active,
-button.available:visited,
 .purchase-order,
 .online-btn,
 .online-btn:visited,
@@ -173,9 +168,12 @@ button.available:visited,
 .databases-btn:visited {
   background-color: $crystal-blue;
   color: $midnight-blue;
+  font-weight: bold; 
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
+  background-color: $green; 
+  color: $white;
   width: 10.25rem;
 }
 
