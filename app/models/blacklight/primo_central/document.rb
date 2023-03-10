@@ -60,8 +60,7 @@ module Blacklight::PrimoCentral::Document
     doc["doi"] = doc.dig("pnx", "addata", "doi")
 
     @doi = doc["doi"]&.first
-
-    @libkey_url_thread = libkey_url_thread
+    @libkey_articles_url_thread = libkey_articles_url_thread
 
     solr_to_primo_keys.each do |solr_key, primo_key|
       doc[solr_key] = doc[primo_key] || FIELD_DEFAULT_VALUES[primo_key]
@@ -90,12 +89,12 @@ module Blacklight::PrimoCentral::Document
     false
   end
 
-  def libkey_url
-    @libkey_url_thread.value&.values&.find(&:present?)
+  def libkey_articles_url
+    @libkey_articles_url_thread.value&.values&.find(&:present?)
   end
 
-  def libkey_url_retracted?
-    @libkey_url_thread.value&.has_key?("retractionNoticeUrl")
+  def libkey_articles_url_retracted?
+    @libkey_articles_url_thread.value&.has_key?("retractionNoticeUrl")
   end
 
 
@@ -142,14 +141,16 @@ module Blacklight::PrimoCentral::Document
       @url_query["rft.issn"]
     end
 
-    def libkey_url_thread
+    def libkey_articles_url_thread
       return Thread.new {} if @doi.blank?
 
+      base_url = Rails.configuration.bento&.dig(:libkey, :base_url)
+      library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
       access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
-      libkey_url = "https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/#{@doi}?access_token=#{access_token}"
+      libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
       Thread.new {
-        (HTTParty.get(libkey_url, timeout: 2) rescue {})["data"]
+        (HTTParty.get(libkey_articles_url, timeout: 2) rescue {})["data"]
           &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
       }
     end

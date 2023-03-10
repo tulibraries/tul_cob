@@ -316,6 +316,7 @@ en:
           Search in
           <a href="https://librarysearch.temple.edu/articles">Articles</a>
           or try our <a href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI">Find by Citation</a> tool (previously “Journal Finder”).
+    libkey_button_html: "View Journal Contents <span class='libkey-external-link-icon'></span>"
 
   databases:
     link_text: "Browse all databases by subject or alphabetically"

@@ -8,6 +8,10 @@ default: &default
     vid: "TULI"
     web_ui_base_url: "https://your-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
 
+  libkey:
+    apikey: "API KEY HERE"
+    base_url: "https://public-api.thirdiron.com/public/v1/libraries"
+    library_id: "130"
 
 
 development:

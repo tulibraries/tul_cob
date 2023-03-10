@@ -239,4 +239,50 @@ RSpec.describe SolrDocument, type: :model do
       expect(SolrDocument.new(id: "1", suppress_items_b: true).is_suppressed?).to be true
     end
   end
+
+  describe "libkey_journals_url" do
+    context "issn not present" do
+      it "returns a nil" do
+        expect(document.libkey_journals_url).to be_nil
+        expect(document.libkey_journals_url_enabled?).to be false
+      end
+    end
+
+    context "issn present" do
+      let(:document) { SolrDocument.new({ "issn_display" => ["12345678"] }) }
+
+      it "returns Browzine web link" do
+        stub_request(:get, /search/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: [
+                      {
+                          browzineEnabled: true,
+                          browzineWebLink: "https://browzine.com"
+                      }
+                  ]))
+
+        expect(document.libkey_journals_url).to eq("https://browzine.com")
+        expect(document.libkey_journals_url_enabled?).to be true
+
+      end
+
+      it "Browzine not enabled" do
+        stub_request(:get, /search/)
+          .to_return(status: 200,
+                    headers: { "Content-Type" => "application/json" },
+                    body: JSON.dump(data: [
+                      {
+                          browzineEnabled: false
+                      }
+                  ]))
+
+        expect(document.libkey_journals_url).to be_nil
+        expect(document.libkey_journals_url_enabled?).to be false
+
+      end
+    end
+
+  end
+
 end

@@ -2,10 +2,10 @@
 
 <% document = item.custom_data %>
 
-<% if document.libkey_url.present? %>
-  <% if document.libkey_url_retracted? %>
-    <%= link_to t("articles.retracted_button_html"), document.libkey_url, class: "btn btn-sm bento-avail-btn bento-libkey mx-auto pr-0", target: "_blank" %>
+<% if document.libkey_articles_url.present? %>
+  <% if document.libkey_articles_url_retracted? %>
+    <%= link_to t("articles.retracted_button_html"), document.libkey_articles_url, class: "btn btn-sm bento-avail-btn bento-libkey mx-auto pr-0", target: "_blank" %>
   <% else %>
-    <%= link_to t("articles.libkey_button_html"), document.libkey_url, class: "btn btn-sm bento-avail-btn bento-libkey mx-auto pr-0", target: "_blank" %>
+    <%= link_to t("articles.libkey_button_html"), document.libkey_articles_url, class: "btn btn-sm bento-avail-btn bento-libkey mx-auto pr-0", target: "_blank" %>
   <% end %>
 <% end %>
