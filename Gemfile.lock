@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 418e12027ddcea88691c1ba3e2e38ec89292bd36
+  revision: 02ce4141ecae76703721f384ac4101a1e2b5189b
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -544,7 +544,7 @@ GEM
       skylight-core (= 4.3.2)
     skylight-core (4.3.2)
       activesupport (>= 4.2.0)
-    slop (4.10.0)
+    slop (4.10.1)
     spring (4.1.1)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
