@@ -3,13 +3,13 @@
   <button class="btn online-btn collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="online-<%=  document.id %>">
     <span class="avail-label" aria-expanded="false">Available online</span>
   </button>
+  <%= render "libkey_btn", :document => document %>
   <div id="online-document-<%= document.id %>" class="collapse online_resources online-list mt-1">
     <h3 class="online-card-heading card-title">Online</h3>
     <div class="list_elec_links search_results_table w-100">
       <%= links %>
     </div>
   </div>
-  <%= render "libkey_btn", :document => document %>
 <% elsif has_one_electronic_resource?(document) %>
   <div class="row button-break pt-3"></div>
   <div class="availability">
@@ -18,7 +18,6 @@
     <% else %>
       <a href="<%= single_link_builder(document["electronic_resource_display"].first) %>" class="collapse-button btn online-btn" title="This link opens the resource in a new tab" target="_blank"><span class="avail-label">Available online</span></a>
     <% end %>
-    <%= render "libkey_btn", :document => document %>
   </div>
 <% end %>
 
