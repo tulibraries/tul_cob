@@ -185,12 +185,12 @@ button.available, button.available:focus, button.available:hover, button.availab
   color: $white;
   font-weight: bold;
   letter-spacing: 0.3px;
-  width: 10.3rem;
+  // width: 10.3rem;
 }
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
   margin-bottom: 0.625rem;
-  width: 10.3rem;
+  // width: 10.3rem;
 }
 
 button.btn-warning,
@@ -203,7 +203,7 @@ button.btn-warning:visited {
 	color: $white;
   font-weight: bold;
   letter-spacing: 0.3px;
-  width: 10.3rem;
+  // width: 10.3rem;
 }
 
 /* === AEON BUTTON === */
@@ -233,7 +233,7 @@ button.btn-warning:visited {
 .libkey-btn:active,
 .libkey-btn:visited {
   margin-top: 0.6rem;
-  width: 12.5rem;
+  // width: 14rem;
 }
 
 /* === AVAILABILITY SPECIAL INSTRUCTIONS === */
