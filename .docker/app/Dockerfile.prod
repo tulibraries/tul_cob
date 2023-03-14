@@ -16,7 +16,7 @@ ARG SECRET_KEY_BASE
 RUN apk add -U --no-cache \
       bash=5.2.15-r0 \
       libc6-compat=1.2.3-r4 \
-      libxslt=1.1.37-r0 \
+      libxslt=1.1.37-r1 \
       mariadb-connector-c=3.3.3-r0 \
       shared-mime-info=2.2-r2  \
       tzdata=2022f-r1 && \
