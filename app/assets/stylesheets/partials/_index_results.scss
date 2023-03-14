@@ -4,18 +4,18 @@
   margin-top: 1rem;
   margin-left: 0;
 
-  .btn:not(.search-results-request-btn, .libkey-btn), .avail-container, .online_resources, .bl_alma_iframe {
-  margin-left: 1.75rem;
+  .document-search-result {
+    margin-left: 1.75rem;
+    padding-bottom: 1rem; 
   }
 
   .document-counter {
-    padding-top: 1rem;
+    margin-top: 1rem;
   }
 
-  .documentHeader, .document-info-container,
   .summary-preview-container {
-    margin-left: 1.75rem;
-    margin-right: 0;
+    margin-left: 0; 
+    margin-right: 0; 
   }
 
   .documentHeader {
@@ -93,6 +93,10 @@
       line-height: 2rem;
     }
   }
+}
+
+.btn:not(.search-results-request-btn, .libkey-btn) {
+  margin-left: 1rem;
 }
 
 }

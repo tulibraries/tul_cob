@@ -113,6 +113,7 @@ en:
         title: "Staff View"
       pagination_info:
         no_items_found: ""
+      search_results_header: "Search Results"
     email:
       text:
         imprint: "Published: %{value}"

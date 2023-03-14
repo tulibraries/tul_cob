@@ -1,6 +1,11 @@
 @import "_vars.scss";
 
 /* === GENERAL AVAILABILITY === */
+
+.avail-container,.physical-holding-panel, .online_resources, .online-card, .bl_alma_iframe {
+  padding: 0.8rem;
+}
+
 .item-info {
   @media(max-width: 485px) {
     text-align: left;
@@ -18,15 +23,18 @@
 .holding-name {
   font-family: "Roboto";
   font-size: 1.1rem;
+  font-weight: bold; 
   margin: 0;
 
   .location-name {
-    font-family: "Roboto Light";
+    // font-family: "Roboto Light";
+    font-weight: normal;
   }
 }
 
 .availability-table {
   width: 100%;
+
 }
 
 .call-number-col, .description-col {
@@ -41,10 +49,28 @@
   width: 25%;
 }
 
+.table-heading, .online-card-heading {
+  border-bottom: 1.5px solid $midnight-blue;
+  padding: 0.625rem 0.2rem;
+}
+
+.online-card-heading {
+  font-family: "Roboto";
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.table-heading {
+  @media(max-width: 768px) {
+    margin-bottom: 0.625rem;
+    }
+}
+
 .availability-table thead {
   th {
-    padding: 0.625rem;
-    border-bottom: 1px solid #dee2e6;
+    padding: 0.625rem 0.2rem;
+    border-bottom: 1px solid $midnight-blue;
   }
 
   @media(max-width: 768px) {
@@ -53,19 +79,20 @@
 }
 
 .availability-table td {
-  @media(max-width: 768px) {
-  display: block;
-  padding-top: 0;
-  padding-bottom: 0;
-  border: 0;
 
-  div {
-    padding-bottom: 1rem;
-  }
+  padding-left: 0.2rem;
+  
+  @media(max-width: 768px) {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 0;
+    border: 0;
+
+    div {
+      padding-bottom: 1rem;
+    }
   }
 }
-
-/* === RECORD PAGE AVAILABILITY === */
 
 #heading-request {
   display: inline-block;
@@ -89,18 +116,9 @@ dd .online-list-items {
   text-align: left;
 }
 
-.online-card {
-  border: 0.0625rem solid $royal-blue;
-  padding-left: 0;
-}
-
 .online-list-items, .online-list-item {
-  border-bottom: 0.0625rem solid $gray-300;
-  padding: 1rem;
-}
-
-.list_elec_links.search_results_table {
   border-top: 0.0625rem solid $gray-300;
+  padding: 1rem 0.2rem;
 }
 
 .direct-link {
@@ -122,25 +140,6 @@ dd .online-list-items {
   p {
     margin-bottom: 0;
   }
-
-  @media(max-width: 485px) {
-    padding-left: 0.625rem;
-  }
-}
-
-.table-heading {
-  background-color: $royal-blue;
-  color: $white;
-  padding: 1rem;
-}
-
-.online-card-heading {
-  background-color: $royal-blue;
-  color: $white;
-  font-family: "Roboto";
-  font-size: 1.1rem;
-  padding: 1rem;
-  margin: 0;
 }
 
 .no-item-info {
@@ -149,6 +148,15 @@ dd .online-list-items {
 
 .avail-info-rows {
   padding: 0.625rem ;
+}
+
+.spinner {
+  margin-top: 0.625rem;
+}
+
+.bl_alma_iframe {
+  border: 0;
+  width: 100%;
 }
 
 /* === AVAILABILITY BUTTONS === */
@@ -196,16 +204,6 @@ button.btn-warning:visited {
   font-weight: bold;
   letter-spacing: 0.3px;
   width: 10.3rem;
-}
-
-/* === INDEX(SEARCH RESULTS) AVAILABILITY === */
-.spinner {
-  margin-top: 0.625rem;
-}
-
-.bl_alma_iframe {
-  border: 0;
-  width: 100%;
 }
 
 /* === AEON BUTTON === */
