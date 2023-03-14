@@ -381,6 +381,9 @@ RSpec.configure do |config|
   config.add_setting :web_expected_fields,
     default: [ :title, :link ]
 
+  config.add_setting :guide_expected_fields,
+  default: [ :title, :abstract, :link ]
+
 
   # So we can test logged in users.
   require "warden"

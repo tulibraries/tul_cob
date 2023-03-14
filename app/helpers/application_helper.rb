@@ -80,6 +80,8 @@ module ApplicationHelper
       content_tag(:span, "", class: "bento-icon bento-book m-3")
     when "library_website"
       content_tag(:span, "", class: "bento-icon bento-website m-3")
+    when "lib_guides"
+      content_tag(:span, "", class: "bento-icon bento-guide m-3")
     end
   end
 
