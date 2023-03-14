@@ -68,7 +68,7 @@ en:
     more_information_databases: ", including search tips for Databases."
     more_information_journals: ", including search tips for Journals."
     more_information_website: ", including search tips for Library Website content."
-
+    chat_link: "https://answers.library.temple.edu/chat/widget/f5f15d338926526609d72ff4d9713954"
     banner_link: "Click here to see full details."
 
     borrow_html: "<li>If you can't find something, %{href}.</li>"
