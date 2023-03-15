@@ -34,6 +34,8 @@ module SearchHelper
     engine = BentoSearch.get_engine(id)
     if id == "books_and_media"
       link_to "Books & Media", engine.url(self), id: "bento_" + id + "_header"
+    elsif id == "lib_guides"
+      link_to "Research Guides", "https://guides.temple.edu/", target: "_blank", id: "bento_" + id + "_header"
     else
       link_to id.titleize , engine.url(self), id: "bento_" + id + "_header"
     end

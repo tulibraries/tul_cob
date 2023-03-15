@@ -13,13 +13,17 @@
     <%= yield %>
   </div>
 
-  <% unless total_items(results) == 0 %>
-    <div class="total-items">
+  
+  <div class="total-items">
+    <% unless total_items(results) == 0 %>
       <%= bento_link_to_full_results(results) %> &gt;
-    </div>
-  <% end %>
-
-  <% unless total_online(results) == 0 %>
+    <% end %>
+    <% if results.engine_id == "lib_guides" %>
+      <%= bento_link_to_full_results(results) %> &gt;
+    <% end %>
+  </div>
+  
+  <% unless total_online(results) == 0  %>
     <div class="bento-online-results">
       <%= bento_link_to_online_results(results) %> &gt;
     </div>
