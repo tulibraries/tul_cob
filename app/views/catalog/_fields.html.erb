@@ -4,7 +4,9 @@
 <% doc_presenter.fields_to_render do |field_name, field_config, field_presenter| -%>
 <% unless [ :summary, :format, :date ].include? field_config[:type] %>
     <% unless field_config[:no_label] %>
-      <dt class="index-label blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>:</dt>
+      <% unless field_config[:label] == "" %>
+        <dt class="index-label blacklight-<%= field_name.parameterize %>"><%= field_presenter.label %>:</dt>
+      <% end %>
       <dd class="blacklight-<%= field_name.parameterize %>">
       <% end %>
         <% if field_config.raw %>
