@@ -9,7 +9,7 @@ module BentoSearch
       path = "http://lgapi-us.libapps.com/1.1/guides/"
       query = args[:query].gsub(" ", "+")
       query_params = {
-        site_id: ENV["LIB_GUIDES_SITE_ID"],
+        site_id: 17,
         search_terms: query, status: 1,
         sort_by: "relevance",
         expand: "owner",
