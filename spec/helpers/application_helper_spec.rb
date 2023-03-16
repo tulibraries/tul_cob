@@ -514,7 +514,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:args) { { document: { creator: [""] }, field: :creator } }
 
       it "returns an empty list if no creators are available" do
-        expect(creator_links(args)).to eq([""])
+        expect(creator_links(args)).to eq("")
       end
     end
 
@@ -523,9 +523,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:args) { { document: { creator: ["Louisa May Alcott"] }, field: :creator } }
 
       it "returns a list of links to creator search for each creator" do
-        expect(creator_links(args)).to eq([
+        expect(creator_links(args)).to eq(
           "<a href=\"http://test.host/articles?search_field=creator&amp;q=Louisa May Alcott\">Louisa May Alcott</a>"
-        ])
+        )
       end
     end
 
@@ -534,7 +534,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:args) { { document: { creator_facet: [""] }, field: :creator_facet } }
 
       it "returns an empty list if no creators are available" do
-        expect(creator_links(args)).to eq([ "" ])
+        expect(creator_links(args)).to eq("")
       end
     end
 
@@ -543,9 +543,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:args) { { document: { creator_facet: ["Louise Penny"] }, field: :creator_facet } }
 
       it "returns a list of links to creator search for each creator" do
-        expect(creator_links(args)).to eq([
+        expect(creator_links(args)).to eq(
           "<a href=\"http://test.host/articles?search_field=creator&amp;q=Louise Penny\">Louise Penny</a>"
-        ])
+        )
       end
     end
 
@@ -555,7 +555,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns an empty string list" do
-        expect(creator_links(args)).to eq([""])
+        expect(creator_links(args)).to eq("")
       end
     end
 
@@ -565,7 +565,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns role in a list" do
-        expect(creator_links(args)).to eq(["MyRole"])
+        expect(creator_links(args)).to eq("MyRole")
       end
     end
 
@@ -575,7 +575,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns role in a list" do
-        expect(creator_links(args)).to eq(["MyRelation"])
+        expect(creator_links(args)).to eq("MyRelation")
       end
     end
 
@@ -585,9 +585,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns name as a link to query" do
-        expect(creator_links(args)).to eq([
+        expect(creator_links(args)).to eq(
           "<a href=\"catalog?f[creator_facet][]=MyName\">MyName</a>"
-        ])
+        )
       end
     end
 
@@ -597,9 +597,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns name as a link to query + plus role appended" do
-        expect(creator_links(args)).to eq([
+        expect(creator_links(args)).to eq(
           "<a href=\"catalog?f[creator_facet][]=MyName\">MyName</a> MyRole"
-        ])
+        )
       end
     end
 
@@ -609,9 +609,9 @@ RSpec.describe ApplicationHelper, type: :helper do
       field: :creator_display } }
 
       it "returns name as a link to query + plus role appended + relation prepended" do
-        expect(creator_links(args)).to eq([
+        expect(creator_links(args)).to eq(
           "MyRelation <a href=\"catalog?f[creator_facet][]=MyName\">MyName</a> MyRole"
-        ])
+        )
       end
     end
   end

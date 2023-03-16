@@ -176,6 +176,7 @@ class CatalogController < ApplicationController
     config.add_index_field "format", raw: true, helper_method: :separate_formats, type: :format
     config.add_index_field "imprint_date_display", type: :date
     config.add_index_field "note_summary_display", helper_method: :join, type: :summary
+    config.add_index_field "responsibility_truncated_display", label: ""
     config.add_index_field "creator_display", label: "Author/Creator", helper_method: :creator_links
     config.add_index_field "imprint_display", label: "Publication"
     config.add_index_field "imprint_prod_display", label: "Production"
@@ -191,6 +192,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_with_subtitle_vern_display", label: "Title Statement", type: :primary
+    config.add_show_field "responsibility_display", label: "", type: :primary
+    config.add_show_field "responsibility_vern_display", label: "", type: :primary
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
