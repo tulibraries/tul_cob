@@ -158,9 +158,7 @@ Rails.application.routes.draw do
   post "almaws/request/asrs", to: "almaws#send_asrs_request", as: "asrs_request"
   post "almaws/request/booking", to: "almaws#send_booking_request", as: "booking_request"
 
-  scope module: "blacklight_alma" do
-    get "alma/availability" => "alma#availability"
-  end
+  get "alma/availability" => "catalog#availability"
 
 
   # matches

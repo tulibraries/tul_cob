@@ -6,7 +6,6 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 
-  include BlacklightAlma::Availability
   include Blacklight::Marc::Catalog
   include ServerErrors
   include LCClassifications
@@ -462,6 +461,12 @@ class CatalogController < ApplicationController
 
     config.show.document_actions.delete(:email) if Rails.configuration.features[:email_document_action_disabled]
 
+  end
+
+  def availability
+    ids = params["id_list"].split(",")
+    response = Alma::Bib.get_availability(ids)
+    render json: { availability: response.availability }.to_json
   end
 
   # Can be overridden by subclass

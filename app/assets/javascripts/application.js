@@ -25,7 +25,6 @@
 
 // Required by Blacklight
 //= require blacklight/blacklight
-//= require blacklight_alma/blacklight_alma
 
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
