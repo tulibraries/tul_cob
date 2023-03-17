@@ -127,7 +127,7 @@ en:
         location: "Located at: %{value}"
         part_of: "Is Part Of: %{value}"
         date: "Date: %{value}"
-        doi: "DOI"
+        doi: "DOI: %{value}"
         subject:
           one: "Temple University Libraries record: %{title}"
           other: "Temple University Libraries records"
