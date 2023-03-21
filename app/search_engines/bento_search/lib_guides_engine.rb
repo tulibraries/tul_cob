@@ -29,14 +29,19 @@ module BentoSearch
         item.link = i["url"]
         bento_results << item
       end
-      bento_results.total_items = 0
 
       bento_results
     end
 
+    def url(helper)
+      path = "https://guides.temple.edu/srch.php?"
+      params = helper.params.slice(:q)
+      path + params.to_query
+    end
+
     def view_link(total = nil, helper)
-      url = "https://guides.temple.edu/"
-      helper.link_to("View all research guide results", url, target: "_blank")
+      url = url(helper)
+      helper.link_to "View all research guide results", url, target: "_blank", class: "bento-full-results"
     end
   end
 end
