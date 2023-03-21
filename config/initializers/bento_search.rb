@@ -68,6 +68,6 @@ BentoSearch.register_engine("lib_guides") do |conf|
   conf.engine = "BentoSearch::LibGuidesEngine"
   conf.for_display do |display|
     display.decorator = "TulDecorator"
-    display.no_results_partial = "bento_search/no_article_results"
+    display.no_results_partial = "bento_search/no_guide_results"
   end
 end
