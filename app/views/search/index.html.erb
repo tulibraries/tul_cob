@@ -1,6 +1,8 @@
 <% if @results %>
-<div class="d-flex justify-content-between bento-main-container container">
-  <%= render_bento_results %>
+<div class="container bento-main-container justify-content-between pb-3">
+  <div class="row row-cols-md-3 row-cols-1">
+    <%= render_bento_results %>
+  </div>
 </div>
 
   <%= render :partial => "digital_collections" %>
