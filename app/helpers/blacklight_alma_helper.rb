@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 module BlacklightAlmaHelper
-  include BlacklightAlma::HelperBehavior
-
   # Overrides
   # BlacklightAlma::HelperBehavior#alma_service_type_for_fulfillment_url.  Bib
   # records may have both physical and electronic holdings: This guarantees

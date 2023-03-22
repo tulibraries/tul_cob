@@ -242,9 +242,9 @@ RSpec.configure do |config|
                 body: File.open(SPEC_ROOT + "/fixtures/requests/empty_hash.json"))
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs/).
-      with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: "1,2")).
+      with(query: hash_including(expand: "p_avail,e_avail,d_avail", mms_id: /.*/)).
       to_return(status: 200,
-                body: File.open(SPEC_ROOT + "/fixtures/availability_response.xml").read,
+                body: File.open(SPEC_ROOT + "/fixtures/availability_response.json").read,
                 headers: { "content-type" => ["application/xml;charset=UTF-8"] })
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/merge_document_and_api\/holdings\/.*\/items/).

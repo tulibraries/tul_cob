@@ -2,7 +2,6 @@
 
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
-  include BlacklightAlma::CatalogOverride
 
   def thumbnail_classes(document)
     classes = %w[thumbnail col-sm-3 col-lg-2]
@@ -553,6 +552,14 @@ module CatalogHelper
         portfolio_pid: portfolio_pid
     }
     alma_build_openurl(query)
+  end
+
+  def alma_domain
+    Rails.configuration.alma["delivery_domain"]
+  end
+
+  def alma_institution_code
+    Rails.configuration.alma["institution_code"]
   end
 
   def alma_build_openurl(query)
