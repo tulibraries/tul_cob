@@ -27,7 +27,7 @@
 	margin: 0; 
 }
 
-.bento_search_no_results h3, .noresults{
+.bento_search_no_results h3, .noresults { 
 	padding-left: 0.9375rem;
 	padding-right: 0.9375rem !important;
 }
@@ -45,7 +45,7 @@
 .bento-avail-btn {
 	background-color: $crystal-blue;
 	color: $midnight-blue;
- 	margin-bottom: 0.9375rem;
+ 	margin-bottom: 0;
  	margin-left: 0.9375rem;
 	padding: 0.125rem 0.625rem;
 }
@@ -70,25 +70,15 @@
 	padding: 0.625rem 0.9375rem;
 }
 
-.bento-resource-types {
+.bento-resource-types, .bento-resource-types-list {
 	font-size: 1.3rem;
-	padding: 1rem 9.375rem;
-
-	@media(max-width: 768px) {
-		padding: 2rem;
-	}
-}
-
-.bento-resource-types-list {
-	color: $cherry-red;
-	padding: 0 9.375rem;
-
-	@media(max-width: 768px) {
-		padding: 2rem;
-	}
+	padding: 1rem 12%;
+	margin-left: -30px;
+	margin-right: -30px;
 }
 
 .bento-resource-list-item {
+	color: $cherry-red;
 	font-family: "Roboto";
 	font-size: 1.2rem;
 	width: 30%;

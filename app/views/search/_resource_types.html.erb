@@ -1,8 +1,8 @@
 <% format_facet = @response.aggregations["format"] %>
-
-  <div class="bento-resource-container w-100">
+<% unless format_facet.items.all? { |item| item.hits == "0" } %>
+  <div class="bento-resource-container">
     <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.resource_types_header") %></h2>
-    <ul class="bento-resource-types-list pt-2 pb-5 m-0 list-inline d-flex flex-wrap justify-content-start">
+    <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
       <% format_facet.items.each do |item| %>
         <% unless item.value == "digital_collections" %>
           <li class="bento-resource-list-item list-inline-item pb-1"><%= render_bento_format_facet_value(item) %></li>
@@ -10,3 +10,4 @@
       <% end %>
     </ul>
   </div>
+  <% end %>
