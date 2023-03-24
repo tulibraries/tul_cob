@@ -19,7 +19,7 @@ RUN apk add -U --no-cache \
       libxslt=1.1.37-r1 \
       mariadb-connector-c=3.3.3-r0 \
       shared-mime-info=2.2-r2  \
-      tzdata=2022f-r1 && \
+      tzdata=2023b-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
       git=2.38.4-r1 \
