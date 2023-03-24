@@ -3,7 +3,7 @@
 /* === GENERAL AVAILABILITY === */
 
 .avail-container,.physical-holding-panel, .online_resources, .online-card, .bl_alma_iframe {
-  padding: 0.8rem;
+  padding: 0.8rem 0;
 }
 
 .item-info {
@@ -181,7 +181,7 @@ button.online-btn.collapse-button, a.online-btn.collapse-button {
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
-  background-color: $dark-green; 
+  background-color: $green; 
   color: $white;
   font-weight: bold;
   letter-spacing: 0.3px;
