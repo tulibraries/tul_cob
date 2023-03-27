@@ -34,6 +34,22 @@ RSpec.describe CobAlma::Requests do
     end
   end
 
+  describe "picking up at a Rome Campus Library" do
+    let(:rome_only) { Alma::BibItem.find("rome_only").grouped_by_library }
+    let(:rome_with_multiple_libraries) { Alma::BibItem.find("rome_with_multiple_libraries").grouped_by_library }
+
+    it "allows a user to request a book, available at Rome only, for pickup at Rome only" do
+      expect(described_class.valid_pickup_locations(rome_only)).to include "ROME"
+      expect(described_class.valid_pickup_locations(rome_only)).not_to include "MAIN"
+    end
+
+    it "allows a user to request a book, available at Rome and other libraries, for pickup at Rome and other libraries" do
+      expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "ROME"
+      expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "MAIN"
+    end
+
+  end
+
   describe "#reserve_or_reference" do
     let(:only_paley_reserves) { Alma::BibItem.find("only_paley_reserves").grouped_by_library }
     let(:paley_reserves_and_remote_storage) { Alma::BibItem.find("paley_reserves_and_remote_storage").grouped_by_library }

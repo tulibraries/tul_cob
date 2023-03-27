@@ -1,0 +1,404 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "title": "Advertising art in the art deco style / selected by Theodore Menten.",
+                "author": "Menten, Theodore.",
+                "isbn": "048623164X",
+                "mms_id": "991003835869703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)2063929",
+                    "PATG02063929B",
+                    "(PPT)b10803725-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "1975.",
+                "publisher_const": "Dover",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811"
+            },
+            "holding_data": {
+                "holding_id": "22458867580003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "NC998.4.M46x",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "NC998.4.M46x",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22458867580003811"
+            },
+            "item_data": {
+                "pid": "23293672920003811",
+                "barcode": "39074001432095",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "ASRS",
+                    "desc": "Charles BookBot"
+                },
+                "location": {
+                    "value": "ASRS",
+                    "desc": "Automated Storage System"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "1999-01-30Z",
+                "modification_date": "2009-01-06Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "1999-01-31Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "INT NOTE: Transferred from Tyler Stacks to Paley Stacks 1/09",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22458867580003811/items/23293672920003811"
+        },
+        {
+            "bib_data": {
+                "title": "Advertising art in the art deco style / selected by Theodore Menten.",
+                "author": "Menten, Theodore.",
+                "isbn": "048623164X",
+                "mms_id": "991003835869703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)2063929",
+                    "PATG02063929B",
+                    "(PPT)b10803725-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "1975.",
+                "publisher_const": "Dover",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811"
+            },
+            "holding_data": {
+                "holding_id": "22293672930003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "NC998.4.M46x",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "NC998.4.M46x",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22293672930003811"
+            },
+            "item_data": {
+                "pid": "23293672910003811",
+                "barcode": "39074016798852",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Charles Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Main Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2004-11-10Z",
+                "modification_date": "2012-11-07Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2004-11-11Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "INT NOTE: Transferred from Tyler Stacks to Paley Stacks 1/09",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pstk",
+                "statistics_note_1": "TOT RENEW: 3",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22293672930003811/items/23293672910003811"
+        },
+        {
+            "bib_data": {
+                "title": "Advertising art in the art deco style / selected by Theodore Menten.",
+                "author": "Menten, Theodore.",
+                "isbn": "048623164X",
+                "mms_id": "991003835869703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)2063929",
+                    "PATG02063929B",
+                    "(PPT)b10803725-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "1975.",
+                "publisher_const": "Dover",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811"
+            },
+            "holding_data": {
+                "holding_id": "22293672900003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "permanent_call_number": "741.67 MEN",
+                "call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "call_number": "741.67 MEN",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22293672900003811"
+            },
+            "item_data": {
+                "pid": "23293672890003811",
+                "barcode": "39074029525557",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "ROME",
+                    "desc": "Rome Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Rome Stacks"
+                },
+                "pages": "",
+                "pieces": "",
+                "requested": false,
+                "creation_date": "2000-11-01Z",
+                "modification_date": "2020-11-11Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2000-11-02Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: irstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991003835869703811/holdings/22293672900003811/items/23293672890003811"
+        }
+    ],
+    "total_record_count": 3
+}

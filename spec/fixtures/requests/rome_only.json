@@ -1,0 +1,137 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "title": "Dada, art and anti-art /",
+                "author": "Richter, Hans,",
+                "isbn": "0500200394",
+                "mms_id": "991013329729703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(DLC)non00053892",
+                    "(PPT)b21490259-01tuli_inst"
+                ],
+                "place_of_publication": "London :",
+                "date_of_publication": "[1965]",
+                "publisher_const": "Thames and Hudson",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991013329729703811"
+            },
+            "holding_data": {
+                "holding_id": "22302742890003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "permanent_call_number": "709.04 RIC",
+                "call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "call_number": "709.04 RIC",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991013329729703811/holdings/22302742890003811"
+            },
+            "item_data": {
+                "pid": "23302742870003811",
+                "barcode": "39074029509007",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "ROME",
+                    "desc": "Rome Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Rome Stacks"
+                },
+                "pages": "",
+                "pieces": "",
+                "requested": false,
+                "creation_date": "2000-11-01Z",
+                "modification_date": "2020-10-19Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2000-11-02Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: irstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991013329729703811/holdings/22302742890003811/items/23302742870003811"
+        }
+    ],
+    "total_record_count": 1
+}
