@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# ASRS and MAIN were removed from determine_campus and remove_by_campus as a temporary fix during the move.
-# This allows Tutleman to act as a pickup location during the summer
-
 module CobAlma
   module Requests
     def self.determine_campus(item)
@@ -17,12 +14,14 @@ module CobAlma
         :PODIATRY
       when "HARRISBURG"
         :HARRISBURG
+      when "ROME"
+        :ROME
       else
         :OTHER
       end
     end
 
-    def self.possible_pickup_locations
+    def self.possible_usa_pickup_locations
       #Make an array on only items that can request items
       ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
@@ -43,6 +42,8 @@ module CobAlma
         ["PODIATRY"]
       when :HARRISBURG
         ["HARRISBURG"]
+      when :ROME
+        []
       when :OTHER
         []
       end
@@ -54,7 +55,7 @@ module CobAlma
     end
 
     def self.valid_pickup_locations(items_list)
-      pickup_locations = self.possible_pickup_locations
+      pickup_locations = self.possible_usa_pickup_locations
       libraries = self.avail_locations(items_list)
 
       if libraries.any?
@@ -64,8 +65,16 @@ module CobAlma
           next if lib == "MAIN"
           next if [lib, campus] == ["ASRS", :MAIN]
           removals << lib if remove_by_campus(campus).include?(lib)
+          removals
         end
         pickup_locations -= removals
+      end
+      if libraries.include?("ROME")
+        if libraries.size == 1
+          pickup_locations = (["ROME"])
+        else
+          pickup_locations << ("ROME")
+        end
       end
       pickup_locations << self.reserve_or_reference(items_list)
       pickup_locations.flatten
@@ -73,7 +82,7 @@ module CobAlma
 
     def self.item_level_locations(items_list)
       #Refactored to temporarily allow items to be picked up at Charles
-      pickup_locations = self.possible_pickup_locations
+      pickup_locations = self.possible_usa_pickup_locations
 
       items_list.all.reduce({}) { |libraries, item|
         desc = item.description

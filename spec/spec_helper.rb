@@ -284,6 +284,16 @@ RSpec.configure do |config|
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/temp_storage.json"))
 
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/rome_only\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/rome_only.json"))
+
+    stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/rome_with_multiple_libraries\/holdings\/.*\/items/).
+      to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/rome_with_multiple_libraries.json"))
+
     stub_request(:get, /.*library.temple.edu\/alerts/).
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
