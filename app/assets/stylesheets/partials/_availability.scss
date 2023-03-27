@@ -27,7 +27,7 @@
   margin: 0;
 
   .location-name {
-    // font-family: "Roboto Light";
+    font-family: "Roboto Light";
     font-weight: normal;
   }
 }
@@ -50,7 +50,7 @@
 }
 
 .table-heading, .online-card-heading {
-  border-bottom: 1.5px solid $midnight-blue;
+  border-bottom: 1px solid $midnight-blue;
   padding: 0.625rem 0.2rem;
 }
 
@@ -70,6 +70,7 @@
 .availability-table thead {
   th {
     padding: 0.625rem 0.2rem;
+    border-top: 0; 
     border-bottom: 1px solid $midnight-blue;
   }
 
@@ -234,7 +235,7 @@ button.btn-warning:visited {
 
 /* === AVAILABILITY SPECIAL INSTRUCTIONS === */
 .alert-info {
-  background-color: #F0F0F0;
-  border: 1px solid #F0F0F0;
+  background-color: $lighter-grey;
+  border: 1px solid $lighter-grey;
   color: $midnight-blue;
 }

@@ -68,6 +68,14 @@
 .document-info-container {
   padding: 0 1rem;
 
+  .thumbnail {
+    margin-bottom: 1rem;
+
+    @media (min-width: 576px) {
+      margin-left: 1rem; 
+    }
+  }
+
   .document-metadata {
     @media(max-width: 768px) {
       margin-left: 0;

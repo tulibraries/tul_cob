@@ -1,12 +1,12 @@
-<div class="row button-break"></div>
+<div class="row button-break pt-3"></div>
 <button class="btn purchase-order collapsed collapse-button" data-toggle="collapse" data-target="#online-document-<%=  document.id %>" id="many_links_online">
   <span class="avail-label" aria-expanded="false">Request Rapid Access</span>
 </button>
 
 <span class="requests-container"><%= link %></span>
 
-<div id="online-document-<%= document.id %>" class="collapse online_resources border-bottom-0">
+<div id="online-document-<%= document.id %>" class="collapse online_resources">
   <div>
-    <div class="electronic_links online-list-items p-2"><%= t("purchase_order.purchase_order_allowed") %></div>
+    <div class="electronic_links"><%= t("purchase_order.purchase_order_allowed") %></div>
   </div>
 </div>
