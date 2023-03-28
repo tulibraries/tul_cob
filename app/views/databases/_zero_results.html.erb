@@ -1,7 +1,8 @@
-<h3 class="p-2"><%= t("no_results.title", engine: "database") %></h3>
-<hr />
+<div id="documents" class="noresults border">
+<h2 class="no-results-header"><%= t("databases.zero_results.title_html") %></h2>
 
-<div class="p-1">
+<p class="no-results-header"><strong><%= t("no_results.search_suggestions") %></strong></p>
+<div class="no-results-tips">
   <ul>
     <li>
       <%= t("bento.zero_results.databases_html", href: link_to(t("bento.zero_results.databases_href"), t("bento.zero_results.databases_link"), target: "_blank")) %>
@@ -16,4 +17,5 @@
       <%= link_to(t("databases.find_articles"), t("databases.find_articles_href"), target: "_blank") %>
     </li>
   </ul>
+</div>
 </div>
