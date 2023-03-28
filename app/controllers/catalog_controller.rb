@@ -191,8 +191,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
 
     config.add_show_field "title_with_subtitle_vern_display", label: "Title Statement", type: :primary
-    config.add_show_field "responsibility_display", label: "", type: :primary
-    config.add_show_field "responsibility_vern_display", label: "", type: :primary
+    config.add_show_field "responsibility_display", label: "", type: :responsibility
+    config.add_show_field "responsibility_vern_display", label: "", type: :responsibility
     config.add_show_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link, type: :primary
     config.add_show_field "title_uniform_display", label: "Uniform title", helper_method: :additional_title_link, type: :primary
     config.add_show_field "title_uniform_vern_display", label: "Uniform title", type: :primary
