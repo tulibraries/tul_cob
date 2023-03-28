@@ -6,7 +6,6 @@ RSpec.describe SearchBuilder , type: :model do
   let(:context) { CatalogController.new }
   let(:params) { ActionController::Parameters.new }
   let(:search_builder) { SearchBuilder.new(context) }
-  let(:begins_with_tag) { SearchBuilder::BEGINS_WITH_TAG }
 
   subject { search_builder }
 
@@ -188,7 +187,7 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     it "adds prefix and quotes to value if op equals begins_with" do
-      expect(subject.process_begins_with("foo", "begins_with")).to eq("\"#{begins_with_tag} foo\"")
+      expect(subject.process_begins_with("foo", "begins_with")).to eq("\"matchbeginswithfoo foo\"")
     end
 
   end
