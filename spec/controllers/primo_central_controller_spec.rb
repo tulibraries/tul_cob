@@ -38,7 +38,7 @@ RSpec.describe PrimoCentralController, type: :controller do
         get :index
 
         expect(response).to redirect_to "/articles"
-        expect(flash[:error]).to eq("Your search query has timed out.")
+        expect(flash[:error]).to eq("Your search has timed out.")
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe PrimoCentralController, type: :controller do
         get :index, params: { page: 50 }
 
         expect(response).to redirect_to "/articles"
-        expect(flash[:error]).to eq("Your search query has timed out. You may have exceeded the maximum number of pages allowed for an Articles search query in Library Search.")
+        expect(flash[:error]).to eq("Your search has timed out. You may have exceeded the maximum number of pages allowed for Article search results in Library Search.")
       end
     end
 

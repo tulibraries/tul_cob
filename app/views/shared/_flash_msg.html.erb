@@ -10,7 +10,7 @@
     -%>
     <% if flash[type] %>
       <% Array(flash[type]).each do |f| %>
-        <div class="alert <%= alert_class %> w-75 mx-auto">
+        <div class="alert <%= alert_class %> mx-auto">
           <a class="close" data-dismiss="alert" href="#">&times;</a>
           <%= sanitize(f) %>
         </div>

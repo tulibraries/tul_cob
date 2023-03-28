@@ -35,12 +35,12 @@ module QuikPay
           message = helpers.successful_payment_message
         else
           type = :error
-          message = "There was a problem with your transaction, please call 215-204-8212"
+          message = "There was a problem with your transaction. Please call 215-204-8212."
         end
 
       else
         type = :error
-        message = "There was a problem with your transaction, please call 215-204-8212"
+        message = "There was a problem with your transaction. Please call 215-204-8212."
       end
 
       [type, message]

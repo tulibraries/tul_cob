@@ -80,9 +80,7 @@ en:
           <a href="https://www.hathitrust.org/ETAS-User-Information">Emergency Temporary Access Service</a>,
           in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will
           renew automatically at the end of that hour, unless another user requests the book.
-
-    help_html: "<li>For help, %{href}.</li>"
-    help_href: "Contact the libraries"
+    help_href: "Contact us"
     help_link: "https://library.temple.edu/contact-us"
 
     header_links:
@@ -96,12 +94,13 @@ en:
       bad_query: "Unsupported Search Query"
 
     errors:
-      deep_paging: "Sorry, Library Search does not serve more than 250 pages for any query."
+      deep_paging: "You have exceeded the maximum number of pages allowed for search results in Library Search."
       general_error_html: "For help, please %{href}."
       not_found_html: "For help, please %{href} or try a"
       error_help_href: "contact us"
       error_help_link: "https://library.temple.edu/contact-us"
-      availability_alert_html: "Some availability information can not be loaded. Please visit your library's Circulation Desk for more information or %{href}."
+      availability_alert_general_html: "We could not find availability information for this record. Please %{href} for help."
+      availability_alert_items_html: "The availability status of some items is missing. Please %{href} for help if you are unable to find or request an item."
       unsupported_query_format: "Your search query could not be executed due to a formatting issue. "
 
     range_limit:

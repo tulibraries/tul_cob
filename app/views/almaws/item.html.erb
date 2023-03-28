@@ -5,7 +5,7 @@
 
 <% if availability_alert(@document) %>
   <div id="availability-alert" class="alert alert-info mb-0" role="alert">
-      <p><%= t("blacklight.errors.availability_alert_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %></p>
+      <p class="mb-0"><%= t("blacklight.errors.availability_alert_items_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %></p>
   </div>
 <% end %>
 
@@ -50,5 +50,5 @@
   <% end %>
 
   <% else %>
-    <div id="error-message">We are unable to find availability information for this record. Please contact the library for more information.</div>
+    <div id="error-message"><%= t("blacklight.errors.availability_alert_general_html", href: link_to(t("blacklight.errors.error_help_href"), t("blacklight.errors.error_help_link"))) %></div>
 <% end %>
