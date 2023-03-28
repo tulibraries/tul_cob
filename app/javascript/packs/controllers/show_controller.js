@@ -33,6 +33,6 @@ export default class extends Controller {
   }
 
   loading() {
-    $(this.hrefTarget).append("<span class='fa fa-spinner ml-1' aria-busy='true' aria-live='polite'></span>")
+    $(this.hrefTarget).append("<span class='fa fa-spinner fa-spin ml-1' aria-busy='true' aria-live='polite'></span>")
   }
 }
