@@ -329,6 +329,8 @@ en:
     home_html: "<strong>Databases</strong> includes links to subscription-based and open access databases. These are search engines containing a variety of source types and often related to a subject or discipline."
     home_question_html: "<strong>Not sure which database to start with?</strong>"
     subject_browse_html: "Try browsing by %{href} or "
+    zero_results:
+      title_html: "<strong>No database results</strong> found for your search."
 
   web_content:
     zero_results:
