@@ -5,9 +5,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BentoSearchBuilderBehavior
-
-  BEGINS_WITH_TAG = "matchbeginswith"
-  ENDS_WITH_TAG = "matchendswith"
+  include CobIndex::Macros::Wrapper
 
   self.default_processor_chain +=
     %i[ add_advanced_parse_q_to_solr
@@ -102,7 +100,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def process_begins_with(value, op)
     if op == "begins_with"
-      process_is("#{BEGINS_WITH_TAG} " + value, "is") rescue value
+      process_is(add_first_word_matcher(value), "is") rescue value
     else
       value
     end
