@@ -113,7 +113,7 @@ RSpec.feature "Indices" do
   feature "Pagination" do
     scenario "User tries to access page past 250" do
       visit "/catalog?page=400&q=japan&search_field=all_fields"
-      expect(page).to have_text("Sorry, Library Search does not serve more than 250 pages for any query.")
+      expect(page).to have_text("You have exceeded the maximum number of pages allowed for search results in Library Search.")
     end
   end
 

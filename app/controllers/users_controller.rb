@@ -95,7 +95,7 @@ class UsersController < ApplicationController
       .first.fetch("errorCode", "") rescue nil
 
     Honeybadger.notify(exception.message) if error_code == "60101"
-    flash[:notice] = "User was not found."
+    flash[:notice] = "Your user account was not found."
     render "errors/internal_server_error"
   end
 end

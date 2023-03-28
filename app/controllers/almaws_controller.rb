@@ -107,7 +107,7 @@ class AlmawsController < CatalogController
       redirect_back(fallback_location: root_path)
     rescue => e
       Honeybadger.notify(e.message + " " + log.to_s)
-      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       redirect_back(fallback_location: root_path)
     end
   end
@@ -156,7 +156,7 @@ class AlmawsController < CatalogController
       if requests_made > 0
         flash["notice"] = helpers.successful_request_message
       else
-        flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+        flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       end
 
 
@@ -164,7 +164,7 @@ class AlmawsController < CatalogController
 
     rescue => e
       Honeybadger.notify(e.message + " " + log.to_s)
-      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       redirect_back(fallback_location: root_path)
     end
   end
@@ -194,7 +194,7 @@ class AlmawsController < CatalogController
       flash["notice"] = "This item is already booked for those dates."
       redirect_back(fallback_location: root_path)
     rescue
-      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       redirect_back(fallback_location: root_path)
     end
   end
@@ -223,7 +223,7 @@ class AlmawsController < CatalogController
       flash["notice"] = helpers.successful_request_message
       redirect_back(fallback_location: root_path)
     rescue
-      flash["notice"] = "There was an error processing your request. Contact a librarian for help."
+      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       redirect_back(fallback_location: root_path)
     end
   end
