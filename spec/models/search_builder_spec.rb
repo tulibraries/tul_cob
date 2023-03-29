@@ -176,70 +176,97 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "#process_call_number" do
+    context "field is not a call nummber field" do
+      it "value stays the same" do
+        expect(subject.process_call_number(value: "foo", field: "bar")).to eq("foo")
+      end
+    end
+
+    context "field is call_number and op is contains" do
+      it "wraps the values with *" do
+        expect(subject.process_call_number(value: "foo", field: "call_number", op: "contains")).to eq("*foo*")
+      end
+    end
+
+    context "field is call_number and op is begins_with" do
+      it "wraps the values with *" do
+        expect(subject.process_call_number(value: "foo", field: "call_number", op: "begins_with")).to eq("foo*")
+      end
+    end
+
+    context "field is call_number and op is not contains or begins with" do
+      it "does not affect the value" do
+        expect(subject.process_call_number(value: "foo", field: "call_number", op: "bar")).to eq("foo")
+      end
+    end
+
+  end
+
   describe "#process_begins_with" do
     it "can handle nil gracefully" do
-      expect(subject.process_begins_with(nil, nil)).to be_nil
-      expect(subject.process_begins_with("foo", nil)).to eq("foo")
+      expect(subject.process_begins_with(value: nil)).to be_nil
+      expect(subject.process_begins_with(value: "foo")).to eq("foo")
     end
 
     it "ignores values if op is not begins_with" do
-      expect(subject.process_begins_with("foo", "opbar")).to eq("foo")
+      expect(subject.process_begins_with(value: "foo", op: "opbar")).to eq("foo")
     end
 
     it "adds prefix and quotes to value if op equals begins_with" do
-      expect(subject.process_begins_with("foo", "begins_with")).to eq("\"matchbeginswithfoo foo\"")
+      expect(subject.process_begins_with(value: "foo", op: "begins_with")).to eq("\"matchbeginswithfoo foo\"")
     end
 
   end
 
   describe "#process_is" do
     it "can handle nil case with grace" do
-      expect(subject.process_is(nil, nil)).to be_nil
-      expect(subject.process_is("foo", nil)).to eq("foo")
+      expect(subject.process_is(value: nil, op: nil)).to be_nil
+      expect(subject.process_is(value: "foo")).to eq("foo")
     end
 
     it "ignores values if op is not is" do
-      expect(subject.process_is("foo", "opbar")).to eq("foo")
+      expect(subject.process_is(value: "foo", op: "opbar")).to eq("foo")
     end
 
     it "adds quotes to value if op equals is" do
-      expect(subject.process_is("foo", "is")).to eq("\"foo\"")
+      expect(subject.process_is(value: "foo", op: "is")).to eq("\"foo\"")
     end
 
     it "removes a single quote and then adds quotes to value" do
-      expect(subject.process_is("\"bar", "is")).to eq("\"bar\"")
+      expect(subject.process_is(value: "\"bar", op: "is")).to eq("\"bar\"")
     end
 
     it "avoids escape hell by ignoring values with quotes" do
-      expect(subject.process_is("foo\"bar\"", "is")).to eq("foo\"bar\"")
+      expect(subject.process_is(value: "foo\"bar\"", op: "is")).to eq("foo\"bar\"")
     end
   end
 
   describe "#substitute_special_chars" do
     it "can handle nil case with grace" do
-      expect(subject.substitute_special_chars(nil, nil)).to be_nil
-      expect(subject.substitute_special_chars("foo", nil)).to eq("foo")
+      expect(subject.substitute_special_chars(value: nil, op: nil)).to be_nil
+      expect(subject.substitute_special_chars(value: "foo")).to eq("foo")
     end
 
     it "substitutes colons from values no matter what op is" do
-      expect(subject.substitute_special_chars("foo:bar", nil)).to eq("foo bar")
+      expect(subject.substitute_special_chars(value: "foo:bar")).to eq("foo bar")
     end
 
     it "substitutes all the colons from values" do
-      expect(subject.substitute_special_chars("foo:bar:bum", nil)).to eq("foo bar bum")
+      expect(subject.substitute_special_chars(value: "foo:bar:bum")).to eq("foo bar bum")
     end
 
     it "substitute ? marks" do
       # @see BL-1301 for ref.  Basically Solr treats ? as a special character.
-      expect(subject.substitute_special_chars("foo bar?", nil)).to eq("foo bar ")
+      expect(subject.substitute_special_chars(value: "foo bar?")).to eq("foo bar ")
     end
 
     it "substitutes empty parens '()' " do
-      expect(subject.substitute_special_chars("foo () bar", nil)).to eq("foo   bar")
+      expect(subject.substitute_special_chars(value: "foo () bar")).to eq("foo   bar")
     end
 
     it "does not substitutes parens containing values " do
-      expect(subject.substitute_special_chars("foo (bar) baz", nil)).to eq("foo (bar) baz")
+      expect(subject.substitute_special_chars(value: "foo (bar) baz")).to eq("foo (bar) baz")
     end
   end
 
@@ -258,9 +285,9 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   class SearchBuilder < Blacklight::SearchBuilder
-    def proc1(v, _) "#{v} foo" end
-    def proc2(v, _) "#{v} bar" end
-    def proc3(v, _) "#{v} bum" end
+    def proc1(value:, **rest) "#{value} foo" end
+    def proc2(value:, **rest) "#{value} bar" end
+    def proc3(value:, **rest) "#{value} bum" end
   end
 
   describe "#process_params!" do
@@ -434,7 +461,4 @@ RSpec.describe SearchBuilder , type: :model do
       expect(subject["facet.field"]).not_to include("lc_classification")
     end
   end
-
-
-
 end
