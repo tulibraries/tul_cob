@@ -1,15 +1,17 @@
 <% doc_presenter = document_presenter(document) %>
 
-<div>
-  <% doc_presenter.each_responsibility_field do |field_name, field, field_presenter| %>
-    <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
-  <% end -%>
-</div>
-
 <dl class="row document-metadata mb-0 show-page-list mb-1">
+
+  <div class="w-100">
+    <% doc_presenter.each_responsibility_field do |field_name, field, field_presenter| %>
+      <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
+    <% end -%>
+  </div>
+  
   <% doc_presenter.each_primary_field do |field_name, field, field_presenter| %>
     <%= render "show_fields", document: document, field: field, field_name: field_name, field_presenter: field_presenter %>
   <% end -%>
+  
 </dl>
 
 <div id="related-items-link" class="hidden mb-3">
