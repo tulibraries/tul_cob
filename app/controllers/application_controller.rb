@@ -61,6 +61,12 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def script_nonce
+    if Rails.env.production?
+      @nonce = SecureRandom.base64(12)
+    end
+  end
+
   protected
 
     def no_cache
