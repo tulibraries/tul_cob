@@ -1,0 +1,136 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "title": "Teaching about Japan in Japan : a handbook of approaches to teaching about Japan to non-Japanese students /",
+                "author": "Bowring, Richard,",
+                "isbn": "4873786584",
+                "mms_id": "991017968449703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(PPT)b49030693-01tuli_inst"
+                ],
+                "place_of_publication": "Fukuoka-shi :",
+                "date_of_publication": "[2001]",
+                "publisher_const": "Kyushu University Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991017968449703811"
+            },
+            "holding_data": {
+                "holding_id": "22244835680003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "DS 806 .T43 2001",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "DS 806 .T43 2001",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991017968449703811/holdings/22244835680003811"
+            },
+            "item_data": {
+                "pid": "23244835640003811",
+                "barcode": "31982070341385",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "JAPAN",
+                    "desc": "Japan Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Japan Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2011-08-02Z",
+                "modification_date": "2011-08-02Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2011-08-03Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "INT NOTE: mi",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: jtcas",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991017968449703811/holdings/22244835680003811/items/23244835640003811"
+        }
+    ],
+    "total_record_count": 1
+}

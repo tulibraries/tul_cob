@@ -14,8 +14,6 @@ module CobAlma
         :PODIATRY
       when "HARRISBURG"
         :HARRISBURG
-      when "ROME"
-        :ROME
       else
         :OTHER
       end
@@ -42,8 +40,6 @@ module CobAlma
         ["PODIATRY"]
       when :HARRISBURG
         ["HARRISBURG"]
-      when :ROME
-        []
       when :OTHER
         []
       end
@@ -68,12 +64,13 @@ module CobAlma
           removals
         end
         pickup_locations -= removals
-      end
-      if libraries.include?("ROME")
-        if libraries.size == 1
-          pickup_locations = (["ROME"])
-        else
-          pickup_locations << ("ROME")
+        if (libraries & ["ROME", "JAPAN"]).present?
+          binding.pry
+          if libraries.size == 1
+            pickup_locations = libraries
+          else
+            pickup_locations << libraries.select { |lib| lib == "ROME" || lib == "JAPAN" }
+          end
         end
       end
       pickup_locations << self.reserve_or_reference(items_list)

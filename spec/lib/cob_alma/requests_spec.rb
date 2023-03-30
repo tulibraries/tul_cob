@@ -34,9 +34,26 @@ RSpec.describe CobAlma::Requests do
     end
   end
 
+  describe "picking up at a Japan Campus Library" do
+    let(:japan_only) { Alma::BibItem.find("japan_only").grouped_by_library }
+    let(:japan_with_multiple_libraries) { Alma::BibItem.find("japan_with_multiple_libraries").grouped_by_library }
+
+    it "allows a user to request a book, available at Japan only, for pickup at Japan only" do
+      expect(described_class.valid_pickup_locations(japan_only)).to include "JAPAN"
+      expect(described_class.valid_pickup_locations(japan_only)).not_to include "MAIN"
+    end
+
+    it "allows a user to request a book, available at Japan and other libraries, for pickup at Japan and other libraries" do
+      expect(described_class.valid_pickup_locations(japan_with_multiple_libraries)).to include "JAPAN"
+      expect(described_class.valid_pickup_locations(japan_with_multiple_libraries)).to include "MAIN"
+    end
+
+  end
+
   describe "picking up at a Rome Campus Library" do
     let(:rome_only) { Alma::BibItem.find("rome_only").grouped_by_library }
     let(:rome_with_multiple_libraries) { Alma::BibItem.find("rome_with_multiple_libraries").grouped_by_library }
+    let(:japan_and_rome) { Alma::BibItem.find("japan_and_rome").grouped_by_library }
 
     it "allows a user to request a book, available at Rome only, for pickup at Rome only" do
       expect(described_class.valid_pickup_locations(rome_only)).to include "ROME"
@@ -46,6 +63,11 @@ RSpec.describe CobAlma::Requests do
     it "allows a user to request a book, available at Rome and other libraries, for pickup at Rome and other libraries" do
       expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "ROME"
       expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "MAIN"
+    end
+
+    it "allows a user to request a book, available at Japan and Rome" do
+      expect(described_class.valid_pickup_locations(japan_and_rome)).to include "JAPAN"
+      expect(described_class.valid_pickup_locations(japan_and_rome)).to include "ROME"
     end
 
   end
