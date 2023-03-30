@@ -94,9 +94,10 @@
 	width: 11rem;
 	padding-left: 0;
 	padding-right: 0;
+	background-color: $white;
 }
 
-.sendto-item.dropdown-item:active {
+.sendto-item.dropdown-item:active, .sendto-item.dropdown-item:hover {
 	background-color: #e9ecef;
 }
 
