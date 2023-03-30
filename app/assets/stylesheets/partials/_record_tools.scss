@@ -10,7 +10,7 @@
 		margin-left: 0;
 	}
 
-	@media (max-width: 991px) {
+	@media (max-width: 768px) {
 		margin-top: 0.875rem;
 	}
 }
@@ -22,7 +22,7 @@
 }
 
 #tools-navbar li {
-	@media (max-width: 991px) {
+	@media (max-width: 768px) {
 		background-color: $cherry-red;
 		color: $white;
 		display: block;
@@ -39,7 +39,7 @@
 	list-style-type: none;
 	margin-right: 0.25rem;
 
-	@media (max-width: 991px) {
+	@media (max-width: 768px) {
 		margin-left: 0.625rem;
 	}
 }
@@ -50,7 +50,7 @@
 	background-color: $royal-blue;
 	color: $white;
 
-	@media (max-width: 991px) {
+	@media (max-width: 768px) {
 		background-color: $cherry-red;
 		border: 0;
 		color: $white;
@@ -66,7 +66,7 @@
 	color: $white;
 	padding: 0.3725rem 0.75rem;
 
-	@media(max-width: 991px) {
+	@media(max-width: 768px) {
 		background-color: $cherry-red;
 		border: 0;
 		color: $white;
@@ -94,9 +94,10 @@
 	width: 11rem;
 	padding-left: 0;
 	padding-right: 0;
+	background-color: $white;
 }
 
-.sendto-item.dropdown-item:active {
+.sendto-item.dropdown-item:active, .sendto-item.dropdown-item:hover {
 	background-color: #e9ecef;
 }
 
