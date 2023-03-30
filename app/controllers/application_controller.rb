@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  before_action :script_nonce
   before_action :get_manifold_alerts, only: [
     :index, :show, :not_found, :internal_server_error,
     :account, :librarian_view, :citation, :email, :facet
