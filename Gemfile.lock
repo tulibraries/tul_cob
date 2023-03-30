@@ -20,12 +20,11 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: b2772eed9160aa139a3c98ef634cdb3916b9ecc9
+  revision: ccaa8e96d78902e9f03266abe5c66d800efd3ada
   branch: main
   specs:
     alma (0.4.1)
       activesupport
-      ezwadl
       httparty
       xml-simple
 
@@ -77,15 +76,6 @@ GIT
       httparty
       traject (~> 3.1)
       traject_plus (>= 1.1, < 3.0)
-
-GIT
-  remote: https://github.com/tulibraries/ezwadl.git
-  revision: b9d28a37b9d927f8fb71e7295d54e4684b645278
-  branch: master
-  specs:
-    ezwadl (0.1.2)
-      httparty (~> 0.14)
-      nokogiri (~> 1.6)
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
@@ -651,7 +641,6 @@ DEPENDENCIES
   devise-guests (~> 0.7)
   dotenv-rails
   execjs
-  ezwadl!
   factory_bot_rails
   faraday (= 2.7.4)
   flamegraph
