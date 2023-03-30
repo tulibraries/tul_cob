@@ -65,7 +65,6 @@ module CobAlma
         end
         pickup_locations -= removals
         if (libraries & ["ROME", "JAPAN"]).present?
-          binding.pry
           if libraries.size == 1
             pickup_locations = libraries
           else
