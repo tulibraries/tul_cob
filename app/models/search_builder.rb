@@ -95,18 +95,31 @@ class SearchBuilder < Blacklight::SearchBuilder
     # These named procedures MUST take a value, and an operator as arguments
     # and return a value that can be processed by the next procedure on the
     # list.
-    [ :process_begins_with, :process_is, :substitute_special_chars]
+    [ :process_call_number, :process_begins_with, :process_is, :substitute_special_chars]
   end
 
-  def process_begins_with(value, op)
+  def process_call_number(field: nil, value:, op: nil)
+    if "#{field}".match? /call_number/
+      case op
+      when "contains"
+        value = "*#{value}*"
+
+      when "begins_with"
+        value = "#{value}*"
+      end
+    end
+    value
+  end
+
+  def process_begins_with(field: nil, value:, op: nil)
     if op == "begins_with"
-      process_is(add_first_word_matcher(value), "is") rescue value
+      process_is(value: add_first_word_matcher(value), op: "is") rescue value
     else
       value
     end
   end
 
-  def process_is(value, op)
+  def process_is(field: nil, value:, op: nil)
     return if value.blank?
     return if value.class != String
 
@@ -122,7 +135,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-  def substitute_special_chars(value, _)
+  def substitute_special_chars(field: nil, value:, op: nil)
     value.gsub(/([:?]|\(\))/, " ") rescue value
   end
 
@@ -187,10 +200,12 @@ class SearchBuilder < Blacklight::SearchBuilder
       # query_key are like "q_1", "q_2"..., etc.
       # op is like "contains", "begins_with"..., etc.
       ops.each { |query_key, op|
-        query_value = params[query_key]
+
+        field = params[query_key.tr("q", "f")]
+        value = params[query_key]
 
         # Fold the procedures onto the query value.
-        params[query_key] = procedures.reduce(query_value) { |v, p| send(p, v, op) }
+        params[query_key] = procedures.reduce(value) { |v, p| send(p, field: field, value: v, op: op) }
       }
       params
     end
