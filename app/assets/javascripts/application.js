@@ -41,11 +41,13 @@ $(window).on('turbolinks:load', function() {
 	}
 
 	if ($(window).width() < 768) {
+		$('#nav-tools').insertAfter('#document');
 		$('#facet-filter-icon').removeClass('hidden');
 		$('#facet-panel-collapse').removeClass('show');
 		$('.small-limit-search-heading').removeClass('d-none');
 	}
 	else {
+		$('#nav-tools').insertAfter('#page-links');
 		$('#facet-filter-icon').addClass('hidden');
 	}
 });
@@ -76,13 +78,15 @@ $(document).ready(function() {
     }
 
     if (windowWidth < 768) {
-      $('#facet-filter-icon').removeClass('hidden');
+	  $('#nav-tools').insertAfter('#document');
+	  $('#facet-filter-icon').removeClass('hidden');
       $('#facet-panel-collapse').removeClass('show');
 			$('.small-limit-search-heading').removeClass('d-none');
 			$('.limit-search-heading').addClass('d-none');
     }
     else {
-      $('#facet-filter-icon').addClass('hidden');
+	  $('#nav-tools').insertAfter('#page-links');
+	  $('#facet-filter-icon').addClass('hidden');
       $('#facet-panel-collapse').addClass('show');
     }
 	});

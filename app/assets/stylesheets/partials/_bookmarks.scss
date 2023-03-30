@@ -20,11 +20,17 @@
     margin-bottom: 0.2rem;
   }
 
-  @media(min-width: 991px) {
+  @media(min-width: 768px) {
     text-align: right;
 	}
-  @media(max-width: 991px) {
+  @media(max-width: 768px) {
     display: block;
+    font-family: "Faustina";
+    line-height: 1.3rem;
+
+    label {
+      padding-left: 0.3rem; 
+    }
 
     input {
       position: absolute;
