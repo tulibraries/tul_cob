@@ -41,7 +41,7 @@ module BentoSearch
 
     def view_link(total = nil, helper)
       url = url(helper)
-      helper.link_to "View all research guide results", url, target: "_blank", class: "bento-full-results"
+      helper.link_to "View all research guide results", url, class: "bento-full-results"
     end
   end
 end
