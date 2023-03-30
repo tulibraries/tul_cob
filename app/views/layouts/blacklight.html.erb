@@ -36,6 +36,19 @@
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>
+
+  <% if @nonce.present? %>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VJEKL74JW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9VJEKL74JW');
+    </script>
+  <% end %>
+
   <body class="bg-white <%= render_body_class %>">
 
     <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links') %>">
