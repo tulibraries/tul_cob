@@ -4,30 +4,17 @@
       <%= render :partial => "lib_guide_recommender_bento" %>
     </div>
   <% end %>
-  <% unless result.failed? || result.empty? %>
-    <div class="col mx-auto p-2 bento_compartment <%= engine_id %>">
-      <h2 class="m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
-      <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
-      <%= bento_search result %>
+  <div class="col mx-auto p-2 bento_compartment <%= engine_id %>">
+    <h2 class="m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
+    <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
+      <% unless result.failed? %>
+        <%= bento_search result %>
+      <% else %>
+        <div class="error bento_item py-3">
+          <h3 class="bento_item_title">We're sorry, but something went wrong.</h3>
+        </div>
       <% end %>
-      <%= render_linked_results(engine_id) %>
-    </div>
     <% end %>
-<% end %>
-<% renderable_results(results, options).each_pair do |engine_id, result| %>
-  <% if result.failed? || result.empty? %>
-    <div class="col mx-auto p-2 bento_compartment <%= engine_id %>">
-      <h2 class="m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
-      <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
-        <% unless result.failed? %>
-          <%= bento_search result %>
-        <% else %>
-          <div class="error bento_item py-3">
-            <h3 class="bento_item_title">We're sorry, but something went wrong.</h3>
-          </div>
-        <% end %>
-      <% end %>
-      <%= render_linked_results(engine_id) %>
-    </div>
-    <% end %>
+    <%= render_linked_results(engine_id) %>
+  </div>
 <% end %>
