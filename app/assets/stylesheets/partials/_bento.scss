@@ -42,10 +42,10 @@
 	margin-top: 0;
 }
 
-.bento-avail-btn {
+.btn.bento-avail-btn {
 	background-color: $crystal-blue;
 	color: $midnight-blue;
-	font-weight: bold; 
+	font-family: "Faustina-Bold"; 
  	margin-bottom: 0;
  	margin-left: 0.9375rem;
 	padding: 0.125rem 0.625rem;
@@ -54,7 +54,6 @@
 .bento-libkey {
 	margin-top: 0.3rem;
 	padding: 0.15rem 0.125rem;
-	width: 9rem;
 }
 
 .search-results {
