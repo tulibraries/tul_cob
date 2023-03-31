@@ -1,0 +1,401 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "title": "Soccernomics : why England loses, why Germany and Brazil win, and why the U.S., Japan, Australia, Turkey and even Iraq are destined to become the kings of the world's most popular sport /",
+                "author": "Kuper, Simon.",
+                "isbn": "1568584253",
+                "mms_id": "991006779669703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)316825682",
+                    "(PPT)b44972106-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "[2009]",
+                "publisher_const": "Nation Books",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811"
+            },
+            "holding_data": {
+                "holding_id": "22255832340003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "GV943.9.S64 K88 2009",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "GV943.9.S64 K88 2009",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832340003811"
+            },
+            "item_data": {
+                "pid": "23255832330003811",
+                "barcode": "31982020037893",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "JAPAN",
+                    "desc": "Japan Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Japan Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2011-08-02Z",
+                "modification_date": "2016-01-10Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2011-08-03Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "INT NOTE: mi",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: jtcas",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832340003811/items/23255832330003811"
+        },
+        {
+            "bib_data": {
+                "title": "Soccernomics : why England loses, why Germany and Brazil win, and why the U.S., Japan, Australia, Turkey and even Iraq are destined to become the kings of the world's most popular sport /",
+                "author": "Kuper, Simon.",
+                "isbn": "1568584253",
+                "mms_id": "991006779669703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)316825682",
+                    "(PPT)b44972106-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "[2009]",
+                "publisher_const": "Nation Books",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811"
+            },
+            "holding_data": {
+                "holding_id": "22255832320003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "permanent_call_number": "796.334 KUP",
+                "call_number_type": {
+                    "value": "1",
+                    "desc": "Dewey Decimal classification"
+                },
+                "call_number": "796.334 KUP",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832320003811"
+            },
+            "item_data": {
+                "pid": "23255832310003811",
+                "barcode": "39074029550282",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "ROME",
+                    "desc": "Rome Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Rome Stacks"
+                },
+                "pages": "",
+                "pieces": "",
+                "requested": false,
+                "creation_date": "2013-04-02Z",
+                "modification_date": "2021-02-02Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2013-04-03Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: irstk",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832320003811/items/23255832310003811"
+        },
+        {
+            "bib_data": {
+                "title": "Soccernomics : why England loses, why Germany and Brazil win, and why the U.S., Japan, Australia, Turkey and even Iraq are destined to become the kings of the world's most popular sport /",
+                "author": "Kuper, Simon.",
+                "isbn": "1568584253",
+                "mms_id": "991006779669703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)316825682",
+                    "(PPT)b44972106-01tuli_inst"
+                ],
+                "place_of_publication": "New York :",
+                "date_of_publication": "[2009]",
+                "publisher_const": "Nation Books",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811"
+            },
+            "holding_data": {
+                "holding_id": "22255832300003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "GV943.9.S64 K88 2009",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "GV943.9.S64 K88 2009",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832300003811"
+            },
+            "item_data": {
+                "pid": "23255832290003811",
+                "barcode": "39074026237099",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Charles Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Main Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2011-01-19Z",
+                "modification_date": "2015-12-09Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2011-01-20Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pstk",
+                "statistics_note_1": "TOT RENEW: 3",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991006779669703811/holdings/22255832300003811/items/23255832290003811"
+        }
+    ],
+    "total_record_count": 3
+}

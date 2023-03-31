@@ -1,0 +1,278 @@
+{
+    "item": [
+        {
+            "bib_data": {
+                "title": "Japan after Japan : social and cultural life from the recessionary 1990s to the present /",
+                "author": "Yoda, Tomiko.",
+                "isbn": "0822338130",
+                "mms_id": "991014190869703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)65063787",
+                    "DLCOCM65063787",
+                    "(PPT)b30553854-01tuli_inst"
+                ],
+                "place_of_publication": "Durham :",
+                "date_of_publication": "2006.",
+                "publisher_const": "Duke University Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811"
+            },
+            "holding_data": {
+                "holding_id": "22300035130003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "DS891 .J35 2006",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "DS891 .J35 2006",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {
+                    "value": "RES_SHARE",
+                    "desc": "Interlibrary Loan"
+                },
+                "temp_location": {
+                    "value": "IN_RS_REQ",
+                    "desc": "Lending Resource Sharing Requests"
+                },
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": "1",
+                    "desc": "ILL Loan"
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811/holdings/22300035130003811"
+            },
+            "item_data": {
+                "pid": "23300035120003811",
+                "barcode": "39074022436471",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "MAIN",
+                    "desc": "Charles Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Main Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2006-12-11Z",
+                "modification_date": "2021-01-27Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2006-12-12Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: pstk",
+                "statistics_note_1": "TOT RENEW: 1",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811/holdings/22300035130003811/items/23300035120003811"
+        },
+        {
+            "bib_data": {
+                "title": "Japan after Japan : social and cultural life from the recessionary 1990s to the present /",
+                "author": "Yoda, Tomiko.",
+                "isbn": "0822338130",
+                "mms_id": "991014190869703811",
+                "bib_suppress_from_publishing": "false",
+                "complete_edition": "",
+                "network_number": [
+                    "(OCoLC)65063787",
+                    "DLCOCM65063787",
+                    "(PPT)b30553854-01tuli_inst"
+                ],
+                "place_of_publication": "Durham :",
+                "date_of_publication": "2006.",
+                "publisher_const": "Duke University Press",
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811"
+            },
+            "holding_data": {
+                "holding_id": "22300035110003811",
+                "holding_suppress_from_publishing": "false",
+                "calculated_suppress_from_publishing": "false",
+                "permanent_call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "permanent_call_number": "DS891 .J35 2006",
+                "call_number_type": {
+                    "value": "0",
+                    "desc": "Library of Congress classification"
+                },
+                "call_number": "DS891 .J35 2006",
+                "accession_number": "",
+                "copy_id": "1",
+                "in_temp_location": false,
+                "temp_library": {},
+                "temp_location": {},
+                "temp_call_number_type": {
+                    "value": ""
+                },
+                "temp_call_number": "",
+                "temp_call_number_source": "",
+                "temp_policy": {
+                    "value": ""
+                },
+                "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811/holdings/22300035110003811"
+            },
+            "item_data": {
+                "pid": "23300035100003811",
+                "barcode": "31982060227818",
+                "policy": {
+                    "value": "0",
+                    "desc": "Normal Circulation per location"
+                },
+                "provenance": {
+                    "value": ""
+                },
+                "description": "",
+                "library": {
+                    "value": "JAPAN",
+                    "desc": "Japan Campus Library"
+                },
+                "location": {
+                    "value": "stacks",
+                    "desc": "Japan Stacks"
+                },
+                "pages": "",
+                "pieces": "$0.00",
+                "requested": false,
+                "creation_date": "2011-08-02Z",
+                "modification_date": "2016-07-14Z",
+                "base_status": {
+                    "value": "1",
+                    "desc": "Item in place"
+                },
+                "awaiting_reshelving": false,
+                "physical_material_type": {
+                    "value": "BOOK",
+                    "desc": "Book"
+                },
+                "po_line": "",
+                "is_magnetic": false,
+                "arrival_date": "2011-08-03Z",
+                "year_of_issue": "",
+                "enumeration_a": "",
+                "enumeration_b": "",
+                "enumeration_c": "",
+                "enumeration_d": "",
+                "enumeration_e": "",
+                "enumeration_f": "",
+                "enumeration_g": "",
+                "enumeration_h": "",
+                "chronology_i": "",
+                "chronology_j": "",
+                "chronology_k": "",
+                "chronology_l": "",
+                "chronology_m": "",
+                "break_indicator": {
+                    "value": ""
+                },
+                "pattern_type": {
+                    "value": ""
+                },
+                "linking_number": "",
+                "type_of_unit": "",
+                "receiving_operator": "import",
+                "process_type": {
+                    "value": ""
+                },
+                "inventory_number": "",
+                "inventory_price": "",
+                "alternative_call_number": "",
+                "alternative_call_number_type": {
+                    "value": ""
+                },
+                "storage_location_id": "",
+                "public_note": "",
+                "fulfillment_note": "",
+                "internal_note_1": "INT NOTE: mi",
+                "internal_note_2": "",
+                "internal_note_3": "ITEM LOC: jtcas",
+                "statistics_note_1": "TOT RENEW: 0",
+                "statistics_note_2": "LYCIRC: 0",
+                "statistics_note_3": "",
+                "physical_condition": {},
+                "committed_to_retain": {},
+                "retention_reason": {
+                    "value": ""
+                },
+                "retention_note": ""
+            },
+            "link": "https://api-na.hosted.exlibrisgroup.com/almaws/v1/bibs/991014190869703811/holdings/22300035110003811/items/23300035100003811"
+        }
+    ],
+    "total_record_count": 2
+}
