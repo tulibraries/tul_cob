@@ -303,7 +303,7 @@ RSpec.configure do |config|
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
                 body: File.open(SPEC_ROOT + "/fixtures/requests/japan_with_multiple_libraries.json"))
-    
+
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/japan_and_rome\/holdings\/.*\/items/).
     to_return(status: 200,
               headers: { "Content-Type" => "application/json" },
