@@ -165,27 +165,35 @@ button.online-btn.collapse-button, a.online-btn.collapse-button {
   margin-bottom: 0;
 }
 
-.purchase-order,
-.online-btn,
-.online-btn:visited,
-.online-btn:hover,
-.online-btn:active,
-.databases-btn,
-.databases-btn:focus,
-.databases-btn:hover,
-.databases-btn:active,
-.databases-btn:visited {
+button.purchase-order,
+button.online-btn,
+button.online-btn:visited,
+button.online-btn:hover,
+button.online-btn:active,
+button.databases-btn,
+button.databases-btn:focus,
+button.databases-btn:hover,
+button.databases-btn:active,
+button.databases-btn:visited, 
+a.purchase-order,
+a.online-btn,
+a.online-btn:visited,
+a.online-btn:hover,
+a.online-btn:active,
+a.databases-btn,
+a.databases-btn:focus,
+a.databases-btn:hover,
+a.databases-btn:active,
+a.databases-btn:visited {
   background-color: $crystal-blue;
   color: $midnight-blue;
-  letter-spacing: 0.3px;
-  font-weight: bold; 
+  font-family: "Faustina-Bold"; 
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
   background-color: $green; 
   color: $white;
-  font-weight: bold;
-  letter-spacing: 0.3px;
+  font-family: "Faustina-Bold"; 
 }
 
 .online-btn, .online-btn:visited, .online-btn:hover, .online-btn:active {
@@ -200,8 +208,7 @@ button.btn-warning:visited {
 	background-color: $cherry-red;
 	border-color: #d43f3a;
 	color: $white;
-  font-weight: bold;
-  letter-spacing: 0.3px;
+  font-family: "Faustina-Bold"; 
 }
 
 /* === AEON BUTTON === */
