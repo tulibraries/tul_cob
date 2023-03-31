@@ -359,6 +359,6 @@ module ApplicationHelper
       ActiveSupport::SafeBuffer.new([ relation,
         name_link,
         role ].join(" ").strip)
-    end.join(", ").html_safe
+    end.join("<br>").html_safe
   end
 end

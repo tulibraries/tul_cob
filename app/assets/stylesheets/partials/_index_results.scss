@@ -236,3 +236,12 @@ dd.blacklight-format {
     border-top-left-radius: 0 !important;
   }
 }
+
+/* === PRIMO ARTICLE RESULTS === */
+dd.blacklight-creator {
+  @media(min-width: 768px) {
+    a:not(:first-child) {
+      margin-left: 120px;
+    }
+  }
+}

@@ -11,7 +11,9 @@ class ShowPresenter < Blacklight::ShowPresenter
   def each_secondary_field
     fields_to_render.each do |field_name, field_config, field_presenter|
       field_presenter.except_operations << Blacklight::Rendering::Join
-      yield field_name, field_config, field_presenter unless field_config[:type] == :primary
+      unless field_config[:type] == :primary || field_config[:type] == :responsibility
+        yield field_name, field_config, field_presenter
+      end
     end
   end
 
