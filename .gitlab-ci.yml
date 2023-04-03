@@ -50,7 +50,7 @@ qa_deploy:
   variables:
     IMAGE: $HARBOR/tulibraries/tul_cob
     RANCHER: rancher-np
-    CLUSTER: dev-library0
+    CLUSTER: dev-library1
   stage: deploy
   extends: .helm_setup
   only:
