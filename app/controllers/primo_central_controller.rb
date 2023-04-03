@@ -49,7 +49,7 @@ class PrimoCentralController < CatalogController
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
     config.add_index_field :date, label: "Year", type: :date
     config.add_index_field :isPartOf, label: "Is Part Of"
-    config.add_index_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true
+    config.add_index_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true, separator: ", "
     config.add_index_field :availability
     config.add_index_field :status
     config.add_index_field :error
@@ -64,7 +64,7 @@ class PrimoCentralController < CatalogController
 
     # Show fields
     config.add_show_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true, refwork_tag: :A1, type: :primary
-    config.add_show_field :contributor, label: "Contributor", helper_method: :browse_creator, multi: true, refwork_tag: :A2, type: :primary
+    config.add_show_field :contributor, label: "Contributor", helper_method: :creator_links, multi: true, refwork_tag: :A2, type: :primary
     config.add_show_field :type, label: "Resource Type", helper_method: :doc_translate_resource_type_code, type: :primary
     config.add_show_field :publisher, label: "Published", refwork_tag: :PB, type: :primary
     config.add_show_field :date, label: "Date", refwork_tag: :Y1, type: :primary
