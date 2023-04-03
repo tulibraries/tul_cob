@@ -91,7 +91,7 @@ group :development, :test do
 end
 
 group :production do
-  gem "mysql2", "~> 0.5.4"
+  gem "mysql2", "~> 0.5.5"
   # required for using memcached
   gem "dalli"
 end
