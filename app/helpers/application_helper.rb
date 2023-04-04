@@ -364,7 +364,7 @@ module ApplicationHelper
 
     if separator.present?
       creator_links.join(separator).html_safe
-    else 
+    else
       creator_links
     end
   end

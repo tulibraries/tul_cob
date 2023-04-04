@@ -531,7 +531,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "an article creator with comma separator" do
       let(:controller_name) { "primo_central" }
-      let(:args) { { document: { creator: ["Louisa May Alcott", "Emily Dickinson"] }, field: :creator, config: { separator: ", "} } }
+      let(:args) { { document: { creator: ["Louisa May Alcott", "Emily Dickinson"] }, field: :creator, config: { separator: ", " } } }
 
       it "returns a list of links to creator search for each creator, with comma seaprator" do
         expect(creator_links(args)).to eq(
