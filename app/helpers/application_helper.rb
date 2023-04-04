@@ -339,8 +339,9 @@ module ApplicationHelper
   end
 
   def creator_links(args)
+    separator = args.dig(:config, :separator)
     creator = args[:document][args[:field]] || []
-    creator.map do |creator_data|
+    creator_links = creator.map do |creator_data|
       begin
         creator_data = JSON.parse(creator_data)
         relation = creator_data["relation"]
@@ -359,6 +360,12 @@ module ApplicationHelper
       ActiveSupport::SafeBuffer.new([ relation,
         name_link,
         role ].join(" ").strip)
-    end.join(", ").html_safe
+    end
+
+    if separator.present?
+      creator_links.join(separator).html_safe
+    else
+      creator_links
+    end
   end
 end
