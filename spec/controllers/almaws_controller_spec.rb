@@ -174,7 +174,7 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "sends a 502 error with a layout-less error message in the body", with_rescue: true do
         expect(response).to have_http_status 502
-        expect(response.body).to include "The item request service did not respond or encountered a problem"
+        expect(response.body).to include "There was an error with our request service."
         expect(response).not_to render_template("layouts/blacklight")
       end
 
