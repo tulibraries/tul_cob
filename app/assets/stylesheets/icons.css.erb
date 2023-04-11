@@ -224,10 +224,8 @@ a.facet_media {
     background: transparent url(<%= asset_path "noun_object_crystalblue.svg" %>) no-repeat center left;
   }
 }
-span.game, span.games,
 span.computer_file,
 span.computer_media,
-a.facet_game, a.facet_games,
 a.facet_computer_files,
 a.facet_computer_media {
   background: transparent url(<%= asset_path "noun_computer_media.svg" %>) no-repeat center left;
@@ -236,6 +234,16 @@ a.facet_computer_media {
 
   .document-header-container & {
     background: transparent url(<%= asset_path "noun_computer_media_crystalblue.svg" %>) no-repeat center left;
+  }
+}
+span.game, span.games, a.facet_game, a.facet_games
+ {
+  background: transparent url(<%= asset_path "noun_game.svg" %>) no-repeat center left;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
+
+  .document-header-container & {
+    background: transparent url(<%= asset_path "noun_game_crystalblue.svg" %>) no-repeat center left;
   }
 }
 span.database, a.facet_database, a.facet_databases,
