@@ -57,5 +57,18 @@ qa_deploy:
     - main
   script:
     - *export_variables
-    -  helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.1.*" --untar
-    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.1.*" --history-max=5 --namespace=librarysearch-qa --values librarysearch/values.yaml --set image.repository=$IMAGE:$VERSION
+    - helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.*" --untar
+    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.*" --history-max=5 --namespace=librarysearch-qa --values librarysearch/values.yaml --set image.repository=$IMAGE:$VERSION
+
+prod_deploy:
+  variables:
+    IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
+    RANCHER: rancher
+    CLUSTER: prod-library1
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - tags
+  script:
+    - helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.1" --untar
+    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.1" --history-max=5 --namespace=librarysearch-prod --values librarysearch/values-prod.yaml --set image.repository=$IMAGE:$CI_COMMIT_TAG
