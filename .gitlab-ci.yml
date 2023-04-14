@@ -29,22 +29,30 @@ lint:
   extends: .lint_docker
   variables:
     DF: ".docker/app/Dockerfile.prod"
-
+  except:
+    - tags
+    
 build:
   stage: build
   extends: .build_image
   variables:
     DF: ".docker/app/Dockerfile.prod --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE --no-cache"
-
+  except:
+    - tags
+    
 scan:
   stage: scan
   extends: .scanimage_high
   variables:
     THRESHOLD: 10
+  except:
+    - tags
 
 tag:
   stage: tag
   extends: .tag_image
+  except:
+    - tags
 
 qa_deploy:
   variables:
