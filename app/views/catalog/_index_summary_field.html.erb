@@ -5,12 +5,12 @@
       <% if rendered.length == 1 %>
         <div class="blacklight-<%= field_name.parameterize %> summary-previews pt-2 px-3"><%= safe_join(Array.wrap(rendered)) %></div>
       <% elsif rendered.length > 1 %>
-        <div class="blacklight-<%= field_name.parameterize %> summary-previews pt-2"
+        <div class="blacklight-<%= field_name.parameterize %> summary-previews pt-2">
           <ul>
           <% rendered.each do |value| %>
             <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>
           <% end %>
-          </ul
+          </ul> 
         </div>
       <% end -%>
   <% end -%>
