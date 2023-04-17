@@ -3,7 +3,7 @@
 <% if rendered.length == 1 %>
   <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"><%= safe_join(Array.wrap(rendered)) %></dd>
 <% elsif rendered.length > 1 %>
-  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9"
+  <dd class="blacklight-<%= field_name.parameterize %> col-xs-12 col-sm-9">
     <ul>
     <% rendered.each do |value| %>
       <li class="list_items"> <%= safe_join(Array.wrap(value)) %> </li>

@@ -1,6 +1,6 @@
 <div class="row button-break pt-3"></div>
-<button class="btn online-btn collapsed collapse-button" data-toggle="collapse" data-target="#<%= document_id %>" onclick="loadArticleIframe('div#<%= document_id %>');" id="online_button">
-  <span class="avail-label" aria-expanded="false">Available online</span>
+<button class="btn online-btn collapsed collapse-button" data-toggle="collapse" data-target="#<%= document_id %>" aria-expanded="false" onclick="loadArticleIframe('div#<%= document_id %>');" id="online_button">
+  <span class="avail-label">Available online</span>
 </button>
 
 <%= render "libkey_btn", :document => @document %>

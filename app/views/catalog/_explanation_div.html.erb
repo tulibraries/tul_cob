@@ -3,7 +3,7 @@
   <div class="explantion-wrapper col-sm-12 col-lg-10 mt-3 pl-5 pr-5 mx-auto" >
     <p class="explanation">
       <%= explanation_translations(controller_name) %>
-      <%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %>
+      <strong><%= link_to(t("bento.more_information_html"), t("bento.more_information_link"), target: "_blank") %></strong>
     </p>
   </div>
     <button class="btn btn-link explantion-btn col-sm-12 col-lg-2 pt-0" data-action="<%= "explanation##{controller_name}" %>">Hide</button>
