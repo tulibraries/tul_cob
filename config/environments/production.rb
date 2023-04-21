@@ -83,7 +83,8 @@ Rails.application.configure do
     user_name: "templelibraries@gmail.com",
     password: ENV["ASKTULIB_PASSWORD"],
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    read_timeout: 60,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
