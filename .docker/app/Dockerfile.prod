@@ -22,7 +22,7 @@ RUN apk add -U --no-cache \
       tzdata=2023c-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.38.4-r1 \
+      git=2.38.5-r0 \
       libxslt-dev=1.1.37-r1 \
       mariadb-dev=10.6.12-r0 \
       nodejs=18.14.2-r0 \
