@@ -75,6 +75,8 @@ ci-setup-db:
 	$(DOCKER) exec app bundle exec rake db:migrate
 
 BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.1-alpine
+DEBUGGER_BASE_IMAGE ?= harbor.k8s.temple.edu/tulibraries/tul_cob:latest
+
 IMAGE ?= tulibraries/tul_cob
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
@@ -122,6 +124,17 @@ build:
 		--progress plain \
 		--no-cache .  | tee ./log/cob-docker-build.log
 
+build-debugger:
+	@docker pull $(DEBUGGER_BASE_IMAGE)
+	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
+		--build-arg BASE_IMAGE=$(DEBUGGER_BASE_IMAGE) \
+		--platform $(PLATFORM) \
+		--tag $(HARBOR)/$(IMAGE):$(VERSION)-debugger \
+		--tag $(HARBOR)/$(IMAGE):debugger \
+		--file .docker/app/Dockerfile.debugger \
+		--progress plain \
+		--no-cache .  | tee ./log/cob-docker-build-debugger.log
+
 shell:
 	@docker run --rm -it \
 		--entrypoint=sh --user=root \
@@ -141,6 +154,15 @@ scan:
 	@if [ $(CI) == false ]; \
 		then \
 			trivy image $(HARBOR)/$(IMAGE):$(VERSION); \
+		fi
+
+deploy-debugger:
+	@docker push $(HARBOR)/$(IMAGE):$(VERSION)-debugger \
+	# This "if" statement needs to be a one liner or it will fail.
+	# Do not edit indentation
+	@if [ $(VERSION) != debugger ]; \
+		then \
+			docker push $(HARBOR)/$(IMAGE):debugger; \
 		fi
 
 deploy: scan gitlab-lint
