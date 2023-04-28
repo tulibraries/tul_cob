@@ -1,0 +1,9 @@
+# Allow base image override
+ARG BASE_IMAGE="harbor.k8s.temple.edu/tulibraries/tul_cob:latest"
+
+# hadolint ignore=DL3006,DL3026
+FROM "${BASE_IMAGE}"
+
+USER root
+RUN bundle add pry rails-pry
+USER nobody
