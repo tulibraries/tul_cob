@@ -71,7 +71,8 @@ class ApplicationController < ActionController::Base
   protected
 
     def no_cache
-      response.headers["Cache-Control"] = "no-store"
+      response.set_header("X-Robots-Tag", "noindex")
+      response.set_header("Cache-Control", "private, no-store, must-revalidate")
       response.headers["Pragma"] = "no-cache"
       response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
     end

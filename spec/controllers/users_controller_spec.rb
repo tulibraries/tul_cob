@@ -85,7 +85,7 @@ RSpec.describe UsersController, type: :controller do
 
         it "has no-store headers for account" do
           get :account
-          expect(response.headers["Cache-Control"]).to eq("no-store")
+          expect(response.headers["Cache-Control"]).to eq("private, no-store")
           expect(response.headers["Pragma"]).to eq("no-cache")
           expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
         end

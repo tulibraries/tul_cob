@@ -13,7 +13,7 @@ RSpec.describe SessionsController, type: :controller do
       request.headers["HTTP_ACCEPT"] = "*/*"
       get :new
 
-      expect(response.headers["Cache-Control"]).to eq("no-store")
+      expect(response.headers["Cache-Control"]).to eq("private, no-store")
       expect(response.headers["Pragma"]).to eq("no-cache")
       expect(response.headers["Expires"]).to eq("Fri, 01 Jan 1990 00:00:00 GMT")
     end
