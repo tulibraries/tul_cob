@@ -7,7 +7,7 @@ include:
       - "kubectl_commands.yaml"
 
 variables:
-  IMAGE: "tulibraries/tul_cob"
+  IMAGE: "tulibraries/librarysearch"
   HARBOR: "harbor.k8s.temple.edu"
   HELM_EXPERIMENTAL_OCI: "1"
 
@@ -56,7 +56,7 @@ tag:
 
 qa_deploy:
   variables:
-    IMAGE: $HARBOR/tulibraries/tul_cob
+    IMAGE: $HARBOR/tulibraries/librarysearch
     RANCHER: rancher-np
     CLUSTER: dev-library1
   stage: deploy
@@ -86,7 +86,7 @@ tag_release:
 
 prod_deploy:
   variables:
-    IMAGE: harbor.k8s.temple.edu/tulibraries/tul_cob
+    IMAGE: harbor.k8s.temple.edu/tulibraries/librarysearch
     RANCHER: rancher
     CLUSTER: prod-library1
   stage: deploy
