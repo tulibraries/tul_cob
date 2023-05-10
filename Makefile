@@ -75,9 +75,9 @@ ci-setup-db:
 	$(DOCKER) exec app bundle exec rake db:migrate
 
 BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.1-alpine
-DEBUGGER_BASE_IMAGE ?= harbor.k8s.temple.edu/tulibraries/tul_cob:latest
+DEBUGGER_BASE_IMAGE ?= harbor.k8s.temple.edu/tulibraries/librarysearch:latest
 
-IMAGE ?= tulibraries/tul_cob
+IMAGE ?= tulibraries/librarysearch
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
