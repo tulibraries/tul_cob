@@ -268,7 +268,7 @@ Devise.setup do |config|
     certificate: Rails.configuration.devise["saml_certificate"],
     private_key: Rails.configuration.devise["saml_private_key"],
     assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
-    idp_sso_service_url: "https://np-fim.temple.edu/idp/profile/SAML2/Redirect/SSO",
+    idp_sso_service_url: Rails.configuration.devise["idp_sso_service_url"],
     issuer: Rails.configuration.devise["saml_issuer"],
     idp_slo_service_binding: :redirect,
     idp_sso_service_binding: :post,
