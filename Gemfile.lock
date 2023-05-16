@@ -238,6 +238,7 @@ GEM
     concurrent-ruby (1.2.2)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
+    connection_pool (2.4.0)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -635,6 +636,7 @@ DEPENDENCIES
   cob_index!
   cob_web_index!
   coffee-rails (~> 5.0)
+  connection_pool
   dalli
   database_cleaner
   devise!
