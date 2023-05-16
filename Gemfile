@@ -94,4 +94,5 @@ group :production do
   gem "mysql2", "~> 0.5.5"
   # required for using memcached
   gem "dalli"
+  gem "connection_pool"
 end
