@@ -251,16 +251,6 @@ a#bookmarks_nav {
   }
 }
 
-.search-widgets {
-
-	@media(max-width: 485px) {
-		align-items: center;
-		padding: 0.625rem;
-		text-align: center;
-		width: 100%;
-  }
-}
-
 /* SEARCH RESULTS SORT AND PER PAGE */
 #sortAndPerPage {
 	justify-content: space-between;
