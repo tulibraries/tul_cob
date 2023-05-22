@@ -94,5 +94,5 @@ prod_deploy:
   only:
     - tags
   script:
-    - helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.2" --untar
-    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.2" --history-max=5 --namespace=librarysearch-prod --values librarysearch/values-prod.yaml --set image.repository=$IMAGE:$CI_COMMIT_TAG
+    - helm pull oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.8" --untar
+    - helm upgrade librarysearch oci://$HARBOR/tulibraries/librarysearch-charts/librarysearch --version "0.3.8" --history-max=5 --namespace=librarysearch-prod --values librarysearch/values-prod.yaml --set image.repository=$IMAGE:$CI_COMMIT_TAG
