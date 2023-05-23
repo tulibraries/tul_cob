@@ -54,7 +54,7 @@ gem "railties"
 gem "rsolr", "~> 2.4"
 gem "ruby-saml", "1.14.0"
 gem "sass-rails", "~> 6.0"
-gem "skylight", "4.3.2"
+gem "skylight"
 gem "turbolinks", "~> 5"
 gem "twitter-typeahead-rails", "0.11.1"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
