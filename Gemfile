@@ -28,7 +28,7 @@ gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"
 gem "jwt"
 gem "coffee-rails", "~> 5.0"
-gem "devise", github: "heartcombo/devise"
+gem "devise"
 gem "devise-guests", "~> 0.7"
 gem "dotenv-rails"
 gem "execjs"
