@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: f5a55b8e2430378a2b57509c8a3b5ee660cc4c60
+  revision: a9cb96db26fb7c587dad575081b0eeeb7fd58804
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -299,7 +299,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jbuilder (2.11.5)
