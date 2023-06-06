@@ -6119,6 +6119,14 @@
 			<subfield code="3">View preserved website versions on Archive-It.</subfield>
 			<subfield code="u">https://archive-it.org/collections/4487</subfield>
 		</datafield>
+    <datafield ind1="8" ind2=" " tag="HLD">
+      <subfield code="b">SCRC</subfield>
+      <subfield code="c">rarestacks</subfield>
+      <subfield code="h">SCRC 40</subfield>
+      <subfield code="8">22272082280003811</subfield>
+      <subfield code="updated">2017-07-18 21:31:14</subfield>
+      <subfield code="created">2017-06-20 07:46:28</subfield>
+    </datafield>
 	</record>
 	<record>
 		<controlfield tag='001'>991036440439703811</controlfield>
