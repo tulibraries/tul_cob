@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 666c7a0392d053239aca8b8241ae78ea425c8140
+  revision: f78708acba6b3c82bb0e050e8bb1c6149cb65bcd
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -299,7 +299,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     jbuilder (2.11.5)
