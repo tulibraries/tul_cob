@@ -12,7 +12,7 @@ module RequestHelper
     new_user_session_with_redirect_path(url)
   end
 
-  def ez_borrow_link_with_updated_query(url)
+  def ez_borrow_link_title(url)
     uri = URI.parse(url)
     params = CGI.parse(uri.query)
 

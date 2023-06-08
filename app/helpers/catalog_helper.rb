@@ -604,8 +604,21 @@ module CatalogHelper
 
   def ez_borrow_list_item(controller_name)
     if controller_name == "catalog"
-      content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), t("no_results.ez_borrow_link"), target: "_blank")))
+      content_tag(:li, t("no_results.ez_borrow_html", href: link_to(t("no_results.ez_borrow_href"), ez_borrow_link_keyword(t("no_results.ez_borrow_link")), target: "_blank")))
     end
+  end
+
+  def ez_borrow_link_keyword(url)
+    uri = URI.parse(url)
+    query = "#{params[:q]}"
+
+    URI::HTTPS.build(
+      host: uri.host,
+      path: "/Search/Results",
+      query: URI.encode_www_form({
+        "lookfor" => query,
+        "type" => "AllFields"
+      })).to_s
   end
 
   def campus_closed?

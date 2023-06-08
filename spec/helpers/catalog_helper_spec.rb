@@ -686,8 +686,10 @@ end
   describe "#ez_borrow_list_item(controller_name)" do
     context "catalog controller" do
       let(:controller_name) { "catalog" }
+      let(:params) { { "q": "test" } }
+
       it "adds an ez_borrow list item" do
-        expect(ez_borrow_list_item(controller_name)).to eql "<li>To request books that are not available at Temple, use <a target=\"_blank\" href=\"https://ezborrow.reshare.indexdata.com/\">E-ZBorrow</a>.</li>"
+        expect(ez_borrow_list_item(controller_name)).to eql "<li>For books not available from Temple, search <a target=\"_blank\" href=\"https://ezborrow.reshare.indexdata.com/Search/Results?lookfor=test&amp;type=AllFields\">E-ZBorrow</a>.</li>"
       end
     end
 
