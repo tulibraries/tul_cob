@@ -689,7 +689,7 @@ end
       let(:params) { { "q": "test" } }
 
       it "adds an ez_borrow list item" do
-        expect(ez_borrow_list_item(controller_name)).to eql "<li>For books not available from Temple, search <a target=\"_blank\" href=\"https://ezborrow.reshare.indexdata.com/Search/Results?lookfor=test&amp;type=AllFields\">E-ZBorrow</a>.</li>"
+        expect(ez_borrow_list_item(controller_name)).to eql "<li>For books not available at Temple, search <a target=\"_blank\" href=\"https://ezborrow.reshare.indexdata.com/Search/Results?lookfor=test&amp;type=AllFields\">E-ZBorrow</a>.</li>"
       end
     end
 
