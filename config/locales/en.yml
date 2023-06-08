@@ -284,7 +284,7 @@ en:
     for_help: "for help."
     search_suggestions: "Search Suggestions"
     not_at_temple: "Temple Doesn't Have It?"
-    ez_borrow_html: "For books not available from Temple, search %{href}."
+    ez_borrow_html: "For books not available at Temple, search %{href}."
     ez_borrow_href: "E-ZBorrow"
     ez_borrow_link: "https://ezborrow.reshare.indexdata.com/"
     illiad_html: "For journal articles, books not available through E-ZBorrow, and other materials not available at Temple, search %{href}."
