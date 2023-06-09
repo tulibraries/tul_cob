@@ -1,6 +1,10 @@
 <h3 class="pt-3"><%= t("no_results.title", engine: t("bento.books_and_media")) %></h3>
-<hr />
+<hr/>
 
 <div class="noresults">
   <%= render "suggestions" %>
+  <h4><%= t("no_results.not_at_temple") %></h4>
+    <ul>
+      <%= ez_borrow_list_item("catalog") %>
+    </ul>
 </div>
