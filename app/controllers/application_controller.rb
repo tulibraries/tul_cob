@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_action :script_nonce
   before_action :get_manifold_alerts, only: [
     :index, :show, :not_found, :internal_server_error,
     :account, :librarian_view, :citation, :email, :facet
@@ -60,12 +59,6 @@ class ApplicationController < ActionController::Base
         resp["data"] || []
       end
     }
-  end
-
-  def script_nonce
-    if Rails.env.production?
-      @nonce = SecureRandom.base64(12)
-    end
   end
 
   protected
