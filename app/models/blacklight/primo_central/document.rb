@@ -150,8 +150,13 @@ module Blacklight::PrimoCentral::Document
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
       Thread.new {
-        (HTTParty.get(libkey_articles_url, timeout: 2) rescue {})["data"]
-          &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+        begin
+          HTTParty.get(libkey_articles_url, timeout: 2)["data"]
+            &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+        rescue => e
+          Honeybadger.notify(e)
+          nil
+        end
       }
     end
 end
