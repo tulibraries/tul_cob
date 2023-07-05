@@ -60,10 +60,6 @@ module ApplicationHelper
     results.total_items[:online_total] || 0 rescue 0
   end
 
-  def bento_single_link(field)
-    alma_electronic_resource_direct_link(field.first["portfolio_id"])
-  end
-
   def bento_engine_nice_name(engine_id)
     I18n.t("bento.#{engine_id}.nice_name")
   end

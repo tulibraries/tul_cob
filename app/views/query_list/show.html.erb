@@ -7,7 +7,7 @@
         <div class="query-item-availability mt-auto">
           <%= libraries_query_display(doc)%>
           <% if has_one_electronic_resource?(doc) %>
-            <%= link_to "Online", bento_single_link(doc["electronic_resource_display"]), class:"query-list-online btn btn-sm bento-avail-btn m-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
+            <%= link_to "Online", single_link_builder(doc["electronic_resource_display"].first), class:"query-list-online btn btn-sm bento-avail-btn m-0", title:"This link opens the resource in a new tab.", target:"_blank" %>
           <% elsif has_many_electronic_resources?(doc) %>
             <%= link_to "Online", solr_document_url(doc["id"]), class:"query-list-online btn btn-sm bento-avail-btn m-0" %>
           <% end %>
