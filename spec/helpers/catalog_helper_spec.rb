@@ -520,7 +520,7 @@ RSpec.describe CatalogHelper, type: :helper do
 
     context "without a url" do
       let(:field) { { "portfolio_id" => "53395029150003811" } }
-    
+
       it "has generic message for link" do
         expect(single_link_builder(field)).to eq("https://temple.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=53395029150003811&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
       end
