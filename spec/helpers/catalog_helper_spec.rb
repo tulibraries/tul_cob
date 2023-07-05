@@ -510,6 +510,9 @@ RSpec.describe CatalogHelper, type: :helper do
   end
 
   describe "#single_link_builder(field)" do
+  let(:alma_domain) { "sandbox01-na.alma.exlibrisgroup.com" }
+  let(:alma_institution_code) { "01TULI_INST" }
+
     context "with a url" do
       let(:field) { { "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" } }
 
@@ -522,7 +525,7 @@ RSpec.describe CatalogHelper, type: :helper do
       let(:field) { { "portfolio_id" => "53395029150003811" } }
 
       it "has generic message for link" do
-        expect(single_link_builder(field)).to eq("https://temple.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=53395029150003811&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
+        expect(single_link_builder(field)).to eq("https://sandbox01-na.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?Force_direct=true&portfolio_pid=53395029150003811&rfr_id=info%3Asid%2Fprimo.exlibrisgroup.com&u.ignore_date_coverage=true")
       end
     end
   end
