@@ -510,8 +510,8 @@ RSpec.describe CatalogHelper, type: :helper do
   end
 
   describe "#single_link_builder(field)" do
-  let(:alma_domain) { "sandbox01-na.alma.exlibrisgroup.com" }
-  let(:alma_institution_code) { "01TULI_INST" }
+    let(:alma_domain) { "sandbox01-na.alma.exlibrisgroup.com" }
+    let(:alma_institution_code) { "01TULI_INST" }
 
     context "with a url" do
       let(:field) { { "url" => "http://libproxy.temple.edu/login?url=http://www.aspresolver.com/aspresolver.asp?SHM2;1772483" } }
