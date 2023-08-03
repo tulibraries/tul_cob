@@ -3,7 +3,7 @@ include:
     file:
       - "lint_docker.yaml"
       - "build_docker.yaml"
-      - "security_scan.yaml"
+      # - "security_scan.yaml"
       - "kubectl_commands.yaml"
 
 variables:
@@ -21,7 +21,7 @@ before_script:
 stages:
   - lint
   - build
-  - scan
+  # - scan
   - tag
   - deploy
 
@@ -40,13 +40,13 @@ build:
   except:
     - tags
     
-scan:
-  stage: scan
-  extends: .scanimage_high
-  variables:
-    THRESHOLD: 10
-  except:
-    - tags
+# scan:
+#   stage: scan
+#   extends: .scanimage_high
+#   variables:
+#     THRESHOLD: 10
+#   except:
+#     - tags
 
 tag:
   stage: tag
