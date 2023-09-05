@@ -1,19 +1,20 @@
 <div class="user-info row row-eq-height no-gutters px-2">
 	<div>
 	  <ul class="user-info-list">
-	    <li><span class="user-info-label">Name:</span> <%= @user.alma.preferred_name %></li>
-			<li><%= link_to(t("account.update_name"), t("account.update_name_href")) %></li>
-	    <li><span class="user-info-label">Status:</span> Active </li>
-			<li><span class="user-info-label">Items requested:</span> <%= @user.alma.total_requests %></li>
-	    <li><span class="user-info-label">Items checked out:</span> <%= @user.alma.total_loans %></li>
-	    <li>
-				<span class="user-info-label">Current balance:</span>
-	    	<span class="balance"><%= number_to_currency(@user.alma.total_fines) %></span>
-			</li>
+	  	<li><%= t("account.temporary_text_html", href: link_to(t("account.temporary_text_href"), t("blacklight.help_link"))) %></li>
+	#     <li><span class="user-info-label">Name:</span> <%= @user.alma.preferred_name %></li>
+	# 		<li><%= link_to(t("account.update_name"), t("account.update_name_href")) %></li>
+	#     <li><span class="user-info-label">Status:</span> Active </li>
+	# 		<li><span class="user-info-label">Items requested:</span> <%= @user.alma.total_requests %></li>
+	#     <li><span class="user-info-label">Items checked out:</span> <%= @user.alma.total_loans %></li>
+	#     <li>
+	# 			<span class="user-info-label">Current balance:</span>
+	#     	<span class="balance"><%= number_to_currency(@user.alma.total_fines) %></span>
+	# 		</li>
 
-      <li>
-        <%= quik_pay_button %>
-      </li>
+    #   <li>
+    #     <%= quik_pay_button %>
+    #   </li>
 	  </ul>
 	</div>
 </div>
