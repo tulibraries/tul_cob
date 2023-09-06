@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "6.1.7.4"
+gem "rails", "6.1.7.5"
 
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "autoprefixer-rails"
