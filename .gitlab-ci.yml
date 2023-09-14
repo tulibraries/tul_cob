@@ -11,6 +11,8 @@ variables:
   IMAGE: "tulibraries/librarysearch"
   HARBOR: "harbor.k8s.temple.edu"
   HELM_EXPERIMENTAL_OCI: "1"
+  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, app/controllers/application_controller.rb" # TODO: Remove after BL-1806 completed
+
 
 .export_variables: &export_variables
   - source .env
@@ -32,7 +34,7 @@ lint:
     DF: ".docker/app/Dockerfile.prod"
   except:
     - tags
-    
+
 build:
   stage: build
   extends: .build_image
