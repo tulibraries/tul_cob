@@ -5,6 +5,7 @@ include:
       - "build_docker.yaml"
       - "security_scan.yaml"
       - "kubectl_commands.yaml"
+      - "sast_scanning.yaml"
 
 variables:
   IMAGE: "tulibraries/librarysearch"
