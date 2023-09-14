@@ -1,0 +1,3 @@
+In this context the RE2 object with the user supplied regex is relatively safe
+due to RE2 not supporting backtracking which can be abused to cause long running
+queries.
