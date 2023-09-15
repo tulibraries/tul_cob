@@ -54,13 +54,8 @@ module UsersHelper
       query: query.to_query).to_s
   end
 
-  # TODO: Remove once we go completely to k8.
   def student_faculty_login_uri
-    if Rails.configuration.devise["saml_certificate"].present?
-      omniauth_authorize_path(resource_name, :saml, target: params[:redirect_to])
-    else
-      omniauth_authorize_path(resource_name, :shibboleth, target: params[:redirect_to])
-    end
+    omniauth_authorize_path(resource_name, :saml, target: params[:redirect_to])
   end
 
   def quik_pay_button
