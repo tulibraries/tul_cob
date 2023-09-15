@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: dc4c23564161b5f65d44322b0e91b266cfd657f5
+  revision: 545d79dd5d76bc97bf0abf4b58551d4bcb1f3000
   branch: main
   specs:
     cob_az_index (0.1.0)
