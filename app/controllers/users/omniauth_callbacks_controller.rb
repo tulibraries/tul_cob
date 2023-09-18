@@ -11,16 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
   end
 
-  def shibboleth
-    @user = User.from_omniauth(request.env["omniauth.auth"])
-    sign_in(:user, @user)
-    session[:alma_auth_type] = "sso"
-    session[:alma_sso_user] = @user.uid
-    session[:alma_sso_token] = SecureRandom.hex(10)
-    set_flash_message(:success, :success, kind: "Temple Single Sign On") if is_navigational_format?
-    redirect_to params[:target] || helpers.users_account_path
-  end
-
   def saml
     auth = request.env["omniauth.auth"]
     omniauth_params = request.env["omniauth.params"]

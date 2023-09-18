@@ -79,9 +79,9 @@ RSpec.describe UsersHelper, type: :helper do
       end
     end
 
-    context "not configured for SAML auth" do
-      it "uses the shibboleth login by default" do
-        expect(helper.student_faculty_login_uri).to eq("/users/auth/shibboleth")
+    context "configured for SAML auth" do
+      it "uses the saml login by default" do
+        expect(helper.student_faculty_login_uri).to eq("/users/auth/saml")
       end
     end
 
