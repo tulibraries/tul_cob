@@ -29,10 +29,10 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v8-{{ arch }}-{{ .Branch }}
-            - gem-cache-v8-{{ arch }}
-            - yarn-cache-v8-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v9-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v9-{{ arch }}-{{ .Branch }}
+            - gem-cache-v9-{{ arch }}
+            - yarn-cache-v9-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
