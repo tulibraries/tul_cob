@@ -3,6 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@2.0.0
   coveralls: coveralls/coveralls@1.0.6
+  browser-tools: circleci/browser-tools@1.4.6
 
 workflows:
   version: 2
@@ -51,9 +52,13 @@ jobs:
           name: Run yarn install on the app container
           command: make ci-yarn-install
 
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
-          name: Add headless browser testing dependencies
-          command: make add-testing-deps
+          name: Check install
+          command: |
+            google-chrome --version
+            chromedriver --version
 
       - run:
           name: Copy the vendor/bundle from the container to local
