@@ -3,7 +3,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@2.0.0
   coveralls: coveralls/coveralls@1.0.6
-  browser-tools: circleci/browser-tools@1.4.6
+  browser-tools: circleci/browser-tools@1.4.5
 
 workflows:
   version: 2
@@ -54,15 +54,7 @@ jobs:
 
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - run:
-          name: Download Selenium
-          command: |
-            curl -O http://selenium-release.storage.googleapis.com/4.0/selenium-server-standalone-4.0.0-alpha-2.jar
-      - run:
-          name: Start Selenium
-          command: |
-            java -jar selenium-server-standalone-4.0.0-alpha-2.jar -log selenium.log
-          background: true
+      - checkout
 
       - run:
           name: Copy the vendor/bundle from the container to local
