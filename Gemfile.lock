@@ -275,7 +275,7 @@ GEM
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
-    ffi (1.16.1)
+    ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -646,7 +646,7 @@ DEPENDENCIES
   execjs
   factory_bot_rails
   faraday (= 2.7.11)
-  ffi (= 1.16.1)
+  ffi (= 1.15.5)
   flamegraph
   foreman
   hashie (~> 4.1.0)
