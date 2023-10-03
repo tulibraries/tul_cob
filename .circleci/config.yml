@@ -53,9 +53,15 @@ jobs:
           command: make ci-yarn-install
 
       - browser-tools/install-chrome
-          chrome-version:  117.0.5938.92
       - browser-tools/install-chromedriver
-      - checkout
+      - run:
+          name: Fix PATH
+          command: |
+            ln -s /usr/local/bin/google-chrome-stable /usr/local/bin/google-chrome
+            mv /usr/local/bin/chromedriver /usr/local/bin/chromedriver2
+            ln -s /usr/local/bin/chromedriver2/chromedriver /usr/local/bin/chromedriver
+            echo 'export PATH=/usr/local/bin/google-chrome:$PATH' >> $BASH_ENV
+            echo 'export PATH=/usr/local/bin/chromedriver:$PATH' >> $BASH_ENV
 
       - run:
           name: Copy the vendor/bundle from the container to local
