@@ -54,12 +54,15 @@ jobs:
 
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - checkout
       - run:
-          name: Check install
+          name: Download Selenium
           command: |
-            google-chrome --version
-            chromedriver --version
+            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: |
+            java -jar selenium-server-standalone-3.5.3.jar -log selenium.log
+          background: true
 
       - run:
           name: Copy the vendor/bundle from the container to local
