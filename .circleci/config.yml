@@ -57,11 +57,11 @@ jobs:
       - run:
           name: Download Selenium
           command: |
-            curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+            curl -O http://selenium-release.storage.googleapis.com/4.0/selenium-server-standalone-4.0.0-alpha-2.jar
       - run:
           name: Start Selenium
           command: |
-            java -jar selenium-server-standalone-3.5.3.jar -log selenium.log
+            java -jar selenium-server-standalone-4.0.0-alpha-2.jar -log selenium.log
           background: true
 
       - run:
