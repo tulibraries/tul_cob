@@ -53,6 +53,7 @@ jobs:
           command: make ci-yarn-install
 
       - browser-tools/install-chrome
+          chrome-version:  117.0.5938.92
       - browser-tools/install-chromedriver
       - checkout
 
