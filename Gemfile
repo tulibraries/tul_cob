@@ -82,7 +82,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-rails"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", "4.12.0"
   gem "simplecov"
   gem "simplecov-lcov"
   gem "vcr"
