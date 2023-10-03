@@ -51,17 +51,10 @@ jobs:
       - run:
           name: Run yarn install on the app container
           command: make ci-yarn-install
-
+      - run: sudo apt-get update
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
-      - run:
-          name: Fix PATH
-          command: |
-            ln -s /usr/local/bin/google-chrome-stable /usr/local/bin/google-chrome
-            mv /usr/local/bin/chromedriver /usr/local/bin/chromedriver2
-            ln -s /usr/local/bin/chromedriver2/chromedriver /usr/local/bin/chromedriver
-            echo 'export PATH=/usr/local/bin/google-chrome:$PATH' >> $BASH_ENV
-            echo 'export PATH=/usr/local/bin/chromedriver:$PATH' >> $BASH_ENV
+      - checkout
 
       - run:
           name: Copy the vendor/bundle from the container to local
