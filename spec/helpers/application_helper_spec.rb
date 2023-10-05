@@ -540,6 +540,20 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
+    context "an article creator with a null value" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator: ["null", "Emily Dickinson"] }, field: :creator } }
+
+      it "returns a list of links without null values" do
+        expect(creator_links(args)).to_not include([
+          "<a href=\"http://test.host/articles?search_field=creator&amp;q=null\">null</a>"
+        ])
+        expect(creator_links(args)).to eq([
+          "<a href=\"http://test.host/articles?search_field=creator&amp;q=Emily Dickinson\">Emily Dickinson</a>"
+        ])
+      end
+    end
+
     context "no catalog creator" do
       let(:controller_name) { "primo_central" }
       let(:args) { { document: { creator_facet: [""] }, field: :creator_facet } }

@@ -337,6 +337,7 @@ module ApplicationHelper
   def creator_links(args)
     separator = args.dig(:config, :separator)
     creator = args[:document][args[:field]] || []
+    creator.delete("null")
     creator_links = creator.map do |creator_data|
       begin
         creator_data = JSON.parse(creator_data)
