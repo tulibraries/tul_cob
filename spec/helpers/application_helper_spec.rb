@@ -171,6 +171,13 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.emergency_alert_message).to eq("Test banner message")
       end
     end
+
+    context "@manifold_alerts_thread is nil" do
+      it "does return the scroll_text" do
+        helper.instance_variable_set("@manifold_alerts_thread", nil)
+        expect(helper.emergency_alert_message).to eq(nil)
+      end
+    end
   end
 
   describe "#emergency_alert_link" do
@@ -180,6 +187,13 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.emergency_alert_link).to have_text("Click here to see full details.")
       end
     end
+
+    context "link field in nil" do
+      it "does return the link" do
+        helper.instance_variable_set("@manifold_alerts_thread", nil)
+        expect(helper.emergency_alert_link).to eq(nil)
+      end
+    end
   end
 
   describe "#manifold_alerts" do
@@ -187,6 +201,13 @@ RSpec.describe ApplicationHelper, type: :helper do
       it "returns empty array []" do
         helper.instance_variable_set("@manifold_alerts_thread", Thread.new { [] })
         expect(helper.manifold_alerts).to eq([])
+      end
+    end
+
+    context "nil value" do
+      it "returns empty array []" do
+        helper.instance_variable_set("@manifold_alerts_thread", Thread.new { nil })
+        expect(helper.manifold_alerts).to eq(nil)
       end
     end
 
