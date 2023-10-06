@@ -83,7 +83,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "rubocop"
   gem "rubocop-rails"
-  gem "selenium-webdriver", "4.10.0"
+  gem "selenium-webdriver", "4.13.1"
   gem "simplecov"
   gem "simplecov-lcov"
   gem "vcr"
