@@ -230,15 +230,15 @@ module ApplicationHelper
 
   def manifold_alerts
     # @manifold_alerts_thread is set in the application controller via a before_action.
-    @manifold_alerts_thread.value.select { |a| a if a.dig("attributes", "for_header") == false }
+    @manifold_alerts_thread&.value&.select { |a| a if a.dig("attributes", "for_header") == false }
   end
 
   def emergency_alert_message
-    manifold_alerts.map { |a| a.dig("attributes", "scroll_text") }.first
+    manifold_alerts.map { |a| a.dig("attributes", "scroll_text") }.first unless manifold_alerts.nil?
   end
 
   def emergency_alert_link
-    link = manifold_alerts.map { |a| a.dig("attributes", "link") }.first
+    link = manifold_alerts.map { |a| a.dig("attributes", "link") }.first unless manifold_alerts.nil?
     if !link.blank?
       link_to(t("blacklight.banner_link"), link)
     end
