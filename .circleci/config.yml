@@ -92,7 +92,7 @@ jobs:
           command: make test-js
 
       - coveralls/upload:
-          path_to_lcov: ./app.lcov
+          coverage_file: ./app.lcov
 
   qa_deploy:
     docker:
