@@ -124,10 +124,15 @@ module Blacklight::PrimoCentral::Document
       doc.dig("delivery", "GetIt1", 0, "links", 0) || {}
     end
 
-    def url_query
-      query = (URI.parse(@url).query rescue nil)
+    def url_query(url = @url)
+      query = (URI.parse(url).query rescue nil)
       if (query)
         q = CGI.parse(query) || {}
+
+        if q["url"].present?
+          return url_query(q["url"].first)
+        end
+
         q.select { |k, v| v && !v.empty? && v != [""] }
       else
         {}
