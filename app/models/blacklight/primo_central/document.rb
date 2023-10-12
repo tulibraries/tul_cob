@@ -107,7 +107,12 @@ module Blacklight::PrimoCentral::Document
     }
 
     def url(doc)
-      get_it(doc).fetch("link", "")
+      # TODO remove adding libroxy once we fix root cause of it getting removed.
+      url = get_it(doc).fetch("link", "")
+      if url.present? && !url.match?(/libproxy/)
+        url = "https://libproxy.temple.edu/login?url=" + url
+      end
+      url
     end
 
     def link_label(doc)
