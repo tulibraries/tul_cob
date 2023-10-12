@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   ruby: circleci/ruby@2.0.0
-  coveralls: coveralls/coveralls@1.0.6
+  coveralls: coveralls/coveralls@2.2.1
 
 workflows:
   version: 2
@@ -92,7 +92,7 @@ jobs:
           command: make test-js
 
       - coveralls/upload:
-          path_to_lcov: ./app.lcov
+          coverage_file: ./app.lcov
 
   qa_deploy:
     docker:
