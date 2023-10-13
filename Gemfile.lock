@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: c20c2064ece419a98b06ed41d091349343a0f119
+  revision: b486aafff5c759ad321f34748e5c00c754796021
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: a329c6dc4da47a689d1877f9a43a1c137826d26f
+  revision: 11304df292296cae85274e2d9cecd64d19767973
   branch: main
   specs:
     cob_index (0.1.0)
@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 44a7f22eafb843465d2c2cb7dbe9d9c344a0692f
+  revision: e6b37a12f58ccf2ecd71d8c3f206aee98ea772aa
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: 8088dc6907f8dff779bef8d9b37c47aea310ea8f
+  revision: 56a197bcbc82d96edd4920b1ed86ba0e190f06c4
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -199,9 +199,9 @@ GEM
       traject (~> 3.0)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (4.6.2)
+    bootstrap (5.3.1)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.16.1, < 2)
+      popper_js (>= 2.11.8, < 3)
       sassc-rails (>= 2.0.0)
     browser (5.3.1)
     builder (3.2.4)
@@ -357,7 +357,7 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mysql2 (0.5.5)
-    net-imap (0.3.7)
+    net-imap (0.4.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -396,7 +396,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    popper_js (1.16.1)
+    popper_js (2.11.8)
     pry (0.14.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -541,7 +541,7 @@ GEM
       json
     thor (1.2.2)
     thread_safe (0.3.6)
-    tilt (2.0.11)
+    tilt (2.3.0)
     timeout (0.4.0)
     traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
@@ -628,7 +628,7 @@ DEPENDENCIES
   blacklight_advanced_search!
   blacklight_range_limit!
   bootsnap (= 1.16.0)
-  bootstrap (~> 4.6)
+  bootstrap (~> 5.3)
   browser
   byebug
   capybara (~> 3)
