@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 3061be30bba062a99bd2aadd79e3c38b78d81b97
+  revision: 44a7f22eafb843465d2c2cb7dbe9d9c344a0692f
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -311,7 +311,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.6.3)
-    jsonpath (1.1.4)
+    jsonpath (1.1.5)
       multi_json
     jwt (2.7.1)
     kaminari (1.2.2)
