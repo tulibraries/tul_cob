@@ -272,42 +272,6 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
-  describe "url" do
-    let(:link) {}
-    let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
-      delivery: {
-        GetIt1: [{
-          "links" => [{ "link" => link }],
-        }] }) }
-    let(:url) { subject.send(:url, doc) }
-
-    # TODO: This should be removed once we fix root of issue in k8.
-    # @see https://tulibdev.atlassian.net/browse/BL-1813
-    context "proxy URL section not present in link" do
-      let(:link) { "https://search.proquest.com/docview/2848172314?pq-origsite=primo" }
-      it "should add the proxy URL section" do
-
-        expect(url).to eq("https://libproxy.temple.edu/login?url=https://search.proquest.com/docview/2848172314?pq-origsite=primo")
-      end
-    end
-
-    context "proxy URL is present in link" do
-      let(:link) { "http://libproxy.temple.edu/login?url=https://search.proquest.com/docview/2848172314?pq-origsite=primo" }
-
-      it "should return link without changing anything" do
-        expect(url).to eq(link)
-      end
-    end
-
-    context "No link present" do
-      let(:doc) { {} }
-
-      it "should not do anyting" do
-        expect(url).to eq("")
-      end
-    end
-  end
-
   describe "libkey_articles_url" do
     context "doi not present" do
       let(:doc) { {} }
