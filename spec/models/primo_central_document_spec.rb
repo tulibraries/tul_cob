@@ -228,6 +228,18 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  context "document direct_link is proxied and isbn=foo" do
+    let(:doc) { ActiveSupport::HashWithIndifferentAccess.new(
+      delivery: {
+        GetIt1: [{
+          "links" => [{ "link" => "http://myproxy.edu?url=http://foobar.com?rft.isbn=foo" }],
+        }] }) }
+    it "sets @doc['isbn'] to foo" do
+      expect(subject["isbn"]).to eq(["foo"])
+    end
+  end
+
+
   describe "#purchase_order?" do
     context "with purchase_order false" do
       let(:document) { PrimoCentralDocument.new(purchase_order: false) }
