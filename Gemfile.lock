@@ -68,7 +68,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: bd2d12636d148895f43881f2667bd876e469a5d9
+  revision: 6ee06d7aab6687682ccfb54028c0fa4e4dbab102
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
