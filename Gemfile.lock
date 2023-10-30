@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: b486aafff5c759ad321f34748e5c00c754796021
+  revision: 753937d9b4c1d5fc7b6049e4955713b27d50a4ac
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -448,7 +448,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     regexp_parser (2.8.2)
     responders (3.1.1)
       actionpack (>= 5.2)
