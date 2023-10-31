@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 289cc9c01f8424988dac4a14ed54b6a09bed1e1d
+  revision: 3417c00f4ee003c386eb3657b128e3de66ee2ea9
   branch: main
   specs:
     cob_index (0.1.0)
@@ -448,7 +448,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     regexp_parser (2.8.2)
     responders (3.1.1)
       actionpack (>= 5.2)
