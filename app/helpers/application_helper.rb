@@ -10,10 +10,6 @@ module ApplicationHelper
       .join(" ")
   end
 
-  def render_location_show(value)
-    render_location(value[:value].first)
-  end
-
   def aeon_request_url(document)
     form_fields = {
          ItemTitle: document.fetch("title_statement_display", ""),
@@ -113,18 +109,8 @@ module ApplicationHelper
     File.dirname(url_for)
   end
 
-  # Render the index field (link)
-  def index_field_url_link(arg)
-    url = arg[:value].first
-    link_to "direct link", url, remote: true
-  end
-
   def login_disabled?
     Rails.configuration.features.fetch(:login_disabled, false)
-  end
-
-  def render_search_history?
-    false
   end
 
   def faq_link(type = :short)
@@ -139,10 +125,6 @@ module ApplicationHelper
       end
 
     link_to(label, "https://library.temple.edu/pages/42")
-  end
-
-  def former_search_link
-    link_to("former Library Search", "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/search?vid=TULI&lang=en_US&sortby=rank")
   end
 
   def help_link
@@ -169,8 +151,6 @@ module ApplicationHelper
   def ris_path(opts = {})
     if controller_name == "bookmarks"
       bookmarks_path(opts.merge(format: "ris"))
-    elsif controller_name == "primo_central"
-      article_document_path(opts.merge(format: "ris"))
     else
       solr_document_path(opts.merge(format: "ris"))
     end
@@ -219,12 +199,6 @@ module ApplicationHelper
   def presenter_field_value(presenter, field)
     if blacklight_config.show_fields[field]
       presenter.field_value(blacklight_config.show_fields[field])
-    end
-  end
-
-  def border_radius_class
-    if search_fields.length == 1
-      "rounded-left"
     end
   end
 

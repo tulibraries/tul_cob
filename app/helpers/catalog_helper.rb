@@ -332,22 +332,6 @@ module CatalogHelper
     end
   end
 
-  def back_to_catalog_path
-    search_catalog_path(search_params)
-  end
-
-  def back_to_journals_path
-    search_journals_path(search_params)
-  end
-
-  def back_to_articles_path
-    search_path(search_params)
-  end
-
-  def back_to_databases_path
-    search_databases_path(search_params)
-  end
-
   def get_search_params(field, query)
     case field
     when "title_uniform_display", "title_addl_display", "relation"
