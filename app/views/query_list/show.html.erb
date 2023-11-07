@@ -4,10 +4,8 @@
       <div class="card-body query-card-body px-3">
         <h4 class="query-item-title mb-1"><%= link_to(doc["title_statement_display"].first, solr_document_path(doc["id"]), class:"query-list-title-link") %></h4>
         <span class="<%= format_classes_for_icons(doc) %> query-item-format"><%= doc["format"].first %></span>
-        <% unless doc["imprint_date_display"].nil? %>
-          <% doc["imprint_date_display"].each do |date| %>
-            <span class="query-item-date"><%= date %></span>
-          <% end %>
+        <% doc["imprint_date_display"]&.each do |date| %>
+          <span class="query-item-date"><%= date %></span>
         <% end %>
         <div class="query-item-availability">
           <%= libraries_query_display(doc)%>
