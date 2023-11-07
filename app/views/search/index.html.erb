@@ -1,4 +1,6 @@
-<% if @results %>
+<% @response = nil %>
+
+<% if @results && @response %>
 <div class="container bento-main-container justify-content-between pb-3">
   <div class="row row-cols-md-3 row-cols-1">
     <%= render_bento_results %>
@@ -10,7 +12,11 @@
   <%= render :partial => "resource_types" %>
 
 <% else %>
+
   <div class="bento-container">
     <%= render("home_text") %>
   </div>
+
+  <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller' -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
+
 <% end %>

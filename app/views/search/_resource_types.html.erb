@@ -1,4 +1,4 @@
-<% format_facet = @response.aggregations["format"] %>
+<% format_facet = @response&.aggregations["format"] %>
 <% unless format_facet.items.all? { |item| item.hits == "0" } %>
   <div class="bento-resource-container">
     <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.resource_types_header") %></h2>

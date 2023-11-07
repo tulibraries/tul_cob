@@ -1,4 +1,4 @@
-<% format_facet = @response.aggregations["format"] %>
+<% format_facet = @response&.aggregations["format"] %>
 
   <div class="bento-resource-container">
     <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
