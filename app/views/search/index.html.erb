@@ -1,16 +1,23 @@
 <% if @results %>
-<div class="container bento-main-container justify-content-between pb-3">
-  <div class="row row-cols-md-3 row-cols-1">
-    <%= render_bento_results %>
+  <div class="container bento-main-container justify-content-between pb-3">
+    <div class="row row-cols-md-3 row-cols-1">
+      <%= render_bento_results %>
+    </div>
   </div>
-</div>
 
-  <%= render :partial => "digital_collections" %>
+  <% if @response %>
+    <%= render :partial => "digital_collections" %>
+    <%= render :partial => "resource_types" %>
+  <% else %>
+    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller' -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
+  <% end %>
+
   <%= render :partial => "research_guides_faq" %>
-  <%= render :partial => "resource_types" %>
 
 <% else %>
+
   <div class="bento-container">
     <%= render("home_text") %>
   </div>
+
 <% end %>
