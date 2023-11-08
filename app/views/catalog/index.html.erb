@@ -1,6 +1,6 @@
 <div class="row no-gutters">
 
-  <section id="content" class="<%= "col-md-8 col-lg-9 bg-white order-last" if show_sidebar? %> ml-sm-0 pl-md-4 pr-md-3 pr-lg-5 search-results-display">
+  <section id="content" class="col <%= "col-md-8 col-lg-9 bg-white order-last " if show_sidebar? %>ml-sm-0 pl-md-4 pr-md-3 pr-lg-5 search-results-display">
     <% unless has_search_parameters? %>
       <%# if there are no input/search related params, display the "home" partial -%>
       <%= render "home" %>
