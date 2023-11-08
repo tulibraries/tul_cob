@@ -14,9 +14,9 @@
 
 .query-list.card {
   flex: 1 0;
-  height: 15rem;
+  height: 16.5rem;
   min-width: 11rem;
-  max-width: 12rem;
+  max-width: 13rem;
   margin-right: 0.3125rem;
 
   @media(max-width: 768px) {
@@ -24,13 +24,30 @@
   }
 }
 
-.query-item-title, .query-card-body, .query-card-footer {
+.query-item-title {
   font-size: 1rem;
-  line-height: 1.25;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.query-format {
+.query-item-format {
   margin-left: -0.4375rem;
+  padding-right: 0.5rem;
+}
+
+.query-item-date {
+  border-left: 1px solid;
+  padding-left: 0.5rem;
+}
+
+.btn.query-list-online {
+	background-color: $crystal-blue;
+	color: $midnight-blue;
+	font-family: "Faustina-Bold"; 
+  margin-top: 0.5rem;
+	padding: 0.125rem 0.625rem;
 }
 
 .tooltip-inner {
