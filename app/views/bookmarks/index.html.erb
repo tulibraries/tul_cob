@@ -1,11 +1,12 @@
 <% @page_title = t("blacklight.bookmarks.page_title", :application_name => application_name) %>
 
 <div class="container">
-  <h1 class="page-heading bookmark-heading pb-4"><%= t("blacklight.bookmarks.title") %></h1>
+  <h1 class="page-heading bookmark-heading mb-4"><%= t("blacklight.bookmarks.title") %></h1>
   <div id="content" class="bookmarks-page bg-white rounded p-0 mx-auto">
-    <% if current_or_guest_user.blank? %>
-      <h2 class="section-heading"><%= t("blacklight.bookmarks.need_login") %></h2>
-    <% elsif @response.documents.blank? %>
+    <% if !current_user %>
+    <p class="mb-4"><%= t("blacklight.bookmarks.need_login") %></p>
+    <% end %>
+    <% if @response.documents.blank? %>
       <h2 class="section-heading no-bookmarks-message"><%= t("blacklight.bookmarks.no_bookmarks") %></h2>
     <% else %>
       <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
