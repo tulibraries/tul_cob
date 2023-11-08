@@ -3,14 +3,6 @@
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
 
-  def thumbnail_classes(document)
-    classes = %w[thumbnail col-sm-3 col-lg-2]
-    document.fetch(:format, []).compact.each do |format|
-      classes << "#{format.parameterize.downcase.underscore}_format"
-    end
-    classes.join " "
-  end
-
   def isbn_data_attribute(document)
     values = document.fetch(:isbn_display, [])
     values = [values].flatten.map { |value|
@@ -157,46 +149,6 @@ module CatalogHelper
   # @param joiner - the string to use to concatenate multivalue fields
   def doc_field_joiner(document, field, joiner = ", ")
     Array.wrap(document.fetch(field, [])).join(joiner)
-  end
-
-  def build_libwizard_url(document)
-    doc_params = openurl_libwizard_params(document)
-    URI::HTTPS.build(host: "temple.libwizard.com",
-      path: "/f/LibrarySearchRequest", query: doc_params.to_query).to_s
-  end
-
-  def build_guest_login_libwizard_url(document)
-    doc_params = openurl_libwizard_params(document).slice("rft.title", "rft.date", "edition", "rft_id")
-    URI::HTTPS.build(host: "temple.libwizard.com",
-      path: "/f/ContinueAsGuest", query: doc_params.to_query).to_s
-  end
-
-  def build_error_libwizard_url(document)
-    doc_params = openurl_libwizard_params(document)
-    URI::HTTPS.build(host: "temple.libwizard.com",
-      path: "/f/LibrarySearchError", query: doc_params.to_query).to_s
-  end
-
-  def openurl_libwizard_params(document)
-    doc_params =
-    {
-      "rft.title" => doc_field_joiner(document, :title_statement_display),
-      "rft.date" => doc_field_joiner(document, :pub_date),
-      "edition" => doc_field_joiner(document, :edition_display),
-      "rft.isbn" => doc_field_joiner(document, :isbn_display),
-      "rft.issn" => doc_field_joiner(document, :issn_display),
-      "rft.oclcnum" => doc_field_joiner(document, :oclc_display),
-      "rft.pub" => [
-        doc_field_joiner(document, :imprint_display),
-        doc_field_joiner(document, :imprint_prod_display),
-        doc_field_joiner(document, :imprint_dist_display),
-        doc_field_joiner(document, :imprint_man_display),
-      ].select(&:present?).join(", "),
-    }
-    if document.id.present?
-      doc_params["rft_id"] = url_for([document, only_path: false])
-    end
-    doc_params.select { |k, v| v.present? }
   end
 
   def digital_help_allowed?(document)
@@ -611,10 +563,6 @@ module CatalogHelper
 
   def with_libguides?
     ::FeatureFlags.with_libguides?(params)
-  end
-
-  def libwizard_tutorial?
-    ::FeatureFlags.libwizard_tutorial?(params)
   end
 
   def derived_lib_guides_search_term(response)
