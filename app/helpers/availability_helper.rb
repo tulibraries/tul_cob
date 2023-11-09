@@ -220,4 +220,38 @@ module AvailabilityHelper
       }
     end
   end
+
+  def render_availability(doc)
+    if index_fields(doc).fetch("availability", nil)
+      render "index_availability_section", document: doc
+    end
+  end
+
+  def render_alma_availability(document)
+    # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
+    # We do not want this to render if the item is from Primo, etc.
+    if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
+      content_tag :dl, nil, class: "d-flex flex-row document-metadata blacklight-availability availability-ajax-load my-0", "data-availability-ids": document.alma_availability_mms_ids.join(",")
+    end
+  end
+
+  def render_online_availability(doc_presenter)
+    field = blacklight_config.show_fields["electronic_resource_display"]
+    return if field.nil?
+
+    online_resources = [doc_presenter.field_value(field)]
+      .select { |r| !r.empty? }.compact
+
+    if !online_resources.empty?
+      render "online_availability", online_resources: online_resources
+    end
+  end
+
+  def render_online_availability_button(doc)
+    links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
+
+    if !links.empty?
+      render "online_availability_button", document: doc, links: links
+    end
+  end
 end

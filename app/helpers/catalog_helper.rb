@@ -2,6 +2,7 @@
 
 module CatalogHelper
   include Blacklight::CatalogHelperBehavior
+  include HathitrustHelper
 
   def isbn_data_attribute(document)
     values = document.fetch(:isbn_display, [])
@@ -88,34 +89,6 @@ module CatalogHelper
     current_page?("/advanced") ? search_catalog_url : search_action_url
   end
 
-  def render_online_availability(doc_presenter)
-    field = blacklight_config.show_fields["electronic_resource_display"]
-    return if field.nil?
-
-    online_resources = [doc_presenter.field_value(field)]
-      .select { |r| !r.empty? }.compact
-
-    if !online_resources.empty?
-      render "online_availability", online_resources: online_resources
-    end
-  end
-
-  def render_online_availability_button(doc)
-    links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
-
-    if !links.empty?
-      render "online_availability_button", document: doc, links: links
-    end
-  end
-
-  def render_alma_availability(document)
-    # We are checking index_fields["bound_with_ids"] because that is a field that is unique to catalog records
-    # We do not want this to render if the item is from Primo, etc.
-    if index_fields["bound_with_ids"] && document.alma_availability_mms_ids.present?
-      content_tag :dl, nil, class: "d-flex flex-row document-metadata blacklight-availability availability-ajax-load my-0", "data-availability-ids": document.alma_availability_mms_ids.join(",")
-    end
-  end
-
   def render_lc_display_field(field_presenter)
     content_tag :dl, nil, class: "dl-horizontal document-metadata blacklight-lc_call_number_display  mb-0" do
       html = content_tag :dt, "LC Classification:", class: "index-label blacklight-lc_call_number_display"
@@ -123,9 +96,7 @@ module CatalogHelper
     end
   end
 
-  ##
   # Overridden from module Blacklight::BlacklightHelperBehavior.
-  #
   # Overridden in order to disable rel alternate links added to page headers.
   def render_link_rel_alternates(document = @document, options = {})
     ""
@@ -134,12 +105,6 @@ module CatalogHelper
   def advanced_catalog_search_path
     params = @search_state.to_h.select { |k, v| !["page"].include? k }
     blacklight_advanced_search_engine.advanced_search_path(params)
-  end
-
-  def render_availability(doc)
-    if index_fields(doc).fetch("availability", nil)
-      render "index_availability_section", document: doc
-    end
   end
 
   # Safely converts a single or multi-value solr field
@@ -175,91 +140,6 @@ module CatalogHelper
       item["current_library"].include?(library_code) &&
       locations.include?(item["current_location"])
     }
-  end
-
-  def build_hathitrust_url(field)
-    record_id = field.fetch("bib_key", nil)
-    return if record_id.nil?
-    URI::HTTPS.build(host: "catalog.hathitrust.org",
-      path: "/Record/#{record_id}",
-      query: "signon=swle:https://fim.temple.edu/idp/shibboleth"
-    ).to_s
-  end
-
-  def render_hathitrust_link(ht_bib_key_field)
-    render "hathitrust_link", ht_bib_key_field: ht_bib_key_field
-  end
-
-  def hathitrust_link_allowed?(document)
-    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
-    ht_bib_key_field.fetch("access", "deny") == "allow" rescue nil
-  end
-
-  def render_hathitrust_display(document)
-    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
-    return if ht_bib_key_field.nil?
-    online_resources = []
-    online_resources << render_hathitrust_link(ht_bib_key_field)
-
-    if (campus_closed? || hathitrust_link_allowed?(document))
-      render "online_availability", online_resources: online_resources
-    end
-  end
-
-  def render_hathitrust_button(document)
-    ht_bib_key_field = document.fetch("hathi_trust_bib_key_display", []).first rescue nil
-    return if ht_bib_key_field.nil?
-    link = render_hathitrust_link(ht_bib_key_field)
-
-    if (campus_closed? || hathitrust_link_allowed?(document))
-      render "hathitrust_button", document: document, links: link
-    end
-  end
-
-  def render_purchase_order_availability(presenter)
-    doc = presenter.document
-    return unless doc.purchase_order?
-
-
-    field = presenter.send(:fields)["purchase_order_availability"]
-
-    if field.with_panel
-      rows = [ t("purchase_order.purchase_order_allowed") ]
-      render partial: "availability_panel", locals: { label: field.label, rows: rows }
-
-    elsif current_user && !current_user.can_purchase_order?
-      content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability"
-    else
-      render_purchase_order_button(document: doc, config: field)
-    end
-  end
-
-  def render_purchase_order_button(args)
-    return unless args[:document].purchase_order?
-
-    doc = args[:document]
-    with_po_link = args.dig(:config, :with_po_link)
-
-    if !current_user
-      link = with_po_link ? render_purchase_order_show_link(args) : ""
-      render partial: "purchase_order_anonymous_button", locals: { link: link, document: doc }
-    elsif current_user.can_purchase_order?
-      label = content_tag :span, "Request Rapid Access", class: "avail-label"
-      path = purchase_order_path(id: doc.id)
-      link = link_to label, path, class: "btn purchase-order", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
-      content_tag :div, link, class: "requests-container mb-2 ml-0"
-    end
-  end
-
-  def render_purchase_order_show_link(args = { document: @document })
-    return unless args[:document].purchase_order?
-
-    if !current_user
-      id = args[:document].id
-      link_to("Log in to access request form", doc_redirect_url(id), data: { "blacklight-modal": "trigger" })
-    elsif current_user.can_purchase_order?
-      render_purchase_order_button(args)
-    end
   end
 
   def render_email_form_field
@@ -369,151 +249,6 @@ module CatalogHelper
   def database_type_links(args)
     args[:document][args[:field]].map do |type|
       link_to(type.sub("— — ", "— "), "#{base_path}?f[az_format][]=#{CGI.escape type}", class: "p-2")
-    end
-  end
-
-  def has_one_electronic_resource?(document)
-    document.fetch("electronic_resource_display", []).length == 1
-  end
-
-  def has_many_electronic_resources?(document)
-    electronic_resources = document.fetch("electronic_resource_display", [])
-    electronic_resources.length > 1 ||
-      has_one_electronic_resource?(document) &&
-      render_electronic_notes(electronic_resources.first).present?
-  end
-
-  def check_for_full_http_link(args)
-    [args[:document][args[:field]]].flatten.compact.map { |field|
-      if field["url"].present?
-        electronic_access_links(field)
-      else
-        electronic_resource_link_builder(field)
-      end
-    }.join("").html_safe
-  end
-
-  def electronic_access_links(field)
-    text = field.fetch("title", "Link to Resource").sub(/ *[ ,.\/;:] *\Z/, "")
-    url = field["url"]
-    content_tag(:div, link_to(text, url, title: "Target opens in new window", target: "_blank"), class: "electronic_links online-list-items")
-  end
-
-  def electronic_resource_link_builder(field)
-    return if field.empty?
-    return if field["availability"] == "Not Available"
-
-    title = field.fetch("title", "Find it online")
-    electronic_notes = render_electronic_notes(field)
-
-    item_html =
-      if field["coverage_statement"].present?
-        [render_alma_eresource_link(field["portfolio_id"], field["coverage_statement"]), title]
-          .select(&:present?).join(" - ")
-      else
-        [render_alma_eresource_link(field["portfolio_id"], title), field["coverage_statement"]]
-          .select(&:present?).join(" - ")
-      end
-    item_html = [item_html, electronic_notes]
-      .select(&:present?).join(" ").html_safe
-
-    content_tag(:div, item_html , class: " electronic_links online-list-item")
-  end
-
-  def service_unavailable_fields
-    [ "service_temporarily_unavailable", "service_unavailable_date", "service_unavailable_reason" ]
-  end
-
-  def electronic_notes(type)
-    name = "#{type}_notes"
-
-    Rails.cache.fetch(name) do
-      JsonStore.find_by(name: name)&.value || {}
-    end
-  end
-
-  def get_collection_notes(id)
-    (electronic_notes("collection")[id] || {})
-      .except(*service_unavailable_fields)
-      .values.select(&:present?)
-  end
-
-  def get_service_notes(id)
-    (electronic_notes("service")[id] || {})
-      .except(*service_unavailable_fields)
-      .values.select(&:present?)
-  end
-
-  def get_unavailable_notes(id)
-    (electronic_notes("service")[id] || {})
-      .slice("service_unavailable_reason")
-      .select { |k, v| v.present? }.values
-      .map { |reason| "This service is temporarily unavailable due to: #{reason}." }
-  end
-
-  def render_electronic_notes(field)
-    collection_id = field["collection_id"]
-    service_id = field["service_id"]
-
-    public_notes = field["public_note"]
-    authentication_notes = field["authentication_note"]
-    collection_notes = get_collection_notes(collection_id)
-    service_notes = get_service_notes(service_id)
-    unavailable_notes = get_unavailable_notes(service_id)
-
-    if collection_notes.present? ||
-        service_notes.present? ||
-        public_notes.present? ||
-        authentication_notes.present? ||
-        unavailable_notes.present?
-
-      render partial: "electronic_notes", locals: {
-        collection_notes: collection_notes,
-        service_notes: service_notes,
-        public_notes: public_notes,
-        authentication_notes: authentication_notes,
-        unavailable_notes: unavailable_notes,
-      }
-    end
-  end
-
-  def render_alma_eresource_link(portfolio_pid, db_name)
-    link_to(db_name, alma_electronic_resource_direct_link(portfolio_pid), title: "Target opens in new window", target: "_blank")
-  end
-
-  def alma_electronic_resource_direct_link(portfolio_pid)
-    query = {
-        "u.ignore_date_coverage": "true",
-        "Force_direct": true,
-        portfolio_pid: portfolio_pid
-    }
-    alma_build_openurl(query)
-  end
-
-  def alma_domain
-    Rails.configuration.alma["delivery_domain"]
-  end
-
-  def alma_institution_code
-    Rails.configuration.alma["institution_code"]
-  end
-
-  def alma_build_openurl(query)
-    query_defaults = {
-      rfr_id: "info:sid/primo.exlibrisgroup.com",
-    }
-
-    URI::HTTPS.build(
-      host: alma_domain,
-      path: "/view/uresolver/#{alma_institution_code}/openurl",
-      query: query_defaults.merge(query).to_query).to_s
-  end
-
-  def single_link_builder(field)
-    if field["url"].present?
-      field["url"]
-    else
-      alma_electronic_resource_direct_link(field["portfolio_id"])
     end
   end
 
