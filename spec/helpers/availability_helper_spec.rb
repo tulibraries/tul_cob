@@ -1019,4 +1019,37 @@ RSpec.describe AvailabilityHelper, type: :helper do
       end
     end
   end
+
+  describe "#render_alma_availability(document)" do
+    let(:doc) { SolrDocument.new(bound_with_ids: ["foo"]) }
+    let(:config) { CatalogController.blacklight_config }
+
+    before do
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config) { config }
+      end
+    end
+
+    context "with bound_with_ids defined" do
+      it "renders the bound_with_ids" do
+        expect(helper.render_alma_availability(doc)).not_to be_nil
+      end
+    end
+
+    context "with no bound with ids available" do
+      let(:doc) { SolrDocument.new(bound_with_ids: nil) }
+
+      it "does not render the bound_with_ids" do
+        expect(helper.render_alma_availability(doc)).to be_nil
+      end
+    end
+
+    context "without bound_with_ids configured" do
+      let(:config) { PrimoCentralController.blacklight_config }
+
+      it "does not render the bound_with_ids" do
+        expect(helper.render_alma_availability(doc)).to be_nil
+      end
+    end
+  end
 end
