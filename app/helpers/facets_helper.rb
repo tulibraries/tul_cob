@@ -3,6 +3,7 @@
 module FacetsHelper
   include Blacklight::FacetsHelperBehavior
 
+  # Overridden from module Blacklight::FacetFieldListComponent.
   def facet_item_component_class(facet_config)
     return FacetItemPivotComponent if facet_config.pivot
     default_component = FacetItemComponent
@@ -33,6 +34,7 @@ module FacetsHelper
     end + " (#{item.hits})"
   end
 
+  # Overridden from module Blacklight::FacetsHelperBehavior.
   def facet_item_presenter(facet_config, facet_item, facet_field)
     FacetItemPresenter.new(facet_item, facet_config, self, facet_field)
   end

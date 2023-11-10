@@ -44,9 +44,8 @@ module RenderConstraintsHelper
     end
   end
 
-  ##
+  # This method will be removed from Blacklight 8.
   # Overridden from module RenderConstraintsHelperBehavior.
-  #
   # Overridden in order to disable rendering unknown facet fields.
   # And, to handle library_pivot_facet contraints/filter elemens.
   #
