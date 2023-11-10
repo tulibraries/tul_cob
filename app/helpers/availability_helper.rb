@@ -68,18 +68,9 @@ module AvailabilityHelper
     key == "MAIN" && current_locations.any?
   end
 
-  def library_specific_instructions(key, document)
-    case key
-    when "ASRS"
-      # REMOVED WHILE LIBRARIES CLOSED
-      #render partial: "asrs_instructions", locals: { key: key }
-    when "SCRC"
+  def scrc_instructions(key, document)
+    if key == "SCRC"
       render partial: "scrc_instructions", locals: { key: key, document: document }
-    when "MAIN"
-      # REMOVED WHILE LIBRARIES CLOSED
-      # if main_stacks_message(key, document)
-      #   render partial: "main_open_shelving_instructions", locals: { key: key, document: document }
-      # end
     end
   end
 
