@@ -3,7 +3,7 @@
 module BlacklightConfigurationHelper
   include Blacklight::ConfigurationHelperBehavior
 
-  ##
+  # This method is deprecated and will be removed in Blacklight 8.
   # Overrides Blacklight::ConfigurationHelperBehavior.index_fields.
   #
   # We need this override in order to short circuit the call to
@@ -18,6 +18,7 @@ module BlacklightConfigurationHelper
     @blacklight_config&.index_fields || blacklight_config.index_fields
   end
 
+  # Overrides Blacklight::ConfigurationHelperBehavior.facet_field_label.
   def facet_field_label(field)
     field = "lc_facet" if field == "lc_classification"
     if parent_config = blacklight_config.facet_fields.find { |k, v| v.pivot && v.pivot.include?(field) }
