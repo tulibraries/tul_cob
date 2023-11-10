@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ElectronicResourceHelper
-
   def has_one_electronic_resource?(document)
     document.fetch("electronic_resource_display", []).length == 1
   end
