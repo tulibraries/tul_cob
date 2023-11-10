@@ -95,7 +95,7 @@ module CatalogHelper
       html += content_tag :dd, field_presenter.render, class: "blacklight-lc_call_number_display"
     end
   end
-  
+
   # Overridden from module Blacklight::BlacklightHelperBehavior.
   # Create <link rel="alternate"> links from a documents dynamically provided export formats.
   # Returns empty string if no links available.

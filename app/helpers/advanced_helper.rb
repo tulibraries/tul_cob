@@ -243,7 +243,6 @@ end
 
 module BlacklightAdvancedSearch
   module RenderConstraintsOverride
-
     # This overrides a method from Blacklight 7 that will be removed from Blacklight 8.
     # Overrides Blacklight::RenderConstraintsHelperBehavior#render_constraints_query.
     # We need this in order to render multiple clearable buttons on advanced searches.
