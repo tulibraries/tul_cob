@@ -7,12 +7,17 @@
 
   <% if @response %>
     <%= render :partial => "digital_collections" %>
-    <%= render :partial => "resource_types" %>
   <% else %>
-    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller' -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
+    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for digital_collections partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
   <% end %>
 
   <%= render :partial => "research_guides_faq" %>
+
+  <% if @response %>
+    <%= render :partial => "resource_types" %>
+  <% else %>
+    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for resource_types partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
+  <% end %>
 
 <% else %>
 
