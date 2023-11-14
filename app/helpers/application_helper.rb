@@ -1,44 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-  def aeon_request_url(document)
-    form_fields = {
-         ItemTitle: document.fetch("title_statement_display", ""),
-         ItemPlace: document.fetch("imprint_display", ""),
-         ReferenceNumber: document.fetch("mms_id_display", ""),
-         CallNumber: document.fetch("call_number_display", ""),
-         ItemAuthor: document.fetch("creator_display", ""),
-         "rft.pages": document["collection_area_display"]
-     }
-
-    openurl_field_values = form_fields.map { |k, v|
-      [k, v.to_s.delete('[]""')] }.to_h
-
-    openurl_field_values["Action"] = 10
-    openurl_field_values["Form"] = 30
-
-
-    URI::HTTPS.build(
-      host:  "temple.aeon.atlas-sys.com",
-      path: "/Logon/",
-      query: openurl_field_values.to_query).to_s
-  end
-
-  def aeon_request_allowed(document)
-    document_items = document.fetch("items_json_display", [])
-    libraries = document_items.collect { |item| library(item) }
-    libraries.include?("SCRC")
-  end
-
-  def aeon_request_button(document)
-    document_items = document.fetch("items_json_display", [])
-    libraries = document_items.collect { |item| library(item) }
-
-    if libraries.include?("SCRC")
-      button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary")
-    end
-  end
-
   # Gets the base_path of current_page (i.e. /articles if at /articles/foobar)
   def base_path
     File.dirname(url_for)

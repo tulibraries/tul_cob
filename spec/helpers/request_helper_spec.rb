@@ -41,4 +41,80 @@ RSpec.describe RequestHelper, type: :helper do
       end
     end
   end
+
+  describe "#aeon_request_allowed(document)" do
+    context "item is at SCRC" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "SCRC",
+        "permanent_location" => "rarestacks",
+        "current_library" => "SCRC",
+        "current_location" => "rarestacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true" do
+        expect(helper.aeon_request_allowed(document)).to be true
+      end
+    end
+
+    context "item is at SCRC" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "stacks",
+        "current_library" => "MAIN",
+        "current_location" => "rarestacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "returns true" do
+        expect(helper.aeon_request_allowed(document)).to be false
+      end
+    end
+  end
+
+  describe "#aeon_request_button(document)" do
+    context "item is at SCRC" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "SCRC",
+        "permanent_location" => "rarestacks",
+        "current_library" => "SCRC",
+        "current_location" => "rarestacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "display the aeon request button" do
+        expect(helper.aeon_request_button(document)).to have_button("Go to SCRC Researcher Account")
+      end
+    end
+
+    context "item is NOT at SCRC" do
+      let(:document) { { "items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "stacks",
+        "current_library" => "Main",
+        "current_location" => "stacks",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          }
+        }
+
+      it "display the aeon request button" do
+        expect(helper.aeon_request_button(document)).to_not have_button("Go to SCRC Researcher Account")
+      end
+    end
+  end
 end
