@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe BentoSearchHelper, type: :helper do
+RSpec.describe SearchHelper, type: :helper do
   describe "#path_for_books_and_media_facet(facet_field, item)" do
     context "search query is empty" do
       let(:item) {  OpenStruct.new(value: "digital_collections") }

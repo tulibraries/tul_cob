@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module BentoSearchHelper
+module SearchHelper
   def total_items(results)
     results.total_items[:query_total] || 0 rescue 0
   end
