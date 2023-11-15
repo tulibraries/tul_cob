@@ -1,5 +1,5 @@
 <%= form_with url: booking_request_path, local: true, class: 'form-horizontal request-form', method: :post do |form| %>
-  <div class="container" data-controller="form">
+  <div class="container" data-controller="request-form">
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
     <%= form.hidden_field :user_id, value: @user_id %>
     <%= form.hidden_field :request_level, value: @request_level %>
