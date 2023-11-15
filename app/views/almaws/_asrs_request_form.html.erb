@@ -1,5 +1,5 @@
 <%= form_with url: asrs_request_path, local: true, id: "hold-request-form", class: 'form-horizontal request-form', method: :post do |form| %>
-  <div class="container" data-controller="form">
+  <div class="container" data-controller="request-form">
 
     <%= form.hidden_field :mms_id, value: params[:mms_id] %>
     <%= form.hidden_field :user_id, value: @user_id %>
