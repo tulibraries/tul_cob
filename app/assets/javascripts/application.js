@@ -108,22 +108,6 @@ $(document).ready(function(){
   );
 });
 
-
-
-function loadArticleIframe(id) {
-  var element = $(id)
-  var url = element.attr("data-iframe-url")
-
-  if (element.attr("processed") == undefined) {
-    element.attr("processed", true);
-    $("<iframe>", {
-      src: url,
-      "class": "bl_alma_iframe",
-      id: 'iframe-' + id,
-    }).appendTo(id);
-  }
-}
-
 $(document).on('turbolinks:load', function() {
 	$(function () {
  	  $('[data-toggle="tooltip"]').tooltip()
@@ -164,44 +148,9 @@ $(document).on('turbolinks:load', function() {
 	}
 }
 
-var lwz_options_f000bc5937fea3ef1bafbb124876025a = {"title" :
-																										"Library Search Basics",
-																										"fg": "#000000",
-																										"bg": "#f7941d",
-																										"pos": "50%",
-																										"side": "left",
-																										"button": "Display Help",
-																										"launch": false,}
-
 // This hack helps with a race condition bug in blacklight_range_limit gem.
 // REF: BL-1171 and project_blacklight/blacklight_range_limit#111
 window.addEventListener('load', function(event) {
    $("#facet-pub_date_sort").trigger("shown.bs.collapse");
 });
 
-$(window).on('turbolinks:load', function() {
-	const previews = document.getElementsByClassName("summary-previews");
-	
-	$(previews).each(function () {	
-		let readLess = $('<a class="read-less">less</a>');
-		let readMore = $('<a class="read-more">read more</a>');
-	
-		if ($(this).text().length > 300) {
-				$(this).css("display", "-webkit-box").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
-				$(readMore).insertAfter($(this));
-				$(readLess).insertAfter($(this)).hide();
-		}
-
-		$(readMore).on("click", function () {
-			$(this).hide();
-			$(this).siblings("div.summary-previews").removeAttr("style");
-			$(readLess).show();
-		});
-	
-			$(readLess).on("click", function () {
-			$(this).hide();
-			$(readMore).removeAttr("style");
-			$(this).prev("div").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
-		});
-	});
-});
