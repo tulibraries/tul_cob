@@ -16,19 +16,20 @@ require "view_component/test_case"
 # Add additional requires below this line. Rails is not loaded until this point!
 Capybara.default_max_wait_time = 5
 
-Capybara.javascript_driver = :headless_chrome
-
-Capybara.register_driver :headless_chrome do |app|
-  Capybara::Selenium::Driver.load_selenium
-  capabilities = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
-    opts.args << "--headless"
-    opts.args << "--disable-gpu"
-    opts.args << "--no-sandbox"
-    opts.args << "--window-size=1280,1696"
-  end
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: capabilities)
+Capybara.register_driver :chrome_headless do |app|
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    options: Selenium::WebDriver::Chrome::Options.new(
+      args: %w[no-sandbox headless disable-gpu]
+    )
+  )
 end
 
+# Capybara
+Capybara.configure do |config|
+  config.javascript_driver = :chrome_headless # This is slower
+end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
