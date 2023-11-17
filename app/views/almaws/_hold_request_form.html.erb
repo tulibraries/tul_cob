@@ -24,7 +24,7 @@
     <% if @material_types.present? && @material_types.count > 1 %>
       <div class="row hold-form form-group">
         <%= label("", :material_type, t("requests.form.material_type_html")) %>
-        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control", data: { "action": "request_form#typeSelect" }}) %>
+        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control", data: { "action": "request-form#typeSelect" }}) %>
       </div>
     <% else %>
       <%= form.hidden_field :material_type, value: @material_types.collect { |mat| [ mat.values.first ] } %>
@@ -35,7 +35,7 @@
         <div class="hold-form form-group">
           <%= form.label(:hold_description, t("requests.form.description_label_html")) %>
           <p><%= t("requests.form.description_additional_text") %></p>
-          <%= select_tag(:hold_description, grouped_options_for_select(@description), { data: { "action": "request_form#select", "target": "request_form.descriptions" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
+          <%= select_tag(:hold_description, grouped_options_for_select(@description), { data: { "action": "request-form#select", "target": "request-form.descriptions" }, class: "request-form form-control", include_blank: true, required: true, "aria-required": true } ) %>
         </div>
       <% else %>
         <%= form.hidden_field :hold_description, value: @description.flatten.last %>
@@ -43,7 +43,7 @@
 
       <div class="row hold-form form-group">
         <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "request_form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+        <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "request-form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
       </div>
     <% end %>
 
