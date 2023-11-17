@@ -96,22 +96,6 @@ $(document).on('turbolinks:load', function() {
 });
 
 $(document).ready(function(){
-	$(this).find(':input[id=renew_selected]').prop('disabled', true);
-	$('input[type=checkbox]').click(function(){
-		var x = document.getElementsByName("loan_ids[]");
-		var y = document.getElementById("checkall");
-		var checked = false;
-		var i;
-		$(x).each(function() {
-			if( $(this).prop('checked')){
-		      checked = true;
-		    }
-		});
-		if (checked == true) {
-	    	$(document).find(':input[id=renew_selected]').prop('disabled', false);
-	    }
-	    else $(document).find(':input[id=renew_selected]').prop('disabled', true);
-	});
 
   //link highlighting of hierarchy
   $(".search-subject").hover(
@@ -123,53 +107,6 @@ $(document).ready(function(){
     }
   );
 });
-
-
-function selectallchecks() {
-	var x = document.getElementsByName("loan_ids[]");
-	var y = document.getElementById("checkall");
-	var i;
-	if (y.checked == true) {
-		for (i = 0; i < x.length; i++) {
-		    if (x[i].type == "checkbox") {
-		        x[i].checked = true;
-		    }
-		}
-	}
-	else {
-		for (i = 0; i < x.length; i++) {
-		    if (x[i].type == "checkbox") {
-		        x[i].checked = false;
-		    }
-		}
-	}
-}
-
-function deselectallchecks() {
-	var x = document.getElementsByName("loan_ids[]");
-	var y = document.getElementById("checkall");
-	y.checked = false;
-	var i;
-	for (i = 0; i < x.length; i++) {
-	    if (x[i].type == "checkbox") {
-	        x[i].checked = false;
-	    }
-	}
-}
-
-function loadArticleIframe(id) {
-  var element = $(id)
-  var url = element.attr("data-iframe-url")
-
-  if (element.attr("processed") == undefined) {
-    element.attr("processed", true);
-    $("<iframe>", {
-      src: url,
-      "class": "bl_alma_iframe",
-      id: 'iframe-' + id,
-    }).appendTo(id);
-  }
-}
 
 $(document).on('turbolinks:load', function() {
 	$(function () {
@@ -211,44 +148,9 @@ $(document).on('turbolinks:load', function() {
 	}
 }
 
-var lwz_options_f000bc5937fea3ef1bafbb124876025a = {"title" :
-																										"Library Search Basics",
-																										"fg": "#000000",
-																										"bg": "#f7941d",
-																										"pos": "50%",
-																										"side": "left",
-																										"button": "Display Help",
-																										"launch": false,}
-
 // This hack helps with a race condition bug in blacklight_range_limit gem.
 // REF: BL-1171 and project_blacklight/blacklight_range_limit#111
 window.addEventListener('load', function(event) {
    $("#facet-pub_date_sort").trigger("shown.bs.collapse");
 });
 
-$(window).on('turbolinks:load', function() {
-	const previews = document.getElementsByClassName("summary-previews");
-	
-	$(previews).each(function () {	
-		let readLess = $('<a class="read-less">less</a>');
-		let readMore = $('<a class="read-more">read more</a>');
-	
-		if ($(this).text().length > 300) {
-				$(this).css("display", "-webkit-box").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
-				$(readMore).insertAfter($(this));
-				$(readLess).insertAfter($(this)).hide();
-		}
-
-		$(readMore).on("click", function () {
-			$(this).hide();
-			$(this).siblings("div.summary-previews").removeAttr("style");
-			$(readLess).show();
-		});
-	
-			$(readLess).on("click", function () {
-			$(this).hide();
-			$(readMore).removeAttr("style");
-			$(this).prev("div").css("-webkit-box-orient", "vertical").css("-webkit-line-clamp", "2").css("margin-bottom", "0");
-		});
-	});
-});
