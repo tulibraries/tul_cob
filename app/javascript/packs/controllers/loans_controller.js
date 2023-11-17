@@ -36,10 +36,6 @@ export default class extends Controller {
           checked = true;
         }
       });
-      if (checked == true) {
-        $(document).find(':input[id=renew_selected]').prop('disabled', false);
-      }
-      else $(document).find(':input[id=renew_selected]').prop('disabled', true);
     });
   }
 
