@@ -131,12 +131,17 @@ module ApplicationHelper
     separator = args.dig(:config, :separator)
     creator = args[:document][args[:field]] || []
     creator.delete("null")
+
     creator_links = creator.map do |creator_data|
       begin
-        creator_data = JSON.parse(creator_data)
-        relation = creator_data["relation"]
-        name = creator_data["name"]
-        role = creator_data["role"]
+        if controller_name == "primo_central"
+          name = creator_data
+        else
+          creator_data = JSON.parse(creator_data)
+          relation = creator_data["relation"]
+          name = creator_data["name"]
+          role = creator_data["role"]
+        end
       rescue JSON::ParserError
         name, role = creator_data.split("|")
       end
