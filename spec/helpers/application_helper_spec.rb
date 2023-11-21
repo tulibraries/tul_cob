@@ -227,6 +227,17 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
 
+    context "an article creator with an integer value" do
+      let(:controller_name) { "primo_central" }
+      let(:args) { { document: { creator: ["372"] }, field: :creator } }
+
+      it "returns a list of links to creator search for each creator without erroring" do
+        expect(creator_links(args)).to eq([
+          "<a href=\"http://test.host/articles?search_field=creator&amp;q=372\">372</a>"
+      ])
+      end
+    end
+
     context "an article creator with comma separator" do
       let(:controller_name) { "primo_central" }
       let(:args) { { document: { creator: ["Louisa May Alcott", "Emily Dickinson"] }, field: :creator, config: { separator: ", " } } }
