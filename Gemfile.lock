@@ -622,7 +622,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   axe-core-rspec
-  base64 (= 0.1.1)
+  base64
   bento_search
   blacklight (~> 7.33.0)
   blacklight-marc
