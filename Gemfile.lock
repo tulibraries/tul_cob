@@ -167,7 +167,7 @@ GEM
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
-    base64 (0.2.0)
+    base64 (0.1.1)
     bcrypt (3.1.19)
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
@@ -622,6 +622,7 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   axe-core-rspec
+  base64 (= 0.1.1)
   bento_search
   blacklight (~> 7.33.0)
   blacklight-marc
