@@ -33,6 +33,9 @@ class CatalogController < ApplicationController
     config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
+    config.advanced_search[:form_solr_parameters]["facet.limit"] ||= -1
+    config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
+    config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
 
     config.track_search_session = true
