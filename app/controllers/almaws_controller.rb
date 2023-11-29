@@ -24,7 +24,7 @@ class AlmawsController < CatalogController
     bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset, expand: "due_date") }
     @response = Blacklight::Alma::Response.new(bib_items, params)
     @items = bib_items.filter_missing_and_lost.grouped_by_library
-    availability = bib_items.group_by { |item| item["item_data"]["pid"] }.
+    availability = bib_items.all.group_by { |item| item["item_data"]["pid"] }.
                      transform_values { |item|
       { availability: helpers.availability_status(item.first) } }
     @document.merge_item_data!(availability)
