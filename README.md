@@ -10,6 +10,7 @@ The following repositories are also critical components for Solr indexing and ot
 * A-Z databases: https://github.com/tulibraries/cob_az_index, https://github.com/tulibraries/tul_cob-az-solr
 * Web content: https://github.com/tulibraries/cob_web_index, https://github.com/tulibraries/tul_cob-web-solr
 * Article index: https://github.com/tulibraries/primo
+* Alma client: https://github.com/tulibraries/alma_rb
 
 
 [![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
