@@ -71,10 +71,11 @@ RSpec.feature "RecordPageFields" do
         end
       end
 
+      # Note that field 730 is no longer mapped to uniform title display
       let (:item_730) { fixtures.fetch("title_uniform_730") }
       scenario "User visits a document with field 730 only" do
         visit "catalog/#{item_730['doc_id']}"
-        within "dd.blacklight-title_uniform_display" do
+        within "dd.blacklight-title_addl_display" do
           expect(page).to have_text("Subfield I.")
           expect(page).to have_link(item_730["title_uniform"])
         end
