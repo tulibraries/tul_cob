@@ -1,5 +1,5 @@
 FROM ruby:3.1-alpine
-RUN apk --update add nodejs yarn git build-base bash mysql-dev sqlite-dev tzdata shared-mime-info libssl-dev
+RUN apk --update add nodejs yarn git build-base bash mysql-dev sqlite-dev tzdata shared-mime-info libssl1.1
 RUN mkdir /app
 WORKDIR /app
 ENV RAILS_ENV='test'
