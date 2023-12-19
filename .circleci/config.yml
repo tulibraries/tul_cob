@@ -9,13 +9,6 @@ workflows:
   run_tests:
     jobs:
       - run_tests
-  qa_deploy:
-   jobs:
-     - qa_deploy:
-         filters:
-           branches:
-             only:
-               - main
   prod_deploy:
     jobs:
       - update_airflow_variables:
@@ -101,22 +94,6 @@ jobs:
 
       - coveralls/upload:
           coverage_file: ./app.lcov
-
-  qa_deploy:
-    docker:
-      - image: cimg/python:3.9.10
-        auth:
-          username: $DOCKERHUB_USER
-          password: $DOCKERHUB_PASSWORD
-        environment:
-          PIPENV_VENV_IN_PROJECT: true
-    steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "f7:95:df:23:81:5e:03:3e:73:0f:de:6f:1d:47:be:96"
-      - run:
-          command: bash .circleci/deploy-qa.sh
 
   update_airflow_variables:
     docker:
