@@ -30,7 +30,7 @@ gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
 gem "jwt"
 gem "coffee-rails", "~> 5.0"
 gem "devise"
-gem "devise-guests", "~> 0.7"
+gem "devise-guests", "~> 0.8"
 gem "dotenv-rails"
 gem "execjs"
 gem "faraday", "2.8.1"
