@@ -269,11 +269,10 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.8.1)
-      base64
-      faraday-net_http (>= 2.0, < 3.1)
-      ruby2_keywords (>= 0.0.4)
-    faraday-net_http (3.0.2)
+    faraday (2.9.0)
+      faraday-net_http (>= 2.0, < 3.2)
+    faraday-net_http (3.1.0)
+      net-http
     ffi (1.16.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -356,6 +355,8 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mysql2 (0.5.5)
+    net-http (0.4.1)
+      uri
     net-imap (0.3.7)
       date
       net-protocol
@@ -496,7 +497,6 @@ GEM
     ruby-saml (1.16.0)
       nokogiri (>= 1.13.10)
       rexml
-    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -573,6 +573,7 @@ GEM
       unf_ext
     unf_ext (0.0.9.1)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     vcr (6.2.0)
     view_component (2.82.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -646,7 +647,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_bot_rails
-  faraday (= 2.8.1)
+  faraday (= 2.9.0)
   ffi (= 1.16.3)
   flamegraph
   foreman
