@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 1fe0fa2e1dd096609c08060accfde3aa588ef82b
+  revision: b4adc22be8c7618bef938aaf720191f2d69e1531
   branch: main
   specs:
     cob_index (0.1.0)
@@ -254,7 +254,7 @@ GEM
       devise
     diff-lcs (1.5.0)
     docile (1.4.0)
-    domain_name (0.6.20231109)
+    domain_name (0.6.20240107)
     dot-properties (0.1.4)
       bundler (>= 2.2.33)
     dotenv (2.8.1)
