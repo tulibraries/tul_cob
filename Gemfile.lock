@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 08cbfa8a942edbbacf87dda002da36b3acb065f6
+  revision: fefb774b86d4d37a3db69833e76cac66efe86dfc
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -350,7 +350,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.20.0)
+    minitest (5.21.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
