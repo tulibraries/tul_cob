@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: fefb774b86d4d37a3db69833e76cac66efe86dfc
+  revision: 3f27661bfbede757286bfb7ebbd424ed821d903c
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -225,7 +225,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.4.1)
@@ -350,7 +350,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.21.1)
+    minitest (5.21.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
