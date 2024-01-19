@@ -180,7 +180,7 @@ GEM
       rails (>= 5.2, < 7)
       summon
     bindex (0.8.1)
-    blacklight (7.33.1)
+    blacklight (7.36.1)
       deprecation
       globalid
       hashdiff
@@ -188,8 +188,8 @@ GEM
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7.1)
-      view_component (~> 2.66)
+      rails (>= 5.1, < 7.2)
+      view_component (>= 2.66, < 4)
     blacklight-marc (8.1.0)
       blacklight (>= 7.11, < 9)
       library_stdnums
@@ -225,7 +225,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.4.1)
@@ -239,7 +239,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
-    date (3.3.3)
+    date (3.3.4)
     deprecation (1.1.0)
       activesupport
     descendants_tracker (0.0.4)
@@ -282,7 +282,7 @@ GEM
     gli (2.21.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
-    hashdiff (1.0.1)
+    hashdiff (1.1.0)
     hashie (4.1.0)
     honeybadger (5.4.1)
     htmlentities (4.3.4)
@@ -350,14 +350,14 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.21.1)
+    minitest (5.21.2)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mysql2 (0.5.5)
     net-http (0.4.1)
       uri
-    net-imap (0.3.7)
+    net-imap (0.4.9.1)
       date
       net-protocol
     net-pop (0.1.2)
@@ -390,7 +390,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.5.5)
+    ostruct (0.6.0)
     parallel (1.24.0)
     parser (3.3.0.4)
       ast (~> 2.4.1)
@@ -575,7 +575,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.0)
     vcr (6.2.0)
-    view_component (2.83.0)
+    view_component (3.10.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -624,7 +624,7 @@ DEPENDENCIES
   axe-core-rspec
   base64 (= 0.1.1)
   bento_search
-  blacklight (~> 7.33.0)
+  blacklight (~> 7.36.1)
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
