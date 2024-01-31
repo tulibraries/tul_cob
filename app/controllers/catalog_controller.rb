@@ -58,7 +58,7 @@ class CatalogController < ApplicationController
     config.solr_path = "search"
 
     # items to show per page, each number in the array represent another option to choose from.
-    #config.per_page = [10,20,50,100]
+    config.per_page = [10,20,50]
 
     # Set document specific solr request handler.
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
