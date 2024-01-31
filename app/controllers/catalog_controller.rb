@@ -13,6 +13,7 @@ class CatalogController < ApplicationController
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
   before_action only: :index do
+    blacklight_config.max_per_page = 50
     if params[:page] && params[:page].to_i > 250
       flash[:error] = t("blacklight.errors.deep_paging")
       redirect_to root_path
