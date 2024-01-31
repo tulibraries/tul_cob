@@ -13,6 +13,7 @@ class CatalogController < ApplicationController
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
   before_action only: :index do
+    blacklight_config.max_per_page = 50
     if params[:page] && params[:page].to_i > 250
       flash[:error] = t("blacklight.errors.deep_paging")
       redirect_to root_path
@@ -58,7 +59,7 @@ class CatalogController < ApplicationController
     config.solr_path = "search"
 
     # items to show per page, each number in the array represent another option to choose from.
-    #config.per_page = [10,20,50,100]
+    config.per_page = [10, 20, 50]
 
     # Set document specific solr request handler.
     ## Default parameters to send on single-document requests to Solr. These settings are the Blackligt defaults (see SearchHelper#solr_doc_params) or
