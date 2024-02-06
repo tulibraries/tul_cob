@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 901e5a601fefa0120143b60a6c55f79b18a6a56d
+  revision: 69ae873a475a00079874a943d6ca153a7e05926c
   branch: main
   specs:
     cob_index (0.1.0)
@@ -287,11 +287,12 @@ GEM
     hashie (4.1.0)
     honeybadger (5.4.1)
     htmlentities (4.3.4)
-    http (5.1.1)
+    http (5.2.0)
       addressable (~> 2.8)
+      base64 (~> 0.1)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.4.0)
+      llhttp-ffi (~> 0.5.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
@@ -330,7 +331,7 @@ GEM
     launchy (2.5.2)
       addressable (~> 2.8)
     library_stdnums (1.6.0)
-    llhttp-ffi (0.4.0)
+    llhttp-ffi (0.5.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     loofah (2.22.0)
@@ -543,7 +544,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.11)
     timeout (0.4.1)
-    traject (3.8.1)
+    traject (3.8.2)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
