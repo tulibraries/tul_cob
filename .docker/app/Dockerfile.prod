@@ -27,10 +27,10 @@ RUN apk add -U --no-cache \
       mariadb-dev=10.11.6-r0 \
       nodejs=20.11.0-r0 \
       yarn=1.22.19-r0 && \
-    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' $(which bundler) && \
+    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' "$(which bundler)" && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
-    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' $(which rails) && \
+    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' "$(which rails)" && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     cp config/alma.yml.example config/alma.yml && \
     cp config/bento.yml.example config/bento.yml && \
