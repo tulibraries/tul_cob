@@ -1,5 +1,5 @@
 # Allow base image override
-ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.2-alpine"
+ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.3-alpine"
 
 # hadolint ignore=DL3006,DL3026
 FROM "${BASE_IMAGE}"
@@ -8,12 +8,17 @@ WORKDIR /app
 
 COPY . .
 
+ENV LD_PRELOAD="libjemalloc.so.2" \
+      MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true,stats_print:true" \
+      RUBY_YJIT_ENABLE="1"
+
 USER root
 
 ARG SECRET_KEY_BASE
 
 # libc6-compat is required for m1 build.
 RUN apk add -U --no-cache \
+      jemalloc=5.3.0-r4 \
       bash=5.2.21-r0 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.39-r0 \
@@ -27,10 +32,8 @@ RUN apk add -U --no-cache \
       mariadb-dev=10.11.6-r0 \
       nodejs=20.11.0-r0 \
       yarn=1.22.19-r0 && \
-    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' "$(which bundler)" && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
-    sed -i 's/bin\/env ruby/bin\/env ruby --yjit/' "$(which rails)" && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     cp config/alma.yml.example config/alma.yml && \
     cp config/bento.yml.example config/bento.yml && \
@@ -41,6 +44,7 @@ RUN apk add -U --no-cache \
     rm -rf /var/cache/apk/ && \
     chown nobody -R /app/tmp && \
     chown nobody -R /app/log
+
 
 USER nobody
 
