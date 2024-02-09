@@ -58,7 +58,7 @@ task :reload_electronic_notes, [:path] => :environment do |_, args|
 
   ["collection", "service"].each do |type|
     filename = Alma::ConfigUtils.filename(type, args[:path])
-    abort("Missing required file #{filename}, aborting the reload.") unless File.exists? filename
+    abort("Missing required file #{filename}, aborting the reload.") unless File.exist? filename
 
     puts
     puts "Reloading the electronic #{type} notes from #{filename}..."
