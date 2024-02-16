@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 CDM.configure do |config|
-  config.server_url = "https://server16002.contentdm.oclc.org"
-  config.max_recs = "1"
+  config.server_url = "https://digital.library.temple.edu/digital"
+  config.max_recs = "3"
 end
