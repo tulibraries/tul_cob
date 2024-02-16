@@ -33,5 +33,3 @@ class CdmConnector < ApplicationService
     @results
   end
 end
-
-   
