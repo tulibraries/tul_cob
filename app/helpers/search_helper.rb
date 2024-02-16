@@ -92,6 +92,8 @@ module SearchHelper
       link_to "Books & Media", engine.url(self), id: "bento_" + id + "_header"
     elsif id == "lib_guides"
       link_to "Research Guides", engine.url(self), id: "bento_" + id + "_header"
+    elsif id == "cdm"
+      link_to "Digital Collections", engine.url(self), id: "bento_" + id + "_header"
     else
       link_to id.titleize , engine.url(self), id: "bento_" + id + "_header"
     end
@@ -128,5 +130,12 @@ module SearchHelper
       config = BentoSearch.get_engine(engine_id).configuration[:for_display]
       [engine_id, config]
     }.to_h
+  end
+
+  def cdm_collection_name(cdm_alias)
+    cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
+    response = JSON.load(URI.open(cdm_url))
+    collection = response.select {|collection| collection["name"] if collection["alias"] == cdm_alias}
+    collection.first["name"]
   end
 end
