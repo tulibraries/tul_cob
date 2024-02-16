@@ -63,7 +63,6 @@ class SearchController < CatalogController
     end
 
     def cdm_records(query)
-      # binding.pry
       query.gsub("/", " ")
       query = ERB::Util.url_encode(query)
       fields = "title!date"
@@ -83,7 +82,7 @@ class SearchController < CatalogController
           item.link = "https://digital.library.temple.edu/digital/collection#{i["collection"]}/id/#{i["pointer"]}"
           item.thumbnail = "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{i["collection"]}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=10&DMHEIGHT=340"
           results << item
-        end 
+        end
       rescue StandardError => e
         total_items = 0
         Honeybadger.notify("Ran into error while try to process CDM: #{e.message}")
