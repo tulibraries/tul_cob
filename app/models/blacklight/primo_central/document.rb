@@ -156,7 +156,7 @@ module Blacklight::PrimoCentral::Document
 
       Thread.new {
         begin
-          HTTParty.get(libkey_articles_url, timeout: 10)["data"]
+          HTTParty.get(libkey_articles_url, timeout: 4)["data"]
             &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
         rescue => e
           Honeybadger.notify(e)
