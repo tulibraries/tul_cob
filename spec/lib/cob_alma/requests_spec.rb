@@ -52,7 +52,6 @@ RSpec.describe CobAlma::Requests do
 
   describe "picking up at a Rome Campus Library" do
     let(:rome_only) { Alma::BibItem.find("rome_only").grouped_by_library }
-    let(:rome_with_multiple_libraries) { Alma::BibItem.find("rome_with_multiple_libraries").grouped_by_library }
     let(:japan_and_rome) { Alma::BibItem.find("japan_and_rome").grouped_by_library }
 
     it "allows a user to request a book, available at Rome only, for pickup at Rome only" do
@@ -60,14 +59,10 @@ RSpec.describe CobAlma::Requests do
       expect(described_class.valid_pickup_locations(rome_only)).not_to include "MAIN"
     end
 
-    it "allows a user to request a book, available at Rome and other libraries, for pickup at Rome and other libraries" do
-      expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "ROME"
-      expect(described_class.valid_pickup_locations(rome_with_multiple_libraries)).to include "MAIN"
-    end
-
     it "allows a user to request a book, available at Japan and Rome" do
       expect(described_class.valid_pickup_locations(japan_and_rome)).to include "JAPAN"
       expect(described_class.valid_pickup_locations(japan_and_rome)).to include "ROME"
+      expect(described_class.valid_pickup_locations(japan_and_rome)).not_to include "MAIN"
     end
 
   end
@@ -132,6 +127,18 @@ RSpec.describe CobAlma::Requests do
       it "returns a hash with all the campuses" do
         expect(subject).to eq("v.2 (1974)" => ["MAIN", "GINSBURG", "PODIATRY", "HARRISBURG"])
       end
+    end
+  end
+
+  describe "descriptions at locations including an international campus" do
+
+    let(:items_list) { Alma::BibItem.find("rome_with_multiple_libraries") }
+    let(:subject) { described_class.item_level_locations(items_list) }
+
+    it "returns a hash with the relevent locations" do
+      expect(subject).to eq("" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
+                            "description for ASRS item" => ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"],
+                            "description for Rome item" => ["ROME"])
     end
   end
 
