@@ -5,7 +5,7 @@ class TulDecorator < BentoSearch::StandardDecorator
   # It's required becase we need to add a label to the publisher field.
   def render_source_info
     parts = []
-
+    
     if self.source_title.present?
       parts << _h.content_tag("span", self.source_title, class: "source_title")
     elsif self.publisher.present?

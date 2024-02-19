@@ -4,11 +4,35 @@ module BentoSearch
   class CDMEngine
     include BentoSearch::SearchEngine
 
-    delegate :blacklight_config, to: ::SearchController
+    delegate :blacklight_config, :search_service_class, to: ::SearchController
+
+    def conform_to_bento_result(item)
+      cdm_collection = item.fetch("collection", "").gsub("/", "")
+      cdm_id = item.fetch("pointer")
+      BentoSearch::ResultItem.new(
+        title: item.fetch("title"),
+        cdm_date: item.fetch("date"),
+        cdm_collection: cdm_collection,
+        cdm_id: cdm_id,
+        cdm_record_link: "https://digital.library.temple.edu/digital/collection/#{cdm_collection}/id/#{cdm_id}",
+        cdm_thumbnail_link: image_scale(cdm_collection, cdm_id)
+      )
+    end
+
+    def image_scale(collection, id)
+      begin
+        image_info = JSON.load(URI.open("https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/#{collection}/#{id}/json"))
+        image_width = image_info["width"]
+        image_scale = (image_width <= 2500) ? 50 : 6  #this may take some fine tuning depending on all available sizes
+      rescue StandardError => e
+        Honeybadger.notify("Ran into error while try to process CDM image info api call: #{e.message}")
+      end
+      "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
+    end
 
     def search_implementation(args)
-      bento_results = BentoSearch::Results.new
       query = args.fetch(:query, "").gsub("/", " ")
+      bento_results = BentoSearch::Results.new
       query = ERB::Util.url_encode(query)
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
@@ -20,11 +44,7 @@ module BentoSearch
         total_items = response.dig("results", "pager", "total") || 0
         response["records"].each do |i|
           item = BentoSearch::ResultItem.new
-          item.title = i.fetch("title")
-          item.abstract = i.fetch("date")
-          item.custom_data = { collection: i.fetch("collection") }
-          item.link = "https://digital.library.temple.edu/digital/collection/#{i["collection"]}/id/#{i["pointer"]}"
-          item.other_links = [{ label: item.title, link: "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340" }]
+          item = conform_to_bento_result(i)
           bento_results << item
         end
       rescue StandardError => e

@@ -133,7 +133,7 @@ module SearchHelper
   def cdm_collection_name(cdm_alias)
     cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
     response = JSON.load(URI.open(cdm_url))
-    collection = response.select { |collection| collection["name"] if collection["alias"] == cdm_alias }
+    collection = response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == cdm_alias }
     collection.first["name"]
   end
 end
