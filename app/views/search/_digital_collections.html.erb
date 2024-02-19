@@ -3,27 +3,23 @@
  <div class="bento-resource-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
   <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
-
-    <% format_facet.items.select do |item| -%>
-    <%# binding.pry %>
-      <% if item.value == "digital_collections" %>
-        <% @results["cdm"].each do |cdm_record| %>
-          <li class="bento-resource-list-item list-inline-item pb-1">
-
-            <%= link_to cdm_record.link do %>
-              <%= image_tag cdm_record.other_links.first[:link] %>
-              <div class="pt-2 w-75">
-                <%= cdm_record.title %>
-              </div>
-            <% end %>
-            <p class="w-75" style="color:black;font-size:1rem;">
-              <%= "Date: #{cdm_record.abstract}" if cdm_record.abstract.present? %>
-              <br /><%= cdm_collection_name(cdm_record.custom_data.fetch(:collection)) %>
-            </p>
-
-          </li>
-        <% end %>
+  <% format_facet.items.select do |item| -%>
+    <% if item.value == "digital_collections" %>
+      <% @results["cdm"].each do |cdm_record| %>
+        <li class="bento-resource-list-item list-inline-item pb-1">
+          <%= link_to cdm_record.link do %>
+            <%= image_tag cdm_record.other_links.first[:link] %>
+            <div class="pt-2 w-75">
+              <%= cdm_record.title %>
+            </div>
+          <% end %>
+          <p class="w-75" style="color:black;font-size:1rem;">
+            <%= "Date: #{cdm_record.abstract}" if cdm_record.abstract.present? %>
+            <br /><%= cdm_collection_name(cdm_record.custom_data.fetch(:collection)) %>
+          </p>
+        </li>
       <% end %>
     <% end %>
+  <% end %>
   </ul>
 </div>
