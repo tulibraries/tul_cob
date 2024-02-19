@@ -14,18 +14,13 @@ module CobAlma
         :PODIATRY
       when "HARRISBURG"
         :HARRISBURG
+      when "JAPAN"
+        :JAPAN
+      when "ROME"
+        :ROME
       else
         :OTHER
       end
-    end
-
-    def self.possible_usa_pickup_locations
-      #Make an array on only items that can request items
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
-    end
-
-    def self.asrs_pickup_locations
-      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
     def self.remove_by_campus(campus)
@@ -40,19 +35,27 @@ module CobAlma
         ["PODIATRY"]
       when :HARRISBURG
         ["HARRISBURG"]
-      when :OTHER
+      else
         []
       end
     end
 
-    def self.avail_locations(grouped_by_library_items_list)
+    def self.possible_pa_pickup_locations
+      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+    end
+
+    def self.asrs_pickup_locations
+      ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+    end
+
+    def self.available_locations(grouped_by_library_items_list)
       grouped_by_library_items_list.select { |key, val|
         val.any?(&:in_place?) }.keys
     end
 
     def self.valid_pickup_locations(items_list)
-      pickup_locations = self.possible_usa_pickup_locations
-      libraries = self.avail_locations(items_list)
+      pickup_locations = self.possible_pa_pickup_locations
+      libraries = self.available_locations(items_list)
 
       if libraries.any?
         removals = []
@@ -65,7 +68,7 @@ module CobAlma
         end
         pickup_locations -= removals
         if (libraries & ["ROME", "JAPAN"]).present?
-          if libraries.size == 1
+          if libraries.size == 1 || libraries.sort == ["JAPAN", "ROME"]
             pickup_locations = libraries
           else
             pickup_locations << libraries.select { |lib| lib == "ROME" || lib == "JAPAN" }
@@ -78,16 +81,21 @@ module CobAlma
 
     def self.item_level_locations(items_list)
       #Refactored to temporarily allow items to be picked up at Charles
-      pickup_locations = self.possible_usa_pickup_locations
+
+      pickup_locations = self.possible_pa_pickup_locations
 
       items_list.all.reduce({}) { |libraries, item|
         desc = item.description
         campus = self.determine_campus(item.library)
         removals = []
+        international_pickup = []
 
         if libraries[desc].present?
           removals << item.library if remove_by_campus(campus) unless campus == :MAIN
           libraries[desc] -= removals
+        elsif item.library == "JAPAN" || item.library == "ROME"
+          international_pickup << item.library
+          libraries[desc] = international_pickup
         else
           removals << item.library if remove_by_campus(campus) unless campus == :MAIN
           libraries[desc] = pickup_locations - removals
