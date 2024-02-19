@@ -14,14 +14,15 @@ class SearchController < CatalogController
 
   def index
     @per_page = 3
+    cdm_fields = "title!date"
+    cdm_format = "json"
     if params[:q]
-      engines = %i(books_and_media articles databases journals library_website lib_guides)
+      engines = %i(books_and_media articles databases journals library_website lib_guides cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
-      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
+      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field], cdm_fields:, cdm_format:)
 
       @results = process_results(searcher.results)
       @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
-      @cdm_records = CdmConnector.call(query: params[:q])
     end
 
     respond_to do |format|
@@ -56,9 +57,9 @@ class SearchController < CatalogController
 
         results.merge(
           "books_and_media" => items
-          ).except("cdm")
+          )
       else
-        results.except("cdm")
+        results
       end
     end
 end

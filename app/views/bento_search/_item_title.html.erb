@@ -21,11 +21,15 @@
     <% if local_assigns[:index] %>
       <% id_attr = item.html_id(local_assigns[:id_prefix], index) %>
       <%= content_tag("span", :class => "bento_index", :id => (id_attr if id_attr)) do %>
-        <%= index %>.
+        <%= index %>
       <% end %>
     <% end %>
 
     <%= link_to_unless(item.link.blank?, item.complete_title.truncate(130), item.link) %>
+
+    <% item.custom_data["records"].each do |item| #cdm api response %> 
+      <%= cdm_record_link(item) %>
+    <% end if item.custom_data["records"].present? %>
 
     <% if item.display_format.present? || item.display_language.present? %>
 

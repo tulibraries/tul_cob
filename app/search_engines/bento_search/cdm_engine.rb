@@ -7,21 +7,43 @@ module BentoSearch
     delegate :blacklight_config, to: ::SearchController
 
     def search_implementation(args)
+      bento_results = BentoSearch::Results.new
       query = args.fetch(:query, "").gsub("/", " ")
       query = ERB::Util.url_encode(query)
-      results = BentoSearch::Results.new
-      response = {}
+      fields = args.fetch(:cdm_fields)
+      format = args.fetch(:cdm_format)
+      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/3/#{format}"
+      response = []
 
       begin
-        response = CDM::find(query)
-        results.total_items = response.dig("results", "pager", "total") || 0
+        response = JSON.load(URI.open(cdm_url))
+        total_items = response.dig("results", "pager", "total") || 0
+        response["records"].each do |i|
+        # binding.pry
+          item = BentoSearch::ResultItem.new
+          item.title = i.fetch("title")
+          item.abstract = i.fetch("date")
+          item.custom_data = {collection: i.fetch("collection")}
+          item.link = "https://digital.library.temple.edu/digital/collection/#{i["collection"]}/id/#{i["pointer"]}"
+          item.other_links = [{label: item.title, link: "https://digital.library.temple.edu/digital/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340"}]
+          bento_results << item
+        end
       rescue StandardError => e
-        results.total_items = 0
+        bento_results.total_items = 0
         Honeybadger.notify("Ran into error while try to process CDM: #{e.message}")
       end
+      bento_results
+    end
 
-      results << BentoSearch::ResultItem.new(custom_data: response)
-      results
+
+    def url(helper)
+      query = helper.params.slice(:q)
+      "https://digital.library.temple.edu/digital/search/searchterm/#{query}/order/nosort"
+    end
+
+    def view_link(total = nil, helper)
+      url = url(helper)
+      helper.link_to "View all digital collection results", url, class: "bento-full-results"
     end
   end
 end

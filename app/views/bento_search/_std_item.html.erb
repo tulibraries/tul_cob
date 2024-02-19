@@ -65,7 +65,7 @@
 
       <% if item.other_links.present? %>
         <p class="bento_item_other_links">
-          <%= render :partial => "bento_search/link", :collection => item.other_links %>
+          <%= render partial: "bento_search/link", locals: { collection: item.other_links } %>
         </p>
       <% end %>
     </div>
