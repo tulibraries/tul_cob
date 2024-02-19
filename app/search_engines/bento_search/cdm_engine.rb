@@ -19,7 +19,6 @@ module BentoSearch
         response = JSON.load(URI.open(cdm_url))
         total_items = response.dig("results", "pager", "total") || 0
         response["records"].each do |i|
-          # binding.pry
           item = BentoSearch::ResultItem.new
           item.title = i.fetch("title")
           item.abstract = i.fetch("date")
