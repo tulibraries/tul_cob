@@ -25,7 +25,7 @@ module BentoSearch
           item.abstract = i.fetch("date")
           item.custom_data = {collection: i.fetch("collection")}
           item.link = "https://digital.library.temple.edu/digital/collection/#{i["collection"]}/id/#{i["pointer"]}"
-          item.other_links = [{label: item.title, link: "https://digital.library.temple.edu/digital/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340"}]
+          item.other_links = [{label: item.title, link: "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340"}]
           bento_results << item
         end
       rescue StandardError => e

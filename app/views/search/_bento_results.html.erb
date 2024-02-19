@@ -4,6 +4,7 @@
       <%= render :partial => "lib_guide_recommender_bento" %>
     </div>
   <% end %>
+  <% unless engine_id == "cdm" %>
   <div class="col mx-auto p-2 bento_compartment <%= engine_id %>">
     <h2 class="m-0"><%= bento_icons(engine_id) %><%= bento_titleize(engine_id) %> </h2>
     <%= render :layout => "layouts/bento_box_wrapper", :locals => {:results => result } do %>
@@ -17,4 +18,5 @@
     <% end %>
     <%= render_linked_results(engine_id) %>
   </div>
+  <% end %>
 <% end %>

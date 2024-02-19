@@ -92,8 +92,6 @@ module SearchHelper
       link_to "Books & Media", engine.url(self), id: "bento_" + id + "_header"
     elsif id == "lib_guides"
       link_to "Research Guides", engine.url(self), id: "bento_" + id + "_header"
-    elsif id == "cdm"
-      link_to "Digital Collections", engine.url(self), id: "bento_" + id + "_header"
     else
       link_to id.titleize , engine.url(self), id: "bento_" + id + "_header"
     end
