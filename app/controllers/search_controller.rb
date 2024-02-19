@@ -19,7 +19,7 @@ class SearchController < CatalogController
     if params[:q]
       engines = %i(books_and_media articles databases journals library_website lib_guides cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
-      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field], cdm_fields:, cdm_format:)
+      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field], cdm_fields: cdm_fields, cdm_format: cdm_format)
 
       @results = process_results(searcher.results)
       @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)

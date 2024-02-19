@@ -19,13 +19,13 @@ module BentoSearch
         response = JSON.load(URI.open(cdm_url))
         total_items = response.dig("results", "pager", "total") || 0
         response["records"].each do |i|
-        # binding.pry
+          # binding.pry
           item = BentoSearch::ResultItem.new
           item.title = i.fetch("title")
           item.abstract = i.fetch("date")
-          item.custom_data = {collection: i.fetch("collection")}
+          item.custom_data = { collection: i.fetch("collection") }
           item.link = "https://digital.library.temple.edu/digital/collection/#{i["collection"]}/id/#{i["pointer"]}"
-          item.other_links = [{label: item.title, link: "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340"}]
+          item.other_links = [{ label: item.title, link: "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{i["collection"].gsub("/", "")}&CISOPTR=#{i["pointer"]}&action=2&DMSCALE=6&DMHEIGHT=340" }]
           bento_results << item
         end
       rescue StandardError => e
