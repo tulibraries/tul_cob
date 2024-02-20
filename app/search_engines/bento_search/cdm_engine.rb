@@ -36,16 +36,18 @@ module BentoSearch
       query = ERB::Util.url_encode(query)
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
-      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/3/#{format}"
+      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/9/#{format}"
       response = []
 
       begin
         response = JSON.load(URI.open(cdm_url))
-        total_items = response.dig("results", "pager", "total") || 0
+        total_items = response.dig("pager", "total") || 0
         response["records"].each do |i|
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
-          bento_results << item
+          if (bento_results.size < 3) && (image_available?(item.cdm_thumbnail_link))
+            bento_results << item unless is_int?(item.title)
+          end
         end
       rescue StandardError => e
         bento_results.total_items = 0
@@ -54,15 +56,13 @@ module BentoSearch
       bento_results
     end
 
-
-    def url(helper)
-      query = helper.params.slice(:q)
-      "https://digital.library.temple.edu/digital/search/searchterm/#{query}/order/nosort"
+    def is_int?(str)
+      !!(str =~ /\A[-+]?[0-9]+\z/)
     end
 
-    def view_link(total = nil, helper)
-      url = url(helper)
-      helper.link_to "View all digital collection results", url, class: "bento-full-results"
+    def image_available?(link)
+      res = URI.open(link)
+      res.size > 0
     end
   end
 end
