@@ -243,7 +243,7 @@ class CatalogController < ApplicationController
     config.add_show_field "note_copyright_display", label: "Copyright Note"
     config.add_show_field "note_references_display", label: "Cited in"
     config.add_show_field "note_cite_display", label: "Cite as"
-    config.add_show_field "note_finding_aid_display", label: "Finding Aids"
+    config.add_show_field "note_finding_aid_display", label: "Cumulative Index/Finding Aids"
     config.add_show_field "note_custodial_display", label: "Custodial History"
     config.add_show_field "note_binding_display", label: "Binding Note"
     config.add_show_field "note_related_display", label: "Related Materials"
