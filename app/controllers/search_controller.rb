@@ -41,28 +41,14 @@ class SearchController < CatalogController
         Honeybadger.notify(result.error[:exception]) if result.failed?
       end
 
-      # unless results["books_and_media"].blank?
-      #   items = BentoSearch::Results.new(results["books_and_media"][0...-1])
-      #   items.engine_id = results["books_and_media"].engine_id
-      #   items.total_items = results["books_and_media"].total_items
-      #   items.display_configuration = results["books_and_media"].display_configuration
-
-      #   # Grabbing and setting @response in order to render facets.
-      #   @response = results["books_and_media"].last.custom_data
-
-
-      cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
       unless results["books_and_media"].blank?
         items = BentoSearch::Results.new(results["books_and_media"][0...-1])
         items.engine_id = results["books_and_media"].engine_id
-
         items.total_items = results["books_and_media"].total_items
         items.display_configuration = results["books_and_media"].display_configuration
 
         # Grabbing and setting @response in order to render facets.
-        # Merges cdm records into the @response.
         @response = results["books_and_media"].last.custom_data
-        @response.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
 
         results.merge(
           "books_and_media" => items
