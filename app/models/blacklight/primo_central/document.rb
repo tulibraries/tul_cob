@@ -161,11 +161,14 @@ module Blacklight::PrimoCentral::Document
       library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
       access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
+      duration = ActiveSupport::Duration.parse(Rails.configuration.caches[:libkey_article_cache_life])
 
       Thread.new {
-        Primo::Search.with_retry do
-          (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
-            &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+        Rails.cache.fetch(libkey_articles_url, expires_in: duration) do
+          Primo::Search.with_retry do
+            (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
+              &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+          end
         end
       }
     end
