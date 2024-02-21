@@ -9,11 +9,13 @@
 @font-face {
   font-family: Faustina-Bold;
   src: font-url('Faustina-SemiBold.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Roboto';
   src: font-url('Roboto-Regular.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
@@ -25,17 +27,21 @@
 @font-face {
   font-family: 'Roboto Light';
   src: font-url('Roboto-Light.ttf') format('truetype');
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Roboto Bold';
   src: font-url('Roboto-Bold.ttf') format('truetype');
+  font-display: swap;
 }
 
 .roboto {
   font-family: Roboto Condensed;
+  font-display: swap;
 }
 
 .faustina {
   font-family: Faustina;
+  font-display: swap;
 }
