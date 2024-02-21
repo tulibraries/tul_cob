@@ -41,7 +41,8 @@ module BentoSearch
 
       begin
         response = JSON.load(URI.open(cdm_url))
-        total_items = response.dig("pager", "total") || 0
+        bento_results.total_items = response.dig("pager", "total") || 0
+
         response["records"].each do |i|
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
@@ -50,7 +51,6 @@ module BentoSearch
           end
         end
       rescue StandardError => e
-        bento_results.total_items = 0
         Honeybadger.notify("Ran into error while try to process CDM: #{e.message}")
       end
       bento_results

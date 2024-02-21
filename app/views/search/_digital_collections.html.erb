@@ -1,10 +1,10 @@
-<% format_facet = @response.aggregations["format"] %>
+<%# format_facet = @response.aggregations["format"] %>
 
  <div class="bento-resource-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
   <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
-  <% format_facet.items.select do |item| -%>
-    <% if item.value == "digital_collections" %>
+  <%# format_facet.items.select do |item| -%>
+    <%# if item.value == "digital_collections" %>
       <% @results["cdm"].each do |cdm_record| %>
         <li class="bento-resource-list-item list-inline-item pb-1">
           <%= link_to cdm_record.cdm_record_link do %>
@@ -19,7 +19,7 @@
           </p>
         </li>
       <% end %>
-    <% end %>
-  <% end %>
+    <%# end %>
+  <%# end %>
   </ul>
 </div>

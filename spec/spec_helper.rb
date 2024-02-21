@@ -407,7 +407,10 @@ RSpec.configure do |config|
     default: [ :title, :link ]
 
   config.add_setting :guide_expected_fields,
-  default: [ :title, :abstract, :link ]
+    default: [ :title, :abstract, :link ]
+
+  config.add_setting :cdm_expected_fields,
+    default: [ :title, :cdm_collection, :cdm_date, :cdm_id, :cdm_record_link, :cdm_thumbnail_link ]
 
 
   # So we can test logged in users.
