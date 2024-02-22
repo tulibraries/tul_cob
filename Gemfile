@@ -97,3 +97,7 @@ group :production do
   gem "dalli"
   gem "connection_pool"
 end
+
+gem "actionpack-page_caching", "~> 1.2"
+
+gem "actionpack-action_caching", "~> 1.2"
