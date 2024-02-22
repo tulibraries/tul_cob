@@ -117,6 +117,10 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.2.0)
+    actionpack-action_caching (1.2.2)
+      actionpack (>= 4.0.0)
+    actionpack-page_caching (1.2.4)
+      actionpack (>= 4.0.0)
     actiontext (6.1.7.6)
       actionpack (= 6.1.7.6)
       activerecord (= 6.1.7.6)
@@ -622,6 +626,8 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  actionpack-action_caching (~> 1.2)
+  actionpack-page_caching (~> 1.2)
   alma!
   autoprefixer-rails
   awesome_print
