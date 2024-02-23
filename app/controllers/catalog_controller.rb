@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
-  caches_page :show, expires_in: 24.hours
-  caches_action :index, expires_in: 12.hours, cache_path: Proc.new { |c| c.request.url }
-
   include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride

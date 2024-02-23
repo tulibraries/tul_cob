@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class QueryListController < ApplicationController
-  caches_action :show, expires_in: 12.hours, cache_path: Proc.new { |c| c.request.url }
-
   def show
     search_service = search_service_class.new(config: blacklight_config, user_params: params)
 
