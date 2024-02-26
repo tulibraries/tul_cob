@@ -83,6 +83,7 @@ HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
 CI ?= false
 PLATFORM ?= linux/x86_64
+WEB_CONCURRENCY ?= 1
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -108,6 +109,7 @@ run:
 		-e "SOLRCLOUD_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
 		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
 		-e "K8=yes" \
+		-e "WEB_CONCURRENCY=$(WEB_CONCURRENCY)" \
 		-v `pwd`/config/alma.yml.local:/app/config/alma.yml \
 		-v `pwd`/config/bento.yml:/app/config/bento.yml \
 		-v `pwd`/config/secrets.yml:/app/config/secrets.yml \
@@ -117,6 +119,7 @@ run:
 build:
 	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
     --build-arg BASE_IMAGE=$(BASE_IMAGE) \
+		--build-arg WEB_CONCURRENCY=$(WEB_CONCURRENCY) \
 		--platform $(PLATFORM) \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
