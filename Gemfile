@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "6.1.7.6"
+gem "rails", "6.1.7.7"
 
 gem "actionpack-action_caching", "~> 1.2"
 gem "actionpack-page_caching", "~> 1.2"
@@ -29,7 +29,7 @@ gem "cob_index",
   branch: "main"
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"
-gem "coffee-rails", "~> 5.0"
+gem "coffee-rails"
 gem "devise"
 gem "devise-guests", "~> 0.8"
 gem "dotenv-rails"
@@ -56,7 +56,7 @@ gem "puma", "6.4.2"
 gem "railties"
 gem "rsolr", "~> 2.4"
 gem "ruby-saml", "1.16.0"
-gem "sass-rails", "~> 6.0"
+gem "sass-rails"
 gem "skylight"
 gem "turbolinks", "~> 5"
 gem "twitter-typeahead-rails", "0.11.1"
