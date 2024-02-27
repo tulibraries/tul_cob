@@ -10,12 +10,12 @@ COPY . .
 
 ENV LD_PRELOAD="libjemalloc.so.2" \
       MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
-      WEB_CONCURRENCY="8" \
       RUBY_YJIT_ENABLE="1"
 
 USER root
 
 ARG SECRET_KEY_BASE
+ARG WEB_CONCURRENCY
 
 # libc6-compat is required for m1 build.
 RUN apk add -U --no-cache \
@@ -31,7 +31,7 @@ RUN apk add -U --no-cache \
       git=2.43.0-r0 \
       libxslt-dev=1.1.39-r0 \
       mariadb-dev=10.11.6-r0 \
-      nodejs=20.11.0-r0 \
+      nodejs=20.11.1-r0 \
       yarn=1.22.19-r0 && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \

@@ -57,7 +57,7 @@
                 "provenance": {
                     "value": ""
                 },
-                "description": "",
+                "description": "description for ASRS item",
                 "library": {
                     "value": "ASRS",
                     "desc": "Charles BookBot"
@@ -323,7 +323,7 @@
                 "provenance": {
                     "value": ""
                 },
-                "description": "",
+                "description": "description for Rome item",
                 "library": {
                     "value": "ROME",
                     "desc": "Rome Campus Library"
