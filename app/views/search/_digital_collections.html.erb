@@ -1,17 +1,22 @@
-<% format_facet = @response.aggregations["format"] %>
-
-  <div class="bento-resource-container">
-    <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
-    <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
-      <% format_facet.items.select do |item| -%>
-        <% if item.value == "digital_collections" %>
-          <li class="bento-resource-list-item list-inline-item pb-1">
-            <%= render_bento_format_facet_value(item) %>
-            <%= link_to path_for_books_and_media_facet(format_facet, item) do %>
-              <span class='external-link-icon'></span>
-            <% end %>
-          </li>
-        <% end %>
+<div class="bento-resource-container">
+  <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
+  <ul class="bento-resource-types-list pt-2 pb-0 list-inline d-flex flex-wrap justify-content-start">
+  <% @results["cdm"].each do |cdm_record| %>
+    <li class="bento-resource-list-item list-inline-item pb-1">
+      <%= link_to cdm_record.link do %>
+        <%= image_tag cdm_record.other_links[0] %>
+        <div class="pt-2 w-75">
+          <%= cdm_record.title %>
+        </div>
       <% end %>
-    </ul>
+      <p class="w-75" style="color:black;font-size:1rem;">
+        <%= "Date: #{cdm_record.publication_date}" if cdm_record.publication_date.present? %>
+        <br /><%= cdm_collection_name(cdm_record.source_title) %>
+      </p>
+    </li>
+  <% end %>
+  </ul>
+  <div class="bento-resource-types-list">
+    <%= link_to "View all digitized collections results >", "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort" %>
   </div>
+</div>

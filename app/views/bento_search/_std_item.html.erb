@@ -17,15 +17,14 @@
 %>
 
 
-
 <% bento_decorate(item) do |item| %>
 
   <%# for debugging purposes, we'll include the vendor-specific unique_id, if we have
       one, in a data-unique-id attribute. %>
 
   <div class="bento_item border-bottom border-lighter-grey pr-2 py-3" data-unique-id="<%= item.unique_id %>">
-    <%= render :partial => "bento_search/item_title", :object => item, :as => 'item' %>
 
+    <%= render :partial => "bento_search/item_title", :object => item, :as => 'item' %>
 
     <div class="bento_item_body ml-3">
 
@@ -53,7 +52,7 @@
 
       <% if item.abstract %>
         <p class="bento_item_row abstract">
-          <%= item.render_summary  %>
+          <%= item.render_summary %>
         </p>
       <% end %>
 
@@ -65,25 +64,28 @@
 
       <% if item.other_links.present? %>
         <p class="bento_item_other_links">
-          <%= render :partial => "bento_search/link", :collection => item.other_links %>
+          <%= render partial: "bento_search/link", locals: { collection: item.other_links } %>
         </p>
       <% end %>
     </div>
-      <% if item.engine_id == "books_and_media" %>
-        <div class="bento_item_body ml-3">
-          <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
-        </div>
-      <% end %>
 
-      <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
-        <%= render :partial => "blacklight_availability", :object => item, :as => 'item' %>
-      <% end %>
+    <% if item.engine_id == "books_and_media" %>
+      <div class="bento_item_body ml-3">
+        <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
+      </div>
+    <% end %>
 
-      <% if item.engine_id == "articles" %>
-        <div class="bento_item_body ml-3">
-          <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
-        </div>
-        <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
-      <% end %>
+    <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
+      <%= render :partial => "blacklight_availability", :object => item, :as => 'item' %>
+    <% end %>
+
+    <% if item.engine_id == "articles" %>
+      <div class="bento_item_body ml-3">
+        <%= render partial: "fields", locals: { document: item.custom_data, document_counter: 0 } %>
+      </div>
+      <%= render :partial => "primo_availability", :object => item, :as => 'item' %>
+    <% end %>
+
   </div>
+
 <% end %>

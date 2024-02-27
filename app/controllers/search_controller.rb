@@ -14,11 +14,12 @@ class SearchController < CatalogController
 
   def index
     @per_page = 3
+    cdm_fields = "title!date"
+    cdm_format = "json"
     if params[:q]
       engines = %i(books_and_media articles databases journals library_website lib_guides cdm)
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
-      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
-
+      searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field], cdm_fields: cdm_fields, cdm_format: cdm_format)
       @results = process_results(searcher.results)
       @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
     end
@@ -39,25 +40,21 @@ class SearchController < CatalogController
       results.each_value do |result|
         Honeybadger.notify(result.error[:exception]) if result.failed?
       end
-      # We only care about cdm results count not bento box.
-      cdm_total_items = view_context.number_with_delimiter(results["cdm"]&.total_items)
+
       unless results["books_and_media"].blank?
         items = BentoSearch::Results.new(results["books_and_media"][0...-1])
         items.engine_id = results["books_and_media"].engine_id
-
         items.total_items = results["books_and_media"].total_items
         items.display_configuration = results["books_and_media"].display_configuration
 
         # Grabbing and setting @response in order to render facets.
-        # Merges cdm totals into the @response.
         @response = results["books_and_media"].last.custom_data
-        @response.merge_facet(name: "format", value: "digital_collections", hits: cdm_total_items)
 
         results.merge(
-          "books_and_media" => items,
-          ).except("cdm")
+          "books_and_media" => items
+          )
       else
-        results.except("cdm")
+        results
       end
     end
 end

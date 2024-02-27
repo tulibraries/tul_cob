@@ -251,7 +251,7 @@ en:
     faq_link: "https://answers.library.temple.edu"
     resource_types_header: "More search results"
     research_guides_header: "Browse our Research Guides and FAQ"
-    digital_collections_header: "Search our Digitized Collections for unique materials held by Temple"
+    digital_collections_header: "Digitized Collections for unique materials held by Temple"
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Library Search is your gateway to discover library content. Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
