@@ -43,7 +43,7 @@ module BentoSearch
         response = JSON.load(URI.open(cdm_url))
         bento_results.total_items = response.dig("pager", "total") || 0
 
-        response["records"].each do |i|     
+        response["records"].each do |i|
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
           if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles

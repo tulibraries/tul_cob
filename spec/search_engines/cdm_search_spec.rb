@@ -28,7 +28,7 @@ RSpec.describe "cdm search engine", type: :search_engine do
   context "gets three displayable results" do
     it "includes only records with displayable images" do
       search_results.each do |result|
-        stub_request(:get, result.other_links).to_return(status: 200)
+        stub_request(:get, result.other_links[0]).to_return(status: 200)
       end
     end
 
