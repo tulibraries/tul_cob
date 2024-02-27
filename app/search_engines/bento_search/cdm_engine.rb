@@ -11,11 +11,11 @@ module BentoSearch
       cdm_id = item.fetch("pointer")
       BentoSearch::ResultItem.new(
         title: item.fetch("title"),
-        cdm_date: item.fetch("date"),
-        cdm_collection: cdm_collection,
-        cdm_id: cdm_id,
-        cdm_record_link: "https://digital.library.temple.edu/digital/collection/#{cdm_collection}/id/#{cdm_id}",
-        cdm_thumbnail_link: image_scale(cdm_collection, cdm_id)
+        publication_date: item.fetch("date"),
+        source_title: cdm_collection,
+        unique_id: cdm_id,
+        link: "https://digital.library.temple.edu/digital/collection/#{cdm_collection}/id/#{cdm_id}",
+        other_links: [image_scale(cdm_collection, cdm_id)]
       )
     end
 
@@ -43,10 +43,10 @@ module BentoSearch
         response = JSON.load(URI.open(cdm_url))
         bento_results.total_items = response.dig("pager", "total") || 0
 
-        response["records"].each do |i|
+        response["records"].each do |i|     
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
-          if (bento_results.size < 3) && (image_available?(item.cdm_thumbnail_link))
+          if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles
             bento_results << item unless is_int?(item.title)
           end
         end
