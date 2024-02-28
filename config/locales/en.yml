@@ -130,6 +130,8 @@ en:
         subject:
           one: "Temple University Libraries record: %{title}"
           other: "Temple University Libraries records"
+      html:
+        url: "URL:"
 
     sms:
       form:

@@ -14,9 +14,9 @@ class RecordMailerPreview < ActionMailer::Preview
   end
 
   def url
-    {:host=>"localhost",
-     :port=>3000,
-     :protocol=>"http://"}
+    { host: "localhost",
+     port: 3000,
+     protocol: "http://" }
   end
 
   def documents
@@ -26,21 +26,21 @@ class RecordMailerPreview < ActionMailer::Preview
   def document
     PrimoCentralDocument.new(
 
-    {
-       "pnxId"=>"example_1234567890",
-       "title"=>"Be Excellent",
-       "issn"=>[
-           "8769-3369",
-           "0069-0069"
-       ],
-       "isPartOf"=>"Transactions of the Timetravel, 2024-02, Vol.33, p.69",
-       "creator"=>[
-           "Preston, Bill S.",
-           "Logan, Ted 'Theodore'",
-       ],
-       "date"=>[
-           "1989"
-       ],
-    })
+      {
+         "pnxId" => "example_1234567890",
+         "title" => "Be Excellent",
+         "issn" => [
+             "8769-3369",
+             "0069-0069"
+         ],
+         "isPartOf" => "Transactions of the Timetravel, 2024-02, Vol.33, p.69",
+         "creator" => [
+             "Preston, Bill S.",
+             "Logan, Ted 'Theodore'",
+         ],
+         "date" => [
+             "1989"
+         ],
+      })
   end
 end
