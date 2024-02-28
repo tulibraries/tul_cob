@@ -1,0 +1,12 @@
+<h1>Temple University Libraries record(s):</h1>
+
+<p>
+<%= t('blacklight.email.text.message', :message => @message) %>
+</p>
+
+<% @documents.each do |document| %>
+<%= document.to_email_text %><br>
+<%= t('blacklight.email.html.url') %>
+<%= record_mailer_link(document, @url_gen_params) %>
+<br>
+<% end %>
