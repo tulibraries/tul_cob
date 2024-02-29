@@ -4,7 +4,7 @@
     <% @results["cdm"].each do |cdm_record| %>
     <li class="bento-resource-list-item list-inline-item pb-1">
       <%= link_to cdm_record.link do %>
-        <%= image_tag cdm_record.other_links[0], style: "min-height: 200px;max-height:200px;" %>
+        <%= image_tag cdm_record.other_links[0], class: "cdm_image" %>
         <div class="pt-2 w-75">
           <h3 class="cdm-item-title"><%= cdm_record.title %></h3>
         </div>
