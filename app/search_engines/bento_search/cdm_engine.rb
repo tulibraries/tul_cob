@@ -36,12 +36,14 @@ module BentoSearch
       query = ERB::Util.url_encode(query)
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
-      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/9/#{format}"
+      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/9/0/1/0/0/0/0/0/#{format}"
       response = []
 
       begin
         response = JSON.load(URI.open(cdm_url))
         bento_results.total_items = response.dig("pager", "total") || 0
+
+        # binding.pry
 
         response["records"].each do |i|
           item = BentoSearch::ResultItem.new
