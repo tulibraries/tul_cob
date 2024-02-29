@@ -1,22 +1,22 @@
-<div class="bento-resource-container">
+<div class="bento-resource-container cdm-results-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
-  <ul class="bento-resource-types-list pt-2 pb-0 list-inline d-flex flex-wrap justify-content-start">
-  <% @results["cdm"].each do |cdm_record| %>
+  <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
+    <% @results["cdm"].each do |cdm_record| %>
     <li class="bento-resource-list-item list-inline-item pb-1">
       <%= link_to cdm_record.link do %>
-        <%= image_tag cdm_record.other_links[0] %>
+        <%= image_tag cdm_record.other_links[0], style: "min-height: 200px;max-height:200px;" %>
         <div class="pt-2 w-75">
-          <%= cdm_record.title %>
+          <h3 class="cdm-item-title"><%= cdm_record.title %></h3>
         </div>
       <% end %>
-      <p class="w-75" style="color:black;font-size:1rem;">
+      <p class="cdm-data">
         <%= "Date: #{cdm_record.publication_date}" if cdm_record.publication_date.present? %>
         <br /><%= cdm_collection_name(cdm_record.source_title) %>
       </p>
     </li>
-  <% end %>
+    <% end %>
+    <li class="w-100">
+      <%= link_to "View all digitized collections results >", "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort", target: "_blank" %>
+    </li>
   </ul>
-  <div class="bento-resource-types-list">
-    <%= link_to "View all digitized collections results >", "https://digital.library.temple.edu/digital/search/searchterm/#{params[:q]}/order/nosort" %>
-  </div>
 </div>

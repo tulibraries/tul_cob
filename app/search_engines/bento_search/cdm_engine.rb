@@ -27,7 +27,15 @@ module BentoSearch
       rescue StandardError => e
         Honeybadger.notify("Ran into error while try to process CDM image info api call: #{e.message}")
       end
-      "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
+
+      full_image = "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
+      thumb = "https://digital.library.temple.edu/utils/getthumbnail/collection/#{collection}/id/#{id}"
+
+      if image_available?(full_image)
+        full_image
+      else image_available?(thumb)
+        thumb
+      end
     end
 
     def search_implementation(args)
@@ -36,7 +44,7 @@ module BentoSearch
       query = ERB::Util.url_encode(query)
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
-      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/sortby/9/#{format}"
+      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/nosort/9/0/1/#{format}"
       response = []
 
       begin
@@ -44,6 +52,7 @@ module BentoSearch
         bento_results.total_items = response.dig("pager", "total") || 0
 
         response["records"].each do |i|
+
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
           if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles
