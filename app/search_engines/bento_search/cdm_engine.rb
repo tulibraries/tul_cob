@@ -34,7 +34,7 @@ module BentoSearch
       if image_available?(full_image)
         full_image
       else image_available?(thumb)
-        thumb
+           thumb
       end
     end
 
