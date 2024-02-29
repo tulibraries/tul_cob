@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<!--
+ This is a stripped down config file used for a simple example...
+ It is *not* a good example to work from.
+-->
+<config>
+
+  <!-- Controls what version of Lucene various components of Solr
+       adhere to.  Generally, you want to use the latest version to
+       get all bug fixes and improvements. It is highly recommended
+       that you fully re-index after changing this setting as it can
+       affect both how text is indexed and queried.
+  -->
+  <luceneMatchVersion>5.0.0</luceneMatchVersion>
+
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
+  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
+
+  <directoryFactory name="DirectoryFactory"
+                    class="${solr.directoryFactory:solr.NRTCachingDirectoryFactory}">
+  </directoryFactory>
+
+  <codecFactory class="solr.SchemaCodecFactory"/>
+
+  <schemaFactory class="ClassicIndexSchemaFactory"/>
+
+
+  <dataDir>${solr.blacklight-core.data.dir:}</dataDir>
+
+  <requestDispatcher handleSelect="true" >
+    <requestParsers enableRemoteStreaming="false" multipartUploadLimitInKB="2048" />
+  </requestDispatcher>
+
+  <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+
+  <!-- config for the admin interface -->
+  <admin>
+    <defaultQuery>*:*</defaultQuery>
+  </admin>
+
+  <initParams path="/update/**">
+   <lst name="defaults">
+     <str name="update.chain">DocCentricVersioningOnDate</str>
+   </lst>
+ </initParams>
+
+  <updateHandler class="solr.DirectUpdateHandler2">
+    <autoCommit>
+       <maxDocs>1000000</maxDocs>
+       <maxTime>900000</maxTime>
+       <openSearcher>false</openSearcher>
+    </autoCommit>
+    <autoSoftCommit>
+      <maxTime>9000000</maxTime>
+    </autoSoftCommit>
+    <commitWithin>
+      <softCommit>false</softCommit>
+    </commitWithin>
+    <updateLog>
+      <str name="dir">${solr.ulog.dir:}</str>
+    </updateLog>
+  </updateHandler>
+
+  <!-- SearchHandler
+
+       http://wiki.apache.org/solr/SearchHandler
+
+       For processing Search Queries, the primary Request Handler
+       provided with Solr is "SearchHandler" It delegates to a sequent
+       of SearchComponents (see below) and supports distributed
+       queries across multiple shards
+    -->
+    <requestHandler name="/search" class="solr.SearchHandler" default="true">
+    <!-- default values for query parameters can be specified, these
+         will be overridden by parameters in the request
+      -->
+     <lst name="defaults">
+       <str name="df">text</str>
+       <str name="defType">edismax</str>
+       <str name="echoParams">explicit</str>
+       <int name="rows">10</int>
+       <bool name="sow">false</bool>
+       <str name="q.alt">*:*</str>
+       <str name="mm">5&lt;-1</str>
+       <str name="mm">8&lt;75%</str>
+       <!-- Note that relaxing mm may cause undesired side effects,
+       hurting the precision of the search,
+       depending on the nature of your index content. -->
+       <bool name="mm.autoRelax">true</bool>
+       <str name="wt">json</str>
+
+       <bool name="lowercaseOperators">false</bool>
+       <int name="ps">3</int>
+       <float name="tie">0.01</float>
+
+       <str name="bq">pub_date_tdt:[NOW/DAY-10YEAR TO NOW/DAY]^3500.0</str>
+       <str name="bq">(library_based_boost_t:boost)^10000.0</str>
+       <str name="bq">(library_based_boost_t:no_boost)^0.001</str>
+       <str name="fq">-suppress_items_b:true</str>
+
+       <!-- NOT using marc_display because it is large and will slow things down for search results -->
+       <str name="fl">
+         id,
+         availability_facet,
+         bound_with_ids,
+         call_number_alt_display,
+         call_number_display,
+         contributor_display,
+         creator_display,
+         format,
+         holdings_display,
+         holdings_summary_display,
+         holdings_with_no_items_display,
+         imprint_display,
+         imprint_dist_display,
+         imprint_man_display,
+         imprint_prod_display,
+         isbn_display,
+         isbn_display,
+         lccn_display,
+         library_facet,
+         location_display,
+         pub_date,
+         purchase_order,
+         score,
+         title_series_display,
+         title_statement_display,
+         title_truncated_display,
+         title_uniform_display,
+         items_json_display:[json],
+         url_finding_aid_display:[json],
+         url_more_links_display:[json],
+         electronic_resource_display:[json]
+       </str>
+
+       <!-- this qf and pf are used by default, if not otherwise specified by
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
+
+       <str name="qf">
+         title_unstem_search^100000.0
+         subtitle_unstem_search^50000.0
+         title_t^25000.0
+         subtitle_t^10000.0
+         work_access_point^10000.0
+         title_statement_unstem_search^5000.0
+         title_statement_t^2500.0
+         title_uniform_unstem_search^15000.0
+         title_uniform_t^5000.0
+         title_addl_unstem_search^5000.0
+         title_addl_t^2500.0
+         title_added_entry_unstem_search^1500.0
+         title_added_entry_t^1250.0
+         subject_topic_unstem_search^1000.0
+         subject_unstem_search^750.0
+         subject_topic_facet^625.0
+         subject_t^500.0
+         creator_unstem_search^250.0
+         creator_t^100.0
+         subject_addl_unstem_search^250.0
+         subject_addl_t^50.0
+         title_series_unstem_search^25.0
+         title_series_t^10.0
+         isbn_t^5.0
+         issn_t^5.0
+         text
+       </str>
+       <str name="pf">
+         title_unstem_search^1000000.0
+         subtitle_unstem_search^500000.0
+         title_t^250000.0
+         subtitle_t^100000.0
+         work_access_point^10000.0
+         title_statement_unstem_search^50000.0
+         title_statement_t^25000.0
+         title_uniform_unstem_search^150000.0
+         title_uniform_t^50000.0
+         title_addl_unstem_search^50000.0
+         title_addl_t^25000.0
+         title_added_entry_unstem_search^15000.0
+         title_added_entry_t^12500.0
+         subject_topic_unstem_search^10000.0
+         subject_unstem_search^7500.0
+         subject_topic_facet^6250.0
+         subject_t^5000.0
+         note_toc_unstem_search~0^6000.0
+         note_summary_unstem_search~0^6000.0
+         note_toc_unstem_search^1000.0
+         note_summary_unstem_search^1000.0
+         creator_unstem_search~2^7500.0
+         creator_unstem_search^2500.0
+         creator_t^1000.0
+         subject_addl_unstem_search^2500.0
+         subject_addl_t^500.0
+         title_series_unstem_search^250.0
+         title_series_t^100.0
+         text^10.0
+       </str>
+       <str name="author_qf">
+         creator_unstem_search^200.0
+         creator_t^20.0
+       </str>
+       <str name="author_pf">
+         creator_unstem_search^2000.0
+         creator_t^200.0
+       </str>
+       <str name="title_qf">
+         title_unstem_search^50000.0
+         subtitle_unstem_search^25000.0
+         title_uniform_unstem_search^15000.0
+         title_addl_unstem_search^10000.0
+         title_t^5000.0
+         subtitle_t^2500.0
+         title_uniform_t^150.0
+         title_addl_t^100.0
+         title_added_entry_unstem_search^50.0
+         title_added_entry_t^10.0
+         title_series_unstem_search^5.0
+         title_series_t
+       </str>
+       <str name="title_pf">
+         title_unstem_search^500000.0
+         subtitle_unstem_search^250000.0
+         title_uniform_unstem_search^150000.0
+         title_addl_unstem_search^100000.0
+         title_t^50000.0
+         subtitle_t^25000.0
+         title_uniform_t^1500.0
+         title_addl_t^1000.0
+         title_added_entry_unstem_search^500.0
+         title_added_entry_t^100.0
+         title_series_t^50.0
+         title_series_unstem_search^10.0
+       </str>
+       <str name="subject_qf">
+         subject_topic_unstem_search^200.0
+         subject_unstem_search^125.0
+         subject_topic_facet^100.0
+         subject_t^50.0
+         subject_addl_unstem_search^10.0
+         subject_addl_t
+       </str>
+       <str name="subject_pf">
+         subject_topic_unstem_search^2000.0
+         subject_unstem_search^1250.0
+         subject_t^1000.0
+         subject_topic_facet^500.0
+         subject_addl_unstem_search^100.0
+         subject_addl_t^10.0
+       </str>
+
+       <str name="facet">true</str>
+       <str name="facet.mincount">1</str>
+       <str name="facet.field">format</str>
+       <str name="facet.field">language_facet</str>
+       <str name="facet.field">pub_date</str>
+       <str name="facet.field">subject_era_facet</str>
+       <str name="facet.field">subject_geo_facet</str>
+       <str name="facet.field">subject_topic_facet</str>
+
+       <str name="spellcheck">false</str>
+       <str name="spellcheck.extendedResults">true</str>
+       <str name="spellcheck.collate">true</str>
+       <str name="spellcheck.collateParam.q.op">AND</str>
+       <str name="spellcheck.collateParam.mm">100%</str>
+       <int name="spellcheck.maxCollations">3</int>
+       <str name="spellcheck.dictionary">default</str>
+       <str name="spellcheck.onlyMorePopular">true</str>
+       <str name="spellcheck.count">5</str>
+
+     </lst>
+    <!-- In addition to defaults, "appends" params can be specified
+         to identify values which should be appended to the list of
+         multi-val params from the query (or the existing "defaults").
+      -->
+    <!-- In this example, the param "fq=instock:true" would be appended to
+         any query time fq params the user may specify, as a mechanism for
+         partitioning the index, independent of any user selected filtering
+         that may also be desired (perhaps as a result of faceted searching).
+
+         NOTE: there is *absolutely* nothing a client can do to prevent these
+         "appends" values from being used, so don't use this mechanism
+         unless you are sure you always want it.
+      -->
+    <!--
+       <lst name="appends">
+         <str name="fq">inStock:true</str>
+       </lst>
+      -->
+    <!-- "invariants" are a way of letting the Solr maintainer lock down
+         the options available to Solr clients.  Any params values
+         specified here are used regardless of what values may be specified
+         in either the query, the "defaults", or the "appends" params.
+
+         In this example, the facet.field and facet.query params would
+         be fixed, limiting the facets clients can use.  Faceting is
+         not turned on by default - but if the client does specify
+         facet=true in the request, these are the only facets they
+         will be able to see counts for; regardless of what other
+         facet.field or facet.query params they may specify.
+
+         NOTE: there is *absolutely* nothing a client can do to prevent these
+         "invariants" values from being used, so don't use this mechanism
+         unless you are sure you always want it.
+      -->
+    <!--
+       <lst name="invariants">
+         <str name="facet.field">cat</str>
+         <str name="facet.field">manu_exact</str>
+         <str name="facet.query">price:[* TO 500]</str>
+         <str name="facet.query">price:[500 TO *]</str>
+       </lst>
+      -->
+    <!-- If the default list of SearchComponents is not desired, that
+         list can either be overridden completely, or components can be
+         prepended or appended to the default list.  (see below)
+      -->
+    <!--
+       <arr name="components">
+         <str>nameOfCustomComponent1</str>
+         <str>nameOfCustomComponent2</str>
+       </arr>
+      -->
+    <arr name="last-components">
+      <str>spellcheck</str>
+    </arr>
+
+  </requestHandler>
+
+  <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
+  <requestHandler name="/document" class="solr.SearchHandler" >
+    <lst name="defaults">
+      <str name="df">text</str>
+      <str name="wt">json</str>
+      <str name="echoParams">all</str>
+      <str name="fl">
+        *
+        items_json_display:[json],
+        url_finding_aid_display:[json],
+        url_more_links_display:[json],
+        electronic_resource_display:[json]
+      </str>
+      <str name="rows">1</str>
+      <str name="q">{!term f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+    </lst>
+  </requestHandler>
+
+<!-- Spell Check
+
+        The spell check component can return a list of alternative spelling
+        suggestions.
+
+        http://wiki.apache.org/solr/SpellCheckComponent
+     -->
+  <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
+
+    <str name="queryAnalyzerFieldType">textSpell</str>
+
+    <!-- Multiple "Spell Checkers" can be declared and used by this
+         component
+      -->
+
+    <!-- a spellchecker built from a field of the main index, and
+         written to disk
+      -->
+    <lst name="spellchecker">
+      <str name="name">default</str>
+      <str name="field">spell</str>
+      <str name="spellcheckIndexDir">./spell</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">author</str>
+      <str name="field">author_spell</str>
+      <str name="spellcheckIndexDir">./spell_author</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">subject</str>
+      <str name="field">subject_spell</str>
+      <str name="spellcheckIndexDir">./spell_subject</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+    <lst name="spellchecker">
+      <str name="name">title</str>
+      <str name="field">title_spell</str>
+      <str name="spellcheckIndexDir">./spell_title</str>
+      <str name="accuracy">0.7</str>
+      <str name="buildOnOptimize">true</str>
+    </lst>
+
+    <!-- a spellchecker that uses a different distance measure -->
+    <!--
+       <lst name="spellchecker">
+         <str name="name">jarowinkler</str>
+         <str name="field">spell</str>
+         <str name="distanceMeasure">
+           org.apache.lucene.search.spell.JaroWinklerDistance
+         </str>
+         <str name="spellcheckIndexDir">spellcheckerJaro</str>
+       </lst>
+     -->
+
+    <!-- a spellchecker that use an alternate comparator
+
+         comparatorClass be one of:
+          1. score (default)
+          2. freq (Frequency first, then score)
+          3. A fully qualified class name
+      -->
+    <!--
+       <lst name="spellchecker">
+         <str name="name">freq</str>
+         <str name="field">lowerfilt</str>
+         <str name="spellcheckIndexDir">spellcheckerFreq</str>
+         <str name="comparatorClass">freq</str>
+         <str name="buildOnCommit">true</str>
+      -->
+
+    <!-- A spellchecker that reads the list of words from a file -->
+    <!--
+       <lst name="spellchecker">
+         <str name="classname">solr.FileBasedSpellChecker</str>
+         <str name="name">file</str>
+         <str name="sourceLocation">spellings.txt</str>
+         <str name="characterEncoding">UTF-8</str>
+         <str name="spellcheckIndexDir">spellcheckerFile</str>
+       </lst>
+      -->
+  </searchComponent>
+
+  <searchComponent name="suggest" class="solr.SuggestComponent">
+    <lst name="suggester">
+      <str name="name">mySuggester</str>
+      <str name="lookupImpl">FuzzyLookupFactory</str>
+      <str name="suggestAnalyzerFieldType">textSuggest</str>
+      <str name="buildOnCommit">true</str>
+      <str name="field">suggest</str>
+    </lst>
+  </searchComponent>
+
+  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
+    <lst name="defaults">
+      <str name="suggest">true</str>
+      <str name="suggest.count">5</str>
+      <str name="suggest.dictionary">mySuggester</str>
+    </lst>
+    <arr name="components">
+      <str>suggest</str>
+    </arr>
+  </requestHandler>
+  <query>
+    <filterCache class="solr.FastLRUCache"
+                 size="${filterCacheSize:2048}"
+                 initialSize="${filterCacheInitialSize:2048}"
+                 autowarmCount="256"/>
+
+
+    <queryResultCache class="solr.LRUCache"
+                      size="${queryResultCacheSize:2048}"
+                      initialSize="${queryResultCacheInitialSize:2048}"
+                      autowarmCount="128"/>
+
+    <documentCache class="solr.LRUCache"
+                   size="${documentCacheSize:2048}"
+                   initialSize="${documentCacheInitialSize:2048}"/>
+
+    <enableLazyFieldLoading>true</enableLazyFieldLoading>
+
+    <queryResultWindowSize>100</queryResultWindowSize>
+    <queryResultMaxDocsCached>500</queryResultMaxDocsCached>
+    <slowQueryThresholdMillis>500</slowQueryThresholdMillis>
+  </query>
+
+
+  <updateRequestProcessorChain name="DocCentricVersioningOnDate">
+    <processor class="solr.ParseDateFieldUpdateProcessorFactory">
+      <str name="defaultTimeZone">Etc/UTC</str>
+      <arr name="format">
+        <str>yyyy-MM-dd HH:mm:ss Z</str>
+        <str>yyyy-MM-dd HH:mm:ss</str>
+      </arr>
+    </processor>
+    <processor class="solr.DocBasedVersionConstraintsProcessorFactory">
+      <str name="versionField">record_update_date</str>
+      <bool name="ignoreOldUpdates">false</bool>
+    </processor>
+    <processor class="solr.LogUpdateProcessorFactory" />
+    <processor class="solr.RunUpdateProcessorFactory" />
+  </updateRequestProcessorChain>
+
+</config>

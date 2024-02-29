@@ -1,9 +1,3 @@
 [submodule "solr/configs/tul_cob-catalog-solr"]
 	path = solr/configs/tul_cob-catalog-solr
 	url = https://github.com/tulibraries/tul_cob-catalog-solr.git
-[submodule "solr/configs/tul_cob-az-solr"]
-	path = solr/configs/tul_cob-az-solr
-	url = https://github.com/tulibraries/tul_cob-az-solr.git
-[submodule "solr/configs/tul_cob-web-solr"]
-	path = solr/configs/tul_cob-web-solr
-	url = https://github.com/tulibraries/tul_cob-web-solr.git
