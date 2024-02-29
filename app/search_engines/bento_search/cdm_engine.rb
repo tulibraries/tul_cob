@@ -43,8 +43,6 @@ module BentoSearch
         response = JSON.load(URI.open(cdm_url))
         bento_results.total_items = response.dig("pager", "total") || 0
 
-        # binding.pry
-
         response["records"].each do |i|
           item = BentoSearch::ResultItem.new
           item = conform_to_bento_result(i)
