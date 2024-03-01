@@ -1,0 +1,1463 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL%5Etheses%20and%20dissertations%5Eall%5Eand/title!date/nosort/9/0/1/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:17 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1708'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:17 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"pager":{"start":"0","maxrecs":"9","total":3631},"records":[{"collection":"\/p245801coll10","pointer":470435,"filetype":"cpd","parentobject":-1,"title":"Beginning
+        Band Students'' Familiarity with Method Book Repertoire as Predictor of Music
+        Achievement","date":"2017","find":"473235.cpd"},{"collection":"\/p245801coll10","pointer":208596,"filetype":"cpd","parentobject":-1,"title":"Cultivating
+        Servant Leadership in High School Students of African Descent the Freedom
+        Schools Way","date":"2011","find":"210471.cpd"},{"collection":"\/p16002coll11","pointer":37413,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, 1971-1972","date":"1971-1972","find":"37414.cpd"},{"collection":"\/p16002coll11","pointer":27120,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, May, 1978 - August, 1979","date":"1978-05 - 1979-08","find":"27121.cpd"},{"collection":"\/p245801coll10","pointer":254230,"filetype":"avi","parentobject":-1,"title":"S2_RhoA_siRNA
+        [Digital file]","date":"2008","find":"256105.avi"},{"collection":"\/p16002coll11","pointer":21905,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, September 10, 1975 - January 21, 1976","date":"1975-09-10 - 1976-01-21","find":"21906.cpd"},{"collection":"\/p16002coll11","pointer":23844,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, January - August 1974","date":"1974-01 - 1974-08","find":"23845.cpd"},{"collection":"\/p16002coll11","pointer":20803,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, 1972-1973","date":"1972-1973","find":"20804.cpd"},{"collection":"\/p16002coll11","pointer":30085,"filetype":"cpd","parentobject":-1,"title":"The
+        Temple News, 1965-1966","date":"1965-1966","find":"30086.cpd"}]}'
+  recorded_at: Fri, 01 Mar 2024 14:27:18 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p245801coll10/470435/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:18 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '219'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:18 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p245801coll10\/image\/473235.cpd","type":"","width":0,"height":0,"title":"Beginning
+        Band Students&#x27; Familiarity with Method Book Repertoire as Predictor of
+        Music Achievement"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:18 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=470435&CISOROOT=p245801coll10&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:19 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=25058ce57a385c567bdf26d85877b302; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:19 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:19 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p245801coll10/id/470435
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:19 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=968d5c52e8115e8c4b860758ad25d2de; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:20 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '2301'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Fri, 01 Mar 2024 14:27:20 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p245801coll10/id/470435
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:20 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=e8fa9ad6bb91aff1ee22869c61030db5; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:20 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '2301'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Fri, 01 Mar 2024 14:27:20 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p245801coll10/208596/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:21 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '213'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:21 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p245801coll10\/image\/210471.cpd","type":"","width":0,"height":0,"title":"Cultivating
+        Servant Leadership in High School Students of African Descent the Freedom
+        Schools Way"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:21 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=208596&CISOROOT=p245801coll10&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:21 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=4e430f23b036b812c0755391d443aa3c; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:21 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:22 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p245801coll10/id/208596
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:22 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=59ac3d6fa3563041aa27e25358abf66f; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:22 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '2439'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Fri, 01 Mar 2024 14:27:22 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p245801coll10/id/208596
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:23 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=6cb25d7fac236e90ddc2050f842d9028; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:23 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '2439'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+  recorded_at: Fri, 01 Mar 2024 14:27:23 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/37413/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:23 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '140'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:23 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/37414.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, 1971-1972"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:23 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=37413&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:23 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=fcd91f3683cecc0b28a7da19afb24f68; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:23 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:23 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/37413
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:24 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=cd721f61d32eeb3874cc8946dc1d9c74; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:24 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1370'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AGEBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APAn8N6ncXE7xQLs3E5LqOOvrQnhTV5P9Xbq30kX/Grmm6Ve2iSxXFuyvu6ZB/lU7Wc3/PJ/yphtJx/yxf8AKl+yzD/lk/8A3zSi3l/55P8A98mlFvL/AM8pP++TSm3l/wCeUn/fJpRBLj/VP/3yaf5EmP8AUuP+Amoih3bSu1vQ8Unlf7S/nXVQnEL+pb/2UVb04/Ooz3qtqRC303HUj+QqmzDNMyMc9aTeAec09XTPelaZemKcbgAAY4pqTgMd2akEqk55zWLqPN7KQfT+QqtzXTIfkb0Lf0FWbRiJVA70zU/mu5iOxA/QVQbpTTTcZpMZpT0pAeKdn86QMc1n3gzdSfh/IUnkH+8n51vJ9w/739BU0JxKv1pmpZF3Pj+8P/QRVJz0oFGOlNPcCmk9qac4pykAUuao3XNzIR6j+QqGuiX/AFZ/3v6CprfmePv8wpmoj/TZ/wDe/oKoye1MBI6k0uTgGk3DuKaRzQOgzwKUd6djIqlcf69/r/SotvtXR24ViolOE3nnGewrSeGGG4i2YVs9Bzn/AMeNZN+c3lx6b+v4CqrfnTCO1NI9KTmg8fSlP3aQcU9W4xVKf/XSfWo810IH+j5H98/yFLanFwh9xVe7J+1XH/XQ/wBKhPTpTGOKYxoyTik9sUvOOtL9aVaoz/65/rUfNdMg/wBGP++aS2H79frVe55ubj/roaiYEVCwPTNNI545pOhwT1pRSNS8inKaz7j/AF7/AFpnNdVDj7O3+8aIx+/XHqKpy4+0T/8AXQ1Ex9DTX2kD1qJhjvQOnXP1oJFNxx1py896cBWfMf30n+8ajrqoR/o5JH8R/nSwczx/WqMx/fz/APXQ1C3SmGmsR3FBx2ApvWgYxSinr0rNm5mk/wB4/wA6ZmurzttB7s386dbu0lyjOSx4GT6Cs6Q7ppv+uhqM0080x8ZpucUm72oBpw96kUjmsmY/v5f98/zpua64Rl7WMKCzFyAAOvNPs4pI518xGXkj5hjmshziWbn/AJaN/OmMabyRSN0puMU3vTlp3UUqisiZv30v++386Zursj/x5pg4Jc8+nJqeKB7e4VXdWJG4FTmsNs+ZJ7u386a3Sk6YFK3HQ1GetJkelAHGacCO1OHXisSY/v5v+ujfzNN3V2R5tkBJC7mJ/wC+quRuJpvMDM2BjkY4A+prAzy3++386QmmkZNIx7U2il7YpO/vTlyKwpj+/m/66N/M03JqGbxJqUM0sazKUDHAKD1pF8V6qqMqSxqGGDiMVJp2pXcluWeYk7z2HtVg31x/z1P5Ck+33A/5an8hR9vuf+ep/IUfb7j/AJ6/+Oij7fcf89P/AB0UC/uP74/75FOF/cf3x/3yKPt0/wDfH/fIqszEszHqSSfrSZ96/9k=
+  recorded_at: Fri, 01 Mar 2024 14:27:24 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/37413
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:24 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=382a7bfe7e40b9e8084dc96de2491bfb; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:24 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1370'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AGEBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APAn8N6ncXE7xQLs3E5LqOOvrQnhTV5P9Xbq30kX/Grmm6Ve2iSxXFuyvu6ZB/lU7Wc3/PJ/yphtJx/yxf8AKl+yzD/lk/8A3zSi3l/55P8A98mlFvL/AM8pP++TSm3l/wCeUn/fJpRBLj/VP/3yaf5EmP8AUuP+Amoih3bSu1vQ8Unlf7S/nXVQnEL+pb/2UVb04/Ooz3qtqRC303HUj+QqmzDNMyMc9aTeAec09XTPelaZemKcbgAAY4pqTgMd2akEqk55zWLqPN7KQfT+QqtzXTIfkb0Lf0FWbRiJVA70zU/mu5iOxA/QVQbpTTTcZpMZpT0pAeKdn86QMc1n3gzdSfh/IUnkH+8n51vJ9w/739BU0JxKv1pmpZF3Pj+8P/QRVJz0oFGOlNPcCmk9qac4pykAUuao3XNzIR6j+QqGuiX/AFZ/3v6CprfmePv8wpmoj/TZ/wDe/oKoye1MBI6k0uTgGk3DuKaRzQOgzwKUd6djIqlcf69/r/SotvtXR24ViolOE3nnGewrSeGGG4i2YVs9Bzn/AMeNZN+c3lx6b+v4CqrfnTCO1NI9KTmg8fSlP3aQcU9W4xVKf/XSfWo810IH+j5H98/yFLanFwh9xVe7J+1XH/XQ/wBKhPTpTGOKYxoyTik9sUvOOtL9aVaoz/65/rUfNdMg/wBGP++aS2H79frVe55ubj/roaiYEVCwPTNNI545pOhwT1pRSNS8inKaz7j/AF7/AFpnNdVDj7O3+8aIx+/XHqKpy4+0T/8AXQ1Ex9DTX2kD1qJhjvQOnXP1oJFNxx1py896cBWfMf30n+8ajrqoR/o5JH8R/nSwczx/WqMx/fz/APXQ1C3SmGmsR3FBx2ApvWgYxSinr0rNm5mk/wB4/wA6ZmurzttB7s386dbu0lyjOSx4GT6Cs6Q7ppv+uhqM0080x8ZpucUm72oBpw96kUjmsmY/v5f98/zpua64Rl7WMKCzFyAAOvNPs4pI518xGXkj5hjmshziWbn/AJaN/OmMabyRSN0puMU3vTlp3UUqisiZv30v++386Zursj/x5pg4Jc8+nJqeKB7e4VXdWJG4FTmsNs+ZJ7u386a3Sk6YFK3HQ1GetJkelAHGacCO1OHXisSY/v5v+ujfzNN3V2R5tkBJC7mJ/wC+quRuJpvMDM2BjkY4A+prAzy3++386QmmkZNIx7U2il7YpO/vTlyKwpj+/m/66N/M03JqGbxJqUM0sazKUDHAKD1pF8V6qqMqSxqGGDiMVJp2pXcluWeYk7z2HtVg31x/z1P5Ck+33A/5an8hR9vuf+ep/IUfb7j/AJ6/+Oij7fcf89P/AB0UC/uP74/75FOF/cf3x/3yKPt0/wDfH/fIqszEszHqSSfrSZ96/9k=
+  recorded_at: Fri, 01 Mar 2024 14:27:24 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/27120/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:25 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '155'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:24 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/27121.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, May, 1978 - August, 1979"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:25 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=27120&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:25 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=21d0029a17a2006ed54cef6eec9732c2; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:25 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:25 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/27120
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:25 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=6b620cbc3f150ca7da9367e76e1f265f; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:25 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1243'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AGgBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APGf+EctP770g8MWkmSJpVxxjij/AIRe1zj7RLkDP3RSf8Ixbf8APw//AHz/APXpp8MwA8Tt/wB8/wD16P8AhGYMf65v++f/AK9L/wAI1AP+Wp/L/wCvSf8ACOW//PQ/kf8AGj/hG4P7/wCh/wAaP+Ech/vD9f8AGnL4bhJ5ZR+dMutAt7a2aZirAEDAz3qi1la7D+7OfrXX4p8I+Vv940j/AOtP0H9aSmmjH5UpFGBRilA5o71S1on7Dgd2FYb8Ia6sinQj5T9aHHzn6D+tMxSEetGKMUYp2KAM0YGapa0P9B/4GKxZF/dtiuqxToh8p+tNb75+g/rTcU3vS4oIxRSigDilI5qlrmPsI/3xWM33TXTg0+HlW+tNb75+g/rSGmmigUHrTh0oXpQetUtb/wCPIf7y1ksvyGuj706D7rf71Nc/OR7D+tHamE80o5pelGcUUoOKcOoOKpa5xZD/AH1rKf7h+lb9Oh+63+9Q4/e8+g/rSHpUZzTs+1FGfalB/OnCl4Aqjrn/AB5j/fWsyT/Vn6VvDNSWiGTcOn3m/IZpj53/AID+tB4FM5pRRnmg0q/Snig1Q1sn7GP99azZCfLb6Vv4qewH7x+M/K/8jUEn3j9B/WkBzScZpw46UhHOaMUop8eAKCO/as7XP+PIf76/zrNc/u2+ldEOldVaeFVk8Dza/wDanVkcr5Wz5T8+3rn+lcm4yx+g/rTQOKO9P4xSUGlHSlBxmgtms/XcfYB6+YtZUp/dN9DXTgflUtpJJ8yBzt2t8ueOhqBxzn2ptNp4NLikPvRn0FHrSVna7xp4/wCui1lyn9030NdV27UQMAxLE9xx9KRuc03BIppGKdiimk0qY70hPzHHSkzms3xAcacP+ui/zrGdv3bfQ11wYY60keCCc96UkbiPYf1pAR60HGetKSKQnjrTSR60mQOhppbnrSrj1rM8Rf8AINPP8a/zrDZvkb6GuuDcVNZBWbEmcZPQ4pj8Sn/dH9aaTikzRuoLU0nNJSd6XOKzfEJ/4ljf76/zrALfI30rVHiGEDmE/g4pV8TQIceTIc88EVI3iGJvmWFjkYwWAxR/b8JHMMn/AH0KT+3oe0Mn4sKT+3o/+eD/APfY/wAKaddTtbt/33/9akOujtbn/vv/AOtSf24f+eH/AI//APWo/twn/lgP++//AK1B1xv+eK/99VV1DUjd2zRNGFyQchqzi3ynntX/2Q==
+  recorded_at: Fri, 01 Mar 2024 14:27:25 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p245801coll10/254230/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:25 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '144'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:25 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p245801coll10\/image\/256105.avi","type":"","width":0,"height":0,"title":"S2_RhoA_siRNA
+        [Digital file]"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:25 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=254230&CISOROOT=p245801coll10&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:26 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=24c394cc831de6b222fc82c4a86060a9; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:26 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:26 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p245801coll10/id/254230
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:26 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=390f1642a6e41fb22366e162f9f968f4; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:26 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAgEAtgC2AAD/7Q40UGhvdG9zaG9wIDMuMAA4QklNA+0AAAAAABAAtgAAAAEAAQC2AAAAAQABOEJJTQQNAAAAAAAEAAAAHjhCSU0EGQAAAAAABAAAAB44QklNA/MAAAAAAAkAAAAAAAAAAAEAOEJJTQQKAAAAAAABAAA4QklNJxAAAAAAAAoAAQAAAAAAAAACOEJJTQP1AAAAAABIAC9mZgABAGxmZgAGAAAAAAABAC9mZgABAKGZmgAGAAAAAAABADIAAAABAFoAAAAGAAAAAAABADUAAAABAC0AAAAGAAAAAAABOEJJTQP4AAAAAABwAAD/////////////////////////////A+gAAAAA/////////////////////////////wPoAAAAAP////////////////////////////8D6AAAAAD/////////////////////////////A+gAADhCSU0ECAAAAAAAEAAAAAEAAAJAAAACQAAAAAA4QklNBB4AAAAAAAQAAAAAOEJJTQQaAAAAAABrAAAABgAAAAAAAAAAAAAAeAAAAKAAAAAFAHYAaQBkAGUAbwAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAoAAAAHgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOEJJTQQRAAAAAAABAQA4QklNBBQAAAAAAAQAAAACOEJJTQQMAAAAAAtyAAAAAQAAAHAAAABUAAABUAAAbkAAAAtWABgAAf/Y/+AAEEpGSUYAAQIBAEgASAAA/+4ADkFkb2JlAGSAAAAAAf/bAIQADAgICAkIDAkJDBELCgsRFQ8MDA8VGBMTFRMTGBEMDAwMDAwRDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAENCwsNDg0QDg4QFA4ODhQUDg4ODhQRDAwMDAwREQwMDAwMDBEMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwM/8AAEQgAVABwAwEiAAIRAQMRAf/dAAQAB//EAT8AAAEFAQEBAQEBAAAAAAAAAAMAAQIEBQYHCAkKCwEAAQUBAQEBAQEAAAAAAAAAAQACAwQFBgcICQoLEAABBAEDAgQCBQcGCAUDDDMBAAIRAwQhEjEFQVFhEyJxgTIGFJGhsUIjJBVS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N7E6v29Furtbdm7MXDgd6dzUON7DzlVW4TMxVmQasihSLLS1EdGYKNhB7917o6Hv3Xuve/de697917r3v3XukzvD/jz92f8Aht5f/wBwz7917r//1dzrau7Nr0+1dt08+4sJFNS4DGQTRvlKIMskdGNa28349+690ov75bR/56fb/wD5+Mf/APVHv3Xuvf3y2j/z0+3/APz8Y/8A+qPfuvde/vltH/np9v8A/n4x/wD9Ue/de69/fLaP/PT7f/8APxj/AP6o9+6917++W0f+en2//wCfjH//AFR7917r398to/8APT7f/wDPxj//AKo9+6917++W0f8Anp9v/wDn4x//ANUe/de69/fLaP8Az0+3/wDz8Y//AOqPfuvde/vltH/np9v/APn4x/8A9Ue/de69/fLaP/PT7f8A/Pxj/wD6o9+6917++W0f+en2/wD+fjH/AP1R7917r398to/89Pt//wA/GP8A/qj37r3Xv75bR/56fb//AJ+Mf/8AVHv3Xuvf3y2j/wA9Pt//AM/GP/8Aqj37r3Xv75bR/wCen2//AOfjH/8A1R7917r398to/wDPT7f/APPxj/8A6o9+6917++W0f+en2/8A+fjH/wD1R7917r398to/89Pt/wD8/GP/APqj37r3Sd3Vuza9RtXclPBuLCSzVWAycEMaZSiLNJJRnQtvN+ffuvdf/9k=
+  recorded_at: Fri, 01 Mar 2024 14:27:26 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/21905/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:26 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '168'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:26 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/21906.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, September 10, 1975 - January 21, 1976"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:26 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=21905&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:27 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=3a08e7da858fc525c9d72d98a8e25ab7; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:27 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:27 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/21905
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:27 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=895181cb595388a6ee40185f5db78990; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:27 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1234'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AFoBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APCY/C882CtzCAwyMg96u2+lyW8CxmRGxkZGfWnGwfsyfrSfYH/vp+tKLJv7y077C/8AeT9aBZv6rSizY/xKKBaP/eWlFm/XctJLbNFHuJBGcVGAK37JdzWy98KKquME5Pc1ETzTT9TQDg9aCeeM0qn1ozzwacmMHJ5pyjIqO8/49x/vD+Rqj+FdNpKb7i1HsKzZjhse5/nUJbnpSGgYoPWjtQP8804dDxTxmmXX/Hv/AMCH8jVLFdVoqf6VAo9P6msa4PzH/eP86hJxSUDIoznrSqPlJpB1pwqX+Go7n/UD/eH8jVXb9a6zRgPtcJ7c/wAzWDMAGb/eP86gPPA4pDxTlxzQT1xSA4H1oBp4PHapRyvSo7gfuh/vf0NVq7TQ4EMisTypYZGePmPXg1zFwR5j/wC+38zVc0hoo7+1A5pwGQacuOPWptvFR3H+qH+9/Sq/411WncXS4/vv/wChmufn/wBbIP8Abb+ZqHH1pGPFNBHvQDgd6TPFOUmpVGQMVJ1HNRz/AOqH+9/Q1BgetdTpo/0jPfc//oZrCujtubgekr/zquW9qaWGKTdhaM8U5fu5FIDUsR/KpTjHAqG4OYxxj5v6Gq+TXXaeB9ryOm5//QzXPXmftl1/11b+dVicUnfNGQRz1pBTmJOBntSVIp+UDvTtxIps3+qH+9/Q1Bmuv03i4THTc/8A6FXO3v8Ax/XeP+erVVamjiilHUEinEe1JTlHsKlHsKZcHMQ/3v6Gq9epeCNCs9StZZ7vUYrXy5HRUfq3fI5FcDrsCWuualBFIsqR3DqJF6MB3rO70h9qCeKKeHwBkZppOelOSpfqaZcf6kf739DVfIrtNIVN4B3BhI3OcDt7VzF+QdRvcAgec3B7VWJpB1oI9aBRntRT1NSAcVHcnEI/3h/I1XyK7DT52juUIAI81sg9P4a527BF/ebuvmtmq568UlBPFL2oNLnigHnNPDc5qO8P7gH/AGh/I1Tz7122lSvHchkLYBYttz/dX0rntSyNUvg33vNOarNzTeBT4lDvgnHFIDjIoPY0hzSg4PNSLj05qC/OLcf74/rVLdWj/wAJTaQThXilJU/MAB6Af0qvJqkd1PJcRxsElO4BjyO1M+1r/cP50fa1/uH86UXaD+A/nR9rUnlP1oF4uPuH86GvFP8AAfzoF2n9w5+tO+2rjiM5/wB6oZ7gTIF2hec9ahr/2Q==
+  recorded_at: Fri, 01 Mar 2024 14:27:27 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/23844/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:27 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '152'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:27 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/23845.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, January - August 1974"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:27 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=23844&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:27 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=12e437898273183e291b43d13a0c38b1; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:28 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:28 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/23844
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:28 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=7ae9b316197de51b61893ae204a21653; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:28 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1240'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AGABAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APFovCMUhCi6fcenyjFWD4HQhtt624djH/8AXrObwuox/pR5Gfuf/Xq9b6YsECx+bu299tPNgP8Anp+lJ9gTH3z+VL9gQfxtSixT+836Uv2KIfxP+YpfscXq/wCY/wAKVbKLPV/zFVriFYp2Rc4GOv0rpbM7ZlJ96vgkzcdwawt26Nc+lNI7AU0ikxTsdKTHvSAZNOAGcZFKBms68/4+n/D+QroLf7/+fatSBcyceh/lXPgYXjtTetIRjrSGjNJ1pe4/nTsc5pw4rOvB/pL/AIfyFb1v98c/5yK17dcygDvXN4+WjApPrSH2/lSccf4UmP8AOKUU7incYArPvR/pLY9B/Kt23HzVv2drNlZTE4jxndtOPzrkjwSPQn+dGKQ5xjikB+lBx6UnFA+lPA4pwHtVG8H+kN9BW3bnDj8a6i01JNgTyl8w/wCwu3+VcV1Lf7x/nSU0igjmkOfSk5xSjNPBp3OKo3n+vP8AuitqDl/wNaUDbZoz71z7A75B6O386TFHekI680m30ox9aUcGnAVIB8tZ9/xcY/2R/WtqD7/4Gr8Tfvk+tYR5aQnr5jfzpegpvejn2oBpDSg0qk1IDis/UP8Aj54/uD+Zrat/vn6GrtqN1wprFcYklB/56N/Omn8aTr60lLjiigdaeKeDWfqHNyP9wfzNbVsfmb/dNaNlBKUWUK2zOM7Tz+OMetYUx/fTdv3jfzqMmjPPekzzTgeKQmkzTgT61IDWfqJ/0lf9wfzNbVry5+h/lVy0Y+ZGCTjPrWRP/rpsf89W/nUXPpS88UmOaMmjnBpB1pw4609elZ+pf8fA/wBwfzNbtp/rOldhYeG9TFpFeHTE8ryvNB3AgrjO4jfnp7Vwk/8Arp+P+WrcfjUJPtQCc0FjmkJ+lLzSDrThTxWbqZxcp/uf1rfseZlHXkV0un+INT/s17dr64MSKI1XzGwFPGMZxjFcbccTzZ/56N/OojjFIrClGOpoOB0ozkdaQdacDzUgrL1c4uIj/sH+daun6tp8UjNJdwDGD98etS2viLTooyGvIFHJ+7k/njNZF3runtI5W4zlywwp6HHt9aEvrd41dJCVPQ4NL9rhz98/lR9sh/vN+VL9thxjLflTTeQ+rflSi+hHXf8AlR9vgH/PT8v/AK9L/aMIHST8h/jVO/uEuJEZAw2gjmuOopTzW9Y/8ecX+7U26k3Ub6N1G6jdS7hRuFf/2Q==
+  recorded_at: Fri, 01 Mar 2024 14:27:28 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/20803/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:28 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '140'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:28 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/20804.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, 1972-1973"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:28 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=20803&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:28 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=4b078557f35cc68ac8d8eb2d04b3c077; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:28 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:28 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/20803
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:29 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=90dd03f8f5cb4be791c2944568868fe8; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:29 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1170'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AFwBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APm37Dd8/wCjT/8Afs01rW4T78Mq/VCK62FV+yxeoUfyprKKQKM04KuaftUelKFFAUZ9qeqKTyDSsgB6dKaIWPIBxXR20O/aSBjap/QVbWQGTygBtbjGKxBwigHsKbn0oHvS55pVbB6D8qmWeRmC7229MZpjNlj8x60DjvTLsg2rAcnI/nVDn0rqLQfuFx2UfyqFDi6QD1FZ6qSOBwBTCOetLt4HNJt/OlAxnnFKDzn2popwBP0plwP3Lc9SP51WEbEZArpLU4hHuo/kKroR9rT/AHhVJXKqAOhAqM4zTs4FGeaQ9STSDBp4AzQcdKZcf6o/UVXwa37Q5gwf7oI/KoY/+Ppcf3hVDjC59KQ4HSge9FFOXijrS024wY/xFQYroNLiWQqHPG0DHOScdsA0ksSxXyBCfvDg5yOfcCscgGo8kHrTjzilIoFHfmhfalApkoxH+I/nTDwa14TtgYjjgY/Kiwy06knoc1n9qRlAFIB0pTSAcmlPHGM5pBgAcUvamTf6v8RUVbCn9wQPbH5Uth8tynoSKz/4RyOlMJ4pV6HHFIT70o9aUj1pNvXFLjnFMuP9Wceo/nUPNa0JzF17Cn2f/HzHj+9VFVyBk9hTWQdqaOBTT1oFO5pRnmlxUc/+r/EfzqOtWMbYzjvipLFSbpB71ngkbRnsKac+tAz60hHrSAU5QOxp23jrRgdM0y4GIjn1H8xUNaivjpwR+lT2JZrtMHknrWcQVxwOgpppM00k5oPXinLTs5xilHDVHcn9w/1H8xVbNakSsz7VGT6VaswY7pCwIrPbGF45AH8qZjmjjIx0pD1pM89KAfWnpgdacTlqguziB+O4/wDQhVPfW1CA8gBOM45xVqBNl4qE5wfQj+dUQMqPTAqJ8AcdajHWg+tHpTsd+9GT604Gob4/6M2fVf8A0IVn7q3Iznp1q1Yf8fBaTgDkn0qjlsLjOMD+VN2bj3p8cILZY8VIyR9AtLsUD7tRlc9jTPLGehpQuD0NQakMWbnHdf8A0IVlZrlv7QvFYkXU4Oe0hoa/u3zvup2z1zIa6ZJm8tcs3Qd6DK395vzpvmt/eP50okb+8fzo3t6n86TzG9T+dLvPqfzpd59T+dIze9JuFf/Z
+  recorded_at: Fri, 01 Mar 2024 14:27:29 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/p16002coll11/30085/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:29 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '140'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:27:29 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"filename":"\/cdm\/sites\/16002\/data\/p16002coll11\/image\/30086.cpd","type":"","width":0,"height":0,"title":"The
+        Temple News, 1965-1966"}'
+  recorded_at: Fri, 01 Mar 2024 14:27:29 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/ajaxhelper/?CISOPTR=30085&CISOROOT=p16002coll11&DMHEIGHT=340&DMSCALE=50&action=2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:29 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=7771bdd57b089b12882aa75f1ede768b; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:29 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '0'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Fri, 01 Mar 2024 14:27:29 GMT
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/utils/getthumbnail/collection/p16002coll11/id/30085
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:27:29 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Vary:
+      - X-Forwarded-Proto
+      Set-Cookie:
+      - PHPSESSID=a4155ccd7c075f106277b3e2c57ef83e; path=/; HttpOnly
+      Expires:
+      - Fri, 15 Mar 2024 14:27:29 GMT
+      Cache-Control:
+      - maxage=1209600
+      Pragma:
+      - public
+      Content-Length:
+      - '1052'
+      Content-Type:
+      - image/jpeg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        /9j/4AAQSkZJRgABAQECWAJYAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/wAALCAB4AFoBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/APDj4Nugebq3x9TUL+E7pZXRZ4Dt6nn0rYsdJlgtY4meMso5IJ9fpUp02Qn76frSjS37yKD9KUaY3/PUf9804aU3/PYf980f2U3/AD1H/fP/ANenjSf+m/8A47/9elGlD/nsf++agvbQWojIctvJHIxjiquK6YdRxUTj9/N9R/IUbQKQjmkxzTgMClpQOeafigdao61tKW4HXcf5VmYro1Gahb/j4m/3h/IU4CkIoxSgUYpRS0oqhrHW3/3j/KqP4VvJ1qFjmeb/AHv6CnHpRR1paKO1ApR1FUdX+9b/AO8f5VTxXReSFGfNjb6Gqh/183+8P5ClNBFHSiiloHSlqjqv3rf/AHj/ACqtiuiwFAZrZgp7knFUW/4+J/8AeH8hRTqDSdKM5NFLS1R1Trbf7x/lVbNbKEk1Cf8Aj5uP94fyFOFFJRRR3pw60VQ1P71v/vn+RqCtcVCM/a7nP94fyFPFFJRQTzS80ZwKA1UtT4Nv/vn+RqCtheagGftdz/vL/KpKKSij0paKMVS1QY+z/wC//Q1Bit5o5QiRm3KsgJJ2nJHvVJf+Py6+q/yp5pDSUUtLQTS9cVR1Q/8AHv8A7/8AQ1Bmt03VwzZaaQkjafmPI9KpZ/066/4Af0qSkNJijvTgKWmmjNUtU4EH/XT+hqv+Fa6t0qLH+n3X0T+RqTFNPWiil7Uv1oxTG4IqlqbZWD/roP5Goc1qqeRUWf8AiYXP+7Gf0NS5pDSGjNGaXdRn8qY2ao6mf3cP/XQfyNV8+9a+eaiY41CT3iQ/+hVITSFsdKNxxSjPWkJwaM8UbqM+lUNVP7mL/rqP61V3VC3iuz7QXB/EVWn8UA3PnQWzeX5YQh35yCTn9auaXrqX6ysLYRshA+/nOc+1XDft/wA81/OkN+x/gX86T7e/9wfnSNfucfIv50fb3/uL+dBv3/uLQL6T+4tQ3M7ToFcKAGDDFRbq/9k=
+  recorded_at: Fri, 01 Mar 2024 14:27:29 GMT
+recorded_with: VCR 6.2.0

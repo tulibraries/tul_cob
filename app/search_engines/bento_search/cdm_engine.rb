@@ -52,11 +52,12 @@ module BentoSearch
         bento_results.total_items = response.dig("pager", "total") || 0
 
         response["records"].each do |i|
-
-          item = BentoSearch::ResultItem.new
-          item = conform_to_bento_result(i)
-          if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles
-            bento_results << item unless is_int?(item.title)
+          unless ["/p245801coll10", "/p15037coll12"].include? i.fetch("collection")
+            item = BentoSearch::ResultItem.new
+            item = conform_to_bento_result(i)
+            if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles
+              bento_results << item unless is_int?(item.title)
+            end
           end
         end
       rescue StandardError => e

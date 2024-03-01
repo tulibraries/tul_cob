@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL%5EUndergraduate%20Research%20Prize%20Winners%5Eall%5Eand/title!date/nosort/9/0/1/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 01 Mar 2024 14:31:17 GMT
+      Server:
+      - Apache
+      X-Content-Type-Options:
+      - nosniff
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      - 1; mode=block
+      X-Oclc-Iiif-Provider:
+      - cantaloupe
+      Access-Control-Allow-Origin:
+      - "*"
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1725'
+      Content-Type:
+      - application/json
+      Cache-Control:
+      - max-age=0
+      Expires:
+      - Fri, 01 Mar 2024 14:31:17 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: '{"pager":{"start":"0","maxrecs":"9","total":121},"records":[{"collection":"\/p15037coll12","pointer":1927,"filetype":"cpd","parentobject":-1,"title":"Sustainable
+        and Efficient Rope Pump","date":"2012","find":"1928.cpd"},{"collection":"\/p15037coll12","pointer":789,"filetype":"cpd","parentobject":-1,"title":"The
+        Dancing Intelligence of the Age: Women of the Institute of Colored Youth,
+        1852-1903","date":"2011","find":"790.cpd"},{"collection":"\/p15037coll12","pointer":2701,"filetype":"cpd","parentobject":-1,"title":"Using
+        Green Infrastructure to Minimize Combined Sewer Overflows","date":"2016","find":"2702.cpd"},{"collection":"\/p15037coll12","pointer":2702,"filetype":"pdf","parentobject":-1,"title":"Blond
+        or Blonde? Frank Ocean and Identity Construction","date":"2018","find":"2709.pdf"},{"collection":"\/p15037coll12","pointer":2703,"filetype":"pdf","parentobject":-1,"title":"Protesting
+        the Internment of Japanese Americans: Dissent as a Duty of Citizenship","date":"2018","find":"2711.pdf"},{"collection":"\/p15037coll12","pointer":2704,"filetype":"pdf","parentobject":-1,"title":"(Z)-Selective
+        Isomerization of Terminal Alkenes using an air-stable Mo(0) Complex","date":"2018","find":"2710.pdf"},{"collection":"\/p15037coll12","pointer":2705,"filetype":"pdf","parentobject":-1,"title":"K-pop
+        Subculture International Impact","date":"2017","find":"2707.pdf"},{"collection":"\/p15037coll12","pointer":2707,"filetype":"pdf","parentobject":-1,"title":"Retrospective
+        Falsification \u2013 Run Away to Sweden","date":"2017","find":"2708.pdf"},{"collection":"\/p15037coll12","pointer":2708,"filetype":"pdf","parentobject":-1,"title":"Constructing
+        Native Homosexuality in British India","date":"2017","find":"2704.pdf"}]}'
+  recorded_at: Fri, 01 Mar 2024 14:31:17 GMT
+recorded_with: VCR 6.2.0
