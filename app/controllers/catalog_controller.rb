@@ -2,7 +2,6 @@
 
 class CatalogController < ApplicationController
   caches_page :show
-  caches_action :index, expires_in: 12.hours, cache_path: Proc.new { |c| c.request.url }
 
   include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
@@ -13,7 +12,6 @@ class CatalogController < ApplicationController
   include ServerErrors
   include LCClassifications
 
-  skip_forgery_protection only: [:index]
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
   before_action only: :index do
