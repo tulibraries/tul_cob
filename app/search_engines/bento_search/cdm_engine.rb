@@ -6,57 +6,65 @@ module BentoSearch
 
     delegate :blacklight_config, :search_service_class, to: ::SearchController
 
+    def base_url
+      "https://digital.library.temple.edu"
+    end
+
     def conform_to_bento_result(item)
       cdm_collection = item.fetch("collection", "").gsub("/", "")
-      cdm_id = item.fetch("pointer")
+      cdm_id = item.fetch("pointer", "")
       BentoSearch::ResultItem.new(
-        title: item.fetch("title"),
-        publication_date: item.fetch("date"),
+        title: item.fetch("title", ""),
+        publication_date: item.fetch("date", ""),
         source_title: cdm_collection,
         unique_id: cdm_id,
-        link: "https://digital.library.temple.edu/digital/collection/#{cdm_collection}/id/#{cdm_id}",
+        link: "#{base_url}/digital/collection/#{cdm_collection}/id/#{cdm_id}",
         other_links: [image_scale(cdm_collection, cdm_id)]
       )
     end
 
     def image_scale(collection, id)
       begin
-        image_info = JSON.load(URI.open("https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/#{collection}/#{id}/json"))
+        image_info = JSON.load(URI.open("#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/#{collection}/#{id}/json"))
         image_width = image_info["width"]
         image_scale = (image_width <= 2500) ? 50 : 6  #this may take some fine tuning depending on all available sizes
       rescue StandardError => e
         Honeybadger.notify("Ran into error while try to process CDM image info api call: #{e.message}")
       end
-
-      full_image = "https://digital.library.temple.edu/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
-      thumb = "https://digital.library.temple.edu/utils/getthumbnail/collection/#{collection}/id/#{id}"
+      full_image = "#{base_url}/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
+      thumb = "#{base_url}/utils/getthumbnail/collection/#{collection}/id/#{id}"
+      default_image = "#{base_url}/digital/api/singleitem/image/#{collection}/#{id}"
 
       if image_available?(full_image)
         full_image
-      else image_available?(thumb)
-           thumb
+      elsif image_available?(thumb)
+        thumb
+      else image_available?(default_image)
+           default_image
       end
     end
 
     def search_implementation(args)
       query = args.fetch(:query, "").gsub("/", " ")
-      bento_results = BentoSearch::Results.new
       query = ERB::Util.url_encode(query)
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
-      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmQuery/all/CISOSEARCHALL^#{query}^all^and/#{fields}/nosort/9/0/1/#{format}"
+      collections = I18n.t("bento.cdm_collections_list")
+      cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{collections}/CISOSEARCHALL^#{query}^all^and/#{fields}/nosort/35/0/1/0/0/0/0/0/#{format}"
+      bento_results = BentoSearch::Results.new
       response = []
 
       begin
         response = JSON.load(URI.open(cdm_url))
         bento_results.total_items = response.dig("pager", "total") || 0
-
         response["records"].each do |i|
-          unless ["/p245801coll10", "/p15037coll12"].include? i.fetch("collection")
-            item = BentoSearch::ResultItem.new
-            item = conform_to_bento_result(i)
-            if (bento_results.size < 3) && (image_available?(item.other_links[0]))   # only take records with images and with alphanumeric titles
-              bento_results << item unless is_int?(item.title)
+          unless is_int?(i.fetch("title", ""))
+            if bento_results.size < 3
+              if image_available?(image_scale(i.fetch("collection", "").gsub("/", ""), i.fetch("pointer", "")))  # only take records with images and with alphanumeric titles
+                item = BentoSearch::ResultItem.new
+                item = conform_to_bento_result(i)
+                bento_results << item
+              end
             end
           end
         end
