@@ -36,7 +36,7 @@ module BentoSearch
       elsif image_available?(thumb)
         thumb
       else image_available?(default_image)
-        default_image
+           default_image
       end
     end
 
