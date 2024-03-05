@@ -24,19 +24,21 @@ module BentoSearch
     end
 
     def image_scale(collection, id)
-      begin
-        image_info = JSON.load(URI.open("#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetImageInfo/#{collection}/#{id}/json"))
-        image_width = image_info["width"]
-        image_scale = (image_width <= 2500) ? 50 : 6  #this may take some fine tuning depending on all available sizes
-      rescue StandardError => e
-        Honeybadger.notify("Ran into error while try to process CDM image info api call: #{e.message}")
-      end
-      full_image = "#{base_url}/utils/ajaxhelper/?CISOROOT=#{collection}&CISOPTR=#{id}&action=2&DMSCALE=#{image_scale}&DMHEIGHT=340"
+      full_image = "#{base_url}/digital/iiif/2/#{collection}:#{id}/full/,220/0/default.jpg"
       thumb = "#{base_url}/utils/getthumbnail/collection/#{collection}/id/#{id}"
       default_image = "#{base_url}/digital/api/singleitem/image/#{collection}/#{id}"
+      the_image = nil
 
-      if image_available?(full_image)
-        full_image
+      begin
+        if image_available?(full_image)
+          the_image = full_image
+        end
+      rescue OpenURI::HTTPError => e
+        Honeybadger.notify("Ran into error while trying to process CDM IIIF image call: #{e.message}")
+      end
+
+      if the_image.present?
+        the_image
       elsif image_available?(thumb)
         thumb
       else image_available?(default_image)
@@ -69,7 +71,7 @@ module BentoSearch
           end
         end
       rescue StandardError => e
-        Honeybadger.notify("Ran into error while try to process CDM: #{e.message}")
+        Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
       end
       bento_results
     end
