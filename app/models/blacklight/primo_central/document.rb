@@ -107,18 +107,12 @@ module Blacklight::PrimoCentral::Document
     }
 
     def url(doc)
-      get_it(doc).fetch("link", "")
+      doc.dig("delivery", "almaOpenurl")
     end
 
     def link_label(doc)
       I18n.t("primo_central.link_to_resource")
     end
-
-    def get_it(doc = nil)
-      doc = (doc || @_source || {})
-      doc.dig("delivery", "GetIt1", 0, "links", 0) || {}
-    end
-
 
     def url_query(url = @url)
       query = (URI.parse(url).query rescue nil)
