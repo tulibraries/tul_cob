@@ -26,6 +26,44 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  context "url from almaOpenurl" do
+    let(:docs) { ActiveSupport::HashWithIndifferentAccess.new(
+      delivery: {
+        "almaOpenurl": "https://na02.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2024-03-07 14:41:20&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-lunacommons_DWU&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=unknown&rft.au=Price%2C+Jonathan+Reeve&rft.date=2019&rft.pub=Albuquerque&rft_dat=<lunacommons_DWU>oai_N_A_RUMSEY_8_1_359109_90125885</lunacommons_DWU>&svc_dat=viewit"
+      }) }
+    it "sets doc['link'] to almaOpenurl" do
+      expect(subject["link"]).to eq("https://na02.alma.exlibrisgroup.com/view/uresolver/01TULI_INST/openurl?ctx_enc=info:ofi/enc:UTF-8&ctx_id=10_1&ctx_tim=2024-03-07 14:41:20&ctx_ver=Z39.88-2004&url_ctx_fmt=info:ofi/fmt:kev:mtx:ctx&url_ver=Z39.88-2004&rfr_id=info:sid/primo.exlibrisgroup.com-lunacommons_DWU&rft_val_fmt=info:ofi/fmt:kev:mtx:book&rft.genre=unknown&rft.au=Price%2C+Jonathan+Reeve&rft.date=2019&rft.pub=Albuquerque&rft_dat=<lunacommons_DWU>oai_N_A_RUMSEY_8_1_359109_90125885</lunacommons_DWU>&svc_dat=viewit")
+    end
+  end
+
+  context "url from OA direct link" do
+    let(:docs) { ActiveSupport::HashWithIndifferentAccess.new(
+      "pnx" => {
+       "addata" => {
+          "oa" => [ "free_for_read" ]
+        },
+        "links" => {
+          "linktorsrc" => [ "$$Uhttps://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~359109~90125885$$EView_record_in_Cartography_Associates$$FView_record_in_$$GCartography_Associates$$Hfree_for_read" ]
+      }
+      }) }
+    it "sets doc['link'] to linktorsrc $$U" do
+      expect(subject["link"]).to eq("https://www.davidrumsey.com/luna/servlet/detail/RUMSEY~8~1~359109~90125885")
+    end
+  end
+
+  context "url from non-OA direct link" do
+    let(:docs) { ActiveSupport::HashWithIndifferentAccess.new(
+      "pnx" => {
+       "addata" => {},
+        "links" => {
+          "linktorsrc" => [ "$$Uhttps://search.proquest.com/docview/2848172314?pq-origsite=primo$$EView_record_in_ProQuest$$FView_record_in_$$GProQuest" ]
+      }
+      }) }
+    it "sets doc['link'] to linktorsrc $$U with ezproxy" do
+      expect(subject["link"]).to eq("https://libproxy.temple.edu/login?url=https://search.proquest.com/docview/2848172314?pq-origsite=primo")
+    end
+  end
+
   context "with pnx description " do
     let(:docs) { { "pnx" => { "search" => { "description" => [ "foo" ] } } } }
 
@@ -216,7 +254,7 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
-  context "document direc_link contains a regular value" do
+  context "document direct_link contains a regular value" do
     let(:docs) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {
         "almaOpenurl": "http://foobar.com?rft.isbn=a"
