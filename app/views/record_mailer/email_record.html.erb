@@ -5,9 +5,9 @@
 </p>
 
 <% @documents.each do |document| %>
-<%= tag.span(document.to_email_text, style: "white-space: pre-line") %>
+<%= sanitize document.to_email_text.gsub("\n",tag.br) %>
 <%= tag.br %>
 <%= t('blacklight.email.html.url') %>
 <%= record_mailer_link(document, @url_gen_params) %>
-<br>
+<%= tag.br %>
 <% end %>
