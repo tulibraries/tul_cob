@@ -107,7 +107,23 @@ module Blacklight::PrimoCentral::Document
     }
 
     def url(doc)
-      doc.dig("delivery", "almaOpenurl")
+      # Direct Link to Resource
+      directlink = doc.dig("pnx", "links", "linktorsrc", 0)
+      if directlink.present?
+        url = doc.dig("pnx", "links", "linktorsrc", 0).split("$$")
+          .select { |substring| substring.start_with?("U") }.join[1..-1]
+        if !is_oa?(doc) && !url.match?(/libproxy/)
+          url = "https://libproxy.temple.edu/login?url=" + url
+        end
+        url
+      else
+        # Alma OpenURL
+        doc.dig("delivery", "almaOpenurl") || {}
+      end
+    end
+
+    def is_oa?(doc)
+      doc.dig("pnx", "addata", "oa").present?
     end
 
     def link_label(doc)
