@@ -60,7 +60,7 @@ module Blacklight::PrimoCentral
         first = boundaries[index]
         last =  boundaries[index + 1].to_i - 1
         count = values.select { |f| f[:value] >= first && f[:value] <= last }
-          .map { |f| f[:count] }
+          .map { |f| f[:count].to_i }
           .reduce(0, &:+)
 
         segments << { from: first, to: last, count: count }
