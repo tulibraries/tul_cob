@@ -322,7 +322,7 @@ en:
     citation_html: >-
           Search in
           <a href="https://librarysearch.temple.edu/articles">Articles</a>
-          or try our <a href="https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI">Find by Citation</a> tool (previously “Journal Finder”).
+          or try our <a href="https://temple.primo.exlibrisgroup.com/discovery/citationlinker?vid=01TULI_INST:TULI">Find by Citation</a> tool (previously “Journal Finder”).
     libkey_button_html: "View Journal Contents <span class='libkey-external-link-icon'></span>"
 
   databases:
