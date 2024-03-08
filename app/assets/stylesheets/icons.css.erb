@@ -84,7 +84,6 @@ span.preprint,
 span.review_article,
 span.microform,
 span.publication_corrigendum, 
-span.retraction_notice,
 span.legal_document,
 a.facet_newsletterarticle,
 a.facet_newsletterarticles,
@@ -108,8 +107,6 @@ a.facet_review_articles,
 a.facet_microform,
 a.facet_publication_corrigendums, 
 a.facet_publication_corrigendum, 
-a.facet_retraction_notices,
-a.facet_retraction_notice,
 a.facet_legal_documents,
 a.facet_legal_document
 {
@@ -362,11 +359,14 @@ span.reference,
 
 span.unknown,
 span.other,
-span.retracted_publication
+span.retracted_publication,
+span.retraction_notice,
 a.facet_unknown,
 a.facet_other,
 a.facet_retracted_publication,
-a.facet_retracted_publications {
+a.facet_retracted_publications,
+a.facet_retraction_notice,
+a.facet_retraction_notices {
   background: transparent url(<%= asset_path "noun_question_mark.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
