@@ -222,7 +222,7 @@ en:
     libkey_io: "LibKey.io"
     citation_html: "Try %{libkey_io} for DOI/PMID searches or our %{citation_tool} tool."
     citation_tool: "Find by Citation"
-    citation_link: "https://temple-primo.hosted.exlibrisgroup.com/primo-explore/citationlinker?vid=TULI"
+    citation_link: "https://temple.primo.exlibrisgroup.com/discovery/citationlinker?vid=01TULI_INST:TULI"
     explanation_html: "<strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
