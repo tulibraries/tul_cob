@@ -80,6 +80,10 @@ span.text_resource,
 span.technical_report,
 span.government_document,
 span.patent,
+span.preprint,
+span.review_article,
+span.microform,
+span.publication_corrigendum, 
 span.legal_document,
 a.facet_newsletterarticle,
 a.facet_newsletterarticles,
@@ -96,6 +100,13 @@ a.facet_government_document,
 a.facet_government_documents,
 a.facet_patents,
 a.facet_patent,
+a.facet_preprint,
+a.facet_preprints,
+a.facet_review_article,
+a.facet_review_articles,
+a.facet_microform,
+a.facet_publication_corrigendums, 
+a.facet_publication_corrigendum, 
 a.facet_legal_documents,
 a.facet_legal_document
 {
@@ -107,9 +118,12 @@ a.facet_legal_document
     background: transparent url(<%= asset_path "noun_article_crystalblue.svg" %>) no-repeat center left;
   }
 }
+span.magazinearticle,
 span.journal_article,
 span.journal_periodical,
 span.journal,
+a.facet_magazinearticle,
+a.facet_magazinearticles,
 a.facet_journal_periodical,
 a.facet_journals,
 a.facet_articles
@@ -345,8 +359,14 @@ span.reference,
 
 span.unknown,
 span.other,
+span.retracted_publication,
+span.retraction_notice,
 a.facet_unknown,
-a.facet_other {
+a.facet_other,
+a.facet_retracted_publication,
+a.facet_retracted_publications,
+a.facet_retraction_notice,
+a.facet_retraction_notices {
   background: transparent url(<%= asset_path "noun_question_mark.svg" %>) no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
