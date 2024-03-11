@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "pry"
-
 module Blacklight::PrimoCentral::Document
   extend ActiveSupport::Concern
   include Blacklight::Document
