@@ -134,6 +134,6 @@ module SearchHelper
     cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
     response = JSON.load(URI.open(cdm_url))
     collection = response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == cdm_alias }
-    collection.first["name"]
+    collection.first["name"] unless collection.blank?
   end
 end
