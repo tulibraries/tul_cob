@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "pry"
+
 module Blacklight::PrimoCentral::Document
   extend ActiveSupport::Concern
   include Blacklight::Document
@@ -109,16 +111,22 @@ module Blacklight::PrimoCentral::Document
     def url(doc)
       # Direct Link to Resource
       directlink = doc.dig("pnx", "links", "linktorsrc", 0)
+      # Alma Openurl
+      almaopenurl = doc.dig("delivery", "almaOpenurl") || {}
+
       if directlink.present?
-        url = doc.dig("pnx", "links", "linktorsrc", 0).split("$$")
-          .select { |substring| substring.start_with?("U") }.join[1..-1]
-        if !is_oa?(doc) && !url.match?(/libproxy/)
+        url = directlink.split("$$").select { |substring| substring.start_with?("U") }.join[1..-1]
+
+        if url.present? && !url&.match?(/libproxy/) && !is_oa?(doc)
           url = "https://libproxy.temple.edu/login?url=" + url
+        elsif url.nil?
+          almaopenurl
+        else
+          url
         end
-        url
+
       else
-        # Alma OpenURL
-        doc.dig("delivery", "almaOpenurl") || {}
+        almaopenurl
       end
     end
 
