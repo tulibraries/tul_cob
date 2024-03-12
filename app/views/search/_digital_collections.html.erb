@@ -4,14 +4,14 @@
     <% @results["cdm"].each do |cdm_record| %>
     <li class="bento-resource-list-item list-inline-item pb-1">
       <%= link_to cdm_record.link do %>
-        <%= image_tag cdm_record.other_links[0], class: "cdm-image", alt: "" %>
+        <%= image_tag cdm_record.other_links[0], class: "cdm-image", alt: "", loading: "lazy" %>
         <div class="pt-2 w-75">
           <h3 class="cdm-item-title"><%= cdm_record.title %></h3>
         </div>
       <% end %>
       <p class="cdm-data">
         <%= "Date: #{cdm_record.publication_date}" if cdm_record.publication_date.present? %>
-        <br /><%= cdm_collection_name(cdm_record.source_title) %>
+        <br /><%= cdm_record.source_title  if cdm_record.source_title.present? %>
       </p>
     </li>
     <% end %>
