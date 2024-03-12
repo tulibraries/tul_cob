@@ -52,7 +52,7 @@ module BentoSearch
       fields = args.fetch(:cdm_fields)
       format = args.fetch(:cdm_format)
       collections = I18n.t("bento.cdm_collections_list")
-      cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{collections}/CISOSEARCHALL^#{query}^all^and/#{fields}/nosort/35/0/1/0/0/0/0/0/#{format}"
+      cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{collections}/CISOSEARCHALL^#{query}^all^and/#{fields}/nosort/5/0/1/0/0/0/0/0/#{format}"
       bento_results = BentoSearch::Results.new
       response = []
 
