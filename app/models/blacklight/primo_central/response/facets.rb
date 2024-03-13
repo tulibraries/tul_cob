@@ -174,7 +174,7 @@ module Blacklight
           def sort_by_count_desc_alpha_asc(facet)
             # Return facet values sorted first by Count Descending
             # Secondary sort by value Ascending, essentially alphabetical order
-            facet["values"].sort_by { |h| [-h["count"], h["value"]] }
+            facet["values"].sort_by { |h| [-h["count"].to_i, h["value"]] }
           end
       end
     end
