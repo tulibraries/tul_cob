@@ -16,7 +16,7 @@ module BentoSearch
       BentoSearch::ResultItem.new(
         title: item.fetch("title", ""),
         publication_date: item.fetch("date", ""),
-        source_title: cdm_collection,
+        source_title: cdm_collection_name(cdm_collection),
         unique_id: cdm_id,
         link: "#{base_url}/digital/collection/#{cdm_collection}/id/#{cdm_id}",
         other_links: [image_scale(cdm_collection, cdm_id)]
@@ -71,7 +71,7 @@ module BentoSearch
           end
         end
       rescue StandardError => e
-        Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
+        # Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
       end
       bento_results
     end
@@ -83,6 +83,13 @@ module BentoSearch
     def image_available?(link)
       res = URI.open(link)
       res.size > 0
+    end
+
+    def cdm_collection_name(cdm_alias)
+      cdm_url = "https://digital.library.temple.edu/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
+      response = JSON.load(URI.open(cdm_url))
+      collection = response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == cdm_alias }
+      collection.first["name"]
     end
   end
 end
