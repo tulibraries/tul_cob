@@ -34,7 +34,7 @@ module BentoSearch
           the_image = full_image
         end
       rescue OpenURI::HTTPError => e
-        Honeybadger.notify("Ran into error while trying to process CDM IIIF image call: #{e.message}")
+        # Honeybadger.notify("Ran into error while trying to process CDM IIIF image call: #{e.message}")
       end
 
       if the_image.present?
@@ -71,7 +71,7 @@ module BentoSearch
           end
         end
       rescue StandardError => e
-        # Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
+        Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
       end
       bento_results
     end
