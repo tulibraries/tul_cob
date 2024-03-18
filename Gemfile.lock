@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: ced77a9280053aab65dd51f2ddfa647fb859693d
+  revision: 13c1ba4942bf333201f7f5204c6d6b74f29028ac
   branch: main
   specs:
     alma (0.5.0)
@@ -360,7 +360,7 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    minitest (5.22.2)
+    minitest (5.22.3)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
