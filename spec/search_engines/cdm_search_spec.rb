@@ -7,10 +7,8 @@ RSpec.describe "cdm search engine", type: :search_engine do
   let(:query) { "ymca" }
   let(:theses_query) { "theses and dissertations" }
   let(:awards_query) { "Undergraduate Research Prize Winners" }
-  let(:cdm_fields) { "title!date" }
-  let(:cdm_format) { "json" }
   let(:search_engine)  { BentoSearch.get_engine("cdm") }
-  let(:search_results) { VCR.use_cassette("bento_search_cdm") { search_engine.search(query, cdm_fields: cdm_fields, cdm_format: cdm_format) } }
+  let(:search_results) { VCR.use_cassette("bento_search_cdm") { search_engine.search(query) } }
   let(:expected_fields) { RSpec.configuration.cdm_expected_fields }
 
   let(:item) { search_results[0] }
