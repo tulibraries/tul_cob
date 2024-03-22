@@ -11,5 +11,5 @@
 <% end %>
 
 <div id="doc_<%= @document.id.to_s.parameterize %>">
-  <%= render_document_partials @document, blacklight_config.view_config(:show).partials, component: component %>
+  <%= render_document_partials @document, blacklight_config.view_config(:show).partials %>
 </div>
