@@ -6,8 +6,47 @@ module BentoSearch
 
     delegate :blacklight_config, :search_service_class, to: ::SearchController
 
-    def base_url
-      "https://digital.library.temple.edu"
+    def search_implementation(args)
+      bento_results = BentoSearch::Results.new
+      response = cdm_api_response(args)
+      bento_results.total_items = response.dig("pager", "total") || 0
+      collections = cdm_collections_api_response
+
+
+      # use only records that have alphanumeric titles.
+      records = response["records"].select { |record| !is_int?(record["title"].to_s) }
+
+      records = records.map { |record|
+        collection_id = record.fetch("collection", "").gsub("/", "")
+        cdm_id = record.fetch("pointer", "")
+
+        {
+          title: record.fetch("title", ""),
+          publication_date: record.fetch("date", ""),
+          source_title: cdm_collection_name(collection_id, collections),
+          unique_id: cdm_id,
+          link: "#{base_url}/digital/collection/#{collection_id}/id/#{cdm_id}",
+          image_link_thread: Thread.new { get_image_link(collection_id, cdm_id) },
+          other_links: [],
+        }
+      }
+
+      # reduce records to the first 3 that have images.
+      records.reduce(bento_results) { |acc, record|
+
+        if acc.count == 3
+          break acc
+        end
+
+        image_link = record[:image_link_thread].value
+
+        if image_link.present?
+          record[:other_links] << image_link
+          acc << BentoSearch::ResultItem.new(record.except(:image_link_thread))
+        end
+
+        acc
+      }
     end
 
     def cdm_api_response(args)
@@ -21,84 +60,55 @@ module BentoSearch
         JSON.load(URI.open(cdm_url))
       rescue StandardError => e
         Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
+        { records: [], pager: { total: 0 } }.with_indifferent_access
       end
     end
 
     def cdm_collections_api_response
       collections_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
       begin
-        JSON.load(URI.open(collections_url))
+        Rails.cache.fetch(:cdm_api_response, expires_in: 1.day) { JSON.load(URI.open(collections_url))  }
       rescue StandardError => e
         Honeybadger.notify("Error trying to process CDM Collections api response: #{e.message}")
+        []
       end
     end
 
-    def image_scale(collection, id)
-      full_image = "#{base_url}/digital/iiif/2/#{collection}:#{id}/full/,220/0/default.jpg"
-      thumbnail_image = "#{base_url}/utils/getthumbnail/collection/#{collection}/id/#{id}"
-      default_image = "#{base_url}/digital/api/singleitem/image/#{collection}/#{id}"
-      the_image = nil
+    def get_image_link(collection, id)
+      full_image_url = "#{base_url}/digital/iiif/2/#{collection}:#{id}/full/,220/0/default.jpg"
+      thumbnail_image_url = "#{base_url}/utils/getthumbnail/collection/#{collection}/id/#{id}"
+      default_image_url = "#{base_url}/digital/api/singleitem/image/#{collection}/#{id}"
 
-      begin
-        if image_available?(full_image)
-          the_image = full_image
-        end
-      rescue OpenURI::HTTPError => e
-        # Honeybadger.notify("Ran into error while trying to process CDM IIIF image call: #{e.message}")
-      end
-
-      if the_image.present?
-        the_image
-      elsif image_available?(thumbnail_image)
-        thumbnail_image
-      else image_available?(default_image)
-           default_image
+      if image_available?(full_image_url)
+        full_image_url
+      elsif image_available?(thumbnail_image_url)
+        thumbnail_image_url
+      else
+        default_image_url
       end
     end
 
-    def search_implementation(args)
-      bento_results = BentoSearch::Results.new
-      response = []
-      response = cdm_api_response(args)
-
-      if response["records"].present?
-        bento_results.total_items = response.dig("pager", "total") || 0
-        collections = []
-        collections = cdm_collections_api_response
-
-        response["records"].each do |i|
-          collection_id = i.fetch("collection", "").gsub("/", "")
-          cdm_id = i.fetch("pointer", "")
-
-          # only take records with images and with alphanumeric titles
-          unless is_int?(i.fetch("title", ""))
-            if bento_results.size < 3
-              cdm_image = image_scale(collection_id, cdm_id)
-              if cdm_image.present?
-                item = BentoSearch::ResultItem.new(
-                  title: i.fetch("title", ""),
-                  publication_date: i.fetch("date", ""),
-                  source_title: cdm_collection_name(collection_id, collections),
-                  unique_id: cdm_id,
-                  link: "#{base_url}/digital/collection/#{collection_id}/id/#{cdm_id}",
-                  other_links: [cdm_image]
-                )
-                bento_results << item
-              end
-            end
-          end
-        end
-      end
-      bento_results
+    def base_url
+      "https://digital.library.temple.edu"
     end
+
 
     def is_int?(str)
       !!(str =~ /\A[-+]?[0-9]+\z/)
     end
 
     def image_available?(link)
-      res = URI.open(link)
-      res.size > 0
+      begin
+        url = URI::parse(link)
+        http = Net::HTTP.new(url.host, url.port)
+        http.use_ssl = (url.scheme == "https")
+
+        response = http.head(url.request_uri)
+        response.code.to_i == 200
+      rescue => e
+        Honeybadger.notify(e, error_message: "Error when checking if CDM image is available")
+        false
+      end
     end
 
     def cdm_collection_name(collection_id, collections_response)
