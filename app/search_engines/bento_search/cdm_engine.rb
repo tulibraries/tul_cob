@@ -106,7 +106,6 @@ module BentoSearch
         response = http.head(url.request_uri)
         response.code.to_i == 200
       rescue => e
-        Honeybadger.notify(e, error_message: "Error when checking if CDM image is available")
         false
       end
     end
