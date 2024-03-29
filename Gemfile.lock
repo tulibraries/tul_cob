@@ -160,10 +160,10 @@ GEM
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    axe-core-api (4.8.2)
+    axe-core-api (4.9.0)
       dumb_delegator
       virtus
-    axe-core-rspec (4.8.2)
+    axe-core-rspec (4.9.0)
       axe-core-api
       dumb_delegator
       virtus
