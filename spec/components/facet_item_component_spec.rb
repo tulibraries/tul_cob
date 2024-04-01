@@ -24,15 +24,15 @@ RSpec.describe FacetItemComponent, type: :component do
   it "renders the facet" do
     expect(presenter).to receive(:has_selected_child?).and_return false
     result = render_component presenter
-    expect(rendered_component).to include "facet_foo"
-    expect(rendered_component).to include ">Foo<"
-    expect(rendered_component).to include "foo.bar"
-    expect(rendered_component).to include "10"
+    expect(rendered_content).to include "facet_foo"
+    expect(rendered_content).to include ">Foo<"
+    expect(rendered_content).to include "foo.bar"
+    expect(rendered_content).to include "10"
   end
 
   it "doesn't render a count if the facet has a selected child" do
     expect(presenter).to receive(:has_selected_child?).and_return true
     result = render_component presenter
-    expect(rendered_component).not_to include "10"
+    expect(rendered_content).not_to include "10"
   end
 end
