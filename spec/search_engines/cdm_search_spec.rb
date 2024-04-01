@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe "cdm search engine", type: :search_engine do
 
-  let(:query) { "ymca" }
+  let(:query) { "art history" }
   let(:theses_query) { "theses and dissertations" }
   let(:awards_query) { "Undergraduate Research Prize Winners" }
   let(:search_engine)  { BentoSearch.get_engine("cdm") }

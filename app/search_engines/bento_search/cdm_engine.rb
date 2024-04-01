@@ -77,14 +77,13 @@ module BentoSearch
     def get_image_link(collection, id)
       full_image_url = "#{base_url}/digital/iiif/2/#{collection}:#{id}/full/,220/0/default.jpg"
       thumbnail_image_url = "#{base_url}/utils/getthumbnail/collection/#{collection}/id/#{id}"
-      default_image_url = "#{base_url}/digital/api/singleitem/image/#{collection}/#{id}"
 
       if image_available?(full_image_url)
         full_image_url
       elsif image_available?(thumbnail_image_url)
         thumbnail_image_url
       else
-        default_image_url
+        ""
       end
     end
 
@@ -102,6 +101,8 @@ module BentoSearch
         url = URI::parse(link)
         http = Net::HTTP.new(url.host, url.port)
         http.use_ssl = (url.scheme == "https")
+        http.open_timeout = 5
+        http.read_timeout = 5
 
         response = http.head(url.request_uri)
         response.code.to_i == 200
