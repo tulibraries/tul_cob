@@ -1,5 +1,5 @@
 FROM ruby:3.3-alpine3.18
-RUN apk --update add nodejs yarn git build-base bash mysql-dev postgresql16-dev sqlite-dev tzdata shared-mime-info
+RUN apk --update add nodejs yarn git build-base bash mysql-dev postgresql15-dev sqlite-dev tzdata shared-mime-info
 RUN mkdir /app
 WORKDIR /app
 ENV RAILS_ENV='test'
