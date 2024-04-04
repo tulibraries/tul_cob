@@ -33,7 +33,7 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.39-r0 \
       mariadb-dev=10.11.6-r0 \
       postgresql16-dev=16.2-r0 \
-      nodejs=20.11.1-r0 \
+      nodejs=20.12.1-r0 \
       yarn=1.22.19-r0 && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
