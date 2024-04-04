@@ -21,7 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
+  adapter: <%= ENV["COB_DB_ADAPTOR"] || "postgresql" %>
   encoding: utf8
   host: <%= ENV["COB_DB_HOST"] || "localhost" %>
   database: <%= ENV["COB_DB_NAME"] %>

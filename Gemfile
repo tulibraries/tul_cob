@@ -69,7 +69,6 @@ group :development do
   gem "flamegraph"
   gem "ruby-prof"
   gem "spring"
-  gem "sqlite3"
   gem "stackprof"
   gem "web-console"
 end
@@ -89,12 +88,14 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "simplecov"
   gem "simplecov-lcov"
+  gem "sqlite3"
   gem "vcr"
   gem "webmock"
 end
 
 group :production do
   gem "mysql2", "~> 0.5.6"
+  gem "pg"
   # required for using memcached
   gem "dalli"
   gem "connection_pool"
