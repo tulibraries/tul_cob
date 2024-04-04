@@ -69,7 +69,6 @@ group :development do
   gem "flamegraph"
   gem "ruby-prof"
   gem "spring"
-  gem "sqlite3"
   gem "stackprof"
   gem "web-console"
 end
@@ -89,6 +88,7 @@ group :development, :test do
   gem "selenium-webdriver"
   gem "simplecov"
   gem "simplecov-lcov"
+  gem "sqlite3"
   gem "vcr"
   gem "webmock"
 end
