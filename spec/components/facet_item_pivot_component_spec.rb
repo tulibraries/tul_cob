@@ -23,7 +23,7 @@ RSpec.describe FacetItemPivotComponent, type: :component do
       facet_item: presenter,
       wrapping_element: nil,
       suppress_link: false)
-    expect(rendered_component).to include "pivot-facet-spacer-row"
+    expect(rendered_content).to include "pivot-facet-spacer-row"
   end
 
   it "doesn't render a spacer row for a nested facet" do
@@ -33,6 +33,6 @@ RSpec.describe FacetItemPivotComponent, type: :component do
       facet_item: presenter,
       wrapping_element: nil,
       suppress_link: false)
-    expect(rendered_component).not_to include "pivot-facet-spacer-row"
+    expect(rendered_content).not_to include "pivot-facet-spacer-row"
   end
 end
