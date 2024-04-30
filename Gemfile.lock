@@ -309,7 +309,7 @@ GEM
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    jbuilder (2.11.5)
+    jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jquery-rails (4.6.0)
@@ -668,7 +668,7 @@ DEPENDENCIES
   hashie (~> 4.1.0)
   honeybadger (= 5.8.0)
   httparty
-  jbuilder (~> 2.11)
+  jbuilder (~> 2.12)
   jquery-rails
   jwt
   launchy
