@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 8e9e504aaaa08af4f2ddd6c58a9282d3d044c012
+  revision: d1eb8042f4460b4346719f2c40d523874e212b30
   branch: main
   specs:
-    alma (0.5.0)
+    alma (0.5.1)
       activesupport
       httparty
       xml-simple
@@ -183,7 +183,7 @@ GEM
       openurl (>= 0.3.1, < 1.1)
       rails (>= 5.2, < 7)
       summon
-    bigdecimal (3.1.6)
+    bigdecimal (3.1.8)
     bindex (0.8.1)
     blacklight (7.37.0)
       deprecation
