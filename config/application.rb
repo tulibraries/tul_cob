@@ -7,18 +7,18 @@ require "awesome_print"
 require "dot_properties"
 require "./lib/alma/config_utils"
 
-
-# Require the gems listed in Gemfile, including any gems
-# you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
 module Tulcob
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.1
-    # Rails.autoloaders.logger = Logger.new "#{Rails.root}/log/autoloading.log"
+    config.load_defaults 7.0
 
     require "lc_classifications"
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(assets tasks))
 
     config.library_link = "https://library.temple.edu/"
     config.ask_link = "https://library.temple.edu/contact-us"
