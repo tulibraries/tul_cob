@@ -21,6 +21,8 @@ module Tulcob
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
+    config.add_autoload_paths_to_load_path = true
+    config.autoload_paths << Rails.root.join('lib')
 
     config.library_link = "https://library.temple.edu/"
     config.ask_link = "https://library.temple.edu/contact-us"
@@ -41,7 +43,6 @@ module Tulcob
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
-
 
     config.generators do |g|
       g.test_framework :rspec, spec: true
@@ -64,10 +65,5 @@ Honeybadger.configure do |config|
       notice.error_message.gsub!(secret_value, "[:#{secret_name}]") unless secret_value.blank?
     end
 
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
   end
 end
