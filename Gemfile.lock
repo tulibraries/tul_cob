@@ -81,6 +81,13 @@ GIT
     primo (0.3.0)
       httparty
 
+GIT
+  remote: https://github.com/upenn-libraries/blacklight-ris.git
+  revision: 88b4f1defc441c49d2408b3881ee4482b203eb7c
+  specs:
+    blacklight-ris (0.1.0)
+      rails (> 4.2)
+
 PATH
   remote: ../bento_Search
   specs:
@@ -699,8 +706,9 @@ DEPENDENCIES
   axe-core-rspec
   base64 (= 0.1.1)
   bento_search!
-  blacklight (~> 7.37.0)
+  blacklight (~> 7.34)
   blacklight-marc
+  blacklight-ris!
   blacklight_advanced_search!
   blacklight_range_limit!
   bootsnap (= 1.18.3)

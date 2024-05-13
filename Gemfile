@@ -2,7 +2,6 @@
 
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem "rails", "7.1.3.2"
 
 gem "actionpack-action_caching", "~> 1.2"
@@ -12,9 +11,9 @@ gem "autoprefixer-rails"
 gem "awesome_print"
 gem "base64", "0.1.1"
 gem "bento_search", path: "../bento_Search"
-gem "blacklight", "~> 7.37.0"
+gem "blacklight", "~> 7.34"
 gem "blacklight-marc"
-# gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
+gem "blacklight-ris", git: "https://github.com/upenn-libraries/blacklight-ris.git"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
 gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
 gem "bootsnap", "1.18.3"
