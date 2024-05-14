@@ -47,12 +47,6 @@
       </div>
     <% end %>
 
-    <div class="hold-form form-group">
-      <%= form.label(:hold_comment, t("requests.form.notes_label_html")) %>
-      <p><%= t("requests.form.notes_additional_text") %></p>
-      <%= form.text_area :hold_comment, class: "request-form form-control" %>
-    </div>
-
     <div class="row hold-form">
       <%= form.submit t("requests.form.submit"), class:"btn btn-primary", data: { disable_with: "Sending request..." } %>
     </div>
