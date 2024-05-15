@@ -17,4 +17,6 @@
   <%= render_document_index %>
 <%- end %>
 
-<%= render "results_pagination" %>
+<nav class="center" role="region" aria-label="<%= t('views.pagination.aria.container_label') %>">
+  <%= render "results_pagination" %>
+</nav>
