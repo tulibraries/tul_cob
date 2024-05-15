@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: bcd58cda76c025e0ae728701ad946c9b8087f18b
+  revision: 64b24b01d2b61885a56526638a97d11224d800b9
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -623,7 +623,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.13)
+    zeitwerk (2.6.14)
 
 PLATFORMS
   arm64-darwin-21
