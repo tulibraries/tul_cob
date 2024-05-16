@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-# This controller is implemented to get information about a document's
-# availability because the alma api is currently too slow to load this at the
-# document level.
 class AlmawsController < CatalogController
   layout proc { |controller| false if request.xhr? }
 
@@ -15,23 +12,16 @@ class AlmawsController < CatalogController
   def item
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
-    # TODO: refactor to repository/response/search_behavior ala primo/solr.
-    page = (params[:page] || 1).to_i
-    limit = (params[:limit] || 100).to_i
-    offset = (limit * page) - limit
 
-    log = { type: "bib_items_availability" }
-    bib_items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: limit, offset: offset, expand: "due_date") }
-    @response = Blacklight::Alma::Response.new(bib_items, params)
-    @items = bib_items.filter_missing_and_lost.grouped_by_library
-    availability = bib_items.all.group_by { |item| item["item_data"]["pid"] }.
-                     transform_values { |item|
-      { availability: helpers.availability_status(item.first) } }
+    response = get_bib_items(@mms_id)
+    availability = response.group_by { |item| item["item_data"]["pid"] }
+        .transform_values { |item| { availability: helpers.availability_status(item.first) } }
     @document.merge_item_data!(availability)
     @document_availability = helpers.document_availability_info(@document)
+
+    @items = response.group_by(&:library)
     @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
-    # Defined here as a parameter for the route
-    @request_level = get_request_level(bib_items)
+    @request_level = get_request_level(response)
     @redirect_to = params[:redirect_to]
     render layout: false
   end
@@ -40,41 +30,36 @@ class AlmawsController < CatalogController
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
 
-    log = { type: "alma_bib_item", mms_id: @mms_id }
-    @items = do_with_json_logger(log) { Alma::BibItem.find(@mms_id, limit: 100) }.filter_missing_and_lost
+    @items = get_bib_items(@mms_id)
 
-    @books = CobAlma::Requests.physical_material_type(@items).collect { |item| item["value"] if item["value"].include?("BOOK") }.compact
-    @author = @items.map { |item| item["bib_data"]["author"].to_s }.first
+    @books = @document.fetch("format") if @document["format"]&.include?("Book")
+    @author = @document.fetch("creator_display", []).first || ""
     @description = CobAlma::Requests.physical_material_type_and_descriptions(@items)
-    @item_level_locations = CobAlma::Requests.item_level_locations(@items)
-    @equipment = CobAlma::Requests.equipment(@items)
-    @booking_location = CobAlma::Requests.booking_location(@items)
     @material_types = CobAlma::Requests.physical_material_type(@items).compact
-    pickup_locations = params[:pickup_location]&.split(",") ||
-      CobAlma::Requests.valid_pickup_locations(@items.grouped_by_library)
+    @equipment = CobAlma::Requests.equipment(@items)
 
+    pickup_locations = params[:pickup_location]&.split(",") || []
     @pickup_locations = pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+    @item_level_locations = CobAlma::Requests.item_level_locations(@items)
+    @booking_location = CobAlma::Requests.booking_location(@items)
 
     @user_id = current_user.uid
-    @request_level = params[:request_level] ||
-      get_request_level(@items)
-
+    @request_level = params[:request_level] || "bib"
     @asrs_request_level = get_request_level(@items, "asrs")
 
     if @asrs_request_level == "item"
       @asrs_description =  CobAlma::Requests.material_type_and_asrs_descriptions(@items)
     else
-      @asrs_description = @description || @asrs_description = ""
+      @asrs_description = @description || ""
     end
 
-    # TODO: Document why there sometimes needs to be item level request_options requests made.
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
       @request_options = get_request_options_set(@item_level_holdings)
 
       if @request_options&.request_options.nil?
+        @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
         @request_options = get_request_options_set(@second_attempt_holdings)
       end
     else
@@ -133,8 +118,6 @@ class AlmawsController < CatalogController
         do_with_json_logger(log) { Alma::BibRequest.submit(options) }
         requests_made += 1
       else
-        # TODO: Will update this depending on Justin's decision regarding
-        # multiple requests on same item.
         params["available_asrs_items"]
           .select { |item| item["description"] == options[:description] }
           .each do |item|
@@ -158,7 +141,6 @@ class AlmawsController < CatalogController
       else
         flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       end
-
 
       redirect_back(fallback_location: root_path)
 
@@ -214,7 +196,6 @@ class AlmawsController < CatalogController
         from_page: params[:from_page], to_page: params[:to_page]
       }]
     }
-
     @request_level = params[:request_level]
 
     log = { type: "submit_digitization_request", user: current_user.id }.merge(bib_options)
@@ -233,6 +214,13 @@ class AlmawsController < CatalogController
   end
 
   private
+
+    def get_bib_items(mms_id)
+      Rails.cache.fetch("#{mms_id}/bib_items", expires_in: 30.seconds) do
+        log = { type: "bib_items_availability" }
+        response = do_with_json_logger(log) { Alma::BibItem.find(mms_id, limit: 100, offset: 0, expand: "due_date").all }.to_a.reject(&:missing_or_lost?)
+      end
+    end
 
     def get_request_level(items, partial = nil)
       if partial == "asrs"
