@@ -43,7 +43,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
 
-    config.track_search_session = true
+    config.track_search_session = false
     config.raw_endpoint.enabled = true
 
     ## Class for sending and receiving requests from a search index
