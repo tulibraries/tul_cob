@@ -5,7 +5,7 @@ require "yaml"
 
 RSpec.feature "Bento Searches" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_path}/search_features.yml")
+    YAML.load_file("#{fixture_paths}/search_features.yml")
   }
   feature "Search all fields" do
     let (:item) { fixtures.fetch("book_search") }
