@@ -65,7 +65,7 @@ Rails.application.configure do
       .tap  { |logger| logger.formatter = ::Logger::Formatter.new }
       .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
   end
- 
+
   # "info" includes generic and useful information about system operation, but avoids logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII). If you
   # want to log everything, set the level to "debug".
