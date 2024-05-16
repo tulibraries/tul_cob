@@ -6,7 +6,7 @@ include ApplicationHelper
 
 RSpec.feature "RecordPageFields" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_path}/features.yml")
+    YAML.load_file("#{fixture_paths}/features.yml")
   }
 
   feature "Purchase order link" do
@@ -507,6 +507,7 @@ RSpec.feature "RecordPageFields" do
     let (:item_383) { fixtures.fetch("music_no_383") }
     scenario "User visits a document with music no" do
       visit "catalog/#{item_383['doc_id']}"
+      binding.pry
       within "dd.blacklight-music_no_display" do
         expect(page).to have_text(item_383["music_no"])
       end
@@ -1160,6 +1161,7 @@ RSpec.feature "RecordPageFields" do
   feature "MARC Language Fields" do
     let (:item) { fixtures.fetch("language") }
     scenario "User visits a document with entry language" do
+      binding.pry
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-language_display" do
         expect(page).to have_text(item["language"])

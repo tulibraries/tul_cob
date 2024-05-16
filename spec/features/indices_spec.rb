@@ -8,7 +8,7 @@ require "pry"
 
 RSpec.feature "Indices" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_path}/features.yml")
+    YAML.load_file("#{fixture_paths}/features.yml")
   }
 
   feature "Home Page" do
