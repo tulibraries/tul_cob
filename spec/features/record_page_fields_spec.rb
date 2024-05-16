@@ -1161,7 +1161,6 @@ RSpec.feature "RecordPageFields" do
   feature "MARC Language Fields" do
     let (:item) { fixtures.fetch("language") }
     scenario "User visits a document with entry language" do
-      binding.pry
       visit "catalog/#{item['doc_id']}"
       within "dd.blacklight-language_display" do
         expect(page).to have_text(item["language"])
