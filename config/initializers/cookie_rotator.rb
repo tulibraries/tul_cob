@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # config/initializers/cookie_rotator.rb
 Rails.application.config.after_initialize do
   Rails.application.config.action_dispatch.cookies_rotations.tap do |cookies|
