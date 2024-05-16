@@ -48,14 +48,13 @@ module CobAlma
       ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
     end
 
-    def self.available_locations(grouped_by_library_items_list)
-      grouped_by_library_items_list.select { |key, val|
-        val.any?(&:in_place?) }.keys
+    def self.available_libraries(items_list)
+      items_list.select { |library, items| items.any?(&:in_place?) }.keys
     end
 
     def self.valid_pickup_locations(items_list)
+      libraries = self.available_libraries(items_list)
       pickup_locations = self.possible_pa_pickup_locations
-      libraries = self.available_locations(items_list)
 
       if libraries.any?
         removals = []
@@ -84,7 +83,7 @@ module CobAlma
 
       pickup_locations = self.possible_pa_pickup_locations
 
-      items_list.all.reduce({}) { |libraries, item|
+      items_list.reduce({}) { |libraries, item|
         desc = item.description
         campus = self.determine_campus(item.library)
         removals = []
@@ -138,7 +137,7 @@ module CobAlma
     end
 
     def self.descriptions(items_list)
-      descriptions = items_list.all.map(&:description)
+      descriptions = items_list.map(&:description)
 
       if descriptions.any?
         descriptions.each do |desc|
@@ -149,7 +148,7 @@ module CobAlma
     end
 
     def self.material_type_and_asrs_descriptions(items_list)
-      types_and_descriptions = items_list.all
+      types_and_descriptions = items_list
         .select { |item| item.library == "ASRS" && item.in_place? }
         .map { |item|
           Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
@@ -194,7 +193,7 @@ module CobAlma
     end
 
     def self.physical_material_type_and_descriptions(items_list)
-      types_and_descriptions = items_list.all.map { |item|
+      types_and_descriptions = items_list.map { |item|
         Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
       }.uniq.compact
 

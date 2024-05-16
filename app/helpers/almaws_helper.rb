@@ -89,7 +89,7 @@ module AlmawsHelper
     item.library == "ASRS"
   end
 
-  def available_asrs_items(items = @items.all)
+  def available_asrs_items(items = @items)
     asrs_items(items).select { |item|
       if item.physical_material_type["value"] == "DVD"
         item
