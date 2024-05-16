@@ -507,7 +507,6 @@ RSpec.feature "RecordPageFields" do
     let (:item_383) { fixtures.fetch("music_no_383") }
     scenario "User visits a document with music no" do
       visit "catalog/#{item_383['doc_id']}"
-      binding.pry
       within "dd.blacklight-music_no_display" do
         expect(page).to have_text(item_383["music_no"])
       end
