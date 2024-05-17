@@ -19,6 +19,7 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
+  timeout: 500000
 
 production:
   adapter: <%= ENV["COB_DB_ADAPTOR"] || "postgresql" %>

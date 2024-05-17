@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.feature "Query List" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_path}/features.yml")
+    YAML.load_file("#{fixture_paths}/features.yml")
   }
 
   feature "Record Page query lists" do

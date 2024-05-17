@@ -6,7 +6,7 @@ include ApplicationHelper
 
 RSpec.feature "RecordPageFields" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_path}/features.yml")
+    YAML.load_file("#{fixture_paths}/features.yml")
   }
 
   feature "Purchase order link" do
