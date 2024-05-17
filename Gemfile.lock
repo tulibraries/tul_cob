@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 723405ea3e706b968d4deb4dbc6125c2b41e7ea8
+  revision: 63e8d06c75ae2f7d674bdf699ddeb47ffb1bb396
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -362,7 +362,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.22.3)
+    minitest (5.23.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
