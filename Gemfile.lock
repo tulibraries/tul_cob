@@ -762,7 +762,7 @@ DEPENDENCIES
   skylight
   spring
   sprockets-rails
-  sqlite3 (~> 1.4)
+  sqlite3
   stackprof
   turbo-rails
   turbolinks (~> 5)
