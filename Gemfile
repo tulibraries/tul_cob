@@ -69,28 +69,31 @@ gem "webpacker", "6.0.0.rc.6"
 group :development do
   gem "axe-core-rspec"
   gem "flamegraph"
+  gem "foreman"
+  gem "launchy"
   gem "ruby-prof"
-  gem "spring"
   gem "stackprof"
   gem "web-console"
 end
 
 group :development, :test do
+  gem "pry-rails"
+  gem "rubocop"
+  gem "rubocop-rails"
+end
+
+group :test do
   gem "capybara", "~> 3"
   gem "database_cleaner"
   gem "factory_bot_rails"
-  gem "foreman"
-  gem "launchy"
-  gem "pry-rails"
   gem "rack-mini-profiler", require: false
   gem "rails-controller-testing"
   gem "rspec-rails"
-  gem "rubocop"
-  gem "rubocop-rails"
   gem "selenium-webdriver"
   gem "simplecov"
   gem "simplecov-lcov"
-  gem "sqlite3", "~> 1.4"
+  gem "spring"
+  gem "sqlite3"
   gem "vcr"
   gem "webmock"
 end
