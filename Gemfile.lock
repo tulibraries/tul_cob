@@ -20,6 +20,7 @@ GIT
 GIT
   remote: https://github.com/tulibraries/bento_search.git
   revision: f3135301a7fd9491e0838a0d57bcbb2909a7f724
+  branch: temple-libraries-rails7-upgrade
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
