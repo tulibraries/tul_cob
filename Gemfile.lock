@@ -60,7 +60,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: bcd58cda76c025e0ae728701ad946c9b8087f18b
+  revision: 64b24b01d2b61885a56526638a97d11224d800b9
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 6a7f915172f3dac141ebcb028e273867338a6da9
+  revision: 879404162d908bcb94d015945feb6c1e8a05e19d
   branch: main
   specs:
     cob_index (0.1.0)
@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 455907cec89b078b125b664868c9b83ceb9274d9
+  revision: 723405ea3e706b968d4deb4dbc6125c2b41e7ea8
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -92,14 +92,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: b2af884c16430f9a3f76a149e944fc9b09bcd904
+  revision: da15fb20824848381e8dfd0f336da4f11b73e7a6
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 95de6b1e180bec02cc4e3ba193907a81d773b621
+  revision: 54e765f0d61aba0c7d1dd98f26acc45479a3b75d
   branch: main
   specs:
     primo (0.3.0)
@@ -192,11 +192,11 @@ GEM
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    axe-core-api (4.9.0)
+    axe-core-api (4.9.1)
       dumb_delegator
       virtus
-    axe-core-rspec (4.9.0)
-      axe-core-api
+    axe-core-rspec (4.9.1)
+      axe-core-api (= 4.9.1)
       dumb_delegator
       virtus
     axiom-types (0.1.1)
@@ -317,7 +317,7 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.1.0)
     hashie (4.1.0)
-    honeybadger (5.8.0)
+    honeybadger (5.10.0)
     htmlentities (4.3.4)
     http (5.2.0)
       addressable (~> 2.8)
@@ -422,14 +422,14 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-linux)
+    nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
     okcomputer (1.18.5)
     omniauth (2.1.2)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
-    omniauth-rails_csrf_protection (1.0.1)
+    omniauth-rails_csrf_protection (1.0.2)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     omniauth-saml (2.1.0)
@@ -682,7 +682,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.13)
+    zeitwerk (2.6.14)
 
 PLATFORMS
   aarch64-linux
@@ -738,7 +738,7 @@ DEPENDENCIES
   flamegraph
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 5.8.0)
+  honeybadger (= 5.10.0)
   httparty
   jbuilder (~> 2.12)
   jquery-rails
@@ -748,7 +748,7 @@ DEPENDENCIES
   lc_solr_sortable!
   mysql2 (~> 0.5.6)
   net-smtp
-  nokogiri (= 1.16.4)
+  nokogiri (= 1.16.5)
   okcomputer
   omniauth
   omniauth-rails_csrf_protection

@@ -7,6 +7,8 @@
 <% end %>
 
 <%= render "search_header" %>
+<div class="border-top border-light-grey py-3 mt-md-3"></div>
+
 <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
 
 <%- if empty_response?(@response) %>
@@ -17,4 +19,6 @@
   <%= render_document_index %>
 <%- end %>
 
-<%= render "results_pagination" %>
+<nav class="center" role="region" aria-label="<%= t('views.pagination.aria.container_label') %>">
+  <%= render "results_pagination" %>
+</nav>
