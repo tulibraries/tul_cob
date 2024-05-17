@@ -71,7 +71,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 879404162d908bcb94d015945feb6c1e8a05e19d
+  revision: 0b1ff83a7f9e16b58d2e88d1f5d7e39d3316bbc7
   branch: main
   specs:
     cob_index (0.1.0)
@@ -81,7 +81,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 723405ea3e706b968d4deb4dbc6125c2b41e7ea8
+  revision: 63e8d06c75ae2f7d674bdf699ddeb47ffb1bb396
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -393,7 +393,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.22.3)
+    minitest (5.23.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -518,7 +518,8 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -605,6 +606,7 @@ GEM
     sqlite3 (1.7.3-x86_64-linux)
     stackprof (0.2.26)
     stringio (3.1.0)
+    strscan (3.1.0)
     summon (2.0.5)
       json
     thor (1.3.1)
