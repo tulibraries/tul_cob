@@ -6,7 +6,7 @@ include ApplicationHelper
 
 RSpec.feature "Advanced Search" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_paths}/features.yml")
+    YAML.load_file("#{fixture_path}/features.yml")
   }
 
   let (:facets) {

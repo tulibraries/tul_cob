@@ -22,8 +22,8 @@ class PrimoCentralDocument
 
   use_extension LibrarySearch::Document::ArticleEmail
 
-  include Blacklight::Ris::DocumentFields
-  use_extension(Blacklight::Ris::DocumentExport)
+  include Blacklight::Solr::Document::RisFields
+  use_extension(Blacklight::Solr::Document::RisExport)
 
   ris_field_mappings.merge!(
     TY: Proc.new {

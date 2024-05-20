@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.feature "Bento Availability" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_paths}/features.yml")
+    YAML.load_file("#{fixture_path}/features.yml")
   }
 
   feature "Online items link to resources" do

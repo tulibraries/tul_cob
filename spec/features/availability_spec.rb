@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.feature "Availability displays" do
   let (:fixtures) {
-    YAML.load_file("#{fixture_paths}/availability_features.yml")
+    YAML.load_file("#{fixture_path}/availability_features.yml")
   }
 
   feature "SCRC instructions display" do

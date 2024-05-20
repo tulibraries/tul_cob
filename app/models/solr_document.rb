@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class SolrDocument
-  include Blacklight::Solr::Document
+  include Blacklight::Solr::Document::RisFields
   include AvailabilityHelper
   include Citable
   include JsonLogger
   include Diggable
+  include Blacklight::Solr::Document
 
   attr_accessor :logger
 
@@ -15,6 +16,7 @@ class SolrDocument
     super
   end
 
+  use_extension(Blacklight::Solr::Document::RisExport)
 
   # self.unique_key = "id"
   field_semantics.merge!(
@@ -52,8 +54,6 @@ class SolrDocument
     fetch("bound_with_ids", [id])
   end
 
-  include Blacklight::Ris::DocumentFields
-  use_extension(Blacklight::Ris::DocumentExport)
   ris_field_mappings.merge!(
     TY: Proc.new {
       format = fetch("format", [])
