@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 0b1ff83a7f9e16b58d2e88d1f5d7e39d3316bbc7
+  revision: 3cd3b30b0949f6a20e501cc128896ab6499ff7fe
   branch: main
   specs:
     cob_index (0.1.0)
@@ -419,7 +419,7 @@ GEM
     public_suffix (5.0.5)
     puma (6.4.2)
       nio4r (~> 2.0)
-    racc (1.7.3)
+    racc (1.8.0)
     rack (2.2.9)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
