@@ -28,10 +28,6 @@ module CatalogHelper
     "data-lccn=#{values}" if !values.empty?
   end
 
-  def render_google_books_data_attribute(document)
-    isbn_data_attribute(document) || lccn_data_attribute(document) || oclc_data_attribute(document)
-  end
-
   def default_cover_image(document)
     formats = document.fetch(:format, [])
     # In case we fetched the default value, or the format value was ""

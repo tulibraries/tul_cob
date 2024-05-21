@@ -3,11 +3,7 @@
 <hr class="record-page-divider"/>
 <div class="record-page-wrapper clearfix" data-controller="book-covers">
   <% unless [ "databases", "primo_central"].include?(controller_name) %>
-    <div class="record-view thumbnail float-md-right col-md-2 col-4" <%= render_google_books_data_attribute(document) %> >
-      <%= image_tag "", :alt => "", :class => "book_cover invisible pb-2", :id => "book-cover-image" %>
-      <%= image_tag default_cover_image(document), :class => "default", :alt => "" %>
-      <%= link_to(image_tag("gbs_preview_button.gif", alt: "Google Preview"), "", :class => "preview invisible") %>
-    </div>
+    <%= render TulThumbnailComponent.new(presenter: doc_presenter, document:, counter: nil, gb_preview: true) %>
   <% end %>
 
   <div class="float-md-left col-md-9">
