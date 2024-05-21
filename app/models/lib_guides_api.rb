@@ -72,7 +72,7 @@ class LibGuidesApi
 
     def url
       query_terms = {
-        site_id: site_id,
+        site_id:,
         key: api_key,
         sort_by: "relevance",
         expand: "owner",

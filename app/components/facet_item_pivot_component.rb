@@ -21,7 +21,7 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
         concat content_tag("span", render_component(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
 
         if has_items?
-          concat(content_tag("ul", class: "pivot-facet list-unstyled #{'collapse' if (@collapsing && !uncollapse?)} #{'show' if uncollapse?}", id: id, role: "group") do
+          concat(content_tag("ul", class: "pivot-facet list-unstyled #{'collapse' if (@collapsing && !uncollapse?)} #{'show' if uncollapse?}", id:, role: "group") do
                    render_component(
                      self.class.with_collection(
                        @facet_item.items.map { |i| facet_item_presenter(i, @facet_item.facet_item) }

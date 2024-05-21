@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def holds
     holds = current_user.holds
     if holds.success?
-      render partial: "users/holds_details", layout: nil, locals: { holds: holds }
+      render partial: "users/holds_details", layout: nil, locals: { holds: }
     else
       render "Problem!"
     end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def fines
     fines = current_user.fines
     if fines.success?
-      render partial: "users/fines_details", layout: nil, locals: { fines: fines }
+      render partial: "users/fines_details", layout: nil, locals: { fines: }
     else
       render "Problem!"
     end
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def loans
     loans = current_user.loans
     if loans.success?
-      render partial: "users/loans_details", layout: nil, locals: { loans: loans }
+      render partial: "users/loans_details", layout: nil, locals: { loans: }
     else
       render "Problem!"
     end
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
   def renew_response(result, loan_id)
     {
-      loan_id:  loan_id,
+      loan_id:,
       renewed:  result.renewed?,
       title:    result.item_title,
       due_date: result.due_date,

@@ -10,7 +10,7 @@ module PurchaseOrderHelper
 
     if field.with_panel
       rows = [ t("purchase_order.purchase_order_allowed") ]
-      render partial: "availability_panel", locals: { label: field.label, rows: rows }
+      render partial: "availability_panel", locals: { label: field.label, rows: }
 
     elsif current_user && !current_user.can_purchase_order?
       content_tag :div, t("purchase_order.purchase_order_allowed"), class: "availability"
@@ -27,7 +27,7 @@ module PurchaseOrderHelper
 
     if !current_user
       link = with_po_link ? render_purchase_order_show_link(args) : ""
-      render partial: "purchase_order_anonymous_button", locals: { link: link, document: doc }
+      render partial: "purchase_order_anonymous_button", locals: { link:, document: doc }
     elsif current_user.can_purchase_order?
       label = content_tag :span, "Request Rapid Access", class: "avail-label"
       path = purchase_order_path(id: doc.id)

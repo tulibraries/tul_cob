@@ -11,7 +11,7 @@ module TweakQueryHelper
       .merge(params.to_h.inject({}) { |acc, (k, v)| acc[k.to_sym] = v; acc })
       .select { |name, value| name.match?(/(qf$|pf$)/) }
 
-    render partial: "tweak_solr_query_form", locals: { fields: fields }
+    render partial: "tweak_solr_query_form", locals: { fields: }
   end
 
   def titleize_field(name)

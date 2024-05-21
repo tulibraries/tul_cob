@@ -82,7 +82,7 @@ module Oai
         logger.fatal(e)
       end
 
-      { updated_records: updated_records, deleted_records: deleted_records }
+      { updated_records:, deleted_records: }
     end
 
     def self.write_updated(collection_namespaces, records, filename)

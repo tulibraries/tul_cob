@@ -903,7 +903,7 @@ RSpec.describe AvailabilityHelper, type: :helper do
       let (:availability) { "not available" }
 
       it "does render the _avaiability_status partial" do
-        expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: availability })
+        expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: })
       end
     end
   end

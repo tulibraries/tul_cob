@@ -125,7 +125,7 @@ class AlmawsController < CatalogController
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          item_options = { holding_id: holding_id, item_pid: item_pid }
+          item_options = { holding_id:, item_pid: }
 
           do_with_json_logger(log.merge(item_options)) {
             Alma::ItemRequest.submit(options.merge(item_options))
@@ -238,7 +238,7 @@ class AlmawsController < CatalogController
     # all the results into one request option set.
     def get_request_options_set(items)
       items.map { |holding_id, item_pid|
-        log = { type: "item_request_options", mms_id: @mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
+        log = { type: "item_request_options", mms_id: @mms_id, holding_id:, item_pid:, user: current_user.id }
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
       }
         .reduce do |acc, request|

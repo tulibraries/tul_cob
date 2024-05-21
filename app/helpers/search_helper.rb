@@ -102,9 +102,9 @@ module SearchHelper
     comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 mr-4"
 
     render partial: "bento_results", locals: {
-      results_class: results_class,
-      comp_class: comp_class,
-      results: results, options: options }
+      results_class:,
+      comp_class:,
+      results:, options: }
   end
 
   def render_linked_results(engine_id)

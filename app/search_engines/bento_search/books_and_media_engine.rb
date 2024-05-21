@@ -7,7 +7,7 @@ module BentoSearch
 
       user_params = { q: query, per_page: 3 }
       config = blacklight_config
-      search_service = search_service_class.new(config: config, user_params: user_params)
+      search_service = search_service_class.new(config:, user_params:)
 
       (response, _) = search_service.search_results(&processor_chain)
 
