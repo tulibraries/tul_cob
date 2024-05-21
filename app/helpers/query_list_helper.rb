@@ -12,7 +12,7 @@ module QueryListHelper
 
     title = link_to title, search_catalog_path + "?#{query}"
 
-    render partial: "query_list/results", locals: { query: query + "&per_page=5", title: title, tooltip: tooltip }
+    render partial: "query_list/results", locals: { query: query + "&per_page=5", title:, tooltip: }
   end
 
   def query_list_footer_value(document, field)

@@ -164,7 +164,7 @@ module Blacklight
               items = response_facet_queries.map do |value, hits|
                 salient_fields = facet_field.query.select { |_k, v| v[:fq] == value }
                 key = ((salient_fields.keys if salient_fields.respond_to? :keys) || salient_fields.first).first
-                FacetItem.new(value: key, hits: hits, label: facet_field.query[key][:label])
+                FacetItem.new(value: key, hits:, label: facet_field.query[key][:label])
               end
 
               hash[field_name] = FacetField.new(field_name, items)

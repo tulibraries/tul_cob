@@ -11,7 +11,7 @@ module HathitrustHelper
   end
 
   def render_hathitrust_link(ht_bib_key_field)
-    render "catalog/hathitrust_link", ht_bib_key_field: ht_bib_key_field
+    render "catalog/hathitrust_link", ht_bib_key_field:
   end
 
   def hathitrust_link_allowed?(document)
@@ -26,7 +26,7 @@ module HathitrustHelper
     online_resources << render_hathitrust_link(ht_bib_key_field)
 
     if (campus_closed? || hathitrust_link_allowed?(document))
-      render "catalog/online_availability", online_resources: online_resources
+      render "catalog/online_availability", online_resources:
     end
   end
 
@@ -36,7 +36,7 @@ module HathitrustHelper
     link = render_hathitrust_link(ht_bib_key_field)
 
     if (campus_closed? || hathitrust_link_allowed?(document))
-      render "catalog/hathitrust_button", document: document, links: link
+      render "catalog/hathitrust_button", document:, links: link
     end
   end
 end

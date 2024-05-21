@@ -74,7 +74,7 @@ RSpec.describe UsersController, type: "controller"  do
       end
 
       it "redirects to users account paths" do
-        get :quik_pay_callback, params: params
+        get(:quik_pay_callback, params:)
         expect(response).to redirect_to users_account_path
       end
 
@@ -85,7 +85,7 @@ RSpec.describe UsersController, type: "controller"  do
           resp = OpenStruct.new(total_sum: 0.0)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :quik_pay_callback, params: params
+          get(:quik_pay_callback, params:)
           expect(response).to redirect_to users_account_path
           expect(flash[:notice]).to include("Your fees have been paid.");
         end
@@ -98,7 +98,7 @@ RSpec.describe UsersController, type: "controller"  do
           resp = OpenStruct.new(total_sum: 0.1)
           balance = Alma::PaymentResponse.new(resp)
           allow(Alma::User).to receive(:send_payment) { balance }
-          get :quik_pay_callback, params:  params
+          get(:quik_pay_callback, params:)
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.");
         end
@@ -108,7 +108,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params(transactionStatus: "2") }
 
         it "sets flash error" do
-          get :quik_pay_callback, params: params
+          get(:quik_pay_callback, params:)
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.");
         end
@@ -118,7 +118,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params(transactionStatus: "3") }
 
         it "sets flash error" do
-          get :quik_pay_callback, params: params
+          get(:quik_pay_callback, params:)
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.");
         end
@@ -128,7 +128,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params(transactionStatus: "4") }
 
         it "sets flash error" do
-          get :quik_pay_callback, params: params
+          get(:quik_pay_callback, params:)
           expect(response).to redirect_to users_account_path
           expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.")
         end
@@ -138,7 +138,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params.except(:hash) }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidHash
+          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidHash
         end
       end
 
@@ -147,7 +147,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params.merge("foo" => "bar") }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidHash
+          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidHash
         end
       end
 
@@ -156,7 +156,7 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params(timestamp: 1) }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: params }.to raise_error QuikPay::InvalidTime
+          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidTime
         end
       end
 
@@ -221,6 +221,6 @@ RSpec.describe UsersController, type: "controller"  do
 
     hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.quik_pay["secret"])
 
-    params_dup.merge(hash: hash)
+    params_dup.merge(hash:)
   end
 end

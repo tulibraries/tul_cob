@@ -205,7 +205,7 @@ class SearchBuilder < Blacklight::SearchBuilder
         value = params[query_key]
 
         # Fold the procedures onto the query value.
-        params[query_key] = procedures.reduce(value) { |v, p| send(p, field: field, value: v, op: op) }
+        params[query_key] = procedures.reduce(value) { |v, p| send(p, field:, value: v, op:) }
       }
       params
     end

@@ -10,7 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :omniauthable, omniauth_providers: [:shibboleth, :saml]
 
   def alma
-    log = { type: "alma_user", uid: uid }
+    log = { type: "alma_user", uid: }
     @alma ||= do_with_json_logger(log) { Alma::User.find(uid) }
   end
 
@@ -23,28 +23,28 @@ class User < ApplicationRecord
   end
 
   def loans
-    log = { type: "alma_loan", uid: uid, order_by: "due_date" }
+    log = { type: "alma_loan", uid:, order_by: "due_date" }
     do_with_json_logger(log) { Alma::Loan.where_user(uid, order_by: "due_date") }
   end
 
   def fines
-    log = { type: "alma_fines", uid: uid }
+    log = { type: "alma_fines", uid: }
     do_with_json_logger(log) { Alma::Fine.where_user(uid) }
   end
 
   def holds
-    log = { type: "alma_holds", uid: uid }
+    log = { type: "alma_holds", uid: }
     do_with_json_logger(log) { Alma::UserRequest.where_user(uid) }
   end
 
   def renew_selected(ids)
-    log = { type: "alma_renewal_requests", uid: uid, loan_ids: ids }
+    log = { type: "alma_renewal_requests", uid:, loan_ids: ids }
     do_with_json_logger(log) { Alma::User.send_multiple_loan_renewal_requests(user_id: uid, loan_ids: ids) }
   end
 
   def self.from_omniauth(auth)
     email = auth.info.email || "#{auth.uid}@temple.edu"
-    where(email: email, uid: auth.uid).first_or_create do |user|
+    where(email:, uid: auth.uid).first_or_create do |user|
       user.uid        = auth.uid
       user.provider   = auth.provider
       user.email      = email

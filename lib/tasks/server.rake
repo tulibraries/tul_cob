@@ -20,7 +20,7 @@ def run_solr(environment, solr_params)
   url = "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip"
   mirror_url = "http://lib-solr-mirror.princeton.edu/dist/"
   checksum = "http://lib-solr-mirror.princeton.edu/dist/lucene/solr/6.6.1/solr-6.6.1.zip.sha1"
-  solr_params.merge!(url: url, checksum: checksum, mirror_url: mirror_url, ignore_checksum: true)
+  solr_params.merge!(url:, checksum:, mirror_url:, ignore_checksum: true)
   solr_dir = File.join(File.expand_path(".", File.dirname(__FILE__)), "../../", "solr")
 
   SolrWrapper.wrap(solr_params) do |solr|
@@ -63,7 +63,7 @@ task :reload_electronic_notes, [:path] => :environment do |_, args|
     puts
     puts "Reloading the electronic #{type} notes from #{filename}..."
 
-    notes = Alma::ConfigUtils.load_notes(type: type, path: filename)
+    notes = Alma::ConfigUtils.load_notes(type:, path: filename)
     puts "Number of #{type} notes to be loaded: #{notes&.count.to_i}"
 
     store = JsonStore.find_or_initialize_by(name: "#{type}_notes")

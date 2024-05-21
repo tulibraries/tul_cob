@@ -22,12 +22,12 @@ module RenderConstraintsHelper
       if facet == "lc_inner_facet" && search_state.filter_params["lc_outer_facet"]
         value = search_state.filter_params["lc_outer_facet"][0]
         label = "#{value} | #{label}"
-        presenter.parent = OpenStruct.new(field: "lc_outer_facet", value: value)
+        presenter.parent = OpenStruct.new(field: "lc_outer_facet", value:)
       end
 
       if facet == "location_facet" && search_state.filter_params["library_facet"]
         value = val.split(" - ").first
-        presenter.parent = OpenStruct.new(field: "library_facet", value: value)
+        presenter.parent = OpenStruct.new(field: "library_facet", value:)
       end
 
       # Hide library_facet if matching location facet already selected.
@@ -38,7 +38,7 @@ module RenderConstraintsHelper
       end
 
       acc << { facet_field_label: facet_field_label(facet_config.key),
-               label: label,
+               label:,
                remove: presenter.remove_href(search_state),
                classes: ["filter", "filter-" + facet.parameterize] + hidden_class }
     end
