@@ -2,7 +2,7 @@
 
 class CatalogController < ApplicationController
   caches_page :show
-  caches_action :index, expires_in: 12.hours, cache_path: Proc.new { |c| c.request.url }
+  caches_action :index, expires_in: 1.hours, cache_path: Proc.new { |c| c.request.url }
 
   include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
