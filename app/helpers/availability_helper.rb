@@ -3,6 +3,7 @@
 module AvailabilityHelper
   include Blacklight::CatalogHelperBehavior
   include UsersHelper
+  include DocumentItem
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
@@ -32,10 +33,8 @@ module AvailabilityHelper
     end
   end
 
-  def non_circulating_items(item)
-    item.non_circulating? ||
-    item.location == "reserve" ||
-    item.circulation_policy == "Bound Journal"
+  def is_unavailable_libraries(item)
+
   end
 
   def unavailable_items(item)
@@ -74,10 +73,6 @@ module AvailabilityHelper
     end
   end
 
-  def description(item)
-    item["description"] ? "#{item['description']}" : ""
-  end
-
   def material_type(item)
     return unless item["material_type"].present?
 
@@ -86,38 +81,6 @@ module AvailabilityHelper
     if !type.match(PHYSICAL_TYPE_EXCLUSIONS)
       return Rails.configuration.material_types[type]
     end
-  end
-
-  def public_note(item)
-    item["description"] ? "; " : ""
-    item["public_note"] ? "Note: #{item['public_note']}" : ""
-  end
-
-  def missing_or_lost?(item)
-    process_type = item.fetch("process_type", "")
-    !!process_type.match(/MISSING|LOST_LOAN|LOST_LOAN_AND_PAID/)
-  end
-
-  def unwanted_library_locations(item)
-    location = item.fetch("current_location", "")
-    !!location.match(/techserv|UNASSIGNED|intref/) || library(item) == "EMPTY"
-  end
-
-  def library(item)
-    item["current_library"] ? item["current_library"] : item["permanent_library"]
-  end
-
-  def library_name_from_short_code(library_code)
-    if !library_name = Rails.configuration.libraries[library_code]
-      Honeybadger.notify("Missing library name configuration for: #{library_code}")
-      library_name = library_code
-    end
-
-    library_name
-  end
-
-  def location(item)
-    item["current_location"] ? item["current_location"] : item["permanent_location"]
   end
 
   def location_status(item)
