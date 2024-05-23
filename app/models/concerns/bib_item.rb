@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module DocumentItem
+module BibItem
   extend ActiveSupport::Concern
 
   def non_circulating_items(item)

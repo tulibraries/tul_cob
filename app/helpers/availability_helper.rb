@@ -3,7 +3,7 @@
 module AvailabilityHelper
   include Blacklight::CatalogHelperBehavior
   include UsersHelper
-  include DocumentItem
+  include BibItem
 
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
@@ -31,10 +31,6 @@ module AvailabilityHelper
     else
       unavailable_items(item)
     end
-  end
-
-  def is_unavailable_libraries(item)
-
   end
 
   def unavailable_items(item)
