@@ -8,7 +8,7 @@ class QueryListController < ApplicationController
 
     (resp, _) = search_service.search_results
 
-    @docs = resp.dig("response", "docs") || []
+    @docs = resp.docs
     @footer_field = params["footer_field"]
     render layout: false
   end

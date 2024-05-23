@@ -6,6 +6,7 @@ class SolrDocument
   include Citable
   include JsonLogger
   include Diggable
+  include QueryListable
   include Blacklight::Solr::Document
 
   attr_accessor :logger
