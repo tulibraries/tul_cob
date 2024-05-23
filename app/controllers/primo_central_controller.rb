@@ -10,6 +10,7 @@ class PrimoCentralController < CatalogController
   helper_method :solr_range_queries_to_a
 
   rescue_from Primo::Search::ArticleNotFound, with: :invalid_document_id_error
+  rescue_from Blacklight::Exceptions::RecordNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
   configure_blacklight do |config|
@@ -95,16 +96,16 @@ class PrimoCentralController < CatalogController
   end
 
   #Override Blacklight::Catalog::show
-  def show
-    deprecated_response, @document = search_service.fetch(params[:id], params.reject { |k, v| k != "searchCDI" })
-    @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
+  # def show
+  #   deprecated_response, @document = search_service.fetch(params[:id], params.reject { |k, v| k != "searchCDI" })
+  #   @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
 
-    respond_to do |format|
-      format.html { @search_context = setup_next_and_previous_documents }
-      format.json
-      additional_export_formats(@document, format)
-    end
-  end
+  #   respond_to do |format|
+  #     format.html { @search_context = setup_next_and_previous_documents }
+  #     format.json
+  #     additional_export_formats(@document, format)
+  #   end
+  # end
 
   def net_read_timeout_rescue(exception)
     Honeybadger.notify(exception)

@@ -584,7 +584,9 @@ class CatalogController < ApplicationController
 
     # Our override that can be removed if we can figure out how to do a negatove filter query in the document/get handler
     # without breaking results that shouldn't be filtered.
-    raise Blacklight::Exceptions::RecordNotFound if @document.is_suppressed?
+    if @document.blank? || @document.is_suppressed?
+      raise Blacklight::Exceptions::RecordNotFound
+    end
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }
