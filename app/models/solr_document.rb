@@ -14,7 +14,12 @@ class SolrDocument
   def initialize(doc, req = nil)
     doc[:materials_data] = materials_data
     @libkey_journals_url_thread = libkey_journals_url_thread(doc)
+
     super
+
+    if is_suppressed?
+      raise Blacklight::Exceptions::RecordNotFound
+    end
   end
 
   use_extension(Blacklight::Solr::Document::RisExport)

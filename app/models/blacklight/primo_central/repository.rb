@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-class ArticleNotFound < RuntimeError
-end
-
 module Blacklight::PrimoCentral
   class Repository < Blacklight::AbstractRepository
     include JsonLogger
@@ -50,7 +47,8 @@ module Blacklight::PrimoCentral
         )
         data[:range] = params[:range] || {}
       else
-        if response.count == 1
+        # Validate that for specific document searches we return a file.
+        if response["docs"].blank?
           raise ArticleNotFound
         end
       end

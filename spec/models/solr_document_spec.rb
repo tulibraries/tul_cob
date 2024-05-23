@@ -231,12 +231,22 @@ RSpec.describe SolrDocument, type: :model do
     end
 
   describe "#is_suppressed?" do
-    it "returns false when the document does not have the suppress_items_b field" do
-      expect(document.is_suppressed?).to be false
+    context "document does not have a supress_items_b field" do
+      it "returns false" do
+        expect(document.is_suppressed?).to be false
+      end
     end
 
-    it "returns true when the document has suppress_items_b as true" do
-      expect(SolrDocument.new(id: "1", suppress_items_b: true).is_suppressed?).to be true
+    context "document has a supress_items_b field value false" do
+      it "returns false" do
+        expect(document.is_suppressed?).to be false
+      end
+    end
+
+    context "document has a supress_items_b field value true" do
+      it "raises a  Blacklight::Exceptions::RecordNotFound error" do
+        expect { SolrDocument.new(id: "1", suppress_items_b: true) }.to raise_error(Blacklight::Exceptions::RecordNotFound)
+      end
     end
   end
 

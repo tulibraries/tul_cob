@@ -9,8 +9,7 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
-  rescue_from Primo::Search::ArticleNotFound, with: :invalid_document_id_error
-  rescue_from Blacklight::Exceptions::RecordNotFound, with: :invalid_document_id_error
+  rescue_from ArticleNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
   configure_blacklight do |config|

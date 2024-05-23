@@ -21,7 +21,7 @@ RSpec.describe PrimoCentralController, type: :controller do
     render_views
 
     it "handles a record not found exception", with_rescue: true do
-      allow(search_service).to receive(:fetch).and_raise(Primo::Search::ArticleNotFound, "glub glub glub")
+      allow(search_service).to receive(:fetch).and_raise(::ArticleNotFound, "glub glub glub")
       get :show, params: { id: 1 }
       expect(response.code).to eq "404"
       expect(response.body).to include "error-header not-found"
