@@ -95,18 +95,6 @@ class PrimoCentralController < CatalogController
     @response[:stats][:stats_fields][solr_field][:data] || []
   end
 
-  #Override Blacklight::Catalog::show
-  # def show
-  #   deprecated_response, @document = search_service.fetch(params[:id], params.reject { |k, v| k != "searchCDI" })
-  #   @response = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_response, "The @response instance variable is deprecated; use @document.response instead.")
-
-  #   respond_to do |format|
-  #     format.html { @search_context = setup_next_and_previous_documents }
-  #     format.json
-  #     additional_export_formats(@document, format)
-  #   end
-  # end
-
   def net_read_timeout_rescue(exception)
     Honeybadger.notify(exception)
 
