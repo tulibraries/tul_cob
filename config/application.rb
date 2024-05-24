@@ -16,6 +16,7 @@ module Tulcob
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.autoload_paths << Rails.root.join("lib")
     # Rails.autoloaders.logger = Logger.new "#{Rails.root}/log/autoloading.log"
 
     require "lc_classifications"
