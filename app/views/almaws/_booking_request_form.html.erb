@@ -39,6 +39,12 @@
       <%= render "format_date_message" %>
     </div>
 
+    <div class="hold-form form-group">
+      <%= form.label(:booking_comment, t("requests.form.notes_label_html")) %>
+      <p><%= t("requests.form.notes_additional_text") %></p>
+      <%= form.text_area :booking_comment, class: "request-form form-control" %>
+    </div>
+
     <div class="row hold-form">
       <%= form.submit t("requests.form.submit"), class:"btn btn-primary", data: { disable_with: "Sending request..." } %>
     </div>
