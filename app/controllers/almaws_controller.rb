@@ -220,13 +220,13 @@ class AlmawsController < CatalogController
 
     def get_bib_request_options(mms_id, user_id)
       log = { type: "bib_request_options", user: current_user.id }
-      response = do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id: user_id) }
+      response = do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id:) }
     end
 
     def get_item_request_options(mms_id, user_id, holdings)
       holdings.map { |holding_id, item_pid|
-        log = { type: "item_request_options", mms_id: mms_id, holding_id: holding_id, item_pid: item_pid, user: current_user.id }
-        do_with_json_logger(log) { Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id: user_id) }
+        log = { type: "item_request_options", mms_id:, holding_id:, item_pid:, user: current_user.id }
+        do_with_json_logger(log) { Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id:) }
       }
         .reduce do |acc, request|
           options = acc.request_options || []
