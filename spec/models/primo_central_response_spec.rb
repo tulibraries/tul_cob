@@ -6,7 +6,7 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
 
   let (:blacklight_config) { nil }
   let (:response) { Blacklight::PrimoCentral::Response.new(
-    {}, {}, { blacklight_config: blacklight_config }
+    {}, {}, { blacklight_config: }
   )}
 
   describe ".get_range_stats" do

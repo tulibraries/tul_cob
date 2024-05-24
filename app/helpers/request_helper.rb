@@ -8,7 +8,7 @@ module RequestHelper
   end
 
   def request_redirect_url(mms_id)
-    url = direct_request_options_url(mms_id: mms_id)
+    url = direct_request_options_url(mms_id:)
     new_user_session_with_redirect_path(url)
   end
 

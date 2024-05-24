@@ -21,8 +21,8 @@ module Blacklight::PrimoCentral
           queries = to_primo_id_queries(value["pnxId"][0, 10])
           primo_central_parameters[:query] = {
             limit: per_page,
-            offset:  offset,
-            sort: sort,
+            offset:,
+            sort:,
             q: { value: queries },
           }
         else
@@ -40,9 +40,9 @@ module Blacklight::PrimoCentral
       else
         primo_central_parameters[:query] = {
           limit: per_page,
-          offset:  offset,
-          sort: sort,
-          q: { value: value }
+          offset:,
+          sort:,
+          q: { value: }
         }
       end
 
@@ -81,7 +81,7 @@ module Blacklight::PrimoCentral
           operator = blacklight_params["op_#{count}"]
 
           if !value&.empty? && !value.nil?
-            { value: value, field: field, precision: precision, operator: operator }
+            { value:, field:, precision:, operator: }
           end
         end.compact
 
@@ -116,7 +116,7 @@ module Blacklight::PrimoCentral
         values.each do |value|
           primo_central_parameters[:query][:q].facet(
             field: solr_to_primo_facet(field),
-            value: value
+            value:
           )
         end
       end
@@ -132,7 +132,7 @@ module Blacklight::PrimoCentral
 
       # Adding the date range facet prematurely causes search discrepencies.
       if (min.present? || max.present?)
-        primo_central_parameters[:query][:q].date_range_facet(min: min, max: max)
+        primo_central_parameters[:query][:q].date_range_facet(min:, max:)
       end
     end
 

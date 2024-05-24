@@ -46,7 +46,7 @@ module UsersHelper
 
     query = {
         institutionCode: alma_institution_code,
-        backUrl: backUrl
+        backUrl:
     }
     URI::HTTPS.build(
       host: alma_domain,

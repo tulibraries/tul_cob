@@ -121,7 +121,7 @@ class AlmawsController < CatalogController
           holding_id = item["holding_id"]
           item_pid = item["item_pid"]
 
-          item_options = { holding_id: holding_id, item_pid: item_pid }
+          item_options = { holding_id:, item_pid: }
 
           do_with_json_logger(log.merge(item_options)) {
             Alma::ItemRequest.submit(options.merge(item_options))

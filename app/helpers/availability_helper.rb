@@ -70,7 +70,7 @@ module AvailabilityHelper
 
   def scrc_instructions(key, document)
     if key == "SCRC"
-      render partial: "scrc_instructions", locals: { key: key, document: document }
+      render partial: "scrc_instructions", locals: { key:, document: }
     end
   end
 
@@ -192,7 +192,7 @@ module AvailabilityHelper
     items = document.fetch("items_json_display", "")
 
     if materials.count > 1
-      render template: "almaws/_location_selector", locals: { materials: materials }
+      render template: "almaws/_location_selector", locals: { materials: }
     elsif materials.count == 1
       render template: "almaws/_location_field", locals: { material: materials.first, item: items.first  }
     end
@@ -200,7 +200,7 @@ module AvailabilityHelper
 
   def render_non_available_status_only(availability = "Not Available")
     if availability != "Available"
-      render template: "almaws/_availability_status", locals: { availability: availability }
+      render template: "almaws/_availability_status", locals: { availability: }
     end
   end
 
@@ -234,7 +234,7 @@ module AvailabilityHelper
       .select { |r| !r.empty? }.compact
 
     if !online_resources.empty?
-      render "online_availability", online_resources: online_resources
+      render "online_availability", online_resources:
     end
   end
 
@@ -242,7 +242,7 @@ module AvailabilityHelper
     links = check_for_full_http_link(document: doc, field: "electronic_resource_display")
 
     if !links.empty?
-      render "online_availability_button", document: doc, links: links
+      render "online_availability_button", document: doc, links:
     end
   end
 end

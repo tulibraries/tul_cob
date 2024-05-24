@@ -25,7 +25,7 @@ RSpec.describe "catalog/_show_availability_section.html.erb", type: :view do
     let (:document) { SolrDocument.new(id: "foo") }
 
     it "adds stimulus show controller stuff" do
-      render "catalog/show_availability_section", document: document
+      render("catalog/show_availability_section", document:)
       expect(rendered).to match(/<div data-controller="show"/)
     end
   end
@@ -34,7 +34,7 @@ RSpec.describe "catalog/_show_availability_section.html.erb", type: :view do
     let(:document) { SolrDatabaseDocument.new(id: 1) }
 
     it "does not add stimulus show controller stuff" do
-      render "catalog/show_availability_section", document: document
+      render("catalog/show_availability_section", document:)
       expect(rendered).not_to match(/<div data-controller="show"/)
     end
   end

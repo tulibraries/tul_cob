@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe TulThumbnailComponent, type: :component do
   context "component without gb_preview" do
-    subject(:component_1) { described_class.new(presenter: presenter, document: document, counter: 2) }
+    subject(:component_1) { described_class.new(presenter:, document:, counter: 2) }
 
     let(:document) { { isbn_display: ["123456789"] } }
     let(:presenter) { OpenStruct.new(heading: "Book 1") }
@@ -17,7 +17,7 @@ RSpec.describe TulThumbnailComponent, type: :component do
   end
 
   context "component with gb_preview" do
-    subject(:component_2) { described_class.new(presenter: presenter, document: document, counter: 2, gb_preview: true) }
+    subject(:component_2) { described_class.new(presenter:, document:, counter: 2, gb_preview: true) }
 
     let(:document) { { isbn_display: ["987654321"] } }
     let(:presenter) { OpenStruct.new(heading: "Book 2") }

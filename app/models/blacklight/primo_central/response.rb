@@ -23,7 +23,7 @@ module Blacklight::PrimoCentral
       stats = options[:stats] || get_range_stats(facets, request_params[:range])
       @total = options[:numFound] || 1
 
-      super(response: { numFound: @total, start: self.start, docs: documents }, facets: facets, stats: stats)
+      super(response: { numFound: @total, start: self.start, docs: documents }, facets:, stats:)
     end
 
     # Generates stats for range fields in a solr format.
@@ -43,7 +43,7 @@ module Blacklight::PrimoCentral
         raise BlacklightRangeLimit::InvalidRange, "The min date must be before the max date" if min > max
 
         data = facet_segments(field["name"], min, max, values)
-        stat = { min: min, max: max, missing: 0, data: data }
+        stat = { min:, max:, missing: 0, data: }
         [field["name"], stat]
       }.to_h
 
@@ -63,14 +63,14 @@ module Blacklight::PrimoCentral
           .map { |f| f[:count].to_i }
           .reduce(0, &:+)
 
-        segments << { from: first, to: last, count: count }
+        segments << { from: first, to: last, count: }
       end
       segments
     end
 
     def documents
       @documents ||= (@docs || []).collect { |doc|
-        options = { blacklight_config: blacklight_config }
+        options = { blacklight_config: }
         document_model.new(doc.to_h.with_indifferent_access, options)
       }
     end

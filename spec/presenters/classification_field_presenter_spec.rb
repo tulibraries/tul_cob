@@ -9,7 +9,7 @@ RSpec.describe ClassificationFieldPresenter, type: :presenter do
 
   let(:facet_field) { Blacklight::Configuration::FacetField.new(key: "key") }
   let(:display_facet) do
-    instance_double(Blacklight::Solr::Response::Facets::FacetField, items: items, sort: :index, offset: 0, prefix: nil)
+    instance_double(Blacklight::Solr::Response::Facets::FacetField, items:, sort: :index, offset: 0, prefix: nil)
   end
   let(:items) { [] }
   let(:controller) { c = CatalogController.new; c.params = {}; c }

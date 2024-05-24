@@ -5,49 +5,49 @@ module AlmawsHelper
 
   def hold_allowed_partial(request_options, document)
     if request_options.hold_allowed? && non_asrs_items.present?
-      render partial: "hold_allowed", locals: { request_options: request_options, document: document }
+      render partial: "hold_allowed", locals: { request_options:, document: }
     end
   end
 
   def asrs_allowed_partial(request_options, document)
     if request_options.hold_allowed? && available_asrs_items.present?
-      render partial: "asrs_allowed", locals: { request_options: request_options, document: document }
+      render partial: "asrs_allowed", locals: { request_options:, document: }
     end
   end
 
   def digitization_allowed_partial(request_options, document)
     if request_options.digitization_allowed?
-      render partial: "digitization_allowed", locals: { request_options: request_options, document: document }
+      render partial: "digitization_allowed", locals: { request_options:, document: }
     end
   end
 
   def booking_allowed_partial(request_options, document)
     if request_options.booking_allowed?
-      render partial: "booking_allowed", locals: { request_options: request_options, document: document }
+      render partial: "booking_allowed", locals: { request_options:, document: }
     end
   end
 
   def resource_sharing_broker_allowed_partial(request_options, books, document)
     if request_options.resource_sharing_broker_allowed? && books.present?
-      render partial: "resource_sharing_broker_allowed", locals: { request_options: request_options, books: books, document: document }
+      render partial: "resource_sharing_broker_allowed", locals: { request_options:, books:, document: }
     end
   end
 
   def aeon_request_partial(request_options, document)
     if aeon_request_allowed(document).present?
-      render partial: "aeon_allowed", locals: { request_options: request_options, document: document }
+      render partial: "aeon_allowed", locals: { request_options:, document: }
     end
   end
 
   def digital_copy_partial(request_options, books, document)
     if digital_help_allowed?(document)
-      render partial: "digital_copy_help", locals: { request_options: request_options, books: books, document: document }
+      render partial: "digital_copy_help", locals: { request_options:, books:, document: }
     end
   end
 
   def open_shelves_partial(request_options, books, document)
     if open_shelves_allowed?(document)
-      render partial: "open_shelves", locals: { request_options: request_options, books: books, document: document }
+      render partial: "open_shelves", locals: { request_options:, books:, document: }
     end
   end
 
@@ -58,7 +58,7 @@ module AlmawsHelper
       !aeon_request_allowed(document) &&
       !digital_copy_partial(request_options, books, document) &&
       !open_shelves_partial(request_options, books, document)
-      render partial: "no_request_options", locals: { request_options: request_options, books: books, document: document } unless @request_options.resource_sharing_broker_allowed?
+      render partial: "no_request_options", locals: { request_options:, books:, document: } unless @request_options.resource_sharing_broker_allowed?
     end
   end
 

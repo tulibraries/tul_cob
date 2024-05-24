@@ -1,0 +1,12 @@
+<div data-controller="query-list" data-query-list-url="/query_list?<%= @query %>&per_page=5">
+  <div class="d-flex">
+    <h3 class="secondary-query-header"><%= link_to @title, search_catalog_path + "?#{@query}" %></h3>
+    <span class="information-icon ml-2" data-toggle="tooltip" data-placement="bottom" data-container="body" title="<%= @tooltip %>" tabindex="0"></span>
+  </div>
+
+  <hr class="query-hr" />
+  <div class="query-list-preload" data-query-list-target="results">
+    <span class="fa fa-spinner fa-spin" aria-busy="true" aria-live="polite"></span>
+    <span>Loading...</span>
+  </div>
+</div>

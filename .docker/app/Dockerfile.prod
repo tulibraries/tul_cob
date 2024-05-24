@@ -20,21 +20,21 @@ ARG WEB_CONCURRENCY
 # libc6-compat is required for m1 build.
 RUN apk add -U --no-cache \
       jemalloc=5.3.0-r4 \
-      bash=5.2.21-r0 \
+      bash=5.2.26-r0 \
       libc6-compat=1.1.0-r4 \
-      libxslt=1.1.39-r0 \
-      mariadb-connector-c=3.3.8-r0 \
+      libxslt=1.1.39-r1 \
+      mariadb-connector-c=3.3.10-r0 \
       postgresql16-client=16.3-r0 \
       shared-mime-info=2.4-r0  \
-      tzdata=2024a-r0 && \
+      tzdata=2024a-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.43.4-r0 \
-      libxslt-dev=1.1.39-r0 \
-      mariadb-dev=10.11.6-r0 \
+      git=2.45.1-r0 \
+      libxslt-dev=1.1.39-r1 \
+      mariadb-dev=10.11.8-r0 \
       postgresql16-dev=16.3-r0 \
-      nodejs=20.12.1-r0 \
-      yarn=1.22.19-r0 && \
+      nodejs=20.13.1-r0 \
+      yarn=1.22.22-r0 && \
     bundle config set --local without "development test" && \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \

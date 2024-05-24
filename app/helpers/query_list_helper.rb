@@ -2,38 +2,13 @@
 
 module QueryListHelper
   def query_list(title, tooltip, query, footer_field = nil)
-    if @document&.id
-      query += "&filter_id=#{@document.id}"
-    end
-
-    if footer_field
-      query += "&footer_field=#{footer_field}"
-    end
-
-    title = link_to title, search_catalog_path + "?#{query}"
-
-    render partial: "query_list/results", locals: { query: query + "&per_page=5", title: title, tooltip: tooltip }
+    render QueryListComponent.new(query:,
+                                  title:,
+                                  tooltip:,
+                                  footer_field:,
+                                  document: @document)
   end
 
-  def query_list_footer_value(document, field)
-    if document[field]&.include?(0)
-      document[field].delete(0)
-    end
-
-    value = document[field]&.first
-
-    case field
-    when "date_added_facet"
-      begin
-        Date.parse("#{value}").strftime("%Y-%m-%d")
-      rescue => e
-        Honeybadger.notify("Error trying to parse date_added_facet value; @htomren " + "#{e.message}")
-        ""
-      end
-    else
-      value
-    end
-  end
 
   def creator_query_list(document)
     field = "creator_display"

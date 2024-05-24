@@ -89,7 +89,7 @@ module AdvancedHelper
       url = advanced_search_path(query)
     end
 
-    link_to(t(id), url, class: "advanced_search", id: id) if id
+    link_to(t(id), url, class: "advanced_search", id:) if id
   end
 
   def advanced_params(my_params)

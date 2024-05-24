@@ -11,7 +11,7 @@ module Blacklight::PrimoCentral
       id = id.gsub("-dot-", ".")
         .gsub("-slash-", "/")
         .gsub("-semicolon-", ";")
-      search(query: { id: id }.merge(params))
+      search(query: { id: })
     end
 
     # Execute a search against Primo API
@@ -40,7 +40,7 @@ module Blacklight::PrimoCentral
         facet_counts: 0,
         numFound: 1,
         document_model: blacklight_config.document_model,
-        blacklight_config: blacklight_config,
+        blacklight_config:,
       }.with_indifferent_access
 
       if !data[:id]

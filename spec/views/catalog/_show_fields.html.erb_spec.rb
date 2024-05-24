@@ -27,7 +27,7 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
     field_config = @config.facet_configuration_for_field(field)
     field_presenter = Blacklight::FieldPresenter.new(view, @document, field_config, value: "bar")
     field_presenter.except_operations << Blacklight::Rendering::Join
-    render "catalog/show_fields", document: @document, field_name: field, field_presenter: field_presenter
+    render("catalog/show_fields", document: @document, field_name: field, field_presenter:)
     expect(rendered).to match(/<dd class="blacklight-foo.*">bar<\/dd>/)
   end
 
@@ -36,7 +36,7 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
     field_config = @config.facet_configuration_for_field(field)
     field_presenter = Blacklight::FieldPresenter.new(view, @document, field_config, value: ["bar", "hat"])
     field_presenter.except_operations << Blacklight::Rendering::Join
-    render "catalog/show_fields", document: @document, field_name: field, field_presenter: field_presenter
+    render("catalog/show_fields", document: @document, field_name: field, field_presenter:)
     expect(rendered).to include("li class=\"list_items\"> bar </li>")
     expect(rendered).to include("li class=\"list_items\"> hat </li>")
   end
@@ -46,7 +46,7 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
     field_config = @config.facet_configuration_for_field(field)
     field_presenter = Blacklight::FieldPresenter.new(view, @document, field_config, value: ["bar", nil])
     field_presenter.except_operations << Blacklight::Rendering::Join
-    render "catalog/show_fields", document: @document, field_name: field, field_presenter: field_presenter
+    render("catalog/show_fields", document: @document, field_name: field, field_presenter:)
     expect(rendered).to match(/<dd class="blacklight-foo.*">bar<\/dd>/)
   end
 
@@ -55,7 +55,7 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
     field_config = @config.facet_configuration_for_field(field)
     field_presenter = Blacklight::FieldPresenter.new(view, @document, field_config, value: [nil, nil])
     field_presenter.except_operations << Blacklight::Rendering::Join
-    render "catalog/show_fields", document: @document, field_name: field, field_presenter: field_presenter
+    render("catalog/show_fields", document: @document, field_name: field, field_presenter:)
     expect(rendered).not_to match(/<ul>/)
   end
 end

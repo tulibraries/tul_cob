@@ -554,9 +554,9 @@ class CatalogController < ApplicationController
     email = current_user&.email || params[:to]
     name = current_user&.name
 
-    from = { email: email, name: name }
+    from = { email:, name: }
 
-    mail = PurchaseOrderMailer.purchase_order(document, { from: from, message: params[:message] }, url_options)
+    mail = PurchaseOrderMailer.purchase_order(document, { from:, message: params[:message] }, url_options)
     log = { type: "purchase_order", user: current_user.id, mms_id: document.id }
     if mail.respond_to? :deliver_now
       do_with_json_logger(log) { mail.deliver_now }
@@ -584,7 +584,9 @@ class CatalogController < ApplicationController
 
     # Our override that can be removed if we can figure out how to do a negatove filter query in the document/get handler
     # without breaking results that shouldn't be filtered.
-    raise Blacklight::Exceptions::RecordNotFound if @document.is_suppressed?
+    if @document.blank? || @document.is_suppressed?
+      raise Blacklight::Exceptions::RecordNotFound
+    end
 
     respond_to do |format|
       format.html { @search_context = setup_next_and_previous_documents }

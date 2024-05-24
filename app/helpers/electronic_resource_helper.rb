@@ -65,7 +65,7 @@ module ElectronicResourceHelper
     query = {
         "u.ignore_date_coverage": "true",
         "Force_direct": true,
-        portfolio_pid: portfolio_pid
+        portfolio_pid:
     }
     alma_build_openurl(query)
   end
@@ -93,7 +93,7 @@ module ElectronicResourceHelper
     name = "#{type}_notes"
 
     Rails.cache.fetch(name) do
-      JsonStore.find_by(name: name)&.value || {}
+      JsonStore.find_by(name:)&.value || {}
     end
   end
 
@@ -137,11 +137,11 @@ module ElectronicResourceHelper
         unavailable_notes.present?
 
       render partial: "electronic_notes", locals: {
-        collection_notes: collection_notes,
-        service_notes: service_notes,
-        public_notes: public_notes,
-        authentication_notes: authentication_notes,
-        unavailable_notes: unavailable_notes,
+        collection_notes:,
+        service_notes:,
+        public_notes:,
+        authentication_notes:,
+        unavailable_notes:,
       }
     end
   end
