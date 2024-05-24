@@ -13,46 +13,43 @@ class AlmawsController < CatalogController
     @mms_id = params[:mms_id]
     _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
 
-    response = get_bib_items(@mms_id)
-    availability = response.group_by { |item| item["item_data"]["pid"] }
+    @items = get_bib_items(@mms_id)
+    availability = @items.group_by { |item| item["item_data"]["pid"] }
         .transform_values { |item| { availability: helpers.availability_status(item.first) } }
     @document.merge_item_data!(availability)
     @document_availability = helpers.document_availability_info(@document)
 
-    @items = response.group_by(&:library)
-    @pickup_locations = CobAlma::Requests.valid_pickup_locations(@items).join(",")
-    @request_level = get_request_level(response)
+    @request_data = RequestData.new(@items)
+    @pickup_locations = @request_data.pickup_locations.join(",")
+    @request_level = @request_data.get_request_level
     @redirect_to = params[:redirect_to]
     render layout: false
   end
 
   def request_options
     @mms_id = params[:mms_id]
+    @user_id = current_user.uid
+
     _, @document = begin search_service.fetch(@mms_id) rescue [ nil, SolrDocument.new({}) ] end
-
     @items = get_bib_items(@mms_id)
+    @request_data = RequestData.new(@items, params)
 
+    # Information about document and bib items for request modal
     @books = @document.fetch("format") if @document["format"]&.include?("Book")
     @author = @document.fetch("creator_display", []).first || ""
-    @description = CobAlma::Requests.physical_material_type_and_descriptions(@items)
-    @material_types = CobAlma::Requests.physical_material_type(@items).compact
-    @equipment = CobAlma::Requests.equipment(@items)
+    @description = @request_data.material_types_and_descriptions
+    @asrs_description = @request_data.asrs_material_types_and_descriptions
+    @material_types = @request_data.material_types
 
-    pickup_locations = params[:pickup_location]&.split(",") || []
-    @pickup_locations = pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
-    @asrs_pickup_locations = CobAlma::Requests.asrs_pickup_locations.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
-    @item_level_locations = CobAlma::Requests.item_level_locations(@items)
-    @booking_location = CobAlma::Requests.booking_location(@items)
+    # Pickup locations
+    @pickup_locations = @request_data.pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+    @asrs_pickup_locations = @request_data.asrs_pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+    @equipment = @request_data.equipment_locations
+    @booking_location = @request_data.booking_locations
 
-    @user_id = current_user.uid
-    @request_level = params[:request_level] || "bib"
-    @asrs_request_level = get_request_level(@items, "asrs")
-
-    if @asrs_request_level == "item"
-      @asrs_description =  CobAlma::Requests.material_type_and_asrs_descriptions(@items)
-    else
-      @asrs_description = @description || ""
-    end
+    # Request levels and options
+    @request_level = @request_data.request_level
+    @asrs_request_level = @request_data.asrs_request_level
 
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
@@ -63,8 +60,7 @@ class AlmawsController < CatalogController
         @request_options = get_request_options_set(@second_attempt_holdings)
       end
     else
-      log = { type: "bib_request_options", user: current_user.id }
-      @request_options = do_with_json_logger(log) { Alma::RequestOptions.get(@mms_id, user_id: @user_id) }
+      @request_options = get_bib_request_options(@mms_id, @user_id)
     end
 
     # Define when we want modal exit button to be a link.
@@ -222,37 +218,22 @@ class AlmawsController < CatalogController
       end
     end
 
-    def get_request_level(items, partial = nil)
-      if partial == "asrs"
-        if helpers.asrs_items(items).present? && helpers.non_asrs_items(items).present?
-          "item"
-        else
-          has_desc?(items) ? "item" : "bib"
-        end
-      else
-        has_desc?(items) ? "item" : "bib"
-      end
+    def get_bib_request_options(mms_id, user_id)
+      log = { type: "bib_request_options", user: current_user.id }
+      response = do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id:) }
     end
 
-    # Makes an ItemsRequestOption request per item and collapses
-    # all the results into one request option set.
-    def get_request_options_set(items)
-      items.map { |holding_id, item_pid|
-        log = { type: "item_request_options", mms_id: @mms_id, holding_id:, item_pid:, user: current_user.id }
-        do_with_json_logger(log) { Alma::ItemRequestOptions.get(@mms_id, holding_id, item_pid, user_id: @user_id) }
+    def get_item_request_options(mms_id, user_id, holdings)
+      holdings.map { |holding_id, item_pid|
+        log = { type: "item_request_options", mms_id:, holding_id:, item_pid:, user: current_user.id }
+        do_with_json_logger(log) { Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id:) }
       }
         .reduce do |acc, request|
           options = acc.request_options || []
           next_options = request.request_options || []
-
           acc.request_options = options + next_options
           acc
         end
-    end
-
-    def has_desc?(items)
-      item_levels = items.map { |item| item["item_data"]["description"] }.reject(&:blank?)
-      item_levels.present?
     end
 
     def date_or_nil(param)

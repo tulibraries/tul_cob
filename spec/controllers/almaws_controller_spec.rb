@@ -155,18 +155,18 @@ RSpec.describe AlmawsController, type: :controller do
 
       let(:bib_item) { class_double(Alma::BibItem) }
       let(:bib_item_set) { instance_double(Alma::BibItemSet) }
-      let(:cob_alma_requests) { class_double(CobAlma::Requests) }
+      let(:request_data) { instance_double(RequestData) }
 
       before(:each) do
         allow(controller).to receive(:search_service).and_return(search_service)
         expect(search_service).to receive(:fetch).and_return([:foo, document])
         allow(bib_item).to receive(:find).and_return(bib_item_set)
         allow(bib_item_set).to receive(:filter_missing_and_lost).and_return(bib_item_set)
-        allow(cob_alma_requests).to receive(:physical_material_type).and_return([])
-        allow(cob_alma_requests).to receive(:equipment).and_return([])
-        allow(cob_alma_requests).to receive(:booking_location).and_return([])
-        allow(cob_alma_requests).to receive(:valid_pickup_locations).and_return([])
-        allow(cob_alma_requests).to receive(:asrs_pickup_locations).and_return([])
+        allow(request_data).to receive(:material_types).and_return([])
+        allow(request_data).to receive(:equipment_locations).and_return([])
+        allow(request_data).to receive(:booking_locations).and_return([])
+        allow(request_data).to receive(:pickup_locations).and_return([])
+        allow(request_data).to receive(:asrs_pickup_locations).and_return([])
         allow(Alma::RequestOptions).to receive(:get).and_raise(Alma::RequestOptions::ResponseError, "phhhht")
         sign_in @user, scope: :user
         get(:request_options, **params)
@@ -339,68 +339,6 @@ RSpec.describe AlmawsController, type: :controller do
       get :item, **params
       expect(response.body).to eq("<p class='m-2'>Availability information can not be loaded. Contact a librarian for help.</p>")
       expect(response.code).to eq "502"
-    end
-  end
-
-  describe "assigning request levels correctly for ASRS and nonASRS items" do
-    let(:items)  { [item1, item2 ] }
-
-    context "default behavior empty list" do
-      let(:items) { [] }
-      it "should be bib" do
-        expect(controller.send(:get_request_level, items)).to eq("bib")
-      end
-    end
-
-    context "asrs items only without descriptions" do
-      let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
-      }
-
-      let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
-      }
-
-      it "should be a bib level request" do
-        expect(controller.send(:get_request_level, items)).to eq("bib")
-        expect(controller.send(:get_request_level, items, "asrs")).to eq("bib")
-      end
-    end
-
-    context "mixed asrs and non asrs items without descriptions" do
-      let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" } })
-      }
-
-      let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
-      }
-
-      it "should return bib for non asrs hold requests" do
-        expect(controller.send(:get_request_level, items)).to eq("bib")
-      end
-
-      it "should return item for asrs hold requests" do
-        expect(controller.send(:get_request_level, items, "asrs")).to eq("item")
-      end
-    end
-
-    context "mixed asrs with descriptions" do
-      let(:item1) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Library" }, "description" => "v1" })
-      }
-
-      let(:item2) {
-        Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
-      }
-
-      it "should return item for non asrs hold requests" do
-        expect(controller.send(:get_request_level, items)).to eq("item")
-      end
-
-      it "should return item for asrs hold requests" do
-        expect(controller.send(:get_request_level, items, "asrs")).to eq("item")
-      end
     end
   end
 end
