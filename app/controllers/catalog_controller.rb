@@ -2,6 +2,7 @@
 
 class CatalogController < ApplicationController
   caches_page :show
+  caches_action :index, expires_in: 1.hours, cache_path: Proc.new { |c| c.request.url }
 
   include FacetParamsDedupe
   include BlacklightAdvancedSearch::Controller
@@ -12,6 +13,7 @@ class CatalogController < ApplicationController
   include ServerErrors
   include LCClassifications
 
+  skip_forgery_protection only: [:index]
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
   before_action only: :index do
@@ -41,7 +43,7 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
 
-    config.track_search_session = true
+    config.track_search_session = false
     config.raw_endpoint.enabled = true
 
     ## Class for sending and receiving requests from a search index
