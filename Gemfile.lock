@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: d1eb8042f4460b4346719f2c40d523874e212b30
+  revision: cc064c4a767c3bb2a5e65600fc77e61d514a6c50
   branch: main
   specs:
     alma (0.5.1)
@@ -362,7 +362,7 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.23.0)
+    minitest (5.23.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
@@ -625,7 +625,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   arm64-darwin-21
