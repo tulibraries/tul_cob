@@ -44,6 +44,7 @@ class AlmawsController < CatalogController
     # Pickup locations
     @pickup_locations = @request_data.pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
     @asrs_pickup_locations = @request_data.asrs_pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+    @item_level_locations = @request_data.item_level_locations
     @equipment = @request_data.equipment_locations
     @booking_location = @request_data.booking_locations
 
