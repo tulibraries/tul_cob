@@ -54,11 +54,11 @@ class AlmawsController < CatalogController
 
     if @request_level == "item" || @asrs_request_level == "item"
       @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      @request_options = get_request_options_set(@item_level_holdings)
+      @request_options = get_item_request_options(@mms_id, @user_id, @item_level_holdings)
 
       if @request_options&.request_options.nil?
         @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
-        @request_options = get_request_options_set(@second_attempt_holdings)
+        @request_options = get_item_request_options(@mms_id, @user_id, @second_attempt_holdings)
       end
     else
       @request_options = get_bib_request_options(@mms_id, @user_id)
@@ -220,13 +220,13 @@ class AlmawsController < CatalogController
     end
 
     def get_bib_request_options(mms_id, user_id)
-      log = { type: "bib_request_options", user: current_user.id }
+      log = { type: "bib_request_options", user: user_id }
       response = do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id:) }
     end
 
     def get_item_request_options(mms_id, user_id, holdings)
       holdings.map { |holding_id, item_pid|
-        log = { type: "item_request_options", mms_id:, holding_id:, item_pid:, user: current_user.id }
+        log = { type: "item_request_options", mms_id:, holding_id:, item_pid:, user: user_id }
         do_with_json_logger(log) { Alma::ItemRequestOptions.get(mms_id, holding_id, item_pid, user_id:) }
       }
         .reduce do |acc, request|
