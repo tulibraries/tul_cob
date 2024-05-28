@@ -1,9 +1,7 @@
-<% doc_presenter = show_presenter(@document) %>
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+<% component.with_title { t("purchase_order.header") } %>
 
-<div class="modal-header">
-  <h1 class="modal-title">Request Rapid Access</h1>
-  <button type="button" class="ajax-modal-close close ml-auto" data-dismiss="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
-</div>
+<% doc_presenter = show_presenter(@document) %>
 
 <%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => "purchase_order_form", :class => "form-horizontal ajax_form", :method => :post do %>
 
@@ -36,4 +34,5 @@
   <div class="modal-footer">
   <button type="submit" class="btn btn-primary">Request</button>
   </div>
+<% end %>
 <% end %>
