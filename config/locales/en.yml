@@ -46,6 +46,7 @@ en:
     creator: "You are viewing related items by the first author/creator listed in this record. This is sorted by the most recently published items."
     online_only: "Library use only items cannot be taken out of the library. These items must be used in the building."
   purchase_order:
+    header: "Request Rapid Access"
     purchase_order_allowed: "This ebook is available by request. This request option is limited to Temple University students, faculty, and staff. Once you submit the request, access is generally granted within 2 business days."
     purchase_order_text_1: "Please submit this form to request access to the following ebook:"
     purchase_order_text_2: "Access is generally granted within 2 business days. You will receive an email notification when the title is available for use."
