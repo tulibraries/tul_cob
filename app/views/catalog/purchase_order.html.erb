@@ -2,9 +2,9 @@
 <% component.with_title { t("purchase_order.header") } %>
 
 <% doc_presenter = show_presenter(@document) %>
-
 <%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => "purchase_order_form", :class => "form-horizontal ajax_form", :method => :post do %>
 
+<% component.with_body do %>
   <div class="modal-body">
     <p class="mx-3">
       <%= t("purchase_order.purchase_order_text_1") %>
@@ -32,7 +32,9 @@
   </div>
 
   <div class="modal-footer">
-  <button type="submit" class="btn btn-primary">Request</button>
+    <button type="submit" class="btn btn-primary">Request</button>
   </div>
+<% end %>
+
 <% end %>
 <% end %>
