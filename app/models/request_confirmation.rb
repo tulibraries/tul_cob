@@ -18,14 +18,16 @@ class RequestConfirmation
   end
 
   def delivery_estimate
-    if pickup_location == "JAPAN" || pickup_location == "ROME"
-      nil
-    elsif pickup_location == "MAIN" && sent_from == "ASRS"
-      "1 hour, delivered from the Charles Library BookBot when open"
-    elsif pickup_location == sent_from
-      "1-2 business days"
-    else
-      "1-3 business days"
+    unless pickup_location.blank?
+      if pickup_location == "JAPAN" || pickup_location == "ROME"
+        nil
+      elsif pickup_location == "MAIN" && sent_from == "ASRS"
+        "1 hour, delivered from the Charles Library BookBot when open"
+      elsif pickup_location == sent_from
+        "1-2 business days"
+      else
+        "1-3 business days"
+      end
     end
   end
 

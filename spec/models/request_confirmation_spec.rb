@@ -71,6 +71,7 @@ RSpec.describe RequestConfirmation, type: :model do
       let(:response) { Alma::BibRequest.submit(
         mms_id: "request_sent_from_ambler", user_id: "user_id", request_type: "HOLD", pickup_location_type: "LIBRARY", pickup_location_library: "MAIN"
       )}
+      let(:pickup_location) { nil }
       it "does not generate time estimate" do
         expect(subject.delivery_estimate).to eq nil
         expect(subject.delivery_estimate?).to eq false
