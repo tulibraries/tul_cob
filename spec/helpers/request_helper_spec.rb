@@ -11,13 +11,6 @@ RSpec.describe RequestHelper, type: :helper do
     end
   end
 
-  describe "#successful_request_message" do
-    it "renders the error message text correctly" do
-      expect(successful_request_message).to eq("Your request has been submitted. You will receive an email notification when an item is ready for pickup. See <a href=\"/users/account\">My Account</a> for status information about your request.")
-    end
-
-  end
-
   describe "#request_redirect_url" do
 
     it "generates expected url" do

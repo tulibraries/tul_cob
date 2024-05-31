@@ -84,8 +84,9 @@ class AlmawsController < CatalogController
     log = { type: "submit_hold_request", user: current_user.id }.merge(bib_options)
 
     begin
-      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash["notice"] = helpers.successful_request_message
+      response = do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      confirmation = RequestConfirmation.new(response, params[:hold_pickup_location])
+      flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
     rescue => e
       Honeybadger.notify(e.message + " " + log.to_s)
@@ -112,7 +113,7 @@ class AlmawsController < CatalogController
     begin
       requests_made = 0
       if @asrs_request_level == "bib"
-        do_with_json_logger(log) { Alma::BibRequest.submit(options) }
+        response = do_with_json_logger(log) { Alma::BibRequest.submit(options) }
         requests_made += 1
       else
         params["available_asrs_items"]
@@ -124,7 +125,7 @@ class AlmawsController < CatalogController
 
           item_options = { holding_id:, item_pid: }
 
-          do_with_json_logger(log.merge(item_options)) {
+          response = do_with_json_logger(log.merge(item_options)) {
             Alma::ItemRequest.submit(options.merge(item_options))
           }
 
@@ -134,7 +135,8 @@ class AlmawsController < CatalogController
       end
 
       if requests_made > 0
-        flash["notice"] = helpers.successful_request_message
+        confirmation = RequestConfirmation.new(response, params[:asrs_pickup_location])
+        flash["notice"] = confirmation.message
       else
         flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
       end
@@ -166,8 +168,9 @@ class AlmawsController < CatalogController
 
     log = { type: "submit_booking_request", user: current_user.id }.merge(bib_options)
     begin
-      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash["notice"] = helpers.successful_request_message
+      response = do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      confirmation = RequestConfirmation.new(response)
+      flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
     rescue Alma::BibRequest::ItemAlreadyExists
       flash["notice"] = "This item is already booked for those dates."
@@ -197,8 +200,9 @@ class AlmawsController < CatalogController
 
     log = { type: "submit_digitization_request", user: current_user.id }.merge(bib_options)
     begin
-      do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
-      flash["notice"] = helpers.successful_request_message
+      response = do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      confirmation = RequestConfirmation.new(response)
+      flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
     rescue
       flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
