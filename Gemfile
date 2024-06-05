@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem "rails", "6.1.7.7"
+gem "rails", "6.1.7.8"
 
 gem "actionpack-action_caching", "~> 1.2"
 gem "actionpack-page_caching", "~> 1.2"
