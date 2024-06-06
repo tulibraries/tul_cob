@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: d1eb8042f4460b4346719f2c40d523874e212b30
+  revision: cc064c4a767c3bb2a5e65600fc77e61d514a6c50
   branch: main
   specs:
     alma (0.5.1)
@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 64b24b01d2b61885a56526638a97d11224d800b9
+  revision: b71cd8915fe0fbb29daa9e2262259b5b26d47b6e
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 0b1ff83a7f9e16b58d2e88d1f5d7e39d3316bbc7
+  revision: 44bc4e5e5fd64cc73e5a0ddca4ca1bbc47e971ad
   branch: main
   specs:
     cob_index (0.1.0)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 63e8d06c75ae2f7d674bdf699ddeb47ffb1bb396
+  revision: c7c8e2b7808337df714380326ae5980d4c58ce92
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -93,14 +93,14 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: da15fb20824848381e8dfd0f336da4f11b73e7a6
+  revision: 3f92afd1b17f31c35964ba9c379a5ce824eaf2e0
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 54e765f0d61aba0c7d1dd98f26acc45479a3b75d
+  revision: 43b0cfbbf8e75520ed7db1aa3f6d6b89774def7b
   branch: main
   specs:
     primo (0.3.0)
@@ -232,7 +232,7 @@ GEM
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
     browser (5.3.1)
-    builder (3.2.4)
+    builder (3.3.0)
     byebug (11.1.3)
     capybara (3.40.0)
       addressable
@@ -254,7 +254,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.3)
+    concurrent-ruby (1.3.1)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.4.1)
@@ -324,7 +324,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
-    http-cookie (1.0.5)
+    http-cookie (1.0.6)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httparty (0.22.0)
@@ -390,16 +390,15 @@ GEM
     matrix (0.4.2)
     method_source (1.1.0)
     mini_mime (1.1.5)
-    minitest (5.23.0)
+    minitest (5.23.1)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.2.0)
-    mysql2 (0.5.6)
     net-http (0.4.1)
       uri
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
@@ -440,7 +439,7 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.6.0)
     parallel (1.24.0)
-    parser (3.3.1.0)
+    parser (3.3.2.0)
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
@@ -456,8 +455,8 @@ GEM
     public_suffix (5.0.5)
     puma (6.4.2)
       nio4r (~> 2.0)
-    racc (1.7.3)
-    rack (3.0.10)
+    racc (1.8.0)
+    rack (3.0.11)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-protection (4.0.0)
@@ -507,10 +506,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.6.3.1)
+    rdoc (6.7.0)
       psych (>= 4.0.0)
-    regexp_parser (2.9.0)
-    reline (0.5.6)
+    regexp_parser (2.9.2)
+    reline (0.5.8)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
@@ -537,7 +536,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rubocop (1.63.5)
+    rubocop (1.64.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -550,7 +549,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.31.3)
       parser (>= 3.3.1.0)
-    rubocop-rails (2.24.1)
+    rubocop-rails (2.25.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -591,16 +590,20 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
+    sprockets-rails (3.5.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.3-aarch64-linux)
-    sqlite3 (1.7.3-arm-linux)
-    sqlite3 (1.7.3-arm64-darwin)
-    sqlite3 (1.7.3-x86-linux)
-    sqlite3 (1.7.3-x86_64-darwin)
-    sqlite3 (1.7.3-x86_64-linux)
+    sqlite3 (2.0.2-aarch64-linux-gnu)
+    sqlite3 (2.0.2-aarch64-linux-musl)
+    sqlite3 (2.0.2-arm-linux-gnu)
+    sqlite3 (2.0.2-arm-linux-musl)
+    sqlite3 (2.0.2-arm64-darwin)
+    sqlite3 (2.0.2-x86-linux-gnu)
+    sqlite3 (2.0.2-x86-linux-musl)
+    sqlite3 (2.0.2-x86_64-darwin)
+    sqlite3 (2.0.2-x86_64-linux-gnu)
+    sqlite3 (2.0.2-x86_64-linux-musl)
     stackprof (0.2.26)
     stringio (3.1.0)
     strscan (3.1.0)
@@ -662,7 +665,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.23.0)
+    webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -681,7 +684,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
 
 PLATFORMS
   aarch64-linux
@@ -743,7 +746,6 @@ DEPENDENCIES
   jwt
   launchy
   lc_solr_sortable!
-  mysql2 (~> 0.5.6)
   net-smtp
   nokogiri (= 1.16.5)
   okcomputer
