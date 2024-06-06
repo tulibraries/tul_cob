@@ -10,6 +10,7 @@ GIT
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: cc064c4a767c3bb2a5e65600fc77e61d514a6c50
+  revision: cc064c4a767c3bb2a5e65600fc77e61d514a6c50
   branch: main
   specs:
     alma (0.5.1)
@@ -52,7 +53,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: d4f277c97d32db8a5e8181f0580b23f602b43bbf
+  revision: b71cd8915fe0fbb29daa9e2262259b5b26d47b6e
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -63,6 +64,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
+  revision: 44bc4e5e5fd64cc73e5a0ddca4ca1bbc47e971ad
   revision: 72b487fde702fb8f3405d9c4f262c08fb3c1b370
   branch: main
   specs:
@@ -389,7 +391,6 @@ GEM
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.2.0)
-    mysql2 (0.5.6)
     net-http (0.4.1)
       uri
     net-imap (0.4.15)
@@ -588,12 +589,16 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.3-aarch64-linux)
-    sqlite3 (1.7.3-arm-linux)
-    sqlite3 (1.7.3-arm64-darwin)
-    sqlite3 (1.7.3-x86-linux)
-    sqlite3 (1.7.3-x86_64-darwin)
-    sqlite3 (1.7.3-x86_64-linux)
+    sqlite3 (2.0.2-aarch64-linux-gnu)
+    sqlite3 (2.0.2-aarch64-linux-musl)
+    sqlite3 (2.0.2-arm-linux-gnu)
+    sqlite3 (2.0.2-arm-linux-musl)
+    sqlite3 (2.0.2-arm64-darwin)
+    sqlite3 (2.0.2-x86-linux-gnu)
+    sqlite3 (2.0.2-x86-linux-musl)
+    sqlite3 (2.0.2-x86_64-darwin)
+    sqlite3 (2.0.2-x86_64-linux-gnu)
+    sqlite3 (2.0.2-x86_64-linux-musl)
     stackprof (0.2.26)
     stringio (3.1.1)
     strscan (3.1.0)
@@ -727,7 +732,6 @@ DEPENDENCIES
   jwt
   launchy
   lc_solr_sortable!
-  mysql2 (~> 0.5.6)
   net-smtp
   nokogiri (= 1.16.7)
   okcomputer
