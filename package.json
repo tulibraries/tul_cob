@@ -6,6 +6,7 @@
     "@rails/webpacker": "^6.0.0-rc.6",
     "@stimulus/polyfills": "^2.0.0",
     "bootstrap-select": "^1.13.18",
+    "braces": "3.0.3",
     "follow-redirects": "1.15.6",
     "jquery": "^3.6.0",
     "node-fetch": "2.6.7",
