@@ -1,8 +1,8 @@
 <% fines.each_with_index do |fine, counter| %>
   <tr>
     <td><%= counter + 1 %></td>
-    <td><%= fine.title %></td>
     <td><%= fine.type['desc'] %></td>
+    <td><% if fine.respond_to? :title %><%= fine.title %><% end %></td>
     <td><%= number_to_currency(fine.balance.to_f) %></td>
   </tr>
 <% end %>
