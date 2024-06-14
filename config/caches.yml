@@ -1,6 +1,7 @@
 default: &default
   article_search_cache_life: <%= ENV.fetch("ARTICLE_SEARCH_CACHE_LIFE", "PT12H" ) %>
   article_record_cache_life: <%= ENV.fetch("ARTICLE_RECORD_CACHE_LIFE", "PT12H" ) %>
+  libkey_article_cache_life: <%= ENV.fetch("LIBKEY_ARTICLE_CACHE_LIFE", "PT12H" ) %>
 
 development:
   <<: *default
