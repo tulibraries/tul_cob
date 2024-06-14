@@ -14,21 +14,21 @@
     <% if @equipment.empty?  && @asrs_request_level == "bib" %>
       <div class="hold-form form-group row">
         <%= label("", :asrs_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { selected: @asrs_pickup_locations.first, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { selected: @asrs_pickup_locations.first}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
       </div>
     <% end %>
 
     <% if @equipment.present? %>
       <div class="hold-form form-group row">
         <%= label("", :asrs_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select("", :asrs_pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        <%= select("", :asrs_pickup_location, @equipment.collect { |lib| [ lib.fetch("desc", ""), lib.fetch("value", "") ] }.uniq, {include_blank: true}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
       </div>
     <% end %>
 
     <% if @material_types.present? && @material_types.count > 1 %>
       <div class="hold-form form-group row">
         <%= label("", :material_type, t("requests.form.material_type_html")) %>
-        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control", data: { "action": "request-form#typeSelect" }}) %>
+        <%= select("", :material_type, @material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true}, {class: "request-form form-control", data: { "action": "request-form#typeSelect" }}) %>
       </div>
     <% else %>
       <%= form.hidden_field :material_type, value: @material_types.collect { |mat| [ mat.values.first ] } %>
@@ -47,7 +47,7 @@
 
       <div class="hold-form form-group row">
         <%= label("", :asrs_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { selected: @asrs_pickup_locations.first, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+        <%= select("", :asrs_pickup_location, @asrs_pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, { selected: @asrs_pickup_locations.first}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
       </div>
 
     <% end %>

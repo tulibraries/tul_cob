@@ -6,13 +6,13 @@
 
     <div class="row hold-form form-group">
       <%= label("", :booking_pickup_location, t("requests.form.pickup_locations_label")) %>
-      <%= select("", :booking_pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {include_blank: true, required: true, "aria-required": true }, {class: "request-form form-control"}) %>
+      <%= select("", :booking_pickup_location, @booking_location.collect { |lib| [ lib.last, lib.first ] }, {include_blank: true}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
     </div>
 
     <% if @material_types.present? && @material_types.count > 1 %>
       <div class="row hold-form form-group">
         <%= label("", :material_type, t("requests.form.material_type_html")) %>
-        <%= select("", :material_type,@material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true, "aria-required": true }, {class: "request-form form-control", data: { "action": "request-form#typeSelect" }}) %>
+        <%= select("", :material_type,@material_types.collect { |mat| [ mat.values.last, mat.values.first ] }, {include_blank: true}, {class: "request-form form-control", data: { "action": "request-form#typeSelect" }}) %>
       </div>
     <% else %>
       <%= form.hidden_field :material_type, value: @material_types.collect { |mat| [ mat.values.first ] }  %>
