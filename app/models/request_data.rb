@@ -111,17 +111,13 @@ class RequestData
 
   def booking_locations
     pickup_location = @items.map { |item|
-      if item.library == "ASRS"
-        library_name = "Charles Library"
-        [item.library, library_name]
+      campus = determine_campus(item.library)
+      if campus == :MAIN
+        ["MAIN", "Charles Library"]
       else
-        library_name = item.library_name
+        nil
       end
-
-      [item.library, library_name]
-    }
-
-    pickup_location.uniq
+    }.uniq.compact
   end
 
   def default_pickup_locations

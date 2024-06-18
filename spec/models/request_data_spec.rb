@@ -218,10 +218,10 @@ RSpec.describe RequestData, type: :model do
     context "libraries include ASRS and another location" do
       let(:bib_items) { Alma::BibItem.find("booking_locations") }
       it "returns Charles Library as the name for ASRS" do
-        expect(subject.booking_locations).to include(["ASRS", "Charles Library"])
+        expect(subject.booking_locations).to include(["MAIN", "Charles Library"])
       end
-      it "returns other libraries with their assigned name" do
-        expect(subject.booking_locations).to include(["AMBLER", "Ambler Campus Library"])
+      it "does not returns other libraries for booking locations" do
+        expect(subject.booking_locations).not_to include(["AMBLER", "Ambler Campus Library"])
       end
     end
   end
