@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "pry"
-
 class RequestData
   attr_reader :request_level
   attr_reader :pickup_locations
