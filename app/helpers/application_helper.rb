@@ -106,14 +106,21 @@ module ApplicationHelper
     @manifold_alerts_thread&.value&.select { |a| a if a.dig("attributes", "for_header") == false }
   end
 
-  def emergency_alert_message
-    manifold_alerts.map { |a| a.dig("attributes", "scroll_text") }.first unless manifold_alerts.nil?
-  end
+  def emergency_alert_messages
+    unless manifold_alerts.nil?
+      messages = []
+      manifold_alerts.map { |a|
+        message = a.dig("attributes", "scroll_text") unless manifold_alerts.nil?
 
-  def emergency_alert_link
-    link = manifold_alerts.map { |a| a.dig("attributes", "link") }.first unless manifold_alerts.nil?
-    if !link.blank?
-      link_to(t("blacklight.banner_link"), link)
+        link = a.dig("attributes", "link") unless manifold_alerts.nil?
+
+        if !link.blank?
+          messages << message + " " + link_to(t("blacklight.banner_link"), link)
+        else
+          messages << message
+        end
+      }
+      messages.join(" ").html_safe
     end
   end
 

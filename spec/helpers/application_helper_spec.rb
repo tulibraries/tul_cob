@@ -88,18 +88,18 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe "#emergency_alert_message" do
+  describe "#emergency_alert_messages" do
     context "for_header is false" do
       it "does return the scroll_text" do
         helper.instance_variable_set("@manifold_alerts_thread", get_manifold_alerts)
-        expect(helper.emergency_alert_message).to eq("Test banner message")
+        expect(helper.emergency_alert_messages).to have_text("Test banner message")
       end
     end
 
     context "@manifold_alerts_thread is nil" do
       it "does return the scroll_text" do
         helper.instance_variable_set("@manifold_alerts_thread", nil)
-        expect(helper.emergency_alert_message).to eq(nil)
+        expect(helper.emergency_alert_messages).to eq(nil)
       end
     end
   end
@@ -108,14 +108,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     context "link field is present" do
       it "does return the link" do
         helper.instance_variable_set("@manifold_alerts_thread", get_manifold_alerts)
-        expect(helper.emergency_alert_link).to have_text("Click here to see full details.")
-      end
-    end
-
-    context "link field in nil" do
-      it "does return the link" do
-        helper.instance_variable_set("@manifold_alerts_thread", nil)
-        expect(helper.emergency_alert_link).to eq(nil)
+        expect(helper.emergency_alert_messages).to have_text(/Click here to see full details./)
       end
     end
   end
