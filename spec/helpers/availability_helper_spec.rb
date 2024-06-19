@@ -423,24 +423,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
-  describe "#location(item)" do
-    context "item is in temporary location" do
-      let(:item) { { "current_location" => "ILL" } }
-
-      it "displays temporary location" do
-        expect(location_status(item)).to eq "ILL"
-      end
-    end
-
-    context "item is NOT in temporary location" do
-      let(:item) { { "permanent_location" => "rarestacks" } }
-
-      it "displays location and call number" do
-        expect(location_status(item)).to eq "rarestacks"
-      end
-    end
-  end
-
   describe "#location_name_from_short_codes(location_code, library_code)" do
     context "location codes are converted to names using translation map" do
       let(:library_code) { "SCRC" }
@@ -849,65 +831,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
     end
   end
 
-  describe "#render_location_selector" do
-    let(:materials) { [] }
-    let(:doc) { SolrDocument.new({}) }
-
-    before(:each) do
-      allow(helper).to receive(:render)
-      allow(doc).to receive(:materials) { materials }
-      helper.render_location_selector(doc)
-    end
-
-    context "there are no materials" do
-      it "should not render a selector" do
-        expect(helper).to_not have_received(:render)
-      end
-    end
-
-    context "there is one material" do
-      let(:materials) { ["ONE material"] }
-
-      it "should render the single field selector template" do
-        expect(helper).to have_received(:render)
-          .with(template: "almaws/_location_field", locals: { item: "", material: "ONE material" })
-      end
-    end
-
-    context "there is more than one material" do
-      let(:materials) { [ "ONE material", "TWO materialS" ] }
-
-      it "should render the material selector template" do
-        expect(helper).to have_received(:render)
-          .with(template: "almaws/_location_selector", locals:
-        { materials: [ "ONE material", "TWO materialS" ] })
-      end
-    end
-  end
-
-  describe "#render_non_available_status_only" do
-    let(:availability) { "Available" }
-
-    before(:each) do
-      allow(helper).to receive(:render) { "" }
-      helper.render_non_available_status_only(availability)
-    end
-
-    context "material is available" do
-      it "does not render _avaiability_status partial" do
-        expect(helper).to_not have_received(:render)
-      end
-    end
-
-    context "material is not available" do
-      let (:availability) { "not available" }
-
-      it "does render the _avaiability_status partial" do
-        expect(helper).to have_received(:render).with(template: "almaws/_availability_status", locals: { availability: })
-      end
-    end
-  end
-
   describe "#availability_alert(document)" do
     context "document availability contains nil values" do
       let(:document) { { "items_json_display" =>
@@ -969,53 +892,6 @@ RSpec.describe AvailabilityHelper, type: :helper do
 
       it "returns false"  do
         expect(availability_alert(document)).to eq false
-      end
-    end
-  end
-
-  describe "#main_stacks_message(key, document)" do
-    context "an item is located on open shelving" do
-      let(:key) { "MAIN" }
-      let(:document) { { "items_json_display" =>
-        [{
-          "item_pid" => "23243112990003811",
-          "item_policy" => "0",
-          "permanent_library" => "MAIN",
-          "permanent_location" => "stacks",
-          "current_library" => "MAIN",
-          "current_location" => "stacks",
-          "call_number_type" => "0",
-          "call_number" => "PS3601.C5456 D37 2017",
-          "holding_id" => "22243113010003811",
-          "material_type" => "BOOK"
-        }]
-      } }
-
-      it "returns true" do
-        expect(main_stacks_message(key, document)).to eq true
-      end
-    end
-
-    context "an item is located on closed shelving" do
-      let(:key) { "MAIN" }
-      let(:document) { { "items_json_display" =>
-        [{
-          "item_pid" => "23303480160003811",
-          "item_policy" => "0",
-          "description" => "1954",
-          "permanent_library" => "ASRS",
-          "permanent_location" => "ASRS",
-          "current_library" => "MAIN",
-          "current_location" => "storage",
-          "call_number_type" => "0",
-          "call_number" => "L341 .A3",
-          "holding_id" => "22454243690003811",
-          "material_type" => "ISSUE"
-        }]
-      } }
-
-      it "returns false" do
-        expect(main_stacks_message(key, document)).to eq false
       end
     end
   end

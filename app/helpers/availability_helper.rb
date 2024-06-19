@@ -61,13 +61,6 @@ module AvailabilityHelper
     }&.any?
   end
 
-  def main_stacks_message(key, document)
-    open_shelf_locations = /hirsch|juvenile|leisure|newbooks|stacks/i
-    current_locations = document["items_json_display"]&.collect { |item| open_shelf_locations.match(item["current_location"]) }
-
-    key == "MAIN" && current_locations.any?
-  end
-
   def scrc_instructions(key, document)
     if key == "SCRC"
       render partial: "scrc_instructions", locals: { key:, document: }
@@ -120,10 +113,6 @@ module AvailabilityHelper
     item["current_location"] ? item["current_location"] : item["permanent_location"]
   end
 
-  def location_status(item)
-    Rails.configuration.locations.dig(library(item), location(item)) || location(item)
-  end
-
   def location_name_from_short_codes(location_code, library_code = nil)
     Rails.configuration.locations.dig(library_code, location_code) || location_code
   end
@@ -155,16 +144,6 @@ module AvailabilityHelper
     summary_list.present? ? content_tag(:span, "Summary", class: "summary-label badge") + " #{summary_list}" : ""
   end
 
-  def render_holdings_summary(items)
-    items.collect { |item|
-      if item["summary"].present?
-        "Summary: " + item["summary"]
-      else
-        "We are unable to find availability information for this record. Please contact the library for more information."
-      end
-    }
-  end
-
   def sort_order_for_holdings(grouped_items)
     sorted_library_hash = {}
     sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
@@ -185,23 +164,6 @@ module AvailabilityHelper
 
   def materials_location(material)
     Rails.configuration.locations.dig(material["raw_library"], material["raw_location"])
-  end
-
-  def render_location_selector(document)
-    materials = document.materials
-    items = document.fetch("items_json_display", "")
-
-    if materials.count > 1
-      render template: "almaws/_location_selector", locals: { materials: }
-    elsif materials.count == 1
-      render template: "almaws/_location_field", locals: { material: materials.first, item: items.first  }
-    end
-  end
-
-  def render_non_available_status_only(availability = "Not Available")
-    if availability != "Available"
-      render template: "almaws/_availability_status", locals: { availability: }
-    end
   end
 
   def item_level_library_name(location_hash)
