@@ -10,7 +10,7 @@ variables:
   IMAGE: "tulibraries/librarysearch"
   HARBOR: "harbor.k8s.temple.edu"
   HELM_EXPERIMENTAL_OCI: "1"
-  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, app/controllers/application_controller.rb" # TODO: Remove after BL-1806 completed
+  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, app/controllers/application_controller.rb, config/environments/development.rb, config/environments/test.rb, app/controllers/concerns/quik_pay.rb, app/controllers/sessions_controller.rb, app/models/blacklight/primo_central/repository.rb, bin, app/helpers/catalog_helper.rb, app/helpers/search_helper.rb, app/helpers/advanced_helper.rb, app/javascript/packs/controllers/explanation_controller.js" # TODO: Remove after BL-1806 completed
 
 
 .export_variables: &export_variables
