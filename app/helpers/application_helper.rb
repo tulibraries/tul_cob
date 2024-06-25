@@ -110,9 +110,9 @@ module ApplicationHelper
     unless manifold_alerts.nil?
       messages = []
       manifold_alerts.map { |a|
-        message = a.dig("attributes", "scroll_text") unless manifold_alerts.nil?
+        message = a.dig("attributes", "scroll_text")
 
-        link = a.dig("attributes", "link") unless manifold_alerts.nil?
+        link = a.dig("attributes", "link")
 
         if !link.blank?
           messages << message + " " + link_to(t("blacklight.banner_link"), link)
