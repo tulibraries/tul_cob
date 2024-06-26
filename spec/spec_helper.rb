@@ -306,8 +306,28 @@ RSpec.configure do |config|
 
     stub_request(:get, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/japan_and_rome\/holdings\/.*\/items/).
     to_return(status: 200,
-              headers: { "Content-Type" => "application/json" },
-              body: File.open(SPEC_ROOT + "/fixtures/requests/japan_and_rome.json"))
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/japan_and_rome.json"))
+
+    stub_request(:post, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/request_sent_from_ambler\/requests/).
+    to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/request_sent_from_ambler.json"))
+
+    stub_request(:post, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/request_sent_from_main\/requests/).
+    to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/request_sent_from_main.json"))
+
+    stub_request(:post, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/request_sent_from_bookbot\/requests/).
+    to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/request_sent_from_bookbot.json"))
+
+    stub_request(:post, /.*\.exlibrisgroup\.com\/almaws\/v1\/bibs\/request_sent_from_japan\/requests/).
+    to_return(status: 200,
+                headers: { "Content-Type" => "application/json" },
+                body: File.open(SPEC_ROOT + "/fixtures/requests/request_sent_from_japan.json"))
 
     stub_request(:get, /.*library.temple.edu\/alerts/).
       to_return(status: 200,

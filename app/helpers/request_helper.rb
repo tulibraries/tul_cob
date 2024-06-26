@@ -25,10 +25,6 @@ module RequestHelper
       })).to_s
   end
 
-  def successful_request_message
-    t("requests.success_message_html", href: link_to(t("requests.success_message_href"), users_account_path))
-  end
-
   def modal_exit_button_name(make_modal_link)
     name = raw("&times;")
 

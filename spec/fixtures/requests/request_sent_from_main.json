@@ -1,0 +1,32 @@
+{
+    "title": "Test Main",
+    "author": "",
+    "description": "",
+    "volume": "",
+    "issue": "",
+    "part": "",
+    "user_primary_id": "user_id",
+    "request_id": "main_request_id",
+    "additional_id": "",
+    "request_type": "HOLD",
+    "request_sub_type": {
+      "value": "PATRON_PHYSICAL",
+      "desc": "Patron physical item request"
+    },
+    "mms_id": "request_sent_from_bookbot",
+    "holding_id": "holding_id",
+    "pickup_location": "Charles Library",
+    "pickup_location_type": "LIBRARY",
+    "pickup_location_library": "MAIN",
+    "managed_by_library": "Charles Library",
+    "managed_by_circulation_desk": "Charles Hold Shelf",
+    "managed_by_library_code": "MAIN",
+    "managed_by_circulation_desk_code": "MAIN_CIRC",
+    "material_type": {},
+    "date_of_publication": "",
+    "request_status": "IN_PROCESS",
+    "request_date": "2024-05-24Z",
+    "request_time": "2024-05-24T17:35:20.393Z",
+    "task_name": "Pickup From Shelf",
+    "expiry_date": "2024-06-08Z"
+  }
