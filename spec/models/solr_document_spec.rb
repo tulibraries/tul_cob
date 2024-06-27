@@ -13,150 +13,7 @@ RSpec.describe SolrDocument, type: :model do
     expect(document).to respond_to(:to_marc)
   end
 
-  let(:item_one) { Alma::BibItem.new(
-    "bib_data" => { "title" => "Hello World" },
-    "item_data" => {
-      "physical_material_type" => { "value" => "ANY" },
-      "pid" => "FOOBAR",
-      "library" => { "value" => "MAIN" },
-      "location" => { "value" => "stacks" },
-    },
-    "holding_data" => { "call_number" => "CALL ME" }
-  ) }
-
   let(:bib_items) { [ item_one ] }
-
-  before(:each) {
-    allow(document).to receive(:materials_data) { Proc.new { bib_items } }
-  }
-
-  describe "#materials" do
-    context "No items found" do
-      let(:bib_items) { [] }
-
-      it "returns an empty set of materials" do
-        expect(document.materials).to be_empty
-      end
-    end
-
-    context "A material item is found" do
-      let(:bib_items) { [ item_one ] }
-
-      it "returns a set of materials" do
-        expect(document.materials.count).to eq(1)
-      end
-    end
-
-    context "Multiple equivalent items are found" do
-      let(:bib_items) { [ item_one, item_one, item_one ] }
-
-      it "returns a uniq set" do
-        expect(document.materials.count).to eq(1)
-      end
-    end
-  end
-
-  describe "#materials_from_barcode" do
-    context "no barcode is given" do
-      it "does not return a material" do
-        expect(document.material_from_barcode).to be_nil
-      end
-    end
-
-    context "an incorrect barcode is given" do
-      it "does not return a material" do
-        expect(document.material_from_barcode("FOO")).to be_nil
-      end
-    end
-
-    context "a correct barcode is given" do
-      it "return a material" do
-        expect(document.material_from_barcode("FOOBAR")[:title]).to eq("Hello World")
-      end
-    end
-  end
-
-  describe "#barcodes" do
-    context "no items found"  do
-      let(:bib_items) { [] }
-
-      it "returns and empty set" do
-        expect(document.barcodes).to be_empty
-      end
-    end
-
-    context "non material item found" do
-      let(:bib_items) { [] }
-
-      it "returns and empty set" do
-        expect(document.barcodes).to be_empty
-      end
-    end
-
-    context "a material item was found" do
-      let(:bib_items) { [ item_one ] }
-
-      it "returns a set of barcodes" do
-        expect(document.barcodes).to eq(["FOOBAR"])
-      end
-    end
-  end
-
-  describe "#valid_barcode?" do
-    context "no barcode supplied" do
-      it "invalidates nil barcodes" do
-        expect(document.valid_barcode?).to be(false)
-      end
-    end
-
-    context "an invalid barcode is supplied" do
-      it "invalidates the barcode" do
-        expect(document.valid_barcode? "FOO").to be(false)
-      end
-    end
-
-    context "a valid barcode is supplied" do
-      it "validates the barcode" do
-        expect(document.valid_barcode? "FOOBAR").to be(true)
-      end
-    end
-  end
-
-  # It's currently private but I'm testing anyway because it's complicated logic.
-  describe "#availability_status" do
-    context "material in place and not circulating" do
-      it "sets availability to library use only" do
-        allow(item_one).to receive(:in_place?) { true }
-        allow(item_one).to receive(:non_circulating?) { true }
-
-        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Library Use Only")
-      end
-    end
-
-    context "material in place and circulating" do
-      it "sets availability to available" do
-        allow(item_one).to receive(:in_place?) { true }
-
-        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Available")
-      end
-    end
-
-    context "material is missing" do
-      it "sets availability to missing" do
-        allow(item_one).to receive(:has_process_type?) { true }
-        allow(item_one).to receive(:process_type) { "MISSING" }
-
-        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Missing")
-      end
-    end
-
-    context "unknown" do
-      it "sets availability to checked out or currently unavailable" do
-        expect(document.material_from_barcode("FOOBAR")[:availability]).to eq("Checked out or currently unavailable")
-      end
-    end
-  end
-
 
   describe "#purchase_order?" do
     context "with purchase_order false" do
@@ -246,6 +103,484 @@ RSpec.describe SolrDocument, type: :model do
     context "document has a supress_items_b field value true" do
       it "raises a  Blacklight::Exceptions::RecordNotFound error" do
         expect { SolrDocument.new(id: "1", suppress_items_b: true) }.to raise_error(Blacklight::Exceptions::RecordNotFound)
+      end
+    end
+  end
+
+  describe "#document_items" do
+    context "filters out empty items" do
+      let(:document) { SolrDocument.new({}) }
+
+      it "returns an empty array" do
+        expect(document.document_items).to eq([])
+      end
+    end
+  end
+
+  describe "#document_items_grouped" do
+    context "groups by library" do
+
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "12345",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+      )}
+
+      it "uses the library as a key" do
+        expect(document.document_items_grouped).to eq(
+          "Ambler Campus Library" =>
+            { "Media" =>
+              [{ "call_number" => "DVD 13 A165",
+              "call_number_display" => "DVD 13 A165",
+              "current_library" => "AMBLER",
+              "current_location" => "media",
+              "holding_id" => "22237957750003811",
+              "item_pid" => "12345",
+              "item_policy" => "5",
+              "library" => "Ambler Campus Library",
+              "location" => "Media",
+              "permanent_library" => "AMBLER",
+              "permanent_location" => "media" }]
+            })
+      end
+    end
+
+    context "groups by location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23245366030003811",
+          "item_policy" => "0",
+          "permanent_library" => "KARDON",
+          "permanent_location" => "p_remote",
+          "current_library" => "KARDON",
+          "current_location" => "p_remote",
+          "call_number_type" => "0",
+          "call_number" => "N5220.K7",
+          "holding_id" => "22245366050003811",
+          "material_type" => "BOOK" },
+         { "item_pid" => "23245366040003811",
+          "item_policy" => "0",
+          "permanent_library" => "KARDON",
+          "permanent_location" => "p_remote",
+          "current_library" => "KARDON",
+          "current_location" => "p_remote",
+          "call_number_type" => "0",
+          "call_number" => "N5220.K7",
+          "holding_id" => "22245366050003811",
+          "material_type" => "BOOK" }]
+        )}
+
+      it "uses the location as a key" do
+        expect(document.document_items_grouped).to eq("Remote Storage" =>
+          { "Remote Storage - Charles" =>
+            [{ "call_number" => "N5220.K7",
+              "call_number_display" => "N5220.K7",
+              "call_number_type" => "0",
+              "current_library" => "KARDON",
+              "current_location" => "p_remote",
+              "holding_id" => "22245366050003811",
+              "item_pid" => "23245366030003811",
+              "item_policy" => "0",
+              "library" => "Remote Storage",
+              "location" => "Remote Storage - Charles",
+              "material_type" => "BOOK",
+              "permanent_library" => "KARDON",
+              "permanent_location" => "p_remote" },
+              { "call_number" => "N5220.K7",
+              "call_number_display" => "N5220.K7",
+              "call_number_type" => "0",
+              "current_library" => "KARDON",
+              "current_location" => "p_remote",
+              "holding_id" => "22245366050003811",
+              "item_pid" => "23245366040003811",
+              "item_policy" => "0",
+              "library" => "Remote Storage",
+              "location" => "Remote Storage - Charles",
+              "material_type" => "BOOK",
+              "permanent_library" => "KARDON",
+              "permanent_location" => "p_remote" }] })
+      end
+    end
+
+    context "groups by multiple locations" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23280623530003811",
+        "item_policy" => "0",
+        "description" => "2001",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "stacks",
+        "current_library" => "GINSBURG",
+        "current_location" => "stacks",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623590003811",
+        "material_type" => "ISSUE" },
+        { "item_pid" => "23280623450003811",
+        "item_policy" => "0",
+        "description" => "2014",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "stacks",
+        "current_library" => "GINSBURG",
+        "current_location" => "stacks",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623590003811",
+        "material_type" => "ISSUE" },
+        { "item_pid" => "23468827100003811",
+        "item_policy" => "16",
+        "description" => "2020",
+        "permanent_library" => "GINSBURG",
+        "permanent_location" => "reserve",
+        "current_library" => "GINSBURG",
+        "current_location" => "reserve",
+        "call_number_type" => "2",
+        "call_number" => "WB 39 W319",
+        "holding_id" => "22280623440003811",
+        "material_type" => "BOOK" }]
+      )}
+
+      it "uses the location as a key" do
+        expect(document.document_items_grouped).to eq("Ginsburg Health Science Library" =>
+          { "Reserves" =>
+            [{ "call_number" => "WB 39 W319",
+              "call_number_display" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "reserve",
+              "description" => "2020",
+              "holding_id" => "22280623440003811",
+              "item_pid" => "23468827100003811",
+              "item_policy" => "16",
+              "library" => "Ginsburg Health Science Library",
+              "location" => "Reserves",
+              "material_type" => "BOOK",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "reserve" }],
+            "Stacks" =>
+              [{ "call_number" => "WB 39 W319",
+              "call_number_display" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "stacks",
+              "description" => "2001",
+              "holding_id" => "22280623590003811",
+              "item_pid" => "23280623530003811",
+              "item_policy" => "0",
+              "library" => "Ginsburg Health Science Library",
+              "location" => "Stacks",
+              "material_type" => "ISSUE",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "stacks" },
+              { "call_number" => "WB 39 W319",
+              "call_number_display" => "WB 39 W319",
+              "call_number_type" => "2",
+              "current_library" => "GINSBURG",
+              "current_location" => "stacks",
+              "description" => "2014",
+              "holding_id" => "22280623590003811",
+              "item_pid" => "23280623450003811",
+              "item_policy" => "0",
+              "library" => "Ginsburg Health Science Library",
+              "location" => "Stacks",
+              "material_type" => "ISSUE",
+              "permanent_library" => "GINSBURG",
+              "permanent_location" => "stacks" }]
+            })
+      end
+
+      it "sorts location alphabetically by default" do
+        expect(document.document_items_grouped["Ginsburg Health Science Library"].keys).to eq(["Reserves", "Stacks"])
+      end
+
+    end
+
+    context "items are sorted by library name with Charles first" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+      [{ "item_pid" => "23239405700003811",
+          "item_policy" => "0",
+          "permanent_library" => "AMBLER",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405730003811",
+          "availability" => "<span class=\"check\"></span>Available" },
+          { "item_pid" => "23239405700003811",
+          "item_policy" => "0",
+          "permanent_library" => "ASRS",
+          "permanent_location" => "bookbot",
+          "current_library" => "ASRS",
+          "current_location" => "bookbot",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405730003811",
+          "availability" => "<span class=\"check\"></span>Available" },
+          { "item_pid" => "23239405740003811",
+          "item_policy" => "0",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "MAIN",
+          "current_location" => "stacks",
+          "call_number_type" => "0",
+          "call_number" => "F159.P7 C66 2003",
+          "holding_id" => "22239405750003811",
+          "availability" => "<span class=\"check\"></span>Available" }]
+          )}
+
+      it "returns Charles first, then Ambler" do
+        expect(document.document_items_grouped.keys).to eq(["Charles Library", "Ambler Campus Library"])
+      end
+    end
+
+    context "Items are ordered by call number after location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+      [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "1992-94",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "call_number_display" => "MT655.P45x",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "1983-1986",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "HF5006 .I614",
+          "call_number_display" => "HF5006 .I614",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "1987-89",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "AC1 .G72",
+          "call_number_display" => "AC1 .G72",
+          "holding_id" => "22242235730003811",
+          "availability" => "<span class=\"check\"></span>Library Use Only" }]
+        )}
+
+      it "returns copies for each library by call number" do
+        sorted_call_numbers = document.document_items_grouped["Ambler Campus Library"]["Stacks"].map { |item| item["call_number_display"] }
+        expect(sorted_call_numbers).to eq(["AC1 .G72", "HF5006 .I614", "MT655.P45x"])
+      end
+    end
+
+    context "Items are ordered by description after call number" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+      [{ "item_pid" => "23242235660003811",
+          "item_policy" => "12",
+          "description" => "v.55, no.5 (Nov. 2017)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "call_number_display" => "MT655.P45x",
+          "holding_id" => "22242235730003811" },
+         { "item_pid" => "23242235720003811",
+          "item_policy" => "12",
+          "description" => "v.53 (2016)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "call_number_display" => "MT655.P45x",
+          "holding_id" => "22242235730003811" },
+         { "item_pid" => "23242235710003811",
+          "item_policy" => "12",
+          "description" => "v.42 (2004)",
+          "permanent_library" => "MAIN",
+          "permanent_location" => "stacks",
+          "current_library" => "AMBLER",
+          "current_location" => "stacks",
+          "library" => "Ambler Campus Library",
+          "location" => "Stacks",
+          "call_number_type" => "0",
+          "call_number" => "MT655.P45x",
+          "call_number_display" => "MT655.P45x",
+          "holding_id" => "22242235730003811" }]
+        )}
+
+      it "returns copies for each library by description" do
+        sorted_descriptions = document.document_items_grouped["Ambler Campus Library"]["Stacks"].map { |item| item["description"] }
+        expect(sorted_descriptions).to eq(["v.42 (2004)", "v.53 (2016)", "v.55, no.5 (Nov. 2017)"])
+      end
+    end
+  end
+
+  describe "#library(item)" do
+    context "item is in temporary library" do
+      let(:item) { { "current_library" => "RES_SHARE" } }
+
+      it "displays temporary library" do
+        expect(document.library(item)).to eq "RES_SHARE"
+      end
+    end
+
+    context "item is NOT in temporary library" do
+      let(:item) { { "permanent_library" => "MAIN" } }
+
+      it "displays library" do
+        expect(document.library(item)).to eq "MAIN"
+      end
+    end
+  end
+
+  describe "#alternative_call_number(item)" do
+    context "item has an alternate call number" do
+      let(:item) { { "alt_call_number" => "alternate call number" } }
+
+      it "displays alternate call number" do
+        expect(document.alternative_call_number(item)).to eq "alternate call number"
+      end
+    end
+
+    context "item does NOT have an alternate call number" do
+      let(:item) { { "call_number" => "regular call number" } }
+
+      it "does NOT display alternate call number" do
+        expect(document.alternative_call_number(item)).to eq "regular call number"
+      end
+    end
+  end
+
+  describe "#missing_or_lost?" do
+    context "an item is missing" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811",
+        "process_type" => "MISSING" }]
+        )}
+
+      it "correctly rejects missing item" do
+        expect(document.document_items).to eq([])
+      end
+    end
+
+    context "an item is lost" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811",
+        "process_type" => "LOST_LOAN_AND_PAID" }]
+        )}
+
+      it "correctly rejects lost item" do
+        expect(document.document_items).to eq([])
+      end
+    end
+
+    context "an item is not missing or lost" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811",
+        "process_type" => "LOAN" }]
+        )}
+
+      it "does not filter out item" do
+        expect(document.document_items).to be_present
+      end
+    end
+  end
+
+  describe "unwanted library" do
+
+    context "an item is an unwanted library" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "stacks",
+        "current_library" => "EMPTY",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+        )}
+
+      it "correctly rejects unwanted library" do
+        expect(document.document_items).to eq([])
+      end
+    end
+
+    context "an item is an unwanted location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "techserv",
+        "current_library" => "AMBLER",
+        "current_location" => "techserv",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811",
+        "process_type" => "LOAN" }]
+        )}
+
+      it "correctly rejects unwanted location" do
+        expect(document.document_items).to eq([])
+      end
+    end
+
+    context "an item is not in an unwanted location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+        )}
+
+      it "does not filter item" do
+        expect(document.document_items).to be_present
       end
     end
   end

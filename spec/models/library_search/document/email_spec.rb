@@ -35,24 +35,33 @@ RSpec.describe "LibrarySearch::Document::Email" do
     expect(document.to_email_text).to eq("Contributor: Pong, Chun-ho, 1969-; Song, Kang-ho, 1967-; Yi, Sŏn-gyun, 1975-\n")
   end
 
-  let(:item_one) { Alma::BibItem.new(
-    "bib_data" => { "title" => "Hello World" },
-    "holding_data" => { "call_number" => "CALL ME" },
-    "item_data" => {
-      "physical_material_type" => { "value" => "ANY" },
-      "pid" => "FOOBAR",
-      "library" => { "value" => "MAIN" },
-      "location" => { "value" => "stacks" },
-      "raw_library" => { "value" => "MAIN" }
-    },
-
-  ) }
-
-  before {
-    allow(document).to receive(:materials_data) { Proc.new { bib_items } }
-  }
-
   it "includes holdings information" do
-    expect(document.to_email_text).to eq("Located at: \nCharles Library - Stacks (4th floor) - CALL ME")
+    document = SolrDocument.new({ "items_json_display" =>
+      [{ "item_pid" => "123",
+      "permanent_library" => "MAIN",
+      "permanent_location" => "stacks",
+      "current_library" => "MAIN",
+      "current_location" => "stacks",
+      "call_number" => "CALL ME" },
+      { "item_pid" => "123_dup",
+      "permanent_library" => "MAIN",
+      "permanent_location" => "stacks",
+      "current_library" => "MAIN",
+      "current_location" => "stacks",
+      "call_number" => "CALL ME" },
+      { "item_pid" => "456",
+      "permanent_library" => "MAIN",
+      "permanent_location" => "stacks",
+      "current_library" => "MAIN",
+      "current_location" => "stacks",
+      "call_number" => "CALL ME ALSO" },
+      { "item_pid" => "789",
+      "permanent_library" => "MAIN",
+      "permanent_location" => "stacks",
+      "current_library" => "AMBLER",
+      "current_location" => "stacks",
+      "call_number" => "CALL ME" }]
+     })
+    expect(document.to_email_text).to eq("Located at: \nCharles Library - Stacks (4th floor) - CALL ME\nCharles Library - Stacks (4th floor) - CALL ME ALSO\nAmbler Campus Library - Stacks - CALL ME")
   end
 end

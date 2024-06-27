@@ -1,20 +1,20 @@
 <%# This template is used for the initial load of availability information in the availability panel %>
 <%# It gets replaced by a similar template in almaws/item.html.erb, so changes need to be in both places %>
 
-<% @document_availability = document_availability_info(document) %>
+<% @document_availability = document.document_items_grouped %>
 
 <% unless @document_availability.all?(&:empty?) %>
-  <% sort_order_for_holdings(@document_availability).each do |key, locations| %>
+  <% @document_availability.each do |library, locations| %>
   <% locations.each do |location, items| %>
     <div class="m-0" data-controller="availability">
       <div class="table-heading">
-        <h3 class="holding-name"><span class="library-name"><%= library_name_from_short_code(key) %></span><span class="location-name"> - <%= location_name_from_short_codes(location, key) %></span></h3>
+        <h3 class="holding-name"><span class="library-name"><%= library %></span><span class="location-name"> - <%= location %></span></h3>
         <% if summary_list(items).present? %>
           <div class="holding-summary"><p><%= summary_list(items) %></p></div>
         <% end %>
       </div>
 
-      <%= scrc_instructions(key, document) %>
+      <%= scrc_instructions(library, document) %>
 
       <table class="table availability-table px-2">
         <thead>
@@ -28,8 +28,8 @@
         <tbody data-long-list>
       <% items.each do |item| %>
         <tr>
-          <td><%= alternative_call_number(item) %></td>
-          <td><%= description(item) %><%= public_note(item) %></td>
+          <td><%= item.fetch("call_number_display", "") %></td>
+          <td><%= item.fetch("description", "") %><%= public_note(item) %></td>
           <td><%= material_type(item) %></td>
           <td>
             <div class="spinner">

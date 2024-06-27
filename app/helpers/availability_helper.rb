@@ -62,13 +62,9 @@ module AvailabilityHelper
   end
 
   def scrc_instructions(key, document)
-    if key == "SCRC"
+    if key == "Special Collections Research Center"
       render partial: "scrc_instructions", locals: { key:, document: }
     end
-  end
-
-  def description(item)
-    item["description"] ? "#{item['description']}" : ""
   end
 
   def material_type(item)
@@ -86,55 +82,6 @@ module AvailabilityHelper
     item["public_note"] ? "Note: #{item['public_note']}" : ""
   end
 
-  def missing_or_lost?(item)
-    process_type = item.fetch("process_type", "")
-    !!process_type.match(/MISSING|LOST_LOAN|LOST_LOAN_AND_PAID/)
-  end
-
-  def unwanted_library_locations(item)
-    location = item.fetch("current_location", "")
-    !!location.match(/techserv|UNASSIGNED|intref/) || library(item) == "EMPTY"
-  end
-
-  def library(item)
-    item["current_library"] ? item["current_library"] : item["permanent_library"]
-  end
-
-  def library_name_from_short_code(library_code)
-    if !library_name = Rails.configuration.libraries[library_code]
-      Honeybadger.notify("Missing library name configuration for: #{library_code}")
-      library_name = library_code
-    end
-
-    library_name
-  end
-
-  def location(item)
-    item["current_location"] ? item["current_location"] : item["permanent_location"]
-  end
-
-  def location_name_from_short_codes(location_code, library_code = nil)
-    Rails.configuration.locations.dig(library_code, location_code) || location_code
-  end
-
-  def call_number(item)
-    item["temp_call_number"] ? item["temp_call_number"] : item["call_number"]
-  end
-
-  def alternative_call_number(item)
-    "#{item["alt_call_number"] ? item["alt_call_number"] : call_number(item)}"
-  end
-
-  def document_availability_info(document)
-    document_items = document.fetch("items_json_display", [])
-    document_items.collect { |item| item }
-      .reject(&:blank?)
-      .reject { |item| missing_or_lost?(item) }
-      .reject { |item| unwanted_library_locations(item) }
-      .group_by { |item| library(item) }
-      .transform_values { |v| v.group_by { |item| location(item) }.sort.to_h }
-  end
-
   def summary_list(items)
     summary_list = items.collect { |item|
       item.fetch("summary", "")
@@ -142,36 +89,6 @@ module AvailabilityHelper
      .join(", ")
 
     summary_list.present? ? content_tag(:span, "Summary", class: "summary-label badge") + " #{summary_list}" : ""
-  end
-
-  def sort_order_for_holdings(grouped_items)
-    sorted_library_hash = {}
-    sorted_library_hash.merge!("MAIN" => grouped_items.delete("MAIN")) if grouped_items.has_key?("MAIN")
-    sorted_library_hash.merge!("ASRS" => grouped_items.delete("ASRS")) if grouped_items.has_key?("ASRS")
-    items_hash = grouped_items.sort_by { |k, v| library_name_from_short_code(k) }.to_h
-    sorted_library_hash = sorted_library_hash.merge!(items_hash)
-    sorted_library_hash.each do |library, locations|
-      unless locations.empty?
-        locations.each do |location, items|
-          unless items.empty?
-            items.sort_by! { |item| [alternative_call_number(item), description(item)] }
-          end
-        end
-      end
-    end
-    sorted_library_hash
-  end
-
-  def materials_location(material)
-    Rails.configuration.locations.dig(material["raw_library"], material["raw_location"])
-  end
-
-  def item_level_library_name(location_hash)
-    location_hash.transform_values do |v|
-      v.reduce({}) { |acc, lib|
-        acc.merge!(library_name_from_short_code(lib) => lib)
-      }
-    end
   end
 
   def render_availability(doc)

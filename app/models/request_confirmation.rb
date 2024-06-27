@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RequestConfirmation
-  include AvailabilityHelper
+  include Lookupable
 
   attr_reader :request_id
   attr_reader :sent_from
