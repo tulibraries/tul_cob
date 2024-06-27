@@ -58,7 +58,7 @@ module RequestHelper
       query: openurl_field_values.to_query).to_s
   end
 
-  # TBD - Refactor lookup of SCRC code 
+  # TBD - Refactor lookup of SCRC code
   def aeon_request_allowed(document)
     document_items = document.fetch("items_json_display", [])
     libraries = document_items.collect { |item| item["permanent_library"] }
