@@ -57,7 +57,7 @@ RSpec.describe AlmawsController, type: :controller do
       allow(controller).to receive(:search_service).and_return(search_service)
       get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
-      expect(availability.dig("AMBLER", "media").flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
+      expect(availability.dig("Ambler Campus Library", "Media").flatten.first["availability"]).to eq("<span class=\"check\"></span>Available")
     end
 
     it "does not include missing or lost items" do

@@ -43,7 +43,7 @@
 
       <div class="row hold-form form-group">
         <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select_tag(:hold_pickup_location, grouped_options_for_select(item_level_library_name(@item_level_locations)), { data: { "target": "request-form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
+        <%= select_tag(:hold_pickup_location, grouped_options_for_select(@item_level_locations), { data: { "target": "request-form.pickups" },  class: "request-form form-control", include_blank: true, required: true, "aria-required": true }) %>
       </div>
     <% end %>
 

@@ -17,10 +17,10 @@ class AlmawsController < CatalogController
     availability = @items.group_by { |item| item["item_data"]["pid"] }
         .transform_values { |item| { availability: helpers.availability_status(item.first) } }
     @document.merge_item_data!(availability)
-    @document_availability = helpers.document_availability_info(@document)
+    @document_availability = @document.document_items_grouped
 
     @request_data = RequestData.new(@items)
-    @pickup_locations = @request_data.pickup_locations.join(",")
+    @pickup_locations = @request_data.pickup_location_codes.join(",")
     @request_level = @request_data.get_request_level
     @redirect_to = params[:redirect_to]
     render layout: false
@@ -42,8 +42,8 @@ class AlmawsController < CatalogController
     @material_types = @request_data.material_types
 
     # Pickup locations
-    @pickup_locations = @request_data.pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
-    @asrs_pickup_locations = @request_data.asrs_pickup_locations&.collect { |lib| { lib => helpers.library_name_from_short_code(lib) } }
+    @pickup_locations = @request_data.pickup_locations
+    @asrs_pickup_locations = @request_data.asrs_pickup_locations
     @item_level_locations = @request_data.item_level_locations
     @equipment = @request_data.equipment_locations
     @booking_location = @request_data.booking_locations
