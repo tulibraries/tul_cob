@@ -27,17 +27,12 @@ module LibrarySearch::Document::Email
         end
       end
     end
-    begin
-      body << add_holdings_information
-    rescue Alma::BibItemSet::ResponseError => exception
-      Honeybadger.notify(exception.message)
-    end
+    body << add_holdings_information
     return body.join("\n") unless body.empty?
   end
 
   def add_holdings_information
-    holdings = materials.collect { |material| material["library"].to_s + " - " + materials_location(material).to_s + " - " + material["call_number"].to_s }
-
+    holdings = document_items_grouped.collect { |library, locations| locations.collect { |location, items| items.collect { |item| library + " - " + location + " - " + item["call_number_display"] }.uniq } }
     return I18n.t("blacklight.email.text.location", value: "\n" + holdings.join("\n")) unless holdings.empty?
   end
 end

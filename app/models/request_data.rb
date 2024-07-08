@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 class RequestData
+  include Lookupable
+
   attr_reader :request_level
-  attr_reader :pickup_locations
+  attr_reader :pickup_location_codes
 
   def initialize(bib_items, params = nil)
     @items = bib_items
     @request_level = params ? params[:request_level] : get_request_level
-    @pickup_locations = params ? params[:pickup_location]&.split(",") : valid_pickup_locations
+    @pickup_location_codes = params ? params[:pickup_location]&.split(",") : valid_pickup_locations
   end
 
   def get_request_level(partial = nil)
@@ -25,6 +27,14 @@ class RequestData
 
   def asrs_request_level
     get_request_level("asrs")
+  end
+
+  def pickup_locations
+    pickup_location_codes&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
+  end
+
+  def asrs_pickup_locations
+    ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
   end
 
   def valid_pickup_locations
@@ -78,7 +88,7 @@ class RequestData
   def item_level_locations
     pickup_locations = default_pickup_locations
 
-    @items.reduce({}) { |libraries, item|
+    location_hash = @items.reduce({}) { |libraries, item|
       desc = item.description
       campus = self.determine_campus(item.library)
       removals = []
@@ -97,6 +107,11 @@ class RequestData
 
       libraries
     }
+    location_hash.transform_values do |v|
+      v.reduce({}) { |acc, library_code|
+        acc.merge!(library_name_from_short_code(library_code) => library_code)
+      }
+    end
   end
 
   def equipment_locations
@@ -118,14 +133,6 @@ class RequestData
         nil
       end
     }.uniq.compact
-  end
-
-  def default_pickup_locations
-    ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
-  end
-
-  def asrs_pickup_locations
-    ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
   end
 
   def material_types_and_descriptions
@@ -164,6 +171,10 @@ class RequestData
   end
 
     private
+
+      def default_pickup_locations
+        ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+      end
 
       def available_libraries
         @items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys

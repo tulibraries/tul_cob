@@ -75,15 +75,6 @@ module Blacklight::PrimoCentral::Document
     availability == ["fulltext_linktorsrc"]
   end
 
-  def materials
-    # There are no physical items assoc. to Primo articles.
-    []
-  end
-
-  def material_from_barcode(b = nil)
-    # There are no physical items assoc. to Primo articles.
-  end
-
   def purchase_order?
     # For now, disable all purchase orders for Primo documents.
     false
