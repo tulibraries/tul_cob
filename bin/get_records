@@ -16,7 +16,7 @@ class GetRecords < Thor
     good_params = u.query.split("&").reject {|q| !!q.split("=").first.match(/per_page|format/) }
     u.query = (good_params + ["format=json", "per_page=#{options[:number_of_recs]}"]).join("&")
 
-    ssl_opts = {ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE}
+    ssl_opts = {ssl_verify_mode: OpenSSL::SSL::VERIFY_PEER}
 
     outfile.puts "<?xml version='1.0' encoding='UTF-8'?>"
     outfile.puts "<collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>"
