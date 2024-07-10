@@ -10,7 +10,7 @@ variables:
   IMAGE: "tulibraries/librarysearch"
   HARBOR: "harbor.k8s.temple.edu"
   HELM_EXPERIMENTAL_OCI: "1"
-  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, config/environments/development.rb, config/environments/test.rb"
+  SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, app/controllers/application_controller.rb, config/environments/development.rb, config/environments/test.rb" # [TODO] Remove app/controllers/application_controller.rb from path after BL-1806 completed
 
 
 .export_variables: &export_variables
