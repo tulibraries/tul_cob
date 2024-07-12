@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: c7c8e2b7808337df714380326ae5980d4c58ce92
+  revision: 3892eb9e6e340f861d91c39fe519a244b335a07b
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -154,8 +154,8 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.8.6)
-      public_suffix (>= 2.0.2, < 6.0)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
@@ -418,7 +418,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
-    public_suffix (5.0.5)
+    public_suffix (6.0.0)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.0)
