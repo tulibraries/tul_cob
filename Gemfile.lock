@@ -83,7 +83,7 @@ GIT
 
 GIT
   remote: https://github.com/upenn-libraries/blacklight-ris.git
-  revision: 88b4f1defc441c49d2408b3881ee4482b203eb7c
+  revision: 3de07a823ffba4a4788ff9dbb0dda339536f5174
   specs:
     blacklight-ris (0.1.0)
       rails (> 4.2)
@@ -372,7 +372,7 @@ GEM
     mysql2 (0.5.6)
     net-http (0.4.1)
       uri
-    net-imap (0.4.12)
+    net-imap (0.4.14)
       date
       net-protocol
     net-pop (0.1.2)
@@ -546,9 +546,9 @@ GEM
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
-    sprockets-rails (3.4.2)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
+    sprockets-rails (3.5.1)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
       sprockets (>= 3.0.0)
     sqlite3 (1.7.3-arm64-darwin)
     sqlite3 (1.7.3-x86_64-darwin)
