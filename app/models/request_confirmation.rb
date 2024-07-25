@@ -10,7 +10,7 @@ class RequestConfirmation
   end
 
   def message
-    [I18n.t("requests.default_success_message"), delivery_estimate_message, I18n.t("requests.request_status_message")].join("")
+    [I18n.t("requests.default_success_html"), delivery_estimate_message, I18n.t("requests.request_status_message")].join("")
   end
 
   def delivery_estimate_message

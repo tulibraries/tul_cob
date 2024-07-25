@@ -31,7 +31,7 @@ RSpec.describe RequestDeliveryEstimate, type: :model do
         let(:pickup_location) { "MAIN" }
         it "generates time estimate" do
           expect(subject.duration).to eq "1 hour"
-          expect(subject.message).to eq "If you placed the order during the library's normal operating hours, your item will be available for pickup at Charles Library within 1 hour. "
+          expect(subject.message).to eq "If you placed the order during the library's normal <a href='https://library.temple.edu/hours\'>operating hours</a>, your item will be available for pickup at Charles Library within 1 hour. "
         end
       end
 
