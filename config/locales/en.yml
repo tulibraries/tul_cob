@@ -197,7 +197,7 @@ en:
     no_request_options: "This item cannot be requested from other Temple campuses."
     default_success_html: "<b>Your request has been submitted!</b> <br>"
     estimate_days_html: "Your item will be available for pickup at %{pickup} within %{duration}. "
-    estimate_hours_html: "If you placed the order during the library's normal <a href="https://library.temple.edu/hours">operating hours</a>, your item will be available for pickup at %{pickup} within %{duration}. "
+    estimate_hours_html: "If you placed the order during the library's normal <a href='https://library.temple.edu/hours'>operating hours</a>, your item will be available for pickup at %{pickup} within %{duration}. "
     request_status_message: "We will notify you by email once it's ready."
     form:
       pickup_locations_label: "Where will you pick it up?"
