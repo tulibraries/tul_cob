@@ -195,9 +195,9 @@ en:
     resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the book through EZBorrow. Books typically arrive in 3-5 business days."
     resource_sharing_broker_link: "Go to EZBorrow"
     no_request_options: "This item cannot be requested from other Temple campuses."
-    default_success_message: "<b>Your request has been submitted!</b> "
-    estimate_days: "Your item will be available for pickup at %{pickup} within %{duration}. "
-    estimate_hours: "If you placed the order during the library's normal operating hours, your item will be available for pickup at %{pickup} within %{duration}. "
+    default_success_html: "<b>Your request has been submitted!</b> "
+    estimate_days_html: "<br>Your item will be available for pickup at %{pickup} within %{duration}. "
+    estimate_hours_html: "<br>If you placed the order during the library's normal <a href="https://library.temple.edu/hours">operating hours</a>, your item will be available for pickup at %{pickup} within %{duration}. "
     request_status_message: "We will notify you by email once it's ready."
     form:
       pickup_locations_label: "Where will you pick it up?"

@@ -14,7 +14,7 @@ RSpec.describe RequestConfirmation, type: :model do
       )}
       let(:pickup_location) { "MAIN" }
       it "generates time estimate" do
-        expect(subject.message).to eq "<b>Your request has been submitted!</b> Your item will be available for pickup at Charles Library within 1-3 business days. We will notify you by email once it's ready."
+        expect(subject.message).to eq "<b>Your request has been submitted!</b> <br>Your item will be available for pickup at Charles Library within 1-3 business days. We will notify you by email once it's ready."
       end
     end
 
