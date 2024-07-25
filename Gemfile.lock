@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 0ca904545ec61cf01251d16652d66e82267a39bb
+  revision: f2f8e1c4be0adc4089405054c430cad64787b1ad
   branch: main
   specs:
     cob_index (0.1.0)
@@ -418,7 +418,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
-    public_suffix (6.0.0)
+    public_suffix (6.0.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.0)
