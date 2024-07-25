@@ -24,7 +24,7 @@ RSpec.describe RequestConfirmation, type: :model do
       )}
       let(:pickup_location) { "JAPAN" }
       it "does not generate delivery estimate message" do
-        expect(subject.message).to eq "<b>Your request has been submitted!</b> We will notify you by email once it's ready."
+        expect(subject.message).to eq "<b>Your request has been submitted!</b> <br>We will notify you by email once it's ready."
         expect(subject.delivery_estimate_message).to eq nil
       end
     end
