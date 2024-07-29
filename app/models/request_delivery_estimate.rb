@@ -27,9 +27,9 @@ class RequestDeliveryEstimate
     pickup_location_name = library_name_from_short_code(pickup_location)
 
     if duration.include?("hour")
-      I18n.t("requests.estimate_hours_html", pickup: pickup_location_name, duration:)
+      I18n.t("requests.estimate_hours", pickup: pickup_location_name, duration:)
     else
-      I18n.t("requests.estimate_days_html", pickup: pickup_location_name, duration:)
+      I18n.t("requests.estimate_days", pickup: pickup_location_name, duration:)
     end
   end
 end
