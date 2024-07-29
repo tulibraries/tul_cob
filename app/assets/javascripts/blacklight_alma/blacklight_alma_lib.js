@@ -21,10 +21,7 @@ var BlacklightAlma = function (options) {
  availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("available")) {
-     if (holding['location_code'] == 'ambler' || holding['location_code'] == 'amb_media') {
-       unavailableItems(id);
-     }
-     else if (holding['availability'] == 'available') {
+     if (holding['availability'] == 'available') {
        $(availButton).html("<span class='avail-label available'>Available</span>");
        $(availButton).removeClass("btn-default");
        $(availButton).addClass("collapsed collapse-button available availability-btn");
