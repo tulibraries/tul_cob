@@ -7,9 +7,10 @@ module AvailabilityHelper
   PHYSICAL_TYPE_EXCLUSIONS = /BOOK|ISSUE|SCORE|KIT|MAP|ISSBD|GOVRECORD|OTHER/i
 
   def availability_status(item)
-    # Temporary change for Ambler locations, Main storage location
+    # The arrays below are to add any temporary unavailable statuses to the app (instead of through Alma).
+    # Currently there is a temporary change for Main storage location.
     unavailable_libraries = []
-    unavailable_locations = ["ambler", "amb_media", "storage"]
+    unavailable_locations = ["storage"]
 
     if unavailable_libraries.include?(item.library) ||
       unavailable_locations.include?(item.location)
