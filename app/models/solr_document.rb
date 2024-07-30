@@ -180,4 +180,9 @@ class SolrDocument
       location = location(item) || ""
       !!location.match(/techserv|UNASSIGNED|intref/) || library == "EMPTY"
     end
+
+    def self.sanitize_id(id)
+      id = "#{id}".rpartition("doc-").last
+      id if id.match? /\d{18}/
+    end
 end

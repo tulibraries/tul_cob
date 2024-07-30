@@ -178,7 +178,8 @@ module CatalogHelper
     params = get_search_params(field, query)
     link_url = search_action_path(params)
     title = params[:title] || query
-    link_to(title, link_url)
+    sanitized_title = sanitize(title)
+    link_to(sanitized_title, link_url)
   end
 
   def list_with_links(args)
