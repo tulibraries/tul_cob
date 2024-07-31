@@ -119,7 +119,11 @@ class SolrDocument
         unless locations.empty?
           locations.each do |location, items|
             unless items.empty?
-              items.sort_by! { |item| [item["call_number_display"], item.fetch("description", "")] }
+              items.sort_by! { |item|
+                call_number = item.fetch("call_number_display", "") || ""
+                description = item.fetch("description", "") || ""
+                [call_number, description]
+              }
             end
           end
         end
