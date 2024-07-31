@@ -630,4 +630,22 @@ RSpec.describe SolrDocument, type: :model do
 
   end
 
+  describe "describe #sanitize_id" do
+    context "id is not valid" do
+      it "returns nil" do
+        expect(SolrDocument.sanitize_id(nil)).to be_nil
+        expect(SolrDocument.sanitize_id("bash  -c rm -fR /")).to be_nil
+        expect(SolrDocument.sanitize_id(1343)).to be_nil
+      end
+    end
+
+    context "id is valid" do
+      it "returns an id" do
+        expect(SolrDocument.sanitize_id("doc-991032926439703811")).to eq("991032926439703811")
+        expect(SolrDocument.sanitize_id("991032926439703811")).to eq("991032926439703811")
+        expect(SolrDocument.sanitize_id(991032926439703811)).to eq("991032926439703811")
+      end
+    end
+  end
+
 end
