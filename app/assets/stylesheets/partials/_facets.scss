@@ -177,28 +177,25 @@ span.constraint-value {
 
 .card-header.collapse-toggle {
   margin-bottom: 0;
-
   &::after {
-		color: $grey;
-	  content: "\f054";
-	  font-family: "Font Awesome 5 Free";
-		font-size: 1.0rem;
-	  font-weight: 900;
+    color: $grey;
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.0rem;
+    font-weight: 900;
     float: right;
-		padding-top: 0.625rem;
+    padding-top: 0.625rem;
     transform: rotate(90deg);
     font-display: swap;
   }
+}
 
-  &.collapsed {
-    border-bottom: 0;
+.card-header.collapse-toggle[aria-expanded="true"]::after {
+  transform: rotate(90deg);
+}
 
-    &::after {
-			color: $grey;
-      transform: rotate(0deg);
-      transition: transform 0.1s ease;
-    }
-	}
+.card-header.collapse-toggle[aria-expanded="false"]::after {
+  transform: rotate(0deg);
 }
 
 #facet-panel-collapse {
