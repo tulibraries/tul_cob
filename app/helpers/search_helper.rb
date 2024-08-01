@@ -99,7 +99,7 @@ module SearchHelper
 
   def render_bento_results(results = @results, options = {})
     results_class = options[:results_class] || "d-md-flex flex-wrap"
-    comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 mr-4"
+    comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 me-4"
 
     render partial: "bento_results", locals: {
       results_class:,
