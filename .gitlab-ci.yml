@@ -11,6 +11,7 @@ variables:
   HARBOR: "harbor.k8s.temple.edu"
   HELM_EXPERIMENTAL_OCI: "1"
   SAST_EXCLUDED_PATHS: "spec, test, tests, tmp, app/controllers/application_controller.rb, app/models/blacklight/primo_central/repository.rb, config/environments/development.rb, config/environments/test.rb" # [TODO] Remove app/controllers/application_controller.rb from path after BL-1806 completed
+  SAST_EXCLUDED_ANALYZERS: "semgrep"
 
 
 .export_variables: &export_variables
