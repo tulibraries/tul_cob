@@ -2,6 +2,12 @@
 
 /* === ADVANCED SEARCH === */
 
+form.advanced {
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
 .advanced-search-fields .row .col-sm-3,
 .advanced-search-fields .row .col-sm-5 {
   padding-right: 0 !important;
