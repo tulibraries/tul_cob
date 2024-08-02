@@ -19,10 +19,6 @@
 //= require bootstrap
 //= require turbolinks//
 
-//= require bootstrap-select
-//= require bootstrap/alert
-//= require bootstrap/tab
-
 // Required by Blacklight
 //= require blacklight/blacklight
 
@@ -55,7 +51,7 @@ $(window).on('turbolinks:load', function() {
 $(document).ready(function() {
 	$("body").tooltip({
     selector: '[data-toggle="tooltip"]'
-});
+  });
 
 	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
 	$(".secondary-dl").children("dd").addClass("ps-md-3");
@@ -80,13 +76,13 @@ $(document).ready(function() {
     if (windowWidth < 768) {
 	  $('#nav-tools').insertAfter('#document');
 	  $('#facet-filter-icon').removeClass('hidden');
-      $('#facet-panel-collapse').removeClass('show');
+    $('#facet-panel-collapse').removeClass('show');
 	  $('.limit-search-heading').addClass('d-none');
     }
     else {
 	  $('#nav-tools').insertAfter('#page-links');
 	  $('#facet-filter-icon').addClass('hidden');
-      $('#facet-panel-collapse').addClass('show');
+    $('#facet-panel-collapse').addClass('show');
     }
 	});
 });
