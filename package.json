@@ -3,9 +3,10 @@
   "private": true,
   "dependencies": {
     "@babel/preset-env": "^7.23.2",
+    "@popperjs/core": "^2.11.8",
     "@rails/webpacker": "^6.0.0-rc.6",
     "@stimulus/polyfills": "^2.0.0",
-    "bootstrap-select": "^1.13.18",
+    "bootstrap": "^5.3.3",
     "braces": "3.0.3",
     "follow-redirects": "1.15.6",
     "jquery": "^3.6.0",
