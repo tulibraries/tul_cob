@@ -26,6 +26,9 @@
 // this:
 //= require 'blacklight_range_limit'
 
+//=require microplugin
+//=require selectize
+
 //= require_tree .
 
 $(window).on('turbolinks:load', function() {
@@ -89,6 +92,7 @@ $(document).ready(function() {
 
 $(document).on('turbolinks:load', function() {
    $(window).trigger('load.bs.select.data-api');
+   $(".selectize").selectize();
 });
 
 $(document).ready(function(){
