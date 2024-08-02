@@ -47,7 +47,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: f2f8e1c4be0adc4089405054c430cad64787b1ad
+  revision: 86cd978316d5e78109e845da51e19d9e64576ec7
   branch: main
   specs:
     cob_index (0.1.0)
@@ -292,7 +292,7 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.1.0)
     hashie (4.1.0)
-    honeybadger (5.15.2)
+    honeybadger (5.15.4)
     htmlentities (4.3.4)
     http (5.2.0)
       addressable (~> 2.8)
@@ -381,11 +381,11 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.6-arm64-darwin)
+    nokogiri (1.16.7-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.6-x86_64-darwin)
+    nokogiri (1.16.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.6-x86_64-linux)
+    nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
     okcomputer (1.18.5)
     omniauth (2.1.2)
@@ -410,8 +410,8 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    pg (1.5.6)
     popper_js (2.11.8)
+    pg (1.5.7)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -673,7 +673,7 @@ DEPENDENCIES
   flamegraph
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 5.15.2)
+  honeybadger (= 5.15.4)
   httparty
   jbuilder (~> 2.12)
   jquery-rails
@@ -682,7 +682,7 @@ DEPENDENCIES
   lc_solr_sortable!
   mysql2 (~> 0.5.6)
   net-smtp
-  nokogiri (= 1.16.6)
+  nokogiri (= 1.16.7)
   okcomputer
   omniauth
   omniauth-rails_csrf_protection
