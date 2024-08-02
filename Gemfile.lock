@@ -470,7 +470,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.2)
+    rexml (3.3.3)
       strscan
     rsolr (2.6.0)
       builder (>= 2.1.2)
