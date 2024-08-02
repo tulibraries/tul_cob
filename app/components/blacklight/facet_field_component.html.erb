@@ -1,5 +1,5 @@
 <div class="card facet-limit blacklight-<%= @facet_field.key.parameterize %> <%= 'facet-limit-active' if @facet_field.active? %>">
-  <h3 class="card-header facet-field-heading collapse-toggle" id="<%= @facet_field.html_id %>-header" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#<%= @facet_field.html_id %>">
+  <h3 class="card-header facet-field-heading collapse-toggle collapsed" id="<%= @facet_field.html_id %>-header" aria-expanded="false" data-bs-toggle="collapse" data-bs-target="#<%= @facet_field.html_id %>">
     <%= link_to @facet_field.label, "##{ @facet_field.html_id}", data: { turbo: false } %>
   </h3>
   <div id="<%= @facet_field.html_id %>" aria-labelledby="<%= @facet_field.html_id %>-header" class="collapse <%= "show" unless @facet_field.collapsed? %>">

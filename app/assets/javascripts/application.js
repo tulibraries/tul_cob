@@ -45,6 +45,7 @@ $(window).on('turbolinks:load', function() {
 	else {
 		$('#nav-tools').insertAfter('#page-links');
 		$('#facet-filter-icon').addClass('hidden');
+    $('#facet-availability_facet-header').removeClass('collapsed')
 	}
 });
 
@@ -55,7 +56,6 @@ $(document).ready(function() {
 
 	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
 	$(".secondary-dl").children("dd").addClass("ps-md-3");
-
 
 	$('.decorative').each(function() {
     $(this).attr('alt', "");
@@ -132,6 +132,7 @@ $(document).on('turbolinks:load', function() {
 	 $(this).addClass("active");
  });
 
+
  function toggle(x) {
 	if (x == "secondary") {
 	 document.getElementById("sub-toggler-icon").classList.toggle("change");
@@ -142,6 +143,7 @@ $(document).on('turbolinks:load', function() {
 	else {
 		document.getElementById("main-toggler-icon").classList.toggle("change");
 	}
+
 }
 
 // This hack helps with a race condition bug in blacklight_range_limit gem.

@@ -192,6 +192,7 @@ span.constraint-value {
     color: $grey;
     content: "\f054";
     font-family: "Font Awesome 5 Free";
+    transform: rotate(90deg);
     font-size: 1.0rem;
     font-weight: 900;
     float: right;
@@ -200,11 +201,7 @@ span.constraint-value {
   }
 }
 
-.card-header.collapse-toggle[aria-expanded="true"]::after {
-  transform: rotate(90deg);
-}
-
-.card-header.collapse-toggle[aria-expanded="false"]::after {
+.card-header.collapse-toggle.collapsed::after {
   transform: rotate(0deg);
 }
 
