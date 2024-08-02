@@ -26,6 +26,7 @@
 // this:
 //= require 'blacklight_range_limit'
 
+//= require sifter
 //=require microplugin
 //=require selectize
 
