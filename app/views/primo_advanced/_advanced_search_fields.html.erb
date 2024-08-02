@@ -13,7 +13,7 @@
 
     <div class="col-sm-5 form-group">
     <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
-    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false", "data-target": "primo.q#{count}" %>
+    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false", "data-bs-target": "primo.q#{count}" %>
     </div>
   </div>
   <div class="row booleans form-group">

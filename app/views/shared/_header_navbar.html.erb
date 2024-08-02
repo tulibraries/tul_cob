@@ -1,6 +1,6 @@
 <div id="header-wrapper">
   <div class="container-xl">
-    <nav id="logo-navbar" class="navbar navbar-header pl-0" role="banner">
+    <nav id="logo-navbar" class="navbar navbar-header ps-0" role="banner">
       <%= link_to library_link, class: "header-name d-flex align-items-end" do %>
         <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", height: "77px", width: "90px", alt: "temple-logo") %>
         <span class="logo-text">University Libraries</span>
@@ -41,7 +41,7 @@
   <div class="container-xl">
     <nav id="search-navbar" class="navbar navbar-default bg-lighter-grey px-md-0 pt-3">
       <div class="d-lg-inline-flex align-items-center mx-auto">
-        <h1 class="text-center pr-md-2 pr-lg-4 d-none d-md-block">
+        <h1 class="text-center pe-md-2 pe-lg-4 d-none d-md-block">
           <%= link_to("Library Search", everything_path, id: "catalog-header") %>
         </h1>
         <%# Change this back to render_search_bar method when upgrading Blacklight %>

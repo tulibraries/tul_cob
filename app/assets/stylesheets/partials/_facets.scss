@@ -59,6 +59,10 @@ span .remove-constraints {
 	color: $midnight-blue;
 	width: 20%;
 
+  &:hover {
+    background-color: $crystal-blue !important;
+  }
+
 	@media(max-width: 992px) {
 		width: 35%;
 	}
@@ -69,16 +73,23 @@ span .remove-constraints {
 	}
 }
 
+.btn-block {
+  width: 100%;
+}
+
 span.constraint-value {
-	background-color: $crystal-blue;
-	border: 0.0625rem solid transparent;
+  background-color: $crystal-blue;
+  border: 0.0625rem solid transparent;
   font-family: "Roboto";
-	font-size: 1rem;
+  font-size: 1rem;
   font-weight: normal;
-	padding: 0.5rem 0.9375rem;
-	text-align: left;
-	width: 80%;
-	white-space: normal;
+  padding: 0.5rem 0.9375rem;
+  text-align: left;
+  width: 80%;
+  white-space: normal;
+  &:hover {
+    background-color: $crystal-blue !important;
+  }
 }
 
 .filter-separator {
@@ -177,32 +188,24 @@ span.constraint-value {
 
 .card-header.collapse-toggle {
   margin-bottom: 0;
-
   &::after {
-		color: $grey;
-	  content: "\f054";
-	  font-family: "Font Awesome 5 Free";
-		font-size: 1.0rem;
-	  font-weight: 900;
-    float: right;
-		padding-top: 0.625rem;
+    color: $grey;
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
     transform: rotate(90deg);
+    font-size: 1.0rem;
+    font-weight: 900;
+    float: right;
+    padding-top: 0.625rem;
     font-display: swap;
   }
+}
 
-  &.collapsed {
-    border-bottom: 0;
-
-    &::after {
-			color: $grey;
-      transform: rotate(0deg);
-      transition: transform 0.1s ease;
-    }
-	}
+.card-header.collapse-toggle.collapsed::after {
+  transform: rotate(0deg);
 }
 
 #facet-panel-collapse {
-
 	@media(max-width: 485px) {
 		margin-bottom: 0.75rem;
 	}
@@ -290,4 +293,14 @@ ul.missing li span.facet-count {
 
   .show { display: none; }
   .hide { display: block; }
+}
+
+// BL override for sidebar to stay first in display order
+
+.no-js {
+  @include media-breakpoint-down(lg) {
+    #sidebar {
+      order: -1 !important;
+    }
+  }
 }

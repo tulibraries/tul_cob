@@ -4,7 +4,7 @@
 <% if @search_context && search_session['document_id'] == @document.id %>
 
   <% if current_search_session %>
-    <div class="search-widgets d-flex pl-3">
+    <div class="search-widgets d-flex ps-3">
       <%= link_back_to_catalog class: "btn btn-back-to-search", id: "back_to_search" %>
       <%= link_to t("blacklight.search.start_over"), bento_search_engine_path, id: "start_over", class: "btn text-white" %>
     </div>
@@ -14,7 +14,7 @@
 
 <% end %>
 
-  <div id="nav-tools" class="nav-tools pr-3">
+  <div id="nav-tools" class="nav-tools pe-3">
     <%= render partial: "show_tools_navbar" %>
   </div>
 </div>

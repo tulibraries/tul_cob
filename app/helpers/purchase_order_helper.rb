@@ -32,7 +32,7 @@ module PurchaseOrderHelper
       label = content_tag :span, "Request Rapid Access", class: "avail-label"
       path = purchase_order_path(id: doc.id)
       link = link_to label, path, class: "btn purchase-order", title: "Open a modal form to request a purchase for this item.", target: "_blank", id: "purchase_order_button-#{doc.id}", data: { "blacklight-modal": "trigger" }
-      content_tag :div, link, class: "requests-container mb-2 ml-0"
+      content_tag :div, link, class: "requests-container mb-2 ms-0"
     end
   end
 

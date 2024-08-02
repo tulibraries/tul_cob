@@ -255,7 +255,7 @@ img {
   text-align: right;
   padding: 0.75rem 1.3125rem;
   position: absolute;
-  background-image: url(<%= asset_path "chat.png" %>);
+  background-image: url("chat.png");
   background-position: center left 0.875rem;
   background-repeat: no-repeat;
   background-size: 1.875rem 1.875rem;
@@ -297,3 +297,7 @@ img {
 //     outline: solid #f00 1px !important;
 // }
 
+
+.nav-item.nav-link.header-links {
+  padding: 0.5rem 1rem !important;
+}
