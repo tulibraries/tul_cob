@@ -57,7 +57,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 73939d2dcea24d77c8d675d0f09bfa0fa70b29a6
+  revision: e69b22903d1d7f882d7f666157979dd045ab77e6
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -627,7 +627,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.16)
+    zeitwerk (2.6.17)
 
 PLATFORMS
   arm64-darwin-21
