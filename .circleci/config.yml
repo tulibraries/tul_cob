@@ -97,7 +97,7 @@ jobs:
 
   update_airflow_variables:
     docker:
-      - image: cimg/python:3.10.13
+      - image: cimg/python:3.12.3
         auth:
           username: $DOCKERHUB_USER
           password: $DOCKERHUB_PASSWORD
