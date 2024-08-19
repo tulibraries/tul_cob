@@ -56,7 +56,7 @@ RSpec.describe PurchaseOrderHelper, type: :helper do
     context "document has purchase order and user is logged in" do
       it "should render the purchase order button" do
         expect(helper).to have_received(:content_tag).with(
-          :div, "render_login_link", class: "requests-container mb-2 ml-0"
+          :div, "render_login_link", class: "requests-container mb-2 ms-0"
         )
       end
     end
