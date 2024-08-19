@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: "controller"  do
 
     context "with no arguments" do
       it "returns MD5 of empty string" do
-        hash = "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        hash = "d41d8cd98f00b204e9800998ecf8427e"
         expect(controller.quik_pay_hash).to eq(hash)
       end
     end
