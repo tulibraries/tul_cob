@@ -82,7 +82,7 @@ module QuikPay
   end
 
   def quik_pay_hash(values = [], secret = "")
-    Digest::SHA256.hexdigest(values.join("") + secret)
+    Digest::MD5.hexdigest(values.join("") + secret)
   end
 
   private
