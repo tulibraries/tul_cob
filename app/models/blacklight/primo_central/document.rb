@@ -162,13 +162,29 @@ module Blacklight::PrimoCentral::Document
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
       Thread.new {
-        begin
-          HTTParty.get(libkey_articles_url, timeout: 4)["data"]
-            &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
-        rescue => e
-          Honeybadger.notify(e)
-          nil
+        duration = duration_for(:libkey_article_cache_life)
+        response = Rails.cache.fetch(libkey_articles_url, expires_in: duration) do
+          begin
+            HTTParty.get(libkey_articles_url, timeout: 4)["data"]
+              &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+          rescue => e
+            Honeybadger.notify(e)
+            nil
+          end
         end
       }
     end
+
+    private
+
+      def duration_for(cache_name)
+        # Do not bring down site due to a parse error.
+        begin
+          delta = Rails.configuration.caches[cache_name]
+          ActiveSupport::Duration.parse(delta)
+        rescue
+          logger.error("Error: Failed to parse ISO-8601 formated duration,#{delta}")
+          12.hours
+        end
+      end
 end
