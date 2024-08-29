@@ -2,6 +2,7 @@
 
 class SolrDocument
   include Blacklight::Solr::Document
+  include Blacklight::Solr::Document
   include AvailabilityHelper
   include Citable
   include JsonLogger

@@ -12,9 +12,7 @@ Bundler.require(*Rails.groups)
 module Tulcob
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
-    config.autoload_paths << Rails.root.join("lib")
-    # Rails.autoloaders.logger = Logger.new "#{Rails.root}/log/autoloading.log"
+    config.load_defaults 7.1
 
     require "lc_classifications"
     # Please, add to the `ignore` list any other `lib` subdirectories that do
