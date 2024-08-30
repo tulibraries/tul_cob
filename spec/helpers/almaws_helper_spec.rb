@@ -404,6 +404,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   describe "#only_one_option_allowed(request_options)" do
     context "only a hold is allowed" do
       let(:books) {}
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -424,12 +425,13 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be true
       end
     end
 
     context "only an aeon request is allowed" do
       let(:books) {}
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -450,12 +452,13 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be true
       end
     end
 
     context "only a booking is allowed" do
       let(:books) {}
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -476,12 +479,13 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be true
       end
     end
 
     context "only an EZ Borrow request is allowed for a book" do
       let(:books) { "BOOK" }
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -502,12 +506,13 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is true" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be true
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be true
       end
     end
 
     context "only an EZ Borrow request is allowed for a DVD" do
       let(:books) {}
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -528,13 +533,14 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is false" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be false
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be false
       end
     end
 
 
     context "both a hold and a booking are allowed" do
       let(:books) {}
+      let(:equipment) {}
       let(:document) { { "items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
@@ -573,7 +579,35 @@ RSpec.describe AlmawsHelper, type: :helper do
       }
 
       it "is false" do
-        expect(helper.only_one_option_allowed(request_options, books, document)).to be false
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be false
+      end
+    end
+  end
+
+  describe "#equipment_partial" do
+    let(:equipment) { "DSC" }
+    let(:document) { { "items_json_display" =>
+    [{ "item_pid" => "23325961500003811",
+    "item_policy" => "22",
+    "permanent_library" => "DSC",
+    "permanent_location" => "games",
+    "current_library" => "DSC",
+    "current_location" => "games",
+    "call_number" => "Game 14 14",
+    "holding_id" => "22467010770003811" }]
+      } }
+    let(:json) {
+      { request_option:
+        [{
+          "type" => { "value" => "HOLD", "desc" => "Hold" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+        }]
+      }.to_json
+    }
+
+    context "equipment" do
+      it "renders the equipment partial" do
+        expect(helper.equipment_partial(request_options, document, equipment)).not_to be_nil
       end
     end
   end
