@@ -5,7 +5,8 @@
   <div class="modal-body">
     <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
     <% if @items.any?(&:in_place?) %>
-      <%= open_shelves_partial(@request_options, @books, @document) %>
+      <%= open_shelves_partial(@request_options, @document) %>
+      <%= equipment_partial(@request_options, @document, @equipment) %>
     <% end %>
     <%= asrs_allowed_partial(@request_options, @document) %>
     <%= hold_allowed_partial(@request_options, @document) %>
@@ -13,8 +14,8 @@
     <%= booking_allowed_partial(@request_options, @document) %>
     <%= resource_sharing_broker_allowed_partial(@request_options, @books, @document) %>
     <%= aeon_request_partial(@request_options, @document) %>
-    <%= digital_copy_partial(@request_options, @books, @document) %>
-    <%= no_temple_request_options_available(@request_options, @books, @document) %>
+    <%= digital_copy_partial(@request_options, @document) %>
+    <%= no_temple_request_options_available(@request_options, @books, @document, @equipment) %>
     </div>
   </div>
   <div class="modal-footer justify-content-between">

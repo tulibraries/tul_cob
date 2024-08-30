@@ -39,30 +39,37 @@ module AlmawsHelper
     end
   end
 
-  def digital_copy_partial(request_options, books, document)
+  def digital_copy_partial(request_options, document)
     if digital_help_allowed?(document)
-      render partial: "digital_copy_help", locals: { request_options:, books:, document: }
+      render partial: "digital_copy_help", locals: { request_options:, document: }
     end
   end
 
-  def open_shelves_partial(request_options, books, document)
+  def open_shelves_partial(request_options, document)
     if open_shelves_allowed?(document)
-      render partial: "open_shelves", locals: { request_options:, books:, document: }
+      render partial: "open_shelves", locals: { request_options:, document: }
     end
   end
 
-  def no_temple_request_options_available(request_options, books, document)
+  def equipment_partial(request_options, document, equipment)
+    if equipment.present?
+      render partial: "equipment", locals: { request_options:, document:, equipment: }
+    end
+  end
+
+  def no_temple_request_options_available(request_options, books, document, equipment)
     if !@request_options.hold_allowed? &&
       !@request_options.digitization_allowed? &&
       !@request_options.booking_allowed? &&
       !aeon_request_allowed(document) &&
-      !digital_copy_partial(request_options, books, document) &&
-      !open_shelves_partial(request_options, books, document)
-      render partial: "no_request_options", locals: { request_options:, books:, document: } unless @request_options.resource_sharing_broker_allowed?
+      !digital_copy_partial(request_options, document) &&
+      !open_shelves_partial(request_options, document) &&
+      equipment.empty?
+      render partial: "no_request_options", locals: { request_options:, books:, document:, equipment: } unless @request_options.resource_sharing_broker_allowed?
     end
   end
 
-  def relevant_request_options(request_options, books, document)
+  def relevant_request_options(request_options, books, document, equipment)
     [ request_options.hold_allowed? && non_asrs_items.present?,
       request_options.hold_allowed? && available_asrs_items.present?,
       request_options.digitization_allowed?,
@@ -70,11 +77,12 @@ module AlmawsHelper
       request_options.resource_sharing_broker_allowed? && books.present?,
       aeon_request_allowed(document),
       digital_help_allowed?(document),
-      open_shelves_allowed?(document)]
+      open_shelves_allowed?(document),
+      equipment.present?]
   end
 
-  def only_one_option_allowed(request_options, books, document)
-    relevant_request_options(request_options, books, document).select(&:itself).count == 1
+  def only_one_option_allowed(request_options, books, document, equipment)
+    relevant_request_options(request_options, books, document, equipment).select(&:itself).count == 1
   end
 
   def non_asrs_items(items = @items)

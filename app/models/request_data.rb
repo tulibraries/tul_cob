@@ -128,7 +128,7 @@ class RequestData
   def equipment_locations
     pickup_locations = []
     @items.each do |item|
-      if item.circulation_policy == "Equipment"
+      if item.circulation_policy == "Equipment" || item.library == "DSC"
         pickup_locations << item.item_data.fetch("library")
       end
     end
