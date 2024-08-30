@@ -15,7 +15,7 @@ class AlmawsController < CatalogController
 
     @items = get_bib_items(@mms_id)
     availability = @items.group_by { |item| item["item_data"]["pid"] }
-        .transform_values { |item| { availability: helpers.availability_status(item.first) } }
+        .transform_values { |item| AlmawsAvailability.new(item.first).to_h }
     @document.merge_item_data!(availability)
     @document_availability = @document.document_items_grouped
 
