@@ -41,7 +41,7 @@
           <td>
             <div class="avail_status">
               <%= availability_status_display(item) %>
-              <% if item["non_circluating"] = true %>
+              <% if item["non_circulating"].present? %>
                 <%= non_circulating_display(item)  %>
               <% end %>
             </div>
