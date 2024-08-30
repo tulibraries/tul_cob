@@ -8,9 +8,11 @@ RSpec.describe "users/_loans_fines.html.erb", type: :view do
   end
 
   context "no title for fee" do
+    Fee = Data.define(:id, :title, :type, :balance)
     let(:fee_no_title) {
-      OpenStruct.new(
+      Fee.new(
         id: "12345",
+        title: "",
         type: { "value" => "CUSTOMER_DEFINED_02", "desc" => "Makerspace Fee" },
         balance: 0.01
       )
@@ -24,8 +26,9 @@ RSpec.describe "users/_loans_fines.html.erb", type: :view do
   end
 
   context "item title for fee" do
+    Fee = Data.define(:id, :title, :type, :balance)
     let(:fee_title) {
-      OpenStruct.new(
+      Fee.new(
         id: "67890",
         title: "Test",
         type: { "value" => "OVERDUEFINE", "desc" => "Overdue fine" },

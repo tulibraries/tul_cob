@@ -12,6 +12,6 @@
     Total
   </td>
   <td colspan="1">
-    <%= number_to_currency(fines.sum) %>
+    <%= number_to_currency(fines.sum(&:balance)) %>
   </td>
 </tr>

@@ -84,6 +84,7 @@ CLEAR_CACHES=no
 CI ?= false
 PLATFORM ?= linux/x86_64
 WEB_CONCURRENCY ?= 1
+RAILS_MASTER_KEY ?= $(LIBRARYSEARCH_MASTER_KEY)
 
 run:
 	@docker run --name=cob -p 127.0.0.1:3001:3000/tcp \
@@ -104,7 +105,7 @@ run:
 		-e "OCLC_WS_KEY=$(OCLC_WS_KEY)" \
 		-e "RAILS_ENV=production" \
 		-e "RAILS_SERVE_STATIC_FILES=yes" \
-		-e "SECRET_KEY_BASE=$(SECRET_KEY_BASE)" \
+		-e "RAILS_MASTER_KEY=$(RAILS_MASTER_KEY)" \
 		-e "SOLRCLOUD_HOST=$(SOLRCLOUD_HOST)" \
 		-e "SOLRCLOUD_PASSWORD=$(SOLRCLOUD_PASSWORD)" \
 		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
@@ -117,7 +118,7 @@ run:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
-	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
+	@docker build --build-arg RAILS_MASTER_KEY=$(RAILS_MASTER_KEY) \
     --build-arg BASE_IMAGE=$(BASE_IMAGE) \
 		--build-arg WEB_CONCURRENCY=$(WEB_CONCURRENCY) \
 		--platform $(PLATFORM) \

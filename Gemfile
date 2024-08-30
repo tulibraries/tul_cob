@@ -68,6 +68,7 @@ group :development do
   gem "flamegraph"
   gem "foreman"
   gem "launchy"
+  gem "rack-mini-profiler", require: false
   gem "ruby-prof"
   gem "stackprof"
   gem "web-console"
@@ -83,7 +84,6 @@ group :test do
   gem "capybara", "~> 3"
   gem "database_cleaner"
   gem "factory_bot_rails"
-  gem "rack-mini-profiler", require: false
   gem "rails-controller-testing"
   gem "rspec-rails"
   gem "selenium-webdriver"
