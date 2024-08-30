@@ -1,11 +1,12 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require 'csv'
-require 'httparty'
-require 'ipaddr'
-require 'sqlite3'
-require 'json'
-require 'fileutils'
+require "csv"
+require "httparty"
+require "ipaddr"
+require "sqlite3"
+require "json"
+require "fileutils"
 
 # Get the file path from the command line arguments
 csv_file = ARGV[0]
@@ -61,13 +62,13 @@ def get_ipinfo_from_db(ip_address)
   return ip_info
 end
 
-def get_ipinfo_from_server(ip, token=ENV['IPINFO_TOKEN'])
+def get_ipinfo_from_server(ip, token = ENV["IPINFO_TOKEN"])
   url = "https://ipinfo.io/#{ip}/json"
   url += "?token=#{token}" if token
 
   response = HTTParty.get(url)
   if response.code == 200
-    data = response.parsed_response.slice('ip', 'org', 'range')
+    data = response.parsed_response.slice("ip", "org", "range")
     print ":"
 
     save_ipinfo(data)
@@ -80,9 +81,9 @@ end
 
 def private_ip?(ip)
   private_ranges = [
-    IPAddr.new('10.0.0.0/8'),
-    IPAddr.new('172.16.0.0/12'),
-    IPAddr.new('192.168.0.0/16')
+    IPAddr.new("10.0.0.0/8"),
+    IPAddr.new("172.16.0.0/12"),
+    IPAddr.new("192.168.0.0/16")
   ]
 
   ip = IPAddr.new(ip)
@@ -97,7 +98,7 @@ ip_info = {}
 # Get IPs from CSV file.
 CSV.foreach(csv_file, headers: true) do |row|
   ip = row["httpRequest\\.remoteIp"]
-  ips <<  ip unless private_ip?(ip)
+  ips << ip unless private_ip?(ip)
 end
 
 stats = ips.sort.reduce({}) do |acc, ip|
@@ -105,24 +106,24 @@ stats = ips.sort.reduce({}) do |acc, ip|
     ip_info[ip] = get_ipinfo(ip)
   end
 
-  org = ip_info[ip]['org'] || ip_info[ip][:org]
+  org = ip_info[ip]["org"] || ip_info[ip][:org]
 
   # What are the ips associated to a specific org?
   if acc[org]
-    acc[org]['ips'] << ip
+    acc[org]["ips"] << ip
   else
     acc[org] = {}
-    acc[org]['ips'] = [ip]
+    acc[org]["ips"] = [ip]
   end
 
   # How many of the total hits come from this specific org?
-  acc[org]['percent'] = acc[org]['ips'].count.to_f / ips.count * 100
+  acc[org]["percent"] = acc[org]["ips"].count.to_f / ips.count * 100
   acc
 end
 
 def take_top(stats, count = 10)
   stats
-    .sort_by { |org| _, info = org ; info['percent'] }
+    .sort_by { |org| _, info = org ; info["percent"] }
     .reverse
     .take(count)
 end
@@ -132,7 +133,7 @@ puts
 puts "Percent Totals of #{ips.count} Requests by Organization (top 10):"
 puts "-------------------------------"
 take_top(stats).each do |org, info|
-  percent = format("%.2f", info['percent'])
+  percent = format("%.2f", info["percent"])
   puts "#{percent}%: #{org}"
 end
 
