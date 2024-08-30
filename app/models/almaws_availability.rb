@@ -3,9 +3,9 @@
 # This model generates availability information using item data from the Alma API (see alma_rb gem).
 
 class AlmawsAvailability
-  # Temporary change for Ambler locations, Main storage location
+  # Temporary status changes
   TEMP_LIBRARIES = []
-  TEMP_LOCATIONS = ["ambler", "amb_media", "storage"]
+  TEMP_LOCATIONS = [ "storage"]
 
   def self.new(item)
     if TEMP_LOCATIONS.include?(item.location) || TEMP_LIBRARIES.include?(item.library)
