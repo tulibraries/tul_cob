@@ -61,6 +61,11 @@ class ApplicationController < ActionController::Base
     }
   end
 
+  def clear_caches
+    Rails.cache.clear
+    render json: { message: "Cache has been cleared" }, status: :ok
+  end
+
   protected
 
     def no_cache

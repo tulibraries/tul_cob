@@ -168,6 +168,8 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "*anything", to: "errors#not_found"
+
+  delete "clear_caches", to: "application#clear_caches"
 end
 
 OkComputer::Engine.routes.draw do

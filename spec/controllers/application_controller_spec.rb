@@ -12,4 +12,13 @@ RSpec.describe ApplicationController, type: :controller do
     expect(sign_out_url).to_not be_nil
     expect(controller.after_sign_out_path_for(:foo)).to eq(sign_out_url)
   end
+
+  describe "DELETE #clear_caches action" do
+    context "anonymous user" do
+      it "clears the caches" do
+        delete(:clear_caches)
+        expect(response.body).to match "Cache has been cleared"
+      end
+    end
+  end
 end
