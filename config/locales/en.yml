@@ -184,7 +184,7 @@ en:
     aeon_button_text: "Go to SCRC Researcher Account"
     open_shelves_header: "Find item on the shelves"
     open_shelves_text: "Close this window to view the location and call number, then find the item using this information."
-    equipment_header: "Borrow Media Equipment"
+    equipment_header: "Borrow media equipment"
     equipment_text_html: "For more information, see %{href}."
     equipment_text_href: "Borrow Media Equipment"
     equipment_text_link: "https://library.temple.edu/services/borrow-media-equipment" 
