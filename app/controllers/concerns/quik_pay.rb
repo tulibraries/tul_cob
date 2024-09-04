@@ -15,7 +15,7 @@ module QuikPay
     total_fines_cents = (100 * session[:total_fines].to_f).to_i
 
     params = { amountDue: total_fines_cents,  orderNumber: session[:alma_sso_user] }
-    redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"])
+    redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"]), allow_other_host: true
   end
 
   # Callback for processing user after they are returned from quikpay service.

@@ -1,6 +1,5 @@
 # Allow base image override
 ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.3-alpine"
-
 # hadolint ignore=DL3006,DL3026
 FROM "${BASE_IMAGE}"
 
@@ -14,8 +13,9 @@ ENV LD_PRELOAD="libjemalloc.so.2" \
 
 USER root
 
-ARG SECRET_KEY_BASE
 ARG WEB_CONCURRENCY
+ARG RAILS_MASTER_KEY=foobar
+ARG RAILS_ENV=production 
 
 # libc6-compat is required for m1 build.
 RUN apk add -U --no-cache \
@@ -35,12 +35,12 @@ RUN apk add -U --no-cache \
       postgresql16-dev=16.3-r0 \
       nodejs=20.15.1-r0 \
       yarn=1.22.22-r0 && \
-    bundle config set --local without "development test" && \
+    bundle config set --local without "development test" && \    
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     cp config/alma.yml.example config/alma.yml && \
     cp config/bento.yml.example config/bento.yml && \
-    RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE bundle exec rails assets:precompile && \
+    bundle exec rails assets:precompile && \
     rm -rf node_modules && \
     rm -rf tmp/* && \
     apk del build-dependencies && \
