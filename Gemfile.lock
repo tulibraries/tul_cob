@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: d4f277c97d32db8a5e8181f0580b23f602b43bbf
+  revision: 14e0e6e63f7fc3bdde1b5205aabbf0e26d904a71
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -517,8 +517,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.6)
-      strscan
+    rexml (3.3.7)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
@@ -607,7 +606,6 @@ GEM
     sqlite3 (1.7.3-x86_64-linux)
     stackprof (0.2.26)
     stringio (3.1.1)
-    strscan (3.1.0)
     summon (2.0.5)
       json
     thor (1.3.2)
