@@ -6,8 +6,8 @@
     <div class="panel-group request-group" id="request-accordian-<%= @mms_id %>">
     <% if @items.any?(&:in_place?) %>
       <%= open_shelves_partial(@request_options, @document) %>
-      <%= equipment_partial(@request_options, @document, @equipment) %>
     <% end %>
+    <%= equipment_partial(@request_options, @document, @equipment) %>
     <%= asrs_allowed_partial(@request_options, @document) %>
     <%= hold_allowed_partial(@request_options, @document) %>
     <%= digitization_allowed_partial(@request_options, @document) %>
