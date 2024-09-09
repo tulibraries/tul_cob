@@ -309,7 +309,7 @@ RSpec.describe SolrDocument, type: :model do
           "call_number_type" => "0",
           "call_number" => "F159.P7 C66 2003",
           "holding_id" => "22239405730003811",
-          "availability" => "<span class=\"check\"></span>Available" },
+          "availability" => "Available" },
           { "item_pid" => "23239405700003811",
           "item_policy" => "0",
           "permanent_library" => "ASRS",
@@ -319,7 +319,7 @@ RSpec.describe SolrDocument, type: :model do
           "call_number_type" => "0",
           "call_number" => "F159.P7 C66 2003",
           "holding_id" => "22239405730003811",
-          "availability" => "<span class=\"check\"></span>Available" },
+          "availability" => "Available" },
           { "item_pid" => "23239405740003811",
           "item_policy" => "0",
           "permanent_library" => "MAIN",
@@ -329,7 +329,7 @@ RSpec.describe SolrDocument, type: :model do
           "call_number_type" => "0",
           "call_number" => "F159.P7 C66 2003",
           "holding_id" => "22239405750003811",
-          "availability" => "<span class=\"check\"></span>Available" }]
+          "availability" => "Available" }]
           )}
 
       it "returns Charles first, then Ambler" do
@@ -366,7 +366,7 @@ RSpec.describe SolrDocument, type: :model do
           "call_number" => "HF5006 .I614",
           "call_number_display" => "HF5006 .I614",
           "holding_id" => "22242235730003811",
-          "availability" => "<span class=\"check\"></span>Library Use Only" },
+          "availability" => "Library Use Only" },
          { "item_pid" => "23242235710003811",
           "item_policy" => "12",
           "description" => "1987-89",
@@ -380,7 +380,7 @@ RSpec.describe SolrDocument, type: :model do
           "call_number" => "AC1 .G72",
           "call_number_display" => "AC1 .G72",
           "holding_id" => "22242235730003811",
-          "availability" => "<span class=\"check\"></span>Library Use Only" }]
+          "availability" => "Library Use Only" }]
         )}
 
       it "returns copies for each library by call number" do

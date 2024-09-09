@@ -12,6 +12,17 @@ class RequestData
     @pickup_location_codes = params ? params[:pickup_location]&.split(",") : valid_pickup_locations
   end
 
+  def item_holding_ids
+    @items
+      .select { |item| item.location != "storage" }
+      .collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
+  end
+
+  def item_holding_ids_backup
+    item_pids = @items.collect { |item| item["item_data"]["pid"] }
+    @items.collect { |item| [item["holding_data"]["holding_id"], item_pids.first] }.to_h
+  end
+
   def get_request_level(partial = nil)
     if partial == "asrs"
       # This conditional still needs to be refactored.
@@ -117,7 +128,7 @@ class RequestData
   def equipment_locations
     pickup_locations = []
     @items.each do |item|
-      if item.circulation_policy == "Equipment"
+      if item.circulation_policy == "Equipment" || item.library == "DSC"
         pickup_locations << item.item_data.fetch("library")
       end
     end

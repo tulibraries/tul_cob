@@ -15,7 +15,7 @@ class AlmawsController < CatalogController
 
     @items = get_bib_items(@mms_id)
     availability = @items.group_by { |item| item["item_data"]["pid"] }
-        .transform_values { |item| { availability: helpers.availability_status(item.first) } }
+        .transform_values { |item| AlmawsAvailability.new(item.first).to_h }
     @document.merge_item_data!(availability)
     @document_availability = @document.document_items_grouped
 
@@ -48,17 +48,16 @@ class AlmawsController < CatalogController
     @equipment = @request_data.equipment_locations
     @booking_location = @request_data.booking_locations
 
-    # Request levels and options
+    # Request levels
     @request_level = @request_data.request_level
     @asrs_request_level = @request_data.asrs_request_level
 
-    if @request_level == "item" || @asrs_request_level == "item"
-      @item_level_holdings = CobAlma::Requests.item_holding_ids(@items)
-      @request_options = get_item_request_options(@mms_id, @user_id, @item_level_holdings)
-
+    # Request options
+    if [@request_level, @asrs_request_level].include?("item")
+      @request_options = get_item_request_options(@mms_id, @user_id, @request_data.item_holding_ids)
+      # If nil, recheck using different id hash (should be reviewed at some point)
       if @request_options&.request_options.nil?
-        @second_attempt_holdings = CobAlma::Requests.second_attempt_item_holding_ids(@items)
-        @request_options = get_item_request_options(@mms_id, @user_id, @second_attempt_holdings)
+        @request_options = get_item_request_options(@mms_id, @user_id, @request_data.item_holding_ids_backup)
       end
     else
       @request_options = get_bib_request_options(@mms_id, @user_id)

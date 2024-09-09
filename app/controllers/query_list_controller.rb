@@ -5,7 +5,6 @@ class QueryListController < ApplicationController
 
   def show
     search_service = search_service_class.new(config: blacklight_config, user_params: params)
-
     (resp, _) = search_service.search_results
 
     @docs = resp.docs

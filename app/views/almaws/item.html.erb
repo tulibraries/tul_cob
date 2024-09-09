@@ -39,7 +39,12 @@
           <td><%= item.fetch("description", "") %><%= public_note(item) %></td>
           <td><%= material_type(item) %></td>
           <td>
-            <div class="avail_status"><%= item.fetch("availability", "") %></div>
+            <div class="avail_status">
+              <%= availability_status_display(item) %>
+              <% if item["non_circulating"].present? %>
+                <%= non_circulating_display(item)  %>
+              <% end %>
+            </div>
           </td>
         </tr>
       <% end %>

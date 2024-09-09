@@ -39,7 +39,7 @@ build:
   stage: build
   extends: .build_and_scan_image
   variables:
-    DF: ".docker/app/Dockerfile.prod --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE --no-cache"
+    DF: ".docker/app/Dockerfile.prod --build-arg RAILS_MASTER_KEY=$MASTER_KEY --no-cache"
   except:
     - tags
     

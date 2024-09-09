@@ -14,12 +14,13 @@
             <li class="<%= config.key %> pt-1 ps-3" id="bookmark_button">
               <%= inner %>
             </li>
+            <%# The Cite feature has been temporarily turned off as of September 2024. %>
+            <%# if @document.citable? %>
+              <!--<li>
+                <%#= link_to t("blacklight.tools.cite_html", current_range: ""), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn"} %>
+              </li>-->
+            <%# end %>
 
-            <% if @document.citable? %>
-              <li>
-                <%= link_to t("blacklight.tools.cite_html", current_range: ""), citation_solr_document_path(:id => @document), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation btn"} %>
-              </li>
-            <% end %>
           <% else %>
             <% @sendto[config.key] = inner %>
           <% end %>

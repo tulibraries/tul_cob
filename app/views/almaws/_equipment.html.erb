@@ -1,0 +1,12 @@
+<div class="card p-0 request-card">
+  <div class="request-heading bg-lighter-grey">
+    <h2 class="card-title mb-0">
+      <a class="booking-request accordian-toggle" aria-expanded="<%= only_one_option_allowed(request_options, @books, document, equipment) %>" data-toggle="collapse" data-parent="#request-accordian-<%=  @mms_id %>" href="#collapseEquipment-<%= @mms_id %>"><%= t("requests.equipment_header") %></a>
+    </h2>
+  </div>
+  <div id="collapseEquipment-<%= @mms_id %>" class="collapse <%= "show" if only_one_option_allowed(request_options, @books, document, equipment) %>">
+    <div class="card-body pb-0">
+      <p><%= t("requests.equipment_text_html", href: link_to(t("requests.equipment_text_href"), t("requests.equipment_text_link"), target: "_blank")) %><span class='request-options-external-link-icon'></span></p>
+    </div>
+  </div>
+</div>
