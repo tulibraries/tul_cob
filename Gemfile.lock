@@ -446,7 +446,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    pg (1.5.7)
+    pg (1.5.8)
     popper_js (1.16.1)
     pry (0.14.2)
       coderay (~> 1.1)
