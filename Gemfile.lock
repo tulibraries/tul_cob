@@ -557,7 +557,7 @@ GEM
       rubocop-ast (>= 1.31.1, < 2.0)
     ruby-prof (1.7.0)
     ruby-progressbar (1.13.0)
-    ruby-saml (1.16.0)
+    ruby-saml (1.17.0)
       nokogiri (>= 1.13.10)
       rexml
     rubyzip (2.3.2)
@@ -755,7 +755,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   ruby-prof
-  ruby-saml (= 1.16.0)
+  ruby-saml (= 1.17.0)
   sass-rails
   selenium-webdriver
   simplecov
