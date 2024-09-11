@@ -47,6 +47,10 @@ module Tulcob
       g.fixture_replacement :factory_bot
     end
     #config.log_level = :debug
+
+    # Could be removed once this issue is fixed:
+    # https://github.com/heartcombo/devise/pull/5462
+    config.action_controller.raise_on_open_redirects = false
   end
 end
 
