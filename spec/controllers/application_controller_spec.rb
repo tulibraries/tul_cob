@@ -14,8 +14,19 @@ RSpec.describe ApplicationController, type: :controller do
   end
 
   describe "DELETE #clear_caches action" do
+    # We disable forgery protection by default in  our test environment.
+    # We need to enable it to properly test this endpoint.
+    around do |example|
+      original_setting = ActionController::Base.allow_forgery_protection
+      ActionController::Base.allow_forgery_protection = true
+      example.run
+    ensure
+      ActionController::Base.allow_forgery_protection = original_setting
+    end
+
     context "anonymous user" do
       it "clears the caches" do
+        request.headers["Authorization"] = "Bearer token"
         delete(:clear_caches)
         expect(response.body).to match "Cache has been cleared"
       end
