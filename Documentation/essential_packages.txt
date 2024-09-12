@@ -1,5 +1,2 @@
 bootstrap
 micromatch
-body-parser
-path-to-regexp
-send
