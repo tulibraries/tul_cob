@@ -36,6 +36,6 @@ export default class extends Controller {
     let mms_id = $(this.buttonTarget).data("availability-ids");
     let requests_url = $("#request-url-data-" + mms_id).data("requests-url");
     $(this.hrefTarget).attr("href", requests_url);
-    $(this.hrefTarget).append("<span class='fa fa-spinner fa-spin ml-1' aria-busy='true' aria-live='polite'></span>")
+    $(this.hrefTarget).append("<span class='fa fa-spinner fa-spin ms-1' aria-busy='true' aria-live='polite'></span>")
   }
 }

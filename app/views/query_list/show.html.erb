@@ -1,6 +1,6 @@
-<div class="d-flex row list-parent ml-1 mb-4">
+<div class="d-flex row list-parent ms-1 mb-4">
   <% @docs.each do |doc| %>
-    <div class="card query-list border-dark my-1 mr-2">
+    <div class="card query-list border-dark my-1 me-2">
       <div class="card-body query-card-body px-3 d-flex flex-column">
         <h4 class="query-item-title mb-1"><%= link_to(doc["title_statement_display"].first, solr_document_path(doc["id"]), class:"query-list-title-link") %></h4>
         <div class="query-item-info mt-auto">

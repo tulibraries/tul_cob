@@ -19,16 +19,16 @@
 //= require bootstrap
 //= require turbolinks//
 
-//= require bootstrap-select
-//= require bootstrap/alert
-//= require bootstrap/tab
-
 // Required by Blacklight
 //= require blacklight/blacklight
 
 // For blacklight_range_limit built-in JS, if you don't want it you don't need
 // this:
 //= require 'blacklight_range_limit'
+
+//= require sifter
+//=require microplugin
+//=require selectize
 
 //= require_tree .
 
@@ -49,17 +49,17 @@ $(window).on('turbolinks:load', function() {
 	else {
 		$('#nav-tools').insertAfter('#page-links');
 		$('#facet-filter-icon').addClass('hidden');
+    $('#facet-availability_facet-header').removeClass('collapsed')
 	}
 });
 
 $(document).ready(function() {
 	$("body").tooltip({
     selector: '[data-toggle="tooltip"]'
-});
+  });
 
 	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
-	$(".secondary-dl").children("dd").addClass("pl-md-3");
-
+	$(".secondary-dl").children("dd").addClass("ps-md-3");
 
 	$('.decorative').each(function() {
     $(this).attr('alt', "");
@@ -80,19 +80,20 @@ $(document).ready(function() {
     if (windowWidth < 768) {
 	  $('#nav-tools').insertAfter('#document');
 	  $('#facet-filter-icon').removeClass('hidden');
-      $('#facet-panel-collapse').removeClass('show');
+    $('#facet-panel-collapse').removeClass('show');
 	  $('.limit-search-heading').addClass('d-none');
     }
     else {
 	  $('#nav-tools').insertAfter('#page-links');
 	  $('#facet-filter-icon').addClass('hidden');
-      $('#facet-panel-collapse').addClass('show');
+    $('#facet-panel-collapse').addClass('show');
     }
 	});
 });
 
 $(document).on('turbolinks:load', function() {
    $(window).trigger('load.bs.select.data-api');
+   $(".selectize").selectize();
 });
 
 $(document).ready(function(){
@@ -136,6 +137,7 @@ $(document).on('turbolinks:load', function() {
 	 $(this).addClass("active");
  });
 
+
  function toggle(x) {
 	if (x == "secondary") {
 	 document.getElementById("sub-toggler-icon").classList.toggle("change");
@@ -146,6 +148,7 @@ $(document).on('turbolinks:load', function() {
 	else {
 		document.getElementById("main-toggler-icon").classList.toggle("change");
 	}
+
 }
 
 // This hack helps with a race condition bug in blacklight_range_limit gem.

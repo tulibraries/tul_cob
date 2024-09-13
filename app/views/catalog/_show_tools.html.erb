@@ -11,7 +11,7 @@
       <ul id="tools-navbar">
         <%= render_show_doc_actions @document do |config, inner| %>
           <% if config.key == :bookmark %>
-            <li class="<%= config.key %> pt-1 pl-3" id="bookmark_button">
+            <li class="<%= config.key %> pt-1 ps-3" id="bookmark_button">
               <%= inner %>
             </li>
             <%# The Cite feature has been temporarily turned off as of September 2024. %>
@@ -28,7 +28,7 @@
 
         <li id="sendto-menu">
           <div id="sendto" class="dropdown show">
-            <a class="btn dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Send To <span class="caret"></span></a>
+            <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Send To <span class="caret"></span></a>
             <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <div class="sendto-item dropdown-item">

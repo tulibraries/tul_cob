@@ -51,21 +51,21 @@ a.facet_book_chapters,
 a.facet_book,
 a.facet_books,
 a.facet_ebooks {
-  background: transparent url(<%= asset_path "noun_book.svg" %>) no-repeat center left;
+  background: transparent url("noun_book.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_book_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_book_crystalblue.svg") no-repeat center left;
   }
 }
 span.conference_proceeding, a.facet_conference_proceeding, a.facet_conference_proceedings {
-  background: transparent url(<%= asset_path "noun_conference.svg" %>) no-repeat center left;
+  background: transparent url("noun_conference.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_conference_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_conference_crystalblue.svg") no-repeat center left;
   }
 }
 span.newsletter_article,
@@ -110,12 +110,12 @@ a.facet_publication_corrigendum,
 a.facet_legal_documents,
 a.facet_legal_document
 {
-  background: transparent url(<%= asset_path "noun_article.svg" %>) no-repeat center left;
+  background: transparent url("noun_article.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_article_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_article_crystalblue.svg") no-repeat center left;
   }
 }
 span.magazinearticle,
@@ -128,12 +128,12 @@ a.facet_journal_periodical,
 a.facet_journals,
 a.facet_articles
 {
-  background: transparent url(<%= asset_path "noun_journal.svg" %>) no-repeat center left;
+  background: transparent url("noun_journal.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_journal_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_journal_crystalblue.svg") no-repeat center left;
   }
 }
 span.dissertation_thesis,
@@ -143,21 +143,21 @@ a.facet_dissertation_thesis,
 a.facet_dissertations,
 a.facet_dissertation
 {
-  background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
+  background: transparent url("noun_thesis.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_thesis_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_thesis_crystalblue.svg") no-repeat center left;
   }
 }
 span.score, a.facet_score, a.facet_scores {
-  background: transparent url(<%= asset_path "noun_music.svg" %>) no-repeat center left;
+  background: transparent url("noun_music.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_music_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_music_crystalblue.svg") no-repeat center left;
   }
 }
 span.video,
@@ -165,37 +165,37 @@ span.streaming_video,
 a.facet_video,
 a.facet_streaming_video,
 a.facet_videos {
-  background: transparent url(<%= asset_path "noun_video.svg" %>) no-repeat center left;
+  background: transparent url("noun_video.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_video_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_video_crystalblue.svg") no-repeat center left;
   }
 }
 span.archival_material,
 span.archival_material_manuscript,
 a.facet_archival_material,
 a.facet_archival_material_manuscripts {
-  background: transparent url(<%= asset_path "noun_archive.svg" %>) no-repeat center left;
+  background: transparent url("noun_archive.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_archive_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_archive_crystalblue.svg") no-repeat center left;
   }
 }
 span.primary_sources_history,
 span.primary_sources_literature,
 a.facet_primary_sources_history,
 a.facet_primary_sources_literature {
-  background: transparent url(<%= asset_path "noun_primary_sources.svg" %>) no-repeat center left;
+  background: transparent url("noun_primary_sources.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-bottom: .25rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_primary_sources_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_primary_sources_crystalblue.svg") no-repeat center left;
   }
 }
 
@@ -208,12 +208,12 @@ a.facet_images,
 span.digital_collections,
 a.facet_digital_collections,
 span.facet_digital_collections {
-  background: transparent url(<%= asset_path "noun_visual_material.svg" %>) no-repeat center left;
+  background: transparent url("noun_visual_material.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_visual_material_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_visual_material_crystalblue.svg") no-repeat center left;
   }
 }
 span.audio,
@@ -221,56 +221,56 @@ span.streaming_audio,
 a.facet_streaming_audio,
 a.facet_audios,
 a.facet_audio {
-  background: transparent url(<%= asset_path "noun_audio.svg" %>) no-repeat center left;
+  background: transparent url("noun_audio.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_audio_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_audio_crystalblue.svg") no-repeat center left;
   }
 }
 span.object,
 span.media,
 a.facet_object,
 a.facet_media {
-  background: transparent url(<%= asset_path "noun_object.svg" %>) no-repeat center left;
+  background: transparent url("noun_object.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_object_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_object_crystalblue.svg") no-repeat center left;
   }
 }
 span.computer_file,
 span.computer_media,
 a.facet_computer_files,
 a.facet_computer_media {
-  background: transparent url(<%= asset_path "noun_computer_media.svg" %>) no-repeat center left;
+  background: transparent url("noun_computer_media.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_computer_media_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_computer_media_crystalblue.svg") no-repeat center left;
   }
 }
 span.game, span.games, a.facet_game, a.facet_games
  {
-  background: transparent url(<%= asset_path "noun_game.svg" %>) no-repeat center left;
+  background: transparent url("noun_game.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_game_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_game_crystalblue.svg") no-repeat center left;
   }
 }
 span.database, a.facet_database, a.facet_databases,
 #facet-az_format a.facet_temporary_access, span.temporary_access {
-  background: transparent url(<%= asset_path "noun_database.svg" %>) no-repeat center left;
+  background: transparent url("noun_database.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_database_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_database_crystalblue.svg") no-repeat center left;
   }
 }
 span.map,
@@ -278,12 +278,12 @@ span.maps_amp_mapping_tools,
 a.facet_map,
 a.facet_maps_mapping_tools,
 a.facet_maps {
-  background: transparent url(<%= asset_path "noun_map.svg" %>) no-repeat center left;
+  background: transparent url("noun_map.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_map_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_map_crystalblue.svg") no-repeat center left;
   }
 }
 span.dataset,
@@ -296,59 +296,59 @@ a.facet_datasets,
 a.facet_market_researchs,
 a.facet_research_datasets,
 a.facet_statistical_data_sets {
-  background: transparent url(<%= asset_path "noun_data_set.svg" %>) no-repeat center left;
+  background: transparent url("noun_data_set.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_data_set_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_data_set_crystalblue.svg") no-repeat center left;
   }
 }
 span.website, a.facet_website, a.facet_websites, a.facet_web_resources {
-  background: transparent url(<%= asset_path "noun_website.svg" %>) no-repeat center left;
+  background: transparent url("noun_website.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_website_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_website_crystalblue.svg") no-repeat center left;
   }
 }
 span.kit, a.facet_kit {
-  background: transparent url(<%= asset_path "noun_kit.svg" %>) no-repeat center left;
+  background: transparent url("noun_kit.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_kit_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_kit_crystalblue.svg") no-repeat center left;
   }
 }
 span.law_amp_regulations,
 a.facet_law_regulations {
-  background: transparent url(<%= asset_path "noun_law.svg" %>) no-repeat center left;
+  background: transparent url("noun_law.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_law_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_law_crystalblue.svg") no-repeat center left;
   }
 }
 span.reference,
 #facet-format a.facet_reference {
-  background: transparent url(<%= asset_path "noun_thesis.svg" %>) no-repeat center left;
+  background: transparent url("noun_thesis.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_thesis_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_thesis_crystalblue.svg") no-repeat center left;
   }
 }
 span.reference,
 #facet-az_format a.facet_reference,
 #facet-az_format span.reference {
-  background: transparent url(<%= asset_path "noun_reference.svg" %>) no-repeat center left;
+  background: transparent url("noun_reference.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_reference_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_reference_crystalblue.svg") no-repeat center left;
   }
 }
 #facet-az_subject_facet a.reference {
@@ -367,22 +367,22 @@ a.facet_retracted_publication,
 a.facet_retracted_publications,
 a.facet_retraction_notice,
 a.facet_retraction_notices {
-  background: transparent url(<%= asset_path "noun_question_mark.svg" %>) no-repeat center left;
+  background: transparent url("noun_question_mark.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
 
   .document-header-container & {
-    background: transparent url(<%= asset_path "noun_question_mark_crystalblue.svg" %>) no-repeat center left;
+    background: transparent url("noun_question_mark_crystalblue.svg") no-repeat center left;
   }
 }
 
 span.question_mark-icon {
-  background: transparent url(<%= asset_path "noun_question_mark.svg" %>) no-repeat top center;
+  background: transparent url("noun_question_mark.svg") no-repeat top center;
   padding-left: 1.9rem;
 }
 
 span.information-icon {
-  background: transparent url(<%= asset_path "info_icon.svg" %>) no-repeat top left;
+  background: transparent url("info_icon.svg") no-repeat top left;
   height: 1.25rem;
   padding-left: 1.7rem;
   margin-top: .2rem;
@@ -394,67 +394,67 @@ div.thumbnail img.default {
   opacity: .25;
 }
 span.check {
-  background: transparent url(<%= asset_path "icons/checkmark.svg" %>) no-repeat top left;
+  background: transparent url("icons/checkmark.svg") no-repeat top left;
   padding-left: 1.7rem;
   padding-top: .25rem;
 }
 
 span.payment_checkmark {
-  background: transparent url(<%= asset_path "icons/payment_checkmark.svg" %>) no-repeat top left;
+  background: transparent url("icons/payment_checkmark.svg") no-repeat top left;
   padding-left: 2rem;
   padding-top: .25rem;
 }
 
 span.close-icon {
-  background: transparent url(<%= asset_path "icons/close.svg" %>) no-repeat top left;
+  background: transparent url("icons/close.svg") no-repeat top left;
   padding-left: 1.75rem;
   padding-top: .25rem;
 }
 
 span.bento-book {
-  background: transparent url(<%= asset_path "bento_header_book.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_book.svg") no-repeat center left;
   margin-left: 0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.bento-article {
-  background: transparent url(<%= asset_path "bento_header_article.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_article.svg") no-repeat center left;
   margin-left: 0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.bento-database {
-  background: transparent url(<%= asset_path "bento_header_database.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_database.svg") no-repeat center left;
   margin-left: 0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.bento-journal {
-  background: transparent url(<%= asset_path "bento_header_journal.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_journal.svg") no-repeat center left;
   margin-left: 0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.bento-website {
-  background: transparent url(<%= asset_path "bento_header_website.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_website.svg") no-repeat center left;
   margin-left: 0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.bento-guide {
-  background: transparent url(<%= asset_path "bento_header_guide.svg" %>) no-repeat center left;
+  background: transparent url("bento_header_guide.svg") no-repeat center left;
   margin-left:0.3125rem !important;
   padding-left: 2.5125rem;
   padding-top: 0.25rem;
 }
 
 span.remove-icon {
-  background: transparent url(<%= asset_path "icons/remove.svg" %>) no-repeat top left;
+  background: transparent url("icons/remove.svg") no-repeat top left;
   padding-left: 1.25rem;
 }
 
@@ -463,64 +463,64 @@ span.remove-icon {
 }
 
 span.plus-icon {
-  background: transparent url(<%= asset_path "icons/plus.svg" %>) no-repeat top left;
+  background: transparent url("icons/plus.svg") no-repeat top left;
   padding-left: 1.25rem;
 }
 
 span.open-facet-icon {
-  background: transparent url(<%= asset_path "icons/filter_button_open.png" %>) no-repeat center center;
+  background: transparent url("icons/filter_button_open.png") no-repeat center center;
   padding-left: 1.25rem;
 }
 
 span.remove-facet-icon {
-  background: transparent url(<%= asset_path "icons/filter_button_close.png" %>) no-repeat center center;
+  background: transparent url("icons/filter_button_close.png") no-repeat center center;
   padding-left: 1.25rem;
 }
 
 span.research_guides-icon {
-  background: transparent url(<%= asset_path "noun_research_guide.svg" %>) no-repeat center center;
+  background: transparent url("noun_research_guide.svg") no-repeat center center;
   padding-left: 1.9rem;
 }
 
 span.faq-icon {
-  background: transparent url(<%= asset_path "noun_chat.svg" %>) no-repeat center center;
+  background: transparent url("noun_chat.svg") no-repeat center center;
   padding-left: 2.1rem;
 }
 
 span.external-link-icon {
-  background: transparent url(<%= asset_path "noun_external_link.svg" %>) no-repeat center center;
+  background: transparent url("noun_external_link.svg") no-repeat center center;
   padding-right: 4rem;
 }
 
 span.request-options-external-link-icon {
-  background: transparent url(<%= asset_path "noun_external_link.svg" %>) no-repeat center center;
+  background: transparent url("noun_external_link.svg") no-repeat center center;
   padding-right: 2rem;
 }
 
 span.error-external-link-icon {
-  background: transparent url(<%= asset_path "error_external_link.svg" %>) no-repeat center center;
+  background: transparent url("error_external_link.svg") no-repeat center center;
   padding-right: 1.25rem;
 }
 
 span.libkey-external-link-icon {
-  background: transparent url(<%= asset_path "libkey_external_link.svg" %>) no-repeat center center;
+  background: transparent url("libkey_external_link.svg") no-repeat center center;
   padding-right: 1.25rem;
 }
 
 span.view-more-arrow {
-  background: transparent url(<%= asset_path "svg/view_more_arrow.svg" %>) no-repeat center center;
+  background: transparent url("svg/view_more_arrow.svg") no-repeat center center;
   padding-right: 3rem;
   padding-top: 1.3rem;
 }
 
 ul.facet-values span.show {
-  background: transparent url(<%= asset_path "icons/catalog_plus_icon.png" %>) no-repeat top left;
+  background: transparent url("icons/catalog_plus_icon.png") no-repeat top left;
   padding-left: 1.25rem;
   padding-top: 1.25rem;
 }
 
 ul.facet-values span.hide {
-  background: transparent url(<%= asset_path "icons/catalog_minus_icon.png" %>) no-repeat top left;
+  background: transparent url("icons/catalog_minus_icon.png") no-repeat top left;
   padding-left: 1.25rem;
   padding-top: 1.25rem;
 }
