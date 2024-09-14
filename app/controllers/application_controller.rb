@@ -65,6 +65,13 @@ class ApplicationController < ActionController::Base
 
   def clear_caches
     Rails.cache.clear
+    cache_dir = Rails.configuration.action_controller.page_cache_directory
+
+    # Remove all files and subdirectories inside the cache directory
+    if File.exist?(cache_dir)
+      FileUtils.rm_rf(Dir.glob("#{cache_dir}/*"))
+    end
+
     render json: { message: "Cache has been cleared" }, status: :ok
   end
 
