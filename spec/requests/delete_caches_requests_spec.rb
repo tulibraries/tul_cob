@@ -17,13 +17,14 @@ RSpec.describe "DELETE #clear_caches", type: :request do
   end
 
   context "anonymous user" do
+    let(:id) { 991030207479703811 }
     it "clears the caches" do
       # Go to a catalog page
-      get "/catalog/991019830779703811"
+      get "/catalog/#{id}"
 
       # Assert that a cache page has been created
       cache_dir = Rails.configuration.action_controller.page_cache_directory
-      expected_cache_file = File.join(cache_dir, "catalog", "991019830779703811.html")
+      expected_cache_file = File.join(cache_dir, "catalog", "#{id}.html")
       expect(File.exist?(expected_cache_file)).to be true
 
       # Now delete the cache
