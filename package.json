@@ -25,6 +25,7 @@
   "resolutions": {
     "async": "3.2.2",
     "json5": "2.2.2",
+    "minimist": "1.2.8",
     "node-fetch": "2.6.7"
   },
   "babel": {
