@@ -7,13 +7,10 @@ RSpec.describe "DELETE #clear_caches", type: :request do
   # We need to enable it to properly test this endpoint.
   around do |example|
     original_forgery_setting = ActionController::Base.allow_forgery_protection
-    original_caching_setting = ActionController::Base.perform_caching
     ActionController::Base.allow_forgery_protection = true
-    ActionController::Base.perform_caching = true
     example.run
   ensure
     ActionController::Base.allow_forgery_protection = original_forgery_setting
-    ActionController::Base.perform_caching = original_caching_setting
   end
 
   context "anonymous user" do
