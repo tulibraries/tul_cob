@@ -7,6 +7,7 @@ default: &default
     scope: "pci_scope"
     vid: "TULI"
     web_ui_base_url: "https://your-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
+    timeout: "20"
 
   libkey:
     apikey: "API KEY HERE"
