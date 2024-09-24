@@ -6,12 +6,12 @@
     <%= render TulThumbnailComponent.new(presenter: doc_presenter, document:, counter: nil, gb_preview: true) %>
   <% end %>
 
-  <div class="float-md-left col-md-9">
+  <div class="float-md-start col-md-9">
     <%= render "show_primary_fields", :document => document %>
     <%= render "show_availability_section", :document => document %>
   </div>
 
-  <div class="float-md-left col-md-12 ms-0">
+  <div class="float-md-start col-md-12 ms-0">
     <%= render "show_secondary_fields", :document => document %>
     <%= render "staff_view_link" %>
     <div id="record-page-query-lists" class="no-gutters query-heading hidden">
