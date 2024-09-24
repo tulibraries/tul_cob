@@ -2,7 +2,7 @@
 
     <% document_actions = capture do %>
       <% if counter = document_counter_with_offset(document_counter) %>
-        <span class="document-counter float-left">
+        <span class="document-counter float-start">
           <%= t('blacklight.search.documents.counter', counter: counter) %>
         </span>
       <% end %>
