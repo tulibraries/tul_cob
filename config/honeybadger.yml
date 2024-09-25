@@ -2,3 +2,8 @@
 api_key: 'foobar'
 test:
   backend: test
+exceptions:
+  ignore:
+    - "Alma::BibRequest::ItemAlreadyExists"
+    - "No items can fulfill the submitted request"
+    - "ActiveRecord::RecordNotUnique"
