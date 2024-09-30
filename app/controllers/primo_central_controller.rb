@@ -80,7 +80,7 @@ class PrimoCentralController < CatalogController
 
     # Sort fields
     config.add_sort_field :rank, label: "relevance"
-    config.add_sort_field :date, label: "date (new to old)"
+    config.add_sort_field :date_d, label: "date (new to old)"
     config.add_sort_field :author, label: "author/creator (A to Z)"
     config.add_sort_field :title, label: "title (A to Z)"
   end
