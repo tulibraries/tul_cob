@@ -641,7 +641,7 @@ GEM
       railties (>= 3.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
+    uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
     unf (0.2.0)
     unicode-display_width (2.6.0)
