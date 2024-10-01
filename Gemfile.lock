@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 3794e03137600a954fc9380a6c1e57a1b078b8ba
+  revision: 506cdb1ae698374784869da7cb2288be8f6557fa
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -520,7 +520,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.7)
+    rexml (3.3.8)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
