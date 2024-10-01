@@ -5,5 +5,5 @@ test:
 exceptions:
   ignore:
     - "Alma::BibRequest::ItemAlreadyExists"
-    - "No items can fulfill the submitted request"
+    - !ruby/regexp "an /No items can fulfill the submitted request/"
     - "ActiveRecord::RecordNotUnique"
