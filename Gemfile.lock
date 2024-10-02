@@ -100,8 +100,8 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 710ff4ca17ca56b9e0220e5397c3ec5154c13add
-  branch: main
+  revision: 034a0869c4d5bc08df0131ad1e38858614139404
+  branch: BL-1903-Retry_on_timeout
   specs:
     primo (0.3.0)
       httparty
