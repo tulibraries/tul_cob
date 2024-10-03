@@ -161,17 +161,18 @@ module Blacklight::PrimoCentral::Document
       access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
-      retry_count = Primo.configuration.retries
+      retry_count = Primo.configuration.enable_retries ? Primo.configuration.retries : 0
       begin
         Thread.new {
           (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
             &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
         }
       rescue Net::ReadTimeout
-        if (read_count -= 1) > 0
+        if (Primo.configuration.retries && (retry_count -= 1) > 0)
+          Primo.configuration.logger.warn("Primo request timed out. Retrying. [#{retry_count}]")
           retry
         else
-          raise "Timeout retry limit exceeded"
+          raise "Primo request timed out"
         end
       end
     end

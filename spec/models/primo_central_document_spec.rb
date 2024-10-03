@@ -367,4 +367,28 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
 
   end
+
+  describe "libkey_articles_url_thread" do
+
+    before do
+      Primo.configure do |config|
+        config.enable_retries = true
+      end
+    end
+
+    context "mitigate Google::Apis::TransmissionError: execution expired error" do
+      let(:docs) { { "pnx" => { "addata" => { "doi" => [ "foo" ] } } } }
+      it "should retry if a timeout occurs" do
+        allow(HTTParty).to receive(:get).and_raise(Net::ReadTimeout).once
+        # [TODO] Fix potential false-positive when checking an exception DOES NOT occur
+        expect { subject.libkey_articles_url }.not_to raise_error
+      end
+  
+      it "should raise exception if max timeout retries occurs" do
+        allow(Thread).to receive(:new).and_raise(Net::ReadTimeout)
+        expect { subject.libkey_articles_url }.to raise_error("Primo request timed out")
+      end
+  
+    end
+  end
 end
