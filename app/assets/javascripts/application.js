@@ -55,7 +55,7 @@ $(window).on('turbolinks:load', function() {
 
 $(document).ready(function() {
 	$("body").tooltip({
-    selector: '[data-toggle="tooltip"]'
+    selector: '[data-bs-toggle="tooltip"]'
   });
 
 	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
 $(document).on('turbolinks:load', function() {
 	$(function () {
- 	  $('[data-toggle="tooltip"]').tooltip()
+ 	  $('[data-bs-toggle="tooltip"]').tooltip()
  	})
 
 	if ($(".noresults").length >= 1) {
