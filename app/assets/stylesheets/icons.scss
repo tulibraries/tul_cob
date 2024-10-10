@@ -14,11 +14,11 @@ button.collapse-button.collapsed .avail-label:after, button#filter-mobile.collap
   font-display: swap;
 }
 
-.lib-guides-recommender-bento [data-toggle="collapse"] i:before{
+.lib-guides-recommender-bento [data-bs-toggle="collapse"] i:before{
     content: "\f078";
 }
 
-.lib-guides-recommender-bento [data-toggle="collapse"].collapsed i:before{
+.lib-guides-recommender-bento [data-bs-toggle="collapse"].collapsed i:before{
     content: "\f054";
 }
 
