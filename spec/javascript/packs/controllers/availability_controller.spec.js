@@ -43,23 +43,23 @@ describe('AvailabilityController', () => {
   const controller = `
     <div data-controller="availability" data-availability-url="http://localhost:32770/almaws/item/991030169919703811?redirect_to=http%3A%2F%2Flocalhost%3A32770%2F%3Ff%255Bavailability_facet%255D%255B%255D%3DAt%2Bthe%2BLibrary">
       <div class="controls">
-        <button data-action="availability#item" data-availability-ids="991030169919703811" class="btn btn-sm btn-default availability-toggle-details" data-bs-toggle="collapse" data-bs-target="#physical-document-1, availability.button" id="available_button-1">
+        <button data-action="availability#item" data-availability-ids="991030169919703811" class="btn btn-sm btn-default availability-toggle-details" data-toggle="collapse" data-target="#physical-document-1, availability.button" id="available_button-1">
           <i class="fa fa-spinner" role="spinbutton"></i>
           <span>Loading...</span>
         </button>
-        <div data-bs-target="availability.spinner" class="spinner">
+        <div data-target="availability.spinner" class="spinner">
           <i class="fa fa-spinner" role="spinbutton"></i>
           <span>Loading Availability</span>
         </div>
 
-        <div id="requests-container-991030169919703811" class="hidden requests-container" data-controller="requests" data-bs-target="show.request, availability.request">
+        <div id="requests-container-991030169919703811" class="hidden requests-container" data-controller="requests" data-target="show.request, availability.request">
             <a data-ajax-modal="trigger" class="log-in-link" href="/users/sign_in?redirect_to=http%3A%2F%2Flocalhost%3A32770%2F%3Ff%255Bavailability_facet%255D%255B%255D%3DAt%2Bthe%2BLibrary">Log in to see request options</a>
         </div>
       </div>
 
       <div data-availability-ids="991030169919703811" id="physical-document-1" class="collapse panel-content avail-container index-avail-container">
         <div class="table-wrapper hidden">
-          <div data-bs-target="availability.panel"></div>
+          <div data-target="availability.panel"></div>
           <div></div>
         </div>
       </div>
@@ -91,7 +91,7 @@ describe('AvailabilityController', () => {
     });
 
     test('repsone text is added to panel target', () => {
-      const response = $('div[data-bs-target="availability.panel"]').text()
+      const response = $('div[data-target="availability.panel"]').text()
       expect(response).toEqual("Hello World")
     });
 
@@ -101,7 +101,7 @@ describe('AvailabilityController', () => {
     });
 
     test('panel target unhidden', () => {
-      let hidden = $('div[data-bs-target="availability.panel"]')
+      let hidden = $('div[data-target="availability.panel"]')
       .parent().hasClass("hidden")
 
       expect(hidden).toEqual(false)
