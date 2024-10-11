@@ -45,7 +45,7 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
 
   def facet_toggle_button(id)
     content_tag "button", class: "btn pivot-top-level-expand facet-toggle-handle #{'collapsed' unless uncollapse?}",
-                "data-bs": { toggle: "collapse", target: "##{id}" },
+                "data": { "bs-toggle": "collapse", "bs-target": "##{id}" },
                 aria: { expanded: uncollapse?, controls: id, describedby: "#{id}_label" } do
       concat toggle_icon(:show)
       concat toggle_icon(:hide)
