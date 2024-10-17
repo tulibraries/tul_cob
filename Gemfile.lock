@@ -462,7 +462,7 @@ GEM
     puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.1.7)
+    rack (3.1.8)
     rack-mini-profiler (3.3.1)
       rack (>= 1.2.0)
     rack-protection (4.0.0)
@@ -630,7 +630,7 @@ GEM
       deprecation
       jsonpath
       traject (~> 3.0)
-    turbo-rails (2.0.10)
+    turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     turbolinks (5.2.1)
@@ -683,7 +683,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.0)
 
 PLATFORMS
   aarch64-linux
