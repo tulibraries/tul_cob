@@ -193,12 +193,14 @@ GEM
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    axe-core-api (4.10.0)
+    axe-core-api (4.10.1)
       dumb_delegator
+      ostruct
       virtus
-    axe-core-rspec (4.10.0)
-      axe-core-api (= 4.10.0)
+    axe-core-rspec (4.10.1)
+      axe-core-api (= 4.10.1)
       dumb_delegator
+      ostruct
       virtus
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
