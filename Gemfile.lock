@@ -403,7 +403,6 @@ GEM
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.2.0)
-    mysql2 (0.5.6)
     net-http (0.4.1)
       uri
     net-imap (0.5.0)
@@ -738,7 +737,6 @@ DEPENDENCIES
   jwt
   launchy
   lc_solr_sortable!
-  mysql2 (~> 0.5.6)
   net-smtp
   nokogiri (= 1.16.7)
   okcomputer
