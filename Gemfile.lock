@@ -752,7 +752,6 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 7.1.4.2)
   rails-controller-testing
-  rexml (~> 3.3.9)
   rsolr (~> 2.6)
   rspec-rails
   rubocop
