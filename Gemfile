@@ -96,7 +96,6 @@ group :test do
 end
 
 group :production do
-  gem "mysql2", "~> 0.5.6"
   gem "pg"
   # required for using memcached
   gem "dalli"
