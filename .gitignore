@@ -61,3 +61,6 @@ yarn-debug.log*
 /config/credentials/production.key
 
 development.sqlite3*
+
+/app/assets/builds/*
+!/app/assets/builds/.keep

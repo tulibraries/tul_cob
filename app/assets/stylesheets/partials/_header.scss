@@ -74,19 +74,19 @@
       padding-right: 1rem;
     }
     li.nav-right.hours-nav {
-      background-image: asset-data-url('hours.png');
+      background-image: url('hours.png');
       background-position: 0.8rem center;
       background-repeat: no-repeat;
       background-size: 1.625rem 1.625rem;
     }
     li.nav-right.chat-nav {
-      background-image: asset-data-url('chat.png');
+      background-image: url('chat.png');
       background-position: 0.8rem center;
       background-repeat: no-repeat;
       background-size: 1.625rem 1.625rem;
     }
     li.nav-right.account-nav {
-      background-image: asset-data-url('person.png');
+      background-image: url('person.png');
       background-position: 0.8rem center;
       background-repeat: no-repeat;
       background-size: 1.625rem 1.625rem;

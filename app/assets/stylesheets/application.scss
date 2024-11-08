@@ -17,12 +17,12 @@
  *= require  'blacklight_range_limit'
  *
 */
-
 @import "partials/_vars.scss";
-@import "bootstrap";
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
 @import "selectize.bootstrap5.scss";
 @import "blacklight.scss";
-@import "blacklight_marc.scss";
+// @import "blacklight_marc.scss";
 @import "partials/*";
 @import "tucob";
 @import "icons";

@@ -1,0 +1,30 @@
+@import "partials/vars";
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@import "selectize.bootstrap5.scss";
+@import "blacklight.scss";
+// @import "blacklight_marc.scss";
+@import "tucob";
+@import "icons";
+@import "partials/advanced";
+@import "partials/availability";
+@import "partials/bento";
+@import "partials/bookmarks";
+@import "partials/citation_form";
+@import "partials/colors";
+@import "partials/facets";
+@import "partials/footer";
+@import "partials/header";
+@import "partials/index_results";
+@import "partials/lib_guides";
+@import "partials/mobilemenu";
+@import "partials/pagination";
+@import "partials/query_lists";
+@import "partials/record_pages";
+@import "partials/record_tools";
+@import "partials/requests";
+@import "partials/typography";
+@import "partials/users";
+@import "partials/web_content";
