@@ -23,11 +23,11 @@ module QuikPay
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timestamp"])
 
-    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"], transactionMessage: "Failed Payment" }
+    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"], transactionMessage: nil }
 
     if params["transactionStatus"] == "1"
       balance = Alma::User.send_payment(user_id: current_user.uid);
-      log[:transactionMessage] = "Successful Payment" if balance.paid?
+      log[:transactionMessage] = balance.payment_message
     end
 
     type, message = do_with_json_logger(log) {
