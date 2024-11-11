@@ -4,7 +4,7 @@
  * in turn communicate with Alma.
  */
 
-var BlacklightAlma = function (options) {
+class BlacklightAlma = function (options) {
     options = options || {};
     this.MAX_AJAX_ATTEMPTS = options.maxAjaxAttempts || 3;
     this.BATCH_SIZE = options.batchSize || 10;
@@ -17,8 +17,7 @@ var BlacklightAlma = function (options) {
  * @returns {string}
  */
 
-
- availabilityButton = function(id, holding) {
+ var availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("available")) {
      if (holding['availability'] == 'available') {
@@ -39,11 +38,11 @@ var BlacklightAlma = function (options) {
    }
  }
 
- noHoldingsAvailabilityButton = function(id) {
+ var noHoldingsAvailabilityButton = function(id) {
    unavailableItems(id);
   }
 
-  unavailableItems = function(id) {
+  var unavailableItems = function(id) {
     var availButton = $("button[data-availability-ids='" + id + "']");
 
     $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
@@ -52,7 +51,7 @@ var BlacklightAlma = function (options) {
     $(availButton).show();
   }
 
- availabilityInfo = function (holding) {
+ var availabilityInfo = function (holding) {
    var library = holding['library'];
    if (library == 'ASRS' || library == 'Paley Library') {
      library = "Charles Library";
@@ -81,7 +80,7 @@ var BlacklightAlma = function (options) {
    }
  };
 
- sortedLibraries = function (holdings) {
+ var sortedLibraries = function (holdings) {
    holdings.sort();
    if (holdings.indexOf('Charles Library') > 0) {
        holdings.splice(holdings.indexOf('Charles Library'), 1);
@@ -89,7 +88,7 @@ var BlacklightAlma = function (options) {
    }
  }
 
- availableHoldings = function (holdings) {
+ var availableHoldings = function (holdings) {
    availHoldings = [];
    holdings.forEach(function(item) {
      if (item.availability == "available") {
@@ -105,7 +104,7 @@ var BlacklightAlma = function (options) {
    return list.join("<br/>");
  }
 
- checkHoldings = function (holdings) {
+ var checkHoldings = function (holdings) {
    check = [];
    holdings.forEach(function(item) {
      if (item.availability == "check_holdings") {

@@ -1,4 +1,4 @@
-$(window).on('turbolinks:load', function() {
+$(window).on('turbo:load', function() {
 	const previews = document.getElementsByClassName("summary-previews");
 	
 	$(previews).each(function () {	

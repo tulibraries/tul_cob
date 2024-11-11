@@ -28,8 +28,8 @@
     <!-- End Google Tag Manager -->
 
     <%# Preload links for improved performance %>
-    <%= preload_link_tag(font_url('faustina.woff2')) %>
-    <%= preload_link_tag(font_url('roboto-condensed.woff2')) %>
+    <%# preload_link_tag(font_url('faustina.woff2')) %>
+    <%# preload_link_tag(font_url('roboto-condensed.woff2')) %>
 
     <link href="https://books.google.com" rel="preconnect" crossorigin>
     <link href="https://use.fontawesome.com" rel="preconnect" crossorigin>
@@ -38,7 +38,7 @@
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true, type: :module %>
     <%= render partial: "shared/campus_closed" %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>

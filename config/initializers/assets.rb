@@ -20,4 +20,4 @@ Rails.application.config.assets.default_cover_image =
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
-# Rails.application.config.assets.precompile += %w( faustina.woff2 roboto-condensed.woff2 )
+# Rails.application.config.assets.precompile += %w( bootstrap.min.js popper.js )

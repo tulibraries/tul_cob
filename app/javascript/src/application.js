@@ -1,38 +1,5 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file. JavaScript code in this file should be added after the last require_* statement.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require 'blacklight_advanced_search'
-//= require rails-ujs
-//= require popper
-//= require twitter/typeahead
 
-//= require bootstrap
-//= require turbolinks//
-
-// Required by Blacklight
-//= require blacklight/blacklight
-
-// For blacklight_range_limit built-in JS, if you don't want it you don't need
-// this:
-//= require 'blacklight_range_limit'
-
-//= require sifter
-//=require microplugin
-//=require selectize
-
-//= require_tree .
-
-$(window).on('turbolinks:load', function() {
+$(window).on('turbo:load', function() {
 	window.onload= function(){
 		// This fixes a bug where the pages are loading at the bottom in Chrome
 		if(location.hash == undefined || location.hash == "" ) {
@@ -91,7 +58,7 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
    $(window).trigger('load.bs.select.data-api');
    $(".selectize").selectize();
 });
@@ -109,7 +76,7 @@ $(document).ready(function(){
   );
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
 	$(function () {
  	  $('[data-bs-toggle="tooltip"]').tooltip()
  	})

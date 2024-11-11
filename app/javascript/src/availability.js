@@ -1,5 +1,9 @@
-$(document).on('turbolinks:load', function() {
-    var ba = new BlacklightAlma();
+
+
+$(document).on('turbo:load', function() {
+	const ba_object = require("./blacklight_alma_lib")
+    const ba = new ba_object
+		console.log(ba)
     ba.loadAvailability();
 });
 
