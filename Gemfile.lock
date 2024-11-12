@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 9e7db6102893dd317a5646f49121f39c004bd0fc
+  revision: 33cb54ad9347150af71fc984037abfa3ef870ca5
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -316,7 +316,7 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.88.1)
-    gli (2.21.5)
+    gli (2.22.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.1.1)
