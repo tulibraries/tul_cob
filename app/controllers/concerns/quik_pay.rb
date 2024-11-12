@@ -23,7 +23,7 @@ module QuikPay
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timestamp"])
 
-    log = { type: "alma_pay", user: current_user.id, transactionStatus: params["transActionStatus"] }
+    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"] }
 
     type, message = do_with_json_logger(log) {
 
