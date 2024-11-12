@@ -23,15 +23,13 @@ module QuikPay
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timestamp"])
 
-    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"], transactionMessage: nil }
-
-    if params["transactionStatus"] == "1"
-      balance = Alma::User.send_payment(user_id: current_user.uid);
-      log[:transactionMessage] = balance.payment_message
-    end
+    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"] }
 
     type, message = do_with_json_logger(log) {
+
       if params["transactionStatus"] == "1"
+        balance = Alma::User.send_payment(user_id: current_user.uid);
+
         if balance.paid?
           type = :notice
           message = helpers.successful_payment_message
@@ -39,10 +37,12 @@ module QuikPay
           type = :error
           message = "There was a problem with your transaction. Please call 215-204-8212."
         end
+
       else
         type = :error
         message = "There was a problem with your transaction. Please call 215-204-8212."
       end
+
       [type, message]
     }
 
