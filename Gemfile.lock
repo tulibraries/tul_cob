@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 73bf5577625f39b41da8f2ad2f26d79afea7a1f7
+  revision: d48b915861d4e0de33fc4e8fa81eaad2619d9626
   branch: main
   specs:
     primo (0.3.0)
