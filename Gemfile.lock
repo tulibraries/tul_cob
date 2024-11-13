@@ -193,12 +193,12 @@ GEM
     autoprefixer-rails (10.4.19.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    axe-core-api (4.10.1)
+    axe-core-api (4.10.2)
       dumb_delegator
       ostruct
       virtus
-    axe-core-rspec (4.10.1)
-      axe-core-api (= 4.10.1)
+    axe-core-rspec (4.10.2)
+      axe-core-api (= 4.10.2)
       dumb_delegator
       ostruct
       virtus
@@ -444,7 +444,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.6.0)
+    ostruct (0.6.1)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
