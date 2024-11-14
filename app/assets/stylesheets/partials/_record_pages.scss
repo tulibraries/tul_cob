@@ -76,6 +76,9 @@ dd.blacklight-format {
   text-decoration: underline;
 }
 
-a.search-subject:visited  {
-  text-decoration: none
+a.subject-level {
+  color: black !important;
+  &:hover {
+    text-decoration: none !important;
+  }
 }

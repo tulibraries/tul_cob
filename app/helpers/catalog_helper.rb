@@ -226,7 +226,7 @@ module CatalogHelper
   end
 
   def subject_links(args)
-    separator = content_tag(:span, content_tag(:span, " — ", class: ""), class: "subject-level")
+    separator = content_tag(:a, " — ", { class: "subject-level", aria: { hidden: true } })
 
     args[:document][args[:field]].uniq
       .map { |subj| subj.sub("— — ", "— ") } # TODO: Do we still need this step?
