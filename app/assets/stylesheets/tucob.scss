@@ -49,11 +49,11 @@ body {
 }
 
 a, a:visited, a:active, a:focus {
-  text-decoration: none;
+  text-decoration: none!important;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline!important;
 }
 
 .border-dark {
