@@ -19,7 +19,7 @@
     <% end %>
   </span>
   <% unless options[:remove].blank? %>
-    <% accessible_remove_label = content_tag :span, class: 'sr-only' do
+    <% accessible_remove_label = content_tag :span, class: 'visually-hidden' do
         if label.blank?
           t('blacklight.search.filters.remove.value', value: value)
         else

@@ -1,6 +1,6 @@
 <%= render partial: "explanation_div" %>
 
-<h2 class="sr-only top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
+<h2 class="visually-hidden top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
 
 <% content_for(:head) do -%>
   <%= render partial: "catalog/opensearch_response_metadata", locals: { response: @response } %>

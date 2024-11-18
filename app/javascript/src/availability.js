@@ -16,8 +16,8 @@ $(document).on('turbo:load', function() {
 	        return $(this);
 	      }),
 	      type = $list.data("list-type"),
-	      $more = $('<button class="btn bg-white text-cherry-red border border-light-grey m-0 show-all">Show All<span class="sr-only"> at ' + type + '</span></button>'),
-	      $less = $('<button class="btn bg-white text-cherry-red border border-light-grey m-0 show-less">Show Less<span class="sr-only"> at ' + type + '</span></button>');
+	      $more = $('<button class="btn bg-white text-cherry-red border border-light-grey m-0 show-all">Show All<span class="visually-hidden"> at ' + type + '</span></button>'),
+	      $less = $('<button class="btn bg-white text-cherry-red border border-light-grey m-0 show-less">Show Less<span class="visually-hidden"> at ' + type + '</span></button>');
 
 	      init();
 

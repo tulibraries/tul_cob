@@ -2,17 +2,17 @@
   <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
   <div class="row">
     <div class="col-sm-3 form-group">
-      <label for="<%= "f_#{count}" %>" class="sr-only">Options for advanced search</label>
+      <label for="<%= "f_#{count}" %>" class="visually-hidden">Options for advanced search</label>
       <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), :class=>"form-control") %>
     </div>
 
     <div class="col-sm-3 form-group">
-      <label for="<%= "operator-q_#{count}" %>" class="sr-only">Operator</label>
+      <label for="<%= "operator-q_#{count}" %>" class="visually-hidden">Operator</label>
       <%= select_tag("operator-q_#{count}", options_for_select({"contains"=> :contains, "is (exact)" => :exact }.sort, operator_default(count)), :class => "form-control", :id =>"operator-q_#{count}") %>
     </div>
 
     <div class="col-sm-5 form-group">
-    <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
+    <label for=<%= "q_#{count}" %> class="visually-hidden">Advanced search terms</label>
     <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false", "data-bs-target": "primo.q#{count}" %>
     </div>
   </div>

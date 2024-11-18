@@ -19,7 +19,7 @@ class FacetItemComponent < Blacklight::FacetItemComponent
           # remove link
           link_to(@href, class: "remove") do
             content_tag(:span, "", class: "remove-icon") +
-              content_tag(:span, "[remove]", class: "sr-only")
+              content_tag(:span, "[remove]", class: "visually-hidden")
           end
       end + render_facet_count(classes: ["selected"])
   end
