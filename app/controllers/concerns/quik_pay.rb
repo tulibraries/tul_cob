@@ -3,8 +3,22 @@
 module QuikPay
   extend ActiveSupport::Concern
 
+  NO_ACCESS_MESSAGE = "You do not have access to this pay online feature. If you believe this is incorrect, please call 215-204-8212."
+  ERROR_MESSAGE = "There was a problem with your transaction. Please call 215-204-8212."
+
   included do
     before_action :authenticate_user!, only: [ :quik_pay_callback, :quik_pay ]
+
+    rescue_from ::QuikPay::AccessDenied do |exception|
+      Honeybadger.notify(exception)
+      redirect_to users_account_path, flash: { "error" => ::QuikPay::NO_ACCESS_MESSAGE }
+    end
+
+    rescue_from ::QuikPay::InvalidHash, ::QuikPay::InvalidTime, ::QuikPay::InvalidBalance, ::QuikPay::InvalidTransaction do |exception|
+      Honeybadger.notify(exception)
+      redirect_to users_account_path, flash: { "error" => ::QuikPay::ERROR_MESSAGE }
+    end
+
   end
 
   # Redirects user to the quikpay service
@@ -22,31 +36,18 @@ module QuikPay
   def quik_pay_callback
     validate_quik_pay_hash(params.except(:controller, :action))
     validate_quik_pay_timestamp(params["timestamp"])
+    validate_quik_pay_trasaction_status(params["transactionStatus"])
 
     log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"] }
 
-    type, message = do_with_json_logger(log) {
-
-      if params["transactionStatus"] == "1"
-        balance = Alma::User.send_payment(user_id: current_user.uid);
-
-        if balance.paid?
-          type = :notice
-          message = helpers.successful_payment_message
-        else
-          type = :error
-          message = "There was a problem with your transaction. Please call 215-204-8212."
-        end
-
-      else
-        type = :error
-        message = "There was a problem with your transaction. Please call 215-204-8212."
-      end
-
-      [type, message]
+    # The return value for the do_with_json_logger block should implement Loggable.
+    balance  = do_with_json_logger(log) {
+      Alma::User.send_payment(user_id: current_user.uid);
     }
 
-    redirect_to users_account_path, flash: { type => message }
+    validate_quik_pay_balance(balance)
+
+    redirect_to users_account_path, flash: { notice: helpers.successful_payment_message }
   end
 
   def quik_pay_url(params = {}, secret = "")
@@ -96,6 +97,12 @@ module QuikPay
     class AccessDenied < StandardError
     end
 
+    class InvalidBalance < StandardError
+    end
+
+    class InvalidTransaction < StandardError
+    end
+
     def validate_quik_pay_timestamp(timestamp)
       raise InvalidTime.new("A timestamp is required. This probably means this is an invalid attempt at using quikpay.") if timestamp.nil?
 
@@ -112,5 +119,13 @@ module QuikPay
       raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?
 
       raise InvalidHash.new("The hash is invalid because it does not match our calculated version of it.") if hash != valid_hash
+    end
+
+    def validate_quik_pay_balance(balance)
+      raise InvalidBalance.new("An error has occurred because the balance was not paid.") unless balance.paid?
+    end
+
+    def validate_quik_pay_trasaction_status(status)
+      raise InvalidTransaction.new("The QuikPay transaction was not succesful.") unless status == "1"
     end
 end
