@@ -1,14 +1,13 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@2.0.0
-  coveralls: coveralls/coveralls@2.2.1
+  ruby: circleci/ruby@2.0.1
+  coveralls: coveralls/coveralls@2.2.5
 
 workflows:
-  version: 2
   run_tests:
     jobs:
-      - run_tests
+      - lint_and_test
   prod_deploy:
     jobs:
       - update_airflow_variables:
@@ -19,7 +18,7 @@ workflows:
               only: /^v[0-9]+(\.[0-9]+)*$/
 
 jobs:
-  run_tests:
+  lint_and_test:
     docker:
       - image: cimg/ruby:3.3-node
         auth:
@@ -30,10 +29,10 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v14-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v14-{{ arch }}-{{ .Branch }}
-            - gem-cache-v14-{{ arch }}
-            - yarn-cache-v14-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v15-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v15-{{ arch }}-{{ .Branch }}
+            - gem-cache-v15-{{ arch }}
+            - yarn-cache-v15-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
@@ -65,12 +64,12 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - save_cache:
-          key: gem-cache-v14-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v15-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
 
       - save_cache:
-          key: yarn-cache-v14-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v15-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
