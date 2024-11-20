@@ -2,6 +2,9 @@
 
 class UsersController < ApplicationController
   include JsonLogger
+  include ServerErrors
+  # Note that order matters here:
+  # QuikPay include must come AFTER ServerErrors include so that it can handle QuikPay specific errors.
   include QuikPay
 
   rescue_from ActionView::Template::Error,

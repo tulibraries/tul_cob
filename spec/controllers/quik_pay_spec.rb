@@ -138,7 +138,9 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params.except(:hash) }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidHash
+          get(:quik_pay_callback, params:)
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.")
         end
       end
 
@@ -147,16 +149,20 @@ RSpec.describe UsersController, type: "controller"  do
         let (:params) { with_validation_params.merge("foo" => "bar") }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidHash
+          get(:quik_pay_callback, params: params)
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.")
         end
       end
 
       context "with invalid timestamp provided" do
-        # The has will be invalid because it wont account for the foo param.
+        # The hash will be invalid because it wont account for the foo param.
         let (:params) { with_validation_params(timestamp: 1) }
 
         it "should error out" do
-          expect { get :quik_pay_callback, params: }.to raise_error QuikPay::InvalidTime
+          get(:quik_pay_callback, params:)
+          expect(response).to redirect_to users_account_path
+          expect(flash[:error]).to eq("There was a problem with your transaction. Please call 215-204-8212.")
         end
       end
 
@@ -204,7 +210,10 @@ RSpec.describe UsersController, type: "controller"  do
       context "user cannot pay online" do
         it "raises an exception" do
           session["can_pay_online?"] = false;
-          expect { get :quik_pay }.to raise_error QuikPay::AccessDenied
+          get :quik_pay
+          expect(response).to redirect_to users_account_path
+          message = "You do not have access to this pay online feature. If you believe this is incorrect, please call 215-204-8212."
+          expect(flash[:error]).to eq(message);
         end
       end
     end
