@@ -24,4 +24,3 @@ RAILS_ENV=test bundle exec rake db:seed
 EDITOR='vim -c wqa' bundle exec rails credentials:edit 2> /dev/null
 RAILS_ENV=production bundle exec rake assets:precompile
 RAILS_ENV=test bundle exec yarn
-RAILS_ENV=test bundle exec rails webpacker:compile
