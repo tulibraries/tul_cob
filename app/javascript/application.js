@@ -9,6 +9,7 @@ import "selectize"
 import "./controllers"
 
 import Blacklight from "./blacklight/core"
+
 import "./src/blacklight_alma_lib"
 import "./src/application"
 import "./src/summary_previews"

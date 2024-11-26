@@ -2287,7 +2287,7 @@ jquery-ui@^1.14.1:
   dependencies:
     jquery ">=1.12.0 <5.0.0"
 
-"jquery@>=1.12.0 <5.0.0", jquery@^3.5.1:
+"jquery@>=1.12.0 <5.0.0", jquery@>=1.7, jquery@^3.5.1:
   version "3.7.1"
   resolved "https://registry.npmjs.org/jquery/-/jquery-3.7.1.tgz"
   integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
@@ -3158,6 +3158,13 @@ type-fest@^0.21.3:
   version "0.21.3"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.21.3.tgz"
   integrity sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==
+
+typeahead.js@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/typeahead.js/-/typeahead.js-0.11.1.tgz#4e64e671b22310a8606f4aec805924ba84b015b8"
+  integrity sha512-yGaLzGjVHyryZdNfrWz2NHXUwEO7hrlVmGMGCo5+6mH3nEEhcQ0Te3mK3G60uRnxfERu8twOWSU4WmwScbwhMg==
+  dependencies:
+    jquery ">=1.7"
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"
