@@ -13,8 +13,11 @@
 	}
 }
 
-#record-page-container .toggle-bookmark {
+a.clear-bookmarks {
+  color: $white !important;
+}
 
+#record-page-container .toggle-bookmark {
   label {
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
@@ -27,11 +30,9 @@
     display: block;
     font-family: "Faustina";
     line-height: 1.3rem;
-
     label {
       padding-left: 0.3rem; 
     }
-
     input {
       position: absolute;
       left: -9999px;
@@ -42,15 +43,12 @@
 #bookmark_button {
   padding-top: 0.25rem;
   padding-bottom: 0.125rem;
-
-
   @media(min-width: 768px) {
     text-align: right;
 	}
 }
 
 #bookmarks-sendto button {
-
   @media(max-width: 768px) {
     background-color: $cherry-red;
     border: none;
@@ -62,5 +60,4 @@
   @media(max-width: 768px) {
     margin-bottom: 1rem
   }
-
 }
