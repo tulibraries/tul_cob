@@ -415,17 +415,17 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.7-aarch64-linux)
+    nokogiri (1.16.8-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.16.7-arm-linux)
+    nokogiri (1.16.8-arm-linux)
       racc (~> 1.4)
-    nokogiri (1.16.7-arm64-darwin)
+    nokogiri (1.16.8-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.7-x86-linux)
+    nokogiri (1.16.8-x86-linux)
       racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-darwin)
+    nokogiri (1.16.8-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.7-x86_64-linux)
+    nokogiri (1.16.8-x86_64-linux)
       racc (~> 1.4)
     okcomputer (1.18.5)
     omniauth (2.1.2)
@@ -738,7 +738,7 @@ DEPENDENCIES
   launchy
   lc_solr_sortable!
   net-smtp
-  nokogiri (= 1.16.7)
+  nokogiri (= 1.16.8)
   okcomputer
   omniauth
   omniauth-rails_csrf_protection
