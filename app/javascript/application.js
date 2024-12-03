@@ -15,7 +15,6 @@ import "./src/application"
 import "./src/summary_previews"
 import "./src/blacklight_overrides"
 import "./src/availability"
-import "./src/article_iframe"
 import "./src/libwizard_tutorial"
 
 import "./blacklight/autocomplete"

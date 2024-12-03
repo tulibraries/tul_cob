@@ -2,7 +2,7 @@
 
 <%= render "index_summary_field", :document => document %>
 
-<div class="document-info-container clearfix flex-row-reverse " data-controller="book-covers">
+<div class="document-info-container clearfix flex-row-reverse " data-controller="book-covers article-iframe">
   <%= render TulThumbnailComponent.new(presenter: doc_presenter, document:, counter: document_counter) %>
 
   <%# default partial to display solr document fields in catalog index view %>

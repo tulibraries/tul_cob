@@ -1,9 +1,9 @@
 <div class="row button-break pt-3"></div>
-<button class="btn online-btn collapsed collapse-button" data-bs-toggle="collapse" data-bs-target="#<%= document_id %>" aria-expanded="false" onclick="loadArticleIframe('div#<%= document_id %>');" id="online_button">
+<button id="online_button" class="btn online-btn collapsed collapse-button" data-bs-toggle="collapse" data-bs-target="#<%= document_id %>" aria-expanded="false" data-action="article-iframe#readAttributes" data-target="button" doc-id="<%= document_id %>" data-iframe-url="<%= document_link + "&is_new_ui=true" %>">
   <span class="avail-label">Available online</span>
 </button>
 
 <%= render "libkey_btn", :document => @document %>
 
-<div id="<%= document_id %>" class="collapse col-sm-12 p-0" data-iframe-url="<%= document_link + "&is_new_ui=true" %>">
+<div id="<%= document_id %>" class="collapse col-sm-12 p-0">
 </div>

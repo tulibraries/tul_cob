@@ -7,6 +7,9 @@ import { application } from "./application"
 import AdvancedController from "./advanced_controller"
 application.register("advanced", AdvancedController)
 
+import ArticleIframeController from "./article_iframe_controller"
+application.register("article-iframe", ArticleIframeController)
+
 import AvailabilityController from "./availability_controller"
 application.register("availability", AvailabilityController)
 
