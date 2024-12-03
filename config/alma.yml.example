@@ -1,13 +1,18 @@
 default: &default
-  apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
-  institution_code: 01TULI_INST
-  delivery_domain: "sandbox01-na.alma.exlibrisgroup.com"
-  auth_secret: "SUUUPER SECRET KEYYYYY"
+  apikey: <%= ENV["ALMA_API_KEY"] %>
+  institution_code: <%= ENV["ALMA_INSTITUTION_CODE"] %>
+  delivery_domain: <%= ENV["ALMA_DELIVERY_DOMAIN"] %>
+  auth_secret: <%= ENV["ALMA_AUTH_SECRET"] %>
+  timeout: 10
+
 development:
     <<: *default
 
 test:
-    <<: *default
+  apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
+  institution_code: 01TULI_INST
+  delivery_domain: "sandbox01-na.alma.exlibrisgroup.com"
+  auth_secret: "SUUUPER SECRET KEYYYYY"
 
 production:
     <<: *default
