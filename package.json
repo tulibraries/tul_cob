@@ -27,7 +27,8 @@
     "cookie": "0.7.0",
     "json5": "2.2.2",
     "minimist": "1.2.8",
-    "node-fetch": "2.6.7"
+    "node-fetch": "2.6.7",
+    "path-to-regexp": "0.1.12"
   },
   "babel": {
     "presets": [
