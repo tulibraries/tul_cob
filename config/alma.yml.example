@@ -3,6 +3,7 @@ default: &default
   institution_code: <%= ENV["ALMA_INSTITUTION_CODE"] %>
   delivery_domain: <%= ENV["ALMA_DELIVERY_DOMAIN"] %>
   auth_secret: <%= ENV["ALMA_AUTH_SECRET"] %>
+  timeout: 10
 
 development:
     <<: *default
