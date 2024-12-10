@@ -304,7 +304,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.12.1)
+    faraday (2.12.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -378,7 +378,7 @@ GEM
     llhttp-ffi (0.5.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.1)
+    logger (1.6.2)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -403,7 +403,7 @@ GEM
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
     mutex_m (0.3.0)
-    net-http (0.5.0)
+    net-http (0.6.0)
       uri
     net-imap (0.5.0)
       date
@@ -727,7 +727,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_bot_rails
-  faraday (= 2.12.1)
+  faraday (= 2.12.2)
   ffi (= 1.16.3)
   flamegraph
   foreman
