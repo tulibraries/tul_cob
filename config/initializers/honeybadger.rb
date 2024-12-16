@@ -15,6 +15,10 @@ Honeybadger.configure do |config|
       notice.error_message.gsub!(secret_value, "[:#{secret_name}]") unless secret_value.blank?
     end
 
+    # Ignore user requests that we can't do anything to resolve
+    notice.halt! if notice.error_message =~ /No items can fulfill the submitted request/ 
+    notice.halt! if notice.error_message =~ /Failed to activate request/
+
     # Ignore errors that occur during overnight maintenance
     start_time = Time.now.utc.change(hour: 5, min: 0, sec: 0)
     end_time = Time.now.utc.change(hour: 8, min: 30, sec: 0)
