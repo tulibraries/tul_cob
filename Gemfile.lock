@@ -9,10 +9,10 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: a7ea0071d6df0b8a4a23841c4cfca73592dba7db
+  revision: d2999e60313c5ef1077b2109dbd9d80a909141ef
   branch: main
   specs:
-    alma (0.6.1)
+    alma (0.6.2)
       activesupport
       httparty
       xml-simple
@@ -265,7 +265,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.3.0)
+    csv (3.3.1)
     dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
@@ -521,7 +521,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.3.9)
+    rexml (3.4.0)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
