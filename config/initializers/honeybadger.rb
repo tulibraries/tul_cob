@@ -16,8 +16,8 @@ Honeybadger.configure do |config|
     end
 
     # Ignore errors that occur during overnight maintenance
-    start_time = Time.parse("00:00").utc
-    end_time = Time.parse("03:30").utc
+    start_time = Time.now.utc.change(hour: 5, min: 0, sec: 0)
+    end_time = Time.now.utc.change(hour: 8, min: 30, sec: 0)
     current_time = Time.now.utc
 
     notice.halt! if current_time.between?(start_time, end_time)
