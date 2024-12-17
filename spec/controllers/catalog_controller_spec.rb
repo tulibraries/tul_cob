@@ -76,6 +76,16 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  describe "single_quoted_search vs non_single_quoted_search" do
+    render_views
+    let(:single_quoted_search_count) { JSON.parse(get(:index, params: { q: "'readers'" }, format: :json).body)["meta"]["pages"]["total_count"] }
+    let(:non_single_quoted_search_count) { JSON.parse(get(:index, params: { q: "readers" }, format: :json).body)["meta"]["pages"]["total_count"] }
+
+    it "should have a lower count for the single_quoted than the non_single_quoted search" do
+      expect(single_quoted_search_count).to be < non_single_quoted_search_count
+    end
+  end
+
   describe "Boundwith Host records should not have been indexed" do
     render_views
     let(:bwh) { JSON.parse(get(:index, params: { q: "22293201420003811" }, format: :json).body)["meta"]["pages"]["total_count"] }
@@ -247,6 +257,65 @@ RSpec.describe CatalogController, type: :controller do
       it "sets @manifold_alerts_thread" do
         get :index, params: { q: "art" }
         expect(controller.instance_variable_get("@manifold_alerts_thread")).to be_kind_of(Thread)
+      end
+    end
+  end
+
+  describe "before_action override_solr_path " do
+    context ":show action" do
+      it "does not override the blacklight_config solr_path" do
+        get :show, params: { id: doc_id }  rescue Blacklight::Exceptions::RecordNotFound
+
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted single term search (double quoted)" do
+      it "overrides the blacklight_config solr_path" do
+        get :index, params: { q: '"art"' }
+        expect(assigns(:blacklight_config).solr_path).to eq("single_quoted_search")
+      end
+    end
+
+    context ":index action and quoted single term search (single quoted)" do
+      it "overrides the blacklight_config solr_path" do
+        get :index, params: { q: "'art'" }
+        expect(assigns(:blacklight_config).solr_path).to eq("single_quoted_search")
+      end
+    end
+
+    context ":index action and non-quoted single term search" do
+      it "overrides the blacklight_config solr_path" do
+        get :index, params: { q: "art" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and single term with apostrophe" do
+      it "overrides the blacklight_config solr_path" do
+        get :index, params: { q: "david's" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted multiple term search (single quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "'art school'" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted multiple term search (double quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "\"art school\"" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and non-quoted multiple term search" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "art school" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
       end
     end
   end
