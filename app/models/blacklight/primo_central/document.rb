@@ -153,6 +153,23 @@ module Blacklight::PrimoCentral::Document
       @url_query["rft.issn"]
     end
 
+    def self.with_retry
+      max_attempts = Primo.configuration.enable_retries ? Primo.configuration.retries : 0
+      attempts = 0
+      begin
+        attempts += 1
+        yield
+      rescue => e
+        if attempts < max_attempts
+          Primo.configuration.logger.warn("#{e.message}. Retrying. [#{attempts}]")
+          retry
+        else
+          Primo.configuration.logger.error(e.message)
+          raise
+        end
+      end
+    end
+
     def libkey_articles_url_thread
       return Thread.new {} if @doi.blank?
 
@@ -161,19 +178,11 @@ module Blacklight::PrimoCentral::Document
       access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
-      retry_count = Primo.configuration.enable_retries ? Primo.configuration.retries : 0
-      begin
-        Thread.new {
-          (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
-            &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
-        }
-      rescue Net::ReadTimeout
-        if (Primo.configuration.retries && (retry_count -= 1) > 0)
-          Primo.configuration.logger.warn("Primo request timed out. Retrying. [#{retry_count}]")
-          retry
-        else
-          raise "Primo request timed out"
+      Thread.new {
+        with_retry do
+           (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
+             &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
         end
-      end
+      }
     end
 end
