@@ -16,7 +16,7 @@ Honeybadger.configure do |config|
     end
 
     # Ignore user requests that we can't do anything to resolve
-    notice.halt! if notice.error_message =~ /No items can fulfill the submitted request/ 
+    notice.halt! if notice.error_message =~ /No items can fulfill the submitted request/
     notice.halt! if notice.error_message =~ /Failed to activate request/
 
     # Ignore errors that occur during overnight maintenance
