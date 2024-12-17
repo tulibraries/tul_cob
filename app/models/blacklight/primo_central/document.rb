@@ -5,6 +5,7 @@ module Blacklight::PrimoCentral::Document
   include Blacklight::Document
   include Blacklight::Document::ActiveModelShim
   include Blacklight::PrimoCentral::SolrAdaptor
+  include Primo
 
   delegate :dig, :[], to: :@_source
 
@@ -162,8 +163,10 @@ module Blacklight::PrimoCentral::Document
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
 
       Thread.new {
-        (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
-          &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+        Primo::Search.with_retry do
+          (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
+            &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
+        end
       }
     end
 end
