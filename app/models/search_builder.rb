@@ -95,7 +95,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     # These named procedures MUST take a value, and an operator as arguments
     # and return a value that can be processed by the next procedure on the
     # list.
-    [ :process_call_number, :process_begins_with, :process_is, :substitute_special_chars]
+    [ :process_call_number, :process_begins_with, :process_query, :sanitize_query, :substitute_special_chars]
   end
 
   def process_call_number(field: nil, value:, op: nil)
@@ -113,27 +113,41 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def process_begins_with(field: nil, value:, op: nil)
     if op == "begins_with"
-      process_is(value: add_first_word_matcher(value), op: "is") rescue value
+      process_query(value: add_first_word_matcher(value), op: "is") rescue value
     else
       value
     end
   end
 
-  def process_is(field: nil, value:, op: nil)
+  def sanitize_query(field: nil, value:, op: nil)
+    # Sanitize single quotes in the query
+    if value&.start_with?("'") && value&.end_with?("'")
+      value = value.sub(/^'/, '"').sub(/'$/, '"')
+    end
+    value
+  end
+
+  def process_query(field: nil, value:, op: nil)
     return if value.blank?
     return if value.class != String
 
-    if value&.scan(/"/).size == 1
+    # Process the query based on quote count and operation
+    case value.scan(/"/).size
+    when 1
       updated_value = value.sub(/"/, "")
       "\"#{updated_value}\""
-    elsif value&.scan(/"/).size > 1
+    when ->(size) { size > 1 }
       value
-    elsif op == "is"
-      "\"#{value}\""
     else
-      value
+      case op
+      when "is"
+        "\"#{value}\""
+      else
+        value
+      end
     end
   end
+
 
   def substitute_special_chars(field: nil, value:, op: nil)
     value.gsub(/([:?]|\(\))/, " ") rescue value

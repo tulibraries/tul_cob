@@ -4,7 +4,6 @@ require "rails_helper"
 require "traject"
 require "traject/command_line"
 require "yaml"
-require "pry"
 
 RSpec.feature "Indices" do
   let (:fixtures) {

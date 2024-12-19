@@ -206,7 +206,6 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#process_begins_with" do
     it "can handle nil gracefully" do
       expect(subject.process_begins_with(value: nil)).to be_nil
-      expect(subject.process_begins_with(value: "foo")).to eq("foo")
     end
 
     it "ignores values if op is not begins_with" do
@@ -216,29 +215,72 @@ RSpec.describe SearchBuilder , type: :model do
     it "adds prefix and quotes to value if op equals begins_with" do
       expect(subject.process_begins_with(value: "foo", op: "begins_with")).to eq("\"matchbeginswithfoo foo\"")
     end
-
   end
 
-  describe "#process_is" do
+  describe "#sanitize_query" do
+    context "when the value starts and ends with single quotes" do
+      it "replaces single quotes with double quotes" do
+        expect(subject.sanitize_query(value: "'example'")).to eq('"example"')
+      end
+    end
+
+    context "when the value starts with a single quote but does not end with one" do
+      it "does not modify the value" do
+        expect(subject.sanitize_query(value: "'example")).to eq("'example")
+      end
+    end
+
+    context "when the value ends with a single quote but does not start with one" do
+      it "does not modify the value" do
+        expect(subject.sanitize_query(value: "example'")).to eq("example'")
+      end
+    end
+
+    context "when the value contains single quotes in the middle" do
+      it "does not modify the value" do
+        expect(subject.sanitize_query(value: "exam'ple")).to eq("exam'ple")
+      end
+    end
+
+    context "when the value does not contain single quotes" do
+      it "returns the original value" do
+        expect(subject.sanitize_query(value: "example")).to eq("example")
+      end
+    end
+
+    context "when the value is nil" do
+      it "returns nil" do
+        expect(subject.sanitize_query(value: nil)).to be_nil
+      end
+    end
+
+    context "when the value is an empty string" do
+      it "returns an empty string" do
+        expect(subject.sanitize_query(value: "")).to eq("")
+      end
+    end
+  end
+
+  describe "#process_query" do
     it "can handle nil case with grace" do
-      expect(subject.process_is(value: nil, op: nil)).to be_nil
-      expect(subject.process_is(value: "foo")).to eq("foo")
+      expect(subject.process_query(value: nil, op: nil)).to be_nil
+      expect(subject.process_query(value: "foo")).to eq("foo")
     end
 
     it "ignores values if op is not is" do
-      expect(subject.process_is(value: "foo", op: "opbar")).to eq("foo")
+      expect(subject.process_query(value: "foo", op: "opbar")).to eq("foo")
     end
 
     it "adds quotes to value if op equals is" do
-      expect(subject.process_is(value: "foo", op: "is")).to eq("\"foo\"")
+      expect(subject.process_query(value: "foo", op: "is")).to eq("\"foo\"")
     end
 
     it "removes a single quote and then adds quotes to value" do
-      expect(subject.process_is(value: "\"bar", op: "is")).to eq("\"bar\"")
+      expect(subject.process_query(value: "\"bar", op: "is")).to eq("\"bar\"")
     end
 
     it "avoids escape hell by ignoring values with quotes" do
-      expect(subject.process_is(value: "foo\"bar\"", op: "is")).to eq("foo\"bar\"")
+      expect(subject.process_query(value: "foo\"bar\"", op: "is")).to eq("foo\"bar\"")
     end
   end
 

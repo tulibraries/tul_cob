@@ -50,6 +50,7 @@ yarn-error.log
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/public/cached_pages*
 
 /config/master.key
 
