@@ -7,7 +7,7 @@ Primo.configure do |config|
   config.scope   = "CentralIndex"
   config.enable_loggable = true
   config.enable_log_requests = true
-  config.timeout = Rails.configuration.bento&.dig(:primo, :timeout) || 10
+  config.timeout = 3
   config.enable_retries = true
   config.retries = 3
 end
