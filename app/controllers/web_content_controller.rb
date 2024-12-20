@@ -3,6 +3,9 @@
 class WebContentController < CatalogController
   include CatalogConfigReinit
 
+  def advanced_override_path
+  end
+
   configure_blacklight do |config|
     # Remove show and index doc actions.
     config.index.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
