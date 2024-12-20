@@ -5,7 +5,7 @@ class DatabasesController < CatalogController
 
   helper_method :join
 
-  def override_solr_path
+  def advanced_override_path
   end
 
   configure_blacklight do |config|

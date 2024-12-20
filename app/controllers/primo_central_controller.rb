@@ -9,11 +9,11 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  def advanced_override_path
+  end
+
   rescue_from ArticleNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
-
-  def override_solr_path
-  end
 
   configure_blacklight do |config|
     # Class for sending and receiving requests from a search index

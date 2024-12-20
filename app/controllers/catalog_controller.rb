@@ -17,6 +17,7 @@ class CatalogController < ApplicationController
   before_action :set_thread_request
   before_action only: :index do
     override_solr_path
+    advanced_override_path
     blacklight_config.max_per_page = 50
     if params[:page] && params[:page].to_i > 250
       flash[:error] = t("blacklight.errors.deep_paging")
@@ -31,7 +32,9 @@ class CatalogController < ApplicationController
     if single_word && quoted_phrase
       blacklight_config.solr_path = "single_quoted_search"
     end
+  end
 
+  def advanced_override_path
     if params["q_1"]&.split&.count == 1 && params["operator"]["q_1"] == "is"
       blacklight_config.solr_path = "single_quoted_search"
     end
