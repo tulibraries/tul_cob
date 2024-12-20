@@ -5,6 +5,9 @@ class DatabasesController < CatalogController
 
   helper_method :join
 
+  def override_solr_path
+  end
+
   configure_blacklight do |config|
     config.advanced_search[:fields_row_count] = 2
     config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)
