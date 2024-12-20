@@ -164,7 +164,7 @@ module Blacklight::PrimoCentral::Document
       duration = ActiveSupport::Duration.parse(Rails.configuration.caches[:libkey_article_cache_life])
 
       Thread.new {
-        Rails.cache.fetch(libkey_articles_url, expires_in: duration) do
+        Rails.cache.fetch("#{@doi}", expires_in: duration) do
           Primo::Search.with_retry do
             (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
               &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
