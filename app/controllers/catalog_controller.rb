@@ -31,6 +31,19 @@ class CatalogController < ApplicationController
     if single_word && quoted_phrase
       blacklight_config.solr_path = "single_quoted_search"
     end
+
+    if params["q_1"]&.split&.count == 1 && params["operator"]["q_1"] == "is"
+      blacklight_config.solr_path = "single_quoted_search"
+    end
+
+    if
+      params["q_2"]&.split&.count == 1 && params["operator"]["q_2"] == "is"
+      blacklight_config.solr_path = "single_quoted_search"
+    end
+
+    if params["q_3"]&.split&.count == 1 && params["operator"]["q_3"] == "is"
+      blacklight_config.solr_path = "single_quoted_search"
+    end
   end
 
   helper_method :display_duration

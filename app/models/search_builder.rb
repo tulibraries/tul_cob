@@ -148,7 +148,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
-
   def substitute_special_chars(field: nil, value:, op: nil)
     value.gsub(/([:?]|\(\))/, " ") rescue value
   end
