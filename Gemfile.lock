@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: f61984f38b3d7cce74c259e9fa0923521a4c05d5
+  revision: db91e7a8bbf2175a753ddc9b0071b3136667f936
   branch: main
   specs:
     cob_index (0.1.0)
