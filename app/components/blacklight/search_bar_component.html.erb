@@ -27,6 +27,11 @@
       <%= search_button || render(Blacklight::SearchButtonComponent.new(id: "#{@prefix}search", text: scoped_t('submit'))) %>
     </span>
   </div>
+
+  <% if @recaptcha_action %>
+    <%= recaptcha_v3(action: @recaptcha_action) %>
+  <% end %>
+
 <% end %>
 
 <% if advanced_search_enabled? %>

@@ -521,6 +521,7 @@ GEM
     rake (13.2.1)
     rdoc (6.7.0)
       psych (>= 4.0.0)
+    recaptcha (5.18.0)
     regexp_parser (2.10.0)
     reline (0.5.10)
       io-console (~> 0.5)
@@ -761,6 +762,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (= 7.1.5.1)
   rails-controller-testing
+  recaptcha (~> 5.18)
   rsolr (~> 2.6)
   rspec-rails
   rubocop

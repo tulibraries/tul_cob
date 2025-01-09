@@ -101,3 +101,5 @@ group :production do
   gem "dalli"
   gem "connection_pool"
 end
+
+gem "recaptcha", "~> 5.18"
