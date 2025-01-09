@@ -33,7 +33,7 @@ module ServerErrors
     end
 
     rescue_from Recaptcha::VerifyError do |exception|
-      render "errors/internal_server_error", status: :bad_gateway
+      render "errors/internal_server_error", status: 403
     end
 
     rescue_from Alma::RequestOptions::ResponseError do |exception|
