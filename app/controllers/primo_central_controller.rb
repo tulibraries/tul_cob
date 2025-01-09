@@ -5,9 +5,29 @@ class PrimoCentralController < CatalogController
   include CatalogConfigReinit
   include Blacklight::Document::Export
 
+  before_action :recaptcha, only: [ :index ]
+
   helper_method :browse_creator
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
+
+  def recaptcha
+    # skip if recaptcha site key not set (using as feature flag)
+    return if ENV["RECAPTCHA_SITE_KEY"].blank?
+
+    @recaptcha_action = "articles_search"
+
+    # skip if referred from app.
+    return if request.referer.present? && URI.parse(request.referer).host == request.host
+
+    # skip if nothing to query.
+    return if params["q"].blank?
+
+    if !verify_recaptcha(action: @recaptcha_action)
+      head :forbidden
+    end
+  end
+
 
   def advanced_override_path
   end

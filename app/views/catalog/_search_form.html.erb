@@ -1,6 +1,7 @@
 <%= render(Blacklight::SearchBarComponent.new(
       url: search_action_url,
       params: search_state.params_for_search.except(:qt),
+      recaptcha_action: @recaptcha_action,
       search_fields: Deprecation.silence(Blacklight::ConfigurationHelperBehavior) { search_fields },
       )) %>
 
