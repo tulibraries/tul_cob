@@ -32,6 +32,10 @@ module ServerErrors
       render "errors/internal_server_error", status: :bad_gateway
     end
 
+    rescue_from Recaptcha::VerifyError do |exception|
+      render "errors/internal_server_error", status: :bad_gateway
+    end
+
     rescue_from Alma::RequestOptions::ResponseError do |exception|
       Honeybadger.notify(exception)
       render "errors/alma_request_error", status: :bad_gateway

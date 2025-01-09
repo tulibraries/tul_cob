@@ -24,7 +24,7 @@ class PrimoCentralController < CatalogController
     return if params["q"].blank?
 
     if !verify_recaptcha(action: @recaptcha_action)
-      head :forbidden
+      raise Recaptcha::VerifyError.new("recaptcha verification failed for #{@recaptcha_action}")
     end
   end
 
