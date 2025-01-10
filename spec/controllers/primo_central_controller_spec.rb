@@ -50,6 +50,15 @@ RSpec.describe PrimoCentralController, type: :controller do
         expect(flash[:error]).to eq("Your search has timed out. You may have exceeded the maximum number of pages allowed for Article search results in Library Search.")
       end
     end
+  end
 
+  describe "recaptcha" do
+    context "with recaptche enabled" do
+      it "should not allow article searches" do
+        stub_const("ENV", ENV.to_h.merge("RECAPTCHA_SITE_KEY" => "foo"))
+        allow(controller).to receive(:verify_recaptcha).and_return(false)
+        expect { get :index, params: { q: "foo " } }.to raise_error(Recaptcha::VerifyError)
+      end
+    end
   end
 end
