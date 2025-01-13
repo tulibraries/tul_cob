@@ -52,11 +52,20 @@ RSpec.describe PrimoCentralController, type: :controller do
     end
   end
 
-  describe "recaptcha" do
-    context "with recaptche enabled" do
+  describe "recaptcha enabled" do
+    before do
+      stub_const("ENV", ENV.to_h.merge("RECAPTCHA_SITE_KEY" => "foo"))
+      allow(controller).to receive(:verify_recaptcha).and_return(false)
+    end
+
+    context "with regular query" do
       it "should not allow article searches" do
-        stub_const("ENV", ENV.to_h.merge("RECAPTCHA_SITE_KEY" => "foo"))
-        allow(controller).to receive(:verify_recaptcha).and_return(false)
+        expect { get :index, params: { q: "foo " } }.to raise_error(Recaptcha::VerifyError)
+      end
+    end
+
+    context "with facet query" do
+      it "should not allow article searches" do
         expect { get :index, params: { q: "foo " } }.to raise_error(Recaptcha::VerifyError)
       end
     end

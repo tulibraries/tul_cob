@@ -21,9 +21,9 @@ class PrimoCentralController < CatalogController
     return if request.referer.present? && URI.parse(request.referer).host == request.host
 
     # skip if nothing to query.
-    return if params["q"].blank?
+    return if params["q"].blank? && params["f"].blank?
 
-    if !verify_recaptcha(action: @recaptcha_action)
+    if !verify_recaptcha(action: @recaptcha_action, minimum_score: 0.9)
       raise Recaptcha::VerifyError.new("recaptcha verification failed for #{@recaptcha_action}")
     end
   end
