@@ -23,7 +23,9 @@ class PrimoCentralController < CatalogController
     # skip if nothing to query.
     return if params["q"].blank? && params["f"].blank?
 
-    if !verify_recaptcha(action: @recaptcha_action, minimum_score: 0.9)
+    minimum_score |= ENV["RECAPTCHA_MINIMUM_SCORE"] || 0.9
+
+    if !verify_recaptcha(action: @recaptcha_action, minimum_score: minimum_score)
       raise Recaptcha::VerifyError.new("recaptcha verification failed for #{@recaptcha_action}")
     end
   end
