@@ -325,8 +325,9 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.1.1)
     hashie (4.1.0)
-    honeybadger (5.26.1)
+    honeybadger (5.26.2)
       logger
+      ostruct
     htmlentities (4.3.4)
     http (5.2.0)
       addressable (~> 2.8)
@@ -382,7 +383,7 @@ GEM
     llhttp-ffi (0.5.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.4)
+    logger (1.6.5)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -740,7 +741,7 @@ DEPENDENCIES
   flamegraph
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 5.26.1)
+  honeybadger (= 5.26.2)
   httparty
   jbuilder (~> 2.13)
   jquery-rails
