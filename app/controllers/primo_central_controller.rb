@@ -12,8 +12,14 @@ class PrimoCentralController < CatalogController
   helper_method :solr_range_queries_to_a
 
   def recaptcha
+    # Do not enable for logged in users.
+    return if current_user
+
     # skip if recaptcha site key not set (using as feature flag)
     return if ENV["RECAPTCHA_SITE_KEY"].blank?
+
+    # only verify once per session.
+    return if session["recaptcha_verified"]
 
     @recaptcha_action = "articles_search"
 
@@ -27,6 +33,8 @@ class PrimoCentralController < CatalogController
 
     if !verify_recaptcha(action: @recaptcha_action, minimum_score: minimum_score)
       raise Recaptcha::VerifyError.new("recaptcha verification failed for #{@recaptcha_action}")
+    else
+      session["recaptcha_verified"] = true
     end
   end
 
