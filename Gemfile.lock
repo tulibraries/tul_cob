@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: f61984f38b3d7cce74c259e9fa0923521a4c05d5
+  revision: db91e7a8bbf2175a753ddc9b0071b3136667f936
   branch: main
   specs:
     cob_index (0.1.0)
@@ -261,7 +261,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.5.0)
@@ -320,7 +320,8 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.88.1)
-    gli (2.22.0)
+    gli (2.22.1)
+      ostruct
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.1.1)
@@ -392,10 +393,9 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marc (1.2.0)
+    marc (1.3.0)
+      nokogiri (~> 1.0)
       rexml
-      scrub_rb (>= 1.0.1, < 2)
-      unf
     marc-fastxmlwriter (1.1.0)
       marc (~> 1.0)
     marcel (1.0.4)
@@ -654,7 +654,6 @@ GEM
       concurrent-ruby (~> 1.0)
     uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
-    unf (0.2.0)
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
