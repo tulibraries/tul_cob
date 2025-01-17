@@ -21,6 +21,10 @@ class PrimoCentralController < CatalogController
     # only verify once per session.
     return if session["recaptcha_verified"]
 
+    # skip if request is coming from Honeybadger
+    honey_badger_token = request.headers["Honeybadger-Token"]
+    return if honey_badger_token.present? && honey_badger_token == ENV["HONEYBADGER_TOKEN"]
+
     @recaptcha_action = "articles_search"
 
     # skip if referred from app.
