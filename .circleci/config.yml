@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@2.0.1
   coveralls: coveralls/coveralls@2.2.5
 
 workflows:
@@ -29,10 +28,10 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v16-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v16-{{ arch }}-{{ .Branch }}
-            - gem-cache-v16-{{ arch }}
-            - yarn-cache-v16-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v17-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v17-{{ arch }}-{{ .Branch }}
+            - gem-cache-v17-{{ arch }}
+            - yarn-cache-v17-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
@@ -64,12 +63,12 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - save_cache:
-          key: gem-cache-v16-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v17-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
 
       - save_cache:
-          key: yarn-cache-v16-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v17-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
