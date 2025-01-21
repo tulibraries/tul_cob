@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: f174fe5368125a2c1d0b8a4664c25eebae6fb9f5
+  revision: e7448f519c2ecbd08d582c31cfd30b6a6f35f669
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -344,7 +344,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     io-console (0.7.2)
@@ -635,8 +635,9 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    traject_plus (2.0.0)
+    traject_plus (2.0.1)
       activesupport
+      csv
       deprecation
       jsonpath
       traject (~> 3.0)
