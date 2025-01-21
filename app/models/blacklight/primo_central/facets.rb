@@ -3,10 +3,10 @@
 
 module Blacklight
   module PrimoCentral
-      ##
-      # Facets for {Europeana::Blacklight::Response}
-      #
-      # Based on {Blacklight::SolrResponse::Facets} v5.10.2
+    ##
+    # Facets for {Europeana::Blacklight::Response}
+    #
+    # Based on {Blacklight::SolrResponse::Facets} v5.10.2
     module Facets
       require "ostruct"
 
