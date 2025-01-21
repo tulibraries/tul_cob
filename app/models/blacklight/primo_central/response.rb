@@ -2,7 +2,7 @@
 
 module Blacklight::PrimoCentral
   class Response < HashWithIndifferentAccess
-    include Blacklight::PrimoCentral::Response::Facets
+    include Blacklight::PrimoCentral::Facets
     include Kaminari::PageScopeMethods
     include Kaminari::ConfigurationMethods::ClassMethods
     include Blacklight::PrimoCentral::SolrAdaptor
