@@ -62,3 +62,4 @@ yarn-debug.log*
 /config/credentials/production.key
 
 development.sqlite3*
+test.sqlite3*
