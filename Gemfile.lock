@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: f174fe5368125a2c1d0b8a4664c25eebae6fb9f5
+  revision: e7448f519c2ecbd08d582c31cfd30b6a6f35f669
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 2ca57c6e69f9001c5b0a0386582c4fac11b700a6
+  revision: 09addb381c64d7dfde3f02d2cfe5189619b33145
   branch: main
   specs:
     cob_index (0.1.0)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 178e0a354fafb9eb1fa4c9b008c8b2ad7d5ad627
+  revision: 424e4e4135acad601ae7356d2f60022ea5058d0c
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -344,7 +344,7 @@ GEM
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.8.3)
-    i18n (1.14.6)
+    i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     io-console (0.7.2)
@@ -562,7 +562,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.37.0)
       parser (>= 3.3.1.0)
-    rubocop-rails (2.28.0)
+    rubocop-rails (2.29.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
@@ -635,8 +635,9 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    traject_plus (2.0.0)
+    traject_plus (2.0.1)
       activesupport
+      csv
       deprecation
       jsonpath
       traject (~> 3.0)
