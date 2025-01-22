@@ -764,6 +764,7 @@ DEPENDENCIES
   popper_js (>= 2.11.8)
   primo!
   pry-rails
+  psych
   puma (= 6.5.0)
   rack-mini-profiler
   rails (= 7.1.5.1)
