@@ -17,8 +17,8 @@ module Tulcob
 
     private
 
-    def valid_facet_params?(facet_params)
-      facet_params.is_a?(Hash) && facet_params.all? { |k, v| k.is_a?(String) && v.is_a?(Array) }
-    end
+      def valid_facet_params?(facet_params)
+        facet_params.is_a?(Hash) && facet_params.all? { |k, v| k.is_a?(String) && v.is_a?(Array) }
+      end
   end
 end
