@@ -35,18 +35,15 @@ class CatalogController < ApplicationController
   end
 
   def advanced_override_path
-    unless params["operator"].nil?
-      if params["q_1"]&.split&.count == 1 && params["operator"]["q_1"] == "is"
+    return unless params["operator"].is_a?(Hash)
+  
+    (1..3).each do |i|
+      query_param = params["q_#{i}"]
+      operator_param = params["operator"]["q_#{i}"]
+      
+      if query_param.split.count == 1 && operator_param == "is"
         blacklight_config.solr_path = "single_quoted_search"
-      end
-
-      if
-        params["q_2"]&.split&.count == 1 && params["operator"]["q_2"] == "is"
-        blacklight_config.solr_path = "single_quoted_search"
-      end
-
-      if params["q_3"]&.split&.count == 1 && params["operator"]["q_3"] == "is"
-        blacklight_config.solr_path = "single_quoted_search"
+        break # Exit early since the solr_path is already set
       end
     end
   end
