@@ -36,11 +36,11 @@ class CatalogController < ApplicationController
 
   def advanced_override_path
     return unless params["operator"].is_a?(Hash)
-  
+
     (1..3).each do |i|
       query_param = params["q_#{i}"]
       operator_param = params["operator"]["q_#{i}"]
-      
+
       if query_param.split.count == 1 && operator_param == "is"
         blacklight_config.solr_path = "single_quoted_search"
         break # Exit early since the solr_path is already set
