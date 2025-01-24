@@ -33,7 +33,8 @@ class PrimoCentralController < CatalogController
     # skip if nothing to query.
     return if params["q"].blank? && params["f"].blank?
 
-    minimum_score |= ENV["RECAPTCHA_MINIMUM_SCORE"] || 0.9
+    # Set minimum_score, converting environment variable to float.
+    minimum_score = (ENV["RECAPTCHA_MINIMUM_SCORE"] || "0.9").to_f
 
     if !verify_recaptcha(action: @recaptcha_action, minimum_score: minimum_score)
       raise Recaptcha::VerifyError.new("recaptcha verification failed for #{@recaptcha_action}")
@@ -41,7 +42,6 @@ class PrimoCentralController < CatalogController
       session["recaptcha_verified"] = true
     end
   end
-
 
   def advanced_override_path
   end
