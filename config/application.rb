@@ -15,13 +15,15 @@ module Tulcob
     config.load_defaults 7.1
 
     require "lc_classifications"
+    require Rails.root.join("app/middleware/block_suspicious_requests")
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
     config.add_autoload_paths_to_load_path = true
     config.autoload_paths << Rails.root.join("lib")
-
+    config.middleware.use Tulcob::BlockSuspiciousRequests
     config.library_link = "https://library.temple.edu/"
     config.ask_link = "https://library.temple.edu/contact-us"
     config.process_types = config_for(:process_types).with_indifferent_access
