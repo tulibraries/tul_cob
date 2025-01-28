@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 8376eabc716933c7c6e4b83dd1a3d9d0f1182c68
+  revision: 46fa85822316e1669c05f93e2ea2ba8aad134839
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -320,7 +320,7 @@ GEM
       rake
     flamegraph (0.9.5)
     foreman (0.88.1)
-    gli (2.22.1)
+    gli (2.22.2)
       ostruct
     globalid (1.2.1)
       activesupport (>= 6.1)
