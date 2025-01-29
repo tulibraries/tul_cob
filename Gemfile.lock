@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 46fa85822316e1669c05f93e2ea2ba8aad134839
+  revision: 7534117e612b15681b882a88e519929df0c81fe8
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -630,14 +630,16 @@ GEM
     thread_safe (0.3.6)
     tilt (2.4.0)
     timeout (0.4.1)
-    traject (3.8.2)
+    traject (3.8.3)
       concurrent-ruby (>= 0.8.0)
+      csv
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
       http (>= 3.0, < 6)
       httpclient (~> 2.5)
       marc (~> 1.0)
       marc-fastxmlwriter (~> 1.0)
+      mutex_m
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
