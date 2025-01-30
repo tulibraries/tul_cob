@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: a293067a8982d0b31d64274cf85488d5d704fdd7
+  revision: fad2279d7682cade31b6a00d7e763642c16977f8
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -630,14 +630,16 @@ GEM
     thread_safe (0.3.6)
     tilt (2.4.0)
     timeout (0.4.1)
-    traject (3.8.2)
+    traject (3.8.3)
       concurrent-ruby (>= 0.8.0)
+      csv
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
       http (>= 3.0, < 6)
       httpclient (~> 2.5)
       marc (~> 1.0)
       marc-fastxmlwriter (~> 1.0)
+      mutex_m
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
