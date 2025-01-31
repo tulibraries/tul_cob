@@ -28,10 +28,10 @@ jobs:
 
       - restore_cache:
           keys:
-            - gem-cache-v20-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-v20-{{ arch }}-{{ .Branch }}
-            - gem-cache-v20-{{ arch }}
-            - yarn-cache-v20-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - gem-cache-v21-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v21-{{ arch }}-{{ .Branch }}
+            - gem-cache-v21-{{ arch }}
+            - yarn-cache-v21-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
       - setup_remote_docker:
           docker_layer_caching: false
@@ -63,12 +63,12 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - save_cache:
-          key: gem-cache-v20-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v21-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
               - vendor/bundle
 
       - save_cache:
-          key: yarn-cache-v20-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: yarn-cache-v21-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
               - node_modules
 
