@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 25f98b3166d5dbad13c06f7e7d9147bf27e7d1f7
+  revision: e1dd402d37a33c8c957c94469282655c92660bf8
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: e95f023f87c2376fd2b5865efa609f395adc3a52
+  revision: 5e85e2a6cbc8ab4f40b99657a848e81dbdf7e94e
   branch: main
   specs:
     cob_index (0.1.0)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: ecbd13a6eedfd603169f4a52f2040828e41c8a20
+  revision: aed4c431c1b444dc7a71cfa2de8a7ef5c7ef3273
   branch: main
   specs:
     cob_web_index (0.1.0)
