@@ -1,3 +1,4 @@
 bootstrap
 micromatch
 rexml
+net-imap
