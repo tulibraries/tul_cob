@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 5cdc7959734baf1a27213a60244672c5a9e6ef79
+  revision: 15c61a41b109342c4ed5ab5147df23b170cdbb87
   branch: main
   specs:
     cob_index (0.1.0)
@@ -535,7 +535,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.0)
+    rexml (3.4.1)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
