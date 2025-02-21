@@ -62,6 +62,13 @@ jobs:
           name: Copy the node_modules from the container to local
           command: make ci-copy-node-modules-to-local
 
+      - run:
+          name: Remove Bundler Cache on Dependabot PRs
+          command: |
+            if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
+              bundle cache clean --all
+            fi
+
       - save_cache:
           key: gem-cache-v23-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
