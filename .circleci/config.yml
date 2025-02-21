@@ -63,10 +63,13 @@ jobs:
           command: make ci-copy-node-modules-to-local
 
       - run:
-          name: Remove Bundler Cache on Dependabot PRs
+          name: Remove Bundle Cache on Dependabot PRs
           command: |
             if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
-              bundle cache clean --all
+              rm -rf vendor/cache
+              rm -rf ~/.bundle/cache
+              rm -rf ~/.bundle/ruby
+              bundle install --no-cache
             fi
 
       - save_cache:
