@@ -5,7 +5,7 @@ export #exports the .env variables
 DOCKER_FLAGS := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
 ifeq ($(CI), true)
 	DOCKER := $(DOCKER_FLAGS) docker-compose -p tul_cob -f docker-compose.ci.yml
-	LINT_CMD := ./bin/rubocop
+	LINT_CMD := bundle exec rubocop
 	TEST_CMD := bundle exec rails ci
 	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} --password=${DOCKERHUB_TOKEN}
 else
