@@ -53,7 +53,7 @@ jobs:
               rm -rf vendor/cache
               rm -rf ~/.bundle/cache
               rm -rf ~/.bundle/ruby
-              bundle install --no-cache --path vendor/bundle
+              make ci-bundle-install
             fi
       
       - run:
