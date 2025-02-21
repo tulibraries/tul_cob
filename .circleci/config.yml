@@ -44,7 +44,7 @@ jobs:
 
       - run:
           name: Run bundler on the app container
-          command: make ci-bundle-install
+          command: if [[ ! "$CIRCLE_BRANCH" =~ dependabot ]]; then make ci-bundle-install; fi
 
       - run:
           name: Run yarn install on the app container
