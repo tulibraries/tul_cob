@@ -44,8 +44,18 @@ jobs:
 
       - run:
           name: Run bundler on the app container
-          command: make ci-bundle-install
+          command: if [[ ! "$CIRCLE_BRANCH" =~ dependabot ]]; then make ci-bundle-install; fi
 
+      - run:
+          name: Remove Bundle Cache on Dependabot PRs
+          command: |
+            if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
+              rm -rf vendor/cache
+              rm -rf ~/.bundle/cache
+              rm -rf ~/.bundle/ruby
+              bundle install --no-cache
+            fi
+      
       - run:
           name: Run yarn install on the app container
           command: make ci-yarn-install
