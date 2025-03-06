@@ -28,7 +28,7 @@ gem "cob_index",
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"
 gem "coffee-rails"
-gem "concurrent-ruby", "1.3.5"
+gem "concurrent-ruby"
 gem "devise"
 gem "devise-guests", "~> 0.8"
 gem "dotenv-rails"
