@@ -1,2 +1,4 @@
 micromatch
 cgi
+omniauth-saml
+ruby-saml
