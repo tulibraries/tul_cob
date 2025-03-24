@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 078c4c2047d03131947fcf57f975fe8dbf225d70
+  revision: f8545a3bc73984fedecbe73c185d5596b8724fc9
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -269,7 +269,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.3.2)
+    csv (3.3.3)
     dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
@@ -385,7 +385,7 @@ GEM
       logger (~> 1.6)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
-    llhttp-ffi (0.5.0)
+    llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.6.6)
@@ -407,7 +407,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.8)
-    minitest (5.25.4)
+    minitest (5.25.5)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.7.1)
