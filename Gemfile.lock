@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: f8545a3bc73984fedecbe73c185d5596b8724fc9
+  revision: c7ecf338169ca2bc561f41c628ecb2fe5db9fd9c
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -388,7 +388,7 @@ GEM
     llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
-    logger (1.6.6)
+    logger (1.7.0)
     loofah (2.24.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
