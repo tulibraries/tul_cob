@@ -7,3 +7,4 @@ exceptions:
     - "Alma::BibRequest::ItemAlreadyExists"
     - "ActiveRecord::RecordNotUnique"
     - "Dalli::RingError"
+    - "ActiveRecord::ConnectionNotEstablished"
