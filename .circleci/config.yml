@@ -50,8 +50,9 @@ jobs:
           name: Remove Bundle Cache on Dependabot PRs
           command: |
             if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
-              rm -rf vendor/bundle/ruby/3.3.0/bundler/gem
-              make ci-bundle-install
+              rm -rf vendor/bundle/ruby/3.3.0/bundler/gems/
+              rm -rf vendor/bundle/ruby/3.3.0/cache/bundler/git/
+              bundle install --no-cache
             fi
       
       - run:
