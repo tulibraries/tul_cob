@@ -52,7 +52,7 @@ jobs:
             if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
               rm -rf project/vendor/bundle/ruby/3.3.0/bundler/gems
               rm -rf project/vendor/bundle/ruby/3.3.0/cache/bundler/git
-              bundle install
+              make ci-bundle-install
             fi
       
       - run:
