@@ -308,7 +308,7 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
-    faraday (2.12.2)
+    faraday (2.13.0)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -747,7 +747,7 @@ DEPENDENCIES
   dotenv-rails
   execjs
   factory_bot_rails
-  faraday (= 2.12.2)
+  faraday (= 2.13.0)
   ffi (= 1.16.3)
   flamegraph
   foreman
