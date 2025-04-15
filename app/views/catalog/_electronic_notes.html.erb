@@ -1,19 +1,18 @@
 <div class="electronic-notes">
   <strong>Notes:</strong>
-
   <% unavailable_notes.each do |note| %>
     <div class="alert alert-danger"><p><%= raw note %></p></div>
   <% end %>
 
   <% collection_notes.each do |note| %>
-    <p><%= raw note %></p>
+    <p class="col-notes"><%= raw note %></p>
   <% end %>
 
   <% service_notes.each do |note| %>
-    <p><%= raw note %></p>
+    <p class="serv-notes"><%= raw note %></p>
   <% end %>
 
-  <p><%= raw public_notes %></p>
+  <p class="pub-notes"><%= raw public_notes %></p>
 
-  <p><%= raw authentication_notes %></p>
+  <p class="auth-notes"><%= raw authentication_notes %></p>
 </div>
