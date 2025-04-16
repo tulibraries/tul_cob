@@ -14,7 +14,10 @@ RSpec.describe RequestConfirmation, type: :model do
       )}
       let(:pickup_location) { "MAIN" }
       it "generates time estimate" do
-        expect(subject.message).to eq "Your request has been submitted! Your item will be available for pickup at Charles Library within 1-3 business days. We will notify you by email once it's ready."
+        rendered_message = Capybara::Node::Simple.new(subject.message)
+        expect(rendered_message).to have_content I18n.t("requests.default_success")
+        expect(rendered_message).to have_content subject.delivery_estimate_message
+        expect(rendered_message).to have_content I18n.t("requests.request_status_message")
       end
     end
 
@@ -24,7 +27,9 @@ RSpec.describe RequestConfirmation, type: :model do
       )}
       let(:pickup_location) { "JAPAN" }
       it "does not generate delivery estimate message" do
-        expect(subject.message).to eq "Your request has been submitted! We will notify you by email once it's ready."
+        rendered_message = Capybara::Node::Simple.new(subject.message)
+        expect(rendered_message).to have_content I18n.t("requests.default_success")
+        expect(rendered_message).to have_content I18n.t("requests.request_status_message")
         expect(subject.delivery_estimate_message).to eq nil
       end
     end

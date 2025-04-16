@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class RequestConfirmation
+  include ActionView::Helpers::TagHelper
+  include ActionView::Context # Required for `content_tag` and `tag` to work properly
+
   attr_reader :request_id, :sent_from, :pickup_location
 
   def initialize(response, pickup_location = nil)
@@ -10,7 +13,13 @@ class RequestConfirmation
   end
 
   def message
-    [I18n.t("requests.default_success"), delivery_estimate_message, I18n.t("requests.request_status_message")].join("")
+    msg = tag.div class: %(check-mark)
+    msg += tag.p class: "request-confirmation" do
+              content_tag(:strong, I18n.t("requests.default_success")) +
+              tag.br +
+              delivery_estimate_message + " " + I18n.t("requests.request_status_message")
+            end
+    msg.html_safe
   end
 
   def delivery_estimate_message
