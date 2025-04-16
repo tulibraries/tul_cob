@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class RequestConfirmation
+  include ActionView::Helpers::TagHelper
+  include ActionView::Context # Required for `content_tag` and `tag` to work properly
+
   attr_reader :request_id, :sent_from, :pickup_location
 
   def initialize(response, pickup_location = nil)
