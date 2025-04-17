@@ -46,7 +46,8 @@ bundle exec rails db:migrate
 
 We need to run two commands in separate terminal windows in order to start the application.
 
-* In the first terminal window, start solr
+* In the first terminal window, start solr. Note: Make sure the SOLR_URL environment variable is set properly.
+There is an example in the .env file.
 
 ```bash
 git clone https://github.com/tulibraries/ansible-playbook-solrcloud.git
@@ -66,9 +67,10 @@ make up-lite
   bundle exec rails server (otherwise)
   ```
 
-  Create a local user, if needed, for auth related work
+* Create a local user, if needed, for auth related work
 
   ```bash
+  cd tul_cob (if necesary)
   rails c
   User.new(email: "email@domain.edu", password: "password_of_choice", admin: 1).save
   ```
