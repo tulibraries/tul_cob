@@ -11,8 +11,9 @@ RSpec.describe AlmawsAvailability, type: :model do
     context "item is in temporary MAIN storage" do
       let(:item) do
         Alma::BibItem.new(
-          "holding_data" => { "in_temp_location" => true, "temp_location" => { "value" => "storage" },
-          "library" => { "value" => "MAIN", "desc" => "MAIN" } },
+          "holding_data" => { "in_temp_location" => true,
+                              "temp_location" => { "value" => "storage" },
+                              "temp_library" => { "value" => "MAIN", "desc" => "MAIN" } },
           "item_data" => { "base_status" => { "value" => "1" } }
           )
       end
@@ -28,8 +29,8 @@ RSpec.describe AlmawsAvailability, type: :model do
         Alma::BibItem.new(
           "holding_data" => { "in_temp_location" => true,
                               "temp_location" => { "value" => "storage" },
-                              "library" => { "value" => "ROME", "desc" => "ROME" },
-                              "location" => { "value" => "storage", "desc" => "storage" } },
+                              "temp_library" => { "value" => "ROME", "desc" => "ROME" }
+                            },
           "item_data" => {
                             "base_status" => { "value" => "1" }
                           }
