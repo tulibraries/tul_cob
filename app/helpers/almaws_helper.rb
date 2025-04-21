@@ -11,7 +11,7 @@ module AlmawsHelper
 
   def asrs_allowed_partial(request_options, document)
     if request_options.hold_allowed? && available_asrs_items.present?
-      render partial: "asrs_allowed", locals: { request_options:, document: }
+      render partial: "asrs_allowed", locals: { request_options:, document: } unless non_asrs_items.present?
     end
   end
 
