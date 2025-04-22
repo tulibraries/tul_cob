@@ -5,7 +5,7 @@ default: &default
   saml_issuer: <%= ENV["COB_SAML_ISSUER"] || "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata" %>
   assertion_consumer_service_url: <%= ENV["COB_SAML_ASSERTION_CONSUMER_SERVICE_URL"] || "https://librarysearch.k8s.temple.edu/users/auth/saml/callback" %>
   saml_idp_metadata_url: <%= ENV["COB_SAML_IDP_METADATA_URL"] || "https://np-fim.temple.edu/idp/shibboleth" %>
-  idp_sso_service_url: <%= ENV["COB_SAML_IDP_SSO_SERVICE_URL"] ||"https://np-fim.temple.edu/idp/profile/SAML2/Redirect/SSO" %>
+  idp_sso_service_url: <%= ENV["COB_SAML_IDP_SSO_SERVICE_URL"] ||"https://np-fim.temple.edu/idp/profile/SAML2/POST/SSO" %>
 
 development:
   <<: *default
