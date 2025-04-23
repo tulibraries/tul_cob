@@ -22,7 +22,8 @@ $(document).on('turbolinks:load', function() {
 	          $children.hide().slice(0,5).show();
 	          $more.on('click', function(e){
 	            e.preventDefault();
-	            $children.fadeIn();
+							$children.hide().slice(0,10000).show();
+	            // $children.all.fadeIn();
 	            $more.hide();
 	            $less.fadeIn();
 	          });

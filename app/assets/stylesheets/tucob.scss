@@ -313,3 +313,14 @@ img {
 .nav-item.nav-link.header-links {
   padding: 0.5rem 1rem !important;
 }
+
+div.check-mark {
+  outline: solid red 0;
+  height: 3rem;
+  float: left;
+  width: 3.5rem;
+  margin-right: 1.5rem;
+  background-image: url("check-mark.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}

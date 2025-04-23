@@ -8,7 +8,13 @@ class AlmawsAvailability
   TEMP_LOCATIONS = [ "storage"]
 
   def self.new(item)
-    if TEMP_LOCATIONS.include?(item.location) || TEMP_LIBRARIES.include?(item.library)
+    if TEMP_LOCATIONS.include?(item.location)
+      if item.library.downcase == "main"
+        Availability::TemporaryStatus
+      else
+        Availability::Available
+      end
+    elsif TEMP_LIBRARIES.include?(item.library)
       Availability::TemporaryStatus
     elsif item.item_data["awaiting_reshelving"]
       Availability::AwaitingReshelving
