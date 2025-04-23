@@ -166,7 +166,6 @@ RSpec.describe AlmawsController, type: :controller do
         allow(request_data).to receive(:equipment_locations).and_return([])
         allow(request_data).to receive(:booking_locations).and_return([])
         allow(request_data).to receive(:pickup_locations).and_return([])
-        allow(request_data).to receive(:asrs_pickup_locations).and_return([])
         allow(Alma::RequestOptions).to receive(:get).and_raise(Alma::RequestOptions::ResponseError, "phhhht")
         sign_in @user, scope: :user
         get(:request_options, **params)

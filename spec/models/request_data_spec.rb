@@ -57,11 +57,9 @@ RSpec.describe RequestData, type: :model do
       let(:item2) {
         Alma::BibItem.new("item_data" => { "library" => { "value" => "ASRS", "description" => "Library" } })
       }
-      it "should return bib for non asrs hold requests" do
+      it "should return bib for both asrs and non asrs hold requests" do
         expect(subject.get_request_level).to eq("bib")
-      end
-      it "should return item for asrs hold requests" do
-        expect(subject.get_request_level("asrs")).to eq("item")
+        expect(subject.get_request_level("asrs")).to_not eq("item")
       end
     end
     context "mixed asrs with descriptions" do
@@ -257,39 +255,6 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("empty_descriptions") }
       it "returns an array of hashes with materials types and blank strings for description" do
         expect(subject.material_types_and_descriptions).to eq([["DVD", [""]]])
-      end
-    end
-  end
-
-  describe "#asrs_material_types_and_descriptions" do
-    context "record has multiple empty descriptions" do
-      let(:bib_items) { Alma::BibItem.find("asrs_empty_descriptions") }
-      it "returns an empty array" do
-        expect(subject.asrs_material_types_and_descriptions).to eq([["DVD", [""]]])
-      end
-    end
-    context "record has empty description and is ASRS and available" do
-      let(:bib_items) { Alma::BibItem.find("asrs_empty_and_description") }
-      it "returns one description and one empty string" do
-        expect(subject.asrs_material_types_and_descriptions).to eq([["DVD", ["", "sample"]]])
-      end
-    end
-    context "record has empty description and is ASRS and not available" do
-      let(:bib_items) { Alma::BibItem.find("empty_and_description_not_in_place") }
-      it "returns an empty list" do
-        expect(subject.asrs_material_types_and_descriptions).to eq([])
-      end
-    end
-    context "record many description but none are from ASRS" do
-      let(:bib_items) { Alma::BibItem.find("multiple_descriptions") }
-      it "returns empty list" do
-        expect(subject.asrs_material_types_and_descriptions).to eq([])
-      end
-    end
-    context "record has multiple descriptions that are the same" do
-      let(:bib_items) { Alma::BibItem.find("asrs_repeated_descriptions") }
-      it "returns unique descriptions" do
-        expect(subject.asrs_material_types_and_descriptions).to eq([["DVD", ["sample"]]])
       end
     end
   end
