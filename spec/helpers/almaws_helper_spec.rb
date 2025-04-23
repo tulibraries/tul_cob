@@ -90,7 +90,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       }.to_json
     }
 
-    context "asrs request can be placed on an book that is in_place" do
+    context "asrs request can be placed on a book that is in_place" do
       let(:item) do
        Alma::BibItem.new(
          "holding_data" => {
@@ -120,7 +120,8 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "renders the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [item] }
-        expect(helper.asrs_allowed_partial(request_options, document)).not_to be_nil
+        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
+        expect(helper.hold_allowed_partial(request_options, document)).to_not be_nil
       end
     end
 
@@ -154,7 +155,8 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "renders the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [item] }
-        expect(helper.asrs_allowed_partial(request_options, document)).not_to be_nil
+        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
+        expect(helper.hold_allowed_partial(request_options, document)).to_not be_nil
       end
     end
 
