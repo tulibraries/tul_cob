@@ -13,12 +13,17 @@ class RequestConfirmation
   end
 
   def message
-    msg = tag.div class: %(check-mark)
-    msg += tag.p class: "request-confirmation mb-0" do
-              content_tag(:strong, I18n.t("requests.default_success")) +
-              tag.br +
-              delivery_estimate_message + " " + I18n.t("requests.request_status_message")
+    msg = content_tag(:div, class: "row") do
+            content_tag(:div, "", class: "col-1 check-mark") +
+            content_tag(:div, class: "col-11") do
+              content_tag(:p, class: "request-confirmation mb-0") do
+                content_tag(:span, I18n.t("requests.default_success"), class: "fw-bold fs-5") +
+                tag(:br) +
+                "#{delivery_estimate_message} #{I18n.t("requests.request_status_message")}".html_safe
+              end
             end
+          end
+
     msg.html_safe
   end
 
