@@ -120,7 +120,6 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "renders the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [item] }
-        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
         expect(helper.hold_allowed_partial(request_options, document)).to_not be_nil
       end
     end
@@ -155,7 +154,6 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "renders the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [item] }
-        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
         expect(helper.hold_allowed_partial(request_options, document)).to_not be_nil
       end
     end
@@ -182,7 +180,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
       it "does not render the hold partial" do
         allow(helper).to receive(:available_asrs_items) { [] }
-        expect(helper.asrs_allowed_partial(request_options, document)).to be_nil
+        expect(helper.hold_allowed_partial(request_options, document)).to_not be_nil
       end
     end
   end

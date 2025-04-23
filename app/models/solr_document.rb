@@ -116,8 +116,8 @@ class SolrDocument
     grouped_items = document_items
       .group_by { |item| item["library"] }
       .transform_values { |library| library.group_by { |item| item["location"] }.sort.to_h }
-    sorted_items = grouped_items
-      .sort_by { |library, locations| [library == "Charles Library" ? 0 : 1, library] }.to_h
+    #sort grouped items by library and location
+    grouped_items.sort_by { |library, locations| [library == "Charles Library" ? 0 : 1, library] }.to_h
       .each do |library, locations|
         unless locations.empty?
           locations.each do |location, items|
