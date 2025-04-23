@@ -176,7 +176,7 @@ en:
     footer_link: "http://answers.library.temple.edu/faq/195868"
     cancel: "Close"
     hold_allowed_link: "Request item for pickup"
-    asrs_allowed_link: "Request item for pickup"
+    # asrs_allowed_link: "Request item for pickup"
     digitization_allowed_link: "Request a scan of an article or book chapter"
     booking_allowed_link: "Request booking"
     aeon_request_allowed_header: "Request materials to view in Special Collections Research Center"

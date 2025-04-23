@@ -38,19 +38,16 @@ class AlmawsController < CatalogController
     @books = @document.fetch("format") if @document["format"]&.include?("Book")
     @author = @document.fetch("creator_display", []).first || ""
     @description = @request_data.material_types_and_descriptions
-    @asrs_description = @request_data.asrs_material_types_and_descriptions
     @material_types = @request_data.material_types
 
     # Pickup locations
     @pickup_locations = @request_data.pickup_locations
-    @asrs_pickup_locations = @request_data.asrs_pickup_locations
     @item_level_locations = @request_data.item_level_locations
     @equipment = @request_data.equipment_locations
     @booking_location = @request_data.booking_locations
 
     # Request levels
     @request_level = @request_data.request_level
-    @asrs_request_level = @request_data.asrs_request_level
 
     # Request options
     if [@request_level, @asrs_request_level].include?("item")
@@ -218,13 +215,13 @@ class AlmawsController < CatalogController
     def get_bib_items(mms_id)
       Rails.cache.fetch("#{mms_id}/bib_items", expires_in: 30.seconds) do
         log = { type: "bib_items_availability" }
-        response = do_with_json_logger(log) { Alma::BibItem.find(mms_id, limit: 100, offset: 0, expand: "due_date").all }.to_a.reject(&:missing_or_lost?)
+        do_with_json_logger(log) { Alma::BibItem.find(mms_id, limit: 100, offset: 0, expand: "due_date").all }.to_a.reject(&:missing_or_lost?)
       end
     end
 
     def get_bib_request_options(mms_id, user_id)
       log = { type: "bib_request_options", user: user_id }
-      response = do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id:) }
+      do_with_json_logger(log) { Alma::RequestOptions.get(mms_id, user_id:) }
     end
 
     def get_item_request_options(mms_id, user_id, holdings)

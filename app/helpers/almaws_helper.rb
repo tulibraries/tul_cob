@@ -4,14 +4,8 @@ module AlmawsHelper
   include Blacklight::CatalogHelperBehavior
 
   def hold_allowed_partial(request_options, document)
-    if request_options.hold_allowed? && non_asrs_items.present?
+    if request_options.hold_allowed?
       render partial: "hold_allowed", locals: { request_options:, document: }
-    end
-  end
-
-  def asrs_allowed_partial(request_options, document)
-    if request_options.hold_allowed? && available_asrs_items.present? && !non_asrs_items.present?
-      render partial: "asrs_allowed", locals: { request_options:, document: }
     end
   end
 

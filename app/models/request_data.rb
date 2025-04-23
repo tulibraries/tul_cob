@@ -24,28 +24,11 @@ class RequestData
   end
 
   def get_request_level(partial = nil)
-    if partial == "asrs"
-      # This conditional still needs to be refactored.
-      if AlmawsController::helpers.asrs_items(@items).present? && AlmawsController::helpers.non_asrs_items(@items).present?
-        "item"
-      else
-        has_description?(@items) ? "item" : "bib"
-      end
-    else
-      has_description?(@items) ? "item" : "bib"
-    end
-  end
-
-  def asrs_request_level
-    get_request_level("asrs")
+    has_description?(@items) ? "item" : "bib"
   end
 
   def pickup_locations
     pickup_location_codes&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
-  end
-
-  def asrs_pickup_locations
-    ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
   end
 
   def valid_pickup_locations
@@ -136,7 +119,7 @@ class RequestData
   end
 
   def booking_locations
-    pickup_location = @items.map { |item|
+    @items.map { |item|
       campus = determine_campus(item.library)
       if campus == :MAIN
         ["MAIN", "Charles Library"]
@@ -148,15 +131,6 @@ class RequestData
 
   def material_types_and_descriptions
     combine_material_types_and_descriptions(@items)
-  end
-
-  def asrs_material_types_and_descriptions
-    if asrs_request_level == "item"
-      asrs_items = @items.select { |item| item.library == "ASRS" && item.in_place? }
-      combine_material_types_and_descriptions(asrs_items)
-    else
-      material_types_and_descriptions || ""
-    end
   end
 
   def material_types
