@@ -5,7 +5,6 @@ require "omniauth/strategies/saml"
 module OmniAuth
   module Strategies
     class SAML
-
       def request_phase
         auth_request = OneLogin::RubySaml::Authrequest.new
 
@@ -24,11 +23,9 @@ module OmniAuth
             </body>
             </html>
           HTML
-          Rack::Response.new(form_html, 200, { 'Content-Type' => 'text/html' }).finish
+          Rack::Response.new(form_html, 200, { "Content-Type" => "text/html" }).finish
         end
       end
-
     end
   end
 end
-
