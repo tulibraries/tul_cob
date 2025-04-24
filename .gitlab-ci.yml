@@ -58,6 +58,7 @@ qa_deploy:
   extends: .helm_setup
   only:
     - main
+    - use-saml-post
   script:
     - *export_variables
     - helm pull oci://$HARBOR/tulibraries/charts/librarysearch --untar
