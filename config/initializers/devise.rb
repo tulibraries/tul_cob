@@ -255,6 +255,7 @@ Devise.setup do |config|
   idp_metadata = idp_metadata_parser.parse_remote_to_hash(Rails.configuration.devise["saml_idp_metadata_url"])
 
   config.omniauth :saml, idp_metadata.merge(
+    compress_request: false,
     certificate: Rails.configuration.devise["saml_certificate"],
     private_key: Rails.configuration.devise["saml_private_key"],
     assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
@@ -282,6 +283,7 @@ Devise.setup do |config|
   )
 
   OmniAuth.config.logger = Rails.logger
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
