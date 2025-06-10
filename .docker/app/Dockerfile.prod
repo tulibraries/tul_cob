@@ -22,19 +22,19 @@ RUN apk add -U --no-cache \
       bash=5.2.37-r0 \
       jemalloc=5.3.0-r6 \
       libc6-compat=1.1.0-r4 \
-      libxslt=1.1.42-r2 \
+      libxslt=1.1.43-r3 \
       postgresql16-client=16.9-r0 \
-      shared-mime-info=2.4-r2 \
+      shared-mime-info=2.4-r6 \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.47.2-r0 \
+      git=2.49.0-r0 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
-      libxslt-dev=1.1.42-r2 \
-      libffi-dev=3.4.7-r0 \
+      libxslt-dev=1.1.43-r3 \
+      libffi-dev=3.4.8-r0 \
       postgresql16-dev=16.9-r0 \
-      nodejs=22.15.1-r0 \
+      nodejs=22.16.0-r2 \
       yarn=1.22.22-r1 && \
     bundle config set --local without "development test" && \    
     bundle install --jobs=8 && \
