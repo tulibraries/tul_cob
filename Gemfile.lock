@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 7eafaeb1f0ac9e20bdec8faf96eb1bbba41247d4
+  revision: 54fd976d8c230aeee4a6e85a7e031b8427387004
   branch: main
   specs:
     primo (0.4.0)
@@ -268,7 +268,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    csv (3.3.4)
+    csv (3.3.5)
     dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
