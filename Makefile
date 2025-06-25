@@ -64,7 +64,9 @@ ci-copy-node-modules-to-local:
 	docker cp tul_cob-app-1:/app/node_modules .
 
 ci-bundle-install:
-	$(DOCKER) exec app bundle install --path vendor/bundle
+	$(DOCKER) exec app git config --global core.hardlinks false
+	$(DOCKER) exec app bundle config set path 'vendor/bundle'
+	$(DOCKER) exec app bundle install
 	$(DOCKER) exec app bundle binstubs --all
 	$(DOCKER) exec app bundle binstubs bundler --force
 
