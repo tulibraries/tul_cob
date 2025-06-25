@@ -38,23 +38,22 @@ jobs:
 
       - run: if [ -e /var/run/docker.sock ]; then sudo chown circleci:circleci /var/run/docker.sock; fi
 
-      - run:
-          name: Build app
-          command: make up
-
-      - run:
-          name: Run bundler on the app container
-          command: if [[ ! "$CIRCLE_BRANCH" =~ dependabot ]]; then make ci-bundle-install; fi
 
       - run:
           name: Remove Bundle Cache on Dependabot PRs
           command: |
             if [[ "$CIRCLE_BRANCH" =~ dependabot ]]; then
-              rm -rf project/vendor/bundle/ruby/3.4.0/bundler/gems
-              rm -rf project/vendor/bundle/ruby/3.4.0/cache/bundler/git
-              make ci-bundle-install
+              rm -rf vendor/bundle
             fi
+
+      - run:
+          name: Build app
+          command: make up
       
+      - run:
+          name: Run bundler on the app container
+          command: make ci-bundle-install
+
       - run:
           name: Run yarn install on the app container
           command: make ci-yarn-install
