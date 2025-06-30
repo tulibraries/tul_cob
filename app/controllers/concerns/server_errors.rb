@@ -12,7 +12,7 @@ module ServerErrors
     # consider writing a custom handler below.
     rescue_from Exception do |exception|
       Honeybadger.notify(exception)
-      render "errors/internal_server_error", status: :internal_server_error
+      render template: "errors/internal_server_error", status: :internal_server_error
     end
 
     rescue_from BlacklightRangeLimit::InvalidRange do
