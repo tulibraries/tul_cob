@@ -52,6 +52,12 @@ jobs:
   
       - name: Run yarn install
         run: bundle exec yarn install
+       
+      - name: Copy config files
+        run: |
+          cp config/secrets.yml.example config/secrets.yml
+          cp config/alma.yml.example config/alma.yml
+          cp config/bento.yml.example config/bento.yml
 
       - name: Run rspec tests
         run: bundle exec rspec spec
