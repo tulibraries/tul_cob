@@ -60,7 +60,7 @@ jobs:
           cp config/bento.yml.example config/bento.yml
 
       - name: Run rspec tests
-        run: bundle exec rspec spec
+        run: bundle exec rails ci
 
       - name: Run javascript tests
         run: make test-js
