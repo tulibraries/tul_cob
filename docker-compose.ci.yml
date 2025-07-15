@@ -25,10 +25,18 @@ services:
       dockerfile: .docker/solr/Dockerfile.solr
     ports: 
       - "8993:8983"
-    command:
-      - bash
-      - "-c"
-      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
-         precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
-         precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
-         solr-foreground"
+    environment:
+      - SOLR_OPTS=-Dsolr.config.lib.enabled=true
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - blacklight
+      - /opt/solr/configs/tul_cob-catalog-solr
+      - solr-precreate
+      - az-database
+      - /opt/solr/configs/tul_cob-az-solr
+      - solr-precreate
+      - web-content
+      - /opt/solr/configs/tul_cob-web-solr
+      - "-Xms256m"
+      - "-Xmx512m"
