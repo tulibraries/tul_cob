@@ -49,11 +49,11 @@ jobs:
 
     env:
       SOLR_SEARCH_TWEAK_ENABLE: "on"
-      SOLR_URL:            "http://localhost:8983/solr/blacklight"
-      SOLR_AZ_URL:         "http://localhost:8983/solr/az-database"
+      SOLR_URL:             "http://localhost:8983/solr/blacklight"
+      SOLR_AZ_URL:          "http://localhost:8983/solr/az-database"
       SOLR_WEB_CONTENT_URL: "http://localhost:8983/solr/web-content"
-      DO_INGEST:           "${{ env.DO_INGEST }}"
-      LC_ALL:              "C.UTF-8"
+      DO_INGEST:            "${DO_INGEST}"
+      LC_ALL:               "C.UTF-8"
 
     strategy:
       fail-fast: true
