@@ -52,7 +52,7 @@ jobs:
       - name: Wait for Solr
         run: |
           echo "Waiting for Solr on solr:8983…"
-          until docker-compose exec solr curl -sSf http://localhost:8983/solr/; do
+          until docker compose exec solr curl -sSf http://localhost:8983/solr/; do
             sleep 2
           done
 
