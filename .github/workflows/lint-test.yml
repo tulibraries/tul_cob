@@ -67,20 +67,15 @@ jobs:
             sleep 2
           done
 
-      - name: Run Solr ingest & tests
+      - name: List Solr cores
         run: |
-          docker compose -f docker-compose.integration.yml exec \
-            -e SOLR_SEARCH_TWEAK_ENABLE="on" \
-            -e SOLR_URL="http://solr:8983/solr/blacklight" \
-            -e SOLR_AZ_URL="http://solr:8983/solr/az-database" \
-            -e SOLR_WEB_CONTENT_URL="http://solr:8983/solr/web-content" \
-            -e DO_INGEST="$DO_INGEST" \
-            -e SOLRCLOUD_USER="solr" \
-            -e SOLRCLOUD_PASSWORD="SolrRocks" \
-            -e SOLRCLOUD_HOST="http://localhost:8983/solr/" \
-            app \
-            bundle exec rails ci 
+          docker compose exec solr \
+            curl -sSf 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json' \
+            | jq .
 
+      - name: Run Solr ingest & tests
+        run: docker compose exec app bundle exec rails ci
+          
       - name: Run javascript tests
         run: make test-js
         
