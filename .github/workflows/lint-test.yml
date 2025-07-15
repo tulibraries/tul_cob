@@ -60,7 +60,7 @@ jobs:
       - name: Wait for Solr (timeout after 60s)
         run: |
           timeout 60s bash -c \
-            'until curl -sSf http://localhost:8993/solr; do sleep 2; done'
+            'until curl -sSf http://localhost:8983/solr; do sleep 2; done'
 
       - name: List Solr cores
         run: |
