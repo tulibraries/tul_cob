@@ -35,6 +35,26 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
+
+    services:
+      solr:
+        image: solr:9.8.1
+        ports:
+          - 8983:8983
+        options: >-
+          --health-cmd "curl --silent http://localhost:8983/solr/ -o /dev/null && echo OK"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      SOLR_SEARCH_TWEAK_ENABLE: "on"
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      SOLR_AZ_URL: "http://solr:8983/solr/az-database"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
+      DO_INGEST: "${DO_INGEST}"
+      LC_ALL: "C.UTF-8"
+
     strategy:
       fail-fast: true
       matrix:
