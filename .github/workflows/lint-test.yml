@@ -66,9 +66,9 @@ jobs:
 
       - name: Create Solr cores
         run: |
-          docker compose exec solr solr-precreate blacklight   /opt/solr/configs/tul_cob-catalog-solr
-          docker compose exec solr solr-precreate az-database   /opt/solr/configs/tul_cob-az-solr
-          docker compose exec solr solr-precreate web-content   /opt/solr/configs/tul_cob-web-solr
+          docker compose exec solr solr-precreate blacklight   tul_cob-catalog-solr
+          docker compose exec solr solr-precreate az-database  tul_cob-az-solr
+          docker compose exec solr solr-precreate web-content  tul_cob-web-solr
 
       - name: List Solr cores
         run: |
