@@ -75,6 +75,9 @@ jobs:
             -e SOLR_AZ_URL="http://solr:8983/solr/az-database" \
             -e SOLR_WEB_CONTENT_URL="http://solr:8983/solr/web-content" \
             -e DO_INGEST="$DO_INGEST" \
+            -e SOLRCLOUD_USER="solr" \
+            -e SOLRCLOUD_PASSWORD="SolrRocks" \
+            -e SOLRCLOUD_HOST="http://localhost:8983/solr/" \
             app \
             bundle exec rails ci 
 
