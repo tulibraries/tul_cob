@@ -4,37 +4,41 @@ services:
       context: .
       dockerfile: .docker/ci-app/Dockerfile.ci
     ports:
-      - "3000"
+      - "3000:3000"
     environment:
-      SOLR_URL: "http://solr:8983/solr/blacklight"
-      SOLR_AZ_URL: "http://solr:8983/solr/az-database"
-      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
-      DO_INGEST: "${DO_INGEST}"
-      LC_ALL: "C.UTF-8"
-      BUNDLE_PATH: /app/vendor/bundle
+      SOLR_URL:             "http://solr:8983/solr/blacklight"
+      SOLR_AZ_URL:          "http://solr:8983/solr/tul_cob-catalog-az"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-catalog-web"
+      DO_INGEST:            "${DO_INGEST}"
+      LC_ALL:               "C.UTF-8"
+      BUNDLE_PATH:          /app/vendor/bundle
     entrypoint:
-      - "tail"
-      - "-f"
+      - tail
+      - -f
       - /dev/null
-  
-  solr: 
-    build:
-      context: .
-      dockerfile: .docker/solr/Dockerfile.solr
-    ports: 
-      - "8993:8983"
+
+  solr:
+    image: solr:9.8.1
+    ports:
+      - "8983:8983"
+
+    # 1) Mount your three config‐set directories
     volumes:
       - ./solr/configs/tul_cob_catalog-solr:/opt/solr/configsets/blacklight:ro
-      - ./solr/configs/tul_cob_az-solr:/opt/solr/configsets/tul_cob_az-solr:ro
-      - ./solr/configs/tul_cob_web-solr:/opt/solr/configsets/tul_cob_web-solr:ro
+      - ./solr/configs/tul_cob_az-solr:/opt/solr/configsets/tul_cob-catalog-az:ro
+      - ./solr/configs/tul_cob_web-solr:/opt/solr/configsets/tul_cob-catalog-web:ro
+
     environment:
-      - SOLR_OPTS=-Dsolr.config.lib.enabled=true
+      SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
+
+    # 2) Run all three pre‐creates, then launch Solr
     entrypoint:
       - bash
       - -c
       - |
         set -e
-        solr-precreate blacklight  blacklight
-        solr-precreate az-database tul_cob-az-solr
-        solr-precreate web-content tul_cob-web-solr
+        # core name    configset name
+        solr-precreate blacklight          blacklight
+        solr-precreate tul_cob-catalog-az  tul_cob-catalog-az
+        solr-precreate tul_cob-catalog-web tul_cob-catalog-web
         exec docker-entrypoint.sh solr-foreground -Xms256m -Xmx512m

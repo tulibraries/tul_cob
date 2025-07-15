@@ -57,12 +57,10 @@ jobs:
       - name: Start services
         run: docker compose -f docker-compose.ci.yml up -d solr app
 
-      - name: Wait for Solr
+      - name: Wait for Solr (timeout after 60s)
         run: |
-          echo "Waiting for Solr on solr:8983…"
-          until docker compose exec solr curl -sSf http://localhost:8983/solr/; do
-            sleep 2
-          done
+          timeout 60s bash -c \
+            'until curl -sSf http://localhost:8983/solr; do sleep 2; done'
 
       - name: List Solr cores
         run: |
