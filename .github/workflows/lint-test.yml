@@ -1,4 +1,4 @@
-name: "lint-test"
+name: "CI lint and test with Docker-Compose Solr"
 
 on:
   push:
@@ -36,48 +36,25 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
 
-    services:
-      solr:
-        image: solr:9.8.1
-        ports:
-          - 8983:8983
-        options: >-
-          --health-cmd "curl --silent http://localhost:8983/solr/ -o /dev/null && echo OK"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    env:
-      SOLR_SEARCH_TWEAK_ENABLE: "on"
-      SOLR_URL:             "http://localhost:8983/solr/blacklight"
-      SOLR_AZ_URL:          "http://localhost:8983/solr/az-database"
-      SOLR_WEB_CONTENT_URL: "http://localhost:8983/solr/web-content"
-      DO_INGEST:            "${DO_INGEST}"
-      LC_ALL:               "C.UTF-8"
-
-    strategy:
-      fail-fast: true
-      matrix:
-          ruby: ["3.4"]
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-  
-      - name: Run yarn install
-        run: bundle exec yarn install
-       
       - name: Copy config files
         run: |
           cp config/secrets.yml.example config/secrets.yml
           cp config/alma.yml.example config/alma.yml
           cp config/bento.yml.example config/bento.yml
+
+      - name: Start services
+        run: docker compose -f docker-compose.ci.yml up -d solr app
+
+      - name: Wait for Solr
+        run: |
+          echo "Waiting for Solr on solr:8983…"
+          until docker-compose exec solr curl -sSf http://localhost:8983/solr/; do
+            sleep 2
+          done
 
       - name: Run rspec tests
         run: bundle exec rails ci

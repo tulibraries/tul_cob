@@ -1,4 +1,4 @@
-FROM solr:8.3.0
+FROM solr:9.8.1
 COPY ./solr/configs/ /opt/solr/configs
 
 ENTRYPOINT ["docker-entrypoint.sh"]
