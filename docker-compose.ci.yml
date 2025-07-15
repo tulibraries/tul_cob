@@ -24,15 +24,14 @@ services:
 
     # 1) Mount your actual submodule folders here
     volumes:
-      - ./solr/configs/tul_cob-catalog-solr:/opt/solr/configsets/tul_cob-catalog-solr:ro
-      - ./solr/configs/tul_cob-az-solr:/opt/solr/configsets/tul_cob-az-solr:ro
-      - ./solr/configs/tul_cob-web-solr:/opt/solr/configsets/tul_cob-web-solr:ro
+      - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
+      - $PWD/solr/configs/:/opt/solr/configs
 
     environment:
       SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
 
     # 2) One bash invocation to create all three cores, then start Solr
-    command:
+    entrypoint:
       - bash
       - "-c"
       - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
