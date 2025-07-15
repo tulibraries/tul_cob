@@ -16,7 +16,7 @@ services:
       - tail
       - -f
       - /dev/null
-      
+
   solr:
     image: solr:9.8.1
     ports:
@@ -32,13 +32,10 @@ services:
       SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
 
     # 2) One bash invocation to create all three cores, then start Solr
-    entrypoint:
+    command:
       - bash
-      - -c
-      - |
-        set -e
-        # core-name                configset-name (must match above mounts)
-        solr-precreate blacklight          tul_cob-catalog-solr
-        solr-precreate tul_cob-catalog-az  tul_cob-az-solr
-        solr-precreate tul_cob-catalog-web tul_cob-web-solr
-        exec docker-entrypoint.sh solr-foreground -Xms256m -Xmx512m
+      - "-c"
+      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
+         precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
+         precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
+         solr-foreground -Xms256m -Xmx512m"
