@@ -30,5 +30,5 @@ services:
         solr-precreate blacklight  /opt/solr/configs/tul_cob-catalog-solr && \
         solr-precreate az-database  /opt/solr/configs/tul_cob-az-solr     && \
         solr-precreate web-content  /opt/solr/configs/tul_cob-web-solr    && \
-        solr-foreground\
+        exec solr-foreground -Xms256m -Xmx512m
       "
