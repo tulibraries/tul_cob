@@ -24,7 +24,7 @@ services:
     ports: 
       - "8993:8983"
     volumes:
-      - ./solr/configs/tul_cob-catalog-solr:/opt/solr/configs/tul_cob-catalog-solr:ro
+      - ./solr/configs/blacklight:/opt/solr/configs/tul_cob-catalog-solr:ro
       - ./solr/configs/tul_cob-az-solr:/opt/solr/configs/tul_cob-az-solr:ro
       - ./solr/configs/tul_cob-web-solr:/opt/solr/configs/tul_cob-web-solr:ro
     environment:
