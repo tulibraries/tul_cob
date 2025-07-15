@@ -64,12 +64,6 @@ jobs:
             sleep 2
           done
 
-      - name: Create Solr cores
-        run: |
-          docker compose exec solr solr-precreate blacklight   tul_cob-catalog-solr
-          docker compose exec solr solr-precreate az-database  tul_cob-az-solr
-          docker compose exec solr solr-precreate web-content  tul_cob-web-solr
-
       - name: List Solr cores
         run: |
           docker compose exec solr \

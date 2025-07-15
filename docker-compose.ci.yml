@@ -24,8 +24,17 @@ services:
     ports: 
       - "8993:8983"
     volumes:
-      - ./solr/configs/blacklight:/opt/solr/configs/tul_cob-catalog-solr:ro
-      - ./solr/configs/tul_cob-az-solr:/opt/solr/configs/tul_cob-az-solr:ro
-      - ./solr/configs/tul_cob-web-solr:/opt/solr/configs/tul_cob-web-solr:ro
+      - ./solr/configs/tul_cob_catalog-solr:/opt/solr/configsets/blacklight:ro
+      - ./solr/configs/tul_cob_az-solr:/opt/solr/configsets/tul_cob_az-solr:ro
+      - ./solr/configs/tul_cob_web-solr:/opt/solr/configsets/tul_cob_web-solr:ro
     environment:
       - SOLR_OPTS=-Dsolr.config.lib.enabled=true
+    entrypoint:
+      - bash
+      - -c
+      - |
+        set -e
+        solr-precreate blacklight  blacklight
+        solr-precreate az-database tul_cob-az-solr
+        solr-precreate web-content tul_cob-web-solr
+        exec docker-entrypoint.sh solr-foreground -Xms256m -Xmx512m
