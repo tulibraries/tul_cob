@@ -49,7 +49,7 @@ jobs:
           submodules: recursive  # pull all submodules
 
       - name: Bring up Solr & App
-        run: docker compose up -f docker-compose.ci.yml -d solr app
+        run: docker compose -f docker-compose.ci.yml up -d solr app
 
       - name: Wait for Solr to be ready
         run: |
