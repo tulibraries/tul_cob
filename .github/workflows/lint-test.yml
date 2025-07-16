@@ -50,11 +50,11 @@ jobs:
           - ./solr/configs/tul_cob-az-solr:/opt/solr/configsets/tul_cob-az-solr:ro
           - ./solr/configs/tul_cob-web-solr:/opt/solr/configsets/tul_cob-web-solr:ro
         options: >-
-          --entrypoint "/bin/bash" 
-          -c "solr start && \
-            solr-precreate blacklight tul_cob-catalog-solr &&
-            solr-precreate az-database tul_cob-az-solr     &&
-            solr-precreate web-content tul_cob-web-solr   &&
+          --entrypoint=/bin/bash
+          -- -c "
+            solr-precreate blacklight           tul_cob-catalog-solr &&
+            solr-precreate tul_cob-catalog-az   tul_cob-az-solr     &&
+            solr-precreate tul_cob-catalog-web  tul_cob-web-solr    &&
             exec solr-foreground -Xms256m -Xmx512m"
 
     steps:
