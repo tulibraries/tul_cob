@@ -47,8 +47,8 @@ jobs:
         ports: [ 8983:8983 ]
         volumes:
           - ./solr/configs/tul_cob-catalog-solr:/opt/solr/configsets/tul_cob-catalog-solr:ro
-          - ./solr/configs/tul_cob-az-solr:   /opt/solr/configsets/tul_cob-az-solr:ro
-          - ./solr/configs/tul_cob-web-solr:  /opt/solr/configsets/tul_cob-web-solr:ro
+          - ./solr/configs/tul_cob-az-solr:/opt/solr/configsets/tul_cob-az-solr:ro
+          - ./solr/configs/tul_cob-web-solr:/opt/solr/configsets/tul_cob-web-solr:ro
         command: >-
           bash -c "
             solr-precreate blacklight tul_cob-catalog-solr &&
