@@ -15,9 +15,6 @@ else
 endif
 
 up:
-	git submodule init
-	git submodule update
-	@$(DOCKERHUB_LOGIN)
 	$(DOCKER) up -d
 down:
 	$(DOCKER) down
