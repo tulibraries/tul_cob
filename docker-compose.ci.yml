@@ -25,14 +25,10 @@ services:
       SOLR_USER: "solr"
       SOLR_PASSWORD: "SolrRocks"
       SOLR_HOST: "http://tul_cob-solr-1:8983/solr"
+      SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
     volumes:
       - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
       - $PWD/solr/configs/:/opt/solr/configs
-
-    environment:
-      SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
-
-    # 2) One bash invocation to create all three cores, then start Solr
     entrypoint:
       - bash
       - "-c"
