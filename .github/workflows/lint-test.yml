@@ -41,6 +41,16 @@ jobs:
       matrix:
         ruby: [ "3.4" ]
 
+    services:
+      solr:
+        image: solr:9.8.1
+        ports: [ 8983:8983 ]
+        options: >-
+          --health-cmd "curl --silent http://localhost:8983/solr/ -o /dev/null && echo OK"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code (with submodules)
         uses: actions/checkout@v4
@@ -48,31 +58,20 @@ jobs:
           fetch-depth: 0         # ensure you get the full history, so submodule SHAs resolve
           submodules: recursive  # pull all submodules
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
       - name: Copy config files
         run: |
           cp config/secrets.yml.example config/secrets.yml
           cp config/alma.yml.example config/alma.yml
           cp config/bento.yml.example config/bento.yml
 
-      - name: Start services
-        run: docker compose -f docker-compose.ci.yml up -d solr app
-
-      - name: Wait for Solr (timeout after 60s)
-        run: |
-          timeout 60s bash -c \
-            'until curl -sSf http://localhost:8983/solr; do sleep 2; done'
-
-      - name: List Solr cores
-        run: |
-          docker compose exec solr \
-            curl -sSf 'http://localhost:8983/solr/admin/cores?action=STATUS&wt=json' \
-            | jq .
-
-      - name: Bundle Install
-        run: docker compose exec app bash -lc "bundle install --jobs 4 --retry 3"
-
       - name: Run Solr ingest & tests
-        run: docker compose exec app bundle exec rails ci
+        run: bundle exec rails ci
           
       - name: Run javascript tests
         run: make test-js
