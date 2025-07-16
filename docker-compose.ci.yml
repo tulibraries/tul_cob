@@ -8,9 +8,9 @@ services:
     depends_on: 
       - solr
     environment:
-      SOLR_URL: "http://tul_cob-solr-1:8983/solr/blacklight"
-      SOLR_AZ_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-az"
-      SOLR_WEB_CONTENT_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-web"
+      SOLR_URL: "http://solr:8983/solr/blacklight"
+      SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
       SETTINGS__solr__username: catalog
       SETTINGS__solr__password: catalog
       SETTINGS__solr__host: solr
