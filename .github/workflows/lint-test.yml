@@ -14,7 +14,11 @@ concurrency:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby: [ "3.4" ]
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,11 +35,6 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: true
-      matrix:
-        ruby: [ "3.4" ]
 
     steps:
       - name: Checkout code (with submodules)
