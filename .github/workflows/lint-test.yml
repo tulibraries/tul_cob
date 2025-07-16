@@ -9,7 +9,7 @@ on:
 
 env:
   CI: true
-  
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -49,23 +49,23 @@ jobs:
       - name: Build app
         run: make up
 
-      # - name: Run bundler on the app container
-      #   run: make ci-bundle-install
+      - name: Run bundler on the app container
+        run: make ci-bundle-install
 
-      # - name: Run yarn install on the app container
-      #   run: make ci-yarn-install
+      - name: Run yarn install on the app container
+        run: make ci-yarn-install
 
-      # - name: Add headless browser testing dependencies
-      #   run: make add-testing-deps
+      - name: Add headless browser testing dependencies
+        run: make add-testing-deps
 
-      # - name: Copy the vendor/bundle from the container to local
-      #   run: make ci-copy-bundle-files-to-local
+      - name: Copy the vendor/bundle from the container to local
+        run: make ci-copy-bundle-files-to-local
 
-      # - name: Copy the node_modules from the container to local
-      #   run: make ci-copy-node-modules-to-local
+      - name: Copy the node_modules from the container to local
+        run: make ci-copy-node-modules-to-local
 
-      # - name: Set up DB
-      #   run: make ci-setup-db
+      - name: Set up DB
+        run: make ci-setup-db
 
       - name: Copy config files
         run: |
