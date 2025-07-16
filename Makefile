@@ -15,6 +15,8 @@ else
 endif
 
 up:
+	git submodule init
+	git submodule update
 	$(DOCKER) up -d
 down:
 	$(DOCKER) down

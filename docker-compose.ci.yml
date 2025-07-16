@@ -6,12 +6,9 @@ services:
     ports:
       - "3000:3000"
     environment:
-      SOLR_URL: "http://localhost:8983/solr/blacklight"
-      SOLR_AZ_URL: "http://localhost:8983/solr/tul_cob-az"
-      SOLR_WEB_CONTENT_URL: "http://localhost:8983/solr/tul_cob-web"
-      SOLR_USER: "solr"
-      SOLR_PASSWORD: "SolrRocks"
-      SOLR_HOST: "http://localhost:8983/solr"
+      SOLR_URL: "http://tul_cob-solr-1:8983/solr/blacklight"
+      SOLR_AZ_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-az"
+      SOLR_WEB_CONTENT_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-web"
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
       BUNDLE_PATH: /app/vendor/bundle
@@ -24,8 +21,10 @@ services:
     image: solr:9.8.1
     ports:
       - "8983:8983"
-
-    # 1) Mount your actual submodule folders here
+    environment:
+      SOLR_USER: "solr"
+      SOLR_PASSWORD: "SolrRocks"
+      SOLR_HOST: "http://tul_cob-solr-1:8983/solr"
     volumes:
       - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
       - $PWD/solr/configs/:/opt/solr/configs
