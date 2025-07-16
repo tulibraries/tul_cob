@@ -6,12 +6,15 @@ services:
     ports:
       - "3000:3000"
     environment:
-      SOLR_URL:             "http://solr:8983/solr/blacklight"
-      SOLR_AZ_URL:          "http://solr:8983/solr/tul_cob-az"
-      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
-      DO_INGEST:            "${DO_INGEST}"
-      LC_ALL:               "C.UTF-8"
-      BUNDLE_PATH:          /app/vendor/bundle
+      SOLR_URL: "http://localhost:8983/solr/blacklight"
+      SOLR_AZ_URL: "http://localhost:8983/solr/tul_cob-az"
+      SOLR_WEB_CONTENT_URL: "http://localhost:8983/solr/tul_cob-web"
+      SOLR_USER: "solr"
+      SOLR_PASSWORD: "SolrRocks"
+      SOLR_HOST: "http://localhost:8983/solr"
+      DO_INGEST: "${DO_INGEST}"
+      LC_ALL: "C.UTF-8"
+      BUNDLE_PATH: /app/vendor/bundle
     entrypoint:
       - tail
       - -f
