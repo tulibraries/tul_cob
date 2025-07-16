@@ -46,10 +46,11 @@ jobs:
         image: solr:9.8.1
         ports: [ 8983:8983 ]
         options: >-
-          --health-cmd "curl --silent http://localhost:8983/solr/ -o /dev/null && echo OK"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          --entrypoint "sh -c 'solr start && 
+          solr solr-precreate blacklight /opt/solr/configs/tul_cob-catalog-solr && 
+          solr solr-precreate az-database /opt/solr/configs/tul_cob-az-solr &&
+          solr solr-precreate web-content /opt/solr/configs/tul_cob-web-solr &&
+          tail -f /dev/null'"
 
     steps:
       - name: Checkout code (with submodules)
@@ -64,6 +65,16 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      - name: Wait for Solr to be ready
+        run: |
+          for i in {1..30}; do
+            curl -s http://localhost:8983/solr/admin/ping | grep OK && break
+            sleep 2
+          done
+
+      - name: Verify Solr cores
+        run: curl http://localhost:8983/solr/admin/cores
+      
       - name: Copy config files
         run: |
           cp config/secrets.yml.example config/secrets.yml
