@@ -11,7 +11,7 @@ ifeq ($(CI), true)
 else
 	DOCKER := $(DOCKER_FLAGS) docker compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
-	TEST_CMD := rake ci
+	TEST_CMD := rails ci
 endif
 
 up:
@@ -54,7 +54,6 @@ attach:
 # CI Specific Targets
 add-testing-deps:
 	$(DOCKER) exec app apk add -U --no-cache chromium chromium-chromedriver
-
 
 ci-copy-bundle-files-to-local:
 	docker cp tul_cob-app-1:/app/vendor/bundle vendor/

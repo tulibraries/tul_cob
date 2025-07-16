@@ -5,10 +5,15 @@ services:
       dockerfile: .docker/ci-app/Dockerfile.ci
     ports:
       - "3000:3000"
+    depends_on: 
+      - solr
     environment:
       SOLR_URL: "http://tul_cob-solr-1:8983/solr/blacklight"
       SOLR_AZ_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://tul_cob-solr-1:8983/solr/tul_cob-web"
+      SETTINGS__solr__username: catalog
+      SETTINGS__solr__password: catalog
+      SETTINGS__solr__host: solr
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
       BUNDLE_PATH: /app/vendor/bundle
@@ -22,17 +27,11 @@ services:
     ports:
       - "8983:8983"
     environment:
-      SOLR_USER: "solr"
-      SOLR_PASSWORD: "SolrRocks"
-      SOLR_HOST: "http://tul_cob-solr-1:8983/solr"
       SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
-    volumes:
-      - $PWD/bin/solr-configs-reset:/opt/docker-solr/scripts/solr-configs-reset
-      - $PWD/solr/configs/:/opt/solr/configs
-    entrypoint:
+    command:
       - bash
       - "-c"
       - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
          precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
          precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
-         solr-foreground -Xms256m -Xmx512m"
+         solr-foreground"
