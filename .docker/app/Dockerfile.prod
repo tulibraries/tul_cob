@@ -28,7 +28,7 @@ RUN apk add -U --no-cache \
       tzdata=2025b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.49.0-r0 \
+      git=2.49.1-r0 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
       libxslt-dev=1.1.43-r3 \
