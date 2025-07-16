@@ -49,13 +49,13 @@ jobs:
           - ./solr/configs/tul_cob-catalog-solr:/opt/solr/configsets/tul_cob-catalog-solr:ro
           - ./solr/configs/tul_cob-az-solr:/opt/solr/configsets/tul_cob-az-solr:ro
           - ./solr/configs/tul_cob-web-solr:/opt/solr/configsets/tul_cob-web-solr:ro
-        command: >-
-          bash -c "
+        options: >-
+          --entrypoint "/bin/bash" 
+          -c "solr start && \
             solr-precreate blacklight tul_cob-catalog-solr &&
             solr-precreate az-database tul_cob-az-solr     &&
             solr-precreate web-content tul_cob-web-solr   &&
-            exec docker-entrypoint.sh solr-foreground -Xms256m -Xmx512m
-          "
+            exec solr-foreground -Xms256m -Xmx512m"
 
     steps:
       - name: Checkout code (with submodules)
