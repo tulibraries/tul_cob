@@ -326,7 +326,7 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.2.0)
     hashie (4.1.0)
-    honeybadger (5.28.0)
+    honeybadger (5.29.1)
       logger
       ostruct
     htmlentities (4.3.4)
@@ -454,7 +454,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.6.2)
+    ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -754,7 +754,7 @@ DEPENDENCIES
   flamegraph
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 5.28.0)
+  honeybadger (= 5.29.1)
   httparty
   jbuilder (~> 2.13)
   jquery-rails
