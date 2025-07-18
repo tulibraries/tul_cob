@@ -51,9 +51,11 @@ jobs:
           fetch-depth: 0         # ensure you get the full history, so submodule SHAs resolve
           submodules: recursive  # pull all submodules
 
-      # - name: Build app
-      #   run: make up
-      # this is pulling in too much, so we do it in the docker-compose.ci.yml
+      - name: Build & Start App + Solr
+        run: |
+          docker compose -f docker-compose.ci.yml up -d solr app
+          # wait for solr
+          until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done
 
       - name: Run bundler on the app container
         run: make ci-bundle-install
@@ -79,30 +81,17 @@ jobs:
           cp config/alma.yml.example config/alma.yml
           cp config/bento.yml.example config/bento.yml
           
-      - name: Start App & Solr (CI only)
+      - name: Run Rails CI suite
         run: |
-          docker compose \
-            -f docker-compose.ci.yml \
-            up -d solr app
+          docker compose -f docker-compose.ci.yml exec app bundle exec rails ci
 
-      - name: Wait for Solr
+      - name: Run JS tests
         run: |
-          until curl -sSf http://solr:8983/solr > /dev/null; do
-            echo "Waiting for Solr…"
-            sleep 1
-          done
+          docker compose -f docker-compose.ci.yml exec app npm test
 
-      - name: Run ruby tests
-        run: |
-          docker compose \
-            -f docker-compose.ci.yml \
-            exec app bundle exec rails ci
-
-      - name: Run javascript tests
-        run: |
-          docker compose \
-            -f docker-compose.ci.yml \
-            exec app make test-js
+      # - name: Copy coverage
+      #   run: |
+      #     docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
         
       - name: Report coverage to Coveralls
         uses: coverallsapp/github-action@v2
