@@ -8,6 +8,10 @@ ifeq ($(CI), true)
 	LINT_CMD := bundle exec rubocop
 	TEST_CMD := bundle exec rails ci
 	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} --password=${DOCKERHUB_TOKEN}
+	DOCKER_COMPOSE = $(DOCKER_FLAGS) docker compose \
+  -p tul_cob \
+  -f docker-compose.yml \
+  -f docker-compose.ci.yml
 else
 	DOCKER := $(DOCKER_FLAGS) docker compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
@@ -35,11 +39,11 @@ test:
 up:
 	git submodule init
 	git submodule update
-	$(DOCKER_FLAGS) docker compose -p tul_cob -f docker-compose.ci.yml up -d solr app
+	$(DOCKER_COMPOSE) up -d solr app
 
 ci:
 	$(MAKE) up
-	$(DOCKER_FLAGS) docker compose -p tul_cob -f docker-compose.ci.yml exec app $(TEST_CMD)
+	$(DOCKER_COMPOSE) exec app $(TEST_CMD)
 	docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
 test-js:
