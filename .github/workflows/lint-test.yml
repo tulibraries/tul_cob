@@ -80,6 +80,13 @@ jobs:
           cp config/secrets.yml.example config/secrets.yml
           cp config/alma.yml.example config/alma.yml
           cp config/bento.yml.example config/bento.yml
+
+      - name: Wait for Solr (host)
+        run: |
+          until curl -sSf http://localhost:8983/solr > /dev/null; do
+            echo "Waiting for Solr…"
+            sleep 1
+          done
           
       - name: Run Rails CI suite
         run: |
