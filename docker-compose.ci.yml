@@ -33,6 +33,7 @@ services:
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
+      SOLRCLOUD_HOST: solr
       SETTINGS__solr__username: catalog
       SETTINGS__solr__password: catalog
       SETTINGS__solr__host: solr
