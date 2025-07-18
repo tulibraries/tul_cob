@@ -81,7 +81,7 @@ jobs:
       - name: Run ruby tests
         run: |
           make test
-          docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+          # docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
           
       - name: Run javascript tests
         run: make test-js
