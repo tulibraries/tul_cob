@@ -38,6 +38,9 @@ jobs:
   test:
     needs: lint
     runs-on: ubuntu-latest
+    env:
+      SOLRCLOUD_USER:   ${{ secrets.SOLRCLOUD_USER }}
+      SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
 
     steps:
       - name: Checkout code (with submodules)
@@ -85,5 +88,6 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov/tul_cob.lcov
 
         
