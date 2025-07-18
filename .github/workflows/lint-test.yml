@@ -2,6 +2,7 @@ name: "CI lint and test with Docker-Compose Solr"
 
 on:
   push:
+    branches: [ main ]
   pull_request:
     types: [ opened, synchronize, reopened ]
     branches: [ main ]
@@ -39,8 +40,9 @@ jobs:
     needs: lint
     runs-on: ubuntu-latest
     env:
-      SOLRCLOUD_USER:   ${{ secrets.SOLRCLOUD_USER }}
-      SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
+      SOLRCLOUD_USER:   "catalog"
+      SOLRCLOUD_PASSWORD: "catalog"
+      SOLRCLOUD_HOST: "solr"
 
     steps:
       - name: Checkout code (with submodules)
