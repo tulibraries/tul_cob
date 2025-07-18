@@ -26,7 +26,8 @@ services:
       context: .
       dockerfile: .docker/ci-app/Dockerfile.ci
     ports:
-      - "3000:3000"
+      - mode: ingress
+        target: 3000
     depends_on: 
       - solr
     environment:
@@ -46,5 +47,6 @@ services:
         until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done &&
         bundle exec rails ci
       '
-
-
+networks:
+  default:
+    name: tul_cob
