@@ -14,7 +14,7 @@ else
 	TEST_CMD := rails ci
 endif
 
-.PHONY: test ci
+.PHONY: up ci
 # In a Makefile, .PHONY declares that the listed targets are “phony” (i.e. not real files). This means:
 # Make will always run the recipe for those targets, even if a file with the same name exists in the directory.
 # It prevents conflicts between a target name and a file name.
@@ -22,7 +22,7 @@ endif
 up:
 	git submodule init
 	git submodule update
-	$(DOCKER) up -d
+	$(DOCKER) up -d solr app
 down:
 	$(DOCKER) down
 restart:
@@ -37,10 +37,9 @@ lint:
 test:
 	$(DOCKER) exec app $(TEST_CMD)
 ci:
-    # bring up solr AND app
-    $(DOCKER) up -d solr app
-    $(DOCKER) exec app $(TEST_CMD)
-    docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+  $(MAKE) up
+  $(DOCKER_FLAGS) docker compose -p tul_cob -f docker-compose.ci.yml exec app $(TEST_CMD)
+  docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 test-js:
 	$(DOCKER) exec app yarn test
 test-libguides-relevance:
