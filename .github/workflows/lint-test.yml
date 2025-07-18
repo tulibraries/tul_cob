@@ -8,100 +8,107 @@ on:
     branches: [ main ]
   workflow_dispatch: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   CI: true
+  SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
+  SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
+  SOLRCLOUD_HOST: solr
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  lint:
+  lint_and_test:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        ruby: [ "3.4" ]
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-
-      - name: Run RuboCop
-        run: bundle exec rubocop
-      
-  test:
-    needs: lint
-    runs-on: ubuntu-latest
-    env:
-      SOLRCLOUD_USER:   "catalog"
-      SOLRCLOUD_PASSWORD: "catalog"
-      SOLRCLOUD_HOST: "solr"
 
     steps:
       - name: Checkout code (with submodules)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
-          fetch-depth: 0         # ensure you get the full history, so submodule SHAs resolve
-          submodules: recursive  # pull all submodules
+          fetch-depth: 0
+          submodules: recursive
 
-      - name: Build & Start App + Solr
+      - name: Build & start App + Solr
         run: |
           docker compose -f docker-compose.ci.yml up -d solr app
+          echo "⏳ waiting for solr on localhost:8983…"
+          until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done
 
-      - name: Wait for Solr (on localhost)
+      - name: Configure bundler in container
         run: |
-          until curl -sSf http://localhost:8983/solr > /dev/null; do
-            echo "Waiting for Solr…"
-            sleep 1
-          done
+          docker compose -f docker-compose.ci.yml exec app \
+            git config --global core.hardlinks false
 
-      - name: Run bundler on the app container
-        run: make ci-bundle-install
-
-      - name: Run yarn install on the app container
-        run: make ci-yarn-install
-
-      - name: Add headless browser testing dependencies
-        run: make add-testing-deps
-
-      - name: Copy the vendor/bundle from the container to local
-        run: make ci-copy-bundle-files-to-local
-
-      - name: Copy the node_modules from the container to local
-        run: make ci-copy-node-modules-to-local
-
-      - name: Set up DB
-        run: make ci-setup-db
-
-      - name: Copy config files
+      - name: Install Ruby gems
         run: |
-          cp config/secrets.yml.example config/secrets.yml
-          cp config/alma.yml.example config/alma.yml
-          cp config/bento.yml.example config/bento.yml
-          
-      - name: Run Rails CI suite
-        run: |
-          docker compose -f docker-compose.ci.yml exec app bundle exec rails ci
+          docker compose -f docker-compose.ci.yml exec app \
+            bundle install --jobs=4 --retry=3
 
-      - name: Run JS tests
+      - name: Install Node modules
         run: |
-          docker compose -f docker-compose.ci.yml exec app npm test
+          docker compose -f docker-compose.ci.yml exec app \
+            yarn install --frozen-lockfile
 
-      # - name: Copy coverage
-      #   run: |
-      #     docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
-        
-      - name: Report coverage to Coveralls
+      - name: Add headless browser deps
+        run: |
+          docker compose -f docker-compose.ci.yml exec app \
+            make add-testing-deps
+
+      - name: Copy vendor/bundle -> host cache
+        run: |
+          docker cp tul_cob-app-1:/app/vendor/bundle ./vendor/bundle
+
+      - name: Copy node_modules -> host cache
+        run: |
+          docker cp tul_cob-app-1:/app/node_modules ./node_modules
+
+      - name: Set up database
+        run: |
+          docker compose -f docker-compose.ci.yml exec app \
+            make ci-setup-db
+
+      - name: Run linter
+        run: |
+          docker compose -f docker-compose.ci.yml exec app \
+            make lint
+
+      - name: Run Ruby tests
+        run: |
+          docker compose -f docker-compose.ci.yml exec app \
+            bundle exec rails ci
+          docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+
+      - name: Run JavaScript tests
+        run: |
+          docker compose -f docker-compose.ci.yml exec app \
+            make test-js
+
+      - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/lcov/tul_cob.lcov
+          path-to-lcov: ./app.lcov
 
-        
+  update_airflow_variables:
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Add SSH key for Airflow
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.AIRFLOW_SSH_KEY }}
+
+      - name: Update Airflow variables
+        run: bash .circleci/update-airflow.sh
+        env:
+          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
