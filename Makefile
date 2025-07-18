@@ -14,6 +14,11 @@ else
 	TEST_CMD := rails ci
 endif
 
+.PHONY: test ci
+# In a Makefile, .PHONY declares that the listed targets are “phony” (i.e. not real files). This means:
+# Make will always run the recipe for those targets, even if a file with the same name exists in the directory.
+# It prevents conflicts between a target name and a file name.
+
 up:
 	git submodule init
 	git submodule update
@@ -31,6 +36,13 @@ lint:
 	$(DOCKER) exec app $(LINT_CMD)
 test:
 	$(DOCKER) exec app $(TEST_CMD)
+ci:
+	# bring up Solr on the host
+	$(DOCKER) up -d solr
+	# run the CI suite inside the app container
+	$(DOCKER) exec app $(TEST_CMD)
+	# grab coverage report
+	docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 test-js:
 	$(DOCKER) exec app yarn test
 test-libguides-relevance:
