@@ -37,12 +37,10 @@ lint:
 test:
 	$(DOCKER) exec app $(TEST_CMD)
 ci:
-	# bring up Solr on the host
-	$(DOCKER) up -d solr
-	# run the CI suite inside the app container
-	$(DOCKER) exec app $(TEST_CMD)
-	# grab coverage report
-	docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+    # bring up solr AND app
+    $(DOCKER) up -d solr app
+    $(DOCKER) exec app $(TEST_CMD)
+    docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 test-js:
 	$(DOCKER) exec app yarn test
 test-libguides-relevance:
