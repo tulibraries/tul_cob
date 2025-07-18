@@ -1,26 +1,30 @@
-name: "CI lint and test with Docker-Compose Solr"
+name: CI lint and test with Docker-Compose Solr
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    types: [ opened, synchronize, reopened ]
-    branches: [ main ]
-  workflow_dispatch: {}
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  CI: true
-  SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
-  SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
-  SOLRCLOUD_HOST: solr
-
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
+    env:
+      CI: true
+      SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
+      SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
+      SOLRCLOUD_HOST: solr
 
     steps:
       - name: Checkout code (with submodules)
@@ -91,6 +95,7 @@ jobs:
           path-to-lcov: ./app.lcov
 
   update_airflow_variables:
+    needs: lint_and_test
     if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-latest
 
