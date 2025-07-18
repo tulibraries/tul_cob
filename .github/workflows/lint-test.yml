@@ -82,7 +82,7 @@ jobs:
         run: docker compose -f docker-compose.ci.yml up -d solr
 
       - name: Run ruby tests
-        run: docker compose -f docker-compose.ci.yml exec app
+        run: docker compose -f docker-compose.ci.yml exec app make test
           
       - name: Run javascript tests
         run: make test-js
