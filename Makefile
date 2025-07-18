@@ -15,6 +15,8 @@ else
 endif
 
 up:
+	git submodule init
+	git submodule update
 	$(DOCKER) up -d solr app
 down:
 	$(DOCKER) down
@@ -29,19 +31,6 @@ lint:
 	$(DOCKER) exec app $(LINT_CMD)
 test:
 	$(DOCKER) exec app $(TEST_CMD)
-
-.PHONY: up ci
-
-up:
-	git submodule init
-	git submodule update
-	$(DOCKER) up -d solr app
-
-ci:
-	$(MAKE) up
-	$(DOCKER) exec app $(TEST_CMD)
-	docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
-
 test-js:
 	$(DOCKER) exec app yarn test
 test-libguides-relevance:
