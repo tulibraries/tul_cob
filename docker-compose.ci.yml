@@ -41,8 +41,10 @@ services:
       LC_ALL: "C.UTF-8"
       BUNDLE_PATH: /app/vendor/bundle
     entrypoint:
-      - tail
-      - -f
-      - /dev/null
+      sh -c '
+        echo "⏳ waiting for solr…" &&
+        until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done &&
+        bundle exec rails ci
+      '
 
 
