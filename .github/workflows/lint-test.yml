@@ -82,7 +82,7 @@ jobs:
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
           docker compose -f docker-compose.ci.yml exec -T app \
-            cp app:/app/coverage/lcov/app.lcov ./app.lcov
+            cp app:/coverage/lcov/app.lcov ./app.lcov
 
       # - name: Copy coverage files
       #   run: |
