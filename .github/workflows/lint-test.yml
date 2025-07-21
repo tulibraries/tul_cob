@@ -47,6 +47,10 @@ jobs:
       SOLRCLOUD_USER: catalog
       SOLRCLOUD_PASSWORD: catalog
       SOLRCLOUD_HOST: solr
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby: [ "3.4" ]
 
     steps:
       - name: Checkout code (with submodules)
