@@ -74,6 +74,10 @@ jobs:
       - name: Run Rails CI Suite
         run: |
           docker compose -f docker-compose.ci.yml up -d app
+          CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
+          docker cp $CONTAINER:/app/coverage/lcov/app.lcov ./app.lcov
+          docker compose -f docker-compose.ci.yml exec -T app \
+            cp /app/coverage/lcov/app.lcov ./app.lcov
 
       - name: Install JS dependencies & run tests
         run: |
@@ -81,8 +85,6 @@ jobs:
             yarn install --frozen-lockfile
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
-          docker compose -f docker-compose.ci.yml exec -T app \
-            cp app:/coverage/lcov/app.lcov ./app.lcov
 
       # - name: Copy coverage files
       #   run: |
