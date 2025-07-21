@@ -70,12 +70,12 @@ jobs:
           docker compose -f docker-compose.ci.yml up -d solr
 
       - name: Wait for Solr (in Solr container)
-        run: docker-compose -f docker-compose.ci.yml exec -T solr \
+        run: docker compose -f docker-compose.ci.yml exec -T solr \
           sh -c 'until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done'
 
       - name: Run Rails CI Suite
         run: |
-          docker-compose -f docker-compose.ci.yml up -d app
+          docker compose -f docker-compose.ci.yml up -d app
           docker compose -f docker-compose.ci.yml exec -T app \
               bundle exec rails ci
 
