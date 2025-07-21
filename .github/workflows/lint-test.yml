@@ -81,13 +81,8 @@ jobs:
             yarn install --frozen-lockfile
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
-
-      - name: List all .lcov files in app container and app root
-        run: |
-          echo "In app root (host):"
-          find . -type f -name '*.lcov'
-          echo "In app container (/app):"
-          docker compose -f docker-compose.ci.yml exec -T app find /app -type f -name '*.lcov'
+          docker compose -f docker-compose.ci.yml exec -T app \
+            cp app:/app/coverage/lcov/app.lcov ./app.lcov
 
       - name: Copy coverage files
         run: |
