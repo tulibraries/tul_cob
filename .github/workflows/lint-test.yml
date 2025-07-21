@@ -86,7 +86,7 @@ jobs:
         run: |
           # CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
           mkdir -p coverage/lcov
-          docker cp tul_cob-app-1:/app/package.json ./app.lcov
+          docker cp tul_cob-app-1:/app/coverage/index.html ./app.lcov
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
