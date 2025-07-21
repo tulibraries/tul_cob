@@ -74,10 +74,13 @@ jobs:
       - name: Wait for Solr (in Solr container)
         run: |
           docker compose -f docker-compose.ci.yml exec -T solr \
-            sh -c 'echo "⏳ waiting for solr…"; \
-                    until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done; \
-                    echo "still waiting…"; sleep 1; \
-                  done'
+            sh -c '
+              echo "⏳ waiting for solr…";
+              until curl -sSf http://localhost:8983/solr > /dev/null; do
+                echo "still waiting…";
+                sleep 1;
+              done
+            '
 
       - name: Run Rails CI Suite
         run: |
