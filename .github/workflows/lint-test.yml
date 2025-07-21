@@ -68,6 +68,9 @@ jobs:
       - name: Start Solr
         run: docker compose -f docker-compose.ci.yml up -d solr app
 
+      - name: Install gems in app container
+        run: docker compose -f docker-compose.ci.yml exec -T app bundle install --jobs=4 --retry=3
+
       - name: Show Solr logs
         run: docker compose -f docker-compose.ci.yml logs solr
 
@@ -77,9 +80,7 @@ jobs:
             echo "waiting for solr…"
             sleep 2
           done
-
-      - name: Install gems in app container
-        run: docker compose -f docker-compose.ci.yml exec -T app bundle install --jobs=4 --retry=3
+          echo "Solr is up!"
 
       - name: Verify services are still running
         run: docker compose -f docker-compose.ci.yml ps
