@@ -82,6 +82,13 @@ jobs:
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
 
+      - name: List all .lcov files in app container and app root
+        run: |
+          echo "In app root (host):"
+          find . -type f -name '*.lcov'
+          echo "In app container (/app):"
+          docker compose -f docker-compose.ci.yml exec -T app find /app -type f -name '*.lcov'
+
       - name: Copy coverage files
         run: |
           docker compose -f docker-compose.ci.yml exec -T app \
