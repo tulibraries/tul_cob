@@ -32,11 +32,9 @@ services:
       - sh
       - -c
       - |
-        echo "⏳ waiting for solr…"
-        until curl -sSf http://solr:8983/solr > /dev/null; do
-          echo "still waiting…"
-          sleep 1
-        done
+        echo "⏳ waiting for solr…" \
+        && until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done \
+        && bundle exec rails ci
     environment:
       SOLRCLOUD_HOST: solr
       BUNDLE_PATH: /app/vendor/bundle
