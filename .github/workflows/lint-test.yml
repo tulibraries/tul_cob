@@ -73,7 +73,7 @@ jobs:
 
       - name: Run Rails CI Suite
         run: |
-          run: docker compose -f docker-compose.ci.yml exec -T app bundle exec rails ci
+          docker compose -f docker-compose.ci.yml exec -T app bundle exec rails ci
 
       - name: Install JS dependencies & run tests
         run: |
