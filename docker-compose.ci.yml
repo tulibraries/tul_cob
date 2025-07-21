@@ -16,6 +16,10 @@ services:
         solr-foreground
     ports:
       - "8983:8983"
+    volumes:
+      - ./solr/configs/tul_cob-catalog-solr:/opt/solr/configs/tul_cob-catalog-solr:ro
+      - ./solr/configs/tul_cob-az-solr:/opt/solr/configs/tul_cob-az-solr:ro
+      - ./solr/configs/tul_cob-web-solr:/opt/solr/configs/tul_cob-web-solr:ro
     healthcheck:
       test: ["CMD","curl","-sf","http://solr:8983/solr"]
       interval: 5s
