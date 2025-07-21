@@ -71,7 +71,7 @@ jobs:
 
       - name: Wait for Solr
         run: |
-          until curl -sSf http://solr:8983/solr > /dev/null; do
+          until curl -sSf http://localhost:8983/solr > /dev/null; do
             echo "waiting for solr…"
             sleep 1
           done
@@ -80,7 +80,7 @@ jobs:
         run: |
           docker-compose -f docker-compose.ci.yml exec -T app \
               bundle exec rails ci
-              
+
       - name: Run JavaScript tests
         run: |
             make test-js
