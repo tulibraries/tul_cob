@@ -73,8 +73,11 @@ jobs:
 
       - name: Run Rails CI Suite
         run: |
+          docker compose -f docker-compose.ci.yml up -d app
           docker compose -f docker-compose.ci.yml exec -T app \
             bundle exec rails ci
+            mkdir -p coverage/lcov
+            docker compose -f docker-compose.ci.yml cp app:/app/coverage/lcov/tul_cob.lcov coverage/lcov/app.lcov
 
       - name: Install JS dependencies & run tests
         run: |
@@ -82,15 +85,6 @@ jobs:
             yarn install --frozen-lockfile
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
-
-      - name: Find all .lcov files in app container
-        run: |
-          docker compose -f docker-compose.ci.yml exec -T app find /app/coverage -type f -name '*.lcov'
-      
-      - name: Copy coverage files
-        run: |
-          mkdir -p coverage/lcov
-          docker compose -f docker-compose.ci.yml cp app:/app/coverage/lcov/tul_cob.lcov coverage/lcov/app.lcov
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
