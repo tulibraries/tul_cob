@@ -87,7 +87,7 @@ jobs:
         run: |
           CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
           # find any .lcov file in the container
-          FILE=$(docker exec $CONTAINER sh -c 'find / -name "*.lcov" | head -1')
+          FILE=$(docker exec $CONTAINER sh -c 'find "$GITHUB_WORKSPACE" -type f -name "*.lcov" | head -1')
           echo "Found in-container file: $FILE"
           docker exec $CONTAINER cat "$FILE" > "$(basename $FILE)"
           echo "lcov=$(basename $FILE)" >> $GITHUB_OUTPUT
