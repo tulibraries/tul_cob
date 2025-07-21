@@ -65,10 +65,6 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Build Solr
-        run: |
-          docker compose -f docker-compose.ci.yml build solr
-
       - name: Start Solr
         run: docker compose -f docker-compose.ci.yml up -d solr
 
@@ -79,7 +75,7 @@ jobs:
         run: |
           docker compose -f docker-compose.ci.yml exec -T solr \
             sh -c 'echo "⏳ waiting for solr…"; \
-                    until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done'
+                    until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done; \
                     echo "still waiting…"; sleep 1; \
                   done'
 
