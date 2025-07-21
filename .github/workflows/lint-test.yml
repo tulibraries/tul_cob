@@ -82,13 +82,18 @@ jobs:
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
 
-      # - name: Copy coverage files
-      #   run: |
-      #     docker compose -f docker-compose.ci.yml exec -T app \
-      #       cp app:/coverage/lcov/app.lcov ./app.lcov
+      - name: Copy LCOV report dynamically
+        id: lcov
+        run: |
+          CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
+          # find any .lcov file in the container
+          FILE=$(docker exec $CONTAINER sh -c 'find /app/coverage -name "*.lcov" | head -1')
+          echo "Found in-container file: $FILE"
+          docker exec $CONTAINER cat "$FILE" > "$(basename $FILE)"
+          echo "lcov=$(basename $FILE)" >> $GITHUB_OUTPUT
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage/lcov/app.lcov
+          path-to-lcov: ${{ steps.lcov.outputs.lcov }}
