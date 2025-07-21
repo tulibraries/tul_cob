@@ -67,9 +67,10 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
-          docker compose -f docker-compose.ci.yml up -d solr app
-          echo "⏳ waiting for solr on localhost:8983…"
-          until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done
+          docker-compose -f docker-compose.ci.yml up -d solr app
+          docker-compose -f docker-compose.ci.yml exec app \
+            sh -c 'echo "⏳ waiting for solr…"; \
+                  until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done'
 
       - name: Run Ruby tests
         run: |
