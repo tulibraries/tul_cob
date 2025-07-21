@@ -68,6 +68,13 @@ jobs:
       - name: Start Solr
         run: docker compose -f docker-compose.ci.yml up -d solr app
 
+      - name: Wait for Solr to be ready
+        run: |
+          until curl -sSf http://localhost:8983/solr > /dev/null; do
+            echo "waiting for solr…"
+            sleep 2
+          done
+
       - name: Install gems in app container
         run: docker compose -f docker-compose.ci.yml exec -T app bundle install --jobs=4 --retry=3
 
