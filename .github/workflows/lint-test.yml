@@ -37,7 +37,7 @@ jobs:
 
       - name: Run linter
         run: |
-            make lint
+            bundle exec rubocop
 
   test: 
     runs-on: ubuntu-latest
