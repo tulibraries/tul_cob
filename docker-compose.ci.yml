@@ -28,15 +28,7 @@ services:
       dockerfile: .docker/ci-app/Dockerfile.ci
     depends_on:
       - solr
-    entrypoint:
-      - sh
-      - -c
-      - |
-        echo "⏳ waiting for solr…"
-        until curl -sSf http://solr:8983/solr > /dev/null; do
-          echo "still waiting…"
-          sleep 1
-        done
+    
     environment:
       SOLRCLOUD_HOST: solr
       BUNDLE_PATH: /app/vendor/bundle

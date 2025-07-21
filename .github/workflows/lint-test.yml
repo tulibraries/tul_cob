@@ -67,16 +67,20 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
-          docker compose -f docker-compose.ci.yml up -d solr
+          docker compose -f docker-compose.ci.yml up -d solr app
+
+      - name: Wait for Solr
+        run: |
+          until curl -sSf http://solr:8983/solr > /dev/null; do
+            echo "waiting for solr…"
+            sleep 1
+          done
 
       - name: Run Rails CI Suite
         run: |
-          docker compose -f docker-compose.ci.yml run --rm app
-
-      - name: Run Ruby tests
-        run: |
-            bundle exec rails ci
-
+          docker-compose -f docker-compose.ci.yml exec -T app \
+              bundle exec rails ci
+              
       - name: Run JavaScript tests
         run: |
             make test-js
