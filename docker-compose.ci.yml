@@ -36,6 +36,7 @@ services:
         echo "⏳ waiting for solr…" \
         && until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done \
         && bundle exec rails ci
+        && echo "Test Suite completed successfully"
     environment:
       SOLRCLOUD_HOST: solr
       BUNDLE_PATH: /app/vendor/bundle
