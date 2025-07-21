@@ -75,9 +75,13 @@ jobs:
         run: |
           docker compose -f docker-compose.ci.yml up -d app
 
+      - name: Install JS dependencies
+        run: docker compose -f docker-compose.ci.yml exec -T app \
+          yarn install --frozen-lockfile
+
       - name: Run JavaScript tests
-        run: |
-            make test-js
+        run: docker compose -f docker-compose.ci.yml exec -T app \
+          make test-js
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
