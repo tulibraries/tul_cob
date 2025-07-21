@@ -82,8 +82,13 @@ jobs:
           docker compose -f docker-compose.ci.yml exec -T app \
             yarn test
 
+      - name: Copy coverage files
+        run: |
+          docker compose -f docker-compose.ci.yml exec -T app \
+            cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage/lcov/app.lcov
+          path-to-lcov: ./app.lcov
