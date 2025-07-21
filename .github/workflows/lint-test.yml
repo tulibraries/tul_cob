@@ -79,9 +79,6 @@ jobs:
           done
           echo "Solr is up!"
 
-      - name: Verify services are still running
-        run: docker compose -f docker-compose.ci.yml ps
-
       - name: RAILS CI
         run: docker compose -f docker-compose.ci.yml exec -T app bundle exec rails ci
 
