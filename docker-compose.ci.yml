@@ -24,7 +24,7 @@ services:
 
   app:
     build:
-      context: /Users/gcdoyle/Projects/tul_cob
+      context: .
       dockerfile: .docker/ci-app/Dockerfile.ci
     depends_on:
       - solr
