@@ -84,9 +84,9 @@ jobs:
 
       - name: Copy coverage files
         run: |
-          CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
+          # CONTAINER=$(docker compose -f docker-compose.ci.yml ps -q app)
           mkdir -p coverage/lcov
-          docker cp $CONTAINER:/app/coverage/lcov/tul_cob.lcov ./app.lcov
+          docker cp tul_cob-app-1:/app/coverage/lcov/tul_cob.lcov ./app.lcov
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
