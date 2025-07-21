@@ -17,7 +17,7 @@ services:
     ports:
       - "8983:8983"
     healthcheck:
-      test: ["CMD","curl","-sf","http://localhost:8983/solr"]
+      test: ["CMD","curl","-sf","http://solr:8983/solr"]
       interval: 5s
       timeout: 3s
       retries: 10
@@ -34,7 +34,7 @@ services:
       - -c
       - |
         echo "⏳ waiting for solr…" \
-        && until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done \
+        && until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done \
         && bundle exec rails ci
         && echo "Test Suite completed successfully"
         && tail -f /dev/null
@@ -46,8 +46,8 @@ services:
       SETTINGS__solr__host: solr
       SETTINGS__solr__username: catalog
       SETTINGS__solr__password: catalog
-      SOLR_AZ_URL: http://localhost:8983/solr/tul_cob-az
-      SOLR_URL: http://localhost:8983/solr/blacklight
-      SOLR_WEB_CONTENT_URL: http://localhost:8983/solr/tul_cob-web
+      SOLR_AZ_URL: http://solr:8983/solr/tul_cob-az
+      SOLR_URL: http://solr:8983/solr/blacklight
+      SOLR_WEB_CONTENT_URL: http://solr:8983/solr/tul_cob-web
     ports:
       - "3000:3000"
