@@ -59,7 +59,7 @@ jobs:
           submodules: true
 
       - name: Start Services
-        run: docker compose -f docker-compose.ci.yml solr app --no-cache up -d --build
+        run: docker compose -f docker-compose.ci.yml up -d --build --no-cache solr app
 
       - name: Wait for Solr to be ready
         run: |
