@@ -57,11 +57,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
-          bundler-cache: true
+
+      - name: Build Docker images
+        run: docker compose -f docker-compose.ci.yml build
 
       - name: Start Services
         run: |
-          docker compose -f docker-compose.ci.yml build --no-cache solr app
           docker compose -f docker-compose.ci.yml up -d solr app
 
       - name: Wait for Solr to be ready
