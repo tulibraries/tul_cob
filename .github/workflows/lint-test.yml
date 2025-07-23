@@ -53,12 +53,6 @@ jobs:
         ruby: [ "3.4" ]
 
     steps:
-      - name: Checkout code (with submodules)
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          submodules: recursive
-
       - name: Start Services
         run: docker compose -f docker-compose.ci.yml up -d solr app
 
