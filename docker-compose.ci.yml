@@ -37,7 +37,11 @@ services:
       - sh
       - -c
       - |
-        tail -f /dev/null
+        echo "⏳ waiting for solr…" \
+        && until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done \
+        && bundle exec rails ci
+        && echo "Test Suite completed successfully"
+        && tail -f /dev/null
     environment:
       SOLRCLOUD_HOST: solr
       BUNDLE_PATH: /app/vendor/bundle
