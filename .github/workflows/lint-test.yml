@@ -63,6 +63,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
 
       - name: Start Solr
         run: docker compose -f docker-compose.ci.yml up -d solr app
