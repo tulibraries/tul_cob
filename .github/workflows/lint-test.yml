@@ -55,9 +55,11 @@ jobs:
     steps:
       - name: Checkout code (with submodules)
         uses: actions/checkout@v4
+        with:
+          submodules: true
 
       - name: Start Services
-        run: docker compose -f docker-compose.ci.yml up -d solr app
+        run: docker compose -f docker-compose.ci.yml solr app --no-cache up -d --build
 
       - name: Wait for Solr to be ready
         run: |
