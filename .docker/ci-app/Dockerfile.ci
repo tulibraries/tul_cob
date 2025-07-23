@@ -12,9 +12,10 @@ RUN apk add -U --no-cache --virtual build-dependencies \
       nodejs \
       sqlite-dev \
       yarn tzdata shared-mime-info
+ENV RAILS_ENV='test'
 RUN mkdir /app
 WORKDIR /app
-ENV RAILS_ENV='test'
+COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.5.9
 COPY . .
 RUN bundle install --jobs=4 --retry=3         # ensures any gems from local paths or git sources are installed
