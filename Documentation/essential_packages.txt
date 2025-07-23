@@ -2,3 +2,5 @@ micromatch
 cgi
 nodejs
 on-headers
+thor
+nokogiri
