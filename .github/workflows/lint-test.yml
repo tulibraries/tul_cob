@@ -67,8 +67,8 @@ jobs:
       - name: Start Solr
         run: docker compose -f docker-compose.ci.yml up -d solr app
 
-      - name: Show Solr logs
-        run: docker compose -f docker-compose.ci.yml logs solr
+      # - name: Show Solr logs
+      #   run: docker compose -f docker-compose.ci.yml logs solr
 
       - name: Wait for Solr to be ready
         run: |
