@@ -1272,7 +1272,7 @@ RSpec.feature "RecordPageFields" do
       within "dd.blacklight-subject_display" do
         links = all("li a")
         expect(links.size).to be > 1
-        href = links[1]["href"]
+        href = links[2]["href"]
         expect(href).to eq("/catalog?f[subject_facet][]=Santa+Maria+Antiqua+%28Church+%3A+Rome%2C+Italy%29")
       end
     end
