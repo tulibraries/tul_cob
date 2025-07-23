@@ -1270,7 +1270,7 @@ RSpec.feature "RecordPageFields" do
     scenario "Has multiple values in faceted show field" do
       visit "catalog/991012171319703811"
       within "dd.blacklight-subject_display" do
-        href = link_elements[1]["href"]
+        href = page.find("li:nth-child(2) a")["href"]
         expect(href).to eq("/catalog?f[subject_facet][]=Santa+Maria+Antiqua+%28Church+%3A+Rome%2C+Italy%29")
       end
     end
