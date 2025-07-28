@@ -319,7 +319,8 @@ GEM
       ffi (>= 1.15.5)
       rake
     flamegraph (0.9.5)
-    foreman (0.88.1)
+    foreman (0.90.0)
+      thor (~> 1.4)
     gli (2.22.2)
       ostruct
     globalid (1.2.1)
