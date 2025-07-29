@@ -46,8 +46,8 @@ RUN apk add -U --no-cache \
     rm -rf tmp/* && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/ && \
-    mkdir -p /secure-tmp && chmod 700 /secure-tmp && \
-    mkdir -p /secure-tmp/log && chmod 700 /secure-tmp/log
+    chown nobody -R /app/tmp && \
+    chown nobody -R /app/log
 
 
 USER nobody
