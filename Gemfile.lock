@@ -225,7 +225,7 @@ GEM
       rails (>= 6.1, < 8.1)
       view_component (>= 2.74, < 4)
       zeitwerk
-    blacklight-marc (8.1.4)
+    blacklight-marc (8.2.0)
       blacklight (>= 7.11, < 9)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
@@ -300,7 +300,7 @@ GEM
       railties (>= 6.1)
     drb (2.2.3)
     dumb_delegator (1.1.0)
-    erb (5.0.1)
+    erb (5.0.2)
     erubi (1.13.1)
     execjs (2.10.0)
     factory_bot (6.5.4)
@@ -348,7 +348,7 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    io-console (0.8.0)
+    io-console (0.8.1)
     irb (1.15.2)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
@@ -415,7 +415,7 @@ GEM
     mutex_m (0.3.0)
     net-http (0.6.0)
       uri
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -534,12 +534,12 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.0)
+    rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
     recaptcha (5.20.1)
     regexp_parser (2.10.0)
-    reline (0.6.1)
+    reline (0.6.2)
       io-console (~> 0.5)
     responders (3.1.1)
       actionpack (>= 5.2)
