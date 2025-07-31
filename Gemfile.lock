@@ -589,7 +589,7 @@ GEM
     ruby-prof (1.7.2)
       base64
     ruby-progressbar (1.13.0)
-    ruby-saml (1.18.0)
+    ruby-saml (1.18.1)
       nokogiri (>= 1.13.10)
       rexml
     rubyzip (2.4.1)
@@ -790,7 +790,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails
   ruby-prof
-  ruby-saml (= 1.18.0)
+  ruby-saml (= 1.18.1)
   sass-rails
   selenium-webdriver
   simplecov
