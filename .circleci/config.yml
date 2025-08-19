@@ -26,6 +26,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: Disable Git hardlinks
+          command: git config --global core.useHardlinks false
+
       - restore_cache:
           keys:
             - gem-cache-v34-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
