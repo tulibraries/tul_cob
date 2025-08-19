@@ -11,7 +11,7 @@ module Blacklight
 
     # rubocop:disable Metrics/ParameterLists
     def initialize(
-      url:, advanced_search_url: nil, params:, recaptcha_action:,
+      url:, advanced_search_url: nil, params:, #recaptcha_action:,
       classes: ["search-query-form, d-flex "], presenter: nil, prefix: nil,
       method: "GET", q: nil, query_param: :q,
       search_field: nil, search_fields: nil, autocomplete_path: nil,
@@ -32,7 +32,7 @@ module Blacklight
       @search_fields = search_fields
       @i18n = i18n
       @form_options = form_options
-      @recaptcha_action = recaptcha_action
+      # @recaptcha_action = recaptcha_action
 
       return if presenter.nil?
 
