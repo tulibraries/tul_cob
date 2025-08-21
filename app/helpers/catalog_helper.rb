@@ -149,10 +149,6 @@ module CatalogHelper
     end
   end
 
-  def library_link
-    Rails.configuration.library_link
-  end
-
   def grouped_citations(documents)
     Citation.grouped_citations(documents.map(&:citations))
   end

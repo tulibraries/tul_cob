@@ -180,4 +180,8 @@ module ApplicationHelper
   def with_libguides?
     ::FeatureFlags.with_libguides?(params)
   end
+
+  def library_link_url
+    Rails.configuration.library_link
+  end
 end
