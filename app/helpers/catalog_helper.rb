@@ -294,14 +294,6 @@ module CatalogHelper
       })).to_s
   end
 
-  def campus_closed?
-    ::FeatureFlags.campus_closed?(params)
-  end
-
-  def with_libguides?
-    ::FeatureFlags.with_libguides?(params)
-  end
-
   def derived_lib_guides_search_term(response)
     LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
   end
