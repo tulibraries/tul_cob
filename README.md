@@ -64,12 +64,18 @@ make up-lite
   You can also have it ingest a few thousand sample records by setting the
   `DO_INGEST` environment variable to yes. For example:
   
-  ```bash
-  DO_INGEST=y rails tul_cob:solr:load_fixtures [optional]
+```bash
+# Load sample data into Solr (optional, run once if not using Option 2 below)
+DO_INGEST=y bundle exec rails tul_cob:solr:load_fixtures
 
-  bin/dev (if using rails >= 7.x)
-  bundle exec rails server (otherwise)
-  ```
+# Start the Rails application (choose one option):
+
+# Option 1: With auto-recompiling CSS/JS (recommended for development)
+bin/dev
+
+# Option 2: Starts Solr, loads fixtures, and runs Rails server (all-in-one command); no auto-recompiling
+bundle exec rails server
+```
 
 * Create a local user, if needed, for auth related work
 
