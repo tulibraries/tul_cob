@@ -6,6 +6,7 @@
     "@popperjs/core": "^2.11.8",
     "@rails/webpacker": "^6.0.0-rc.6",
     "@stimulus/polyfills": "^2.0.0",
+    "blacklight-range-limit": "^9.0.0",
     "bootstrap": "^5.3.3",
     "braces": "3.0.3",
     "follow-redirects": "1.15.6",
