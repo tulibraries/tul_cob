@@ -14,6 +14,7 @@ require "rails_helper"
 # end
 
 RSpec.describe CatalogHelper, type: :helper do
+
   describe "#isbn_data_attribute" do
     context "document contains an isbn" do
       let(:document) { { isbn_display: ["123456789"] } }
@@ -504,66 +505,6 @@ end
         }
       it "returns false" do
         expect(open_shelves_allowed?(document)).to be false
-      end
-    end
-  end
-
-  describe "#campus_closed?" do
-    before do
-      allow(helper).to receive(:params) { params }
-    end
-
-    context "params campus_closed is not set" do
-      let(:params) { {} }
-
-      it "returns false with an empty params object method" do
-        expect(campus_closed?).to be(false)
-      end
-    end
-
-    context "params campus_closed is true" do
-      let(:params) { { "campus_closed" => "true" } }
-
-      it "returns true when campus_closed param is not 'false'" do
-        expect(campus_closed?).to be(true)
-      end
-    end
-
-    context "params campus_closed is false" do
-      let(:params) { { "campus_closed" => "false" } }
-
-      it "returns false with an empty params object method" do
-        expect(campus_closed?).to be(false)
-      end
-    end
-  end
-
-  describe "#with_libguides?" do
-    before do
-      allow(helper).to receive(:params) { params }
-    end
-
-    context "params with_libguides is not set" do
-      let(:params) { {} }
-
-      it "returns false with an empty params object method" do
-        expect(with_libguides?).to be(false)
-      end
-    end
-
-    context "params with_libguides is true" do
-      let(:params) { { "with_libguides" => "true" } }
-
-      it "returns true when with_libguides param is not 'false'" do
-        expect(with_libguides?).to be(true)
-      end
-    end
-
-    context "params with_libguides is false" do
-      let(:params) { { "with_libguides" => "false" } }
-
-      it "returns false with an empty params object method" do
-        expect(with_libguides?).to be(false)
       end
     end
   end
