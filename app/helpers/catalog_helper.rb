@@ -250,14 +250,6 @@ module CatalogHelper
     end
   end
 
-  def doc_id(id)
-    "doc-#{id}"
-  end
-
-  def doc_redirect_url(id)
-    new_user_session_with_redirect_path("#{request.url}##{doc_id(id)}")
-  end
-
   def suggestions
     (@response.dig("spellcheck", "collations") || [])
       .each_slice(2)
