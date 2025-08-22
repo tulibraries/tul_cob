@@ -10,7 +10,11 @@ import "@stimulus/polyfills"
 import "whatwg-fetch"
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
+import BlacklightRangeLimit from "blacklight-range-limit";
+
 
 const application = Application.start()
 const context = require.context("./controllers", true, /\.js$/)
 application.load(definitionsFromContext(context))
+
+BlacklightRangeLimit.init({ onLoadHandler: Blacklight.onLoad });
