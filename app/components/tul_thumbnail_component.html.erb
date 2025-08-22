@@ -1,7 +1,7 @@
 <% unless controller_name == "databases" %>
     <div <%= @cover %> class="thumbnail float-sm-end">
       <%= image_tag "", :alt => "", :class => "book_cover invisible"  %>
-      <%= image_tag default_cover_image(@document), :alt => "" , :class => "default me-3"%>
+      <%= image_tag DocumentDecorator.new(@document).default_cover_image, :alt => "" , :class => "default me-3"%>
       <br />
       <%= link_to(image_tag("gbs_preview_button.gif", alt: "Google Preview", class: "mt-2"), "", :class => "preview invisible") if render_gb_preview? %>
     </div>

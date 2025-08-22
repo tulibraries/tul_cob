@@ -4,84 +4,6 @@ module CatalogHelper
   include Blacklight::CatalogHelperBehavior
   include HathitrustHelper
 
-  def isbn_data_attribute(document)
-    values = document.fetch(:isbn_display, [])
-    values = [values].flatten.map { |value|
-      value.gsub(/\D/, "") if value
-    }.compact.join(",")
-
-    "data-isbn=#{values}" if !values.empty?
-  end
-
-  def oclc_data_attribute(document)
-    values = document.fetch(:oclc_number_display, [])
-    values = [values].flatten.map { |value|
-      value.gsub(/\D/, "") if value
-    }.compact.join(",")
-
-    "data-oclc=#{values}" if !values.empty?
-  end
-
-  def lccn_data_attribute(document)
-    values = document.fetch(:lccn_display, []).compact.join(",")
-
-    "data-lccn=#{values}" if !values.empty?
-  end
-
-  def default_cover_image(document)
-    formats = document.fetch(:format, [])
-    # In case we fetched the default value, or the format value was ""
-    formats << "unknown" if formats.empty?
-    format = formats.first.to_s.parameterize.underscore
-    image = Rails.application.config.assets.default_cover_image
-      .merge(
-        "archival_material_manuscript" => "archival_material",
-        "article" => "journal_periodical",
-        "book_chapter" => "book",
-        "book_review" => "legal",
-        "computer_file" => "computer_media",
-        "dissertation" => "script",
-        "dissertation_thesis" => "script",
-        "government_document" => "legal",
-        "image" => "visual_material",
-        "journal" => "journal_periodical",
-        "journal_article" => "journal_periodical",
-        "legal_document" => "legal",
-        "magazine_article" => "journal_periodical",
-        "market_research" => "dataset",
-        "microform" => "legal",
-        "newsletter_article" => "legal",
-        "newspaper" => "legal",
-        "newspaper_article" => "legal",
-        "other" => "unknown",
-        "patent" => "legal",
-        "preprint" => "legal",
-        "reference_entry" => "legal",
-        "report" => "legal",
-        "research_dataset" => "dataset",
-        "review" => "legal",
-        "review_article" => "legal",
-        "standard" => "legal",
-        "statistical_data_set" => "dataset",
-        "technical_report" => "legal",
-        "text_resource" => "legal",
-        "web_resource" => "website",
-    ).fetch(format, "unknown")
-
-    "svg/" + image + ".svg"
-  end
-
-  def separate_formats(response)
-    document = response[:document]
-    formats = %w[]
-    document[:format].each do |format|
-      format = h(format)
-      css_class = format.to_s.parameterize.underscore
-      formats << "<span class='#{css_class}'> #{format}</span>"
-    end
-    formats.join("<br />").html_safe
-  end
-
   # Used to toggle the search bar form path.
   # Hack for Advanced search page
   def search_url_picker
@@ -106,15 +28,6 @@ module CatalogHelper
   def advanced_catalog_search_path
     params = @search_state.to_h.select { |k, v| !["page"].include? k }
     blacklight_advanced_search_engine.advanced_search_path(params)
-  end
-
-  # Safely converts a single or multi-value solr field
-  # to a string. Mult values are concatenated with a ', ' by default
-  # @param document - A solr document object
-  # @param field - the name of a solr field
-  # @param joiner - the string to use to concatenate multivalue fields
-  def doc_field_joiner(document, field, joiner = ", ")
-    Array.wrap(document.fetch(field, [])).join(joiner)
   end
 
   def digital_help_allowed?(document)
@@ -284,6 +197,14 @@ module CatalogHelper
 
   def derived_lib_guides_search_term(response)
     LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
+  end
+
+  # Delegation method for Blacklight configuration compatibility
+  # This allows the existing helper_method: :separate_formats to continue working
+  def separate_formats(args)
+    # Create a mock document with the format field for the decorator
+    document_data = { format: args[:value] }
+    DocumentDecorator.new(document_data).separate_formats
   end
 
   def join(args)

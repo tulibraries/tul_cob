@@ -15,38 +15,6 @@ require "rails_helper"
 
 RSpec.describe CatalogHelper, type: :helper do
 
-  describe "#isbn_data_attribute" do
-    context "document contains an isbn" do
-      let(:document) { { isbn_display: ["123456789"] } }
-      it "returns the data-isbn string" do
-        expect(isbn_data_attribute(document)).to eql "data-isbn=123456789"
-      end
-    end
-
-    context "document contains multiple isbn" do
-      let(:document) { { isbn_display: ["23445667890", "123456789"] } }
-      it "returns the data-isbn string" do
-        expect(isbn_data_attribute(document)).to eql "data-isbn=23445667890,123456789"
-      end
-    end
-
-    context "document does not contain an isbn" do
-      let(:document) { {} }
-      it "does not return the data-isbn string" do
-        expect(isbn_data_attribute(document)).to be_nil
-      end
-    end
-  end
-
-  describe "#lccn_data_attribute" do
-    context "document contains an lccn" do
-      let(:document) { { lccn_display: ["sn#00061556"] } }
-      it "returns the data-lccn string" do
-        expect(lccn_data_attribute(document)).to eql "data-lccn=sn#00061556"
-      end
-    end
-  end
-
   describe "#grouped_citations" do
     it "sends all the given document citations to the grouped_citations method of the Citation class" do
       documents = [
@@ -317,63 +285,6 @@ end
       let(:controller_name) { "journal" }
       it "does not add an ez_borrow list item" do
         expect(ez_borrow_list_item(controller_name)).to be_nil
-      end
-    end
-  end
-
-  describe "doc_field_joiner(document, field)" do
-    let(:string) { helper.doc_field_joiner(document, field) }
-    let(:field) { "test" }
-    let(:document) {  { "#{field}" => value } }
-    context "the field value is empty" do
-      let(:value) { "" }
-      it "returns an empty string" do
-        expect(string).to eql ""
-      end
-    end
-    context "the field value is nil" do
-      let(:value) { nil }
-      it "returns an empty string" do
-        expect(string).to eql ""
-      end
-    end
-    context "the field value is non empty string value" do
-      let(:value) { "an id" }
-      it "returns an empty string" do
-        expect(string).to eql "an id"
-      end
-    end
-
-    context "the field value is an empty array" do
-      let(:value) { [] }
-      it "returns an empty string" do
-        expect(string).to eql ""
-      end
-    end
-
-    context "the field value is an array with a single string value" do
-      let(:value) { ["one value"] }
-      it "returns an empty string" do
-        expect(string).to eql "one value"
-      end
-    end
-
-    context "the field value is an array with a single integer value" do
-      let(:value) { [3] }
-      it "returns an empty string" do
-        expect(string).to eql "3"
-      end
-    end
-    context "the field value is an array with a single integer value" do
-      let(:value) { [3] }
-      it "returns an empty string" do
-        expect(string).to eql "3"
-      end
-    end
-    context "the field value is an array multiple string values" do
-      let(:value) { ["one", "two"] }
-      it "returns an empty string" do
-        expect(string).to eql "one, two"
       end
     end
   end

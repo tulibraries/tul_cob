@@ -11,7 +11,8 @@ class TulThumbnailComponent < Blacklight::Document::ThumbnailComponent
   end
 
   def render_google_books_data_attribute
-    isbn_data_attribute(@document) || lccn_data_attribute(@document) || oclc_data_attribute(@document)
+    decorated_doc = DocumentDecorator.new(@document)
+    decorated_doc.isbn_data_attribute || decorated_doc.lccn_data_attribute || decorated_doc.oclc_data_attribute
   end
 
   def before_render
