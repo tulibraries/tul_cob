@@ -30,40 +30,10 @@ module CatalogHelper
     blacklight_advanced_search_engine.advanced_search_path(params)
   end
 
-  def digital_help_allowed?(document)
-    document.fetch("availability_facet", [])
-      .include?("At the Library") &&
-    document.fetch("format", [])
-      .exclude?("Archival Material") &&
-    document.fetch("format", [])
-      .exclude?("Object") &&
-    !document["electronic_resource_display"] &&
-    !hathitrust_link_allowed?(document)
-  end
-
-  def open_shelves_allowed?(document)
-    {
-      "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
-      "AMBLER"   => ["aleisure", "imc", "newbooks", "oversize", "reference", "stacks"],
-      "POD"      =>  ["stacks"]
-    }.any? { |library_code, locations| check_open_shelves(document, library_code, locations) }
-  end
-
-  def check_open_shelves(document, library_code, locations)
-    document.fetch("items_json_display", []).any? { |item|
-      item["current_library"].include?(library_code) &&
-      locations.include?(item["current_location"])
-    }
-  end
-
   def render_email_form_field
     if !current_user&.email
       render partial: "email_form_field"
     end
-  end
-
-  def grouped_citations(documents)
-    Citation.grouped_citations(documents.map(&:citations))
   end
 
   def render_marc_view

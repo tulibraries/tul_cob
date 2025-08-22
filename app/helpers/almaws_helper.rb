@@ -34,13 +34,13 @@ module AlmawsHelper
   end
 
   def digital_copy_partial(request_options, document)
-    if digital_help_allowed?(document)
+    if document.digital_help_allowed?
       render partial: "digital_copy_help", locals: { request_options:, document: }
     end
   end
 
   def open_shelves_partial(request_options, document)
-    if open_shelves_allowed?(document)
+    if document.open_shelves_allowed?
       render partial: "open_shelves", locals: { request_options:, document: }
     end
   end
@@ -70,8 +70,8 @@ module AlmawsHelper
       request_options.booking_allowed?,
       request_options.resource_sharing_broker_allowed? && books.present?,
       aeon_request_allowed(document),
-      digital_help_allowed?(document),
-      open_shelves_allowed?(document),
+      document.digital_help_allowed?,
+      document.open_shelves_allowed?,
       equipment.present?]
   end
 

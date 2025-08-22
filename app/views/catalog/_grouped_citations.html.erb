@@ -19,7 +19,7 @@
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane active" id="biblio">
-      <% grouped_citations(@response.documents).each do |format, citations| %>
+      <% SolrDocument.grouped_citations(@response.documents).each do |format, citations| %>
         <% unless format == "NULL" %>
           <h2 class="citation-heading"><%= citation_labels(format)%></h2>
           <% citations.each do |citation| %>
