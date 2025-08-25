@@ -28,7 +28,7 @@
               <%= request_modal(document.id, @pickup_locations, @request_level, "search-results") %>
             <% else %>
               <%= link_to(t("requests.request_button"),
-                            doc_redirect_url(document.id),
+                            DocumentDecorator.doc_redirect_url(document.id, request.url),
                             data: {"blacklight-modal": "trigger"},
                             class: "btn search-results-request-btn") %>
             <% end %>

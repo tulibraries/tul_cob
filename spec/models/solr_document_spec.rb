@@ -648,4 +648,147 @@ RSpec.describe SolrDocument, type: :model do
     end
   end
 
+  # Business logic methods tests moved from CatalogHelper
+  describe "#digital_help_allowed?" do
+    context "is not a physical item" do
+      let(:document) { SolrDocument.new("availability_facet" => "Online") }
+      it "returns false" do
+        expect(document.digital_help_allowed?).to be false
+      end
+    end
+
+    context "is a physical item" do
+      let(:document) { SolrDocument.new("availability_facet" => "At the Library") }
+      it "returns true" do
+        expect(document.digital_help_allowed?).to be true
+      end
+    end
+
+    context "is a physical item with hathitrust access denied" do
+      let(:document) { SolrDocument.new(
+        "availability_facet" => "At the Library",
+        "hathi_trust_bib_key_display" => "foo"
+      ) }
+      it "returns true" do
+        expect(document.digital_help_allowed?).to be true
+      end
+    end
+
+    context "is an object" do
+      let(:document) { SolrDocument.new("format" => "Object") }
+      it "returns false" do
+        expect(document.digital_help_allowed?).to be false
+      end
+    end
+
+    context "has a hathitrust link" do
+      let(:document) { SolrDocument.new("hathi_trust_bib_key_display" => [{ "bib_key" => "000005117", "access" => "allow" }].first) }
+      it "returns false" do
+        expect(document.digital_help_allowed?).to be false
+      end
+    end
+
+    context "is a physical item and an online item" do
+      let(:document) { SolrDocument.new(
+        "availability_facet" => "At the Library",
+        "electronic_resource_display" => "foo"
+      ) }
+      it "returns false" do
+        expect(document.digital_help_allowed?).to be false
+      end
+    end
+  end
+
+  describe "#open_shelves_allowed?" do
+    context "is not in a relevant library" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "LAW",
+        "permanent_location" => "reference",
+        "current_library" => "LAW",
+        "current_location" => "reference",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+      ) }
+
+      it "returns false" do
+        expect(document.open_shelves_allowed?).to be false
+      end
+    end
+
+    context "is in a relevant Charles location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "juvenile",
+        "current_library" => "MAIN",
+        "current_location" => "juvenile" }]
+      ) }
+      it "returns true" do
+        expect(document.open_shelves_allowed?).to be true
+      end
+    end
+
+    context "is in a relevant Ambler location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "stacks",
+        "current_library" => "AMBLER",
+        "current_location" => "stacks" }]
+      ) }
+      it "returns true" do
+        expect(document.open_shelves_allowed?).to be true
+      end
+    end
+
+    context "is in a relevant library, but not location" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "Reference",
+        "current_library" => "MAIN",
+        "current_location" => "reference" }]
+      ) }
+      it "returns false" do
+        expect(document.open_shelves_allowed?).to be false
+      end
+    end
+
+    context "is in a relevant location, but not library" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23433968230003811",
+        "item_policy" => "0",
+        "permanent_library" => "JAPAN",
+        "permanent_location" => "stacks",
+        "current_library" => "JAPAN",
+        "current_location" => "stacks" },
+        { "item_pid" => "23311482710003811",
+        "item_policy" => "2",
+        "permanent_library" => "MAIN",
+        "permanent_location" => "serials",
+        "current_library" => "MAIN",
+        "current_location" => "serials" }]
+      ) }
+      it "returns false" do
+        expect(document.open_shelves_allowed?).to be false
+      end
+    end
+  end
+
+  describe ".grouped_citations" do
+    it "sends all the given document citations to the grouped_citations method of the Citation class" do
+      documents = [
+        double("document", citations: :abc),
+        double("document", citations: :def)
+      ]
+      expect(Citation).to receive(:grouped_citations).with([:abc, :def])
+      SolrDocument.grouped_citations(documents)
+    end
+  end
+
 end

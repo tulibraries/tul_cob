@@ -157,6 +157,43 @@ class SolrDocument
     @libkey_journals_url_thread.value&.fetch("browzineEnabled", nil) == true
   end
 
+  # Business logic methods moved from CatalogHelper
+  def digital_help_allowed?
+    fetch("availability_facet", [])
+      .include?("At the Library") &&
+    fetch("format", [])
+      .exclude?("Archival Material") &&
+    fetch("format", [])
+      .exclude?("Object") &&
+    !self["electronic_resource_display"] &&
+    !hathitrust_link_allowed?
+  end
+
+  def open_shelves_allowed?
+    {
+      "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
+      "AMBLER"   => ["aleisure", "imc", "newbooks", "oversize", "reference", "stacks"],
+      "POD"      =>  ["stacks"]
+    }.any? { |library_code, locations| check_open_shelves(library_code, locations) }
+  end
+
+  def check_open_shelves(library_code, locations)
+    fetch("items_json_display", []).any? { |item|
+      item["current_library"].include?(library_code) &&
+      locations.include?(item["current_location"])
+    }
+  end
+
+  # Class method for grouping citations from multiple documents
+  def self.grouped_citations(documents)
+    Citation.grouped_citations(documents.map(&:citations))
+  end
+
+  def hathitrust_link_allowed?
+    ht_bib_key_field = fetch("hathi_trust_bib_key_display", []).first rescue nil
+    ht_bib_key_field.fetch("access", "deny") == "allow" rescue nil
+  end
+
   private
 
     def libkey_journals_url_thread(doc)
@@ -190,6 +227,6 @@ class SolrDocument
 
     def self.sanitize_id(id)
       id = "#{id}".rpartition("doc-").last
-      id if id.match? /\d{18}/
+      id if id.match?(/\d{18}/)
     end
 end

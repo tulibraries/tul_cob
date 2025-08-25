@@ -19,7 +19,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#hold_allowed_partial" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -28,7 +28,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -45,7 +45,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "hold cannot be placed on an item" do
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -54,7 +54,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -71,7 +71,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#asrs_allowed_partial" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -80,7 +80,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -159,7 +159,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "asrs request cannot be placed on an item" do
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -168,7 +168,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -186,7 +186,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#digitization_allowed_partial" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -195,7 +195,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -212,7 +212,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "An item cannot be requested to be scanned" do
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -221,7 +221,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -238,7 +238,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#booking_allowed_partial" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -247,7 +247,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -269,7 +269,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "booking cannot be placed on an item" do
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -278,7 +278,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -295,7 +295,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#resource_sharing_broker_allowed_partial" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -304,7 +304,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -322,7 +322,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     end
 
     context "item cannot be requested through ez-borrow" do
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -331,7 +331,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -348,7 +348,7 @@ RSpec.describe AlmawsHelper, type: :helper do
   end
 
   describe "#no_temple_request_options_available" do
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
       [{ "item_pid" => "23237957740003811",
       "item_policy" => "5",
       "permanent_library" => "AMBLER",
@@ -357,7 +357,7 @@ RSpec.describe AlmawsHelper, type: :helper do
       "current_location" => "media",
       "call_number" => "DVD 13 A165",
       "holding_id" => "22237957750003811" }]
-        } }
+        ) }
     let(:json) {
       { request_option:
         [{
@@ -376,7 +376,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
     context "Temple request options are available" do
       let(:books) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -385,7 +385,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -405,7 +405,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "only a hold is allowed" do
       let(:books) {}
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -414,7 +414,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -432,7 +432,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "only an aeon request is allowed" do
       let(:books) {}
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "SCRC",
@@ -441,7 +441,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -459,7 +459,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "only a booking is allowed" do
       let(:books) {}
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -468,7 +468,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -486,7 +486,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "only an EZ Borrow request is allowed for a book" do
       let(:books) { "BOOK" }
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -495,7 +495,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -513,7 +513,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "only an EZ Borrow request is allowed for a DVD" do
       let(:books) {}
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -522,7 +522,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         { request_option:
           [{
@@ -541,7 +541,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     context "both a hold and a booking are allowed" do
       let(:books) {}
       let(:equipment) {}
-      let(:document) { { "items_json_display" =>
+      let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",
         "permanent_library" => "AMBLER",
@@ -550,7 +550,7 @@ RSpec.describe AlmawsHelper, type: :helper do
         "current_location" => "media",
         "call_number" => "DVD 13 A165",
         "holding_id" => "22237957750003811" }]
-          } }
+          ) }
       let(:json) {
         {
           "request_option": [
@@ -586,7 +586,7 @@ RSpec.describe AlmawsHelper, type: :helper do
 
   describe "#equipment_partial" do
     let(:equipment) { "DSC" }
-    let(:document) { { "items_json_display" =>
+    let(:document) { SolrDocument.new("items_json_display" =>
     [{ "item_pid" => "23325961500003811",
     "item_policy" => "22",
     "permanent_library" => "DSC",
@@ -595,7 +595,7 @@ RSpec.describe AlmawsHelper, type: :helper do
     "current_location" => "games",
     "call_number" => "Game 14 14",
     "holding_id" => "22467010770003811" }]
-      } }
+      ) }
     let(:json) {
       { request_option:
         [{

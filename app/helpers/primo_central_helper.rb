@@ -32,7 +32,7 @@ module PrimoCentralHelper
     if codes
       presenter[:document][:format] = codes
     end
-    separate_formats(presenter)
+    DocumentDecorator.new(presenter[:document]).separate_formats
   end
 
   # Returns a list of partials to render in the availability section
