@@ -4,9 +4,6 @@ Library Search is a [Blacklight](https://projectblacklight.org/) project at Temp
 
 The first phase of this project (i.e. TUL "Catalog on Blacklight") focused on search for our catalog records and fulfillment integration with our ILS, Alma. It now also includes a bento style discovery layer for: Primo Central Index article records, Springshare A-Z database records,  [library website content],(https://github.com/tulibraries/manifold)., LibGuides, and an integration with contentDM to display relevant search results from our digitized collections.
 
-We have now added the bento_search gem to provide a bento box styled discovery layer. Users will be presented with organization of content into Books & Media, Articles, Databases, 
-Journals, Library Website, Research Guides. Each bento style box presents top results in each category with links to more content. Into this discovery layer, we have also implemented
-an integration with contentDM to display relevant search results from our digitized collections.
 
 The following repositories are also critical components for Solr indexing and other integrations in the Library Search: 
 * Processing pipeline: https://github.com/tulibraries/cob_datapipeline
