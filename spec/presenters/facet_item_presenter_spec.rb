@@ -57,8 +57,8 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       presenter = described_class.new(facet_item, facet_config, view_context, facet_field, search_state)
       presenter.parent = parent_facet_item # this needs to be done in the pivot component
       presenter.href
-      expect(search_state.filter_params.keys.sort).to eq %w(pet job num).sort
-      expect(search_state.filter_params.values.flatten.sort).to eq %w(cat two vet)
+      expect(search_state.filters.keys.sort).to eq %w(pet job num).sort
+      expect(search_state.filters.values.flatten.sort).to eq %w(cat two vet)
     end
   end
 
