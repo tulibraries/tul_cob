@@ -73,7 +73,7 @@ class DocumentDecorator < SimpleDelegator
   end
 
   # Safely converts a single or multi-value solr field
-  # to a string. Mult values are concatenated with a ', ' by default
+  # to a string. Multi values are concatenated with a ', ' by default
   # @param field - the name of a solr field
   # @param joiner - the string to use to concatenate multivalue fields
   def field_joiner(field, joiner = ", ")
