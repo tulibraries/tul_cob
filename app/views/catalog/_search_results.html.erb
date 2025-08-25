@@ -16,7 +16,7 @@
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
 <%- else %>
-  <%= render_document_index %>
+  <%= render_document_index @response.documents %>
 <%- end %>
 
 <nav class="center" role="region" aria-label="<%= t('views.pagination.aria.container_label') %>">

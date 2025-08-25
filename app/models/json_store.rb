@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class JsonStore < ApplicationRecord
-  serialize :value, JSON
+  serialize :value, coder: JSON
 end
