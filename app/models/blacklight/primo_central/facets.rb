@@ -38,6 +38,7 @@ module Blacklight
       class FacetField
         attr_reader :name, :items
 
+
         def initialize(name, items, options = {})
           @name, @items = name, items
           @options = options
@@ -47,12 +48,21 @@ module Blacklight
           @options[:limit] || default_limit
         end
 
+        def data
+          @options[:data]
+        end
+
         def offset
           @options[:offset] || default_offset
         end
 
         # Expected by {Blacklight::Facet#facet_paginator}
         def prefix
+          @options[:prefix]
+        end
+
+        def response
+          @options[:response]
         end
 
         def sort
@@ -143,6 +153,8 @@ module Blacklight
           elsif params[:'facet.offset']
             options[:offset] = params[:'facet.offset'].to_i
           end
+
+          options[:response] = self
 
           options
         end
