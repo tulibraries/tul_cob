@@ -60,7 +60,7 @@ make up-lite
 
 # Start the Rails application:
 
-bundle exec rails server
+`bundle exec rails server`
 ```
 
 * Create a local user, if needed, for auth related work
