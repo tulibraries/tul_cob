@@ -168,7 +168,9 @@ class CatalogController < ApplicationController
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
       component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
-    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true
+    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, range_config: {
+      show_missing_link: false,
+    }
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "donor_info_ms", label: "Donor bookplate", limit: true, show: false, component: true

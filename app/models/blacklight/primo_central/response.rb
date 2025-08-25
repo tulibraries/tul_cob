@@ -51,7 +51,7 @@ module Blacklight::PrimoCentral
 
     def facet_segments(field, min, max, values)
       segments = []
-      field_config = BlacklightRangeLimit.range_config(blacklight_config, field)
+      field_config = blacklight_config.facet_fields[field.to_s]
       boundaries = boundaries_for_range_facets(min, max, (field_config[:num_segments] || 10))
 
       # Now make the boundaries into actual filter.queries.
