@@ -164,16 +164,6 @@ use `bundle exec cob_web_index ingest $path_to_file_or_url`.
 
 Note: If you make an update to cob_web_index, you will need to run `bundle update cob_web_index` locally.
 
-#### Ingest LibGuide AZ documents
-Locally you will need to add 'az-database' core to solr (handled automatically for docker/libqa/production)
-
-Ingest AZ database documents by running
-
-```bash
-./bin/libguide_cache.rb
-./bin/ingest-libguides.sh
-```
-
 ## Running the Tests
 
 `bundle exec rails ci` will ingest the test records, and run your test suite.
