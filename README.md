@@ -2,7 +2,7 @@
 
 Library Search is a [Blacklight](https://projectblacklight.org/) project at Temple University Libraries for the discovery of library resources. See https://librarysearch.temple.edu/ for our production site.
 
-The first phase of this project (i.e. TUL "Catalog on Blacklight") focused on search for our catalog records and fulfillment integration with our ILS, Alma. It now also includes a bento style discovery layer for: Primo Central Index article records, Springshare A-Z database records,  [library website content],(https://github.com/tulibraries/manifold)., LibGuides, and an integration with contentDM to display relevant search results from our digitized collections.
+The first phase of this project (i.e. TUL "Catalog on Blacklight") focused on search for our catalog records and fulfillment integration with our ILS, Alma. It now also includes a bento style discovery layer for: Primo Central Index article records, Springshare A-Z database records,  [library website content],(https://github.com/tulibraries/manifold), LibGuides, and an integration with contentDM to display relevant search results from our digitized collections.
 
 
 The following repositories are also critical components for Solr indexing and other integrations in the Library Search: 
