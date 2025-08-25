@@ -139,7 +139,7 @@ If using docker, then ingest using `docker-compose exec app traject -c app/model
   `DO_INGEST` environment variable to yes. For example:
   
 ```bash
-# Load sample data into Solr (optional, run once if not using Option 2 below)
+# Load sample data into Solr
 DO_INGEST=y bundle exec rails tul_cob:solr:load_fixtures
 ```
 
