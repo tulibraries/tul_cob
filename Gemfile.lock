@@ -327,7 +327,7 @@ GEM
       activesupport (>= 6.1)
     hashdiff (1.2.0)
     hashie (4.1.0)
-    honeybadger (5.29.1)
+    honeybadger (6.0.6)
       logger
       ostruct
     htmlentities (4.3.4)
@@ -759,7 +759,7 @@ DEPENDENCIES
   flamegraph
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 5.29.1)
+  honeybadger (= 6.0.6)
   httparty
   jbuilder (~> 2.14)
   jquery-rails
