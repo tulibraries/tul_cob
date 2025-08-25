@@ -59,8 +59,8 @@ make up-lite
 * In the second terminal window, start the rails app
 
 # Start the Rails application:
-
-`bundle exec rails server`
+```bash
+bundle exec rails server
 ```
 
 * Create a local user, if needed, for auth related work
@@ -141,6 +141,7 @@ If using docker, then ingest using `docker-compose exec app traject -c app/model
 ```bash
 # Load sample data into Solr (optional, run once if not using Option 2 below)
 DO_INGEST=y bundle exec rails tul_cob:solr:load_fixtures
+```
 
 ### Ingesting URLs
 Additionally, you can now use `bin/ingest.rb`. This is a ruby executable that
@@ -158,8 +159,8 @@ AZ Database fixture data is loaded automatically when you run
 Note: If you make an update to cob_az_index, you will need to run `bundle update cob_az_index` locally.
 
 ### Ingest web content data
-Web content fixture data is loaded automatically when you run
-`bundle exec rails tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, use `bundle exec cob_web_index ingest $path_to_file_or_url`.
+Web content fixture data is loaded automatically when you run `bundle exec rails tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, 
+use `bundle exec cob_web_index ingest $path_to_file_or_url`.
 
 Note: If you make an update to cob_web_index, you will need to run `bundle update cob_web_index` locally.
 
@@ -168,7 +169,7 @@ Locally you will need to add 'az-database' core to solr (handled automatically f
 
 Ingest AZ database documents by running
 
-```
+```bash
 ./bin/libguide_cache.rb
 ./bin/ingest-libguides.sh
 ```
