@@ -169,3 +169,5 @@ Note: If you make an update to cob_web_index, you will need to run `bundle updat
 `bundle exec rails ci` will ingest the test records, and run your test suite.
 
 `bundle exec rspec` assuming you already have the test records in your test solr.
+
+`bundle exec rubocop` to run the trails linter, use the -A flag to autocorrect autocorrectables.
