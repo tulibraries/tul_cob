@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module AdvancedHelper
-  include BlacklightAdvancedSearch::AdvancedHelperBehavior
 
   def sort_fields
     active_sort_fields.values.map { |field_config|
