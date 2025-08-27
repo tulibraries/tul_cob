@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module RenderConstraintsHelper
-
   def filter_elements(facet, values, search_state)
     facet_config = facet_configuration_for_field(facet)
 
