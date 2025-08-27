@@ -16,7 +16,7 @@ class WebContentController < CatalogController
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
     config.connection_config[:url] = config.connection_config[:web_content_url]
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "web_title_display"
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params = {}
