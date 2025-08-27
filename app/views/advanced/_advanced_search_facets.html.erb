@@ -1,8 +1,8 @@
 <div class="container" id="advanced-search-facets" style="margin-top: 14px;">
 <% facet_field_names.each do |field| %>
   <% if (display_facet = @response.aggregations[field]) %>
-    <% if should_render_facet?(display_facet) && display_facet.name != 'lc_facet' %>
-      <% facet_config = facet_configuration_for_field(display_facet.name) %>
+    <% facet_config = facet_configuration_for_field(display_facet.name) %> <% presenter = facet_field_presenter(display_facet, facet_config) %> 
+    <% if presenter.render? && display_facet.name != 'lc_facet' %> 
         <div class="form-group advanced-search-facet row align-items-center">
           <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
             <%= facet_config.label %>

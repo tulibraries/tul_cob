@@ -19,7 +19,7 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
 
   def remove_href(path = search_state)
     if has_selected_child?
-      path_hash = path.remove_facet_params(nil, nil)
+      path_hash = path.remove(nil, nil)
       path_hash["f"]&.delete(items[0].field)
       search_path(path_hash)
     else
