@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module AdvancedHelper
-
   def sort_fields
     active_sort_fields.values.map { |field_config|
       [sort_field_label(field_config.key), field_config.key]

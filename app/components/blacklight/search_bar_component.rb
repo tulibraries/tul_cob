@@ -2,7 +2,6 @@
 
 module Blacklight
   class SearchBarComponent < Blacklight::Component
-
     renders_one :append
     renders_one :prepend
     renders_one :search_button
