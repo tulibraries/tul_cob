@@ -40,8 +40,7 @@ module PurchaseOrderHelper
     return unless args[:document].purchase_order?
 
     if !current_user
-      id = args[:document].id
-      link_to("Log in to access request form", doc_redirect_url(id), data: { "blacklight-modal": "trigger" })
+      link_to("Log in to access request form", DocumentDecorator.doc_redirect_url(args[:document].id, request.url), data: { "blacklight-modal": "trigger" })
     elsif current_user.can_purchase_order?
       render_purchase_order_button(args)
     end
