@@ -1,0 +1,20 @@
+<div class="sendto-menu dropdown-menu bg-white border border-light-grey">
+  <% actions.each do |action| %>
+    <% if action.key == :ris %>
+      <%= link_to helpers.document_action_label(action.name, action),
+                  ris_href,
+                  id: (action[:id] || "#{action.name}Link"),
+                  class: "sendto-item dropdown-item",
+                  target: "_blank",
+                  rel: "noopener" %>
+    <% else %>
+      <%= render Blacklight::Document::ActionComponent.new(
+            action: action,
+            document: nil,
+            options: { document: nil },
+            url_opts: @url_opts,
+            link_classes: "sendto-item dropdown-item"
+          ) %>
+    <% end %>
+  <% end %>
+</div>
