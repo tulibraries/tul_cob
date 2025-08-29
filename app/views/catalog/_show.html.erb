@@ -3,7 +3,7 @@
 <hr class="record-page-divider"/>
 <div class="record-page-wrapper clearfix" data-controller="book-covers">
   <% unless [ "databases", "primo_central"].include?(controller_name) %>
-    <%= render TulThumbnailComponent.new(presenter: doc_presenter, document:, counter: nil, gb_preview: true) %>
+    <%= render TulThumbnailComponent.new(presenter: doc_presenter, gb_preview: true) %>
   <% end %>
 
   <div class="float-md-start col-md-9">
