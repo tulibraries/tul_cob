@@ -27,4 +27,17 @@ RSpec.describe TulThumbnailComponent, type: :component do
       expect(page).to have_css("a", class: "preview")
     end
   end
+
+  context "with nil document" do
+    let(:presenter) { OpenStruct.new(document: nil) }
+    subject { described_class.new(presenter:) }
+
+    it "renders without error" do
+      expect { render_inline(subject) }.not_to raise_error
+    end
+
+    it "returns false from render? when document is nil" do
+      expect(subject.render?).to be false
+    end
+  end
 end
