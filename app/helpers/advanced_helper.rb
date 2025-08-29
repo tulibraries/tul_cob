@@ -65,6 +65,7 @@ module AdvancedHelper
   end
 
   def render_advanced_search_link(my_params = params)
+    return ""
     query = advanced_params(my_params)
 
     if current_page? search_catalog_path
