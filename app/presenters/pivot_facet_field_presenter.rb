@@ -2,7 +2,10 @@
 
 class PivotFacetFieldPresenter < Blacklight::FacetFieldPresenter
   def active?
-    return true if facet_field.pivot.find { |_key| view_context.facet_field_in_params?(_key) }
+    facet_field.pivot.find { |_key|
+      config = view_context.facet_configuration_for_field(_key)
+      search_state.filter(config).any?
+    }.present?
   end
 
   def collapsed?

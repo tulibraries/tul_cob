@@ -54,6 +54,7 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    config.advanced_search[:enabled] = true
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] = "lucene"
     config.advanced_search[:form_solr_parameters] ||= {}
@@ -105,7 +106,7 @@ class CatalogController < ApplicationController
     # solr field configuration for document/show views
     config.show.title_field = "title_with_subtitle_truncated_display"
     #config.show.display_type_field = 'format'
-    config.show.document_presenter_class = ShowPresenter
+    #config.show.document_presenter_class = ShowPresenter
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -118,6 +119,7 @@ class CatalogController < ApplicationController
     # * If set to 'true', then no additional parameters will be sent to solr,
     # but any 'sniffed' request limit parameters will be used for paging, with
     # paging at requested limit -1. Can sniff from facet.limit or
+    config.index.document_presenter_class = IndexPresenter
     # f.specific_field.facet.limit solr request params. This 'true' config
     # can be used if you set limits in :default_solr_params, or as defaults
     # on the solr side in the request handler itself. Request handler defaults
@@ -164,19 +166,22 @@ class CatalogController < ApplicationController
       },
       unless: config.campus_closed
 
-    config.add_facet_field "library_facet", label: "Library", presenter: PivotFacetFieldPresenter,
+    config.add_facet_field "library_facet", label: "Library",
       pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
-      component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
+      presenter: PivotFacetFieldPresenter,
+      pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
-    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, range_config: {
-      show_missing_link: false,
-    }
     config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
     config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
     config.add_facet_field "donor_info_ms", label: "Donor bookplate", limit: true, show: false, component: true
     config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, presenter: ClassificationFieldPresenter, component: true, collapsing: true, icons: { show: "", hide: "" }
+    config.add_facet_field "lc_facet",
+      label: "Library of Congress Classification",
+      pivot: ["lc_outer_facet", "lc_inner_facet"],
+      presenter: ClassificationFieldPresenter,
+      collapsing: true, icons: { show: "", hide: "" },
+      limit: true, show: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
     config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
     config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
@@ -603,7 +608,7 @@ class CatalogController < ApplicationController
   # Override index because we don't show any results at /catalog when
   # there are no parameters, and so we don't need to bother solr
   def index
-    if has_search_parameters? || advanced_controller?
+    if has_search_parameters?
       super
     else
       respond_to do |format|
@@ -616,10 +621,6 @@ class CatalogController < ApplicationController
   private
     def catalog?
       self.class == CatalogController
-    end
-
-    def advanced_controller?
-      self.class == AdvancedController
     end
 
     # Allow access to request outside of controller context.
