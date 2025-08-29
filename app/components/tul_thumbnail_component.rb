@@ -5,7 +5,7 @@ class TulThumbnailComponent < Blacklight::Document::ThumbnailComponent
 
   def initialize(presenter:, image_options: {}, gb_preview: nil)
     @presenter = presenter
-    @document = presenter.document
+    @document = presenter&.document
     @decorated_doc = DocumentDecorator.new(@document)
     @image_options = { alt: "" }.merge(image_options)
     @gb_preview = gb_preview
