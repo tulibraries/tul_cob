@@ -67,7 +67,6 @@ RSpec.describe DatabasesController, type: :controller do
 
     context ":index action and non-quoted single term search" do
       it "does not override the blacklight_config solr_path" do
-        get :index, params: { q: '"art"' }
         get :index, params: { q: "art" }
         expect(assigns(:blacklight_config).solr_path).to eq("search")
       end
@@ -75,7 +74,6 @@ RSpec.describe DatabasesController, type: :controller do
 
     context ":index action and single term with apostrophe" do
       it "does not override the blacklight_config solr_path" do
-        get :index, params: { q: '"art"' }
         get :index, params: { q: "david's" }
         expect(assigns(:blacklight_config).solr_path).to eq("search")
       end
