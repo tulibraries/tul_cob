@@ -48,6 +48,58 @@ RSpec.describe DatabasesController, type: :controller do
       expect(@all_ids).not_to match_array(@subject_ids)
       expect(@title_ids).not_to match_array(@subject_ids)
     end
+  end
 
+  describe "before_action override_solr_path " do
+
+    context ":index action and quoted single term search (double quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: '"art"' }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted single term search (single quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "'art'" }
+        expect(assigns(:blacklight_config)&.solr_path).to eq("search")      end
+    end
+
+    context ":index action and non-quoted single term search" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: '"art"' }
+        get :index, params: { q: "art" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and single term with apostrophe" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: '"art"' }
+        get :index, params: { q: "david's" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted multiple term search (single quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "'art school'" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and quoted multiple term search (double quoted)" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "\"art school\"" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
+
+    context ":index action and non-quoted multiple term search" do
+      it "does not override the blacklight_config solr_path" do
+        get :index, params: { q: "art school" }
+        expect(assigns(:blacklight_config).solr_path).to eq("search")
+      end
+    end
   end
 end
