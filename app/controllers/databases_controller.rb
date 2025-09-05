@@ -5,6 +5,9 @@ class DatabasesController < CatalogController
 
   helper_method :join
 
+  def override_solr_path
+  end
+
   def advanced_override_path
   end
 
