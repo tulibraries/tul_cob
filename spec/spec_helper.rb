@@ -52,11 +52,18 @@ SPEC_ROOT = File.dirname __FILE__
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+Honeybadger.configure do |c|
+  c.backend = :test
+end
+
 RSpec.configure do |config|
   config.filter_run_excluding lib_guides_relevance: true
 
+  config.before do
+      Honeybadger::Backend::Test.notifications[:notices].clear
+  end
+
   config.before(:each) do
-    Honeybadger::Backend::Test.notifications[:notices] = []
 
     # JUst so we don't send our request when testing controllers
     stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
