@@ -32,12 +32,14 @@ RSpec.describe SearchController, type: :controller do
         end
 
         results = BentoSearch::ConcurrentSearcher.new(:books_and_media, :bad_service).search("foo").results
-        notice = Honeybadger::Backend::Test.notifications[:notices].first
         expect {
           expect { controller.send(:process_results, results) }.to_not raise_error
           Honeybadger.flush
         }.to change { Honeybadger::Backend::Test.notifications[:notices].size }.by(1)
-        expect(notice.error_message).to eq("HTTPClient::TimeoutError: HTTPClient::TimeoutError")
+        
+        notice = Honeybadger::Backend::Test.notifications[:notices].first
+        combined = "#{notice.error_class}: #{notice.error_message}".encode("UTF-8")
+        expect(combined).to eq("HTTPClient::TimeoutError: HTTPClient::TimeoutError")
       end
     end
   end
