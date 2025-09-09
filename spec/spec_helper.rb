@@ -60,7 +60,7 @@ RSpec.configure do |config|
   config.filter_run_excluding lib_guides_relevance: true
 
   config.before do
-      Honeybadger::Backend::Test.notifications[:notices].clear
+    Honeybadger::Backend::Test.notifications[:notices].clear
   end
 
   config.before(:each) do
