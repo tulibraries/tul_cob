@@ -58,7 +58,7 @@ RSpec.configure do |config|
   Honeybadger.configure do |c|
     c.backend = :test
   end
-  
+
   config.before do
     Honeybadger::Backend::Test.notifications[:notices].clear
   end
