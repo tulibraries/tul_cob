@@ -181,7 +181,7 @@ RSpec.describe AlmawsController, type: :controller do
         error = "Alma::RequestOptions::ResponseError: {\"error\":\"phhhht\"}"
         notice = Honeybadger::Backend::Test.notifications[:notices].last
         Honeybadger.flush
-        expect(notice.error.message).to eq(error)
+        expect(notice.exception.message).to eq(error)
       end
     end
   end
