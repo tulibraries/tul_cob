@@ -180,9 +180,9 @@ RSpec.describe AlmawsController, type: :controller do
       it "forwards the alma error to honeybadger", with_rescue: true do
         error = "Alma::RequestOptions::ResponseError: {\"error\":\"phhhht\"}"
         notice = Honeybadger::Backend::Test.notifications[:notices].last
-        combined = "#{notice.error_class}: #{notice.error_message}".encode("UTF-8")
+        
         Honeybadger.flush
-        expect(combined).to eq(error)
+        expect(notice.error_message.encode("UTF-8")).to eq(error)
       end
     end
   end
