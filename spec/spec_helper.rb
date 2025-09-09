@@ -52,13 +52,13 @@ SPEC_ROOT = File.dirname __FILE__
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-Honeybadger.configure do |c|
-  c.backend = :test
-end
-
 RSpec.configure do |config|
   config.filter_run_excluding lib_guides_relevance: true
 
+  Honeybadger.configure do |c|
+    c.backend = :test
+  end
+  
   config.before do
     Honeybadger::Backend::Test.notifications[:notices].clear
   end
