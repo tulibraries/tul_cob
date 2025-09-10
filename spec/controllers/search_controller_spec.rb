@@ -35,8 +35,10 @@ RSpec.describe SearchController, type: :controller do
         expect {
           expect { controller.send(:process_results, results) }.to_not raise_error
           Honeybadger.flush
-        }.to change(Honeybadger::Backend::Test.notifications[:notices], :size).by(1)
-        expect(Honeybadger::Backend::Test.notifications[:notices].first.error_message).to eq("HTTPClient::TimeoutError: HTTPClient::TimeoutError")
+        }.to change { Honeybadger::Backend::Test.notifications[:notices].size }.by(1)
+
+        notice = Honeybadger::Backend::Test.notifications[:notices].first
+        expect(notice.error_message.encode("UTF-8")).to eq("HTTPClient::TimeoutError: HTTPClient::TimeoutError")
       end
     end
   end
