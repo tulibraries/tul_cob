@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "httparty"
+
 module BentoSearch
   class CDMEngine
     include BentoSearch::SearchEngine
@@ -50,14 +52,19 @@ module BentoSearch
     end
 
     def cdm_api_response(args)
-      query = args.fetch(:query, "").gsub("/", " ")
-      query = ERB::Util.url_encode(query)
+      query = ERB::Util.url_encode(args.fetch(:query, "").gsub("/", " "))
       cdm_fields = "title!date"
       cdm_format = "json"
       cdm_collections_ids = I18n.t("bento.cdm_collections_list")
       cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{cdm_collections_ids}/CISOSEARCHALL^#{query}^all^and/#{cdm_fields}/nosort/5/0/1/0/0/0/0/0/#{cdm_format}"
       begin
-        JSON.load(URI.open(cdm_url))
+        response = with_retries { HTTParty.get(cdm_url, timeout: 10, open_timeout: 5) }
+        if response.success?
+          JSON.parse(response.body)
+        else
+          Honeybadger.notify("CDM API returned status #{response.code}")
+          { records: [], pager: { total: 0 } }.with_indifferent_access
+        end
       rescue StandardError => e
         Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
         { records: [], pager: { total: 0 } }.with_indifferent_access
@@ -67,7 +74,10 @@ module BentoSearch
     def cdm_collections_api_response
       collections_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
       begin
-        Rails.cache.fetch(:cdm_api_response, expires_in: 1.day) { JSON.load(URI.open(collections_url))  }
+        Rails.cache.fetch(:cdm_api_response, expires_in: 1.day) do
+          response = with_retries { HTTParty.get(collections_url, timeout: 10, open_timeout: 5) }
+          response.success? ? JSON.parse(response.body) : []
+        end
       rescue StandardError => e
         Honeybadger.notify("Error trying to process CDM Collections api response: #{e.message}")
         []
@@ -97,23 +107,28 @@ module BentoSearch
     end
 
     def image_available?(link)
-      begin
-        url = URI::parse(link)
-        http = Net::HTTP.new(url.host, url.port)
-        http.use_ssl = (url.scheme == "https")
-        http.open_timeout = 5
-        http.read_timeout = 5
-
-        response = http.head(url.request_uri)
+      with_retries(3) do
+        response = HTTParty.head(link, timeout: 5, open_timeout: 5)
         response.code.to_i == 200
-      rescue => e
-        false
       end
+      rescue StandardError
+        false
     end
 
     def cdm_collection_name(collection_id, collections_response)
       collection = collections_response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == collection_id }
       collection.first["name"] unless collection.blank?
+    end
+
+    def with_retries(max_attempts = 3)
+      attempts = 0
+      begin
+        yield
+      rescue => e
+        attempts += 1
+        retry if attempts < max_attempts
+        raise
+      end
     end
   end
 end
