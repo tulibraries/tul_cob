@@ -57,16 +57,17 @@ module BentoSearch
       cdm_format = "json"
       cdm_collections_ids = I18n.t("bento.cdm_collections_list")
       cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{cdm_collections_ids}/CISOSEARCHALL^#{query}^all^and/#{cdm_fields}/nosort/5/0/1/0/0/0/0/0/#{cdm_format}"
+
       begin
         response = with_retries { HTTParty.get(cdm_url, timeout: 10, open_timeout: 5) }
         if response.success?
-          JSON.parse(response.body)
+          safe_json_parse(response, context: "cdm_api_response")
         else
-          Honeybadger.notify("CDM API returned status #{response.code}")
+          Rails.logger.warn("CDM API returned status #{response.code}")
           { records: [], pager: { total: 0 } }.with_indifferent_access
         end
       rescue StandardError => e
-        Honeybadger.notify("Error trying to process CDM api response: #{e.message}")
+        Rails.logger.warn("Error trying to process CDM api response: #{e.message}")
         { records: [], pager: { total: 0 } }.with_indifferent_access
       end
     end
@@ -75,8 +76,13 @@ module BentoSearch
       collections_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
       begin
         Rails.cache.fetch(:cdm_api_response, expires_in: 1.day) do
-          response = with_retries { HTTParty.get(collections_url, timeout: 10, open_timeout: 5) }
-          response.success? ? JSON.parse(response.body) : []
+          response = with_retries { HTTParty.get(collections_url, open_timeout: 5, timeout: 15) }
+          if response.success?
+            safe_json_parse(response, context: "cdm_collections_api_response")
+          else
+            Rails.logger.warn("CDM Collections API returned status #{response.code}")
+            []
+          end
         end
       rescue StandardError => e
         Honeybadger.notify("Error trying to process CDM Collections api response: #{e.message}")
@@ -108,7 +114,7 @@ module BentoSearch
 
     def image_available?(link)
       with_retries(3) do
-        response = HTTParty.head(link, timeout: 5, open_timeout: 5)
+        response = HTTParty.head(link, timeout: 5, open_timeout: 2)
         response.code.to_i == 200
       end
       rescue StandardError
@@ -118,6 +124,19 @@ module BentoSearch
     def cdm_collection_name(collection_id, collections_response)
       collection = collections_response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == collection_id }
       collection.first["name"] unless collection.blank?
+    end
+
+    def safe_json_parse(response, context:)
+      if response.headers["content-type"]&.include?("application/json") ||
+        response.body.strip.start_with?("{", "[")
+        JSON.parse(response.body)
+      else
+        Rails.logger.warn("CDM API returned non-JSON response in #{context} (status #{response.code})")
+        { records: [], pager: { total: 0 } }.with_indifferent_access
+      end
+    rescue JSON::ParserError => e
+      Rails.logger.warn("CDM API parse error in #{context}: #{e.message}")
+      { records: [], pager: { total: 0 } }.with_indifferent_access
     end
 
     def with_retries(max_attempts = 3)
