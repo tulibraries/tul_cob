@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 4aec60a0535125ca3580d7cb59fde146694f9c18
+  revision: 75e6442dc5783e62a11254d71eb939a600f1a6c0
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -212,7 +212,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
-    bigdecimal (3.2.2)
+    bigdecimal (3.2.3)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
@@ -544,7 +544,7 @@ GEM
     responders (3.1.1)
       actionpack (>= 5.2)
       railties (>= 5.2)
-    rexml (3.4.2)
+    rexml (3.4.4)
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
