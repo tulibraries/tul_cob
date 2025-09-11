@@ -550,6 +550,7 @@ class CatalogController < ApplicationController
     respond_to do |format|
       format.xml  { render xml: error_info, status: :not_found }
       format.json { render json: error_info, status: :not_found }
+      format.ris  { render plain: "Record not found", status: :not_found }
 
       # default to HTML response, even for other non-HTML formats we don't
       # neccesarily know about, seems to be consistent with what Rails4 does
