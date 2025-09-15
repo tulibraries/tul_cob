@@ -94,6 +94,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./app.lcov
 
+      - name: Print Solr logs on failure
+        if: failure()
+        run: docker compose -f docker-compose.ci.yml logs solr
+
   update_airflow_variables:
     needs: lint_and_test
     if: startsWith(github.ref, 'refs/tags/v')

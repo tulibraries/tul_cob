@@ -13,12 +13,14 @@ services:
       - "8983:8983"
     environment:
       SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
+    volumes:
+      - ./solr/configs:/opt/solr/configs
     command:
       - bash
       - "-c"
       - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
-          precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
-          precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
+          precreate-core tul_cob-az /opt/solr/configs/tul_cob-az-solr && \
+          precreate-core tul_cob-web /opt/solr/configs/tul_cob-web-solr && \
           solr-foreground"
 
   app:
