@@ -104,4 +104,4 @@ group :production do
   gem "connection_pool"
 end
 
-gem "recaptcha", "~> 5.20"
+gem "recaptcha", "~> 5.21"
