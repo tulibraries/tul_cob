@@ -57,7 +57,7 @@ jobs:
       - name: Add headless browser deps
         run: |
           docker compose -f docker-compose.ci.yml exec app \
-            make add-testing-deps
+            apk add -U --no-cache chromium chromium-chromedriver
 
       - name: Copy vendor/bundle -> host cache
         run: |
