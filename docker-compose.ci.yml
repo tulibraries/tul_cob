@@ -1,11 +1,9 @@
-version: "3.8"
-
 services:
   solr:
     image: solr:9.8.1
     container_name: solr
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8983/solr"]
+      test: ["CMD", "curl", "-f", "http://localhost:8983"]
       interval: 5s
       timeout: 3s
       retries: 20

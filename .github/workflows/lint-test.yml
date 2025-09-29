@@ -48,10 +48,19 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
-          docker compose -f docker-compose.ci.yml up -d solr app
           echo "⏳ waiting for solr on localhost:8983…"
-          until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done
-
+          for i in {1..60}; do
+            if curl -fsS http://localhost:8983/solr/admin/info/system?wt=json > /dev/null; then
+              echo "✅ Solr is ready"
+              exit 0
+            fi
+            echo "waiting… ($i)"
+            sleep 5
+          done
+          echo "❌ Solr did not become ready in time"
+          docker compose -f docker-compose.ci.yml logs solr
+          exit 1
+          
       - name: Run linter
         run: $DC make lint
       
