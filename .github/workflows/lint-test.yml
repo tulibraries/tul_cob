@@ -22,7 +22,7 @@ jobs:
       SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
       SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
       SOLRCLOUD_HOST: solr
-      DC: docker compose -f docker-compose.ci.yml
+      DC: docker compose -f docker-compose.ci.yml exec app
 
     steps:
       - name: Checkout code (with submodules)
