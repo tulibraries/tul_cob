@@ -48,9 +48,10 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
+          docker compose -f docker-compose.ci.yml up -d solr app
           echo "⏳ waiting for solr on localhost:8983…"
           for i in {1..60}; do
-            if curl -fsS -o /dev/null http://localhost:8983/; then
+            if curl -fsS http://localhost:8983/solr/admin/info/system?wt=json > /dev/null; then
               echo "✅ Solr is ready"
               exit 0
             fi
