@@ -2,6 +2,8 @@ FROM ruby:3.4-alpine
 RUN apk add -U --no-cache --virtual build-dependencies \
       build-base \
       bash \
+      chromium \
+      chromium-chromedriver \
       git \
       yaml \
       yaml-dev \

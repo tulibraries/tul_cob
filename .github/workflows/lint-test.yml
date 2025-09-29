@@ -2,16 +2,9 @@ name: CI lint and test with Docker-Compose Solr
 
 on:
   push:
-    branches:
+    branches-ignore:
       - main
-  pull_request:
-    branches:
-      - main
-    types:
-      - opened
-      - synchronize
-      - reopened
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,18 +13,38 @@ concurrency:
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby: [ 3.4 ]
     env:
       CI: true
       SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
       SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
       SOLRCLOUD_HOST: solr
+      DC: docker compose -f docker-compose.ci.yml
 
     steps:
       - name: Checkout code (with submodules)
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Copy config files
+        run: |
+          cp config/secrets.yml.example config/secrets.yml
+          cp config/alma.yml.example config/alma.yml
+          cp config/bento.yml.example config/bento.yml
+
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v1
 
       - name: Build & start App + Solr
         run: |
@@ -39,54 +52,19 @@ jobs:
           echo "⏳ waiting for solr on localhost:8983…"
           until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done
 
-      - name: Configure bundler in container
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            git config --global core.hardlinks false
-
-      - name: Install Ruby gems
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            bundle install --jobs=4 --retry=3
-
-      - name: Install Node modules
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            yarn install --frozen-lockfile
-
-      - name: Add headless browser deps
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            apk add -U --no-cache chromium chromium-chromedriver
-
-      - name: Copy vendor/bundle -> host cache
-        run: |
-          docker cp tul_cob-app-1:/app/vendor/bundle ./vendor/bundle
-
-      - name: Copy node_modules -> host cache
-        run: |
-          docker cp tul_cob-app-1:/app/node_modules ./node_modules
-
       - name: Set up database
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            make ci-setup-db
+        run: $DC make ci-setup-db
 
       - name: Run linter
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            make lint
+        run: $DC make lint
 
       - name: Run Ruby tests
         run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            bundle exec rails ci
+          $DC bundle exec rails ci
           docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
       - name: Run JavaScript tests
-        run: |
-          docker compose -f docker-compose.ci.yml exec app \
-            make test-js
+        run: $DC make test-js
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
@@ -97,23 +75,3 @@ jobs:
       - name: Print Solr logs on failure
         if: failure()
         run: docker compose -f docker-compose.ci.yml logs solr
-
-  update_airflow_variables:
-    needs: lint_and_test
-    if: startsWith(github.ref, 'refs/tags/v')
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Add SSH key for Airflow
-        uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: ${{ secrets.AIRFLOW_SSH_KEY }}
-
-      - name: Update Airflow variables
-        run: bash .circleci/update-airflow.sh
-        env:
-          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
