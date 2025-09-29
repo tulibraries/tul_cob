@@ -62,6 +62,9 @@ jobs:
           docker compose -f docker-compose.ci.yml logs solr
           exit 1
 
+      - name: Install gems inside container (uses cache tarballs)
+        run: $DC bundle install --jobs 4 --retry 3 --path vendor/bundle
+
       - name: Run linter
         run: $DC bundle exec rubocop
       

@@ -31,12 +31,8 @@ services:
     depends_on: 
       - solr
     volumes:
-      - ./vendor/bundle:/app/vendor/bundle
       - .:/app
     environment:
-      BUNDLE_PATH: /app/vendor/bundle
-      BUNDLE_JOBS: 4
-      BUNDLE_RETRY: 3
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
