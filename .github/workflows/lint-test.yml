@@ -52,16 +52,14 @@ jobs:
           echo "⏳ waiting for solr on localhost:8983…"
           until curl -sSf http://localhost:8983/solr > /dev/null; do sleep 1; done
 
-      - name: Set up database
-        run: $DC make ci-setup-db
-
       - name: Run linter
         run: $DC make lint
-
+      
       - name: Run Ruby tests
         run: |
-          $DC bundle exec rails ci
-          docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+          docker compose -f docker-compose.ci.yml run --rm \
+          -v ${{ github.workspace }}/vendor/bundle:/app/vendor/bundle \
+          app bundle exec rails ci
 
       - name: Run JavaScript tests
         run: $DC make test-js
