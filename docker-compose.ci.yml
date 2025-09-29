@@ -46,7 +46,6 @@ services:
       SETTINGS__solr__host: solr
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
-      BUNDLE_PATH: /app/vendor/bundle
     entrypoint:
       sh -c '
         echo "⏳ waiting for solr…" &&
