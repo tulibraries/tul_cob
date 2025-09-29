@@ -50,7 +50,7 @@ jobs:
         run: |
           echo "⏳ waiting for solr on localhost:8983…"
           for i in {1..60}; do
-            if curl -fsS http://localhost:8983/solr/admin/info/system?wt=json > /dev/null; then
+            if curl -fsS -o /dev/null http://localhost:8983/; then
               echo "✅ Solr is ready"
               exit 0
             fi
@@ -60,7 +60,7 @@ jobs:
           echo "❌ Solr did not become ready in time"
           docker compose -f docker-compose.ci.yml logs solr
           exit 1
-          
+
       - name: Run linter
         run: $DC make lint
       
