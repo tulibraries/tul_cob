@@ -67,9 +67,8 @@ jobs:
       
       - name: Run Ruby tests
         run: |
-          docker compose -f docker-compose.ci.yml run --rm \
-          -v ${{ github.workspace }}/vendor/bundle:/app/vendor/bundle \
-          app bundle exec rails ci
+          $DC bundle exec rails ci
+          docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
       - name: Run JavaScript tests
         run: $DC bundle exec yarn test
