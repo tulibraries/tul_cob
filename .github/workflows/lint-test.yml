@@ -63,7 +63,7 @@ jobs:
           exit 1
 
       - name: Run linter
-        run: $DC make lint
+        run: $DC bundle exec rubocop
       
       - name: Run Ruby tests
         run: |
@@ -72,7 +72,7 @@ jobs:
           app bundle exec rails ci
 
       - name: Run JavaScript tests
-        run: $DC make test-js
+        run: $DC bundle exec yarn test
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
