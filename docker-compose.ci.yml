@@ -1,34 +1,53 @@
-version: "3.4"
-
 services:
+  solr:
+    image: solr:9.8.1
+    container_name: solr
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8983"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    ports:
+      - "8983:8983"
+    environment:
+      SOLR_OPTS: "-Dsolr.config.lib.enabled=true"
+    volumes:
+      - ./solr/configs:/opt/solr/configs
+    command:
+      - bash
+      - "-c"
+      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
+          precreate-core tul_cob-az /opt/solr/configs/tul_cob-az-solr && \
+          precreate-core tul_cob-web /opt/solr/configs/tul_cob-web-solr && \
+          solr-foreground"
+
   app:
     build:
       context: .
       dockerfile: .docker/ci-app/Dockerfile.ci
     ports:
-      - "3000"
+      - mode: ingress
+        target: 3000
+    depends_on: 
+      - solr
+    volumes:
+      - .:/app
     environment:
       SOLR_URL: "http://solr:8983/solr/blacklight"
-      SOLR_AZ_URL: "http://solr:8983/solr/az-database"
-      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/web-content"
+      SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
+      SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
+      SOLRCLOUD_HOST: ${SOLRCLOUD_HOST}
+      SETTINGS__solr__username: catalog
+      SETTINGS__solr__password: catalog
+      SETTINGS__solr__host: solr
       DO_INGEST: "${DO_INGEST}"
       LC_ALL: "C.UTF-8"
-      BUNDLE_PATH: /app/vendor/bundle
     entrypoint:
-      - "tail"
-      - "-f"
-      - /dev/null
-  
-  solr: 
-    build:
-      context: .
-      dockerfile: .docker/solr/Dockerfile.solr
-    ports: 
-      - "8993:8983"
-    command:
-      - bash
-      - "-c"
-      - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr && \
-         precreate-core az-database /opt/solr/configs/tul_cob-az-solr && \
-         precreate-core web-content /opt/solr/configs/tul_cob-web-solr && \
-         solr-foreground"
+      sh -c '
+        echo "⏳ waiting for solr…" &&
+        until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done &&
+        bundle exec rails ci
+      '
+networks:
+  default:
+    name: tul_cob

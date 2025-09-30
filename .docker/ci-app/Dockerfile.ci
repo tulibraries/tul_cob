@@ -1,7 +1,12 @@
 FROM ruby:3.4-alpine
+
+ENV RAILS_ENV="test"
+
 RUN apk add -U --no-cache --virtual build-dependencies \
       build-base \
       bash \
+      chromium \
+      chromium-chromedriver \
       git \
       yaml \
       yaml-dev \
@@ -11,9 +16,12 @@ RUN apk add -U --no-cache --virtual build-dependencies \
       nodejs \
       sqlite-dev \
       yarn tzdata shared-mime-info
+
 RUN mkdir /app
+
 WORKDIR /app
-ENV RAILS_ENV='test'
+
 COPY . .
 RUN ls config/*example | xargs -I{} echo {} |  cut -d '.' -f-2 | xargs -I{} cp {}.example {}
+
 CMD ["bash"]

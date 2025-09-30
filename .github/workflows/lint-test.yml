@@ -1,0 +1,90 @@
+name: CI lint and test with Docker-Compose Solr
+
+on:
+  push:
+    branches-ignore:
+      - main
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint_and_test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        ruby: [ 3.4 ]
+    env:
+      CI: true
+      SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
+      SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
+      SOLRCLOUD_HOST: solr
+      DC: docker compose -f docker-compose.ci.yml exec app
+
+    steps:
+      - name: Checkout code (with submodules)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Copy config files
+        run: |
+          cp config/secrets.yml.example config/secrets.yml
+          cp config/alma.yml.example config/alma.yml
+          cp config/bento.yml.example config/bento.yml
+
+      - name: Set up Docker Compose
+        uses: docker/setup-compose-action@v1
+
+      - name: Build & start App + Solr
+        run: |
+          docker compose -f docker-compose.ci.yml up -d solr app
+          echo "⏳ waiting for solr on localhost:8983…"
+          for i in {1..60}; do
+            if curl -fsS http://localhost:8983/solr/admin/info/system?wt=json > /dev/null; then
+              echo "✅ Solr is ready"
+              exit 0
+            fi
+            echo "waiting… ($i)"
+            sleep 5
+          done
+          echo "❌ Solr did not become ready in time"
+          docker compose -f docker-compose.ci.yml logs solr
+          exit 1
+
+      - name: Install gems inside container (uses cache tarballs)
+        run: $DC bundle install --jobs 4 --retry 3 --path vendor/bundle
+
+      - name: Install Javascript dependencies in container
+        run: $DC bundle exec yarn install --frozen-lockfile
+
+      - name: Run linter
+        run: $DC bundle exec rubocop
+      
+      - name: Run Ruby tests
+        run: |
+          $DC bundle exec rails ci
+          docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
+
+      - name: Run JavaScript tests
+        run: $DC bundle exec yarn test
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./app.lcov
+
+      - name: Print Solr logs on failure
+        if: failure()
+        run: docker compose -f docker-compose.ci.yml logs solr

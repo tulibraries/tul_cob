@@ -1,0 +1,30 @@
+name: Update Airflow Variable
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+    workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  update_airflow_variables:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Add SSH key for Airflow
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.AIRFLOW_SSH_KEY }}
+
+      - name: Update Airflow variables
+        run: bash .github/scripts/update-airflow.sh
+        env:
+          DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}

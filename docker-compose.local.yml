@@ -28,6 +28,6 @@ services:
       - bash
       - "-c"
       - "precreate-core blacklight /opt/solr/configs/tul_cob-catalog-solr; \
-  precreate-core az-database /opt/solr/configs/tul_cob-az-solr; \
-  precreate-core web-content /opt/solr/configs/tul_cob-web-solr; \
-  exec solr -f -a '-Xms256m -Xmx512m'"
+        precreate-core az-database /opt/solr/configs/tul_cob-az-solr; \
+        precreate-core web-content /opt/solr/configs/tul_cob-web-solr; \
+        exec solr -f -a '-Xms256m -Xmx512m'"

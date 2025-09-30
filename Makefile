@@ -4,21 +4,20 @@ export #exports the .env variables
 
 DOCKER_FLAGS := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1
 ifeq ($(CI), true)
-	DOCKER := $(DOCKER_FLAGS) docker-compose -p tul_cob -f docker-compose.ci.yml
+	DOCKER := $(DOCKER_FLAGS) docker compose -p tul_cob -f docker-compose.ci.yml
 	LINT_CMD := bundle exec rubocop
 	TEST_CMD := bundle exec rails ci
 	DOCKERHUB_LOGIN := docker login -u ${DOCKERHUB_USER} --password=${DOCKERHUB_TOKEN}
 else
-	DOCKER := $(DOCKER_FLAGS) docker-compose -f docker-compose.yml -f docker-compose.local.yml
+	DOCKER := $(DOCKER_FLAGS) docker compose -f docker-compose.yml -f docker-compose.local.yml
 	LINT_CMD := rubocop
-	TEST_CMD := rake ci
+	TEST_CMD := rails ci
 endif
 
 up:
 	git submodule init
 	git submodule update
-	@$(DOCKERHUB_LOGIN)
-	$(DOCKER) up -d
+	$(DOCKER) up -d solr app
 down:
 	$(DOCKER) down
 restart:
@@ -56,7 +55,6 @@ attach:
 add-testing-deps:
 	$(DOCKER) exec app apk add -U --no-cache chromium chromium-chromedriver
 
-
 ci-copy-bundle-files-to-local:
 	docker cp tul_cob-app-1:/app/vendor/bundle vendor/
 
@@ -74,7 +72,7 @@ ci-yarn-install:
 	$(DOCKER) exec app yarn install --frozen-lockfile
 
 ci-setup-db:
-	$(DOCKER) exec app bundle exec rake db:migrate
+	$(DOCKER) exec app bundle exec rails db:migrate
 
 BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.4-alpine
 DEBUGGER_BASE_IMAGE ?= harbor.k8s.temple.edu/tulibraries/librarysearch:latest
