@@ -11,7 +11,12 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  def self.recaptcha_on?
+    Proc.new { |context| ::FeatureFlags.recaptcha_on?(context.params) }
+  end
+
   def recaptcha
+    ::FeatureFlags.recaptcha?(params)
     # Do not enable for logged in users.
     return if current_user
 

@@ -20,19 +20,20 @@ module LibwizardHelper
   end
 
   def openurl_libwizard_params(document)
+    decorated_doc = DocumentDecorator.new(document)
     doc_params =
     {
-      "rft.title" => doc_field_joiner(document, :title_statement_display),
-      "rft.date" => doc_field_joiner(document, :pub_date),
-      "edition" => doc_field_joiner(document, :edition_display),
-      "rft.isbn" => doc_field_joiner(document, :isbn_display),
-      "rft.issn" => doc_field_joiner(document, :issn_display),
-      "rft.oclcnum" => doc_field_joiner(document, :oclc_display),
+      "rft.title" => decorated_doc.field_joiner(:title_statement_display),
+      "rft.date" => decorated_doc.field_joiner(:pub_date),
+      "edition" => decorated_doc.field_joiner(:edition_display),
+      "rft.isbn" => decorated_doc.field_joiner(:isbn_display),
+      "rft.issn" => decorated_doc.field_joiner(:issn_display),
+      "rft.oclcnum" => decorated_doc.field_joiner(:oclc_display),
       "rft.pub" => [
-        doc_field_joiner(document, :imprint_display),
-        doc_field_joiner(document, :imprint_prod_display),
-        doc_field_joiner(document, :imprint_dist_display),
-        doc_field_joiner(document, :imprint_man_display),
+        decorated_doc.field_joiner(:imprint_display),
+        decorated_doc.field_joiner(:imprint_prod_display),
+        decorated_doc.field_joiner(:imprint_dist_display),
+        decorated_doc.field_joiner(:imprint_man_display),
       ].select(&:present?).join(", "),
     }
     if document.id.present?

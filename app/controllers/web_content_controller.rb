@@ -3,6 +3,9 @@
 class WebContentController < CatalogController
   include CatalogConfigReinit
 
+  def override_solr_path
+  end
+
   def advanced_override_path
   end
 

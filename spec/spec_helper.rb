@@ -55,8 +55,11 @@ SPEC_ROOT = File.dirname __FILE__
 RSpec.configure do |config|
   config.filter_run_excluding lib_guides_relevance: true
 
+  config.before do
+    Honeybadger::Backend::Test.notifications[:notices].clear
+  end
+
   config.before(:each) do
-    Honeybadger::Backend::Test.notifications[:notices] = []
 
     # JUst so we don't send our request when testing controllers
     stub_request(:get, /.*almaws\/v1\/bibs\/.*/).
