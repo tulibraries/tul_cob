@@ -658,7 +658,7 @@ GEM
       deprecation
       jsonpath
       traject (~> 3.0)
-    turbo-rails (2.0.16)
+    turbo-rails (2.0.17)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     turbolinks (5.2.1)
