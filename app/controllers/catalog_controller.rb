@@ -611,6 +611,7 @@ class CatalogController < ApplicationController
     else
       respond_to do |format|
         format.html { store_preferred_view }
+        format.any { render_unsupported_format }
       end
     end
   end

@@ -100,4 +100,13 @@ RSpec.describe DatabasesController, type: :controller do
       end
     end
   end
+
+  describe "unsupported formats" do
+    it "returns 400 and plain text when the format is not supported" do
+      get :index, params: { format: "ris" }
+      expect(response.status).to eq(400)
+      expect(response.body).to eq("Unsupported format")
+      expect(response.media_type).to eq("text/plain")
+    end
+  end
 end
