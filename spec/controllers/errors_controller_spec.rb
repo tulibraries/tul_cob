@@ -13,6 +13,12 @@ RSpec.describe ErrorsController, type: :controller do
     expect(response.body).to include "DOCTYPE html"
   end
 
+  it "returns plain text for RIS not found requests" do
+    get :not_found, params: { format: "ris" }
+    expect(response.status).to eq(400)
+    expect(response.media_type).to eq("text/plain")
+  end
+
   it "ignores file extensions in url when a server error arises" do
     get :internal_server_error, params: { format: "txt" }
     expect(response.status).to eq(500)

@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActionController::InvalidAuthenticityToken,
     with: :redirect_to_referer
+  rescue_from ActionController::UnknownFormat,
+    with: :render_unsupported_format
 
   # Rails 5.1 and above requires permitted params to be defined in the Controller
   # BL doesn't do that, but might in the future. This allows us to use the pre 5.1
@@ -87,5 +89,9 @@ class ApplicationController < ActionController::Base
     # ensure that rails treats request as xhr
     def xhr!
       request.headers["HTTP_X_REQUESTED_WITH"] = "XMLHttpRequest"
+    end
+
+    def render_unsupported_format
+      render plain: "Unsupported format", status: :bad_request, content_type: "text/plain"
     end
 end

@@ -6,6 +6,7 @@ class ErrorsController < ApplicationController
       format.woff2 { render plain: "", status: 400, content_type: "text/plain" }
       format.css { render plain: "", status: 400, content_type: "text/plain" }
       format.js { render plain: "", status: 400, content_type: "text/plain" }
+      format.ris { render plain: "", status: 400, content_type: "text/plain" }
       format.all { render(layout(status: 404, formats: :html)) }
     end
   end
