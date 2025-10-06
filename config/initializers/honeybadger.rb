@@ -18,6 +18,7 @@ Honeybadger.configure do |config|
     # Ignore user requests that we can't do anything to resolve
     notice.halt! if notice.error_message =~ /No items can fulfill the submitted request/
     notice.halt! if notice.error_message =~ /Failed to activate request/
+    notice.halt! if notice.error_message =~ /port 5432 failed: FATAL:/
 
     # Ignore errors that occur during overnight maintenance
     start_time = Time.now.utc.change(hour: 5, min: 0, sec: 0)
