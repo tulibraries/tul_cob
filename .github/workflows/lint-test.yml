@@ -73,7 +73,7 @@ jobs:
       
       - name: Run Ruby tests
         run: |
-          $DC bundle exec rails ci
+          $DC bundle exec rails ci RAILS_ENV=test
           docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
       - name: Run JavaScript tests
