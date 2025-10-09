@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 0ee25dc27865d983b2c96155556bb1f355f9b649
+  revision: 2cc437365e17f0600ce26a45e657dbc90a38fcad
   branch: main
   specs:
     primo (0.4.0)
@@ -212,7 +212,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.0)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
