@@ -33,6 +33,8 @@ services:
     volumes:
       - .:/app
     environment:
+      RAILS_ENV: test
+      RACK_ENV: test
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
