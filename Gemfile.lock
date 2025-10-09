@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: a02a736efa5a06c51d246c69c0803a316c64241e
+  revision: 1fede6676531e40cad5b6fc46a595a4f39e3042a
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -212,7 +212,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.20)
     benchmark (0.4.1)
-    bigdecimal (3.2.3)
+    bigdecimal (3.3.0)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
@@ -336,7 +336,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
-    http-cookie (1.0.8)
+    http-cookie (1.1.0)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httparty (0.23.1)
@@ -407,7 +407,7 @@ GEM
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.25.5)
+    minitest (5.26.0)
     msgpack (1.8.0)
     multi_json (1.17.0)
     multi_xml (0.7.2)
