@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: .docker/sp/Dockerfile
+    environment:
+      RAILS_ENV: test
+      RACK_ENV: test
     entrypoint:
       - httpd-foreground
     ports:
