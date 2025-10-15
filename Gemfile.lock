@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: ea2aaf7768037f32f020c2b4e94f14f8e49bbe32
+  revision: 30d2383188109daf3a3f77f1441b7336c23d3ffa
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: a02a736efa5a06c51d246c69c0803a316c64241e
+  revision: 1fede6676531e40cad5b6fc46a595a4f39e3042a
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 0ee25dc27865d983b2c96155556bb1f355f9b649
+  revision: 2cc437365e17f0600ce26a45e657dbc90a38fcad
   branch: main
   specs:
     primo (0.4.0)
@@ -225,7 +225,7 @@ GEM
       rails (>= 6.1, < 8.1)
       view_component (>= 2.74, < 4)
       zeitwerk
-    blacklight-marc (8.1.4)
+    blacklight-marc (8.2.0)
       blacklight (>= 7.11, < 9)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
@@ -272,9 +272,9 @@ GEM
     dalli (3.2.8)
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
-    database_cleaner-active_record (2.2.0)
+    database_cleaner-active_record (2.2.2)
       activerecord (>= 5.a)
-      database_cleaner-core (~> 2.0.0)
+      database_cleaner-core (~> 2.0)
     database_cleaner-core (2.0.1)
     date (3.4.1)
     deprecation (1.1.0)
@@ -289,7 +289,7 @@ GEM
       warden (~> 1.2.3)
     devise-guests (0.8.3)
       devise
-    diff-lcs (1.6.0)
+    diff-lcs (1.6.2)
     docile (1.4.1)
     domain_name (0.6.20240107)
     dot-properties (0.1.4)
@@ -325,7 +325,7 @@ GEM
       ostruct
     globalid (1.3.0)
       activesupport (>= 6.1)
-    hashdiff (1.2.0)
+    hashdiff (1.2.1)
     hashie (4.1.0)
     honeybadger (6.1.0)
       logger
@@ -403,11 +403,11 @@ GEM
     marc-fastxmlwriter (1.1.0)
       marc (~> 1.0)
     marcel (1.1.0)
-    matrix (0.4.2)
+    matrix (0.4.3)
     method_source (1.1.0)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (5.25.5)
+    minitest (5.26.0)
     msgpack (1.8.0)
     multi_json (1.17.0)
     multi_xml (0.7.2)
@@ -472,7 +472,7 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
-    pry (0.14.2)
+    pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
     pry-rails (0.3.11)
@@ -487,7 +487,7 @@ GEM
     rack (3.2.2)
     rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
-    rack-protection (4.1.1)
+    rack-protection (4.2.0)
       base64 (>= 0.1.0)
       logger (>= 1.6.0)
       rack (>= 3.0.0, < 4)
@@ -550,12 +550,12 @@ GEM
     rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
-    rspec-core (3.13.3)
+    rspec-core (3.13.5)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.3)
+    rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.2)
+    rspec-mocks (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-rails (7.1.1)
@@ -566,7 +566,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.2)
+    rspec-support (3.13.6)
     rubocop (1.81.1)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -614,20 +614,21 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    semantic_range (3.0.0)
+    semantic_range (3.1.0)
     simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
-    simplecov-html (0.12.3)
+    simplecov-html (0.13.2)
     simplecov-lcov (0.9.0)
     simplecov_json_formatter (0.1.4)
-    skylight (6.0.4)
-      activesupport (>= 5.2.0)
+    skylight (7.0.0)
+      activesupport (>= 7.1.0)
     slop (4.10.1)
     spring (4.4.0)
-    sprockets (4.2.1)
+    sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
+      logger
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.5.2)
       actionpack (>= 6.1)
@@ -641,7 +642,7 @@ GEM
       json
     thor (1.4.0)
     thread_safe (0.3.6)
-    tilt (2.4.0)
+    tilt (2.6.1)
     timeout (0.4.3)
     traject (3.8.3)
       concurrent-ruby (>= 0.8.0)
@@ -680,7 +681,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     vcr (6.3.1)
       base64
     view_component (3.23.2)
