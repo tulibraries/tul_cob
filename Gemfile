@@ -92,7 +92,7 @@ group :test do
   gem "simplecov"
   gem "simplecov-lcov"
   gem "spring"
-  gem "sqlite3", "~> 1.7.3"
+  gem "sqlite3", "~> 2.0", ">= 2.0.1"
   gem "vcr"
   gem "webmock"
 end
