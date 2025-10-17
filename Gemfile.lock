@@ -628,12 +628,8 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (2.7.4-aarch64-linux-gnu)
-    sqlite3 (2.7.4-arm-linux-gnu)
-    sqlite3 (2.7.4-arm64-darwin)
-    sqlite3 (2.7.4-x86-linux-gnu)
-    sqlite3 (2.7.4-x86_64-darwin)
-    sqlite3 (2.7.4-x86_64-linux-gnu)
+    sqlite3 (1.7.3)
+      mini_portile2 (~> 2.8.0)
     stackprof (0.2.27)
     stringio (3.1.7)
     summon (2.0.5)
@@ -801,7 +797,7 @@ DEPENDENCIES
   skylight
   spring
   sprockets-rails
-  sqlite3
+  sqlite3 (~> 1.7.3)
   stackprof
   turbo-rails
   turbolinks (~> 5)
