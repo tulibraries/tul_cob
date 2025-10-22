@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 1fede6676531e40cad5b6fc46a595a4f39e3042a
+  revision: f77a08d1c715af9553214b209f2f16f2ecc3922d
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -211,8 +211,8 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     base64 (0.3.0)
     bcrypt (3.1.20)
-    benchmark (0.4.1)
-    bigdecimal (3.3.0)
+    benchmark (0.5.0)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
