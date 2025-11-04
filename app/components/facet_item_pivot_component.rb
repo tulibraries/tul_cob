@@ -40,10 +40,10 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
     li_content.safe_concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
 
     li_tag = if @wrapping_element.present?
-               content_tag @wrapping_element, li_content, role: "treeitem"
+      content_tag @wrapping_element, li_content, role: "treeitem"
              else
                li_content
-             end
+    end
 
     return li_tag if @facet_item.nested?
 
