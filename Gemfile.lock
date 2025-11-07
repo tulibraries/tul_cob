@@ -319,6 +319,9 @@ GEM
       ffi (>= 1.15.5)
       rake
     flamegraph (0.9.5)
+    flipflop (2.8.0)
+      activesupport (>= 4.0)
+      terminal-table (>= 1.8)
     foreman (0.90.0)
       thor (~> 1.4)
     gli (2.22.2)
@@ -638,6 +641,8 @@ GEM
     stringio (3.1.7)
     summon (2.0.5)
       json
+    terminal-table (4.0.0)
+      unicode-display_width (>= 1.1.1, < 4)
     thor (1.4.0)
     thread_safe (0.3.6)
     tilt (2.6.1)
@@ -761,6 +766,7 @@ DEPENDENCIES
   faraday (= 2.14.0)
   ffi (= 1.16.3)
   flamegraph
+  flipflop
   foreman
   hashie (~> 4.1.0)
   honeybadger (= 6.1.2)
