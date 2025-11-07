@@ -14,33 +14,49 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
 
     id = "h-#{self.class.mint_id}" if @collapsing && has_items?
 
-    li_tag = content_tag @wrapping_element, role: "treeitem" do
-      concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
-      concat(content_tag(:div, class: "pivot-facet-content-cell #{@facet_item.nested? ? 'pivot-facet-inner' : 'pivot-facet-outer'}") do
-        concat facet_toggle_button(id) if has_items? && @collapsing
-        concat content_tag("span", render_component(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
+    li_content = ActiveSupport::SafeBuffer.new
+    li_content.safe_concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
+    li_content.safe_concat(
+      content_tag(:div, class: "pivot-facet-content-cell #{@facet_item.nested? ? 'pivot-facet-inner' : 'pivot-facet-outer'}") do
+        content = ActiveSupport::SafeBuffer.new
+        content.safe_concat facet_toggle_button(id) if has_items? && @collapsing
+        content.safe_concat content_tag("span", render_component(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
 
         if has_items?
-          concat(content_tag("ul", class: "pivot-facet list-unstyled #{'collapse' if (@collapsing && !uncollapse?)} #{'show' if uncollapse?}", id:, role: "group") do
-                   render_component(
-                     self.class.with_collection(
-                       @facet_item.items.map { |i| facet_item_presenter(i, @facet_item.facet_item) }
-                     )
-                   )
-                 end)
+          content.safe_concat(
+            content_tag("ul", class: "pivot-facet list-unstyled #{'collapse' if (@collapsing && !uncollapse?)} #{'show' if uncollapse?}", id:, role: "group") do
+              render_component(
+                self.class.with_collection(
+                  @facet_item.items.map { |i| facet_item_presenter(i, @facet_item.facet_item) }
+                )
+              )
+            end
+          )
         end
-      end)
-      concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
-    end
 
-    unless @facet_item.nested?
-      horizontal_spacer = content_tag(:span, class: "pivot-facet-spacer-row") do
-        3.times { concat content_tag(:span, "", class: "pivot-facet-spacer-row-inner") }
+        content
       end
-      li_tag += horizontal_spacer
+    )
+    li_content.safe_concat content_tag(:span, "", class: "pivot-facet-spacer-cell") unless @facet_item.nested?
+
+    li_tag = if @wrapping_element.present?
+      content_tag @wrapping_element, li_content, role: "treeitem"
+             else
+               li_content
     end
 
-    return li_tag
+    return li_tag if @facet_item.nested?
+
+    horizontal_spacer = content_tag(:span, class: "pivot-facet-spacer-row") do
+      row = ActiveSupport::SafeBuffer.new
+      3.times { row.safe_concat content_tag(:span, "", class: "pivot-facet-spacer-row-inner") }
+      row
+    end
+
+    output = ActiveSupport::SafeBuffer.new
+    output.safe_concat(li_tag)
+    output.safe_concat(horizontal_spacer)
+    output
   end
 
   def facet_toggle_button(id)
