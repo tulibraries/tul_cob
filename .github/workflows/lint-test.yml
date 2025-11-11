@@ -21,8 +21,6 @@ jobs:
       CI: true
       SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
       SOLRCLOUD_PASSWORD: ${{ secrets.SOLRCLOUD_PASSWORD }}
-      ARCHIVESSPACE_USER: test-user
-      ARCHIVESSPACE_PASSWORD: fake-password
       SOLRCLOUD_HOST: solr
       DC: docker compose -f docker-compose.ci.yml exec app
 

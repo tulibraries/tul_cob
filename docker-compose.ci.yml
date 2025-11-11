@@ -33,6 +33,8 @@ services:
     volumes:
       - .:/app
     environment:
+      ARCHIVESSPACE_USER: test-user
+      ARCHIVESSPACE_PASSWORD: fake-password
       RAILS_ENV: test
       RACK_ENV: test
       SOLR_URL: "http://solr:8983/solr/blacklight"
