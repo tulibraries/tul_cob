@@ -1,0 +1,19 @@
+<%# frozen_string_literal: true %>
+<%# Custom document renderer that keeps using our index partials as the full body, matching the BL7 behavior %>
+<% view_config = local_assigns[:view_config] || blacklight_config.view_config(document_index_view_type, action_name: action_name) %>
+<% document_component_class = view_config.document_component || Blacklight::DocumentComponent %>
+<% render_partials_as_body = view_config.partials.any? && [nil, Blacklight::DocumentComponent].include?(view_config.document_component) %>
+
+<%= render document_component_class.new(document: document_presenter(document), counter: document_counter_with_offset(document_counter)) do |component| %>
+  <% if render_partials_as_body %>
+    <% component.with_body do %>
+      <%= render_document_partials document, view_config.partials, component: component, document_counter: document_counter %>
+    <% end %>
+  <% else %>
+    <% view_config.partials.each do |partial| %>
+      <% component.with_partial(partial) do %>
+        <%= render_document_partial document, partial, component: component, document_counter: document_counter %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
