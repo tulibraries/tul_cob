@@ -77,9 +77,21 @@
         <%= render partial: "shared/modal" %>
 
         <main id="main-container" class="col-12 m-0 p-lg-0" role="main">
+          <div class="row">
+            <% if content_for?(:sidebar) %>
+              <section id="content" class="<%= main_content_classes %> order-last" aria-label="<%= t('blacklight.search.documents.aria.search_results') %>">
+                <%= yield %>
+              </section>
 
-        <%= yield %>
-
+              <section id="sidebar" class="<%= sidebar_classes %> order-first" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
+                <%= content_for(:sidebar) %>
+              </section>
+            <% else %>
+              <section class="col-12">
+                <%= yield %>
+              </section>
+            <% end %>
+          </div>
         </main>
         
       </div>
