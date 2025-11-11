@@ -40,6 +40,14 @@ BentoSearch.register_engine("books_and_media") do |conf|
   end
 end
 
+BentoSearch.register_engine("archives_space") do |conf|
+  conf.engine = "BentoSearch::ArchivesSpaceEngine"
+  conf.for_display do |display|
+    display.decorator = "TulDecorator"
+    display.no_results_partial = "bento_search/no_archive_space_results"
+  end
+end
+
 BentoSearch.register_engine("resource_types") do |conf|
   conf.engine = "BentoSearch::MoreEngine"
   conf.for_display do |display|
