@@ -1,0 +1,20 @@
+<% content_for(:head) do %>
+  <meta name="blacklight-search-storage" content="<%= blacklight_config.track_search_session.storage %>">
+<% end %>
+
+<% if has_search_parameters? %>
+  <% content_for(:sidebar) do %>
+    <% conf = blacklight_config.view_config(document_index_view_type) %>
+    <%= render conf.sidebar_component.new(blacklight_config: blacklight_config,
+                                          response: @response,
+                                          view_config: conf) %>
+  <% end %>
+<% end %>
+
+<% unless has_search_parameters? %>
+  <%# if there are no input/search related params, display the "home" partial -%>
+  <%= render 'home' %>
+  <%= render 'shared/sitelinks_search_box' %>
+<% else %>
+  <%= render 'search_results' %>
+<% end %>
