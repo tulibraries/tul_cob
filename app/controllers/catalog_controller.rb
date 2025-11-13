@@ -102,6 +102,7 @@ class CatalogController < ApplicationController
     config.index.title_field = "title_with_subtitle_truncated_display"
     config.index.display_type_field = "format"
     config.index.document_presenter_class = IndexPresenter
+    config.index.document_component = CatalogDocumentComponent
     config.index.partials = %i[index_header thumbnail index]
 
     # solr field configuration for document/show views

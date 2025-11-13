@@ -1,7 +1,12 @@
 <%# header bar for doc items in index view -%>
 
     <% document_actions = capture do %>
-      <% if counter = document_counter_with_offset(document_counter) %>
+      <% counter = if defined?(component) && component.present? && document_counter.present?
+        document_counter
+      else
+        document_counter_with_offset(document_counter)
+      end %>
+      <% if counter %>
         <span class="document-counter float-start">
           <%= t('blacklight.search.documents.counter', counter: counter) %>
         </span>
