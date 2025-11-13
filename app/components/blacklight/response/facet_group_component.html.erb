@@ -1,5 +1,14 @@
 <%# Customized from Blacklight 8's default to reintroduce the "Start Over" link between the heading and the facets list %>
 <% start_over_applicable = helpers.has_search_parameters? %>
+<% constraints_component_class = helpers.blacklight_config&.view_config(helpers.document_index_view_type)&.constraints_component || Blacklight::ConstraintsComponent %>
+<% constraint_params = helpers.controller&.params != helpers.params ? helpers.params : helpers.search_state %>
+<% constraints_search_state =
+     if constraint_params.is_a?(Blacklight::SearchState)
+       constraint_params
+     else
+       search_state_class = helpers.controller&.respond_to?(:search_state_class) ? helpers.controller.search_state_class : Blacklight::SearchState
+       search_state_class.new(constraint_params, helpers.blacklight_config, helpers)
+     end %>
 
 <%# main container for facets/limits menu -%>
 <%= content_tag :div, id: @id,  class: 'facets sidenav facets-toggleable-md' do %>
@@ -25,6 +34,8 @@
   </div>
 
   <% if start_over_applicable %>
+    <% constraints_component = constraints_component_class.new(search_state: constraints_search_state, render_headers: false, start_over_component: nil, id: nil, classes: 'constraints-container mb-2') %>
+    <%= render constraints_component %>
     <div class="start-over-container mb-3">
       <%= render Blacklight::StartOverButtonComponent.new %>
     </div>
