@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require 'blacklight_advanced_search'
 //= require rails-ujs
 //= require popper
 //= require twitter/typeahead
@@ -152,4 +151,3 @@ $(document).on('turbolinks:load', function() {
 window.addEventListener('load', function(event) {
    $("#facet-pub_date_sort").trigger("shown.bs.collapse");
 });
-
