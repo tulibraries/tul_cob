@@ -3,6 +3,21 @@
 require "rails_helper"
 
 RSpec.describe SearchHelper, type: :helper do
+  describe "#bento_link_to_full_results" do
+    it "delegates to the engine view_link with a formatted total" do
+      results = instance_double("BentoResults",
+        engine_id: "cdm",
+        total_items: { query_total: 1234 })
+      engine = instance_double("CDMEngine")
+      formatted_total = helper.number_with_delimiter(1234)
+
+      expect(BentoSearch).to receive(:get_engine).with("cdm").and_return(engine)
+      expect(engine).to receive(:view_link).with(formatted_total, helper).and_return("<a>See all results</a>")
+
+      expect(helper.bento_link_to_full_results(results)).to eq("<a>See all results</a>")
+    end
+  end
+
   describe "#path_for_books_and_media_facet(facet_field, item)" do
     context "search query is empty" do
       let(:item) {  OpenStruct.new(value: "digital_collections") }

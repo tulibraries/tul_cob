@@ -155,17 +155,26 @@ RSpec.describe AlmawsController, type: :controller do
 
       let(:bib_item) { class_double(Alma::BibItem) }
       let(:bib_item_set) { instance_double(Alma::BibItemSet) }
-      let(:request_data) { instance_double(RequestData) }
+      let(:request_data) do
+        instance_double(RequestData,
+          material_types: [],
+          equipment_locations: [],
+          booking_locations: [],
+          pickup_locations: [],
+          item_level_locations: [],
+          request_level: "bib",
+          item_holding_ids: [],
+          item_holding_ids_backup: [],
+          item_level_locations: [],
+          material_types_and_descriptions: [])
+      end
 
       before(:each) do
         allow(controller).to receive(:search_service).and_return(search_service)
         expect(search_service).to receive(:fetch).and_return([:foo, document])
         allow(bib_item).to receive(:find).and_return(bib_item_set)
         allow(bib_item_set).to receive(:filter_missing_and_lost).and_return(bib_item_set)
-        allow(request_data).to receive(:material_types).and_return([])
-        allow(request_data).to receive(:equipment_locations).and_return([])
-        allow(request_data).to receive(:booking_locations).and_return([])
-        allow(request_data).to receive(:pickup_locations).and_return([])
+        allow(RequestData).to receive(:new).and_return(request_data)
         allow(Alma::RequestOptions).to receive(:get).and_raise(Alma::RequestOptions::ResponseError, "phhhht")
         sign_in @user, scope: :user
         get(:request_options, **params)
