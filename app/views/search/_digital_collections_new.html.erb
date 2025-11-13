@@ -1,0 +1,28 @@
+<% cdm_results = @results["cdm"] %>
+
+<div class="my-5 container-xl bento-resource-container cdm-results-container-new">
+  <h2 class="bento-resource-types">
+    <%= t("bento.digital_collections_header") %>
+    <% if cdm_results.present? %>
+      <%= bento_link_to_full_results(cdm_results) %>
+    <% end %>
+  </h2>
+  <p class="ps-0 py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <hr />
+  <ul class="bento-resource-types-list mt-4 list-inline">
+    <% cdm_results.each do |cdm_record| %>
+    <li class="bento-resource-list-item list-inline-item pb-1">
+      <%= link_to cdm_record.link do %>
+        <%= image_tag cdm_record.other_links[0], class: "cdm-image", alt: "", loading: "lazy" %>
+        <div class="pt-2 w-75">
+          <h3 class="cdm-item-title"><%= cdm_record.title %></h3>
+        </div>
+      <% end %>
+      <p class="cdm-data">
+        <%= "Date: #{cdm_record.publication_date}" if cdm_record.publication_date.present? %>
+        <br /><%= cdm_record.source_title  if cdm_record.source_title.present? %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+</div>

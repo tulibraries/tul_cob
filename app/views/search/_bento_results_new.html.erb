@@ -4,13 +4,13 @@
       <%= render :partial => "lib_guide_recommender_bento_new" %>
     </div>
   <% end %>
-  <% unless engine_id == "cdm" %>
-  <div class="col p-2 bento_compartment_new <%= engine_id %>">
+  <% unless ["cdm", "lib_guides"].include? engine_id %>
+  <div class="col bento_compartment_new <%= engine_id %>">
     <div class="bento-items">
 
       <h2>
         <%= bento_titleize(engine_id) %>
-        <span class="total-items-new"><%= bento_link_to_full_results(result) %></span>
+        <%= bento_link_to_full_results(result) %>
       </h2>
       
       <p class="roboto-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

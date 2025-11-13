@@ -1,20 +1,21 @@
 <% if @results %>
-  <div class="container pb-3">
-    <div class="row row-cols-md-2">
+  <div class="container-xl pb-3 mt-5">
+    <div class="row row-cols-md-2 gx-5">
       <%= render_bento_results_new %>
     </div>
   </div>
 
+
+  <%= render partial: "research_guides_faq_new", locals: { lib_guides_results: @lib_guides_results } %>
+
   <% if @response %>
-    <%= render :partial => "digital_collections" %>
+    <%= render :partial => "digital_collections_new" %>
   <% else %>
     <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for digital_collections partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
   <% end %>
 
-  <%= render :partial => "research_guides_faq" %>
-
   <% if @response %>
-    <%= render :partial => "resource_types" %>
+    <%= render :partial => "resource_types_new" %>
   <% else %>
     <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for resource_types partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
   <% end %>

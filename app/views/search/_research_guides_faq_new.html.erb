@@ -1,0 +1,24 @@
+<% lib_guides_results ||= nil %>
+
+<div class="my-5 container-xl bento-resource-container libguides-results-container">
+  <h2 class="bento-resource-types">
+    <%= t("bento.research_guides_header") %>
+    <% if lib_guides_results.present? && !lib_guides_results.failed? %>
+      <%= bento_link_to_full_results(lib_guides_results) %>
+    <% end %>
+  </h2>
+  <p class="ps-0 py-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <hr />
+  <% if lib_guides_results.present? && !lib_guides_results.failed? %>
+  <ul class="bento-resource-types-list mt-4 list-inline">
+    <% lib_guides_results.each do |lib_guide| %>
+    <li class="bento-resource-list-item list-inline-item pb-1">
+      <h3 class="libguide-item-title"><%= link_to lib_guide.title, lib_guide.link %></h3>
+      <p>
+        <%= lib_guide.abstract if lib_guide.abstract.present? %>
+      </p>
+    </li>
+    <% end %>
+  </ul>
+<% end %>
+</div>

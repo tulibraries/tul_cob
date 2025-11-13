@@ -21,6 +21,7 @@ class SearchController < CatalogController
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
       @results = process_results(searcher.results)
       @results = apply_bento_item_partials(@results)
+      @lib_guides_results = extract_engine_result(@results, "lib_guides")
       @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
     end
 
@@ -72,6 +73,12 @@ class SearchController < CatalogController
       end
 
       results
+    end
+
+    def extract_engine_result(results, engine_id)
+      return nil unless results.respond_to?(:[])
+
+      results[engine_id] || results[engine_id.to_sym]
     end
 
     def process_results(results)
