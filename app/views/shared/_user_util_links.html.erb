@@ -1,0 +1,29 @@
+<ul class="navbar-nav">
+  <%= render_nav_actions do |config, action|%>
+    <li class="nav-item"><%= action %></li>
+  <% end %>
+
+  <% if has_user_authentication_provider? %>
+    <% if current_user %>
+      <li class="nav-item">
+        <%= link_to t('blacklight.header_links.logout'),
+                    main_app.destroy_user_session_path,
+                    class: 'nav-link',
+                    method: :delete %>
+      </li>
+      <% if main_app.respond_to?(:edit_user_registration_path) && current_user.present? -%>
+        <li class="nav-item">
+          <%= link_to current_user,
+                      main_app.edit_user_registration_path,
+                      class: 'nav-link' %>
+        </li>
+      <% end %>
+    <% else %>
+      <li class="nav-item">
+        <%= link_to t('blacklight.header_links.login'),
+                    main_app.new_user_session_path,
+                    class: 'nav-link' %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

@@ -27,6 +27,11 @@
           <% else %>
             <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path, id: "login" %></li>
           <% end %>
+          <% if current_user.present? && main_app.respond_to?(:edit_user_registration_path) %>
+            <li class="nav-right account-nav">
+              <%= link_to current_user, main_app.edit_user_registration_path, class: 'nav-link' %>
+            </li>
+          <% end %>
         </ul>
       </div>
 
