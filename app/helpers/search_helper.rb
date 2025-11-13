@@ -107,10 +107,26 @@ module SearchHelper
       results:, options: }
   end
 
+  def render_bento_results_new(results = @results, options = {})
+    results_class = options[:results_class] || "d-md-flex flex-wrap"
+    comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 me-4"
+
+    render partial: "bento_results_new", locals: {
+      results_class:,
+      comp_class:,
+      results:, options: }
+  end
+
   def render_linked_results(engine_id)
     engine_ids = engine_display_configurations[engine_id][:linked_engines] || [] rescue []
     results = @results.select { |id, result| engine_ids.include? id }
     render_bento_results(results, render_child_box: true, results_class: "bento_results", comp_class: "bento_compartment")
+  end
+
+  def render_linked_results_new(engine_id)
+    engine_ids = engine_display_configurations[engine_id][:linked_engines] || [] rescue []
+    results = @results.select { |id, result| engine_ids.include? id }
+    render_bento_results_new(results, render_child_box: true, results_class: "bento_results_new", comp_class: "bento_compartment_new")
   end
 
   def is_child_box?(id)
