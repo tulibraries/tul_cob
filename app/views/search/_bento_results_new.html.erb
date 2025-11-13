@@ -13,7 +13,7 @@
         <%= bento_link_to_full_results(result) %>
       </h2>
       
-      <p class="roboto-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p class="roboto-light"><%= t("bento.description_texts.#{engine_id}", default: t("bento.description_texts.default")) %></p>
       <hr />
 
       <%= render :layout => "layouts/bento_box_wrapper_new", :locals => {:results => result } do %>
