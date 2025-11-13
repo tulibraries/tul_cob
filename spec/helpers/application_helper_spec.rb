@@ -38,6 +38,35 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#search_params" do
+    context "search session present" do
+      let(:current_search_session) { OpenStruct.new(query_params: { "controller" => "catalog", "action" => "index", "q" => "foo" }) }
+
+      before do
+        without_partial_double_verification do
+          allow(helper).to receive(:current_search_session) { current_search_session }
+        end
+      end
+
+      it "strips controller and action keys" do
+        expect(helper.search_params).to eq({ "q" => "foo" })
+      end
+    end
+
+    context "search session missing but request params present" do
+      let(:request) { OpenStruct.new(query_parameters: { "controller" => "web_content", "action" => "index", "q" => "bar" }) }
+
+      before do
+        allow(helper).to receive(:request) { request }
+        allow(helper).to receive(:current_search_session) { nil }
+      end
+
+      it "falls back to request query parameters" do
+        expect(helper.search_params).to eq({ "q" => "bar" })
+      end
+    end
+  end
+
   describe "#is_active?(path)" do
     let(:current_page?) { true }
     let(:request) { OpenStruct.new(original_fullpath: "/") }

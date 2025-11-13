@@ -96,12 +96,12 @@ module ApplicationHelper
   def search_params
     # current_search_session is only defined under search context:
     # Therefore it will not be available in /users/sign_in etc.
-    begin
-      # Sometimes current_search_session will return nil.
-      current_search_session&.query_params&.except(:controller, :action) || {}
-    rescue
-      {}
-    end
+    session_params = sanitized_search_params(current_search_session&.query_params)
+    return session_params if session_params.present?
+
+    sanitized_search_params(request&.query_parameters)
+  rescue
+    {}
   end
 
   def sanitize_cross_tab_search_params(params)
@@ -277,5 +277,16 @@ module ApplicationHelper
 
   def library_link_url
     Rails.configuration.library_link
+  end
+
+  private
+
+  def sanitized_search_params(params)
+    return {} unless params
+
+    sanitized = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h : params.to_h
+    sanitized = sanitized.deep_dup
+    sanitized.except!("controller", :controller, "action", :action)
+    sanitized
   end
 end
