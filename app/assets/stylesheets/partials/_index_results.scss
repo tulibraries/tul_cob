@@ -18,17 +18,22 @@
   }
 }
 
+#documents,
 .documents-list {
   margin-top: 1rem;
   margin-left: 0;
 
   .document-search-result {
-    margin-left: 1.75rem;
-    padding-bottom: 1rem; 
+    margin-left: 1.25rem;
+    padding-bottom: 1rem;
+    clear: both;
+    width: calc(100% - 1.25rem);
   }
 
   .document-counter {
-    margin-top: 1rem;
+    float: left;
+    margin: 0.5rem 0 0.25rem 0.25rem;
+    font-weight: 600;
   }
 
   .summary-preview-container {
