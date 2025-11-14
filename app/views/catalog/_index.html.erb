@@ -3,6 +3,7 @@
 <%= render "index_summary_field", :document => document %>
 
 <div class="document-info-container clearfix flex-row-reverse " data-controller="book-covers">
+  <%= render "thumbnail", document: document %>
 
   <%# default partial to display solr document fields in catalog index view %>
   <%= render "fields", document:, document_counter:  %>
