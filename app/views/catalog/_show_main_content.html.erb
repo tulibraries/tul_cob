@@ -1,7 +1,5 @@
 <% show_view_config = blacklight_config.view_config(:show) %>
 <% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
-<% content_for(:head) { render_link_rel_alternates } %>
-
 <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
   <!-- COinS, for Zotero among others. -->
   <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_presenter(@document).display_type) %>"></span>

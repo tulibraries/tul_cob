@@ -17,14 +17,6 @@ module CatalogHelper
     end
   end
 
-  # Overridden from module Blacklight::BlacklightHelperBehavior.
-  # Create <link rel="alternate"> links from a documents dynamically provided export formats.
-  # Returns empty string if no links available.
-  # Overridden in order to disable rel alternate links added to page headers.
-  def render_link_rel_alternates(document = @document, options = {})
-    ""
-  end
-
   def advanced_catalog_search_path
     params = @search_state.to_h.select { |k, v| !["page"].include? k }
     blacklight_advanced_search_engine.advanced_search_path(params)
