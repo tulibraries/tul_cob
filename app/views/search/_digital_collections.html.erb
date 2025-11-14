@@ -3,7 +3,7 @@
 <div class="bento-resource-container cdm-results-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
 
-  <% unless cdm_results.present? %>
+  <% if cdm_results.present? %>
   <ul class="bento-resource-types-list pt-2 list-inline d-flex flex-wrap justify-content-start">
     <% @results["cdm"].each do |cdm_record| %>
       <li class="bento-resource-list-item list-inline-item pb-1">
@@ -25,7 +25,7 @@
   </ul>
   <% else %>
     <div class="bento-resource-types-list fs-6">
-      <%= render "bento_search/no_cdm_results" %>
+      <%= render partial: "bento_search/no_cdm_results" %>
     </div>
   <% end %>
 </div>
