@@ -6,8 +6,8 @@ require "json"
 
 class ArchivesSpaceService
   BASE_URL = "https://scrcarchivesspace.temple.edu/staff/api"
-  USERNAME = ENV.fetch("ARCHIVESSPACE_USER")
-  PASSWORD = ENV.fetch("ARCHIVESSPACE_PASSWORD")
+  USERNAME = ENV.fetch("ARCHIVESSPACE_USER", "test-user")
+  PASSWORD = ENV.fetch("ARCHIVESSPACE_PASSWORD", "test-pass")
 
   def initialize
     @conn = Faraday.new("https://scrcarchivesspace.temple.edu/staff/api") do |f|

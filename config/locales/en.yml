@@ -319,6 +319,8 @@ en:
     additional_options_html: "For more information about borrowing from another library, please consult the %{href}."
     additional_options_href: "library website"
     additional_options_link: "https://library.temple.edu/services/11"
+    cdm_html: Try browsing our <a href="https://digital.library.temple.edu/" target="_blank">Digitized Collections</a>.
+    cdm_html_link: "https://digital.library.temple.edu/"
 
   primo_central:
     link_to_resource: "Link to Resource"
