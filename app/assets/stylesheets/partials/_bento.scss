@@ -120,6 +120,9 @@
 	padding: 1rem 12%;
 	margin-left: -30px;
 	margin-right: -30px;
+	.no-results {
+		margin-top: .5rem;
+	}
 }
 
 .bento-resource-list-item {
@@ -222,9 +225,18 @@
 }
 
 .cdm-results-container-new {
+	.no-results {
+		margin-top: 3rem;
+	}
 	hr {
 		border: 0;
 		border-top: 2px solid #000;
+		opacity: 1;
+		margin: 1rem 0; 
+	}
+	hr.pale {
+		border: 0;
+		border-top: 2px solid #ccc;
 		opacity: 1;
 		margin: 1rem 0; 
 	}

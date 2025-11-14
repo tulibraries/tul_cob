@@ -5,11 +5,15 @@
     <%= t("bento.digital_collections_header") %>
     <% if cdm_results.present? %>
       <%= bento_link_to_full_results(cdm_results) %>
+    <% else %>
+      <%= link_to "Browse all digtized collections", I18n.t("no_results.cdm_html_link"), class: "bento-full-results", target: "_blank" %>
     <% end %>
   </h2>
   <p class="ps-0 py-3"><%= t("bento.description_texts.digital_collections") %></p>
   <hr />
-  <ul class="bento-resource-types-list mt-4 list-inline">
+
+  <% if cdm_results.present? %>
+  <ul class="bento-resource-types-list mt-4 me-0 list-inline">
     <% cdm_results.each do |cdm_record| %>
     <li class="bento-resource-list-item list-inline-item pb-1">
       <%= link_to cdm_record.link do %>
@@ -25,4 +29,8 @@
     </li>
     <% end %>
   </ul>
+  <% else %>
+    <%= render "bento_search/no_cdm_results" %>
+  <% end %>
+
 </div>
