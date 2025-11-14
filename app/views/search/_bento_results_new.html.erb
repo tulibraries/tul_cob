@@ -4,6 +4,7 @@
       <%= render :partial => "lib_guide_recommender_bento_new" %>
     </div>
   <% end %>
+  <% next if engine_id == "archives_space" && !aspace_integration_enabled? %>
   <% unless ["cdm", "lib_guides"].include? engine_id %>
   <div class="col bento_compartment_new <%= engine_id %>">
     <div class="bento-items">
