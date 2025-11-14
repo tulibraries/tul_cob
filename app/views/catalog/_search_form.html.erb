@@ -1,8 +1,6 @@
 <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
 
-<div class="d-inline-flex justify-content-around search-right-links align-items-center flex-wrap">
-  <%= render_bookmark_partial %>
-
+<div class="d-inline-flex search-right-links align-items-center flex-wrap gap-3">
   <% if has_user_authentication_provider? %>
     <%= render 'shared/nav_bar_login_links' unless login_disabled? %>
   <% end %>

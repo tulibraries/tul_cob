@@ -1,8 +1,4 @@
 <ul class="navbar-nav">
-  <%= render_nav_actions do |config, action|%>
-    <li class="nav-item"><%= action %></li>
-  <% end %>
-
   <% if has_user_authentication_provider? %>
     <% if current_user %>
       <li class="nav-item">

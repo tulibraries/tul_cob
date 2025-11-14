@@ -1,5 +1,17 @@
 <% if current_user %>
-    <div class="user-logout">
-      <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path(type: session[:alma_auth_type]), :method => 'delete', id: "logout" %>
-    </div>
+  <div class="nav-item">
+    <%= render_bookmark_partial %>
+  </div>
+  <div class="nav-item">
+    <%= link_to t('blacklight.header_links.logout'),
+                destroy_user_session_path(type: session[:alma_auth_type]),
+                method: :delete,
+                id: "logout" %>
+  </div>
+<% else %>
+  <div class="nav-item">
+    <%= link_to t('blacklight.header_links.login'),
+                new_user_session_path,
+                id: "login" %>
+  </div>
 <% end %>
