@@ -10,7 +10,8 @@
     </div>
   <% end %>
 
-  <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
+  <%= render(Blacklight::SearchContext::ServerAppliedParamsComponent.new(search_context: @search_context,
+                                                                        search_session: search_session)) %>
 
 <% end %>
 
