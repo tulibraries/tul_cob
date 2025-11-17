@@ -1,32 +1,19 @@
-<% entries = [] %>
-<% renderable_results(results, options).each_pair do |engine_id, result| %>
-  <% if engine_id == 'journals' && with_libguides? %>
-    <div data-lib-guides-url="<%= lib_guides_path(q: @lib_guides_query_term) %>" data-controller="lib-guides">
-      <%= render partial: "lib_guide_recommender_bento_new" %>
-    </div>
-  <% end %>
-  <% next if engine_id == "archives_space" && !aspace_integration_enabled? %>
-  <% next if ["cdm", "lib_guides"].include?(engine_id) %>
-  <% entries << [engine_id, result] %>
-<% end %>
+<% grid_index = 0 %>
 
-<% columns = [[], []] %>
-<% entries.each_with_index do |entry, index| %>
-  <% columns[index % 2] << entry %>
-<% end %>
+<div class="<%= results_class %>">
+  <% renderable_results(results, options).each_pair do |engine_id, result| %>
+    <% if engine_id == 'journals' && with_libguides? %>
+      <div data-lib-guides-url="<%= lib_guides_path(q: @lib_guides_query_term) %>" data-controller="lib-guides">
+        <%= render partial: "lib_guide_recommender_bento_new" %>
+      </div>
+    <% end %>
+    <% next if engine_id == "archives_space" && !aspace_integration_enabled? %>
+    <% next if ["cdm", "lib_guides"].include?(engine_id) %>
 
-<div class="<%= results_class %> bento-results-masonry">
-  <% columns.each do |column_entries| %>
-    <div class="bento-masonry-column">
-      <% column_entries.each do |engine_id, result| %>
-        <%= render partial: "search/bento_engine_card", locals: { engine_id:, result: } %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div class="bento-results-mobile">
-  <% entries.each do |engine_id, result| %>
-    <%= render partial: "search/bento_engine_card", locals: { engine_id:, result: } %>
+    <%= render partial: "search/bento_engine_card", locals: {
+          engine_id:,
+          result:,
+          wrapper_class: bento_grid_position_class(grid_index) } %>
+    <% grid_index += 1 %>
   <% end %>
 </div>

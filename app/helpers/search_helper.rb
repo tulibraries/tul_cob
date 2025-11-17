@@ -111,13 +111,17 @@ module SearchHelper
   end
 
   def render_bento_results_new(results = @results, options = {})
-    results_class = options[:results_class] || "bento-results-masonry"
+    results_class = options[:results_class] || "bento-results-grid"
     comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 me-4"
 
     render partial: "bento_results_new", locals: {
       results_class:,
       comp_class:,
       results:, options: }
+  end
+
+  def bento_grid_position_class(index)
+    index.even? ? "bento-grid-left" : "bento-grid-right"
   end
 
   def render_linked_results(engine_id)

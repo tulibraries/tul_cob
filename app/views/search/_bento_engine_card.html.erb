@@ -1,4 +1,5 @@
-<div class="bento_compartment_new bento-masonry-item <%= engine_id %>">
+<% wrapper_class ||= "" %>
+<div class="bento_compartment_new <%= engine_id %> <%= wrapper_class %>">
   <div class="bento-items">
     <h2>
       <%= bento_titleize(engine_id) %>
@@ -18,4 +19,5 @@
       <% end %>
     <% end %>
   </div>
+  <%= render_linked_results_new(engine_id) %>
 </div>
