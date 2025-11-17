@@ -257,6 +257,7 @@ en:
     research_guides_link: "https://guides.temple.edu/?b=s"
     faq_html: "Frequently asked questions<span class='external-link-icon'></span>"
     faq_link: "https://answers.library.temple.edu"
+    faq_text: "Frequently asked questions"
     resource_types_header: "More search results"
     research_guides_header: "Browse our Research Guides"
     digital_collections_header: "Digitized Collections for unique materials held by Temple"

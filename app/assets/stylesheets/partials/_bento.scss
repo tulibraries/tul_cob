@@ -128,6 +128,32 @@
 	padding: 0.15rem 0.125rem;
 }
 
+.faq-link-section {
+	background-color: $lighter-grey;
+	padding: 2rem;
+	margin: 4rem auto;
+	width: 100%;
+	border-radius: 0.5rem;
+}
+
+.faq-link {
+	font-size: 1.5rem;
+	font-family: "Faustina", serif;
+	font-weight: 600;
+	text-decoration: none;
+	color: $cherry-red;
+
+	&:hover {
+		color: $cherry-red;
+		text-decoration: underline;
+	}
+}
+
+.faq-link-icon {
+	width: 32px;
+	height: 32px;
+}
+
 .search-results {
 	border: 1px solid $lighter-grey;
 }
