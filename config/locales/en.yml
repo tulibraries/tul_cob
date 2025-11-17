@@ -258,7 +258,7 @@ en:
     faq_html: "Frequently asked questions<span class='external-link-icon'></span>"
     faq_link: "https://answers.library.temple.edu"
     resource_types_header: "More search results"
-    research_guides_header: "Browse our Research Guides and FAQ"
+    research_guides_header: "Browse our Research Guides"
     digital_collections_header: "Digitized Collections for unique materials held by Temple"
     description_texts:
       default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
