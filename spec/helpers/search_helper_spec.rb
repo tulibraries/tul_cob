@@ -16,6 +16,16 @@ RSpec.describe SearchHelper, type: :helper do
 
       expect(helper.bento_link_to_full_results(results)).to eq("<a>See all results</a>")
     end
+
+    it "returns nil when there are zero results" do
+      results = instance_double("BentoResults",
+        engine_id: "cdm",
+        total_items: { query_total: 0 })
+
+      expect(BentoSearch).not_to receive(:get_engine)
+
+      expect(helper.bento_link_to_full_results(results)).to be_nil
+    end
   end
 
   describe "#path_for_books_and_media_facet(facet_field, item)" do

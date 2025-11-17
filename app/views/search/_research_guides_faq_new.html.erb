@@ -5,6 +5,9 @@
     <%= t("bento.research_guides_header") %>
     <% if lib_guides_results.present? && !lib_guides_results.failed? %>
       <%= bento_link_to_full_results(lib_guides_results) %>
+    <% else %>
+      <%= link_to "Browse all research guides", I18n.t("no_results.guides_no_results_link"),
+        class: "bento-full-results", target: "_blank" %>
     <% end %>
   </h2>
   <p class="ps-0 py-3"><%= t("bento.description_texts.research_guides") %></p>

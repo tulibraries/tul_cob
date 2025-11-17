@@ -12,10 +12,10 @@ RSpec.describe BentoSearch::CDMEngine do
       expected_url = "https://digital.library.temple.edu/digital/search/collection/photos"
 
       expect(helper).to receive(:link_to)
-        .with("See all results", expected_url, class: "bento-full-results", target: "_blank")
-        .and_return("<a>See all results</a>")
+        .with("Browse all digitized collections", expected_url, class: "bento-full-results", target: "_blank")
+        .and_return("<a>Browse all digitized collections</a>")
 
-      expect(engine.view_link(123, helper)).to eq("<a>See all results</a>")
+      expect(engine.view_link(123, helper)).to eq("<a>Browse all digitized collections</a>")
     end
   end
 end

@@ -31,7 +31,10 @@ module SearchHelper
   end
 
   def bento_link_to_full_results(results)
-    total = number_with_delimiter(total_items results)
+    query_total = total_items(results)
+    return if query_total.to_i.zero?
+
+    total = number_with_delimiter(query_total)
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
