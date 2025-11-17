@@ -32,7 +32,7 @@ module SearchHelper
 
   def bento_link_to_full_results(results)
     query_total = total_items(results)
-    return if query_total.to_i.zero?
+    return if query_total.to_i.zero? && !always_show_full_results?(results.engine_id)
 
     total = number_with_delimiter(query_total)
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
@@ -147,9 +147,15 @@ module SearchHelper
   end
 
   def engine_display_configurations
-    @engine_configurations ||= @results.map   { |engine_id, result|
+    @engine_configurations ||= @results.map { |engine_id, result|
       config = BentoSearch.get_engine(engine_id).configuration[:for_display]
       [engine_id, config]
     }.to_h
+  end
+
+  private
+
+  def always_show_full_results?(engine_id)
+    %w[lib_guides cdm].include?(engine_id)
   end
 end
