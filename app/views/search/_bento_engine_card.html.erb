@@ -1,0 +1,21 @@
+<div class="bento_compartment_new bento-masonry-item <%= engine_id %>">
+  <div class="bento-items">
+    <h2>
+      <%= bento_titleize(engine_id) %>
+      <%= bento_link_to_full_results(result) %>
+    </h2>
+
+    <p class="roboto-light"><%= t("bento.description_texts.#{engine_id}", default: t("bento.description_texts.default")) %></p>
+    <hr />
+
+    <%= render layout: "layouts/bento_box_wrapper_new", locals: { results: result } do %>
+      <% unless result.failed? %>
+        <%= bento_search result %>
+      <% else %>
+        <div class="error bento_item py-3">
+          <h3 class="bento_item_title">We're sorry, but something went wrong.</h3>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

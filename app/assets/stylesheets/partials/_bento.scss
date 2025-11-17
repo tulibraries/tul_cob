@@ -60,6 +60,36 @@
 	}
 }
 
+.bento-results-masonry {
+	display: flex;
+	gap: 2rem;
+
+	@media(max-width: 991px) {
+		display: none;
+	}
+}
+
+.bento-masonry-column {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.bento-results-mobile {
+	display: none;
+
+	@media(max-width: 991px) {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+}
+
+.bento-masonry-item {
+	width: 100%;
+}
+
 .bento_item_row {
 	margin: 0; 
 }
