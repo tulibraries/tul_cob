@@ -155,7 +155,7 @@ module SearchHelper
 
   private
 
-  def always_show_full_results?(engine_id)
-    %w[lib_guides cdm].include?(engine_id)
-  end
+    def always_show_full_results?(engine_id)
+      %w[lib_guides cdm].include?(engine_id)
+    end
 end
