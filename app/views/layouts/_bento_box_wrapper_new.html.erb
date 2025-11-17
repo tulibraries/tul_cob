@@ -12,22 +12,5 @@
   <div class="search-results-new">
     <%= yield %>
   </div>
-
-  <% unless total_items(results).zero? %>
-    <div class="total-items">
-      <%= bento_link_to_full_results(results) %> &gt;
-    </div>
-  <% end %>
-
-  <% if results.engine_id == "lib_guides" && results.present? %>
-    <div class="total-items">
-      <%= bento_link_to_full_results(results) %> &gt;
-    </div>
-  <% end %>
-
-  <% unless total_online(results).zero? %>
-    <div class="bento-online-results">
-      <%= bento_link_to_online_results(results) %> &gt;
-    </div>
-  <% end %>
+  
 </div>
