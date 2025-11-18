@@ -109,7 +109,8 @@ module BentoSearch
 
     def view_link(total = nil, helper)
       url = "#{base_url}/digital/search/collection/#{I18n.t("bento.cdm_collections_list")}"
-      helper.link_to "See all results", url, class: "bento-full-results", target: "_blank"
+      link_text = total.present? ? "See all results" : "Browse all digitized collections"
+      helper.link_to link_text, url, class: "bento-full-results", target: "_blank"
     end
 
 

@@ -31,7 +31,10 @@ module SearchHelper
   end
 
   def bento_link_to_full_results(results)
-    total = number_with_delimiter(total_items results)
+    query_total = total_items(results)
+    return if query_total.to_i.zero? && !always_show_full_results?(results.engine_id)
+
+    total = number_with_delimiter(query_total)
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
@@ -108,13 +111,17 @@ module SearchHelper
   end
 
   def render_bento_results_new(results = @results, options = {})
-    results_class = options[:results_class] || "d-md-flex flex-wrap"
+    results_class = options[:results_class] || "bento-results-grid"
     comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 me-4"
 
     render partial: "bento_results_new", locals: {
       results_class:,
       comp_class:,
       results:, options: }
+  end
+
+  def bento_grid_position_class(index)
+    index.even? ? "bento-grid-left" : "bento-grid-right"
   end
 
   def render_linked_results(engine_id)
@@ -140,9 +147,15 @@ module SearchHelper
   end
 
   def engine_display_configurations
-    @engine_configurations ||= @results.map   { |engine_id, result|
+    @engine_configurations ||= @results.map { |engine_id, result|
       config = BentoSearch.get_engine(engine_id).configuration[:for_display]
       [engine_id, config]
     }.to_h
   end
+
+  private
+
+    def always_show_full_results?(engine_id)
+      %w[lib_guides cdm].include?(engine_id)
+    end
 end

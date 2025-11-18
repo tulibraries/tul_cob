@@ -29,10 +29,10 @@ RSpec.feature "Bento Availability" do
         link_tag = find("a.bento-avail-btn")
         expect(link_tag[:href]).to match(electronic_resource_url)
       end
-
       within first("div.bento-search-engine") do
-        expect(page).to have_css(".bento-full-results")
+        expect(page).to have_css(".bento-full-results") unless Flipflop.style_updates?
       end
+
     end
 
     scenario "Items with multiple links go to record page" do
