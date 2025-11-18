@@ -34,13 +34,28 @@ RSpec.feature "Bento Searches" do
         }
       end
       within first("div.bento-search-engine") do
-        expect(page).to have_css("a.bento-full-results")
+        expect(page).to have_css("a.bento-full-results") unless Flipflop.style_updates?
 
         within first("dl.document-metadata") do
           expect(page).not_to have_css("dt.index-label")
         end
       end
+    end
 
+    scenario "Blacklight totals link appears in the header when style updates are enabled" do
+      allow(Flipflop).to receive(:style_updates?).and_return(true)
+
+      visit "/bento"
+      within("div.input-group") do
+        fill_in "q", with: item["title"]
+        VCR.use_cassette("bento_search_features", record: :none, match_requests_on: [:host, :path]) {
+          click_button
+        }
+      end
+
+      within first("div.bento_compartment_new h2") do
+        expect(page).to have_css("a.bento-full-results")
+      end
     end
   end
 

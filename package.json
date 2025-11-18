@@ -29,7 +29,8 @@
     "minimist": "1.2.8",
     "node-fetch": "2.6.7",
     "on-headers": "1.1.0",
-    "path-to-regexp": "0.1.12"
+    "path-to-regexp": "0.1.12",
+    "js-yaml": "4.1.1"
   },
   "babel": {
     "presets": [

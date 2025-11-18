@@ -3,6 +3,43 @@
 require "rails_helper"
 
 RSpec.describe SearchHelper, type: :helper do
+  describe "#bento_link_to_full_results" do
+    it "delegates to the engine view_link with a formatted total" do
+      results = instance_double("BentoResults",
+        engine_id: "cdm",
+        total_items: { query_total: 1234 })
+      engine = instance_double("CDMEngine")
+      formatted_total = helper.number_with_delimiter(1234)
+
+      expect(BentoSearch).to receive(:get_engine).with("cdm").and_return(engine)
+      expect(engine).to receive(:view_link).with(formatted_total, helper).and_return("<a>See all results</a>")
+
+      expect(helper.bento_link_to_full_results(results)).to eq("<a>See all results</a>")
+    end
+
+    it "returns nil when there are zero results for other engines" do
+      results = instance_double("BentoResults",
+        engine_id: "blacklight",
+        total_items: { query_total: 0 })
+
+      expect(BentoSearch).not_to receive(:get_engine)
+
+      expect(helper.bento_link_to_full_results(results)).to be_nil
+    end
+
+    it "still shows links for cdm when totals are zero" do
+      results = instance_double("BentoResults",
+        engine_id: "cdm",
+        total_items: { query_total: 0 })
+      engine = instance_double("CDMEngine")
+
+      expect(BentoSearch).to receive(:get_engine).with("cdm").and_return(engine)
+      expect(engine).to receive(:view_link).with("0", helper).and_return("<a>Browse all digitized collections</a>")
+
+      expect(helper.bento_link_to_full_results(results)).to eq("<a>Browse all digitized collections</a>")
+    end
+  end
+
   describe "#path_for_books_and_media_facet(facet_field, item)" do
     context "search query is empty" do
       let(:item) {  OpenStruct.new(value: "digital_collections") }

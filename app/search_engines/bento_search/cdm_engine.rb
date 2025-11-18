@@ -107,6 +107,12 @@ module BentoSearch
       "https://digital.library.temple.edu"
     end
 
+    def view_link(total = nil, helper)
+      url = "#{base_url}/digital/search/collection/#{I18n.t("bento.cdm_collections_list")}"
+      link_text = total.present? ? "See all results" : "Browse all digitized collections"
+      helper.link_to link_text, url, class: "bento-full-results", target: "_blank"
+    end
+
 
     def is_int?(str)
       !!(str =~ /\A[-+]?[0-9]+\z/)
