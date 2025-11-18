@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BentoSearch
-  class ArchivesSpaceEngine < BlacklightEngine
+  class ArchivalCollectionsEngine < BlacklightEngine
     PRIMARY_TYPE_LABELS = {
       "agent_corporate_entity" => "Organization",
       "agent_family"           => "Family",
@@ -24,12 +24,24 @@ module BentoSearch
       end
     end
 
-    def conform_to_bento_result(record)
-      primary_type = record["primary_type"]
-      title = record["title"] || record["display_string"] || "(untitled)"
-      link = aspace_record_url(record)
+    def conform_to_bento_result(item)
+      primary_type = item["primary_type"].to_s.chomp(".")
+      link = aspace_item_url(item)
+      raw = JSON.parse(item["json"])
+      title = item_title = raw["title"]
+      collection_resolved = raw.dig(
+        "instances", 0, "sub_container", "top_container", "_resolved", "collection", 0
+      )
 
-      dates_value = record["dates"]
+      if collection_resolved
+        collection_ref = collection_resolved["ref"]
+        collection_title = collection_resolved["display_string"]
+      else
+        collection_ref = nil
+        collection_title = nil
+      end
+
+      dates_value = item["dates"]
       date =
         case dates_value
         when Array
@@ -43,35 +55,19 @@ module BentoSearch
           nil
         end
 
-      collection_value = record["collection"]
-      collection_title =
-        case collection_value
-        when Hash
-          collection_value["display_string"]
-        when String
-          collection_value
-        else
-          nil
-        end
-
-      collection_uri =
-        case collection_value
-        when Hash
-          collection_value["ref"]
-        else
-          nil
-        end
-
-      BentoSearch::ResultItem.new(
+      result = BentoSearch::ResultItem.new(
         title: title,
         link: link,
+        publication_date: date,
+        publisher: " ",
         custom_data: {
-          primary_type: primary_type,
-          type_label: PRIMARY_TYPE_LABELS[primary_type],
-          date: date,
-          collection_title: collection_title,
-          collection_uri: collection_uri,
-        }.compact
+          "archival_dates" => date,
+          "collection_ref" => collection_ref,
+          "collection_title" => collection_title,
+          "raw" => item["json"],
+          "primary_type_labels" => PRIMARY_TYPE_LABELS[primary_type].to_s.chomp("."),
+          "primary_types" => primary_type,
+        }
       )
     end
 
@@ -86,9 +82,9 @@ module BentoSearch
       ]
     end
 
-    def aspace_record_url(record)
+    def aspace_item_url(item)
       base_public_url = "https://scrcarchivesspace.temple.edu"
-      uri = record["uri"] || ""
+      uri = item["uri"] || ""
       "#{base_public_url}#{uri}"
     end
   end

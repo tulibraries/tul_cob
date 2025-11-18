@@ -40,11 +40,11 @@ BentoSearch.register_engine("books_and_media") do |conf|
   end
 end
 
-BentoSearch.register_engine("archives_space") do |conf|
-  conf.engine = "BentoSearch::ArchivesSpaceEngine"
+BentoSearch.register_engine("archival_collections") do |conf|
+  conf.engine = "BentoSearch::ArchivalCollectionsEngine"
   conf.for_display do |display|
-    display.decorator = "TulDecorator"
-    display.no_results_partial = "bento_search/no_archive_space_results"
+    display.decorator = "ArchivalDecorator"
+    display.no_results_partial = "bento_search/no_archival_collection_results"
   end
 end
 
