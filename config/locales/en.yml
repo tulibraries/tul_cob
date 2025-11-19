@@ -327,6 +327,7 @@ en:
     additional_options_link: "https://library.temple.edu/services/11"
     guides_no_results_text: "Browse our research guides by subject"
     guides_no_results_link: "https://guides.temple.edu/?b=s"
+    guides_html: Try browsing our <a href="https://guides.temple.edu/?b=s" target="_blank">Research Guides</a>.
     cdm_html: Try browsing our <a href="https://digital.library.temple.edu/" target="_blank">Digitized Collections</a>.
     cdm_html_link: "https://digital.library.temple.edu/"
 
