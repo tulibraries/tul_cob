@@ -524,3 +524,46 @@ ul.facet-values span.hide {
   padding-left: 1.25rem;
   padding-top: 1.25rem;
 }
+
+// Archival Collections Bento Icons
+span.resource {
+  background: transparent url("svg/resource.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.9rem;
+  padding-right: 5px; 
+}
+
+span.agent_corporate_entity {
+  background: transparent url("svg/agent_corporate_entity.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.9rem;
+  padding-right: 0; 
+}
+
+span.agent_family {
+  background: transparent url("svg/agent_family.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.9rem;
+  padding-right: 0; 
+}
+
+span.agent_person {
+  background: transparent url("svg/agent_person.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.9rem;
+  padding-right: 0; 
+}
+
+span.archival_object {
+  background: transparent url("svg/archival_object.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.5rem;
+  padding-right: 0; 
+}
+
+span.classification {
+  background: transparent url("svg/classification.svg") no-repeat center left;
+  margin-left: 15px;
+  padding-left: 1.9rem;
+  padding-right: 0; 
+}
