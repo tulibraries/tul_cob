@@ -133,6 +133,8 @@ module SearchHelper
   def render_linked_results_new(engine_id)
     engine_ids = engine_display_configurations[engine_id][:linked_engines] || [] rescue []
     results = @results.select { |id, result| engine_ids.include? id }
+    return if results.none?
+
     render_bento_results_new(results, render_child_box: true, results_class: "bento_results_new", comp_class: "bento_compartment_new")
   end
 
