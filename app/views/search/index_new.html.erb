@@ -20,11 +20,8 @@
 
   <% faq_url = I18n.t("bento.faq_link", default: "https://answers.library.temple.edu") %>
   <div class="faq-link-section text-center">
-    <%= link_to faq_url, class: "faq-link d-inline-flex align-items-center justify-content-center",
-      target: "_blank", rel: "noopener" do %>
-      <%= image_tag "svg/unknown.svg", class: "faq-link-icon me-3", alt: "" %>
-      <span><%= I18n.t("bento.faq_text", default: "Frequently asked questions") %></span>
-    <% end %>
+    <%= image_tag "svg/question.svg", class: "faq-link-icon me-3", alt: "icon for faqs" %>
+    <%= link_to I18n.t("bento.faq_text", default: "Frequently asked questions"), faq_url, class: "faq-link d-inline-flex align-items-center justify-content-center", target: "_blank" %>
   </div>
 
 <% else %>
