@@ -38,6 +38,13 @@ module SearchHelper
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
+  def cdm_encoded_query(raw_term = params[:q])
+    sanitized = raw_term.to_s.gsub("/", " ").strip
+    return "" if sanitized.blank?
+
+    { q: sanitized }.to_query.split("=", 2).last
+  end
+
   # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)

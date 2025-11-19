@@ -1,4 +1,10 @@
 <% cdm_results = @results["cdm"] %>
+<% cdm_collections = I18n.t("bento.cdm_collections_list") %>
+<% cdm_query = cdm_encoded_query %>
+<% cdm_base_link = "https://digital.library.temple.edu/digital/search/collection/#{cdm_collections}" %>
+<% cdm_link = cdm_query.present? ?
+  I18n.t("bento.cdm_full_results_link", collections: cdm_collections, query: cdm_query) :
+  cdm_base_link %>
 
 <div class="bento-resource-container cdm-results-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
@@ -20,7 +26,7 @@
       </li>
     <% end %>
     <li class="w-100">
-      <%= link_to "View all digitized collections results >", "https://digital.library.temple.edu/digital/search/collection/#{I18n.t("bento.cdm_collections_list")}/searchterm/#{params[:q]}/order/nosort", target: "_blank" %>
+      <%= link_to "View all digitized collections results >", cdm_link, target: "_blank" %>
     </li>
   </ul>
   <% else %>
