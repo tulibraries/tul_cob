@@ -298,8 +298,9 @@ div.archival_collections div.primary-types {
 	margin-top: 10px !important;
 }
 .cdm-results-container-new {
-	.no-results {
-		margin-top: 3rem;
+	h3.no-results {
+		margin-top: 2rem;
+		font-size: 1.2rem;
 	}
 	hr {
 		border: 0;
@@ -335,8 +336,11 @@ div.archival_collections div.primary-types {
 	}
 	ul.bento-resource-types-list {
 		padding: 0;
-		padding-left: 2rem;
+		padding-left: 4rem;
 		padding-top: 1.5rem;
+	}
+	.noresults ul {
+		margin-left: 2rem;
 	}
 }
 
