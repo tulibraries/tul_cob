@@ -128,7 +128,10 @@ module BentoSearch
     end
 
     def cdm_collection_name(collection_id, collections_response)
-      collection = collections_response.select { |collection| collection["secondary_alias"] if collection["secondary_alias"] == collection_id }
+      collection = collections_response.select { |collection|
+        cdm_id = collection["alias"].delete_prefix("/")
+        collection["alias"] if cdm_id == collection_id
+      }
       collection.first["name"] unless collection.blank?
     end
 

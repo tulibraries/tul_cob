@@ -51,4 +51,22 @@ RSpec.describe "cdm search engine", type: :search_engine do
       allow(Honeybadger).to receive(:notify).with("Ran into error while try to process CDM: Boo!")
     end
   end
+
+  describe "#cdm_collection_name" do
+    let(:collections_response) do
+      [
+        { "alias" => "/p245801coll12", "name" => "Temple University Yearbooks" }
+      ]
+    end
+
+    it "returns the collection name when the alias with leading slash matches the id" do
+      expect(search_engine.send(:cdm_collection_name, "p245801coll12", collections_response))
+        .to eq("Temple University Yearbooks")
+    end
+
+    it "returns nil when no alias matches the id" do
+      expect(search_engine.send(:cdm_collection_name, "nonexistent", collections_response))
+        .to be_nil
+    end
+  end
 end
