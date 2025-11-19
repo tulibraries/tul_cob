@@ -46,7 +46,7 @@ RSpec.describe ArchivalDecorator do
         expect(decorator.collections)
           .to eq(
             "<span class='bento-label'>In collection: </span>" \
-            "<a href='https://scrcarchivesspace.temple.edu/repositories/4/resources/127'>" \
+            "<a href='https://scrcarchivesspace.temple.edu/repositories/4/resources/127' target='_blank' rel='noopener noreferrer'>" \
             "Asian Arts Initiative Records</a>"
           )
       end
