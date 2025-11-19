@@ -30,7 +30,7 @@
         padding: 1.5rem;
 		hr {
       border: 0;
-      border-top: 2px solid #000;
+      border-top: 1px solid #000;
       opacity: 1;
       margin: 1rem 0; 
 		}
@@ -165,6 +165,10 @@
 		border-bottom: 1px solid $light-grey;
 		padding-bottom: 1rem;
 		margin-bottom: 1rem;
+		&:last-of-type {
+			border-bottom: 0;
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -219,7 +223,7 @@
 .libguides-results-container, .resource-types-container-new {
 	hr {
 		border: 0;
-		border-top: 2px solid #000;
+		border-top: 1px solid #000;
 		opacity: 1;
 		margin: 1rem 0; 
 	}
@@ -304,7 +308,7 @@ div.archival_collections div.primary-types {
 	}
 	hr {
 		border: 0;
-		border-top: 2px solid #000;
+		border-top: 1px solid #000;
 		opacity: 1;
 		margin: 1rem 0; 
 	}
@@ -338,9 +342,6 @@ div.archival_collections div.primary-types {
 		padding: 0;
 		padding-left: 4rem;
 		padding-top: 1.5rem;
-	}
-	.noresults ul {
-		margin-left: 2rem;
 	}
 }
 
