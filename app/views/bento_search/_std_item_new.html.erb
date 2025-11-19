@@ -75,6 +75,10 @@
       </div>
     <% end %>
 
+    <% if item.custom_data["primary_types"].present? %>
+      <%= render :partial => "archival_collections", :object => item, :as => 'item' %>
+    <% end %>
+
     <% if item.custom_data.fetch("availability_facet", []).include?("Online") %>
       <%= render :partial => "blacklight_availability", :object => item, :as => 'item' %>
     <% end %>
