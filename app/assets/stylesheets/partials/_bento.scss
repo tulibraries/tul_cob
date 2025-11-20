@@ -92,6 +92,24 @@
 	margin-bottom: 2rem;
 }
 
+.bento-columns {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.bento-column {
+	width: 100%;
+}
+
+.bento-columns .bento-grid-left,
+.bento-columns .bento-grid-right {
+	float: none;
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
 @media (min-width: 768px) {
 	.bento-grid-left,
 	.bento-grid-right {
@@ -108,6 +126,16 @@
 		float: right;
 		clear: right;
 		margin-left: 1.5rem;
+	}
+
+	.bento-columns {
+		flex-direction: row;
+		column-gap: 3rem;
+		align-items: flex-start;
+	}
+
+	.bento-column {
+		width: 50%;
 	}
 }
 
