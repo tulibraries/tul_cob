@@ -55,7 +55,7 @@ module BentoSearch
       query = ERB::Util.url_encode(args.fetch(:query, "").gsub("/", " "))
       cdm_fields = "title!date"
       cdm_format = "json"
-      cdm_collections_ids = I18n.t("bento.cdm_collections_list")
+      cdm_collections_ids = cdm_collection_ids_param
       cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{cdm_collections_ids}/CISOSEARCHALL^#{query}^all^and/#{cdm_fields}/nosort/5/0/1/0/0/0/0/0/#{cdm_format}"
 
       begin
@@ -108,7 +108,7 @@ module BentoSearch
     end
 
     def view_link(total = nil, helper)
-      url = "#{base_url}/digital/search/collection/#{I18n.t("bento.cdm_collections_list")}"
+      url = "#{base_url}/digital/search/collection/#{cdm_collection_ids_param}"
       link_text = total.present? ? "See all results" : "Browse all digitized collections"
       helper.link_to link_text, url, class: "bento-full-results", target: "_blank"
     end
@@ -133,6 +133,10 @@ module BentoSearch
         collection["alias"] if cdm_id == collection_id
       }
       collection.first["name"] unless collection.blank?
+    end
+
+    def cdm_collection_ids_param
+      Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)).join("!")
     end
 
     def safe_json_parse(response, context:)

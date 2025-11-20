@@ -1,0 +1,58 @@
+default: &default
+  collection_ids:
+    - p15037coll10
+    - p15037coll14
+    - p15037coll15
+    - p15037coll17
+    - p15037coll18
+    - p15037coll19
+    - p15037coll2
+    - p15037coll3
+    - p15037coll4
+    - p15037coll5
+    - p15037coll7
+    - p16002coll1
+    - p16002coll11
+    - p16002coll12
+    - p16002coll14
+    - p16002coll16
+    - p16002coll17
+    - p16002coll18
+    - p16002coll19
+    - p16002coll2
+    - p16002coll22
+    - p16002coll24
+    - p16002coll26
+    - p16002coll28
+    - p16002coll29
+    - p16002coll3
+    - p16002coll31
+    - p16002coll33
+    - p16002coll4
+    - p16002coll5
+    - p16002coll6
+    - p16002coll7
+    - p16002coll9
+    - p245801coll0
+    - p245801coll12
+    - p245801coll13
+    - p15037coll1
+    - p16002coll21
+    - p16002coll32
+    - p16002coll10
+    - p16002coll35
+    - p16002coll20
+    - p16002coll23
+    - p16002coll25
+    - p16002coll27
+    - p16002coll34
+    - p16002coll36
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

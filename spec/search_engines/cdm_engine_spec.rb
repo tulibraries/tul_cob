@@ -6,9 +6,19 @@ RSpec.describe BentoSearch::CDMEngine do
   subject(:engine) { described_class.new }
 
   describe "#view_link" do
+    let(:collection_ids) { ["photos"] }
+
+    before do
+      @original_cdm_config = Rails.configuration.cdm
+      Rails.configuration.cdm = { collection_ids: collection_ids }.with_indifferent_access
+    end
+
+    after do
+      Rails.configuration.cdm = @original_cdm_config
+    end
+
     it "uses 'See all results' text when totals are present" do
       helper = instance_double("ActionView::Base")
-      allow(I18n).to receive(:t).with("bento.cdm_collections_list").and_return("photos")
       expected_url = "https://digital.library.temple.edu/digital/search/collection/photos"
 
       expect(helper).to receive(:link_to)
@@ -20,7 +30,6 @@ RSpec.describe BentoSearch::CDMEngine do
 
     it "falls back to 'Browse all digitized collections' when totals are missing" do
       helper = instance_double("ActionView::Base")
-      allow(I18n).to receive(:t).with("bento.cdm_collections_list").and_return("photos")
       expected_url = "https://digital.library.temple.edu/digital/search/collection/photos"
 
       expect(helper).to receive(:link_to)
