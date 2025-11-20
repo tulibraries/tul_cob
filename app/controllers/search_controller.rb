@@ -23,6 +23,7 @@ class SearchController < CatalogController
       @results = apply_bento_item_partials(@results)
       @lib_guides_results = extract_engine_result(@results, "lib_guides")
       @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
+      @bento_columns = build_bento_columns(@results) if Flipflop.style_updates?
     end
 
     respond_to do |format|
@@ -101,5 +102,22 @@ class SearchController < CatalogController
       else
         results
       end
+    end
+
+    def build_bento_columns(results)
+      columns = { left: [], right: [] }
+      return columns unless results.present?
+
+      grid_index = 0
+      helpers.renderable_results(results).each_pair do |engine_id, result|
+        next if engine_id == "archives_space" && !helpers.aspace_integration_enabled?
+        next if ["cdm", "lib_guides"].include?(engine_id)
+
+        target = grid_index.even? ? :left : :right
+        columns[target] << [engine_id, result]
+        grid_index += 1
+      end
+
+      columns
     end
 end
