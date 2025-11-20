@@ -8,22 +8,6 @@ RSpec.describe AlmawsAvailability, type: :model do
 
   describe "Availability::TemporaryStatus" do
 
-    context "item is in temporary MAIN storage" do
-      let(:item) do
-        Alma::BibItem.new(
-          "holding_data" => { "in_temp_location" => true,
-                              "temp_location" => { "value" => "storage" },
-                              "temp_library" => { "value" => "MAIN", "desc" => "MAIN" } },
-          "item_data" => { "base_status" => { "value" => "1" } }
-          )
-      end
-
-      it "displays Temporarily unavailable" do
-        expect(subject.status).to eq("Temporarily unavailable")
-        expect(subject.icon).to eq "close-icon"
-      end
-    end
-
     context "item is in temporary ROME storage" do
       let(:item) do
         Alma::BibItem.new(

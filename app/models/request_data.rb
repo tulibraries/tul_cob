@@ -13,9 +13,7 @@ class RequestData
   end
 
   def item_holding_ids
-    @items
-      .select { |item| item.location != "storage" }
-      .collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
+    @items.collect { |item| [item["holding_data"]["holding_id"], item["item_data"]["pid"]] }.to_h
   end
 
   def item_holding_ids_backup
