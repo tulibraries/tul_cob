@@ -25,11 +25,17 @@
       <% end %>
     <% end %>
 
-    <%= link_to_unless(item.link.blank?, item.complete_title.truncate(130), item.link) %>
+    <% if item.engine_id != "archival_collections" %>
+      <%= link_to_unless(item.link.blank?, item.complete_title.truncate(130), item.link) %>
+    <% end %>
 
     <% item.custom_data["records"].each do |item| #cdm api response %> 
       <%= cdm_record_link(item) %>
     <% end if item.custom_data["records"].present? %>
+
+    <% if item.engine_id == "archival_collections" %> 
+      <%= link_to item.title, item.link, target: "_blank", rel: "noopener noreferrer" %>
+    <% end %>
 
     <% if item.display_format.present? || item.display_language.present? %>
 
