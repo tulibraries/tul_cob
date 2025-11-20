@@ -139,8 +139,7 @@ module SearchHelper
     render partial: "bento_results_new", locals: {
       results_class:,
       comp_class:,
-      results:,
-      options: }
+      results:, options: }
   end
 
   def bento_grid_position_class(index)
