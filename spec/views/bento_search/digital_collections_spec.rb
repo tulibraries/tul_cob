@@ -13,11 +13,14 @@ RSpec.describe "bento_search digital collections partials", type: :view do
     describe partial do
       it "renders the CDM suggestions when no results exist" do
         assign(:results, { "cdm" => BentoSearch::Results.new })
-        assign(:params, { q: "test" }) if partial == "search/digital_collections"
+        encoded_query = { q: "test" }.to_query.split("=", 2).last
+        collections = I18n.t("bento.cdm_collections_list")
+        cdm_link = I18n.t("bento.cdm_full_results_link", collections:, query: encoded_query)
+        allow(view).to receive(:cdm_results_link).and_return(cdm_link)
 
         render partial: partial
 
-        expect(rendered).to include(I18n.t("no_results.cdm_html"))
+        expect(rendered).to include(I18n.t("no_results.cdm_html", cdm_link: cdm_link))
       end
     end
   end

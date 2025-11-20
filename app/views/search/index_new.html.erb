@@ -5,26 +5,15 @@
 
 
   <%= render partial: "research_guides_faq_new", locals: { lib_guides_results: @lib_guides_results } %>
+  <%= render partial: "digital_collections_new" %>
+  <%= render partial: "resource_types_new" if @response.present? %>
 
-  <% if @response %>
-    <%= render :partial => "digital_collections_new" %>
-  <% else %>
-    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for digital_collections partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
-  <% end %>
-
-  <% if @response %>
-    <%= render :partial => "resource_types_new" %>
-  <% else %>
-    <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for resource_types partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
-  <% end %>
+  <% $stderr.puts("\n****\n**** @response was nil from 'search_controller#index' for bento index page -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
 
   <% faq_url = I18n.t("bento.faq_link", default: "https://answers.library.temple.edu") %>
   <div class="faq-link-section text-center">
-    <%= link_to faq_url, class: "faq-link d-inline-flex align-items-center justify-content-center",
-      target: "_blank", rel: "noopener" do %>
-      <%= image_tag "svg/unknown.svg", class: "faq-link-icon me-3", alt: "" %>
-      <span><%= I18n.t("bento.faq_text", default: "Frequently asked questions") %></span>
-    <% end %>
+    <%= image_tag "svg/question.svg", class: "faq-link-icon me-3", alt: "icon for faqs" %>
+    <%= link_to I18n.t("bento.faq_text", default: "Frequently asked questions"), faq_url, class: "faq-link d-inline-flex align-items-center justify-content-center", target: "_blank" %>
   </div>
 
 <% else %>

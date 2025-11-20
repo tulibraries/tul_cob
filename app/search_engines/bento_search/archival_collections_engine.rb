@@ -20,6 +20,7 @@ module BentoSearch
 
     def results(records)
       BentoSearch::Results.new.tap do |bento_results|
+        bento_results.total_items = { query_total: records.length }
         records.each { |record| bento_results << conform_to_bento_result(record) }
       end
     end
@@ -86,6 +87,17 @@ module BentoSearch
       base_public_url = "https://scrcarchivesspace.temple.edu"
       uri = item["uri"] || ""
       "#{base_public_url}#{uri}"
+    end
+
+    def url(helper)
+      query = CGI.escape(helper.params[:q].to_s)
+      "https://scrcarchivesspace.temple.edu/search?utf8=%E2%9C%93&op%5B%5D=&q%5B%5D=#{query}&limit=&field%5B%5D=&from_year%5B%5D=&to_year%5B%5D=&commit=Search"
+    end
+
+    def view_link(total = nil, helper)
+      full_url = url(helper)
+      link_text = Flipflop.style_updates? ? "See all results" : "View all results"
+      helper.link_to link_text, full_url, class: "bento-full-results", target: "_blank"
     end
   end
 end

@@ -1,11 +1,5 @@
-<h3 class="pt-3"><%= t("no_results.title", engine: "research guide") %></h3>
-<hr />
+<h3 class="no-results"><%= t("no_results.title", engine: "research guides") %></h3>
 
 <div class="noresults">
-<h4><%= t("no_results.header") %></h4>
-  <ul>
-    <li>
-      <%= t("bento.zero_results.guides_html", href: link_to(t("bento.zero_results.guides_href"), t("bento.zero_results.guides_link"), target: "_blank")) %>
-    </li>
-  </ul>
+  <%= render partial: "search/guides_suggestions" %>
 </div>

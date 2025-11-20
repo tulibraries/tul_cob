@@ -38,6 +38,28 @@ module SearchHelper
     BentoSearch.get_engine(results.engine_id).view_link(total, self)
   end
 
+  def cdm_encoded_query(raw_term = params[:q])
+    sanitized = raw_term.to_s.gsub("/", " ").strip
+    return "" if sanitized.blank?
+
+    { q: sanitized }.to_query.split("=", 2).last
+  end
+
+  def cdm_collections_list
+    I18n.t("bento.cdm_collections_list")
+  end
+
+  def cdm_base_link
+    "https://digital.library.temple.edu/digital/search/collection/#{cdm_collections_list}"
+  end
+
+  def cdm_results_link(raw_term = params[:q])
+    encoded = cdm_encoded_query(raw_term)
+    return cdm_base_link if encoded.blank?
+
+    I18n.t("bento.cdm_full_results_link", collections: cdm_collections_list, query: encoded)
+  end
+
   # TODO: move to decorator or engine class.
   def bento_link_to_online_results(results)
     total = number_with_delimiter(total_online results)
@@ -133,6 +155,8 @@ module SearchHelper
   def render_linked_results_new(engine_id)
     engine_ids = engine_display_configurations[engine_id][:linked_engines] || [] rescue []
     results = @results.select { |id, result| engine_ids.include? id }
+    return if results.none?
+
     render_bento_results_new(results, render_child_box: true, results_class: "bento_results_new", comp_class: "bento_compartment_new")
   end
 
