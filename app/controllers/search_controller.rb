@@ -36,9 +36,10 @@ class SearchController < CatalogController
         @results["lib_guides_query_term"] = @lib_guides_query_term unless @results.nil?
 
         render plain: @results.to_json, status: 200, content_type: "application/json"
-      end
     end
   end
+
+end
 
   private
     def configure_bento_item_partials
