@@ -102,5 +102,4 @@ class SearchController < CatalogController
         results
       end
     end
-
 end
