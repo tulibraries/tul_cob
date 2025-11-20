@@ -135,14 +135,12 @@ module SearchHelper
   def render_bento_results_new(results = @results, options = {})
     results_class = options[:results_class] || "bento-results-grid"
     comp_class = options[:comp_class] || "bento_compartment p-2 mt-4 me-4"
-    columns = options[:columns]
 
     render partial: "bento_results_new", locals: {
       results_class:,
       comp_class:,
       results:,
-      options:,
-      columns: }
+      options: }
   end
 
   def bento_grid_position_class(index)
