@@ -1,10 +1,3 @@
-<% cdm_collections = I18n.t("bento.cdm_collections_list") %>
-<% cdm_query = cdm_encoded_query %>
-<% cdm_base_link = "https://digital.library.temple.edu/digital/search/collection/#{cdm_collections}" %>
-<% cdm_link = cdm_query.present? ?
-  I18n.t("no_results.cdm_html_link",
-    cdm_link: I18n.t("bento.cdm_full_results_link", collections: cdm_collections, query: cdm_query)) :
-  cdm_base_link %>
 <ul>
-  <li><%= t("no_results.cdm_html", cdm_link:) %></li>
+  <li><%= t("no_results.cdm_html", cdm_link: cdm_results_link) %></li>
 </ul>

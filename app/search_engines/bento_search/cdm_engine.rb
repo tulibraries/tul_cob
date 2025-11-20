@@ -109,19 +109,25 @@ module BentoSearch
 
     def view_link(total = nil, helper)
       collections = I18n.t("bento.cdm_collections_list")
-      helper_query = helper.params[:q]
-      encoded_query =
-        if helper.respond_to?(:cdm_encoded_query)
-          helper.cdm_encoded_query(helper_query)
-        else
-          sanitized = helper_query.to_s.gsub("/", " ").strip
-          sanitized.blank? ? "" : { q: sanitized }.to_query.split("=", 2).last
-        end
+      helper_query = helper.respond_to?(:params) ? helper.params[:q] : nil
+
       url =
-        if encoded_query.present?
-          I18n.t("bento.cdm_full_results_link", collections:, query: encoded_query)
+        if helper.respond_to?(:cdm_results_link)
+          helper.cdm_results_link(helper_query)
         else
-          "#{base_url}/digital/search/collection/#{collections}"
+          encoded_query =
+            if helper.respond_to?(:cdm_encoded_query)
+              helper.cdm_encoded_query(helper_query)
+            else
+              sanitized = helper_query.to_s.gsub("/", " ").strip
+              sanitized.blank? ? "" : { q: sanitized }.to_query.split("=", 2).last
+            end
+
+          if encoded_query.present?
+            I18n.t("bento.cdm_full_results_link", collections:, query: encoded_query)
+          else
+            "#{base_url}/digital/search/collection/#{collections}"
+          end
         end
       link_text = total.present? ? "See all results" : "Browse all digitized collections"
       helper.link_to link_text, url, class: "bento-full-results", target: "_blank"
