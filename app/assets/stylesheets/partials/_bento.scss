@@ -60,6 +60,14 @@
 	}
 }
 
+.bento_compartment_new.bento-empty .bento-items {
+	padding-bottom: 1rem;
+}
+
+.bento_compartment_new.bento-empty .bento-search-engine {
+	margin-bottom: 0;
+}
+
 @media (max-width: 576px) {
 	.bento_compartment_new .bento-items h2,
 	.libguides-results-container h2.bento-resource-types,
@@ -184,6 +192,7 @@
 		&:last-of-type {
 			border-bottom: 0;
 			margin-bottom: 0;
+			padding-bottom: 0;
 		}
 	}
 }
