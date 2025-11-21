@@ -9,10 +9,17 @@ export default class extends Controller {
   static targets = [ "panel", "spinner", "request", "href" ]
 
   initialize() {
-    this.availability()
+    // Only call availability if we have the required targets
+    if (this.hasPanelTarget) {
+      this.availability();
+    }
   }
 
   availability() {
+    if (!this.hasPanelTarget) {
+      return;
+    }
+    
     fetch(this.data.get("url"), {
       credentials: "same-origin",
       headers: {
@@ -21,13 +28,16 @@ export default class extends Controller {
     })
       .then(response => response.text())
       .then(html => {
-        this.panelTarget.innerHTML = html
-        if (!window.campus_closed) {
-          $("#requests-container").removeClass("hidden");
-          $('[data-long-list]').longList();
-          var mms_id = $("#record-view-iframe").data("availability-id");
-          var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
-          $("#request-btn-" + mms_id).attr("href", requests_url);
+        // Double-check that the panel target still exists when the response comes back
+        if (this.hasPanelTarget) {
+          this.panelTarget.innerHTML = html
+          if (!window.campus_closed) {
+            $("#requests-container").removeClass("hidden");
+            $('[data-long-list]').longList();
+            var mms_id = $("#record-view-iframe").data("availability-id");
+            var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
+            $("#request-btn-" + mms_id).attr("href", requests_url);
+          }
         }
       })
   }
