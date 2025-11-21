@@ -32,7 +32,6 @@ class SearchController < CatalogController
         render template
       end
       format.json do
-
         @results["lib_guides_query_term"] = @lib_guides_query_term unless @results.nil?
 
         render plain: @results.to_json, status: 200, content_type: "application/json"
@@ -41,6 +40,7 @@ class SearchController < CatalogController
   end
 
   private
+
     def configure_bento_item_partials
       item_partial = Flipflop.style_updates? ? "bento_search/std_item_new" : "bento_search/std_item"
       bento_engines = %w[blacklight journals databases library_website books_and_media articles cdm lib_guides]

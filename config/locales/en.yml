@@ -53,12 +53,12 @@ en:
     purchase_order_extra_instructions: "You may add extra instructions in the message field below if desired."
   blacklight:
     application_name: "Library Search"
-    section_heading_html: "<strong>Books & Media</strong> includes print books and ebooks, streaming audio and video, DVDs, musical scores, government documents, materials in our special and digital collections, and other online resources."
+    section_heading_html: "<strong>Books & Media</strong> includes books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
     scrc: "Special Collections Research Center"
     scrc_link: "https://library.temple.edu/scrc"
     blockson: "Charles L. Blockson Afro-American Collection"
     blockson_link: "https://library.temple.edu/collections/blockson"
-    explanation_html: "<strong>Books &amp; Media</strong> includes print books and ebooks, streaming audio and video, DVDs, musical scores, government documents, materials in our special and digital collections, and other online resources."
+    explanation_html: "<strong>Books &amp; Media</strong> includes books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
     zero_results:
       title_html: "<strong>No results</strong> found for your search."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
@@ -223,13 +223,13 @@ en:
   articles:
     application_name: "Library Articles Search"
     greeting: "Welcome to the Articles Search"
-    section_heading_html: "<p><strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
+    section_heading_html: "<p><strong>Articles</strong> includes individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
     citation_heading_html: "<strong>Have specific citation information?</strong>"
     libkey_io: "LibKey.io"
     citation_html: "Try %{libkey_io} for DOI/PMID searches or our %{citation_tool} tool."
     citation_tool: "Find by Citation"
     citation_link: "https://temple.primo.exlibrisgroup.com/discovery/citationlinker?vid=01TULI_INST:TULI"
-    explanation_html: "<strong>Articles</strong> includes scholarly journal articles, newspaper articles, ebooks, book chapters, and other resources."
+    explanation_html: "<strong>Articles</strong> includes individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
     zero_results:
@@ -238,10 +238,12 @@ en:
     libkey_button_html: "View full-text PDF <span class='libkey-external-link-icon'></span>"
     retracted_button_html: "Retracted article <span class='libkey-external-link-icon'></span>"
   website:
-    section_heading_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
-    explanation_html: "<strong>Library Website</strong> includes online information about Temple University Libraries’ services, collections, events, finding aids, and more."
+    section_heading_html: "<strong>Library Website</strong> includes information about library services, spaces, hours, policies, staff, events, and how to get help."
+    explanation_html: "<strong>Library Website</strong> includes information about library services, spaces, hours, policies, staff, events, and how to get help."
 
   bento:
+    archival_collections:
+      nice_name: "Archival Collections"
     blacklight:
       nice_name: "Blacklight"
     articles:
@@ -263,13 +265,14 @@ en:
     digital_collections_header: "Digitized Collections for unique materials held by Temple"
     description_texts:
       default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      books_and_media: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      articles: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      databases: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      journals: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      library_website: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      research_guides: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      digital_collections: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      books_and_media: "Books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
+      articles: "Individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
+      databases: "Searchable collections organized by topic or format—use them to find articles, data, images, and more."
+      journals: "Scholarly journal, newspaper, and magazine titles you can browse by issue or search within."
+      library_website: "Information about library services, spaces, hours, policies, staff, events, and how to get help."
+      research_guides: "Library-curated resources on specific topics and courses to help you find the best sources for your research."
+      digital_collections: "Digitized photographs, documents, audio, video, and other historical materials from Temple’s special collections."
+      archival_collections: "Primary sources and other rare materials—including manuscripts, photographs, correspondence, and publications—in the Special Collections Research Center and the Charles L. Blockson Afro-American Collection."
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Library Search is your gateway to discover library content. Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
@@ -289,6 +292,10 @@ en:
       guides_html: "Try browsing our %{href}"
       guides_href: "Research Guides."
       guides_link: "https://guides.temple.edu"
+      archival_collections_html: Try browsing our %{href}
+      archival_collections_href: "Archival Collections."
+      archival_collections_link: "https://scrcarchivesspace.temple.edu/"
+    cdm_full_results_link: "https://digital.library.temple.edu/digital/search/collection/%{collections}/searchterm/%{query}/order/nosort"
   catalog_advanced_search: "Advanced Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
@@ -296,7 +303,7 @@ en:
   ask_librarian: "Contact the libraries"
 
   no_results:
-    title: "No %{engine} results found"
+    title: "No %{engine} results found."
     header: "Suggestions"
     spell_check: "Check your spelling."
     modify_words: "Try different or fewer keywords."
@@ -319,15 +326,18 @@ en:
     additional_options_html: "For more information about borrowing from another library, please consult the %{href}."
     additional_options_href: "library website"
     additional_options_link: "https://library.temple.edu/services/11"
-    cdm_html: Try browsing our <a href="https://digital.library.temple.edu/" target="_blank">Digitized Collections</a>.
-    cdm_html_link: "https://digital.library.temple.edu/"
+    guides_no_results_text: "Browse our research guides by subject"
+    guides_no_results_link: "https://guides.temple.edu/?b=s"
+    guides_html: Try browsing our <a href="https://guides.temple.edu/?b=s" target="_blank">Research Guides</a>.
+    cdm_html: Try browsing our <a href="%{cdm_link}" target="_blank">Digitized Collections</a>.
+    cdm_html_link: "%{cdm_link}"
 
   primo_central:
     link_to_resource: "Link to Resource"
 
   journals:
-    section_heading_html: "<strong>Journals</strong> includes subscription-based and open access journals, newspapers, trade publications, magazines, and more.<br><br>Visit individual journal titles to browse or search for articles within."
-    explanation_html: "<strong>Journals</strong> includes subscription-based and open access journals, newspapers, trade publications, magazines, and more."
+    section_heading_html: "<strong>Journals</strong> includes scholarly journal, newspaper, and magazine titles you can browse by issue or search within."
+    explanation_html: "<strong>Journals</strong> includes scholarly journal, newspaper, and magazine titles you can browse by issue or search within."
     zero_results:
       title_html: "<strong>No journal results</strong> found for your search."
       scholarly_articles: "Are you looking for scholarly journal articles? Try:"
@@ -347,7 +357,7 @@ en:
     link_href: "https://guides.temple.edu/az.php"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
-    home_html: "<strong>Databases</strong> includes links to subscription-based and open access databases. These are search engines containing a variety of source types and often related to a subject or discipline."
+    home_html: "<strong>Databases</strong> includes searchable collections organized by topic or format—use them to find articles, data, images, and more."
     home_question_html: "<strong>Not sure which database to start with?</strong>"
     subject_browse_html: "Try browsing by %{href} or "
     zero_results:

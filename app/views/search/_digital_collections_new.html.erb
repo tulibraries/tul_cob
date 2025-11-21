@@ -6,7 +6,8 @@
     <% if cdm_results.present? %>
       <%= bento_link_to_full_results(cdm_results) %>
     <% else %>
-      <%= link_to "Browse all digtized collections", I18n.t("no_results.cdm_html_link"), class: "bento-full-results", target: "_blank" %>
+      <%= link_to "Browse all digtized collections", cdm_results_link,
+        class: "bento-full-results", target: "_blank" %>
     <% end %>
   </h2>
   <p class="ps-0 py-3"><%= t("bento.description_texts.digital_collections") %></p>

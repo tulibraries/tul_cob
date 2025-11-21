@@ -86,14 +86,6 @@ RSpec.describe RequestData, type: :model do
         expect(subject.item_holding_ids).to eq("22255855450003811" => "23255855440003811", "22255855480003811" => "23255855460003811")
       end
     end
-
-    context "does not collect holding ids and item pids for items in temporary storage" do
-      let(:bib_items) { Alma::BibItem.find("temp_storage") }
-
-      it "returns each material type hash once" do
-        expect(subject.item_holding_ids).to eq({})
-      end
-    end
   end
 
 

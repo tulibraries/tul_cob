@@ -1,5 +1,5 @@
 <% wrapper_class ||= "" %>
-<div class="bento_compartment_new <%= engine_id %> <%= wrapper_class %>">
+<div class="bento_compartment_new <%= engine_id %> <%= wrapper_class %> <%= 'bento-empty' if total_items(result).to_i.zero? %>">
   <div class="bento-items">
     <h2>
       <%= bento_titleize(engine_id) %>

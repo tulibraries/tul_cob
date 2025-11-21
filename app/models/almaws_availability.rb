@@ -5,7 +5,7 @@
 class AlmawsAvailability
   # Temporary status changes
   TEMP_LIBRARIES = []
-  TEMP_LOCATIONS = [ "storage"]
+  TEMP_LOCATIONS = []
 
   def self.new(item)
     if TEMP_LOCATIONS.include?(item.location)

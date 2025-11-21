@@ -19,7 +19,7 @@ class ArchivalDecorator < BentoSearch::StandardDecorator
     collection_title = _base.custom_data["collection_title"]
     collection_url = "https://scrcarchivesspace.temple.edu#{collection_ref}"
 
-    return "<span class='bento-label'>In collection: </span><a href='#{collection_url}'>#{collection_title}</a>".html_safe
+    return "<span class='bento-label'>In collection: </span><a href='#{collection_url}' target='_blank' rel='noopener noreferrer'>#{collection_title}</a>".html_safe
   end
 
   def primary_types
