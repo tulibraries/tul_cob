@@ -86,36 +86,19 @@
 
 .bento-results-grid {
 	width: 100%;
-}
-
-.bento-results-grid::after {
-	content: "";
-	display: table;
-	clear: both;
+	position: relative;
 }
 
 .bento-grid-left,
 .bento-grid-right {
 	width: 100%;
-	margin-bottom: 2rem;
+	box-sizing: border-box;
 }
 
 @media (min-width: 768px) {
 	.bento-grid-left,
 	.bento-grid-right {
-		width: calc(50% - 1.5rem);
-	}
-
-	.bento-grid-left {
-		float: left;
-		clear: left;
-		margin-right: 1.5rem;
-	}
-
-	.bento-grid-right {
-		float: right;
-		clear: right;
-		margin-left: 1.5rem;
+		width: calc(50% - 12px);
 	}
 }
 
