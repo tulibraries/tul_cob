@@ -54,14 +54,18 @@ module SearchHelper
   end
 
   def cdm_collections_link
-    "#{cdm_base_link}/digital/search/collection/#{cdm_collection_ids}"
+    path = I18n.t("bento.cdm.collections_path")
+    "#{cdm_base_link}#{path}/#{cdm_collection_ids}"
   end
 
   def cdm_results_link(raw_term = params[:q])
     encoded = cdm_encoded_query(raw_term)
     return cdm_collections_link if encoded.blank?
-
-    I18n.t("bento.cdm_full_results_link", collections: cdm_collection_ids, query: encoded)
+    I18n.t(
+      "bento.cdm_full_results_link",
+      collections: cdm_collection_ids,
+      query: encoded
+    )
   end
 
   # TODO: move to decorator or engine class.

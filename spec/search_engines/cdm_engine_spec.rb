@@ -7,13 +7,13 @@ RSpec.describe BentoSearch::CDMEngine do
 
   describe "#view_link" do
     let(:collection_ids) { Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)) }
-    let(:first_collection) { collection_ids.first }
+    let(:collections_param) { collection_ids.join("!") }
     let(:base_url) { I18n.t("bento.cdm.base_url") }
 
     it "uses 'See all results' text when totals are present" do
       helper = double("ViewHelper")
       allow(helper).to receive(:params).and_return(ActionController::Parameters.new(q: "cat"))
-      expected_url = "#{base_url}/digital/search/collection/#{first_collection}/searchterm/cat/order/nosort"
+      expected_url = I18n.t("bento.cdm_full_results_link", collections: collections_param, query: "cat")
       allow(helper).to receive(:cdm_results_link).with("cat").and_return(expected_url)
 
       expect(helper).to receive(:link_to)

@@ -298,6 +298,7 @@ en:
     cdm_full_results_link: "https://digital.library.temple.edu/digital/search/collection/%{collections}/searchterm/%{query}/order/nosort"
     cdm:
       base_url: "https://digital.library.temple.edu"
+      collections_path: "/digital/search/collection"
   catalog_advanced_search: "Advanced Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
