@@ -6,7 +6,7 @@
     <% if cdm_results.present? %>
       <%= bento_link_to_full_results(cdm_results) %>
     <% else %>
-      <%= link_to "Browse all digtized collections", cdm_results_link,
+      <%= link_to "Browse all digtized collections", cdm_base_link,
         class: "bento-full-results", target: "_blank" %>
     <% end %>
   </h2>
