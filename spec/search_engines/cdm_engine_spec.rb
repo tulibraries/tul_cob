@@ -17,7 +17,7 @@ RSpec.describe BentoSearch::CDMEngine do
       allow(helper).to receive(:cdm_results_link).with("cat").and_return(expected_url)
 
       expect(helper).to receive(:link_to)
-        .with("See all results", expected_url, class: "bento-full-results", target: "_blank")
+        .with("See all results", expected_url, class: "bento-full-results bento-cdm-header", target: "_blank")
         .and_return("<a>See all results</a>")
 
       expect(engine.view_link(123, helper)).to eq("<a>See all results</a>")
@@ -30,7 +30,7 @@ RSpec.describe BentoSearch::CDMEngine do
       allow(helper).to receive(:cdm_base_link).and_return(expected_url)
 
       expect(helper).to receive(:link_to)
-        .with("Browse all digitized collections", expected_url, class: "bento-full-results", target: "_blank")
+        .with("Browse all digitized collections", expected_url, class: "bento-full-results bento-cdm-header", target: "_blank")
         .and_return("<a>Browse all digitized collections</a>")
 
       expect(engine.view_link(nil, helper)).to eq("<a>Browse all digitized collections</a>")
