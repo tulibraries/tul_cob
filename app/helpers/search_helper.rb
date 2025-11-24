@@ -45,19 +45,27 @@ module SearchHelper
     { q: sanitized }.to_query.split("=", 2).last
   end
 
-  def cdm_collections_list
-    I18n.t("bento.cdm_collections_list")
+  def cdm_collection_ids
+    Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)).join("!")
   end
 
   def cdm_base_link
-    "https://digital.library.temple.edu/digital/search/collection/#{cdm_collections_list}"
+    I18n.t("bento.cdm.base_url")
+  end
+
+  def cdm_collections_link
+    path = I18n.t("bento.cdm.collections_path")
+    "#{cdm_base_link}#{path}/#{cdm_collection_ids}"
   end
 
   def cdm_results_link(raw_term = params[:q])
     encoded = cdm_encoded_query(raw_term)
-    return cdm_base_link if encoded.blank?
-
-    I18n.t("bento.cdm_full_results_link", collections: cdm_collections_list, query: encoded)
+    return cdm_collections_link if encoded.blank?
+    I18n.t(
+      "bento.cdm_full_results_link",
+      collections: cdm_collection_ids,
+      query: encoded
+    )
   end
 
   # TODO: move to decorator or engine class.

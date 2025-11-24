@@ -1,5 +1,4 @@
 <% cdm_results = @results["cdm"] %>
-<% cdm_collection_ids = Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)).join("!") %>
 
 <div class="bento-resource-container cdm-results-container">
   <h2 class="bento-resource-types bg-lighter-grey"><%= t("bento.digital_collections_header") %></h2>
@@ -21,7 +20,7 @@
       </li>
     <% end %>
     <li class="w-100">
-      <%= link_to "View all digitized collections results >", "https://digital.library.temple.edu/digital/search/collection/#{cdm_collection_ids}/searchterm/#{params[:q]}/order/nosort", target: "_blank" %>
+      <%= link_to "View all digitized collections results >", cdm_results_link, target: "_blank" %>
     </li>
   </ul>
   <% else %>

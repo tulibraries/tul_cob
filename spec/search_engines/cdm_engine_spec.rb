@@ -6,21 +6,14 @@ RSpec.describe BentoSearch::CDMEngine do
   subject(:engine) { described_class.new }
 
   describe "#view_link" do
-    let(:collection_ids) { ["photos"] }
-
-    before do
-      @original_cdm_config = Rails.configuration.cdm
-      Rails.configuration.cdm = { collection_ids: collection_ids }.with_indifferent_access
-    end
-
-    after do
-      Rails.configuration.cdm = @original_cdm_config
-    end
+    let(:collection_ids) { Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)) }
+    let(:collections_param) { collection_ids.join("!") }
+    let(:base_url) { I18n.t("bento.cdm.base_url") }
 
     it "uses 'See all results' text when totals are present" do
       helper = double("ViewHelper")
       allow(helper).to receive(:params).and_return(ActionController::Parameters.new(q: "cat"))
-      expected_url = "https://digital.library.temple.edu/digital/search/collection/photos/searchterm/cat/order/nosort"
+      expected_url = I18n.t("bento.cdm_full_results_link", collections: collections_param, query: "cat")
       allow(helper).to receive(:cdm_results_link).with("cat").and_return(expected_url)
 
       expect(helper).to receive(:link_to)
@@ -33,8 +26,8 @@ RSpec.describe BentoSearch::CDMEngine do
     it "falls back to 'Browse all digitized collections' when totals are missing" do
       helper = double("ViewHelper")
       allow(helper).to receive(:params).and_return(ActionController::Parameters.new)
-      expected_url = "https://digital.library.temple.edu/digital/search/collection/photos"
-      allow(helper).to receive(:cdm_results_link).with(nil).and_return(expected_url)
+      expected_url = base_url
+      allow(helper).to receive(:cdm_base_link).and_return(expected_url)
 
       expect(helper).to receive(:link_to)
         .with("Browse all digitized collections", expected_url, class: "bento-full-results", target: "_blank")

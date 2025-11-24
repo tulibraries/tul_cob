@@ -289,13 +289,16 @@ en:
       databases_html: "Try browsing our %{href}"
       databases_href: "Databases."
       databases_link: "https://guides.temple.edu/az.php"
-      guides_html: "Try browsing our %{href}"
-      guides_href: "Research Guides."
-      guides_link: "https://guides.temple.edu"
-      archival_collections_html: Try browsing our %{href}
-      archival_collections_href: "Archival Collections."
-      archival_collections_link: "https://scrcarchivesspace.temple.edu/"
+    guides_html: "Try browsing our %{href}"
+    guides_href: "Research Guides."
+    guides_link: "https://guides.temple.edu"
+    archival_collections_html: Try browsing our %{href}
+    archival_collections_href: "Archival Collections."
+    archival_collections_link: "https://scrcarchivesspace.temple.edu/"
     cdm_full_results_link: "https://digital.library.temple.edu/digital/search/collection/%{collections}/searchterm/%{query}/order/nosort"
+    cdm:
+      base_url: "https://digital.library.temple.edu"
+      collections_path: "/digital/search/collection"
   catalog_advanced_search: "Advanced Search"
   journals_advanced_search: "Advanced Journals Search"
   articles_advanced_search: "Advanced Articles Search"
