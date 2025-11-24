@@ -185,7 +185,9 @@ module CatalogHelper
   # Blacklight::UrlHelperBehavior stays mixed into CatalogHelper,
   # so templates calling show_solr_document_url would raise. Delegating to
   # solr_document_url keeps the existing templates working regardless of
-  # how the helper modules are reloaded.
+  # how the helper modules are reloaded. Even though no template in our 
+  # repo mentions it, the upstream Blacklight views/translations still 
+  # expect it to exist.
   def show_solr_document_url(document, **options)
     solr_document_url(document, **options)
   end
