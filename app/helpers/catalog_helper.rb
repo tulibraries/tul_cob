@@ -181,11 +181,12 @@ module CatalogHelper
     return args[:value].join("\n")
   end
 
-  # Blacklight 8 removed the legacy show_solr_document_url helper, but the
-  # Blacklight templates that ship with this app still invoke it when they set
-  # page titles.  Delegating to the current solr_document_url keeps those
-  # templates working without pulling in the old helper.
-  def show_solr_document_url(document, options = {})
-    solr_document_url(document, options)
+  # Rails 7.2's Zeitwerk reloading no longer guarantees
+  # Blacklight::UrlHelperBehavior stays mixed into CatalogHelper,
+  # so templates calling show_solr_document_url would raise. Delegating to
+  # solr_document_url keeps the existing templates working regardless of
+  # how the helper modules are reloaded.
+  def show_solr_document_url(document, **options)
+    solr_document_url(document, **options)
   end
 end
