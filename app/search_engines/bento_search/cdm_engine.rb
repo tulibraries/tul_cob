@@ -111,7 +111,7 @@ module BentoSearch
       helper_query = helper.params[:q]
       url = total.present? ? helper.cdm_results_link(helper_query) : helper.cdm_base_link
       link_text = total.present? ? "See all results" : "Browse all digitized collections"
-      helper.link_to link_text, url, class: "bento-full-results", target: "_blank"
+      helper.link_to link_text, url, class: "bento-full-results bento-cdm-header", target: "_blank"
     end
 
 

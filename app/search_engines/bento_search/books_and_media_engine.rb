@@ -28,7 +28,7 @@ module BentoSearch
     def view_link(total = nil, helper)
       url = url(helper)
       link_text = Flipflop.style_updates? ? "See all #{total} results" : "View all #{total} results"
-      helper.link_to link_text, url, class: "bento-full-results"
+      helper.link_to link_text, url, class: "bento-full-results bento_books_and_media_header"
     end
   end
 end
