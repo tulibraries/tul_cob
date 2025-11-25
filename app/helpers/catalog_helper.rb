@@ -188,7 +188,7 @@ module CatalogHelper
   # how the helper modules are reloaded. Even though no template in our
   # repo mentions it, the upstream Blacklight views/translations still
   # expect it to exist.
-  def show_solr_document_url(document, **options)
-    solr_document_url(document, **options)
+  def show_solr_document_url(document, *args, **kwargs)
+    solr_document_url(document, *args, **kwargs)
   end
 end
