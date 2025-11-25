@@ -16,11 +16,18 @@ require "rails_helper"
 RSpec.describe CatalogHelper, type: :helper do
 
   describe "#show_solr_document_url" do
-    it "delegates to solr_document_url" do
+    it "delegates keyword args" do
       document = double("document")
       expect(helper).to receive(:solr_document_url).with(document, foo: "bar").and_return("/catalog/123")
 
       expect(helper.show_solr_document_url(document, **{ foo: "bar" })).to eq("/catalog/123")
+    end
+
+    it "delegates options hash" do
+      document = double("document")
+      expect(helper).to receive(:solr_document_url).with(document, { foo: "bar" }).and_return("/catalog/456")
+
+      expect(helper.show_solr_document_url(document, { foo: "bar" })).to eq("/catalog/456")
     end
   end
 
