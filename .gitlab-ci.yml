@@ -79,28 +79,6 @@ tag_release:
   only:
     - tags
 
-tag_prod_chart:
-  stage: tag
-  extends: .tag_image
-  # Helm charts live in Harbor as OCI artifacts; add/update a "prod" tag so we
-  # can easily find the chart version that is currently deployed in production.
-  variables:
-    HARBOR_PROJECT: "tulibraries"
-    HARBOR_CHART_REPOSITORY: "charts%2Flibrarysearch"
-  only:
-    - tags
-  script:
-    - |
-      API_BASE="https://${HARBOR}/api/v2.0/projects/${HARBOR_PROJECT}/repositories/${HARBOR_CHART_REPOSITORY}"
-      curl --silent --show-error -u "${HARBOR_USERNAME}:${HARBOR_TOKEN}" \
-        -X DELETE "${API_BASE}/artifacts/prod/tags/prod" || echo "prod tag not present yet"
-    - |
-      curl --silent --show-error --fail \
-        -u "${HARBOR_USERNAME}:${HARBOR_TOKEN}" \
-        -H "Content-Type: application/json" \
-        -d "{\"name\":\"prod\"}" \
-        -X POST "${API_BASE}/artifacts/${HELM_VERSION_PROD}/tags"
-
 prod_deploy:
   variables:
     IMAGE: harbor.k8s.temple.edu/tulibraries/librarysearch
