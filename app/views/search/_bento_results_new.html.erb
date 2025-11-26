@@ -7,7 +7,7 @@
           <%= render partial: "lib_guide_recommender_bento_new" %>
         </div>
       <% end %>
-      <% next if engine_id == "archives_space" && !aspace_integration_enabled? %>
+      <% next if engine_id == "archival_collections" && !aspace_integration_enabled? %>
       <% next if ["cdm", "lib_guides"].include?(engine_id) %>
 
       <%= render partial: "search/bento_engine_card", locals: {
