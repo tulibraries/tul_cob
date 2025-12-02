@@ -52,7 +52,7 @@ tag:
 qa_deploy:
   variables:
     IMAGE: $HARBOR/tulibraries/librarysearch
-    RANCHER: rancher-np
+    RANCHER: np-rancher
     CLUSTER: $DEV_CLUSTER
   stage: deploy
   extends: .helm_setup
