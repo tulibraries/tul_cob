@@ -390,10 +390,10 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field("publisher_t", label: "Publisher") do |field|
+    config.add_search_field("publisher_txt", label: "Publisher") do |field|
       field.include_in_simple_select = false
       field.solr_parameters = {
-        qf: "publisher_t",
+        qf: "publisher_txt",
       }
     end
 
