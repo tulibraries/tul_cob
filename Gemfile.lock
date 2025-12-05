@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: d80d64c918d5b8f02fa70ae7fd3fde79208336bd
+  revision: e2273532cfbfe99e0b31bc6fdaba360cb2c4f35e
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -184,8 +184,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
@@ -408,7 +408,7 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.26.2)
     msgpack (1.8.0)
-    multi_json (1.17.0)
+    multi_json (1.18.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
     multipart-post (2.4.1)
@@ -481,7 +481,7 @@ GEM
     psych (5.2.6)
       date
       stringio
-    public_suffix (6.0.2)
+    public_suffix (7.0.0)
     puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
