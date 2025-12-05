@@ -104,7 +104,7 @@ tag_prod_chart:
 prod_deploy:
   variables:
     IMAGE: harbor.k8s.temple.edu/tulibraries/librarysearch
-    RANCHER: rancher
+    RANCHER: prod-rancher
     CLUSTER: $PROD_CLUSTER
   stage: deploy
   extends: .helm_setup
