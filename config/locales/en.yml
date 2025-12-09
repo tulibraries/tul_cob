@@ -264,7 +264,7 @@ en:
     research_guides_header: "Browse our Research Guides"
     digital_collections_header: "Digitized Collections for unique materials held by Temple"
     description_texts:
-      default: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      default: "default text"
       books_and_media: "Books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
       articles: "Individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
       databases: "Searchable collections organized by topic or format—use them to find articles, data, images, and more."
@@ -272,7 +272,7 @@ en:
       library_website: "Information about library services, spaces, hours, policies, staff, events, and how to get help."
       research_guides: "Library-curated resources on specific topics and courses to help you find the best sources for your research."
       digital_collections: "Digitized photographs, documents, audio, video, and other historical materials from Temple’s special collections."
-      archival_collections: "Primary sources and other rare materials—including manuscripts, photographs, correspondence, and publications—in the Special Collections Research Center and the Charles L. Blockson Afro-American Collection."
+      archival_collections: "Primary sources and other rare materials—including manuscripts, photographs, correspondence, and publications—which can be accessed onsite in the Special Collections Research Center and the Charles L. Blockson Afro-American Collection."
     application_name: "Library Bento Search Beta"
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Library Search is your gateway to discover library content. Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
