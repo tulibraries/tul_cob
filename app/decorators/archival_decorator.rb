@@ -19,14 +19,18 @@ class ArchivalDecorator < BentoSearch::StandardDecorator
     collection_title = _base.custom_data["collection_title"]
     collection_url = "https://scrcarchivesspace.temple.edu#{collection_ref}"
 
-    return "<span class='bento-label'>In collection: </span><a href='#{collection_url}' target='_blank' rel='noopener noreferrer'>#{collection_title}</a>".html_safe
+    return "<span class='bento-label'>In collection: </span><a href='#{collection_url}' target='_blank' rel='noopener noreferrer'>#{collection_title}</a>".html_safe unless custom_data["primary_types"] == "resource"
   end
 
   def primary_types
-    type = custom_data["primary_types"].to_s.chomp(".")
+    type  = custom_data["primary_types"].to_s.chomp(".")
     label = custom_data["primary_type_labels"].to_s.chomp(".")
-    return "#{primary_type_icon(type)} #{label.strip}".html_safe if type.present?
-    nil
+    level = custom_data["level"]&.titlecase.to_s.chomp(".")
+
+    return nil if type.blank?
+
+    text = (type == "resource" ? level : label).to_s.strip
+    "#{primary_type_icon(type)} #{text}".html_safe
   end
 
   def primary_type_icon(type)

@@ -59,10 +59,24 @@ RSpec.describe ArchivalDecorator do
         expect(decorator.collections).to be_nil
       end
     end
+
+    context "when primary_types is 'resource'" do
+      let(:custom_data) do
+        {
+          "collection_ref" => "/repositories/4/resources/127",
+          "collection_title" => "Asian Arts Initiative Records",
+          "primary_types" => "resource"
+        }
+      end
+
+      it "returns nil because resource records should not display collections" do
+        expect(decorator.collections).to be_nil
+      end
+    end
   end
 
   describe "#primary_types" do
-    context "when primary data is present" do
+    context "when primary data is present and primary_types is not 'resource'" do
       let(:custom_data) do
         {
           "primary_types" => "archival_object",
@@ -76,11 +90,26 @@ RSpec.describe ArchivalDecorator do
       end
     end
 
+    context "when primary_types is 'resource'" do
+      let(:custom_data) do
+        {
+          "primary_types" => "resource",
+          "primary_type_labels" => "Collection",
+          "level" => "Series"
+        }
+      end
+
+      it "returns icon and level instead of label" do
+        expect(decorator.primary_types)
+          .to eq("<span class='resource'></span> Series")
+      end
+    end
+
     context "when primary_types is missing" do
       let(:custom_data) { {} }
 
-      it "falls back to super" do
-        expect(decorator.primary_types).to be_nil.or be_a(String)
+      it "returns nil" do
+        expect(decorator.primary_types).to be_nil
       end
     end
   end
