@@ -27,6 +27,7 @@ module BentoSearch
 
     def conform_to_bento_result(item)
       primary_type = item["primary_type"].to_s.chomp(".")
+      level = item["level"].to_s.chomp(".")
       link = aspace_item_url(item)
       raw = JSON.parse(item["json"])
       title = item_title = raw["title"]
@@ -68,6 +69,7 @@ module BentoSearch
           "raw" => item["json"],
           "primary_type_labels" => PRIMARY_TYPE_LABELS[primary_type].to_s.chomp("."),
           "primary_types" => primary_type,
+          "level" => level,
         }
       )
     end
