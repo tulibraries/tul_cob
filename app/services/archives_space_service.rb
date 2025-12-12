@@ -26,8 +26,8 @@ class ArchivesSpaceService
         "q=#{CGI.escape(query)}",
         "page=#{page}",
         "page_size=#{page_size}",
-        "filter_term[]=publish:true",
-        "filter_term[]=suppressed:false"
+        "filter_query[]=publish:true",
+        "filter_query[]=suppressed:false"
       ] +
       types.map { |t| "type[]=#{t}" }
 
