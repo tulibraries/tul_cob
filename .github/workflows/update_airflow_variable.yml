@@ -26,6 +26,12 @@ jobs:
       - name: Install pipenv
         run: python -m pip install --upgrade pip pipenv
 
+      - name: Install Airflow host SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AIRFLOW_HOST_SSH_KEY }}" > ~/.ssh/conan_the_deployer
+          chmod 600 ~/.ssh/conan_the_deployer
+
       - name: Update Airflow variables
         run: bash .github/scripts/update-airflow.sh
         env:
