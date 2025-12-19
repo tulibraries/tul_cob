@@ -21,7 +21,7 @@ jobs:
       - name: Add SSH key for Airflow
         uses: webfactory/ssh-agent@v0.5.3
         with:
-          ssh-private-key: ${{ secrets.AIRFLOW_SSH_KEY }}
+          ssh-private-key: ${{ secrets.AIRFLOW_DEPLOY_KEY }}
 
       - name: Update Airflow variables
         run: bash .github/scripts/update-airflow.sh
