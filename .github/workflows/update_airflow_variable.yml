@@ -29,5 +29,6 @@ jobs:
       - name: Update Airflow variables
         run: bash .github/scripts/update-airflow.sh
         env:
+          ANSIBLE_VAULT_PASSWORD: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
           DOCKERHUB_USER: ${{ secrets.DOCKERHUB_USER }}
           DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
