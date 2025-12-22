@@ -479,7 +479,7 @@ GEM
       method_source (~> 1.0)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
-    psych (5.2.6)
+    psych (5.3.1)
       date
       stringio
     public_suffix (7.0.0)
@@ -637,7 +637,7 @@ GEM
     sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
     stackprof (0.2.27)
-    stringio (3.1.9)
+    stringio (3.2.0)
     summon (2.0.5)
       json
     terminal-table (4.0.0)
