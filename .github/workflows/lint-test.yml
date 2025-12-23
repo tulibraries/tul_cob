@@ -88,3 +88,13 @@ jobs:
       - name: Print Solr logs on failure
         if: failure()
         run: docker compose -f docker-compose.ci.yml logs solr
+
+  notify_on_failure:
+    if: failure()
+    needs: [lint_and_test]
+    uses: tulibraries/.github/.github/workflows/slack-notify.yml@main
+    with:
+      repo: ${{ github.repository }}
+      run_id: ${{ github.run_id }}
+      workflow: ${{ github.workflow }}
+    secrets: inherit
