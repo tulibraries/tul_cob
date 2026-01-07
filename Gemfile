@@ -13,7 +13,7 @@ gem "bento_search", git: "https://github.com/tulibraries/bento_search.git", bran
 gem "blacklight", "~> 7.41"
 gem "blacklight-marc"
 gem "blacklight-ris", git: "https://github.com/tulibraries/blacklight-ris.git", branch: "update-for-rails-7-blacklight-7"
-gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
+gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v8.0.0"
 gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
 gem "bootstrap", ">= 5.3.3"
 gem "bootsnap", "1.20.1"
