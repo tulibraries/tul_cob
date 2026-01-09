@@ -100,7 +100,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/primo
-  revision: 13c3a3082ec4389f5664c706e2cc611ede5bd389
+  revision: 73f372769150cbd56cf843ba5d0ad3390482189f
   branch: main
   specs:
     primo (0.4.0)
@@ -410,7 +410,7 @@ GEM
     minitest (5.26.2)
     msgpack (1.8.0)
     multi_json (1.18.0)
-    multi_xml (0.8.0)
+    multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
