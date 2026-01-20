@@ -115,19 +115,18 @@ class AlmawsController < CatalogController
         params["available_asrs_items"]
           .select { |item| item["description"] == options[:description] }
           .each do |item|
+            holding_id = item["holding_id"]
+            item_pid = item["item_pid"]
 
-          holding_id = item["holding_id"]
-          item_pid = item["item_pid"]
+            item_options = { holding_id:, item_pid: }
 
-          item_options = { holding_id:, item_pid: }
+            response = do_with_json_logger(log.merge(item_options)) {
+              Alma::ItemRequest.submit(options.merge(item_options))
+            }
 
-          response = do_with_json_logger(log.merge(item_options)) {
-            Alma::ItemRequest.submit(options.merge(item_options))
-          }
-
-          requests_made += 1
-          break
-        end
+            requests_made += 1
+            break
+          end
       end
 
       if requests_made > 0

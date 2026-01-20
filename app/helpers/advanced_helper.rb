@@ -95,14 +95,14 @@ module AdvancedHelper
   def advanced_params(my_params)
     my_params.except(:controller, :action)
       .select { |k, v|
-      # Sometimes is_advanced_search? does not return true|false answer.
-      # And, sometimes is_advanced_search? is not available at all.
-      if begin !(is_advanced_search? == true) rescue false end
-        !k.match?(/^(q|op|f)_/)
-      else
-        true
-      end
-    }.to_h
+        # Sometimes is_advanced_search? does not return true|false answer.
+        # And, sometimes is_advanced_search? is not available at all.
+        if begin !(is_advanced_search? == true) rescue false end
+          !k.match?(/^(q|op|f)_/)
+        else
+          true
+        end
+      }.to_h
   end
 
   def basic_search_path
@@ -268,27 +268,26 @@ module BlacklightAdvancedSearch
         .with_indifferent_access.select { |p| p.match(/^q/) }
         .select { |q, v| ! my_params.to_h[q].blank? }
         .map { |q, v|
+          position = q.to_s.scan(/_\d+$/)[0]
 
-        position = q.to_s.scan(/_\d+$/)[0]
+          if position.nil?
+            f = "search_field"
+          else
+            position = position.gsub("_", "").to_i
+            f = "f_#{position}"
+            # position -1 gets us the first op
+            op = "op_#{position - 1}"
+          end
 
-        if position.nil?
-          f = "search_field"
-        else
-          position = position.gsub("_", "").to_i
-          f = "f_#{position}"
-          # position -1 gets us the first op
-          op = "op_#{position - 1}"
-        end
-
-        field = blacklight_config.search_fields[my_params.to_h[f]].to_h
-        label = field[:label].to_s
-        if position == 1
-          query = my_params.to_h[q]
-        else
-          query = my_params.to_h[op].to_s + " " + my_params.to_h[q]
-        end
-        [label, query, [f, q, op]]
-      }
+          field = blacklight_config.search_fields[my_params.to_h[f]].to_h
+          label = field[:label].to_s
+          if position == 1
+            query = my_params.to_h[q]
+          else
+            query = my_params.to_h[op].to_s + " " + my_params.to_h[q]
+          end
+          [label, query, [f, q, op]]
+        }
     end
   end
 end
