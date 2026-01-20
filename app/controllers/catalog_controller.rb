@@ -70,6 +70,8 @@ class CatalogController < ApplicationController
     config.track_search_session = true
     config.raw_endpoint.enabled = true
 
+    config.search_builder_class = CatalogSearchBuilder
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
