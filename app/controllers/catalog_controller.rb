@@ -560,7 +560,7 @@ class CatalogController < ApplicationController
         # possibly non-html formats, this is consistent with what Rails does
         # on raising an ActiveRecord::RecordNotFound. Rails.root IS needed
         # for it to work under testing, without worrying about CWD.
-        render "errors/not_found", status: :not_found
+        render "errors/not_found", status: :not_found, formats: :html
       end
     end
   end
