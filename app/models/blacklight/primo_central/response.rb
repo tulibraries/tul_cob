@@ -33,19 +33,18 @@ module Blacklight::PrimoCentral
 
       stats = facets.select { |f| range_facet_fields.include? f["name"] }
         .map { |field|
+          values = field["values"]
+            .map { |f| { value: f["value"].to_i, count: f["count"] } }
+            .sort_by { |f| f[:value] }
 
-        values = field["values"]
-          .map { |f| { value: f["value"].to_i, count: f["count"] } }
-          .sort_by { |f| f[:value] }
+          min = (range&.min || values&.first&.fetch(:value, 0)).to_i
+          max = (range&.max || values&.last&.fetch(:value, 9999)).to_i
+          raise BlacklightRangeLimit::InvalidRange, "The min date must be before the max date" if min > max
 
-        min = (range&.min || values&.first&.fetch(:value, 0)).to_i
-        max = (range&.max || values&.last&.fetch(:value, 9999)).to_i
-        raise BlacklightRangeLimit::InvalidRange, "The min date must be before the max date" if min > max
-
-        data = facet_segments(field["name"], min, max, values)
-        stat = { min:, max:, missing: 0, data: }
-        [field["name"], stat]
-      }.to_h
+          data = facet_segments(field["name"], min, max, values)
+          stat = { min:, max:, missing: 0, data: }
+          [field["name"], stat]
+        }.to_h
 
       { stats_fields: stats }
     end

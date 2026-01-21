@@ -101,25 +101,25 @@ module Blacklight::PrimoCentral
 
       pq = Primo::Search::Query.send(op, query)
       pq.facet({
-          field: "rtype",
-          value: "books",
-          operation: :exclude
-        })
+        field: "rtype",
+        value: "books",
+        operation: :exclude
+      })
 
       primo_central_parameters[:query][:q] = pq
 
       blacklight_params.fetch(:f, {})
         .merge(blacklight_params.fetch(:f_inclusive, {}))
         .each do |field, values|
-        # Only facet known fields
-        next unless blacklight_config.facet_fields[field.to_s].present?
-        values.each do |value|
-          primo_central_parameters[:query][:q].facet(
-            field: solr_to_primo_facet(field),
-            value:
-          )
+          # Only facet known fields
+          next unless blacklight_config.facet_fields[field.to_s].present?
+          values.each do |value|
+            primo_central_parameters[:query][:q].facet(
+              field: solr_to_primo_facet(field),
+              value:
+            )
+          end
         end
-      end
     end
 
     def process_date_range_query(primo_central_parameters)
