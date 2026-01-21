@@ -6,7 +6,7 @@ namespace :tul_cob do
   namespace :solr do
 
     desc "Posts fixtures to Solr"
-    task :load_fixtures, [:filepath] do |t, args|
+    task :load_fixtures, [:filepath] => [:environment] do |t, args|
       solr_url = Blacklight::Configuration.new.connection_config[:url]
 
       if solr_url.match("solrcloud.tul-infra.page")
@@ -47,7 +47,7 @@ namespace :tul_cob do
     end
 
     desc "Delete all items from Solr"
-    task :clean do
+    task :clean => [:environment] do
       solr = RSolr.connect url: Blacklight.connection_config[:url], update_format: :xml
       solr.update data: "<delete><query>*:*</query></delete>"
       solr.update data: "<commit/>"
