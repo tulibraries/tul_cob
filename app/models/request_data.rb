@@ -43,6 +43,7 @@ class RequestData
         removals
       end
       pickup_locations -= removals
+      pickup_locations << "ASRS" if libraries.include?("ASRS") && !pickup_locations.include?("ASRS")
       if (libraries & ["ROME", "JAPAN"]).present?
         if libraries.size == 1 || libraries.sort == ["JAPAN", "ROME"]
           pickup_locations = libraries
@@ -89,6 +90,7 @@ class RequestData
       if libraries[desc].present?
         removals << item.library if remove_by_campus(campus) unless campus == :MAIN
         libraries[desc] -= removals
+        libraries[desc] << item.library unless libraries[desc].include?(item.library)
       elsif item.library == "JAPAN" || item.library == "ROME"
         international_pickup << item.library
         libraries[desc] = international_pickup
