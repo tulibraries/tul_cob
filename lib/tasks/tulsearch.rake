@@ -1,6 +1,27 @@
 # frozen_string_literal: true
 
 require "rsolr"
+require "uri"
+require "cgi"
+
+def env_with_basic_auth(url_env_key, url)
+  return {} unless url
+
+  env = { url_env_key => url }
+  user, password = solr_credentials_from(url)
+  env["SOLR_AUTH_USER"] = user if user
+  env["SOLR_AUTH_PASSWORD"] = password if password
+  env
+end
+
+def solr_credentials_from(url)
+  uri = URI.parse(url)
+  user = uri.user && CGI.unescape(uri.user)
+  password = uri.password && CGI.unescape(uri.password)
+  [user, password]
+rescue URI::InvalidURIError
+  [nil, nil]
+end
 
 namespace :tul_cob do
   namespace :solr do
@@ -23,9 +44,10 @@ namespace :tul_cob do
 
       puts "Loading catalog fixtures..."
       solr_url = Blacklight::Configuration.new.connection_config[:url]
+      catalog_env = env_with_basic_auth("SOLR_URL", solr_url)
       fixtures.sort.reverse.each  do |file|
         puts "Ingesting #{file}"
-        system("SOLR_URL=#{solr_url} cob_index ingest #{file}")
+        system(catalog_env, "cob_index", "ingest", file)
       end
       solr = RSolr.connect url: solr_url
       solr.commit
@@ -38,12 +60,14 @@ namespace :tul_cob do
 
       puts "Loading cob_az_index fixtures..."
       az_url = Blacklight::Configuration.new.connection_config[:az_url]
-      system("SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete")
+      az_env = env_with_basic_auth("SOLR_AZ_URL", az_url)
+      system(az_env, "cob_az_index", "ingest", "--use-fixtures", "--delete")
 
 
       puts "Loading cob_web_index fixtures..."
       web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-      system("SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete")
+      web_env = env_with_basic_auth("SOLR_WEB_URL", web_url)
+      system(web_env, "cob_web_index", "ingest", "--use-fixtures", "--delete")
     end
 
     desc "Delete all items from Solr"
@@ -59,6 +83,7 @@ desc "Ingest a single file or all XML files in the sammple_data folder"
 task :ingest, [:filepath] => [:environment] do |t, args|
   file = args[:filepath]
   solr_url = Blacklight::Configuration.new.connection_config[:url]
+  catalog_env = env_with_basic_auth("SOLR_URL", solr_url)
 
   if solr_url.match("solrcloud.tul-infra.page")
     abort "Cannot run :load_fixtures task on production server"
@@ -66,17 +91,19 @@ task :ingest, [:filepath] => [:environment] do |t, args|
 
   if file && file.match?(/databases.json/)
     az_url = Blacklight::Configuration.new.connection_config[:az_url]
-    `SOLR_AZ_URL=#{az_url} cob_az_index ingest --use-fixtures --delete`
+    az_env = env_with_basic_auth("SOLR_AZ_URL", az_url)
+    system(az_env, "cob_az_index", "ingest", "--use-fixtures", "--delete")
   elsif file && file.match(/\/web_content/)
     web_url = Blacklight::Configuration.new.connection_config[:web_content_url]
-    `SOLR_WEB_URL=#{web_url} cob_web_index ingest --use-fixtures --delete`
+    web_env = env_with_basic_auth("SOLR_WEB_URL", web_url)
+    system(web_env, "cob_web_index", "ingest", "--use-fixtures", "--delete")
   elsif file
-    `SOLR_URL=#{solr_url} cob_index ingest --commit #{args[:filepath]}`
+    system(catalog_env, "cob_index", "ingest", "--commit", file)
   else
     Dir.glob("sample_data/**/*.xml").sort.each do |f|
-      `SOLR_URL=#{solr_url} cob_index ingest #{f}`
+      system(catalog_env, "cob_index", "ingest", f)
     end
 
-    `SOLR_URL=#{solr_url} cob_index commit`
+    system(catalog_env, "cob_index", "commit")
   end
 end
