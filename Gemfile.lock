@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 5e00e4d199f9e6d70a40e35e6887c43e94eb19bd
+  revision: 5e1b57d89ae02b12dd2151ca9fb563d0c6879cc3
   branch: main
   specs:
     alma (0.6.2)
@@ -475,7 +475,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.6.0)
+    prism (1.8.0)
     pry (0.15.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
