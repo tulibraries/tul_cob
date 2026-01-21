@@ -187,8 +187,15 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     return if lc_range["begin"].blank? && lc_range["end"].blank?
 
-    _begin = lc_range["begin"].blank? ? "*" : LcSolrSortable.convert(lc_range["begin"])
-    _end = lc_range["end"].blank? ? "*" : LcSolrSortable.convert(lc_range["end"])
+    raw_begin = lc_range["begin"]
+    raw_end   = lc_range["end"]
+
+    _begin = LcSolrSortable.convert(raw_begin) if raw_begin.present?
+    _end   = LcSolrSortable.convert(raw_end)   if raw_end.present?
+
+    _begin = "*" if _begin.blank?
+    _end   = "*" if _end.blank?
+
     (solr_params[:fq] || []) << "lc_call_number_sort: [#{_begin} TO #{_end}]"
   end
 

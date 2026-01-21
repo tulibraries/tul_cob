@@ -502,5 +502,42 @@ RSpec.describe SearchBuilder , type: :model do
       subject.with({})
       expect(subject["facet.field"]).not_to include("lc_classification")
     end
+
+    it "does not generate an invalid lc_call_number_sort range when begin converts to blank" do
+      allow(LcSolrSortable).to receive(:convert).and_return("")
+
+      params = ActionController::Parameters.new(
+        range: {
+          lc_classification: {
+            begin: "INVALID",
+            end: "K"
+          }
+        }
+      )
+
+      subject.with(params)
+      fq = subject.to_h["fq"].join(" ")
+
+      expect(fq).not_to match(/\[\s+TO/)
+      expect(fq).not_to match(/lc_call_number_sort:\s*\[\s+TO\s*\*\]/)
+    end
+
+    it "skips lc_call_number_sort when both range values convert to blank" do
+      allow(LcSolrSortable).to receive(:convert).and_return("")
+
+      params = ActionController::Parameters.new(
+        range: {
+          lc_classification: {
+            begin: "INVALID",
+            end: "INVALID"
+          }
+        }
+      )
+
+      subject.with(params)
+
+      has_lc = subject.to_h["fq"].any? { |f| f.include?("lc_call_number_sort") }
+      expect(has_lc).to be(false)
+    end
   end
 end
