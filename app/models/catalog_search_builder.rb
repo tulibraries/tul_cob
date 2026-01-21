@@ -3,10 +3,11 @@
 class CatalogSearchBuilder < SearchBuilder
   MAX_QUERY_TOKENS = 20
   MAX_PHRASE_BOOST_TOKENS = 10
+  MAX_CLAUSE_SAFE_TOKENS = 12
 
   self.default_processor_chain += [
     :truncate_overlong_search_query,
-    :disable_phrase_boosts_for_long_queries
+    :manage_long_queries_for_clause_limits
   ]
 
   private
@@ -25,15 +26,23 @@ class CatalogSearchBuilder < SearchBuilder
       solr_params[:q] = tokens.first(MAX_QUERY_TOKENS).join(" ")
     end
 
-    def disable_phrase_boosts_for_long_queries(solr_params)
+    def manage_long_queries_for_clause_limits(solr_params)
       q = solr_params[:q]
       return unless q.is_a?(String)
 
-      token_count = q.split(/\s+/).length
-      return if token_count <= MAX_PHRASE_BOOST_TOKENS
+      tokens = q.split(/\s+/)
+      return if tokens.empty?
 
-      solr_params.delete("pf")
-      solr_params.delete("pf2")
-      solr_params.delete("pf3")
+      if tokens.length > MAX_PHRASE_BOOST_TOKENS
+        solr_params.delete("pf")
+        solr_params.delete("pf2")
+        solr_params.delete("pf3")
+      end
+
+      return if tokens.length <= MAX_CLAUSE_SAFE_TOKENS
+
+      escaped = q.gsub("\"", "\\\"")
+      solr_params[:q] = "\"#{escaped}\""
+      solr_params[:defType] = "lucene"
     end
 end
