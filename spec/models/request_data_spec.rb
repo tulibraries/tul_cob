@@ -159,6 +159,27 @@ RSpec.describe RequestData, type: :model do
   end
 
   describe "BookBot pickup locations" do
+    context "ASRS item not in place with no other in-place library" do
+      let(:bib_items) {
+        [
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "asrs_holding" },
+            "item_data" => {
+              "base_status" => { "value" => "0" },
+              "library" => { "value" => "ASRS", "description" => "ASRS" },
+              "location" => { "value" => "ASRS" },
+              "description" => "",
+              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
+            }
+          )
+        ]
+      }
+
+      it "still offers ASRS as a pickup location" do
+        expect(subject.valid_pickup_locations).to include "ASRS"
+      end
+    end
+
     context "ASRS item not in place with another in-place library" do
       let(:bib_items) {
         [
