@@ -57,7 +57,7 @@ RSpec.describe CatalogSearchBuilder do
           .first(described_class::MAX_QUERY_TOKENS)
           .join(" ")
 
-      expect(solr_params[:q]).to eq(expected)
+      expect(solr_params[:q]).to eq("\"#{expected}\"")
     end
   end
 
@@ -99,6 +99,34 @@ RSpec.describe CatalogSearchBuilder do
     it "removes phrase boosts for long queries" do
       expect(solr_params).not_to have_key("pf")
       expect(solr_params).not_to have_key("pf2")
+    end
+  end
+
+  describe "clause-safe wrapping" do
+    let(:long_query) do
+      "Schmidt, R. W.（1994）．Deconstructing consciousness in search of useful definitions for Applied Linguistics. AILA Review, 11, 11-26."
+    end
+
+    let(:params) do
+      {
+        q: long_query,
+        search_field: "all_fields"
+      }
+    end
+
+    subject(:solr_params) do
+      described_class
+        .new(context)
+        .with(params)
+        .processed_parameters
+    end
+
+    it "wraps and simplifies very long queries" do
+      expect(solr_params[:q]).to eq("\"#{long_query}\"")
+      expect(solr_params[:defType]).to eq("lucene")
+      expect(solr_params).not_to have_key("pf")
+      expect(solr_params).not_to have_key("pf2")
+      expect(solr_params).not_to have_key("pf3")
     end
   end
 
