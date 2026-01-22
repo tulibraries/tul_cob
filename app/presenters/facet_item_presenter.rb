@@ -19,15 +19,19 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
 
   def remove_href(path = search_state)
     if has_selected_child?
-      path_hash = path.remove(nil, nil)
-      path_hash["f"]&.delete(items[0].field)
+      path_hash = path.to_h.deep_dup
+      path_hash[:f]&.delete(items[0].field)
+      path_hash.delete(:f) if path_hash[:f]&.empty?
       search_path(path_hash)
     else
-      path_hash = path.filter(facet_config.key).remove(facet_item)
-      if @parent_facet_item && path_hash.filter(@parent_facet_item.field).values.present?
-        path_hash["f"][@parent_facet_item.field] = path_hash["f"][@parent_facet_item.field].reject { |value|
+      updated_state = path.filter(facet_config.key).remove(facet_item)
+      path_hash = updated_state.to_h.deep_dup
+      if @parent_facet_item && parent_field_values(path_hash, @parent_facet_item.field).present?
+        path_hash[:f][@parent_facet_item.field] = Array(path_hash[:f][@parent_facet_item.field]).reject do |value|
           value == @parent_facet_item.value
-        }
+        end
+        path_hash[:f].delete(@parent_facet_item.field) if path_hash[:f][@parent_facet_item.field].blank?
+        path_hash.delete(:f) if path_hash[:f].blank?
       end
       search_path(path_hash)
     end
@@ -52,5 +56,31 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
       return search_state&.filter(field).include?(value)
     end
     return false
+  end
+
+  def constraint_label
+    return @constraint_label_override if defined?(@constraint_label_override) && @constraint_label_override.present?
+
+    super
+  end
+
+  def constraint_label_override=(value)
+    @constraint_label_override = value
+  end
+
+  def constraint_classes
+    @constraint_classes ||= []
+  end
+
+  def add_constraint_class(class_name)
+    return if class_name.blank?
+
+    constraint_classes << class_name
+  end
+
+  private
+
+  def parent_field_values(params_hash, field)
+    Array(params_hash.dig(:f, field))
   end
 end

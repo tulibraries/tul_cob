@@ -1,6 +1,7 @@
 <%= form_tag search_path, :class => "advanced form-horizontal", :method => :get do  %>
   
-  <% search_context_component = Blacklight::ConstraintsComponent.for_search_history(advanced_search_context, blacklight_config) %> 
+  <% constraints_component_class = blacklight_config&.view_config(document_index_view_type)&.constraints_component || Blacklight::ConstraintsComponent %>
+  <% search_context_component = constraints_component_class.for_search_history(advanced_search_context, blacklight_config) %> 
   <% unless search_context_component.blank? %> 
     <div class="constraints card card-body bg-light search_history mb-3 advanced-filters"> 
       <h4><%= t 'blacklight_advanced_search.form.search_context' %></h4> 

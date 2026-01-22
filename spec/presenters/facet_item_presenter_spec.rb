@@ -108,4 +108,23 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       end
     end
   end
+
+  describe "#constraint_label" do
+    it "returns the override when present" do
+      presenter.constraint_label_override = "Custom Label"
+      expect(presenter.constraint_label).to eq("Custom Label")
+    end
+
+    it "falls back to the default constraint label" do
+      expect(presenter.constraint_label).to eq(presenter.label)
+    end
+  end
+
+  describe "#add_constraint_class" do
+    it "collects CSS classes to apply in constraint components" do
+      presenter.add_constraint_class("hidden")
+      presenter.add_constraint_class(nil)
+      expect(presenter.constraint_classes).to eq(["hidden"])
+    end
+  end
 end
