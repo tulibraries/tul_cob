@@ -296,7 +296,7 @@ GEM
       railties (>= 6.1)
     drb (2.2.3)
     dumb_delegator (1.1.0)
-    erb (6.0.0)
+    erb (6.0.1)
     erubi (1.13.1)
     execjs (2.10.0)
     factory_bot (6.5.5)
@@ -349,8 +349,8 @@ GEM
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    io-console (0.8.1)
-    irb (1.15.3)
+    io-console (0.8.2)
+    irb (1.16.0)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -390,7 +390,7 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.7.0)
-    loofah (2.24.1)
+    loofah (2.25.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.9.0)
@@ -540,7 +540,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rdoc (6.17.0)
+    rdoc (7.1.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -645,7 +645,7 @@ GEM
       json
     terminal-table (4.0.0)
       unicode-display_width (>= 1.1.1, < 4)
-    thor (1.4.0)
+    thor (1.5.0)
     thread_safe (0.3.6)
     tilt (2.6.1)
     timeout (0.5.0)
@@ -669,7 +669,7 @@ GEM
       jsonpath
       traject (~> 3.0)
     tsort (0.2.0)
-    turbo-rails (2.0.20)
+    turbo-rails (2.0.21)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     turbolinks (5.2.1)
@@ -723,7 +723,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.7.3)
+    zeitwerk (2.7.4)
 
 PLATFORMS
   aarch64-linux
