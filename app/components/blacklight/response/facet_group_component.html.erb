@@ -13,7 +13,7 @@
 <%# main container for facets/limits menu -%>
 <%= content_tag :div, id: @id,  class: 'facets sidenav facets-toggleable-md' do %>
   <div class="facets-header">
-    <%= content_tag :h2, @title, class: 'facets-heading' if @title %>
+    <%= content_tag :h2, @title if @title %>
 
     <%= content_tag :button,
       class: 'btn btn-outline-secondary facet-toggle-button d-block d-lg-none',
