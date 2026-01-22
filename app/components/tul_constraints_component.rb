@@ -5,6 +5,7 @@ require "ostruct"
 class TulConstraintsComponent < Blacklight::ConstraintsComponent
   def initialize(**kwargs)
     kwargs[:facet_constraint_component] ||= TulConstraintComponent
+    kwargs[:query_constraint_component] ||= TulConstraintLayoutComponent
     super(**kwargs)
   end
 

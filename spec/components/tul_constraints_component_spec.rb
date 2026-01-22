@@ -28,6 +28,16 @@ RSpec.describe TulConstraintsComponent, type: :component do
   subject(:component) { described_class.new(search_state:) }
   let(:search_state) { instance_double(Blacklight::SearchState) }
 
+  describe "#initialize" do
+    it "uses the legacy constraint layout for query constraints" do
+      config = Blacklight::Configuration.new
+      real_state = Blacklight::SearchState.new({}, config)
+      cmp = described_class.new(search_state: real_state)
+
+      expect(cmp.instance_variable_get(:@query_constraint_component)).to eq(TulConstraintLayoutComponent)
+    end
+  end
+
   before do
     allow(component).to receive(:selected_values).and_return([])
   end
