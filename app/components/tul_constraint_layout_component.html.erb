@@ -1,0 +1,23 @@
+<%
+  wrapper_classes = Array(@classes) + %w[btn-group btn-block appliedFilter filter-group constraint]
+%>
+
+<span class="<%= wrapper_classes.join(" ") %>">
+  <span class="constraint-value btn btn-block btn-default btn-disabled">
+    <% if @label.present? %>
+      <span class="filterName">
+        <%= @label %>
+        <i class="fa fa-chevron-right filter-separator"></i>
+      </span>
+    <% end %>
+    <% if @value.present? %>
+      <%= content_tag :span, @value, class: "filterValue", title: strip_tags(@value) %>
+    <% end %>
+  </span>
+  <% if @remove_path.present? %>
+    <%= link_to(@remove_path, class: "btn btn-block remove remove-constraints mt-0 pt-2") do %>
+      <span class="remove-icon"></span>
+      <span class="sr-only visually-hidden"><%= remove_aria_label %></span>
+    <% end %>
+  <% end %>
+</span>
