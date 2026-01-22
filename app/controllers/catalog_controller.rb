@@ -59,8 +59,9 @@ class CatalogController < ApplicationController
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "edismax"
+    config.advanced_search[:query_parser] = "lucene"
     config.advanced_search[:form_solr_parameters] ||= {}
+    config.advanced_search[:form_solr_parameters]["df"] ||= "text"
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:form_solr_parameters]["facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
@@ -428,10 +429,9 @@ class CatalogController < ApplicationController
     config.add_search_field("call_number_t", label: "Call Number") do |field|
       field.include_in_advanced_search = true
       field.include_in_simple_select = false
-      field.solr_parameters = {
-        qf: "call_number_t",
-      }
+      field.solr_parameters = {}
     end
+
 
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false

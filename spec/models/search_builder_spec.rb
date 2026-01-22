@@ -187,11 +187,21 @@ RSpec.describe SearchBuilder , type: :model do
       it "wraps the values with *" do
         expect(subject.process_call_number(value: "foo", field: "call_number", op: "contains")).to eq("*foo*")
       end
+
+      it "escapes spaces and lowercases" do
+        value = "ML 1700 H973o 1996"
+        expect(subject.process_call_number(value:, field: "call_number", op: "contains")).to eq("*ml\\ 1700\\ h973o\\ 1996*")
+      end
     end
 
     context "field is call_number and op is begins_with" do
       it "wraps the values with *" do
         expect(subject.process_call_number(value: "foo", field: "call_number", op: "begins_with")).to eq("foo*")
+      end
+
+      it "escapes spaces and lowercases" do
+        value = "ML 1700 H973o 1996"
+        expect(subject.process_call_number(value:, field: "call_number", op: "begins_with")).to eq("ml\\ 1700\\ h973o\\ 1996*")
       end
     end
 
@@ -287,7 +297,32 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#substitute_special_chars" do
     it "can handle nil case with grace" do
       expect(subject.substitute_special_chars(value: nil, op: nil)).to be_nil
-      expect(subject.substitute_special_chars(value: "foo")).to eq("foo")
+    end
+
+    it "can handle values without special chars" do
+      expect(subject.substitute_special_chars(value: "foo", op: nil)).to eq("foo")
+    end
+
+    it "replaces special chars with space" do
+      expect(subject.substitute_special_chars(value: "f?oo:b(ar)", op: nil)).to eq("f oo b ar")
+    end
+
+    it "substitutes empty parens '()' " do
+      expect(subject.substitute_special_chars(value: "foo () bar")).to eq("foo   bar")
+    end
+
+    it "does not substitutes parens containing values " do
+      expect(subject.substitute_special_chars(value: "foo (bar) baz")).to eq("foo (bar) baz")
+    end
+
+    it "does not alter call number fielded queries" do
+      value = "call_number_t:ml128.a4\\ t48\\ 1960*"
+      expect(subject.substitute_special_chars(field: "call_number", value:, op: nil)).to eq(value)
+    end
+
+    it "does not alter local param queries" do
+      value = "{!lucene df=call_number_t}ml128.a4"
+      expect(subject.substitute_special_chars(field: "call_number", value:, op: nil)).to eq(value)
     end
 
     it "substitutes colons from values no matter what op is" do
