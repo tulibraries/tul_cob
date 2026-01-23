@@ -67,3 +67,4 @@ test.sqlite3*
 path
 gems
 bundler-gems
+.env.local
