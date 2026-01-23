@@ -65,7 +65,6 @@ gem "ruby-saml", "1.18.1"
 gem "sass-rails"
 gem "skylight"
 gem "sprockets-rails"
-gem "turbolinks", "~> 5"
 gem "turbo-rails"
 gem "twitter-typeahead-rails", "0.11.1"
 gem "tzinfo-data", platforms: [:windows, :jruby]

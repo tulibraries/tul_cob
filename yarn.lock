@@ -1036,6 +1036,19 @@
   resolved "https://registry.yarnpkg.com/@hotwired/stimulus/-/stimulus-3.2.2.tgz#071aab59c600fed95b97939e605ff261a4251608"
   integrity sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==
 
+"@hotwired/turbo-rails@^8.0.21":
+  version "8.0.21"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo-rails/-/turbo-rails-8.0.21.tgz#403bfb2b1b92a921d854471772a7aa906f75ab04"
+  integrity sha512-RUnqt7tOVlQT539eVqFaAp4/32y7sLxvt3G7OIMROVlIMWvM8CXJk08xvIro2ueQViYRB6jwRjruNx7drIJPXg==
+  dependencies:
+    "@hotwired/turbo" "^8.0.21"
+    "@rails/actioncable" ">=7.0"
+
+"@hotwired/turbo@^8.0.21":
+  version "8.0.21"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-8.0.21.tgz#a3e80c01d70048200f64bbe3582b84f9bfac034e"
+  integrity sha512-fJTv3JnzFHeDxBb23esZSOhT4r142xf5o3lKMFMvzPC6AllkqbBKk5Yb31UZhtIsKQCwmO/pUQrtTUlYl5CHAQ==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1320,6 +1333,16 @@
   version "2.11.8"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
+
+"@rails/actioncable@>=7.0":
+  version "8.1.200"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-8.1.200.tgz#acecf74ab4846144eefdbc16618786df0cebedf9"
+  integrity sha512-on0DSb7AFUkq1ocxivDNQhhGW/RQpY91zvRVyyaEWP4gOOZWy33P/UyxjQk74IENWNrTqs8+zOGHwTjiiFruRw==
+
+"@rails/actioncable@^7.1.3":
+  version "7.2.300"
+  resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.2.300.tgz#5bf24ffded6dd659d8b42cc67fb68fb51767b989"
+  integrity sha512-bmrp+HgCPd2BlhDfJ81hJ6Nvd6yh0B2hIW8ThOmUdOr3L+sFjU1glpBmn+MoQF2K0HLvnWCGqF3TxT/S0jj3QA==
 
 "@rails/webpacker@^6.0.0-rc.6":
   version "6.0.0-rc.6"
