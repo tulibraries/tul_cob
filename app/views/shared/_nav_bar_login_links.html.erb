@@ -12,6 +12,7 @@
   <div class="nav-item">
     <%= link_to t('blacklight.header_links.login'),
                 new_user_session_path,
-                id: "login" %>
+                id: "login",
+                data: { turbo: false } %>
   </div>
 <% end %>
