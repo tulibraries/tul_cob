@@ -20,14 +20,14 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
       content_tag(:div, class: "pivot-facet-content-cell #{@facet_item.nested? ? 'pivot-facet-inner' : 'pivot-facet-outer'}") do
         content = ActiveSupport::SafeBuffer.new
         content.safe_concat facet_toggle_button(id) if has_items? && @collapsing
-        content.safe_concat content_tag("span", render_component(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
+        content.safe_concat content_tag("span", render(facet), class: "facet-values #{'facet-leaf-node' if has_items? && @collapsing}", id: id && "#{id}_label")
 
         if has_items?
           content.safe_concat(
             content_tag("ul", class: "pivot-facet list-unstyled #{'collapse' if (@collapsing && !uncollapse?)} #{'show' if uncollapse?}", id:, role: "group") do
-              render_component(
+              render(
                 self.class.with_collection(
-                  @facet_item.items.map { |i| facet_item_presenter(i, @facet_item.facet_item) }
+                  child_items.map { |i| facet_item_presenter(i, @facet_item.facet_item) }
                 )
               )
             end
@@ -68,8 +68,19 @@ class FacetItemPivotComponent < Blacklight::FacetItemPivotComponent
     end
   end
 
+  def child_items
+    return [] unless @facet_item.respond_to?(:items)
+
+    @facet_item.items || []
+  end
+
+  def has_items?
+    child_items.any?
+  end
+
   def facet_item_presenter(facet_item, parent_facet_item = nil)
-    presenter = FacetItemPresenter.new(facet_item, @facet_item.facet_config, @view_context, @facet_item.facet_field, @facet_item.search_state)
+    presenter_context = @view_context.respond_to?(:helpers) ? @view_context.helpers : @view_context
+    presenter = FacetItemPresenter.new(facet_item, @facet_item.facet_config, presenter_context, @facet_item.facet_field, @facet_item.search_state)
     presenter.parent = parent_facet_item if parent_facet_item
     presenter
   end

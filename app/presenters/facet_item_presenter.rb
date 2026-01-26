@@ -2,7 +2,7 @@
 
 class FacetItemPresenter < Blacklight::FacetItemPresenter
   def items
-    items = super
+    items = super || []
     if facet_field == "library_facet"
       # Filter out secondary facets that do not match library
       items = items.select { |i| i.value.match?(/#{value}/) }
@@ -38,7 +38,16 @@ class FacetItemPresenter < Blacklight::FacetItemPresenter
   end
 
   def search_path(path)
-    view_context.search_action_path(path)
+    context = if view_context.respond_to?(:search_action_path)
+      view_context
+    elsif view_context.respond_to?(:helpers) && view_context.helpers.respond_to?(:search_action_path)
+      view_context.helpers
+    elsif view_context.respond_to?(:view_context) && view_context.view_context.respond_to?(:search_action_path)
+      view_context.view_context
+    else
+      view_context
+    end
+    context.search_action_path(path)
   end
 
   def parent=(parent_facet_item)

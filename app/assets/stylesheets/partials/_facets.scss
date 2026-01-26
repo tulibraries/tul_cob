@@ -1,15 +1,74 @@
 @import "_vars.scss";
 
 /* SIDEBAR STYLES(FACETS AND CONSTRAINTS) */
+.facets.sidenav {
+  --bl-facets-smallish-border: none;
+  --bl-facets-smallish-border-radius: 0;
+}
 .blacklight-lc_facet, .blacklight-library_facet {
 
   .card-body {
     padding-left: 0;
     padding-right: 0;
 
-    > ul > li {
+    > ul > li,
+    > .facet-values > ul > li,
+    > .facet-content > .facet-values > ul > li {
       padding-left: 1.25rem;
       padding-right: 1.25rem;
+    }
+
+    > ul > li .pivot-facet-content-cell,
+    > .facet-values > ul > li .pivot-facet-content-cell,
+    > .facet-content > .facet-values > ul > li .pivot-facet-content-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    > ul > li .pivot-facet-content-cell > .facet-values,
+    > .facet-values > ul > li .pivot-facet-content-cell > .facet-values,
+    > .facet-content > .facet-values > ul > li .pivot-facet-content-cell > .facet-values {
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      .facet-label {
+        display: inline;
+        padding-left: 0;
+        text-indent: 0;
+      }
+
+      .facet-count {
+        margin-left: auto;
+        width: auto;
+      }
+    }
+
+    .facet-toggle-handle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.75rem;
+      height: 1.75rem;
+      border: 1px solid #d8d8d8;
+      border-radius: 0.25rem;
+      background-color: $white;
+      color: $cherry-red;
+      font-size: 0.9rem;
+      margin-left: 0;
+    }
+
+    .facet-toggle-handle .show::before {
+      content: "\f067";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+    }
+
+    .facet-toggle-handle .hide::before {
+      content: "\f068";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
     }
 
     .pivot-facet-spacer-cell {
@@ -274,6 +333,14 @@ ul.missing li span.facet-count {
   @extend .py-1;
   @extend .px-4;
   padding-right: 0 !important;
+
+  &.show {
+    display: block !important;
+  }
+
+  .facet-toggle-handle {
+    margin-left: -8px;
+  }
 }
 
 .facet-leaf-node {

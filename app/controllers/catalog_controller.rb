@@ -171,8 +171,8 @@ class CatalogController < ApplicationController
       unless: config.campus_closed
 
     config.add_facet_field "library_facet", label: "Library",
-      pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
-      presenter: PivotFacetFieldPresenter,
+      pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true, component: true,
+      presenter: PivotFacetFieldPresenter, item_component: FacetItemPivotComponent, item_presenter: FacetItemPresenter,
       pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
     config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
     config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, range_config: {
@@ -185,8 +185,8 @@ class CatalogController < ApplicationController
     config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
     config.add_facet_field "lc_facet",
       label: "Library of Congress Classification",
-      pivot: ["lc_outer_facet", "lc_inner_facet"],
-      presenter: ClassificationFieldPresenter,
+      pivot: ["lc_outer_facet", "lc_inner_facet"], component: true,
+      presenter: ClassificationFieldPresenter, item_component: FacetItemPivotComponent, item_presenter: FacetItemPresenter,
       collapsing: true, icons: { show: "", hide: "" },
       limit: true, show: true
     config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
