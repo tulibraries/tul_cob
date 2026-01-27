@@ -12,6 +12,14 @@
   <% url_opts = params.to_unsafe_h %>
   <div class="bookmarks-tools-layout">
     <div class="bookmarks-tools-group bookmarks-tools-group--primary">
+      <%# The Cite feature has been temporarily turned off as of September 2024. %>
+      <%# if @response.documents.any? { |doc| doc.citable? } %>
+      <!--
+      <li>
+        <%#= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path( { id: @response.documents }.merge(params)), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn"} %>
+      </li>
+      -->
+      <%# end %>
       <%= link_to "CSV",
                   csv_path,
                   id: "csvLink",
