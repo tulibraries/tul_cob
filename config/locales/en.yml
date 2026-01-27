@@ -169,7 +169,8 @@ en:
       error_html: "Report a Problem  <span class='error-external-link-icon'></span>"
 
     advanced_search:
-      journals_link: "Journals Advanced Search"
+      journals_link: "Advanced Journals Search"
+      databases_link: "Advanced Databases Search"
 
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."

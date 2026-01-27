@@ -36,8 +36,11 @@
   <% end %>
 
   <% if advanced_search_enabled? %>
-    <% link_text = if helpers.controller_name == "journals"
+    <% link_text = case helpers.controller_name
+                   when "journals"
                      t("blacklight.advanced_search.journals_link", default: t("blacklight.advanced_search.more_options"))
+                   when "databases"
+                     t("blacklight.advanced_search.databases_link", default: t("blacklight.advanced_search.more_options"))
                    else
                      t("blacklight.advanced_search.more_options")
                    end %>
