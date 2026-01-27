@@ -28,7 +28,7 @@ module CsvExportable
 
   private
 
-  def csv_value(field)
-    Array(fetch(field, nil)).compact.join("; ")
-  end
+    def csv_value(field)
+      Array(fetch(field, nil)).compact.join("; ")
+    end
 end
