@@ -1,0 +1,6 @@
+<%= CSV.generate do |csv|
+  csv << CsvExportable::HEADERS
+  @response.documents.each do |document|
+    csv << document.csv_fields + [solr_document_url(document, host: "librarysearch.temple.edu", protocol: "https", port: nil)]
+  end
+end %>

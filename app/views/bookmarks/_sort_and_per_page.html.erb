@@ -2,7 +2,7 @@
 	<div class="search-widgets">
 		<%= link_to("Back", :back, class: "btn bookmarks-back-btn", id: "back_to_search") %>
 	</div>
-	<div id="bookmarks-tools" class="d-flex flex-wrap bookmarks-tools nav-tools">
+	<div id="bookmarks-tools">
   	<%= render :partial => "tools", locals: { document_list: @response.documents } %>
-		</div>
+	</div>
 </div>

@@ -95,6 +95,8 @@
 	padding-left: 0;
 	padding-right: 0;
 	background-color: $white;
+	white-space: normal;
+	word-break: break-word;
 }
 
 .sendto-item.dropdown-item:active, .sendto-item.dropdown-item:hover {

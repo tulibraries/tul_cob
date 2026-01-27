@@ -10,28 +10,24 @@
 
 <% if show_doc_actions? %>
   <% url_opts = params.to_unsafe_h %>
-  <ul id="tools-navbar">
-    <%# The Cite feature has been temporarily turned off as of September 2024. %>
-    <%# if @response.documents.any? { |doc| doc.citable? } %>
-    <!--
-    <li>
-      <%#= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe, citation_bookmarks_path( { id: @response.documents }.merge(params)), {:id => "citeLink", :data => {:blacklight_modal => "trigger"}, :class => "citation-btn btn"} %>
-    </li>
-    -->
-    <%# end %>
-
-    <li id="sendto-menu">
+  <div class="bookmarks-tools-layout">
+    <div class="bookmarks-tools-group bookmarks-tools-group--primary">
+      <%= link_to "CSV",
+                  csv_path,
+                  id: "csvLink",
+                  class: "btn bookmarks-tools-btn",
+                  target: "_blank",
+                  rel: "noopener" %>
       <div id="bookmarks-sendto" class="dropdown">
-        <button class="btn dropdown-toggle bookmarks-dropdown" data-bs-toggle="dropdown">
+        <button class="btn dropdown-toggle bookmarks-tools-btn" data-bs-toggle="dropdown">
           <%= t("blacklight.tools.sendto", current_range: current_entries_info(@response).html_safe) %>
           <span class="caret"></span>
         </button>
         <%= render Bookmarks::SendToDropdownComponent.new(documents: @response.documents, url_opts: url_opts) %>
       </div>
-    </li>
-  </ul>
+    </div>
+    <div class="bookmarks-tools-group bookmarks-tools-group--secondary">
+      <%= render_results_collection_tools %>
+    </div>
+  </div>
 <% end %>
-
-<div class="clear-bookmarks">
-  <%= render_results_collection_tools %>
-</div>

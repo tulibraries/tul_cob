@@ -111,6 +111,10 @@ en:
 
     search:
       back: "Back to Main View"
+      per_page:
+        button_label_html: "%{count}<span class='d-none d-sm-inline'>&nbsp;per page</span>"
+      sort:
+        label_html: "<span class='sort-label-full'>Sort by %{field}</span><span class='sort-label-short'>Sort</span>"
       librarian_view:
         title: "Staff View"
       pagination_info:

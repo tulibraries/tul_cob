@@ -42,6 +42,7 @@ class SolrDocument
 
   # Email uses the semantic field mappings below to generate the body of an email.
   SolrDocument.use_extension(LibrarySearch::Document::Email)
+  SolrDocument.use_extension(CsvExportable)
 
   # Add Blacklight-Marc extension:
   SolrDocument.use_extension(Blacklight::Marc::DocumentExtension) do |doc|
