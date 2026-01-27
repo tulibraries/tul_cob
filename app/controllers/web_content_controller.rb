@@ -13,6 +13,9 @@ class WebContentController < CatalogController
     # Remove show and index doc actions.
     config.index.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
 
+    config.advanced_search[:enabled] = false
+    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(web_content_type_facet)
+
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
 
