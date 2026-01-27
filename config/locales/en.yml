@@ -168,12 +168,15 @@ en:
       sendto: "Send To %{current_range}"
       error_html: "Report a Problem  <span class='error-external-link-icon'></span>"
 
+    advanced_search:
+      journals_link: "Journals Advanced Search"
+
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."
       guest_warning: "Bookmarking requires a registered user. Please log in to save bookmarks."
 
-  requests:
-    log_in: "Log in to see request options"
+    requests:
+      log_in: "Log in to see request options"
     request_button: "How to get this"
     header: "How to get this"
     scrc_instructions_html: "To request materials from the Special Collections Research Center, go to %{href}"
