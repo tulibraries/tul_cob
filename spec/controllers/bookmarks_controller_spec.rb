@@ -15,6 +15,8 @@ RSpec.describe BookmarksController do
   end
 
   describe "index csv" do
+    render_views
+
     let(:document) do
       SolrDocument.new(
         "id" => "123",
