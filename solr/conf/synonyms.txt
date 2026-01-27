@@ -66,6 +66,3 @@ etc. => etcetera
 klavier => piano
 sinfonie => symphony
 arr. => arranged
-
-# Added for BL-1956
-of, on
