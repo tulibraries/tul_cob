@@ -90,6 +90,12 @@ a.social {
 .footer-header {
   @media (max-width: 768px) {
     padding-left: 0;
+    .d-md-inline-flex {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
   }
 }
 
