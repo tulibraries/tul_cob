@@ -17,9 +17,7 @@ class SearchBuilder < Blacklight::SearchBuilder
         limit_facets
         sorting_preferences ]
 
-  if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
-    self.default_processor_chain += %i[ tweak_query ]
-  end
+  self.default_processor_chain += %i[ tweak_query ]
 
   MAX_QUERY_TOKENS = 20
   MAX_PHRASE_BOOST_TOKENS = 10
@@ -82,6 +80,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def tweak_query(solr_parameters)
+    return unless Flipflop.solr_query_tweaks?
+
     solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 

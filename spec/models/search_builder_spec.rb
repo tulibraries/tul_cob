@@ -153,9 +153,12 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
+      allow(Flipflop).to receive(:solr_query_tweaks?).and_return(feature_enabled)
       allow(search_builder).to receive(:blacklight_params).and_return(params)
       subject.tweak_query(solr_parameters)
     end
+
+    let(:feature_enabled) { true }
 
     context "no overriding query parameter is passed" do
       it "does not override the qf param" do
@@ -170,6 +173,14 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "does override the qf param" do
         expect(solr_parameters["qf"]).to eq("subject_t")
+      end
+    end
+
+    context "when the feature flag is disabled" do
+      let(:feature_enabled) { false }
+
+      it "does not modify the parameters" do
+        expect(solr_parameters["qf"]).to eq("foo")
       end
     end
   end

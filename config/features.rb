@@ -14,4 +14,8 @@ Flipflop.configure do
   group :citations do
     feature :citeproc_citations
   end
+  
+  group :catalog_tools do
+    feature :solr_query_tweaks
+  end
 end

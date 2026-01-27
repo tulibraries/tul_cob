@@ -105,6 +105,7 @@ class CatalogController < ApplicationController
     config.index.document_component = CatalogDocumentComponent
     config.index.partials = %i[index_header index]
     config.index.constraints_component = TulConstraintsComponent
+    config.index.sidebar_component = CatalogSearchSidebarComponent
 
     # solr field configuration for document/show views
     config.show.title_field = "title_with_subtitle_truncated_display"
