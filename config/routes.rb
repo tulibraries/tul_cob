@@ -7,10 +7,6 @@ Rails.application.routes.draw do
   root to: "search#index"
 
   # advanced forms
-  match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
-  match "databases/advanced", to: "databases_advanced#index", as: "databases_advanced_search", via: [:get, :post]
-  match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
-  match "catalog/advanced", to: "catalog#advanced_search", as: "advanced_search", via: [:get, :post]
   match "everything/advanced", to: "search#advanced_search", via: [:get, :post]
 
   match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"

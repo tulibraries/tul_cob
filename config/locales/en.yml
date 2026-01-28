@@ -172,6 +172,7 @@ en:
       journals_link: "Advanced Journals Search"
       databases_link: "Advanced Databases Search"
       catalog_link: "Advanced Search"
+      articles_link: "Advanced Articles Search"
 
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."

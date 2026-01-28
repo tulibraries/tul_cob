@@ -41,8 +41,10 @@
                      t("blacklight.advanced_search.journals_link", default: t("blacklight.advanced_search.more_options"))
                    when "databases"
                      t("blacklight.advanced_search.databases_link", default: t("blacklight.advanced_search.more_options"))
-                   when "catalog"
+                   when "catalog", "search"
                      t("blacklight.advanced_search.catalog_link", default: t("blacklight.advanced_search.more_options"))
+                   when "primo_central"
+                     t("blacklight.advanced_search.articles_link", default: t("blacklight.advanced_search.more_options"))
                    else
                      t("blacklight.advanced_search.more_options")
                    end %>
