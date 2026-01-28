@@ -21,11 +21,11 @@ class BookmarksController < CatalogController
 
   private
 
-  def set_guest_bookmark_warning
-    return if request.xhr? || current_user.present?
+    def set_guest_bookmark_warning
+      return if request.xhr? || current_user.present?
 
-    flash.discard(:notice)
-    flash.discard(:error)
-    flash[:alert] = I18n.t("blacklight.bookmarks.guest_warning")
-  end
+      flash.discard(:notice)
+      flash.discard(:error)
+      flash[:alert] = I18n.t("blacklight.bookmarks.guest_warning")
+    end
 end
