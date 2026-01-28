@@ -24,10 +24,11 @@ export default class extends Controller {
       container.className = "flash_messages"
       target.prepend(container)
     }
-    const existing = container.querySelector(".guest-bookmark-warning")
+    const existing = container.querySelector("[data-guest-bookmark-warning]")
     if (existing) existing.remove()
     const alert = document.createElement("div")
-    alert.className = "alert alert-dismissible alert-warning guest-bookmark-warning"
+    alert.className = "alert alert-dismissible alert-warning"
+    alert.setAttribute("data-guest-bookmark-warning", "true")
     alert.textContent = this.messageValue
     const close = document.createElement("button")
     close.className = "btn-close"

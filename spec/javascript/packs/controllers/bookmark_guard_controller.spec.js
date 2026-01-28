@@ -43,7 +43,7 @@ describe("BookmarkGuardController", () => {
     const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
     controller.handleBookmarkClick({ target: input })
 
-    const warning = document.querySelector(".guest-bookmark-warning")
+    const warning = document.querySelector("[data-guest-bookmark-warning]")
     expect(warning).toBeTruthy()
     expect(warning.textContent).toMatch("Please log in")
     expect(warning.classList.contains("alert-warning")).toBeTruthy()
@@ -59,7 +59,7 @@ describe("BookmarkGuardController", () => {
     const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
     controller.handleBookmarkClick({ target: input })
 
-    const warning = document.querySelector(".guest-bookmark-warning")
+    const warning = document.querySelector("[data-guest-bookmark-warning]")
     expect(warning).toBeNull()
   })
 
@@ -74,7 +74,7 @@ describe("BookmarkGuardController", () => {
     controller.handleBookmarkClick({ target: input })
     controller.handleBookmarkClick({ target: input })
 
-    const warnings = document.querySelectorAll(".guest-bookmark-warning")
+    const warnings = document.querySelectorAll("[data-guest-bookmark-warning]")
     expect(warnings.length).toBe(1)
   })
 })
