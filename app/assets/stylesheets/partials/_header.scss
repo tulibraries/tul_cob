@@ -155,6 +155,19 @@ a#bookmarks_nav {
 	}
 }
 
+.logout-form {
+  display: inline;
+  margin: 0;
+
+  button.logout-button {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+  }
+}
+
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */
 .path-links {
 

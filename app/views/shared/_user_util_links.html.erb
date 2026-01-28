@@ -2,10 +2,14 @@
   <% if has_user_authentication_provider? %>
     <% if current_user %>
       <li class="nav-item">
-        <%= link_to t('blacklight.header_links.logout'),
-                    main_app.destroy_user_session_path,
-                    class: 'nav-link',
-                    method: :delete %>
+        <%= button_to t('blacklight.header_links.logout'),
+                      main_app.destroy_user_session_path,
+                      method: :delete,
+                      class: "nav-link logout-button",
+                      form: {
+                        class: "logout-form",
+                        data: { turbo: false }
+                      } %>
       </li>
       <% if main_app.respond_to?(:edit_user_registration_path) && current_user.present? -%>
         <li class="nav-item">
