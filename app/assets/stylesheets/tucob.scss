@@ -119,6 +119,18 @@ a.skip-main:focus {
   box-shadow: inset 0 0.0625rem 0.0625rem rgba(96, 96, 96, 0.075), 0 0 0.5rem rgba(96, 96, 96, 0.6);
 }
 
+.guest-bookmark-warning {
+  background-color: $pale-yellow;
+  border: 1px solid $new-gold;
+  color: $midnight-blue;
+}
+
+.alert-warning {
+  background-color: $pale-yellow;
+  border: 1px solid $new-gold;
+  color: $midnight-blue;
+}
+
 #documents {
   margin-left: 0;
   padding: 0 0.25rem 0 1.25rem;
