@@ -55,6 +55,16 @@ module ApplicationHelper
     end
   end
 
+  def csv_path(opts = {})
+    if controller_name == "bookmarks"
+      bookmarks_path(opts.merge(format: "csv"))
+    elsif controller_name == "primo_central"
+      article_document_path(opts.merge(format: "csv"))
+    else
+      solr_document_path(opts.merge(format: "csv"))
+    end
+  end
+
   def render_nav_link(path, name, analytics_id = nil)
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-item nav-link header-links" ] + active).join(" ")

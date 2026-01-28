@@ -49,18 +49,98 @@
 	}
 }
 
-#bookmarks-sendto button {
-
-  @media(max-width: 768px) {
-    background-color: $cherry-red;
-    border: none;
-    color: $white;
-	}
-}
-
 .bookmarks-back-btn {
   @media(max-width: 768px) {
     margin-bottom: 1rem
   }
 
+}
+
+.bookmarks-tools-layout {
+  --bookmarks-tools-gap: 0.5rem;
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--bookmarks-tools-gap);
+}
+
+.bookmarks-tools-group {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--bookmarks-tools-gap);
+}
+
+.bookmarks-tools-group > * {
+  margin: 0;
+}
+
+.bookmarks-tools-group--secondary .search-widgets {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: var(--bookmarks-tools-gap);
+  row-gap: var(--bookmarks-tools-gap);
+  margin: 0;
+}
+
+.bookmarks-tools-group--secondary .search-widgets > * {
+  margin: 0 !important;
+}
+
+.bookmarks-tools-group--secondary .nav-tools li,
+.bookmarks-tools-group--secondary .search-widgets li {
+  margin: 0 !important;
+}
+
+.bookmarks-tools-layout .btn {
+  align-items: center;
+  display: inline-flex;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.bookmarks-tools-btn {
+  background-color: $cherry-red;
+  border: none;
+  color: $white;
+}
+
+.bookmarks-tools-btn:hover,
+.bookmarks-tools-btn:focus {
+  background-color: $cherry-red;
+  color: $white;
+}
+
+.bookmarks-tools-layout .sort-label-short {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .bookmarks-tools-layout .sort-label-full {
+    display: none;
+  }
+
+  .bookmarks-tools-layout .sort-label-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 767px) {
+  .bookmarks-tools-layout {
+    flex-wrap: wrap;
+  }
+
+  .bookmarks-tools-group {
+    flex: 0 0 100%;
+    flex-wrap: wrap;
+  }
+
+  .bookmarks-tools-group--secondary .search-widgets {
+    margin-left: 0;
+  }
+
+  .bookmarks-tools-group--secondary .sort-dropdown {
+    margin-left: 0 !important;
+  }
 }
