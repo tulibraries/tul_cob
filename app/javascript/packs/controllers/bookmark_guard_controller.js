@@ -6,18 +6,7 @@ export default class extends Controller {
     message: String
   }
 
-  connect() {
-    console.log("[bookmark-guard] connected", {
-      guest: this.guestValue,
-      message: this.messageValue
-    })
-  }
-
   handleBookmarkClick(event) {
-    console.log("[bookmark-guard] click", {
-      guest: this.guestValue,
-      target: event.target
-    })
     if (!this.guestValue) return
     const label = event.target.closest("label.toggle-bookmark")
     const checkbox = event.target.closest("input.toggle-bookmark")
@@ -26,9 +15,6 @@ export default class extends Controller {
   }
 
   showWarning() {
-    console.log("[bookmark-guard] showWarning", {
-      message: this.messageValue
-    })
     if (!this.messageValue) return
     const flashes = document.getElementById("main-flashes")
     const target = flashes || this.element
