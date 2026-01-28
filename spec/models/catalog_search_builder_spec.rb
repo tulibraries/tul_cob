@@ -152,32 +152,34 @@ RSpec.describe CatalogSearchBuilder do
   end
 
   describe "id fetch queries" do
+    let(:builder) { described_class.new(context) }
     let(:id_query) do
       "{!lucene}id:(#{(1..11).to_a.join(" OR ")})"
     end
 
-    let(:params) do
-      {
+    it "does not truncate id fetch queries" do
+      solr_params = { q: id_query }
+
+      builder.send(:truncate_overlong_search_query, solr_params)
+
+      expect(solr_params[:q]).to eq(id_query)
+    end
+
+    it "does not remove phrase boosts or rewrite id fetch queries" do
+      solr_params = {
         q: id_query,
-        search_field: "all_fields"
+        "pf" => "title_statement_t^5",
+        "pf2" => "title_t^3",
+        "pf3" => "title_other_t^2"
       }
-    end
 
-    subject(:solr_params) do
-      described_class
-        .new(context)
-        .with(params)
-        .processed_parameters
-    end
+      builder.send(:manage_long_queries_for_clause_limits, solr_params)
 
-    it "does not truncate or rewrite id fetch queries" do
       expect(solr_params[:q]).to eq(id_query)
       expect(solr_params).not_to have_key(:defType)
-    end
-
-    it "keeps phrase boosts for id fetch queries" do
       expect(solr_params).to have_key("pf")
       expect(solr_params).to have_key("pf2")
+      expect(solr_params).to have_key("pf3")
     end
   end
 end
