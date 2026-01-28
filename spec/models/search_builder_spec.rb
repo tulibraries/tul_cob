@@ -12,10 +12,11 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#limit_facets" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
-      # I can't figure out the "right" way to add my test facet fields.
-      sp["facet.field"] = [ "foo", "bar", "bizz", "buzz" ]
+      sp["qf"] = "title_t"
       sp
     }
+
+
 
     before(:example) do
       allow(search_builder).to receive(:blacklight_params).and_return(params)
@@ -23,8 +24,8 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     context "the unknown" do
-      it "does not affect any facet fields" do
-        expect(solr_parameters["facet.field"]).to eq([ "foo", "bar", "bizz", "buzz" ])
+      it "does not set facet fields" do
+        expect(solr_parameters["facet.field"]).to be_nil
       end
     end
 
@@ -87,7 +88,7 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#tweak_query" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
-      sp["qf"] = "foo"
+      sp["qf"] = "title_t"
       sp
     }
 
@@ -98,17 +99,17 @@ RSpec.describe SearchBuilder , type: :model do
 
     context "no overriding query parameter is passed" do
       it "does not override the qf param" do
-        expect(solr_parameters["qf"]).to eq("foo")
+        expect(solr_parameters["qf"]).to eq("title_t")
       end
     end
 
     context "overriding query parameter is passed" do
       let(:params) { ActionController::Parameters.new(
-        qf: "bar"
+        qf: "subject_t"
       ) }
 
       it "does override the qf param" do
-        expect(solr_parameters["qf"]).to eq("bar")
+        expect(solr_parameters["qf"]).to eq("subject_t")
       end
     end
   end
@@ -156,7 +157,7 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#spellcheck" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
-      sp["qf"] = "foo"
+      sp["qf"] = "title_t"
       sp
     }
 
@@ -177,27 +178,37 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   describe "#process_call_number" do
-    context "field is not a call nummber field" do
+    context "field is not a call number field" do
       it "value stays the same" do
-        expect(subject.process_call_number(value: "foo", field: "bar")).to eq("foo")
+        expect(subject.process_call_number(value: "ML", field: "title_t")).to eq("ML")
       end
     end
 
     context "field is call_number and op is contains" do
       it "wraps the values with *" do
-        expect(subject.process_call_number(value: "foo", field: "call_number", op: "contains")).to eq("*foo*")
+        expect(subject.process_call_number(value: "ML", field: "call_number", op: "contains")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}*ml*")
+      end
+
+      it "escapes spaces and lowercases" do
+        value = "ML 1700 H973o 1996"
+        expect(subject.process_call_number(value:, field: "call_number", op: "contains")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}*ml\\ 1700\\ h973o\\ 1996*")
       end
     end
 
     context "field is call_number and op is begins_with" do
       it "wraps the values with *" do
-        expect(subject.process_call_number(value: "foo", field: "call_number", op: "begins_with")).to eq("foo*")
+        expect(subject.process_call_number(value: "ML", field: "call_number", op: "begins_with")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}ml*")
+      end
+
+      it "escapes spaces and lowercases" do
+        value = "ML 1700 H973o 1996"
+        expect(subject.process_call_number(value:, field: "call_number", op: "begins_with")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}ml\\ 1700\\ h973o\\ 1996*")
       end
     end
 
     context "field is call_number and op is not contains or begins with" do
-      it "does not affect the value" do
-        expect(subject.process_call_number(value: "foo", field: "call_number", op: "bar")).to eq("foo")
+      it "returns the escaped value" do
+        expect(subject.process_call_number(value: "ML", field: "call_number", op: "bar")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}ml")
       end
     end
 
@@ -209,11 +220,11 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     it "ignores values if op is not begins_with" do
-      expect(subject.process_begins_with(value: "foo", op: "opbar")).to eq("foo")
+      expect(subject.process_begins_with(value: "ML", op: "opbar")).to eq("ML")
     end
 
-    it "adds prefix and quotes to value if op equals begins_with" do
-      expect(subject.process_begins_with(value: "foo", op: "begins_with")).to eq("\"matchbeginswithfoo foo\"")
+    it "returns value for begins_with when call number handled elsewhere" do
+      expect(subject.process_begins_with(value: "ML", op: "begins_with")).to eq("ML")
     end
   end
 
@@ -264,15 +275,15 @@ RSpec.describe SearchBuilder , type: :model do
   describe "#process_query" do
     it "can handle nil case with grace" do
       expect(subject.process_query(value: nil, op: nil)).to be_nil
-      expect(subject.process_query(value: "foo")).to eq("foo")
+      expect(subject.process_query(value: "ML")).to eq("ML")
     end
 
     it "ignores values if op is not is" do
-      expect(subject.process_query(value: "foo", op: "opbar")).to eq("foo")
+      expect(subject.process_query(value: "ML", op: "opbar")).to eq("ML")
     end
 
     it "adds quotes to value if op equals is" do
-      expect(subject.process_query(value: "foo", op: "is")).to eq("\"foo\"")
+      expect(subject.process_query(value: "ML", op: "is")).to eq("\"ML\"")
     end
 
     it "removes a single quote and then adds quotes to value" do
@@ -280,39 +291,37 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     it "avoids escape hell by ignoring values with quotes" do
-      expect(subject.process_query(value: "foo\"bar\"", op: "is")).to eq("foo\"bar\"")
+      expect(subject.process_query(value: "ML\"bar\"", op: "is")).to eq("ML\"bar\"")
     end
   end
 
   describe "#substitute_special_chars" do
-    it "can handle nil case with grace" do
+    it "returns nil for nil input" do
       expect(subject.substitute_special_chars(value: nil, op: nil)).to be_nil
-      expect(subject.substitute_special_chars(value: "foo")).to eq("foo")
     end
 
-    it "substitutes colons from values no matter what op is" do
-      expect(subject.substitute_special_chars(value: "foo:bar")).to eq("foo bar")
+    it "keeps values without special chars" do
+      expect(subject.substitute_special_chars(value: "ML128.B26F6 1988", op: nil)).to eq("ML128.B26F6 1988")
     end
 
-    it "substitutes all the colons from values" do
-      expect(subject.substitute_special_chars(value: "foo:bar:bum")).to eq("foo bar bum")
+    it "replaces question marks and colons with spaces" do
+      expect(subject.substitute_special_chars(value: "ML?128:A4", op: nil)).to eq("ML 128 A4")
     end
 
-    it "substitute ? marks" do
-      # @see BL-1301 for ref.  Basically Solr treats ? as a special character.
-      expect(subject.substitute_special_chars(value: "foo bar?")).to eq("foo bar ")
+    it "does not alter call number fielded queries" do
+      value = "call_number_t:ml128.a4\\ t48\\ 1960*"
+      expect(subject.substitute_special_chars(field: "call_number", value:, op: nil)).to eq(value)
     end
 
-    it "substitutes empty parens '()' " do
-      expect(subject.substitute_special_chars(value: "foo () bar")).to eq("foo   bar")
-    end
-
-    it "does not substitutes parens containing values " do
-      expect(subject.substitute_special_chars(value: "foo (bar) baz")).to eq("foo (bar) baz")
+    it "does not alter local param queries" do
+      value = "{!lucene df=call_number_t}ml128.a4"
+      expect(subject.substitute_special_chars(field: "call_number", value:, op: nil)).to eq(value)
     end
   end
 
   describe "#blacklight_params" do
+
+
     it "gets tagged as being processed" do
       expect(subject.blacklight_params["processed"]).to be
     end
@@ -327,9 +336,9 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   class SearchBuilder < Blacklight::SearchBuilder
-    def proc1(value:, **rest) "#{value} foo" end
-    def proc2(value:, **rest) "#{value} bar" end
-    def proc3(value:, **rest) "#{value} bum" end
+    def proc1(value:, **rest) "#{value} first" end
+    def proc2(value:, **rest) "#{value} second" end
+    def proc3(value:, **rest) "#{value} third" end
   end
 
   describe "#process_params!" do
@@ -347,9 +356,9 @@ RSpec.describe SearchBuilder , type: :model do
 
     it "folds the procedures over the parameter values" do
       subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
-      expect(params["q_1"]).to eq("Hello foo bar bum")
-      expect(params["q_2"]).to eq("Beautiful foo bar bum")
-      expect(params["q_3"]).to eq("World foo bar bum")
+      expect(params["q_1"]).to eq("Hello first second third")
+      expect(params["q_2"]).to eq("Beautiful first second third")
+      expect(params["q_3"]).to eq("World first second third")
     end
 
     it "handles the nil params case gracefully" do
@@ -363,7 +372,7 @@ RSpec.describe SearchBuilder , type: :model do
     end
 
     context "operator has non query keys" do
-      let(:params) { { "operator" => { "f_1" => "foo" }, "f_1" => "buzz" } }
+      let(:params) { { "operator" => { "f_1" => "title_t" }, "f_1" => "buzz" } }
 
       it "does not affect non query values" do
         subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
@@ -376,7 +385,7 @@ RSpec.describe SearchBuilder , type: :model do
   describe BentoSearchBuilderBehavior do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
-      sp["facet.field"] = [ "foo", "bar", "bizz", "buzz" ]
+      sp["facet.field"] = [ "availability_facet", "library_facet", "format", "language_facet" ]
       sp["facets"] = true
       sp["rows"] = 10
       sp["stats"] = true
@@ -435,7 +444,7 @@ RSpec.describe SearchBuilder , type: :model do
         solr_parameters = Blacklight::Solr::Request.new
         params = ActionController::Parameters.new(
           f: {
-            unknown_facet_field: "foo",
+            unknown_facet_field: "unknown_field",
             format: "bar",
             lc_outer_facet: "hat"
           })
@@ -457,9 +466,9 @@ RSpec.describe SearchBuilder , type: :model do
     it "converts 'range' object to correct solr range fields" do
       params = ActionController::Parameters.new(
         f: {
-          unknown_facet_field: "foo",
-          format: "bar",
-          lc_outer_facet: "hat"
+          unknown_facet_field: "unknown_field",
+          format: "Book",
+          lc_outer_facet: "Class A"
         },
         range: {
           lc_classification: {
@@ -479,8 +488,8 @@ RSpec.describe SearchBuilder , type: :model do
     it "skips when empty lc classification range" do
       params = ActionController::Parameters.new(
         f: {
-          unknown_facet_field: "foo",
-          format: "bar",
+          unknown_facet_field: "unknown_field",
+          format: "Book",
           lc_outer_facet: ""
         },
         range: {

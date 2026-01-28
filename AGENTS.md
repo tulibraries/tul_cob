@@ -162,6 +162,7 @@
 - Do not commit node_modules or vendor/bundle; both excluded by default.
 - Follow existing commit message style from git log; keep changes scoped.
 - Prefer small PRs with clear test evidence; include commands run.
+- When adding or updating specs, use real data examples (e.g., actual call numbers, titles, or URLs from fixtures) instead of placeholder strings.
 
 ## Documentation updates
 - Update this AGENTS.md when adding new build/test workflows or style rules.

@@ -99,24 +99,22 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_call_number(field: nil, value:, op: nil)
-    if "#{field}".match? /call_number/
-      case op
-      when "contains"
-        value = "*#{value}*"
+    return value unless "#{field}".match?(/call_number/)
+    return value unless value.is_a?(String)
 
-      when "begins_with"
-        value = "#{value}*"
-      end
+    normalized_value = escape_call_number(value).downcase
+
+    payload = case op
+              when "contains" then "*#{normalized_value}*"
+              when "begins_with" then "#{normalized_value}*"
+              else normalized_value
     end
-    value
+
+    "{!lucene df=call_number_t allowLeadingWildcard=true}#{payload}"
   end
 
   def process_begins_with(field: nil, value:, op: nil)
-    if op == "begins_with"
-      process_query(value: add_first_word_matcher(value), op: "is") rescue value
-    else
-      value
-    end
+    value
   end
 
   def sanitize_query(field: nil, value:, op: nil)
@@ -131,8 +129,12 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if value.blank?
     return if value.class != String
 
+    return value if value.to_s.start_with?("{!")
+    return value if field.to_s.match?(/call_number/)
+
     # Process the query based on quote count and operation
     case value.scan(/"/).size
+
     when 1
       updated_value = value.sub(/"/, "")
       "\"#{updated_value}\""
@@ -149,7 +151,16 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def substitute_special_chars(field: nil, value:, op: nil)
+    return value if value.to_s.start_with?("{!")
+    return value if field.to_s.match?(/call_number/)
+
     value.gsub(/([:?]|\(\))/, " ") rescue value
+  end
+
+  def escape_call_number(value)
+    collapsed = value.strip.gsub(/\s+/, " ")
+    escaped_specials = collapsed.gsub(%r{([+\-!(){}\[\]^"~*?:\\/]|&&|\|\|)}) { "\\#{$1}" }
+    escaped_specials.gsub(/\s+/, "\\ ")
   end
 
   def no_journals(solr_parameters)

@@ -6,8 +6,10 @@ class CatalogSearchBuilder < SearchBuilder
   MAX_CLAUSE_SAFE_TOKENS = 12
 
   self.default_processor_chain += [
+    :force_query_parser_for_advanced_search,
     :truncate_overlong_search_query,
-    :manage_long_queries_for_clause_limits
+    :manage_long_queries_for_clause_limits,
+    :normalize_def_type_for_simple_queries
   ]
 
   private
@@ -44,5 +46,30 @@ class CatalogSearchBuilder < SearchBuilder
       escaped = q.gsub("\"", "\\\"")
       solr_params[:q] = "\"#{escaped}\""
       solr_params[:defType] = "lucene"
+    end
+
+    def force_query_parser_for_advanced_search(solr_params)
+      return unless is_advanced_search?
+
+      solr_params["df"] ||= "text"
+      solr_params["defType"] = "lucene"
+    end
+
+    def normalize_def_type_for_simple_queries(solr_params)
+      return if is_advanced_search?
+
+      q = solr_params["q"] || solr_params[:q]
+      return unless q.is_a?(String)
+
+      return if q.start_with?("{!") || q.include?("_query_:")
+
+      tokens = q.delete('"').split(/\s+/)
+      return if tokens.length > MAX_CLAUSE_SAFE_TOKENS
+
+      def_type = solr_params["defType"] || solr_params[:defType]
+      return unless def_type.to_s == "lucene"
+
+      solr_params["df"] ||= "text"
+      solr_params["defType"] = "edismax"
     end
 end

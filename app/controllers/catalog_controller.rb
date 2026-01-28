@@ -16,8 +16,9 @@ class CatalogController < ApplicationController
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
   before_action only: :index do
+    blacklight_config.solr_path = "search"
     override_solr_path
-    advanced_override_path
+    store_last_catalog_search_params
     blacklight_config.max_per_page = 50
     if params[:page] && params[:page].to_i > 250
       flash[:error] = t("blacklight.errors.deep_paging")
@@ -34,18 +35,13 @@ class CatalogController < ApplicationController
     end
   end
 
-  def advanced_override_path
-    return unless params["operator"].is_a?(Hash)
+  def store_last_catalog_search_params
+    return unless params[:controller].to_s == "catalog"
 
-    (1..3).each do |i|
-      query_param = params["q_#{i}"]
-      operator_param = params["operator"]["q_#{i}"]
+    stored = params.to_unsafe_h.except("controller", "action")
+    return if stored.blank?
 
-      if query_param.split.count == 1 && operator_param == "is"
-        blacklight_config.solr_path = "single_quoted_search"
-        break # Exit early since the solr_path is already set
-      end
-    end
+    session[:last_catalog_search_params] = stored
   end
 
   helper_method :display_duration
@@ -59,8 +55,9 @@ class CatalogController < ApplicationController
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "edismax"
+    config.advanced_search[:query_parser] = "lucene"
     config.advanced_search[:form_solr_parameters] ||= {}
+    config.advanced_search[:form_solr_parameters]["df"] ||= "text"
     config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
     config.advanced_search[:form_solr_parameters]["facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
@@ -81,8 +78,7 @@ class CatalogController < ApplicationController
     ## Model that maps search index responses to the blacklight response model
     # config.response_model = Blacklight::Solr::Response
 
-    ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
-    # config.default_solr_params = {}
+    config.default_solr_params = { "df" => "text", "defType" => "edismax" }
 
     # solr path which will be added to solr base url before the other solr params.
     config.document_solr_path = "document"
@@ -428,10 +424,9 @@ class CatalogController < ApplicationController
     config.add_search_field("call_number_t", label: "Call Number") do |field|
       field.include_in_advanced_search = true
       field.include_in_simple_select = false
-      field.solr_parameters = {
-        qf: "call_number_t",
-      }
+      field.solr_parameters = {}
     end
+
 
     config.add_search_field("alma_mms_t", label: "Catalog Record ID") do |field|
       field.include_in_simple_select = false

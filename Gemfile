@@ -63,7 +63,7 @@ gem "sprockets-rails"
 gem "turbolinks", "~> 5"
 gem "turbo-rails"
 gem "twitter-typeahead-rails", "0.11.1"
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "tzinfo-data", platforms: [:windows, :jruby]
 gem "uglifier", ">= 1.3.0"
 gem "webpacker", "6.0.0.rc.6"
 
