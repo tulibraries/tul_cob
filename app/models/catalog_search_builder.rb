@@ -17,6 +17,7 @@ class CatalogSearchBuilder < SearchBuilder
     def truncate_overlong_search_query(solr_params)
       q = solr_params[:q]
       return unless q.is_a?(String)
+      return if id_fetch_query?(q)
 
       tokens = q.split(/\s+/)
       return if tokens.length <= MAX_QUERY_TOKENS
@@ -31,6 +32,7 @@ class CatalogSearchBuilder < SearchBuilder
     def manage_long_queries_for_clause_limits(solr_params)
       q = solr_params[:q]
       return unless q.is_a?(String)
+      return if id_fetch_query?(q)
 
       tokens = q.split(/\s+/)
       return if tokens.empty?
@@ -71,5 +73,10 @@ class CatalogSearchBuilder < SearchBuilder
 
       solr_params["df"] ||= "text"
       solr_params["defType"] = "edismax"
+    end
+
+    def id_fetch_query?(q)
+      unique_key = blacklight_config.document_model.unique_key
+      q.match?(/\A\{!lucene\}#{Regexp.escape(unique_key)}:\(/)
     end
 end
