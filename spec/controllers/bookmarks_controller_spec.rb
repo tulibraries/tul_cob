@@ -21,7 +21,7 @@ RSpec.describe BookmarksController do
       SolrDocument.new(
         "id" => "123",
         "title_statement_display" => ["The Title"],
-        "creator_display" => ["Author One"],
+        "creator_display" => ["Towlson, Jon"],
         "call_number_display" => ["ABC 123"]
       )
     end
@@ -42,7 +42,7 @@ RSpec.describe BookmarksController do
 
       rows = CSV.parse(response.body)
       expect(rows[0]).to eq(CsvExportable::HEADERS)
-      expect(rows[1]).to eq(["The Title", "Author One", "ABC 123", "https://librarysearch.temple.edu/catalog/123"])
+      expect(rows[1]).to eq(["The Title", "Towlson, Jon", "ABC 123", "https://librarysearch.temple.edu/catalog/123"])
       expect(response.media_type).to eq("text/csv")
     end
   end
