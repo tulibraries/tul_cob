@@ -1,0 +1,21 @@
+<div id="sortAndPerPage" class="sort-pagination d-md-flex justify-content-between" role="navigation" aria-label="<%= t('blacklight.search.per_page.aria_label')%>">
+  <%= render partial: "paginate_compact", object: @response if show_pagination? %>
+  <div class="search-widgets--catalog">
+    <%= render_results_collection_tools wrapping_class: "search-widgets-inner" %>
+    <% if controller_name == "catalog" && action_name == "index" && @response&.documents&.any? %>
+      <% bookmark_document_ids = @response.documents.map(&:id) %>
+      <% bookmarked_count = current_or_guest_user&.bookmarks&.where(document_id: bookmark_document_ids, document_type: blacklight_config.document_model.to_s)&.count || 0 %>
+      <% all_bookmarked = bookmarked_count == bookmark_document_ids.length %>
+      <% form_url = all_bookmarked ? bookmark_path(bookmark_document_ids.first) : bookmarks_path %>
+      <% form_method = all_bookmarked ? :delete : :post %>
+      <% button_label = all_bookmarked ? "Unbookmark&nbsp;All" : "Bookmark&nbsp;All" %>
+      <%= form_with url: form_url, method: form_method, class: "bookmark-all-form", authenticity_token: true do %>
+        <% @response.documents.each do |document| %>
+          <%= hidden_field_tag "bookmarks[][document_id]", document.id %>
+          <%= hidden_field_tag "bookmarks[][document_type]", blacklight_config.document_model.to_s %>
+        <% end %>
+        <%= button_tag button_label.html_safe, class: "btn bookmark-all-btn" %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

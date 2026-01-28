@@ -170,6 +170,7 @@ en:
 
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."
+      guest_warning: "Bookmarking requires a registered user. Please log in to save bookmarks."
 
   requests:
     log_in: "Log in to see request options"

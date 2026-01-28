@@ -46,4 +46,33 @@ RSpec.describe BookmarksController do
       expect(response.media_type).to eq("text/csv")
     end
   end
+
+  describe "#set_guest_bookmark_warning" do
+    it "sets an alert for guests on non-xhr requests" do
+      allow(controller).to receive(:current_user).and_return(nil)
+      allow(request).to receive(:xhr?).and_return(false)
+
+      controller.send(:set_guest_bookmark_warning)
+
+      expect(flash[:alert]).to eq(I18n.t("blacklight.bookmarks.guest_warning"))
+    end
+
+    it "does not set an alert for xhr requests" do
+      allow(controller).to receive(:current_user).and_return(nil)
+      allow(request).to receive(:xhr?).and_return(true)
+
+      controller.send(:set_guest_bookmark_warning)
+
+      expect(flash[:alert]).to be_nil
+    end
+
+    it "does not set an alert for logged-in users" do
+      allow(controller).to receive(:current_user).and_return(User.new)
+      allow(request).to receive(:xhr?).and_return(false)
+
+      controller.send(:set_guest_bookmark_warning)
+
+      expect(flash[:alert]).to be_nil
+    end
+  end
 end

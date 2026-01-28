@@ -259,6 +259,43 @@ a#bookmarks_nav {
 	padding-bottom: 0;
 }
 
+#sortAndPerPage .search-widgets--catalog {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+}
+
+#sortAndPerPage .search-widgets--catalog > * {
+	margin: 0;
+}
+
+#sortAndPerPage .search-widgets-inner {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+	margin: 0;
+}
+
+#sortAndPerPage .search-widgets-inner > * {
+	margin: 0;
+}
+
+#sortAndPerPage .bookmark-all-form {
+	margin: 0;
+}
+
+#sortAndPerPage .bookmark-all-btn {
+	background-color: $royal-blue;
+	border: 0;
+	color: $white;
+}
+
+#sortAndPerPage .bookmark-all-btn:hover,
+#sortAndPerPage .bookmark-all-btn:focus {
+	background-color: $royal-blue;
+	color: $white;
+}
+
 .page-links {
 	display: inline-block;
 }
