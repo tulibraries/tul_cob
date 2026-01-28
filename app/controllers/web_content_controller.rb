@@ -30,7 +30,7 @@ class WebContentController < CatalogController
     end
 
     config.connection_config[:url] = web_uri.to_s
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "web_title_display"
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params = { "df" => "text", "defType" => "edismax" }
