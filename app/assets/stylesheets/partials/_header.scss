@@ -162,9 +162,19 @@ a#bookmarks_nav {
   button.logout-button {
     background: transparent;
     border: 0;
-    color: inherit;
+    color: $cherry-red;
     cursor: pointer;
     padding: 0;
+    font: inherit;
+    display: inline;
+    text-decoration: none;
+  }
+
+  button.logout-button:hover,
+  button.logout-button:focus {
+    text-decoration: underline;
+    outline: none;
+    color: darken($cherry-red, 5%);
   }
 }
 
