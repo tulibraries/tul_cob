@@ -2,7 +2,7 @@
   <%= render partial: "paginate_compact", object: @response if show_pagination? %>
   <div class="search-widgets--catalog">
     <%= render_results_collection_tools wrapping_class: "search-widgets-inner" %>
-    <% if @response&.documents&.any? %>
+    <% if controller_name == "catalog" && action_name == "index" && @response&.documents&.any? %>
       <% bookmark_document_ids = @response.documents.map(&:id) %>
       <% bookmarked_count = current_or_guest_user&.bookmarks&.where(document_id: bookmark_document_ids, document_type: blacklight_config.document_model.to_s)&.count || 0 %>
       <% all_bookmarked = bookmarked_count == bookmark_document_ids.length %>
