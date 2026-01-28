@@ -14,7 +14,6 @@ RSpec.describe WebContentController, type: :controller do
   end
 
   describe "before_action override_solr_path " do
-
     context ":index action and quoted single term search (double quoted)" do
       it "does not override the blacklight_config solr_path" do
         get :index, params: { q: '"art"' }
@@ -25,7 +24,8 @@ RSpec.describe WebContentController, type: :controller do
     context ":index action and quoted single term search (single quoted)" do
       it "does not override the blacklight_config solr_path" do
         get :index, params: { q: "'art'" }
-        expect(assigns(:blacklight_config)&.solr_path).to eq("search")      end
+        expect(assigns(:blacklight_config)&.solr_path).to eq("search")
+      end
     end
 
     context ":index action and non-quoted single term search" do

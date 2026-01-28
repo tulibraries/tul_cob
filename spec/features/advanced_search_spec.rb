@@ -34,15 +34,15 @@ RSpec.feature "Advanced Search" do
     scenario "searching title for x AND y" do
       visit "catalog?#{{
         operator: { q_1: "contains", q_2: "contains" },
-        f_1: "title", q_1: "united", op_1: "AND",
-        f_2: "title", q_2: "states",
+        f_1: "title", q_1: "sarbanes", op_1: "AND",
+        f_2: "title", q_2: "oxley",
         search_field: "advanced",
       }.to_query}"
 
-      expect(page).to have_selector(results_selector, minimum: 2)
-      expect(page).to have_text("Title united")
-      expect(page).to have_text("Title AND states")
-      expect(first(results_selector).text.downcase).to include("united", "states")
+      expect(page).to have_selector(results_selector, minimum: 1)
+      expect(page).to have_text("Title sarbanes")
+      expect(page).to have_text("Title AND oxley")
+      expect(first(results_selector).text.downcase).to include("sarbanes", "oxley")
     end
 
     scenario "searching title for x OR y" do

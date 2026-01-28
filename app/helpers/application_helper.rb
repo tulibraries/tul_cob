@@ -59,7 +59,28 @@ module ApplicationHelper
     active = is_active?(path) ? [ "active" ] : []
     button_class = ([ "nav-item nav-link header-links" ] + active).join(" ")
 
-    link_to(name, send(path, search_params), id: analytics_id, class: button_class)
+    link_to(name, send(path, nav_search_params_for(path)), id: analytics_id, class: button_class)
+  end
+
+  def nav_search_params_for(path)
+    params = search_params
+
+    if path == :search_catalog_path && controller_name != "catalog"
+      last_catalog = session[:last_catalog_search_params]
+      return last_catalog if last_catalog.present?
+    end
+
+    if [
+      :everything_path,
+      :search_path,
+      :search_databases_path,
+      :search_journals_path,
+      :search_web_content_path
+    ].include?(path)
+      sanitize_cross_tab_search_params(params)
+    else
+      params
+    end
   end
 
   def search_params
@@ -71,6 +92,50 @@ module ApplicationHelper
     rescue
       {}
     end
+  end
+
+  def sanitize_cross_tab_search_params(params)
+    return {} if params.blank?
+
+    safe_q = extract_safe_q(params)
+    return {} if safe_q.blank?
+
+    { q: safe_q }
+  end
+
+  def extract_safe_q(params)
+    raw_q = params[:q].to_s
+    return raw_q if raw_q.present? && raw_q.exclude?("{!") && raw_q.exclude?("_query_:")
+
+    [params[:q_1], params[:q_2], params[:q_3]].each do |candidate|
+      candidate = candidate.to_s
+      next if candidate.blank?
+
+      if candidate.include?("{!") || candidate.include?("_query_:")
+        extracted = extract_from_localparams(candidate)
+        return extracted if extracted.present?
+        next
+      end
+
+      return candidate
+    end
+
+    extracted = extract_from_localparams(raw_q)
+    return extracted if extracted.present?
+
+    nil
+  end
+
+  def extract_from_localparams(query)
+    q = query.to_s
+    return nil unless q.include?("df=call_number_t")
+
+    payload = q.split("}").last.to_s.strip
+    payload = payload.delete_prefix('"').delete_suffix('"')
+    payload = payload.sub(/\*+\z/, "")
+    payload = payload.delete("\\")
+
+    payload.presence
   end
 
   def is_active?(path)

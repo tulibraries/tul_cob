@@ -16,14 +16,28 @@ class DatabasesController < CatalogController
     config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
-    config.connection_config[:url] = config.connection_config[:az_url]
+
+    base_uri = URI.parse(config.connection_config[:url].to_s)
+    az_uri = URI.parse(config.connection_config[:az_url].to_s)
+
+    if az_uri.host.to_s.empty?
+      az_path = az_uri.path.to_s
+      az_path = "/solr/az-database" if az_path.empty?
+      az_uri = base_uri.dup
+      az_uri.path = az_path
+    end
+
+    config.connection_config[:url] = az_uri.to_s
     config.document_solr_path = "document"
+    config.track_search_session = false
     config.index.title_field = "title_statement_display"
     config.show.title_field = "title_statement_display"
 
     # Do not inherit default solr configs from the catalog.
-    config.default_solr_params =
-      config.default_document_solr_params = config.fetch_many_document_params = {}
+    config.default_solr_params = { "df" => "text", "defType" => "edismax" }
+    config.default_document_solr_params = config.fetch_many_document_params = {}
+
+    config.search_builder_class = SearchBuilder
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false, component: true

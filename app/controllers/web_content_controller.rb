@@ -15,11 +15,24 @@ class WebContentController < CatalogController
 
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
-    config.connection_config[:url] = config.connection_config[:web_content_url]
+
+    base_uri = URI.parse(config.connection_config[:url].to_s)
+    web_uri = URI.parse(config.connection_config[:web_content_url].to_s)
+
+    if web_uri.host.to_s.empty?
+      web_path = web_uri.path.to_s
+      web_path = "/solr/web-content" if web_path.empty?
+      web_uri = base_uri.dup
+      web_uri.path = web_path
+    end
+
+    config.connection_config[:url] = web_uri.to_s
     config.track_search_session = false
     config.index.title_field = "web_title_display"
     # Do not inherit default solr configs from the catalog.
-    config.default_solr_params = {}
+    config.default_solr_params = { "df" => "text", "defType" => "edismax" }
+
+    config.search_builder_class = SearchBuilder
 
     # Facet fields
     config.add_facet_field "web_content_type_facet",
