@@ -20,13 +20,23 @@ module CsvExportable
 
   def csv_fields
     [
-      csv_value("title_statement_display"),
+      csv_title_value,
       csv_value("creator_display"),
       csv_value("call_number_display")
     ]
   end
 
   private
+
+    def csv_title_value
+      title_value = csv_value("title_with_subtitle_display")
+      return title_value if title_value.present?
+
+      title_value = csv_value("title_with_subtitle_truncated_display")
+      return title_value if title_value.present?
+
+      csv_value("title_statement_display")
+    end
 
     def csv_value(field)
       Array(fetch(field, nil)).compact.join("; ")

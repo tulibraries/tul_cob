@@ -17,33 +17,63 @@ RSpec.describe BookmarksController do
   describe "index csv" do
     render_views
 
-    let(:document) do
-      SolrDocument.new(
-        "id" => "123",
-        "title_statement_display" => ["The Title"],
-        "creator_display" => ["Author One"],
-        "call_number_display" => ["ABC 123"]
-      )
+    let(:documents) do
+      (1..11).map do |i|
+        SolrDocument.new(
+          "id" => i.to_s,
+          "title_statement_display" => ["Title #{i}"],
+          "creator_display" => ["Author #{i}"],
+          "call_number_display" => ["CN #{i}"]
+        )
+      end
     end
-    let(:response_double) { instance_double(Blacklight::Solr::Response, documents: [document], export_formats: [:csv]) }
-    let(:bookmark) { Bookmark.new(document_id: "123", document_type: SolrDocument.to_s) }
-    let(:user) { instance_double(User, bookmarks: [bookmark]) }
+    let(:response_double) { instance_double(Blacklight::Solr::Response, documents: documents, export_formats: [:csv]) }
+    let(:bookmarks) do
+      (1..11).map do |i|
+        Bookmark.new(document_id: i.to_s, document_type: SolrDocument.to_s)
+      end
+    end
+    let(:user) { instance_double(User, bookmarks: bookmarks) }
     let(:search_service) { instance_double(Blacklight::SearchService) }
 
     before do
       allow(controller).to receive(:token_or_current_or_guest_user).and_return(user)
       allow(controller).to receive(:current_or_guest_user).and_return(user)
       allow(controller).to receive(:search_service).and_return(search_service)
+      allow(controller).to receive(:bookmark_ids_for_csv).and_return((1..11).map(&:to_s))
     end
 
     it "returns a CSV with headers and a row per document" do
-      expect(search_service).to receive(:fetch).with(["123"]).and_return([response_double, [document]])
+      expected_filter = "{!terms f=id}#{(1..11).map(&:to_s).join(',')}"
+      repository = instance_double(Blacklight::Solr::Repository)
+
+      allow(search_service).to receive(:repository).and_return(repository)
+      allow(response_double).to receive(:documents).and_return(documents)
+      expect(repository).to receive(:search)
+        .with(q: "*:*", fq: expected_filter, rows: 11)
+        .and_return(response_double)
       get :index, params: { format: "csv" }
 
-      rows = CSV.parse(response.body)
+      rows = CSV.parse(response.body, skip_blanks: true)
+      expect(rows.length).to eq(12), "CSV rows were: #{rows.inspect}"
       expect(rows[0]).to eq(CsvExportable::HEADERS)
-      expect(rows[1]).to eq(["The Title", "Author One", "ABC 123", "https://librarysearch.temple.edu/catalog/123"])
+      expect(rows[1]).to eq(["Title 1", "Author 1", "CN 1", "https://librarysearch.temple.edu/catalog/1"])
+      expect(rows[11]).to eq(["Title 11", "Author 11", "CN 11", "https://librarysearch.temple.edu/catalog/11"])
       expect(response.media_type).to eq("text/csv")
+    end
+
+    it "uses bookmark_ids_for_csv to build the CSV" do
+      repository = instance_double(Blacklight::Solr::Repository)
+      response_double = instance_double(Blacklight::Solr::Response, documents: documents)
+      allow(search_service).to receive(:repository).and_return(repository)
+      expect(repository).to receive(:search)
+        .with(q: "*:*", fq: "{!terms f=id}#{(1..11).map(&:to_s).join(',')}", rows: 11)
+        .and_return(response_double)
+
+      get :index, params: { format: "csv" }
+
+      rows = CSV.parse(response.body, skip_blanks: true)
+      expect(rows[1]).to eq(["Title 1", "Author 1", "CN 1", "https://librarysearch.temple.edu/catalog/1"])
     end
   end
 
@@ -75,4 +105,5 @@ RSpec.describe BookmarksController do
       expect(flash[:alert]).to be_nil
     end
   end
+
 end
