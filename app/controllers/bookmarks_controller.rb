@@ -50,10 +50,10 @@ class BookmarksController < CatalogController
 
     def bookmark_ids_for_csv
       user = if respond_to?(:token_or_current_or_guest_user)
-               token_or_current_or_guest_user
+        token_or_current_or_guest_user
              else
                current_or_guest_user
-             end
+      end
       bookmarks = user.bookmarks
       document_type = blacklight_config.document_model.to_s
 
