@@ -86,6 +86,28 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(citation_labels(format)).to eq("Chicago Author-Date (15th)")
       end
     end
+
+    context "citeproc citations enabled" do
+      before do
+        allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
+      end
+
+      it "displays APA without edition" do
+        expect(citation_labels("APA")).to eq("APA")
+      end
+
+      it "displays MLA without edition" do
+        expect(citation_labels("MLA")).to eq("MLA")
+      end
+
+      it "displays Chicago Author-Date without edition" do
+        expect(citation_labels("CHICAGO-AUTHOR-DATE")).to eq("Chicago Author-Date")
+      end
+
+      it "displays Chicago Notes & Bibliography without edition" do
+        expect(citation_labels("CHICAGO-NOTES-BIBLIOGRAPHY")).to eq("Chicago Notes & Bibliography")
+      end
+    end
   end
 
   describe "#emergency_alert_messages" do
