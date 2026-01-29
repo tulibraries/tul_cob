@@ -1,9 +1,9 @@
-<% loans.all.each_with_index do |loan, counter| %>
+<% loans.each_with_index do |loan, counter| %>
   <tr>
     <td colspan="1"><%= counter + 1 %></td>
-    <td colspan="3"><%= loan.title %></td>
-    <td colspan="1"><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
-    <td colspan="1" class="<%= loan.loan_id %>"><%= make_date(loan.due_date) %></td>
+    <td colspan="3" data-sort-key="title" data-sort-value="<%= loan.title.to_s %>"><%= loan.title %></td>
+    <td colspan="1" data-sort-key="call_number" data-sort-value="<%= loan.respond_to?(:call_number) ? loan.call_number.to_s : "" %>"><% if loan.respond_to? :call_number %><%= loan.call_number %><% end %></td>
+    <td colspan="1" class="<%= loan.loan_id %>" data-sort-key="due" data-sort-value="<%= loan.due_date.respond_to?(:to_date) ? loan.due_date.to_date.iso8601 : loan.due_date.to_s %>"><%= make_date(loan.due_date) %></td>
     <td colspan="1" class="renewal-check">
       <div class="form-check item-select-form-check">
         <label class="form-check-label">
