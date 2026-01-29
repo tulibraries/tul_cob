@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # advanced forms
   match "everything/advanced", to: "search#advanced_search", via: [:get, :post]
+  match "articles/advanced", to: "primo_central#advanced_search", via: [:get, :post]
 
   match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
 
@@ -130,7 +131,6 @@ Rails.application.routes.draw do
   get "bento" => "search#index", :as => "multi_search"
   get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-  get "articles_advanced", to: "primo_advanced#index", as: "legacy_articles_advanced_search"
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
   get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"

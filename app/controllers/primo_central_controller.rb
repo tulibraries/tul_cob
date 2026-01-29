@@ -48,9 +48,6 @@ class PrimoCentralController < CatalogController
     end
   end
 
-  def advanced_override_path
-  end
-
   rescue_from ArticleNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
