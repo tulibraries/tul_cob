@@ -64,6 +64,32 @@
   width: 100% !important;
 }
 
+.loan-sort-button {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: inherit;
+  display: inline-flex;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+.loan-sort-button:focus-visible {
+  outline: 2px solid $midnight-blue;
+  outline-offset: 2px;
+}
+
+.loan-sort-icon {
+  display: none;
+  font-size: 0.875rem;
+}
+
+th[data-sort-state="none"] .loan-sort-icon--none,
+th[data-sort-state="ascending"] .loan-sort-icon--asc,
+th[data-sort-state="descending"] .loan-sort-icon--desc {
+  display: inline-flex;
+}
+
 .hold-number {
   width: 2%;
 }
