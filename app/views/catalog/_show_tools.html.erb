@@ -14,7 +14,7 @@
             <li class="<%= config.key %> pt-1 ps-3" id="bookmark_button">
               <%= inner %>
             </li>
-            <% if @document.citable? %>
+            <% if Flipflop.citeproc_citations? && @document.citable? %>
               <li class="citation">
                 <%= link_to t("blacklight.tools.cite_html", current_range: ""),
                             citation_solr_document_path(id: @document),

@@ -12,7 +12,7 @@
   <% url_opts = params.to_unsafe_h %>
   <div class="bookmarks-tools-layout">
     <div class="bookmarks-tools-group bookmarks-tools-group--primary">
-      <% if @response.documents.any? { |doc| doc.citable? } %>
+      <% if Flipflop.citeproc_citations? && @response.documents.any? { |doc| doc.citable? } %>
         <%= link_to t("blacklight.tools.cite_html", current_range: current_entries_info(@response)).html_safe,
                     citation_bookmarks_path({ id: @response.documents }.merge(params)),
                     id: "citeLink",
