@@ -156,6 +156,19 @@ module ApplicationHelper
   end
 
   def citation_labels(format)
+    if Flipflop.citeproc_citations?
+      case format
+      when "APA"
+        return "APA"
+      when "MLA"
+        return "MLA"
+      when "CHICAGO-AUTHOR-DATE"
+        return "Chicago Author-Date"
+      when "CHICAGO-NOTES-BIBLIOGRAPHY"
+        return "Chicago Notes & Bibliography"
+      end
+    end
+
     case format
     when "APA"
       format = "APA (6th)"

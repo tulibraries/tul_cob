@@ -21,10 +21,17 @@
     <div role="tabpanel" class="tab-pane active" id="biblio">
       <% SolrDocument.grouped_citations(@response.documents).each do |format, citations| %>
         <% unless format == "NULL" %>
-          <h2 class="citation-heading"><%= citation_labels(format)%></h2>
-          <% citations.each do |citation| %>
-            <%= citation %>
-          <% end %>
+          <div class="citation-format-group" data-controller="citation-copy">
+            <h2 class="citation-heading citation-format">
+              <%= citation_labels(format) %>
+              <button type="button" class="citation-copy-btn" data-action="click->citation-copy#copy" aria-label="Copy citations for <%= citation_labels(format) %>">⧉</button>
+            </h2>
+            <div class="citation-copy-content" data-citation-copy-target="content">
+              <% citations.each do |citation| %>
+                <%= citation %>
+              <% end %>
+            </div>
+          </div>
         <% end %>
         <% if format == "NULL" %>
           <p>Citations are not available for some records. See "By title" for details.</p>

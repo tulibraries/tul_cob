@@ -10,4 +10,8 @@ Flipflop.configure do
     feature :aspace_integration
     feature :style_updates
   end
+
+  group :citations do
+    feature :citeproc_citations
+  end
 end

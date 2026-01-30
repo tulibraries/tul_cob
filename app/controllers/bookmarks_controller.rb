@@ -25,6 +25,13 @@ class BookmarksController < CatalogController
     set_guest_bookmark_warning
   end
 
+  def action_documents
+    return super unless params[:id].present?
+
+    document_ids = Array(params[:id]).map(&:to_s)
+    search_service.fetch(document_ids, rows: document_ids.length, start: 0)
+  end
+
   private
 
     def load_csv_bookmarks

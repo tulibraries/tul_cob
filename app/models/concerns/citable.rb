@@ -11,6 +11,10 @@ module Citable
   private
 
     def citation_object
-      @citation_object ||= Citation.new(self)
+      @citation_object ||= if Flipflop.citeproc_citations?
+        CiteprocCitation.new(self)
+      else
+        Citation.new(self)
+      end
     end
 end
