@@ -9,6 +9,66 @@ RSpec.describe SearchBuilder , type: :model do
 
   subject { search_builder }
 
+  describe "clause limit protections" do
+    let(:blacklight_config) do
+      Blacklight::Configuration.new.tap do |config|
+        config.default_solr_params = {
+          qt: "search",
+          "facet.field" => ["lc_classification"]
+        }
+
+        config.add_search_field("all_fields") do |field|
+          field.solr_parameters = {
+            qf: "text",
+            pf: "title_statement_t^5",
+            pf2: "title_t^3"
+          }
+        end
+      end
+    end
+
+    let(:context) do
+      double(
+        "controller",
+        blacklight_config: blacklight_config
+      )
+    end
+
+    it "includes the clause-limit search processors" do
+      expect(described_class.default_processor_chain).to include(
+        :force_query_parser_for_advanced_search,
+        :truncate_overlong_search_query,
+        :manage_long_queries_for_clause_limits,
+        :normalize_def_type_for_simple_queries
+      )
+    end
+
+    context "with a very long query" do
+      let(:long_query) { Array.new(30, "term").join(" ") }
+      let(:params) { { q: long_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "truncates and rewrites the query to avoid excessive clauses" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+
+        expect(q.split.length).to eq(described_class::MAX_QUERY_TOKENS)
+        expect(q).to start_with('"')
+        expect(q).to end_with('"')
+        expect(def_type).to eq("lucene")
+        expect(solr_params).not_to have_key("pf")
+        expect(solr_params).not_to have_key("pf2")
+        expect(solr_params).not_to have_key("pf3")
+      end
+    end
+  end
+
   describe "#limit_facets" do
     let(:solr_parameters) {
       sp = Blacklight::Solr::Request.new
