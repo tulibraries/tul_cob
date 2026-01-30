@@ -4,6 +4,20 @@
   margin-top: 1rem;
 }
 
+#sortAndPerPage .sort-label-short {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #sortAndPerPage .sort-label-full {
+    display: none;
+  }
+
+  #sortAndPerPage .sort-label-short {
+    display: inline;
+  }
+}
+
 .documents-list {
   margin-top: 1rem;
   margin-left: 0;
