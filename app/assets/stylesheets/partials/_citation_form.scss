@@ -1,11 +1,48 @@
 /* CITATION MODAL */
 
 h2.citation-heading {
-	font-size: 1.25rem;
-	margin-bottom: 1.25rem;
+	font-size: 1.75rem;
+	margin-bottom: 2.25rem;
 }
 
 h3.citation-heading {
 	font-size: 1rem;
 	margin-top: 1.25rem;
+}
+
+h2.citation-format {
+	font-size: 1.45rem;
+	font-weight: 900;
+}
+
+h3.citation-format {
+	font-size: 1.2rem;
+	font-weight: 900;
+}
+
+.citation-format-group {
+	margin-bottom: 1.5rem;
+}
+
+.citation-copy-btn {
+	background: transparent;
+	border: 0;
+	color: $midnight-blue;
+	display: inline-block;
+	font-size: 1.2rem;
+	font-weight: 900;
+	line-height: 1;
+	margin-left: 0.5rem;
+	padding: 0;
+	text-decoration: none;
+	vertical-align: middle;
+	position: relative;
+	top: -2px;
+}
+
+.citation-copy-btn:hover,
+.citation-copy-btn:focus {
+	background-color: lighten($light-blue, 6%);
+	color: $midnight-blue;
+	text-decoration: none;
 }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "citeproc"
+require "citeproc/ruby"
 require "csl"
 require "csl/styles"
 
@@ -51,7 +52,8 @@ class CiteprocCitation
     def render_style(style_id, label)
       processor = CiteProc::Processor.new(style: load_style(style_id), format: "html")
       processor.import([csl_item])
-      result = Array(processor.render(:bibliography)).first.to_s
+      bibliography = processor.bibliography
+      result = Array(bibliography&.references).first.to_s
       return "" if result.blank?
 
       %(<p class="citation_style_#{label}">#{result}</p>).html_safe
@@ -62,6 +64,8 @@ class CiteprocCitation
 
     def load_style(style_id)
       CSL::Style.load(style_id)
+    rescue StandardError
+      CSL::Style.load("#{style_id}.csl")
     end
 
     def csl_item
@@ -78,7 +82,7 @@ class CiteprocCitation
           ISBN: isbn,
           ISSN: issn
         }.compact
-        CSL::Item.new(attributes)
+        CiteProc::Item.new(attributes)
       end
     end
 
@@ -98,11 +102,30 @@ class CiteprocCitation
     end
 
     def csl_names(names)
-      Array(names).map do |name|
-        CSL::Name.parse(name.to_s)
-      rescue StandardError
-        CSL::Name.new(literal: name.to_s)
+      Array(names).filter_map do |name|
+        value = extract_name_value(name)
+        next if value.blank?
+
+        if value.include?(",")
+          family, given = value.split(",", 2).map(&:strip)
+          { family:, given: given.presence }
+        else
+          { literal: value }
+        end
       end
+    end
+
+    def extract_name_value(name)
+      return name["name"].to_s.strip if name.is_a?(Hash)
+
+      value = name.to_s.strip
+      return "" if value.blank?
+      return value unless value.start_with?("{") && value.end_with?("}")
+
+      parsed = JSON.parse(value)
+      parsed.is_a?(Hash) ? parsed["name"].to_s.strip : value
+    rescue JSON::ParserError
+      value
     end
 
     def issued_date

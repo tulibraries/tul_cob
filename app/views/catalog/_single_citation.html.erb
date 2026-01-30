@@ -2,8 +2,18 @@
   <h2 class="citation-heading"><%= document_heading(document) %></h2>
   <% document.citations.each do |format, citation| %>
     <% unless format == "NULL" %>
-      <h3 class="citation-heading"><%= citation_labels(format) %></h3>
+      <div class="citation-format-group" data-controller="citation-copy">
+        <h3 class="citation-heading citation-format">
+          <%= citation_labels(format) %>
+          <button type="button" class="citation-copy-btn" data-action="click->citation-copy#copy" aria-label="Copy citation for <%= citation_labels(format) %>">⧉</button>
+        </h3>
+        <div class="citation-copy-content" data-citation-copy-target="content">
+          <%= citation %>
+        </div>
+      </div>
     <% end %>
-    <%= citation %>
+    <% if format == "NULL" %>
+      <%= citation %>
+    <% end %>
   <% end %>
 </div>
