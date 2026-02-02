@@ -88,10 +88,14 @@ class RequestData
       international_pickup = []
 
       if libraries[desc].present?
-        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
-        libraries[desc] -= removals
-        if campus == :MAIN || %w[JAPAN ROME].include?(item.library)
-          libraries[desc] << item.library unless libraries[desc].include?(item.library)
+        if campus == :MAIN && desc.blank?
+          libraries[desc] |= pickup_locations
+        else
+          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+          libraries[desc] -= removals
+          if campus == :MAIN || %w[JAPAN ROME].include?(item.library)
+            libraries[desc] << item.library unless libraries[desc].include?(item.library)
+          end
         end
       elsif item.library == "JAPAN" || item.library == "ROME"
         international_pickup << item.library
