@@ -6,9 +6,12 @@ require "csv"
 RSpec.describe CsvExportable, type: :model do
   let(:document) do
     SolrDocument.new(
-      "title_statement_display" => ["The Title"],
-      "creator_display" => ["Author One", "Author Two"],
-      "call_number_display" => ["ABC 123"]
+      "title_statement_display" => ["Big cat, little cat"],
+      "creator_display" => ["Cooper, Elisha", "Brown, Rachel"],
+      "contributor_display" => ["Illustrator, Jamie"],
+      "imprint_display" => ["New York : Roaring Brook Press, 2017"],
+      "isbn_display" => ["9781250143140"],
+      "call_number_display" => ["PZ7.C775 B54 2017"]
     )
   end
 
@@ -18,15 +21,24 @@ RSpec.describe CsvExportable, type: :model do
 
   it "exports a single CSV row with joined values" do
     row = CSV.parse_line(document.export_as_csv)
-    expect(row).to eq(["The Title", "Author One; Author Two", "ABC 123"])
+    expect(row).to eq([
+      "Big cat, little cat",
+      "New York : Roaring Brook Press, 2017",
+      "Cooper, Elisha; Brown, Rachel",
+      "Illustrator, Jamie",
+      "9781250143140",
+      ""
+    ])
   end
 
   it "prefers the title-with-subtitle field when present" do
     titled_document = SolrDocument.new(
       "title_with_subtitle_display" => ["Main title : subtitle"],
       "title_statement_display" => ["Main title / Author"],
-      "creator_display" => ["Author One"],
-      "call_number_display" => ["ABC 123"]
+      "creator_display" => ["Cooper, Elisha"],
+      "imprint_display" => ["New York : Roaring Brook Press, 2017"],
+      "isbn_display" => ["9781250143140"],
+      "call_number_display" => ["PZ7.C775 B54 2017"]
     )
 
     row = CSV.parse_line(titled_document.export_as_csv)
@@ -37,8 +49,10 @@ RSpec.describe CsvExportable, type: :model do
     titled_document = SolrDocument.new(
       "title_with_subtitle_truncated_display" => ["Main title : subtitle"],
       "title_statement_display" => ["Main title / Author"],
-      "creator_display" => ["Author One"],
-      "call_number_display" => ["ABC 123"]
+      "creator_display" => ["Cooper, Elisha"],
+      "imprint_display" => ["New York : Roaring Brook Press, 2017"],
+      "isbn_display" => ["9781250143140"],
+      "call_number_display" => ["PZ7.C775 B54 2017"]
     )
 
     row = CSV.parse_line(titled_document.export_as_csv)
@@ -49,6 +63,6 @@ RSpec.describe CsvExportable, type: :model do
   it "returns blank fields when values are missing" do
     empty_document = SolrDocument.new({})
     row = CSV.parse_line(empty_document.export_as_csv)
-    expect(row).to eq(["", "", ""])
+    expect(row).to eq(["", "", "", "", "", ""])
   end
 end

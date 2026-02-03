@@ -19,12 +19,18 @@ RSpec.describe BookmarksController do
 
     let(:documents) do
       (1..11).map do |i|
-        SolrDocument.new(
+        document = SolrDocument.new(
           "id" => i.to_s,
           "title_statement_display" => ["Title #{i}"],
           "creator_display" => ["Author #{i}"],
-          "call_number_display" => ["CN #{i}"]
+          "contributor_display" => ["Contributor #{i}"],
+          "imprint_display" => ["Imprint #{i}"],
+          "isbn_display" => ["ISBN #{i}"]
         )
+        allow(document).to receive(:document_items_grouped).and_return(
+          { "Main Library" => { "Stacks" => [{ "call_number_display" => "CN #{i}" }] } }
+        )
+        document
       end
     end
     let(:response_double) { instance_double(Blacklight::Solr::Response, documents: documents, export_formats: [:csv]) }
@@ -57,8 +63,8 @@ RSpec.describe BookmarksController do
       rows = CSV.parse(response.body, skip_blanks: true)
       expect(rows.length).to eq(12), "CSV rows were: #{rows.inspect}"
       expect(rows[0]).to eq(CsvExportable::HEADERS)
-      expect(rows[1]).to eq(["Title 1", "Author 1", "CN 1", "https://librarysearch.temple.edu/catalog/1"])
-      expect(rows[11]).to eq(["Title 11", "Author 11", "CN 11", "https://librarysearch.temple.edu/catalog/11"])
+      expect(rows[1]).to eq(["Title 1", "Imprint 1", "Author 1", "Contributor 1", "ISBN 1", "Main Library - Stacks - CN 1", "https://librarysearch.temple.edu/catalog/1"])
+      expect(rows[11]).to eq(["Title 11", "Imprint 11", "Author 11", "Contributor 11", "ISBN 11", "Main Library - Stacks - CN 11", "https://librarysearch.temple.edu/catalog/11"])
       expect(response.media_type).to eq("text/csv")
     end
 
@@ -73,7 +79,7 @@ RSpec.describe BookmarksController do
       get :index, params: { format: "csv" }
 
       rows = CSV.parse(response.body, skip_blanks: true)
-      expect(rows[1]).to eq(["Title 1", "Author 1", "CN 1", "https://librarysearch.temple.edu/catalog/1"])
+      expect(rows[1]).to eq(["Title 1", "Imprint 1", "Author 1", "Contributor 1", "ISBN 1", "Main Library - Stacks - CN 1", "https://librarysearch.temple.edu/catalog/1"])
     end
   end
 
