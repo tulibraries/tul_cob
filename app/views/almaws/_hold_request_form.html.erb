@@ -8,9 +8,10 @@
     <%= form.hidden_field :request_level, value: @request_level %>
 
     <% if @equipment.empty?  && @request_level == "bib" %>
+      <% pickup_options = @pickup_locations.reject { |lib| lib.keys.first == "ASRS" } %>
       <div class="row hold-form form-group">
         <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select("", :hold_pickup_location, @pickup_locations.collect { |lib| [ lib.values.first, lib.keys.first ] }, {include_blank: true}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
+        <%= select("", :hold_pickup_location, pickup_options.collect { |lib| [ lib.values.first, lib.keys.first ] }, {include_blank: true}, {required: true, "aria-required": true, class: "request-form form-control"}) %>
       </div>
     <% end %>
 
