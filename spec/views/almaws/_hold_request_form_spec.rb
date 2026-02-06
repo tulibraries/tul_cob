@@ -67,5 +67,63 @@ RSpec.describe "almaws/_hold_request_form.html.erb", type: :view do
         expect(options).to include("MAIN", "JAPAN", "ASRS")
       end
     end
+
+    it "shows Charles (MAIN) pickup when only stacks items exist" do
+      assign(:pickup_locations, pickup_locations)
+
+      render partial: "almaws/hold_request_form"
+
+      doc = Nokogiri::HTML(rendered)
+      labels = doc.css('select[name="hold_pickup_location"] option').map(&:text).map(&:strip)
+      values = doc.css('select[name="hold_pickup_location"] option').map { |o| o["value"] }.compact
+
+      expect(values).to include("MAIN")
+      expect(labels).to include("Charles Library")
+      expect(values).not_to include("ASRS")
+    end
+
+    context "when stacks, ASRS, and multiple Japan copies exist" do
+      let(:available_asrs_items) { [instance_double("AlmaItem", library: "ASRS")] }
+      let(:items) do
+        [
+          instance_double(
+            "AlmaItem",
+            library: "MAIN",
+            item_data: { "library" => { "desc" => "Charles Library" }, "location" => { "desc" => "Stacks" } }
+          ),
+          instance_double(
+            "AlmaItem",
+            library: "ASRS",
+            item_data: { "library" => { "desc" => "Charles Library - BookBot" }, "location" => { "desc" => "BookBot" } }
+          ),
+          instance_double(
+            "AlmaItem",
+            library: "JAPAN",
+            item_data: { "library" => { "desc" => "Japan Campus Library" }, "description" => "" , "location" => { "desc" => "Stacks" } }
+          ),
+          instance_double(
+            "AlmaItem",
+            library: "JAPAN",
+            item_data: { "library" => { "desc" => "Japan Campus Library" }, "description" => "c.2", "location" => { "desc" => "Stacks" } }
+          ),
+          instance_double(
+            "AlmaItem",
+            library: "JAPAN",
+            item_data: { "library" => { "desc" => "Japan Campus Library" }, "description" => "c. 3", "location" => { "desc" => "Stacks" } }
+          )
+        ]
+      end
+
+      it "shows pickup options for MAIN, ASRS, and Japan" do
+        assign(:pickup_locations, pickup_locations)
+
+        render partial: "almaws/hold_request_form"
+
+        doc = Nokogiri::HTML(rendered)
+        options = doc.css('select[name="hold_pickup_location"] option').map { |o| o["value"] }.compact
+
+        expect(options).to include("MAIN", "ASRS", "JAPAN")
+      end
+    end
   end
 end
