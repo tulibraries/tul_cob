@@ -80,11 +80,11 @@ module AlmawsHelper
   end
 
   def non_asrs_items(items = @items)
-    items.select { |item| !is_asrs_item?(item) }
+    Array(items).select { |item| !is_asrs_item?(item) }
   end
 
   def asrs_items(items = @items)
-    items.select { |item| is_asrs_item?(item) }
+    Array(items).select { |item| is_asrs_item?(item) }
   end
 
   def is_asrs_item?(item)
@@ -99,5 +99,14 @@ module AlmawsHelper
         item.in_place?
       end
     }
+  end
+
+  def item_location_labels(items = @items)
+    Array(items).map do |item|
+      library_desc = item.item_data.dig("library", "desc") || item.library
+      location_desc = item.item_data.dig("location", "desc") || item.item_data.dig("location", "value")
+      next if library_desc.blank? && location_desc.blank?
+      [library_desc, location_desc].compact.join(" - ")
+    end.compact.uniq
   end
 end
