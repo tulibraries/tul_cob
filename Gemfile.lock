@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: f973be6591d6cf9ad565b59bfdc821e518f65040
+  revision: a3c40fce063f039ae204e6d1d341d454e8687887
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -421,7 +421,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marc (1.3.0)
+    marc (1.4.0)
       nokogiri (~> 1.0)
       rexml
     marc-fastxmlwriter (1.1.0)
