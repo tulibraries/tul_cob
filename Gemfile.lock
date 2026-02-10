@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: b62598688a2eea32109304cf08151d22d3af6cc9
+  revision: 669859de06e53b680cb9577276d4c6eed05dbbca
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -421,7 +421,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marc (1.3.0)
+    marc (1.4.0)
       nokogiri (~> 1.0)
       rexml
     marc-fastxmlwriter (1.1.0)
