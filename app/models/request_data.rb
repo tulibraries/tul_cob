@@ -204,8 +204,12 @@ class RequestData
       end
 
       def validate_items!(items)
-        unless items.is_a?(Array)
-          raise ArgumentError, "RequestData expects bib_items to be an Array, got #{items.class}"
+        if items.nil?
+          raise ArgumentError, "RequestData expects bib_items to be a collection that responds to #collect, got NilClass"
+        end
+
+        unless items.respond_to?(:collect)
+          raise ArgumentError, "RequestData expects bib_items to be a collection that responds to #collect, got #{items.class}"
         end
 
         items

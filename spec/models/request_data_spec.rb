@@ -9,7 +9,7 @@ RSpec.describe RequestData, type: :model do
   describe "#initialize" do
     it "raises when bib_items is nil" do
       expect { described_class.new(nil) }
-        .to raise_error(ArgumentError, /expects bib_items to be an Array/)
+        .to raise_error(ArgumentError, /expects bib_items to be a collection that responds to #collect/)
     end
 
     it "raises when pickup_location is not a String" do
