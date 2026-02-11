@@ -92,21 +92,14 @@ module AlmawsHelper
   end
 
   def available_asrs_items(items = @items)
-    asrs_items(items).select { |item|
-      if item.physical_material_type["value"] == "DVD"
-        item
-      else
-        item.in_place?
-      end
-    }
+    asrs_items(items).select do |item|
+      next unless item.in_place?
+
+      process_type = item.respond_to?(:process_type) ? item.process_type : item.item_data.dig("process_type")
+      next unless process_type.blank?
+
+      item.item_data.dig("item_policy", "desc") != "DVD"
+    end
   end
 
-  def item_location_labels(items = @items)
-    Array(items).map do |item|
-      library_desc = item.item_data.dig("library", "desc") || item.library
-      location_desc = item.item_data.dig("location", "desc") || item.item_data.dig("location", "value")
-      next if library_desc.blank? && location_desc.blank?
-      [library_desc, location_desc].compact.join(" - ")
-    end.compact.uniq
-  end
 end

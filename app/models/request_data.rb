@@ -26,7 +26,9 @@ class RequestData
   end
 
   def pickup_locations
-    pickup_location_codes&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
+    locations = pickup_location_codes || []
+    locations = locations - ["ASRS"] if locations.include?("MAIN")
+    locations.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
   end
 
   def valid_pickup_locations

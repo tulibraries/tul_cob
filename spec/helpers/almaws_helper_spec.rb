@@ -667,4 +667,40 @@ RSpec.describe AlmawsHelper, type: :helper do
      end
    end
   end
+
+  describe "#available_asrs_items" do
+    it "excludes ASRS items that have a process_type set (not requestable)" do
+      items = [
+        Alma::BibItem.new(
+          "item_data" => {
+            "base_status" => { "value" => "1" },
+            "process_type" => "HOLD",
+            "library" => { "value" => "ASRS", "desc" => "ASRS" },
+            "location" => { "value" => "bookbot", "desc" => "BookBot" },
+            "physical_material_type" => { "value" => "BOOK", "desc" => "book" },
+            "item_policy" => { "desc" => "BOOK" }
+          }
+        )
+      ]
+
+      expect(helper.available_asrs_items(items)).to be_empty
+    end
+
+    it "includes ASRS items that are in place with no process_type" do
+      items = [
+        Alma::BibItem.new(
+          "item_data" => {
+            "base_status" => { "value" => "1" },
+            "process_type" => nil,
+            "library" => { "value" => "ASRS", "desc" => "ASRS" },
+            "location" => { "value" => "bookbot", "desc" => "BookBot" },
+            "physical_material_type" => { "value" => "BOOK", "desc" => "book" },
+            "item_policy" => { "desc" => "BOOK" }
+          }
+        )
+      ]
+
+      expect(helper.available_asrs_items(items)).not_to be_empty
+    end
+  end
 end

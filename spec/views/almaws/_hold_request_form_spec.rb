@@ -53,6 +53,18 @@ RSpec.describe "almaws/_hold_request_form.html.erb", type: :view do
       expect(options).not_to include("ASRS")
     end
 
+    it "hides ASRS even if the library appears in pickup_locations when none are requestable" do
+      assign(:pickup_locations, pickup_locations)
+      allow(view).to receive(:available_asrs_items).and_return([])
+
+      render partial: "almaws/hold_request_form"
+
+      options = Nokogiri::HTML(rendered).css('select[name="hold_pickup_location"] option').map { |o| o["value"] }.compact
+
+      expect(options).to include("MAIN", "JAPAN")
+      expect(options).not_to include("ASRS")
+    end
+
     context "when ASRS items are available" do
       let(:available_asrs_items) { [instance_double("AlmaItem")] }
 

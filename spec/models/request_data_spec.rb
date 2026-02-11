@@ -316,6 +316,19 @@ RSpec.describe RequestData, type: :model do
     end
   end
 
+  describe "#pickup_locations" do
+    it "does not include ASRS when MAIN is already present" do
+      request_data = described_class.new([], { pickup_location: "MAIN,ASRS,JAPAN", request_level: "bib" })
+
+      expect(request_data.pickup_locations).to eq(
+        [
+          { "MAIN" => "Charles Library" },
+          { "JAPAN" => "Japan Campus Library" }
+        ]
+      )
+    end
+  end
+
   describe "#material_types_and_descriptions" do
     context "material type and description" do
       let(:bib_items) { Alma::BibItem.find("multiple_descriptions") }
