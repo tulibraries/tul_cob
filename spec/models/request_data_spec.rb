@@ -6,6 +6,18 @@ RSpec.describe RequestData, type: :model do
 
   subject { described_class.new(bib_items, params = nil) }
 
+  describe "#initialize" do
+    it "raises when bib_items is nil" do
+      expect { described_class.new(nil) }
+        .to raise_error(ArgumentError, /expects bib_items to be an Array/)
+    end
+
+    it "raises when pickup_location is not a String" do
+      expect { described_class.new([], { pickup_location: ["MAIN", "ASRS"], request_level: "bib" }) }
+        .to raise_error(ArgumentError, /expects pickup_location to be a comma-delimited String/)
+    end
+  end
+
   describe "assigning request levels correctly for ASRS and nonASRS items" do
     let(:bib_items)  { [item1, item2 ] }
     context "default behavior empty list" do

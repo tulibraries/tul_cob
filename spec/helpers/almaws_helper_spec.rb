@@ -668,6 +668,18 @@ RSpec.describe AlmawsHelper, type: :helper do
    end
   end
 
+  describe "request item shape validation" do
+    it "raises when non_asrs_items receives nil" do
+      expect { helper.non_asrs_items(nil) }
+        .to raise_error(ArgumentError, /expects items to be an Array/)
+    end
+
+    it "raises when asrs_items receives a non-array" do
+      expect { helper.asrs_items("ASRS") }
+        .to raise_error(ArgumentError, /expects items to be an Array/)
+    end
+  end
+
   describe "#available_asrs_items" do
     it "excludes ASRS items that have a process_type set (not requestable)" do
       items = [

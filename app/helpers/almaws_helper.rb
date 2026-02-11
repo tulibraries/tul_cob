@@ -80,11 +80,11 @@ module AlmawsHelper
   end
 
   def non_asrs_items(items = @items)
-    Array(items).select { |item| !is_asrs_item?(item) }
+    request_items!(items).select { |item| !is_asrs_item?(item) }
   end
 
   def asrs_items(items = @items)
-    Array(items).select { |item| is_asrs_item?(item) }
+    request_items!(items).select { |item| is_asrs_item?(item) }
   end
 
   def is_asrs_item?(item)
@@ -100,6 +100,16 @@ module AlmawsHelper
 
       item.item_data.dig("item_policy", "desc") != "DVD"
     end
+  end
+
+  private
+
+  def request_items!(items)
+    unless items.is_a?(Array)
+      raise ArgumentError, "AlmawsHelper expects items to be an Array, got #{items.class}"
+    end
+
+    items
   end
 
 end
