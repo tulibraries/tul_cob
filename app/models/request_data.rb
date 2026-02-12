@@ -7,9 +7,9 @@ class RequestData
   attr_reader :pickup_location_codes
 
   def initialize(bib_items, params = nil)
-    @items = bib_items
+    @items = validate_items!(bib_items)
     @request_level = params ? params[:request_level] : get_request_level
-    @pickup_location_codes = params ? params[:pickup_location]&.split(",") : valid_pickup_locations
+    @pickup_location_codes = params ? parse_pickup_location_codes(params[:pickup_location]) : valid_pickup_locations
   end
 
   def item_holding_ids
@@ -26,7 +26,9 @@ class RequestData
   end
 
   def pickup_locations
-    pickup_location_codes&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
+    locations = pickup_location_codes || []
+    locations = locations - ["ASRS"] if locations.include?("MAIN")
+    locations.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
   end
 
   def valid_pickup_locations
@@ -199,6 +201,28 @@ class RequestData
         else
           []
         end
+      end
+
+      def validate_items!(items)
+        if items.nil?
+          raise ArgumentError, "RequestData expects bib_items to be a collection that responds to #collect, got NilClass"
+        end
+
+        unless items.respond_to?(:collect)
+          raise ArgumentError, "RequestData expects bib_items to be a collection that responds to #collect, got #{items.class}"
+        end
+
+        items
+      end
+
+      def parse_pickup_location_codes(pickup_location)
+        return [] if pickup_location.blank?
+
+        unless pickup_location.is_a?(String)
+          raise ArgumentError, "RequestData expects pickup_location to be a comma-delimited String, got #{pickup_location.class}"
+        end
+
+        pickup_location.split(",").map(&:strip)
       end
 
       def combine_material_types_and_descriptions(items)

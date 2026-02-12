@@ -80,10 +80,14 @@ module AlmawsHelper
   end
 
   def non_asrs_items(items = @items)
+    return [] if items.nil?
+
     items.select { |item| !is_asrs_item?(item) }
   end
 
   def asrs_items(items = @items)
+    return [] if items.nil?
+
     items.select { |item| is_asrs_item?(item) }
   end
 
@@ -92,12 +96,13 @@ module AlmawsHelper
   end
 
   def available_asrs_items(items = @items)
-    asrs_items(items).select { |item|
-      if item.physical_material_type["value"] == "DVD"
-        item
-      else
-        item.in_place?
-      end
-    }
+    asrs_items(items).select do |item|
+      next unless item.in_place?
+
+      process_type = item.respond_to?(:process_type) ? item.process_type : item.item_data.dig("process_type")
+      next unless process_type.blank?
+
+      item.item_data.dig("item_policy", "desc") != "DVD"
+    end
   end
 end

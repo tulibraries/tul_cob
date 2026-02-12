@@ -6,6 +6,18 @@ RSpec.describe RequestData, type: :model do
 
   subject { described_class.new(bib_items, params = nil) }
 
+  describe "#initialize" do
+    it "raises when bib_items is nil" do
+      expect { described_class.new(nil) }
+        .to raise_error(ArgumentError, /expects bib_items to be a collection that responds to #collect/)
+    end
+
+    it "raises when pickup_location is not a String" do
+      expect { described_class.new([], { pickup_location: ["MAIN", "ASRS"], request_level: "bib" }) }
+        .to raise_error(ArgumentError, /expects pickup_location to be a comma-delimited String/)
+    end
+  end
+
   describe "assigning request levels correctly for ASRS and nonASRS items" do
     let(:bib_items)  { [item1, item2 ] }
     context "default behavior empty list" do
@@ -313,6 +325,19 @@ RSpec.describe RequestData, type: :model do
       it "does not returns other libraries for booking locations" do
         expect(subject.booking_locations).not_to include(["AMBLER", "Ambler Campus Library"])
       end
+    end
+  end
+
+  describe "#pickup_locations" do
+    it "does not include ASRS when MAIN is already present" do
+      request_data = described_class.new([], { pickup_location: "MAIN,ASRS,JAPAN", request_level: "bib" })
+
+      expect(request_data.pickup_locations).to eq(
+        [
+          { "MAIN" => "Charles Library" },
+          { "JAPAN" => "Japan Campus Library" }
+        ]
+      )
     end
   end
 
