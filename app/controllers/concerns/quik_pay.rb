@@ -7,7 +7,7 @@ module QuikPay
   ERROR_MESSAGE = "There was a problem with your transaction. Please call 215-204-8212."
 
   included do
-    before_action :authenticate_user!, only: [ :quik_pay_callback, :quik_pay ]
+    before_action :authenticate_user!, only: [ :quik_pay ]
 
     rescue_from ::QuikPay::AccessDenied do |exception|
       Honeybadger.notify(exception)
@@ -38,15 +38,15 @@ module QuikPay
     validate_quik_pay_timestamp(params["timestamp"])
     validate_quik_pay_trasaction_status(params["transactionStatus"])
 
-    log = { type: "alma_pay", user: current_user.uid, transactionStatus: params["transActionStatus"] }
+    user_id = current_user&.uid || params["orderNumber"]
+    log = { type: "alma_pay", user: user_id, transactionStatus: params["transactionStatus"] }
 
     # The return value for the do_with_json_logger block should implement Loggable.
     balance  = do_with_json_logger(log) {
-      Alma::User.send_payment(user_id: current_user.uid);
+      Alma::User.send_payment(user_id: user_id);
     }
 
     validate_quik_pay_balance(balance)
-
     redirect_to users_account_path, flash: { notice: helpers.successful_payment_message }
   end
 
@@ -58,7 +58,7 @@ module QuikPay
       orderType: "Temple Library",
       timestamp: DateTime.now.strftime("%Q").to_i,
       redirectUrl: Rails.configuration.quik_pay["redirect_url"],
-      redirectUrlParameters: "transactionStatus,transactionTotalAmount",
+      redirectUrlParameters: "transactionStatus,transactionTotalAmount,orderNumber",
     )
 
     # Use fixed params and order. This order MUST NOT be ammended or feature will stop working.

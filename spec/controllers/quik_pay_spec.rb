@@ -34,33 +34,42 @@ RSpec.describe UsersController, type: "controller"  do
   describe "quik_pay_url" do
     context "no arguments" do
       it "generates a url with only default params" do
-        expect(controller.quik_pay_url).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
       end
     end
 
     context "with param as args" do
       it "does not diviate from the order URL contrat" do
-        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
       end
     end
 
     context "with param as args + secret" do
       it "generates a url with params" do
-        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
       end
     end
   end
 
   describe "GET #quik_pay_callback" do
-    let (:params) { with_validation_params }
+    context "user is not logged in but parameters are valid" do
+      let (:params) { with_validation_params(transactionStatus: "1") }
+      before(:each) do
+        resp = OpenStruct.new(total_sum: 0.0)
+        balance = Alma::PaymentResponse.new(resp)
+        allow(Alma::User).to receive(:send_payment) { balance }
+      end
 
-    context "user is not logged in" do
-      it "redirects you to login page" do
-        get :quik_pay_callback
-        expect(response.status).to redirect_to new_user_session_path
+      it "redirects GET requests to the users account page with success notice" do
+        get(:quik_pay_callback, params:)
+        expect(response).to redirect_to users_account_path
+        expect(flash[:notice]).to include("Your fees have been paid.");
+      end
 
-        post :quik_pay_callback
-        expect(response.status).to redirect_to new_user_session_path
+      it "redirects POST requests to the users account page with success notice" do
+        post(:quik_pay_callback, params:)
+        expect(response).to redirect_to users_account_path
+        expect(flash[:notice]).to include("Your fees have been paid.");
       end
     end
 
@@ -71,11 +80,6 @@ RSpec.describe UsersController, type: "controller"  do
 
       after do
         sign_out user
-      end
-
-      it "redirects to users account paths" do
-        get(:quik_pay_callback, params:)
-        expect(response).to redirect_to users_account_path
       end
 
       context "transactionStatus = 1 and no error happened"  do
@@ -193,7 +197,7 @@ RSpec.describe UsersController, type: "controller"  do
         it "redirects to users account paths" do
           session["can_pay_online?"] = true;
           get :quik_pay
-          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
         end
       end
 
@@ -203,7 +207,7 @@ RSpec.describe UsersController, type: "controller"  do
           session["total_fines"] = "25.11"
 
           get :quik_pay
-          expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=.*&timestamp=.*&hash=.*$/)
+          expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
         end
       end
 
@@ -226,6 +230,7 @@ RSpec.describe UsersController, type: "controller"  do
     params_dup = params.dup
     time_now = DateTime.now.strftime("%Q").to_i
 
+    params_dup[:orderNumber] ||= "1234567890"
     params_dup.merge!(timestamp: time_now) if params_dup[:timestamp].nil?
 
     hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.quik_pay["secret"])
