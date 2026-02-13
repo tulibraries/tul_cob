@@ -17,7 +17,7 @@
     "selectize": "^0.12.6",
     "sifter": "^0.5.4",
     "stimulus": "^3.0.1",
-    "webpack": "^5.94.0",
+    "webpack": "^5.104.1",
     "webpack-cli": "^4.8.0",
     "whatwg-fetch": "^3.6.2",
     "ws": "^8.18.0"
@@ -31,6 +31,8 @@
     "node-fetch": "2.6.7",
     "on-headers": "1.1.0",
     "path-to-regexp": "0.1.12",
+    "webpack": "5.105.2",
+    "qs": "6.14.2",
     "js-yaml": "4.1.1"
   },
   "babel": {
