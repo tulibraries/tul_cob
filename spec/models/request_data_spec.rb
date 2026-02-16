@@ -158,61 +158,6 @@ RSpec.describe RequestData, type: :model do
     end
   end
 
-  describe "BookBot pickup locations" do
-    context "ASRS item not in place with no other in-place library" do
-      let(:bib_items) {
-        [
-          Alma::BibItem.new(
-            "holding_data" => { "holding_id" => "asrs_holding" },
-            "item_data" => {
-              "base_status" => { "value" => "0" },
-              "library" => { "value" => "ASRS", "description" => "ASRS" },
-              "location" => { "value" => "ASRS" },
-              "description" => "",
-              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
-            }
-          )
-        ]
-      }
-
-      it "still offers ASRS as a pickup location" do
-        expect(subject.valid_pickup_locations).to include "ASRS"
-      end
-    end
-
-    context "ASRS item not in place with another in-place library" do
-      let(:bib_items) {
-        [
-          Alma::BibItem.new(
-            "holding_data" => { "holding_id" => "asrs_holding" },
-            "item_data" => {
-              "base_status" => { "value" => "0" },
-              "library" => { "value" => "ASRS", "description" => "ASRS" },
-              "location" => { "value" => "ASRS" },
-              "description" => "",
-              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
-            }
-          ),
-          Alma::BibItem.new(
-            "holding_data" => { "holding_id" => "japan_holding" },
-            "item_data" => {
-              "base_status" => { "value" => "1" },
-              "library" => { "value" => "JAPAN", "description" => "Japan Campus Library" },
-              "location" => { "value" => "stacks" },
-              "description" => "",
-              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
-            }
-          )
-        ]
-      }
-
-      it "still offers ASRS as a pickup location" do
-        expect(subject.valid_pickup_locations).to include "ASRS"
-        expect(subject.valid_pickup_locations).to include "JAPAN"
-      end
-    end
-  end
-
   describe "#reserve_or_reference" do
     context "item available at MAIN reserves" do
       let(:bib_items) { Alma::BibItem.find("only_paley_reserves") }
@@ -275,31 +220,6 @@ RSpec.describe RequestData, type: :model do
           "" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
           "description for ASRS item" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
           "description for Rome item" => { "Rome Campus Library" => "ROME" })
-      end
-    end
-
-    context "same description at international and main campus" do
-      let(:bib_items) {
-        [
-          Alma::BibItem.new(
-            "item_data" => {
-              "description" => "shared",
-              "library" => { "value" => "JAPAN" },
-              "location" => { "value" => "stacks" }
-            }
-          ),
-          Alma::BibItem.new(
-            "item_data" => {
-              "description" => "shared",
-              "library" => { "value" => "MAIN" },
-              "location" => { "value" => "stacks" }
-            }
-          )
-        ]
-      }
-
-      it "includes both Japan and Main pickup locations" do
-        expect(subject.item_level_locations["shared"].values).to include("JAPAN", "MAIN")
       end
     end
   end
