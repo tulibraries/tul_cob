@@ -78,14 +78,31 @@ class RequestData
   end
 
   def item_level_locations
-    @items.each_with_object({}) do |item, libraries|
-      desc = item.description
-      library_code = item.library == "ASRS" ? "MAIN" : item.library
-      next if library_code.blank?
-      library_label = library_name_from_short_code(library_code)
+    pickup_locations = default_pickup_locations
 
-      libraries[desc] ||= {}
-      libraries[desc][library_label] = library_code
+    location_hash = @items.reduce({}) { |libraries, item|
+      desc = item.description
+      campus = self.determine_campus(item.library)
+      removals = []
+      international_pickup = []
+
+      if libraries[desc].present?
+        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+        libraries[desc] -= removals
+      elsif item.library == "JAPAN" || item.library == "ROME"
+        international_pickup << item.library
+        libraries[desc] = international_pickup
+      else
+        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
+        libraries[desc] = pickup_locations - removals
+      end
+
+      libraries
+    }
+    location_hash.transform_values do |v|
+      v.reduce({}) { |acc, library_code|
+        acc.merge!(library_name_from_short_code(library_code) => library_code)
+      }
     end
   end
 

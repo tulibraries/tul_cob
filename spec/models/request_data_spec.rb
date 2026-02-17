@@ -187,26 +187,6 @@ RSpec.describe RequestData, type: :model do
   end
 
   describe "#item_level_locations" do
-    context "when an item is in ASRS" do
-      let(:bib_items) do
-        [
-          Alma::BibItem.new(
-            "item_data" => {
-              "description" => "v.1",
-              "library" => { "value" => "ASRS", "desc" => "ASRS" }
-            }
-          )
-        ]
-      end
-
-      it "includes MAIN pickup and excludes ASRS pickup" do
-        pickups = subject.item_level_locations.fetch("v.1")
-
-        expect(pickups).to include("Charles Library" => "MAIN")
-        expect(pickups.values).not_to include("ASRS")
-      end
-    end
-
     context "empty hash" do
       let(:bib_items) { Alma::BibItem.find("empty_hash") }
       it "returns an empty hash" do
@@ -215,57 +195,31 @@ RSpec.describe RequestData, type: :model do
     end
     context "one description includes no libraries" do
       let(:bib_items) { Alma::BibItem.find("desc_with_no_libraries") }
-      it "returns no locations for blank item libraries" do
-        expect(subject.item_level_locations).to eq({})
+      it "returns a hash with all the campuses" do
+        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "two descriptions each at one library" do
       let(:bib_items) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
-      it "returns only the item-level libraries" do
+      it "returns a hash with all the campuses" do
         expect(subject.item_level_locations).to eq(
-          "v.4 (1976)" => { "Charles Library" => "MAIN" },
-          "v.5 (1977)" => { "Remote Storage" => "KARDON" })
+          "v.4 (1976)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
+          "v.5 (1977)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "one description at multiple libraries" do
       let(:bib_items) { Alma::BibItem.find("desc_with_multiple_libraries") }
-      it "returns only the libraries where matching items exist" do
-        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN" })
+      it "returns a hash with all the campuses" do
+        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "descriptions at locations including an international campus" do
       let(:bib_items) { Alma::BibItem.find("rome_with_multiple_libraries") }
-      it "returns only item-level libraries including international campuses" do
+      it "returns a hash with the relevent locations" do
         expect(subject.item_level_locations).to eq(
-          "" => { "Charles Library" => "MAIN" },
-          "description for ASRS item" => { "Charles Library" => "MAIN" },
+          "" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
+          "description for ASRS item" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
           "description for Rome item" => { "Rome Campus Library" => "ROME" })
-      end
-    end
-
-    context "blank description shared by MAIN/ASRS and ROME items" do
-      let(:bib_items) do
-        [
-          Alma::BibItem.new(
-            "item_data" => {
-              "description" => "",
-              "library" => { "value" => "ASRS", "desc" => "ASRS" }
-            }
-          ),
-          Alma::BibItem.new(
-            "item_data" => {
-              "description" => "",
-              "library" => { "value" => "ROME", "desc" => "ROME" }
-            }
-          )
-        ]
-      end
-
-      it "keeps Charles Library available for blank descriptions" do
-        pickups = subject.item_level_locations.fetch("")
-
-        expect(pickups).to include("Charles Library" => "MAIN")
-        expect(pickups).to include("Rome Campus Library" => "ROME")
       end
     end
   end
