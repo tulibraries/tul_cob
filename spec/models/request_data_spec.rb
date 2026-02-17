@@ -222,6 +222,22 @@ RSpec.describe RequestData, type: :model do
           "description for Rome item" => { "Rome Campus Library" => "ROME" })
       end
     end
+
+    context "blank description shared by Rome and Main items" do
+      let(:bib_items) do
+        [
+          Alma::BibItem.new("item_data" => { "library" => { "value" => "ROME", "description" => "Rome Campus Library" }, "description" => "" }),
+          Alma::BibItem.new("item_data" => { "library" => { "value" => "MAIN", "description" => "Charles Library" }, "description" => "" })
+        ]
+      end
+
+      it "retains campus pickup options when Rome is processed first" do
+        request_data = described_class.new(bib_items, { request_level: "item", pickup_location: "MAIN" })
+
+        expect(request_data.item_level_locations.fetch("")).to include("Charles Library" => "MAIN")
+        expect(request_data.item_level_locations.fetch("")).to include("Ambler Campus Library" => "AMBLER")
+      end
+    end
   end
 
   describe "#booking_locations" do

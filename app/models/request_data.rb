@@ -80,29 +80,25 @@ class RequestData
   def item_level_locations
     pickup_locations = default_pickup_locations
 
-    location_hash = @items.reduce({}) { |libraries, item|
+    location_hash = @items.each_with_object({}) do |item, libraries|
       desc = item.description
-      campus = self.determine_campus(item.library)
-      removals = []
-      international_pickup = []
+      campus = determine_campus(item.library)
+      current = libraries[desc] || []
 
-      if libraries[desc].present?
-        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
-        libraries[desc] -= removals
-      elsif item.library == "JAPAN" || item.library == "ROME"
-        international_pickup << item.library
-        libraries[desc] = international_pickup
+      if item.library == "JAPAN" || item.library == "ROME"
+        current |= [item.library]
       else
-        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
-        libraries[desc] = pickup_locations - removals
+        current |= pickup_locations if (current - ["JAPAN", "ROME"]).empty?
+        current -= remove_by_campus(campus) unless campus == :MAIN
       end
 
-      libraries
-    }
-    location_hash.transform_values do |v|
-      v.reduce({}) { |acc, library_code|
-        acc.merge!(library_name_from_short_code(library_code) => library_code)
-      }
+      libraries[desc] = current
+    end
+
+    location_hash.transform_values do |library_codes|
+      library_codes
+        .reject(&:blank?)
+        .each_with_object({}) { |library_code, acc| acc[library_name_from_short_code(library_code)] = library_code }
     end
   end
 
