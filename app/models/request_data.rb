@@ -78,20 +78,15 @@ class RequestData
   end
 
   def item_level_locations
-    location_hash = @items.reduce({}) do |libraries, item|
+    @items.each_with_object({}) do |item, libraries|
       desc = item.description
-      libraries[desc] ||= {}
-
-      library_code = item.library
+      library_code = item.library == "ASRS" ? "MAIN" : item.library
+      next if library_code.blank?
       library_label = library_name_from_short_code(library_code)
 
-      libraries[desc][library_label] ||= []
-      libraries[desc][library_label] << item.item_data["pid"]
-
-      libraries
+      libraries[desc] ||= {}
+      libraries[desc][library_label] = library_code
     end
-
-    location_hash
   end
 
   def equipment_locations
