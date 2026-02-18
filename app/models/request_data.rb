@@ -80,25 +80,28 @@ class RequestData
   def item_level_locations
     pickup_locations = default_pickup_locations
 
-    location_hash = @items.each_with_object({}) do |item, libraries|
-      desc = item.description
-      campus = determine_campus(item.library)
-      current = libraries[desc] || []
+    @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
+      libraries = items.map(&:library).uniq
+      
+      mapped_libraries = libraries.map { |lib| lib == "ASRS" ? "MAIN" : lib }.uniq
+      allowed_libraries = []
 
-      if item.library == "JAPAN" || item.library == "ROME"
-        current |= [item.library]
-      else
-        current |= pickup_locations if (current - ["JAPAN", "ROME"]).empty?
-        current -= remove_by_campus(campus) unless campus == :MAIN
+      mapped_libraries.each do |library|
+        campus = determine_campus(library)
+
+        if library == "JAPAN" || library == "ROME"
+          allowed_libraries |= [library]
+        else
+          allowed_libraries |= pickup_locations if (allowed_libraries - ["JAPAN", "ROME"]).empty?
+          allowed_libraries -= remove_by_campus(campus) unless campus == :MAIN
+        end
       end
 
-      libraries[desc] = current
-    end
+      item_pickup_locations = allowed_libraries.reject(&:blank?)
 
-    location_hash.transform_values do |library_codes|
-      library_codes
-        .reject(&:blank?)
-        .each_with_object({}) { |library_code, acc| acc[library_name_from_short_code(library_code)] = library_code }
+      result[desc] = item_pickup_locations.each_with_object({}) do |library_code, acc|
+        acc[library_name_from_short_code(library_code)] = library_code
+      end
     end
   end
 
