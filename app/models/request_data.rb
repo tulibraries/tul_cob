@@ -82,7 +82,7 @@ class RequestData
 
     @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
       libraries = items.map(&:library).uniq
-      
+
       mapped_libraries = libraries.map { |lib| lib == "ASRS" ? "MAIN" : lib }.uniq
       allowed_libraries = []
 
