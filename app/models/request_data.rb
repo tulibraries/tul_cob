@@ -91,7 +91,7 @@ class RequestData
         if international.present? && domestic.empty?
           international
         else
-          base = domestic.present? ? pickup_locations : []
+          base = domestic.present? || mapped_libraries.empty? ? pickup_locations : []
           removals =
             domestic.flat_map do |lib|
               campus = determine_campus(lib)
