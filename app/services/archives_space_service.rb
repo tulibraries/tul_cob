@@ -90,6 +90,7 @@ class ArchivesSpaceService
     content_type = response.headers["content-type"].to_s
 
     unless response.status == 200
+      Rails.logger.warn("ArchivesSpace search returned status #{response.status}: #{response_snippet(response)}")
       raise "ArchivesSpace search failed (#{response.status}): #{response_snippet(response)}"
     end
 
@@ -97,10 +98,14 @@ class ArchivesSpaceService
       begin
         return JSON.parse(response.body)["results"] || []
       rescue JSON::ParserError => e
+        Rails.logger.warn("ArchivesSpace search JSON parse error: #{e.message}: #{response_snippet(response)}")
         raise "ArchivesSpace search JSON parse error: #{e.message}: #{response_snippet(response)}"
       end
     end
 
+    Rails.logger.warn(
+      "ArchivesSpace search returned non-JSON content-type (#{content_type}): #{response_snippet(response)}"
+    )
     raise "ArchivesSpace search returned non-JSON content-type (#{content_type}): #{response_snippet(response)}"
   end
 
