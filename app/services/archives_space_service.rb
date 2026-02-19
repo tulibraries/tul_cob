@@ -8,9 +8,13 @@ class ArchivesSpaceService
   BASE_URL = "https://scrcarchivesspace.temple.edu/staff/api"
   USERNAME = ENV.fetch("ARCHIVESSPACE_USER", "test-user")
   PASSWORD = ENV.fetch("ARCHIVESSPACE_PASSWORD", "test-pass")
+  OPEN_TIMEOUT = ENV.fetch("ARCHIVESSPACE_OPEN_TIMEOUT", "2").to_i
+  TIMEOUT = ENV.fetch("ARCHIVESSPACE_TIMEOUT", "5").to_i
 
   def initialize
     @conn = Faraday.new(url: BASE_URL) do |f|
+      f.options.open_timeout = OPEN_TIMEOUT
+      f.options.timeout = TIMEOUT
       f.options.params_encoder = Faraday::FlatParamsEncoder
       f.request :multipart
       f.request :url_encoded
