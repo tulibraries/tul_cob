@@ -101,5 +101,39 @@ RSpec.describe ArchivesSpaceService, type: :service do
       expect(results).to be_an(Array)
       expect(results.first["title"]).to eq("Temple Collection")
     end
+
+    it "refreshes the token and retries when unauthorized" do
+      allow(service).to receive(:ensure_token!).and_return("oldtoken")
+      expect(service).to receive(:refresh_token!).and_return("newtoken")
+
+      stub_request(:get, "#{base_url}/search")
+        .with(
+          headers: { "X-ArchivesSpace-Session" => "oldtoken" },
+          query: hash_including("q" => "Temple University")
+        )
+        .to_return(status: 401, body: "unauthorized", headers: { "Content-Type" => "text/plain" })
+
+      stub_request(:get, "#{base_url}/search")
+        .with(
+          headers: { "X-ArchivesSpace-Session" => "newtoken" },
+          query: hash_including("q" => "Temple University")
+        )
+        .to_return(status: 200, body: response_body, headers: { "Content-Type" => "application/json" })
+
+      results = service.search("Temple University")
+      expect(results.first["title"]).to eq("Temple Collection")
+    end
+
+    it "raises a helpful error when response is not JSON" do
+      stub_request(:get, "#{base_url}/search")
+        .with(
+          headers: { "X-ArchivesSpace-Session" => token },
+          query: hash_including("q" => "Temple University")
+        )
+        .to_return(status: 200, body: "<html>oops</html>", headers: { "Content-Type" => "text/html" })
+
+      expect { service.search("Temple University") }
+        .to raise_error(RuntimeError, /non-JSON content-type/)
+    end
   end
 end

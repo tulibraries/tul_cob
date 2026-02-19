@@ -21,20 +21,13 @@ class ArchivesSpaceService
   def search(query, types: [], page: 1, page_size: 3)
     token = ensure_token!
 
-    qs =
-      [
-        "q=#{CGI.escape(query)}",
-        "page=#{page}",
-        "page_size=#{page_size}",
-        "filter_query[]=publish:true",
-        "filter_query[]=suppressed:false"
-      ] +
-      types.map { |t| "type[]=#{t}" }
+    response = request_search(query, types, page, page_size, token)
+    if [401, 403].include?(response.status)
+      token = refresh_token!
+      response = request_search(query, types, page, page_size, token)
+    end
 
-    url = "#{BASE_URL}/search?#{qs.join("&")}"
-
-    response = @conn.get(url, nil, { "X-ArchivesSpace-Session" => token })
-    JSON.parse(response.body)["results"] || []
+    parse_search_response(response)
   end
 
   def refresh_token!
@@ -75,4 +68,50 @@ class ArchivesSpaceService
 
     token_data[:token]
   end
+
+  private
+
+    def request_search(query, types, page, page_size, token)
+      qs =
+        [
+          "q=#{CGI.escape(query)}",
+          "page=#{page}",
+          "page_size=#{page_size}",
+          "filter_query[]=publish:true",
+          "filter_query[]=suppressed:false"
+        ] +
+        types.map { |t| "type[]=#{t}" }
+
+      url = "#{BASE_URL}/search?#{qs.join("&")}"
+      @conn.get(url, nil, { "X-ArchivesSpace-Session" => token })
+    end
+
+    def parse_search_response(response)
+      content_type = response.headers["content-type"].to_s
+
+      unless response.status == 200
+        Rails.logger.warn("ArchivesSpace search returned status #{response.status}: #{response_snippet(response)}")
+        raise "ArchivesSpace search failed (#{response.status}): #{response_snippet(response)}"
+      end
+
+      if content_type.empty? || content_type.include?("json")
+        begin
+          return JSON.parse(response.body)["results"] || []
+        rescue JSON::ParserError => e
+          Rails.logger.warn("ArchivesSpace search JSON parse error: #{e.message}: #{response_snippet(response)}")
+          raise "ArchivesSpace search JSON parse error: #{e.message}: #{response_snippet(response)}"
+        end
+      end
+
+      Rails.logger.warn(
+        "ArchivesSpace search returned non-JSON content-type (#{content_type}): #{response_snippet(response)}"
+      )
+      raise "ArchivesSpace search returned non-JSON content-type (#{content_type}): #{response_snippet(response)}"
+    end
+
+    def response_snippet(response)
+      body = response.body.to_s
+      body = body.gsub(/\s+/, " ").strip
+      body[0, 200]
+    end
 end
