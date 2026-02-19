@@ -43,7 +43,6 @@ class RequestData
         removals
       end
       pickup_locations -= removals
-      pickup_locations << "ASRS" if libraries.include?("ASRS") && !pickup_locations.include?("ASRS")
       if (libraries & ["ROME", "JAPAN"]).present?
         if libraries.size == 1 || libraries.sort == ["JAPAN", "ROME"]
           pickup_locations = libraries
@@ -81,36 +80,31 @@ class RequestData
   def item_level_locations
     pickup_locations = default_pickup_locations
 
-    location_hash = @items.reduce({}) { |libraries, item|
-      desc = item.description
-      campus = self.determine_campus(item.library)
-      removals = []
-      international_pickup = []
+    @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
+      libraries = items.map(&:library).reject(&:blank?).uniq
+      mapped_libraries = libraries.map { |lib| lib == "ASRS" ? "MAIN" : lib }.uniq
 
-      if libraries[desc].present?
-        if campus == :MAIN && desc.blank?
-          libraries[desc] |= pickup_locations
+      international = mapped_libraries & ["JAPAN", "ROME"]
+      domestic = mapped_libraries - international
+
+      allowed =
+        if international.present? && domestic.empty?
+          international
         else
-          removals << item.library if remove_by_campus(campus) unless campus == :MAIN
-          libraries[desc] -= removals
-          if campus == :MAIN || %w[JAPAN ROME].include?(item.library)
-            libraries[desc] << item.library unless libraries[desc].include?(item.library)
-          end
-        end
-      elsif item.library == "JAPAN" || item.library == "ROME"
-        international_pickup << item.library
-        libraries[desc] = international_pickup
-      else
-        removals << item.library if remove_by_campus(campus) unless campus == :MAIN
-        libraries[desc] = pickup_locations - removals
-      end
+          base = domestic.present? || mapped_libraries.empty? ? pickup_locations : []
+          removals =
+            domestic.flat_map do |lib|
+              campus = determine_campus(lib)
+              campus == :MAIN ? [] : remove_by_campus(campus)
+            end
 
-      libraries
-    }
-    location_hash.transform_values do |v|
-      v.reduce({}) { |acc, library_code|
-        acc.merge!(library_name_from_short_code(library_code) => library_code)
-      }
+          (base - removals) | international
+        end
+
+      result[desc] =
+        allowed.each_with_object({}) do |library_code, acc|
+          acc[library_name_from_short_code(library_code)] = library_code
+        end
     end
   end
 
@@ -168,7 +162,7 @@ class RequestData
       end
 
       def available_libraries
-        @items.group_by(&:library).select { |library, items| library == "ASRS" || items.any?(&:in_place?) }.keys
+        @items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys
       end
 
       def determine_campus(item)
