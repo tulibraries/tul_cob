@@ -7,7 +7,7 @@ module QuikPay
   ERROR_MESSAGE = "There was a problem with your transaction. Please call 215-204-8212."
 
   included do
-    before_action :authenticate_user!, only: [ :quik_pay ]
+    before_action :authenticate_quik_pay_user!, only: [:quik_pay, :quik_pay_callback]
 
     rescue_from ::QuikPay::AccessDenied do |exception|
       Honeybadger.notify(exception)
@@ -38,7 +38,7 @@ module QuikPay
     validate_quik_pay_timestamp(params["timestamp"])
     validate_quik_pay_trasaction_status(params["transactionStatus"])
 
-    user_id = current_user&.uid || params["orderNumber"]
+    user_id = quik_pay_user_id
     log = { type: "alma_pay", user: user_id, transactionStatus: params["transactionStatus"] }
 
     # The return value for the do_with_json_logger block should implement Loggable.
@@ -58,7 +58,7 @@ module QuikPay
       orderType: "Temple Library",
       timestamp: DateTime.now.strftime("%Q").to_i,
       redirectUrl: Rails.configuration.quik_pay["redirect_url"],
-      redirectUrlParameters: "transactionStatus,transactionTotalAmount,orderNumber",
+      redirectUrlParameters: quik_pay_redirect_url_parameters,
     )
 
     # Use fixed params and order. This order MUST NOT be ammended or feature will stop working.
@@ -101,6 +101,27 @@ module QuikPay
     end
 
     class InvalidTransaction < StandardError
+    end
+
+    def authenticate_quik_pay_user!
+      if params[:action] == "quik_pay_callback" && Flipflop.quik_pay_sessionless_callback?
+        return
+      end
+
+      authenticate_user!
+    end
+
+    def quik_pay_user_id
+      return current_user&.uid || params["orderNumber"] if Flipflop.quik_pay_sessionless_callback?
+
+      current_user.uid
+    end
+
+    def quik_pay_redirect_url_parameters
+      base_params = "transactionStatus,transactionTotalAmount"
+      return base_params unless Flipflop.quik_pay_sessionless_callback?
+
+      "#{base_params},orderNumber"
     end
 
     def validate_quik_pay_timestamp(timestamp)

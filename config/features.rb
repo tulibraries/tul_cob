@@ -14,4 +14,8 @@ Flipflop.configure do
   group :citations do
     feature :citeproc_citations
   end
+
+  group :quik_pay do
+    feature :quik_pay_sessionless_callback
+  end
 end
