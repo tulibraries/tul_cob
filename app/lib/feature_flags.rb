@@ -27,6 +27,6 @@ module FeatureFlags
     if !params.nil? && params.has_key?("recaptcha")
       return (params["recaptcha"] == "false") ? false : true
     end
-    !!Rails.configuration.features.fetch(:recaptcha, false)
+    !!Rails.configuration.features.fetch(:recaptcha_on, false)
   end
 end
