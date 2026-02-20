@@ -32,44 +32,72 @@ RSpec.describe UsersController, type: "controller"  do
   end
 
   describe "quik_pay_url" do
-    context "no arguments" do
+    shared_examples "quik pay redirect parameters" do
       it "generates a url with only default params" do
-        expect(controller.quik_pay_url).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+        expect(controller.quik_pay_url).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=#{redirect_params}&timestamp=.*&hash=.*$/)
       end
-    end
 
-    context "with param as args" do
       it "does not diviate from the order URL contrat" do
-        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+        expect(controller.quik_pay_url(foo: "bar")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=#{redirect_params}&timestamp=.*&hash=.*$/)
+      end
+
+      it "generates a url with params" do
+        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=#{redirect_params}&timestamp=.*&hash=.*$/)
       end
     end
 
-    context "with param as args + secret" do
-      it "generates a url with params" do
-        expect(controller.quik_pay_url({ foo: "bar" }, "buzz")).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
-      end
+    context "when quik pay sessionless callback is disabled" do
+      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
+      let(:redirect_params) { "transactionStatus%2CtransactionTotalAmount" }
+
+      include_examples "quik pay redirect parameters"
+    end
+
+    context "when quik pay sessionless callback is enabled" do
+      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
+      let(:redirect_params) { "transactionStatus%2CtransactionTotalAmount%2CorderNumber" }
+
+      include_examples "quik pay redirect parameters"
     end
   end
 
   describe "GET #quik_pay_callback" do
-    context "user is not logged in but parameters are valid" do
-      let (:params) { with_validation_params(transactionStatus: "1") }
-      before(:each) do
-        resp = OpenStruct.new(total_sum: 0.0)
-        balance = Alma::PaymentResponse.new(resp)
-        allow(Alma::User).to receive(:send_payment) { balance }
-      end
+    context "when quik pay sessionless callback is disabled" do
+      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
 
-      it "redirects GET requests to the users account page with success notice" do
-        get(:quik_pay_callback, params:)
-        expect(response).to redirect_to users_account_path
-        expect(flash[:notice]).to include("Your fees have been paid.");
-      end
+      context "user is not logged in" do
+        it "redirects you to login page" do
+          get :quik_pay_callback
+          expect(response).to redirect_to new_user_session_path
 
-      it "redirects POST requests to the users account page with success notice" do
-        post(:quik_pay_callback, params:)
-        expect(response).to redirect_to users_account_path
-        expect(flash[:notice]).to include("Your fees have been paid.");
+          post :quik_pay_callback
+          expect(response).to redirect_to new_user_session_path
+        end
+      end
+    end
+
+    context "when quik pay sessionless callback is enabled" do
+      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
+
+      context "user is not logged in but parameters are valid" do
+        let (:params) { with_validation_params(transactionStatus: "1") }
+        before(:each) do
+          resp = OpenStruct.new(total_sum: 0.0)
+          balance = Alma::PaymentResponse.new(resp)
+          allow(Alma::User).to receive(:send_payment) { balance }
+        end
+
+        it "redirects GET requests to the users account page with success notice" do
+          get(:quik_pay_callback, params:)
+          expect(response).to redirect_to users_account_path
+          expect(flash[:notice]).to include("Your fees have been paid.");
+        end
+
+        it "redirects POST requests to the users account page with success notice" do
+          post(:quik_pay_callback, params:)
+          expect(response).to redirect_to users_account_path
+          expect(flash[:notice]).to include("Your fees have been paid.");
+        end
       end
     end
 
@@ -194,20 +222,51 @@ RSpec.describe UsersController, type: "controller"  do
       end
 
       context "user can pay online" do
-        it "redirects to users account paths" do
+        before do
           session["can_pay_online?"] = true;
-          get :quik_pay
-          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+        end
+
+        context "when quik pay sessionless callback is disabled" do
+          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
+
+          it "redirects to users account paths" do
+            get :quik_pay
+            expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
+          end
+        end
+
+        context "when quik pay sessionless callback is enabled" do
+          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
+
+          it "redirects to users account paths" do
+            get :quik_pay
+            expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+          end
         end
       end
 
       context "the fine has cent amounts" do
-        it "does not lose precision when coverting total_fines to cents" do
+        before do
           session["can_pay_online?"] = true;
           session["total_fines"] = "25.11"
+        end
 
-          get :quik_pay
-          expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+        context "when quik pay sessionless callback is disabled" do
+          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
+
+          it "does not lose precision when converting total_fines to cents" do
+            get :quik_pay
+            expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
+          end
+        end
+
+        context "when quik pay sessionless callback is enabled" do
+          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
+
+          it "does not lose precision when converting total_fines to cents" do
+            get :quik_pay
+            expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+          end
         end
       end
 
