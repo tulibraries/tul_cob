@@ -16,11 +16,7 @@ class BookmarksController < CatalogController
   end
 
   def create
-    @bookmarks = if params[:bookmarks]
-      permit_bookmarks[:bookmarks]
-    else
-      [{ document_id: params[:id], document_type: blacklight_config.document_model.to_s }]
-    end
+    @bookmarks = requested_bookmarks
 
     current_or_guest_user.save! unless current_or_guest_user.persisted?
 
@@ -36,7 +32,7 @@ class BookmarksController < CatalogController
       success ? render(json: { bookmarks: { count: current_or_guest_user.bookmarks.count } }) : render(json: current_or_guest_user.errors.full_messages, status: "500")
     else
       if @bookmarks.any? && success
-        flash[:notice] = I18n.t("blacklight.bookmarks.add.success", count: @bookmarks.length)
+        flash[:notice] = I18n.t("blacklight.bookmarks.add.success", count: bookmarks_to_add.length)
       elsif @bookmarks.any?
         flash[:error] = I18n.t("blacklight.bookmarks.add.failure", count: @bookmarks.length)
       end
@@ -48,6 +44,8 @@ class BookmarksController < CatalogController
   end
 
   def destroy
+    return destroy_many if params[:bookmarks]
+
     super
     set_guest_bookmark_warning
   end
@@ -108,21 +106,69 @@ class BookmarksController < CatalogController
       flash[:alert] = I18n.t("blacklight.bookmarks.guest_warning")
     end
 
+    def destroy_many
+      bookmarks = normalized_bookmarks(permit_bookmarks[:bookmarks])
+      removed_count = remove_bookmarks(bookmarks)
+
+      if request.xhr?
+        render json: { bookmarks: { count: current_or_guest_user.bookmarks.count } }
+      else
+        if bookmarks.any? && removed_count.positive?
+          flash[:notice] = I18n.t("blacklight.bookmarks.remove.success", count: removed_count)
+        elsif bookmarks.any?
+          flash[:error] = I18n.t("blacklight.bookmarks.remove.failure", count: bookmarks.length)
+        end
+
+        redirect_back fallback_location: bookmarks_path
+      end
+
+      set_guest_bookmark_warning
+    end
+
+    def remove_bookmarks(bookmarks)
+      bookmarks
+        .group_by { |bookmark| bookmark[:document_type] }
+        .sum do |document_type, items|
+          ids = items.map { |item| item[:document_id] }.uniq
+          next 0 if ids.empty?
+
+          current_or_guest_user.bookmarks.where(document_type: document_type, document_id: ids).delete_all
+        end
+    end
+
+    def requested_bookmarks
+      return normalized_bookmarks(permit_bookmarks[:bookmarks]) if params[:bookmarks]
+
+      [{ document_id: params[:id].to_s, document_type: blacklight_config.document_model.to_s }]
+    end
+
+    def normalized_bookmarks(bookmarks)
+      Array(bookmarks).filter_map do |bookmark|
+        document_id = bookmark[:document_id] || bookmark["document_id"]
+        next if document_id.blank?
+
+        {
+          document_id: document_id.to_s,
+          document_type: bookmark[:document_type] || bookmark["document_type"] || blacklight_config.document_model.to_s
+        }
+      end
+    end
+
     def filter_existing_bookmarks(bookmarks)
       existing = existing_bookmark_ids_by_type(bookmarks)
 
       bookmarks.reject do |bookmark|
-        doc_type = bookmark[:document_type] || bookmark["document_type"] || blacklight_config.document_model.to_s
-        doc_id = (bookmark[:document_id] || bookmark["document_id"]).to_s
+        doc_type = bookmark[:document_type]
+        doc_id = bookmark[:document_id]
         existing.fetch(doc_type, {}).key?(doc_id)
       end
     end
 
     def existing_bookmark_ids_by_type(bookmarks)
       bookmarks
-        .group_by { |bookmark| bookmark[:document_type] || bookmark["document_type"] }
+        .group_by { |bookmark| bookmark[:document_type] }
         .each_with_object({}) do |(doc_type, items), memo|
-          ids = items.map { |item| item[:document_id] || item["document_id"] }.compact
+          ids = items.map { |item| item[:document_id] }.compact
           next if ids.empty?
 
           existing_ids = current_or_guest_user.bookmarks.where(document_type: doc_type, document_id: ids).pluck(:document_id)
