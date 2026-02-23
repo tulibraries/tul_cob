@@ -8,9 +8,8 @@ export default class extends Controller {
 
   handleBookmarkClick(event) {
     if (!this.guestValue) return
-    const label = event.target.closest("label.toggle-bookmark")
     const checkbox = event.target.closest("input.toggle-bookmark")
-    if (!label && !checkbox) return
+    if (!checkbox || !checkbox.checked) return
     this.showWarning()
   }
 

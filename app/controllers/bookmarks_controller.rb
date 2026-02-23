@@ -40,14 +40,13 @@ class BookmarksController < CatalogController
       redirect_back fallback_location: bookmarks_path
     end
 
-    set_guest_bookmark_warning
+    set_guest_bookmark_warning if success && bookmarks_to_add.any?
   end
 
   def destroy
     return destroy_many if params[:bookmarks]
 
     super
-    set_guest_bookmark_warning
   end
 
   def action_documents
@@ -122,7 +121,6 @@ class BookmarksController < CatalogController
         redirect_back fallback_location: bookmarks_path
       end
 
-      set_guest_bookmark_warning
     end
 
     def remove_bookmarks(bookmarks)

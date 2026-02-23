@@ -33,12 +33,13 @@ describe("BookmarkGuardController", () => {
     document.body.innerHTML = ""
   })
 
-  it("shows a warning for guest bookmark clicks", async () => {
+  it("shows a warning for guest bookmark selections", async () => {
     setupDom({ guest: true })
     startController()
     await new Promise(resolve => setTimeout(resolve, 0))
 
     const input = document.querySelector("input.toggle-bookmark")
+    input.checked = true
     const root = document.getElementById("bookmark-guard-root")
     const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
     controller.handleBookmarkClick({ target: input })
@@ -55,6 +56,7 @@ describe("BookmarkGuardController", () => {
     await new Promise(resolve => setTimeout(resolve, 0))
 
     const input = document.querySelector("input.toggle-bookmark")
+    input.checked = true
     const root = document.getElementById("bookmark-guard-root")
     const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
     controller.handleBookmarkClick({ target: input })
@@ -63,15 +65,32 @@ describe("BookmarkGuardController", () => {
     expect(warning).toBeNull()
   })
 
-  it("replaces the existing warning on subsequent clicks", async () => {
+  it("does not show a warning when unbookmarking", async () => {
     setupDom({ guest: true })
     startController()
     await new Promise(resolve => setTimeout(resolve, 0))
 
     const input = document.querySelector("input.toggle-bookmark")
+    input.checked = false
     const root = document.getElementById("bookmark-guard-root")
     const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
     controller.handleBookmarkClick({ target: input })
+
+    const warning = document.querySelector("[data-guest-bookmark-warning]")
+    expect(warning).toBeNull()
+  })
+
+  it("replaces the existing warning on subsequent selections", async () => {
+    setupDom({ guest: true })
+    startController()
+    await new Promise(resolve => setTimeout(resolve, 0))
+
+    const input = document.querySelector("input.toggle-bookmark")
+    input.checked = true
+    const root = document.getElementById("bookmark-guard-root")
+    const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
+    controller.handleBookmarkClick({ target: input })
+    input.checked = true
     controller.handleBookmarkClick({ target: input })
 
     const warnings = document.querySelectorAll("[data-guest-bookmark-warning]")
