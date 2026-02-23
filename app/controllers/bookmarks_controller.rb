@@ -120,7 +120,6 @@ class BookmarksController < CatalogController
 
         redirect_back fallback_location: bookmarks_path
       end
-
     end
 
     def remove_bookmarks(bookmarks)
