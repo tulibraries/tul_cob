@@ -285,7 +285,7 @@ GEM
     csl-styles (2.0.2)
       csl (~> 2.0)
     csv (3.3.5)
-    dalli (4.2.0)
+    dalli (5.0.1)
       logger
     database_cleaner (2.1.0)
       database_cleaner-active_record (>= 2, < 3)
