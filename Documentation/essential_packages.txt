@@ -1,3 +1,3 @@
 express
-minimatch (CVE-2026-26996) - pinned via glob@7 from @rails/webpacker; requires moving off Webpacker to update
-ajv (CVE-2025-69873) - ajv@6.12.6 comes from schema-utils v2/v3 via @rails/webpacker; requires moving off Webpacker to fully remediate
+minimatch
+ajv
