@@ -103,7 +103,7 @@ class BookmarksController < CatalogController
 
       flash.discard(:notice)
       flash.discard(:error)
-      flash[:alert] = I18n.t("blacklight.bookmarks.guest_warning")
+      flash[:alert] = I18n.t("blacklight.bookmarks.need_login")
     end
 
     def destroy_many

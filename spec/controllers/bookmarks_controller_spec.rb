@@ -149,7 +149,7 @@ RSpec.describe BookmarksController do
 
       controller.send(:set_guest_bookmark_warning)
 
-      expect(flash[:alert]).to eq(I18n.t("blacklight.bookmarks.guest_warning"))
+      expect(flash[:alert]).to eq(I18n.t("blacklight.bookmarks.need_login"))
     end
 
     it "does not set an alert for xhr requests" do
