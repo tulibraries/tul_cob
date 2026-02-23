@@ -12,11 +12,11 @@ class LibGuidesApi
   end
 
   def api_key
-    config["api_key"]
+    IntegrationConfig.lib_guides_api_key
   end
 
   def site_id
-    config["site_id"]
+    IntegrationConfig.lib_guides_site_id
   end
 
   def config
@@ -71,6 +71,7 @@ class LibGuidesApi
     end
 
     def url
+      base_uri = URI.parse(IntegrationConfig.lib_guides_base_url)
       query_terms = {
         site_id:,
         key: api_key,
@@ -82,8 +83,8 @@ class LibGuidesApi
       }
 
       URI::HTTPS.build(
-        host: "lgapi-us.libapps.com",
-        path: "/1.1/guides",
+        host: base_uri.host,
+        path: base_uri.path,
         query: query_terms.to_query
       ).to_s
     end

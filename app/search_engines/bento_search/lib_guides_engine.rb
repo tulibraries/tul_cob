@@ -6,16 +6,16 @@ module BentoSearch
       bento_results = BentoSearch::Results.new
       guides_response = []
 
-      path = "http://lgapi-us.libapps.com/1.1/guides/"
+      path = IntegrationConfig.lib_guides_base_url
       query = args[:query].gsub(" ", "+")
       query_params = {
-        site_id: 17,
+        site_id: IntegrationConfig.lib_guides_site_id,
         search_terms: query, status: 1,
         sort_by: "relevance",
         expand: "owner",
         guide_types: "1,2,3,4",
-        key: ENV["LIB_GUIDES_API_KEY"] }.to_param
-      guides_url = path + "?" + query_params
+        key: IntegrationConfig.lib_guides_api_key }.to_param
+      guides_url = "#{path.chomp("/")}?#{query_params}"
       guides_response = JSON.load(URI.open(guides_url))
 
       results = guides_response[0, 3]
