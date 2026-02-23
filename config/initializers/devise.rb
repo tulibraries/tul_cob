@@ -251,12 +251,22 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
-  idp_metadata = begin
-    idp_metadata_parser.parse_remote_to_hash(Rails.configuration.devise["saml_idp_metadata_url"])
-  rescue OpenSSL::SSL::SSLError => e
-    Rails.logger.warn "Failed to fetch SAML IdP metadata: #{e.message}. Using empty metadata for test environment."
-    raise unless Rails.env.test?
+  fetch_remote_idp_metadata = if ENV.key?("COB_SAML_FETCH_REMOTE_METADATA")
+    ActiveModel::Type::Boolean.new.cast(ENV["COB_SAML_FETCH_REMOTE_METADATA"])
+  else
+    Rails.env.production?
+  end
+
+  idp_metadata = if fetch_remote_idp_metadata
+    idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
+    begin
+      idp_metadata_parser.parse_remote_to_hash(Rails.configuration.devise["saml_idp_metadata_url"])
+    rescue OpenSSL::SSL::SSLError, SocketError, Timeout::Error => e
+      Rails.logger.warn "Failed to fetch SAML IdP metadata: #{e.message}. Using empty metadata."
+      raise if Rails.env.production?
+      {}
+    end
+  else
     {}
   end
 

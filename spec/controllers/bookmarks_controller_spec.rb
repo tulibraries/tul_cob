@@ -83,6 +83,65 @@ RSpec.describe BookmarksController do
     end
   end
 
+  describe "#create" do
+    let(:bookmarks_relation) { instance_double(ActiveRecord::Relation) }
+    let(:user) { instance_double(User, persisted?: true, bookmarks: bookmarks_relation) }
+    let(:submitted_bookmarks) do
+      [
+        { document_id: "1", document_type: "SolrDocument" },
+        { document_id: "2", document_type: "SolrDocument" }
+      ]
+    end
+
+    before do
+      allow(controller).to receive(:current_or_guest_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(User.new)
+      allow(controller).to receive(:permit_bookmarks).and_return({ bookmarks: submitted_bookmarks })
+      allow(request).to receive(:xhr?).and_return(false)
+    end
+
+    it "uses the actual number of inserted rows in the success message" do
+      allow(bookmarks_relation).to receive(:where)
+        .with(document_type: "SolrDocument", document_id: %w[1 2])
+        .and_return(bookmarks_relation)
+      allow(bookmarks_relation).to receive(:pluck).with(:document_id).and_return(["1"])
+      expect(bookmarks_relation).to receive(:create!)
+        .with([{ document_id: "2", document_type: "SolrDocument" }])
+      post :create, params: { bookmarks: submitted_bookmarks }
+
+      expect(flash[:notice]).to eq(I18n.t("blacklight.bookmarks.add.success", count: 1))
+    end
+  end
+
+  describe "#destroy" do
+    let(:bookmarks_relation) { instance_double(ActiveRecord::Relation) }
+    let(:matching_bookmarks) { instance_double(ActiveRecord::Relation) }
+    let(:user) { instance_double(User, bookmarks: bookmarks_relation) }
+    let(:submitted_bookmarks) do
+      [
+        { document_id: "1", document_type: "SolrDocument" },
+        { document_id: "2", document_type: "SolrDocument" }
+      ]
+    end
+
+    before do
+      allow(controller).to receive(:current_or_guest_user).and_return(user)
+      allow(controller).to receive(:current_user).and_return(User.new)
+      allow(controller).to receive(:permit_bookmarks).and_return({ bookmarks: submitted_bookmarks })
+      allow(request).to receive(:xhr?).and_return(false)
+    end
+
+    it "removes all requested bookmarks for batch unbookmark requests" do
+      allow(bookmarks_relation).to receive(:where)
+        .with(document_type: "SolrDocument", document_id: %w[1 2])
+        .and_return(matching_bookmarks)
+      expect(matching_bookmarks).to receive(:delete_all).and_return(2)
+      delete :destroy, params: { id: "1", bookmarks: submitted_bookmarks }
+
+      expect(flash[:notice]).to eq(I18n.t("blacklight.bookmarks.remove.success", count: 2))
+    end
+  end
+
   describe "#set_guest_bookmark_warning" do
     it "sets an alert for guests on non-xhr requests" do
       allow(controller).to receive(:current_user).and_return(nil)
@@ -90,7 +149,7 @@ RSpec.describe BookmarksController do
 
       controller.send(:set_guest_bookmark_warning)
 
-      expect(flash[:alert]).to eq(I18n.t("blacklight.bookmarks.guest_warning"))
+      expect(flash[:alert]).to eq(I18n.t("blacklight.bookmarks.need_login"))
     end
 
     it "does not set an alert for xhr requests" do

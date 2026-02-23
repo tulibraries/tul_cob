@@ -8,7 +8,7 @@
       <% all_bookmarked = bookmarked_count == bookmark_document_ids.length %>
       <% form_url = all_bookmarked ? bookmark_path(bookmark_document_ids.first) : bookmarks_path %>
       <% form_method = all_bookmarked ? :delete : :post %>
-      <% button_label = all_bookmarked ? "Unbookmark&nbsp;All" : "Bookmark&nbsp;All" %>
+      <% button_label = all_bookmarked ? "Unbookmark&nbsp;all" : "Bookmark&nbsp;all" %>
       <%= form_with url: form_url, method: form_method, class: "bookmark-all-form", authenticity_token: true do %>
         <% @response.documents.each do |document| %>
           <%= hidden_field_tag "bookmarks[][document_id]", document.id %>

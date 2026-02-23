@@ -9,6 +9,6 @@ RSpec.feature "Bookmark All guest warning" do
     expect(page).to have_css("button.bookmark-all-btn")
     find("button.bookmark-all-btn").click
 
-    expect(page).to have_text(I18n.t("blacklight.bookmarks.guest_warning"))
+    expect(page).to have_text(I18n.t("blacklight.bookmarks.need_login"))
   end
 end
