@@ -173,6 +173,20 @@ RSpec.describe CatalogController, type: :controller do
         controller.do_with_json_logger(foo: "bar") { OpenStruct.new(loggable: { bizz: "buzz" }) }
         expect(controller).to have_received(:json_request_logger).with(foo: "bar", bizz: "buzz", start: "boo")
       end
+
+      it "does not raise when loggable is a string" do
+        expect {
+          controller.do_with_json_logger(foo: "bar") { OpenStruct.new(loggable: "bad payload") }
+        }.not_to raise_error
+        expect(controller).to have_received(:json_request_logger).with(foo: "bar", start: "boo")
+      end
+
+      it "does not raise when loggable is an array" do
+        expect {
+          controller.do_with_json_logger(foo: "bar") { OpenStruct.new(loggable: [1, 2, 3]) }
+        }.not_to raise_error
+        expect(controller).to have_received(:json_request_logger).with(foo: "bar", start: "boo")
+      end
     end
 
     context "raised error message if JSON parsable" do
