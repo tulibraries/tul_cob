@@ -89,4 +89,26 @@ RSpec.describe IntegrationConfig do
       expect(described_class.saml(:sign_out_redirect_url)).to eq("/shib-logout")
     end
   end
+
+  describe ".smtp_asktulib_password" do
+    it "prefers credentials over environment values" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:smtp, :asktulib_password])
+        .and_return("credentials-smtp-pass")
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("ASKTULIB_PASSWORD").and_return("env-smtp-pass")
+
+      expect(described_class.smtp_asktulib_password).to eq("credentials-smtp-pass")
+    end
+
+    it "falls back to environment when credentials are not set" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:smtp, :asktulib_password])
+        .and_return(nil)
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("ASKTULIB_PASSWORD").and_return("env-smtp-pass")
+
+      expect(described_class.smtp_asktulib_password).to eq("env-smtp-pass")
+    end
+  end
 end

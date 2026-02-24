@@ -73,6 +73,10 @@ module IntegrationConfig
     fetch_value([:caches, key], fallback)
   end
 
+  def smtp_asktulib_password
+    fetch_value([:smtp, :asktulib_password], ENV["ASKTULIB_PASSWORD"])
+  end
+
   def fetch_value(path, fallback)
     value = credentials_value(path)
     value.nil? ? fallback : value
