@@ -263,6 +263,7 @@ Devise.setup do |config|
     end
 
   idp_metadata = if fetch_remote_idp_metadata
+<<<<<<< HEAD
     begin
       idp_metadata_parser.parse_remote_to_hash(IntegrationConfig.saml(:saml_idp_metadata_url))
     rescue OpenSSL::SSL::SSLError, SocketError, Timeout::Error => e
@@ -273,14 +274,20 @@ Devise.setup do |config|
   else
     {}
   end
+=======
+                   idp_metadata_parser.parse_remote_to_hash(IntegrationConfig.saml(:saml_idp_metadata_url))
+                 else
+                   {}
+                 end
+>>>>>>> 8e3fc7d2 (adds QuikPay/OCLC/SAML/cache settings)
 
   config.omniauth :saml, idp_metadata.merge(
     compress_request: false,
-    certificate: Rails.configuration.devise["saml_certificate"],
-    private_key: Rails.configuration.devise["saml_private_key"],
-    assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
-    idp_sso_service_url: Rails.configuration.devise["idp_sso_service_url"],
-    issuer: Rails.configuration.devise["saml_issuer"],
+    certificate: IntegrationConfig.saml(:saml_certificate),
+    private_key: IntegrationConfig.saml(:saml_private_key),
+    assertion_consumer_service_url: IntegrationConfig.saml(:assertion_consumer_service_url),
+    idp_sso_service_url: IntegrationConfig.saml(:idp_sso_service_url),
+    issuer: IntegrationConfig.saml(:saml_issuer),
     idp_slo_service_binding: :redirect,
     idp_sso_service_binding: :post,
     request_attributes: {},

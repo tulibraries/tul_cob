@@ -29,7 +29,7 @@ module QuikPay
     total_fines_cents = (100 * session[:total_fines].to_f).to_i
 
     params = { amountDue: total_fines_cents,  orderNumber: session[:alma_sso_user] }
-    redirect_to quik_pay_url(params, Rails.configuration.quik_pay["secret"]), allow_other_host: true
+    redirect_to quik_pay_url(params, IntegrationConfig.quik_pay(:secret)), allow_other_host: true
   end
 
   # Callback for processing user after they are returned from quikpay service.
@@ -57,7 +57,7 @@ module QuikPay
     qp_params.merge!(
       orderType: "Temple Library",
       timestamp: DateTime.now.strftime("%Q").to_i,
-      redirectUrl: Rails.configuration.quik_pay["redirect_url"],
+      redirectUrl: IntegrationConfig.quik_pay(:redirect_url),
       redirectUrlParameters: quik_pay_redirect_url_parameters,
     )
 
@@ -73,7 +73,7 @@ module QuikPay
 
     # I'm not using .to_query because .to_query breaks the param order by sorting.
     # We need to preserve the param order for hashing to work properly.
-    qurl = Rails.configuration.quik_pay["url"]
+    qurl = IntegrationConfig.quik_pay(:url)
     ordered_params.reduce(qurl) do |url, param|
       key, value = param
 
@@ -135,7 +135,7 @@ module QuikPay
     def validate_quik_pay_hash(params)
       hash = params["hash"]
 
-      valid_hash = quik_pay_hash(params.except("hash").values, Rails.configuration.quik_pay["secret"])
+      valid_hash = quik_pay_hash(params.except("hash").values, IntegrationConfig.quik_pay(:secret))
 
       raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?
 

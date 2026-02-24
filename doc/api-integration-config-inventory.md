@@ -89,5 +89,40 @@ These are currently used for integration auth/config in app code:
 - `COB_SAML_IDP_METADATA_URL`
 - `COB_SAML_IDP_SSO_SERVICE_URL`
 
+## Infra handoff notes (separate Helm/Vault repo)
 
+Because charts are in a separate repository, BL-1966 needs a paired infra ticket/PR to:
 
+- Add new encrypted credential material delivery process (if not already present).
+- Stop templating the above integration-specific env vars into deployment manifests.
+- Remove deprecated secret keys from Vault after app cutover verification.
+- Keep only non-integration runtime env vars that remain intentionally environment-driven.
+
+## Suggested migration order for BL-1966
+
+1. Add credentials schema and loader methods (no behavior change yet).
+2. Move one integration at a time to credentials with temporary fallback to existing source.
+3. Remove direct `ENV[...]` call sites for integration auth.
+4. Remove obsolete `config/*.yml` integration files after all readers are cut over.
+5. Submit coordinated Helm/Vault cleanup PR in infra repo.
+
+## Implementation status (as of 2026-02-24)
+
+Completed in app code:
+
+- Central reader added and loaded at boot: `lib/integration_config.rb`, `config/application.rb`.
+- Credentials-first wiring done for Alma/Primo/LibGuides/ArchivesSpace:
+  `config/initializers/alma.rb`, `config/initializers/primo.rb`, `app/controllers/sessions/social_login.rb`,
+  `app/search_engines/bento_search/lib_guides_engine.rb`, `app/models/lib_guides_api.rb`,
+  `app/services/archives_space_service.rb`.
+- Additional wiring done for QuikPay/OCLC/SAML/cache settings:
+  `app/controllers/concerns/quik_pay.rb`, `app/models/citation.rb`,
+  `app/controllers/application_controller.rb`, `config/initializers/devise.rb`,
+  `app/models/blacklight/primo_central/repository.rb`,
+  `app/models/blacklight/primo_central/document.rb`.
+
+Still pending:
+
+- Infra repo QA cutover: stop injecting deprecated integration env vars in QA and run smoke tests.
+- Infra repo production cleanup: remove deprecated integration env vars from Vault/Helm after QA and production validation.
+- App hard cleanup: remove compatibility fallbacks and retire legacy integration `config/*.yml` once infra cutover is complete.

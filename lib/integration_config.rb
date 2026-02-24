@@ -53,6 +53,26 @@ module IntegrationConfig
     coerce_integer(value, 5)
   end
 
+  def quik_pay(key)
+    fallback = config_value(Rails.configuration.quik_pay, key)
+    fetch_value([:quik_pay, key], fallback)
+  end
+
+  def oclc(key)
+    fallback = config_value(Rails.configuration.oclc, key)
+    fetch_value([:oclc, key], fallback)
+  end
+
+  def saml(key)
+    fallback = config_value(Rails.configuration.devise, key)
+    fetch_value([:saml, key], fallback)
+  end
+
+  def cache_setting(key)
+    fallback = config_value(Rails.configuration.caches, key)
+    fetch_value([:caches, key], fallback)
+  end
+
   def fetch_value(path, fallback)
     value = credentials_value(path)
     value.nil? ? fallback : value

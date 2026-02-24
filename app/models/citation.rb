@@ -87,20 +87,16 @@ class Citation
     end
 
     def desired_formats
-      return config["citation_formats"].map(&:upcase) unless formats.present?
+      return Array(IntegrationConfig.oclc(:citation_formats)).map(&:upcase) unless formats.present?
       formats.map(&:upcase)
     end
 
     def base_url
-      config["base_url"]
+      IntegrationConfig.oclc(:base_url)
     end
 
     def api_key
-      config["apikey"]
-    end
-
-    def config
-      Rails.configuration.oclc
+      IntegrationConfig.oclc(:apikey)
     end
 
     def null_citation

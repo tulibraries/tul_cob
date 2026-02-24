@@ -58,4 +58,35 @@ RSpec.describe IntegrationConfig do
       expect(described_class.archives_space_open_timeout).to eq(2)
     end
   end
+
+  describe ".quik_pay" do
+    it "prefers credentials over config values" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:quik_pay, :url])
+        .and_return("https://credentials.example")
+      allow(Rails.configuration).to receive(:quik_pay).and_return({ url: "https://config.example" }.with_indifferent_access)
+
+      expect(described_class.quik_pay(:url)).to eq("https://credentials.example")
+    end
+
+    it "falls back to config values when credentials are not set" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:quik_pay, :url])
+        .and_return(nil)
+      allow(Rails.configuration).to receive(:quik_pay).and_return({ url: "https://config.example" }.with_indifferent_access)
+
+      expect(described_class.quik_pay(:url)).to eq("https://config.example")
+    end
+  end
+
+  describe ".saml" do
+    it "falls back to devise config values when credentials are not set" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:saml, :sign_out_redirect_url])
+        .and_return(nil)
+      allow(Rails.configuration).to receive(:devise).and_return({ sign_out_redirect_url: "/shib-logout" }.with_indifferent_access)
+
+      expect(described_class.saml(:sign_out_redirect_url)).to eq("/shib-logout")
+    end
+  end
 end

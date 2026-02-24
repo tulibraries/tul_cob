@@ -61,7 +61,7 @@ module Blacklight::PrimoCentral
       def duration_for(cache_name)
         # Do not bring down site due to a parse error.
         begin
-          delta = Rails.configuration.caches[cache_name]
+          delta = IntegrationConfig.cache_setting(cache_name)
           ActiveSupport::Duration.parse(delta)
         rescue
           logger.error("Error: Failed to parse ISO-8601 formated duration,#{delta}")
