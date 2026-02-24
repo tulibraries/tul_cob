@@ -660,7 +660,7 @@ GEM
     skylight (7.0.0)
       activesupport (>= 7.1.0)
     slop (4.10.1)
-    spring (4.4.0)
+    spring (4.4.2)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
