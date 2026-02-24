@@ -13,7 +13,7 @@ module JsonLogger
     begin
       response = yield if block_given?
 
-      loggable = (response.loggable rescue {}) || {}
+      loggable = extract_loggable(response)
 
       json_request_logger(log.merge(loggable).merge(start))
     rescue Exception => e
@@ -24,4 +24,16 @@ module JsonLogger
 
     response
   end
+
+  private
+
+    def extract_loggable(response)
+      value = (response.loggable rescue {})
+      return {} if value.nil?
+      return value.to_h if value.respond_to?(:to_h)
+
+      {}
+    rescue TypeError, ArgumentError
+      {}
+    end
 end
