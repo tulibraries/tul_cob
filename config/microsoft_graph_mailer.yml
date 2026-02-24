@@ -1,0 +1,13 @@
+default: &default
+  tenant_id: <%= ENV["GRAPH_TENANT_ID"] %>
+  client_id: <%= ENV["GRAPH_CLIENT_ID"] %>
+  client_secret: <%= ENV["GRAPH_CLIENT_SECRET"] %>
+
+development:
+    <<: *default
+
+test:
+    <<: *default
+
+production:
+    <<: *default

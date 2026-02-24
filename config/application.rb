@@ -51,6 +51,7 @@ module Tulcob
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
+    config.microsoft_graph_mailer = config_for(:microsoft_graph_mailer).with_indifferent_access
 
     config.generators do |g|
       g.test_framework :rspec, spec: true

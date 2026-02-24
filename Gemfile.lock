@@ -430,6 +430,9 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     method_source (1.1.0)
+    microsoft_graph_mailer (0.1.0)
+      mail (~> 2.7)
+      oauth2 (>= 1.4.4, < 3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
     minitest (6.0.1)
@@ -467,6 +470,14 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.1-x86_64-linux-gnu)
       racc (~> 1.4)
+    oauth2 (2.0.18)
+      faraday (>= 0.17.3, < 4.0)
+      jwt (>= 1.0, < 4.0)
+      logger (~> 1.2)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 4)
+      snaky_hash (~> 2.0, >= 2.0.3)
+      version_gem (~> 1.1, >= 1.1.9)
     observer (0.1.2)
     okcomputer (1.19.1)
       benchmark
@@ -661,6 +672,9 @@ GEM
     skylight (7.0.0)
       activesupport (>= 7.1.0)
     slop (4.10.1)
+    snaky_hash (2.0.3)
+      hashie (>= 0.1.0, < 6)
+      version_gem (>= 1.1.8, < 3)
     spring (4.4.2)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
@@ -724,6 +738,7 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
+    version_gem (1.1.9)
     view_component (3.24.0)
       activesupport (>= 5.2.0, < 8.2)
       concurrent-ruby (~> 1)
@@ -816,6 +831,7 @@ DEPENDENCIES
   jwt
   launchy
   lc_solr_sortable!
+  microsoft_graph_mailer
   net-smtp
   nokogiri (= 1.19.1)
   okcomputer
