@@ -77,6 +77,11 @@ module IntegrationConfig
     fetch_value([:smtp, :asktulib_password], ENV["ASKTULIB_PASSWORD"])
   end
 
+  def microsoft_graph_mailer(key)
+    fallback = config_value(Rails.configuration.microsoft_graph_mailer, key)
+    fetch_value([:microsoft_graph_mailer, key], fallback)
+  end
+
   def fetch_value(path, fallback)
     value = credentials_value(path)
     value.nil? ? fallback : value

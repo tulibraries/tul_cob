@@ -111,4 +111,24 @@ RSpec.describe IntegrationConfig do
       expect(described_class.smtp_asktulib_password).to eq("env-smtp-pass")
     end
   end
+
+  describe ".microsoft_graph_mailer" do
+    it "prefers credentials over config values" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:microsoft_graph_mailer, :tenant_id])
+        .and_return("credentials-tenant")
+      allow(Rails.configuration).to receive(:microsoft_graph_mailer).and_return({ tenant_id: "config-tenant" }.with_indifferent_access)
+
+      expect(described_class.microsoft_graph_mailer(:tenant_id)).to eq("credentials-tenant")
+    end
+
+    it "falls back to config values when credentials are not set" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:microsoft_graph_mailer, :tenant_id])
+        .and_return(nil)
+      allow(Rails.configuration).to receive(:microsoft_graph_mailer).and_return({ tenant_id: "config-tenant" }.with_indifferent_access)
+
+      expect(described_class.microsoft_graph_mailer(:tenant_id)).to eq("config-tenant")
+    end
+  end
 end
