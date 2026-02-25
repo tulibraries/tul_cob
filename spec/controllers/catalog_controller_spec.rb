@@ -204,6 +204,11 @@ RSpec.describe CatalogController, type: :controller do
       get :index , params: { f: { foo: [:bar, :bar] } }
       expect(controller.params["f"]["foo"].size).to eq(1)
     end
+
+    it "returns bad request for invalid facet param shape" do
+      get :index, params: { f: "not_a_hash" }
+      expect(response).to have_http_status(:bad_request)
+    end
   end
 
   describe "advanced search" do
