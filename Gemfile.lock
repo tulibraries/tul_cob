@@ -9,7 +9,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: df474295956cc8f1b8a8e26b1650c3a7b256fa5c
+  revision: b6e2f02c6cd2000d458692d75369c407e8dd01d2
   branch: main
   specs:
     alma (0.6.2)
@@ -435,7 +435,8 @@ GEM
       oauth2 (>= 1.4.4, < 3)
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.1)
+    minitest (6.0.2)
+      drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.0)
     multi_json (1.19.1)
