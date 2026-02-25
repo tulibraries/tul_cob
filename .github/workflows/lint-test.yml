@@ -84,6 +84,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: ./app.lcov
+          fail-on-error: false
 
       - name: Print Solr logs on failure
         if: failure()
