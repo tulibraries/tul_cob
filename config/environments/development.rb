@@ -51,18 +51,10 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.default_options = {
-    from: "asktulib@temple.edu",
     reply_to: "asktulib@temple.edu",
   }
 
-  config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    user_name: "templelibraries@gmail.com",
-    password: ENV["ASKTULIB_PASSWORD"],
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  config.action_mailer.delivery_method = :microsoft_graph_mailer
 
   config.action_mailer.perform_caching = false
 
