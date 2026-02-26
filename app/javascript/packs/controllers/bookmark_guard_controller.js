@@ -8,9 +8,16 @@ export default class extends Controller {
 
   handleBookmarkClick(event) {
     if (!this.guestValue) return
-    const checkbox = event.target.closest("input.toggle-bookmark")
-    if (!checkbox || !checkbox.checked) return
+    const form = event.target.closest("form.bookmark-toggle")
+    if (!form) return
+    if (!this.addBookmarkAction(form)) return
     this.showWarning()
+  }
+
+  addBookmarkAction(form) {
+    const methodField = form.querySelector("input[name='_method']")
+    if (!methodField) return false
+    return methodField.value.toLowerCase() === "put"
   }
 
   showWarning() {
