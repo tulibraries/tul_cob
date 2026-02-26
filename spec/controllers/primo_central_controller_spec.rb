@@ -54,11 +54,11 @@ RSpec.describe PrimoCentralController, type: :controller do
 
   describe "recaptcha enabled" do
     around do |example|
-      original = Rails.configuration.features[:recaptcha_on]
-      Rails.configuration.features[:recaptcha_on] = true
+      original = Rails.configuration.features[:recaptcha]
+      Rails.configuration.features[:recaptcha] = true
       example.run
     ensure
-      Rails.configuration.features[:recaptcha_on] = original
+      Rails.configuration.features[:recaptcha] = original
     end
 
     before do
@@ -81,11 +81,11 @@ RSpec.describe PrimoCentralController, type: :controller do
 
   describe "recaptcha disabled" do
     around do |example|
-      original = Rails.configuration.features[:recaptcha_on]
-      Rails.configuration.features[:recaptcha_on] = false
+      original = Rails.configuration.features[:recaptcha]
+      Rails.configuration.features[:recaptcha] = false
       example.run
     ensure
-      Rails.configuration.features[:recaptcha_on] = original
+      Rails.configuration.features[:recaptcha] = original
     end
 
     before do
