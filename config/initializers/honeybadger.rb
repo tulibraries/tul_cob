@@ -5,8 +5,8 @@ Honeybadger.configure do |config|
   secrets = {
     solrcloud_user: ENV["SOLRCLOUD_USER"],
     solrcloud_password: ENV["SOLRCLOUD_PASSWORD"],
-    primo_apikey: Rails.configuration.bento.dig("primo", "apikey"),
-    alma_apikey: Rails.configuration.alma["apikey"],
+    primo_apikey: IntegrationConfig.primo_api_key,
+    alma_apikey: IntegrationConfig.alma(:apikey),
   }
 
   config.before_notify do |notice|

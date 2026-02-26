@@ -71,11 +71,11 @@ module ElectronicResourceHelper
   end
 
   def alma_domain
-    Rails.configuration.alma["delivery_domain"]
+    IntegrationConfig.alma(:delivery_domain)
   end
 
   def alma_institution_code
-    Rails.configuration.alma["institution_code"]
+    IntegrationConfig.alma(:institution_code)
   end
 
   def alma_build_openurl(query)

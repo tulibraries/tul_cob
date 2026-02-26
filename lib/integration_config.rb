@@ -31,6 +31,11 @@ module IntegrationConfig
     fetch_value([:lib_guides, :base_url], "https://lgapi-us.libapps.com/1.1/guides")
   end
 
+  def libkey(key)
+    fallback = config_value(Rails.configuration.bento, :libkey, key)
+    fetch_value([:libkey, key], fallback)
+  end
+
   def archives_space_base_url
     fetch_value([:archives_space, :base_url], "https://scrcarchivesspace.temple.edu/staff/api")
   end

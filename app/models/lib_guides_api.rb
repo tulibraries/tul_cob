@@ -20,7 +20,11 @@ class LibGuidesApi
   end
 
   def config
-    Rails.configuration.lib_guides
+    {
+      api_key: api_key,
+      site_id: site_id,
+      base_url: IntegrationConfig.lib_guides_base_url
+    }.with_indifferent_access
   end
 
   def as_json(*)

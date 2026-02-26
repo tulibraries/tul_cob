@@ -131,4 +131,24 @@ RSpec.describe IntegrationConfig do
       expect(described_class.microsoft_graph_mailer(:tenant_id)).to eq("config-tenant")
     end
   end
+
+  describe ".libkey" do
+    it "prefers credentials over bento config values" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:libkey, :apikey])
+        .and_return("credentials-libkey-key")
+      allow(Rails.configuration).to receive(:bento).and_return({ libkey: { apikey: "config-libkey-key" } }.with_indifferent_access)
+
+      expect(described_class.libkey(:apikey)).to eq("credentials-libkey-key")
+    end
+
+    it "falls back to bento config values when credentials are not set" do
+      allow(described_class).to receive(:credentials_value)
+        .with([:libkey, :apikey])
+        .and_return(nil)
+      allow(Rails.configuration).to receive(:bento).and_return({ libkey: { apikey: "config-libkey-key" } }.with_indifferent_access)
+
+      expect(described_class.libkey(:apikey)).to eq("config-libkey-key")
+    end
+  end
 end
