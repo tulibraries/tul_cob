@@ -47,7 +47,7 @@
 
   <body class="bg-white <%= render_body_class %>"
         data-controller="bookmark-guard"
-        data-action="click@document->bookmark-guard#handleBookmarkClick"
+        data-action="click@document->bookmark-guard#handleBookmarkClick:capture"
         data-bookmark-guard-guest-value="<%= current_user.blank? %>"
         data-bookmark-guard-message-value="<%= t("blacklight.bookmarks.need_login") %>">
     <!-- Google Tag Manager (noscript) -->
