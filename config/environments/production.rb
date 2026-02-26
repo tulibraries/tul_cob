@@ -89,6 +89,7 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.default_options = {
+    from: "librarymessages@temple.edu",
     reply_to: "asktulib@temple.edu",
   }
 
