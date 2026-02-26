@@ -53,6 +53,14 @@ RSpec.describe PrimoCentralController, type: :controller do
   end
 
   describe "recaptcha enabled" do
+    around do |example|
+      original = Rails.configuration.features[:recaptcha]
+      Rails.configuration.features[:recaptcha] = true
+      example.run
+    ensure
+      Rails.configuration.features[:recaptcha] = original
+    end
+
     before do
       stub_const("ENV", ENV.to_h.merge("RECAPTCHA_SITE_KEY" => "foo"))
       allow(controller).to receive(:verify_recaptcha).and_return(false)
@@ -68,6 +76,28 @@ RSpec.describe PrimoCentralController, type: :controller do
       it "should not allow article searches" do
         expect { get :index, params: { q: "foo " } }.to raise_error(Recaptcha::VerifyError)
       end
+    end
+  end
+
+  describe "recaptcha disabled" do
+    around do |example|
+      original = Rails.configuration.features[:recaptcha]
+      Rails.configuration.features[:recaptcha] = false
+      example.run
+    ensure
+      Rails.configuration.features[:recaptcha] = original
+    end
+
+    before do
+      stub_const("ENV", ENV.to_h.merge("RECAPTCHA_SITE_KEY" => "foo"))
+    end
+
+    it "skips recaptcha checks" do
+      expect(controller).not_to receive(:verify_recaptcha)
+
+      get :index, params: { q: "foo" }
+
+      expect(response).to have_http_status(:ok)
     end
   end
 end
