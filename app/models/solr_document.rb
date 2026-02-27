@@ -187,7 +187,12 @@ class SolrDocument
 
   # Class method for grouping citations from multiple documents
   def self.grouped_citations(documents)
-    Citation.grouped_citations(documents.map(&:citations))
+    documents.map(&:citations).each_with_object({}) do |citations, grouped|
+      citations.each do |format, citation|
+        grouped[format] ||= []
+        grouped[format] << citation
+      end
+    end
   end
 
   def hathitrust_link_allowed?
