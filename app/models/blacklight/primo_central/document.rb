@@ -157,11 +157,15 @@ module Blacklight::PrimoCentral::Document
     def libkey_articles_url_thread
       return Thread.new {} if @doi.blank?
 
-      base_url = Rails.configuration.bento&.dig(:libkey, :base_url)
-      library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
-      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+      base_url = IntegrationConfig.libkey(:base_url)
+      library_id = IntegrationConfig.libkey(:library_id)
+      access_token = IntegrationConfig.libkey(:apikey)
       libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
-      duration = ActiveSupport::Duration.parse(Rails.configuration.caches[:libkey_article_cache_life])
+      duration = begin
+                   ActiveSupport::Duration.parse(IntegrationConfig.cache_setting(:libkey_article_cache_life))
+                 rescue
+                   12.hours
+                 end
 
       Thread.new {
         Rails.cache.fetch("#{@doi}", expires_in: duration) do

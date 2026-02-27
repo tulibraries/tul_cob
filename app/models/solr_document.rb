@@ -201,9 +201,9 @@ class SolrDocument
       issn = doc.fetch("issn_display", []).map { |x| x.delete("-") }.uniq.join(",")
       return Thread.new {} if issn.empty?
 
-      base_url = Rails.configuration.bento&.dig(:libkey, :base_url)
-      library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
-      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
+      base_url = IntegrationConfig.libkey(:base_url)
+      library_id = IntegrationConfig.libkey(:library_id)
+      access_token = IntegrationConfig.libkey(:apikey)
       libkey_journals_url = "#{base_url}/#{library_id}/search?issns=#{issn}&access_token=#{access_token}"
       Thread.new {
         (HTTParty.get(libkey_journals_url, timeout: 2) rescue {})["data"]&.first

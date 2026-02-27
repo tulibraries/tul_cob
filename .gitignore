@@ -33,6 +33,7 @@ coverage
 
 config/alma.yml
 config/bento.yml
+config/integrations.yml
 config/deploy_to.yml
 config/master.key
 
@@ -57,9 +58,7 @@ yarn-debug.log*
 .DS_Store
 **/.DS_Store
 
-/config/credentials/test.key
-/config/credentials/development.key
-/config/credentials/production.key
+/config/credentials/*.key
 
 development.sqlite3*
 test.sqlite3*

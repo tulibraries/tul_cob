@@ -8,7 +8,7 @@ module Sessions::SocialLogin
   # User is redirected to this action after they've successfully logged in
   # through a social login provider. This performs the devise login.
   def social_login_callback
-    decode_result = JWT.decode(params[:jwt], ENV["ALMA_AUTH_SECRET"], true, algorithm: "HS256")
+    decode_result = JWT.decode(params[:jwt], IntegrationConfig.alma_auth_secret, true, algorithm: "HS256")
     jwt = decode_result[0]
 
     # keys in 'jwt' hash: iss, aud, exp, jti, iat, nbf, sub, id, name, email, provider

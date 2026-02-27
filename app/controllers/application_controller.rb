@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   # @see BL-224
   def after_sign_out_path_for(resource_or_scope)
     if request.params[:type] == "sso"
-      Rails.configuration.devise[:sign_out_redirect_url]
+      IntegrationConfig.saml(:sign_out_redirect_url)
     else
       super
     end

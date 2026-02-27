@@ -6,6 +6,7 @@ require "rails/all"
 require "awesome_print"
 require "dot_properties"
 require "./lib/alma/config_utils"
+require "./lib/integration_config"
 
 Bundler.require(*Rails.groups)
 
