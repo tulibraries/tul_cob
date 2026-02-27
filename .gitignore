@@ -33,6 +33,7 @@ coverage
 
 config/alma.yml
 config/bento.yml
+config/integrations.yml
 config/deploy_to.yml
 config/master.key
 

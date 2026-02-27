@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "yaml"
+
 module IntegrationConfig
   module_function
 
@@ -93,9 +95,21 @@ module IntegrationConfig
   end
 
   def credentials_value(path)
-    Rails.application.credentials.dig(:integrations, *path)
-  rescue ActiveSupport::EncryptedConfiguration::InvalidKeyError
-    nil
+    config_value(integration_settings, *path)
+  end
+
+  def integration_settings
+    @integration_settings ||= begin
+      raw = YAML.safe_load(File.read(integration_settings_path), aliases: true)
+      raw = raw.is_a?(Hash) ? raw.with_indifferent_access : {}.with_indifferent_access
+      config_value(raw, :integrations) || {}.with_indifferent_access
+    rescue Errno::ENOENT, Psych::Exception
+      {}.with_indifferent_access
+    end
+  end
+
+  def integration_settings_path
+    Rails.root.join("config/integrations.yml").to_s
   end
 
   def config_value(hash, *path)

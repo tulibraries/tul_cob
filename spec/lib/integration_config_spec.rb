@@ -1,8 +1,39 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "tempfile"
 
 RSpec.describe IntegrationConfig do
+  describe ".credentials_value" do
+    around do |example|
+      described_class.instance_variable_set(:@integration_settings, nil)
+      example.run
+      described_class.instance_variable_set(:@integration_settings, nil)
+    end
+
+    it "reads integration values from the mounted yaml file" do
+      Tempfile.create(["integrations", ".yml"]) do |file|
+        file.write(
+          <<~YAML
+            integrations:
+              primo:
+                apikey: file-primo-key
+          YAML
+        )
+        file.flush
+        allow(described_class).to receive(:integration_settings_path).and_return(file.path)
+
+        expect(described_class.credentials_value([:primo, :apikey])).to eq("file-primo-key")
+      end
+    end
+
+    it "returns nil when the mounted yaml file is missing" do
+      allow(described_class).to receive(:integration_settings_path).and_return("/nonexistent/integrations.yml")
+
+      expect(described_class.credentials_value([:primo, :apikey])).to be_nil
+    end
+  end
+
   describe ".primo_api_key" do
     it "prefers credentials over environment and config values" do
       allow(described_class).to receive(:credentials_value)
