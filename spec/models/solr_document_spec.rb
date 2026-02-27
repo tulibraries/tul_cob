@@ -781,13 +781,16 @@ RSpec.describe SolrDocument, type: :model do
   end
 
   describe ".grouped_citations" do
-    it "sends all the given document citations to the grouped_citations method of the Citation class" do
+    it "groups all citations by format across documents" do
       documents = [
-        double("document", citations: :abc),
-        double("document", citations: :def)
+        double("document", citations: { "APA" => "APA Citation1", "MLA" => "MLA Citation1" }),
+        double("document", citations: { "APA" => "APA Citation2" })
       ]
-      expect(Citation).to receive(:grouped_citations).with([:abc, :def])
-      SolrDocument.grouped_citations(documents)
+
+      expect(SolrDocument.grouped_citations(documents)).to eq(
+        "APA" => ["APA Citation1", "APA Citation2"],
+        "MLA" => ["MLA Citation1"]
+      )
     end
   end
 
