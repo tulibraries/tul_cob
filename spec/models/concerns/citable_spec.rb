@@ -23,9 +23,9 @@ RSpec.describe "Citable" do
       allow(Flipflop).to receive(:citeproc_citations?).and_return(false)
     end
 
-    it "uses Citation" do
-      citation = instance_double(Citation, citable?: true, citations: { "APA" => "Citation" })
-      expect(Citation).to receive(:new).with(document).and_return(citation)
+    it "still uses CiteprocCitation" do
+      citeproc = instance_double(CiteprocCitation, citable?: true, citations: { "APA" => "Citation" })
+      expect(CiteprocCitation).to receive(:new).with(document).and_return(citeproc)
 
       document.citations
     end
