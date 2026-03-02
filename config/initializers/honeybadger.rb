@@ -2,11 +2,20 @@
 
 # Errors for honeybadger to ignore.
 Honeybadger.configure do |config|
+  honeybadger_config = Rails.configuration.x.apis[:honeybadger] || {}
+  config.api_key = honeybadger_config[:api_key].presence || "foobar"
+  config.backend = honeybadger_config[:backend].presence || "test"
+
+  ignored_exceptions = Array(honeybadger_config.dig(:exceptions, :ignore))
+  if ignored_exceptions.present?
+    config.exceptions.ignore = (Array(config.exceptions.ignore) + ignored_exceptions).uniq
+  end
+
   secrets = {
     solrcloud_user: ENV["SOLRCLOUD_USER"],
     solrcloud_password: ENV["SOLRCLOUD_PASSWORD"],
-    primo_apikey: Rails.configuration.bento.dig("primo", "apikey"),
-    alma_apikey: Rails.configuration.alma["apikey"],
+    primo_apikey: Rails.configuration.x.apis.dig(:bento, :primo, :apikey),
+    alma_apikey: Rails.configuration.x.apis.dig(:alma, :apikey),
   }
 
   config.before_notify do |notice|

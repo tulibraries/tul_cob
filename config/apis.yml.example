@@ -1,0 +1,65 @@
+default: &default
+  alma:
+    apikey: "<ALMA_API_KEY>"
+    institution_code: "<ALMA_INSTITUTION_CODE>"
+    delivery_domain: "<ALMA_DELIVERY_DOMAIN>"
+    auth_secret: "<ALMA_AUTH_SECRET>"
+    timeout: 10
+  bento:
+    primo:
+      api_base_url: "<PRIMO_API_BASE_URL>"
+      apikey: "<PRIMO_API_KEY>"
+      scope: "<PRIMO_SCOPE>"
+      vid: "<PRIMO_VID>"
+      web_ui_base_url: "<PRIMO_WEB_UI_BASE_URL>"
+    libkey:
+      apikey: "<LIBKEY_API_KEY>"
+      base_url: "<LIBKEY_BASE_URL>"
+      library_id: "<LIBKEY_LIBRARY_ID>"
+  email_groups:
+    RAPID_REQUEST:
+      - "<EMAIL_ADDRESS>"
+  lib_guides:
+    base_url: "<LIB_GUIDES_BASE_URL_WITH_PATH>"
+    api_key: "<LIB_GUIDES_API_KEY>"
+    site_id: "<LIB_GUIDES_SITE_ID>"
+    query:
+      sort_by: "relevance"
+      expand: "owner"
+      guide_types: "1,2,3,4"
+      status: 1
+  archives_space:
+    public_base_url: "<ARCHIVES_SPACE_PUBLIC_BASE_URL>"
+    staff_api_base_url: "<ARCHIVES_SPACE_STAFF_API_BASE_URL>"
+    username: "<ARCHIVES_SPACE_USERNAME>"
+    password: "<ARCHIVES_SPACE_PASSWORD>"
+    open_timeout: 2
+    timeout: 5
+  quik_pay:
+    secret: "<QUIK_PAY_SECRET>"
+    redirect_url: "<QUIK_PAY_REDIRECT_URL>"
+    url: "<QUIK_PAY_URL>"
+  microsoft_graph_mailer:
+    tenant_id: "<GRAPH_TENANT_ID>"
+    client_id: "<GRAPH_CLIENT_ID>"
+    client_secret: "<GRAPH_CLIENT_SECRET>"
+  oclc:
+    apikey: "<OCLC_WS_KEY>"
+    base_url: "https://www.worldcat.org/webservices/catalog/content/citations"
+    citation_formats: ["all"]
+  honeybadger:
+    api_key: "<HONEYBADGER_API_KEY>"
+    token: "<HONEYBADGER_TOKEN>"
+    exceptions:
+      ignore:
+        - "Alma::BibRequest::ItemAlreadyExists"
+development:
+  <<: *default
+
+test:
+  <<: *default
+  honeybadger:
+    backend: "test"
+
+production:
+  <<: *default
