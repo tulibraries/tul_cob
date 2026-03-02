@@ -46,7 +46,7 @@ module SearchHelper
   end
 
   def cdm_collection_ids
-    Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)).join("!")
+    Array.wrap(Rails.configuration.cdm[:collection_ids]).join("!")
   end
 
   def cdm_base_link
