@@ -256,7 +256,7 @@ RSpec.describe UsersController, type: "controller"  do
 
           it "does not lose precision when converting total_fines to cents" do
             get :quik_pay
-            expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
+            expect(response.location).to match(/#{Rails.configuration.x.apis.dig(:quik_pay, :url)}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
           end
         end
 
@@ -265,7 +265,7 @@ RSpec.describe UsersController, type: "controller"  do
 
           it "does not lose precision when converting total_fines to cents" do
             get :quik_pay
-            expect(response.location).to match(/#{Rails.configuration.quik_pay["url"]}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
+            expect(response.location).to match(/#{Rails.configuration.x.apis.dig(:quik_pay, :url)}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
           end
         end
       end
@@ -292,7 +292,7 @@ RSpec.describe UsersController, type: "controller"  do
     params_dup[:orderNumber] ||= "1234567890"
     params_dup.merge!(timestamp: time_now) if params_dup[:timestamp].nil?
 
-    hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.quik_pay["secret"])
+    hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.x.apis.dig(:quik_pay, :secret))
 
     params_dup.merge(hash:)
   end

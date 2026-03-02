@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe ErrorsController, type: :controller do
   render_views
 
-  let (:sign_out_url) { Rails.configuration.devise[:sign_out_redirect_url] }
+  let (:sign_out_url) { ENV.fetch("IDP_REDIRECT_URL", "/") }
 
   it "ignores file extensions in url when a resource is not found" do
     get :not_found, params: { format: "txt" }

@@ -40,8 +40,7 @@ jobs:
       - name: Copy config files
         run: |
           cp config/secrets.yml.example config/secrets.yml
-          cp config/alma.yml.example config/alma.yml
-          cp config/bento.yml.example config/bento.yml
+          cp config/apis.yml.example config/apis.yml
 
       - name: Set up Docker Compose
         uses: docker/setup-compose-action@v1

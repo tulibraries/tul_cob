@@ -111,8 +111,7 @@ run:
 		-e "SOLRCLOUD_USER=$(SOLR_AUTH_USER)" \
 		-e "K8=yes" \
 		-e "WEB_CONCURRENCY=$(WEB_CONCURRENCY)" \
-		-v `pwd`/config/alma.yml.local:/app/config/alma.yml \
-		-v `pwd`/config/bento.yml:/app/config/bento.yml \
+		-v `pwd`/config/apis.yml:/app/config/apis.yml \
 		-v `pwd`/config/secrets.yml:/app/config/secrets.yml \
 		--rm -it \
 		$(HARBOR)/$(IMAGE):$(VERSION)
