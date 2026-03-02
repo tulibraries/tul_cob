@@ -19,8 +19,16 @@ class LibGuidesApi
     config["site_id"]
   end
 
+  def base_url
+    config.fetch("base_url")
+  end
+
+  def query_defaults
+    config.fetch("query")
+  end
+
   def config
-    Rails.configuration.lib_guides
+    Rails.configuration.x.apis[:lib_guides]
   end
 
   def as_json(*)
@@ -71,21 +79,15 @@ class LibGuidesApi
     end
 
     def url
-      query_terms = {
+      query_terms = query_defaults.merge(
         site_id:,
         key: api_key,
-        sort_by: "relevance",
-        expand: "owner",
-        guide_types: "1,2,3,4", # we don't want internal guides or templates
-        status: 1, # we only want published guides
         search_terms: "#{query}"
-      }
+      )
 
-      URI::HTTPS.build(
-        host: "lgapi-us.libapps.com",
-        path: "/1.1/guides",
-        query: query_terms.to_query
-      ).to_s
+      uri = URI.parse(base_url)
+      uri.query = query_terms.to_query
+      uri.to_s
     end
 
     def self._subject_topic_facet_terms(response)

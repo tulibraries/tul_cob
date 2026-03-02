@@ -86,20 +86,24 @@ module BentoSearch
     end
 
     def aspace_item_url(item)
-      base_public_url = "https://scrcarchivesspace.temple.edu"
+      base_public_url = archives_space_public_base_url
       uri = item["uri"] || ""
       "#{base_public_url}#{uri}"
     end
 
     def url(helper)
       query = CGI.escape(helper.params[:q].to_s)
-      "https://scrcarchivesspace.temple.edu/search?utf8=%E2%9C%93&op%5B%5D=&q%5B%5D=#{query}&limit=&field%5B%5D=&from_year%5B%5D=&to_year%5B%5D=&commit=Search"
+      "#{archives_space_public_base_url}/search?utf8=%E2%9C%93&op%5B%5D=&q%5B%5D=#{query}&limit=&field%5B%5D=&from_year%5B%5D=&to_year%5B%5D=&commit=Search"
     end
 
     def view_link(total = nil, helper)
       full_url = url(helper)
       link_text = Flipflop.style_updates? ? "See all results" : "View all results"
       helper.link_to link_text, full_url, class: "bento-full-results bento_archival_collections_header", target: "_blank"
+    end
+
+    def archives_space_public_base_url
+      Rails.configuration.x.apis.dig(:archives_space, :public_base_url).to_s.chomp("/")
     end
   end
 end

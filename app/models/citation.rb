@@ -100,7 +100,7 @@ class Citation
     end
 
     def config
-      Rails.configuration.oclc
+      Rails.configuration.x.apis[:oclc]
     end
 
     def null_citation
