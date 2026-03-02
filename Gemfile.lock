@@ -72,7 +72,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 7d408acd4f8221eaa8de31c6c7391327d5b17bc3
+  revision: a79cc0fb83d2b037b0b05dd0e4c6895b8104ac26
   branch: main
   specs:
     cob_index (0.1.0)
@@ -184,7 +184,7 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    addressable (2.8.8)
+    addressable (2.8.9)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     autoprefixer-rails (10.4.21.0)
