@@ -5,7 +5,7 @@
   <ul class="mb-0 no-results-tips">
     <li><%= link_to("Databases Search", search_databases_path) %></li>
     <li><%= link_to(t("articles.citation_tool"), t("articles.citation_link"), target: "_blank") %></li>
-    <li><%= link_to(t("journals.zero_results.find_articles"), t("journals.zero_results.find_articles_link"), target: "_blank") %></li>
+    <li><%= link_to(t("journals.zero_results.find_articles"), t("journals.zero_results.find_articles_link"), target: "_blank", class: "citation-tool") %></li>
   </ul>
 
   <%= render "search_suggestions" %>
