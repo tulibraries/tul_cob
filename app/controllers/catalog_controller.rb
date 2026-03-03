@@ -12,6 +12,7 @@ class CatalogController < ApplicationController
   include ServerErrors
   include LCClassifications
   include Blacklight::Ris::Catalog
+  include CatalogTrackingResilience
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :set_thread_request
