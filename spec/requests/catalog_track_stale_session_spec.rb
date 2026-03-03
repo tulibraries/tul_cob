@@ -6,15 +6,15 @@ RSpec.describe "Catalog track with stale search/session state", type: :request d
   include ActiveSupport::Testing::TimeHelpers
 
   let(:doc_id) { "991034781679703811" }
-
-  before do
-    allow_any_instance_of(Blacklight::SearchService)
-      .to receive(:fetch)
-      .and_return([instance_double(Blacklight::Solr::Response, total: 1), SolrDocument.new(id: doc_id)])
-  end
+  let(:solr_response) { instance_double(Blacklight::Solr::Response, total: 1, more_like: [], :[] => {}) }
+  let(:solr_document) { SolrDocument.new({ "id" => doc_id }, solr_response) }
 
   describe "current behavior guardrail" do
     it "redirects from track even with stale search_id" do
+      allow_any_instance_of(Blacklight::SearchService)
+        .to receive(:fetch)
+        .and_return([solr_response, solr_document])
+
       post "/catalog/#{doc_id}/track", params: {
         counter: "98",
         document_id: doc_id,
@@ -29,6 +29,10 @@ RSpec.describe "Catalog track with stale search/session state", type: :request d
 
   describe "BL-2006 regression (red spec)" do
     it "does not 500 when show is requested after tracked search context is deleted" do
+      allow_any_instance_of(Blacklight::SearchService)
+        .to receive(:fetch)
+        .and_return([solr_response, solr_document])
+
       search = Search.create!(query_params: { q: "remediation" })
 
       post "/catalog/#{doc_id}/track", params: {
