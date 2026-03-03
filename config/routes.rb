@@ -99,7 +99,7 @@ Rails.application.routes.draw do
 
   resources :lib_guides, only: :index
 
-  match "catalog/:id/track", to: "catalog#track", via: [:get, :post]
+  post "catalog/:id/track" => "catalog#track"
   post "articles/:id/track" => "primo_central#track", as: :track_primo_central
   post "journals/:id/track" => "journal#track"
   post "databases/:id/track" => "databases#track"

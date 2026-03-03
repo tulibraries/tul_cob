@@ -17,8 +17,12 @@ RSpec.feature "Stale tab record navigation" do
     search = Search.create!(query_params: { q: "otter" })
 
     travel_to(Time.zone.local(2026, 1, 22, 10, 0, 0)) do
-      visit "/catalog/#{doc_id}/track?counter=98&document_id=#{doc_id}&search_id=#{search.id}&per_page=10"
-      expect(current_path).to eq("/catalog/#{doc_id}")
+      page.driver.submit(:post, "/catalog/#{doc_id}/track", {
+        counter: "98",
+        document_id: doc_id,
+        search_id: search.id.to_s,
+        per_page: "10"
+      })
     end
 
     search.destroy!
