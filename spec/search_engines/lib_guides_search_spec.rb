@@ -8,11 +8,11 @@ RSpec.describe "lib guides search engine", type: :search_engine do
   let(:expected_fields) { RSpec.configuration.web_expected_fields }
 
   describe "Bento Lib Guides Search Engine" do
-    let (:item) { search_results[0] }
+    let(:item) { search_results[0] }
 
     it "has all the expected fields" do
       expected_fields.each do |field|
-        expect(item.send field).not_to be_nil, "expect #{field.inspect} to be set."
+        expect(item.send(field)).not_to be_nil, "expect #{field.inspect} to be set."
       end
     end
 
