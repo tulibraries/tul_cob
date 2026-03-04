@@ -198,17 +198,11 @@ class SolrDocument
   private
 
     def libkey_journals_url_thread(doc)
-      issn = doc.fetch("issn_display", []).map { |x| x.delete("-") }.uniq.join(",")
-      return Thread.new {} if issn.empty?
+      libkey_service.journal_data_thread_for_display_issns(doc.fetch("issn_display", []))
+    end
 
-      base_url = Rails.configuration.bento&.dig(:libkey, :base_url)
-      library_id = Rails.configuration.bento&.dig(:libkey, :library_id)
-      access_token = Rails.configuration.bento&.dig(:libkey, :apikey)
-      libkey_journals_url = "#{base_url}/#{library_id}/search?issns=#{issn}&access_token=#{access_token}"
-      Thread.new {
-        (HTTParty.get(libkey_journals_url, timeout: 2) rescue {})["data"]&.first
-          &.slice("browzineEnabled", "browzineWebLink")
-      }
+    def libkey_service
+      @libkey_service ||= LibkeyService.new
     end
 
     def logger
