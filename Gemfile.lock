@@ -640,7 +640,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.44.0, < 2.0)
-    ruby-prof (2.0.2)
+    ruby-prof (2.0.4)
       base64
       ostruct
     ruby-progressbar (1.13.0)
