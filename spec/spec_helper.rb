@@ -456,6 +456,19 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data("LIB_GUIDES_API_KEY") { ENV["LIB_GUIDES_API_KEY"] }
+
+  # Add these for v1.2 OAuth
+  config.filter_sensitive_data("LIB_GUIDES_CLIENT_ID") { "CLIENT_ID" }
+  config.filter_sensitive_data("LIB_GUIDES_CLIENT_SECRET") { "CLIENT_SECRET" }
+  config.filter_sensitive_data("LIB_GUIDES_SITE_ID") { "17" }
+
+  config.before_record do |interaction|
+    auth = interaction.request.headers["Authorization"]&.first
+    if auth&.start_with?("Bearer ")
+      interaction.request.headers["Authorization"] = ["Bearer LIB_GUIDES_BEARER_TOKEN"]
+    end
+  end
+
   config.default_cassette_options = {
     match_requests_on: [:method]
   }
