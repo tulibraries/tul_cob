@@ -459,8 +459,8 @@ VCR.configure do |config|
 
   # Add these for v1.2 OAuth
   config.filter_sensitive_data("LIB_GUIDES_CLIENT_ID") { "CLIENT_ID" }
-  config.filter_sensitive_data("LIB_GUIDES_CLIENT_SECRET") {"CLIENT_SECRET" }
-  config.filter_sensitive_data("LIB_GUIDES_SITE_ID") {"17" }
+  config.filter_sensitive_data("LIB_GUIDES_CLIENT_SECRET") { "CLIENT_SECRET" }
+  config.filter_sensitive_data("LIB_GUIDES_SITE_ID") { "17" }
 
   config.before_record do |interaction|
     auth = interaction.request.headers["Authorization"]&.first
