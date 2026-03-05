@@ -155,21 +155,10 @@ module Blacklight::PrimoCentral::Document
     end
 
     def libkey_articles_url_thread
-      return Thread.new {} if @doi.blank?
+      libkey_service.article_data_thread_for_doi(@doi)
+    end
 
-      base_url = Rails.configuration.x.apis.dig(:bento, :libkey, :base_url)
-      library_id = Rails.configuration.x.apis.dig(:bento, :libkey, :library_id)
-      access_token = Rails.configuration.x.apis.dig(:bento, :libkey, :apikey)
-      libkey_articles_url = "#{base_url}/#{library_id}/articles/doi/#{@doi}?access_token=#{access_token}"
-      duration = ActiveSupport::Duration.parse(Rails.configuration.caches[:libkey_article_cache_life])
-
-      Thread.new {
-        Rails.cache.fetch("#{@doi}", expires_in: duration) do
-          Primo::Search.with_retry do
-            (HTTParty.get(libkey_articles_url, timeout: 4) rescue {})["data"]
-              &.slice("retractionNoticeUrl", "fullTextFile", "contentLocation")
-          end
-        end
-      }
+    def libkey_service
+      @libkey_service ||= LibkeyService.new(config: Rails.configuration.x.apis.dig(:bento, :libkey))
     end
 end
