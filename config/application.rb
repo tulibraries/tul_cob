@@ -33,24 +33,19 @@ module Tulcob
 
     config.library_link = "https://library.temple.edu/"
     config.ask_link = "https://library.temple.edu/contact-us"
-    config.process_types = config_for(:process_types).with_indifferent_access
     config.libraries = CobIndex::DotProperties.load("libraries_map")
     cob_index_path = Gem::Specification.find_by_name("cob_index").gem_dir
     config.locations = YAML.load_file(cob_index_path + "/lib/translation_maps/locations.yaml").with_indifferent_access
-    config.material_types = config_for(:material_types).with_indifferent_access
-    config.alma = config_for(:alma).with_indifferent_access
-    config.bento = config_for(:bento).with_indifferent_access
-    config.cdm = config_for(:cdm_collection).with_indifferent_access
+    config.apis = config_for(:apis).with_indifferent_access
     config.email_groups = config_for(:email_groups).with_indifferent_access
-    config.lib_guides = config_for(:lib_guides).with_indifferent_access
     config.devise = config_for(:devise).with_indifferent_access
+    config.process_types = config_for(:process_types).with_indifferent_access
+    config.material_types = config_for(:material_types).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
-    config.quik_pay = config_for(:quik_pay).with_indifferent_access
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
-    config.microsoft_graph_mailer = config_for(:microsoft_graph_mailer).with_indifferent_access
 
     config.generators do |g|
       g.test_framework :rspec, spec: true
