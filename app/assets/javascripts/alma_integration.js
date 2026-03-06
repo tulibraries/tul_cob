@@ -1,10 +1,10 @@
 /**
- * BlacklightAlma is a Javascript class for integration with Alma.
+ * AlmaIntegration is a Javascript class for integration with Alma.
  * AJAX calls are made to endpoints on the Rails server that
  * in turn communicate with Alma.
  */
 
-var BlacklightAlma = function (options) {
+var AlmaIntegration = function (options) {
     options = options || {};
     this.MAX_AJAX_ATTEMPTS = options.maxAjaxAttempts || 3;
     this.BATCH_SIZE = options.batchSize || 10;
@@ -18,7 +18,7 @@ var BlacklightAlma = function (options) {
  */
 
 
- availabilityButton = function(id, holding) {
+ var availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("available")) {
      if (holding['availability'] == 'available') {
@@ -39,11 +39,11 @@ var BlacklightAlma = function (options) {
    }
  }
 
- noHoldingsAvailabilityButton = function(id) {
+ var noHoldingsAvailabilityButton = function(id) {
    unavailableItems(id);
   }
 
-  unavailableItems = function(id) {
+  var unavailableItems = function(id) {
     var availButton = $("button[data-availability-ids='" + id + "']");
 
     $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
@@ -52,7 +52,7 @@ var BlacklightAlma = function (options) {
     $(availButton).show();
   }
 
- availabilityInfo = function (holding) {
+ var availabilityInfo = function (holding) {
    var library = holding['library'];
    if (library == 'ASRS' || library == 'Paley Library') {
      library = "Charles Library";
@@ -62,26 +62,26 @@ var BlacklightAlma = function (options) {
 
    if (library != "EMPTY") {
      if (availability == "available")  {
-       availItem = {};
+       var availItem = {};
        Object.assign(availItem, {library, availability})
        return availItem;
      }
 
      if (availability == "check_holdings") {
-       checkItem = {};
+       var checkItem = {};
        Object.assign(checkItem, {library, availability})
        return checkItem;
      }
    }
  }
 
- BlacklightAlma.prototype.formatHolding = function (holding) {
+ AlmaIntegration.prototype.formatHolding = function (holding) {
    if(holding['inventory_type'] == 'physical') {
      return availabilityInfo(holding);
    }
  };
 
- sortedLibraries = function (holdings) {
+ var sortedLibraries = function (holdings) {
    holdings.sort();
    if (holdings.indexOf('Charles Library') > 0) {
        holdings.splice(holdings.indexOf('Charles Library'), 1);
@@ -89,8 +89,8 @@ var BlacklightAlma = function (options) {
    }
  }
 
- availableHoldings = function (holdings) {
-   availHoldings = [];
+ var availableHoldings = function (holdings) {
+   var availHoldings = [];
    holdings.forEach(function(item) {
      if (item.availability == "available") {
        availHoldings.push(item.library);
@@ -105,8 +105,8 @@ var BlacklightAlma = function (options) {
    return list.join("<br/>");
  }
 
- checkHoldings = function (holdings) {
-   check = [];
+ var checkHoldings = function (holdings) {
+   var check = [];
    holdings.forEach(function(item) {
      if (item.availability == "check_holdings") {
        check.push(item.library);
@@ -126,10 +126,10 @@ var BlacklightAlma = function (options) {
   * @param holding
   * @returns {string}
   */
- BlacklightAlma.prototype.formatHoldings = function (holdings) {
-   html = ""
-   available = availableHoldings(holdings);
-   check = checkHoldings(holdings);
+ AlmaIntegration.prototype.formatHoldings = function (holdings) {
+   var html = ""
+   var available = availableHoldings(holdings);
+   var check = checkHoldings(holdings);
 
    if (available) {
      html = "<dt class='index-label'>Available at: </dt><dd>" + available + "</dd>";
@@ -145,7 +145,7 @@ var BlacklightAlma = function (options) {
   * Populates html document with availability status strings
   * @param data
   */
- BlacklightAlma.prototype.populateAvailability = function () {
+ AlmaIntegration.prototype.populateAvailability = function () {
      var baObj = this;
 
      var idsLoaded = Object.keys(baObj.availability);
@@ -158,7 +158,7 @@ var BlacklightAlma = function (options) {
 
          // make sure we have data for ALL the ids (this accounts for bibs w/ multiple holdings
          // across boundwiths), otherwise we're not ready to populate yet.
-         if(ids.filter(function(id) { return idsLoaded.includes(id); }).length != ids.length) {
+         if(ids.filter(function(id) { return idsLoaded.includes(id); }).length !== ids.length) {
              return;
          }
          // jquery's map auto-flattens and strips out nulls
@@ -186,7 +186,7 @@ var BlacklightAlma = function (options) {
   * @param element
   * @param html
   */
- BlacklightAlma.prototype.renderAvailability = function(element, html) {
+ AlmaIntegration.prototype.renderAvailability = function(element, html) {
      $(element).addClass("availability-ajax-loaded");
      $(element).html(html);
  };
@@ -194,12 +194,12 @@ var BlacklightAlma = function (options) {
  /**
   * Subclasses should override to customize.
   */
- BlacklightAlma.prototype.errorLoadingAvailability = function (idList) {
+ AlmaIntegration.prototype.errorLoadingAvailability = function (idList) {
      var idListArray = idList.split(",");
      $(".availability-ajax-load").filter(function(idx, element) {
          var ids_on_element = $(element).data("availabilityIds").toString().split(",");
          var found = $.grep(idListArray, function(id) {
-             return ids_on_element.indexOf(id) != -1;
+             return ids_on_element.indexOf(id) !== -1;
          }).length > 0;
          return found;
      }).addClass("availability-ajax-loaded").html(
@@ -207,33 +207,20 @@ var BlacklightAlma = function (options) {
  };
 
  /**
-  * Shows elements with class indicating that they should be shown
-  * after availability is loaded on the page.
-  */
- BlacklightAlma.prototype.showElementsOnAvailabilityLoad = function () {
-     $(".availability-show-on-ajax-load").removeClass("hide").show();
- };
-
- /**
   * Actually makes the AJAX call for availability
   * @param idList String of comma-sep ids
   * @param attemptCount
   */
- BlacklightAlma.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
+ AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
      var baObj = this;
      if(idList.length > 0) {
          var url = $('#alma_availability_url').data('url') + "?id_list=" + encodeURIComponent(idList);
-         console.log(url);
          return $.ajax(url, {
              success: function(data, textStatus, jqXHR) {
                  if(!data.error) {
-                     console.log(data);
                      baObj.availability = Object.assign(baObj.availability, data['availability']);
                      baObj.populateAvailability();
                  } else {
-                     console.log("Attempt #" + attemptCount + " error loading availability for " + idList);
-                     console.log(data.error);
-
                      if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
 
                          if(data.error !== null && typeof data.error === 'object') {
@@ -261,7 +248,6 @@ var BlacklightAlma = function (options) {
                  }
              },
              error: function(jqXHR, textStatus, errorThrown) {
-                 console.log("Attempt #" + attemptCount + " error loading availability: " + textStatus + ", " + errorThrown);
                  if(errorThrown !== 'timeout') {
                      if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
                          baObj.loadAvailabilityAjax(idList, attemptCount + 1);
@@ -271,8 +257,6 @@ var BlacklightAlma = function (options) {
                  }
              },
              complete: function() {
-                 baObj.showElementsOnAvailabilityLoad();
-
                  baObj.availabilityRequestsFinished[idList] = true;
              }
          });
@@ -282,59 +266,18 @@ var BlacklightAlma = function (options) {
  };
 
  /**
-  * Adds click listeners to elements that should toggle the availability details
-  * (iframe) for the associated document (determined by shared parent class).
-  * This is used for search results page.
-  */
- BlacklightAlma.prototype.registerToggleAvailabilityDetails = function() {
-     var baObj = this;
-
-     $(".availability-toggle-details").click(function (event) {
-         var toggleElement = event.currentTarget;
-
-         $(event.currentTarget).closest(".availability-document-container").find(".availability-details-container").each(function(idx, element) {
-             baObj.toggleAvailabilityDetailsForRecord(toggleElement, element);
-         });
-     });
- };
-
-
- BlacklightAlma.prototype.createIframeElement = function(url) {
-     var iframe = $("<iframe>");
-     iframe.attr("class", "availability-details-iframe");
-     iframe.attr("title", "Show availability for this record");
-     iframe.attr("src", url);
-     iframe.attr("style", "width: 100%");
-     return iframe;
- };
-
- /**
-  * Toggles an individual record's availability details (shown in an iframe)
-  */
- BlacklightAlma.prototype.toggleAvailabilityDetailsForRecord = function(toggleElement, containerElement) {
-     var baObj = this;
-     //var newTextForToggle;
-     if ($(containerElement).find("iframe").length == 0) {
-         var url = $(containerElement).data("availabilityIframeUrl");
-         var iframe = baObj.createIframeElement(url);
-         $(containerElement).html(iframe);
-         //newTextForToggle = $(toggleElement).data("hideText");
-     } else {
-         $(containerElement).find("iframe").remove();
-         //newTextForToggle = $(toggleElement).data("showText");
-     }
-     $(toggleElement).html();
- };
-
- /**
   * Partitions an array into arrays of specified size
   * @param size
   * @param arr
   * @returns {*}
   */
- BlacklightAlma.prototype.partitionArray = function(size, arr) {
+ AlmaIntegration.prototype.partitionArray = function(size, arr) {
+     if(arr.length === 0) {
+         return [];
+     }
+
      return arr.reduce(function(acc, a, b) {
-         if(b % size == 0  && b !== 0) {
+         if(b % size === 0  && b !== 0) {
              acc.push([]);
          }
          acc[acc.length - 1].push(a);
@@ -348,17 +291,24 @@ var BlacklightAlma = function (options) {
   * makes the AJAX request, and replaces the contents
   * of the element with availability information.
   */
- BlacklightAlma.prototype.loadAvailability = function() {
+ AlmaIntegration.prototype.loadAvailability = function() {
      var baObj = this;
+     var availabilityUrl = $("#alma_availability_url").data("url");
+
+     if(!availabilityUrl) {
+         return;
+     }
 
      baObj.availability = {};
      baObj.availabilityRequestsFinished = {};
 
-     this.registerToggleAvailabilityDetails();
-
      var allIds = $(".availability-ajax-load").map(function (index, element) {
          return $(element).data("availabilityIds");
      }).get();
+
+     if(allIds.length === 0) {
+         return;
+     }
 
      var idArrays = this.partitionArray(baObj.BATCH_SIZE, allIds);
 
@@ -366,9 +316,13 @@ var BlacklightAlma = function (options) {
          var idArrayStr = idArray.join(",");
          baObj.availabilityRequestsFinished[idArrayStr] = false;
          baObj.loadAvailabilityAjax(idArrayStr, 1)
-         .then(_ => { return clickLocationButton() })
-         .then(id =>{ waitForRequestUrlData(id)
-         .then(id => { clickRequestButton(id) })})
+         .then(function() { return clickLocationButton(); })
+         .then(function(id) {
+           if (!id) {
+             return null;
+           }
+           return waitForRequestUrlData(id).then(function(foundId) { return clickRequestButton(foundId); });
+         });
      });
 
      baObj.checkAndPopulateMissing();
@@ -432,10 +386,10 @@ var BlacklightAlma = function (options) {
   * Periodically checks for all AJAX availability requests to finish, then displays
   * messages for records that we couldn't load availability info for.
   */
- BlacklightAlma.prototype.checkAndPopulateMissing = function() {
+ AlmaIntegration.prototype.checkAndPopulateMissing = function() {
 
      var baObj = this;
-     for(key in baObj.availabilityRequestsFinished) {
+     for(var key in baObj.availabilityRequestsFinished) {
          if(!baObj.availabilityRequestsFinished[key]) {
 
              setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
