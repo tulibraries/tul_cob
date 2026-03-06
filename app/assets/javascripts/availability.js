@@ -1,4 +1,12 @@
 $(document).on('turbolinks:load', function() {
+    if (typeof AlmaIntegration === "undefined") {
+        return;
+    }
+
+    if ($(".availability-ajax-load").length === 0 || $("#alma_availability_url").length === 0) {
+        return;
+    }
+
     var ba = new AlmaIntegration();
     ba.loadAvailability();
 });
