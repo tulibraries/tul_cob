@@ -6,7 +6,7 @@ RSpec.describe BentoSearch::CDMEngine do
   subject(:engine) { described_class.new }
 
   describe "#view_link" do
-    let(:collection_ids) { Array.wrap(Rails.configuration.x.apis.dig(:cdm, :collection_ids)) }
+    let(:collection_ids) { Array.wrap(Rails.configuration.apis.dig(:cdm, :collection_ids)) }
     let(:collections_param) { collection_ids.join("!") }
     let(:base_url) { I18n.t("bento.cdm.base_url") }
 

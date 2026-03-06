@@ -28,7 +28,7 @@ class LibGuidesApi
   end
 
   def config
-    Rails.configuration.x.apis[:lib_guides]
+    Rails.configuration.apis.dig(:lib_guides)
   end
 
   def as_json(*)

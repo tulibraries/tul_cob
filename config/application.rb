@@ -36,7 +36,7 @@ module Tulcob
     config.libraries = CobIndex::DotProperties.load("libraries_map")
     cob_index_path = Gem::Specification.find_by_name("cob_index").gem_dir
     config.locations = YAML.load_file(cob_index_path + "/lib/translation_maps/locations.yaml").with_indifferent_access
-    config.x.apis = config_for(:apis).with_indifferent_access
+    config.apis = config_for(:apis).with_indifferent_access
     config.process_types = config_for(:process_types).with_indifferent_access
     config.material_types = config_for(:material_types).with_indifferent_access
     config.cdm = config_for(:cdm_collection).with_indifferent_access

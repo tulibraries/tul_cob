@@ -5,7 +5,7 @@ require "faraday/multipart"
 require "json"
 
 class ArchivesSpaceService
-  ARCHIVES_SPACE_CONFIG = Rails.configuration.x.apis.fetch(:archives_space, {})
+  ARCHIVES_SPACE_CONFIG = Rails.configuration.apis.dig(:archives_space) || {}
   BASE_URL = ARCHIVES_SPACE_CONFIG[:staff_api_base_url].to_s.chomp("/")
   USERNAME = ARCHIVES_SPACE_CONFIG[:username] || "test-user"
   PASSWORD = ARCHIVES_SPACE_CONFIG[:password] || "test-pass"

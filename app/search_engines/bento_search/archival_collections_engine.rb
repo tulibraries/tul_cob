@@ -103,7 +103,7 @@ module BentoSearch
     end
 
     def archives_space_public_base_url
-      Rails.configuration.x.apis.dig(:archives_space, :public_base_url).to_s.chomp("/")
+      Rails.configuration.apis.dig(:archives_space, :public_base_url).to_s.chomp("/")
     end
   end
 end

@@ -17,7 +17,7 @@ class ArchivalDecorator < BentoSearch::StandardDecorator
     return nil unless collection_ref
 
     collection_title = _base.custom_data["collection_title"]
-    base_url = Rails.configuration.x.apis.dig(:archives_space, :public_base_url)
+    base_url = Rails.configuration.apis.dig(:archives_space, :public_base_url)
     return nil if base_url.blank?
 
     collection_url = "#{base_url.chomp("/")}#{collection_ref}"

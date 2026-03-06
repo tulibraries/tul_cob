@@ -6,7 +6,7 @@ module BentoSearch
       bento_results = BentoSearch::Results.new
       guides_response = []
 
-      config = Rails.configuration.x.apis[:lib_guides] || {}
+      config = Rails.configuration.apis.dig(:lib_guides) || {}
       path = config[:base_url].presence || "https://lgapi-us.libapps.com/1.1/guides"
       query = args[:query].gsub(" ", "+")
       query_config = config[:query] || {}

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Alma.configure do |config|
-  alma_config = Rails.configuration.x.apis.dig(:alma) || {}
+  alma_config = Rails.configuration.apis.dig(:alma) || {}
 
   # You have to set te apikey
   config.apikey = alma_config[:apikey]
