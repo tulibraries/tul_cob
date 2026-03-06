@@ -39,7 +39,6 @@ module Tulcob
     config.apis = config_for(:apis).with_indifferent_access
     config.process_types = config_for(:process_types).with_indifferent_access
     config.material_types = config_for(:material_types).with_indifferent_access
-    config.cdm = config_for(:cdm_collection).with_indifferent_access
     config.caches = config_for(:caches).with_indifferent_access
     config.features = Hash.new.with_indifferent_access
     config.exceptions_app = routes
