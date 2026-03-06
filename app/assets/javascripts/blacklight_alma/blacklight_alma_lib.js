@@ -18,7 +18,7 @@ var AlmaIntegration = function (options) {
  */
 
 
- availabilityButton = function(id, holding) {
+ var availabilityButton = function(id, holding) {
    var availButton = $("button[data-availability-ids='" + id + "']");
    if (!$(availButton).hasClass("available")) {
      if (holding['availability'] == 'available') {
@@ -39,11 +39,11 @@ var AlmaIntegration = function (options) {
    }
  }
 
- noHoldingsAvailabilityButton = function(id) {
+ var noHoldingsAvailabilityButton = function(id) {
    unavailableItems(id);
   }
 
-  unavailableItems = function(id) {
+  var unavailableItems = function(id) {
     var availButton = $("button[data-availability-ids='" + id + "']");
 
     $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
@@ -52,7 +52,7 @@ var AlmaIntegration = function (options) {
     $(availButton).show();
   }
 
- availabilityInfo = function (holding) {
+ var availabilityInfo = function (holding) {
    var library = holding['library'];
    if (library == 'ASRS' || library == 'Paley Library') {
      library = "Charles Library";
@@ -62,13 +62,13 @@ var AlmaIntegration = function (options) {
 
    if (library != "EMPTY") {
      if (availability == "available")  {
-       availItem = {};
+       var availItem = {};
        Object.assign(availItem, {library, availability})
        return availItem;
      }
 
      if (availability == "check_holdings") {
-       checkItem = {};
+       var checkItem = {};
        Object.assign(checkItem, {library, availability})
        return checkItem;
      }
@@ -81,7 +81,7 @@ var AlmaIntegration = function (options) {
    }
  };
 
- sortedLibraries = function (holdings) {
+ var sortedLibraries = function (holdings) {
    holdings.sort();
    if (holdings.indexOf('Charles Library') > 0) {
        holdings.splice(holdings.indexOf('Charles Library'), 1);
@@ -89,8 +89,8 @@ var AlmaIntegration = function (options) {
    }
  }
 
- availableHoldings = function (holdings) {
-   availHoldings = [];
+ var availableHoldings = function (holdings) {
+   var availHoldings = [];
    holdings.forEach(function(item) {
      if (item.availability == "available") {
        availHoldings.push(item.library);
@@ -105,8 +105,8 @@ var AlmaIntegration = function (options) {
    return list.join("<br/>");
  }
 
- checkHoldings = function (holdings) {
-   check = [];
+ var checkHoldings = function (holdings) {
+   var check = [];
    holdings.forEach(function(item) {
      if (item.availability == "check_holdings") {
        check.push(item.library);
@@ -127,9 +127,9 @@ var AlmaIntegration = function (options) {
   * @returns {string}
   */
  AlmaIntegration.prototype.formatHoldings = function (holdings) {
-   html = ""
-   available = availableHoldings(holdings);
-   check = checkHoldings(holdings);
+   var html = ""
+   var available = availableHoldings(holdings);
+   var check = checkHoldings(holdings);
 
    if (available) {
      html = "<dt class='index-label'>Available at: </dt><dd>" + available + "</dd>";
@@ -158,7 +158,7 @@ var AlmaIntegration = function (options) {
 
          // make sure we have data for ALL the ids (this accounts for bibs w/ multiple holdings
          // across boundwiths), otherwise we're not ready to populate yet.
-         if(ids.filter(function(id) { return idsLoaded.includes(id); }).length != ids.length) {
+         if(ids.filter(function(id) { return idsLoaded.includes(id); }).length !== ids.length) {
              return;
          }
          // jquery's map auto-flattens and strips out nulls
@@ -199,7 +199,7 @@ var AlmaIntegration = function (options) {
      $(".availability-ajax-load").filter(function(idx, element) {
          var ids_on_element = $(element).data("availabilityIds").toString().split(",");
          var found = $.grep(idListArray, function(id) {
-             return ids_on_element.indexOf(id) != -1;
+             return ids_on_element.indexOf(id) !== -1;
          }).length > 0;
          return found;
      }).addClass("availability-ajax-loaded").html(
@@ -215,17 +215,12 @@ var AlmaIntegration = function (options) {
      var baObj = this;
      if(idList.length > 0) {
          var url = $('#alma_availability_url').data('url') + "?id_list=" + encodeURIComponent(idList);
-         console.log(url);
          return $.ajax(url, {
              success: function(data, textStatus, jqXHR) {
                  if(!data.error) {
-                     console.log(data);
                      baObj.availability = Object.assign(baObj.availability, data['availability']);
                      baObj.populateAvailability();
                  } else {
-                     console.log("Attempt #" + attemptCount + " error loading availability for " + idList);
-                     console.log(data.error);
-
                      if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
 
                          if(data.error !== null && typeof data.error === 'object') {
@@ -253,7 +248,6 @@ var AlmaIntegration = function (options) {
                  }
              },
              error: function(jqXHR, textStatus, errorThrown) {
-                 console.log("Attempt #" + attemptCount + " error loading availability: " + textStatus + ", " + errorThrown);
                  if(errorThrown !== 'timeout') {
                      if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
                          baObj.loadAvailabilityAjax(idList, attemptCount + 1);
@@ -278,8 +272,12 @@ var AlmaIntegration = function (options) {
   * @returns {*}
   */
  AlmaIntegration.prototype.partitionArray = function(size, arr) {
+     if(arr.length === 0) {
+         return [];
+     }
+
      return arr.reduce(function(acc, a, b) {
-         if(b % size == 0  && b !== 0) {
+         if(b % size === 0  && b !== 0) {
              acc.push([]);
          }
          acc[acc.length - 1].push(a);
@@ -295,6 +293,11 @@ var AlmaIntegration = function (options) {
   */
  AlmaIntegration.prototype.loadAvailability = function() {
      var baObj = this;
+     var availabilityUrl = $("#alma_availability_url").data("url");
+
+     if(!availabilityUrl) {
+         return;
+     }
 
      baObj.availability = {};
      baObj.availabilityRequestsFinished = {};
@@ -302,6 +305,10 @@ var AlmaIntegration = function (options) {
      var allIds = $(".availability-ajax-load").map(function (index, element) {
          return $(element).data("availabilityIds");
      }).get();
+
+     if(allIds.length === 0) {
+         return;
+     }
 
      var idArrays = this.partitionArray(baObj.BATCH_SIZE, allIds);
 
@@ -382,7 +389,7 @@ var AlmaIntegration = function (options) {
  AlmaIntegration.prototype.checkAndPopulateMissing = function() {
 
      var baObj = this;
-     for(key in baObj.availabilityRequestsFinished) {
+     for(var key in baObj.availabilityRequestsFinished) {
          if(!baObj.availabilityRequestsFinished[key]) {
 
              setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
