@@ -67,9 +67,6 @@ default: &default
       - p245801coll0
       - p245801coll12
       - p245801coll13
-  email_groups:
-    RAPID_REQUEST:
-      - "<EMAIL_ADDRESS>"
   lib_guides:
     base_url: "https://lgapi-us.libapps.com/1.1/guides"
     api_key: "LIB_GUIDES_API_KEY"

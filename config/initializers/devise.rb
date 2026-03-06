@@ -260,7 +260,7 @@ Devise.setup do |config|
   idp_metadata = if fetch_remote_idp_metadata
     idp_metadata_parser = OneLogin::RubySaml::IdpMetadataParser.new
     begin
-      idp_metadata_parser.parse_remote_to_hash(ENV.fetch("COB_SAML_IDP_METADATA_URL", "https://np-fim.temple.edu/idp/shibboleth"))
+      idp_metadata_parser.parse_remote_to_hash(Rails.configuration.devise["saml_idp_metadata_url"])
     rescue OpenSSL::SSL::SSLError, SocketError, Timeout::Error => e
       Rails.logger.warn "Failed to fetch SAML IdP metadata: #{e.message}. Using empty metadata."
       raise if Rails.env.production?
@@ -272,11 +272,11 @@ Devise.setup do |config|
 
   config.omniauth :saml, idp_metadata.merge(
     compress_request: false,
-    certificate: ENV["COB_SP_CERT"],
-    private_key: ENV["COB_SP_KEY"],
-    assertion_consumer_service_url: ENV.fetch("COB_SAML_ASSERTION_CONSUMER_SERVICE_URL", "https://librarysearch.k8s.temple.edu/users/auth/saml/callback"),
-    idp_sso_service_url: ENV.fetch("COB_SAML_IDP_SSO_SERVICE_URL", "https://np-fim.temple.edu/idp/profile/SAML2/POST/SSO"),
-    issuer: ENV.fetch("COB_SAML_ISSUER", "https://librarysearch.k8s.temple.edu/users/auth/saml/metadata"),
+    certificate: Rails.configuration.devise["saml_certificate"],
+    private_key: Rails.configuration.devise["saml_private_key"],
+    assertion_consumer_service_url: Rails.configuration.devise["assertion_consumer_service_url"],
+    idp_sso_service_url: Rails.configuration.devise["idp_sso_service_url"],
+    issuer: Rails.configuration.devise["saml_issuer"],
     idp_slo_service_binding: :redirect,
     idp_sso_service_binding: :post,
     request_attributes: {},
