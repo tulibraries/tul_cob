@@ -17,6 +17,7 @@ default: &default
       base_url: "https://public-api.thirdiron.com/public/v1/libraries"
       library_id: "130"
   cdm:
+    base_url: "https://digital.library.temple.edu"
     collection_ids:
       - p15037coll1
       - p15037coll2

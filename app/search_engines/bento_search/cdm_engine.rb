@@ -104,7 +104,7 @@ module BentoSearch
     end
 
     def base_url
-      I18n.t("bento.cdm.base_url")
+      Rails.configuration.apis.dig(:cdm, :base_url)
     end
 
     def view_link(total = nil, helper)
