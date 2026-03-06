@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   # @see BL-224
   def after_sign_out_path_for(resource_or_scope)
     if request.params[:type] == "sso"
-      ENV.fetch("IDP_REDIRECT_URL", "/")
+      Rails.configuration.devise["sign_out_redirect_url"]
     else
       super
     end
