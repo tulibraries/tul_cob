@@ -207,14 +207,6 @@ var BlacklightAlma = function (options) {
  };
 
  /**
-  * Shows elements with class indicating that they should be shown
-  * after availability is loaded on the page.
-  */
- BlacklightAlma.prototype.showElementsOnAvailabilityLoad = function () {
-     $(".availability-show-on-ajax-load").removeClass("hide").show();
- };
-
- /**
   * Actually makes the AJAX call for availability
   * @param idList String of comma-sep ids
   * @param attemptCount
@@ -271,59 +263,12 @@ var BlacklightAlma = function (options) {
                  }
              },
              complete: function() {
-                 baObj.showElementsOnAvailabilityLoad();
-
                  baObj.availabilityRequestsFinished[idList] = true;
              }
          });
      }
      // We want to be able to use this in a promise even in show view.
      return Promise.resolve(null)
- };
-
- /**
-  * Adds click listeners to elements that should toggle the availability details
-  * (iframe) for the associated document (determined by shared parent class).
-  * This is used for search results page.
-  */
- BlacklightAlma.prototype.registerToggleAvailabilityDetails = function() {
-     var baObj = this;
-
-     $(".availability-toggle-details").click(function (event) {
-         var toggleElement = event.currentTarget;
-
-         $(event.currentTarget).closest(".availability-document-container").find(".availability-details-container").each(function(idx, element) {
-             baObj.toggleAvailabilityDetailsForRecord(toggleElement, element);
-         });
-     });
- };
-
-
- BlacklightAlma.prototype.createIframeElement = function(url) {
-     var iframe = $("<iframe>");
-     iframe.attr("class", "availability-details-iframe");
-     iframe.attr("title", "Show availability for this record");
-     iframe.attr("src", url);
-     iframe.attr("style", "width: 100%");
-     return iframe;
- };
-
- /**
-  * Toggles an individual record's availability details (shown in an iframe)
-  */
- BlacklightAlma.prototype.toggleAvailabilityDetailsForRecord = function(toggleElement, containerElement) {
-     var baObj = this;
-     //var newTextForToggle;
-     if ($(containerElement).find("iframe").length == 0) {
-         var url = $(containerElement).data("availabilityIframeUrl");
-         var iframe = baObj.createIframeElement(url);
-         $(containerElement).html(iframe);
-         //newTextForToggle = $(toggleElement).data("hideText");
-     } else {
-         $(containerElement).find("iframe").remove();
-         //newTextForToggle = $(toggleElement).data("showText");
-     }
-     $(toggleElement).html();
  };
 
  /**
@@ -354,8 +299,6 @@ var BlacklightAlma = function (options) {
      baObj.availability = {};
      baObj.availabilityRequestsFinished = {};
 
-     this.registerToggleAvailabilityDetails();
-
      var allIds = $(".availability-ajax-load").map(function (index, element) {
          return $(element).data("availabilityIds");
      }).get();
@@ -366,9 +309,13 @@ var BlacklightAlma = function (options) {
          var idArrayStr = idArray.join(",");
          baObj.availabilityRequestsFinished[idArrayStr] = false;
          baObj.loadAvailabilityAjax(idArrayStr, 1)
-         .then(_ => { return clickLocationButton() })
-         .then(id =>{ waitForRequestUrlData(id)
-         .then(id => { clickRequestButton(id) })})
+         .then(function() { return clickLocationButton(); })
+         .then(function(id) {
+           if (!id) {
+             return null;
+           }
+           return waitForRequestUrlData(id).then(function(foundId) { return clickRequestButton(foundId); });
+         });
      });
 
      baObj.checkAndPopulateMissing();
