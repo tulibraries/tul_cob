@@ -1,4 +1,4 @@
-default: &default
+shared:
   alma:
     apikey: "EX_LIBRIS_DEVELOPERS_NETWORK_APIKEY"
     institution_code: "01TULI_INST"
@@ -100,13 +100,7 @@ default: &default
     exceptions:
       ignore:
         - "Alma::BibRequest::ItemAlreadyExists"
-development:
-  <<: *default
 
 test:
-  <<: *default
   honeybadger:
     backend: "test"
-
-production:
-  <<: *default
