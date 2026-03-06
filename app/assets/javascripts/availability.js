@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-    var ba = new BlacklightAlma();
+    var ba = new AlmaIntegration();
     ba.loadAvailability();
 });
 

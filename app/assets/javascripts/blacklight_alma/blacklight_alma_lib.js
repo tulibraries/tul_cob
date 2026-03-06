@@ -1,10 +1,10 @@
 /**
- * BlacklightAlma is a Javascript class for integration with Alma.
+ * AlmaIntegration is a Javascript class for integration with Alma.
  * AJAX calls are made to endpoints on the Rails server that
  * in turn communicate with Alma.
  */
 
-var BlacklightAlma = function (options) {
+var AlmaIntegration = function (options) {
     options = options || {};
     this.MAX_AJAX_ATTEMPTS = options.maxAjaxAttempts || 3;
     this.BATCH_SIZE = options.batchSize || 10;
@@ -75,7 +75,7 @@ var BlacklightAlma = function (options) {
    }
  }
 
- BlacklightAlma.prototype.formatHolding = function (holding) {
+ AlmaIntegration.prototype.formatHolding = function (holding) {
    if(holding['inventory_type'] == 'physical') {
      return availabilityInfo(holding);
    }
@@ -126,7 +126,7 @@ var BlacklightAlma = function (options) {
   * @param holding
   * @returns {string}
   */
- BlacklightAlma.prototype.formatHoldings = function (holdings) {
+ AlmaIntegration.prototype.formatHoldings = function (holdings) {
    html = ""
    available = availableHoldings(holdings);
    check = checkHoldings(holdings);
@@ -145,7 +145,7 @@ var BlacklightAlma = function (options) {
   * Populates html document with availability status strings
   * @param data
   */
- BlacklightAlma.prototype.populateAvailability = function () {
+ AlmaIntegration.prototype.populateAvailability = function () {
      var baObj = this;
 
      var idsLoaded = Object.keys(baObj.availability);
@@ -186,7 +186,7 @@ var BlacklightAlma = function (options) {
   * @param element
   * @param html
   */
- BlacklightAlma.prototype.renderAvailability = function(element, html) {
+ AlmaIntegration.prototype.renderAvailability = function(element, html) {
      $(element).addClass("availability-ajax-loaded");
      $(element).html(html);
  };
@@ -194,7 +194,7 @@ var BlacklightAlma = function (options) {
  /**
   * Subclasses should override to customize.
   */
- BlacklightAlma.prototype.errorLoadingAvailability = function (idList) {
+ AlmaIntegration.prototype.errorLoadingAvailability = function (idList) {
      var idListArray = idList.split(",");
      $(".availability-ajax-load").filter(function(idx, element) {
          var ids_on_element = $(element).data("availabilityIds").toString().split(",");
@@ -211,7 +211,7 @@ var BlacklightAlma = function (options) {
   * @param idList String of comma-sep ids
   * @param attemptCount
   */
- BlacklightAlma.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
+ AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
      var baObj = this;
      if(idList.length > 0) {
          var url = $('#alma_availability_url').data('url') + "?id_list=" + encodeURIComponent(idList);
@@ -277,7 +277,7 @@ var BlacklightAlma = function (options) {
   * @param arr
   * @returns {*}
   */
- BlacklightAlma.prototype.partitionArray = function(size, arr) {
+ AlmaIntegration.prototype.partitionArray = function(size, arr) {
      return arr.reduce(function(acc, a, b) {
          if(b % size == 0  && b !== 0) {
              acc.push([]);
@@ -293,7 +293,7 @@ var BlacklightAlma = function (options) {
   * makes the AJAX request, and replaces the contents
   * of the element with availability information.
   */
- BlacklightAlma.prototype.loadAvailability = function() {
+ AlmaIntegration.prototype.loadAvailability = function() {
      var baObj = this;
 
      baObj.availability = {};
@@ -379,7 +379,7 @@ var BlacklightAlma = function (options) {
   * Periodically checks for all AJAX availability requests to finish, then displays
   * messages for records that we couldn't load availability info for.
   */
- BlacklightAlma.prototype.checkAndPopulateMissing = function() {
+ AlmaIntegration.prototype.checkAndPopulateMissing = function() {
 
      var baObj = this;
      for(key in baObj.availabilityRequestsFinished) {
