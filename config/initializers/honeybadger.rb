@@ -14,7 +14,7 @@ Honeybadger.configure do |config|
   secrets = {
     solrcloud_user: ENV["SOLRCLOUD_USER"],
     solrcloud_password: ENV["SOLRCLOUD_PASSWORD"],
-    primo_apikey: Rails.configuration.apis.dig(:bento, :primo, :apikey),
+    primo_apikey: Rails.configuration.apis.dig(:primo, :apikey),
     alma_apikey: Rails.configuration.apis.dig(:alma, :apikey),
   }
 

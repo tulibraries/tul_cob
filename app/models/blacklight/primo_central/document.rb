@@ -159,6 +159,6 @@ module Blacklight::PrimoCentral::Document
     end
 
     def libkey_service
-      @libkey_service ||= LibkeyService.new(config: Rails.configuration.apis.dig(:bento, :libkey))
+      @libkey_service ||= LibkeyService.new(config: Rails.configuration.apis.dig(:primo, :libkey))
     end
 end
