@@ -11,10 +11,10 @@ shared:
     scope: "pci_scope"
     vid: "TULI"
     web_ui_base_url: "https://your-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid="
-    libkey:
-      apikey: "LIBKEY_API_KEY"
-      base_url: "https://public-api.thirdiron.com/public/v1/libraries"
-      library_id: "130"
+  libkey:
+    apikey: "LIBKEY_API_KEY"
+    base_url: "https://public-api.thirdiron.com/public/v1/libraries"
+    library_id: "130"
   cdm:
     base_url: "https://digital.library.temple.edu"
     collection_ids:
