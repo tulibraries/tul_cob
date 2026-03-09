@@ -4,11 +4,10 @@
  * in turn communicate with Alma.
  */
 
-var AlmaIntegration = function (options) {
-    options = options || {};
+function AlmaIntegration(options = {}) {
     this.MAX_AJAX_ATTEMPTS = options.maxAjaxAttempts || 3;
     this.BATCH_SIZE = options.batchSize || 10;
-};
+}
 
 /**
  * Subclasses should override to customize. To filter out a holding from display,
@@ -17,390 +16,397 @@ var AlmaIntegration = function (options) {
  * @returns {string}
  */
 
+const availabilityButton = (id, holding) => {
+  const availButton = $("button[data-availability-ids='" + id + "']");
+  if (!$(availButton).hasClass("available")) {
+    if (holding["availability"] === "available") {
+      $(availButton).html("<span class='avail-label available'>Available</span>");
+      $(availButton).removeClass("btn-default");
+      $(availButton).addClass("collapsed collapse-button available availability-btn");
+      $(availButton).show();
+    }
+    else if (holding["availability"] === "check_holdings") {
+      $(availButton).html("<span class='avail-label available'>Available</span>");
+      $(availButton).removeClass("btn-default");
+      $(availButton).addClass("collapsed collapse-button available availability-btn");
+      $(availButton).show();
+    }
+    else {
+      unavailableItems(id);
+    }
+  }
+};
 
- var availabilityButton = function(id, holding) {
-   var availButton = $("button[data-availability-ids='" + id + "']");
-   if (!$(availButton).hasClass("available")) {
-     if (holding['availability'] == 'available') {
-       $(availButton).html("<span class='avail-label available'>Available</span>");
-       $(availButton).removeClass("btn-default");
-       $(availButton).addClass("collapsed collapse-button available availability-btn");
-       $(availButton).show();
-     }
-     else if (holding['availability'] == 'check_holdings') {
-       $(availButton).html("<span class='avail-label available'>Available</span>");
-       $(availButton).removeClass("btn-default");
-       $(availButton).addClass("collapsed collapse-button available availability-btn");
-       $(availButton).show();
-     }
-     else {
-       unavailableItems(id);
-     }
-   }
- }
+const noHoldingsAvailabilityButton = (id) => {
+  unavailableItems(id);
+};
 
- var noHoldingsAvailabilityButton = function(id) {
-   unavailableItems(id);
+const unavailableItems = (id) => {
+  const availButton = $("button[data-availability-ids='" + id + "']");
+
+  $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
+  $(availButton).removeClass("btn-default");
+  $(availButton).addClass("btn-warning collapsed collapse-button availability-btn");
+  $(availButton).show();
+};
+
+const availabilityInfo = (holding) => {
+  let library = holding["library"];
+  if (library === "ASRS" || library === "Paley Library") {
+    library = "Charles Library";
   }
 
-  var unavailableItems = function(id) {
-    var availButton = $("button[data-availability-ids='" + id + "']");
+  const availability = holding["availability"];
 
-    $(availButton).html("<span class='avail-label not-available'>Not Available</span>");
-    $(availButton).removeClass("btn-default");
-    $(availButton).addClass("btn-warning collapsed collapse-button availability-btn");
-    $(availButton).show();
+  if (library !== "EMPTY") {
+    if (availability === "available") {
+      return { library, availability };
+    }
+
+    if (availability === "check_holdings") {
+      return { library, availability };
+    }
   }
 
- var availabilityInfo = function (holding) {
-   var library = holding['library'];
-   if (library == 'ASRS' || library == 'Paley Library') {
-     library = "Charles Library";
-   }
+  return undefined;
+};
 
-   var availability = holding['availability'];
+AlmaIntegration.prototype.formatHolding = function (holding) {
+  if (holding["inventory_type"] === "physical") {
+    return availabilityInfo(holding);
+  }
 
-   if (library != "EMPTY") {
-     if (availability == "available")  {
-       var availItem = {};
-       Object.assign(availItem, {library, availability})
-       return availItem;
-     }
+  return undefined;
+};
 
-     if (availability == "check_holdings") {
-       var checkItem = {};
-       Object.assign(checkItem, {library, availability})
-       return checkItem;
-     }
-   }
- }
+const sortedLibraries = (holdings) => {
+  holdings.sort();
+  if (holdings.indexOf("Charles Library") > 0) {
+    holdings.splice(holdings.indexOf("Charles Library"), 1);
+    holdings.unshift("Charles Library");
+  }
+};
 
- AlmaIntegration.prototype.formatHolding = function (holding) {
-   if(holding['inventory_type'] == 'physical') {
-     return availabilityInfo(holding);
-   }
- };
+const availableHoldings = (holdings) => {
+  const availHoldings = [];
+  holdings.forEach((item) => {
+    if (item.availability === "available") {
+      availHoldings.push(item.library);
+    }
+  });
 
- var sortedLibraries = function (holdings) {
-   holdings.sort();
-   if (holdings.indexOf('Charles Library') > 0) {
-       holdings.splice(holdings.indexOf('Charles Library'), 1);
-       holdings.unshift('Charles Library');
-   }
- }
+  sortedLibraries(availHoldings);
 
- var availableHoldings = function (holdings) {
-   var availHoldings = [];
-   holdings.forEach(function(item) {
-     if (item.availability == "available") {
-       availHoldings.push(item.library);
-     }
-   });
+  const list = availHoldings.filter((x, i, a) => {
+    return a.indexOf(x) === i;
+  });
+  return list.join("<br/>");
+};
 
-   sortedLibraries(availHoldings);
+const checkHoldings = (holdings) => {
+  const check = [];
+  holdings.forEach((item) => {
+    if (item.availability === "check_holdings") {
+      check.push(item.library);
+    }
+  });
 
-   var list = availHoldings.filter(function (x, i, a) {
-     return a.indexOf(x) == i;
-   });
-   return list.join("<br/>");
- }
+  sortedLibraries(check);
 
- var checkHoldings = function (holdings) {
-   var check = [];
-   holdings.forEach(function(item) {
-     if (item.availability == "check_holdings") {
-       check.push(item.library);
-     }
-   });
+  const list = check.filter((x, i, a) => {
+    return a.indexOf(x) === i;
+  });
+  return list.join("<br/>");
+};
 
-   sortedLibraries(check);
+/**
+ * Subclasses should override to customize.
+ * @param holding
+ * @returns {string}
+ */
+AlmaIntegration.prototype.formatHoldings = function (holdings) {
+  let html = "";
+  const available = availableHoldings(holdings);
+  const check = checkHoldings(holdings);
 
-   var list = check.filter(function (x, i, a) {
-     return a.indexOf(x) == i;
-   });
-   return list.join("<br/>");
- }
+  if (available) {
+    html = "<dt class='index-label'>Available at: </dt><dd>" + available + "</dd>";
+  }
 
- /**
-  * Subclasses should override to customize.
-  * @param holding
-  * @returns {string}
-  */
- AlmaIntegration.prototype.formatHoldings = function (holdings) {
-   var html = ""
-   var available = availableHoldings(holdings);
-   var check = checkHoldings(holdings);
+  if (check) {
+    html += "<dt class='index-label'>Other Libraries: </dt><dd>" + check + "</dd>";
+  }
+  return html;
+};
 
-   if (available) {
-     html = "<dt class='index-label'>Available at: </dt><dd>" + available + "</dd>";
-   }
+/**
+ * Populates html document with availability status strings
+ * @param data
+ */
+AlmaIntegration.prototype.populateAvailability = function () {
+  const baObj = this;
 
-   if (check) {
-     html += "<dt class='index-label'>Other Libraries: </dt><dd>" + check + "</dd>";
-   }
-   return html;
- };
+  const idsLoaded = Object.keys(baObj.availability);
 
- /**
-  * Populates html document with availability status strings
-  * @param data
-  */
- AlmaIntegration.prototype.populateAvailability = function () {
-     var baObj = this;
+  $(".availability-ajax-load").filter((index, element) => {
+    return !$(element).hasClass("availability-ajax-loaded");
+  }).each((index, element) => {
+    const idString = $(element).data("availabilityIds").toString() || "";
+    const ids = idString.split(",").filter((s) => { return s.length > 0; });
 
-     var idsLoaded = Object.keys(baObj.availability);
+    // make sure we have data for ALL the ids (this accounts for bibs w/ multiple holdings
+    // across boundwiths), otherwise we're not ready to populate yet.
+    if (ids.filter((id) => { return idsLoaded.includes(id); }).length !== ids.length) {
+      return;
+    }
+    // jquery's map auto-flattens and strips out nulls
+    const html = $.map(ids, (id) => {
 
-     $(".availability-ajax-load").filter(function(index, element) {
-         return ! $(element).hasClass("availability-ajax-loaded");
-     }).each(function (index, element) {
-         var idString = $(element).data("availabilityIds").toString() || "";
-         var ids = idString.split(",").filter(function(s) { return s.length > 0; });
+      if (baObj.availability[id]) {
+        const holdings = baObj.availability[id]["holdings"] || [];
+        if (holdings.length > 0) {
+          const formatted = $.map(holdings, (holding) => {
+            availabilityButton(id, holding);
+            return baObj.formatHolding(holding);
+          });
+          return baObj.formatHoldings(formatted);
+        }
+        else {
+          noHoldingsAvailabilityButton(id);
+        }
+      }
 
-         // make sure we have data for ALL the ids (this accounts for bibs w/ multiple holdings
-         // across boundwiths), otherwise we're not ready to populate yet.
-         if(ids.filter(function(id) { return idsLoaded.includes(id); }).length !== ids.length) {
-             return;
-         }
-         // jquery's map auto-flattens and strips out nulls
-         var html = $.map(ids, function(id) {
+      return undefined;
+    }).join("<br/>");
+    baObj.renderAvailability(element, html);
+  });
+};
 
-             if (baObj.availability[id]) {
-                 var holdings = baObj.availability[id]['holdings'] || [];
-                 if (holdings.length > 0) {
-                     var formatted = $.map(holdings, function(holding) {
-                       availabilityButton(id, holding);
-                       return baObj.formatHolding(holding);
-                     });
-                     return baObj.formatHoldings(formatted);
-                 } else {
-                   noHoldingsAvailabilityButton(id);
-                 }
-             }
-         }).join("<br/>");
-         baObj.renderAvailability(element, html);
-     });
- };
+/**
+ * Renders the passed-in html on the given element
+ * @param element
+ * @param html
+ */
+AlmaIntegration.prototype.renderAvailability = function (element, html) {
+  $(element).addClass("availability-ajax-loaded");
+  $(element).html(html);
+};
 
- /**
-  * Renders the passed-in html on the given element
-  * @param element
-  * @param html
-  */
- AlmaIntegration.prototype.renderAvailability = function(element, html) {
-     $(element).addClass("availability-ajax-loaded");
-     $(element).html(html);
- };
+/**
+ * Subclasses should override to customize.
+ */
+AlmaIntegration.prototype.errorLoadingAvailability = function (idList) {
+  const idListArray = idList.split(",");
+  $(".availability-ajax-load").filter((idx, element) => {
+    const idsOnElement = $(element).data("availabilityIds").toString().split(",");
+    const found = $.grep(idListArray, (id) => {
+      return idsOnElement.indexOf(id) !== -1;
+    }).length > 0;
+    return found;
+  }).addClass("availability-ajax-loaded").html(
+    "<span class='availability-loading-error'>Error loading status for this item</span>"
+  );
+};
 
- /**
-  * Subclasses should override to customize.
-  */
- AlmaIntegration.prototype.errorLoadingAvailability = function (idList) {
-     var idListArray = idList.split(",");
-     $(".availability-ajax-load").filter(function(idx, element) {
-         var ids_on_element = $(element).data("availabilityIds").toString().split(",");
-         var found = $.grep(idListArray, function(id) {
-             return ids_on_element.indexOf(id) !== -1;
-         }).length > 0;
-         return found;
-     }).addClass("availability-ajax-loaded").html(
-         "<span class='availability-loading-error'>Error loading status for this item</span>");
- };
+/**
+ * Actually makes the AJAX call for availability
+ * @param idList String of comma-sep ids
+ * @param attemptCount
+ */
+AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
+  const baObj = this;
+  if (idList.length > 0) {
+    const url = $("#alma_availability_url").data("url") + "?id_list=" + encodeURIComponent(idList);
+    return $.ajax(url, {
+      success: (data, textStatus, jqXHR) => {
+        if (!data.error) {
+          baObj.availability = Object.assign(baObj.availability, data["availability"]);
+          baObj.populateAvailability();
+        }
+        else {
+          if (attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
+            if (data.error !== null && typeof data.error === "object") {
+              if (data.error["error"] && data.error["error"]["errorMessage"]) {
+                const msg = data.error["error"]["errorMessage"];
+                const isSingleId = idList.indexOf(",") === -1;
+                // this happens when an MMS ID has been deleted in Alma but Discovery hasn't caught up yet
+                if (msg.indexOf("Input parameters") !== -1 && msg.indexOf("is not valid.") !== -1 && !isSingleId) {
+                  console.log("Invalid MMS ID error from API, retrying batch as individual requests");
+                  idList.split(",").forEach((id) => {
+                    baObj.availabilityRequestsFinished[id] = false;
+                    baObj.loadAvailabilityAjax(id, baObj.MAX_AJAX_ATTEMPTS);
+                  });
+                }
+                else {
+                  baObj.errorLoadingAvailability(idList);
+                }
+              }
+            }
+            else {
+              baObj.loadAvailabilityAjax(idList, attemptCount + 1);
+            }
+          }
+          else {
+            baObj.errorLoadingAvailability(idList);
+          }
+        }
+      },
+      error: (jqXHR, textStatus, errorThrown) => {
+        if (errorThrown !== "timeout") {
+          if (attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
+            baObj.loadAvailabilityAjax(idList, attemptCount + 1);
+          }
+          else {
+            baObj.errorLoadingAvailability(idList);
+          }
+        }
+      },
+      complete: () => {
+        baObj.availabilityRequestsFinished[idList] = true;
+      }
+    });
+  }
+  // We want to be able to use this in a promise even in show view.
+  return Promise.resolve(null);
+};
 
- /**
-  * Actually makes the AJAX call for availability
-  * @param idList String of comma-sep ids
-  * @param attemptCount
-  */
- AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
-     var baObj = this;
-     if(idList.length > 0) {
-         var url = $('#alma_availability_url').data('url') + "?id_list=" + encodeURIComponent(idList);
-         return $.ajax(url, {
-             success: function(data, textStatus, jqXHR) {
-                 if(!data.error) {
-                     baObj.availability = Object.assign(baObj.availability, data['availability']);
-                     baObj.populateAvailability();
-                 } else {
-                     if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
+/**
+ * Partitions an array into arrays of specified size
+ * @param size
+ * @param arr
+ * @returns {*}
+ */
+AlmaIntegration.prototype.partitionArray = function (size, arr) {
+  if (arr.length === 0) {
+    return [];
+  }
 
-                         if(data.error !== null && typeof data.error === 'object') {
-                             if(data.error['error'] && data.error['error']['errorMessage']) {
-                                 var msg = data.error['error']['errorMessage'];
-                                 var isSingleId = idList.indexOf(",") === -1;
-                                 // this happens when an MMS ID has been deleted in Alma but Discovery hasn't caught up yet
-                                 if(msg.indexOf("Input parameters") !== -1 && msg.indexOf("is not valid.") !== -1 && !isSingleId) {
-                                     console.log("Invalid MMS ID error from API, retrying batch as individual requests");
-                                     idList.split(",").forEach(function(id) {
-                                         baObj.availabilityRequestsFinished[id] = false;
-                                         baObj.loadAvailabilityAjax(id, baObj.MAX_AJAX_ATTEMPTS);
-                                     });
-                                 } else {
-                                     baObj.errorLoadingAvailability(idList);
-                                 }
-                             }
-                         } else {
-                             baObj.loadAvailabilityAjax(idList, attemptCount + 1);
-                         }
+  return arr.reduce((acc, value, index) => {
+    if (index % size === 0 && index !== 0) {
+      acc.push([]);
+    }
+    acc[acc.length - 1].push(value);
+    return acc;
+  }, [[]]);
+};
 
-                     } else {
-                         baObj.errorLoadingAvailability(idList);
-                     }
-                 }
-             },
-             error: function(jqXHR, textStatus, errorThrown) {
-                 if(errorThrown !== 'timeout') {
-                     if(attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
-                         baObj.loadAvailabilityAjax(idList, attemptCount + 1);
-                     } else {
-                         baObj.errorLoadingAvailability(idList);
-                     }
-                 }
-             },
-             complete: function() {
-                 baObj.availabilityRequestsFinished[idList] = true;
-             }
-         });
-     }
-     // We want to be able to use this in a promise even in show view.
-     return Promise.resolve(null)
- };
+/**
+ * Looks for elements with class availability-ajax-load,
+ * batches up the values in their data-availability-id attribute,
+ * makes the AJAX request, and replaces the contents
+ * of the element with availability information.
+ */
+AlmaIntegration.prototype.loadAvailability = function () {
+  const baObj = this;
+  const availabilityUrl = $("#alma_availability_url").data("url");
 
- /**
-  * Partitions an array into arrays of specified size
-  * @param size
-  * @param arr
-  * @returns {*}
-  */
- AlmaIntegration.prototype.partitionArray = function(size, arr) {
-     if(arr.length === 0) {
-         return [];
-     }
+  if (!availabilityUrl) {
+    return;
+  }
 
-     return arr.reduce(function(acc, a, b) {
-         if(b % size === 0  && b !== 0) {
-             acc.push([]);
-         }
-         acc[acc.length - 1].push(a);
-         return acc;
-     }, [[]]);
- };
+  baObj.availability = {};
+  baObj.availabilityRequestsFinished = {};
 
- /**
-  * Looks for elements with class availability-ajax-load,
-  * batches up the values in their data-availability-id attribute,
-  * makes the AJAX request, and replaces the contents
-  * of the element with availability information.
-  */
- AlmaIntegration.prototype.loadAvailability = function() {
-     var baObj = this;
-     var availabilityUrl = $("#alma_availability_url").data("url");
+  const allIds = $(".availability-ajax-load").map((index, element) => {
+    return $(element).data("availabilityIds");
+  }).get();
 
-     if(!availabilityUrl) {
-         return;
-     }
+  if (allIds.length === 0) {
+    return;
+  }
 
-     baObj.availability = {};
-     baObj.availabilityRequestsFinished = {};
+  const idArrays = this.partitionArray(baObj.BATCH_SIZE, allIds);
 
-     var allIds = $(".availability-ajax-load").map(function (index, element) {
-         return $(element).data("availabilityIds");
-     }).get();
+  idArrays.forEach((idArray) => {
+    const idArrayStr = idArray.join(",");
+    baObj.availabilityRequestsFinished[idArrayStr] = false;
+    baObj.loadAvailabilityAjax(idArrayStr, 1)
+      .then(() => { return clickLocationButton(); })
+      .then((id) => {
+        if (!id) {
+          return null;
+        }
+        return waitForRequestUrlData(id).then((foundId) => { return clickRequestButton(foundId); });
+      });
+  });
 
-     if(allIds.length === 0) {
-         return;
-     }
+  baObj.checkAndPopulateMissing();
+};
 
-     var idArrays = this.partitionArray(baObj.BATCH_SIZE, allIds);
+/**
+ * Looks for #doc-<doc-id> in the URL tries to click associated availability
+ *
+ * and returns doc-id or null if none was found.
+ */
+const clickLocationButton = () => {
+  const hash = window.location.hash;
 
-     idArrays.forEach(function(idArray) {
-         var idArrayStr = idArray.join(",");
-         baObj.availabilityRequestsFinished[idArrayStr] = false;
-         baObj.loadAvailabilityAjax(idArrayStr, 1)
-         .then(function() { return clickLocationButton(); })
-         .then(function(id) {
-           if (!id) {
-             return null;
-           }
-           return waitForRequestUrlData(id).then(function(foundId) { return clickRequestButton(foundId); });
-         });
-     });
+  if (hash && hash.match(/^#doc-([0-9]{18})/)) {
+    const matches = hash.match(/^#doc-([0-9]{18})/);
+    const id = matches[1];
+    const elem = document.getElementById("available_button-" + id);
+    if (elem) {
+      elem.click();
+    }
+    return id;
+  }
 
-     baObj.checkAndPopulateMissing();
- };
+  return null;
+};
 
-   /**
-    * Looks for #doc-<doc-id> in the URL tries to click associated availability
-    *
-    * and returns doc-id or null if none was found.
-    */
-   function  clickLocationButton() {
-     let  hash = window.location.hash
+/**
+ * Waits for element with id #request-url-data-<id> to appear.
+ *
+ * Returns a promise for the id passed in.
+ */
+const waitForRequestUrlData = (id) => {
+  return waitForElementById("request-url-data-" + id)
+    .then(() => { return id; });
+};
 
-     if (hash && hash.match(/^#doc-([0-9]{18})/)) {
-       let matches = hash.match(/^#doc-([0-9]{18})/);
-       let id = matches[1];
-       let elem = document.getElementById("available_button-" + id)
-       if (elem) {
-         elem.click();
-       }
-       return id;
-     }
-   }
+/**
+ * Continuously checks if an element exists then resolves.
+ */
+const waitForElementById = async (id) => {
+  while (!document.getElementById(id)) {
+    // Hack that is supposedly better than SetTimeout
+    // https://stackoverflow.com/a/47776379/256854
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+  }
+};
 
-   /**
-    * Waits for element with id #request-url-data-<id> to appear.
-    *
-    * Returns a promise for the id passed in.
-    */
-   function waitForRequestUrlData(id) {
-     return waitForElementById("request-url-data-" + id)
-     .then(_ => { return id })
-   }
+/**
+ * Clicks the request button associated with id.
+ *
+ * Returns the id passed in.
+ */
+const clickRequestButton = (id) => {
+  const elem = document.getElementById("request-btn-" + id);
 
-   /**
-    * Continuously checks if an element exists then resolves.
-    */
-   async function waitForElementById(id) {
-     while(!document.getElementById(id)) {
-       // Hack that is supposedly better than SetTimeout
-       // https://stackoverflow.com/a/47776379/256854
-       await new Promise( resolve =>  requestAnimationFrame(resolve) )
-     }
-   };
+  if (elem) {
+    elem.click();
+  }
+  return id;
+};
 
-   /**
-    * Clicks the request button associated with id.
-    *
-    * Returns the id passed in.
-    */
-   function clickRequestButton(id) {
-     let elem = document.getElementById("request-btn-" + id)
+/**
+ * Periodically checks for all AJAX availability requests to finish, then displays
+ * messages for records that we couldn't load availability info for.
+ */
+AlmaIntegration.prototype.checkAndPopulateMissing = function () {
 
-     if (elem) {
-       elem.click();
-     }
-     return id;
-   }
+  const baObj = this;
+  for (const key in baObj.availabilityRequestsFinished) {
+    if (!baObj.availabilityRequestsFinished[key]) {
+      setTimeout(() => { baObj.checkAndPopulateMissing(); }, 1000);
+      return;
+    }
+  }
 
- /**
-  * Periodically checks for all AJAX availability requests to finish, then displays
-  * messages for records that we couldn't load availability info for.
-  */
- AlmaIntegration.prototype.checkAndPopulateMissing = function() {
-
-     var baObj = this;
-     for(var key in baObj.availabilityRequestsFinished) {
-         if(!baObj.availabilityRequestsFinished[key]) {
-
-             setTimeout(function() { baObj.checkAndPopulateMissing(); }, 1000);
-             return;
-         }
-     }
-
-     $(".availability-ajax-load").filter(function(index, element) {
-         return ! $(element).hasClass("availability-ajax-loaded");
-     }).each(function (index, element) {
-        noHoldingsAvailabilityButton($(element).data("availabilityIds"));
-        $(element).html("<span style='color: #A41E35'>No status available for this item</span>");
-     });
- };
+  $(".availability-ajax-load").filter((index, element) => {
+    return !$(element).hasClass("availability-ajax-loaded");
+  }).each((index, element) => {
+    noHoldingsAvailabilityButton($(element).data("availabilityIds"));
+    $(element).html("<span style='color: #A41E35'>No status available for this item</span>");
+  });
+};
