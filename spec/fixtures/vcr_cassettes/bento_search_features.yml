@@ -44,11 +44,11 @@ http_interactions:
       - max-age=31536000; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"2a11a9015d4def77ff669db52711b7ce493266e6","expires_in":3600,"token_type":"Bearer","scope":"az_get"}'
+      string: '{"access_token":"LIB_GUIDES_ACCESS_TOKEN","expires_in":3600,"token_type":"Bearer","scope":"az_get"}'
   recorded_at: Thu, 05 Mar 2026 21:36:23 GMT
 - request:
     method: get
-    uri: https://api-na.hosted.exlibrisgroup.com/primo/v1/search?apikey=l8xx4b447e836859491da7a4973dc13967ed&limit=3&offset=0&pcAvailability=false&q=any,contains,Google,AND&qExclude=facet_rtype,exact,books&scope=CentralIndex&sort=rank&vid=01TULI_INST:TULI
+    uri: https://api-na.hosted.exlibrisgroup.com/primo/v1/search?apikey=PRIMO_API_KEY&limit=3&offset=0&pcAvailability=false&q=any,contains,Google,AND&qExclude=facet_rtype,exact,books&scope=CentralIndex&sort=rank&vid=01TULI_INST:TULI
     body:
       encoding: US-ASCII
       string: ''
@@ -98,7 +98,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: "-------------RubyMultipartPost-82f4531a3e176199be893650347d430e\r\nContent-Disposition:
-        form-data; name=\"password\"\r\nContent-Type: text/plain\r\n\r\nMOODY5birdy_minute\r\n-------------RubyMultipartPost-82f4531a3e176199be893650347d430e--\r\n"
+        form-data; name=\"password\"\r\nContent-Type: text/plain\r\n\r\nARCHIVESSPACE_PASSWORD\r\n-------------RubyMultipartPost-82f4531a3e176199be893650347d430e--\r\n"
     headers:
       User-Agent:
       - Faraday v2.14.1
@@ -133,7 +133,7 @@ http_interactions:
       - nosniff
     body:
       encoding: ASCII-8BIT
-      string: '{"session":"7a11a8b8ed0194ecdb3c6e8937e3b320a0160cf739b788d42d48e528125e7257","user":{"lock_version":3949,"username":"api_librarysearch","name":"API
+      string: '{"session":"ARCHIVESSPACE_SESSION","user":{"lock_version":3949,"username":"api_librarysearch","name":"API
         Library Search","source":"DBAuth","is_system_user":false,"created_by":"katy","create_time":"2025-10-21T18:34:57Z","system_mtime":"2026-03-05T21:36:24Z","user_mtime":"2026-03-05T21:36:24Z","is_active_user":true,"jsonmodel_type":"user","groups":[],"is_admin":true,"uri":"/users/56","agent_record":{"ref":"/agents/people/4988"},"permissions":{"/repositories/6":["update_location_record","delete_vocabulary_record","update_subject_record","delete_subject_record","update_agent_record","delete_agent_record","update_vocabulary_record","update_enumeration_record","merge_subject_record","merge_agent_record","update_container_profile_record","update_location_profile_record","view_repository"],"/repositories/4":["update_location_record","delete_vocabulary_record","update_subject_record","delete_subject_record","update_agent_record","delete_agent_record","update_vocabulary_record","update_enumeration_record","merge_subject_record","merge_agent_record","update_container_profile_record","update_location_profile_record","view_repository"],"/repositories/1":["update_location_record","delete_vocabulary_record","update_subject_record","delete_subject_record","update_agent_record","delete_agent_record","update_vocabulary_record","update_enumeration_record","merge_subject_record","merge_agent_record","update_container_profile_record","update_location_profile_record","administer_system","manage_users","become_user","view_all_records","create_repository","delete_repository","transfer_repository","index_system","manage_repository","update_accession_record","update_resource_record","update_digital_object_record","update_event_record","delete_event_record","suppress_archival_record","transfer_archival_record","delete_archival_record","view_suppressed","view_repository","update_classification_record","delete_classification_record","mediate_edits","import_records","cancel_importer_job","create_job","cancel_job","manage_subject_record","manage_agent_record","manage_vocabulary_record","manage_enumeration_record","merge_agents_and_subjects","merge_archival_record","manage_rde_templates","update_container_record","manage_container_record","manage_container_profile_record","manage_location_profile_record","update_assessment_record","delete_assessment_record","manage_assessment_attributes","view_agent_contact_record","manage_custom_report_templates"],"_archivesspace":["administer_system","manage_users","become_user","view_all_records","create_repository","delete_repository","transfer_repository","index_system","manage_repository","update_accession_record","update_resource_record","update_digital_object_record","update_event_record","delete_event_record","suppress_archival_record","transfer_archival_record","delete_archival_record","view_suppressed","view_repository","update_classification_record","delete_classification_record","mediate_edits","import_records","cancel_importer_job","create_job","cancel_job","manage_subject_record","manage_agent_record","manage_vocabulary_record","manage_enumeration_record","merge_agents_and_subjects","merge_archival_record","manage_rde_templates","update_container_record","manage_container_record","manage_container_profile_record","manage_location_profile_record","update_assessment_record","delete_assessment_record","manage_assessment_attributes","view_agent_contact_record","manage_custom_report_templates","edit_user_self","update_location_record","delete_vocabulary_record","update_subject_record","delete_subject_record","update_agent_record","delete_agent_record","update_vocabulary_record","update_enumeration_record","merge_subject_record","merge_agent_record","update_container_profile_record","update_location_profile_record"]}}}
 
         '
@@ -185,7 +185,7 @@ http_interactions:
   recorded_at: Thu, 05 Mar 2026 21:36:24 GMT
 - request:
     method: get
-    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.35608/ruraled.v41i1.680?access_token=f5a5b56b-2486-454a-ac55-d3c5e5641f43
+    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.35608/ruraled.v41i1.680?access_token=BROWZINE_ACCESS_TOKEN
     body:
       encoding: US-ASCII
       string: ''
@@ -237,7 +237,7 @@ http_interactions:
   recorded_at: Thu, 05 Mar 2026 21:36:24 GMT
 - request:
     method: get
-    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.3390/rs11050591?access_token=f5a5b56b-2486-454a-ac55-d3c5e5641f43
+    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.3390/rs11050591?access_token=BROWZINE_ACCESS_TOKEN
     body:
       encoding: US-ASCII
       string: ''
@@ -297,7 +297,7 @@ http_interactions:
   recorded_at: Thu, 05 Mar 2026 21:36:24 GMT
 - request:
     method: get
-    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.1108/DPRG-10-2017-0053?access_token=f5a5b56b-2486-454a-ac55-d3c5e5641f43
+    uri: https://public-api.thirdiron.com/public/v1/libraries/130/articles/doi/10.1108/DPRG-10-2017-0053?access_token=BROWZINE_ACCESS_TOKEN
     body:
       encoding: US-ASCII
       string: ''

@@ -1,5 +1,7 @@
 default: &default
   api_key: <%= ENV["LIB_GUIDES_API_KEY"] %>
+  client_id: <%= ENV["LIB_GUIDES_CLIENT_ID"] %>
+  client_secret: <%= ENV["LIB_GUIDES_CLIENT_SECRET"] %>
   site_id: <%= ENV["LIB_GUIDES_SITE_ID"] %>
 
 development:

@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 05 Mar 2026 LIB_GUIDES_SITE_ID:55:10 GMT
+      - Tue, 10 Mar 2026 18:46:05 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -44,12 +44,12 @@ http_interactions:
       - max-age=31536000; preload
     body:
       encoding: ASCII-8BIT
-      string: '{"access_token":"f2edc6524535209b3225LIB_GUIDES_SITE_ID99002faf549c16c4fc","expires_in":3600,"token_type":"Bearer","scope":"subjects_get
+      string: '{"access_token":"LIB_GUIDES_ACCESS_TOKEN","expires_in":3600,"token_type":"Bearer","scope":"subjects_get
         guides_get"}'
-  recorded_at: Thu, 05 Mar 2026 17:55:10 GMT
+  recorded_at: Tue, 10 Mar 2026 18:46:05 GMT
 - request:
     method: get
-    uri: https://lgapi-us.libapps.com/1.2/guides?expand=owner&guide_types=1,2,3,4&search_terms=education&site_id=LIB_GUIDES_SITE_ID&sort_by=relevance&status=1
+    uri: https://lgapi-us.libapps.com/1.2/guides?expand=owner&guide_types=1,2,3,4&search_terms=education&site_id=17&sort_by=relevance&status=1
     body:
       encoding: US-ASCII
       string: ''
@@ -70,7 +70,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 05 Mar 2026 LIB_GUIDES_SITE_ID:55:11 GMT
+      - Tue, 10 Mar 2026 18:46:06 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -86,505 +86,467 @@ http_interactions:
       Access-Control-Max-Age:
       - '1000'
       X-Backend-Server:
-      - libapps-us-4.springyaws.com
+      - libapps-us-1.springyaws.com
       X-Content-Type-Options:
       - nosniff
       Strict-Transport-Security:
       - max-age=31536000; preload
     body:
       encoding: ASCII-8BIT
-      string: '[{"id":77734,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1802,"name":"Education","description":"An
+      string: '[{"id":77734,"type_id":3,"site_id":17,"owner_id":56,"group_id":1802,"name":"Education","description":"An
         introduction to research in Education","redirect_url":"","status":1,"published":"2007-06-18
-        15:20:51","created":"2007-06-11 22:09:35","updated":"2023-07-08 14:36:05","slug_id":83932,"nav_type":2,"count_hit":161,"slug":"education","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77734","friendly_url":"https:\/\/guides.temple.edu\/education","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77947,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15128,"group_id":1802,"name":"Art
-        Education","description":"Art Education Resources","redirect_url":"","status":1,"published":"2009-09-LIB_GUIDES_SITE_ID
-        16:23:32","created":"2009-09-LIB_GUIDES_SITE_ID 05:29:56","updated":"2026-02-23
-        20:09:57","slug_id":84130,"nav_type":2,"count_hit":106,"slug":"arted","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77947","friendly_url":"https:\/\/guides.temple.edu\/arted","thumbnail_url":"","owner":{"id":15128,"email":"jluedke@temple.edu","first_name":"Jill","last_name":"Luedke","created":"2009-08-LIB_GUIDES_SITE_ID
-        19:22:18","updated":"2023-06-23 16:02:13","account_site_mapping":{"account_id":15128,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77746,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":307695,"group_id":1802,"name":"Music
-        Education","description":"Help finding information in Music Education.","redirect_url":"","status":1,"published":"2007-12-LIB_GUIDES_SITE_ID
-        20:09:57","created":"2007-07-25 22:12:14","updated":"2023-02-27 18:43:28","slug_id":83943,"nav_type":2,"count_hit":77,"slug":"musiceducation","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77746","friendly_url":"https:\/\/guides.temple.edu\/musiceducation","thumbnail_url":"","owner":{"id":307695,"email":"rebecca.fulop@temple.edu","first_name":"Becca","last_name":"F\u00fcl\u00f6p","created":"2021-12-02
-        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1345929,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":361386,"group_id":26368,"name":"Education
+        15:20:51","created":"2007-06-11 22:09:35","updated":"2023-07-08 14:36:05","slug_id":83932,"nav_type":2,"count_hit":186,"slug":"education","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77734","friendly_url":"https:\/\/guides.temple.edu\/education","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77947,"type_id":3,"site_id":17,"owner_id":15128,"group_id":1802,"name":"Art
+        Education","description":"Art Education Resources","redirect_url":"","status":1,"published":"2009-09-17
+        16:23:32","created":"2009-09-17 05:29:56","updated":"2026-02-23 20:09:57","slug_id":84130,"nav_type":2,"count_hit":114,"slug":"arted","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77947","friendly_url":"https:\/\/guides.temple.edu\/arted","thumbnail_url":"","owner":{"id":15128,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2009-08-17
+        19:22:18","updated":"2023-06-23 16:02:13","account_site_mapping":{"account_id":15128,"site_id":17,"level":0,"acl":""}}},{"id":77746,"type_id":4,"site_id":17,"owner_id":307695,"group_id":1802,"name":"Music
+        Education","description":"Help finding information in Music Education.","redirect_url":"","status":1,"published":"2007-12-17
+        20:09:57","created":"2007-07-25 22:12:14","updated":"2023-02-27 18:43:28","slug_id":83943,"nav_type":2,"count_hit":84,"slug":"musiceducation","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77746","friendly_url":"https:\/\/guides.temple.edu\/musiceducation","thumbnail_url":"","owner":{"id":307695,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-12-02
+        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":17,"level":0,"acl":""}}},{"id":1345929,"type_id":3,"site_id":17,"owner_id":361386,"group_id":26368,"name":"Education
         - Why Care About College","description":"","redirect_url":"","status":1,"published":"2023-09-13
-        07:25:37","created":"2023-09-07 08:05:19","updated":"2023-09-13 07:25:37","slug_id":2898424,"nav_type":2,"count_hit":39,"slug":"tuj-education","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1345929","friendly_url":"https:\/\/guides.temple.edu\/tuj-education","thumbnail_url":"","owner":{"id":361386,"email":"drew.damron@tuj.temple.edu","first_name":"Drew","last_name":"Damron","created":"2023-05-25
-        19:12:46","updated":"2024-07-13 02:44:33","account_site_mapping":{"account_id":361386,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78612,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":30852,"group_id":LIB_GUIDES_SITE_ID244,"name":"Assessment
+        07:25:37","created":"2023-09-07 08:05:19","updated":"2023-09-13 07:25:37","slug_id":2898424,"nav_type":2,"count_hit":50,"slug":"tuj-education","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1345929","friendly_url":"https:\/\/guides.temple.edu\/tuj-education","thumbnail_url":"","owner":{"id":361386,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2023-05-25
+        19:12:46","updated":"2024-07-13 02:44:33","account_site_mapping":{"account_id":361386,"site_id":17,"level":0,"acl":""}}},{"id":78612,"type_id":1,"site_id":17,"owner_id":30852,"group_id":17244,"name":"Assessment
         in Higher Education","description":"","redirect_url":"","status":1,"published":"2025-06-19
-        15:28:47","created":"2014-04-29 20:23:59","updated":"2025-06-19 15:28:47","slug_id":84688,"nav_type":2,"count_hit":57,"slug":"assessment","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78612","friendly_url":"https:\/\/guides.temple.edu\/assessment","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=higbc.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":30852,"email":"tuf56901@temple.edu","first_name":"Nancy","last_name":"Turner","created":"2014-11-20
-        02:37:55","updated":"2024-07-30 15:02:40","account_site_mapping":{"account_id":30852,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":78493,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Education
+        15:28:47","created":"2014-04-29 20:23:59","updated":"2025-06-19 15:28:47","slug_id":84688,"nav_type":2,"count_hit":64,"slug":"assessment","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78612","friendly_url":"https:\/\/guides.temple.edu\/assessment","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=higbc.png&cb=1773168366","owner":{"id":30852,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-11-20
+        02:37:55","updated":"2024-07-30 15:02:40","account_site_mapping":{"account_id":30852,"site_id":17,"level":1,"acl":""}}},{"id":78493,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Education
         for Liberation Here and Abroad: URBE 0855","description":"","redirect_url":"","status":1,"published":"2013-08-26
-        18:47:32","created":"2013-08-26 23:42:33","updated":"2023-07-08 14:36:28","slug_id":84580,"nav_type":2,"count_hit":65,"slug":"urbe0855","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78493","friendly_url":"https:\/\/guides.temple.edu\/urbe0855","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":78495,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Education
+        18:47:32","created":"2013-08-26 23:42:33","updated":"2023-07-08 14:36:28","slug_id":84580,"nav_type":2,"count_hit":72,"slug":"urbe0855","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78493","friendly_url":"https:\/\/guides.temple.edu\/urbe0855","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":78495,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Education
         in the Global City: URBE 0854 ","description":"","redirect_url":"","status":1,"published":"2013-08-28
-        21:26:32","created":"2013-08-27 00:20:19","updated":"2023-07-08 14:36:35","slug_id":84582,"nav_type":1,"count_hit":8,"slug":"urbe0854","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78495","friendly_url":"https:\/\/guides.temple.edu\/urbe0854","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":981686,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":204119,"group_id":139,"name":"LGBTQ
+        21:26:32","created":"2013-08-27 00:20:19","updated":"2023-07-08 14:36:35","slug_id":84582,"nav_type":1,"count_hit":11,"slug":"urbe0854","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78495","friendly_url":"https:\/\/guides.temple.edu\/urbe0854","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":981686,"type_id":4,"site_id":17,"owner_id":204119,"group_id":139,"name":"LGBTQ
         Health and Medicine Resources","description":"This guide offers resources
         on LGBTQ health and medicine at Temple University, in Philadelphia, and available
-        online.","redirect_url":"","status":1,"published":"2020-08-04 LIB_GUIDES_SITE_ID:51:48","created":"2019-11-05
-        16:14:10","updated":"2021-02-03 21:03:18","slug_id":1936982,"nav_type":0,"count_hit":144,"slug":"LGBTQ-health","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=981686","friendly_url":"https:\/\/guides.temple.edu\/LGBTQ-health","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=jibgig.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":204119,"email":"jacob.brintzenhoff@temple.edu","first_name":"Jacob","last_name":"Brintzenhoff","created":"2019-03-07
-        14:10:LIB_GUIDES_SITE_ID","updated":"2024-11-21 15:37:36","account_site_mapping":{"account_id":204119,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1472575,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"SPSY
+        online.","redirect_url":"","status":1,"published":"2020-08-04 17:51:48","created":"2019-11-05
+        16:14:10","updated":"2021-02-03 21:03:18","slug_id":1936982,"nav_type":0,"count_hit":158,"slug":"LGBTQ-health","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=981686","friendly_url":"https:\/\/guides.temple.edu\/LGBTQ-health","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=jibgig.png&cb=1773168366","owner":{"id":204119,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-03-07
+        14:10:17","updated":"2024-11-21 15:37:36","account_site_mapping":{"account_id":204119,"site_id":17,"level":0,"acl":""}}},{"id":1472575,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"SPSY
         8773: Developmental Psychopathology and Low Incidence Disabilities","description":"","redirect_url":"","status":1,"published":"2025-06-07
-        14:42:57","created":"2025-06-06 LIB_GUIDES_SITE_ID:54:29","updated":"2025-06-07
-        14:42:57","slug_id":3358115,"nav_type":2,"count_hit":42,"slug":"spsy8773","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1472575","friendly_url":"https:\/\/guides.temple.edu\/spsy8773","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77985,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Landscape
+        14:42:57","created":"2025-06-06 17:54:29","updated":"2025-06-07 14:42:57","slug_id":3358115,"nav_type":2,"count_hit":46,"slug":"spsy8773","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1472575","friendly_url":"https:\/\/guides.temple.edu\/spsy8773","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77985,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Landscape
         of American Thought:  PHIL 0824","description":"General Education Course","redirect_url":"","status":1,"published":"2010-02-11
-        16:59:52","created":"2010-02-04 19:55:38","updated":"2018-07-06 00:28:24","slug_id":84164,"nav_type":2,"count_hit":52,"slug":"phil0824","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77985","friendly_url":"https:\/\/guides.temple.edu\/phil0824","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78485,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Kids
+        16:59:52","created":"2010-02-04 19:55:38","updated":"2018-07-06 00:28:24","slug_id":84164,"nav_type":2,"count_hit":60,"slug":"phil0824","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77985","friendly_url":"https:\/\/guides.temple.edu\/phil0824","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":78485,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Kids
         in Crisis: When Schools Don\u2019t Work: EDUC 823","description":"","redirect_url":"","status":1,"published":"2013-08-26
-        14:11:46","created":"2013-08-16 21:27:56","updated":"2023-07-08 14:37:25","slug_id":84575,"nav_type":2,"count_hit":160,"slug":"kidsincrisis","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78485","friendly_url":"https:\/\/guides.temple.edu\/kidsincrisis","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77963,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Teens
+        14:11:46","created":"2013-08-16 21:27:56","updated":"2023-07-08 14:37:25","slug_id":84575,"nav_type":2,"count_hit":169,"slug":"kidsincrisis","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78485","friendly_url":"https:\/\/guides.temple.edu\/kidsincrisis","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77963,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Teens
         and Tweens: EDUC 0819\/0919","description":"Library resources for students
         in the General Education course Tweens & Teens","redirect_url":"","status":1,"published":"2009-10-30
-        18:40:25","created":"2009-10-13 23:32:53","updated":"2023-07-08 14:39:56","slug_id":84144,"nav_type":2,"count_hit":81,"slug":"teensandtweens","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77963","friendly_url":"https:\/\/guides.temple.edu\/teensandtweens","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77813,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":201209,"group_id":139,"name":"Medical
+        18:40:25","created":"2009-10-13 23:32:53","updated":"2023-07-08 14:39:56","slug_id":84144,"nav_type":2,"count_hit":100,"slug":"teensandtweens","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77963","friendly_url":"https:\/\/guides.temple.edu\/teensandtweens","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77813,"type_id":4,"site_id":17,"owner_id":201209,"group_id":139,"name":"Medical
         Education","description":"Resources for Temple University medical students,
         residents, and faculty.","redirect_url":"","status":1,"published":"2025-07-29
-        12:52:16","created":"2008-02-27 21:53:LIB_GUIDES_SITE_ID","updated":"2025-07-29
-        12:52:33","slug_id":84009,"nav_type":2,"count_hit":39,"slug":"med-ed","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77813","friendly_url":"https:\/\/guides.temple.edu\/med-ed","thumbnail_url":"","owner":{"id":201209,"email":"courtney.eger@temple.edu","first_name":"Courtney","last_name":"Eger","created":"2019-02-01
-        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77786,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Art
+        12:52:16","created":"2008-02-27 21:53:17","updated":"2025-07-29 12:52:33","slug_id":84009,"nav_type":2,"count_hit":49,"slug":"med-ed","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77813","friendly_url":"https:\/\/guides.temple.edu\/med-ed","thumbnail_url":"","owner":{"id":201209,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-02-01
+        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":17,"level":0,"acl":""}}},{"id":77786,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Art
         of Sacred Space: GRC\/Art History\/Religion 0803 \/ 0903","description":"a
         library guide for this General Education course","redirect_url":"","status":1,"published":"2008-01-28
-        20:24:32","created":"2008-01-18 05:21:56","updated":"2024-07-01 LIB_GUIDES_SITE_ID:56:47","slug_id":83982,"nav_type":2,"count_hit":201,"slug":"sacredspace","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77786","friendly_url":"https:\/\/guides.temple.edu\/sacredspace","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77826,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Asian
+        20:24:32","created":"2008-01-18 05:21:56","updated":"2024-07-01 17:56:47","slug_id":83982,"nav_type":2,"count_hit":221,"slug":"sacredspace","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77786","friendly_url":"https:\/\/guides.temple.edu\/sacredspace","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77826,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Asian
         Behavior &amp; Thought: REL 0811\/ ASST 0811","description":"A course guide
         for this General Education course","redirect_url":"","status":1,"published":"2018-01-12
-        22:23:32","created":"2008-05-20 21:35:09","updated":"2021-08-23 15:36:44","slug_id":84020,"nav_type":2,"count_hit":69,"slug":"asianbehavior","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77826","friendly_url":"https:\/\/guides.temple.edu\/asianbehavior","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77838,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Religion
+        22:23:32","created":"2008-05-20 21:35:09","updated":"2021-08-23 15:36:44","slug_id":84020,"nav_type":2,"count_hit":78,"slug":"asianbehavior","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77826","friendly_url":"https:\/\/guides.temple.edu\/asianbehavior","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77838,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Religion
         in the World:  REL 0863 \/ ASST 0863","description":"A library course guide
         for this General Education course","redirect_url":"","status":1,"published":"2008-07-28
-        16:56:43","created":"2008-07-LIB_GUIDES_SITE_ID 18:07:39","updated":"2025-08-28
-        19:26:47","slug_id":84031,"nav_type":2,"count_hit":185,"slug":"religionworld","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77838","friendly_url":"https:\/\/guides.temple.edu\/religionworld","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":403449,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Practicum
+        16:56:43","created":"2008-07-17 18:07:39","updated":"2025-08-28 19:26:47","slug_id":84031,"nav_type":2,"count_hit":220,"slug":"religionworld","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77838","friendly_url":"https:\/\/guides.temple.edu\/religionworld","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":403449,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Practicum
         in Applied Development: EDUC 4187","description":"This guide is for students
         in EDUC 4187. Use the tabs to the left to find research for your Letter of
         Intent. For help with research, please contact a librarian.","redirect_url":"","status":1,"published":"2015-10-28
-        14:LIB_GUIDES_SITE_ID:22","created":"2015-10-25 19:58:46","updated":"2023-07-08
-        14:39:44","slug_id":664255,"nav_type":2,"count_hit":24,"slug":"educ4187","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=403449","friendly_url":"https:\/\/guides.temple.edu\/educ4187","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":442482,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Why
+        14:17:22","created":"2015-10-25 19:58:46","updated":"2023-07-08 14:39:44","slug_id":664255,"nav_type":2,"count_hit":27,"slug":"educ4187","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=403449","friendly_url":"https:\/\/guides.temple.edu\/educ4187","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":442482,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Why
         care about College: Higher Education in American Life: EDAD 0855\/0955","description":"","redirect_url":"","status":1,"published":"2016-01-14
-        22:35:55","created":"2016-01-14 22:28:19","updated":"2023-07-08 14:40:11","slug_id":728138,"nav_type":2,"count_hit":135,"slug":"edad0855","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=442482","friendly_url":"https:\/\/guides.temple.edu\/edad0855","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":134893,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Meaning
+        22:35:55","created":"2016-01-14 22:28:19","updated":"2023-07-08 14:40:11","slug_id":728138,"nav_type":2,"count_hit":139,"slug":"edad0855","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=442482","friendly_url":"https:\/\/guides.temple.edu\/edad0855","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":134893,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Meaning
         of Madness: SPSY 0828\/0928","description":"","redirect_url":"","status":1,"published":"2014-09-03
-        20:55:15","created":"2014-09-03 LIB_GUIDES_SITE_ID:18:00","updated":"2023-07-08
-        14:39:33","slug_id":160084,"nav_type":2,"count_hit":141,"slug":"madness","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=134893","friendly_url":"https:\/\/guides.temple.edu\/madness","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":753487,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":153164,"group_id":16821,"name":"Immersive
+        20:55:15","created":"2014-09-03 17:18:00","updated":"2023-07-08 14:39:33","slug_id":160084,"nav_type":2,"count_hit":151,"slug":"madness","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=134893","friendly_url":"https:\/\/guides.temple.edu\/madness","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":753487,"type_id":4,"site_id":17,"owner_id":153164,"group_id":16821,"name":"Immersive
         Technology (VR, AR, XR)","description":"Guide to assist with research on virtual
-        reality.","redirect_url":"","status":1,"published":"2019-03-25 LIB_GUIDES_SITE_ID:42:52","created":"20LIB_GUIDES_SITE_ID-11-13
-        21:08:36","updated":"2019-04-22 19:19:28","slug_id":0,"nav_type":2,"count_hit":83,"slug":"","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=753487","friendly_url":"","thumbnail_url":"","owner":{"id":153164,"email":"jasmine.l.clark@temple.edu","first_name":"Jasmine","last_name":"Clark","created":"20LIB_GUIDES_SITE_ID-10-25
-        14:39:48","updated":"2019-12-05 20:39:33","account_site_mapping":{"account_id":153164,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78489,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Language
+        reality.","redirect_url":"","status":1,"published":"2019-03-25 17:42:52","created":"2017-11-13
+        21:08:36","updated":"2019-04-22 19:19:28","slug_id":0,"nav_type":2,"count_hit":90,"slug":"","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=753487","friendly_url":"","thumbnail_url":"","owner":{"id":153164,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2017-10-25
+        14:39:48","updated":"2019-12-05 20:39:33","account_site_mapping":{"account_id":153164,"site_id":17,"level":0,"acl":""}}},{"id":78489,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Language
         in Society: EDUC 0815 \/ ANTH 0815 \/ SPAN 0815","description":"Library resources
         for students in EDUC 0815 \/ ANTH 0815 \/ SPAN 0815","redirect_url":"","status":1,"published":"2013-08-21
-        20:51:48","created":"2013-08-20 22:23:13","updated":"2023-07-08 14:37:38","slug_id":84578,"nav_type":2,"count_hit":60,"slug":"educ0815","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78489","friendly_url":"https:\/\/guides.temple.edu\/educ0815","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77862,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Youth
-        Cultures: EDUC 08LIB_GUIDES_SITE_ID \/ 09LIB_GUIDES_SITE_ID","description":"Library
-        resources for students in EDUC 08LIB_GUIDES_SITE_ID: Youth Cultures","redirect_url":"","status":1,"published":"2008-09-15
-        13:53:33","created":"2008-08-26 01:34:06","updated":"2023-07-08 14:40:24","slug_id":84054,"nav_type":2,"count_hit":134,"slug":"youthcultures","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77862","friendly_url":"https:\/\/guides.temple.edu\/youthcultures","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":1077320,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15150,"group_id":0,"name":"The
+        20:51:48","created":"2013-08-20 22:23:13","updated":"2023-07-08 14:37:38","slug_id":84578,"nav_type":2,"count_hit":64,"slug":"educ0815","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78489","friendly_url":"https:\/\/guides.temple.edu\/educ0815","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77862,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Youth
+        Cultures: EDUC 0817 \/ 0917","description":"Library resources for students
+        in EDUC 0817: Youth Cultures","redirect_url":"","status":1,"published":"2008-09-15
+        13:53:33","created":"2008-08-26 01:34:06","updated":"2023-07-08 14:40:24","slug_id":84054,"nav_type":2,"count_hit":148,"slug":"youthcultures","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77862","friendly_url":"https:\/\/guides.temple.edu\/youthcultures","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":1077320,"type_id":1,"site_id":17,"owner_id":15150,"group_id":0,"name":"The
         Origins of Urban Education: URBE 5565 (SCRC)","description":"A guide to using
         materials in the Special Collections Research Center","redirect_url":"","status":1,"published":"2020-09-08
-        15:27:02","created":"2020-09-08 15:13:30","updated":"2020-09-08 15:27:02","slug_id":2160483,"nav_type":2,"count_hit":39,"slug":"URBE5565-SCRC","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1077320","friendly_url":"https:\/\/guides.temple.edu\/URBE5565-SCRC","thumbnail_url":"","owner":{"id":15150,"email":"josue.hurtado@temple.edu","first_name":"Josue","last_name":"Hurtado","created":"2013-06-06
-        01:24:24","updated":"2024-10-24 LIB_GUIDES_SITE_ID:13:58","account_site_mapping":{"account_id":15150,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":489183,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"Nutrition
+        15:27:02","created":"2020-09-08 15:13:30","updated":"2020-09-08 15:27:02","slug_id":2160483,"nav_type":2,"count_hit":45,"slug":"URBE5565-SCRC","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1077320","friendly_url":"https:\/\/guides.temple.edu\/URBE5565-SCRC","thumbnail_url":"","owner":{"id":15150,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-06-06
+        01:24:24","updated":"2024-10-24 17:13:58","account_site_mapping":{"account_id":15150,"site_id":17,"level":0,"acl":""}}},{"id":489183,"type_id":1,"site_id":17,"owner_id":95511,"group_id":139,"name":"Nutrition
         For The Health Sciences","description":"","redirect_url":"","status":1,"published":"2016-05-09
-        LIB_GUIDES_SITE_ID:27:51","created":"2016-05-02 20:19:13","updated":"2022-08-29
-        LIB_GUIDES_SITE_ID:09:36","slug_id":8LIB_GUIDES_SITE_ID610,"nav_type":2,"count_hit":70,"slug":"nutrition","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=489183","friendly_url":"https:\/\/guides.temple.edu\/nutrition","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":978323,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15150,"group_id":1801,"name":"Historical
+        17:27:51","created":"2016-05-02 20:19:13","updated":"2022-08-29 17:09:36","slug_id":817610,"nav_type":2,"count_hit":78,"slug":"nutrition","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=489183","friendly_url":"https:\/\/guides.temple.edu\/nutrition","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":978323,"type_id":2,"site_id":17,"owner_id":15150,"group_id":1801,"name":"Historical
         Research Methods: Childhood Studies 526 (SCRC)","description":"A guide to
         using resources in the Special Collections Research Center. ","redirect_url":"","status":1,"published":"2019-10-23
-        18:22:22","created":"2019-10-23 18:19:37","updated":"2019-10-23 18:22:22","slug_id":1895782,"nav_type":2,"count_hit":30,"slug":"CS526SCRC","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=978323","friendly_url":"https:\/\/guides.temple.edu\/CS526SCRC","thumbnail_url":"","owner":{"id":15150,"email":"josue.hurtado@temple.edu","first_name":"Josue","last_name":"Hurtado","created":"2013-06-06
-        01:24:24","updated":"2024-10-24 LIB_GUIDES_SITE_ID:13:58","account_site_mapping":{"account_id":15150,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77787,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Race
+        18:22:22","created":"2019-10-23 18:19:37","updated":"2019-10-23 18:22:22","slug_id":1895782,"nav_type":2,"count_hit":35,"slug":"CS526SCRC","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=978323","friendly_url":"https:\/\/guides.temple.edu\/CS526SCRC","thumbnail_url":"","owner":{"id":15150,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-06-06
+        01:24:24","updated":"2024-10-24 17:13:58","account_site_mapping":{"account_id":15150,"site_id":17,"level":0,"acl":""}}},{"id":77787,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Race
         & Poverty in the Americas: REL 0833 \/ SOC 0833","description":"a library
         guide for this General Education course","redirect_url":"","status":1,"published":"2008-02-11
-        16:43:34","created":"2008-01-18 05:24:42","updated":"2019-10-09 23:56:10","slug_id":83983,"nav_type":2,"count_hit":30,"slug":"racepoverty","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77787","friendly_url":"https:\/\/guides.temple.edu\/racepoverty","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77827,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Race
+        16:43:34","created":"2008-01-18 05:24:42","updated":"2019-10-09 23:56:10","slug_id":83983,"nav_type":2,"count_hit":35,"slug":"racepoverty","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77787","friendly_url":"https:\/\/guides.temple.edu\/racepoverty","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77827,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Race
         & Identity in Judaism:  REL 0802\/0902 \/\/ JEWISH ST 0802\/0902","description":"a
         course guide for this General Education course","redirect_url":"","status":1,"published":"2024-06-07
-        13:31:23","created":"2008-05-20 21:37:28","updated":"2024-06-07 13:31:23","slug_id":84021,"nav_type":2,"count_hit":31,"slug":"racejudaism","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77827","friendly_url":"https:\/\/guides.temple.edu\/racejudaism","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":977163,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15150,"group_id":1801,"name":"Teaching
+        13:31:23","created":"2008-05-20 21:37:28","updated":"2024-06-07 13:31:23","slug_id":84021,"nav_type":2,"count_hit":38,"slug":"racejudaism","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77827","friendly_url":"https:\/\/guides.temple.edu\/racejudaism","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":977163,"type_id":2,"site_id":17,"owner_id":15150,"group_id":1801,"name":"Teaching
         for Understanding in Secondary Social Studies: SSES 5466 (SCRC)","description":"A
         guide to available resources in the Special Collections Research Center.\r\n","redirect_url":"","status":1,"published":"2019-10-18
-        18:00:58","created":"2019-10-18 LIB_GUIDES_SITE_ID:55:21","updated":"2019-10-18
-        18:00:58","slug_id":1892273,"nav_type":2,"count_hit":27,"slug":"SSES5466SCRC","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=977163","friendly_url":"https:\/\/guides.temple.edu\/SSES5466SCRC","thumbnail_url":"","owner":{"id":15150,"email":"josue.hurtado@temple.edu","first_name":"Josue","last_name":"Hurtado","created":"2013-06-06
-        01:24:24","updated":"2024-10-24 LIB_GUIDES_SITE_ID:13:58","account_site_mapping":{"account_id":15150,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78408,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":LIB_GUIDES_SITE_ID244,"name":"Children''s
+        18:00:58","created":"2019-10-18 17:55:21","updated":"2019-10-18 18:00:58","slug_id":1892273,"nav_type":2,"count_hit":33,"slug":"SSES5466SCRC","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=977163","friendly_url":"https:\/\/guides.temple.edu\/SSES5466SCRC","thumbnail_url":"","owner":{"id":15150,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-06-06
+        01:24:24","updated":"2024-10-24 17:13:58","account_site_mapping":{"account_id":15150,"site_id":17,"level":0,"acl":""}}},{"id":78408,"type_id":4,"site_id":17,"owner_id":56,"group_id":17244,"name":"Children''s
         Literature","description":"Guide to finding children''s books at Temple Libraries","redirect_url":"","status":1,"published":"2013-01-16
-        04:34:14","created":"2013-01-16 10:26:11","updated":"2025-09-10 20:06:23","slug_id":84513,"nav_type":2,"count_hit":104,"slug":"childrens_lit","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78408","friendly_url":"https:\/\/guides.temple.edu\/childrens_lit","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77996,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15113,"group_id":LIB_GUIDES_SITE_ID244,"name":"Tests
+        04:34:14","created":"2013-01-16 10:26:11","updated":"2025-09-10 20:06:23","slug_id":84513,"nav_type":2,"count_hit":118,"slug":"childrens_lit","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78408","friendly_url":"https:\/\/guides.temple.edu\/childrens_lit","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77996,"type_id":4,"site_id":17,"owner_id":15113,"group_id":17244,"name":"Tests
         and Measurements","description":"","redirect_url":"","status":1,"published":"2010-04-07
-        15:50:44","created":"2010-04-06 00:08:02","updated":"2024-12-20 16:29:44","slug_id":84LIB_GUIDES_SITE_ID2,"nav_type":2,"count_hit":55,"slug":"tests","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77996","friendly_url":"https:\/\/guides.temple.edu\/tests","thumbnail_url":"","owner":{"id":15113,"email":"rlfile@temple.edu","first_name":"Rick","last_name":"Lezenby","created":"2007-07-16
-        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77843,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"American
+        15:50:44","created":"2010-04-06 00:08:02","updated":"2024-12-20 16:29:44","slug_id":84172,"nav_type":2,"count_hit":66,"slug":"tests","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77996","friendly_url":"https:\/\/guides.temple.edu\/tests","thumbnail_url":"","owner":{"id":15113,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":17,"level":0,"acl":""}}},{"id":77843,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"American
         Economy: ECON 0858","description":"a guide to library sources for this General
         Education course","redirect_url":"","status":1,"published":"2008-07-24 16:43:54","created":"2008-07-22
-        20:39:54","updated":"2018-07-05 LIB_GUIDES_SITE_ID:08:07","slug_id":84035,"nav_type":2,"count_hit":194,"slug":"americaneconomy","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77843","friendly_url":"https:\/\/guides.temple.edu\/americaneconomy","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78099,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15134,"group_id":1801,"name":"Race
+        20:39:54","updated":"2018-07-05 17:08:07","slug_id":84035,"nav_type":2,"count_hit":213,"slug":"americaneconomy","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77843","friendly_url":"https:\/\/guides.temple.edu\/americaneconomy","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":78099,"type_id":2,"site_id":17,"owner_id":15134,"group_id":1801,"name":"Race
         and Ethnicity In Cinema: FMA 0843","description":"This website will help you
         with your research assignments for the General Education course Race & Ethnicity
         in Cinema.","redirect_url":"","status":1,"published":"2011-03-04 14:51:25","created":"2011-03-03
-        02:41:33","updated":"2020-02-12 20:02:05","slug_id":84260,"nav_type":2,"count_hit":167,"slug":"fma843","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78099","friendly_url":"https:\/\/guides.temple.edu\/fma843","thumbnail_url":"","owner":{"id":15134,"email":"brian.boling@temple.edu","first_name":"Brian","last_name":"Boling","created":"2011-08-02
-        01:LIB_GUIDES_SITE_ID:35","updated":"2023-02-02 23:56:45","account_site_mapping":{"account_id":15134,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1345534,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":304542,"group_id":26368,"name":"Graduate
+        02:41:33","updated":"2020-02-12 20:02:05","slug_id":84260,"nav_type":2,"count_hit":179,"slug":"fma843","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78099","friendly_url":"https:\/\/guides.temple.edu\/fma843","thumbnail_url":"","owner":{"id":15134,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2011-08-02
+        01:17:35","updated":"2023-02-02 23:56:45","account_site_mapping":{"account_id":15134,"site_id":17,"level":0,"acl":""}}},{"id":1345534,"type_id":1,"site_id":17,"owner_id":304542,"group_id":26368,"name":"Graduate
         College of Education","description":"","redirect_url":"","status":1,"published":"2023-09-12
-        02:46:49","created":"2023-09-06 14:04:11","updated":"2023-09-12 02:46:49","slug_id":2898685,"nav_type":2,"count_hit":79,"slug":"GradEd","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1345534","friendly_url":"https:\/\/guides.temple.edu\/GradEd","thumbnail_url":"","owner":{"id":304542,"email":"leslie.tirapelle@tuj.temple.edu","first_name":"Leslie","last_name":"Tirapelle","created":"2021-10-29
-        19:08:53","updated":"2024-12-18 05:LIB_GUIDES_SITE_ID:42","account_site_mapping":{"account_id":304542,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1416195,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":LIB_GUIDES_SITE_ID244,"name":"Open
+        02:46:49","created":"2023-09-06 14:04:11","updated":"2023-09-12 02:46:49","slug_id":2898685,"nav_type":2,"count_hit":93,"slug":"GradEd","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1345534","friendly_url":"https:\/\/guides.temple.edu\/GradEd","thumbnail_url":"","owner":{"id":304542,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-10-29
+        19:08:53","updated":"2024-12-18 05:17:42","account_site_mapping":{"account_id":304542,"site_id":17,"level":0,"acl":""}}},{"id":1416195,"type_id":4,"site_id":17,"owner_id":210,"group_id":17244,"name":"Open
         Educational Practices","description":"This guide provides information about
         Open Educational Resources (OER), including how to find, evaluate, and teach
         with them.","redirect_url":"","status":1,"published":"2024-12-11 21:58:26","created":"2024-08-09
-        13:11:34","updated":"2025-01-14 18:22:32","slug_id":3247656,"nav_type":2,"count_hit":323,"slug":"oer","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1416195","friendly_url":"https:\/\/guides.temple.edu\/oer","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=bebgbjf.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77749,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":307695,"group_id":1802,"name":"Music
+        13:11:34","updated":"2025-01-14 18:22:32","slug_id":3247656,"nav_type":2,"count_hit":394,"slug":"oer","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1416195","friendly_url":"https:\/\/guides.temple.edu\/oer","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=bebgbjf.png&cb=1773168366","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":77749,"type_id":4,"site_id":17,"owner_id":307695,"group_id":1802,"name":"Music
         Therapy","description":"Explore resources in Music Therapy including music,
         medicine, psychology, education, and others!","redirect_url":"","status":1,"published":"2012-01-24
-        23:34:21","created":"2007-07-27 01:08:44","updated":"2023-02-27 18:43:43","slug_id":83946,"nav_type":2,"count_hit":118,"slug":"musictherapy","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77749","friendly_url":"https:\/\/guides.temple.edu\/musictherapy","thumbnail_url":"","owner":{"id":307695,"email":"rebecca.fulop@temple.edu","first_name":"Becca","last_name":"F\u00fcl\u00f6p","created":"2021-12-02
-        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":553329,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Understanding
+        23:34:21","created":"2007-07-27 01:08:44","updated":"2023-02-27 18:43:43","slug_id":83946,"nav_type":2,"count_hit":124,"slug":"musictherapy","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77749","friendly_url":"https:\/\/guides.temple.edu\/musictherapy","thumbnail_url":"","owner":{"id":307695,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-12-02
+        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":17,"level":0,"acl":""}}},{"id":553329,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Understanding
         Urban Communities: URBE 4496","description":"Library resources for students
         in URBE 4496","redirect_url":"","status":1,"published":"2016-09-13 02:55:06","created":"2016-08-25
-        21:27:29","updated":"2023-07-08 14:40:03","slug_id":937340,"nav_type":2,"count_hit":66,"slug":"urbe4496","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=553329","friendly_url":"https:\/\/guides.temple.edu\/urbe4496","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":1184021,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Interpersonal
+        21:27:29","updated":"2023-07-08 14:40:03","slug_id":937340,"nav_type":2,"count_hit":69,"slug":"urbe4496","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=553329","friendly_url":"https:\/\/guides.temple.edu\/urbe4496","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":1184021,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Interpersonal
         Communication: AOD 0836","description":"Use this page to find help find sources
         for research assignments in AOD 836: Interpersonal Communication.","redirect_url":"","status":1,"published":"2021-10-01
-        16:40:54","created":"2021-10-01 15:29:51","updated":"2023-07-08 14:37:16","slug_id":2444770,"nav_type":1,"count_hit":202,"slug":"AOD0836","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1184021","friendly_url":"https:\/\/guides.temple.edu\/AOD0836","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":78437,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15153,"group_id":1801,"name":"Bilingual
+        16:40:54","created":"2021-10-01 15:29:51","updated":"2023-07-08 14:37:16","slug_id":2444770,"nav_type":1,"count_hit":282,"slug":"AOD0836","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1184021","friendly_url":"https:\/\/guides.temple.edu\/AOD0836","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":78437,"type_id":2,"site_id":17,"owner_id":15153,"group_id":1801,"name":"Bilingual
         Communities: SPAN 0826","description":"Library resources that support the
         GenEd course Bilingual Communities.","redirect_url":"","status":1,"published":"2013-02-05
-        23:46:58","created":"2013-02-06 03:50:57","updated":"2018-07-09 19:35:55","slug_id":84538,"nav_type":2,"count_hit":40,"slug":"spanish0826","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78437","friendly_url":"https:\/\/guides.temple.edu\/spanish0826","thumbnail_url":"","owner":{"id":15153,"email":"rebecca.lloyd@temple.edu","first_name":"Rebecca","last_name":"Lloyd","created":"2013-06-07
-        00:35:16","updated":"2023-08-25 15:LIB_GUIDES_SITE_ID:52","account_site_mapping":{"account_id":15153,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78384,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":307695,"group_id":1802,"name":"Choral
+        23:46:58","created":"2013-02-06 03:50:57","updated":"2018-07-09 19:35:55","slug_id":84538,"nav_type":2,"count_hit":63,"slug":"spanish0826","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78437","friendly_url":"https:\/\/guides.temple.edu\/spanish0826","thumbnail_url":"","owner":{"id":15153,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-06-07
+        00:35:16","updated":"2023-08-25 15:17:52","account_site_mapping":{"account_id":15153,"site_id":17,"level":0,"acl":""}}},{"id":78384,"type_id":4,"site_id":17,"owner_id":307695,"group_id":1802,"name":"Choral
         Music","description":"Help finding scores, recordings, and videos of choral
         music, as well as information on the history, teaching, and directing of choral
         music.","redirect_url":"","status":1,"published":"2013-08-27 21:28:25","created":"2012-08-31
-        22:35:18","updated":"2023-02-27 18:37:59","slug_id":84493,"nav_type":2,"count_hit":165,"slug":"choralmusic","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78384","friendly_url":"https:\/\/guides.temple.edu\/choralmusic","thumbnail_url":"","owner":{"id":307695,"email":"rebecca.fulop@temple.edu","first_name":"Becca","last_name":"F\u00fcl\u00f6p","created":"2021-12-02
-        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":892008,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15128,"group_id":1802,"name":"Art
-        Therapy","description":"","redirect_url":"","status":1,"published":"2018-11-13
-        LIB_GUIDES_SITE_ID:36:44","created":"2018-11-13 16:24:48","updated":"2020-03-15
-        22:16:30","slug_id":1665001,"nav_type":2,"count_hit":126,"slug":"arttherapy","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=892008","friendly_url":"https:\/\/guides.temple.edu\/arttherapy","thumbnail_url":"","owner":{"id":15128,"email":"jluedke@temple.edu","first_name":"Jill","last_name":"Luedke","created":"2009-08-LIB_GUIDES_SITE_ID
-        19:22:18","updated":"2023-06-23 16:02:13","account_site_mapping":{"account_id":15128,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1436957,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Climate
+        22:35:18","updated":"2023-02-27 18:37:59","slug_id":84493,"nav_type":2,"count_hit":186,"slug":"choralmusic","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78384","friendly_url":"https:\/\/guides.temple.edu\/choralmusic","thumbnail_url":"","owner":{"id":307695,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-12-02
+        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":17,"level":0,"acl":""}}},{"id":1436957,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Climate
         Change and Climate Justice: PHIL 0877","description":"","redirect_url":"","status":1,"published":"2024-11-18
-        21:33:06","created":"2024-11-07 16:44:LIB_GUIDES_SITE_ID","updated":"2024-11-18
-        21:33:06","slug_id":3235675,"nav_type":2,"count_hit":38,"slug":"phil0877","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1436957","friendly_url":"https:\/\/guides.temple.edu\/phil0877","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1205608,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"Media
+        21:33:06","created":"2024-11-07 16:44:17","updated":"2024-11-18 21:33:06","slug_id":3235675,"nav_type":2,"count_hit":44,"slug":"phil0877","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1436957","friendly_url":"https:\/\/guides.temple.edu\/phil0877","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":892008,"type_id":3,"site_id":17,"owner_id":15128,"group_id":1802,"name":"Art
+        Therapy","description":"","redirect_url":"","status":1,"published":"2018-11-13
+        17:36:44","created":"2018-11-13 16:24:48","updated":"2020-03-15 22:16:30","slug_id":1665001,"nav_type":2,"count_hit":142,"slug":"arttherapy","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=892008","friendly_url":"https:\/\/guides.temple.edu\/arttherapy","thumbnail_url":"","owner":{"id":15128,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2009-08-17
+        19:22:18","updated":"2023-06-23 16:02:13","account_site_mapping":{"account_id":15128,"site_id":17,"level":0,"acl":""}}},{"id":1205608,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"Media
         in a Hyper-mediated World: KLN 0873","description":"Research help for Sherri
         Hope Culver''s GenEd course, KLN 0873: Media in a Hyper-mediated World.","redirect_url":"","status":1,"published":"2023-01-04
-        15:13:23","created":"2022-01-03 19:36:12","updated":"2023-01-04 15:13:24","slug_id":2497780,"nav_type":2,"count_hit":64,"slug":"kln0873","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1205608","friendly_url":"https:\/\/guides.temple.edu\/kln0873","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78275,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"The
+        15:13:23","created":"2022-01-03 19:36:12","updated":"2023-01-04 15:13:24","slug_id":2497780,"nav_type":2,"count_hit":71,"slug":"kln0873","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1205608","friendly_url":"https:\/\/guides.temple.edu\/kln0873","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":78275,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"The
         Detective Novel: ENG 0857 \/ ASST 0857","description":"Research help for the
-        course, \"The Detective Novel.\"","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-09-21
-        19:07:43","created":"2011-12-15 03:40:18","updated":"2023-05-15 13:47:12","slug_id":84409,"nav_type":2,"count_hit":127,"slug":"english857","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78275","friendly_url":"https:\/\/guides.temple.edu\/english857","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78073,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"The
+        course, \"The Detective Novel.\"","redirect_url":"","status":1,"published":"2017-09-21
+        19:07:43","created":"2011-12-15 03:40:18","updated":"2023-05-15 13:47:12","slug_id":84409,"nav_type":2,"count_hit":131,"slug":"english857","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78275","friendly_url":"https:\/\/guides.temple.edu\/english857","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":78073,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"The
         Quest for Utopia: ENG 0824","description":"Research help for the course, \"The
-        Quest for Utopia.\"","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-09-09
-        19:55:21","created":"2011-01-27 00:52:35","updated":"20LIB_GUIDES_SITE_ID-09-09
-        19:55:21","slug_id":84244,"nav_type":2,"count_hit":78,"slug":"english824","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78073","friendly_url":"https:\/\/guides.temple.edu\/english824","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":823751,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"Latin
+        Quest for Utopia.\"","redirect_url":"","status":1,"published":"2017-09-09
+        19:55:21","created":"2011-01-27 00:52:35","updated":"2017-09-09 19:55:21","slug_id":84244,"nav_type":2,"count_hit":89,"slug":"english824","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78073","friendly_url":"https:\/\/guides.temple.edu\/english824","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":823751,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"Latin
         American Media: MSP 0823","description":"Research help for the course, MSP
         0823: Latin American Media.","redirect_url":"","status":1,"published":"2018-04-03
-        18:02:56","created":"2018-03-30 15:28:30","updated":"2018-04-03 18:02:56","slug_id":1490731,"nav_type":2,"count_hit":52,"slug":"msp823","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=823751","friendly_url":"https:\/\/guides.temple.edu\/msp823","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":365300,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"Future
+        18:02:56","created":"2018-03-30 15:28:30","updated":"2018-04-03 18:02:56","slug_id":1490731,"nav_type":2,"count_hit":61,"slug":"msp823","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=823751","friendly_url":"https:\/\/guides.temple.edu\/msp823","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":365300,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"Future
         of Your TV: MSP 0821","description":"Research help for the GenEd course, MSP
-        0821: Future of Your TV.","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-08-28
-        14:14:19","created":"2015-08-13 16:35:14","updated":"20LIB_GUIDES_SITE_ID-08-28
-        14:14:19","slug_id":613980,"nav_type":2,"count_hit":135,"slug":"msp821","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=365300","friendly_url":"https:\/\/guides.temple.edu\/msp821","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1014652,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15113,"group_id":LIB_GUIDES_SITE_ID244,"name":"Ebooks
+        0821: Future of Your TV.","redirect_url":"","status":1,"published":"2017-08-28
+        14:14:19","created":"2015-08-13 16:35:14","updated":"2017-08-28 14:14:19","slug_id":613980,"nav_type":2,"count_hit":145,"slug":"msp821","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=365300","friendly_url":"https:\/\/guides.temple.edu\/msp821","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":1014652,"type_id":4,"site_id":17,"owner_id":15113,"group_id":17244,"name":"Ebooks
         - Finding and Using","description":"Introduction to ebooks and how to find
         them through Temple Libraries (restricted) and public sources","redirect_url":"","status":1,"published":"2020-03-19
-        16:48:38","created":"2020-03-18 13:20:57","updated":"2020-03-19 16:48:38","slug_id":1986233,"nav_type":2,"count_hit":850,"slug":"ebooks","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1014652","friendly_url":"https:\/\/guides.temple.edu\/ebooks","thumbnail_url":"","owner":{"id":15113,"email":"rlfile@temple.edu","first_name":"Rick","last_name":"Lezenby","created":"2007-07-16
-        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78459,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Youth
-        Cultures: ANTH 08LIB_GUIDES_SITE_ID  ","description":"Research guide for Prof
-        Juris Milestone''s section of Youth Cultures ","redirect_url":"","status":1,"published":"2013-05-13
-        16:44:31","created":"2013-05-03 19:24:09","updated":"2023-07-08 14:40:19","slug_id":84556,"nav_type":2,"count_hit":71,"slug":"youthcultures_anth","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78459","friendly_url":"https:\/\/guides.temple.edu\/youthcultures_anth","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77926,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Race
+        16:48:38","created":"2020-03-18 13:20:57","updated":"2020-03-19 16:48:38","slug_id":1986233,"nav_type":2,"count_hit":909,"slug":"ebooks","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1014652","friendly_url":"https:\/\/guides.temple.edu\/ebooks","thumbnail_url":"","owner":{"id":15113,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":17,"level":0,"acl":""}}},{"id":78459,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Youth
+        Cultures: ANTH 0817  ","description":"Research guide for Prof Juris Milestone''s
+        section of Youth Cultures ","redirect_url":"","status":1,"published":"2013-05-13
+        16:44:31","created":"2013-05-03 19:24:09","updated":"2023-07-08 14:40:19","slug_id":84556,"nav_type":2,"count_hit":178,"slug":"youthcultures_anth","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78459","friendly_url":"https:\/\/guides.temple.edu\/youthcultures_anth","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":77926,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Race
         in the Ancient Mediterranean: GRC 0804\/0904","description":"","redirect_url":"","status":1,"published":"2010-02-02
-        20:26:16","created":"2009-07-30 02:01:06","updated":"2021-08-23 18:23:04","slug_id":84113,"nav_type":2,"count_hit":48,"slug":"raceancient","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77926","friendly_url":"https:\/\/guides.temple.edu\/raceancient","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":439380,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Arts
+        20:26:16","created":"2009-07-30 02:01:06","updated":"2021-08-23 18:23:04","slug_id":84113,"nav_type":2,"count_hit":58,"slug":"raceancient","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77926","friendly_url":"https:\/\/guides.temple.edu\/raceancient","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":439380,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Arts
         in Cultural Context: RUS 0871","description":"Research help for the course,
-        RUS 0871: Arts in Cultural Context.","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-08-12
-        21:28:50","created":"2016-01-08 21:48:27","updated":"2021-01-04 15:37:48","slug_id":722358,"nav_type":2,"count_hit":223,"slug":"russian871","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=439380","friendly_url":"https:\/\/guides.temple.edu\/russian871","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":914714,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15150,"group_id":1801,"name":"Project
+        RUS 0871: Arts in Cultural Context.","redirect_url":"","status":1,"published":"2017-08-12
+        21:28:50","created":"2016-01-08 21:48:27","updated":"2021-01-04 15:37:48","slug_id":722358,"nav_type":2,"count_hit":236,"slug":"russian871","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=439380","friendly_url":"https:\/\/guides.temple.edu\/russian871","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":914714,"type_id":2,"site_id":17,"owner_id":15150,"group_id":1801,"name":"Project
         Planning, Evaluation and Documentation in Community Arts: ARTE 3089SCRC","description":"A
         guide to using materials in the Special Collections Research Center.","redirect_url":"","status":1,"published":"2019-02-13
-        19:16:35","created":"2019-02-13 19:00:40","updated":"2019-07-22 16:40:34","slug_id":LIB_GUIDES_SITE_ID26430,"nav_type":2,"count_hit":10,"slug":"ARTE3089SCRC","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=914714","friendly_url":"https:\/\/guides.temple.edu\/ARTE3089SCRC","thumbnail_url":"","owner":{"id":15150,"email":"josue.hurtado@temple.edu","first_name":"Josue","last_name":"Hurtado","created":"2013-06-06
-        01:24:24","updated":"2024-10-24 LIB_GUIDES_SITE_ID:13:58","account_site_mapping":{"account_id":15150,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":833388,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":0,"name":"Medicine","description":"","redirect_url":"","status":1,"published":"2018-05-16
-        16:57:11","created":"2018-05-03 13:07:54","updated":"2019-04-29 LIB_GUIDES_SITE_ID:26:48","slug_id":1521366,"nav_type":1,"count_hit":184,"slug":"medicine","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=833388","friendly_url":"https:\/\/guides.temple.edu\/medicine","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":540524,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":201209,"group_id":139,"name":"Community
+        19:16:35","created":"2019-02-13 19:00:40","updated":"2019-07-22 16:40:34","slug_id":1726430,"nav_type":2,"count_hit":14,"slug":"ARTE3089SCRC","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=914714","friendly_url":"https:\/\/guides.temple.edu\/ARTE3089SCRC","thumbnail_url":"","owner":{"id":15150,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-06-06
+        01:24:24","updated":"2024-10-24 17:13:58","account_site_mapping":{"account_id":15150,"site_id":17,"level":0,"acl":""}}},{"id":833388,"type_id":1,"site_id":17,"owner_id":95511,"group_id":0,"name":"Medicine","description":"","redirect_url":"","status":1,"published":"2018-05-16
+        16:57:11","created":"2018-05-03 13:07:54","updated":"2019-04-29 17:26:48","slug_id":1521366,"nav_type":1,"count_hit":194,"slug":"medicine","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=833388","friendly_url":"https:\/\/guides.temple.edu\/medicine","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":540524,"type_id":1,"site_id":17,"owner_id":201209,"group_id":139,"name":"Community
         Engagement","description":"Information and resources for health sciences programs
         conducting community outreach.","redirect_url":"","status":1,"published":"2016-11-28
-        14:12:37","created":"2016-08-05 LIB_GUIDES_SITE_ID:48:57","updated":"2019-03-13
-        14:59:38","slug_id":924207,"nav_type":0,"count_hit":13,"slug":"Communityengagement","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=540524","friendly_url":"https:\/\/guides.temple.edu\/Communityengagement","thumbnail_url":"","owner":{"id":201209,"email":"courtney.eger@temple.edu","first_name":"Courtney","last_name":"Eger","created":"2019-02-01
-        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77842,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"Shakespeare
+        14:12:37","created":"2016-08-05 17:48:57","updated":"2019-03-13 14:59:38","slug_id":924207,"nav_type":0,"count_hit":18,"slug":"Communityengagement","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=540524","friendly_url":"https:\/\/guides.temple.edu\/Communityengagement","thumbnail_url":"","owner":{"id":201209,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-02-01
+        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":17,"level":0,"acl":""}}},{"id":1005292,"type_id":1,"site_id":17,"owner_id":100514,"group_id":1804,"name":"Faculty
+        Services","description":"Law Library services for Law Faculty","redirect_url":"","status":1,"published":"2021-02-17
+        13:45:46","created":"2020-02-21 20:22:59","updated":"2021-02-17 13:45:46","slug_id":2289565,"nav_type":2,"count_hit":172,"slug":"lawfacultyservices","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1005292","friendly_url":"https:\/\/guides.temple.edu\/lawfacultyservices","thumbnail_url":"","owner":{"id":100514,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-06-07 17:09:57","updated":"2024-12-09
+        15:34:55","account_site_mapping":{"account_id":100514,"site_id":17,"level":0,"acl":""}}},{"id":77842,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"Shakespeare
         in Movies: ENG 0822, ENG 0922","description":"Research help for the course,
-        \"Shakespeare in Movies.\"","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-08-08
-        20:59:45","created":"2008-07-22 05:27:12","updated":"20LIB_GUIDES_SITE_ID-08-11
-        21:51:58","slug_id":84034,"nav_type":2,"count_hit":113,"slug":"english822","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77842","friendly_url":"https:\/\/guides.temple.edu\/english822","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1005292,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":100514,"group_id":1804,"name":"Faculty
-        Services","description":"Law Library services for Law Faculty","redirect_url":"","status":1,"published":"2021-02-LIB_GUIDES_SITE_ID
-        13:45:46","created":"2020-02-21 20:22:59","updated":"2021-02-LIB_GUIDES_SITE_ID
-        13:45:46","slug_id":2289565,"nav_type":2,"count_hit":160,"slug":"lawfacultyservices","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1005292","friendly_url":"https:\/\/guides.temple.edu\/lawfacultyservices","thumbnail_url":"","owner":{"id":100514,"email":"tulawlib@temple.edu","first_name":"Temple
-        Law","last_name":"Library","created":"2016-06-07 LIB_GUIDES_SITE_ID:09:57","updated":"2024-12-09
-        15:34:55","account_site_mapping":{"account_id":100514,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77876,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15120,"group_id":1802,"name":"Law
+        \"Shakespeare in Movies.\"","redirect_url":"","status":1,"published":"2017-08-08
+        20:59:45","created":"2008-07-22 05:27:12","updated":"2017-08-11 21:51:58","slug_id":84034,"nav_type":2,"count_hit":137,"slug":"english822","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77842","friendly_url":"https:\/\/guides.temple.edu\/english822","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":77876,"type_id":1,"site_id":17,"owner_id":15120,"group_id":1802,"name":"Law
         and American Society","description":"A guide for the General Education course  of
         the same name.","redirect_url":"","status":1,"published":"2008-10-22 13:33:39","created":"2008-10-20
-        18:53:07","updated":"2018-05-LIB_GUIDES_SITE_ID 20:37:25","slug_id":84067,"nav_type":2,"count_hit":32,"slug":"lawandamericansociety","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77876","friendly_url":"https:\/\/guides.temple.edu\/lawandamericansociety","thumbnail_url":"","owner":{"id":15120,"email":"adams@temple.edu","first_name":"Adam","last_name":"Shambaugh","created":"2007-10-22
-        18:55:43","updated":"2023-03-27 12:59:49","account_site_mapping":{"account_id":15120,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1004790,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"Child
+        18:53:07","updated":"2018-05-17 20:37:25","slug_id":84067,"nav_type":2,"count_hit":32,"slug":"lawandamericansociety","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77876","friendly_url":"https:\/\/guides.temple.edu\/lawandamericansociety","thumbnail_url":"","owner":{"id":15120,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-10-22
+        18:55:43","updated":"2023-03-27 12:59:49","account_site_mapping":{"account_id":15120,"site_id":17,"level":0,"acl":""}}},{"id":1004790,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"Child
         and Adolescent Development: EDUC 5402","description":"This guide will help
         with your presentation project for your adolescent development course.","redirect_url":"","status":1,"published":"2020-02-24
-        14:19:57","created":"2020-02-20 14:37:18","updated":"2023-07-08 14:35:20","slug_id":1965001,"nav_type":2,"count_hit":68,"slug":"EDUC5402","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1004790","friendly_url":"https:\/\/guides.temple.edu\/EDUC5402","thumbnail_url":"","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":612339,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"Postbaccalaureate
-        Programs","description":"","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-01-16
-        LIB_GUIDES_SITE_ID:06:52","created":"20LIB_GUIDES_SITE_ID-01-11 21:08:05","updated":"2019-04-29
-        13:50:38","slug_id":1068480,"nav_type":2,"count_hit":31,"slug":"postbac","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=612339","friendly_url":"https:\/\/guides.temple.edu\/postbac","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":555367,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"The
+        14:19:57","created":"2020-02-20 14:37:18","updated":"2023-07-08 14:35:20","slug_id":1965001,"nav_type":2,"count_hit":77,"slug":"EDUC5402","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1004790","friendly_url":"https:\/\/guides.temple.edu\/EDUC5402","thumbnail_url":"","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":612339,"type_id":3,"site_id":17,"owner_id":95511,"group_id":139,"name":"Postbaccalaureate
+        Programs","description":"","redirect_url":"","status":1,"published":"2017-01-16
+        17:06:52","created":"2017-01-11 21:08:05","updated":"2019-04-29 13:50:38","slug_id":1068480,"nav_type":2,"count_hit":31,"slug":"postbac","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=612339","friendly_url":"https:\/\/guides.temple.edu\/postbac","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":555367,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"The
         Good Life: Intellectual Heritage 0851","description":"Professor Katie Brennan","redirect_url":"","status":1,"published":"2016-09-07
-        15:50:19","created":"2016-08-30 16:18:20","updated":"2018-09-12 15:06:LIB_GUIDES_SITE_ID","slug_id":949968,"nav_type":2,"count_hit":44,"slug":"ih0851","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=555367","friendly_url":"https:\/\/guides.temple.edu\/ih0851","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":850255,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":LIB_GUIDES_SITE_ID244,"name":"ICPSR","description":"Temple
+        15:50:19","created":"2016-08-30 16:18:20","updated":"2018-09-12 15:06:17","slug_id":949968,"nav_type":2,"count_hit":50,"slug":"ih0851","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=555367","friendly_url":"https:\/\/guides.temple.edu\/ih0851","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":850255,"type_id":4,"site_id":17,"owner_id":15115,"group_id":17244,"name":"ICPSR","description":"Temple
         is a member of the Inter-University Consortium of Political and Social Research
         (ICPSR), an international research and educational consortium that maintains
-        the ICSPR archive of social and behavioral research data.","redirect_url":"","status":1,"published":"2018-08-LIB_GUIDES_SITE_ID
-        12:26:09","created":"2018-07-09 18:08:22","updated":"2025-02-13 19:00:12","slug_id":1555471,"nav_type":2,"count_hit":228,"slug":"ICPSR","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=850255","friendly_url":"https:\/\/guides.temple.edu\/ICPSR","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77937,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15134,"group_id":1801,"name":"Cinematic
+        the ICSPR archive of social and behavioral research data.","redirect_url":"","status":1,"published":"2018-08-17
+        12:26:09","created":"2018-07-09 18:08:22","updated":"2025-02-13 19:00:12","slug_id":1555471,"nav_type":2,"count_hit":254,"slug":"ICPSR","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=850255","friendly_url":"https:\/\/guides.temple.edu\/ICPSR","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77937,"type_id":2,"site_id":17,"owner_id":15134,"group_id":1801,"name":"Cinematic
         City: FMA 0869","description":"a website to assist Temple University students
         with their research assignments for the Cinematic City course","redirect_url":"","status":1,"published":"2009-09-04
-        21:05:16","created":"2009-09-02 22:31:05","updated":"2024-09-19 19:26:32","slug_id":84122,"nav_type":2,"count_hit":69,"slug":"cinematiccity","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77937","friendly_url":"https:\/\/guides.temple.edu\/cinematiccity","thumbnail_url":"","owner":{"id":15134,"email":"brian.boling@temple.edu","first_name":"Brian","last_name":"Boling","created":"2011-08-02
-        01:LIB_GUIDES_SITE_ID:35","updated":"2023-02-02 23:56:45","account_site_mapping":{"account_id":15134,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77998,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"Consumer
+        21:05:16","created":"2009-09-02 22:31:05","updated":"2024-09-19 19:26:32","slug_id":84122,"nav_type":2,"count_hit":78,"slug":"cinematiccity","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77937","friendly_url":"https:\/\/guides.temple.edu\/cinematiccity","thumbnail_url":"","owner":{"id":15134,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2011-08-02
+        01:17:35","updated":"2023-02-02 23:56:45","account_site_mapping":{"account_id":15134,"site_id":17,"level":0,"acl":""}}},{"id":77998,"type_id":1,"site_id":17,"owner_id":95511,"group_id":139,"name":"Consumer
         Health","description":"Resources to assist students, individuals and families
         in health matters.","redirect_url":"","status":1,"published":"2010-04-22 14:53:37","created":"2010-04-07
-        19:27:39","updated":"2025-03-31 19:44:57","slug_id":84LIB_GUIDES_SITE_ID4,"nav_type":2,"count_hit":51,"slug":"consumerhealth","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77998","friendly_url":"https:\/\/guides.temple.edu\/consumerhealth","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77837,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Religion
+        19:27:39","updated":"2025-03-31 19:44:57","slug_id":84174,"nav_type":2,"count_hit":61,"slug":"consumerhealth","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77998","friendly_url":"https:\/\/guides.temple.edu\/consumerhealth","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":77837,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Religion
         in Philadelphia: REL 0876 \/ HIST 0876","description":"","redirect_url":"","status":1,"published":"2008-07-14
-        20:02:26","created":"2008-07-10 21:16:37","updated":"2021-01-22 16:36:12","slug_id":84030,"nav_type":1,"count_hit":109,"slug":"religionphiladelphia","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77837","friendly_url":"https:\/\/guides.temple.edu\/religionphiladelphia","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77956,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Greek
+        20:02:26","created":"2008-07-10 21:16:37","updated":"2021-01-22 16:36:12","slug_id":84030,"nav_type":1,"count_hit":129,"slug":"religionphiladelphia","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77837","friendly_url":"https:\/\/guides.temple.edu\/religionphiladelphia","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77956,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Greek
         Theater &amp; Society: GRC 0811 \/ 0911","description":"","redirect_url":"","status":1,"published":"2023-01-18
-        LIB_GUIDES_SITE_ID:13:02","created":"2009-09-28 22:32:34","updated":"2023-01-18
-        LIB_GUIDES_SITE_ID:13:02","slug_id":84139,"nav_type":2,"count_hit":24,"slug":"greektheatersociety","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77956","friendly_url":"https:\/\/guides.temple.edu\/greektheatersociety","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":465606,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15166,"group_id":1801,"name":"Border
+        17:13:02","created":"2009-09-28 22:32:34","updated":"2023-01-18 17:13:02","slug_id":84139,"nav_type":2,"count_hit":31,"slug":"greektheatersociety","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77956","friendly_url":"https:\/\/guides.temple.edu\/greektheatersociety","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":465606,"type_id":2,"site_id":17,"owner_id":15166,"group_id":1801,"name":"Border
         Crossings: GSWS 0801","description":"This guide is designed to help students
         perform library research for the General Education course Border Crossings:
         GSWS 0801.","redirect_url":"","status":1,"published":"2016-03-08 15:45:27","created":"2016-03-08
-        14:22:21","updated":"20LIB_GUIDES_SITE_ID-07-12 20:45:07","slug_id":768234,"nav_type":2,"count_hit":43,"slug":"bordercrossings","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=465606","friendly_url":"https:\/\/guides.temple.edu\/bordercrossings","thumbnail_url":"","owner":{"id":15166,"email":"cshanley@temple.edu","first_name":"Caitlin","last_name":"Shanley","created":"2013-12-16
-        23:12:35","updated":"2024-03-22 18:55:19","account_site_mapping":{"account_id":15166,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":539045,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"Internal
+        14:22:21","updated":"2017-07-12 20:45:07","slug_id":768234,"nav_type":2,"count_hit":43,"slug":"bordercrossings","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=465606","friendly_url":"https:\/\/guides.temple.edu\/bordercrossings","thumbnail_url":"","owner":{"id":15166,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-12-16
+        23:12:35","updated":"2024-03-22 18:55:19","account_site_mapping":{"account_id":15166,"site_id":17,"level":1,"acl":""}}},{"id":539045,"type_id":1,"site_id":17,"owner_id":95511,"group_id":139,"name":"Internal
         Medicine Resources","description":"","redirect_url":"","status":1,"published":"2016-08-09
-        20:21:03","created":"2016-08-02 19:36:15","updated":"2016-08-09 20:21:03","slug_id":913985,"nav_type":2,"count_hit":81,"slug":"internalmedicine","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=539045","friendly_url":"https:\/\/guides.temple.edu\/internalmedicine","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":13323LIB_GUIDES_SITE_ID,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":304542,"group_id":26368,"name":"TUJ
+        20:21:03","created":"2016-08-02 19:36:15","updated":"2016-08-09 20:21:03","slug_id":913985,"nav_type":2,"count_hit":96,"slug":"internalmedicine","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=539045","friendly_url":"https:\/\/guides.temple.edu\/internalmedicine","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":729688,"type_id":1,"site_id":17,"owner_id":309301,"group_id":139,"name":"Pharmacy
+        Preceptor Guide","description":"","redirect_url":"","status":1,"published":"2017-10-03
+        16:51:04","created":"2017-09-22 12:56:34","updated":"2023-08-02 19:19:35","slug_id":1321149,"nav_type":2,"count_hit":169,"slug":"pharmpreceptors","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=729688","friendly_url":"https:\/\/guides.temple.edu\/pharmpreceptors","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=hcjgii.png&cb=1773168366","owner":{"id":309301,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-01-03
+        12:53:26","updated":"2024-05-06 14:25:32","account_site_mapping":{"account_id":309301,"site_id":17,"level":0,"acl":""}}},{"id":1332317,"type_id":4,"site_id":17,"owner_id":304542,"group_id":26368,"name":"TUJ
         Faculty Publications","description":"","redirect_url":"","status":1,"published":"2024-10-15
-        02:37:19","created":"2023-07-11 04:41:03","updated":"2024-10-15 02:37:19","slug_id":2859345,"nav_type":0,"count_hit":249,"slug":"facultypublications","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=13323LIB_GUIDES_SITE_ID","friendly_url":"https:\/\/guides.temple.edu\/facultypublications","thumbnail_url":"","owner":{"id":304542,"email":"leslie.tirapelle@tuj.temple.edu","first_name":"Leslie","last_name":"Tirapelle","created":"2021-10-29
-        19:08:53","updated":"2024-12-18 05:LIB_GUIDES_SITE_ID:42","account_site_mapping":{"account_id":304542,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1292115,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":LIB_GUIDES_SITE_ID244,"name":"Nutrition
+        02:37:19","created":"2023-07-11 04:41:03","updated":"2024-10-15 02:37:19","slug_id":2859345,"nav_type":0,"count_hit":277,"slug":"facultypublications","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1332317","friendly_url":"https:\/\/guides.temple.edu\/facultypublications","thumbnail_url":"","owner":{"id":304542,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-10-29
+        19:08:53","updated":"2024-12-18 05:17:42","account_site_mapping":{"account_id":304542,"site_id":17,"level":0,"acl":""}}},{"id":1292115,"type_id":3,"site_id":17,"owner_id":324944,"group_id":17244,"name":"Nutrition
         Program","description":"This guide is intended for students and faculty in
         the Nutrition program at Temple University.","redirect_url":"","status":1,"published":"2023-01-16
-        18:36:42","created":"2023-01-09 16:42:20","updated":"2023-11-09 20:24:09","slug_id":2736340,"nav_type":2,"count_hit":144,"slug":"CPHnutrition","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1292115","friendly_url":"https:\/\/guides.temple.edu\/CPHnutrition","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77923,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":141334,"group_id":LIB_GUIDES_SITE_ID244,"name":"Sustainability","description":"","redirect_url":"","status":1,"published":"2009-08-LIB_GUIDES_SITE_ID
-        12:25:55","created":"2009-07-08 01:15:14","updated":"2023-06-28 21:16:46","slug_id":84110,"nav_type":2,"count_hit":36,"slug":"sustainability","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77923","friendly_url":"https:\/\/guides.temple.edu\/sustainability","thumbnail_url":"","owner":{"id":141334,"email":"sjones@temple.edu","first_name":"Sarah","last_name":"Jones","created":"20LIB_GUIDES_SITE_ID-07-13
-        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":638037,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":1801,"name":"Public
+        18:36:42","created":"2023-01-09 16:42:20","updated":"2023-11-09 20:24:09","slug_id":2736340,"nav_type":2,"count_hit":156,"slug":"CPHnutrition","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1292115","friendly_url":"https:\/\/guides.temple.edu\/CPHnutrition","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":77923,"type_id":4,"site_id":17,"owner_id":141334,"group_id":17244,"name":"Sustainability","description":"","redirect_url":"","status":1,"published":"2009-08-17
+        12:25:55","created":"2009-07-08 01:15:14","updated":"2023-06-28 21:16:46","slug_id":84110,"nav_type":2,"count_hit":44,"slug":"sustainability","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77923","friendly_url":"https:\/\/guides.temple.edu\/sustainability","thumbnail_url":"","owner":{"id":141334,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2017-07-13
+        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":17,"level":0,"acl":""}}},{"id":1126574,"type_id":3,"site_id":17,"owner_id":15115,"group_id":1802,"name":"Industrial
+        & systems engineering","description":"","redirect_url":"","status":1,"published":"2021-04-27
+        19:33:02","created":"2021-02-24 14:34:44","updated":"2024-08-26 17:11:20","slug_id":2332585,"nav_type":2,"count_hit":43,"slug":"ise","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1126574","friendly_url":"https:\/\/guides.temple.edu\/ise","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":638037,"type_id":2,"site_id":17,"owner_id":324944,"group_id":1801,"name":"Public
         Health  Fundamentals: SBS 5001","description":"Information and resources to
         help public health students started on research materials as well as ways
         to manage their articles.","redirect_url":"","status":1,"published":"2021-08-30
-        20:12:33","created":"20LIB_GUIDES_SITE_ID-03-06 16:56:35","updated":"2023-11-06
-        22:35:44","slug_id":1264737,"nav_type":2,"count_hit":61,"slug":"publichealthfundamentals","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=638037","friendly_url":"https:\/\/guides.temple.edu\/publichealthfundamentals","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=gdiadh.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1291810,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"All
-        Health Sciences Databases","description":"","redirect_url":"","status":1,"published":"2023-02-02
-        19:31:53","created":"2023-01-06 16:34:24","updated":"2025-08-22 19:54:51","slug_id":2769325,"nav_type":2,"count_hit":228,"slug":"allhsdatabases","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1291810","friendly_url":"https:\/\/guides.temple.edu\/allhsdatabases","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":78129,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15166,"group_id":1801,"name":"First
+        20:12:33","created":"2017-03-06 16:56:35","updated":"2023-11-06 22:35:44","slug_id":1264737,"nav_type":2,"count_hit":72,"slug":"publichealthfundamentals","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=638037","friendly_url":"https:\/\/guides.temple.edu\/publichealthfundamentals","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=gdiadh.png&cb=1773168366","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":78129,"type_id":2,"site_id":17,"owner_id":15166,"group_id":1801,"name":"First
         Person America: AMER ST 0862","description":"","redirect_url":"","status":1,"published":"2011-11-14
-        22:02:10","created":"2011-07-18 18:54:28","updated":"2020-02-12 19:55:22","slug_id":84285,"nav_type":2,"count_hit":24,"slug":"first_person","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78129","friendly_url":"https:\/\/guides.temple.edu\/first_person","thumbnail_url":"","owner":{"id":15166,"email":"cshanley@temple.edu","first_name":"Caitlin","last_name":"Shanley","created":"2013-12-16
-        23:12:35","updated":"2024-03-22 18:55:19","account_site_mapping":{"account_id":15166,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":1285LIB_GUIDES_SITE_ID9,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":201209,"group_id":139,"name":"Athletic
+        22:02:10","created":"2011-07-18 18:54:28","updated":"2020-02-12 19:55:22","slug_id":84285,"nav_type":2,"count_hit":29,"slug":"first_person","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78129","friendly_url":"https:\/\/guides.temple.edu\/first_person","thumbnail_url":"","owner":{"id":15166,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2013-12-16
+        23:12:35","updated":"2024-03-22 18:55:19","account_site_mapping":{"account_id":15166,"site_id":17,"level":1,"acl":""}}},{"id":1291810,"type_id":4,"site_id":17,"owner_id":95511,"group_id":139,"name":"All
+        Health Sciences Databases","description":"","redirect_url":"","status":1,"published":"2023-02-02
+        19:31:53","created":"2023-01-06 16:34:24","updated":"2025-08-22 19:54:51","slug_id":2769325,"nav_type":2,"count_hit":255,"slug":"allhsdatabases","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1291810","friendly_url":"https:\/\/guides.temple.edu\/allhsdatabases","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":1175425,"type_id":4,"site_id":17,"owner_id":324944,"group_id":17244,"name":"Service
+        Learning","description":"This guide provides a variety of Service Learning
+        resources for faculty, staff, students, and community members.","redirect_url":"","status":1,"published":"2023-05-08
+        19:22:33","created":"2021-09-03 13:22:25","updated":"2023-05-08 19:22:33","slug_id":2422911,"nav_type":2,"count_hit":115,"slug":"cph-servicelearning","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1175425","friendly_url":"https:\/\/guides.temple.edu\/cph-servicelearning","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":1285179,"type_id":3,"site_id":17,"owner_id":201209,"group_id":139,"name":"Athletic
         Training","description":"This guide is intended for students and faculty in
         the Athletic Training program.","redirect_url":"","status":1,"published":"2022-12-19
-        16:27:21","created":"2022-11-23 14:37:59","updated":"2022-12-19 16:27:22","slug_id":2730004,"nav_type":2,"count_hit":54,"slug":"athletictraining","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1285LIB_GUIDES_SITE_ID9","friendly_url":"https:\/\/guides.temple.edu\/athletictraining","thumbnail_url":"","owner":{"id":201209,"email":"courtney.eger@temple.edu","first_name":"Courtney","last_name":"Eger","created":"2019-02-01
-        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":729688,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":309301,"group_id":139,"name":"Pharmacy
-        Preceptor Guide","description":"","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-10-03
-        16:51:04","created":"20LIB_GUIDES_SITE_ID-09-22 12:56:34","updated":"2023-08-02
-        19:19:35","slug_id":1321149,"nav_type":2,"count_hit":151,"slug":"pharmpreceptors","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=729688","friendly_url":"https:\/\/guides.temple.edu\/pharmpreceptors","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=hcjgii.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":309301,"email":"travis.nace@temple.edu","first_name":"Travis","last_name":"Nace","created":"2022-01-03
-        12:53:26","updated":"2024-05-06 14:25:32","account_site_mapping":{"account_id":309301,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":404846,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":570,"group_id":16821,"name":"Games
+        16:27:21","created":"2022-11-23 14:37:59","updated":"2022-12-19 16:27:22","slug_id":2730004,"nav_type":2,"count_hit":65,"slug":"athletictraining","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1285179","friendly_url":"https:\/\/guides.temple.edu\/athletictraining","thumbnail_url":"","owner":{"id":201209,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-02-01
+        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":17,"level":0,"acl":""}}},{"id":404846,"type_id":1,"site_id":17,"owner_id":570,"group_id":16821,"name":"Games
         and Gaming","description":"A look at Temple University Library''s game collections
         and policies, as well as information for faculty on incorporating gaming in
         the classroom.","redirect_url":"","status":1,"published":"2016-01-27 16:19:00","created":"2015-10-28
-        15:26:13","updated":"2023-08-11 16:26:19","slug_id":736567,"nav_type":2,"count_hit":75,"slug":"gaming","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=404846","friendly_url":"https:\/\/guides.temple.edu\/gaming","thumbnail_url":"","owner":{"id":570,"email":"tuf24531@temple.edu","first_name":"Matt","last_name":"Shoemaker","created":"2014-03-10
-        21:27:24","updated":"2021-11-12 20:50:40","account_site_mapping":{"account_id":570,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1LIB_GUIDES_SITE_ID5425,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":LIB_GUIDES_SITE_ID244,"name":"Service
-        Learning","description":"This guide provides a variety of Service Learning
-        resources for faculty, staff, students, and community members.","redirect_url":"","status":1,"published":"2023-05-08
-        19:22:33","created":"2021-09-03 13:22:25","updated":"2023-05-08 19:22:33","slug_id":2422911,"nav_type":2,"count_hit":112,"slug":"cph-servicelearning","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1LIB_GUIDES_SITE_ID5425","friendly_url":"https:\/\/guides.temple.edu\/cph-servicelearning","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1LIB_GUIDES_SITE_ID8064,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":1801,"name":"History
+        15:26:13","updated":"2023-08-11 16:26:19","slug_id":736567,"nav_type":2,"count_hit":81,"slug":"gaming","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=404846","friendly_url":"https:\/\/guides.temple.edu\/gaming","thumbnail_url":"","owner":{"id":570,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-03-10
+        21:27:24","updated":"2021-11-12 20:50:40","account_site_mapping":{"account_id":570,"site_id":17,"level":0,"acl":""}}},{"id":1178064,"type_id":2,"site_id":17,"owner_id":324944,"group_id":1801,"name":"History
         and Values of Social Welfare: SSW 3003","description":"","redirect_url":"","status":1,"published":"2021-09-13
-        20:56:00","created":"2021-09-13 20:42:38","updated":"2022-08-12 13:52:06","slug_id":2429536,"nav_type":2,"count_hit":39,"slug":"ssw-3003","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1LIB_GUIDES_SITE_ID8064","friendly_url":"https:\/\/guides.temple.edu\/ssw-3003","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1126574,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1802,"name":"Industrial
-        & systems engineering","description":"","redirect_url":"","status":1,"published":"2021-04-27
-        19:33:02","created":"2021-02-24 14:34:44","updated":"2024-08-26 LIB_GUIDES_SITE_ID:11:20","slug_id":2332585,"nav_type":2,"count_hit":35,"slug":"ise","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1126574","friendly_url":"https:\/\/guides.temple.edu\/ise","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":550933,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":1802,"name":"Public
+        20:56:00","created":"2021-09-13 20:42:38","updated":"2022-08-12 13:52:06","slug_id":2429536,"nav_type":2,"count_hit":46,"slug":"ssw-3003","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1178064","friendly_url":"https:\/\/guides.temple.edu\/ssw-3003","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":1377124,"type_id":2,"site_id":17,"owner_id":56,"group_id":1801,"name":"The
+        Impact of Trauma on the Individual  and Society: SPSY 2303\/8770","description":"","redirect_url":"","status":1,"published":"2024-01-30
+        22:41:16","created":"2024-01-30 18:54:45","updated":"2024-01-30 22:47:34","slug_id":2980257,"nav_type":2,"count_hit":94,"slug":"spsy2303_8770","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1377124","friendly_url":"https:\/\/guides.temple.edu\/spsy2303_8770","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=bdhhbce.png&cb=1773168366","owner":{"id":56,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-01-27
+        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":17,"level":1,"acl":""}}},{"id":739852,"type_id":2,"site_id":17,"owner_id":324944,"group_id":1801,"name":"Program
+        Planning: SBS 3496\/3596","description":"Resources and information for Program
+        Planning in CPH","redirect_url":"","status":1,"published":"2017-10-16 17:13:04","created":"2017-10-16
+        17:10:49","updated":"2023-11-08 20:12:57","slug_id":1534811,"nav_type":2,"count_hit":86,"slug":"sbsundergradprogramplanning","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=739852","friendly_url":"https:\/\/guides.temple.edu\/sbsundergradprogramplanning","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":550933,"type_id":3,"site_id":17,"owner_id":324944,"group_id":1802,"name":"Public
         Health","description":"Resources covering a range of topics for public health
         related interests.","redirect_url":"","status":1,"published":"2018-09-12 21:53:30","created":"2016-08-23
-        14:55:00","updated":"2023-10-14 12:58:15","slug_id":1610132,"nav_type":2,"count_hit":190,"slug":"PublicHealth","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=550933","friendly_url":"https:\/\/guides.temple.edu\/PublicHealth","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":739852,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":1801,"name":"Program
-        Planning: SBS 3496\/3596","description":"Resources and information for Program
-        Planning in CPH","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-10-16
-        LIB_GUIDES_SITE_ID:13:04","created":"20LIB_GUIDES_SITE_ID-10-16 LIB_GUIDES_SITE_ID:10:49","updated":"2023-11-08
-        20:12:57","slug_id":1534811,"nav_type":2,"count_hit":79,"slug":"sbsundergradprogramplanning","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=739852","friendly_url":"https:\/\/guides.temple.edu\/sbsundergradprogramplanning","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77806,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":201209,"group_id":139,"name":"Occupational
+        14:55:00","updated":"2023-10-14 12:58:15","slug_id":1610132,"nav_type":2,"count_hit":209,"slug":"PublicHealth","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=550933","friendly_url":"https:\/\/guides.temple.edu\/PublicHealth","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":77806,"type_id":3,"site_id":17,"owner_id":201209,"group_id":139,"name":"Occupational
         Therapy","description":"Subject guide to resources in occupational therapy","redirect_url":"","status":1,"published":"2008-09-19
-        15:10:00","created":"2008-02-09 01:44:36","updated":"2023-12-18 19:37:26","slug_id":84002,"nav_type":2,"count_hit":159,"slug":"ot","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77806","friendly_url":"https:\/\/guides.temple.edu\/ot","thumbnail_url":"","owner":{"id":201209,"email":"courtney.eger@temple.edu","first_name":"Courtney","last_name":"Eger","created":"2019-02-01
-        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":975665,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":324944,"group_id":1801,"name":"Program
+        15:10:00","created":"2008-02-09 01:44:36","updated":"2023-12-18 19:37:26","slug_id":84002,"nav_type":2,"count_hit":183,"slug":"ot","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77806","friendly_url":"https:\/\/guides.temple.edu\/ot","thumbnail_url":"","owner":{"id":201209,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-02-01
+        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":17,"level":0,"acl":""}}},{"id":975665,"type_id":2,"site_id":17,"owner_id":324944,"group_id":1801,"name":"Program
         Planning, Theory, and Practice: SBS 5002","description":"This guide is for
         SBS5002: Program Planning, Theory, and Practice, a graduate level course","redirect_url":"","status":1,"published":"2019-10-14
-        15:35:55","created":"2019-10-14 14:29:07","updated":"2023-11-11 11:05:20","slug_id":1888349,"nav_type":2,"count_hit":104,"slug":"SBS5002","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=975665","friendly_url":"https:\/\/guides.temple.edu\/SBS5002","thumbnail_url":"","owner":{"id":324944,"email":"van.bich.tran@temple.edu","first_name":"Van","last_name":"Tran","created":"2022-06-08
-        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1377124,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":56,"group_id":1801,"name":"The
-        Impact of Trauma on the Individual  and Society: SPSY 2303\/8770","description":"","redirect_url":"","status":1,"published":"2024-01-30
-        22:41:16","created":"2024-01-30 18:54:45","updated":"2024-01-30 22:47:34","slug_id":2980257,"nav_type":2,"count_hit":92,"slug":"spsy2303_8770","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1377124","friendly_url":"https:\/\/guides.temple.edu\/spsy2303_8770","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=bdhhbce.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":56,"email":"jsipes@temple.edu","first_name":"Jackie","last_name":"Sipes","created":"2014-01-27
-        21:57:47","updated":"2024-09-30 15:36:13","account_site_mapping":{"account_id":56,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":608982,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"The
-        Common Good: Intellectual Heritage 0852","description":"Professor Katie Brennan","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-01-06
-        22:16:49","created":"20LIB_GUIDES_SITE_ID-01-05 22:06:42","updated":"2018-09-12
-        14:51:35","slug_id":1059960,"nav_type":2,"count_hit":55,"slug":"ih0852","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=608982","friendly_url":"https:\/\/guides.temple.edu\/ih0852","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":228591,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":210,"group_id":1801,"name":"Eating
+        15:35:55","created":"2019-10-14 14:29:07","updated":"2023-11-11 11:05:20","slug_id":1888349,"nav_type":2,"count_hit":118,"slug":"SBS5002","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=975665","friendly_url":"https:\/\/guides.temple.edu\/SBS5002","thumbnail_url":"","owner":{"id":324944,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2022-06-08
+        12:15:35","updated":"2024-06-24 04:38:10","account_site_mapping":{"account_id":324944,"site_id":17,"level":0,"acl":""}}},{"id":1325633,"type_id":4,"site_id":17,"owner_id":361386,"group_id":26368,"name":"Career
+        Resources","description":"A LibGuide for the TUJ Career Team","redirect_url":"","status":1,"published":"2023-07-06
+        04:46:34","created":"2023-06-05 01:58:12","updated":"2023-07-07 06:47:27","slug_id":0,"nav_type":2,"count_hit":53,"slug":"","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1325633","friendly_url":"","thumbnail_url":"","owner":{"id":361386,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2023-05-25
+        19:12:46","updated":"2024-07-13 02:44:33","account_site_mapping":{"account_id":361386,"site_id":17,"level":0,"acl":""}}},{"id":608982,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"The
+        Common Good: Intellectual Heritage 0852","description":"Professor Katie Brennan","redirect_url":"","status":1,"published":"2017-01-06
+        22:16:49","created":"2017-01-05 22:06:42","updated":"2018-09-12 14:51:35","slug_id":1059960,"nav_type":2,"count_hit":60,"slug":"ih0852","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=608982","friendly_url":"https:\/\/guides.temple.edu\/ih0852","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":228591,"type_id":2,"site_id":17,"owner_id":210,"group_id":1801,"name":"Eating
         Cultures: ENG 0837","description":"Research help for the course, ENG 0837:
-        Eating Cultures.","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-10-25
-        00:05:09","created":"2015-03-05 23:02:26","updated":"20LIB_GUIDES_SITE_ID-10-25
-        00:05:09","slug_id":316732,"nav_type":2,"count_hit":51,"slug":"english837","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=228591","friendly_url":"https:\/\/guides.temple.edu\/english837","thumbnail_url":"","owner":{"id":210,"email":"devoek@temple.edu","first_name":"Kristina","last_name":"De
-        Voe","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":236592,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":201209,"group_id":139,"name":"Kinesiology
-        and Exercise Science","description":"A research guide for kinesiology and
-        exercise science students","redirect_url":"","status":1,"published":"2015-08-20
-        12:49:05","created":"2015-03-19 13:55:02","updated":"2023-10-05 18:34:27","slug_id":599142,"nav_type":2,"count_hit":324,"slug":"kinesiology","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=236592","friendly_url":"https:\/\/guides.temple.edu\/kinesiology","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=cdgfjc.png&cb=LIB_GUIDES_SITE_ID72733310","owner":{"id":201209,"email":"courtney.eger@temple.edu","first_name":"Courtney","last_name":"Eger","created":"2019-02-01
-        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78598,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":LIB_GUIDES_SITE_ID244,"name":"Find
-        Data and Statistics","description":"Discover reliable sources of data and
-        statistics.","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-02-10
-        01:35:18","created":"2014-03-21 21:03:43","updated":"2025-01-07 LIB_GUIDES_SITE_ID:31:08","slug_id":84674,"nav_type":2,"count_hit":260,"slug":"data-stats","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78598","friendly_url":"https:\/\/guides.temple.edu\/data-stats","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":77752,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":307695,"group_id":1802,"name":"Dance","description":"Guide
+        Eating Cultures.","redirect_url":"","status":1,"published":"2017-10-25 00:05:09","created":"2015-03-05
+        23:02:26","updated":"2017-10-25 00:05:09","slug_id":316732,"nav_type":2,"count_hit":61,"slug":"english837","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=228591","friendly_url":"https:\/\/guides.temple.edu\/english837","thumbnail_url":"","owner":{"id":210,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2014-02-19 16:06:03","updated":"2024-10-28 16:00:47","account_site_mapping":{"account_id":210,"site_id":17,"level":0,"acl":""}}},{"id":77752,"type_id":3,"site_id":17,"owner_id":307695,"group_id":1802,"name":"Dance","description":"Guide
         to books, videos and DVD''s, journal articles, online resources, and more
         in Dance.","redirect_url":"","status":1,"published":"2007-11-06 20:56:48","created":"2007-07-31
-        00:58:58","updated":"2023-02-27 18:41:25","slug_id":83949,"nav_type":2,"count_hit":116,"slug":"dance","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77752","friendly_url":"https:\/\/guides.temple.edu\/dance","thumbnail_url":"","owner":{"id":307695,"email":"rebecca.fulop@temple.edu","first_name":"Becca","last_name":"F\u00fcl\u00f6p","created":"2021-12-02
-        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":78342,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15113,"group_id":1802,"name":"Pennsylvania
+        00:58:58","updated":"2023-02-27 18:41:25","slug_id":83949,"nav_type":2,"count_hit":132,"slug":"dance","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77752","friendly_url":"https:\/\/guides.temple.edu\/dance","thumbnail_url":"","owner":{"id":307695,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-12-02
+        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":17,"level":0,"acl":""}}},{"id":236592,"type_id":3,"site_id":17,"owner_id":201209,"group_id":139,"name":"Kinesiology
+        and Exercise Science","description":"A research guide for kinesiology and
+        exercise science students","redirect_url":"","status":1,"published":"2015-08-20
+        12:49:05","created":"2015-03-19 13:55:02","updated":"2023-10-05 18:34:27","slug_id":599142,"nav_type":2,"count_hit":339,"slug":"kinesiology","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=236592","friendly_url":"https:\/\/guides.temple.edu\/kinesiology","thumbnail_url":"https:\/\/guides.temple.edu\/ld.php?screenshot=cdgfjc.png&cb=1773168366","owner":{"id":201209,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2019-02-01
+        15:11:18","updated":"2022-07-11 12:59:50","account_site_mapping":{"account_id":201209,"site_id":17,"level":0,"acl":""}}},{"id":78598,"type_id":4,"site_id":17,"owner_id":95511,"group_id":17244,"name":"Find
+        Data and Statistics","description":"Discover reliable sources of data and
+        statistics.","redirect_url":"","status":1,"published":"2017-02-10 01:35:18","created":"2014-03-21
+        21:03:43","updated":"2025-01-07 17:31:08","slug_id":84674,"nav_type":2,"count_hit":283,"slug":"data-stats","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78598","friendly_url":"https:\/\/guides.temple.edu\/data-stats","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":78342,"type_id":4,"site_id":17,"owner_id":15113,"group_id":1802,"name":"Pennsylvania
         Government Information","description":"Use these resources to find government
         information specific to Pennsylvania and Philadelphia.","redirect_url":"","status":1,"published":"2012-08-03
-        LIB_GUIDES_SITE_ID:48:23","created":"2012-05-02 04:14:20","updated":"2021-05-10
-        14:45:14","slug_id":84463,"nav_type":2,"count_hit":31,"slug":"govdocspa","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78342","friendly_url":"https:\/\/guides.temple.edu\/govdocspa","thumbnail_url":"","owner":{"id":15113,"email":"rlfile@temple.edu","first_name":"Rick","last_name":"Lezenby","created":"2007-07-16
-        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1325633,"type_id":4,"site_id":LIB_GUIDES_SITE_ID,"owner_id":361386,"group_id":26368,"name":"Career
-        Resources","description":"A LibGuide for the TUJ Career Team","redirect_url":"","status":1,"published":"2023-07-06
-        04:46:34","created":"2023-06-05 01:58:12","updated":"2023-07-07 06:47:27","slug_id":0,"nav_type":2,"count_hit":44,"slug":"","status_label":"Published","type_label":"Topic
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1325633","friendly_url":"","thumbnail_url":"","owner":{"id":361386,"email":"drew.damron@tuj.temple.edu","first_name":"Drew","last_name":"Damron","created":"2023-05-25
-        19:12:46","updated":"2024-07-13 02:44:33","account_site_mapping":{"account_id":361386,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1518022,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":348709,"group_id":0,"name":"PA
+        17:48:23","created":"2012-05-02 04:14:20","updated":"2021-05-10 14:45:14","slug_id":84463,"nav_type":2,"count_hit":38,"slug":"govdocspa","status_label":"Published","type_label":"Topic
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=78342","friendly_url":"https:\/\/guides.temple.edu\/govdocspa","thumbnail_url":"","owner":{"id":15113,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":17,"level":0,"acl":""}}},{"id":1518022,"type_id":1,"site_id":17,"owner_id":348709,"group_id":0,"name":"PA
         Capstone Project Guide ","description":"","redirect_url":"","status":1,"published":"2026-02-25
-        20:08:59","created":"2026-02-25 13:59:58","updated":"2026-03-04 00:33:07","slug_id":3529672,"nav_type":2,"count_hit":449,"slug":"PA_Capstone","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1518022","friendly_url":"https:\/\/guides.temple.edu\/PA_Capstone","thumbnail_url":"","owner":{"id":348709,"email":"sarah.bauman@temple.edu","first_name":"Sarah","last_name":"Bauman","created":"2023-01-16
-        19:20:28","updated":"2024-10-10 16:54:19","account_site_mapping":{"account_id":348709,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":852832,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":141334,"group_id":1802,"name":"Water
+        20:08:59","created":"2026-02-25 13:59:58","updated":"2026-03-04 00:33:07","slug_id":3529672,"nav_type":2,"count_hit":504,"slug":"PA_Capstone","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1518022","friendly_url":"https:\/\/guides.temple.edu\/PA_Capstone","thumbnail_url":"","owner":{"id":348709,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2023-01-16
+        19:20:28","updated":"2024-10-10 16:54:19","account_site_mapping":{"account_id":348709,"site_id":17,"level":0,"acl":""}}},{"id":852192,"type_id":1,"site_id":17,"owner_id":348709,"group_id":139,"name":"Physician
+        Assistant Program","description":"","redirect_url":"","status":1,"published":"2018-07-16
+        18:48:24","created":"2018-07-16 18:43:59","updated":"2023-04-11 13:45:14","slug_id":1560645,"nav_type":2,"count_hit":608,"slug":"physassistant","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=852192","friendly_url":"https:\/\/guides.temple.edu\/physassistant","thumbnail_url":"","owner":{"id":348709,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2023-01-16
+        19:20:28","updated":"2024-10-10 16:54:19","account_site_mapping":{"account_id":348709,"site_id":17,"level":0,"acl":""}}},{"id":852832,"type_id":3,"site_id":17,"owner_id":141334,"group_id":1802,"name":"Water
         and Hydrology Resources","description":"","redirect_url":"","status":1,"published":"2018-09-07
-        10:59:02","created":"2018-07-18 15:27:18","updated":"2023-06-28 21:16:55","slug_id":0,"nav_type":2,"count_hit":122,"slug":"","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=852832","friendly_url":"","thumbnail_url":"","owner":{"id":141334,"email":"sjones@temple.edu","first_name":"Sarah","last_name":"Jones","created":"20LIB_GUIDES_SITE_ID-07-13
-        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77784,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":141334,"group_id":1802,"name":"Engineering","description":"A
-        guide to selected engineering resources.","redirect_url":"","status":1,"published":"2008-09-09
-        16:28:22","created":"2008-01-16 02:55:41","updated":"2022-09-30 18:09:51","slug_id":83980,"nav_type":2,"count_hit":163,"slug":"engineering","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77784","friendly_url":"https:\/\/guides.temple.edu\/engineering","thumbnail_url":"","owner":{"id":141334,"email":"sjones@temple.edu","first_name":"Sarah","last_name":"Jones","created":"20LIB_GUIDES_SITE_ID-07-13
-        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1266311,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"German
+        10:59:02","created":"2018-07-18 15:27:18","updated":"2023-06-28 21:16:55","slug_id":3539512,"nav_type":2,"count_hit":140,"slug":"water","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=852832","friendly_url":"https:\/\/guides.temple.edu\/water","thumbnail_url":"","owner":{"id":141334,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2017-07-13
+        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":17,"level":0,"acl":""}}},{"id":1266311,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"German
         Composition I: GER 3096","description":"","redirect_url":"","status":1,"published":"2022-09-08
-        LIB_GUIDES_SITE_ID:57:47","created":"2022-09-08 16:51:38","updated":"2022-09-08
-        LIB_GUIDES_SITE_ID:57:48","slug_id":2665157,"nav_type":2,"count_hit":24,"slug":"ger3096","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1266311","friendly_url":"https:\/\/guides.temple.edu\/ger3096","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":181478,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":95511,"group_id":139,"name":"Katz
+        17:57:47","created":"2022-09-08 16:51:38","updated":"2022-09-08 17:57:48","slug_id":2665157,"nav_type":2,"count_hit":30,"slug":"ger3096","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1266311","friendly_url":"https:\/\/guides.temple.edu\/ger3096","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77784,"type_id":3,"site_id":17,"owner_id":141334,"group_id":1802,"name":"Engineering","description":"A
+        guide to selected engineering resources.","redirect_url":"","status":1,"published":"2008-09-09
+        16:28:22","created":"2008-01-16 02:55:41","updated":"2022-09-30 18:09:51","slug_id":83980,"nav_type":2,"count_hit":178,"slug":"engineering","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77784","friendly_url":"https:\/\/guides.temple.edu\/engineering","thumbnail_url":"","owner":{"id":141334,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2017-07-13
+        18:18:52","updated":"2024-02-14 21:10:09","account_site_mapping":{"account_id":141334,"site_id":17,"level":0,"acl":""}}},{"id":1297221,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"German
+        Composition II: GER 4296","description":"","redirect_url":"","status":1,"published":"2023-01-28
+        17:10:59","created":"2023-01-28 16:08:43","updated":"2023-01-28 17:10:59","slug_id":2751372,"nav_type":2,"count_hit":51,"slug":"german4296","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1297221","friendly_url":"https:\/\/guides.temple.edu\/german4296","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":1046977,"type_id":1,"site_id":17,"owner_id":100514,"group_id":1804,"name":"International
+        LL.M. and Graduate Students Guide","description":"","redirect_url":"","status":1,"published":"2020-08-13
+        18:06:33","created":"2020-06-04 17:54:29","updated":"2020-08-13 18:06:33","slug_id":2095606,"nav_type":2,"count_hit":1113,"slug":"internationallawstudents","status_label":"Published","type_label":"General
+        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1046977","friendly_url":"https:\/\/guides.temple.edu\/internationallawstudents","thumbnail_url":"","owner":{"id":100514,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-06-07 17:09:57","updated":"2024-12-09
+        15:34:55","account_site_mapping":{"account_id":100514,"site_id":17,"level":0,"acl":""}}},{"id":181478,"type_id":3,"site_id":17,"owner_id":95511,"group_id":139,"name":"Katz
         School of Medicine  Phase 2\/3","description":"Resources for the 3rd year
         and 4th year Katz Clinical Clerkships","redirect_url":"","status":1,"published":"2015-01-29
-        LIB_GUIDES_SITE_ID:52:35","created":"2014-12-08 20:33:07","updated":"2026-02-05
-        15:40:29","slug_id":224412,"nav_type":2,"count_hit":315,"slug":"clerkship","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=181478","friendly_url":"https:\/\/guides.temple.edu\/clerkship","thumbnail_url":"","owner":{"id":95511,"email":"piercejb@temple.edu","first_name":"Jenny","last_name":"Pierce","created":"2016-04-25
-        LIB_GUIDES_SITE_ID:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":LIB_GUIDES_SITE_ID,"level":1,"acl":""}}},{"id":821846,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"Intellectual
+        17:52:35","created":"2014-12-08 20:33:07","updated":"2026-02-05 15:40:29","slug_id":224412,"nav_type":2,"count_hit":328,"slug":"clerkship","status_label":"Published","type_label":"Subject
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=181478","friendly_url":"https:\/\/guides.temple.edu\/clerkship","thumbnail_url":"","owner":{"id":95511,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2016-04-25
+        17:03:41","updated":"2024-12-02 15:08:22","account_site_mapping":{"account_id":95511,"site_id":17,"level":1,"acl":""}}},{"id":821846,"type_id":2,"site_id":17,"owner_id":15115,"group_id":1801,"name":"Intellectual
         Heritage II: IH 0852 (Sections 9\/10); 0952 (Sections 8\/87)","description":"","redirect_url":"","status":1,"published":"2018-03-28
-        19:11:41","created":"2018-03-23 16:02:16","updated":"2018-09-11 22:33:47","slug_id":1489503,"nav_type":2,"count_hit":79,"slug":"ih0852_Sawin_Bailey","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=821846","friendly_url":"https:\/\/guides.temple.edu\/ih0852_Sawin_Bailey","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":77957,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":307695,"group_id":1801,"name":"Philadelphia
+        19:11:41","created":"2018-03-23 16:02:16","updated":"2018-09-11 22:33:47","slug_id":1489503,"nav_type":2,"count_hit":88,"slug":"ih0852_Sawin_Bailey","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=821846","friendly_url":"https:\/\/guides.temple.edu\/ih0852_Sawin_Bailey","thumbnail_url":"","owner":{"id":15115,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2007-07-16
+        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":17,"level":0,"acl":""}}},{"id":77957,"type_id":2,"site_id":17,"owner_id":307695,"group_id":1801,"name":"Philadelphia
         Dance Experience:  DANC 0827","description":"Resources, news, and events for
         the Gen Ed class, DANCE 827, the Philadelphia Dance Experience","redirect_url":"","status":1,"published":"2009-09-30
-        12:59:06","created":"2009-09-29 19:59:53","updated":"2023-02-27 18:43:58","slug_id":84140,"nav_type":2,"count_hit":68,"slug":"phillydance","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77957","friendly_url":"https:\/\/guides.temple.edu\/phillydance","thumbnail_url":"","owner":{"id":307695,"email":"rebecca.fulop@temple.edu","first_name":"Becca","last_name":"F\u00fcl\u00f6p","created":"2021-12-02
-        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":694605,"type_id":3,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15113,"group_id":1802,"name":"Psychology","description":"Overview
-        of sources available for Temple students and faculty","redirect_url":"","status":1,"published":"20LIB_GUIDES_SITE_ID-07-20
-        16:47:38","created":"20LIB_GUIDES_SITE_ID-07-06 LIB_GUIDES_SITE_ID:18:11","updated":"2018-05-01
-        13:39:27","slug_id":1230536,"nav_type":2,"count_hit":695,"slug":"psychology","status_label":"Published","type_label":"Subject
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=694605","friendly_url":"https:\/\/guides.temple.edu\/psychology","thumbnail_url":"","owner":{"id":15113,"email":"rlfile@temple.edu","first_name":"Rick","last_name":"Lezenby","created":"2007-07-16
-        21:30:53","updated":"2024-09-23 14:35:45","account_site_mapping":{"account_id":15113,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1297221,"type_id":2,"site_id":LIB_GUIDES_SITE_ID,"owner_id":15115,"group_id":1801,"name":"German
-        Composition II: GER 4296","description":"","redirect_url":"","status":1,"published":"2023-01-28
-        LIB_GUIDES_SITE_ID:10:59","created":"2023-01-28 16:08:43","updated":"2023-01-28
-        LIB_GUIDES_SITE_ID:10:59","slug_id":2751372,"nav_type":2,"count_hit":43,"slug":"german4296","status_label":"Published","type_label":"Course
-        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1297221","friendly_url":"https:\/\/guides.temple.edu\/german4296","thumbnail_url":"","owner":{"id":15115,"email":"frowland@temple.edu","first_name":"Fred","last_name":"Rowland","created":"2007-07-16
-        21:32:41","updated":"2021-03-26 12:54:19","account_site_mapping":{"account_id":15115,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}},{"id":1046977,"type_id":1,"site_id":LIB_GUIDES_SITE_ID,"owner_id":100514,"group_id":1804,"name":"International
-        LL.M. and Graduate Students Guide","description":"","redirect_url":"","status":1,"published":"2020-08-13
-        18:06:33","created":"2020-06-04 LIB_GUIDES_SITE_ID:54:29","updated":"2020-08-13
-        18:06:33","slug_id":2095606,"nav_type":2,"count_hit":1021,"slug":"internationallawstudents","status_label":"Published","type_label":"General
-        Purpose Guide","url":"https:\/\/guides.temple.edu\/c.php?g=1046977","friendly_url":"https:\/\/guides.temple.edu\/internationallawstudents","thumbnail_url":"","owner":{"id":100514,"email":"tulawlib@temple.edu","first_name":"Temple
-        Law","last_name":"Library","created":"2016-06-07 LIB_GUIDES_SITE_ID:09:57","updated":"2024-12-09
-        15:34:55","account_site_mapping":{"account_id":100514,"site_id":LIB_GUIDES_SITE_ID,"level":0,"acl":""}}}]'
-  recorded_at: Thu, 05 Mar 2026 17:55:10 GMT
+        12:59:06","created":"2009-09-29 19:59:53","updated":"2023-02-27 18:43:58","slug_id":84140,"nav_type":2,"count_hit":80,"slug":"phillydance","status_label":"Published","type_label":"Course
+        Guide","url":"https:\/\/guides.temple.edu\/c.php?g=77957","friendly_url":"https:\/\/guides.temple.edu\/phillydance","thumbnail_url":"","owner":{"id":307695,"email":"LIB_GUIDES_OWNER_EMAIL","first_name":"LIB_GUIDES_OWNER_FIRST_NAME","last_name":"LIB_GUIDES_OWNER_LAST_NAME","created":"2021-12-02
+        19:27:58","updated":"2023-09-25 19:51:49","account_site_mapping":{"account_id":307695,"site_id":17,"level":0,"acl":""}}}]'
+  recorded_at: Tue, 10 Mar 2026 18:46:06 GMT
 recorded_with: VCR 6.4.0
