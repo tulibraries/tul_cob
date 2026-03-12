@@ -28,7 +28,11 @@ module BentoSearch
           source_title: cdm_collection_name(collection_id, collections),
           unique_id: cdm_id,
           link: "#{base_url}/digital/collection/#{collection_id}/id/#{cdm_id}",
-          image_link_thread: Thread.new { get_image_link(collection_id, cdm_id) },
+          image_link_thread: Thread.new do
+            Timeout.timeout(3) { get_image_link(collection_id, cdm_id) }
+          rescue
+            ""
+          end,
           other_links: [],
         }
       }
@@ -59,7 +63,7 @@ module BentoSearch
       cdm_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmQuery/#{cdm_collections_ids}/CISOSEARCHALL^#{query}^all^and/#{cdm_fields}/nosort/5/0/1/0/0/0/0/0/#{cdm_format}"
 
       begin
-        response = with_retries { HTTParty.get(cdm_url, timeout: 10, open_timeout: 5) }
+        response = with_retries { HTTParty.get(cdm_url, timeout: 3, open_timeout: 2) }
         if response.success?
           safe_json_parse(response, context: "cdm_api_response")
         else
@@ -76,7 +80,7 @@ module BentoSearch
       collections_url = "#{base_url}/digital/bl/dmwebservices/index.php?q=dmGetCollectionList/json"
       begin
         Rails.cache.fetch(:cdm_api_response, expires_in: 1.day) do
-          response = with_retries { HTTParty.get(collections_url, open_timeout: 5, timeout: 15) }
+          response = with_retries { HTTParty.get(collections_url, timeout: 3, open_timeout: 2) }
           if response.success?
             safe_json_parse(response, context: "cdm_collections_api_response")
           else
@@ -120,8 +124,8 @@ module BentoSearch
     end
 
     def image_available?(link)
-      with_retries(3) do
-        response = HTTParty.head(link, timeout: 5, open_timeout: 2)
+      with_retries(1) do
+        response = HTTParty.head(link, timeout: 3, open_timeout: 2)
         response.code.to_i == 200
       end
       rescue StandardError
@@ -153,7 +157,7 @@ module BentoSearch
       { records: [], pager: { total: 0 } }.with_indifferent_access
     end
 
-    def with_retries(max_attempts = 3)
+    def with_retries(max_attempts = 2)
       attempts = 0
       begin
         yield
