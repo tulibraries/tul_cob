@@ -9,50 +9,38 @@ module BentoSearch
     delegate :blacklight_config, :search_service_class, to: ::SearchController
 
     def search_implementation(args)
-      bento_results = BentoSearch::Results.new
-      response = cdm_api_response(args)
-      bento_results.total_items = response.dig("pager", "total") || 0
-      collections = cdm_collections_api_response
+      Timeout.timeout(4) do
+        bento_results = BentoSearch::Results.new
+        response = cdm_api_response(args)
+        bento_results.total_items = response.dig("pager", "total") || 0
+        collections = cdm_collections_api_response
 
+        records = Array(response["records"]).select { |record| !is_int?(record["title"].to_s) }
 
-      # use only records that have alphanumeric titles.
-      records = response["records"].select { |record| !is_int?(record["title"].to_s) }
+        records.each do |record|
+          break if bento_results.count == 3
 
-      records = records.map { |record|
-        collection_id = record.fetch("collection", "").gsub("/", "")
-        cdm_id = record.fetch("pointer", "")
+          collection_id = record.fetch("collection", "").delete("/")
+          cdm_id = record.fetch("pointer", "")
 
-        {
-          title: record.fetch("title", ""),
-          publication_date: record.fetch("date", ""),
-          source_title: cdm_collection_name(collection_id, collections),
-          unique_id: cdm_id,
-          link: "#{base_url}/digital/collection/#{collection_id}/id/#{cdm_id}",
-          image_link_thread: Thread.new do
-            Timeout.timeout(3) { get_image_link(collection_id, cdm_id) }
-          rescue
-            ""
-          end,
-          other_links: [],
-        }
-      }
+          image_link = get_image_link(collection_id, cdm_id)
+          next if image_link.blank?
 
-      # reduce records to the first 3 that have images.
-      records.reduce(bento_results) { |acc, record|
-
-        if acc.count == 3
-          break acc
+          bento_results << BentoSearch::ResultItem.new(
+            title: record.fetch("title", ""),
+            publication_date: record.fetch("date", ""),
+            source_title: cdm_collection_name(collection_id, collections),
+            unique_id: cdm_id,
+            link: "#{base_url}/digital/collection/#{collection_id}/id/#{cdm_id}",
+            other_links: [image_link]
+          )
         end
 
-        image_link = record[:image_link_thread].value
-
-        if image_link.present?
-          record[:other_links] << image_link
-          acc << BentoSearch::ResultItem.new(record.except(:image_link_thread))
-        end
-
-        acc
-      }
+        bento_results
+      end
+    rescue Timeout::Error
+      Rails.logger.warn("CDM engine timed out")
+      BentoSearch::Results.new
     end
 
     def cdm_api_response(args)
@@ -125,7 +113,7 @@ module BentoSearch
 
     def image_available?(link)
       with_retries(1) do
-        response = HTTParty.head(link, timeout: 3, open_timeout: 2)
+        response = HTTParty.head(link, timeout: 2, open_timeout: 1)
         response.code.to_i == 200
       end
       rescue StandardError
