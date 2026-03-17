@@ -89,15 +89,6 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers, type: :component
 end
 
-VCR.configure do |config|
-  config.filter_sensitive_data("LIB_GUIDES_API_KEY") { ENV["LIB_GUIDES_API_KEY"] }
-
-  # Add these for v1.2 OAuth
-  config.filter_sensitive_data("LIB_GUIDES_CLIENT_ID") { ENV["LIB_GUIDES_CLIENT_ID"] }
-  config.filter_sensitive_data("LIB_GUIDES_CLIENT_SECRET") { ENV["LIB_GUIDES_CLIENT_SECRET"] }
-end
-
-
 FactoryBot.define do
   sequence :email do |n|
     "person#{n}@example.com"

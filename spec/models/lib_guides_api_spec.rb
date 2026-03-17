@@ -6,12 +6,6 @@ RSpec.describe LibGuidesApi do
   subject(:api) { described_class.new("Search Term") }
 
   context "when the API responds successfully" do
-    before do
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
-      )
-    end
-
     it "returns data from the API response as json" do
       allow(HTTParty).to receive(:get).and_return(
         double(success?: true, body: [{ name: "Guide Name", url: "https://example.com/1" }].to_json))
@@ -54,10 +48,6 @@ RSpec.describe LibGuidesApi do
       allow(HTTParty).to receive(:get).and_return(
         double(success?: false, body: "<html>")
       )
-
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
-      )
     end
 
     it "handles the response and returns an empty array" do
@@ -69,10 +59,6 @@ RSpec.describe LibGuidesApi do
     before do
       allow(HTTParty).to receive(:get).and_return(
         double(success?: true, body: "<html>")
-      )
-
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
       )
     end
 
