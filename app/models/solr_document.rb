@@ -207,7 +207,7 @@ class SolrDocument
     end
 
     def libkey_service
-      @libkey_service ||= LibkeyService.new
+      @libkey_service ||= LibkeyService.new(config: Rails.configuration.apis.dig(:libkey))
     end
 
     def logger

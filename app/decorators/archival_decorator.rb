@@ -17,7 +17,10 @@ class ArchivalDecorator < BentoSearch::StandardDecorator
     return nil unless collection_ref
 
     collection_title = _base.custom_data["collection_title"]
-    collection_url = "https://scrcarchivesspace.temple.edu#{collection_ref}"
+    base_url = Rails.configuration.apis.dig(:archives_space, :public_base_url)
+    return nil if base_url.blank?
+
+    collection_url = "#{base_url.chomp("/")}#{collection_ref}"
 
     return "<span class='bento-label'>In collection: </span><a href='#{collection_url}' target='_blank' rel='noopener noreferrer'>#{collection_title}</a>".html_safe unless custom_data["primary_types"] == "resource"
   end

@@ -24,7 +24,8 @@ class PrimoCentralController < CatalogController
 
     # skip if request is coming from Honeybadger
     honey_badger_token = request.headers["Honeybadger-Token"]
-    return if honey_badger_token.present? && honey_badger_token == ENV["HONEYBADGER_TOKEN"]
+    configured_honeybadger_token = Rails.configuration.apis.dig(:honeybadger, :token)
+    return if honey_badger_token.present? && honey_badger_token == configured_honeybadger_token
 
     @recaptcha_action = "articles_search"
 

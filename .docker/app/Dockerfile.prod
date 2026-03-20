@@ -39,8 +39,7 @@ RUN apk add -U --no-cache \
     bundle config set --local without "development test" && \    
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
-    cp config/alma.yml.example config/alma.yml && \
-    cp config/bento.yml.example config/bento.yml && \
+    if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
     bundle exec rails assets:precompile && \
     rm -rf node_modules && \
     rm -rf tmp/* && \

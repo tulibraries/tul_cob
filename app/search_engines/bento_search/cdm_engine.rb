@@ -96,7 +96,7 @@ module BentoSearch
     end
 
     def base_url
-      I18n.t("bento.cdm.base_url")
+      Rails.configuration.apis.dig(:cdm, :base_url)
     end
 
     def view_link(total = nil, helper)
@@ -129,7 +129,7 @@ module BentoSearch
     end
 
     def cdm_collection_ids_param
-      Array.wrap(Rails.configuration.cdm&.dig(:collection_ids)).join("!")
+      Array.wrap(Rails.configuration.apis.dig(:cdm, :collection_ids)).join("!")
     end
 
     def safe_json_parse(response, context:)

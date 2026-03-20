@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 Alma.configure do |config|
+  alma_config = Rails.configuration.apis.dig(:alma) || {}
+
   # You have to set te apikey
-  config.apikey = Rails.configuration.alma[:apikey]
+  config.apikey = alma_config[:apikey]
   config.enable_loggable = true
   config.enable_log_requests = true
-  config.timeout = Rails.configuration.alma[:timeout] || 30
+  config.timeout = alma_config[:timeout] || 30
 end
-ENV["ALMA_API_KEY"] ||= Rails.configuration.alma[:apikey]
-ENV["ALMA_DELIVERY_DOMAIN"] ||= Rails.configuration.alma[:delivery_domain]
-ENV["ALMA_INSTITUTION_CODE"] ||= Rails.configuration.alma[:institution_code]
-ENV["ALMA_AUTH_SECRET"] ||= Rails.configuration.alma[:auth_secret]
