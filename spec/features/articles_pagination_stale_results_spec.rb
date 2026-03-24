@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.feature "Articles pagination after idle time" do
+RSpec.feature "Articles pagination after idle time", external_timeout: true do
   include ActiveSupport::Testing::TimeHelpers
 
   let(:query) { "albert pike" }
@@ -31,7 +31,7 @@ RSpec.feature "Articles pagination after idle time" do
     end
   end
 
-  scenario "shows the zero-results state after clicking next from a later page" do
+  scenario "does not show a misleading zero-results state when a later page returns a stale upstream empty response" do
     travel_to(Time.zone.local(2026, 3, 23, 10, 0, 0)) do
       visit "/articles?search_field=any&q=#{CGI.escape(query)}&page=27"
 
@@ -44,7 +44,7 @@ RSpec.feature "Articles pagination after idle time" do
       all(:link, "Next »", visible: true).last.click
 
       expect(page).to have_current_path(/page=28/)
-      expect(page).to have_text("No article results found for your search.")
+      expect(page).not_to have_text("No article results found for your search.")
     end
   end
 
