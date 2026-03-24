@@ -11,6 +11,8 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  STALE_ARTICLE_RESULTS_MESSAGE = "Your article results session expired after inactivity. We reran the search from the beginning."
+
   def recaptcha
     return unless ::FeatureFlags.recaptcha?(params)
     # Do not enable for logged in users.
@@ -46,6 +48,13 @@ class PrimoCentralController < CatalogController
   end
 
   def advanced_override_path
+  end
+
+  def index
+    super
+    return unless stale_paginated_results?
+
+    redirect_to({ action: :index }.merge(restartable_search_params), notice: STALE_ARTICLE_RESULTS_MESSAGE)
   end
 
   rescue_from ArticleNotFound, with: :invalid_document_id_error
@@ -141,4 +150,16 @@ class PrimoCentralController < CatalogController
 
     redirect_to "/articles"
   end
+
+  private
+
+    def stale_paginated_results?
+      params[:page].to_i > 1 &&
+        restartable_search_params.present? &&
+        @response&.dig("response", "numFound").to_i.zero?
+    end
+
+    def restartable_search_params
+      params.to_unsafe_h.except("page", "controller", "action").presence
+    end
 end
