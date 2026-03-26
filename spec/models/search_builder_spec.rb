@@ -141,7 +141,7 @@ RSpec.describe SearchBuilder , type: :model do
       it "preserves the advanced nested query structure" do
         q = solr_params[:q] || solr_params["q"]
 
-        expect(q).to start_with('_query_:')
+        expect(q).to start_with("_query_:")
         expect(q).to include("$title_qf")
         expect(q).not_to start_with("\"")
       end
