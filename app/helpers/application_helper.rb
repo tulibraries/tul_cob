@@ -76,6 +76,9 @@ module ApplicationHelper
     params = search_params
 
     if path == :search_catalog_path && controller_name != "catalog"
+      sanitized_params = sanitize_cross_tab_search_params(params)
+      return sanitized_params if sanitized_params.present?
+
       last_catalog = session[:last_catalog_search_params]
       return last_catalog if last_catalog.present?
     end
