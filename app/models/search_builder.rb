@@ -90,6 +90,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     q = solr_params[q_key]
     return unless q.is_a?(String)
     return if id_fetch_query?(q)
+    return if structured_advanced_query?(q)
 
     tokens = q.split(/\s+/)
     return if tokens.length <= MAX_QUERY_TOKENS
@@ -106,6 +107,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     q = solr_params[q_key]
     return unless q.is_a?(String)
     return if id_fetch_query?(q)
+    return if structured_advanced_query?(q)
 
     tokens = q.split(/\s+/)
     return if tokens.empty?
@@ -328,6 +330,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     def id_fetch_query?(q)
       unique_key = blacklight_config.document_model.unique_key
       q.match?(/\A\{!lucene\}#{Regexp.escape(unique_key)}:\(/)
+    end
+
+    def structured_advanced_query?(q)
+      is_advanced_search? && q.include?('_query_:"{!')
     end
 
     # Updates in place the query values in params by folding the named

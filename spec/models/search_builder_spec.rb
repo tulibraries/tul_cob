@@ -67,6 +67,85 @@ RSpec.describe SearchBuilder , type: :model do
         expect(solr_params).not_to have_key("pf3")
       end
     end
+
+    context "with a structured advanced query" do
+      let(:long_title) do
+        "False : how mistrust, disinformation, and motivated reasoning make us believe things that aren't true"
+      end
+      let(:nested_advanced_query) do
+        %(_query_:"{!dismax qf='$title_qf' pf='$title_pf'}#{long_title}")
+      end
+
+      before do
+        allow(subject).to receive(:is_advanced_search?).and_return(true)
+      end
+
+      it "does not truncate the nested query string" do
+        solr_params = { q: nested_advanced_query }
+
+        subject.truncate_overlong_search_query(solr_params)
+
+        expect(solr_params[:q]).to eq(nested_advanced_query)
+      end
+
+      it "does not wrap the nested query string in outer quotes" do
+        solr_params = { q: nested_advanced_query }
+
+        subject.manage_long_queries_for_clause_limits(solr_params)
+
+        expect(solr_params[:q]).to eq(nested_advanced_query)
+      end
+    end
+
+    context "with a long advanced title search" do
+      let(:blacklight_config) do
+        Blacklight::Configuration.new.tap do |config|
+          config.default_solr_params = {
+            "facet.field" => ["lc_classification"]
+          }
+          config.advanced_search = Blacklight::OpenStructWithHashAccess.new(
+            url_key: "advanced",
+            query_parser: "lucene"
+          )
+
+          config.add_search_field("title") do |field|
+            field.solr_adv_parameters = {
+              qf: "$title_qf",
+              pf: "$title_pf"
+            }
+          end
+        end
+      end
+      let(:context) do
+        double(
+          "controller",
+          blacklight_config: blacklight_config
+        )
+      end
+      let(:params) do
+        {
+          search_field: "advanced",
+          f_1: "title",
+          q_1: "False : how mistrust, disinformation, and motivated reasoning make us believe things that aren't true",
+          operator: { q_1: "contains" }
+        }
+      end
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "preserves the advanced nested query structure" do
+        q = solr_params[:q] || solr_params["q"]
+
+        expect(q).to start_with('_query_:')
+        expect(q).to include("$title_qf")
+        expect(q).not_to start_with("\"")
+      end
+    end
   end
 
   describe "#limit_facets" do
