@@ -6,9 +6,11 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe "#render_nav_link" do
     let(:current_search_session) { OpenStruct.new(query_params: {}) }
     let(:request) { OpenStruct.new(original_fullpath: "/") }
+    let(:session) { {} }
 
     before(:each) do
       allow(helper).to receive(:request) { request }
+      allow(helper).to receive(:session) { session }
       without_partial_double_verification do
         allow(helper).to receive(:current_search_session) { current_search_session }
       end
@@ -34,6 +36,24 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "gets the query added to the generated link" do
         expect(helper.render_nav_link(:search_catalog_path, "More")).to have_link("More", href: "/catalog?q=foo")
+      end
+    end
+
+    context "when returning to catalog from another search scope" do
+      let(:current_search_session) { OpenStruct.new(query_params: { q: "new terms" }) }
+      let(:session) { { last_catalog_search_params: { q: "old terms" } } }
+
+      it "prefers the current cross-tab query over the last catalog query" do
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to have_link("More", href: "/catalog?q=new+terms")
+      end
+    end
+
+    context "when returning to catalog without a current safe query" do
+      let(:current_search_session) { OpenStruct.new(query_params: {}) }
+      let(:session) { { last_catalog_search_params: { q: "old terms" } } }
+
+      it "falls back to the last catalog search params" do
+        expect(helper.render_nav_link(:search_catalog_path, "More")).to have_link("More", href: "/catalog?q=old+terms")
       end
     end
   end
