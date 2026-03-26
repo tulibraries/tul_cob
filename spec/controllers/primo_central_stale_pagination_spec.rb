@@ -3,7 +3,6 @@
 require "rails_helper"
 
 RSpec.describe PrimoCentralController, type: :controller do
-  let(:session_expired_message) { PrimoCentralController::STALE_ARTICLE_RESULTS_MESSAGE }
   let(:search_service) { instance_double(Blacklight::SearchService) }
 
   describe "stale paginated article responses" do
@@ -25,7 +24,7 @@ RSpec.describe PrimoCentralController, type: :controller do
       get :index, params: { q: "albert pike", search_field: "any", page: 28 }
 
       expect(response).to redirect_to("/articles?q=albert+pike&search_field=any")
-      expect(flash[:notice]).to eq(session_expired_message)
+      expect(flash[:stale_article_results_restart]).to eq(true)
     end
 
     it "renders first-page zero results normally" do

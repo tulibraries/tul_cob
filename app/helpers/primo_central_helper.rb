@@ -80,6 +80,14 @@ module PrimoCentralHelper
     response.dig("response", "numFound") == 0
   end
 
+  def stale_article_results_restart?
+    flash[:stale_article_results_restart].present?
+  end
+
+  def stale_article_results_message
+    t("articles.stale_session.message")
+  end
+
   def primo_facet_names
     facet_field_names.reject { |facet_name|
       facet_name =~ /date|creator|topic/i

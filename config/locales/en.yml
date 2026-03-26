@@ -238,6 +238,8 @@ en:
     explanation_html: "<strong>Articles</strong> includes individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
     search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
     search_href: "the Library Search"
+    stale_session:
+      message: "Article results session expired after inactivity. To continue, run the search again from the search box above."
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"

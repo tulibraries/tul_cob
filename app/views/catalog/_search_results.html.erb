@@ -11,7 +11,13 @@
 
 <span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
 
-<%- if empty_response?(@response) %>
+<%- if stale_article_results_restart? %>
+  <%= render "primo_central/stale_article_results_notice" %>
+<%- end %>
+
+<%- if stale_article_results_restart? && empty_response?(@response) %>
+  <%= render "stale_article_results" %>
+<%- elsif empty_response?(@response) %>
   <%= render "zero_results" %>
 <%- elsif render_grouped_response? %>
   <%= render_grouped_document_index %>
