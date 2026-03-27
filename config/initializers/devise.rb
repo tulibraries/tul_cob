@@ -254,7 +254,7 @@ Devise.setup do |config|
   fetch_remote_idp_metadata = if ENV.key?("COB_SAML_FETCH_REMOTE_METADATA")
     ActiveModel::Type::Boolean.new.cast(ENV["COB_SAML_FETCH_REMOTE_METADATA"])
   else
-    Rails.env.production?
+    Rails.env.production? || Rails.env.development?
   end
 
   idp_metadata = if fetch_remote_idp_metadata
