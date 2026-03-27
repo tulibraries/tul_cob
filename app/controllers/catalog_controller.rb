@@ -353,6 +353,15 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("title_starts_with") do |field|
+      field.include_in_advanced_search = false
+      field.include_in_simple_select = false
+      field.solr_local_parameters = {
+        defType: "lucene",
+        df: "title_sort"
+      }
+    end
+
     config.add_search_field("creator_t", label: "Author/creator/contributor") do |field|
       field.solr_parameters = {
         qf: "${author_qf}",

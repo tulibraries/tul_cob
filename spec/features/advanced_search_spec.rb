@@ -77,8 +77,9 @@ RSpec.feature "Advanced Search" do
         search_field: "advanced",
       }.to_query}"
 
-      expect(page).to have_selector(results_selector, minimum: 3)
-      expect(first(results_selector).text).to match(/^[Ss]tate/)
+      expect(page).to have_selector(results_selector, minimum: 2)
+      expect(page).to have_text("States of catalog searching")
+      expect(page).to have_text("States and systems")
     end
 
     scenario "searching with begins_with x OR begins_with y" do
@@ -90,7 +91,8 @@ RSpec.feature "Advanced Search" do
       }.to_query}"
 
       expect(page).to have_selector(results_selector)
-      expect(first(results_selector).text).to match(/^([Ss]tates|[Ii]ntroduction) /)
+      expect(page).to have_text("States of catalog searching")
+      expect(page).to have_text("Introduction to prefix searching")
     end
 
     scenario "searching crazy long title with colon in it" do

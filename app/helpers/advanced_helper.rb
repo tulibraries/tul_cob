@@ -221,7 +221,11 @@ module BlacklightAdvancedSearch
       ops = keyword_op
       keyword_queries.each do |field, query|
         field = primo_to_solr_search(field)
-        queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+        if field == "title_starts_with"
+          queries << %(_query_:"{!lucene df=title_sort}#{query}")
+        else
+          queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+        end
         queries << ops.shift
       end
       queries.join(" ")

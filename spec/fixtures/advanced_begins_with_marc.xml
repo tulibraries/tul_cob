@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://www.loc.gov/MARC21/slim" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd">
+  <record>
+    <leader>01298cam a2200361 i 4500</leader>
+    <controlfield tag="001">991099900001703811</controlfield>
+    <controlfield tag="005">20260327090000.0</controlfield>
+    <controlfield tag="008">260327s2026    pau      b    001 0 eng d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b90000001-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Example, Alice.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">States of catalog searching /</subfield>
+      <subfield code="c">Alice Example.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Philadelphia :</subfield>
+      <subfield code="b">Temple Test Press,</subfield>
+      <subfield code="c">2026.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">123 pages ;</subfield>
+      <subfield code="c">24 cm</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b90000001</subfield>
+      <subfield code="b">pstk </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">0</subfield>
+      <subfield code="c">260327</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="ADM" ind1=" " ind2=" ">
+      <subfield code="b">2026-03-27 09:00:00</subfield>
+      <subfield code="e">b90000001-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2026-03-27 09:00:00</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield tag="HLD" ind1="0" ind2=" ">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">Z699</subfield>
+      <subfield code="i">.E93 2026</subfield>
+      <subfield code="8">22900000010003811</subfield>
+    </datafield>
+    <datafield tag="ITM" ind1=" " ind2=" ">
+      <subfield code="r">22900000010003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074090000001</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23900000010003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2026-03-27 09:00:00</subfield>
+      <subfield code="i">Z699 .E93 2026</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01298cam a2200361 i 4500</leader>
+    <controlfield tag="001">991099900002703811</controlfield>
+    <controlfield tag="005">20260327090000.0</controlfield>
+    <controlfield tag="008">260327s2026    pau      b    001 0 eng d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b90000002-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Example, Bob.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Statecraft for search builders /</subfield>
+      <subfield code="c">Bob Example.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Philadelphia :</subfield>
+      <subfield code="b">Temple Test Press,</subfield>
+      <subfield code="c">2026.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">98 pages ;</subfield>
+      <subfield code="c">24 cm</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b90000002</subfield>
+      <subfield code="b">pstk </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">0</subfield>
+      <subfield code="c">260327</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="ADM" ind1=" " ind2=" ">
+      <subfield code="b">2026-03-27 09:00:00</subfield>
+      <subfield code="e">b90000002-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2026-03-27 09:00:00</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield tag="HLD" ind1="0" ind2=" ">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">Z699</subfield>
+      <subfield code="i">.E94 2026</subfield>
+      <subfield code="8">22900000020003811</subfield>
+    </datafield>
+    <datafield tag="ITM" ind1=" " ind2=" ">
+      <subfield code="r">22900000020003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074090000002</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23900000020003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2026-03-27 09:00:00</subfield>
+      <subfield code="i">Z699 .E94 2026</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01298cam a2200361 i 4500</leader>
+    <controlfield tag="001">991099900003703811</controlfield>
+    <controlfield tag="005">20260327090000.0</controlfield>
+    <controlfield tag="008">260327s2026    pau      b    001 0 eng d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b90000003-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Example, Carol.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">States and systems /</subfield>
+      <subfield code="c">Carol Example.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Philadelphia :</subfield>
+      <subfield code="b">Temple Test Press,</subfield>
+      <subfield code="c">2026.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">111 pages ;</subfield>
+      <subfield code="c">24 cm</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b90000003</subfield>
+      <subfield code="b">pstk </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">0</subfield>
+      <subfield code="c">260327</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="ADM" ind1=" " ind2=" ">
+      <subfield code="b">2026-03-27 09:00:00</subfield>
+      <subfield code="e">b90000003-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2026-03-27 09:00:00</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield tag="HLD" ind1="0" ind2=" ">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">Z699</subfield>
+      <subfield code="i">.E95 2026</subfield>
+      <subfield code="8">22900000030003811</subfield>
+    </datafield>
+    <datafield tag="ITM" ind1=" " ind2=" ">
+      <subfield code="r">22900000030003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074090000003</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23900000030003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2026-03-27 09:00:00</subfield>
+      <subfield code="i">Z699 .E95 2026</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+  <record>
+    <leader>01298cam a2200361 i 4500</leader>
+    <controlfield tag="001">991099900004703811</controlfield>
+    <controlfield tag="005">20260327090000.0</controlfield>
+    <controlfield tag="008">260327s2026    pau      b    001 0 eng d</controlfield>
+    <datafield tag="035" ind1=" " ind2=" ">
+      <subfield code="a">(PPT)b90000004-01tuli_inst</subfield>
+    </datafield>
+    <datafield tag="100" ind1="1" ind2=" ">
+      <subfield code="a">Example, Dana.</subfield>
+    </datafield>
+    <datafield tag="245" ind1="1" ind2="0">
+      <subfield code="a">Introduction to prefix searching /</subfield>
+      <subfield code="c">Dana Example.</subfield>
+    </datafield>
+    <datafield tag="264" ind1=" " ind2="1">
+      <subfield code="a">Philadelphia :</subfield>
+      <subfield code="b">Temple Test Press,</subfield>
+      <subfield code="c">2026.</subfield>
+    </datafield>
+    <datafield tag="300" ind1=" " ind2=" ">
+      <subfield code="a">101 pages ;</subfield>
+      <subfield code="c">24 cm</subfield>
+    </datafield>
+    <datafield tag="907" ind1=" " ind2=" ">
+      <subfield code="a">.b90000004</subfield>
+      <subfield code="b">pstk </subfield>
+      <subfield code="c">-</subfield>
+    </datafield>
+    <datafield tag="998" ind1=" " ind2=" ">
+      <subfield code="b">0</subfield>
+      <subfield code="c">260327</subfield>
+      <subfield code="d">m</subfield>
+      <subfield code="e">a</subfield>
+      <subfield code="f">-</subfield>
+      <subfield code="g">0</subfield>
+    </datafield>
+    <datafield tag="ADM" ind1=" " ind2=" ">
+      <subfield code="b">2026-03-27 09:00:00</subfield>
+      <subfield code="e">b90000004-01tuli_inst</subfield>
+      <subfield code="d">ILS</subfield>
+      <subfield code="a">2026-03-27 09:00:00</subfield>
+      <subfield code="c">false</subfield>
+    </datafield>
+    <datafield tag="HLD" ind1="0" ind2=" ">
+      <subfield code="b">MAIN</subfield>
+      <subfield code="c">stacks</subfield>
+      <subfield code="h">Z699</subfield>
+      <subfield code="i">.E96 2026</subfield>
+      <subfield code="8">22900000040003811</subfield>
+    </datafield>
+    <datafield tag="ITM" ind1=" " ind2=" ">
+      <subfield code="r">22900000040003811</subfield>
+      <subfield code="b">1</subfield>
+      <subfield code="h">0</subfield>
+      <subfield code="g">stacks</subfield>
+      <subfield code="t">BOOK</subfield>
+      <subfield code="9">39074090000004</subfield>
+      <subfield code="e">stacks</subfield>
+      <subfield code="8">23900000040003811</subfield>
+      <subfield code="a">0</subfield>
+      <subfield code="q">2026-03-27 09:00:00</subfield>
+      <subfield code="i">Z699 .E96 2026</subfield>
+      <subfield code="d">MAIN</subfield>
+      <subfield code="f">MAIN</subfield>
+    </datafield>
+  </record>
+</collection>
