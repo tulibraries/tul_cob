@@ -45,7 +45,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_referer
     flash[:notice] = "Your search results page had to be reloaded. Please try again."
-    redirect_to request.referer
+    redirect_back fallback_location: root_path
   end
 
   def get_manifold_alerts
