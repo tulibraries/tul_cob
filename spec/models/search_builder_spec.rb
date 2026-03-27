@@ -316,6 +316,41 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
+  describe "advanced title begins_with queries" do
+    let(:context) { CatalogController.new }
+
+    it "uses a lucene title_sort prefix query for a single row" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          "operator" => { "q_1" => "begins_with" },
+          "f_1" => "title",
+          "q_1" => "states",
+          "search_field" => "advanced"
+        )
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}states*" ))
+    end
+
+    it "uses a lucene title_sort prefix query for same-field OR rows" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          "operator" => { "q_1" => "begins_with", "q_2" => "begins_with" },
+          "f_1" => "title",
+          "q_1" => "states",
+          "op_1" => "OR",
+          "f_2" => "title",
+          "q_2" => "introduction",
+          "search_field" => "advanced"
+        )
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}(states*) OR (introduction*)" ))
+    end
+  end
+
   describe "#process_call_number" do
     context "field is not a call number field" do
       it "value stays the same" do
@@ -364,6 +399,16 @@ RSpec.describe SearchBuilder , type: :model do
 
     it "returns value for begins_with when call number handled elsewhere" do
       expect(subject.process_begins_with(value: "ML", op: "begins_with")).to eq("ML")
+    end
+
+    it "turns title_starts_with begins_with into a normalized prefix query" do
+      expect(subject.process_begins_with(field: "title_starts_with", value: "States", op: "begins_with"))
+        .to eq("states*")
+    end
+
+    it "normalizes punctuation and whitespace for title_starts_with begins_with" do
+      expect(subject.process_begins_with(field: "title_starts_with", value: "The State!", op: "begins_with"))
+        .to eq("thestate*")
     end
   end
 
@@ -516,6 +561,47 @@ RSpec.describe SearchBuilder , type: :model do
       it "does not affect non query values" do
         subject.send(:process_params!, params, [:proc1, :proc2, :proc3])
         expect(params["f_1"]).to eq("buzz")
+      end
+    end
+
+    context "title begins_with" do
+      let(:params) do
+        ActionController::Parameters.new(
+          "operator" => { "q_1" => "begins_with" },
+          "f_1" => "title",
+          "q_1" => "States",
+          search_field: "advanced"
+        )
+      end
+
+      it "rewrites the field to title_starts_with" do
+        subject.send(:process_params!, params, subject.params_process_chain)
+
+        expect(params["f_1"]).to eq("title_starts_with")
+        expect(params["q_1"]).to eq("states*")
+      end
+    end
+
+    context "title begins_with with OR on the same field" do
+      let(:params) do
+        ActionController::Parameters.new(
+          "operator" => { "q_1" => "begins_with", "q_2" => "begins_with" },
+          "f_1" => "title",
+          "q_1" => "States",
+          "op_1" => "OR",
+          "f_2" => "title",
+          "q_2" => "Introduction",
+          search_field: "advanced"
+        )
+      end
+
+      it "combines the title prefix queries into one lucene clause" do
+        subject.send(:process_params!, params, subject.params_process_chain)
+
+        expect(params["f_1"]).to eq("title_starts_with")
+        expect(params["q_1"]).to eq("(states*) OR (introduction*)")
+        expect(params["f_2"]).to eq("title_starts_with")
+        expect(params["q_2"]).to eq("")
       end
     end
 
