@@ -28,7 +28,7 @@
 
 //= require sifter
 //=require microplugin
-//=require tom-select
+//=require selectize
 
 //= require_tree .
 
