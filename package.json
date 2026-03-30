@@ -18,9 +18,9 @@
     "microplugin": "^0.0.3",
     "node-fetch": "3.3.2",
     "node-forge": "1.4.0",
+    "selectize": "^0.12.6",
     "sifter": "^0.5.4",
     "stimulus": "^3.2.2",
-    "tom-select": "^2.5.2",
     "tslib": "^2.8.1",
     "webpack": "^5.105.4",
     "webpack-cli": "6",
@@ -28,7 +28,10 @@
     "ws": "^8.20.0"
   },
   "version": "0.1.0",
-  "resolutions": {},
+  "resolutions": {
+    "minimist": "1.2.6",
+    "serialize-javascript": "7.0.5"
+  },
   "babel": {
     "presets": [
       "./node_modules/@rails/webpacker/package/babel/preset.js"
