@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 921103ea570217843a3306607e24043df50aa91f
+  revision: d65e40f41ba358f4f94e4bfe2bbd2b877887743b
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -208,7 +208,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
-    bigdecimal (4.0.1)
+    bigdecimal (4.1.0)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
