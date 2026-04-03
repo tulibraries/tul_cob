@@ -21,6 +21,20 @@ class RequestData
     @items.collect { |item| [item["holding_data"]["holding_id"], item_pids.first] }.to_h
   end
 
+  def same_pickup_item_request(pickup_location:, description: nil)
+    items = requestable_items(description)
+    return if items.map(&:library).reject(&:blank?).uniq.one?
+
+    candidate = items.find { |item| item.library == pickup_location }
+    candidate ||= items.find { |item| determine_campus(item.library) == determine_campus(pickup_location) }
+    return if candidate.blank?
+
+    {
+      holding_id: candidate["holding_data"]["holding_id"],
+      item_pid: candidate["item_data"]["pid"]
+    }
+  end
+
   def get_request_level(partial = nil)
     has_description?(@items) ? "item" : "bib"
   end
@@ -214,5 +228,20 @@ class RequestData
 
       def has_description?(items)
         items.map { |item| item.description }.reject(&:blank?).present?
+      end
+
+      def requestable_items(description)
+        filtered_items =
+          if description.nil?
+            @items
+          else
+            @items.select { |item| item.description.to_s == description.to_s }
+          end
+
+        (filtered_items.presence || @items).select do |item|
+          item.in_place? &&
+            item["holding_data"]&.[]("holding_id").present? &&
+            item["item_data"]&.[]("pid").present?
+        end
       end
 end

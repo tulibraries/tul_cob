@@ -223,6 +223,86 @@ RSpec.describe AlmawsController, type: :controller do
         post(:send_hold_request, params: { material_type: { value: "BOOK", mms_id: ""  } })
         expect { response }.not_to raise_error
       end
+
+      it "submits an item request when a same-campus copy is available" do
+        allow(controller).to receive(:get_bib_items).and_return([
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_asrs" },
+            "item_data" => {
+              "pid" => "item_asrs",
+              "description" => "",
+              "library" => { "value" => "ASRS", "desc" => "Charles BookBot" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_ambler" },
+            "item_data" => {
+              "pid" => "item_ambler",
+              "description" => "",
+              "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ])
+
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "ASRS", loggable: {})
+        allow(Alma::ItemRequest).to receive(:submit).and_return(response_double)
+        allow(Alma::BibRequest).to receive(:submit)
+
+        post(:send_hold_request, params: {
+          mms_id: "foo",
+          hold_pickup_location: "MAIN",
+          material_type: "BOOK",
+          request_level: "bib"
+        })
+
+        expect(Alma::ItemRequest).to have_received(:submit).with(
+          hash_including(
+            holding_id: "holding_asrs",
+            item_pid: "item_asrs",
+            pickup_location_library: "MAIN"
+          )
+        )
+        expect(Alma::BibRequest).not_to have_received(:submit)
+      end
+
+      it "falls back to a bib request when no same-campus copy is available" do
+        allow(controller).to receive(:get_bib_items).and_return([
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_ambler" },
+            "item_data" => {
+              "pid" => "item_ambler",
+              "description" => "",
+              "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_hsl" },
+            "item_data" => {
+              "pid" => "item_hsl",
+              "description" => "",
+              "library" => { "value" => "GINSBURG", "desc" => "Ginsburg Health Science Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ])
+
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "AMBLER", loggable: {})
+        allow(Alma::ItemRequest).to receive(:submit)
+        allow(Alma::BibRequest).to receive(:submit).and_return(response_double)
+
+        post(:send_hold_request, params: {
+          mms_id: "foo",
+          hold_pickup_location: "MAIN",
+          material_type: "BOOK",
+          request_level: "bib"
+        })
+
+        expect(Alma::ItemRequest).not_to have_received(:submit)
+        expect(Alma::BibRequest).to have_received(:submit)
+      end
     end
   end
 
