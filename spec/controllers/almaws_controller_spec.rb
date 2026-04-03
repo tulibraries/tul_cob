@@ -224,23 +224,23 @@ RSpec.describe AlmawsController, type: :controller do
         expect { response }.not_to raise_error
       end
 
-      it "submits an item request when a same-campus copy is available" do
+      it "submits an item request for ASRS when ASRS and Charles stacks copies are both available" do
         allow(controller).to receive(:get_bib_items).and_return([
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_main" },
+            "item_data" => {
+              "pid" => "item_main",
+              "description" => "",
+              "library" => { "value" => "MAIN", "desc" => "Charles Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
           Alma::BibItem.new(
             "holding_data" => { "holding_id" => "holding_asrs" },
             "item_data" => {
               "pid" => "item_asrs",
               "description" => "",
               "library" => { "value" => "ASRS", "desc" => "Charles BookBot" },
-              "base_status" => { "value" => "1", "desc" => "Item in place" }
-            }
-          ),
-          Alma::BibItem.new(
-            "holding_data" => { "holding_id" => "holding_ambler" },
-            "item_data" => {
-              "pid" => "item_ambler",
-              "description" => "",
-              "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
               "base_status" => { "value" => "1", "desc" => "Item in place" }
             }
           )

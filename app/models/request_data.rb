@@ -25,8 +25,9 @@ class RequestData
     items = requestable_items(description)
     return if items.map(&:library).reject(&:blank?).uniq.one?
 
-    candidate = items.find { |item| item.library == pickup_location }
-    candidate ||= items.find { |item| determine_campus(item.library) == determine_campus(pickup_location) }
+    candidate = items
+      .select { |item| determine_campus(item.library) == determine_campus(pickup_location) }
+      .min_by { |item| same_pickup_priority(item, pickup_location) }
     return if candidate.blank?
 
     {
@@ -243,5 +244,17 @@ class RequestData
             item["holding_data"]&.[]("holding_id").present? &&
             item["item_data"]&.[]("pid").present?
         end
+      end
+
+      def same_pickup_priority(item, pickup_location)
+        [
+          item.library == preferred_source_library(pickup_location) ? 0 : 1,
+          item.library == pickup_location ? 0 : 1,
+          item.library.to_s
+        ]
+      end
+
+      def preferred_source_library(pickup_location)
+        pickup_location == "MAIN" ? "ASRS" : pickup_location
       end
 end
