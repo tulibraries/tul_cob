@@ -12,7 +12,7 @@
     "ajv": "8.18.0",
     "bootstrap": "^5.3.8",
     "braces": "3.0.3",
-    "follow-redirects": "1.15.11",
+    "follow-redirects": "1.16.0",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "microplugin": "^0.0.3",
