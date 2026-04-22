@@ -61,7 +61,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 2e86f357aa6a9645100ce55ad0aaa2bb6cc674a5
+  revision: ee913f076dcdcc2a97031ba87f1f734201dd27fd
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -208,7 +208,7 @@ GEM
     base64 (0.3.0)
     bcrypt (3.1.22)
     benchmark (0.5.0)
-    bigdecimal (4.1.0)
+    bigdecimal (4.1.2)
     bindex (0.8.1)
     blacklight (7.41.0)
       deprecation
@@ -362,7 +362,7 @@ GEM
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
-    http-cookie (1.1.4)
+    http-cookie (1.1.6)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httparty (0.24.0)
@@ -440,7 +440,7 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.27.0)
     msgpack (1.8.0)
-    multi_json (1.19.1)
+    multi_json (1.20.1)
     multi_xml (0.8.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
@@ -584,7 +584,7 @@ GEM
       tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.3.1)
+    rake (13.4.2)
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
