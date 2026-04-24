@@ -44,7 +44,7 @@ bundle exec rails db:migrate
 
 ### Start the Application for Development
 
-We need to run two commands in separate terminal windows in order to start the application.
+We need to run the Solr stack and the Rails app with the Sass watcher.
 
 * In the first terminal window, start solr. Note: Make sure the SOLR_URL environment variable is set properly.
 There is an example in the .env file.
@@ -55,11 +55,10 @@ cd ansible-playbook-solrcloud
 make up-lite
 ```
 
-* In the second terminal window, start the rails app
+* In the second terminal window, start the Rails app and dartsass watcher
 
-# Start the Rails application:
 ```bash
-bundle exec rails server
+bin/dev
 ```
 
 * Create a local user, if needed, for auth related work

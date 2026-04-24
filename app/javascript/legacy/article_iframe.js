@@ -1,4 +1,4 @@
-function loadArticleIframe(id) {
+window.loadArticleIframe = function(id) {
     var element = $(id)
     var url = element.attr("data-iframe-url")
   
@@ -10,4 +10,4 @@ function loadArticleIframe(id) {
         id: 'iframe-' + id,
       }).appendTo(id);
     }
-  }
+  };
