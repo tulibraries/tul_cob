@@ -26,6 +26,7 @@ $(document).on('turbolinks:load', function() {
 	      init();
 
 	      function init(){
+    alert("Hello world");
 	        if ($children.length > 5){
 	          $children.hide().slice(0,5).show();
 	          $more.on('click', function(e){
