@@ -31,12 +31,6 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
-
       - name: Copy config files
         run: |
           cp config/secrets.yml.example config/secrets.yml
@@ -62,10 +56,13 @@ jobs:
           exit 1
 
       - name: Install gems inside container (uses cache tarballs)
-        run: $DC bundle install --jobs 4 --retry 3 --path vendor/bundle
+        run: $DC bundle install --jobs 4 --retry 3
 
       - name: Install Javascript dependencies in container
         run: $DC bundle exec yarn install --frozen-lockfile
+
+      - name: Build stylesheets for test assets
+        run: $DC bundle exec rails dartsass:build
 
       - name: Run linter
         run: $DC bundle exec rubocop

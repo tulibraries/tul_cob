@@ -1,6 +1,7 @@
 FROM ruby:3.4-alpine
 
-ENV RAILS_ENV="test"
+ENV RAILS_ENV="test" \
+    BUNDLER_VERSION="2.5.9"
 
 RUN apk add -U --no-cache --virtual build-dependencies \
       build-base \
@@ -16,6 +17,8 @@ RUN apk add -U --no-cache --virtual build-dependencies \
       nodejs \
       sqlite-dev \
       yarn tzdata shared-mime-info
+
+RUN gem install bundler:${BUNDLER_VERSION}
 
 RUN mkdir /app
 
