@@ -1,4 +1,36 @@
 GIT
+  remote: https://github.com/jrochkind/bento_search.git
+  revision: 5e8a90bfb6a04dba37832b9a85d9563fd3eaa5ab
+  specs:
+    bento_search (2.0.0.rc2)
+      confstruct (~> 1.0)
+      htmlentities
+      httpclient (>= 2.2.5, < 3.0.0)
+      language_list (~> 1.0)
+      multi_json (>= 1.0.4, < 2.0)
+      nokogiri
+      openurl (>= 0.3.1, < 1.1)
+      rails (>= 7.1, < 9)
+      summon
+
+GIT
+  remote: https://github.com/projectblacklight/blacklight.git
+  revision: 0378d3789e88c17712ca15f220723435a8049840
+  branch: bl7-rails-8-upgrade
+  specs:
+    blacklight (7.42.0)
+      deprecation
+      globalid
+      hashdiff
+      i18n (>= 1.7.0)
+      jbuilder (~> 2.7)
+      kaminari (>= 0.15)
+      ostruct (>= 0.3.2)
+      rails (>= 6.1, < 9)
+      view_component (>= 3, < 5.0)
+      zeitwerk
+
+GIT
   remote: https://github.com/projectblacklight/blacklight_advanced_search.git
   revision: d9d985acb6b87c896b8725cfc13933a85a12afcb
   ref: v7.0.0
@@ -16,22 +48,6 @@ GIT
       activesupport
       httparty
       xml-simple
-
-GIT
-  remote: https://github.com/tulibraries/bento_search.git
-  revision: f3135301a7fd9491e0838a0d57bcbb2909a7f724
-  branch: temple-libraries-rails7-upgrade
-  specs:
-    bento_search (2.0.0.rc1)
-      confstruct (~> 1.0)
-      htmlentities
-      httpclient (>= 2.2.5, < 3.0.0)
-      language_list (~> 1.0)
-      multi_json (>= 1.0.4, < 2.0)
-      nokogiri
-      openurl (>= 0.3.1, < 1.1)
-      rails (>= 5.2, < 8)
-      summon
 
 GIT
   remote: https://github.com/tulibraries/blacklight-ris.git
@@ -109,33 +125,33 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    action_text-trix (2.1.18)
+      railties
+    actioncable (8.1.0)
+      actionpack (= 8.1.0)
+      activesupport (= 8.1.0)
       nio4r (~> 2.0)
       websocket-driver (>= 0.6.1)
       zeitwerk (~> 2.6)
-    actionmailbox (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      activejob (= 7.2.3.1)
-      activerecord (= 7.2.3.1)
-      activestorage (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    actionmailbox (8.1.0)
+      actionpack (= 8.1.0)
+      activejob (= 8.1.0)
+      activerecord (= 8.1.0)
+      activestorage (= 8.1.0)
+      activesupport (= 8.1.0)
       mail (>= 2.8.0)
-    actionmailer (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      actionview (= 7.2.3.1)
-      activejob (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    actionmailer (8.1.0)
+      actionpack (= 8.1.0)
+      actionview (= 8.1.0)
+      activejob (= 8.1.0)
+      activesupport (= 8.1.0)
       mail (>= 2.8.0)
       rails-dom-testing (~> 2.2)
-    actionpack (7.2.3.1)
-      actionview (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
-      cgi
+    actionpack (8.1.0)
+      actionview (= 8.1.0)
+      activesupport (= 8.1.0)
       nokogiri (>= 1.8.5)
-      racc
-      rack (>= 2.2.4, < 3.3)
+      rack (>= 2.2.4)
       rack-session (>= 1.0.1)
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
@@ -145,47 +161,48 @@ GEM
       actionpack (>= 4.0.0)
     actionpack-page_caching (1.2.4)
       actionpack (>= 4.0.0)
-    actiontext (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      activerecord (= 7.2.3.1)
-      activestorage (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    actiontext (8.1.0)
+      action_text-trix (~> 2.1.15)
+      actionpack (= 8.1.0)
+      activerecord (= 8.1.0)
+      activestorage (= 8.1.0)
+      activesupport (= 8.1.0)
       globalid (>= 0.6.0)
       nokogiri (>= 1.8.5)
-    actionview (7.2.3.1)
-      activesupport (= 7.2.3.1)
+    actionview (8.1.0)
+      activesupport (= 8.1.0)
       builder (~> 3.1)
-      cgi
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    activejob (7.2.3.1)
-      activesupport (= 7.2.3.1)
+    activejob (8.1.0)
+      activesupport (= 8.1.0)
       globalid (>= 0.3.6)
-    activemodel (7.2.3.1)
-      activesupport (= 7.2.3.1)
-    activerecord (7.2.3.1)
-      activemodel (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    activemodel (8.1.0)
+      activesupport (= 8.1.0)
+    activerecord (8.1.0)
+      activemodel (= 8.1.0)
+      activesupport (= 8.1.0)
       timeout (>= 0.4.0)
-    activestorage (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      activejob (= 7.2.3.1)
-      activerecord (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    activestorage (8.1.0)
+      actionpack (= 8.1.0)
+      activejob (= 8.1.0)
+      activerecord (= 8.1.0)
+      activesupport (= 8.1.0)
       marcel (~> 1.0)
-    activesupport (7.2.3.1)
+    activesupport (8.1.0)
       base64
-      benchmark (>= 0.3)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
       drb
       i18n (>= 1.6, < 2)
+      json
       logger (>= 1.4.2)
-      minitest (>= 5.1, < 6)
+      minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
+      uri (>= 0.13.1)
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
@@ -210,17 +227,6 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.1.2)
     bindex (0.8.1)
-    blacklight (7.41.0)
-      deprecation
-      globalid
-      hashdiff
-      i18n (>= 1.7.0)
-      jbuilder (~> 2.7)
-      kaminari (>= 0.15)
-      ostruct (>= 0.3.2)
-      rails (>= 6.1, < 8.1)
-      view_component (>= 2.74, < 4)
-      zeitwerk
     blacklight-marc (9.0.0)
       blacklight (>= 7.11, < 10)
       library_stdnums
@@ -245,7 +251,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.5.1)
     childprocess (5.1.0)
       logger (~> 1.5)
     citeproc (1.1.0)
@@ -356,7 +361,7 @@ GEM
     honeybadger (6.5.5)
       logger
       ostruct
-    htmlentities (4.3.4)
+    htmlentities (4.4.2)
     http (5.3.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -548,20 +553,20 @@ GEM
       rack (>= 1.3)
     rackup (2.3.1)
       rack (>= 3)
-    rails (7.2.3.1)
-      actioncable (= 7.2.3.1)
-      actionmailbox (= 7.2.3.1)
-      actionmailer (= 7.2.3.1)
-      actionpack (= 7.2.3.1)
-      actiontext (= 7.2.3.1)
-      actionview (= 7.2.3.1)
-      activejob (= 7.2.3.1)
-      activemodel (= 7.2.3.1)
-      activerecord (= 7.2.3.1)
-      activestorage (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
+    rails (8.1.0)
+      actioncable (= 8.1.0)
+      actionmailbox (= 8.1.0)
+      actionmailer (= 8.1.0)
+      actionpack (= 8.1.0)
+      actiontext (= 8.1.0)
+      actionview (= 8.1.0)
+      activejob (= 8.1.0)
+      activemodel (= 8.1.0)
+      activerecord (= 8.1.0)
+      activestorage (= 8.1.0)
+      activesupport (= 8.1.0)
       bundler (>= 1.15.0)
-      railties (= 7.2.3.1)
+      railties (= 8.1.0)
     rails-controller-testing (1.0.5)
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
@@ -573,10 +578,9 @@ GEM
     rails-html-sanitizer (1.7.0)
       loofah (~> 2.25)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    railties (7.2.3.1)
-      actionpack (= 7.2.3.1)
-      activesupport (= 7.2.3.1)
-      cgi
+    railties (8.1.0)
+      actionpack (= 8.1.0)
+      activesupport (= 8.1.0)
       irb (~> 1.13)
       rackup (>= 1.0.0)
       rake (>= 12.2)
@@ -688,8 +692,12 @@ GEM
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       sprockets (>= 3.0.0)
-    sqlite3 (1.7.3)
-      mini_portile2 (~> 2.8.0)
+    sqlite3 (2.9.3-aarch64-linux-gnu)
+    sqlite3 (2.9.3-arm-linux-gnu)
+    sqlite3 (2.9.3-arm64-darwin)
+    sqlite3 (2.9.3-x86-linux-gnu)
+    sqlite3 (2.9.3-x86_64-darwin)
+    sqlite3 (2.9.3-x86_64-linux-gnu)
     stackprof (0.2.28)
     stringio (3.2.0)
     summon (2.0.5)
@@ -795,7 +803,7 @@ DEPENDENCIES
   awesome_print
   axe-core-rspec
   bento_search!
-  blacklight (~> 7.41)
+  blacklight!
   blacklight-marc
   blacklight-ris!
   blacklight_advanced_search!
@@ -850,7 +858,7 @@ DEPENDENCIES
   psych
   puma (= 8.0.0)
   rack-mini-profiler
-  rails (= 7.2.3.1)
+  rails (= 8.1)
   rails-controller-testing
   recaptcha (~> 5.21)
   rsolr (~> 2.6)
@@ -866,7 +874,7 @@ DEPENDENCIES
   skylight
   spring
   sprockets-rails
-  sqlite3 (~> 1.7.3)
+  sqlite3
   stackprof
   turbo-rails
   turbolinks (~> 5)

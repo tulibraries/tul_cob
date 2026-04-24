@@ -2,15 +2,15 @@
 
 source "https://rubygems.org"
 
-gem "rails", "7.2.3.1"
+gem "rails", "8.1"
 
 gem "actionpack-action_caching", "~> 1.2"
 gem "actionpack-page_caching", "~> 1.2"
 gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "autoprefixer-rails"
 gem "awesome_print"
-gem "bento_search", git: "https://github.com/tulibraries/bento_search.git", branch: "temple-libraries-rails7-upgrade"
-gem "blacklight", "~> 7.41"
+gem "bento_search", git: "https://github.com/jrochkind/bento_search.git"
+gem "blacklight", git: "https://github.com/projectblacklight/blacklight.git", branch: "bl7-rails-8-upgrade"
 gem "blacklight-marc"
 gem "blacklight-ris", git: "https://github.com/tulibraries/blacklight-ris.git", branch: "update-for-rails-7-blacklight-7"
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
@@ -85,6 +85,7 @@ group :development, :test do
   gem "pry-rails"
   gem "rubocop"
   gem "rubocop-rails"
+  gem "sqlite3"
 end
 
 group :test do
@@ -97,7 +98,6 @@ group :test do
   gem "simplecov"
   gem "simplecov-lcov"
   gem "spring"
-  gem "sqlite3", "~> 1.7.3"
   gem "vcr"
   gem "webmock"
 end
