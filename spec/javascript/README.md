@@ -48,8 +48,7 @@ which is a list of all the files that we want to run before the tests are run:
     ],
     "moduleDirectories": [
       "node_modules",
-      "app/javascript",
-      "app/javascript/packs"
+      "app/javascript"
     ],
     "setupFiles": [
       "<rootDir>/spec/javascript/setup/mutation-observer.js",

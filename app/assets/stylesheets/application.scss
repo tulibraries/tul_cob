@@ -1,28 +1,29 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_self
- *= require 'blacklight_advanced_search'
- *
- * Used by blacklight_range_limit
- *= require  'blacklight_range_limit'
- *
-*/
-
 @import "partials/_vars.scss";
 @import "bootstrap";
+@import "blacklight_advanced_search.css";
+@import "blacklight_range_limit.css.scss";
 @import "selectize.bootstrap5.scss";
 @import "blacklight.scss";
 @import "blacklight_marc";
-@import "partials/*";
+@import "partials/_advanced.scss";
+@import "partials/_availability.scss";
+@import "partials/_bento.scss";
+@import "partials/_bookmarks.scss";
+@import "partials/_citation_form.scss";
+@import "partials/_colors.scss";
+@import "partials/_facets.scss";
+@import "partials/_footer.scss";
+@import "partials/_header.scss";
+@import "partials/_index_results.scss";
+@import "partials/_lib_guides.scss";
+@import "partials/_mobilemenu.scss";
+@import "partials/_pagination.scss";
+@import "partials/_query_lists.scss";
+@import "partials/_record_pages.scss";
+@import "partials/_record_tools.scss";
+@import "partials/_requests.scss";
+@import "partials/_typography.scss";
+@import "partials/_users.scss";
+@import "partials/_web_content.scss";
 @import "tucob";
 @import "icons";

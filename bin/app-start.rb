@@ -24,7 +24,7 @@ if ENV["RAILS_ENV"] != "production"
   system("rails db:migrate") || raise("Failed rails db:migrate commad")
 end
 system("yarn") || raise("Failed yarn command")
-system("rails webpacker:compile") || raise("Failed rails webpacker:compile command")
+system("rails dartsass:build") || raise("Failed rails dartsass:build command")
 exec("rails s -p 3000 -b '0.0.0.0'") if fork == nil
 
 # Next, provision with test data.
