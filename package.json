@@ -42,12 +42,10 @@
     "not IE 11"
   ],
   "devDependencies": {
-    "@webpack-cli/serve": "^3.0.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.3.0",
     "jest-fetch-mock": "^3.0.3",
-    "mutationobserver-shim": "^0.3.7",
-    "webpack-dev-server": "^5.2.3"
+    "mutationobserver-shim": "^0.3.7"
   },
   "scripts": {
     "test": "jest"
