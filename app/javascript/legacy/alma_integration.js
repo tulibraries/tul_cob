@@ -270,6 +270,8 @@ AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount)
   return Promise.resolve(null);
 };
 
+window.AlmaIntegration = AlmaIntegration;
+
 /**
  * Partitions an array into arrays of specified size
  * @param size

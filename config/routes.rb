@@ -38,24 +38,24 @@ Rails.application.routes.draw do
 
 
   # resource and resources
-  resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
+  resource :catalog, only: [], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
     concerns :range_searchable
   end
 
   resource :query_list, controller: "query_list"
 
-  resource :databases, only: [:index], as: "databases", path: "/databases", controller: "databases" do
+  resource :databases, only: [], as: "databases", path: "/databases", controller: "databases" do
     concerns :searchable
     concerns :range_searchable
   end
 
-  resource :journals, only: [:index], as: "journals", path: "/journals", controller: "journals" do
+  resource :journals, only: [], as: "journals", path: "/journals", controller: "journals" do
     concerns :searchable
     concerns :range_searchable
   end
 
-  resource :web_content, only: [:index], as: "web_content", path: "/web_content", controller: "web_content" do
+  resource :web_content, only: [], as: "web_content", path: "/web_content", controller: "web_content" do
     concerns :searchable
   end
 
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  resource :articles, only: [:index], as: "article_search", path: "/articles", controller: "primo_central" do
+  resource :articles, only: [], as: "article_search", path: "/articles", controller: "primo_central" do
     concerns :searchable
     concerns :range_searchable
   end

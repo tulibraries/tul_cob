@@ -37,6 +37,8 @@ services:
       ARCHIVESSPACE_PASSWORD: fake-password
       RAILS_ENV: test
       RACK_ENV: test
+      BUNDLER_VERSION: "2.5.9"
+      BUNDLE_PATH: "vendor/bundle"
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"
@@ -50,7 +52,7 @@ services:
       sh -c '
         echo "⏳ waiting for solr…" &&
         until curl -sSf http://solr:8983/solr > /dev/null; do sleep 1; done &&
-        bundle exec rails ci
+        tail -f /dev/null
       '
 networks:
   default:

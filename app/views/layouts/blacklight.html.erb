@@ -34,14 +34,25 @@
     <link href="https://books.google.com" rel="preconnect" crossorigin>
     <link href="https://use.fontawesome.com" rel="preconnect" crossorigin>
 
-    <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => "xml") %>
+    <%= opensearch_description_tag application_name, opensearch_catalog_url(format: "xml") %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= render partial: "shared/campus_closed" %>
-    <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
     <%= csrf_meta_tags %>
+    <%= javascript_include_tag "jquery/dist/jquery.js", defer: true %>
+    <%= javascript_include_tag "rails-ujs", defer: true %>
+    <%= javascript_include_tag "turbolinks", defer: true %>
+    <%= javascript_include_tag "twitter/typeahead", defer: true %>
+    <%= javascript_include_tag "bootstrap/dist/js/bootstrap.bundle.js", defer: true %>
+    <%= javascript_include_tag "masonry-layout/dist/masonry.pkgd.js", defer: true %>
+    <%= javascript_include_tag "blacklight/blacklight", defer: true %>
+    <%= javascript_include_tag "blacklight_range_limit", defer: true %>
+    <%= javascript_include_tag "blacklight_advanced_search", defer: true %>
+    <%= javascript_include_tag "sifter/sifter.js", defer: true %>
+    <%= javascript_include_tag "microplugin/src/microplugin.js", defer: true %>
+    <%= javascript_include_tag "selectize/dist/js/standalone/selectize.js", defer: true %>
+    <%= render partial: "shared/campus_closed" %>
+    <%= javascript_importmap_tags %>
     <%= content_for(:head) %>
   </head>
 
