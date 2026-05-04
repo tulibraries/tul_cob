@@ -6,19 +6,12 @@ module BentoSearch
       bento_results = BentoSearch::Results.new
       guides_response = []
 
-<<<<<<< BL-1905-Upgrade_to_LibGuides_API_1.2
       token = access_token
       return bento_results if token.blank?
 
       path = "https://lgapi-us.libapps.com/1.2/guides"
-=======
-      config = Rails.configuration.apis.dig(:lib_guides) || {}
-      path = config[:base_url].presence || "https://lgapi-us.libapps.com/1.1/guides"
->>>>>>> main
       query = args[:query].gsub(" ", "+")
-      query_config = config[:query] || {}
       query_params = {
-<<<<<<< BL-1905-Upgrade_to_LibGuides_API_1.2
         site_id: ENV["LIB_GUIDES_SITE_ID"],
         search_terms: query,
         status: 1,
@@ -33,18 +26,6 @@ module BentoSearch
       )
 
       guides_response = response.success? ? JSON.parse(response.body) : []
-=======
-        site_id: config[:site_id].presence || 17,
-        search_terms: query,
-        status: query_config[:status].presence || 1,
-        sort_by: query_config[:sort_by].presence || "relevance",
-        expand: query_config[:expand].presence || "owner",
-        guide_types: query_config[:guide_types].presence || "1,2,3,4",
-        key: config[:api_key].presence || "LIB_GUIDES_API_KEY",
-      }.to_param
-      guides_url = path + "?" + query_params
-      guides_response = JSON.load(URI.open(guides_url))
->>>>>>> main
 
       results = guides_response[0, 3]
 
