@@ -5,11 +5,12 @@ require "faraday/multipart"
 require "json"
 
 class ArchivesSpaceService
-  BASE_URL = "https://scrcarchivesspace.temple.edu/staff/api"
-  USERNAME = ENV.fetch("ARCHIVESSPACE_USER", "test-user")
-  PASSWORD = ENV.fetch("ARCHIVESSPACE_PASSWORD", "test-pass")
-  OPEN_TIMEOUT = ENV.fetch("ARCHIVESSPACE_OPEN_TIMEOUT", "2").to_i
-  TIMEOUT = ENV.fetch("ARCHIVESSPACE_TIMEOUT", "5").to_i
+  ARCHIVES_SPACE_CONFIG = Rails.configuration.apis.dig(:archives_space) || {}
+  BASE_URL = ARCHIVES_SPACE_CONFIG[:staff_api_base_url].to_s.chomp("/")
+  USERNAME = ARCHIVES_SPACE_CONFIG[:username] || "test-user"
+  PASSWORD = ARCHIVES_SPACE_CONFIG[:password] || "test-pass"
+  OPEN_TIMEOUT = (ARCHIVES_SPACE_CONFIG[:open_timeout] || 2).to_i
+  TIMEOUT = (ARCHIVES_SPACE_CONFIG[:timeout] || 5).to_i
 
   def initialize
     @conn = Faraday.new(url: BASE_URL) do |f|

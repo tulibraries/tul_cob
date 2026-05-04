@@ -31,11 +31,6 @@ public/uploads
 vendor/bundle/
 coverage
 
-config/alma.yml
-config/bento.yml
-config/deploy_to.yml
-config/master.key
-
 spec/examples.txt
 /public/packs
 /public/packs-test
@@ -53,13 +48,10 @@ yarn-debug.log*
 /public/cached_pages*
 
 /config/master.key
+/config/apis.yml
 
 .DS_Store
 **/.DS_Store
-
-/config/credentials/test.key
-/config/credentials/development.key
-/config/credentials/production.key
 
 development.sqlite3*
 test.sqlite3*

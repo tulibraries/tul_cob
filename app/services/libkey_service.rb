@@ -4,7 +4,7 @@ class LibkeyService
   ARTICLE_RESPONSE_FIELDS = %w[retractionNoticeUrl fullTextFile contentLocation].freeze
   JOURNAL_RESPONSE_FIELDS = %w[browzineEnabled browzineWebLink].freeze
 
-  def initialize(config: Rails.configuration.bento&.dig(:libkey), cache_config: Rails.configuration.caches)
+  def initialize(config: Rails.configuration.apis.dig(:libkey), cache_config: Rails.configuration.caches)
     @config = config
     @cache_config = cache_config
   end

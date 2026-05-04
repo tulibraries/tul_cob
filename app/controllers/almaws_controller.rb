@@ -80,7 +80,13 @@ class AlmawsController < CatalogController
     log = { type: "submit_hold_request", user: current_user.id }.merge(bib_options)
 
     begin
-      response = do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+      item_options = same_pickup_item_request_options(params[:mms_id], params[:hold_pickup_location], params[:hold_description])
+      response =
+        if item_options.present?
+          do_with_json_logger(log.merge(item_options)) { Alma::ItemRequest.submit(bib_options.merge(item_options)) }
+        else
+          do_with_json_logger(log) { Alma::BibRequest.submit(bib_options) }
+        end
       confirmation = RequestConfirmation.new(response, params[:hold_pickup_location])
       flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
@@ -234,6 +240,14 @@ class AlmawsController < CatalogController
           acc.request_options = options + next_options
           acc
         end
+    end
+
+    def same_pickup_item_request_options(mms_id, pickup_location, description = nil)
+      return if mms_id.blank? || pickup_location.blank?
+
+      RequestData
+        .new(get_bib_items(mms_id))
+        .same_pickup_item_request(pickup_location:, description:)
     end
 
     def date_or_nil(param)

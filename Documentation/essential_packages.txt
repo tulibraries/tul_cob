@@ -1,3 +1,4 @@
 express
 minimatch
 ajv
+zlib

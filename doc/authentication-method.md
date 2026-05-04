@@ -18,7 +18,7 @@ This method uses multiple Ruby gems that work in concert to deliver the feature.
 
 Configuration of the Ruby-SAML method:
 
-The configuration for this method is in config/devise.yml In order to get the Ruby SAML method working on your local you need to have the `COB_SP_CERT` and `COB_SP_KEY` environment values exported in the shell you are running the app.  You can use the same values as we do for the kubernetes qa instance which you can get by either exploring the container via rancher or you can get from our Hashi Vault under the cob-app secrets.
+The configuration for this method is in `config/initializers/devise.rb`, with values sourced from `COB_SAML_*` and `COB_SP_*` environment variables. In order to get the Ruby SAML method working on your local you need to have the `COB_SP_CERT` and `COB_SP_KEY` environment values exported in the shell you are running the app. You can use the same values as we do for the kubernetes qa instance which you can get by either exploring the container via rancher or you can get from our Hashi Vault under the cob-app secrets.
 
 Locally, of course. You also have the option of creating your own user and logging in with that user instead.  So the above process may only be of interest if you need to test the SAML login feature in your local environment.
 
@@ -50,7 +50,7 @@ Changes to either of these files require a restart of both httpd (Apache) and th
 ## Ruby Application Level:
 
 ### Configuration:
-The configuration file for this method is config/devise.yml (It’s the same file use as for Ruby-SAML).
+The configuration for this method is in `config/initializers/devise.rb` and uses the same `COB_SAML_*` / `COB_SP_*` environment variables as Ruby-SAML.
 
 ### Controller:
 When the IDP returns with the user metadata after a successful authentication is completed, the user is returned to the Users::OmniauthCallbackController.shibboleth action.

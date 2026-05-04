@@ -90,6 +90,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     q = solr_params[q_key]
     return unless q.is_a?(String)
     return if id_fetch_query?(q)
+    return if structured_advanced_query?(q)
 
     tokens = q.split(/\s+/)
     return if tokens.length <= MAX_QUERY_TOKENS
@@ -106,6 +107,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     q = solr_params[q_key]
     return unless q.is_a?(String)
     return if id_fetch_query?(q)
+    return if structured_advanced_query?(q)
 
     tokens = q.split(/\s+/)
     return if tokens.empty?
@@ -228,7 +230,21 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def process_begins_with(field: nil, value:, op: nil)
-    value
+    return value if value.blank?
+    return value unless op == "begins_with"
+    return value unless value.is_a?(String)
+    return value if value.to_s.start_with?("{!")
+    return value if field.to_s.match?(/call_number/)
+
+    case field.to_s
+    when "title_starts_with"
+      normalized_value = normalize_alpha_sort_prefix(value)
+      return value if normalized_value.blank?
+
+      "#{normalized_value}*"
+    else
+      value
+    end
   end
 
   def sanitize_query(field: nil, value:, op: nil)
@@ -267,6 +283,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def substitute_special_chars(field: nil, value:, op: nil)
     return value if value.to_s.start_with?("{!")
     return value if field.to_s.match?(/call_number/)
+    return value if field.to_s == "title_starts_with"
 
     value.gsub(/([:?]|\(\))/, " ") rescue value
   end
@@ -275,6 +292,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     collapsed = value.strip.gsub(/\s+/, " ")
     escaped_specials = collapsed.gsub(%r{([+\-!(){}\[\]^"~*?:\\/]|&&|\|\|)}) { "\\#{$1}" }
     escaped_specials.gsub(/\s+/, "\\ ")
+  end
+
+  def normalize_alpha_sort_prefix(value)
+    value.downcase.strip.gsub(/[^a-z]/, "")
   end
 
   def no_journals(solr_parameters)
@@ -330,6 +351,10 @@ class SearchBuilder < Blacklight::SearchBuilder
       q.match?(/\A\{!lucene\}#{Regexp.escape(unique_key)}:\(/)
     end
 
+    def structured_advanced_query?(q)
+      is_advanced_search? && q.include?('_query_:"{!')
+    end
+
     # Updates in place the query values in params by folding the named
     # procedures passed in through the values.
     #
@@ -341,7 +366,6 @@ class SearchBuilder < Blacklight::SearchBuilder
     def process_params!(params, procedures)
       params ||= {}
       procedures ||= []
-      params["processed"] = true
 
       # Do not process non query values
       ops = params.fetch("operator", "q" => "default")
@@ -350,13 +374,47 @@ class SearchBuilder < Blacklight::SearchBuilder
       # query_key are like "q_1", "q_2"..., etc.
       # op is like "contains", "begins_with"..., etc.
       ops.each { |query_key, op|
-
-        field = params[query_key.tr("q", "f")]
+        field_key = query_key.tr("q", "f")
+        field = params[field_key]
+        if op == "begins_with" && field == "title"
+          params[field_key] = "title_starts_with"
+          field = params[field_key]
+        end
         value = params[query_key]
 
         # Fold the procedures onto the query value.
         params[query_key] = procedures.reduce(value) { |v, p| send(p, field:, value: v, op:) }
       }
+
+      combine_title_begins_with_rows!(params, ops)
+      params["processed"] = true
       params
+    end
+
+    def combine_title_begins_with_rows!(params, ops)
+      rows = ops.keys.sort.filter_map do |query_key|
+        field_key = query_key.tr("q", "f")
+        value = params[query_key]
+        next if value.blank?
+        next unless params[field_key] == "title_starts_with"
+        next unless ops[query_key] == "begins_with"
+
+        { query_key:, field_key:, value: }
+      end
+
+      return if rows.length < 2
+
+      combined = rows.first[:value]
+
+      rows.each_cons(2).with_index do |(_left, right), index|
+        op_key = "op_#{index + 1}"
+        op = params[op_key]
+        next if op.blank? || op == "NOT"
+
+        combined = "(#{combined}) #{op} (#{right[:value]})"
+        params[right[:query_key]] = ""
+      end
+
+      params[rows.first[:query_key]] = combined
     end
 end

@@ -41,6 +41,42 @@ RSpec.describe LibGuidesApi do
         expect(api.as_json.map { |o| o["id"] }).to eq([])
       end
     end
+
+    it "builds the request URL from configured base_url with path" do
+      allow(api).to receive(:config).and_return(
+        {
+          "base_url" => "https://example.libapps.com/1.1/guides",
+          "api_key" => "abc123",
+          "site_id" => "17",
+          "query" => { "sort_by" => "relevance", "expand" => "owner", "guide_types" => "1,2,3,4", "status" => 1 }
+        }
+      )
+      allow(HTTParty).to receive(:get).and_return(
+        double(success?: true, body: [].to_json)
+      )
+
+      api.as_json
+
+      expect(HTTParty).to have_received(:get).with(a_string_starting_with("https://example.libapps.com/1.1/guides?"))
+    end
+
+    it "uses the configured base_url as-is when host-only is provided" do
+      allow(api).to receive(:config).and_return(
+        {
+          "base_url" => "https://example.libapps.com",
+          "api_key" => "abc123",
+          "site_id" => "17",
+          "query" => { "sort_by" => "relevance", "expand" => "owner", "guide_types" => "1,2,3,4", "status" => 1 }
+        }
+      )
+      allow(HTTParty).to receive(:get).and_return(
+        double(success?: true, body: [].to_json)
+      )
+
+      api.as_json
+
+      expect(HTTParty).to have_received(:get).with(a_string_starting_with("https://example.libapps.com?"))
+    end
   end
 
   context "when the API fails to respond successfully" do

@@ -88,6 +88,101 @@ RSpec.describe RequestData, type: :model do
     end
   end
 
+  describe "#same_pickup_item_request" do
+    context "when ASRS and Charles stacks copies are both available" do
+      let(:bib_items) do
+        [
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_main" },
+            "item_data" => {
+              "pid" => "item_main",
+              "description" => "",
+              "library" => { "value" => "MAIN", "desc" => "Charles Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_asrs" },
+            "item_data" => {
+              "pid" => "item_asrs",
+              "description" => "",
+              "library" => { "value" => "ASRS", "desc" => "Charles BookBot" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ]
+      end
+
+      it "prefers the ASRS item" do
+        expect(subject.same_pickup_item_request(pickup_location: "MAIN")).to eq(
+          holding_id: "holding_asrs",
+          item_pid: "item_asrs"
+        )
+      end
+    end
+
+    context "when one of multiple available copies is at the pickup campus" do
+      let(:bib_items) do
+        [
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_asrs" },
+            "item_data" => {
+              "pid" => "item_asrs",
+              "description" => "",
+              "library" => { "value" => "ASRS", "desc" => "Charles BookBot" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_ambler" },
+            "item_data" => {
+              "pid" => "item_ambler",
+              "description" => "",
+              "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ]
+      end
+
+      it "returns the local campus item ids" do
+        expect(subject.same_pickup_item_request(pickup_location: "MAIN")).to eq(
+          holding_id: "holding_asrs",
+          item_pid: "item_asrs"
+        )
+      end
+    end
+
+    context "when no available copy is at the pickup campus" do
+      let(:bib_items) do
+        [
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_ambler" },
+            "item_data" => {
+              "pid" => "item_ambler",
+              "description" => "",
+              "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          ),
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_hsl" },
+            "item_data" => {
+              "pid" => "item_hsl",
+              "description" => "",
+              "library" => { "value" => "GINSBURG", "desc" => "Ginsburg Health Science Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ]
+      end
+
+      it "returns nil" do
+        expect(subject.same_pickup_item_request(pickup_location: "MAIN")).to be_nil
+      end
+    end
+  end
+
 
 
   describe "picking up at a different campus" do
