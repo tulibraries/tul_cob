@@ -82,7 +82,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: 2a3e411e1e4098ca0b431cd925fa9abff61a6752
+  revision: 5864400cb4fb3657e96189883206e7a26e5cbc2f
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -440,8 +440,8 @@ GEM
     mini_portile2 (2.8.9)
     minitest (5.27.0)
     msgpack (1.8.0)
-    multi_json (1.21.0)
-    multi_xml (0.9.0)
+    multi_json (1.21.1)
+    multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
     multipart-post (2.4.1)
     mutex_m (0.3.0)
