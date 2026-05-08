@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby: [ 3.4 ]
+        ruby: [ "3.4" ]
     env:
       CI: true
       SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}
@@ -43,7 +43,7 @@ jobs:
           cp config/apis.yml.example config/apis.yml
 
       - name: Set up Docker Compose
-        uses: docker/setup-compose-action@v1
+        uses: docker/setup-compose-action@v2
 
       - name: Build & start App + Solr
         run: |
