@@ -31,16 +31,16 @@
     <!-- End Google Tag Manager -->
 
     <%# Preload links for improved performance %>
-    <%= preload_link_tag(font_url('faustina.woff2')) %>
-    <%= preload_link_tag(font_url('roboto-condensed.woff2')) %>
+    <%= preload_link_tag(font_url("faustina.woff2"), as: "font", type: "font/woff2", crossorigin: true) %>
+    <%= preload_link_tag(font_url("roboto-condensed.woff2"), as: "font", type: "font/woff2", crossorigin: true) %>
 
     <link href="https://books.google.com" rel="preconnect" crossorigin>
     <link href="https://use.fontawesome.com" rel="preconnect" crossorigin>
 
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: "xml") %>
     <%= favicon_link_tag %>
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
 
     <%= csrf_meta_tags %>
     <%= render partial: "shared/campus_closed" %>
