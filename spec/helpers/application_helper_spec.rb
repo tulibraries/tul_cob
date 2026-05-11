@@ -39,18 +39,18 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#nav_search_params_for" do
-      context "when linking back to catalog from another search scope" do
-      before do
-        helper.session[:last_catalog_search_params] = { "q" => "motion picture" }
+    context "when linking back to catalog from another search scope" do
+    before do
+      helper.session[:last_catalog_search_params] = { "q" => "motion picture" }
 
-        allow(helper).to receive(:controller_name).and_return("databases")
-        allow(helper).to receive(:search_params).and_return({ q: "bassoon" })
-      end
-
-      it "prefers the current query over the previous catalog query" do
-        expect(helper.nav_search_params_for(:search_catalog_path)).to eq({ q: "bassoon" })
-      end
+      allow(helper).to receive(:controller_name).and_return("databases")
+      allow(helper).to receive(:search_params).and_return({ q: "bassoon" })
     end
+
+    it "prefers the current query over the previous catalog query" do
+      expect(helper.nav_search_params_for(:search_catalog_path)).to eq({ q: "bassoon" })
+    end
+  end
 
     context "when linking from catalog to another search scope with a call number query" do
       before do
