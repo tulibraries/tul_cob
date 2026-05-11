@@ -218,7 +218,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     return value unless "#{field}".match?(/call_number/)
     return value unless value.is_a?(String)
 
-    normalized_value = escape_call_number(value).downcase
+    normalized_value = normalize_call_number_query(value, op)
 
     payload = case op
               when "contains" then "*#{normalized_value}*"
@@ -292,6 +292,27 @@ class SearchBuilder < Blacklight::SearchBuilder
     collapsed = value.strip.gsub(/\s+/, " ")
     escaped_specials = collapsed.gsub(%r{([+\-!(){}\[\]^"~*?:\\/]|&&|\|\|)}) { "\\#{$1}" }
     escaped_specials.gsub(/\s+/, "\\ ")
+  end
+
+  def normalize_call_number_query(value, op)
+    collapsed = value.strip.gsub(/\s+/, " ")
+
+    if wildcard_separator_call_number?(collapsed, op)
+      collapsed.downcase.scan(/[a-z0-9]+/).join("*")
+    else
+      escape_call_number(collapsed).downcase
+    end
+  end
+
+  def wildcard_separator_call_number?(value, op)
+    return false unless ["contains", "begins_with"].include?(op)
+    return false if value.match?(/[.]/)
+
+    tokens = value.scan(/[a-z0-9]+/i)
+    return false unless tokens.length > 1
+
+    first_token = tokens.first
+    first_token.match?(/[a-z]/i) && first_token.match?(/\d/)
   end
 
   def normalize_alpha_sort_prefix(value)

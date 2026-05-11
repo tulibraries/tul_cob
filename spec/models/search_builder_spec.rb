@@ -367,6 +367,22 @@ RSpec.describe SearchBuilder , type: :model do
         value = "ML 1700 H973o 1996"
         expect(subject.process_call_number(value:, field: "call_number", op: "contains")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}*ml\\ 1700\\ h973o\\ 1996*")
       end
+
+      it "keeps punctuated call numbers on the existing escaped path" do
+        value = "ML1700.H87 1996"
+
+        expect(subject.process_call_number(value:, field: "call_number", op: "contains")).to eq(
+          "{!lucene df=call_number_t allowLeadingWildcard=true}*ml1700.h87\\ 1996*"
+        )
+      end
+
+      it "uses wildcard separators for unpunctuated call number variants" do
+        value = "ML128 B26F6"
+
+        expect(subject.process_call_number(value:, field: "call_number", op: "contains")).to eq(
+          "{!lucene df=call_number_t allowLeadingWildcard=true}*ml128*b26f6*"
+        )
+      end
     end
 
     context "field is call_number and op is begins_with" do
@@ -378,14 +394,37 @@ RSpec.describe SearchBuilder , type: :model do
         value = "ML 1700 H973o 1996"
         expect(subject.process_call_number(value:, field: "call_number", op: "begins_with")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}ml\\ 1700\\ h973o\\ 1996*")
       end
+
+      it "keeps punctuated call numbers on the existing escaped path" do
+        value = "ML1700.H87 1996"
+
+        expect(subject.process_call_number(value:, field: "call_number", op: "begins_with")).to eq(
+          "{!lucene df=call_number_t allowLeadingWildcard=true}ml1700.h87\\ 1996*"
+        )
+      end
+
+      it "uses wildcard separators for unpunctuated call number variants" do
+        value = "ML128 B26F6"
+
+        expect(subject.process_call_number(value:, field: "call_number", op: "begins_with")).to eq(
+          "{!lucene df=call_number_t allowLeadingWildcard=true}ml128*b26f6*"
+        )
+      end
     end
 
     context "field is call_number and op is not contains or begins with" do
       it "returns the escaped value" do
         expect(subject.process_call_number(value: "ML", field: "call_number", op: "bar")).to eq("{!lucene df=call_number_t allowLeadingWildcard=true}ml")
       end
-    end
 
+      it "keeps non-wildcard call number queries on the existing escaped path" do
+        value = "ML128 B26F6"
+
+        expect(subject.process_call_number(value:, field: "call_number", op: "bar")).to eq(
+          "{!lucene df=call_number_t allowLeadingWildcard=true}ml128\\ b26f6"
+        )
+      end
+    end
   end
 
   describe "#process_begins_with" do
