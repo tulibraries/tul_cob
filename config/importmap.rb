@@ -7,4 +7,3 @@ pin "blacklight", to: "blacklight/blacklight.js"
 pin "blacklight_range_limit"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin_all_from "app/javascript/legacy", under: "legacy"
-

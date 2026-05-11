@@ -1,2 +1,2 @@
-import "./controllers"
-import "./legacy"
+import "controllers"
+import "legacy"
