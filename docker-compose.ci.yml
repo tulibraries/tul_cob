@@ -37,7 +37,6 @@ services:
       ARCHIVESSPACE_PASSWORD: fake-password
       RAILS_ENV: test
       RACK_ENV: test
-      BUNDLER_VERSION: "2.5.9"
       BUNDLE_PATH: "vendor/bundle"
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
