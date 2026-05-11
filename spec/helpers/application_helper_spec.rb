@@ -38,6 +38,48 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#nav_search_params_for" do
+      context "when linking back to catalog from another search scope" do
+      before do
+        helper.session[:last_catalog_search_params] = { "q" => "motion picture" }
+
+        allow(helper).to receive(:controller_name).and_return("databases")
+        allow(helper).to receive(:search_params).and_return({ q: "bassoon" })
+      end
+
+      it "prefers the current query over the previous catalog query" do
+        expect(helper.nav_search_params_for(:search_catalog_path)).to eq({ q: "bassoon" })
+      end
+    end
+
+    context "when linking from catalog to another search scope with a call number query" do
+      before do
+        allow(helper).to receive(:controller_name).and_return("catalog")
+        allow(helper).to receive(:search_params).and_return({
+          q_1: "{!lucene df=call_number_t allowLeadingWildcard=true}ml128\\.b26f6\\ 1988"
+        })
+      end
+
+      it "sanitizes the call number query before passing it to another search scope" do
+        expect(helper.nav_search_params_for(:search_databases_path)).to eq({
+          q: "ml128.b26f6 1988"
+        })
+      end
+    end
+  end
+
+  describe "#sanitize_cross_tab_search_params" do
+    it "extracts a safe call number query from local params" do
+      params = {
+        q_1: "{!lucene df=call_number_t allowLeadingWildcard=true}ml128\\.b26f6\\ 1988"
+      }
+
+      expect(helper.sanitize_cross_tab_search_params(params)).to eq({
+        q: "ml128.b26f6 1988"
+      })
+    end
+  end
+
   describe "#is_active?(path)" do
     let(:current_page?) { true }
     let(:request) { OpenStruct.new(original_fullpath: "/") }
