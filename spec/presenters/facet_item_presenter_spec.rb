@@ -17,7 +17,7 @@ RSpec.describe FacetItemPresenter, type: :presenter do
   let(:pivot_facet_config) { Blacklight::Configuration::FacetField.new(key: "pivot", pivot: ["job", "pet"]) }
   let(:facet_field) { instance_double(Blacklight::Solr::Response::Facets::FacetField) }
   let(:request) { ActionDispatch::TestRequest.create }
-  let(:controller) { ViewComponent::Base.test_controller.constantize.new.tap { |c| c.request = request }.extend(Rails.application.routes.url_helpers) }
+  let(:controller) { ApplicationController.new.tap { |c| c.request = request }.extend(Rails.application.routes.url_helpers) }
   let(:view_context) { controller.view_context }
   let(:search_state) { Blacklight::SearchState.new({ f: { pet: ["cat"], job: ["vet"], num: ["two"] } }, view_context.blacklight_config) }
 
