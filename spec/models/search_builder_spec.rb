@@ -727,6 +727,22 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   describe "range queries" do
+    it "uses a match-all query for lc classification range-only searches" do
+      params = ActionController::Parameters.new(
+        range: {
+          lc_classification: {
+            begin: "",
+            end: "ML 1700 .H87 1996"
+          }
+        }
+      )
+
+      subject.with(params)
+
+      expect(subject.to_h["q"]).to eq("*:*")
+      expect(subject.to_h["fq"]).to include(match(/lc_call_number_sort: \[\* TO .+\]/))
+    end
+
     it "converts 'range' object to correct solr range fields" do
       params = ActionController::Parameters.new(
         f: {

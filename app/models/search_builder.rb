@@ -345,8 +345,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def add_lc_range_search_to_solr(solr_params)
-    # Solr throws exceptions when trying to facet unnknown fields.
-    solr_params["facet.field"].delete("lc_classification")
+    solr_params["facet.field"]&.delete("lc_classification")
 
     return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
 
@@ -355,15 +354,20 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if lc_range["begin"].blank? && lc_range["end"].blank?
 
     raw_begin = lc_range["begin"]
-    raw_end   = lc_range["end"]
+    raw_end = lc_range["end"]
 
-    _begin = LcSolrSortable.convert(raw_begin) if raw_begin.present?
-    _end   = LcSolrSortable.convert(raw_end)   if raw_end.present?
+    converted_begin = LcSolrSortable.convert(raw_begin) if raw_begin.present?
+    converted_end = LcSolrSortable.convert(raw_end) if raw_end.present?
 
-    _begin = "*" if _begin.blank?
-    _end   = "*" if _end.blank?
+    return if converted_begin.blank? && converted_end.blank?
 
-    (solr_params[:fq] || []) << "lc_call_number_sort: [#{_begin} TO #{_end}]"
+    converted_begin = "*" if converted_begin.blank?
+    converted_end = "*" if converted_end.blank?
+
+    solr_params["q"] = "*:*" if solr_params["q"].blank? && solr_params[:q].blank?
+
+    solr_params["fq"] = Array(solr_params["fq"] || solr_params[:fq])
+    solr_params["fq"] << "lc_call_number_sort: [#{converted_begin} TO #{converted_end}]"
   end
 
   private
