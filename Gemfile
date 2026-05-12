@@ -30,6 +30,7 @@ gem "cob_index",
 gem "cob_web_index", git: "https://github.com/tulibraries/cob_web_index.git",
   branch: "main"
 gem "concurrent-ruby"
+gem "connection_pool", "< 3"
 gem "dartsass-rails"
 gem "devise"
 gem "devise-guests", "~> 0.8"
@@ -106,7 +107,6 @@ group :production do
   gem "pg"
   # required for using memcached
   gem "dalli"
-  gem "connection_pool"
 end
 
 gem "recaptcha", "~> 5.21"
