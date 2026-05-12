@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-gem "rails", "8.1"
+gem "rails", "8.1.3"
 
 gem "actionpack-action_caching", "~> 1.2"
 gem "actionpack-page_caching", "~> 1.2"
