@@ -37,13 +37,13 @@ RSpec.describe "users/_loans_details.html.erb", type: :view do
     }
 
     it "doesn't show exclamation point in renewal column" do
-      loans = [renewable_loan]
+      loans = double("Loan Set", all: [renewable_loan])
       render partial: "users/loans_details", locals: { loans: }
       expect(rendered).to_not have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
     end
 
     it "doesn't show exclamation point in renewal column" do
-      loans = [renewable_loan_without_flag]
+      loans = double("Loan Set", all: [renewable_loan_without_flag])
       render partial: "users/loans_details", locals: { loans: }
       expect(rendered).to_not have_css('td.renewal-check span.glyphicon-exclamation-sign[title="unable to renew"]')
     end
@@ -64,9 +64,42 @@ RSpec.describe "users/_loans_details.html.erb", type: :view do
     }
 
     it "shows exclamation point in renewal column" do
-      loans = [nonrenewable_loan]
+      loans = double("Loan Set", all: [nonrenewable_loan])
       render partial: "users/loans_details", locals: { loans: }
       expect(rendered).to have_css('td.renewal-check i.fa-exclamation-circle[title="unable to renew"]')
+    end
+  end
+
+  context "when the user has more than 100 loans" do
+    it "renders loans beyond the first 100 returned by the loan set" do
+      all_loans = Array.new(101) do |index|
+        loan_number = index + 1
+
+        OpenStruct.new(
+          loan_id: "loan-#{loan_number}",
+          title: "Loan #{loan_number}",
+          due_date: (Time.now + one_day).iso8601,
+          item_barcode: "barcode-#{loan_number}",
+          call_number: "Call #{loan_number}",
+          renewable: true,
+          loan_status: "Active",
+          renewable?: true,
+          overdue?: false
+        )
+      end
+
+      loans = double("Loan Set")
+
+      allow(loans).to receive(:all).and_return(all_loans)
+      allow(loans).to receive(:present?).and_return(true)
+      allow(loans).to receive(:each_with_index) do |&block|
+        all_loans.first(100).each_with_index(&block)
+      end
+
+      render partial: "users/loans_details", locals: { loans: loans }
+
+      expect(rendered).to have_field("loan_id_loan-101")
+      expect(rendered).to have_css("input[name='loan_ids[]']", count: 101)
     end
   end
 end
