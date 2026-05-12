@@ -270,7 +270,7 @@ GEM
     concurrent-ruby (1.3.6)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
-    connection_pool (3.0.2)
+    connection_pool (2.5.5)
     crack (1.0.1)
       bigdecimal
       rexml
@@ -809,7 +809,7 @@ DEPENDENCIES
   cob_index!
   cob_web_index!
   concurrent-ruby
-  connection_pool
+  connection_pool (< 3)
   csl-styles
   dalli
   dartsass-rails
