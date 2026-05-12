@@ -14,9 +14,9 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
 
     context "A target redirect is defined" do
       it "redirects to the target" do
-        request.env["omniauth.params"] = { "target" => "foobar" }
+        request.env["omniauth.params"] = { "target" => "/foobar" }
         get :saml
-        expect(response.status).to redirect_to("foobar")
+        expect(response.status).to redirect_to("/foobar")
       end
     end
 

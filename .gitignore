@@ -45,6 +45,8 @@ yarn-error.log
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+/app/assets/builds/*
+!/app/assets/builds/.keep
 /public/cached_pages*
 
 /config/master.key

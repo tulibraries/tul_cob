@@ -19,6 +19,9 @@
 
     <title><%= render_page_title %></title>
 
+    <%= javascript_include_tag "jquery3.min", "jquery_ujs", "turbolinks", "popper", "bootstrap", "selectize/dist/js/standalone/selectize.min", "masonry-layout/dist/masonry.pkgd.min", "blacklight/blacklight", "blacklight_range_limit" %>
+    <%= javascript_importmap_tags %>
+    
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -28,20 +31,19 @@
     <!-- End Google Tag Manager -->
 
     <%# Preload links for improved performance %>
-    <%= preload_link_tag(font_url('faustina.woff2')) %>
-    <%= preload_link_tag(font_url('roboto-condensed.woff2')) %>
+    <%= preload_link_tag(font_url("faustina.woff2"), as: "font", type: "font/woff2", crossorigin: true) %>
+    <%= preload_link_tag(font_url("roboto-condensed.woff2"), as: "font", type: "font/woff2", crossorigin: true) %>
 
     <link href="https://books.google.com" rel="preconnect" crossorigin>
     <link href="https://use.fontawesome.com" rel="preconnect" crossorigin>
 
-    <%= opensearch_description_tag application_name, opensearch_catalog_url(:format => "xml") %>
+    <%= opensearch_description_tag application_name, opensearch_catalog_url(format: "xml") %>
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
-    <%= render partial: "shared/campus_closed" %>
-    <%= javascript_pack_tag "application", 'data-turbolinks-track': 'reload', defer: true %>
+
     <%= csrf_meta_tags %>
+    <%= render partial: "shared/campus_closed" %>
     <%= content_for(:head) %>
   </head>
 

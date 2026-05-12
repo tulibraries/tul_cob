@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load', function() {
-    if (typeof AlmaIntegration === "undefined") {
+    if (typeof window.AlmaIntegration === "undefined") {
         return;
     }
 
@@ -7,7 +7,7 @@ $(document).on('turbolinks:load', function() {
         return;
     }
 
-    var ba = new AlmaIntegration();
+    var ba = new window.AlmaIntegration();
     ba.loadAvailability();
 });
 
@@ -50,6 +50,6 @@ $(document).on('turbolinks:load', function() {
 
 	})(jQuery);
 
-	Blacklight.onLoad(function() {
+	window.Blacklight.onLoad(function() {
 	  $('[data-long-list]').longList();
 	});

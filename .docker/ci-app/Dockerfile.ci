@@ -17,6 +17,8 @@ RUN apk add -U --no-cache --virtual build-dependencies \
       sqlite-dev \
       yarn tzdata shared-mime-info
 
+RUN gem install bundler
+
 RUN mkdir /app
 
 WORKDIR /app

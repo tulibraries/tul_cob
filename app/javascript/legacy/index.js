@@ -1,0 +1,8 @@
+import "legacy/polyfills"
+import "legacy/alma_integration"
+import "legacy/blacklight_overrides"
+import "legacy/availability"
+import "legacy/article_iframe"
+import "legacy/summary_previews"
+import "legacy/libwizard_tutorial"
+import "legacy/application"
