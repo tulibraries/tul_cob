@@ -1,4 +1,5 @@
-<% loans.each_with_index do |loan, counter| %>
+# Use `all` to fetch every loan for the user, not just the first 100.
+<% loans.all.each_with_index do |loan, counter| %>
   <tr>
     <td colspan="1"><%= counter + 1 %></td>
     <td colspan="3" data-sort-key="title" data-sort-value="<%= loan.title.to_s %>"><%= loan.title %></td>
