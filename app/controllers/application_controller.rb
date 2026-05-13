@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include Blacklight::BlacklightHelperBehavior
   include Blacklight::ConfigurationHelperBehavior
   include JsonLogger
+  include LoginCookie
 
   layout "blacklight"
 
@@ -18,6 +19,7 @@ class ApplicationController < ActionController::Base
     :index, :show, :not_found, :internal_server_error,
     :account, :librarian_view, :citation, :email, :facet
   ]
+  before_action :clear_stale_login_cookie
 
   rescue_from ActionController::InvalidAuthenticityToken,
     with: :redirect_to_referer

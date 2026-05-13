@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < Devise::SessionsController
+  include LoginCookie
   include Sessions::SocialLogin
 
   before_action :get_manifold_alerts, only: [ :new ]
@@ -12,6 +13,15 @@ class SessionsController < Devise::SessionsController
     doc_id = SolrDocument.sanitize_id(params[:redirect_to])
     @document = SolrDocument.find(doc_id) rescue SolrDocument.new({})
     no_cache unless request.xhr?.nil?
+    super
+  end
+
+  def create
+    super { |user| set_login_cookie(user) }
+  end
+
+  def destroy
+    clear_login_cookie
     super
   end
 end

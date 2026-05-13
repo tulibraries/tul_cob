@@ -21,6 +21,7 @@ module Sessions::SocialLogin
 
 
     sign_in(:user, user)
+    set_login_cookie(user)
 
     social_login_populate_session(jwt)
 
