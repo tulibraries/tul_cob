@@ -20,8 +20,7 @@
     <% if @request_level == "item" && @description.to_h.values.flatten.count > 1 %>
       <div class="form-group hold-form">
         <%= form.label(:digitization_description, t("requests.form.description_label_html")) %>
-        <p><%= t("requests.form.description_additional_text") %></p>
-        <%= select_tag(:digitization_description, grouped_options_for_select(@description), class: "request-form form-control", include_blank: true) %>
+        <%= select_tag(:digitization_description, grouped_options_for_select(@description), class: "request-form form-control", prompt: "Select volume/issue or additional item details, if applicable") %>
       </div>
     <% else %>
       <%= form.hidden_field :digitization_description, value: @description.flatten.last %>
