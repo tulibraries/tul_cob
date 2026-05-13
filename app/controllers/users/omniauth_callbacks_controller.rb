@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include LoginCookie
+
   protect_from_forgery with: :exception, except: :saml
   skip_before_action :verify_authenticity_token, only: [:alma, :saml]
+  after_action :set_login_cookie, only: [:alma, :saml], if: :user_signed_in?
 
   def alma
     # You need to implement the method below in your model (e.g. app/models/user.rb)
