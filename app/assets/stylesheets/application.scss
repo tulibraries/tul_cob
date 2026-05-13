@@ -27,4 +27,7 @@
 @import "partials/_users.scss";
 @import "partials/_web_content.scss";
 @import "tucob";
-@import "icons";
+
+//Remove blacklight_range_limit_scss after we upgrade to BL-9.x
+@import "blacklight_range_limit";
+@import "slider"
