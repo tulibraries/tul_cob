@@ -38,7 +38,7 @@
       <% if @asrs_description.to_h.values.flatten.count > 1 %>
         <div class="form-group hold-form">
           <%= form.label(:asrs_description, t("requests.form.description_label_html")) %>
-          <%= select_tag(:asrs_description, grouped_options_for_select(@asrs_description), { data: { "action": "request-form#select", "bs-target": "request-form.descriptions" }, class: "request-form form-control", include_blank: true }) %>
+          <%= select_tag(:asrs_description, grouped_options_for_select(@asrs_description), { data: { "action": "request-form#select", "bs-target": "request-form.descriptions" }, class: "request-form form-control", prompt: "Select volume/issue or additional item details, if applicable" }) %>
         </div>
       <% else %>
         <%= form.hidden_field :asrs_description, value: @asrs_description.flatten.last%>

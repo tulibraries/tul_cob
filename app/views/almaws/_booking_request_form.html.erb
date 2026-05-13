@@ -21,7 +21,7 @@
     <% if @description.to_h.values.flatten.count > 1 %>
       <div class="hold-form form-group">
         <%= form.label(:booking_description, t("requests.form.description_label_html")) %>
-        <%= select_tag(:booking_description,  grouped_options_for_select(@description), data: { "bs-target": "request-form.descriptions" }, class: "request-form form-control", include_blank: true) %>
+        <%= select_tag(:booking_description,  grouped_options_for_select(@description), data: { "bs-target": "request-form.descriptions" }, class: "request-form form-control", prompt: "Select volume/issue or additional item details, if applicable") %>
       </div>
     <% else %>
         <%= form.hidden_field :booking_description, value: @description.flatten.last %>
