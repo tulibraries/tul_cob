@@ -291,29 +291,29 @@ RSpec.describe RequestData, type: :model do
     context "one description includes no libraries" do
       let(:bib_items) { Alma::BibItem.find("desc_with_no_libraries") }
       it "returns a hash with all the campuses" do
-        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
+        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "two descriptions each at one library" do
       let(:bib_items) { Alma::BibItem.find("paley_reserves_and_remote_storage") }
       it "returns a hash with all the campuses" do
         expect(subject.item_level_locations).to eq(
-          "v.4 (1976)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
-          "v.5 (1977)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
+          "v.4 (1976)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
+          "v.5 (1977)" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "one description at multiple libraries" do
       let(:bib_items) { Alma::BibItem.find("desc_with_multiple_libraries") }
       it "returns a hash with all the campuses" do
-        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" })
+        expect(subject.item_level_locations).to eq("v.2 (1974)" => { "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" })
       end
     end
     context "descriptions at locations including an international campus" do
       let(:bib_items) { Alma::BibItem.find("rome_with_multiple_libraries") }
       it "returns a hash with the relevent locations" do
         expect(subject.item_level_locations).to eq(
-          "" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
-          "description for ASRS item" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Harrisburg Campus Library" => "HARRISBURG", "Podiatry Library" => "PODIATRY" },
+          "" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
+          "description for ASRS item" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
           "description for Rome item" => { "Rome Campus Library" => "ROME" })
       end
     end
