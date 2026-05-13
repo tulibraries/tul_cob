@@ -173,7 +173,7 @@ class RequestData
     private
 
       def default_pickup_locations
-        ["MAIN", "AMBLER", "GINSBURG", "PODIATRY", "HARRISBURG"]
+        ["MAIN", "AMBLER", "GINSBURG", "PODIATRY"]
       end
 
       def available_libraries
