@@ -1,5 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
+const descriptionPlaceholderLabel = "Select volume/issue or additional item details, if applicable"
+
 export default class extends Controller {
   static targets = [ "pickups", "descriptions" ]
 
@@ -31,7 +33,11 @@ export default class extends Controller {
 
     let description = $("#hold_description option:selected").text();
     let date = new Date();
-    let emptyOption = $('<option />').attr('value', '');
+    let emptyOption = $("<option />")
+      .attr("value", "")
+      .prop("disabled", true)
+      .prop("selected", true)
+      .prop("hidden", true);
     let options = $(window.item_level_pickup_locations).filter(`optgroup[label='${description}']`).prepend(emptyOption).html();
     if(options) {
       $(this.pickupsTarget).html(options);
@@ -46,7 +52,12 @@ export default class extends Controller {
        window.item_level_descriptions = $(this.descriptionsTarget).html();
     }
     let material_type = $("#material_type option").filter(":selected").text();
-    let emptyOption = $("<option />").attr("value", "");
+    let emptyOption = $("<option />")
+      .attr("value", "")
+      .text(descriptionPlaceholderLabel)
+      .prop("disabled", true)
+      .prop("selected", true)
+      .prop("hidden", true);
     let options = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`).prepend(emptyOption).html();
     if(options) {
       $(this.descriptionsTarget).html(options);
