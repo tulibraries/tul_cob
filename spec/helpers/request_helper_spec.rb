@@ -35,6 +35,37 @@ RSpec.describe RequestHelper, type: :helper do
     end
   end
 
+  describe "#request_select_options" do
+    it "renders a hidden disabled selected placeholder ahead of the options" do
+      html = helper.request_select_options([["Book", "BOOK"]], placeholder: "Select a format")
+      fragment = Nokogiri::HTML.fragment(html)
+      placeholder = fragment.at_css("option")
+
+      expect(placeholder.text).to eq("Select a format")
+      expect(placeholder["value"]).to eq("")
+      expect(placeholder["disabled"]).to eq("disabled")
+      expect(placeholder["selected"]).to eq("selected")
+      expect(placeholder["hidden"]).to eq("hidden")
+      expect(fragment.css("option")[1].text).to eq("Book")
+    end
+  end
+
+  describe "#request_grouped_select_options" do
+    it "renders a hidden disabled selected placeholder ahead of grouped options" do
+      html = helper.request_grouped_select_options([["Book", [["c. 3", "c. 3"], ["any available copy", ""]]]], placeholder: "Select volume/issue or additional item details, if applicable")
+      fragment = Nokogiri::HTML.fragment(html)
+      placeholder = fragment.at_css("option")
+      options = fragment.css("optgroup option")
+
+      expect(placeholder.text).to eq("Select volume/issue or additional item details, if applicable")
+      expect(placeholder["value"]).to eq("")
+      expect(placeholder["disabled"]).to eq("disabled")
+      expect(placeholder["selected"]).to eq("selected")
+      expect(placeholder["hidden"]).to eq("hidden")
+      expect(options.map(&:text)).to eq(["c. 3", "any available copy"])
+    end
+  end
+
   describe "#aeon_request_allowed(document)" do
     context "item is at SCRC" do
       let(:document) { { "items_json_display" =>

@@ -3,6 +3,20 @@
 module RequestHelper
   include Blacklight::CatalogHelperBehavior
 
+  def request_select_options(option_pairs, placeholder:)
+    safe_join([
+      request_hidden_placeholder_option(placeholder),
+      options_for_select(option_pairs)
+    ])
+  end
+
+  def request_grouped_select_options(option_groups, placeholder:)
+    safe_join([
+      request_hidden_placeholder_option(placeholder),
+      grouped_options_for_select(option_groups)
+    ])
+  end
+
   def request_modal(mms_id, pickup_locations, request_level, request_page_type)
     link_to(t("requests.request_button"), "#", id: "request-btn-#{mms_id}", class: "btn request-btn #{request_page_type}-request-btn", data: { "blacklight-modal": "trigger", "action": "availability#modal show#loading", "availability-target": "href", "show-target": "href" })
   end
@@ -73,4 +87,10 @@ module RequestHelper
       button_to(t("requests.aeon_button_text"), aeon_request_url(document), class: "btn btn-primary")
     end
   end
+
+  private
+
+    def request_hidden_placeholder_option(text)
+      content_tag(:option, text, value: "", disabled: true, selected: true, hidden: true)
+    end
 end
