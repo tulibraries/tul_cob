@@ -188,7 +188,7 @@ class RequestData
           :MAIN
         when "GINSBURG"
           :HSL
-        when "AMBLER", "PODIATRY", "JAPAN", "ROME"
+        when "AMBLER", "PODIATRY", "HARRISBURG", "JAPAN", "ROME"
           item.to_sym
         else
           :OTHER
@@ -205,6 +205,8 @@ class RequestData
           ["GINSBURG"]
         when :PODIATRY
           ["PODIATRY"]
+        when :HARRISBURG
+          ["HARRISBURG"]
         else
           []
         end
