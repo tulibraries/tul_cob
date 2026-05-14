@@ -3,6 +3,8 @@
 class RequestData
   include Lookupable
 
+  BLANK_DESCRIPTION_LABEL = "any available copy"
+
   attr_reader :request_level
   attr_reader :pickup_location_codes
 
@@ -116,7 +118,7 @@ class RequestData
           (base - removals) | international
         end
 
-      result[desc] =
+      result[description_label(desc)] =
         allowed.each_with_object({}) do |library_code, acc|
           acc[library_name_from_short_code(library_code)] = library_code
         end
@@ -212,19 +214,29 @@ class RequestData
 
       def combine_material_types_and_descriptions(items)
         types_and_descriptions = items.map { |item|
-          Hash[item.physical_material_type["desc"], [item.description]] unless item.physical_material_type["value"] == ""
+          Hash[item.physical_material_type["desc"], [description_option(item.description)]] unless item.physical_material_type["value"] == ""
         }.uniq.compact
 
         types_and_descriptions.reduce({}) do |acc, rec|
-          key, value = rec.to_a.flatten
+          key, value = rec.first
           if acc[key]
-            acc[key] << value
+            acc[key].concat(value)
             acc[key].uniq!
           else
-            acc[key] = [value]
+            acc[key] = value
           end
           acc
         end.to_a
+      end
+
+      def description_label(description)
+        description.presence || BLANK_DESCRIPTION_LABEL
+      end
+
+      def description_option(description)
+        return [BLANK_DESCRIPTION_LABEL, ""] if description.blank?
+
+        description
       end
 
       def has_description?(items)

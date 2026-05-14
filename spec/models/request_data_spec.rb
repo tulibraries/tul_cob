@@ -312,7 +312,7 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("rome_with_multiple_libraries") }
       it "returns a hash with the relevent locations" do
         expect(subject.item_level_locations).to eq(
-          "" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
+          "any available copy" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
           "description for ASRS item" => { "Ambler Campus Library" => "AMBLER", "Charles Library" => "MAIN", "Ginsburg Health Science Library" => "GINSBURG", "Podiatry Library" => "PODIATRY" },
           "description for Rome item" => { "Rome Campus Library" => "ROME" })
       end
@@ -329,8 +329,8 @@ RSpec.describe RequestData, type: :model do
       it "retains campus pickup options when Rome is processed first" do
         request_data = described_class.new(bib_items, { request_level: "item", pickup_location: "MAIN" })
 
-        expect(request_data.item_level_locations.fetch("")).to include("Charles Library" => "MAIN")
-        expect(request_data.item_level_locations.fetch("")).to include("Ambler Campus Library" => "AMBLER")
+        expect(request_data.item_level_locations.fetch("any available copy")).to include("Charles Library" => "MAIN")
+        expect(request_data.item_level_locations.fetch("any available copy")).to include("Ambler Campus Library" => "AMBLER")
       end
     end
   end
@@ -356,8 +356,8 @@ RSpec.describe RequestData, type: :model do
     end
     context "material type with empty description" do
       let(:bib_items) { Alma::BibItem.find("empty_descriptions") }
-      it "returns an array of hashes with materials types and blank strings for description" do
-        expect(subject.material_types_and_descriptions).to eq([["DVD", [""]]])
+      it "returns an array of hashes with the blank description label and blank string value" do
+        expect(subject.material_types_and_descriptions).to eq([["DVD", [["any available copy", ""]]]])
       end
     end
   end
