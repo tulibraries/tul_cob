@@ -1,0 +1,39 @@
+<%= render(@layout.new(facet_field: @facet_field)) do |component| %>
+  <% component.with_label do %>
+    <%= @facet_field.label %>
+  <% end %>
+
+  <% component.with_body do %>
+    <div class="limit_content range_limit <%= @facet_field.key %>-config blrl-plot-config"
+        data-chart-enabled="<%= !!range_config[:chart_js] %>"
+        data-chart-segment-border-color="<%= range_config[:chart_segment_border_color] %>"
+        data-chart-segment-bg-color="<%= range_config[:chart_segment_bg_color] %>"
+        data-textual-facets="<%= !!range_config[:textual_facets] %>"
+        data-textual-facets-collapsible="<%= !!range_config[:textual_facets_collapsible] %>"
+        data-range-list-heading-localized="<%= t("blacklight.range_limit.range_list_heading") %>">
+      <% if @facet_field.selected_range_facet_item %>
+        <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field, facet_items: [@facet_field.selected_range_facet_item], classes: ["current", "mb-3"]) %>
+      <% end %>
+
+      <% unless @facet_field.missing_selected? %>
+        <div class="chart-wrapper mb-3" data-chart-wrapper="true" style="display: none; position: relative; width: 100%; aspect-ratio: <%= range_config[:chart_aspect_ratio] %>;"></div>
+
+        <%= render LibrarySearch::RangeFormComponent.new(facet_field: @facet_field, classes: @classes) %>
+
+        <% if uses_distribution? && (min = @facet_field.min) && (max = @facet_field.max) %>
+          <div class="distribution <%= "chart_js" unless range_config[:chart_js] == false %>">
+            <% if @facet_field.range_queries.any? %>
+              <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field) %>
+            <% else %>
+              <%= link_to(t("blacklight.range_limit.view_distribution"), load_distribution_link, class: "load_distribution", "data-loading-message-html": t("blacklight.range_limit.loading_html")) %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% if range_config[:show_missing_link] && @facet_field.missing_facet_item && !request.xhr? && uses_distribution? %>
+          <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field, facet_items: [@facet_field.missing_facet_item], classes: ["missing", "mt-3"]) %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

@@ -103,9 +103,8 @@ RSpec.feature "Indices" do
 
 
     scenario "Login link with proper redirect_to params are on search pages" do
-      pending("The expected href appears in the browser, but not in Capybara, ¯\\_(ツ)_/¯")
       visit "catalog/#{item['doc_id']}"
-      expect(page).to find(:xpath, "//div[@id='requests-container']/a[contains(@href,'redirect_to')]")
+      expect(page).to have_xpath("//div[@id='requests-container']/a[contains(@href,'redirect_to')]")
     end
   end
 
@@ -121,7 +120,7 @@ RSpec.feature "Indices" do
       visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+asc%2C+pub_date_sort+desc"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
-        expect(page.find(".document-position-#{i - 1} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+        expect(page.find(".document-position-#{i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
       end
     end
 
@@ -129,7 +128,7 @@ RSpec.feature "Indices" do
       visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+desc%2C+pub_date_sort+desc"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
-        expect(page.find(".document-position-#{13 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+        expect(page.find(".document-position-#{14 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
       end
     end
 

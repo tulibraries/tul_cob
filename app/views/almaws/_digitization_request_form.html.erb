@@ -6,7 +6,7 @@
   <%= form.hidden_field :user_id, value: @user_id %>
   <%= form.hidden_field :request_level, value: @request_level %>
 
-  <div class="container" data-controller="form">
+  <div class="container">
     <div class="form-group row">
       <%= form.label(:chapter_or_article_title, t("requests.form.title_label"), class: "col-form-label") %>
       <%= form.text_field :chapter_or_article_title, class: "request-form form-control", required: true, "aria-required": true, pattern: ".*[^ ].*" %>

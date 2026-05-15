@@ -9,7 +9,6 @@ require "capybara/rspec"
 require "pry"
 require "simplecov"
 require "simplecov-lcov"
-require "axe-rspec"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -23,12 +22,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new(
 
 SimpleCov.start "rails" do
   # Code from other repositories
-  add_filter "/lib/alma_rb/"
-  add_filter "/lib/alma-blacklight/"
-  add_filter "/app/models/marc_indexer.rb"
-  add_filter "/app/views/"
-  add_filter "/app/channels/"
-  add_filter "/spec/"
+  skip "/path/ruby/"
 end
 
 WebMock.disable_net_connect!(allow_localhost: true)

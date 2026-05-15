@@ -177,6 +177,7 @@
 
 ## Final reminders
 - Do not run test suites unless the user explicitly requests test execution.
+- Do not run rubocop unless the user explicitly requests rubocop to be run.
 - Keep RuboCop clean; adhere to formatting rules above.
 - Ensure Solr fixtures are loaded for specs that query search indices.
 - Respect system rule about environment-variable inspection commands.

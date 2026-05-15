@@ -98,9 +98,29 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "Authentication services", :skip do
-    let(:new_user) { FactoryBot.build(:user) }
-    let(:authorized_user) { User.from_omniauth(new_user) }
+  describe "Authentication services" do
+    let(:new_user) do
+      FactoryBot.build(
+        :user,
+        email: "student@temple.edu",
+        name: "Temple Student",
+        last_name: "Student",
+        first_name: "Temple"
+      )
+    end
+    let(:auth) do
+      OmniAuth::AuthHash.new(
+        provider: new_user.provider,
+        uid: new_user.uid,
+        info: {
+          email: new_user.email,
+          name: new_user.name,
+          last_name: new_user.last_name,
+          first_name: new_user.first_name,
+        }
+      )
+    end
+    let(:authorized_user) { User.from_omniauth(auth) }
 
     it "creates a valid omniauth user" do
       expect(authorized_user.name).to match(new_user.name)

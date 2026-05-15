@@ -4,6 +4,19 @@ require "rails_helper"
 
 RSpec.describe SearchController, type: :controller do
 
+  describe "GET #start_over" do
+    it "clears the search session and redirects to Everything" do
+      session[:last_catalog_search_params] = { q: "old search" }
+      session[:search] = { id: "123" }
+
+      get :start_over
+
+      expect(response).to redirect_to("/everything")
+      expect(session[:last_catalog_search_params]).to be_nil
+      expect(session[:search]).to be_nil
+    end
+  end
+
   describe "#process_results" do
     let(:books_media_results) { BentoSearch::ConcurrentSearcher.new(:books_and_media).search("ymca").results }
 

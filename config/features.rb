@@ -18,4 +18,8 @@ Flipflop.configure do
     feature :bot_challenge, default: false
     feature :facet_bot_challenge, default: false
   end
+
+  group :catalog_tools do
+    feature :solr_query_tweaks
+  end
 end

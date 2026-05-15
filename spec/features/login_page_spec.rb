@@ -15,16 +15,20 @@ RSpec.feature "Login Page" do
   end
 
 
-  it "has a link to shibboleth" do
+  it "has a button to shibboleth" do
     visit "/users/sign_in"
-    expect(find_link(class: "temple-user-link")).to be
+    expect(find_button(class: "temple-user-link")).to be
+    expect(page).to have_selector("form[data-turbo='false'] button.temple-user-link")
   end
 
-  xit "does not error out if we try to sign_in" do
+  it "does not error out if we try to sign_in" do
     visit "/users/sign_in"
 
-    # TODO: Figure out what is leaving behind a signed in user
-    # and remove this otherwise unnecessary stub.
+    auth = OmniAuth.config.mock_auth[:saml] || OmniAuth.config.mock_auth[:default]
+    auth.extra = OpenStruct.new(
+      raw_info: { "urn:oid:2.16.840.1.113730.3.1.3" => "test-user" }
+    )
+
     stub_request(:get, /.*almaws\/v1\/users\/.*/).
       to_return(status: 200,
                 headers: { "Content-Type" => "application/json" },
