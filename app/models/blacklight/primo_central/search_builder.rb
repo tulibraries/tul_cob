@@ -17,10 +17,13 @@ module Blacklight::PrimoCentral
 
     def skip_search?(params)
       # Skip useless searches
+      bl8_advance_form_blank = blacklight_params[:clause]&.map { |_, q| q[:query] }&.all? { |v| v.blank? }
+      bl8_advance_form_blank = true if bl8_advance_form_blank.nil?
+
       params[:skip_search?] =  [ "q", "q_1", "q_2", "q_3"].all? do |key|
         next true if blacklight_params[key].nil?
         ["*", "", nil].include?(blacklight_params[key])
-      end
+      end && bl8_advance_form_blank
     end
   end
 end

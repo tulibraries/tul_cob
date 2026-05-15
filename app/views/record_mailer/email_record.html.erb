@@ -6,7 +6,7 @@
 
 <% @documents.each do |document| %>
 <p>
-<%= sanitize document.to_email_text.gsub("\n",tag.br) %>
+<%= sanitize(document.to_email_text.to_s.gsub("\n", tag.br)) %>
 <%= tag.br %>
 <%= t('blacklight.email.html.url') %>
 <%= record_mailer_link(document, @url_gen_params) %>

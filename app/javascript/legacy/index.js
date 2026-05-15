@@ -1,4 +1,3 @@
-import "legacy/polyfills"
 import "legacy/alma_integration"
 import "legacy/blacklight_overrides"
 import "legacy/availability"

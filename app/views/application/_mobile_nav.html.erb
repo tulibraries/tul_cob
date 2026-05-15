@@ -36,9 +36,9 @@
         <div class="col">
           <%= image_tag "person.png", class: "person-icon decorative" %>
           <% if current_user %>
-            <%= link_to "My Account", users_account_path, id: "my-account-mobile" %>
+            <%= link_to "My Account", users_account_path, id: "my-account-mobile", data: { turbo: false } %>
           <% else %>
-            <%= link_to "My Account", new_user_session_path, id: "login-mobile" %>
+            <%= link_to "My Account", new_user_session_path, id: "login-mobile", data: { turbo: false } %>
           <% end %>
         </div>
       </div>

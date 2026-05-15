@@ -4,7 +4,6 @@ class CatalogController < ApplicationController
   caches_page :show
 
   include FacetParamsDedupe
-  include BlacklightAdvancedSearch::Controller
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Catalog
 
@@ -28,6 +27,7 @@ class CatalogController < ApplicationController
   end
 
   bot_challenge only: :index, if: -> { Flipflop.bot_challenge? }
+  Blacklight::Icons::RemoveComponent.svg = File.read(Rails.root.join("app/assets/images/icons/remove.svg")).freeze
 
   def override_solr_path
     single_word = params["q"]&.split&.count == 1
@@ -57,24 +57,26 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    config.advanced_search[:enabled] = true
     config.advanced_search[:url_key] ||= "advanced"
     config.advanced_search[:query_parser] = "lucene"
     config.advanced_search[:form_solr_parameters] ||= {}
     config.advanced_search[:form_solr_parameters]["df"] ||= "text"
-    config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(format library_facet language_facet availability_facet)
+    config.advanced_search[:form_solr_parameters]["facet.field"] ||= %w(availability_facet library_facet format  language_facet date_added_facet )
     config.advanced_search[:form_solr_parameters]["facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
 
-    config.track_search_session = true
+    config.track_search_session.storage = "server"
     config.raw_endpoint.enabled = true
 
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
-    #
+    
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
-    # config.search_builder_class = ::SearchBuilder
+    config.search_builder_class = ::SearchBuilder
+
     #
     ## Model that maps search index responses to the blacklight response model
     # config.response_model = Blacklight::Solr::Response
@@ -84,6 +86,7 @@ class CatalogController < ApplicationController
     # solr path which will be added to solr base url before the other solr params.
     config.document_solr_path = "document"
     config.solr_path = "search"
+    config.json_solr_path = "search"
 
     # items to show per page, each number in the array represent another option to choose from.
     config.per_page = [10, 20, 50]
@@ -104,11 +107,16 @@ class CatalogController < ApplicationController
     config.index.title_field = "title_with_subtitle_truncated_display"
     config.index.display_type_field = "format"
     config.index.document_presenter_class = IndexPresenter
+    config.index.document_component = CatalogDocumentComponent
+    config.index.partials = %i[index_header index]
+    config.index.constraints_component = TulConstraintsComponent
+    config.index.sidebar_component = CatalogSearchSidebarComponent
 
     # solr field configuration for document/show views
     config.show.title_field = "title_with_subtitle_truncated_display"
-    #config.show.display_type_field = 'format'
+    config.show.partials = %i[show_header show]
     config.show.document_presenter_class = ShowPresenter
+    #config.show.display_type_field = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -121,6 +129,7 @@ class CatalogController < ApplicationController
     # * If set to 'true', then no additional parameters will be sent to solr,
     # but any 'sniffed' request limit parameters will be used for paging, with
     # paging at requested limit -1. Can sniff from facet.limit or
+    config.index.document_presenter_class = IndexPresenter
     # f.specific_field.facet.limit solr request params. This 'true' config
     # can be used if you set limits in :default_solr_params, or as defaults
     # on the solr side in the request handler itself. Request handler defaults
@@ -149,7 +158,7 @@ class CatalogController < ApplicationController
     # The `if:` and `unless:` params are the only part evaluated at query time.
     config.campus_closed = lambda { |context, _, __| ::FeatureFlags.campus_closed?(context.params) }
     config.add_facet_field "availability_facet_etas",
-      label: "Availability", collapse: false, show: true, home: true, component: true,
+      label: "Availability", collapse: false, show: true, home: true,
       sort: :count,
       query: {
         "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
@@ -158,7 +167,7 @@ class CatalogController < ApplicationController
       },
       if: config.campus_closed
     config.add_facet_field "availability_facet",
-      label: "Availability", collapse: false, show: true, home: true, component: true,
+      label: "Availability", collapse: false, show: true, home: true,
       sort: :count,
       query: {
         "At the Library" => { label: "At the Library", fq: 'availability_facet:"At the Library"' },
@@ -167,21 +176,42 @@ class CatalogController < ApplicationController
       },
       unless: config.campus_closed
 
-    config.add_facet_field "library_facet", label: "Library", presenter: PivotFacetFieldPresenter,
-      pivot: ["library_facet", "location_facet"], limit: -1, collapsing: true,  show: true, home: true,
-      component: true, pre_process: :pre_process_library_facet, icons: { show: "", hide: "" }
-    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true, component: true
-    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, component: RangeFacetFieldListComponent
-    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true, component: true
-    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false, component: true
-    config.add_facet_field "donor_info_ms", label: "Donor bookplate", limit: true, show: false, component: true
-    config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false, component: true
-    config.add_facet_field "language_facet", label: "Language", limit: true, show: true, component: true
-    config.add_facet_field "lc_facet", label: "Library of Congress Classification", pivot: ["lc_outer_facet", "lc_inner_facet"], limit: true, show: true, presenter: ClassificationFieldPresenter, component: true, collapsing: true, icons: { show: "", hide: "" }
-    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true, component: true
-    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true, component: true
-    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true, component: true
-    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true, component: true
+    config.add_facet_field "library_facet",
+      label: "Library",
+      pivot: ["library_facet", "location_facet"],
+      item_component: FacetItemPivotComponent,
+      item_presenter: PivotFacetItemPresenter,
+      limit: -1,
+      collapsing: true,
+      show: true,
+      home: true,
+      icons: { show: "", hide: "" }
+
+    config.add_facet_field "format", label: "Resource Type", limit: -1, show: true, home: true,
+      item_component: LibrarySearch::FacetItemComponent
+    config.add_facet_field "pub_date_sort", label: "Publication Date", range: true, range_config: {
+      show_missing_link: false,
+    }
+
+    config.add_facet_field "creator_facet", label: "Author/creator", limit: true, show: true
+    config.add_facet_field "subject_facet", label: "Subject", limit: true, show: false
+    config.add_facet_field "donor_info_ms", label: "Donor bookplate", limit: true, show: false
+    config.add_facet_field "genre_ms", label: "Genre", limit: true, show: false
+    config.add_facet_field "language_facet", label: "Language", limit: true, show: true
+    config.add_facet_field "lc_facet",
+      label: "Library of Congress Classification",
+      pivot: ["lc_outer_facet", "lc_inner_facet"], 
+      item_component: FacetItemPivotComponent,
+      item_presenter: PivotFacetItemPresenter,
+      limit: -1,
+      collapsing: true,
+      show: true,
+      home: true,
+      icons: { show: "", hide: "" }
+    config.add_facet_field "genre_facet", label: "Genre", limit: true, show: true
+    config.add_facet_field "subject_topic_facet", label: "Topic" , limit: true, show: true
+    config.add_facet_field "subject_era_facet", label: "Era", limit: true, show: true
+    config.add_facet_field "subject_region_facet", label: "Region", limit: true, show: true
     config.add_facet_field "collection_ms", label: "Collection Name"
     config.add_facet_field "date_added_facet", label: "Newly Added", query: {
           week_1: { label: "Within Last Week", fq: "date_added_facet:[#{(Date.current - 2.weeks).strftime('%Y%m%d').to_i} TO #{(Date.current - 1.week).strftime('%Y%m%d').to_i}]" },
@@ -212,7 +242,7 @@ class CatalogController < ApplicationController
     config.add_index_field "imprint_prod_display", label: "Production"
     config.add_index_field "imprint_dist_display", label: "Distribution"
     config.add_index_field "imprint_man_display", label: "Manufacture"
-    config.add_index_field "lc_call_number_display", if: :render_lc_call_number_on_index?
+    config.add_index_field "lc_call_number_display", skip: true, if: :render_lc_call_number_on_index?
     config.add_index_field "url_finding_aid_display", label: "Finding Aid", helper_method: :check_for_full_http_link
     config.add_index_field "availability"
     config.add_index_field "purchase_order_availability", field: "purchase_order", if: false, helper_method: :render_purchase_order_availability, with_po_link: true
@@ -445,6 +475,15 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.search_fields.each_value do |field|
+      next if field.include_in_advanced_search == false
+      next if field.clause_params.present?
+
+      field.clause_params = {
+        edismax: (field.solr_parameters || field.solr_adv_parameters || {}).dup
+      }
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
@@ -482,6 +521,8 @@ class CatalogController < ApplicationController
     config.show.document_actions.delete(:citation)
     config.show.document_actions.delete(:refworks)
 
+    config.bookmark_icon_component = nil
+
     # Document results tools
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
 
@@ -492,7 +533,7 @@ class CatalogController < ApplicationController
 
     # Show tools
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
-    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
+    config.add_show_tools_partial(:email, callback: :email_action, validator: :email_params_valid?)
     config.add_show_tools_partial(:ris, label: "RIS file (for Zotero, Mendeley, Endnote)", modal: false, path: :ris_path)
 
     # Nav tools
@@ -613,7 +654,7 @@ class CatalogController < ApplicationController
   # Override index because we don't show any results at /catalog when
   # there are no parameters, and so we don't need to bother solr
   def index
-    if has_search_parameters? || advanced_controller?
+    if has_search_parameters?
       super
     else
       respond_to do |format|
@@ -626,10 +667,6 @@ class CatalogController < ApplicationController
   private
     def catalog?
       self.class == CatalogController
-    end
-
-    def advanced_controller?
-      self.class == AdvancedController
     end
 
     # Allow access to request outside of controller context.

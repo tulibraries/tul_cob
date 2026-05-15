@@ -1,3 +1,3 @@
 # blacklight: bundle exec rails server -b 0.0.0.0
-web: bin/rails server -p 3000
-css: bin/rails dartsass:watch
+web: bundle exec rerun --dir app/components,config/  --  bundle exec bin/rails server -p 3000
+css: bundle exec bin/rails dartsass:watch

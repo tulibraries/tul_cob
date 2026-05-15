@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class IndexPresenter < Blacklight::IndexPresenter
-  def fields_to_render
-    return super unless block_given?
-    super do |field_name, field_config, field_presenter|
-      yield field_name, field_config, field_presenter unless field_name == "lc_call_number_display"
+  def fields_to_render(*args, **kwargs)
+    return super(*args, **kwargs) unless block_given?
+
+    super(*args, **kwargs) do |field_name, field_config, field_presenter|
+      yield field_name, field_config, field_presenter
     end
   end
 

@@ -17,7 +17,7 @@ module Blacklight::PrimoCentral
         return blacklight_config.response_model.new({ "docs" => [] }, {}, numFound: 0)
       end
 
-      data = params[:query]
+      data = params[:params][:query]
 
       duration =
         if data[:id]

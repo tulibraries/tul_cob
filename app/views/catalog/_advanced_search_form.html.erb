@@ -1,0 +1,20 @@
+<%= form_tag basic_search_path, class: "advanced form-horizontal", method: :get do %>
+  <div id="advanced_search">
+    <section class="advanced-query-criteria mb-4" aria-labelledby="advanced-search-query-heading">
+      <h1 id="advanced-search-query-heading" class="advanced page-header mb-3">Advanced Search</h1>
+      <%= render "advanced/advanced_search_fields" %>
+    </section>
+
+    <% if advanced_filters_present? %>
+      <section class="advanced-filter-criteria mb-4" aria-labelledby="advanced-search-filter-heading">
+        <%= render "advanced/advanced_search_facets" %>
+      </section>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="sort-submit-buttons">
+    <%= render "advanced/advanced_search_submit_btns" %>
+  </div>
+<% end %>

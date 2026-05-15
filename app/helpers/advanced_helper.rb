@@ -1,7 +1,25 @@
 # frozen_string_literal: true
 
 module AdvancedHelper
-  include BlacklightAdvancedSearch::AdvancedHelperBehavior
+  def catalog_advanced_search_path(query = nil)
+    path = "/catalog/advanced"
+    query.present? ? "#{path}?#{query.to_query}" : path
+  end
+
+  def journals_advanced_path(query = nil)
+    path = "/journals/advanced"
+    query.present? ? "#{path}?#{query.to_query}" : path
+  end
+
+  def articles_advanced_path(query = nil)
+    path = "/articles/advanced"
+    query.present? ? "#{path}?#{query.to_query}" : path
+  end
+
+  def databases_advanced_path(query = nil)
+    path = "/databases/advanced"
+    query.present? ? "#{path}?#{query.to_query}" : path
+  end
 
   def sort_fields
     active_sort_fields.values.map { |field_config|
@@ -10,7 +28,9 @@ module AdvancedHelper
   end
 
   def label_tag_default_for(key)
-    unless params[key]
+    clause_key = clause_value_for_legacy_key(key)
+
+    unless params[key] || clause_key.present?
       if ("f_1" == key)
         return params["search_field"]
       elsif ("q_1" == key)
@@ -20,6 +40,8 @@ module AdvancedHelper
 
     if !params[key].blank?
       return params[key]
+    elsif clause_key.present?
+      return clause_key
     elsif params["search_field"] == key
       return params["q"]
     else
@@ -37,7 +59,11 @@ module AdvancedHelper
 
   # Get default value for operator[] field in advanced_search form.
   def operator_default(count)
-    if !params["operator"]
+    clause_match = params.dig("clause", (count - 1).to_s, "match") || params.dig(:clause, (count - 1).to_s, :match)
+
+    if clause_match.present?
+      clause_match
+    elsif !params["operator"]
       "contains"
     else
       params["operator"]["q_#{count}"]
@@ -55,7 +81,17 @@ module AdvancedHelper
   end
 
   def booleans(op_num, op)
-    if params[op_num]
+    clause_index = op_num.to_s.delete_prefix("op_").to_i
+    clause_op = params.dig("clause", clause_index.to_s, "op") || params.dig(:clause, clause_index.to_s, :op)
+
+    if clause_op.present?
+      mapped_op = case clause_op
+                  when "should" then "OR"
+                  when "must_not" then "NOT"
+                  else "AND"
+                  end
+      mapped_op == op
+    elsif params[op_num]
       params[op_num] == op
     else
       op == "AND"
@@ -66,30 +102,34 @@ module AdvancedHelper
     blacklight_config.fetch(:advanced_search, {})
   end
 
-  def render_advanced_search_link(my_params = params)
-    query = advanced_params(my_params)
+  def clause_value_for_legacy_key(key)
+    match = key.to_s.match(/\A([fq])_(\d+)\z/)
+    return unless match
 
-    if current_page? search_catalog_path
-      id = :catalog_advanced_search
-      url = advanced_search_path(query)
-    elsif current_page? search_journals_path
-      id = :journals_advanced_search
-      url = journals_advanced_search_path(query)
-    elsif current_page? search_path
-      id = :articles_advanced_search
-      url = articles_advanced_search_path(query)
-    elsif current_page? search_databases_path
-      id = :databases_advanced_search
-      url = databases_advanced_search_path(query)
-    elsif current_page? everything_path
-      id = :catalog_advanced_search
-      url = advanced_search_path(query)
-    elsif current_page? root_path
-      id = :catalog_advanced_search
-      url = advanced_search_path(query)
+    type, index = match.captures
+    clause = params.dig("clause", (index.to_i - 1).to_s) || params.dig(:clause, (index.to_i - 1).to_s)
+    return unless clause
+
+    if type == "f"
+      clause["field"] || clause[:field]
+    else
+      clause["query"] || clause[:query]
     end
+  end
 
-    link_to(t(id), url, class: "advanced_search", id:) if id
+  def facet_field_names
+    Array(advanced_search_config.dig(:form_solr_parameters, "facet.field") || advanced_search_config.dig("form_solr_parameters", "facet.field")).map(&:to_s)
+  end
+
+  def advanced_filters_present?
+    facet_field_names.any? do |field|
+      next false if field == "lc_facet"
+
+      @response&.aggregations&.[](field).present?
+    end ||
+      @response&.aggregations&.[]("pub_date_sort").present? ||
+      params.dig("range", "pub_date_sort").present? ||
+      params.dig("range", "lc_classification").present?
   end
 
   def advanced_params(my_params)
@@ -106,13 +146,13 @@ module AdvancedHelper
   end
 
   def basic_search_path
-    if current_page? advanced_search_path
+    if current_page? catalog_advanced_search_path
       search_catalog_path
-    elsif current_page? journals_advanced_search_path
+    elsif current_page? journals_advanced_path
       search_journals_path
-    elsif current_page? articles_advanced_search_path
+    elsif current_page? articles_advanced_path
       search_path
-    elsif current_page? databases_advanced_search_path
+    elsif current_page? databases_advanced_path
       search_databases_path
     else
       search_catalog_path
@@ -120,13 +160,13 @@ module AdvancedHelper
   end
 
   def advanced_search_form_title
-    if current_page? advanced_search_path
+    if current_page? catalog_advanced_search_path
       t(:catalog_advanced_search)
-    elsif current_page? journals_advanced_search_path
+    elsif current_page? journals_advanced_path
       t(:journals_advanced_search)
-    elsif current_page? articles_advanced_search_path
+    elsif current_page? articles_advanced_path
       t(:articles_advanced_search)
-    elsif current_page? databases_advanced_search_path
+    elsif current_page? databases_advanced_path
       t(:databases_advanced_search)
     else
       t(:catalog_advanced_search)
@@ -135,13 +175,13 @@ module AdvancedHelper
 
   def render_pub_date_range
     if blacklight_config.facet_fields["pub_date_sort"]
-      render "pub_date_sort_facet"
+      render "advanced/pub_date_sort_facet"
     end
   end
 
   def render_classification_range
     if blacklight_config.facet_fields["lc_facet"]
-      render "classification_range"
+      render "advanced/classification_range"
     end
   end
 end
@@ -151,55 +191,101 @@ module BlacklightAdvancedSearch
     include AdvancedHelper
     include Blacklight::PrimoCentral::SolrAdaptor
 
+    def clauses
+      @clauses ||= if @params[:clause].present?
+                     @params[:clause].to_h.sort_by { |key, _value| key.to_i }.map do |_key, clause|
+                       clause.with_indifferent_access
+                     end.select { |clause| clause[:query].present? }
+                   else
+                     legacy_clauses
+                   end
+    end
+
     def keyword_op
-      # NOTs get added to the query. Only AND/OR are operations
-      @keyword_op = []
-      unless @params[:q_1].blank? || @params[:q_2].blank? || @params[:op_1] == "NOT"
-        @keyword_op << @params[:op_1] if @params[:f_1] != @params[:f_2]
-      end
-      unless @params[:q_3].blank? || @params[:op_2] == "NOT" || (@params[:q_1].blank? && @params[:q_2].blank?)
-        @keyword_op << @params[:op_2] unless [@params[:f_1], @params[:f_2]].include?(@params[:f_3]) && ((@params[:f_1] == @params[:f_3] && !@params[:q_1].blank?) || (@params[:f_2] == @params[:f_3] && !@params[:q_2].blank?))
-      end
-      @keyword_op
+      keyword_queries
+      @keyword_op || []
     end
 
     def keyword_queries
       unless @keyword_queries
         @keyword_queries = {}
+        @keyword_op = []
 
-        return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
+        advanced_url_key = CatalogController.blacklight_config.advanced_search[:url_key] || "advanced"
+        return @keyword_queries unless @params[:search_field] == advanced_url_key
 
-        q1 = odd_quotes(@params[:q_1])
-        q2 = odd_quotes(@params[:q_2])
-        q3 = odd_quotes(@params[:q_3])
+        clauses.each_with_index do |clause, index|
+          field = clause[:field]
+          next if field.blank?
 
-        been_combined = false
-        @keyword_queries[@params[:f_1]] = q1 unless @params[:q_1].blank?
-        unless @params[:q_2].blank?
-          if @keyword_queries.key?(@params[:f_2])
-            @keyword_queries[@params[:f_2]] = "(#{@keyword_queries[@params[:f_2]]}) " + @params[:op_1].to_s + " (#{q2})"
-            been_combined = true
-          elsif @params[:op_1] == "NOT"
-            @keyword_queries[@params[:f_2]] = "NOT " + q2
+          query = odd_quotes(clause[:query])
+          op = normalize_legacy_op(clause[:op])
+          field_already_seen = @keyword_queries.key?(field)
+
+          if field_already_seen
+            merge_op = op.presence || "AND"
+            @keyword_queries[field] = if merge_op == "NOT"
+                                        "(#{@keyword_queries[field]}) NOT (#{query})"
+                                      else
+                                        "(#{@keyword_queries[field]}) #{merge_op} (#{query})"
+                                      end
+          elsif op == "NOT" && index.positive?
+            @keyword_queries[field] = "NOT #{query}"
           else
-            @keyword_queries[@params[:f_2]] = q2
+            @keyword_queries[field] = query
           end
-        end
-        unless @params[:q_3].blank?
-          if @keyword_queries.key?(@params[:f_3])
-            @keyword_queries[@params[:f_3]] = "(#{@keyword_queries[@params[:f_3]]})" unless been_combined
-            @keyword_queries[@params[:f_3]] = "#{@keyword_queries[@params[:f_3]]} " + @params[:op_2].to_s + " (#{q3})"
-          elsif @params[:op_2] == "NOT"
-            @keyword_queries[@params[:f_3]] = "NOT " + q3
-          else
-            @keyword_queries[@params[:f_3]] = q3
+
+          if index.positive? && op.present? && op != "NOT" && !field_already_seen
+            @keyword_op << op
           end
         end
       end
       @keyword_queries
     end
 
+    def solr_query(config)
+      queries = []
+      ops = keyword_op.dup
+
+      keyword_queries.each do |field, query|
+        field = primo_to_solr_search(field)
+        queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
+        queries << ops.shift
+      end
+
+      queries.compact.join(" ")
+    end
+
+    def local_param_hash(key, config)
+      field_def = config.search_fields[key] || {}
+
+      (field_def[:solr_adv_parameters] || field_def[:solr_parameters] || {}).merge(field_def[:solr_local_parameters] || {})
+    end
+
     private
+
+      def legacy_clauses
+        (1..3).map do |index|
+          query = @params["q_#{index}"]
+          next if query.blank?
+
+          {
+            field: @params["f_#{index}"],
+            query:,
+            match: @params.dig("operator", "q_#{index}"),
+            op: index == 1 ? nil : @params["op_#{index - 1}"]
+          }.with_indifferent_access
+        end.compact
+      end
+
+      def normalize_legacy_op(op)
+        case op
+        when "must" then "AND"
+        when "should" then "OR"
+        when "must_not" then "NOT"
+        else op
+        end
+      end
 
       # Remove stray quotation mark if there is an odd number
       # @param query the query

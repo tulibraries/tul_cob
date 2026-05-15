@@ -2,7 +2,7 @@
 
 module Blacklight
   class SearchBarComponent < Blacklight::Component
-    include Blacklight::ContentAreasShim
+    ADVANCED_SEARCH_PARAM_KEYS = %i[qt q_1 q_2 q_3 f_1 f_2 f_3 operator op_1 op_2 clause op f_inclusive].freeze
 
     renders_one :append
     renders_one :prepend
@@ -11,10 +11,11 @@ module Blacklight
 
     # rubocop:disable Metrics/ParameterLists
     def initialize(
-      url:, advanced_search_url: nil, params:, #recaptcha_action:,
-      classes: ["search-query-form, d-flex "], presenter: nil, prefix: nil,
+      url:, params:,
+      advanced_search_url: nil,
+      classes: %w[search-query-form col-md-12 col-lg-8], prefix: nil,
       method: "GET", q: nil, query_param: :q,
-      search_field: nil, search_fields: nil, autocomplete_path: nil,
+      search_field: nil, autocomplete_path: nil,
       autofocus: nil, i18n: { scope: "blacklight.search.form" },
       form_options: {}
     )
@@ -23,22 +24,16 @@ module Blacklight
       @q = q || params[:q]
       @query_param = query_param
       @search_field = search_field || params[:search_field]
-      @params = params.except(:q, :search_field, :qt, :page, :utf8, :q_1, :q_2, :q_3, :f_1, :f_2, :f_3, :operator, :op_1, :op_2)
+      @params = params.except(:q, :search_field, :utf8, :page, *ADVANCED_SEARCH_PARAM_KEYS)
       @prefix = prefix
       @classes = classes
       @method = method
       @autocomplete_path = autocomplete_path
       @autofocus = autofocus
-      @search_fields = search_fields
       @i18n = i18n
       @form_options = form_options
-      # @recaptcha_action = recaptcha_action
-
-      return if presenter.nil?
-
-      Deprecation.warn(self, "SearchBarComponent no longer uses a SearchBarPresenter, the presenter: param will be removed in 8.0. " \
-        "Set advanced_search.enabled, autocomplete_enabled, and enable_search_bar_autofocus on BlacklightConfiguration")
     end
+    # rubocop:enable Metrics/ParameterLists
 
     def autocomplete_path
       return nil unless blacklight_config.autocomplete_enabled
@@ -49,9 +44,9 @@ module Blacklight
     def autofocus
       if @autofocus.nil?
         blacklight_config.enable_search_bar_autofocus &&
-        controller.is_a?(Blacklight::Catalog) &&
-        controller.action_name == "index" &&
-        !controller.has_search_parameters?
+          controller.is_a?(Blacklight::Catalog) &&
+          controller.action_name == "index" &&
+          !controller.has_search_parameters?
       else
         @autofocus
       end
@@ -59,24 +54,24 @@ module Blacklight
 
     def search_fields
       @search_fields ||= blacklight_config.search_fields.values
-                                        .select { |field_def| helpers.should_render_field?(field_def) }
-                                        .collect { |field_def| [helpers.label_for_search_field(field_def.key), field_def.key] }
+                                          .select { |field_def| helpers.should_render_field?(field_def) }
+                                          .collect { |field_def| [helpers.label_for_search_field(field_def.key), field_def.key] }
     end
 
     def advanced_search_enabled?
       blacklight_config.advanced_search.enabled
     end
 
+    def rounded_border_class
+      return "rounded-0" if search_fields.length > 1
+
+      "rounded-start"
+    end
+
     private
 
       def blacklight_config
         helpers.blacklight_config
-      end
-
-      def render_hash_as_hidden_fields(*args)
-        Deprecation.silence(Blacklight::HashAsHiddenFieldsHelperBehavior) do
-          helpers.render_hash_as_hidden_fields(*args)
-        end
       end
 
       def scoped_t(key, **args)

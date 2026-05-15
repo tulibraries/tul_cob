@@ -62,8 +62,8 @@ class DocumentDecorator < SimpleDelegator
     format = formats.first.to_s.parameterize.underscore
 
     # Use configuration for format mapping
-    format_mapping = Rails.application.config.assets.format_cover_image_mapping
-    base_images = Rails.application.config.assets.default_cover_image
+    format_mapping = Rails.application.config.x.format_cover_image_mapping
+    base_images = Rails.application.config.x.default_cover_image
 
     image = base_images
       .merge(format_mapping)

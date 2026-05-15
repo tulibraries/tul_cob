@@ -15,9 +15,10 @@ RSpec.feature "Login Page" do
   end
 
 
-  it "has a link to shibboleth" do
+  it "has a button to shibboleth" do
     visit "/users/sign_in"
-    expect(find_link(class: "temple-user-link")).to be
+    expect(find_button(class: "temple-user-link")).to be
+    expect(page).to have_selector("form[data-turbo='false'] button.temple-user-link")
   end
 
   xit "does not error out if we try to sign_in" do

@@ -1,4 +1,5 @@
+<%# frozen_string_literal: true %>
 <% # container for a single doc -%>
-<div class="document <%= render_document_class document %> document-position-<%= document_counter %> " data-document-counter="<%= document_counter %>" itemscope itemtype="<%= document.itemtype %>">
-  <%= render_document_partials document, blacklight_config.view_config(document_index_view_type).partials, :document_counter => document_counter %>
-</div>
+<% view_config = local_assigns[:view_config] || blacklight_config.view_config(document_index_view_type, action_name: action_name) %>
+<% document_component = view_config.document_component -%>
+<%= render document_component.new(document: document_presenter(document), counter: document_counter_with_offset(document_counter), partials: view_config&.partials) %>

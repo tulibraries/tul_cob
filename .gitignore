@@ -57,3 +57,8 @@ yarn-debug.log*
 
 development.sqlite3*
 test.sqlite3*
+
+path
+gems
+bundler-gems
+.env.local
