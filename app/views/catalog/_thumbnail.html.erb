@@ -1,0 +1,4 @@
+<% doc_presenter = document_presenter(document) %>
+<div class="thumbnail float-sm-end" <%= DocumentDecorator.new(doc_presenter.document).isbn_data_attribute %>>
+  <%= render TulThumbnailComponent.new(presenter: doc_presenter) %>
+</div>

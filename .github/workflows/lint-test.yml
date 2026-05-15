@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby: [ "4.0" ]
+        ruby: [ "3.4" ]
     env:
       CI: true
       SOLRCLOUD_USER: ${{ secrets.SOLRCLOUD_USER }}

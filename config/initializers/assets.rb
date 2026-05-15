@@ -4,14 +4,15 @@
 
 Rails.application.config.assets.paths << Rails.root.join("node_modules")
 
-# Cache the available format images for use in helper method.
-Rails.application.config.assets.default_cover_image =
-  Dir.glob("app/assets/images/svg/*").select { |m| m.match(/.svg$/) }
-  .map { |p| File.basename(p, ".svg") }
-  .map { |n| [n, n] }.to_h
+# Cache the available format images for use in helper methods.
+Rails.application.config.x.default_cover_image =
+  Rails.root
+    .glob("app/assets/images/svg/*.svg")
+    .map { |path| path.basename(".svg").to_s }
+    .index_with(&:itself)
 
-# Map document format types to cover image names
-Rails.application.config.assets.format_cover_image_mapping = {
+# Map document format types to cover image names.
+Rails.application.config.x.format_cover_image_mapping = {
   "archival_material_manuscript" => "archival_material",
   "article" => "journal_periodical",
   "book_chapter" => "book",
@@ -43,9 +44,4 @@ Rails.application.config.assets.format_cover_image_mapping = {
   "technical_report" => "legal",
   "text_resource" => "legal",
   "web_resource" => "website",
-}
-
-# Precompile additional assets.
-# application.js, application.css, and all non-JS/CSS in the app/assets
-# folder are already added.
-# Rails.application.config.assets.precompile += %w( faustina.woff2 roboto-condensed.woff2 )
+}.freeze

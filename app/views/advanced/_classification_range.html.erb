@@ -1,14 +1,23 @@
 <div class="form-group advanced-search-facet row align-items-center">
   <div class="col col-sm-3 control-label">
     <%= label_tag "range_lc_classification_begin" do %>
-    Library of Congress Classification Range
+      Library of Congress Classification Range
     <% end %>
   </div>
   <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
       <span class="sr-only">Library of Congress Classification Range (start)</span>
-      <%= render_range_input("lc_classification", :begin, nil, 20) %>
+      <% facet_field = blacklight_config.facet_fields["lc_classification"] %>
+      <% component = BlacklightRangeLimit::RangeFormComponent.new(facet_field: facet_field) %>
+      <%= render AdvancedRangeInputComponent.new(
+        input_name: component.begin_input_name,
+        label_text: "",
+        input_value: params.dig("range", "lc_classification", "begin") ,
+        min_value: nil,
+        max_value: nil,
+        css_class: "range_begin") %>
     </div>
+
     <div class="pub-date-separator align-self-center">
       <%= label_tag "range_lc_classification_end" do %>
 	to
@@ -16,7 +25,13 @@
     </div>
     <div class="advanced-pub-date">
       <span class="sr-only">Library of Congress Classification Range (end)</span>
-      <%= render_range_input("lc_classification", :end, nil, 20) %>
+      <%= render AdvancedRangeInputComponent.new(
+        input_name: component.end_input_name,
+        label_text: "",
+        input_value: params.dig("range", "lc_classification", "end") ,
+        min_value: nil,
+        max_value: nil,
+        css_class: "range_end") %>
     </div>
   </div>
 </div>

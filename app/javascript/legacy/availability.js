@@ -1,4 +1,6 @@
-$(document).on('turbolinks:load', function() {
+import Core from "blacklight-frontend"
+
+$(document).on('turbo:load', function() {
     if (typeof window.AlmaIntegration === "undefined") {
         return;
     }
@@ -50,6 +52,6 @@ $(document).on('turbolinks:load', function() {
 
 	})(jQuery);
 
-	window.Blacklight.onLoad(function() {
+	Core.onLoad(function() {
 	  $('[data-long-list]').longList();
 	});

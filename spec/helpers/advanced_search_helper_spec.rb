@@ -2,14 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helper do
-  describe "#guided_search" do
-
-    example "empty search fields" do
-      expect(helper.guided_search).to be_empty
-    end
-  end
-
+RSpec.describe AdvancedHelper, type: :helper do
   describe ".operator_default" do
     example "default" do
       expect(helper.operator_default(2)).to eq("contains")
@@ -42,61 +35,6 @@ RSpec.describe AdvancedHelper, type: :helper do
 
       expect(helper.label_tag_default_for("q_1")).to eq("james")
       expect(helper.label_tag_default_for("f_1")).to eq("First Name")
-    end
-  end
-
-  describe "#render_advanced_search_link" do
-    before(:each) do
-      allow(helper).to receive(:current_page?).with("/catalog") { false }
-      allow(helper).to receive(:current_page?).with("/journals") { false }
-      allow(helper).to receive(:current_page?).with("/articles") { false }
-      allow(helper).to receive(:current_page?).with("/databases") { false }
-      allow(helper).to receive(:current_page?).with("/everything") { false }
-      allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
-      without_partial_double_verification do
-        allow(helper).to receive(:is_advanced_search?) { true }
-      end
-    end
-
-    context "on the bento search page" do
-      it "renders the link to the advanced form" do
-        allow(helper).to receive(:current_page?).with("/everything") { true }
-        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-
-    context "on the catalog search page" do
-      it "renders the link to the advanced form" do
-        allow(helper).to receive(:current_page?).with("/catalog") { true }
-        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the journals search page" do
-      it "renders the link to the advanced journals form" do
-        allow(helper).to receive(:current_page?).with("/journals") { true }
-        link = "<a class=\"advanced_search\" id=\"journals_advanced_search\" href=\"/journals/advanced?q=foo\">Advanced Journals Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the articles search page" do
-      it "renders the link to the advanced articles form" do
-        allow(helper).to receive(:current_page?).with("/articles") { true }
-        link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the databases search page" do
-      it "renders the link to the advanced databases form" do
-        allow(helper).to receive(:current_page?).with("/databases") { true }
-        link = "<a class=\"advanced_search\" id=\"databases_advanced_search\" href=\"/databases/advanced?q=foo\">Advanced Databases Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
     end
   end
 

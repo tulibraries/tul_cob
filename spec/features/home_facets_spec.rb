@@ -19,7 +19,7 @@ RSpec.feature "Home Facets" do
     it "assigns a class to resource type facets" do
       visit "/catalog?search_field=all_fields&q=test"
       expect(page).to have_current_path("/catalog?search_field=all_fields&q=test")
-      expect(page).to have_css(".facet_select.facet_book")
+      expect(page).to have_css(".facet-select.facet_book")
     end
   end
 end

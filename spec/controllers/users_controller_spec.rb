@@ -81,6 +81,8 @@ RSpec.describe UsersController, type: :controller do
             }.to_json
 
             exception = double("Alma error", message: error_message)
+            user = FactoryBot.create(:user)
+            sign_in user, scope: :user
 
             allow(controller).to receive(:loans) do
               controller.no_account_found(exception)
@@ -102,10 +104,12 @@ RSpec.describe UsersController, type: :controller do
         it "renders the expiry_date when present" do
           request_set = instance_double(Alma::RequestSet)
           hold_request = Alma::UserRequest.new({ "title" => "hold it", "request_status" => "pending", "expiry_date" => "2017-06-20Z" })
+          authenticated_user = FactoryBot.create(:user)
           allow(request_set).to receive(:each_with_index).and_yield(hold_request, 1)
           user = instance_double(User)
           allow(user).to receive(:holds).and_return(request_set)
           allow(request_set).to receive(:success?).and_return(true)
+          sign_in authenticated_user, scope: :user
           allow(controller).to receive(:current_user).and_return(user)
           get :holds
           expect(response).to have_http_status 200
@@ -115,10 +119,12 @@ RSpec.describe UsersController, type: :controller do
         it "can manage when the hold data object doesn't have an expiry_date" do
           request_set = instance_double(Alma::RequestSet)
           hold_request = Alma::UserRequest.new({ "title" => "hold it", "request_status" => "pending" })
+          authenticated_user = FactoryBot.create(:user)
           allow(request_set).to receive(:each_with_index).and_yield(hold_request, 1)
           user = instance_double(User)
           allow(user).to receive(:holds).and_return(request_set)
           allow(request_set).to receive(:success?).and_return(true)
+          sign_in authenticated_user, scope: :user
           allow(controller).to receive(:current_user).and_return(user)
           get :holds
           expect(response).to have_http_status 200
@@ -250,36 +256,85 @@ RSpec.describe UsersController, type: :controller do
     end
 
     context "User has no transactions" do
-      it "shows no items borrowed"
-      it "shows no item hold requests"
-      it "shows no fines"
+      render_views
+
+      let(:user) { FactoryBot.create(:user) }
+
+      before do
+        sign_in user, scope: :user
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+
+      it "shows no items borrowed" do
+        loans = double("Alma loans response", success?: true, present?: false, all: [])
+        allow(user).to receive(:loans).and_return(loans)
+
+        get :loans
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).not_to include("Renew Selected")
+      end
+
+      it "shows no item hold requests" do
+        holds = double("Alma holds response", success?: true)
+        allow(holds).to receive(:each_with_index)
+        allow(user).to receive(:holds).and_return(holds)
+
+        get :holds
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).not_to include("hold it")
+      end
+
+      it "shows no fines" do
+        fines = double("Alma fines response", success?: true, each_with_index: nil, sum: 0)
+        allow(user).to receive(:fines).and_return(fines)
+
+        get :fines
+
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("$0.00")
+      end
     end
   end
 
   context "User not logged in" do
-    it "redirects loans list to login"
-    it "redirects holds list to login"
-    it "redirects fines list to login"
-  end
+    it "redirects loans list to login" do
+      get :loans
 
-  describe "GET #renew" do
-    xit "returns http success" do
-      get :renew
-      expect(response).to have_http_status(:success)
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "redirects holds list to login" do
+      get :holds
+
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it "redirects fines list to login" do
+      get :fines
+
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
-  describe "GET #renew_multi" do
-    xit "returns http success" do
-      get :renew_multi
-      expect(response).to have_http_status(:success)
-    end
-  end
+  describe "POST #renew" do
+    render_views
 
-  describe "GET #renew_all_loans" do
-    xit "returns http success" do
-      get :renew_all_loans
+    it "renders the renewal response as JavaScript" do
+      user = FactoryBot.create(:user)
+      result = double("Alma renewal response", renewed?: true, error_message: nil)
+      lib_user = double("Alma user", loggable: {})
+
+      sign_in user, scope: :user
+      allow(Alma::User).to receive(:find).with(user.uid).and_return(lib_user)
+      expect(lib_user).to receive(:renew_loan).with("loan-1").and_return(result)
+
+      post :renew, params: { loan_id: "loan-1" }, format: :js
+
       expect(response).to have_http_status(:success)
+      expect(response.media_type).to eq("text/javascript")
+      expect(response.body).to include("RENEWED")
     end
   end
 end

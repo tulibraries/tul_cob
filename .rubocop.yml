@@ -7,12 +7,13 @@ AllCops:
   # to ignore them, so only the ones explicitly set in this file are enabled.
   DisabledByDefault: true
   Exclude:
-    - 'node_modules/**/*'
-    - '**/templates/**/*'
-    - '**/vendor/**/*'
-    - 'actionpack/lib/action_dispatch/journey/parser.rb'
-    - 'bin/*'
-    - 'solr/**/*'
+    - "node_modules/**/*"
+    - "**/templates/**/*"
+    - "**/vendor/**/*"
+    - "actionpack/lib/action_dispatch/journey/parser.rb"
+    - "bin/*"
+    - "solr/**/*"
+    - "tmp/**/*"
 
 # Prefer &&/|| over and/or.
 Style/AndOr:
@@ -84,8 +85,8 @@ Style/FrozenStringLiteralComment:
   Enabled: true
   EnforcedStyle: always
   Exclude:
-    - 'app/models/traject_indexer.rb'
-    - 'db/schema.rb'
+    - "app/models/traject_indexer.rb"
+    - "db/schema.rb"
 
 # Use `foo {}` not `foo{}`.
 Layout/SpaceBeforeBlockBraces:

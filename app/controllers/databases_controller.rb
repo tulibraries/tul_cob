@@ -13,7 +13,7 @@ class DatabasesController < CatalogController
 
   configure_blacklight do |config|
     config.advanced_search[:fields_row_count] = 2
-    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)
+    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(format)
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
 
@@ -29,7 +29,7 @@ class DatabasesController < CatalogController
 
     config.connection_config[:url] = az_uri.to_s
     config.document_solr_path = "document"
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "title_statement_display"
     config.show.title_field = "title_statement_display"
 

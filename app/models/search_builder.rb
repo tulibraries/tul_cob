@@ -2,24 +2,20 @@
 
 class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
-  include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BentoSearchBuilderBehavior
   include CobIndex::Macros::Wrapper
 
-  self.default_processor_chain +=
-    %i[ add_advanced_parse_q_to_solr
-        add_advanced_search_to_solr
-        add_lc_range_search_to_solr
-        spellcheck
-        filter_suppressed
-        filter_id
-        limit_facets
-        sorting_preferences ]
+  self.default_processor_chain += %i[
+    add_lc_range_search_to_solr
+    spellcheck
+    filter_suppressed
+    filter_id
+    limit_facets
+    sorting_preferences
+  ]
 
-  if ENV["SOLR_SEARCH_TWEAK_ENABLE"] == "on"
-    self.default_processor_chain += %i[ tweak_query ]
-  end
+  self.default_processor_chain += %i[ tweak_query ]
 
   MAX_QUERY_TOKENS = 20
   MAX_PHRASE_BOOST_TOKENS = 10
@@ -32,6 +28,37 @@ class SearchBuilder < Blacklight::SearchBuilder
     manage_long_queries_for_clause_limits
     normalize_def_type_for_simple_queries
   ]
+
+  def add_adv_search_clauses(solr_parameters)
+    clauses = advanced_search_clauses
+    return if clauses.empty?
+
+    queries = clauses.map { |clause| advanced_clause_query(clause) }
+    query = queries.shift
+
+    clauses.drop(1).zip(queries).each do |clause, clause_query|
+      operator = clause["op"].presence || "must"
+      query = case operator
+              when "should"
+                { bool: { should: [ query, clause_query ], minimum_should_match: 1 } }
+              when "must_not"
+                { bool: { must: [ query ], must_not: [ clause_query ] } }
+              else
+                { bool: { must: [ query, clause_query ] } }
+      end
+    end
+
+    solr_parameters["json"] ||= {}
+    solr_parameters["json"]["query"] = query
+  end
+
+  def add_facets_for_advanced_search_form(solr_parameters)
+    super
+    return unless is_advanced_search?
+    return unless blacklight_params["q"].blank? && advanced_search_clauses.empty?
+
+    solr_parameters.merge!(blacklight_config.advanced_search[:form_solr_parameters])
+  end
 
   def filter_purchase_order(solr_params)
     # The negative query will work even when items are not indexed.
@@ -60,6 +87,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def is_advanced_search?
+    search_state.controller&.action_name == "advanced_search" ||
+      blacklight_params["search_field"] == blacklight_config.advanced_search[:url_key]
+  end
+
   def limit_facets(solr_parameters)
     path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
     count = blacklight_params.keys.count
@@ -69,8 +101,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     # are at the search page prior to doing a search.
     if path == "catalog/index" && count == 2
       solr_parameters["facet.field"] = [ "availability_facet", "library_facet", "format" ]
-    elsif path == "catalog/range_limit" || path == "catalog/advanced"
+    elsif path == "catalog/range_limit"
       solr_parameters["facet.field"] = []
+    elsif path == "catalog/advanced" || path == "catalog/advanced_search"
+      solr_parameters["facet.field"] = blacklight_config.advanced_search[:form_solr_parameters]["facet.field"]
     elsif path.match?(/\/opensearch/) || path.match?(/\/query_list/)
       solr_parameters["facet"] = "off"
       solr_parameters["facet.field"] = []
@@ -83,6 +117,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def tweak_query(solr_parameters)
+    return unless Flipflop.solr_query_tweaks?
+
     solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 
@@ -328,7 +364,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   #
   # @see projectblacklight/blacklight_advanced_search#82
   def blacklight_params
-    params = super
+    params = search_state.params.to_h.with_indifferent_access.deep_dup
 
     # This method needs to be idempotent.
     if params["processed"]
@@ -405,6 +441,8 @@ class SearchBuilder < Blacklight::SearchBuilder
       case op
       when "is"
         "\"#{value}\""
+      when "contains" then
+        value.match?(/[?:]|\(\)/) ? "\"#{value}\"" : value
       else
         value
       end
@@ -415,6 +453,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     return value if value.to_s.start_with?("{!")
     return value if field.to_s.match?(/call_number/)
     return value if field.to_s == "title_starts_with"
+    return value if value.to_s.start_with?("\"") && value.to_s.end_with?("\"")
 
     value.gsub(/([:?]|\(\))/, " ") rescue value
   end
@@ -459,20 +498,17 @@ class SearchBuilder < Blacklight::SearchBuilder
   # order to skip faceting on unknown fields.
   #
   def add_facet_fq_to_solr(solr_parameters)
-    # convert a String value into an Array
-    if solr_parameters[:fq].is_a? String
-      solr_parameters[:fq] = [solr_parameters[:fq]]
+    facet_params = search_state.params["f"]
+    if facet_params.respond_to?(:each_key)
+      filtered_facet_params = facet_params.slice(*blacklight_config.facet_fields.keys)
+      search_state.params["f"] = filtered_facet_params if filtered_facet_params.size != facet_params.size
     end
-    # :fq, map from :f.
-    if blacklight_params[:f]
-      blacklight_params[:f].each_pair do |facet_field, value_list|
-        next unless blacklight_config.facet_fields.map { |k, v|
-          v.pivot ? v.pivot : k }.flatten.include? facet_field.to_s
-        Array(value_list).reject(&:blank?).each do |value|
-          solr_parameters.append_filter_query facet_value_to_fq_string(facet_field, value)
-        end
-      end
+
+    super.tap do
+      solr_parameters["fq"] = solr_parameters["fq"].uniq if solr_parameters["fq"].respond_to?(:uniq)
     end
+  ensure
+    search_state.params["f"] = facet_params if facet_params.respond_to?(:each_key)
   end
 
   def add_lc_range_search_to_solr(solr_params)
@@ -518,10 +554,29 @@ class SearchBuilder < Blacklight::SearchBuilder
     # @param [Array] procedures A list of tokens denoting named procedures.
     # @see params_process_chain
     #
-    # @return [ActionController::Parameters] The updated set of search parameters.
     def process_params!(params, procedures)
       params ||= {}
       procedures ||= []
+
+      normalize_legacy_advanced_params!(params)
+
+      if params["clause"].present?
+        params["clause"].each_value do |clause|
+          next unless clause.respond_to?(:[])
+          next if clause["query"].blank?
+
+          field = clause["field"]
+          op = clause["match"] || clause[:match]
+          value = clause["query"]
+
+          if op == "begins_with" && field == "title"
+            clause["field"] = "title_starts_with"
+            field = clause["field"]
+          end
+
+          clause["query"] = procedures.reduce(value) { |current_value, procedure| send(procedure, field:, value: current_value, op:) }
+        end
+      end
 
       # Do not process non query values
       ops = normalized_query_operators(params)
@@ -542,8 +597,70 @@ class SearchBuilder < Blacklight::SearchBuilder
       }
 
       combine_title_begins_with_rows!(params, ops)
+
       params["processed"] = true
+
+      if params["search_field"] == blacklight_config.advanced_search[:url_key] && params["q"].blank? && params["clause"].blank?
+        query_parser = BlacklightAdvancedSearch::QueryParser.new(search_state, blacklight_config)
+        query_parser.instance_variable_set(:@params, params)
+        params["q"] = query_parser.solr_query(blacklight_config)
+      end
+
       params
+    end
+
+    def normalize_legacy_advanced_params!(params)
+      return unless params["search_field"] == blacklight_config.advanced_search[:url_key]
+      return if params["clause"].present?
+
+      row_count = blacklight_config.advanced_search[:fields_row_count].presence || 3
+      clauses = (1..row_count.to_i).filter_map do |index|
+        query = params["q_#{index}"]
+        next if query.blank?
+
+        field = params["f_#{index}"]
+        operators = params["operator"]
+        match = if operators.is_a?(Array)
+          operators[index - 1]
+        else
+          params.dig("operator", "q_#{index}")
+        end
+        match ||= "contains"
+        op = params["op_#{index - 1}"] if index > 1
+
+        {
+          "field" => field,
+          "query" => query,
+          "match" => match,
+          "op" => normalize_boolean_operator(op)
+        }.compact
+      end
+
+      params["clause"] = clauses.each_with_index.to_h { |clause, index| [index.to_s, clause] } if clauses.present?
+    end
+
+    def advanced_search_clauses
+      clauses = blacklight_params["clause"]
+      return [] unless clauses.respond_to?(:each_value)
+
+      clauses.each_value.filter { |clause| clause["query"].present? }
+    end
+
+    def advanced_clause_query(clause)
+      parsed_clause = adv_search_clause(clause, "must")
+      return parsed_clause.last if parsed_clause
+
+      field = blacklight_config.search_fields[clause["field"]]
+      parameters = field&.clause_params&.[](:edismax) || field&.solr_adv_parameters || field&.solr_parameters || {}
+      { edismax: parameters.merge(query: clause["query"]) }
+    end
+
+    def normalize_boolean_operator(operator)
+      case operator
+      when "OR" then "should"
+      when "NOT" then "must_not"
+      when "AND" then "must"
+      end
     end
 
     def combine_title_begins_with_rows!(params, ops)

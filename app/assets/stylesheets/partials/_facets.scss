@@ -3,7 +3,8 @@
 /* SIDEBAR STYLES(FACETS AND CONSTRAINTS) */
 .blacklight-lc_facet, .blacklight-library_facet {
 
-  .card-body {
+  .card-body,
+  .accordion-body {
     padding-left: 0;
     padding-right: 0;
 
@@ -14,7 +15,7 @@
 
     .pivot-facet-spacer-cell {
       display: table-cell;
-      width: 1.25rem;
+      width: .8rem;
     }
 
     .pivot-facet-spacer-row:not(:last-child) {
@@ -31,9 +32,10 @@
 }
 
 /* APPLIED FILTERS AND PARAMETERS */
-#startOverLink, #filter-mobile {
+#startOverLink, #start_over, #filter-mobile {
 	color: $white;
   	background-color: $royal-blue;
+    border-color: $royal-blue;
 }
 
 #facet-icons {
@@ -98,6 +100,18 @@ span.constraint-value {
 }
 
 /* FACETS */
+.facets {
+  --bl-facet-active-bg: #{$cherry-red};
+  --bl-facet-active-color: #{$white};
+  --bl-facet-active-item-color: #{$cherry-red};
+  --bl-facet-header-padding-y: 0;
+}
+
+.facets-header {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
 .facet-field-heading {
 	background-color: $lighter-grey;
 	cursor: pointer;
@@ -106,7 +120,40 @@ span.constraint-value {
 	padding: 0.3125rem 1.25rem 0.625rem 0.9375rem !important;
 }
 
-.facet-field-heading a {
+.facet-field-heading .accordion-button {
+  background-color: transparent;
+  border: 0;
+  box-shadow: none;
+  color: $midnight-blue;
+  font-family: "Roboto Light";
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  text-align: left;
+  width: 100%;
+
+  &::after {
+    background-image: none;
+    color: $grey;
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+    font-size: 1rem;
+    font-weight: 900;
+    height: auto;
+    transform: rotate(90deg);
+    width: auto;
+  }
+
+  &.collapsed::after {
+    transform: rotate(0deg);
+  }
+
+  &:hover {
+    color: $cherry-red;
+  }
+}
+
+.facet-field-heading a,
+.facet-field-heading .accordion-button {
 	color: $midnight-blue;
 	font-size: 1rem;
 
@@ -119,12 +166,32 @@ span.constraint-value {
 	}
 }
 
-.facet-field-heading a:hover {
+.facet-field-heading a:hover,
+.facet-field-heading .accordion-button:hover {
 	color: $cherry-red;
 }
 
 .facet-limit {
+  border: 1px solid $light-grey;
+  border-radius: 0.25rem !important;
   margin-bottom: 0;
+  overflow: hidden;
+
+  .accordion-body {
+    padding: $spacer;
+  }
+}
+
+.facet-limit:not(:first-of-type) {
+  border-top: 1px solid $light-grey;
+}
+
+.blacklight-lc_facet,
+.blacklight-library_facet {
+  .accordion-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .facet-limit-active {
@@ -133,13 +200,17 @@ span.constraint-value {
 
 .facet-limit-active .facet-field-heading {
 	background-color: $cherry-red !important;
-	a {
+
+	a,
+  .accordion-button {
+    background-color: transparent;
 		color: $white;
 	}
 }
 
 .facet-limit-active .collapsed::after,
-.facet-limit-active .collapse-toggle::after {
+.facet-limit-active .collapse-toggle::after,
+.facet-limit-active .accordion-button::after {
 	color: $white !important;
 }
 
@@ -164,7 +235,7 @@ span.constraint-value {
 
   .facet-label {
     display: table-cell;
-		padding-bottom: $spacer / 2;
+		padding-bottom: calc($spacer / 2);
 
 		.selected {
 			color: $cherry-red !important;
@@ -182,22 +253,23 @@ span.constraint-value {
 
 	.remove {
     font-weight: bold;
-    padding-left: $spacer / 2;
+    padding-left: calc($spacer / 2);
 	}
 }
 
 .card-header.collapse-toggle {
   margin-bottom: 0;
+
   &::after {
     color: $grey;
     content: "\f054";
     font-family: "Font Awesome 5 Free";
-    transform: rotate(90deg);
-    font-size: 1.0rem;
+    font-size: 1rem;
     font-weight: 900;
     float: right;
     padding-top: 0.625rem;
-    font-display: swap;
+    transform: rotate(90deg);
+    display: inline-block;
   }
 }
 
@@ -205,7 +277,8 @@ span.constraint-value {
   transform: rotate(0deg);
 }
 
-#facet-panel-collapse {
+#facet-panel-collapse,
+.facets-collapse {
 	@media(max-width: 485px) {
 		margin-bottom: 0.75rem;
 	}
@@ -235,56 +308,57 @@ input[value|="Apply"]:visited {
 	padding: 0.4375rem;
 }
 
-input#range_pub_date_sort_begin,
-input#range_creationdate_begin {
-	margin-right: 0.125rem;
-	width: 3.2rem;
-}
-
-input#range_pub_date_sort_end,
-input#range_creationdate_end {
-	margin-left: 0.125rem;
-	width: 3.2rem;
-}
-
-form.range_limit .form-control {
-	padding: 0.3125rem;
-}
-
-.range_limit.form-inline {
-	justify-content: center;
-}
-
-#facet-pub_date_sort {
-	padding-left: 0.9375rem;
-}
-
-#facet-pub_date_sort .panel-body  {
-	padding: 0.3125rem 0.9375rem;
-}
-
 ul.missing li span.facet-count {
 	width: 3rem !important;
 }
 
 /* style for pivot facet's nested list */
 
-.pivot-facet {
+.pivot-facet .facet-values .list-unstyled {
   @extend .list-unstyled;
   @extend .py-1;
   @extend .px-4;
   padding-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.pivot-facet-content-cell {
+  vertical-align: top;
+  width: 100%;
+}
+
+.pivot-facet-outer {
+  display: table-cell;
+
+  > .facet-values {
+    display: inline-table;
+    vertical-align: top;
+    width: calc(100% - 1.75rem);
+
+    .facet-label {
+      padding-left: 0;
+      text-indent: 0;
+    }
+  }
+
+  > .pivot-facet {
+    margin-left: 1.75rem;
+    padding-left: 0 !important;
+  }
 }
 
 .facet-leaf-node {
-  padding-left: 1.25rem;
-  margin-top: -1.5rem;
+  margin-top: 0;
+  padding-left: 0 !important;
 }
 
 .facet-toggle-handle {
+  height: 1.25rem;
   margin: 0;
-  margin-left: -8px;
+  margin-right: 0.5rem;
   padding: 0;
+  vertical-align: top;
+  width: 1.25rem;
 
   &.collapsed {
     .show { display: block; }
@@ -293,6 +367,28 @@ ul.missing li span.facet-count {
 
   .show { display: none; }
   .hide { display: block; }
+
+  .show,
+  .hide {
+    height: 1.25rem;
+    padding: 0;
+    width: 1.25rem;
+  }
+
+  .show .icon,
+  .hide .icon {
+    display: block;
+    height: 1.25rem;
+    width: 1.25rem;
+  }
+
+  .show .icon {
+    background: transparent url("icons/catalog_plus_icon.png") no-repeat center center;
+  }
+
+  .hide .icon {
+    background: transparent url("icons/catalog_minus_icon.png") no-repeat center center;
+  }
 }
 
 // BL override for sidebar to stay first in display order

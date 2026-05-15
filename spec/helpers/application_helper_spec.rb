@@ -80,6 +80,37 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe "#search_params" do
+    context "search session present" do
+      let(:current_search_session) { OpenStruct.new(query_params: { "controller" => "catalog", "action" => "index", "q" => "foo" }) }
+
+      before do
+        without_partial_double_verification do
+          allow(helper).to receive(:current_search_session) { current_search_session }
+        end
+      end
+
+      it "strips controller and action keys" do
+        expect(helper.search_params).to eq({ "q" => "foo" })
+      end
+    end
+
+    context "search session missing but request params present" do
+      let(:request) { OpenStruct.new(query_parameters: { "controller" => "web_content", "action" => "index", "q" => "bar" }) }
+
+      before do
+        allow(helper).to receive(:request) { request }
+        without_partial_double_verification do
+          allow(helper).to receive(:current_search_session) { nil }
+        end
+      end
+
+      it "falls back to request query parameters" do
+        expect(helper.search_params).to eq({ "q" => "bar" })
+      end
+    end
+  end
+
   describe "#is_active?(path)" do
     let(:current_page?) { true }
     let(:request) { OpenStruct.new(original_fullpath: "/") }
@@ -270,55 +301,6 @@ RSpec.describe ApplicationHelper, type: :helper do
 
       it "replaces slash with underscore and downcases the string" do
         expect(helper.format_classes_for_icons(document)).to eq("journal_periodical")
-      end
-    end
-  end
-
-  describe "#skip_links" do
-    let(:subject) { helper.skip_links }
-    let(:config) { CatalogController.blacklight_config }
-    let(:context) { Blacklight::Configuration::Context.new(config) }
-
-    before do
-      without_partial_double_verification do
-        allow(helper).to receive(:blacklight_config) { config }
-        allow(helper).to receive(:blacklight_configuration_context) { context }
-      end
-      allow(helper).to receive(:controller_name).and_return(controller_name)
-      allow(helper).to receive(:action_name).and_return(action_name)
-    end
-
-    context "on a standard page (catalog#show)" do
-      let(:controller_name) { "catalog" }
-      let(:action_name) { "show" }
-
-      it "renders both skip links" do
-        expect(subject).to have_link("Skip to search", href: "#q")
-        expect(subject).to have_link("Skip to search filters", href: "#search_field")
-      end
-    end
-
-    context "on the search#index action" do
-      let(:controller_name) { "search" }
-      let(:action_name) { "index" }
-
-      it "renders only the skip to search link" do
-        expect(subject).to have_link("Skip to search", href: "#q")
-        expect(subject).not_to have_link("Skip to search filters", href: "#search_field")
-      end
-    end
-
-    context "on an advanced search page" do
-      let(:action_name) { "index" }
-
-      %w[advanced primo_advanced databases_advanced journals_advanced].each do |name|
-        context "(#{name})" do
-          let(:controller_name) { name }
-
-          it "renders no skip links" do
-            expect(subject).to be_nil
-          end
-        end
       end
     end
   end

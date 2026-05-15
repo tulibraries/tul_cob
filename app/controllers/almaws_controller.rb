@@ -11,7 +11,7 @@ class AlmawsController < CatalogController
 
   def item
     @mms_id = params[:mms_id]
-    _, @document = begin search_service.fetch(params[:doc_id]) rescue [ nil, SolrDocument.new({}) ] end
+    @document = begin search_service.fetch(params[:doc_id]) rescue SolrDocument.new({}) end
 
     @items = get_bib_items(@mms_id)
     availability = @items.group_by { |item| item["item_data"]["pid"] }

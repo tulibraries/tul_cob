@@ -9,7 +9,6 @@ require "capybara/rspec"
 require "pry"
 require "simplecov"
 require "simplecov-lcov"
-require "axe-rspec"
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
