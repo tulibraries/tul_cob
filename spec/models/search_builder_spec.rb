@@ -30,7 +30,8 @@ RSpec.describe SearchBuilder , type: :model do
     let(:context) do
       double(
         "controller",
-        blacklight_config: blacklight_config
+        blacklight_config: blacklight_config,
+        action_name: "index"
       )
     end
 
@@ -65,6 +66,23 @@ RSpec.describe SearchBuilder , type: :model do
         expect(solr_params).not_to have_key("pf")
         expect(solr_params).not_to have_key("pf2")
         expect(solr_params).not_to have_key("pf3")
+      end
+    end
+
+    context "with a simple keyword query" do
+      let(:params) { { q: "test", search_field: "all_fields" } }
+
+      it "builds solr params without raising" do
+        solr_params = nil
+
+        expect {
+          solr_params = described_class
+            .new(context)
+            .with(params)
+            .processed_parameters
+        }.not_to raise_error
+
+        expect(solr_params[:q] || solr_params["q"]).to eq("test")
       end
     end
 
@@ -119,7 +137,8 @@ RSpec.describe SearchBuilder , type: :model do
       let(:context) do
         double(
           "controller",
-          blacklight_config: blacklight_config
+          blacklight_config: blacklight_config,
+          action_name: "advanced_search"
         )
       end
       let(:params) do
@@ -232,9 +251,12 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
+      allow(Flipflop).to receive(:solr_query_tweaks?).and_return(feature_enabled)
       allow(search_builder).to receive(:blacklight_params).and_return(params)
       subject.tweak_query(solr_parameters)
     end
+
+    let(:feature_enabled) { true }
 
     context "no overriding query parameter is passed" do
       it "does not override the qf param" do
@@ -249,6 +271,14 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "does override the qf param" do
         expect(solr_parameters["qf"]).to eq("subject_t")
+      end
+    end
+
+    context "when the feature flag is disabled" do
+      let(:feature_enabled) { false }
+
+      it "does not modify the parameters" do
+        expect(solr_parameters["qf"]).to eq("foo")
       end
     end
   end

@@ -83,6 +83,35 @@ RSpec.describe BookmarksController do
     end
   end
 
+  describe "index ris" do
+    render_views
+
+    let(:documents) do
+      [
+        instance_double(SolrDocument, export_as: "TY  - BOOK\nER  -"),
+        instance_double(SolrDocument, export_as: "TY  - JOUR\nER  -")
+      ]
+    end
+    let(:response_double) { instance_double(Blacklight::Solr::Response, documents: documents, export_formats: [:ris]) }
+    let(:user) { instance_double(User, bookmarks: []) }
+    let(:search_service) { instance_double(Blacklight::SearchService) }
+
+    before do
+      allow(controller).to receive(:token_or_current_or_guest_user).and_return(user)
+      allow(controller).to receive(:current_or_guest_user).and_return(user)
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:search_results).and_return(response_double)
+    end
+
+    it "renders RIS from the bookmark search results" do
+      get :index, params: { format: "ris" }
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include("TY  - BOOK")
+      expect(response.body).to include("TY  - JOUR")
+    end
+  end
+
   describe "#create" do
     let(:bookmarks_relation) { instance_double(ActiveRecord::Relation) }
     let(:user) { instance_double(User, persisted?: true, bookmarks: bookmarks_relation) }

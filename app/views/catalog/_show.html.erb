@@ -1,5 +1,6 @@
 <% doc_presenter = document_presenter(document) %>
 <%# default partial to display solr document fields in catalog show view %>
+<%= content_tag('h1', @title.presence || doc_presenter.heading, itemprop: 'name') %>
 <hr class="record-page-divider"/>
 <div class="record-page-wrapper clearfix" data-controller="book-covers">
   <% unless [ "databases", "primo_central"].include?(controller_name) %>

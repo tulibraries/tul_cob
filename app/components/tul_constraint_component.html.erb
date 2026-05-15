@@ -1,0 +1,18 @@
+<%
+  presenter_classes =
+    if @facet_item_presenter.respond_to?(:constraint_classes)
+      Array(@facet_item_presenter.constraint_classes)
+    else
+      []
+    end
+
+  constraint_classes = Array(@classes) +
+                       presenter_classes +
+                       ["filter-#{@facet_item_presenter.key.parameterize}"]
+%>
+
+<%= render(@layout.new(
+      classes: constraint_classes.join(' '),
+      label: @facet_item_presenter.field_label,
+      value: @facet_item_presenter.constraint_label,
+      remove_path: @facet_item_presenter.remove_href)) %>

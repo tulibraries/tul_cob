@@ -6,12 +6,19 @@ class BookmarksController < CatalogController
   # Overridden to not cache.
   def index
     no_cache
-    return super unless request.format.csv?
+    return render_csv_index if request.format.csv?
 
-    load_csv_bookmarks
+    @bookmarks = token_or_current_or_guest_user.bookmarks
+    @response = search_service.search_results
+    @document_list = @response.documents
 
     respond_to do |format|
-      format.csv { render }
+      format.html {}
+      format.rss { render layout: false }
+      format.atom { render layout: false }
+
+      additional_response_formats(format)
+      document_export_formats(format)
     end
   end
 
@@ -57,6 +64,14 @@ class BookmarksController < CatalogController
   end
 
   private
+
+    def render_csv_index
+      load_csv_bookmarks
+
+      respond_to do |format|
+        format.csv { render }
+      end
+    end
 
     def load_csv_bookmarks
       document_ids = bookmark_ids_for_csv

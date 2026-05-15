@@ -1,0 +1,25 @@
+<%= form_tag search_action_path, method: :get, class: [@classes[:form], "range_#{@facet_field.key} d-flex justify-content-center"].join(' ') do %>
+  <%= render hidden_search_state %>
+
+  <div class="range-limit-input-group">
+    <div class="d-flex justify-content-between align-items-end">
+      <%= render BlacklightRangeLimit::RangeInputComponent.new(
+        input_name: begin_input_name,
+        input_value: begin_value_default,
+        label_text: t("blacklight.range_limit.range_begin_short"),
+        min_value: range_config[:min_value],
+        max_value: range_config[:max_value],
+        css_class: "range_begin") %>
+
+      <%= render BlacklightRangeLimit::RangeInputComponent.new(
+        input_name: end_input_name,
+        input_value: end_value_default,
+        label_text: t("blacklight.range_limit.range_end_short"),
+        min_value: range_config[:min_value],
+        max_value: range_config[:max_value],
+        css_class: "range_end") %>
+
+      <%= submit_tag t('blacklight.range_limit.submit_limit'), class: @classes[:submit], name: nil %>
+    </div>
+  </div>
+<% end %>

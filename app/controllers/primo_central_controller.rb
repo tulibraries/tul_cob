@@ -45,9 +45,6 @@ class PrimoCentralController < CatalogController
     end
   end
 
-  def advanced_override_path
-  end
-
   rescue_from ArticleNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
@@ -83,6 +80,15 @@ class PrimoCentralController < CatalogController
     config.add_search_field :isbn, label: "ISBN", catalog_map: :isbn_t
     config.add_search_field :issn, label: "ISSN", catalog_map: :issn_t
 
+    config.search_fields.each_value do |field|
+      next if field.include_in_advanced_search == false
+      next if field.clause_params.present?
+
+      field.clause_params = {
+        edismax: (field.solr_parameters || field.solr_adv_parameters || {}).dup
+      }
+    end
+
     # Index fields
     config.add_index_field :description, type: :summary
     config.add_index_field :type, label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, type: :format
@@ -96,7 +102,7 @@ class PrimoCentralController < CatalogController
     # Facet fields
     config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code, component: true
     config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code, component: true
-    config.add_facet_field :creationdate, label: "Date", range: true, component: RangeFacetFieldListComponent
+    config.add_facet_field :creationdate, label: "Date", range: true,  presenter: PrimoRangeFacetFieldPresenter
     config.add_facet_field :creator, label: "Author/Creator", component: true
     config.add_facet_field :topic, label: "Topic", component: true
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true

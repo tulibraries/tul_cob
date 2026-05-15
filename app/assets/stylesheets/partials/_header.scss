@@ -112,14 +112,43 @@
 	}
 }
 
+#search-navbar .d-lg-inline-flex {
+	gap: 0.25rem;
+}
+
+.blacklight-search #search-navbar h1 {
+	margin-right: 0 !important;
+	padding-right: 0.75rem !important;
+}
+
+.navbar-search {
+	background-color: transparent !important;
+	padding: 0;
+	width: auto;
+}
+
+.navbar-search .container-xl,
+.navbar-search .container-lg,
+.navbar-search .container-md,
+.navbar-search .container-sm,
+.navbar-search .container {
+	align-items: center;
+	display: flex;
+	flex-wrap: nowrap;
+	padding-left: 0;
+	padding-right: 0;
+	width: auto;
+}
+
 .navbar-form,
 #bookmarks_nav,
 .user-logout {
   font-size: 1rem;
   width: auto;
+  white-space: nowrap;
 
   @media(min-width: 1044px) {
-    padding-left: 2rem;
+    padding-left: 1rem;
   }
   @media(max-width: 1043px) {
     padding-left: .5rem;
@@ -141,18 +170,100 @@ a#bookmarks_nav {
 	color: $cherry-red;
 }
 
+.navbar-form .advanced_search.btn,
+.navbar-form .advanced_search.btn-secondary {
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	box-shadow: none;
+	color: $cherry-red;
+	font-family: "Roboto";
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	padding: 0;
+	text-decoration: none;
+}
+
+.navbar-form .advanced_search.btn:hover,
+.navbar-form .advanced_search.btn:focus,
+.navbar-form .advanced_search.btn-secondary:hover,
+.navbar-form .advanced_search.btn-secondary:focus {
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+	color: $cherry-red;
+	text-decoration: underline;
+}
+
 .basic-search-group{
-	width: 28.125rem;
+	flex: 0 0 22rem;
+	margin-bottom: 0;
+	max-width: 22rem;
+	padding-left: 0;
+	padding-right: 0;
+	width: 22rem;
 
 	@media(max-width: 485px) {
 		width: 20rem;
 	}
 }
 
+.blacklight-search .basic-search-group {
+	flex-basis: 19rem;
+	max-width: 19rem;
+	width: 19rem;
+}
+
 .search-right-links {
+	display: inline-flex;
+	flex-wrap: nowrap;
+
 	@media(max-width: 485px) {
 		width: 95%;
 	}
+}
+
+.search-right-links .user-util-list {
+	flex-wrap: nowrap;
+	margin-bottom: 0;
+}
+
+.search-right-links .user-links,
+.search-right-links li {
+	margin-bottom: 0;
+}
+
+.search-btn {
+	align-items: center;
+	justify-content: center;
+}
+
+.search-btn .submit-search-text {
+	display: none;
+}
+
+.logout-form {
+  display: inline;
+  margin: 0;
+
+  button.logout-button {
+    background: transparent;
+    border: 0;
+    color: $cherry-red;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    display: inline;
+    text-decoration: none;
+  }
+
+  button.logout-button:hover,
+  button.logout-button:focus {
+    text-decoration: underline;
+    outline: none;
+    color: darken($cherry-red, 5%);
+  }
 }
 
 /* HEADER WITH EVERYTHING/CATALOG TOGGLES */

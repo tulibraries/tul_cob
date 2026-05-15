@@ -29,7 +29,7 @@ class DatabasesController < CatalogController
 
     config.connection_config[:url] = az_uri.to_s
     config.document_solr_path = "document"
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "title_statement_display"
     config.show.title_field = "title_statement_display"
 

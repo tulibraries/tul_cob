@@ -3,9 +3,6 @@
 require "rails_helper"
 
 RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride do
-
-
-  include Blacklight::RenderConstraintsHelperBehavior
   include BlacklightAdvancedSearch::CatalogHelperOverride
 
   let(:config) do

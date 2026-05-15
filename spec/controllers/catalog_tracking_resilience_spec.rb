@@ -9,7 +9,7 @@ RSpec.describe CatalogController, type: :controller do
   let(:search_service) { instance_double(Blacklight::SearchService) }
 
   before do
-    allow(search_service).to receive(:fetch).with(doc_id).and_return([solr_response, solr_document])
+    allow(search_service).to receive(:fetch).with(doc_id).and_return(solr_document)
     allow(controller).to receive(:search_service).and_return(search_service)
   end
 

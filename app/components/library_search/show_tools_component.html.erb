@@ -1,0 +1,30 @@
+<% return unless render? %>
+
+<ul id="tools-navbar">
+  <% if bookmark_action %>
+    <li class="bookmark pt-1 ps-3" id="bookmark_button">
+      <%= render_action(bookmark_action) %>
+    </li>
+  <% end %>
+
+  <% if send_to_actions.any? %>
+    <li id="sendto-menu">
+      <div id="sendto" class="dropdown show">
+        <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Send To <span class="caret"></span>
+        </a>
+        <div class="sendto-menu dropdown-menu">
+          <% send_to_actions.each do |action| %>
+            <div class="sendto-item dropdown-item">
+              <%= render_action(action, link_classes: 'btn btn-link') %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+
+  <li id="report-problem">
+    <%= error_link %>
+  </li>
+</ul>

@@ -175,7 +175,8 @@ th[data-sort-state="descending"] .loan-sort-icon--desc {
     .info {
       font-size: 1.15rem;
     }
-    a {
+    a,
+    .temple-user-form button {
       display: block;
       text-align: left;
       width: 65%;
@@ -185,11 +186,17 @@ th[data-sort-state="descending"] .loan-sort-icon--desc {
       padding: 14px 21px;
       margin-bottom: 21px;
       font-size: 1.05rem;
-      .big {
-        font-size: 1.35rem;
-      }
+      border: none;
+      cursor: pointer;
     }
-    a:hover {
+
+    a .big,
+    .temple-user-form button .big {
+      font-size: 1.35rem;
+    }
+
+    a:hover,
+    .temple-user-form button:hover {
       text-decoration: none;
       outline: solid $midnight-blue 1px;
     }

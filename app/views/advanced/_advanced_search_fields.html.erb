@@ -1,32 +1,53 @@
-<div class="advanced-search-fields container" data-controller="advanced">
-  <% (1..advanced_search_config[:fields_row_count]).each do |count| %>
-  <div class="row">
-    <div class="col-sm-3 form-group">
-      <label for="<%= "f_#{count}" %>" class="sr-only">Options for advanced search</label>
-      <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), { data: { "action": "advanced#select", "count": "#{count}" }, :class=>"form-control advanced-search-options" })  %>
+<% row_count = advanced_search_config[:fields_row_count] %>
+<% populated_rows = (1..row_count).select { |count| label_tag_default_for("q_#{count}").present? } %>
+<% default_visible_rows = [row_count, 2].min %>
+<% initial_visible_rows = [populated_rows.max || 0, default_visible_rows].max %>
+
+<div class="advanced-search-fields"
+     data-controller="advanced"
+     data-action="input->advanced#syncClauses change->advanced#syncClauses"
+     data-advanced-total-rows-value="<%= row_count %>"
+     data-advanced-visible-rows-value="<%= initial_visible_rows %>">
+  <% (1..row_count).each do |count| %>
+    <div class="advanced-search-row row align-items-end g-3 mb-3"
+         data-advanced-target="row"
+         data-row-index="<%= count %>">
+      <div class="col-lg-3 col-md-4 form-group mb-0">
+        <label for="<%= "f_#{count}" %>" class="sr-only">Options for advanced search</label>
+        <%= select_tag("f_#{count}", options_for_select(advanced_key_value, label_tag_default_for("f_#{count}")), { data: { action: "change->advanced#select", count: count }, class: "form-control advanced-search-options" }) %>
+      </div>
+
+      <div class="col-lg-3 col-md-4 form-group mb-0">
+        <label for="<%= 'operator_q_#{count}' %>" class="sr-only">Operator</label>
+        <%= select_tag("operator[q_#{count}]", options_for_select({ "contains" => :contains, "is (exact)" => :is, "begins with" => :begins_with }.sort, operator_default(count)), class: "form-control", id: "operator_q_#{count}") %>
+      </div>
+
+      <div class="col-lg-5 col-md-12 form-group mb-0">
+        <label for="<%= 'q_#{count}' %>" class="sr-only">Advanced search terms</label>
+        <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), class: "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
+      </div>
     </div>
 
-    <div class="col-sm-3 form-group">
-      <label for="<%= "operator[q_#{count}]" %>" class="sr-only">Operator</label>
-      <%= select_tag("operator[q_#{count}]", options_for_select({"contains"=> :contains, "is (exact)" => :is, "begins with" => :begins_with}.sort, operator_default(count)), :class => "form-control", :id =>"operator[q_#{count}]") %>
-    </div>
+    <% if count != row_count %>
+      <div class="advanced-search-boolean row form-group mb-3" data-advanced-target="boolean">
+        <div class="col-lg-5 col-md-8">
+          <fieldset>
+            <legend class="sr-only">Boolean Search Operators</legend>
+            <label for="<%= 'op_#{count}_AND' %>"><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
+            <label for="<%= 'op_#{count}_OR' %>"><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR"), id: "op_#{count}_OR") %> OR</label>
+            <label for="<%= 'op_#{count}_NOT' %>"><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT"), id: "op_#{count}_NOT") %> NOT</label>
+          </fieldset>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
 
-    <div class="col-sm-5 form-group">
-    <label for=<%= "q_#{count}" %> class="sr-only">Advanced search terms</label>
-    <%= text_field_tag "q_#{count}", label_tag_default_for("q_#{count}"), :class => "form-control", autocorrect: "off", autocapitalize: "off", spellcheck: "false" %>
-    </div>
-  </div>
-  <div class="row booleans form-group">
-  <% if count != advanced_search_config[:fields_row_count] %>
-    <div class="col-sm-5">
-      <fieldset>
-        <legend class="sr-only">Boolean Search Operators</legend>
-        <label for=<%= "op_#{count}_AND" %>><%= radio_button_tag("op_#{count}", "AND", booleans("op_#{count}", "AND"), id: "op_#{count}_AND") %> AND</label>
-        <label for=<%= "op_#{count}_OR" %>><%= radio_button_tag("op_#{count}", "OR", booleans("op_#{count}", "OR")) %> OR</label>
-        <label for=<%= "op_#{count}_NOT" %>><%= radio_button_tag("op_#{count}", "NOT", booleans("op_#{count}", "NOT")) %> NOT</label>
-      </fieldset>
+  <% if row_count > 1 %>
+    <div class="advanced-search-row-actions d-flex flex-wrap gap-2">
+      <a type="button" class="btn btn-primary" data-action="advanced#addRow" data-advanced-target="addButton">Add search terms</a>
+      <a type="button" class="btn btn-outline-secondary advanced-search-delete-row" data-action="advanced#removeRow" data-advanced-target="removeButton">Delete row</a>
     </div>
   <% end %>
-  </div>
-  <% end %>
+
+  <div data-advanced-target="clauseInputs"></div>
 </div>

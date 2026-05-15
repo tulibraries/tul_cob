@@ -4,7 +4,7 @@ require "rails_helper"
 
 RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   let(:context) { CatalogController.new }
-  let(:params) { ActionController::Parameters.new }
+  let(:params) { ActiveSupport::HashWithIndifferentAccess.new }
   let(:search_builder) { Blacklight::PrimoCentral::SearchBuilder.new(context) }
   let(:rows) { false }
   let(:start) { false }
@@ -31,7 +31,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "simple search" do
-      let(:params) { ActionController::Parameters.new(q: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "foo") }
 
       it "properly sets a query value" do
         expect(primo_central_parameters["query"]["q"]["value"]).to eq("foo")
@@ -51,7 +51,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "with sort param override" do
-      let(:params) { ActionController::Parameters.new(q: "foo", sort: "bar") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "foo", sort: "bar") }
 
       it "overrides the default sort field" do
         expect(primo_central_parameters["query"]["sort"]).to eq("bar")
@@ -59,7 +59,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "param :id is searched" do
-      let(:params) { ActionController::Parameters.new(id: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(id: "foo") }
 
       it "sets query value to quoted :id" do
         expect(primo_central_parameters["query"]["q"]["value"]).to eq("'foo'")
@@ -67,7 +67,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "with searchCDI param" do
-      let(:params) { ActionController::Parameters.new(q: "foo", searchCDI: "true") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "foo", searchCDI: "true") }
 
       it "supports Primo's searchCDI field" do
         expect(primo_central_parameters["query"]["searchCDI"]).to eq("true")
@@ -75,7 +75,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "with  pcAvailability param"  do
-      let(:params) { ActionController::Parameters.new(q: "foo", pcAvailability: "true") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "foo", pcAvailability: "true") }
 
       it "supports Primo's pcAvailability field" do
         expect(primo_central_parameters["query"]["pcAvailability"]).to eq("true")
@@ -97,7 +97,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "advanced search" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo") }
 
       it "properly sets a query to be a build query" do
         expected = [{ "value" => "foo", "field" => :any, "precision" => nil, "operator" => nil }]
@@ -106,7 +106,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "description field is used in advanced setting" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo", f_1: "description") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo", f_1: "description") }
 
       it "properly maps description to desc" do
         expected = [{ "value" => "foo", "field" => :desc, "precision" => nil, "operator" => nil }]
@@ -115,7 +115,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "empty advanced search" do
-      let(:params) { ActionController::Parameters.new(q_1: "") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "") }
 
       it "shouldn't bother building an empty advanced query" do
         expect(primo_central_parameters["query"]["q"]["value"]).to eq("*")
@@ -123,11 +123,81 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "simple advanced search" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo", q_2: "") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo", q_2: "") }
 
       it "should skip empty advanced queries" do
         expected = [{ "value" => "foo", "field" => :any, "precision" => nil, "operator" => nil }]
         expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
+    context "blacklight 8 advanced form with must operator" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { field: "title", query: "history" },
+            "1" => { field: "creator_t", query: "" }
+          },
+          op: "must"
+        )
+      end
+
+      before do
+        controller = double(action_name: "advanced_search")
+        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        subject.process_advanced_search(primo_central_parameters)
+      end
+
+      it "builds the clause queries using the Primo field mapping" do
+        expected = [
+          { "value" => "history", "field" => :title, "precision" => "contains", "operator" => "AND" }
+        ]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
+    context "blacklight 8 advanced form with should operator" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { field: "creator_t", query: "smith" }
+          },
+          op: "should"
+        )
+      end
+
+      before do
+        controller = double(action_name: "advanced_search")
+        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        subject.process_advanced_search(primo_central_parameters)
+      end
+
+      it "uses an OR operator when the op param is not must" do
+        expected = [
+          { "value" => "smith", "field" => :creator, "precision" => "contains", "operator" => "OR" }
+        ]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
+    context "blacklight 8 advanced form with blank queries" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { field: "title", query: "" }
+          },
+          op: "must"
+        )
+      end
+
+      before do
+        controller = double(action_name: "advanced_search")
+        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        subject.process_advanced_search(primo_central_parameters)
+      end
+
+      it "keeps the default query when every clause is blank" do
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq("*")
       end
     end
   end
@@ -145,7 +215,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "searh_field is tranformable" do
-      let(:params) { ActionController::Parameters.new(search_field: :isbn_t) }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(search_field: :isbn_t) }
 
       it "transforms the search field" do
         expect(primo_central_parameters["query"]["q"]["field"]).to eq(:isbn)
@@ -153,7 +223,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "search_field is set to advanced" do
-      let(:params) { ActionController::Parameters.new(search_field: :advanced) }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(search_field: :advanced) }
 
       it "advanced transforms to :any" do
         expect(primo_central_parameters["query"]["q"]["field"]).to eq(:any)
@@ -161,7 +231,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "search_field is set to unknown field" do
-      let(:params) { ActionController::Parameters.new(search_field: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(search_field: "foo") }
 
       it "should always transform unknown search_fields to any" do
         expect(primo_central_parameters["query"]["q"]["field"]).to eq(:any)
@@ -180,7 +250,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "with unknown fields in params" do
-      let(:params) { ActionController::Parameters.new(f: { unknown_field: "foo" }) }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(f: { unknown_field: "foo" }) }
       it "should not add query facet" do
         expect(facets).to be_nil
       end
@@ -188,7 +258,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
     context "rtype field with value books" do
       let (:facets) { primo_central_parameters[:query][:q].exclude_facets }
-      let(:params) { ActionController::Parameters.new(f: { rtype: ["books"] }) }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(f: { rtype: ["books"] }) }
       it "should exclude facet" do
         expect(facets).to eq("facet_rtype,exact,books")
       end
@@ -218,7 +288,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "only one range is provided" do
-      let(:params) { ActionController::Parameters.new(
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(
         range:  { creationdate: { begin: 1 } }
       ) }
 
@@ -233,7 +303,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "range is empty string" do
-      let(:params) { ActionController::Parameters.new(
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(
         range:  { creationdate: { begin: "", end: "" } }
       ) }
 
@@ -243,7 +313,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "both min and max range are provided" do
-      let(:params) { ActionController::Parameters.new(
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(
         range:  { creationdate: { begin: 1, end: 10 } }
       ) }
 
@@ -258,7 +328,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "a range limit is empty" do
-      let(:params) { ActionController::Parameters.new(
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(
         range:  { creationdate: { begin: "1", end: "" } }
       ) }
       it "adds a default range" do
@@ -317,7 +387,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "empty query" do
-      let(:params) { ActionController::Parameters.new(q: "") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "") }
 
       it "sets skip_search? true" do
         expect(primo_central_parameters["skip_search?"]).to eq(true)
@@ -325,7 +395,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "* query" do
-      let(:params) { ActionController::Parameters.new(q: "*") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "*") }
 
       it "sets skip_search? true" do
         expect(primo_central_parameters["skip_search?"]).to eq(true)
@@ -333,7 +403,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "basic query" do
-      let(:params) { ActionController::Parameters.new(q: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q: "foo") }
 
       it "sets skip_search? false" do
         expect(primo_central_parameters["skip_search?"]).to eq(false)
@@ -341,7 +411,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "query is advanced q_1" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo") }
 
       it "sets skip_search? false" do
         expect(primo_central_parameters["skip_search?"]).to eq(false)
@@ -349,7 +419,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "query is advanced q_2" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo") }
 
       it "sets skip_search? false" do
         expect(primo_central_parameters["skip_search?"]).to eq(false)
@@ -357,7 +427,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "query is advanced q_3" do
-      let(:params) { ActionController::Parameters.new(q_1: "foo") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "foo") }
 
       it "sets skip_search? false" do
         expect(primo_central_parameters["skip_search?"]).to eq(false)
@@ -365,10 +435,39 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
     end
 
     context "query is advanced q_1 empty" do
-      let(:params) { ActionController::Parameters.new(q_1: "") }
+      let(:params) { ActiveSupport::HashWithIndifferentAccess.new(q_1: "") }
 
       it "sets skip_search? true" do
         expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "blacklight 8 advanced clauses are blank" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { query: "" },
+            "1" => { query: "" }
+          }
+        )
+      end
+
+      it "sets skip_search? true" do
+        expect(primo_central_parameters["skip_search?"]).to eq(true)
+      end
+    end
+
+    context "blacklight 8 advanced clause has a value" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { query: "plants" }
+          }
+        )
+      end
+
+      it "sets skip_search? false" do
+        expect(primo_central_parameters["skip_search?"]).to eq(false)
       end
     end
   end
