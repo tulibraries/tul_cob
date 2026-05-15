@@ -9,10 +9,14 @@ describe("RequestFormController", () => {
       <div id="request-form-root" data-controller="request-form">
         <select id="material_type">
           <option value="">Select a format</option>
+          <option value="DVD">DVD</option>
           <option value="Book">Book</option>
         </select>
 
         <select data-request-form-target="descriptions">
+          <optgroup label="DVD">
+            <option value="disc 1">disc 1</option>
+          </optgroup>
           <optgroup label="Book">
             <option value="c. 3">c. 3</option>
             <option value="">any available copy</option>
