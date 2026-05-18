@@ -52,17 +52,26 @@ export default class extends Controller {
        window.item_level_descriptions = $(this.descriptionsTarget).html();
     }
     let material_type = $("#material_type option").filter(":selected").text();
+    let matchingDescriptions = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`);
+    let descriptionOptions = matchingDescriptions.find("option");
     let emptyOption = $("<option />")
       .attr("value", "")
       .text(descriptionPlaceholderLabel)
       .prop("disabled", true)
       .prop("selected", true)
       .prop("hidden", true);
-    let options = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`).prepend(emptyOption).html();
-    if(options) {
-      $(this.descriptionsTarget).html(options);
-    } else {
+    if(descriptionOptions.length === 1) {
+      $(this.descriptionsTarget).html(matchingDescriptions.html());
       $(this.descriptionsTarget).prop("selectedIndex", 0);
+      this.select();
+    } else {
+      let options = matchingDescriptions.prepend(emptyOption).html();
+      if(options) {
+        $(this.descriptionsTarget).html(options);
+      } else {
+        $(this.descriptionsTarget).prop("selectedIndex", 0);
+      }
+      $(this.pickupsTarget).prop("selectedIndex", 0);
     }
   }
 }
