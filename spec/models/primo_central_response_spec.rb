@@ -9,6 +9,24 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     {}, {}, { blacklight_config: }
   )}
 
+  describe "#limit_value" do
+    it "uses the requested Primo limit for pagination calculations" do
+      response = described_class.new(
+        { "docs" => Array.new(50) { {} }, "facets" => [] },
+        { limit: 50, offset: 50 },
+        { numFound: 1000, blacklight_config: }
+      )
+
+      expect(response.limit_value).to eq(50)
+      expect(response.offset_value).to eq(50)
+      expect(response.current_page).to eq(2)
+    end
+
+    it "falls back to the default page size when no limit is present" do
+      expect(response.limit_value).to eq(10)
+    end
+  end
+
   describe ".get_range_stats" do
     context "Empty response" do
       let(:stats) { response.get_range_stats([]) }

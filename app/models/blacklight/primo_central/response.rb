@@ -75,6 +75,12 @@ module Blacklight::PrimoCentral
     end
 
     def limit_value
+      requested_limit = params[:limit].to_i
+      return requested_limit if requested_limit.positive?
+
+      configured_limit = blacklight_config&.default_per_page&.to_i
+      return configured_limit if configured_limit&.positive?
+
       10
     end
 
