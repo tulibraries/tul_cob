@@ -4,7 +4,7 @@
 Honeybadger.configure do |config|
   honeybadger_config = Rails.configuration.apis.dig(:honeybadger) || {}
   config.api_key = honeybadger_config[:api_key].presence || "foobar"
-  config.backend = honeybadger_config[:backend].presence || "test"
+  config.backend = honeybadger_config[:backend].presence
 
   ignored_exceptions = Array(honeybadger_config.dig(:exceptions, :ignore))
   if ignored_exceptions.present?
