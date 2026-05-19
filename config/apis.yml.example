@@ -100,7 +100,3 @@ shared:
     exceptions:
       ignore:
         - "Alma::BibRequest::ItemAlreadyExists"
-
-test:
-  honeybadger:
-    backend: "test"
