@@ -17,7 +17,7 @@
     "sifter": "^0.5.4",
     "tslib": "^2.8.1",
     "whatwg-fetch": "^3.6.20",
-    "ws": "^8.20.0"
+    "ws": "^8.20.1"
   },
   "version": "0.1.0",
   "resolutions": {
