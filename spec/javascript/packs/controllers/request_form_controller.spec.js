@@ -52,7 +52,7 @@ describe("RequestFormController", () => {
           <option value="Book">Book</option>
         </select>
 
-        <select id="booking_description">
+        <select id="booking_description" data-request-form-target="descriptions">
           <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
           <optgroup label="Book">
             <option value="">any available copy</option>
@@ -75,13 +75,13 @@ describe("RequestFormController", () => {
           <option value="Book">Book</option>
         </select>
 
-        <select id="asrs_description">
+        <select id="asrs_description" data-request-form-target="descriptions">
           <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
           <optgroup label="Book">
             <option value="">any available copy</option>
           </optgroup>
         </select>
-
+        
         <select id="asrs_pickup_location">
           <option value="MAIN" selected>Charles Library</option>
         </select>
@@ -115,7 +115,7 @@ describe("RequestFormController", () => {
     expect(options[2].textContent).toBe("any available copy")
   })
 
-  it("auto-selects the only description for a material type without filtering pickup options", async () => {
+  it("auto-selects the only description for a material type and filters pickup options without selecting one", async () => {
     setupDom()
     await startController()
 
@@ -132,10 +132,9 @@ describe("RequestFormController", () => {
     expect(descriptionOptions).toHaveLength(1)
     expect(descriptions.value).toBe("")
     expect(descriptionOptions[0].textContent).toBe("any available copy")
-    expect(pickups).toHaveLength(3)
+    expect(pickups).toHaveLength(2)
     expect(pickups[0].textContent).toBe("")
     expect(pickups[1].textContent).toBe("Media Services Desk")
-    expect(pickups[2].textContent).toBe("Charles Library")
   })
 
   it("keeps any available copy alongside other description options for a material type", async () => {

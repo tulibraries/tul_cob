@@ -34,7 +34,7 @@
       <% if @description.to_h.values.flatten.count > 1 %>
         <div class="row hold-form form-group">
           <%= form.label(:hold_description, t("requests.form.description_label_html")) %>
-          <%= select_tag(:hold_description, request_grouped_select_options(@description, placeholder: "Select volume/issue or additional item details, if applicable"), { data: { "action": "request-form#select", "target": "request-form.descriptions" }, class: "request-form form-select", required: true, "aria-required": true } ) %>
+          <%= select_tag(:hold_description, request_grouped_select_options(@description, placeholder: "Select volume/issue or additional item details, if applicable"), { data: { "action": "request-form#select", "request-form-target": "descriptions" }, class: "request-form form-select", required: true, "aria-required": true } ) %>
         </div>
       <% else %>
         <%= form.hidden_field :hold_description, value: @description.flatten.last %>
@@ -42,7 +42,7 @@
 
       <div class="row hold-form form-group">
         <%= label("", :hold_pickup_location, t("requests.form.pickup_locations_label")) %>
-        <%= select_tag(:hold_pickup_location, request_grouped_select_options(@item_level_locations, placeholder: ""), { data: { "target": "request-form.pickups" },  class: "request-form form-control", required: true, "aria-required": true }) %>
+        <%= select_tag(:hold_pickup_location, request_grouped_select_options(@item_level_locations, placeholder: ""), { data: { "request-form-target": "pickups" },  class: "request-form form-control", required: true, "aria-required": true }) %>
       </div>
     <% end %>
 
