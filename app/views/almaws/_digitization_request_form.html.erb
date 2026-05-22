@@ -18,7 +18,7 @@
     </div>
 
     <% if @request_level == "item" && @description.to_h.values.flatten.count > 1 %>
-      <div class="form-group hold-form mt-3">
+      <div class="form-group hold-form row mt-3">
         <%= form.label(:digitization_description, t("requests.form.description_label_html")) %>
         <%= select_tag(:digitization_description, request_grouped_select_options(@description, placeholder: "Select volume/issue or additional item details, if applicable"), class: "request-form form-select") %>
       </div>
@@ -38,7 +38,7 @@
       </div>
     </div>
 
-    <div class="form-group hold-form my-3">
+    <div class="form-group hold-form row my-3">
       <%= form.label(:digitization_comment, t("requests.form.notes_label_html")) %>
       <p><%= t("requests.form.notes_additional_text") %></p>
       <%= form.text_area :digitization_comment, class: "request-form form-control" %>
