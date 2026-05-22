@@ -51,8 +51,10 @@
   padding-bottom: 0;
 }
 
-.request-form .form-control {
-  margin-bottom: 1rem;
+.request-form {
+  .form-control, .form-select {
+    margin-bottom: 1rem;
+  }
 }
 
 .hold-form {
