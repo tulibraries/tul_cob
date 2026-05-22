@@ -31,6 +31,19 @@ export default class extends Controller {
     $(target).empty().append(options)
   }
 
+  filterPickupOptions(description) {
+    if (!this.hasPickupsTarget) return
+
+    let matchingPickupGroup = this.pickupGroups.find((optgroup) => optgroup.label === description);
+
+    if(matchingPickupGroup) {
+      let options = [this.hiddenOption()[0], ...Array.from(matchingPickupGroup.querySelectorAll("option")).map((option) => option.cloneNode(true))]
+      this.replaceOptions(this.pickupsTarget, options)
+    } else {
+      this.resetPickupSelection();
+    }
+  }
+
   to_page() {
     $("#to_page").change(function() {
       $("#to_page").prop("min", $("#from_page").val());
@@ -50,14 +63,7 @@ export default class extends Controller {
     if (!this.hasDescriptionsTarget || !this.hasPickupsTarget) return
 
     let description = this.descriptionsTarget.options[this.descriptionsTarget.selectedIndex]?.text;
-    let matchingPickupGroup = this.pickupGroups.find((optgroup) => optgroup.label === description);
-
-    if(matchingPickupGroup) {
-      let options = [this.hiddenOption()[0], ...Array.from(matchingPickupGroup.querySelectorAll("option")).map((option) => option.cloneNode(true))]
-      this.replaceOptions(this.pickupsTarget, options)
-    } else {
-      this.resetPickupSelection();
-    }
+    this.filterPickupOptions(description)
   }
 
   typeSelect() {
@@ -70,7 +76,7 @@ export default class extends Controller {
     if(descriptionOptions.length === 1) {
       this.replaceOptions(this.descriptionsTarget, descriptionOptions.map((option) => option.cloneNode(true)));
       $(this.descriptionsTarget).prop("selectedIndex", 0);
-      this.resetPickupSelection();
+      this.filterPickupOptions(descriptionOptions[0].textContent);
     } else {
       if(descriptionOptions.length > 1) {
         let options = [this.hiddenOption(descriptionPlaceholderLabel)[0], ...descriptionOptions.map((option) => option.cloneNode(true))]
