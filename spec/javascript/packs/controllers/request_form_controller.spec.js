@@ -44,6 +44,51 @@ describe("RequestFormController", () => {
     await new Promise(resolve => setTimeout(resolve, 0))
   }
 
+  const bookingDom = () => {
+    document.body.innerHTML = `
+      <div id="request-form-root" data-controller="request-form">
+        <select id="material_type">
+          <option value="">Select a format</option>
+          <option value="Book">Book</option>
+        </select>
+
+        <select id="booking_description">
+          <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
+          <optgroup label="Book">
+            <option value="">any available copy</option>
+          </optgroup>
+        </select>
+
+        <select id="booking_pickup_location">
+          <option value="" disabled selected hidden></option>
+          <option value="MAIN">Charles Library</option>
+        </select>
+      </div>
+    `
+  }
+
+  const asrsDom = () => {
+    document.body.innerHTML = `
+      <div id="request-form-root" data-controller="request-form">
+        <select id="material_type">
+          <option value="">Select a format</option>
+          <option value="Book">Book</option>
+        </select>
+
+        <select id="asrs_description">
+          <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
+          <optgroup label="Book">
+            <option value="">any available copy</option>
+          </optgroup>
+        </select>
+
+        <select id="asrs_pickup_location">
+          <option value="MAIN" selected>Charles Library</option>
+        </select>
+      </div>
+    `
+  }
+
   afterEach(() => {
     if (application) application.stop()
     application = null
@@ -156,5 +201,33 @@ describe("RequestFormController", () => {
     expect(options[0].disabled).toBe(true)
     expect(options[0].hidden).toBe(true)
     expect(options[1].textContent).toBe("Charles Library")
+  })
+
+  it("connects safely for a booking-style form without hold targets", async () => {
+    bookingDom()
+
+    await expect(startController()).resolves.toBeUndefined()
+
+    const root = document.getElementById("request-form-root")
+    const controller = application.getControllerForElementAndIdentifier(root, "request-form")
+
+    expect(() => controller.typeSelect()).not.toThrow()
+    expect(() => controller.select()).not.toThrow()
+    expect(root.querySelector("#booking_description")).not.toBeNull()
+    expect(root.querySelector("#booking_pickup_location")).not.toBeNull()
+  })
+
+  it("connects safely for an asrs-style form without hold targets", async () => {
+    asrsDom()
+
+    await expect(startController()).resolves.toBeUndefined()
+
+    const root = document.getElementById("request-form-root")
+    const controller = application.getControllerForElementAndIdentifier(root, "request-form")
+
+    expect(() => controller.typeSelect()).not.toThrow()
+    expect(() => controller.select()).not.toThrow()
+    expect(root.querySelector("#asrs_description")).not.toBeNull()
+    expect(root.querySelector("#asrs_pickup_location")).not.toBeNull()
   })
 })

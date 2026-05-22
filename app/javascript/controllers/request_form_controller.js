@@ -6,13 +6,15 @@ export default class extends Controller {
   static targets = [ "pickups", "descriptions" ]
 
   connect() {
-    this.descriptionGroups = Array.from(this.descriptionsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true))
-    this.pickupGroups = Array.from(this.pickupsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true))
+    this.descriptionGroups = this.hasDescriptionsTarget ? Array.from(this.descriptionsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true)) : []
+    this.pickupGroups = this.hasPickupsTarget ? Array.from(this.pickupsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true)) : []
     this.booking_end_date()
     this.to_page()
   }
 
   resetPickupSelection() {
+    if (!this.hasPickupsTarget) return
+
     $(this.pickupsTarget).prop("selectedIndex", 0)
   }
 
@@ -45,7 +47,9 @@ export default class extends Controller {
   }
 
   select() {
-    let description = $("#hold_description option:selected").text();
+    if (!this.hasDescriptionsTarget || !this.hasPickupsTarget) return
+
+    let description = this.descriptionsTarget.options[this.descriptionsTarget.selectedIndex]?.text;
     let matchingPickupGroup = this.pickupGroups.find((optgroup) => optgroup.label === description);
 
     if(matchingPickupGroup) {
@@ -57,6 +61,8 @@ export default class extends Controller {
   }
 
   typeSelect() {
+    if (!this.hasDescriptionsTarget) return
+
     let material_type = $("#material_type option").filter(":selected").text();
     let matchingDescriptionGroup = this.descriptionGroups.find((optgroup) => optgroup.label === material_type);
     let descriptionOptions = matchingDescriptionGroup ? Array.from(matchingDescriptionGroup.querySelectorAll("option")) : [];
