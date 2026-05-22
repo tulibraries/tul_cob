@@ -354,6 +354,30 @@ RSpec.describe RequestData, type: :model do
         expect(subject.material_types_and_descriptions).to eq([["DVD", ["sample", "second"]]])
       end
     end
+
+    context "material type with a blank and an additional description" do
+      let(:bib_items) do
+        [
+          Alma::BibItem.new(
+            "item_data" => {
+              "description" => "",
+              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
+            }
+          ),
+          Alma::BibItem.new(
+            "item_data" => {
+              "description" => "booklet",
+              "physical_material_type" => { "value" => "BOOK", "desc" => "Book" }
+            }
+          )
+        ]
+      end
+
+      it "retains any available copy alongside the additional description" do
+        expect(subject.material_types_and_descriptions).to eq([["Book", [["any available copy", ""], "booklet"]]])
+      end
+    end
+
     context "material type with empty description" do
       let(:bib_items) { Alma::BibItem.find("empty_descriptions") }
       it "returns an array of hashes with the blank description label and blank string value" do
