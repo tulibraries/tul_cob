@@ -6,8 +6,27 @@ export default class extends Controller {
   static targets = [ "pickups", "descriptions" ]
 
   connect() {
+    this.descriptionGroups = Array.from(this.descriptionsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true))
+    this.pickupGroups = Array.from(this.pickupsTarget.querySelectorAll("optgroup")).map((optgroup) => optgroup.cloneNode(true))
     this.booking_end_date()
     this.to_page()
+  }
+
+  resetPickupSelection() {
+    $(this.pickupsTarget).prop("selectedIndex", 0)
+  }
+
+  hiddenOption(label = "") {
+    return $("<option />")
+      .attr("value", "")
+      .text(label)
+      .prop("disabled", true)
+      .prop("selected", true)
+      .prop("hidden", true)
+  }
+
+  replaceOptions(target, options) {
+    $(target).empty().append(options)
   }
 
   to_page() {
@@ -26,52 +45,34 @@ export default class extends Controller {
   }
 
   select() {
-    // We need this variable to be global so that it doesn't mutate in multiple uses
-    if (typeof window.item_level_pickup_locations == "undefined") {
-       window.item_level_pickup_locations = $(this.pickupsTarget).html();
-    }
-
     let description = $("#hold_description option:selected").text();
-    let date = new Date();
-    let emptyOption = $("<option />")
-      .attr("value", "")
-      .prop("disabled", true)
-      .prop("selected", true)
-      .prop("hidden", true);
-    let options = $(window.item_level_pickup_locations).filter(`optgroup[label='${description}']`).prepend(emptyOption).html();
-    if(options) {
-      $(this.pickupsTarget).html(options);
+    let matchingPickupGroup = this.pickupGroups.find((optgroup) => optgroup.label === description);
+
+    if(matchingPickupGroup) {
+      let options = [this.hiddenOption()[0], ...Array.from(matchingPickupGroup.querySelectorAll("option")).map((option) => option.cloneNode(true))]
+      this.replaceOptions(this.pickupsTarget, options)
     } else {
-      $(this.pickupsTarget);
+      this.resetPickupSelection();
     }
   }
 
   typeSelect() {
-    // We need this variable to be global so that it doesn't mutate in multiple uses
-    if (typeof window.item_level_descriptions == "undefined") {
-       window.item_level_descriptions = $(this.descriptionsTarget).html();
-    }
     let material_type = $("#material_type option").filter(":selected").text();
-    let matchingDescriptions = $(window.item_level_descriptions).filter(`optgroup[label='${material_type}']`);
-    let descriptionOptions = matchingDescriptions.find("option");
-    let emptyOption = $("<option />")
-      .attr("value", "")
-      .text(descriptionPlaceholderLabel)
-      .prop("disabled", true)
-      .prop("selected", true)
-      .prop("hidden", true);
+    let matchingDescriptionGroup = this.descriptionGroups.find((optgroup) => optgroup.label === material_type);
+    let descriptionOptions = matchingDescriptionGroup ? Array.from(matchingDescriptionGroup.querySelectorAll("option")) : [];
+
     if(descriptionOptions.length === 1) {
-      $(this.descriptionsTarget).html(matchingDescriptions.html());
+      this.replaceOptions(this.descriptionsTarget, descriptionOptions.map((option) => option.cloneNode(true)));
       $(this.descriptionsTarget).prop("selectedIndex", 0);
-      this.select();
+      this.resetPickupSelection();
     } else {
-      let options = matchingDescriptions.prepend(emptyOption).html();
-      if(options) {
-        $(this.descriptionsTarget).html(options);
+      if(descriptionOptions.length > 1) {
+        let options = [this.hiddenOption(descriptionPlaceholderLabel)[0], ...descriptionOptions.map((option) => option.cloneNode(true))]
+        this.replaceOptions(this.descriptionsTarget, options)
       } else {
         $(this.descriptionsTarget).prop("selectedIndex", 0);
       }
-      $(this.pickupsTarget).prop("selectedIndex", 0);
+      this.resetPickupSelection();
     }
   }
 }
