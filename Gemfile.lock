@@ -234,7 +234,7 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    bootsnap (1.24.4)
+    bootsnap (1.24.5)
       msgpack (~> 1.2)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -798,7 +798,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_range_limit!
-  bootsnap (= 1.24.4)
+  bootsnap (= 1.24.5)
   bootstrap (>= 5.3.3)
   browser
   byebug
