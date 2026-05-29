@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  post "/challenge", to: "bot_challenge_page/bot_challenge_page#verify_challenge", as: :bot_detect_challenge
   mount Flipflop::Engine => "/flipflop"
   get "users/quik_pay_callback", as: "quik_pay_callback"
   get "users/quik_pay", as: "quik_pay"
