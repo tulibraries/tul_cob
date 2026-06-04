@@ -234,7 +234,7 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    bootsnap (1.24.5)
+    bootsnap (1.24.6)
       msgpack (~> 1.2)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -369,7 +369,7 @@ GEM
       rake (~> 13.3)
     hashdiff (1.2.1)
     hashie (4.1.0)
-    honeybadger (6.6.1)
+    honeybadger (6.6.2)
       logger
       ostruct
     htmlentities (4.4.2)
@@ -460,7 +460,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    msgpack (1.8.0)
+    msgpack (1.8.1)
     multi_json (1.21.1)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
@@ -497,7 +497,7 @@ GEM
       snaky_hash (~> 2.0, >= 2.0.3)
       version_gem (~> 1.1, >= 1.1.9)
     observer (0.1.2)
-    okcomputer (1.19.1)
+    okcomputer (1.19.2)
       benchmark
     omniauth (2.1.4)
       hashie (>= 3.4.6)
@@ -801,7 +801,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_range_limit!
-  bootsnap (= 1.24.5)
+  bootsnap (= 1.24.6)
   bootstrap (>= 5.3.3)
   bot_challenge_page
   browser
@@ -830,7 +830,7 @@ DEPENDENCIES
   flipflop
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 6.6.1)
+  honeybadger (= 6.6.2)
   httparty
   importmap-rails
   jbuilder (~> 2.15)
