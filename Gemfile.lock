@@ -238,6 +238,9 @@ GEM
       msgpack (~> 1.2)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
+    bot_challenge_page (1.1.0)
+      http (~> 5.2)
+      rails (>= 7.1, < 8.2)
     browser (6.2.0)
     builder (3.3.0)
     byebug (13.0.0)
@@ -800,6 +803,7 @@ DEPENDENCIES
   blacklight_range_limit!
   bootsnap (= 1.24.6)
   bootstrap (>= 5.3.3)
+  bot_challenge_page
   browser
   byebug
   capybara (~> 3)

@@ -16,6 +16,7 @@ gem "blacklight-ris", git: "https://github.com/tulibraries/blacklight-ris.git", 
 gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
 gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
 gem "bootstrap", ">= 5.3.3"
+gem "bot_challenge_page"
 gem "bootsnap", "1.24.6"
 gem "browser"
 gem "byebug", platform: :mri
