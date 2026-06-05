@@ -6,33 +6,30 @@ module BentoSearch
       bento_results = BentoSearch::Results.new
       guides_response = []
 
-      token = access_token
-      return bento_results if token.blank?
-
-      path = "https://lgapi-us.libapps.com/1.2/guides"
+      config = Rails.configuration.apis.dig(:lib_guides) || {}
+      path = config[:base_url].presence || "https://lgapi-us.libapps.com/1.1/guides"
       query = args[:query].gsub(" ", "+")
+      query_config = config[:query] || {}
       query_params = {
-        site_id: ENV["LIB_GUIDES_SITE_ID"],
+        site_id: config[:site_id].presence || 17,
         search_terms: query,
-        status: 1,
-        sort_by: "relevance",
-        expand: "owner",
-        guide_types: "1,2,3,4"
+        status: query_config[:status].presence || 1,
+        sort_by: query_config[:sort_by].presence || "relevance",
+        expand: query_config[:expand].presence || "owner",
+        guide_types: query_config[:guide_types].presence || "1,2,3,4",
+        key: config[:api_key].presence || "LIB_GUIDES_API_KEY",
       }.to_param
-
-      response = HTTParty.get(
-        "#{path}?#{query_params}",
-        headers: { "Authorization" => "Bearer #{token}" }
-      )
-
-      guides_response = response.success? ? JSON.parse(response.body) : []
+      guides_url = path + "?" + query_params
+      guides_response = JSON.load(URI.open(guides_url))
 
       results = guides_response[0, 3]
 
       results.each do |i|
         item = BentoSearch::ResultItem.new
         item.title = i["name"]
-        item.abstract = i["description"] if i["description"].present?
+        if i["description"].present?
+          item.abstract = i["description"]
+        end
         item.link = i["url"]
         bento_results << item
       end
@@ -51,24 +48,5 @@ module BentoSearch
       link_text = Flipflop.style_updates? ? "See all results" : "View all results"
       helper.link_to link_text, url, class: "bento-full-results bento_lib_guides_header"
     end
-
-    private
-
-      def access_token
-        response = HTTParty.post(
-          "https://lgapi-us.libapps.com/1.2/oauth/token",
-          body: {
-            client_id: ENV["LIB_GUIDES_CLIENT_ID"],
-            client_secret: ENV["LIB_GUIDES_CLIENT_SECRET"],
-            grant_type: "client_credentials"
-          }
-        )
-        return nil unless response.success?
-
-        JSON.parse(response.body)["access_token"]
-      rescue => e
-        Honeybadger.notify("Fetching LibGuides OAuth token failed with #{e}")
-        nil
-      end
   end
 end
