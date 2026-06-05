@@ -101,5 +101,6 @@ shared:
       ignore:
         - "Alma::BibRequest::ItemAlreadyExists"
   turnstile:
+    enabled: true
     sitekey: "1x00000000000000000000AA"
     secret_key: "1x0000000000000000000000000000000AA"
