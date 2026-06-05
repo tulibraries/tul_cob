@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-if ! command -v foreman &> /dev/null
-then
-  echo "Installing foreman..."
-  gem install foreman
+export RAILS_ENV="${RAILS_ENV:-development}"
+
+if [ -f ./.env.local ]; then
+	ENV_FILE=".env.local"
+else
+	ENV_FILE=".env"
 fi
 
-foreman start -f Procfile.dev "$@"
+exec bundle exec dotenv -f $ENV_FILE -- bundle exec foreman start -e /dev/null -f Procfile.dev "$@"

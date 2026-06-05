@@ -122,6 +122,7 @@ en:
       search_results_header: "Search Results"
     email:
       text:
+        title: "Title: %{value}"
         imprint: "Published: %{value}"
         distribution: "Distribution: %{value}"
         production: "Production: %{value}"
@@ -167,6 +168,12 @@ en:
       cite_html: "Cite %{current_range}"
       sendto: "Send To %{current_range}"
       error_html: "Report a Problem  <span class='error-external-link-icon'></span>"
+
+    advanced_search:
+      journals_link: "Advanced Journals Search"
+      databases_link: "Advanced Databases Search"
+      catalog_link: "Advanced Search"
+      articles_link: "Advanced Articles Search"
 
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."

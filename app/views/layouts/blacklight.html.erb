@@ -19,7 +19,6 @@
 
     <title><%= render_page_title %></title>
 
-    <%= javascript_include_tag "jquery3.min", "jquery_ujs", "turbolinks", "popper", "bootstrap", "selectize/dist/js/standalone/selectize.min", "masonry-layout/dist/masonry.pkgd.min", "blacklight/blacklight" %>
     <%= javascript_importmap_tags %>
     
     <!-- Google Tag Manager -->
@@ -39,9 +38,9 @@
 
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: "xml") %>
     <%= favicon_link_tag %>
-    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload"  %>
     <%= stylesheet_link_tag "application", "//use.fontawesome.com/releases/v5.6.1/css/all.css" %>
-
+    <%= render partial: "shared/campus_closed" %>
     <%= csrf_meta_tags %>
     <%= render partial: "shared/campus_closed" %>
     <%= content_for(:head) %>
@@ -57,11 +56,9 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     
-    <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links') %>">
-       <%= skip_links %>
-       <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
-       <%= content_for(:skip_links) %>
-    </nav>
+    <%= render blacklight_config.skip_link_component.new do %>
+      <%= content_for(:skip_links) %>
+    <% end %>
 
     <%= render :partial => "shared/header_navbar" %>
 
@@ -79,9 +76,21 @@
         <%= render partial: "shared/modal" %>
 
         <main id="main-container" class="col-12 m-0 p-lg-0" role="main">
+          <div class="row">
+            <% if content_for?(:sidebar) %>
+              <section id="content" class="<%= main_content_classes %> order-last" aria-label="<%= t('blacklight.search.documents.aria.search_results') %>">
+                <%= yield %>
+              </section>
 
-        <%= yield %>
-
+              <section id="sidebar" class="<%= sidebar_classes %> order-first" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
+                <%= content_for(:sidebar) %>
+              </section>
+            <% else %>
+              <section class="col-12">
+                <%= yield %>
+              </section>
+            <% end %>
+          </div>
         </main>
         
       </div>

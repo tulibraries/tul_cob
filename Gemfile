@@ -10,11 +10,12 @@ gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "autoprefixer-rails"
 gem "awesome_print"
 gem "bento_search", git: "https://github.com/jrochkind/bento_search.git"
-gem "blacklight", git: "https://github.com/projectblacklight/blacklight.git", branch: "bl7-rails-8-upgrade"
+gem "blacklight", "~> 9"
 gem "blacklight-marc"
 gem "blacklight-ris", git: "https://github.com/tulibraries/blacklight-ris.git", branch: "update-for-rails-7-blacklight-7"
-gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
-gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
+gem "blacklight_advanced_search"
+gem "blacklight_range_limit"
+
 gem "bootstrap", ">= 5.3.3"
 gem "bot_challenge_page"
 gem "bootsnap", "1.24.6"
@@ -81,6 +82,7 @@ group :development do
   gem "ruby-prof"
   gem "stackprof"
   gem "web-console"
+  gem "rerun"
 end
 
 group :development, :test do

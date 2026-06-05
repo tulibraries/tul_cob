@@ -18,7 +18,7 @@ RSpec.feature "Advanced Search" do
 
   describe "page displays facets" do
     scenario "User visits advanced search page" do
-      visit "/advanced"
+      visit "/catalog/advanced"
       within("form.advanced") do
         expect(current_scope).to have_selector("div.advanced-search-facet")
         all("div.advanced-search-facet").each_with_index do |div_panel, i|

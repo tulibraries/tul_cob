@@ -6,11 +6,10 @@
   <% if current_search_session %>
     <div class="search-widgets d-flex ps-3">
       <%= link_back_to_catalog class: "btn btn-back-to-search", id: "back_to_search" %>
-      <%= render Blacklight::StartOverButtonComponent.new %>
     </div>
   <% end %>
 
-  <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
+  <%= render(Blacklight::SearchContext::ServerAppliedParamsComponent.new) %>
 
 <% end %>
 

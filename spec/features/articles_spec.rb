@@ -21,7 +21,7 @@ RSpec.feature "Articles Search" do
     click_button "search"
     expect(current_url).to eq "http://www.example.com/articles?search_field=any&q=foo"
     expect(page).to have_css("#facets")
-    within(".document-position-0 h3") do
+    within("article.document-position-1 h3") do
       expect(page).to have_text("Otter")
     end
     within first(".document-metadata") do

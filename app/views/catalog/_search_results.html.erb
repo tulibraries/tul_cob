@@ -1,24 +1,36 @@
+<% @page_title = t("blacklight.search.page_title.title", constraints: render_search_to_page_title(search_state), application_name: application_name) %>
+
 <%= render partial: "explanation_div" %>
 
-<h2 class="sr-only top-content-title"><%= t("blacklight.search.search_results_header") %></h2>
-
 <% content_for(:head) do -%>
-  <%= render partial: "catalog/opensearch_response_metadata", locals: { response: @response } %>
+  <%= render "catalog/opensearch_response_metadata", response: @response %>
+  <%= rss_feed_link_tag %>
+  <%= atom_feed_link_tag %>
+  <%= json_api_link_tag %>
 <% end %>
 
-<%= render "search_header" %>
+<% content_for(:skip_links) do -%>
+  <%= render Blacklight::SkipLinkItemComponent.new(text: t("blacklight.skip_links.first_result"), href: "#documents") %>
+<% end %>
+
+<% content_for(:container_header) do -%>
+  <%= render "search_results_header" %>
+  <%= render blacklight_config.view_config(document_index_view_type).constraints_component.new(search_state: search_state) %>
+<% end %>
+
+<%= render blacklight_config.view_config(document_index_view_type).search_header_component.new %>
 <div class="border-top border-light-grey mt-3"></div>
 
-<span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>" ></span>
+<span id="alma_availability_url" data-url="<%= alma_availability_url(format: :json) %>"></span>
 
-<%- if empty_response?(@response) %>
+<h2 class="visually-hidden"><%= t("blacklight.search.search_results") %></h2>
+
+<%- if @response.empty? %>
   <%= render "zero_results" %>
 <%- elsif render_grouped_response? %>
-  <%= render_grouped_document_index %>
+  <%= render "group" %>
 <%- else %>
-  <%= render_document_index %>
+  <%= render_document_index @response.documents %>
 <%- end %>
 
-<nav class="center" role="region" aria-label="<%= t('views.pagination.aria.container_label') %>">
-  <%= render "results_pagination" %>
-</nav>
+<%= render "results_pagination" %>

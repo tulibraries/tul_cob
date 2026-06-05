@@ -12,7 +12,7 @@ RSpec.feature "Purchase Order" do
     click_button "search"
     expect(current_url).to eq "http://www.example.com/catalog?search_field=all_fields&q=991036931835603811"
 
-    within(".document-position-0 h3") do
+    within("article.document-position-1 h3") do
       expect(page).to have_text("The Quality of Life")
     end
   end

@@ -3,5 +3,7 @@ en:
     catalog_title: "Advanced Catalog Search"
     articles_title: "Advanced Articles Search"
     form:
+      sort_label: "Sort by"
+      search_btn: "Search"
       start_over: "Clear Form"
       search_context: "Applied Filters"

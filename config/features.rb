@@ -18,4 +18,8 @@ Flipflop.configure do
   group :quik_pay do
     feature :quik_pay_sessionless_callback
   end
+  
+  group :catalog_tools do
+    feature :solr_query_tweaks
+  end
 end

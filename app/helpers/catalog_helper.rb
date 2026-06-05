@@ -7,27 +7,19 @@ module CatalogHelper
   # Used to toggle the search bar form path.
   # Hack for Advanced search page
   def search_url_picker
-    current_page?("/advanced") ? search_catalog_url : search_action_url
+    current_page?(catalog_advanced_search_path) ? search_catalog_url : search_action_url
   end
 
   def render_lc_display_field(field_presenter)
     content_tag :dl, nil, class: "dl-horizontal document-metadata blacklight-lc_call_number_display  mb-0" do
       html = content_tag :dt, "LC Classification:", class: "index-label blacklight-lc_call_number_display"
-      html += content_tag :dd, field_presenter.render, class: "blacklight-lc_call_number_display"
+      html += content_tag :dd, field_presenter.render.join(""), class: "blacklight-lc_call_number_display"
     end
-  end
-
-  # Overridden from module Blacklight::BlacklightHelperBehavior.
-  # Create <link rel="alternate"> links from a documents dynamically provided export formats.
-  # Returns empty string if no links available.
-  # Overridden in order to disable rel alternate links added to page headers.
-  def render_link_rel_alternates(document = @document, options = {})
-    ""
   end
 
   def advanced_catalog_search_path
     params = @search_state.to_h.select { |k, v| !["page"].include? k }
-    blacklight_advanced_search_engine.advanced_search_path(params)
+    catalog_advanced_search_path(params)
   end
 
   def render_email_form_field

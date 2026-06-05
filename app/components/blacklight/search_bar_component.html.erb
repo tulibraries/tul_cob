@@ -1,39 +1,55 @@
-<%= form_tag @url, method: @method, class: @classes.join(' '), role: 'search', aria: { label: scoped_t('submit') }, **@form_options do %>
-  <%= render_hash_as_hidden_fields(@params) %>
-  <% if search_fields.length > 1 %>
-    <label for="search_field" class="sr-only visually-hidden"><%= scoped_t('search_field.label') %></label>
-  <% end %>
-  <% before_input_groups.each do |input_group| %>
-    <%= input_group %>
-  <% end %>
-  <div class="input-group">
-    <%= prepend %>
-
+<search>
+  <%= form_with url: @url, local: true, method: @method, class: [@classes.join(" "), "basic-search-group"].join(" "), scope: @prefix, role: "search", **@form_options do |f| %>
+    <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
     <% if search_fields.length > 1 %>
-        <%= select_tag(:search_field,
-                       options_for_select(search_fields, h(@search_field)),
-                       title: scoped_t('search_field.title'),
-                       id: "#{@prefix}search_field",
-                       class: "custom-select form-select search-field") %>
-    <% elsif search_fields.length == 1 %>
-      <%= hidden_field_tag :search_field, search_fields.first.last %>
+      <%= f.label :search_field, scoped_t("search_field.label"), class: "sr-only visually-hidden" %>
     <% end %>
+    <% before_input_groups.each do |input_group| %>
+      <%= input_group %>
+    <% end %>
+    <div class="input-group">
+      <%= prepend %>
 
-    <label for="<%= @prefix %><%= @query_param %>" class="sr-only visually-hidden"><%= scoped_t('search.label') %></label>
-    <%= text_field_tag @query_param, @q, placeholder: scoped_t('search.placeholder'), class: "search-q q form-control rounded-#{search_fields.length > 1 ? '0' : 'left'}", id: "#{@prefix}q", autocomplete: autocomplete_path.present? ? "off" : "", autofocus: @autofocus, aria: { label: scoped_t('search.label') }, data: { autocomplete_enabled: autocomplete_path.present?, autocomplete_path: autocomplete_path }  %>
+      <% if search_fields.length > 1 %>
+        <%= f.select(:search_field,
+                    options_for_select(search_fields, h(@search_field)),
+                    {},
+                    title: scoped_t("search_field.title"),
+                    class: "custom-select form-select search-field") %>
+      <% elsif search_fields.length == 1 %>
+        <%= f.hidden_field :search_field, value: search_fields.first.last %>
+      <% end %>
 
-    <span class="input-group-append">
+      <%= f.label @query_param, scoped_t("search.label"), class: "sr-only visually-hidden" %>
+      <% if autocomplete_path.present? %>
+        <auto-complete src="<%= autocomplete_path %>" for="autocomplete-popup" class="search-autocomplete-wrapper <%= rounded_border_class %>">
+          <%= f.search_field @query_param, value: @q, placeholder: scoped_t("search.placeholder"), class: "search-q q form-control #{rounded_border_class}", autofocus: @autofocus, aria: { label: scoped_t("search.label"), autocomplete: "list", controls: "autocomplete-popup" } %>
+          <ul id="autocomplete-popup" class="dropdown-menu" role="listbox" aria-label="<%= scoped_t("search.label") %>" hidden></ul>
+        </auto-complete>
+      <% else %>
+        <%= f.search_field @query_param, value: @q, placeholder: scoped_t("search.placeholder"), class: "search-q q form-control #{rounded_border_class}", autofocus: @autofocus, aria: { label: scoped_t("search.label") } %>
+      <% end %>
+
       <%= append %>
-      <%= search_button || render(Blacklight::SearchButtonComponent.new(id: "#{@prefix}search", text: scoped_t('submit'))) %>
-    </span>
-  </div>
+      <%= search_button || render(Blacklight::SearchButtonComponent.new(id: "#{@prefix}search", text: scoped_t("submit"))) %>
+    </div>
+  <% end %>
 
-  <%# if @recaptcha_action %>
-    <%# recaptcha_v3(action: @recaptcha_action) %>
-  <%# end %>
-
-<% end %>
-
-<% if advanced_search_enabled? %>
-  <%= link_to t('blacklight.advanced_search.more_options'), @advanced_search_url, class: 'advanced_search btn btn-secondary'%>
-<% end %>
+  <% if advanced_search_enabled? %>
+    <% link_text = case helpers.controller_name
+                   when "journals"
+                     t("blacklight.advanced_search.journals_link", default: t("blacklight.advanced_search.more_options"))
+                   when "databases"
+                     t("blacklight.advanced_search.databases_link", default: t("blacklight.advanced_search.more_options"))
+                   when "catalog", "search"
+                     t("blacklight.advanced_search.catalog_link", default: t("blacklight.advanced_search.more_options"))
+                   when "primo_central"
+                     t("blacklight.advanced_search.articles_link", default: t("blacklight.advanced_search.more_options"))
+                   else
+                     t("blacklight.advanced_search.more_options")
+                   end %>
+    <div class="navbar-form">
+      <%= link_to link_text, @advanced_search_url, class: "advanced_search btn btn-secondary" %>
+    </div>
+  <% end %>
+</search>

@@ -14,32 +14,6 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/projectblacklight/blacklight.git
-  revision: 0378d3789e88c17712ca15f220723435a8049840
-  branch: bl7-rails-8-upgrade
-  specs:
-    blacklight (7.42.0)
-      deprecation
-      globalid
-      hashdiff
-      i18n (>= 1.7.0)
-      jbuilder (~> 2.7)
-      kaminari (>= 0.15)
-      ostruct (>= 0.3.2)
-      rails (>= 6.1, < 9)
-      view_component (>= 3, < 5.0)
-      zeitwerk
-
-GIT
-  remote: https://github.com/projectblacklight/blacklight_advanced_search.git
-  revision: d9d985acb6b87c896b8725cfc13933a85a12afcb
-  ref: v7.0.0
-  specs:
-    blacklight_advanced_search (7.0.0)
-      blacklight (~> 7.0)
-      parslet
-
-GIT
   remote: https://github.com/tulibraries/alma_rb.git
   revision: 8b06cb2033a2e0f41e40577aa8f4ab5a584720b8
   branch: main
@@ -59,14 +33,6 @@ GIT
       rails
 
 GIT
-  remote: https://github.com/tulibraries/blacklight_range_limit.git
-  revision: 7552146fc2f61dc8750f8c9a6c54217530d48bac
-  branch: bl-1431-bl-1358
-  specs:
-    blacklight_range_limit (8.0.0)
-      blacklight (~> 7.0)
-
-GIT
   remote: https://github.com/tulibraries/cdm_rb.git
   revision: d20d9c1adee7c29c3e471a79c63168dba34dbc26
   branch: master
@@ -77,7 +43,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_az_index.git
-  revision: 7a24f06f4b6b5e355ccddab6252e99a450d544ee
+  revision: a94740293127a8275433db2911e5400f050de791
   branch: main
   specs:
     cob_az_index (0.1.0)
@@ -88,7 +54,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: c1a81da8ad95456127df08128848211a3d88aa83
+  revision: e83cf5d84553855a1654fda3817d68b1385035b4
   branch: main
   specs:
     cob_index (0.1.0)
@@ -109,7 +75,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/lc_solr_sortable
-  revision: e7878758e79d79d81cea7a0bd2627cc41bbf9ea6
+  revision: 1bb9a5c72b37064f9ff79061a5e12dd241bf156b
   branch: main
   specs:
     lc_solr_sortable (0.1.0)
@@ -206,6 +172,8 @@ GEM
     addressable (2.9.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
+    auth-sanitizer (0.2.0)
+      version_gem (~> 1.1, >= 1.1.9)
     autoprefixer-rails (10.4.21.0)
       execjs (~> 2)
     awesome_print (1.9.2)
@@ -227,6 +195,15 @@ GEM
     benchmark (0.5.0)
     bigdecimal (4.1.2)
     bindex (0.8.1)
+    blacklight (9.0.0)
+      globalid
+      i18n (>= 1.7.0)
+      jbuilder (~> 2.7)
+      kaminari (>= 0.15)
+      ostruct (>= 0.3.2)
+      rails (>= 7.0, < 9)
+      view_component (>= 3.0, < 5.0)
+      zeitwerk
     blacklight-marc (9.0.0)
       blacklight (>= 7.11, < 10)
       library_stdnums
@@ -234,12 +211,18 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
+    blacklight_advanced_search (8.0.0)
+      blacklight (>= 7.15, < 10)
+      parslet
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
+      view_component (>= 2.54, < 5)
     bootsnap (1.24.6)
       msgpack (~> 1.2)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
-    bot_challenge_page (1.1.0)
-      http (~> 5.2)
+    bot_challenge_page (1.2.0)
+      http (>= 5.2, < 7)
       rails (>= 7.1, < 8.2)
     browser (6.2.0)
     builder (3.3.0)
@@ -299,7 +282,7 @@ GEM
     database_cleaner-active_record (2.2.2)
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0)
-    database_cleaner-core (2.0.1)
+    database_cleaner-core (2.1.0)
     date (3.5.1)
     deprecation (1.1.0)
       activesupport
@@ -327,7 +310,7 @@ GEM
     erb (6.0.4)
     erubi (1.13.1)
     execjs (2.10.1)
-    factory_bot (6.5.6)
+    factory_bot (6.6.0)
       activesupport (>= 6.1.0)
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
@@ -338,7 +321,7 @@ GEM
       logger
     faraday-multipart (1.2.0)
       multipart-post (~> 2.0)
-    faraday-net_http (3.4.2)
+    faraday-net_http (3.4.4)
       net-http (~> 0.5)
     ffi (1.16.3)
     ffi-compiler (1.4.2)
@@ -355,16 +338,25 @@ GEM
       ostruct
     globalid (1.3.0)
       activesupport (>= 6.1)
-    google-protobuf (4.34.1-aarch64-linux-musl)
+    google-protobuf (4.35.0)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-arm64-darwin)
+    google-protobuf (4.35.0-aarch64-linux-gnu)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-darwin)
+    google-protobuf (4.35.0-aarch64-linux-musl)
       bigdecimal
       rake (~> 13.3)
-    google-protobuf (4.34.1-x86_64-linux-musl)
+    google-protobuf (4.35.0-arm64-darwin)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.35.0-x86_64-darwin)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.35.0-x86_64-linux-gnu)
+      bigdecimal
+      rake (~> 13.3)
+    google-protobuf (4.35.0-x86_64-linux-musl)
       bigdecimal
       rake (~> 13.3)
     hashdiff (1.2.1)
@@ -407,7 +399,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.19.5)
+    json (2.19.8)
     jsonpath (1.1.5)
       multi_json
     jwt (3.2.0)
@@ -432,6 +424,10 @@ GEM
       logger (~> 1.6)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
+    listen (3.10.0)
+      logger
+      rb-fsevent (~> 0.10, >= 0.10.3)
+      rb-inotify (~> 0.9, >= 0.9.10)
     llhttp-ffi (0.5.1)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -450,7 +446,7 @@ GEM
       rexml
     marc-fastxmlwriter (1.1.0)
       marc (~> 1.0)
-    marcel (1.1.0)
+    marcel (1.2.1)
     matrix (0.4.3)
     method_source (1.1.0)
     microsoft_graph_mailer (0.1.0)
@@ -480,21 +476,30 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
+    nokogiri (1.19.3-aarch64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.19.3-aarch64-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.19.3-arm-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.19.3-arm-linux-musl)
       racc (~> 1.4)
     nokogiri (1.19.3-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.19.3-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.19.3-x86_64-linux-gnu)
+      racc (~> 1.4)
     nokogiri (1.19.3-x86_64-linux-musl)
       racc (~> 1.4)
-    oauth2 (2.0.18)
+    oauth2 (2.0.20)
+      auth-sanitizer (~> 0.1, >= 0.1.3)
       faraday (>= 0.17.3, < 4.0)
       jwt (>= 1.0, < 4.0)
       logger (~> 1.2)
       multi_xml (~> 0.5)
       rack (>= 1.2, < 4)
-      snaky_hash (~> 2.0, >= 2.0.3)
+      snaky_hash (~> 2.0, >= 2.0.4)
       version_gem (~> 1.1, >= 1.1.9)
     observer (0.1.2)
     okcomputer (1.19.2)
@@ -526,9 +531,12 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
+    pg (1.6.3)
+    pg (1.6.3-aarch64-linux)
     pg (1.6.3-aarch64-linux-musl)
     pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-darwin)
+    pg (1.6.3-x86_64-linux)
     pg (1.6.3-x86_64-linux-musl)
     popper_js (2.11.8)
     pp (0.6.3)
@@ -545,7 +553,7 @@ GEM
       reline (>= 0.6.0)
     pry-rails (0.3.11)
       pry (>= 0.13.0)
-    psych (5.3.1)
+    psych (5.4.0)
       date
       stringio
     public_suffix (7.0.5)
@@ -602,6 +610,9 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.4.2)
+    rb-fsevent (0.11.2)
+    rb-inotify (0.11.1)
+      ffi (~> 1.0)
     rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
@@ -610,6 +621,8 @@ GEM
     regexp_parser (2.12.0)
     reline (0.6.3)
       io-console (~> 0.5)
+    rerun (0.14.0)
+      listen (~> 3.0)
     responders (3.2.0)
       actionpack (>= 7.0)
       railties (>= 7.0)
@@ -634,7 +647,7 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.86.2)
+    rubocop (1.87.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -661,14 +674,22 @@ GEM
     ruby-saml (1.18.1)
       nokogiri (>= 1.13.10)
       rexml
-    rubyzip (3.3.0)
-    sass-embedded (1.99.0-aarch64-linux-musl)
+    rubyzip (3.3.1)
+    sass-embedded (1.100.0-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-arm64-darwin)
+    sass-embedded (1.100.0-aarch64-linux-musl)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-darwin)
+    sass-embedded (1.100.0-arm-linux-gnueabihf)
       google-protobuf (~> 4.31)
-    sass-embedded (1.99.0-x86_64-linux-musl)
+    sass-embedded (1.100.0-arm-linux-musleabihf)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.100.0-arm64-darwin)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.100.0-x86_64-darwin)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.100.0-x86_64-linux-gnu)
+      google-protobuf (~> 4.31)
+    sass-embedded (1.100.0-x86_64-linux-musl)
       google-protobuf (~> 4.31)
     scrub_rb (1.0.1)
     securerandom (0.4.1)
@@ -690,14 +711,18 @@ GEM
     skylight (7.1.1)
       activesupport (>= 7.2.0)
     slop (4.10.1)
-    snaky_hash (2.0.3)
+    snaky_hash (2.0.4)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
-    spring (4.5.0)
-    sqlite3 (2.9.3-aarch64-linux-musl)
-    sqlite3 (2.9.3-arm64-darwin)
-    sqlite3 (2.9.3-x86_64-darwin)
-    sqlite3 (2.9.3-x86_64-linux-musl)
+    spring (4.6.0)
+    sqlite3 (2.9.4-aarch64-linux-gnu)
+    sqlite3 (2.9.4-aarch64-linux-musl)
+    sqlite3 (2.9.4-arm-linux-gnu)
+    sqlite3 (2.9.4-arm-linux-musl)
+    sqlite3 (2.9.4-arm64-darwin)
+    sqlite3 (2.9.4-x86_64-darwin)
+    sqlite3 (2.9.4-x86_64-linux-gnu)
+    sqlite3 (2.9.4-x86_64-linux-musl)
     stackprof (0.2.28)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
@@ -751,8 +776,8 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     vcr (6.4.0)
-    version_gem (1.1.9)
-    view_component (4.10.0)
+    version_gem (1.1.10)
+    view_component (4.12.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -771,7 +796,7 @@ GEM
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     websocket (1.2.11)
-    websocket-driver (0.8.0)
+    websocket-driver (0.8.1)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -780,12 +805,20 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.7.5)
+    zeitwerk (2.8.2)
 
 PLATFORMS
+  aarch64-linux
+  aarch64-linux-gnu
   aarch64-linux-musl
+  arm-linux-gnu
+  arm-linux-gnueabihf
+  arm-linux-musl
+  arm-linux-musleabihf
   arm64-darwin
   x86_64-darwin
+  x86_64-linux
+  x86_64-linux-gnu
   x86_64-linux-musl
 
 DEPENDENCIES
@@ -796,11 +829,11 @@ DEPENDENCIES
   awesome_print
   axe-core-rspec
   bento_search!
-  blacklight!
+  blacklight (~> 9)
   blacklight-marc
   blacklight-ris!
-  blacklight_advanced_search!
-  blacklight_range_limit!
+  blacklight_advanced_search
+  blacklight_range_limit
   bootsnap (= 1.24.6)
   bootstrap (>= 5.3.3)
   bot_challenge_page
@@ -857,6 +890,7 @@ DEPENDENCIES
   rails (= 8.1.3)
   rails-controller-testing
   recaptcha (~> 5.21)
+  rerun
   rsolr (~> 2.6)
   rspec-rails
   rubocop
@@ -881,4 +915,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.5.9
+   2.7.1

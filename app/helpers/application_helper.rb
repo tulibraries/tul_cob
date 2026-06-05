@@ -101,12 +101,12 @@ module ApplicationHelper
   def search_params
     # current_search_session is only defined under search context:
     # Therefore it will not be available in /users/sign_in etc.
-    begin
-      # Sometimes current_search_session will return nil.
-      current_search_session&.query_params&.except(:controller, :action) || {}
-    rescue
-      {}
-    end
+    session_params = sanitized_search_params(current_search_session&.query_params)
+    return session_params if session_params.present?
+
+    sanitized_search_params(request&.query_parameters)
+  rescue
+    {}
   end
 
   def sanitize_cross_tab_search_params(params)
@@ -190,7 +190,7 @@ module ApplicationHelper
 
   def presenter_field_value(presenter, field)
     if blacklight_config.show_fields[field]
-      presenter.field_value(blacklight_config.show_fields[field])
+      presenter.field_value(blacklight_config.show_fields[field]).join("").html_safe
     end
   end
 
@@ -222,10 +222,16 @@ module ApplicationHelper
   end
 
   def skip_links
-    if search_fields.length == 1
-      link_to t("blacklight.skip_links.search_field"), "#search_field", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+    if blacklight_config.search_fields.length == 1
+      link_to t("blacklight.skip_links.search_field"),
+              "#search_field",
+              class: "visually-hidden-focusable rounded-bottom py-2 px-3",
+              data: { turbo: "false" }
     else
-      link_to t("blacklight.skip_links.search_field"), "#search_field_dropdown", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+      link_to t("blacklight.skip_links.search_field"),
+              "#search_field_dropdown",
+              class: "visually-hidden-focusable rounded-bottom py-2 px-3",
+              data: { turbo: "false" }
     end
   end
 
@@ -276,5 +282,16 @@ module ApplicationHelper
 
   def library_link_url
     Rails.configuration.library_link
+  end
+
+  private
+
+  def sanitized_search_params(params)
+    return {} unless params
+
+    sanitized = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h : params.to_h
+    sanitized = sanitized.deep_dup
+    sanitized.except!("controller", :controller, "action", :action)
+    sanitized
   end
 end

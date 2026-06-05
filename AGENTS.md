@@ -6,7 +6,6 @@
 - Default branch tooling is Ruby on Rails with Blacklight + Webpacker.
 
 ## Safety and scope
-- Do not read files outside this repository.
 - Never inspect user dotfiles like ~/.ssh, ~/.aws, ~/.npmrc, ~/.gitconfig.
 - Ask before running shell commands that inspect environment variables.
 - Protect secrets: config/*.yml.example are templates; avoid committing real keys.

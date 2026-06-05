@@ -1,4 +1,4 @@
-$(window).on('turbolinks:load', function() {
+$(window).on('turbo:load', function() {
 	window.onload= function(){
 		// This fixes a bug where the pages are loading at the bottom in Chrome
 		if(location.hash == undefined || location.hash == "" ) {
@@ -57,9 +57,14 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on('turbolinks:load', function() {
-   $(window).trigger('load.bs.select.data-api');
-   $(".selectize").selectize();
+$(document).on('turbo:load', function() {
+
+   $(window).trigger("load.bs.select.data-api");
+
+   if (typeof $(".selectize").selectize === "function") {
+     $(".selectize").selectize()
+   }
+
 });
 
 $(document).ready(function(){
@@ -75,7 +80,7 @@ $(document).ready(function(){
   );
 });
 
-$(document).on('turbolinks:load', function() {
+$(document).on('turbo:load', function() {
 	$(function () {
  	  $('[data-bs-toggle="tooltip"]').tooltip()
  	})

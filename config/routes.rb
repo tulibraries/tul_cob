@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   root to: "search#index"
 
   # advanced forms
-  match "journals/advanced", to: "journals_advanced#index", as: "journals_advanced_search", via: [:get, :post]
-  match "databases/advanced", to: "databases_advanced#index", as: "databases_advanced_search", via: [:get, :post]
-  match "articles/advanced", to: "primo_advanced#index", as: "articles_advanced_search", via: [:get, :post]
-  match "catalog/advanced", to: "advanced#index", as: "advanced_search", via: [:get, :post]
+  get "advanced", to: redirect("/catalog/advanced")
+  match "everything/advanced", to: "search#advanced_search", via: [:get, :post]
+  match "articles/advanced", to: "primo_central#advanced_search", via: [:get, :post]
+
   match "catalog/:id/purchase_order", to: "catalog#purchase_order_action", via: [:post], as: "purchase_order_action"
 
   # concerns
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   # mounts
   mount Blacklight::Engine => "/"
-  mount BlacklightAdvancedSearch::Engine => "/"
+  #mount BlacklightAdvancedSearch::Engine => "/"
   mount BentoSearch::Engine => "/everything"
 
   get "books/:id", to: redirect { |_, req| req.url.sub("books", "catalog") }
@@ -133,7 +133,6 @@ Rails.application.routes.draw do
   get "bento" => "search#index", :as => "multi_search"
   get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-  get "articles_advanced", to: "primo_advanced#index", as: "legacy_articles_advanced_search"
 
   get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
   get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"

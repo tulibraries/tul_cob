@@ -6,7 +6,7 @@ module FacetsHelper
   # Overridden from module Blacklight::FacetFieldListComponent.
   def facet_item_component_class(facet_config)
     return FacetItemPivotComponent if facet_config.pivot
-    default_component = FacetItemComponent
+    default_component = LibrarySearch::FacetItemComponent
     facet_config.fetch(:item_component, default_component)
   end
 
@@ -36,6 +36,6 @@ module FacetsHelper
 
   # Overridden from module Blacklight::FacetsHelperBehavior.
   def facet_item_presenter(facet_config, facet_item, facet_field)
-    FacetItemPresenter.new(facet_item, facet_config, self, facet_field)
+    facet_config.item_presenter.new(facet_item, facet_config, self, facet_field)
   end
 end
