@@ -363,6 +363,8 @@ en:
   databases:
     link_text: "Browse all databases by subject or alphabetically"
     link_href: "https://guides.temple.edu/az.php"
+    acceptable_use_text: "Electronic Resources Acceptable Use Guidelines"
+    acceptable_use_href: "https://library.temple.edu/policies/using-electronic-resources-acceptable-use-guidelines"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
     home_html: "<strong>Databases</strong> includes searchable collections organized by topic or format—use them to find articles, data, images, and more."
