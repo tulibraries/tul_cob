@@ -303,6 +303,33 @@ RSpec.describe AlmawsController, type: :controller do
         expect(Alma::ItemRequest).not_to have_received(:submit)
         expect(Alma::BibRequest).to have_received(:submit)
       end
+
+      it "normalizes the any available copy sentinel back to a blank description" do
+        allow(controller).to receive(:get_bib_items).and_return([
+          Alma::BibItem.new(
+            "holding_data" => { "holding_id" => "holding_main" },
+            "item_data" => {
+              "pid" => "item_main",
+              "description" => "",
+              "library" => { "value" => "MAIN", "desc" => "Charles Library" },
+              "base_status" => { "value" => "1", "desc" => "Item in place" }
+            }
+          )
+        ])
+
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "MAIN", loggable: {})
+        allow(Alma::BibRequest).to receive(:submit).and_return(response_double)
+
+        post(:send_hold_request, params: {
+          mms_id: "foo",
+          hold_description: RequestData::BLANK_DESCRIPTION_VALUE,
+          hold_pickup_location: "MAIN",
+          material_type: "BOOK",
+          request_level: "bib"
+        })
+
+        expect(Alma::BibRequest).to have_received(:submit).with(hash_including(description: ""))
+      end
     end
   end
 

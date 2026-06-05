@@ -13,7 +13,7 @@ module RequestHelper
   def request_grouped_select_options(option_groups, placeholder:)
     safe_join([
       request_hidden_placeholder_option(placeholder),
-      grouped_options_for_select(option_groups)
+      grouped_options_for_select(normalized_request_grouped_options(option_groups))
     ])
   end
 
@@ -89,6 +89,22 @@ module RequestHelper
   end
 
   private
+
+    def normalized_request_grouped_options(option_groups)
+      option_groups.map do |group_label, options|
+        [group_label, normalize_grouped_option_values(options)]
+      end
+    end
+
+    def normalize_grouped_option_values(options)
+      Array(options).map do |option|
+        if option.is_a?(Array) && option.length >= 2 && option.last == ""
+          [option.first, RequestData::BLANK_DESCRIPTION_VALUE]
+        else
+          option
+        end
+      end
+    end
 
     def request_hidden_placeholder_option(text)
       content_tag(:option, text, value: "", disabled: true, selected: true, hidden: true)

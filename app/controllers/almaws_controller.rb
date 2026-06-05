@@ -66,10 +66,11 @@ class AlmawsController < CatalogController
   end
 
   def send_hold_request
+    description = normalized_request_description(params[:hold_description])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:hold_description],
+    description: description,
     pickup_location_library: params[:hold_pickup_location],
     pickup_location_type: "LIBRARY",
     material_type: { value: params[:material_type] },
@@ -80,7 +81,7 @@ class AlmawsController < CatalogController
     log = { type: "submit_hold_request", user: current_user.id }.merge(bib_options)
 
     begin
-      item_options = same_pickup_item_request_options(params[:mms_id], params[:hold_pickup_location], params[:hold_description])
+      item_options = same_pickup_item_request_options(params[:mms_id], params[:hold_pickup_location], description)
       response =
         if item_options.present?
           do_with_json_logger(log.merge(item_options)) { Alma::ItemRequest.submit(bib_options.merge(item_options)) }
@@ -98,10 +99,11 @@ class AlmawsController < CatalogController
   end
 
   def send_asrs_request
+    description = normalized_request_description(params[:asrs_description])
     options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
-    description: params[:asrs_description],
+    description: description,
     pickup_location_library: params[:asrs_pickup_location],
     pickup_location_type: "LIBRARY",
     material_type: { value: params[:material_type] },
@@ -154,6 +156,7 @@ class AlmawsController < CatalogController
   def send_booking_request
     start_date = date_or_nil(params[:booking_start_date])
     end_date = date_or_nil(params[:booking_end_date])
+    description = normalized_request_description(params[:booking_description])
     bib_options = {
     mms_id: params[:mms_id],
     user_id: current_user.uid,
@@ -163,7 +166,7 @@ class AlmawsController < CatalogController
     request_type: "BOOKING",
     booking_start_date: start_date,
     booking_end_date: end_date,
-    description: params[:booking_description],
+    description: description,
     comment: params[:booking_comment]
     }
 
@@ -183,10 +186,11 @@ class AlmawsController < CatalogController
   end
 
   def send_digitization_request
+    description = normalized_request_description(params[:digitization_description])
     bib_options = {
       mms_id: params[:mms_id],
       user_id: current_user.uid,
-      description: params[:digitization_description],
+      description: description,
       chapter_or_article_title: params[:chapter_or_article_title],
       chapter_or_article_author: params[:chapter_or_article_author],
       request_type: "DIGITIZATION",
@@ -257,5 +261,9 @@ class AlmawsController < CatalogController
         date = nil
       end
       date
+    end
+
+    def normalized_request_description(description)
+      description == RequestData::BLANK_DESCRIPTION_VALUE ? "" : description
     end
 end

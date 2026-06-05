@@ -4,6 +4,7 @@ class RequestData
   include Lookupable
 
   BLANK_DESCRIPTION_LABEL = "any available copy"
+  BLANK_DESCRIPTION_VALUE = "__any_available_copy__"
 
   attr_reader :request_level
   attr_reader :pickup_location_codes
