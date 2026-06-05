@@ -16,11 +16,11 @@ describe("RequestFormController", () => {
         <select id="hold_description" data-request-form-target="descriptions">
           <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
           <optgroup label="DVD">
-            <option value="">any available copy</option>
+            <option value="__any_available_copy__">any available copy</option>
           </optgroup>
           <optgroup label="Book">
             <option value="booklet">booklet</option>
-            <option value="">any available copy</option>
+            <option value="__any_available_copy__">any available copy</option>
           </optgroup>
         </select>
 
@@ -55,7 +55,7 @@ describe("RequestFormController", () => {
         <select id="booking_description" data-request-form-target="descriptions">
           <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
           <optgroup label="Book">
-            <option value="">any available copy</option>
+            <option value="__any_available_copy__">any available copy</option>
           </optgroup>
         </select>
 
@@ -78,7 +78,7 @@ describe("RequestFormController", () => {
         <select id="asrs_description" data-request-form-target="descriptions">
           <option value="" disabled selected hidden>Select volume/issue or additional item details, if applicable</option>
           <optgroup label="Book">
-            <option value="">any available copy</option>
+            <option value="__any_available_copy__">any available copy</option>
           </optgroup>
         </select>
         
@@ -130,7 +130,7 @@ describe("RequestFormController", () => {
     const pickups = Array.from(root.querySelectorAll('[data-request-form-target="pickups"] option'))
 
     expect(descriptionOptions).toHaveLength(1)
-    expect(descriptions.value).toBe("")
+    expect(descriptions.value).toBe("__any_available_copy__")
     expect(descriptionOptions[0].textContent).toBe("any available copy")
     expect(pickups).toHaveLength(2)
     expect(pickups[0].textContent).toBe("")
@@ -179,7 +179,7 @@ describe("RequestFormController", () => {
     controller.typeSelect()
     expect(Array.from(descriptions.options)).toHaveLength(1)
     expect(descriptions.options[0].textContent).toBe("any available copy")
-    expect(descriptions.value).toBe("")
+    expect(descriptions.value).toBe("__any_available_copy__")
   })
 
   it("prepends a hidden disabled selected pickup placeholder when filtering by description", async () => {

@@ -63,6 +63,7 @@ RSpec.describe RequestHelper, type: :helper do
       expect(placeholder["selected"]).to eq("selected")
       expect(placeholder["hidden"]).to eq("hidden")
       expect(options.map(&:text)).to eq(["c. 3", "any available copy"])
+      expect(options.last["value"]).to eq(RequestData::BLANK_DESCRIPTION_VALUE)
     end
   end
 
