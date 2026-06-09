@@ -3,7 +3,7 @@
 BotChallengePage.configure do |config|
 
   # Can globally disable in configuration if desired
-  config.enabled = true
+  config.enabled = !Rails.env.test? && Rails.configuration.apis.dig(:turnstile, :enabled)
 
   # Get from CloudFlare Turnstile: https://www.cloudflare.com/application-services/products/turnstile/
   # Some testing keys are also available: https://developers.cloudflare.com/turnstile/troubleshooting/testing/
@@ -11,7 +11,7 @@ BotChallengePage.configure do |config|
   # Always pass testing sitekey: "1x00000000000000000000AA"
   config.cf_turnstile_sitekey = Rails.configuration.apis.dig(:turnstile, :sitekey)
   # Always pass testing secret_key: "1x0000000000000000000000000000000AA"
-  config.cf_turnstile_secret_key = Rails.configuration.apis.dig(:turnstile, :sitekey)
+  config.cf_turnstile_secret_key = Rails.configuration.apis.dig(:turnstile, :secret_key)
 
 
   # For rate-limiting, we need a rails cache store that keeps state, by default
@@ -22,7 +22,7 @@ BotChallengePage.configure do |config|
   # Filter to omit requests from bot challenge control, executed in controller instance context
   #
   config.skip_when = ->(config) {
-    current_page?(okcomputer_path)
+    helpers.current_page?(okcomputer_path)
   }
 
   # Hook after a bot challenge is presented, for logging or other

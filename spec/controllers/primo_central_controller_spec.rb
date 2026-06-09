@@ -6,11 +6,12 @@ RSpec.describe PrimoCentralController, type: :controller do
   let(:doc) { Hash.new }
   let(:options) { { blacklight_config: controller.blacklight_config } }
   let(:document) { PrimoCentralDocument.new(doc, options) }
-  let(:helpers) { double("helper", base_path: "/") }
+  let(:helpers) { double("helper").as_null_object }
   let(:mock_response) { instance_double(Blacklight::PrimoCentral::Response) }
   let(:search_service) { instance_double(Blacklight::SearchService) }
 
   before(:each) do
+    allow(helpers).to receive(:base_path).and_return("/")
     allow(controller).to receive(:helpers).and_return(helpers)
     allow(controller).to receive(:search_service).and_return(search_service)
     allow(search_service).to receive(:fetch).and_return([mock_response, document])

@@ -27,6 +27,8 @@ class CatalogController < ApplicationController
     end
   end
 
+  bot_challenge only: :index
+
   def override_solr_path
     single_word = params["q"]&.split&.count == 1
     quoted_phrase = params["q"]&.match?(/\A["'].*["']\z/)
