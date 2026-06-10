@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   mount Flipflop::Engine => "/flipflop"
   get "users/quik_pay_callback", as: "quik_pay_callback"
   get "users/quik_pay", as: "quik_pay"
+
+  get "/test_bot_challenge", to: "test_bot_challenge#show"
   root to: "search#index"
 
   # advanced forms
