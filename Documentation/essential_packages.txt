@@ -2,3 +2,4 @@ express
 minimatch
 ajv
 zlib
+net-imap
