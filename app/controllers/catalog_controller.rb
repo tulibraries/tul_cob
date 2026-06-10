@@ -27,7 +27,7 @@ class CatalogController < ApplicationController
     end
   end
 
-  bot_challenge only: :index
+  bot_challenge only: :index, if: -> { Flipflop.bot_challenge? }
 
   def override_solr_path
     single_word = params["q"]&.split&.count == 1
