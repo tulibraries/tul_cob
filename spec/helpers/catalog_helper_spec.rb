@@ -81,6 +81,46 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#render_show_tool_dropdown_item" do
+    let(:request) { instance_double(ActionDispatch::Request, original_fullpath: "/catalog/123") }
+
+    before do
+      allow(helper).to receive(:request).and_return(request)
+      allow(helper).to receive(:current_user).and_return(current_user)
+      allow(helper).to receive(:new_user_session_path).with(
+        redirect_to: "/catalog/123",
+        login_message: "email"
+      ).and_return("/users/sign_in?login_message=email&redirect_to=%2Fcatalog%2F123")
+    end
+
+    let(:current_user) { nil }
+
+    context "when the email tool is rendered for a guest" do
+      it "renders a login link instead of the email action" do
+        rendered = helper.render_show_tool_dropdown_item(:email, "email-action")
+
+        expect(rendered).to include("Email (log in required)")
+        expect(rendered).to include("/users/sign_in?login_message=email&amp;redirect_to=%2Fcatalog%2F123")
+        expect(rendered).to include("nav-link")
+        expect(rendered).not_to include("email-action")
+      end
+    end
+
+    context "when the email tool is rendered for a signed-in user" do
+      let(:current_user) { double("User") }
+
+      it "returns the original email action" do
+        expect(helper.render_show_tool_dropdown_item(:email, "email-action")).to eq("email-action")
+      end
+    end
+
+    context "when a different tool is rendered" do
+      it "returns the original action" do
+        expect(helper.render_show_tool_dropdown_item(:ris, "ris-action")).to eq("ris-action")
+      end
+    end
+  end
+
   describe "#get_search_params" do
     context "with title_uniform_display field" do
       let(:field) { "title_uniform_display" }

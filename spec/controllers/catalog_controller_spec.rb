@@ -146,6 +146,16 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  describe "GET email" do
+    context "when the user is not logged in" do
+      it "redirects to the login page" do
+        get :email, params: { id: doc_id }
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
+
   describe "#do_with_json_logger" do
     before do
       allow(controller).to receive(:json_request_logger) {}

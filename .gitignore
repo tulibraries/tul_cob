@@ -57,3 +57,4 @@ yarn-debug.log*
 
 development.sqlite3*
 test.sqlite3*
+.env.local
