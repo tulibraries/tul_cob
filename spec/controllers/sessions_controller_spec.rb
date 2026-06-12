@@ -44,6 +44,12 @@ RSpec.describe SessionsController, type: :controller do
 
       expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to include("user_id" => user.id)
     end
+
+    it "redirects to redirect_to when provided" do
+      post :create, params: { user: { email: user.email, password: }, redirect_to: "/catalog/123" }
+
+      expect(response).to redirect_to("/catalog/123")
+    end
   end
 
   describe "DELETE destroy" do

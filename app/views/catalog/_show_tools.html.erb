@@ -35,7 +35,7 @@
             <div class="sendto-menu dropdown-menu">
               <% @sendto.each do |key,value| %>
                 <div class="sendto-item dropdown-item">
-                  <%= value %>
+                  <%= render_show_tool_dropdown_item(key, value) %>
                 </div>
               <% end %>
             </div>

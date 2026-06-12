@@ -36,6 +36,19 @@ module CatalogHelper
     end
   end
 
+  def render_show_tool_dropdown_item(key, value)
+    return value unless key == :email && !current_user
+
+    link_to(
+      t("blacklight.tools.email_login_required_html"),
+      new_user_session_path(
+        redirect_to: request&.original_fullpath || request&.fullpath || request&.url,
+        login_message: "email"
+      ),
+      class: "nav-link"
+    )
+  end
+
   def render_marc_view
     if @document.respond_to?(:to_marc)
       render "marc_view", document: @response.documents.first

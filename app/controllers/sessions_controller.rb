@@ -12,12 +12,17 @@ class SessionsController < Devise::SessionsController
   def new
     doc_id = SolrDocument.sanitize_id(params[:redirect_to])
     @document = SolrDocument.find(doc_id) rescue SolrDocument.new({})
+    flash.now[:alert] = t("blacklight.tools.email_login_required_notice") if params[:login_message] == "email"
     no_cache unless request.xhr?.nil?
     super
   end
 
   def create
     super { |user| set_login_cookie(user) }
+  end
+
+  def after_sign_in_path_for(resource)
+    params[:redirect_to].presence || super
   end
 
   def destroy
