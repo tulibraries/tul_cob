@@ -19,12 +19,12 @@ ARG RAILS_ENV=production
 
 # libc6-compat is required for m1 build.
 RUN apk add -U --no-cache \
-      bash=5.3.3-r1 \
+      bash=5.3.9-r1 \
       jemalloc=5.3.0-r6 \
       libc6-compat=1.1.0-r4 \
       libxslt=1.1.43-r3 \
       postgresql17-client=17.10-r0 \
-      shared-mime-info=2.4-r6 \
+      shared-mime-info=2.4-r7 \
       tzdata=2026b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
