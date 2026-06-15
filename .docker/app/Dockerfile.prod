@@ -7,10 +7,6 @@ WORKDIR /app
 
 COPY . .
 
-ENV LD_PRELOAD="libjemalloc.so.2" \
-      MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
-      RUBY_YJIT_ENABLE="1"
-
 USER root
 
 ARG WEB_CONCURRENCY
@@ -27,14 +23,14 @@ RUN apk add -U --no-cache \
       shared-mime-info=2.4-r7 \
       tzdata=2026b-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
-      build-base=0.5-r3 \
-      git=2.52.0-r0 \
+      build-base=0.5-r4 \
+      git=2.54.0-r0 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
       libxslt-dev=1.1.43-r3 \
-      libffi-dev=3.5.2-r0 \
+      libffi-dev=3.5.2-r1 \
       postgresql17-dev=17.10-r0 \
-      nodejs=24.14.1-r0 \
+      nodejs=24.16.0-r0 \
       yarn=1.22.22-r1 && \
     bundle config set --local without "development test" && \    
     bundle install --jobs=8 && \
@@ -50,6 +46,9 @@ RUN apk add -U --no-cache \
     chown nobody -R /app/tmp && \
     chown nobody -R /app/log
 
+ENV LD_PRELOAD="libjemalloc.so.2" \
+      MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
+      RUBY_YJIT_ENABLE="1"
 
 USER nobody
 
