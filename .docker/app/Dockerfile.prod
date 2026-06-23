@@ -9,12 +9,13 @@ COPY . .
 
 USER root
 
+ARG BUNDLE_JOBS=2
 ARG WEB_CONCURRENCY
-ARG RAILS_MASTER_KEY=foobar
 ARG RAILS_ENV=production 
 
 # libc6-compat is required for m1 build.
-RUN apk add -U --no-cache \
+RUN --mount=type=secret,id=rails_master_key \
+    apk add -U --no-cache \
       bash=5.3.9-r1 \
       jemalloc=5.3.0-r6 \
       libc6-compat=1.1.0-r4 \
@@ -30,15 +31,15 @@ RUN apk add -U --no-cache \
       libxslt-dev=1.1.43-r3 \
       libffi-dev=3.5.2-r1 \
       postgresql17-dev=17.10-r0 \
-      nodejs=24.16.0-r0 \
+      nodejs=24.17.0-r0 \
       yarn=1.22.22-r1 && \
-    bundle config set --local without "development test" && \    
-    bundle install --jobs=8 && \
+    bundle config set --local without "development test" && \
+    bundle install --jobs="${BUNDLE_JOBS}" && \
     yarn install --frozen-lockfile && \
     yarn cache clean && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
-    bundle exec rails assets:precompile && \
+    RAILS_MASTER_KEY="$(cat /run/secrets/rails_master_key)" bundle exec rails assets:precompile && \
     rm -rf node_modules && \
     rm -rf tmp/* && \
     apk del build-dependencies && \
