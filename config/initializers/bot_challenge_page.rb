@@ -46,8 +46,12 @@ BotChallengePage.configure do |config|
   # and subsequent uses of the pass need to have a request that matches
   # fingerprint. By default we insist on IP subnet match, and same user-agent
   # and other headers. But can be customized.
-  # config.session_valid_fingerprint = ->(request) {
-  #    # whatever
-  # }
+  config.session_valid_fingerprint = ->(request) {
+    [
+        request.user_agent,
+        request.headers["sec-ch-ua-platform"],
+        request.headers["accept-encoding"],
+      ]
+  }
 
 end
