@@ -11,6 +11,8 @@ class PrimoCentralController < CatalogController
   helper_method :tags_strip
   helper_method :solr_range_queries_to_a
 
+  bot_challenge only: [:index, :show], if: -> { Flipflop.bot_challenge? }
+
   def recaptcha
     return unless ::FeatureFlags.recaptcha?(params)
     # Do not enable for logged in users.
