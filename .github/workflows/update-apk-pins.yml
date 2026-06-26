@@ -1,0 +1,40 @@
+name: Update APK Pins
+
+on:
+  schedule:
+    # Sunday and Thursday at 09:00 UTC
+    - cron: "0 9 * * 0"
+    - cron: "0 9 * * 4"
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update_apk_pins:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Update pinned apk versions
+        run: ruby .github/scripts/update_pinned_apk_versions.rb
+        env:
+          APK_CHECK_BASE_IMAGE: ruby:3.4-alpine
+          APK_UPDATE_SUMMARY_PATH: /tmp/apk-update-summary.md
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: .docker/app/Dockerfile.prod
+          branch: chore/update-apk-pins
+          commit-message: "Update pinned apk packages"
+          title: "Update pinned apk packages"
+          body-path: /tmp/apk-update-summary.md
+          delete-branch: true
