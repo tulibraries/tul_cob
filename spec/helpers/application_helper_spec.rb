@@ -175,6 +175,56 @@ RSpec.describe ApplicationHelper, type: :helper do
         expect(helper.emergency_alert_messages).to have_text(/Click here to see full details./)
       end
     end
+
+    context "link_text is present" do
+      it "uses the custom link text" do
+        helper.instance_variable_set(
+          "@manifold_alerts_thread",
+          Thread.new do
+            [
+              {
+                "attributes" => {
+                  "for_header" => false,
+                  "scroll_text" => "Test banner message",
+                  "link" => "https://library.temple.edu/details",
+                  "link_text" => "Read the full announcement"
+                }
+              }
+            ]
+          end
+        )
+
+        expect(helper.emergency_alert_messages).to have_link(
+          "Read the full announcement",
+          href: "https://library.temple.edu/details"
+        )
+      end
+    end
+
+    context "link_text is an empty string" do
+      it "falls back to the default banner link text" do
+        helper.instance_variable_set(
+          "@manifold_alerts_thread",
+          Thread.new do
+            [
+              {
+                "attributes" => {
+                  "for_header" => false,
+                  "scroll_text" => "Test banner message",
+                  "link" => "https://library.temple.edu/details",
+                  "link_text" => ""
+                }
+              }
+            ]
+          end
+        )
+
+        expect(helper.emergency_alert_messages).to have_link(
+          I18n.t("blacklight.banner_link"),
+          href: "https://library.temple.edu/details"
+        )
+      end
+    end
   end
 
   describe "#manifold_alerts" do

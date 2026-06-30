@@ -206,9 +206,14 @@ module ApplicationHelper
         message = a.dig("attributes", "scroll_text")
 
         link = a.dig("attributes", "link")
+        link_text = a.dig("attributes", "link_text")
 
-        if !link.blank?
-          messages << message + " " + link_to(t("blacklight.banner_link"), link)
+        if link.present?
+          if link_text.present?
+            messages << message + " " + link_to(link_text, link)
+          else
+            messages << message + " " + link_to(t("blacklight.banner_link"), link)
+          end
         else
           messages << message
         end
