@@ -28,7 +28,13 @@ class CatalogController < ApplicationController
     end
   end
 
-  bot_challenge only: :index, if: -> { Flipflop.bot_challenge? }
+  bot_challenge only: :index, if: -> { bot_challenge? }
+
+  def bot_challenge?
+    Flipflop.bot_challenge? &&
+      (current_user.nil? || current_user.guest?)
+  end
+
 
   def override_solr_path
     single_word = params["q"]&.split&.count == 1
