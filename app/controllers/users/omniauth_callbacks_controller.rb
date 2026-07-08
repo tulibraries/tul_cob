@@ -20,7 +20,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     auth.uid = auth.extra.raw_info["urn:oid:2.16.840.1.113730.3.1.3"]
     @user = User.from_omniauth(auth)
-    sign_in(:user, @user)
+    sign_in(:user, @user, event: :authentication)
 
     session[:alma_auth_type] = "sso"
     session[:alma_sso_user] = @user.uid
