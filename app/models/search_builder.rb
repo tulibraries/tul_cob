@@ -91,6 +91,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     return unless q.is_a?(String)
     return if id_fetch_query?(q)
     return if structured_advanced_query?(q)
+    return if clause_limit_bug_fix_applicable?(q)
 
     tokens = q.split(/\s+/)
     return if tokens.length <= MAX_QUERY_TOKENS
@@ -109,22 +110,78 @@ class SearchBuilder < Blacklight::SearchBuilder
     return if id_fetch_query?(q)
     return if structured_advanced_query?(q)
 
-    tokens = q.split(/\s+/)
+    tokens = q.delete("\"").split(/\s+/)
     return if tokens.empty?
 
     if tokens.length > MAX_PHRASE_BOOST_TOKENS
-      solr_params.delete("pf")
-      solr_params.delete("pf2")
-      solr_params.delete("pf3")
-      solr_params.delete(:pf)
-      solr_params.delete(:pf2)
-      solr_params.delete(:pf3)
+      clear_phrase_boost_params(solr_params)
     end
 
     return if tokens.length <= MAX_CLAUSE_SAFE_TOKENS
 
-    escaped = q.gsub("\"", "\\\"")
+    if clause_limit_bug_fix_applicable?(q)
+      solr_params[q_key] = q.strip[1..-2]
+
+      df_key = if solr_params.key?("df")
+        "df"
+               elsif solr_params.key?(:df)
+                 :df
+               else
+                 "df"
+      end
+      solr_params[df_key] = "text"
+
+      qf_key = if solr_params.key?("qf")
+        "qf"
+               elsif solr_params.key?(:qf)
+                 :qf
+               else
+                 "qf"
+      end
+      solr_params[qf_key] = "text"
+
+      q_op_key = if solr_params.key?("q.op")
+        "q.op"
+                 elsif solr_params.key?(:"q.op")
+                   :"q.op"
+                 else
+                   "q.op"
+      end
+      solr_params[q_op_key] = "AND"
+
+      mm_key = if solr_params.key?("mm")
+        "mm"
+               elsif solr_params.key?(:mm)
+                 :mm
+               else
+                 "mm"
+      end
+      solr_params[mm_key] = "100%"
+
+      return
+    end
+
+    phrase_query = fully_quoted_query?(q) ? q.strip[1..-2] : q
+    escaped = phrase_query.gsub("\"", "\\\"")
     solr_params[q_key] = "\"#{escaped}\""
+
+    df_key = if solr_params.key?("df")
+      "df"
+             elsif solr_params.key?(:df)
+               :df
+             else
+               "df"
+    end
+    solr_params[df_key] = "text"
+
+    qf_key = if solr_params.key?("qf")
+      "qf"
+             elsif solr_params.key?(:qf)
+               :qf
+             else
+               "qf"
+    end
+    solr_params[qf_key] = "text"
 
     def_type_key = if solr_params.key?("defType")
       "defType"
@@ -188,6 +245,31 @@ class SearchBuilder < Blacklight::SearchBuilder
                      "defType"
     end
     solr_params[def_type_key] = "edismax"
+  end
+
+  def fully_quoted_query?(q)
+    stripped = q.strip
+    stripped.start_with?("\"") && stripped.end_with?("\"")
+  end
+
+  def clear_phrase_boost_params(solr_params)
+    %w[pf pf2 pf3].each do |param_name|
+      string_key = param_name
+      symbol_key = param_name.to_sym
+
+      solr_params[string_key] = "" if solr_params.key?(string_key) || !solr_params.key?(symbol_key)
+      solr_params[symbol_key] = "" if solr_params.key?(symbol_key)
+    end
+  end
+
+  def clause_limit_bug_fix_applicable?(q)
+    return false unless fully_quoted_query?(q)
+    return false if is_advanced_search?
+
+    search_field = blacklight_params["search_field"]
+    return false unless search_field.blank? || search_field == "all_fields"
+
+    q.delete("\"").split(/\s+/).length > MAX_CLAUSE_SAFE_TOKENS
   end
 
   # Overrides Blacklight::SearchBuilder#blacklight_params

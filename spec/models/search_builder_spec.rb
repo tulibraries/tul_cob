@@ -57,14 +57,55 @@ RSpec.describe SearchBuilder , type: :model do
       it "truncates and rewrites the query to avoid excessive clauses" do
         q = solr_params[:q] || solr_params["q"]
         def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        pf = solr_params[:pf] || solr_params["pf"]
+        pf2 = solr_params[:pf2] || solr_params["pf2"]
+        pf3 = solr_params[:pf3] || solr_params["pf3"]
 
         expect(q.split.length).to eq(described_class::MAX_QUERY_TOKENS)
         expect(q).to start_with('"')
         expect(q).to end_with('"')
         expect(def_type).to eq("lucene")
-        expect(solr_params).not_to have_key("pf")
-        expect(solr_params).not_to have_key("pf2")
-        expect(solr_params).not_to have_key("pf3")
+        expect(df).to eq("text")
+        expect(pf).to eq("")
+        expect(pf2).to eq("")
+        expect(pf3).to eq("")
+      end
+    end
+
+    context "with a long quoted phrase query" do
+      let(:quoted_query) do
+        '"Wiese, D., Escobar, J. R., Hsu, Y., Kulathinal, R. J., & Hayes-Conroy, A. 2018 . The fluidity of biosocial identity."'
+      end
+      let(:params) { { q: quoted_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "keeps the full phrase and falls back to lucene on the text field" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        qf = solr_params[:qf] || solr_params["qf"]
+        q_op = solr_params[:"q.op"] || solr_params["q.op"]
+        mm = solr_params[:mm] || solr_params["mm"]
+        pf = solr_params[:pf] || solr_params["pf"]
+        pf2 = solr_params[:pf2] || solr_params["pf2"]
+        pf3 = solr_params[:pf3] || solr_params["pf3"]
+
+        expect(q).to eq("Wiese, D., Escobar, J. R., Hsu, Y., Kulathinal, R. J., & Hayes-Conroy, A. 2018 . The fluidity of biosocial identity.")
+        expect(def_type).not_to eq("lucene")
+        expect(df).to eq("text")
+        expect(qf).to eq("text")
+        expect(q_op).to eq("AND")
+        expect(mm).to eq("100%")
+        expect(pf).to eq("")
+        expect(pf2).to eq("")
+        expect(pf3).to eq("")
       end
     end
 
