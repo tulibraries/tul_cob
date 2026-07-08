@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-
 RSpec.feature "Basic Page Elements" do
 
   feature "Check the home page for nav elements when anonymous" do
@@ -25,8 +24,7 @@ RSpec.feature "Basic Page Elements" do
   feature "Check for home page features when logged in" do
 
     before do
-      DatabaseCleaner.clean
-      user = FactoryBot.build_stubbed(:user)
+      user = FactoryBot.create(:user)
       login_as(user, scope: :user)
 
     end
@@ -40,7 +38,6 @@ RSpec.feature "Basic Page Elements" do
     end
 
     after(:all) do
-      DatabaseCleaner.clean
       Warden.test_reset!
     end
 

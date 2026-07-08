@@ -11,9 +11,7 @@ RSpec.feature "RecordPageFields" do
 
   feature "Purchase order link" do
     before do
-      DatabaseCleaner.clean
-      DatabaseCleaner.strategy = :truncation
-      user = FactoryBot.build_stubbed :user
+      user = FactoryBot.create :user
       allow(user).to receive(:can_purchase_order?) { can_purchase_order? }
       login_as user, scope: :user
     end
