@@ -9,6 +9,7 @@
 - Do not read files outside this repository.
 - Never inspect user dotfiles like ~/.ssh, ~/.aws, ~/.npmrc, ~/.gitconfig.
 - Ask before running shell commands that inspect environment variables.
+- Do not run Ruby tests, JavaScript tests, or CI-style test commands unless the user explicitly asks for test execution in the current turn.
 - Protect secrets: config/*.yml.example are templates; avoid committing real keys.
 
 ## Key paths
@@ -175,8 +176,7 @@
 - For Solr schema or fixture changes, update corresponding repos (cob_index, tul_cob-*-solr).
 
 ## Final reminders
-- Run `bundle exec rails ci` before finishing significant backend changes.
-- Run `bundle exec yarn test --runTestsByPath ...` for JS changes touching packs/controllers.
+- Do not run test suites unless the user explicitly requests test execution.
 - Keep RuboCop clean; adhere to formatting rules above.
 - Ensure Solr fixtures are loaded for specs that query search indices.
 - Respect system rule about environment-variable inspection commands.
