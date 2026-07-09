@@ -46,7 +46,7 @@ module SearchHelper
   end
 
   def cdm_collection_ids
-    Array.wrap(Rails.configuration.apis.dig(:cdm, :collection_ids)).join("!")
+    Array.wrap(YAML.load_file(Rails.root.join("config/cdm_collection.yml"))["collection_ids"]).join("!")
   end
 
   def cdm_base_link

@@ -129,7 +129,7 @@ module BentoSearch
     end
 
     def cdm_collection_ids_param
-      Array.wrap(Rails.configuration.apis.dig(:cdm, :collection_ids)).join("!")
+      Array.wrap(YAML.load_file(Rails.root.join("config/cdm_collection.yml"))["collection_ids"]).join("!")
     end
 
     def safe_json_parse(response, context:)
