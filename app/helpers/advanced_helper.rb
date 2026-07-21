@@ -205,8 +205,12 @@ module BlacklightAdvancedSearch
       # @param query the query
       # @return the query with an even number of quotation marks
       def odd_quotes(query)
-        if query&.count('"')&.odd?
-          query.sub(/"/, "")
+        return query unless query&.count('"')&.odd?
+
+        if query.start_with?('"')
+          query[1..]
+        elsif query.end_with?('"')
+          query[0...-1]
         else
           query
         end
@@ -222,14 +226,21 @@ module BlacklightAdvancedSearch
       keyword_queries.each do |field, query|
         field = primo_to_solr_search(field)
         if field == "title_starts_with"
-          queries << %(_query_:"{!lucene df=title_sort}#{query}")
+          queries << %(_query_:"{!lucene df=title_sort}#{escape_nested_lucene_query(query)}")
         else
           queries << ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(local_param_hash(field, config))
         end
-        queries << ops.shift
+        op = ops.shift
+        queries << op if op.present?
       end
       queries.join(" ")
     end
+
+    private
+
+      def escape_nested_lucene_query(query)
+        query.to_s.gsub("\\", "\\\\\\\\").gsub("\"", "\\\\\"")
+      end
   end
 end
 

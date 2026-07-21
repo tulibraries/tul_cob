@@ -24,6 +24,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   MAX_QUERY_TOKENS = 20
   MAX_PHRASE_BOOST_TOKENS = 10
   MAX_CLAUSE_SAFE_TOKENS = 12
+  MAX_CITATION_QUERY_TERMS = 12
 
   self.default_processor_chain += %i[
     force_query_parser_for_advanced_search
@@ -119,49 +120,12 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     return if tokens.length <= MAX_CLAUSE_SAFE_TOKENS
 
-    if clause_limit_bug_fix_applicable?(q)
-      solr_params[q_key] = q.strip[1..-2]
-
-      df_key = if solr_params.key?("df")
-        "df"
-               elsif solr_params.key?(:df)
-                 :df
-               else
-                 "df"
-      end
-      solr_params[df_key] = "text"
-
-      qf_key = if solr_params.key?("qf")
-        "qf"
-               elsif solr_params.key?(:qf)
-                 :qf
-               else
-                 "qf"
-      end
-      solr_params[qf_key] = "text"
-
-      q_op_key = if solr_params.key?("q.op")
-        "q.op"
-                 elsif solr_params.key?(:"q.op")
-                   :"q.op"
-                 else
-                   "q.op"
-      end
-      solr_params[q_op_key] = "AND"
-
-      mm_key = if solr_params.key?("mm")
-        "mm"
-               elsif solr_params.key?(:mm)
-                 :mm
-               else
-                 "mm"
-      end
-      solr_params[mm_key] = "100%"
-
+    if citation_like_query?(q)
+      apply_citation_like_query_fallback(solr_params, q_key, q)
       return
     end
 
-    phrase_query = fully_quoted_query?(q) ? q.strip[1..-2] : q
+    phrase_query = strip_outer_quotes(q)
     escaped = phrase_query.gsub("\"", "\\\"")
     solr_params[q_key] = "\"#{escaped}\""
 
@@ -249,7 +213,15 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def fully_quoted_query?(q)
     stripped = q.strip
-    stripped.start_with?("\"") && stripped.end_with?("\"")
+    return false if stripped.length < 2
+
+    %w[" '].include?(stripped[0]) && stripped[0] == stripped[-1]
+  end
+
+  def strip_outer_quotes(q)
+    return q unless fully_quoted_query?(q)
+
+    q.strip[1..-2]
   end
 
   def clear_phrase_boost_params(solr_params)
@@ -260,6 +232,83 @@ class SearchBuilder < Blacklight::SearchBuilder
       solr_params[string_key] = "" if solr_params.key?(string_key) || !solr_params.key?(symbol_key)
       solr_params[symbol_key] = "" if solr_params.key?(symbol_key)
     end
+  end
+
+  def citation_like_query?(q)
+    return false if is_advanced_search?
+
+    search_field = blacklight_params["search_field"]
+    return false unless search_field.blank? || search_field == "all_fields"
+
+    normalized = strip_outer_quotes(q.to_s)
+    tokens = normalized.scan(/[[:alnum:]-]+/)
+    return false if tokens.length <= MAX_CLAUSE_SAFE_TOKENS
+
+    comma_count = normalized.count(",")
+    semicolon_count = normalized.count(";")
+    initial_count = normalized.scan(/\b[A-Z]\./).length
+    author_segment_count = normalized.scan(/\b[[:alpha:]'-]+,\s*(?:[A-Z]\.\s*){1,}/).length
+    has_year = normalized.match?(/\b(19|20)\d{2}\b/)
+
+    (has_year && (comma_count >= 2 || initial_count >= 3)) ||
+      semicolon_count >= 2 ||
+      author_segment_count >= 3
+  end
+
+  def apply_citation_like_query_fallback(solr_params, q_key, q)
+    terms = citation_like_terms(q)
+    return if terms.empty?
+
+    solr_params[q_key] = terms.join(" ")
+
+    df_key = if solr_params.key?("df")
+      "df"
+             elsif solr_params.key?(:df)
+               :df
+             else
+               "df"
+    end
+    solr_params[df_key] = "text"
+
+    mm_key = if solr_params.key?("mm")
+      "mm"
+             elsif solr_params.key?(:mm)
+               :mm
+             else
+               "mm"
+    end
+    solr_params[mm_key] = "3<75%"
+
+    def_type_key = if solr_params.key?("defType")
+      "defType"
+                   elsif solr_params.key?(:defType)
+                     :defType
+                   else
+                     "defType"
+    end
+    solr_params[def_type_key] = "edismax"
+  end
+
+  def citation_like_terms(q)
+    normalized = strip_outer_quotes(q.to_s)
+      .downcase
+      .gsub(/&/, " ")
+      .gsub(/[^[:alnum:]'\-\s]/, " ")
+      .gsub(/\s+/, " ")
+      .strip
+
+    terms = normalized
+      .split(" ")
+      .reject { |term| term.length == 1 && term.match?(/\A[a-z]\z/) }
+      .reject { |term| term == "'" }
+
+    return terms.first(MAX_CITATION_QUERY_TERMS) unless (year_index = terms.index { |term| term.match?(/\A(19|20)\d{2}\z/) })
+
+    author_terms = terms.first(year_index)
+    title_terms = terms[(year_index + 1)..] || []
+
+    prioritized_terms = author_terms.first(5) + [terms[year_index]] + title_terms.first(6)
+    prioritized_terms.first(MAX_CITATION_QUERY_TERMS)
   end
 
   def clause_limit_bug_fix_applicable?(q)

@@ -86,26 +86,152 @@ RSpec.describe SearchBuilder , type: :model do
           .processed_parameters
       end
 
-      it "keeps the full phrase and falls back to lucene on the text field" do
+      it "rewrites citation-like quoted phrases to a softer edismax query" do
         q = solr_params[:q] || solr_params["q"]
         def_type = solr_params[:defType] || solr_params["defType"]
         df = solr_params[:df] || solr_params["df"]
         qf = solr_params[:qf] || solr_params["qf"]
-        q_op = solr_params[:"q.op"] || solr_params["q.op"]
         mm = solr_params[:mm] || solr_params["mm"]
         pf = solr_params[:pf] || solr_params["pf"]
         pf2 = solr_params[:pf2] || solr_params["pf2"]
         pf3 = solr_params[:pf3] || solr_params["pf3"]
 
-        expect(q).to eq("Wiese, D., Escobar, J. R., Hsu, Y., Kulathinal, R. J., & Hayes-Conroy, A. 2018 . The fluidity of biosocial identity.")
-        expect(def_type).not_to eq("lucene")
+        expect(q).to eq("wiese escobar hsu kulathinal hayes-conroy 2018 the fluidity of biosocial identity")
+        expect(def_type).to eq("edismax")
         expect(df).to eq("text")
         expect(qf).to eq("text")
-        expect(q_op).to eq("AND")
-        expect(mm).to eq("100%")
+        expect(mm).to eq("3<75%")
         expect(pf).to eq("")
         expect(pf2).to eq("")
         expect(pf3).to eq("")
+      end
+    end
+
+    context "with a long single-quoted phrase query" do
+      let(:quoted_query) do
+        "'Kubek, J. B., Tindall-Biggins, C., Reed, K., Carr, L. E., & Fenning, P. A. 2020 .'"
+      end
+      let(:params) { { q: quoted_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "treats matching single quotes as citation-like input and softens the fallback" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        qf = solr_params[:qf] || solr_params["qf"]
+        mm = solr_params[:mm] || solr_params["mm"]
+        pf = solr_params[:pf] || solr_params["pf"]
+        pf2 = solr_params[:pf2] || solr_params["pf2"]
+        pf3 = solr_params[:pf3] || solr_params["pf3"]
+
+        expect(q).to eq("kubek tindall-biggins reed carr fenning 2020")
+        expect(def_type).to eq("edismax")
+        expect(df).to eq("text")
+        expect(qf).to eq("text")
+        expect(mm).to eq("3<75%")
+        expect(pf).to eq("")
+        expect(pf2).to eq("")
+        expect(pf3).to eq("")
+      end
+    end
+
+    context "with a long unquoted citation-style query" do
+      let(:quoted_query) do
+        "Kubek, J. B., Tindall-Biggins, C., Reed, K., Carr, L. E., & Fenning, P. A. 2020 ."
+      end
+      let(:params) { { q: quoted_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "treats unquoted citation-like input the same way" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        qf = solr_params[:qf] || solr_params["qf"]
+        mm = solr_params[:mm] || solr_params["mm"]
+        pf = solr_params[:pf] || solr_params["pf"]
+        pf2 = solr_params[:pf2] || solr_params["pf2"]
+        pf3 = solr_params[:pf3] || solr_params["pf3"]
+
+        expect(q).to eq("kubek tindall-biggins reed carr fenning 2020")
+        expect(def_type).to eq("edismax")
+        expect(df).to eq("text")
+        expect(qf).to eq("text")
+        expect(mm).to eq("3<75%")
+        expect(pf).to eq("")
+        expect(pf2).to eq("")
+        expect(pf3).to eq("")
+      end
+    end
+
+    context "with a long semicolon-delimited citation-style query without a year" do
+      let(:quoted_query) do
+        %("Koenders, M.A.; Mesman, E.; Giltay, E.J.; Elzinga, B.M.; Hillegers, M.H.J. Traumatic experiences, family functioning, and mood disorder development in bipolar")
+      end
+      let(:params) { { q: quoted_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "treats semicolon-delimited author lists as citation-like input even without a year" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        qf = solr_params[:qf] || solr_params["qf"]
+        mm = solr_params[:mm] || solr_params["mm"]
+        pf = solr_params[:pf] || solr_params["pf"]
+        pf2 = solr_params[:pf2] || solr_params["pf2"]
+        pf3 = solr_params[:pf3] || solr_params["pf3"]
+
+        expect(q).to eq("koenders mesman giltay elzinga hillegers traumatic experiences family functioning and mood disorder")
+        expect(def_type).to eq("edismax")
+        expect(df).to eq("text")
+        expect(qf).to eq("text")
+        expect(mm).to eq("3<75%")
+        expect(pf).to eq("")
+        expect(pf2).to eq("")
+        expect(pf3).to eq("")
+      end
+    end
+
+    context "with a long non-citation quoted query" do
+      let(:quoted_query) do
+        '"alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu"'
+      end
+      let(:params) { { q: quoted_query, search_field: "all_fields" } }
+
+      subject(:solr_params) do
+        described_class
+          .new(context)
+          .with(params)
+          .processed_parameters
+      end
+
+      it "keeps the strict lucene phrase fallback for non-citation input" do
+        q = solr_params[:q] || solr_params["q"]
+        def_type = solr_params[:defType] || solr_params["defType"]
+        df = solr_params[:df] || solr_params["df"]
+        qf = solr_params[:qf] || solr_params["qf"]
+
+        expect(q).to eq('"alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu"')
+        expect(def_type).to eq("lucene")
+        expect(df).to eq("text")
+        expect(qf).to eq("text")
       end
     end
 
@@ -371,7 +497,7 @@ RSpec.describe SearchBuilder , type: :model do
         )
         .processed_parameters
 
-      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}states*" ))
+      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}states*"))
     end
 
     it "uses a lucene title_sort prefix query for same-field OR rows" do
@@ -388,7 +514,7 @@ RSpec.describe SearchBuilder , type: :model do
         )
         .processed_parameters
 
-      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}(states*) OR (introduction*)" ))
+      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}(states*) OR (introduction*)"))
     end
   end
 
