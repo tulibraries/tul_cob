@@ -3,3 +3,4 @@ minimatch
 ajv
 zlib
 net-imap
+rails-html-sanitizer
