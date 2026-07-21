@@ -189,3 +189,68 @@ RSpec.describe AdvancedHelper, type: :helper do
 
   end
 end
+
+RSpec.describe BlacklightAdvancedSearch::QueryParser do
+  subject(:parser) { described_class.allocate }
+
+  describe "#odd_quotes" do
+    it "removes a stray leading quote" do
+      expect(parser.send(:odd_quotes, "\"Japan's national clothing")).to eq("Japan's national clothing")
+    end
+
+    it "removes a stray trailing quote" do
+      expect(parser.send(:odd_quotes, "Japan's national clothing\"")).to eq("Japan's national clothing")
+    end
+
+    it "preserves internal quotes when they are unmatched" do
+      query = %q(Costume The Journal of the Costume Society , "Japan's national clothing during the Second World War)
+
+      expect(parser.send(:odd_quotes, query)).to eq(query)
+    end
+  end
+end
+
+RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
+  subject(:parser) do
+    Class.new do
+      include BlacklightAdvancedSearch::ParsingNestingParser
+
+      def keyword_op
+        []
+      end
+
+      def keyword_queries
+        { "title_starts_with" => query_string }
+      end
+
+      def primo_to_solr_search(field)
+        field
+      end
+
+      def query_string
+        @query_string
+      end
+
+      def query_string=(value)
+        @query_string = value
+      end
+    end.new
+  end
+
+  let(:config) do
+    double(
+      "blacklight_config",
+      advanced_search: { query_parser: "lucene" }
+    )
+  end
+
+  describe "#process_query" do
+    it "escapes embedded quotes in nested title_starts_with lucene queries" do
+      parser.query_string = %q(Costume The Journal of the Costume Society , "Japan's national clothing during the Second World War Material shortages, war)
+
+      expect(parser.process_query({}, config)).to eq(
+        '_query_:"{!lucene df=title_sort}Costume The Journal of the Costume Society , \\"Japan\'s national clothing during the Second World War Material shortages, war"'
+      )
+    end
+  end
+end
