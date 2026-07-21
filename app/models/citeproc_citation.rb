@@ -19,7 +19,7 @@ class CiteprocCitation
   end
 
   def citable?
-    title.present?
+    csl_item.present?
   end
 
   def citations
@@ -37,7 +37,7 @@ class CiteprocCitation
     attr_reader :document, :formats
 
     def return_null_citation?
-      title.blank?
+      csl_item.blank?
     end
 
     def all_formats_requested?
@@ -69,116 +69,7 @@ class CiteprocCitation
     end
 
     def csl_item
-      @csl_item ||= begin
-        attributes = {
-          id: document.id.to_s,
-          type: csl_type,
-          title: title,
-          author: csl_names(author_names),
-          editor: csl_names(editor_names),
-          issued: issued_date,
-          publisher: publisher,
-          publisher_place: publisher_place,
-          ISBN: isbn,
-          ISSN: issn
-        }.compact
-        CiteProc::Item.new(attributes)
-      end
-    end
-
-    def title
-      Array(document["title_statement_display"]).first.to_s.presence
-    end
-
-    def author_names
-      Array(document["creator_display"]).presence ||
-        Array(document["contributor_display"]).presence ||
-        []
-    end
-
-    def editor_names
-      return [] if Array(document["creator_display"]).present?
-      Array(document["contributor_display"])
-    end
-
-    def csl_names(names)
-      Array(names).filter_map do |name|
-        value = extract_name_value(name)
-        next if value.blank?
-
-        if value.include?(",")
-          family, given = value.split(",", 2).map(&:strip)
-          { family:, given: given.presence }
-        else
-          { literal: value }
-        end
-      end
-    end
-
-    def extract_name_value(name)
-      return name["name"].to_s.strip if name.is_a?(Hash)
-
-      value = name.to_s.strip
-      return "" if value.blank?
-      return value unless value.start_with?("{") && value.end_with?("}")
-
-      parsed = JSON.parse(value)
-      parsed.is_a?(Hash) ? parsed["name"].to_s.strip : value
-    rescue JSON::ParserError
-      value
-    end
-
-    def issued_date
-      year = publication_year
-      return nil if year.blank?
-
-      { "date-parts" => [[year.to_i]] }
-    end
-
-    def publication_year
-      candidates = [
-        Array(document["pub_date_display"]).first,
-        Array(document["pub_date"]).first,
-        document["date_copyright_display"]
-      ].compact.map(&:to_s)
-
-      match = candidates.join(" ").match(/\b\d{4}\b/)
-      match&.to_s
-    end
-
-    def csl_type
-      formats = Array(document["format"])
-      return "book" if formats.include?("Book")
-      return "article-journal" if formats.include?("Journal/Periodical") || formats.include?("Article")
-      return "thesis" if formats.include?("Dissertation/Thesis")
-      "document"
-    end
-
-    def imprint
-      Array(document["imprint_display"]).first ||
-        Array(document["imprint_prod_display"]).first ||
-        Array(document["imprint_dist_display"]).first ||
-        Array(document["imprint_man_display"]).first
-    end
-
-    def publisher_place
-      return nil if imprint.blank?
-      imprint.to_s.split(":").first.to_s.strip.presence
-    end
-
-    def publisher
-      return nil if imprint.blank?
-      parts = imprint.to_s.split(":")
-      publisher_section = parts.length > 1 ? parts.last : parts.first
-      publisher_section.to_s.split(",").first.to_s.strip.presence
-    end
-
-    def isbn
-      Array(document["isbn_display"]).first
-    end
-
-    def issn
-      Array(document["issn_display"]).first
+      @csl_item ||= Citeproc::ItemService.build(document)
     end
 
     def null_citation
