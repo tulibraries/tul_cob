@@ -357,7 +357,7 @@ GEM
       rake (~> 13.3)
     hashdiff (1.2.1)
     hashie (4.1.0)
-    honeybadger (6.9.0)
+    honeybadger (6.9.1)
       logger
       ostruct
     htmlentities (4.4.2)
@@ -808,7 +808,7 @@ DEPENDENCIES
   flipflop
   foreman
   hashie (~> 4.1.0)
-  honeybadger (= 6.9.0)
+  honeybadger (= 6.9.1)
   httparty
   importmap-rails
   jbuilder (~> 2.15)
