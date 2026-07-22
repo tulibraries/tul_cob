@@ -34,12 +34,17 @@ module Citeproc
       def item_attributes
         {
           id: document.id.to_s,
-          type: "book",
+          type: csl_type,
           title: normalized_title,
           author: extract_names("author"),
           editor: extract_names("editor"),
           translator: extract_names("translator"),
-          illustrator: extract_names("illustrator")
+          illustrator: extract_names("illustrator"),
+          issued: issued_date,
+          publisher: publisher,
+          publisher_place: publisher_place,
+          ISBN: isbn,
+          ISSN: issn
         }
       end
 
@@ -57,6 +62,61 @@ module Citeproc
         title = value.to_s.split(%r{\s+/\s+}, 2).first.to_s
         title = title.gsub(/\s+/, " ").strip
         title.presence
+      end
+
+      def issued_date
+        year = publication_year
+        return if year.blank?
+
+        { "date-parts" => [[year.to_i]] }
+      end
+
+      def publication_year
+        candidates = [
+          Array(document["pub_date_display"]).first,
+          Array(document["pub_date"]).first,
+          document["date_copyright_display"]
+        ].compact.map(&:to_s)
+
+        candidates.join(" ")[/\b\d{4}\b/]
+      end
+
+      def csl_type
+        formats = Array(document["format"])
+        return "book" if formats.include?("Book")
+        return "article-journal" if formats.include?("Journal/Periodical") || formats.include?("Article")
+        return "thesis" if formats.include?("Dissertation/Thesis")
+
+        "document"
+      end
+
+      def imprint
+        Array(document["imprint_display"]).first ||
+          Array(document["imprint_prod_display"]).first ||
+          Array(document["imprint_dist_display"]).first ||
+          Array(document["imprint_man_display"]).first
+      end
+
+      def publisher_place
+        return if imprint.blank?
+
+        imprint.to_s.split(":").first.to_s.strip.presence
+      end
+
+      def publisher
+        return if imprint.blank?
+
+        parts = imprint.to_s.split(":")
+        publisher_section = parts.length > 1 ? parts.last : parts.first
+        publisher_section.to_s.split(",").first.to_s.strip.presence
+      end
+
+      def isbn
+        Array(document["isbn_display"]).first
+      end
+
+      def issn
+        Array(document["issn_display"]).first
       end
 
       def extract_names(target_role)

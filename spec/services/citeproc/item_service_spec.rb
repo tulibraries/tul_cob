@@ -26,6 +26,19 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Chen", "given" => "Bor-Sen" }, { "family" => "Li", "given" => "Zhengwei" }])
   end
 
+  it "restores the legacy citation item attributes" do
+    document["imprint_display"] = ["Philadelphia : Temple University Press, 2021"]
+    document["pub_date_display"] = ["2021"]
+    document["isbn_display"] = ["9781439912345"]
+    document["issn_display"] = ["1234-5678"]
+
+    expect(item.issued.to_citeproc).to eq("date-parts" => [[2021]])
+    expect(item.publisher).to eq("Temple University Press")
+    expect(item["publisher_place"]).to eq("Philadelphia")
+    expect(item["ISBN"]).to eq("9781439912345")
+    expect(item["ISSN"]).to eq("1234-5678")
+  end
+
   it "maps supported contributor relators from indexed fields" do
     document["contributor_display"] = [
       "Norris, Denne Michele,|editor.",
