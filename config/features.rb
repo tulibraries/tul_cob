@@ -15,12 +15,7 @@ Flipflop.configure do
     feature :citeproc_citations
   end
 
-  group :quik_pay do
-    feature :quik_pay_sessionless_callback
-  end
-
   group :experimental do
     feature :bot_challenge, default: false
   end
-
 end

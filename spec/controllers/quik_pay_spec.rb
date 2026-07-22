@@ -46,58 +46,31 @@ RSpec.describe UsersController, type: "controller"  do
       end
     end
 
-    context "when quik pay sessionless callback is disabled" do
-      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
-      let(:redirect_params) { "transactionStatus%2CtransactionTotalAmount" }
+    let(:redirect_params) { "transactionStatus%2CtransactionTotalAmount%2CorderNumber" }
 
-      include_examples "quik pay redirect parameters"
-    end
-
-    context "when quik pay sessionless callback is enabled" do
-      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
-      let(:redirect_params) { "transactionStatus%2CtransactionTotalAmount%2CorderNumber" }
-
-      include_examples "quik pay redirect parameters"
-    end
+    include_examples "quik pay redirect parameters"
   end
 
-  describe "GET #quik_pay_callback" do
-    context "when quik pay sessionless callback is disabled" do
-      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
-
-      context "user is not logged in" do
-        it "redirects you to login page" do
-          get :quik_pay_callback
-          expect(response).to redirect_to new_user_session_path
-
-          post :quik_pay_callback
-          expect(response).to redirect_to new_user_session_path
-        end
+  describe "#quik_pay_callback" do
+    context "user is not logged in but parameters are valid" do
+      let (:params) { with_validation_params(transactionStatus: "1") }
+      before(:each) do
+        resp = OpenStruct.new(total_sum: 0.0)
+        balance = Alma::PaymentResponse.new(resp)
+        allow(Alma::User).to receive(:send_payment) { balance }
       end
-    end
 
-    context "when quik pay sessionless callback is enabled" do
-      before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
+      it "redirects GET requests to the users account page with success notice" do
+        get(:quik_pay_callback, params:)
+        expect(Alma::User).to have_received(:send_payment).with(user_id: params[:orderNumber])
+        expect(response).to redirect_to users_account_path
+        expect(flash[:notice]).to include("Your fees have been paid.");
+      end
 
-      context "user is not logged in but parameters are valid" do
-        let (:params) { with_validation_params(transactionStatus: "1") }
-        before(:each) do
-          resp = OpenStruct.new(total_sum: 0.0)
-          balance = Alma::PaymentResponse.new(resp)
-          allow(Alma::User).to receive(:send_payment) { balance }
-        end
-
-        it "redirects GET requests to the users account page with success notice" do
-          get(:quik_pay_callback, params:)
-          expect(response).to redirect_to users_account_path
-          expect(flash[:notice]).to include("Your fees have been paid.");
-        end
-
-        it "redirects POST requests to the users account page with success notice" do
-          post(:quik_pay_callback, params:)
-          expect(response).to redirect_to users_account_path
-          expect(flash[:notice]).to include("Your fees have been paid.");
-        end
+      it "redirects POST requests to the users account page with success notice" do
+        post(:quik_pay_callback, params:)
+        expect(response).to redirect_to users_account_path
+        expect(flash[:notice]).to include("Your fees have been paid.");
       end
     end
 
@@ -226,22 +199,9 @@ RSpec.describe UsersController, type: "controller"  do
           session["can_pay_online?"] = true;
         end
 
-        context "when quik pay sessionless callback is disabled" do
-          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
-
-          it "redirects to users account paths" do
-            get :quik_pay
-            expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
-          end
-        end
-
-        context "when quik pay sessionless callback is enabled" do
-          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
-
-          it "redirects to users account paths" do
-            get :quik_pay
-            expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
-          end
+        it "redirects to users account paths" do
+          get :quik_pay
+          expect(response.location).to match(/quikpay.*?orderNumber=.*&orderType=Temple%20Library&amountDue=.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
         end
       end
 
@@ -251,22 +211,9 @@ RSpec.describe UsersController, type: "controller"  do
           session["total_fines"] = "25.11"
         end
 
-        context "when quik pay sessionless callback is disabled" do
-          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(false) }
-
-          it "does not lose precision when converting total_fines to cents" do
-            get :quik_pay
-            expect(response.location).to match(/#{Rails.configuration.apis.dig(:quik_pay, :url)}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount&timestamp=.*&hash=.*$/)
-          end
-        end
-
-        context "when quik pay sessionless callback is enabled" do
-          before { allow(Flipflop).to receive(:quik_pay_sessionless_callback?).and_return(true) }
-
-          it "does not lose precision when converting total_fines to cents" do
-            get :quik_pay
-            expect(response.location).to match(/#{Rails.configuration.apis.dig(:quik_pay, :url)}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
-          end
+        it "does not lose precision when converting total_fines to cents" do
+          get :quik_pay
+          expect(response.location).to match(/#{Rails.configuration.apis.dig(:quik_pay, :url)}.*orderNumber=.*&orderType=Temple%20Library&amountDue=2511.*&redirectUrl=.*&redirectUrlParameters=transactionStatus%2CtransactionTotalAmount%2CorderNumber&timestamp=.*&hash=.*$/)
         end
       end
 
