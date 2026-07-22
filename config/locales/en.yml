@@ -166,6 +166,7 @@ en:
       sms: "Text"
       email_login_required_html: "Email (log in required)"
       email_login_required_notice: "You must be logged in to send emails."
+      citation: "Cite"
       cite_html: "Cite %{current_range}"
       sendto: "Send To %{current_range}"
       error_html: "Report a Problem  <span class='error-external-link-icon'></span>"

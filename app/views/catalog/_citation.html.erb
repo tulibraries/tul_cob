@@ -1,14 +1,13 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-<% component.title { t('blacklight.tools.citation') } %>
+  <% component.with_title { t("blacklight.tools.citation") } %>
 
-<% if @response.documents.one? %>
-  <%= render partial: "catalog/single_citation", locals: { document: @response.documents.first } %>
-<% else %>
-  <%= render "catalog/grouped_citations" %>
-<% end %>
+  <div class="citation-warning justify-content-start ps-0" style="color: #E7201D;">
+    <p>*Remember to check citations for accuracy before including them in your work.</p>
+  </div>
 
-<div class="modal-footer justify-content-start ps-0">
-  <p>Remember to check citations for accuracy before including them in your work.</p>
-</div>
-
+  <% if @response.documents.one? %>
+    <%= render partial: "catalog/single_citation", locals: { document: @response.documents.first } %>
+  <% else %>
+    <%= render "catalog/grouped_citations" %>
+  <% end %>
 <% end %>
