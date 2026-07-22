@@ -28,7 +28,7 @@ class SearchController < CatalogController
     respond_to do |format|
       format.html do
         store_preferred_view
-        template = Flipflop.style_updates? ? "search/index_new" : "search/index"
+        template = "search/index_new"
         render template
       end
       format.json do
@@ -42,7 +42,7 @@ class SearchController < CatalogController
   private
 
     def configure_bento_item_partials
-      item_partial = Flipflop.style_updates? ? "bento_search/std_item_new" : "bento_search/std_item"
+      item_partial = "bento_search/std_item_new"
       bento_engines = %w[blacklight journals databases library_website books_and_media articles cdm lib_guides]
 
       bento_engines.each do |engine_id|
@@ -60,7 +60,7 @@ class SearchController < CatalogController
     def apply_bento_item_partials(results)
       return results unless results.is_a?(Hash)
 
-      item_partial = Flipflop.style_updates? ? "bento_search/std_item_new" : "bento_search/std_item"
+      item_partial = "bento_search/std_item_new"
 
       results.each_value do |result|
         next unless result.respond_to?(:display_configuration)

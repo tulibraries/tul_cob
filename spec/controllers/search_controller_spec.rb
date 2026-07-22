@@ -56,21 +56,10 @@ RSpec.describe SearchController, type: :controller do
       allow(BentoSearch).to receive(:get_engine).and_return(engine_double)
     end
 
-    it "points to the new std_item template when style updates are enabled" do
-      allow(Flipflop).to receive(:style_updates?).and_return(true)
-
+    it "points to the new std_item template" do
       controller.send(:configure_bento_item_partials)
 
       expect(display_config[:item_partial]).to eq("bento_search/std_item_new")
-    end
-
-    it "points to the original std_item template when style updates are disabled" do
-      allow(Flipflop).to receive(:style_updates?).and_return(false)
-      display_config[:item_partial] = "custom_partial"
-
-      controller.send(:configure_bento_item_partials)
-
-      expect(display_config[:item_partial]).to eq("bento_search/std_item")
     end
   end
 end

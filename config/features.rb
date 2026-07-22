@@ -8,7 +8,6 @@ Flipflop.configure do
 
   group :bento_changes do
     feature :aspace_integration
-    feature :style_updates
   end
 
   group :citations do
