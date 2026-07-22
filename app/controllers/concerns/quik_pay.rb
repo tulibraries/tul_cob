@@ -106,24 +106,17 @@ module QuikPay
     end
 
     def authenticate_quik_pay_user!
-      if params[:action] == "quik_pay_callback" && Flipflop.quik_pay_sessionless_callback?
-        return
-      end
+      return if params[:action] == "quik_pay_callback"
 
       authenticate_user!
     end
 
     def quik_pay_user_id
-      return current_user&.uid || params["orderNumber"] if Flipflop.quik_pay_sessionless_callback?
-
-      current_user.uid
+      current_user&.uid || params["orderNumber"]
     end
 
     def quik_pay_redirect_url_parameters
-      base_params = "transactionStatus,transactionTotalAmount"
-      return base_params unless Flipflop.quik_pay_sessionless_callback?
-
-      "#{base_params},orderNumber"
+      "transactionStatus,transactionTotalAmount,orderNumber"
     end
 
     def validate_quik_pay_timestamp(timestamp)
