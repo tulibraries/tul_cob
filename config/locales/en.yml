@@ -194,14 +194,7 @@ en:
     equipment_header: "Borrow media equipment"
     equipment_text_html: "For more information, see %{href}."
     equipment_text_href: "Borrow Media Equipment"
-    equipment_text_link: "https://library.temple.edu/services/borrow-media-equipment" 
-    digital_copy_header: "Get help finding a digital copy"
-    digital_help_text_one: "Our library staff will assist you by trying to find a digital copy of a physical item in the library’s collection."
-    digital_help_text_two_html: "Once you %{href}, a library staff member will respond within 24-48 hours."
-    digital_help_text_two_href: "submit this form"
-    digital_help_text_three_html: "You can also search for ebooks in our many %{href} and online."
-    digital_help_text_three_href: "ebook collections"
-    digital_help_text_three_link: "https://guides.temple.edu/c.php?g=1014652&p=7349176"
+    equipment_text_link: "https://library.temple.edu/services/borrow-media-equipment"
     resource_sharing_broker_allowed_link: "Request item that is not available at Temple"
     resource_sharing_broker_text: "For books unavailable from Temple University Libraries, search for and request the book through EZBorrow. Books typically arrive in 3-5 business days."
     resource_sharing_broker_link: "Go to EZBorrow"
@@ -224,8 +217,6 @@ en:
       material_type_html: "Material Type: "
       booking_start_date: "Booking Start Date:"
       booking_end_date: "Booking End Date:"
-    temporary_electronic_request_help_form: "Get help finding a digital copy"
-
 
   articles:
     application_name: "Library Articles Search"
@@ -260,7 +251,7 @@ en:
     more: "Books & Media"
     website: "Library Website"
     databases: "Databases"
-    lib_guides: 
+    lib_guides:
       nice_name: "Research Guides"
     research_guides_html: "Research Guides<span class='external-link-icon'></span>"
     research_guides_link: "https://guides.temple.edu/?b=s"
