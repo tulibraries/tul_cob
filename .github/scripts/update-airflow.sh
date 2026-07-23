@@ -24,5 +24,4 @@ chmod 600 ~/.ssh/conan_the_deployer
 unset SSH_AUTH_SOCK
 unset SSH_AGENT_PID
 
-pipenv run ansible-playbook -i inventory/prod tul_cob.yml --private-key=~/.ssh/conan_the_deployer -e "collection_name=$CATALOG_COLLECTION"
-
+pipenv run ansible-playbook -i inventory/prod tul_cob.yml --private-key=~/.ssh/conan_the_deployer -e "collection_name=$CATALOG_COLLECTION" -e "ansible_port=9229"
