@@ -22,26 +22,4 @@ ssh-keygen -y -f ~/.ssh/conan_the_deployer > /dev/null
 chmod 600 ~/.ssh/conan_the_deployer
 ssh-add ~/.ssh/conan_the_deployer
 
-COMMON_ARGS=(
-  -i inventory/prod
-  tul_cob.yml
-  --private-key=~/.ssh/conan_the_deployer
-  -e "collection_name=$CATALOG_COLLECTION"
-  -e "ansible_port=9229"
-)
-
-LOCAL_DEBUG_ARGS=(
-  -i inventory/prod
-  -i localhost,
-  tul_cob.yml
-  --private-key=~/.ssh/conan_the_deployer
-  -e "collection_name=$CATALOG_COLLECTION"
-  -e "ansible_port=9229"
-)
-
-pipenv run ansible-playbook "${LOCAL_DEBUG_ARGS[@]}" --connection=local --limit localhost
-
-echo "Rendered SSH config:"
-cat ~/.ssh/config
-
-pipenv run ansible-playbook "${COMMON_ARGS[@]}"
+pipenv run ansible-playbook -i inventory/prod tul_cob.yml --private-key=~/.ssh/conan_the_deployer -e "collection_name=$CATALOG_COLLECTION" -e "ansible_port=9229"

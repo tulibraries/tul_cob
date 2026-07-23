@@ -2,10 +2,8 @@ name: Update Airflow Variable
 
 on:
   push:
-    branches:
-      - "**"
-    # tags:
-    #   - "v*.*.*"
+    tags:
+      - "v*.*.*"
   workflow_dispatch: {}
 
 concurrency:
