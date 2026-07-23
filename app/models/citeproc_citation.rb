@@ -51,7 +51,10 @@ class CiteprocCitation
 
     def render_style(style_id, label)
       processor = CiteProc::Processor.new(style: load_style(style_id), format: "html")
-      processor.import([csl_item])
+      item = csl_item_for(style_id)
+      return "" if item.blank?
+
+      processor.import([item])
       bibliography = processor.bibliography
       result = Array(bibliography&.references).first.to_s
       return "" if result.blank?
@@ -70,6 +73,13 @@ class CiteprocCitation
 
     def csl_item
       @csl_item ||= Citeproc::ItemService.build(document)
+    end
+
+    def csl_item_for(style_id)
+      return csl_item unless style_id == "apa"
+
+      @style_items ||= {}
+      @style_items[style_id] ||= Citeproc::ItemService.build(document, style_id: style_id)
     end
 
     def null_citation

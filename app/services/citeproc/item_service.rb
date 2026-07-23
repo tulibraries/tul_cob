@@ -5,6 +5,7 @@ module Citeproc
     ROLE_MAPPINGS = {
       "author" => "author",
       "aut" => "author",
+      "issuing body" => "author",
       "editor" => "editor",
       "edt" => "editor",
       "translator" => "translator",
@@ -13,15 +14,16 @@ module Citeproc
       "ill" => "illustrator"
     }.freeze
 
-    def self.build(document)
-      new(document).item
+    def self.build(document, style_id: nil)
+      new(document, style_id: style_id).item
     end
 
-    def initialize(document)
+    def initialize(document, style_id: nil)
       @document = document
+      @style_id = style_id
     end
 
-    attr_reader :document
+    attr_reader :document, :style_id
 
     def item
       return if normalized_title.blank?
@@ -132,15 +134,9 @@ module Citeproc
 
       def extract_contributor_names(target_role)
         Array(document["contributor_display"]).filter_map do |value|
-          role = extract_role(value, default_role: default_role_for_contributor_entries)
+          role = extract_role(value)
           extract_name(value) if role == target_role
         end.uniq
-      end
-
-      def default_role_for_contributor_entries
-        return unless Array(document["creator_display"]).blank?
-
-        "author"
       end
 
       def extract_name(value)
@@ -155,14 +151,24 @@ module Citeproc
 
         if personal_name?(normalized_value)
           family, given = normalized_value.split(",", 2).map(&:strip)
-          { family: strip_trailing_name_dates(family), given: strip_trailing_name_dates(given).presence }
+          build_personal_name(family, given)
         else
           { literal: normalized_value }
         end
       end
 
       def personal_name?(value)
-        value.count(",") == 1
+        comma_count_outside_parentheses(value) == 1
+      end
+
+      def comma_count_outside_parentheses(value)
+        depth = 0
+
+        value.to_s.each_char.count do |char|
+          depth += 1 if char == "("
+          depth -= 1 if char == ")" && depth.positive?
+          char == "," && depth.zero?
+        end
       end
 
       def extract_role(value, default_role: nil)
@@ -174,9 +180,53 @@ module Citeproc
         default_role
       end
 
+      def build_personal_name(family, given)
+        normalized_family = normalize_personal_name_part(family)
+        normalized_given = normalize_personal_name_part(given)
+
+        if apa_style? && parenthetical_qualifier(normalized_given).present?
+          { literal: apa_literal_name(normalized_family, normalized_given) }
+        else
+          { family: normalized_family, given: normalized_given.presence }
+        end
+      end
+
+      def normalize_personal_name_part(value)
+        normalized = strip_trailing_name_dates(value)
+        strip_trailing_punct(normalized).strip
+      end
+
+      def apa_literal_name(family, given)
+        primary_given = given.to_s.sub(/\s*\([^)]*\)\s*\z/, "").strip
+        qualifier = apa_parenthetical_qualifier(given)
+        "#{family}, #{initials(primary_given)} #{qualifier}".strip
+      end
+
+      def apa_parenthetical_qualifier(given)
+        qualifier = parenthetical_qualifier(given)
+        return "" if qualifier.blank?
+
+        inner = qualifier.delete_prefix("(").delete_suffix(")")
+        "(#{initials(inner)})"
+      end
+
+      def parenthetical_qualifier(value)
+        value.to_s[/\([^)]*\)\s*\z/].to_s.strip
+      end
+
+      def initials(value)
+        value.to_s.scan(/[[:alpha:]]+/).map { |part| "#{part[0].upcase}." }.join(" ")
+      end
+
+      def apa_style?
+        style_id == "apa"
+      end
+
       def relator_segments(value)
         parsed = parsed_indexed_value(value)
-        Array(parsed[:relators])
+        Array(parsed[:relators]).flat_map do |segment|
+          segment.to_s.split(/\s*,\s*/)
+        end
       end
 
       def normalize_relator(value)
