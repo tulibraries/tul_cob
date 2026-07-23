@@ -4,8 +4,6 @@ ActionMailer::Base.default from: "asktulibrary@temple.edu"
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.flipflop.dashboard_access_filter = -> { authenticate_user! }
-
   # Code is not reloaded between requests.
   config.enable_reloading = true
 

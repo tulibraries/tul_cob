@@ -5,9 +5,9 @@ Library Search is a [Blacklight](https://projectblacklight.org/) project at Temp
 The first phase of this project (i.e. TUL "Catalog on Blacklight") focused on search for our catalog records and fulfillment integration with our ILS, Alma. It now also includes a bento style discovery layer for: Primo Central Index article records, Springshare A-Z database records,  [library website content],(https://github.com/tulibraries/manifold), LibGuides, and an integration with contentDM to display relevant search results from our digitized collections.
 
 
-The following repositories are also critical components for Solr indexing and other integrations in the Library Search: 
+The following repositories are also critical components for Solr indexing and other integrations in the Library Search:
 * Processing pipeline: https://github.com/tulibraries/cob_datapipeline
-* Catalog: https://github.com/tulibraries/cob_index, https://github.com/tulibraries/tul_cob-catalog-solr 
+* Catalog: https://github.com/tulibraries/cob_index, https://github.com/tulibraries/tul_cob-catalog-solr
 * A-Z databases: https://github.com/tulibraries/cob_az_index, https://github.com/tulibraries/tul_cob-az-solr
 * Web content: https://github.com/tulibraries/cob_web_index, https://github.com/tulibraries/tul_cob-web-solr
 * Article index: https://github.com/tulibraries/primo
@@ -41,6 +41,49 @@ Then edit it adding in the API keys for our application specified in our Ex Libr
 ```bash
 bundle exec rails db:migrate
 ```
+
+Also, Library Search restricts access to the Flipflop dashboard using an email allowlist defined in config/flipflop.yml.
+
+Copy the example configuration:
+
+`cp config/flipflop.yml.example config/flipflop.yml`
+
+Configure the email addresses that should be allowed to access /flipflop:
+
+```yaml
+default: &default
+  allowed_emails: []
+
+development:
+  <<: *default
+  allowed_emails:
+    - your.name@temple.edu
+
+test:
+  <<: *default
+  allowed_emails:
+    - authorized.user@example.edu
+
+production:
+  <<: *default
+  allowed_emails: []
+```
+
+**Important**: YAML merge keys (`<<: *default`) do not merge arrays. If an environment defines allowed_emails, it replaces the value inherited from default. For example:
+
+```yaml
+default:
+  allowed_emails:
+    - user@example.edu
+
+development:
+  <<: *default
+  allowed_emails: []
+```
+
+results in an empty allowlist for the development environment.
+
+The production allowlist should be managed through deployment configuration (for example, HashiVault or other configuration management) rather than committed to the repository.
 
 ### Start the Application for Development
 
@@ -135,7 +178,7 @@ If using docker, then ingest using `docker-compose exec app traject -c app/model
 
   You can also have it ingest a few thousand sample records by setting the
   `DO_INGEST` environment variable to yes. For example:
-  
+
 ```bash
 # Load sample data into Solr
 DO_INGEST=y bundle exec rails tul_cob:solr:load_fixtures
@@ -157,7 +200,7 @@ AZ Database fixture data is loaded automatically when you run
 Note: If you make an update to cob_az_index, you will need to run `bundle update cob_az_index` locally.
 
 ### Ingest web content data
-Web content fixture data is loaded automatically when you run `bundle exec rails tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL, 
+Web content fixture data is loaded automatically when you run `bundle exec rails tul_cob:solr:load_fixtures`. If you want to ingest a single file or URL,
 use `bundle exec cob_web_index ingest $path_to_file_or_url`.
 
 Note: If you make an update to cob_web_index, you will need to run `bundle update cob_web_index` locally.

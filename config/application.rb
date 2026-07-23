@@ -11,10 +11,19 @@ Bundler.require(*Rails.groups)
 
 module Tulcob
   class Application < Rails::Application
-    # Before filter for Flipflop dashboard. Replace with a lambda or method name
-    # defined in ApplicationController to implement access control.
-    config.flipflop.dashboard_access_filter = -> {
-      head :forbidden unless User.logged_in?
+    # Before filter for Flipflop dashboard to implement access control.
+    config.flipflop.dashboard_access_filter = lambda {
+      authenticate_user!
+
+      allowed_emails = Array(
+        Rails.application.config_for(:flipflop).fetch(:allowed_emails, [])
+      )
+
+      authorized = allowed_emails.any? do |email|
+        current_user.email&.casecmp?(email.to_s.strip)
+      end
+
+      head :forbidden unless authorized
     }
     # By default, when set to `nil`, strategy loading errors are suppressed in test
     # mode. Set to `true` to always raise errors, or `false` to always warn.
