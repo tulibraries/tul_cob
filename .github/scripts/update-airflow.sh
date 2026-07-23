@@ -20,9 +20,7 @@ chmod 600 ~/.vault
 test -s ~/.ssh/conan_the_deployer
 ssh-keygen -y -f ~/.ssh/conan_the_deployer > /dev/null
 chmod 600 ~/.ssh/conan_the_deployer
-
-unset SSH_AUTH_SOCK
-unset SSH_AGENT_PID
+ssh-add ~/.ssh/conan_the_deployer
 
 COMMON_ARGS=(
   -i inventory/prod
