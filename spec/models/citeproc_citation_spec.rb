@@ -1,35 +1,19 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "citeproc"
 
-RSpec.describe CiteprocCitation, type: :model do
-  let(:document) do
-    SolrDocument.new(
-      "id" => "991012041239703811",
-      "title_statement_display" => ["Test Title"],
-      "creator_display" => ["Doe, Jane"],
-      "pub_date_display" => ["2020"],
+RSpec.describe CiteprocCitation do
+  it "renders parenthetical fuller forms correctly across styles" do
+    document = SolrDocument.new(
+      "id" => "991006438039703811",
+      "title_statement_display" => ["Example / Foo."],
+      "creator_display" => ["Slayton, William L. (William Larew), 1916-|author"],
       "format" => ["Book"]
     )
-  end
-
-  it "returns citations for the configured styles" do
-    allow_any_instance_of(described_class).to receive(:render_style) do |_instance, _style_id, label|
-      "<p class=\"citation_style_#{label}\">Citation</p>".html_safe
-    end
 
     citations = described_class.new(document).citations
 
-    expect(citations.keys).to contain_exactly(
-      "APA",
-      "CHICAGO-AUTHOR-DATE",
-      "CHICAGO-NOTES-BIBLIOGRAPHY",
-      "MLA"
-    )
-
-    citations.each do |format, citation|
-      expect(citation).to include("citation_style_#{format}")
-    end
+    expect(citations["APA"]).to include("Slayton, W. L. (W. L.).")
+    expect(citations["CHICAGO-AUTHOR-DATE"]).to include("Slayton, William L. (William Larew).")
   end
 end

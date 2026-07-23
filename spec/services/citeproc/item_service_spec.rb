@@ -69,13 +69,40 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Example", "given" => "Avery" }])
   end
 
-  it "uses contributor_display as author when there is no creator_display" do
+  it "does not use contributor_display as author when there is no supported relator" do
     document["creator_display"] = []
     document["contributor_display"] = [
       "Norris, Denne Michele,"
     ]
 
+    expect(item.author).to be_nil
+  end
+
+  it "uses contributor_display as author when there is an author relator and no creator_display" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "Norris, Denne Michele,|author."
+    ]
+
     expect(citeproc_names(item.author)).to eq([{ "family" => "Norris", "given" => "Denne Michele" }])
+  end
+
+  it "maps issuing body contributors to author" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "World Health Organization.|issuing body."
+    ]
+
+    expect(citeproc_names(item.author)).to eq([{ "literal" => "World Health Organization" }])
+  end
+
+  it "maps issuing body to author when relators are combined in one segment" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "World Health Organization.|issuing body, publisher"
+    ]
+
+    expect(citeproc_names(item.author)).to eq([{ "literal" => "World Health Organization" }])
   end
 
   it "returns nil when indexed title data is missing" do
@@ -128,6 +155,13 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Example", "given" => "Avery" }])
   end
 
+  it "preserves parenthetical qualifiers in personal given names" do
+    document["creator_display"] = ["Slayton, William L. (William Larew), 1916-"]
+    document["contributor_display"] = []
+
+    expect(citeproc_names(item.author)).to eq([{ "family" => "Slayton", "given" => "William L. (William Larew)" }])
+  end
+
   it "strips trailing meeting metadata from literal names" do
     document["creator_display"] = ["International Society on Oxygen Transport to Tissue. Annual Meeting (36th : 2008 : Sapporo-shi, Japan)"]
     document["contributor_display"] = []
@@ -161,6 +195,13 @@ RSpec.describe Citeproc::ItemService do
     document["contributor_display"] = []
 
     expect(citeproc_names(item.author)).to eq([{ "literal" => "International Society on Oxygen Transport to Tissue. Annual Meeting, Sapporo-shi, Japan" }])
+  end
+
+  it "treats parenthetical qualifiers with internal commas as literal names" do
+    document["creator_display"] = ["Example Society (Philadelphia, Pa.)"]
+    document["contributor_display"] = []
+
+    expect(citeproc_names(item.author)).to eq([{ "literal" => "Example Society (Philadelphia, Pa.)" }])
   end
 
   it "ignores contributor_display entries without supported relators when creator_display is present" do
