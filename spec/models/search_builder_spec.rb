@@ -830,8 +830,10 @@ RSpec.describe SearchBuilder , type: :model do
       it "maps the operators back to advanced query rows" do
         expect { subject.send(:process_params!, params, subject.params_process_chain) }.not_to raise_error
 
-        expect(params["f_2"]).to eq("title_starts_with")
-        expect(params["q_2"]).to eq("package design*")
+        expect(params["f_1"]).to eq("subject")
+        expect(params["q_1"]).to eq("\"Packaging -- Design\"")
+        expect(params["f_2"]).to eq("title")
+        expect(params["q_2"]).to eq("package design")
       end
     end
 
