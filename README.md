@@ -85,6 +85,8 @@ results in an empty allowlist for the development environment.
 
 The production allowlist should be managed through deployment configuration (for example, HashiVault or other configuration management) rather than committed to the repository.
 
+Entries in the allowlist must match the email address returned by Temple SAML authentication (the same email address used for Alma access). To determine the correct value, use Alma → Find and Manage Users and copy the user's email address from their Alma account.
+
 ### Start the Application for Development
 
 We need to run the Solr stack and the Rails app with the Sass watcher.
