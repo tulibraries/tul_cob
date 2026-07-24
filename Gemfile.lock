@@ -88,7 +88,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 377d3eec5ac90ec5a575543c661e3c39aafe7910
+  revision: 2a4a8318e8b4dc3e02b09867d469cd5f616b4664
   branch: main
   specs:
     cob_index (0.1.0)
@@ -329,9 +329,6 @@ GEM
     faraday-net_http (3.4.4)
       net-http (~> 0.5)
     ffi (1.16.3)
-    ffi-compiler (1.4.2)
-      ffi (>= 1.15.5)
-      rake
     flamegraph (0.9.5)
     flipflop (2.8.0)
       activesupport (>= 4.0)
@@ -361,20 +358,20 @@ GEM
       logger
       ostruct
     htmlentities (4.4.2)
-    http (5.3.1)
-      addressable (~> 2.8)
+    http-2 (1.2.1)
+    http (6.0.4)
       http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
+      llhttp (~> 0.6.1)
     http-cookie (1.1.6)
       domain_name (~> 0.5)
-    http-form_data (2.3.0)
     httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
     httpclient (2.9.0)
       mutex_m
+    httpx (1.8.1)
+      http-2 (>= 1.2.0)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.2.3)
@@ -419,9 +416,7 @@ GEM
       logger (~> 1.6)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
-    llhttp-ffi (0.5.1)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
+    llhttp (0.6.2)
     logger (1.7.0)
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -693,13 +688,15 @@ GEM
     time (0.4.2)
       date
     timeout (0.6.1)
-    traject (3.8.3)
+    traject (3.9.0)
+      base64
       concurrent-ruby (>= 0.8.0)
       csv
       dot-properties (>= 0.1.1)
       hashie (>= 3.1, < 6)
-      http (>= 3.0, < 6)
+      http (>= 3.0, < 7)
       httpclient (~> 2.5)
+      httpx (~> 1.4)
       marc (~> 1.0)
       marc-fastxmlwriter (~> 1.0)
       mutex_m
