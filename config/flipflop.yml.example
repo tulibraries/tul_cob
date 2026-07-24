@@ -1,0 +1,18 @@
+default: &default
+  allowed_emails: []
+
+development:
+  <<: *default
+  allowed_emails:
+    - developer.one@temple.edu
+    - developer.two@temple.edu
+
+test:
+  <<: *default
+  allowed_emails:
+    - test.user@temple.edu
+
+production:
+  <<: *default
+  allowed_emails:
+    - production.user@temple.edu
