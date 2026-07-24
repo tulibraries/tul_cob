@@ -524,8 +524,7 @@ class SearchBuilder < Blacklight::SearchBuilder
       procedures ||= []
 
       # Do not process non query values
-      ops = params.fetch("operator", "q" => "default")
-        .select { |key, value| key.match?(/^q/) }
+      ops = normalized_query_operators(params)
 
       # query_key are like "q_1", "q_2"..., etc.
       # op is like "contains", "begins_with"..., etc.
@@ -572,5 +571,18 @@ class SearchBuilder < Blacklight::SearchBuilder
       end
 
       params[rows.first[:query_key]] = combined
+    end
+
+    def normalized_query_operators(params)
+      operators = params.fetch("operator", { "q" => "default" })
+
+      case operators
+      when Array
+        operators.each_with_index.with_object({}) do |(value, index), normalized|
+          normalized["q_#{index + 1}"] = value
+        end
+      else
+        operators.select { |key, _value| key.match?(/^q/) }
+      end
     end
 end

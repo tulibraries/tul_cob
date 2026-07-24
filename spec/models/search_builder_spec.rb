@@ -811,6 +811,30 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
 
+    context "when operator params are serialized as an array" do
+      let(:params) do
+        ActionController::Parameters.new(
+          "operator" => ["is", "contains", "contains"],
+          "f_1" => "subject",
+          "q_1" => "Packaging -- Design",
+          "op_1" => "OR",
+          "f_2" => "title",
+          "q_2" => "package design",
+          "op_2" => "AND",
+          "f_3" => "title",
+          "q_3" => "",
+          search_field: "advanced"
+        )
+      end
+
+      it "maps the operators back to advanced query rows" do
+        expect { subject.send(:process_params!, params, subject.params_process_chain) }.not_to raise_error
+
+        expect(params["f_2"]).to eq("title_starts_with")
+        expect(params["q_2"]).to eq("package design*")
+      end
+    end
+
   end
 
   describe BentoSearchBuilderBehavior do
