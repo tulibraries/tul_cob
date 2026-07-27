@@ -456,6 +456,33 @@ RSpec.describe AlmawsHelper, type: :helper do
       end
     end
 
+    context "only a booking is allowed" do
+      let(:books) {}
+      let(:equipment) {}
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811" }]
+          ) }
+      let(:json) {
+        { request_option:
+          [{
+          "type" => { "value" => "BOOKING", "desc" => "Booking" },
+          "request_url" => "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+          }]
+        }.to_json
+      }
+
+      it "is true" do
+        expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be true
+      end
+    end
+
     context "only digitization is allowed" do
       let(:books) {}
       let(:equipment) {}
