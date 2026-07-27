@@ -289,8 +289,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:context) { Blacklight::Configuration::Context.new(config) }
       let(:search_fields)  {  [["All Fields", "all_fields"]] }
 
-      it "should link to the element with search_field id" do
-        expect(subject).to have_link("Skip to search", href: "#search_field")
+      it "should link to the search query input" do
+        expect(subject).to have_link("Skip to search", href: "#q")
       end
     end
 
@@ -299,8 +299,8 @@ RSpec.describe ApplicationHelper, type: :helper do
       let(:context) { Blacklight::Configuration::Context.new(config) }
       let(:search_fields)  {  [["All Fields", "all_fields"], ["Title", "title"], ["Author/creator/contributor", "creator_t"]] }
 
-      it "should link to the element with search_field_dropdown id" do
-        expect(subject).to have_link("Skip to search", href: "#search_field_dropdown")
+      it "should link to the search query input" do
+        expect(subject).to have_link("Skip to search", href: "#q")
       end
     end
   end
