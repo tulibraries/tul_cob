@@ -648,57 +648,6 @@ RSpec.describe SolrDocument, type: :model do
     end
   end
 
-  # Business logic methods tests moved from CatalogHelper
-  describe "#digital_help_allowed?" do
-    context "is not a physical item" do
-      let(:document) { SolrDocument.new("availability_facet" => "Online") }
-      it "returns false" do
-        expect(document.digital_help_allowed?).to be false
-      end
-    end
-
-    context "is a physical item" do
-      let(:document) { SolrDocument.new("availability_facet" => "At the Library") }
-      it "returns true" do
-        expect(document.digital_help_allowed?).to be true
-      end
-    end
-
-    context "is a physical item with hathitrust access denied" do
-      let(:document) { SolrDocument.new(
-        "availability_facet" => "At the Library",
-        "hathi_trust_bib_key_display" => "foo"
-      ) }
-      it "returns true" do
-        expect(document.digital_help_allowed?).to be true
-      end
-    end
-
-    context "is an object" do
-      let(:document) { SolrDocument.new("format" => "Object") }
-      it "returns false" do
-        expect(document.digital_help_allowed?).to be false
-      end
-    end
-
-    context "has a hathitrust link" do
-      let(:document) { SolrDocument.new("hathi_trust_bib_key_display" => [{ "bib_key" => "000005117", "access" => "allow" }].first) }
-      it "returns false" do
-        expect(document.digital_help_allowed?).to be false
-      end
-    end
-
-    context "is a physical item and an online item" do
-      let(:document) { SolrDocument.new(
-        "availability_facet" => "At the Library",
-        "electronic_resource_display" => "foo"
-      ) }
-      it "returns false" do
-        expect(document.digital_help_allowed?).to be false
-      end
-    end
-  end
-
   describe "#open_shelves_allowed?" do
     context "is not in a relevant library" do
       let(:document) { SolrDocument.new("items_json_display" =>

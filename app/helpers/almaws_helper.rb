@@ -63,7 +63,6 @@ module AlmawsHelper
       request_options.booking_allowed?,
       request_options.resource_sharing_broker_allowed? && books.present?,
       aeon_request_allowed(document),
-      document.digital_help_allowed?,
       document.open_shelves_allowed?,
       equipment.present?]
   end
