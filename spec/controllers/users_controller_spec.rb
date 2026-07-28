@@ -25,9 +25,18 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
-        xit "returns http success" do
+        it "renders the loans details for a successful loans response" do
+          user = FactoryBot.create(:user)
+          loans = double("Alma loans response", success?: true)
+
+          sign_in user, scope: :user
+          allow(controller).to receive(:current_user).and_return(user)
+          expect(user).to receive(:loans).once.and_return(loans)
+
           get :loans
+
           expect(response).to have_http_status(:success)
+          expect(response).to render_template(partial: "users/_loans_details")
         end
       end
 
