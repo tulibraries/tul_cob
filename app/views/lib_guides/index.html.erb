@@ -1,7 +1,7 @@
   <div class="lib-guides-recommender-librarians border p-3" data-lib-guides-target="flex">
     <h3 class="lib-guides-recommender-heading" data-libg-guides-target="heading">Subject Librarians</h3>
     <% if @guides.present? %>
-      <%= link_to(@guides.first.dig("owner", "first_name") + " " + @guides.first.dig("owner", "last_name"), "https://guides.temple.edu/prf.php?account_id=" + @guides.first.dig("owner", "id")) %>
+      <%= link_to(@guides.first.dig("owner", "first_name") + " " + @guides.first.dig("owner", "last_name"), "https://guides.temple.edu/prf.php?account_id=" + @guides.first.dig("owner", "id").to_s) %>
       <p class="pt-2"><%= @guides.first.dig("owner", "email") %></p>
     <% else %>
       <div data-lib-guides-target="noresults">

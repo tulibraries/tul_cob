@@ -3,6 +3,8 @@
 class LibGuidesApi
   attr_reader :query
 
+  TOKEN_URL = "https://lgapi-us.libapps.com/1.2/oauth/token"
+
   class << self
     alias fetch new
   end
@@ -11,8 +13,12 @@ class LibGuidesApi
     @query = query
   end
 
-  def api_key
-    config["api_key"]
+  def client_id
+    config["client_id"]
+  end
+
+  def client_secret
+    config["client_secret"]
   end
 
   def site_id
@@ -65,7 +71,10 @@ class LibGuidesApi
 
     def response
       @response ||= begin
-        http = HTTParty.get(url)
+        token = access_token
+        return "[]" if token.blank?
+
+        http = HTTParty.get(url, headers: { "Authorization" => "Bearer #{token}" })
 
         if http.success?
           http.body
@@ -78,10 +87,28 @@ class LibGuidesApi
       "[]"
     end
 
+    def access_token
+      @access_token ||= begin
+        http = HTTParty.post(
+          TOKEN_URL,
+          body: {
+            client_id:,
+            client_secret:,
+            grant_type: "client_credentials"
+          }
+        )
+        return nil unless http.success?
+
+        JSON.parse(http.body)["access_token"]
+      end
+    rescue => e
+      Honeybadger.notify("Fetching LibGuides OAuth token failed with #{e}")
+      nil
+    end
+
     def url
       query_terms = query_defaults.merge(
         site_id:,
-        key: api_key,
         search_terms: "#{query}"
       )
 

@@ -18,8 +18,9 @@ shared:
   cdm:
     base_url: "https://digital.library.temple.edu"
   lib_guides:
-    base_url: "https://lgapi-us.libapps.com/1.1/guides"
-    api_key: "LIB_GUIDES_API_KEY"
+    base_url: "https://lgapi-us.libapps.com/1.2/guides"
+    client_id: "LIB_GUIDES_CLIENT_ID"
+    client_secret: "LIB_GUIDES_CLIENT_SECRET"
     site_id: 17
     query:
       sort_by: "relevance"
