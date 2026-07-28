@@ -25,18 +25,37 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
-        it "renders the loans details for a successful loans response" do
-          user = FactoryBot.create(:user)
-          loans = double("Alma loans response", success?: true)
+        context "when the loans response is unsuccessful" do
+          it "renders the loans details for a successful loans response" do
+            user = FactoryBot.create(:user)
+            loans = double("Alma loans response", success?: true)
 
-          sign_in user, scope: :user
-          allow(controller).to receive(:current_user).and_return(user)
-          expect(user).to receive(:loans).once.and_return(loans)
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:loans).once.and_return(loans)
 
-          get :loans
+            get :loans
 
-          expect(response).to have_http_status(:success)
-          expect(response).to render_template(partial: "users/_loans_details")
+            expect(response).to have_http_status(:success)
+            expect(response).to render_template(partial: "users/_loans_details")
+          end
+        end
+
+        context "when the loans response is unsuccessful" do
+          it "renders a plain-text fallback message" do
+            user = FactoryBot.create(:user)
+            loans = double("Alma loans response", success?: false)
+
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:loans).once.and_return(loans)
+
+            get :loans
+
+            expect(response).to have_http_status(:success)
+            expect(response.media_type).to eq("text/plain")
+            expect(response.body).to eq("Problem!")
+          end
         end
       end
 
@@ -73,12 +92,77 @@ RSpec.describe UsersController, type: :controller do
           expect(response).to have_http_status 200
           expect(response.body).to include "requests from the Special Collections Research Center"
         end
+
+        describe "GET #holds" do
+          context "when the holds response is successful" do
+          it "renders the holds details partial" do
+            user = FactoryBot.create(:user)
+            holds = instance_double(Alma::RequestSet, success?: true)
+
+            allow(holds).to receive(:each_with_index)
+
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:holds).once.and_return(holds)
+
+            get :holds
+
+            expect(response).to have_http_status(:success)
+            expect(response).to render_template(partial: "users/_holds_details")
+          end
+          end
+
+          context "when the holds response is unsuccessful" do
+            it "renders a plain-text fallback message" do
+              user = FactoryBot.create(:user)
+              holds = double("Alma holds response", success?: false)
+
+              sign_in user, scope: :user
+              allow(controller).to receive(:current_user).and_return(user)
+              expect(user).to receive(:holds).once.and_return(holds)
+
+              get :holds
+
+              expect(response).to have_http_status(:success)
+              expect(response.media_type).to eq("text/plain")
+              expect(response.body).to eq("Problem!")
+            end
+          end
+        end
       end
 
       describe "GET #fines" do
-        xit "returns http success" do
-          get :fines
-          expect(response).to have_http_status(:success)
+        context "when the fines response is successful" do
+          it "renders the fines details partial" do
+            user = FactoryBot.create(:user)
+            fines = double("Alma fines response", success?: true)
+
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:fines).once.and_return(fines)
+
+            get :fines
+
+            expect(response).to have_http_status(:success)
+            expect(response).to render_template(partial: "users/_fines_details")
+          end
+        end
+
+        context "when the fines response is unsuccessful" do
+          it "renders a plain-text fallback message" do
+            user = FactoryBot.create(:user)
+            fines = double("Alma fines response", success?: false)
+
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:fines).once.and_return(fines)
+
+            get :fines
+
+            expect(response).to have_http_status(:success)
+            expect(response.media_type).to eq("text/plain")
+            expect(response.body).to eq("Problem!")
+          end
         end
       end
 
