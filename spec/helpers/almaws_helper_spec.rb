@@ -483,6 +483,53 @@ RSpec.describe AlmawsHelper, type: :helper do
       end
     end
 
+    context "only digitization is allowed" do
+      let(:books) {}
+      let(:equipment) {}
+      let(:document) do
+        SolrDocument.new(
+          "items_json_display" => [
+            {
+              "item_pid" => "23237957740003811",
+              "item_policy" => "5",
+              "permanent_library" => "AMBLER",
+              "permanent_location" => "media",
+              "current_library" => "AMBLER",
+              "current_location" => "media",
+              "call_number" => "DVD 13 A165",
+              "holding_id" => "22237957750003811"
+            }
+          ]
+        )
+      end
+
+      let(:json) do
+        {
+          request_option: [
+            {
+              "type" => {
+                "value" => "DIGITIZATION",
+                "desc" => "Digitization"
+              },
+              "request_url" =>
+                "https://api-na.hosted.exlibrisgroup.com/almaws/v1/requests/"
+            }
+          ]
+        }.to_json
+      end
+
+      it "is true" do
+        expect(
+          helper.only_one_option_allowed(
+            request_options,
+            books,
+            document,
+            equipment
+          )
+        ).to be true
+      end
+    end
+
     context "only an EZ Borrow request is allowed for a book" do
       let(:books) { "BOOK" }
       let(:equipment) {}
@@ -536,7 +583,6 @@ RSpec.describe AlmawsHelper, type: :helper do
         expect(helper.only_one_option_allowed(request_options, books, document, equipment)).to be false
       end
     end
-
 
     context "both a hold and a booking are allowed" do
       let(:books) {}

@@ -158,18 +158,6 @@ class SolrDocument
     @libkey_journals_url_thread.value&.fetch("browzineEnabled", nil) == true
   end
 
-  # Business logic methods moved from CatalogHelper
-  def digital_help_allowed?
-    fetch("availability_facet", [])
-      .include?("At the Library") &&
-    fetch("format", [])
-      .exclude?("Archival Material") &&
-    fetch("format", [])
-      .exclude?("Object") &&
-    !self["electronic_resource_display"] &&
-    !hathitrust_link_allowed?
-  end
-
   def open_shelves_allowed?
     {
       "MAIN"     => ["hirsh", "juvenile", "leisure", "stacks", "newbooks"],
