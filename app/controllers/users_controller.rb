@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     if loans.success?
       render partial: "users/loans_details", layout: nil, locals: { loans: }
     else
-      render plain:"Problem!"
+      render plain: "Problem!"
     end
   end
 
