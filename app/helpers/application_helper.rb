@@ -227,11 +227,7 @@ module ApplicationHelper
   end
 
   def skip_links
-    if search_fields.length == 1
-      link_to t("blacklight.skip_links.search_field"), "#search_field", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
-    else
-      link_to t("blacklight.skip_links.search_field"), "#search_field_dropdown", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
-    end
+    link_to t("blacklight.skip_links.search_field"), "#q", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
   end
 
   def creator_links(args)
