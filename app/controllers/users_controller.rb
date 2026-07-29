@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     if holds.success?
       render partial: "users/holds_details", layout: nil, locals: { holds: }
     else
-      render "Problem!"
+      render plain: "Problem!"
     end
   end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if fines.success?
       render partial: "users/fines_details", layout: nil, locals: { fines: }
     else
-      render "Problem!"
+      render plain: "Problem!"
     end
   end
 
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     if loans.success?
       render partial: "users/loans_details", layout: nil, locals: { loans: }
     else
-      render "Problem!"
+      render plain: "Problem!"
     end
   end
 
