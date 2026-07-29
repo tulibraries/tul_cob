@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
-        context "when the loans response is unsuccessful" do
+        context "when the loans response is successful" do
           it "renders the loans details for a successful loans response" do
             user = FactoryBot.create(:user)
             loans = double("Alma loans response", success?: true)
@@ -57,15 +57,38 @@ RSpec.describe UsersController, type: :controller do
             expect(response.body).to eq("Problem!")
           end
         end
+
+        context "when the missing-account handler is invoked" do
+          it "reports the error and renders the account-not-found response" do
+            error_message = {
+              "errorList" => {
+                "error" => [
+                  {
+                    "errorCode" => "60101",
+                    "errorMessage" => "User account not found"
+                  }
+                ]
+              }
+            }.to_json
+
+            exception = double("Alma error", message: error_message)
+
+            allow(controller).to receive(:loans) do
+              controller.no_account_found(exception)
+            end
+
+            expect(Honeybadger).to receive(:notify).with(error_message)
+
+            get :loans
+
+            expect(flash[:notice]).to eq("Your user account was not found.")
+            expect(response).to render_template("errors/internal_server_error")
+          end
+        end
       end
 
       describe "GET #holds" do
         render_views
-
-        xit "returns http success" do
-          get :holds
-          expect(response).to have_http_status(:success)
-        end
 
         it "renders the expiry_date when present" do
           request_set = instance_double(Alma::RequestSet)
@@ -93,8 +116,7 @@ RSpec.describe UsersController, type: :controller do
           expect(response.body).to include "requests from the Special Collections Research Center"
         end
 
-        describe "GET #holds" do
-          context "when the holds response is successful" do
+        context "when the holds response is successful" do
           it "renders the holds details partial" do
             user = FactoryBot.create(:user)
             holds = instance_double(Alma::RequestSet, success?: true)
@@ -110,23 +132,22 @@ RSpec.describe UsersController, type: :controller do
             expect(response).to have_http_status(:success)
             expect(response).to render_template(partial: "users/_holds_details")
           end
-          end
+        end
 
-          context "when the holds response is unsuccessful" do
-            it "renders a plain-text fallback message" do
-              user = FactoryBot.create(:user)
-              holds = double("Alma holds response", success?: false)
+        context "when the holds response is unsuccessful" do
+          it "renders a plain-text fallback message" do
+            user = FactoryBot.create(:user)
+            holds = double("Alma holds response", success?: false)
 
-              sign_in user, scope: :user
-              allow(controller).to receive(:current_user).and_return(user)
-              expect(user).to receive(:holds).once.and_return(holds)
+            sign_in user, scope: :user
+            allow(controller).to receive(:current_user).and_return(user)
+            expect(user).to receive(:holds).once.and_return(holds)
 
-              get :holds
+            get :holds
 
-              expect(response).to have_http_status(:success)
-              expect(response.media_type).to eq("text/plain")
-              expect(response.body).to eq("Problem!")
-            end
+            expect(response).to have_http_status(:success)
+            expect(response.media_type).to eq("text/plain")
+            expect(response.body).to eq("Problem!")
           end
         end
       end
