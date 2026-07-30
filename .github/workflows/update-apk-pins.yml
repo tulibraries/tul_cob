@@ -2,9 +2,8 @@ name: Update APK Pins
 
 on:
   schedule:
-    # Sunday and Thursday at 09:00 UTC
-    - cron: "0 9 * * 0"
-    - cron: "0 9 * * 4"
+    # Daily at 09:00 UTC
+    - cron: "0 9 * * *"
   workflow_dispatch: {}
 
 concurrency:
