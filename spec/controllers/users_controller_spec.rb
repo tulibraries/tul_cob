@@ -25,10 +25,12 @@ RSpec.describe UsersController, type: :controller do
 
     context "User had transactions" do
       describe "GET #loans" do
+        render_views
+
         context "when the loans response is successful" do
           it "renders the loans details for a successful loans response" do
             user = FactoryBot.create(:user)
-            loans = double("Alma loans response", success?: true)
+            loans = double("Alma loans response", success?: true, all: [])
 
             sign_in user, scope: :user
             allow(controller).to receive(:current_user).and_return(user)
@@ -42,7 +44,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         context "when the loans response is unsuccessful" do
-          it "renders a plain-text fallback message" do
+          it "renders the account-data error response" do
             user = FactoryBot.create(:user)
             loans = double("Alma loans response", success?: false)
 
@@ -52,9 +54,16 @@ RSpec.describe UsersController, type: :controller do
 
             get :loans
 
-            expect(response).to have_http_status(:success)
-            expect(response.media_type).to eq("text/plain")
-            expect(response.body).to eq("Problem!")
+            expect(response).to have_http_status(:bad_gateway)
+            expect(response.media_type).to eq("text/html")
+            expect(response).to render_template(
+              partial: "users/_account_data_error"
+            )
+            expect(response.body).to include(
+              "We could not load your account information"
+            )
+            expect(response.body).to include('colspan="7"')
+            expect(response.body).not_to include("Problem!")
           end
         end
 
@@ -135,7 +144,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         context "when the holds response is unsuccessful" do
-          it "renders a plain-text fallback message" do
+          it "renders the account-data error response" do
             user = FactoryBot.create(:user)
             holds = double("Alma holds response", success?: false)
 
@@ -145,18 +154,32 @@ RSpec.describe UsersController, type: :controller do
 
             get :holds
 
-            expect(response).to have_http_status(:success)
-            expect(response.media_type).to eq("text/plain")
-            expect(response.body).to eq("Problem!")
+            expect(response).to have_http_status(:bad_gateway)
+            expect(response.media_type).to eq("text/html")
+            expect(response).to render_template(
+              partial: "users/_account_data_error"
+            )
+            expect(response.body).to include(
+              "We could not load your account information"
+            )
+            expect(response.body).to include('colspan="4"')
+            expect(response.body).not_to include("Problem!")
           end
         end
       end
 
       describe "GET #fines" do
+        render_views
+
         context "when the fines response is successful" do
           it "renders the fines details partial" do
             user = FactoryBot.create(:user)
-            fines = double("Alma fines response", success?: true)
+            fines = double(
+              "Alma fines response",
+              success?: true,
+              each_with_index: nil,
+              sum: 0
+            )
 
             sign_in user, scope: :user
             allow(controller).to receive(:current_user).and_return(user)
@@ -170,7 +193,7 @@ RSpec.describe UsersController, type: :controller do
         end
 
         context "when the fines response is unsuccessful" do
-          it "renders a plain-text fallback message" do
+          it "renders the account-data error response" do
             user = FactoryBot.create(:user)
             fines = double("Alma fines response", success?: false)
 
@@ -180,9 +203,16 @@ RSpec.describe UsersController, type: :controller do
 
             get :fines
 
-            expect(response).to have_http_status(:success)
-            expect(response.media_type).to eq("text/plain")
-            expect(response.body).to eq("Problem!")
+            expect(response).to have_http_status(:bad_gateway)
+            expect(response.media_type).to eq("text/html")
+            expect(response).to render_template(
+              partial: "users/_account_data_error"
+            )
+            expect(response.body).to include(
+              "We could not load your account information"
+            )
+            expect(response.body).to include('colspan="4"')
+            expect(response.body).not_to include("Problem!")
           end
         end
       end
