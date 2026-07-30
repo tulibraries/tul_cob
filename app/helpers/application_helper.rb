@@ -227,7 +227,20 @@ module ApplicationHelper
   end
 
   def skip_links
+    return if advanced_search_page?
+
     link_to t("blacklight.skip_links.search_field"), "#q", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+  end
+
+  def advanced_search_page?
+    controller_name.in?(
+      %w[
+        advanced
+        primo_advanced
+        databases_advanced
+        journals_advanced
+      ]
+    )
   end
 
   def creator_links(args)
