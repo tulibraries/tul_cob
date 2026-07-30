@@ -32,6 +32,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ secrets.AUTO_PR_TOKEN }}
           add-paths: .docker/app/Dockerfile.prod
           branch: chore/update-apk-pins
           commit-message: "Update pinned apk packages"
