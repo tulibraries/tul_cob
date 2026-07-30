@@ -28,7 +28,11 @@ class UsersController < ApplicationController
     if holds.success?
       render partial: "users/holds_details", layout: nil, locals: { holds: }
     else
-      render plain: "Problem!"
+      render(
+        partial: "users/account_data_error",
+        locals: { colspan: 4 },
+        status: :bad_gateway
+      )
     end
   end
 
@@ -37,7 +41,11 @@ class UsersController < ApplicationController
     if fines.success?
       render partial: "users/fines_details", layout: nil, locals: { fines: }
     else
-      render plain: "Problem!"
+      render(
+        partial: "users/account_data_error",
+        locals: { colspan: 4 },
+        status: :bad_gateway
+      )
     end
   end
 
@@ -46,7 +54,11 @@ class UsersController < ApplicationController
     if loans.success?
       render partial: "users/loans_details", layout: nil, locals: { loans: }
     else
-      render plain: "Problem!"
+      render(
+        partial: "users/account_data_error",
+        locals: { colspan: 7 },
+        status: :bad_gateway
+      )
     end
   end
 
