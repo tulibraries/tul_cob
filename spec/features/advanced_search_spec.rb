@@ -137,4 +137,32 @@ RSpec.feature "Advanced Search" do
       expect(first(results_selector).text).not_to match(/Introduction to immunology/)
     end
   end
+
+  describe "skip links" do
+    advanced_search_paths = [
+      "/advanced",
+      "/articles/advanced",
+      "/databases/advanced",
+      "/journals/advanced"
+    ]
+
+    advanced_search_paths.each do |path|
+      scenario "hides Skip to search on #{path}" do
+        visit path
+
+        within("#skip-link", visible: :all) do
+          expect(page).to have_link(
+            "Skip to main content",
+            href: "#main-container",
+            visible: :all
+          )
+
+          expect(page).not_to have_link(
+            "Skip to search",
+            visible: :all
+          )
+        end
+      end
+    end
+  end
 end
