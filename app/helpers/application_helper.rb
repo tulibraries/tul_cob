@@ -229,7 +229,15 @@ module ApplicationHelper
   def skip_links
     return if advanced_search_page?
 
-    link_to t("blacklight.skip_links.search_field"), "#q", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" }
+    links = [
+      link_to(t("blacklight.skip_links.search_field"), "#q", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" })
+    ]
+
+    unless controller_name == "search" && action_name == "index"
+      links << link_to(t("blacklight.skip_to_filters_link"), "#search_field", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" })
+    end
+
+    safe_join(links)
   end
 
   def advanced_search_page?

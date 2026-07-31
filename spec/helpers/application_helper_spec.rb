@@ -276,31 +276,49 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe "#skip_links" do
     let(:subject) { helper.skip_links }
+    let(:config) { CatalogController.blacklight_config }
+    let(:context) { Blacklight::Configuration::Context.new(config) }
 
     before do
       without_partial_double_verification do
         allow(helper).to receive(:blacklight_config) { config }
         allow(helper).to receive(:blacklight_configuration_context) { context }
       end
+      allow(helper).to receive(:controller_name).and_return(controller_name)
+      allow(helper).to receive(:action_name).and_return(action_name)
     end
 
-    context "only 1 search field" do
-      let(:config) { SearchController.blacklight_config }
-      let(:context) { Blacklight::Configuration::Context.new(config) }
-      let(:search_fields)  {  [["All Fields", "all_fields"]] }
+    context "on a standard page (catalog#show)" do
+      let(:controller_name) { "catalog" }
+      let(:action_name) { "show" }
 
-      it "should link to the search query input" do
+      it "renders both skip links" do
         expect(subject).to have_link("Skip to search", href: "#q")
+        expect(subject).to have_link("Skip to search filters", href: "#search_field")
       end
     end
 
-    context "multiple search fields" do
-      let(:config) { CatalogController.blacklight_config }
-      let(:context) { Blacklight::Configuration::Context.new(config) }
-      let(:search_fields)  {  [["All Fields", "all_fields"], ["Title", "title"], ["Author/creator/contributor", "creator_t"]] }
+    context "on the search#index action" do
+      let(:controller_name) { "search" }
+      let(:action_name) { "index" }
 
-      it "should link to the search query input" do
+      it "renders only the skip to search link" do
         expect(subject).to have_link("Skip to search", href: "#q")
+        expect(subject).not_to have_link("Skip to search filters", href: "#search_field")
+      end
+    end
+
+    context "on an advanced search page" do
+      let(:action_name) { "index" }
+
+      %w[advanced primo_advanced databases_advanced journals_advanced].each do |name|
+        context "(#{name})" do
+          let(:controller_name) { name }
+
+          it "renders no skip links" do
+            expect(subject).to be_nil
+          end
+        end
       end
     end
   end
