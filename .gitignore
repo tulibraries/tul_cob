@@ -60,3 +60,4 @@ test.sqlite3*
 .env.local
 
 /config/flipflop.yml
+tech-debt-audit*
