@@ -6,12 +6,6 @@ RSpec.describe LibGuidesApi do
   subject(:api) { described_class.new("Search Term") }
 
   context "when the API responds successfully" do
-    before do
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
-      )
-    end
-
     it "returns data from the API response as json" do
       allow(HTTParty).to receive(:get).and_return(
         double(success?: true, body: [{ name: "Guide Name", url: "https://example.com/1" }].to_json))
@@ -51,9 +45,8 @@ RSpec.describe LibGuidesApi do
     it "builds the request URL from configured base_url with path" do
       allow(api).to receive(:config).and_return(
         {
-          "base_url" => "https://example.libapps.com/1.2/guides",
-          "client_id" => "abc123",
-          "client_secret" => "secret123",
+          "base_url" => "https://example.libapps.com/1.1/guides",
+          "api_key" => "abc123",
           "site_id" => "17",
           "query" => { "sort_by" => "relevance", "expand" => "owner", "guide_types" => "1,2,3,4", "status" => 1 }
         }
@@ -64,26 +57,14 @@ RSpec.describe LibGuidesApi do
 
       api.as_json
 
-      expect(HTTParty).to have_received(:post).with(
-        LibGuidesApi::TOKEN_URL,
-        body: {
-          client_id: "abc123",
-          client_secret: "secret123",
-          grant_type: "client_credentials"
-        }
-      )
-      expect(HTTParty).to have_received(:get).with(
-        a_string_starting_with("https://example.libapps.com/1.2/guides?"),
-        headers: { "Authorization" => "Bearer TOKEN" }
-      )
+      expect(HTTParty).to have_received(:get).with(a_string_starting_with("https://example.libapps.com/1.1/guides?"))
     end
 
     it "uses the configured base_url as-is when host-only is provided" do
       allow(api).to receive(:config).and_return(
         {
           "base_url" => "https://example.libapps.com",
-          "client_id" => "abc123",
-          "client_secret" => "secret123",
+          "api_key" => "abc123",
           "site_id" => "17",
           "query" => { "sort_by" => "relevance", "expand" => "owner", "guide_types" => "1,2,3,4", "status" => 1 }
         }
@@ -94,18 +75,12 @@ RSpec.describe LibGuidesApi do
 
       api.as_json
 
-      expect(HTTParty).to have_received(:get).with(
-        a_string_starting_with("https://example.libapps.com?"),
-        headers: { "Authorization" => "Bearer TOKEN" }
-      )
+      expect(HTTParty).to have_received(:get).with(a_string_starting_with("https://example.libapps.com?"))
     end
   end
 
   context "when the API fails to respond successfully" do
     before do
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
-      )
       allow(HTTParty).to receive(:get).and_return(
         double(success?: false, body: "<html>")
       )
@@ -118,29 +93,12 @@ RSpec.describe LibGuidesApi do
 
   context "when the API claims to return successfully but has malformed JSON" do
     before do
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: true, body: { access_token: "TOKEN" }.to_json)
-      )
       allow(HTTParty).to receive(:get).and_return(
         double(success?: true, body: "<html>")
       )
     end
 
     it "handles the response and returns an empty array" do
-      expect(api.as_json).to eq([])
-    end
-  end
-
-  context "when the token request fails" do
-    before do
-      allow(HTTParty).to receive(:post).and_return(
-        double(success?: false, body: "<html>")
-      )
-    end
-
-    it "returns an empty array without fetching guides" do
-      expect(HTTParty).not_to receive(:get)
-
       expect(api.as_json).to eq([])
     end
   end
