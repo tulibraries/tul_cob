@@ -17,7 +17,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
   config.action_controller.page_cache_directory = Pathname.new(
-    ENV.fetch("RAILS_PAGE_CACHE_DIRECTORY", "/secure-tmp/cached_pages")
+    ENV.fetch("RAILS_PAGE_CACHE_DIRECTORY", Rails.root.join("public", "cached_pages").to_s)
   )
 
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
