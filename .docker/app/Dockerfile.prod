@@ -43,9 +43,10 @@ RUN apk add -U --no-cache \
     rm -rf tmp/* && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/ && \
-    chown nobody -R /app/tmp && \
-    chown nobody -R /app/log
-
+    mkdir -p /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-tmp/storage && \
+    chown nobody:nobody -R /secure-tmp && \
+    chmod 700 /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-tmp/storage
+    
 ENV LD_PRELOAD="libjemalloc.so.2" \
       MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
       RUBY_YJIT_ENABLE="1"
