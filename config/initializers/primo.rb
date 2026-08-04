@@ -2,11 +2,14 @@
 
 require "logger"
 
-Primo::Configuration.prepend(
+Logger.singleton_class.prepend(
   Module.new do
-    def initialize(*)
-      super
-      @logger = Rails.logger || Logger.new($stdout)
+    def new(logdev, *args, **kwargs, &block)
+      if logdev == "log/primo_requests.log"
+        super($stdout, *args, **kwargs, &block)
+      else
+        super
+      end
     end
   end
 )
