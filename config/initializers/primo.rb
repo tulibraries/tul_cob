@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
+require "logger"
+
+Primo::Configuration.prepend(
+  Module.new do
+    def initialize(*)
+      super
+      @logger = Rails.logger || Logger.new($stdout)
+    end
+  end
+)
+
 Primo.configure do |config|
   config.apikey  = Rails.configuration.apis.dig(:primo, :apikey)
   config.context = :PC
