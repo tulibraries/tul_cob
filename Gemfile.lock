@@ -280,7 +280,7 @@ GEM
     csl-styles (2.0.2)
       csl (~> 2.0)
     csv (3.3.6)
-    dalli (5.0.5)
+    dalli (5.0.6)
       logger
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
