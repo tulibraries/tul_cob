@@ -102,7 +102,7 @@ class RequestData
       libraries = items.map(&:library).reject(&:blank?).uniq
       mapped_libraries = libraries.map { |lib| lib == "ASRS" ? "MAIN" : lib }.uniq
 
-      international = mapped_libraries & ["JAPAN", "ROME"]
+      international = mapped_libraries & ["JAPAN", "ROME", "HILLSIDE", "KYOTO"]
       domestic = mapped_libraries - international
 
       allowed =
