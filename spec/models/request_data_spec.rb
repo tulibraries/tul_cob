@@ -213,8 +213,8 @@ RSpec.describe RequestData, type: :model do
           "item_data" => {
             "pid" => "item_kardon",
             "description" => "",
-            "library" => {"value" => "KARDON", "desc" => "Remote Storage"},
-            "location" => {"value" => "p_GovDocs", "desc" => "Paley GovDocs"},
+            "library" => { "value" => "KARDON", "desc" => "Remote Storage" },
+            "location" => { "value" => "p_GovDocs", "desc" => "Paley GovDocs" },
             "base_status" => { "value" => "1", "desc" => "Item in place" }
           }
         )
