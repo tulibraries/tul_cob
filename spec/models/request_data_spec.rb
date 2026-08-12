@@ -187,7 +187,18 @@ RSpec.describe RequestData, type: :model do
 
   describe "picking up at a different campus" do
     context "item available at Ambler Campus Library" do
-      let(:bib_items) { Alma::BibItem.find("item") }
+      let(:bib_items) { [
+        Alma::BibItem.new(
+          "holding_data" => { "holding_id" => "holding_ambler" },
+          "item_data" => {
+            "pid" => "item_ambler",
+            "description" => "",
+            "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+            "base_status" => { "value" => "1", "desc" => "Item in place" }
+          }
+        )
+      ] }
+
       it "allows a user to request item for pickup at Charles" do
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
@@ -196,7 +207,19 @@ RSpec.describe RequestData, type: :model do
 
   describe "picking up at a different library" do
     context "item available at Remote Storage" do
-      let(:bib_items) { Alma::BibItem.find("kardon_only") }
+      let(:bib_items) { [
+        Alma::BibItem.new(
+          "holding_data" => { "holding_id" => "holding_ambler" },
+          "item_data" => {
+            "pid" => "item_kardon",
+            "description" => "",
+            "library" => {"value" => "KARDON", "desc" => "Remote Storage"},
+            "location" => {"value" => "p_GovDocs", "desc" => "Paley GovDocs"},
+            "base_status" => { "value" => "1", "desc" => "Item in place" }
+          }
+        )
+      ] }
+
       it "allows a user to request item for pickup at Charles" do
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
