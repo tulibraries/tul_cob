@@ -187,7 +187,18 @@ RSpec.describe RequestData, type: :model do
 
   describe "picking up at a different campus" do
     context "item available at Ambler Campus Library" do
-      let(:bib_items) { Alma::BibItem.find("item") }
+      let(:bib_items) { [
+        Alma::BibItem.new(
+          "holding_data" => { "holding_id" => "holding_ambler" },
+          "item_data" => {
+            "pid" => "item_ambler",
+            "description" => "",
+            "library" => { "value" => "AMBLER", "desc" => "Ambler Campus Library" },
+            "base_status" => { "value" => "1", "desc" => "Item in place" }
+          }
+        )
+      ] }
+
       it "allows a user to request item for pickup at Charles" do
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
@@ -196,7 +207,19 @@ RSpec.describe RequestData, type: :model do
 
   describe "picking up at a different library" do
     context "item available at Remote Storage" do
-      let(:bib_items) { Alma::BibItem.find("kardon_only") }
+      let(:bib_items) { [
+        Alma::BibItem.new(
+          "holding_data" => { "holding_id" => "holding_ambler" },
+          "item_data" => {
+            "pid" => "item_kardon",
+            "description" => "",
+            "library" => { "value" => "KARDON", "desc" => "Remote Storage" },
+            "location" => { "value" => "p_GovDocs", "desc" => "Paley GovDocs" },
+            "base_status" => { "value" => "1", "desc" => "Item in place" }
+          }
+        )
+      ] }
+
       it "allows a user to request item for pickup at Charles" do
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
@@ -223,6 +246,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_only") }
       it "allows a user to request item for pickup at Japan only" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).not_to include "MAIN"
       end
     end
@@ -230,6 +255,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_with_multiple_libraries") }
       it "allows a user to request item for pickup at Japan and other libraries" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
     end
@@ -247,6 +274,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_and_rome") }
       it "allows a user to request item for pickup at Rome and Japan" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).to include "ROME"
         expect(subject.valid_pickup_locations).not_to include "MAIN"
       end
@@ -428,4 +457,21 @@ RSpec.describe RequestData, type: :model do
     end
   end
 
+  describe "available_libraries" do
+    context "no available libraries" do
+      let(:bib_items) { [] }
+      it "should return ['MAIN']" do
+        expect(subject.send(:available_libraries)).to eq(["MAIN"])
+      end
+    end
+  end
+
+  describe "valid_pickup_locations" do
+    context "no available libraries" do
+      let(:bib_items) { [] }
+      it "should return default libraries" do
+        expect(subject.valid_pickup_locations).to eq(subject.send(:default_pickup_locations))
+      end
+    end
+  end
 end

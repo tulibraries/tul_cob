@@ -47,31 +47,52 @@ class RequestData
     pickup_location_codes&.collect { |library_code| { library_code => library_name_from_short_code(library_code) } }
   end
 
+  def lib_removals(libraries)
+    removals = []
+
+    libraries.each do |lib|
+      campus = determine_campus(lib)
+      next if lib == "MAIN"
+      next if [lib, campus] == ["ASRS", :MAIN]
+      removals << lib if remove_by_campus(campus).include?(lib)
+    end
+
+    removals
+  end
+
   def valid_pickup_locations
     libraries = available_libraries
-    pickup_locations = default_pickup_locations
+    campuses = get_campuses(libraries)
+    removals = lib_removals(libraries)
 
-    if libraries.any?
-      removals = []
-      libraries.each do |lib|
-        campus = determine_campus(lib)
-        next if lib == "MAIN"
-        next if [lib, campus] == ["ASRS", :MAIN]
-        removals << lib if remove_by_campus(campus).include?(lib)
-        removals
-      end
-      pickup_locations -= removals
-      if (libraries & ["ROME", "JAPAN"]).present?
-        if libraries.size == 1 || libraries.sort == ["JAPAN", "ROME"]
-          pickup_locations = libraries
+    pickup_locations = get_valid_pickup_locations(campuses) - removals
+
+    pickup_locations += reserve_or_reference
+
+    pickup_locations.uniq
+  end
+
+  def get_campuses(libraries)
+    libraries.map { |lib| determine_campus(lib) }.uniq
+  end
+
+  def get_valid_pickup_locations(campuses)
+    locations = []
+
+    campuses.each do |campus|
+      case campus
+      when :ROME
+        locations  += ["ROME"]
+      when :JAPAN
+        locations  += [ "HILLSIDE", "KYOTO", "JAPAN" ]
         else
-          pickup_locations << libraries.select { |lib| lib == "ROME" || lib == "JAPAN" }
-        end
+        locations += default_pickup_locations
       end
     end
-    pickup_locations << reserve_or_reference
-    pickup_locations.flatten
+
+    locations
   end
+
 
   def reserve_or_reference
     pickup_locations = []
@@ -96,31 +117,15 @@ class RequestData
   end
 
   def item_level_locations
-    pickup_locations = default_pickup_locations
+    output = @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
+      libraries = available_libraries(items)
+      campuses = get_campuses(libraries)
+      removals = lib_removals(libraries)
+      pickup_locations = (get_valid_pickup_locations(campuses) - removals).uniq
 
-    @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
-      libraries = items.map(&:library).reject(&:blank?).uniq
-      mapped_libraries = libraries.map { |lib| lib == "ASRS" ? "MAIN" : lib }.uniq
-
-      international = mapped_libraries & ["JAPAN", "ROME"]
-      domestic = mapped_libraries - international
-
-      allowed =
-        if international.present? && domestic.empty?
-          international
-        else
-          base = domestic.present? || mapped_libraries.empty? ? pickup_locations : []
-          removals =
-            domestic.flat_map do |lib|
-              campus = determine_campus(lib)
-              campus == :MAIN ? [] : remove_by_campus(campus)
-            end
-
-          (base - removals) | international
-        end
 
       result[description_label(desc)] =
-        allowed.each_with_object({}) do |library_code, acc|
+        pickup_locations.each_with_object({}) do |library_code, acc|
           acc[library_name_from_short_code(library_code)] = library_code
         end
     end
@@ -179,8 +184,8 @@ class RequestData
         ["MAIN", "AMBLER", "GINSBURG", "PODIATRY"]
       end
 
-      def available_libraries
-        @items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys
+      def available_libraries(items = @items)
+        items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys.presence || ["MAIN"]
       end
 
       def determine_campus(item)
@@ -189,17 +194,20 @@ class RequestData
           :MAIN
         when "GINSBURG"
           :HSL
-        when "AMBLER", "PODIATRY", "HARRISBURG", "JAPAN", "ROME"
+        when "AMBLER", "PODIATRY", "HARRISBURG", "ROME"
           item.to_sym
+        when "HILLSIDE", "KYOTO", "JAPAN"
+          :JAPAN
         else
           :OTHER
         end
       end
 
+
       def remove_by_campus(campus)
         case campus
         when :MAIN
-          ["MEDIA", "PRESSER", "MAIN", "ASRS"]
+          ["MEDIA", "PRESSER"]
         when :AMBLER
           ["AMBLER"]
         when :HSL
