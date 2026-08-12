@@ -457,4 +457,21 @@ RSpec.describe RequestData, type: :model do
     end
   end
 
+  describe "available_libraries" do
+    context "no available libraries" do
+      let(:bib_items) { [] }
+      it "should return ['MAIN']" do
+        expect(subject.send(:available_libraries)).to eq(["MAIN"])
+      end
+    end
+  end
+
+  describe "valid_pickup_locations" do
+    context "no available libraries" do
+      let(:bib_items) { [] }
+      it "should return default libraries" do
+        expect(subject.valid_pickup_locations).to eq(subject.send(:default_pickup_locations))
+      end
+    end
+  end
 end

@@ -118,7 +118,7 @@ class RequestData
 
   def item_level_locations
     output = @items.group_by(&:description).each_with_object({}) do |(desc, items), result|
-      libraries = items.map(&:library).reject(&:blank?).uniq.presence || ["MAIN"]
+      libraries = available_libraries(items)
       campuses = get_campuses(libraries)
       removals = lib_removals(libraries)
       pickup_locations = (get_valid_pickup_locations(campuses) - removals).uniq
@@ -184,8 +184,8 @@ class RequestData
         ["MAIN", "AMBLER", "GINSBURG", "PODIATRY"]
       end
 
-      def available_libraries
-        @items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys
+      def available_libraries(items=@items)
+        items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys.presence || ["MAIN"]
       end
 
       def determine_campus(item)
