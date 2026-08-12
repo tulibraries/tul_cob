@@ -184,7 +184,7 @@ class RequestData
         ["MAIN", "AMBLER", "GINSBURG", "PODIATRY"]
       end
 
-      def available_libraries(items=@items)
+      def available_libraries(items = @items)
         items.group_by(&:library).select { |library, items| items.any?(&:in_place?) }.keys.presence || ["MAIN"]
       end
 
