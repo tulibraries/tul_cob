@@ -246,6 +246,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_only") }
       it "allows a user to request item for pickup at Japan only" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).not_to include "MAIN"
       end
     end
@@ -253,6 +255,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_with_multiple_libraries") }
       it "allows a user to request item for pickup at Japan and other libraries" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).to include "MAIN"
       end
     end
@@ -270,6 +274,8 @@ RSpec.describe RequestData, type: :model do
       let(:bib_items) { Alma::BibItem.find("japan_and_rome") }
       it "allows a user to request item for pickup at Rome and Japan" do
         expect(subject.valid_pickup_locations).to include "JAPAN"
+        expect(subject.valid_pickup_locations).to include "HILLSIDE"
+        expect(subject.valid_pickup_locations).to include "KYOTO"
         expect(subject.valid_pickup_locations).to include "ROME"
         expect(subject.valid_pickup_locations).not_to include "MAIN"
       end
