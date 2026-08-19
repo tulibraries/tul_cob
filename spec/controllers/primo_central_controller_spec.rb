@@ -93,8 +93,9 @@ RSpec.describe PrimoCentralController, type: :controller do
       Flipflop::FeatureCache.current.disable!
     end
 
-    it "executes search tracking and feature flag SQL before returning the article bot challenge" do
+    it "returns the article bot challenge before search tracking and recaptcha" do
       expect(controller).not_to receive(:recaptcha)
+      expect(controller).not_to receive(:set_current_search_session)
 
       queries = capture_active_record_queries do
         get :index, params: { q: "article bot challenge characterization" }
@@ -109,9 +110,8 @@ RSpec.describe PrimoCentralController, type: :controller do
       end
 
       expect(response).to have_http_status(:forbidden)
-      expect(queries.length).to eq(2)
-      expect(queries[0][:sql]).to include('INSERT INTO "searches"')
-      expect(queries[1][:sql]).to include('FROM "flipflop_features"')
+      expect(queries.length).to eq(1)
+      expect(queries[0][:sql]).to include('FROM "flipflop_features"')
     end
   end
 

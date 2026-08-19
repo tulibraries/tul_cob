@@ -85,7 +85,9 @@ RSpec.describe CatalogController, type: :controller do
       Flipflop::FeatureCache.current.disable!
     end
 
-    it "executes search tracking and feature flag SQL before returning the bot challenge" do
+    it "returns the bot challenge before search session tracking" do
+      expect(controller).not_to receive(:set_current_search_session)
+
       queries = capture_active_record_queries do
         get :index, params: { q: "bot challenge characterization" }
       end
@@ -99,9 +101,8 @@ RSpec.describe CatalogController, type: :controller do
       end
 
       expect(response).to have_http_status(:forbidden)
-      expect(queries.length).to eq(2)
-      expect(queries[0][:sql]).to include('INSERT INTO "searches"')
-      expect(queries[1][:sql]).to include('FROM "flipflop_features"')
+      expect(queries.length).to eq(1)
+      expect(queries[0][:sql]).to include('FROM "flipflop_features"')
     end
 
     context "with an authenticated user" do

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  bot_challenge only: :index, if: -> { bot_challenge? }
+
   caches_page :show
 
   include FacetParamsDedupe
@@ -27,8 +29,6 @@ class CatalogController < ApplicationController
       redirect_to root_path
     end
   end
-
-  bot_challenge only: :index, if: -> { bot_challenge? }
 
   def bot_challenge?
     Flipflop.bot_challenge? &&
