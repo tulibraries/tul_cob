@@ -28,7 +28,7 @@ class CatalogController < ApplicationController
     end
   end
 
-  bot_challenge only: :index, if: -> { bot_challenge? }
+  bot_challenge only: %i[index facet], if: -> { bot_challenge? }
 
   def bot_challenge?
     Flipflop.bot_challenge? &&

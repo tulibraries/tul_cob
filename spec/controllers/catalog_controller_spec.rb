@@ -350,4 +350,42 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
   end
+
+  describe "bot challenge" do
+    it "does not enable the bot challenge when the feature is disabled" do
+      allow(Flipflop).to receive(:bot_challenge?).and_return(false)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      expect(controller.send(:bot_challenge?)).to be false
+    end
+
+    it "enables the bot challenge for a guest user" do
+      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      expect(controller.send(:bot_challenge?)).to be true
+    end
+
+    it "does not enable the bot challenge for an authenticated user" do
+      user = instance_double(User, guest?: false)
+
+      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(user)
+
+      expect(controller.send(:bot_challenge?)).to be false
+    end
+
+    it "invokes the bot challenge guard for a facet request" do
+      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      expect(BotChallengePage::BotChallengePageController)
+        .to receive(:bot_challenge_guard_action)
+        .with(controller) do |challenged_controller|
+          challenged_controller.head :forbidden
+        end
+
+      get :facet, params: { id: "creator_facet" }
+    end
+  end
 end
