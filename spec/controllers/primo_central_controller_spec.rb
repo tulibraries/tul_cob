@@ -10,12 +10,109 @@ RSpec.describe PrimoCentralController, type: :controller do
   let(:mock_response) { instance_double(Blacklight::PrimoCentral::Response) }
   let(:search_service) { instance_double(Blacklight::SearchService) }
 
+  def capture_active_record_queries
+    queries = []
+
+    callback = lambda do |_name, started, finished, _unique_id, payload|
+      sql = payload[:sql]
+
+      next if payload[:name] == "SCHEMA"
+      next if payload[:cached]
+      next if sql.blank?
+      next if sql.match?(/\A\s*(?:BEGIN|COMMIT|ROLLBACK|SAVEPOINT|RELEASE)\b/i)
+
+      queries << {
+        name: payload[:name],
+        sql: sql,
+        duration_ms: ((finished - started) * 1000).round(2)
+      }
+    end
+
+    ActiveSupport::Notifications.subscribed(
+      callback,
+      "sql.active_record"
+    ) do
+      yield
+    end
+
+    queries
+  end
+
   before(:each) do
     allow(helpers).to receive(:base_path).and_return("/")
     allow(controller).to receive(:helpers).and_return(helpers)
     allow(controller).to receive(:search_service).and_return(search_service)
     allow(search_service).to receive(:fetch).and_return([mock_response, document])
     allow(search_service).to receive(:search_results).and_return([mock_response, document])
+  end
+
+  describe "anonymous bot challenge ActiveRecord usage" do
+    around do |example|
+      config =
+        BotChallengePage::BotChallengePageController.bot_challenge_config
+      original_enabled = config.enabled
+
+      config.enabled = true
+      example.run
+    ensure
+      config.enabled = original_enabled
+    end
+
+    before do
+      allow(helpers).to receive(:current_page?).and_return(false)
+
+      @active_record_strategy =
+        Flipflop::FeatureSet.current.strategies.find do |strategy|
+          strategy.is_a?(
+            Flipflop::Strategies::ActiveRecordStrategy
+          )
+        end
+
+      raise "Flipflop ActiveRecord strategy not configured" unless @active_record_strategy
+
+      Flipflop::FeatureSet.current.clear!(
+        :bot_challenge,
+        @active_record_strategy.key
+      )
+      Flipflop::FeatureSet.current.switch!(
+        :bot_challenge,
+        @active_record_strategy.key,
+        true
+      )
+      Flipflop::FeatureCache.current.disable!
+    end
+
+    after do
+      if @active_record_strategy
+        Flipflop::FeatureSet.current.clear!(
+          :bot_challenge,
+          @active_record_strategy.key
+        )
+      end
+
+      Flipflop::FeatureCache.current.disable!
+    end
+
+    it "executes search tracking and feature flag SQL before returning the article bot challenge" do
+      expect(controller).not_to receive(:recaptcha)
+
+      queries = capture_active_record_queries do
+        get :index, params: { q: "article bot challenge characterization" }
+      end
+
+      warn "\nCaptured SQL during challenged article request:"
+      queries.each_with_index do |query, index|
+        warn(
+          "#{index + 1}. #{query[:name]} " \
+          "(#{query[:duration_ms]}ms): #{query[:sql]}"
+        )
+      end
+
+      expect(response).to have_http_status(:forbidden)
+      expect(queries.length).to eq(2)
+      expect(queries[0][:sql]).to include('INSERT INTO "searches"')
+      expect(queries[1][:sql]).to include('FROM "flipflop_features"')
+    end
   end
 
   describe "show action" do
