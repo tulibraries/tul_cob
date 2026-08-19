@@ -40,7 +40,7 @@ RSpec.describe CatalogController, type: :controller do
     queries
   end
 
-  describe "anonymous bot challenge ActiveRecord usage" do
+  describe "bot challenge behavior and ActiveRecord usage" do
     around do |example|
       config =
         BotChallengePage::BotChallengePageController.bot_challenge_config
@@ -102,6 +102,120 @@ RSpec.describe CatalogController, type: :controller do
       expect(queries.length).to eq(2)
       expect(queries[0][:sql]).to include('INSERT INTO "searches"')
       expect(queries[1][:sql]).to include('FROM "flipflop_features"')
+    end
+
+    context "with an authenticated user" do
+      let(:user) { FactoryBot.create(:user) }
+
+      before do
+        sign_in user
+      end
+
+      it "preserves normal catalog access" do
+        get :index, params: { q: "authenticated user characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "with a signed-in guest user" do
+      let(:guest_user) { FactoryBot.create(:user, guest: true) }
+
+      before do
+        sign_in guest_user
+      end
+
+      it "continues to require the bot challenge" do
+        get :index, params: { q: "guest user characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+
+    context "with a valid bot challenge pass" do
+      before do
+        challenge_controller =
+          BotChallengePage::BotChallengePageController
+        config = challenge_controller.bot_challenge_config
+
+        session[config.session_passed_key] = {
+          challenge_controller::SESSION_DATETIME_KEY =>
+            Time.now.utc.iso8601,
+          challenge_controller::SESSION_FINGERPRINT_KEY =>
+            config.session_valid_fingerprint.call(request)
+        }
+      end
+
+      it "preserves normal catalog access without another challenge" do
+        get :index, params: { q: "passed challenge characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "with a stale signed login marker" do
+      before do
+        cookies.signed[LoginCookie::LOGIN_COOKIE_NAME] = {
+          user_id: -1,
+          issued_at: 1.hour.ago.to_i
+        }
+      end
+
+      it "clears the marker and requires the bot challenge" do
+        get :index, params: { q: "stale login marker characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+        expect(response.headers["Set-Cookie"]).to match(
+          /#{LoginCookie::LOGIN_COOKIE_NAME}=;/
+        )
+      end
+    end
+
+    context "with an invalid unsigned login marker" do
+      before do
+        cookies[LoginCookie::LOGIN_COOKIE_NAME] = "forged"
+      end
+
+      it "clears the marker and requires the bot challenge" do
+        get :index, params: { q: "invalid login marker characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+        expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to be_nil
+        expect(response.headers["Set-Cookie"]).to match(
+          /#{LoginCookie::LOGIN_COOKIE_NAME}=;/
+        )
+      end
+    end
+
+    context "when the Flipflop challenge flag is disabled" do
+      before do
+        Flipflop::FeatureSet.current.switch!(
+          :bot_challenge,
+          @active_record_strategy.key,
+          false
+        )
+        Flipflop::FeatureCache.current.disable!
+      end
+
+      it "preserves normal catalog access" do
+        get :index, params: { q: "disabled challenge characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "when the global bot challenge configuration is disabled" do
+      before do
+        BotChallengePage::BotChallengePageController
+          .bot_challenge_config
+          .enabled = false
+      end
+
+      it "preserves normal catalog access" do
+        get :index, params: { q: "globally disabled challenge characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
     end
   end
 
