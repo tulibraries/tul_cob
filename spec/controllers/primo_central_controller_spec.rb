@@ -32,7 +32,7 @@ RSpec.describe PrimoCentralController, type: :controller do
 
     before do
       allow(helpers).to receive(:current_page?).and_return(false)
-      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:bot_challenge?).and_return(true)
     end
 
     it "returns the article bot challenge before search tracking and recaptcha" do

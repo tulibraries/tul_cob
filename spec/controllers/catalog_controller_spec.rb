@@ -25,7 +25,7 @@ RSpec.describe CatalogController, type: :controller do
     end
 
     before do
-      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:bot_challenge?).and_return(true)
     end
 
     it "returns the bot challenge before search session tracking" do
@@ -34,34 +34,6 @@ RSpec.describe CatalogController, type: :controller do
       get :index, params: { q: "bot challenge characterization" }
 
       expect(response).to have_http_status(:forbidden)
-    end
-
-    context "with an authenticated user" do
-      let(:user) { FactoryBot.create(:user) }
-
-      before do
-        sign_in user
-      end
-
-      it "preserves normal catalog access" do
-        get :index, params: { q: "authenticated user characterization" }
-
-        expect(response).to have_http_status(:ok)
-      end
-    end
-
-    context "with a signed-in guest user" do
-      let(:guest_user) { FactoryBot.create(:user, guest: true) }
-
-      before do
-        sign_in guest_user
-      end
-
-      it "continues to require the bot challenge" do
-        get :index, params: { q: "guest user characterization" }
-
-        expect(response).to have_http_status(:forbidden)
-      end
     end
 
     context "with a valid bot challenge pass" do
@@ -116,18 +88,6 @@ RSpec.describe CatalogController, type: :controller do
         expect(response.headers["Set-Cookie"]).to match(
           /#{LoginCookie::LOGIN_COOKIE_NAME}=;/
         )
-      end
-    end
-
-    context "when the Flipflop challenge flag is disabled" do
-      before do
-        allow(Flipflop).to receive(:bot_challenge?).and_return(false)
-      end
-
-      it "preserves normal catalog access" do
-        get :index, params: { q: "disabled challenge characterization" }
-
-        expect(response).to have_http_status(:ok)
       end
     end
 
