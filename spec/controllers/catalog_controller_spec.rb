@@ -101,8 +101,9 @@ RSpec.describe CatalogController, type: :controller do
       end
 
       expect(response).to have_http_status(:forbidden)
-      expect(queries.length).to eq(1)
-      expect(queries[0][:sql]).to include('FROM "flipflop_features"')
+      expect(queries).not_to include(
+        a_hash_including(sql: include('"searches"'))
+      )
     end
 
     context "with an authenticated user" do

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  # Run the challenge before Blacklight search-session tracking creates a Search record.
   bot_challenge only: :index, if: -> { bot_challenge? }
 
   caches_page :show
