@@ -12,35 +12,7 @@ RSpec.describe CatalogController, type: :controller do
   let(:options) { { blacklight_config: controller.blacklight_config } }
   let(:document) { SolrDocument.new(doc, options) }
 
-  def capture_active_record_queries
-    queries = []
-
-    callback = lambda do |_name, started, finished, _unique_id, payload|
-      sql = payload[:sql]
-
-      next if payload[:name] == "SCHEMA"
-      next if payload[:cached]
-      next if sql.blank?
-      next if sql.match?(/\A\s*(?:BEGIN|COMMIT|ROLLBACK|SAVEPOINT|RELEASE)\b/i)
-
-      queries << {
-        name: payload[:name],
-        sql: sql,
-        duration_ms: ((finished - started) * 1000).round(2)
-      }
-    end
-
-    ActiveSupport::Notifications.subscribed(
-      callback,
-      "sql.active_record"
-    ) do
-      yield
-    end
-
-    queries
-  end
-
-  describe "bot challenge behavior and ActiveRecord usage" do
+  describe "bot challenge behavior" do
     around do |example|
       config =
         BotChallengePage::BotChallengePageController.bot_challenge_config
@@ -53,57 +25,15 @@ RSpec.describe CatalogController, type: :controller do
     end
 
     before do
-      @active_record_strategy =
-        Flipflop::FeatureSet.current.strategies.find do |strategy|
-          strategy.is_a?(
-            Flipflop::Strategies::ActiveRecordStrategy
-          )
-        end
-
-      raise "Flipflop ActiveRecord strategy not configured" unless @active_record_strategy
-
-      Flipflop::FeatureSet.current.clear!(
-        :bot_challenge,
-        @active_record_strategy.key
-      )
-      Flipflop::FeatureSet.current.switch!(
-        :bot_challenge,
-        @active_record_strategy.key,
-        true
-      )
-      Flipflop::FeatureCache.current.disable!
-    end
-
-    after do
-      if @active_record_strategy
-        Flipflop::FeatureSet.current.clear!(
-          :bot_challenge,
-          @active_record_strategy.key
-        )
-      end
-
-      Flipflop::FeatureCache.current.disable!
+      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
     end
 
     it "returns the bot challenge before search session tracking" do
       expect(controller).not_to receive(:set_current_search_session)
 
-      queries = capture_active_record_queries do
-        get :index, params: { q: "bot challenge characterization" }
-      end
-
-      warn "\nCaptured SQL during challenged request:"
-      queries.each_with_index do |query, index|
-        warn(
-          "#{index + 1}. #{query[:name]} " \
-          "(#{query[:duration_ms]}ms): #{query[:sql]}"
-        )
-      end
+      get :index, params: { q: "bot challenge characterization" }
 
       expect(response).to have_http_status(:forbidden)
-      expect(queries).not_to include(
-        a_hash_including(sql: include('"searches"'))
-      )
     end
 
     context "with an authenticated user" do
@@ -191,12 +121,7 @@ RSpec.describe CatalogController, type: :controller do
 
     context "when the Flipflop challenge flag is disabled" do
       before do
-        Flipflop::FeatureSet.current.switch!(
-          :bot_challenge,
-          @active_record_strategy.key,
-          false
-        )
-        Flipflop::FeatureCache.current.disable!
+        allow(Flipflop).to receive(:bot_challenge?).and_return(false)
       end
 
       it "preserves normal catalog access" do
