@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  # Run the challenge before Blacklight search-session tracking creates a Search record.
+  bot_challenge only: :index, if: -> { bot_challenge? }
+
   caches_page :show
 
   include FacetParamsDedupe
@@ -27,8 +30,6 @@ class CatalogController < ApplicationController
       redirect_to root_path
     end
   end
-
-  bot_challenge only: %i[index facet], if: -> { bot_challenge? }
 
   def bot_challenge?
     Flipflop.bot_challenge? &&

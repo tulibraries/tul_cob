@@ -18,6 +18,33 @@ RSpec.describe PrimoCentralController, type: :controller do
     allow(search_service).to receive(:search_results).and_return([mock_response, document])
   end
 
+  describe "anonymous bot challenge behavior" do
+    around do |example|
+      config =
+        BotChallengePage::BotChallengePageController.bot_challenge_config
+      original_enabled = config.enabled
+
+      config.enabled = true
+      example.run
+    ensure
+      config.enabled = original_enabled
+    end
+
+    before do
+      allow(helpers).to receive(:current_page?).and_return(false)
+      allow(controller).to receive(:bot_challenge?).and_return(true)
+    end
+
+    it "returns the article bot challenge before search tracking and recaptcha" do
+      expect(controller).not_to receive(:recaptcha)
+      expect(controller).not_to receive(:set_current_search_session)
+
+      get :index, params: { q: "article bot challenge characterization" }
+
+      expect(response).to have_http_status(:forbidden)
+    end
+  end
+
   describe "show action" do
     render_views
 

@@ -12,6 +12,100 @@ RSpec.describe CatalogController, type: :controller do
   let(:options) { { blacklight_config: controller.blacklight_config } }
   let(:document) { SolrDocument.new(doc, options) }
 
+  describe "bot challenge behavior" do
+    around do |example|
+      config =
+        BotChallengePage::BotChallengePageController.bot_challenge_config
+      original_enabled = config.enabled
+
+      config.enabled = true
+      example.run
+    ensure
+      config.enabled = original_enabled
+    end
+
+    before do
+      allow(controller).to receive(:bot_challenge?).and_return(true)
+    end
+
+    it "returns the bot challenge before search session tracking" do
+      expect(controller).not_to receive(:set_current_search_session)
+
+      get :index, params: { q: "bot challenge characterization" }
+
+      expect(response).to have_http_status(:forbidden)
+    end
+
+    context "with a valid bot challenge pass" do
+      before do
+        challenge_controller =
+          BotChallengePage::BotChallengePageController
+        config = challenge_controller.bot_challenge_config
+
+        session[config.session_passed_key] = {
+          challenge_controller::SESSION_DATETIME_KEY =>
+            Time.now.utc.iso8601,
+          challenge_controller::SESSION_FINGERPRINT_KEY =>
+            config.session_valid_fingerprint.call(request)
+        }
+      end
+
+      it "preserves normal catalog access without another challenge" do
+        get :index, params: { q: "passed challenge characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "with a stale signed login marker" do
+      before do
+        cookies.signed[LoginCookie::LOGIN_COOKIE_NAME] = {
+          user_id: -1,
+          issued_at: 1.hour.ago.to_i
+        }
+      end
+
+      it "clears the marker and requires the bot challenge" do
+        get :index, params: { q: "stale login marker characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+        expect(response.headers["Set-Cookie"]).to match(
+          /#{LoginCookie::LOGIN_COOKIE_NAME}=;/
+        )
+      end
+    end
+
+    context "with an invalid unsigned login marker" do
+      before do
+        cookies[LoginCookie::LOGIN_COOKIE_NAME] = "forged"
+      end
+
+      it "clears the marker and requires the bot challenge" do
+        get :index, params: { q: "invalid login marker characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+        expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to be_nil
+        expect(response.headers["Set-Cookie"]).to match(
+          /#{LoginCookie::LOGIN_COOKIE_NAME}=;/
+        )
+      end
+    end
+
+    context "when the global bot challenge configuration is disabled" do
+      before do
+        BotChallengePage::BotChallengePageController
+          .bot_challenge_config
+          .enabled = false
+      end
+
+      it "preserves normal catalog access" do
+        get :index, params: { q: "globally disabled challenge characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+  end
+
   describe "show action" do
     it "gets the staff_view_path" do
       get :show, params: { id: doc_id }
