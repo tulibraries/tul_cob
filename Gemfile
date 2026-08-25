@@ -17,7 +17,7 @@ gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/bla
 gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
 gem "bootstrap", ">= 5.3.3"
 gem "bot_challenge_page"
-gem "bootsnap", "1.24.6"
+gem "bootsnap", "1.25.0"
 gem "browser"
 gem "byebug", platform: :mri
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
