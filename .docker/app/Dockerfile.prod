@@ -53,7 +53,7 @@ ENV LD_PRELOAD="libjemalloc.so.2" \
       MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
       RUBY_YJIT_ENABLE="1"
 
-USER nobody
+USER 65534
 
 ENTRYPOINT [".docker/app/entrypoint.sh"]
 EXPOSE 3000
