@@ -481,5 +481,17 @@ RSpec.describe CatalogController, type: :controller do
 
       get :facet, params: { id: "creator_facet" }
     end
+
+    it "does not invoke the bot challenge guard for a facet fetch request" do
+      allow(Flipflop).to receive(:bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      request.headers["Sec-Fetch-Dest"] = "empty"
+
+      expect(BotChallengePage::BotChallengePageController)
+        .not_to receive(:bot_challenge_guard_action)
+
+      get :facet, params: { id: "creator_facet" }
+    end
   end
 end
