@@ -108,8 +108,7 @@ run:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
-	@docker build --build-arg RAILS_MASTER_KEY=$(RAILS_MASTER_KEY) \
-    --build-arg BASE_IMAGE=$(BASE_IMAGE) \
+	@docker build --build-arg BASE_IMAGE=$(BASE_IMAGE) \
 		--build-arg WEB_CONCURRENCY=$(WEB_CONCURRENCY) \
 		--platform $(PLATFORM) \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \

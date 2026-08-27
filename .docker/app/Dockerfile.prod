@@ -1,58 +1,99 @@
-# Allow base image override
-ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.4-alpine"
 # hadolint ignore=DL3006,DL3026
-FROM "${BASE_IMAGE}"
+ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.4-alpine"
+
+# ==========================================
+# STAGE 1: Builder
+# ==========================================
+# hadolint ignore=DL3006,DL3026
+FROM "${BASE_IMAGE}" AS builder
+
+# Switch to root to allow apk package installation
+USER 0
 
 WORKDIR /app
 
+# Set build and runtime environment
+ARG RAILS_ENV=production
+ENV RAILS_ENV=${RAILS_ENV} \
+    SECRET_KEY_BASE_DUMMY=1
+
+# Install all dependencies needed for building gems/assets
+RUN apk add -U --no-cache \
+    bash=5.3.9-r1 \
+    build-base=0.5-r4 \
+    git=2.54.0-r0 \
+    yaml=0.2.5-r2 \
+    yaml-dev=0.2.5-r2 \
+    libxslt-dev=1.1.43-r3 \
+    libffi-dev=3.5.2-r1 \
+    postgresql17-dev=17.11-r0 \
+    nodejs=24.18.1-r0 \
+    yarn=1.22.22-r1 \
+    tzdata=2026c-r0
+
+# Leverage Docker cache: Only copy dependency files first
+COPY Gemfile Gemfile.lock package.json yarn.lock ./
+
+# Install Ruby gems
+RUN bundle config set --local without "development test" && \
+    bundle install --jobs=8
+
+# Install Javascript packages
+RUN yarn install --frozen-lockfile
+
+# Copy the rest of the application code
 COPY . .
 
+# Handle fallback config maps, compile assets, and clean up in one layer
+RUN if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
+    bundle exec rails assets:precompile && \
+    rm -rf node_modules tmp/* && \
+    find "$GEM_HOME" -name yarn.lock -exec rm "{}" \;
+
+# Drop back to a standard user at the end of the builder stage to satisfy DL3002
+USER 65534
+
+
+# ==========================================
+# STAGE 2: Final Runner
+# ==========================================
+# hadolint ignore=DL3006,DL3026
+FROM "${BASE_IMAGE}" AS runner
+
+WORKDIR /app
+
+# Switch to root to install packages and configure directories
 USER 0
 
-ARG WEB_CONCURRENCY
-ARG RAILS_MASTER_KEY=foobar
-ARG RAILS_ENV=production 
+ARG RAILS_ENV=production
+# Set production environment variables for the runtime container
+ENV RAILS_ENV=${RAILS_ENV} \
+    LD_PRELOAD="libjemalloc.so.2" \
+    MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
+    RUBY_YJIT_ENABLE="1"
 
-# libc6-compat is required for m1 build.
+# Install ONLY runtime dependencies (No compilers, No Node, No Yarn)
 RUN apk add -U --no-cache \
-      bash=5.3.9-r1 \
-      jemalloc=5.3.0-r6 \
-      libc6-compat=1.1.0-r4 \
-      libxslt=1.1.43-r3 \
-      postgresql17-client=17.11-r0 \
-      shared-mime-info=2.4-r7 \
-      tzdata=2026c-r0 && \
-    apk add -U --no-cache --virtual build-dependencies \
-      build-base=0.5-r4 \
-      git=2.54.0-r0 \
-      yaml=0.2.5-r2 \
-      yaml-dev=0.2.5-r2 \
-      libxslt-dev=1.1.43-r3 \
-      libffi-dev=3.5.2-r1 \
-      postgresql17-dev=17.11-r0 \
-      nodejs=24.18.1-r0 \
-      yarn=1.22.22-r1 && \
-    bundle config set --local without "development test" && \    
-    bundle install --jobs=8 && \
-    yarn install --frozen-lockfile && \
-    yarn cache clean && \
-    find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
-    if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
-    bundle exec rails assets:precompile && \
-    rm -rf node_modules && \
-    rm -rf tmp/* && \
-    apk del build-dependencies && \
-    rm -rf /var/cache/apk/ && \
-    mkdir -p /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-tmp/storage && \
+    bash=5.3.9-r1 \
+    jemalloc=5.3.0-r6 \
+    libc6-compat=1.1.0-r4 \
+    libxslt=1.1.43-r3 \
+    postgresql17-client=17.11-r0 \
+    shared-mime-info=2.4-r7 \
+    tzdata=2026c-r0
+
+# Copy compiled gems and assets from the builder stage
+COPY --from=builder /usr/local/bundle /usr/local/bundle
+COPY --from=builder /app /app
+
+# Configure secure temporary directories
+RUN mkdir -p /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-tmp/storage && \
     chown nobody:nobody -R /secure-tmp && \
     chmod 700 /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-tmp/storage && \
     mkdir -p /app/tmp /app/log && \
     chown nobody:nobody -R /app/tmp /app/log
-    
-ENV LD_PRELOAD="libjemalloc.so.2" \
-      MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
-      RUBY_YJIT_ENABLE="1"
 
+# Drop down to a safe, unprivileged user for production execution
 USER 65534
 
 ENTRYPOINT [".docker/app/entrypoint.sh"]
