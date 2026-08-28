@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "marc"
 
 RSpec.describe Citeproc::ItemService do
   subject(:item) { described_class.build(document) }
@@ -69,13 +70,13 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Example", "given" => "Avery" }])
   end
 
-  it "does not use contributor_display as author when there is no supported relator" do
+  it "uses contributor_display as a fallback author when there is no supported relator" do
     document["creator_display"] = []
     document["contributor_display"] = [
       "Norris, Denne Michele,"
     ]
 
-    expect(item.author).to be_nil
+    expect(citeproc_names(item.author)).to eq([{ "family" => "Norris", "given" => "Denne Michele" }])
   end
 
   it "uses contributor_display as author when there is an author relator and no creator_display" do
@@ -214,5 +215,99 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Primary", "given" => "Pat" }])
     expect(item.editor).to be_nil
     expect(item.translator).to be_nil
+  end
+
+  it "uses the first three contributor_display entries as authors when no creator_display or supported contributor relators exist" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "Alpha, Ada|writer of supplementary textual content.",
+      "Beta, Ben.",
+      "Gamma, Gia|honouree.",
+      "Delta, Dom|former owner."
+    ]
+
+    expect(citeproc_names(item.author)).to eq([
+      { "family" => "Alpha", "given" => "Ada" },
+      { "family" => "Beta", "given" => "Ben" },
+      { "family" => "Gamma", "given" => "Gia" }
+    ])
+  end
+
+  it "uses semantic contributor values as the fallback author source when display fields are absent" do
+    document = SolrDocument.new(
+      "id" => "991012041239703811",
+      "title_statement_display" => ["Example title / Foo."],
+      "creator" => [],
+      "contributor" => [
+        "Alpha, Ada",
+        "Beta, Ben",
+        "Gamma, Gia",
+        "Delta, Dom"
+      ],
+      "format" => ["Book"]
+    )
+
+    item = described_class.build(document)
+
+    expect(citeproc_names(item.author)).to eq([
+      { "family" => "Alpha", "given" => "Ada" },
+      { "family" => "Beta", "given" => "Ben" },
+      { "family" => "Gamma", "given" => "Gia" }
+    ])
+  end
+
+  it "uses html-rendered contributor_display values as fallback authors when no creator_display exists" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      '<a href="/catalog?f[creator_facet][]=Warner+Bros.+Pictures+%281969-+%29">Warner Bros. Pictures (1969- )</a>',
+      '<a href="/catalog?f[creator_facet][]=Heyday+Films">Heyday Films</a>',
+      '<a href="/catalog?f[creator_facet][]=Warner+Home+Video+%28Firm%29">Warner Home Video (Firm)</a>',
+      '<a href="/catalog?f[creator_facet][]=Yates%2C+David%2C+1963-">Yates, David, 1963-</a> director'
+    ]
+
+    expect(citeproc_names(item.author)).to eq([
+      { "literal" => "Warner Bros. Pictures" },
+      { "literal" => "Heyday Films" },
+      { "literal" => "Warner Home Video (Firm)" }
+    ])
+  end
+
+  it "uses marc 7xx entries as fallback authors when indexed contributor fields are absent" do
+    marc_record = MARC::Record.new
+    marc_record.append(MARC::DataField.new("700", "1", " ", ["a", "Alpha, Ada"], ["e", "former owner"]))
+    marc_record.append(MARC::DataField.new("710", "2", " ", ["a", "Beta Research Group"], ["e", "sponsor"]))
+    marc_record.append(MARC::DataField.new("711", "2", " ", ["a", "Gamma Symposium"], ["d", "(2024 : Philadelphia, Pa.)"]))
+    marc_record.append(MARC::DataField.new("700", "1", " ", ["a", "Delta, Dom"], ["e", "honouree"]))
+
+    document = double(
+      "document",
+      id: "991012041239703811",
+      to_marc: marc_record
+    )
+    allow(document).to receive(:[]).with("title_with_subtitle_display").and_return(nil)
+    allow(document).to receive(:[]).with("title_with_subtitle_truncated_display").and_return(nil)
+    allow(document).to receive(:[]).with("title_statement_display").and_return(["Example title / Foo."])
+    allow(document).to receive(:[]).with("format").and_return(["Book"])
+    allow(document).to receive(:[]).with("creator_display").and_return([])
+    allow(document).to receive(:[]).with("creator").and_return(nil)
+    allow(document).to receive(:[]).with("contributor_display").and_return([])
+    allow(document).to receive(:[]).with("contributor").and_return(nil)
+    allow(document).to receive(:[]).with("pub_date_display").and_return(nil)
+    allow(document).to receive(:[]).with("pub_date").and_return(nil)
+    allow(document).to receive(:[]).with("date_copyright_display").and_return(nil)
+    allow(document).to receive(:[]).with("imprint_display").and_return(nil)
+    allow(document).to receive(:[]).with("imprint_prod_display").and_return(nil)
+    allow(document).to receive(:[]).with("imprint_dist_display").and_return(nil)
+    allow(document).to receive(:[]).with("imprint_man_display").and_return(nil)
+    allow(document).to receive(:[]).with("isbn_display").and_return(nil)
+    allow(document).to receive(:[]).with("issn_display").and_return(nil)
+
+    item = described_class.build(document)
+
+    expect(citeproc_names(item.author)).to eq([
+      { "family" => "Alpha", "given" => "Ada" },
+      { "literal" => "Beta Research Group" },
+      { "literal" => "Gamma Symposium" }
+    ])
   end
 end
