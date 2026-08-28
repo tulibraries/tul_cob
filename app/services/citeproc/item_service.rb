@@ -2,6 +2,8 @@
 
 module Citeproc
   class ItemService
+    FALLBACK_AUTHOR_LIMIT = 3
+
     ROLE_MAPPINGS = {
       "author" => "author",
       "aut" => "author",
@@ -122,26 +124,34 @@ module Citeproc
       end
 
       def extract_names(target_role)
-        extract_main_entry_names(target_role) + extract_contributor_names(target_role)
+        names = extract_main_entry_names(target_role) + extract_contributor_names(target_role)
+        return names if names.present? || target_role != "author"
+
+        fallback_contributor_author_names
       end
 
       def extract_main_entry_names(target_role)
-        Array(document["creator_display"]).filter_map do |value|
-          role = extract_role(value, default_role: "author")
-          extract_name(value) if role == target_role
+        name_extractor.creator_entries.filter_map do |entry|
+          build_name(entry.name) if extract_role(entry.relators, default_role: "author") == target_role
         end.uniq
       end
 
       def extract_contributor_names(target_role)
-        Array(document["contributor_display"]).filter_map do |value|
-          role = extract_role(value)
-          extract_name(value) if role == target_role
+        name_extractor.contributor_entries.filter_map do |entry|
+          build_name(entry.name) if extract_role(entry.relators) == target_role
         end.uniq
       end
 
-      def extract_name(value)
-        name = parsed_indexed_value(value)[:name]
-        build_name(name)
+      def fallback_contributor_author_names
+        return [] if name_extractor.creator_entries.present?
+
+        name_extractor.fallback_contributor_entries.filter_map do |entry|
+          build_name(entry.name)
+        end.uniq.first(FALLBACK_AUTHOR_LIMIT)
+      end
+
+      def name_extractor
+        @name_extractor ||= Citeproc::NameExtractor.new(document)
       end
 
       def build_name(value)
@@ -171,8 +181,8 @@ module Citeproc
         end
       end
 
-      def extract_role(value, default_role: nil)
-        relator_segments(value).each do |segment|
+      def extract_role(relators, default_role: nil)
+        Array(relators).flat_map { |segment| segment.to_s.split(/\s*,\s*/) }.each do |segment|
           role = ROLE_MAPPINGS[normalize_relator(segment)]
           return role if role.present?
         end
@@ -222,45 +232,9 @@ module Citeproc
         style_id == "apa"
       end
 
-      def relator_segments(value)
-        parsed = parsed_indexed_value(value)
-        Array(parsed[:relators]).flat_map do |segment|
-          segment.to_s.split(/\s*,\s*/)
-        end
-      end
-
       def normalize_relator(value)
         normalized = strip_trailing_punct(value).downcase
         normalized.include?("relators/") ? normalized.split("/").last : normalized
-      end
-
-      def parsed_indexed_value(value)
-        return parse_json_indexed_value(value) if json_indexed_value?(value)
-
-        parse_pipe_indexed_value(value)
-      end
-
-      def json_indexed_value?(value)
-        string = value.to_s.strip
-        string.start_with?("{") && string.end_with?("}")
-      end
-
-      def parse_json_indexed_value(value)
-        parsed = JSON.parse(value.to_s)
-        {
-          name: parsed["name"].to_s.strip,
-          relators: [parsed["role"], parsed["relation"]].compact_blank
-        }
-      rescue JSON::ParserError
-        parse_pipe_indexed_value(value)
-      end
-
-      def parse_pipe_indexed_value(value)
-        segments = value.to_s.split("|").map(&:strip)
-        {
-          name: segments.first.to_s,
-          relators: segments.drop(1)
-        }
       end
 
       def strip_trailing_punct(value)
