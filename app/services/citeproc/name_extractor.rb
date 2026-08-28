@@ -50,14 +50,14 @@ module Citeproc
       end
 
       def parse_value(value)
-        return parse_html_value(value) if html_value?(value)
         return parse_json_value(value) if json_value?(value)
+        return parse_html_value(value) if html_value?(value)
 
         parse_pipe_value(value)
       end
 
       def html_value?(value)
-        value.to_s.include?("<")
+        value.to_s.match?(%r{<a\b[^>]*>}i)
       end
 
       def json_value?(value)
@@ -106,7 +106,8 @@ module Citeproc
         end.filter_map do |field|
           build_entry(marc_name_value(field))
         end
-      rescue StandardError
+      rescue StandardError => e
+        Rails.logger.warn("Unable to extract MARC contributors for citation: #{e.message}")
         []
       end
 

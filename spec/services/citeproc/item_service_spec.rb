@@ -70,7 +70,7 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Example", "given" => "Avery" }])
   end
 
-  it "does not use contributor_display as author when there is no supported relator" do
+  it "uses contributor_display as a fallback author when there is no supported relator" do
     document["creator_display"] = []
     document["contributor_display"] = [
       "Norris, Denne Michele,"
