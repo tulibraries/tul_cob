@@ -444,4 +444,53 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
   end
+
+  describe "facet bot challenge" do
+    it "does not invoke the bot challenge guard when the facet challenge is disabled" do
+      allow(Flipflop).to receive(:facet_bot_challenge?).and_return(false)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      expect(BotChallengePage::BotChallengePageController)
+        .not_to receive(:bot_challenge_guard_action)
+
+      get :facet, params: { id: "creator_facet" }
+    end
+
+    it "invokes the bot challenge guard for an anonymous facet request" do
+      allow(Flipflop).to receive(:facet_bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      expect(BotChallengePage::BotChallengePageController)
+        .to receive(:bot_challenge_guard_action)
+        .with(controller) do |challenged_controller|
+          challenged_controller.head :forbidden
+        end
+
+      get :facet, params: { id: "creator_facet" }
+    end
+
+    it "does not invoke the bot challenge guard for an authenticated user" do
+      user = instance_double(User, guest?: false)
+
+      allow(Flipflop).to receive(:facet_bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(user)
+
+      expect(BotChallengePage::BotChallengePageController)
+        .not_to receive(:bot_challenge_guard_action)
+
+      get :facet, params: { id: "creator_facet" }
+    end
+
+    it "does not invoke the bot challenge guard for a facet fetch request" do
+      allow(Flipflop).to receive(:facet_bot_challenge?).and_return(true)
+      allow(controller).to receive(:current_user).and_return(nil)
+
+      request.headers["Sec-Fetch-Dest"] = "empty"
+
+      expect(BotChallengePage::BotChallengePageController)
+        .not_to receive(:bot_challenge_guard_action)
+
+      get :facet, params: { id: "creator_facet" }
+    end
+  end
 end

@@ -16,5 +16,6 @@ Flipflop.configure do
 
   group :experimental do
     feature :bot_challenge, default: false
+    feature :facet_bot_challenge, default: false
   end
 end

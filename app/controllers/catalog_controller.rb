@@ -3,6 +3,7 @@
 class CatalogController < ApplicationController
   # Run the challenge before Blacklight search-session tracking creates a Search record.
   bot_challenge only: :index, if: -> { bot_challenge? }
+  bot_challenge only: :facet, if: -> { facet_bot_challenge? }
 
   caches_page :show
 
@@ -36,6 +37,11 @@ class CatalogController < ApplicationController
       (current_user.nil? || current_user.guest?)
   end
 
+  def facet_bot_challenge?
+    request.headers["Sec-Fetch-Dest"] != "empty" &&
+      Flipflop.facet_bot_challenge? &&
+      (current_user.nil? || current_user.guest?)
+  end
 
   def override_solr_path
     single_word = params["q"]&.split&.count == 1
