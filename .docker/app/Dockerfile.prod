@@ -12,10 +12,9 @@ USER 0
 
 WORKDIR /app
 
-# Set build and runtime environment
+# Set build environment
 ARG RAILS_ENV=production
-ENV RAILS_ENV=${RAILS_ENV} \
-    SECRET_KEY_BASE_DUMMY=1
+ENV RAILS_ENV=${RAILS_ENV}
 
 # Install all dependencies needed for building gems/assets
 RUN apk add -U --no-cache \
@@ -44,9 +43,11 @@ RUN yarn install --frozen-lockfile
 # Copy the rest of the application code
 COPY . .
 
-# Handle fallback config maps, compile assets, and clean up in one layer
+# Handle fallback config maps, compile assets, and clean up in one layer.
+# SECRET_KEY_BASE_DUMMY tells Rails not to require the production secret
+# during asset precompilation and is not persisted as an environment variable.
 RUN if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
-    bundle exec rails assets:precompile && \
+    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
     rm -rf node_modules tmp/* && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \;
 
@@ -66,13 +67,14 @@ WORKDIR /app
 USER 0
 
 ARG RAILS_ENV=production
+
 # Set production environment variables for the runtime container
 ENV RAILS_ENV=${RAILS_ENV} \
     LD_PRELOAD="libjemalloc.so.2" \
     MALLOC_CONF="dirty_decay_ms:1000,narenas:2,background_thread:true" \
     RUBY_YJIT_ENABLE="1"
 
-# Install ONLY runtime dependencies (No compilers, No Node, No Yarn)
+# Install only runtime dependencies
 RUN apk add -U --no-cache \
     bash=5.3.9-r1 \
     jemalloc=5.3.0-r6 \
@@ -97,6 +99,7 @@ RUN mkdir -p /secure-tmp /secure-tmp/bootsnap /secure-tmp/cached_pages /secure-t
 USER 65534
 
 ENTRYPOINT [".docker/app/entrypoint.sh"]
+
 EXPOSE 3000
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
