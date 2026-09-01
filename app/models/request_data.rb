@@ -82,9 +82,9 @@ class RequestData
     campuses.each do |campus|
       case campus
       when :ROME
-        locations  += ["ROME"]
+        locations += ["ROME"]
       when :JAPAN
-        locations  += [ "HILLSIDE", "KYOTO", "JAPAN" ]
+        locations += [ "HILLSIDE", "KYOTO", "JAPAN" ]
         else
         locations += default_pickup_locations
       end
