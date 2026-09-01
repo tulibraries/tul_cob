@@ -88,7 +88,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_index.git
-  revision: 727c95f14d7414c6b846bc95fa692030de6f40d5
+  revision: 941f4050238688540d89141b486f2f7511df5d1a
   branch: main
   specs:
     cob_index (0.1.0)
@@ -303,7 +303,7 @@ GEM
     devise-guests (0.8.3)
       devise
     diff-lcs (1.6.2)
-    domain_name (0.6.20240107)
+    domain_name (0.6.20260829)
     dot-properties (0.1.4)
       bundler (>= 2.2.33)
     dotenv (3.2.0)
@@ -359,7 +359,7 @@ GEM
       logger
       ostruct
     htmlentities (4.4.2)
-    http-2 (1.2.1)
+    http-2 (1.2.2)
     http (6.0.4)
       http-cookie (~> 1.0)
       llhttp (~> 0.6.1)
@@ -371,7 +371,7 @@ GEM
       multi_xml (>= 0.5.2)
     httpclient (2.9.0)
       mutex_m
-    httpx (1.8.1)
+    httpx (1.8.3)
       http-2 (>= 1.2.0)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
