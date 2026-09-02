@@ -512,7 +512,25 @@ RSpec.describe SolrDocument, type: :model do
       end
     end
 
-    context "an item is not missing or lost" do
+    context "an item is technical migration" do
+      let(:document) { SolrDocument.new("items_json_display" =>
+        [{ "item_pid" => "23237957740003811",
+        "item_policy" => "5",
+        "permanent_library" => "AMBLER",
+        "permanent_location" => "media",
+        "current_library" => "AMBLER",
+        "current_location" => "media",
+        "call_number" => "DVD 13 A165",
+        "holding_id" => "22237957750003811",
+        "process_type" => "TECHNICAL" }]
+        )}
+
+      it "correctly rejects technical migration item" do
+        expect(document.document_items).to eq([])
+      end
+    end
+
+    context "an item is not missing,lost, or in technical migration" do
       let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",

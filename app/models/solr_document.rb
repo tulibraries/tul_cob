@@ -204,7 +204,7 @@ class SolrDocument
 
     def missing_or_lost?(item)
       process_type = item.fetch("process_type", "")
-      !!process_type.match(/MISSING|LOST_LOAN|LOST_LOAN_AND_PAID/)
+      !!process_type.match(/MISSING|LOST_LOAN|LOST_LOAN_AND_PAID|TECHNICAL/)
     end
 
     def unwanted_library_locations(item)
