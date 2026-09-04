@@ -229,6 +229,7 @@ class AlmawsController < CatalogController
             .find(mms_id, limit: 100, offset: 0, expand: "due_date")
             .all
         end.to_a.reject { |item| item.missing_or_lost? || item.technical_migration? }
+      end
     end
 
     def get_bib_request_options(mms_id, user_id)
