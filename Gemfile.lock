@@ -98,7 +98,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/cob_web_index.git
-  revision: c4203809e8b626e117223053c2ae4b96d930332b
+  revision: 98ce6743edce68e667f33e8323dbcff37755b957
   branch: main
   specs:
     cob_web_index (0.1.0)
@@ -303,7 +303,7 @@ GEM
     devise-guests (0.8.3)
       devise
     diff-lcs (1.6.2)
-    domain_name (0.6.20260829)
+    domain_name (0.6.20260902)
     dot-properties (0.1.4)
       bundler (>= 2.2.33)
     dotenv (3.2.0)
