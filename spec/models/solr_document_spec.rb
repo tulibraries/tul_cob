@@ -530,7 +530,7 @@ RSpec.describe SolrDocument, type: :model do
       end
     end
 
-    context "an item is not missing,lost, or in technical migration" do
+    context "an item is not missing, lost, or in technical migration" do
       let(:document) { SolrDocument.new("items_json_display" =>
         [{ "item_pid" => "23237957740003811",
         "item_policy" => "5",

@@ -224,7 +224,8 @@ class AlmawsController < CatalogController
     def get_bib_items(mms_id)
       Rails.cache.fetch("#{mms_id}/bib_items", expires_in: 30.seconds) do
         log = { type: "bib_items_availability" }
-        do_with_json_logger(log) { Alma::BibItem.find(mms_id, limit: 100, offset: 0, expand: "due_date").all }.to_a.reject(&:missing_or_lost?)
+        do_with_json_logger(log) { Alma::BibItem.find(mms_id, limit: 100, offset: 0, expand: "due_date")
+          .filter_missing_and_lost.filter_technical_migrations.all }.to_a
       end
     end
 
