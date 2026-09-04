@@ -69,6 +69,19 @@ RSpec.describe AlmawsController, type: :controller do
       expect(availability).to be_empty
     end
 
+    it "filters technical migration items" do
+      item_set = double
+      technical_item = Alma::BibItem.new("item_data" => { "process_type" => { "value" => "TECHNICAL" } })
+      available_item = Alma::BibItem.new("item_data" => { "process_type" => { "value" => "" } })
+
+      expect(Alma::BibItem).to receive(:find)
+        .with("technical_migration", limit: 100, offset: 0, expand: "due_date")
+        .and_return(item_set)
+      expect(item_set).to receive(:all).and_return([technical_item, available_item])
+
+      expect(controller.send(:get_bib_items, "technical_migration")).to eq([available_item])
+    end
+
     context "anonymous user" do
       it "does not redirect to login page" do
         get(:item, **params)
