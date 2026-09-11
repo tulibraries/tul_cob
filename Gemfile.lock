@@ -227,7 +227,7 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    bootsnap (1.25.0)
+    bootsnap (1.26.0)
       msgpack (~> 1.5)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -444,7 +444,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    msgpack (1.8.4)
+    msgpack (1.8.5)
     multi_json (1.21.1)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
@@ -783,7 +783,7 @@ DEPENDENCIES
   blacklight-ris!
   blacklight_advanced_search!
   blacklight_range_limit!
-  bootsnap (= 1.25.0)
+  bootsnap (= 1.26.0)
   bootstrap (>= 5.3.3)
   bot_challenge_page
   browser
