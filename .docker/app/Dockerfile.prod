@@ -1,5 +1,5 @@
 # hadolint ignore=DL3006,DL3026
-ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:3.4-alpine"
+ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:4.0-alpine"
 
 # ==========================================
 # STAGE 1: Builder

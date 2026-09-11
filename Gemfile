@@ -21,6 +21,7 @@ gem "bootsnap", "1.25.0"
 gem "browser"
 gem "byebug", platform: :mri
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
+gem "cgi"
 gem "citeproc-ruby"
 gem "csl-styles"
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
