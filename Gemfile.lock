@@ -41,7 +41,7 @@ GIT
 
 GIT
   remote: https://github.com/tulibraries/alma_rb.git
-  revision: 5ae6e2e3b45c8c32019c99e9fa55d2ce5b3c5824
+  revision: 9ea25bf44cf00b3037b6d5785874f60d90f643cf
   branch: main
   specs:
     alma (0.6.2)
@@ -393,7 +393,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
-    json (2.21.2)
+    json (3.0.2)
     jsonpath (1.1.5)
       multi_json
     jwt (3.2.0)
