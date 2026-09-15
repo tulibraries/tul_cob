@@ -818,6 +818,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder (~> 2.15)
   jquery-rails
+  json (< 3)
   jwt
   launchy
   lc_solr_sortable!
