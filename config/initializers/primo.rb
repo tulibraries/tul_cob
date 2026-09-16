@@ -22,6 +22,7 @@ Primo.configure do |config|
   config.enable_loggable = true
   config.enable_log_requests = true
   config.timeout = 3
-  config.enable_retries = true
+  # Retries in test re-send the request, and VCR's replay error hides the real exception.
+  config.enable_retries = !Rails.env.test?
   config.retries = 3
 end
