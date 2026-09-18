@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import "masonry-layout"
 
 export default class extends Controller {
   connect() {
@@ -12,7 +13,7 @@ export default class extends Controller {
   initialize() {
     if (this.masonry || !this.element) return
 
-    this.masonry = new Masonry(this.element, {
+    this.masonry = new window.Masonry(this.element, {
       itemSelector: ".bento_compartment_new",
       percentPosition: true,
       horizontalOrder: true,

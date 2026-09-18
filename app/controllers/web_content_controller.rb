@@ -13,6 +13,9 @@ class WebContentController < CatalogController
     # Remove show and index doc actions.
     config.index.document_actions = Blacklight::NestedOpenStructWithHashAccess.new({})
 
+    config.advanced_search[:enabled] = false
+    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(web_content_type_facet)
+
     config.document_model = SolrWebContentDocument
     config.connection_config = config.connection_config.dup
 
@@ -27,7 +30,7 @@ class WebContentController < CatalogController
     end
 
     config.connection_config[:url] = web_uri.to_s
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "web_title_display"
     # Do not inherit default solr configs from the catalog.
     config.default_solr_params = { "df" => "text", "defType" => "edismax" }

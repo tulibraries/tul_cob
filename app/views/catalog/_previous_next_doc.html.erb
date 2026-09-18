@@ -5,12 +5,16 @@
 
   <% if current_search_session %>
     <div class="search-widgets d-flex ps-3">
-      <%= link_back_to_catalog class: "btn btn-back-to-search", id: "back_to_search" %>
-      <%= render Blacklight::StartOverButtonComponent.new %>
+      <%= link_back_to_catalog label: t("blacklight.back_to_results"), class: "btn btn-back-to-search", id: "back_to_search" %>
+      <%= render LibrarySearch::StartOverButtonComponent.new %>
     </div>
   <% end %>
 
-  <%= render(Blacklight::SearchContextComponent.new(search_context: @search_context, search_session: search_session)) %>
+  <%= render Blacklight::SearchContext::ServerItemPaginationComponent.new(
+        search_context: @search_context,
+        search_session: search_session,
+        current_document: @document
+      ) %>
 
 <% end %>
 

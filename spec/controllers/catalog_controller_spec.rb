@@ -106,6 +106,21 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  describe "blacklight configuration" do
+    it "uses checkbox bookmark controls in catalog results" do
+      expect(controller.blacklight_config.bookmark_icon_component).to be_nil
+    end
+
+    it "uses application-owned component classes for customized Blacklight components" do
+      index_config = controller.blacklight_config.index
+
+      expect(index_config.constraints_component).to eq(LibrarySearch::ConstraintsComponent)
+      expect(index_config.facet_group_component).to eq(LibrarySearch::FacetGroupComponent)
+      expect(index_config.search_bar_component).to eq(LibrarySearch::SearchBarComponent)
+      expect(controller.blacklight_config.facet_fields["pub_date_sort"].component).to eq(LibrarySearch::RangeFacetComponent)
+    end
+  end
+
   describe "show action" do
     it "gets the staff_view_path" do
       get :show, params: { id: doc_id }
@@ -153,8 +168,10 @@ RSpec.describe CatalogController, type: :controller do
     render_views
     it "does not error on lowercase boolean operators" do
       config = controller.blacklight_config
-      (response_lower, _) = Blacklight::SearchService.new(config:, user_params: { q: "home or work" }).search_results
-      (response_upper, _) = Blacklight::SearchService.new(config:, user_params: { q: "home OR work" }).search_results
+      lower_state = Blacklight::SearchState.new({ q: "home or work" }, config)
+      upper_state = Blacklight::SearchState.new({ q: "home OR work" }, config)
+      (response_lower, _) = Blacklight::SearchService.new(config:, search_state: lower_state).search_results
+      (response_upper, _) = Blacklight::SearchService.new(config:, search_state: upper_state).search_results
 
       expect(response_lower.total).to be_a(Integer)
       expect(response_upper.total).to be_a(Integer)
@@ -182,6 +199,9 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  # TODO: I noticed this durig bl-9 upgrade. This test passes because 22293201420003811 have been removed from fixtures.
+  # Should we just remove this test or should we add a new fixture that tests what it's trying to check.
+  # Note that 22293201420003811 is still present in production, but now total_count == 1.
   describe "Boundwith Host records should not have been indexed" do
     render_views
     let(:bwh) { JSON.parse(get(:index, params: { q: "22293201420003811" }, format: :json).body)["meta"]["pages"]["total_count"] }

@@ -15,6 +15,10 @@ module Bookmarks
       @ris_href = helpers.ris_path
     end
 
+    def action_label(action)
+      t("blacklight.tools.#{action.name}", default: action.label || action.name.to_s.humanize)
+    end
+
     attr_reader :ris_href
   end
 end

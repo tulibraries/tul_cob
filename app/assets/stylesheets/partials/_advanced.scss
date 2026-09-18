@@ -8,9 +8,57 @@ form.advanced {
   }
 }
 
-.advanced-search-fields .row .col-sm-3,
-.advanced-search-fields .row .col-sm-5 {
-  padding-right: 0 !important;
+#sort {
+  width: auto !important;
+  display: inline-block !important;
+}
+
+.advanced-section-heading {
+  color: $midnight-blue;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.advanced-query-criteria,
+.advanced-filter-criteria {
+  border-radius: 0.3125rem;
+  padding: 1.25rem;
+}
+
+.advanced-search-fields {
+  .advanced-search-row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .advanced-search-row-actions {
+    margin-top: 0.5rem;
+  }
+
+  .advanced-search-boolean {
+    margin-left: 0;
+    margin-right: 0;
+
+    fieldset {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 0;
+    }
+
+    label {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#advanced-search-facets {
+  margin-top: 1rem;
+}
+
+.advanced-search-fields .row .col-lg-3,
+.advanced-search-fields .row .col-lg-6 {
+  padding-right: 0.75rem;
 }
 
 .control-label {
@@ -18,7 +66,7 @@ form.advanced {
 }
 
 a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advanced-search-start-over:focus, a.advanced-search-start-over:hover {
-  border-color: $lighter-grey;
+  border-color: #F0F0F0;
 }
 
 .submit-buttons {

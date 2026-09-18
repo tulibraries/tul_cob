@@ -85,4 +85,10 @@ module PrimoCentralHelper
       facet_name =~ /date|creator|topic/i
     }
   end
+
+  def primo_advanced_filters?
+    primo_facet_names.any? { |facet_name| @response.aggregations[facet_name].present? } ||
+      @response.aggregations["creationdate"].present? ||
+      params.dig("range", "creationdate").present?
+  end
 end

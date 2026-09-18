@@ -37,6 +37,20 @@ RSpec.feature "Basic Page Elements" do
       end
     end
 
+    scenario "shows the expected logged-in search menu links" do
+      visit "/"
+
+      within("#search-navbar") do
+        expect(page).to have_link("Advanced Search")
+        within("#bookmarks_nav") do
+          expect(page).to have_text("Bookmarks")
+          expect(page).to have_css("[data-role='bookmark-counter']", text: "0")
+        end
+        expect(page).to have_button("Log Out")
+        expect(page).not_to have_link("My Library Account")
+      end
+    end
+
     after(:all) do
       Warden.test_reset!
     end

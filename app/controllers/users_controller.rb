@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   # QuikPay include must come AFTER ServerErrors include so that it can handle QuikPay specific errors.
   include QuikPay
 
+  before_action :authenticate_user!, only: %i[account holds fines loans renew renew_selected]
+
   rescue_from ActionView::Template::Error,
     with: :no_account_found
 

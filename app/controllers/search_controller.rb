@@ -39,6 +39,12 @@ class SearchController < CatalogController
     end
   end
 
+  def start_over
+    session.delete(:last_catalog_search_params)
+    session.delete(:search)
+    redirect_to everything_path
+  end
+
   private
 
     def configure_bento_item_partials

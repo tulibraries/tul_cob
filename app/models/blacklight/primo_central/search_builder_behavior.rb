@@ -72,6 +72,11 @@ module Blacklight::PrimoCentral
 
     def process_advanced_search(primo_central_parameters)
       if is_advanced_search?
+
+        if blacklight_params[:clause].present?
+          return _process_blacklight8_advanced_form(primo_central_parameters)
+        end
+
         rows_count = blacklight_config.advanced_search[:fields_row_count]
 
         build_query = (1..rows_count).map do |count|
@@ -86,6 +91,36 @@ module Blacklight::PrimoCentral
         end.compact
 
         primo_central_parameters[:query][:q][:value] = build_query unless build_query.empty?
+      end
+    end
+
+    def _process_blacklight8_advanced_form(primo_central_parameters)
+      clauses = blacklight_params[:clause] || {}
+      default_operator = blacklight_params[:op] == "must" ? "AND" : "OR"
+      use_clause_operators = blacklight_params[:op].blank?
+
+      build_query = clauses.map.with_index { |(_, clause), index|
+        field = to_primo_field(clause[:field] || clause["field"])
+        value = clause[:query] || clause["query"]
+        precision = clause[:match] || clause["match"] || "contains"
+        operator = if use_clause_operators && index.positive?
+          to_primo_boolean_operator(clause[:op] || clause["op"])
+        else
+          default_operator
+        end
+
+        if !value&.empty? && !value.nil?
+          { value:, field:, precision:, operator: }
+        end
+      }.compact
+      primo_central_parameters[:query][:q][:value] = build_query unless build_query.empty?
+    end
+
+    def to_primo_boolean_operator(operator)
+      case operator
+      when "should" then "OR"
+      when "must_not" then "NOT"
+      else "AND"
       end
     end
 
@@ -180,7 +215,7 @@ module Blacklight::PrimoCentral
       end
 
       def is_advanced_search?
-        blacklight_params[:controller] == "primo_advanced" ||
+        search_state.controller&.action_name == "advanced_search" ||
           !(@scope.advanced_query.nil? || @scope.advanced_query.keyword_queries.empty? rescue false)
       end
 

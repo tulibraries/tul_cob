@@ -9,8 +9,7 @@ module BentoSearch
       per_page = args.fetch(:per_page)
 
       user_params = { q: query, per_page: }.with_indifferent_access
-      config = blacklight_config
-      search_service = search_service_class.new(config:, user_params:)
+      search_service = build_search_service(user_params)
 
       (response, _) = search_service.search_results
       results(response)
