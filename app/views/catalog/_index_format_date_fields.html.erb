@@ -16,7 +16,7 @@
   <% if rendered.length == 1 %>
     <span class="blacklight-date"><%= safe_join(Array.wrap(rendered)) %></span>
   <% elsif rendered.length > 1 %>
-    <span class="blacklight-<%= field_name.parameterize %>">
+    <span class="blacklight-date blacklight-<%= field_name.parameterize %>">
       <% rendered.each do |value| %>
         <%= safe_join(Array.wrap(value)) %>
       <% end %>
