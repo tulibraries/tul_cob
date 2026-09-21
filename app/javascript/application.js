@@ -5,7 +5,6 @@ import selectizeOptions from "selectize_options"
 import "legacy"
 import "bootstrap"
 import "controllers"
-import "channels"
 import Blacklight from "blacklight-frontend"
 import BlacklightRangeLimit from "blacklight-range-limit"
 

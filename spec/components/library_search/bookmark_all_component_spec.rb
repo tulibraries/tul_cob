@@ -37,4 +37,42 @@ RSpec.describe LibrarySearch::BookmarkAllComponent, type: :component do
       end
     end
   end
+
+  context "when there are no documents" do
+    let(:documents) { [] }
+    let(:bookmarked_count) { 0 }
+
+    it "does not render" do
+      with_controller_class(CatalogController) do
+        expect(render_inline(component).to_html).to be_blank
+      end
+    end
+  end
+
+  describe "#all_bookmarked?" do
+    let(:bookmarked_count) { 0 }
+    let(:bookmarks) { instance_double(ActiveRecord::Relation) }
+    let(:user) { instance_double(User, bookmarks:) }
+    let(:component_helpers) { instance_double("component helpers", current_or_guest_user: user) }
+
+    before do
+      allow(component).to receive(:bookmarked_count).and_call_original
+      allow(component).to receive(:helpers).and_return(component_helpers)
+      allow(bookmarks).to receive(:where)
+        .with(document_id: %w[A B], document_type: "SolrDocument")
+        .and_return(bookmarks)
+    end
+
+    it "uses the current user's bookmarks" do
+      allow(bookmarks).to receive(:count).and_return(2)
+
+      expect(component).to be_all_bookmarked
+    end
+
+    it "returns false when some documents are not bookmarked" do
+      allow(bookmarks).to receive(:count).and_return(1)
+
+      expect(component).not_to be_all_bookmarked
+    end
+  end
 end

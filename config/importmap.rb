@@ -2,16 +2,13 @@
 
 pin "application", preload: true
 pin "controllers", to: "controllers/index.js"
-pin "channels", to: "channels/index.js"
 pin "selectize_options", to: "selectize_options.js"
 pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
 pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
 pin "bootstrap", to: "https://ga.jspm.io/npm:bootstrap@5.3.8/dist/js/bootstrap.esm.js", preload: true
-pin "@rails/actioncable", to: "actioncable.esm.js"
 
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin_all_from "app/javascript/legacy", under: "legacy"
-pin_all_from "app/javascript/channels", under: "channels"
 
 
 pin "jquery", to: "legacy/jquery_setup.js"
