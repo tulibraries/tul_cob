@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get "users/quik_pay_callback", as: "quik_pay_callback"
   get "users/quik_pay", as: "quik_pay"
 
-  get "/test_bot_challenge", to: "test_bot_challenge#show"
   root to: "search#index"
 
   # advanced forms
@@ -46,7 +45,7 @@ Rails.application.routes.draw do
     concerns :range_searchable
   end
 
-  resource :query_list, controller: "query_list"
+  resource :query_list, only: :show, controller: "query_list"
 
   resource :databases, only: [], as: "databases", path: "/databases", controller: "databases" do
     concerns :searchable
@@ -88,7 +87,7 @@ Rails.application.routes.draw do
     concerns :exportable
   end
 
-  resources :solr_web_content_documents, only: [:show], path: "/web_content", controller: "journals" do
+  resources :solr_web_content_documents, only: [:show], path: "/web_content", controller: "web_content" do
   end
 
 
@@ -102,10 +101,7 @@ Rails.application.routes.draw do
 
   resources :lib_guides, only: :index
 
-  post "catalog/:id/track" => "catalog#track"
-  post "articles/:id/track" => "primo_central#track", as: :track_primo_central
-  post "journals/:id/track" => "journal#track"
-  post "databases/:id/track" => "databases#track"
+  post "articles/:id/track", to: "primo_central#track", as: :track_primo_central
 
   devise_for :users, controllers: { sessions: "sessions", omniauth_callbacks: "users/omniauth_callbacks" }
 
@@ -135,13 +131,6 @@ Rails.application.routes.draw do
   get "bento" => "search#index", :as => "multi_search"
   get "everything" => "search#index", :as => "everything"
   get "catalog/:id/staff_view", to: "catalog#librarian_view", as: "staff_view"
-
-  get "catalog/:id/index_item", to: "catalog#index_item", as: "index_item"
-  get "journals/:id/index_item", to: "journals#index_item", as: "journal_item"
-  get "databases/:id/index_item", to: "databases#index_item", as: "database_item"
-  get "articles/:id/index_item", to: "primo_central#index_item", as: "articles_index_item"
-  get "catalog/:id/purchase_order", to: "catalog#purchase_order", as: "purchase_order"
-
 
   #
   # You can have the root of your site routed with "root"
