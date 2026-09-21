@@ -1,7 +1,7 @@
 <div class="sendto-menu dropdown-menu bg-white border border-light-grey">
   <% actions.each do |action| %>
     <% if action.key == :ris %>
-      <%= link_to helpers.document_action_label(action.name, action),
+      <%= link_to action_label(action),
                   ris_href,
                   id: (action[:id] || "#{action.name}Link"),
                   class: "sendto-item dropdown-item",

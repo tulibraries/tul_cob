@@ -10,11 +10,11 @@ gem "alma", git: "https://github.com/tulibraries/alma_rb.git", branch: "main"
 gem "autoprefixer-rails"
 gem "awesome_print"
 gem "bento_search", git: "https://github.com/jrochkind/bento_search.git"
-gem "blacklight", git: "https://github.com/projectblacklight/blacklight.git", branch: "bl7-rails-8-upgrade"
+gem "blacklight", "~> 9"
 gem "blacklight-marc"
 gem "blacklight-ris", git: "https://github.com/tulibraries/blacklight-ris.git", branch: "update-for-rails-7-blacklight-7"
-gem "blacklight_advanced_search", git: "https://github.com/projectblacklight/blacklight_advanced_search.git", ref: "v7.0.0"
-gem "blacklight_range_limit", git: "https://github.com/tulibraries/blacklight_range_limit.git", branch: "bl-1431-bl-1358"
+gem "blacklight_range_limit"
+
 gem "bootstrap", ">= 5.3.3"
 gem "bot_challenge_page"
 gem "bootsnap", "1.26.0"
@@ -40,7 +40,6 @@ gem "dotenv-rails"
 gem "execjs"
 gem "faraday", "2.14.3"
 gem "faraday-multipart"
-gem "ffi", "1.16.3"
 gem "flipflop"
 gem "hashie", "~>4.1.0"
 gem "honeybadger", "6.9.1"
@@ -75,7 +74,6 @@ gem "tzinfo-data", platforms: [:windows, :jruby]
 gem "uglifier", ">= 1.3.0"
 
 group :development do
-  gem "axe-core-rspec"
   gem "flamegraph"
   gem "foreman"
   gem "launchy"
@@ -83,6 +81,7 @@ group :development do
   gem "ruby-prof"
   gem "stackprof"
   gem "web-console"
+  gem "rerun"
 end
 
 group :development, :test do

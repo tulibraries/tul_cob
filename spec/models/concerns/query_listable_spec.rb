@@ -54,6 +54,7 @@ RSpec.describe QueryListable, type: :model do
         expect { subject.query_list_footer_value(footer_field) }.to_not raise_error
         expect(value).to eq("")
 
+        Honeybadger.flush
         notices = Honeybadger::Backend::Test.notifications[:notices].first
         expect(notices.error_message).to eq("Error trying to parse date_added_facet value; @htomren invalid date")
       end

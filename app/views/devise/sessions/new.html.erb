@@ -5,7 +5,13 @@
 <div class="login-options container">
   <p class="pt-3 pb-2 info"><%= t("devise.sessions.new.intro")%></p>
   <div>
-    <%= link_to t("devise.sessions.new.temple_users_html") , student_faculty_login_uri, class: "temple-user-link", method: :post %>
+    <%= button_to t("devise.sessions.new.temple_users_html"),
+                  student_faculty_login_uri,
+                  class: "temple-user-link",
+                  form: {
+                    data: { turbo: false },
+                    class: "button_to temple-user-form"
+                  } %>
     <%= link_to t("devise.sessions.new.pa_users_html"), alma_social_login_url(redirect_to: params[:redirect_to]) %>
     <% if params[:redirect_to] %>
       <%= link_to t("devise.sessions.new.guests_html"), build_guest_login_libwizard_url(@document), {class: "guest-link", target: "_blank"} %>

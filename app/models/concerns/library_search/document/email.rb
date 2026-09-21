@@ -2,7 +2,6 @@
 
 # This module provides the body of an email export based on the document's semantic values
 module LibrarySearch::Document::Email
-  include Blacklight::Document::Email
   include ApplicationHelper
 
   # Return a text string that will be the body of the email
@@ -28,7 +27,7 @@ module LibrarySearch::Document::Email
       end
     end
     body << add_holdings_information
-    return body.join("\n") unless body.empty?
+    body.join("\n")
   end
 
   def add_holdings_information

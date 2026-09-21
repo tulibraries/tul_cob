@@ -1,4 +1,4 @@
-$(window).on('turbolinks:load', function() {
+$(window).on('turbo:load', function() {
 	window.onload= function(){
 		// This fixes a bug where the pages are loading at the bottom in Chrome
 		if(location.hash == undefined || location.hash == "" ) {
@@ -57,9 +57,8 @@ $(document).ready(function() {
 	});
 });
 
-$(document).on('turbolinks:load', function() {
-   $(window).trigger('load.bs.select.data-api');
-   $(".selectize").selectize();
+$(document).on("turbo:load", function() {
+  $(window).trigger("load.bs.select.data-api");
 });
 
 $(document).ready(function(){
@@ -75,23 +74,23 @@ $(document).ready(function(){
   );
 });
 
-$(document).on('turbolinks:load', function() {
+document.addEventListener("show.blacklight.blacklight-modal", function() {
+	$(".request-btn").find("span.fa-spinner").remove();
+});
+
+$(document).on('turbo:load', function() {
 	$(function () {
- 	  $('[data-bs-toggle="tooltip"]').tooltip()
- 	})
+	  $('[data-bs-toggle="tooltip"]').tooltip()
+	})
 
 	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
 	}
 
- 	if ($("div.navbar-form").length == 0) {
- 		$("#search-navbar").css("padding-left", "15%");
- 	}
-
-	$(".modal").on("show.bs.modal", function() {
-		$(".request-btn").find("span").remove();
-	})
+	if ($("#search-navbar form").length == 0) {
+		$("#search-navbar").css("padding-left", "15%");
+	}
 
 	$('#facet-filter-icon').click( function(){
     $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');

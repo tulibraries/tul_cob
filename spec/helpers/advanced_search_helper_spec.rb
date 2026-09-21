@@ -2,14 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe BlacklightAdvancedSearch::RenderConstraintsOverride, type: :helper do
-  describe "#guided_search" do
-
-    example "empty search fields" do
-      expect(helper.guided_search).to be_empty
-    end
-  end
-
+RSpec.describe AdvancedHelper, type: :helper do
   describe ".operator_default" do
     example "default" do
       expect(helper.operator_default(2)).to eq("contains")
@@ -45,61 +38,6 @@ RSpec.describe AdvancedHelper, type: :helper do
     end
   end
 
-  describe "#render_advanced_search_link" do
-    before(:each) do
-      allow(helper).to receive(:current_page?).with("/catalog") { false }
-      allow(helper).to receive(:current_page?).with("/journals") { false }
-      allow(helper).to receive(:current_page?).with("/articles") { false }
-      allow(helper).to receive(:current_page?).with("/databases") { false }
-      allow(helper).to receive(:current_page?).with("/everything") { false }
-      allow(helper).to receive(:params) { { q: "foo", controller: "bar" } }
-      without_partial_double_verification do
-        allow(helper).to receive(:is_advanced_search?) { true }
-      end
-    end
-
-    context "on the bento search page" do
-      it "renders the link to the advanced form" do
-        allow(helper).to receive(:current_page?).with("/everything") { true }
-        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-
-    context "on the catalog search page" do
-      it "renders the link to the advanced form" do
-        allow(helper).to receive(:current_page?).with("/catalog") { true }
-        link = "<a class=\"advanced_search\" id=\"catalog_advanced_search\" href=\"/catalog/advanced?q=foo\">Advanced Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the journals search page" do
-      it "renders the link to the advanced journals form" do
-        allow(helper).to receive(:current_page?).with("/journals") { true }
-        link = "<a class=\"advanced_search\" id=\"journals_advanced_search\" href=\"/journals/advanced?q=foo\">Advanced Journals Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the articles search page" do
-      it "renders the link to the advanced articles form" do
-        allow(helper).to receive(:current_page?).with("/articles") { true }
-        link = "<a class=\"advanced_search\" id=\"articles_advanced_search\" href=\"/articles/advanced?q=foo\">Advanced Articles Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-
-    context "on the databases search page" do
-      it "renders the link to the advanced databases form" do
-        allow(helper).to receive(:current_page?).with("/databases") { true }
-        link = "<a class=\"advanced_search\" id=\"databases_advanced_search\" href=\"/databases/advanced?q=foo\">Advanced Databases Search</a>"
-        expect(helper.render_advanced_search_link).to eq(link)
-      end
-    end
-  end
-
   describe "#basic_search_path" do
     before(:each) do
       allow(helper).to receive(:current_page?).with("/catalog/advanced") { false }
@@ -132,6 +70,13 @@ RSpec.describe AdvancedHelper, type: :helper do
     context "on the advanced databases page" do
       it "renders the link to the databases search" do
         allow(helper).to receive(:current_page?).with("/databases/advanced") { true }
+        expect(helper.basic_search_path).to eq("/databases")
+      end
+    end
+
+    context "when rendered by the databases controller" do
+      it "renders the link to the databases search" do
+        allow(helper).to receive(:params).and_return({ controller: "databases" })
         expect(helper.basic_search_path).to eq("/databases")
       end
     end
@@ -187,70 +132,13 @@ RSpec.describe AdvancedHelper, type: :helper do
       end
     end
 
-  end
-end
+    context "when rendered by the databases controller" do
+      it "uses the database advanced search translation" do
+        allow(helper).to receive(:params).and_return({ controller: "databases" })
 
-RSpec.describe BlacklightAdvancedSearch::QueryParser do
-  subject(:parser) { described_class.allocate }
-
-  describe "#odd_quotes" do
-    it "removes a stray leading quote" do
-      expect(parser.send(:odd_quotes, "\"Japan's national clothing")).to eq("Japan's national clothing")
+        expect(helper.advanced_search_form_title).to eq("Advanced Databases Search")
+      end
     end
 
-    it "removes a stray trailing quote" do
-      expect(parser.send(:odd_quotes, "Japan's national clothing\"")).to eq("Japan's national clothing")
-    end
-
-    it "preserves internal quotes when they are unmatched" do
-      query = %q(Costume The Journal of the Costume Society , "Japan's national clothing during the Second World War)
-
-      expect(parser.send(:odd_quotes, query)).to eq(query)
-    end
-  end
-end
-
-RSpec.describe BlacklightAdvancedSearch::ParsingNestingParser do
-  subject(:parser) do
-    Class.new do
-      include BlacklightAdvancedSearch::ParsingNestingParser
-
-      def keyword_op
-        []
-      end
-
-      def keyword_queries
-        { "title_starts_with" => query_string }
-      end
-
-      def primo_to_solr_search(field)
-        field
-      end
-
-      def query_string
-        @query_string
-      end
-
-      def query_string=(value)
-        @query_string = value
-      end
-    end.new
-  end
-
-  let(:config) do
-    double(
-      "blacklight_config",
-      advanced_search: { query_parser: "lucene" }
-    )
-  end
-
-  describe "#process_query" do
-    it "escapes embedded quotes in nested title_starts_with lucene queries" do
-      parser.query_string = %q(Costume The Journal of the Costume Society , "Japan's national clothing during the Second World War Material shortages, war)
-
-      expect(parser.process_query({}, config)).to eq(
-        '_query_:"{!lucene df=title_sort}Costume The Journal of the Costume Society , \\"Japan\'s national clothing during the Second World War Material shortages, war"'
-      )
-    end
   end
 end

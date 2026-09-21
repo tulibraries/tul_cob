@@ -25,6 +25,7 @@ services:
     build:
       context: .
       dockerfile: .docker/ci-app/Dockerfile.ci
+    shm_size: "1gb"
     ports:
       - mode: ingress
         target: 3000

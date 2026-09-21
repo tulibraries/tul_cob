@@ -57,8 +57,9 @@ RSpec.describe FacetItemPresenter, type: :presenter do
       presenter = described_class.new(facet_item, facet_config, view_context, facet_field, search_state)
       presenter.parent = parent_facet_item # this needs to be done in the pivot component
       presenter.href
-      expect(search_state.filter_params.keys.sort).to eq %w(pet job num).sort
-      expect(search_state.filter_params.values.flatten.sort).to eq %w(cat two vet)
+      expect(search_state.to_h.dig(:f, :pet)).to eq(["cat"])
+      expect(search_state.to_h.dig(:f, :job)).to eq(["vet"])
+      expect(search_state.to_h.dig(:f, :num)).to eq(["two"])
     end
   end
 
@@ -106,6 +107,36 @@ RSpec.describe FacetItemPresenter, type: :presenter do
         label = presenter.items.first.label
         expect(label).to eq("bar - buzz")
       end
+    end
+
+    context "sub item value is already just the location label" do
+      let(:sub_item_a) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "Stacks", hits: 5, items: []) }
+      let(:item) { Blacklight::Solr::Response::Facets::FacetItem.new(value: "foo", hits: 5, items: [ sub_item_a ]) }
+
+      it "keeps the child item instead of filtering it out" do
+        presenter = described_class.new(item, facet_config, view_context, "library_facet", search_state)
+        expect(presenter.items).to eq([sub_item_a])
+        expect(presenter.items.first.label).to eq("Stacks")
+      end
+    end
+  end
+
+  describe "#constraint_label" do
+    it "returns the override when present" do
+      presenter.constraint_label_override = "Custom Label"
+      expect(presenter.constraint_label).to eq("Custom Label")
+    end
+
+    it "falls back to the default constraint label" do
+      expect(presenter.constraint_label).to eq(presenter.label)
+    end
+  end
+
+  describe "#add_constraint_class" do
+    it "collects CSS classes to apply in constraint components" do
+      presenter.add_constraint_class("hidden")
+      presenter.add_constraint_class(nil)
+      expect(presenter.constraint_classes).to eq(["hidden"])
     end
   end
 end

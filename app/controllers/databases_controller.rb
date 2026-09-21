@@ -13,7 +13,7 @@ class DatabasesController < CatalogController
 
   configure_blacklight do |config|
     config.advanced_search[:fields_row_count] = 2
-    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(subject_facet format)
+    config.advanced_search[:form_solr_parameters]["facet.field"] = %w(format)
     config.document_model = SolrDatabaseDocument
     config.connection_config = config.connection_config.dup
 
@@ -29,7 +29,7 @@ class DatabasesController < CatalogController
 
     config.connection_config[:url] = az_uri.to_s
     config.document_solr_path = "document"
-    config.track_search_session = false
+    config.track_search_session.storage = false
     config.index.title_field = "title_statement_display"
     config.show.title_field = "title_statement_display"
 
@@ -41,7 +41,7 @@ class DatabasesController < CatalogController
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false, component: true
-    config.add_facet_field "az_format", field: "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false, component: true
+    config.add_facet_field "az_format", field: "format", label: "Database Type", limit: -1, show: true, home: true, collapse: false, component: true, item_component: LibrarySearch::FacetItemComponent
     config.add_facet_field "az_availability_facet", field: "availability_facet", label: "Access", home: true, component: true
 
     # Index fields

@@ -3,19 +3,23 @@
 require "rails_helper"
 
 RSpec.describe "Facets" do
+  it "is able to expand facets when javascript is enabled", js: true do
+    visit "/catalog?search_field=all_fields&q=BlacklightTestRecord2"
 
+    within "#facets" do
+      if has_css?("#filter-mobile", visible: true)
+        find("#filter-mobile").click
+        expect(page).to have_css("#facet-panel-collapse.show", visible: true)
+      end
 
-  it "is able to expand facets when javascript is enabled", skip: true, js: true do
-    visit "/catalog?search_field=all_fields&q=test"
+      within ".blacklight-library_facet" do
+        expect(page).to have_selector(".facet-field-heading button[aria-expanded='false']")
 
-    sleep(2) # Test only failing in circle CI, adding this to see if it helps
+        find(".facet-field-heading button").click
 
-    expect(page).to have_css("#facet-library_facet", visible: false)
-
-    page.find("#facet-library_facet-header").click()
-
-    sleep(1) # let facet animation finish and wait for it to potentially re-collapse
-
-    expect(page).to have_css("#facet-library_facet", visible: true)
+        expect(page).to have_selector(".facet-field-heading button[aria-expanded='true']")
+        expect(page).to have_css(".facet-content.show", visible: true)
+      end
+    end
   end
 end

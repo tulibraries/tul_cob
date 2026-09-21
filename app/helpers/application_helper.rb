@@ -79,7 +79,7 @@ module ApplicationHelper
       sanitized_params = sanitize_cross_tab_search_params(params)
       return sanitized_params if sanitized_params.present?
 
-      last_catalog = session[:last_catalog_search_params]
+      last_catalog = sanitize_cross_tab_search_params(session[:last_catalog_search_params])
       return last_catalog if last_catalog.present?
 
       return {}
@@ -101,12 +101,12 @@ module ApplicationHelper
   def search_params
     # current_search_session is only defined under search context:
     # Therefore it will not be available in /users/sign_in etc.
-    begin
-      # Sometimes current_search_session will return nil.
-      current_search_session&.query_params&.except(:controller, :action) || {}
-    rescue
-      {}
-    end
+    session_params = sanitized_search_params(current_search_session&.query_params)
+    return session_params if session_params.present?
+
+    sanitized_search_params(request&.query_parameters)
+  rescue
+    {}
   end
 
   def sanitize_cross_tab_search_params(params)
@@ -119,6 +119,7 @@ module ApplicationHelper
   end
 
   def extract_safe_q(params)
+    params = params.to_h.with_indifferent_access
     raw_q = params[:q].to_s
     return raw_q if raw_q.present? && raw_q.exclude?("{!") && raw_q.exclude?("_query_:")
 
@@ -190,7 +191,7 @@ module ApplicationHelper
 
   def presenter_field_value(presenter, field)
     if blacklight_config.show_fields[field]
-      presenter.field_value(blacklight_config.show_fields[field])
+      presenter.field_value(blacklight_config.show_fields[field]).join("").html_safe
     end
   end
 
@@ -226,29 +227,8 @@ module ApplicationHelper
     document["format"].first.downcase.gsub(" ", "_").gsub("/", "_")
   end
 
-  def skip_links
-    return if advanced_search_page?
-
-    links = [
-      link_to(t("blacklight.skip_links.search_field"), "#q", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" })
-    ]
-
-    unless controller_name == "search" && action_name == "index"
-      links << link_to(t("blacklight.skip_to_filters_link"), "#search_field", class: "element-invisible element-focusable rounded-bottom py-2 px-3", data: { turbolinks: "false" })
-    end
-
-    safe_join(links)
-  end
-
   def advanced_search_page?
-    controller_name.in?(
-      %w[
-        advanced
-        primo_advanced
-        databases_advanced
-        journals_advanced
-      ]
-    )
+    action_name == "advanced_search"
   end
 
   def creator_links(args)
@@ -299,4 +279,15 @@ module ApplicationHelper
   def library_link_url
     Rails.configuration.library_link
   end
+
+  private
+
+    def sanitized_search_params(params)
+      return {} unless params
+
+      sanitized = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h : params.to_h
+      sanitized = sanitized.deep_dup
+      sanitized.except!("controller", :controller, "action", :action)
+      sanitized
+    end
 end

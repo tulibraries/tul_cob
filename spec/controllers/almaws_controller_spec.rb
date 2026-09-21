@@ -36,24 +36,25 @@ RSpec.describe AlmawsController, type: :controller do
       ]) }
 
     it "mutates the solr document with availability status" do
-      # ideally once: see Alma::BibItemSet::all
       expect(HTTParty).to receive(:get).at_most(:twice).and_call_original
-      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      expect(search_service).to receive(:fetch).and_return(document)
       allow(controller).to receive(:search_service).and_return(search_service)
+
       get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
+
       expect(document["items_json_display"][0]["availability"]).to eq "Available"
     end
 
     it "does nothing if the pids don't match" do
       document["items_json_display"][0]["item_pid"] = "8675309"
-      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      expect(search_service).to receive(:fetch).and_return(document)
       allow(controller).to receive(:search_service).and_return(search_service)
       get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       expect(document["items_json_display"][0]["availability"]).to be_nil
     end
 
     it "determines the availability based on the mutated document" do
-      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      expect(search_service).to receive(:fetch).and_return(document)
       allow(controller).to receive(:search_service).and_return(search_service)
       get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
@@ -62,7 +63,7 @@ RSpec.describe AlmawsController, type: :controller do
 
     it "does not include missing or lost items" do
       document["items_json_display"][0]["process_type"] = "MISSING"
-      expect(search_service).to receive(:fetch).and_return([:foo, document])
+      expect(search_service).to receive(:fetch).and_return(document)
       allow(controller).to receive(:search_service).and_return(search_service)
       get(:item, **{ params: { mms_id: "merge_document_and_api", doc_id: 456 } })
       availability = controller.instance_variable_get(:@document_availability)
@@ -184,7 +185,7 @@ RSpec.describe AlmawsController, type: :controller do
 
       before(:each) do
         allow(controller).to receive(:search_service).and_return(search_service)
-        expect(search_service).to receive(:fetch).and_return([:foo, document])
+        expect(search_service).to receive(:fetch).and_return(document)
         allow(bib_item).to receive(:find).and_return(bib_item_set)
         allow(bib_item_set).to receive(:filter_missing_and_lost).and_return(bib_item_set)
         allow(RequestData).to receive(:new).and_return(request_data)
@@ -201,9 +202,9 @@ RSpec.describe AlmawsController, type: :controller do
 
       it "forwards the alma error to honeybadger", with_rescue: true do
         error = "Alma::RequestOptions::ResponseError: {\"error\":\"phhhht\"}"
-        notice = Honeybadger::Backend::Test.notifications[:notices].last
 
         Honeybadger.flush
+        notice = Honeybadger::Backend::Test.notifications[:notices].last
         expect(notice.error_message.encode("UTF-8")).to eq(error)
       end
     end

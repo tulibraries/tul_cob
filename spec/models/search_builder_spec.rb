@@ -30,7 +30,8 @@ RSpec.describe SearchBuilder , type: :model do
     let(:context) do
       double(
         "controller",
-        blacklight_config: blacklight_config
+        blacklight_config: blacklight_config,
+        action_name: "index"
       )
     end
 
@@ -235,6 +236,23 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
 
+    context "with a simple keyword query" do
+      let(:params) { { q: "test", search_field: "all_fields" } }
+
+      it "builds solr params without raising" do
+        solr_params = nil
+
+        expect {
+          solr_params = described_class
+            .new(context)
+            .with(params)
+            .processed_parameters
+        }.not_to raise_error
+
+        expect(solr_params[:q] || solr_params["q"]).to eq("test")
+      end
+    end
+
     context "with a structured advanced query" do
       let(:long_title) do
         "False : how mistrust, disinformation, and motivated reasoning make us believe things that aren't true"
@@ -286,7 +304,8 @@ RSpec.describe SearchBuilder , type: :model do
       let(:context) do
         double(
           "controller",
-          blacklight_config: blacklight_config
+          blacklight_config: blacklight_config,
+          action_name: "advanced_search"
         )
       end
       let(:params) do
@@ -306,11 +325,9 @@ RSpec.describe SearchBuilder , type: :model do
       end
 
       it "preserves the advanced nested query structure" do
-        q = solr_params[:q] || solr_params["q"]
+        query = solr_params.dig("json", "query") || solr_params.dig(:json, :query)
 
-        expect(q).to start_with("_query_:")
-        expect(q).to include("$title_qf")
-        expect(q).not_to start_with("\"")
+        expect(query.to_s).to include("False")
       end
     end
   end
@@ -357,14 +374,16 @@ RSpec.describe SearchBuilder , type: :model do
       end
     end
 
-    context "when on the the advanced search page" do
+    context "when on the advanced search page" do
       let(:params) { ActionController::Parameters.new(
         controller: "catalog",
-        action: "range_limit",
+        action: "advanced_search",
       ) }
 
-      it "limits the facet field to an empty set" do
-        expect(solr_parameters["facet.field"]).to eq([])
+      it "uses the advanced search facet fields" do
+        expect(solr_parameters["facet.field"]).to eq(
+          CatalogController.blacklight_config.advanced_search[:form_solr_parameters]["facet.field"]
+        )
       end
     end
 
@@ -399,9 +418,12 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
+      allow(Flipflop).to receive(:solr_query_tweaks?).and_return(feature_enabled)
       allow(search_builder).to receive(:blacklight_params).and_return(params)
       subject.tweak_query(solr_parameters)
     end
+
+    let(:feature_enabled) { true }
 
     context "no overriding query parameter is passed" do
       it "does not override the qf param" do
@@ -416,6 +438,14 @@ RSpec.describe SearchBuilder , type: :model do
 
       it "does override the qf param" do
         expect(solr_parameters["qf"]).to eq("subject_t")
+      end
+    end
+
+    context "when the feature flag is disabled" do
+      let(:feature_enabled) { false }
+
+      it "does not modify the parameters" do
+        expect(solr_parameters["qf"]).to eq("title_t")
       end
     end
   end
@@ -497,7 +527,9 @@ RSpec.describe SearchBuilder , type: :model do
         )
         .processed_parameters
 
-      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}states*"))
+      expect(solr_params.dig("json", "query")).to eq(
+        "edismax" => { "qf" => "title_sort", "query" => "states*" }
+      )
     end
 
     it "uses a lucene title_sort prefix query for same-field OR rows" do
@@ -514,7 +546,15 @@ RSpec.describe SearchBuilder , type: :model do
         )
         .processed_parameters
 
-      expect(solr_params["q"]).to eq(%(_query_:"{!lucene df=title_sort}(states*) OR (introduction*)"))
+      expect(solr_params.dig("json", "query")).to eq(
+        "bool" => {
+          "should" => [
+            { "edismax" => { "qf" => "title_sort", "query" => "states*" } },
+            { "edismax" => { "qf" => "title_sort", "query" => "introduction*" } }
+          ],
+          "minimum_should_match" => 1
+        }
+      )
     end
   end
 
@@ -710,7 +750,23 @@ RSpec.describe SearchBuilder , type: :model do
   end
 
   describe "#blacklight_params" do
+    it "keeps generated advanced queries out of the display search state" do
+      builder = subject.with(
+        search_field: "advanced",
+        f_1: "all_fields",
+        q_1: "cetecean",
+        operator: { q_1: "contains" }
+      )
+      original_params = builder.search_state.params.deep_dup
 
+      processed_params = builder.blacklight_params
+
+      expect(processed_params["clause"]).to include(
+        "0" => include("field" => "all_fields", "query" => "cetecean", "match" => "contains")
+      )
+      expect(builder.search_state.params).to eq(original_params)
+      expect(builder.blacklight_params).to eq(processed_params)
+    end
 
     it "gets tagged as being processed" do
       expect(subject.blacklight_params["processed"]).to be
@@ -954,7 +1010,7 @@ RSpec.describe SearchBuilder , type: :model do
           }
         })
       subject.with(params)
-      expect(subject.to_h["fq"]).to include("pub_date_sort: [1900 TO 1950]")
+      expect(subject.to_h["fq"]).to include("pub_date_sort:[1900 TO 1950]")
       expect(subject.to_h["fq"]).to include("lc_call_number_sort: [Zaaaaaaaaa TO Zkaaaaaaaa]")
     end
 

@@ -57,16 +57,9 @@ en:
     skip_to_filters_link: "Skip to search filters"
     application_name: "Library Search"
     section_heading_html: "<strong>Books & Media</strong> includes books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
-    scrc: "Special Collections Research Center"
-    scrc_link: "https://library.temple.edu/scrc"
-    blockson: "Charles L. Blockson Afro-American Collection"
-    blockson_link: "https://library.temple.edu/collections/blockson"
     explanation_html: "<strong>Books &amp; Media</strong> includes books, ebooks, DVDs, streaming video, music, and other items you can borrow or access online."
     zero_results:
       title_html: "<strong>No results</strong> found for your search."
-    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
-    search_href: "the Library Search"
-    back_to_search: "< Back to Results"
     more_information_books: ", including search tips for Books & Media."
     more_information_articles: ", including search tips for Articles."
     more_information_databases: ", including search tips for Databases."
@@ -74,26 +67,19 @@ en:
     more_information_website: ", including search tips for Library Website content."
     chat_link: "https://answers.library.temple.edu/chat/widget/f5f15d338926526609d72ff4d9713954"
     banner_link: "Click here to see full details."
-
-    borrow_html: "<li>If you can't find something, %{href}.</li>"
-    borrow_href: "borrow from another library"
-    borrow_link: "http://answers.library.temple.edu/faq/195868"
+    back_to_results: "< Back to Results"
 
     hathitrust_text_html: >-
           Access to HathiTrust digital materials is available through HathiTrust’s
           <a href="https://www.hathitrust.org/ETAS-User-Information">Emergency Temporary Access Service</a>,
           in an effort to support increased online learning during the COVID-19 outbreak. You can check out a book for 1 hour. Your access will
           renew automatically at the end of that hour, unless another user requests the book.
-    help_href: "Contact us"
     help_link: "https://library.temple.edu/contact-us"
 
     header_links:
       library_account: "My Library Account"
-      login: "My Library Account"
       logout: "Log Out"
       bookmarks: "Bookmarks"
-      search_history: "Search History"
-      general_error: "We're sorry, but something went wrong."
       not_found: "We couldn't find this page!"
       bad_query: "Unsupported Search Query"
 
@@ -123,6 +109,7 @@ en:
       search_results_header: "Search Results"
     email:
       text:
+        title: "Title: %{value}"
         imprint: "Published: %{value}"
         distribution: "Distribution: %{value}"
         production: "Production: %{value}"
@@ -141,30 +128,7 @@ en:
       html:
         url: "URL:"
 
-    sms:
-      form:
-        title: "Text This"
-        title_statement: "Title"
-        location: "Select a Location"
-        to: "Cell Phone Number"
-        submit: "Send Message"
-      text:
-        title: "%{value}"
-        author: " by %{value}"
-        alma_mms: ", Catalog Record ID: %{value}"
-        location: "Located at: %{value}"
-        url: "%{url}"
-
-      success: "Text Sent"
-      errors:
-        location:
-          blank: "You must select a location"
-        to:
-          invalid: "You must enter a valid 10 digit phone number"
-          blank: "You must enter a recipient's phone number in order to send this message"
-
     tools:
-      sms: "Text"
       email_login_required_html: "Email (log in required)"
       email_login_required_notice: "You must be logged in to send emails."
       citation: "Cite"
@@ -172,11 +136,21 @@ en:
       sendto: "Send To %{current_range}"
       error_html: "Report a Problem  <span class='error-external-link-icon'></span>"
 
+    advanced_search:
+      journals_link: "Advanced Journals Search"
+      databases_link: "Advanced Databases Search"
+      catalog_link: "Advanced Search"
+      articles_link: "Advanced Articles Search"
+      form:
+        sort_label: "Sort by"
+        search_btn: "Search"
+        start_over: "Clear Form"
+        search_context: "Applied Filters"
+
     bookmarks:
       need_login: "To save bookmarks and view previously saved bookmarks, please log in to your library account."
 
   requests:
-    log_in: "Log in to see request options"
     request_button: "How to get this"
     header: "How to get this"
     scrc_instructions_html: "To request materials from the Special Collections Research Center, go to %{href}"
@@ -184,7 +158,6 @@ en:
     footer_html: "For more information about request options, see:  %{href}<span class='request-options-external-link-icon'></span>"
     footer_href: "How do I request an item at my library?"
     footer_link: "http://answers.library.temple.edu/faq/195868"
-    cancel: "Close"
     hold_allowed_link: "Request item for pickup"
     digitization_allowed_link: "Request a scan of an article or book chapter"
     booking_allowed_link: "Request booking"
@@ -208,7 +181,6 @@ en:
     form:
       pickup_locations_label: "Where will you pick it up?"
       description_label_html: "Item: "
-      not_needed_after_html: "Not Needed After <i>(optional): </i>"
       notes_label_html: "Notes <i>(optional): </i>"
       notes_additional_text: "For additional information about the description of the item or the request itself"
       submit: "Request item"
@@ -221,8 +193,6 @@ en:
       booking_end_date: "Booking End Date:"
 
   articles:
-    application_name: "Library Articles Search"
-    greeting: "Welcome to the Articles Search"
     section_heading_html: "<p><strong>Articles</strong> includes individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
     citation_heading_html: "<strong>Have specific citation information?</strong>"
     libkey_io: "LibKey.io"
@@ -230,8 +200,6 @@ en:
     citation_tool: "Find by Citation"
     citation_link: "https://temple.primo.exlibrisgroup.com/discovery/citationlinker?vid=01TULI_INST:TULI"
     explanation_html: "<strong>Articles</strong> includes individual articles from scholarly journals, magazines, and newspapers, as well as some ebooks and book chapters."
-    search_html: "<p><ul><li>To search everything, return to %{href}.</li>"
-    search_href: "the Library Search"
     zero_results:
       title_html: "<strong>No article results</strong> found for your search."
     scholarly_articles_html: "<strong>Are you looking for scholarly journal articles? Try:</strong>"
@@ -277,7 +245,6 @@ en:
     explanation_html: "<strong>Library Search:</strong> results from %{articles}, %{journals}, and %{more}."
     section_heading_html: "Library Search is your gateway to discover library content. Search <strong>Everything</strong> to discover results in %{more}, %{articles}, %{databases}, %{journals}, and %{website}."
     books_and_media: "Books & Media"
-    lib_guides_link: "https://guides.temple.edu/"
     need_help_html: "<strong>Need help using Library Search?</strong>"
     library_help_html: "Contact us via chat, email, or text"
     more_information_html: "Learn more about Library Search"
@@ -289,9 +256,6 @@ en:
       databases_html: "Try browsing our %{href}"
       databases_href: "Databases."
       databases_link: "https://guides.temple.edu/az.php"
-    guides_html: "Try browsing our %{href}"
-    guides_href: "Research Guides."
-    guides_link: "https://guides.temple.edu"
     archival_collections_html: Try browsing our %{href}
     archival_collections_href: "Archival Collections."
     archival_collections_link: "https://scrcarchivesspace.temple.edu/"
@@ -307,7 +271,6 @@ en:
 
   no_results:
     title: "No %{engine} results found."
-    header: "Suggestions"
     spell_check: "Check your spelling."
     modify_words: "Try different or fewer keywords."
     adjust_filters: "Adjust your search filters on the left."
@@ -329,11 +292,9 @@ en:
     additional_options_html: "For more information about borrowing from another library, please consult the %{href}."
     additional_options_href: "library website"
     additional_options_link: "https://library.temple.edu/services/11"
-    guides_no_results_text: "Browse our research guides by subject"
     guides_no_results_link: "https://guides.temple.edu/?b=s"
     guides_html: Try browsing our <a href="https://guides.temple.edu/?b=s" target="_blank">Research Guides</a>.
     cdm_html: Try browsing our <a href="%{cdm_link}" target="_blank">Digitized Collections</a>.
-    cdm_html_link: "%{cdm_link}"
 
   primo_central:
     link_to_resource: "Link to Resource"
@@ -356,15 +317,12 @@ en:
     libkey_button_html: "View Journal Contents <span class='libkey-external-link-icon'></span>"
 
   databases:
-    link_text: "Browse all databases by subject or alphabetically"
-    link_href: "https://guides.temple.edu/az.php"
     acceptable_use_text: "Electronic Resources Acceptable Use Guidelines"
     acceptable_use_href: "https://library.temple.edu/policies/using-electronic-resources-acceptable-use-guidelines"
     find_articles: "How do I find articles?"
     find_articles_href: "http://answers.library.temple.edu/faq/195650"
     home_html: "<strong>Databases</strong> includes searchable collections organized by topic or format—use them to find articles, data, images, and more."
     home_question_html: "<strong>Not sure which database to start with?</strong>"
-    subject_browse_html: "Try browsing by %{href} or "
     zero_results:
       title_html: "<strong>No database results</strong> found for your search."
 

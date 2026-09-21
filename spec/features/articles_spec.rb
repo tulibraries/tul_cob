@@ -21,7 +21,7 @@ RSpec.feature "Articles Search" do
     click_button "search"
     expect(current_url).to eq "http://www.example.com/articles?search_field=any&q=foo"
     expect(page).to have_css("#facets")
-    within(".document-position-0 h3") do
+    within("article.document-position-1 h3") do
       expect(page).to have_text("Otter")
     end
     within first(".document-metadata") do
@@ -33,6 +33,11 @@ RSpec.feature "Articles Search" do
 
   scenario "advanced search followed by plain search" do
     visit "/articles/advanced"
+    expect(page).to have_select("Article Search Settings")
+    expect(page).to have_select("Resource Type")
+    expect(page).to have_select("Language")
+    expect(page).to have_field("range[creationdate][begin]")
+    expect(page).to have_field("range[creationdate][end]")
     fill_in "q_1", with: "foo"
     fill_in "q_2", with: "bar"
     click_button "advanced-search-submit"
@@ -46,7 +51,13 @@ RSpec.feature "Articles Search" do
   end
 
   scenario "visit advanced articles results page" do
-    visit "/articles?f_1=all_fields&f_2=all_fields&f_3=all_fields&operator%5Bq_1%5D=contains&operator%5Bq_2%5D=contains&operator%5Bq_3%5D=contains&q_1=music&q_3=foo&range%5Blc_classification%5D%5Bbegin%5D=&range%5Blc_classification%5D%5Bend%5D=&range%5Bpub_date_sort%5D%5Bbegin%5D=&range%5Bpub_date_sort%5D%5Bend%5D=&search_field=advanced&sort=score+desc%2C+pub_date_sort+desc%2C+title_sort+asc"
+    visit "/articles?#{ {
+      clause: {
+        0 => { field: "all_fields", query: "music", match: "contains" },
+        1 => { field: "all_fields", query: "foo", match: "contains", op: "must" }
+      },
+      search_field: "advanced",
+    }.to_query}"
 
     expect(page).to have_http_status(:success)
   end
