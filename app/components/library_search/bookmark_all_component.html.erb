@@ -1,0 +1,7 @@
+<%= form_with url: form_url, method: form_method, class: "bookmark-all-form", authenticity_token: true do %>
+  <% documents.each do |document| %>
+    <%= hidden_field_tag "bookmarks[][document_id]", document.id %>
+    <%= hidden_field_tag "bookmarks[][document_type]", document_type %>
+  <% end %>
+  <%= button_tag button_label.html_safe, class: "btn bookmarks-tools-btn bookmark-all-btn" %>
+<% end %>
