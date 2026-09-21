@@ -51,4 +51,5 @@ RSpec.describe LibrarySearch::FacetFieldPresenter, type: :presenter do
       "Charles Library"
     ])
   end
+
 end
