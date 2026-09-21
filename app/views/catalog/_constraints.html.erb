@@ -1,2 +1,0 @@
-<% constraints_component_class = blacklight_config&.view_config(document_index_view_type)&.constraints_component || Blacklight::ConstraintsComponent %>
-<%= render constraints_component_class.new(search_state: search_state) %>

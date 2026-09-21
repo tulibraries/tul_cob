@@ -481,29 +481,6 @@ a.advanced_search.btn-secondary:focus {
 	margin: 0;
 }
 
-#sortAndPerPage .bookmark-all-form {
-	margin: 0;
-}
-
-#sortAndPerPage .bookmark-all-btn {
-	background-color: $royal-blue;
-	border: 0;
-	color: $white;
-}
-
-#sortAndPerPage .bookmark-all-btn:hover,
-#sortAndPerPage .bookmark-all-btn:focus,
-#sortAndPerPage .bookmark-all-btn:focus-visible,
-#sortAndPerPage .bookmark-all-btn:active,
-#sortAndPerPage .bookmark-all-btn.active,
-#sortAndPerPage .bookmark-all-btn:disabled,
-#sortAndPerPage .bookmark-all-btn.disabled {
-	background-color: $royal-blue;
-	border-color: $royal-blue;
-	color: $white;
-	opacity: 1;
-}
-
 .page-links {
 	display: inline-block;
 }
