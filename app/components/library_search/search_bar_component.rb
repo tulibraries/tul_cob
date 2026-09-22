@@ -20,7 +20,7 @@ module LibrarySearch
       else
         uri = URI.parse(@advanced_search_url)
         case uri.path
-        when "/advanced"
+        when "/advanced", "/everything/advanced"
           uri.path = advanced_search_path
         end
         query = Rack::Utils.parse_nested_query(uri.query).merge(@advanced_search_params)

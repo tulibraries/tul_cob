@@ -27,6 +27,16 @@ RSpec.describe LibrarySearch::SearchBarComponent, type: :component do
       expect(component.advanced_search_link_text).to eq("Advanced Databases Search")
       expect(component.advanced_search_url).to eq("/databases/advanced")
     end
+
+    it "uses the catalog advanced search URL from Everything" do
+      component = described_class.new(
+        url: "/everything",
+        params: {},
+        advanced_search_url: "/everything/advanced"
+      )
+
+      expect(component.advanced_search_url).to eq("/catalog/advanced")
+    end
   end
 
   let(:params) do
