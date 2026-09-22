@@ -616,9 +616,9 @@ GEM
       actionpack (>= 7.0)
       railties (>= 7.0)
     rexml (3.4.4)
-    rsolr (2.6.0)
+    rsolr (3.0.0)
       builder (>= 2.1.2)
-      faraday (>= 0.9, < 3, != 2.0.0)
+      faraday (>= 1.0, < 3)
     rspec-core (3.13.6)
       rspec-support (~> 3.13.0)
     rspec-expectations (3.13.5)
@@ -871,7 +871,7 @@ DEPENDENCIES
   rails-controller-testing
   recaptcha (~> 5.21)
   rerun
-  rsolr (~> 2.6)
+  rsolr (~> 3.0)
   rspec-rails
   rubocop
   rubocop-rails
