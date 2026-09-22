@@ -110,7 +110,12 @@ class PrimoCentralController < CatalogController
       label: "Date",
       range: true,
       component: LibrarySearch::RangeFacetComponent,
-      presenter: PrimoRangeFacetFieldPresenter
+      presenter: PrimoRangeFacetFieldPresenter,
+      range_config: {
+        show_missing_link: false,
+        chart_segment_border_color: "rgb(200, 172, 88)",
+        chart_segment_bg_color: "rgb(248, 231, 179)"
+      }
     config.add_facet_field :creator, label: "Author/Creator", component: true
     config.add_facet_field :topic, label: "Topic", component: true
     config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true

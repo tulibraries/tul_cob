@@ -46,7 +46,7 @@ module Blacklight::PrimoCentral
           facet_counts: response["facets"].length,
           numFound: response["info"]["total"]
         )
-        data[:range] = params[:range] || {}
+        data[:range] = query_params[:range] || params[:range] || {}
       else
         # Validate that for specific document searches we return a file.
         if response["docs"].blank?
