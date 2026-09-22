@@ -13,7 +13,7 @@ module BentoSearch
       user_params = { q: query, per_page: }
       search_service = build_search_service(user_params)
 
-      (response, _) = search_service.search_results(&proc_availability_facet_only)
+      response = search_service.search_results(&proc_availability_facet_only)
       results(response)
     end
 

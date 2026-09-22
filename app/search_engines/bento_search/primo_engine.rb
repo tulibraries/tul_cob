@@ -11,7 +11,7 @@ module BentoSearch
       user_params = { q: query, per_page: }.with_indifferent_access
       search_service = build_search_service(user_params)
 
-      (response, _) = search_service.search_results
+      response = search_service.search_results
       results(response)
     end
 

@@ -15,7 +15,7 @@ RSpec.describe PrimoCentralController, type: :controller do
     allow(controller).to receive(:helpers).and_return(helpers)
     allow(controller).to receive(:search_service).and_return(search_service)
     allow(search_service).to receive(:fetch).and_return([mock_response, document])
-    allow(search_service).to receive(:search_results).and_return([mock_response, document])
+    allow(search_service).to receive(:search_results).and_return(mock_response)
   end
 
   describe "anonymous bot challenge behavior" do

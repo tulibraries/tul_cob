@@ -8,7 +8,7 @@ module BentoSearch
       user_params = { q: query, per_page: 3 }
       search_service = build_search_service(user_params)
 
-      (response, _) = search_service.search_results(&processor_chain)
+      response = search_service.search_results(&processor_chain)
 
       item = BentoSearch::ResultItem.new(custom_data: response)
 
