@@ -59,7 +59,7 @@
       <%= content_for(:skip_links) %>
     <% end %>
 
-    <%= render :partial => "shared/header_navbar" %>
+    <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
 
     <div class="container-xl">
       <div id="page-wrapper" class="w-100">

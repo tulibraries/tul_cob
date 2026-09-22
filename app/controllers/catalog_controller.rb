@@ -130,6 +130,7 @@ class CatalogController < ApplicationController
     config.index.facet_group_component = LibrarySearch::FacetGroupComponent
     config.index.search_bar_component = LibrarySearch::SearchBarComponent
     config.skip_link_component = LibrarySearch::SkipLinkComponent
+    config.header_component = LibrarySearch::HeaderComponent
 
     # solr field configuration for document/show views
     config.show.title_field = "title_with_subtitle_truncated_display"

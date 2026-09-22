@@ -1,7 +1,7 @@
 <div id="header-wrapper">
   <div class="container-xl">
     <nav id="logo-navbar" class="navbar navbar-header ps-0" role="banner">
-      <%= link_to library_link_url, class: "header-name d-flex align-items-end" do %>
+      <%= link_to helpers.library_link_url, class: "header-name d-flex align-items-end" do %>
         <%= image_tag("temple-logo-t-box.svg", class: "header-logo d-inline-flex", height: "77px", width: "90px", alt: "temple-logo") %>
         <span class="logo-text">University Libraries</span>
       <% end %>
@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<%= render :partial => 'shared/banner' %>
+<%= render "shared/banner" %>
 
 <div id="website-navbar-container">
   <div class="container-xl">
@@ -21,22 +21,22 @@
           <li><%= link_to "Research Services", "https://library.temple.edu/research-services" %></li>
           <li class="last"><%= link_to "Contact Us", "https://library.temple.edu/contact-us" %></li>
           <li class="nav-right hours-nav"><%= link_to "Hours", "https://library.temple.edu/hours" %></li>
-          <li class="nav-right chat-nav"><%= link_to "Chat", t("blacklight.chat_link"), target: "_blank" %></li>
-          <% if current_user %>
-            <li class="nav-right account-nav"><%= link_to "My Account", users_account_path, id: "my-account", data: { turbo: false } %></li>
+          <li class="nav-right chat-nav"><%= link_to "Chat", helpers.t("blacklight.chat_link"), target: "_blank" %></li>
+          <% if helpers.current_user %>
+            <li class="nav-right account-nav"><%= link_to "My Account", helpers.users_account_path, id: "my-account", data: { turbo: false } %></li>
           <% else %>
-            <li class="nav-right account-nav"><%= link_to "My Account", new_user_session_path, id: "login", data: { turbo: false } %></li>
+            <li class="nav-right account-nav"><%= link_to "My Account", helpers.new_user_session_path, id: "login", data: { turbo: false } %></li>
           <% end %>
-          <% if current_user.present? && main_app.respond_to?(:edit_user_registration_path) %>
+          <% if helpers.current_user.present? && helpers.main_app.respond_to?(:edit_user_registration_path) %>
             <li class="nav-right account-nav">
-              <%= link_to current_user, main_app.edit_user_registration_path, class: 'nav-link' %>
+              <%= link_to helpers.current_user, helpers.main_app.edit_user_registration_path, class: "nav-link" %>
             </li>
           <% end %>
         </ul>
       </div>
 
       <div class="row d-block d-xl-none" id="mobile-nav" aria-labelledby="mobile-nav">
-        <%= render "mobile_nav" %>
+        <%= render "application/mobile_nav" %>
       </div>
     </nav>
   </div>
@@ -47,13 +47,12 @@
     <nav id="search-navbar" class="navbar navbar-default bg-lighter-grey px-md-0 pt-3">
       <div class="d-lg-inline-flex align-items-center mx-auto">
         <h1 class="text-center pe-md-2 pe-lg-4 d-none d-md-block">
-          <%= link_to("Library Search", everything_path, id: "catalog-header") %>
+          <%= link_to "Library Search", helpers.everything_path, id: "catalog-header" %>
         </h1>
-        <%# Change this back to render_search_bar method when upgrading Blacklight %>
-        <%= render :partial => 'catalog/search_form' %>
+        <%= render "catalog/search_form" %>
       </div>
     </nav>
   </div>
 </div>
 
-<%= render "navbar" %>
+<%= render "application/navbar" %>
