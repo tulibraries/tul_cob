@@ -12,8 +12,7 @@ RSpec.describe UsersHelper, type: :helper do
 
   describe "wrong iso8601 formatted date returned by Alma" do
     context "Properly formatted ISO8601" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new("2020-09-01")
+      let(:hold) { Struct.new(:expiry_date).new("2020-09-01") }
 
       it "returns a valid time" do
         expect(Honeybadger).to_not receive(:notify)
@@ -22,8 +21,7 @@ RSpec.describe UsersHelper, type: :helper do
     end
 
     context "Improperly formatted ISO8601 date" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new("2020-09-01Z")
+      let(:hold) { Struct.new(:expiry_date).new("2020-09-01Z") }
 
       it "returns a valid time anyway" do
         expect(Honeybadger).to_not receive(:notify)
@@ -32,8 +30,7 @@ RSpec.describe UsersHelper, type: :helper do
     end
 
     context "Full date time" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new("2018-10-16T02:00:00Z")
+      let(:hold) { Struct.new(:expiry_date).new("2018-10-16T02:00:00Z") }
 
       it "returns N/A" do
         expect(Honeybadger).to_not receive(:notify)
@@ -42,8 +39,7 @@ RSpec.describe UsersHelper, type: :helper do
     end
 
     context "No expiry date" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new("")
+      let(:hold) { Struct.new(:expiry_date).new("") }
 
       it "returns N/A" do
         expect(Honeybadger).to_not receive(:notify)
@@ -52,8 +48,7 @@ RSpec.describe UsersHelper, type: :helper do
     end
 
     context "No expiry date" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new(nil)
+      let(:hold) { Struct.new(:expiry_date).new(nil) }
 
       it "returns N/A" do
         expect(Honeybadger).to_not receive(:notify)
@@ -62,8 +57,7 @@ RSpec.describe UsersHelper, type: :helper do
     end
 
     context "non-date eiding with a 'Z'" do
-      Hold = Struct.new(:expiry_date)
-      hold = Hold.new("XYZ")
+      let(:hold) { Struct.new(:expiry_date).new("XYZ") }
 
       it "returns N/A" do
         expect(Honeybadger).to receive(:notify)

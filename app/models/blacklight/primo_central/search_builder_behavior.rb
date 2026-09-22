@@ -5,12 +5,12 @@ module Blacklight::PrimoCentral
     extend ActiveSupport::Concern
 
     def add_query_to_primo_central(primo_central_parameters)
-      per_page = (blacklight_params["per_page"] || blacklight_config.default_per_page).to_i
-      page = (blacklight_params["page"] || 1).to_i
+      per_page = (search_state.params["per_page"] || blacklight_config.default_per_page).to_i
+      page = (search_state.params["page"] || 1).to_i
       offset = (per_page * page) - per_page
-      sort = blacklight_params["sort"] || "rank"
+      sort = search_state.params["sort"] || "rank"
 
-      value = blacklight_params[:q]
+      value = search_state.params[:q]
       value = "*" if value.nil? || value.empty?
 
       if value.is_a? Hash
@@ -28,12 +28,12 @@ module Blacklight::PrimoCentral
         else
           raise "FIXME, translation of Solr search for Summon"
         end
-      elsif !blacklight_params[:id].nil?
+      elsif !search_state.params[:id].nil?
         primo_central_parameters[:query] = {
           limit: 1,
           offset: 0,
           q: {
-            value: to_primo_id(blacklight_params[:id]),
+            value: to_primo_id(search_state.params[:id]),
             precision: "contains",
           }
         }
@@ -46,11 +46,11 @@ module Blacklight::PrimoCentral
         }
       end
 
-      primo_central_parameters[:query].merge!(blacklight_params.slice(:searchCDI, :pcAvailability))
+      primo_central_parameters[:query].merge!(search_state.params.slice(:searchCDI, :pcAvailability))
     end
 
     def set_query_field(primo_central_parameters)
-      field = to_primo_field(blacklight_params[:search_field])
+      field = to_primo_field(search_state.params[:search_field])
 
       # blacklight_range_limit can usurp this field for evil.
       if !blacklight_config.search_fields.keys.include?(field.to_s)
@@ -73,17 +73,17 @@ module Blacklight::PrimoCentral
     def process_advanced_search(primo_central_parameters)
       if is_advanced_search?
 
-        if blacklight_params[:clause].present?
+        if search_state.params[:clause].present?
           return _process_blacklight8_advanced_form(primo_central_parameters)
         end
 
         rows_count = blacklight_config.advanced_search[:fields_row_count]
 
         build_query = (1..rows_count).map do |count|
-          value = blacklight_params["q_#{count}"]
-          precision = blacklight_params["operator_#{count}"]
-          field = to_primo_field(blacklight_params["f_#{count}"])
-          operator = blacklight_params["op_#{count}"]
+          value = search_state.params["q_#{count}"]
+          precision = search_state.params["operator_#{count}"]
+          field = to_primo_field(search_state.params["f_#{count}"])
+          operator = search_state.params["op_#{count}"]
 
           if !value&.empty? && !value.nil?
             { value:, field:, precision:, operator: }
@@ -95,9 +95,9 @@ module Blacklight::PrimoCentral
     end
 
     def _process_blacklight8_advanced_form(primo_central_parameters)
-      clauses = blacklight_params[:clause] || {}
-      default_operator = blacklight_params[:op] == "must" ? "AND" : "OR"
-      use_clause_operators = blacklight_params[:op].blank?
+      clauses = search_state.params[:clause] || {}
+      default_operator = search_state.params[:op] == "must" ? "AND" : "OR"
+      use_clause_operators = search_state.params[:op].blank?
 
       build_query = clauses.map.with_index { |(_, clause), index|
         field = to_primo_field(clause[:field] || clause["field"])
@@ -143,8 +143,8 @@ module Blacklight::PrimoCentral
 
       primo_central_parameters[:query][:q] = pq
 
-      blacklight_params.fetch(:f, {})
-        .merge(blacklight_params.fetch(:f_inclusive, {}))
+      search_state.params.fetch(:f, {})
+        .merge(search_state.params.fetch(:f_inclusive, {}))
         .each do |field, values|
           # Only facet known fields
           next unless blacklight_config.facet_fields[field.to_s].present?
@@ -158,7 +158,7 @@ module Blacklight::PrimoCentral
     end
 
     def process_date_range_query(primo_central_parameters)
-      params = blacklight_params
+      params = search_state.params
 
       min = params.dig("range", "creationdate", "begin")
       max = params.dig("range", "creationdate", "end")

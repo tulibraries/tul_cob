@@ -179,7 +179,6 @@ RSpec.describe AlmawsController, type: :controller do
           request_level: "bib",
           item_holding_ids: [],
           item_holding_ids_backup: [],
-          item_level_locations: [],
           material_types_and_descriptions: [])
       end
 
