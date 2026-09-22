@@ -112,6 +112,7 @@ class PrimoCentralController < CatalogController
       component: LibrarySearch::RangeFacetComponent,
       presenter: PrimoRangeFacetFieldPresenter,
       range_config: {
+        num_segments: 5,
         show_missing_link: false,
         chart_segment_border_color: "rgb(200, 172, 88)",
         chart_segment_bg_color: "rgb(248, 231, 179)"
