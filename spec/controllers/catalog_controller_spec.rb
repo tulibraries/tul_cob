@@ -170,8 +170,8 @@ RSpec.describe CatalogController, type: :controller do
       config = controller.blacklight_config
       lower_state = Blacklight::SearchState.new({ q: "home or work" }, config)
       upper_state = Blacklight::SearchState.new({ q: "home OR work" }, config)
-      (response_lower, _) = Blacklight::SearchService.new(config:, search_state: lower_state).search_results
-      (response_upper, _) = Blacklight::SearchService.new(config:, search_state: upper_state).search_results
+      response_lower = Blacklight::SearchService.new(config:, search_state: lower_state).search_results
+      response_upper = Blacklight::SearchService.new(config:, search_state: upper_state).search_results
 
       expect(response_lower.total).to be_a(Integer)
       expect(response_upper.total).to be_a(Integer)
