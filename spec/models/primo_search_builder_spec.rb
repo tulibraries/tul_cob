@@ -13,7 +13,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
   subject { search_builder }
 
   before(:example) do
-    allow(search_builder).to receive(:blacklight_params).and_return(params)
+    allow(search_builder.search_state).to receive(:params).and_return(params)
     allow(search_builder).to receive(:blacklight_config).and_return(config)
   end
 
@@ -144,7 +144,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       before do
         controller = double(action_name: "advanced_search")
-        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
         subject.process_advanced_search(primo_central_parameters)
       end
 
@@ -170,7 +170,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       before do
         controller = double(action_name: "advanced_search")
-        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
         subject.process_advanced_search(primo_central_parameters)
       end
 
@@ -194,7 +194,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       before do
         controller = double(action_name: "advanced_search")
-        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
         subject.process_advanced_search(primo_central_parameters)
       end
 
@@ -218,7 +218,7 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
 
       before do
         controller = double(action_name: "advanced_search")
-        allow(search_builder).to receive(:search_state).and_return(double(controller:))
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
         subject.process_advanced_search(primo_central_parameters)
       end
 

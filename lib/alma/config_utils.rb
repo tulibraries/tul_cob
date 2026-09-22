@@ -29,10 +29,8 @@ module Alma
     def self.filename_or_default(type = "service", path = "/tmp")
       f = filename(type, path)
       if File.exist? f
-        puts "File #{f} exits!"
         f
       else
-        puts "File #{f} does not exist using fixture."
         fixture_filename(type)
       end
     end

@@ -3,12 +3,13 @@
 require "rails_helper"
 
 RSpec.describe "users/_loans_fines.html.erb", type: :view do
+  Fee = Data.define(:id, :title, :type, :balance)
+
   before :each do
     @user = FactoryBot.build(:user)
   end
 
   context "no title for fee" do
-    Fee = Data.define(:id, :title, :type, :balance)
     let(:fee_no_title) {
       Fee.new(
         id: "12345",
@@ -26,7 +27,6 @@ RSpec.describe "users/_loans_fines.html.erb", type: :view do
   end
 
   context "item title for fee" do
-    Fee = Data.define(:id, :title, :type, :balance)
     let(:fee_title) {
       Fee.new(
         id: "67890",

@@ -65,6 +65,6 @@ module Tulcob
 
     # Could be removed once this issue is fixed:
     # https://github.com/heartcombo/devise/pull/5462
-    config.action_controller.raise_on_open_redirects = false
+    config.action_controller.action_on_open_redirect = :log
   end
 end

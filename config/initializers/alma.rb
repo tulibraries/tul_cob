@@ -6,6 +6,6 @@ Alma.configure do |config|
   # You have to set te apikey
   config.apikey = alma_config[:apikey]
   config.enable_loggable = true
-  config.enable_log_requests = true
+  config.enable_log_requests = true unless Rails.env.test?
   config.timeout = alma_config[:timeout] || 30
 end
