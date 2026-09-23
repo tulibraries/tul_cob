@@ -196,4 +196,8 @@ module CatalogHelper
   def show_solr_document_url(document, *args, **kwargs)
     solr_document_url(document, *args, **kwargs)
   end
+
+  def show_primo_central_document_url(document, *args, **kwargs)
+    primo_central_document_url(document, *args, **kwargs)
+  end
 end

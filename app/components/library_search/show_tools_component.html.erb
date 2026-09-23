@@ -7,6 +7,12 @@
     </li>
   <% end %>
 
+  <% if citation_action? %>
+    <li class="citation">
+      <%= citation_link %>
+    </li>
+  <% end %>
+
   <% if send_to_actions.any? %>
     <li id="sendto-menu">
       <div id="sendto" class="dropdown show">

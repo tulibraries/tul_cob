@@ -31,6 +31,15 @@ RSpec.describe CatalogHelper, type: :helper do
     end
   end
 
+  describe "#show_primo_central_document_url" do
+    it "delegates to the Primo Central document route" do
+      document = double("document")
+      expect(helper).to receive(:primo_central_document_url).with(document, foo: "bar").and_return("/articles/123")
+
+      expect(helper.show_primo_central_document_url(document, foo: "bar")).to eq("/articles/123")
+    end
+  end
+
   describe "#render_marc_view" do
     let(:doc) { OpenStruct.new(to_marc: "foo") }
     let(:response) { Blacklight::Solr::Response.new(nil, nil) }

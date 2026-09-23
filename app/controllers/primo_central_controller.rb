@@ -50,6 +50,10 @@ class PrimoCentralController < CatalogController
   rescue_from ArticleNotFound, with: :invalid_document_id_error
   rescue_from Net::ReadTimeout, with: :net_read_timeout_rescue
 
+  def action_success_redirect_path
+    primo_central_document_url(id: params[:id])
+  end
+
   configure_blacklight do |config|
     config.advanced_search[:form_solr_parameters]["facet.field"] = %w(tlevel rtype lang)
 
@@ -61,6 +65,7 @@ class PrimoCentralController < CatalogController
 
     # Model that describes a Document
     config.document_model = ::PrimoCentralDocument
+    config.show.route = { controller: "primo_central" }
 
     # Model that maps search index responses to the blacklight response model
     config.response_model = Blacklight::PrimoCentral::Response

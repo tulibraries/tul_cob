@@ -24,10 +24,9 @@ module AvailabilityHelper
     field = blacklight_config.show_fields["electronic_resource_display"]
     return if field.nil?
 
-    online_resources = [doc_presenter.field_value(field)]
-      .select { |r| !r.empty? }.compact
+    online_resources = Array.wrap(doc_presenter.field_value(field)).flatten.compact_blank
 
-    if !online_resources.empty?
+    if online_resources.present?
       render "online_availability", online_resources:
     end
   end

@@ -14,13 +14,13 @@
 
   <div class="tab-content p-4">
     <div role="tabpanel" class="tab-pane" id="titles">
-      <% @response.documents.each do |document| %>
-        <h2 class="citation-heading"><%= document_heading(document) %></h2>
+      <% documents.each do |document| %>
+        <h2 class="citation-heading"><%= document_presenter(document).heading %></h2>
         <%= render partial: "catalog/single_citation", locals: { document: document } %>
       <% end %>
     </div>
     <div role="tabpanel" class="tab-pane active" id="biblio">
-      <% SolrDocument.grouped_citations(@response.documents).each do |format, citations| %>
+      <% SolrDocument.grouped_citations(documents).each do |format, citations| %>
         <% unless format == "NULL" %>
           <div class="citation-format-group" data-controller="citation-copy">
             <% label = citation_labels(format) %>

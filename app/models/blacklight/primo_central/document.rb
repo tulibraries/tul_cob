@@ -21,7 +21,7 @@ module Blacklight::PrimoCentral::Document
     @url_query = url_query
 
     # Dots and slahes break links to articles.
-    doc["pnxId"] ||= doc.dig("pnx", "control", "recordid")&.first
+    doc["pnxId"] ||= doc.dig("pnx", "control", "recordid")&.first || doc["id"]
     doc["pnxId"] = doc["pnxId"]&.gsub(".", "-dot-")
     doc["pnxId"] = doc["pnxId"]&.gsub("/", "-slash-")
     doc["pnxId"] = doc["pnxId"]&.gsub(";", "-semicolon-")
