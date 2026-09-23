@@ -25,8 +25,9 @@ RSpec.describe "catalog/_citation.html.erb" do
     allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
     view.define_singleton_method(:blacklight_config) { CatalogController.blacklight_config }
     view.define_singleton_method(:has_search_parameters?) { false }
+    presenter_class = Struct.new(:heading)
     view.define_singleton_method(:document_presenter) do |doc|
-      double("DocumentPresenter", heading: doc["title_statement_display"].first)
+      presenter_class.new(doc["title_statement_display"].first)
     end
   end
 

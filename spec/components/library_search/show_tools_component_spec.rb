@@ -34,12 +34,13 @@ RSpec.describe LibrarySearch::ShowToolsComponent, type: :component do
 
   it "renders the cite button for citable documents when citeproc is enabled" do
     allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
-    allow(component.helpers).to receive(:citation_solr_document_path).with(id: document.id).and_return("/catalog/1/citation")
 
-    rendered = render_inline(component)
+    with_controller_class(CatalogController) do
+      rendered = render_inline(component)
 
-    expect(rendered.css("#citeLink")).not_to be_empty
-    expect(rendered.css("#citeLink").first["href"]).to eq("/catalog/1/citation")
+      expect(rendered.css("#citeLink")).not_to be_empty
+      expect(rendered.css("#citeLink").first["href"]).to eq("/catalog/1/citation")
+    end
   end
 
   it "renders Send To actions with the production menu item styles" do
