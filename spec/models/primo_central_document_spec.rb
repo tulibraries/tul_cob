@@ -65,6 +65,14 @@ RSpec.describe PrimoCentralDocument, type: :model do
     end
   end
 
+  context "when the Primo record has no pnxId" do
+    let(:docs) { { "id" => "cdi_crossref_primary_10_1093_yiel_yvag042" } }
+
+    it "uses the source id as the document id" do
+      expect(subject.id).to eq("cdi_crossref_primary_10_1093_yiel_yvag042")
+    end
+  end
+
   context "url from almaOpenurl" do
     let(:docs) { ActiveSupport::HashWithIndifferentAccess.new(
       delivery: {

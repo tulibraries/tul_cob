@@ -48,6 +48,17 @@ RSpec.describe PrimoCentralController, type: :controller do
   describe "show action" do
     render_views
 
+    it "uses the article controller for successful document redirects" do
+      expect(controller.blacklight_config.show.route).to eq(controller: "primo_central")
+    end
+
+    it "builds the article redirect with the request id" do
+      allow(controller).to receive(:params).and_return(ActionController::Parameters.new(id: "article-123"))
+      allow(controller).to receive(:primo_central_document_url).with(id: "article-123").and_return("/articles/article-123")
+
+      expect(controller.action_success_redirect_path).to eq("/articles/article-123")
+    end
+
     it "handles a record not found exception", with_rescue: true do
       allow(search_service).to receive(:fetch).and_raise(::ArticleNotFound, "glub glub glub")
       get :show, params: { id: 1 }

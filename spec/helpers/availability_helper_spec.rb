@@ -3,6 +3,35 @@
 require "rails_helper"
 
 RSpec.describe AvailabilityHelper, type: :helper do
+  describe "#render_online_availability(doc_presenter)" do
+    let(:field) { double }
+    let(:config) { double(show_fields: { "electronic_resource_display" => field }) }
+    let(:doc_presenter) { double }
+
+    before do
+      without_partial_double_verification do
+        allow(helper).to receive(:blacklight_config).and_return(config)
+      end
+    end
+
+    it "does not render an online section for blank resources" do
+      allow(doc_presenter).to receive(:field_value).with(field).and_return([[nil], [], ""])
+
+      expect(helper).not_to receive(:render)
+
+      helper.render_online_availability(doc_presenter)
+    end
+
+    it "renders valid online resources" do
+      online_link = '<a href="https://example.com">Online</a>'
+      allow(doc_presenter).to receive(:field_value).with(field).and_return([["", online_link]])
+      allow(helper).to receive(:render).and_return("rendered online availability")
+
+      expect(helper.render_online_availability(doc_presenter)).to eq("rendered online availability")
+      expect(helper).to have_received(:render).with("online_availability", online_resources: [online_link])
+    end
+  end
+
   describe "#availability_status_display(item)" do
 
     context "availability status and icon" do
