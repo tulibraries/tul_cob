@@ -19,13 +19,17 @@ $(window).on('turbo:load', function() {
 	}
 });
 
+const adjustSecondaryFields = function() {
+	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
+	$(".secondary-dl").children("dd").addClass("ps-md-3");
+};
+
+$(document).on("turbo:load", adjustSecondaryFields);
+
 $(document).ready(function() {
 	$("body").tooltip({
     selector: '[data-bs-toggle="tooltip"]'
   });
-
-	$(".secondary-dl").children("dt").removeClass("col-sm-3 col-md-3").addClass("col-sm-2 col-md-2");
-	$(".secondary-dl").children("dd").addClass("ps-md-3");
 
 	$('.decorative').each(function() {
     $(this).attr('alt', "");

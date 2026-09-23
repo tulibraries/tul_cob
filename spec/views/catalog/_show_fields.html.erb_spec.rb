@@ -31,6 +31,16 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
     expect(rendered).to match(/<dd class="blacklight-foo.*">bar<\/dd>/)
   end
 
+  it "adds a colon to the field label" do
+    field = "foo"
+    field_config = @config.facet_configuration_for_field(field)
+    field_presenter = Blacklight::FieldPresenter.new(view, @document, field_config, value: "bar")
+    field_presenter.except_operations << Blacklight::Rendering::Join
+    render("catalog/show_fields", document: @document, field_name: field, field_presenter:)
+
+    expect(rendered).to include(">FOO:</dt>")
+  end
+
   it "displays two values" do
     field = "foo"
     field_config = @config.facet_configuration_for_field(field)
