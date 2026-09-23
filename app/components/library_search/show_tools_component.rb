@@ -7,7 +7,7 @@ module LibrarySearch
     end
 
     def render?
-      actions.any?
+      actions.any? || citation_action?
     end
 
     def bookmark_action
@@ -35,6 +35,18 @@ module LibrarySearch
                       target: "_blank",
                       id: "errorLink",
                       class: "btn"
+    end
+
+    def citation_action?
+      Flipflop.citeproc_citations? && document.citable?
+    end
+
+    def citation_link
+      helpers.link_to helpers.t("blacklight.tools.cite_html", current_range: ""),
+                      helpers.citation_solr_document_path(id: document.id),
+                      id: "citeLink",
+                      class: "btn",
+                      data: { blacklight_modal: "trigger" }
     end
 
     private

@@ -14,7 +14,7 @@ RSpec.describe LibrarySearch::ShowToolsComponent, type: :component do
     end
   end
 
-  let(:document) { instance_double("SolrDocument", citable?: true) }
+  let(:document) { instance_double("SolrDocument", citable?: true, id: "1") }
   let(:bookmark_action) { OpenStruct.new(key: :bookmark, component: FakeShowToolActionComponent) }
   let(:component) { described_class.new(document:) }
 
@@ -30,6 +30,16 @@ RSpec.describe LibrarySearch::ShowToolsComponent, type: :component do
     expect(rendered.css("#bookmarkLink")).not_to be_empty
     expect(rendered.css("#errorLink")).not_to be_empty
     expect(rendered.to_html).not_to include("citeLink")
+  end
+
+  it "renders the cite button for citable documents when citeproc is enabled" do
+    allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
+    allow(component.helpers).to receive(:citation_solr_document_path).with(id: document.id).and_return("/catalog/1/citation")
+
+    rendered = render_inline(component)
+
+    expect(rendered.css("#citeLink")).not_to be_empty
+    expect(rendered.css("#citeLink").first["href"]).to eq("/catalog/1/citation")
   end
 
   it "renders Send To actions with the production menu item styles" do
