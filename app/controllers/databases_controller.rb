@@ -69,8 +69,8 @@ class DatabasesController < CatalogController
       }
 
       field.solr_adv_parameters = {
-        qf: "$title_qf",
-        pf: "$title_pf",
+        qf: "${title_qf}",
+        pf: "${title_pf}",
       }
     end
 
@@ -82,8 +82,8 @@ class DatabasesController < CatalogController
       }
 
       field.solr_adv_parameters = {
-        qf: "$subject_qf",
-        pf: "$subject_pf",
+        qf: "${subject_qf}",
+        pf: "${subject_pf}",
       }
     end
 

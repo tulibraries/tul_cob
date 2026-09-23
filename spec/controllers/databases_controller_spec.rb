@@ -13,6 +13,26 @@ RSpec.describe DatabasesController, type: :controller do
     expect(url).to eq(az_url)
   end
 
+  describe "advanced search fields" do
+    it "uses Solr parameter substitution for title searches" do
+      field = controller.blacklight_config.search_fields["title"]
+
+      expect(field.solr_adv_parameters).to eq(
+        qf: "${title_qf}",
+        pf: "${title_pf}"
+      )
+    end
+
+    it "uses Solr parameter substitution for subject searches" do
+      field = controller.blacklight_config.search_fields["subject"]
+
+      expect(field.solr_adv_parameters).to eq(
+        qf: "${subject_qf}",
+        pf: "${subject_pf}"
+      )
+    end
+  end
+
   describe "searching databases az", order: :defined do
     render_views
     @all_ids, @title_ids, @subject_ids = nil
