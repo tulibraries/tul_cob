@@ -342,7 +342,7 @@ RSpec.describe SearchBuilder , type: :model do
 
 
     before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:processed_search_params).and_return(params)
       subject.limit_facets(solr_parameters)
     end
 
@@ -419,7 +419,7 @@ RSpec.describe SearchBuilder , type: :model do
 
     before(:example) do
       allow(Flipflop).to receive(:solr_query_tweaks?).and_return(feature_enabled)
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:processed_search_params).and_return(params)
       subject.tweak_query(solr_parameters)
     end
 
@@ -452,7 +452,7 @@ RSpec.describe SearchBuilder , type: :model do
 
   describe "#filter_suppressed" do
     before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:processed_search_params).and_return(params)
       subject.filter_suppressed(solr_parameters)
     end
 
@@ -469,7 +469,7 @@ RSpec.describe SearchBuilder , type: :model do
     let(:solr_parameters) { Blacklight::Solr::Request.new }
 
     before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:processed_search_params).and_return(params)
       subject.filter_id(solr_parameters)
     end
 
@@ -498,7 +498,7 @@ RSpec.describe SearchBuilder , type: :model do
     }
 
     before(:example) do
-      allow(search_builder).to receive(:blacklight_params).and_return(params)
+      allow(search_builder).to receive(:processed_search_params).and_return(params)
       allow(search_builder).to receive(:is_advanced_search?).and_return(is_advanced_search?)
 
       subject.spellcheck(solr_parameters)
@@ -749,7 +749,7 @@ RSpec.describe SearchBuilder , type: :model do
     end
   end
 
-  describe "#blacklight_params" do
+  describe "#processed_search_params" do
     it "keeps generated advanced queries out of the display search state" do
       builder = subject.with(
         search_field: "advanced",
@@ -759,25 +759,25 @@ RSpec.describe SearchBuilder , type: :model do
       )
       original_params = builder.search_state.params.deep_dup
 
-      processed_params = builder.blacklight_params
+      processed_params = builder.processed_search_params
 
       expect(processed_params["clause"]).to include(
         "0" => include("field" => "all_fields", "query" => "cetecean", "match" => "contains")
       )
       expect(builder.search_state.params).to eq(original_params)
-      expect(builder.blacklight_params).to eq(processed_params)
+      expect(builder.processed_search_params).to eq(processed_params)
     end
 
     it "gets tagged as being processed" do
-      expect(subject.blacklight_params["processed"]).to be
+      expect(subject.processed_search_params["processed"]).to be
     end
 
     it "is idempotent" do
-      subject.blacklight_params
-      subject.blacklight_params
-      subject.blacklight_params
-      subject.blacklight_params
-      expect(subject.blacklight_params).to eq("processed" => true, "q" => nil)
+      subject.processed_search_params
+      subject.processed_search_params
+      subject.processed_search_params
+      subject.processed_search_params
+      expect(subject.processed_search_params).to eq("processed" => true, "q" => nil)
     end
   end
 

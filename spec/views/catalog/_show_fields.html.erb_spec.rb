@@ -10,7 +10,7 @@ RSpec.describe "catalog/_show_fields.html.erb", type: :view do
   before(:each) do
     allow(controller).to receive(:action_name).and_return("show")
     @config = Blacklight::Configuration.new do |config|
-      config.add_facet_field "foo", label: "FOO", show: true, component: true
+      config.add_facet_field "foo", label: "FOO", show: true
     end
     @config.show.document_presenter_class = ShowPresenter
     @context = Blacklight::Configuration::Context.new(controller)

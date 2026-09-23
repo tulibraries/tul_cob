@@ -55,7 +55,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def add_facets_for_advanced_search_form(solr_parameters)
     super
     return unless is_advanced_search?
-    return unless blacklight_params["q"].blank? && advanced_search_clauses.empty?
+    return unless processed_search_params["q"].blank? && advanced_search_clauses.empty?
 
     solr_parameters.merge!(blacklight_config.advanced_search[:form_solr_parameters])
   end
@@ -74,7 +74,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   def filter_id(solr_params)
-    id = blacklight_params["filter_id"]
+    id = processed_search_params["filter_id"]
 
     if id.present? && !solr_params["fq"]&.include?("-id:#{id}")
       solr_params["fq"] = (solr_params["fq"] || []).push("-id:#{id}")
@@ -89,12 +89,12 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def is_advanced_search?
     search_state.controller&.action_name == "advanced_search" ||
-      blacklight_params["search_field"] == blacklight_config.advanced_search[:url_key]
+      processed_search_params["search_field"] == blacklight_config.advanced_search[:url_key]
   end
 
   def limit_facets(solr_parameters)
-    path = "#{blacklight_params["controller"]}/#{blacklight_params["action"]}"
-    count = blacklight_params.keys.count
+    path = "#{processed_search_params["controller"]}/#{processed_search_params["action"]}"
+    count = processed_search_params.keys.count
 
     # When only the controller and action are defined (count == 2), and the
     # controller is set to "catalog" and the action is set to "index", then we
@@ -119,7 +119,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def tweak_query(solr_parameters)
     return unless Flipflop.solr_query_tweaks?
 
-    solr_parameters.merge!(blacklight_params.select { |name, value| name.match?(/(qf$|pf$)/) })
+    solr_parameters.merge!(processed_search_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 
   def truncate_overlong_search_query(solr_params)
@@ -273,7 +273,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   def citation_like_query?(q)
     return false if is_advanced_search?
 
-    search_field = blacklight_params["search_field"]
+    search_field = processed_search_params["search_field"]
     return false unless search_field.blank? || search_field == "all_fields"
 
     normalized = strip_outer_quotes(q.to_s)
@@ -351,18 +351,14 @@ class SearchBuilder < Blacklight::SearchBuilder
     return false unless fully_quoted_query?(q)
     return false if is_advanced_search?
 
-    search_field = blacklight_params["search_field"]
+    search_field = processed_search_params["search_field"]
     return false unless search_field.blank? || search_field == "all_fields"
 
     q.delete("\"").split(/\s+/).length > MAX_CLAUSE_SAFE_TOKENS
   end
 
-  # Overrides Blacklight::SearchBuilder#blacklight_params
-  #
-  # We need to do this because so much of what advanced_search is doing depends
-  # on it and currently there isn't a cleaner way beyond overriding it.
-  #
-  def blacklight_params
+  # Returns the processed search parameters used by custom processors.
+  def processed_search_params
     params = search_state.params.to_h.with_indifferent_access.deep_dup
 
     # This method needs to be idempotent.
@@ -513,9 +509,9 @@ class SearchBuilder < Blacklight::SearchBuilder
   def add_lc_range_search_to_solr(solr_params)
     solr_params["facet.field"]&.delete("lc_classification")
 
-    return unless blacklight_params["range"] && blacklight_params["range"]["lc_classification"]
+    return unless processed_search_params["range"] && processed_search_params["range"]["lc_classification"]
 
-    lc_range = blacklight_params["range"]["lc_classification"]
+    lc_range = processed_search_params["range"]["lc_classification"]
 
     return if lc_range["begin"].blank? && lc_range["end"].blank?
 
@@ -633,7 +629,7 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     def advanced_search_clauses
-      clauses = blacklight_params["clause"]
+      clauses = processed_search_params["clause"]
       return [] unless clauses.respond_to?(:each_value)
 
       clauses.each_value.filter { |clause| clause["query"].present? }
