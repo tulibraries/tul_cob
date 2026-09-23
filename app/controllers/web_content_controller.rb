@@ -42,8 +42,7 @@ class WebContentController < CatalogController
       label: "Library Website",
       limit: true,
       collapse: false,
-      helper_method: :format_types,
-      component: true
+      helper_method: :format_types
 
     # Index fields
     config.add_index_field "web_description_display", type: :summary

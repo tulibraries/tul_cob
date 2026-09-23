@@ -24,15 +24,6 @@ GIT
       xml-simple
 
 GIT
-  remote: https://github.com/tulibraries/blacklight-ris.git
-  revision: 627fb269a72bb305fe05311981de5bfd5fe060ab
-  branch: update-for-rails-7-blacklight-7
-  specs:
-    blacklight-ris (0.2.0)
-      blacklight
-      rails
-
-GIT
   remote: https://github.com/tulibraries/cdm_rb.git
   revision: d20d9c1adee7c29c3e471a79c63168dba34dbc26
   branch: master
@@ -201,6 +192,9 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
+    blacklight-ris (0.2.0)
+      blacklight (>= 7)
+      rails (>= 7)
     blacklight_range_limit (9.3.0)
       blacklight (>= 7.25.2, < 10)
       view_component (>= 2.54, < 5)
@@ -811,7 +805,7 @@ DEPENDENCIES
   bento_search!
   blacklight (~> 9)
   blacklight-marc
-  blacklight-ris!
+  blacklight-ris (~> 0.2.0)
   blacklight_range_limit
   bootsnap (= 1.26.0)
   bootstrap (>= 5.3.3)

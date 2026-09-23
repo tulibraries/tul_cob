@@ -136,6 +136,7 @@ class CatalogController < ApplicationController
     config.show.title_field = "title_with_subtitle_truncated_display"
     config.show.partials = %i[show_header show]
     config.show.document_presenter_class = ShowPresenter
+    config.show.document_component = CatalogDocumentComponent
     #config.show.display_type_field = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
@@ -645,12 +646,12 @@ class CatalogController < ApplicationController
   end
 
   def purchase_order
-    (@response, @document) = search_service.fetch(params["id"])
+    @document = search_service.fetch(params["id"])
     render layout: false
   end
 
   def purchase_order_action
-    (_, document) = search_service.fetch(params["id"])
+    document = search_service.fetch(params["id"])
 
     email = current_user&.email || params[:to]
     name = current_user&.name

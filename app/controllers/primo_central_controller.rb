@@ -104,8 +104,8 @@ class PrimoCentralController < CatalogController
     config.add_index_field :error
 
     # Facet fields
-    config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code, component: true
-    config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code, component: true, item_component: LibrarySearch::FacetItemComponent
+    config.add_facet_field :tlevel, label: "Article Search Settings", collapse: false, home: true, helper_method: :translate_availability_code
+    config.add_facet_field :rtype, label: "Resource Type", limit: true, show: true, home: true, helper_method: :translate_resource_type_code, item_component: LibrarySearch::FacetItemComponent
     config.add_facet_field :creationdate,
       label: "Date",
       range: true,
@@ -117,9 +117,9 @@ class PrimoCentralController < CatalogController
         chart_segment_border_color: "rgb(200, 172, 88)",
         chart_segment_bg_color: "rgb(248, 231, 179)"
       }
-    config.add_facet_field :creator, label: "Author/Creator", component: true
-    config.add_facet_field :topic, label: "Topic", component: true
-    config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code, component: true
+    config.add_facet_field :creator, label: "Author/Creator"
+    config.add_facet_field :topic, label: "Topic"
+    config.add_facet_field :lang, label: "Language", limit: true, show: true, helper_method: :translate_language_code
 
     # Show fields
     config.add_show_field :creator, label: "Author/Creator", helper_method: :creator_links, multi: true, refwork_tag: :A1, type: :primary

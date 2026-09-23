@@ -19,6 +19,45 @@ RSpec.describe PrimoCentralDocument, type: :model do
     expect(doc_config.index_fields).to eql(config.index_fields)
   end
 
+  describe "#export_as_ris" do
+    let(:docs) do
+      {
+        "pnxId" => "article-123",
+        "@TYPE" => "article",
+        "title" => "Article Title",
+        "creator" => ["Doe, Jane"],
+        "contributor" => ["Smith, John"],
+        "publisher" => "Temple University Press",
+        "date" => "2024",
+        "isPartOf" => "Journal Title",
+        "description" => "Article abstract",
+        "subject" => ["Library science"],
+        "isbn" => "9781234567890",
+        "languageId" => "eng",
+        "pnx" => {
+          "addata" => { "doi" => ["10.1234/example"] }
+        }
+      }
+    end
+
+    it "exports mapped article metadata as RIS" do
+      ris = subject.export_as_ris
+
+      expect(ris).to include(
+        "TY  - JOUR",
+        "TI  - Article Title",
+        "ID  - article-123",
+        "A1  - Doe, Jane",
+        "A2  - Smith, John",
+        "Y1  - 2024",
+        "JF  - Journal Title",
+        "DO  - 10.1234/example",
+        "LA  - eng",
+        "ER  -"
+      )
+    end
+  end
+
   context "a pnxs object is loaded" do
     let(:docs) { { "pnxId" => "TN_fizzfuzz" } }
     it "removes TN_ from beginning of id" do

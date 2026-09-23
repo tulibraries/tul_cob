@@ -1,10 +1,20 @@
-<% show_view_config = blacklight_config.view_config(:show) %>
 <% @page_title = t('blacklight.search.show.title', document_title: document_presenter(@document).html_title, application_name: application_name).html_safe %>
-<% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
-  <!-- COinS, for Zotero among others. -->
-  <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_presenter(@document).display_type) %>"></span>
-<% end %>
+<% content_for(:head) { render_link_rel_alternates } %>
 
-<div id="doc_<%= @document.id.to_s.parameterize %>">
-  <%= safe_join(show_view_config.partials.map { |partial| render_document_partial(@document, partial) }) %>
-</div>
+<% show_view_config = blacklight_config.view_config(:show) %>
+<% document_component = show_view_config.document_component %>
+<%= render document_component.new(
+  document: document_presenter(@document),
+  component: :div,
+  show: true,
+  partials: show_view_config.partials
+) do |component| %>
+  <% component.with_title(as: "h1", classes: "", link_to_document: false, actions: false) %>
+
+  <% component.with_footer do %>
+    <% if @document.respond_to?(:export_as_openurl_ctx_kev) %>
+      <!-- COinS, for Zotero among others. -->
+      <span class="Z3988" title="<%= @document.export_as_openurl_ctx_kev(document_presenter(@document).display_type) %>"></span>
+    <% end %>
+  <% end %>
+<% end %>
