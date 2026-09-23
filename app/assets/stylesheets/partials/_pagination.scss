@@ -24,9 +24,12 @@
 			color: $cherry-red;
 		}
 	}
-	.active span {
+	.active span,
+	.active .page-link {
 		background-color: $cherry-red;
 		border-color: $cherry-red;
+		color: $white;
+		cursor: default;
 	}
 
   @media(max-width: 485px) {
@@ -41,11 +44,7 @@
 
 nav .pagination {
   margin: 1.25rem auto;
-}
-
-.pagination li.page-item.active .page-link {
-  background-color: $cherry-red;
-  border-color: $cherry-red;
+  justify-content: center;
 }
 
 .pagination li.page-item a {

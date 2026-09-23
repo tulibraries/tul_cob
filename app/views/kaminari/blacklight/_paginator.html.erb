@@ -14,7 +14,16 @@
     <%= next_page_tag  %>
     <% each_relevant_page do |page| -%>
       <% if page.left_outer? || page.inside_window? -%>
-        <%= page_tag page %>
+        <% if page.current? -%>
+          <%= content_tag(
+                :li,
+                content_tag(:span, page, class: "page-link"),
+                class: "page-item active",
+                aria: { current: "page" }
+              ) %>
+        <% else -%>
+          <%= page_tag page %>
+        <% end -%>
       <% elsif !page.was_truncated? -%>
         <%= gap_tag %>
       <% end -%>
