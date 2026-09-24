@@ -74,7 +74,7 @@
 
         <%= render partial: "shared/modal" %>
 
-        <main id="main-container" class="col-12 m-0 p-lg-0" role="main">
+        <main id="main-container" class="col-12 m-0 p-lg-0" role="main" tabindex="-1">
           <div class="row">
             <% if content_for?(:sidebar) %>
               <section id="content" class="<%= main_content_classes %> order-last" aria-label="<%= t('blacklight.search.documents.aria.search_results') %>">
