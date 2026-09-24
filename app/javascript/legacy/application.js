@@ -79,7 +79,7 @@ $(document).ready(function(){
 });
 
 document.addEventListener("show.blacklight.blacklight-modal", function() {
-	$(".request-btn").find("span.fa-spinner").remove();
+	$(".request-btn, #citeLink").find("span.fa-spinner").remove();
 });
 
 $(document).on('turbo:load', function() {
