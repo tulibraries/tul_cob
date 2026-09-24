@@ -1,7 +1,7 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
 <% component.with_title { t("purchase_order.header") } %>
 
-<% doc_presenter = show_presenter(@document) %>
+<% doc_presenter = document_presenter(@document) %>
 
 <% component.with_body do %>
   <%= form_tag url_for(:controller => controller_name, :action => "purchase_order_action"), :id => "purchase_order_form", :class => "form-horizontal ajax_form", :method => :post do %>
