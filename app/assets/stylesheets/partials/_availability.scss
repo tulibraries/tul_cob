@@ -164,6 +164,10 @@ button.online-btn.collapse-button, a.online-btn.collapse-button {
 }
 
 button.purchase-order,
+button.purchase-order:focus,
+button.purchase-order:hover,
+button.purchase-order:active,
+button.purchase-order:visited,
 button.online-btn,
 button.online-btn:visited,
 button.online-btn:hover,
@@ -186,6 +190,19 @@ a.databases-btn:visited {
   background-color: $crystal-blue;
   color: $midnight-blue;
   font-family: "Faustina-Bold"; 
+}
+
+button.purchase-order,
+button.purchase-order:focus,
+button.purchase-order:hover,
+button.purchase-order:active,
+button.purchase-order:visited,
+a.purchase-order,
+a.purchase-order:focus,
+a.purchase-order:hover,
+a.purchase-order:active,
+a.purchase-order:visited {
+  background-color: $crystal-blue !important;
 }
 
 button.available, button.available:focus, button.available:hover, button.available:active, button.available:visited {
