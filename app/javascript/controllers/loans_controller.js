@@ -45,6 +45,85 @@ export default class extends Controller {
     });
   }
 
+  renewSelected(event) {
+    event.preventDefault()
+
+    const form = event.currentTarget
+    const submitButton = form.querySelector("#renew_selected")
+    if (submitButton) submitButton.disabled = true
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      credentials: "same-origin",
+      headers: {
+        Accept: "application/json",
+        "X-CSRF-Token": getMetaValue("csrf-token")
+      }
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Renewal request failed: ${response.status}`)
+
+        return response.json()
+      })
+      .then((responses) => this.updateRenewalResults(responses))
+      .catch(() => this.showRenewalError())
+      .finally(() => {
+        if (submitButton) submitButton.disabled = false
+      })
+  }
+
+  updateRenewalResults(responses) {
+    const failedLoans = []
+
+    responses.forEach((response) => {
+      const loanId = String(response.loan_id)
+      const dueCell = Array.from(this.element.querySelectorAll("[data-loan-due]"))
+        .find((cell) => cell.dataset.loanDue === loanId)
+      const statusCell = Array.from(this.element.querySelectorAll("[data-loan-status]"))
+        .find((cell) => cell.dataset.loanStatus === loanId)
+
+      if (response.renewed) {
+        if (dueCell) {
+          dueCell.textContent = response.due_date_display
+          dueCell.style.color = "#3A833A"
+        }
+        if (statusCell) {
+          statusCell.textContent = " Renewed "
+          statusCell.style.color = "#3A833A"
+        }
+      } else {
+        failedLoans.push(loanId)
+        if (statusCell) {
+          statusCell.textContent = " Not Renewed "
+          statusCell.style.color = "#951936"
+        }
+      }
+    })
+
+    const warning = this.element.querySelector("#renewal-warning")
+    if (!warning) return
+
+    if (failedLoans.length === 0) {
+      warning.innerHTML = "Your renewal request is successful. If you have any questions, please visit your library's Circulation Desk or <a href='https://library.temple.edu/contact-us'>Ask a Librarian</a>."
+      warning.style.backgroundColor = "#ffffff"
+    } else {
+      warning.innerHTML = "One or more of your loans could not be renewed. If you have any questions, please visit your library's Circulation Desk or <a href='https://library.temple.edu/contact-us'>Ask a Librarian</a>."
+      warning.style.backgroundColor = "#f7d1d1"
+    }
+    warning.style.display = "block"
+    this.deselectallchecks()
+  }
+
+  showRenewalError() {
+    const warning = this.element.querySelector("#renewal-warning")
+    if (!warning) return
+
+    warning.textContent = "We could not process your renewal request. Please try again."
+    warning.style.backgroundColor = "#f7d1d1"
+    warning.style.display = "block"
+  }
+
   selectallchecks() {
     var x = document.getElementsByName("loan_ids[]");
     var y = document.getElementById("checkall");

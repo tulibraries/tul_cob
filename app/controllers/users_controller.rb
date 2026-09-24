@@ -86,6 +86,15 @@ class UsersController < ApplicationController
       @renew_responses = multiple_renew_responses(renew_results, params[:loan_ids])
       logger.info "RENEWAL STATUS:"
       logger.info ap(@renew_responses)
+
+      respond_to do |format|
+        format.json do
+          render json: @renew_responses.map { |response|
+            response.merge(due_date_display: helpers.make_date(response[:due_date]))
+          }
+        end
+        format.js
+      end
     end
   end
 
