@@ -3,10 +3,11 @@
 <div class="document-info-container clearfix flex-row-reverse">
 
 <%# default partial to display solr document fields in catalog index view -%>
+  <% photo_url = web_content_photo_url(document) %>
   <div class="thumbnail float-sm-end" <%= DocumentDecorator.new(document).isbn_data_attribute %> >
-    <% if document['web_photo_display'] %>
+    <% if photo_url %>
       <%= link_to document do %>
-        <%= image_tag document['web_photo_display'].first, :alt => "Image of " + document["title_statement_display"].to_s, :class => "staff_thumbnail"  %>
+        <%= image_tag photo_url, :alt => "Image of " + document["title_statement_display"].to_s, :class => "staff_thumbnail"  %>
       <% end %>
     <% end %>
   </div>

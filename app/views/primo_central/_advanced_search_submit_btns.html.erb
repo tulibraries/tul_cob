@@ -9,7 +9,7 @@
   </div>
 
   <div class="col-md-8 d-flex justify-content-sm-end">
-    <div class="submit-buttons d-flex gap-2 flex-wrap justify-content-sm-end">
+    <div class="submit-buttons d-flex gap-2 flex-wrap justify-content-sm-end align-self-center">
       <%= submit_tag t("blacklight.advanced_search.form.search_btn"), class: "btn btn-primary advanced-search-submit", id: "advanced-search-submit", "data-action": "primo#advanced" %>
 
       <%= link_to t("blacklight.advanced_search.form.start_over"), articles_advanced_path, class: "btn btn-outline-primary advanced-search-start-over", data: { turbo: false } %>

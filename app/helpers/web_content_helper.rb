@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
+require "uri"
+
 module WebContentHelper
+  def web_content_photo_url(document)
+    photo_url = Array(document["web_photo_display"]).first
+    return if photo_url.blank?
+
+    URI.join(Rails.configuration.library_link, photo_url).to_s
+  end
+
   ## Overrides the Links to Show cause we want to go to the real thing
   def solr_web_content_document_path(document, options = {})
     # web_link_display is used for highlights

@@ -204,6 +204,19 @@ module AdvancedHelper
     end
   end
 
+  def advanced_search_start_over_path
+    case advanced_search_type
+    when :journals
+      journals_advanced_path
+    when :articles
+      articles_advanced_path
+    when :databases
+      databases_advanced_path
+    else
+      catalog_advanced_search_path
+    end
+  end
+
   def advanced_search_form_title
     case advanced_search_type
     when :journals
