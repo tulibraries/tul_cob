@@ -17,7 +17,12 @@
                     citation_bookmarks_path({ id: @response.documents }.merge(params)),
                     id: "citeLink",
                     class: "btn bookmarks-tools-btn",
-                    data: { blacklight_modal: "trigger" } %>
+                    data: {
+                      blacklight_modal: "trigger",
+                      controller: "show",
+                      action: "show#loading",
+                      show_target: "href"
+                    } %>
       <% end %>
       <%= link_to "CSV",
                   csv_path,

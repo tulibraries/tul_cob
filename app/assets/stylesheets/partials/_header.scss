@@ -132,8 +132,9 @@
 		display: flex !important;
 		flex-direction: row;
 		flex-wrap: wrap;
-		justify-content: center;
-		width: 100% !important;
+		justify-content: flex-start;
+		max-width: calc(100% - 2rem);
+		width: calc(28.125rem + 1.5rem) !important;
 	}
 }
 
@@ -172,11 +173,17 @@
 
 .navbar-search form {
 	@media(max-width: 1199px) {
-		flex: 0 0 calc(100% - 2rem);
-		margin-left: 1rem;
-		margin-right: 1rem;
+		flex: 0 0 100%;
+		margin-left: 0;
+		margin-right: 0;
 		max-width: none;
-		width: calc(100% - 2rem) !important;
+		width: 100% !important;
+	}
+}
+
+@media(max-width: 485px) {
+	#search-navbar .d-lg-inline-flex {
+		width: calc(20rem + 1.5rem) !important;
 	}
 }
 
@@ -190,6 +197,7 @@
 #bookmarks_nav,
 .user-logout {
   font-size: 1rem;
+  line-height: 1.5;
   width: auto;
   white-space: nowrap;
 
@@ -221,38 +229,6 @@ a#bookmarks_nav {
 	color: $cherry-red;
 }
 
-a.advanced_search.btn,
-a.advanced_search.btn-secondary {
-	background: transparent;
-	border: 0;
-	border-radius: 0;
-	box-shadow: none;
-	color: $cherry-red;
-	font-family: "Roboto";
-	font-size: 1rem;
-	font-weight: 400;
-	line-height: 1.5;
-	margin-left: 2rem;
-	padding: 0;
-	text-decoration: none;
-
-	@media(max-width: 1199px) {
-		margin-left: 0;
-		margin: 0.25rem 0.5rem 0;
-	}
-}
-
-a.advanced_search.btn:hover,
-a.advanced_search.btn:focus,
-a.advanced_search.btn-secondary:hover,
-a.advanced_search.btn-secondary:focus {
-	background: transparent;
-	border: 0;
-	box-shadow: none;
-	color: $cherry-red;
-	text-decoration: underline;
-}
-
 .basic-search-group{
 	flex: 0 0 22rem;
 	margin-bottom: 0;
@@ -278,7 +254,12 @@ a.advanced_search.btn-secondary:focus {
 	margin-left: 1rem;
 
 	@media(max-width: 1199px) {
-		display: contents !important;
+		align-items: baseline !important;
+		display: flex !important;
+		flex: 0 0 100%;
+		justify-content: flex-start;
+		margin-left: 0;
+		width: 100%;
 	}
 
 	@media(max-width: 485px) {
@@ -288,7 +269,7 @@ a.advanced_search.btn-secondary:focus {
 
 .search-right-links .user-util-list {
 	@media(max-width: 1199px) {
-		display: contents !important;
+		display: flex !important;
 	}
 }
 
