@@ -206,6 +206,33 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
+    context "blacklight 8 advanced form with clause operators" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { field: "any", query: '"absense"', match: "contains" },
+            "1" => { field: "any", query: "college students university", match: "contains", op: "must" },
+            "2" => { field: "any", query: '"medical school"', match: "contains", op: "must_not" }
+          }
+        )
+      end
+
+      before do
+        controller = double(action_name: "advanced_search")
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
+        subject.process_advanced_search(primo_central_parameters)
+      end
+
+      it "applies each clause operator to the preceding query" do
+        expected = [
+          { "value" => '"absense"', "field" => :any, "precision" => "contains", "operator" => "AND" },
+          { "value" => "college students university", "field" => :any, "precision" => "contains", "operator" => "NOT" },
+          { "value" => '"medical school"', "field" => :any, "precision" => "contains", "operator" => nil }
+        ]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
     context "blacklight 8 advanced form with blank queries" do
       let(:params) do
         ActiveSupport::HashWithIndifferentAccess.new(

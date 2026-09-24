@@ -98,13 +98,15 @@ module Blacklight::PrimoCentral
       clauses = search_state.params[:clause] || {}
       default_operator = search_state.params[:op] == "must" ? "AND" : "OR"
       use_clause_operators = search_state.params[:op].blank?
+      clause_values = clauses.values
 
-      build_query = clauses.map.with_index { |(_, clause), index|
+      build_query = clause_values.filter_map.with_index { |clause, index|
         field = to_primo_field(clause[:field] || clause["field"])
         value = clause[:query] || clause["query"]
         precision = clause[:match] || clause["match"] || "contains"
-        operator = if use_clause_operators && index.positive?
-          to_primo_boolean_operator(clause[:op] || clause["op"])
+        operator = if use_clause_operators
+          next_clause = clause_values[index + 1]
+          next_clause && to_primo_boolean_operator(next_clause[:op] || next_clause["op"])
         else
           default_operator
         end
