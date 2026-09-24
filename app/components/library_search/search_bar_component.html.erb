@@ -1,4 +1,4 @@
-<%= form_tag @url, method: @method, class: @classes.join(" "), role: "search", aria: { label: scoped_t("submit") }, **@form_options do %>
+<%= form_tag @url, method: @method, class: @classes.join(" "), role: "search", **@form_options do %>
   <%= render Blacklight::HiddenSearchStateComponent.new(params: @params) %>
   <% if search_fields.length > 1 %>
     <label for="search_field" class="sr-only visually-hidden"><%= scoped_t("search_field.label") %></label>
@@ -27,8 +27,4 @@
       <%= search_button || render(LibrarySearch::SearchButtonComponent.new(id: "#{@prefix}search", text: scoped_t("submit"))) %>
     </div>
   </div>
-<% end %>
-
-<% if advanced_search_enabled? %>
-  <%= link_to advanced_search_link_text, advanced_search_url, class: "advanced_search btn btn-secondary", data: { turbo: false } %>
 <% end %>

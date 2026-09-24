@@ -102,6 +102,43 @@ module AdvancedHelper
     blacklight_config.fetch(:advanced_search, {})
   end
 
+  def render_advanced_search_link
+    return unless advanced_search_link_visible?
+
+    link_to(
+      t("blacklight.advanced_search.#{advanced_search_type}_link"),
+      advanced_search_link_url,
+      class: "advanced_search",
+      data: { turbo: false }
+    )
+  end
+
+  def advanced_search_link_visible?
+    [
+      search_catalog_path,
+      search_journals_path,
+      search_path,
+      search_databases_path,
+      everything_path,
+      root_path
+    ].any? { |path| current_page?(path) }
+  end
+
+  def advanced_search_link_url
+    query = advanced_params(params)
+
+    case advanced_search_type
+    when :journals
+      journals_advanced_path(query)
+    when :articles
+      articles_advanced_path(query)
+    when :databases
+      databases_advanced_path(query)
+    else
+      catalog_advanced_search_path(query)
+    end
+  end
+
   def clause_value_for_legacy_key(key)
     match = key.to_s.match(/\A([fq])_(\d+)\z/)
     return unless match

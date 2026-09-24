@@ -1,5 +1,10 @@
 <%= render Blacklight::SearchNavbarComponent.new(blacklight_config: blacklight_config) %>
 
 <div class="d-inline-flex search-right-links align-items-center flex-wrap gap-3">
+  <% if advanced_search_config[:enabled] %>
+    <div class="navbar-form">
+      <%= render_advanced_search_link %>
+    </div>
+  <% end %>
   <%= render "shared/user_util_links" %>
 </div>
