@@ -80,6 +80,16 @@ $(document).ready(function(){
 
 document.addEventListener("show.blacklight.blacklight-modal", function() {
 	$(".request-btn, #citeLink").find("span.fa-spinner").remove();
+
+	// This was added to stop the background from shifting when modals are opened
+  const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+  document.body.style.setProperty("--blacklight-modal-scrollbar-width", `${scrollbarWidth}px`);
+  document.body.classList.add("blacklight-modal-open");
+});
+
+document.addEventListener("hide.blacklight.blacklight-modal", function() {
+  document.body.classList.remove("blacklight-modal-open");
+  document.body.style.removeProperty("--blacklight-modal-scrollbar-width");
 });
 
 $(document).on('turbo:load', function() {
