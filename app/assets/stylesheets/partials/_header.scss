@@ -194,8 +194,7 @@
 }
 
 .navbar-form,
-#bookmarks_nav,
-.user-logout {
+#bookmarks_nav {
   font-size: 1rem;
   line-height: 1.5;
   width: auto;
@@ -227,25 +226,6 @@ a.advanced_search:focus,
 a.advanced_search:active,
 a#bookmarks_nav {
 	color: $cherry-red;
-}
-
-.basic-search-group{
-	flex: 0 0 22rem;
-	margin-bottom: 0;
-	max-width: 22rem;
-	padding-left: 0;
-	padding-right: 0;
-	width: 22rem;
-
-	@media(max-width: 485px) {
-		width: 20rem;
-	}
-}
-
-.blacklight-search .basic-search-group {
-	flex-basis: 19rem;
-	max-width: 19rem;
-	width: 19rem;
 }
 
 .search-right-links {
