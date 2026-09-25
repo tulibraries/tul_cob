@@ -14,7 +14,9 @@
 
   <div class="float-md-start col-md-12 ms-0">
     <%= render "show_secondary_fields", :document => document %>
-    <%= render "staff_view_link" %>
+    <% unless controller_name == "databases" %>
+      <%= render "staff_view_link" %>
+    <% end %>
     <div id="record-page-query-lists" class="no-gutters query-heading hidden">
       <h2>Related items</h2>
       <hr/>

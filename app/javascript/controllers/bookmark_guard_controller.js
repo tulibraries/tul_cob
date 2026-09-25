@@ -7,9 +7,17 @@ export default class extends Controller {
   }
 
   handleBookmarkClick(event) {
-    if (!this.guestValue) return
     const form = event.target.closest("form.bookmark-toggle")
     if (!form) return
+
+    const checkbox = form.querySelector('[data-checkboxsubmit-target="checkbox"]')
+    if (checkbox?.disabled) {
+      event.preventDefault()
+      event.stopImmediatePropagation()
+      return
+    }
+
+    if (!this.guestValue) return
     if (!this.addBookmarkAction(form)) return
     this.showWarning()
   }
