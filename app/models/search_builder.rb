@@ -372,6 +372,10 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
   end
 
+  def blacklight_params
+    processed_search_params
+  end
+
   def params_process_chain
     # These named procedures MUST take a value, and an operator as arguments
     # and return a value that can be processed by the next procedure on the
