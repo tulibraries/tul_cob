@@ -6,8 +6,9 @@ class PrimoCentralPresenter < IndexPresenter
   end
 
   def with_subtitle(title)
-    title << ": #{document[:subtitle]}" if (document.key?(:subtitle) && document[:subtitle])
-    title
+    return title unless document.key?(:subtitle) && document[:subtitle]
+
+    "#{title}: #{document[:subtitle]}"
   end
 
   def purchase_order_button
