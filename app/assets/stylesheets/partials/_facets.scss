@@ -32,27 +32,10 @@
 }
 
 /* APPLIED FILTERS AND PARAMETERS */
-#startOverLink, #start_over, #filter-mobile {
+#start_over, #filter-mobile {
 	color: $white;
   	background-color: $royal-blue;
     border-color: $royal-blue;
-}
-
-#facet-icons {
-	float: left;
-	height: 3.125rem;
-	width: 3.125rem;
-}
-
-#facet-filter-icon {
-	height: 3.125rem;
-	width: 3.125rem;
-}
-
-.limit-search {
-	@media(max-width: 775px) {
-		background-color: $lighter-grey;
-	}
 }
 
 span .remove-constraints {
@@ -164,7 +147,6 @@ span.constraint-value {
   }
 }
 
-.facet-field-heading a,
 .facet-field-heading .accordion-button {
 	color: $midnight-blue;
 	font-size: 1rem;
@@ -178,7 +160,6 @@ span.constraint-value {
 	}
 }
 
-.facet-field-heading a:hover,
 .facet-field-heading .accordion-button:hover {
 	color: $cherry-red;
 }
@@ -198,14 +179,6 @@ span.constraint-value {
   border-top: 1px solid $light-grey;
 }
 
-.blacklight-lc_facet,
-.blacklight-library_facet {
-  .accordion-body {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
 .facet-limit-active {
   border: 1px solid $lighter-grey !important;
 }
@@ -213,22 +186,15 @@ span.constraint-value {
 .facet-limit-active .facet-field-heading {
 	background-color: $cherry-red !important;
 
-	a,
-  .accordion-button {
+	.accordion-button {
     background-color: transparent;
 		color: $white;
 	}
 }
 
 .facet-limit-active .collapsed::after,
-.facet-limit-active .collapse-toggle::after,
 .facet-limit-active .accordion-button::after {
 	color: $white !important;
-}
-
-.facet-leaf-node {
-  padding-left: 0.3125rem !important;
-
 }
 
 .facet-values {
@@ -267,26 +233,6 @@ span.constraint-value {
     font-weight: bold;
     padding-left: calc($spacer / 2);
 	}
-}
-
-.card-header.collapse-toggle {
-  margin-bottom: 0;
-
-  &::after {
-    color: $grey;
-    content: "\f054";
-    font-family: "Font Awesome 5 Free";
-    font-size: 1rem;
-    font-weight: 900;
-    float: right;
-    padding-top: 0.625rem;
-    transform: rotate(90deg);
-    display: inline-block;
-  }
-}
-
-.card-header.collapse-toggle.collapsed::after {
-  transform: rotate(0deg);
 }
 
 #facet-panel-collapse,
