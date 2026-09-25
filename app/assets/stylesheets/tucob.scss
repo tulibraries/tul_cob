@@ -109,18 +109,6 @@ a.skip-main:focus {
     z-index: 999;
 }
 
-#skip-link:focus-within > .container-xl > a:not(:focus) {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 .form-control:focus {
   border-color: gray;
   box-shadow: inset 0 0.0625rem 0.0625rem rgba(96, 96, 96, 0.075), 0 0 0.5rem rgba(96, 96, 96, 0.6);
