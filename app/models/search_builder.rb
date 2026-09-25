@@ -1,12 +1,17 @@
 # frozen_string_literal: true
 
+require "blacklight_advanced_search/advanced_search_builder"
+
 class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
+  include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include BlacklightRangeLimit::RangeLimitBuilder
   include BentoSearchBuilderBehavior
   include CobIndex::Macros::Wrapper
 
   self.default_processor_chain += %i[
+    add_edismax_advanced_parse_q_to_solr
+    add_advanced_search_to_solr
     add_lc_range_search_to_solr
     spellcheck
     filter_suppressed
@@ -23,13 +28,33 @@ class SearchBuilder < Blacklight::SearchBuilder
   MAX_CITATION_QUERY_TERMS = 12
 
   self.default_processor_chain += %i[
-    force_query_parser_for_advanced_search
     truncate_overlong_search_query
     manage_long_queries_for_clause_limits
     normalize_def_type_for_simple_queries
   ]
 
+  def add_edismax_advanced_parse_q_to_solr(solr_params)
+    add_advanced_parse_q_to_solr(solr_params)
+
+    unless is_advanced_search?
+      solr_params.delete(:json)
+      solr_params.delete("json")
+    end
+
+    q_key = solr_params.key?(:q) ? :q : "q"
+    return unless solr_params[q_key].respond_to?(:to_str)
+
+    q_op_key = solr_params.key?(:"q.op") ? :"q.op" : "q.op"
+    return unless solr_params[q_key].include?("{!dismax")
+
+    solr_params[q_key] = solr_params[q_key].gsub("{!dismax", "{!edismax")
+    solr_params[q_op_key] = "OR"
+  end
+
   def add_adv_search_clauses(solr_parameters)
+    clause_params = search_state.clause_params
+    return super if clause_params.present? && clause_params.size == 1
+
     clauses = advanced_search_clauses
     return if clauses.empty?
 
@@ -182,28 +207,6 @@ class SearchBuilder < Blacklight::SearchBuilder
                "qf"
     end
     solr_params[qf_key] = "text"
-
-    def_type_key = if solr_params.key?("defType")
-      "defType"
-                   elsif solr_params.key?(:defType)
-                     :defType
-                   else
-                     "defType"
-    end
-    solr_params[def_type_key] = "lucene"
-  end
-
-  def force_query_parser_for_advanced_search(solr_params)
-    return unless is_advanced_search?
-
-    df_key = if solr_params.key?("df")
-      "df"
-             elsif solr_params.key?(:df)
-               :df
-             else
-               "df"
-    end
-    solr_params[df_key] ||= "text"
 
     def_type_key = if solr_params.key?("defType")
       "defType"

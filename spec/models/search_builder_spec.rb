@@ -9,6 +9,92 @@ RSpec.describe SearchBuilder , type: :model do
 
   subject { search_builder }
 
+  describe "advanced search query parsing" do
+    it "uses edismax for parsed AND queries" do
+      solr_params = described_class
+        .new(context)
+        .with(q: "cat AND dog", search_field: "all_fields")
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq("+cat +dog")
+      expect(solr_params["json"]).to be_nil
+    end
+
+    it "uses edismax for parsed OR queries" do
+      solr_params = described_class
+        .new(context)
+        .with(q: "cat OR dog", search_field: "all_fields")
+        .processed_parameters
+
+      expect(solr_params["q"]).to include("{!edismax mm=1}cat dog")
+      expect(solr_params["q.op"]).to eq("OR")
+      expect(solr_params["json"]).to be_nil
+    end
+
+    it "uses the edismax parser for OR queries in an advanced all-fields clause" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          search_field: "advanced",
+          q_1: "cat OR dog",
+          f_1: "all_fields",
+          operator: { q_1: "contains" },
+          clause: {
+            "0" => {
+              field: "all_fields",
+              query: "cat OR dog",
+              match: "contains"
+            }
+          }
+        )
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq('_query_:"{!edismax mm=1}cat dog"')
+      expect(solr_params["q.op"]).to eq("OR")
+      expect(solr_params["json"]).to be_nil
+    end
+
+    it "combines advanced clauses with OR when the radio button is selected" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          search_field: "advanced",
+          q_1: "cat",
+          f_1: "all_fields",
+          q_2: "dog",
+          f_2: "all_fields",
+          operator: { q_1: "contains", q_2: "contains" },
+          op_1: "OR",
+          clause: {
+            "0" => {
+              field: "all_fields",
+              query: "cat",
+              match: "contains"
+            },
+            "1" => {
+              field: "all_fields",
+              query: "dog",
+              match: "contains",
+              op: "should"
+            }
+          }
+        )
+        .processed_parameters
+
+      expect(solr_params["json"]).to eq(
+        "query" => {
+          "bool" => {
+            "should" => [
+              { "edismax" => { "query" => "cat" } },
+              { "edismax" => { "query" => "dog" } }
+            ],
+            "minimum_should_match" => 1
+          }
+        }
+      )
+    end
+  end
+
   describe "clause limit protections" do
     let(:blacklight_config) do
       Blacklight::Configuration.new.tap do |config|
@@ -37,7 +123,6 @@ RSpec.describe SearchBuilder , type: :model do
 
     it "includes the clause-limit search processors" do
       expect(described_class.default_processor_chain).to include(
-        :force_query_parser_for_advanced_search,
         :truncate_overlong_search_query,
         :manage_long_queries_for_clause_limits,
         :normalize_def_type_for_simple_queries
@@ -290,7 +375,7 @@ RSpec.describe SearchBuilder , type: :model do
           }
           config.advanced_search = Blacklight::OpenStructWithHashAccess.new(
             url_key: "advanced",
-            query_parser: "lucene"
+            query_parser: "edismax"
           )
 
           config.add_search_field("title") do |field|
