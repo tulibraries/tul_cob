@@ -262,14 +262,28 @@ a#bookmarks_nav {
 		width: 100%;
 	}
 
-	@media(max-width: 485px) {
-		width: auto;
+	@media(max-width: 575px) {
+		align-items: center !important;
+		flex-direction: column !important;
+		width: 100%;
 	}
 }
 
 .search-right-links .user-util-list {
 	@media(max-width: 1199px) {
 		display: flex !important;
+	}
+
+	@media(max-width: 575px) {
+		flex-direction: column !important;
+		row-gap: 1rem;
+	}
+}
+
+@media(max-width: 575px) {
+	.search-right-links .navbar-form,
+	.search-right-links #bookmarks_nav {
+		padding-left: 0;
 	}
 }
 
