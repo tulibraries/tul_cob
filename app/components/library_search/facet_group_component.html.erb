@@ -10,6 +10,12 @@
      end %>
 
 <%= content_tag :div, id: @id, class: "facets sidenav facets-toggleable-md w-100" do %>
+  <% if helpers.controller_name == "databases" %>
+    <p class="databases-browse-link mb-2">
+      <%= link_to t("databases.browse_all_text"), t("databases.browse_all_href") %>
+    </p>
+  <% end %>
+
   <div class="facets-header navbar p-0 mt-4 mb-0">
     <%= content_tag :h2, @title, class: "d-none d-md-block limit-search-heading" if @title %>
   </div>
