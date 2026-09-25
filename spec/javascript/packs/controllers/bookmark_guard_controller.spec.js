@@ -14,7 +14,7 @@ describe("BookmarkGuardController", () => {
         <form class="bookmark-toggle">
           <input type="hidden" name="_method" value="${method}">
           <label class="toggle-bookmark">
-            <input class="toggle-bookmark" type="checkbox">
+            <input class="toggle-bookmark" type="checkbox" data-checkboxsubmit-target="checkbox">
             Bookmark
           </label>
         </form>
@@ -77,6 +77,27 @@ describe("BookmarkGuardController", () => {
 
     const warning = document.querySelector("[data-guest-bookmark-warning]")
     expect(warning).toBeNull()
+  })
+
+  it("ignores bookmark clicks while a request is in progress", async () => {
+    setupDom({ guest: false })
+    startController()
+    await new Promise(resolve => setTimeout(resolve, 0))
+
+    const input = document.querySelector("input.toggle-bookmark")
+    input.disabled = true
+    const root = document.getElementById("bookmark-guard-root")
+    const controller = application.getControllerForElementAndIdentifier(root, "bookmark-guard")
+    const event = {
+      target: input,
+      preventDefault: jest.fn(),
+      stopImmediatePropagation: jest.fn()
+    }
+
+    controller.handleBookmarkClick(event)
+
+    expect(event.preventDefault).toHaveBeenCalled()
+    expect(event.stopImmediatePropagation).toHaveBeenCalled()
   })
 
   it("does not show a warning when unbookmarking", async () => {
