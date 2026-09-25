@@ -25,6 +25,9 @@ const handleSkipLinkClick = (event) => {
 
   event.preventDefault()
   window.history.pushState({}, "", link.hash)
+  if (target.tabIndex < 0 && !target.hasAttribute("tabindex")) {
+    target.setAttribute("tabindex", "-1")
+  }
   target.focus({ preventScroll: true })
   target.scrollIntoView()
   window.setTimeout(initializeSelectize, 0)

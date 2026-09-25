@@ -109,6 +109,30 @@ a.skip-main:focus {
     z-index: 999;
 }
 
+#skip-link:focus-within {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1031;
+    background-color: $white;
+}
+
+#skip-link:focus-within > .container-xl > a {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    width: auto !important;
+    height: auto !important;
+    padding: 0.5rem !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    border: 0 !important;
+    z-index: auto !important;
+}
+
 .form-control:focus {
   border-color: gray;
   box-shadow: inset 0 0.0625rem 0.0625rem rgba(96, 96, 96, 0.075), 0 0 0.5rem rgba(96, 96, 96, 0.6);

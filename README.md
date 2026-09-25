@@ -15,7 +15,7 @@ The following repositories are also critical components for Solr indexing and ot
 
 
 [![View performance data on Skylight](https://badges.skylight.io/status/UMsaUKxxdxMC.svg)](https://oss.skylight.io/app/applications/UMsaUKxxdxMC)
-[![Coverage Status](https://coveralls.io/repos/github/tulibraries/tul_cob/badge.svg?branch=main)](https://coveralls.io/github/tulibraries/tul_cob?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/tulibraries/tul_cob/badge.svg?branch=main&kill_cache=1)](https://coveralls.io/github/tulibraries/tul_cob?branch=main&kill_cache=1)
 
 ## Getting started
 

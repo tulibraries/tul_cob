@@ -343,6 +343,21 @@ RSpec.describe AlmawsController, type: :controller do
 
         expect(Alma::BibRequest).to have_received(:submit).with(hash_including(description: ""))
       end
+
+      it "shows an error and notifies Honeybadger when a hold request fails" do
+        allow(controller).to receive(:same_pickup_item_request_options).and_return(nil)
+        allow(Alma::BibRequest).to receive(:submit).and_raise(StandardError, "request failed")
+        allow(Honeybadger).to receive(:notify)
+
+        post :send_hold_request, params: {
+          mms_id: "bib-1",
+          hold_pickup_location: "MAIN",
+          material_type: "BOOK"
+        }
+
+        expect(Honeybadger).to have_received(:notify).with(a_string_including("request failed"))
+        expect(flash[:notice]).to include("There was an error processing your request")
+      end
     end
   end
 
@@ -372,6 +387,94 @@ RSpec.describe AlmawsController, type: :controller do
       it "doesn't raise an exception for correctly formatted material type" do
         post(:send_hold_request, params: { material_type: { value: "BOOK", mms_id: ""  } })
         expect { response }.not_to raise_error
+      end
+
+      it "submits a bib request when the request level is bib" do
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "MAIN", loggable: {})
+        confirmation = instance_double(RequestConfirmation, message: "success")
+        allow(Alma::BibRequest).to receive(:submit).and_return(response_double)
+        allow(RequestConfirmation).to receive(:new).and_return(confirmation)
+
+        post :send_asrs_request, params: {
+          mms_id: "bib-1",
+          asrs_request_level: "bib",
+          asrs_description: "Book",
+          asrs_pickup_location: "MAIN",
+          material_type: "BOOK",
+          asrs_comment: "Comment"
+        }
+
+        expect(Alma::BibRequest).to have_received(:submit).with(
+          hash_including(
+            mms_id: "bib-1",
+            request_type: "HOLD",
+            pickup_location_library: "MAIN",
+            description: "Book"
+          )
+        )
+        expect(flash[:notice]).to eq("success")
+      end
+
+      it "submits an item request for the first matching ASRS item" do
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "ASRS", loggable: {})
+        confirmation = instance_double(RequestConfirmation, message: "success")
+        allow(Alma::ItemRequest).to receive(:submit).and_return(response_double)
+        allow(RequestConfirmation).to receive(:new).and_return(confirmation)
+
+        post :send_asrs_request, params: {
+          mms_id: "bib-1",
+          asrs_request_level: "item",
+          asrs_description: "Book",
+          asrs_pickup_location: "MAIN",
+          material_type: "BOOK",
+          available_asrs_items: [
+            { description: "Different book", holding_id: "holding-1", item_pid: "item-1" },
+            { description: "Book", holding_id: "holding-2", item_pid: "item-2" },
+            { description: "Book", holding_id: "holding-3", item_pid: "item-3" }
+          ]
+        }
+
+        expect(Alma::ItemRequest).to have_received(:submit).with(
+          hash_including(holding_id: "holding-2", item_pid: "item-2")
+        )
+        expect(Alma::ItemRequest).to have_received(:submit).once
+        expect(flash[:notice]).to eq("success")
+      end
+
+      it "shows an error when no ASRS item matches the description" do
+        allow(Alma::ItemRequest).to receive(:submit)
+        allow(Alma::BibRequest).to receive(:submit)
+
+        post :send_asrs_request, params: {
+          mms_id: "bib-1",
+          asrs_request_level: "item",
+          asrs_description: "Book",
+          asrs_pickup_location: "MAIN",
+          material_type: "BOOK",
+          available_asrs_items: [
+            { description: "Different book", holding_id: "holding-1", item_pid: "item-1" }
+          ]
+        }
+
+        expect(Alma::ItemRequest).not_to have_received(:submit)
+        expect(Alma::BibRequest).not_to have_received(:submit)
+        expect(flash[:notice]).to include("There was an error processing your request")
+      end
+
+      it "notifies Honeybadger and shows an error when the ASRS request fails" do
+        allow(Alma::BibRequest).to receive(:submit).and_raise(StandardError, "request failed")
+        allow(Honeybadger).to receive(:notify)
+
+        post :send_asrs_request, params: {
+          mms_id: "bib-1",
+          asrs_request_level: "bib",
+          asrs_description: "Book",
+          asrs_pickup_location: "MAIN",
+          material_type: "BOOK"
+        }
+
+        expect(Honeybadger).to have_received(:notify).with(a_string_including("request failed"))
+        expect(flash[:notice]).to include("There was an error processing your request")
       end
     end
   end
@@ -403,6 +506,14 @@ RSpec.describe AlmawsController, type: :controller do
               }]
             )
           )
+      end
+
+      it "shows an error when digitization submission fails" do
+        allow(Alma::BibRequest).to receive(:submit).and_raise(StandardError, "request failed")
+
+        post :send_digitization_request, params: { mms_id: "bib-1" }
+
+        expect(flash[:notice]).to include("There was an error processing your request")
       end
     end
   end
@@ -439,6 +550,107 @@ RSpec.describe AlmawsController, type: :controller do
         post(:send_booking_request, params: { booking_start_date: "2018-08-16", booking_end_date: "2018-08-20", mms_id: ""  })
         expect { response }.not_to raise_error
       end
+
+      it "confirms a successful booking request" do
+        response_double = double("request_response", request_id: "1", managed_by_library_code: "MAIN", loggable: {})
+        confirmation = instance_double(RequestConfirmation, message: "success")
+        allow(Alma::BibRequest).to receive(:submit).and_return(response_double)
+        allow(RequestConfirmation).to receive(:new).and_return(confirmation)
+
+        post :send_booking_request, params: {
+          mms_id: "bib-1",
+          booking_start_date: "2018-08-16",
+          booking_end_date: "2018-08-20",
+          booking_description: "Book",
+          booking_pickup_location: "MAIN",
+          material_type: "BOOK"
+        }
+
+        expect(Alma::BibRequest).to have_received(:submit).with(
+          hash_including(
+            mms_id: "bib-1",
+            request_type: "BOOKING",
+            booking_start_date: Date.new(2018, 8, 16),
+            booking_end_date: Date.new(2018, 8, 20)
+          )
+        )
+        expect(flash[:notice]).to eq("success")
+      end
+
+      it "reports when the item is already booked" do
+        allow(Alma::BibRequest).to receive(:submit).and_raise(
+          Alma::BibRequest::ItemAlreadyExists.new("already booked")
+        )
+
+        post :send_booking_request, params: { mms_id: "bib-1" }
+
+        expect(flash[:notice]).to eq("This item is already booked for those dates.")
+      end
+
+      it "reports when booking submission fails" do
+        allow(Alma::BibRequest).to receive(:submit).and_raise(StandardError, "request failed")
+
+        post :send_booking_request, params: { mms_id: "bib-1" }
+
+        expect(flash[:notice]).to include("There was an error processing your request")
+      end
+    end
+  end
+
+  describe "request option branches" do
+    let(:request_data) do
+      instance_double(
+        RequestData,
+        material_types_and_descriptions: [],
+        material_types: [],
+        pickup_locations: [],
+        item_level_locations: [],
+        equipment_locations: [],
+        booking_locations: [],
+        request_level: "item",
+        item_holding_ids: { "holding-1" => "item-1" },
+        item_holding_ids_backup: { "holding-2" => "item-1" }
+      )
+    end
+    let(:document) do
+      SolrDocument.new("format" => ["Book"], "creator_display" => ["Author"])
+    end
+
+    before do
+      sign_in @user, scope: :user
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:fetch).and_return(document)
+      allow(controller).to receive(:get_bib_items).and_return([])
+      allow(RequestData).to receive(:new).and_return(request_data)
+    end
+
+    it "loads bib request options and document metadata" do
+      request_options = double("request_options", request_options: ["option"], loggable: {})
+      allow(request_data).to receive(:request_level).and_return("bib")
+      allow(Alma::RequestOptions).to receive(:get).and_return(request_options)
+
+      get :request_options, params: { mms_id: "bib-1" }
+
+      expect(Alma::RequestOptions).to have_received(:get).with("bib-1", user_id: @user.uid)
+      expect(controller.instance_variable_get(:@books)).to eq(["Book"])
+      expect(controller.instance_variable_get(:@author)).to eq("Author")
+      expect(controller.instance_variable_get(:@request_options)).to eq(request_options)
+    end
+
+    it "retries item request options with backup holding ids when the first result is empty" do
+      empty_options = double("empty_options", request_options: nil, loggable: {})
+      backup_options = double("backup_options", request_options: ["option"], loggable: {})
+      allow(Alma::ItemRequestOptions).to receive(:get).and_return(empty_options, backup_options)
+
+      get :request_options, params: { mms_id: "bib-1" }
+
+      expect(Alma::ItemRequestOptions).to have_received(:get).with(
+        "bib-1", "holding-1", "item-1", user_id: @user.uid
+      )
+      expect(Alma::ItemRequestOptions).to have_received(:get).with(
+        "bib-1", "holding-2", "item-1", user_id: @user.uid
+      )
+      expect(controller.instance_variable_get(:@request_options)).to eq(backup_options)
     end
   end
 
