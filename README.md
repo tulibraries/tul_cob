@@ -129,13 +129,12 @@ If Docker is available, we defined a Makefile with many useful commands.
 * To load sample data, run ```DO_INGEST=yes make up``` or ```make load-data```
 * To reload solr configs, run ```make reload-configs```
 * To attatch to the running app container (good for debugging) ```make attach```
-* Take note of the the .docker/Dockerfile.prod image version for the next steps
-* To build prod image: ```make build ASSETS_PRECOMPILE=yes PLATFORM=arm64 BUILD_IMAGE=ruby:<.docker/Dockerfile.prod version>```
-  * `ASSETS_PRECOMPILE=no` by default
+* The supported application Dockerfile is `.docker/app/Dockerfile`.
+* To build the production image: ```make build PLATFORM=arm64 BASE_IMAGE=ruby:<version>```
   * `PLATFORM=x86_64` by default
-  * `BASE_IMAGE=harbor.k8s.temple.edu/library/ruby:<.docker/Dockerfile.prod version>` by default
+  * `BASE_IMAGE=harbor.k8s.temple.edu/library/ruby:4.0-alpine` by default
 * To deploy prod image: ```make deploy VERSION=x```  VERSION=latest by default
-* To run security check on image: ```make secure``` depends on trivy (brew install aquasecurity/trivy/trivy)
+* To run the security check on the image: ```make scan``` depends on trivy (brew install aquasecurity/trivy/trivy)
 * To run a shell with image: ```make shell```
 
 #### Platform Considerations

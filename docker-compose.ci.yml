@@ -24,7 +24,10 @@ services:
   app:
     build:
       context: .
-      dockerfile: .docker/ci-app/Dockerfile.ci
+      dockerfile: .docker/app/Dockerfile
+      target: builder
+    user: "0"
+    command: ["tail", "-f", "/dev/null"]
     shm_size: "1gb"
     ports:
       - mode: ingress
@@ -39,6 +42,7 @@ services:
       RAILS_ENV: test
       RACK_ENV: test
       BUNDLE_PATH: "vendor/bundle"
+      BUNDLE_WITHOUT: ""
       SOLR_URL: "http://solr:8983/solr/blacklight"
       SOLR_AZ_URL: "http://solr:8983/solr/tul_cob-az"
       SOLR_WEB_CONTENT_URL: "http://solr:8983/solr/tul_cob-web"

@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
-      target: production
+      target: runner
     ports:
       - "3000"
     environment:

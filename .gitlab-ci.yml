@@ -31,7 +31,7 @@ stages:
 lint:
   extends: .lint_docker
   variables:
-    DF: ".docker/app/Dockerfile.prod"
+    DF: ".docker/app/Dockerfile"
   except:
     - tags
 
@@ -39,7 +39,7 @@ build:
   stage: build
   extends: .build_and_scan_image
   variables:
-    DF: ".docker/app/Dockerfile.prod"
+    DF: ".docker/app/Dockerfile"
   except:
     - tags
     

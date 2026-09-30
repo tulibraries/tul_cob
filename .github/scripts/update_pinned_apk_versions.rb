@@ -4,8 +4,8 @@
 require "open3"
 require "shellwords"
 
-DOCKERFILE_PATH = ENV.fetch("DOCKERFILE_PATH", ".docker/app/Dockerfile.prod")
-BASE_IMAGE = ENV.fetch("APK_CHECK_BASE_IMAGE", "ruby:3.4-alpine")
+DOCKERFILE_PATH = ENV.fetch("DOCKERFILE_PATH", ".docker/app/Dockerfile")
+BASE_IMAGE = ENV.fetch("APK_CHECK_BASE_IMAGE", "ruby:4.0-alpine")
 SUMMARY_PATH = ENV["APK_UPDATE_SUMMARY_PATH"]
 
 def read_dockerfile

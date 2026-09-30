@@ -16,6 +16,7 @@ README.md
 /solr
 /sample_data
 /rspec
+/path
 /env.*
 
 ## Copied from .gitignore

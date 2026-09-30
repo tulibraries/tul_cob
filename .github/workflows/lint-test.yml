@@ -41,6 +41,7 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
+          docker compose -f docker-compose.ci.yml build --build-arg BASE_IMAGE=ruby:4.0-alpine app
           docker compose -f docker-compose.ci.yml up -d solr app
           echo "⏳ waiting for solr on localhost:8983…"
           for i in {1..60}; do
@@ -55,8 +56,11 @@ jobs:
           docker compose -f docker-compose.ci.yml logs solr
           exit 1
 
+      - name: Install browser dependencies
+        run: $DC apk add -U --no-cache chromium chromium-chromedriver
+
       - name: Install gems inside container (uses cache tarballs)
-        run: $DC bundle install --jobs 4 --retry 3
+        run: $DC sh -c 'bundle config unset without || true; BUNDLE_WITHOUT= bundle install --jobs 4 --retry 3'
 
       - name: Install Javascript dependencies in container
         run: $DC bundle exec yarn install --frozen-lockfile
