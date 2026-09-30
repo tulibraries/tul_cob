@@ -1,4 +1,6 @@
 <% row_count = advanced_search_config[:fields_row_count] %>
+<% clause_row_count = (params["clause"].respond_to?(:keys) ? params["clause"].keys : []).map { |index| index.to_i + 1 }.max || 0 %>
+<% row_count = [row_count, clause_row_count].max %>
 <% populated_rows = (1..row_count).select { |count| label_tag_default_for("q_#{count}").present? } %>
 <% default_visible_rows = [row_count, 2].min %>
 <% initial_visible_rows = [populated_rows.max || 0, default_visible_rows].max %>
@@ -6,7 +8,6 @@
 <div class="advanced-search-fields"
      data-controller="advanced"
      data-action="input->advanced#syncClauses change->advanced#syncClauses"
-     data-advanced-total-rows-value="<%= row_count %>"
      data-advanced-visible-rows-value="<%= initial_visible_rows %>">
   <% (1..row_count).each do |count| %>
     <div class="advanced-search-row row align-items-end g-3 mb-3"

@@ -77,7 +77,9 @@ module Blacklight::PrimoCentral
           return _process_blacklight8_advanced_form(primo_central_parameters)
         end
 
-        rows_count = blacklight_config.advanced_search[:fields_row_count]
+        configured_rows_count = blacklight_config.advanced_search[:fields_row_count]
+        submitted_rows_count = search_state.params.keys.filter_map { |key| key.to_s[/\Aq_(\d+)\z/, 1]&.to_i }.max || 0
+        rows_count = [configured_rows_count.to_i, submitted_rows_count].max
 
         build_query = (1..rows_count).map do |count|
           value = search_state.params["q_#{count}"]
