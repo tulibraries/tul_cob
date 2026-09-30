@@ -609,7 +609,9 @@ class SearchBuilder < Blacklight::SearchBuilder
       return unless params["search_field"] == blacklight_config.advanced_search[:url_key]
       return if params["clause"].present?
 
-      row_count = blacklight_config.advanced_search[:fields_row_count].presence || 3
+      configured_row_count = blacklight_config.advanced_search[:fields_row_count].presence || 3
+      submitted_row_count = params.keys.filter_map { |key| key.to_s[/\Aq_(\d+)\z/, 1]&.to_i }.max || 0
+      row_count = [configured_row_count.to_i, submitted_row_count].max
       clauses = (1..row_count.to_i).filter_map do |index|
         query = params["q_#{index}"]
         next if query.blank?

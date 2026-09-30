@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["row", "boolean", "addButton", "removeButton", "clauseInputs"]
-  static values = { totalRows: Number, visibleRows: Number }
+  static values = { visibleRows: Number }
 
   connect() {
     this.syncBeginsWithOptions()
@@ -17,7 +17,10 @@ export default class extends Controller {
 
   addRow(event) {
     event.preventDefault()
-    if (this.visibleRowsValue >= this.totalRowsValue) return
+
+    if (this.visibleRowsValue >= this.rowTargets.length) {
+      this.appendRow(this.rowTargets.length + 1)
+    }
 
     this.visibleRowsValue += 1
     this.syncRows()
@@ -73,10 +76,6 @@ export default class extends Controller {
       booleanGroup.classList.toggle("d-none", !visible)
       this.toggleInputs(booleanGroup, !visible)
     })
-
-    if (this.hasAddButtonTarget) {
-      this.addButtonTarget.disabled = this.visibleRowsValue >= this.totalRowsValue
-    }
 
     if (this.hasRemoveButtonTarget) {
       this.removeButtonTarget.disabled = this.visibleRowsValue <= 1
@@ -178,5 +177,66 @@ export default class extends Controller {
     container.querySelectorAll("input, select, textarea").forEach((element) => {
       element.disabled = disabled
     })
+  }
+
+  appendRow(count) {
+    const lastRow = this.rowTargets[this.rowTargets.length - 1]
+    const actions = this.element.querySelector(".advanced-search-row-actions")
+    const insertionPoint = actions || (this.hasClauseInputsTarget ? this.clauseInputsTarget : this.addButtonTarget)
+    if (!lastRow || !insertionPoint) return
+
+    const booleanGroup = this.booleanTargets[this.booleanTargets.length - 1]
+    if (booleanGroup) {
+      const newBooleanGroup = booleanGroup.cloneNode(true)
+      const operatorIndex = count - 1
+
+      newBooleanGroup.querySelectorAll("input").forEach((input) => {
+        input.name = `op_${operatorIndex}`
+        input.id = `op_${operatorIndex}_${input.value}`
+        input.checked = input.value === "AND"
+      })
+
+      newBooleanGroup.querySelectorAll("label[for]").forEach((label) => {
+        label.htmlFor = `op_${operatorIndex}_${label.htmlFor.split("_").pop()}`
+      })
+
+      this.element.insertBefore(newBooleanGroup, insertionPoint)
+    }
+
+    const newRow = lastRow.cloneNode(true)
+    newRow.dataset.rowIndex = count
+
+    const field = newRow.querySelector(".advanced-search-options")
+    if (field) {
+      field.id = `f_${count}`
+      field.name = `f_${count}`
+      field.dataset.count = count
+      field.selectedIndex = 0
+    }
+
+    const fieldLabel = newRow.querySelector("label[for^='f_']")
+    if (fieldLabel) fieldLabel.htmlFor = `f_${count}`
+
+    const operator = newRow.querySelector("select[id^='operator_q_']")
+    if (operator) {
+      operator.id = `operator_q_${count}`
+      operator.name = `operator[q_${count}]`
+      operator.selectedIndex = 0
+    }
+
+    const operatorLabel = newRow.querySelector("label[for^='operator_q_']")
+    if (operatorLabel) operatorLabel.htmlFor = `operator_q_${count}`
+
+    const query = newRow.querySelector("input[type='text']")
+    if (query) {
+      query.id = `q_${count}`
+      query.name = `q_${count}`
+      query.value = ""
+    }
+
+    const queryLabel = newRow.querySelector("label[for^='q_']")
+    if (queryLabel) queryLabel.htmlFor = `q_${count}`
+
+    this.element.insertBefore(newRow, insertionPoint)
   }
 }

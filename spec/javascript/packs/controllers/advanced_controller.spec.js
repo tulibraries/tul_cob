@@ -9,7 +9,6 @@ describe("AdvancedController", () => {
       <div
         data-controller="advanced"
         data-action="input->advanced#syncClauses change->advanced#syncClauses"
-        data-advanced-total-rows-value="3"
         data-advanced-visible-rows-value="2">
         <div data-advanced-target="row" data-row-index="1">
           <select id="f_1" class="advanced-search-options selectize" data-action="change->advanced#select" data-count="1">
@@ -113,6 +112,21 @@ describe("AdvancedController", () => {
     expect(rows[2].querySelector("#f_3").value).toBe("all_fields")
   })
 
+  it("continues adding rows beyond the configured row count", async () => {
+    setupDom()
+    startController()
+    await new Promise(resolve => setTimeout(resolve, 0))
+
+    controller().addRow({ preventDefault() {} })
+    controller().addRow({ preventDefault() {} })
+
+    expect(document.querySelector("#q_4")).not.toBeNull()
+    expect(document.querySelector("#f_4")).not.toBeNull()
+    expect(document.querySelector("#operator_q_4")).not.toBeNull()
+    expect(document.querySelector("input[name='op_3'][value='AND']")).not.toBeNull()
+    expect(controller().addButtonTarget.disabled).toBeFalsy()
+  })
+
   it("only allows begins with for supported fields", async () => {
     setupDom()
     startController()
@@ -197,7 +211,7 @@ describe("AdvancedController", () => {
     expect(clauseInputs.querySelectorAll("input")).toHaveLength(3)
   })
 
-  it("enforces row limits and button states", async () => {
+  it("continues adding rows and updates button states", async () => {
     setupDom()
     startController()
     await new Promise(resolve => setTimeout(resolve, 0))
@@ -208,9 +222,10 @@ describe("AdvancedController", () => {
     addButton.click()
     addButton.click()
 
-    expect(controller().visibleRowsValue).toBe(3)
-    expect(addButton.disabled).toBeTruthy()
+    expect(controller().visibleRowsValue).toBe(4)
+    expect(addButton.disabled).toBeFalsy()
 
+    removeButton.click()
     removeButton.click()
     removeButton.click()
 
