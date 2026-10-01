@@ -70,6 +70,9 @@ jobs:
 
       - name: Run linter
         run: $DC bundle exec rubocop
+
+      - name: Run Brakeman
+        run: $DC bundle exec brakeman --no-pager --confidence-level 3 --skip-files path/ruby/
       
       - name: Run Ruby tests
         run: |

@@ -325,13 +325,38 @@ RSpec.describe CatalogController, type: :controller do
   describe "general param handling" do
     it "should remove duplicate facet param values" do
       expect(controller).to be_a_kind_of(ApplicationController)
-      get :index , params: { f: { foo: [:bar, :bar] } }
-      expect(controller.params["f"]["foo"].size).to eq(1)
+      get :index, params: { f: { format: [:Book, :Book] } }
+      expect(controller.params["f"]["format"].size).to eq(1)
     end
 
     it "returns bad request for invalid facet param shape" do
       get :index, params: { f: "not_a_hash" }
       expect(response).to have_http_status(:bad_request)
+    end
+
+    it "keeps valid nested search parameters and drops unrelated values" do
+      get :index, params: {
+        q: "art",
+        f: { format: ["Book"], unexpected_facet: ["ignored"] },
+        range: { lc_classification: { begin: "A", end: "Z", unexpected: "ignored" } },
+        clause: { "0" => { field: "title", query: "art", match: "contains", unexpected: "ignored" } },
+        operator: { q_1: "contains", unexpected: "ignored" },
+        unexpected: "ignored"
+      }
+
+      expect(controller.params["q"]).to eq("art")
+      expect(controller.params["f"].to_h).to eq("format" => ["Book"])
+      expect(controller.params["range"].to_h).to eq(
+        "lc_classification" => { "begin" => "A", "end" => "Z" }
+      )
+      expect(controller.params["clause"]["0"].to_h).to eq(
+        "field" => "title",
+        "query" => "art",
+        "match" => "contains"
+      )
+      expect(controller.params).not_to have_key("unexpected")
+      expect(controller.params["f"]).not_to have_key("unexpected_facet")
+      expect(controller.params["operator"]).not_to have_key("unexpected")
     end
   end
 
