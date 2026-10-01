@@ -38,7 +38,7 @@ module LibrarySearch
     end
 
     def citation_action?
-      Flipflop.citeproc_citations? && document.citable?
+      Flipflop.citeproc_citations? && citation_controller? && document.citable?
     end
 
     def citation_link
@@ -52,6 +52,10 @@ module LibrarySearch
     private
 
       attr_reader :document
+
+      def citation_controller?
+        %w[catalog journals].include?(helpers.controller_name)
+      end
 
       def actions
         @actions ||= helpers.document_actions(document)
