@@ -9,7 +9,9 @@ module LibrarySearch
 
       @url = url
       @controller = params[:controller].to_s
-      @advanced_search_params = params.to_h.with_indifferent_access.except(:controller, :action, :page, :commit, :utf8, :processed)
+      # Search params have already passed the controller's bounded allowlist; this only copies them for URL generation.
+      parameter_hash = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h : params.to_h
+      @advanced_search_params = parameter_hash.with_indifferent_access.except(:controller, :action, :page, :commit, :utf8, :processed)
       @params = params.except(:q, :search_field, :utf8, :page, *ADVANCED_SEARCH_PARAM_KEYS)
     end
 

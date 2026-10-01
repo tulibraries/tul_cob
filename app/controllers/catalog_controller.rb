@@ -17,10 +17,15 @@ class CatalogController < ApplicationController
   include LCClassifications
   include Blacklight::Ris::Catalog
   include CatalogTrackingResilience
+  include PermittedSearchParams
 
   before_action :authenticate_purchase_order!, only: [ :purchase_order, :purchase_order_action ]
   before_action :authenticate_user!, only: :email
   before_action :set_thread_request
+  prepend_before_action :permit_search_parameters, only: %i[index show advanced_search facet range_limit opensearch raw]
+  before_action :permit_catalog_action_parameters, only: %i[
+    availability email purchase_order purchase_order_action
+  ]
   before_action only: :index do
     blacklight_config.solr_path = "search"
     override_solr_path
@@ -84,6 +89,13 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
+    config.search_state_fields += [
+      :with_libguides,
+      { range: {
+        lc_classification: %i[begin end],
+        pub_date_sort: %i[begin end]
+      } }
+    ]
 
     config.track_search_session.storage = "server"
     config.raw_endpoint.enabled = true
@@ -693,6 +705,35 @@ class CatalogController < ApplicationController
   end
 
   private
+
+    def search_parameter_extra_keys
+      %w[with_libguides]
+    end
+
+    def params
+      @permitted_catalog_params || super
+    end
+    public :params
+
+    def permit_catalog_action_parameters
+      keys = case action_name
+             when "availability"
+               %i[id_list]
+             when "email"
+               %i[id to]
+             when "purchase_order", "purchase_order_action"
+               %i[id to message]
+      else
+               []
+      end
+
+      @permitted_catalog_params = super_permitted_catalog_parameters(keys)
+    end
+
+    def super_permitted_catalog_parameters(keys)
+      params.permit(*keys)
+    end
+
     def catalog?
       self.class == CatalogController
     end
