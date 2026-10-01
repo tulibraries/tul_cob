@@ -43,6 +43,26 @@ RSpec.describe LibrarySearch::ShowToolsComponent, type: :component do
     end
   end
 
+  it "does not render the cite button on article record pages" do
+    allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
+
+    with_controller_class(PrimoCentralController) do
+      rendered = render_inline(component)
+
+      expect(rendered.css("#citeLink")).to be_empty
+    end
+  end
+
+  it "does not render the cite button on database record pages" do
+    allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
+
+    with_controller_class(DatabasesController) do
+      rendered = render_inline(component)
+
+      expect(rendered.css("#citeLink")).to be_empty
+    end
+  end
+
   it "renders Send To actions with the production menu item styles" do
     send_action = OpenStruct.new(key: :ris, component: FakeShowToolActionComponent)
     allow(component).to receive(:actions).and_return([bookmark_action, send_action])
