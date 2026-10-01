@@ -3,7 +3,8 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
-      target: runner
+      target: builder
+    user: "0"
     stdin_open: true
     tty: true
     ports:
@@ -12,6 +13,11 @@ services:
       - solr
     volumes:
       - .:/app
+    environment:
+      RAILS_ENV: development
+      RAILS_MASTER_KEY: "${RAILS_MASTER_KEY:-}"
+      BUNDLE_PATH: vendor/bundle
+      BUNDLE_WITHOUT: ""
 
   solr:
     image: solr:8.3.0
