@@ -33,12 +33,9 @@ RUN apk add -U --no-cache \
 # Leverage Docker cache: Only copy dependency files first
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
 
-# Install Ruby gems
-RUN bundle config set --local without "development test" && \
-    bundle install --jobs=8
-
-# Install Javascript packages
-RUN yarn install --frozen-lockfile
+# Install Ruby gems and Javascript packages
+RUN BUNDLE_WITHOUT="development test" bundle install --jobs=8 && \
+    yarn install --frozen-lockfile
 
 # Copy the rest of the application code
 COPY . .
@@ -47,7 +44,7 @@ COPY . .
 # SECRET_KEY_BASE_DUMMY tells Rails not to require the production secret
 # during asset precompilation and is not persisted as an environment variable.
 RUN if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
-    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
+    BUNDLE_WITHOUT="development test" SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
     rm -rf node_modules tmp/* && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \;
 

@@ -25,14 +25,14 @@ jobs:
       - name: Update pinned apk versions
         run: ruby .github/scripts/update_pinned_apk_versions.rb
         env:
-          APK_CHECK_BASE_IMAGE: ruby:3.4-alpine
+          APK_CHECK_BASE_IMAGE: ruby:4.0-alpine
           APK_UPDATE_SUMMARY_PATH: /tmp/apk-update-summary.md
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.AUTO_PR_TOKEN }}
-          add-paths: .docker/app/Dockerfile.prod
+          add-paths: .docker/app/Dockerfile
           branch: chore/update-apk-pins
           commit-message: "Update pinned apk packages"
           title: "Update pinned apk packages"

@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: .docker/app/Dockerfile
-      target: development
+      target: runner
     stdin_open: true
     tty: true
     ports:

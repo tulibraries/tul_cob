@@ -74,9 +74,7 @@ ci-yarn-install:
 ci-setup-db:
 	$(DOCKER) exec app bundle exec rails db:migrate
 
-BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:3.4-alpine
-DEBUGGER_BASE_IMAGE ?= harbor.k8s.temple.edu/tulibraries/librarysearch:latest
-
+BASE_IMAGE ?= harbor.k8s.temple.edu/library/ruby:4.0-alpine
 IMAGE ?= tulibraries/librarysearch
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
@@ -113,20 +111,9 @@ build:
 		--platform $(PLATFORM) \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
-		--file .docker/app/Dockerfile.prod \
+		--file .docker/app/Dockerfile \
 		--progress plain \
 		--no-cache .  | tee ./log/cob-docker-build.log
-
-build-debugger:
-	@docker pull $(DEBUGGER_BASE_IMAGE)
-	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
-		--build-arg BASE_IMAGE=$(DEBUGGER_BASE_IMAGE) \
-		--platform $(PLATFORM) \
-		--tag $(HARBOR)/$(IMAGE):$(VERSION)-debugger \
-		--tag $(HARBOR)/$(IMAGE):debugger \
-		--file .docker/app/Dockerfile.debugger \
-		--progress plain \
-		--no-cache .  | tee ./log/cob-docker-build-debugger.log
 
 shell:
 	@docker run --rm -it \
@@ -136,7 +123,7 @@ shell:
 gitlab-lint:
 	@if [ $(CI) == false ]; \
 		then \
-			hadolint .docker/app/Dockerfile.prod; \
+			hadolint .docker/app/Dockerfile; \
 		fi
 
 scan:
@@ -147,15 +134,6 @@ scan:
 	@if [ $(CI) == false ]; \
 		then \
 			trivy image --scanners vuln $(HARBOR)/$(IMAGE):$(VERSION); \
-		fi
-
-deploy-debugger:
-	@docker push $(HARBOR)/$(IMAGE):$(VERSION)-debugger \
-	# This "if" statement needs to be a one liner or it will fail.
-	# Do not edit indentation
-	@if [ $(VERSION) != debugger ]; \
-		then \
-			docker push $(HARBOR)/$(IMAGE):debugger; \
 		fi
 
 deploy: scan gitlab-lint

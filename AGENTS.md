@@ -18,7 +18,7 @@
 - Specs live in `spec/` for Ruby and `spec/javascript/` for Jest.
 - Asset pipeline uses Webpacker in `app/javascript/` and packs in `app/javascript/packs`.
 - Sample data lives in `sample_data/`; Solr configs under `solr/`.
-- Docker support files live in `.docker/`, docker-compose files at repo root.
+- The supported application Dockerfile is `.docker/app/Dockerfile`; docker-compose files are at repo root.
 
 ## Ruby version and framework
 - Target Ruby version is 3.4 per `.rubocop.yml`.
@@ -38,8 +38,7 @@
 ## Build and asset notes
 - Webpacker build is invoked automatically via Rails; packs live in `app/javascript/packs`.
 - No standalone frontend build command beyond webpacker; rely on Rails assets pipeline.
-- For production image build: `make build` with PLATFORM/ASSETS_PRECOMPILE overrides.
-- For debugger image build: `make build-debugger`.
+- For production image build: `make build` with PLATFORM and BASE_IMAGE overrides.
 - Build logs output to `log/cob-docker-build*.log`.
 
 ## Linting commands
