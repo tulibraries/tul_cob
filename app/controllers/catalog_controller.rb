@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CatalogController < ApplicationController
+  MAX_ADVANCED_SEARCH_CLAUSES = PermittedSearchParams::MAX_ADVANCED_SEARCH_CLAUSES
+
   # Run the challenge before Blacklight search-session tracking creates a Search record.
   bot_challenge only: :index, if: -> { bot_challenge? }
   bot_challenge only: :librarian_view, if: -> { bot_challenge? }
@@ -23,6 +25,7 @@ class CatalogController < ApplicationController
   before_action :authenticate_user!, only: :email
   before_action :set_thread_request
   prepend_before_action :permit_search_parameters, only: %i[index show advanced_search facet range_limit opensearch raw]
+  before_action :reject_excessive_advanced_search, only: %i[index advanced_search]
   before_action :permit_catalog_action_parameters, only: %i[
     availability email purchase_order purchase_order_action
   ]
@@ -62,7 +65,7 @@ class CatalogController < ApplicationController
   def store_last_catalog_search_params
     return unless params[:controller].to_s == "catalog"
 
-    stored = params.to_unsafe_h.except("controller", "action")
+    stored = search_state.to_h.except("controller", "action")
     return if stored.blank?
 
     session[:last_catalog_search_params] = stored
@@ -89,7 +92,21 @@ class CatalogController < ApplicationController
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.limit"] ||= -1
     config.advanced_search[:form_solr_parameters]["f.language_facet.facet.sort"] ||= "index"
     config.advanced_search[:fields_row_count] = 3
+    config.search_state_fields = config.search_state_fields.reject do |field|
+      field.is_a?(Hash) && field.key?(:clause)
+    end
+    config.search_state_fields += (1..MAX_ADVANCED_SEARCH_CLAUSES).flat_map do |index|
+      [ "q_#{index}".to_sym, "f_#{index}".to_sym ]
+    end
+    config.search_state_fields += (1...MAX_ADVANCED_SEARCH_CLAUSES).map { |index| "op_#{index}".to_sym }
     config.search_state_fields += [
+      { operator: (1..MAX_ADVANCED_SEARCH_CLAUSES).map { |index| "q_#{index}".to_sym } },
+      { clause: (0...MAX_ADVANCED_SEARCH_CLAUSES).to_h { |index| [ index.to_s.to_sym, %i[field query match op] ] } },
+      { "facet.field": [] },
+      :qf,
+      :pf,
+      :pf2,
+      :pf3,
       :with_libguides,
       { range: {
         lc_classification: %i[begin end],
@@ -706,10 +723,6 @@ class CatalogController < ApplicationController
 
   private
 
-    def search_parameter_extra_keys
-      %w[with_libguides]
-    end
-
     def params
       @permitted_catalog_params || super
     end
@@ -720,18 +733,62 @@ class CatalogController < ApplicationController
              when "availability"
                %i[id_list]
              when "email"
-               %i[id to]
+               %i[to message]
              when "purchase_order", "purchase_order_action"
                %i[id to message]
       else
                []
       end
 
-      @permitted_catalog_params = super_permitted_catalog_parameters(keys)
+      permitted = super_permitted_catalog_parameters(keys)
+      if action_name == "email"
+        ids = Array(request.parameters[:id]).first(100).map(&:to_s)
+        permitted[:id] = ids.one? ? ids.first : ids
+      end
+
+      @permitted_catalog_params = permitted
     end
 
     def super_permitted_catalog_parameters(keys)
       params.permit(*keys)
+    end
+
+    def action_documents
+      document_ids = Array(@permitted_catalog_params[:id]).presence || params[:id]
+      retrieve_documents(document_ids)
+    end
+
+    def email_action(documents)
+      mail = RecordMailer.email_record(
+        documents,
+        { to: @permitted_catalog_params[:to], message: @permitted_catalog_params[:message], config: blacklight_config },
+        url_options
+      )
+      mail.deliver_now
+    end
+
+    def reject_excessive_advanced_search
+      # Raw parameters are inspected only to reject over-limit input.
+      # SearchState filters accepted state before it reaches search processing.
+      raw_parameters = if request.parameters.respond_to?(:to_unsafe_h)
+        request.parameters.to_unsafe_h
+      else
+        request.parameters.to_h
+      end
+      clause_parameters = raw_parameters.fetch("clause", {})
+      clause_indices = clause_parameters.respond_to?(:keys) ? clause_parameters.keys : []
+      advanced_indices = raw_parameters.keys.filter_map do |key|
+        match = key.to_s.match(/\A(?:q|f|op)_(\d+)\z/)
+        match && match[1].to_i
+      end
+      advanced_indices += clause_indices.filter_map do |key|
+        index = Integer(key.to_s, exception: false)
+        index ? index + 1 : nil
+      end
+
+      return unless advanced_indices.max.to_i > MAX_ADVANCED_SEARCH_CLAUSES
+
+      render plain: "Too many advanced search clauses", status: :bad_request
     end
 
     def catalog?
