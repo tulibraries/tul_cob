@@ -5,6 +5,10 @@ class BookmarksController < CatalogController
 
   MAX_BOOKMARKS_PER_REQUEST = 100
 
+  configure_blacklight do |config|
+    config.search_state_fields += [ :encrypted_user_id ]
+  end
+
   # Overridden to not cache.
   def index
     no_cache
