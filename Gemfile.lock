@@ -208,6 +208,8 @@ GEM
     bot_challenge_page (1.2.0)
       http (>= 5.2, < 7)
       rails (>= 7.1, < 8.2)
+    brakeman (8.1.0)
+      racc
     browser (6.2.0)
     builder (3.3.0)
     byebug (13.0.0)
@@ -815,6 +817,7 @@ DEPENDENCIES
   bootsnap (= 1.26.0)
   bootstrap (>= 5.3.3)
   bot_challenge_page
+  brakeman
   browser
   byebug
   capybara (~> 3)

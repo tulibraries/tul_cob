@@ -6,6 +6,7 @@ class SearchController < CatalogController
 
   blacklight_config.configure do |config|
     config.add_search_field "all_fields", label: "All Fields"
+    config.search_state_fields += [ :field ]
     config.response_model = Search::Solr::Response
 
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true

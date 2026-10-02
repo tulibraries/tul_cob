@@ -31,8 +31,10 @@ class TweakQueryComponent < ViewComponent::Base
     def safe_params
       return {} unless @params
 
-      if @params.respond_to?(:to_unsafe_h)
-        @params.to_unsafe_h
+      if @params.respond_to?(:permitted?) && !@params.permitted?
+        @params.each_pair.with_object({}) do |(name, value), safe_params|
+          safe_params[name] = value if name.to_s.match?(/(?:qf|pf)\z/)
+        end
       else
         @params.to_h
       end

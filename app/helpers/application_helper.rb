@@ -119,7 +119,11 @@ module ApplicationHelper
   end
 
   def extract_safe_q(params)
-    params = params.to_h.with_indifferent_access
+    params = if params.respond_to?(:permitted?) && !params.permitted?
+      Blacklight::SearchState.new(params, blacklight_config).to_h
+    else
+      params.to_h
+    end.with_indifferent_access
     raw_q = params[:q].to_s
     return raw_q if raw_q.present? && raw_q.exclude?("{!") && raw_q.exclude?("_query_:")
 
@@ -285,7 +289,11 @@ module ApplicationHelper
     def sanitized_search_params(params)
       return {} unless params
 
-      sanitized = params.respond_to?(:to_unsafe_h) ? params.to_unsafe_h : params.to_h
+      sanitized = if params.respond_to?(:permitted?) && !params.permitted?
+        Blacklight::SearchState.new(params, blacklight_config).to_h
+      else
+        params.to_h
+      end
       sanitized = sanitized.deep_dup
       sanitized.except!("controller", :controller, "action", :action)
       sanitized

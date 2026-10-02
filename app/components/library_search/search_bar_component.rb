@@ -9,7 +9,10 @@ module LibrarySearch
 
       @url = url
       @controller = params[:controller].to_s
-      @advanced_search_params = params.to_h.with_indifferent_access.except(:controller, :action, :page, :commit, :utf8, :processed)
+      @raw_params = params
+      @advanced_search_params = if params.is_a?(Hash)
+        params.to_h.with_indifferent_access.except(:controller, :action, :page, :commit, :utf8, :processed)
+      end
       @params = params.except(:q, :search_field, :utf8, :page, *ADVANCED_SEARCH_PARAM_KEYS)
     end
 
@@ -23,7 +26,7 @@ module LibrarySearch
         when "/advanced", "/everything/advanced"
           uri.path = advanced_search_path
         end
-        query = Rack::Utils.parse_nested_query(uri.query).merge(@advanced_search_params)
+        query = Rack::Utils.parse_nested_query(uri.query).merge(advanced_search_params)
         uri.query = query.to_query.presence
         uri.to_s
       end
@@ -34,6 +37,17 @@ module LibrarySearch
     end
 
     private
+
+      def advanced_search_params
+        @advanced_search_params ||= begin
+          params = if @raw_params.respond_to?(:permitted?) && @raw_params.permitted?
+            @raw_params.to_h
+          else
+            Blacklight::SearchState.new(@raw_params, helpers.blacklight_config).to_h
+          end
+          params.with_indifferent_access.except(:controller, :action, :page, :commit, :utf8, :processed)
+        end
+      end
 
       def advanced_search_link_type
         case URI.parse(@advanced_search_url.to_s).path
