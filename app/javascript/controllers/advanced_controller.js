@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["row", "boolean", "addButton", "removeButton", "clauseInputs"]
-  static values = { visibleRows: Number }
+  static values = { visibleRows: Number, maxRows: { type: Number, default: 10 } }
 
   connect() {
     this.syncBeginsWithOptions()
@@ -17,6 +17,7 @@ export default class extends Controller {
 
   addRow(event) {
     event.preventDefault()
+    if (this.visibleRowsValue >= this.maxRowsValue) return
 
     if (this.visibleRowsValue >= this.rowTargets.length) {
       this.appendRow(this.rowTargets.length + 1)

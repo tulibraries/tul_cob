@@ -585,6 +585,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   private
 
     def search_params_hash(parameters)
+      # SearchBuilder receives bounded SearchState parameters from controllers;
+      # this preserves compatibility with internal parameter objects.
       parameters = parameters.to_unsafe_h if parameters.respond_to?(:to_unsafe_h)
       parameters = parameters.to_h if parameters.respond_to?(:to_h)
       parameters.with_indifferent_access.deep_dup

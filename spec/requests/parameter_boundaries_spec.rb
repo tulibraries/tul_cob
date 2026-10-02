@@ -90,4 +90,140 @@ RSpec.describe "parameter boundaries", type: :request do
       expect(LibGuidesApi).to have_received(:fetch).with("catalog")
     end
   end
+
+  describe "facet search" do
+    it "preserves facet pagination and searching within a facet" do
+      facet = Blacklight::Solr::Response::Facets::FacetField.new(
+        "creator_facet",
+        [ Blacklight::Solr::Response::Facets::FacetItem.new("rare", 1) ],
+        offset: 10
+      )
+      response_double = instance_double(
+        Blacklight::Solr::Response,
+        aggregations: { "creator_facet" => facet }
+      )
+      service = instance_double(Blacklight::SearchService, facet_suggest_response: response_double)
+      allow_any_instance_of(CatalogController).to receive(:search_service).and_return(service)
+
+      get facet_catalog_path(id: "creator_facet"), params: {
+        "facet.page" => "2",
+        query_fragment: "rare",
+        only_values: "true",
+        unexpected: "ignored",
+        format: :json
+      }
+
+      expect(response).to have_http_status(:ok)
+      expect(controller.send(:search_state).params).to include(
+        "facet.page" => "2",
+        query_fragment: "rare",
+        only_values: "true"
+      )
+      expect(controller.send(:search_state).params).not_to have_key(:unexpected)
+      expect(service).to have_received(:facet_suggest_response).with("creator_facet", "rare")
+    end
+  end
+
+  describe "emailing records" do
+    it "accepts an ID array and message without forwarding unexpected parameters" do
+      sign_in user
+      documents = [ instance_double(SolrDocument), instance_double(SolrDocument) ]
+      service = instance_double(Blacklight::SearchService, fetch: documents)
+      mail = instance_double(ActionMailer::MessageDelivery, deliver_now: true)
+      allow_any_instance_of(CatalogController).to receive(:search_service).and_return(service)
+      allow(RecordMailer).to receive(:email_record).and_return(mail)
+
+      post email_solr_documents_path, params: {
+        id: %w[record-1 record-2],
+        to: "reader@example.edu",
+        message: "Please review these records.",
+        unexpected: "ignored"
+      }
+
+      expect(response).to have_http_status(:redirect)
+      expect(service).to have_received(:fetch).with(%w[record-1 record-2])
+      expect(RecordMailer).to have_received(:email_record).with(
+        documents,
+        hash_including(to: "reader@example.edu", message: "Please review these records."),
+        anything
+      )
+    end
+
+    it "supports the inherited bookmarks email action" do
+      sign_in user
+      documents = [ instance_double(SolrDocument), instance_double(SolrDocument) ]
+      service = instance_double(Blacklight::SearchService)
+      mail = instance_double(ActionMailer::MessageDelivery, deliver_now: true)
+      allow_any_instance_of(BookmarksController).to receive(:search_service).and_return(service)
+      allow(service).to receive(:fetch).with(%w[record-1 record-2], rows: 2, start: 0).and_return(documents)
+      allow(RecordMailer).to receive(:email_record).and_return(mail)
+
+      post email_bookmarks_path, params: {
+        id: %w[record-1 record-2],
+        to: "reader@example.edu",
+        message: "Please review these bookmarks.",
+        unexpected: "ignored"
+      }
+
+      expect(response).to have_http_status(:redirect)
+      expect(RecordMailer).to have_received(:email_record).with(
+        documents,
+        hash_including(to: "reader@example.edu", message: "Please review these bookmarks."),
+        anything
+      )
+    end
+  end
+
+  describe "advanced search" do
+    before do
+      response_double = Blacklight::Solr::Response.new(
+        { "response" => { "docs" => [], "numFound" => 0 } },
+        {},
+        blacklight_config: CatalogController.blacklight_config
+      )
+      service = instance_double(Blacklight::SearchService, search_results: response_double)
+      allow_any_instance_of(CatalogController).to receive(:search_service).and_return(service)
+    end
+
+    it "accepts the configured maximum number of clauses" do
+      get search_catalog_path, params: { search_field: "advanced", q_10: "tenth clause" }
+
+      expect(response).not_to have_http_status(:bad_request)
+    end
+
+    it "rejects an over-limit advanced search instead of silently dropping clauses" do
+      get search_catalog_path, params: { search_field: "advanced", q_11: "eleventh clause" }
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response.body).to include("Too many advanced search clauses")
+    end
+  end
+
+  describe "tokenized bookmarks" do
+    it "preserves the encrypted owner token without an owner session" do
+      token = encrypted_user_token(user.id)
+      response_double = Blacklight::Solr::Response.new(
+        { "response" => { "docs" => [] } },
+        {},
+        blacklight_config: BookmarksController.blacklight_config
+      )
+      service = instance_double(Blacklight::SearchService, search_results: response_double)
+      allow_any_instance_of(BookmarksController).to receive(:search_service).and_return(service)
+
+      get bookmarks_path, params: { encrypted_user_id: token, unexpected: "ignored" }
+
+      expect(response).to have_http_status(:ok)
+      expect(response).not_to redirect_to(new_user_session_path)
+      expect(controller.send(:token_or_current_or_guest_user)).to eq(user)
+    end
+  end
+
+  private
+
+    def encrypted_user_token(user_id)
+      key_generator = ActiveSupport::KeyGenerator.new(Rails.application.secret_key_base)
+      secret = key_generator.generate_key("encrypted user session key", ActiveSupport::MessageEncryptor.key_len)
+      encryptor = ActiveSupport::MessageEncryptor.new(secret)
+      encryptor.encrypt_and_sign([user_id, Time.zone.now])
+    end
 end
