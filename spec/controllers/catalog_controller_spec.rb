@@ -36,6 +36,12 @@ RSpec.describe CatalogController, type: :controller do
       expect(response).to have_http_status(:forbidden)
     end
 
+    it "returns the bot challenge for staff views" do
+      get :librarian_view, params: { id: doc_id }
+
+      expect(response).to have_http_status(:forbidden)
+    end
+
     context "with a valid bot challenge pass" do
       before do
         challenge_controller =

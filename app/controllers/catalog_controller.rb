@@ -3,6 +3,7 @@
 class CatalogController < ApplicationController
   # Run the challenge before Blacklight search-session tracking creates a Search record.
   bot_challenge only: :index, if: -> { bot_challenge? }
+  bot_challenge only: :librarian_view, if: -> { bot_challenge? }
   bot_challenge only: :facet, if: -> { facet_bot_challenge? }
 
   caches_page :show
