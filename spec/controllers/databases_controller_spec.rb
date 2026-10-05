@@ -18,8 +18,8 @@ RSpec.describe DatabasesController, type: :controller do
       field = controller.blacklight_config.search_fields["title"]
 
       expect(field.solr_adv_parameters).to eq(
-        qf: "${title_qf}",
-        pf: "${title_pf}"
+        qf: "$title_qf",
+        pf: "$title_pf"
       )
     end
 
@@ -27,8 +27,8 @@ RSpec.describe DatabasesController, type: :controller do
       field = controller.blacklight_config.search_fields["subject"]
 
       expect(field.solr_adv_parameters).to eq(
-        qf: "${subject_qf}",
-        pf: "${subject_pf}"
+        qf: "$subject_qf",
+        pf: "$subject_pf"
       )
     end
   end
