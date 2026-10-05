@@ -58,6 +58,14 @@ class SearchBuilder < Blacklight::SearchBuilder
     clauses = advanced_search_clauses
     return if clauses.empty?
 
+    if clauses.all? { |clause| clause["field"] == "all_fields" }
+      solr_parameters["q"] = parsed_all_fields_query(clauses)
+      solr_parameters["defType"] = "lucene"
+      solr_parameters["q.op"] = "OR" if solr_parameters["q"].include?("{!edismax")
+      solr_parameters.delete("json")
+      return
+    end
+
     queries = clauses.map { |clause| advanced_clause_query(clause) }
     query = queries.shift
 
@@ -75,6 +83,31 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     solr_parameters["json"] ||= {}
     solr_parameters["json"]["query"] = query
+  end
+
+  def parsed_all_fields_query(clauses)
+    query = clauses.each_with_index.map do |clause, index|
+      operator = if index.zero?
+        ""
+      else
+        case clause["op"].presence || "must"
+        when "should" then " OR "
+        when "must_not" then " AND NOT "
+        else " AND "
+        end
+      end
+
+      "#{operator}(#{clause["query"]})"
+    end.join
+
+    parsed = ParsingNesting::Tree.parse(
+      query,
+      blacklight_config.advanced_search[:query_parser]
+    ).to_single_query_params({})
+    parsed_query = parsed[:q] || parsed["q"]
+    parsed_query&.gsub("{!dismax", "{!edismax") || query
+  rescue Parslet::ParseFailed
+    query
   end
 
   def add_facets_for_advanced_search_form(solr_parameters)
