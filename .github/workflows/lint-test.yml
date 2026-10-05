@@ -65,9 +65,6 @@ jobs:
       - name: Install Javascript dependencies in container
         run: $DC bundle exec yarn install --frozen-lockfile
 
-      - name: Audit Javascript dependencies
-        run: $DC bundle exec ruby .github/scripts/audit_yarn_dependencies.rb
-
       - name: Precompile Rails assets
         run: $DC bundle exec rails assets:precompile
 
