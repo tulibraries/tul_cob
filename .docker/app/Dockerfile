@@ -80,7 +80,7 @@ RUN apk add -U --no-cache \
     libxslt=1.1.43-r3 \
     postgresql17-client=17.11-r0 \
     shared-mime-info=2.4-r7 \
-    tzdata=2026d-r0
+    tzdata=2026e-r0
 
 # Copy compiled gems and assets from the builder stage
 COPY --from=builder /usr/local/bundle /usr/local/bundle
