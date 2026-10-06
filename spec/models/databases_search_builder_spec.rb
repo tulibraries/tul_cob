@@ -18,7 +18,7 @@ RSpec.describe DatabasesSearchBuilder, type: :model do
     solr_params = builder.processed_parameters
 
     expect(solr_params["q"]).to eq(
-      '( {!edismax qf=$title_qf pf=$title_pf}nature AND {!edismax qf=$subject_qf pf=$subject_pf}psychology )'
+      "( {!edismax qf=$title_qf pf=$title_pf}nature AND {!edismax qf=$subject_qf pf=$subject_pf}psychology )"
     )
     expect(solr_params["defType"]).to eq("lucene")
     expect(solr_params["json"]).to be_nil
