@@ -1,5 +1,9 @@
 # hadolint ignore=DL3006,DL3026
 ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:4.0-alpine"
+ARG BASH_VERSION="5.3.9-r1"
+ARG LIBXSLT_VERSION="1.1.43-r3"
+ARG POSTGRESQL_VERSION="17.11-r0"
+ARG TZDATA_VERSION="2026e-r0"
 
 # ==========================================
 # STAGE 1: Builder
@@ -14,21 +18,25 @@ WORKDIR /app
 
 # Set build environment
 ARG RAILS_ENV=production
+ARG BASH_VERSION
+ARG LIBXSLT_VERSION
+ARG POSTGRESQL_VERSION
+ARG TZDATA_VERSION
 ENV RAILS_ENV=${RAILS_ENV}
 
 # Install all dependencies needed for building gems/assets
 RUN apk add -U --no-cache \
-    bash=5.3.9-r1 \
+    bash=${BASH_VERSION} \
     build-base=0.5-r4 \
     git=2.54.0-r0 \
     yaml=0.2.5-r2 \
     yaml-dev=0.2.5-r2 \
-    libxslt-dev=1.1.43-r3 \
+    libxslt-dev=${LIBXSLT_VERSION} \
     libffi-dev=3.5.2-r1 \
-    postgresql17-dev=17.11-r0 \
+    postgresql17-dev=${POSTGRESQL_VERSION} \
     nodejs=24.18.1-r0 \
     yarn=1.22.22-r1 \
-    tzdata=2026e-r0
+    tzdata=${TZDATA_VERSION}
 
 # Leverage Docker cache: Only copy dependency files first
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
@@ -64,6 +72,10 @@ WORKDIR /app
 USER 0
 
 ARG RAILS_ENV=production
+ARG BASH_VERSION
+ARG LIBXSLT_VERSION
+ARG POSTGRESQL_VERSION
+ARG TZDATA_VERSION
 
 # Set production environment variables for the runtime container
 ENV RAILS_ENV=${RAILS_ENV} \
@@ -74,13 +86,13 @@ ENV RAILS_ENV=${RAILS_ENV} \
 
 # Install only runtime dependencies
 RUN apk add -U --no-cache \
-    bash=5.3.9-r1 \
+    bash=${BASH_VERSION} \
     jemalloc=5.3.0-r6 \
     libc6-compat=1.1.0-r4 \
-    libxslt=1.1.43-r3 \
-    postgresql17-client=17.11-r0 \
+    libxslt=${LIBXSLT_VERSION} \
+    postgresql17-client=${POSTGRESQL_VERSION} \
     shared-mime-info=2.4-r7 \
-    tzdata=2026e-r0
+    tzdata=${TZDATA_VERSION}
 
 # Copy compiled gems and assets from the builder stage
 COPY --from=builder /usr/local/bundle /usr/local/bundle
