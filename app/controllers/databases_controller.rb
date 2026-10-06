@@ -37,7 +37,7 @@ class DatabasesController < CatalogController
     config.default_solr_params = { "df" => "text", "defType" => "edismax" }
     config.default_document_solr_params = config.fetch_many_document_params = {}
 
-    config.search_builder_class = SearchBuilder
+    config.search_builder_class = DatabasesSearchBuilder
 
     # Facet fields
     config.add_facet_field "az_subject_facet", field: "subject_facet", label: "Subject", limit: true, show: true, collapse: false
@@ -86,7 +86,6 @@ class DatabasesController < CatalogController
         pf: "$subject_pf",
       }
     end
-
 
     # Sort fields.
     config.add_sort_field "score desc, title_sort asc", label: "relevance"
