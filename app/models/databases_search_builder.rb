@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class DatabasesSearchBuilder < SearchBuilder
+  # Override multi-clause advanced searches to preserve Solr field substitutions for databases.
   def add_adv_search_clauses(solr_parameters)
     clause_params = search_state.clause_params
     return super if clause_params.present? && clause_params.size == 1
