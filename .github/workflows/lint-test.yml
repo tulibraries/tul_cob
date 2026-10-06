@@ -41,7 +41,7 @@ jobs:
 
       - name: Build & start App + Solr
         run: |
-          docker compose -f docker-compose.ci.yml build --build-arg BASE_IMAGE=ruby:4.0-alpine app
+          docker compose -f docker-compose.ci.yml build --build-arg BASE_IMAGE=ruby:4.0-alpine3.24 app
           docker compose -f docker-compose.ci.yml up -d solr app
           echo "⏳ waiting for solr on localhost:8983…"
           for i in {1..60}; do
