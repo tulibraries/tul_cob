@@ -18,9 +18,9 @@ class QueryListController < ApplicationController
   private
 
     def permit_query_list_search_parameters
-      unless blacklight_config.search_state_fields.include?(:footer_field)
-        blacklight_config.search_state_fields += [ :footer_field ]
-      end
+      fields = [ :footer_field, :filter_id ]
+      missing_fields = fields.reject { |field| blacklight_config.search_state_fields.include?(field) }
+      blacklight_config.search_state_fields += missing_fields if missing_fields.any?
       permit_search_parameters
     end
 end

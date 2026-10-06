@@ -754,7 +754,8 @@ class CatalogController < ApplicationController
     end
 
     def action_documents
-      document_ids = Array(@permitted_catalog_params[:id]).presence || params[:id]
+      permitted_ids = @permitted_catalog_params&.[](:id)
+      document_ids = Array(permitted_ids.presence || params[:id]).presence
       retrieve_documents(document_ids)
     end
 
