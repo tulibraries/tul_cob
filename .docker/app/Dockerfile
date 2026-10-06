@@ -28,7 +28,7 @@ RUN apk add -U --no-cache \
     postgresql17-dev=17.11-r0 \
     nodejs=24.18.1-r0 \
     yarn=1.22.22-r1 \
-    tzdata=2026d-r0
+    tzdata=2026e-r0
 
 # Leverage Docker cache: Only copy dependency files first
 COPY Gemfile Gemfile.lock package.json yarn.lock ./
