@@ -174,6 +174,27 @@ RSpec.describe "parameter boundaries", type: :request do
     end
   end
 
+  describe "citation requests" do
+    it "retrieves the cited record without action-specific permitted parameters" do
+      document = SolrDocument.new(
+        "id" => "record-1",
+        "title_statement_display" => ["Example Book Title"],
+        "creator_display" => ["Doe, Jane"],
+        "pub_date_display" => ["2020"],
+        "format" => ["Book"]
+      )
+      allow(Flipflop).to receive(:citeproc_citations?).and_return(true)
+      allow_any_instance_of(CatalogController).to receive(:retrieve_documents)
+        .with(["record-1"])
+        .and_return([document])
+
+      get citation_solr_document_path(id: "record-1")
+
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include("Example Book Title")
+    end
+  end
+
   describe "advanced search" do
     before do
       response_double = Blacklight::Solr::Response.new(
@@ -215,6 +236,29 @@ RSpec.describe "parameter boundaries", type: :request do
       expect(response).to have_http_status(:ok)
       expect(response).not_to redirect_to(new_user_session_path)
       expect(controller.send(:token_or_current_or_guest_user)).to eq(user)
+    end
+  end
+
+  describe "related-title query lists" do
+    it "passes filter_id through to the Solr exclusion filter" do
+      solr_parameters = nil
+      response_double = Blacklight::Solr::Response.new(
+        { "response" => { "docs" => [] } },
+        {}
+      )
+      allow_any_instance_of(Blacklight::Solr::Repository).to receive(:search) do |_repository, params:|
+        solr_parameters = params.to_h
+        response_double
+      end
+
+      get query_list_path, params: {
+        q: "related",
+        filter_id: "record-1",
+        footer_field: "title"
+      }
+
+      expect(response).to have_http_status(:ok)
+      expect(solr_parameters["fq"]).to include("-id:record-1")
     end
   end
 
