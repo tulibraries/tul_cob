@@ -255,7 +255,7 @@ GEM
     csl-styles (2.0.2)
       csl (~> 2.0)
     csv (3.3.6)
-    dalli (5.2.0)
+    dalli (5.2.2)
       logger
     dartsass-rails (0.5.1)
       railties (>= 6.0.0)
@@ -949,7 +949,7 @@ CHECKSUMS
   csl (2.2.1) sha256=624352f1f6f51f1e0b155bd2501ce423f03264495ec259e65c26e00872a195a2
   csl-styles (2.0.2) sha256=a48007d8a60307825de140dc2adaacc0b7186f2d1042f7e839eb47fce051de98
   csv (3.3.6) sha256=aba61e7e507a66f03d45cb1f3c4b6359861c3504038b422962875dce099e4456
-  dalli (5.2.0) sha256=352493e94d06a30b63719f8629ecb3d5c86bed81403f9a11c5d4443966668cb3
+  dalli (5.2.2) sha256=23ad7dd2891525b720be39a550eba144bebebfe807d3d51b4582be2997d63f73
   dartsass-rails (0.5.1) sha256=f19510fb1b29c76c1739a06954d615f1d20ad653b6fc668dd7c68542bb303a1a
   database_cleaner (2.1.0) sha256=1dcba26e3b1576da692fc6bac10136a4744da5bcc293d248aae19640c65d89cd
   database_cleaner-active_record (2.2.2) sha256=88296b9f3088c31f7c0d4fcec10f68e4b71c96698043916de59b04debec10388
