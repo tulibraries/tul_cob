@@ -1,4 +1,4 @@
-<%= form_tag basic_search_path, class: "advanced form-horizontal", method: :get do %>
+<%= form_tag basic_search_path, class: "advanced form-horizontal", method: :get, data: { turbo: false } do %>
   <div id="advanced_search">
     <section class="advanced-query-criteria mb-4" aria-labelledby="advanced-search-query-heading">
       <h1 id="advanced-search-query-heading" class="advanced page-header mb-3"><%= advanced_search_form_title %></h1>
