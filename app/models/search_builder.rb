@@ -27,6 +27,15 @@ class SearchBuilder < Blacklight::SearchBuilder
   MAX_CLAUSE_SAFE_TOKENS = 12
   MAX_CITATION_QUERY_TERMS = 12
 
+  def with(blacklight_params_or_search_state = {})
+    if blacklight_params_or_search_state.is_a?(ActionController::Parameters) &&
+        !blacklight_params_or_search_state.permitted?
+      blacklight_params_or_search_state = normalize_unpermitted_search_parameters(blacklight_params_or_search_state)
+    end
+
+    super
+  end
+
   self.default_processor_chain += %i[
     truncate_overlong_search_query
     manage_long_queries_for_clause_limits
@@ -177,7 +186,8 @@ class SearchBuilder < Blacklight::SearchBuilder
   def tweak_query(solr_parameters)
     return unless Flipflop.solr_query_tweaks?
 
-    solr_parameters.merge!(processed_search_params.select { |name, value| name.match?(/(qf$|pf$)/) })
+    processed_params = search_params_hash(processed_search_params)
+    solr_parameters.merge!(processed_params.select { |name, value| name.match?(/(qf$|pf$)/) })
   end
 
   def truncate_overlong_search_query(solr_params)
@@ -395,7 +405,7 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   # Returns the processed search parameters used by custom processors.
   def processed_search_params
-    params = search_state.params.to_h.with_indifferent_access.deep_dup
+    params = search_params_hash(search_state.params)
 
     # This method needs to be idempotent.
     if params["processed"]
@@ -573,6 +583,26 @@ class SearchBuilder < Blacklight::SearchBuilder
   end
 
   private
+
+    def search_params_hash(parameters)
+      # SearchBuilder receives bounded SearchState parameters from controllers;
+      # this preserves compatibility with internal parameter objects.
+      parameters = parameters.to_unsafe_h if parameters.respond_to?(:to_unsafe_h)
+      parameters = parameters.to_h if parameters.respond_to?(:to_h)
+      parameters.with_indifferent_access.deep_dup
+    end
+
+    def normalize_unpermitted_search_parameters(parameters)
+      # Controller requests are bounded before reaching SearchBuilder; retain Blacklight's allowlist for direct callers.
+      normalized = parameters.to_unsafe_h
+      facet_parameters = normalized["f"]
+      if facet_parameters.respond_to?(:to_h)
+        normalized["f"] = facet_parameters.to_h.transform_values { |value| Array(value) }
+      end
+
+      ActionController::Parameters.new(normalized)
+    end
+
     def id_fetch_query?(q)
       unique_key = blacklight_config.document_model.unique_key
       q.match?(/\A\{!lucene\}#{Regexp.escape(unique_key)}:\(/)

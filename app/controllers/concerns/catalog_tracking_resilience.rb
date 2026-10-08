@@ -8,17 +8,19 @@ module CatalogTrackingResilience
   end
 
   def track
-    search_session["counter"] = params[:counter]
-    search_session["id"] = params[:search_id]
-    search_session["per_page"] = params[:per_page]
-    search_session["document_id"] = params[:document_id]
+    tracking_params = params.permit(:counter, :search_id, :per_page, :document_id, :redirect, :id)
+    search_session["counter"] = tracking_params[:counter]
+    search_session["id"] = tracking_params[:search_id]
+    search_session["per_page"] = tracking_params[:per_page]
+    search_session["document_id"] = tracking_params[:document_id]
 
-    if params[:redirect].present? && (params[:redirect].starts_with?("/") || params[:redirect] =~ URI::DEFAULT_PARSER.make_regexp)
-      uri = URI.parse(params[:redirect])
+    if tracking_params[:redirect].present? &&
+        (tracking_params[:redirect].starts_with?("/") || tracking_params[:redirect] =~ URI::DEFAULT_PARSER.make_regexp)
+      uri = URI.parse(tracking_params[:redirect])
       path = uri.query ? "#{uri.path}?#{uri.query}" : uri.path
       redirect_to path, status: :see_other
     else
-      redirect_to({ action: :show, id: params[:id] }, status: :see_other)
+      redirect_to({ action: :show, id: tracking_params[:id] }, status: :see_other)
     end
   end
 

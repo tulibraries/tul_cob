@@ -5,6 +5,7 @@ class SessionsController < Devise::SessionsController
   include Sessions::SocialLogin
 
   before_action :get_manifold_alerts, only: [ :new ]
+  before_action :permit_session_parameters, only: %i[new create social_login_callback]
 
   layout proc { |controller| false if request.xhr? }
 
@@ -29,4 +30,23 @@ class SessionsController < Devise::SessionsController
     clear_login_cookie
     super
   end
+
+  private
+
+    def params
+      @permitted_session_params || super
+    end
+    public :params
+
+    def permit_session_parameters
+      @permitted_session_params = if action_name == "social_login_callback"
+        params.permit(:jwt, :redirect_to)
+      else
+        params.permit(
+          :redirect_to,
+          :login_message,
+          user: %i[email password password_confirmation remember_me]
+        )
+      end
+    end
 end
