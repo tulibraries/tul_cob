@@ -27,6 +27,18 @@ RSpec.describe Blacklight::PrimoCentral::Response, type: :model do
     end
   end
 
+  describe "#empty?" do
+    it "is true when Primo returns zero results" do
+      response = described_class.new({ "docs" => [] }, {}, { numFound: 0, blacklight_config: })
+      expect(response).to be_empty
+    end
+
+    it "is false when Primo returns results" do
+      response = described_class.new({ "docs" => [{}] }, {}, { numFound: 1, blacklight_config: })
+      expect(response).not_to be_empty
+    end
+  end
+
   describe ".get_range_stats" do
     context "Empty response" do
       let(:stats) { response.get_range_stats([]) }

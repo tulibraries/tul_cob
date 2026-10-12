@@ -89,6 +89,11 @@ module Blacklight::PrimoCentral
       total
     end
 
+    # Hash#empty? is always false here, so match Blacklight::Solr::Response.
+    def empty?
+      total.zero?
+    end
+
     def offset_value
       start
     end
