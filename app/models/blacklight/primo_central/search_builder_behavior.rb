@@ -105,7 +105,7 @@ module Blacklight::PrimoCentral
       build_query = clause_values.filter_map.with_index { |clause, index|
         field = to_primo_field(clause[:field] || clause["field"])
         value = clause[:query] || clause["query"]
-        precision = clause[:match] || clause["match"] || "contains"
+        precision = to_primo_precision(clause[:match] || clause["match"])
         operator = if use_clause_operators
           next_clause = clause_values[index + 1]
           next_clause && to_primo_boolean_operator(next_clause[:op] || next_clause["op"])
@@ -118,6 +118,15 @@ module Blacklight::PrimoCentral
         end
       }.compact
       primo_central_parameters[:query][:q][:value] = build_query unless build_query.empty?
+    end
+
+    # The advanced form's "is (exact)" option submits "is"; Primo calls it "exact".
+    def to_primo_precision(match)
+      case match
+      when "is" then "exact"
+      when "exact", "begins_with" then match
+      else "contains"
+      end
     end
 
     def to_primo_boolean_operator(operator)
