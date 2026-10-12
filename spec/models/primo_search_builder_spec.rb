@@ -233,6 +233,32 @@ RSpec.describe Blacklight::PrimoCentral::SearchBuilder , type: :model do
       end
     end
 
+    context "blacklight 8 advanced form with match types" do
+      let(:params) do
+        ActiveSupport::HashWithIndifferentAccess.new(
+          clause: {
+            "0" => { field: "any", query: "chicken", match: "is" },
+            "1" => { field: "title", query: "history", match: "begins_with" }
+          },
+          op: "must"
+        )
+      end
+
+      before do
+        controller = double(action_name: "advanced_search")
+        allow(search_builder).to receive(:search_state).and_return(double(controller:, params:))
+        subject.process_advanced_search(primo_central_parameters)
+      end
+
+      it "maps the form match types to Primo precisions" do
+        expected = [
+          { "value" => "chicken", "field" => :any, "precision" => "exact", "operator" => "AND" },
+          { "value" => "history", "field" => :title, "precision" => "begins_with", "operator" => "AND" }
+        ]
+        expect(primo_central_parameters["query"]["q"]["value"]).to eq(expected)
+      end
+    end
+
     context "blacklight 8 advanced form with blank queries" do
       let(:params) do
         ActiveSupport::HashWithIndifferentAccess.new(
