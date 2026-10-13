@@ -680,7 +680,7 @@ GEM
       google-protobuf (~> 4.31)
     scrub_rb (1.0.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.50.0)
+    selenium-webdriver (4.51.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rubyzip (>= 1.2.2, < 4.0)
@@ -1134,7 +1134,7 @@ CHECKSUMS
   sass-embedded (1.105.1-x86_64-linux-musl) sha256=be8897b9e2e27e9a6eac30e198ec7c9479b255f0a9da3109d4749e544ed75a11
   scrub_rb (1.0.1) sha256=7d346064704379f9e793f926680b01901e99e3898bcd24635427f081f8188f37
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
-  selenium-webdriver (4.50.0) sha256=d12f94025bc33af44428ed6b8def4896a7bb9c4521212579241650d6cb060fcb
+  selenium-webdriver (4.51.0) sha256=09edf1b7fc360e0570bac609676f804ed527fe0b2f285e03233561e29b0ec105
   set (1.1.3) sha256=12bbbd31c8b177d55ac0314bcc7f4c473276b06e8a2dcfdc14326e73ce7769ce
   simplecov (1.3.2) sha256=2a22ec1759f1b8db60881a2e038758956fc69ef93ed669be0bde0678de6d0e85
   simplecov-lcov (0.9.0) sha256=7a77a31e200a595ed4b0249493056efd0c920601f53d2ef135ca34ee796346cd
