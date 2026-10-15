@@ -825,7 +825,7 @@ DEPENDENCIES
   cob_web_index!
   concurrent-ruby
   connection_pool (< 3)
-  csl-styles
+  csl-styles (= 2.0.2)
   dalli
   dartsass-rails
   database_cleaner

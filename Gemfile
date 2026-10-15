@@ -23,7 +23,7 @@ gem "byebug", platform: :mri
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
 gem "cgi"
 gem "citeproc-ruby"
-gem "csl-styles"
+gem "csl-styles", "2.0.2"
 gem "cob_az_index", git: "https://github.com/tulibraries/cob_az_index.git",
   branch: "main"
 gem "cob_index",
