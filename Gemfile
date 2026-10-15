@@ -74,6 +74,7 @@ gem "tzinfo-data", platforms: [:windows, :jruby]
 gem "uglifier", ">= 1.3.0"
 
 group :development do
+  gem "brakeman", require: false
   gem "flamegraph"
   gem "foreman"
   gem "launchy"

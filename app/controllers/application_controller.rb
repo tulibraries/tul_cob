@@ -27,17 +27,16 @@ class ApplicationController < ActionController::Base
   rescue_from ActionController::UnknownFormat,
     with: :render_unsupported_format
 
-  # Rails 5.1 and above requires permitted params to be defined in the Controller
-  # BL doesn't do that, but might in the future. This allows us to use the pre 5.1
-  # behavior until we can define all possible param  in the future.
-  ActionController::Parameters.permit_all_parameters = true
-
   # Overrides Devise::Controllers::Helpers#after_sign_out_path_for
   #
   # We want to make sure user actually gets signed out.
   # @see BL-224
   def after_sign_out_path_for(resource_or_scope)
-    if request.params[:type] == "sso"
+    request_parameters = request.parameters
+    request_parameters = request_parameters.to_unsafe_h if request_parameters.respond_to?(:to_unsafe_h)
+    request_parameters = ActionController::Parameters.new(request_parameters)
+
+    if request_parameters.permit(:type)[:type] == "sso"
       Rails.configuration.devise[:sign_out_redirect_url]
     else
       super

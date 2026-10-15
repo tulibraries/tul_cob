@@ -9,7 +9,13 @@
 -%>
 
 <% if show_doc_actions? %>
-  <% url_opts = params.to_unsafe_h %>
+  <% url_opts = if respond_to?(:search_state)
+       search_state.to_h
+     elsif params.respond_to?(:permitted?) && params.permitted?
+       params.to_h
+     else
+       {}
+     end %>
   <div class="bookmarks-tools-layout">
     <div class="bookmarks-tools-group bookmarks-tools-group--primary">
       <% if Flipflop.citeproc_citations? && @response.documents.any? { |doc| doc.citable? } %>
