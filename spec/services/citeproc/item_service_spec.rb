@@ -16,8 +16,9 @@ RSpec.describe Citeproc::ItemService do
     )
   end
 
+  # citeproc >= 2.0 marks parsed names with "parse-names" => "false"
   def citeproc_names(value)
-    value&.to_citeproc
+    value&.to_citeproc&.map { |name| name.except("parse-names") }
   end
 
   it "builds a citeproc item from indexed title and relator-normalized names" do
