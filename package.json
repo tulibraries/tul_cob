@@ -7,7 +7,7 @@
     "ajv": "8.18.0",
     "blacklight-range-limit": "^9.0.0",
     "bootstrap": "^5.3.8",
-    "follow-redirects": "1.16.0",
+    "follow-redirects": "1.16.1",
     "jquery": "^3.7.1",
     "masonry-layout": "^4.2.2",
     "microplugin": "^0.0.3",
