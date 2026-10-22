@@ -3,6 +3,12 @@
 class BookmarksController < CatalogController
   include Blacklight::Bookmarks
 
+  MAX_BOOKMARKS_PER_REQUEST = 100
+
+  configure_blacklight do |config|
+    config.search_state_fields += [ :encrypted_user_id ]
+  end
+
   # Overridden to not cache.
   def index
     no_cache
@@ -51,15 +57,15 @@ class BookmarksController < CatalogController
   end
 
   def destroy
-    return destroy_many if params[:bookmarks]
+    return destroy_many if permit_bookmarks.key?(:bookmarks)
 
     super
   end
 
   def action_documents
-    return super unless params[:id].present?
+    document_ids = Array(permit_bookmarks[:id]).map(&:to_s)
+    return super if document_ids.empty?
 
-    document_ids = Array(params[:id]).map(&:to_s)
     search_service.fetch(document_ids, rows: document_ids.length, start: 0)
   end
 
@@ -149,13 +155,13 @@ class BookmarksController < CatalogController
     end
 
     def requested_bookmarks
-      return normalized_bookmarks(permit_bookmarks[:bookmarks]) if params[:bookmarks]
+      return normalized_bookmarks(permit_bookmarks[:bookmarks]) if permit_bookmarks.key?(:bookmarks)
 
-      [{ document_id: params[:id].to_s, document_type: blacklight_config.document_model.to_s }]
+      [{ document_id: permit_bookmarks[:id].to_s, document_type: blacklight_config.document_model.to_s }]
     end
 
     def normalized_bookmarks(bookmarks)
-      Array(bookmarks).filter_map do |bookmark|
+      Array(bookmarks).first(MAX_BOOKMARKS_PER_REQUEST).filter_map do |bookmark|
         document_id = bookmark[:document_id] || bookmark["document_id"]
         next if document_id.blank?
 
@@ -164,6 +170,14 @@ class BookmarksController < CatalogController
           document_type: bookmark[:document_type] || bookmark["document_type"] || blacklight_config.document_model.to_s
         }
       end
+    end
+
+    def permit_bookmarks
+      permitted = params.permit(:id, bookmarks: %i[document_id document_type])
+      if params[:id].is_a?(Array)
+        permitted[:id] = params[:id].first(MAX_BOOKMARKS_PER_REQUEST)
+      end
+      permitted
     end
 
     def filter_existing_bookmarks(bookmarks)

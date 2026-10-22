@@ -140,6 +140,27 @@ RSpec.describe BookmarksController do
 
       expect(flash[:notice]).to eq(I18n.t("blacklight.bookmarks.add.success", count: 1))
     end
+
+    it "persists only the bookmark fields allowed by the request" do
+      allow(controller).to receive(:permit_bookmarks).and_call_original
+      allow(bookmarks_relation).to receive(:where)
+        .with(document_type: "SolrDocument", document_id: ["3"])
+        .and_return(bookmarks_relation)
+      allow(bookmarks_relation).to receive(:pluck).with(:document_id).and_return([])
+      expect(bookmarks_relation).to receive(:create!)
+        .with([{ document_id: "3", document_type: "SolrDocument" }])
+
+      post :create, params: {
+        bookmarks: [
+          {
+            document_id: "3",
+            document_type: "SolrDocument",
+            admin: true
+          }
+        ],
+        unexpected: "ignored"
+      }
+    end
   end
 
   describe "#destroy" do
