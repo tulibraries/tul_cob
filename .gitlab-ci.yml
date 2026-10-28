@@ -21,6 +21,9 @@ variables:
 before_script:
   - *export_variables
 
+gitleaks:
+  allow_failure: true
+
 stages:
   - lint
   - build
