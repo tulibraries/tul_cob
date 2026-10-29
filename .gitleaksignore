@@ -1,0 +1,7 @@
+# False positive: Only used in development and test environments
+8d2dbc0c95b58bf7f7a4c1f7e0399b6a508898cf:config/initializers/devise.rb:generic-api-key:12
+6ab7cea9efd667a5178165aff6257dd6a7ebc0ff:config/secrets.yml:generic-api-key:14
+6ab7cea9efd667a5178165aff6257dd6a7ebc0ff:config/secrets.yml:generic-api-key:17
+de74875a0b7e76c300d2c6f78b4794187c47bc50:.docker/sp/etc-apache2-ssl/ca.key:private-key:1
+de74875a0b7e76c300d2c6f78b4794187c47bc50:.docker/sp/etc-shibboleth/sp-key.pem:private-key:1
+
