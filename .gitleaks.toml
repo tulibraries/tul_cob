@@ -1,0 +1,10 @@
+# Use the defaults, we're just adding exclusions
+[extend]
+useDefault = true
+
+# Exclude lines beginning with #
+[allowlist]
+regexTarget = "line"
+regexes = [
+  '''^\s*#'''
+]
