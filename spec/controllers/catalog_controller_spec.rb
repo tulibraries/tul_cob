@@ -63,6 +63,42 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
 
+    context "with a matching CookieChimp signature" do
+      let(:cookiechimp_signature) { "cookiechimp-signature" }
+
+      before do
+        config = BotChallengePage::BotChallengePageController
+          .bot_challenge_config
+
+        allow(config).to receive(:cf_turnstile_sitekey)
+          .and_return(cookiechimp_signature)
+        request.headers["x-cookiechimp-signature"] = cookiechimp_signature
+      end
+
+      it "preserves normal catalog access without a bot challenge" do
+        get :index, params: { q: "cookiechimp crawler characterization" }
+
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "with a non-matching CookieChimp signature" do
+      before do
+        config = BotChallengePage::BotChallengePageController
+          .bot_challenge_config
+
+        allow(config).to receive(:cf_turnstile_sitekey)
+          .and_return("cookiechimp-signature")
+        request.headers["x-cookiechimp-signature"] = "invalid-signature"
+      end
+
+      it "requires the bot challenge" do
+        get :index, params: { q: "invalid cookiechimp characterization" }
+
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+
     context "with a stale signed login marker" do
       before do
         cookies.signed[LoginCookie::LOGIN_COOKIE_NAME] = {
