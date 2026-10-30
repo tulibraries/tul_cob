@@ -34,7 +34,7 @@ RUN apk add -U --no-cache \
     libxslt-dev=${LIBXSLT_VERSION} \
     libffi-dev=3.5.2-r1 \
     postgresql17-dev=${POSTGRESQL_VERSION} \
-    nodejs=24.22.1-r0 \
+    nodejs=24.22.1-r1 \
     yarn=1.22.22-r1 \
     tzdata=${TZDATA_VERSION}
 
