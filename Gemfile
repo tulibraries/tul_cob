@@ -17,7 +17,7 @@ gem "blacklight-ris", "~> 0.2.0"
 gem "blacklight_range_limit"
 gem "bootstrap", ">= 5.3.3"
 gem "bot_challenge_page"
-gem "bootsnap", "1.26.0"
+gem "bootsnap", "1.26.1"
 gem "browser"
 gem "byebug", platform: :mri
 gem "cdm", git: "https://github.com/tulibraries/cdm_rb.git", branch: "master"
