@@ -201,7 +201,7 @@ GEM
     blacklight_range_limit (9.3.0)
       blacklight (>= 7.25.2, < 10)
       view_component (>= 2.54, < 5)
-    bootsnap (1.26.0)
+    bootsnap (1.26.1)
       msgpack (~> 1.5)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -437,7 +437,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    msgpack (1.8.5)
+    msgpack (1.8.7)
     multi_json (1.21.2)
     multi_xml (0.9.1)
       bigdecimal (>= 3.1, < 5)
@@ -812,7 +812,7 @@ DEPENDENCIES
   blacklight-ris (~> 0.2.0)
   blacklight_advanced_search (~> 8.0)
   blacklight_range_limit
-  bootsnap (= 1.26.0)
+  bootsnap (= 1.26.1)
   bootstrap (>= 5.3.3)
   bot_challenge_page
   browser
@@ -926,7 +926,7 @@ CHECKSUMS
   blacklight-ris (0.2.0) sha256=97260e7cf258e4ed17a349ab1597465de99e43b275029c7706b5f621d268e926
   blacklight_advanced_search (8.0.0) sha256=0a6d1a381872f90a34c7e4197408bb547b9bdac1202e7110c1075361c5ee7999
   blacklight_range_limit (9.3.0) sha256=bc22d55f3d650086a632a88e7591ac39e6d8e40ba3297dfcef9420c048e1e71d
-  bootsnap (1.26.0) sha256=ca96237015e6cd74a02963d5821cf00ac5ea134653b323e8cd6d702a7718bf1b
+  bootsnap (1.26.1) sha256=5b5bd90f8f13ea338627c1d56ffbe2ea25e743ac48c2afec1a9bea3a06a264e2
   bootstrap (5.3.8) sha256=1c23b06df24ec28a0058ad90a0da93e260d2c0a5c453d7087f6bad428464742f
   bot_challenge_page (1.2.0) sha256=1b1ba518a11cf07314a209061cc653db707b07fb10967963acf2fdaab32140af
   browser (6.2.0) sha256=281d5295788825c9396427c292c2d2be0a5c91875c93c390fde6e5d61a5ace2d
@@ -1036,7 +1036,7 @@ CHECKSUMS
   microsoft_graph_mailer (0.1.0) sha256=4ad807b070233e46d5f3e92d160c999b6044f1e64a4e1895102a3ae4577ac1ac
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
   minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
-  msgpack (1.8.5) sha256=97419eaa7b35dfe3e462c0e6c1a3dfdcbfc8756605c09e46e4c6daef127517ba
+  msgpack (1.8.7) sha256=dfefec761b5f9047e6e8d95d2c7f8af4b3725d984a01942adc533aa819a2df33
   multi_json (1.21.2) sha256=245531eaf54bdba57aba515ff08b4503505c5e09911daa89c5a561e2f85bea8e
   multi_xml (0.9.1) sha256=7ce766b59c17241ed62976caeae1fae9b2431b263398c35396239a68c4a64e57
   multipart-post (2.4.1) sha256=9872d03a8e552020ca096adadbf5e3cb1cd1cdd6acd3c161136b8a5737cdb4a8
