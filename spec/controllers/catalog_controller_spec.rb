@@ -99,12 +99,9 @@ RSpec.describe CatalogController, type: :controller do
       end
     end
 
-    context "with a stale signed login marker" do
+    context "with a stale login marker" do
       before do
-        cookies.signed[LoginCookie::LOGIN_COOKIE_NAME] = {
-          user_id: -1,
-          issued_at: 1.hour.ago.to_i
-        }
+        cookies[LoginCookie::LOGIN_COOKIE_NAME] = LoginCookie::LOGIN_COOKIE_VALUE
       end
 
       it "clears the marker and requires the bot challenge" do

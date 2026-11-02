@@ -42,7 +42,7 @@ RSpec.describe SessionsController, type: :controller do
     it "sets the login cookie" do
       post :create, params: { user: { email: user.email, password: } }
 
-      expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to include("user_id" => user.id)
+      expect(cookies[LoginCookie::LOGIN_COOKIE_NAME]).to eq(LoginCookie::LOGIN_COOKIE_VALUE)
     end
 
     it "redirects to redirect_to when provided" do
@@ -55,7 +55,7 @@ RSpec.describe SessionsController, type: :controller do
   describe "DELETE destroy" do
     it "removes the login cookie" do
       sign_in user, scope: :user
-      cookies.signed[LoginCookie::LOGIN_COOKIE_NAME] = { user_id: user.id }
+      cookies[LoginCookie::LOGIN_COOKIE_NAME] = LoginCookie::LOGIN_COOKIE_VALUE
 
       delete :destroy
 
@@ -85,8 +85,7 @@ RSpec.describe SessionsController, type: :controller do
     it "sets the login cookie" do
       get :social_login_callback, params: { jwt: token }
 
-      user = User.find_by(provider: "alma", uid: "social-user")
-      expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to include("user_id" => user.id)
+      expect(cookies[LoginCookie::LOGIN_COOKIE_NAME]).to eq(LoginCookie::LOGIN_COOKIE_VALUE)
     end
   end
 end

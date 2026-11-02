@@ -25,8 +25,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
       it "sets the login cookie" do
         request.env["omniauth.params"] = { "target" => target_path }
         get :saml
-        user = User.find_by(uid: saml_uid)
-        expect(cookies.signed[LoginCookie::LOGIN_COOKIE_NAME]).to include("user_id" => user.id)
+        expect(cookies[LoginCookie::LOGIN_COOKIE_NAME]).to eq(LoginCookie::LOGIN_COOKIE_VALUE)
       end
     end
 
