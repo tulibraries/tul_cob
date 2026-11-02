@@ -4,17 +4,15 @@ module LoginCookie
   extend ActiveSupport::Concern
 
   LOGIN_COOKIE_NAME = "logged_in"
+  LOGIN_COOKIE_VALUE = ENV.fetch("LOGIN_COOKIE_VALUE", "logged_in").freeze
 
   private
 
     def set_login_cookie(user = current_user)
       return if user.blank?
 
-      cookies.signed[LOGIN_COOKIE_NAME] = {
-        value: {
-          user_id: user.id,
-          issued_at: Time.current.to_i
-        },
+      cookies[LOGIN_COOKIE_NAME] = {
+        value: LOGIN_COOKIE_VALUE,
         path: "/",
         httponly: true,
         same_site: :lax,
