@@ -50,6 +50,15 @@ RSpec.describe SessionsController, type: :controller do
 
       expect(response).to redirect_to("/catalog/123")
     end
+
+    it "does not pass unexpected user attributes to authentication" do
+      post :create, params: {
+        user: { email: user.email, password:, admin: true },
+        unexpected: "ignored"
+      }
+
+      expect(user.reload.admin).to be(false)
+    end
   end
 
   describe "DELETE destroy" do

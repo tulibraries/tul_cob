@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  MAX_LOAN_IDS_PER_REQUEST = 100
+
   include JsonLogger
   include ServerErrors
   # Note that order matters here:
@@ -8,6 +10,7 @@ class UsersController < ApplicationController
   include QuikPay
 
   before_action :authenticate_user!, only: %i[account holds fines loans renew renew_selected]
+  before_action :permit_renewal_parameters, only: %i[renew renew_selected]
 
   rescue_from ActionView::Template::Error,
     with: :no_account_found
@@ -124,4 +127,17 @@ class UsersController < ApplicationController
     flash[:notice] = "Your user account was not found."
     render "errors/internal_server_error"
   end
+
+  private
+
+    def params
+      @permitted_renewal_params || super
+    end
+    public :params
+
+    def permit_renewal_parameters
+      permitted = params.permit(:loan_id, loan_ids: [])
+      permitted[:loan_ids] = permitted[:loan_ids].first(MAX_LOAN_IDS_PER_REQUEST) if permitted[:loan_ids]
+      @permitted_renewal_params = permitted
+    end
 end

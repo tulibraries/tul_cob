@@ -36,12 +36,14 @@ module QuikPay
 
   # Callback for processing user after they are returned from quikpay service.
   def quik_pay_callback
-    validate_quik_pay_hash(params.except(:controller, :action))
-    validate_quik_pay_timestamp(params["timestamp"])
-    validate_quik_pay_trasaction_status(params["transactionStatus"])
+    callback_params = permitted_quik_pay_callback_params
+    validate_quik_pay_callback_keys!
+    validate_quik_pay_hash(callback_params)
+    validate_quik_pay_timestamp(callback_params["timestamp"])
+    validate_quik_pay_trasaction_status(callback_params["transactionStatus"])
 
-    user_id = quik_pay_user_id
-    log = { type: "alma_pay", user: user_id, transactionStatus: params["transactionStatus"] }
+    user_id = quik_pay_user_id(callback_params)
+    log = { type: "alma_pay", user: user_id, transactionStatus: callback_params["transactionStatus"] }
 
     # The return value for the do_with_json_logger block should implement Loggable.
     balance  = do_with_json_logger(log) {
@@ -111,8 +113,18 @@ module QuikPay
       authenticate_user!
     end
 
-    def quik_pay_user_id
-      current_user&.uid || params["orderNumber"]
+    def permitted_quik_pay_callback_params
+      params.permit(:timestamp, :transactionStatus, :transactionTotalAmount, :orderNumber, :hash)
+    end
+
+    def validate_quik_pay_callback_keys!
+      allowed_keys = %w[timestamp transactionStatus transactionTotalAmount orderNumber hash controller action format]
+      unexpected_keys = params.to_unsafe_h.stringify_keys.keys - allowed_keys
+      raise InvalidHash.new("The callback contains unexpected parameters.") if unexpected_keys.present?
+    end
+
+    def quik_pay_user_id(callback_params = permitted_quik_pay_callback_params)
+      current_user&.uid || callback_params["orderNumber"]
     end
 
     def quik_pay_redirect_url_parameters
@@ -130,7 +142,8 @@ module QuikPay
     def validate_quik_pay_hash(params)
       hash = params["hash"]
 
-      valid_hash = quik_pay_hash(params.except("hash").values, Rails.configuration.apis.dig(:quik_pay, :secret))
+      values = params.except("hash").to_h.sort.to_h.values
+      valid_hash = quik_pay_hash(values, Rails.configuration.apis.dig(:quik_pay, :secret))
 
       raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?
 
