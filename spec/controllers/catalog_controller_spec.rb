@@ -67,12 +67,8 @@ RSpec.describe CatalogController, type: :controller do
       let(:cookiechimp_signature) { "cookiechimp-signature" }
 
       before do
-        config = BotChallengePage::BotChallengePageController
-          .bot_challenge_config
-
-        allow(config).to receive(:cf_turnstile_sitekey)
-          .and_return(cookiechimp_signature)
         request.headers["x-cookiechimp-signature"] = cookiechimp_signature
+        Rails.configuration.apis["turnstile"]["cookiechimp_signature"] = cookiechimp_signature
       end
 
       it "preserves normal catalog access without a bot challenge" do
@@ -84,11 +80,7 @@ RSpec.describe CatalogController, type: :controller do
 
     context "with a non-matching CookieChimp signature" do
       before do
-        config = BotChallengePage::BotChallengePageController
-          .bot_challenge_config
-
-        allow(config).to receive(:cf_turnstile_sitekey)
-          .and_return("cookiechimp-signature")
+        Rails.configuration.apis["turnstile"]["cookiechimp_signature"] = "cookiechimp_signature"
         request.headers["x-cookiechimp-signature"] = "invalid-signature"
       end
 

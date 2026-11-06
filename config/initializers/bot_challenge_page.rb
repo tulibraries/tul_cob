@@ -22,11 +22,12 @@ BotChallengePage.configure do |config|
   # Filter to omit requests from bot challenge control, executed in controller instance context
   #
   config.skip_when = ->(config) {
-    cookiechimp_signature = request.headers["x-cookiechimp-signature"]
+    cookiechimp_signature_header = request.headers["x-cookiechimp-signature"]
+    cookiechimp_signature = Rails.configuration.apis.dig(:turnstile, :cookiechimp_signature)
 
     helpers.current_page?(okcomputer_path) ||
-      (cookiechimp_signature.present? &&
-        cookiechimp_signature == config.cf_turnstile_sitekey)
+      (cookiechimp_signature_header.present? &&
+       cookiechimp_signature_header == cookiechimp_signature)
   }
 
   # Hook after a bot challenge is presented, for logging or other
