@@ -27,7 +27,7 @@ RSpec.feature "Advanced Search" do
         all("div.advanced-search-facet").each_with_index do |div_panel, i|
           expect(div_panel).to have_text facets[i]
         end
-        all("select.selectize").each do |facet_select|
+        all("select.tom-select").each do |facet_select|
           expect(facet_select).to have_selector("option", minimum: 1)
         end
       end

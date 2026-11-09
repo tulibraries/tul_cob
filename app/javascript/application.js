@@ -1,18 +1,16 @@
-import $ from "jquery"
+import "jquery"
 import "@hotwired/turbo-rails"
-import "@selectize/selectize"
-import selectizeOptions from "selectize_options"
+import TomSelect from "tom-select"
+import tomSelectOptions from "tom_select_options"
 import "legacy"
 import "bootstrap"
 import "controllers"
 import Blacklight from "blacklight-frontend"
 import BlacklightRangeLimit from "blacklight-range-limit"
 
-const initializeSelectize = () => {
-  if (typeof $.fn.selectize !== "function") return
-
-  $("select.selectize").each(function initializeSelectizeControl() {
-    if (!this.selectize) $(this).selectize(selectizeOptions)
+const initializeTomSelect = () => {
+  document.querySelectorAll("select.tom-select").forEach((element) => {
+    if (!element.tomselect) new TomSelect(element, tomSelectOptions)
   })
 }
 
@@ -30,13 +28,13 @@ const handleSkipLinkClick = (event) => {
   }
   target.focus({ preventScroll: true })
   target.scrollIntoView()
-  window.setTimeout(initializeSelectize, 0)
+  window.setTimeout(initializeTomSelect, 0)
 }
 
-document.addEventListener("turbo:load", initializeSelectize)
-document.addEventListener("DOMContentLoaded", initializeSelectize, { once: true })
+document.addEventListener("turbo:load", initializeTomSelect)
+document.addEventListener("DOMContentLoaded", initializeTomSelect, { once: true })
 document.addEventListener("click", handleSkipLinkClick, true)
 
-if (document.readyState !== "loading") initializeSelectize()
+if (document.readyState !== "loading") initializeTomSelect()
 
 BlacklightRangeLimit.init({ onLoadHandler: Blacklight.onLoad });

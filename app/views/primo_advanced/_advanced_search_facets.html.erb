@@ -10,8 +10,8 @@
         <%= content_tag(:select, multiple: true,
           name: "f[#{display_facet.name}][]",
           id: display_facet.name.parameterize,
-          class: "form-control custom-select selectize",
-          data: { controller: "selectize", "live-search": "true" },
+          class: "form-control custom-select tom-select",
+          data: { controller: "tom-select", "live-search": "true" },
           placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}") do %>
           <% display_facet.items.each do |facet_item| %>
             <% facet_item_presenter = facet_item_presenter(facet_config, facet_item, display_facet) %>
