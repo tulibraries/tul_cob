@@ -53,6 +53,23 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.illustrator)).to eq([{ "literal" => "Example Press" }])
   end
 
+  it "maps film director, director, and composer contributor relators" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "Smith, Jane|film director.",
+      "Jones, Robert|director.",
+      "Williams, Anna|composer."
+    ]
+
+    expect(citeproc_names(item.director)).to eq([
+      { "family" => "Smith", "given" => "Jane" },
+      { "family" => "Jones", "given" => "Robert" }
+    ])
+    expect(citeproc_names(item.composer)).to eq([
+      { "family" => "Williams", "given" => "Anna" }
+    ])
+  end
+
   it "parses contributor-only json indexed values" do
     document["creator_display"] = []
     document["contributor_display"] = [
@@ -127,6 +144,16 @@ RSpec.describe Citeproc::ItemService do
     document["contributor_display"] = []
 
     expect(citeproc_names(item.author)).to eq([{ "family" => "Norris", "given" => "Denne Michele" }])
+  end
+
+  it "maps a creator with a composer relator to composer" do
+    document["creator_display"] = ["Gordon, Paul|composer."]
+    document["contributor_display"] = []
+
+    expect(citeproc_names(item.composer)).to eq([
+      { "family" => "Gordon", "given" => "Paul" }
+    ])
+    expect(item.author).to be_nil
   end
 
   it "strips life dates from indexed personal names" do
