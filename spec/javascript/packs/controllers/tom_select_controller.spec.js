@@ -38,13 +38,16 @@ describe("TomSelectController", () => {
     expect(document.querySelector("label").htmlFor).toBe(select.tomselect.control_input.id)
   })
 
-  it("preserves changed filters when caching and reconnecting", async () => {
+  it("preserves changed filters and the dropdown label when caching and reconnecting", async () => {
+    const label = document.querySelector("label")
+    expect(select.tomselect.dropdown_content.getAttribute("aria-labelledby")).toBe(label.id)
     select.tomselect.setValue(["Journal"])
     document.dispatchEvent(new Event("turbo:before-cache"))
 
     expect(select.tomselect).toBeUndefined()
     expect(document.querySelector(".ts-wrapper")).toBeNull()
     expect(Array.from(select.selectedOptions, option => option.value)).toEqual(["Journal"])
+    expect(label.htmlFor).toBe(select.id)
 
     select.removeAttribute("data-controller")
     await settle()
@@ -53,6 +56,9 @@ describe("TomSelectController", () => {
 
     expect(select.tomselect.items).toEqual(["Journal"])
     expect(document.querySelectorAll(".ts-wrapper")).toHaveLength(1)
+    expect(label.htmlFor).toBe(select.tomselect.control_input.id)
+    expect(label.id).not.toBe("")
+    expect(select.tomselect.dropdown_content.getAttribute("aria-labelledby")).toBe(label.id)
   })
 
   it("deletes the last selected filter when Delete is pressed after the items", () => {

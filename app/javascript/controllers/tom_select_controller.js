@@ -24,7 +24,12 @@ export default class extends Controller {
     if (!control) return
 
     const selectedValues = [...control.items]
+    const labels = Array.from(control.control_input.labels || [])
+      .filter((label) => label.htmlFor === control.control_input.id)
     control.destroy()
+    labels.forEach((label) => {
+      label.htmlFor = this.element.id
+    })
     Array.from(this.element.options).forEach((option) => {
       option.selected = selectedValues.includes(option.value)
     })
