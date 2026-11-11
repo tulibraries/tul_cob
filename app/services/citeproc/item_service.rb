@@ -95,6 +95,13 @@ module Citeproc
         return "book" if formats.include?("Book")
         return "article-journal" if formats.include?("Journal/Periodical") || formats.include?("Article")
         return "thesis" if formats.include?("Dissertation/Thesis")
+        return "song" if formats.include?("Audio")
+        return "paper-conference" if formats.include?("Conference Proceeding")
+        return "dataset" if formats.include?("Dataset")
+        return "map" if formats.include?("Map")
+        return "musical_score" if formats.include?("Score")
+        return "motion_picture" if formats.include?("Video")
+        return "webpage" if formats.include?("Website")
 
         "document"
       end

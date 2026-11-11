@@ -28,6 +28,58 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.author)).to eq([{ "family" => "Chen", "given" => "Bor-Sen" }, { "family" => "Li", "given" => "Zhengwei" }])
   end
 
+  describe "CSL type mapping" do
+    {
+      "Book" => "book",
+      "Journal/Periodical" => "article-journal",
+      "Article" => "article-journal",
+      "Dissertation/Thesis" => "thesis",
+      "Audio" => "song",
+      "Conference Proceeding" => "paper-conference",
+      "Dataset" => "dataset",
+      "Map" => "map",
+      "Score" => "musical_score",
+      "Video" => "motion_picture",
+      "Website" => "webpage"
+    }.each do |format, expected_type|
+      it "maps #{format} to #{expected_type}" do
+        document["format"] = [format]
+
+        expect(item.type).to eq(expected_type)
+      end
+    end
+
+    it "defaults unknown formats to document" do
+      document["format"] = ["Unknown"]
+
+      expect(item.type).to eq("document")
+    end
+
+    it "defaults missing formats to document" do
+      document["format"] = nil
+
+      expect(item.type).to eq("document")
+    end
+
+    it "preserves existing format precedence" do
+      document["format"] = ["Map", "Book", "Article"]
+
+      expect(item.type).to eq("book")
+    end
+
+    it "prioritizes Article over Dissertation/Thesis" do
+      document["format"] = ["Dissertation/Thesis", "Article"]
+
+      expect(item.type).to eq("article-journal")
+    end
+
+    it "resolves multiple new formats according to mapping precedence" do
+      document["format"] = ["Website", "Audio"]
+
+      expect(item.type).to eq("song")
+    end
+  end
+
   it "restores the legacy citation item attributes" do
     document["imprint_display"] = ["Philadelphia : Temple University Press, 2021"]
     document["pub_date_display"] = ["2021"]
