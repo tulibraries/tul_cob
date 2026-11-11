@@ -1,7 +1,7 @@
 # hadolint ignore=DL3006,DL3026
 ARG BASE_IMAGE="harbor.k8s.temple.edu/library/ruby:4.0-alpine"
 ARG BASH_VERSION="5.3.9-r1"
-ARG LIBXSLT_VERSION="1.1.43-r3"
+ARG LIBXSLT_VERSION="1.1.43-r4"
 ARG POSTGRESQL_VERSION="17.11-r0"
 ARG TZDATA_VERSION="2026f-r0"
 
@@ -28,7 +28,7 @@ ENV RAILS_ENV=${RAILS_ENV}
 RUN apk add -U --no-cache \
     bash=${BASH_VERSION} \
     build-base=0.5-r4 \
-    git=2.54.0-r0 \
+    git=2.54.1-r0 \
     yaml=0.2.5-r2 \
     yaml-dev=0.2.5-r2 \
     libxslt-dev=${LIBXSLT_VERSION} \
