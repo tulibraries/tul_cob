@@ -77,6 +77,12 @@ a.advanced-search-start-over:link, a.advanced-search-start-over:visited, a.advan
   justify-content: flex-end;
   margin-right: 0.625rem;
 
+  .advanced-search-submit:focus-visible,
+  .advanced-search-start-over:focus-visible {
+    outline: 3px solid $cherry-red;
+    outline-offset: 2px;
+  }
+
   @media(max-width: 992px) {
     margin-right: 0;
   }
