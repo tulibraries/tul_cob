@@ -51,6 +51,18 @@ RSpec.describe "parameter boundaries", type: :request do
       expect(response).to have_http_status(:ok)
       expect(renewed_ids).to eq(%w[loan-1 loan-2])
     end
+
+    it "rejects more than 100 selected loans without starting the renewal workflow" do
+      sign_in user
+      expect_any_instance_of(User).not_to receive(:renew_selected)
+
+      post "/users/renew_selected",
+        params: { loan_ids: Array.new(101) { |index| "loan-#{index + 1}" } },
+        as: :json
+
+      expect(response).to have_http_status(:bad_request)
+      expect(response.parsed_body).to eq("error" => "Too many loans selected for renewal")
+    end
   end
 
   describe "Alma hold requests" do

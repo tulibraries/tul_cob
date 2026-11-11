@@ -137,7 +137,11 @@ class UsersController < ApplicationController
 
     def permit_renewal_parameters
       permitted = params.permit(:loan_id, loan_ids: [])
-      permitted[:loan_ids] = permitted[:loan_ids].first(MAX_LOAN_IDS_PER_REQUEST) if permitted[:loan_ids]
+      if permitted[:loan_ids]&.length.to_i > MAX_LOAN_IDS_PER_REQUEST
+        render json: { error: "Too many loans selected for renewal" }, status: :bad_request
+        return
+      end
+
       @permitted_renewal_params = permitted
     end
 end
