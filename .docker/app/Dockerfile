@@ -28,7 +28,7 @@ ENV RAILS_ENV=${RAILS_ENV}
 RUN apk add -U --no-cache \
     bash=${BASH_VERSION} \
     build-base=0.5-r4 \
-    git=2.54.0-r0 \
+    git=2.54.1-r0 \
     yaml=0.2.5-r2 \
     yaml-dev=0.2.5-r2 \
     libxslt-dev=${LIBXSLT_VERSION} \
