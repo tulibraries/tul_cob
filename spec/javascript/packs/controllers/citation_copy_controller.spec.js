@@ -103,4 +103,31 @@ describe("CitationCopyController", () => {
     expect(text).toContain("Example book title")
     expect(text).not.toContain("<em>")
   })
+
+  it("falls back to plain text when rich-text copying fails", async () => {
+    const write = jest.fn().mockRejectedValue(new Error("Clipboard write failed"))
+    const writeText = jest.fn().mockResolvedValue(undefined)
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { write, writeText }
+    })
+    global.ClipboardItem = jest.fn().mockImplementation(data => ({ data }))
+    jest.spyOn(console, "warn").mockImplementation(() => {})
+    application = Application.start()
+    application.register("citation-copy", CitationCopyController)
+    await new Promise(resolve => setTimeout(resolve, 0))
+    const content = document.querySelector('[data-citation-copy-target="content"]')
+    Object.defineProperty(content, "innerText", {
+      configurable: true,
+      get() {
+        return this.textContent
+      }
+    })
+    document.querySelector("button").click()
+    await new Promise(resolve => setTimeout(resolve, 0))
+    expect(write).toHaveBeenCalledTimes(1)
+    expect(writeText).toHaveBeenCalledWith(
+      "Smith, J. (2024). Example book title. Publisher."
+    )
+  })
 })
