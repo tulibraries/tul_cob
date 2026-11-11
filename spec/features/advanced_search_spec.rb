@@ -34,6 +34,51 @@ RSpec.feature "Advanced Search" do
     end
   end
 
+  scenario "navigates Availability with the keyboard without selecting unintended filters", js: true do
+    visit "/catalog/advanced"
+
+    availability = find(".advanced-search-facet", text: "Availability")
+    input = availability.find(".ts-control input")
+    select = availability.find("select", visible: :all)
+
+    80.times do
+      break if input.matches_css?(":focus", wait: 0)
+
+      page.driver.browser.switch_to.active_element.send_keys(:tab)
+    end
+
+    expect(input).to match_css(":focus")
+    expect(select.value).to eq([])
+    input.send_keys(:arrow_down)
+    first_option = availability.find(".ts-dropdown .option.active")["data-value"]
+    input.send_keys(:arrow_down)
+    expect(availability.find(".ts-dropdown .option.active")["data-value"]).not_to eq(first_option)
+    input.send_keys(:arrow_up)
+    expect(availability.find(".ts-dropdown .option.active")["data-value"]).to eq(first_option)
+    expect(select.value).to eq([])
+
+    input.send_keys(:tab)
+    expect(input).not_to match_css(":focus")
+    expect(select.value).to eq([])
+
+    page.driver.browser.switch_to.active_element.send_keys([:shift, :tab])
+    expect(input).to match_css(":focus")
+    input.send_keys(:arrow_down)
+    chosen_value = availability.find(".ts-dropdown .option.active")["data-value"]
+    input.send_keys(:enter)
+    expect(select.value).to eq([chosen_value])
+
+    input.send_keys(:arrow_down)
+    expect(availability.find(".ts-dropdown .option.active")["data-value"]).not_to eq(chosen_value)
+    input.send_keys(:tab)
+    expect(input).not_to match_css(":focus")
+    expect(select.value).to eq([chosen_value])
+    expect(page.evaluate_script(<<~JS)).to eq([chosen_value])
+      new FormData(document.querySelector("form.advanced"))
+        .getAll(#{select[:name].to_json})
+    JS
+  end
+
   scenario "submits the visible advanced search rows", js: true do
     visit "/catalog/advanced"
 
