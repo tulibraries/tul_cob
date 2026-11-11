@@ -11,7 +11,7 @@ describe("AdvancedController", () => {
         data-action="input->advanced#syncClauses change->advanced#syncClauses"
         data-advanced-visible-rows-value="2">
         <div data-advanced-target="row" data-row-index="1">
-          <select id="f_1" class="advanced-search-options selectize" data-action="change->advanced#select" data-count="1">
+          <select id="f_1" class="advanced-search-options tom-select" data-action="change->advanced#select" data-count="1">
             <option value="all_fields">All Fields</option>
             <option value="title">Title</option>
           </select>
@@ -28,7 +28,7 @@ describe("AdvancedController", () => {
         </div>
 
         <div data-advanced-target="row" data-row-index="2">
-          <select id="f_2" class="advanced-search-options selectize" data-action="change->advanced#select" data-count="2">
+          <select id="f_2" class="advanced-search-options tom-select" data-action="change->advanced#select" data-count="2">
             <option value="all_fields">All Fields</option>
             <option value="title">Title</option>
           </select>
@@ -45,7 +45,7 @@ describe("AdvancedController", () => {
         </div>
 
         <div data-advanced-target="row" data-row-index="3">
-          <select id="f_3" class="advanced-search-options selectize" data-action="change->advanced#select" data-count="3">
+          <select id="f_3" class="advanced-search-options tom-select" data-action="change->advanced#select" data-count="3">
             <option value="all_fields">All Fields</option>
             <option value="title">Title</option>
           </select>

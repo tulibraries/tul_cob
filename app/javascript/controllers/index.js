@@ -49,8 +49,8 @@ application.register("query-list", QueryListController)
 import RequestFormController from "controllers/request_form_controller"
 application.register("request-form", RequestFormController)
 
-import SelectizeController from "controllers/selectize_controller"
-application.register("selectize", SelectizeController)
+import TomSelectController from "controllers/tom_select_controller"
+application.register("tom-select", TomSelectController)
 
 import ShowController from "controllers/show_controller"
 application.register("show", ShowController)
