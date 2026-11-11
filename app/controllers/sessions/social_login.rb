@@ -49,6 +49,6 @@ module Sessions::SocialLogin
 
   # @return [String] URL to redirect to after login
   def social_login_callback_redirect
-    params[:redirect_to] || helpers.users_account_path
+    params[:redirect_to].presence || helpers.users_account_path
   end
 end

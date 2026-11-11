@@ -11,6 +11,10 @@ RSpec.describe ApplicationController, type: :controller do
 
   let (:sign_out_url) { Rails.configuration.devise["sign_out_redirect_url"] }
 
+  it "does not globally permit request parameters" do
+    expect(ActionController::Parameters.permit_all_parameters).to be(false)
+  end
+
   before do
     routes.draw do
       get "invalid_authenticity_token" => "anonymous#invalid_authenticity_token"

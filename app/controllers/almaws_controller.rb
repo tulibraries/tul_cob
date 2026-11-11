@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class AlmawsController < CatalogController
+  MAX_AVAILABLE_ASRS_ITEMS = 100
+
   layout proc { |controller| false if request.xhr? }
 
   before_action :authenticate_user!, except: [:item]
   before_action :xhr!, only: [:item, :request_options]
+  before_action :permit_alma_request_parameters, only: %i[
+    item request_options send_hold_request send_asrs_request
+    send_booking_request send_digitization_request
+  ]
 
   rescue_from Alma::BibItemSet::ResponseError,
     with: :offset_too_large
@@ -74,7 +80,7 @@ class AlmawsController < CatalogController
     description: description,
     pickup_location_library: params[:hold_pickup_location],
     pickup_location_type: "LIBRARY",
-    material_type: { value: params[:material_type] },
+    material_type: { value: material_type_value },
     request_type: "HOLD",
     comment: params[:hold_comment]
     }
@@ -107,7 +113,7 @@ class AlmawsController < CatalogController
     description: description,
     pickup_location_library: params[:asrs_pickup_location],
     pickup_location_type: "LIBRARY",
-    material_type: { value: params[:material_type] },
+    material_type: { value: material_type_value },
     request_type: "HOLD",
     comment: params[:asrs_comment]
     }
@@ -163,7 +169,7 @@ class AlmawsController < CatalogController
     user_id: current_user.uid,
     pickup_location_library: params[:booking_pickup_location],
     pickup_location_type: "LIBRARY",
-    material_type: { value: params[:material_type] },
+    material_type: { value: material_type_value },
     request_type: "BOOKING",
     booking_start_date: start_date,
     booking_end_date: end_date,
@@ -221,6 +227,60 @@ class AlmawsController < CatalogController
   end
 
   private
+
+    def params
+      @permitted_alma_request_params || super
+    end
+    public :params
+
+    def permit_alma_request_parameters
+      keys = case action_name
+             when "item"
+               %i[mms_id doc_id redirect_to]
+             when "request_options"
+               %i[mms_id pickup_location pickup_locations request_level]
+             when "send_hold_request"
+               %i[mms_id hold_description hold_pickup_location hold_comment request_level material_type]
+             when "send_asrs_request"
+               %i[mms_id asrs_description asrs_pickup_location asrs_comment asrs_request_level material_type]
+             when "send_booking_request"
+               %i[mms_id booking_start_date booking_end_date booking_description booking_pickup_location booking_comment material_type]
+             when "send_digitization_request"
+               %i[mms_id digitization_description digitization_comment chapter_or_article_title chapter_or_article_author from_page to_page request_level]
+      else
+               []
+      end
+
+      permitted = permitted_alma_request_parameters(keys)
+      @permitted_alma_request_params = permitted
+    end
+
+    def permitted_alma_request_parameters(keys)
+      permitted = permitted_parameters(keys)
+      if permitted[:available_asrs_items]
+        permitted[:available_asrs_items] = permitted[:available_asrs_items].first(MAX_AVAILABLE_ASRS_ITEMS)
+      end
+      material_type = params[:material_type]
+      if material_type.present? && !material_type.respond_to?(:to_h)
+        permitted[:material_type] = material_type
+      end
+      permitted
+    end
+
+    def permitted_parameters(keys)
+      scalar_keys = keys - [:material_type]
+      options = {}
+      options[:material_type] = [:value] if keys.include?(:material_type)
+      options[:available_asrs_items] = %i[description holding_id item_pid] if action_name == "send_asrs_request"
+      params.permit(*scalar_keys, **options)
+    end
+
+    def material_type_value
+      value = params[:material_type]
+      return value unless value.respond_to?(:to_h) && value.respond_to?(:[])
+
+      value[:value] || value["value"]
+    end
 
     def get_bib_items(mms_id)
       Rails.cache.fetch("#{mms_id}/bib_items", expires_in: 30.seconds) do
