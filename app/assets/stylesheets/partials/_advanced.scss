@@ -33,6 +33,11 @@ form.advanced {
 
   .advanced-search-row-actions {
     margin-top: 0.5rem;
+
+    button:focus-visible {
+      outline: 3px solid $cherry-red;
+      outline-offset: 2px;
+    }
   }
 
   .advanced-search-boolean {
