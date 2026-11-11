@@ -61,6 +61,39 @@ describe("TomSelectController", () => {
     expect(select.tomselect.dropdown_content.getAttribute("aria-labelledby")).toBe(label.id)
   })
 
+  it("only selects highlighted options on Enter and leaves Tab unhandled", async () => {
+    const control = select.tomselect
+    control.clear()
+    control.focus()
+    await settle()
+    control.open()
+
+    const press = (key, keyCode) => {
+      const event = new KeyboardEvent("keydown", {
+        key, keyCode, bubbles: true, cancelable: true
+      })
+      control.control_input.dispatchEvent(event)
+      return event
+    }
+
+    const firstValue = control.activeOption.dataset.value
+    press("ArrowDown", 40)
+    expect(control.activeOption.dataset.value).not.toBe(firstValue)
+    press("ArrowUp", 38)
+    expect(control.activeOption.dataset.value).toBe(firstValue)
+    expect(control.items).toEqual([])
+    expect(press("Tab", 9).defaultPrevented).toBe(false)
+    expect(Array.from(select.selectedOptions)).toEqual([])
+
+    press("Enter", 13)
+    expect(control.items).toEqual([firstValue])
+    press("ArrowDown", 40)
+    expect(control.activeOption.dataset.value).not.toBe(firstValue)
+    expect(press("Tab", 9).defaultPrevented).toBe(false)
+    expect(new FormData(document.querySelector("form")).getAll("f[format][]"))
+      .toEqual([firstValue])
+  })
+
   it("deletes the last selected filter when Delete is pressed after the items", () => {
     const control = select.tomselect
     control.addItem("Journal")
