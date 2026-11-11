@@ -1,12 +1,10 @@
 <div class="form-group advanced-search-facet row align-items-center">
   <div class="col col-sm-3 control-label">
-    <%= label_tag "range_lc_classification_begin" do %>
-      Library of Congress Classification Range
-    <% end %>
+    <span>Library of Congress Classification Range</span>
   </div>
   <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
-      <span class="sr-only">Library of Congress Classification Range (start)</span>
+      <%= label_tag "range_lc_classification_begin", "Library of Congress Classification Range (start)", class: "sr-only" %>
       <% facet_field = blacklight_config.facet_fields["lc_classification"] %>
       <% component = LibrarySearch::RangeFormComponent.new(facet_field: facet_field) %>
       <%= render AdvancedRangeInputComponent.new(
@@ -19,12 +17,10 @@
     </div>
 
     <div class="pub-date-separator align-self-center">
-      <%= label_tag "range_lc_classification_end" do %>
-	to
-      <% end %>
+      <span aria-hidden="true">to</span>
     </div>
     <div class="advanced-pub-date">
-      <span class="sr-only">Library of Congress Classification Range (end)</span>
+      <%= label_tag "range_lc_classification_end", "Library of Congress Classification Range (end)", class: "sr-only" %>
       <%= render AdvancedRangeInputComponent.new(
         input_name: component.end_input_name,
         label_text: "",

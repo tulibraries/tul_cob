@@ -1,12 +1,10 @@
 <div class="form-group advanced-search-facet row align-items-center">
   <div class="col col-sm-3 control-label">
-    <%= label_tag "range_pub_date_sort_begin" do %>
-      Publication Year
-    <% end %>
+    <span>Publication Year</span>
   </div>
   <div class="col-sm-8 d-flex justify-content-between">
     <div class="advanced-pub-date">
-      <span class="sr-only">Publication date range (starting year)</span>
+      <%= label_tag "range_pub_date_sort_begin", "Publication Year (starting year)", class: "sr-only" %>
       <% facet_field = blacklight_config.facet_fields["pub_date_sort"] %>
       <% component = LibrarySearch::RangeFormComponent.new(facet_field: facet_field) %>
       <%= render LibrarySearch::RangeInputComponent.new(
@@ -19,12 +17,10 @@
     </div>
 
     <div class="pub-date-separator align-self-center">
-      <%= label_tag "range_pub_date_sort_end" do %>
-        to
-      <% end %>
+      <span aria-hidden="true">to</span>
     </div>
     <div class="advanced-pub-date">
-      <span class="sr-only">Publication date range (ending year)</span>
+      <%= label_tag "range_pub_date_sort_end", "Publication Year (ending year)", class: "sr-only" %>
       <%= render LibrarySearch::RangeInputComponent.new(
         input_name: component.end_input_name,
         label_text: "",

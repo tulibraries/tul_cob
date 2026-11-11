@@ -4,14 +4,17 @@
     <% facet_config = facet_configuration_for_field(display_facet.name) %>
     <% if facet_config.present? && display_facet.name != 'lc_facet' %>
         <% facet_filter_field = facet_config.key || display_facet.name %>
+        <% facet_id = display_facet.name.parameterize %>
+        <% facet_label_id = "#{facet_id}-label" %>
         <div class="form-group advanced-search-facet row align-items-center">
-          <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
+          <%= label_tag facet_id, id: facet_label_id, class: "col-sm-3 control-label" do %>
             <%= facet_config.label %>
           <% end %>
           <div class="col-sm-8">
             <%= content_tag(:select, multiple: true,
               name: "f[#{facet_filter_field}][]",
-              id: display_facet.name.parameterize,
+              id: facet_id,
+              aria: { labelledby: facet_label_id },
               class: "form-control custom-select tom-select",
               data: { controller: "tom-select", "live-search": "true" },
               placeholder: "Type or select #{facet_field_label(display_facet.name).downcase.pluralize}") do %>
