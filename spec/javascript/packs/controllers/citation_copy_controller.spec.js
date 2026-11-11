@@ -130,4 +130,58 @@ describe("CitationCopyController", () => {
       "Smith, J. (2024). Example book title. Publisher."
     )
   })
+
+  it("preserves paragraph boundaries and italics when copying grouped citations", async () => {
+    const write = jest.fn().mockResolvedValue(undefined)
+
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { write, writeText: jest.fn() }
+    })
+
+    global.ClipboardItem = jest.fn().mockImplementation(data => ({ data }))
+
+    const content = document.querySelector('[data-citation-copy-target="content"]')
+    content.innerHTML = `
+      <p>Smith, J. (2024). <em>First book</em>. Publisher.</p>
+      <p>Jones, A. (2023). <em>Second book</em>. Publisher.</p>
+    `
+
+    Object.defineProperty(content, "innerText", {
+      configurable: true,
+      get() {
+        return this.textContent
+      }
+    })
+
+    application = Application.start()
+    application.register("citation-copy", CitationCopyController)
+
+    await new Promise(resolve => setTimeout(resolve, 0))
+
+    document.querySelector("button").click()
+
+    await new Promise(resolve => setTimeout(resolve, 0))
+
+    expect(write).toHaveBeenCalledTimes(1)
+
+    const clipboardItem = write.mock.calls[0][0][0]
+    const readBlob = blob => new Promise((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = () => reject(reader.error)
+      reader.readAsText(blob)
+    })
+
+    const html = await readBlob(clipboardItem.data["text/html"])
+
+    const copied = document.createElement("div")
+    copied.innerHTML = html
+
+    const paragraphs = copied.querySelectorAll("p")
+
+    expect(paragraphs).toHaveLength(2)
+    expect(paragraphs[0].querySelector("em").textContent).toBe("First book")
+    expect(paragraphs[1].querySelector("em").textContent).toBe("Second book")
+  })
 })
