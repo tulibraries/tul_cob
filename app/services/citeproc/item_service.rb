@@ -13,7 +13,10 @@ module Citeproc
       "translator" => "translator",
       "trl" => "translator",
       "illustrator" => "illustrator",
-      "ill" => "illustrator"
+      "ill" => "illustrator",
+      "film director" => "director",
+      "director" => "director",
+      "composer" => "composer"
     }.freeze
 
     def self.build(document, style_id: nil)
@@ -44,6 +47,8 @@ module Citeproc
           editor: extract_names("editor"),
           translator: extract_names("translator"),
           illustrator: extract_names("illustrator"),
+          director: extract_names("director"),
+          composer: extract_names("composer"),
           issued: issued_date,
           publisher: publisher,
           publisher_place: publisher_place,
