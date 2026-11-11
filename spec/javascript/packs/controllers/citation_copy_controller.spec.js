@@ -1,4 +1,3 @@
-
 import { Application } from "@hotwired/stimulus"
 import CitationCopyController from "controllers/citation_copy_controller"
 
