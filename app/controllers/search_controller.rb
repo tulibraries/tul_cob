@@ -17,7 +17,8 @@ class SearchController < CatalogController
   def index
     @per_page = 3
     if params[:q]
-      engines = %i(books_and_media articles archival_collections databases journals library_website lib_guides cdm)
+      engines = %i(books_and_media articles archival_collections databases journals library_website lib_guides)
+      engines << :cdm if Flipflop.cdm_bento?
       searcher = BentoSearch::ConcurrentSearcher.new(*engines)
       searcher.search(params[:q], per_page: @per_page, semantic_search_field: params[:field])
       @results = process_results(searcher.results)
@@ -50,7 +51,8 @@ class SearchController < CatalogController
 
     def configure_bento_item_partials
       item_partial = "bento_search/std_item_new"
-      bento_engines = %w[blacklight journals databases library_website books_and_media articles cdm lib_guides]
+      bento_engines = %w[blacklight journals databases library_website books_and_media articles lib_guides]
+      bento_engines << "cdm" if Flipflop.cdm_bento?
 
       bento_engines.each do |engine_id|
         configuration = BentoSearch.get_engine(engine_id).configuration

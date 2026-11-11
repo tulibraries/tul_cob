@@ -8,6 +8,7 @@ Flipflop.configure do
 
   group :bento_changes do
     feature :aspace_integration
+    feature :cdm_bento, default: true
   end
 
   group :citations do

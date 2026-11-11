@@ -5,7 +5,7 @@
 
 
   <%= render partial: "research_guides_faq_new", locals: { lib_guides_results: @lib_guides_results } %>
-  <%= render partial: "digital_collections_new" %>
+  <%= render partial: "digital_collections_new" if Flipflop.cdm_bento? %>
   <%= render partial: "resource_types_new" if @response.present? %>
 
   <% $stderr.puts("\n****\n**** @response was nil from 'search_controller#index' for bento index page -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
