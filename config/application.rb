@@ -56,6 +56,7 @@ module Tulcob
     config.exceptions_app = routes
     config.time_zone = "Eastern Time (US & Canada)"
     config.active_record.default_timezone = :local
+    config.active_storage.draw_routes = false
 
     config.generators do |g|
       g.test_framework :rspec, spec: true
