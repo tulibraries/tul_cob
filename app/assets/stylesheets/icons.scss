@@ -42,6 +42,19 @@ a.asrs-request[aria-expanded="true"]::after {
   content:"\f078";
 }
 
+:where(#facet-format, #facet-az_format, #facet-rtype) a.facet-select,
+:where(#facet-format, #facet-az_format, #facet-rtype) span.selected {
+  background: transparent url("noun_article.svg") no-repeat center left;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
+}
+
+:where(.document-header-container .blacklight-format, .document-header-container .blacklight-type) > span {
+  background: transparent url("noun_article_crystalblue.svg") no-repeat center left;
+  padding-left: 1.9rem;
+  padding-top: .25rem;
+}
+
 span.book,
 span.ebooks,
 span.book_book_chapter,
@@ -118,10 +131,13 @@ a.facet_legal_document
     background: transparent url("noun_article_crystalblue.svg") no-repeat center left;
   }
 }
+span.magazine,
+span.magazines,
 span.magazinearticle,
 span.journal_article,
 span.journal_periodical,
 span.journal,
+a.facet_magazines,
 a.facet_magazinearticle,
 a.facet_magazinearticles,
 a.facet_journal_periodical,
@@ -185,8 +201,12 @@ a.facet_archival_material_manuscripts {
     background: transparent url("noun_archive_crystalblue.svg") no-repeat center left;
   }
 }
+span.primary_source,
+span.primary_sources,
 span.primary_sources_history,
 span.primary_sources_literature,
+a.facet_primary_source,
+a.facet_primary_sources,
 a.facet_primary_sources_history,
 a.facet_primary_sources_literature {
   background: transparent url("noun_primary_sources.svg") no-repeat center left;
