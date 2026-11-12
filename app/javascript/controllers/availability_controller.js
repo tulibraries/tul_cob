@@ -8,6 +8,14 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "panel", "button", "spinner", "request", "container", "href" ]
 
+  connect() {
+    this.abortController = new AbortController()
+  }
+
+  disconnect() {
+    this.abortController.abort()
+  }
+
   item() {
     this.buttonTarget.classList.toggle("collapsed");
 
@@ -17,6 +25,7 @@ export default class extends Controller {
         headers: {
           "X-CSRF-Token": getMetaValue("csrf-token")
         },
+        signal: this.abortController.signal,
       })
         .then(response => response.text())
         .then(html => {
@@ -29,6 +38,9 @@ export default class extends Controller {
             this.requestTarget.classList.add("request-btn")
           }
       })
+        .catch(error => {
+          if (error.name !== "AbortError") throw error
+        })
     }
   }
 

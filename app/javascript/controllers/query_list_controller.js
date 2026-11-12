@@ -8,10 +8,20 @@ import { Controller } from "@hotwired/stimulus"
   export default class extends Controller {
     static targets = [  "results" ]
 
-    initialize() {
+    connect() {
+      this.abortController = new AbortController()
+      if (!this.loaded) this.load()
+    }
+
+    disconnect() {
+      this.abortController.abort()
+    }
+
+    load() {
       fetch(this.data.get("url"), {
         credentials: "same-origin",
         headers: { "X-CSRF-Token": getMetaValue("csrf-token") },
+        signal: this.abortController.signal,
       })
       .then(response => response.text())
       .then(html => {
@@ -25,6 +35,10 @@ import { Controller } from "@hotwired/stimulus"
          });
         $(".query-heading").removeClass("hidden");
         $(".query-feedback").removeClass("hidden");
+        this.loaded = true
+      })
+      .catch(error => {
+        if (error.name !== "AbortError") throw error
       })
   }
 }

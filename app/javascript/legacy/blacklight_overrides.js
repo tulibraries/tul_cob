@@ -1,3 +1,4 @@
+import $ from "jquery"
 import Modal from "blacklight-frontend"
 
 Modal.onFailure = function (data) {

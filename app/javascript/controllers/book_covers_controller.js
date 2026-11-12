@@ -25,7 +25,7 @@ export default class extends Controller {
       }
     });
 
-    $.ajax(
+    this.request = $.ajax(
       {
         url: "https://books.google.com/books?jscmd=viewapi&bibkeys=" + queries.join(),
         dataType: "jsonp",
@@ -54,6 +54,10 @@ export default class extends Controller {
         }
       }
     )
+  }
+
+  disconnect() {
+    this.request?.abort()
   }
 
 }

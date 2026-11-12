@@ -9,8 +9,13 @@ export default class extends Controller {
   static targets = [ "table", "spinner"]
 
 
-  initialize() {
-    this.get_holds()
+  connect() {
+    this.abortController = new AbortController()
+    if (!this.loaded) this.get_holds()
+  }
+
+  disconnect() {
+    this.abortController.abort()
   }
 
   get_holds() {
@@ -19,11 +24,16 @@ export default class extends Controller {
       headers: {
         "X-CSRF-Token": getMetaValue("csrf-token")
       },
+      signal: this.abortController.signal,
     })
       .then(response => response.text())
       .then(html => {
         $(this.spinnerTarget).remove();
         this.tableTarget.innerHTML = html
+        this.loaded = true
+      })
+      .catch(error => {
+        if (error.name !== "AbortError") throw error
       })
   }
 }

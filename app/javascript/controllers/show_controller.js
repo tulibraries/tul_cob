@@ -8,11 +8,16 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = [ "panel", "spinner", "request", "href" ]
 
-  initialize() {
+  connect() {
+    this.abortController = new AbortController()
     // Only call availability if we have the required targets
-    if (this.hasPanelTarget) {
+    if (this.hasPanelTarget && !this.loaded) {
       this.availability();
     }
+  }
+
+  disconnect() {
+    this.abortController.abort()
   }
 
   availability() {
@@ -25,6 +30,7 @@ export default class extends Controller {
       headers: {
         "X-CSRF-Token": getMetaValue("csrf-token")
       },
+      signal: this.abortController.signal,
     })
       .then(response => response.text())
       .then(html => {
@@ -38,7 +44,11 @@ export default class extends Controller {
             var requests_url = $("#request-url-data-" + mms_id).data("requests-url");
             $("#request-btn-" + mms_id).attr("href", requests_url);
           }
+          this.loaded = true
         }
+      })
+      .catch(error => {
+        if (error.name !== "AbortError") throw error
       })
   }
 

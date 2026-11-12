@@ -1,3 +1,4 @@
+import $ from "jquery"
 import Core from "blacklight-frontend"
 
 $(document).on('turbo:load', function() {
@@ -50,7 +51,7 @@ $(document).on('turbo:load', function() {
 	    });
 	  };
 
-	})(jQuery);
+	})($);
 
 	Core.onLoad(function() {
 	  $('[data-long-list]').longList();

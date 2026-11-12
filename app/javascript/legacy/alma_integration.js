@@ -1,3 +1,5 @@
+import $ from "jquery"
+
 /**
  * AlmaIntegration is a Javascript class for integration with Alma.
  * AJAX calls are made to endpoints on the Rails server that
