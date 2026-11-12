@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <collection xmlns='http://www.loc.gov/MARC21/slim' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.loc.gov/MARC21/slim http://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd'>
   <record>
-    <controlfield tag='001'>LCSORT_1ST</controlfield>
+    <controlfield tag='001'>991000000000000001</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>Q383.12</subfield>
     </datafield>
@@ -20,7 +20,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_2ND</controlfield>
+    <controlfield tag='001'>991000000000000002</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA70.5</subfield>
     </datafield>
@@ -39,7 +39,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_3RD</controlfield>
+    <controlfield tag='001'>991000000000000003</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71</subfield>
     </datafield>
@@ -58,7 +58,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_4TH</controlfield>
+    <controlfield tag='001'>991000000000000004</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.B5</subfield>
     </datafield>
@@ -77,7 +77,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_5TH</controlfield>
+    <controlfield tag='001'>991000000000000005</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E3</subfield>
     </datafield>
@@ -96,7 +96,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_6TH</controlfield>
+    <controlfield tag='001'>991000000000000006</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E35</subfield>
     </datafield>
@@ -115,7 +115,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_7TH</controlfield>
+    <controlfield tag='001'>991000000000000007</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359</subfield>
     </datafield>
@@ -134,7 +134,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_8TH</controlfield>
+    <controlfield tag='001'>991000000000000008</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359.E3</subfield>
     </datafield>
@@ -153,7 +153,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_9TH</controlfield>
+    <controlfield tag='001'>991000000000000009</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359.E35</subfield>
     </datafield>
@@ -172,7 +172,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_10TH</controlfield>
+    <controlfield tag='001'>991000000000000010</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359.E359</subfield>
     </datafield>
@@ -191,7 +191,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_11TH</controlfield>
+    <controlfield tag='001'>991000000000000011</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359.E359v.1</subfield>
     </datafield>
@@ -210,7 +210,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_12TH</controlfield>
+    <controlfield tag='001'>991000000000000012</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.E359.E359v.2</subfield>
     </datafield>
@@ -229,7 +229,7 @@
     </datafield>
   </record>
   <record>
-    <controlfield tag='001'>LCSORT_13TH</controlfield>
+    <controlfield tag='001'>991000000000000013</controlfield>
     <datafield ind1=' ' ind2=' ' tag='090'>
       <subfield code='a'>QA71.1.E35</subfield>
     </datafield>
