@@ -40,6 +40,13 @@ jobs:
           body-path: /tmp/apk-update-summary.md
           delete-branch: true
 
+      - name: "Approve pull request"
+        if: "steps.create-pull-request.outputs.pull-request-number != ''"
+        run: "gh pr review --approve \"$PR_URL\""
+        env:
+          PR_URL: "${{ steps.create-pull-request.outputs.pull-request-url }}"
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
       - name: "Enable auto-merge"
         if: "steps.create-pull-request.outputs.pull-request-number != ''"
         run: "gh pr merge --auto --squash \"$PR_URL\""
