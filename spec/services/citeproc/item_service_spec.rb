@@ -120,6 +120,7 @@ RSpec.describe Citeproc::ItemService do
     expect(citeproc_names(item.composer)).to eq([
       { "family" => "Williams", "given" => "Anna" }
     ])
+    expect(item.author).to be_nil
   end
 
   it "parses contributor-only json indexed values" do
@@ -129,6 +130,7 @@ RSpec.describe Citeproc::ItemService do
     ]
 
     expect(citeproc_names(item.editor)).to eq([{ "family" => "Norris", "given" => "Denne Michele" }])
+    expect(item.author).to be_nil
   end
 
   it "parses author relators from contributor-only json indexed values" do
@@ -349,6 +351,9 @@ RSpec.describe Citeproc::ItemService do
       { "literal" => "Warner Bros. Pictures" },
       { "literal" => "Heyday Films" },
       { "literal" => "Warner Home Video (Firm)" }
+    ])
+    expect(citeproc_names(item.director)).to eq([
+      { "family" => "Yates", "given" => "David" }
     ])
   end
 
