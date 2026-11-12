@@ -157,7 +157,11 @@ module Citeproc
       def fallback_contributor_author_names
         return [] if name_extractor.creator_entries.present?
 
-        name_extractor.fallback_contributor_entries.filter_map do |entry|
+        entries = name_extractor.fallback_contributor_entries.reject do |entry|
+          extract_role(entry.relators).present?
+        end
+
+        entries.filter_map do |entry|
           build_name(entry.name)
         end.uniq.first(FALLBACK_AUTHOR_LIMIT)
       end
