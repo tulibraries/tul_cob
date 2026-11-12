@@ -120,7 +120,7 @@ RSpec.feature "Indices" do
       visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+asc%2C+pub_date_sort+desc"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
-        expect(page.find(".document-position-#{i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+        expect(page.find(".document-position-#{i} h3 a").native.attr("href")).to eq "/catalog/#{format("991000000000000%03d", i)}"
       end
     end
 
@@ -128,7 +128,7 @@ RSpec.feature "Indices" do
       visit "/catalog?q=&q=LCSORT+TEST&rows=20&sort=lc_call_number_sort+desc%2C+pub_date_sort+desc"
       expect(page.all(".documents-list .document").size).to eq 13
       (1..13).each do |i|
-        expect(page.find(".document-position-#{14 - i} h3 a").native.attr("href")).to eq "/catalog/LCSORT_#{i.ordinalize.upcase}"
+        expect(page.find(".document-position-#{14 - i} h3 a").native.attr("href")).to eq "/catalog/#{format("991000000000000%03d", i)}"
       end
     end
 
