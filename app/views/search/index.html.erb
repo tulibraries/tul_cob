@@ -6,7 +6,7 @@
   </div>
 
   <% if @response %>
-    <%= render :partial => "digital_collections" %>
+    <%= render :partial => "digital_collections" if Flipflop.cdm_bento? %>
   <% else %>
     <% $stderr.puts("\n****\n**** @response was nil from '#{controller_name}_controller##{action_name}' for digital_collections partial -- #{request.original_url} \n**** #{DateTime.now}\n****\n\n") if @response.nil? %>
   <% end %>
