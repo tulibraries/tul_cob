@@ -2,8 +2,6 @@
 
 # Be sure to restart your server when you modify this file.
 
-Rails.application.config.assets.paths << Rails.root.join("node_modules")
-
 # Cache the available format images for use in helper methods.
 Rails.application.config.x.default_cover_image =
   Rails.root

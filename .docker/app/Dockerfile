@@ -34,16 +34,13 @@ RUN apk add -U --no-cache \
     libxslt-dev=${LIBXSLT_VERSION} \
     libffi-dev=3.5.2-r1 \
     postgresql17-dev=${POSTGRESQL_VERSION} \
-    nodejs=24.22.3-r0 \
-    yarn=1.22.22-r1 \
     tzdata=${TZDATA_VERSION}
 
 # Leverage Docker cache: Only copy dependency files first
-COPY Gemfile Gemfile.lock package.json yarn.lock ./
+COPY Gemfile Gemfile.lock ./
 
-# Install Ruby gems and Javascript packages
-RUN BUNDLE_WITHOUT="development test" bundle install --jobs=8 && \
-    yarn install --frozen-lockfile
+# Install Ruby gems
+RUN BUNDLE_WITHOUT="development test" bundle install --jobs=8
 
 # Copy the rest of the application code
 COPY . .
@@ -53,7 +50,7 @@ COPY . .
 # during asset precompilation and is not persisted as an environment variable.
 RUN if [ ! -f config/apis.yml ]; then cp config/apis.yml.example config/apis.yml; fi && \
     BUNDLE_WITHOUT="development test" SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
-    rm -rf node_modules tmp/* && \
+    rm -rf tmp/* && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \;
 
 # Drop back to a standard user at the end of the builder stage to satisfy DL3002
