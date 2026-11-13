@@ -9,7 +9,19 @@ import $ from "jquery"
 function AlmaIntegration(options = {}) {
     this.MAX_AJAX_ATTEMPTS = options.maxAjaxAttempts || 3;
     this.BATCH_SIZE = options.batchSize || 10;
+    this.abortController = new AbortController();
+    this.requests = new Set();
 }
+
+AlmaIntegration.prototype.cancel = function () {
+  this.abortController.abort();
+  this.requests.forEach((request) => request.abort());
+  this.requests.clear();
+};
+
+AlmaIntegration.prototype.isCancelled = function () {
+  return this.abortController.signal.aborted;
+};
 
 /**
  * Subclasses should override to customize. To filter out a holding from display,
@@ -217,9 +229,12 @@ AlmaIntegration.prototype.errorLoadingAvailability = function (idList) {
  */
 AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount) {
   const baObj = this;
+  if (baObj.isCancelled()) {
+    return Promise.resolve(null);
+  }
   if (idList.length > 0) {
     const url = $("#alma_availability_url").data("url") + "?id_list=" + encodeURIComponent(idList);
-    return $.ajax(url, {
+    const request = $.ajax(url, {
       success: (data, textStatus, jqXHR) => {
         if (!data.error) {
           baObj.availability = Object.assign(baObj.availability, data["availability"]);
@@ -254,6 +269,9 @@ AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount)
         }
       },
       error: (jqXHR, textStatus, errorThrown) => {
+        if (textStatus === "abort" || baObj.isCancelled()) {
+          return;
+        }
         if (errorThrown !== "timeout") {
           if (attemptCount < baObj.MAX_AJAX_ATTEMPTS) {
             baObj.loadAvailabilityAjax(idList, attemptCount + 1);
@@ -264,9 +282,12 @@ AlmaIntegration.prototype.loadAvailabilityAjax = function (idList, attemptCount)
         }
       },
       complete: () => {
+        baObj.requests.delete(request);
         baObj.availabilityRequestsFinished[idList] = true;
       }
     });
+    baObj.requests.add(request);
+    return request;
   }
   // We want to be able to use this in a promise even in show view.
   return Promise.resolve(null);
@@ -330,7 +351,10 @@ AlmaIntegration.prototype.loadAvailability = function () {
         if (!id) {
           return null;
         }
-        return waitForRequestUrlData(id).then((foundId) => { return clickRequestButton(foundId); });
+        const signal = baObj.abortController.signal;
+        return waitForRequestUrlData(id, signal).then((foundId) => {
+          return signal.aborted ? null : clickRequestButton(foundId);
+        });
       });
   });
 
@@ -363,16 +387,16 @@ const clickLocationButton = () => {
  *
  * Returns a promise for the id passed in.
  */
-const waitForRequestUrlData = (id) => {
-  return waitForElementById("request-url-data-" + id)
+const waitForRequestUrlData = (id, signal) => {
+  return waitForElementById("request-url-data-" + id, signal)
     .then(() => { return id; });
 };
 
 /**
  * Continuously checks if an element exists then resolves.
  */
-const waitForElementById = async (id) => {
-  while (!document.getElementById(id)) {
+const waitForElementById = async (id, signal) => {
+  while (!signal.aborted && !document.getElementById(id)) {
     // Hack that is supposedly better than SetTimeout
     // https://stackoverflow.com/a/47776379/256854
     await new Promise((resolve) => requestAnimationFrame(resolve));
@@ -400,6 +424,9 @@ const clickRequestButton = (id) => {
 AlmaIntegration.prototype.checkAndPopulateMissing = function () {
 
   const baObj = this;
+  if (baObj.isCancelled()) {
+    return;
+  }
   for (const key in baObj.availabilityRequestsFinished) {
     if (!baObj.availabilityRequestsFinished[key]) {
       setTimeout(() => { baObj.checkAndPopulateMissing(); }, 1000);
