@@ -12,10 +12,9 @@ pin_all_from "app/javascript/legacy", under: "legacy"
 
 
 pin "jquery", to: "legacy/jquery_setup.js"
-pin "jquery-esm", to: "https://ga.jspm.io/npm:jquery@3.7.1/dist/jquery.js"
-pin "blacklight-range-limit", to: "blacklight-range-limit/index.js", preload: false
+pin "jquery-esm", to: "jquery-esm.js"
 pin "chart.js", to: "https://ga.jspm.io/npm:chart.js@4.5.1/dist/chart.js", preload: false
 pin "@kurkle/color", to: "https://ga.jspm.io/npm:@kurkle/color@0.3.4/dist/color.esm.js", preload: false
 pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/index.js"
 pin "tom-select", to: "tom-select.js"
-pin "masonry-layout", to: "masonry-layout/dist/masonry.pkgd.min.js"
+pin "masonry-layout", to: "masonry.pkgd.min.js"

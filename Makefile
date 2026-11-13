@@ -31,7 +31,8 @@ lint:
 test:
 	$(DOCKER) exec app $(TEST_CMD)
 test-js:
-	$(DOCKER) exec app yarn test
+	yarn install --frozen-lockfile
+	yarn test
 test-libguides-relevance:
 	bundle exec rspec spec/relavance/lib_guides_spec.rb --tag lib_guides_relevance
 load-data:
@@ -57,18 +58,12 @@ add-testing-deps:
 ci-copy-bundle-files-to-local:
 	docker cp tul_cob-app-1:/app/vendor/bundle vendor/
 
-ci-copy-node-modules-to-local:
-	docker cp tul_cob-app-1:/app/node_modules .
-
 ci-bundle-install:
 	$(DOCKER) exec app git config --global core.hardlinks false
 	$(DOCKER) exec app bundle config set path 'vendor/bundle'
 	$(DOCKER) exec app bundle install
 	$(DOCKER) exec app bundle binstubs --all
 	$(DOCKER) exec app bundle binstubs bundler --force
-
-ci-yarn-install:
-	$(DOCKER) exec app yarn install --frozen-lockfile
 
 ci-setup-db:
 	$(DOCKER) exec app bundle exec rails db:migrate

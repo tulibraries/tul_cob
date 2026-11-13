@@ -1,11 +1,6 @@
-$(window).on('turbo:load', function() {
-	window.onload= function(){
-		// This fixes a bug where the pages are loading at the bottom in Chrome
-		if(location.hash == undefined || location.hash == "" ) {
-			parent.window.scrollTo(0,0);
-		}
-	}
+import $ from "jquery"
 
+$(window).on('turbo:load', function() {
 	if ($(window).width() < 768) {
 		$('#nav-tools').insertAfter('#document');
 		$('#facet-filter-icon').removeClass('hidden');
@@ -26,7 +21,7 @@ const adjustSecondaryFields = function() {
 
 $(document).on("turbo:load", adjustSecondaryFields);
 
-$(document).ready(function() {
+$(document).on("turbo:load", function() {
 	$("body").tooltip({
     selector: '[data-bs-toggle="tooltip"]'
   });
@@ -34,48 +29,44 @@ $(document).ready(function() {
 	$('.decorative').each(function() {
     $(this).attr('alt', "");
   });
+});
 
-	// This is necessary because iOS is triggering the resize event when an element is clicked.
-	// More information about this solution can be found here: https://stackoverflow.com/a/24212316/256854
+// This is necessary because iOS is triggering the resize event when an element is clicked.
+// More information about this solution can be found here: https://stackoverflow.com/a/24212316/256854
 
-  var origWindowWidth = $(window).width();
-  $(window).on('resize', function() {
-    var windowWidth = $(window).width();
+var origWindowWidth = $(window).width();
+$(window).on('resize', function() {
+  var windowWidth = $(window).width();
 
-    // ShortCircuit if this is not a real resize.
-    if (windowWidth == origWindowWidth) {
-      return;
-    }
+  // ShortCircuit if this is not a real resize.
+  if (windowWidth == origWindowWidth) {
+    return;
+  }
 
-    if (windowWidth < 768) {
-	  $('#nav-tools').insertAfter('#document');
-	  $('#facet-filter-icon').removeClass('hidden');
-    $('#facet-panel-collapse').removeClass('show');
-	  $('.limit-search-heading').addClass('d-none');
-    }
-    else {
-	  $('#nav-tools').insertAfter('#page-links');
-	  $('#facet-filter-icon').addClass('hidden');
-    $('#facet-panel-collapse').addClass('show');
-    }
-	});
+  if (windowWidth < 768) {
+	$('#nav-tools').insertAfter('#document');
+	$('#facet-filter-icon').removeClass('hidden');
+  $('#facet-panel-collapse').removeClass('show');
+	$('.limit-search-heading').addClass('d-none');
+  }
+  else {
+	$('#nav-tools').insertAfter('#page-links');
+	$('#facet-filter-icon').addClass('hidden');
+  $('#facet-panel-collapse').addClass('show');
+  }
 });
 
 $(document).on("turbo:load", function() {
   $(window).trigger("load.bs.select.data-api");
 });
 
-$(document).ready(function(){
+//link highlighting of hierarchy
+$(document).on("mouseenter", ".search-subject", function() {
+  $(this).prevAll().addClass("field-hierarchy");
+});
 
-  //link highlighting of hierarchy
-  $(".search-subject").hover(
-    function() {
-      $(this).prevAll().addClass("field-hierarchy");
-    },
-    function() {
-      $(this).prevAll().removeClass("field-hierarchy");
-    }
-  );
+$(document).on("mouseleave", ".search-subject", function() {
+  $(this).prevAll().removeClass("field-hierarchy");
 });
 
 document.addEventListener("show.blacklight.blacklight-modal", function() {
@@ -93,10 +84,6 @@ document.addEventListener("hide.blacklight.blacklight-modal", function() {
 });
 
 $(document).on('turbo:load', function() {
-	$(function () {
-	  $('[data-bs-toggle="tooltip"]').tooltip()
-	})
-
 	if ($(".noresults").length >= 1) {
 		$("#sortAndPerPage").remove();
 		$("#documents").css("border", "none");
@@ -105,16 +92,16 @@ $(document).on('turbo:load', function() {
 	if ($("#search-navbar form").length == 0) {
 		$("#search-navbar").css("padding-left", "15%");
 	}
-
-	$('#facet-filter-icon').click( function(){
-    $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
-	});
  });
 
- $(".header-links").on("click", function(){
-	 $(this).siblings().removeClass('active');
-	$(this).addClass("active");
- });
+$(document).on("click", "#facet-filter-icon", function(){
+  $(this).find('span#facet-icons').toggleClass('open-facet-icon').toggleClass('remove-facet-icon');
+});
+
+$(document).on("click", ".header-links", function(){
+  $(this).siblings().removeClass('active');
+  $(this).addClass("active");
+});
 
 
 window.toggle = function(x) {

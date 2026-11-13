@@ -62,9 +62,6 @@ jobs:
       - name: Install gems inside container (uses cache tarballs)
         run: $DC sh -c 'bundle config unset without || true; BUNDLE_WITHOUT= bundle install --jobs 4 --retry 3'
 
-      - name: Install Javascript dependencies in container
-        run: $DC bundle exec yarn install --frozen-lockfile
-
       - name: Precompile Rails assets
         run: $DC bundle exec rails assets:precompile
 
@@ -79,9 +76,6 @@ jobs:
           $DC bundle exec rails ci RAILS_ENV=test
           docker cp tul_cob-app-1:/app/coverage/lcov/app.lcov ./app.lcov
 
-      - name: Run JavaScript tests
-        run: $DC bundle exec yarn test
-
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2
         with:
@@ -92,3 +86,21 @@ jobs:
       - name: Print Solr logs on failure
         if: failure()
         run: docker compose -f docker-compose.ci.yml logs solr
+
+  javascript_test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: yarn
+
+      - name: Install Javascript dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Run JavaScript tests
+        run: yarn test

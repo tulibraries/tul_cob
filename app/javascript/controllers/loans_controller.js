@@ -12,9 +12,6 @@ export default class extends Controller {
   initialize() {
     this.sortKey = null
     this.sortDirection = null
-    if (this.hasUrl) { // for IE branch and jest testing
-      this.get_loans()
-    }
   }
 
   get_loans() {
@@ -23,16 +20,25 @@ export default class extends Controller {
       headers: {
         "X-CSRF-Token": getMetaValue("csrf-token")
       },
+      signal: this.abortController.signal,
     })
       .then(response => response.text())
       .then(html => {
         $(this.spinnerTarget).remove();
         this.tableTarget.innerHTML = html
         this.applySort()
+        this.loaded = true
+      })
+      .catch(error => {
+        if (error.name !== "AbortError") throw error
       })
   }
 
   connect() {
+    this.abortController = new AbortController()
+    if (this.hasUrl && !this.loaded) { // for IE branch and jest testing
+      this.get_loans()
+    }
     this.updateSortIndicators()
     $('input[type=checkbox]').click(function(){
       var x = document.getElementsByName("loan_ids[]");
@@ -43,6 +49,10 @@ export default class extends Controller {
         }
       });
     });
+  }
+
+  disconnect() {
+    this.abortController.abort()
   }
 
   renewSelected(event) {
@@ -59,7 +69,8 @@ export default class extends Controller {
       headers: {
         Accept: "application/json",
         "X-CSRF-Token": getMetaValue("csrf-token")
-      }
+      },
+      signal: this.abortController.signal
     })
       .then((response) => {
         if (!response.ok) throw new Error(`Renewal request failed: ${response.status}`)
@@ -67,7 +78,9 @@ export default class extends Controller {
         return response.json()
       })
       .then((responses) => this.updateRenewalResults(responses))
-      .catch(() => this.showRenewalError())
+      .catch((error) => {
+        if (error.name !== "AbortError") this.showRenewalError()
+      })
       .finally(() => {
         if (submitButton) submitButton.disabled = false
       })

@@ -1,3 +1,5 @@
+import $ from "jquery"
+
 $(window).on('turbo:load', function() {
 	const previews = document.getElementsByClassName("summary-previews");
 	

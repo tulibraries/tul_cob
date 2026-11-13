@@ -1,6 +1,18 @@
+import $ from "jquery"
 import Core from "blacklight-frontend"
 
+let almaIntegration = null;
+
+const cancelAlmaIntegration = function() {
+    almaIntegration?.cancel();
+    almaIntegration = null;
+};
+
+$(document).on("turbo:visit", cancelAlmaIntegration);
+
 $(document).on('turbo:load', function() {
+    cancelAlmaIntegration();
+
     if (typeof window.AlmaIntegration === "undefined") {
         return;
     }
@@ -9,8 +21,8 @@ $(document).on('turbo:load', function() {
         return;
     }
 
-    var ba = new window.AlmaIntegration();
-    ba.loadAvailability();
+    almaIntegration = new window.AlmaIntegration();
+    almaIntegration.loadAvailability();
 });
 
 (function(){
@@ -50,7 +62,7 @@ $(document).on('turbo:load', function() {
 	    });
 	  };
 
-	})(jQuery);
+	})($);
 
 	Core.onLoad(function() {
 	  $('[data-long-list]').longList();

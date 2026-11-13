@@ -1,3 +1,5 @@
+import $ from "jquery"
+
 window.loadArticleIframe = function(id) {
     var element = $(id)
     var url = element.attr("data-iframe-url")

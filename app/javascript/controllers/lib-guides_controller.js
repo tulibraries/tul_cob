@@ -8,12 +8,22 @@ function getMetaValue(name) {
 export default class extends Controller {
   static targets = [ "card", "flex", "heading", "noresults", "panel", "divider" ];
 
-  initialize() {
+  connect() {
+    this.abortController = new AbortController()
+    if (!this.loaded) this.load()
+  }
+
+  disconnect() {
+    this.abortController.abort()
+  }
+
+  load() {
     fetch(this.data.get("url"), {
       credentials: "same-origin",
       headers: {
         "X-CSRF-Token": getMetaValue("csrf-token")
       },
+      signal: this.abortController.signal,
     })
       .then(response => response.text())
       .then(html => {
@@ -41,6 +51,10 @@ export default class extends Controller {
         if (this.cardTarget.classList.contains("bento-guides")) {
           this.headingTargets.forEach((t) => t.classList.add("lib-guides-recommender-bento-heading"));
         }
-    });
+        this.loaded = true
+    })
+      .catch(error => {
+        if (error.name !== "AbortError") throw error
+      })
   }
 }
