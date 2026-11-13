@@ -9,13 +9,6 @@ module FeatureFlags
     !!Rails.configuration.features.fetch(:campus_closed, false)
   end
 
-  def self.with_libguides?(params = nil)
-    if !params.nil? && params.has_key?("with_libguides")
-      return (params["with_libguides"] == "false") ? false : true
-    end
-    !!Rails.configuration.features.fetch(:with_libguides, false)
-  end
-
   def self.libwizard_tutorial?(params = nil)
     if !params.nil? && params.has_key?("libwizard_tutorial")
       return (params["libwizard_tutorial"] == "false") ? false : true

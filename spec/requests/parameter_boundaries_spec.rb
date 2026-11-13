@@ -92,17 +92,6 @@ RSpec.describe "parameter boundaries", type: :request do
     end
   end
 
-  describe "LibGuides search" do
-    it "passes the permitted query and ignores unrelated request data" do
-      allow(LibGuidesApi).to receive(:fetch).and_return([])
-
-      get lib_guides_path, params: { q: "catalog", unexpected: "ignored" }
-
-      expect(response).to have_http_status(:ok)
-      expect(LibGuidesApi).to have_received(:fetch).with("catalog")
-    end
-  end
-
   describe "facet search" do
     it "preserves facet pagination and searching within a facet" do
       facet = Blacklight::Solr::Response::Facets::FacetField.new(

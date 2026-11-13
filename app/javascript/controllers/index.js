@@ -34,9 +34,6 @@ application.register("holds", HoldsController)
 import IndexController from "controllers/index_controller"
 application.register("index", IndexController)
 
-import LibGuidesController from "controllers/lib-guides_controller"
-application.register("lib-guides", LibGuidesController)
-
 import LoansController from "controllers/loans_controller"
 application.register("loans", LoansController)
 

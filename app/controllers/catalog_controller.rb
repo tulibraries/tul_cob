@@ -107,7 +107,6 @@ class CatalogController < ApplicationController
       :pf,
       :pf2,
       :pf3,
-      :with_libguides,
       { range: {
         lc_classification: %i[begin end],
         pub_date_sort: %i[begin end]

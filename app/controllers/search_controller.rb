@@ -11,7 +11,6 @@ class SearchController < CatalogController
 
     config.add_index_field "format", label: "Resource Type", raw: true, helper_method: :index_translate_resource_type_code, no_label: true
     config.add_facet_field "format", label: "Resource Type", url_method: :path_for_books_and_media_facet, helper_method: :translate_resource_type_code, show: true, limit: -1
-    config.add_facet_field "subject_topic_facet", limit: true
   end
 
   def index
@@ -24,7 +23,6 @@ class SearchController < CatalogController
       @results = process_results(searcher.results)
       @results = apply_bento_item_partials(@results)
       @lib_guides_results = extract_engine_result(@results, "lib_guides")
-      @lib_guides_query_term = helpers.derived_lib_guides_search_term(@response)
     end
 
     respond_to do |format|
@@ -34,8 +32,6 @@ class SearchController < CatalogController
         render template
       end
       format.json do
-        @results["lib_guides_query_term"] = @lib_guides_query_term unless @results.nil?
-
         render plain: @results.to_json, status: 200, content_type: "application/json"
       end
     end
