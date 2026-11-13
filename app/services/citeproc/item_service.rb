@@ -157,9 +157,8 @@ module Citeproc
       def fallback_contributor_author_names
         return [] if name_extractor.creator_entries.present?
 
-        entries = name_extractor.fallback_contributor_entries.reject do |entry|
-          extract_role(entry.relators).present?
-        end
+        entries = name_extractor.fallback_contributor_entries
+        return [] if entries.any? { |entry| extract_role(entry.relators).present? }
 
         entries.filter_map do |entry|
           build_name(entry.name)
