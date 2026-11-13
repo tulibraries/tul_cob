@@ -123,6 +123,22 @@ RSpec.describe Citeproc::ItemService do
     expect(item.author).to be_nil
   end
 
+  it "suppresses fallback authors when any contributor has a recognized CSL role" do
+    document["creator_display"] = []
+    document["contributor_display"] = [
+      "Chu, Jon M. (Jon Murray), 1979-|film director.",
+      "Holzman, Winnie|screenwriter.",
+      "Fox, Dana|screenwriter.",
+      "Platt, Marc, 1957-|film producer.",
+      "Stone, David, 1966-|film producer."
+    ]
+
+    expect(citeproc_names(item.director)).to eq([
+      { "family" => "Chu", "given" => "Jon M. (Jon Murray)" }
+    ])
+    expect(item.author).to be_nil
+  end
+
   it "parses contributor-only json indexed values" do
     document["creator_display"] = []
     document["contributor_display"] = [
@@ -338,7 +354,7 @@ RSpec.describe Citeproc::ItemService do
     ])
   end
 
-  it "uses html-rendered contributor_display values as fallback authors when no creator_display exists" do
+  it "suppresses fallback authors for html-rendered contributors when a recognized role exists" do
     document["creator_display"] = []
     document["contributor_display"] = [
       '<a href="/catalog?f[creator_facet][]=Warner+Bros.+Pictures+%281969-+%29">Warner Bros. Pictures (1969- )</a>',
@@ -347,11 +363,7 @@ RSpec.describe Citeproc::ItemService do
       '<a href="/catalog?f[creator_facet][]=Yates%2C+David%2C+1963-">Yates, David, 1963-</a> director'
     ]
 
-    expect(citeproc_names(item.author)).to eq([
-      { "literal" => "Warner Bros. Pictures" },
-      { "literal" => "Heyday Films" },
-      { "literal" => "Warner Home Video (Firm)" }
-    ])
+    expect(item.author).to be_nil
     expect(citeproc_names(item.director)).to eq([
       { "family" => "Yates", "given" => "David" }
     ])
