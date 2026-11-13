@@ -186,37 +186,6 @@ dd.blacklight-format {
   padding-left: 0.4375rem !important;
 }
 
-/* === LIB GUIDES RECOMMENDER ===*/
-.lib-guides-recommender-catalog-body {
-  background-color: #dddddd;
-
-  h2 {
-    font-weight: 800;
-    padding-left: 2.5rem;
-
-    @media(max-width: 485px) {
-      padding: 1rem !important;
-      background-color: $cherry-red;
-      color: $white !important;
-      border-top-right-radius: 0.25rem;
-      border-top-left-radius: 0.25rem;
-    }
-  }
-
-  @media(max-width: 485px) {
-    background-color: #ebebe9;
-    padding: 0;
-    border-bottom-right-radius: 0.25rem !important;
-    border-bottom-left-radius: 0.25rem !important;
-
-    div {
-      align-items: left;
-      flex-direction: column;
-      display: inline-flex;
-    }
-  }
-}
-
 .lib-guides-recommender-librarians,
 .lib-guides-recommender-guides {
   background-color: #ebebe9;
