@@ -23,12 +23,16 @@ class CiteprocCitation
   end
 
   def citations
-    return null_citation if return_null_citation?
-
-    styles = all_formats_requested? ? STYLE_MAP : STYLE_MAP.slice(*desired_formats)
-    styles.each_with_object({}) do |(label, style_id), hash|
-      citation = render_style(style_id, label)
-      hash[label] = citation if citation.present?
+    @citations ||= begin
+      if return_null_citation?
+        null_citation
+      else
+        styles = all_formats_requested? ? STYLE_MAP : STYLE_MAP.slice(*desired_formats)
+        styles.each_with_object({}) do |(label, style_id), hash|
+          citation = render_style(style_id, label)
+          hash[label] = citation if citation.present?
+        end
+      end
     end
   end
 
