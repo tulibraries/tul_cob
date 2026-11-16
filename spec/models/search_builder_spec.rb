@@ -54,6 +54,27 @@ RSpec.describe SearchBuilder , type: :model do
       expect(solr_params["json"]).to be_nil
     end
 
+    it "handles an unmatched double quote in a single all-fields clause" do
+      expect {
+        described_class
+          .new(context)
+          .with(
+            search_field: "advanced",
+            q_1: 'Here is stray quote"',
+            f_1: "all_fields",
+            operator: { q_1: "contains" },
+            clause: {
+              "0" => {
+                field: "all_fields",
+                query: 'Here is another stray quote"',
+                match: "contains"
+              }
+            }
+          )
+          .processed_parameters
+      }.not_to raise_error(Parslet::ParseFailed)
+    end
+
     it "parses boolean expressions across all-fields clauses" do
       solr_params = described_class
         .new(context)

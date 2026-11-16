@@ -62,7 +62,14 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def add_adv_search_clauses(solr_parameters)
     clause_params = search_state.clause_params
-    return super if clause_params.present? && clause_params.size == 1
+    if clause_params.present? && clause_params.size == 1
+      single_clause_result = begin
+        [ true, super ]
+      rescue Parslet::ParseFailed
+        [ false, nil ]
+      end
+      return single_clause_result.last if single_clause_result.first
+    end
 
     clauses = advanced_search_clauses
     return if clauses.empty?
@@ -708,7 +715,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     def advanced_clause_query(clause)
-      parsed_clause = adv_search_clause(clause, "must")
+      parsed_clause = begin
+        adv_search_clause(clause, "must")
+      rescue Parslet::ParseFailed
+        nil
+      end
       return parsed_clause.last if parsed_clause
 
       field = blacklight_config.search_fields[clause["field"]]
