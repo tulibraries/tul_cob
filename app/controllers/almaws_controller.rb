@@ -2,6 +2,10 @@
 
 class AlmawsController < CatalogController
   MAX_AVAILABLE_ASRS_ITEMS = 100
+  REQUEST_ERROR_MESSAGE = [
+    "There was an error processing your request.",
+    "<a href=\"https://library.temple.edu/contact-us\">Contact Temple University Libraries</a> for help."
+  ].join(" ").html_safe
 
   layout proc { |controller| false if request.xhr? }
 
@@ -100,7 +104,7 @@ class AlmawsController < CatalogController
       redirect_back(fallback_location: root_path)
     rescue => e
       Honeybadger.notify(e.message + " " + log.to_s)
-      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
+      flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
   end
@@ -148,14 +152,14 @@ class AlmawsController < CatalogController
         confirmation = RequestConfirmation.new(response, params[:asrs_pickup_location])
         flash["notice"] = confirmation.message
       else
-        flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
+        flash["notice"] = REQUEST_ERROR_MESSAGE
       end
 
       redirect_back(fallback_location: root_path)
 
     rescue => e
       Honeybadger.notify(e.message + " " + log.to_s)
-      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
+      flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
   end
@@ -187,7 +191,7 @@ class AlmawsController < CatalogController
       flash["notice"] = "This item is already booked for those dates."
       redirect_back(fallback_location: root_path)
     rescue
-      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
+      flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
   end
@@ -217,7 +221,7 @@ class AlmawsController < CatalogController
       flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
     rescue
-      flash["notice"] = "There was an error processing your request. Contact Temple University Libraries for help."
+      flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
   end
