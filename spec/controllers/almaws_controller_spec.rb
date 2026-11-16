@@ -357,6 +357,7 @@ RSpec.describe AlmawsController, type: :controller do
 
         expect(Honeybadger).to have_received(:notify).with(a_string_including("request failed"))
         expect(flash[:notice]).to include("There was an error processing your request")
+        expect(flash[:notice]).to include("href=\"https://library.temple.edu/contact-us\"")
       end
     end
   end
