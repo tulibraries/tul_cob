@@ -141,6 +141,7 @@ en:
       databases_link: "Advanced Databases Search"
       catalog_link: "Advanced Search"
       articles_link: "Advanced Articles Search"
+      empty_search: "Please enter a value in at least one field to conduct an advanced search."
       form:
         sort_label: "Sort by"
         search_btn: "Search"

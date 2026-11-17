@@ -21,6 +21,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   ]
 
   self.default_processor_chain += %i[ tweak_query ]
+  self.default_processor_chain += [:deduplicate_facet_queries]
 
   MAX_QUERY_TOKENS = 20
   MAX_PHRASE_BOOST_TOKENS = 10
@@ -580,6 +581,13 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     solr_params["fq"] = Array(solr_params["fq"] || solr_params[:fq])
     solr_params["fq"] << "lc_call_number_sort: [#{converted_begin} TO #{converted_end}]"
+  end
+
+  def deduplicate_facet_queries(solr_parameters)
+    queries = solr_parameters["facet.query"]
+    return if queries.blank?
+
+    solr_parameters["facet.query"] = Array(queries).uniq
   end
 
   private
