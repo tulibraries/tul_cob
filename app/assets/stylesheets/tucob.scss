@@ -144,6 +144,12 @@ a.skip-main:focus {
   color: $midnight-blue;
 }
 
+.alert-danger {
+  background-color: $crystal-blue;
+  border: 1px solid $royal-blue;
+  color: $midnight-blue;
+}
+
 #documents {
   margin-left: 0;
   padding: 0 0.25rem 0 1.25rem;

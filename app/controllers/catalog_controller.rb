@@ -2,6 +2,8 @@
 
 class CatalogController < ApplicationController
   MAX_ADVANCED_SEARCH_CLAUSES = PermittedSearchParams::MAX_ADVANCED_SEARCH_CLAUSES
+  EMPTY_BASIC_SEARCH_CACHE_KEY = "basic_search_empty_raw_response"
+  EMPTY_BASIC_SEARCH_SORT = "score desc, pub_date_sort desc, title_sort asc"
 
   # Run the challenge before Blacklight search-session tracking creates a Search record.
   bot_challenge only: :index, if: -> { bot_challenge? }
@@ -711,7 +713,10 @@ class CatalogController < ApplicationController
   # Override index because we don't show any results at /catalog when
   # there are no parameters, and so we don't need to bother solr
   def index
-    if has_search_parameters?
+    if empty_advanced_search_submission?
+      flash[:error] = t("blacklight.advanced_search.empty_search")
+      redirect_to action: :advanced_search
+    elsif has_search_parameters?
       super
     else
       respond_to do |format|
@@ -721,12 +726,113 @@ class CatalogController < ApplicationController
     end
   end
 
+  def search_service
+    service = super
+    return service unless catalog? && empty_basic_search_request?
+
+    @empty_basic_search_service ||= CachedEmptyBasicSearchService.new(service, self)
+  end
+
+  def advanced_search
+    if catalog? && (no_search_yet? || empty_advanced_search_form_request?)
+      @response = empty_solr_response(empty_advanced_search_raw_response)
+    else
+      super
+    end
+  end
+
   private
+
+    class CachedEmptyBasicSearchService
+      def initialize(search_service, controller)
+        @search_service = search_service
+        @controller = controller
+      end
+
+      def search_results(...)
+        raw_response = Rails.cache.fetch(EMPTY_BASIC_SEARCH_CACHE_KEY, expires_in: 1.minute) do
+          response = @search_service.search_results(...)
+          response = response.first if response.is_a?(Array)
+          response.to_json
+        end
+        response = @controller.send(:empty_solr_response, raw_response)
+
+        response
+      end
+    end
 
     def params
       @permitted_catalog_params || super
     end
     public :params
+
+    def no_search_yet?
+      request.query_parameters.blank?
+    end
+
+    def empty_basic_search_request?
+      return false unless action_name == "index"
+
+      query_parameters = request.query_parameters
+      return false unless query_parameters.keys.all? { |key| key.in?(%w[q range search_field sort]) }
+      return false unless query_parameters["sort"].blank? || query_parameters["sort"] == EMPTY_BASIC_SEARCH_SORT
+      return false if present_nested_value?(query_parameters["range"])
+
+      query_parameters["q"].blank? && query_parameters["search_field"].in?([ nil, "all_fields" ])
+    end
+
+    def empty_advanced_search_submission?
+      return false unless catalog?
+      return false unless params["search_field"] == blacklight_config.advanced_search[:url_key]
+      empty_advanced_search_form_request?
+    end
+
+    def empty_advanced_search_form_request?
+      return false if params["q"].present?
+      return false if params.keys.grep(/\Aq_\d+\z/).any? { |key| present_nested_value?(params[key]) }
+      return false if present_advanced_clause?
+      return false if present_nested_value?(params["f"])
+      return false if present_nested_value?(params["range"])
+
+      true
+    end
+
+    def present_advanced_clause?
+      clauses = params["clause"]
+      return false unless clauses.respond_to?(:each_pair)
+
+      clauses.each_pair.any? do |_index, clause|
+        clause.respond_to?(:[]) && present_nested_value?(clause["query"])
+      end
+    end
+
+    def present_nested_value?(value)
+      if value.is_a?(Array)
+        value.any? { |nested_value| present_nested_value?(nested_value) }
+      elsif value.respond_to?(:each_pair)
+        value.each_pair.any? { |_key, nested_value| present_nested_value?(nested_value) }
+      else
+        value.present?
+      end
+    end
+
+    def empty_solr_response(cached_response)
+      raw_response = JSON.parse(cached_response)
+      Blacklight::Solr::Response.new(
+        raw_response,
+        raw_response["responseHeader"]["params"],
+        blacklight_config: @blacklight_config
+      )
+    end
+
+    def empty_advanced_search_raw_response
+      Rails.cache.fetch("advanced_search_form_empty_raw_response", expires_in: 8.hours) do
+        Rails.logger.info "Cached empty advanced search form solr query"
+        response = blacklight_advanced_search_form_search_service.search_results
+        response = response.first if response.is_a?(Array)
+        response.to_json
+      end
+    end
 
     def permit_catalog_action_parameters
       keys = case action_name

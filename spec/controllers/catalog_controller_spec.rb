@@ -392,11 +392,94 @@ RSpec.describe CatalogController, type: :controller do
   end
 
   describe "advanced search" do
+    it "redirects empty advanced searches back to the form with a notice" do
+      get :index, params: {
+        search_field: "advanced",
+        f_1: "all_fields",
+        f_2: "all_fields",
+        q_1: "",
+        q_2: "",
+        range: {
+          pub_date_sort: { begin: "", end: "" },
+          lc_classification: { begin: "", end: "" }
+        }
+      }
+
+      expect(response).to redirect_to(action: :advanced_search)
+      expect(flash[:error]).to eq(I18n.t("blacklight.advanced_search.empty_search"))
+    end
+
+    context "when rendering the blank form" do
+      let(:empty_advanced_search_response) do
+        {
+          "responseHeader" => { "params" => {} },
+          "response" => { "numFound" => 0, "start" => 0, "docs" => [] },
+          "facet_counts" => {
+            "facet_queries" => {},
+            "facet_fields" => {},
+            "facet_dates" => {},
+            "facet_ranges" => {}
+          }
+        }.to_json
+      end
+
+      before do
+        allow(Rails.cache).to receive(:fetch).and_return(empty_advanced_search_response)
+      end
+
+      it "uses the cache for an empty advanced search form" do
+        get :advanced_search, params: {}
+
+        expect(response).to have_http_status(:ok)
+        expect(Rails.cache).to have_received(:fetch).with(
+          "advanced_search_form_empty_raw_response",
+          expires_in: 8.hours
+        )
+      end
+
+      it "uses the cache when empty form parameters are present" do
+        get :advanced_search, params: {
+          search_field: "advanced",
+          f_1: "all_fields",
+          f_2: "all_fields",
+          q_1: "",
+          q_2: "",
+          range: {
+            pub_date_sort: { begin: "", end: "" },
+            lc_classification: { begin: "", end: "" }
+          }
+        }
+
+        expect(response).to have_http_status(:ok)
+        expect(Rails.cache).to have_received(:fetch).with(
+          "advanced_search_form_empty_raw_response",
+          expires_in: 8.hours
+        )
+      end
+
+      it "uses the cache when blank query parameters are present" do
+        get :advanced_search, params: { q: "", search_field: "all_fields" }
+
+        expect(response).to have_http_status(:ok)
+        expect(Rails.cache).to have_received(:fetch).with(
+          "advanced_search_form_empty_raw_response",
+          expires_in: 8.hours
+        )
+      end
+
+      it "does not use the empty form cache for a search with arguments" do
+        get :advanced_search, params: { q: "coffee" }
+
+        expect(response).to have_http_status(:ok)
+        expect(Rails.cache).not_to have_received(:fetch)
+      end
+    end
+
     it "doesn't error on empty search fields (example 1)" do
       expect {
         get :index, params: { search_field: "advanced", f_1: "all_fields", f_2: "all_fields", f_3: "all_fields",
                               op_1: "AND", operator: { q_1: "contains", q_2: "contains", q_3: "is" } }
-        expect(response.code).to eq "200"
+        expect(response).to redirect_to(action: :advanced_search)
       }.to_not raise_error
     end
 
