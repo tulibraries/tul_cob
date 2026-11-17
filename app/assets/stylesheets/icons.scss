@@ -43,7 +43,7 @@ a.asrs-request[aria-expanded="true"]::after {
 }
 
 :where(#facet-format, #facet-az_format, #facet-rtype) a.facet-select,
-:where(#facet-format, #facet-az_format, #facet-rtype) span.selected {
+:where(#facet-format, #facet-az_format, #facet-rtype) :where(.facet-label) span.selected {
   background: transparent url("noun_article.svg") no-repeat center left;
   padding-left: 1.9rem;
   padding-top: .25rem;
