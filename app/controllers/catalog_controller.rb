@@ -714,7 +714,7 @@ class CatalogController < ApplicationController
   # there are no parameters, and so we don't need to bother solr
   def index
     if empty_advanced_search_submission?
-      flash[:error] = t("blacklight.advanced_search.empty_search")
+      flash[:empty_search] = t("blacklight.advanced_search.empty_search")
       redirect_to action: :advanced_search
     elsif has_search_parameters?
       super
@@ -771,7 +771,7 @@ class CatalogController < ApplicationController
     end
 
     def empty_basic_search_request?
-      return false unless action_name == "index"
+      return false unless action_name == "index" && request.get?
 
       query_parameters = request.query_parameters
       return false unless query_parameters.keys.all? { |key| key.in?(%w[q range search_field sort]) }

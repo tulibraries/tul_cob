@@ -71,6 +71,9 @@
         </div>
 
         <div class="p-md-2">
+          <% if flash[:empty_search] %>
+            <div class="alert alert-empty-search" role="alert"><%= flash[:empty_search] %></div>
+          <% end %>
           <%= render partial: "shared/flash_msg", layout: "shared/flash_messages" %>        
         </div>
 

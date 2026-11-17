@@ -392,7 +392,7 @@ RSpec.describe CatalogController, type: :controller do
   end
 
   describe "advanced search" do
-    it "redirects empty advanced searches back to the form with a notice" do
+    it "redirects empty advanced searches back to the form with a message" do
       get :index, params: {
         search_field: "advanced",
         f_1: "all_fields",
@@ -406,7 +406,7 @@ RSpec.describe CatalogController, type: :controller do
       }
 
       expect(response).to redirect_to(action: :advanced_search)
-      expect(flash[:error]).to eq(I18n.t("blacklight.advanced_search.empty_search"))
+      expect(flash[:empty_search]).to eq(I18n.t("blacklight.advanced_search.empty_search"))
     end
 
     context "when rendering the blank form" do
@@ -490,6 +490,52 @@ RSpec.describe CatalogController, type: :controller do
                               q_1: ". Research methods in psychology", q_2: "Morling", q_3: "" }
         expect(response.code).to eq "200"
       }.to_not raise_error
+    end
+  end
+
+  describe "empty basic search caching" do
+    let(:cached_response) do
+      {
+        "responseHeader" => { "params" => {} },
+        "response" => { "numFound" => 0, "start" => 0, "docs" => [] },
+        "facet_counts" => {
+          "facet_queries" => {},
+          "facet_fields" => {},
+          "facet_dates" => {},
+          "facet_ranges" => {}
+        }
+      }.to_json
+    end
+    let(:cached_search_service) do
+      described_class::CachedEmptyBasicSearchService.new(search_service, controller)
+    end
+
+    it "uses a cached response without calling the search service" do
+      allow(Rails.cache).to receive(:fetch).and_return(cached_response)
+      expect(search_service).not_to receive(:search_results)
+
+      expect(cached_search_service.search_results).to be_a(Blacklight::Solr::Response)
+    end
+
+    it "populates the cache on a miss" do
+      solr_response = instance_double(Blacklight::Solr::Response, to_json: cached_response)
+      allow(search_service).to receive(:search_results).and_return([solr_response, []])
+      allow(Rails.cache).to receive(:fetch).and_wrap_original do |_original, *_args, &block|
+        block.call
+      end
+
+      expect(cached_search_service.search_results).to be_a(Blacklight::Solr::Response)
+      expect(Rails.cache).to have_received(:fetch).with(
+        CatalogController::EMPTY_BASIC_SEARCH_CACHE_KEY,
+        expires_in: 1.minute
+      )
+    end
+
+    it "does not treat a POST request as an empty basic search" do
+      allow(controller).to receive(:action_name).and_return("index")
+      request.set_header("REQUEST_METHOD", "POST")
+
+      expect(controller.send(:empty_basic_search_request?)).to be(false)
     end
   end
 
