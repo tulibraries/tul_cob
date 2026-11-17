@@ -45,7 +45,7 @@
 		}
 	}
 	.navbar {
-		background-color: $dark-cherry-red;
+		background-color: $cherry-red;
 		justify-content: flex-start;
 		padding: 0.25rem 0;
 		.navbar-toggler {
@@ -57,10 +57,10 @@
 		}
 		.show .padding {
 			height: 0.625rem;
-			background-color: $dark-cherry-red;
+			background-color: $cherry-red;
 		}
 		.navbar-toggler:hover {
-			background-color: $dark-cherry-red;
+			background-color: $cherry-red;
 		}
 		.navbar-toggler:focus {
 			outline: none;
@@ -75,7 +75,7 @@
 		}
 		.row {
 			margin-top: 0.125rem;
-			background-color: $dark-cherry-red;
+			background-color: $cherry-red;
 	    height: 2.8125rem !important;
 	    max-height: 2.8125rem !important;
 	    max-width: 100%;
