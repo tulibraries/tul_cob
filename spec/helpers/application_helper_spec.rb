@@ -45,6 +45,33 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#nav_search_params_for" do
+    context "when linking to catalog from an advanced search page" do
+      before do
+        allow(helper).to receive(:advanced_search_page?).and_return(true)
+        allow(helper).to receive(:request).and_return(
+          OpenStruct.new(query_parameters: { search_field: "advanced" })
+        )
+      end
+
+      it "does not carry advanced search parameters" do
+        expect(helper.nav_search_params_for(:search_catalog_path)).to eq({})
+      end
+
+      it "preserves a safe carried-over query" do
+        allow(helper).to receive(:request).and_return(
+          OpenStruct.new(query_parameters: { q: "climate", search_field: "advanced" })
+        )
+
+        expect(helper.nav_search_params_for(:search_catalog_path)).to eq({ q: "climate" })
+      end
+
+      it "does not restore a query from the current search session" do
+        allow(helper).to receive(:search_params).and_return({ q: "old query" })
+
+        expect(helper.nav_search_params_for(:search_catalog_path)).to eq({})
+      end
+    end
+
     context "when linking back to catalog from another search scope" do
     before do
       helper.session[:last_catalog_search_params] = { "q" => "motion picture" }

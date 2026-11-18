@@ -73,6 +73,10 @@ module ApplicationHelper
   end
 
   def nav_search_params_for(path)
+    if path == :search_catalog_path && advanced_search_page?
+      return sanitize_cross_tab_search_params(request.query_parameters)
+    end
+
     params = search_params
 
     if path == :search_catalog_path && controller_name != "catalog"
