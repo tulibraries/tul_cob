@@ -12,6 +12,7 @@ class CiteprocCitation
     "CHICAGO-NOTES-BIBLIOGRAPHY" => "chicago-notes-bibliography",
     "MLA" => "modern-language-association"
   }.freeze
+  STYLE_CACHE = Concurrent::Map.new
 
   def initialize(document, formats = [])
     @document = document
@@ -70,9 +71,13 @@ class CiteprocCitation
     end
 
     def load_style(style_id)
-      CSL::Style.load(style_id)
-    rescue StandardError
-      CSL::Style.load("#{style_id}.csl")
+      STYLE_CACHE.compute_if_absent(style_id) do
+        begin
+          CSL::Style.load(style_id)
+        rescue StandardError
+          CSL::Style.load("#{style_id}.csl")
+        end
+      end
     end
 
     def csl_item

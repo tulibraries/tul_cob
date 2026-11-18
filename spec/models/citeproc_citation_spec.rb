@@ -33,4 +33,27 @@ RSpec.describe CiteprocCitation do
     expect(first_result).to equal(second_result)
     expect(first_result.keys).to match_array(described_class::STYLE_MAP.keys)
   end
+
+  it "reuses loaded CSL styles across citation instances" do
+    described_class::STYLE_CACHE.clear
+
+    document = SolrDocument.new(
+      "id" => "991006438039703811",
+      "title_statement_display" => ["Example / Foo."],
+      "creator_display" => ["Slayton, William L. (William Larew), 1916-|author"],
+      "format" => ["Book"]
+    )
+
+    style_ids = described_class::STYLE_MAP.values
+
+    style_ids.each do |style_id|
+      expect(CSL::Style).to receive(:load).with(style_id).once.and_call_original
+    end
+
+    first_result = described_class.new(document).citations
+    second_result = described_class.new(document).citations
+
+    expect(first_result).to eq(second_result)
+    expect(first_result.keys).to match_array(described_class::STYLE_MAP.keys)
+  end
 end
