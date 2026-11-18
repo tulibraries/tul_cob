@@ -56,12 +56,7 @@ class CatalogController < ApplicationController
   Blacklight::Icons::RemoveComponent.svg = File.read(Rails.root.join("app/assets/images/icons/remove.svg")).freeze
 
   def override_solr_path
-    single_word = params["q"]&.split&.count == 1
-    quoted_phrase = params["q"]&.match?(/\A["'].*["']\z/)
-
-    if single_word && quoted_phrase
-      blacklight_config.solr_path = "single_quoted_search"
-    end
+    blacklight_config.solr_path = "single_quoted_search" if quoted_search?
   end
 
   def store_last_catalog_search_params
@@ -727,9 +722,13 @@ class CatalogController < ApplicationController
 
   def search_service
     service = super
-    return service unless catalog? && empty_basic_search_request?
+    if catalog? && empty_basic_search_request?
+      return @empty_basic_search_service ||= CachedEmptyBasicSearchService.new(service, self)
+    end
 
-    @empty_basic_search_service ||= CachedEmptyBasicSearchService.new(service, self)
+    return service unless catalog? && quoted_search?
+
+    @quoted_search_fallback_service ||= QuotedSearchFallbackService.new(service, self)
   end
 
   def advanced_search
@@ -741,6 +740,44 @@ class CatalogController < ApplicationController
   end
 
   private
+
+    class QuotedSearchFallbackService
+      def initialize(search_service, controller)
+        @search_service = search_service
+        @controller = controller
+      end
+
+      def search_results(...)
+        original_solr_path = @controller.blacklight_config.solr_path
+        exact_results = @search_service.search_results(...)
+        return exact_results unless zero_results?(exact_results)
+
+        @controller.blacklight_config.solr_path = "search"
+        @search_service.search_results(...)
+      ensure
+        if defined?(original_solr_path)
+          @controller.blacklight_config.solr_path = original_solr_path
+        end
+      end
+
+      private
+
+        def zero_results?(results)
+          response = results.is_a?(Array) ? results.first : results
+          response.respond_to?(:total) && response.total.to_i.zero?
+        end
+    end
+
+    def quoted_search?
+      return false unless action_name == "index"
+      return false if params["search_field"] == blacklight_config.advanced_search[:url_key]
+
+      query = params["q"].to_s.strip
+      return false if query.length < 2
+
+      quote = query[0]
+      %w[" '].include?(quote) && query[-1] == quote
+    end
 
     class CachedEmptyBasicSearchService
       def initialize(search_service, controller)
