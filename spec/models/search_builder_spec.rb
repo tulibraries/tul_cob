@@ -75,6 +75,48 @@ RSpec.describe SearchBuilder , type: :model do
       }.not_to raise_error(Parslet::ParseFailed)
     end
 
+    it "normalizes an unmatched double quote after a quoted phrase" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          search_field: "advanced",
+          q_1: '"world war" history"',
+          f_1: "all_fields",
+          operator: { q_1: "contains" },
+          clause: {
+            "0" => {
+              field: "all_fields",
+              query: '"world war" history"',
+              match: "contains"
+            }
+          }
+        )
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq('_query_:"{!edismax }\\"world war\\" history"')
+    end
+
+    it "normalizes an unmatched double quote before a later quoted phrase" do
+      solr_params = described_class
+        .new(context)
+        .with(
+          search_field: "advanced",
+          q_1: '"world war" history" "cold war"',
+          f_1: "all_fields",
+          operator: { q_1: "contains" },
+          clause: {
+            "0" => {
+              field: "all_fields",
+              query: '"world war" history" "cold war"',
+              match: "contains"
+            }
+          }
+        )
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq('_query_:"{!edismax }\\"world war\\" history \\"cold war\\""')
+    end
+
     it "parses boolean expressions across all-fields clauses" do
       solr_params = described_class
         .new(context)
