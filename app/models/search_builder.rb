@@ -63,7 +63,14 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def add_adv_search_clauses(solr_parameters)
     clause_params = search_state.clause_params
-    return super if clause_params.present? && clause_params.size == 1
+    if clause_params.present? && clause_params.size == 1
+      single_clause_result = begin
+        [ true, super ]
+      rescue Parslet::ParseFailed
+        [ false, nil ]
+      end
+      return single_clause_result.last if single_clause_result.first
+    end
 
     clauses = advanced_search_clauses
     return if clauses.empty?
@@ -476,11 +483,15 @@ class SearchBuilder < Blacklight::SearchBuilder
     return value if field.to_s.match?(/call_number/)
 
     # Process the query based on quote count and operation
-    case value.scan(/"/).size
+    quote_count = value.scan(/"/).size
+
+    case quote_count
 
     when 1
       updated_value = value.sub(/"/, "")
       "\"#{updated_value}\""
+    when ->(size) { size.odd? }
+      normalize_unmatched_double_quote(value)
     when ->(size) { size > 1 }
       value
     else
@@ -533,6 +544,37 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   def normalize_alpha_sort_prefix(value)
     value.downcase.strip.gsub(/[^a-z]/, "")
+  end
+
+  def normalize_unmatched_double_quote(value)
+    characters = value.chars
+    opening_quote_index = nil
+
+    characters.each_with_index do |character, index|
+      next unless character == '"'
+
+      if opening_quote_index
+        opening_quote_index = nil
+      elsif quote_closes_without_opening?(characters, index)
+        characters.delete_at(index)
+        return characters.join
+      else
+        opening_quote_index = index
+      end
+    end
+
+    return value unless opening_quote_index
+
+    characters.delete_at(opening_quote_index)
+    characters.join
+  end
+
+  def quote_closes_without_opening?(characters, index)
+    preceding = characters[index - 1] if index.positive?
+    following = characters[index + 1]
+
+    preceding && !preceding.match?(/[\s(]/) &&
+      (following.nil? || following.match?(/[\s)\]},.;:!?]/))
   end
 
   def no_journals(solr_parameters)
@@ -716,7 +758,11 @@ class SearchBuilder < Blacklight::SearchBuilder
     end
 
     def advanced_clause_query(clause)
-      parsed_clause = adv_search_clause(clause, "must")
+      parsed_clause = begin
+        adv_search_clause(clause, "must")
+      rescue Parslet::ParseFailed
+        nil
+      end
       return parsed_clause.last if parsed_clause
 
       field = blacklight_config.search_fields[clause["field"]]
