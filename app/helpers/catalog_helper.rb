@@ -170,10 +170,6 @@ module CatalogHelper
       })).to_s
   end
 
-  def derived_lib_guides_search_term(response)
-    LibGuidesApi.derived_lib_guides_search_term(response, params.fetch("q", ""))
-  end
-
   # Delegation method for Blacklight configuration compatibility
   # This allows the existing helper_method: :separate_formats to continue working
   def separate_formats(args)

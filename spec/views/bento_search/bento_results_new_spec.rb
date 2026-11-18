@@ -22,7 +22,6 @@ RSpec.describe "search/_bento_results_new.html.erb", type: :view do
 
   before do
     allow(view).to receive(:renderable_results).and_return(results_hash)
-    allow(view).to receive(:with_libguides?).and_return(false)
     allow(view).to receive(:bento_grid_position_class).and_return("bento-grid-left")
     allow(view).to receive(:bento_search).and_return("archival-collections-card")
     allow(view).to receive(:render_linked_results_new).and_return("")

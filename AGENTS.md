@@ -53,7 +53,6 @@
 - Standard suite without ingest: `bundle exec rspec` (ensure Solr fixtures loaded first).
 - Dockerized tests: `make test` (runs rails ci inside app container).
 - Specific spec example: `bundle exec rspec spec/controllers/items_controller_spec.rb:12`.
-- Tag-based example: `bundle exec rspec spec/relavance/lib_guides_spec.rb --tag lib_guides_relevance`.
 - System/JS Capybara uses headless Chrome; ensure chromium/chromedriver installed (brew install chromiumdriver).
 - DatabaseCleaner truncation strategy runs before suite (see spec/rails_helper.rb).
 

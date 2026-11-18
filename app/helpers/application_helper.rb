@@ -276,10 +276,6 @@ module ApplicationHelper
     ::FeatureFlags.campus_closed?(params)
   end
 
-  def with_libguides?
-    ::FeatureFlags.with_libguides?(params)
-  end
-
   def library_link_url
     Rails.configuration.library_link
   end

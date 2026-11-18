@@ -33,8 +33,6 @@ test:
 test-js:
 	yarn install --frozen-lockfile
 	yarn test
-test-libguides-relevance:
-	bundle exec rspec spec/relavance/lib_guides_spec.rb --tag lib_guides_relevance
 load-data:
 	$(DOCKER) exec -e DO_INGEST=y app rake tul_cob:solr:load_fixtures
 reload-configs:
