@@ -6,8 +6,8 @@
   </h1>
 
   <div class="row">
-    <div class="col-md-8" data-controller="primo">
-      <div id="stimulus-warning" class="alert alert-danger" role="alert"></div>
+    <div class="col-md-8" data-controller="primo" data-empty-search-message="<%= t("blacklight.advanced_search.empty_search") %>">
+      <div id="stimulus-warning" class="alert alert-empty-search" role="alert" tabindex="-1"></div>
       <%= render "advanced_search_form" %>
     </div>
     <div class="col-md-4">
