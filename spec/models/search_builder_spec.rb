@@ -54,6 +54,16 @@ RSpec.describe SearchBuilder , type: :model do
       expect(solr_params["json"]).to be_nil
     end
 
+    it "normalizes an unmatched double quote in a basic all-fields query" do
+      solr_params = described_class
+        .new(context)
+        .with(q: '"world war" history"', search_field: "all_fields")
+        .processed_parameters
+
+      expect(solr_params["q"]).to eq('"world war" history')
+      expect(solr_params["json"]).to be_nil
+    end
+
     it "handles an unmatched double quote in a single all-fields clause" do
       expect {
         described_class
