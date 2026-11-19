@@ -5,6 +5,7 @@ module QuikPay
 
   NO_ACCESS_MESSAGE = "You do not have access to this pay online feature. If you believe this is incorrect, please call 215-204-8212."
   ERROR_MESSAGE = "There was a problem with your transaction. Please call 215-204-8212."
+  CALLBACK_HASH_ORDER = %w[transactionStatus transactionTotalAmount orderNumber timestamp].freeze
   DEFAULT_REDIRECT_URL = "http://localhost:3000/users/quik_pay_callback"
   DEFAULT_QUIK_PAY_URL = "https://uatquikpayasp.com/temple2/library/guest.do?"
 
@@ -142,7 +143,7 @@ module QuikPay
     def validate_quik_pay_hash(params)
       hash = params["hash"]
 
-      values = params.except("hash").to_h.sort.to_h.values
+      values = CALLBACK_HASH_ORDER.map { |key| params[key] }
       valid_hash = quik_pay_hash(values, Rails.configuration.apis.dig(:quik_pay, :secret))
 
       raise InvalidHash.new("A hash value is required. This probaly means this is an invalid attempt at using quikpay.") if hash.nil?
