@@ -49,6 +49,9 @@ class SearchBuilder < Blacklight::SearchBuilder
     unless is_advanced_search?
       solr_params.delete(:json)
       solr_params.delete("json")
+      q_key = solr_params.key?(:q) ? :q : "q"
+      solr_params[q_key] ||= search_state.query_param
+      normalize_unmatched_double_quote_query(solr_params)
     end
 
     q_key = solr_params.key?(:q) ? :q : "q"
@@ -59,6 +62,15 @@ class SearchBuilder < Blacklight::SearchBuilder
 
     solr_params[q_key] = solr_params[q_key].gsub("{!dismax", "{!edismax")
     solr_params[q_op_key] = "OR"
+  end
+
+  def normalize_unmatched_double_quote_query(solr_params)
+    q_key = solr_params.key?(:q) ? :q : "q"
+    query = solr_params[q_key]
+    return unless query.respond_to?(:to_str)
+    return unless query.scan(/"/).size.odd?
+
+    solr_params[q_key] = normalize_unmatched_double_quote(query)
   end
 
   def add_adv_search_clauses(solr_parameters)
