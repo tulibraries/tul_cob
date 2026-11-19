@@ -74,6 +74,26 @@ RSpec.describe UsersController, type: "controller"  do
       end
     end
 
+    context "when callback parameters arrive in QuikPay's order" do
+      let (:params) do
+        with_validation_params(
+          transactionStatus: "1",
+          transactionTotalAmount: "21950",
+          orderNumber: "915663094",
+        )
+      end
+
+      it "accepts the callback hash" do
+        resp = OpenStruct.new(total_sum: 0.0)
+        balance = Alma::PaymentResponse.new(resp)
+        allow(Alma::User).to receive(:send_payment) { balance }
+
+        get(:quik_pay_callback, params:)
+
+        expect(response).to redirect_to users_account_path
+      end
+    end
+
     context "user is logged in" do
       before do
         sign_in user, scope: :user
@@ -230,16 +250,14 @@ RSpec.describe UsersController, type: "controller"  do
   end
 
   def with_validation_params(params = {})
-    # Order shouldn't matter but in this test context .to_query gets
-    # used somewhere and thus params are not in order of hash so we need to
-    # control for that.
     params_dup = params.dup
     time_now = DateTime.now.strftime("%Q").to_i
 
     params_dup[:orderNumber] ||= "1234567890"
     params_dup.merge!(timestamp: time_now) if params_dup[:timestamp].nil?
 
-    hash = controller.quik_pay_hash(params_dup.sort.to_h.values, Rails.configuration.apis.dig(:quik_pay, :secret))
+    hash_values = QuikPay::CALLBACK_HASH_ORDER.map { |key| params_dup[key.to_sym] }
+    hash = controller.quik_pay_hash(hash_values, Rails.configuration.apis.dig(:quik_pay, :secret))
 
     params_dup.merge(hash:)
   end
