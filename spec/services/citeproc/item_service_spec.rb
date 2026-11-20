@@ -93,6 +93,20 @@ RSpec.describe Citeproc::ItemService do
     expect(item["ISSN"]).to eq("1234-5678")
   end
 
+  it "removes surrounding brackets from the publication place" do
+    document["imprint_display"] = ["[s.l.] : Alberta Community Development, 2006"]
+
+    expect(item["publisher_place"]).to eq("s.l.")
+    expect(item.publisher).to eq("Alberta Community Development")
+  end
+
+  it "removes an unmatched opening bracket from the publication place" do
+    document["imprint_display"] = ["[s.l : Alberta Community Development, 2006"]
+
+    expect(item["publisher_place"]).to eq("s.l")
+    expect(item.publisher).to eq("Alberta Community Development")
+  end
+
   it "maps supported contributor relators from indexed fields" do
     document["contributor_display"] = [
       "Norris, Denne Michele,|editor.",

@@ -116,7 +116,7 @@ module Citeproc
       def publisher_place
         return if imprint.blank?
 
-        imprint.to_s.split(":").first.to_s.strip.presence
+        imprint.to_s.split(":").first.to_s.strip.delete_prefix("[").delete_suffix("]").presence
       end
 
       def publisher
