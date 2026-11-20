@@ -107,6 +107,12 @@ RSpec.describe Citeproc::ItemService do
     expect(item.publisher).to eq("Alberta Community Development")
   end
 
+  it "removes an unmatched opening bracket from the publisher when the imprint has no colon" do
+    document["imprint_display"] = ["[S.l Alberta Community Development, 2006"]
+
+    expect(item.publisher).to eq("S.l Alberta Community Development")
+  end
+
   it "maps supported contributor relators from indexed fields" do
     document["contributor_display"] = [
       "Norris, Denne Michele,|editor.",
