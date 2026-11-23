@@ -18,6 +18,8 @@ class AlmawsController < CatalogController
 
   rescue_from Alma::BibItemSet::ResponseError,
     with: :offset_too_large
+  rescue_from ActionController::InvalidAuthenticityToken,
+    with: :expired_request_form
 
   def item
     @mms_id = params[:mms_id]
@@ -228,6 +230,15 @@ class AlmawsController < CatalogController
 
   def offset_too_large
     render html: "<p class='m-2'>Availability information can not be loaded. Contact a librarian for help.</p>".html_safe, status: :bad_gateway
+  end
+
+  def expired_request_form
+    flash["notice"] = "Your request could not be submitted. Please try again."
+    redirect_back(fallback_location: root_path)
+  end
+
+  def search_action_url(options = {})
+    search_catalog_url(options.to_h.except(:controller, :action))
   end
 
   private
