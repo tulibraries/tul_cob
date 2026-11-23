@@ -539,6 +539,34 @@ RSpec.describe CatalogController, type: :controller do
     end
   end
 
+  describe CatalogController::QuotedSearchFallbackService do
+    let(:catalog_controller) { CatalogController.new }
+    let(:exact_response) { instance_double(Blacklight::Solr::Response, total: 0) }
+    let(:fallback_response) { instance_double(Blacklight::Solr::Response, total: 1) }
+    let(:service) { described_class.new(search_service, catalog_controller) }
+
+    before do
+      catalog_controller.blacklight_config.solr_path = "single_quoted_search"
+    end
+
+    it "retries with the normal search handler when the exact search is empty" do
+      allow(search_service).to receive(:search_results)
+        .and_return([ exact_response, [] ], [ fallback_response, [] ])
+
+      expect(service.search_results).to eq([ fallback_response, [] ])
+      expect(search_service).to have_received(:search_results).twice
+      expect(catalog_controller.blacklight_config.solr_path).to eq("single_quoted_search")
+    end
+
+    it "does not retry when the exact search returns results" do
+      allow(exact_response).to receive(:total).and_return(1)
+      allow(search_service).to receive(:search_results).and_return([ exact_response, [] ])
+
+      expect(service.search_results).to eq([ exact_response, [] ])
+      expect(search_service).to have_received(:search_results).once
+    end
+  end
+
   describe "index page with no user params" do
     render_views
 
@@ -629,16 +657,16 @@ RSpec.describe CatalogController, type: :controller do
     end
 
     context ":index action and quoted multiple term search (single quoted)" do
-      it "does not override the blacklight_config solr_path" do
+      it "overrides the blacklight_config solr_path" do
         get :index, params: { q: "'art school'" }
-        expect(assigns(:blacklight_config).solr_path).to eq("search")
+        expect(assigns(:blacklight_config).solr_path).to eq("single_quoted_search")
       end
     end
 
     context ":index action and quoted multiple term search (double quoted)" do
-      it "does not override the blacklight_config solr_path" do
+      it "overrides the blacklight_config solr_path" do
         get :index, params: { q: "\"art school\"" }
-        expect(assigns(:blacklight_config).solr_path).to eq("search")
+        expect(assigns(:blacklight_config).solr_path).to eq("single_quoted_search")
       end
     end
 
