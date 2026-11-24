@@ -201,7 +201,7 @@ GEM
     blacklight_range_limit (9.3.0)
       blacklight (>= 7.25.2, < 10)
       view_component (>= 2.54, < 5)
-    bootsnap (1.26.1)
+    bootsnap (1.26.2)
       msgpack (~> 1.5)
     bootstrap (5.3.8)
       popper_js (>= 2.11.8, < 3)
@@ -834,7 +834,7 @@ DEPENDENCIES
   blacklight-ris (~> 0.2.0)
   blacklight_advanced_search (~> 8.1)
   blacklight_range_limit
-  bootsnap (= 1.26.1)
+  bootsnap (= 1.26.2)
   bootstrap (>= 5.3.3)
   bot_challenge_page
   brakeman
@@ -949,7 +949,7 @@ CHECKSUMS
   blacklight-ris (0.2.0) sha256=97260e7cf258e4ed17a349ab1597465de99e43b275029c7706b5f621d268e926
   blacklight_advanced_search (8.1.0) sha256=429f9af0f4807b5db4ade50e280efc5e7b40d2b14fddafb92a2e2df6ffccb7d5
   blacklight_range_limit (9.3.0) sha256=bc22d55f3d650086a632a88e7591ac39e6d8e40ba3297dfcef9420c048e1e71d
-  bootsnap (1.26.1) sha256=5b5bd90f8f13ea338627c1d56ffbe2ea25e743ac48c2afec1a9bea3a06a264e2
+  bootsnap (1.26.2) sha256=f0d749dcda6bf5e3d324bc7e126009b2127d2b83db74273d8ded3b4c8e322bb7
   bootstrap (5.3.8) sha256=1c23b06df24ec28a0058ad90a0da93e260d2c0a5c453d7087f6bad428464742f
   bot_challenge_page (1.2.0) sha256=1b1ba518a11cf07314a209061cc653db707b07fb10967963acf2fdaab32140af
   brakeman (8.1.0) sha256=cfa9e5214e4925842f4bc849a64f8a7e6c5d0425fe98eac8d7b7bc60fdc17e07
