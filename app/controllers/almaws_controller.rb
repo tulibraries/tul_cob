@@ -105,7 +105,7 @@ class AlmawsController < CatalogController
       flash["notice"] = confirmation.message
       redirect_back(fallback_location: root_path)
     rescue => e
-      Honeybadger.notify(e.message + " " + log.to_s)
+      Honeybadger.notify(e, context: log)
       flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
@@ -160,7 +160,7 @@ class AlmawsController < CatalogController
       redirect_back(fallback_location: root_path)
 
     rescue => e
-      Honeybadger.notify(e.message + " " + log.to_s)
+      Honeybadger.notify(e, context: log)
       flash["notice"] = REQUEST_ERROR_MESSAGE
       redirect_back(fallback_location: root_path)
     end
