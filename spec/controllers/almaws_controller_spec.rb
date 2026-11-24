@@ -355,7 +355,10 @@ RSpec.describe AlmawsController, type: :controller do
           material_type: "BOOK"
         }
 
-        expect(Honeybadger).to have_received(:notify).with(a_string_including("request failed"))
+        expect(Honeybadger).to have_received(:notify).with(
+          an_instance_of(StandardError),
+          context: a_hash_including(type: "submit_hold_request")
+        )
         expect(flash[:notice]).to include("There was an error processing your request")
         expect(flash[:notice]).to include("href=\"https://library.temple.edu/contact-us\"")
       end
@@ -474,7 +477,10 @@ RSpec.describe AlmawsController, type: :controller do
           material_type: "BOOK"
         }
 
-        expect(Honeybadger).to have_received(:notify).with(a_string_including("request failed"))
+        expect(Honeybadger).to have_received(:notify).with(
+          an_instance_of(StandardError),
+          context: a_hash_including(type: "submit_asrs_request")
+        )
         expect(flash[:notice]).to include("There was an error processing your request")
       end
     end
