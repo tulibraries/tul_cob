@@ -792,7 +792,7 @@ GEM
       actionview (>= 8.0.0)
       bindex (>= 0.4.0)
       railties (>= 8.0.0)
-    webmock (3.37.0)
+    webmock (3.40.0)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -1215,7 +1215,7 @@ CHECKSUMS
   view_component (4.25.0) sha256=c6acf5d257dded3c9afc3b3c4d10c92e06ec1ba42d382028d1f30e3efc41b1f5
   warden (1.2.9) sha256=46684f885d35a69dbb883deabf85a222c8e427a957804719e143005df7a1efd0
   web-console (4.3.0) sha256=e13b71301cdfc2093f155b5aa3a622db80b4672d1f2f713119cc7ec7ac6a6da4
-  webmock (3.37.0) sha256=2aed7dd97f495d1246aaae479e7275c4cd8fb63b4501c5f1050bda6716665284
+  webmock (3.40.0) sha256=6d88e99c220e911dc4451f1a3e7077c40c205df3583e162a10d5f1f29f5a9790
   websocket (1.2.11) sha256=b7e7a74e2410b5e85c25858b26b3322f29161e300935f70a0e0d3c35e0462737
   websocket-driver (0.9.0) sha256=4dfcc6ac0ea1b6771daf5fb54cbbca131e4d5922ea0a65ba2da980370dadbe9f
   websocket-extensions (0.2.0) sha256=6fb0d0f687aa8adc8eafa5ce68db36dfd6a8ebf232515040ce27c33c1291e589
