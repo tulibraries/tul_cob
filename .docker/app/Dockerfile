@@ -32,7 +32,7 @@ RUN apk add -U --no-cache \
     yaml=0.2.5-r2 \
     yaml-dev=0.2.5-r2 \
     libxslt-dev=${LIBXSLT_VERSION} \
-    libffi-dev=3.8.1-r0 \
+    libffi-dev=3.8.2-r0 \
     postgresql17-dev=${POSTGRESQL_VERSION} \
     tzdata=${TZDATA_VERSION}
 
