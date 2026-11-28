@@ -661,6 +661,78 @@ RSpec.describe AlmawsController, type: :controller do
     end
   end
 
+  describe "characterizing malformed and unavailable Alma responses" do
+    let(:document) { SolrDocument.new("id" => "doc-1", "items_json_display" => []) }
+    let(:item_request_data) do
+      instance_double(RequestData, pickup_location_codes: [], get_request_level: "bib")
+    end
+    let(:request_options_data) do
+      instance_double(
+        RequestData,
+        material_types_and_descriptions: [],
+        material_types: [],
+        pickup_locations: [],
+        item_level_locations: [],
+        equipment_locations: [],
+        booking_locations: [],
+        request_level: "bib",
+        item_holding_ids: [],
+        item_holding_ids_backup: []
+      )
+    end
+
+    it "renders an empty item response when the Solr record is missing" do
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:fetch).and_raise(Blacklight::Exceptions::RecordNotFound)
+      allow(controller).to receive(:get_bib_items).and_return([])
+      allow(RequestData).to receive(:new).and_return(item_request_data)
+
+      get :item, params: { mms_id: "bib-1", doc_id: "missing" }
+
+      expect(response).to have_http_status(:ok)
+      expect(controller.instance_variable_get(:@document).fetch("items_json_display", [])).to eq([])
+    end
+
+    it "returns an internal server error for an unexpected item payload", with_rescue: true do
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:fetch).and_return(document)
+      allow(controller).to receive(:get_bib_items).and_return([Object.new])
+
+      get :item, params: { mms_id: "bib-1", doc_id: "doc-1" }
+
+      expect(response).to have_http_status(:internal_server_error)
+    end
+
+    it "returns an internal server error when Alma item availability times out", with_rescue: true do
+      allow(controller).to receive(:search_service).and_return(search_service)
+      allow(search_service).to receive(:fetch).and_return(document)
+      allow(Alma::BibItem).to receive(:find).and_raise(Timeout::Error)
+
+      get :item, params: { mms_id: "bib-1", doc_id: "doc-1" }
+
+      expect(response).to have_http_status(:internal_server_error)
+    end
+
+    context "when request options contain an unexpected response" do
+      render_views
+
+      before do
+        sign_in @user, scope: :user
+        allow(controller).to receive(:search_service).and_return(search_service)
+        allow(search_service).to receive(:fetch).and_return(document)
+        allow(controller).to receive(:get_bib_items).and_return([])
+        allow(RequestData).to receive(:new).and_return(request_options_data)
+        allow(controller).to receive(:get_bib_request_options).and_return(nil)
+      end
+
+      it "returns an internal server error", with_rescue: true do
+        get :request_options, params: { mms_id: "bib-1" }
+
+        expect(response).to have_http_status(:internal_server_error)
+      end
+    end
+  end
+
   describe "#date_or_nil" do
 
     it "returns a formatted date when passed a YYYY-MM-DD string" do
