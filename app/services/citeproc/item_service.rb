@@ -124,7 +124,10 @@ module Citeproc
 
         parts = imprint.to_s.split(":")
         publisher_section = parts.length > 1 ? parts.last : parts.first
-        publisher_section.to_s.split(",").first.to_s.strip.presence
+        publisher_name = publisher_section.to_s.split(",").first.to_s.strip
+        publisher_name = publisher_name.delete_prefix("[") if publisher_name.start_with?("[") && !publisher_name.end_with?("]")
+        publisher_name = publisher_name.delete_suffix("]") if publisher_name.end_with?("]") && !publisher_name.start_with?("[")
+        publisher_name.presence
       end
 
       def isbn
